@@ -77,6 +77,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_chatAbortUploadFiles'
   | 'Client_chatGetFiles'
   | 'Client_chatGetUploadFileToken'
+  // 记录用户信息
+  | 'Client_logUserUsageInfo'
   // iframe
   | 'Iframe_sendPageContent'
   | IWebsiteContextSendEvent

@@ -56,7 +56,8 @@
     "cancel_anytime": "Ghairi wakati wowote",
     "team_plan": "Mpango wa timu",
     "manage_my_plan": "Simamia mpango wangu",
-    "watch_video": "Angalia video"
+    "watch_video": "Angalia video",
+    "input_content": "Yaliyomo ya kuingiza"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Utendaji bora kwenye majukumu yanayohitaji mawazo magumu. Claude 3 ni huduma bora kabisa ya Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI imefikia uwezo wake sasa",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kutokana na trafiki kubwa, tafadhali jaribu tena baadaye, au nenda sasa kuboresha ili uweze kupata ufikiaji thabiti wa mifano yote ya AI ya hali ya juu.",
-    "sidebar__conversation__message__context_triggered_content_review": "Muktadha umefutwa ili kuepuka ukaguzi"
+    "sidebar__conversation__message__context_triggered_content_review": "Muktadha umefutwa ili kuepuka ukaguzi",
+    "sidebar__nav__concat_us__checkbox_title": "Ruhusu ukusanyaji wa habari za hitilafu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

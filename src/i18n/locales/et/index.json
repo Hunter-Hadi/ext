@@ -56,7 +56,8 @@
     "cancel_anytime": "Tühista igal ajal",
     "team_plan": "Meeskonna plaan",
     "manage_my_plan": "Halda oma plaani",
-    "watch_video": "Vaata videot"
+    "watch_video": "Vaata videot",
+    "input_content": "Sisestage sisu"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Ülim jõudlus ülesannetes, mis nõuavad keerulist mõtlemist. Claude 3 on Anthropicu parim pakkumine.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI on hetkel täis",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Suure liikluse tõttu proovi hiljem uuesti või uuenda kohe, et nautida stabiilset juurdepääsu kõigile tasulisele tehisintellekti mudelitele.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekst kustutatud modereerimise vältimiseks"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst kustutatud modereerimise vältimiseks",
+    "sidebar__nav__concat_us__checkbox_title": "Luba veateabe kogumine"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

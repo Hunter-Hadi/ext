@@ -56,7 +56,8 @@
     "cancel_anytime": "Atšaukti bet kada",
     "team_plan": "Komandos planas",
     "manage_my_plan": "Valdyti mano planą",
-    "watch_video": "Žiūrėti vaizdo įrašą"
+    "watch_video": "Žiūrėti vaizdo įrašą",
+    "input_content": "Įvesties turinys"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Puikus pasirodymas užduotims, kurios reikalauja sudėtingo mąstymo. Claude 3 yra Anthropic geriausias pasiūlymas.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI šiuo metu užimtas",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dėl didelio srauto, prašome bandyti vėliau arba dabar atnaujinti, kad galėtumėte stabiliai naudotis visais premium AI modeliais.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekstas išvalytas, praleidžiant moderavimą"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekstas išvalytas, praleidžiant moderavimą",
+    "sidebar__nav__concat_us__checkbox_title": "Leisti klaidų informacijos rinkimą"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

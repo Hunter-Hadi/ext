@@ -56,7 +56,8 @@
     "cancel_anytime": "Hủy bất kỳ lúc nào",
     "team_plan": "Gói nhóm",
     "manage_my_plan": "Quản lý gói của tôi",
-    "watch_video": "Xem video"
+    "watch_video": "Xem video",
+    "input_content": "Nội dung đầu vào"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Hiệu suất vượt trội trong các nhiệm vụ đòi hỏi tư duy phức tạp. Claude 3 là sản phẩm hàng đầu của Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI hiện đang quá tải",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Do lưu lượng cao, vui lòng thử lại sau hoặc nâng cấp ngay để truy cập ổn định vào tất cả các mô hình AI cao cấp.",
-    "sidebar__conversation__message__context_triggered_content_review": "Xóa bỏ ngữ cảnh để bỏ qua kiểm duyệt"
+    "sidebar__conversation__message__context_triggered_content_review": "Xóa bỏ ngữ cảnh để bỏ qua kiểm duyệt",
+    "sidebar__nav__concat_us__checkbox_title": "Cho phép thu thập thông tin lỗi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

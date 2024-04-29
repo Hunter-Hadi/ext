@@ -56,7 +56,8 @@
     "cancel_anytime": "هر زمان لغو کنید",
     "team_plan": "طرح تیم",
     "manage_my_plan": "مدیریت طرح من",
-    "watch_video": "تماشای ویدیو"
+    "watch_video": "تماشای ویدیو",
+    "input_content": "محتوای ورودی"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "عملکرد برتر در وظایفی که نیاز به استدلال پیچیده دارند. کلود 3 بهترین ارائه Anthropic است.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI در حال حاضر پر است",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "به دلیل ترافیک بالا، لطفاً بعداً دوباره امتحان کنید یا همین الان ارتقا دهید تا به دسترسی پایدار به همه مدل‌های پریمیوم هوش مصنوعی دست پیدا کنید.",
-    "sidebar__conversation__message__context_triggered_content_review": "محتوای مرتبط برای عبور از مدیریت حذف شد"
+    "sidebar__conversation__message__context_triggered_content_review": "محتوای مرتبط برای عبور از مدیریت حذف شد",
+    "sidebar__nav__concat_us__checkbox_title": "اجازه جمع آوری اطلاعات خطا را بدهید"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -56,7 +56,8 @@
     "cancel_anytime": "Prekliči kadarkoli",
     "team_plan": "Načrt za ekipo",
     "manage_my_plan": "Upravljanje mojega načrta",
-    "watch_video": "Oglejte si video"
+    "watch_video": "Oglejte si video",
+    "input_content": "Vsebina vnosa"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Odlična zmogljivost pri nalogah, ki zahtevajo kompleksno sklepanje. Claude 3 je najboljša ponudba podjetja Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI je trenutno zaseden",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zaradi visokega prometa poskusite znova kasneje ali nadgradite zdaj, da uživate v stabilnem dostopu do vseh premium modelov AI.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekst izbrisan za obvoz moderacije"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst izbrisan za obvoz moderacije",
+    "sidebar__nav__concat_us__checkbox_title": "Dovoli zbiranje informacij o napakah"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

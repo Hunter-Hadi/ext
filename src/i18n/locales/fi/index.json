@@ -56,7 +56,8 @@
     "cancel_anytime": "Peruuta milloin tahansa",
     "team_plan": "Tiimisuunnitelma",
     "manage_my_plan": "Hallinnoi suunnitelmaani",
-    "watch_video": "Katso video"
+    "watch_video": "Katso video",
+    "input_content": "Syötä sisältö"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Erinomainen suorituskyky monimutkaista päättelyä vaativissa tehtävissä. Claude 3 on Anthropicin paras tarjous.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI on tällä hetkellä täynnä",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Suuren liikenteen vuoksi, yritä myöhemmin uudelleen tai päivitä nyt nauttiaksesi vakaasta pääsystä kaikkiin premium-tekoälymalleihin.",
-    "sidebar__conversation__message__context_triggered_content_review": "Konteksti tyhjennetty ohittaaksesi moderoinnin"
+    "sidebar__conversation__message__context_triggered_content_review": "Konteksti tyhjennetty ohittaaksesi moderoinnin",
+    "sidebar__nav__concat_us__checkbox_title": "Salli virhetietojen kerääminen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

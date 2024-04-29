@@ -56,7 +56,8 @@
     "cancel_anytime": "Atcelt jebkurā laikā",
     "team_plan": "Komandas plāns",
     "manage_my_plan": "Pārvaldīt manu plānu",
-    "watch_video": "Skatīt video"
+    "watch_video": "Skatīt video",
+    "input_content": "Ievades saturs"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Izcila veiktspēja uzdevumos, kas prasa sarežģītu domāšanu. Claude 3 ir Anthropic labākais piedāvājums.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI pašlaik ir pilnībā aizņemts",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Augsta satiksmes dēļ, lūdzu, mēģiniet vēlāk vai jauniniet tagad, lai baudītu stabilu piekļuvi visiem premium AI modeļiem.",
-    "sidebar__conversation__message__context_triggered_content_review": "Konteksts notīrīts, lai izvairītos no moderēšanas"
+    "sidebar__conversation__message__context_triggered_content_review": "Konteksts notīrīts, lai izvairītos no moderēšanas",
+    "sidebar__nav__concat_us__checkbox_title": "Atļaut kļūdu informācijas apkopošanu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

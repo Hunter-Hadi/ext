@@ -56,7 +56,8 @@
     "cancel_anytime": "Anulează oricând",
     "team_plan": "Planul pentru echipă",
     "manage_my_plan": "Gestionează planul meu",
-    "watch_video": "Urmărește videoclipul"
+    "watch_video": "Urmărește videoclipul",
+    "input_content": "Conținut de intrare"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Performanță superioară la sarcinile care necesită raționament complex. Claude 3 este cea mai bună ofertă a Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI este la capacitate maximă în acest moment",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Datorită traficului ridicat, vă rugăm să încercați din nou mai târziu sau faceți upgrade acum pentru a avea acces stabil la toate modelele premium de AI.",
-    "sidebar__conversation__message__context_triggered_content_review": "Contextul a fost șters pentru a trece de moderare"
+    "sidebar__conversation__message__context_triggered_content_review": "Contextul a fost șters pentru a trece de moderare",
+    "sidebar__nav__concat_us__checkbox_title": "Permite colectarea informațiilor despre erori"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

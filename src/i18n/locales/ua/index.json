@@ -56,7 +56,8 @@
     "cancel_anytime": "Скасувати в будь-який час",
     "team_plan": "План для команди",
     "manage_my_plan": "Керувати моїм планом",
-    "watch_video": "Переглянути відео"
+    "watch_video": "Переглянути відео",
+    "input_content": "Введіть вміст"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Перевершена продуктивність на завданнях, які вимагають складного мислення. Клод 3 - це найкраща пропозиція від Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI зараз на максимальному навантаженні",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Через великий трафік, спробуйте ще раз пізніше або оновіться зараз, щоб насолоджуватися стабільним доступом до всіх преміум-моделей ШІ.",
-    "sidebar__conversation__message__context_triggered_content_review": "Контекст очищено для обходу модерації"
+    "sidebar__conversation__message__context_triggered_content_review": "Контекст очищено для обходу модерації",
+    "sidebar__nav__concat_us__checkbox_title": "Дозволити збір інформації про помилки"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

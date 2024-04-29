@@ -56,7 +56,8 @@
     "cancel_anytime": "Anuluj w dowolnym momencie",
     "team_plan": "Plan zespołowy",
     "manage_my_plan": "Zarządzaj moim planem",
-    "watch_video": "Obejrzyj film"
+    "watch_video": "Obejrzyj film",
+    "input_content": "Treść wejściowa"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Najwyższa wydajność w zadaniach wymagających złożonego rozumowania. Claude 3 to najlepsza oferta od Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI jest obecnie w pełni wykorzystane",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Ze względu na duży ruch, spróbuj ponownie później lub teraz uaktualnij, aby korzystać ze stabilnego dostępu do wszystkich premium modeli AI.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekst wyczyszczony, aby ominąć moderację"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst wyczyszczony, aby ominąć moderację",
+    "sidebar__nav__concat_us__checkbox_title": "Zezwól na zbieranie informacji o błędach"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

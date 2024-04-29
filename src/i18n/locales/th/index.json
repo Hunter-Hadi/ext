@@ -56,7 +56,8 @@
     "cancel_anytime": "ยกเลิกได้ทุกเมื่อ",
     "team_plan": "แผนทีม",
     "manage_my_plan": "จัดการแผนของฉัน",
-    "watch_video": "ดูวิดีโอ"
+    "watch_video": "ดูวิดีโอ",
+    "input_content": "เนื้อหาที่ป้อน"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "ประสิทธิภาพที่เหนือกว่าในงานที่ต้องการความคิดที่ซับซ้อน โมเดล Claude 3 เป็นผลิตภัณฑ์ที่ดีที่สุดของ Anthropic",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI เต็มพื้นที่ใช้งานในขณะนี้",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "เนื่องจากมีการรับส่งข้อมูลสูง โปรดลองอีกครั้งในภายหลัง หรืออัปเกรดเดี๋ยวนี้เพื่อเพลิดเพลินกับการเข้าถึงแบบพรีเมียมของโมเดล AI ทั้งหมด",
-    "sidebar__conversation__message__context_triggered_content_review": "ล้างบริบทเพื่อผ่านการตรวจสอบ"
+    "sidebar__conversation__message__context_triggered_content_review": "ล้างบริบทเพื่อผ่านการตรวจสอบ",
+    "sidebar__nav__concat_us__checkbox_title": "อนุญาตให้สะสมข้อมูลข้อผิดพลาด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

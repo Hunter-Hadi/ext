@@ -56,7 +56,8 @@
     "cancel_anytime": "ಯಾವಾಗಲೂ ರದ್ದು ಮಾಡಿ",
     "team_plan": "ತಂಡ ಯೋಜನೆ",
     "manage_my_plan": "ನನ್ನ ಯೋಜನೆಯನ್ನು ನಿರ್ವಹಿಸಿ",
-    "watch_video": "ವೀಡಿಯೊ ನೋಡಿ"
+    "watch_video": "ವೀಡಿಯೊ ನೋಡಿ",
+    "input_content": "ನಮೂದಿಸಿದ ವಿಷಯವನ್ನು"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "ಜಟಿಲ ತರ್ಕದ ಕೆಲಸಗಳನ್ನು ಅಗತ್ಯವಾದ ಉತ್ತಮ ಪ್ರದರ್ಶನ. Claude 3 ಅಂತರ್ಭೂತಿಯ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ಈಗ ಫ್ರೀಎಯ್‌ಐ ಪೂರ್ಣತೆಯಲ್ಲಿದೆ",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ಉಚ್ಚ ಟ್ರಾಫಿಕ್ ಕಾರಣದಿಂದ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಪ್ರೀಮಿಯಂ AI ಮಾದರಿಗಳಿಗೆ ಸ್ಥಿರ ಪ್ರವೇಶವನ್ನು ಆನಂದಿಸಲು ಈಗ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ.",
-    "sidebar__conversation__message__context_triggered_content_review": "ಸಂದರ್ಭ ಮಾಧ್ಯಮವನ್ನು ಮೀರಿಸಲು ಸರಿಹೊಂದಿಸಲಾಗಿದೆ"
+    "sidebar__conversation__message__context_triggered_content_review": "ಸಂದರ್ಭ ಮಾಧ್ಯಮವನ್ನು ಮೀರಿಸಲು ಸರಿಹೊಂದಿಸಲಾಗಿದೆ",
+    "sidebar__nav__concat_us__checkbox_title": "ತಪ್ಪು ಮಾಹಿತಿ ಸಂಗ್ರಹಣೆಗೆ ಅನುಮತಿ ನೀಡಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

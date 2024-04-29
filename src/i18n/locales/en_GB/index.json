@@ -56,7 +56,8 @@
     "cancel_anytime": "Cancel anytime",
     "team_plan": "Team plan",
     "manage_my_plan": "Manage my plan",
-    "watch_video": "Watch video"
+    "watch_video": "Watch video",
+    "input_content": "Input content"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -755,7 +756,8 @@
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oops! Something unexpected happened. Please try again later.",
     "context_window__chat_history__button__title": "Context menu history",
     "context_window__chat_history__empty__title": "No context menu history available yet",
-    "context_window__chat_history__continue_in_chat__title": "Continue in chat"
+    "context_window__chat_history__continue_in_chat__title": "Continue in chat",
+    "sidebar__nav__concat_us__checkbox_title": "Allow error information collection"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

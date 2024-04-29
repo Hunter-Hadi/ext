@@ -56,7 +56,8 @@
     "cancel_anytime": "कोणतेही वेळेस रद्द करा",
     "team_plan": "टीम योजना",
     "manage_my_plan": "माझी योजना व्यवस्थापित करा",
-    "watch_video": "व्हिडिओ पहा"
+    "watch_video": "व्हिडिओ पहा",
+    "input_content": "इनपुट सामग्री"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "जटिल तर्कांसाठी आवश्यक कार्यांवर उत्कृष्ट प्रदर्शन. Claude 3 हे Anthropic चा सर्वोत्कृष्ट प्रस्ताव आहे.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "फ्रीएआय हे आता क्षमतेने भरले आहे",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रॅफिक कारणे, कृपया नंतर पुन्हा प्रयत्न करा किंवा सर्व प्रीमियम AI मॉडेल्सचे स्थिर प्रवेशासाठी आत्तापर्यंत अपग्रेड करा.",
-    "sidebar__conversation__message__context_triggered_content_review": "संदर्भ संदेशांचे मोडरेशन वगळण्यासाठी साफ केले गेले"
+    "sidebar__conversation__message__context_triggered_content_review": "संदर्भ संदेशांचे मोडरेशन वगळण्यासाठी साफ केले गेले",
+    "sidebar__nav__concat_us__checkbox_title": "त्रुटी माहिती संग्रह अनुमती द्या"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

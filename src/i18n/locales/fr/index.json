@@ -56,7 +56,8 @@
     "cancel_anytime": "Annuler à tout moment",
     "team_plan": "Plan d'équipe",
     "manage_my_plan": "Gérer mon plan",
-    "watch_video": "Regarder la vidéo"
+    "watch_video": "Regarder la vidéo",
+    "input_content": "Contenu de l'entrée"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Des performances supérieures sur les tâches nécessitant un raisonnement complexe. Claude 3 est la meilleure offre d'Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI est actuellement à pleine capacité",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "En raison d'un trafic élevé, veuillez réessayer ultérieurement ou passez dès maintenant à une version premium pour accéder en toute stabilité à tous les modèles d'IA.",
-    "sidebar__conversation__message__context_triggered_content_review": "Contexte effacé pour contourner la modération"
+    "sidebar__conversation__message__context_triggered_content_review": "Contexte effacé pour contourner la modération",
+    "sidebar__nav__concat_us__checkbox_title": "Autoriser la collecte d'informations d'erreur"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -15,6 +15,7 @@ import {
   MAXAI_SIDEBAR_ID,
   MAXAI_SIDEBAR_WRAPPER_ID,
 } from '@/features/common/constants'
+import { getPlatformInfo, isIncognitoContext } from '@/utils/browserUtils'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
@@ -267,6 +268,33 @@ export const clientRunBackgroundFunction = async <
   } else {
     return null
   }
+}
+
+/**
+ * 记录用户当前使用信息
+ */
+export type IClientLogUserUsageInfoType = 'contact_us'
+export const clientLogUserUsageInfo = async (params: {
+  logType: IClientLogUserUsageInfoType
+  inputContent: string
+  disableCollect?: boolean
+}) => {
+  const port = new ContentScriptConnectionV2({
+    runtime: 'client',
+  })
+  const data: Record<string, any> = { ...params }
+  if (!params.disableCollect) {
+    const inIncognitoContext = await isIncognitoContext()
+    const platformInfo = await getPlatformInfo()
+    Object.assign(data, {
+      inIncognitoContext,
+      ...platformInfo,
+    })
+  }
+  return await port.postMessage({
+    event: 'Client_logUserUsageInfo',
+    data,
+  })
 }
 
 export const wait = (ms: number) =>

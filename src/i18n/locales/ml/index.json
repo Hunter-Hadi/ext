@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ജിമിനി-1.5-പ്രോ സങ്കേതം ആക്‌സസ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ഗൂഗിളിന്റെ പുതിയതും അത്യാധുനികവുമായ മോഡൽ ആണ് `Gemini-1.5 Pro`. ഇത് വേഗത്തിൽ നടക്കുന്നു, 1M ടോക്കൺ കൺടെക്സ്റ്റ് വിൻഡോ, മുന്നേറ്റത്തെ സുരക്ഷ, അടിസ്ഥാനമായി ഉള്ള സാധ്യതകൾ എന്നിവ നൽകുന്നു - ടെക്സ്റ്റ്, കോഡ്, ചിത്രം, ശബ്ദം, ഓഡിയോ, വീഡിയോ പ്രോസസിങ്ങിൽ അടുത്തകാലത്ത്.",
     "immersive_chat__chat_history__restore_button__title": "ചാറ്റുകൾ പുനഃസ്ഥാപിക്കുക",
-    "immersive_chat__chat_history__restore_modal__title": "എല്ലാ ചാറ്റുകളും, തിരയൽകൂട്ടങ്ങളും, കലയർച്ചകളും സ്ഥാനിക പതിപ്പിലേക്ക് പുനഃസ്ഥാപിക്കാൻ താൽപ്പര്യപ്പെടുന്നുണ്ടോ? മുന്നോട്ട് പോകുന്നതിനുശേഷം, നടപ്പിലാക്കാൻ കഴിയില്ലെന്ന് അവഗണിക്കുക.",
-    "immersive_chat__chat_history__restore_modal__description": "പുനരുദ്ധരിക്കേണ്ട ചാറ്റ് & തിരയൽ & കലാ സംഭാഷണങ്ങൾ:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "അതെ, പുനഃസ്ഥാപിക്കുക",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "റദ്ദാക്കുക",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 സംഭാഷണം പുനരുദ്ധരിച്ചു",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "പ്രത്യേകിച്ച് ജടിലമായ ചിന്താശകലങ്ങളെ ആവശ്യപ്പെടുന്ന ടാസ്കുകളിൽ ഉന്നത പ്രകടനം. Claude 3 Anthropic-ന്റെ അത്യാധുനികമായ ഓഫറിങ്ങാണ്.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ഇപ്പോൾ പൂർണ്ണമായി ഉപയോഗിക്കാൻ കഴിയുന്നില്ല",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ഉയരമായ ട്രാഫിക്ക് കാരണം, ദയവായി ശേഷം വീണ്ടും ശ്രമിക്കുക അല്ലെങ്കിൽ എല്ലാ പ്രീമിയം AI മോഡലുകളും സ്ഥിരമായ ആക്സസ് ആനന്ദിക്കാൻ ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക.",
-    "sidebar__conversation__message__context_triggered_content_review": "മോഡറേഷൻ വിട്ട് പാരാമീറ്റർ അനാവശ്യമാക്കി"
+    "sidebar__conversation__message__context_triggered_content_review": "മോഡറേഷൻ വിട്ട് പാരാമീറ്റർ അനാവശ്യമാക്കി",
+    "immersive_chat__chat_history__restore_modal__idle__title": "നിങ്ങൾ എല്ലാ ചാറ്റ്, തിരയൽ, കലാ ചരിത്രം മുഴുവൻ മേഖലയിലേക്ക് പുനഃസ്ഥാപിക്കാൻ അനുവദിക്കുന്നതാണോ? ദയവായി ശ്രമിക്കുന്നതിനു ശേഷം, പ്രവർത്തനം പരിഹരിക്കാനായില്ല.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "പുനഃസ്ഥാപിക്കാൻ ചാറ്റ് & തിരയൽ & കലാ സംഭാഷണങ്ങൾ:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "സംഭാഷണങ്ങൾ പുനഃസ്ഥാപിക്കുന്നു, ദയവായി കാത്തിരിക്കുക...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "അറിയിപ്പ്: സംഭാഷണങ്ങൾ നഷ്ടപ്പെടാൻ പ്രക്രിയയിലേക്ക് മുഴുവൻ പേജ് തുറക്കാൻ നിലവിലുള്ളതാക്കുക.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "പുനഃസ്ഥാപിച്ച സംഭാഷണങ്ങൾ: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "പുനഃസ്ഥാപിച്ച സന്ദേശങ്ങൾ: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

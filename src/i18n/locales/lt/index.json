@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Atnaujinkite, kad gautumėte prieigą prie gemini-1.5-pro su vizija",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google naujausias ir pažangiausias modelis. Jis siūlo greitesnį greitį, revoliucinį 1M žetonų konteksto langą, patobulintą saugumą ir pažangias galimybes teksto, kodo, vaizdo, garso ir vaizdo apdorojime.",
     "immersive_chat__chat_history__restore_button__title": "Atkurti pokalbius",
-    "immersive_chat__chat_history__restore_modal__title": "Ar tikrai norite atkurti visą savo pokalbių, paieškos ir meno istoriją vietinėje versijoje? Atkreipkite dėmesį, kad kai pradedate, veiksmo negalima atšaukti.",
-    "immersive_chat__chat_history__restore_modal__description": "Atkurti pokalbiai ir paieškos rezultatai:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Taip, atkurti",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Atšaukti",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Atkurtas 1 pokalbis",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Puikus pasirodymas užduotims, kurios reikalauja sudėtingo mąstymo. Claude 3 yra Anthropic geriausias pasiūlymas.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI šiuo metu užimtas",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dėl didelio srauto, prašome bandyti vėliau arba dabar atnaujinti, kad galėtumėte stabiliai naudotis visais premium AI modeliais.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekstas išvalytas, praleidžiant moderavimą"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekstas išvalytas, praleidžiant moderavimą",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Ar tikrai norite atkurti visą savo pokalbių, paieškos ir meno istoriją į debesies versiją? Atkreipkite dėmesį, kad kai pradedate, veiksmo negalima atšaukti.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Atkuriamos pokalbių, paieškos ir meno konversacijos:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Atkuriamos konversacijos, prašome palaukti...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Pastaba: Norint išvengti pokalbių praradimo, palikite šią puslapio versiją atidarytą atkūrimo proceso metu.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Atkurtos konversacijos: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Atkurti pranešimai: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

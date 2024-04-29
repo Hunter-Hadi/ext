@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Atualize para acessar gemini-1.5-pro com visão",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "O modelo mais novo e avançado do Google. Ele oferece velocidade mais rápida, uma janela de contexto de 1 milhão de tokens inovadora, segurança aprimorada e recursos avançados em processamento de texto, código, imagem, áudio e vídeo.",
     "immersive_chat__chat_history__restore_button__title": "Restaurar conversas",
-    "immersive_chat__chat_history__restore_modal__title": "Tem certeza de que deseja restaurar todo o seu histórico de bate-papo, pesquisa e arte para a versão local? Observe que, uma vez que você prossiga, a ação não poderá ser desfeita.",
-    "immersive_chat__chat_history__restore_modal__description": "Conversas de Chat & Busca & Arte a serem restauradas:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sim, restaurar",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Cancelar",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversa restaurada",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Desempenho superior em tarefas que exigem raciocínio complexo. Claude 3 é a melhor opção da Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "O FreeAI está com capacidade máxima no momento",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Devido ao alto tráfego, tente novamente mais tarde ou atualize agora para desfrutar de acesso estável a todos os modelos premium de IA.",
-    "sidebar__conversation__message__context_triggered_content_review": "Contexto limpo para ignorar moderação"
+    "sidebar__conversation__message__context_triggered_content_review": "Contexto limpo para ignorar moderação",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Tem certeza de que deseja restaurar todo o seu histórico de bate-papo, pesquisa e arte para a versão em nuvem? Observe que, uma vez que você prossiga, a ação não poderá ser desfeita.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Conversas de bate-papo, pesquisa e arte a serem restauradas:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Restaurando conversas, aguarde...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Observação: Mantenha a página atual aberta durante o processo de restauração para evitar perder suas conversas.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Conversas restauradas: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Mensagens restauradas: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

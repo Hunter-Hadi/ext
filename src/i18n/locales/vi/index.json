@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nâng cấp để truy cập gemini-1.5-pro với tầm nhìn",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mẫu mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu từ đột phá, tính an toàn nâng cao và khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video.",
     "immersive_chat__chat_history__restore_button__title": "Khôi phục cuộc trò chuyện",
-    "immersive_chat__chat_history__restore_modal__title": "Bạn có chắc chắn muốn khôi phục toàn bộ Lịch sử Trò chuyện, Tìm kiếm và Nghệ thuật của bạn vào phiên bản cục bộ không? Vui lòng lưu ý rằng sau khi tiến hành, hành động này không thể hoàn tác.",
-    "immersive_chat__chat_history__restore_modal__description": "Các cuộc trò chuyện & Tìm kiếm & Cuộc trò chuyện nghệ thuật để khôi phục:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Có, khôi phục",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Hủy",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Đã khôi phục 1 cuộc trò chuyện",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Hiệu suất vượt trội trong các nhiệm vụ đòi hỏi tư duy phức tạp. Claude 3 là sản phẩm hàng đầu của Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI hiện đang quá tải",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Do lưu lượng cao, vui lòng thử lại sau hoặc nâng cấp ngay để truy cập ổn định vào tất cả các mô hình AI cao cấp.",
-    "sidebar__conversation__message__context_triggered_content_review": "Xóa bỏ ngữ cảnh để bỏ qua kiểm duyệt"
+    "sidebar__conversation__message__context_triggered_content_review": "Xóa bỏ ngữ cảnh để bỏ qua kiểm duyệt",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Bạn có chắc chắn muốn khôi phục toàn bộ Lịch sử Trò chuyện, Tìm kiếm và Nghệ thuật của bạn lên phiên bản đám mây không? Vui lòng lưu ý rằng sau khi tiến hành, hành động này không thể hoàn tác.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Các cuộc trò chuyện Trò chuyện & Tìm kiếm & Nghệ thuật sẽ được khôi phục:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Đang khôi phục cuộc trò chuyện, vui lòng đợi...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Ghi chú: Giữ trang hiện tại mở trong suốt quá trình khôi phục để tránh mất cuộc trò chuyện của bạn.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Cuộc trò chuyện đã được khôi phục: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Tin nhắn đã được khôi phục: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

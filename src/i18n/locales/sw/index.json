@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Sasisha ili kupata gemini-1.5-pro na uwezo wa kuona",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mfano mpya na wa kisasa zaidi wa Google. Inatoa kasi ya haraka, dirisha la muktadha lenye alama za 1M, usalama ulioboreshwa, na uwezo wa juu katika usindikaji wa maandishi, nambari, picha, sauti, na video.",
     "immersive_chat__chat_history__restore_button__title": "Rejesha mazungumzo",
-    "immersive_chat__chat_history__restore_modal__title": "Je, una uhakika unataka kurejesha historia yako yote ya Mazungumzo, Tafuta, na Sanaa kwenye toleo la ndani? Tafadhali kumbuka kuwa mara tu utakapoendelea, hatua haiwezi kufutwa.",
-    "immersive_chat__chat_history__restore_modal__description": "Mazungumzo ya Gumzo & Tafuta & Sanaa yatakayorejeshwa:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ndiyo, rejesha",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ghairi",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Mazungumzo 1 yamerejeshwa",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Utendaji bora kwenye majukumu yanayohitaji mawazo magumu. Claude 3 ni huduma bora kabisa ya Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI imefikia uwezo wake sasa",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kutokana na trafiki kubwa, tafadhali jaribu tena baadaye, au nenda sasa kuboresha ili uweze kupata ufikiaji thabiti wa mifano yote ya AI ya hali ya juu.",
-    "sidebar__conversation__message__context_triggered_content_review": "Muktadha umefutwa ili kuepuka ukaguzi"
+    "sidebar__conversation__message__context_triggered_content_review": "Muktadha umefutwa ili kuepuka ukaguzi",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Je, una uhakika unataka kurejesha historia yako yote ya Mazungumzo, Utafutaji, na Sanaa kwenye toleo la wingu? Tafadhali kumbuka kuwa mara tu utakapoendelea, hatua hiyo haiwezi kufutwa.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Mazungumzo ya Mazungumzo & Utafutaji & Sanaa yatakayorejeshwa:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Inarejesha mazungumzo, tafadhali subiri...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Kumbuka: Weka ukurasa wa sasa wazi wakati wa mchakato wa urejeshaji ili usipoteze mazungumzo yako.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Mazungumzo yaliyorejeshwa: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Ujumbe uliorejeshwa: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

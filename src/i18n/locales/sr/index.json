@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nadogradite da biste pristupili gemini-1.5-pro sa vizijom",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnoviji i najnapredniji model kompanije Google. Pruža bržu brzinu, proboj prozora konteksta od 1M tokena, unapređenu sigurnost i napredne mogućnosti u obradi teksta, koda, slike, zvuka i video zapisa.",
     "immersive_chat__chat_history__restore_button__title": "Obnovi četove",
-    "immersive_chat__chat_history__restore_modal__title": "Da li ste sigurni da želite da obnovite sve svoje četove, pretrage i istoriju umetnosti na lokalnoj verziji? Imajte na umu da jednom kada nastavite, ova radnja ne može biti poništena.",
-    "immersive_chat__chat_history__restore_modal__description": "Ćaskanje i pretraga - obnovljene konverzacije:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Da, obnovi",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Otkaži",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovljena 1 konverzacija",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Superiorna izvedba na zadacima koji zahtevaju kompleksno zaključivanje. Claude 3 je najbolja ponuda kompanije Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI je trenutno zauzet",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zbog velikog broja korisnika, molimo pokušajte ponovo kasnije ili nadogradite sada kako biste imali stabilan pristup svim premium AI modelima.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekst očišćen da bi se zaobišla moderacija"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst očišćen da bi se zaobišla moderacija",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Da li ste sigurni da želite da vratite celokupnu istoriju Četa, Pretrage i Umetnosti u verziju na oblaku? Imajte na umu da jednom kada nastavite, ova radnja ne može biti poništena.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Čet & Pretraga & Umetnost razgovori koji će biti vraćeni:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Vraćanje razgovora, molimo sačekajte...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Napomena: Tokom procesa vraćanja, držite trenutnu stranicu otvorenom kako biste izbegli gubitak razgovora.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Vraćeni razgovori: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Poruke vraćene: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

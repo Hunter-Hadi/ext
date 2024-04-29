@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade, um auf gemini-1.5-pro mit Vision zuzugreifen",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Das neueste und fortschrittlichste Modell von Google. Es bietet eine schnellere Geschwindigkeit, ein bahnbrechendes Kontextfenster von 1 Million Token, verbesserte Sicherheit und erweiterte Fähigkeiten in den Bereichen Text-, Code-, Bild-, Audio- und Videobearbeitung.",
     "immersive_chat__chat_history__restore_button__title": "Chats wiederherstellen",
-    "immersive_chat__chat_history__restore_modal__title": "Möchten Sie wirklich alle Ihre Chat-, Such- und Kunstverlaufsinformationen zur lokalen Version wiederherstellen? Bitte beachten Sie, dass diese Aktion nicht rückgängig gemacht werden kann.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat- und Such- sowie Kunstunterhaltungen, die wiederhergestellt werden sollen:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, wiederherstellen",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Abbrechen",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 Unterhaltung wiederhergestellt",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Überragende Leistung bei Aufgaben, die komplexe Denkfähigkeiten erfordern. Claude 3 ist das Spitzenprodukt von Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ist derzeit ausgelastet",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Aufgrund des hohen Verkehrsaufkommens versuchen Sie es bitte später erneut oder aktualisieren Sie jetzt, um stabilen Zugriff auf alle Premium-KI-Modelle zu erhalten.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontext gelöscht, um die Moderation zu umgehen"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext gelöscht, um die Moderation zu umgehen",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Möchten Sie wirklich Ihre gesamte Chat-, Such- und Kunstverlauf in die Cloud-Version wiederherstellen? Bitte beachten Sie, dass diese Aktion nicht rückgängig gemacht werden kann.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Chat & Suchen & Kunstunterhaltungen, die wiederhergestellt werden sollen:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Unterhaltungen werden wiederhergestellt, bitte warten...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Hinweis: Behalten Sie während des Wiederherstellungsprozesses die aktuelle Seite geöffnet, um den Verlust Ihrer Unterhaltungen zu vermeiden.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Wiederhergestellte Unterhaltungen: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Wiederhergestellte Nachrichten: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

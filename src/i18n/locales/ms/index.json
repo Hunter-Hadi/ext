@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Naik taraf untuk mengakses gemini-1.5-pro dengan visi",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Model terbaru dan paling canggih dari Google. Ia menawarkan kelajuan yang lebih pantas, tetingkap konteks 1 juta token yang terobosan, keselamatan yang ditingkatkan, dan kemampuan canggih dalam pemprosesan teks, kod, imej, audio, dan video.",
     "immersive_chat__chat_history__restore_button__title": "Pulihkan perbualan",
-    "immersive_chat__chat_history__restore_modal__title": "Adakah anda pasti ingin memulihkan semua Perbualan, Carian, dan Sejarah Seni ke versi tempatan? Sila ambil perhatian bahawa tindakan ini tidak dapat dibatalkan setelah anda meneruskan.",
-    "immersive_chat__chat_history__restore_modal__description": "Perbualan Chat & Carian & Seni yang akan dipulihkan:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ya, pulihkan",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Batal",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 perbualan dipulihkan",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Prestasi unggul dalam tugas yang memerlukan pemikiran kompleks. Claude 3 adalah penawaran terbaik dari Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI penuh pada masa ini",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kerana trafik yang tinggi, sila cuba lagi nanti, atau naik taraf sekarang untuk menikmati akses stabil ke semua model AI premium.",
-    "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk mengelakkan penyeliaan"
+    "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk mengelakkan penyeliaan",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Adakah anda pasti ingin mengembalikan semua Riwayat Chat, Carian, dan Seni anda ke versi awan? Sila ambil perhatian bahawa sekali anda meneruskan, tindakan ini tidak dapat dibatalkan.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Perbualan Chat & Carian & Seni yang akan dikembalikan:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Sedang mengembalikan perbualan, sila tunggu...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Nota: Pastikan halaman semasa dibuka semasa proses pemulihan untuk mengelakkan kehilangan perbualan anda.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Perbualan yang dikembalikan: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Mesej yang dikembalikan: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

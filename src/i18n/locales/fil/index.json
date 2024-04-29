@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Mag-upgrade para ma-access ang gemini-1.5-pro na may vision",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Ang pinakabagong at pinakasusi model ng Google. Nag-aalok ito ng mas mabilis na bilis, isang breakthrough 1M token context window, pinabuting kaligtasan, at advanced na kakayahan sa text, code, image, audio, at video processing.",
     "immersive_chat__chat_history__restore_button__title": "Ibalik ang mga chat",
-    "immersive_chat__chat_history__restore_modal__title": "Sigurado ka bang ibabalik mo ang lahat ng iyong Kasaysayan ng Chat, Paghahanap, at Sining sa lokal na bersyon? Paki-tandaan na kapag nagpatuloy ka, hindi na ito maaaring bawiin.",
-    "immersive_chat__chat_history__restore_modal__description": "Mga Usapang Chat & Paghahanap & Sining na maaring ibalik:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Oo, ibalik",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Kanselahin",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 usapan na ibinalik",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Higit na magaling sa mga gawain na nangangailangan ng kumplikadong pag-iisip. Ang Claude 3 ay pinakamahusay na alok ng Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Ang FreeAI ay puno na ngayon",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dahil sa mataas na trapiko, subukan muli mamaya, o mag-upgrade ngayon upang magkaroon ng matatag na access sa lahat ng premium na AI models.",
-    "sidebar__conversation__message__context_triggered_content_review": "Inalis ang konteksto upang maiwasan ang pagsusuri"
+    "sidebar__conversation__message__context_triggered_content_review": "Inalis ang konteksto upang maiwasan ang pagsusuri",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Sigurado ka bang gusto mong ibalik ang lahat ng iyong Kasaysayan ng Chat, Paghahanap, at Sining sa bersyon ng ulap? Paki-tandaan na kapag nagpatuloy ka, hindi na ito maaaring bawiin.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Mga usapan sa Chat & Paghahanap & Sining na ibabalik:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Ibinabalik ang mga usapan, pakihintay...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Note: Panatilihin ang kasalukuyang pahina bukas habang nagpapatuloy ang proseso ng pagbabalik upang maiwasan ang pagkawala ng iyong mga usapan.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Mga usapan na ibinalik: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Mga mensahe na ibinalik: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

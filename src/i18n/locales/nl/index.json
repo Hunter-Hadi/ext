@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade om toegang te krijgen tot gemini-1.5-pro met visie",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Het nieuwste en meest geavanceerde model van Google. Het biedt snellere snelheid, een baanbrekend contextvenster van 1M tokens, verbeterde veiligheid en geavanceerde mogelijkheden op het gebied van tekst, code, afbeelding, audio en videoverwerking.",
     "immersive_chat__chat_history__restore_button__title": "Chats herstellen",
-    "immersive_chat__chat_history__restore_modal__title": "Weet je zeker dat je al je Chat-, Zoek- en Kunstgeschiedenis wilt herstellen naar de lokale versie? Houd er rekening mee dat deze actie niet ongedaan kan worden gemaakt.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat- en zoekgeschiedenis om te herstellen:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, herstellen",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuleren",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 gesprek hersteld",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Superieure prestaties bij taken die complex redeneren vereisen. Claude 3 is het beste aanbod van Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI is momenteel vol",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vanwege het hoge verkeer, probeer het later opnieuw of upgrade nu om stabiele toegang tot alle premium AI-modellen te krijgen.",
-    "sidebar__conversation__message__context_triggered_content_review": "Context gewist om moderatie te omzeilen"
+    "sidebar__conversation__message__context_triggered_content_review": "Context gewist om moderatie te omzeilen",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Weet je zeker dat je al je Chat-, Zoek- en Kunstgeschiedenis wilt herstellen naar de cloudversie? Houd er rekening mee dat deze actie niet ongedaan kan worden gemaakt.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Te herstellen Chat & Zoek & Kunstgesprekken:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Gesprekken worden hersteld, even geduld a.u.b...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Opmerking: Houd de huidige pagina open tijdens het herstelproces om te voorkomen dat je gesprekken verliest.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Herstelde gesprekken: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Berichten hersteld: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

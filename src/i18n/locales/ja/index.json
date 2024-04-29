@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ジェミニ-1.5-proを利用するためにアップグレード",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google の最新かつ最も高度なモデルです。より高速な処理、画期的な 1M トークンのコンテキストウィンドウ、強化された安全性、およびテキスト、コード、画像、音声、ビデオ処理における高度な機能を提供します。",
     "immersive_chat__chat_history__restore_button__title": "チャットを復元",
-    "immersive_chat__chat_history__restore_modal__title": "すべてのチャット、検索、アートの履歴をローカルバージョンに復元しますか？続行すると、この操作は元に戻せません。",
-    "immersive_chat__chat_history__restore_modal__description": "復元されるチャット＆検索＆アートの会話：",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "はい、復元",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "キャンセル",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1つの会話が復元されました",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "複雑な推論を必要とするタスクにおいて優れたパフォーマンスを発揮します。Claude 3はAnthropicの最高クラスの提供です。",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAIは現在キャパシティに達しています",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "高いトラフィックのため、後でもう一度お試しください。または、すべてのプレミアムAIモデルに安定したアクセスをお楽しみいただくために今すぐアップグレードしてください。",
-    "sidebar__conversation__message__context_triggered_content_review": "モデレーションをバイパスするためにコンテキストがクリアされました"
+    "sidebar__conversation__message__context_triggered_content_review": "モデレーションをバイパスするためにコンテキストがクリアされました",
+    "immersive_chat__chat_history__restore_modal__idle__title": "クラウドバージョンにチャット、検索、アートのすべての履歴を復元してもよろしいですか？続行すると、この操作は元に戻せません。",
+    "immersive_chat__chat_history__restore_modal__idle__description": "復元されるチャット＆検索＆アートの会話：",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "会話を復元中です。お待ちください...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "注意：会話が失われないように、復元プロセス中は現在のページを開いたままにしてください。",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "復元された会話：[{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "復元されたメッセージ：[{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Αναβάθμιση για πρόσβαση στο gemini-1.5-pro με όραση",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Το νεότερο και πιο προηγμένο μοντέλο της Google. Προσφέρει γρηγορότερη ταχύτητα, ένα επαναστατικό παράθυρο περιβάλλοντος 1 εκατομμυρίου λέξεων, βελτιωμένη ασφάλεια και προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο.",
     "immersive_chat__chat_history__restore_button__title": "Επαναφορά συνομιλιών",
-    "immersive_chat__chat_history__restore_modal__title": "Είστε βέβαιος ότι θέλετε να επαναφέρετε όλο το ιστορικό συνομιλιών, αναζήτησης και τέχνης στην τοπική έκδοση; Σημειώστε ότι μόλις προχωρήσετε, η ενέργεια δεν μπορεί να αναιρεθεί.",
-    "immersive_chat__chat_history__restore_modal__description": "Συνομιλίες & Αναζήτηση & Συζητήσεις τέχνης προς αποκατάσταση:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ναι, επαναφορά",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ακύρωση",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 συνομιλία αποκαταστάθηκε",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Ανώτερη απόδοση σε εργασίες που απαιτούν πολύπλοκη σκέψη. Ο Claude 3 είναι η κορυφαία προσφορά της Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Το FreeAI είναι σε πλήρη χωρητικότητα αυτή τη στιγμή",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Λόγω υψηλής κίνησης, παρακαλούμε δοκιμάστε ξανά αργότερα ή αναβαθμίστε τώρα για να απολαύσετε σταθερή πρόσβαση σε όλα τα προηγμένα μοντέλα Τεχνητής Νοημοσύνης.",
-    "sidebar__conversation__message__context_triggered_content_review": "Ο περιβάλλον εκκαθάρισης για παράκαμψη της μετριότητας"
+    "sidebar__conversation__message__context_triggered_content_review": "Ο περιβάλλον εκκαθάρισης για παράκαμψη της μετριότητας",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Είστε σίγουροι ότι θέλετε να αποκαταστήσετε όλο το Ιστορικό Συνομιλίας, Αναζήτησης και Τέχνης στην εκδοχή του cloud; Παρακαλούμε σημειώστε ότι μόλις προχωρήσετε, η ενέργεια δεν μπορεί να αναιρεθεί.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Συνομιλίες & Αναζητήσεις & Τέχνη που θα αποκατασταθούν:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Γίνεται αποκατάσταση συνομιλιών, παρακαλώ περιμένετε...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Σημείωση: Διατηρήστε την τρέχουσα σελίδα ανοιχτή κατά τη διάρκεια της διαδικασίας αποκατάστασης για να αποφύγετε την απώλεια των συνομιλιών σας.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Αποκαταστάθηκαν συνομιλίες: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Αποκαταστάθηκαν μηνύματα: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

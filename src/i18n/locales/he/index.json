@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "שדרג כדי לקבל גימיני-1.5-פרו עם ראייה",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט של 1 מיליון טוקנים, בטיחות משופרת ויכולות מתקדמות בעיבוד טקסט, קוד, תמונה, שמע ווידאו.",
     "immersive_chat__chat_history__restore_button__title": "שחזר צ'אטים",
-    "immersive_chat__chat_history__restore_modal__title": "האם אתה בטוח שברצונך לשחזר את כל הצ'אטים, החיפושים וההיסטוריה של האמנות לגרסה המקומית? שים לב שפעם שתמשיך, הפעולה לא תוכל להיבטל.",
-    "immersive_chat__chat_history__restore_modal__description": "שיחות צ'אט, חיפוש ושיחות אמנות לשחזור:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "כן, שחזר",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ביטול",
     "immersive_chat__chat_history__restore_modal__toast1__title": "שיחה אחת שוחזרה",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "ביצועים יוצאי דופן במשימות הדורשות שיקול מורכב. Claude 3 הוא ההצעה המובילה של Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI כרגע במלוא קיבולתו",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "בשל תעבורה גבוהה, אנא נסה שוב מאוחר יותר או שדרג כעת כדי ליהנות מגישה יציבה לכל הדגמים המתקדמים של AI.",
-    "sidebar__conversation__message__context_triggered_content_review": "הקשר נוקה לעבור את המודרציה"
+    "sidebar__conversation__message__context_triggered_content_review": "הקשר נוקה לעבור את המודרציה",
+    "immersive_chat__chat_history__restore_modal__idle__title": "האם אתה בטוח שברצונך לשחזר את כל השיחות, החיפושים והאמנות שלך לגרסה הענן? שים לב שפעם שתמשיך, הפעולה לא תוכל להיבטל.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "שיחות & חיפושים & אמנות שיושבו לשחזור:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "משחזר שיחות, אנא המתן...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "הערה: שמור על הדף הנוכחי פתוח במהלך תהליך השחזור כדי למנוע אובדן שיחות.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "שיחות ששוחזרו: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "הודעות ששוחזרו: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

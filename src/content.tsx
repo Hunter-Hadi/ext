@@ -7,6 +7,10 @@ import { createRoot } from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 import Browser from 'webextension-polyfill'
 
+import {
+  getMaxAIExtensionId,
+  MaxAIExtensionIdManager,
+} from '@/background/utils/extensionId'
 import AppThemeProvider from '@/components/AppTheme'
 import { APP_VERSION } from '@/constants'
 import {
@@ -34,55 +38,7 @@ ClassNameGenerator.configure(
 
 const supportWebComponent = isSupportWebComponent()
 
-if (location.host === 'chat.openai.com') {
-  const script = document.createElement('script')
-  script.type = 'module'
-  script.src = Browser.runtime.getURL('/pages/chatgpt/fileUploadServer.js')
-  ;(document.head || document.documentElement).append(script)
-  import('./pages/OpenAIDaemonProcess').then((module) => {
-    const { default: OpenAIDaemonProcess } = module
-    const div = document.createElement('div')
-    div.id = MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID
-    document.body.appendChild(div)
-    const root = createRoot(div)
-    const style = document.createElement('style')
-    style.innerHTML = `#__next.ezmail-ai-running > div > div {
-  padding-top: 40px;
-}
-.ezmail-ai-setting-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: spin 2s linear infinite;
-}
-#__next.use-chat-gpt-ai-running > div > div {
-  padding-top: 40px;
-}
-.use-chat-gpt-ai-setting-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: spin 2s linear infinite;
-}
-@keyframes spin {
-  100% {
-    transform: rotate(1turn);
-  }
-}
-a.chatgpt-ad {
-  display: none;
-}
-`
-    document.head.appendChild(style)
-    root.render(
-      <React.StrictMode>
-        <OpenAIDaemonProcess />
-      </React.StrictMode>,
-    )
-  })
-}
-
-function mainAppRender() {
+const mainAppRender = () => {
   const App = React.lazy(() => import('./pages/App'))
   const ImmersiveChatApp = React.lazy(
     () => import('./pages/chat/ImmersiveChatApp'),
@@ -170,4 +126,65 @@ function mainAppRender() {
     </React.StrictMode>,
   )
 }
-mainAppRender()
+const ChatGPTWebAppRender = () => {
+  if (location.host === 'chat.openai.com') {
+    const script = document.createElement('script')
+    script.type = 'module'
+    script.src = Browser.runtime.getURL('/pages/chatgpt/fileUploadServer.js')
+    ;(document.head || document.documentElement).append(script)
+    import('./pages/OpenAIDaemonProcess').then((module) => {
+      const { default: OpenAIDaemonProcess } = module
+      const div = document.createElement('div')
+      div.id = MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID
+      document.body.appendChild(div)
+      const root = createRoot(div)
+      const style = document.createElement('style')
+      style.innerHTML = `#__next.ezmail-ai-running > div > div {
+  padding-top: 40px;
+}
+.ezmail-ai-setting-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 2s linear infinite;
+}
+#__next.use-chat-gpt-ai-running > div > div {
+  padding-top: 40px;
+}
+.use-chat-gpt-ai-setting-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+a.chatgpt-ad {
+  display: none;
+}
+`
+      document.head.appendChild(style)
+      root.render(
+        <React.StrictMode>
+          <OpenAIDaemonProcess />
+        </React.StrictMode>,
+      )
+    })
+  }
+}
+const initClientExtensionId = async () => {
+  const extensionId = await getMaxAIExtensionId()
+  MaxAIExtensionIdManager.setExtensionId(extensionId)
+  return extensionId
+}
+
+const start = async () => {
+  await initClientExtensionId()
+  mainAppRender()
+  ChatGPTWebAppRender()
+}
+
+start().then().catch()

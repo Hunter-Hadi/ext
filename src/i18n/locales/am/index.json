@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "የGoogle የቅርብ እና የተስፋ ሞዴሎችን ያግኙ፣ በቀጥታ 1M ቶክን የሚያስፈልገውን ምልክትንና የተስፋ ቁልፍን የሚያስፈልገውን መስራት እንዲሆን ይጠቀሙ።",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "የገሚኒ-1.5-ፕሮፕ እንዴት ይሁኑ",
     "immersive_chat__chat_history__restore_button__title": "የቀጥታ መረጃዎችን መስጠት",
-    "immersive_chat__chat_history__restore_modal__title": "እርስዎ በቀጥታ የተመረጡ ኮሎናችንን, ፍለጋሪዎችንና የምስጢር ታሪክዎችን ያስገቡትን እዚህ ለማስገባት ይፈልጋሉ? ስለዚህ ለመቀጠል ከፈለጉት በኃላ አስተውሉልን።",
-    "immersive_chat__chat_history__restore_modal__description": "የቀረበ የአስተዳደር የጋራ, የፍለጋ እና የምርጫ የድርጅት ተመራማሪዎች:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "አዎ, መስጠት",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ይቅር",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 የነጻ የቀረበ የአስተዳደር",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "የተሻለ እንቅስቃሴ ከማጥፋት የሚችል አስተዳደር በማስተማር የአንትሪፒክ የብልጥነት ምልክት ነው። Claude 3 አንትሪፒክ የብልጥነት ምልክት ነው።",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI አሁን ማጥፋት ያለው ነው",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "በማይገባሽ የማይጠቅምሽ AI ሞዴሎች ላይ ማስታወሻዎችን ይቀላቀሉ። ወደ የሚገባሽ የማይጠቅምሽ AI ሞዴሎች ሂደት ይደርስ ይመልከቱ።",
-    "sidebar__conversation__message__context_triggered_content_review": "የተጠቀሰው መልእክት በማስታወሻ የሚገባውን ይጠቀሙ"
+    "sidebar__conversation__message__context_triggered_content_review": "የተጠቀሰው መልእክት በማስታወሻ የሚገባውን ይጠቀሙ",
+    "immersive_chat__chat_history__restore_modal__idle__title": "እባክዎ ለመድረስ ለሁሉም የኳስ ፈጠራዎችንና የፍለጋ ፈጠራዎችን የእኛንት ቅሬታ ለማድረስ እንዴት ነው?",
+    "immersive_chat__chat_history__restore_modal__idle__description": "የኳስ ፈጠራዎችንና የፍለጋ ፈጠራዎችን ለመድረስ:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "ፈጥሩን ለመድረስ, እባክዎ ተጠቅልሎ ይጠቀሙ...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "ማስታወቂያ: ከፈጠር በሚጠቀሙ የኳስ ፈጠራዎችን ለመድረስ የተጠቀሙትን የእኛንት የኳስ ፈጠራዎችን ማስታወቂያ ይጠቀሙ።",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "የኳስ ፈጠራዎች ተጠቃሚ: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "የመልዕክቶች ተጠቃሚ: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

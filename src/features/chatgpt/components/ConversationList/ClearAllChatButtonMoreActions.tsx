@@ -27,7 +27,6 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
   const { t } = useTranslation(['common', 'client'])
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [isSyncing, setIsSyncing] = useState(false)
   const [localConversationIds, setLocalConversationIds] = useState<string[]>([])
   const [dbConversationIds, setDbConversationIds] = useState<string[]>([])
   const totalConversationIds = useMemo<string[]>(() => {
@@ -38,7 +37,10 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
     setLocalConversationIds(
       // 过滤出已删除且消息数量大于0的会话
       userAllConversations
-        .filter((conversation) => conversation.messages.length > 0)
+        .filter(
+          (conversation) =>
+            conversation.isDelete && conversation.messages.length > 0,
+        )
         .map((conversation) => conversation.id),
     )
     setOpen(true)
@@ -50,13 +52,14 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
         status: string
         data: IChatConversation[]
       }>(`/conversation/get_conversations_basic`, {
-        page_size: 100,
+        page_size: 10,
       })
         .then((result) => {
           if (result.data?.status === 'OK') {
             setDbConversationIds(
               result.data.data.map((conversation) => conversation.id),
             )
+            debugger
           }
         })
         .catch()
@@ -65,6 +68,9 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
         })
     }
   }, [open])
+  useEffect(() => {
+    console.log(`conversationSyncState`, conversationSyncState)
+  }, [conversationSyncState])
   return (
     <>
       <DropdownIconButton
@@ -125,16 +131,19 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
             p: 2,
           }}
         >
-          <Stack spacing={2}>
-            <Typography
-              fontSize={'20px'}
-              fontWeight={700}
-              lineHeight={'24px'}
-              color={'text.primary'}
-            >
-              {t('client:immersive_chat__chat_history__restore_modal__title')}
-            </Typography>
-            {conversationSyncGlobalState.syncStatus === 'idle' && (
+          {conversationSyncGlobalState.syncConversationStatus === 'idle' && (
+            <Stack spacing={2}>
+              <Typography
+                fontSize={'20px'}
+                fontWeight={700}
+                lineHeight={'24px'}
+                color={'text.primary'}
+                whiteSpace={`pre-wrap`}
+              >
+                {t(
+                  'client:immersive_chat__chat_history__restore_modal__idle__title',
+                )}
+              </Typography>
               <AppLoadingLayout loading={loading}>
                 <Typography
                   fontSize={'16px'}
@@ -143,33 +152,80 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
                   color={'text.primary'}
                 >
                   {`${t(
-                    'client:immersive_chat__chat_history__restore_modal__description',
+                    'client:immersive_chat__chat_history__restore_modal__idle__description',
                   )} ${totalConversationIds.length}`}
                 </Typography>
               </AppLoadingLayout>
-            )}
-            {conversationSyncGlobalState.syncStatus !== 'idle' && (
-              <Stack direction={'row'} alignItems={'center'}>
-                {`[${conversationSyncGlobalState.syncStep}/${conversationSyncGlobalState.syncTotalConversationCount}] conversation messages [${conversationSyncState.autoSyncSuccessCount}/${conversationSyncState.autoSyncTotalCount}] [${conversationSyncState.autoSyncStatus}] Syncing, please wait...`}
-              </Stack>
-            )}
+            </Stack>
+          )}
+          {conversationSyncGlobalState.syncConversationStatus ===
+            'uploading' && (
+            <Stack spacing={2}>
+              <Typography
+                fontSize={'20px'}
+                fontWeight={700}
+                lineHeight={'24px'}
+                color={'text.primary'}
+                whiteSpace={`pre-wrap`}
+              >
+                {t(
+                  'client:immersive_chat__chat_history__restore_modal__uploading__title',
+                )}
+              </Typography>
+              <Typography
+                fontSize={'16px'}
+                fontWeight={500}
+                lineHeight={'24px'}
+                color={'text.primary'}
+              >
+                {t(
+                  'client:immersive_chat__chat_history__restore_modal__uploading__description1',
+                )}
+              </Typography>
+              <Typography
+                fontSize={'16px'}
+                fontWeight={500}
+                lineHeight={'24px'}
+                color={'text.primary'}
+              >
+                {t(
+                  'client:immersive_chat__chat_history__restore_modal__uploading__description2',
+                  {
+                    STEP: conversationSyncGlobalState.syncConversationStep,
+                    TOTAL:
+                      conversationSyncGlobalState.syncTotalConversationCount,
+                  },
+                )}
+              </Typography>
+              <Typography
+                fontSize={'16px'}
+                fontWeight={500}
+                lineHeight={'24px'}
+                color={'text.primary'}
+              >
+                {t(
+                  'client:immersive_chat__chat_history__restore_modal__uploading__description3',
+                  {
+                    SUCCESS: conversationSyncState.syncStep,
+                    TOTAL: conversationSyncState.syncTotalCount,
+                  },
+                )}
+              </Typography>
+            </Stack>
+          )}
+          <Stack width={'100%'} sx={{ mt: 2 }}>
             <Stack direction={'row'} spacing={1} justifyContent={'end'}>
               <LoadingButton
                 disabled={totalConversationIds.length === 0}
-                loading={conversationSyncState.autoSyncStatus === 'uploading'}
+                loading={conversationSyncState.syncStatus === 'uploading'}
                 variant={'outlined'}
                 onClick={async () => {
                   try {
-                    setIsSyncing(true)
                     const result = await syncConversationsByIds(
                       totalConversationIds,
                     )
-                    debugger
                   } catch (e) {
                     console.error(e)
-                  } finally {
-                    setIsSyncing(false)
-                    setOpen(false)
                   }
                   return
                   // let successCount = 0
@@ -217,6 +273,7 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
                 )}
               </LoadingButton>
               <Button
+                disabled={conversationSyncState.syncStatus === 'uploading'}
                 variant={'contained'}
                 onClick={() => {
                   setOpen(false)

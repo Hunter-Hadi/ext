@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Opgrader for at få adgang til gemini-1.5-pro med vision",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyeste og mest avancerede model. Den tilbyder hurtigere hastighed, et gennembrud med 1M token kontekstvindue, forbedret sikkerhed og avancerede funktioner inden for tekst, kode, billede, lyd og video behandling.",
     "immersive_chat__chat_history__restore_button__title": "Gendan chats",
-    "immersive_chat__chat_history__restore_modal__title": "Er du sikker på, at du vil gendanne al din Chat, Søgning og Kunst historik til den lokale version? Bemærk venligst, at handlingen ikke kan fortrydes, når du har fortsat.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat & Søg & Kunst samtaler der skal genoprettes:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, gendan",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuller",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 samtale genoprettet",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Overlegen præstation på opgaver, der kræver kompleks tænkning. Claude 3 er Anthropics bedste tilbud.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI er i øjeblikket fuldt booket",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund af høj trafik, prøv venligst igen senere, eller opgrader nu for at få stabil adgang til alle premium AI-modeller.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for at omgå moderation"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for at omgå moderation",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Er du sikker på, at du vil gendanne al din chat-, søge- og kunsthistorik til cloud-versionen? Bemærk venligst, at handlingen ikke kan fortrydes.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Chat & Søg & Kunst samtaler der skal gendannes:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Gendanner samtaler, vent venligst...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Bemærk: Hold den nuværende side åben under gendannelsesprocessen for at undgå at miste dine samtaler.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Gendannede samtaler: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Beskeder gendannet: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

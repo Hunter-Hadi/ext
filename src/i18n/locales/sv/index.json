@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Uppgradera för att få tillgång till gemini-1.5-pro med vision",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyaste och mest avancerade modell. Den erbjuder snabbare hastighet, ett genombrott med 1M tokens kontextfönster, förstärkt säkerhet och avancerade funktioner inom text-, kod-, bild-, ljud- och videobehandling.",
     "immersive_chat__chat_history__restore_button__title": "Återställ chattar",
-    "immersive_chat__chat_history__restore_modal__title": "Är du säker på att du vill återställa all din Chatt-, Sök- och Konsthistorik till den lokala versionen? Observera att åtgärden inte kan ångras när du har fortsatt.",
-    "immersive_chat__chat_history__restore_modal__description": "Chatt & Sök & Konstkonversationer att återställa:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, återställ",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Avbryt",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 konversation återställd",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Överlägsen prestanda på uppgifter som kräver komplex resonemang. Claude 3 är Anthropics bästa erbjudande.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI är fullbelastat just nu",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund av hög trafik, försök igen senare eller uppgradera nu för att få stabil åtkomst till alla premium AI-modeller.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontext rensad för att passera moderering"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext rensad för att passera moderering",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Är du säker på att du vill återställa all din chatt-, sök- och konsthistorik till molnversionen? Observera att åtgärden inte kan ångras när du har fortsatt.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Chatt- & Sök- & Konstkonversationer som ska återställas:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Återställer konversationer, var god vänta...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Observera: Håll den aktuella sidan öppen under återställningsprocessen för att undvika att förlora dina konversationer.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Konversationer återställda: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Meddelanden återställda: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

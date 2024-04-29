@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ترقية للوصول إلى gemini-1.5-pro مع الرؤية",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "أحدث وأكثر النماذج تقدمًا من Google. يوفر سرعة أسرع ، نافذة سياق بطاقة 1 مليون مترابعة ، سلامة محسنة ، وقدرات متقدمة في معالجة النص والشفرة والصور والصوت والفيديو.",
     "immersive_chat__chat_history__restore_button__title": "استعادة المحادثات",
-    "immersive_chat__chat_history__restore_modal__title": "هل أنت متأكد أنك تريد استعادة جميع سجلات المحادثات والبحث والفن إلى النسخة المحلية؟ يرجى ملاحظة أنه بمجرد المتابعة، لا يمكن التراجع عن الإجراء.",
-    "immersive_chat__chat_history__restore_modal__description": "سيتم استعادة محادثات الدردشة والبحث والفن:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "نعم، استعادة",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "إلغاء",
     "immersive_chat__chat_history__restore_modal__toast1__title": "تم استعادة محادثة واحدة",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "أداء متفوق في المهام التي تتطلب تفكيرًا معقدًا. كلاود 3 هو أفضل ما تقدمه Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI مشغول حاليًا",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "نظرًا لارتفاع حركة المرور، يُرجى المحاولة مرة أخرى في وقت لاحق، أو قم بالترقية الآن للاستمتاع بوصول ثابت إلى جميع نماذج الذكاء الاصطناعي المتميزة.",
-    "sidebar__conversation__message__context_triggered_content_review": "تم مسح السياق لتجاوز المراجعة"
+    "sidebar__conversation__message__context_triggered_content_review": "تم مسح السياق لتجاوز المراجعة",
+    "immersive_chat__chat_history__restore_modal__idle__title": "هل أنت متأكد أنك تريد استعادة كل سجل الدردشة والبحث والفن إلى النسخة السحابية؟ يرجى ملاحظة أنه بمجرد المتابعة، لا يمكن التراجع عن الإجراء.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "سيتم استعادة محادثات الدردشة والبحث والفن:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "جارٍ استعادة المحادثات، يرجى الانتظار...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "ملاحظة: قم بإبقاء الصفحة الحالية مفتوحة أثناء عملية الاستعادة لتجنب فقدان محادثاتك.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "المحادثات المستعادة: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "الرسائل المستعادة: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

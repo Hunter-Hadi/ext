@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Actualitza per accedir a gemini-1.5-pro amb visió",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "El model més nou i avançat de Google. Ofereix una velocitat més ràpida, una finestra de context de 1M de tokens, seguretat millorada i capacitats avançades en el processament de text, codi, imatge, àudio i vídeo.",
     "immersive_chat__chat_history__restore_button__title": "Restaura xats",
-    "immersive_chat__chat_history__restore_modal__title": "Esteu segur que voleu restaurar tot el vostre historial de Xat, Cerca i Art a la versió local? Tingueu en compte que un cop procediu, l'acció no es pot desfer.",
-    "immersive_chat__chat_history__restore_modal__description": "Xats i converses de cerca, cerca i art per restaurar:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sí, restaura",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Cancel·la",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversa restaurada",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Rendiment superior en tasques que requereixen raonament complex. Claude 3 és la millor opció d'Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI està a plena capacitat ara mateix",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del trànsit elevat, si us plau, torna-ho a provar més tard o actualitza ara per gaudir d'accés estable a tots els models d'IA premium.",
-    "sidebar__conversation__message__context_triggered_content_review": "Context netejat per evitar moderació"
+    "sidebar__conversation__message__context_triggered_content_review": "Context netejat per evitar moderació",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Esteu segur que voleu restaurar tot el vostre historial de xats, cerca i art a la versió en núvol? Tingueu en compte que un cop procediu, l'acció no es pot desfer.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Converses de xat, cerca i art per restaurar:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "S'estan restaurat les converses, espereu...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Nota: Mantingueu oberta la pàgina actual durant el procés de restauració per evitar perdre les vostres converses.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Converses restaurades: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Missatges restaurats: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ज्योति के साथ जेमिनी-1.5-प्रो तक पहुंच के लिए अपग्रेड करें",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल। इसमें तेज़ स्पीड, एक अद्वितीय 1M टोकन संदर्भ विंडो, सुधारित सुरक्षा, और पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए उन्नत क्षमताएं हैं।",
     "immersive_chat__chat_history__restore_button__title": "चैट बहाल करें",
-    "immersive_chat__chat_history__restore_modal__title": "क्या आप सुनिश्चित हैं कि आप सभी चैट, खोज और कला इतिहास को स्थानीय संस्करण में बहाल करना चाहते हैं? कृपया ध्यान दें कि एक बार प्रक्रिया शुरू करने के बाद, कार्रवाई को पूर्ववत नहीं किया जा सकता है।",
-    "immersive_chat__chat_history__restore_modal__description": "बातचीत और खोज और कला संवाद पुनर्स्थापित होने के लिए:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "हाँ, बहाल करें",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करें",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 संवाद पुनर्स्थापित",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "जटिल तर्क की आवश्यकता वाले कार्यों पर उत्कृष्ट प्रदर्शन। Claude 3 Anthropic की सर्वोत्तम पेशकश है।",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "फ्रीएआई अभी क्षमता में है",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रैफिक के कारण, कृपया बाद में पुनः प्रयास करें, या सभी प्रीमियम AI मॉडलों का स्थिर पहुँच का आनंद लेने के लिए अभी अपग्रेड करें।",
-    "sidebar__conversation__message__context_triggered_content_review": "माध्यमिकता को छोड़कर संदर्भ हटा दिया गया"
+    "sidebar__conversation__message__context_triggered_content_review": "माध्यमिकता को छोड़कर संदर्भ हटा दिया गया",
+    "immersive_chat__chat_history__restore_modal__idle__title": "क्या आप सुनिश्चित हैं कि आप अपनी सभी चैट, खोज और कला इतिहास को क्लाउड संस्करण में पुनर्स्थापित करना चाहते हैं? कृपया ध्यान दें कि एक बार आप प्रक्रिया को आगे बढ़ाते हैं, तो कार्रवाई को पूर्ववत नहीं किया जा सकता है।",
+    "immersive_chat__chat_history__restore_modal__idle__description": "बातचीत और खोज और कला वार्तालाप को पुनर्स्थापित करने के लिए:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "वार्तालाप पुनर्स्थापित हो रही है, कृपया प्रतीक्षा करें...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "नोट: अपनी बातचीत को खोने से बचने के लिए पुनर्स्थापना प्रक्रिया के दौरान वर्तमान पृष्ठ को खोले रखें।",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "वार्तालाप पुनर्स्थापित हुई है: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "संदेश पुनर्स्थापित हुए हैं: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

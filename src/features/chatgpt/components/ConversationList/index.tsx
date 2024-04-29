@@ -113,7 +113,7 @@ const ConversationList: FC<IProps> = (props) => {
           {
             name: editingConversationName.current,
           },
-          false,
+          true,
         )
         editingConversationName.current = ''
         const conversations = await fetchPaginationConversations()

@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "비전을 갖춘 gemini-1.5-pro에 액세스하려면 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "구글의 최신 및 가장 고급 모델인 Gemini-1.5입니다. 더 빠른 속도, 획기적인 1백만 토큰 컨텍스트 창, 향상된 안전 기능 및 텍스트, 코드, 이미지, 오디오, 비디오 처리를 위한 고급 기능을 제공합니다.",
     "immersive_chat__chat_history__restore_button__title": "채팅 복원",
-    "immersive_chat__chat_history__restore_modal__title": "로컬 버전으로 모든 채팅, 검색 및 아트 기록을 복원하시겠습니까? 한 번 진행하면 취소할 수 없습니다.",
-    "immersive_chat__chat_history__restore_modal__description": "복원할 채팅 및 검색 및 아트 대화:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "예, 복원",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "취소",
     "immersive_chat__chat_history__restore_modal__toast1__title": "복원된 대화 1개",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "복잡한 추론을 필요로하는 작업에서 우수한 성능을 발휘합니다. Claude 3은 Anthropic의 최고 수준의 제품입니다.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI는 현재 용량이 가득 찼습니다",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "고 트래픽으로 인해 나중에 다시 시도하거나 모든 프리미엄 AI 모델에 안정적인 액세스를 즐기기 위해 지금 업그레이드하세요.",
-    "sidebar__conversation__message__context_triggered_content_review": "컨텍스트가 우회 심사를 위해 지워졌습니다."
+    "sidebar__conversation__message__context_triggered_content_review": "컨텍스트가 우회 심사를 위해 지워졌습니다.",
+    "immersive_chat__chat_history__restore_modal__idle__title": "클라우드 버전으로 모든 채팅, 검색 및 아트 기록을 복원하시겠습니까? 한 번 진행하면 취소할 수 없습니다.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "복원될 채팅 및 검색 및 아트 대화:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "대화를 복원하는 중입니다. 잠시 기다려주세요...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "참고: 대화를 잃지 않으려면 복원 프로세스 동안 현재 페이지를 열어두세요.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "복원된 대화: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "복원된 메시지: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

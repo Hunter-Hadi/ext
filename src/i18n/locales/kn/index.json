@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ವಿಜನ್ ಜೊತೆಗೆ ಜೆಮಿನಿ-1.5-ಪ್ರೊ ಅನುಸರಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ಗೂಗಲ್ ಯಾವುದೇ ಹೊಸತು ಮತ್ತು ಅತ್ಯುತ್ತಮ ಮಾದರಿ. ಇದು ಹೆಚ್ಚು ವೇಗ, ಒಂದು ಪರಿಹಾರಕಾರಿ 1M ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋ, ಮೇಲ್ಮೈಯ ಸುರಕ್ಷತೆ ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಧ್ವನಿ, ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ ಮುಂದಿನ ಸುಗಮತೆಯನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     "immersive_chat__chat_history__restore_button__title": "ಚಾಟ್‌ಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಿ",
-    "immersive_chat__chat_history__restore_modal__title": "ನೀವು ಎಲ್ಲಾ ಚಾಟ್, ಹುಡುಕಾಟ ಮತ್ತು ಕಲೆ ಇತಿಹಾಸವನ್ನು ಸ್ಥಳೀಯ ಆವೃತ್ತಿಗೆ ಮರುಸ್ಥಾಪಿಸಲು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ? ಮುಂದುವರಿದರೆ, ಕ್ರಿಯೆಯನ್ನು ಮರುಪಡೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ.",
-    "immersive_chat__chat_history__restore_modal__description": "ಚಾಟ್ ಮತ್ತು ಹುಡುಕು & ಕಲಾ ಸಂಭಾಷಣೆಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗುತ್ತದೆ:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ಹೌದು, ಮರುಸ್ಥಾಪಿಸಿ",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ರದ್ದು ಮಾಡಿ",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 ಸಂಭಾಷಣೆ ಮರುಸ್ಥಾಪಿತವಾಗಿದೆ",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "ಜಟಿಲ ತರ್ಕದ ಕೆಲಸಗಳನ್ನು ಅಗತ್ಯವಾದ ಉತ್ತಮ ಪ್ರದರ್ಶನ. Claude 3 ಅಂತರ್ಭೂತಿಯ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ಈಗ ಫ್ರೀಎಯ್‌ಐ ಪೂರ್ಣತೆಯಲ್ಲಿದೆ",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ಉಚ್ಚ ಟ್ರಾಫಿಕ್ ಕಾರಣದಿಂದ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಪ್ರೀಮಿಯಂ AI ಮಾದರಿಗಳಿಗೆ ಸ್ಥಿರ ಪ್ರವೇಶವನ್ನು ಆನಂದಿಸಲು ಈಗ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ.",
-    "sidebar__conversation__message__context_triggered_content_review": "ಸಂದರ್ಭ ಮಾಧ್ಯಮವನ್ನು ಮೀರಿಸಲು ಸರಿಹೊಂದಿಸಲಾಗಿದೆ"
+    "sidebar__conversation__message__context_triggered_content_review": "ಸಂದರ್ಭ ಮಾಧ್ಯಮವನ್ನು ಮೀರಿಸಲು ಸರಿಹೊಂದಿಸಲಾಗಿದೆ",
+    "immersive_chat__chat_history__restore_modal__idle__title": "ನೀವು ನಿಮ್ಮ ಚಾಟ್, ಹುಡುಕಾಟ ಮತ್ತು ಕಲೆ ಇತಿಹಾಸವನ್ನು ಮೋಡದ ಆವೃತ್ತಿಗೆ ಮರಳಿಸಲು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ? ಮುಂದುವರೆಸುವುದನ್ನು ನೀವು ಒಪ್ಪಿದ ನಂತರ, ಆಕ್ಷನ್ ಮರಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "ಮಾತುಕತೆ ಮತ್ತು ಹುಡುಕಾಟ ಚರ್ಚೆಗಳನ್ನು ಮರಳಿಸಲು:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "ಚರ್ಚೆಗಳನ್ನು ಮರಳಿಸುವಲ್ಲಿ, ದಯವಿಟ್ಟು ಕಾಯುತ್ತಿರಿ...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "ಗಮನಿಸಿ: ಚರ್ಚೆಗಳನ್ನು ಕಳೆದುಕೊಳ್ಳದೆ ಮರಳಿಸುವ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿ ಪುಟವನ್ನು ತೆರೆದಿಡಬೇಕು.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "ಮಾತುಕತೆಗಳನ್ನು ಮರಳಿಸಲಾಗಿದೆ: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "ಸಂದೇಶಗಳನ್ನು ಮರಳಿಸಲಾಗಿದೆ: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

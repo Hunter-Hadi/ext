@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "கண்ணோட்டத்துடன் gemini-1.5-pro அணுகலை மேம்படுத்துக",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google-ன் புதியதும் மிகவும் முன்னேற்றமுள்ள மாதிரி. அதிக வேகத்தில், ஒரு புறக்கணிப்பு 1M டோக்கன் உள்ளடக்க சந்தர்ப்பங்கள், மேம்படுத்தப்பட்ட பாதுகாப்பு மற்றும் உயர்நிலை திறன்களை உடையது உரை, குறியீடு, படம், ஒலி, ஒலிப்படம் மற்றும் காட்சி செயலாக்கங்களில்.",
     "immersive_chat__chat_history__restore_button__title": "உள்ளிடப்பட்ட அனைத்து உரைகளையும் மீட்டமை",
-    "immersive_chat__chat_history__restore_modal__title": "அனைத்து உங்கள் உரைகளையும், தேடல்களையும், கலை வரலாற்றையும் உள்ளீட்டின் பதிப்பிற்கு மீட்டமைக்க விரும்புகிறீர்களா? முன்னர் முடிக்கப்பட்டால், நடவடிக்கை மீண்டும் செய்ய முடியாது.",
-    "immersive_chat__chat_history__restore_modal__description": "மீட்டமைப்பு பின்னர் உரைகள், தேடல்கள் மற்றும் கலை மாற்றங்கள்:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ஆமாம், மீட்டமை",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ரத்து செய்",
     "sidebar__button__upgrade_to_plan": "{{PLAN}} க்கு மேம்படுத்து",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "சிறந்த பெரும்பாலான பொருள் மனம் தேவைப்படும் பணிகளுக்கு உயர்வான செயல்பாடு. கிளோட் 3 அந்த்ராபிக் சிறந்த பொருள் மனமாக உள்ளது.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI தற்போது மிகப் பொருட்பட்டியில் உள்ளது",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "அதிக செயல்முறையில் மிகப்பெரிய வண்டிகள் உள்ளன, தயவுசெய்து பின்னர் மீண்டும் முயற்சிக்கவும் அல்லது அனைத்து பிரீமியம் AI மாதிரிகளுக்கு நிலையான அணுகலை ஆராய்ச்சி செய்ய இப்போது மேம்படுத்தவும்.",
-    "sidebar__conversation__message__context_triggered_content_review": "மின்னஞ்சல் மீட்டமைப்புக்கு அதிகாரம் வழங்கப்பட்டது"
+    "sidebar__conversation__message__context_triggered_content_review": "மின்னஞ்சல் மீட்டமைப்புக்கு அதிகாரம் வழங்கப்பட்டது",
+    "immersive_chat__chat_history__restore_modal__idle__title": "அனைத்து உங்கள் உரையாடல், தேடல் மற்றும் கலை வரலாற்றையும் மேன்மைப்படுத்த மேலும் நீங்கள் உறுதிப்படுத்த விரும்புகிறீர்களா? முன்னரே செயல்படுத்தப்பட்டால், செயல்பாடு மீண்டும் மீண்டும் செய்ய முடியாது.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "மீண்டும் மீண்டும் மீண்டும் செய்யப்பட வேண்டிய உரையாடல், தேடல் மற்றும் கலை உரையாடல்கள்:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "உரையாடல்களை மீண்டும் மீண்டும் செய்கின்றன, தயவு செய்து காத்திருங்கள்...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "குறிப்பு: உங்கள் உரையாடல்களை இழந்துவிடாமல் மீண்டும் மீண்டும் செய்ய மீண்டும் மீண்டும் தற்போதைய பக்கத்தை திறக்கவும்.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "உரையாடல்கள் மீண்டும் மீண்டும் செய்யப்பட்டன: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "செய்திகள் மீண்டும் மீண்டும் செய்யப்பட்டன: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

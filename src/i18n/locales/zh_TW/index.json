@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "升級以獲取具有視覺功能的gemini-1.5-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google 最新且最先進的模型。它提供更快的速度、突破性的 1M 標記上下文窗口、增強的安全性以及跨文本、代碼、圖像、音頻和視頻處理的高級功能。",
     "immersive_chat__chat_history__restore_button__title": "還原聊天記錄",
-    "immersive_chat__chat_history__restore_modal__title": "您確定要將所有聊天、搜索和藝術歷史記錄還原到本地版本嗎？請注意，一旦您繼續進行，此操作將無法撤銷。",
-    "immersive_chat__chat_history__restore_modal__description": "待恢復的聊天、搜索和藝術對話：",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "是的，還原",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消",
     "immersive_chat__chat_history__restore_modal__toast1__title": "已恢復 1 個對話",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "在需要複雜推理的任務上表現卓越。Claude 3 是Anthropic提供的最佳選擇。",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "免費AI現在已滿",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "由於流量過大，請稍後再試，或立即升級以享受穩定訪問所有高級 AI 模型的權限。",
-    "sidebar__conversation__message__context_triggered_content_review": "清除上下文以繞過審核"
+    "sidebar__conversation__message__context_triggered_content_review": "清除上下文以繞過審核",
+    "immersive_chat__chat_history__restore_modal__idle__title": "您確定要將所有聊天、搜索和藝術歷史記錄還原到雲端版本嗎？請注意，一旦您繼續進行，此操作將無法撤銷。",
+    "immersive_chat__chat_history__restore_modal__idle__description": "待還原的聊天、搜索和藝術對話：",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "正在還原對話，請稍候...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "註：在還原過程中保持當前頁面開啟，以避免丟失對話。",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "已還原對話：[{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "已還原訊息：[{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

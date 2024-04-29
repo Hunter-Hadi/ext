@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Aggiorna per accedere a gemini-1.5-pro con visione",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Il modello più recente e avanzato di Google. Offre una velocità più veloce, una finestra di contesto di 1M token, sicurezza avanzata e funzionalità avanzate per l'elaborazione di testi, codici, immagini, audio e video.",
     "immersive_chat__chat_history__restore_button__title": "Ripristina chat",
-    "immersive_chat__chat_history__restore_modal__title": "Sei sicuro di voler ripristinare tutta la tua cronologia Chat, Ricerca e Arte alla versione locale? Nota che una volta proceduto, l'azione non può essere annullata.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat e conversazioni di ricerca e arte da ripristinare:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sì, ripristina",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annulla",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversazione ripristinata",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Prestazioni superiori per compiti che richiedono ragionamento complesso. Claude 3 è la migliore offerta di Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI è al massimo della capacità in questo momento",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del traffico elevato, riprova più tardi o passa subito a una versione premium per accedere in modo stabile a tutti i modelli AI.",
-    "sidebar__conversation__message__context_triggered_content_review": "Contesto cancellato per bypassare la moderazione"
+    "sidebar__conversation__message__context_triggered_content_review": "Contesto cancellato per bypassare la moderazione",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Sei sicuro di voler ripristinare tutta la tua cronologia Chat, Ricerca e Arte alla versione cloud? Nota che una volta proceduto, l'azione non può essere annullata.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Conversazioni Chat & Ricerca & Arte da ripristinare:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Ripristino delle conversazioni, attendere prego...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Nota: Mantieni aperta la pagina corrente durante il processo di ripristino per evitare di perdere le tue conversazioni.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Conversazioni ripristinate: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Messaggi ripristinati: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Gemini-1.5-Pro'ya erişmek için yükseltin",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'ın en yeni ve en gelişmiş modeli. Daha hızlı hız, çığır açan 1M token bağlam penceresi, gelişmiş güvenlik ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sunar.",
     "immersive_chat__chat_history__restore_button__title": "Sohbetleri Geri Yükle",
-    "immersive_chat__chat_history__restore_modal__title": "Tüm Sohbet, Arama ve Sanat geçmişinizi yerel sürüme geri yüklemek istediğinizden emin misiniz? Lütfen devam ettiğinizde işlem geri alınamaz.",
-    "immersive_chat__chat_history__restore_modal__description": "Geri yüklenmesi gereken Sohbet & Arama & Sanat konuşmaları:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Evet, geri yükle",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "İptal",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 konuşma geri yüklendi",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Karmaşık akıl yürütme gerektiren görevlerde üstün performans. Claude 3, Anthropic'in en iyi sınıf çözümüdür.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI şu anda kapasite dolu",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Yoğun trafiğe bağlı olarak, lütfen daha sonra tekrar deneyin veya tüm premium AI modellerine istikrarlı erişim için şimdi yükseltme yapın.",
-    "sidebar__conversation__message__context_triggered_content_review": "Moderasyonu atlamak için bağlam temizlendi"
+    "sidebar__conversation__message__context_triggered_content_review": "Moderasyonu atlamak için bağlam temizlendi",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Tüm Sohbet, Arama ve Sanat geçmişinizi bulut sürümüne geri yüklemek istediğinizden emin misiniz? Lütfen devam ettiğinizde işlem geri alınamaz.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Geri yüklenmesi planlanan Sohbet & Arama & Sanat konuşmaları:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Konuşmalar geri yükleniyor, lütfen bekleyin...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Not: Konuşmalarınızı kaybetmemek için geri yükleme süreci boyunca mevcut sayfayı açık tutun.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Geri yüklenen konuşmalar: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Geri yüklenen mesajlar: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

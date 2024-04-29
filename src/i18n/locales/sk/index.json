@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Aktualizujte pre prístup k gemini-1.5-pro s videním",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovší a najpokročilejší model od Google. Ponúka rýchlejšiu rýchlosť, prelomové kontextové okno s 1 miliónom tokenov, vylepšenú bezpečnosť a pokročilé schopnosti v spracovaní textu, kódu, obrázkov, zvuku a videa.",
     "immersive_chat__chat_history__restore_button__title": "Obnoviť chaty",
-    "immersive_chat__chat_history__restore_modal__title": "Ste si istý, že chcete obnoviť všetky svoje Chat, Vyhľadávanie a Umenie histórie do lokálnej verzie? Prosím, majte na pamäti, že ak pokračujete, akciu nie je možné vrátiť späť.",
-    "immersive_chat__chat_history__restore_modal__description": "Konverzácie chatu, vyhľadávanie a umenie na obnovenie:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Áno, obnoviť",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Zrušiť",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovená 1 konverzácia",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Vynikajúce výkony pri úlohách, ktoré vyžadujú zložité uvažovanie. Claude 3 je najlepšia ponuka od Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI je momentálne obsadené",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vzhľadom na vysokú premávku, skúste to prosím neskôr alebo teraz upgradujte a vychutnajte si stabilný prístup ku všetkým prémiovým modelom AI.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontext vymazaný pre obchádzanie moderácie"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext vymazaný pre obchádzanie moderácie",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Ste si istý, že chcete obnoviť celú históriu Chatu, Vyhľadávania a Umenia do cloudovej verzie? Prosím, všimnite si, že ak budete pokračovať, akciu nie je možné vrátiť späť.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Chat & Vyhľadávanie & Umenie konverzácie na obnovenie:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Obnovujem konverzácie, prosím čakajte...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Poznámka: Počas procesu obnovy ponechajte otvorenú aktuálnu stránku, aby ste nezabudli na svoje konverzácie.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Obnovené konverzácie: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Obnovené správy: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

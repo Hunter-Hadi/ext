@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Надстройка за достъп до gemini-1.5-pro с визия",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Най-новият и най-развит модел на Google. Предлага по-бърза скорост, проривен контекстен прозорец от 1 милион токена, подобрена безопасност и разширени възможности в текстово, кодово, изображенско, аудио и видео обработване.",
     "immersive_chat__chat_history__restore_button__title": "Възстановяване на чатовете",
-    "immersive_chat__chat_history__restore_modal__title": "Сигурни ли сте, че искате да възстановите всичките си чатове, търсения и художествена история към локалната версия? Моля, имайте предвид, че след като продължите, действието не може да бъде отменено.",
-    "immersive_chat__chat_history__restore_modal__description": "Чат и търсене - възстановяване на разговори и изкуство:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Да, възстанови",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Отказ",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Възстановен е 1 разговор",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Изключителна производителност при задачи, изискващи сложно мислене. Клод 3 е най-доброто предложение на Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI е на капацитет в момента",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Поради голям трафик, моля опитайте отново по-късно или надстройте сега, за да се насладите на стабилен достъп до всички премиум модели на изкуствения интелект.",
-    "sidebar__conversation__message__context_triggered_content_review": "Контекстът е изчистен за обхождане на модерацията"
+    "sidebar__conversation__message__context_triggered_content_review": "Контекстът е изчистен за обхождане на модерацията",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Сигурни ли сте, че искате да възстановите цялата си чат, търсене и история на изкуството в облаковата версия? Моля, имайте предвид, че веднъж като продължите, действието не може да бъде отменено.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Чат и търсене и възстановени разговори за изкуство:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Възстановяване на разговори, моля изчакайте...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Забележка: За да не загубите разговорите си, запазете текущата страница отворена по време на процеса на възстановяване.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Възстановени разговори: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Възстановени съобщения: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

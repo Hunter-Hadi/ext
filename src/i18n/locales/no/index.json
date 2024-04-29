@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Oppgrader for å få tilgang til gemini-1.5-pro med visjon",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyeste og mest avanserte modell. Den tilbyr raskere hastighet, et gjennombrudd med 1M tokens kontekstvindu, forbedret sikkerhet og avanserte funksjoner innen tekst, kode, bilde, lyd og videobehandling.",
     "immersive_chat__chat_history__restore_button__title": "Gjenopprett samtaler",
-    "immersive_chat__chat_history__restore_modal__title": "Er du sikker på at du vil gjenopprette alle dine Chat, Søk og Kunst historie til den lokale versjonen? Vær oppmerksom på at handlingen ikke kan angres når du har startet.",
-    "immersive_chat__chat_history__restore_modal__description": "Gjenopprett chat- og søke- og kunstsamtaler:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, gjenopprett",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Avbryt",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 samtale gjenopprettet",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Overlegen ytelse på oppgaver som krever kompleks resonnement. Claude 3 er Anthropics beste tilbud.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI er fullt for øyeblikket",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grunn av høy trafikk, prøv igjen senere eller oppgrader nå for å få stabil tilgang til alle premium AI-modeller.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for å omgå moderering"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for å omgå moderering",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Er du sikker på at du vil gjenopprette all Chat, Søk og Kunst historie til skyversjonen? Vær oppmerksom på at handlingen ikke kan angres.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Chat & Søk & Kunst samtaler som skal gjenopprettes:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Gjenoppretter samtaler, vennligst vent...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Merk: Hold den nåværende siden åpen under gjenopprettingsprosessen for å unngå å miste samtalene dine.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Samtaler gjenopprettet: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Meldinger gjenopprettet: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

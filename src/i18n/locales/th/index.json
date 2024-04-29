@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "อัปเกรดเพื่อเข้าถึง gemini-1.5-pro พร้อมวิสัยทัศน์",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "โมเดลล่าสุดและทันสมัยของ Google ซึ่งมีความเร็วสูงขึ้น, หน้าต่างความสัมพันธ์ของโทเค็น 1 ล้านตัวอักษร, ความปลอดภัยที่เพิ่มขึ้น, และความสามารถขั้นสูงในการประมวลผลข้อความ, โค้ด, ภาพ, เสียง, และวิดีโอ",
     "immersive_chat__chat_history__restore_button__title": "กู้คืนการสนทนา",
-    "immersive_chat__chat_history__restore_modal__title": "คุณแน่ใจหรือไม่ว่าต้องการกู้คืนประวัติการสนทนา, การค้นหา, และประวัติศิลปะทั้งหมดไปยังเวอร์ชันท้องถิ่น? โปรดทราบว่าหากคุณดำเนินการต่อไปแล้ว การกระทำนี้ไม่สามารถย้อนกลับได้",
-    "immersive_chat__chat_history__restore_modal__description": "บทสนทนาแชทและค้นหาและการสนทนาศิลปะที่จะถูกกู้คืน:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ใช่, กู้คืน",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ยกเลิก",
     "immersive_chat__chat_history__restore_modal__toast1__title": "กู้คืน 1 บทสนทนา",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "ประสิทธิภาพที่เหนือกว่าในงานที่ต้องการความคิดที่ซับซ้อน โมเดล Claude 3 เป็นผลิตภัณฑ์ที่ดีที่สุดของ Anthropic",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI เต็มพื้นที่ใช้งานในขณะนี้",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "เนื่องจากมีการรับส่งข้อมูลสูง โปรดลองอีกครั้งในภายหลัง หรืออัปเกรดเดี๋ยวนี้เพื่อเพลิดเพลินกับการเข้าถึงแบบพรีเมียมของโมเดล AI ทั้งหมด",
-    "sidebar__conversation__message__context_triggered_content_review": "ล้างบริบทเพื่อผ่านการตรวจสอบ"
+    "sidebar__conversation__message__context_triggered_content_review": "ล้างบริบทเพื่อผ่านการตรวจสอบ",
+    "immersive_chat__chat_history__restore_modal__idle__title": "คุณแน่ใจหรือไม่ว่าต้องการกู้คืนประวัติการสนทนา, การค้นหา และประวัติศิลปะทั้งหมดของคุณไปยังเวอร์ชันคลาวด์? โปรดทราบว่าเมื่อคุณดำเนินการต่อไปแล้ว การกระทำนี้ไม่สามารถย้อนกลับได้",
+    "immersive_chat__chat_history__restore_modal__idle__description": "การสนทนา & การค้นหา & การสนทนาเรื่องศิลปะที่จะกู้คืน:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "กำลังกู้คืนการสนทนา โปรดรอสักครู่...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "หมายเหตุ: ให้เปิดหน้าเว็บปัจจุบันในระหว่างกระบวนการกู้คืนเพื่อหลีกเลี่ยงการสูญเสียการสนทนาของคุณ",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "สนทนาที่กู้คืน: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "ข้อความที่กู้คืน: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "جیمنی-1.5 پرو کو دیکھنے کے لئے اپگریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل۔ یہ تیز رفتار، ایک بریکتھرو 1M ٹوکن کنٹیکسٹ ونڈو، بہترین سلامتی، اور متن، کوڈ، تصویر، آڈیو، اور ویڈیو پروسیسنگ میں ایڈوانس کپیبلٹیز پیش کرتا ہے۔",
     "immersive_chat__chat_history__restore_button__title": "چیٹ کو بحال کریں",
-    "immersive_chat__chat_history__restore_modal__title": "کیا آپ واقعی تمام چیٹ، تلاش اور آرٹ کی تاریخ کو مقامی ورژن پر بحال کرنا چاہتے ہیں؟ براہ کرم نوٹ کریں کہ جب آپ آگے بڑھیں گے تو کوئی کارروائی واپس نہیں لی جاسکتی ہے۔",
-    "immersive_chat__chat_history__restore_modal__description": "چیٹ اور تلاش اور آرٹ کے گفتگو بحال کرنے کے لئے:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "جی ہاں، بحال کریں",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "منسوخ کریں",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 گفتگو بحال",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "مشکل ماندگاری کو طلب کرنے والے کاموں پر بہترین کارکردگی۔ کلوڈ 3 اینتھروپک کی بہترین پیشکش ہے۔",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "فری اے آئی ابھی کی پیمائش پر ہے",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "بلند ٹریفک کی وجہ سے، براہ کرم بعد میں دوبارہ کوشش کریں یا اب اپ گریڈ کریں تاکہ آپ پریمیم AI ماڈلز کا مستحکم رسائی کا لطف اٹھا سکیں۔",
-    "sidebar__conversation__message__context_triggered_content_review": "موڈریشن کو گزارش کرنے کے لئے سیاق و سباق صاف کیا گیا"
+    "sidebar__conversation__message__context_triggered_content_review": "موڈریشن کو گزارش کرنے کے لئے سیاق و سباق صاف کیا گیا",
+    "immersive_chat__chat_history__restore_modal__idle__title": "کیا آپ واقعی تمام اپنے چیٹ، تلاش اور آرٹ کی تاریخ کو کلاؤڈ ورژن میں بحال کرنا چاہتے ہیں؟ براہ کرم نوٹ فرمائیں کہ جب آپ آگے بڑھیں گے تو یہ عمل واپس نہیں لیا جاسکتا ہے.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "بحال کرنے کے لئے چیٹ اور تلاش اور آرٹ کے گفتگو:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "گفتگو بحال ہو رہے ہیں، براہ کرم انتظار کریں...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "نوٹ: گفتگو کھونے سے بچنے کے لئے بحال کرنے کے دوران موجودہ صفحہ کو کھولے رکھیں.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "بحال شدہ گفتگو: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "بحال شدہ پیغامات: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

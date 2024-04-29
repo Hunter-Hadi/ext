@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "જેમિની-1.5-પ્રો સાથે વિઝન એક્સેસ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleનું નવુંતમ અને સૌથી આગ્રહી મોડેલ. તે ઝડપી સ્પીડ, એક પરાવર્તનકારી 1M ટોકન સંદર્ભ વિંડો, સુધારેલી સુરક્ષા અને પાઠ, કોડ, છબી, આવાજ અને વિડિઓ પ્રક્રિયાઓમાં એડવાન્સ ક્ષમતાઓ પૂરી પાડે છે.",
     "immersive_chat__chat_history__restore_button__title": "ચેટ પુનઃસ્થાપિત કરો",
-    "immersive_chat__chat_history__restore_modal__title": "શું તમે ખરેખર તમામ ચેટ, શોધ અને આર્ટ હિસ્ટરીને સ્થાનિક આવૃત્તિમાં પુનઃસ્થાપિત કરવા માંગો છો? કૃપા કરીને ધ્યાન આપો કે એકવાર જ્યારે તમે આગળ વધવા માંગો છો, ત્યાં પછી ક્રિયા પૂર્ણ થઈ શકશે નહીં.",
-    "immersive_chat__chat_history__restore_modal__description": "ચેટ અને શોધ કરો & આર્ટ વાતચીતો પુનઃસ્થાપિત કરવામાં આવશે:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "હા, પુનઃસ્થાપિત કરો",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "રદ કરો",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 વાતચીત પુનઃસ્થાપિત થઈ",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "જેટલું જટિલ તાસ્ક માટે શ્રેષ્ઠ પ્રદર્શન. Claude 2 એ Anthropic ની શ્રેષ્ઠ ઓફરિંગ છે",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "હાલમાં FreeAI ક્ષમતામાં છે",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ઉચ્ચ ટ્રેફિક કારણે, કૃપા કરીને પછી થોડીવાર પ્રયાસ કરો અથવા હવે અનુભવો માટે સ્થિર પ્રીમિયમ એઆઈ મોડલ્સનો ઉપયોગ કરવા માટે અપગ્રેડ કરો.",
-    "sidebar__conversation__message__context_triggered_content_review": "સંદર્ભ મોદરેશન પર છોડવા માટે સાફ કર્યું"
+    "sidebar__conversation__message__context_triggered_content_review": "સંદર્ભ મોદરેશન પર છોડવા માટે સાફ કર્યું",
+    "immersive_chat__chat_history__restore_modal__idle__title": "શું તમે ખરેખર તમામ તમારા ચેટ, શોધ અને આર્ટ ની હિસ્ટરીને ક્લાઉડ વર્ઝનમાં પુનઃસ્થાપિત કરવા માંગો છો? કૃપા કરીને ધ્યાન આપો કે એકવાર જ્યાં સુધી આગળ વધવાની ક્રિયા પૂરી થઈ જાય છે, તેને પાછા લાવવી શકાય નહીં.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "પુનઃસ્થાપિત કરવામાં આવશે ચેટ અને શોધ અને આર્ટ ચર્ચાઓ:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "ચર્ચાઓ પુનઃસ્થાપિત થઈ રહી છે, કૃપા કરીને રાહ જુઓ...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "નોંધ: ચર્ચાઓ ગુમ થવાની રીસ્ટોર પ્રક્રિયા દરમિયાન વર્તમાન પેજ ખોલે રાખો.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "ચર્ચાઓ પુનઃસ્થાપિત થઈ ગઈ છે: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "સંદેશો પુનઃસ્થાપિત થઈ ગયા છે: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

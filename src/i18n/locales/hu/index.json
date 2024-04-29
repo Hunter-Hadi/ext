@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Frissítés a gemini-1.5-prohoz látással",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "A Google legújabb és legfejlettebb modellje. Gyorsabb sebességet, áttörést jelentő 1M tokenes kontextusablakot, fejlett biztonsági funkciókat és haladó képességeket kínál a szöveg-, kód-, kép-, hang- és videofeldolgozás területén.",
     "immersive_chat__chat_history__restore_button__title": "Chatok helyreállítása",
-    "immersive_chat__chat_history__restore_modal__title": "Biztosan helyre szeretnéd állítani az összes Chat, Keresés és Művészeti előzményt a helyi verzióra? Kérlek vedd figyelembe, hogy miután folytatod, a művelet nem vonható vissza.",
-    "immersive_chat__chat_history__restore_modal__description": "Visszaállítandó csevegési és keresési beszélgetések:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Igen, helyreállítás",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Mégse",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 beszélgetés visszaállítva",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Kiváló teljesítmény olyan feladatok esetén, amelyek bonyolult gondolkodást igényelnek. Claude 3 az Anthropic legjobb ajánlata.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "A FreeAI jelenleg telített",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Magas forgalom miatt kérjük, próbálja újra később, vagy frissítse most, hogy stabil hozzáférést kapjon az összes prémium AI modellhez.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontextus törölve a moderáció elkerülése érdekében"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontextus törölve a moderáció elkerülése érdekében",
+    "immersive_chat__chat_history__restore_modal__idle__title": "Biztosan vissza szeretné állítani az összes Csevegési, Keresési és Művészeti előzményét a felhő verzióra? Kérjük vegye figyelembe, hogy miután folytatja a műveletet, nem lehet visszavonni.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "Visszaállítandó csevegések és keresések:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "Csevegések visszaállítása, kis türelmet...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "Megjegyzés: A visszaállítási folyamat során tartsa nyitva az aktuális oldalt, hogy elkerülje a beszélgetések elvesztését.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "Visszaállított csevegések: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Visszaállított üzenetek: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

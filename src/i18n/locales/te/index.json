@@ -694,8 +694,6 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "జెమిని-1.5-ప్రొ కనుగొనడానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google యొక్క కొత్తగా మరియు అత్యంత ఉన్నత మోడల్. ఇది త్వరిత వేగం, ఒక ప్రవర్తనాత్మకత కంటెక్స్ట్ విండో, మెరుగైన భద్రత, మరియు పాఠ్యం, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్‌లలో అధ్వాన్య సాధనాలను అందిస్తుంది.",
     "immersive_chat__chat_history__restore_button__title": "చాట్లను పునఃస్థాపించండి",
-    "immersive_chat__chat_history__restore_modal__title": "మీరు అన్ని మీ చాట్, శోధన, మరియు కళా చరిత్రను స్థానిక వెర్షన్‌కు పునఃస్థాపించాలని మీరు ఖచ్చితంగా కోరుకుంటున్నారా? దయచేసి గమనిక చేయండి, మీరు ముందుగా ముగింపు చేసే తర్వాత ఈ చర్య మరియునిపించడం కాదు.",
-    "immersive_chat__chat_history__restore_modal__description": "చాట్ & శోధన & కళ సంభాషణలు పునరుద్ధరించబడవలసినవి:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "అవును, పునఃస్థాపించండి",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "రద్దు చేయండి",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 సంభాషణ పునరుద్ధరించబడింది",
@@ -755,7 +753,13 @@
     "provider__claude_web_app__model__claude_3_200k__description": "కంప్లెక్స్ రీజనింగ్ అవసరమైన టాస్కులపై అత్యుత్తమ పనిచేసే పనితీరు. క్లాడ్ 3 అంత్రోపిక్ యొక్క ఉత్తమ ఆఫరింగ్ ఉంది.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ప్రస్తుతం పూర్తిగా భరించబడింది",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ఉన్న ట్రాఫిక్ ఎక్కువగా ఉంది, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి లేదా ప్రీమియం AI మోడల్స్‌కు స్థిరమైన ప్రవేశం ఆనందించడానికి ఇప్పుడు అప్గ్రేడ్ చేయండి.",
-    "sidebar__conversation__message__context_triggered_content_review": "మార్గం నిర్వహణ తరచుగా తీసుకోవడానికి కంటెంట్ సమీక్షను తీసుకోబడింది"
+    "sidebar__conversation__message__context_triggered_content_review": "మార్గం నిర్వహణ తరచుగా తీసుకోవడానికి కంటెంట్ సమీక్షను తీసుకోబడింది",
+    "immersive_chat__chat_history__restore_modal__idle__title": "మీరు ఖాతా వెర్షన్‌కు అన్ని చాట్, శోధన, మరియు కలా చరిత్రను మళ్ళీ పొందాలని మీరు ఖచ్చితంగా ఉంచారా? దయచేసి గమనిక తీసుకోండి, మీరు ముందుగా చెయ్యడం తర్వాత ఈ చర్యను మరోకట్టిని చేయలేరు.",
+    "immersive_chat__chat_history__restore_modal__idle__description": "మాటలు & శోధన & కలా సంభాషణలు మళ్ళీ పొందాలని ఉంచడానికి:",
+    "immersive_chat__chat_history__restore_modal__uploading__title": "సంభాషణలను మళ్ళీ పొందడం, దయచేసి వేచి ఉండండి...",
+    "immersive_chat__chat_history__restore_modal__uploading__description1": "గమనిక: మీ సంభాషణలను కోల్పోవడం కోసం రిస్టోర్ ప్రాసెస్‌ను పూర్తి చేయడానికి ప్రస్తుత పేజీని తెరిచి ఉంచండి.",
+    "immersive_chat__chat_history__restore_modal__uploading__description2": "సంభాషణలు మళ్ళీ పొందబడ్డాయి: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "సందేశాలు మళ్ళీ పొందబడ్డాయి: [{{STEP}}/{{TOTAL}}]"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

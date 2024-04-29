@@ -1,6 +1,7 @@
 import SyncOutlinedIcon from '@mui/icons-material/SyncOutlined'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import React, { FC, useEffect } from 'react'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -16,22 +17,30 @@ const AutoSyncConversation: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
-  const { autoSyncConversation, conversationSyncState } = useSyncConversation()
+  const { autoSyncConversation, conversationAutoSyncState } =
+    useSyncConversation()
   const { currentConversationId } = useClientConversation()
   /**
    * 当前对话ID改变时，自动同步对话
    * - 当前对话ID改变时，自动同步对话
    * - 当focus时，自动同步对话
    */
+  const isSyncingRef = React.useRef(false)
   useEffect(() => {
-    if (!currentConversationId) {
+    if (!currentConversationId || isSyncingRef.current) {
       return
     }
     console.log('AutoSyncConversation', currentConversationId)
     const executeAutoSyncConversation = async () => {
-      await autoSyncConversation(currentConversationId)
+      isSyncingRef.current = true
+      try {
+        await autoSyncConversation(currentConversationId)
+      } catch (e) {
+        // ignore
+      }
+      isSyncingRef.current = false
     }
-    autoSyncConversation(currentConversationId)
+    executeAutoSyncConversation()
     window.addEventListener('focus', executeAutoSyncConversation)
     return () => {
       window.removeEventListener('focus', executeAutoSyncConversation)
@@ -46,10 +55,11 @@ const AutoSyncConversation: FC<{
         ...sx,
       }}
     >
-      {conversationSyncState.autoSyncStatus === 'uploading' && (
+      {conversationAutoSyncState.autoSyncStatus === 'uploading' && (
         <>
-          <div>{conversationSyncState.autoSyncStatus}</div>
-          <div>{`(${conversationSyncState.autoSyncSuccessCount}/${conversationSyncState.autoSyncTotalCount})`}</div>
+          <Typography fontSize={'14px'}>
+            {`(${conversationAutoSyncState.autoSyncStep}/${conversationAutoSyncState.autoSyncTotalCount})`}
+          </Typography>
           <SyncOutlinedIcon
             sx={{
               color: 'primary.main',

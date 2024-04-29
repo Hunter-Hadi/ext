@@ -46,6 +46,7 @@ import WebsiteContextManager, {
 import { convertBlobToBase64 } from '@/utils/dataHelper/fileHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import Log from '@/utils/Log'
+import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -881,31 +882,41 @@ export const ClientMessageInit = () => {
           }
         }
         case 'Client_logUserUsageInfo': {
-          // TODO 收集用户信息
           const userInfo = await getChromeExtensionUserInfo(false)
           const allExtensions = await Browser.management.getAll()
           const selfExtension = await Browser.management.getSelf()
-          const platformInfo = await Browser.runtime.getPlatformInfo()
+          // const platformInfo = await Browser.runtime.getPlatformInfo()
           const isAllowedFile =
             await Browser.extension.isAllowedFileSchemeAccess()
           const isAllowedIncognito =
             await Browser.extension.isAllowedIncognitoAccess()
-          if (selfExtension.hostPermissions?.[0] === '<all_urls>') {
-            // 允许访问所有网站
-          } else if (selfExtension.hostPermissions?.length) {
-            // 允许访问特定网站
-          } else {
-            // 点击时
-          }
-          console.log('LOG_USER_USAGE_INFO', {
-            ...data,
-            userInfo,
-            allExtensions,
-            selfExtension,
-            isAllowedFile,
-            isAllowedIncognito,
-            platformInfo,
-          })
+          // const formatExt = (ext: Browser.Management.ExtensionInfo) => {
+          //   if (ext.hostPermissions?.[0] === '<all_urls>') {
+          //     // 允许访问所有网站
+          //   } else if (ext.hostPermissions?.length) {
+          //     // 允许访问特定网站
+          //   } else {
+          //     // 点击时
+          //   }
+          //   const filterKeys = ['description', 'homepageUrl', 'icons', 'shortName']
+          //   return {}
+          // }
+          backgroundSendMaxAINotification(
+            'CLIENT',
+            '[Client] Collect user usage information',
+            JSON.stringify(
+              {
+                ...data,
+                userInfo,
+                allExtensions,
+                selfExtension,
+                isAllowedFile,
+                isAllowedIncognito,
+              },
+              null,
+              4,
+            ),
+          )
           return {
             success: true,
             data: true,

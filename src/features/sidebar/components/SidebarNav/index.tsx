@@ -6,7 +6,7 @@ import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
@@ -19,8 +19,9 @@ import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useCommands from '@/hooks/useCommands'
-import { chromeExtensionClientOpenPage, clientLogUserUsageInfo } from '@/utils'
+import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import SidebarInfoCollectionModal from '@/features/sidebar/components/SidebarNav/SidebarInfoCollectionModal'
 
 interface IProps {
   sx?: SxProps
@@ -34,6 +35,13 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
 
   // 在 immersive chat 页面, 有特殊的渲染逻辑
   const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
+
+  const [open, setOpen] = useState(false)
+
+  const openContactUs = () => {
+    setOpen(false)
+    window.open(CHROME_EXTENSION_MAIL_TO)
+  }
 
   return (
     <Stack
@@ -164,10 +172,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
           <IconButton
             data-testid={`maxai--sidebar--contact_us--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
-            onClick={() => {
-              clientLogUserUsageInfo({ type: 'contact_us', content: '' })
-              window.open(CHROME_EXTENSION_MAIL_TO)
-            }}
+            onClick={() => setOpen(true)}
           >
             <EmailOutlinedIcon
               sx={{
@@ -180,6 +185,13 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         {/* version */}
         <Typography fontSize={10}>{`v${APP_VERSION}`}</Typography>
       </Stack>
+
+      <SidebarInfoCollectionModal
+        type="contact_us"
+        open={open}
+        onClose={openContactUs}
+        onConfirm={openContactUs}
+      />
     </Stack>
   )
 }

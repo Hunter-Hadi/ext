@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { type IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import {
   SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
   SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID,
@@ -1156,9 +1157,10 @@ export const getSummaryNavActions: (
     }
   } catch (e) {
     console.log(e)
-    return []
   }
+  return []
 }
+
 export const getSummaryActionCopilotStepTitle = (type: IPageSummaryType) => {
   switch (type) {
     case 'PAGE_SUMMARY':
@@ -1171,6 +1173,7 @@ export const getSummaryActionCopilotStepTitle = (type: IPageSummaryType) => {
       return 'Summarize email'
   }
 }
+
 const getCurrentPageUrl = () => {
   const pageUrl = window.location.href
   return pageUrl
@@ -1392,4 +1395,93 @@ const getSpecialHostPageContent = async () => {
     }
   }
   return ''
+}
+
+// 24.04.29: support custom prompt feature for Summary
+// get the actions of the custom prompt and mix with Summary actions, then return
+export const getSummaryCustomPromptActions = async ({
+  type,
+  messageId = '',
+  title,
+  icon,
+  actions: customPromptActions = [],
+}: {
+  type: IPageSummaryType
+  messageId: string
+  title: string
+  icon?: IContextMenuIconKey
+  actions: ISetActionsType
+}) => {
+  try {
+    const currentCustomPromptActions = cloneDeep(customPromptActions)
+
+    const actions = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[type].data.actions!)
+    const askActionIndex = actions.findIndex(
+      (action) => action.type === 'ASK_CHATGPT',
+    )
+
+    if (askActionIndex !== -1) {
+      actions.splice(askActionIndex, 1, ...currentCustomPromptActions)
+    } else {
+      actions.push(...currentCustomPromptActions)
+    }
+
+    // if (messageId) {
+    //   const defActions: ISetActionsType = [
+    //     {
+    //       type: 'CHAT_MESSAGE',
+    //       parameters: {
+    //         ActionChatMessageOperationType: 'update',
+    //         ActionChatMessageConfig: {
+    //           type: 'ai',
+    //           messageId,
+    //           text: '',
+    //           originalMessage: {
+    //             metadata: {
+    //               isComplete: false,
+    //               copilot: {
+    //                 steps: [
+    //                   {
+    //                     title,
+    //                     status: 'loading',
+    //                     icon,
+    //                     value: '{{CURRENT_WEBPAGE_TITLE}}',
+    //                   },
+    //                 ],
+    //               },
+    //               title: {
+    //                 title: title || 'Summary',
+    //               },
+    //               deepDive:
+    //                 type === 'YOUTUBE_VIDEO_SUMMARY'
+    //                   ? []
+    //                   : {
+    //                       title: {
+    //                         title: '',
+    //                         titleIcon: '',
+    //                       },
+    //                       value: '',
+    //                     },
+    //             },
+    //             content: {
+    //               title: {
+    //                 title: 'noneShowContent', //隐藏之前的summary 因为content无法被undefined重制为空
+    //               },
+    //               text: '',
+    //               contentType: 'text',
+    //             },
+    //             includeHistory: false,
+    //           },
+    //         } as IAIResponseMessage,
+    //       },
+    //     },
+    //   ]
+    //   actions.push(...defActions)
+    // }
+
+    return actions
+  } catch (err) {
+    console.error(err)
+  }
+  return []
 }

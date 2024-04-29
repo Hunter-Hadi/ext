@@ -22,6 +22,7 @@ export class ActionFetchActions extends Action {
         this.parameters.template || '',
       )
       engine.shortcutsEngine?.pushActions(actions, 'after')
+      debugger
       this.output = params.LAST_AI_OUTPUT || ''
     } catch (e) {
       this.error = (e as any).toString()

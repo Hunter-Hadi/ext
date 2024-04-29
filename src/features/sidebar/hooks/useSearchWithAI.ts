@@ -30,8 +30,11 @@ const useSearchWithAI = () => {
     updateSidebarConversationType,
   } = useSidebarSettings()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const { updateClientConversationLoading, clientConversation } =
-    useClientConversation()
+  const {
+    updateClientConversationLoading,
+    clientConversation,
+    currentConversationId,
+  } = useClientConversation()
   const { isPayingUser } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
@@ -99,7 +102,9 @@ const useSearchWithAI = () => {
           )
         } else {
           await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
-          authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI')
+          authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
+            conversationId: currentConversationId,
+          })
           updateClientConversationLoading(false)
           return
         }

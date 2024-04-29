@@ -40,7 +40,8 @@ const usePageSummary = () => {
   const { isPayingUser } = useUserInfo()
 
   const { askAIWIthShortcuts } = useClientChat()
-  const { createConversation, pushPricingHookMessage } = useClientConversation()
+  const { createConversation, pushPricingHookMessage, currentConversationId } =
+    useClientConversation()
   const isGeneratingPageSummaryRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const clientWritingMessageRef = useRef(clientWritingMessage)
@@ -136,7 +137,9 @@ const usePageSummary = () => {
               [],
             )
             await pushPricingHookMessage('PAGE_SUMMARY')
-            authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
+            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+              conversationId: currentConversationId,
+            })
             isGeneratingPageSummaryRef.current = false
             updateClientConversationLoading(false)
             return

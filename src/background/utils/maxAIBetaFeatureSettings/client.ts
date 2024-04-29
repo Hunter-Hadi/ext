@@ -44,7 +44,7 @@ export const clientGetMaxAIBetaFeatureSettings =
       const cacheSettings = settings[MAXAI_BETA_FEATURES_SAVE_KEY]
       // 如果缓存的数据未过期，则直接返回
       if (
-        cacheSettings.lastModified + MAXAI_FETCH_BETA_FEATURES_CYCLE_TIME <
+        cacheSettings.lastModified + MAXAI_FETCH_BETA_FEATURES_CYCLE_TIME >
         new Date().getTime()
       ) {
         return cacheSettings.data

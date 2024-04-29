@@ -17,7 +17,7 @@ const AutoSyncConversation: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
-  const { autoSyncConversation, conversationAutoSyncState } =
+  const { autoSyncConversation, conversationAutoSyncState, enabled } =
     useSyncConversation()
   const { currentConversationId } = useClientConversation()
   /**
@@ -27,7 +27,7 @@ const AutoSyncConversation: FC<{
    */
   const isSyncingRef = React.useRef(false)
   useEffect(() => {
-    if (!currentConversationId || isSyncingRef.current) {
+    if (!currentConversationId || isSyncingRef.current || !enabled) {
       return
     }
     console.log('AutoSyncConversation', currentConversationId)
@@ -45,7 +45,7 @@ const AutoSyncConversation: FC<{
     return () => {
       window.removeEventListener('focus', executeAutoSyncConversation)
     }
-  }, [currentConversationId])
+  }, [currentConversationId, enabled])
   return (
     <Stack
       direction={'row'}

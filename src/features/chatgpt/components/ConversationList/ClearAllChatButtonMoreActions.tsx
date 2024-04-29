@@ -20,6 +20,7 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
   disablePortal,
 }) => {
   const {
+    enabled,
     resetConversationSyncGlobalState,
     syncConversationsByIds,
     conversationSyncGlobalState,
@@ -110,6 +111,9 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
       setLoadingRemoteConversations(false)
     }
   }, [open])
+  if (!enabled) {
+    return null
+  }
   return (
     <>
       <DropdownIconButton

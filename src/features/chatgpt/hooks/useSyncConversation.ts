@@ -6,14 +6,17 @@ import {
   useRecoilCallback,
   useRecoilState,
   useRecoilValue,
+  useSetRecoilState,
 } from 'recoil'
 
 import { IChatConversation } from '@/background/src/chatConversations'
+import { clientGetMaxAIBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/client'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import { wait } from '@/utils'
 import Log from '@/utils/Log'
@@ -31,6 +34,8 @@ const ConversationSyncGlobalState = atom<{
   syncTotalConversationCount: number
   syncConversationStep: number
   syncConversationStatus: SyncStatus
+  loaded: boolean
+  enabled: boolean
 }>({
   key: 'ConversationSyncGlobalState',
   default: {
@@ -39,6 +44,8 @@ const ConversationSyncGlobalState = atom<{
     syncSuccessConversationCount: 0,
     syncTotalConversationCount: 0,
     syncConversationStatus: SyncStatus.Idle,
+    loaded: false,
+    enabled: false,
   },
 })
 
@@ -155,27 +162,24 @@ const checkConversationNeedSync = async (conversationId: string) => {
   const localConversationMessagesIds = localMessages.map(
     (message) => message.messageId,
   )
-  //如果远程的消息比本地的多，那么看看远程是不是都有本地的
+  // 先对比本地和远程的消息数量
   if (
-    remoteConversationMessagesIds.length > localConversationMessagesIds.length
+    localConversationMessagesIds.length !== remoteConversationMessagesIds.length
   ) {
-    for (const localMessageId of localConversationMessagesIds) {
-      if (!remoteConversationMessagesIds.includes(localMessageId)) {
-        diffCount++
-      }
-    }
-    if (localConversationMessagesIds.length === 0) {
-      diffCount = remoteConversationMessagesIds.length
-    }
+    diffCount = Math.max(
+      localConversationMessagesIds.length,
+      remoteConversationMessagesIds.length,
+    )
   } else {
-    // 如果本地的消息比远程的多，那么看看本地是不是都有远程的
-    for (const remoteMessageId of remoteConversationMessagesIds) {
-      if (!localConversationMessagesIds.includes(remoteMessageId)) {
+    // 对比消息的messageId, 此时两个数组长度一定相等，所以只需要diff差异
+    for (let i = 0; i < localConversationMessagesIds.length; i++) {
+      if (
+        remoteConversationMessagesIds.indexOf(
+          localConversationMessagesIds[i],
+        ) === -1
+      ) {
         diffCount++
       }
-    }
-    if (remoteConversationMessagesIds.length === 0) {
-      diffCount = localConversationMessagesIds.length
     }
   }
   syncLog.info(conversationId, diffCount > 0 ? `需要同步` : `不需要同步`)
@@ -379,12 +383,15 @@ export const useSyncConversation = () => {
         let step = 0
         let successCount = 0
         const totalCount = conversationIds.length
-        set(ConversationSyncGlobalState, {
-          activeConversationId: '',
-          syncConversationStatus: SyncStatus.Uploading,
-          syncConversationStep: 0,
-          syncSuccessConversationCount: 0,
-          syncTotalConversationCount: conversationIds.length,
+        set(ConversationSyncGlobalState, (prev) => {
+          return {
+            ...prev,
+            activeConversationId: '',
+            syncConversationStatus: SyncStatus.Uploading,
+            syncConversationStep: 0,
+            syncSuccessConversationCount: 0,
+            syncTotalConversationCount: conversationIds.length,
+          }
         })
         for (const conversationId of conversationIds) {
           try {
@@ -570,14 +577,18 @@ export const useSyncConversation = () => {
     [t],
   )
   const resetConversationSyncGlobalState = () => {
-    setConversationSyncGlobalState({
-      activeConversationId: '',
-      syncConversationStep: 0,
-      syncSuccessConversationCount: 0,
-      syncTotalConversationCount: 0,
-      syncConversationStatus: SyncStatus.Idle,
+    setConversationSyncGlobalState((prev) => {
+      return {
+        ...prev,
+        activeConversationId: '',
+        syncConversationStep: 0,
+        syncSuccessConversationCount: 0,
+        syncTotalConversationCount: 0,
+        syncConversationStatus: SyncStatus.Idle,
+      }
     })
   }
+
   return {
     conversationAutoSyncState,
     conversationSyncState,
@@ -585,6 +596,24 @@ export const useSyncConversation = () => {
     syncConversationsByIds,
     autoSyncConversation,
     resetConversationSyncGlobalState,
+    enabled: conversationSyncGlobalState.enabled,
+    loaded: conversationSyncGlobalState.loaded,
   }
+}
+export const useInitSyncConversation = () => {
+  const setConversationSyncGlobalState = useSetRecoilState(
+    ConversationSyncGlobalState,
+  )
+  useEffectOnce(() => {
+    clientGetMaxAIBetaFeatureSettings().then((settings) => {
+      setConversationSyncGlobalState((prev) => {
+        return {
+          ...prev,
+          loaded: true,
+          enabled: settings.chat_sync,
+        }
+      })
+    })
+  })
 }
 export default useSyncConversation

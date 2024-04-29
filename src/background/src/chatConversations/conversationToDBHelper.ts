@@ -1,6 +1,7 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
 import { IChatConversation } from '@/background/src/chatConversations/index'
+import { backgroundGetBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/background'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import {
   getMaxAIChromeExtensionAccessToken,
@@ -20,6 +21,11 @@ export const maxAIRequest = async (path: string, data: any) => {
   })
 }
 
+const isEnableSyncConversation = async () => {
+  const settings = await backgroundGetBetaFeatureSettings()
+  return settings.chat_sync
+}
+
 /**
  * 获取DB中的conversation的简要信息
  * @description
@@ -28,6 +34,9 @@ export const maxAIRequest = async (path: string, data: any) => {
  * @param conversationIds
  */
 export const getDBConversationExist = async (conversationIds: string[]) => {
+  if (!(await isEnableSyncConversation())) {
+    return
+  }
   await maxAIRequest('/conversation/get_conversations_basic_by_ids', {
     conversation_ids: conversationIds,
   })
@@ -38,6 +47,9 @@ export const getDBConversationExist = async (conversationIds: string[]) => {
  * @param conversationId
  */
 export const getDBConversationDetail = async (conversationId: string) => {
+  if (!(await isEnableSyncConversation())) {
+    return
+  }
   await maxAIRequest('/conversation/get_conversation', {
     conversation_id: conversationId,
   })
@@ -50,6 +62,9 @@ export const getDBConversationDetail = async (conversationId: string) => {
 export const addOrUpdateDBConversation = async (
   conversation: IChatConversation,
 ) => {
+  if (!(await isEnableSyncConversation())) {
+    return
+  }
   const uploadConversation: any = cloneDeep(conversation)
   if (uploadConversation) {
     if (!uploadConversation.authorId) {
@@ -72,6 +87,9 @@ export const shareConversation = async (
     share_enabled: boolean
   },
 ) => {
+  if (!(await isEnableSyncConversation())) {
+    return
+  }
   await maxAIRequest('/conversation/share_conversation', {
     conversation_id: conversationId,
     share_enabled: shareConfig.share_enabled,
@@ -84,6 +102,9 @@ const maxAIMessageRequest = async (
   conversation: IChatConversation,
 ) => {
   try {
+    if (!(await isEnableSyncConversation())) {
+      return undefined
+    }
     let response = await maxAIRequest(path, data)
     if (response.status === 404) {
       // 说明conversation不存在, 需要创建
@@ -106,6 +127,9 @@ export const addOrUpdateDBConversationMessages = async (
   messages: IChatMessage[],
 ) => {
   try {
+    if (!(await isEnableSyncConversation())) {
+      return false
+    }
     const filteredMessages = messages
       .filter((message) => {
         if (isAIMessage(message)) {
@@ -155,6 +179,9 @@ export const deleteDBConversationMessages = async (
   messageIds: string[],
 ) => {
   try {
+    if (!(await isEnableSyncConversation())) {
+      return false
+    }
     console.log('DB_Conversation deleteMessages', messageIds)
     const response = await maxAIMessageRequest(
       '/conversation/delete_messages',
@@ -189,6 +216,9 @@ export const getDBConversationMessages = async (
   },
 ) => {
   try {
+    if (!(await isEnableSyncConversation())) {
+      return
+    }
     await maxAIMessageRequest(
       '/conversation/get_messages',
       {

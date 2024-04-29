@@ -13,6 +13,7 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { useInitSyncConversation } from '@/features/chatgpt/hooks/useSyncConversation'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
@@ -141,6 +142,8 @@ const AppInit = () => {
   })
   // 初始化one-click referral, https://app.maxai.me/referral
   useInitOneClickShareButton()
+  // 初始化是否开启同步对话
+  useInitSyncConversation()
   return (
     <>
       <MaxAISubscriptionUpdate />

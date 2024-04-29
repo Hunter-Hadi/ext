@@ -108,6 +108,11 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
       }
       slackSpecialStyle.innerHTML = `.p-client,.p-ia4_client,.p-ia4_client_container,.p-theme_background,.p-client_workspace_wrapper{width:100%!important;} .c-popover--z_above_fs{z-index:2147483502!important;}`
     }
+
+    // twitter下html添加relative导致context window的Popper位置错误
+    if (host === 'twitter.com') {
+      document.body.style.position = 'relative'
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
@@ -199,6 +204,10 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
         '#MAXAI__SLACK_SPECIAL_STYLE',
       )
       slackSpecialStyle?.remove()
+    }
+
+    if (host === 'twitter.com') {
+      document.body.style.position = ''
     }
   }
   // 浏览器自带的pdf文件阅读器

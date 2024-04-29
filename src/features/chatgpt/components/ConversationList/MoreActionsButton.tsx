@@ -39,6 +39,7 @@ const MoreActionsButton: FC<{
   } = props
   const {
     resetConversation,
+    currentConversationId,
     currentSidebarConversationType,
   } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
@@ -252,7 +253,9 @@ const MoreActionsButton: FC<{
                 variant={'contained'}
                 color={'error'}
                 onClick={async () => {
-                  await resetConversation()
+                  if (currentConversationId === conversationId) {
+                    await resetConversation()
+                  }
                   await clientForceRemoveConversation(conversationId)
                   onDelete?.()
                   // resetConversation里已经做了处理先注释掉下面的代码防止重复创建

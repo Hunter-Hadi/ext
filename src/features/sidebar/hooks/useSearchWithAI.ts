@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -20,18 +19,16 @@ import {
   isShowChatBox,
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
-import { AppLocalStorageState } from '@/store'
 
 const useSearchWithAI = () => {
+  const { currentSidebarConversationType, updateSidebarConversationType } =
+    useSidebarSettings()
   const {
-    currentSidebarConversationId,
-    currentSidebarConversationType,
-    currentSidebarConversationMessages,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
-  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const { updateClientConversationLoading, clientConversation } =
-    useClientConversation()
+    currentConversationId,
+    updateClientConversationLoading,
+    clientConversationMessages,
+    clientConversation,
+  } = useClientConversation()
   const { isPayingUser } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
@@ -42,10 +39,8 @@ const useSearchWithAI = () => {
   const memoPrevQuestions = useMemo(() => {
     const memoQuestions = []
     // 从后往前，直到include_history为false
-    for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
-      const message = currentSidebarConversationMessages[
-        i
-      ] as IAIResponseMessage
+    for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
+      const message = clientConversationMessages[i] as IAIResponseMessage
       memoQuestions.unshift(
         message?.originalMessage?.metadata?.title?.title || message.text || '',
       )
@@ -56,7 +51,7 @@ const useSearchWithAI = () => {
       }
     }
     return memoQuestions
-  }, [currentSidebarConversationMessages])
+  }, [clientConversationMessages])
   const createSearchWithAI = async (query: string, includeHistory: boolean) => {
     if (isFetchingRef.current) {
       return
@@ -70,10 +65,8 @@ const useSearchWithAI = () => {
     // 进入loading
     updateClientConversationLoading(true)
     if (
-      appLocalStorage.sidebarSettings?.search?.conversationId &&
-      (await getConversation(
-        appLocalStorage.sidebarSettings?.search?.conversationId,
-      ))
+      currentConversationId &&
+      (await getConversation(currentConversationId))
     ) {
       // conversation存在
     } else {
@@ -155,15 +148,11 @@ const useSearchWithAI = () => {
   }
   const regenerateSearchWithAI = async () => {
     try {
-      if (currentSidebarConversationId) {
+      if (currentConversationId) {
         let lastAIResponse: IAIResponseMessage | null = null
         let deleteCount = 0
-        for (
-          let i = currentSidebarConversationMessages.length - 1;
-          i >= 0;
-          i--
-        ) {
-          const message = currentSidebarConversationMessages[i]
+        for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
+          const message = clientConversationMessages[i]
           deleteCount++
           if (message.type === 'ai') {
             lastAIResponse = message as IAIResponseMessage
@@ -177,7 +166,7 @@ const useSearchWithAI = () => {
         if (lastQuestion) {
           await clientChatConversationModifyChatMessages(
             'delete',
-            currentSidebarConversationId,
+            currentConversationId,
             deleteCount,
             [],
           )
@@ -192,7 +181,7 @@ const useSearchWithAI = () => {
           // 如果没有找到last question，那么就重新生成Conversation
           await clientChatConversationModifyChatMessages(
             'delete',
-            currentSidebarConversationId,
+            currentConversationId,
             9999,
             [],
           )

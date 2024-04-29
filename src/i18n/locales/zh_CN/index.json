@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5是谷歌的下一代模型，提供了增强的性能、高效的MoE架构，并在长上下文理解方面取得突破，支持最多100万个标记窗口，实现了对文本、代码、图像、音频和视频处理的先进功能。",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "升级以访问具有视觉功能的gemini-1.5-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "谷歌最新和最先进的模型。它提供更快的速度，突破性的1M令牌上下文窗口，增强的安全性以及在文本、代码、图像、音频和视频处理方面的高级功能。",
-    "immersive_chat__chat_history__restore_button__title": "恢复聊天记录",
+    "immersive_chat__chat_history__restore_button__title": "同步聊天记录",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "是的，恢复",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消",
     "immersive_chat__chat_history__restore_modal__toast1__title": "已恢复 1 个对话",

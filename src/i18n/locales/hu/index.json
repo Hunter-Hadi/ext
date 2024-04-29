@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "A Gemini 1.5 a Google következő generációs modellje, amely javított teljesítményt, hatékony MoE architektúrát és áttörést jelent a hosszú kontextus megértésében akár 1 millió token ablakkal, lehetővé téve fejlett képességeket a szöveg-, kód-, kép-, hang- és videófeldolgozás területén.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Frissítés a gemini-1.5-prohoz látással",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "A Google legújabb és legfejlettebb modellje. Gyorsabb sebességet, áttörést jelentő 1M tokenes kontextusablakot, fejlett biztonsági funkciókat és haladó képességeket kínál a szöveg-, kód-, kép-, hang- és videofeldolgozás területén.",
-    "immersive_chat__chat_history__restore_button__title": "Chatok helyreállítása",
+    "immersive_chat__chat_history__restore_button__title": "Chats szinkronizálása",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Igen, helyreállítás",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Mégse",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 beszélgetés visszaállítva",

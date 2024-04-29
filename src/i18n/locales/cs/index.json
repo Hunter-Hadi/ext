@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 je další generace modelu od Googlu nabízející vylepšený výkon, efektivní architekturu MoE a průlom ve schopnosti porozumět dlouhému kontextu s okny o délce až 1 milion tokenů, což umožňuje pokročilé funkce při zpracování textu, kódu, obrázků, zvuku a videa.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade pro přístup k gemini-1.5-pro s funkcí vidění",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Nejnovější a nejvyspělejší model od Googlu. Nabízí rychlejší rychlost, průlomové okno kontextu s 1 milionem tokenů, zvýšenou bezpečnost a pokročilé schopnosti v textovém, kódovém, obrazovém, zvukovém a video zpracování.",
-    "immersive_chat__chat_history__restore_button__title": "Obnovit chaty",
+    "immersive_chat__chat_history__restore_button__title": "Synchronizovat chaty",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ano, obnovit",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Zrušit",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovená 1 konverzace",

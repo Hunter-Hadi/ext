@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 ist Googles neuestes Modell, das eine verbesserte Leistung, eine effiziente MoE-Architektur und einen Durchbruch im Verständnis von langem Kontext mit bis zu 1 Million Token-Fenstern bietet und fortschrittliche Funktionen in den Bereichen Text, Code, Bild, Audio und Videoverarbeitung ermöglicht.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade, um auf gemini-1.5-pro mit Vision zuzugreifen",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Das neueste und fortschrittlichste Modell von Google. Es bietet eine schnellere Geschwindigkeit, ein bahnbrechendes Kontextfenster von 1 Million Token, verbesserte Sicherheit und erweiterte Fähigkeiten in den Bereichen Text-, Code-, Bild-, Audio- und Videobearbeitung.",
-    "immersive_chat__chat_history__restore_button__title": "Chats wiederherstellen",
+    "immersive_chat__chat_history__restore_button__title": "Chats synchronisieren",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, wiederherstellen",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Abbrechen",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 Unterhaltung wiederhergestellt",

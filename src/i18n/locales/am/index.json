@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "ገሚኒ 1.5 የGoogle የቀጥታ ማስተዋል ነው፣ የተለመደውን አስተካክል የMoE አርእስትን እና የምርት-ማስተላል ማስተላለፍን በማስተላለፍ የተለመደውን የ1 ሜትኖን ቶክን የሚያስተላልፍ የሚሆን የማስተላለፍ እንዲሁም የጽሑፍ፣ የኮድ፣ የምርት፣ የድም፣ እና የቪዲዮ እቃዎች አሁን ያግኙ።",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "የGoogle የቅርብ እና የተስፋ ሞዴሎችን ያግኙ፣ በቀጥታ 1M ቶክን የሚያስፈልገውን ምልክትንና የተስፋ ቁልፍን የሚያስፈልገውን መስራት እንዲሆን ይጠቀሙ።",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "የገሚኒ-1.5-ፕሮፕ እንዴት ይሁኑ",
-    "immersive_chat__chat_history__restore_button__title": "የቀጥታ መረጃዎችን መስጠት",
+    "immersive_chat__chat_history__restore_button__title": "የቀረበ ልዩ ውጤቶች መሰረት",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "አዎ, መስጠት",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ይቅር",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 የነጻ የቀረበ የአስተዳደር",

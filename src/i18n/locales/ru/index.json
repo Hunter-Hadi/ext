@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 - это следующее поколение модели Google, предлагающей улучшенную производительность, эффективную архитектуру MoE и прорыв в понимании длинного контекста с помощью окон из 1 миллиона токенов, обеспечивая расширенные возможности в области обработки текста, кода, изображений, аудио и видео.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Обновите для доступа к gemini-1.5-pro с функцией видения",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Новейшая и самая передовая модель от Google. Она предлагает более быструю скорость, прорывное контекстное окно из 1 миллиона токенов, улучшенную безопасность и расширенные возможности в области обработки текста, кода, изображений, аудио и видео.",
-    "immersive_chat__chat_history__restore_button__title": "Восстановить чаты",
+    "immersive_chat__chat_history__restore_button__title": "Синхронизировать чаты",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Да, восстановить",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Отмена",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Восстановлен 1 разговор",

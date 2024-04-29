@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5は、高性能なモデルであり、効率的なMoEアーキテクチャを提供し、最大100万トークンウィンドウによる長文脈理解の突破を実現しており、テキスト、コード、画像、音声、ビデオ処理などの高度な機能を可能にします。",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ジェミニ-1.5-proを利用するためにアップグレード",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google の最新かつ最も高度なモデルです。より高速な処理、画期的な 1M トークンのコンテキストウィンドウ、強化された安全性、およびテキスト、コード、画像、音声、ビデオ処理における高度な機能を提供します。",
-    "immersive_chat__chat_history__restore_button__title": "チャットを復元",
+    "immersive_chat__chat_history__restore_button__title": "チャットを同期",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "はい、復元",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "キャンセル",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1つの会話が復元されました",

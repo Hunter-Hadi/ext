@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5는 구글의 차세대 모델로, 향상된 성능, 효율적인 MoE 아키텍처, 최대 1백만 토큰 윈도우를 통한 긴 문맥 이해력의 돌파구를 제공하여 텍스트, 코드, 이미지, 오디오 및 비디오 처리를 위한 고급 기능을 가능하게 합니다.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "비전을 갖춘 gemini-1.5-pro에 액세스하려면 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "구글의 최신 및 가장 고급 모델인 Gemini-1.5입니다. 더 빠른 속도, 획기적인 1백만 토큰 컨텍스트 창, 향상된 안전 기능 및 텍스트, 코드, 이미지, 오디오, 비디오 처리를 위한 고급 기능을 제공합니다.",
-    "immersive_chat__chat_history__restore_button__title": "채팅 복원",
+    "immersive_chat__chat_history__restore_button__title": "채팅 동기화",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "예, 복원",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "취소",
     "immersive_chat__chat_history__restore_modal__toast1__title": "복원된 대화 1개",

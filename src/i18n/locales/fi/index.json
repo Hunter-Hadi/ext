@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 on Googlen seuraavan sukupolven malli, joka tarjoaa parannetun suorituskyvyn, tehokkaan MoE-arkkitehtuurin ja läpimurron pitkän kontekstin ymmärtämisessä jopa 1 miljoonan merkin ikkunoilla, mahdollistaen kehittyneitä toimintoja teksti-, koodi-, kuva-, ääni- ja videokäsittelyssä.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Päivitä pääsy gemini-1.5-prohon näön avulla",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googlen uusin ja kehittynein malli. Se tarjoaa nopeampaa suorituskykyä, läpimurron 1M sanan kontekstiruudun, lisääntyneen turvallisuuden ja edistyneet ominaisuudet teksti-, koodi-, kuva-, ääni- ja videokäsittelyssä.",
-    "immersive_chat__chat_history__restore_button__title": "Palauta keskustelut",
+    "immersive_chat__chat_history__restore_button__title": "Synkronoi keskustelut",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Kyllä, palauta",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Peruuta",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 keskustelu palautettu",

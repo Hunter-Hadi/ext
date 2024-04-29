@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 är Googles nästa generations modell som erbjuder förbättrad prestanda, en effektiv MoE-arkitektur och en genombrott inom långkontextförståelse med upp till 1 miljon tokenfönster, vilket möjliggör avancerade funktioner inom text-, kod-, bild-, ljud- och videobehandling.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Uppgradera för att få tillgång till gemini-1.5-pro med vision",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyaste och mest avancerade modell. Den erbjuder snabbare hastighet, ett genombrott med 1M tokens kontextfönster, förstärkt säkerhet och avancerade funktioner inom text-, kod-, bild-, ljud- och videobehandling.",
-    "immersive_chat__chat_history__restore_button__title": "Återställ chattar",
+    "immersive_chat__chat_history__restore_button__title": "Synkronisera chattar",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, återställ",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Avbryt",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 konversation återställd",

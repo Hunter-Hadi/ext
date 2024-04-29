@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Το Gemini 1.5 είναι το μοντέλο επόμενης γενιάς της Google που προσφέρει βελτιωμένη απόδοση, μια αποδοτική αρχιτεκτονική MoE και μια καινοτομία στην κατανόηση μεγάλου πλαισίου με έως και 1 εκατομμύριο διακριτά τεκμήρια, επιτρέποντας προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Αναβάθμιση για πρόσβαση στο gemini-1.5-pro με όραση",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Το νεότερο και πιο προηγμένο μοντέλο της Google. Προσφέρει γρηγορότερη ταχύτητα, ένα επαναστατικό παράθυρο περιβάλλοντος 1 εκατομμυρίου λέξεων, βελτιωμένη ασφάλεια και προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο.",
-    "immersive_chat__chat_history__restore_button__title": "Επαναφορά συνομιλιών",
+    "immersive_chat__chat_history__restore_button__title": "Συγχρονισμός συνομιλιών",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ναι, επαναφορά",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ακύρωση",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 συνομιλία αποκαταστάθηκε",

@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "Ang Gemini 1.5 ay ang susunod na henerasyon ng modelo ng Google na nag-aalok ng pinahusay na performance, isang mabisang arkitektura ng MoE, at isang pag-usbong sa pang-unawa sa mahabang konteksto na may hanggang sa 1 milyong token na bintana, na nagbibigay-daan sa mga advanced na kakayahan sa pagsasaproseso ng teksto, code, imahe, tunog, at video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Mag-upgrade para ma-access ang gemini-1.5-pro na may vision",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Ang pinakabagong at pinakasusi model ng Google. Nag-aalok ito ng mas mabilis na bilis, isang breakthrough 1M token context window, pinabuting kaligtasan, at advanced na kakayahan sa text, code, image, audio, at video processing.",
-    "immersive_chat__chat_history__restore_button__title": "Ibalik ang mga chat",
+    "immersive_chat__chat_history__restore_button__title": "I-sync ang mga chat",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Oo, ibalik",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Kanselahin",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 usapan na ibinalik",

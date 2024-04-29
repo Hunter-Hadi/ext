@@ -693,7 +693,7 @@
     "provider__gemini__model__gemini_1_5_pro__description": "ஜெமினி 1.5 என்பது கூகிளின் அடுத்த தலைவர் மாதிரி மேம்படுத்தப்பட்ட செயல்பாடு, ஒரு பயன்பாட்டு MoE வடிவமைப்பு, மீதமுள்ள உருவாக்கம் மற்றும் 1 மில்லியன் டோக்கன் சாப்பிடும் சாப்பிட்டியல் செயல்பாடுகளுக்கு முன்னுரிமையான முறையில் நடவடிக்கைகளை அனுமதிக்கின்றது, உரை, குறியீடு, படம், ஒலி மற்றும் காணொளி செயல்பாடுகளின் மூலம் மேம்படுத்தப்படும் நன்மைகளை வழங்குகின்றது.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "கண்ணோட்டத்துடன் gemini-1.5-pro அணுகலை மேம்படுத்துக",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google-ன் புதியதும் மிகவும் முன்னேற்றமுள்ள மாதிரி. அதிக வேகத்தில், ஒரு புறக்கணிப்பு 1M டோக்கன் உள்ளடக்க சந்தர்ப்பங்கள், மேம்படுத்தப்பட்ட பாதுகாப்பு மற்றும் உயர்நிலை திறன்களை உடையது உரை, குறியீடு, படம், ஒலி, ஒலிப்படம் மற்றும் காட்சி செயலாக்கங்களில்.",
-    "immersive_chat__chat_history__restore_button__title": "உள்ளிடப்பட்ட அனைத்து உரைகளையும் மீட்டமை",
+    "immersive_chat__chat_history__restore_button__title": "அமைப்பு உரையாடல்",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ஆமாம், மீட்டமை",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ரத்து செய்",
     "sidebar__button__upgrade_to_plan": "{{PLAN}} க்கு மேம்படுத்து",

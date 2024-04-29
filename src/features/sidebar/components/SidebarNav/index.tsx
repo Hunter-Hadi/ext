@@ -14,6 +14,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { APP_VERSION } from '@/constants'
 import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
+import SidebarInfoCollectionModal from '@/features/sidebar/components/SidebarNav/SidebarInfoCollectionModal'
 import SidebarReleaseNotesButton from '@/features/sidebar/components/SidebarNav/SidebarReleaseNotesButton'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -21,7 +22,6 @@ import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useCommands from '@/hooks/useCommands'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import SidebarInfoCollectionModal from '@/features/sidebar/components/SidebarNav/SidebarInfoCollectionModal'
 
 interface IProps {
   sx?: SxProps
@@ -40,7 +40,8 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
 
   const openContactUs = () => {
     setOpen(false)
-    window.open(CHROME_EXTENSION_MAIL_TO)
+    // 立马跳转的话返回此页面modal还没消失会闪一下
+    setTimeout(() => window.open(CHROME_EXTENSION_MAIL_TO), 0)
   }
 
   return (

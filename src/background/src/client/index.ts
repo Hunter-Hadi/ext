@@ -882,14 +882,8 @@ export const ClientMessageInit = () => {
           }
         }
         case 'Client_logUserUsageInfo': {
+          const { disableCollect, ...clientData } = data
           const userInfo = await getChromeExtensionUserInfo(false)
-          const allExtensions = await Browser.management.getAll()
-          const selfExtension = await Browser.management.getSelf()
-          // const platformInfo = await Browser.runtime.getPlatformInfo()
-          const isAllowedFile =
-            await Browser.extension.isAllowedFileSchemeAccess()
-          const isAllowedIncognito =
-            await Browser.extension.isAllowedIncognitoAccess()
           // const formatExt = (ext: Browser.Management.ExtensionInfo) => {
           //   if (ext.hostPermissions?.[0] === '<all_urls>') {
           //     // 允许访问所有网站
@@ -901,21 +895,29 @@ export const ClientMessageInit = () => {
           //   const filterKeys = ['description', 'homepageUrl', 'icons', 'shortName']
           //   return {}
           // }
+          const sendData: Record<string, any> = {
+            userInfo,
+            ...clientData,
+          }
+          if (!disableCollect) {
+            const allExtensions = await Browser.management.getAll()
+            const selfExtension = await Browser.management.getSelf()
+            const isAllowedFile =
+              await Browser.extension.isAllowedFileSchemeAccess()
+            const isAllowedIncognito =
+              await Browser.extension.isAllowedIncognitoAccess()
+            Object.assign(sendData, {
+              allExtensions,
+              selfExtension,
+              isAllowedFile,
+              isAllowedIncognito,
+            })
+          }
+          console.log('Client_logUserUsageInfo', sendData)
           backgroundSendMaxAINotification(
             'CLIENT',
             '[Client] Collect user usage information',
-            JSON.stringify(
-              {
-                ...data,
-                userInfo,
-                allExtensions,
-                selfExtension,
-                isAllowedFile,
-                isAllowedIncognito,
-              },
-              null,
-              4,
-            ),
+            JSON.stringify(sendData, null, 4),
           )
           return {
             success: true,

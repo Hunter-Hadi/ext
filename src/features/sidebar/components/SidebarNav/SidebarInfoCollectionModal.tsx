@@ -31,16 +31,25 @@ const SidebarInfoCollectionModal: FC<IProps> = (props) => {
   }, [open])
 
   const handleCancel = () => {
+    clientLogUserUsageInfo({
+      logType: type,
+      inputContent: content,
+      disableCollect: true,
+    })
     onClose?.()
   }
 
   const handleConfirm = () => {
-    clientLogUserUsageInfo({ type, content })
+    clientLogUserUsageInfo({
+      logType: type,
+      inputContent: content,
+      disableCollect: !checked,
+    })
     onConfirm?.()
   }
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={handleCancel}>
       <Container
         sx={{
           position: 'absolute',
@@ -74,11 +83,7 @@ const SidebarInfoCollectionModal: FC<IProps> = (props) => {
             <Button variant={'outlined'} onClick={handleCancel}>
               {t('common:cancel')}
             </Button>
-            <Button
-              variant={'contained'}
-              onClick={handleConfirm}
-              disabled={!checked}
-            >
+            <Button variant={'contained'} onClick={handleConfirm}>
               {t('common:confirm')}
             </Button>
           </Stack>

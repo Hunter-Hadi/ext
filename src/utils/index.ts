@@ -275,21 +275,25 @@ export const clientRunBackgroundFunction = async <
  */
 export type IClientLogUserUsageInfoType = 'contact_us'
 export const clientLogUserUsageInfo = async (params: {
-  type: IClientLogUserUsageInfoType
-  content: string
+  logType: IClientLogUserUsageInfoType
+  inputContent: string
+  disableCollect?: boolean
 }) => {
-  const inIncognitoContext = await isIncognitoContext()
-  const platformInfo = await getPlatformInfo()
   const port = new ContentScriptConnectionV2({
     runtime: 'client',
   })
-  return await port.postMessage({
-    event: 'Client_logUserUsageInfo',
-    data: {
-      type: params.type,
+  const data: Record<string, any> = { ...params }
+  if (!params.disableCollect) {
+    const inIncognitoContext = await isIncognitoContext()
+    const platformInfo = await getPlatformInfo()
+    Object.assign(data, {
       inIncognitoContext,
       ...platformInfo,
-    },
+    })
+  }
+  return await port.postMessage({
+    event: 'Client_logUserUsageInfo',
+    data,
   })
 }
 

@@ -880,6 +880,38 @@ export const ClientMessageInit = () => {
             message: 'ok',
           }
         }
+        case 'Client_logUserUsageInfo': {
+          // TODO 收集用户信息
+          const userInfo = await getChromeExtensionUserInfo(false)
+          const allExtensions = await Browser.management.getAll()
+          const selfExtension = await Browser.management.getSelf()
+          const platformInfo = await Browser.runtime.getPlatformInfo()
+          const isAllowedFile =
+            await Browser.extension.isAllowedFileSchemeAccess()
+          const isAllowedIncognito =
+            await Browser.extension.isAllowedIncognitoAccess()
+          if (selfExtension.hostPermissions?.[0] === '<all_urls>') {
+            // 允许访问所有网站
+          } else if (selfExtension.hostPermissions?.length) {
+            // 允许访问特定网站
+          } else {
+            // 点击时
+          }
+          console.log('LOG_USER_USAGE_INFO', {
+            ...data,
+            userInfo,
+            allExtensions,
+            selfExtension,
+            isAllowedFile,
+            isAllowedIncognito,
+            platformInfo,
+          })
+          return {
+            success: true,
+            data: true,
+            message: 'ok',
+          }
+        }
         default:
           break
       }

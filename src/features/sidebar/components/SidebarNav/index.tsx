@@ -19,7 +19,7 @@ import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useCommands from '@/hooks/useCommands'
-import { chromeExtensionClientOpenPage } from '@/utils'
+import { chromeExtensionClientOpenPage, clientLogUserUsageInfo } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface IProps {
@@ -164,8 +164,10 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
           <IconButton
             data-testid={`maxai--sidebar--contact_us--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
-            target={'_blank'}
-            href={CHROME_EXTENSION_MAIL_TO}
+            onClick={() => {
+              clientLogUserUsageInfo({ type: 'contact_us', content: '' })
+              window.open(CHROME_EXTENSION_MAIL_TO)
+            }}
           >
             <EmailOutlinedIcon
               sx={{

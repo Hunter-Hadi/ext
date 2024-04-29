@@ -117,13 +117,20 @@ const clientUploadMessage = async (
   return result.data?.status === 'OK'
 }
 
-const checkConversationNeedSync = async (conversationId: string) => {
+const checkConversationNeedSync = async (
+  conversationId: string,
+): Promise<{
+  needSync: boolean
+  needSyncCount: number
+  totalCount: number
+}> => {
   const localConversation = await clientGetConversation(conversationId)
   if (!localConversation) {
     syncLog.info(conversationId, `本地没有会话, 需要同步`)
     return {
       needSync: true,
       needSyncCount: 0,
+      totalCount: 0,
     }
   }
   const localMessages = localConversation?.messages || []
@@ -138,6 +145,7 @@ const checkConversationNeedSync = async (conversationId: string) => {
     return {
       needSync: true,
       needSyncCount: localMessages.length || 0,
+      totalCount: localMessages.length || 0,
     }
   }
   // 判断messagesIds是否一致
@@ -154,15 +162,21 @@ const checkConversationNeedSync = async (conversationId: string) => {
     return {
       needSync: true,
       needSyncCount: localMessages.length || 0,
+      totalCount: localMessages.length || 0,
     }
   }
   const remoteConversationMessagesIds =
     remoteConversationMessagesIdsData.data.data || []
-  //判断diff
-  let diffCount = 0
+
   const localConversationMessagesIds = localMessages.map(
     (message) => message.messageId,
   )
+  const totalCount = Math.max(
+    localConversationMessagesIds.length,
+    remoteConversationMessagesIds.length,
+  )
+  //判断diff
+  let diffCount = 0
   // 先对比本地和远程的消息数量
   if (
     localConversationMessagesIds.length !== remoteConversationMessagesIds.length
@@ -187,6 +201,7 @@ const checkConversationNeedSync = async (conversationId: string) => {
   return {
     needSync: diffCount > 0,
     needSyncCount: diffCount,
+    totalCount,
   }
 }
 
@@ -452,8 +467,11 @@ export const useSyncConversation = () => {
                 return {
                   ...prev,
                   syncStatus: SyncStatus.Success,
+                  syncStep: checkResult.totalCount,
+                  syncTotalCount: checkResult.totalCount,
                 }
               })
+              await wait(500)
               continue
             } else {
               set(ConversationSyncStateFamily(conversationId), (prev) => {
@@ -462,7 +480,7 @@ export const useSyncConversation = () => {
                   syncStatus: SyncStatus.Uploading,
                   syncStep: 0,
                   syncSuccessCount: 0,
-                  syncTotalCount: checkResult.needSyncCount,
+                  syncTotalCount: checkResult.totalCount,
                 }
               })
             }
@@ -573,7 +591,7 @@ export const useSyncConversation = () => {
             })
           },
         )
-        await wait(1000)
+        await wait(500)
       },
     [t],
   )

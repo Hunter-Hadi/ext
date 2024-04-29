@@ -7,6 +7,7 @@ import {
   MAXAI_FETCH_BETA_FEATURES_CYCLE_TIME,
 } from '@/background/utils/maxAIBetaFeatureSettings/constant'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 const fetchMaxAIBetaFeatureSettings = async () => {
   const defaultSettings = getMaxAIBetaFeatureSettingsDefault()
@@ -23,10 +24,8 @@ const fetchMaxAIBetaFeatureSettings = async () => {
       },
     )
     if (result.data?.status === 'OK') {
-      const settings = result.data.data
-      if (Object.keys(settings).length >= Object.keys(defaultSettings).length) {
-        return settings
-      }
+      const remoteSettings = result.data.data
+      return mergeWithObject([defaultSettings, remoteSettings])
     }
     return defaultSettings
   } catch (e) {

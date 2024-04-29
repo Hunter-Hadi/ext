@@ -36,16 +36,6 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
     return [...new Set([...localConversationIds, ...dbConversationIds])]
   }, [localConversationIds, dbConversationIds])
   const handleOpen = async () => {
-    const userAllConversations = await clientGetUserAllConversations()
-    setLocalConversationIds(
-      // 过滤出没删除且消息数量大于0的会话
-      userAllConversations
-        .filter(
-          (conversation) =>
-            conversation.messages.length > 0 && conversation.isDelete !== true,
-        )
-        .map((conversation) => conversation.id),
-    )
     setOpen(true)
   }
   const handleClose = () => {
@@ -90,19 +80,36 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
           }
         }
       }
-      getPageConversations(0)
-        .then(() => {
-          if (isFree) {
-            return
-          }
-          setDbConversationIds(dbConversationIds)
-        })
-        .catch((e) => {
-          console.error(e)
-        })
-        .finally(() => {
-          setLoadingRemoteConversations(false)
-        })
+      // 先获取本地的会话
+      clientGetUserAllConversations().then((userAllConversations) => {
+        if (isFree) {
+          return
+        }
+        setLocalConversationIds(
+          // 过滤出没删除且消息数量大于0的会话
+          userAllConversations
+            .filter(
+              (conversation) =>
+                conversation.messages.length > 0 &&
+                conversation.isDelete !== true,
+            )
+            .map((conversation) => conversation.id),
+        )
+        // 获取远程的会话
+        getPageConversations(0)
+          .then(() => {
+            if (isFree) {
+              return
+            }
+            setDbConversationIds(dbConversationIds)
+          })
+          .catch((e) => {
+            console.error(e)
+          })
+          .finally(() => {
+            setLoadingRemoteConversations(false)
+          })
+      })
     }
     return () => {
       isFree = true
@@ -143,6 +150,11 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
         open={open}
         onClose={(e: React.MouseEvent) => {
           e.stopPropagation()
+          if (
+            conversationSyncGlobalState.syncConversationStatus === 'uploading'
+          ) {
+            return
+          }
           setOpen(false)
         }}
         sx={{
@@ -303,8 +315,14 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
                   'idle') && (
                 <>
                   <LoadingButton
-                    disabled={totalConversationIds.length === 0}
-                    loading={conversationSyncState.syncStatus === 'uploading'}
+                    disabled={
+                      conversationSyncGlobalState.syncConversationStatus ===
+                      'uploading'
+                    }
+                    loading={
+                      conversationSyncGlobalState.syncConversationStatus ===
+                      'uploading'
+                    }
                     variant={'outlined'}
                     onClick={async () => {
                       try {
@@ -319,7 +337,10 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
                     )}
                   </LoadingButton>
                   <Button
-                    disabled={conversationSyncState.syncStatus === 'uploading'}
+                    disabled={
+                      conversationSyncGlobalState.syncConversationStatus ===
+                      'uploading'
+                    }
                     variant={'contained'}
                     onClick={() => {
                       handleClose()

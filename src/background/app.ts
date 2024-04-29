@@ -644,9 +644,8 @@ const devMockConversation = async () => {
   if (isProduction) {
     return
   }
-  return
   const totalConversation = await ConversationManager.getAllConversation()
-  if (totalConversation.length < 5 || totalConversation.length > 100) {
+  if (totalConversation.length < 5 || totalConversation.length > 50) {
     return
   }
   const mergeMessages: IChatMessage[] = []

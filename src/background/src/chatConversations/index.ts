@@ -144,15 +144,11 @@ class ConversationDB {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
-        if (syncConversationToDB) {
-          conversation = await migratingToConversationV2(conversation)
-          console.log(
-            `DB_Conversation addOrUpdateConversation [同步会话][${reason}]`,
-            conversation,
-          )
-        } else {
-          // console.log(`DB_Conversation addOrUpdateConversation`, conversation)
-        }
+        conversation = await migratingToConversationV2(conversation)
+        console.log(
+          `DB_Conversation addOrUpdateConversation [同步会话][${reason}]`,
+          conversation,
+        )
         const db = await this.openDatabase()
         const transaction = db.transaction([this.objectStoreName], 'readwrite')
         const objectStore = transaction.objectStore(this.objectStoreName)

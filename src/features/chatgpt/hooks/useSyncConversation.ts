@@ -1,6 +1,12 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useTranslation } from 'react-i18next'
-import { atom, atomFamily, useRecoilCallback, useRecoilValue } from 'recoil'
+import {
+  atom,
+  atomFamily,
+  useRecoilCallback,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
@@ -132,7 +138,7 @@ const checkConversationNeedSync = async (conversationId: string) => {
     data: string[]
   }>('/conversation/get_message_ids', {
     conversation_id: conversationId,
-    page_size: 50,
+    page_size: 2000,
     sort: 'desc',
   })
   if (remoteConversationMessagesIdsData.data?.status !== 'OK') {
@@ -158,12 +164,18 @@ const checkConversationNeedSync = async (conversationId: string) => {
         diffCount++
       }
     }
+    if (localConversationMessagesIds.length === 0) {
+      diffCount = remoteConversationMessagesIds.length
+    }
   } else {
     // 如果本地的消息比远程的多，那么看看本地是不是都有远程的
     for (const remoteMessageId of remoteConversationMessagesIds) {
       if (!localConversationMessagesIds.includes(remoteMessageId)) {
         diffCount++
       }
+    }
+    if (remoteConversationMessagesIds.length === 0) {
+      diffCount = localConversationMessagesIds.length
     }
   }
   syncLog.info(conversationId, diffCount > 0 ? `需要同步` : `不需要同步`)
@@ -261,6 +273,12 @@ const syncLocalConversationToRemote = async (
       successCount += perUploadToRemoteCount
     }
     current += perUploadToRemoteCount
+    syncLog.info(
+      conversationId,
+      `上传${perUploadToRemoteCount}条消息.${
+        isUploadSuccess ? `[成功]` : `[失败]`
+      }`,
+    )
     generateResult(true, 'progress')
   }
   // 获取remote的Conversation的Messages
@@ -344,9 +362,8 @@ const syncLocalConversationToRemote = async (
 export const useSyncConversation = () => {
   const { t } = useTranslation(['client'])
   const { currentConversationId } = useClientConversation()
-  const conversationSyncGlobalState = useRecoilValue(
-    ConversationSyncGlobalState,
-  )
+  const [conversationSyncGlobalState, setConversationSyncGlobalState] =
+    useRecoilState(ConversationSyncGlobalState)
   const conversationSyncState = useRecoilValue(
     ConversationSyncStateFamily(
       conversationSyncGlobalState.activeConversationId,
@@ -502,10 +519,16 @@ export const useSyncConversation = () => {
         const syncState = await snapshot.getPromise(
           ConversationAutoSyncStateFamily(conversationId),
         )
+        syncLog.info(conversationId, `开始自动同步`)
         if (
           syncState.autoSyncStatus === SyncStatus.Uploading ||
           syncState.autoSyncStatus === SyncStatus.Success
         ) {
+          syncLog.info(
+            conversationId,
+            `正在同步中, 请稍后`,
+            syncState.autoSyncStatus,
+          )
           return
         }
         // 上传会话和消息
@@ -516,7 +539,7 @@ export const useSyncConversation = () => {
           set(ConversationAutoSyncStateFamily(conversationId), (prev) => {
             return {
               ...prev,
-              autoSyncStatus: SyncStatus.Success,
+              autoSyncStatus: SyncStatus.Idle,
             }
           })
           return
@@ -531,16 +554,10 @@ export const useSyncConversation = () => {
           localConversation,
           (progress, reason) => {
             set(ConversationAutoSyncStateFamily(conversationId), (prev) => {
-              let autoSyncStatus = SyncStatus.Uploading
-              if (reason === 'end') {
-                autoSyncStatus =
-                  progress.successCount === progress.total
-                    ? SyncStatus.Success
-                    : SyncStatus.Error
-              }
               return {
                 ...prev,
-                autoSyncStatus,
+                autoSyncStatus:
+                  reason === 'end' ? SyncStatus.Idle : SyncStatus.Uploading,
                 autoSyncStep: progress.current,
                 autoSyncSuccessCount: progress.current,
                 autoSyncTotalCount: progress.total,
@@ -552,12 +569,22 @@ export const useSyncConversation = () => {
       },
     [t],
   )
+  const resetConversationSyncGlobalState = () => {
+    setConversationSyncGlobalState({
+      activeConversationId: '',
+      syncConversationStep: 0,
+      syncSuccessConversationCount: 0,
+      syncTotalConversationCount: 0,
+      syncConversationStatus: SyncStatus.Idle,
+    })
+  }
   return {
     conversationAutoSyncState,
     conversationSyncState,
     conversationSyncGlobalState,
     syncConversationsByIds,
     autoSyncConversation,
+    resetConversationSyncGlobalState,
   }
 }
 export default useSyncConversation

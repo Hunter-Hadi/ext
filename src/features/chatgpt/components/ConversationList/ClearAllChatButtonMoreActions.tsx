@@ -20,6 +20,7 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
   disablePortal,
 }) => {
   const {
+    resetConversationSyncGlobalState,
     syncConversationsByIds,
     conversationSyncGlobalState,
     conversationSyncState,
@@ -36,11 +37,11 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
   const handleOpen = async () => {
     const userAllConversations = await clientGetUserAllConversations()
     setLocalConversationIds(
-      // 过滤出已删除且消息数量大于0的会话
+      // 过滤出没删除且消息数量大于0的会话
       userAllConversations
         .filter(
           (conversation) =>
-            conversation.isDelete && conversation.messages.length > 0,
+            conversation.messages.length > 0 && conversation.isDelete !== true,
         )
         .map((conversation) => conversation.id),
     )
@@ -51,6 +52,7 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
     setLocalConversationIds([])
     setDbConversationIds([])
     setLoadingRemoteConversations(false)
+    resetConversationSyncGlobalState()
   }
 
   useEffect(() => {
@@ -67,6 +69,7 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
         }>(`/conversation/get_conversations_basic`, {
           page_size: 10,
           page,
+          isDelete: false,
         })
         if (result.data?.status === 'OK') {
           dbConversationIds = dbConversationIds.concat(

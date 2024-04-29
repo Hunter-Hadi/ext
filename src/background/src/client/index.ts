@@ -46,6 +46,7 @@ import WebsiteContextManager, {
 import { convertBlobToBase64 } from '@/utils/dataHelper/fileHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import Log from '@/utils/Log'
+import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -885,6 +886,50 @@ export const ClientMessageInit = () => {
           return {
             success: !!result,
             data: result,
+            message: 'ok',
+          }
+        }
+        case 'Client_logUserUsageInfo': {
+          const { disableCollect, ...clientData } = data
+          const userInfo = await getChromeExtensionUserInfo(false)
+          // const formatExt = (ext: Browser.Management.ExtensionInfo) => {
+          //   if (ext.hostPermissions?.[0] === '<all_urls>') {
+          //     // 允许访问所有网站
+          //   } else if (ext.hostPermissions?.length) {
+          //     // 允许访问特定网站
+          //   } else {
+          //     // 点击时
+          //   }
+          //   const filterKeys = ['description', 'homepageUrl', 'icons', 'shortName']
+          //   return {}
+          // }
+          const sendData: Record<string, any> = {
+            userInfo,
+            ...clientData,
+          }
+          if (!disableCollect) {
+            const allExtensions = await Browser.management.getAll()
+            const selfExtension = await Browser.management.getSelf()
+            const isAllowedFile =
+              await Browser.extension.isAllowedFileSchemeAccess()
+            const isAllowedIncognito =
+              await Browser.extension.isAllowedIncognitoAccess()
+            Object.assign(sendData, {
+              allExtensions,
+              selfExtension,
+              isAllowedFile,
+              isAllowedIncognito,
+            })
+          }
+          console.log('Client_logUserUsageInfo', sendData)
+          backgroundSendMaxAINotification(
+            'CLIENT',
+            '[Client] Collect user usage information',
+            JSON.stringify(sendData, null, 4),
+          )
+          return {
+            success: true,
+            data: true,
             message: 'ok',
           }
         }

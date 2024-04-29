@@ -6,7 +6,7 @@ import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
@@ -14,6 +14,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { APP_VERSION } from '@/constants'
 import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
+import SidebarInfoCollectionModal from '@/features/sidebar/components/SidebarNav/SidebarInfoCollectionModal'
 import SidebarReleaseNotesButton from '@/features/sidebar/components/SidebarNav/SidebarReleaseNotesButton'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -34,6 +35,14 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
 
   // 在 immersive chat 页面, 有特殊的渲染逻辑
   const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
+
+  const [open, setOpen] = useState(false)
+
+  const openContactUs = () => {
+    setOpen(false)
+    // 立马跳转的话返回此页面modal还没消失会闪一下
+    setTimeout(() => window.open(CHROME_EXTENSION_MAIL_TO), 0)
+  }
 
   return (
     <Stack
@@ -164,8 +173,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
           <IconButton
             data-testid={`maxai--sidebar--contact_us--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
-            target={'_blank'}
-            href={CHROME_EXTENSION_MAIL_TO}
+            onClick={() => setOpen(true)}
           >
             <EmailOutlinedIcon
               sx={{
@@ -178,6 +186,13 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         {/* version */}
         <Typography fontSize={10}>{`v${APP_VERSION}`}</Typography>
       </Stack>
+
+      <SidebarInfoCollectionModal
+        type="contact_us"
+        open={open}
+        onClose={openContactUs}
+        onConfirm={openContactUs}
+      />
     </Stack>
   )
 }

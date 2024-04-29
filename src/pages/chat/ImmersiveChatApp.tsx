@@ -50,7 +50,7 @@ const App: FC = () => {
       >
         <AppInit />
         <Announcement />
-        <SidebarContextProvider isImmersiveChat>
+        <SidebarContextProvider>
           <SidebarTopBar />
           <ChatBoxHeader showConversationList />
           <BrowserVersionDetector>

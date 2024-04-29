@@ -55,8 +55,12 @@ const ConversationList: FC<IProps> = (props) => {
   } = props
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const { currentConversationId, createConversation, updateConversationId } =
-    useClientConversation()
+  const {
+    currentConversationId,
+    createConversation,
+    updateConversationId,
+    resetConversation,
+  } = useClientConversation()
   const { updateSidebarSettings, updateSidebarConversationType } =
     useSidebarSettings()
   const { disposeBackgroundChatSystem } = useClientConversation()
@@ -467,6 +471,7 @@ const ConversationList: FC<IProps> = (props) => {
                   updateSidebarConversationType('Chat')
                 })
               })
+              resetConversation()
             }}
           />
         )}

@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   atom,
@@ -11,12 +12,12 @@ import {
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { clientGetMaxAIBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/client'
+import { useAuthLogin } from '@/features/auth'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import { wait } from '@/utils'
 import Log from '@/utils/Log'
@@ -604,16 +605,30 @@ export const useInitSyncConversation = () => {
   const setConversationSyncGlobalState = useSetRecoilState(
     ConversationSyncGlobalState,
   )
-  useEffectOnce(() => {
-    clientGetMaxAIBetaFeatureSettings().then((settings) => {
+  const { isLogin, loaded } = useAuthLogin()
+  useEffect(() => {
+    if (!loaded) {
+      return
+    }
+    if (isLogin) {
+      clientGetMaxAIBetaFeatureSettings().then((settings) => {
+        setConversationSyncGlobalState((prev) => {
+          return {
+            ...prev,
+            loaded: true,
+            enabled: settings.chat_sync,
+          }
+        })
+      })
+    } else {
       setConversationSyncGlobalState((prev) => {
         return {
           ...prev,
           loaded: true,
-          enabled: settings.chat_sync,
+          enabled: false,
         }
       })
-    })
-  })
+    }
+  }, [isLogin, loaded])
 }
 export default useSyncConversation

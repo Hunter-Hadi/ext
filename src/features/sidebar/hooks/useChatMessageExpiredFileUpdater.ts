@@ -4,13 +4,13 @@ import lodashSet from 'lodash-es/set'
 import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IChatMessage } from '@/features/chatgpt/types'
 import {
   isAIMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { chatMessageAttachmentStateFamily } from '@/features/sidebar/store/chatMessageStore'
 import {
   clientGetMaxAIFileUrlWithFileId,
@@ -19,13 +19,13 @@ import {
 
 // 用来更新消息中过期的文件
 const useChatMessageExpiredFileUpdater = (message: IChatMessage) => {
-  const { currentSidebarConversationId } = useSidebarSettings()
+  const { currentConversationId } = useClientConversation()
   const [, setChatMessageAttachment] = useRecoilState(
     chatMessageAttachmentStateFamily(message.messageId),
   )
   const isCheckRef = useRef(false)
   useEffect(() => {
-    if (!isCheckRef.current && currentSidebarConversationId && message) {
+    if (!isCheckRef.current && currentConversationId && message) {
       isCheckRef.current = true
       // MaxAI附件的key
       let maxAIAttachmentsKey: string[] = []
@@ -71,7 +71,7 @@ const useChatMessageExpiredFileUpdater = (message: IChatMessage) => {
               lodashSet(newMessage, needUpdateKey, newAttachments)
               await clientChatConversationModifyChatMessages(
                 'update',
-                currentSidebarConversationId,
+                currentConversationId,
                 0,
                 [newMessage],
               )

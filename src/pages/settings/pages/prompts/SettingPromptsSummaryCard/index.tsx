@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import cloneDeep from 'lodash-es/cloneDeep'
 import groupBy from 'lodash-es/groupBy'
@@ -19,6 +20,7 @@ import {
   getChromeExtensionDBStorageButtonContextMenu,
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
 import {
   type IContextMenuItem,
@@ -36,9 +38,7 @@ import SettingPromptsMenuPanel, {
   rootId,
 } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
 import SettingPromptsViewSource from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel/components/SettingPromptsViewSource'
-import SettingPromptsPositionSwitch from '@/pages/settings/pages/prompts/components/SettingPromptsPositionSwitch'
 import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/SettingPromptsUpdater'
-import ContextMenuMockTextarea from "@/pages/settings/pages/prompts/SettingPromptsContextMenuCard/ContextMenuMockTextarea"
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 
 const saveTreeData = async (
@@ -277,7 +277,7 @@ const SettingPrompsSummaryCard: FC = () => {
 
   return (
     <>
-      <Stack direction={'row'} alignItems={'center'} spacing={2}>
+      <Stack direction={'row'} alignItems={'center'} spacing={2} mb={'16px'}>
         <SettingPromptsUpdater
           disabled={loading}
           node={editNode}
@@ -289,14 +289,6 @@ const SettingPrompsSummaryCard: FC = () => {
         />
       </Stack>
 
-      <SettingPromptsPositionSwitch
-        checked={position === 'end'}
-        label={t('settings:feature_card__prompts__place_my_own_prompts_switch')}
-        sx={{
-          my: '16px',
-        }}
-      />
-
       <Stack
         height={0}
         flex={1}
@@ -306,13 +298,25 @@ const SettingPrompsSummaryCard: FC = () => {
           <DevContent>
             <SettingPromptsViewSource treeData={originalTreeData} />
           </DevContent>
-          <ContextMenuMockTextarea
-            defaultValue={inputValue}
-            onChange={setInputValue}
-            placeholder={t(
-              'feature_card__prompts__edit_prompt__mock_input__placeholder',
-            )}
-          />
+          <Box
+            sx={{
+              width: '44px',
+              height: '40px',
+              mb: '4px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              border: '1px solid #DADCE0',
+              borderRadius: '8px',
+              color: 'info.contrastText',
+              bgcolor: 'primary.main',
+            }}
+          >
+            <ContextMenuIcon
+              size={20}
+              icon="KeyboardArrowDown"
+            />
+          </Box>
           <SettingPromptsMenuPanel
             rootId={rootId}
             initialOpen={inputValue.trim() ? memoAllGroupIds : openIds}

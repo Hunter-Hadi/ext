@@ -6,6 +6,7 @@ import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
@@ -118,7 +119,10 @@ const ChatBoxHeader: FC<{
             </Link>
           </Typography>
         )}
-        <AutoSyncConversation />
+        {/*NOTE: 不给用户看上传进度*/}
+        <DevContent>
+          <AutoSyncConversation />
+        </DevContent>
         <HistoryTextDownloadButton />
         <ShareButtonGroup />
       </Stack>

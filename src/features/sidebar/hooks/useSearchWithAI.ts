@@ -21,15 +21,12 @@ import {
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const useSearchWithAI = () => {
-  const {
-    currentSidebarConversationId,
-    currentSidebarConversationType,
-    currentSidebarConversationMessages,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationType, updateSidebarConversationType } =
+    useSidebarSettings()
   const {
     currentConversationId,
     updateClientConversationLoading,
+    clientConversationMessages,
     clientConversation,
   } = useClientConversation()
   const { isPayingUser } = useUserInfo()
@@ -42,10 +39,8 @@ const useSearchWithAI = () => {
   const memoPrevQuestions = useMemo(() => {
     const memoQuestions = []
     // 从后往前，直到include_history为false
-    for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
-      const message = currentSidebarConversationMessages[
-        i
-      ] as IAIResponseMessage
+    for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
+      const message = clientConversationMessages[i] as IAIResponseMessage
       memoQuestions.unshift(
         message?.originalMessage?.metadata?.title?.title || message.text || '',
       )
@@ -56,7 +51,7 @@ const useSearchWithAI = () => {
       }
     }
     return memoQuestions
-  }, [currentSidebarConversationMessages])
+  }, [clientConversationMessages])
   const createSearchWithAI = async (query: string, includeHistory: boolean) => {
     if (isFetchingRef.current) {
       return
@@ -153,15 +148,11 @@ const useSearchWithAI = () => {
   }
   const regenerateSearchWithAI = async () => {
     try {
-      if (currentSidebarConversationId) {
+      if (currentConversationId) {
         let lastAIResponse: IAIResponseMessage | null = null
         let deleteCount = 0
-        for (
-          let i = currentSidebarConversationMessages.length - 1;
-          i >= 0;
-          i--
-        ) {
-          const message = currentSidebarConversationMessages[i]
+        for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
+          const message = clientConversationMessages[i]
           deleteCount++
           if (message.type === 'ai') {
             lastAIResponse = message as IAIResponseMessage
@@ -175,7 +166,7 @@ const useSearchWithAI = () => {
         if (lastQuestion) {
           await clientChatConversationModifyChatMessages(
             'delete',
-            currentSidebarConversationId,
+            currentConversationId,
             deleteCount,
             [],
           )
@@ -190,7 +181,7 @@ const useSearchWithAI = () => {
           // 如果没有找到last question，那么就重新生成Conversation
           await clientChatConversationModifyChatMessages(
             'delete',
-            currentSidebarConversationId,
+            currentConversationId,
             9999,
             [],
           )

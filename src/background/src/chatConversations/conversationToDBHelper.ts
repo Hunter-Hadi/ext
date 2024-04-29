@@ -2,7 +2,10 @@ import cloneDeep from 'lodash-es/cloneDeep'
 
 import { IChatConversation } from '@/background/src/chatConversations/index'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import {
+  getMaxAIChromeExtensionAccessToken,
+  getMaxAIChromeExtensionUserId,
+} from '@/features/auth/utils'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
@@ -47,9 +50,11 @@ export const getDBConversationDetail = async (conversationId: string) => {
 export const addOrUpdateDBConversation = async (
   conversation: IChatConversation,
 ) => {
-  //TODO: 年前不需要被动创建或更新Conversation, 除了要分享的chat被删除
   const uploadConversation: any = cloneDeep(conversation)
   if (uploadConversation) {
+    if (!uploadConversation.authorId) {
+      uploadConversation.authorId = await getMaxAIChromeExtensionUserId()
+    }
     // 不需要保存messages
     delete uploadConversation.messages
   }

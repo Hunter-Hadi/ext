@@ -644,6 +644,8 @@ const devMockConversation = async () => {
   if (isProduction) {
     return
   }
+  // 保证不运行
+  return
   const totalConversation = await ConversationManager.getAllConversation()
   if (totalConversation.length < 5 || totalConversation.length > 50) {
     return

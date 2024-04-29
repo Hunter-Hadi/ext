@@ -77,7 +77,7 @@ const SidebarInfoCollectionModal: FC<IProps> = (props) => {
               checked={checked}
               onChange={(_, newChecked) => setChecked(newChecked)}
             />
-            <Typography>{t('client:sidebar__nav__concat_us__checkbox_title')}</Typography>
+            <Typography color="text.secondary">{t('client:sidebar__nav__concat_us__checkbox_title')}</Typography>
           </Stack>
           <Stack direction={'row'} spacing={1} justifyContent={'end'}>
             <Button variant={'outlined'} onClick={handleCancel}>

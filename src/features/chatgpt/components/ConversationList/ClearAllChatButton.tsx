@@ -14,22 +14,25 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ClearAllChatButtonMoreActions from '@/features/chatgpt/components/ConversationList/ClearAllChatButtonMoreActions'
 import { clientRemoveConversationsByType } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import useSidebarSettings from "@/features/sidebar/hooks/useSidebarSettings";
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 interface IProps {
   variant?: 'icon' | 'buttonText'
   onDelete?: () => void
   sx?: SxProps
+  conversationType?: ISidebarConversationType
 }
 
 const ClearAllChatButton: FC<IProps> = (props) => {
   const testid = 'maxai-clear-all-chat-button'
-  const { onDelete, variant = 'buttonText', sx } = props
+  const { onDelete, variant = 'buttonText', sx, conversationType } = props
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
   // const { currentSidebarConversationType } = useClientConversation()
   const { currentSidebarConversationType } = useSidebarSettings()
-  const isContextWindow = currentSidebarConversationType === 'ContextMenu'
+  const isContextWindow =
+    (conversationType || currentSidebarConversationType) === 'ContextMenu'
   const currentDeleteAllButtonTitle = useMemo(() => {
     if (currentSidebarConversationType === 'Summary') {
       return t('client:immersive_chat__delete_all_summary__button__title')

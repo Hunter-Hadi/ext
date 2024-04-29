@@ -1,5 +1,4 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import orderBy from 'lodash-es/orderBy'
 import { useTranslation } from 'react-i18next'
 import { atom, atomFamily, useRecoilCallback, useRecoilValue } from 'recoil'
 
@@ -11,6 +10,7 @@ import { clientGetConversation } from '@/features/chatgpt/utils/chatConversation
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import { wait } from '@/utils'
+import Log from '@/utils/Log'
 
 enum SyncStatus {
   Idle = 'idle',
@@ -71,6 +71,8 @@ const ConversationAutoSyncStateFamily = atomFamily<
   },
 })
 
+const syncLog = new Log('SyncConversation')
+
 const clientUploadMessage = async (
   messages: IChatMessage[],
   conversationId: string,
@@ -101,17 +103,27 @@ const clientUploadMessage = async (
   return result.data?.status === 'OK'
 }
 
-const checkConversationNeedSync = async (conversation: IChatConversation) => {
+const checkConversationNeedSync = async (conversationId: string) => {
+  const localConversation = await clientGetConversation(conversationId)
+  if (!localConversation) {
+    syncLog.info(conversationId, `本地没有会话, 需要同步`)
+    return {
+      needSync: true,
+      needSyncCount: 0,
+    }
+  }
+  const localMessages = localConversation?.messages || []
   const hasConversationData = await clientFetchMaxAIAPI<{
     status: string
     data: IChatConversation[]
   }>('/conversation/get_conversations_basic_by_ids', {
-    ids: [conversation.id],
+    ids: [conversationId],
   })
   if (hasConversationData.data?.status !== 'OK') {
+    syncLog.info(conversationId, `接口报错, 需要同步`)
     return {
       needSync: true,
-      needSyncCount: conversation.messages.length,
+      needSyncCount: localMessages.length || 0,
     }
   }
   // 判断messagesIds是否一致
@@ -119,40 +131,42 @@ const checkConversationNeedSync = async (conversation: IChatConversation) => {
     status: string
     data: string[]
   }>('/conversation/get_message_ids', {
-    conversation_id: conversation.id,
+    conversation_id: conversationId,
     page_size: 50,
     sort: 'desc',
   })
   if (remoteConversationMessagesIdsData.data?.status !== 'OK') {
+    syncLog.info(conversationId, `接口报错, 需要同步`)
     return {
       needSync: true,
-      needSyncCount: conversation.messages.length,
+      needSyncCount: localMessages.length || 0,
     }
   }
   const remoteConversationMessagesIds =
     remoteConversationMessagesIdsData.data.data || []
   //判断diff
   let diffCount = 0
-  const localConversationMessagesIds = conversation.messages.map(
+  const localConversationMessagesIds = localMessages.map(
     (message) => message.messageId,
   )
-  //如果远程的消息比本地的多，那么就是需要同步的
+  //如果远程的消息比本地的多，那么看看远程是不是都有本地的
   if (
     remoteConversationMessagesIds.length > localConversationMessagesIds.length
   ) {
-    for (const remoteMessageId of remoteConversationMessagesIds) {
-      if (!localConversationMessagesIds.includes(remoteMessageId)) {
-        diffCount++
-      }
-    }
-  } else {
-    // 如果本地的消息比远程的多，那么就是需要同步的
     for (const localMessageId of localConversationMessagesIds) {
       if (!remoteConversationMessagesIds.includes(localMessageId)) {
         diffCount++
       }
     }
+  } else {
+    // 如果本地的消息比远程的多，那么看看本地是不是都有远程的
+    for (const remoteMessageId of remoteConversationMessagesIds) {
+      if (!localConversationMessagesIds.includes(remoteMessageId)) {
+        diffCount++
+      }
+    }
   }
+  syncLog.info(conversationId, diffCount > 0 ? `需要同步` : `不需要同步`)
   return {
     needSync: diffCount > 0,
     needSyncCount: diffCount,
@@ -201,6 +215,7 @@ const syncLocalConversationToRemote = async (
   if (!needUploadConversation.authorId) {
     needUploadConversation.authorId = await getMaxAIChromeExtensionUserId()
   }
+  syncLog.info(conversationId, `开始同步`)
   generateResult(true, 'start')
   // 消息是分开存的, 需要删除
   delete needUploadConversation.messages
@@ -209,7 +224,7 @@ const syncLocalConversationToRemote = async (
     status: string
   }>('/conversation/upsert_conversation', needUploadConversation)
   if (result.data?.status !== 'OK') {
-    debugger
+    syncLog.error(conversationId, `同步失败, 服务器错误`)
     return generateResult(false, 'end')
   }
   const remoteMessagesIdsData = await clientFetchMaxAIAPI<{
@@ -221,20 +236,17 @@ const syncLocalConversationToRemote = async (
     sort: 'desc',
   })
   if (remoteMessagesIdsData.data?.status !== 'OK') {
-    debugger
+    syncLog.error(conversationId, `同步失败, 服务器错误`)
     return generateResult(false, 'end')
   }
-  debugger
   const remoteMessagesIds = remoteMessagesIdsData.data.data || []
   // 先把remote没有的消息上传
   needUploadMessages = needUploadMessages.filter(
     (message) => !remoteMessagesIds.includes(message.messageId),
   )
-  const needUploadMessagesIds = needUploadMessages.map(
-    (message) => message.messageId,
-  )
   // 这里可以算出来需要上传的消息数量，和本地已经有的消息数量，更新progress
   total = needUploadMessages.length + remoteMessagesIds.length
+  syncLog.info(conversationId, `需要上传${needUploadMessages.length}条消息`)
   generateResult(true, 'progress')
   // 每次上传10条消息
   const perUploadToRemoteCount = 10
@@ -254,43 +266,78 @@ const syncLocalConversationToRemote = async (
   // 获取remote的Conversation的Messages
   // 下载
   // 每次下载30条消息
-  debugger
   const perDownloadFromRemoteCount = 30
   const needDownloadMessagesIds = remoteMessagesIds.filter(
     (messageId) => !localMessagesIds.includes(messageId),
   )
-  let page = 0
+  const addToLocalMessages: IChatMessage[] = []
+  const needSyncToLocalDB = needDownloadMessagesIds.length > 0
+  syncLog.info(
+    conversationId,
+    `需要下载${needDownloadMessagesIds.length}条消息`,
+    needSyncToLocalDB ? `开始下载到本地` : `不需要下载到本地`,
+  )
   for (
     let i = 0;
     i < needDownloadMessagesIds.length;
     i += perDownloadFromRemoteCount
   ) {
-    // const remoteMessagesData = await clientFetchMaxAIAPI<{
-    //   status: string
-    //   data: IChatMessage[]
-    // }>('/conversation/get_messages', {
-    //   conversation_id: conversationId,
-    //   message_ids: needDownloadMessagesIds.slice(
-    //     i,
-    //     i + perDownloadFromRemoteCount,
-    //   ),
-    // })
-    const remoteMessagesData = await clientFetchMaxAIAPI<{
+    const message_ids = needDownloadMessagesIds.slice(
+      i,
+      i + perDownloadFromRemoteCount,
+    )
+    const downloadMessagesData = await clientFetchMaxAIAPI<{
       status: string
       data: IChatMessage[]
-    }>('/conversation/get_messages', {
+    }>('/conversation/batch_get_message_by_id', {
       conversation_id: conversationId,
-      page,
-      page_size: perDownloadFromRemoteCount,
+      message_ids,
     })
-    page++
-    const remoteMessages = remoteMessagesData.data?.data || []
-    if (remoteMessages.length > 0) {
-      successCount += remoteMessages.length
+    const downloadMessages = downloadMessagesData.data?.data || []
+    const isDownloadSuccess = downloadMessages.length === message_ids.length
+    if (!isDownloadSuccess) {
+      successCount++
     }
-    current += remoteMessages.length || 0
+    current += downloadMessages.length || 0
+    addToLocalMessages.push(...downloadMessages)
+    syncLog.info(
+      conversationId,
+      `下载${downloadMessages.length}条消息.${
+        isDownloadSuccess ? `[成功]` : `[失败]`
+      }`,
+    )
     generateResult(true, 'progress')
   }
+  if (needSyncToLocalDB) {
+    syncLog.info(
+      conversationId,
+      `同步到本地: `,
+      addToLocalMessages.length,
+      `条消息`,
+    )
+
+    const mergeMessages = conversation.messages
+      .concat(addToLocalMessages)
+      .sort((prev, next) => {
+        // 按照时间排序, asc
+        const prevTime = prev.created_at
+          ? new Date(prev.created_at).getTime()
+          : 0
+        const nextTime = next.created_at
+          ? new Date(next.created_at).getTime()
+          : 0
+        return prevTime - nextTime
+      })
+    await clientUpdateChatConversation(
+      conversationId,
+      {
+        ...conversation,
+        messages: mergeMessages,
+      },
+      false,
+    )
+  }
+  syncLog.info(conversationId, `同步完成`, `结果:${successCount === total}`)
   return generateResult(successCount === total, 'end')
 }
 
@@ -311,6 +358,10 @@ export const useSyncConversation = () => {
   const syncConversationsByIds = useRecoilCallback(
     ({ set }) =>
       async (conversationIds: string[]) => {
+        syncLog.info(`开始Sync全部会话`, conversationIds.length, `个`)
+        let step = 0
+        let successCount = 0
+        const totalCount = conversationIds.length
         set(ConversationSyncGlobalState, {
           activeConversationId: '',
           syncConversationStatus: SyncStatus.Uploading,
@@ -318,14 +369,14 @@ export const useSyncConversation = () => {
           syncSuccessConversationCount: 0,
           syncTotalConversationCount: conversationIds.length,
         })
-        let successCount = 0
-        let errorCount = 0
         for (const conversationId of conversationIds) {
           try {
+            step++
+            syncLog.info(conversationId, `开始同步第`, `${step}个`)
             set(ConversationSyncGlobalState, (prev) => {
               return {
                 ...prev,
-                syncConversationStep: prev.syncConversationStep + 1,
+                syncConversationStep: step,
                 activeConversationId: conversationId,
               }
             })
@@ -339,31 +390,28 @@ export const useSyncConversation = () => {
               }
             })
             //获取本地会话
-            const localConversation = await clientGetConversation(
-              conversationId,
-            )
-            let remoteConversation: IChatConversation | null = null
-            const remoteConversationData = await clientFetchMaxAIAPI<{
-              status: string
-              data: IChatConversation[]
-            }>('/conversation/get_conversation', {
-              id: conversationId,
-            })
-            if (remoteConversationData.data?.data?.[0]) {
-              remoteConversation = remoteConversationData.data.data[0]
-              const remoteConversationMessagesData = await clientFetchMaxAIAPI<{
+            let localConversation = await clientGetConversation(conversationId)
+            if (!localConversation) {
+              syncLog.info(
+                conversationId,
+                `获取本地会话失败, 从后端伪造一个本地的`,
+              )
+              const remoteConversationData = await clientFetchMaxAIAPI<{
                 status: string
-                data: IChatMessage[]
-              }>('/conversation/get_messages', {
-                conversation_id: conversationId,
+                data: IChatConversation[]
+              }>('/conversation/get_conversation', {
+                id: conversationId,
               })
-              remoteConversation.messages =
-                remoteConversationMessagesData.data?.data || []
+              if (
+                remoteConversationData.data?.status === 'OK' &&
+                remoteConversationData.data?.data?.[0]?.id === conversationId
+              ) {
+                localConversation = remoteConversationData.data.data[0]
+                localConversation.messages = []
+              }
             }
-            let finallySaveConversation: IChatConversation | null = null
-            let needSyncToRemote = false
-            if (!localConversation && !remoteConversation) {
-              errorCount++
+            if (!localConversation) {
+              syncLog.error(conversationId, `获取本地会话失败`)
               set(ConversationSyncStateFamily(conversationId), (prev) => {
                 return {
                   ...prev,
@@ -371,154 +419,72 @@ export const useSyncConversation = () => {
                 }
               })
               continue
-            } else if (!localConversation && remoteConversation) {
+            }
+            const checkResult = await checkConversationNeedSync(conversationId)
+            if (!checkResult.needSync) {
               successCount++
-              finallySaveConversation = remoteConversation
-              // 不需要同步了，因为本地没有
-              await clientUpdateChatConversation(
-                remoteConversation.id,
-                {
-                  ...remoteConversation,
-                  messages: remoteConversation.messages,
-                },
-                false,
-              )
               set(ConversationSyncStateFamily(conversationId), (prev) => {
                 return {
                   ...prev,
-                  syncStep: remoteConversation!.messages.length,
-                  syncTotalCount: remoteConversation!.messages.length,
-                }
-              })
-              await wait(1000)
-              continue
-            } else if (localConversation && !remoteConversation) {
-              finallySaveConversation = localConversation
-              set(ConversationSyncStateFamily(conversationId), (prev) => {
-                return {
-                  ...prev,
-                  syncStep: localConversation!.messages.length,
-                  syncTotalCount: localConversation!.messages.length,
-                }
-              })
-              needSyncToRemote = true
-              await wait(1000)
-            } else if (localConversation && remoteConversation) {
-              // 比较消息
-              const messageMap: Map<string, IChatMessage> = new Map()
-              // 先把remote都放进去
-              for (const remoteMessage of remoteConversation.messages) {
-                messageMap.set(remoteMessage.messageId, remoteMessage)
-              }
-              // 再比较本地
-              for (const localMessage of localConversation.messages) {
-                const remoteMessage = messageMap.get(localMessage.messageId)
-                // 如果remote没有，直接放进去
-                if (!remoteMessage) {
-                  messageMap.set(localMessage.messageId, localMessage)
-                  needSyncToRemote = true
-                } else {
-                  // 如果remote有，比较updated_at
-                  // 比较updated_at
-                  const remoteMessageUpdatedAt = remoteMessage.updated_at
-                  const localMessageUpdatedAt = localMessage.updated_at
-                  // 如果remote没有，直接覆盖
-                  if (!remoteMessageUpdatedAt) {
-                    messageMap.set(localMessage.messageId, remoteMessage)
-                  } else if (!localMessageUpdatedAt) {
-                    // 如果本地没有，直接跳过
-                  } else if (localMessageUpdatedAt && remoteMessageUpdatedAt) {
-                    // 如果本地的更新时间比远程的新，覆盖
-                    if (
-                      new Date(localMessageUpdatedAt).getTime() >
-                      new Date(remoteMessageUpdatedAt).getTime()
-                    ) {
-                      needSyncToRemote = true
-                      messageMap.set(remoteMessage.messageId, remoteMessage)
-                    }
-                  }
-                }
-              }
-              finallySaveConversation = cloneDeep(remoteConversation)
-              finallySaveConversation.messages = orderBy(
-                Array.from(messageMap.values()),
-                (message) =>
-                  message.updated_at
-                    ? new Date(message.updated_at).getTime()
-                    : 0,
-                'asc',
-              )
-              needSyncToRemote = true
-              if (finallySaveConversation) {
-                if (!needSyncToRemote) {
-                  set(ConversationSyncStateFamily(conversationId), (prev) => {
-                    return {
-                      ...prev,
-                      syncStep: finallySaveConversation!.messages.length,
-                      syncTotalCount: finallySaveConversation!.messages.length,
-                      syncStatus: SyncStatus.Success,
-                    }
-                  })
-                  await wait(1000)
-                  continue
-                }
-                set(ConversationSyncStateFamily(conversationId), (prev) => {
-                  return {
-                    ...prev,
-                    syncTotalCount: finallySaveConversation!.messages.length,
-                  }
-                })
-              }
-            } else {
-              errorCount++
-              set(ConversationSyncStateFamily(conversationId), (prev) => {
-                return {
-                  ...prev,
-                  syncStatus: SyncStatus.Error,
+                  syncStatus: SyncStatus.Success,
                 }
               })
               continue
-            }
-            if (finallySaveConversation) {
-              debugger
-              const { success } = await syncLocalConversationToRemote(
-                finallySaveConversation,
-              )
-              if (success) {
-                successCount++
-              } else {
-                errorCount++
-              }
+            } else {
               set(ConversationSyncStateFamily(conversationId), (prev) => {
                 return {
                   ...prev,
-                  syncStatus: success ? SyncStatus.Success : SyncStatus.Error,
-                  syncSuccessCount: finallySaveConversation!.messages.length,
+                  syncStatus: SyncStatus.Uploading,
+                  syncStep: 0,
+                  syncSuccessCount: 0,
+                  syncTotalCount: checkResult.needSyncCount,
                 }
               })
-            } else {
-              errorCount++
-              set(ConversationSyncStateFamily(conversationId), {
-                syncStatus: SyncStatus.Error,
-                syncSuccessCount: 0,
-                syncTotalCount: 0,
-                syncStep: 0,
-              })
             }
+            await syncLocalConversationToRemote(
+              localConversation,
+              (progress, reason) => {
+                const syncState = {
+                  syncStatus: SyncStatus.Uploading,
+                  syncStep: progress.current,
+                  syncTotalCount: progress.total,
+                  syncSuccessCount: progress.successCount,
+                }
+                if (reason === 'end') {
+                  syncState.syncStatus =
+                    progress.successCount === progress.total
+                      ? SyncStatus.Success
+                      : SyncStatus.Error
+                  if (syncState.syncStatus === SyncStatus.Success) {
+                    successCount++
+                  }
+                }
+                set(ConversationSyncStateFamily(conversationId), syncState)
+              },
+            )
           } catch (e) {
             console.error(e)
-            set(ConversationSyncStateFamily(conversationId), {
-              syncStatus: SyncStatus.Error,
-              syncSuccessCount: 0,
-              syncTotalCount: 0,
-              syncStep: 0,
-            })
           }
         }
+        syncLog.info(
+          `Sync全部会话完成`,
+          `成功${successCount}个`,
+          `总共${totalCount}个`,
+        )
+        set(ConversationSyncGlobalState, (prev) => {
+          return {
+            ...prev,
+            syncSuccessConversationCount: successCount,
+            syncConversationStatus:
+              successCount === totalCount
+                ? SyncStatus.Success
+                : SyncStatus.Error,
+          }
+        })
         return {
-          success: errorCount === 0,
+          success: totalCount === successCount,
           successCount,
-          errorCount,
+          totalCount,
         }
       },
     [],
@@ -543,7 +509,9 @@ export const useSyncConversation = () => {
           return
         }
         // 上传会话和消息
-        const checkResult = await checkConversationNeedSync(localConversation)
+        const checkResult = await checkConversationNeedSync(
+          localConversation.id,
+        )
         if (!checkResult.needSync) {
           set(ConversationAutoSyncStateFamily(conversationId), (prev) => {
             return {

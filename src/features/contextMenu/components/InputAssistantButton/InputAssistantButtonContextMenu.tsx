@@ -33,7 +33,6 @@ import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
@@ -96,14 +95,15 @@ const InputAssistantButtonContextMenu: FC<
               currentHostFreeTrialTimes - 1,
             )
           } else {
+            // 2024-04-30 付费卡点在当前context window里显示，没问题可以删除注释及代码
             // 如果没有免费试用次数, 则显示付费卡片
-            showChatBox()
+            // showChatBox()
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType, {
               conversationId: currentConversationId,
             })
-            updateSidebarConversationType('Chat')
+            // updateSidebarConversationType('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
-            hideFloatingContextMenu()
+            // hideFloatingContextMenu()
             return
           }
         }

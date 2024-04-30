@@ -4,8 +4,8 @@ import { atomFamily, useRecoilState, useSetRecoilState } from 'recoil'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import {
-  isAIMessage,
-  isSystemMessageByStatus,
+  isAIMessage, isSystemMessage,
+  isSystemMessageByStatus, isSystemMessageByType,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 
@@ -38,8 +38,9 @@ const useFloatingContextMenuDraftHistoryChange = () => {
     FloatingContextMenuDraftHistoryState(currentConversationId || ''),
   )
   useEffect(() => {
+    // 目前context window里只显示ai/付费卡点/错误消息
     const newMessages = clientConversationMessages.filter(
-      (item) => isAIMessage(item) || isSystemMessageByStatus(item, 'error'),
+      (item) => isAIMessage(item) || isSystemMessageByType(item, 'needUpgrade') || isSystemMessageByStatus(item, 'error'),
     ) as IAIResponseMessage[]
     console.log('clientConversationMessages', clientConversationMessages)
     setHistoryState((prev) => {
@@ -94,8 +95,8 @@ const useFloatingContextMenuDraft = () => {
   const currentFloatingContextMenuDraft = useMemo(() => {
     const activeMessage = historyMessages[activeMessageIndex]
     let draft = ''
-    if (activeMessage && isSystemMessageByStatus(activeMessage, 'error')) {
-      // 如果是报错消息
+    if (activeMessage && isSystemMessage(activeMessage)) {
+      // 如果是系统消息
       return draft
     }
     if (activeMessage) {

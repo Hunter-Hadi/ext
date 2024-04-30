@@ -39,7 +39,6 @@ import {
   clientFetchMaxAIAPI,
 } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
-import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 // import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
@@ -368,7 +367,7 @@ export class ActionAskChatGPT extends Action {
               },
             )
             // 展示sidebar
-            showChatBox()
+            // showChatBox()
             // 触发用量上限时 更新 user subscription info
             await clientMessageChannelEngine.postMessage({
               event: 'Client_updateUserSubscriptionInfo',
@@ -572,7 +571,7 @@ export class ActionAskChatGPT extends Action {
                 conversationId,
               })
               // 展示sidebar
-              showChatBox()
+              // showChatBox()
               // 触发用量上限时 更新 user subscription info
               await clientMessageChannelEngine.postMessage({
                 event: 'Client_updateUserSubscriptionInfo',

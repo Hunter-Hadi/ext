@@ -36,6 +36,7 @@ import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useClientConversationListener from '@/features/chatgpt/hooks/useClientConversationListener'
+import { isSystemMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
@@ -171,6 +172,7 @@ const FloatingContextMenu: FC<{
     FloatingDropdownMenuState,
   )
   const {
+    activeAIResponseMessage,
     currentFloatingContextMenuDraft,
     floatingContextMenuDraftMessageIdRef,
   } = useFloatingContextMenuDraft()
@@ -304,7 +306,11 @@ const FloatingContextMenu: FC<{
   const draftContextMenuList = useDraftContextMenuList()
   // 渲染的菜单列表
   const memoMenuList = useMemo(() => {
-    if (loading || isSettingVariablesMemo) {
+    if (
+      loading ||
+      isSettingVariablesMemo ||
+      (activeAIResponseMessage && isSystemMessage(activeAIResponseMessage))
+    ) {
       return EMPTY_ARRAY
     }
     if (haveContext) {
@@ -317,6 +323,7 @@ const FloatingContextMenu: FC<{
     contextMenuList,
     haveContext,
     draftContextMenuList,
+    activeAIResponseMessage,
   ])
   const haveDraft = useMemo(() => {
     return inputValue.length > 0
@@ -737,9 +744,10 @@ const FloatingContextMenu: FC<{
               const error = shortCutsEngine?.getNextAction()?.error || ''
               if (error) {
                 console.log('[ContextMenu Module] error', error)
-                hideFloatingContextMenu()
+                // 2024-04-30 现在出错会在当前context window展示消息
                 // 如果出错了，则打开聊天框
-                showChatBox()
+                // hideFloatingContextMenu()
+                // showChatBox()
               }
             })
           })

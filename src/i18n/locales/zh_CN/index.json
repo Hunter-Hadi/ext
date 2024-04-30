@@ -754,7 +754,7 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1": "月度高级文本查询限额已超过。立即升级以获取无限查询，或下个月重置每月查询。",
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2": "OpenAI 的 AI 技术的革命性进展，具备 GPT-4-Vision - 将图像处理与 GPT-4 的先进语言理解相结合的 AI 技术的突破性飞跃。",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__title": "升级以获取无限 claude-3-opus 与视觉",
-    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropic的claude-3-sonnet在智能和速度之间取得了平衡，具有20万个令牌的能力。非常适合需要精确性和速度的任务，如数据处理、销售优化、代码生成等。",
+    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropic的最智能模型，具有20万个令牌的能力。在高度复杂的任务、开放式提示和未见过的场景中，以非凡的流畅度和人类般的理解力体验市场上最佳性能。",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title": "升级以获取无限 claude-3-sonnet 与视觉",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1": "Anthropic 的 claude-3-sonnet 在智能和速度之间取得平衡，具有 200k 令牌能力。非常适合需要精确性和速度的任务，如数据处理、销售优化、代码生成等。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title": "升级以获取无限 gemini-1.5-pro 与视觉",

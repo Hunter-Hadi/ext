@@ -754,7 +754,7 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1": "ಮಾಸಿಕ ಆಧುನಿಕ ಪಠ್ಯ ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ಮೀರಿದೆ. ಅನಿಮಿತ ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ವಿಸ್ತರಿಸಲು ಈಗ ಮುಂದುವರಿಯಿರಿ ಅಥವಾ ಮಾಸಿಕ ಪ್ರಶ್ನೆಗಳು ಮರುಹೊತ್ತಿಗೆ ಮರಳಿ ಬರುವವು.",
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2": "GPT-4-Vision ಜೊತೆ ಬುದ್ಧಿವಂತ ಭಾಷಾ ಅರಿವಿನ ಮೇಲೆ ಚಿತ್ರ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಸೇರಿಸಿದ AI ತಂತ್ರಜ್ಞಾನದ ಹೊಸ ಹೆಜ್ಜೆ.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__title": "ಅನಿಮಿತ claude-3-opus ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ವಿಸ್ತರಿಸಲು ಮುಂದುವರಿಯಿರಿ",
-    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropic ಯ ಕ್ಲೋಡ್-3-ಸೊನೆಟ್ ಬುದ್ಧಿ ಮತ್ತು ವೇಗದ ನಡುವೆ ಸಮತೋಲ ಹೊಂದಿದೆ, 200k-ಟೋಕನ್ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿದೆ. ಡೇಟಾ ಪ್ರಾಸೆಸಿಂಗ್, ಮಾರುಕಟ್ಟೆ ಅನುಕೂಲಕ್ಕೆ, ಕೋಡ್ ಜನರೇಷನ್ ಮತ್ತು ಇತರೆ ಪ್ರಶ್ನೆಗಳಿಗೆ ಸರಿಹೊಂದುವ ಕೆಲಸಗಳಿಗೆ ಸರಿಹೊಂದುವ ಪೂರ್ಣತೆಯನ್ನು ಅಪೇಕ್ಷಿಸುವ ಕೆಲಸಕ್ಕೆ ಸರಿಹೊಂದುತ್ತದೆ.",
+    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropic ಅತ್ಯಂತ ಪ್ರತಿಭಟನೆಯ ಮಾದರಿ, 200k-ಟೋಕನ್ ಸಾಧ್ಯತೆಯೊಂದಿಗೆ. ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನವನ್ನು ಹೊಂದಿರುವ ಕಠಿಣ ಕಾರ್ಯಗಳು, ತೆರವುಗೊಳಿಸಲಾಗದ ಪ್ರಾಂತ್ಯಗಳು ಮತ್ತು ಮಾನವರೂಪದ ಅರಿವುಗಳೊಂದಿಗೆ ಅದ್ಭುತ ಸುಲಭತೆಯನ್ನು ಅನುಭವಿಸಿ.",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title": "ಅನಿಮಿತ claude-3-sonnet ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ವಿಸ್ತರಿಸಲು ಮುಂದುವರಿಯಿರಿ",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1": "Anthropic ಅತ್ಯುತ್ತಮ ಮಾದರಿ, 200k ಟೋಕನ್ ಸಾಮರ್ಥ್ಯದಿಂದ. ಡೇಟಾ ಪ್ರಸೆಸಿಂಗ್, ಮಾರಾಟ ಅನುಕೂಲಕ್ಕೆ, ಕೋಡ್ ಜನರೇಷನ್ ಮತ್ತು ಹೆಚ್ಚು ಹೆಚ್ಚು ಬೇಕಾದ ಕೆಲಸಗಳಿಗೆ ಸರಿಹೊಂದುವ ಪರಿಣಾಮಕಾರಿಯಾದ ಸ್ಪೀಡ್ ಮತ್ತು ಖಚಿತತೆಗಳ ನಡುವೆ ಸಮನ್ವಯ ಮಾಡುವುದು.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title": "ಅನಿಮಿತ gemini-1.5-pro ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ವಿಸ್ತರಿಸಲು ಮುಂದುವರಿಯಿರಿ",

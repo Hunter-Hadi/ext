@@ -874,7 +874,7 @@ export const getSummaryNavItemByType = (
 export const getContextMenuByNavMetadataKey = async (
   pageSummaryType: IPageSummaryType,
   summaryNavKey?: string,
-  contextMenuList: IContextMenuItem[] = [],
+  flattenContextMenuList: IContextMenuItem[] = [],
 ) => {
   try {
     debugger
@@ -905,11 +905,11 @@ export const getContextMenuByNavMetadataKey = async (
         key: systemSummaryNavItem.key,
       })
     } else {
-      const summaryActionContextMenuItem = contextMenuList
-        .flat(Infinity)
-        .find((menuItem) => {
+      const summaryActionContextMenuItem = flattenContextMenuList.find(
+        (menuItem) => {
           return menuItem.id === summaryNavKey
-        })
+        },
+      )
       if (summaryActionContextMenuItem) {
         actions = await getSummaryCustomPromptActions({
           type: pageSummaryType,

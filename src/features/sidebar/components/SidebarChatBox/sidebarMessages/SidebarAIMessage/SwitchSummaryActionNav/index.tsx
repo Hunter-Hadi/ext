@@ -146,7 +146,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
 
   // 旧版 Summary message 逻辑: 通过 title 判断哪个 nav 选中
   // 如果已经有新版逻辑的 navMetadata 了，就不走这个逻辑了
-  // 但理论上说，现在获取 actions 时就会附加新版逻辑的 navMetadata，所以这个逻辑应该不会走到
+  // 但理论上说，现在获取 actions 时就会附加新版逻辑的 navMetadata，所以应该不会进到这个逻辑
   useEffect(() => {
     const messageTitle = message.originalMessage?.metadata?.title?.title
     if (!speedChangeKey && messageTitle && !message.originalMessage?.metadata?.navMetadata) {

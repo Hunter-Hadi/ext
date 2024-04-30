@@ -42,7 +42,7 @@ const usePageSummary = () => {
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
-  const { contextMenuList } = useContextMenuList(
+  const { flattenContextMenuList } = useContextMenuList(
     'sidebarSummaryButton',
     '',
     false,
@@ -156,7 +156,7 @@ const usePageSummary = () => {
         const contextMenu = await getContextMenuByNavMetadataKey(
           currentPageSummaryType,
           summaryNavMetadataKey,
-          contextMenuList,
+          flattenContextMenuList,
         )
 
         if (contextMenu) {

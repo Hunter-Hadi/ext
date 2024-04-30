@@ -51,7 +51,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
   } = props
 
   const { t } = useTranslation(['client'])
-  const { contextMenuList } = useContextMenuList('sidebarSummaryButton', '', false)
+  const { contextMenuList, flattenContextMenuList } = useContextMenuList('sidebarSummaryButton', '', false)
 
   // const { smoothConversationLoading } = useSmoothConversationLoading()
 
@@ -113,11 +113,11 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
   }, [])
 
   useEffect(() => {
-    if (!isLoaded && actived && contextMenuList.length > 0 && !summaryActionItem && actionNavMetadata?.key) {
+    if (!isLoaded && actived && flattenContextMenuList.length > 0 && !summaryActionItem && actionNavMetadata?.key) {
       isLoaded = true
-      setSummaryActionItem(contextMenuList.flat(Infinity).find(item => item.id === actionNavMetadata.key) || null)
+      setSummaryActionItem(flattenContextMenuList.find(item => item.id === actionNavMetadata.key) || null)
     }
-  }, [actived, contextMenuList, actionNavMetadata?.key])
+  }, [actived, flattenContextMenuList, actionNavMetadata?.key])
 
   useEffect(() => {
     if (anchorEl && !isLoaded) {

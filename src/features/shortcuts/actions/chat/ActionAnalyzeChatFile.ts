@@ -48,8 +48,7 @@ export class ActionAnalyzeChatFile extends Action {
         params.AnalyzeChatFileImmediateUpdateConversation ||
         false
       const conversationEngine = engine.clientConversationEngine
-      const conversationId =
-        conversationEngine?.currentConversationIdRef.current || ''
+      const conversationId = conversationEngine?.currentConversationId || ''
       if (this.isStopAction) return
       const conversation = await conversationEngine?.getCurrentConversation()
       if (this.isStopAction) return

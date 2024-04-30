@@ -91,7 +91,7 @@ export class ActionAskChatGPT extends Action {
         this.parameters.isEnabledDetectAIResponseLanguage !== false
       const conversationId =
         this.parameters.AskChatGPTActionQuestion?.conversationId ||
-        clientConversationEngine?.currentConversationIdRef?.current ||
+        clientConversationEngine?.currentConversationId ||
         ''
       const text = String(
         this.parameters.AskChatGPTActionQuestion?.text ||
@@ -417,6 +417,7 @@ export class ActionAskChatGPT extends Action {
             ) || null
         }
         try {
+          console.log(1111, this.question, conversationId, clientConversationEngine)
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
               this.log.info('message', message)
@@ -486,6 +487,7 @@ export class ActionAskChatGPT extends Action {
               }
             },
             onError: async (error: any) => {
+              console.log(1111, 'error', error)
               this.log.error(`send question error`, error)
               errorMessage =
                 error?.message || error || 'Error detected. Please try again.'
@@ -509,6 +511,7 @@ export class ActionAskChatGPT extends Action {
               }
             },
           })
+          console.log(1111, this.status, conversationId, clientConversationEngine)
           if (this.status !== 'running') {
             return
           }

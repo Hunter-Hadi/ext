@@ -358,7 +358,6 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
                   'error') && (
                 <Button
                   variant={'contained'}
-                  color={'success'}
                   onClick={() => {
                     handleClose()
                   }}

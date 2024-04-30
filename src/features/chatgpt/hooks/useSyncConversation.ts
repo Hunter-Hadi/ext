@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
+import uniqBy from 'lodash-es/uniqBy'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
@@ -115,6 +116,39 @@ const clientUploadMessage = async (
     }
   }
   return result.data?.status === 'OK'
+}
+
+const clientDownloadMessage = async (
+  conversationId: string,
+  messageIds: string[],
+) => {
+  let downloadMessagesData = await clientFetchMaxAIAPI<{
+    status: string
+    data: IChatMessage[]
+  }>('/conversation/batch_get_message_by_id', {
+    conversation_id: conversationId,
+    message_ids: messageIds,
+  })
+  // 重试2次
+  if (downloadMessagesData.data?.status !== 'OK') {
+    downloadMessagesData = await clientFetchMaxAIAPI<{
+      status: string
+      data: IChatMessage[]
+    }>('/conversation/batch_get_message_by_id', {
+      conversation_id: conversationId,
+      message_ids: messageIds,
+    })
+    if (downloadMessagesData.data?.status !== 'OK') {
+      downloadMessagesData = await clientFetchMaxAIAPI<{
+        status: string
+        data: IChatMessage[]
+      }>('/conversation/batch_get_message_by_id', {
+        conversation_id: conversationId,
+        message_ids: messageIds,
+      })
+    }
+  }
+  return downloadMessagesData.data?.data || []
 }
 
 const checkConversationNeedSync = async (
@@ -243,6 +277,7 @@ const syncLocalConversationToRemote = async (
   let needUploadMessages: IChatMessage[] = cloneDeep(
     needUploadConversation.messages,
   )
+  needUploadMessages = uniqBy(needUploadMessages, 'messageId')
   const conversationId = needUploadConversation.id
   if (!needUploadConversation.authorId) {
     needUploadConversation.authorId = await getMaxAIChromeExtensionUserId()
@@ -276,8 +311,12 @@ const syncLocalConversationToRemote = async (
   needUploadMessages = needUploadMessages.filter(
     (message) => !remoteMessagesIds.includes(message.messageId),
   )
+  // 计算下载的消息
+  const needDownloadMessagesIds = remoteMessagesIds.filter(
+    (messageId) => !localMessagesIds.includes(messageId),
+  )
   // 这里可以算出来需要上传的消息数量，和本地已经有的消息数量，更新progress
-  total = needUploadMessages.length + remoteMessagesIds.length
+  total = needUploadMessages.length + needDownloadMessagesIds.length
   syncLog.info(conversationId, `需要上传${needUploadMessages.length}条消息`)
   generateResult(true, 'progress')
   // 每次上传10条消息
@@ -305,9 +344,6 @@ const syncLocalConversationToRemote = async (
   // 下载
   // 每次下载30条消息
   const perDownloadFromRemoteCount = 30
-  const needDownloadMessagesIds = remoteMessagesIds.filter(
-    (messageId) => !localMessagesIds.includes(messageId),
-  )
   const addToLocalMessages: IChatMessage[] = []
   const needSyncToLocalDB = needDownloadMessagesIds.length > 0
   syncLog.info(
@@ -324,19 +360,15 @@ const syncLocalConversationToRemote = async (
       i,
       i + perDownloadFromRemoteCount,
     )
-    const downloadMessagesData = await clientFetchMaxAIAPI<{
-      status: string
-      data: IChatMessage[]
-    }>('/conversation/batch_get_message_by_id', {
-      conversation_id: conversationId,
+    const downloadMessages = await clientDownloadMessage(
+      conversationId,
       message_ids,
-    })
-    const downloadMessages = downloadMessagesData.data?.data || []
+    )
     const isDownloadSuccess = downloadMessages.length === message_ids.length
-    if (!isDownloadSuccess) {
-      successCount++
+    if (isDownloadSuccess) {
+      successCount += downloadMessages.length
     }
-    current += downloadMessages.length || 0
+    current += downloadMessages.length
     addToLocalMessages.push(...downloadMessages)
     syncLog.info(
       conversationId,
@@ -375,7 +407,11 @@ const syncLocalConversationToRemote = async (
       false,
     )
   }
-  syncLog.info(conversationId, `同步完成`, `结果:${successCount === total}`)
+  syncLog.info(
+    conversationId,
+    `同步完成`,
+    `结果: ${successCount === total ? '✅' : '❌'}`,
+  )
   return generateResult(successCount === total, 'end')
 }
 

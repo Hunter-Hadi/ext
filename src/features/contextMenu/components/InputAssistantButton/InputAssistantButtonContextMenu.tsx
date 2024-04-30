@@ -64,7 +64,8 @@ const InputAssistantButtonContextMenu: FC<
   const { updateSidebarConversationType } = useSidebarSettings()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
-  const { currentSidebarConversationType } = useClientConversation()
+  const { currentSidebarConversationType, currentConversationId } =
+    useClientConversation()
   const { currentUserPlan } = useUserInfo()
   const { shortCutsEngine } = useShortCutsEngine()
   const { pushPricingHookMessage } = useClientConversation()
@@ -97,7 +98,9 @@ const InputAssistantButtonContextMenu: FC<
           } else {
             // 如果没有免费试用次数, 则显示付费卡片
             showChatBox()
-            authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
+            authEmitPricingHooksLog('show', permissionWrapperCardSceneType, {
+              conversationId: currentConversationId,
+            })
             updateSidebarConversationType('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
             hideFloatingContextMenu()
@@ -121,10 +124,12 @@ const InputAssistantButtonContextMenu: FC<
       }
     },
     [
+      rootId,
       askAIWIthShortcuts,
       smoothConversationLoading,
       hasPermission,
       permissionWrapperCardSceneType,
+      currentConversationId,
     ],
   )
   const runContextMenuRef = useRef(runContextMenu)

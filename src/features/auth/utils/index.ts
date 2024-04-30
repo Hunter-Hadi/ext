@@ -94,8 +94,11 @@ export const getMaxAIWebSiteClientUserId = async (): Promise<string> => {
     CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   )
   if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
-    return cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
-      ?.clientUserId as string
+    const cacheData =
+      cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
+    // userinfo 接口返回的 client_user_id 优先级更高
+    return (cacheData?.userData?.client_user_id ??
+      cacheData?.clientUserId) as string
   }
   return ''
 }

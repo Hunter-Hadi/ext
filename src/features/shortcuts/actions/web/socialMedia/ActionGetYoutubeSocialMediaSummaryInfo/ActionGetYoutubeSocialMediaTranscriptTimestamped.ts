@@ -201,7 +201,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           this.permissionSceneType,
         )
         // 记录日志
-        authEmitPricingHooksLog('show', this.permissionSceneType)
+        authEmitPricingHooksLog('show', this.permissionSceneType, {
+          conversationId,
+        })
 
         // 触发用量上限时 更新 user subscription info
         await clientMessageChannelEngine.postMessage({

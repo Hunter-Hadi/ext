@@ -18,10 +18,7 @@ import {
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
-import {
-  clientChatConversationModifyChatMessages,
-  clientGetCurrentClientAIProviderAndModel,
-} from '@/features/chatgpt/utils/clientChatConversation'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import {
   IShortcutEngineExternalEngine,
   withLoadingDecorators,
@@ -165,6 +162,10 @@ export class ActionAskChatGPT extends Action {
           questionPrompt,
         )
       }
+      const conversation =
+        (await clientConversationEngine?.getCurrentConversation()) || null
+      const AIModel = conversation?.meta?.AIModel
+      const AIProvider = conversation?.meta?.AIProvider
       // 发消息之前判断是不是MaxAI prompt action, 如果是的话判断是不是third party AI provider
       if (MaxAIPromptActionConfig) {
         // 更新variables和output的值
@@ -188,11 +189,7 @@ export class ActionAskChatGPT extends Action {
           },
         )
         this.question.meta.MaxAIPromptActionConfig = MaxAIPromptActionConfig
-        const conversation =
-          (await clientConversationEngine?.getCurrentConversation()) || null
         if (conversation) {
-          const AIModel = conversation.meta?.AIModel
-          const AIProvider = conversation.meta?.AIProvider
           if (!AIProvider || checkISThirdPartyAIProvider(AIProvider)) {
             // 确认是third-party AI provider, 需要获取默认的prompt
             const result = await clientFetchMaxAIAPI<{
@@ -345,9 +342,7 @@ export class ActionAskChatGPT extends Action {
           .catch()
 
         // 2. 判断是否是第三方AI provider， 是的话需要判断是否已经达到每日使用上限
-        const { isThirdPartyProvider } =
-          await clientGetCurrentClientAIProviderAndModel()
-        if (isThirdPartyProvider) {
+        if (AIProvider && checkISThirdPartyAIProvider(AIProvider)) {
           // 如果是第三方AI provider，需要判断是否已经达到每日使用上限
           const { data: logThirdPartyResult } =
             await clientMessageChannelEngine.postMessage({
@@ -355,7 +350,6 @@ export class ActionAskChatGPT extends Action {
               data: {},
             })
 
-          console.log(`logThirdPartyResult`, logThirdPartyResult)
           if (logThirdPartyResult.hasReachedLimit) {
             // 到达第三方provider的每日使用上限
             // 触达 用量上限向用户展示提示信息
@@ -367,6 +361,11 @@ export class ActionAskChatGPT extends Action {
             authEmitPricingHooksLog(
               'show',
               'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
+              {
+                conversationId,
+                AIProvider,
+                AIModel,
+              },
             )
             // 展示sidebar
             showChatBox()
@@ -569,7 +568,9 @@ export class ActionAskChatGPT extends Action {
               // 触达 用量上限向用户展示提示信息
               await clientConversationEngine.pushPricingHookMessage(sceneType)
               // 记录日志
-              authEmitPricingHooksLog('show', sceneType, conversationId)
+              authEmitPricingHooksLog('show', sceneType, {
+                conversationId,
+              })
               // 展示sidebar
               showChatBox()
               // 触发用量上限时 更新 user subscription info

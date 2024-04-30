@@ -1,5 +1,6 @@
 import { AI_MODEL_SERVICE_TEXTS_MAP } from '@/features/auth/constants'
 
+// pricing hook card 渲染类型的声明
 export type IPermissionPricingHookCardType =
   | 'FAST_TEXT_MODEL'
   | 'ADVANCED_MODEL'

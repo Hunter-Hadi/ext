@@ -1,14 +1,26 @@
 import debounce from 'lodash-es/debounce'
 
+import { IAIProviderType } from '@/background/provider/chat'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import {
+  PERMISSION_CARD_SETTINGS_TEMPLATE,
+  PermissionWrapperCardSceneType,
+} from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
+import {
+  clientGetConversation,
+  clientGetConversationAIModelAndProvider,
+} from '@/features/chatgpt/utils/chatConversationUtils'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
+import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
+import {
+  getCurrentDomainHost,
+  isMaxAIImmersiveChatPage,
+} from '@/utils/dataHelper/websiteHelper'
 
 /**
  * 将 PermissionWrapperCardSceneType 根据不同场景和配置转换成 logType
@@ -182,17 +194,38 @@ export const authEmitPricingHooksLog = debounce(
   async (
     action: 'show' | 'click',
     sceneType: PermissionWrapperCardSceneType,
-    conversationId?: string,
+    meta?: {
+      // 根据 conversationId 获取 到的 ai model 和 provider，优先级更高
+      conversationId?: string
+      AIModel?: string
+      AIProvider?: string
+    },
   ) => {
     try {
+      const {
+        conversationId: propConversationId,
+        AIModel: propAIModel,
+        AIProvider: propAIProvider,
+      } = meta ?? {}
+
       const logType = await permissionSceneTypeToLogType(
         sceneType,
-        conversationId,
+        propConversationId,
       )
+
+      const trackParams = await generateTrackParams(
+        sceneType,
+        propConversationId,
+        propAIModel,
+        propAIProvider,
+      )
+
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
       mixpanelTrack(type, {
         logType,
         sceneType,
+        currentDomain: getCurrentDomainHost(),
+        ...trackParams,
       })
       const port = new ContentScriptConnectionV2()
       await port.postMessage({
@@ -208,3 +241,211 @@ export const authEmitPricingHooksLog = debounce(
   },
   1000,
 )
+
+const generateTrackParams = async (
+  sceneType: PermissionWrapperCardSceneType,
+  propConversationId?: string,
+  propAIModel?: string,
+  propAIProvider?: string,
+) => {
+  try {
+    // 1. 开始获取 AIModel 和 AIProvider
+    // 根据 conversationId 获取 ai model 和 provider
+    let AIModel = propAIModel
+    let AIProvider = propAIProvider
+    if (propConversationId) {
+      const conversationAIModelAndProvider =
+        await clientGetConversationAIModelAndProvider(propConversationId)
+      if (conversationAIModelAndProvider.aiModel) {
+        AIModel = conversationAIModelAndProvider.aiModel
+      }
+      if (conversationAIModelAndProvider.provider) {
+        const BEAUTIFY_PROVIDER_NAME: Record<IAIProviderType, string> = {
+          USE_CHAT_GPT_PLUS: 'in_house',
+          MAXAI_CLAUDE: 'in_house',
+          MAXAI_GEMINI: 'in_house',
+          MAXAI_DALLE: 'in_house',
+          MAXAI_FREE: 'in_house',
+          OPENAI: 'chatgpt_web_app',
+          OPENAI_API: 'openai_api',
+          BARD: 'gemini_web_app',
+          BING: 'bing_web_app',
+          CLAUDE: 'claude_web_app',
+          POE: 'poe_web_app',
+        }
+        AIProvider =
+          BEAUTIFY_PROVIDER_NAME[conversationAIModelAndProvider.provider]
+      }
+    }
+    // 结束获取 AIModel 和 AIProvider
+
+    // 2. 开始获取 paywallName
+    // 直接通过 PERMISSION_CARD_SETTINGS_TEMPLATE 中定义的 pricingHookCardType 来生成 paywallName
+    // 针对 search with ai 的特殊处理，因为两个 sceneType 不存在 pricingHookCardType
+    let paywallName = ''
+    const permissionWrapperCardData =
+      PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType]
+    if (sceneType.startsWith('SEARCH_WITH_AI')) {
+      paywallName = 'SEARCH_WITH_AI'
+    }
+
+    if (permissionWrapperCardData.pricingHookCardType) {
+      switch (permissionWrapperCardData.pricingHookCardType) {
+        case 'FAST_TEXT_MODEL': {
+          if (sceneType === 'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT') {
+            paywallName = 'THIRD_PARTY_MODEL'
+          } else {
+            paywallName = 'FAST_TEXT_MODEL'
+          }
+          break
+        }
+        case 'ADVANCED_MODEL': {
+          paywallName = 'ADVANCED_TEXT_MODEL'
+          break
+        }
+        case 'IMAGE_MODEL': {
+          paywallName = 'IMAGE_MODEL'
+          break
+        }
+        case 'AI_SEARCH': {
+          paywallName = 'SEARCH'
+          break
+        }
+        case 'AI_SUMMARY': {
+          paywallName = 'SUMMARY'
+          break
+        }
+        case 'INSTANT_REPLY': {
+          paywallName = 'INSTANT_REPLY'
+          break
+        }
+        default: {
+          paywallName = 'UNKNOWN'
+        }
+      }
+    }
+    // 结束获取 paywallName
+
+    // 3. 开始获取 featureName
+    let featureName = ''
+    if (sceneType.startsWith('SEARCH_WITH_AI')) {
+      featureName = 'search_with_ai'
+    } else if (
+      permissionWrapperCardData.pricingHookCardType === 'INSTANT_REPLY'
+    ) {
+      const prefix = 'instant'
+      let suffix = ''
+      if (sceneType.includes('COMPOSE_REPLY_BUTTON')) {
+        suffix = 'reply'
+      }
+      if (sceneType.includes('REFINE_DRAFT_BUTTON')) {
+        suffix = 'refine'
+      }
+      if (sceneType.includes('COMPOSE_NEW_BUTTON')) {
+        suffix = 'new'
+      }
+      // 由于 gmail 相关 sceneType 声明较早没有统一，这里做特殊处理
+      // 这里 gmail instant reply 特殊判断
+      switch (sceneType) {
+        case 'GMAIL_CONTEXT_MENU': {
+          suffix = `refine`
+          break
+        }
+        case 'GMAIL_DRAFT_BUTTON': {
+          suffix = `new`
+          break
+        }
+        case 'GMAIL_REPLY_BUTTON': {
+          suffix = `reply`
+          break
+        }
+        default:
+          break
+      }
+
+      featureName = `${prefix}_${suffix}`
+    } else {
+      const prefix = isMaxAIImmersiveChatPage() ? 'immersive' : 'sidebar'
+      let suffix = ''
+      switch (permissionWrapperCardData.pricingHookCardType) {
+        case 'AI_SUMMARY': {
+          suffix = `summary`
+          break
+        }
+        case 'AI_SEARCH': {
+          suffix = `search`
+          break
+        }
+        case 'IMAGE_MODEL': {
+          suffix = `art`
+          break
+        }
+        default: {
+          suffix = `chat`
+          break
+        }
+      }
+      featureName = `${prefix}_${suffix}`
+    }
+    // 结束获取 featureName
+
+    // 4. 开始获取 summary platform
+    let platform = ''
+    if (permissionWrapperCardData.pricingHookCardType === 'AI_SUMMARY') {
+      const pageSummaryType = getPageSummaryType()
+      switch (pageSummaryType) {
+        case 'PDF_CRX_SUMMARY':
+          platform = 'pdf'
+          break
+        case 'PAGE_SUMMARY':
+          platform = 'default'
+          break
+        case 'YOUTUBE_VIDEO_SUMMARY':
+          platform = 'youtube'
+          break
+        case 'DEFAULT_EMAIL_SUMMARY':
+          platform = 'email'
+          break
+        default:
+          break
+      }
+    }
+    // 结束获取 summary platform
+
+    // 5. 开始获取 search 和 art 的 mode
+    let mode: string | null = null
+    const { sidebarSettings } = await getChromeExtensionLocalStorage()
+    switch (permissionWrapperCardData.pricingHookCardType) {
+      case 'AI_SEARCH': {
+        mode = sidebarSettings?.search?.copilot ? 'pro' : 'default'
+        break
+      }
+      case 'IMAGE_MODEL': {
+        mode = sidebarSettings?.art?.isEnabledConversationalMode
+          ? 'default'
+          : 'pro'
+        break
+      }
+      default: {
+        mode = null
+        break
+      }
+    }
+    // 结束获取 search 和 art 的 model
+
+    return objectFilterEmpty(
+      {
+        aiModel: AIModel,
+        aiProvider: AIProvider,
+        paywallName,
+        featureName,
+        platform,
+        mode,
+      },
+      true,
+    )
+  } catch (error) {
+    // do nothing
+    return {}
+  }
+}

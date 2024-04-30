@@ -59,11 +59,9 @@ const PermissionPricingHookCard: FC<IProps> = ({
   }, [permissionCard?.ctaButtonLink])
 
   const ctaButtonClick = (e: React.MouseEvent) => {
-    authEmitPricingHooksLog(
-      'click',
-      permissionSceneType,
-      currentConversationIdRef.current,
-    )
+    authEmitPricingHooksLog('click', permissionSceneType, {
+      conversationId: currentConversationIdRef.current,
+    })
 
     permissionCard?.ctaButtonOnClick && permissionCard?.ctaButtonOnClick(e)
   }

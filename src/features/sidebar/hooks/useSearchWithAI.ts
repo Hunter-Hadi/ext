@@ -92,7 +92,9 @@ const useSearchWithAI = () => {
           )
         } else {
           await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
-          authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI')
+          authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
+            conversationId: currentConversationId,
+          })
           updateClientConversationLoading(false)
           return
         }

@@ -103,3 +103,24 @@ export const clientRemoveConversationsByType = async (
     return false
   }
 }
+
+/**
+ * 在 client 根据 conversationId 获取 conversation 中的 ai model 和 provider
+ * @param conversationId
+ */
+export const clientGetConversationAIModelAndProvider = async (
+  conversationId: string,
+) => {
+  try {
+    const conversation = await clientGetConversation(conversationId)
+    return {
+      aiModel: conversation?.meta.AIModel,
+      provider: conversation?.meta.AIProvider,
+    }
+  } catch (e) {
+    return {
+      aiModel: null,
+      provider: null,
+    }
+  }
+}

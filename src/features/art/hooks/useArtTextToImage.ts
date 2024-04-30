@@ -42,7 +42,10 @@ const useArtTextToImage = () => {
     if (currentSidebarConversationType !== 'Art') {
       await updateSidebarConversationType('Art')
     }
-    if (currentConversationId && (await getConversation(currentConversationId)))  {
+    if (
+      currentConversationId &&
+      (await getConversation(currentConversationId))
+    ) {
       // conversation存在
     } else {
       // conversation不存在
@@ -51,7 +54,9 @@ const useArtTextToImage = () => {
     // 只要是付费用户就不卡
     if (!isPayingUser) {
       await pushPricingHookMessage('SIDEBAR_ART_AND_IMAGES')
-      authEmitPricingHooksLog('show', `SIDEBAR_ART_AND_IMAGES`)
+      authEmitPricingHooksLog('show', `SIDEBAR_ART_AND_IMAGES`, {
+        conversationId: currentConversationId,
+      })
       return
     }
     const messageId = uuidV4()

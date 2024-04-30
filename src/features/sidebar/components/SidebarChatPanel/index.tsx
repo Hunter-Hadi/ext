@@ -75,7 +75,9 @@ const SidebarChatPanel = () => {
             isFreeUser
           ) {
             await pushPricingHookMessage('PAGE_SUMMARY')
-            authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
+            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+              conversationId: currentConversationId,
+            })
           } else {
             await askAIQuestion({
               type: 'user',

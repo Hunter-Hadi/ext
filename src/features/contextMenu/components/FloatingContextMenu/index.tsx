@@ -88,6 +88,8 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import GlobalVideoPopup from '@/features/video_popup/components/GlobalVideoPopup'
+import useVideoPopupController from '@/features/video_popup/hooks/useVideoPopupController'
 import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import {
@@ -167,7 +169,8 @@ const FloatingContextMenu: FC<{
   const currentHostRef = useRef(getCurrentDomainHost())
   const { clientWritingMessage } = useClientConversation()
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
-  const { hideFloatingContextMenu } = useFloatingContextMenu()
+  const { hideFloatingContextMenu, isFloatingMenuVisible } =
+    useFloatingContextMenu()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -807,6 +810,13 @@ const FloatingContextMenu: FC<{
   //   }
   // }, [shortcutLoading, floatingDropdownMenu.open])
 
+  const { closeVideoPopup } = useVideoPopupController()
+  useEffect(() => {
+    if (!isFloatingMenuVisible) {
+      closeVideoPopup()
+    }
+  }, [isFloatingMenuVisible])
+
   return (
     <FloatingPortal root={root}>
       <div
@@ -1071,6 +1081,7 @@ const FloatingContextMenu: FC<{
           }
           root={root}
         />
+        <GlobalVideoPopup />
       </div>
     </FloatingPortal>
   )

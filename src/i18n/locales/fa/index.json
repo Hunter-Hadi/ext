@@ -754,7 +754,7 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1": "سقف ماهانه کوئری پیشرفته تمام شده است. هم‌اکنون ارتقا دهید تا به کوئری‌های نامحدود دسترسی پیدا کنید، یا ماه آینده که سقف ماهانه کوئری‌ها بازنشانی می‌شود، مراجعه کنید.",
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2": "GPT-4-Vision فناوری پیشرفته OpenAI در حوزه هوش مصنوعی است که ترکیبی نوآورانه از پردازش تصویر با درک زبان پیشرفته GPT-4 را ارائه می‌دهد.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__title": "ارتقا برای claude-3-opus نامحدود با دید",
-    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "کلود-3-سونت از Anthropic تعادلی بین هوش و سرعت را به ارمغان می آورد، با قابلیت 200 هزار توکن. برای وظایفی که هم دقت و هم سرعت می‌طلبند، مانند پردازش داده، بهینه سازی فروش، تولید کد و غیره، کاملاً مناسب است.",
+    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "مدل هوشمندترین Anthropic با قابلیت 200 هزار توکن. تجربه عملکرد برتر در وظایف بسیار پیچیده، پرسمان‌های باز و سناریوهای بدون دید با فصاحت و درک شبیه به انسان.",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title": "ارتقا برای claude-3-sonnet نامحدود با دید",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1": "Claude-3-sonnet مدل Anthropic است که تعادلی بین هوش و سرعت دارد و قابلیت 200 هزار توکن را دارد. برای وظایفی که دقت و سرعت هر دوی آنها مورد نیاز است، مانند پردازش داده، بهینه‌سازی فروش، تولید کد و غیره، مناسب است.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title": "ارتقا برای gemini-1.5-pro نامحدود با دید",

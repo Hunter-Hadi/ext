@@ -754,7 +754,7 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1": "మాసిక అడ్వాన్స్డ్ టెక్స్ట్ క్వెరీ పరిమితిని ముగిసారారు. అన్లిమిటెడ్ క్వెరీల కోసం ఇప్పుడు అప్గ్రేడ్ చేయండి లేదా మాసిక క్వెరీలు రీసెట్ అవుతాయి.",
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2": "GPT-4 తో విజన్ అనే అత్యంత ప్రాథమిక భూమిక ఉన్న ఓపెన్‌ఎయ్‌ఐ యొక్క కృత్రిమ ఆధారంగా AI టెక్నాలజీలో మహాన్యాయంగా మెరుగైన ప్రగతి.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__title": "అన్లిమిటెడ్ claude-3-opus కోసం అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropic యొక్క claude-3-sonnet బుద్ధిమత్త మరియు వేగం మధ్య సంతోషంగా సంఘటించడంలో ఒక సంతోషంగా 200k-టోకెన్ సామర్థ్యం ఉంది. డేటా ప్రాసెసింగ్, అమ్మాయిలు అభివృద్ధి, కోడ్ జనరేషన్ మరియు మరేందుకు అవసరమైన పనులకు పరిష్కారం కావాలంటే పరిపూర్ణంగా ఉంటుంది.",
+    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropic యొక్క అత్యంత బుద్ధిమానికి, 200k-టోకెన్ సామర్థ్యం ఉంచే మోడల్. అత్యున్నత జట్టును పొందడానికి, తెలివైన ఫ్లూయెన్సీ మరియు మానవంగా అర్థం కలిగిన ప్రశ్నలపై, తెలుసుకునే స్థాయిలో అదృశ్య పరిస్థితులపై మార్కెట్ లో ఉత్తమ ప్రదర్శనను అనుభవం చేయండి.",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title": "అన్లిమిటెడ్ claude-3-sonnet కోసం అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1": "Anthropic యొక్క claude-3-sonnet బుద్ధిమత్తను వేగంగా మరియు సారిపై ఉంచే 200k-టోకెన్ క్షమతతో సమన్వయం చేసేందుకు సరైన పరికరం.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title": "అన్లిమిటెడ్ gemini-1.5-pro కోసం అప్గ్రేడ్ చేయండి",

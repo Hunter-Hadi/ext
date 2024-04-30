@@ -755,7 +755,7 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1": "חרף את המגבלה החודשית לשאילתות טקסט מתקדמות. שדרג עכשיו לשאילתות בלתי מוגבלות, או בדוק שוב בחודש הבא כשהשאילתות החודשיות מתאפסות.",
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2": "התקדמות מהפכנית של OpenAI בטכנולוגיית AI עם GPT-4-Vision - קפיצה מהפכנית בטכנולוגיית AI שמשלבת עיבוד תמונה עם הבנה מתקדמת של שפה ב-GPT-4.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__title": "שדרג ל-claude-3-opus בלתי מוגבל עם ראייה",
-    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "סונטת claude-3 של Anthropic משלבת בין אינטיליגנציה למהירות, עם יכולת של 200,000 טוקנים. מושלם למשימות הדורשות דיוק ומהירות, כמו עיבוד נתונים, אופטימיזציה של מכירות, יצירת קוד ועוד.",
+    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "הדגם החכם ביותר של Anthropic, עם יכולת של 200 אלף טוקנים. חווי את הביצועים הטובים ביותר בשוק על משימות מורכבות מאוד, פרומפטים פתוחים ותרחישים לא נראים עם זריזות מדהימה והבנה דומה לאדם.",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title": "שדרג ל-claude-3-sonnet בלתי מוגבל עם ראייה",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1": "הדגם claude-3-sonnet של Anthropic מצליח למצוא איזון בין אינטיליגנציה ומהירות, עם יכולת של 200,000 טוקנים. מושלם למשימות הדורשות דיוק ומהירות, כמו עיבוד נתונים, אופטימיזציה של מכירות, יצירת קוד ועוד.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title": "שדרג ל-gemini-1.5-pro בלתי מוגבל עם ראייה",

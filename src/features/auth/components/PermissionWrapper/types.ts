@@ -364,7 +364,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   MAXAI_INSTANT_REPLY: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply',
+      '/images/upgrade/ai-instant-reply.png',
     )}`,
     videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     title: (t) => t('client:permission__pricing_hook__instant_reply__title'),

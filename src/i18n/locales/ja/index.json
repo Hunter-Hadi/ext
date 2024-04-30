@@ -754,7 +754,7 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1": "月間の高度なテキストクエリ制限を超えました。無制限のクエリにアップグレードするか、来月になって月次クエリがリセットされるのを待ってください。",
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2": "OpenAIのAI技術の革新的な進歩であるGPT-4-Visionを搭載したGPT-4です。これは画像処理とGPT-4の高度な言語理解を統合したAI技術の飛躍的な進歩です。",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__title": "無制限のclaude-3-opus with visionにアップグレード",
-    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropicのclaude-3-sonnetは知能と速度のバランスを取り、20万トークンの能力を持っています。データ処理、販売最適化、コード生成など、精度と速度の両方を要求するタスクに最適です。",
+    "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropicの最も賢いモデルで、20万トークンの能力を持っています。非常に複雑なタスク、オープンエンドのプロンプト、目に見えないシナリオでも、驚異的な流暢さと人間らしい理解力で市場最高のパフォーマンスを体験してください。",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title": "無制限のclaude-3-sonnet with visionにアップグレード",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1": "Anthropicのclaude-3-sonnetは知能と速度のバランスが取れたモデルであり、200kトークンの能力を持っています。データ処理、セールス最適化、コード生成など、精度と速度の両方を要求するタスクに最適です。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title": "無制限のgemini-1.5-pro with visionにアップグレード",

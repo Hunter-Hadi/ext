@@ -21,7 +21,6 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
   'PAGE_SUMMARY',
   'SIDEBAR_SEARCH_WITH_AI',
-  'SIDEBAR_ART_AND_IMAGES',
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
   'SEARCH_WITH_AI_HIGH_TRAFFIC',
@@ -169,6 +168,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
 } = {
   // 不同模型用量上限的 pricing hook
   MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-3rd-party-model.png',
+    )}`,
     title: (t) => t('client:permission__pricing_hook__3rd_party_usage__title'),
     description: (t, isFreeUser) => {
       return `${t(
@@ -260,6 +262,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4_TURBO: {
+    videoUrl: `https://www.youtube.com/embed/mAi1D9cbGos`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-4-turbo.png',
     )}`,
@@ -335,6 +338,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4: {
+    videoUrl: `https://www.youtube.com/embed/mAi1D9cbGos`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-4.png',
     )}`,
@@ -362,6 +366,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/ai-instant-reply',
     )}`,
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
       t('client:permission__pricing_hook__instant_reply__description'),
@@ -370,13 +375,13 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/maxai-art-and-images.png',
     )}`,
-
-    title: (t) => t('client:permission__pricing_hook__image_usage__title'),
+    title: (t) =>
+      t('client:permission__pricing_hook__max_ai_paid_model__maxai_art__title'),
     description: (t, isFreeUser) => {
       return `${t(
         isFreeUser
-          ? 'client:permission__pricing_hook__image_usage__description__for_free'
-          : 'client:permission__pricing_hook__image_usage__description__for_paying',
+          ? 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description'
+          : 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description',
       )}`
     },
   },
@@ -395,6 +400,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-3-haiku.png',
     )}`,
+    videoUrl: `https://www.youtube.com/embed/kgO6OnurRpQ`,
     title: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__title'),
     description: (t) =>
@@ -435,15 +441,5 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     title: (t) => t('client:permission__pricing_hook__ai_search__title'),
     description: (t) =>
       t('client:permission__pricing_hook__ai_search__description'),
-  },
-  SIDEBAR_ART_AND_IMAGES: {
-    title: (t) => t('client:permission__pricing_hook__image_usage__title'),
-    description: (t, isFreeUser) => {
-      return `${t(
-        isFreeUser
-          ? 'client:permission__pricing_hook__image_usage__description__for_free'
-          : 'client:permission__pricing_hook__image_usage__description__for_paying',
-      )}`
-    },
   },
 }

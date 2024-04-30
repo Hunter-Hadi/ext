@@ -53,8 +53,8 @@ const useArtTextToImage = () => {
     }
     // 只要是付费用户就不卡
     if (!isPayingUser) {
-      await pushPricingHookMessage('SIDEBAR_ART_AND_IMAGES')
-      authEmitPricingHooksLog('show', `SIDEBAR_ART_AND_IMAGES`, {
+      await pushPricingHookMessage('MAXAI_IMAGE_GENERATE_MODEL')
+      authEmitPricingHooksLog('show', `MAXAI_IMAGE_GENERATE_MODEL`, {
         conversationId: currentConversationId,
       })
       return

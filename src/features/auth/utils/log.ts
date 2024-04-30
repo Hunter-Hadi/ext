@@ -95,7 +95,7 @@ const permissionSceneTypeToLogType = async (
 
   // Image Model
   if (
-    sceneType === 'SIDEBAR_ART_AND_IMAGES' ||
+    sceneType === 'MAXAI_IMAGE_GENERATE_MODEL' ||
     sceneType === 'MAXAI_IMAGE_GENERATE_MODEL'
   ) {
     let artModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art.AIModel

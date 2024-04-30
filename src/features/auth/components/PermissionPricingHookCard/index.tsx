@@ -1,5 +1,4 @@
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
@@ -188,7 +187,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
         {/*)}*/}
 
         {/* cta button */}
-        <Stack spacing={0.5} mt={'16px !important'}>
+        <Stack spacing={2} mt={'16px !important'}>
           <Button
             fullWidth
             sx={{
@@ -196,7 +195,6 @@ const PermissionPricingHookCard: FC<IProps> = ({
               fontSize: '16px',
               fontWeight: 500,
             }}
-            startIcon={<RocketLaunchIcon />}
             variant={'contained'}
             color={'primary'}
             target={'_blank'}

@@ -167,7 +167,7 @@ const permissionSceneTypeToLogType = async (
     }
   }
 
-  if (sceneType === 'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT') {
+  if (sceneType === 'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT') {
     const currentThirdProvider = sidebarSettings?.chat?.thirdAIProvider
     const thirdPartyProviderName = AIProviderOptions.find(
       (providerOption) => providerOption.value === currentThirdProvider,
@@ -299,7 +299,7 @@ const generateTrackParams = async (
     if (permissionWrapperCardData.pricingHookCardType) {
       switch (permissionWrapperCardData.pricingHookCardType) {
         case 'FAST_TEXT_MODEL': {
-          if (sceneType === 'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT') {
+          if (sceneType === 'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT') {
             paywallName = 'THIRD_PARTY_MODEL'
           } else {
             paywallName = 'FAST_TEXT_MODEL'

@@ -1,5 +1,3 @@
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
-import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
 import Box from '@mui/material/Box'
@@ -10,7 +8,10 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import PremiumAccessCard from '@/features/auth/components/PermissionPricingHookCard/PremiumAccessCard'
+import {
+  PricingHooksFeatureIcon,
+  PricingHooksRocketIcon,
+} from '@/features/auth/components/PermissionPricingHookCard/icons'
 import {
   isUsageLimitPermissionSceneType,
   PermissionWrapperCardSceneType,
@@ -147,12 +148,12 @@ const PermissionPricingHookCard: FC<IProps> = ({
             ) : null}
           </Stack>
         ) : null}
-        <Stack direction={'row'} alignItems="center" spacing={1}>
+        <Stack direction={'row'} alignItems="start" spacing={1}>
           {typeof permissionCard.title !== 'string' ? (
             permissionCard.title
           ) : (
             <>
-              <AutoAwesomeIcon
+              <PricingHooksFeatureIcon
                 sx={{
                   color: 'primary.main',
                   fontSize: '24px',
@@ -168,17 +169,23 @@ const PermissionPricingHookCard: FC<IProps> = ({
         {typeof permissionCard.description !== 'string' ? (
           permissionCard.description
         ) : (
-          <Typography fontSize={14} lineHeight={1.5}>
+          <Typography
+            fontSize={14}
+            lineHeight={1.5}
+            sx={{
+              whiteSpace: 'pre-wrap',
+            }}
+          >
             {permissionCard.description}
           </Typography>
         )}
 
-        {permissionCard.pricingHookCardType && (
-          <PremiumAccessCard
-            videoUrl={permissionCard.videoUrl}
-            pricingHookCardType={permissionCard.pricingHookCardType}
-          />
-        )}
+        {/*{permissionCard.pricingHookCardType && (*/}
+        {/*  <PremiumAccessCard*/}
+        {/*    videoUrl={permissionCard.videoUrl}*/}
+        {/*    pricingHookCardType={permissionCard.pricingHookCardType}*/}
+        {/*  />*/}
+        {/*)}*/}
 
         {/* cta button */}
         <Stack spacing={0.5} mt={'16px !important'}>
@@ -202,16 +209,16 @@ const PermissionPricingHookCard: FC<IProps> = ({
             direction={'row'}
             spacing={0.5}
             justifyContent="center"
-            alignItems="center"
+            alignItems="start"
           >
-            <CheckOutlinedIcon
+            <PricingHooksRocketIcon
               sx={{
                 fontSize: 20,
                 color: 'primary.main',
               }}
             />
             <Typography fontSize={14} color="text.secondary">
-              {t('common:cancel_anytime')}
+              {t('client:permission__pricing_hook__footer_tip')}
             </Typography>
           </Stack>
         </Stack>

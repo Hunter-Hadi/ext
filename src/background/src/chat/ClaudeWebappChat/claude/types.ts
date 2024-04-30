@@ -41,7 +41,7 @@ export const CLAUDE_MODELS: IAIProviderModel[] = [
   {
     title: 'claude-3-sonnet',
     titleTag: '',
-    value: 'claude-2.0', // 'claude-3-sonnet',
+    value: 'claude-3-sonnet',
     maxTokens: 100 * 2000,
     tags: [],
     poweredBy: 'Anthropic',

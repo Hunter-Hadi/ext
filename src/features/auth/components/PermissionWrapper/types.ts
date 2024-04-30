@@ -207,7 +207,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__description2',
         )}`,
-      ].join('\n')
+      ].join('\n\n')
     },
   },
   MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU: {
@@ -228,7 +228,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__description2',
         )}`,
-      ].join('\n')
+      ].join('\n\n')
     },
   },
   MAXAI_FAST_TEXT_MODEL_GEMINI_PRO: {
@@ -247,7 +247,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__fast_text_usage__gemini_pro__description2',
         )}`,
-      ].join('\n')
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL: {
@@ -277,7 +277,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           `${t(
             'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2',
           )}`,
-        ].join('\n')
+        ].join('\n\n')
       }
       return [
         `${t(
@@ -286,7 +286,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2',
         )}`,
-      ].join('\n')
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_CLAUDE_3_OPUS: {
@@ -302,7 +302,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__description1',
         )}`,
-      ].join('\n')
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_CLAUDE_3_SONNET: {
@@ -318,7 +318,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1',
         )}`,
-      ].join('\n')
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_GEMINI_1_5_PRO: {
@@ -334,7 +334,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description1',
         )}`,
-      ].join('\n')
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4: {
@@ -350,7 +350,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           `${t(
             'client:permission__pricing_hook__advanced_text_usage__gpt_4__description2',
           )}`,
-        ].join('\n')
+        ].join('\n\n')
       }
       return [
         `${t(
@@ -359,7 +359,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__gpt_4__description2',
         )}`,
-      ].join('\n')
+      ].join('\n\n')
     },
   },
   MAXAI_INSTANT_REPLY: {

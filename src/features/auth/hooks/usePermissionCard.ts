@@ -30,7 +30,6 @@ export const usePermissionCard = (
       // NOTE: 因为 MAXAI_FAST_TEXT_MODEL 和 MAXAI_ADVANCED_MODEL 有多个子模型，所以需要根据 AIModel 来判断具体的权限卡片
       let settings = getPermissionCardSettingsBySceneType(sceneType)
       const AIModel = clientConversation?.meta?.AIModel
-      debugger
       if (AIModel) {
         if (sceneType === 'MAXAI_FAST_TEXT_MODEL') {
           if (AIModel === MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO) {

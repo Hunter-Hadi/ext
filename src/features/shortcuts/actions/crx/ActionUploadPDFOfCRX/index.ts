@@ -38,7 +38,7 @@ export class ActionUploadPDFOfCRX extends Action {
   ) {
     const { clientConversationEngine } = engine
     const conversationId =
-      engine.clientConversationEngine?.currentConversationIdRef?.current || ''
+      engine.clientConversationEngine?.currentConversationId || ''
     const uploadPDFAsync = async () => {
       try {
         const pdfInstance = (window as any)?.PDFViewerApplication

@@ -415,7 +415,6 @@ export class ActionAskChatGPT extends Action {
             ) || null
         }
         try {
-          console.log(1111, this.question, conversationId, clientConversationEngine)
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
               this.log.info('message', message)
@@ -509,7 +508,12 @@ export class ActionAskChatGPT extends Action {
               }
             },
           })
-          console.log(1111, this.status, conversationId, clientConversationEngine)
+          console.log(
+            1111,
+            this.status,
+            conversationId,
+            clientConversationEngine,
+          )
           if (this.status !== 'running') {
             return
           }
@@ -569,9 +573,13 @@ export class ActionAskChatGPT extends Action {
               const sceneType = errorMessage
               // 触达 用量上限向用户展示提示信息
               await clientConversationEngine.pushPricingHookMessage(sceneType)
+
               // 记录日志
               authEmitPricingHooksLog('show', sceneType, {
                 conversationId,
+                inContextMenu:
+                  clientConversationEngine.clientConversation?.type ===
+                  'ContextMenu',
               })
               // 展示sidebar
               // showChatBox()

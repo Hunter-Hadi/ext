@@ -199,6 +199,8 @@ export const authEmitPricingHooksLog = debounce(
       conversationId?: string
       AIModel?: string
       AIProvider?: string
+
+      inContextMenu?: boolean
     },
   ) => {
     try {
@@ -219,6 +221,11 @@ export const authEmitPricingHooksLog = debounce(
         propAIModel,
         propAIProvider,
       )
+
+      if (meta?.inContextMenu && trackParams.featureName) {
+        // 如果在 meta 中传入了 inContextMenu, 则将 featureName 替换为 context_menu
+        trackParams.featureName = 'context_menu'
+      }
 
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
       mixpanelTrack(type, {

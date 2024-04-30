@@ -181,6 +181,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   MAXAI_ADVANCED_MODEL: {
     pricingHookCardType: 'ADVANCED_MODEL',
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/claude-3-haiku.png',
+    )}`,
+    videoUrl: `https://www.youtube.com/embed/72UM1jMaJhY`,
     title: (t) =>
       t('client:permission__pricing_hook__advanced_text_usage__title'),
     description: (t, isFreeUser) => {

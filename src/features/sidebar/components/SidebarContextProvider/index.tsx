@@ -49,12 +49,8 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
     immersiveSettings,
   ])
 
-  // 初始化时sidebarSettings为空，同步数据后更新至immersiveSettings
-  useEffect(() => {
-    if (!immersiveSettings) {
-      setImmersiveSettings(sidebarSettings)
-    }
-  }, [immersiveSettings, sidebarSettings])
+  const conversationTypeRef = useRef(currentSidebarConversationType)
+  conversationTypeRef.current = currentSidebarConversationType
 
   const sidebarContextValue = useMemo<ChatPanelContextValue>(() => {
     /**
@@ -144,6 +140,22 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
       resetConversation,
     }
   }, [immersiveConversationId, conversationStatus])
+
+  // 初始化时sidebarSettings为空，同步数据后更新至immersiveSettings
+  useEffect(() => {
+    if (!immersiveSettings) {
+      setImmersiveSettings(sidebarSettings)
+      if (!immersiveConversationId) {
+        // 初始化没有id，比如首次安装的时候登陆成功后不打开sidebar直接打开immersive chat
+        sidebarContextValue.createConversation(conversationTypeRef.current)
+      }
+    }
+  }, [
+    immersiveSettings,
+    sidebarSettings,
+    immersiveConversationId,
+    sidebarContextValue,
+  ])
 
   return (
     <ChatPanelContext.Provider value={sidebarContextValue}>

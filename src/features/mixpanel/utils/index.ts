@@ -44,7 +44,9 @@ export const mixpanelTrack = async (
   params?: Record<string, any>,
 ) => {
   try {
-    const paramsCover = { ...params, ...(await paramsWithUserInfo()) }
+    const paramsCover = { ...params, ...(await trackParamsWithUserInfo()) }
+
+    console.log(`mixpanel.track eventName: `, eventName, paramsCover)
     mixpanel.track(eventName, paramsCover)
   } catch (e) {
     // do nothing
@@ -68,7 +70,7 @@ export const mixpanelIdentify = (
   }
 }
 
-export const paramsWithUserInfo = async () => {
+const trackParamsWithUserInfo = async () => {
   const userInfo = await getChromeExtensionUserInfo(false)
 
   // guest 代表未登录的用户

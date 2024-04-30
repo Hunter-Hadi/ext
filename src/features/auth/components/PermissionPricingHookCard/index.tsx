@@ -105,11 +105,15 @@ const PermissionPricingHookCard: FC<IProps> = ({
   // 获取到 permissionCard 才渲染
   if (permissionCard) {
     return (
-      <Stack spacing={1.5}>
+      <Stack spacing={1.5} color="white">
         {permissionCard.imageUrl ? (
           <Stack
             sx={{
               position: 'relative',
+              cursor: permissionCard.videoUrl ? 'pointer' : 'auto',
+            }}
+            onClick={() => {
+              permissionCard.videoUrl && openVideoPopup(permissionCard.videoUrl)
             }}
           >
             <img
@@ -131,11 +135,6 @@ const PermissionPricingHookCard: FC<IProps> = ({
                   lineHeight: 0,
                   bgcolor: '#00000080',
                   backdropFilter: 'blur(4px)',
-                  cursor: 'pointer',
-                }}
-                onClick={() => {
-                  permissionCard.videoUrl &&
-                    openVideoPopup(permissionCard.videoUrl)
                 }}
               >
                 <PlayArrowIcon
@@ -210,7 +209,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
                 color: 'primary.main',
               }}
             />
-            <Typography fontSize={14} color="text.secondary">
+            <Typography fontSize={14} color="rgba(255, 255, 255, 0.7)">
               {t('client:permission__pricing_hook__footer_tip')}
             </Typography>
           </Stack>

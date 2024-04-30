@@ -353,13 +353,13 @@ export class ActionAskChatGPT extends Action {
             // 到达第三方provider的每日使用上限
             // 触达 用量上限向用户展示提示信息
             await clientConversationEngine.pushPricingHookMessage(
-              'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
+              'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
             )
             // 记录日志
             // 第三方 webapp 模型，用 MAXAI_FAST_TEXT_MODEL 记录
             authEmitPricingHooksLog(
               'show',
-              'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
+              'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
               {
                 conversationId,
                 AIProvider,
@@ -374,7 +374,7 @@ export class ActionAskChatGPT extends Action {
               data: {},
             })
 
-            this.error = 'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT'
+            this.error = 'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT'
             return
           }
         }

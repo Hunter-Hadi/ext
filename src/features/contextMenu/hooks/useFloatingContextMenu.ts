@@ -49,6 +49,7 @@ const useFloatingContextMenu = () => {
       element?: IVirtualIframeSelectionElement,
       overwriteSelectionElement?: Partial<IVirtualIframeSelectionElement>,
       openFloatingContextMenu?: boolean,
+      forceShowModelSelector?: boolean,
     ) => {
       let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
         element
@@ -104,7 +105,9 @@ const useFloatingContextMenu = () => {
         }
         // 2. 如果当前有选中文本在不可编辑元素上或者可编辑元素上有真正的选中文本在或者按下command + i, 则展开
         let showModelSelector = true
-        if (
+        if (forceShowModelSelector) {
+          showModelSelector = forceShowModelSelector
+        } else if (
           element?.target &&
           getMaxAISidebarRootElement()?.contains(element?.target)
         ) {
@@ -154,7 +157,7 @@ const useFloatingContextMenu = () => {
       setFloatingDropdownMenu({
         open: false,
         rootRect: null,
-        showModelSelector: false,
+        showModelSelector: !!forceShowModelSelector,
       })
       // immersive page下显示的就是sidebar，不处理
       if (isMaxAIImmersiveChatPage()) {
@@ -196,6 +199,7 @@ const useFloatingContextMenu = () => {
     element: HTMLElement,
     text: string,
     openFloatingContextMenu?: boolean,
+    forceShowModelSelector?: boolean,
   ) => {
     const rect = cloneRect(element.getBoundingClientRect())
     const virtualSelection = {
@@ -211,6 +215,7 @@ const useFloatingContextMenu = () => {
       virtualSelection as IVirtualIframeSelectionElement,
       {},
       openFloatingContextMenu,
+      forceShowModelSelector,
     )
   }
   const showFloatingContextMenu = () => {

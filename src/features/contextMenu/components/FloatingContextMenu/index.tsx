@@ -36,7 +36,7 @@ import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useClientConversationListener from '@/features/chatgpt/hooks/useClientConversationListener'
-import { isSystemMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { isSystemMessageByType } from '@/features/chatgpt/utils/chatMessageUtils'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
@@ -309,7 +309,8 @@ const FloatingContextMenu: FC<{
     if (
       loading ||
       isSettingVariablesMemo ||
-      (activeAIResponseMessage && isSystemMessage(activeAIResponseMessage))
+      (activeAIResponseMessage &&
+        isSystemMessageByType(activeAIResponseMessage, 'needUpgrade'))
     ) {
       return EMPTY_ARRAY
     }

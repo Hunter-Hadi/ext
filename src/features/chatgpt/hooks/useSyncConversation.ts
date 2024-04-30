@@ -148,7 +148,7 @@ const clientDownloadMessage = async (
       })
     }
   }
-  return downloadMessagesData.data?.data || []
+  return uniqBy(downloadMessagesData.data?.data || [], 'messageId')
 }
 
 const checkConversationNeedSync = async (

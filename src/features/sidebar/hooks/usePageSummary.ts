@@ -20,10 +20,11 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { useContextMenuList } from '@/features/contextMenu'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
-  getContextMenuActionsByPageSummaryType,
+  getContextMenuByNavMetadataKey,
   getPageSummaryConversationId,
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
@@ -41,6 +42,11 @@ const usePageSummary = () => {
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
+  const { contextMenuList } = useContextMenuList(
+    'sidebarSummaryButton',
+    '',
+    false,
+  )
   const isGeneratingPageSummaryRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const clientWritingMessageRef = useRef(clientWritingMessage)
@@ -64,7 +70,6 @@ const usePageSummary = () => {
       const pageSummaryConversation = await clientGetConversation(
         pageSummaryConversationId,
       )
-      const currentPageSummaryType = getPageSummaryType()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         await updateSidebarSettings({
@@ -142,26 +147,52 @@ const usePageSummary = () => {
             return
           }
         }
-        const nowCurrentPageSummaryKey = cloneDeep(currentPageSummaryKey)
-        const paramsPageSummaryTypeData =
-          await getContextMenuActionsByPageSummaryType(
-            getPageSummaryType(),
-            nowCurrentPageSummaryKey[currentPageSummaryType],
-          )
-        if (paramsPageSummaryTypeData) {
+
+        const currentPageSummaryType = getPageSummaryType()
+        const summaryNavMetadataKey = cloneDeep(currentPageSummaryKey)[
+          currentPageSummaryType
+        ]
+
+        const contextMenu = await getContextMenuByNavMetadataKey(
+          currentPageSummaryType,
+          summaryNavMetadataKey,
+          contextMenuList,
+        )
+
+        if (contextMenu) {
           setCurrentPageSummaryKey((summaryKeys) => {
             return {
               ...summaryKeys,
-              [currentPageSummaryType]: paramsPageSummaryTypeData.summaryNavKey,
+              [currentPageSummaryType]: contextMenu.summaryNavKey,
             }
           })
-          lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
-          await askAIWIthShortcuts(paramsPageSummaryTypeData.actions)
+          lastMessageIdRef.current = contextMenu.messageId
+          await askAIWIthShortcuts(contextMenu.actions)
             .then()
             .finally(() => {
               isGeneratingPageSummaryRef.current = false
             })
         }
+
+        // const paramsPageSummaryTypeData =
+        //   await getContextMenuActionsByPageSummaryType(
+        //     currentPageSummaryType,
+        //     nowCurrentPageSummaryKey[currentPageSummaryType],
+        //   )
+        // if (paramsPageSummaryTypeData) {
+        //   setCurrentPageSummaryKey((summaryKeys) => {
+        //     return {
+        //       ...summaryKeys,
+        //       [currentPageSummaryType]: paramsPageSummaryTypeData.summaryNavKey,
+        //     }
+        //   })
+        //   lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
+        //   await askAIWIthShortcuts(paramsPageSummaryTypeData.actions)
+        //     .then()
+        //     .finally(() => {
+        //       isGeneratingPageSummaryRef.current = false
+        //     })
+        // }
       } catch (e) {
         console.log('创建Conversation失败', e)
         isGeneratingPageSummaryRef.current = false

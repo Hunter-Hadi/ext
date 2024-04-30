@@ -11,7 +11,8 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { type FC, memo, useRef, useState } from 'react'
+import React, { type FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
 import {
@@ -19,7 +20,7 @@ import {
 } from '@/components/ContextMenuIcon'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { type IAIResponseMessage } from '@/features/chatgpt/types';
+import { type IAIResponseMessage, type IAIResponseOriginalMessageNavMetadata } from '@/features/chatgpt/types';
 import { useContextMenuList } from '@/features/contextMenu'
 // import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
@@ -33,19 +34,23 @@ import { CustomPromptMenuListIcon, CustomPromptMenuListItem } from './SidebarNav
 interface ISidebarNavCustomPromptButtonProps {
   message: IAIResponseMessage
   summaryType: IPageSummaryType
-  actionPromptId?: string
+  actionNavMetadata?: IAIResponseOriginalMessageNavMetadata
   loading?: boolean
+  actived?: boolean
   onChange: (menuItem: IContextMenuItemWithChildren) => void
 }
 
+let isLoaded = false
 const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (props) => {
   const {
     summaryType,
-    actionPromptId,
+    actionNavMetadata,
     loading = false,
+    actived = false,
     onChange
   } = props
 
+  const { t } = useTranslation(['client'])
   const { contextMenuList } = useContextMenuList('sidebarSummaryButton', '', false)
 
   // const { smoothConversationLoading } = useSmoothConversationLoading()
@@ -54,9 +59,45 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
   const open = Boolean(anchorEl)
 
   const [summaryActionItem, setSummaryActionItem] = useState<IContextMenuItemWithChildren | null>(null)
-  const isActived = summaryActionItem && actionPromptId === summaryActionItem.id
+  const isActived = actived || (summaryActionItem && actionNavMetadata?.key === summaryActionItem.id)
 
   const menuEnterRef = useRef(false)
+
+  const displayTitle = useMemo(() => {
+    let title = t('client:sidebar__summary__nav__summary__my_own_prompts__tooltip__default')
+    if (summaryActionItem && summaryActionItem.text) {
+      title = summaryActionItem.text
+    } else if (isActived && actionNavMetadata && actionNavMetadata.title) {
+      title = actionNavMetadata.title
+    }
+
+    return title
+  }, [summaryActionItem, actionNavMetadata, isActived, t])
+
+  const DisplayIcon = useCallback(() => {
+    let icon = ''
+    if (summaryActionItem && summaryActionItem.data.icon) {
+      icon = summaryActionItem.data.icon
+    } else if (isActived && actionNavMetadata && actionNavMetadata.icon) {
+      icon = actionNavMetadata.icon
+    }
+
+    return icon ? <ContextMenuIcon
+      size={18}
+      icon={icon}
+      sx={{
+        color:
+          isActived ? '#fff' : 'primary.main',
+      }}
+    />
+      : <UseChatGptIcon
+        sx={{
+          color:
+            isActived ? '#fff' : 'primary.main',
+          fontSize: 18,
+        }}
+      />
+  }, [summaryActionItem, actionNavMetadata, isActived])
 
   const handleClick = (menuItem: IContextMenuItemWithChildren) => {
     onChange(menuItem)
@@ -64,14 +105,40 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
     setAnchorEl(null)
   }
 
+  // initialize loaded
+  useEffect(() => {
+    return () => {
+      isLoaded = false
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isLoaded && actived && contextMenuList.length > 0 && !summaryActionItem && actionNavMetadata?.key) {
+      isLoaded = true
+      setSummaryActionItem(contextMenuList.flat(Infinity).find(item => item.id === actionNavMetadata.key) || null)
+    }
+  }, [actived, contextMenuList, actionNavMetadata?.key])
+
+  useEffect(() => {
+    if (anchorEl && !isLoaded) {
+      isLoaded = true
+    }
+  }, [anchorEl])
+
   return <>
     <TextOnlyTooltip
-      title="test summary custom prompt menu"
-    // key={navItem.key} title={t(navItem.tooltip as any)}
+      title={displayTitle}
+    // key={navItem.key}
     >
       <Button
         disabled={loading}
         variant={isActived ? 'contained' : 'outlined'}
+        onMouseUp={(event) => {
+          event.stopPropagation()
+          if (!isActived && summaryActionItem) {
+            handleClick(summaryActionItem)
+          }
+        }}
         onMouseEnter={(event) => {
           event.preventDefault()
           event.stopPropagation()
@@ -106,24 +173,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
               }}
             />
           )} */}
-          {
-            summaryActionItem && summaryActionItem.data.icon
-              ? <ContextMenuIcon
-                size={18}
-                icon={summaryActionItem.data.icon}
-                sx={{
-                  color:
-                    isActived ? '#fff' : 'primary.main',
-                }}
-              />
-              : <UseChatGptIcon
-                sx={{
-                  color:
-                    'primary.main',
-                  fontSize: 18,
-                }}
-              />
-          }
+          <DisplayIcon />
           <ContextMenuIcon
             icon={'ExpandMore'}
             sx={{
@@ -176,7 +226,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
             >
               {...RenderCustomPromptMenuList(contextMenuList, {
                 level: 0,
-                actionPromptId,
+                actionPromptId: actionNavMetadata?.key,
                 onClick: handleClick,
               })}
               {contextMenuList.length > 0 && <Divider sx={{ my: '2px' }} />}

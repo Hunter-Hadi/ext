@@ -272,8 +272,8 @@ const SettingPromptsUpdateFormModal: FC<{
                 if (editNode.id === '') {
                   editNode.id = v4()
                 }
-                debugger
                 const actions = generateActions(editNode.text)
+                // Summary custom prompts 需要特殊处理，将输出端转成 AI
                 if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
                   const askChatGPTAction = actions.find(action => action.type === 'ASK_CHATGPT')
                   if (askChatGPTAction) {
@@ -289,7 +289,6 @@ const SettingPromptsUpdateFormModal: FC<{
                     askChatGPTAction.parameters.AskChatGPTActionType = 'ASK_CHAT_GPT_HIDDEN'
                   }
                 }
-                console.log(settingPromptsEditButtonKey)
                 onSave?.(
                   mergeWithObject([
                     editNode,

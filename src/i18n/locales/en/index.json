@@ -748,6 +748,7 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Timestamped summary",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Unable to generate video without subtitles.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oops! Something unexpected happened. Please try again later.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "My own prompts",
     "context_window__chat_history__button__title": "Context menu history",
     "context_window__chat_history__empty__title": "No context menu history available yet",
     "context_window__chat_history__continue_in_chat__title": "Continue in chat"

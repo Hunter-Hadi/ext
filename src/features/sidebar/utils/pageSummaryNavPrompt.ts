@@ -235,14 +235,7 @@ export type SummaryParamsPromptType =
   | 'actions'
   | 'timestamped'
 
-interface ISummaryGetPromptObject {
-  PAGE_SUMMARY: (key?: SummaryParamsPromptType) => string
-  PDF_CRX_SUMMARY: (key?: SummaryParamsPromptType) => string
-  YOUTUBE_VIDEO_SUMMARY: (key?: SummaryParamsPromptType) => string
-  DEFAULT_EMAIL_SUMMARY: (key?: SummaryParamsPromptType) => string
-}
-
-export const summaryGetPromptObject: ISummaryGetPromptObject = {
+export const summaryGetPromptObject = {
   PAGE_SUMMARY: getSummaryPagePrompt,
   PDF_CRX_SUMMARY: getSummaryPdfPrompt,
   YOUTUBE_VIDEO_SUMMARY: getSummaryYoutubeVideoPrompt,

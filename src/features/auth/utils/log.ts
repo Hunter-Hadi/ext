@@ -412,6 +412,27 @@ const generateTrackParams = async (
     }
     // 结束获取 summary platform
 
+    // 5. 开始获取 search 和 art 的 mode
+    let mode: string | null = null
+    const { sidebarSettings } = await getChromeExtensionLocalStorage()
+    switch (permissionWrapperCardData.pricingHookCardType) {
+      case 'AI_SEARCH': {
+        mode = sidebarSettings?.search?.copilot ? 'pro' : 'default'
+        break
+      }
+      case 'IMAGE_MODEL': {
+        mode = sidebarSettings?.art?.isEnabledConversationalMode
+          ? 'default'
+          : 'pro'
+        break
+      }
+      default: {
+        mode = null
+        break
+      }
+    }
+    // 结束获取 search 和 art 的 model
+
     return objectFilterEmpty(
       {
         aiModel: AIModel,
@@ -419,6 +440,7 @@ const generateTrackParams = async (
         paywallName,
         featureName,
         platform,
+        mode,
       },
       true,
     )

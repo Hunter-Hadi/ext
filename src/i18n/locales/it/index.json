@@ -57,7 +57,8 @@
     "team_plan": "Piano di squadra",
     "manage_my_plan": "Gestisci il mio piano",
     "watch_video": "Guarda il video",
-    "input_content": "Contenuto di input"
+    "input_content": "Contenuto di input",
+    "discard": "Scarta"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Aggiorna per gpt-4 illimitato",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Limite mensile per le query di testo avanzate superato. Aggiorna ora per query illimitate, o controlla il prossimo mese quando le query mensili vengono ripristinate.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 di OpenAI, ottimizzato per velocità ed efficienza, eccelle nelle applicazioni in tempo reale che richiedono creatività e ragionamento avanzato con tempi di risposta migliorati e output coerente.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite offre query AI illimitate, riassunti AI, ricerche AI e risposte istantanee."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite offre query AI illimitate, riassunti AI, ricerche AI e risposte istantanee.",
+    "floating_menu__discard_changes_card__ai_response__title": "Vuoi eliminare la risposta dell'IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vuoi eliminare la tua bozza?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

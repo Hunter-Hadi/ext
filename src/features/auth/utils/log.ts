@@ -256,7 +256,6 @@ const generateTrackParams = async (
   propAIProvider?: string,
 ) => {
   try {
-    debugger
     // 1. 开始获取 AIModel 和 AIProvider
     // 根据 conversationId 获取 ai model 和 provider
     let AIModel = propAIModel

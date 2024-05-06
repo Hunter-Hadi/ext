@@ -57,7 +57,8 @@
     "team_plan": "Teamplan",
     "manage_my_plan": "Beheer mijn plan",
     "watch_video": "Bekijk video",
-    "input_content": "Invoerinformatie"
+    "input_content": "Invoerinformatie",
+    "discard": "Afwijzen"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Upgrade voor onbeperkte gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Maandelijkse limiet voor geavanceerde tekstvragen overschreden. Upgrade nu voor onbeperkte vragen, of kom volgende maand terug wanneer de maandelijkse vragen worden gereset.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 van OpenAI, geoptimaliseerd voor snelheid en efficiëntie, blinkt uit in realtime toepassingen die creativiteit en geavanceerd redeneren vereisen, met verbeterde responstijden en consistente output.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite biedt onbeperkte AI-zoekopdrachten, AI-samenvattingen, AI-zoekopdrachten en directe antwoorden."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite biedt onbeperkte AI-zoekopdrachten, AI-samenvattingen, AI-zoekopdrachten en directe antwoorden.",
+    "floating_menu__discard_changes_card__ai_response__title": "Wil je het AI-antwoord negeren?",
+    "floating_menu__discard_changes_card__your_draft__title": "Wil je je concept negeren?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -356,6 +356,7 @@ const useShortcutEditorActions = () => {
             placeholder: 'Full context',
             defaultValue: '{{FULL_CONTEXT}}',
             systemVariable: true,
+            hidden: true,
           })
         }
 
@@ -367,6 +368,7 @@ const useShortcutEditorActions = () => {
             placeholder: 'Target context',
             defaultValue: '{{TARGET_CONTEXT}}',
             systemVariable: true,
+            hidden: true,
           })
         }
 
@@ -378,6 +380,7 @@ const useShortcutEditorActions = () => {
             placeholder: 'Draft context',
             defaultValue: '{{DRAFT_CONTEXT}}',
             systemVariable: true,
+            hidden: true,
           })
         }
       } else {

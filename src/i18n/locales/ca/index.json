@@ -57,7 +57,8 @@
     "team_plan": "Pla d'equip",
     "manage_my_plan": "Gestiona el meu pla",
     "watch_video": "Veure vídeo",
-    "input_content": "Contingut d'entrada"
+    "input_content": "Contingut d'entrada",
+    "discard": "Descartar"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Millora per a gpt-4 il·limitat",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "S'ha superat el límit mensual de consultes avançades de text. Millora ara per a consultes il·limitades, o torna el mes que ve quan es reiniciïn les consultes mensuals.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 d'OpenAI, optimitzat per a velocitat i eficiència, destaca en aplicacions en temps real que requereixen creativitat i raonament avançat amb temps de resposta millorats i sortida consistent.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite ofereix consultes d'IA il·limitades, resums d'IA, cerques d'IA i respostes instantànies."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite ofereix consultes d'IA il·limitades, resums d'IA, cerques d'IA i respostes instantànies.",
+    "floating_menu__discard_changes_card__ai_response__title": "Voleu descartar la resposta de l'IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "Voleu descartar el vostre esborrany?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -57,7 +57,8 @@
     "team_plan": "Tiimisuunnitelma",
     "manage_my_plan": "Hallinnoi suunnitelmaani",
     "watch_video": "Katso video",
-    "input_content": "Syötä sisältö"
+    "input_content": "Syötä sisältö",
+    "discard": "Hylkää"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Päivittääksesi rajattomat gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Kuukausittainen edistyneiden tekstikyselyjen raja ylittyi. Päivitä nyt rajattomiin kyselyihin tai tarkista ensi kuussa, kun kuukausittaiset kyselyt palautuvat.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI:n GPT-4, joka on optimoitu nopeuteen ja tehokkuuteen, loistaa reaaliaikaisissa sovelluksissa, jotka vaativat luovuutta ja edistynyttä päättelyä paremmilla vasteajoilla ja johdonmukaisella tulostuksella.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite tarjoaa rajattomat AI-kyselyt, AI-yhteenvedot, AI-haut ja välittömät vastaukset."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite tarjoaa rajattomat AI-kyselyt, AI-yhteenvedot, AI-haut ja välittömät vastaukset.",
+    "floating_menu__discard_changes_card__ai_response__title": "Haluatko hylätä AI-vastauksen?",
+    "floating_menu__discard_changes_card__your_draft__title": "Haluatko hylätä luonnoksesi?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

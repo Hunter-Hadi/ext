@@ -579,6 +579,8 @@ export default [
                   valueType: 'Text',
                   placeholder: 'Enter context',
                   defaultValue: '{{SELECTED_TEXT}}',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 {
                   label: 'Key points',
@@ -1141,6 +1143,8 @@ export default [
                   valueType: 'Text',
                   placeholder: 'Enter email context',
                   defaultValue: '{{SELECTED_TEXT}}',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 {
                   label: 'Key points',
@@ -1803,6 +1807,8 @@ export default [
                   valueType: 'Text',
                   placeholder: 'Enter context',
                   defaultValue: '{{SELECTED_TEXT}}',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 {
                   label: 'Key points',

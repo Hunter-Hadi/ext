@@ -15,9 +15,8 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState } from 'recoil'
 
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import DevContent from '@/components/DevContent'
@@ -30,22 +29,23 @@ import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
 } from '@/features/common/constants'
+import { useFloatingContextMenu } from '@/features/contextMenu'
 import {
   FloatingContextMenuPopupSettingButton,
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import FloatingContextMenuChatHistoryButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuChatHistoryButton'
 import ContextWindowVideoPlayer from '@/features/contextMenu/components/FloatingContextMenu/ContextWindowVideoPlayer'
+import DiscardChangesModal from '@/features/contextMenu/components/FloatingContextMenu/DiscardChangesModal'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
 import { useFloatingContextMenuDraftHistoryChange } from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useInitContextWindow from '@/features/contextMenu/hooks/useInitContextWindow'
-import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import {
   cloneRect,
-  FloatingContextMenuMiddleware,
   getContextMenuRenderPosition,
+  getFloatingContextMenuMiddleware,
 } from '@/features/contextMenu/utils'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
@@ -67,10 +67,14 @@ const FloatingContextMenu: FC<{
     contextWindowList,
     isSettingCustomVariables,
     setIsSettingCustomVariables,
+    setIsInputCustomVariables,
   } = useInitContextWindow()
-  const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
-    FloatingDropdownMenuState,
-  )
+  const {
+    hideFloatingContextMenu,
+    floatingDropdownMenu,
+    setFloatingDropdownMenu,
+  } = useFloatingContextMenu()
+  const [discardChangesModalOpen, setDiscardChangesModalOpen] = useState(false)
   const currentWidth = useMemo(() => {
     if (floatingDropdownMenu.rootRect) {
       const minWidth = Math.max(
@@ -127,13 +131,45 @@ const FloatingContextMenu: FC<{
       contextMenuPlacement,
     }
   }, [floatingDropdownMenu.rootRect, currentWidth])
-  const [referenceElementPosition, updateReferenceElementPosition] = useState({
+  const referenceElementDragOffsetRef = useRef({
+    prevX: 0,
+    prevY: 0,
     x: 0,
     y: 0,
   })
   const { x, y, strategy, refs, context, update } = useFloating({
     open: floatingDropdownMenu.open,
-    onOpenChange: (open) => {
+    onOpenChange: (open, event, reason) => {
+      if (reason === 'outside-press' || reason === 'escape-key') {
+        console.log(
+          `[ContextWindow] [FloatingContextMenu] [onOpenChange] [${reason}] [${contextWindowMode}]`,
+        )
+        if (contextWindowMode !== 'READ') {
+          if (contextWindowMode === 'LOADING') {
+            // AI正在运行，不需要弹出确认框，不需要关闭
+            return
+          }
+          // custom variables 的编辑模式下，需要特殊处理
+          if (
+            (contextWindowMode === 'EDIT_VARIABLES' ||
+              contextWindowMode === 'EDITED_VARIABLES') &&
+            reason === 'outside-press'
+          ) {
+            // 点击外部区域，不需要弹出确认框，因为这个时候用户可能是在复制内容
+            return
+          }
+          if (
+            contextWindowMode === 'EDIT_VARIABLES' &&
+            reason === 'escape-key'
+          ) {
+            // 按下esc键，不需要弹出确认框，直接关闭，因为用户没有做任何修改
+            hideFloatingContextMenu()
+            return
+          }
+          setDiscardChangesModalOpen(true)
+          return
+        }
+      }
       setFloatingDropdownMenu((prev) => {
         return {
           ...prev,
@@ -142,11 +178,16 @@ const FloatingContextMenu: FC<{
       })
     },
     placement: safePlacement.inputPlacement,
-    middleware: FloatingContextMenuMiddleware,
+    middleware: getFloatingContextMenuMiddleware(referenceElementDragOffsetRef),
     whileElementsMounted: autoUpdate,
   })
   const click = useClick(context)
-  const dismiss = useDismiss(context, {})
+  const dismiss = useDismiss(context, {
+    capture: {
+      escapeKey: true,
+      outsidePress: true,
+    },
+  })
   const { getFloatingProps } = useInteractions([dismiss, click])
   /**
    * 拖拽移动实现
@@ -165,34 +206,56 @@ const FloatingContextMenu: FC<{
       y: event.clientY,
     }
   }
-  const handleDragEnd = (event: React.DragEvent) => {
+  const handleDragEnd = (event: MouseEvent) => {
     if (isDragRef.current) {
       event.preventDefault()
       isDragRef.current = false
+      referenceElementDragOffsetRef.current = {
+        x: 0,
+        y: 0,
+        prevX:
+          referenceElementDragOffsetRef.current.x +
+          referenceElementDragOffsetRef.current.prevX,
+        prevY:
+          referenceElementDragOffsetRef.current.y +
+          referenceElementDragOffsetRef.current.prevY,
+      }
     }
   }
-  const handleDragMove = (event: React.MouseEvent) => {
+  const handleDragMove = (event: MouseEvent) => {
     if (isDragRef.current) {
       event.preventDefault()
-      const rect = refs.reference.current?.getBoundingClientRect()
-      const rectX = rect?.x || x || 0
-      const rectY = rect?.y || y || 0
       const diffX = event.clientX - mouseStartRectRef.current!.x
       const diffY = event.clientY - mouseStartRectRef.current!.y
-      update({
-        x: rectX + diffX,
-        y: rectY + diffY,
-      })
-      updateReferenceElementPosition({
-        x: rectX + diffX,
-        y: rectY + diffY,
-      })
+      referenceElementDragOffsetRef.current = {
+        x: diffX,
+        y: diffY,
+        prevX: referenceElementDragOffsetRef.current.prevX,
+        prevY: referenceElementDragOffsetRef.current.prevY,
+      }
+      update()
     }
   }
   useEffect(() => {
-    console.log(`[ContextWindow]: [xy update]`, x, y)
-    updateReferenceElementPosition({ x, y })
-  }, [x, y])
+    if (!floatingDropdownMenu.open) {
+      referenceElementDragOffsetRef.current = {
+        x: 0,
+        y: 0,
+        prevX: 0,
+        prevY: 0,
+      }
+    }
+  }, [floatingDropdownMenu.open])
+  useEffect(() => {
+    document.addEventListener('mousemove', handleDragMove)
+    document.addEventListener('mouseup', handleDragEnd)
+    return () => {
+      document.removeEventListener('mousemove', handleDragMove)
+      document.removeEventListener('mouseup', handleDragEnd)
+    }
+  }, [])
+  useClientConversationListener()
+  useFloatingContextMenuDraftHistoryChange()
   // 选中区域高亮
   useEffect(() => {
     if (floatingDropdownMenu.rootRect) {
@@ -220,16 +283,6 @@ const FloatingContextMenu: FC<{
       })
     }
   }, [floatingDropdownMenu.rootRect])
-  useEffect(() => {
-    document.addEventListener('mousemove', handleDragMove)
-    document.addEventListener('mouseup', handleDragEnd)
-    return () => {
-      document.removeEventListener('mousemove', handleDragMove)
-      document.removeEventListener('mouseup', handleDragEnd)
-    }
-  }, [])
-  useClientConversationListener()
-  useFloatingContextMenuDraftHistoryChange()
   return (
     <FloatingPortal root={root}>
       <div
@@ -239,8 +292,8 @@ const FloatingContextMenu: FC<{
           position: strategy,
           zIndex: floatingDropdownMenu.open ? 2147483601 : -1,
           opacity: floatingDropdownMenu.open ? 1 : 0,
-          top: referenceElementPosition.y ?? 0,
-          left: referenceElementPosition.x ?? 0,
+          top: y ?? 0,
+          left: x ?? 0,
           width: currentWidth,
           maxWidth: '90vw',
         }}
@@ -263,10 +316,13 @@ const FloatingContextMenu: FC<{
             bgcolor: 'rgba(0,0,0,0.2)',
             zIndex: 10,
             cursor: 'grab',
+            height: '20px',
           }}
           onMouseDown={handleDragStart}
         >
-          {contextWindowMode}
+          <Typography fontSize={'14px'} color={'text.primary'}>
+            {contextWindowMode}(debug)
+          </Typography>
         </Box>
         <FloatingContextMenuList
           customOpen
@@ -304,8 +360,18 @@ const FloatingContextMenu: FC<{
               <WritingMessageBox />
               {floatingDropdownMenu.open && (
                 <ActionSetVariablesModal
+                  onInputCustomVariable={() => {
+                    setIsInputCustomVariables(true)
+                  }}
+                  onBeforeClose={() => {
+                    if (contextWindowMode === 'EDITED_VARIABLES') {
+                      setDiscardChangesModalOpen(true)
+                      return false
+                    }
+                    return true
+                  }}
                   onClose={() => {
-                    setIsSettingCustomVariables(false)
+                    hideFloatingContextMenu()
                   }}
                   onShow={() => setIsSettingCustomVariables(true)}
                   modelKey={'FloatingContextMenu'}
@@ -495,6 +561,19 @@ const FloatingContextMenu: FC<{
         />
         <ContextWindowVideoPlayer />
       </div>
+      <DiscardChangesModal
+        type={
+          contextWindowMode === 'AI_RESPONSE' ? 'AI_RESPONSE' : 'USER_DRAFT'
+        }
+        open={discardChangesModalOpen}
+        onClose={(reason) => {
+          if (reason === 'discard') {
+            // discard changes
+            hideFloatingContextMenu()
+          }
+          setDiscardChangesModalOpen(false)
+        }}
+      />
     </FloatingPortal>
   )
 }

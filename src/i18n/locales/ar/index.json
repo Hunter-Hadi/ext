@@ -57,7 +57,8 @@
     "team_plan": "خطة الفريق",
     "manage_my_plan": "إدارة خطتي",
     "watch_video": "شاهد الفيديو",
-    "input_content": "محتوى الإدخال"
+    "input_content": "محتوى الإدخال",
+    "discard": "تجاهل"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "ترقية لـ gpt-4 غير المحدودة",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "تم تجاوز الحد الشهري للاستعلامات المتقدمة للنص. قم بالترقية الآن للاستعلامات غير المحدودة، أو تحقق الشهر المقبل عند إعادة تعيين الاستعلامات الشهرية.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 هو نموذج OpenAI، محسّن للسرعة والكفاءة، يتفوق في التطبيقات الفورية التي تتطلب الإبداع والاستدلال المتقدم مع أوقات استجابة محسّنة وإخراج متسق.",
-    "permission__pricing_hook__footer_tip": "يقدم MaxAI Elite استعلامات AI غير محدودة وملخصات AI وبحثًا AI وردود فورية."
+    "permission__pricing_hook__footer_tip": "يقدم MaxAI Elite استعلامات AI غير محدودة وملخصات AI وبحثًا AI وردود فورية.",
+    "floating_menu__discard_changes_card__ai_response__title": "هل ترغب في تجاهل استجابة الذكاء الاصطناعي؟",
+    "floating_menu__discard_changes_card__your_draft__title": "هل ترغب في تجاهل مسودتك؟"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -57,7 +57,8 @@
     "team_plan": "ટીમ પ્લાન",
     "manage_my_plan": "મારી યોજના સંચાલિત કરો",
     "watch_video": "વિડિઓ જુઓ",
-    "input_content": "ઇનપુટ સામગ્રી"
+    "input_content": "ઇનપુટ સામગ્રી",
+    "discard": "છોડો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "અનલિમિટેડ gpt-4 માટે અપગ્રેડ કરો",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "મહિનાની એડવાન્સ ટેક્સ્ટ ક્વેરીઝ લિમિટ પર પહોંચી ગયા છો. અપગ્રેડ કરો અનલિમિટેડ ક્વેરીઝ માટે, અથવા મહિનાની ક્વેરીઝ રીસેટ થશે ત્યારે આગામી મહિને ચેક કરો.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAIનું GPT-4, ઝડપી અને કુશળતાથી માટે ઓપટિમાઇઝ કરેલું છે, જે સરળતા અને ઉચ્ચતમ સમયમાં પ્રતિસાદ આપતું છે અને સતત આઉટપુટ પ્રદાન કરે છે.",
-    "permission__pricing_hook__footer_tip": "MaxAI એલિટ અમર્યાદિત AI પ્રશ્નો, AI સંગ્રહણો, AI શોધો અને તક્ષણિક જવાબો આપે છે."
+    "permission__pricing_hook__footer_tip": "MaxAI એલિટ અમર્યાદિત AI પ્રશ્નો, AI સંગ્રહણો, AI શોધો અને તક્ષણિક જવાબો આપે છે.",
+    "floating_menu__discard_changes_card__ai_response__title": "શું તમે AI પ્રતિસાદ છોડવા માંગો છો?",
+    "floating_menu__discard_changes_card__your_draft__title": "શું તમે તમારી ડ્રાફ્ટ છોડવા માંગો છો?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

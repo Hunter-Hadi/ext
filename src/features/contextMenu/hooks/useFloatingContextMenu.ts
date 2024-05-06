@@ -235,6 +235,8 @@ const useFloatingContextMenu = () => {
     })
   }
   return {
+    floatingDropdownMenu,
+    setFloatingDropdownMenu,
     isFloatingMenuVisible: memoIsFloatingMenuVisible,
     showFloatingContextMenu,
     hideFloatingContextMenu,

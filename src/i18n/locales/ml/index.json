@@ -57,7 +57,8 @@
     "team_plan": "ടീം പ്ലാൻ",
     "manage_my_plan": "എന്റെ പ്ലാൻ മാനേജ് ചെയ്യുക",
     "watch_video": "വീഡിയോ കാണുക",
-    "input_content": "ഇൻപുട്ട് ഉള്ളടക്കം"
+    "input_content": "ഇൻപുട്ട് ഉള്ളടക്കം",
+    "discard": "നിരസ്ത്രമമാക്കുക"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Unlimited gpt-4 varekkuvaanum",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Masaanthara advanced text prashnangalude parimithamillatha prashnangal. Varekkuvaanum visheshamilla, athava oru masathil punarnirmanikkunna masathu prashnangal punarjagrathakaranam cheyyuka.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI's GPT-4, veegathilum prayogikkanum valiya aadhunikapoorvamaya AI technology aanu, creativityum advanced reasoningum valiya pratheekshakalum samanvayathodeyum valiya pratheekshakalum samethamulla real-time applicationsil praveshikkunna model.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite നിങ്ങൾക്ക് അനവധി AI ചോദ്യങ്ങൾ, AI സംഗ്രഹങ്ങൾ, AI തിരയുകളും, പ്രത്യേക ഉത്തരങ്ങൾ നൽകുന്നു."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite നിങ്ങൾക്ക് അനവധി AI ചോദ്യങ്ങൾ, AI സംഗ്രഹങ്ങൾ, AI തിരയുകളും, പ്രത്യേക ഉത്തരങ്ങൾ നൽകുന്നു.",
+    "floating_menu__discard_changes_card__ai_response__title": "എന്റെ പ്രതികരണം നിരാകരിക്കണോ?",
+    "floating_menu__discard_changes_card__your_draft__title": "നിങ്ങളുടെ ഡ്രാഫ്റ്റ് നിരാകരിക്കണോ?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

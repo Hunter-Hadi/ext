@@ -57,7 +57,8 @@
     "team_plan": "Екипен план",
     "manage_my_plan": "Управление на моя план",
     "watch_video": "Гледай видео",
-    "input_content": "Въведете съдържание"
+    "input_content": "Въведете съдържание",
+    "discard": "Отхвърли"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Надстройка за неограничен gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Превишили сте месечния лимит за напреднали текстови заявки. Надстройте сега за неограничени заявки или проверете отново следващия месец, когато месечните заявки се нулират.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 на OpenAI, оптимизиран за скорост и ефективност, се отличава в реално време приложения, изискващи креативност и напреднало мислене с подобрено време за отговор и последователен изход.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite предлага неограничени AI заявки, AI резюмета, AI търсения и мигновени отговори."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite предлага неограничени AI заявки, AI резюмета, AI търсения и мигновени отговори.",
+    "floating_menu__discard_changes_card__ai_response__title": "Искате ли да отхвърлите отговора на ИИ?",
+    "floating_menu__discard_changes_card__your_draft__title": "Искате ли да отхвърлите черновата си?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

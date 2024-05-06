@@ -57,7 +57,8 @@
     "team_plan": "Plan zespołowy",
     "manage_my_plan": "Zarządzaj moim planem",
     "watch_video": "Obejrzyj film",
-    "input_content": "Treść wejściowa"
+    "input_content": "Treść wejściowa",
+    "discard": "Odrzuć"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Ulepsz dla nieograniczonego gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Przekroczono miesięczny limit zapytań do zaawansowanego tekstu. Ulepsz teraz, aby uzyskać nieograniczoną liczbę zapytań lub sprawdź w przyszłym miesiącu, gdy zostaną zresetowane miesięczne zapytania.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 OpenAI, zoptymalizowany pod kątem szybkości i wydajności, doskonale sprawdza się w aplikacjach czasu rzeczywistego, które wymagają kreatywności i zaawansowanego rozumowania, zapewniając skrócenie czasu odpowiedzi i spójne wyniki.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite oferuje nieograniczone zapytania AI, podsumowania AI, wyszukiwania AI i natychmiastowe odpowiedzi."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite oferuje nieograniczone zapytania AI, podsumowania AI, wyszukiwania AI i natychmiastowe odpowiedzi.",
+    "floating_menu__discard_changes_card__ai_response__title": "Czy chcesz odrzucić odpowiedź AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Czy chcesz odrzucić swój szkic?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

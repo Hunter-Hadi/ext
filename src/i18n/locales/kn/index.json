@@ -57,7 +57,8 @@
     "team_plan": "ತಂಡ ಯೋಜನೆ",
     "manage_my_plan": "ನನ್ನ ಯೋಜನೆಯನ್ನು ನಿರ್ವಹಿಸಿ",
     "watch_video": "ವೀಡಿಯೊ ನೋಡಿ",
-    "input_content": "ನಮೂದಿಸಿದ ವಿಷಯವನ್ನು"
+    "input_content": "ನಮೂದಿಸಿದ ವಿಷಯವನ್ನು",
+    "discard": "ತ್ಯಜಿಸು"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "ಅನಿಮಿತ gpt-4 ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ವಿಸ್ತರಿಸಲು ಮುಂದುವರಿಯಿರಿ",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "ಮಾಸಿಕ ಆಧುನಿಕ ಪಠ್ಯ ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ಮೀರಿದೆ. ಅನಿಮಿತ ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ವಿಸ್ತರಿಸಲು ಈಗ ಮುಂದುವರಿಯಿರಿ ಅಥವಾ ಮಾಸಿಕ ಪ್ರಶ್ನೆಗಳು ಮರುಹೊತ್ತಿಗೆ ಮರಳಿ ಬರುವವು.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನೆ ಮತ್ತು ಕೌಶಲ್ಯದ ಮೇಲೆ ಅಭಿವೃದ್ಧಿಗೆ ಅನುಕೂಲವಾಗಿದೆ. ಸೃಜನಾತ್ಮಕತೆ ಮತ್ತು ಮುಂದುವರಿದ ತರ್ಕಬದ್ಧತೆಯನ್ನು ಅಗತ್ಯವಾದ ಸಮಯದಲ್ಲಿ ಒದಗಿಸುವ ನಿಜವಾದ ಅರ್ಹತೆಗಳಲ್ಲಿ ಪ್ರಖ್ಯಾತವಾಗಿದೆ.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite ಅನಿವಾರ್ಯ AI ಪ್ರಶ್ನೆಗಳು, AI ಸಂಗ್ರಹಣೆಗಳು, AI ಹುಡುಕುಗಳು ಮತ್ತು ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite ಅನಿವಾರ್ಯ AI ಪ್ರಶ್ನೆಗಳು, AI ಸಂಗ್ರಹಣೆಗಳು, AI ಹುಡುಕುಗಳು ಮತ್ತು ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
+    "floating_menu__discard_changes_card__ai_response__title": "ನೀವು AI ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತ್ಯಜಿಸಲು ಬಯಸುತ್ತೀರಾ?",
+    "floating_menu__discard_changes_card__your_draft__title": "ನೀವು ನಿಮ್ಮ ಡ್ರಾಫ್ಟ್ ಅನ್ನು ತ್ಯಜಿಸಲು ಬಯಸುತ್ತೀರಾ?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

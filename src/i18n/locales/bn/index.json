@@ -57,7 +57,8 @@
     "team_plan": "দলের পরিকল্পনা",
     "manage_my_plan": "আমার পরিকল্পনা পরিচালনা করুন",
     "watch_video": "ভিডিও দেখুন",
-    "input_content": "ইনপুট কন্টেন্ট"
+    "input_content": "ইনপুট কন্টেন্ট",
+    "discard": "বাতিল করুন"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",

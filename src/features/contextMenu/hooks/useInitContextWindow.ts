@@ -91,6 +91,9 @@ const useInitContextWindow = () => {
   const [inputValue, setInputValue] = useState('')
   const [isSettingCustomVariables, setIsSettingCustomVariables] =
     useState(false)
+  // 是否编辑过custom variables
+  const [isInputCustomVariables, setIsInputCustomVariables] = useState(false)
+
   const [isSettingCustomVariablesMemo, setIsSettingCustomVariablesMemo] =
     useState(false)
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
@@ -99,7 +102,7 @@ const useInitContextWindow = () => {
     useFloatingContextMenu()
   const [actions, setActions] = useState<ISetActionsType>([])
   const { isLogin } = useAuthLogin()
-  const { currentSelectionRef, hideRangy } = useRangy()
+  const { currentSelectionRef, currentSelection, hideRangy } = useRangy()
   const {
     loading,
     askAIQuestion,
@@ -113,13 +116,6 @@ const useInitContextWindow = () => {
   const [, setContextWindowDraftContextMenu] = useRecoilState(
     ContextWindowDraftContextMenuState,
   )
-  /**
-   * ✅
-   * 获取当前的context window的mode: 'EDIT' | 'READ'
-   */
-  const contextWindowMode = useMemo(() => {
-    return currentSelectionRef.current?.selectionInputAble ? 'EDIT' : 'READ'
-  }, [currentSelectionRef])
   const {
     createConversation,
     getConversation,
@@ -176,7 +172,51 @@ const useInitContextWindow = () => {
     draftContextMenuList,
     activeAIResponseMessage,
   ])
-
+  /**
+   * ✅
+   * 获取当前的context window的mode:
+   * 1. READ: 只读模式
+   * 2. EDITED_VARIABLES: 编辑过variables的modal
+   * 3. EDIT_VARIABLES: 编辑variables的modal
+   * 4. AI_RESPONSE: AI的回复
+   * 5. CUSTOM_INPUT: 自定义的输入
+   * 6. LOADING: 加载中
+   */
+  const contextWindowMode = useMemo<
+    | 'READ'
+    | 'EDITED_VARIABLES'
+    | 'EDIT_VARIABLES'
+    | 'AI_RESPONSE'
+    | 'CUSTOM_INPUT'
+    | 'LOADING'
+  >(() => {
+    if (currentSelection?.selectionInputAble) {
+      if (inputValue && contextWindowList.length === 0) {
+        return 'CUSTOM_INPUT'
+      }
+      if (currentFloatingContextMenuDraft) {
+        return 'AI_RESPONSE'
+      }
+    }
+    if (isSettingCustomVariablesMemo) {
+      if (isInputCustomVariables) {
+        return 'EDITED_VARIABLES'
+      }
+      return 'EDIT_VARIABLES'
+    }
+    if (loading) {
+      return 'LOADING'
+    }
+    return 'READ'
+  }, [
+    currentSelection,
+    inputValue,
+    contextWindowList,
+    isSettingCustomVariablesMemo,
+    isInputCustomVariables,
+    currentFloatingContextMenuDraft,
+    loading,
+  ])
   /**
    * ✅
    * 通过context window的输入框来询问AI
@@ -312,7 +352,6 @@ const useInitContextWindow = () => {
     ) {
       let currentSelectedId =
         floatingDropdownMenuSelectedItem.selectedContextMenuId
-      debugger
       // 是否为[推荐]菜单的动作
       let isSuggestedContextMenu = false
       // 判断是否可以运行
@@ -455,7 +494,6 @@ const useInitContextWindow = () => {
     if (actions.length <= 0) {
       return
     }
-    debugger
     isRunningActionsRef.current = true
     setActions([])
     setInputValue('')
@@ -515,6 +553,20 @@ const useInitContextWindow = () => {
       }
     }
   }, [clientWritingMessage.loading])
+
+  useEffect(() => {
+    const updateInputValue = (value: string) => {
+      console.log('[ContextMenu Module] updateInputValue', value)
+      setInputValue(value)
+    }
+    getInputMediator('floatingMenuInputMediator').subscribe(updateInputValue)
+    return () => {
+      getInputMediator('floatingMenuInputMediator').unsubscribe(
+        updateInputValue,
+      )
+    }
+  }, [setInputValue])
+
   /** 打开/关闭floating dropdown menu
    * @version 1.0 - 打开 dropdown menu:
    *    1. 自动focus
@@ -547,6 +599,7 @@ const useInitContextWindow = () => {
         setAppDBStorage(settings)
       })
     } else {
+      setIsInputCustomVariables(false)
       setIsSettingCustomVariables(false)
       const textareaEl =
         getMaxAIFloatingContextMenuRootElement()?.querySelector(
@@ -598,6 +651,7 @@ const useInitContextWindow = () => {
     setInputValue,
     contextWindowList,
     setIsSettingCustomVariables,
+    setIsInputCustomVariables,
     isSettingCustomVariables: isSettingCustomVariablesMemo,
     askAIWithContextWindow,
     isHaveContextWindowContext,

@@ -57,7 +57,8 @@
     "team_plan": "Teamplan",
     "manage_my_plan": "Hantera mitt plan",
     "watch_video": "Titta på video",
-    "input_content": "Innehåll för inmatning"
+    "input_content": "Innehåll för inmatning",
+    "discard": "Kasta"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Uppgradera för obegränsad gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Månadens gräns för avancerade textfrågor överskriden. Uppgradera nu för obegränsade frågor, eller kom tillbaka nästa månad när de månatliga frågorna återställs.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAIs GPT-4, optimerad för hastighet och effektivitet, utmärker sig i realtidsapplikationer som kräver kreativitet och avancerad resonemang med förbättrade svarstider och konsekvent resultat.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite erbjuder obegränsade AI-förfrågningar, AI-summeringar, AI-sökningar och omedelbara svar."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite erbjuder obegränsade AI-förfrågningar, AI-summeringar, AI-sökningar och omedelbara svar.",
+    "floating_menu__discard_changes_card__ai_response__title": "Vill du kasta AI-svaret?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vill du kasta utkastet?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

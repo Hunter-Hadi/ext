@@ -1,8 +1,9 @@
-import { flip, offset, shift, size } from '@floating-ui/react'
+import { flip, Middleware, offset, shift, size } from '@floating-ui/react'
 import cloneDeep from 'lodash-es/cloneDeep'
 import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
 import uniqBy from 'lodash-es/uniqBy'
+import { MutableRefObject } from 'react'
 
 import {
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
@@ -452,49 +453,101 @@ export const findFirstTierMenuHeight = (menuList: IContextMenuItem[] = []) => {
 /**
  * @description: floating ui的middleware
  */
-export const FloatingContextMenuMiddleware = [
-  flip({
-    fallbackPlacements: ['top-start', 'right', 'left'],
-  }),
-  size(),
-  shift({
-    crossAxis: true,
-    padding: 16,
-  }),
-  offset((params) => {
-    if (params.placement.indexOf('bottom') > -1) {
-      const boundary = {
-        left: 0,
-        right: window.innerWidth,
-        top: 0,
-        bottom: window.innerHeight + window.scrollY,
-      }
-      if (
-        isRectangleCollidingWithBoundary(
-          {
-            top: params.y,
-            left: params.x,
-            bottom: params.y + params.rects.floating.height + 50,
-            right: params.rects.floating.width + params.x,
-          },
-          boundary,
+export const getFloatingContextMenuMiddleware = (
+  referenceElementDragOffsetRef: MutableRefObject<{
+    x: number
+    y: number
+    prevX: number
+    prevY: number
+  }>,
+) => {
+  const customMiddleware = (): Middleware => {
+    return {
+      name: 'customMiddleware',
+      fn: (state) => {
+        const windowRect = document.documentElement.getBoundingClientRect()
+        const rect = state.rects.floating
+        const maxX = windowRect.width - rect.width
+        const maxY = windowRect.height - rect.height
+        const minX = 0
+        const minY = 0
+        const currentX =
+          state.x +
+          referenceElementDragOffsetRef.current.x +
+          referenceElementDragOffsetRef.current.prevX
+        const currentY =
+          state.y +
+          referenceElementDragOffsetRef.current.y +
+          referenceElementDragOffsetRef.current.prevY
+        const x = Math.min(Math.max(currentX, minX), maxX)
+        const y = Math.min(Math.max(currentY, minY), maxY)
+        console.log(
+          `[ContextWindow]: customMiddleware`,
+          '\n',
+          x,
+          y,
+          '\n',
+          currentX,
+          currentY,
         )
-      ) {
-        const offset =
-          params.rects.reference.y - params.y - params.rects.floating.height - 8
-        if (params.y + offset < 0) {
-          // 超出屏幕
-          return -params.y + 8
-        }
-        return offset
-      }
-      return 8
-    } else {
-      return 8
-    }
-  }),
-]
 
+        return {
+          x,
+          y,
+          reset: {
+            rects: true,
+          },
+        }
+      },
+    }
+  }
+  return [
+    flip({
+      fallbackPlacements: ['top-start', 'right', 'left'],
+    }),
+    size(),
+    shift({
+      crossAxis: true,
+      padding: 16,
+    }),
+    offset((params) => {
+      if (params.placement.indexOf('bottom') > -1) {
+        const boundary = {
+          left: 0,
+          right: window.innerWidth,
+          top: 0,
+          bottom: window.innerHeight + window.scrollY,
+        }
+        if (
+          isRectangleCollidingWithBoundary(
+            {
+              top: params.y,
+              left: params.x,
+              bottom: params.y + params.rects.floating.height + 50,
+              right: params.rects.floating.width + params.x,
+            },
+            boundary,
+          )
+        ) {
+          const offset =
+            params.rects.reference.y -
+            params.y -
+            params.rects.floating.height -
+            8
+          if (params.y + offset < 0) {
+            // 超出屏幕
+            return -params.y + 8
+          }
+          return offset
+        }
+        return 8
+      } else {
+        return 8
+      }
+    }),
+    customMiddleware(),
+  ]
+}
 /**
  * @deprecated
  * @param iframeElement

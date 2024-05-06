@@ -57,7 +57,8 @@
     "team_plan": "План для команди",
     "manage_my_plan": "Керувати моїм планом",
     "watch_video": "Переглянути відео",
-    "input_content": "Введіть вміст"
+    "input_content": "Введіть вміст",
+    "discard": "Відхилити"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Оновлення для необмеженої кількості запитів gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Перевищено щомісячний ліміт запитів на розширений текст. Оновіться зараз, щоб отримати необмежену кількість запитів або поверніться наступного місяця, коли щомісячні запити будуть скинуті.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 - новинка від OpenAI, оптимізована для швидкості та ефективності, відрізняється в реальному часі застосуваннях, які вимагають творчості та високого рівня мислення з покращеними часами відповіді та стабільним результатом.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite пропонує необмежену кількість запитів штучного інтелекту, штучних резюме, пошуків штучного інтелекту та миттєвих відповідей."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite пропонує необмежену кількість запитів штучного інтелекту, штучних резюме, пошуків штучного інтелекту та миттєвих відповідей.",
+    "floating_menu__discard_changes_card__ai_response__title": "Ви хочете відхилити відповідь ШІ?",
+    "floating_menu__discard_changes_card__your_draft__title": "Ви хочете відхилити ваш чернетку?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

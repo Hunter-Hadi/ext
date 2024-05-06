@@ -57,7 +57,8 @@
     "team_plan": "Takım planı",
     "manage_my_plan": "Planımı yönet",
     "watch_video": "Videoyu izle",
-    "input_content": "Giriş içeriği"
+    "input_content": "Giriş içeriği",
+    "discard": "At"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Sınırsız gpt-4 için yükseltme yapın",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Aylık gelişmiş metin sorgu limiti aşıldı. Sınırsız sorgular için şimdi yükseltin veya aylık sorgular sıfırlanana kadar bekleyin.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "Hız ve verimlilik açısından optimize edilmiş OpenAI'nın GPT-4 modeli, yaratıcılık ve gelişmiş akıl yürütme gerektiren gerçek zamanlı uygulamalarda mükemmel bir performans sergiler.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite, sınırsız AI sorguları, AI özetleri, AI aramaları ve anlık yanıtlar sunar."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite, sınırsız AI sorguları, AI özetleri, AI aramaları ve anlık yanıtlar sunar.",
+    "floating_menu__discard_changes_card__ai_response__title": "AI yanıtınızı silmek istiyor musunuz?",
+    "floating_menu__discard_changes_card__your_draft__title": "Taslakınızı silmek istiyor musunuz?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

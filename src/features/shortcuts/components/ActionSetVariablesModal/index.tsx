@@ -65,8 +65,10 @@ interface ActionSetVariablesModalProps
   modelKey: 'Sidebar' | 'FloatingContextMenu'
   showModelSelector?: boolean
   onShow?: () => void
+  onBeforeClose?: () => boolean
   onClose?: () => void
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
+  onInputCustomVariable?: (data: ActionSetVariablesConfirmData) => void
 }
 
 const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
@@ -77,6 +79,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     modelKey,
     onShow,
     onClose,
+    onBeforeClose,
+    onInputCustomVariable,
     actions,
     answerInsertMessageId,
     askChatGPTActionParameters,
@@ -112,6 +116,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     [key in string]: ReturnType<typeof register>
   }>({})
   const closeModal = async (isCancel: boolean) => {
+    if (onBeforeClose && !onBeforeClose()) {
+      return
+    }
     pendingPromises.forEach((promise) => {
       promise.resolve({
         data: getValues(),
@@ -671,6 +678,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               label={textTypeVariable.label || 'Label'}
               {...form[textTypeVariable.VariableName]}
               onKeyUp={(event) => {
+                if (!textTypeVariable.systemVariable) {
+                  onInputCustomVariable?.(getValues())
+                }
                 event.stopPropagation()
               }}
               onKeyDown={async (event) => {
@@ -724,7 +734,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           onClick={async () => await closeModal(true)}
           variant={'secondary'}
         >
-          {t('common:cancel')}
+          {t('common:discard')}
         </Button>
         <TooltipButton
           title={t(`client:sidebar__button__send_to_ai`)}

@@ -57,7 +57,8 @@
     "team_plan": "Holdplan",
     "manage_my_plan": "Administrer min plan",
     "watch_video": "Se video",
-    "input_content": "Indtast indhold"
+    "input_content": "Indtast indhold",
+    "discard": "Fjern"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -762,7 +763,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Opgrader for ubegrænset gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Månedlig grænse for avancerede tekstforespørgsler overskredet. Opgrader nu for ubegrænsede forespørgsler, eller tjek tilbage næste måned, når de månedlige forespørgsler nulstilles.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI's GPT-4, optimeret til hastighed og effektivitet, excellerer i realtidsapplikationer, der kræver kreativitet og avanceret logisk tænkning med forbedrede responstider og ensartet output.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler, AI-opsummeringer, AI-søgninger og øjeblikkelige svar."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler, AI-opsummeringer, AI-søgninger og øjeblikkelige svar.",
+    "floating_menu__discard_changes_card__ai_response__title": "Vil du forkaste AI-svaret?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vil du forkaste dit udkast?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

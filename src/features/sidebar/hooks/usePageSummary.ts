@@ -24,6 +24,7 @@ import { useContextMenuList } from '@/features/contextMenu'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
+  allSummaryNavList,
   getContextMenuByNavMetadataKey,
   getPageSummaryConversationId,
   getPageSummaryType,
@@ -52,7 +53,6 @@ const usePageSummary = () => {
   const lastMessageIdRef = useRef('')
   const clientWritingMessageRef = useRef(clientWritingMessage)
   clientWritingMessageRef.current = clientWritingMessage
-
   const createPageSummary = async () => {
     if (isGeneratingPageSummaryRef.current) {
       return
@@ -63,6 +63,7 @@ const usePageSummary = () => {
     const pageSummaryConversationId = getPageSummaryConversationId()
     updateSidebarSummaryConversationId(pageSummaryConversationId)
 
+    const currentPageSummaryType = getPageSummaryType()
     const writingLoading = clientWritingMessageRef.current.loading
 
     updateClientConversationLoading(true)
@@ -78,9 +79,11 @@ const usePageSummary = () => {
             conversationId: pageSummaryConversationId,
           },
         })
+
         const aiMessage = pageSummaryConversation.messages?.find((message) =>
           isAIMessage(message),
         ) as IAIResponseMessage
+
         if (writingLoading) {
           updateClientConversationLoading(false)
           updateConversationMap((prevState) => {
@@ -92,11 +95,37 @@ const usePageSummary = () => {
           isGeneratingPageSummaryRef.current = false
           return
         }
-        if (
+
+        let isValidAIMessage =
           aiMessage &&
           aiMessage?.originalMessage &&
           aiMessage?.originalMessage.metadata?.isComplete
+
+        if (
+          aiMessage &&
+          aiMessage?.originalMessage &&
+          aiMessage?.originalMessage.metadata?.navMetadata
         ) {
+          const summaryNavKey =
+            aiMessage.originalMessage.metadata.navMetadata.key
+          const systemSummaryNavItem = allSummaryNavList[
+            currentPageSummaryType
+          ].find((item) => {
+            return item.key === summaryNavKey
+          })
+          if (!systemSummaryNavItem) {
+            const summaryActionContextMenuItem = originContextMenuList.find(
+              (menuItem) => {
+                return menuItem.id === summaryNavKey
+              },
+            )
+            if (!summaryActionContextMenuItem) {
+              isValidAIMessage = false
+            }
+          }
+        }
+
+        if (isValidAIMessage) {
           updateClientConversationLoading(false)
           updateConversationMap((prevState) => {
             return {
@@ -106,15 +135,15 @@ const usePageSummary = () => {
           })
           isGeneratingPageSummaryRef.current = false
           return
-        } else {
-          // 如果没有AI消息，那么清空所有消息，然后添加AI消息
-          await clientChatConversationModifyChatMessages(
-            'clear',
-            pageSummaryConversationId,
-            0,
-            [],
-          )
         }
+
+        // 如果没有AI消息，那么清空所有消息，然后添加AI消息
+        await clientChatConversationModifyChatMessages(
+          'clear',
+          pageSummaryConversationId,
+          0,
+          [],
+        )
       }
       try {
         console.log('新版Conversation pageSummary开始创建')
@@ -151,7 +180,6 @@ const usePageSummary = () => {
           }
         }
 
-        const currentPageSummaryType = getPageSummaryType()
         const summaryNavMetadataKey = cloneDeep(currentPageSummaryKey)[
           currentPageSummaryType
         ]

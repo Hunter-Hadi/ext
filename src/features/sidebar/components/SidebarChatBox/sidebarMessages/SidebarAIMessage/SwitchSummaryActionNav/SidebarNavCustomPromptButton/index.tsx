@@ -208,7 +208,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
         variant={isActived ? 'contained' : 'outlined'}
         onMouseUp={(event) => {
           event.stopPropagation()
-          if (!isActived && summaryActionItem) {
+          if (!isActived) {
             if (summaryActionItem) {
               handleClick(summaryActionItem)
             } else {

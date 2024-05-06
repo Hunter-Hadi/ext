@@ -20,6 +20,7 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
     'inputAssistantComposeReplyButton',
     'inputAssistantRefineDraftButton',
     'inputAssistantComposeNewButton',
+    'sidebarSummaryButton',
   ]
   const updateButtonContextMenu = async (
     buttonKey: IChromeExtensionButtonSettingKey,

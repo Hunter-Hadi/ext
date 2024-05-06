@@ -115,6 +115,12 @@ export type IAIResponseOriginalMessageMetaDeep = {
     }
 )
 
+export type IAIResponseOriginalMessageNavMetadata = {
+  key: string
+  title: string
+  icon?: string
+}
+
 export interface IAIResponseOriginalMessage {
   id?: string
   create_time?: string
@@ -166,6 +172,8 @@ export interface IAIResponseOriginalMessage {
     shareType?: 'normal' | 'summary' | 'search' | 'art'
     // TODO
     related?: string[]
+    // message 选中的 nav 信息
+    navMetadata?: IAIResponseOriginalMessageNavMetadata
   }
 }
 // AI返回的消息

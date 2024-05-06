@@ -1,6 +1,9 @@
-import Autocomplete from '@mui/material/Autocomplete'
+import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete'
+import { inputBaseClasses } from '@mui/material/InputBase'
+import { inputLabelClasses } from '@mui/material/InputLabel'
+import { svgIconClasses } from '@mui/material/SvgIcon'
 import TextField from '@mui/material/TextField'
-import React, { FC } from 'react'
+import React, { type FC, useState } from 'react'
 
 import { SystemVariableSelectProps } from '@/features/shortcuts/components/SystemVariableSelect/types'
 
@@ -48,7 +51,7 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
     placeholder,
     sx,
   } = props
-  const [value, setValue] = React.useState<{ label: string; value: string }>(
+  const [value, setValue] = useState<{ label: string; value: string }>(
     () => {
       return (
         WRITING_STYLES_OPTIONS.find(
@@ -71,7 +74,23 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
       disableClearable
       value={value}
       size={'small'}
-      sx={{ width: 160, ...sx }}
+      sx={{
+        width: 160,
+        [`.${inputLabelClasses.root}`]: {
+          fontSize: 16,
+        },
+        [`.${inputBaseClasses.root}`]: {
+          fontSize: 16,
+          paddingRight: '28px!important'
+        },
+        [`.${inputBaseClasses.root} fieldset > legend`]: {
+          fontSize: 14,
+        },
+        [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]: {
+          fontSize: 24
+        },
+        ...sx
+      }}
       slotProps={{
         paper: {
           sx: {
@@ -111,7 +130,7 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
           }}
         />
       )}
-    ></Autocomplete>
+    />
   )
 }
 

@@ -32,6 +32,7 @@ const ShortcutActionsEditor: FC<{
   onChange?: ISetActionsType
   onSave?: ISetActionsType
   sx?: SxProps
+  disableCustomVariables?: boolean
 }> = (props) => {
   const {
     error,
@@ -41,6 +42,7 @@ const ShortcutActionsEditor: FC<{
     sx,
     minHeight = 240,
     maxHeight = 450,
+    disableCustomVariables = true
   } = props
   const { t } = useTranslation(['prompt_editor'])
   const {
@@ -114,11 +116,11 @@ const ShortcutActionsEditor: FC<{
       ...sx,
       ...(error
         ? {
-            '& .prompt-template-input': {
-              '--borderColor': (t: Theme) =>
-                `${t.palette.error.main}!important`,
-            },
-          }
+          '& .prompt-template-input': {
+            '--borderColor': (t: Theme) =>
+              `${t.palette.error.main}!important`,
+          },
+        }
         : {}),
     }
   }, [placeholder, minHeight, sx, disabled, error])
@@ -197,11 +199,11 @@ const ShortcutActionsEditor: FC<{
           addTextVariableToHTML(variable)
         }}
       />
-      <PromptVariableEditor
+      {!disableCustomVariables && <PromptVariableEditor
         onAddTextVariable={(variable) => {
           addTextVariableToHTML(variable)
         }}
-      />
+      />}
       <Stack spacing={1}>
         <Stack direction={'row'} alignItems="center">
           <Typography variant={'body1'}>

@@ -77,14 +77,14 @@ const SettingPromptsUpdateFormModal: FC<{
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt_group__title')
         : editNode.id === ''
-        ? t('settings:feature_card__prompts__new_prompt_group__title')
-        : t('settings:feature_card__prompts__edit_prompt_group__title')
+          ? t('settings:feature_card__prompts__new_prompt_group__title')
+          : t('settings:feature_card__prompts__edit_prompt_group__title')
     } else {
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt__title')
         : editNode.id === ''
-        ? t('settings:feature_card__prompts__new_prompt__title')
-        : t('settings:feature_card__prompts__edit_prompt__title')
+          ? t('settings:feature_card__prompts__new_prompt__title')
+          : t('settings:feature_card__prompts__edit_prompt__title')
     }
   }, [isDisabled, editNode.data.type, t])
 
@@ -218,6 +218,7 @@ const SettingPromptsUpdateFormModal: FC<{
                   </Typography>
                 </Stack>
                 <ShortcutActionsEditor
+                  disableCustomVariables={settingPromptsEditButtonKey === 'sidebarSummaryButton'}
                   placeholder={t(
                     'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
                   )}
@@ -272,12 +273,29 @@ const SettingPromptsUpdateFormModal: FC<{
                 if (editNode.id === '') {
                   editNode.id = v4()
                 }
+                const actions = generateActions(editNode.text, settingPromptsEditButtonKey === 'sidebarSummaryButton')
+                // Summary custom prompts 需要特殊处理，将输出端转成 AI
+                if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+                  const askChatGPTAction = actions.find(action => action.type === 'ASK_CHATGPT')
+                  if (askChatGPTAction) {
+                    const originalData = cloneDeep(editNode)
+                    delete originalData.data.actions
+                    askChatGPTAction.parameters.AskChatGPTActionQuestion = {
+                      meta: {
+                        outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                        contextMenu: originalData
+                      },
+                      text: askChatGPTAction.parameters.template || ''
+                    }
+                    askChatGPTAction.parameters.AskChatGPTActionType = 'ASK_CHAT_GPT_HIDDEN'
+                  }
+                }
                 onSave?.(
                   mergeWithObject([
                     editNode,
                     {
                       data: {
-                        actions: generateActions(editNode.text),
+                        actions,
                       },
                     } as IContextMenuItem,
                   ]),

@@ -27,7 +27,7 @@ import {
 } from '@/utils/dataHelper/websiteHelper'
 
 import SPARootProtector from './utils/SPARootProtector'
-// import createCache from '@emotion/cache'
+
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
@@ -78,19 +78,23 @@ const mainAppRender = () => {
   const shadowContainer = container.attachShadow({ mode: 'open' })
   const emotionRoot = document.createElement('style')
   const shadowRootElement = document.createElement('div')
+
   shadowRootElement.id = MAXAI_SIDEBAR_WRAPPER_ID
   shadowRootElement.style.display = 'flex'
   shadowRootElement.style.flexDirection = 'column'
   shadowRootElement.style.flex = '1'
   shadowRootElement.style.height = '100vh'
+
   if (isMaxAIImmersiveChatPage()) {
     shadowRootElement.setAttribute('data-maxai-newtab', 'true')
   }
+
   // shadowRootElement.style.width = '100vw'
   // shadowRootElement.style.position = 'absolute'
   // shadowRootElement.style.top = '0'
   // shadowRootElement.style.left = 'calc(-100vw + 100%)'
   // shadowRootElement.style.pointerEvents = 'none'
+
   shadowContainer.appendChild(emotionRoot)
   shadowContainer.appendChild(shadowRootElement)
   const contentStyle = document.createElement('link')

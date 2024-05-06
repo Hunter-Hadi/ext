@@ -6,11 +6,13 @@ import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import ConversationListDrawerButton from '@/features/chatgpt/components/ConversationList/ConversationListDrawerButton'
-import HistoryShareButton from '@/features/chatgpt/components/share/HistoryShareButton'
+import AutoSyncConversation from '@/features/chatgpt/components/share/AutoSyncConversation'
+import HistoryTextDownloadButton from '@/features/chatgpt/components/share/HistoryShareButton'
 import ShareButtonGroup from '@/features/chatgpt/components/share/ShareButtonGroup'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useCommands from '@/hooks/useCommands'
@@ -117,7 +119,11 @@ const ChatBoxHeader: FC<{
             </Link>
           </Typography>
         )}
-        <HistoryShareButton />
+        {/*NOTE: 不给用户看上传进度*/}
+        <DevContent>
+          <AutoSyncConversation />
+        </DevContent>
+        <HistoryTextDownloadButton />
         <ShareButtonGroup />
       </Stack>
     </Stack>

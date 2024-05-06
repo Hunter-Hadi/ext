@@ -41,12 +41,12 @@ export const CLAUDE_MODELS: IAIProviderModel[] = [
   {
     title: 'claude-3-sonnet',
     titleTag: '',
-    value: 'claude-2.0',
-    maxTokens: 100 * 1000,
+    value: 'claude-3-sonnet',
+    maxTokens: 100 * 2000,
     tags: [],
     poweredBy: 'Anthropic',
     description: (t) =>
-      t('client:provider__claude_web_app__model__claude_2_100k__description'),
+      t('client:provider__claude_web_app__model__claude_3_200k__description'),
     uploadFileConfig: {
       accept:
         '.pdf,.doc,.docx,.rtf,.epub,.odt,.odp,.pptx,.txt,.py,.ipynb,.js,.jsx,.html,.css,.java,.cs,.php,.c,.cpp,.cxx,.h,.hpp,.rs,.R,.Rmd,.swift,.go,.rb,.kt,.kts,.ts,.tsx,.m,.scala,.rs,.dart,.lua,.pl,.pm,.t,.sh,.bash,.zsh,.csv,.log,.ini,.config,.json,.yaml,.yml,.toml,.lua,.sql,.bat,.md,.coffee',

@@ -10,6 +10,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { GoogleIcon } from '@/components/CustomIcon'
 // import { UseChatGptIcon } from '@/components/CustomIcon'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { mixpanelTrack } from '@/features/mixpanel/utils'
 const SettingsLoginPage: FC = () => {
   const { t } = useTranslation(['settings', 'common'])
   return (
@@ -52,6 +53,11 @@ const SettingsLoginPage: FC = () => {
               bgcolor: '#366dc9',
             },
           }}
+          onClick={() => {
+            mixpanelTrack('sign_up_started', {
+              signUpMethod: 'google',
+            })
+          }}
         >
           <Stack direction={'row'} spacing={2} alignItems={'center'}>
             <Stack
@@ -84,6 +90,11 @@ const SettingsLoginPage: FC = () => {
             height: 48,
             textIndent: '16px',
             fontSize: 14,
+          }}
+          onClick={() => {
+            mixpanelTrack('sign_up_started', {
+              signUpMethod: 'email',
+            })
           }}
         >
           <Stack

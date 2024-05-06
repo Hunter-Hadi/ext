@@ -50,7 +50,7 @@ const App: FC = () => {
       >
         <AppInit />
         <Announcement />
-        <SidebarContextProvider isImmersiveChat>
+        <SidebarContextProvider>
           <SidebarTopBar />
           <ChatBoxHeader showConversationList />
           <BrowserVersionDetector>
@@ -99,7 +99,7 @@ const App: FC = () => {
                 />
 
                 <Stack height={'100%'} width={'100vw'}>
-                  <SidebarPage isImmersiveChat open disableContextProvider />
+                  <SidebarPage open disableContextProvider />
                 </Stack>
               </Stack>
             </AppSuspenseLoadingLayout>

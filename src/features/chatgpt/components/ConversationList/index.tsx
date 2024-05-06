@@ -55,8 +55,12 @@ const ConversationList: FC<IProps> = (props) => {
   } = props
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const { currentConversationId, createConversation, updateConversationId } =
-    useClientConversation()
+  const {
+    currentConversationId,
+    createConversation,
+    updateConversationId,
+    resetConversation,
+  } = useClientConversation()
   const { updateSidebarSettings, updateSidebarConversationType } =
     useSidebarSettings()
   const { disposeBackgroundChatSystem } = useClientConversation()
@@ -113,7 +117,7 @@ const ConversationList: FC<IProps> = (props) => {
           {
             name: editingConversationName.current,
           },
-          false,
+          true,
         )
         editingConversationName.current = ''
         const conversations = await fetchPaginationConversations()
@@ -280,6 +284,7 @@ const ConversationList: FC<IProps> = (props) => {
                   >
                     <AIModelIcons
                       size={24}
+                      aiProvider={conversation.AIProvider}
                       aiModelValue={conversation.AIModel}
                     />
                   </Stack>
@@ -466,6 +471,7 @@ const ConversationList: FC<IProps> = (props) => {
                   updateSidebarConversationType('Chat')
                 })
               })
+              resetConversation()
             }}
           />
         )}

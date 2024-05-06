@@ -79,7 +79,7 @@ const BaseSidebarSystemMessage: FC<{
         gap: 1,
         wordBreak: 'break-word',
         borderRadius: '8px',
-        bgcolor: 'customColor.secondaryBackground',
+        bgcolor: '#3B3D3E',
         '& > div': {
           width: '100%',
           maxWidth: 450,

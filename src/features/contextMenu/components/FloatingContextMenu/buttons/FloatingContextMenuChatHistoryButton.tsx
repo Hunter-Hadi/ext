@@ -390,6 +390,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                             : 'auto',
                           opacity: selectedConversationId ? 0 : 1,
                         }}
+                        conversationType="ContextMenu"
                         onDelete={async () => {
                           await createConversation('ContextMenu')
                           handleCloseModal()

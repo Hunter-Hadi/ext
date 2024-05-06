@@ -115,7 +115,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       console.log('simply transcripts', transcripts)
       if (this.isStopAction) return
       const conversationId =
-        engine.clientConversationEngine?.currentConversationIdRef?.current
+        engine.clientConversationEngine?.currentConversationId
       const messageId =
         (params as { AI_RESPONSE_MESSAGE_ID?: string })
           .AI_RESPONSE_MESSAGE_ID || ''
@@ -201,7 +201,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           this.permissionSceneType,
         )
         // 记录日志
-        authEmitPricingHooksLog('show', this.permissionSceneType)
+        authEmitPricingHooksLog('show', this.permissionSceneType, {
+          conversationId,
+        })
 
         // 触发用量上限时 更新 user subscription info
         await clientMessageChannelEngine.postMessage({
@@ -797,7 +799,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       clientAbortFetchAPI(id)
     })
     const conversationId =
-      params.engine.clientConversationEngine?.currentConversationIdRef?.current
+      params.engine.clientConversationEngine?.currentConversationId
     if (conversationId && this.currentMessageId) {
       await clientChatConversationModifyChatMessages(
         'update',

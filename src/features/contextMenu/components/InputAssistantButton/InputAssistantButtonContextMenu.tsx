@@ -32,7 +32,7 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
@@ -60,9 +60,11 @@ const InputAssistantButtonContextMenu: FC<
   } = props
   const { showFloatingContextMenuWithElement, hideFloatingContextMenu } =
     useFloatingContextMenu()
+  const { updateSidebarConversationType } = useSidebarSettings()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
-  const { currentSidebarConversationType } = useClientConversation()
+  const { currentSidebarConversationType, currentConversationId } =
+    useClientConversation()
   const { currentUserPlan } = useUserInfo()
   const { shortCutsEngine } = useShortCutsEngine()
   const { pushPricingHookMessage } = useClientConversation()
@@ -93,11 +95,15 @@ const InputAssistantButtonContextMenu: FC<
               currentHostFreeTrialTimes - 1,
             )
           } else {
+            // 2024-04-30 付费卡点在当前context window里显示，没问题可以删除注释及代码
             // 如果没有免费试用次数, 则显示付费卡片
-            showChatBox()
-            authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
+            // showChatBox()
+            authEmitPricingHooksLog('show', permissionWrapperCardSceneType, {
+              conversationId: currentConversationId,
+            })
+            // updateSidebarConversationType('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
-            hideFloatingContextMenu()
+            // hideFloatingContextMenu()
             return
           }
         }
@@ -118,10 +124,12 @@ const InputAssistantButtonContextMenu: FC<
       }
     },
     [
+      rootId,
       askAIWIthShortcuts,
       smoothConversationLoading,
       hasPermission,
       permissionWrapperCardSceneType,
+      currentConversationId,
     ],
   )
   const runContextMenuRef = useRef(runContextMenu)

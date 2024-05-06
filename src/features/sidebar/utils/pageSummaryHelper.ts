@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { MaxAIExtensionIdManager } from '@/background/utils/extensionId'
 import { type IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import {
   SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
@@ -1206,7 +1207,9 @@ const PAGE_SUMMARY_CONVERSATION_ID_MAP: {
 export const getPageSummaryConversationId = (url?: string) => {
   const pageUrl = url || getCurrentPageUrl()
   if (!PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]) {
-    PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(pageUrl)
+    PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(
+      pageUrl + MaxAIExtensionIdManager.MaxAIExtensionId,
+    )
   }
   return PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]
 }

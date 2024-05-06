@@ -9,6 +9,8 @@ export type {
   IOpenAIChatListenTaskEvent,
   IOpenAIChatSendEvent,
 } from './eventType'
+import cloneDeep from 'lodash-es/cloneDeep'
+
 import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
 import ConversationManager from '@/background/src/chatConversations'
@@ -24,6 +26,7 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
+import { getMaxAIExtensionId } from '@/background/utils/extensionId'
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
@@ -38,6 +41,7 @@ import {
   checkIsPayingUser,
   getChromeExtensionUserInfo,
 } from '@/features/auth/utils'
+import { IChatMessage } from '@/features/chatgpt/types'
 import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
@@ -85,14 +89,16 @@ export const startChromeExtensionBackground = () => {
 const initChromeExtensionInstalled = () => {
   // 插件安装初始化
   Browser.runtime.onInstalled.addListener(async (object) => {
+    await getMaxAIExtensionId() // 生成插件ID
     if (object.reason === (Browser as any).runtime.OnInstalledReason.INSTALL) {
       // 重置插件引导数据
       await resetChromeExtensionOnBoardingData()
       await Browser.tabs.create({
-        url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/get-started',
+        url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/extension/installed',
       })
     } else {
       await initChromeExtensionUpdated()
+      devMockConversation()
     }
     try {
       await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')
@@ -631,4 +637,63 @@ const initChromeExtensionTabUrlChangeListener = () => {
         .catch()
     }
   })
+}
+import { v4 as uuidV4 } from 'uuid'
+const devMockConversation = async () => {
+  const isProduction = String(process.env.NODE_ENV) === 'production'
+  if (isProduction) {
+    return
+  }
+  // 保证不运行
+  return
+  const totalConversation = await ConversationManager.getAllConversation()
+  if (totalConversation.length < 5 || totalConversation.length > 50) {
+    return
+  }
+  const mergeMessages: IChatMessage[] = []
+  totalConversation.forEach((conversation) => {
+    mergeMessages.push(...conversation.messages)
+  })
+  const getMergeMessages = (count: number, conversationId: string) => {
+    const newMessages = Array(count)
+      .fill(0)
+      .map(() => {
+        const randomIndex = Math.floor(Math.random() * mergeMessages.length)
+        const mockMessage = cloneDeep(mergeMessages[randomIndex])
+        mockMessage.messageId = uuidV4()
+        ;(mockMessage as any).conversationId = conversationId
+        return mockMessage
+      })
+    // 重新整理parentMessageId
+    newMessages.forEach((message, index) => {
+      const parentMessageId = newMessages[index - 1]?.messageId
+      if (parentMessageId) {
+        message.parentMessageId = parentMessageId
+      }
+    })
+    return newMessages
+  }
+  console.log('totalConversation', totalConversation)
+  const randomConversationCount = 100
+  const randomConversations = new Array(randomConversationCount)
+    .fill(0)
+    .map(() => {
+      const randomIndex = Math.floor(Math.random() * totalConversation.length)
+      const conversation = cloneDeep(totalConversation[randomIndex])
+      conversation.id = uuidV4()
+      conversation.messages = getMergeMessages(200, conversation.id)
+      return conversation
+    })
+  let index = 0
+  for (const conversation of randomConversations) {
+    index++
+    console.log(
+      `Mock [${index}]`,
+      conversation.id,
+      conversation.messages.length,
+    )
+    await ConversationManager.conversationDB.addOrUpdateConversation(
+      conversation,
+    )
+  }
 }

@@ -148,6 +148,7 @@ export const isThirdPartyAIProvider = (provider: IAIProviderType) => {
     'POE',
     'BARD',
     'BING',
+    'CLAUDE',
   ]
   return thirdPartyAIProvider.includes(provider)
 }

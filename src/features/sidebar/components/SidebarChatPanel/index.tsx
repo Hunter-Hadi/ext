@@ -23,6 +23,7 @@ const Test = () => {
       <Typography id={'chat-panel'} color={'text.primary'} fontSize={'16px'}>
         {clientConversation?.id}
       </Typography>
+
       <Typography
         id={'auto-archive'}
         color={'text.primary'}
@@ -74,7 +75,9 @@ const SidebarChatPanel = () => {
             isFreeUser
           ) {
             await pushPricingHookMessage('PAGE_SUMMARY')
-            authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
+            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+              conversationId: currentConversationId,
+            })
           } else {
             await askAIQuestion({
               type: 'user',

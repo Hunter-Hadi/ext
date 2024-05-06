@@ -337,7 +337,12 @@ export const formatAIMessageContentForClipboard = (
  * @param message
  */
 export const formatUserMessageContent = (message: IUserChatMessage) => {
-  return (message?.meta?.messageVisibleText || message?.text || '').trim()
+  return (
+    message?.meta?.messageVisibleText ||
+    message?.text ||
+    message.meta?.contextMenu?.text ||
+    ''
+  ).trim()
 }
 /**
  * 格式化第三方消息的内容

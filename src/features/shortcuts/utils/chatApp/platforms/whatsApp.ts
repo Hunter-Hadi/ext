@@ -302,7 +302,6 @@ export const whatsAppGetChatMessages = async (
   const sidePanelTab = document.querySelector(
     '.two > div > div > span > div[tabindex]',
   )
-  debugger
   // 如果有打开的 side panel 且是 profile panel，就直接获取用户的 username
   if (sidePanelTab) {
     const isProfilePanel = sidePanelTab.matches(

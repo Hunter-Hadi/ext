@@ -56,7 +56,7 @@ class ChromeExtensionArkoseTokenGenerator {
     return token
   }
   private getRootContainer(): HTMLElement | undefined {
-    return getMaxAISidebarRootElement()
+    return getMaxAISidebarRootElement()!
   }
   private async ping(model: ArkoseTokenModelType) {
     log.info('ping')

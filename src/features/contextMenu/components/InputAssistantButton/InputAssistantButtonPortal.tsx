@@ -38,6 +38,7 @@ const InputAssistantPortal: FC = () => {
     // slack?: boolean
     // discord?: boolean
     // whatsApp?: boolean
+    // messenger?: boolean
     // hubspot?: boolean
     const host = getCurrentDomainHost()
 
@@ -85,6 +86,9 @@ const InputAssistantPortal: FC = () => {
     }
     if (host === 'web.telegram.org') {
       return appSetting.userSettings?.inputAssistantButton?.telegram === true
+    }
+    if (host === 'messenger.com') {
+      return appSetting.userSettings?.inputAssistantButton?.messenger === true
     }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])

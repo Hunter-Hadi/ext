@@ -5,7 +5,6 @@ import { v4 as uuidV4 } from 'uuid'
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
@@ -19,6 +18,7 @@ import {
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
   [key in ISidebarConversationType]: {
@@ -178,14 +178,17 @@ const useClientConversation = () => {
   const pushPricingHookMessage = async (
     permissionSceneType: PermissionWrapperCardSceneType,
   ) => {
-    let addToConversationId = currentConversationIdRef.current
-    if (currentSidebarConversationType === 'ContextMenu') {
-      //需要插入到Sidebar中
-      const chatConversationId = (await getChromeExtensionLocalStorage())
-        .sidebarSettings?.chat?.conversationId
-      if (chatConversationId) {
-        addToConversationId = chatConversationId
-      }
+    const addToConversationId = currentConversationIdRef.current
+    if (currentSidebarConversationType !== 'ContextMenu') {
+      // 需要插入到Sidebar中
+      // const chatConversationId = (await getChromeExtensionLocalStorage())
+      //   .sidebarSettings?.chat?.conversationId
+      // if (chatConversationId) {
+      //   addToConversationId = chatConversationId
+      // }
+
+      // 非context menu下应该show sidebar，防止sidebar被关闭
+      showChatBox()
     }
     if (addToConversationId) {
       await clientChatConversationModifyChatMessages(

@@ -115,6 +115,9 @@ export const clientDuplicateChatConversation = async (
   }
 }
 
+/**
+ * @deprecated 由于 context window 分离，导致这里获取不到 正确的 conversation, 要获取正确的用 useClientConversation
+ */
 export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
   currentAIProvider: IAIProviderType
   currentModel: IAIProviderModel | null

@@ -23,6 +23,7 @@
 }
 #USE_CHAT_GPT_AI_ROOT.close {
   opacity: 0;
+  display: none;
 }
 
 /* max-ai placeholder */

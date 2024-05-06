@@ -6,6 +6,7 @@ import {
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 type rootContainer = HTMLElement | (() => HTMLElement | undefined)
 const MaxAIMenu: FC<
@@ -95,7 +96,7 @@ const MaxAIMenu: FC<
   }, [open])
   return (
     <Menu
-      open={currentOpen}
+      open={isMaxAIImmersiveChatPage() ? open : currentOpen}
       {...memoMenuProps}
       {...rest}
       component={'div'}

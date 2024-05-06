@@ -44,3 +44,10 @@ export const isSystemMessageByStatus = (
 ): message is ISystemChatMessage => {
   return isSystemMessage(message) && message.meta.status === status
 }
+
+export const isSystemMessageByType = (
+  message: IChatMessage,
+  type: ISystemChatMessage['meta']['systemMessageType'],
+) => {
+  return isSystemMessage(message) && message.meta.systemMessageType === type
+}

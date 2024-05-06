@@ -38,6 +38,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.8.4
     version: 5.28.9(react@18.2.0)
+  '@types/mixpanel-browser':
+    specifier: ^2.49.0
+    version: 2.49.0
   ace-builds:
     specifier: ^1.15.3
     version: 1.32.8
@@ -98,6 +101,9 @@ dependencies:
   md5:
     specifier: ^2.3.0
     version: 2.3.0
+  mixpanel-browser:
+    specifier: ^2.49.0
+    version: 2.49.0
   mkdirp:
     specifier: ^3.0.0
     version: 3.0.1
@@ -2842,6 +2848,10 @@ packages:
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
     dependencies:
       '@types/unist': 2.0.10
+    dev: false
+
+  /@types/mixpanel-browser@2.49.0:
+    resolution: {integrity: sha512-StmgUnS58d44DmIAEX9Kk8qwisAYCl6E2qulIjYyHXUPuJCPOuyUMTTKBp+aU2F2do+kxAzCxiBtsB4fnBT9Fg==}
     dev: false
 
   /@types/ms@0.7.34:
@@ -6624,6 +6634,10 @@ packages:
     resolution: {integrity: sha512-jYofLM5Dam9279rdkWzqHozUo4ybjdZmCsDHePy5V/PbBcVMiSZR97gmAy45aqi8CK1lG2ECd356FU86avfwUQ==}
     engines: {node: '>=16 || 14 >=14.17'}
     dev: true
+
+  /mixpanel-browser@2.49.0:
+    resolution: {integrity: sha512-RZJCO7XXuuHBAWG5fd9Mavz994M7v7W3Qiaq8NzmN631pa4BQ0vNZQtRFqKcCCOBn4xqOZbX2GkuC7ZkQoL4cQ==}
+    dev: false
 
   /mkdirp@3.0.1:
     resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}

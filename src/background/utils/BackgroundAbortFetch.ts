@@ -31,7 +31,10 @@ class BackgroundAbortFetch {
     }
 
     options = { ...options, signal }
-
+    if (options.method === 'GET' || options.method === 'HEAD') {
+      // 因为 GET 和 HEAD 请求不能有 body，所以需要删除 body
+      delete options.body
+    }
     return fetch(url, options).finally(() => {
       if (taskId) {
         this.fetchMap.delete(taskId)

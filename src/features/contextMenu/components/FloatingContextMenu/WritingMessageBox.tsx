@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
-import { isSystemMessageByStatus } from '@/features/chatgpt/utils/chatMessageUtils'
+import { isSystemMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { useRangy } from '@/features/contextMenu'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {
@@ -108,10 +108,6 @@ const WritingMessageBox: FC<{
     boxRef.current?.addEventListener('keydown', keydownHandler, true)
   }, [])
 
-  const isErrorMessage =
-    activeAIResponseMessage &&
-    isSystemMessageByStatus(activeAIResponseMessage, 'error')
-
   return (
     <Stack
       ref={containerRef}
@@ -161,7 +157,7 @@ const WritingMessageBox: FC<{
           message={selectedDraftUserMessage}
         />
       )}
-      {isErrorMessage && (
+      {activeAIResponseMessage && isSystemMessage(activeAIResponseMessage) && (
         <SidebarSystemMessage
           message={activeAIResponseMessage}
           sx={{

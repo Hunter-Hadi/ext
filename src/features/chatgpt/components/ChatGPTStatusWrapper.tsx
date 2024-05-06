@@ -21,6 +21,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import { clientGetConversationStatus } from '@/features/chatgpt/utils'
 import { usePrevious } from '@/features/common/hooks/usePrevious'
+import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { AppDBStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
@@ -223,6 +224,11 @@ const ChatGPTStatusWrapper: FC = () => {
                 href={APP_USE_CHAT_GPT_HOST + '/login?auto=true'}
                 target={'_blank'}
                 sx={{ width: '100%' }}
+                onClick={() => {
+                  mixpanelTrack('sign_up_started', {
+                    signUpMethod: 'google',
+                  })
+                }}
               >
                 <Button
                   fullWidth
@@ -261,6 +267,11 @@ const ChatGPTStatusWrapper: FC = () => {
                 href={APP_USE_CHAT_GPT_HOST + '/login-email'}
                 target={'_blank'}
                 sx={{ width: '100%' }}
+                onClick={() => {
+                  mixpanelTrack('sign_up_started', {
+                    signUpMethod: 'email',
+                  })
+                }}
               >
                 <Button
                   fullWidth

@@ -1,6 +1,5 @@
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
-import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -8,7 +7,10 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import PremiumAccessCard from '@/features/auth/components/PermissionPricingHookCard/PremiumAccessCard'
+import {
+  PricingHooksFeatureIcon,
+  PricingHooksRocketIcon,
+} from '@/features/auth/components/PermissionPricingHookCard/icons'
 import {
   isUsageLimitPermissionSceneType,
   PermissionWrapperCardSceneType,
@@ -16,8 +18,10 @@ import {
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
+import useVideoPopupController from '@/features/video_popup/hooks/useVideoPopupController'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 interface IProps {
@@ -30,8 +34,11 @@ const PermissionPricingHookCard: FC<IProps> = ({
   message,
 }) => {
   const { t } = useTranslation()
+  const { currentConversationIdRef } = useClientConversation()
   const { currentUserPlan, userInfo, isPayingUser } = useUserInfo()
   const permissionCard = usePermissionCard(permissionSceneType)
+
+  const { openVideoPopup } = useVideoPopupController()
 
   const chatSystemMessageType =
     message.meta?.systemMessageType ||
@@ -57,7 +64,9 @@ const PermissionPricingHookCard: FC<IProps> = ({
   }, [permissionCard?.ctaButtonLink])
 
   const ctaButtonClick = (e: React.MouseEvent) => {
-    authEmitPricingHooksLog('click', permissionSceneType)
+    authEmitPricingHooksLog('click', permissionSceneType, {
+      conversationId: currentConversationIdRef.current,
+    })
 
     permissionCard?.ctaButtonOnClick && permissionCard?.ctaButtonOnClick(e)
   }
@@ -96,15 +105,56 @@ const PermissionPricingHookCard: FC<IProps> = ({
   // 获取到 permissionCard 才渲染
   if (permissionCard) {
     return (
-      <Stack spacing={1.5}>
-        <Stack direction={'row'} alignItems="center" spacing={1}>
+      <Stack spacing={1.5} color="white">
+        {permissionCard.imageUrl ? (
+          <Stack
+            sx={{
+              position: 'relative',
+              cursor: permissionCard.videoUrl ? 'pointer' : 'auto',
+            }}
+            onClick={() => {
+              permissionCard.videoUrl && openVideoPopup(permissionCard.videoUrl)
+            }}
+          >
+            <img
+              src={permissionCard.imageUrl}
+              alt={permissionSceneType}
+              height={'auto'}
+            />
+            {permissionCard.videoUrl ? (
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  // boxShadow: "0px 2.58px 10.31px 0px #00000040",
+                  color: 'white',
+                  p: 2,
+                  borderRadius: '50%',
+                  lineHeight: 0,
+                  bgcolor: '#00000080',
+                  backdropFilter: 'blur(4px)',
+                }}
+              >
+                <PlayArrowIcon
+                  sx={{
+                    fontSize: 36,
+                  }}
+                />
+              </Box>
+            ) : null}
+          </Stack>
+        ) : null}
+        <Stack direction={'row'} alignItems="start" spacing={1}>
           {typeof permissionCard.title !== 'string' ? (
             permissionCard.title
           ) : (
             <>
-              <AutoAwesomeIcon
+              <PricingHooksFeatureIcon
                 sx={{
                   color: 'primary.main',
+                  fontSize: '24px',
                 }}
               />
               <Typography fontSize={20} fontWeight={700} lineHeight={1.4}>
@@ -114,31 +164,29 @@ const PermissionPricingHookCard: FC<IProps> = ({
           )}
         </Stack>
 
-        {permissionCard.imageUrl && (
-          <img
-            src={permissionCard.imageUrl}
-            alt={permissionSceneType}
-            height={'auto'}
-          />
-        )}
-
         {typeof permissionCard.description !== 'string' ? (
           permissionCard.description
         ) : (
-          <Typography fontSize={14} lineHeight={1.5}>
+          <Typography
+            fontSize={14}
+            lineHeight={1.5}
+            sx={{
+              whiteSpace: 'pre-wrap',
+            }}
+          >
             {permissionCard.description}
           </Typography>
         )}
 
-        {permissionCard.pricingHookCardType && (
-          <PremiumAccessCard
-            videoUrl={permissionCard.videoUrl}
-            pricingHookCardType={permissionCard.pricingHookCardType}
-          />
-        )}
+        {/*{permissionCard.pricingHookCardType && (*/}
+        {/*  <PremiumAccessCard*/}
+        {/*    videoUrl={permissionCard.videoUrl}*/}
+        {/*    pricingHookCardType={permissionCard.pricingHookCardType}*/}
+        {/*  />*/}
+        {/*)}*/}
 
         {/* cta button */}
-        <Stack spacing={0.5} mt={'16px !important'}>
+        <Stack spacing={2} mt={'16px !important'}>
           <Button
             fullWidth
             sx={{
@@ -146,7 +194,6 @@ const PermissionPricingHookCard: FC<IProps> = ({
               fontSize: '16px',
               fontWeight: 500,
             }}
-            startIcon={<RocketLaunchIcon />}
             variant={'contained'}
             color={'primary'}
             target={'_blank'}
@@ -155,20 +202,15 @@ const PermissionPricingHookCard: FC<IProps> = ({
           >
             {ctaButtonText}
           </Button>
-          <Stack
-            direction={'row'}
-            spacing={0.5}
-            justifyContent="center"
-            alignItems="center"
-          >
-            <CheckOutlinedIcon
+          <Stack direction={'row'} spacing={0.5} alignItems="start">
+            <PricingHooksRocketIcon
               sx={{
                 fontSize: 20,
                 color: 'primary.main',
               }}
             />
-            <Typography fontSize={14} color="text.secondary">
-              {t('common:cancel_anytime')}
+            <Typography fontSize={14} color="rgba(255, 255, 255, 0.7)">
+              {t('client:permission__pricing_hook__footer_tip')}
             </Typography>
           </Stack>
         </Stack>

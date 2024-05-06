@@ -18,12 +18,13 @@ import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/fea
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
+import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const SidebarPromotionDialog = () => {
   const { t } = useTranslation(['client'])
   const { browserAgent } = useBrowserAgent()
-  const { userInfo, currentUserPlan, isPayingUser } = useUserInfo()
+  const { userInfo, isPayingUser } = useUserInfo()
 
   const [open, setOpen] = useState(false)
 
@@ -84,6 +85,7 @@ const SidebarPromotionDialog = () => {
         )
 
         setOpen(true)
+        mixpanelTrack('update_modal_showed')
       }, 1500)
     })
   }, [browserAgent, userInfo, isPayingUser])
@@ -238,7 +240,10 @@ const SidebarPromotionDialog = () => {
               px: 2,
               py: 1.5,
             }}
-            onClick={handleClose}
+            onClick={() => {
+              mixpanelTrack('update_modal_clicked')
+              handleClose()
+            }}
           >
             {t('sidebar__promotion_dialog__cta_button')}
           </Button>

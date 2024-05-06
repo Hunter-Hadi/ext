@@ -6,6 +6,7 @@ import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
   createDaemonProcessTab,
   getWindowIdOfChatGPTTab,
+  processPreSaveChatMessage,
 } from '@/background/src/chat/util'
 import ConversationManager from '@/background/src/chatConversations'
 import backgroundCommandHandler from '@/background/src/client/backgroundCommandHandler'
@@ -36,6 +37,7 @@ import {
   getMaxAIChromeExtensionUserId,
   getMaxAIChromeExtensionUserQuotaUsage,
 } from '@/features/auth/utils'
+import { IChatMessage } from '@/features/chatgpt/types'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
 import WebsiteContextManager, {
@@ -44,6 +46,7 @@ import WebsiteContextManager, {
 import { convertBlobToBase64 } from '@/utils/dataHelper/fileHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import Log from '@/utils/Log'
+import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -338,7 +341,7 @@ export const ClientMessageInit = () => {
         case 'Client_updateUseChatGPTAuthInfo':
           {
             const prevToken = await getMaxAIChromeExtensionAccessToken()
-            const { accessToken, refreshToken, userInfo } = data
+            const { accessToken, refreshToken, userInfo, clientUserId } = data
             log.info(
               'Client_updateUseChatGPTAuthInfo',
               accessToken,
@@ -353,6 +356,7 @@ export const ClientMessageInit = () => {
                 [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
                   accessToken,
                   refreshToken,
+                  clientUserId,
                   userInfo,
                   userData:
                     cache[
@@ -524,10 +528,18 @@ export const ClientMessageInit = () => {
             updateConversationData,
             syncConversationToDB,
           } = data
-          const oldConversation =
+          let oldConversation =
             await ConversationManager.conversationDB.getConversationById(
               conversationId,
             )
+          if (
+            !oldConversation &&
+            updateConversationData.id &&
+            updateConversationData.messages &&
+            updateConversationData.messages.length > 0
+          ) {
+            oldConversation = updateConversationData
+          }
 
           if (oldConversation) {
             await ConversationManager.conversationDB.addOrUpdateConversation(
@@ -632,9 +644,14 @@ export const ClientMessageInit = () => {
                   message: 'ok',
                 }
               }
+              const processedMessages = await Promise.all(
+                newMessages.map(async (message: IChatMessage) => {
+                  return await processPreSaveChatMessage(message)
+                }),
+              )
               success = await ConversationManager.pushMessages(
                 conversationId,
-                newMessages,
+                processedMessages,
               )
             } else if (action === 'delete') {
               success = await ConversationManager.deleteMessages(
@@ -869,6 +886,50 @@ export const ClientMessageInit = () => {
           return {
             success: !!result,
             data: result,
+            message: 'ok',
+          }
+        }
+        case 'Client_logUserUsageInfo': {
+          const { disableCollect, ...clientData } = data
+          const userInfo = await getChromeExtensionUserInfo(false)
+          // const formatExt = (ext: Browser.Management.ExtensionInfo) => {
+          //   if (ext.hostPermissions?.[0] === '<all_urls>') {
+          //     // 允许访问所有网站
+          //   } else if (ext.hostPermissions?.length) {
+          //     // 允许访问特定网站
+          //   } else {
+          //     // 点击时
+          //   }
+          //   const filterKeys = ['description', 'homepageUrl', 'icons', 'shortName']
+          //   return {}
+          // }
+          const sendData: Record<string, any> = {
+            userInfo,
+            ...clientData,
+          }
+          if (!disableCollect) {
+            const allExtensions = await Browser.management.getAll()
+            const selfExtension = await Browser.management.getSelf()
+            const isAllowedFile =
+              await Browser.extension.isAllowedFileSchemeAccess()
+            const isAllowedIncognito =
+              await Browser.extension.isAllowedIncognitoAccess()
+            Object.assign(sendData, {
+              allExtensions,
+              selfExtension,
+              isAllowedFile,
+              isAllowedIncognito,
+            })
+          }
+          console.log('Client_logUserUsageInfo', sendData)
+          backgroundSendMaxAINotification(
+            'CLIENT',
+            '[Client] Collect user usage information',
+            JSON.stringify(sendData, null, 4),
+          )
+          return {
+            success: true,
+            data: true,
             message: 'ok',
           }
         }

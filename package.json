@@ -1,7 +1,7 @@
 {
   "name": "MaxAI",
-  "version": "4.1.0",
-  "description": "..",
+  "version": "4.2.3",
+  "description": ".",
   "author": "",
   "scripts": {
     "pdf": "node ./build/pdf.js",
@@ -72,7 +72,9 @@
     "turndown": "^7.1.2",
     "ua-parser-js": "^1.0.35",
     "uuid": "^9.0.0",
-    "websocket-as-promised": "^2.0.1"
+    "websocket-as-promised": "^2.0.1",
+    "mixpanel-browser": "^2.49.0",    
+    "@types/mixpanel-browser": "^2.49.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",

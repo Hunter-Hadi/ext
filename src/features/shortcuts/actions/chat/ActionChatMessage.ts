@@ -29,8 +29,7 @@ export class ActionChatMessage extends Action {
         this.parameters.ActionChatMessageOperationType || 'add'
       const messageConfig = this.parameters.ActionChatMessageConfig
       const conversationEngine = engine.clientConversationEngine
-      const conversationId =
-        conversationEngine?.currentConversationIdRef?.current
+      const conversationId = conversationEngine?.currentConversationId
       if (!messageConfig || !conversationId || !conversationEngine) {
         this.error = 'invalid parameters'
         return

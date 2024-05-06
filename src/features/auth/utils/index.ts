@@ -87,6 +87,22 @@ export const getMaxAIChromeExtensionUserId = async (): Promise<string> => {
   return ''
 }
 /**
+ * 获取 网页客户端生成 的 user id
+ */
+export const getMaxAIWebSiteClientUserId = async (): Promise<string> => {
+  const cache = await Browser.storage.local.get(
+    CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  )
+  if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
+    const cacheData =
+      cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
+    // userinfo 接口返回的 client_user_id 优先级更高
+    return (cacheData?.userData?.client_user_id ??
+      cacheData?.clientUserId) as string
+  }
+  return ''
+}
+/**
  * 获取用户Email
  */
 export const getMaxAIChromeExtensionEmail = async (): Promise<string> => {

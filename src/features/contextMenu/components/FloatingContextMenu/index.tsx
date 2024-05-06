@@ -36,6 +36,7 @@ import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useClientConversationListener from '@/features/chatgpt/hooks/useClientConversationListener'
+import { isSystemMessageByType } from '@/features/chatgpt/utils/chatMessageUtils'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
@@ -87,6 +88,8 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import GlobalVideoPopup from '@/features/video_popup/components/GlobalVideoPopup'
+import useVideoPopupController from '@/features/video_popup/hooks/useVideoPopupController'
 import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import {
@@ -99,40 +102,46 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
-const detectHasContextWindowDraftActions: ISetActionsType = [
-  {
-    type: 'RENDER_TEMPLATE',
-    parameters: {
-      template: '{{POPUP_DRAFT}}',
-    },
-  },
-  {
-    type: 'SCRIPTS_CONDITIONAL',
-    parameters: {
-      WFCondition: 'Equals',
-      WFFormValues: {
-        Value: '',
-        WFSerializationType: 'WFDictionaryFieldValue',
+/**
+ * 获取popup draft作为contexts
+ */
+const getDetectHasContextWindowDraftActions: () => ISetActionsType = () => {
+  const actions: ISetActionsType = [
+    {
+      type: 'RENDER_TEMPLATE',
+      parameters: {
+        template: '{{POPUP_DRAFT}}',
       },
-      WFConditionalIfTrueActions: [],
-      WFConditionalIfFalseActions: [
-        // 说明有草稿, 加到variables中
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              value: '{{POPUP_DRAFT}}',
-              label: 'Draft',
-              key: 'POPUP_DRAFT',
-              overwrite: true,
-              isBuiltIn: false,
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFCondition: 'Equals',
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFConditionalIfTrueActions: [],
+        WFConditionalIfFalseActions: [
+          // 说明有草稿, 加到variables中
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              Variable: {
+                value: '{{POPUP_DRAFT}}',
+                label: 'Draft',
+                key: 'POPUP_DRAFT',
+                overwrite: true,
+                isBuiltIn: false,
+              },
             },
           },
-        },
-      ],
+        ],
+      },
     },
-  },
-]
+  ]
+  return actions
+}
 
 const FloatingContextMenu: FC<{
   root: any
@@ -160,11 +169,13 @@ const FloatingContextMenu: FC<{
   const currentHostRef = useRef(getCurrentDomainHost())
   const { clientWritingMessage } = useClientConversation()
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
-  const { hideFloatingContextMenu } = useFloatingContextMenu()
+  const { hideFloatingContextMenu, isFloatingMenuVisible } =
+    useFloatingContextMenu()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
   const {
+    activeAIResponseMessage,
     currentFloatingContextMenuDraft,
     floatingContextMenuDraftMessageIdRef,
   } = useFloatingContextMenuDraft()
@@ -298,7 +309,12 @@ const FloatingContextMenu: FC<{
   const draftContextMenuList = useDraftContextMenuList()
   // 渲染的菜单列表
   const memoMenuList = useMemo(() => {
-    if (loading || isSettingVariablesMemo) {
+    if (
+      loading ||
+      isSettingVariablesMemo ||
+      (activeAIResponseMessage &&
+        isSystemMessageByType(activeAIResponseMessage, 'needUpgrade'))
+    ) {
       return EMPTY_ARRAY
     }
     if (haveContext) {
@@ -311,6 +327,7 @@ const FloatingContextMenu: FC<{
     contextMenuList,
     haveContext,
     draftContextMenuList,
+    activeAIResponseMessage,
   ])
   const haveDraft = useMemo(() => {
     return inputValue.length > 0
@@ -505,9 +522,12 @@ const FloatingContextMenu: FC<{
         {
           type: 'user',
           text: template,
+          meta: {
+            includeHistory: true,
+          },
         },
         {
-          beforeActions: detectHasContextWindowDraftActions,
+          beforeActions: getDetectHasContextWindowDraftActions(),
         },
       )
     }
@@ -709,7 +729,7 @@ const FloatingContextMenu: FC<{
               return
             }
             return askAIWIthShortcuts(
-              detectHasContextWindowDraftActions.concat(runActions),
+              getDetectHasContextWindowDraftActions().concat(runActions),
               {
                 overwriteParameters: selectionElement?.selectionText
                   ? [
@@ -728,9 +748,10 @@ const FloatingContextMenu: FC<{
               const error = shortCutsEngine?.getNextAction()?.error || ''
               if (error) {
                 console.log('[ContextMenu Module] error', error)
-                hideFloatingContextMenu()
+                // 2024-04-30 现在出错会在当前context window展示消息
                 // 如果出错了，则打开聊天框
-                showChatBox()
+                // hideFloatingContextMenu()
+                // showChatBox()
               }
             })
           })
@@ -788,6 +809,13 @@ const FloatingContextMenu: FC<{
   //     }
   //   }
   // }, [shortcutLoading, floatingDropdownMenu.open])
+
+  const { closeVideoPopup } = useVideoPopupController()
+  useEffect(() => {
+    if (!isFloatingMenuVisible) {
+      closeVideoPopup()
+    }
+  }, [isFloatingMenuVisible])
 
   return (
     <FloatingPortal root={root}>
@@ -1053,6 +1081,7 @@ const FloatingContextMenu: FC<{
           }
           root={root}
         />
+        <GlobalVideoPopup />
       </div>
     </FloatingPortal>
   )

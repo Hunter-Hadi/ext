@@ -18,10 +18,7 @@ import {
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
-import {
-  clientChatConversationModifyChatMessages,
-  clientGetCurrentClientAIProviderAndModel,
-} from '@/features/chatgpt/utils/clientChatConversation'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import {
   IShortcutEngineExternalEngine,
   withLoadingDecorators,
@@ -42,7 +39,6 @@ import {
   clientFetchMaxAIAPI,
 } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
-import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 // import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
@@ -91,7 +87,7 @@ export class ActionAskChatGPT extends Action {
         this.parameters.isEnabledDetectAIResponseLanguage !== false
       const conversationId =
         this.parameters.AskChatGPTActionQuestion?.conversationId ||
-        clientConversationEngine?.currentConversationIdRef?.current ||
+        clientConversationEngine?.currentConversationId ||
         ''
       const text = String(
         this.parameters.AskChatGPTActionQuestion?.text ||
@@ -165,6 +161,10 @@ export class ActionAskChatGPT extends Action {
           questionPrompt,
         )
       }
+      const conversation =
+        (await clientConversationEngine?.getCurrentConversation()) || null
+      const AIModel = conversation?.meta?.AIModel
+      const AIProvider = conversation?.meta?.AIProvider
       // 发消息之前判断是不是MaxAI prompt action, 如果是的话判断是不是third party AI provider
       if (MaxAIPromptActionConfig) {
         // 更新variables和output的值
@@ -188,11 +188,7 @@ export class ActionAskChatGPT extends Action {
           },
         )
         this.question.meta.MaxAIPromptActionConfig = MaxAIPromptActionConfig
-        const conversation =
-          (await clientConversationEngine?.getCurrentConversation()) || null
         if (conversation) {
-          const AIModel = conversation.meta?.AIModel
-          const AIProvider = conversation.meta?.AIProvider
           if (!AIProvider || checkISThirdPartyAIProvider(AIProvider)) {
             // 确认是third-party AI provider, 需要获取默认的prompt
             const result = await clientFetchMaxAIAPI<{
@@ -345,9 +341,7 @@ export class ActionAskChatGPT extends Action {
           .catch()
 
         // 2. 判断是否是第三方AI provider， 是的话需要判断是否已经达到每日使用上限
-        const { isThirdPartyProvider } =
-          await clientGetCurrentClientAIProviderAndModel()
-        if (isThirdPartyProvider) {
+        if (AIProvider && checkISThirdPartyAIProvider(AIProvider)) {
           // 如果是第三方AI provider，需要判断是否已经达到每日使用上限
           const { data: logThirdPartyResult } =
             await clientMessageChannelEngine.postMessage({
@@ -355,28 +349,32 @@ export class ActionAskChatGPT extends Action {
               data: {},
             })
 
-          console.log(`logThirdPartyResult`, logThirdPartyResult)
           if (logThirdPartyResult.hasReachedLimit) {
             // 到达第三方provider的每日使用上限
             // 触达 用量上限向用户展示提示信息
             await clientConversationEngine.pushPricingHookMessage(
-              'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
+              'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
             )
             // 记录日志
             // 第三方 webapp 模型，用 MAXAI_FAST_TEXT_MODEL 记录
             authEmitPricingHooksLog(
               'show',
-              'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
+              'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
+              {
+                conversationId,
+                AIProvider,
+                AIModel,
+              },
             )
             // 展示sidebar
-            showChatBox()
+            // showChatBox()
             // 触发用量上限时 更新 user subscription info
             await clientMessageChannelEngine.postMessage({
               event: 'Client_updateUserSubscriptionInfo',
               data: {},
             })
 
-            this.error = 'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT'
+            this.error = 'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT'
             return
           }
         }
@@ -486,6 +484,7 @@ export class ActionAskChatGPT extends Action {
               }
             },
             onError: async (error: any) => {
+              console.log(1111, 'error', error)
               this.log.error(`send question error`, error)
               errorMessage =
                 error?.message || error || 'Error detected. Please try again.'
@@ -509,6 +508,12 @@ export class ActionAskChatGPT extends Action {
               }
             },
           })
+          console.log(
+            1111,
+            this.status,
+            conversationId,
+            clientConversationEngine,
+          )
           if (this.status !== 'running') {
             return
           }
@@ -568,10 +573,16 @@ export class ActionAskChatGPT extends Action {
               const sceneType = errorMessage
               // 触达 用量上限向用户展示提示信息
               await clientConversationEngine.pushPricingHookMessage(sceneType)
+
               // 记录日志
-              authEmitPricingHooksLog('show', sceneType)
+              authEmitPricingHooksLog('show', sceneType, {
+                conversationId,
+                inContextMenu:
+                  clientConversationEngine.clientConversation?.type ===
+                  'ContextMenu',
+              })
               // 展示sidebar
-              showChatBox()
+              // showChatBox()
               // 触发用量上限时 更新 user subscription info
               await clientMessageChannelEngine.postMessage({
                 event: 'Client_updateUserSubscriptionInfo',

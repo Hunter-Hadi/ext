@@ -9,6 +9,7 @@ import {
 } from '@/background/eventType'
 import { removeAllChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import { resetChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { removeMaxAIBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/constant'
 import {
   CHROME_EXTENSION_DB_STORAGE_SAVE_KEY,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
@@ -285,6 +286,8 @@ export const chromeExtensionLogout = async () => {
   await clearContextMenuSearchTextStore()
   // 清空chat
   await resetChromeExtensionLocalStorage()
+  // 清空beta feature settings
+  await removeMaxAIBetaFeatureSettings()
 }
 
 /**

@@ -104,6 +104,7 @@ export interface IChromeExtensionDBStorage {
       slack?: boolean
       discord?: boolean
       whatsApp?: boolean
+      messenger?: boolean
       hubspot?: boolean
       telegram?: boolean
       microsoftTeams?: boolean

@@ -1,5 +1,6 @@
-import Autocomplete from '@mui/material/Autocomplete'
+import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete'
 import { SxProps } from '@mui/material/styles'
+import { svgIconClasses } from '@mui/material/SvgIcon'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import React, { FC, memo, useMemo, useState } from 'react'
@@ -128,15 +129,15 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       onInputChange={
         options.length === 0
           ? (_, value) => {
-              if (value !== props?.value?.[0]) {
-                setSelected(null)
-              }
-              if (value.length === 0) {
-                setOpen(false)
-              } else {
-                setOpen(true)
-              }
+            if (value !== props?.value?.[0]) {
+              setSelected(null)
             }
+            if (value.length === 0) {
+              setOpen(false)
+            } else {
+              setOpen(true)
+            }
+          }
           : void 0
       }
       slotProps={{
@@ -153,7 +154,13 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       clearOnBlur
       blurOnSelect
       size={'small'}
-      sx={{ width: 160, ...sx }}
+      sx={{
+        width: 160,
+        [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]: {
+          fontSize: 24
+        },
+        ...sx
+      }}
       autoHighlight
       getOptionLabel={(option) => option.label}
       options={memoOptions}

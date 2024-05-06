@@ -549,12 +549,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       onKeyPress={(event) => {
         event.stopPropagation()
       }}
-      // onKeyUpCapture={(event) => {
-      //   event.stopPropagation()
-      // }}
-      // onKeyUp={(event) => {
-      //   event.stopPropagation()
-      // }}
+    // onKeyUpCapture={(event) => {
+    //   event.stopPropagation()
+    // }}
+    // onKeyUp={(event) => {
+    //   event.stopPropagation()
+    // }}
     >
       {/*Header*/}
       <Stack
@@ -606,6 +606,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             index,
             currentModalConfig.currentSelectTotalCount,
           )
+          console.log('testestgetChildrenWidth', systemVariable.VariableName, width)
           if (systemVariable.systemVariable) {
             return (
               <Controller
@@ -658,7 +659,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
           const width =
             (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') &&
-            currentModalConfig.textTypeVariables.length > 1
+              currentModalConfig.textTypeVariables.length > 1
               ? 'calc(50% - 8px)'
               : '100%'
           const minHeight = currentModalConfig.minTextareaMaxRows * 23 + 17

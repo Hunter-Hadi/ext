@@ -844,7 +844,7 @@
     "edit_prompt_modal__action__save_prompt__title": "Save prompt",
     "edit_prompt_modal__action__clone__title": "Clone",
     "edit_prompt_modal__action__cancel__title": "Cancel",
-    "edit_prompt__template__placeholder": "The prompt template for ChatGPT.\nThe template can include any number of the following variables:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "The AI prompt template.\nThe template can include any number of the following variables:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "delete_prompt__title": "Are you sure you want to delete this prompt template?",
     "delete_prompt__action__confirm__title": "Delete",
     "delete_prompt__cancel__confirm__title": "Cancel",

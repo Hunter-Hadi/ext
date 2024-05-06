@@ -272,7 +272,7 @@ const SettingPromptsUpdateFormModal: FC<{
                 if (editNode.id === '') {
                   editNode.id = v4()
                 }
-                const actions = generateActions(editNode.text)
+                const actions = generateActions(editNode.text, settingPromptsEditButtonKey === 'sidebarSummaryButton')
                 // Summary custom prompts 需要特殊处理，将输出端转成 AI
                 if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
                   const askChatGPTAction = actions.find(action => action.type === 'ASK_CHATGPT')

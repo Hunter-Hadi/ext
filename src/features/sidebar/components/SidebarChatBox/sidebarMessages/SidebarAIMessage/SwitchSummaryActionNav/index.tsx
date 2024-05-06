@@ -205,6 +205,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
         </TextOnlyTooltip>
       ))}
       <SidebarNavCustomPromptButton
+        // 如果 custom prompt 被删了那默认也会显示 system prompt，所以粗暴一点直接判断 actived 不是 system prompt 就是 custom prompt
         actived={actionNavMetadata && summaryNavList.every(navItem => actionNavMetadata.key !== navItem.key)}
         message={message}
         summaryType={summaryType}

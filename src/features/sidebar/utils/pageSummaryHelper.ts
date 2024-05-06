@@ -874,10 +874,9 @@ export const getSummaryNavItemByType = (
 export const getContextMenuByNavMetadataKey = async (
   pageSummaryType: IPageSummaryType,
   summaryNavKey?: string,
-  flattenContextMenuList: IContextMenuItem[] = [],
+  originContextMenuList: IContextMenuItem[] = [],
 ) => {
   try {
-    debugger
     if (!summaryNavKey) {
       const chromeExtensionData = await getChromeExtensionLocalStorage()
       //获取summary导航数据 逻辑
@@ -905,7 +904,7 @@ export const getContextMenuByNavMetadataKey = async (
         key: systemSummaryNavItem.key,
       })
     } else {
-      const summaryActionContextMenuItem = flattenContextMenuList.find(
+      const summaryActionContextMenuItem = originContextMenuList.find(
         (menuItem) => {
           return menuItem.id === summaryNavKey
         },
@@ -917,6 +916,22 @@ export const getContextMenuByNavMetadataKey = async (
           icon: summaryActionContextMenuItem.data.icon as IContextMenuIconKey,
           actions: summaryActionContextMenuItem.data.actions!,
           key: summaryActionContextMenuItem.id,
+        })
+      }
+      // 有可能用户在用了 custom prompt 之后，回到 Settings 把这个 custom prompt 删了，所以这里要处理一下
+      else {
+        const systemSummaryNavItem = allSummaryNavList[pageSummaryType].find(
+          (item) => {
+            return item.key === 'all'
+          },
+        )
+        const promptText = summaryGetPromptObject[pageSummaryType]('all')
+        actions = await getSummaryNavActions({
+          type: pageSummaryType,
+          prompt: promptText,
+          title: systemSummaryNavItem!.title,
+          icon: systemSummaryNavItem!.titleIcon,
+          key: systemSummaryNavItem!.key,
         })
       }
     }

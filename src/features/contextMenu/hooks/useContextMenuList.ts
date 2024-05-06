@@ -1,29 +1,17 @@
 import { sortBy } from 'lodash-es'
 import cloneDeep from 'lodash-es/cloneDeep'
-import flatMap from 'lodash-es/flatMap'
 import uniqBy from 'lodash-es/uniqBy'
 import { useMemo, useRef } from 'react'
 
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
 import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import {
-  type IContextMenuItem,
-  type IContextMenuItemWithChildren,
-} from '@/features/contextMenu/types'
+import { type IContextMenuItem } from '@/features/contextMenu/types'
 import {
   fuzzySearchContextMenuList,
   groupByContextMenuItem,
 } from '@/features/contextMenu/utils'
 import useContextMenuSearchTextStore from '@/features/sidebar/hooks/useContextMenuSearchTextStore'
-
-function flatten(
-  contextMenuList: IContextMenuItemWithChildren[],
-): IContextMenuItemWithChildren[] {
-  return flatMap(contextMenuList, (item) =>
-    [item].concat(flatten(item.children)),
-  )
-}
 
 const useContextMenuList = (
   buttonSettingKey: IChromeExtensionButtonSettingKey,
@@ -36,7 +24,9 @@ const useContextMenuList = (
     useFavoriteContextMenuList(buttonSettingKey)
   const { contextMenuSearchTextWithCurrentLanguage } =
     useContextMenuSearchTextStore()
+
   const originContextMenuListRef = useRef<IContextMenuItem[]>([])
+
   const groupByContextMenuList = useMemo(() => {
     const originContextMenuList = uniqBy(
       cloneDeep(buttonSettings?.contextMenu || []),
@@ -67,13 +57,8 @@ const useContextMenuList = (
     return groupByContextMenuList
   }, [groupByContextMenuList, buttonSettingKey, query, needFavoriteContextMenu])
 
-  const flattenContextMenuList = useMemo(() => {
-    return flatten(contextMenuList)
-  }, [contextMenuList])
-
   return {
     contextMenuList,
-    flattenContextMenuList,
     originContextMenuList: buttonSettings?.contextMenu || [],
   }
 }

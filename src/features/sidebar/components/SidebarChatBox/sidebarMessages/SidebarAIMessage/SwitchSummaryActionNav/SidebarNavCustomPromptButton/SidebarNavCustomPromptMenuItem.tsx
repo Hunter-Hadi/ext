@@ -97,7 +97,7 @@ const SidebarNavCustomPromptMenuItem: FC<ISidebarNavCustomPromptMenuItemType> = 
           sx={{
             fontSize: 18,
             transition: 'all 0.2s ease-in-out',
-            transform: 'rotate(90deg)',
+            transform: 'rotate(-90deg)',
           }}
         />
 

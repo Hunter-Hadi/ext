@@ -18,7 +18,6 @@ import Browser from 'webextension-polyfill'
 import {
   ContextMenuIcon,
 } from '@/components/ContextMenuIcon'
-import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { type IAIResponseMessage, type IAIResponseOriginalMessageNavMetadata } from '@/features/chatgpt/types';
 import { useContextMenuList } from '@/features/contextMenu'
@@ -41,9 +40,18 @@ interface ISidebarNavCustomPromptButtonProps {
 }
 
 let isLoaded = false
+
+const openSettingsPage = () => {
+  chromeExtensionClientOpenPage({
+    key: 'options',
+    url: Browser.runtime.getURL(`/pages/settings/index.html`),
+    query: `#/my-own-prompts?tab=summary`,
+  })
+}
+
 const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (props) => {
   const {
-    summaryType,
+    // summaryType,
     actionNavMetadata,
     loading = false,
     actived = false,
@@ -51,7 +59,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
   } = props
 
   const { t } = useTranslation(['client'])
-  const { contextMenuList, flattenContextMenuList } = useContextMenuList('sidebarSummaryButton', '', false)
+  const { contextMenuList, originContextMenuList } = useContextMenuList('sidebarSummaryButton', '', false)
 
   // const { smoothConversationLoading } = useSmoothConversationLoading()
 
@@ -82,22 +90,80 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
       icon = actionNavMetadata.icon
     }
 
-    return icon ? <ContextMenuIcon
-      size={18}
-      icon={icon}
-      sx={{
-        color:
-          isActived ? '#fff' : 'primary.main',
-      }}
-    />
-      : <UseChatGptIcon
+    let initialLetter = String(actionNavMetadata?.title[0] || '').toUpperCase()
+
+    if (icon) {
+      return <ContextMenuIcon
+        size={18}
+        icon={icon}
         sx={{
           color:
             isActived ? '#fff' : 'primary.main',
-          fontSize: 18,
         }}
       />
-  }, [summaryActionItem, actionNavMetadata, isActived])
+    } else if (isActived && initialLetter) {
+      return <Stack
+        className={'max-ai__click-menu-button--box__text-icon'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        sx={{
+          width: '16px',
+          height: '16px',
+          boxSizing: 'border-box',
+          borderRadius: '4px',
+          color:
+            isActived ? '#fff' : 'primary.main',
+        }}
+      >
+        <Typography
+          component={'span'}
+          fontSize={'16px'}
+          color={'inherit'}
+        >
+          {initialLetter}
+        </Typography>
+      </Stack>
+    } else if (contextMenuList.length > 0) {
+      const firstShortCutItem = contextMenuList.find(item => item.data.type === 'shortcuts')
+      if (firstShortCutItem) {
+        initialLetter = String(firstShortCutItem.text[0] || '').toUpperCase()
+        if (firstShortCutItem.data.icon) {
+          return <ContextMenuIcon
+            size={18}
+            icon={firstShortCutItem.data.icon}
+            sx={{
+              color:
+                'primary.main',
+            }}
+          />
+        } else if (initialLetter) {
+          return <Stack
+            className={'max-ai__click-menu-button--box__text-icon'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            sx={{
+              width: '16px',
+              height: '16px',
+              boxSizing: 'border-box',
+              borderRadius: '4px',
+              color:
+                isActived ? '#fff' : 'primary.main',
+            }}
+          >
+            <Typography
+              component={'span'}
+              fontSize={'16px'}
+              color={'inherit'}
+            >
+              {initialLetter}
+            </Typography>
+          </Stack>
+        }
+      }
+    }
+
+    return <AddOutlinedIcon sx={{ fontSize: 'inherit', flexShrink: 0 }} />
+  }, [summaryActionItem, actionNavMetadata, contextMenuList, isActived])
 
   const handleClick = (menuItem: IContextMenuItemWithChildren) => {
     onChange(menuItem)
@@ -113,11 +179,18 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
   }, [])
 
   useEffect(() => {
-    if (!isLoaded && actived && flattenContextMenuList.length > 0 && !summaryActionItem && actionNavMetadata?.key) {
+    if (!isLoaded && originContextMenuList.length > 0 && !summaryActionItem) {
       isLoaded = true
-      setSummaryActionItem(flattenContextMenuList.find(item => item.id === actionNavMetadata.key) || null)
+      let actionItem = null
+      if (actionNavMetadata?.key) {
+        actionItem = originContextMenuList.find(item => item.id === actionNavMetadata.key) as IContextMenuItemWithChildren || null
+      }
+      if (!actionItem) {
+        actionItem = contextMenuList.find(item => item.data.type === 'shortcuts') || null
+      }
+      setSummaryActionItem(actionItem)
     }
-  }, [actived, flattenContextMenuList, actionNavMetadata?.key])
+  }, [actived, contextMenuList, originContextMenuList, actionNavMetadata?.key])
 
   useEffect(() => {
     if (anchorEl && !isLoaded) {
@@ -136,7 +209,11 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
         onMouseUp={(event) => {
           event.stopPropagation()
           if (!isActived && summaryActionItem) {
-            handleClick(summaryActionItem)
+            if (summaryActionItem) {
+              handleClick(summaryActionItem)
+            } else {
+              openSettingsPage()
+            }
           }
         }}
         onMouseEnter={(event) => {
@@ -233,11 +310,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
               <CustomPromptMenuListItem
                 onClick={(event) => {
                   event.stopPropagation()
-                  chromeExtensionClientOpenPage({
-                    key: 'options',
-                    url: Browser.runtime.getURL(`/pages/settings/index.html`),
-                    query: `#/my-own-prompts?tab=summary`,
-                  })
+                  openSettingsPage()
                 }}
                 sx={{
                   borderRadius: '6px',

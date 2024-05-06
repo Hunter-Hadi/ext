@@ -218,6 +218,7 @@ const SettingPromptsUpdateFormModal: FC<{
                   </Typography>
                 </Stack>
                 <ShortcutActionsEditor
+                  disableCustomVariables={settingPromptsEditButtonKey === 'sidebarSummaryButton'}
                   placeholder={t(
                     'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
                   )}

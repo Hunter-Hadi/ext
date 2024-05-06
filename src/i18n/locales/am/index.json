@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "ለየትኛው የgpt-4 ይጠቀሙ",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "የተለመዱ ከፍተኛ ጽሁፎች በነሳ ይዘት ይጠቀሙ ወይም ከዚህ ወራት ጀምሮ በወራት የተለመዱ ጥያቄዎች በነሳ ይዘት ይጠቀሙ",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI የተለመዱ እና የተከፈተ ምልክቶችን ለመጠቀም በሚገኙ ቀንዶች ይጠቀሙ፣ በቀንዶች የተለመዱ ጥያቄዎችን የተለመዱ ጥያቄዎችን ይዘት ይጠቀሙ",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite የማጠቃለያ እድል ሁኔታዎችን፣ የማጠቃለያ ማጠቃለያዎችን፣ የማጠቃለያ ዝግጅቶችንና የማጠቃለያ ተመሳሳይ መልዕክቶችን ይቀላቀሉ።"
+    "permission__pricing_hook__footer_tip": "MaxAI Elite የማጠቃለያ እድል ሁኔታዎችን፣ የማጠቃለያ ማጠቃለያዎችን፣ የማጠቃለያ ዝግጅቶችንና የማጠቃለያ ተመሳሳይ መልዕክቶችን ይቀላቀሉ።",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "የእኔ ምርጫዎች",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "የእኔ ምርጫ ጨምር"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

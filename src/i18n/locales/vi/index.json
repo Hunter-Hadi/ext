@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Nâng cấp để có gpt-4 không giới hạn",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Vượt quá giới hạn truy vấn hàng tháng cho truy vấn văn bản nâng cao. Nâng cấp ngay để có số lượng truy vấn không giới hạn hoặc quay lại vào tháng sau khi truy vấn hàng tháng được đặt lại.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 của OpenAI, tối ưu hóa cho tốc độ và hiệu suất, xuất sắc trong các ứng dụng thời gian thực đòi hỏi sự sáng tạo và lập luận nâng cao với thời gian phản hồi nhanh hơn và đầu ra nhất quán.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite cung cấp không giới hạn truy vấn AI, tóm tắt AI, tìm kiếm AI và phản hồi tức thì."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite cung cấp không giới hạn truy vấn AI, tóm tắt AI, tìm kiếm AI và phản hồi tức thì.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Câu hỏi của tôi",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Thêm câu hỏi của tôi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

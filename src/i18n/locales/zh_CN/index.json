@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "升级以获取无限 gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "月度高级文本查询限额已超过。立即升级以获取无限查询，或下个月重置每月查询。",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI 的 GPT-4，针对速度和效率进行了优化，在需要创造力和高级推理的实时应用中表现出色，具有更快的响应时间和一致的输出。",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite提供无限的AI查询、AI摘要、AI搜索和即时回复。"
+    "permission__pricing_hook__footer_tip": "MaxAI Elite提供无限的AI查询、AI摘要、AI搜索和即时回复。",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "我的提示",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "添加我的提示"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

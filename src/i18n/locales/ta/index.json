@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description1": "Google ஐன் புதியதாக அறிமுகப்பட்ட மாதிரி. வேகமாக, ஒரு புறப்பட்ட 1M டோக்கன் சூழல் சாளரத்துடன், மேம்பாட்டு பணிகள் மற்றும் உரை, குறியீடு, படம், ஒலி மற்றும் காணொளி செயலாக்கங்களுக்கு மேம்படுத்தப்படுகின்றது.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "வரம்பற்ற gpt-4 க்கு மேம்படுத்தல்",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "மாதாந்திர விசை வரம்பு விட்டது. வருமானமற்ற விசைகளுக்கான மேம்படுத்தலை இப்போது முடிக்க அல்லது அடுத்த மாதத்தில் மாதிரி விசைகள் மீட்டமைக்கப்படும்.",
-    "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI ஐன் GPT-4, வேகமாக மற்றும் செயல்பாட்டில் முன்னணி முறையில் உருவாக்கப்படுகின்றது, மர்மம் மற்றும் முன்னேற்றத்துடன் அறிவிப்புகளையும் மேலாண்மையான பதில்களையும் தருகின்றது."
+    "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI ஐன் GPT-4, வேகமாக மற்றும் செயல்பாட்டில் முன்னணி முறையில் உருவாக்கப்படுகின்றது, மர்மம் மற்றும் முன்னேற்றத்துடன் அறிவிப்புகளையும் மேலாண்மையான பதில்களையும் தருகின்றது.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "எனது பிரம்பங்கள்",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "எனது பிரம்பத்தைச் சேர்க்க"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

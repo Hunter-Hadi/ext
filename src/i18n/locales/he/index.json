@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description1": "הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט 1M טוקנים פרוץ, בטיחות משודרגת ויכולות מתקדמות בתחום עיבוד טקסט, קוד, תמונה, שמע ווידאו.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "שדרג ל-gpt-4 בלתי מוגבל",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "חרף את המגבלה החודשית לשאילתות טקסט מתקדמות. שדרג עכשיו לשאילתות בלתי מוגבלות, או בדוק שוב בחודש הבא כשהשאילתות החודשיות מתאפסות.",
-    "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 של OpenAI, מותאם למהירות ויעילות, מתבלט ביישור זמן ותשובות יציבות ביישור זמן ופלט עקבי."
+    "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 של OpenAI, מותאם למהירות ויעילות, מתבלט ביישור זמן ותשובות יציבות ביישור זמן ופלט עקבי.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "הצעות שלי",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "הוסף הצעה שלי"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

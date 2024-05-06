@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "升級以獲取無限 gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "已超過每月高級文本查詢限制。立即升級以獲取無限查詢，或下個月重置每月查詢。",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 是 OpenAI 的最新模型，經過優化以提供速度和效率，在需要創造力和高級推理的實時應用中表現出色，具有更快的響應時間和一致的輸出。",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite 提供無限的 AI 查詢、AI 摘要、AI 搜索和即時回覆。"
+    "permission__pricing_hook__footer_tip": "MaxAI Elite 提供無限的 AI 查詢、AI 摘要、AI 搜索和即時回覆。",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "我的提示",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "新增我的提示"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

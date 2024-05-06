@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Mise à niveau pour gpt-4 illimité",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Limite mensuelle de requêtes avancées de texte dépassée. Effectuez une mise à niveau maintenant pour des requêtes illimitées, ou revenez le mois prochain lorsque les requêtes mensuelles seront réinitialisées.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 d'OpenAI, optimisé pour la vitesse et l'efficacité, excelle dans les applications en temps réel nécessitant de la créativité et un raisonnement avancé avec des temps de réponse améliorés et une sortie cohérente.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite offre des requêtes d'IA illimitées, des résumés d'IA, des recherches d'IA et des réponses instantanées."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite offre des requêtes d'IA illimitées, des résumés d'IA, des recherches d'IA et des réponses instantanées.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mes propres suggestions",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ajouter ma propre suggestion"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

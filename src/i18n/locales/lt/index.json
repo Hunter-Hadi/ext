@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Naujinimas neribotam gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Viršytas šio mėnesio pažangių teksto užklausų limitas. Naujinkite dabar, kad gautumėte neribotą užklausų skaičių arba sugrįžkite kitą mėnesį, kai bus atnaujinti mėnesiniai užklausų limitai.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI GPT-4, optimizuotas greičiui ir efektyvumui, puikiai tinka realaus laiko taikymams, reikalaujantiems kūrybiškumo ir pažangaus sprendimo su pagerintais atsakymo laikais ir nuosekliais rezultatais.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite siūlo neribotą AI užklausų, AI santraukų, AI paieškų ir momentinių atsakymų."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite siūlo neribotą AI užklausų, AI santraukų, AI paieškų ir momentinių atsakymų.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mano pačių užduotys",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridėti savo užduotį"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

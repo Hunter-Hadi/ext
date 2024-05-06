@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "সীমাহীন gpt-4 এর জন্য আপগ্রেড করুন",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "মাসিক উন্নত টেক্সট কুয়েরি সীমা অতিক্রম করেছেন। সীমাহীন কুয়েরির জন্য এখনই আপগ্রেড করুন, অথবা মাসিক কুয়েরি রিসেট হওয়ার পরে পুনরায় চেষ্টা করুন।",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI-র GPT-4, দ্রুততা এবং দক্ষতার জন্য অপটিমাইজ করা, সৃজনশীলতা এবং উন্নত মনোযোগ সহ সততার আউটপুট সহ সময়সাপেক্ষ অ্যাপ্লিকেশনে উত্কৃষ্ট ফলাফল প্রদান করে।",
-    "permission__pricing_hook__footer_tip": "MaxAI এলিট অসীম AI কুয়েরি, AI সংক্ষেপ, AI অনুসন্ধান এবং তাৎক্ষণিক উত্তর দেয়।"
+    "permission__pricing_hook__footer_tip": "MaxAI এলিট অসীম AI কুয়েরি, AI সংক্ষেপ, AI অনুসন্ধান এবং তাৎক্ষণিক উত্তর দেয়।",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "আমার নিজের প্রম্পটগুলি",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "আমার নিজের প্রম্পট যোগ করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

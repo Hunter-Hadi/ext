@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "અનલિમિટેડ gpt-4 માટે અપગ્રેડ કરો",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "મહિનાની એડવાન્સ ટેક્સ્ટ ક્વેરીઝ લિમિટ પર પહોંચી ગયા છો. અપગ્રેડ કરો અનલિમિટેડ ક્વેરીઝ માટે, અથવા મહિનાની ક્વેરીઝ રીસેટ થશે ત્યારે આગામી મહિને ચેક કરો.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAIનું GPT-4, ઝડપી અને કુશળતાથી માટે ઓપટિમાઇઝ કરેલું છે, જે સરળતા અને ઉચ્ચતમ સમયમાં પ્રતિસાદ આપતું છે અને સતત આઉટપુટ પ્રદાન કરે છે.",
-    "permission__pricing_hook__footer_tip": "MaxAI એલિટ અમર્યાદિત AI પ્રશ્નો, AI સંગ્રહણો, AI શોધો અને તક્ષણિક જવાબો આપે છે."
+    "permission__pricing_hook__footer_tip": "MaxAI એલિટ અમર્યાદિત AI પ્રશ્નો, AI સંગ્રહણો, AI શોધો અને તક્ષણિક જવાબો આપે છે.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "મારા પ્રોમ્પ્ટ્સ",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "મારી પ્રોમ્પ્ટ ઉમેરો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

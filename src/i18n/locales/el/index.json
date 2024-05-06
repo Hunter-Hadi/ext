@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Αναβάθμιση για απεριόριστο gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Υπέρβαση του μηνιαίου ορίου για προηγμένες ερωτήσεις κειμένου. Αναβαθμίστε τώρα για απεριόριστες ερωτήσεις, ή ελέγξτε ξανά τον επόμενο μήνα όταν επαναφέρονται οι μηνιαίες ερωτήσεις.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "Το GPT-4 της OpenAI, βελτιστοποιημένο για ταχύτητα και αποδοτικότητα, ξεχωρίζει σε εφαρμογές πραγματικού χρόνου που απαιτούν δημιουργικότητα και προηγμένη σκέψη με βελτιωμένους χρόνους απόκρισης και συνεπή έξοδο.",
-    "permission__pricing_hook__footer_tip": "Το MaxAI Elite προσφέρει απεριόριστες ερωτήσεις AI, περιλήψεις AI, αναζητήσεις AI και άμεσες απαντήσεις."
+    "permission__pricing_hook__footer_tip": "Το MaxAI Elite προσφέρει απεριόριστες ερωτήσεις AI, περιλήψεις AI, αναζητήσεις AI και άμεσες απαντήσεις.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Οι δικές μου υποδείξεις",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Προσθήκη δικής μου υποδείξης"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

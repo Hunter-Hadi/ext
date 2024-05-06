@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Jaunināt, lai iegūtu neierobežotu gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Mēneša uzlaboto teksta vaicājumu limits pārsniegts. Jauniniet tagad, lai iegūtu neierobežotus vaicājumus, vai atgriezieties nākamajā mēnesī, kad tiek atiestatīti mēneša vaicājumi.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI GPT-4, optimizēts ātrumam un efektivitātei, izceļas reāllaika lietojumprogrammās, kas prasa radošumu un uzlabotu loģisko domāšanu ar uzlabotiem atbildes laikiem un vienmērīgu rezultātu.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite piedāvā neierobežotus AI vaicājumus, AI kopsavilkumus, AI meklēšanas rezultātus un momentānas atbildes."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite piedāvā neierobežotus AI vaicājumus, AI kopsavilkumus, AI meklēšanas rezultātus un momentānas atbildes.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mani paša uzdevumi",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pievienot savu uzdevumu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

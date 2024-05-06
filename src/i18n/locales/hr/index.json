@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Nadogradite za neograničeni gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Prekoračen je mjesečni limit naprednih tekstualnih upita. Nadogradite sada za neograničene upite ili provjerite sljedeći mjesec kada se mjesečni upiti resetiraju.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 tvrtke OpenAI, optimiziran za brzinu i učinkovitost, izvrsno se snalazi u aplikacijama u stvarnom vremenu koje zahtijevaju kreativnost i napredno zaključivanje s poboljšanim vremenom odziva i dosljednim rezultatima.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite nudi neograničene AI upite, AI sažetke, AI pretrage i trenutne odgovore."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite nudi neograničene AI upite, AI sažetke, AI pretrage i trenutne odgovore.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moji vlastiti prijedlozi",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj svoj prijedlog"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

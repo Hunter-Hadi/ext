@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "無制限のgpt-4にアップグレード",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "月間の高度なテキストクエリ制限を超えました。無制限のクエリにアップグレードするか、来月になって月次クエリがリセットされるのを待ってください。",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAIのGPT-4は、速度と効率に最適化されており、創造性と高度な推論を必要とするリアルタイムアプリケーションで優れたパフォーマンスを発揮します。応答時間が短く一貫した出力を提供します。",
-    "permission__pricing_hook__footer_tip": "MaxAI Eliteは無制限のAIクエリ、AIサマリー、AI検索、および即時返信を提供します。"
+    "permission__pricing_hook__footer_tip": "MaxAI Eliteは無制限のAIクエリ、AIサマリー、AI検索、および即時返信を提供します。",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "私のプロンプト",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "プロンプトを追加する"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Tõsta piiramatu gpt-4 arvu saamiseks",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Kuu arenenud tekstipäringute limiit on ületatud. Tõsta kohe piiramatu päringute arvu saamiseks või kontrolli järgmisel kuul uuesti, kui kuulimiidid lähtestatakse.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI GPT-4, optimeeritud kiiruse ja tõhususe jaoks, sobib suurepäraselt reaalajas rakendusteks, mis nõuavad loovust ja edasijõudnud mõtlemist parema reageerimisaja ja järjepideva väljundiga.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite pakub piiramatut AI päringuid, AI kokkuvõtteid, AI otsinguid ja koheseid vastuseid."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite pakub piiramatut AI päringuid, AI kokkuvõtteid, AI otsinguid ja koheseid vastuseid.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Minu enda vihjed",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lisa oma vihje"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

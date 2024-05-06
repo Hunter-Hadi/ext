@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Opgrader for ubegrænset gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Månedlig grænse for avancerede tekstforespørgsler overskredet. Opgrader nu for ubegrænsede forespørgsler, eller tjek tilbage næste måned, når de månedlige forespørgsler nulstilles.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI's GPT-4, optimeret til hastighed og effektivitet, excellerer i realtidsapplikationer, der kræver kreativitet og avanceret logisk tænkning med forbedrede responstider og ensartet output.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler, AI-opsummeringer, AI-søgninger og øjeblikkelige svar."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler, AI-opsummeringer, AI-søgninger og øjeblikkelige svar.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mine egne prompts",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Tilføj mit eget prompt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

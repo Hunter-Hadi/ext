@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Unlimited gpt-4 varekkuvaanum",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Masaanthara advanced text prashnangalude parimithamillatha prashnangal. Varekkuvaanum visheshamilla, athava oru masathil punarnirmanikkunna masathu prashnangal punarjagrathakaranam cheyyuka.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI's GPT-4, veegathilum prayogikkanum valiya aadhunikapoorvamaya AI technology aanu, creativityum advanced reasoningum valiya pratheekshakalum samanvayathodeyum valiya pratheekshakalum samethamulla real-time applicationsil praveshikkunna model.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite നിങ്ങൾക്ക് അനവധി AI ചോദ്യങ്ങൾ, AI സംഗ്രഹങ്ങൾ, AI തിരയുകളും, പ്രത്യേക ഉത്തരങ്ങൾ നൽകുന്നു."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite നിങ്ങൾക്ക് അനവധി AI ചോദ്യങ്ങൾ, AI സംഗ്രഹങ്ങൾ, AI തിരയുകളും, പ്രത്യേക ഉത്തരങ്ങൾ നൽകുന്നു.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "എന്റെ പ്രോംപ്റ്റുകൾ",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "എന്റെ പ്രോംപ്റ്റ് ചേർക്കുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

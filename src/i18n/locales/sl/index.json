@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Nadgraditev za neomejen gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Presežena je mesečna omejitev naprednih besedilnih povpraševanj. Nadgradite zdaj za neomejena povpraševanja ali se vrnite naslednji mesec, ko se mesečna povpraševanja ponastavijo.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 podjetja OpenAI, optimiziran za hitrost in učinkovitost, izstopa pri aplikacijah v realnem času, ki zahtevajo ustvarjalnost in napredno sklepanje z izboljšanimi časi odziva in doslednim izhodom.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite ponuja neomejene poizvedbe AI, povzetke AI, iskanja AI in takojšnje odgovore."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite ponuja neomejene poizvedbe AI, povzetke AI, iskanja AI in takojšnje odgovore.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moji lastni namigi",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj svoj namig"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

@@ -762,7 +762,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "غیر محدود gpt-4 کے لئے اپگریڈ کریں",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "ماہانہ ایڈوانسڈ ٹیکسٹ کوئریز کی حد تجاوز ہوگئی ہے۔ غیر محدود کوئریز کے لئے اب اپگریڈ کریں یا اگلے مہینے جب ماہانہ کوئریز دوبارہ شروع ہوں تو واپس آئیں۔",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI کا GPT-4، رفتار اور کارآمدی کے لئے تیار کیا گیا ہے، خلاقیت اور ایڈوانسڈ ریزننگ کی ضرورت والے ریل ٹائم ایپلیکیشنز میں بہترین ہے جس میں تیزی سے جواب دینے کی صلاحیت اور مستقل نتائج شامل ہیں۔",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite غیر محدود AI کوئریوں، AI خلاصے، AI تلاش اور فوری جوابات پیش کرتا ہے۔"
+    "permission__pricing_hook__footer_tip": "MaxAI Elite غیر محدود AI کوئریوں، AI خلاصے، AI تلاش اور فوری جوابات پیش کرتا ہے۔",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "میرے خود کے پرامپٹس",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "اپنا پرامپٹ شامل کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

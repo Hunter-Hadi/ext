@@ -272,6 +272,14 @@ const SettingPromptsUpdateFormModal: FC<{
                 if (editNode.id === '') {
                   editNode.id = v4()
                 }
+                console.log(1111, 'save',          mergeWithObject([
+                  editNode,
+                  {
+                    data: {
+                      actions: generateActions(editNode.text),
+                    },
+                  } as IContextMenuItem,
+                ]),)
                 onSave?.(
                   mergeWithObject([
                     editNode,
@@ -289,7 +297,7 @@ const SettingPromptsUpdateFormModal: FC<{
                 //     autoAskChatGPT,
                 //   )
               }}
-            >
+            >{/**/}
               {t('common:save')}
             </Button>
             <Button variant={'outlined'} onClick={onCancel}>

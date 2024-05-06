@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { rootId } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
 
-import SettingPromptEditFormModal from './SettingPromptsUpdateFormModal'
+import SettingPromptsEditFormModal from '../SettingPromptsEditFormModal'
 
 const addNewMenuItem = async (setEditNode: Dispatch<SetStateAction<IContextMenuItem | null>>) => {
     setEditNode({
@@ -75,7 +75,7 @@ const SettingPromptsUpdater: FC<{
         >
           {t('settings:feature_card__prompts__new_option_group_button')}
         </Button>
-        {node && <SettingPromptEditFormModal
+        {node && <SettingPromptsEditFormModal
             open={!!node}
             iconSetting={iconSetting}
             onSave={onSave}

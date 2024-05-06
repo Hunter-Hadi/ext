@@ -66,6 +66,11 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
     maxTokens: 16384,
     hidden: true,
   },
+  PromptPreview: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    maxTokens: 16384,
+  }
 }
 
 const useClientConversation = () => {

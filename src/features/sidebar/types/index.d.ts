@@ -6,3 +6,4 @@ export type ISidebarConversationType =
   | 'FAQ'
   | 'Memo'
   | 'ContextMenu'
+  | 'PromptPreview'

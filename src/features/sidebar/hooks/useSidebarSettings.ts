@@ -343,6 +343,26 @@ const useSidebarSettings = () => {
       if (result.success) {
         conversationId = result.data.conversationId
       }
+    } else if (conversationType === 'PromptPreview') {
+      const baseMetaConfig: Partial<IChatConversationMeta> = {
+        AIProvider: AIProvider,
+        AIModel: AIModel,
+        maxTokens:
+          getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 4096,
+      }
+      const result = await port.postMessage({
+        event: 'Client_createChatGPTConversation',
+        data: {
+          initConversationData: {
+            type: 'PromptPreview',
+            title: 'AI-powered prompt preview',
+            meta: baseMetaConfig,
+          } as Partial<IChatConversation>,
+        },
+      })
+      if (result.success) {
+        conversationId = result.data.conversationId
+      }
     }
     return conversationId
   }

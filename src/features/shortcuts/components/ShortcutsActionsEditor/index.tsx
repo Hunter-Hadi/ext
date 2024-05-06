@@ -1,14 +1,12 @@
 import Box from '@mui/material/Box'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
-import Switch from '@mui/material/Switch'
 import Typography from '@mui/material/Typography'
 import React, { FC, useCallback, useMemo, useRef } from 'react'
 import ContentEditable from 'react-contenteditable'
 import { useTranslation } from 'react-i18next'
 
+import AIResponseLanguageEditor from '@/features/shortcuts/components/ShortcutsActionsEditor/components/AIResponseLanguageEditor'
 import PromptVariableEditor from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor'
 import PresetVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PresetVariables'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
@@ -20,7 +18,6 @@ import {
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { getMaxAISidebarSelection } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { chromeExtensionClientOpenPage } from '@/utils'
 
 const ShortcutActionsEditor: FC<{
   error?: boolean
@@ -202,49 +199,10 @@ const ShortcutActionsEditor: FC<{
           addTextVariableToHTML(variable)
         }}
       />
-      <Stack spacing={1}>
-        <Stack direction={'row'} alignItems="center">
-          <Typography variant={'body1'}>
-            {t('prompt_editor:ai_response_language__title')}
-          </Typography>
-        </Stack>
-        <FormControlLabel
-          sx={{
-            p: '4px 16px',
-            borderRadius: '4px',
-            justifyContent: 'space-between',
-            flexDirection: 'row-reverse',
-            border: `1px solid`,
-            borderColor: 'customColor.borderColor',
-          }}
-          control={<Switch checked={enabledAIResponseLanguage} />}
-          label={
-            <Stack direction={'row'} alignItems="center" gap={1}>
-              <Typography variant={'body1'}>
-                {t('prompt_editor:ai_response_language__settings__label_1')}
-              </Typography>
-              <Link
-                underline={'always'}
-                color={'text.primary'}
-                onClick={() => {
-                  chromeExtensionClientOpenPage({
-                    key: 'options',
-                    query: '?id=ai-response-language#/language',
-                  })
-                }}
-              >
-                <Typography variant={'body1'}>
-                  {t('prompt_editor:ai_response_language__settings__label_2')}
-                </Typography>
-              </Link>
-            </Stack>
-          }
-          value={enabledAIResponseLanguage}
-          onChange={(event: any) => {
-            toggleAIResponseLanguage()
-          }}
-        />
-      </Stack>
+      <AIResponseLanguageEditor
+        checked={enabledAIResponseLanguage}
+        onChange={() => toggleAIResponseLanguage()}
+      />
       {/*TODO: 先不展示给用户 2023-11-10*/}
       {/*TODO: 我们这一版能不能做一个这样的逻辑：*/}
       {/*TODO: 但凡这个prompt是需要用户使用的时候输入input的（比如含有variable、search等）（本质上就是使用的时候send to ai directly = false的），就默认都自动显示Output language & Tone & Writing style*/}

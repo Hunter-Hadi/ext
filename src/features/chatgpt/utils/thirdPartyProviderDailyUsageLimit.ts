@@ -43,11 +43,12 @@ export const logThirdPartyDailyUsage =
         data.nextResetTimestamp = getTomorrowMidnightTimestamp()
         data.usage = 0
         data.hasReachedLimit = false
+        await setThirdPartyDailyUsageLimitData(data)
         return data
       }
 
       data.usage += 1
-      if (data.usage >= THIRD_PARTY_USAGE_LIMIT) {
+      if (data.usage > THIRD_PARTY_USAGE_LIMIT) {
         data.hasReachedLimit = true
 
         const userInfo = await getChromeExtensionUserInfo(false)

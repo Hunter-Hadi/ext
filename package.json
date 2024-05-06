@@ -1,7 +1,7 @@
 {
   "name": "MaxAI",
   "version": "4.2.3",
-  "description": "..",
+  "description": ".",
   "author": "",
   "scripts": {
     "pdf": "node ./build/pdf.js",

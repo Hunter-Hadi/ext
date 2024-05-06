@@ -129,7 +129,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
 
   useEffect(() => {
     if (!speedChangeKey && message.originalMessage?.metadata?.navMetadata?.key) {
-      changeSummaryAction(message.originalMessage?.metadata?.navMetadata)
+      changeSummaryAction(message.originalMessage.metadata.navMetadata)
       //新进页面，变更 顶部的状态保存
       updateCurrentPageSummaryKey((summaryKeys) => {
         if (summaryKeys[summaryType]) {

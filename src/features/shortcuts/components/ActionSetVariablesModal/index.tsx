@@ -606,7 +606,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             index,
             currentModalConfig.currentSelectTotalCount,
           )
-          console.log('testestgetChildrenWidth', systemVariable.VariableName, width)
           if (systemVariable.systemVariable) {
             return (
               <Controller

@@ -199,7 +199,7 @@ const ShortcutActionsEditor: FC<{
           addTextVariableToHTML(variable)
         }}
       />
-      {disableCustomVariables && <PromptVariableEditor
+      {!disableCustomVariables && <PromptVariableEditor
         onAddTextVariable={(variable) => {
           addTextVariableToHTML(variable)
         }}

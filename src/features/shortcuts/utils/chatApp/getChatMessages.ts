@@ -7,6 +7,10 @@ import {
   discordGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/discord'
 import {
+  messengerGetChatMessages,
+  messengerGetDraftContent,
+} from '@/features/shortcuts/utils/chatApp/platforms/messenger'
+import {
   slackGetChatMessages,
   slackGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/slack'
@@ -18,10 +22,6 @@ import {
   whatsAppGetChatMessages,
   whatsAppGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/whatsApp'
-import {
-  messengerGetChatMessages,
-  messengerGetDraftContent,
-} from '@/features/shortcuts/utils/chatApp/platforms/messenger'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const getChatMessagesContent = async (

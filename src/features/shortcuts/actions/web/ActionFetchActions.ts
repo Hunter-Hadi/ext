@@ -1,6 +1,7 @@
 import { clientGetContextMenuRunActions } from '@/features/contextMenu/utils/clientButtonSettings'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
+import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 export class ActionFetchActions extends Action {
@@ -18,9 +19,23 @@ export class ActionFetchActions extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      const actions = await clientGetContextMenuRunActions(
+      const needHistory = this.parameters.ActionFetchActionsWithHistory || false
+      let actions = await clientGetContextMenuRunActions(
         this.parameters.template || '',
       )
+      if (needHistory) {
+        actions = actions.map((action: IAction) => {
+          if (action.type === 'ASK_CHATGPT') {
+            if (action.parameters.AskChatGPTActionQuestion?.meta) {
+              action.parameters.AskChatGPTActionQuestion.meta.includeHistory =
+                true
+              action.parameters.AskChatGPTActionQuestion.meta.historyMessages =
+                []
+            }
+          }
+          return action
+        })
+      }
       engine.shortcutsEngine?.pushActions(actions, 'after')
       this.output = params.LAST_AI_OUTPUT || ''
     } catch (e) {

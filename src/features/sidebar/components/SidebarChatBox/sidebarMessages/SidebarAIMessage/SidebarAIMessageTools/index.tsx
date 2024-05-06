@@ -1,15 +1,14 @@
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
+import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/SidebarUsePromptButton'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
-import { formatAIMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 const SidebarAIMessageTools: FC<{
@@ -23,9 +22,6 @@ const SidebarAIMessageTools: FC<{
   const messageContentType =
     message.originalMessage?.content?.contentType || 'text'
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
-  const memoCopyText = useMemo(() => {
-    return formatAIMessageContent(message)
-  }, [message])
   return (
     <Stack
       direction={'row'}
@@ -111,16 +107,9 @@ const SidebarAIMessageTools: FC<{
       {messageContentType === 'text' && <SidebarCopyButton message={message} />}
       {messageContentType === 'text' &&
         currentSidebarConversationType !== 'ContextMenu' && (
-          <FloatingInputButton
+          <SidebarUsePromptButton
+            message={message}
             className={'max-ai__actions__button--use-max-ai'}
-            iconButton
-            onBeforeShowContextMenu={() => {
-              return {
-                template: memoCopyText,
-                target: gmailChatBoxAiToolsRef.current
-                  ?.parentElement as HTMLElement,
-              }
-            }}
           />
         )}
     </Stack>

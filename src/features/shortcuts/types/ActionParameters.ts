@@ -205,6 +205,8 @@ interface ActionParameters {
   CreateWebsiteContextConfig?: Partial<IWebsiteContext>
   // 处理文本
   ActionTextHandleParameters?: ITextHandlerParameters
+  // contextWindow是否需要携带history
+  ActionFetchActionsWithHistory?: boolean
   // 消息
   ActionChatMessageType?: IChatMessage['type']
   ActionChatMessageOperationType?: 'add' | 'update' | 'delete'

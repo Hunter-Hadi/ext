@@ -140,7 +140,7 @@ export class ActionAskChatGPT extends Action {
         contexts,
       } = this.question.meta
       // 设置includeHistory
-      if (contextMenu?.id) {
+      if (contextMenu?.id && this.question.meta.includeHistory === undefined) {
         this.question.meta.includeHistory = false
       }
       if (!contexts) {

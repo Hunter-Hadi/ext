@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Masukkan nama",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Templat promp",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Templat petunjuk untuk ChatGPT.\nTemplat boleh mengandungi sebarang nombor pembolehubah berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Templat pendorong AI.\nTemplat ini boleh mengandungi sebarang bilangan pembolehubah berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Apabila diaktifkan",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Promp akan dihantar terus ke AI, yang merupakan \"kelakuan normal\" lalai. Semua templat promp akan mempunyai pilihan ini diaktifkan secara lalai.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Apabila dilumpuhkan",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Arkib automatik: Bersihkan seiring perjalanan",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkib sembang selepas",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Dalam MaxAI, kami Arkib automatik sembang yang tidak aktif pada kadar pilihan anda. Ini memberikan anda permulaan baru dan menjaga bar sisi anda kemas.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Balasan segera Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Balasan segera Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Templat pemberitahuan AI.\nTemplat boleh mengandungi sebarang bilangan pembolehubah berikut:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Templat pemberitahuan AI.\nTemplat boleh mengandungi sebarang bilangan pembolehubah berikut:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Templat pemberitahuan AI.\nTemplat boleh mengandungi sebarang bilangan pembolehubah berikut:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Templat pemberitahuan AI.\nTemplat boleh mengandungi sebarang bilangan pembolehubah berikut:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -1021,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik promp",
-    "edit_prompt__template__placeholder": "Templat promp untuk ChatGPT.\nTemplat boleh mengandungi sebarang nombor pembolehubah berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Templat pendorong AI.\nTemplat ini boleh mengandungi sebarang bilangan pembolehubah berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Kegemaran",
     "tab__public__title": "Awam",
     "tab__own__title": "Sendiri",

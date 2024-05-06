@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "أدخل الاسم",
     "feature_card__prompts__edit_prompt__field_icon__title": "الرمز",
     "feature_card__prompts__edit_prompt__field_template__title": "قالب المسودة",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "نموذج الاقتراح لـ ChatGPT.\nيمكن أن يتضمن النموذج أي عدد من المتغيرات التالية:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "عند التمكين",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "سيتم إرسال المسودة مباشرةً إلى الذكاء الاصطناعي، وهو \"السلوك العادي\" الافتراضي. ستكون جميع قوالب المسودات لديها هذا الخيار مُمكَّنًا افتراضيًا.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "عند التعطيل",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "الأرشفة التلقائية: نظّف أثناء استخدامك",
     "feature_card__sidebar__field__auto_archive__button__title": "أرشفة المحادثة بعد",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة المحادثات الخاملة تلقائيًا بتواتر اختيارك. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "الرد الفوري على الماسنجر"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "الرد الفوري على الماسنجر",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -1021,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "التعليمات بنقرة واحدة",
-    "edit_prompt__template__placeholder": "نموذج التعليمة لـ ChatGPT.\nيمكن أن يتضمن النموذج أي عدد من المتغيرات التالية:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "المفضلة",
     "tab__public__title": "عامة",
     "tab__own__title": "خاصة",

@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "名前を入力してください",
     "feature_card__prompts__edit_prompt__field_icon__title": "アイコン",
     "feature_card__prompts__edit_prompt__field_template__title": "プロンプトテンプレート",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPTのプロンプトテンプレート。\nテンプレートには以下の変数を含めることができます:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI プロンプトのテンプレート。\nテンプレートには以下の変数を任意の数含めることができます:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "有効になっている場合",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "プロンプトは直接AIに送信され、これがデフォルトの「通常の動作」です。すべてのプロンプトテンプレートはデフォルトでこのオプションが有効になっています。",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "無効になっている場合",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "自動アーカイブ：使いながらクリーンに",
     "feature_card__sidebar__field__auto_archive__button__title": "チャットをアーカイブする",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIでは、選択した頻度でアイドルなチャットを自動的にアーカイブします。これにより、新たなスタートが切れてサイドバーが整理されます。",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "メッセンジャーインスタント返信"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "メッセンジャーインスタント返信",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AIのプロンプトテンプレート。\nテンプレートには以下の変数を含めることができます:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AIのプロンプトテンプレート。\nテンプレートには以下の変数を含めることができます:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AIのプロンプトテンプレート。\nテンプレートには以下の変数を含めることができます:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AIのプロンプトテンプレート。\nテンプレートには以下の変数を含めることができます:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -1021,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1クリックのプロンプト",
-    "edit_prompt__template__placeholder": "ChatGPT用のプロンプトテンプレート。\nテンプレートには以下の変数を任意の数含めることができます:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "AI プロンプトのテンプレート。\nテンプレートには以下の変数を任意の数含めることができます:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "お気に入り",
     "tab__public__title": "公開",
     "tab__own__title": "自分の",

@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Nhập tên",
     "feature_card__prompts__edit_prompt__field_icon__title": "Biểu tượng",
     "feature_card__prompts__edit_prompt__field_template__title": "Mẫu câu nhắc",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Mẫu lời nhắc cho ChatGPT.\nMẫu có thể bao gồm bất kỳ số lượng biến sau đây:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Khi được bật",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Câu nhắc sẽ được gửi trực tiếp đến AI, đây là \"hành vi bình thường\" mặc định. Tất cả các mẫu câu nhắc sẽ có tùy chọn này được bật theo mặc định.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Khi được tắt",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Tự động lưu trữ: Dọn dẹp khi sử dụng",
     "feature_card__sidebar__field__auto_archive__button__title": "Lưu trữ cuộc trò chuyện sau",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Trong MaxAI, chúng tôi tự động lưu trữ cuộc trò chuyện không hoạt động theo tần suất mà bạn chọn. Điều này giúp bạn có một khởi đầu mới và giữ cho thanh bên của bạn gọn gàng.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Trả lời tức thì trên Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Trả lời tức thì trên Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",
@@ -1021,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Gợi ý 1-click",
-    "edit_prompt__template__placeholder": "Mẫu gợi ý cho ChatGPT.\nMẫu có thể bao gồm bất kỳ số lượng biến sau đây:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Yêu thích",
     "tab__public__title": "Công khai",
     "tab__own__title": "Của tôi",

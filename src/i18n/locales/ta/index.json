@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "பெயரை உள்ளிடவும்",
     "feature_card__prompts__edit_prompt__field_icon__title": "படக்குறி",
     "feature_card__prompts__edit_prompt__field_template__title": "கேள்வி வார்ப்புரு",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT க்கான விழிப்பு முன்னேற்றத்திற்கான அடிப்படை வழிமுறை.\nவார்த்தைகளின் வரிசையில் பின்வரும் மாறிகளில் எந்த எண்ணிக்கையையும் சேர்க்கலாம்:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ஏதேனும் எழுத்துரு மாற்றியமைப்பு.\nமாற்றியமைப்பில் பின்வரும் மாறியமைப்புகளின் எண்ணிக்கையை உள்ளிடலாம்:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "செயல்படும்போது",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "கேள்வி நேரடியாக AI-க்கு அனுப்பப்படும், இது இயல்பான \"சாதாரண நடவடிக்கை\". அனைத்து கேள்வி வார்ப்புருக்களிலும் இந்த விருப்பத்தை இயலுமைப்படுத்தும்.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "முடக்கப்பட்டபோது",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "தானியங்கி பதிவு: நீங்கள் செல்லும்போது சுத்தமாக்குங்கள்",
     "feature_card__sidebar__field__auto_archive__button__title": "அழிக்கப்பட்ட அரசியல் உரையாடலை",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-இல், நீங்கள் தேர்ந்தெடுத்த அளவிற்கு ஏற்றுமதி நேரத்தில் செயலற்ற உரையாடலை தானியங்கி அழிக்கின்றோம். இது உங்களுக்கு புதிய தொடக்கம் வழங்குகிறது மற்றும் உங்கள் பக்கம் அழகாக வைக்கிறது.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "துவக்க செய்தி உதவி"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "துவக்க செய்தி உதவி",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "முடிவு தேர்வு வழங்கும் தாவல்.\nதாவலில் பின்வரும் மாறியாக எந்த எண்ணிக்கையையும் அடிப்படையாக கொண்டிருக்கலாம்:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "முடிவு தேர்வு வழங்கும் தாவல்.\nதாவலில் பின்வரும் மாறியாக எந்த எண்ணிக்கையையும் அடிப்படையாக கொண்டிருக்கலாம்:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "முடிவு தேர்வு வழங்கும் தாவல்.\nதாவலில் பின்வரும் மாறியாக எந்த எண்ணிக்கையையும் அடிப்படையாக கொண்டிருக்கலாம்:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "முடிவு தேர்வு வழங்கும் தாவல்.\nதாவலில் பின்வரும் மாறியாக எந்த எண்ணிக்கையையும் அடிப்படையாக கொண்டிருக்கலாம்:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -1021,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-கிளிக் புரவலாக்கல்கள்",
-    "edit_prompt__template__placeholder": "ChatGPT க்கான புரவலாக்க வார்த்தைப் பட்டியல்.\nபட்டியலில் பின்வரும் மாறிகளின் எண்ணிக்கை எந்தவொரு எண்ணிக்கையும் அடிப்படையாக கொண்டிருக்கலாம்:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "ஏதேனும் எழுத்துரு மாற்றியமைப்பு.\nமாற்றியமைப்பில் பின்வரும் மாறியமைப்புகளின் எண்ணிக்கையை உள்ளிடலாம்:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "பிடித்தவை",
     "tab__public__title": "பொது",
     "tab__own__title": "சொந்தமானது",

@@ -481,15 +481,15 @@ export const getFloatingContextMenuMiddleware = (
           referenceElementDragOffsetRef.current.prevY
         const x = Math.min(Math.max(currentX, minX), maxX)
         const y = Math.min(Math.max(currentY, minY), maxY)
-        console.log(
-          `[ContextWindow]: customMiddleware`,
-          '\n',
-          x,
-          y,
-          '\n',
-          currentX,
-          currentY,
-        )
+        // console.log(
+        //   `[ContextWindow]: customMiddleware`,
+        //   '\n',
+        //   x,
+        //   y,
+        //   '\n',
+        //   currentX,
+        //   currentY,
+        // )
 
         return {
           x,

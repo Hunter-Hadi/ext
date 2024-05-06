@@ -328,7 +328,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
                     }}
                     component={'span'}
                   >
-                    Add my own prompt
+                    {t('client:sidebar__summary__nav__summary__my_own_prompts__add_button_title___default')}
                   </Typography>
                 </ListItemText>
               </CustomPromptMenuListItem>

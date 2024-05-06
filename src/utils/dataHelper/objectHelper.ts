@@ -19,10 +19,20 @@ export const objectFilterEmpty = (obj: any, filterEmptyString = true) => {
 }
 
 export const mergeWithObject = (objects: any[]) => {
-  return mergeWith({}, ...objects, (objValue: any, srcValue: any) => {
-    if (isArray(srcValue)) {
-      return srcValue
-    }
-    return undefined
-  })
+  return mergeWith(
+    {},
+    ...objects,
+    (objValue: any, srcValue: any, key: string) => {
+      // need to overwrite the navMetadata
+      if (key === 'navMetadata') {
+        return srcValue
+      }
+
+      if (isArray(srcValue)) {
+        return srcValue
+      }
+
+      return undefined
+    },
+  )
 }

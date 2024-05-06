@@ -535,6 +535,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         width: '100%',
         p: 1,
         gap: 1,
+        boxSizing: 'border-box',
       }}
       maxHeight={'60vh'}
       // onKeyDownCapture={(event) => {

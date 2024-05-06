@@ -63,14 +63,12 @@ export const FloatingDropdownMenuLastFocusRangeState = atom<{
 
 // AI input下拉菜单的继续操作内容选项
 // AI input dropdown menu system items
-export const FloatingDropdownMenuSystemItemsState = atom<{
-  selectContextMenuId: string | null
-  lastOutput: string
+export const ContextWindowDraftContextMenuState = atom<{
+  selectedDraftContextMenuId: string | null
 }>({
-  key: 'FloatingDropdownMenuSystemItemsState',
+  key: 'ContextWindowDraftContextMenuState',
   default: {
-    selectContextMenuId: null,
-    lastOutput: '',
+    selectedDraftContextMenuId: null,
   },
 })
 

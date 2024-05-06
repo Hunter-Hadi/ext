@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import React, { FC, forwardRef, useCallback, useMemo } from 'react'
-import { Simulate } from 'react-dom/test-utils'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -12,7 +11,6 @@ import {
 import { SPECIAL_NEED_DIVIDER_KEYS } from '@/features/contextMenu/constants'
 import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
-import contextMenu = Simulate.contextMenu
 // import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 // eslint-disable-next-line react/display-name

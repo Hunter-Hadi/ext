@@ -124,7 +124,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
         </Typography>
       </Stack>
     } else if (contextMenuList.length > 0) {
-      const firstShortCutItem = contextMenuList.find(item => item.data.type === 'shortcuts')
+      const firstShortCutItem = contextMenuList.find(item => item.data.type === 'shortcuts') || originContextMenuList.find(item => item.data.type === 'shortcuts')
       if (firstShortCutItem) {
         initialLetter = String(firstShortCutItem.text[0] || '').toUpperCase()
         if (firstShortCutItem.data.icon) {
@@ -186,7 +186,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
         actionItem = originContextMenuList.find(item => item.id === actionNavMetadata.key) as IContextMenuItemWithChildren || null
       }
       if (!actionItem) {
-        actionItem = contextMenuList.find(item => item.data.type === 'shortcuts') || null
+        actionItem = contextMenuList.find(item => item.data.type === 'shortcuts') || (originContextMenuList.find(item => item.data.type === 'shortcuts') as IContextMenuItemWithChildren) || null
       }
       setSummaryActionItem(actionItem)
     }

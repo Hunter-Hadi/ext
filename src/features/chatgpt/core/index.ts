@@ -479,27 +479,34 @@ export class ChatGPTConversation {
       ) {
         // gpt-4现在可以带图片聊天
         try {
-          postMessage.messages[0].content.content_type = 'multimodal_text'
-          // 把用户上传的文件带进parts里
-          postMessage.messages[0].content.parts = params.meta.attachments
-            .map((chatUploadFile: any) => {
-              let contentType = ''
-              // "image_asset_pointer",
-              // "audio_transcription",
-              if (chatUploadFile.type.startsWith('image')) {
-                contentType = 'image_asset_pointer'
-              } else if (chatUploadFile.type.startsWith('audio')) {
-                contentType = 'audio_transcription'
-              }
-              return {
-                width: 0,
-                height: 0,
-                asset_pointer: `file-service://${chatUploadFile.id}`,
-                contentType,
-                size_bytes: chatUploadFile.size,
-              }
-            })
-            .concat(postMessage.messages[0].content.parts)
+          const validAttachments = params.meta.attachments.filter(
+            (chatUploadFile: any) =>
+              chatUploadFile.type.startsWith('image') ||
+              chatUploadFile.type.startsWith('audio'),
+          )
+          if (validAttachments.length > 0) {
+            postMessage.messages[0].content.content_type = 'multimodal_text'
+            // 把用户上传的文件带进parts里
+            postMessage.messages[0].content.parts = params.meta.attachments
+              .map((chatUploadFile: any) => {
+                let contentType = ''
+                // "image_asset_pointer",
+                // "audio_transcription",
+                if (chatUploadFile.type.startsWith('image')) {
+                  contentType = 'image_asset_pointer'
+                } else if (chatUploadFile.type.startsWith('audio')) {
+                  contentType = 'audio_transcription'
+                }
+                return {
+                  width: 0,
+                  height: 0,
+                  asset_pointer: `file-service://${chatUploadFile.id}`,
+                  contentType,
+                  size_bytes: chatUploadFile.size,
+                }
+              })
+              .concat(postMessage.messages[0].content.parts)
+          }
           postMessage.messages[0].metadata = {
             attachments: params.meta.attachments.map((chatUploadFile: any) => {
               return {

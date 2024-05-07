@@ -126,6 +126,9 @@ export const addOrUpdateDBConversationMessages = async (
   conversation: IChatConversation,
   messages: IChatMessage[],
 ) => {
+  if (messages.length === 0) {
+    return
+  }
   try {
     if (!(await isEnableSyncConversation())) {
       return false
@@ -178,6 +181,9 @@ export const deleteDBConversationMessages = async (
   conversation: IChatConversation,
   messageIds: string[],
 ) => {
+  if (messageIds.length === 0) {
+    return
+  }
   try {
     if (!(await isEnableSyncConversation())) {
       return false

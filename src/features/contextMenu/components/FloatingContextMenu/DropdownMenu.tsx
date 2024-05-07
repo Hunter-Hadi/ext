@@ -453,7 +453,6 @@ export const MenuComponent = React.forwardRef<
       enabled: hoverOpen && allowHover,
       delay: { open: 75 },
       handleClose: safePolygon({
-        restMs: 25,
         blockPointerEvents: false,
       }),
     })

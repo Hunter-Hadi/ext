@@ -41,7 +41,9 @@ import FloatingContextMenuList from '@/features/contextMenu/components/FloatingC
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
 import { useFloatingContextMenuDraftHistoryChange } from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
-import useInitContextWindow from '@/features/contextMenu/hooks/useInitContextWindow'
+import useInitContextWindow, {
+  focusContextWindowInput,
+} from '@/features/contextMenu/hooks/useInitContextWindow'
 import {
   cloneRect,
   getContextMenuRenderPosition,
@@ -141,6 +143,20 @@ const FloatingContextMenu: FC<{
     open: floatingDropdownMenu.open,
     onOpenChange: (open, event, reason) => {
       if (reason === 'outside-press' || reason === 'escape-key') {
+        if (reason === 'outside-press') {
+          // 因为Floating ui会阻止事件冒泡，所以这里手动触发一次点击事件,让clickAwayListener生效
+          const contextWindowRoot =
+            getMaxAIFloatingContextMenuRootElement() as HTMLDivElement
+          if (contextWindowRoot) {
+            // mock click event
+            const clickEvent = new MouseEvent('click', {
+              view: window,
+              bubbles: true,
+              cancelable: true,
+            })
+            contextWindowRoot.dispatchEvent(clickEvent)
+          }
+        }
         console.log(
           `[ContextWindow] [FloatingContextMenu] [onOpenChange] [${reason}] [${contextWindowMode}]`,
         )
@@ -360,6 +376,9 @@ const FloatingContextMenu: FC<{
               <WritingMessageBox />
               {floatingDropdownMenu.open && (
                 <ActionSetVariablesModal
+                  sx={{
+                    mt: 2,
+                  }}
                   onInputCustomVariable={() => {
                     setIsInputCustomVariables(true)
                   }}
@@ -370,8 +389,18 @@ const FloatingContextMenu: FC<{
                     }
                     return true
                   }}
-                  onClose={() => {
-                    hideFloatingContextMenu()
+                  onClose={(reason) => {
+                    setIsSettingCustomVariables(false)
+                    if (reason === 'close') {
+                      hideFloatingContextMenu()
+                    }
+                  }}
+                  onChange={(data, reason) => {
+                    if (reason === 'runPromptStart') {
+                      setIsInputCustomVariables(true)
+                    } else if (reason === 'runPromptEnd') {
+                      setIsInputCustomVariables(false)
+                    }
                   }}
                   onShow={() => setIsSettingCustomVariables(true)}
                   modelKey={'FloatingContextMenu'}
@@ -570,6 +599,8 @@ const FloatingContextMenu: FC<{
           if (reason === 'discard') {
             // discard changes
             hideFloatingContextMenu()
+          } else if (reason === 'cancel') {
+            focusContextWindowInput()
           }
           setDiscardChangesModalOpen(false)
         }}

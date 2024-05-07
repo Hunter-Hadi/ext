@@ -49,7 +49,7 @@ const SidebarUsePromptButton: FC<{
   iconButton?: boolean
   sx?: SxProps
 }> = (props) => {
-  const { message, iconButton, className, sx } = props
+  const { message, className, sx } = props
   const [
     sidebarUsePromptSelectContextMenu,
     setSidebarUsePromptSelectContextMenu,
@@ -74,7 +74,7 @@ const SidebarUsePromptButton: FC<{
     }
     if (sidebarUsePromptSelectContextMenu && messageContext) {
       const actions: ISetActionsType = cloneDeep(
-        sidebarUsePromptSelectContextMenu.data.actions,
+        sidebarUsePromptSelectContextMenu.data.actions || [],
       ).map((action) => {
         if (action.type === 'FETCH_ACTIONS') {
           // 本次不携带history，但是后续需要携带
@@ -160,6 +160,7 @@ const SidebarUsePromptButton: FC<{
         label={''}
       >
         <NestedPromptList
+          deep={0}
           buttonId={message.messageId}
           root={root}
           promptList={contextMenuList}
@@ -172,14 +173,15 @@ const NestedPromptList: FC<{
   root: HTMLElement
   promptList: IContextMenuItemWithChildren[]
   buttonId: string
-}> = ({ promptList, root, buttonId }) => {
+  deep: number
+}> = ({ promptList, root, buttonId, deep }) => {
   return (
     <>
       {promptList.map((item, index) => {
         return (
           <RenderDropdownItem
             buttonId={buttonId}
-            deep={0}
+            deep={deep}
             key={item.id}
             menuItem={item}
             root={root}
@@ -299,11 +301,10 @@ const RenderDropdownItem: FC<{
         </DropdownMenu>,
       )
     }
-    return nodeList
+    return <>{nodeList}</>
   }
   return (
     <LiteDropdownMenuItem
-      index={index}
       icon={menuItem.data.icon}
       label={menuItem.text}
       onClick={() => {

@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -57,7 +58,7 @@ export interface ActionSetVariablesConfirmData {
   data: {
     [key: string]: string | number | undefined
   }
-  type: 'close' | 'confirm' | 'cancel'
+  type: 'close' | 'confirm' | 'cancel' | 'input' | 'change'
   success: boolean
 }
 interface ActionSetVariablesModalProps
@@ -66,9 +67,14 @@ interface ActionSetVariablesModalProps
   showModelSelector?: boolean
   onShow?: () => void
   onBeforeClose?: () => boolean
-  onClose?: () => void
+  onClose?: (reason: 'close' | 'runPrompt' | 'reset') => void
+  onChange?: (
+    data: ActionSetVariablesConfirmData,
+    reason: 'runPromptStart' | 'runPromptEnd',
+  ) => void
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
   onInputCustomVariable?: (data: ActionSetVariablesConfirmData) => void
+  sx?: SxProps
 }
 
 const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
@@ -79,12 +85,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     modelKey,
     onShow,
     onClose,
+    onChange,
     onBeforeClose,
     onInputCustomVariable,
     actions,
     answerInsertMessageId,
     askChatGPTActionParameters,
     showModelSelector = false,
+    sx,
   } = props
   const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -129,7 +137,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     reset()
     setForm({})
     setShow(false)
-    onClose?.()
+    onClose?.('close')
   }
   const validateForm = async () => {
     const success = await trigger()
@@ -198,7 +206,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     setForm({})
     reset()
     setShow(false)
-    onClose?.()
+    onChange?.(
+      {
+        data: getValues(),
+        type: 'change',
+        success: true,
+      },
+      'runPromptStart',
+    )
     const runActions: ISetActionsType = []
     if (config?.template || config?.MaxAIPromptActionConfig) {
       const template = getValues()?.TEMPLATE || config?.template || ''
@@ -319,7 +334,15 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           reset()
           setForm({})
           setShow(false)
-          onClose?.()
+          onClose?.('runPrompt')
+          onChange?.(
+            {
+              data: getValues(),
+              type: 'change',
+              success: true,
+            },
+            'runPromptEnd',
+          )
         })
     }
   }
@@ -497,14 +520,20 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   useEffect(() => {
     if (show) {
       if (hide) {
-        onClose?.()
+        onClose?.('reset')
       } else {
         const focusEmptyInput = () => {
+          //
           const emptyTextTextarea = Array.from(
             inputBoxRef.current?.querySelectorAll('textarea') || [],
-          ).find((textarea) => {
-            return textarea.value === ''
-          })
+          )
+            .filter((input) => {
+              // aria-hidden="true"
+              return !input.hasAttribute('aria-hidden')
+            })
+            .find((textarea) => {
+              return textarea.value === ''
+            })
           if (emptyTextTextarea) {
             emptyTextTextarea.focus()
           } else {
@@ -543,6 +572,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         p: 1,
         gap: 1,
         boxSizing: 'border-box',
+        ...sx,
       }}
       maxHeight={'60vh'}
       // onKeyDownCapture={(event) => {
@@ -679,7 +709,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               {...form[textTypeVariable.VariableName]}
               onKeyUp={(event) => {
                 if (!textTypeVariable.systemVariable) {
-                  onInputCustomVariable?.(getValues())
+                  onInputCustomVariable?.({
+                    data: getValues(),
+                    type: 'input',
+                    success: true,
+                  } as ActionSetVariablesConfirmData)
                 }
                 event.stopPropagation()
               }}

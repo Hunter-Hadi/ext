@@ -83,6 +83,42 @@ const getDetectHasContextWindowDraftActions: () => ISetActionsType = () => {
   ]
   return actions
 }
+export const focusContextWindowInput = () => {
+  // 先尝试focus custom variables modal
+  const modelElement = getMaxAIFloatingContextMenuRootElement()?.querySelector(
+    '.max-ai__action__set_variables_modal',
+  ) as HTMLDivElement
+  if (modelElement) {
+    const textareaElements = (
+      Array.from(
+        modelElement.querySelectorAll('textarea'),
+      ) as HTMLTextAreaElement[]
+    ).filter((input) => {
+      // aria-hidden="true"
+      return !input.hasAttribute('aria-hidden')
+    })
+    const emptyTextarea =
+      textareaElements.find((textarea) => {
+        return textarea.value === ''
+      }) || textareaElements[textareaElements.length - 1]
+    if (emptyTextarea) {
+      emptyTextarea.focus()
+      setTimeout(() => {
+        emptyTextarea?.focus()
+      }, 1)
+      return
+    }
+  }
+  const textareaEl = getMaxAIFloatingContextMenuRootElement()?.querySelector(
+    `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+  ) as HTMLTextAreaElement
+  if (textareaEl) {
+    textareaEl.focus()
+    setTimeout(() => {
+      textareaEl?.focus()
+    }, 1)
+  }
+}
 
 /**
  * 获取当前的context window 的menu list
@@ -190,7 +226,22 @@ const useInitContextWindow = () => {
     | 'CUSTOM_INPUT'
     | 'LOADING'
   >(() => {
-    if (currentSelection?.selectionInputAble) {
+    if (loading) {
+      return 'LOADING'
+    }
+    /**
+     * 是否是InstantReply的按钮
+     */
+    const isInstantReplyButton =
+      currentSelection?.activeElement?.hasAttribute(
+        'maxai-input-assistant-button-id',
+      ) || false
+    console.log(
+      `[ContextWindow] currentSelection`,
+      currentSelection,
+      isInstantReplyButton,
+    )
+    if (currentSelection?.selectionInputAble || isInstantReplyButton) {
       if (inputValue && contextWindowList.length === 0) {
         return 'CUSTOM_INPUT'
       }
@@ -203,9 +254,6 @@ const useInitContextWindow = () => {
         return 'EDITED_VARIABLES'
       }
       return 'EDIT_VARIABLES'
-    }
-    if (loading) {
-      return 'LOADING'
     }
     return 'READ'
   }, [
@@ -541,15 +589,7 @@ const useInitContextWindow = () => {
   useEffect(() => {
     if (!clientWritingMessage.loading) {
       if (isFloatingContextMenuVisible()) {
-        const textareaEl =
-          getMaxAIFloatingContextMenuRootElement()?.querySelector(
-            `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-          ) as HTMLTextAreaElement
-        if (textareaEl) {
-          setTimeout(() => {
-            textareaEl?.focus()
-          }, 1)
-        }
+        focusContextWindowInput()
       }
     }
   }, [clientWritingMessage.loading])
@@ -585,15 +625,7 @@ const useInitContextWindow = () => {
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       getInputMediator('floatingMenuInputMediator').updateInputValue('')
-      const textareaEl =
-        getMaxAIFloatingContextMenuRootElement()?.querySelector(
-          `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-        ) as HTMLTextAreaElement
-      if (textareaEl) {
-        setTimeout(() => {
-          textareaEl?.focus()
-        }, 1)
-      }
+      focusContextWindowInput()
       // 为了保证登陆后能直接用，需要先获取一次settings
       clientGetLiteChromeExtensionDBStorage().then((settings) => {
         setAppDBStorage(settings)

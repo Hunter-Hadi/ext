@@ -15,6 +15,7 @@ import {
   clientGetConversation,
   clientGetConversationAIModelAndProvider,
 } from '@/features/chatgpt/utils/chatConversationUtils'
+import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
@@ -404,6 +405,7 @@ export const getPromptTypeByContextMenu = (
 } => {
   if (contextMenuItem) {
     const contextMenuId = contextMenuItem.id
+    const presetActionPromptIds = Object.values(CONTEXT_MENU_DRAFT_TYPES)
     if (
       defaultInputAssistantRefineDraftContextMenuJson.find(
         (item) => item.id === contextMenuId,
@@ -436,6 +438,13 @@ export const getPromptTypeByContextMenu = (
     ) {
       return {
         promptType: 'preset',
+      }
+    } else if (
+      presetActionPromptIds.find((promptId) => promptId === contextMenuId)
+    ) {
+      return {
+        promptType: 'preset',
+        instantType: 'refine',
       }
     } else {
       return {

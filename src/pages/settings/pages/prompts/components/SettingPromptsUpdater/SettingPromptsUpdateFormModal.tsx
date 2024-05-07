@@ -19,6 +19,7 @@ import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutsActionsEditor'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
+import { PRESET_VARIABLES_GROUP_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import {
   SettingPromptsEditButtonKeyAtom,
   specialInputAssistantButtonKeys,
@@ -52,30 +53,37 @@ const SettingPromptsUpdateFormModal: FC<{
   )
 
   const shortcutActionsEditorPlaceholder = useMemo(() => {
-    switch (settingPromptsEditButtonKey) {
-      // instant reply
-      case 'inputAssistantComposeReplyButton':
-        return t(
-          'settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder',
-        )
+    let placeholder = ''
 
-      // refine draft
-      case 'inputAssistantRefineDraftButton':
-        return t('settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder')
-
-      // compose new
-      case 'inputAssistantComposeNewButton':
-        return t('settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder')
-
-      // summary
-      case 'sidebarSummaryButton':
-        return t('settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder')
-
-      // context menu
-      case 'textSelectPopupButton':
-      default:
-        return t('settings:feature_card__prompts__edit_prompt__field_template__placeholder')
+    if (settingPromptsEditButtonKey === 'textSelectPopupButton') {
+      placeholder = t('settings:feature_card__prompts__edit_prompt__field_template__placeholder')
+    } else if (settingPromptsEditButtonKey === 'inputAssistantComposeReplyButton') {
+      placeholder = t('settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder')
+    } else if (settingPromptsEditButtonKey === 'inputAssistantRefineDraftButton') {
+      placeholder = t('settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder')
+    } else if (settingPromptsEditButtonKey === 'inputAssistantComposeNewButton') {
+      placeholder = t('settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder')
+    } else if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+      placeholder = t('settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder')
     }
+
+    if (placeholder) {
+      const presetVariables = PRESET_VARIABLES_GROUP_MAP['prompt_editor:preset_variables__system__title']
+      presetVariables.forEach(({ variable, permissionKeys = [] }) => {
+        if (
+          permissionKeys.length === 0 ||
+          permissionKeys.includes(settingPromptsEditButtonKey!)
+        ) {
+          placeholder += `\n{{${variable?.label}}}`
+        }
+      })
+
+      if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+        placeholder += t('settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder__example')
+      }
+    }
+
+    return placeholder
   }, [t, settingPromptsEditButtonKey])
 
   const isDisabled = !editNode.data.editable

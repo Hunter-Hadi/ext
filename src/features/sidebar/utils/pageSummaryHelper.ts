@@ -107,30 +107,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           },
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              key: 'PAGE_CONTENT',
-              value: `context text`,
-              label: 'PAGE_CONTENT',
-              overwrite: true,
-              isBuiltIn: true,
-            },
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              key: 'PAGE_CONTENT',
-              value: `context text`,
-              label: 'PAGE_CONTENT',
-              overwrite: true,
-              isBuiltIn: true,
-            },
-          },
-        },
-        {
           type: 'GET_READABILITY_CONTENTS_OF_WEBPAGE',
           parameters: {},
         },
@@ -298,30 +274,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           },
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              key: 'PAGE_CONTENT',
-              value: `context text`,
-              label: 'PAGE_CONTENT',
-              overwrite: true,
-              isBuiltIn: true,
-            },
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              key: 'PAGE_CONTENT',
-              value: `context text`,
-              label: 'PAGE_CONTENT',
-              overwrite: true,
-              isBuiltIn: true,
-            },
-          },
-        },
-        {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
           parameters: {},
         },
@@ -486,18 +438,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'AI_RESPONSE_MESSAGE_ID',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              key: 'PAGE_CONTENT',
-              value: `context text`,
-              label: 'PAGE_CONTENT',
-              overwrite: true,
-              isBuiltIn: true,
-            },
           },
         },
         {
@@ -669,18 +609,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'AI_RESPONSE_MESSAGE_ID',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              key: 'PAGE_CONTENT',
-              value: `context text`,
-              label: 'PAGE_CONTENT',
-              overwrite: true,
-              isBuiltIn: true,
-            },
           },
         },
         {

@@ -2,10 +2,12 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import {useRecoilState} from "recoil";
 
 import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutsActionsEditor'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/context'
+import {SettingPromptsEditButtonKeyAtom} from "@/pages/settings/pages/prompts/store";
 
 const PromptPanel = () => {
   const { t } = useTranslation(['settings', 'common'])
@@ -17,6 +19,10 @@ const PromptPanel = () => {
     enabledAIResponseLanguage,
     toggleAIResponseLanguage,
   } = useShortcutEditorActions()
+
+  const [settingPromptsEditButtonKey] = useRecoilState(
+    SettingPromptsEditButtonKeyAtom,
+  )
 
   return (
     <Stack spacing={2}>
@@ -31,6 +37,7 @@ const PromptPanel = () => {
             </Typography>
           </Stack>
           <ShortcutActionsEditor
+            disableCustomVariables={settingPromptsEditButtonKey === 'sidebarSummaryButton'}
             placeholder={t(
               'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
             )}

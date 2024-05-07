@@ -16,13 +16,15 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
       background: 'rgba(0, 0, 0, 0.1)',
       borderRadius: '8px',
       padding: '2px',
+      minHeight: '40px',
 
       [`.${tabClasses.root}`]: {
         boxSizing: 'border-box',
         width: '120px',
-        height: '40px',
+        minHeight: '40px',
         color: isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 0.6)',
         borderRadius: '8px',
+        lineHeight: 'auto',
 
         [`&.${tabClasses.selected}`]: {
           background: isDark ? 'rgb(32, 33, 36)' : 'rgba(255, 255, 255, 1)',

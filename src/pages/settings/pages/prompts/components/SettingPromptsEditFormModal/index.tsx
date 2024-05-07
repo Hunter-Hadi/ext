@@ -59,7 +59,7 @@ const SettingPromptsEditFormModal: FC<{
               {tabIndex === 0 && (
                 <>
                   <ConfigurePanel />
-                  <Box mt={1}>
+                  <Box mt={2}>
                     <Button variant="contained" onClick={() => setTabIndex(1)}>
                       Next: Add prompt
                     </Button>

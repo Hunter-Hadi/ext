@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI:n GPT-4, joka on optimoitu nopeuteen ja tehokkuuteen, loistaa reaaliaikaisissa sovelluksissa, jotka vaativat luovuutta ja edistynyttä päättelyä paremmilla vasteajoilla ja johdonmukaisella tulostuksella.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite tarjoaa rajattomat AI-kyselyt, AI-yhteenvedot, AI-haut ja välittömät vastaukset.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Omat kysymykset",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lisää oma kysymys"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lisää oma kysymys",
+    "sidebar__summary__advanced__title": "Edistyneet yhteenvedon asetukset"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

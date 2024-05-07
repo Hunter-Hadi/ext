@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4, వేగం మరియు పనిచేయడంలో అద్భుతమైన ప్రతిస్పందన సమయాలతో క్రీయాశీలత మరియు అద్వితీయ ఆఉట్‌పుట్‌తో రియల్‌టైమ్ అనువర్తనాలలో అత్యంత మెరుగైన ప్రగతిని అందిస్తుంది.",
     "permission__pricing_hook__footer_tip": "MaxAI ఎలీట్ అనువాదాల మితిలేని AI ప్రశ్నలు, AI సారాంశాలు, AI శోధనలు మరియు తక్షణ సమాధానాలను అందిస్తుంది.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "నా ప్రాంప్టులు",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "నా ప్రాంప్టును జోడించండి"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "నా ప్రాంప్టును జోడించండి",
+    "sidebar__summary__advanced__title": "ఆధ్వర్యం సారాంశ ఎంపికలు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

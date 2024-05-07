@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI का GPT-4, जो गति और प्रभावशीलता के लिए अनुकूलित है, रीयल-टाइम एप्लिकेशन में रचनात्मकता और उन्नत तर्क की मांग करने में उत्कृष्ट है, जिसमें सुधारित प्रतिक्रिया समय और संगत आउटपुट के साथ संघटित भाषा समझ होती है।",
     "permission__pricing_hook__footer_tip": "MaxAI Elite असीमित AI क्वेरी, AI सारांश, AI खोज और तत्क्षण उत्तर प्रदान करता है।",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "मेरे खुद के प्रॉम्प्ट",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "अपना प्रॉम्प्ट जोड़ें"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "अपना प्रॉम्प्ट जोड़ें",
+    "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

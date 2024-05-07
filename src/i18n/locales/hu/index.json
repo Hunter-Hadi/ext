@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "Az OpenAI GPT-4, optimalizálva a sebesség és hatékonyság érdekében, kiválóan alkalmas valós idejű alkalmazásokhoz, amelyek kreativitást és fejlett gondolkodást igényelnek gyorsabb válaszidővel és következetes kimenettel.",
     "permission__pricing_hook__footer_tip": "A MaxAI Elite csomag korlátlan AI lekérdezéseket, AI összefoglalókat, AI kereséseket és azonnali válaszokat kínál.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Saját kérdéseim",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Saját kérdés hozzáadása"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Saját kérdés hozzáadása",
+    "sidebar__summary__advanced__title": "Speciális összegzési lehetőségek"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

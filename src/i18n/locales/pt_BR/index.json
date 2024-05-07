@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 da OpenAI, otimizado para velocidade e eficiência, se destaca em aplicações em tempo real que exigem criatividade e raciocínio avançado, com tempos de resposta aprimorados e saída consistente.",
     "permission__pricing_hook__footer_tip": "O MaxAI Elite oferece consultas de IA ilimitadas, resumos de IA, pesquisas de IA e respostas instantâneas.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Minhas próprias sugestões",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adicionar minha própria sugestão"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adicionar minha própria sugestão",
+    "sidebar__summary__advanced__title": "Opções avançadas de resumo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

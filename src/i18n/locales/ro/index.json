@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 de la OpenAI, optimizat pentru viteză și eficiență, se remarcă în aplicațiile în timp real care necesită creativitate și raționament avansat, cu timpi de răspuns îmbunătățiți și rezultate consistente.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite oferă interogări AI nelimitate, rezumate AI, căutări AI și răspunsuri instantanee.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Propriile mele sugestii",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adaugă propria mea sugestie"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adaugă propria mea sugestie",
+    "sidebar__summary__advanced__title": "Opțiuni avansate de rezumat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

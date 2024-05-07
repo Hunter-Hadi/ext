@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI GPT-4, optimizuotas greičiui ir efektyvumui, puikiai tinka realaus laiko taikymams, reikalaujantiems kūrybiškumo ir pažangaus sprendimo su pagerintais atsakymo laikais ir nuosekliais rezultatais.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite siūlo neribotą AI užklausų, AI santraukų, AI paieškų ir momentinių atsakymų.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mano pačių užduotys",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridėti savo užduotį"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridėti savo užduotį",
+    "sidebar__summary__advanced__title": "Išplėstinės santraukos parinktys"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

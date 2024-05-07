@@ -88,6 +88,7 @@ export interface IChatGPTConversation {
 }
 
 export interface IChatGPTDaemonProcess {
+  currentMaxAIConversationId?: string
   conversations: ChatGPTConversation[]
   token?: string
   models: IChatGPTModelType[]
@@ -482,10 +483,19 @@ export class ChatGPTConversation {
           // 把用户上传的文件带进parts里
           postMessage.messages[0].content.parts = params.meta.attachments
             .map((chatUploadFile: any) => {
+              let contentType = ''
+              // "image_asset_pointer",
+              // "audio_transcription",
+              if (chatUploadFile.type.startsWith('image')) {
+                contentType = 'image_asset_pointer'
+              } else if (chatUploadFile.type.startsWith('audio')) {
+                contentType = 'audio_transcription'
+              }
               return {
                 width: 0,
                 height: 0,
                 asset_pointer: `file-service://${chatUploadFile.id}`,
+                contentType,
                 size_bytes: chatUploadFile.size,
               }
             })
@@ -805,6 +815,7 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   }
   models: IChatGPTModelType[]
   plugins: IChatGPTPluginType[]
+  currentMaxAIConversationId?: string
   constructor() {
     this.conversations = []
     this.abortFunctions = {}

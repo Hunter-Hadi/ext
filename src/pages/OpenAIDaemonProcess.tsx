@@ -239,6 +239,8 @@ const useDaemonProcess = () => {
         clientPort.postMessage({
           event: 'Client_chatUploadFilesChange',
           data: {
+            conversationId:
+              chatGptInstanceRef.current.currentMaxAIConversationId,
             files,
           },
         }) // 通知background
@@ -466,7 +468,11 @@ const useDaemonProcess = () => {
                 break
               case 'OpenAIDaemonProcess_filesUpload':
                 {
-                  const { files } = data
+                  const { files, MaxAIConversationId } = data
+                  if (MaxAIConversationId) {
+                    chatGptInstanceRef.current.currentMaxAIConversationId =
+                      MaxAIConversationId
+                  }
                   const success = await startMockChatGPTUploadFile(files)
                   return {
                     success,

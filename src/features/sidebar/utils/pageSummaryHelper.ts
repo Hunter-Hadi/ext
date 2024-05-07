@@ -1524,7 +1524,6 @@ export const getSummaryCustomPromptActions = async ({
     }
 
     if (type === 'YOUTUBE_VIDEO_SUMMARY') {
-      debugger
       const youTubeSummaryLogActionIndex = actions.findIndex(
         (action) => action.type === 'MAXAI_SUMMARY_LOG',
       )

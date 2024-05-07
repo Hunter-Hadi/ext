@@ -20,10 +20,12 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { useContextMenuList } from '@/features/contextMenu'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
-  getContextMenuActionsByPageSummaryType,
+  allSummaryNavList,
+  getContextMenuByNavMetadataKey,
   getPageSummaryConversationId,
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
@@ -42,11 +44,15 @@ const usePageSummary = () => {
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, currentConversationId } =
     useClientConversation()
+  const { originContextMenuList } = useContextMenuList(
+    'sidebarSummaryButton',
+    '',
+    false,
+  )
   const isGeneratingPageSummaryRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const clientWritingMessageRef = useRef(clientWritingMessage)
   clientWritingMessageRef.current = clientWritingMessage
-
   const createPageSummary = async () => {
     if (isGeneratingPageSummaryRef.current) {
       return
@@ -57,6 +63,7 @@ const usePageSummary = () => {
     const pageSummaryConversationId = getPageSummaryConversationId()
     updateSidebarSummaryConversationId(pageSummaryConversationId)
 
+    const currentPageSummaryType = getPageSummaryType()
     const writingLoading = clientWritingMessageRef.current.loading
 
     updateClientConversationLoading(true)
@@ -65,7 +72,6 @@ const usePageSummary = () => {
       const pageSummaryConversation = await clientGetConversation(
         pageSummaryConversationId,
       )
-      const currentPageSummaryType = getPageSummaryType()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         await updateSidebarSettings({
@@ -73,9 +79,11 @@ const usePageSummary = () => {
             conversationId: pageSummaryConversationId,
           },
         })
+
         const aiMessage = pageSummaryConversation.messages?.find((message) =>
           isAIMessage(message),
         ) as IAIResponseMessage
+
         if (writingLoading) {
           updateClientConversationLoading(false)
           updateConversationMap((prevState) => {
@@ -87,11 +95,37 @@ const usePageSummary = () => {
           isGeneratingPageSummaryRef.current = false
           return
         }
-        if (
+
+        let isValidAIMessage =
           aiMessage &&
           aiMessage?.originalMessage &&
           aiMessage?.originalMessage.metadata?.isComplete
+
+        if (
+          aiMessage &&
+          aiMessage?.originalMessage &&
+          aiMessage?.originalMessage.metadata?.navMetadata
         ) {
+          const summaryNavKey =
+            aiMessage.originalMessage.metadata.navMetadata.key
+          const systemSummaryNavItem = allSummaryNavList[
+            currentPageSummaryType
+          ].find((item) => {
+            return item.key === summaryNavKey
+          })
+          if (!systemSummaryNavItem) {
+            const summaryActionContextMenuItem = originContextMenuList.find(
+              (menuItem) => {
+                return menuItem.id === summaryNavKey
+              },
+            )
+            if (!summaryActionContextMenuItem) {
+              isValidAIMessage = false
+            }
+          }
+        }
+
+        if (isValidAIMessage) {
           updateClientConversationLoading(false)
           updateConversationMap((prevState) => {
             return {
@@ -101,15 +135,15 @@ const usePageSummary = () => {
           })
           isGeneratingPageSummaryRef.current = false
           return
-        } else {
-          // 如果没有AI消息，那么清空所有消息，然后添加AI消息
-          await clientChatConversationModifyChatMessages(
-            'clear',
-            pageSummaryConversationId,
-            0,
-            [],
-          )
         }
+
+        // 如果没有AI消息，那么清空所有消息，然后添加AI消息
+        await clientChatConversationModifyChatMessages(
+          'clear',
+          pageSummaryConversationId,
+          0,
+          [],
+        )
       }
       try {
         console.log('新版Conversation pageSummary开始创建')
@@ -145,26 +179,51 @@ const usePageSummary = () => {
             return
           }
         }
-        const nowCurrentPageSummaryKey = cloneDeep(currentPageSummaryKey)
-        const paramsPageSummaryTypeData =
-          await getContextMenuActionsByPageSummaryType(
-            getPageSummaryType(),
-            nowCurrentPageSummaryKey[currentPageSummaryType],
-          )
-        if (paramsPageSummaryTypeData) {
+
+        const summaryNavMetadataKey = cloneDeep(currentPageSummaryKey)[
+          currentPageSummaryType
+        ]
+
+        const contextMenu = await getContextMenuByNavMetadataKey(
+          currentPageSummaryType,
+          summaryNavMetadataKey,
+          originContextMenuList,
+        )
+
+        if (contextMenu) {
           setCurrentPageSummaryKey((summaryKeys) => {
             return {
               ...summaryKeys,
-              [currentPageSummaryType]: paramsPageSummaryTypeData.summaryNavKey,
+              [currentPageSummaryType]: contextMenu.summaryNavKey,
             }
           })
-          lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
-          await askAIWIthShortcuts(paramsPageSummaryTypeData.actions)
+          lastMessageIdRef.current = contextMenu.messageId
+          await askAIWIthShortcuts(contextMenu.actions)
             .then()
             .finally(() => {
               isGeneratingPageSummaryRef.current = false
             })
         }
+
+        // const paramsPageSummaryTypeData =
+        //   await getContextMenuActionsByPageSummaryType(
+        //     currentPageSummaryType,
+        //     nowCurrentPageSummaryKey[currentPageSummaryType],
+        //   )
+        // if (paramsPageSummaryTypeData) {
+        //   setCurrentPageSummaryKey((summaryKeys) => {
+        //     return {
+        //       ...summaryKeys,
+        //       [currentPageSummaryType]: paramsPageSummaryTypeData.summaryNavKey,
+        //     }
+        //   })
+        //   lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
+        //   await askAIWIthShortcuts(paramsPageSummaryTypeData.actions)
+        //     .then()
+        //     .finally(() => {
+        //       isGeneratingPageSummaryRef.current = false
+        //     })
+        // }
       } catch (e) {
         console.log('创建Conversation失败', e)
         isGeneratingPageSummaryRef.current = false

@@ -1,9 +1,17 @@
-import Autocomplete from '@mui/material/Autocomplete'
+import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete'
 import { SxProps } from '@mui/material/styles'
+import { svgIconClasses } from '@mui/material/SvgIcon'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import React, { FC, memo, useMemo, useState } from 'react'
+import React, { type FC, memo, useMemo, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import Browser from 'webextension-polyfill'
 
+import { InputAssistantButtonGroupConfigHostKeys } from '@/features/contextMenu/components/InputAssistantButton/config'
+import {
+  SettingPromptsEditButtonKeyAtom,
+  specialInputAssistantButtonKeys,
+} from '@/pages/settings/pages/prompts/store'
 import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
 import { TOP_DOMAINS } from '@/utils/staticData'
 
@@ -71,16 +79,41 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
     options = [],
     multiple,
   } = props
+
+  const [settingPromptsEditButtonKey] = useRecoilState(
+    SettingPromptsEditButtonKeyAtom,
+  )
+  const isEditingSpecialInputAssistantButtonKey =
+    settingPromptsEditButtonKey &&
+    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey)
+
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState(null)
+
   const memoOptions = useMemo(() => {
     if (options?.length > 0) {
       return options
     }
 
+    // instant reply
+    if (isEditingSpecialInputAssistantButtonKey) {
+      return InputAssistantButtonGroupConfigHostKeys.map((url) => ({
+        label: url,
+        value: url,
+      }))
+    }
+
+    const newOptions = [...TOP_DOMAINS]
+
+    if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+      newOptions.push({
+        label: 'MaxAI PDF Viewer',
+        value: Browser.runtime.getURL('/pages/pdf/web/viewer.html'),
+      })
+    }
+
     if (props?.value?.[0]) {
       if (multiple) {
-        const newOptions = [...TOP_DOMAINS]
         props.value.forEach((value) => {
           if (!newOptions.find((domain) => domain.value === value)) {
             newOptions.push({
@@ -91,16 +124,18 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
         })
         return newOptions
       } else if (
-        !TOP_DOMAINS.find((domain) => domain.value === props.value![0])
+        !newOptions.find((domain) => domain.value === props.value![0])
       ) {
-        return TOP_DOMAINS.concat({
+        return newOptions.concat({
           label: props.value[0],
           value: props.value[0],
         } as any)
       }
     }
-    return TOP_DOMAINS
-  }, [props.value, options, multiple])
+
+    return newOptions
+  }, [props.value, options, multiple, settingPromptsEditButtonKey])
+
   const memoValue = useMemo(() => {
     if (multiple) {
       const values: { label: any; value: any }[] = []
@@ -115,6 +150,7 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       return memoOptions.find((option) => option.value === props?.value?.[0])
     }
   }, [props.value, memoOptions, multiple])
+
   return (
     <Autocomplete
       multiple={multiple}
@@ -128,15 +164,15 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       onInputChange={
         options.length === 0
           ? (_, value) => {
-              if (value !== props?.value?.[0]) {
-                setSelected(null)
-              }
-              if (value.length === 0) {
-                setOpen(false)
-              } else {
-                setOpen(true)
-              }
+            if (value !== props?.value?.[0]) {
+              setSelected(null)
             }
+            if (value.length === 0) {
+              setOpen(false)
+            } else {
+              setOpen(true)
+            }
+          }
           : void 0
       }
       slotProps={{
@@ -153,7 +189,13 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       clearOnBlur
       blurOnSelect
       size={'small'}
-      sx={{ width: 160, ...sx }}
+      sx={{
+        width: 160,
+        [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]: {
+          fontSize: 24
+        },
+        ...sx
+      }}
       autoHighlight
       getOptionLabel={(option) => option.label}
       options={memoOptions}
@@ -182,7 +224,7 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
             <img
               width={16}
               height={16}
-              src={domain2Favicon(option.value)}
+              src={domain2Favicon(option.label === 'MaxAI PDF Viewer' ? 'maxai.me' : option.value)}
               style={{ marginRight: 8 }}
             />
             <Typography color={'text.primary'} noWrap fontSize={14}>

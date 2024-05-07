@@ -16,15 +16,12 @@ import uniq from 'lodash-es/uniq'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
+import Browser from 'webextension-polyfill'
 
 import { IVisibilitySetting } from '@/background/utils/chromeExtensionStorage/type'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DomainSelect from '@/components/select/DomainSelect'
-import { InputAssistantButtonGroupConfigHostKeys } from '@/features/contextMenu/components/InputAssistantButton/config'
-import {
-  SettingPromptsEditButtonKeyAtom,
-  specialInputAssistantButtonKeys,
-} from '@/pages/settings/pages/prompts/store'
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
 
 /**
@@ -43,13 +40,11 @@ const VisibilitySettingCard: FC<{
   mode: 'black' | 'white'
 }> = (props) => {
   const { defaultValue, onChange, disabled, mode } = props
+  const isBlackMode = mode === 'black'
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
   )
-  const isBlackMode = mode === 'black'
-  const isEditingSpecialButtonKey =
-    settingPromptsEditButtonKey &&
-    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey)
+
   const { t } = useTranslation(['settings', 'common'])
   const [newSite, setNewSite] = useState([''])
   const [open, setOpen] = useState(false)
@@ -114,11 +109,13 @@ const VisibilitySettingCard: FC<{
     console.log('save visibilitySetting', visibilitySetting)
     onChange(visibilitySetting)
   }, [visibilitySetting])
+
   const memoizedDomains = useMemo(() => {
     return visibilitySetting.isWhitelistMode
       ? visibilitySetting.whitelist
       : visibilitySetting.blacklist
   }, [visibilitySetting])
+
   return (
     <Stack sx={{ ...props.sx }}>
       {/*<p>{JSON.stringify(visibilitySetting)}</p>*/}
@@ -176,6 +173,9 @@ const VisibilitySettingCard: FC<{
           </Button>
         </ListItem>
         {memoizedDomains.map((site) => {
+          const isPDFViewer = settingPromptsEditButtonKey === 'sidebarSummaryButton' && site === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
+          const favicon = domain2Favicon(isPDFViewer ? 'maxai.me' : site)
+          const website = isPDFViewer ? 'MaxAI PDF Viewer' : site
           return (
             <ListItem
               key={site}
@@ -190,7 +190,7 @@ const VisibilitySettingCard: FC<{
                 primary={
                   <Stack direction={'row'} alignItems={'center'} spacing={2}>
                     <img
-                      src={domain2Favicon(site)}
+                      src={favicon}
                       alt={site}
                       style={{
                         width: 20,
@@ -199,7 +199,7 @@ const VisibilitySettingCard: FC<{
                       }}
                     />
                     <Typography component={'span'} noWrap fontSize={14}>
-                      {site}
+                      {website}
                     </Typography>
                   </Stack>
                 }
@@ -265,20 +265,12 @@ const VisibilitySettingCard: FC<{
                 }
                 setNewSite(value)
               }}
-              options={
-                isEditingSpecialButtonKey
-                  ? InputAssistantButtonGroupConfigHostKeys.map((url) => ({
-                      label: url,
-                      value: url,
-                    }))
-                  : void 0
-              }
-              // multiple={Boolean(
-              //   settingPromptsEditButtonKey &&
-              //     inputAssistantButtonKeys.includes(
-              //       settingPromptsEditButtonKey,
-              //     ),
-              // )}
+            // multiple={Boolean(
+            //   settingPromptsEditButtonKey &&
+            //     inputAssistantButtonKeys.includes(
+            //       settingPromptsEditButtonKey,
+            //     ),
+            // )}
             />
           </Stack>
         </DialogContent>

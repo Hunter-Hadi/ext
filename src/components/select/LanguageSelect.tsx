@@ -1,8 +1,9 @@
-import Autocomplete from '@mui/material/Autocomplete'
+import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 import { inputBaseClasses } from '@mui/material/InputBase'
 import { inputLabelClasses } from '@mui/material/InputLabel'
 import { SxProps } from '@mui/material/styles'
+import { svgIconClasses } from '@mui/material/SvgIcon'
 import TextField from '@mui/material/TextField'
 import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -94,6 +95,9 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
           },
           [`.${inputBaseClasses.root} fieldset > legend`]: {
             fontSize: 14,
+          },
+          [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]: {
+            fontSize: 24
           },
           ...sx,
         }}

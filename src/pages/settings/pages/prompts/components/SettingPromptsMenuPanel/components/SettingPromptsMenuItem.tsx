@@ -153,7 +153,15 @@ const SettingPromptsMenuItem = (props: {
             sx={{}}
           >
             {isGroup && isFirstDeep ? (
-              <Typography fontSize={12} color={'text.secondary'}>
+              <Typography fontSize={12} color={'text.secondary'} sx={{
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                // display: '-webkit-box',
+                WebkitLineClamp: 1,
+                WebkitBoxOrient: 'vertical',
+                wordBreak: 'break-word',
+                whiteSpace: 'nowrap',
+              }}>
                 {nodeI18nText}
               </Typography>
             ) : (
@@ -163,10 +171,11 @@ const SettingPromptsMenuItem = (props: {
                 sx={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
-                  display: '-webkit-box',
+                  // display: '-webkit-box',
                   WebkitLineClamp: 1,
                   WebkitBoxOrient: 'vertical',
                   wordBreak: 'break-word',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {nodeI18nText}

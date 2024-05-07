@@ -17,8 +17,8 @@ import {
   APP_VERSION,
 } from '@/constants'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
-import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import {
   IChatMessageExtraMetaType,
   IChatUploadFile,
@@ -249,11 +249,16 @@ class MaxAIDALLEChat extends BaseChat {
             },
           })
         } else {
-          if (result.msg && isPermissionCardSceneType(result.msg)) {
+          // 判断是不是用量卡点的报错
+          const apiResponseSceneType = combinedPermissionSceneType(
+            result?.msg,
+            result?.meta?.model_type,
+          )
+          if (apiResponseSceneType) {
             onMessage &&
               onMessage({
                 type: 'error',
-                error: result.msg,
+                error: apiResponseSceneType,
                 done: true,
                 data: { text: '', conversationId },
               })

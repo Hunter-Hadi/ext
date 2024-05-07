@@ -6,8 +6,8 @@ import {
   checkISThirdPartyAIProvider,
   clientAskAIQuestion,
 } from '@/background/src/chat/util'
-import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { isPermissionCardSceneType } from '@/features/auth/utils/permissionHelper'
 import { getAIProviderChatFiles } from '@/features/chatgpt'
 import {
   IAIResponseMessage,
@@ -41,6 +41,7 @@ import {
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 // import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 // import defaultEditAssistantComposeReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
 // import defaultInputAssistantComposeNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
@@ -502,8 +503,10 @@ export class ActionAskChatGPT extends Action {
                 return
               } else {
                 if (errorMessage.startsWith('Too many requests in 1 hour')) {
-                  errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "MaxAI.me" from the AI Provider options at the top of the sidebar.
-                ![switch-provider](https://www.maxai.me/assets/chrome-extension/switch-provider.png)`
+                  errorMessage = `Too many requests. Try again later, or use premium AI models managed by MaxAl instead to ensure reliable and high-quality AI performance and user experience.
+                ![switch-provider](${getChromeExtensionAssetsURL(
+                  '/images/on-boarding/switch-AI-model.gif',
+                )})`
                 }
               }
             },
@@ -566,7 +569,6 @@ export class ActionAskChatGPT extends Action {
             this.output = this.question.meta.messageVisibleText || ''
             errorMessage = ''
           }
-
           if (errorMessage) {
             // 如果报错信息是 PermissionCardSceneType，说明触发了付费卡点
             if (isPermissionCardSceneType(errorMessage)) {

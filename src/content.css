@@ -48,10 +48,10 @@
   text-align: inherit;
   text-indent: 0;
 }
-.maxai-snackbar-container-root{
-  z-index: 2147483647!important;
+.maxai-snackbar-container-root {
+  z-index: 2147483647 !important;
 }
-.maxai-snackbar-container-root div#notistack-snackbar{
+.maxai-snackbar-container-root div#notistack-snackbar {
   font-size: 14px;
 }
 /* max-ai placeholder end */

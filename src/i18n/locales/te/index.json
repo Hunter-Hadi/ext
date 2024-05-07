@@ -57,8 +57,7 @@
     "team_plan": "టీమ్ ప్లాన్",
     "manage_my_plan": "నా ప్లాన్ నిర్వహించండి",
     "watch_video": "వీడియో చూడండి",
-    "input_content": "ఇన్పుట్ కంటెంట్",
-    "discard": "విస్మరించు"
+    "input_content": "ఇన్పుట్ కంటెంట్"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -101,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "పేరు నమోదు చేయండి",
     "feature_card__prompts__edit_prompt__field_icon__title": "చిహ్నం",
     "feature_card__prompts__edit_prompt__field_template__title": "ప్రాంప్ట్ టెంప్లేట్",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT కోసం ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో ఈ వేరియబుల్‌లను ఏ సంఖ్యనుంచి ఉంచవచ్చు:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "యూఎక్స్ ప్రాంప్టు టెంప్లేట్.\nటెంప్లేట్‌లో ఈ వేరియబుల్‌లను ఏ సంఖ్యనుంచి ఉంచవచ్చు:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "ఏమిటియని అనుకుంటే",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ప్రాంప్ట్ ను నేను AI కు సిద్ధంగా పంపేస్తాను, ఇది డిఫాల్ట్ \"సాధారణ వర్తన\". అన్ని ప్రాంప్ట్ టెంప్లేట్‌లు డిఫాల్ట్‌గా ఈ ఎంపికను ప్రారంభం చేస్తాయి.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "ఏమిటియని అనుకుంటే",
@@ -259,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "ఆటో ఆర్కైవ్: మీరు పోగొట్టేందుకు శుభ్రంగా ఉంచండి",
     "feature_card__sidebar__field__auto_archive__button__title": "చాట్‌ను ఆర్కైవ్ చేయండి",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIలో, మీరు తప్పక ఎంపిక చేసే కాదని ఆటో ఆర్కైవ్ చేస్తాం. ఇది మీకు తాజా ప్రారంభం అందిస్తుంది మరియు మీ సైడ్‌బార్‌ను శుభ్రంగా ఉంచేది.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "మెసేంజర్ తక్షణ సమాధానం"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "మెసేంజర్ తక్షణ సమాధానం",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "యాంత్రిక సూచన మూలకం.\nఈ మూలకంలో కొన్ని వేరియబుల్స్ ఉంటాయి:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "యాంత్రిక సూచన మూలకం.\nఈ మూలకంలో కొన్ని వేరియబుల్స్ ఉంటాయి:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "యాంత్రిక సూచన మూలకం.\nఈ మూలకంలో కొన్ని వేరియబుల్స్ ఉంటాయి:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "యాంత్రిక సూచన మూలకం.\nఈ మూలకంలో కొన్ని వేరియబుల్స్ ఉంటాయి:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -764,8 +767,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "మాసిక అడ్వాన్స్డ్ టెక్స్ట్ క్వెరీ పరిమితిని ముగిసారారు. అన్లిమిటెడ్ క్వెరీల కోసం ఇప్పుడు అప్గ్రేడ్ చేయండి లేదా మాసిక క్వెరీలు రీసెట్ అవుతాయి.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4, వేగం మరియు పనిచేయడంలో అద్భుతమైన ప్రతిస్పందన సమయాలతో క్రీయాశీలత మరియు అద్వితీయ ఆఉట్‌పుట్‌తో రియల్‌టైమ్ అనువర్తనాలలో అత్యంత మెరుగైన ప్రగతిని అందిస్తుంది.",
     "permission__pricing_hook__footer_tip": "MaxAI ఎలీట్ అనువాదాల మితిలేని AI ప్రశ్నలు, AI సారాంశాలు, AI శోధనలు మరియు తక్షణ సమాధానాలను అందిస్తుంది.",
-    "floating_menu__discard_changes_card__ai_response__title": "మీరు AI సమాధానాన్ని విస్మరించాలా?",
-    "floating_menu__discard_changes_card__your_draft__title": "మీరు మీ డ్రాఫ్ట్‌ను విస్మరించాలా?"
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "నా ప్రాంప్టులు",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "నా ప్రాంప్టును జోడించండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -1022,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-క్లిక్ ప్రాంప్టులు",
-    "edit_prompt__template__placeholder": "ChatGPT కోసం ప్రాంప్టు టెంప్లేట్.\nటెంప్లేట్‌లో ఈ వేరియబుల్‌లను ఏ సంఖ్యలో ఉంచవచ్చు:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "యూఎక్స్ ప్రాంప్టు టెంప్లేట్.\nటెంప్లేట్‌లో ఈ వేరియబుల్‌లను ఏ సంఖ్యనుంచి ఉంచవచ్చు:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "ఇష్టమైనవి",
     "tab__public__title": "పబ్లిక్",
     "tab__own__title": "స్వంతం",

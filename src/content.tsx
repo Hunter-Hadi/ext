@@ -12,7 +12,7 @@ import {
   MaxAIExtensionIdManager,
 } from '@/background/utils/extensionId'
 import AppThemeProvider from '@/components/AppTheme'
-import { APP_VERSION } from '@/constants'
+import { APP_VERSION, CHATGPT_WEBAPP_HOST } from '@/constants'
 import {
   MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID,
   MAXAI_CHROME_EXTENSION_ID,
@@ -27,7 +27,7 @@ import {
 } from '@/utils/dataHelper/websiteHelper'
 
 import SPARootProtector from './utils/SPARootProtector'
-// import createCache from '@emotion/cache'
+
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
@@ -39,16 +39,28 @@ ClassNameGenerator.configure(
 const supportWebComponent = isSupportWebComponent()
 
 const mainAppRender = () => {
+  const domainHost = getCurrentDomainHost()
   const App = React.lazy(() => import('./pages/App'))
   const ImmersiveChatApp = React.lazy(
     () => import('./pages/chat/ImmersiveChatApp'),
   )
+
   const link = document.createElement('link')
+  // 24.05.07: fix tencent cloud console style issue
+  if (domainHost === 'console.cloud.tencent.com') {
+    link.setAttribute('charset', 'utf-8')
+    link.setAttribute('data-role', 'global')
+  }
   link.rel = 'stylesheet'
   link.href = Browser.runtime.getURL('content.css')
   document.head.appendChild(link)
 
   const fontLink = document.createElement('link')
+  // 24.05.07: fix tencent cloud console style issue
+  if (domainHost === 'console.cloud.tencent.com') {
+    fontLink.setAttribute('charset', 'utf-8')
+    fontLink.setAttribute('data-role', 'global')
+  }
   fontLink.rel = 'stylesheet'
   fontLink.href =
     'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap'
@@ -69,30 +81,36 @@ const mainAppRender = () => {
   )
   contextMenu.id = MAXAI_CONTEXT_MENU_ID
   if (
-    getCurrentDomainHost() === 'youtube.com' ||
-    getCurrentDomainHost() === 'studio.youtube.com'
+    domainHost === 'youtube.com' ||
+    domainHost === 'studio.youtube.com'
   ) {
     contextMenu.contentEditable = 'true'
   }
   document.body.appendChild(contextMenu)
+
   const shadowContainer = container.attachShadow({ mode: 'open' })
   const emotionRoot = document.createElement('style')
   const shadowRootElement = document.createElement('div')
+
   shadowRootElement.id = MAXAI_SIDEBAR_WRAPPER_ID
   shadowRootElement.style.display = 'flex'
   shadowRootElement.style.flexDirection = 'column'
   shadowRootElement.style.flex = '1'
   shadowRootElement.style.height = '100vh'
+
   if (isMaxAIImmersiveChatPage()) {
     shadowRootElement.setAttribute('data-maxai-newtab', 'true')
   }
+
   // shadowRootElement.style.width = '100vw'
   // shadowRootElement.style.position = 'absolute'
   // shadowRootElement.style.top = '0'
   // shadowRootElement.style.left = 'calc(-100vw + 100%)'
   // shadowRootElement.style.pointerEvents = 'none'
+
   shadowContainer.appendChild(emotionRoot)
   shadowContainer.appendChild(shadowRootElement)
+
   const contentStyle = document.createElement('link')
   contentStyle.rel = 'stylesheet'
   contentStyle.href = Browser.runtime.getURL('content_style.css')
@@ -127,11 +145,11 @@ const mainAppRender = () => {
   )
 }
 const ChatGPTWebAppRender = () => {
-  if (location.host === 'chat.openai.com') {
+  if (location.host === CHATGPT_WEBAPP_HOST) {
     const script = document.createElement('script')
     script.type = 'module'
     script.src = Browser.runtime.getURL('/pages/chatgpt/fileUploadServer.js')
-    ;(document.head || document.documentElement).append(script)
+      ; (document.head || document.documentElement).append(script)
     import('./pages/OpenAIDaemonProcess').then((module) => {
       const { default: OpenAIDaemonProcess } = module
       const div = document.createElement('div')

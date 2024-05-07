@@ -57,8 +57,7 @@
     "team_plan": "Team-Plan",
     "manage_my_plan": "Meinen Plan verwalten",
     "watch_video": "Video ansehen",
-    "input_content": "Eingabeinhalt",
-    "discard": "Verwerfen"
+    "input_content": "Eingabeinhalt"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -101,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Namen eingeben",
     "feature_card__prompts__edit_prompt__field_icon__title": "Symbol",
     "feature_card__prompts__edit_prompt__field_template__title": "Vorgabenvorlage",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Die Vorlagen für die Aufforderungen in ChatGPT.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{AUSGEWÄHLTER_TEXT}}\n{{AKTUELLE_WEBSITE_DOMAIN}}\n{{SYSTEMAKTUELLER_DATUM}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Wenn aktiviert",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Die Vorgabe wird direkt an die KI gesendet, was das standardmäßige \"normale Verhalten\" ist. Alle Vorgabenvorlagen haben diese Option standardmäßig aktiviert.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Wenn deaktiviert",
@@ -259,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Auto-Archivierung: Aufräumen während der Nutzung",
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archivieren nach",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir im Leerlauf automatisch Chats in dem von Ihnen gewählten Rhythmus. Dies gibt Ihnen einen frischen Start und hält Ihre Seitenleiste ordentlich.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Sofortige Antwort im Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Sofortige Antwort im Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",
@@ -764,8 +767,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Monatliches Limit für fortgeschrittene Textabfragen überschritten. Jetzt upgraden für unbegrenzte Abfragen oder nächsten Monat wiederkommen, wenn die monatlichen Abfragen zurückgesetzt werden.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 von OpenAI ist optimiert für Geschwindigkeit und Effizienz und eignet sich hervorragend für Echtzeitanwendungen, die Kreativität und fortgeschrittenes Denken erfordern, mit verbesserten Reaktionszeiten und konsistenter Ausgabe.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite bietet unbegrenzte KI-Abfragen, KI-Zusammenfassungen, KI-Suchen und sofortige Antworten.",
-    "floating_menu__discard_changes_card__ai_response__title": "Möchten Sie die KI-Antwort verwerfen?",
-    "floating_menu__discard_changes_card__your_draft__title": "Möchten Sie Ihren Entwurf verwerfen?"
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Meine eigenen Vorschläge",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Eigenen Vorschlag hinzufügen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1022,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-Klick-Prompts",
-    "edit_prompt__template__placeholder": "Die Vorlagenvorlage für ChatGPT.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriten",
     "tab__public__title": "Öffentlich",
     "tab__own__title": "Eigenes",

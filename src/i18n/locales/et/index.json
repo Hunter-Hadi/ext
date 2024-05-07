@@ -57,8 +57,7 @@
     "team_plan": "Meeskonna plaan",
     "manage_my_plan": "Halda oma plaani",
     "watch_video": "Vaata videot",
-    "input_content": "Sisestage sisu",
-    "discard": "Loobu"
+    "input_content": "Sisestage sisu"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -101,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Sisesta nimi",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikoon",
     "feature_card__prompts__edit_prompt__field_template__title": "Vihje mall",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPTi jaoks märguandemall.\nMall võib sisaldada järgmisi muutujaid:\n{{VALITUD_TEKST}}\n{{PRAEGUNE_VEEBISAITI_DOMÄÄN}}\n{{SÜSTEEMI_PRAEGUNE_KUUPÄEV}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI prompti mall.\nMall võib sisaldada järgmisi muutujaid:\n{{VALITUD_TEKST}}\n{{PRAEGUNE_VEEBISAITI_DOMÄÄN}}\n{{SÜSTEEMI_PRAEGUNE_KUUPÄEV}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Kui lubatud",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Vihje saadetakse otse AI-le, mis on vaikimisi \"tavaline käitumine\". Kõik vihje mallid on selle valiku vaikimisi lubatud.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Kui keelatud",
@@ -259,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Automaatne arhiveerimine: Puhasta, kui lähed",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhiveeri vestlus pärast",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-s arhiveerime jõudeoleva vestluse teie valitud sagedusega. See annab teile värskendava alguse ja hoiab külgriba korras.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messengeri kiire vastus"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messengeri kiire vastus",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI juhendmustrid.\nMuster võib sisaldada järgmisi muutujaid:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI juhendmustrid.\nMuster võib sisaldada järgmisi muutujaid:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI juhendmustrid.\nMuster võib sisaldada järgmisi muutujaid:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI juhendmustrid.\nMuster võib sisaldada järgmisi muutujaid:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -764,8 +767,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Kuu arenenud tekstipäringute limiit on ületatud. Tõsta kohe piiramatu päringute arvu saamiseks või kontrolli järgmisel kuul uuesti, kui kuulimiidid lähtestatakse.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI GPT-4, optimeeritud kiiruse ja tõhususe jaoks, sobib suurepäraselt reaalajas rakendusteks, mis nõuavad loovust ja edasijõudnud mõtlemist parema reageerimisaja ja järjepideva väljundiga.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite pakub piiramatut AI päringuid, AI kokkuvõtteid, AI otsinguid ja koheseid vastuseid.",
-    "floating_menu__discard_changes_card__ai_response__title": "Kas soovite AI-vastusest loobuda?",
-    "floating_menu__discard_changes_card__your_draft__title": "Kas soovite oma mustandist loobuda?"
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Minu enda vihjed",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lisa oma vihje"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -1022,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klõpsuga vihjed",
-    "edit_prompt__template__placeholder": "Vihje mall ChatGPT jaoks.\nMall võib sisaldada järgmisi muutujaid:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "AI prompti mall.\nMall võib sisaldada järgmisi muutujaid:\n{{VALITUD_TEKST}}\n{{PRAEGUNE_VEEBISAITI_DOMÄÄN}}\n{{SÜSTEEMI_PRAEGUNE_KUUPÄEV}}",
     "tab__favorites__title": "Lemmikud",
     "tab__public__title": "Avalik",
     "tab__own__title": "Oma",

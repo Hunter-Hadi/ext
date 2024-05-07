@@ -93,6 +93,7 @@ const SidebarCopyButton: FC<{
     <>
       <Button
         ref={copyButtonRef}
+        data-testid="ai-message-tools__hover-to-copy"
         sx={{
           minWidth: 'unset',
           p: '5px',

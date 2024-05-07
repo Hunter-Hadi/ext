@@ -57,8 +57,7 @@
     "team_plan": "Holdplan",
     "manage_my_plan": "Administrer min plan",
     "watch_video": "Se video",
-    "input_content": "Indtast indhold",
-    "discard": "Fjern"
+    "input_content": "Indtast indhold"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -101,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Indtast navn",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Prompt-skabelon",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Promptskabelonen til ChatGPT.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI prompt skabelonen.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Når aktiveret",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Prompten sendes direkte til AI, hvilket er standard \"normal adfærd\". Alle prompt-skabeloner vil have denne indstilling aktiveret som standard.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Når deaktiveret",
@@ -259,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Autoarkiv: Rens mens du går",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkiver chat efter",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive chats i det tempo, du vælger. Dette giver dig en frisk start og holder din sidebar ryddelig.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger øjeblikkelig svar"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger øjeblikkelig svar",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI prompt skabelonen.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI prompt skabelonen.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI prompt skabelonen.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI prompt skabelonen.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",
@@ -764,8 +767,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Månedlig grænse for avancerede tekstforespørgsler overskredet. Opgrader nu for ubegrænsede forespørgsler, eller tjek tilbage næste måned, når de månedlige forespørgsler nulstilles.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI's GPT-4, optimeret til hastighed og effektivitet, excellerer i realtidsapplikationer, der kræver kreativitet og avanceret logisk tænkning med forbedrede responstider og ensartet output.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler, AI-opsummeringer, AI-søgninger og øjeblikkelige svar.",
-    "floating_menu__discard_changes_card__ai_response__title": "Vil du forkaste AI-svaret?",
-    "floating_menu__discard_changes_card__your_draft__title": "Vil du forkaste dit udkast?"
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mine egne prompts",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Tilføj mit eget prompt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",
@@ -1022,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",
-    "edit_prompt__template__placeholder": "Promptskabelonen til ChatGPT.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "AI prompt skabelonen.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoritter",
     "tab__public__title": "Offentlig",
     "tab__own__title": "Egen",

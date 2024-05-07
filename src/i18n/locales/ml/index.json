@@ -57,8 +57,7 @@
     "team_plan": "ടീം പ്ലാൻ",
     "manage_my_plan": "എന്റെ പ്ലാൻ മാനേജ് ചെയ്യുക",
     "watch_video": "വീഡിയോ കാണുക",
-    "input_content": "ഇൻപുട്ട് ഉള്ളടക്കം",
-    "discard": "നിരസ്ത്രമമാക്കുക"
+    "input_content": "ഇൻപുട്ട് ഉള്ളടക്കം"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -101,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "പേര് നൽകുക",
     "feature_card__prompts__edit_prompt__field_icon__title": "ഐക്കൺ",
     "feature_card__prompts__edit_prompt__field_template__title": "പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ചാറ്റ്‌ജിപിടിയിലെ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റില്‍ പലതരം വാരിയബിള്‍ ഉണ്ടാക്കാവുന്നു:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "എ.ഐ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും എണ്ണം ഉള്ളവയായിരിക്കാം:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "പ്രവർത്തനക്ഷമമാക്കപ്പെട്ടാല്‍",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "പ്രോംപ്റ്റ് നിയന്ത്രണങ്ങൾ സ്ഥാനത്തേക്ക് AI-യിലേക്ക് അയയ്ക്കുന്നു, ഇത് ഡിഫോൾട്ട് \"സാധാരണ പ്രവർത്തനം\" ആണ്.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "പ്രവർത്തനക്ഷമമല്ലാത്താക്കപ്പെട്ടാല്‍",
@@ -259,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "ഓട്ടോ ആർക്കൈവ്: പോകുന്നതിനും ശുദ്ധമായി",
     "feature_card__sidebar__field__auto_archive__button__title": "ചാറ്റ് ആർക്കൈവ് ചെയ്യുക",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-യിൽ, നിങ്ങൾക്ക് തിരികെ ഉള്ള ചാറ്റുകൾ നിലവിലെ അവസ്ഥയിൽ ഓട്ടോ ആർക്കൈവ് ചെയ്യുന്നു. ഇത് നിങ്ങളുടെ സൈഡ്ബാർ ശുകർത്തപ്പെടുത്തുന്നുവെന്ന് ഉറപ്പാക്കുന്നു.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "മെസ്സേഞ്ചർ ഇൻസ്റ്റന്റ് പ്രതികരണം"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "മെസ്സേഞ്ചർ ഇൻസ്റ്റന്റ് പ്രതികരണം",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "എയ് പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും നമ്പറുകളും ഉൾപ്പെടുത്താവുന്നു:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "എയ് പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും നമ്പറുകളും ഉൾപ്പെടുത്താവുന്നു:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "എയ് പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും നമ്പറുകളും ഉൾപ്പെടുത്താവുന്നു:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "എയ് പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും നമ്പറുകളും ഉൾപ്പെടുത്താവുന്നു:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -764,8 +767,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Masaanthara advanced text prashnangalude parimithamillatha prashnangal. Varekkuvaanum visheshamilla, athava oru masathil punarnirmanikkunna masathu prashnangal punarjagrathakaranam cheyyuka.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI's GPT-4, veegathilum prayogikkanum valiya aadhunikapoorvamaya AI technology aanu, creativityum advanced reasoningum valiya pratheekshakalum samanvayathodeyum valiya pratheekshakalum samethamulla real-time applicationsil praveshikkunna model.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite നിങ്ങൾക്ക് അനവധി AI ചോദ്യങ്ങൾ, AI സംഗ്രഹങ്ങൾ, AI തിരയുകളും, പ്രത്യേക ഉത്തരങ്ങൾ നൽകുന്നു.",
-    "floating_menu__discard_changes_card__ai_response__title": "എന്റെ പ്രതികരണം നിരാകരിക്കണോ?",
-    "floating_menu__discard_changes_card__your_draft__title": "നിങ്ങളുടെ ഡ്രാഫ്റ്റ് നിരാകരിക്കണോ?"
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "എന്റെ പ്രോംപ്റ്റുകൾ",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "എന്റെ പ്രോംപ്റ്റ് ചേർക്കുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",
@@ -1022,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompt",
-    "edit_prompt__template__placeholder": "Template prompt untuk ChatGPT.\nTemplate ini boleh mengandungi sebarang nombor pembolehubah berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "എ.ഐ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും എണ്ണം ഉള്ളവയായിരിക്കാം:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "പ്രിയങ്കരമായത്",
     "tab__public__title": "പൊതുവായത്",
     "tab__own__title": "ഞങ്ങളുടെ",

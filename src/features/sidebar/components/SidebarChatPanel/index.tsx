@@ -47,6 +47,7 @@ const SidebarChatPanel = () => {
   } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { startTextToImage } = useArtTextToImage()
+
   useEffect(() => {
     return OneShotCommunicator.receive(
       'QuickSearchSelectedText',
@@ -55,7 +56,9 @@ const SidebarChatPanel = () => {
       },
     )
   }, [createSearchWithAI])
+
   useClientConversationListener()
+
   return (
     <>
       <DevContent>

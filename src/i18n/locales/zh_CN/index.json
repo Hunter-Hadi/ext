@@ -57,8 +57,7 @@
     "team_plan": "团队计划",
     "manage_my_plan": "管理我的计划",
     "watch_video": "观看视频",
-    "input_content": "输入内容",
-    "discard": "丢弃"
+    "input_content": "输入内容"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -101,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "输入名称",
     "feature_card__prompts__edit_prompt__field_icon__title": "图标",
     "feature_card__prompts__edit_prompt__field_template__title": "提示模板",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT 的提示模板。\n模板可以包含以下任意数量的变量：\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "启用时",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "将提示直接发送至AI，这是默认的\"正常行为\"。所有提示模板默认启用此选项。",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "禁用时",
@@ -259,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "自动归档：随时清理",
     "feature_card__sidebar__field__auto_archive__button__title": "聊天后归档",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "在MaxAI中，我们会根据您选择的频率自动归档闲置的聊天。这样可以让您重新开始，并保持侧边栏整洁。",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger 即时回复"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger 即时回复",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：\n{{当前网站域名}}\n{{系统当前日期}}\n{{完整上下文}}\n{{目标上下文}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：\n{{当前网站域名}}\n{{系统当前日期}}\n{{草稿上下文}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：\n{{当前网站域名}}\n{{系统当前日期}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：\n{{当前网站域名}}\n{{系统当前日期}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",
@@ -764,8 +767,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "月度高级文本查询限额已超过。立即升级以获取无限查询，或下个月重置每月查询。",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI 的 GPT-4，针对速度和效率进行了优化，在需要创造力和高级推理的实时应用中表现出色，具有更快的响应时间和一致的输出。",
     "permission__pricing_hook__footer_tip": "MaxAI Elite提供无限的AI查询、AI摘要、AI搜索和即时回复。",
-    "floating_menu__discard_changes_card__ai_response__title": "您是否要放弃AI回应？",
-    "floating_menu__discard_changes_card__your_draft__title": "您是否要放弃您的草稿？"
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "我的提示",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "添加我的提示"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -1022,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1键提示",
-    "edit_prompt__template__placeholder": "ChatGPT的提示模板。\n模板可以包含以下任意数量的变量：\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "收藏夹",
     "tab__public__title": "公开",
     "tab__own__title": "自己的",

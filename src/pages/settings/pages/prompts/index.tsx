@@ -10,6 +10,7 @@ import {
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
+import { getLocationHashRoute, setLocationHashRoute } from '@/pages/settings/context'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import SettingPromptsRestorer from '@/pages/settings/pages/prompts/components/SettingPromptsRestorer'
 
@@ -17,6 +18,7 @@ import SettingPromptsPageHeader, {
   type SettingPromptsPageHeaderTabKey,
 } from './components/SettingPromptsPageHeader'
 import SettingPromptsContextMenuCard from './SettingPromptsContextMenuCard'
+import SettingPromptsSummaryCard from './SettingPromptsSummaryCard'
 import SettingPromptsWritingAssistantCard from './SettingPromptsWritingAssistantCard'
 
 const SettingsPromptPageCardLayout = styled(({ ...props }: StackProps) => (
@@ -33,23 +35,36 @@ const SettingsPromptPageCardLayout = styled(({ ...props }: StackProps) => (
   }
 })
 
+const tabToState = (tab: string | null) => {
+  switch (tab) {
+    case 'instant-reply': return 'INSTANT_REPLY'
+    case 'summary': return 'SUMMARY'
+    case 'search': return 'SEARCH'
+    case 'context-menu':
+    default: return 'CONTEXT_MENU'
+  }
+}
+
+const stateToTab = (state: SettingPromptsPageHeaderTabKey | null) => {
+  switch (state) {
+    case 'INSTANT_REPLY': return 'instant-reply'
+    case 'SUMMARY': return 'summary'
+    case 'SEARCH': return 'search'
+    case 'CONTEXT_MENU':
+    default: return 'context-menu'
+  }
+}
+
 const SettingsPromptsPage: FC = () => {
   const { t } = useTranslation(['settings'])
   const [activeTab, setActiveTab] =
-    useState<SettingPromptsPageHeaderTabKey>('CONTEXT_MENU')
+    useState<SettingPromptsPageHeaderTabKey>(tabToState(new URLSearchParams(getLocationHashRoute()[1]).get('tab')))
+
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search)
-    switch (searchParams.get('tab')) {
-      case 'writing-assistant':
-        setActiveTab('WRITING_ASSISTANT')
-        break
-      // case 'summary': setActiveTab('SUMMARY'); break;
-      // case 'search': setActiveTab('SEARCH'); break;
-      case 'context-menu':
-      default:
-        setActiveTab('CONTEXT_MENU')
-    }
-  }, [])
+    const [route] = getLocationHashRoute()
+    setLocationHashRoute(`${route}?tab=${stateToTab(activeTab)}`)
+  }, [activeTab])
+
   return (
     <SettingsFeatureCardLayout
       sx={{
@@ -96,8 +111,11 @@ const SettingsPromptsPage: FC = () => {
       />
       <SettingsPromptPageCardLayout>
         {activeTab === 'CONTEXT_MENU' && <SettingPromptsContextMenuCard />}
-        {activeTab === 'WRITING_ASSISTANT' && (
+        {activeTab === 'INSTANT_REPLY' && (
           <SettingPromptsWritingAssistantCard />
+        )}
+        {activeTab === 'SUMMARY' && (
+          <SettingPromptsSummaryCard />
         )}
       </SettingsPromptPageCardLayout>
     </SettingsFeatureCardLayout>

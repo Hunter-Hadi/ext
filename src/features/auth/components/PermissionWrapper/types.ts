@@ -1,15 +1,20 @@
-import dayjs from 'dayjs'
 import { TFunction } from 'i18next'
 import React from 'react'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
+// Permission 付费卡点的 详细分类（场景值）
+export type PermissionWrapperCardSceneType =
+  (typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST)[number]
+
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
+  // 用量卡点
   'MAXAI_FAST_TEXT_MODEL',
   'MAXAI_ADVANCED_MODEL',
   'MAXAI_IMAGE_GENERATE_MODEL',
-  'MAXAI_INSTANT_REPLY',
+
+  // 不同 model 的用量卡点
   'MAXAI_FAST_TEXT_MODEL_GPT_3_5_TURBO',
   'MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU',
   'MAXAI_FAST_TEXT_MODEL_GEMINI_PRO',
@@ -18,7 +23,17 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_SONNET',
   'MAXAI_ADVANCED_MODEL_GEMINI_1_5_PRO',
   'MAXAI_ADVANCED_MODEL_GPT_4',
+  'MAXAI_IMAGE_GENERATE_MODEL_DALL_E_3',
+
+  // 第三方 provider 用量卡点
   'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
+
+  // instant reply
+  'MAXAI_INSTANT_REPLY',
+  'MAXAI_INSTANT_REFINE',
+  'MAXAI_INSTANT_NEW',
+
+  // 功能卡点
   'PAGE_SUMMARY',
   'SIDEBAR_SEARCH_WITH_AI',
   'SEARCH_WITH_AI_CLAUDE',
@@ -26,7 +41,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SEARCH_WITH_AI_HIGH_TRAFFIC',
 
   /**
-   * @deprecated 统一为: MAXAI_INSTANT_REPLY - 2024-04-30
+   * @deprecated 统一为: MAXAI_INSTANT_REPLY、MAXAI_INSTANT_REPLY、MAXAI_INSTANT_REFINE、MAXAI_INSTANT_NEW - 2024-04-30
    * @inheritDoc - https://ikjt09m6ta.larksuite.com/docx/LbLfdXGfWo0naAxPTh1u8XkSs5b
    */
   // 'GMAIL_DRAFT_BUTTON',
@@ -65,8 +80,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   // 'MESSENGER_REFINE_DRAFT_BUTTON',
   /**
    * @deprecated 将一些付费功能免费开放  - 2024-04-16
-   *
-   * PRD: https://ikjt09m6ta.larksuite.com/docx/RthLdgs0toL462xZqP3uYLvCsFb#PIHtdlZ3GoIoV5xvSOEuAgBdsgf
+   * @inheritDoc: https://ikjt09m6ta.larksuite.com/docx/RthLdgs0toL462xZqP3uYLvCsFb#PIHtdlZ3GoIoV5xvSOEuAgBdsgf
    *
    * 以下都是已被弃用的 sceneType
    */
@@ -91,9 +105,6 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   // 'MAXAI_PAID_MODEL_GPT4_TURBO',
   // 'MAXAI_PAID_MODEL_GPT4_VISION',
 ] as const
-
-export type PermissionWrapperCardSceneType =
-  (typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST)[number]
 
 export type PermissionWrapperCardType = {
   sceneType: PermissionWrapperCardSceneType
@@ -122,57 +133,15 @@ export type PermissionWrapperI18nCardType = {
   ctaButtonOnClick?: (event: React.MouseEvent) => void
 }
 
-export const formatTimeStampToHoursAndMinutes = (timestamp?: number) => {
-  const currentTime = new Date().getTime()
-  let nextTime = timestamp
-  if (!nextTime) {
-    nextTime = dayjs().utc().add(1, 'days').startOf('days').unix()
-  }
-  const diff = nextTime * 1000 - currentTime
-  const hours = Math.floor(diff / (1000 * 60 * 60))
-  const minutes = Math.floor((diff / (1000 * 60)) % 60)
-  return `${hours} hours and ${minutes} minutes`
-}
-
-export const isUsageLimitPermissionSceneType = (sceneType: string): boolean => {
-  const API_RESPONSE_USAGE_LIMIT_SCENE_TYPES = [
-    'MAXAI_ADVANCED_MODEL',
-    'MAXAI_FAST_TEXT_MODEL',
-    'MAXAI_IMAGE_GENERATE_MODEL',
-    'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
-  ]
-  if (API_RESPONSE_USAGE_LIMIT_SCENE_TYPES.includes(sceneType)) {
-    // 由于 不同模型的用量上限卡点的报错值 是后端直接返回的
-    return true
-  }
-  return false
-}
-
-export const isPermissionCardSceneType = (
-  sceneType: string,
-): sceneType is PermissionWrapperCardSceneType => {
-  return Object.keys(PERMISSION_CARD_SETTINGS_TEMPLATE).includes(sceneType)
-}
-
-export const getPermissionCardSettingsBySceneType = (
-  sceneType: PermissionWrapperCardSceneType,
-): PermissionWrapperI18nCardType => {
-  return {
-    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
-    ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
-  }
-}
-
 export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   [key in PermissionWrapperCardSceneType]: PermissionWrapperI18nCardType
 } = {
-  // 不同模型用量上限的 pricing hook
   MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-3rd-party-model.png',
     )}`,
     title: (t) => t('client:permission__pricing_hook__3rd_party_usage__title'),
-    description: (t, isFreeUser) => {
+    description: (t) => {
       return `${t(
         'client:permission__pricing_hook__3rd_party_usage__description',
       )}`
@@ -188,6 +157,32 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       )}`
     },
   },
+  MAXAI_IMAGE_GENERATE_MODEL: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/maxai-art-and-images.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__max_ai_paid_model__maxai_art__title'),
+    description: (t, isFreeUser) => {
+      return `${t(
+        isFreeUser
+          ? 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description'
+          : 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description',
+      )}`
+    },
+  },
+  MAXAI_ADVANCED_MODEL: {
+    title: (t) =>
+      t('client:permission__pricing_hook__advanced_text_usage__title'),
+    description: (t, isFreeUser) => {
+      return `${t(
+        isFreeUser
+          ? 'client:permission__pricing_hook__advanced_text_usage__free__description'
+          : 'client:permission__pricing_hook__advanced_text_usage__paid__description',
+      )}`
+    },
+  },
+
   MAXAI_FAST_TEXT_MODEL_GPT_3_5_TURBO: {
     videoUrl: `https://www.youtube.com/embed/zgq2DKlwEYk`,
     imageUrl: `${getChromeExtensionAssetsURL(
@@ -250,17 +245,6 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ].join('\n\n')
     },
   },
-  MAXAI_ADVANCED_MODEL: {
-    title: (t) =>
-      t('client:permission__pricing_hook__advanced_text_usage__title'),
-    description: (t, isFreeUser) => {
-      return `${t(
-        isFreeUser
-          ? 'client:permission__pricing_hook__advanced_text_usage__free__description'
-          : 'client:permission__pricing_hook__advanced_text_usage__paid__description',
-      )}`
-    },
-  },
   MAXAI_ADVANCED_MODEL_GPT_4_TURBO: {
     videoUrl: `https://www.youtube.com/embed/mAi1D9cbGos`,
     imageUrl: `${getChromeExtensionAssetsURL(
@@ -297,7 +281,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t(
         'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__title',
       ),
-    description: (t, isFreeUser) => {
+    description: (t) => {
       return [
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__description1',
@@ -313,7 +297,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t(
         'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title',
       ),
-    description: (t, isFreeUser) => {
+    description: (t) => {
       return [
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1',
@@ -329,7 +313,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t(
         'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title',
       ),
-    description: (t, isFreeUser) => {
+    description: (t) => {
       return [
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description1',
@@ -362,16 +346,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ].join('\n\n')
     },
   },
-  MAXAI_INSTANT_REPLY: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
-    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
-    description: (t) =>
-      t('client:permission__pricing_hook__instant_reply__description'),
-  },
-  MAXAI_IMAGE_GENERATE_MODEL: {
+  MAXAI_IMAGE_GENERATE_MODEL_DALL_E_3: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/maxai-art-and-images.png',
     )}`,
@@ -384,6 +359,35 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           : 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description',
       )}`
     },
+  },
+
+  // instant reply
+  MAXAI_INSTANT_REPLY: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/ai-instant-reply.png',
+    )}`,
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__instant_reply__description'),
+  },
+  MAXAI_INSTANT_REFINE: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/ai-instant-reply.png',
+    )}`,
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__instant_reply__description'),
+  },
+  MAXAI_INSTANT_NEW: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/ai-instant-reply.png',
+    )}`,
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // page summary
   PAGE_SUMMARY: {

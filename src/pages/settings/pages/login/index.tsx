@@ -56,6 +56,7 @@ const SettingsLoginPage: FC = () => {
           onClick={() => {
             mixpanelTrack('sign_up_started', {
               signUpMethod: 'google',
+              platform: 'extension',
             })
           }}
         >
@@ -94,6 +95,7 @@ const SettingsLoginPage: FC = () => {
           onClick={() => {
             mixpanelTrack('sign_up_started', {
               signUpMethod: 'email',
+              platform: 'extension',
             })
           }}
         >

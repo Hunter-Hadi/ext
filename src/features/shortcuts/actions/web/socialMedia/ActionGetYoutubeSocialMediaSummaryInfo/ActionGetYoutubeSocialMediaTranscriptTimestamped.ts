@@ -6,8 +6,9 @@ import {
   SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID,
   SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
 } from '@/constants'
-import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
@@ -67,7 +68,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   viewLatestTranscriptData: TranscriptTimestampedParamType[] = []
   currentWebPageTitle = ''
   isUsageLimit = false
-  permissionSceneType = null
+  permissionSceneType: PermissionWrapperCardSceneType | null = null
   // clientConversationEngine: IClientConversationEngine = null
   private currentMessageId?: string
   private transciptData: TranscriptResponse[] = []
@@ -426,6 +427,19 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           // console.log('simply gpt return tokens', gptReturnTokens)
           if (typeof askData.data !== 'string') {
             // 如果返回的不是字符串，说明接口报错了，
+            if (typeof askData.data === 'object') {
+              const aiResponseSceneType = combinedPermissionSceneType(
+                askData.data?.msg,
+                askData.data?.meta?.model_type,
+              )
+              // 如果是 付费卡点的报错，则不重试, 并且立刻停止
+              if (aiResponseSceneType) {
+                this.isUsageLimit = true
+                this.permissionSceneType = aiResponseSceneType
+                return false
+              }
+            }
+
             throw new Error(askData.data.msg ?? 'jsonError')
           }
           const transcriptData = this.getObjectFromString(askData.data)
@@ -439,12 +453,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           throw new Error('requestError')
         }
       } catch (error: any) {
-        if (isPermissionCardSceneType(error.message)) {
-          // 如果是 付费卡点的报错，则不重试, 并且立刻停止
-          this.isUsageLimit = true
-          this.permissionSceneType = error.message
-          return false
-        }
         if (error.message === 'jsonError') {
           // 处理 jsonError
           retries++

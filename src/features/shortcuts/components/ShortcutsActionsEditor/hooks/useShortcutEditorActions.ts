@@ -132,7 +132,10 @@ const useShortcutEditorActions = () => {
       }
     })
   }
-  const generateActions = (title: string): ISetActionsType => {
+  const generateActions = (
+    title: string,
+    isOriginalMessage: boolean = false,
+  ): ISetActionsType => {
     const { editHTML, variables } = shortcutActionEditor
     const template = htmlToTemplate(editHTML)
     // 过滤出prompt里真正用到的variables
@@ -143,7 +146,7 @@ const useShortcutEditorActions = () => {
     // actions的处理
     const actions: ISetActionsType = []
     // 是否为Summary，search那种Message
-    let isOriginalMessage = false
+    // let isOriginalMessage = false
     const variableMap = new Map<IPresetVariableName, IActionSetVariable>()
     usedVariables.forEach((item) => {
       variableMap.set(item.VariableName as IPresetVariableName, item)

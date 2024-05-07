@@ -57,8 +57,7 @@
     "team_plan": "План для команды",
     "manage_my_plan": "Управление моим планом",
     "watch_video": "Смотреть видео",
-    "input_content": "Вводите содержимое",
-    "discard": "Отменить"
+    "input_content": "Вводите содержимое"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -101,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Введите имя",
     "feature_card__prompts__edit_prompt__field_icon__title": "Иконка",
     "feature_card__prompts__edit_prompt__field_template__title": "Шаблон подсказки",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблон подсказки для ChatGPT.\nШаблон может включать любое количество следующих переменных:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "При включении",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Подсказка будет напрямую отправлена в ИИ, что является \"нормальным поведением\" по умолчанию. Все шаблоны подсказок будут иметь эту опцию включенной по умолчанию.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "При отключении",
@@ -259,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Автоархивация: Очищайте по мере использования",
     "feature_card__sidebar__field__auto_archive__button__title": "Архивировать чат после",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "В MaxAI мы автоматически архивируем неактивные чаты в выбранном вами режиме. Это дает вам свежий старт и поддерживает порядок на боковой панели.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Мгновенный ответ в Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Мгновенный ответ в Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",
@@ -764,8 +767,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Превышен месячный лимит расширенных текстовых запросов. Обновитесь сейчас для неограниченного количества запросов или вернитесь в следующем месяце, когда месячные запросы будут сброшены.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 - модель OpenAI, оптимизированная для скорости и эффективности, отличается в реальном времени приложениях, требующих творчества и продвинутого мышления с улучшенными временами ответа и последовательным выводом.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite предлагает неограниченные запросы ИИ, резюме ИИ, поиски ИИ и мгновенные ответы.",
-    "floating_menu__discard_changes_card__ai_response__title": "Вы хотите отменить ответ ИИ?",
-    "floating_menu__discard_changes_card__your_draft__title": "Вы хотите отменить черновик?"
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Мои собственные подсказки",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Добавить свою подсказку"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",
@@ -1022,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клик подсказки",
-    "edit_prompt__template__placeholder": "Шаблон подсказки для ChatGPT.\nШаблон может включать любое количество следующих переменных:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Избранное",
     "tab__public__title": "Общедоступное",
     "tab__own__title": "Собственное",

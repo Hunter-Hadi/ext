@@ -18,8 +18,8 @@ import {
   APP_USE_CHAT_GPT_HOST,
   APP_VERSION,
 } from '@/constants'
-import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 import Log from '@/utils/Log'
@@ -284,12 +284,16 @@ class UseChatGPTPlusChat extends BaseChat {
           }
           try {
             const error = JSON.parse(err.message || err)
-            // 判断是不是付费model触发上线
-            if (error.msg && isPermissionCardSceneType(error.msg)) {
+            // 判断是不是用量卡点的报错
+            const apiResponseSceneType = combinedPermissionSceneType(
+              error?.msg,
+              error?.meta?.model_type,
+            )
+            if (apiResponseSceneType) {
               onMessage &&
                 onMessage({
                   type: 'error',
-                  error: error.msg,
+                  error: apiResponseSceneType,
                   done: true,
                   data: { text: '', conversationId },
                 })

@@ -57,8 +57,7 @@
     "team_plan": "Plano de equipe",
     "manage_my_plan": "Gerenciar meu plano",
     "watch_video": "Assistir vídeo",
-    "input_content": "Conteúdo de entrada",
-    "discard": "Descartar"
+    "input_content": "Conteúdo de entrada"
   },
   "settings": {
     "left_menu__me": "Eu e MaxAI",
@@ -101,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Digite o nome",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ícone",
     "feature_card__prompts__edit_prompt__field_template__title": "Modelo de sugestão",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "O modelo de prompt para o ChatGPT.\nO modelo pode incluir qualquer número das seguintes variáveis:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Quando ativado",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "A sugestão será enviada diretamente para a IA, que é o \"comportamento normal\" padrão. Todas as sugestões terão essa opção ativada por padrão.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Quando desativado",
@@ -259,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Auto arquivar: Limpe à medida que avança",
     "feature_card__sidebar__field__auto_archive__button__title": "Arquivar chat após",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o chat inativo na cadência de sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Resposta instantânea do Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Resposta instantânea do Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",
@@ -764,8 +767,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Limite mensal de consultas avançadas de texto excedido. Atualize agora para consultas ilimitadas ou verifique novamente no próximo mês quando as consultas mensais forem redefinidas.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 da OpenAI, otimizado para velocidade e eficiência, se destaca em aplicações em tempo real que exigem criatividade e raciocínio avançado, com tempos de resposta aprimorados e saída consistente.",
     "permission__pricing_hook__footer_tip": "O MaxAI Elite oferece consultas de IA ilimitadas, resumos de IA, pesquisas de IA e respostas instantâneas.",
-    "floating_menu__discard_changes_card__ai_response__title": "Você deseja descartar a resposta da IA?",
-    "floating_menu__discard_changes_card__your_draft__title": "Você deseja descartar o seu rascunho?"
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Minhas próprias sugestões",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adicionar minha própria sugestão"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1022,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clique",
-    "edit_prompt__template__placeholder": "O modelo de prompt para o ChatGPT.\nO modelo pode incluir qualquer número das seguintes variáveis:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoritos",
     "tab__public__title": "Público",
     "tab__own__title": "Próprio",

@@ -2,7 +2,7 @@ import { createParser } from 'eventsource-parser'
 import isEmpty from 'lodash-es/isEmpty'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { AI_PROVIDER_MAP } from '@/constants'
+import { AI_PROVIDER_MAP, CHATGPT_WEBAPP_HOST } from '@/constants'
 
 import { streamAsyncIterable } from './stream-async-inerable'
 
@@ -20,7 +20,7 @@ export const fetchSSE = async (
     const error = await resp.json().catch(() => ({}))
     if (fetchOptions.provider === AI_PROVIDER_MAP.OPENAI) {
       if (resp.status === 401) {
-        location.href = 'https://chat.openai.com/auth/login'
+        location.href = `https://${CHATGPT_WEBAPP_HOST}/auth/login`
       } else if (resp.status === 403) {
         location.reload()
       } else if (resp.status === 418) {

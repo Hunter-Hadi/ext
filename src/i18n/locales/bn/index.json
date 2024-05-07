@@ -101,7 +101,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "নাম লিখুন",
     "feature_card__prompts__edit_prompt__field_icon__title": "আইকন",
     "feature_card__prompts__edit_prompt__field_template__title": "প্রম্পট টেমপ্লেট",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "চ্যাটজিপিটির জন্য প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির মধ্যে যেকোনো সংখ্যক অংশ থাকতে পারে:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অংশ থাকতে পারে:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "যখন সক্ষম",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "প্রম্পটটি সরাসরি AI-এ পাঠানো হবে, যা ডিফল্ট \"সাধারণ আচরণ\"। সব প্রম্পট টেমপ্লেটগুলি ডিফল্টভাবে এই অপশনটি সক্ষম থাকবে।",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "যখন অক্ষম",
@@ -259,7 +259,11 @@
     "feature_card__sidebar__field__auto_archive__title": "অটো আর্কাইভ: চলাচলের সাথে পরিষ্কার করুন",
     "feature_card__sidebar__field__auto_archive__button__title": "চ্যাট আর্কাইভ করুন পরে",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-তে, আমরা আপনার পছন্দের ক্যাডেন্সে আইডেল চ্যাটগুলি অটোমেটিকভাবে আর্কাইভ করি। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাজানো রাখে।",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "মেসেঞ্জার তাৎক্ষণিক উত্তর"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "মেসেঞ্জার তাৎক্ষণিক উত্তর",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -763,7 +767,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "সীমাহীন gpt-4 এর জন্য আপগ্রেড করুন",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "মাসিক উন্নত টেক্সট কুয়েরি সীমা অতিক্রম করেছেন। সীমাহীন কুয়েরির জন্য এখনই আপগ্রেড করুন, অথবা মাসিক কুয়েরি রিসেট হওয়ার পরে পুনরায় চেষ্টা করুন।",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI-র GPT-4, দ্রুততা এবং দক্ষতার জন্য অপটিমাইজ করা, সৃজনশীলতা এবং উন্নত মনোযোগ সহ সততার আউটপুট সহ সময়সাপেক্ষ অ্যাপ্লিকেশনে উত্কৃষ্ট ফলাফল প্রদান করে।",
-    "permission__pricing_hook__footer_tip": "MaxAI এলিট অসীম AI কুয়েরি, AI সংক্ষেপ, AI অনুসন্ধান এবং তাৎক্ষণিক উত্তর দেয়।"
+    "permission__pricing_hook__footer_tip": "MaxAI এলিট অসীম AI কুয়েরি, AI সংক্ষেপ, AI অনুসন্ধান এবং তাৎক্ষণিক উত্তর দেয়।",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "আমার নিজের প্রম্পটগুলি",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "আমার নিজের প্রম্পট যোগ করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -1020,7 +1026,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ক্লিক প্রম্পট",
-    "edit_prompt__template__placeholder": "ChatGPT এর জন্য প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যে কোনও সংখ্যক ব্যবহার করা যেতে পারে:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অংশ থাকতে পারে:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "প্রিয়",
     "tab__public__title": "পাবলিক",
     "tab__own__title": "নিজের",

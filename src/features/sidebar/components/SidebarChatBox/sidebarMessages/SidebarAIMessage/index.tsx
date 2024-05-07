@@ -51,6 +51,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     () => message.originalMessage?.metadata?.shareType === 'summary',
     [message],
   )
+
   const renderData = useMemo(() => {
     console.log('simply message', message)
     try {
@@ -94,6 +95,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       }
     }
   }, [message])
+
   const coverLoading = useMemo(() => {
     // 如果是 rich ai message，需要判断 messageIsComplete
     if (isRichAIMessage) {
@@ -101,6 +103,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     }
     return loading
   }, [loading, renderData.messageIsComplete, isRichAIMessage])
+
   const memoSx = useMemo(() => {
     return {
       whiteSpace: 'pre-wrap',
@@ -117,9 +120,11 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       bgcolor: 'customColor.secondaryBackground',
     } as SxProps
   }, [isDarkMode])
+
   const isWaitFirstAIResponseText = useMemo(() => {
     return !renderData.answer
   }, [renderData.answer])
+
   return (
     <Box component={'div'} className={'chat-message--AI'}>
       {isContextCleared && !isTriggeredContentReview && props.order !== 1 && (
@@ -142,6 +147,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                   fontWeight: 'bold',
                   fontSize: '28px',
                   color: 'text.primary',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  overflow: 'hidden'
                 }}
               />
             )}
@@ -167,7 +175,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               <Stack spacing={1}>
                 <Stack direction={'row'} alignItems="center" spacing={1}>
                   {renderData.sourcesLoading &&
-                  !renderData.messageIsComplete ? (
+                    !renderData.messageIsComplete ? (
                     <CircularProgress size={18} />
                   ) : (
                     <CaptivePortalIcon
@@ -248,7 +256,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                     </Stack>
                   )}
                   {isWaitFirstAIResponseText &&
-                  !renderData.messageIsComplete ? (
+                    !renderData.messageIsComplete ? (
                     <SidebarAIMessageSkeletonContent
                       contentType={renderData.content.contentType}
                     />
@@ -267,9 +275,8 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
           </Stack>
         ) : (
           <div
-            className={`markdown-body ${
-              isDarkMode ? 'markdown-body-dark' : ''
-            }`}
+            className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''
+              }`}
           >
             <AppSuspenseLoadingLayout>
               <CustomMarkdown>{renderData.answer}</CustomMarkdown>

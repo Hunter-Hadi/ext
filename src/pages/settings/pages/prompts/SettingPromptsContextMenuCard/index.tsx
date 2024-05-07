@@ -65,6 +65,8 @@ const saveTreeData = async (
   }
 }
 
+const buttonSettingKeys = new Set(['textSelectPopupButton'])
+
 const SettingPromptsContextMenuCard: FC = () => {
   const [editButtonKey, setEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
@@ -177,8 +179,8 @@ const SettingPromptsContextMenuCard: FC = () => {
   }
 
   useEffect(() => {
-    if (!['textSelectPopupButton'].includes(editButtonKey!)) {
-      setEditButtonKey('textSelectPopupButton')
+    if (!buttonSettingKeys.has(editButtonKey!)) {
+      setEditButtonKey(buttonSettingKeys.values().next().value)
     }
     return () => setEditButtonKey(null)
   }, [])
@@ -298,7 +300,7 @@ const SettingPromptsContextMenuCard: FC = () => {
       <Stack
         height={0}
         flex={1}
-        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+      // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
       >
         <Stack height={'100%'}>
           <DevContent>

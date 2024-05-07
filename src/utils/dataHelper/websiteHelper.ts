@@ -1,5 +1,6 @@
 import Browser from 'webextension-polyfill'
 
+import { CHATGPT_WEBAPP_HOSTS } from '@/constants'
 import { COUNTRIES_MAP } from '@/utils/staticData'
 
 export type ICountryIconSizeType =
@@ -45,8 +46,9 @@ export const countryIcon = (
   if (strictMode && !countryCode) {
     return ''
   } else {
-    return `https://flagcdn.com/${size ? size : '40x30'}/${countryCode || countryName.toLocaleLowerCase()
-      }.png`
+    return `https://flagcdn.com/${size ? size : '40x30'}/${
+      countryCode || countryName.toLocaleLowerCase()
+    }.png`
   }
 }
 export const countryOptions = () => {
@@ -145,50 +147,72 @@ export const isMaxAIPage = () => {
  */
 export const getOriginalFileURL = (url = '') => {
   if (isMaxAIPDFPage()) {
-    url = new URLSearchParams(url.split('?')[1]).get('file') || url;
+    url = new URLSearchParams(url.split('?')[1]).get('file') || url
   }
-  return url;
+  return url
 }
 
 /**
  * 处理 MaxAI PDF Viewer 宽度改变
  */
 export const handleMaxAIPDFViewerResize = () => {
-  const htmlElement = document.body.parentElement;
+  const htmlElement = document.body.parentElement
   if (htmlElement) {
-    const toolbarContainer: HTMLElement = document.querySelector('#toolbarContainer')!;
-    const toolbarViewer: HTMLElement = toolbarContainer.querySelector('#toolbarViewer')!;
-    const toolbarViewerLeft: HTMLElement = document.querySelector('#toolbarViewerLeft')!
-    const toolbarViewerMiddle: HTMLElement = document.querySelector('#toolbarViewerMiddle')!
-    const toolbarViewerRight: HTMLElement = document.querySelector('#toolbarViewerRight')!
-    const viewerContainer: HTMLElement = document.querySelector('#viewerContainer')!
+    const toolbarContainer: HTMLElement =
+      document.querySelector('#toolbarContainer')!
+    const toolbarViewer: HTMLElement =
+      toolbarContainer.querySelector('#toolbarViewer')!
+    const toolbarViewerLeft: HTMLElement =
+      document.querySelector('#toolbarViewerLeft')!
+    const toolbarViewerMiddle: HTMLElement = document.querySelector(
+      '#toolbarViewerMiddle',
+    )!
+    const toolbarViewerRight: HTMLElement = document.querySelector(
+      '#toolbarViewerRight',
+    )!
+    const viewerContainer: HTMLElement =
+      document.querySelector('#viewerContainer')!
 
-    let height = '64px', gridTemplateAreas = '', gridTemplateColumns = '', leftJustifySelf = '', middleJustifySelf = '', rightJustifySelf = '', inset = '64px 0 0';
+    let height = '64px',
+      gridTemplateAreas = '',
+      gridTemplateColumns = '',
+      leftJustifySelf = '',
+      middleJustifySelf = '',
+      rightJustifySelf = '',
+      inset = '64px 0 0'
     if (htmlElement.offsetWidth <= 560) {
-      height = '96px';
-      gridTemplateAreas = '"l" "m" "r"';
-      gridTemplateColumns = 'auto';
+      height = '96px'
+      gridTemplateAreas = '"l" "m" "r"'
+      gridTemplateColumns = 'auto'
       leftJustifySelf = 'center'
       rightJustifySelf = 'center'
       inset = '96px 0 0'
     } else if (htmlElement.offsetWidth <= 690) {
-      gridTemplateAreas = '"l l r r" "l l m m"';
-      gridTemplateColumns = 'auto auto';
-      middleJustifySelf = 'flex-end';
+      gridTemplateAreas = '"l l r r" "l l m m"'
+      gridTemplateColumns = 'auto auto'
+      middleJustifySelf = 'flex-end'
     } else if (htmlElement.offsetWidth <= 980) {
-      gridTemplateAreas = '"l l r r" "m m m m"';
-      gridTemplateColumns = 'auto auto';
+      gridTemplateAreas = '"l l r r" "m m m m"'
+      gridTemplateColumns = 'auto auto'
     } else {
-      height = '';
-      inset = '';
+      height = ''
+      inset = ''
     }
 
-    toolbarContainer.style.height = height;
-    toolbarViewer.style.gridTemplateAreas = gridTemplateAreas;
-    toolbarViewer.style.gridTemplateColumns = gridTemplateColumns;
-    toolbarViewerLeft.style.justifySelf = leftJustifySelf;
-    toolbarViewerMiddle.style.justifySelf = middleJustifySelf;
-    toolbarViewerRight.style.justifySelf = rightJustifySelf;
-    viewerContainer.style.inset = inset;
+    toolbarContainer.style.height = height
+    toolbarViewer.style.gridTemplateAreas = gridTemplateAreas
+    toolbarViewer.style.gridTemplateColumns = gridTemplateColumns
+    toolbarViewerLeft.style.justifySelf = leftJustifySelf
+    toolbarViewerMiddle.style.justifySelf = middleJustifySelf
+    toolbarViewerRight.style.justifySelf = rightJustifySelf
+    viewerContainer.style.inset = inset
+  }
+}
+
+export const isChatGPTWebAppPage = () => {
+  try {
+    return CHATGPT_WEBAPP_HOSTS.includes(getCurrentDomainHost())
+  } catch (e) {
+    return false
   }
 }

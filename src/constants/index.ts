@@ -129,3 +129,9 @@ export const SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID =
 // Send notification
 export const NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID =
   '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a' // [Summary] tokens have reached maximum limit
+
+/**
+ * ChatGPT Webapp Hosts
+ */
+export const CHATGPT_WEBAPP_HOSTS = ['chatgpt.com', 'chat.openai.com']
+export const CHATGPT_WEBAPP_HOST = CHATGPT_WEBAPP_HOSTS[0]

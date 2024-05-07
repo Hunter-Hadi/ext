@@ -19,7 +19,10 @@ import {
   createBackgroundMessageListener,
   safeGetBrowserTab,
 } from '@/background/utils'
-import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import {
+  CHATGPT_WEBAPP_HOST,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+} from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { wait } from '@/utils'
 import Log from '@/utils/Log'
@@ -185,7 +188,7 @@ class OpenAIChat extends BaseChat {
       if (
         cacheLastTimeTab &&
         cacheLastTimeTab.id &&
-        cacheLastTimeTab?.url?.startsWith('https://chat.openai.com')
+        cacheLastTimeTab?.url?.startsWith(`https://${CHATGPT_WEBAPP_HOST}`)
       ) {
         const result = await Browser.tabs.sendMessage(cacheLastTimeTab.id, {
           id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -529,9 +532,11 @@ class OpenAIChat extends BaseChat {
     changeInfo: Browser.Tabs.OnUpdatedChangeInfoType,
   ) {
     if (tabId === this.chatGPTProxyInstance?.id) {
-      const isNotOpenAI = !changeInfo.url?.includes('https://chat.openai.com')
+      const isNotOpenAI = !changeInfo.url?.includes(
+        `https://${CHATGPT_WEBAPP_HOST}`,
+      )
       const isUrlInOpenAIAuth = changeInfo.url?.includes(
-        'https://chat.openai.com/auth',
+        `https://${CHATGPT_WEBAPP_HOST}/auth`,
       )
       if (changeInfo.url && (isNotOpenAI || isUrlInOpenAIAuth)) {
         log.info('守护进程url发生变化，守护进程关闭')
@@ -632,7 +637,7 @@ class OpenAIChat extends BaseChat {
             safeGetBrowserTab(processTabId).then((tab) => {
               if (tab) {
                 Browser.tabs.update(tab.id, {
-                  url: 'https://chat.openai.com/?model=gpt-4-code-interpreter',
+                  url: `https://${CHATGPT_WEBAPP_HOST}/?model=gpt-4-code-interpreter`,
                 })
               }
             })
@@ -641,7 +646,7 @@ class OpenAIChat extends BaseChat {
             safeGetBrowserTab(processTabId).then((tab) => {
               if (tab) {
                 Browser.tabs.update(tab.id, {
-                  url: 'https://chat.openai.com/?model=gpt-4',
+                  url: `https://${CHATGPT_WEBAPP_HOST}/?model=gpt-4`,
                 })
               }
             })

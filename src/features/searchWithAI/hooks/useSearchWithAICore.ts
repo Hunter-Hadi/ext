@@ -6,6 +6,7 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import {
+  CHATGPT_WEBAPP_HOST,
   DEFAULT_AI_OUTPUT_LANGUAGE_ID,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/constants'
@@ -328,7 +329,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     }
     if (searchWithAISettings.aiProvider === 'OPENAI') {
       const result = await clientFetchAPI(
-        'https://chat.openai.com/api/auth/session',
+        `https://${CHATGPT_WEBAPP_HOST}/api/auth/session`,
         {
           method: 'GET',
         },
@@ -336,7 +337,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       if (result?.data?.accessToken) {
         // 先调用chatRequirements
         const chatRequirementsResult = await clientFetchAPI(
-          `https://chat.openai.com/backend-api/sentinel/chat-requirements`,
+          `https://${CHATGPT_WEBAPP_HOST}/backend-api/sentinel/chat-requirements`,
           {
             method: 'POST',
             headers: {

@@ -1512,6 +1512,7 @@ export const getSummaryCustomPromptActions = async ({
         ).originalMessage!.metadata!.title!.title = title
       }
     }
+
     if (
       (actions[0].parameters?.ActionChatMessageConfig as IAIResponseMessage)
         ?.originalMessage?.metadata
@@ -1520,6 +1521,16 @@ export const getSummaryCustomPromptActions = async ({
       ;(actions[0].parameters!
         .ActionChatMessageConfig as IAIResponseMessage)!.originalMessage!.metadata!.navMetadata =
         { key, title, icon }
+    }
+
+    if (type === 'YOUTUBE_VIDEO_SUMMARY') {
+      debugger
+      const youTubeSummaryLogActionIndex = actions.findIndex(
+        (action) => action.type === 'MAXAI_SUMMARY_LOG',
+      )
+      if (youTubeSummaryLogActionIndex !== -1) {
+        actions.splice(youTubeSummaryLogActionIndex, 1)
+      }
     }
 
     return actions

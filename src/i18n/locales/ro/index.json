@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Șablonul de sugestii AI.\nȘablonul poate include oricâte variabile următoare:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Șablonul de prompt AI.\nȘablonul poate include oricâte variabile următoare:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Șablonul de sugestii AI.\nȘablonul poate include oricâte variabile următoare:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nExemplu de șablon prompt:\nGenerați un rezumat al {{PAGE_CONTENT}} pe {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Exemplu de șablon prompt:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",

@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "قالب پیشنهاد هوش مصنوعی.\nاین قالب می‌تواند شامل هر تعدادی از متغیرهای زیر باشد:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "قالب پیشنهاد هوش مصنوعی.\nاین قالب می‌تواند شامل هر تعدادی از متغیرهای زیر باشد:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "قالب پیشنهاد هوش مصنوی.\nاین قالب می‌تواند شامل هر تعدادی از متغیرهای زیر باشد:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nقالب نمونه پیشنهاد:\nخروجی خلاصه‌ای از {{PAGE_CONTENT}} در {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "الگوی نمونه پرسش:"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",

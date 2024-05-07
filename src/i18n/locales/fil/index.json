@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Ang template ng AI prompt.\nAng template ay maaaring maglaman ng anumang bilang ng mga sumusunod na variables:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nHalimbawa ng template ng prompt:\nIlabas ang isang buod ng {{PAGE_CONTENT}} sa {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Halimbawa ng template ng prompt:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",

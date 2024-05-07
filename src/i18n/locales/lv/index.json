@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI pamata veidne.\nVeidnē var iekļaut jebkuru skaitu sekojošo mainīgo:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI iedvesmas veidne.\nVeidnē var iekļaut jebkuru šādu mainīgo skaitu:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI pamata veidne.\nVeidnē var iekļaut jebkuru skaitu sekojošo mainīgo:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPiemēra pamata veidne:\nIzvadiet {{PAGE_CONTENT}} kopsavilkumu vietnē {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Piemēra pamata veidne:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",

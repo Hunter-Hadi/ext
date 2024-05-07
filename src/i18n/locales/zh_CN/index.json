@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\n示例提示模板：\n在{{CURRENT_WEBPAGE_DOMAIN}}上输出{{PAGE_CONTENT}}的摘要。"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "示例提示模板："
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",

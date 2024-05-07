@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "قالب تلميح الذكاء الاصطناعي.\nيمكن أن يتضمن القالب أي عدد من المتغيرات التالية:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nقالب نموذج الاقتراح:\nأخرج ملخصًا لـ {{PAGE_CONTENT}} على {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "نموذج تلميح المثال:"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",

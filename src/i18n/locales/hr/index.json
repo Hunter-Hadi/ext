@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Predložak AI uputa.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Predložak AI upita.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Predložak AI uputa.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPrimjer predloška uputa:\nIspiši sažetak {{PAGE_CONTENT}} na {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Primjer predloška upute:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",

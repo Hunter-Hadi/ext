@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nBeispiel Vorlagentext:\nGeben Sie eine Zusammenfassung des {{PAGE_CONTENT}} auf {{CURRENT_WEBPAGE_DOMAIN}} aus."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Beispiel Vorlagentext:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",

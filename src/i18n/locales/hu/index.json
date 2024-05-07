@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Az AI prompt sablon.\nA sablon tartalmazhat bármennyi a következő változók közül:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPélda prompt sablon:\nKészítsen összefoglalót a(z) {{PAGE_CONTENT}}-ról a(z) {{CURRENT_WEBPAGE_DOMAIN}} webhelyen."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Példa prompt sablon:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",

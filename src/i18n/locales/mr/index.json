@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालीलप्रमाणे कोणत्याही संख्येनंतर असू शकतात:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालील चरणांमध्ये कोणत्याही संख्येने भरलेल्या अनुक्रमांकांमध्ये समाविष्ट केले जाऊ शकतात:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालीलप्रमाणे कोणत्याही संख्येनंतर असू शकतात:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nउदाहरण प्रॉम्प्ट टेम्पलेट:\n{{CURRENT_WEBPAGE_DOMAIN}} वरील {{PAGE_CONTENT}} चे संक्षेप आउटपुट करा."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "उदाहरण प्रॉम्प्ट टेम्पलेट:"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",

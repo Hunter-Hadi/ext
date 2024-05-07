@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPríklad šablóny podnetu:\nVýstupom je súhrn {{PAGE_CONTENT}} na {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Príklad šablóny podnetu:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",

@@ -56,19 +56,38 @@ const SettingPromptsUpdateFormModal: FC<{
     let placeholder = ''
 
     if (settingPromptsEditButtonKey === 'textSelectPopupButton') {
-      placeholder = t('settings:feature_card__prompts__edit_prompt__field_template__placeholder')
-    } else if (settingPromptsEditButtonKey === 'inputAssistantComposeReplyButton') {
-      placeholder = t('settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder')
-    } else if (settingPromptsEditButtonKey === 'inputAssistantRefineDraftButton') {
-      placeholder = t('settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder')
-    } else if (settingPromptsEditButtonKey === 'inputAssistantComposeNewButton') {
-      placeholder = t('settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder')
+      placeholder = t(
+        'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
+      )
+    } else if (
+      settingPromptsEditButtonKey === 'inputAssistantComposeReplyButton'
+    ) {
+      placeholder = t(
+        'settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder',
+      )
+    } else if (
+      settingPromptsEditButtonKey === 'inputAssistantRefineDraftButton'
+    ) {
+      placeholder = t(
+        'settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder',
+      )
+    } else if (
+      settingPromptsEditButtonKey === 'inputAssistantComposeNewButton'
+    ) {
+      placeholder = t(
+        'settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder',
+      )
     } else if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
-      placeholder = t('settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder')
+      placeholder = t(
+        'settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder',
+      )
     }
 
     if (placeholder) {
-      const presetVariables = PRESET_VARIABLES_GROUP_MAP['prompt_editor:preset_variables__system__title']
+      const presetVariables =
+        PRESET_VARIABLES_GROUP_MAP[
+          'prompt_editor:preset_variables__system__title'
+        ]
       presetVariables.forEach(({ variable, permissionKeys = [] }) => {
         if (
           permissionKeys.length === 0 ||
@@ -79,7 +98,12 @@ const SettingPromptsUpdateFormModal: FC<{
       })
 
       if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
-        placeholder += t('settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder__example')
+        placeholder +=
+          `\n\n` +
+          t(
+            'settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder__example',
+          ) +
+          `\nOutput a summary of the {{PAGE_CONTENT}} on {{CURRENT_WEBPAGE_DOMAIN}}.`
       }
     }
 
@@ -114,14 +138,14 @@ const SettingPromptsUpdateFormModal: FC<{
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt_group__title')
         : editNode.id === ''
-          ? t('settings:feature_card__prompts__new_prompt_group__title')
-          : t('settings:feature_card__prompts__edit_prompt_group__title')
+        ? t('settings:feature_card__prompts__new_prompt_group__title')
+        : t('settings:feature_card__prompts__edit_prompt_group__title')
     } else {
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt__title')
         : editNode.id === ''
-          ? t('settings:feature_card__prompts__new_prompt__title')
-          : t('settings:feature_card__prompts__edit_prompt__title')
+        ? t('settings:feature_card__prompts__new_prompt__title')
+        : t('settings:feature_card__prompts__edit_prompt__title')
     }
   }, [isDisabled, editNode.data.type, t])
 
@@ -256,7 +280,9 @@ const SettingPromptsUpdateFormModal: FC<{
                   </Typography>
                 </Stack>
                 <ShortcutActionsEditor
-                  disableCustomVariables={settingPromptsEditButtonKey === 'sidebarSummaryButton'}
+                  disableCustomVariables={
+                    settingPromptsEditButtonKey === 'sidebarSummaryButton'
+                  }
                   placeholder={shortcutActionsEditorPlaceholder}
                 />
               </Stack>
@@ -309,21 +335,27 @@ const SettingPromptsUpdateFormModal: FC<{
                 if (editNode.id === '') {
                   editNode.id = v4()
                 }
-                const actions = generateActions(editNode.text, settingPromptsEditButtonKey === 'sidebarSummaryButton')
+                const actions = generateActions(
+                  editNode.text,
+                  settingPromptsEditButtonKey === 'sidebarSummaryButton',
+                )
                 // Summary custom prompts 需要特殊处理，将输出端转成 AI
                 if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
-                  const askChatGPTAction = actions.find(action => action.type === 'ASK_CHATGPT')
+                  const askChatGPTAction = actions.find(
+                    (action) => action.type === 'ASK_CHATGPT',
+                  )
                   if (askChatGPTAction) {
                     const originalData = cloneDeep(editNode)
                     delete originalData.data.actions
                     askChatGPTAction.parameters.AskChatGPTActionQuestion = {
                       meta: {
                         outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-                        contextMenu: originalData
+                        contextMenu: originalData,
                       },
-                      text: askChatGPTAction.parameters.template || ''
+                      text: askChatGPTAction.parameters.template || '',
                     }
-                    askChatGPTAction.parameters.AskChatGPTActionType = 'ASK_CHAT_GPT_HIDDEN'
+                    askChatGPTAction.parameters.AskChatGPTActionType =
+                      'ASK_CHAT_GPT_HIDDEN'
                   }
                 }
                 onSave?.(

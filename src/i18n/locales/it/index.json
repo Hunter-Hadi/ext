@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Il modello di prompt dell'IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nEsempio di modello di prompt:\nGenera un riassunto del {{PAGE_CONTENT}} su {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Esempio di modello di prompt:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Chiudi la barra laterale",

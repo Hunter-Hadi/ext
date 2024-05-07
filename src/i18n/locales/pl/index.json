@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Szablon podpowiedzi AI.\nSzablon może zawierać dowolną liczbę następujących zmiennych:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Szablon podpowiedzi AI.\nSzablon może zawierać dowolną liczbę następujących zmiennych:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Szablon podpowiedzi AI.\nSzablon może zawierać dowolną liczbę następujących zmiennych:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPrzykładowy szablon pytania:\nWygeneruj podsumowanie {{PAGE_CONTENT}} na stronie {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Szablon przykładowego polecenia:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",

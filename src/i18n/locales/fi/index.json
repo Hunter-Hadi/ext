@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-pyyntöpohja.\nPohja voi sisältää mitä tahansa seuraavista muuttujista:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-pohjapohja.\nPohjassa voi olla mitä tahansa seuraavista muuttujista:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-pyyntöpohja.\nPohja voi sisältää mitä tahansa seuraavista muuttujista:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nEsimerkki kysymyspohjasta:\nTulosta yhteenveto {{PAGE_CONTENT}}:sta sivustolla {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Esimerkki kysymyspohjasta:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",

@@ -260,7 +260,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "ԱԻ խնդրագրության ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից ցանկացած քանակության՝",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "ԱԻ-ի անվտանգության ձևանմուշ:\nԱյս ձևանմուշը կարող է պարունակել հետևյալ փոփոխականներից ցանկացած քանակության՝",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "ԱԻ խնդրագրության ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից ցանկացած քանակության՝",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nՕրինակ՝\nԵլքագրեք {{PAGE_CONTENT}}-ի ամփոփումը {{CURRENT_WEBPAGE_DOMAIN}}-ում:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Օրինակ՝ խմբագրելու ձևաչափի ձևանմուշը:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",

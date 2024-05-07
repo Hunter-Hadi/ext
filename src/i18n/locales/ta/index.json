@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "மனித அறிவு வார்ப்புரு.\nவார்ப்புருக்கில் பின்வரும் மாறியாக எந்த எண்ணிக்கையான மாறிகளையும் சேர்க்கலாம்:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "முன்னரே உள்ளிடப்பட்ட தாவல் வடிவமைப்பு.\nவடிவமைப்பில் பின்வரும் மாறியாக எண்ணிக்கையில் ஏதேனும் எண்களை சேர்க்கலாம்:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "மனித அறிவு வார்ப்புரு.\nவார்ப்புருக்கில் பின்வரும் மாறியாக எந்த எண்ணிக்கையான மாறிகளையும் சேர்க்கலாம்:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nமாதிரி கேள்வி வார்த்தை:\n{{CURRENT_WEBPAGE_DOMAIN}} உள்ள {{PAGE_CONTENT}} ஒன்றின் சுருக்கத்தை வெளியிடுங்கள்."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "உதாரண கேள்வி வார்ப்பு:"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",

@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nEksempel på promptmal:\nVis en oppsummering av {{PAGE_CONTENT}} på {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Eksempel på promptmal:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",

@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "የማስታወቂያ መሰረታዊ ስፍራ ትርጉም።\nየማስታወቂያ ትርጉም የሚሆነው ስፍራ የሚኖር በማስታወቂያ ስፍራ የሚሆነው ባህሪዎች የሚሆኑት ናቸው:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "የማስታወቂያ መሰረታዊ ማስጠንቀቂያ።\nማስታወቂያው የሚከተለው ስም፣ ስም-አይነት እና ሌሎች ቫርያብሎችን ይጨምሩ:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "የማስታወቂያ መሰረታዊ ስፍራ ትርጉም።\nየማስታወቂያ ትርጉም የሚሆነው ስፍራ የሚኖር በማስታወቂያ ስፍራ የሚሆነው ባህሪዎች የሚሆኑት ናቸው:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nማስታወሻ ቅጽ አስፈላጊ:\nየ{{CURRENT_WEBPAGE_DOMAIN}} መሣሪያ ማስታወሻን የ{{PAGE_CONTENT}} እንዴት ማስታወሻ ይሰጣል?"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "የማስተካከያ መልዕክት ማስጠንቀቂያ:"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",

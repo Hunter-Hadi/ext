@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n다음 변수 중 어떤 수의 변수를 포함할 수 있습니다:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n다음 변수 중 어떤 수의 변수를 포함할 수 있습니다:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\n예시 프롬프트 템플릿:\n{{CURRENT_WEBPAGE_DOMAIN}}의 {{PAGE_CONTENT}}에 대한 요약을 출력합니다."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "예시 프롬프트 템플릿:"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",

@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nПример шаблона подсказки:\nВыведите сводку {{PAGE_CONTENT}} на {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Пример шаблона подсказки:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",

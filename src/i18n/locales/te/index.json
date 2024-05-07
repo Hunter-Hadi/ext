@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "యూఎక్స్ ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో కొన్ని మొత్తం వ్యతిరేక చర్యలు ఉండవచ్చు:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "యూనికార్డ్ మూలకం టెంప్లేట్.\nఈ టెంప్లేట్‌లో కొన్ని వేరియబుల్స్ ఉంచవచ్చు:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "యూఎక్స్ ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో కొన్ని మొత్తం వ్యతిరేక చర్యలు ఉండవచ్చు:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nఉదాహరణ ప్రాంతోలు:\n{{PAGE_CONTENT}} యొక్క సంగ్రహం నివేదించండి {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ఉదాహరణ ప్రాంప్టు టెంప్లేట్:"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",

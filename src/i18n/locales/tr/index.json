@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI prompt şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI prompt şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI prompt şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nÖrnek prompt şablonu:\n{{CURRENT_WEBPAGE_DOMAIN}} üzerindeki {{PAGE_CONTENT}} hakkında bir özet çıktısı verin."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Örnek prompt şablonu:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",

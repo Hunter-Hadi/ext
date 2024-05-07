@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির মধ্যে যেকোনো সংখ্যক অংশ থাকতে পারে:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nউদাহরণ প্রম্পট টেমপ্লেট:\n{{CURRENT_WEBPAGE_DOMAIN}} এ {{PAGE_CONTENT}} এর সংক্ষিপ্ত বিবরণ প্রদান করুন।"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "উদাহরণ প্রম্পট টেমপ্লেট:"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",

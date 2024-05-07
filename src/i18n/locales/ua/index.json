@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблон AI-підказки.\nШаблон може містити будь-яку кількість наступних змінних:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблон штучної відповіді ШІ.\nШаблон може містити будь-яку кількість наступних змінних:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблон AI-підказки.\nШаблон може містити будь-яку кількість наступних змінних:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nШаблон прикладу запитання:\nВиведіть підсумок {{PAGE_CONTENT}} на {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Шаблон прикладу запитання:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",

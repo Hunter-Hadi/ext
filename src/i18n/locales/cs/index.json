@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablona AI promptu.\nŠablona může obsahovat libovolný počet následujících proměnných:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPříklad šablony dotazu:\nVýstup shrnutí {{PAGE_CONTENT}} na {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Příklad šablony dotazu:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",

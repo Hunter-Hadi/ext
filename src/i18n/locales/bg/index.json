@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nПримерен шаблон за подсказка:\nИзведете обобщение на {{PAGE_CONTENT}} на {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Примерен шаблон за подсказка:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",

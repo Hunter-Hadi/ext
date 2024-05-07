@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સ શામેલ કરી શકે છે:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના વેરિએબલ્સમાંથી કોઈપણ નંબર શામેલ કરી શકે:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સ શામેલ કરી શકે છે:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nઉદાહરણ પ્રોમ્પ્ટ ટેમ્પલેટ:\n{{CURRENT_WEBPAGE_DOMAIN}} પર {{PAGE_CONTENT}} ની સંક્ષેપમાં આઉટપુટ કરો."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ઉદાહરણ પ્રોમ્પ્ટ ટેમ્પલેટ:"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",

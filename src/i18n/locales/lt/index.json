@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPavyzdinis šablono užrašas:\nIšvesti {{PAGE_CONTENT}} santrauką {{CURRENT_WEBPAGE_DOMAIN}} svetainėje."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Pavyzdinis šablono užrašas:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",

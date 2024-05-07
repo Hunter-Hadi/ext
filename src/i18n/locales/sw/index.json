@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya pembejeo zifuatazo:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Kigezo cha kichocheo cha AI.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya pembejeo zifuatazo:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nMfano wa kigezo cha swali:\nToa muhtasari wa {{PAGE_CONTENT}} kwenye kikoa cha {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Kigezo cha mfano cha swali:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",

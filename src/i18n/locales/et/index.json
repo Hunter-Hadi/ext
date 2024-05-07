@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI juhendmustrid.\nMustris võib olla mis tahes arv järgmistest muutujatest:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI prompti mall.\nMall võib sisaldada järgmisi muutujaid:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI juhendmustrid.\nMustris võib olla mis tahes arv järgmistest muutujatest:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nNäiteks küsimuse mall:\nVäljasta kokkuvõte {{PAGE_CONTENT}} kohta domeenil {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Näiteks küsimuse mall:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",

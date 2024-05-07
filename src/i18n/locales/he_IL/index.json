@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "תבנית הצעת המודעה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "תבנית הצעת המענה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "תבנית הצעת המודעה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nתבנית דוגמה לפרומט:\nהצג סיכום של {{PAGE_CONTENT}} באתר {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "תבנית לדוגמה:"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",

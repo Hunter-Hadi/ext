@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "എ.ഐ. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് പലതരം വാരിയബിൾസ് ഉൾക്കൊള്ളാം:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "എയ്‌ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് ഏതെങ്കിലും എണ്ണം ചരങ്ങളും ഉൾപ്പെടുത്താവുന്നു:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "എ.ഐ. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് പലതരം വാരിയബിൾസ് ഉൾക്കൊള്ളാം:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nഉദാഹരണ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്:\n{{CURRENT_WEBPAGE_DOMAIN}} യിൽ നിന്നുള്ള {{PAGE_CONTENT}} യുടെ ഒരു സംഗ്രഹം പ്രകടിപ്പിക്കുക."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ഉദാഹരണ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്:"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",

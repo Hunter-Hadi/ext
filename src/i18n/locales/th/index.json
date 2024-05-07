@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "เทมเพลตข้อความ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "แม่แบบข้อความ AI\nแม่แบบสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "เทมเพลตข้อความ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nตัวอย่างเทมเพลตโปรด:\nแสดงสรุปของ {{PAGE_CONTENT}} บน {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ตัวอย่างเทมเพลตโปรด:"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",

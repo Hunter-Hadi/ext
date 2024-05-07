@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "La plantilla de sugerencia de IA.\nLa plantilla puede incluir cualquier número de las siguientes variables:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "La plantilla de sugerencia de IA.\nLa plantilla puede incluir cualquier número de las siguientes variables:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "La plantilla de sugerencia de IA.\nLa plantilla puede incluir cualquier número de las siguientes variables:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPlantilla de ejemplo de la pregunta:\nGenera un resumen del {{PAGE_CONTENT}} en {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Plantilla de ejemplo:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",

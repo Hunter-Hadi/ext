@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nMẫu gợi ý ví dụ:\nXuất một bản tóm tắt về {{PAGE_CONTENT}} trên {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Mẫu gợi ý ví dụ:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",

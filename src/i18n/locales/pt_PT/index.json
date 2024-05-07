@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "O modelo de sugestão da IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "O modelo de sugestão da IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nModelo de prompt de exemplo:\nApresentar um resumo do {{PAGE_CONTENT}} em {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Modelo de exemplo do prompt:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",

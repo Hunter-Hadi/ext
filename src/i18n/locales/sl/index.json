@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Predloga za AI spodbudo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Predloga za AI sporočilo.\nPredloga lahko vsebuje poljubno število naslednjih spremenljivk:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Predloga za AI spodbudo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPrimer predloge za spodbudo:\nIzpiši povzetek {{PAGE_CONTENT}} na {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Primer predloge za spodbudo:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",

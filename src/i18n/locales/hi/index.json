@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित किसी भी संख्या के चरों को शामिल किया जा सकता है:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से किसी भी संख्या शामिल हो सकती है:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित किसी भी संख्या के चरों को शामिल किया जा सकता है:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nउदाहरण प्रॉम्प्ट टेम्पलेट:\n{{PAGE_CONTENT}} का संक्षेप {{CURRENT_WEBPAGE_DOMAIN}} पर आउटपुट करें।"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "उदाहरण प्रॉम्प्ट टेम्पलेट:"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",

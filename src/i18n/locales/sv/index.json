@@ -263,7 +263,7 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nExempel på promptmall:\nGenerera en sammanfattning av {{PAGE_CONTENT}} på {{CURRENT_WEBPAGE_DOMAIN}}."
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Exempel på promptmall:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",

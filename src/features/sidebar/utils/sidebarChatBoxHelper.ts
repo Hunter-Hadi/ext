@@ -83,12 +83,13 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
 
     // 24.04.02: handle Discord client resize
     if (host === 'discord.com') {
+      const discordSpecialStyleId = 'MAXAI__DISCORD_SPECIAL_STYLE'
       let discordSpecialStyle = document.querySelector(
-        '#MAXAI__DISCORD_SPECIAL_STYLE',
+        `#${discordSpecialStyleId}`,
       )
       if (!discordSpecialStyle) {
         discordSpecialStyle = document.createElement('style')
-        discordSpecialStyle.id = 'MAXAI__DISCORD_SPECIAL_STYLE'
+        discordSpecialStyle.id = discordSpecialStyleId
         document
           .getElementsByTagName('head')[0]
           .appendChild(discordSpecialStyle)
@@ -98,15 +99,30 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
 
     // 24.04.10: handle Slack client width 100vw
     if (host === 'app.slack.com') {
-      let slackSpecialStyle = document.querySelector(
-        '#MAXAI__SLACK_SPECIAL_STYLE',
-      )
+      const slackSpecialStyleId = 'MAXAI__SLACK_SPECIAL_STYLE'
+      let slackSpecialStyle = document.querySelector(`#${slackSpecialStyleId}`)
       if (!slackSpecialStyle) {
         slackSpecialStyle = document.createElement('style')
-        slackSpecialStyle.id = 'MAXAI__SLACK_SPECIAL_STYLE'
+        slackSpecialStyle.id = slackSpecialStyleId
         document.getElementsByTagName('head')[0].appendChild(slackSpecialStyle)
       }
       slackSpecialStyle.innerHTML = `.p-client,.p-ia4_client,.p-ia4_client_container,.p-theme_background,.p-client_workspace_wrapper{width:100%!important;} .c-popover--z_above_fs{z-index:2147483502!important;}`
+    }
+
+    // 24.05.07: fix tencent cloud console style issue
+    if (host === 'console.cloud.tencent.com') {
+      const tencentCloudSpecialStyleId = 'MAXAI__TENCENT_CLOUD_SPECIAL_STYLE'
+      let tencentCloudSpecialStyle = document.querySelector(
+        `#${tencentCloudSpecialStyleId}`,
+      )
+      if (!tencentCloudSpecialStyle) {
+        tencentCloudSpecialStyle = document.createElement('style')
+        tencentCloudSpecialStyle.id = tencentCloudSpecialStyleId
+        document
+          .getElementsByTagName('head')[0]
+          .appendChild(tencentCloudSpecialStyle)
+      }
+      tencentCloudSpecialStyle.innerHTML = `html,body{min-width:auto;}`
     }
 
     // twitter下html添加relative导致context window的Popper位置错误
@@ -198,12 +214,21 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
       )
       discordSpecialStyle?.remove()
     }
+
     // 24.04.10: handle Slack client width 100vw
     if (host === 'app.slack.com') {
       const slackSpecialStyle = document.querySelector(
         '#MAXAI__SLACK_SPECIAL_STYLE',
       )
       slackSpecialStyle?.remove()
+    }
+
+    // 24.05.07: fix tencent cloud console style issue
+    if (host === 'console.cloud.tencent.com') {
+      const tencentCloudSpecialStyle = document.querySelector(
+        '#MAXAI__TENCENT_CLOUD_SPECIAL_STYLE',
+      )
+      tencentCloudSpecialStyle?.remove()
     }
 
     if (host === 'twitter.com') {

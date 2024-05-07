@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Skriv inn navn",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Forespørselstekstmal",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Malen for oppfordringen til ChatGPT.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{VALGT_TEKST}}\n{{GJELDENDE_NETTSTEDSOMRÅDE}}\n{{SYSTEM_GJELDENDE_DATO}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{VALGT_TEKST}}\n{{GJELDENDE_NETTSTEDSOMRÅDE}}\n{{SYSTEM_GJELDENDE_DATO}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Når aktivert",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Forespørselen blir sendt direkte til AI, som er standard \"normal oppførsel\". Alle forespørselstekster har denne opsjonen aktivert som standard.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Når deaktivert",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Autoarkivering: Rens mens du går",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkiver samtale etter",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive samtaler i det tempoet du velger. Dette gir deg en frisk start og holder sidefeltet ryddig.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Meldingsøyeblikkelig svar"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Meldingsøyeblikkelig svar",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Oppgrader for ubegrenset gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Månedlig grense for avanserte tekstspørringer er overskredet. Oppgrader nå for ubegrenset antall spørringer, eller sjekk tilbake neste måned når de månedlige spørringene blir nullstilt.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI's GPT-4, optimalisert for hastighet og effektivitet, utmerker seg i sanntidsapplikasjoner som krever kreativitet og avansert resonnering med forbedrede responstider og konsistent resultat.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyr ubegrensede AI-forespørsler, AI-sammendrag, AI-søk og umiddelbare svar."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyr ubegrensede AI-forespørsler, AI-sammendrag, AI-søk og umiddelbare svar.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mine egne oppgaver",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Legg til min egen oppgave"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikk-prompts",
-    "edit_prompt__template__placeholder": "Promptmalen for ChatGPT.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{VALGT_TEKST}}\n{{GJELDENDE_NETTSTEDSOMRÅDE}}\n{{SYSTEM_GJELDENDE_DATO}}",
+    "edit_prompt__template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{VALGT_TEKST}}\n{{GJELDENDE_NETTSTEDSOMRÅDE}}\n{{SYSTEM_GJELDENDE_DATO}}",
     "tab__favorites__title": "Favoritter",
     "tab__public__title": "Offentlig",
     "tab__own__title": "Egen",

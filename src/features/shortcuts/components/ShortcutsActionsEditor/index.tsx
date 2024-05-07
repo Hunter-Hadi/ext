@@ -29,6 +29,7 @@ const ShortcutActionsEditor: FC<{
   onChange?: ISetActionsType
   onSave?: ISetActionsType
   sx?: SxProps
+  disableCustomVariables?: boolean
 }> = (props) => {
   const {
     error,
@@ -38,6 +39,7 @@ const ShortcutActionsEditor: FC<{
     sx,
     minHeight = 240,
     maxHeight = 450,
+    disableCustomVariables = true,
   } = props
   const { t } = useTranslation(['prompt_editor'])
   const {
@@ -194,11 +196,13 @@ const ShortcutActionsEditor: FC<{
           addTextVariableToHTML(variable)
         }}
       />
-      <PromptVariableEditor
-        onAddTextVariable={(variable) => {
-          addTextVariableToHTML(variable)
-        }}
-      />
+      {!disableCustomVariables && (
+        <PromptVariableEditor
+          onAddTextVariable={(variable) => {
+            addTextVariableToHTML(variable)
+          }}
+        />
+      )}
       <AIResponseLanguageEditor
         checked={enabledAIResponseLanguage}
         onChange={() => toggleAIResponseLanguage()}

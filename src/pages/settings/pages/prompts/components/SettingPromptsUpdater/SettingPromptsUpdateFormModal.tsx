@@ -50,6 +50,34 @@ const SettingPromptsUpdateFormModal: FC<{
   const [selectedIcon, setSelectedIcon] = useState<IContextMenuIconKey | null>(
     null,
   )
+
+  const shortcutActionsEditorPlaceholder = useMemo(() => {
+    switch (settingPromptsEditButtonKey) {
+      // instant reply
+      case 'inputAssistantComposeReplyButton':
+        return t(
+          'settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder',
+        )
+
+      // refine draft
+      case 'inputAssistantRefineDraftButton':
+        return t('settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder')
+
+      // compose new
+      case 'inputAssistantComposeNewButton':
+        return t('settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder')
+
+      // summary
+      case 'sidebarSummaryButton':
+        return t('settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder')
+
+      // context menu
+      case 'textSelectPopupButton':
+      default:
+        return t('settings:feature_card__prompts__edit_prompt__field_template__placeholder')
+    }
+  }, [t, settingPromptsEditButtonKey])
+
   const isDisabled = !editNode.data.editable
   const isDisabledSave = useMemo(() => {
     if (isDisabled) {
@@ -72,19 +100,20 @@ const SettingPromptsUpdateFormModal: FC<{
     editNode.data.visibility,
     editHTML,
   ])
+
   const modalTitle = useMemo(() => {
     if (editNode.data.type === 'group') {
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt_group__title')
         : editNode.id === ''
-        ? t('settings:feature_card__prompts__new_prompt_group__title')
-        : t('settings:feature_card__prompts__edit_prompt_group__title')
+          ? t('settings:feature_card__prompts__new_prompt_group__title')
+          : t('settings:feature_card__prompts__edit_prompt_group__title')
     } else {
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt__title')
         : editNode.id === ''
-        ? t('settings:feature_card__prompts__new_prompt__title')
-        : t('settings:feature_card__prompts__edit_prompt__title')
+          ? t('settings:feature_card__prompts__new_prompt__title')
+          : t('settings:feature_card__prompts__edit_prompt__title')
     }
   }, [isDisabled, editNode.data.type, t])
 
@@ -107,6 +136,7 @@ const SettingPromptsUpdateFormModal: FC<{
       setActions(node.data.actions || [])
     }
   }, [node])
+
   return (
     <Modal open={open} onClose={onCancel}>
       <Container
@@ -218,9 +248,8 @@ const SettingPromptsUpdateFormModal: FC<{
                   </Typography>
                 </Stack>
                 <ShortcutActionsEditor
-                  placeholder={t(
-                    'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
-                  )}
+                  disableCustomVariables={settingPromptsEditButtonKey === 'sidebarSummaryButton'}
+                  placeholder={shortcutActionsEditorPlaceholder}
                 />
               </Stack>
             )}
@@ -272,20 +301,29 @@ const SettingPromptsUpdateFormModal: FC<{
                 if (editNode.id === '') {
                   editNode.id = v4()
                 }
-                console.log(1111, 'save',          mergeWithObject([
-                  editNode,
-                  {
-                    data: {
-                      actions: generateActions(editNode.text),
-                    },
-                  } as IContextMenuItem,
-                ]),)
+                const actions = generateActions(editNode.text, settingPromptsEditButtonKey === 'sidebarSummaryButton')
+                // Summary custom prompts 需要特殊处理，将输出端转成 AI
+                if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+                  const askChatGPTAction = actions.find(action => action.type === 'ASK_CHATGPT')
+                  if (askChatGPTAction) {
+                    const originalData = cloneDeep(editNode)
+                    delete originalData.data.actions
+                    askChatGPTAction.parameters.AskChatGPTActionQuestion = {
+                      meta: {
+                        outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                        contextMenu: originalData
+                      },
+                      text: askChatGPTAction.parameters.template || ''
+                    }
+                    askChatGPTAction.parameters.AskChatGPTActionType = 'ASK_CHAT_GPT_HIDDEN'
+                  }
+                }
                 onSave?.(
                   mergeWithObject([
                     editNode,
                     {
                       data: {
-                        actions: generateActions(editNode.text),
+                        actions,
                       },
                     } as IContextMenuItem,
                   ]),
@@ -297,7 +335,7 @@ const SettingPromptsUpdateFormModal: FC<{
                 //     autoAskChatGPT,
                 //   )
               }}
-            >{/**/}
+            >
               {t('common:save')}
             </Button>
             <Button variant={'outlined'} onClick={onCancel}>

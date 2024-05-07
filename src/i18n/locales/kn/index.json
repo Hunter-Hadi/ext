@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
     "feature_card__prompts__edit_prompt__field_icon__title": "ಐಕಾನ್",
     "feature_card__prompts__edit_prompt__field_template__title": "ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT ಗೆ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಲ್ಲಿ ಈ ಕೆಳಗಿನ ವ್ಯಾರಿಯಬಲ್‌ಗಳಲ್ಲಿ ಯಾವುದೇ ಸಂಖ್ಯೆಯನ್ನು ಹೊಂದಿರಬಹುದು:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ಏಕೈಕ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್‌ನಲ್ಲಿ ಹೀಗೆಯೇ ಬೇರೆ ಬೇರೆ ವ್ಯಾರಿಯಬಲ್‌ಗಳನ್ನು ಸೇರಿಸಬಹುದು:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "ಸಕ್ರಿಯಗೊಳ್ಳುವಾಗ",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ಪ್ರಾಂಪ್ಟ್ ನೇರವಾಗಿ AI ಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ, ಇದು ಡಿಫಾಲ್ಟ್ \"ಸಾಮಾನ್ಯ ನಡವಳಿಕೆ\". ಎಲ್ಲ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್‌ಗಳಲ್ಲಿ ಈ ಆಯ್ಕೆ ಡಿಫಾಲ್ಟ್ ಆಗಿರುತ್ತದೆ.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "ನಿಷ್ಕ್ರಿಯಗೊಳ್ಳುವಾಗ",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "ಸ್ವಯಂ ಆರ್ಕೈವ್: ನೀವು ಹೋಗುವವರೆಗೆ ಸ್ವಚ್ಛಗೊಳಿಸಿ",
     "feature_card__sidebar__field__auto_archive__button__title": "ಚಾಟ್ ಆರ್ಕೈವ್ ಮುಂದುವರೆಸಿ",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI ನಲ್ಲಿ, ನೀವು ಆರ್ಕೈವ್ ಮಾಡಲು ನಿಮ್ಮ ಆಯ್ಕೆಯ ಪ್ರಮಾಣದಲ್ಲಿ ಅಡ್ಲ್ ಚಾಟ್ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರ್ಕೈವ್ ಮಾಡುತ್ತದೆ. ಇದು ನಿಮಗೆ ಹೊಸ ಪ್ರಾರಂಭ ಮತ್ತು ನಿಮ್ಮ ಸೈಡ್‌ಬಾರ್ ಒಳ್ಳೆಯದನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "ಮೆಸೆಂಜರ್ ತಕ್ಷಣ ಪ್ರತಿಕ್ರಿಯೆ"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "ಮೆಸೆಂಜರ್ ತಕ್ಷಣ ಪ್ರತಿಕ್ರಿಯೆ",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "ಯುಎಕ್ಸ್ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಾವುದೇ ಸಂಖ್ಯೆಯ ಮೇಲ್ಪಟ್ಟಿಗಳನ್ನು ಹೊಂದಿರಬಹುದು:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "ಯುಎಕ್ಸ್ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಾವುದೇ ಸಂಖ್ಯೆಯ ಮೇಲ್ಪಟ್ಟಿಗಳನ್ನು ಹೊಂದಿರಬಹುದು:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "ಯುಎಕ್ಸ್ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಾವುದೇ ಸಂಖ್ಯೆಯ ಮೇಲ್ಪಟ್ಟಿಗಳನ್ನು ಹೊಂದಿರಬಹುದು:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "ಯುಎಕ್ಸ್ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಾವುದೇ ಸಂಖ್ಯೆಯ ಮೇಲ್ಪಟ್ಟಿಗಳನ್ನು ಹೊಂದಿರಬಹುದು:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "ಅನಿಮಿತ gpt-4 ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ವಿಸ್ತರಿಸಲು ಮುಂದುವರಿಯಿರಿ",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "ಮಾಸಿಕ ಆಧುನಿಕ ಪಠ್ಯ ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ಮೀರಿದೆ. ಅನಿಮಿತ ಪ್ರಶ್ನೆಗಳ ಮಿತಿಯನ್ನು ವಿಸ್ತರಿಸಲು ಈಗ ಮುಂದುವರಿಯಿರಿ ಅಥವಾ ಮಾಸಿಕ ಪ್ರಶ್ನೆಗಳು ಮರುಹೊತ್ತಿಗೆ ಮರಳಿ ಬರುವವು.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನೆ ಮತ್ತು ಕೌಶಲ್ಯದ ಮೇಲೆ ಅಭಿವೃದ್ಧಿಗೆ ಅನುಕೂಲವಾಗಿದೆ. ಸೃಜನಾತ್ಮಕತೆ ಮತ್ತು ಮುಂದುವರಿದ ತರ್ಕಬದ್ಧತೆಯನ್ನು ಅಗತ್ಯವಾದ ಸಮಯದಲ್ಲಿ ಒದಗಿಸುವ ನಿಜವಾದ ಅರ್ಹತೆಗಳಲ್ಲಿ ಪ್ರಖ್ಯಾತವಾಗಿದೆ.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite ಅನಿವಾರ್ಯ AI ಪ್ರಶ್ನೆಗಳು, AI ಸಂಗ್ರಹಣೆಗಳು, AI ಹುಡುಕುಗಳು ಮತ್ತು ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite ಅನಿವಾರ್ಯ AI ಪ್ರಶ್ನೆಗಳು, AI ಸಂಗ್ರಹಣೆಗಳು, AI ಹುಡುಕುಗಳು ಮತ್ತು ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "ನನ್ನ ಪ್ರಶ್ನೆಗಳು",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "ನನ್ನ ಪ್ರಶ್ನೆನ್ನು ಸೇರಿಸಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
-    "edit_prompt__template__placeholder": "ChatGPT ಗೆ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಲ್ಲಿ ಈ ಮುಖ್ಯ ಚರಗಳಲ್ಲಿ ಯಾವುದೇ ಸಂಖ್ಯೆಯನ್ನು ಹೊಂದಿರಬಹುದು:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "ಏಕೈಕ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್‌ನಲ್ಲಿ ಹೀಗೆಯೇ ಬೇರೆ ಬೇರೆ ವ್ಯಾರಿಯಬಲ್‌ಗಳನ್ನು ಸೇರಿಸಬಹುದು:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "ಮೆಚ್ಚುಗೆಯ ಪುಟ",
     "tab__public__title": "ಸಾರ್ವಜನಿಕ",
     "tab__own__title": "ನನ್ನದು",

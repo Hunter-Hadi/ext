@@ -127,9 +127,8 @@ export const useChromeExtensionButtonSettings = () => {
       if (newSettings.visibility.isWhitelistMode) {
         // 如果白名单中已经存在了这个域名, 则删除
         if (newSettings.visibility.whitelist.includes(domain)) {
-          newSettings.visibility.whitelist = newSettings.visibility.whitelist.filter(
-            (item) => item !== domain,
-          )
+          newSettings.visibility.whitelist =
+            newSettings.visibility.whitelist.filter((item) => item !== domain)
         } else {
           // 如果白名单中不存在这个域名, 则添加
           newSettings.visibility.whitelist.push(domain)
@@ -138,9 +137,8 @@ export const useChromeExtensionButtonSettings = () => {
         // 如果是黑名单模式
         // 如果黑名单中已经存在了这个域名, 则删除
         if (newSettings.visibility.blacklist.includes(domain)) {
-          newSettings.visibility.blacklist = newSettings.visibility.blacklist.filter(
-            (item) => item !== domain,
-          )
+          newSettings.visibility.blacklist =
+            newSettings.visibility.blacklist.filter((item) => item !== domain)
         } else {
           // 如果黑名单中不存在这个域名, 则添加
           newSettings.visibility.blacklist.push(domain)
@@ -329,15 +327,17 @@ export const getContextMenuActions = async (contextMenuId: string) => {
           ) {
             const originData = cloneDeep(contextMenu) as IContextMenuItem
             delete originData.data.actions
-            action.parameters.AskChatGPTActionQuestion = {
-              type: 'user',
-              messageId: '',
-              conversationId: '',
-              text: '',
-              meta: {
-                messageVisibleText: originData.text,
-                contextMenu: originData,
-              },
+            if (!action.parameters.AskChatGPTActionQuestion) {
+              action.parameters.AskChatGPTActionQuestion = {
+                type: 'user',
+                messageId: '',
+                conversationId: '',
+                text: '',
+                meta: {
+                  messageVisibleText: originData.text,
+                  contextMenu: originData,
+                },
+              }
             }
             return true
           }
@@ -357,7 +357,9 @@ export class SystemContextMenu {
     textSelectPopupButton: defaultContextMenuJson,
     inputAssistantRefineDraftButton: defaultInputAssistantEditContextMenuJson,
     inputAssistantComposeReplyButton: defaultEditAssistantReplyContextMenuJson,
-    inputAssistantComposeNewButton: defaultInputAssistantDraftNewContextMenuJson,
+    inputAssistantComposeNewButton:
+      defaultInputAssistantDraftNewContextMenuJson,
+    sidebarSummaryButton: [],
   }
 }
 

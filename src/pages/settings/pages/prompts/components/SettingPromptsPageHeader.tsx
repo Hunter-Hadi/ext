@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 
 export type SettingPromptsPageHeaderTabKey =
   | 'CONTEXT_MENU'
-  | 'WRITING_ASSISTANT'
+  | 'INSTANT_REPLY'
   | 'SUMMARY'
   | 'SEARCH'
 
@@ -80,18 +80,18 @@ const SettingPromptsPageHeader: FC<ISettingPromptsPageHeaderProps> = ({
           )}
         />
         <Tab
-          value={'WRITING_ASSISTANT'}
+          value={'INSTANT_REPLY'}
           label={t(
             'settings:feature_card__prompts__place_my_own_prompts__tab_title__instant_reply',
           )}
         />
-        {/* <Tab
+        <Tab
           value={'SUMMARY'}
           label={t(
             'settings:feature_card__prompts__place_my_own_prompts__tab_title__summary',
           )}
         />
-        <Tab
+        {/*  <Tab
           value={'SEARCH'}
           label={t(
             'settings:feature_card__prompts__place_my_own_prompts__tab_title__search',

@@ -4,6 +4,7 @@ import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import Browser from 'webextension-polyfill'
 
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
@@ -50,9 +51,10 @@ const SettingPromptsMenuItemPreviewTooltip: FC<{
         ? settings.whitelist
         : settings.blacklist
       ).map((domain) => {
+        const isPDFViewer = domain === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
         return {
-          domain,
-          icon: domain2Favicon(domain),
+          domain: isPDFViewer ? 'MaxAI PDF Viewer' : domain,
+          icon: domain2Favicon(isPDFViewer ? 'maxai.me' : domain),
         }
       })
       let isEmpty = false

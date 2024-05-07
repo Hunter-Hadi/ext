@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "نام درج کریں",
     "feature_card__prompts__edit_prompt__field_icon__title": "آئکن",
     "feature_card__prompts__edit_prompt__field_template__title": "پرامپٹ ٹیمپلیٹ",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT کے لئے پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں منتخب متن کی کوئی بھی تعداد شامل کی جا سکتی ہے:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں منتخب کردہ متن، فعلی ویب سائٹ ڈومین اور سسٹم کی تاریخ شامل کی جا سکتی ہے۔",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "جب فعال ہو",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "پرامپٹ کو سیدھے AI کو بھیجا جائے گا، جو کہ \"عام رویہ\" ہے۔ تمام پرامپٹ ٹیمپلیٹس کو پہلے سے ہی اس آپشن کو فعال کیا جائے گا۔",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "جب غیر فعال ہو",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "خودکار آرکائیو: جب بھی صفائی کریں",
     "feature_card__sidebar__field__auto_archive__button__title": "چیٹ آرکائیو کریں بعد میں",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "میکس اے آئی میں، ہم آپ کی پسندیدہ تناسب کے ساتھ خودکار طور پر بیکار چیٹ آرکائیو کرتے ہیں۔ یہ آپ کو نئی شروعات فراہم کرتا ہے اور آپ کی سائڈبار کو صاف رکھتا ہے۔",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "فوری جواب میسنجر"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "فوری جواب میسنجر",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں مندرجہ ذیل متغیرات کی کوئی بھی تعداد شامل کی جا سکتی ہے:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں مندرجہ ذیل متغیرات کی کوئی بھی تعداد شامل کی جا سکتی ہے:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں مندرجہ ذیل متغیرات کی کوئی بھی تعداد شامل کی جا سکتی ہے:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں مندرجہ ذیل متغیرات کی کوئی بھی تعداد شامل کی جا سکتی ہے:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "غیر محدود gpt-4 کے لئے اپگریڈ کریں",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "ماہانہ ایڈوانسڈ ٹیکسٹ کوئریز کی حد تجاوز ہوگئی ہے۔ غیر محدود کوئریز کے لئے اب اپگریڈ کریں یا اگلے مہینے جب ماہانہ کوئریز دوبارہ شروع ہوں تو واپس آئیں۔",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI کا GPT-4، رفتار اور کارآمدی کے لئے تیار کیا گیا ہے، خلاقیت اور ایڈوانسڈ ریزننگ کی ضرورت والے ریل ٹائم ایپلیکیشنز میں بہترین ہے جس میں تیزی سے جواب دینے کی صلاحیت اور مستقل نتائج شامل ہیں۔",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite غیر محدود AI کوئریوں، AI خلاصے، AI تلاش اور فوری جوابات پیش کرتا ہے۔"
+    "permission__pricing_hook__footer_tip": "MaxAI Elite غیر محدود AI کوئریوں، AI خلاصے، AI تلاش اور فوری جوابات پیش کرتا ہے۔",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "میرے خود کے پرامپٹس",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "اپنا پرامپٹ شامل کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-کلک پرامپٹس",
-    "edit_prompt__template__placeholder": "چیٹ جی پی ٹی کے لئے پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں منتخب کردہ متن کی کوئی بھی تعداد شامل کی جا سکتی ہے:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں منتخب کردہ متن، فعلی ویب سائٹ ڈومین اور سسٹم کی تاریخ شامل کی جا سکتی ہے۔",
     "tab__favorites__title": "پسندیدہ",
     "tab__public__title": "عوامی",
     "tab__own__title": "اپنا",

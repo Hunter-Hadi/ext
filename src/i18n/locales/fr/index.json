@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Saisissez un nom",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icône",
     "feature_card__prompts__edit_prompt__field_template__title": "Modèle de suggestion",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Le modèle de prompt pour ChatGPT.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Le modèle de suggestion d'IA.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Lorsqu'il est activé",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "La suggestion sera directement envoyée à l'IA, ce qui est le comportement \"normal\" par défaut. Tous les modèles de suggestions auront cette option activée par défaut.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Lorsqu'il est désactivé",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Archivage automatique : Nettoyez au fur et à mesure",
     "feature_card__sidebar__field__auto_archive__button__title": "Archiver la discussion après",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Dans MaxAI, nous archivons automatiquement les discussions inactives selon la cadence de votre choix. Cela vous permet de repartir sur de bonnes bases et de garder votre barre latérale bien rangée.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Réponse instantanée de Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Réponse instantanée de Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Le modèle de suggestion IA.\nLe modèle peut inclure un nombre quelconque des variables suivantes:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Le modèle de suggestion IA.\nLe modèle peut inclure un nombre quelconque des variables suivantes:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Le modèle de suggestion IA.\nLe modèle peut inclure un nombre quelconque des variables suivantes:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Le modèle de suggestion IA.\nLe modèle peut inclure un nombre quelconque des variables suivantes:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Mise à niveau pour gpt-4 illimité",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Limite mensuelle de requêtes avancées de texte dépassée. Effectuez une mise à niveau maintenant pour des requêtes illimitées, ou revenez le mois prochain lorsque les requêtes mensuelles seront réinitialisées.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 d'OpenAI, optimisé pour la vitesse et l'efficacité, excelle dans les applications en temps réel nécessitant de la créativité et un raisonnement avancé avec des temps de réponse améliorés et une sortie cohérente.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite offre des requêtes d'IA illimitées, des résumés d'IA, des recherches d'IA et des réponses instantanées."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite offre des requêtes d'IA illimitées, des résumés d'IA, des recherches d'IA et des réponses instantanées.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mes propres suggestions",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ajouter ma propre suggestion"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts en 1 clic",
-    "edit_prompt__template__placeholder": "Le modèle de prompt pour ChatGPT.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Le modèle de suggestion d'IA.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoris",
     "tab__public__title": "Public",
     "tab__own__title": "Propre",

@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Įveskite pavadinimą",
     "feature_card__prompts__edit_prompt__field_icon__title": "Piktograma",
     "feature_card__prompts__edit_prompt__field_template__title": "Užduoties šablonas",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablonas užklausai ChatGPT.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{PASIRINKTAS_TEKSTAS}}\n{{DABARTINIS_TINKLAPIO_DOMENAS}}\n{{SISTEMOS_DABARTINĖ_DATA}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Jei įjungta",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Užduotis bus tiesiogiai išsiųsta į dirbtinį intelektą, tai yra numatytoji „normalaus elgesio“ būsena. Visi užduočių šablonai pagal nutylėjimą turės šią parinktį įjungtą.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Jei išjungta",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Automatinis archyvavimas: Valykite, kai naudojatės",
     "feature_card__sidebar__field__auto_archive__button__title": "Archyvuoti pokalbį po",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI programoje automatiškai archyvuojame neaktyvius pokalbius pagal jūsų pasirinktą dažnį. Tai suteikia jums švarų pradžią ir tvarkingą šoninę juostą.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Pranešimų greito atsakymo funkcija"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Pranešimų greito atsakymo funkcija",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Naujinimas neribotam gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Viršytas šio mėnesio pažangių teksto užklausų limitas. Naujinkite dabar, kad gautumėte neribotą užklausų skaičių arba sugrįžkite kitą mėnesį, kai bus atnaujinti mėnesiniai užklausų limitai.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI GPT-4, optimizuotas greičiui ir efektyvumui, puikiai tinka realaus laiko taikymams, reikalaujantiems kūrybiškumo ir pažangaus sprendimo su pagerintais atsakymo laikais ir nuosekliais rezultatais.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite siūlo neribotą AI užklausų, AI santraukų, AI paieškų ir momentinių atsakymų."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite siūlo neribotą AI užklausų, AI santraukų, AI paieškų ir momentinių atsakymų.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mano pačių užduotys",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridėti savo užduotį"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Vieno paspaudimo užklausos",
-    "edit_prompt__template__placeholder": "Užklausos šablonas „ChatGPT“.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{PASIRINKTAS_TEKSTAS}}\n{{DABARTINIS_TINKLAPIO_DOMENAS}}\n{{SISTEMOS_DABARTINĖ_DATA}}",
     "tab__favorites__title": "Mėgstamiausi",
     "tab__public__title": "Vieši",
     "tab__own__title": "Savas",

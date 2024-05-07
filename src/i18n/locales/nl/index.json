@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Voer naam in",
     "feature_card__prompts__edit_prompt__field_icon__title": "Pictogram",
     "feature_card__prompts__edit_prompt__field_template__title": "Prompt-sjabloon",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "De prompt sjabloon voor ChatGPT.\nHet sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{Geselecteerde_tekst}}\n{{HUIDIG_WEBSITE_DOMEIN}}\n{{SYSTEEM_HUIDIGE_DATUM}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{GEMARKEERDE_TEKST}}\n{{HUIDIG_WEBSITE_DOMEIN}}\n{{SYSTEEM_HUIDIGE_DATUM}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Indien ingeschakeld",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "De prompt wordt rechtstreeks naar AI gestuurd, wat de standaard \"normaal gedrag\" is. Alle prompt-sjablonen hebben deze optie standaard ingeschakeld.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Indien uitgeschakeld",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Automatisch archiveren: Schoon terwijl je gaat",
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archiveren na",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chatberichten op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Direct antwoord in Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Direct antwoord in Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Upgrade voor onbeperkte gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Maandelijkse limiet voor geavanceerde tekstvragen overschreden. Upgrade nu voor onbeperkte vragen, of kom volgende maand terug wanneer de maandelijkse vragen worden gereset.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 van OpenAI, geoptimaliseerd voor snelheid en efficiëntie, blinkt uit in realtime toepassingen die creativiteit en geavanceerd redeneren vereisen, met verbeterde responstijden en consistente output.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite biedt onbeperkte AI-zoekopdrachten, AI-samenvattingen, AI-zoekopdrachten en directe antwoorden."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite biedt onbeperkte AI-zoekopdrachten, AI-samenvattingen, AI-zoekopdrachten en directe antwoorden.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mijn eigen prompts",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Voeg mijn eigen prompt toe"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",
-    "edit_prompt__template__placeholder": "De prompt sjabloon voor ChatGPT.\nHet sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{GEMARKEERDE_TEKST}}\n{{HUIDIG_WEBSITE_DOMEIN}}\n{{SYSTEEM_HUIDIGE_DATUM}}",
+    "edit_prompt__template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{GEMARKEERDE_TEKST}}\n{{HUIDIG_WEBSITE_DOMEIN}}\n{{SYSTEEM_HUIDIGE_DATUM}}",
     "tab__favorites__title": "Favorieten",
     "tab__public__title": "Openbaar",
     "tab__own__title": "Eigen",

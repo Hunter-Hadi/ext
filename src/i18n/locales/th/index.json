@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "ป้อนชื่อ",
     "feature_card__prompts__edit_prompt__field_icon__title": "ไอคอน",
     "feature_card__prompts__edit_prompt__field_template__title": "แม่แบบข้อความเริ่มต้น",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "เทมเพลตข้อความสำหรับ ChatGPT\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้ทุกจำนวน:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "เทมเพลตข้อความ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "เมื่อเปิดใช้งาน",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ข้อความเริ่มต้นจะถูกส่งโดยตรงไปยัง AI ซึ่งเป็น \"พฤติกรรมปกติ\" เริ่มต้นทุกแม่แบบจะมีตัวเลือกนี้เปิดใช้งานโดยค่าเริ่มต้น",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "เมื่อปิดใช้งาน",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "อัตโนมัติเก็บถาวร: ทำความสะอาดในขณะใช้งาน",
     "feature_card__sidebar__field__auto_archive__button__title": "เก็บถาวรแชทหลังจาก",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "ใน MaxAI เราจะเก็บถาวรแชทที่ไม่ได้ใช้งานอยู่ตามความถี่ที่คุณเลือก ซึ่งจะช่วยให้คุณเริ่มต้นใหม่และรักษาระเบียบเรียบร้อยในแถบด้านข้างของคุณ",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "การตอบกลับทันทีของ Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "การตอบกลับทันทีของ Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "เทมเพลตข้อความแนะนำ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "เทมเพลตข้อความแนะนำ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "เทมเพลตข้อความแนะนำ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "เทมเพลตข้อความแนะนำ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "อัพเกรดสำหรับ gpt-4 ไม่จำกัด",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "เกินขีดจำกัดการค้นหา advanced text เดือนนี้แล้ว อัพเกรดตอนนี้เพื่อคำถามไม่จำกัด หรือกลับมาใหม่เดือนหน้าเมื่อขีดจำกัดการค้นหารายเดือนรีเซ็ต",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 ของ OpenAI ที่ถูกปรับให้เหมาะสมกับความเร็วและประสิทธิภาพ เหมาะสำหรับการใช้งานแบบ real-time ที่ต้องการความคิดสร้างสรรค์และการตัดสินใจขั้นสูงด้วยเวลาการตอบสนองที่เร็วขึ้นและผลลัพธ์ที่สม่ำเสมอ",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite ให้บริการคำถาม AI ไม่จำกัด, สรุป AI, การค้นหา AI และการตอบกลับทันที"
+    "permission__pricing_hook__footer_tip": "MaxAI Elite ให้บริการคำถาม AI ไม่จำกัด, สรุป AI, การค้นหา AI และการตอบกลับทันที",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "คำถามของฉันเอง",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "เพิ่มคำถามของฉัน"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-คลิกเพื่อใช้คำพูด",
-    "edit_prompt__template__placeholder": "แม่แบบข้อความสำหรับ ChatGPT\nแม่แบบสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "เทมเพลตข้อความ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "รายการโปรด",
     "tab__public__title": "สาธารณะ",
     "tab__own__title": "ของฉัน",

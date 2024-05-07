@@ -6,7 +6,7 @@ import { useMemo, useRef } from 'react'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
 import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import { IContextMenuItem } from '@/features/contextMenu/types'
+import { type IContextMenuItem } from '@/features/contextMenu/types'
 import {
   fuzzySearchContextMenuList,
   groupByContextMenuItem,
@@ -18,16 +18,15 @@ const useContextMenuList = (
   query?: string,
   needFavoriteContextMenu = true,
 ) => {
-  const buttonSettings = useChromeExtensionButtonSettingsWithVisibility(
-    buttonSettingKey,
-  )
-  const { favoriteContextMenuGroup } = useFavoriteContextMenuList(
-    buttonSettingKey,
-  )
-  const {
-    contextMenuSearchTextWithCurrentLanguage,
-  } = useContextMenuSearchTextStore()
+  const buttonSettings =
+    useChromeExtensionButtonSettingsWithVisibility(buttonSettingKey)
+  const { favoriteContextMenuGroup } =
+    useFavoriteContextMenuList(buttonSettingKey)
+  const { contextMenuSearchTextWithCurrentLanguage } =
+    useContextMenuSearchTextStore()
+
   const originContextMenuListRef = useRef<IContextMenuItem[]>([])
+
   const groupByContextMenuList = useMemo(() => {
     const originContextMenuList = uniqBy(
       cloneDeep(buttonSettings?.contextMenu || []),
@@ -46,6 +45,7 @@ const useContextMenuList = (
     }
     return menuList
   }, [buttonSettings, favoriteContextMenuGroup])
+
   const contextMenuList = useMemo(() => {
     if (query?.trim()) {
       return fuzzySearchContextMenuList(
@@ -56,6 +56,7 @@ const useContextMenuList = (
     }
     return groupByContextMenuList
   }, [groupByContextMenuList, buttonSettingKey, query, needFavoriteContextMenu])
+
   return {
     contextMenuList,
     originContextMenuList: buttonSettings?.contextMenu || [],

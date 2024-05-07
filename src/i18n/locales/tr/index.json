@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Adı girin",
     "feature_card__prompts__edit_prompt__field_icon__title": "Simge",
     "feature_card__prompts__edit_prompt__field_template__title": "İpucu şablonu",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT için ipucu şablonu.\nŞablon, aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI ipucu şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{SEÇİLİ_METİN}}\n{{MEVCUT_WEB_SİTESİ_ALANI}}\n{{SİSTEM_MEVCUT_TARİH}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Etkin olduğunda",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "İpucu doğrudan AI'ya gönderilecek, bu varsayılan \"normal davranıştır\". Tüm ipucu şablonları varsayılan olarak bu seçeneği etkinleştirir.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Devre dışı olduğunda",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Otomatik arşivleme: Giderken temizleyin",
     "feature_card__sidebar__field__auto_archive__button__title": "Sohbeti arşivle",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'de, istediğiniz sıklıkta boşta kalan sohbetleri otomatik olarak arşivliyoruz. Bu size taze bir başlangıç sağlar ve kenar çubuğunuzu düzenli tutar.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Anında Yanıtla"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Anında Yanıtla",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI ipucu şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI ipucu şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI ipucu şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI ipucu şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Sınırsız gpt-4 için yükseltme yapın",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Aylık gelişmiş metin sorgu limiti aşıldı. Sınırsız sorgular için şimdi yükseltin veya aylık sorgular sıfırlanana kadar bekleyin.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "Hız ve verimlilik açısından optimize edilmiş OpenAI'nın GPT-4 modeli, yaratıcılık ve gelişmiş akıl yürütme gerektiren gerçek zamanlı uygulamalarda mükemmel bir performans sergiler.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite, sınırsız AI sorguları, AI özetleri, AI aramaları ve anlık yanıtlar sunar."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite, sınırsız AI sorguları, AI özetleri, AI aramaları ve anlık yanıtlar sunar.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Kendi ipuçlarım",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Kendi ipucu ekleyin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1 tıklamayla ipuçları",
-    "edit_prompt__template__placeholder": "ChatGPT için ipucu şablonu.\nŞablon, aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "AI ipucu şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{SEÇİLİ_METİN}}\n{{MEVCUT_WEB_SİTESİ_ALANI}}\n{{SİSTEM_MEVCUT_TARİH}}",
     "tab__favorites__title": "Favoriler",
     "tab__public__title": "Herkese Açık",
     "tab__own__title": "Kendi",

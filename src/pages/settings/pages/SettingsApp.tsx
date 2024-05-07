@@ -13,7 +13,6 @@ import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCh
 import OptionsToolbarLogo from '@/pages/settings/components/toolbar/OptionsToolbarLogo'
 import {
   getLocationHashRoute,
-  ISettingsRouteType,
   setLocationHashRoute,
   SettingsPageRouteContext,
 } from '@/pages/settings/context'
@@ -76,16 +75,18 @@ const SettingsSidebarPage = React.lazy(
 const SettingsApp: FC = () => {
   const { loaded, isLogin } = useAuthLogin()
   const onceScrollRef = useRef(false)
-  const [route, setRoute] = useState<ISettingsRouteType>(() =>
-    getLocationHashRoute(),
+  const [route, setRoute] = useState(() =>
+    getLocationHashRoute()[0],
   )
+
   useEffect(() => {
     if (route) {
-      if (getLocationHashRoute() !== route) {
+      if (getLocationHashRoute()[0] !== route) {
         setLocationHashRoute(route)
       }
     }
   }, [route])
+
   useEffect(() => {
     if (route && isLogin && !onceScrollRef.current) {
       const locationSearch = window.location.search

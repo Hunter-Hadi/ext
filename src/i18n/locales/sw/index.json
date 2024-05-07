@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Ingiza jina",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Kigezo cha dokezo",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Kigezo cha onyo kwa ChatGPT.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya vipengele vifuatavyo:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Ikiwezeshwa",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Dokezo litatumwa moja kwa moja kwa AI, ambayo ni \"tabia ya kawaida\". Chaguo hili litawezeshwa kwa chaguo-msingi katika kila kigezo cha dokezo.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Ikiwa imezimwa",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Safisha unavyokwenda",
     "feature_card__sidebar__field__auto_archive__button__title": "Hifadhi gumzo baada ya",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi gumzo lisilo na shughuli kwa kasi unayopendelea. Hii inakupa mwanzo mpya na kuweka upau wako safi.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Jibu la Papo kwa Papo la Mtumaji"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Jibu la Papo kwa Papo la Mtumaji",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Kigezo cha AI cha onyesho.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Kigezo cha AI cha onyesho.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Kigezo cha AI cha onyesho.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Kigezo cha AI cha onyesho.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Sasisha kwa gpt-4 isiyo na ukomo",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Umezidi kikomo cha maswali ya mwezi ya maandishi ya juu. Sasisha sasa kwa maswali yasiyokuwa na ukomo, au rudi mwezi ujao wakati maswali ya kila mwezi yanarejeshwa.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 ya OpenAI, iliyoboreshwa kwa kasi na ufanisi, inafanya vizuri katika programu za wakati halisi zinazohitaji ubunifu na hoja za juu na nyakati za majibu zilizoboreshwa na matokeo thabiti.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite inatoa maswali ya AI yasiyokuwa na kikomo, muhtasari wa AI, utafutaji wa AI, na majibu ya papo hapo."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite inatoa maswali ya AI yasiyokuwa na kikomo, muhtasari wa AI, utafutaji wa AI, na majibu ya papo hapo.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Majibu yangu mwenyewe",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ongeza swali langu mwenyewe"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Vidhibiti vya 1-click",
-    "edit_prompt__template__placeholder": "Kigezo cha vidhibiti kwa ChatGPT.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya vipengele vifuatavyo:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Vipendwa",
     "tab__public__title": "Umma",
     "tab__own__title": "Yangu",

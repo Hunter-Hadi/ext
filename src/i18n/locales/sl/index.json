@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Vnesite ime",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Predloga namiga",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Predloga za spodbudo za ChatGPT.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Predloga za AI spodbudo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Ko je omogočeno",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Namig bo neposredno poslan k umetni inteligenci, kar je privzeto »normalno obnašanje«. Vsi predlogi namigov bodo privzeto imeli to možnost omogočeno.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Ko je onemogočeno",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Samodejno arhiviranje: Čiščenje med uporabo",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhiviraj klepet po",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI samodejno arhiviramo neaktivne klepete v izbranem časovnem intervalu. To vam omogoča svež začetek in ohranja urejenost stranske vrstice.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Odgovor v trenutku na Messengerju"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Odgovor v trenutku na Messengerju",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Predloga za AI sporočilo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Predloga za AI sporočilo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Predloga za AI sporočilo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Predloga za AI sporočilo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Nadgraditev za neomejen gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Presežena je mesečna omejitev naprednih besedilnih povpraševanj. Nadgradite zdaj za neomejena povpraševanja ali se vrnite naslednji mesec, ko se mesečna povpraševanja ponastavijo.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 podjetja OpenAI, optimiziran za hitrost in učinkovitost, izstopa pri aplikacijah v realnem času, ki zahtevajo ustvarjalnost in napredno sklepanje z izboljšanimi časi odziva in doslednim izhodom.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite ponuja neomejene poizvedbe AI, povzetke AI, iskanja AI in takojšnje odgovore."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite ponuja neomejene poizvedbe AI, povzetke AI, iskanja AI in takojšnje odgovore.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moji lastni namigi",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj svoj namig"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikni spodbude",
-    "edit_prompt__template__placeholder": "Predloga spodbude za ChatGPT.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Predloga za AI spodbudo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Priljubljeno",
     "tab__public__title": "Javno",
     "tab__own__title": "Lastno",

@@ -236,9 +236,9 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         })}
         {/* 如果 writingMessage.messageId 在 slicedMessageList 中存在，则不渲染 */}
         {writingMessage &&
-        !slicedMessageList.find(
-          (msg) => msg.messageId === writingMessage.messageId,
-        ) ? (
+          !slicedMessageList.find(
+            (msg) => msg.messageId === writingMessage.messageId,
+          ) ? (
           <SidebarChatBoxMessageItem
             className={'use-chat-gpt-ai__writing-message-item'}
             message={writingMessage}

@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Zadajte názov",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Šablóna podnetu",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Vzor podnetu pre ChatGPT.\nVzor môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Keď je povolené",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Podnet bude priamo odoslaný na AI, čo je predvolené „normálne správanie“. Všetky šablóny podnetov budú mať túto možnosť predvolene povolenú.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Keď je zakázané",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Automatické archivovanie: Čistota počas práce",
     "feature_card__sidebar__field__auto_archive__button__title": "Archivovať chat po",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Týmto získate čerstvý štart a udržujete svoj bočný panel uprataný.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Okamžitá odpoveď na Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Okamžitá odpoveď na Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "Aktualizujte pre neobmedzený gpt-4",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Prekročený mesačný limit pokročilých textových dotazov. Aktualizujte teraz pre neobmedzené dotazy alebo sa vráťte budúci mesiac, keď sa mesačné dotazy obnovia.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 od OpenAI, optimalizovaný pre rýchlosť a efektivitu, exceluje v aplikáciách v reálnom čase, ktoré vyžadujú kreativitu a pokročilé uvažovanie s vylepšenými dobami odozvy a konzistentným výstupom.",
-    "permission__pricing_hook__footer_tip": "MaxAI Elite ponúka neobmedzené dotazy AI, súhrny AI, vyhľadávania AI a okamžité odpovede."
+    "permission__pricing_hook__footer_tip": "MaxAI Elite ponúka neobmedzené dotazy AI, súhrny AI, vyhľadávania AI a okamžité odpovede.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moje vlastné podnety",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridať môj vlastný podnet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikové podnety",
-    "edit_prompt__template__placeholder": "Šablóna podnetu pre ChatGPT.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Obľúbené",
     "tab__public__title": "Verejné",
     "tab__own__title": "Vlastné",

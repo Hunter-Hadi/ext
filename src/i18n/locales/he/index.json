@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "הזן שם",
     "feature_card__prompts__edit_prompt__field_icon__title": "סמל",
     "feature_card__prompts__edit_prompt__field_template__title": "תבנית הצעה",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "תבנית הפרומט ל-ChatGPT.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "תבנית הצעת הממליץ של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "כאשר מופעל",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ההצעה תישלח ישירות ל-AI, שהיא \"התנהגות רגילה\" ברירת המחדל. כל תבניות ההצעות יהיו מופעלות כברירת מחדל.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "כאשר מנוטרל",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "ארכיב אוטומטי: נקה במידה ונדרש",
     "feature_card__sidebar__field__auto_archive__button__title": "ארכוב צ'אט לאחר",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "ב-MaxAI, אנחנו מבצעים ארכיב אוטומטי של צ'אטים שבלתי פעילים בתדירות שתבחר. זה יעניק לך התחלה חדשה וישמור על סרגל הצד שלך מסודר.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "תשובה מיידית במסנג'ר"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "תשובה מיידית במסנג'ר",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "תבנית הצעה של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "תבנית הצעה של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "תבנית הצעה של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "תבנית הצעה של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור את הסרגל הצדי",
@@ -762,7 +766,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description1": "הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט 1M טוקנים פרוץ, בטיחות משודרגת ויכולות מתקדמות בתחום עיבוד טקסט, קוד, תמונה, שמע ווידאו.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__title": "שדרג ל-gpt-4 בלתי מוגבל",
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "חרף את המגבלה החודשית לשאילתות טקסט מתקדמות. שדרג עכשיו לשאילתות בלתי מוגבלות, או בדוק שוב בחודש הבא כשהשאילתות החודשיות מתאפסות.",
-    "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 של OpenAI, מותאם למהירות ויעילות, מתבלט ביישור זמן ותשובות יציבות ביישור זמן ופלט עקבי."
+    "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 של OpenAI, מותאם למהירות ויעילות, מתבלט ביישור זמן ותשובות יציבות ביישור זמן ופלט עקבי.",
+    "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "הצעות שלי",
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "הוסף הצעה שלי"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -1019,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-לחיצה על הצעות",
-    "edit_prompt__template__placeholder": "תבנית הצעה עבור ChatGPT.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "תבנית הצעת הממליץ של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "מועדפים",
     "tab__public__title": "ציבורי",
     "tab__own__title": "שלי",

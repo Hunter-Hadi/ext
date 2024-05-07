@@ -10,6 +10,7 @@ import {
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
@@ -219,6 +220,12 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       mixpanelTrack('paywall_showed', {
         logType: `SEARCH_WITH_AI_HIGH_TRAFFIC(Free)`,
         sceneType: 'SEARCH_WITH_AI_HIGH_TRAFFIC',
+      })
+      const aiProvide = searchWithAISettings.aiProvider
+      authEmitPricingHooksLog('show', 'SEARCH_WITH_AI_HIGH_TRAFFIC', {
+        // card log 直接获取 当前 ai provider 默认的 model name
+        AIModel: SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[aiProvide],
+        AIProvider: aiProvide,
       })
       updateConversation({
         loading: false,

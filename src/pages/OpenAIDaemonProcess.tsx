@@ -178,8 +178,10 @@ const useDaemonProcess = () => {
                   if (!newSettings.thirdProviderSettings?.OPENAI) {
                     newSettings.thirdProviderSettings!.OPENAI = {}
                   }
-                  newSettings.thirdProviderSettings!.OPENAI.modelOptions = models
-                  newSettings.thirdProviderSettings!.OPENAI.pluginOptions = plugins
+                  newSettings.thirdProviderSettings!.OPENAI.modelOptions =
+                    models
+                  newSettings.thirdProviderSettings!.OPENAI.pluginOptions =
+                    plugins
                   newSettings.thirdProviderSettings!.OPENAI.model = currentModel
                   log.info(`set currentModel model`, currentModel)
                   return newSettings
@@ -270,10 +272,11 @@ const useDaemonProcess = () => {
                     conversationId,
                     model,
                   )
-                  const conversation = await chatGptInstanceRef.current?.createConversation(
-                    conversationId,
-                    model,
-                  )
+                  const conversation =
+                    await chatGptInstanceRef.current?.createConversation(
+                      conversationId,
+                      model,
+                    )
                   if (conversation) {
                     return {
                       success: true,
@@ -309,9 +312,8 @@ const useDaemonProcess = () => {
                     parentMessageId,
                     text: questionText,
                   } = question
-                  let conversation = chatGptInstanceRef.current?.getConversation(
-                    conversationId,
-                  )
+                  let conversation =
+                    chatGptInstanceRef.current?.getConversation(conversationId)
                   const ChatGPTAIModel = meta.ChatGPTAIModel
                   if (!conversation) {
                     if (ChatGPTAIModel) {
@@ -321,14 +323,16 @@ const useDaemonProcess = () => {
                       ) {
                         chatGptInstanceRef.current.conversations = []
                       }
-                      conversation = await chatGptInstanceRef.current?.createConversation(
-                        conversationId,
-                        ChatGPTAIModel,
-                      )
+                      conversation =
+                        await chatGptInstanceRef.current?.createConversation(
+                          conversationId,
+                          ChatGPTAIModel,
+                        )
                     } else {
-                      conversation = await chatGptInstanceRef.current?.createConversation(
-                        conversationId,
-                      )
+                      conversation =
+                        await chatGptInstanceRef.current?.createConversation(
+                          conversationId,
+                        )
                     }
                     conversation && (await conversation.fetchHistoryAndConfig())
                   }
@@ -410,9 +414,10 @@ const useDaemonProcess = () => {
                     conversationId,
                   )
                   if (conversationId) {
-                    const isSuccessDeleteConversation = await chatGptInstanceRef.current.closeConversation(
-                      conversationId,
-                    )
+                    const isSuccessDeleteConversation =
+                      await chatGptInstanceRef.current.closeConversation(
+                        conversationId,
+                      )
                     return {
                       success: isSuccessDeleteConversation,
                       data: {},

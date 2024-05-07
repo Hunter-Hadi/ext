@@ -251,7 +251,9 @@ class OpenAIChat extends BaseChat {
     }
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    const currentModel = (await getAIProviderSettings('OPENAI'))?.model
+    const currentModel =
+      initConversationData.meta?.AIModel ||
+      (await getAIProviderSettings('OPENAI'))?.model
     const conversationId = await super.createConversation({
       ...initConversationData,
       meta: {

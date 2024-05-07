@@ -325,6 +325,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         data: {
           name: 'SEARCH_WITH_AI',
           id: 'SEARCH_WITH_AI',
+          type: 'preset',
+          featureName: 'search_with_ai',
           conversationId,
           host: getCurrentDomainHost(),
           aiProvide: searchWithAISettings.aiProvider,
@@ -332,6 +334,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
             SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[
               searchWithAISettings.aiProvider
             ],
+          url: location.href,
         },
       })
     }

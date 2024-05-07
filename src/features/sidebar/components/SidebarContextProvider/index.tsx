@@ -9,6 +9,7 @@ import { clientGetConversation } from '@/features/chatgpt/utils/chatConversation
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getInputMediator } from '@/store/InputMediator'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
@@ -142,9 +143,13 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
   }, [immersiveConversationId, conversationStatus])
 
   // 初始化时sidebarSettings为空，同步数据后更新至immersiveSettings
+  const isSyncRef = useRef(false)
   useEffect(() => {
-    if (!immersiveSettings) {
-      setImmersiveSettings(sidebarSettings)
+    if (!isSyncRef.current && sidebarSettings) {
+      isSyncRef.current = true
+      setImmersiveSettings(
+        mergeWithObject([sidebarSettings, immersiveSettings]),
+      )
       if (!immersiveConversationId) {
         // 初始化没有id，比如首次安装的时候登陆成功后不打开sidebar直接打开immersive chat
         sidebarContextValue.createConversation(conversationTypeRef.current)

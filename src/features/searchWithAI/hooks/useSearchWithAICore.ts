@@ -329,7 +329,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
           featureName: 'search_with_ai',
           conversationId,
           host: getCurrentDomainHost(),
-          aiProvide: searchWithAISettings.aiProvider,
+          aiProvider: searchWithAISettings.aiProvider,
           aiModel:
             SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[
               searchWithAISettings.aiProvider

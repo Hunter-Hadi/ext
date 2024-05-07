@@ -6,7 +6,11 @@ import Browser from 'webextension-polyfill'
 import { IAIProviderType } from '@/background/provider/chat'
 import ConversationManager from '@/background/src/chatConversations'
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
-import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
+import {
+  APP_USE_CHAT_GPT_API_HOST,
+  APP_VERSION,
+  DEFAULT_AI_OUTPUT_LANGUAGE_ID,
+} from '@/constants'
 import { fetchUserSubscriptionInfo } from '@/features/auth/utils'
 import { getCurrentUserLogInfo } from '@/features/auth/utils'
 import {
@@ -78,8 +82,11 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
 
       const interfaceLanguageCode =
         settings?.userSettings?.preferredLanguage ?? 'en'
-      const aiResponseLanguageCode =
-        settings?.userSettings?.language ?? 'English'
+      let aiResponseLanguageCode = settings?.userSettings?.language ?? 'English'
+
+      if (aiResponseLanguageCode === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
+        aiResponseLanguageCode = 'Auto'
+      }
 
       const info_object = {
         ai_provider:

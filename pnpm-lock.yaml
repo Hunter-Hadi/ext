@@ -77,6 +77,9 @@ dependencies:
   iso-639-3:
     specifier: ^3.0.1
     version: 3.0.1
+  js-sha3:
+    specifier: ^0.9.3
+    version: 0.9.3
   json5:
     specifier: ^2.2.3
     version: 2.2.3
@@ -5656,6 +5659,10 @@ packages:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
     dev: true
+
+  /js-sha3@0.9.3:
+    resolution: {integrity: sha512-BcJPCQeLg6WjEx3FE591wVAevlli8lxsxm9/FzV4HXkV49TmBH38Yvrpce6fjbADGMKFrBMGTqrVz3qPIZ88Gg==}
+    dev: false
 
   /js-tiktoken@1.0.10:
     resolution: {integrity: sha512-ZoSxbGjvGyMT13x6ACo9ebhDha/0FHdKA+OsQcMOWcm1Zs7r90Rhk5lhERLzji+3rA7EKpXCgwXcM5fF3DMpdA==}

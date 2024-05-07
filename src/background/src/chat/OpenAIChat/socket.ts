@@ -27,6 +27,8 @@
 // }
 //
 
+import { CHATGPT_WEBAPP_HOST } from '@/constants'
+
 interface IChatGPTRawMessage {
   message: {
     id: string
@@ -66,7 +68,7 @@ interface IChatGPTRawMessage {
   error: null | string
 }
 
-const CHAT_GPT_PROXY_HOST = `https://chat.openai.com`
+const CHAT_GPT_PROXY_HOST = `https://${CHATGPT_WEBAPP_HOST}`
 const chatGptRequest = (
   token: string,
   method: string,
@@ -89,7 +91,7 @@ const getConversationFileUrl = async (params: {
   sandbox_path: string
 }) => {
   const { token, conversationId, message_id, sandbox_path } = params
-  const fallbackUrl = `https://chat.openai.com/c/${conversationId}`
+  const fallbackUrl = `https://${CHATGPT_WEBAPP_HOST}/c/${conversationId}`
   // https://chat.openai.com/backend-api/conversation/647c720d-9eeb-4986-8b89-112098f107b6/interpreter/download?message_id=895986d6-bd39-404e-a485-923cdb5c7476&sandbox_path=%2Fmnt%2Fdata%2Fclip_3s.mp4
   try {
     const resp = await chatGptRequest(

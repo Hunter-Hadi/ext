@@ -33,6 +33,7 @@ import {
 } from '@/background/utils/syncSettings'
 import {
   APP_VERSION,
+  CHATGPT_WEBAPP_HOST,
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
@@ -471,7 +472,7 @@ const initChromeExtensionAction = () => {
       if (
         currentTab?.url?.startsWith('chrome') ||
         currentTab?.url?.startsWith('https://chrome.google.com/webstore') ||
-        currentTab?.url?.startsWith('https://chat.openai.com')
+        currentTab?.url?.startsWith(`https://${CHATGPT_WEBAPP_HOST}`)
       ) {
         // NOTE: extensions shortcuts的设置页面不应该弹出来阻止用户设置快捷键
         if (!currentTabUrl.startsWith('chrome://extensions/shortcuts')) {

@@ -2,7 +2,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import { IChatGPTModelType, IChatGPTPluginType } from '@/background/utils'
-import { AI_PROVIDER_MAP } from '@/constants'
+import { AI_PROVIDER_MAP, CHATGPT_WEBAPP_HOST } from '@/constants'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 import generateSentinelChatRequirementsToken from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
@@ -88,6 +88,7 @@ export interface IChatGPTConversation {
 }
 
 export interface IChatGPTDaemonProcess {
+  currentMaxAIConversationId?: string
   conversations: ChatGPTConversation[]
   token?: string
   models: IChatGPTModelType[]
@@ -107,7 +108,7 @@ export interface IChatGPTDaemonProcess {
   removeCacheConversation: () => Promise<void>
 }
 
-const CHAT_GPT_PROXY_HOST = `https://chat.openai.com`
+const CHAT_GPT_PROXY_HOST = `https://${CHATGPT_WEBAPP_HOST}`
 const CHAT_TITLE = 'MaxAI.me'
 
 const chatGptRequest = (
@@ -126,7 +127,7 @@ const chatGptRequest = (
   })
 }
 export const getConversationDownloadFile = async (params: { uuid: string }) => {
-  // https://chat.openai.com/backend-api/files/181e27fe-1a7b-4d14-ab17-68f70582ab30/download
+  // https://chatgpt.com/backend-api/files/181e27fe-1a7b-4d14-ab17-68f70582ab30/download
   const { uuid } = params
   try {
     const token = await getChatGPTAccessToken()
@@ -154,8 +155,8 @@ export const getConversationFileUrl = async (params: {
   sandbox_path: string
 }) => {
   const { conversationId, message_id, sandbox_path } = params
-  const fallbackUrl = `https://chat.openai.com/c/${conversationId}`
-  // https://chat.openai.com/backend-api/conversation/647c720d-9eeb-4986-8b89-112098f107b6/interpreter/download?message_id=895986d6-bd39-404e-a485-923cdb5c7476&sandbox_path=%2Fmnt%2Fdata%2Fclip_3s.mp4
+  const fallbackUrl = `https://${CHATGPT_WEBAPP_HOST}/c/${conversationId}`
+  // https://chatgpt.com/backend-api/conversation/647c720d-9eeb-4986-8b89-112098f107b6/interpreter/download?message_id=895986d6-bd39-404e-a485-923cdb5c7476&sandbox_path=%2Fmnt%2Fdata%2Fclip_3s.mp4
   try {
     const token = await getChatGPTAccessToken()
     const resp = await chatGptRequest(
@@ -245,7 +246,7 @@ export const setConversationProperty = async (
 export const getChatGPTAccessToken = async (
   notCatchError = false,
 ): Promise<string> => {
-  const resp = await fetch('https://chat.openai.com/api/auth/session')
+  const resp = await fetch(`https://${CHATGPT_WEBAPP_HOST}/api/auth/session`)
   if (resp.status === 403 && !notCatchError) {
     throw new Error('CLOUDFLARE')
   }
@@ -419,10 +420,12 @@ export class ChatGPTConversation {
     let resultMessageId = ''
     const settings = await getAIProviderSettings('OPENAI')
     let arkoseToken = undefined
-    const { chatRequirementsToken, dx } =
+    const { chatRequirementsToken, dx, proofToken } =
       await generateSentinelChatRequirementsToken(this.token)
     try {
-      arkoseToken = await generateArkoseToken(this.model, dx)
+      if (dx) {
+        arkoseToken = await generateArkoseToken(this.model, dx)
+      }
     } catch (e) {
       params.onEvent({
         type: 'error',
@@ -449,7 +452,9 @@ export class ChatGPTConversation {
       parent_message_id: parentMessageId,
       timezone_offset_min: new Date().getTimezoneOffset(),
       history_and_training_disabled: false,
+      force_nulligen: false,
       force_paragen: false,
+      force_paragen_model_slug: '',
       force_rate_limit: false,
       conversation_mode: {
         kind: 'primary_assistant',
@@ -462,7 +467,7 @@ export class ChatGPTConversation {
     }
     if (arkoseToken) {
       // NOTE: 只有gpt-4相关的模型需要传入arkoseToken
-      postMessage.arkose_token = arkoseToken
+      // postMessage.arkose_token = arkoseToken
     } else {
       // postMessage.arkose_token = null
     }
@@ -474,18 +479,34 @@ export class ChatGPTConversation {
       ) {
         // gpt-4现在可以带图片聊天
         try {
-          postMessage.messages[0].content.content_type = 'multimodal_text'
-          // 把用户上传的文件带进parts里
-          postMessage.messages[0].content.parts = params.meta.attachments
-            .map((chatUploadFile: any) => {
-              return {
-                width: 0,
-                height: 0,
-                asset_pointer: `file-service://${chatUploadFile.id}`,
-                size_bytes: chatUploadFile.size,
-              }
-            })
-            .concat(postMessage.messages[0].content.parts)
+          const validAttachments = params.meta.attachments.filter(
+            (chatUploadFile: any) =>
+              chatUploadFile.type.startsWith('image') ||
+              chatUploadFile.type.startsWith('audio'),
+          )
+          if (validAttachments.length > 0) {
+            postMessage.messages[0].content.content_type = 'multimodal_text'
+            // 把用户上传的文件带进parts里
+            postMessage.messages[0].content.parts = params.meta.attachments
+              .map((chatUploadFile: any) => {
+                let contentType = ''
+                // "image_asset_pointer",
+                // "audio_transcription",
+                if (chatUploadFile.type.startsWith('image')) {
+                  contentType = 'image_asset_pointer'
+                } else if (chatUploadFile.type.startsWith('audio')) {
+                  contentType = 'audio_transcription'
+                }
+                return {
+                  width: 0,
+                  height: 0,
+                  asset_pointer: `file-service://${chatUploadFile.id}`,
+                  contentType,
+                  size_bytes: chatUploadFile.size,
+                }
+              })
+              .concat(postMessage.messages[0].content.parts)
+          }
           postMessage.messages[0].metadata = {
             attachments: params.meta.attachments.map((chatUploadFile: any) => {
               return {
@@ -526,8 +547,17 @@ export class ChatGPTConversation {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
-        'Openai-Sentinel-Arkose-Token': arkoseToken || '',
-        'Openai-Sentinel-Chat-Requirements-Token': chatRequirementsToken,
+        ...(arkoseToken
+          ? {
+              'Openai-Sentinel-Arkose-Token': arkoseToken || '',
+            }
+          : {}),
+        ...(chatRequirementsToken
+          ? {
+              'Openai-Sentinel-Chat-Requirements-Token': chatRequirementsToken,
+            }
+          : {}),
+        ...(proofToken ? { 'Openai-Sentinel-Proof-Token': proofToken } : {}),
       } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: async (message: string) => {
@@ -792,6 +822,7 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   }
   models: IChatGPTModelType[]
   plugins: IChatGPTPluginType[]
+  currentMaxAIConversationId?: string
   constructor() {
     this.conversations = []
     this.abortFunctions = {}

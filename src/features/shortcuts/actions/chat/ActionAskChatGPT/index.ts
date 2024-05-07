@@ -6,7 +6,11 @@ import {
   checkISThirdPartyAIProvider,
   clientAskAIQuestion,
 } from '@/background/src/chat/util'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import {
+  authEmitPricingHooksLog,
+  getFeatureNameByConversationAndContextMenu,
+  getPromptTypeByContextMenu,
+} from '@/features/auth/utils/log'
 import { isPermissionCardSceneType } from '@/features/auth/utils/permissionHelper'
 import { getAIProviderChatFiles } from '@/features/chatgpt'
 import {
@@ -328,14 +332,21 @@ export class ActionAskChatGPT extends Action {
          * 前端不再依赖call_api来触发paywall付费卡点了
          * call_api主要是用来做log记录的，让我们自己能看到、分析用户的使用情况
          */
+        debugger
         clientMessageChannelEngine
           .postMessage({
             event: 'Client_logCallApiRequest',
             data: {
               name: contextMenu?.text || fallbackId,
               id: contextMenu?.id || fallbackId,
+              type: getPromptTypeByContextMenu(contextMenu).promptType,
+              featureName: getFeatureNameByConversationAndContextMenu(
+                conversation,
+                contextMenu,
+              ),
               host: getCurrentDomainHost(),
               conversationId: clientConversationEngine.currentConversationId,
+              url: location.href,
             },
           })
           .then()

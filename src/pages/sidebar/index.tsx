@@ -45,6 +45,7 @@ const ImmersiveChatPageSidebarInit: FC = () => {
       !currentConversationIdRef.current &&
       !isCreatingRef.current
     ) {
+      isCreatingRef.current = true
       createConversation(currentSidebarConversationType)
         .then()
         .catch()

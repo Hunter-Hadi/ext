@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "הזן שם",
     "feature_card__prompts__edit_prompt__field_icon__title": "סמל",
     "feature_card__prompts__edit_prompt__field_template__title": "תבנית הצעה",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "תבנית הצעת הממליץ של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "תבנית הצעת המודעה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "כאשר מופעל",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ההצעה תישלח ישירות ל-AI, שהיא \"התנהגות רגילה\" ברירת המחדל. כל תבניות ההצעות יהיו מופעלות כברירת מחדל.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "כאשר מנוטרל",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "ארכוב צ'אט לאחר",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "ב-MaxAI, אנחנו מבצעים ארכיב אוטומטי של צ'אטים שבלתי פעילים בתדירות שתבחר. זה יעניק לך התחלה חדשה וישמור על סרגל הצד שלך מסודר.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "תשובה מיידית במסנג'ר",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "תבנית הצעה של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "תבנית הצעה של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "תבנית הצעה של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "תבנית הצעה של AI.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "תבנית הצעת המודעה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "תבנית הצעת המודעה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "תבנית הצעת המענה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "תבנית הצעת המודעה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nתבנית דוגמה לפרומט:\nהצג סיכום של {{PAGE_CONTENT}} באתר {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "הגדרות שפה",
     "preset_variables__system__full_context__description": "תוכן ההקשר המלא",
     "preset_variables__system__target_context__description": "תוכן הקשר היעד",
-    "preset_variables__system__draft_context__description": "תוכן הקשר הטיוטה"
+    "preset_variables__system__draft_context__description": "תוכן הקשר הטיוטה",
+    "preset_variables__system__summary_page_content_representation__description": "תוכן הדף הנוכחי/קובץ PDF/סרטון YouTube",
+    "preset_variables__system__summary_page_content_representation__description__example1": "הצג סיכום של {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "פרומטים בלחיצה אחת",

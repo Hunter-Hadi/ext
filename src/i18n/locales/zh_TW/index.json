@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "輸入名稱",
     "feature_card__prompts__edit_prompt__field_icon__title": "圖示",
     "feature_card__prompts__edit_prompt__field_template__title": "提示模板",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "啟用時",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "該提示將直接發送給 AI，這是默認的「正常行為」。所有提示模板默認都啟用此選項。",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "禁用時",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "封存聊天後",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "在MaxAI中，我們根據您的選擇節奏自動封存閒置聊天。這讓您重新開始並保持側邊欄整潔。",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger 即時回覆",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI提示範本。\n範本可以包含以下變數之一：\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI提示範本。\n範本可以包含以下變數之一：\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI提示範本。\n範本可以包含以下變數之一：\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI提示範本。\n範本可以包含以下變數之一：\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI提示範本。\n範本可以包含以下任意數量的變數：",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\n範例提示模板：\n輸出{{CURRENT_WEBPAGE_DOMAIN}}上的{{PAGE_CONTENT}}摘要。"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "語言設定",
     "preset_variables__system__full_context__description": "完整內容",
     "preset_variables__system__target_context__description": "目標內容",
-    "preset_variables__system__draft_context__description": "草稿內容"
+    "preset_variables__system__draft_context__description": "草稿內容",
+    "preset_variables__system__summary_page_content_representation__description": "當前網頁/ PDF/ YouTube 視頻的內容",
+    "preset_variables__system__summary_page_content_representation__description__example1": "輸出{{PAGE_CONTENT}}的摘要"
   },
   "prompt_library": {
     "use_prompt_library__title": "1點擊提示",

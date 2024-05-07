@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Voer naam in",
     "feature_card__prompts__edit_prompt__field_icon__title": "Pictogram",
     "feature_card__prompts__edit_prompt__field_template__title": "Prompt-sjabloon",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{GEMARKEERDE_TEKST}}\n{{HUIDIG_WEBSITE_DOMEIN}}\n{{SYSTEEM_HUIDIGE_DATUM}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Indien ingeschakeld",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "De prompt wordt rechtstreeks naar AI gestuurd, wat de standaard \"normaal gedrag\" is. Alle prompt-sjablonen hebben deze optie standaard ingeschakeld.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Indien uitgeschakeld",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archiveren na",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chatberichten op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Direct antwoord in Messenger",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nVoorbeeld prompt sjabloon:\nGeef een samenvatting van de {{PAGE_CONTENT}} op {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "taalinstelling",
     "preset_variables__system__full_context__description": "volledige context inhoud",
     "preset_variables__system__target_context__description": "doelcontext inhoud",
-    "preset_variables__system__draft_context__description": "conceptcontext inhoud"
+    "preset_variables__system__draft_context__description": "conceptcontext inhoud",
+    "preset_variables__system__summary_page_content_representation__description": "de inhoud van de huidige webpagina/PDF/YouTube-video",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Geef een samenvatting van de {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",

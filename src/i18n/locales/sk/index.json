@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Zadajte názov",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Šablóna podnetu",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Keď je povolené",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Podnet bude priamo odoslaný na AI, čo je predvolené „normálne správanie“. Všetky šablóny podnetov budú mať túto možnosť predvolene povolenú.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Keď je zakázané",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Archivovať chat po",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Týmto získate čerstvý štart a udržujete svoj bočný panel uprataný.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Okamžitá odpoveď na Messenger",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPríklad šablóny podnetu:\nVýstupom je súhrn {{PAGE_CONTENT}} na {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "nastavenie jazyka",
     "preset_variables__system__full_context__description": "obsah plného kontextu",
     "preset_variables__system__target_context__description": "obsah cieľového kontextu",
-    "preset_variables__system__draft_context__description": "obsah konceptu"
+    "preset_variables__system__draft_context__description": "obsah konceptu",
+    "preset_variables__system__summary_page_content_representation__description": "obsah aktuálnej webovej stránky/PDF/YouTube videa",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Výstupom je súhrn {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikové podnety",

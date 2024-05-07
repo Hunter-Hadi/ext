@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "പേര് നൽകുക",
     "feature_card__prompts__edit_prompt__field_icon__title": "ഐക്കൺ",
     "feature_card__prompts__edit_prompt__field_template__title": "പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "എ.ഐ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും എണ്ണം ഉള്ളവയായിരിക്കാം:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "എ.ഐ. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് പലതരം വാരിയബിൾസ് ഉൾക്കൊള്ളാം:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "പ്രവർത്തനക്ഷമമാക്കപ്പെട്ടാല്‍",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "പ്രോംപ്റ്റ് നിയന്ത്രണങ്ങൾ സ്ഥാനത്തേക്ക് AI-യിലേക്ക് അയയ്ക്കുന്നു, ഇത് ഡിഫോൾട്ട് \"സാധാരണ പ്രവർത്തനം\" ആണ്.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "പ്രവർത്തനക്ഷമമല്ലാത്താക്കപ്പെട്ടാല്‍",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "ചാറ്റ് ആർക്കൈവ് ചെയ്യുക",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-യിൽ, നിങ്ങൾക്ക് തിരികെ ഉള്ള ചാറ്റുകൾ നിലവിലെ അവസ്ഥയിൽ ഓട്ടോ ആർക്കൈവ് ചെയ്യുന്നു. ഇത് നിങ്ങളുടെ സൈഡ്ബാർ ശുകർത്തപ്പെടുത്തുന്നുവെന്ന് ഉറപ്പാക്കുന്നു.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "മെസ്സേഞ്ചർ ഇൻസ്റ്റന്റ് പ്രതികരണം",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "എയ് പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും നമ്പറുകളും ഉൾപ്പെടുത്താവുന്നു:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "എയ് പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും നമ്പറുകളും ഉൾപ്പെടുത്താവുന്നു:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "എയ് പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും നമ്പറുകളും ഉൾപ്പെടുത്താവുന്നു:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "എയ് പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റ് ഏതെങ്കിലും നമ്പറുകളും ഉൾപ്പെടുത്താവുന്നു:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "എ.ഐ. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് പലതരം വാരിയബിൾസ് ഉൾക്കൊള്ളാം:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "എ.ഐ. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് പലതരം വാരിയബിൾസ് ഉൾക്കൊള്ളാം:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "എയ്‌ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് ഏതെങ്കിലും എണ്ണം ചരങ്ങളും ഉൾപ്പെടുത്താവുന്നു:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "എ.ഐ. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് പലതരം വാരിയബിൾസ് ഉൾക്കൊള്ളാം:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nഉദാഹരണ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്:\n{{CURRENT_WEBPAGE_DOMAIN}} യിൽ നിന്നുള്ള {{PAGE_CONTENT}} യുടെ ഒരു സംഗ്രഹം പ്രകടിപ്പിക്കുക."
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "ഭാഷ ക്രമീകരണം",
     "preset_variables__system__full_context__description": "പൂർണ്ണ സംദേശം ഉള്ളടക്കം",
     "preset_variables__system__target_context__description": "ലക്ഷ്യ സംദേശം ഉള്ളടക്കം",
-    "preset_variables__system__draft_context__description": "ഡ്രാഫ്റ്റ് സംദേശം ഉള്ളടക്കം"
+    "preset_variables__system__draft_context__description": "ഡ്രാഫ്റ്റ് സംദേശം ഉള്ളടക്കം",
+    "preset_variables__system__summary_page_content_representation__description": "നിലവിലെ വെബ്‌പേജിന്റെ/PDF/YouTube വീഡിയോയുടെ ഉള്ളടക്കം",
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} യുടെ ഒരു സംഗ്രഹം പ്രകടിപ്പിക്കുക"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompt",

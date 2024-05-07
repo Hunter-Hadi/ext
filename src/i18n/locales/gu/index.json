@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "નામ દાખલ કરો",
     "feature_card__prompts__edit_prompt__field_icon__title": "આઈકોન",
     "feature_card__prompts__edit_prompt__field_template__title": "પ્રોમ્પ્ટ ટેમ્પલેટ",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરીએબલ્સનો ઉપયોગ કરી શકો છો:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સ શામેલ કરી શકે છે:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "જ્યારે સક્ષમ હોય",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "પ્રોમ્પ્ટ સીધે AI માં મોકલવામાં આવશે, જે ડિફોલ્ટ \"સામાન્ય વર્તન\" છે. બધા પ્રોમ્પ્ટ ટેમ્પલેટ્સમાં આ વિકલ્પ ડિફોલ્ટ રીતે સક્ષમ હશે.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "જ્યારે અક્ષમ હોય",
@@ -259,10 +259,11 @@
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "મેસેન્જર તક જવાબ",
     "feature_card__sidebar__field__auto_archive__title": "આપો આર્કાઇવ: ચાલી જાઓ અને સાફ કરો",
     "feature_card__sidebar__field__auto_archive__button__title": "ચેટ આર્કાઇવ કરો પછી",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સનો ઉપયોગ કરી શકો છો:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સનો ઉપયોગ કરી શકો છો:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સનો ઉપયોગ કરી શકો છો:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સનો ઉપયોગ કરી શકો છો:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સ શામેલ કરી શકે છે:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સ શામેલ કરી શકે છે:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના વેરિએબલ્સમાંથી કોઈપણ નંબર શામેલ કરી શકે:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "એઆઈ પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સ શામેલ કરી શકે છે:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nઉદાહરણ પ્રોમ્પ્ટ ટેમ્પલેટ:\n{{CURRENT_WEBPAGE_DOMAIN}} પર {{PAGE_CONTENT}} ની સંક્ષેપમાં આઉટપુટ કરો."
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "ભાષા સેટિંગ",
     "preset_variables__system__full_context__description": "પૂર્ણ સંદર્ભ સામગ્રી",
     "preset_variables__system__target_context__description": "લક્ષ્ય સંદર્ભ સામગ્રી",
-    "preset_variables__system__draft_context__description": "ડ્રાફ્ટ સંદર્ભ સામગ્રી"
+    "preset_variables__system__draft_context__description": "ડ્રાફ્ટ સંદર્ભ સામગ્રી",
+    "preset_variables__system__summary_page_content_representation__description": "વર્તમાન વેબપેજ/PDF/YouTube વિડિઓની સામગ્રી",
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} ની સંક્ષેપમાં આઉટપુટ કરો"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",

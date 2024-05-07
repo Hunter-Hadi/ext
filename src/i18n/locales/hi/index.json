@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "नाम दर्ज करें",
     "feature_card__prompts__edit_prompt__field_icon__title": "आइकन",
     "feature_card__prompts__edit_prompt__field_template__title": "प्रॉम्प्ट टेम्पलेट",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से कोई भी संख्या शामिल हो सकती है:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित किसी भी संख्या के चरों को शामिल किया जा सकता है:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "जब सक्षम हो",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "प्रॉम्प्ट को सीधे AI को भेजा जाएगा, जो डिफ़ॉल्ट \"सामान्य व्यवहार\" है। सभी प्रॉम्प्ट टेम्पलेट्स को डिफ़ॉल्ट रूप से इस विकल्प को सक्षम किया जाएगा।",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "जब अक्षम हो",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "चैट को आर्काइव करें बाद में",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI में, हम आपकी पसंद के अनुसार खाली चैट को ऑटो आर्काइव करते हैं। इससे आपको एक नयी शुरुआत मिलती है और आपका साइडबार साफ रहता है।",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "मैसेंजर तत्काल जवाब",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से कोई भी संख्या शामिल हो सकती है:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से कोई भी संख्या शामिल हो सकती है:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से कोई भी संख्या शामिल हो सकती है:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से कोई भी संख्या शामिल हो सकती है:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित किसी भी संख्या के चरों को शामिल किया जा सकता है:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित किसी भी संख्या के चरों को शामिल किया जा सकता है:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से किसी भी संख्या शामिल हो सकती है:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित किसी भी संख्या के चरों को शामिल किया जा सकता है:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nउदाहरण प्रॉम्प्ट टेम्पलेट:\n{{PAGE_CONTENT}} का संक्षेप {{CURRENT_WEBPAGE_DOMAIN}} पर आउटपुट करें।"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "भाषा सेटिंग",
     "preset_variables__system__full_context__description": "पूर्ण संदर्भ सामग्री",
     "preset_variables__system__target_context__description": "लक्षित संदर्भ सामग्री",
-    "preset_variables__system__draft_context__description": "मसौदे का संदर्भ सामग्री"
+    "preset_variables__system__draft_context__description": "मसौदे का संदर्भ सामग्री",
+    "preset_variables__system__summary_page_content_representation__description": "वर्तमान वेबपेज/पीडीएफ/यूट्यूब वीडियो की सामग्री",
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} का संक्षेप आउटपुट करें"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",

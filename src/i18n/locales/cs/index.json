@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Zadejte název",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Šablona podnětu",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Při povolení",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Podnět bude přímo odeslán na AI, což je výchozí „normální chování“. Všechny šablony podnětů budou mít tuto možnost výchozí povolenou.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Při zakázání",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Archivovat chat po",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podle vašeho výběru. Tím získáte čistý start a udržujete si pořádek v bočním panelu.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Okamžitá odpověď na Messengeru",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Šablona AI nápovědy.\nŠablona může obsahovat libovolné množství následujících proměnných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablona AI nápovědy.\nŠablona může obsahovat libovolné množství následujících proměnných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablona AI nápovědy.\nŠablona může obsahovat libovolné množství následujících proměnných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablona AI nápovědy.\nŠablona může obsahovat libovolné množství následujících proměnných:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablona AI promptu.\nŠablona může obsahovat libovolný počet následujících proměnných:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPříklad šablony dotazu:\nVýstup shrnutí {{PAGE_CONTENT}} na {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "nastavení jazyka",
     "preset_variables__system__full_context__description": "obsah plného kontextu",
     "preset_variables__system__target_context__description": "obsah cílového kontextu",
-    "preset_variables__system__draft_context__description": "obsah konceptu"
+    "preset_variables__system__draft_context__description": "obsah konceptu",
+    "preset_variables__system__summary_page_content_representation__description": "obsah aktuální webové stránky/PDF/YouTube video",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Výstup shrnutí {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-kliknutí na podněty",

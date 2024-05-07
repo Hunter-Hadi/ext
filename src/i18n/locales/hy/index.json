@@ -99,7 +99,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Մուտքագրեք անունը",
     "feature_card__prompts__edit_prompt__field_icon__title": "Նկար",
     "feature_card__prompts__edit_prompt__field_template__title": "Հուշումի ձևաչափը",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ԱԻ խնդրագրման ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից որևէ քանակության՝\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ԱԻ խնդրագրության ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից ցանկացած քանակության՝",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Թույլատրված դեպքում",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Հուշումը կուղարկվի անմիջապես AI-ին, որը էլեմենտար վիճակն է \"սովորական վայրկյանի\" հիմանական վայրկյանի: Բոլոր հուշումների ձևաչափները կունենան այս տարբերակը թույլատրված:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Արգելափակված դեպքում",
@@ -256,10 +256,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Արխիվացնել խոսակցությունը հետևյալում",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-ում, մենք ավտոմարտահրաշալի արխիվացնում ենք անհանգստանալով խոսակցությունը ընտրած պահին։ Այսպիսով, դուք կսկսեք նորից և կպահպանեք ձեր մոտավորությունը մաքրված։",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Մեսենջերի անմիջական պատասխան",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "ՀԱՅՏՈՒՄ ավելացնելու համար այստեղ գրեք AI առաջադրանքի ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից որևէ թիվ՝\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "ՀԱՅՏՈՒՄ ավելացնելու համար այստեղ գրեք AI առաջադրանքի ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից որևէ թիվ՝\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "ՀԱՅՏՈՒՄ ավելացնելու համար այստեղ գրեք AI առաջադրանքի ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից որևէ թիվ՝\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "ՀԱՅՏՈՒՄ ավելացնելու համար այստեղ գրեք AI առաջադրանքի ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից որևէ թիվ՝\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "ԱԻ խնդրագրության ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից ցանկացած քանակության՝",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "ԱԻ խնդրագրության ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից ցանկացած քանակության՝",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "ԱԻ-ի անվտանգության ձևանմուշ:\nԱյս ձևանմուշը կարող է պարունակել հետևյալ փոփոխականներից ցանկացած քանակության՝",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "ԱԻ խնդրագրության ձևաչափը։\nԱյս ձևաչափում կարող եք ներառել հետևյալ փոփոխականներից ցանկացած քանակության՝",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nՕրինակ՝\nԵլքագրեք {{PAGE_CONTENT}}-ի ամփոփումը {{CURRENT_WEBPAGE_DOMAIN}}-ում:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "լեզվի կարգավորում",
     "preset_variables__system__full_context__description": "լրիվ համատեքստի բովանդակություն",
     "preset_variables__system__target_context__description": "նպատակային համատեքստի բովանդակություն",
-    "preset_variables__system__draft_context__description": "սևագրի համատեքստի բովանդակություն"
+    "preset_variables__system__draft_context__description": "սևագրի համատեքստի բովանդակություն",
+    "preset_variables__system__summary_page_content_representation__description": "ընթացիկ վեբ էջի/ՖՈՒՆ-ի/YouTube տեսանյութի բոլոր պարագայումները",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Ելքագրեք {{PAGE_CONTENT}}-ի ամփոփումը"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-կլիք հարցեր",

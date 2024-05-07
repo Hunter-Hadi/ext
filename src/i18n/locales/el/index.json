@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Εισαγάγετε όνομα",
     "feature_card__prompts__edit_prompt__field_icon__title": "Εικονίδιο",
     "feature_card__prompts__edit_prompt__field_template__title": "Πρότυπο υποδείξεων",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Το πρότυπο της AI πρότασης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις παρακάτω μεταβλητές:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Το πρότυπο της AI πρότασης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιονδήποτε αριθμό από τις παρακάτω μεταβλητές:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Όταν είναι ενεργοποιημένο",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Η υπόδειξη θα αποστέλλεται απευθείας στο AI, που είναι η προεπιλεγμένη \"φυσιολογική συμπεριφορά\". Όλα τα πρότυπα υποδείξεων θα έχουν αυτήν την επιλογή ενεργοποιημένη από προεπιλογή.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Όταν είναι απενεργοποιημένο",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Αρχειοθέτηση συνομιλίας μετά από",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Στο MaxAI, αρχειοθετούμε αυτόματα τις αδρές συνομιλίες με τη συχνότητα της επιλογής σας. Αυτό σας δίνει ένα φρέσκο ξεκίνημα και διατηρεί την πλευρική γραμμή σας τακτοποιημένη.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Άμεση απάντηση στο Messenger",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Το πρότυπο της ΤΝ για άμεση απάντηση.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις παρακάτω μεταβλητές:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Το πρότυπο της ΤΝ για άμεση απάντηση.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις παρακάτω μεταβλητές:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Το πρότυπο της ΤΝ για άμεση απάντηση.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις παρακάτω μεταβλητές:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Το πρότυπο της ΤΝ για σύνοψη.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις παρακάτω μεταβλητές:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Το πρότυπο της AI πρότασης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιονδήποτε αριθμό από τις παρακάτω μεταβλητές:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Το πρότυπο της AI πρότασης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιονδήποτε αριθμό από τις παρακάτω μεταβλητές:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Το πρότυπο της αυτόματης απάντησης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις παρακάτω μεταβλητές:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Το πρότυπο της AI πρότασης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιονδήποτε αριθμό από τις παρακάτω μεταβλητές:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nΠαράδειγμα προτύπου εντολής:\nΕμφάνιση μιας σύνοψης του {{PAGE_CONTENT}} στον ιστότοπο {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "ρύθμιση γλώσσας",
     "preset_variables__system__full_context__description": "πλήρες περιεχόμενο πλαισίου",
     "preset_variables__system__target_context__description": "περιεχόμενο στόχου πλαισίου",
-    "preset_variables__system__draft_context__description": "περιεχόμενο προσχέδιου πλαισίου"
+    "preset_variables__system__draft_context__description": "περιεχόμενο προσχέδιου πλαισίου",
+    "preset_variables__system__summary_page_content_representation__description": "το περιεχόμενο της τρέχουσας ιστοσελίδας/PDF/βίντεο YouTube",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Εμφάνιση μιας σύνοψης του {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-κλικ προτροπές",

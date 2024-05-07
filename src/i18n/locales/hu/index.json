@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Adja meg a nevet",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Prompt sablon",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Az AI prompt sablon.\nA sablon tartalmazhat bármennyi a következő változóból:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Amikor engedélyezve van",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "A promptot közvetlenül elküldi az AI-nak, ami az alapértelmezett „normál viselkedés”. Az összes prompt sablon alapértelmezetten engedélyezett lesz.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Amikor letiltva van",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Csevegés archiválása után",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI-ban automatikusan archiváljuk az üresjáratú beszélgetéseket a választott időközönként. Ez lehetővé teszi, hogy frissen kezdjen és rendezett maradjon az oldalsáv.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Azonnali válasz a Messengerben",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Az AI prompt sablon.\nA sablon tartalmazhat bármennyi a következő változók közül:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nPélda prompt sablon:\nKészítsen összefoglalót a(z) {{PAGE_CONTENT}}-ról a(z) {{CURRENT_WEBPAGE_DOMAIN}} webhelyen."
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "nyelvi beállítás",
     "preset_variables__system__full_context__description": "teljes kontextus tartalom",
     "preset_variables__system__target_context__description": "cél kontextus tartalom",
-    "preset_variables__system__draft_context__description": "vázlat kontextus tartalom"
+    "preset_variables__system__draft_context__description": "vázlat kontextus tartalom",
+    "preset_variables__system__summary_page_content_representation__description": "a jelenlegi weboldal/tartalom/PDF/YouTube videó tartalma",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Készítsen összefoglalót a(z) {{PAGE_CONTENT}}-ról"
   },
   "prompt_library": {
     "use_prompt_library__title": "1 kattintásos segédletek",

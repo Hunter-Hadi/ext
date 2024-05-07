@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "이름 입력",
     "feature_card__prompts__edit_prompt__field_icon__title": "아이콘",
     "feature_card__prompts__edit_prompt__field_template__title": "프롬프트 템플릿",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n다음 변수 중 어떤 수의 변수를 포함할 수 있습니다:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "활성화된 경우",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "프롬프트가 직접 AI로 전송됩니다. 이것이 기본 \"일반 동작\"입니다. 모든 프롬프트 템플릿은 기본적으로 이 옵션이 활성화됩니다.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "비활성화된 경우",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "채팅 아카이브하기",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI에서는 선택한 주기로 대화를 자동으로 아카이브합니다. 이를 통해 새로운 시작을 할 수 있고 사이드바를 깔끔하게 유지할 수 있습니다.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "메신저 즉시 응답",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n다음 변수 중 어떤 수의 변수를 포함할 수 있습니다:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n다음 변수 중 어떤 수의 변수를 포함할 수 있습니다:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n다음 변수 중 어떤 수의 변수를 포함할 수 있습니다:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\n예시 프롬프트 템플릿:\n{{CURRENT_WEBPAGE_DOMAIN}}의 {{PAGE_CONTENT}}에 대한 요약을 출력합니다."
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "언어 설정",
     "preset_variables__system__full_context__description": "전체 컨텍스트 내용",
     "preset_variables__system__target_context__description": "대상 컨텍스트 내용",
-    "preset_variables__system__draft_context__description": "드래프트 컨텍스트 내용"
+    "preset_variables__system__draft_context__description": "드래프트 컨텍스트 내용",
+    "preset_variables__system__summary_page_content_representation__description": "현재 웹페이지/PDF/YouTube 비디오의 내용",
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}}에 대한 요약을 출력합니다."
   },
   "prompt_library": {
     "use_prompt_library__title": "1-클릭 프롬프트",

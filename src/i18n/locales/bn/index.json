@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "নাম লিখুন",
     "feature_card__prompts__edit_prompt__field_icon__title": "আইকন",
     "feature_card__prompts__edit_prompt__field_template__title": "প্রম্পট টেমপ্লেট",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অংশ থাকতে পারে:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "যখন সক্ষম",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "প্রম্পটটি সরাসরি AI-এ পাঠানো হবে, যা ডিফল্ট \"সাধারণ আচরণ\"। সব প্রম্পট টেমপ্লেটগুলি ডিফল্টভাবে এই অপশনটি সক্ষম থাকবে।",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "যখন অক্ষম",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "চ্যাট আর্কাইভ করুন পরে",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-তে, আমরা আপনার পছন্দের ক্যাডেন্সে আইডেল চ্যাটগুলি অটোমেটিকভাবে আর্কাইভ করি। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাজানো রাখে।",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "মেসেঞ্জার তাৎক্ষণিক উত্তর",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির মধ্যে যেকোনো সংখ্যক অংশ থাকতে পারে:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nউদাহরণ প্রম্পট টেমপ্লেট:\n{{CURRENT_WEBPAGE_DOMAIN}} এ {{PAGE_CONTENT}} এর সংক্ষিপ্ত বিবরণ প্রদান করুন।"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "ভাষা সেটিং",
     "preset_variables__system__full_context__description": "সম্পূর্ণ প্রসঙ্গ বিষয়বস্তু",
     "preset_variables__system__target_context__description": "লক্ষ্য প্রসঙ্গ বিষয়বস্তু",
-    "preset_variables__system__draft_context__description": "খসড়া প্রসঙ্গ বিষয়বস্তু"
+    "preset_variables__system__draft_context__description": "খসড়া প্রসঙ্গ বিষয়বস্তু",
+    "preset_variables__system__summary_page_content_representation__description": "বর্তমান ওয়েবপেজ/পিডিএফ/ইউটিউব ভিডিওর সামগ্রী",
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} এর সংক্ষিপ্ত বিবরণ প্রদান করুন"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ক্লিক প্রম্পট",

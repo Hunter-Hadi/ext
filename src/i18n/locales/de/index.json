@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Namen eingeben",
     "feature_card__prompts__edit_prompt__field_icon__title": "Symbol",
     "feature_card__prompts__edit_prompt__field_template__title": "Vorgabenvorlage",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Wenn aktiviert",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Die Vorgabe wird direkt an die KI gesendet, was das standardmäßige \"normale Verhalten\" ist. Alle Vorgabenvorlagen haben diese Option standardmäßig aktiviert.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Wenn deaktiviert",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archivieren nach",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir im Leerlauf automatisch Chats in dem von Ihnen gewählten Rhythmus. Dies gibt Ihnen einen frischen Start und hält Ihre Seitenleiste ordentlich.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Sofortige Antwort im Messenger",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Die KI-Vorlagenvorlage.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nBeispiel Vorlagentext:\nGeben Sie eine Zusammenfassung des {{PAGE_CONTENT}} auf {{CURRENT_WEBPAGE_DOMAIN}} aus."
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "Spracheinstellung",
     "preset_variables__system__full_context__description": "vollständiger Kontextinhalt",
     "preset_variables__system__target_context__description": "Zielkontextinhalt",
-    "preset_variables__system__draft_context__description": "Entwurfskontextinhalt"
+    "preset_variables__system__draft_context__description": "Entwurfskontextinhalt",
+    "preset_variables__system__summary_page_content_representation__description": "der Inhalt der aktuellen Webseite/PDF/YouTube-Video",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Geben Sie eine Zusammenfassung des {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-Klick-Prompts",

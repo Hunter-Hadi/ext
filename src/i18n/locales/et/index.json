@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Sisesta nimi",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikoon",
     "feature_card__prompts__edit_prompt__field_template__title": "Vihje mall",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI prompti mall.\nMall võib sisaldada järgmisi muutujaid:\n{{VALITUD_TEKST}}\n{{PRAEGUNE_VEEBISAITI_DOMÄÄN}}\n{{SÜSTEEMI_PRAEGUNE_KUUPÄEV}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI juhendmustrid.\nMustris võib olla mis tahes arv järgmistest muutujatest:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Kui lubatud",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Vihje saadetakse otse AI-le, mis on vaikimisi \"tavaline käitumine\". Kõik vihje mallid on selle valiku vaikimisi lubatud.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Kui keelatud",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Arhiveeri vestlus pärast",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-s arhiveerime jõudeoleva vestluse teie valitud sagedusega. See annab teile värskendava alguse ja hoiab külgriba korras.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messengeri kiire vastus",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI juhendmustrid.\nMuster võib sisaldada järgmisi muutujaid:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI juhendmustrid.\nMuster võib sisaldada järgmisi muutujaid:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI juhendmustrid.\nMuster võib sisaldada järgmisi muutujaid:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI juhendmustrid.\nMuster võib sisaldada järgmisi muutujaid:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI juhendmustrid.\nMustris võib olla mis tahes arv järgmistest muutujatest:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI juhendmustrid.\nMustris võib olla mis tahes arv järgmistest muutujatest:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI prompti mall.\nMall võib sisaldada järgmisi muutujaid:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI juhendmustrid.\nMustris võib olla mis tahes arv järgmistest muutujatest:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nNäiteks küsimuse mall:\nVäljasta kokkuvõte {{PAGE_CONTENT}} kohta domeenil {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "keele seadistust",
     "preset_variables__system__full_context__description": "täielik konteksti sisu",
     "preset_variables__system__target_context__description": "sihtkonteksti sisu",
-    "preset_variables__system__draft_context__description": "mustandi konteksti sisu"
+    "preset_variables__system__draft_context__description": "mustandi konteksti sisu",
+    "preset_variables__system__summary_page_content_representation__description": "praeguse veebilehe/PDF-i/YouTube'i video sisu",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Väljasta kokkuvõte {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klõpsuga vihjed",

@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Ange namn",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Förslagsmall",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:\n{{VALD_TEXT}}\n{{NUVARANDE_WEBBPLATS_DOMÄN}}\n{{SYSTEM_NUVARANDE_DATUM}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "När det är aktiverat",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Förslaget kommer att skickas direkt till AI, vilket är det standardmässiga \"normala beteendet\". Alla förslagsmallar har detta alternativ aktiverat som standard.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "När det är inaktiverat",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Arkivera chatt efter",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverar vi automatiskt inaktiva chattar i den takt du väljer. Det ger dig en fräsch start och håller din sidofält snygg.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Snabbt svar i Messenger",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera vilket antal av följande variabler som helst:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera vilket antal av följande variabler som helst:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera vilket antal av följande variabler som helst:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera vilket antal av följande variabler som helst:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nExempel på promptmall:\nGenerera en sammanfattning av {{PAGE_CONTENT}} på {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "språkinställning",
     "preset_variables__system__full_context__description": "hela sammanhanget innehåll",
     "preset_variables__system__target_context__description": "mål sammanhanget innehåll",
-    "preset_variables__system__draft_context__description": "utkast sammanhanget innehåll"
+    "preset_variables__system__draft_context__description": "utkast sammanhanget innehåll",
+    "preset_variables__system__summary_page_content_representation__description": "innehållet på den aktuella webbsidan/PDF:en/YouTube-videon",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Generera en sammanfattning av {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klicka-promptar",

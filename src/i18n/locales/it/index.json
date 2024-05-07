@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Inserisci nome",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icona",
     "feature_card__prompts__edit_prompt__field_template__title": "Modello di promemoria",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Quando abilitato",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Il promemoria verrà inviato direttamente all'IA, che è il \"comportamento normale\" predefinito. Tutti i modelli di promemoria avranno questa opzione abilitata per impostazione predefinita.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Quando disabilitato",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Archivia chat dopo",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI, archiviamo automaticamente le chat inattive alla cadenza da te scelta. Questo ti offre un nuovo inizio e mantiene ordinata la tua barra laterale.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Risposta istantanea di Messenger",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Il modello di prompt dell'IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Il modello di suggerimento IA.\nIl modello può includere qualsiasi numero delle seguenti variabili:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nEsempio di modello di prompt:\nGenera un riassunto del {{PAGE_CONTENT}} su {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "Chiudi la barra laterale",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "impostazione della lingua",
     "preset_variables__system__full_context__description": "contenuto contesto completo",
     "preset_variables__system__target_context__description": "contenuto contesto di destinazione",
-    "preset_variables__system__draft_context__description": "contenuto contesto bozza"
+    "preset_variables__system__draft_context__description": "contenuto contesto bozza",
+    "preset_variables__system__summary_page_content_representation__description": "il contenuto della pagina corrente/PDF/video di YouTube",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Genera un riassunto del {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompt in un clic",

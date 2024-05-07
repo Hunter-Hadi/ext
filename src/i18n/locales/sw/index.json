@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Ingiza jina",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Kigezo cha dokezo",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya vipengele vifuatavyo:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya pembejeo zifuatazo:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Ikiwezeshwa",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Dokezo litatumwa moja kwa moja kwa AI, ambayo ni \"tabia ya kawaida\". Chaguo hili litawezeshwa kwa chaguo-msingi katika kila kigezo cha dokezo.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Ikiwa imezimwa",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Hifadhi gumzo baada ya",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi gumzo lisilo na shughuli kwa kasi unayopendelea. Hii inakupa mwanzo mpya na kuweka upau wako safi.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Jibu la Papo kwa Papo la Mtumaji",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Kigezo cha AI cha onyesho.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Kigezo cha AI cha onyesho.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Kigezo cha AI cha onyesho.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Kigezo cha AI cha onyesho.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya pembejeo zifuatazo:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya pembejeo zifuatazo:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Kigezo cha kichocheo cha AI.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Kigezo cha mwaliko wa AI.\nKigezo kinaweza kuwa na idadi yoyote ya pembejeo zifuatazo:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "\n\nMfano wa kigezo cha swali:\nToa muhtasari wa {{PAGE_CONTENT}} kwenye kikoa cha {{CURRENT_WEBPAGE_DOMAIN}}."
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -1021,7 +1022,9 @@
     "ai_response_language__settings__label_2": "mpangilio wa lugha",
     "preset_variables__system__full_context__description": "maudhui kamili ya muktadha",
     "preset_variables__system__target_context__description": "maudhui ya lengo la muktadha",
-    "preset_variables__system__draft_context__description": "maudhui ya rasimu ya muktadha"
+    "preset_variables__system__draft_context__description": "maudhui ya rasimu ya muktadha",
+    "preset_variables__system__summary_page_content_representation__description": "maudhui ya ukurasa wa sasa/PDF/Video ya YouTube",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Toa muhtasari wa {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "Vidhibiti vya 1-click",

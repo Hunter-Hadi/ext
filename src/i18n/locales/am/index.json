@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "ስም ያስገቡ",
     "feature_card__prompts__edit_prompt__field_icon__title": "አካውንት",
     "feature_card__prompts__edit_prompt__field_template__title": "መልዕክት ታሪክ",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "የ ChatGPT ለመቀየር የጥቅል አስተካክል።\nየ በሽታ ማስተካከያ የሚሆን ስምምነት የሚለውን ቫሪያቸውን ይጨምሩ:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "የ AI መልእክት ታሪክን።\nታሪክዎ የሚከተለው ስሌት የሚሆነውን ቫርድን ይመልከቱ:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "ከሚታይ ጋር",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "መልዕክትዎ በአንድነት AI ላይ ይላኩልን። ሁሉም መልዕክቶች በአንድነት AI ላይ ይሰራሉ።",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "ከሚታይ ጋር",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "የበሽታውን መጠቀም: በሽታውን በመስጠት ማስተካከያ",
     "feature_card__sidebar__field__auto_archive__button__title": "የበሽታውን በመስጠት ማስተካከያ",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ስልክ የበሽታውን በመስጠት ማስተካከያ የሚያስችል በሽታውን በመስጠት ማስተካከያ ይጠቀሙ። ይህን ለማድረግ እንዴት ማሳየት እንደሚችል ይጠቀሙ።",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "መልእክት የሚጠቀሙበት መልእክት"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "መልእክት የሚጠቀሙበት መልእክት",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "የ AI መልስ ታሪክ አገልግሎት።\nታሪክዎ የሚከተለው ለዚህ በማስቀመጥ የሚያስችል ቦታዎችን ይጨምሩ:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "የ AI መልስ ታሪክ አገልግሎት።\nታሪክዎ የሚከተለው ለዚህ በማስቀመጥ የሚያስችል ቦታዎችን ይጨምሩ:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "የ AI መልስ ታሪክ አገልግሎት።\nታሪክዎ የሚከተለው ለዚህ በማስቀመጥ የሚያስችል ቦታዎችን ይጨምሩ:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "የ AI መልስ ታሪክ አገልግሎት።\nታሪክዎ የሚከተለው ለዚህ በማስቀመጥ የሚያስችል ቦታዎችን ይጨምሩ:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -1021,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click መልእክት",
-    "edit_prompt__template__placeholder": "የ ChatGPT ስህተት ማስገባትን የሚፈልጉ መልእክቶች።\nየ ስህተት ቅጥር የሚለውን ስህተት ያስገቡት መሳሪያዎች ይህንን በተጨማሪ ቁጥሮች ይመልከቱ:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "የ AI መልእክት ታሪክን።\nታሪክዎ የሚከተለው ስሌት የሚሆነውን ቫርድን ይመልከቱ:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "የሚወዳደር",
     "tab__public__title": "የህዝብ",
     "tab__own__title": "የእርስዎ",

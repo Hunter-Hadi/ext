@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "नाव प्रविष्ट करा",
     "feature_card__prompts__edit_prompt__field_icon__title": "चिन्ह",
     "feature_card__prompts__edit_prompt__field_template__title": "प्रॉम्प्ट टेम्पलेट",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT साठी प्रॉम्प्ट टेम्पलेट.\nटेम्पलेटमध्ये खालील चरणांची कोणतीही संख्या समाविष्ट केली जाऊ शकते:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालील चरणांमध्ये कोणत्याही संख्येने व्हेरिएबल्स समाविष्ट केले जाऊ शकतात:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "सक्षम केल्यास",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "प्रॉम्प्ट सीधे AIला पाठवला जाईल, जो \"सामान्य व्यवहार\" आहे. सर्व प्रॉम्प्ट टेम्पलेटसाठी हे पर्याय डिफॉल्टप्रमाणे सक्षम केले जाईल.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "अक्षम केल्यास",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "स्वयंसचित्रीकरण: जेव्हा जाऊन टाकता तेव्हा स्वच्छ करा",
     "feature_card__sidebar__field__auto_archive__button__title": "चॅट आर्काइव करा नंतर",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या गतीनुसार आपल्या खालील चॅट आपोआप आर्काइव करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुस्थित ठेवते.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "मेसेंजर त्वरित प्रतिसाद"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "मेसेंजर त्वरित प्रतिसाद",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालील सर्व चर असू शकतात:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालील सर्व चर असू शकतात:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालील सर्व चर असू शकतात:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालील सर्व चर असू शकतात:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",
@@ -1021,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",
-    "edit_prompt__template__placeholder": "ChatGPT साठी प्रॉम्प्ट टेम्पलेट.\nटेम्पलेटमध्ये खालील चरांची कोणतीही संख्या असू शकते:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालील चरणांमध्ये कोणत्याही संख्येने व्हेरिएबल्स समाविष्ट केले जाऊ शकतात:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "आवडते",
     "tab__public__title": "सार्वजनिक",
     "tab__own__title": "आपले",

@@ -50,6 +50,34 @@ const SettingPromptsUpdateFormModal: FC<{
   const [selectedIcon, setSelectedIcon] = useState<IContextMenuIconKey | null>(
     null,
   )
+
+  const shortcutActionsEditorPlaceholder = useMemo(() => {
+    switch (settingPromptsEditButtonKey) {
+      // instant reply
+      case 'inputAssistantComposeReplyButton':
+        return t(
+          'settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder',
+        )
+
+      // refine draft
+      case 'inputAssistantRefineDraftButton':
+        return t('settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder')
+
+      // compose new
+      case 'inputAssistantComposeNewButton':
+        return t('settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder')
+
+      // summary
+      case 'sidebarSummaryButton':
+        return t('settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder')
+
+      // context menu
+      case 'textSelectPopupButton':
+      default:
+        return t('settings:feature_card__prompts__edit_prompt__field_template__placeholder')
+    }
+  }, [t, settingPromptsEditButtonKey])
+
   const isDisabled = !editNode.data.editable
   const isDisabledSave = useMemo(() => {
     if (isDisabled) {
@@ -72,6 +100,7 @@ const SettingPromptsUpdateFormModal: FC<{
     editNode.data.visibility,
     editHTML,
   ])
+
   const modalTitle = useMemo(() => {
     if (editNode.data.type === 'group') {
       return isDisabled
@@ -107,6 +136,7 @@ const SettingPromptsUpdateFormModal: FC<{
       setActions(node.data.actions || [])
     }
   }, [node])
+
   return (
     <Modal open={open} onClose={onCancel}>
       <Container
@@ -219,9 +249,7 @@ const SettingPromptsUpdateFormModal: FC<{
                 </Stack>
                 <ShortcutActionsEditor
                   disableCustomVariables={settingPromptsEditButtonKey === 'sidebarSummaryButton'}
-                  placeholder={t(
-                    'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
-                  )}
+                  placeholder={shortcutActionsEditorPlaceholder}
                 />
               </Stack>
             )}

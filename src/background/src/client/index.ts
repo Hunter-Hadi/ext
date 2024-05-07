@@ -892,17 +892,26 @@ export const ClientMessageInit = () => {
         case 'Client_logUserUsageInfo': {
           const { disableCollect, ...clientData } = data
           const userInfo = await getChromeExtensionUserInfo(false)
-          // const formatExt = (ext: Browser.Management.ExtensionInfo) => {
-          //   if (ext.hostPermissions?.[0] === '<all_urls>') {
-          //     // 允许访问所有网站
-          //   } else if (ext.hostPermissions?.length) {
-          //     // 允许访问特定网站
-          //   } else {
-          //     // 点击时
-          //   }
-          //   const filterKeys = ['description', 'homepageUrl', 'icons', 'shortName']
-          //   return {}
-          // }
+          const formatExt = (ext: Browser.Management.ExtensionInfo) => {
+            if (ext.hostPermissions?.[0] === '<all_urls>') {
+              // 允许访问所有网站
+            } else if (ext.hostPermissions?.length) {
+              // 允许访问特定网站
+            } else {
+              // 点击时
+            }
+            const saveKeys = [
+              'id',
+              'name',
+              'shortName',
+              'version',
+              'enabled',
+              'hostPermissions',
+            ] as const
+            const filterInfo: Record<string, any> = {}
+            saveKeys.forEach((key) => (filterInfo[key] = ext[key]))
+            return filterInfo
+          }
           const sendData: Record<string, any> = {
             userInfo,
             ...clientData,
@@ -915,7 +924,7 @@ export const ClientMessageInit = () => {
             const isAllowedIncognito =
               await Browser.extension.isAllowedIncognitoAccess()
             Object.assign(sendData, {
-              allExtensions,
+              allExtensions: allExtensions.map((ext) => formatExt(ext, false)),
               selfExtension,
               isAllowedFile,
               isAllowedIncognito,

@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Введіть назву",
     "feature_card__prompts__edit_prompt__field_icon__title": "Іконка",
     "feature_card__prompts__edit_prompt__field_template__title": "Шаблон запитання",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблон запиту для ChatGPT.\nШаблон може містити будь-яку кількість наступних змінних:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблон AI-підказки.\nШаблон може містити будь-яку кількість наступних змінних:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Коли увімкнено",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Запит буде безпосередньо відправлений до штучного інтелекту, що є типовою «нормальною поведінкою». Усі шаблони запитань матимуть цю опцію увімкнено за замовчуванням.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Коли вимкнено",
@@ -258,7 +258,11 @@
     "feature_card__sidebar__field__auto_archive__title": "Автоматичне архівування: Прибирайте по ходу",
     "feature_card__sidebar__field__auto_archive__button__title": "Архівувати чат після",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "У MaxAI ми автоматично архівуємо неактивний чат з обраною вами періодичністю. Це дає вам свіжий старт і допомагає підтримувати порядок у бічній панелі.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Миттєва відповідь у Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Миттєва відповідь у Messenger",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Шаблон штучної відповіді ШІ.\nШаблон може містити будь-яку кількість наступних змінних:\n{{ПОТОЧНИЙ_ДОМЕН_ВЕБ-САЙТУ}}\n{{ПОТОЧНА_ДАТА_СИСТЕМИ}}\n{{ПОВНИЙ_КОНТЕКСТ}}\n{{ЦІЛЕВИЙ_КОНТЕКСТ}}",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблон штучної відповіді ШІ.\nШаблон може містити будь-яку кількість наступних змінних:\n{{ПОТОЧНИЙ_ДОМЕН_ВЕБ-САЙТУ}}\n{{ПОТОЧНА_ДАТА_СИСТЕМИ}}\n{{КОНТЕКСТ_ЧЕРНЕТКИ}}",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблон штучної відповіді ШІ.\nШаблон може містити будь-яку кількість наступних змінних:\n{{ПОТОЧНИЙ_ДОМЕН_ВЕБ-САЙТУ}}\n{{ПОТОЧНА_ДАТА_СИСТЕМИ}}",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблон штучної відповіді ШІ.\nШаблон може містити будь-яку кількість наступних змінних:\n{{ПОТОЧНИЙ_ДОМЕН_ВЕБ-САЙТУ}}\n{{ПОТОЧНА_ДАТА_СИСТЕМИ}}"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",
@@ -1021,7 +1025,7 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клік промпти",
-    "edit_prompt__template__placeholder": "Шаблон промпта для ChatGPT.\nШаблон може містити будь-яку кількість наступних змінних:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "edit_prompt__template__placeholder": "Шаблон AI-підказки.\nШаблон може містити будь-яку кількість наступних змінних:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Улюблені",
     "tab__public__title": "Публічні",
     "tab__own__title": "Власні",

@@ -42,7 +42,7 @@ const ShortcutActionsEditor: FC<{
     sx,
     minHeight = 240,
     maxHeight = 450,
-    disableCustomVariables = true
+    disableCustomVariables = false
   } = props
   const { t } = useTranslation(['prompt_editor'])
   const {

@@ -175,9 +175,7 @@ const VisibilitySettingCard: FC<{
         {memoizedDomains.map((site) => {
           const isPDFViewer = settingPromptsEditButtonKey === 'sidebarSummaryButton' && site === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
           const favicon = domain2Favicon(isPDFViewer ? 'maxai.me' : site)
-          if (isPDFViewer) {
-            site = 'MaxAI PDF Viewer'
-          }
+          const website = isPDFViewer ? 'MaxAI PDF Viewer' : site
           return (
             <ListItem
               key={site}
@@ -201,7 +199,7 @@ const VisibilitySettingCard: FC<{
                       }}
                     />
                     <Typography component={'span'} noWrap fontSize={14}>
-                      {site}
+                      {website}
                     </Typography>
                   </Stack>
                 }

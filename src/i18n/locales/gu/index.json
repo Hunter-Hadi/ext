@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAIનું GPT-4, ઝડપી અને કુશળતાથી માટે ઓપટિમાઇઝ કરેલું છે, જે સરળતા અને ઉચ્ચતમ સમયમાં પ્રતિસાદ આપતું છે અને સતત આઉટપુટ પ્રદાન કરે છે.",
     "permission__pricing_hook__footer_tip": "MaxAI એલિટ અમર્યાદિત AI પ્રશ્નો, AI સંગ્રહણો, AI શોધો અને તક્ષણિક જવાબો આપે છે.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "મારા પ્રોમ્પ્ટ્સ",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "મારી પ્રોમ્પ્ટ ઉમેરો"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "મારી પ્રોમ્પ્ટ ઉમેરો",
+    "sidebar__summary__advanced__title": "અગ્રણી સારાંશ વિકલ્પો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

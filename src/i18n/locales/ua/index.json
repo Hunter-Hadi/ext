@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 - новинка від OpenAI, оптимізована для швидкості та ефективності, відрізняється в реальному часі застосуваннях, які вимагають творчості та високого рівня мислення з покращеними часами відповіді та стабільним результатом.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite пропонує необмежену кількість запитів штучного інтелекту, штучних резюме, пошуків штучного інтелекту та миттєвих відповідей.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Мої власні пропозиції",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Додати свою пропозицію"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Додати свою пропозицію",
+    "sidebar__summary__advanced__title": "Розширені параметри підсумку"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -718,6 +718,7 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3rd-party AI providers",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI provider disabled in extension for upgrade. Please try later.",
     "sidebar__chat__advanced__title": "Advanced chat options",
+    "sidebar__summary__advanced__title": "Advanced summary options",
     "sidebar__conversation_share__share_button__title": "Share",
     "sidebar__conversation_share__copy_button__copy_link": "Copy link",
     "sidebar__conversation_share__share_panel__title": "View access",

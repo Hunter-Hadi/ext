@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "חרף את המגבלה החודשית לשאילתות טקסט מתקדמות. שדרג עכשיו לשאילתות בלתי מוגבלות, או בדוק שוב בחודש הבא כשהשאילתות החודשיות מתאפסות.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 של OpenAI, מותאם למהירות ויעילות, מתבלט ביישור זמן ותשובות יציבות ביישור זמן ופלט עקבי.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "הצעות שלי",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "הוסף הצעה שלי"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "הוסף הצעה שלי",
+    "sidebar__summary__advanced__title": "אפשרויות סיכום מתקדמות"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

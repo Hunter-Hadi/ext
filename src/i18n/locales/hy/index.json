@@ -766,7 +766,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1": "Անվճար ամսվա հարցումների սահմանափակումը ավարտվել է: Թարմացնել հիմա առանց սահմանափակումների, կամ վերադարձնել վերջնական ամսվա հարցումները:",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI-ի GPT-4-ն է, որը արագությամբ և արագացումներով է լավագույնը: Այն համակարգիչներին առաջացնում է լավագույն լուծումներ ստանալու ժամանակակից խնդիրների, բաց ավարտված հրահանգների և այլնի համար:",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Իմ սեփական հարցերը",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ավելացնել իմ սեփական հարց"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ավելացնել իմ սեփական հարց",
+    "sidebar__summary__advanced__title": "Առաջինը ավելին՝ ամբողջական տեսականին"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

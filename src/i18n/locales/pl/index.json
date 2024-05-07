@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 OpenAI, zoptymalizowany pod kątem szybkości i wydajności, doskonale sprawdza się w aplikacjach czasu rzeczywistego, które wymagają kreatywności i zaawansowanego rozumowania, zapewniając skrócenie czasu odpowiedzi i spójne wyniki.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite oferuje nieograniczone zapytania AI, podsumowania AI, wyszukiwania AI i natychmiastowe odpowiedzi.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moje własne podpowiedzi",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj moją własną podpowiedź"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj moją własną podpowiedź",
+    "sidebar__summary__advanced__title": "Zaawansowane opcje podsumowania"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

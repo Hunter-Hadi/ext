@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 هو نموذج OpenAI، محسّن للسرعة والكفاءة، يتفوق في التطبيقات الفورية التي تتطلب الإبداع والاستدلال المتقدم مع أوقات استجابة محسّنة وإخراج متسق.",
     "permission__pricing_hook__footer_tip": "يقدم MaxAI Elite استعلامات AI غير محدودة وملخصات AI وبحثًا AI وردود فورية.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "مشاركاتي الخاصة",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "إضافة مشاركتي الخاصة"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "إضافة مشاركتي الخاصة",
+    "sidebar__summary__advanced__title": "خيارات ملخص متقدمة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

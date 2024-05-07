@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "Ang GPT-4 ng OpenAI, na pinahusay para sa bilis at kahusayan, ay mahusay sa mga aplikasyong real-time na nangangailangan ng katalinuhan at advanced na pangangatwiran na may pinahusay na mga panahon ng tugon at magkonsistenteng output.",
     "permission__pricing_hook__footer_tip": "Ang MaxAI Elite ay nag-aalok ng walang limitasyong mga AI query, AI summary, AI search, at instant na mga sagot.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mga sariling prompt",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Magdagdag ng sariling prompt"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Magdagdag ng sariling prompt",
+    "sidebar__summary__advanced__title": "Mga Advanced na Pagpipilian sa Buod"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

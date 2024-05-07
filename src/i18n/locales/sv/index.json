@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAIs GPT-4, optimerad för hastighet och effektivitet, utmärker sig i realtidsapplikationer som kräver kreativitet och avancerad resonemang med förbättrade svarstider och konsekvent resultat.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite erbjuder obegränsade AI-förfrågningar, AI-summeringar, AI-sökningar och omedelbara svar.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mina egna förslag",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lägg till mitt eget förslag"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lägg till mitt eget förslag",
+    "sidebar__summary__advanced__title": "Avancerade sammanfattningsalternativ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

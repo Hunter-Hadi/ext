@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 von OpenAI ist optimiert für Geschwindigkeit und Effizienz und eignet sich hervorragend für Echtzeitanwendungen, die Kreativität und fortgeschrittenes Denken erfordern, mit verbesserten Reaktionszeiten und konsistenter Ausgabe.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite bietet unbegrenzte KI-Abfragen, KI-Zusammenfassungen, KI-Suchen und sofortige Antworten.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Meine eigenen Vorschläge",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Eigenen Vorschlag hinzufügen"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Eigenen Vorschlag hinzufügen",
+    "sidebar__summary__advanced__title": "Erweiterte Zusammenfassungsoptionen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 ของ OpenAI ที่ถูกปรับให้เหมาะสมกับความเร็วและประสิทธิภาพ เหมาะสำหรับการใช้งานแบบ real-time ที่ต้องการความคิดสร้างสรรค์และการตัดสินใจขั้นสูงด้วยเวลาการตอบสนองที่เร็วขึ้นและผลลัพธ์ที่สม่ำเสมอ",
     "permission__pricing_hook__footer_tip": "MaxAI Elite ให้บริการคำถาม AI ไม่จำกัด, สรุป AI, การค้นหา AI และการตอบกลับทันที",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "คำถามของฉันเอง",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "เพิ่มคำถามของฉัน"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "เพิ่มคำถามของฉัน",
+    "sidebar__summary__advanced__title": "ตัวเลือกสรุปขั้นสูง"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

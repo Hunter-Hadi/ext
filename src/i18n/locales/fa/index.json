@@ -769,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 OpenAI، بهینه شده برای سرعت و کارآیی، در برنامه‌های زمان واقعی که خلاقیت و استدلال پیشرفته نیاز دارند، با زمان پاسخ و خروجی یکنواخت بالاتر عمل می‌کند.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite ارائه دهنده پرس و جوهای نامحدود هوش مصنوعی، خلاصه های هوش مصنوعی، جستجوهای هوش مصنوعی و پاسخ های فوری است.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "پرسش‌های خودم",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "افزودن پرسش خودم"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "افزودن پرسش خودم",
+    "sidebar__summary__advanced__title": "گزینه‌های پیشرفته خلاصه"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

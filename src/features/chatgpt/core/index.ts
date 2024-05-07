@@ -86,6 +86,14 @@ export interface IChatGPTConversation {
   id: string
   conversationId?: string
 }
+function getDeviceId() {
+  let value = localStorage.getItem('oai_device_id')
+  if (!value) {
+    value = uuidV4()
+    localStorage.setItem('oai_device_id', value)
+  }
+  return value
+}
 
 export interface IChatGPTDaemonProcess {
   currentMaxAIConversationId?: string
@@ -546,6 +554,8 @@ export class ChatGPTConversation {
       signal: params.signal,
       headers: {
         'Content-Type': 'application/json',
+        'Oai-Device-Id': getDeviceId(),
+        'Oai-Language': '',
         Authorization: `Bearer ${this.token}`,
         ...(arkoseToken
           ? {

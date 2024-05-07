@@ -67,8 +67,8 @@ const generateSentinelChatRequirementsToken = async (
         dx: '',
         proofToken: '',
       }
+      returnObject.chatRequirementsToken = data?.token || ''
       if (data?.arkose?.required) {
-        returnObject.chatRequirementsToken = data?.token || ''
         returnObject.dx = data?.arkose?.dx || ''
       }
       if (data?.proofofwork?.required) {

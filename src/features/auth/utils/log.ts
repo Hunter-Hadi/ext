@@ -444,7 +444,6 @@ export const getPromptTypeByContextMenu = (
     ) {
       return {
         promptType: 'preset',
-        instantType: 'refine',
       }
     } else {
       return {

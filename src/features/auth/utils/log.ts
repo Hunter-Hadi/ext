@@ -19,6 +19,20 @@ import {
   isMaxAIImmersiveChatPage,
 } from '@/utils/dataHelper/websiteHelper'
 
+const BEAUTIFY_PROVIDER_NAME: Record<IAIProviderType, string> = {
+  USE_CHAT_GPT_PLUS: 'in_house',
+  MAXAI_CLAUDE: 'in_house',
+  MAXAI_GEMINI: 'in_house',
+  MAXAI_DALLE: 'in_house',
+  MAXAI_FREE: 'in_house',
+  OPENAI: 'chatgpt_web_app',
+  OPENAI_API: 'openai_api',
+  BARD: 'gemini_web_app',
+  BING: 'bing_web_app',
+  CLAUDE: 'claude_web_app',
+  POE: 'poe_web_app',
+}
+
 /**
  * 将 PermissionWrapperCardSceneType 根据不同场景和配置转换成 logType
  */
@@ -194,6 +208,18 @@ export const authEmitPricingHooksLog = debounce(
         // 如果在 meta 中传入了 inContextMenu, 则将 featureName 替换为 context_menu
         trackParams.featureName = 'context_menu'
       }
+
+      // search with ai 的特殊处理
+      if (sceneType === 'SEARCH_WITH_AI_CHATGPT') {
+        const provider = 'USE_CHAT_GPT_PLUS'
+        trackParams.aiModel = SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[provider]
+        trackParams.aiProvider = BEAUTIFY_PROVIDER_NAME[provider]
+      } else if (sceneType === 'SEARCH_WITH_AI_CLAUDE') {
+        const provider = 'MAXAI_CLAUDE'
+        trackParams.aiModel = SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[provider]
+        trackParams.aiProvider = BEAUTIFY_PROVIDER_NAME[provider]
+      }
+
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
       mixpanelTrack(type, {
         logType,
@@ -238,19 +264,6 @@ const generateTrackParams = async (
         AIModel = conversationAIModelAndProvider.aiModel
       }
       if (conversationAIModelAndProvider.provider) {
-        const BEAUTIFY_PROVIDER_NAME: Record<IAIProviderType, string> = {
-          USE_CHAT_GPT_PLUS: 'in_house',
-          MAXAI_CLAUDE: 'in_house',
-          MAXAI_GEMINI: 'in_house',
-          MAXAI_DALLE: 'in_house',
-          MAXAI_FREE: 'in_house',
-          OPENAI: 'chatgpt_web_app',
-          OPENAI_API: 'openai_api',
-          BARD: 'gemini_web_app',
-          BING: 'bing_web_app',
-          CLAUDE: 'claude_web_app',
-          POE: 'poe_web_app',
-        }
         AIProvider =
           BEAUTIFY_PROVIDER_NAME[conversationAIModelAndProvider.provider]
       }

@@ -78,7 +78,7 @@ const PresetVariablesTable: FC<{
                   }}
                 >
                   <TableCell component="th" scope="row">
-                    {`{{${variable.VariableName}}}`}
+                    {`{{${variable.label}}}`}
                   </TableCell>
                   <TableCell align="left">{t(description as any)}</TableCell>
                 </TableRow>

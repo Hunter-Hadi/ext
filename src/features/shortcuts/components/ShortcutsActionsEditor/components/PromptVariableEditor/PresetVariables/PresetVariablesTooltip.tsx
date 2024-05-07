@@ -19,6 +19,7 @@ import {
   PRESET_VARIABLES_GROUP_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
+import {SxProps} from "@mui/material/styles";
 
 const PresetVariablesTable: FC<{
   tableData: IPresetVariablesGroupItem[]
@@ -92,7 +93,7 @@ const PresetVariablesTable: FC<{
 }
 const PopperId = 'preset-variables-tooltip'
 
-const PresetVariablesTooltip = () => {
+const PresetVariablesTooltip: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { t } = useTranslation(['prompt_editor'])
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const [settingPromptsEditButtonKey] = useRecoilState(
@@ -110,8 +111,8 @@ const PresetVariablesTooltip = () => {
   const id = open ? PopperId : undefined
 
   return (
-    <Box>
-      <IconButton aria-describedby={PopperId} onClick={handleClick}>
+    <>
+      <IconButton aria-describedby={PopperId} onClick={handleClick} sx={sx}>
         <HelpOutlineIcon fontSize="small" />
       </IconButton>
       <Popover
@@ -157,7 +158,7 @@ const PresetVariablesTooltip = () => {
           })}
         </Box>
       </Popover>
-    </Box>
+    </>
   )
 }
 export default PresetVariablesTooltip

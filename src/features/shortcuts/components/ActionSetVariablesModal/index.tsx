@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close'
-import SendIcon from "@mui/icons-material/Send";
+import SendIcon from '@mui/icons-material/Send'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
@@ -70,6 +70,7 @@ interface ActionSetVariablesModalProps
   onShow?: () => void
   onClose?: () => void
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
+  disabled?: boolean
 }
 
 const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
@@ -86,6 +87,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     showModelSelector = false,
     showCloseButton = true,
     isSaveLastRunShortcuts,
+    disabled
   } = props
   const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -142,7 +144,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   }
   const confirmModal = async (textAreaElementIndex?: number) => {
     debugger
-    const values = getValues()
     if (isNumber(textAreaElementIndex)) {
       const nextTextAreaElement = inputBoxRef.current?.querySelectorAll(
         `textarea[id]`,
@@ -193,7 +194,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       return
     }
     // 如果没有任何值，就不运行
-    if (Object.keys(getValues()).length === 0) {
+    if (Object.keys(getValues()).length === 0 && config?.template) {
       return
     }
     const presetVariables = cloneDeep(getValues())
@@ -329,6 +330,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         })
     }
   }
+
   const currentModalConfig = useMemo(() => {
     const reactHookFormRegisterMap: {
       [key in string]: ReturnType<typeof register>
@@ -399,7 +401,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     // 计算单个textarea的最大行数 = ((60vh - title - select - actions) / textareaCount) / 24px
     const maxHeight = window.innerHeight * 0.6
     // 标题高度
-    const titleHeight = 30
+    const titleHeight =
+      selectTypeVariables.length + textTypeVariables.length > 0 ? 36 : 30
     // 选择框行数
     const selectLine = Math.ceil(currentSelectTotalCount / 3)
     // 选择框高度
@@ -430,6 +433,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setForm(reactHookFormRegisterMap)
     })
     return {
+      titleHeight,
       currentTitle,
       currentSelectTotalCount,
       currentSystemVariables,
@@ -538,7 +542,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     )
     return null
   }
-  console.log(1111, currentModalConfig, config)
   return (
     <Stack
       className={'max-ai__action__set_variables_modal'}
@@ -563,17 +566,17 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       onKeyPress={(event) => {
         event.stopPropagation()
       }}
-    // onKeyUpCapture={(event) => {
-    //   event.stopPropagation()
-    // }}
-    // onKeyUp={(event) => {
-    //   event.stopPropagation()
-    // }}
+      // onKeyUpCapture={(event) => {
+      //   event.stopPropagation()
+      // }}
+      // onKeyUp={(event) => {
+      //   event.stopPropagation()
+      // }}
     >
       {/*Header*/}
       <Stack
         flexShrink={0}
-        height={32}
+        height={currentModalConfig.titleHeight}
         direction={'row'}
         alignItems={'start'}
         justifyContent={'space-between'}
@@ -583,16 +586,23 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           width={0}
           flex={1}
           component={'div'}
-          height={30}
           display={'flex'}
           alignItems={'center'}
-          sx={{
-            borderRadius: '4px',
-            p: '0 8px',
-            bgcolor: 'rgba(0, 0, 0, 0.87)',
-          }}
         >
-          <Typography fontSize={'14px'} color={'#fff'} fontWeight={600} noWrap>
+          <Typography
+            fontSize={'14px'}
+            color={'#fff'}
+            fontWeight={600}
+            height={30}
+            lineHeight="30px"
+            sx={{
+              borderRadius: '4px',
+              p: '0 8px',
+              bgcolor: 'rgba(0, 0, 0, 0.87)',
+              width: showCloseButton ? '100%' : 'auto',
+            }}
+            noWrap
+          >
             {currentModalConfig.currentTitle}
           </Typography>
         </Box>
@@ -683,7 +693,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
           const width =
             (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') &&
-              currentModalConfig.textTypeVariables.length > 1
+            currentModalConfig.textTypeVariables.length > 1
               ? 'calc(50% - 8px)'
               : '100%'
           const minHeight = currentModalConfig.minTextareaMaxRows * 23 + 17
@@ -758,7 +768,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           TooltipProps={{
             description: '⏎',
           }}
-          disabled={loading}
+          disabled={loading || disabled}
           onClick={async () => await confirmModal()}
           variant={'contained'}
           // color={'primary.main'}
@@ -766,7 +776,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             width: '32px',
             height: '32px',
             minWidth: 'unset',
-            p: 1
+            p: 1,
           }}
         >
           {loading ? (

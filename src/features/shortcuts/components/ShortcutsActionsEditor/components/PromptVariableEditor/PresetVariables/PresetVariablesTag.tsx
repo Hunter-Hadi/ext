@@ -1,3 +1,4 @@
+import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 
@@ -12,7 +13,9 @@ import { useCustomTheme } from '@/hooks/useCustomTheme'
 const PresetVariablesTag: FC<{
   onClick?: (variable: IPresetActionSetVariable) => void
   presetVariable: IPresetActionSetVariable
-}> = ({ onClick, presetVariable }) => {
+  sx?: SxProps
+  children?: React.ReactNode
+}> = ({ onClick, presetVariable, children }) => {
   const theme = useCustomTheme()
 
   const color = theme.isDarkMode
@@ -46,7 +49,7 @@ const PresetVariablesTag: FC<{
         onClick && onClick(presetVariable)
       }}
     >
-      {`{{${presetVariable.VariableName}}}`}
+      {children ? children : `{{${presetVariable.VariableName}}}`}
     </Typography>
   )
 }

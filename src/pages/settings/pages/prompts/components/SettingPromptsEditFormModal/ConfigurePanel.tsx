@@ -13,7 +13,7 @@ import {
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import AIResponseLanguageEditor from '@/features/shortcuts/components/ShortcutsActionsEditor/components/AIResponseLanguageEditor'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
-import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/context'
+import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
 import {
   SettingPromptsEditButtonKeyAtom,
   specialInputAssistantButtonKeys,

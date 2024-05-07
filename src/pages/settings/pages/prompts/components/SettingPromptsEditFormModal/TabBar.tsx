@@ -22,6 +22,7 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
         boxSizing: 'border-box',
         width: '120px',
         minHeight: '40px',
+        height: '40px',
         color: isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 0.6)',
         borderRadius: '8px',
         lineHeight: 'auto',

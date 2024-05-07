@@ -1,21 +1,23 @@
-import StopOutlinedIcon from "@mui/icons-material/StopOutlined";
+import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 import Box from '@mui/material/Box'
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import {Theme} from "@mui/material/styles";
-import React, { useEffect, useMemo } from 'react'
+import { Theme } from '@mui/material/styles'
+import React, { useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import useClientConversationListener from "@/features/chatgpt/hooks/useClientConversationListener";
+import useClientConversationListener from '@/features/chatgpt/hooks/useClientConversationListener'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
-import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/context'
+import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
+import Typography from '@mui/material/Typography'
+import useShortcutEditorActionsVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 
 const PreviewPanel = () => {
   const { t } = useTranslation(['settings', 'common', 'client'])
@@ -23,20 +25,23 @@ const PreviewPanel = () => {
 
   const title = editNode?.text
 
-  const { generateActions, editHTML, variables, enabledAIResponseLanguage } =
-    useShortcutEditorActions()
+  const { variables } = useShortcutEditorActionsVariables()
+  const { generateActions, editHTML } = useShortcutEditorActions()
 
   const template = useMemo(() => htmlToTemplate(editHTML), [editHTML])
 
-  const actions = useMemo(
-    () => generateActions(editNode?.text),
-    [editNode?.text, template],
-  )
+  const generateActionsRef = useRef(generateActions)
+  generateActionsRef.current = generateActions
+
+  const actions = useMemo(() => {
+    return generateActionsRef.current(editNode?.text)
+  }, [editNode?.text, template, variables])
 
   const config = actions.find((item) => item.type === 'SET_VARIABLES_MODAL')
     ?.parameters.SetVariablesModalConfig
 
   useEffect(() => {
+    console.log(1111, config)
     OneShotCommunicator.send('SetVariablesModal', {
       task: 'open',
       config: { ...config, modelKey: 'PromptPreview' },
@@ -48,7 +53,8 @@ const PreviewPanel = () => {
     clientWritingMessage,
     clientConversationMessages,
   } = useClientConversation()
-  const { smoothConversationLoading: loading } = useSmoothConversationLoading(500)
+  const { smoothConversationLoading: loading } =
+    useSmoothConversationLoading(500)
   useClientConversationListener()
 
   const shortcutsActionBtnSxMemo = useMemo(() => {
@@ -77,6 +83,18 @@ const PreviewPanel = () => {
         },
       }}
     >
+      <Typography
+        fontSize="16px"
+        textAlign="center"
+        sx={{
+          padding: '16px 12px',
+          color: (t: Theme) =>
+            t.palette.mode === 'dark' ? '#fff' : 'rgba(0, 0, 0, 0.38)',
+        }}
+      >
+        Preview
+      </Typography>
+
       {currentConversationId && clientConversationMessages.length > 0 ? (
         <SidebarChatBoxMessageListContainer
           conversationId={currentConversationId}
@@ -132,9 +150,7 @@ const PreviewPanel = () => {
                 disableElevation
                 variant={'normalOutlined'}
                 startIcon={<StopOutlinedIcon />}
-                onClick={() => {
-
-                }}
+                onClick={() => {}}
                 data-testid="sidebar_actions__stop_generating"
               >
                 {t('client:sidebar__button__stop_generating')}
@@ -150,6 +166,7 @@ const PreviewPanel = () => {
             {...config}
             title={title}
             template={template}
+            disabled={!template}
           />
         </Stack>
       </Stack>

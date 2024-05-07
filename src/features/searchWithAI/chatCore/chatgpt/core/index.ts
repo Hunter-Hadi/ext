@@ -359,8 +359,11 @@ export class ChatGPTConversation {
     if (this.conversationId) {
       postMessage.conversation_id = this.conversationId
     }
-    const { arkoseToken: searchWithAICacheArkoseToken, chatRequirementsToken } =
-      await getSearchWithAISettings()
+    const {
+      arkoseToken: searchWithAICacheArkoseToken,
+      chatRequirementsToken,
+      proofToken,
+    } = await getSearchWithAISettings()
     if (searchWithAICacheArkoseToken) {
       postMessage.arkose_token = searchWithAICacheArkoseToken
       await setSearchWithAISettings({
@@ -384,8 +387,13 @@ export class ChatGPTConversation {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
-        'Openai-Sentinel-Arkose-Token': searchWithAICacheArkoseToken || '',
-        'Openai-Sentinel-Chat-Requirements-Token': chatRequirementsToken,
+        ...(proofToken ? { 'Openai-Sentinel-Proof-Token': proofToken } : {}),
+        ...(searchWithAICacheArkoseToken
+          ? { 'Openai-Sentinel-Arkose-Token': searchWithAICacheArkoseToken }
+          : {}),
+        ...(chatRequirementsToken
+          ? { 'Openai-Sentinel-Chat-Requirements-Token': chatRequirementsToken }
+          : {}),
       } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: (message: string) => {

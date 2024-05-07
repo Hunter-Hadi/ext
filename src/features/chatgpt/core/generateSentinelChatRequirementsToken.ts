@@ -11,7 +11,7 @@ function getProofConfig() {
     navigator.userAgent,
   ]
 }
-async function calcProofToken(seed: string, diff: string) {
+export async function calcProofToken(seed: string, diff: string) {
   const config = getProofConfig()
 
   for (let i = 0; i < 1e5; i++) {

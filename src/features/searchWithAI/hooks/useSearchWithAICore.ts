@@ -14,6 +14,7 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import { calcProofToken } from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import {
   ISearchWithAIProviderType,
@@ -356,21 +357,29 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
             }),
           },
         )
+
         const chatRequirementsToken = chatRequirementsResult?.data?.token || ''
+        const saveData = {
+          arkoseToken: '',
+          chatRequirementsToken,
+          proofToken: '',
+        }
         const dx = chatRequirementsResult?.data?.arkose?.dx || ''
         if (dx) {
           const arkoseToken =
             await chromeExtensionArkoseTokenGenerator.generateToken('gpt_4', dx)
-          await setSearchWithAISettings({
-            arkoseToken,
-            chatRequirementsToken,
-          })
-        } else {
-          await setSearchWithAISettings({
-            arkoseToken: '',
-            chatRequirementsToken,
-          })
+          saveData.arkoseToken = arkoseToken
         }
+        const proofToken = chatRequirementsResult?.data?.proofofwork?.required
+          ? await calcProofToken(
+              chatRequirementsResult.data.proofofwork?.seed,
+              chatRequirementsResult.data.proofofwork?.difficulty,
+            )
+          : ''
+        if (proofToken) {
+          saveData.proofToken = proofToken
+        }
+        await setSearchWithAISettings(saveData)
       }
     }
 

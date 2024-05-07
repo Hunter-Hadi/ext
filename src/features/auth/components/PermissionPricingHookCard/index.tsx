@@ -11,13 +11,11 @@ import {
   PricingHooksFeatureIcon,
   PricingHooksRocketIcon,
 } from '@/features/auth/components/PermissionPricingHookCard/icons'
-import {
-  isUsageLimitPermissionSceneType,
-  PermissionWrapperCardSceneType,
-} from '@/features/auth/components/PermissionWrapper/types'
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { isUsageLimitPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
@@ -177,13 +175,6 @@ const PermissionPricingHookCard: FC<IProps> = ({
             {permissionCard.description}
           </Typography>
         )}
-
-        {/*{permissionCard.pricingHookCardType && (*/}
-        {/*  <PremiumAccessCard*/}
-        {/*    videoUrl={permissionCard.videoUrl}*/}
-        {/*    pricingHookCardType={permissionCard.pricingHookCardType}*/}
-        {/*  />*/}
-        {/*)}*/}
 
         {/* cta button */}
         <Stack spacing={2} mt={'16px !important'}>

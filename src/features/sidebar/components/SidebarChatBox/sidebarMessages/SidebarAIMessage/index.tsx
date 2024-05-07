@@ -147,6 +147,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                   fontWeight: 'bold',
                   fontSize: '28px',
                   color: 'text.primary',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  overflow: 'hidden'
                 }}
               />
             )}

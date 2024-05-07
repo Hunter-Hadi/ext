@@ -117,45 +117,19 @@ const permissionSceneTypeToLogType = async (
     chatModel = currentChatConversation?.meta.AIModel || chatModel
   }
 
-  // gmail instant reply
-  if (
-    sceneType.includes('GMAIL_CONTEXT_MENU') ||
-    sceneType.includes('GMAIL_DRAFT_BUTTON') ||
-    sceneType.includes('GMAIL_REPLY_BUTTON')
-  ) {
-    switch (sceneType) {
-      case 'GMAIL_CONTEXT_MENU':
-        name = `INSTANT_REPLY(Refine ${chatModel})`
-        break
-      case 'GMAIL_DRAFT_BUTTON':
-        name = `INSTANT_REPLY(Compose ${chatModel})`
-        break
-      case 'GMAIL_REPLY_BUTTON':
-        name = `INSTANT_REPLY(Reply ${chatModel})`
-        break
-      default:
-        break
-    }
-    return name
-  }
-
   // instant reply
   // 判断是否是 instant reply 付费卡点
-  if (
-    sceneType.includes('REFINE_DRAFT_BUTTON') ||
-    sceneType.includes('COMPOSE_NEW_BUTTON') ||
-    sceneType.includes('COMPOSE_REPLY_BUTTON')
-  ) {
+  if (sceneType.includes('MAXAI_INSTANT')) {
     name = 'INSTANT_REPLY'
-    if (sceneType.includes('COMPOSE_REPLY_BUTTON')) {
+    if (sceneType.includes('INSTANT_REPLY')) {
       name += `(Reply ${chatModel})`
       return name
     }
-    if (sceneType.includes('REFINE_DRAFT_BUTTON')) {
+    if (sceneType.includes('INSTANT_REFINE')) {
       name += `(Refine ${chatModel})`
       return name
     }
-    if (sceneType.includes('COMPOSE_NEW_BUTTON')) {
+    if (sceneType.includes('INSTANT_NEW')) {
       name += `(Compose ${chatModel})`
       return name
     }
@@ -170,13 +144,13 @@ const permissionSceneTypeToLogType = async (
     return name
   }
   // Fast Text Model
-  if (sceneType === 'MAXAI_FAST_TEXT_MODEL') {
+  if (sceneType.includes('MAXAI_FAST_TEXT_MODEL')) {
     name = `FAST_TEXT_MODEL(${chatModel})`
     return name
   }
 
   // Advanced Text Model
-  if (sceneType === 'MAXAI_ADVANCED_MODEL') {
+  if (sceneType.includes('MAXAI_ADVANCED_MODEL')) {
     name = `ADVANCED_TEXT_MODEL(${chatModel})`
     return name
   }

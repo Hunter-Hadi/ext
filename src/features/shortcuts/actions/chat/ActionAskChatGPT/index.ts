@@ -503,7 +503,7 @@ export class ActionAskChatGPT extends Action {
                 return
               } else {
                 if (errorMessage.startsWith('Too many requests in 1 hour')) {
-                  errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "Free AI" from the AI Provider options at the top of the sidebar.
+                  errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "Free AI" from the AI Provider options at the end of the sidebar.
                 ![switch-provider](${getChromeExtensionAssetsURL(
                   '/images/on-boarding/switch-AI-model.gif',
                 )})`

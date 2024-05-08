@@ -13,14 +13,16 @@ import {
 import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppLocalStorageState } from '@/store'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 const useThirdProviderSettings = () => {
   const [appLocalStorage, setAppLocalStorage] =
     useRecoilState(AppLocalStorageState)
-  const { currentSidebarConversation } = useSidebarSettings()
+  const { currentSidebarConversationType } = useSidebarSettings()
+  const { clientConversation } = useClientConversation()
   const currentProvider =
-    currentSidebarConversation?.meta.AIProvider ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
+    clientConversation?.meta.AIProvider ||
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType].AIProvider
   const currentThirdProviderSettings = useMemo(() => {
     if (
       appLocalStorage.thirdProviderSettings &&

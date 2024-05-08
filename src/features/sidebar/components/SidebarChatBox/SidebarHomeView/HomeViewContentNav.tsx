@@ -52,7 +52,7 @@ const HomeViewContentNav = () => {
           if (currentSidebarConversationType !== 'Summary') {
             chromeExtensionClientOpenPage({
               url: Browser.runtime.getURL(`/pages/chat/index.html`),
-              query: `?conversationType=${currentSidebarConversationType}`,
+              query: `#/${currentSidebarConversationType.toLowerCase()}`,
             })
           } else {
             chromeExtensionClientOpenPage({

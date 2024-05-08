@@ -13,7 +13,6 @@ import PresetVariablesTag from '@/features/shortcuts/components/ShortcutsActions
 import useShortcutEditorActionVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import { promptNameToVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
 import VariableFormModel from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/PromptPanel/VariableFormModel'
 
 export interface IPromptVariableEditorExposeRef {
@@ -30,8 +29,7 @@ const CustomVariable = React.forwardRef<
   IPromptVariableEditorProps
 >((props, ref) => {
   const { onAddTextVariable } = props
-  const { t } = useTranslation(['prompt_editor'])
-  const { isDarkMode } = useCustomTheme()
+  const { t } = useTranslation(['common', 'prompt_editor'])
 
   const {
     filterVariables: variables,
@@ -72,7 +70,9 @@ const CustomVariable = React.forwardRef<
             borderColor="inherit"
             height="100%"
           >
-            <Typography variant="body2">Variables</Typography>
+            <Typography variant="body2">
+              {t('prompt_editor:add_variable__custom__title')}
+            </Typography>
           </Stack>
 
           <Stack
@@ -83,11 +83,19 @@ const CustomVariable = React.forwardRef<
             flexWrap="wrap"
             alignItems="center"
           >
+            {!variables.length && (
+              // 防止高度出现坍塌，先渲染一个空的元素
+              <div style={{ opacity: 0, pointerEvents: 'none' }}>
+                <PresetVariablesTag
+                  presetVariable={{ VariableName: '' } as any}
+                />
+              </div>
+            )}
             {variables.map((variable) => {
               return (
                 <PresetVariablesTag
                   key={variable.VariableName}
-                  presetVariable={variable}
+                  presetVariable={variable as any}
                   onClick={() => {
                     if (variable.valueType === 'Text') {
                       onAddTextVariable?.(variable)
@@ -148,7 +156,7 @@ const CustomVariable = React.forwardRef<
               setEditOpen(true)
             }}
           >
-            Add
+            {t('common:add')}
           </Button>
         </Stack>
       </Stack>

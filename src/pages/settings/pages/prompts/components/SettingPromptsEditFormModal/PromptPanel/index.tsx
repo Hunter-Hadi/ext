@@ -21,12 +21,7 @@ import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/
 const PromptPanel = () => {
   const { t } = useTranslation(['settings', 'common', 'prompt_editor'])
 
-  const {
-    editHTML,
-    updateEditHTML,
-    enabledAIResponseLanguage,
-    toggleAIResponseLanguage,
-  } = useShortcutEditorActions()
+  const { editHTML, updateEditHTML } = useShortcutEditorActions()
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
   )

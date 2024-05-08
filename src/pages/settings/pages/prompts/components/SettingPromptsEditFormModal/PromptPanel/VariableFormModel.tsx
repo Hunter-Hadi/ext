@@ -1,5 +1,7 @@
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
@@ -12,8 +14,6 @@ import useShortcutEditorActionsVariables, {
   PRESET_VARIABLE_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
-import FormControl from '@mui/material/FormControl'
-import FormLabel from '@mui/material/FormLabel'
 
 interface IProps {
   type: 'add' | 'update'
@@ -51,7 +51,10 @@ const VariableFormModel: FC<IProps> = (props) => {
   })
 
   useEffect(() => {
-    reset()
+    if (open) {
+      reset()
+      inputRefs.current[0]?.focus()
+    }
   }, [open])
 
   const handleSubmit = async () => {
@@ -84,7 +87,10 @@ const VariableFormModel: FC<IProps> = (props) => {
         for (let i = 0; i < inputRefs.current.length; i++) {
           const inputElement = inputRefs.current[i]
           if (!inputElement.value) {
-            if (i === inputRefs.current.length - 1) {
+            if (
+              i === inputRefs.current.length - 1 &&
+              document.activeElement === inputElement
+            ) {
               continue
             }
             inputElement.focus()
@@ -117,7 +123,9 @@ const VariableFormModel: FC<IProps> = (props) => {
       >
         <Stack spacing={2}>
           <Typography fontSize="20px" fontWeight={600} color="text.primary">
-            Update variable
+            {type === 'add'
+              ? t('prompt_editor:add_variable__title')
+              : t('prompt_editor:add_variable__update__title')}
           </Typography>
 
           <FormControl size="small" variant="standard" fullWidth>
@@ -125,7 +133,7 @@ const VariableFormModel: FC<IProps> = (props) => {
               <FormLabel>
                 <Typography variant={'body1'}>
                   {t('prompt_editor:add_variable__variable_name__title')}
-                  <span style={{ color: 'red' }}>*</span>
+                  <span style={{ color: 'red' }}>{' '}*</span>
                 </Typography>
               </FormLabel>
 
@@ -133,7 +141,7 @@ const VariableFormModel: FC<IProps> = (props) => {
                 {...labelRegisterForm}
                 autoFocus
                 size="small"
-                onKeyPress={(event) => handleVariableKeyPress(event)}
+                onKeyPress={handleVariableKeyPress}
                 placeholder={t(
                   'prompt_editor:add_variable__variable_name__placeholder',
                 )}
@@ -160,6 +168,7 @@ const VariableFormModel: FC<IProps> = (props) => {
               <TextField
                 {...placeholderRegisterForm}
                 size="small"
+                onKeyPress={handleVariableKeyPress}
                 placeholder={t(
                   'prompt_editor:add_variable__variable_placeholder__placeholder',
                 )}
@@ -175,7 +184,7 @@ const VariableFormModel: FC<IProps> = (props) => {
             <Button variant="contained" onClick={handleSubmit}>
               {type === 'add'
                 ? t('prompt_editor:add_variable__add_button__title')
-                : t('prompt_editor:add_variable__save_button__title')}
+                : t('prompt_editor:add_variable__update_button__title')}
             </Button>
           </Stack>
         </Stack>

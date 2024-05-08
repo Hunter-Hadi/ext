@@ -12,7 +12,6 @@ import useClientConversationListener from '@/features/chatgpt/hooks/useClientCon
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
-import useShortcutEditorActionsVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
@@ -25,8 +24,7 @@ const PreviewPanel = () => {
 
   const title = editNode?.text
 
-  const { variables } = useShortcutEditorActionsVariables()
-  const { generateActions, editHTML } = useShortcutEditorActions()
+  const { generateActions, editHTML, variables } = useShortcutEditorActions()
 
   const template = useMemo(() => htmlToTemplate(editHTML), [editHTML])
 
@@ -48,6 +46,8 @@ const PreviewPanel = () => {
 
   useEffect(() => {
     // 为了能让ActionSetVariablesModal组件能正常执行
+    // ActionSetVariablesModal组件运行的时候是从config里的参数执行
+    // 表单参数是可以从props传递进去
     OneShotCommunicator.send('SetVariablesModal', {
       task: 'open',
       config,
@@ -169,6 +169,12 @@ const PreviewPanel = () => {
             showCloseButton={false}
             isSaveLastRunShortcuts={false}
             {...config}
+            systemVariables={config.systemVariables?.map((item) => {
+              if (item.valueType === 'Text') {
+                return { ...item, defaultValue: '' }
+              }
+              return item
+            })}
             modelKey="PromptPreview"
             title={title}
             template={template}

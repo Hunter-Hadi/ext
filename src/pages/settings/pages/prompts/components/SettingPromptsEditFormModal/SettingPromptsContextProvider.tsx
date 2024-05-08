@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash-es'
-import React, { FC, useEffect, useState } from 'react'
+import React, {FC, useCallback, useEffect, useState} from 'react'
 import { createContext, Dispatch, SetStateAction, useContext } from 'react'
 
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
@@ -61,7 +61,7 @@ const SettingPromptsContextProvider: FC<{
     }
     setEditNode(cloneNode)
     setSelectedIcon(cloneNode.data?.icon as any)
-    setActions(node.data.actions || [])
+    setActions(cloneNode.data.actions || [])
   }, [node])
 
   return (

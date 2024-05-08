@@ -408,6 +408,7 @@ const useShortcutEditorActions = () => {
         },
       })
     }
+    debugger
     if (
       customVariables.length > 0 ||
       systemVariables.filter(
@@ -503,6 +504,7 @@ const useShortcutEditorActions = () => {
     updateEditHTML,
     variables: shortcutActionEditor.variables,
     enabledAIResponseLanguage: shortcutActionEditor.enabledAIResponseLanguage,
+    shortcutActionEditor,
     toggleAIResponseLanguage,
   }
 }

@@ -84,7 +84,8 @@ const DropDownMenuItem: FC<{
 const TitleBar = () => {
   const { t } = useTranslation(['settings', 'common'])
 
-  const { node, editNode, selectedIcon, onSave, onCancel, onDelete } = useSettingPromptsContext()
+  const { node, editNode, selectedIcon, onSave, onCancel, onDelete } =
+    useSettingPromptsContext()
   const { editHTML, generateActions } = useShortcutEditorActions()
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
@@ -99,25 +100,35 @@ const TitleBar = () => {
 
   const modalTitle = useMemo(() => {
     if (editNode.data.type === 'group') {
-      return isDisabled
-        ? t('settings:feature_card__prompts__read_prompt_group__title')
-        : editNode.id === ''
-        ? t('settings:feature_card__prompts__new_prompt_group__title')
-        : <>
-            {selectedIcon}
-            {t('settings:feature_card__prompts__edit_prompt_group__title')}
-          </>
+      if (isDisabled) {
+        return t('settings:feature_card__prompts__read_prompt_group__title')
+      }
+      if (editNode.id === '') {
+        return t('settings:feature_card__prompts__new_prompt_group__title')
+      }
+      return (
+        node.text ||
+        t('settings:feature_card__prompts__edit_prompt_group__title')
+      )
     } else {
-      return isDisabled
-        ? t('settings:feature_card__prompts__read_prompt__title')
-        : editNode.id === ''
-        ? t('settings:feature_card__prompts__new_prompt__title')
-        : <>
-            {selectedIcon}
-            {t('settings:feature_card__prompts__edit_prompt__title')}
-          </>
+      if (isDisabled) {
+        return t('settings:feature_card__prompts__read_prompt__title')
+      }
+      if (editNode.id === '') {
+        return t('settings:feature_card__prompts__new_prompt__title')
+      }
+      return (
+        node.text || t('settings:feature_card__prompts__edit_prompt__title')
+      )
     }
-  }, [editNode.data.type, editNode.id, isDisabled, t])
+  }, [
+    editNode.data.type,
+    editNode.id,
+    node.data.icon,
+    node.text,
+    isDisabled,
+    t,
+  ])
 
   const isDisabledSave = useMemo(() => {
     if (isDisabled) {
@@ -189,7 +200,15 @@ const TitleBar = () => {
       py={1}
       px={2}
     >
-      <Typography variant="h6">{modalTitle}</Typography>
+      <Stack direction="row" alignItems="center" spacing={1}>
+        {node.data?.icon && (
+          <ContextMenuIcon
+            icon={node.data.icon}
+            sx={{ fontSize: 24, color: 'primary.main' }}
+          />
+        )}
+        <Typography variant="h6">{modalTitle}</Typography>
+      </Stack>
 
       <DropdownMenu
         defaultPlacement="bottom-end"

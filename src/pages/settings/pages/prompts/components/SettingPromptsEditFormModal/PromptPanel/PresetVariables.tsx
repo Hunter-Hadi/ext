@@ -76,6 +76,7 @@ const PresetVariables: FC<{
 
                 <Stack
                   direction="row"
+                  flex={1}
                   p={1}
                   gap={1}
                   flexWrap="wrap"

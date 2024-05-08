@@ -103,7 +103,13 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     title: 'gpt-4-turbo',
     value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
     titleTag: 'Vision',
-    tags: ['Vision'],
+    tags: (currentConversationType) => {
+      const tags = []
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
     poweredBy: 'OpenAI',
     description: (t) =>
       t('client:provider__chatgpt__model__gpt_4_vision__description'),

@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { type FC, type SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
@@ -48,14 +48,13 @@ const AIProviderModelSelectorButton: FC<{
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [isHoverButton, setIsHoverButton] = useState(false)
   // 当前sidebarConversationType的AI provider
-  const currentChatAIProvider =
-    clientConversation?.meta.AIProvider ||
-    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIProvider
+  const [currentChatAIProvider, setCurrentChatAIProvider] = useState(clientConversation?.meta.AIProvider ||
+    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIProvider)
   // 当前sidebarConversationType的AI model
-  const currentChatModel =
-    clientConversation?.meta.AIModel ||
-    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel
+  const [currentChatModel, setCurrentChatModel] = useState(clientConversation?.meta.AIModel ||
+    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel)
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
+
   const currentModelDetail = useMemo(() => {
     const AIProviderSelectorModel = ChatAIProviderModelSelectorOptions.find(
       (option) => option.value === currentChatModel,
@@ -87,14 +86,14 @@ const AIProviderModelSelectorButton: FC<{
       AIProvider: currentChatAIProvider,
     }
   }, [AI_PROVIDER_MODEL_MAP, currentChatModel, currentChatAIProvider])
-  const [open, setOpen] = React.useState(false)
-  const anchorRef = React.useRef<HTMLButtonElement>(null)
+  const [open, setOpen] = useState(false)
+  const anchorRef = useRef<HTMLButtonElement>(null)
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen)
   }
 
-  const handleClose = (event: Event | React.SyntheticEvent) => {
+  const handleClose = (event: Event | SyntheticEvent) => {
     if (
       anchorRef.current &&
       anchorRef.current.contains(event.target as HTMLElement)
@@ -103,6 +102,7 @@ const AIProviderModelSelectorButton: FC<{
     }
     setOpen(false)
   }
+
   const AIModelPopperModifiers: any = [
     {
       name: 'RTLSupport',
@@ -128,23 +128,36 @@ const AIProviderModelSelectorButton: FC<{
   ]
 
   // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open)
+  const prevOpen = useRef(open)
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current!.focus()
     }
     prevOpen.current = open
   }, [open])
+
+  useEffect(() => {
+    if (clientConversation?.meta.AIProvider && currentChatAIProvider !== clientConversation?.meta.AIProvider) {
+      setCurrentChatAIProvider(clientConversation?.meta.AIProvider)
+    }
+  }, [clientConversation?.meta.AIProvider])
+
+  useEffect(() => {
+    if (clientConversation?.meta.AIModel && currentChatModel !== clientConversation?.meta.AIModel) {
+      setCurrentChatModel(clientConversation?.meta.AIModel)
+    }
+  }, [clientConversation?.meta.AIModel])
+
   useEffect(() => {
     const mouseEventHandler = (event: MouseEvent) => {
       const aiProviderCard =
         size === 'small'
           ? (getMaxAIFloatingContextMenuRootElement()?.querySelector(
-              '#MaxAIProviderSelectorCard',
-            ) as HTMLElement)
+            '#MaxAIProviderSelectorCard',
+          ) as HTMLElement)
           : (getMaxAISidebarRootElement()?.querySelector(
-              '#MaxAIProviderSelectorCard',
-            ) as HTMLElement)
+            '#MaxAIProviderSelectorCard',
+          ) as HTMLElement)
       if (aiProviderCard) {
         const rect = aiProviderCard.getBoundingClientRect()
         const x = (event as MouseEvent).clientX
@@ -167,6 +180,7 @@ const AIProviderModelSelectorButton: FC<{
       document.removeEventListener('mousedown', mouseEventHandler)
     }
   }, [open])
+
   return (
     <Box>
       <Button
@@ -276,4 +290,5 @@ const AIProviderModelSelectorButton: FC<{
     </Box>
   )
 }
+
 export default AIProviderModelSelectorButton

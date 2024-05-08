@@ -225,7 +225,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                 AIModelOption.value === currentModelDetail?.value
               }
               onClick={async () => {
-                if (isHoverThirdPartyModel) {
+                if (isHoverThirdPartyModel || AIModelOption.value === currentModelDetail?.value) {
                   return
                 }
                 await updateAIProviderModel(

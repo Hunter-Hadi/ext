@@ -35,7 +35,6 @@ import {
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import FloatingContextMenuChatHistoryButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuChatHistoryButton'
-import ContextWindowVideoPlayer from '@/features/contextMenu/components/FloatingContextMenu/ContextWindowVideoPlayer'
 import DiscardChangesModal from '@/features/contextMenu/components/FloatingContextMenu/DiscardChangesModal'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
@@ -51,6 +50,10 @@ import {
 } from '@/features/contextMenu/utils'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
+import {
+  closeGlobalVideoPopup,
+  isGlobalVideoPopupOpen,
+} from '@/features/video_popup/utils'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -143,6 +146,10 @@ const FloatingContextMenu: FC<{
     open: floatingDropdownMenu.open,
     onOpenChange: (open, event, reason) => {
       if (reason === 'outside-press' || reason === 'escape-key') {
+        if (isGlobalVideoPopupOpen()) {
+          closeGlobalVideoPopup()
+          return
+        }
         if (reason === 'outside-press') {
           // 因为Floating ui会阻止事件冒泡，所以这里手动触发一次点击事件,让clickAwayListener生效
           const contextWindowRoot =
@@ -588,7 +595,6 @@ const FloatingContextMenu: FC<{
           }
           root={root}
         />
-        <ContextWindowVideoPlayer />
       </div>
       <DiscardChangesModal
         type={

@@ -20,6 +20,7 @@ import {
   MAXAI_SIDEBAR_ID,
   MAXAI_SIDEBAR_WRAPPER_ID,
 } from '@/features/common/constants'
+import { globalVideoPopupRender } from '@/features/video_popup/utils/globalVideoPopupRender'
 import { isSupportWebComponent } from '@/utils/dataHelper/elementHelper'
 import {
   getCurrentDomainHost,
@@ -143,6 +144,8 @@ const mainAppRender = () => {
       </RecoilRoot>
     </React.StrictMode>,
   )
+
+  globalVideoPopupRender()
 }
 const ChatGPTWebAppRender = () => {
   if (location.host === CHATGPT_WEBAPP_HOST) {

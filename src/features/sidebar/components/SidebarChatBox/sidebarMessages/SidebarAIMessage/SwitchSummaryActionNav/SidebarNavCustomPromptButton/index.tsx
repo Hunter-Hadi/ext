@@ -107,11 +107,13 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
         alignItems={'center'}
         justifyContent={'center'}
         sx={{
-          width: '16px',
-          height: '16px',
+          width: '22px',
+          height: '22px',
+          my: '-6px',
           boxSizing: 'border-box',
           borderRadius: '4px',
-          bgColor: 'red',
+          bgcolor: (t) =>
+            t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
           color:
             isActived ? '#fff' : 'primary.main',
         }}
@@ -143,11 +145,13 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
             alignItems={'center'}
             justifyContent={'center'}
             sx={{
-              width: '16px',
-              height: '16px',
+              width: '22px',
+              height: '22px',
+              my: '-6px',
               boxSizing: 'border-box',
               borderRadius: '4px',
-              bgColor: 'red',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
               color:
                 isActived ? '#fff' : 'primary.main',
             }}
@@ -167,11 +171,11 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
     return <AddIcon sx={{ fontSize: '18px', flexShrink: 0 }} />
   }, [summaryActionItem, actionNavMetadata, contextMenuList, isActived])
 
-  const handleClick = (menuItem: IContextMenuItemWithChildren) => {
+  const handleClick = useCallback((menuItem: IContextMenuItemWithChildren) => {
     onChange(menuItem)
     setSummaryActionItem(menuItem)
     setAnchorEl(null)
-  }
+  }, [onChange])
 
   // initialize loaded
   useEffect(() => {
@@ -181,8 +185,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
   }, [])
 
   useEffect(() => {
-    if (!isLoaded && originContextMenuList.length > 0 && !summaryActionItem) {
-      isLoaded = true
+    if (originContextMenuList.length > 0 && !summaryActionItem) {
       let actionItem = null
       if (actionNavMetadata?.key) {
         actionItem = originContextMenuList.find(item => item.id === actionNavMetadata.key) as IContextMenuItemWithChildren || null
@@ -190,7 +193,10 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
       if (!actionItem) {
         actionItem = contextMenuList.find(item => item.data.type === 'shortcuts') || (originContextMenuList.find(item => item.data.type === 'shortcuts') as IContextMenuItemWithChildren) || null
       }
-      setSummaryActionItem(actionItem)
+      if (actionItem) {
+        isLoaded = true
+        setSummaryActionItem(actionItem)
+      }
     }
   }, [actived, contextMenuList, originContextMenuList, actionNavMetadata?.key])
 

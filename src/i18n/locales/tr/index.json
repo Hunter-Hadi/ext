@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite, sınırsız AI sorguları, AI özetleri, AI aramaları ve anlık yanıtlar sunar.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Kendi ipuçlarım",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Kendi ipucu ekleyin",
-    "sidebar__summary__advanced__title": "Gelişmiş özet seçenekleri"
+    "sidebar__summary__advanced__title": "Gelişmiş özet seçenekleri",
+    "floating_menu__discard_changes_card__ai_response__title": "AI yanıtını atmak istiyor musunuz?",
+    "floating_menu__discard_changes_card__your_draft__title": "Taslak dosyanızı silmek istiyor musunuz?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite असीमित AI क्वेरी, AI सारांश, AI खोज और तत्क्षण उत्तर प्रदान करता है।",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "मेरे खुद के प्रॉम्प्ट",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "अपना प्रॉम्प्ट जोड़ें",
-    "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प"
+    "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प",
+    "floating_menu__discard_changes_card__ai_response__title": "क्या आप AI प्रतिक्रिया को छोड़ना चाहते हैं?",
+    "floating_menu__discard_changes_card__your_draft__title": "क्या आप अपने ड्राफ्ट को छोड़ना चाहते हैं?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

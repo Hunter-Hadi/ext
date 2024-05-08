@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite提供无限的AI查询、AI摘要、AI搜索和即时回复。",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "我的提示",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "添加我的提示",
-    "sidebar__summary__advanced__title": "高级摘要选项"
+    "sidebar__summary__advanced__title": "高级摘要选项",
+    "floating_menu__discard_changes_card__ai_response__title": "您是否要放弃AI回应？",
+    "floating_menu__discard_changes_card__your_draft__title": "您要放弃草稿吗？"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

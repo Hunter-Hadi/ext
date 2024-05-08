@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite የማጠቃለያ እድል ሁኔታዎችን፣ የማጠቃለያ ማጠቃለያዎችን፣ የማጠቃለያ ዝግጅቶችንና የማጠቃለያ ተመሳሳይ መልዕክቶችን ይቀላቀሉ።",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "የእኔ ምርጫዎች",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "የእኔ ምርጫ ጨምር",
-    "sidebar__summary__advanced__title": "የተሻለ ጥቅም አማራጭ አማራጭ"
+    "sidebar__summary__advanced__title": "የተሻለ ጥቅም አማራጭ አማራጭ",
+    "floating_menu__discard_changes_card__ai_response__title": "እባክዎ የ AI መልዕክትን ይጠቀም ይፈልጋሉ?",
+    "floating_menu__discard_changes_card__your_draft__title": "እባክዎ የምርጫውን ማጥፋት ይፈልጋሉ?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite inatoa maswali ya AI yasiyokuwa na kikomo, muhtasari wa AI, utafutaji wa AI, na majibu ya papo hapo.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Majibu yangu mwenyewe",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ongeza swali langu mwenyewe",
-    "sidebar__summary__advanced__title": "Chaguzi za muhtasari za juu"
+    "sidebar__summary__advanced__title": "Chaguzi za muhtasari za juu",
+    "floating_menu__discard_changes_card__ai_response__title": "Je, unataka kuacha majibu ya AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Je, unataka kuacha rasimu yako?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

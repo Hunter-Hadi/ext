@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite offre query AI illimitate, riassunti AI, ricerche AI e risposte istantanee.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Le mie domande",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Aggiungi la mia domanda",
-    "sidebar__summary__advanced__title": "Opzioni avanzate di riepilogo"
+    "sidebar__summary__advanced__title": "Opzioni avanzate di riepilogo",
+    "floating_menu__discard_changes_card__ai_response__title": "Vuoi eliminare la risposta dell'IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vuoi eliminare la tua bozza?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

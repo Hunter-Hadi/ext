@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite oferă interogări AI nelimitate, rezumate AI, căutări AI și răspunsuri instantanee.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Propriile mele sugestii",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adaugă propria mea sugestie",
-    "sidebar__summary__advanced__title": "Opțiuni avansate de rezumat"
+    "sidebar__summary__advanced__title": "Opțiuni avansate de rezumat",
+    "floating_menu__discard_changes_card__ai_response__title": "Doriți să renunțați la răspunsul AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Doriți să renunțați la proiectul dumneavoastră?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

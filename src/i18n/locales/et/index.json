@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite pakub piiramatut AI päringuid, AI kokkuvõtteid, AI otsinguid ja koheseid vastuseid.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Minu enda vihjed",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lisa oma vihje",
-    "sidebar__summary__advanced__title": "Täpsemad kokkuvõtte valikud"
+    "sidebar__summary__advanced__title": "Täpsemad kokkuvõtte valikud",
+    "floating_menu__discard_changes_card__ai_response__title": "Kas soovite AI-vastusest loobuda?",
+    "floating_menu__discard_changes_card__your_draft__title": "Kas soovite oma mustandi kustutada?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

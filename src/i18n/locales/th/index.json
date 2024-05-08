@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite ให้บริการคำถาม AI ไม่จำกัด, สรุป AI, การค้นหา AI และการตอบกลับทันที",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "คำถามของฉันเอง",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "เพิ่มคำถามของฉัน",
-    "sidebar__summary__advanced__title": "ตัวเลือกสรุปขั้นสูง"
+    "sidebar__summary__advanced__title": "ตัวเลือกสรุปขั้นสูง",
+    "floating_menu__discard_changes_card__ai_response__title": "คุณต้องการที่จะละทิ้งการตอบสนองของ AI หรือไม่?",
+    "floating_menu__discard_changes_card__your_draft__title": "คุณต้องการที่จะละทิ้งร่างของคุณหรือไม่?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

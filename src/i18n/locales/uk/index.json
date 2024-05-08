@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite غیر محدود AI کوئریوں، AI خلاصے، AI تلاش اور فوری جوابات پیش کرتا ہے۔",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "میرے خود کے پرامپٹس",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "اپنا پرامپٹ شامل کریں",
-    "sidebar__summary__advanced__title": "تفصیلی خلاصہ کے اختیارات"
+    "sidebar__summary__advanced__title": "تفصیلی خلاصہ کے اختیارات",
+    "floating_menu__discard_changes_card__ai_response__title": "کیا آپ AI رد کرنا چاہتے ہیں؟",
+    "floating_menu__discard_changes_card__your_draft__title": "کیا آپ اپنا مسودہ مسترد کرنا چاہتے ہیں؟"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

@@ -235,7 +235,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       Object.keys(presetVariables).forEach((key) => {
         const variableDetail = variableDetailMap[key]
         if (variableDetail.hidden) {
-          return
+          if (isProduction) {
+            return
+          } else {
+            variableDetail.label = '(Dev show) ' + variableDetail.label
+          }
         }
         if (variableDetail) {
           shortcutsVariables[key] = {
@@ -363,7 +367,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       .concat(currentVariables)
       .forEach((variable) => {
         if (variable.hidden) {
-          return
+          if (isProduction) {
+            return
+          } else if (!variable.label?.startsWith('(Dev show) ')) {
+            variable.label = '(Dev show) ' + variable.label
+          }
         }
         if (variable.valueType === 'Select') {
           selectTypeVariables.push(variable)
@@ -587,12 +595,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       onKeyPress={(event) => {
         event.stopPropagation()
       }}
-    // onKeyUpCapture={(event) => {
-    //   event.stopPropagation()
-    // }}
-    // onKeyUp={(event) => {
-    //   event.stopPropagation()
-    // }}
+      // onKeyUpCapture={(event) => {
+      //   event.stopPropagation()
+      // }}
+      // onKeyUp={(event) => {
+      //   event.stopPropagation()
+      // }}
     >
       {/*Header*/}
       <Stack
@@ -696,7 +704,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
           const width =
             (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') &&
-              currentModalConfig.textTypeVariables.length > 1
+            currentModalConfig.textTypeVariables.length > 1
               ? 'calc(50% - 8px)'
               : '100%'
           const minHeight = currentModalConfig.minTextareaMaxRows * 23 + 17

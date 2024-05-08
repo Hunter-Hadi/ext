@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI ఎలీట్ అనువాదాల మితిలేని AI ప్రశ్నలు, AI సారాంశాలు, AI శోధనలు మరియు తక్షణ సమాధానాలను అందిస్తుంది.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "నా ప్రాంప్టులు",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "నా ప్రాంప్టును జోడించండి",
-    "sidebar__summary__advanced__title": "ఆధ్వర్యం సారాంశ ఎంపికలు"
+    "sidebar__summary__advanced__title": "ఆధ్వర్యం సారాంశ ఎంపికలు",
+    "floating_menu__discard_changes_card__ai_response__title": "మీరు AI సమాధానాన్ని విస్మరించాలా?",
+    "floating_menu__discard_changes_card__your_draft__title": "మీ డ్రాఫ్ట్‌ను విస్మరించాలా?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "يقدم MaxAI Elite استعلامات AI غير محدودة وملخصات AI وبحثًا AI وردود فورية.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "مشاركاتي الخاصة",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "إضافة مشاركتي الخاصة",
-    "sidebar__summary__advanced__title": "خيارات ملخص متقدمة"
+    "sidebar__summary__advanced__title": "خيارات ملخص متقدمة",
+    "floating_menu__discard_changes_card__ai_response__title": "هل ترغب في تجاهل استجابة الذكاء الاصطناعي؟",
+    "floating_menu__discard_changes_card__your_draft__title": "هل ترغب في التخلص من مسودتك؟"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

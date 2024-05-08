@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite ಅನಿವಾರ್ಯ AI ಪ್ರಶ್ನೆಗಳು, AI ಸಂಗ್ರಹಣೆಗಳು, AI ಹುಡುಕುಗಳು ಮತ್ತು ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "ನನ್ನ ಪ್ರಶ್ನೆಗಳು",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "ನನ್ನ ಪ್ರಶ್ನೆನ್ನು ಸೇರಿಸಿ",
-    "sidebar__summary__advanced__title": "ಮುಂದಿನ ಸಾರಾಂಶ ಆಯ್ಕೆಗಳು"
+    "sidebar__summary__advanced__title": "ಮುಂದಿನ ಸಾರಾಂಶ ಆಯ್ಕೆಗಳು",
+    "floating_menu__discard_changes_card__ai_response__title": "ನೀವು AI ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತ್ಯಜಿಸಲು ಬಯಸುತ್ತೀರಾ?",
+    "floating_menu__discard_changes_card__your_draft__title": "ನೀವು ನಿಮ್ಮ ಡ್ರಾಫ್ಟ್ ತ್ಯಜಿಸಲು ಬಯಸುತ್ತೀರಾ?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

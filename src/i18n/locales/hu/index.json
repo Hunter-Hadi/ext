@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "A MaxAI Elite csomag korlátlan AI lekérdezéseket, AI összefoglalókat, AI kereséseket és azonnali válaszokat kínál.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Saját kérdéseim",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Saját kérdés hozzáadása",
-    "sidebar__summary__advanced__title": "Speciális összegzési lehetőségek"
+    "sidebar__summary__advanced__title": "Speciális összegzési lehetőségek",
+    "floating_menu__discard_changes_card__ai_response__title": "Szeretné elvetni az AI választ?",
+    "floating_menu__discard_changes_card__your_draft__title": "Szeretné eldobni a piszkozatát?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

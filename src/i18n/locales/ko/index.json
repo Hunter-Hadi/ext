@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite는 무제한 AI 쿼리, AI 요약, AI 검색 및 즉각적인 답변을 제공합니다.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "내 질문",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "질문 추가",
-    "sidebar__summary__advanced__title": "고급 요약 옵션"
+    "sidebar__summary__advanced__title": "고급 요약 옵션",
+    "floating_menu__discard_changes_card__ai_response__title": "AI 응답을 삭제하시겠습니까?",
+    "floating_menu__discard_changes_card__your_draft__title": "드래프트를 삭제하시겠습니까?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "O MaxAI Elite oferece consultas de IA ilimitadas, resumos de IA, pesquisas de IA e respostas instantâneas.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Minhas próprias sugestões",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adicionar minha própria sugestão",
-    "sidebar__summary__advanced__title": "Opções avançadas de resumo"
+    "sidebar__summary__advanced__title": "Opções avançadas de resumo",
+    "floating_menu__discard_changes_card__ai_response__title": "Você deseja descartar a resposta da IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "Você deseja descartar seu rascunho?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

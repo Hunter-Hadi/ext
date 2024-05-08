@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite предлага неограничени AI заявки, AI резюмета, AI търсения и мигновени отговори.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Моите собствени подсказки",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Добави моята собствена подсказка",
-    "sidebar__summary__advanced__title": "Разширени опции за обобщение"
+    "sidebar__summary__advanced__title": "Разширени опции за обобщение",
+    "floating_menu__discard_changes_card__ai_response__title": "Искате ли да отхвърлите отговора на ИИ?",
+    "floating_menu__discard_changes_card__your_draft__title": "Искате ли да отхвърлите черновата си версия?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

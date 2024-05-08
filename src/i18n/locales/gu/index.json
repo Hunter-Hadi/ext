@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI એલિટ અમર્યાદિત AI પ્રશ્નો, AI સંગ્રહણો, AI શોધો અને તક્ષણિક જવાબો આપે છે.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "મારા પ્રોમ્પ્ટ્સ",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "મારી પ્રોમ્પ્ટ ઉમેરો",
-    "sidebar__summary__advanced__title": "અગ્રણી સારાંશ વિકલ્પો"
+    "sidebar__summary__advanced__title": "અગ્રણી સારાંશ વિકલ્પો",
+    "floating_menu__discard_changes_card__ai_response__title": "શું તમે AI પ્રતિસાદ છોડવા માંગો છો?",
+    "floating_menu__discard_changes_card__your_draft__title": "શું તમે તમારી ડ્રાફ્ટ છોડવા માંગો છો?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

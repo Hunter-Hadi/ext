@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite oferuje nieograniczone zapytania AI, podsumowania AI, wyszukiwania AI i natychmiastowe odpowiedzi.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moje własne podpowiedzi",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj moją własną podpowiedź",
-    "sidebar__summary__advanced__title": "Zaawansowane opcje podsumowania"
+    "sidebar__summary__advanced__title": "Zaawansowane opcje podsumowania",
+    "floating_menu__discard_changes_card__ai_response__title": "Czy chcesz odrzucić odpowiedź AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Czy chcesz odrzucić swój szkic?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Eliteは無制限のAIクエリ、AIサマリー、AI検索、および即時返信を提供します。",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "私のプロンプト",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "プロンプトを追加する",
-    "sidebar__summary__advanced__title": "高度なサマリーオプション"
+    "sidebar__summary__advanced__title": "高度なサマリーオプション",
+    "floating_menu__discard_changes_card__ai_response__title": "AIの応答を破棄しますか？",
+    "floating_menu__discard_changes_card__your_draft__title": "下書きを破棄しますか？"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "Το MaxAI Elite προσφέρει απεριόριστες ερωτήσεις AI, περιλήψεις AI, αναζητήσεις AI και άμεσες απαντήσεις.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Οι δικές μου υποδείξεις",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Προσθήκη δικής μου υποδείξης",
-    "sidebar__summary__advanced__title": "Προηγμένες επιλογές περίληψης"
+    "sidebar__summary__advanced__title": "Προηγμένες επιλογές περίληψης",
+    "floating_menu__discard_changes_card__ai_response__title": "Θέλετε να απορρίψετε την απάντηση της AI;",
+    "floating_menu__discard_changes_card__your_draft__title": "Θέλετε να απορρίψετε το προσχέδιό σας;"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

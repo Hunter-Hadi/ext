@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite cung cấp không giới hạn truy vấn AI, tóm tắt AI, tìm kiếm AI và phản hồi tức thì.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Câu hỏi của tôi",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Thêm câu hỏi của tôi",
-    "sidebar__summary__advanced__title": "Tùy chọn tóm tắt nâng cao"
+    "sidebar__summary__advanced__title": "Tùy chọn tóm tắt nâng cao",
+    "floating_menu__discard_changes_card__ai_response__title": "Bạn có muốn hủy phản hồi của AI không?",
+    "floating_menu__discard_changes_card__your_draft__title": "Bạn có muốn hủy bỏ bản nháp của bạn không?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

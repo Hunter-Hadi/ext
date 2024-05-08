@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite നിങ്ങൾക്ക് അനവധി AI ചോദ്യങ്ങൾ, AI സംഗ്രഹങ്ങൾ, AI തിരയുകളും, പ്രത്യേക ഉത്തരങ്ങൾ നൽകുന്നു.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "എന്റെ പ്രോംപ്റ്റുകൾ",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "എന്റെ പ്രോംപ്റ്റ് ചേർക്കുക",
-    "sidebar__summary__advanced__title": "ഉൾപ്പെടുത്തിയ സംഗ്രഹ ഐച്ഛികങ്ങൾ"
+    "sidebar__summary__advanced__title": "ഉൾപ്പെടുത്തിയ സംഗ്രഹ ഐച്ഛികങ്ങൾ",
+    "floating_menu__discard_changes_card__ai_response__title": "എന്തെങ്കിലും എന്ന് AI പ്രതികരണം ഉപേക്ഷിക്കാൻ ആഗ്രഹിക്കുന്നുണ്ടോ?",
+    "floating_menu__discard_changes_card__your_draft__title": "നിങ്ങളുടെ ഡ്രാഫ്റ്റ് നിരസിക്കാൻ ആഗ്രഹമുണ്ടോ?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

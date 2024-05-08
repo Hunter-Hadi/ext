@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite siūlo neribotą AI užklausų, AI santraukų, AI paieškų ir momentinių atsakymų.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mano pačių užduotys",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridėti savo užduotį",
-    "sidebar__summary__advanced__title": "Išplėstinės santraukos parinktys"
+    "sidebar__summary__advanced__title": "Išplėstinės santraukos parinktys",
+    "floating_menu__discard_changes_card__ai_response__title": "Ar norite atsisakyti AI atsakymo?",
+    "floating_menu__discard_changes_card__your_draft__title": "Ar norite atsisakyti savo juodraščio?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

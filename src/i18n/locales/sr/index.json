@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite nudi neograničene AI upite, AI sažetke, AI pretrage i trenutne odgovore.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moji sopstveni podsticaji",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj svoj podsticaj",
-    "sidebar__summary__advanced__title": "Napredne opcije rezimea"
+    "sidebar__summary__advanced__title": "Napredne opcije rezimea",
+    "floating_menu__discard_changes_card__ai_response__title": "Da li želite da odbacite AI odgovor?",
+    "floating_menu__discard_changes_card__your_draft__title": "Da li želite da odbacite svoju skicu?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

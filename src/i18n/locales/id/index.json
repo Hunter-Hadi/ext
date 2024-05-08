@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite menawarkan kueri AI tanpa batas, ringkasan AI, pencarian AI, dan balasan instan.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Prompt saya sendiri",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Tambahkan prompt saya sendiri",
-    "sidebar__summary__advanced__title": "Opsi ringkasan lanjutan"
+    "sidebar__summary__advanced__title": "Opsi ringkasan lanjutan",
+    "floating_menu__discard_changes_card__ai_response__title": "Apakah Anda ingin membuang respons AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Apakah Anda ingin membuang draf Anda?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

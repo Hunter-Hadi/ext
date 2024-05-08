@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite piedāvā neierobežotus AI vaicājumus, AI kopsavilkumus, AI meklēšanas rezultātus un momentānas atbildes.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mani paša uzdevumi",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pievienot savu uzdevumu",
-    "sidebar__summary__advanced__title": "Papildu kopsavilkuma opcijas"
+    "sidebar__summary__advanced__title": "Papildu kopsavilkuma opcijas",
+    "floating_menu__discard_changes_card__ai_response__title": "Vai vēlaties atmest AI atbildi?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vai vēlaties atmest savu melnrakstu?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

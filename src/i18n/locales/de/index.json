@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite bietet unbegrenzte KI-Abfragen, KI-Zusammenfassungen, KI-Suchen und sofortige Antworten.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Meine eigenen Vorschläge",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Eigenen Vorschlag hinzufügen",
-    "sidebar__summary__advanced__title": "Erweiterte Zusammenfassungsoptionen"
+    "sidebar__summary__advanced__title": "Erweiterte Zusammenfassungsoptionen",
+    "floating_menu__discard_changes_card__ai_response__title": "Möchten Sie die KI-Antwort verwerfen?",
+    "floating_menu__discard_changes_card__your_draft__title": "Möchten Sie Ihren Entwurf verwerfen?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

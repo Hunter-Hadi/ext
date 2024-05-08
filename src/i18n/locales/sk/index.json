@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite ponúka neobmedzené dotazy AI, súhrny AI, vyhľadávania AI a okamžité odpovede.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moje vlastné podnety",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridať môj vlastný podnet",
-    "sidebar__summary__advanced__title": "Pokročilé možnosti súhrnu"
+    "sidebar__summary__advanced__title": "Pokročilé možnosti súhrnu",
+    "floating_menu__discard_changes_card__ai_response__title": "Chcete zahodiť odpoveď AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Chcete zahodiť váš návrh?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

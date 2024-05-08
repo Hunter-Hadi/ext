@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyr ubegrensede AI-forespørsler, AI-sammendrag, AI-søk og umiddelbare svar.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mine egne oppgaver",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Legg til min egen oppgave",
-    "sidebar__summary__advanced__title": "Avanserte sammendragsalternativer"
+    "sidebar__summary__advanced__title": "Avanserte sammendragsalternativer",
+    "floating_menu__discard_changes_card__ai_response__title": "Vil du forkaste AI-responsen?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vil du forkaste utkastet ditt?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite biedt onbeperkte AI-zoekopdrachten, AI-samenvattingen, AI-zoekopdrachten en directe antwoorden.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mijn eigen prompts",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Voeg mijn eigen prompt toe",
-    "sidebar__summary__advanced__title": "Geavanceerde samenvattingsmogelijkheden"
+    "sidebar__summary__advanced__title": "Geavanceerde samenvattingsmogelijkheden",
+    "floating_menu__discard_changes_card__ai_response__title": "Wil je het AI-antwoord negeren?",
+    "floating_menu__discard_changes_card__your_draft__title": "Wil je je concept verwijderen?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

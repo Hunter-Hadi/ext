@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "Ang MaxAI Elite ay nag-aalok ng walang limitasyong mga AI query, AI summary, AI search, at instant na mga sagot.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mga sariling prompt",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Magdagdag ng sariling prompt",
-    "sidebar__summary__advanced__title": "Mga Advanced na Pagpipilian sa Buod"
+    "sidebar__summary__advanced__title": "Mga Advanced na Pagpipilian sa Buod",
+    "floating_menu__discard_changes_card__ai_response__title": "Gusto mo bang itapon ang AI response?",
+    "floating_menu__discard_changes_card__your_draft__title": "Gusto mo bang itapon ang iyong draft?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

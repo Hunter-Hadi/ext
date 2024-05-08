@@ -770,7 +770,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite ارائه دهنده پرس و جوهای نامحدود هوش مصنوعی، خلاصه های هوش مصنوعی، جستجوهای هوش مصنوعی و پاسخ های فوری است.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "پرسش‌های خودم",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "افزودن پرسش خودم",
-    "sidebar__summary__advanced__title": "گزینه‌های پیشرفته خلاصه"
+    "sidebar__summary__advanced__title": "گزینه‌های پیشرفته خلاصه",
+    "floating_menu__discard_changes_card__ai_response__title": "آیا می خواهید پاسخ هوش مصنوعی را لغو کنید؟",
+    "floating_menu__discard_changes_card__your_draft__title": "آیا می خواهید پیش نویس خود را لغو کنید؟"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

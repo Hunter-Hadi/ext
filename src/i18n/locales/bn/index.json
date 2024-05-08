@@ -771,7 +771,8 @@
     "permission__pricing_hook__footer_tip": "MaxAI এলিট অসীম AI কুয়েরি, AI সংক্ষেপ, AI অনুসন্ধান এবং তাৎক্ষণিক উত্তর দেয়।",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "আমার নিজের প্রম্পটগুলি",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "আমার নিজের প্রম্পট যোগ করুন",
-    "sidebar__summary__advanced__title": "উন্নত সারসংক্ষেপ বিকল্পগুলি"
+    "sidebar__summary__advanced__title": "উন্নত সারসংক্ষেপ বিকল্পগুলি",
+    "floating_menu__discard_changes_card__your_draft__title": "আপনি কি আপনার খসড়া বাতিল করতে চান?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

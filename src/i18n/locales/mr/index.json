@@ -770,7 +770,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI चे GPT-4, वेगवानता आणि क्षमतेमध्ये उत्कृष्टता असलेले, रिअल-टाइम अनुप्रयोगांमध्ये रचनात्मकता आणि उन्नत तर्कसाठी उत्कृष्ट प्रतिसाद वेळा आणि संगणक प्रतिसाद असलेले.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "माझे स्वतःचे प्रॉम्प्ट्स",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "माझे स्वतःचे प्रॉम्प्ट जोडा",
-    "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प"
+    "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प",
+    "floating_menu__discard_changes_card__ai_response__title": "तुम्हाला AI प्रतिसाद वगळायला आवडेल का?",
+    "floating_menu__discard_changes_card__your_draft__title": "तुम्हाला आपले मसूद विसरणार आहात का?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

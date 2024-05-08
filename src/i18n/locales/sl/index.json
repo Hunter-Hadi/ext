@@ -57,7 +57,8 @@
     "team_plan": "Načrt za ekipo",
     "manage_my_plan": "Upravljanje mojega načrta",
     "watch_video": "Oglejte si video",
-    "input_content": "Vsebina vnosa"
+    "input_content": "Vsebina vnosa",
+    "discard": "Zavrzi"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",

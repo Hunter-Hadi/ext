@@ -54,7 +54,8 @@
     "team_plan": "Թիմային պլան",
     "manage_my_plan": "Կառավարել իմ պլանը",
     "watch_video": "Տեսնել տեսանյութը",
-    "input_content": "Մուտքագրեք բովանդակությունը"
+    "input_content": "Մուտքագրեք բովանդակությունը",
+    "discard": "Հեռացնել"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",

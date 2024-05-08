@@ -57,7 +57,8 @@
     "team_plan": "خطة الفريق",
     "manage_my_plan": "إدارة خطتي",
     "watch_video": "شاهد الفيديو",
-    "input_content": "محتوى الإدخال"
+    "input_content": "محتوى الإدخال",
+    "discard": "تجاهل"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",

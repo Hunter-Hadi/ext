@@ -57,7 +57,8 @@
     "team_plan": "Holdplan",
     "manage_my_plan": "Administrer min plan",
     "watch_video": "Se video",
-    "input_content": "Indtast indhold"
+    "input_content": "Indtast indhold",
+    "discard": "Fjern"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",

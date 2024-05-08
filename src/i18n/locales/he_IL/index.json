@@ -57,7 +57,8 @@
     "team_plan": "תוכנית צוות",
     "manage_my_plan": "ניהול התוכנית שלי",
     "watch_video": "צפה בסרטון",
-    "input_content": "תוכן קלט"
+    "input_content": "תוכן קלט",
+    "discard": "התעלם"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",

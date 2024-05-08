@@ -57,7 +57,8 @@
     "team_plan": "Csapat terv",
     "manage_my_plan": "Tervem kezelése",
     "watch_video": "Videó megtekintése",
-    "input_content": "Bemeneti tartalom"
+    "input_content": "Bemeneti tartalom",
+    "discard": "Elvetés"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",

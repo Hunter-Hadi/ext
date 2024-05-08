@@ -57,7 +57,8 @@
     "team_plan": "टीम प्लान",
     "manage_my_plan": "मेरी योजना का प्रबंधन करें",
     "watch_video": "वीडियो देखें",
-    "input_content": "इनपुट सामग्री"
+    "input_content": "इनपुट सामग्री",
+    "discard": "छोड़ें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",

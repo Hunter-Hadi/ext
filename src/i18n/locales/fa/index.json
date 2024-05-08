@@ -57,7 +57,8 @@
     "team_plan": "طرح تیم",
     "manage_my_plan": "مدیریت طرح من",
     "watch_video": "تماشای ویدیو",
-    "input_content": "محتوای ورودی"
+    "input_content": "محتوای ورودی",
+    "discard": "دور انداختن"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",

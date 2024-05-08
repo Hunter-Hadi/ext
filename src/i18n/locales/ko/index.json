@@ -57,7 +57,8 @@
     "team_plan": "팀 플랜",
     "manage_my_plan": "내 플랜 관리",
     "watch_video": "동영상 시청",
-    "input_content": "입력 내용"
+    "input_content": "입력 내용",
+    "discard": "버리기"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",

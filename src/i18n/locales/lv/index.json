@@ -57,7 +57,8 @@
     "team_plan": "Komandas plāns",
     "manage_my_plan": "Pārvaldīt manu plānu",
     "watch_video": "Skatīt video",
-    "input_content": "Ievadiet saturu"
+    "input_content": "Ievadiet saturu",
+    "discard": "Atmest"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",

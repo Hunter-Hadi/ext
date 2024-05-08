@@ -57,7 +57,8 @@
     "team_plan": "團隊方案",
     "manage_my_plan": "管理我的方案",
     "watch_video": "觀看影片",
-    "input_content": "輸入內容"
+    "input_content": "輸入內容",
+    "discard": "捨棄"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",

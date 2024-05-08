@@ -57,7 +57,8 @@
     "team_plan": "Teamplan",
     "manage_my_plan": "Beheer mijn plan",
     "watch_video": "Bekijk video",
-    "input_content": "Invoerinformatie"
+    "input_content": "Invoerinformatie",
+    "discard": "Afwijzen"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",

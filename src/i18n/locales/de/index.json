@@ -57,7 +57,8 @@
     "team_plan": "Team-Plan",
     "manage_my_plan": "Meinen Plan verwalten",
     "watch_video": "Video ansehen",
-    "input_content": "Eingabeinhalt"
+    "input_content": "Eingabeinhalt",
+    "discard": "Verwerfen"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",

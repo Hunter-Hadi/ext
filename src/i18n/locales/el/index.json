@@ -57,7 +57,8 @@
     "team_plan": "Σχέδιο ομάδας",
     "manage_my_plan": "Διαχείριση του σχεδίου μου",
     "watch_video": "Παρακολούθηση βίντεο",
-    "input_content": "Περιεχόμενο εισαγωγής"
+    "input_content": "Περιεχόμενο εισαγωγής",
+    "discard": "Απόρριψη"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",

@@ -57,7 +57,8 @@
     "team_plan": "Tiimisuunnitelma",
     "manage_my_plan": "Hallinnoi suunnitelmaani",
     "watch_video": "Katso video",
-    "input_content": "Syötä sisältö"
+    "input_content": "Syötä sisältö",
+    "discard": "Hylkää"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",

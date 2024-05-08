@@ -57,7 +57,8 @@
     "team_plan": "แผนทีม",
     "manage_my_plan": "จัดการแผนของฉัน",
     "watch_video": "ดูวิดีโอ",
-    "input_content": "เนื้อหาที่ป้อน"
+    "input_content": "เนื้อหาที่ป้อน",
+    "discard": "ทิ้ง"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",

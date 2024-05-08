@@ -622,7 +622,7 @@ async function fixManifestTooLongName() {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = []
+  const keys = ['discard']
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
   await fixManifestTooLongName()

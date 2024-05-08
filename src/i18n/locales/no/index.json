@@ -57,7 +57,8 @@
     "team_plan": "Teamplan",
     "manage_my_plan": "Administrer planen min",
     "watch_video": "Se video",
-    "input_content": "Innhold for inndata"
+    "input_content": "Innhold for inndata",
+    "discard": "Fjern"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",

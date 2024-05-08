@@ -57,7 +57,8 @@
     "team_plan": "Plán tímu",
     "manage_my_plan": "Spravovať môj plán",
     "watch_video": "Pozrite si video",
-    "input_content": "Vstupný obsah"
+    "input_content": "Vstupný obsah",
+    "discard": "Zahodiť"
   },
   "settings": {
     "left_menu__me": "Ja a MaxAI",

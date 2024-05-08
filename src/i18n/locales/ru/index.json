@@ -57,7 +57,8 @@
     "team_plan": "План для команды",
     "manage_my_plan": "Управление моим планом",
     "watch_video": "Смотреть видео",
-    "input_content": "Вводите содержимое"
+    "input_content": "Вводите содержимое",
+    "discard": "Отменить"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",

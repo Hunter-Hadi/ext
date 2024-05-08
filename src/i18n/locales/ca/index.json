@@ -57,7 +57,8 @@
     "team_plan": "Pla d'equip",
     "manage_my_plan": "Gestiona el meu pla",
     "watch_video": "Veure vídeo",
-    "input_content": "Contingut d'entrada"
+    "input_content": "Contingut d'entrada",
+    "discard": "Descartar"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",

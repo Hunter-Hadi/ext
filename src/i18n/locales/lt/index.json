@@ -57,7 +57,8 @@
     "team_plan": "Komandos planas",
     "manage_my_plan": "Valdyti mano planą",
     "watch_video": "Žiūrėti vaizdo įrašą",
-    "input_content": "Įvesties turinys"
+    "input_content": "Įvesties turinys",
+    "discard": "Atmesti"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",

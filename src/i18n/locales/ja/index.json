@@ -57,7 +57,8 @@
     "team_plan": "チームプラン",
     "manage_my_plan": "プランを管理する",
     "watch_video": "ビデオを見る",
-    "input_content": "入力内容"
+    "input_content": "入力内容",
+    "discard": "破棄"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",

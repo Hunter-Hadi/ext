@@ -57,7 +57,8 @@
     "team_plan": "Meeskonna plaan",
     "manage_my_plan": "Halda oma plaani",
     "watch_video": "Vaata videot",
-    "input_content": "Sisestage sisu"
+    "input_content": "Sisestage sisu",
+    "discard": "Loobu"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",

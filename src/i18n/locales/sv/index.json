@@ -57,7 +57,8 @@
     "team_plan": "Teamplan",
     "manage_my_plan": "Hantera mitt plan",
     "watch_video": "Titta på video",
-    "input_content": "Innehåll för inmatning"
+    "input_content": "Innehåll för inmatning",
+    "discard": "Kasta"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",

@@ -7,11 +7,13 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ChatIconFileList, {
   ChatIconFileListProps,
 } from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
+import { MAXAI_IN_HOUSE_AI_PROVIDERS } from '@/features/chatgpt/constant'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIModelUploadFile'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
@@ -28,10 +30,11 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderRemoveFiles,
     aiProviderUploadingTooltip,
     getCanUploadFiles,
+    aiProviderUploadFiles,
   } = useAIProviderUpload()
   const { uploadFilesToMaxAIModel, isContainMaxAIModelUploadFile } =
     useMaxAIModelUploadFile()
-  const { conversationStatus } = useClientConversation()
+  const { conversationStatus, clientConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const inputRef = useRef<HTMLInputElement>(null)
   const maxFiles = AIProviderConfig?.maxCount || 1
@@ -42,7 +45,8 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedUploadFiles = e.target.files
-    if (!selectedUploadFiles) {
+    const currentAIProvider = clientConversation?.meta.AIProvider
+    if (!selectedUploadFiles || !currentAIProvider) {
       return
     }
     const canUploadFiles: File[] = await getCanUploadFiles(
@@ -52,8 +56,14 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       return
     }
     // upload
-    if (isContainMaxAIModelUploadFile(canUploadFiles)) {
+    if (
+      MAXAI_IN_HOUSE_AI_PROVIDERS.includes(currentAIProvider) &&
+      isContainMaxAIModelUploadFile(canUploadFiles)
+    ) {
       await uploadFilesToMaxAIModel(canUploadFiles)
+    } else {
+      const newUploadFiles = await formatClientUploadFiles(canUploadFiles)
+      await aiProviderUploadFiles(newUploadFiles)
     }
     // clear input
     if (inputRef.current) {

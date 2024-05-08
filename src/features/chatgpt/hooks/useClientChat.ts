@@ -246,8 +246,8 @@ const useClientChat = () => {
     }
 
     // 判断是否有不保存最后运行的Shortcuts的Action存在
+    const notSaveActionType: ActionIdentifier[] = ['SET_VARIABLES_MODAL']
     const isNeedSaveLastRunShortcuts = actions.find((action) => {
-      const notSaveActionType: ActionIdentifier[] = ['SET_VARIABLES_MODAL']
       return notSaveActionType.includes(action.type)
     })
     if (isSaveLastRunShortcuts && !isNeedSaveLastRunShortcuts) {
@@ -273,8 +273,8 @@ const useClientChat = () => {
           lastRunActionsParams,
           lastRunActions,
         } = await getLastRunShortcuts(currentConversationId)
-        let needDeleteCount = 0
         if (conversation && lastRunActions.length > 0) {
+          let needDeleteCount = 0
           // 删除消息
           // 1. 找到最后一次运行的shortcuts的messageId
           const messages = conversation?.messages || []
@@ -285,13 +285,15 @@ const useClientChat = () => {
               }
               needDeleteCount++
             }
+          } else {
+            needDeleteCount = messages.length
           }
           // 2. 删除消息
           await clientChatConversationModifyChatMessages(
             'delete',
             currentConversationId,
             // 因为第一条消息才会没有lastRunActionsMessageId, 此时需要删除全部
-            lastRunActionsMessageId === '' ? messages.length : needDeleteCount,
+            needDeleteCount,
             [],
           )
           const waitRunActions = lastRunActions.map((action) => {
@@ -383,8 +385,7 @@ const useClientChat = () => {
   ) => {
     const conversation = await clientGetConversation(conversationId)
     const messages = conversation?.messages || []
-    const lastRunActionsMessageId =
-      messages.length > 0 ? messages[messages.length - 1].messageId : ''
+    const lastRunActionsMessageId = messages.at(-1)?.messageId || ''
     await updateConversation(
       {
         meta: {

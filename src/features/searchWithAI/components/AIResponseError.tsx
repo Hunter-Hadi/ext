@@ -10,7 +10,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { APP_USE_CHAT_GPT_HOST, CHATGPT_WEBAPP_HOST } from '@/constants'
 import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
@@ -87,7 +87,7 @@ const AIResponseError: FC<IProps> = ({
 
   const authLink = useMemo(() => {
     if (provider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI) {
-      return 'https://chat.openai.com/auth/login'
+      return `https://${CHATGPT_WEBAPP_HOST}/auth/login`
     }
     if (provider === SEARCH_WITH_AI_PROVIDER_MAP.BING) {
       return `https://bing.com/chat`
@@ -107,7 +107,7 @@ const AIResponseError: FC<IProps> = ({
   const textCover = useMemo(() => {
     if (text === 'UNAUTHORIZED' || text === 'CLOUDFLARE') {
       if (providerOption.label === 'ChatGPT web app') {
-        return `Please log into [Chat.openai.com](https://chat.openai.com) and try again.`
+        return `Please log into [chatgpt.com](https://${CHATGPT_WEBAPP_HOST}) and try again.`
       }
       return `Please log into ${providerOption.label} and try again.`
     }
@@ -122,7 +122,7 @@ const AIResponseError: FC<IProps> = ({
       provider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI
     ) {
       if (providerOption.label === 'ChatGPT web app') {
-        return `Please log into [Chat.openai.com](https://chat.openai.com) and try again.`
+        return `Please log into [chatgpt.com](https://${CHATGPT_WEBAPP_HOST}) and try again.`
       }
       return `Please log into ${providerOption.label} and try again.`
     }

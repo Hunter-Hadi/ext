@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "ስም ያስገቡ",
     "feature_card__prompts__edit_prompt__field_icon__title": "አካውንት",
     "feature_card__prompts__edit_prompt__field_template__title": "መልዕክት ታሪክ",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "የ AI መልእክት ታሪክን።\nታሪክዎ የሚከተለው ስሌት የሚሆነውን ቫርድን ይመልከቱ:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "የማስታወቂያ መሰረታዊ ስፍራ ትርጉም።\nየማስታወቂያ ትርጉም የሚሆነው ስፍራ የሚኖር በማስታወቂያ ስፍራ የሚሆነው ባህሪዎች የሚሆኑት ናቸው:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "ከሚታይ ጋር",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "መልዕክትዎ በአንድነት AI ላይ ይላኩልን። ሁሉም መልዕክቶች በአንድነት AI ላይ ይሰራሉ።",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "ከሚታይ ጋር",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "የበሽታውን በመስጠት ማስተካከያ",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ስልክ የበሽታውን በመስጠት ማስተካከያ የሚያስችል በሽታውን በመስጠት ማስተካከያ ይጠቀሙ። ይህን ለማድረግ እንዴት ማሳየት እንደሚችል ይጠቀሙ።",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "መልእክት የሚጠቀሙበት መልእክት",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "የ AI መልስ ታሪክ አገልግሎት።\nታሪክዎ የሚከተለው ለዚህ በማስቀመጥ የሚያስችል ቦታዎችን ይጨምሩ:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "የ AI መልስ ታሪክ አገልግሎት።\nታሪክዎ የሚከተለው ለዚህ በማስቀመጥ የሚያስችል ቦታዎችን ይጨምሩ:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "የ AI መልስ ታሪክ አገልግሎት።\nታሪክዎ የሚከተለው ለዚህ በማስቀመጥ የሚያስችል ቦታዎችን ይጨምሩ:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "የ AI መልስ ታሪክ አገልግሎት።\nታሪክዎ የሚከተለው ለዚህ በማስቀመጥ የሚያስችል ቦታዎችን ይጨምሩ:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "የማስታወቂያ መሰረታዊ ስፍራ ትርጉም።\nየማስታወቂያ ትርጉም የሚሆነው ስፍራ የሚኖር በማስታወቂያ ስፍራ የሚሆነው ባህሪዎች የሚሆኑት ናቸው:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "የማስታወቂያ መሰረታዊ ስፍራ ትርጉም።\nየማስታወቂያ ትርጉም የሚሆነው ስፍራ የሚኖር በማስታወቂያ ስፍራ የሚሆነው ባህሪዎች የሚሆኑት ናቸው:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "የማስታወቂያ መሰረታዊ ማስጠንቀቂያ።\nማስታወቂያው የሚከተለው ስም፣ ስም-አይነት እና ሌሎች ቫርያብሎችን ይጨምሩ:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "የማስታወቂያ መሰረታዊ ስፍራ ትርጉም።\nየማስታወቂያ ትርጉም የሚሆነው ስፍራ የሚኖር በማስታወቂያ ስፍራ የሚሆነው ባህሪዎች የሚሆኑት ናቸው:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "የማስተካከያ መልዕክት ማስጠንቀቂያ:"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -768,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI የተለመዱ እና የተከፈተ ምልክቶችን ለመጠቀም በሚገኙ ቀንዶች ይጠቀሙ፣ በቀንዶች የተለመዱ ጥያቄዎችን የተለመዱ ጥያቄዎችን ይዘት ይጠቀሙ",
     "permission__pricing_hook__footer_tip": "MaxAI Elite የማጠቃለያ እድል ሁኔታዎችን፣ የማጠቃለያ ማጠቃለያዎችን፣ የማጠቃለያ ዝግጅቶችንና የማጠቃለያ ተመሳሳይ መልዕክቶችን ይቀላቀሉ።",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "የእኔ ምርጫዎች",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "የእኔ ምርጫ ጨምር"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "የእኔ ምርጫ ጨምር",
+    "sidebar__summary__advanced__title": "የተሻለ ጥቅም አማራጭ አማራጭ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",
@@ -1021,7 +1023,9 @@
     "ai_response_language__settings__label_2": "ቋንቋ ማሰራጨት",
     "preset_variables__system__full_context__description": "የሙሉ መግለጫ ይዘት",
     "preset_variables__system__target_context__description": "የአማርኛ መግለጫ ይዘት",
-    "preset_variables__system__draft_context__description": "የተላቀቁ መግለጫ ይዘት"
+    "preset_variables__system__draft_context__description": "የተላቀቁ መግለጫ ይዘት",
+    "preset_variables__system__summary_page_content_representation__description": "የዚህ የመሣሪያ ወይም የPDF/YouTube ቪዲዮ የይዘት ይዘት",
+    "preset_variables__system__summary_page_content_representation__description__example1": "የ{{PAGE_CONTENT}} መሣሪያን የሚጠቀሙ ማስታወሻዎች ይሰጣሉ"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click መልእክት",

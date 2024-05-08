@@ -1,11 +1,13 @@
 import debounce from 'lodash-es/debounce'
 
+import defaultEditAssistantComposeReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
+import defaultInputAssistantComposeNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
+import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
 import { IAIProviderType } from '@/background/provider/chat'
+import { IChatConversation } from '@/background/src/chatConversations'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import {
-  PERMISSION_CARD_SETTINGS_TEMPLATE,
-  PermissionWrapperCardSceneType,
-} from '@/features/auth/components/PermissionWrapper/types'
+import { PRESET_PROMPT_IDS } from '@/constants'
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
@@ -13,6 +15,8 @@ import {
   clientGetConversation,
   clientGetConversationAIModelAndProvider,
 } from '@/features/chatgpt/utils/chatConversationUtils'
+import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
@@ -21,6 +25,20 @@ import {
   getCurrentDomainHost,
   isMaxAIImmersiveChatPage,
 } from '@/utils/dataHelper/websiteHelper'
+
+const BEAUTIFY_PROVIDER_NAME: Record<IAIProviderType, string> = {
+  USE_CHAT_GPT_PLUS: 'in_house',
+  MAXAI_CLAUDE: 'in_house',
+  MAXAI_GEMINI: 'in_house',
+  MAXAI_DALLE: 'in_house',
+  MAXAI_FREE: 'in_house',
+  OPENAI: 'chatgpt_web_app',
+  OPENAI_API: 'openai_api',
+  BARD: 'gemini_web_app',
+  BING: 'bing_web_app',
+  CLAUDE: 'claude_web_app',
+  POE: 'poe_web_app',
+}
 
 /**
  * 将 PermissionWrapperCardSceneType 根据不同场景和配置转换成 logType
@@ -94,10 +112,7 @@ const permissionSceneTypeToLogType = async (
   }
 
   // Image Model
-  if (
-    sceneType === 'MAXAI_IMAGE_GENERATE_MODEL' ||
-    sceneType === 'MAXAI_IMAGE_GENERATE_MODEL'
-  ) {
+  if (sceneType === 'MAXAI_IMAGE_GENERATE_MODEL') {
     let artModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art.AIModel
     const currentArtConversationId = sidebarSettings?.art?.conversationId
     if (currentArtConversationId) {
@@ -123,45 +138,19 @@ const permissionSceneTypeToLogType = async (
     chatModel = currentChatConversation?.meta.AIModel || chatModel
   }
 
-  // gmail instant reply
-  if (
-    sceneType.includes('GMAIL_CONTEXT_MENU') ||
-    sceneType.includes('GMAIL_DRAFT_BUTTON') ||
-    sceneType.includes('GMAIL_REPLY_BUTTON')
-  ) {
-    switch (sceneType) {
-      case 'GMAIL_CONTEXT_MENU':
-        name = `INSTANT_REPLY(Refine ${chatModel})`
-        break
-      case 'GMAIL_DRAFT_BUTTON':
-        name = `INSTANT_REPLY(Compose ${chatModel})`
-        break
-      case 'GMAIL_REPLY_BUTTON':
-        name = `INSTANT_REPLY(Reply ${chatModel})`
-        break
-      default:
-        break
-    }
-    return name
-  }
-
   // instant reply
   // 判断是否是 instant reply 付费卡点
-  if (
-    sceneType.includes('REFINE_DRAFT_BUTTON') ||
-    sceneType.includes('COMPOSE_NEW_BUTTON') ||
-    sceneType.includes('COMPOSE_REPLY_BUTTON')
-  ) {
+  if (sceneType.includes('MAXAI_INSTANT')) {
     name = 'INSTANT_REPLY'
-    if (sceneType.includes('COMPOSE_REPLY_BUTTON')) {
+    if (sceneType.includes('INSTANT_REPLY')) {
       name += `(Reply ${chatModel})`
       return name
     }
-    if (sceneType.includes('REFINE_DRAFT_BUTTON')) {
+    if (sceneType.includes('INSTANT_REFINE')) {
       name += `(Refine ${chatModel})`
       return name
     }
-    if (sceneType.includes('COMPOSE_NEW_BUTTON')) {
+    if (sceneType.includes('INSTANT_NEW')) {
       name += `(Compose ${chatModel})`
       return name
     }
@@ -176,13 +165,13 @@ const permissionSceneTypeToLogType = async (
     return name
   }
   // Fast Text Model
-  if (sceneType === 'MAXAI_FAST_TEXT_MODEL') {
+  if (sceneType.includes('MAXAI_FAST_TEXT_MODEL')) {
     name = `FAST_TEXT_MODEL(${chatModel})`
     return name
   }
 
   // Advanced Text Model
-  if (sceneType === 'MAXAI_ADVANCED_MODEL') {
+  if (sceneType.includes('MAXAI_ADVANCED_MODEL')) {
     name = `ADVANCED_TEXT_MODEL(${chatModel})`
     return name
   }
@@ -227,6 +216,17 @@ export const authEmitPricingHooksLog = debounce(
         trackParams.featureName = 'context_menu'
       }
 
+      // search with ai 的特殊处理
+      if (sceneType === 'SEARCH_WITH_AI_CHATGPT') {
+        const provider = 'USE_CHAT_GPT_PLUS'
+        trackParams.aiModel = SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[provider]
+        trackParams.aiProvider = BEAUTIFY_PROVIDER_NAME[provider]
+      } else if (sceneType === 'SEARCH_WITH_AI_CLAUDE') {
+        const provider = 'MAXAI_CLAUDE'
+        trackParams.aiModel = SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[provider]
+        trackParams.aiProvider = BEAUTIFY_PROVIDER_NAME[provider]
+      }
+
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
       mixpanelTrack(type, {
         logType,
@@ -249,6 +249,10 @@ export const authEmitPricingHooksLog = debounce(
   1000,
 )
 
+/**
+ *
+ * @inheritdoc https://ikjt09m6ta.larksuite.com/docx/NKYwdlxOdoidBqxDh0eu8dqasKb
+ */
 const generateTrackParams = async (
   sceneType: PermissionWrapperCardSceneType,
   propConversationId?: string,
@@ -267,19 +271,6 @@ const generateTrackParams = async (
         AIModel = conversationAIModelAndProvider.aiModel
       }
       if (conversationAIModelAndProvider.provider) {
-        const BEAUTIFY_PROVIDER_NAME: Record<IAIProviderType, string> = {
-          USE_CHAT_GPT_PLUS: 'in_house',
-          MAXAI_CLAUDE: 'in_house',
-          MAXAI_GEMINI: 'in_house',
-          MAXAI_DALLE: 'in_house',
-          MAXAI_FREE: 'in_house',
-          OPENAI: 'chatgpt_web_app',
-          OPENAI_API: 'openai_api',
-          BARD: 'gemini_web_app',
-          BING: 'bing_web_app',
-          CLAUDE: 'claude_web_app',
-          POE: 'poe_web_app',
-        }
         AIProvider =
           BEAUTIFY_PROVIDER_NAME[conversationAIModelAndProvider.provider]
       }
@@ -287,49 +278,25 @@ const generateTrackParams = async (
     // 结束获取 AIModel 和 AIProvider
 
     // 2. 开始获取 paywallName
-    // 直接通过 PERMISSION_CARD_SETTINGS_TEMPLATE 中定义的 pricingHookCardType 来生成 paywallName
-    // 针对 search with ai 的特殊处理，因为两个 sceneType 不存在 pricingHookCardType
     let paywallName = ''
-    const permissionWrapperCardData =
-      PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType]
-    if (sceneType.startsWith('SEARCH_WITH_AI')) {
+    if (sceneType.includes('MAXAI_FAST_TEXT_MODEL')) {
+      paywallName = 'FAST_TEXT_MODEL'
+    } else if (sceneType.includes('MAXAI_ADVANCED_MODEL')) {
+      paywallName = 'ADVANCED_TEXT_MODEL'
+    } else if (sceneType.includes('MAXAI_IMAGE_GENERATE_MODEL')) {
+      paywallName = 'IMAGE_MODEL'
+    } else if (sceneType === 'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT') {
+      paywallName = 'THIRD_PARTY_MODEL'
+    } else if (sceneType === 'MAXAI_INSTANT_REPLY') {
+      paywallName = 'INSTANT_REPLY'
+    } else if (sceneType === 'PAGE_SUMMARY') {
+      paywallName = 'SUMMARY'
+    } else if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
+      paywallName = 'SEARCH'
+    } else if (sceneType.startsWith('SEARCH_WITH_AI_')) {
       paywallName = 'SEARCH_WITH_AI'
-    }
-
-    if (permissionWrapperCardData.pricingHookCardType) {
-      switch (permissionWrapperCardData.pricingHookCardType) {
-        case 'FAST_TEXT_MODEL': {
-          if (sceneType === 'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT') {
-            paywallName = 'THIRD_PARTY_MODEL'
-          } else {
-            paywallName = 'FAST_TEXT_MODEL'
-          }
-          break
-        }
-        case 'ADVANCED_MODEL': {
-          paywallName = 'ADVANCED_TEXT_MODEL'
-          break
-        }
-        case 'IMAGE_MODEL': {
-          paywallName = 'IMAGE_MODEL'
-          break
-        }
-        case 'AI_SEARCH': {
-          paywallName = 'SEARCH'
-          break
-        }
-        case 'AI_SUMMARY': {
-          paywallName = 'SUMMARY'
-          break
-        }
-        case 'INSTANT_REPLY': {
-          paywallName = 'INSTANT_REPLY'
-          break
-        }
-        default: {
-          paywallName = 'UNKNOWN'
-        }
-      }
+    } else {
+      paywallName = 'UNKNOWN'
     }
     // 结束获取 paywallName
 
@@ -337,32 +304,19 @@ const generateTrackParams = async (
     let featureName = ''
     if (sceneType.startsWith('SEARCH_WITH_AI')) {
       featureName = 'search_with_ai'
-    } else if (
-      permissionWrapperCardData.pricingHookCardType === 'INSTANT_REPLY'
-    ) {
+    } else if (sceneType.includes('MAXAI_INSTANT')) {
       const prefix = 'instant'
       let suffix = ''
-      if (sceneType.includes('COMPOSE_REPLY_BUTTON')) {
-        suffix = 'reply'
-      }
-      if (sceneType.includes('REFINE_DRAFT_BUTTON')) {
-        suffix = 'refine'
-      }
-      if (sceneType.includes('COMPOSE_NEW_BUTTON')) {
-        suffix = 'new'
-      }
-      // 由于 gmail 相关 sceneType 声明较早没有统一，这里做特殊处理
-      // 这里 gmail instant reply 特殊判断
       switch (sceneType) {
-        case 'GMAIL_CONTEXT_MENU': {
+        case 'MAXAI_INSTANT_REFINE': {
           suffix = `refine`
           break
         }
-        case 'GMAIL_DRAFT_BUTTON': {
+        case 'MAXAI_INSTANT_NEW': {
           suffix = `new`
           break
         }
-        case 'GMAIL_REPLY_BUTTON': {
+        case 'MAXAI_INSTANT_REPLY': {
           suffix = `reply`
           break
         }
@@ -374,23 +328,14 @@ const generateTrackParams = async (
     } else {
       const prefix = isMaxAIImmersiveChatPage() ? 'immersive' : 'sidebar'
       let suffix = ''
-      switch (permissionWrapperCardData.pricingHookCardType) {
-        case 'AI_SUMMARY': {
-          suffix = `summary`
-          break
-        }
-        case 'AI_SEARCH': {
-          suffix = `search`
-          break
-        }
-        case 'IMAGE_MODEL': {
-          suffix = `art`
-          break
-        }
-        default: {
-          suffix = `chat`
-          break
-        }
+      if (sceneType === 'PAGE_SUMMARY') {
+        suffix = `summary`
+      } else if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
+        suffix = `search`
+      } else if (sceneType.includes('IMAGE_GENERATE_MODEL')) {
+        suffix = `art`
+      } else {
+        suffix = `chat`
       }
       featureName = `${prefix}_${suffix}`
     }
@@ -398,7 +343,7 @@ const generateTrackParams = async (
 
     // 4. 开始获取 summary platform
     let platform = ''
-    if (permissionWrapperCardData.pricingHookCardType === 'AI_SUMMARY') {
+    if (sceneType === 'PAGE_SUMMARY') {
       const pageSummaryType = getPageSummaryType()
       switch (pageSummaryType) {
         case 'PDF_CRX_SUMMARY':
@@ -422,25 +367,18 @@ const generateTrackParams = async (
     // 5. 开始获取 search 和 art 的 mode
     let mode: string | null = null
     const { sidebarSettings } = await getChromeExtensionLocalStorage()
-    switch (permissionWrapperCardData.pricingHookCardType) {
-      case 'AI_SEARCH': {
-        mode = sidebarSettings?.search?.copilot ? 'pro' : 'default'
-        break
-      }
-      case 'IMAGE_MODEL': {
-        mode = sidebarSettings?.art?.isEnabledConversationalMode
-          ? 'default'
-          : 'pro'
-        break
-      }
-      default: {
-        mode = null
-        break
-      }
+    if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
+      mode = sidebarSettings?.search?.copilot ? 'pro' : 'default'
+    } else if (sceneType.includes('IMAGE_GENERATE_MODEL')) {
+      mode = sidebarSettings?.art?.isEnabledConversationalMode
+        ? 'default'
+        : 'pro'
+    } else {
+      mode = null
     }
     // 结束获取 search 和 art 的 model
 
-    return objectFilterEmpty(
+    const resultParams = objectFilterEmpty(
       {
         aiModel: AIModel,
         aiProvider: AIProvider,
@@ -451,8 +389,124 @@ const generateTrackParams = async (
       },
       true,
     )
+
+    return resultParams
   } catch (error) {
     // do nothing
     return {}
+  }
+}
+
+export const getPromptTypeByContextMenu = (
+  contextMenuItem: IContextMenuItem | undefined,
+): {
+  promptType: 'preset' | 'custom' | 'freestyle'
+  instantType?: 'reply' | 'refine' | 'new' | null
+} => {
+  if (contextMenuItem) {
+    const contextMenuId = contextMenuItem.id
+    const presetActionPromptIds = Object.values(CONTEXT_MENU_DRAFT_TYPES)
+    if (
+      defaultInputAssistantRefineDraftContextMenuJson.find(
+        (item) => item.id === contextMenuId,
+      )
+    ) {
+      return {
+        promptType: 'preset',
+        instantType: 'refine',
+      }
+    } else if (
+      defaultInputAssistantComposeNewContextMenuJson.find(
+        (item) => item.id === contextMenuId,
+      )
+    ) {
+      return {
+        promptType: 'preset',
+        instantType: 'new',
+      }
+    } else if (
+      defaultEditAssistantComposeReplyContextMenuJson.find(
+        (item) => item.id === contextMenuId,
+      )
+    ) {
+      return {
+        promptType: 'preset',
+        instantType: 'reply',
+      }
+    } else if (
+      PRESET_PROMPT_IDS.find((promptId) => promptId === contextMenuId)
+    ) {
+      return {
+        promptType: 'preset',
+      }
+    } else if (
+      presetActionPromptIds.find((promptId) => promptId === contextMenuId)
+    ) {
+      return {
+        promptType: 'preset',
+      }
+    } else {
+      return {
+        promptType: 'custom',
+      }
+    }
+  } else {
+    // 没有 contextMenu 就是用户自由输入的 - freestyle
+    return {
+      promptType: 'freestyle',
+    }
+  }
+}
+
+export const getFeatureNameByConversationAndContextMenu = (
+  conversation: IChatConversation | null,
+  contextMenuItem?: IContextMenuItem,
+) => {
+  if (conversation) {
+    // 1. 先判断是否是 instant
+    const { promptType, instantType } =
+      getPromptTypeByContextMenu(contextMenuItem)
+
+    if (promptType === 'preset') {
+      if (instantType === 'refine') {
+        return 'instant_refine'
+      } else if (instantType === 'new') {
+        return 'instant_new'
+      } else if (instantType === 'reply') {
+        return 'instant_reply'
+      }
+    }
+
+    // 2. 判断是否是 context menu
+    if (conversation.type === 'ContextMenu') {
+      return 'context_menu'
+    }
+
+    // 3. 根据 conversation.type 分类
+    const isImmersiveChatPage = isMaxAIImmersiveChatPage()
+    const prefix = isImmersiveChatPage ? 'immersive' : 'sidebar'
+    let suffix = 'chat'
+
+    switch (conversation.type) {
+      case 'Search': {
+        suffix = 'search'
+        break
+      }
+      case 'Summary': {
+        suffix = 'summary'
+        break
+      }
+      case 'Art': {
+        suffix = 'art'
+        break
+      }
+      default: {
+        suffix = 'chat'
+      }
+    }
+
+    return `${prefix}_${suffix}`
+  } else {
+    return 'UNKNOWN'
   }
 }

@@ -12,7 +12,7 @@ import {
   MaxAIExtensionIdManager,
 } from '@/background/utils/extensionId'
 import AppThemeProvider from '@/components/AppTheme'
-import { APP_VERSION } from '@/constants'
+import { APP_VERSION, CHATGPT_WEBAPP_HOST } from '@/constants'
 import {
   MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID,
   MAXAI_CHROME_EXTENSION_ID,
@@ -145,7 +145,7 @@ const mainAppRender = () => {
   )
 }
 const ChatGPTWebAppRender = () => {
-  if (location.host === 'chat.openai.com') {
+  if (location.host === CHATGPT_WEBAPP_HOST) {
     const script = document.createElement('script')
     script.type = 'module'
     script.src = Browser.runtime.getURL('/pages/chatgpt/fileUploadServer.js')

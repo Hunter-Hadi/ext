@@ -1,4 +1,5 @@
 // 保存原始的 fetch 方法的引用
+import { CHATGPT_WEBAPP_HOST } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
 const MAX_AI_CHAT_GPT_MESSAGE_KEY = 'MAX_AI_CHAT_GPT_MESSAGE_KEY'
@@ -18,16 +19,17 @@ const maxAIInjectFetch = (url: string, options: any) => {
       if (
         maxAIChatGPTBlockNextRequest &&
         ([
-          'https://chat.openai.com/backend-api/files',
-          'https://chat.openai.com/backend-api/conversation/interpreter/process_upload',
+          `https://${CHATGPT_WEBAPP_HOST}/backend-api/files`,
+          `https://${CHATGPT_WEBAPP_HOST}/backend-api/conversation/interpreter/process_upload`,
         ].includes(url) ||
-          url.includes('https://chat.openai.com/backend-api/files'))
+          url.includes(`https://${CHATGPT_WEBAPP_HOST}/backend-api/files`))
       ) {
         const cloneResponse = response.clone()
-        // https://chat.openai.com/backend-api/files // 第一次上传
-        // https://chat.openai.com/backend-api/conversation/interpreter/process_upload // 第二次上传
-        // https://chat.openai.com/backend-api/files/uuid/uploaded // 第二次上传
-        const step = url === 'https://chat.openai.com/backend-api/files' ? 1 : 2
+        // https://${CHATGPT_WEBAPP_HOST}/backend-api/files // 第一次上传
+        // https://${CHATGPT_WEBAPP_HOST}/backend-api/conversation/interpreter/process_upload // 第二次上传
+        // https://${CHATGPT_WEBAPP_HOST}/backend-api/files/uuid/uploaded // 第二次上传
+        const step =
+          url === `https://${CHATGPT_WEBAPP_HOST}/backend-api/files` ? 1 : 2
         cloneResponse
           .json()
           .then((result) => {

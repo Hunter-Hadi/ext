@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Въведете име",
     "feature_card__prompts__edit_prompt__field_icon__title": "Икона",
     "feature_card__prompts__edit_prompt__field_template__title": "Шаблон за подсказка",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Когато е активирано",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Подсказката ще бъде изпратена директно към AI, което е \"нормалното поведение\" по подразбиране. Всички шаблони за подсказки ще имат тази опция активирана по подразбиране.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Когато е деактивирано",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Архивирайте чата след",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "В MaxAI, ние автоматично архивираме неактивни чатове според избраната от вас честота. Това ви дава свеж старт и поддържа страничната лента подредена.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Отговор в миг",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Шаблонът на АИ подсказка.\nШаблонът може да включва произволен брой от следните променливи:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблонът на АИ подсказка.\nШаблонът може да включва произволен брой от следните променливи:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблонът на АИ подсказка.\nШаблонът може да включва произволен брой от следните променливи:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблонът на АИ подсказка.\nШаблонът може да включва произволен брой от следните променливи:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Примерен шаблон за подсказка:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",
@@ -768,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 на OpenAI, оптимизиран за скорост и ефективност, се отличава в реално време приложения, изискващи креативност и напреднало мислене с подобрено време за отговор и последователен изход.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite предлага неограничени AI заявки, AI резюмета, AI търсения и мигновени отговори.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Моите собствени подсказки",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Добави моята собствена подсказка"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Добави моята собствена подсказка",
+    "sidebar__summary__advanced__title": "Разширени опции за обобщение"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",
@@ -1021,7 +1023,9 @@
     "ai_response_language__settings__label_2": "настройка на езика",
     "preset_variables__system__full_context__description": "пълно съдържание на контекста",
     "preset_variables__system__target_context__description": "съдържание на целевия контекст",
-    "preset_variables__system__draft_context__description": "съдържание на черновия контекст"
+    "preset_variables__system__draft_context__description": "съдържание на черновия контекст",
+    "preset_variables__system__summary_page_content_representation__description": "съдържанието на текущата уеб страница/ PDF / YouTube видео",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Изведете обобщение на {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клик промптове",

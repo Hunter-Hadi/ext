@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
+import { v4 } from 'uuid'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { DropdownMenu } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
@@ -14,6 +15,9 @@ import {
   SettingPromptsEditButtonKeyAtom,
   specialInputAssistantButtonKeys,
 } from '@/pages/settings/pages/prompts/store'
+import cloneDeep from 'lodash-es/cloneDeep'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 const DropDownMenuItem: FC<{
   label: string
@@ -80,8 +84,8 @@ const DropDownMenuItem: FC<{
 const TitleBar = () => {
   const { t } = useTranslation(['settings', 'common'])
 
-  const { editNode, onCancel, onDelete } = useSettingPromptsContext()
-  const { editHTML } = useShortcutEditorActions()
+  const { node, editNode, selectedIcon, onSave, onCancel, onDelete } = useSettingPromptsContext()
+  const { editHTML, generateActions } = useShortcutEditorActions()
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
   )
@@ -99,13 +103,19 @@ const TitleBar = () => {
         ? t('settings:feature_card__prompts__read_prompt_group__title')
         : editNode.id === ''
         ? t('settings:feature_card__prompts__new_prompt_group__title')
-        : t('settings:feature_card__prompts__edit_prompt_group__title')
+        : <>
+            {selectedIcon}
+            {t('settings:feature_card__prompts__edit_prompt_group__title')}
+          </>
     } else {
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt__title')
         : editNode.id === ''
         ? t('settings:feature_card__prompts__new_prompt__title')
-        : t('settings:feature_card__prompts__edit_prompt__title')
+        : <>
+            {selectedIcon}
+            {t('settings:feature_card__prompts__edit_prompt__title')}
+          </>
     }
   }, [editNode.data.type, editNode.id, isDisabled, t])
 
@@ -130,6 +140,44 @@ const TitleBar = () => {
     editNode.data.visibility,
     editHTML,
   ])
+
+  const handleSave = () => {
+    if (editNode.id === '') {
+      editNode.id = v4()
+    }
+    const actions = generateActions(
+      editNode.text,
+      settingPromptsEditButtonKey === 'sidebarSummaryButton',
+    )
+    // Summary custom prompts 需要特殊处理，将输出端转成 AI
+    if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+      const askChatGPTAction = actions.find(
+        (action) => action.type === 'ASK_CHATGPT',
+      )
+      if (askChatGPTAction) {
+        const originalData = cloneDeep(editNode)
+        delete originalData.data.actions
+        askChatGPTAction.parameters.AskChatGPTActionQuestion = {
+          meta: {
+            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            contextMenu: originalData,
+          },
+          text: askChatGPTAction.parameters.template || '',
+        }
+        askChatGPTAction.parameters.AskChatGPTActionType = 'ASK_CHAT_GPT_HIDDEN'
+      }
+    }
+    onSave?.(
+      mergeWithObject([
+        editNode,
+        {
+          data: {
+            actions,
+          },
+        } as IContextMenuItem,
+      ]),
+    )
+  }
 
   return (
     <Stack
@@ -186,7 +234,7 @@ const TitleBar = () => {
         variant="contained"
         disabled={isDisabledSave}
         sx={{ borderRadius: '8px' }}
-        onClick={() => {}}
+        onClick={handleSave}
       >
         {t('common:save')}
       </Button>

@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { Theme } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import React, { useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -11,13 +12,12 @@ import useClientConversationListener from '@/features/chatgpt/hooks/useClientCon
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
+import useShortcutEditorActionsVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
-import Typography from '@mui/material/Typography'
-import useShortcutEditorActionsVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 
 const PreviewPanel = () => {
   const { t } = useTranslation(['settings', 'common', 'client'])
@@ -37,14 +37,20 @@ const PreviewPanel = () => {
     return generateActionsRef.current(editNode?.text)
   }, [editNode?.text, template, variables])
 
-  const config = actions.find((item) => item.type === 'SET_VARIABLES_MODAL')
-    ?.parameters.SetVariablesModalConfig
+  const config = useMemo(() => {
+    return {
+      ...(actions.find((item) => item.type === 'SET_VARIABLES_MODAL')
+        ?.parameters.SetVariablesModalConfig || {}),
+      template,
+      modelKey: 'PromptPreview',
+    }
+  }, [actions, template])
 
   useEffect(() => {
-    console.log(1111, config)
+    // 为了能让ActionSetVariablesModal组件能正常执行
     OneShotCommunicator.send('SetVariablesModal', {
       task: 'open',
-      config: { ...config, modelKey: 'PromptPreview' },
+      config,
     })
   }, [config])
 
@@ -162,8 +168,8 @@ const PreviewPanel = () => {
             showModelSelector
             showCloseButton={false}
             isSaveLastRunShortcuts={false}
-            modelKey="PromptPreview"
             {...config}
+            modelKey="PromptPreview"
             title={title}
             template={template}
             disabled={!template}

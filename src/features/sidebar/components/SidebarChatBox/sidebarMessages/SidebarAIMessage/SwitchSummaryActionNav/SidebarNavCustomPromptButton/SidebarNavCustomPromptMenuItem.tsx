@@ -78,11 +78,19 @@ const SidebarNavCustomPromptMenuItem: FC<ISidebarNavCustomPromptMenuItemType> = 
       </CustomPromptMenuListIcon>
     )}
 
-    <ListItemText sx={{ fontSize: '14px', color: 'text.primary', textAlign: 'left' }}>
+    <ListItemText sx={{
+      fontSize: '14px',
+      color: 'text.primary',
+      textAlign: 'left',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden'
+    }}>
       <Typography
         sx={{
           fontSize: '14px',
           color: 'text.primary',
+
         }}
         component={'span'}
       >

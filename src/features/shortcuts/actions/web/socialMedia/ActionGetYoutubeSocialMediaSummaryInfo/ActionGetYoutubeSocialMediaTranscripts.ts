@@ -1,3 +1,4 @@
+import { getFeatureNameByConversationAndContextMenu } from '@/features/auth/utils/log'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import {
   TranscriptResponse,
@@ -39,14 +40,20 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
             'transcript'
           ]
         if (clientConversationEngine?.currentConversationId) {
+          const conversation =
+            await clientConversationEngine?.getCurrentConversation()
           await clientMessageChannelEngine
             .postMessage({
               event: 'Client_logCallApiRequest',
               data: {
                 name: recordContextMenuData?.text || 'UNKNOWN',
                 id: recordContextMenuData?.id || 'UNKNOWN',
+                type: 'preset',
+                featureName:
+                  getFeatureNameByConversationAndContextMenu(conversation),
                 host: getCurrentDomainHost(),
                 conversationId: clientConversationEngine?.currentConversationId,
+                url: location.href,
               },
             })
             .then()

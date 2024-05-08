@@ -1,3 +1,36 @@
+import { sha3_512 } from 'js-sha3'
+
+import { CHATGPT_WEBAPP_HOST } from '@/constants'
+
+function getProofConfig() {
+  return [
+    navigator.hardwareConcurrency + screen.width + screen.height,
+    new Date().toString(),
+    4294705152,
+    0,
+    navigator.userAgent,
+  ]
+}
+export async function calcProofToken(seed: string, diff: string) {
+  const config = getProofConfig()
+
+  for (let i = 0; i < 1e5; i++) {
+    config[3] = i
+    const jsonData = JSON.stringify(config)
+    const base = btoa(
+      String.fromCharCode(...new TextEncoder().encode(jsonData)),
+    )
+    const hashHex = sha3_512(seed + base)
+    console.debug('POW', i, base, hashHex)
+    if (hashHex.slice(0, diff.length) <= diff) {
+      return 'gAAAAAB' + base
+    }
+  }
+
+  const base = btoa(seed)
+  return 'gAAAAABwQ8Lk5FbGpA2NcR9dShT6gYjU7VxZ4D' + base
+}
+
 /**
  * 生成sentinel chat requirements token用于openAI的请求头
  * @param jwtToken - 用户的jwt token
@@ -11,10 +44,11 @@ const generateSentinelChatRequirementsToken = async (
 ): Promise<{
   chatRequirementsToken: string
   dx: string
+  proofToken: string
 }> => {
   try {
     const result = await fetch(
-      `https://chat.openai.com/backend-api/sentinel/chat-requirements`,
+      `https://${CHATGPT_WEBAPP_HOST}/backend-api/sentinel/chat-requirements`,
       {
         method: 'POST',
         headers: {
@@ -28,19 +62,32 @@ const generateSentinelChatRequirementsToken = async (
     )
     if (result.status === 200) {
       const data = await result.json()
-      return {
-        chatRequirementsToken: data?.token || '',
-        dx: data?.arkose?.dx || '',
+      const returnObject = {
+        chatRequirementsToken: '',
+        dx: '',
+        proofToken: '',
       }
+      returnObject.chatRequirementsToken = data?.token || ''
+      if (data?.arkose?.required) {
+        returnObject.dx = data?.arkose?.dx || ''
+      }
+      if (data?.proofofwork?.required) {
+        const seed = data.proofofwork.seed
+        const difficulty = data.proofofwork.difficulty
+        returnObject.proofToken = await calcProofToken(seed, difficulty)
+      }
+      return returnObject
     }
     return {
       chatRequirementsToken: '',
       dx: '',
+      proofToken: '',
     }
   } catch (e) {
     return {
       chatRequirementsToken: '',
       dx: '',
+      proofToken: '',
     }
   }
 }

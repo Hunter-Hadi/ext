@@ -14,6 +14,7 @@ export interface ISearchWithAISettings {
   webAccessPrompt: boolean
   arkoseToken: string
   chatRequirementsToken: string
+  proofToken: string
 }
 
 export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
@@ -23,6 +24,7 @@ export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
   webAccessPrompt: true,
   arkoseToken: '',
   chatRequirementsToken: '',
+  proofToken: '',
 }
 
 export const getSearchWithAISettings = async () => {

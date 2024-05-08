@@ -193,9 +193,15 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setShow(true)
       return
     }
-    // 如果没有任何值，就不运行
-    if (Object.keys(getValues()).length === 0 && config?.template) {
-      return
+    // 如果没有任何值，就不运行，非自动执行时判断是否有template
+    if (autoExecute) {
+      if (Object.keys(getValues()).length === 0) {
+        return
+      }
+    } else {
+      if (Object.keys(getValues()).length === 0 && !config?.template) {
+        return
+      }
     }
     const presetVariables = cloneDeep(getValues())
     if (showCloseButton) {
@@ -224,7 +230,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       const shortcutsVariables: Record<string, IShortCutsParameter> = {}
       Object.keys(presetVariables).forEach((key) => {
         const variableDetail = variableDetailMap[key]
-        if (variableDetail.hidden) {
+        if (variableDetail?.hidden) {
           return
         }
         if (variableDetail) {

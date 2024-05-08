@@ -4,6 +4,8 @@
 
 import Browser from 'webextension-polyfill'
 
+import { isChatGPTWebAppPage } from '@/utils/dataHelper/websiteHelper'
+
 const isInIframe = () => {
   try {
     return window.self !== window.top
@@ -13,11 +15,7 @@ const isInIframe = () => {
   }
 }
 
-if (
-  window.location.origin === 'https://chat.openai.com' &&
-  isInIframe() &&
-  document?.head?.appendChild
-) {
+if (isChatGPTWebAppPage() && isInIframe() && document?.head?.appendChild) {
   // 1. 注入windowArkoseTokenIFrame
   const script = document.createElement('script')
   script.src = Browser.runtime.getURL(

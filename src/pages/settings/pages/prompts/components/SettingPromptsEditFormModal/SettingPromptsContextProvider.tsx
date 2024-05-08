@@ -7,31 +7,32 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 
 export type SettingPromptsContextType = {
+  node: IContextMenuItem
   editNode: IContextMenuItem
   selectedIcon?: IContextMenuIconKey
   setEditNode: Dispatch<SetStateAction<IContextMenuItem>>
   setSelectedIcon: Dispatch<SetStateAction<IContextMenuIconKey | undefined>>
-  onSave: (node: IContextMenuItem) => void
-  onDelete: (id: string) => void
-  onCancel: () => void
+  onSave?: (node: IContextMenuItem) => void
+  onDelete?: (id: string) => void
+  onCancel?: () => void
 }
 
-export const SettingPromptsContext = createContext<SettingPromptsContextType>({
-  editNode: {
-    id: 'root',
-    parent: '',
-    droppable: true,
-    text: '',
-    data: {
-      editable: true,
-      type: 'shortcuts',
-    },
+const emptyNode = {
+  id: 'root',
+  parent: '',
+  droppable: true,
+  text: '',
+  data: {
+    editable: true,
+    type: 'shortcuts',
   },
+} as const
+
+export const SettingPromptsContext = createContext<SettingPromptsContextType>({
+  node: emptyNode,
+  editNode: emptyNode,
   setEditNode: () => {},
   setSelectedIcon: () => {},
-  onSave: () => {},
-  onDelete: () => {},
-  onCancel: () => {},
 })
 
 export const useSettingPromptsContext = () => useContext(SettingPromptsContext)
@@ -65,7 +66,16 @@ const SettingPromptsContextProvider: FC<{
 
   return (
     <SettingPromptsContext.Provider
-      value={{ editNode, selectedIcon, setEditNode, setSelectedIcon, onSave, onDelete, onCancel }}
+      value={{
+        node,
+        editNode,
+        selectedIcon,
+        setEditNode,
+        setSelectedIcon,
+        onSave,
+        onDelete,
+        onCancel,
+      }}
     >
       {children}
     </SettingPromptsContext.Provider>

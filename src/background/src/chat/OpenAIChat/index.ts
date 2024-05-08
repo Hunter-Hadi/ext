@@ -19,7 +19,10 @@ import {
   createBackgroundMessageListener,
   safeGetBrowserTab,
 } from '@/background/utils'
-import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import {
+  CHATGPT_WEBAPP_HOST,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+} from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { wait } from '@/utils'
 import Log from '@/utils/Log'
@@ -185,7 +188,7 @@ class OpenAIChat extends BaseChat {
       if (
         cacheLastTimeTab &&
         cacheLastTimeTab.id &&
-        cacheLastTimeTab?.url?.startsWith('https://chat.openai.com')
+        cacheLastTimeTab?.url?.startsWith(`https://${CHATGPT_WEBAPP_HOST}`)
       ) {
         const result = await Browser.tabs.sendMessage(cacheLastTimeTab.id, {
           id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -248,7 +251,9 @@ class OpenAIChat extends BaseChat {
     }
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    const currentModel = (await getAIProviderSettings('OPENAI'))?.model
+    const currentModel =
+      initConversationData.meta?.AIModel ||
+      (await getAIProviderSettings('OPENAI'))?.model
     const conversationId = await super.createConversation({
       ...initConversationData,
       meta: {
@@ -297,11 +302,8 @@ class OpenAIChat extends BaseChat {
     if (!this.isAnswering) {
       this.questionSender = sender
       this.isAnswering = true
-      const settings = await getAIProviderSettings('OPENAI')
-      if (
-        settings?.model === 'gpt-4-code-interpreter' ||
-        settings?.model === 'gpt-4'
-      ) {
+      const model = this.conversation?.meta.AIModel || ''
+      if (model === 'gpt-4-code-interpreter' || model === 'gpt-4') {
         const successFiles = this.chatFiles.filter(
           (file) => file.uploadStatus === 'success' && file.uploadedFileId,
         )
@@ -311,6 +313,7 @@ class OpenAIChat extends BaseChat {
               name: successFile.fileName,
               id: successFile.uploadedFileId,
               size: successFile.fileSize,
+              type: successFile.fileType,
             } as any
           })
           this.chatFiles = []
@@ -529,9 +532,11 @@ class OpenAIChat extends BaseChat {
     changeInfo: Browser.Tabs.OnUpdatedChangeInfoType,
   ) {
     if (tabId === this.chatGPTProxyInstance?.id) {
-      const isNotOpenAI = !changeInfo.url?.includes('https://chat.openai.com')
+      const isNotOpenAI = !changeInfo.url?.includes(
+        `https://${CHATGPT_WEBAPP_HOST}`,
+      )
       const isUrlInOpenAIAuth = changeInfo.url?.includes(
-        'https://chat.openai.com/auth',
+        `https://${CHATGPT_WEBAPP_HOST}/auth`,
       )
       if (changeInfo.url && (isNotOpenAI || isUrlInOpenAIAuth)) {
         log.info('守护进程url发生变化，守护进程关闭')
@@ -607,7 +612,7 @@ class OpenAIChat extends BaseChat {
     this.chatFiles = files
     if (files.filter((file) => file.uploadStatus !== 'success').length > 0) {
       // 这里主要有几个步骤，因为chatgpt的上传文件走的是arkose
-      // 1. 确保/pages/chatgpt/codeinterpreter.js被注入到页面中，且页面是codeInterpreter页面
+      // 1. 确保/pages/chatgpt/codeinterpreter.js被注入到页面中，且页面是codeInterpreter页面，确保有conversation
       // 2. 发送文件上传请求
       const result = await this.sendDaemonProcessTask(
         'OpenAIDaemonProcess_pingFilesUpload',
@@ -632,7 +637,7 @@ class OpenAIChat extends BaseChat {
             safeGetBrowserTab(processTabId).then((tab) => {
               if (tab) {
                 Browser.tabs.update(tab.id, {
-                  url: 'https://chat.openai.com/?model=gpt-4-code-interpreter',
+                  url: `https://${CHATGPT_WEBAPP_HOST}/?model=gpt-4-code-interpreter`,
                 })
               }
             })
@@ -641,7 +646,7 @@ class OpenAIChat extends BaseChat {
             safeGetBrowserTab(processTabId).then((tab) => {
               if (tab) {
                 Browser.tabs.update(tab.id, {
-                  url: 'https://chat.openai.com/?model=gpt-4',
+                  url: `https://${CHATGPT_WEBAPP_HOST}/?model=gpt-4`,
                 })
               }
             })
@@ -657,6 +662,7 @@ class OpenAIChat extends BaseChat {
       // 发送文件上传请求
       await this.sendDaemonProcessTask('OpenAIDaemonProcess_filesUpload', {
         files,
+        MaxAIConversationId: this.conversation?.id,
       })
     }
   }

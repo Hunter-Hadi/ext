@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Ilagay ang pangalan",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icon",
     "feature_card__prompts__edit_prompt__field_template__title": "Template ng prompt",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama sa template ang anumang bilang ng mga sumusunod na variables:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Kapag pinagana",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Ang prompt ay direkta na ipapadala sa AI, na siyang default na \"normal behavior\". Lahat ng mga template ng prompt ay mayroong opsiyong ito na pinagana sa default.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Kapag hindi pinagana",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "I-archive ang usapan pagkatapos",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang hindi aktibong usapan sa pinili mong panahon. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Tumugon Agad sa Messenger",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Ang template ng AI prompt.\nAng template ay maaaring maglaman ng anumang bilang ng mga sumusunod na variables:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Halimbawa ng template ng prompt:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",
@@ -768,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "Ang GPT-4 ng OpenAI, na pinahusay para sa bilis at kahusayan, ay mahusay sa mga aplikasyong real-time na nangangailangan ng katalinuhan at advanced na pangangatwiran na may pinahusay na mga panahon ng tugon at magkonsistenteng output.",
     "permission__pricing_hook__footer_tip": "Ang MaxAI Elite ay nag-aalok ng walang limitasyong mga AI query, AI summary, AI search, at instant na mga sagot.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mga sariling prompt",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Magdagdag ng sariling prompt"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Magdagdag ng sariling prompt",
+    "sidebar__summary__advanced__title": "Mga Advanced na Pagpipilian sa Buod"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -1021,7 +1023,9 @@
     "ai_response_language__settings__label_2": "setting ng wika",
     "preset_variables__system__full_context__description": "nilalaman ng buong konteksto",
     "preset_variables__system__target_context__description": "nilalaman ng target na konteksto",
-    "preset_variables__system__draft_context__description": "nilalaman ng draft na konteksto"
+    "preset_variables__system__draft_context__description": "nilalaman ng draft na konteksto",
+    "preset_variables__system__summary_page_content_representation__description": "ang nilalaman ng kasalukuyang webpage/PDF/YouTube video",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Ilabas ang isang buod ng {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click mga prompt",

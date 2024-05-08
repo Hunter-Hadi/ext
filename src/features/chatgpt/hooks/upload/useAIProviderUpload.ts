@@ -76,7 +76,7 @@ const useAIProviderUpload = () => {
     // 过滤超出大小限制的文件, 只取前maxCount个
     const canUploadFiles: File[] = needUploadFiles
       .filter((file) => {
-        if (file.size < maxFileSize) {
+        if (file.size < maxFileSize || maxFileSize === -1) {
           return true
         }
         errorFileNames.push(file.name)

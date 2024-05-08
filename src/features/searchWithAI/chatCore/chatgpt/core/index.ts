@@ -1,6 +1,7 @@
 // import Log from '@/util/Log'
 import { v4 as uuidV4 } from 'uuid'
 
+import { CHATGPT_WEBAPP_HOST } from '@/constants'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 import {
   getSearchWithAISettings,
@@ -228,7 +229,7 @@ export const setConversationProperty = async (
 export const getChatGPTAccessToken = async (
   notCatchError = false,
 ): Promise<string> => {
-  const resp = await fetch('https://chat.openai.com/api/auth/session')
+  const resp = await fetch(`https://${CHATGPT_WEBAPP_HOST}/api/auth/session`)
   if (resp.status === 403 && !notCatchError) {
     throw new Error('CLOUDFLARE')
   }
@@ -358,8 +359,11 @@ export class ChatGPTConversation {
     if (this.conversationId) {
       postMessage.conversation_id = this.conversationId
     }
-    const { arkoseToken: searchWithAICacheArkoseToken, chatRequirementsToken } =
-      await getSearchWithAISettings()
+    const {
+      arkoseToken: searchWithAICacheArkoseToken,
+      chatRequirementsToken,
+      proofToken,
+    } = await getSearchWithAISettings()
     if (searchWithAICacheArkoseToken) {
       postMessage.arkose_token = searchWithAICacheArkoseToken
       await setSearchWithAISettings({
@@ -383,8 +387,13 @@ export class ChatGPTConversation {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
-        'Openai-Sentinel-Arkose-Token': searchWithAICacheArkoseToken || '',
-        'Openai-Sentinel-Chat-Requirements-Token': chatRequirementsToken,
+        ...(proofToken ? { 'Openai-Sentinel-Proof-Token': proofToken } : {}),
+        ...(searchWithAICacheArkoseToken
+          ? { 'Openai-Sentinel-Arkose-Token': searchWithAICacheArkoseToken }
+          : {}),
+        ...(chatRequirementsToken
+          ? { 'Openai-Sentinel-Chat-Requirements-Token': chatRequirementsToken }
+          : {}),
       } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: (message: string) => {

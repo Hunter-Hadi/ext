@@ -1,6 +1,6 @@
 // https://github.com/mui/material-ui/issues/11723
 
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
+import AddIcon from '@mui/icons-material/Add'
 import Button from '@mui/material/Button'
 // import CircularProgress from '@mui/material/CircularProgress'
 import Divider from '@mui/material/Divider';
@@ -111,6 +111,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
           height: '16px',
           boxSizing: 'border-box',
           borderRadius: '4px',
+          bgColor: 'red',
           color:
             isActived ? '#fff' : 'primary.main',
         }}
@@ -146,6 +147,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
               height: '16px',
               boxSizing: 'border-box',
               borderRadius: '4px',
+              bgColor: 'red',
               color:
                 isActived ? '#fff' : 'primary.main',
             }}
@@ -162,7 +164,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
       }
     }
 
-    return <AddOutlinedIcon sx={{ fontSize: 'inherit', flexShrink: 0 }} />
+    return <AddIcon sx={{ fontSize: '18px', flexShrink: 0 }} />
   }, [summaryActionItem, actionNavMetadata, contextMenuList, isActived])
 
   const handleClick = (menuItem: IContextMenuItemWithChildren) => {
@@ -317,7 +319,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
                 }}
               >
                 <CustomPromptMenuListIcon>
-                  <AddOutlinedIcon sx={{ fontSize: 'inherit', flexShrink: 0 }} />
+                  <AddIcon sx={{ fontSize: 'inherit', flexShrink: 0 }} />
                 </CustomPromptMenuListIcon>
 
                 <ListItemText sx={{ fontSize: '14px', color: 'text.primary', textAlign: 'left' }}>

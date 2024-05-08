@@ -20,7 +20,10 @@ import {
   setChromeExtensionLocalStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
-import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
+import {
+  CHATGPT_WEBAPP_HOST,
+  CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB,
+} from '@/constants'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessage,
@@ -55,13 +58,13 @@ export const createDaemonProcessTab = async () => {
     pinned: true,
   })
   let currentPinnedTab: Browser.Tabs.Tab | undefined = pinedTabs.find(
-    (tab) => tab.url?.indexOf('chat.openai.com') !== -1 && tab.id,
+    (tab) => tab.url?.indexOf(CHATGPT_WEBAPP_HOST) !== -1 && tab.id,
   )
   // 如果有pinned的chatGPT tab并且tab id存在
   if (currentPinnedTab && currentPinnedTab.windowId === lastBrowserWindowId) {
     await Browser.tabs.update(currentPinnedTab.id, {
       active: true,
-      url: 'https://chat.openai.com/?model=gpt-4',
+      url: `https://${CHATGPT_WEBAPP_HOST}/?model=gpt-4`,
     })
     if (currentPinnedTab.windowId) {
       await Browser.windows.update(currentPinnedTab.windowId, {
@@ -94,7 +97,7 @@ export const createDaemonProcessTab = async () => {
     }
     // 创建一个新的tab
     currentPinnedTab = await Browser.tabs.create({
-      url: 'https://chat.openai.com/?model=gpt-4',
+      url: `https://${CHATGPT_WEBAPP_HOST}/?model=gpt-4`,
       pinned: true,
       windowId: window?.id,
     })

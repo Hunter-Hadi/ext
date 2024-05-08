@@ -19,9 +19,12 @@ export type IPresetVariableName =
   | 'AI_RESPONSE_LANGUAGE'
   | 'AI_RESPONSE_TONE'
   | 'AI_RESPONSE_WRITING_STYLE'
+  // Instant reply
   | 'FULL_CONTEXT'
   | 'TARGET_CONTEXT'
   | 'DRAFT_CONTEXT'
+  // Summary
+  | 'SUMMARY_PAGE_CONTENT_REPRESENTATION'
 
 export interface IPresetActionSetVariable extends IActionSetVariable {
   VariableName: IPresetVariableName
@@ -147,6 +150,13 @@ export const PRESET_VARIABLE_MAP: {
     valueType: 'Text',
     label: 'DRAFT_CONTEXT',
   },
+  SUMMARY_PAGE_CONTENT_REPRESENTATION: {
+    VariableName: 'SUMMARY_PAGE_CONTENT_REPRESENTATION',
+    defaultValue: 'context text',
+    systemVariable: true,
+    valueType: 'Text',
+    label: 'PAGE_CONTENT',
+  },
 }
 
 export const PRESET_VARIABLES_GROUP_MAP: {
@@ -198,6 +208,15 @@ export const PRESET_VARIABLES_GROUP_MAP: {
         'prompt_editor:preset_variables__system__draft_context__description',
       examples: [],
       permissionKeys: ['inputAssistantRefineDraftButton'],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.SUMMARY_PAGE_CONTENT_REPRESENTATION,
+      description:
+        'prompt_editor:preset_variables__system__summary_page_content_representation__description',
+      examples: [
+        'prompt_editor:preset_variables__system__summary_page_content_representation__description__example1',
+      ],
+      permissionKeys: ['sidebarSummaryButton'],
     },
   ],
   // 'prompt_editor:preset_variables__web_search__title': [

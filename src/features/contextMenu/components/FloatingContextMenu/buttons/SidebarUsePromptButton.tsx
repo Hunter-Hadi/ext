@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -12,9 +13,11 @@ import React, {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import { atomFamily, useRecoilState, useSetRecoilState } from 'recoil'
+import { v4 as uuidV4 } from 'uuid'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { IChatMessage } from '@/features/chatgpt/types'
@@ -40,20 +43,21 @@ const SidebarUsePromptSelectContextMenuState = atomFamily<
 })
 /**
  * 输入框呼出按钮
- * @param message
- * @constructor
+ * @returns
  */
 const SidebarUsePromptButton: FC<{
-  message: IChatMessage
+  message?: IChatMessage
+  text?: string
   className?: string
   iconButton?: boolean
   sx?: SxProps
 }> = (props) => {
-  const { message, className, sx } = props
+  const { message, className, sx, iconButton, text } = props
+  const buttonId = useRef(message?.messageId || uuidV4())
   const [
     sidebarUsePromptSelectContextMenu,
     setSidebarUsePromptSelectContextMenu,
-  ] = useRecoilState(SidebarUsePromptSelectContextMenuState(message.messageId))
+  ] = useRecoilState(SidebarUsePromptSelectContextMenuState(buttonId.current))
   const { askAIWIthShortcuts } = useClientChat()
   const [root, setRoot] = React.useState<HTMLElement | null>(null)
   const testid = 'max-ai__actions__button--use-prompt'
@@ -64,15 +68,15 @@ const SidebarUsePromptButton: FC<{
     '',
     false,
   )
-  const messageContext = useMemo(() => {
-    return formatChatMessageContent(message)
-  }, [message])
+  const currentContext = useMemo(() => {
+    return text || (message && formatChatMessageContent(message)) || ''
+  }, [message, text])
   const isRunningRef = useRef(false)
   useEffect(() => {
     if (isRunningRef.current) {
       return
     }
-    if (sidebarUsePromptSelectContextMenu && messageContext) {
+    if (sidebarUsePromptSelectContextMenu && currentContext) {
       const actions: ISetActionsType = cloneDeep(
         sidebarUsePromptSelectContextMenu.data.actions || [],
       ).map((action) => {
@@ -88,7 +92,7 @@ const SidebarUsePromptButton: FC<{
         parameters: {
           Variable: {
             key: 'SELECTED_TEXT',
-            value: messageContext,
+            value: currentContext,
             label: 'Selected text',
             isBuiltIn: true,
             overwrite: true,
@@ -106,10 +110,11 @@ const SidebarUsePromptButton: FC<{
           })
       }
     }
-  }, [sidebarUsePromptSelectContextMenu, messageContext, askAIWIthShortcuts])
+  }, [sidebarUsePromptSelectContextMenu, currentContext, askAIWIthShortcuts])
   useEffect(() => {
     setRoot(getMaxAISidebarRootElement() || document.body)
   }, [])
+  console.log('SidebarUsePromptButton', sx)
   if (NO_SUPPORT_HOST.includes(getCurrentDomainHost()) || !root) {
     return null
   }
@@ -133,24 +138,51 @@ const SidebarUsePromptButton: FC<{
         root={root}
         referenceElement={
           <Box component={'div'}>
-            <TooltipIconButton
-              id={`MaxAISidebarUsePromptButton`}
-              title={t('client:sidebar__button__use_prompt')}
-              sx={sx}
-              data-testid={testid}
-              className={className}
-              onClick={() => setOpen(!open)}
-            >
-              <UseChatGptIcon
-                sx={{
-                  color: (t: any) =>
-                    t.palette.mode === 'dark'
-                      ? 'rgba(255,255,255,.87)'
-                      : 'rgba(0,0,0,.6)',
-                  fontSize: '18px',
-                }}
-              />
-            </TooltipIconButton>
+            {iconButton ? (
+              <TooltipIconButton
+                id={`MaxAISidebarUsePromptButton`}
+                title={t('client:sidebar__button__use_prompt')}
+                sx={sx}
+                data-testid={testid}
+                className={className}
+                onClick={() => setOpen(!open)}
+              >
+                <UseChatGptIcon
+                  sx={{
+                    color: (t: any) =>
+                      t.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,.87)'
+                        : 'rgba(0,0,0,.6)',
+                    fontSize: '18px',
+                  }}
+                />
+              </TooltipIconButton>
+            ) : (
+              <TextOnlyTooltip title={t('client:sidebar__button__use_prompt')}>
+                <Button
+                  id={`MaxAISidebarUsePromptButton`}
+                  variant={'outlined'}
+                  sx={{
+                    p: '5px',
+                    minWidth: 'unset',
+                    ...sx,
+                  }}
+                  data-testid={testid}
+                  className={className}
+                  onClick={() => setOpen(!open)}
+                >
+                  <UseChatGptIcon
+                    sx={{
+                      color: (t: any) =>
+                        t.palette.mode === 'dark'
+                          ? 'rgba(255,255,255,.87)'
+                          : 'rgba(0,0,0,.6)',
+                      fontSize: '18px',
+                    }}
+                  />
+                </Button>
+              </TextOnlyTooltip>
+            )}
           </Box>
         }
         menuSx={{
@@ -161,7 +193,7 @@ const SidebarUsePromptButton: FC<{
       >
         <NestedPromptList
           deep={0}
-          buttonId={message.messageId}
+          buttonId={buttonId.current}
           root={root}
           promptList={contextMenuList}
         />

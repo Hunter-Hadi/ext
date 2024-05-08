@@ -108,6 +108,7 @@ const SidebarAIMessageTools: FC<{
       {messageContentType === 'text' &&
         currentSidebarConversationType !== 'ContextMenu' && (
           <SidebarUsePromptButton
+            iconButton
             message={message}
             className={'max-ai__actions__button--use-max-ai'}
           />

@@ -209,7 +209,6 @@ function ClickAwayListener(props: ClickAwayListenerProps): JSX.Element {
   // Keep track of mouse/touch events that bubbled up through the portal.
   const createHandleSynthetic =
     (handlerName: string) => (event: React.SyntheticEvent) => {
-      debugger
       syntheticEventRef.current = true
 
       const childrenPropsHandler = children.props[handlerName]

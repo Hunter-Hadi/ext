@@ -390,6 +390,27 @@ const useShortcutEditorActions = () => {
         specialActions.push(...getContextActions)
       }
     }
+
+    if (variableMap.get('SUMMARY_PAGE_CONTENT_REPRESENTATION')) {
+      const {
+        VariableName: key,
+        defaultValue: value,
+        label,
+      } = PRESET_VARIABLE_MAP.SUMMARY_PAGE_CONTENT_REPRESENTATION
+
+      specialActions.push({
+        type: 'SET_VARIABLE',
+        parameters: {
+          Variable: {
+            key,
+            value,
+            overwrite: true,
+            isBuiltIn: true,
+            label,
+          },
+        },
+      })
+    }
     if (
       customVariables.length > 0 ||
       systemVariables.filter(

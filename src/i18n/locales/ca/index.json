@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Introdueix el nom",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icona",
     "feature_card__prompts__edit_prompt__field_template__title": "Plantilla de l'indicació",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Quan està activat",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "L'indicació s'enviarà directament a l'IA, que és el \"comportament normal\" per defecte. Totes les plantilles d'indicacions tindran aquesta opció activada per defecte.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Quan està desactivat",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Arxiva el xat després de",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI, autoarxivem els xats inactius a la cadència que trieu. Això us dóna un nou començament i manté la barra lateral ordenada.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Resposta instantània de Messenger",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "La plantilla de suggeriment d'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Plantilla d'exemple de prompt:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",
@@ -768,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 d'OpenAI, optimitzat per a velocitat i eficiència, destaca en aplicacions en temps real que requereixen creativitat i raonament avançat amb temps de resposta millorats i sortida consistent.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite ofereix consultes d'IA il·limitades, resums d'IA, cerques d'IA i respostes instantànies.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Les meves pròpies indicacions",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Afegir la meva pròpia indicació"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Afegir la meva pròpia indicació",
+    "sidebar__summary__advanced__title": "Opcions avançades de resum"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1021,7 +1023,9 @@
     "ai_response_language__settings__label_2": "configuració de l'idioma",
     "preset_variables__system__full_context__description": "contingut de context complet",
     "preset_variables__system__target_context__description": "contingut de context objectiu",
-    "preset_variables__system__draft_context__description": "contingut de context esborrany"
+    "preset_variables__system__draft_context__description": "contingut de context esborrany",
+    "preset_variables__system__summary_page_content_representation__description": "el contingut de la pàgina web/PDF/vídeo de YouTube actual",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Genera un resum del {{PAGE_CONTENT}}"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clic",

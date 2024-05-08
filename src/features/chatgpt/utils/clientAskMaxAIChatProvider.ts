@@ -16,6 +16,8 @@ const clientAskMaxAIChatProvider = async (
     message_content: IMaxAIChatMessageContent[]
     prompt_name: string
     prompt_id: string
+    prompt_type: string
+    feature_name: string
     chat_history?: IMaxAIRequestHistoryMessage[]
     temperature?: number
     doc_id?: string
@@ -27,6 +29,8 @@ const clientAskMaxAIChatProvider = async (
     message_content,
     prompt_id,
     prompt_name,
+    prompt_type,
+    feature_name,
     temperature = 1,
     doc_id,
   } = data
@@ -40,9 +44,12 @@ const clientAskMaxAIChatProvider = async (
       data: {
         name: prompt_name,
         id: prompt_id,
+        type: prompt_type,
+        featureName: feature_name,
         host,
         aiProvider,
         aiModel: model,
+        url: location.href,
       },
     })
     .then()

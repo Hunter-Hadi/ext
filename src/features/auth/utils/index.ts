@@ -380,3 +380,27 @@ export const checkIsPayingUser = (
 ): boolean => {
   return userRoleName ? PAYING_USER_ROLE_NAME.includes(userRoleName) : false
 }
+
+export const getCurrentUserLogInfo = async () => {
+  const userInfo = await getChromeExtensionUserInfo(false)
+
+  // guest 代表未登录的用户
+  const currentRole = userInfo?.role?.name ?? 'guest'
+  let currentPlan = userInfo?.role?.subscription_plan_name ?? 'GUEST' // 由于后端返回的值都是大写的，这里统一大写
+
+  // 但是当用户为 free 时，后端返回的 subscription_plan_name 为 null
+  // 所以这里需要处理，currentPlan === 'GUEST' && currentRole === 'free' 的情况
+  if (
+    currentPlan === 'GUEST' &&
+    (currentRole === 'free' ||
+      currentRole === 'new_user' ||
+      currentRole === 'pro_gift')
+  ) {
+    currentPlan = 'FREE'
+  }
+
+  return {
+    currentPlan,
+    currentRole,
+  }
+}

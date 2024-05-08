@@ -108,7 +108,6 @@ const SettingPromptsMenuPanel: FC<ISettingPromptsMenuPanelProps> = ({
   disabledDrag = false,
   sx = {},
 }) => {
-  console.log('testesttreeData', treeData)
   return <Box
     sx={{
       flex: 1,

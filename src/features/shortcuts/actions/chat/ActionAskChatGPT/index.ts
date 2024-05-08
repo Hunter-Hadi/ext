@@ -6,7 +6,11 @@ import {
   checkISThirdPartyAIProvider,
   clientAskAIQuestion,
 } from '@/background/src/chat/util'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import {
+  authEmitPricingHooksLog,
+  getFeatureNameByConversationAndContextMenu,
+  getPromptTypeByContextMenu,
+} from '@/features/auth/utils/log'
 import { isPermissionCardSceneType } from '@/features/auth/utils/permissionHelper'
 import { getAIProviderChatFiles } from '@/features/chatgpt'
 import {
@@ -334,8 +338,14 @@ export class ActionAskChatGPT extends Action {
             data: {
               name: contextMenu?.text || fallbackId,
               id: contextMenu?.id || fallbackId,
+              type: getPromptTypeByContextMenu(contextMenu).promptType,
+              featureName: getFeatureNameByConversationAndContextMenu(
+                conversation,
+                contextMenu,
+              ),
               host: getCurrentDomainHost(),
               conversationId: clientConversationEngine.currentConversationId,
+              url: location.href,
             },
           })
           .then()

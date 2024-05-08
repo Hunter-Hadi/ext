@@ -5,12 +5,19 @@ import Browser from 'webextension-polyfill'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import ConversationManager from '@/background/src/chatConversations'
-import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import {
+  APP_USE_CHAT_GPT_API_HOST,
+  APP_VERSION,
+  DEFAULT_AI_OUTPUT_LANGUAGE_ID,
+} from '@/constants'
 import { fetchUserSubscriptionInfo } from '@/features/auth/utils'
+import { getCurrentUserLogInfo } from '@/features/auth/utils'
 import {
   contextMenuIsFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { LANGUAGE_CODE_MAP } from '@/i18n/types'
 import { getFingerPrint } from '@/utils/fingerPrint'
 import { getAccessToken } from '@/utils/request'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
@@ -25,8 +32,11 @@ export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
 export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   id: string
   name: string
+  type: string
   host: string
   conversationId: string
+  featureName: string
+  url: string
   aiProvider?: IAIProviderType
   aiModel?: string
 }): Promise<void> => {
@@ -66,6 +76,18 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         MAXAI_FREE: 'free',
       }
       const UAInfo = await backgroundGetBrowserUAInfo()
+      const { currentPlan, currentRole } = await getCurrentUserLogInfo()
+
+      const settings = await getChromeExtensionDBStorage()
+
+      const interfaceLanguageCode =
+        settings?.userSettings?.preferredLanguage ?? 'en'
+      let aiResponseLanguageCode = settings?.userSettings?.language ?? 'English'
+
+      if (aiResponseLanguageCode === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
+        aiResponseLanguageCode = 'Auto'
+      }
+
       const info_object = {
         ai_provider:
           beautyQueryMap[aiProvider as IAIProviderType] || 'UNKNOWN_PROVIDER',
@@ -73,8 +95,15 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         domain: promptDetail.host,
         prompt_id: promptDetail.id,
         prompt_name: promptDetail.name,
+        prompt_type: promptDetail.type,
         browser: UAInfo.browser,
         app_version: APP_VERSION,
+        feature_name: promptDetail.featureName,
+        current_plan: currentPlan,
+        current_role: currentRole,
+        interface_language: LANGUAGE_CODE_MAP[interfaceLanguageCode]?.en_label,
+        ai_response_language: aiResponseLanguageCode,
+        url: promptDetail.url,
       }
       if (contextMenuIsFavoriteContextMenu(info_object.prompt_id)) {
         info_object.prompt_id =

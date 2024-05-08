@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "పేరు నమోదు చేయండి",
     "feature_card__prompts__edit_prompt__field_icon__title": "చిహ్నం",
     "feature_card__prompts__edit_prompt__field_template__title": "ప్రాంప్ట్ టెంప్లేట్",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "యూఎక్స్ ప్రాంప్టు టెంప్లేట్.\nటెంప్లేట్‌లో ఈ వేరియబుల్‌లను ఏ సంఖ్యనుంచి ఉంచవచ్చు:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "యూఎక్స్ ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో కొన్ని మొత్తం వ్యతిరేక చర్యలు ఉండవచ్చు:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "ఏమిటియని అనుకుంటే",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ప్రాంప్ట్ ను నేను AI కు సిద్ధంగా పంపేస్తాను, ఇది డిఫాల్ట్ \"సాధారణ వర్తన\". అన్ని ప్రాంప్ట్ టెంప్లేట్‌లు డిఫాల్ట్‌గా ఈ ఎంపికను ప్రారంభం చేస్తాయి.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "ఏమిటియని అనుకుంటే",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "చాట్‌ను ఆర్కైవ్ చేయండి",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIలో, మీరు తప్పక ఎంపిక చేసే కాదని ఆటో ఆర్కైవ్ చేస్తాం. ఇది మీకు తాజా ప్రారంభం అందిస్తుంది మరియు మీ సైడ్‌బార్‌ను శుభ్రంగా ఉంచేది.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "మెసేంజర్ తక్షణ సమాధానం",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "యాంత్రిక సూచన మూలకం.\nఈ మూలకంలో కొన్ని వేరియబుల్స్ ఉంటాయి:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "యాంత్రిక సూచన మూలకం.\nఈ మూలకంలో కొన్ని వేరియబుల్స్ ఉంటాయి:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "యాంత్రిక సూచన మూలకం.\nఈ మూలకంలో కొన్ని వేరియబుల్స్ ఉంటాయి:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "యాంత్రిక సూచన మూలకం.\nఈ మూలకంలో కొన్ని వేరియబుల్స్ ఉంటాయి:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "యూఎక్స్ ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో కొన్ని మొత్తం వ్యతిరేక చర్యలు ఉండవచ్చు:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "యూఎక్స్ ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో కొన్ని మొత్తం వ్యతిరేక చర్యలు ఉండవచ్చు:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "యూనికార్డ్ మూలకం టెంప్లేట్.\nఈ టెంప్లేట్‌లో కొన్ని వేరియబుల్స్ ఉంచవచ్చు:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "యూఎక్స్ ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో కొన్ని మొత్తం వ్యతిరేక చర్యలు ఉండవచ్చు:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ఉదాహరణ ప్రాంప్టు టెంప్లేట్:"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -768,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4, వేగం మరియు పనిచేయడంలో అద్భుతమైన ప్రతిస్పందన సమయాలతో క్రీయాశీలత మరియు అద్వితీయ ఆఉట్‌పుట్‌తో రియల్‌టైమ్ అనువర్తనాలలో అత్యంత మెరుగైన ప్రగతిని అందిస్తుంది.",
     "permission__pricing_hook__footer_tip": "MaxAI ఎలీట్ అనువాదాల మితిలేని AI ప్రశ్నలు, AI సారాంశాలు, AI శోధనలు మరియు తక్షణ సమాధానాలను అందిస్తుంది.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "నా ప్రాంప్టులు",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "నా ప్రాంప్టును జోడించండి"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "నా ప్రాంప్టును జోడించండి",
+    "sidebar__summary__advanced__title": "ఆధ్వర్యం సారాంశ ఎంపికలు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -1021,7 +1023,9 @@
     "ai_response_language__settings__label_2": "భాషా సెట్టింగ్",
     "preset_variables__system__full_context__description": "పూర్తి సందర్భ విషయం",
     "preset_variables__system__target_context__description": "లక్ష్య సందర్భ విషయం",
-    "preset_variables__system__draft_context__description": "డ్రాఫ్ట్ సందర్భ విషయం"
+    "preset_variables__system__draft_context__description": "డ్రాఫ్ట్ సందర్భ విషయం",
+    "preset_variables__system__summary_page_content_representation__description": "ప్రస్తుత వెబ్‌పేజీ/PDF/YouTube వీడియో విషయం",
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} యొక్క సంగ్రహం నివేదించండి"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-క్లిక్ ప్రాంప్టులు",

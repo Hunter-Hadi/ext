@@ -230,6 +230,17 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
               text: "Ignore all previous instructions. You are the original author of the unfinished text delimited by triple backticks. Your task is to continue writing the following unfinished text delimited by triple backticks.\n\nYour task requires you to pick up where the text is left off, making sure to maintain the same tone, writing style, structure, intended audience, and direction of the unfinished text. Continue the writing in a manner consistent with how the original author would have written.\n\nOnly write no more than 100 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the continued text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{LAST_AI_MESSAGE_OUTPUT}}\n```",
               meta: {
                 outputMessageId: `{{OUTPUT_MESSAGE_ID}}`,
+                contextMenu: {
+                  id: CONTEXT_MENU_DRAFT_TYPES.CONTINUE_WRITING,
+                  droppable: false,
+                  parent: '',
+                  text: 'Continue writing',
+                  data: {
+                    editable: false,
+                    type: 'shortcuts',
+                    actions: [],
+                  },
+                } as IContextMenuItem,
               },
             },
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN_QUESTION',

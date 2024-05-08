@@ -7,7 +7,10 @@ import {
   SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
 } from '@/constants'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import {
+  authEmitPricingHooksLog,
+  getFeatureNameByConversationAndContextMenu,
+} from '@/features/auth/utils/log'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
@@ -94,14 +97,20 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
             'timestamped'
           ]
         if (clientConversationEngine?.currentConversationId) {
+          const conversation =
+            await clientConversationEngine?.getCurrentConversation()
           await clientMessageChannelEngine
             .postMessage({
               event: 'Client_logCallApiRequest',
               data: {
                 name: recordContextMenuData?.text || 'UNKNOWN',
                 id: recordContextMenuData?.id || 'UNKNOWN',
+                type: 'preset',
+                featureName:
+                  getFeatureNameByConversationAndContextMenu(conversation),
                 host: getCurrentDomainHost(),
                 conversationId: clientConversationEngine.currentConversationId,
+                url: location.href,
               },
             })
             .then()
@@ -413,6 +422,8 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
             ],
             prompt_id,
             prompt_name,
+            prompt_type: 'preset',
+            feature_name: 'sidebar_summary',
           },
           currentAbortTaskId,
         )

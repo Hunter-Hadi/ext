@@ -29,6 +29,7 @@ import {
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
 import clientGetContentOfURL from '@/features/shortcuts/utils/web/clientGetContentOfURL'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 // import { SLICE_MAX_CHARACTERS } from '@/features/shortcuts/actions/documents/ActionSliceOfText'
 
@@ -275,6 +276,10 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         ],
         prompt_id: SEARCH__READ_PAGE__PROMPT_ID,
         prompt_name: '[Search] read page',
+        prompt_type: 'preset',
+        feature_name: isMaxAIImmersiveChatPage()
+          ? 'immersive_search'
+          : 'sidebar_search',
       },
       abortTaskId,
     )

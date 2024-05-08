@@ -100,7 +100,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Syötä nimi",
     "feature_card__prompts__edit_prompt__field_icon__title": "Kuvake",
     "feature_card__prompts__edit_prompt__field_template__title": "Kehotteen malli",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI-pyyntömallipohja.\nMallipohja voi sisältää mitä tahansa seuraavista muuttujista:\n{{VALITTU_TEKSTI}}\n{{NYKYINEN_VERKKOSIVUSTON_VERKKOTUNNUS}}\n{{JÄRJESTELMÄN_NYKYINEN_PÄIVÄMÄÄRÄ}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "AI-pyyntöpohja.\nPohja voi sisältää mitä tahansa seuraavista muuttujista:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Kun käytössä",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Kehote lähetetään suoraan tekoälylle, mikä on oletusarvoinen \"normaali käyttäytyminen\". Kaikissa kehote malleissa tämä vaihtoehto on oletuksena käytössä.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Kun ei käytössä",
@@ -259,10 +259,11 @@
     "feature_card__sidebar__field__auto_archive__button__title": "Arkistoi keskustelu",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI:ssa arkistoimme automaattisesti käyttämättömät keskustelut valitsemallasi taajuudella. Tämä antaa sinulle raikkaan alun ja pitää sivupalkin siistinä.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messengerin pikavastaus",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI-pohjapohja.\nPohjassa voi olla mitä tahansa seuraavista muuttujista:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{FULL_CONTEXT}}\n{{TARGET_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-pohjapohja.\nPohjassa voi olla mitä tahansa seuraavista muuttujista:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}\n{{DRAFT_CONTEXT}}",
-    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-pohjapohja.\nPohjassa voi olla mitä tahansa seuraavista muuttujista:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-pohjapohja.\nPohjassa voi olla mitä tahansa seuraavista muuttujista:\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}"
+    "feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder": "AI-pyyntöpohja.\nPohja voi sisältää mitä tahansa seuraavista muuttujista:",
+    "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-pyyntöpohja.\nPohja voi sisältää mitä tahansa seuraavista muuttujista:",
+    "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-pohjapohja.\nPohjassa voi olla mitä tahansa seuraavista muuttujista:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-pyyntöpohja.\nPohja voi sisältää mitä tahansa seuraavista muuttujista:",
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Esimerkki kysymyspohjasta:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -768,7 +769,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI:n GPT-4, joka on optimoitu nopeuteen ja tehokkuuteen, loistaa reaaliaikaisissa sovelluksissa, jotka vaativat luovuutta ja edistynyttä päättelyä paremmilla vasteajoilla ja johdonmukaisella tulostuksella.",
     "permission__pricing_hook__footer_tip": "MaxAI Elite tarjoaa rajattomat AI-kyselyt, AI-yhteenvedot, AI-haut ja välittömät vastaukset.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Omat kysymykset",
-    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lisää oma kysymys"
+    "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lisää oma kysymys",
+    "sidebar__summary__advanced__title": "Edistyneet yhteenvedon asetukset"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -1021,7 +1023,9 @@
     "ai_response_language__settings__label_2": "kielen asetusta",
     "preset_variables__system__full_context__description": "koko kontekstin sisältö",
     "preset_variables__system__target_context__description": "kohdekontekstin sisältö",
-    "preset_variables__system__draft_context__description": "luonnoskontekstin sisältö"
+    "preset_variables__system__draft_context__description": "luonnoskontekstin sisältö",
+    "preset_variables__system__summary_page_content_representation__description": "nykyisen verkkosivun/PDF:n/YouTube-videon sisältö",
+    "preset_variables__system__summary_page_content_representation__description__example1": "Tulosta yhteenveto {{PAGE_CONTENT}}:sta"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikkaus vihjeet",

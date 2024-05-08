@@ -24,11 +24,12 @@ const RenderCustomPromptMenuList = (
   menuList.forEach((menuItem) => {
     if (menuItem.data.type === 'group' && level === 0) {
       nodeList.push(
-        <Divider textAlign="left" sx={{ my: '1px!important' }}>
+        <Divider textAlign="left" sx={{ maxWidth: '100%', my: '1px!important', overflow: 'hidden' }}>
           <Typography
             textAlign={'left'}
             fontSize={12}
             color={'text.secondary'}
+            sx={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
           >
             {menuItem.text}
           </Typography>

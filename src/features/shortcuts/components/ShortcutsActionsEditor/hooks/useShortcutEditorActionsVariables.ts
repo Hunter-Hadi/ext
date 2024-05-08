@@ -24,7 +24,7 @@ export type IPresetVariableName =
   | 'TARGET_CONTEXT'
   | 'DRAFT_CONTEXT'
   // Summary
-  | 'PAGE_CONTENT'
+  | 'SUMMARY_PAGE_CONTENT_REPRESENTATION'
 
 export interface IPresetActionSetVariable extends IActionSetVariable {
   VariableName: IPresetVariableName
@@ -150,9 +150,9 @@ export const PRESET_VARIABLE_MAP: {
     valueType: 'Text',
     label: 'DRAFT_CONTEXT',
   },
-  PAGE_CONTENT: {
-    VariableName: 'PAGE_CONTENT',
-    defaultValue: '{{PAGE_CONTENT}}',
+  SUMMARY_PAGE_CONTENT_REPRESENTATION: {
+    VariableName: 'SUMMARY_PAGE_CONTENT_REPRESENTATION',
+    defaultValue: 'context text',
     systemVariable: true,
     valueType: 'Text',
     label: 'PAGE_CONTENT',
@@ -210,11 +210,11 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       permissionKeys: ['inputAssistantRefineDraftButton'],
     },
     {
-      variable: PRESET_VARIABLE_MAP.PAGE_CONTENT,
+      variable: PRESET_VARIABLE_MAP.SUMMARY_PAGE_CONTENT_REPRESENTATION,
       description:
-        'prompt_editor:preset_variables__system__summary_page_content__description',
+        'prompt_editor:preset_variables__system__summary_page_content_representation__description',
       examples: [
-        'prompt_editor:preset_variables__system__summary_page_content__description__example1',
+        'prompt_editor:preset_variables__system__summary_page_content_representation__description__example1',
       ],
       permissionKeys: ['sidebarSummaryButton'],
     },

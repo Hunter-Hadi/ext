@@ -1,7 +1,12 @@
 import debounce from 'lodash-es/debounce'
 
+import defaultEditAssistantComposeReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
+import defaultInputAssistantComposeNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
+import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
 import { IAIProviderType } from '@/background/provider/chat'
+import { IChatConversation } from '@/background/src/chatConversations'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { PRESET_PROMPT_IDS } from '@/constants'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
@@ -10,6 +15,8 @@ import {
   clientGetConversation,
   clientGetConversationAIModelAndProvider,
 } from '@/features/chatgpt/utils/chatConversationUtils'
+import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
@@ -387,5 +394,119 @@ const generateTrackParams = async (
   } catch (error) {
     // do nothing
     return {}
+  }
+}
+
+export const getPromptTypeByContextMenu = (
+  contextMenuItem: IContextMenuItem | undefined,
+): {
+  promptType: 'preset' | 'custom' | 'freestyle'
+  instantType?: 'reply' | 'refine' | 'new' | null
+} => {
+  if (contextMenuItem) {
+    const contextMenuId = contextMenuItem.id
+    const presetActionPromptIds = Object.values(CONTEXT_MENU_DRAFT_TYPES)
+    if (
+      defaultInputAssistantRefineDraftContextMenuJson.find(
+        (item) => item.id === contextMenuId,
+      )
+    ) {
+      return {
+        promptType: 'preset',
+        instantType: 'refine',
+      }
+    } else if (
+      defaultInputAssistantComposeNewContextMenuJson.find(
+        (item) => item.id === contextMenuId,
+      )
+    ) {
+      return {
+        promptType: 'preset',
+        instantType: 'new',
+      }
+    } else if (
+      defaultEditAssistantComposeReplyContextMenuJson.find(
+        (item) => item.id === contextMenuId,
+      )
+    ) {
+      return {
+        promptType: 'preset',
+        instantType: 'reply',
+      }
+    } else if (
+      PRESET_PROMPT_IDS.find((promptId) => promptId === contextMenuId)
+    ) {
+      return {
+        promptType: 'preset',
+      }
+    } else if (
+      presetActionPromptIds.find((promptId) => promptId === contextMenuId)
+    ) {
+      return {
+        promptType: 'preset',
+      }
+    } else {
+      return {
+        promptType: 'custom',
+      }
+    }
+  } else {
+    // 没有 contextMenu 就是用户自由输入的 - freestyle
+    return {
+      promptType: 'freestyle',
+    }
+  }
+}
+
+export const getFeatureNameByConversationAndContextMenu = (
+  conversation: IChatConversation | null,
+  contextMenuItem?: IContextMenuItem,
+) => {
+  if (conversation) {
+    // 1. 先判断是否是 instant
+    const { promptType, instantType } =
+      getPromptTypeByContextMenu(contextMenuItem)
+
+    if (promptType === 'preset') {
+      if (instantType === 'refine') {
+        return 'instant_refine'
+      } else if (instantType === 'new') {
+        return 'instant_new'
+      } else if (instantType === 'reply') {
+        return 'instant_reply'
+      }
+    }
+
+    // 2. 判断是否是 context menu
+    if (conversation.type === 'ContextMenu') {
+      return 'context_menu'
+    }
+
+    // 3. 根据 conversation.type 分类
+    const isImmersiveChatPage = isMaxAIImmersiveChatPage()
+    const prefix = isImmersiveChatPage ? 'immersive' : 'sidebar'
+    let suffix = 'chat'
+
+    switch (conversation.type) {
+      case 'Search': {
+        suffix = 'search'
+        break
+      }
+      case 'Summary': {
+        suffix = 'summary'
+        break
+      }
+      case 'Art': {
+        suffix = 'art'
+        break
+      }
+      default: {
+        suffix = 'chat'
+      }
+    }
+
+    return `${prefix}_${suffix}`
+  } else {
+    return 'UNKNOWN'
   }
 }

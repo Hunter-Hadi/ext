@@ -17,15 +17,15 @@ const PresetVariablesTag: FC<{
 
   const color = theme.isDarkMode
     ? hexChangeLightnessAndSaturation(
-        generateRandomColor(presetVariable.VariableName),
-        0.75,
-        0.9,
-      )
+      generateRandomColor(presetVariable.VariableName),
+      0.75,
+      0.9,
+    )
     : hexChangeLightnessAndSaturation(
-        generateRandomColor(presetVariable.VariableName),
-        0.3,
-        0.95,
-      )
+      generateRandomColor(presetVariable.VariableName),
+      0.3,
+      0.95,
+    )
   return (
     <Typography
       sx={(t) => {
@@ -46,7 +46,7 @@ const PresetVariablesTag: FC<{
         onClick && onClick(presetVariable)
       }}
     >
-      {`{{${presetVariable.VariableName}}}`}
+      {`{{${presetVariable.label}}}`}
     </Typography>
   )
 }

@@ -244,7 +244,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   variant={'normalOutlined'}
                   disabled={loading}
                   onClick={() => {
-                    onReGenerate && onReGenerate()
+                    onReGenerate?.()
                   }}
                   sx={shortcutsActionBtnSxMemo}
                   data-testid="sidebar_actions__regenerate"
@@ -281,7 +281,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 variant={'normalOutlined'}
                 startIcon={<StopOutlinedIcon />}
                 onClick={() => {
-                  onStopGenerate && onStopGenerate()
+                  onStopGenerate?.()
                 }}
                 data-testid="sidebar_actions__stop_generating"
               >

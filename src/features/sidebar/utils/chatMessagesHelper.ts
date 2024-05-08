@@ -38,8 +38,12 @@ export const formatSecondsAsTimestamp = (seconds: string) => {
 /**
  * 格式化AI消息的内容
  * @param message
+ * @param isDownload 是否是下载到本地的场景
  */
-export const formatAIMessageContent = (message: IAIResponseMessage) => {
+export const formatAIMessageContent = (
+  message: IAIResponseMessage,
+  isDownload: boolean,
+) => {
   try {
     const originalMessage = message.originalMessage
     if (originalMessage) {
@@ -50,6 +54,9 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
           break
         case 'summary':
           {
+            if (!isDownload) {
+              break
+            }
             formatText =
               formatTimestampedSummaryAIMessageContent(message) || formatText //transcripts 数据 转为text
             // 添加标题
@@ -74,6 +81,9 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
           break
         case 'search':
           {
+            if (!isDownload) {
+              break
+            }
             // 添加Answer:\n
             formatText = `Answer:\n${formatText}`
             // 添加标题
@@ -93,7 +103,9 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
               }
               formatText += citations
             }
-            formatText += `\n\nPowered by MaxAI.me`
+            if (isDownload) {
+              formatText += `\n\nPowered by MaxAI.me`
+            }
           }
           break
         case 'art':
@@ -357,12 +369,16 @@ export const formatThirdOrSystemMessageContent = (
 /**
  * 格式化Chat消息的内容
  * @param message
+ * @param isDownload 是否是下载到本地的场景
  */
-export const formatChatMessageContent = (message: IChatMessage) => {
+export const formatChatMessageContent = (
+  message: IChatMessage,
+  isDownload: boolean,
+) => {
   if (isUserMessage(message)) {
     return formatUserMessageContent(message)
   } else if (isAIMessage(message)) {
-    return formatAIMessageContent(message)
+    return formatAIMessageContent(message, isDownload)
   } else {
     return formatThirdOrSystemMessageContent(message as ISystemChatMessage)
   }
@@ -401,7 +417,7 @@ export const formatMessagesToLiteHistory = async (
       if (originalQuestion && conversationType === 'Search') {
         liteHistory.push(originalQuestion)
       }
-      liteHistory.push('AI: ' + formatAIMessageContent(message))
+      liteHistory.push('AI: ' + formatAIMessageContent(message, true))
     } else if (isUserMessage(message)) {
       const userMessage = message
       let userAttachmentText = ''

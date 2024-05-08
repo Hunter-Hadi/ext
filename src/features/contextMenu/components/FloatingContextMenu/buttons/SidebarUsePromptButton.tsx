@@ -69,7 +69,7 @@ const SidebarUsePromptButton: FC<{
     false,
   )
   const currentContext = useMemo(() => {
-    return text || (message && formatChatMessageContent(message)) || ''
+    return text || (message && formatChatMessageContent(message, false)) || ''
   }, [message, text])
   const isRunningRef = useRef(false)
   useEffect(() => {

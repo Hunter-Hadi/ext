@@ -62,7 +62,7 @@ const BaseSidebarUserMessage: FC<{
           ...memoSx,
         }}
       >
-        {formatChatMessageContent(message)}
+        {formatChatMessageContent(message, false)}
         <SidebarChatBoxUserTools message={message} />
       </Stack>
     </Box>

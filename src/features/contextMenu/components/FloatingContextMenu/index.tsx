@@ -336,16 +336,18 @@ const FloatingContextMenu: FC<{
           sx={{
             position: 'absolute',
             width: '100%',
-            bgcolor: 'rgba(0,0,0,0.2)',
+            // bgcolor: 'rgba(0,0,0,0.2)',
             zIndex: 10,
             cursor: 'grab',
             height: '20px',
           }}
           onMouseDown={handleDragStart}
         >
-          <Typography fontSize={'14px'} color={'text.primary'}>
-            {contextWindowMode}(debug)
-          </Typography>
+          <DevContent>
+            <Typography fontSize={'14px'} color={'text.primary'}>
+              {contextWindowMode}(debug)
+            </Typography>
+          </DevContent>
         </Box>
         <FloatingContextMenuList
           customOpen

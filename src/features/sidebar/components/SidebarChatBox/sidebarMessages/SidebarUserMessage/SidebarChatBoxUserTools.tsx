@@ -12,7 +12,7 @@ const SidebarChatBoxUserTools: FC<{
   message: IUserChatMessage
 }> = (props) => {
   const { message } = props
-  const currentMessageText = formatChatMessageContent(message)
+  const currentMessageText = formatChatMessageContent(message, true)
   return (
     <Stack
       direction={'row'}

@@ -42,7 +42,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
     'normal'
 
   const systemMessageText = useMemo(
-    () => formatChatMessageContent(message),
+    () => formatChatMessageContent(message, false),
     [message],
   )
   const ctaButtonText = useMemo(() => {

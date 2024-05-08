@@ -465,7 +465,7 @@ export const processAskAIParameters = async (
     for (let i = conversation.messages.length - 1; i >= 0; i--) {
       const message = conversation.messages[i]
       // 如果是ai回复，那么标记开始
-      if (isAIMessage(message) && formatAIMessageContent(message)) {
+      if (isAIMessage(message) && formatAIMessageContent(message, false)) {
         if (endIndex === null) {
           endIndex = i
         }
@@ -571,7 +571,7 @@ export const processAskAIParameters = async (
 export const processPreSaveChatMessage = async (message: IChatMessage) => {
   if (isAIMessage(message)) {
     // 触发安全限制的消息
-    const content = formatAIMessageContent(message)
+    const content = formatAIMessageContent(message, false)
     if (
       content.includes(`\u2060\u200c\u200d\u200b\u2060\u200c\u200d\u200b`) ||
       content.includes(

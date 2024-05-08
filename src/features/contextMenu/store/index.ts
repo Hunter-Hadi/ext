@@ -65,10 +65,12 @@ export const FloatingDropdownMenuLastFocusRangeState = atom<{
 // AI input dropdown menu system items
 export const ContextWindowDraftContextMenuState = atom<{
   selectedDraftContextMenuId: string | null
+  lastOutput: string
 }>({
   key: 'ContextWindowDraftContextMenuState',
   default: {
     selectedDraftContextMenuId: null,
+    lastOutput: '',
   },
 })
 

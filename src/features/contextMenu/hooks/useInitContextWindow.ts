@@ -240,6 +240,8 @@ const useInitContextWindow = () => {
         `[ContextWindow] currentSelection`,
         currentSelection,
         isInstantReplyButton,
+        currentFloatingContextMenuDraft,
+        inputValue,
       )
       if (currentSelection?.selectionInputAble || isInstantReplyButton) {
         if (inputValue && contextWindowList.length === 0) {
@@ -640,6 +642,7 @@ const useInitContextWindow = () => {
     } else {
       setIsInputCustomVariables(false)
       setIsSettingCustomVariables(false)
+      setInputValue('')
       const textareaEl =
         getMaxAIFloatingContextMenuRootElement()?.querySelector(
           `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,

@@ -76,8 +76,9 @@ export const ChatGPTSnackbarContainer = () => {
 export const renderGlobalSnackbar = () => {
   const container = document.createElement('div')
   container.id = MAXAI_SNACKBAR_SHADOW_CONTAINER_ID
-  container.style.zIndex = `2147483647`
+  container.style.zIndex = `21474836470`
   container.style.color = '#fff'
+  container.style.position = 'absolute'
   document.body.appendChild(container)
   createRoot(container).render(
     <React.StrictMode>

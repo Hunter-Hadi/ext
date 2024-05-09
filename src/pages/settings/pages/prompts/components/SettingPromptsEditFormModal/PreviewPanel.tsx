@@ -19,7 +19,7 @@ import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/compone
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const PreviewPanel = () => {
-  const { t } = useTranslation(['settings', 'common', 'client'])
+  const { t } = useTranslation(['client'])
   const { editNode, generatePreviewActions } = useSettingPromptsContext()
 
   const title = editNode?.text

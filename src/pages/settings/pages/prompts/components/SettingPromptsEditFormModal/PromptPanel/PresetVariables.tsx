@@ -24,7 +24,7 @@ const PresetVariables: FC<{
   )
   return (
     <Stack spacing={1}>
-      <Stack direction="row" alignItems="center" spacing={1}>
+      <Stack direction="row" alignItems="center" spacing={0.5}>
         <Typography fontSize="14px">
           {t('prompt_editor:preset_variables__title')}
         </Typography>
@@ -82,28 +82,39 @@ const PresetVariables: FC<{
                   flexWrap="wrap"
                   alignItems="center"
                 >
-                  {presetVariables.map(({ variable, permissionKeys = [] }) => {
-                    if (
-                      permissionKeys.length === 0 ||
-                      permissionKeys.includes(settingPromptsEditButtonKey!)
-                    ) {
-                      return (
-                        <PresetVariablesTag
-                          key={variable.VariableName}
-                          presetVariable={variable}
-                          onClick={(clickVariable) => {
-                            addVariable(clickVariable)
-                            onClick?.({
-                              VariableName: clickVariable.VariableName,
-                              label: clickVariable.VariableName,
-                              valueType: 'Text',
-                            })
-                          }}
-                        />
-                      )
-                    }
-                    return null
-                  })}
+                  {presetVariables.map(
+                    ({
+                      variable,
+                      permissionKeys = [],
+                      requiredInSettingEditor,
+                    }) => {
+                      if (
+                        permissionKeys.length === 0 ||
+                        permissionKeys.includes(settingPromptsEditButtonKey!)
+                      ) {
+                        return (
+                          <PresetVariablesTag
+                            key={variable.VariableName}
+                            presetVariable={variable}
+                            onClick={(clickVariable) => {
+                              addVariable(clickVariable)
+                              onClick?.({
+                                VariableName: clickVariable.VariableName,
+                                label: clickVariable.VariableName,
+                                valueType: 'Text',
+                              })
+                            }}
+                          >
+                            {`{{${variable.label}}}`}
+                            {requiredInSettingEditor && (
+                              <span style={{ marginLeft: '1px', color: 'red' }}>*</span>
+                            )}
+                          </PresetVariablesTag>
+                        )
+                      }
+                      return null
+                    },
+                  )}
                 </Stack>
               </Stack>
             )

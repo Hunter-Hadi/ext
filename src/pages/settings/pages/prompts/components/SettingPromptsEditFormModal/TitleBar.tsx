@@ -13,6 +13,10 @@ import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsA
 import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
 import { specialInputAssistantButtonKeys } from '@/pages/settings/pages/prompts/store'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { PRESET_VARIABLES_GROUP_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
+import { useSnackbar } from 'notistack'
+import Toast from '@/utils/globalSnackbar'
 
 const DropDownMenuItem: FC<{
   label: string
@@ -77,7 +81,7 @@ const DropDownMenuItem: FC<{
 }
 
 const TitleBar = () => {
-  const { t } = useTranslation(['settings', 'common'])
+  const { t } = useTranslation(['settings', 'common', 'prompt_editor'])
 
   const {
     node,
@@ -89,6 +93,7 @@ const TitleBar = () => {
     onDelete,
   } = useSettingPromptsContext()
   const { editHTML } = useShortcutEditorActions()
+  const { enqueueSnackbar } = useSnackbar()
 
   const isEditingSpecialButtonKey =
     editButtonKey &&
@@ -152,6 +157,35 @@ const TitleBar = () => {
   ])
 
   const handleSave = () => {
+    // 先判断template里是否有未使用的必须变量
+    const requiredVariables = Object.values(PRESET_VARIABLES_GROUP_MAP).flatMap(
+      (group) =>
+        group
+          .filter(
+            ({ permissionKeys = [], requiredInSettingEditor }) =>
+              (permissionKeys.length === 0 ||
+                permissionKeys.includes(editButtonKey as any)) &&
+              requiredInSettingEditor,
+          )
+          .map(({ variable }) => variable),
+    )
+    const template = htmlToTemplate(editHTML)
+    for (const variables of requiredVariables) {
+      if (!template.includes(variables.VariableName)) {
+        Toast.error(
+          t('prompt_editor:preset_variables__error_message__title', {
+            VARIABLE_NAME: `{{${variables.VariableName}}}`,
+          }),
+          {
+            anchorOrigin: {
+              vertical: 'top',
+              horizontal: 'center',
+            },
+          },
+        )
+        return
+      }
+    }
     if (editNode.id === '') {
       editNode.id = v4()
     }

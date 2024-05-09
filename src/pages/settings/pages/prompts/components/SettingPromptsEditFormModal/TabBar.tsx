@@ -46,12 +46,12 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
 )
 
 const TabBar: FC<TabsProps> = (props) => {
-  const { t } = useTranslation(['settings'])
+  const { t } = useTranslation(['prompt_editor'])
   return (
     <Box display="flex" justifyContent="center" alignItems="center">
       <CustomTabs {...props}>
-        <Tab label="Configure" />
-        <Tab label="Prompt" />
+        <Tab label={t('prompt_editor:configure_panel__title')} />
+        <Tab label={t('prompt_editor:prompt_panel__title')} />
       </CustomTabs>
     </Box>
   )

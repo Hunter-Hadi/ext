@@ -185,7 +185,8 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       ],
       permissionKeys: ['textSelectPopupButton'],
       showInPreviewEditor: true,
-      previewEditorDefaultValue: ''
+      previewEditorDefaultValue: '',
+      requiredInSettingEditor: true,
     },
     {
       variable: PRESET_VARIABLE_MAP.CURRENT_WEBSITE_DOMAIN,
@@ -228,7 +229,8 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       examples: [],
       permissionKeys: ['inputAssistantRefineDraftButton'],
       showInPreviewEditor: true,
-      previewEditorDefaultValue: ''
+      previewEditorDefaultValue: '',
+      requiredInSettingEditor: true,
     },
     {
       variable: PRESET_VARIABLE_MAP.SUMMARY_PAGE_CONTENT_REPRESENTATION,

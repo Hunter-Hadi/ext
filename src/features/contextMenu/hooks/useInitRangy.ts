@@ -565,6 +565,10 @@ const useInitRangy = () => {
           console.log('AIInput TRY_AGAIN', lastAIMessageId)
         }
         break
+      case 'ACCEPT':
+        {
+        }
+        break
       case 'COPY':
         {
           try {
@@ -598,6 +602,7 @@ const useInitRangy = () => {
         break
     }
   }, [floatingDropdownMenuSystemItems.selectedDraftContextMenuId])
+
   useEffect(() => {
     if (!floatingDropdownMenu.open) {
       setFloatingDropdownMenuLastFocusRange((prevState) => {

@@ -11,6 +11,7 @@ import { getInputMediator } from '@/store/InputMediator'
 const useDraftContextMenuList = () => {
   const [searchText, setSearchText] = useState<string>('')
   const { currentSelection } = useRecoilValue(RangyState)
+
   useEffect(() => {
     const handleInputUpdate = (newInputValue: string) => {
       setSearchText(newInputValue)
@@ -22,35 +23,52 @@ const useDraftContextMenuList = () => {
       )
     }
   }, [])
+
   return useMemo(() => {
     const filteredList = CONTEXT_MENU_DRAFT_LIST.filter((item) => {
       return item.text.toLowerCase().includes(searchText.toLowerCase())
     })
-    if (currentSelection?.selectionElement?.isEditableElement) {
-      // 如果有选中文字,过滤掉Insert
+    const instantReplyButtonId =
+      currentSelection?.selectionElement?.target?.getAttribute(
+        'maxai-input-assistant-button-id',
+      )
+    let filteredId = []
+    // 如果点击的是 Instant reply button, 过滤掉 Insert below, Insert, Replace
+    if (instantReplyButtonId) {
+      filteredId = [
+        CONTEXT_MENU_DRAFT_TYPES.INSERT_BELOW,
+        CONTEXT_MENU_DRAFT_TYPES.INSERT,
+        CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION,
+        CONTEXT_MENU_DRAFT_TYPES.ACCEPT,
+      ]
+    } else if (currentSelection?.selectionElement?.isEditableElement) {
+      // 如果有选中文字,过滤掉Insert, Accept
       if (currentSelection?.selectionElement?.editableElementSelectionText) {
-        return filteredList.filter((item) => {
-          return ![CONTEXT_MENU_DRAFT_TYPES.INSERT].includes(item.id)
-        })
+        filteredId = [
+          CONTEXT_MENU_DRAFT_TYPES.INSERT,
+          CONTEXT_MENU_DRAFT_TYPES.ACCEPT,
+        ]
       } else {
-        // 如果有选中文字,过滤掉Replace和Insert below
-        return filteredList.filter((item) => {
-          return ![
-            CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION,
-            CONTEXT_MENU_DRAFT_TYPES.INSERT_BELOW,
-          ].includes(item.id)
-        })
+        // 如果有选中文字,过滤掉Replace和Insert below, Accept
+        filteredId = [
+          CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION,
+          CONTEXT_MENU_DRAFT_TYPES.INSERT_BELOW,
+          CONTEXT_MENU_DRAFT_TYPES.ACCEPT,
+        ]
       }
     } else {
-      // 如果不是可编辑元素,过滤掉 Insert below, Insert, Replace
-      return filteredList.filter((item) => {
-        return ![
-          CONTEXT_MENU_DRAFT_TYPES.INSERT_BELOW,
-          CONTEXT_MENU_DRAFT_TYPES.INSERT,
-          CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION,
-        ].includes(item.id)
-      })
+      // 如果不是可编辑元素,过滤掉 Insert below, Insert, Replace, Accept
+      filteredId = [
+        CONTEXT_MENU_DRAFT_TYPES.INSERT_BELOW,
+        CONTEXT_MENU_DRAFT_TYPES.INSERT,
+        CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION,
+        CONTEXT_MENU_DRAFT_TYPES.ACCEPT,
+      ]
     }
+
+    return filteredList.filter((item) => {
+      return !filteredId.includes(item.id)
+    })
   }, [currentSelection, searchText])
 }
 export { useDraftContextMenuList }

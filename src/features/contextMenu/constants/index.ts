@@ -17,6 +17,7 @@ export const CONTEXT_MENU_DRAFT_TYPES = {
   MAKE_SHORTER: '44ea14bf-e81d-4e24-9627-b2ce9b1546dd',
   CONTINUE_IN_CHAT: '9642aa63-4c26-4b5a-8109-e51c4a92df0b',
   COPY: '8fcccd1e-eb6e-419e-8c79-d8bc7c10e72c',
+  ACCEPT: '5aafdf09-36e4-46a0-be37-5eba07364f33',
 }
 /**
  * 特殊需求的分隔符的contextMenu ID集合
@@ -69,6 +70,17 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
       type: 'shortcuts',
       editable: false,
       icon: 'NoteDown',
+    },
+    children: [],
+  },
+  {
+    id: CONTEXT_MENU_DRAFT_TYPES.ACCEPT,
+    text: 'Accept',
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
     },
     children: [],
   },

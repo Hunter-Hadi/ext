@@ -144,7 +144,10 @@ const SidebarUsePromptButton: FC<{
             {iconButton ? (
               <TooltipIconButton
                 id={`MaxAISidebarUsePromptButton`}
-                title={t('client:sidebar__button__use_prompt')}
+                title={
+                  !smoothConversationLoading &&
+                  t('client:sidebar__button__use_prompt')
+                }
                 sx={sx}
                 data-testid={testid}
                 className={className}

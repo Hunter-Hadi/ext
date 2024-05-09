@@ -2,7 +2,7 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import React, {useEffect} from 'react'
+import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
@@ -19,7 +19,7 @@ import {
   specialInputAssistantButtonKeys,
 } from '@/pages/settings/pages/prompts/store'
 
-const ConfigurePanel = () => {
+const ConfigurePanel: FC<{ iconSetting?: boolean }> = ({ iconSetting }) => {
   const { t } = useTranslation(['settings', 'common'])
   const { editNode, selectedIcon, setEditNode, setSelectedIcon } =
     useSettingPromptsContext()
@@ -64,47 +64,55 @@ const ConfigurePanel = () => {
         />
       </Stack>
 
-      <Stack spacing={1} pb={1}>
-        <Typography variant={'body1'}>
-          {t('settings:feature_card__prompts__edit_prompt__field_icon__title')}
-        </Typography>
-        <Stack
-          flexWrap={'wrap'}
-          gap={1}
-          direction={'row'}
-          alignItems={'center'}
-          sx={{ maxHeight: '72px', overflowY: 'scroll' }}
-        >
-          {CONTEXT_MENU_ICONS.filter((icon) => icon !== 'Empty').map((icon) => {
-            return (
-              <Button
-                data-name={icon}
-                sx={{ width: 32, minWidth: 'unset', height: 32 }}
-                variant={
-                  icon === (selectedIcon as string) ? 'contained' : 'outlined'
-                }
-                key={icon}
-                onClick={() => {
-                  setSelectedIcon((preIcon) =>
-                    preIcon === icon ? undefined : icon,
-                  )
-                  setEditNode((prev) => {
-                    return {
-                      ...prev,
-                      data: {
-                        ...prev.data,
-                        icon: prev.data.icon === icon ? undefined : icon,
-                      },
+      {iconSetting && (
+        <Stack spacing={1} pb={1}>
+          <Typography variant={'body1'}>
+            {t(
+              'settings:feature_card__prompts__edit_prompt__field_icon__title',
+            )}
+          </Typography>
+          <Stack
+            flexWrap={'wrap'}
+            gap={1}
+            direction={'row'}
+            alignItems={'center'}
+            sx={{ maxHeight: '72px', overflowY: 'scroll' }}
+          >
+            {CONTEXT_MENU_ICONS.filter((icon) => icon !== 'Empty').map(
+              (icon) => {
+                return (
+                  <Button
+                    data-name={icon}
+                    sx={{ width: 32, minWidth: 'unset', height: 32 }}
+                    variant={
+                      icon === (selectedIcon as string)
+                        ? 'contained'
+                        : 'outlined'
                     }
-                  })
-                }}
-              >
-                <ContextMenuIcon icon={icon} sx={{ fontSize: 20 }} />
-              </Button>
-            )
-          })}
+                    key={icon}
+                    onClick={() => {
+                      setSelectedIcon((preIcon) =>
+                        preIcon === icon ? undefined : icon,
+                      )
+                      setEditNode((prev) => {
+                        return {
+                          ...prev,
+                          data: {
+                            ...prev.data,
+                            icon: prev.data.icon === icon ? undefined : icon,
+                          },
+                        }
+                      })
+                    }}
+                  >
+                    <ContextMenuIcon icon={icon} sx={{ fontSize: 20 }} />
+                  </Button>
+                )
+              },
+            )}
+          </Stack>
         </Stack>
-      </Stack>
+      )}
 
       <AIResponseLanguageEditor
         checked={enabledAIResponseLanguage}

@@ -14,6 +14,7 @@ import ConfigurePanel from './ConfigurePanel'
 import PreviewPanel from './PreviewPanel'
 import PromptPanel from './PromptPanel'
 import TitleBar from './TitleBar'
+import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
 
 const SettingPromptsEditFormModal: FC<{
   iconSetting?: boolean
@@ -33,10 +34,13 @@ const SettingPromptsEditFormModal: FC<{
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        width: 'calc(100% - 112px)',
+        margin: node.data.type === 'shortcuts' ? '56px' : '56px auto',
+        width:
+          node.data.type === 'shortcuts'
+            ? 'calc(100% - 112px)'
+            : SETTINGS_PAGE_CONTENT_WIDTH,
         height: 'calc(100% - 112px)',
         maxWidth: 'auto',
-        margin: '56px',
         borderRadius: 2,
       }}
     >
@@ -49,28 +53,36 @@ const SettingPromptsEditFormModal: FC<{
         <TitleBar />
         <Stack direction="row" flex={1} overflow="hidden">
           <Stack flex={1} overflow="auto" p={2}>
-            <TabBar
-              value={tabIndex}
-              onChange={(_, newValue) => setTabIndex(newValue)}
-            />
+            {node.data.type === 'shortcuts' && (
+              <TabBar
+                value={tabIndex}
+                onChange={(_, newValue) => setTabIndex(newValue)}
+              />
+            )}
             {tabIndex === 0 && (
               <>
-                <ConfigurePanel />
-                <Box mt={2}>
-                  <Button variant="contained" onClick={() => setTabIndex(1)}>
-                    Next: Add prompt
-                  </Button>
-                </Box>
+                <ConfigurePanel iconSetting={iconSetting} />
+                {node.data.type === 'shortcuts' && (
+                  <Box mt={2}>
+                    <Button variant="contained" onClick={() => setTabIndex(1)}>
+                      Next: Add prompt
+                    </Button>
+                  </Box>
+                )}
               </>
             )}
             {tabIndex === 1 && <PromptPanel />}
           </Stack>
-          <Divider orientation="vertical" sx={{ my: 0 }} />
-          <Stack flex={1} overflow="auto">
-            <ChatContextProvider>
-              <PreviewPanel />
-            </ChatContextProvider>
-          </Stack>
+          {node.data.type === 'shortcuts' && (
+            <>
+              <Divider orientation="vertical" sx={{ my: 0 }} />
+              <Stack flex={1} overflow="auto">
+                <ChatContextProvider>
+                  <PreviewPanel />
+                </ChatContextProvider>
+              </Stack>
+            </>
+          )}
         </Stack>
       </SettingPromptsContextProvider>
     </CustomModal>

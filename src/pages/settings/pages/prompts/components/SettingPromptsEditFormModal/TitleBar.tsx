@@ -10,12 +10,11 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { DropdownMenu } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
+import { PRESET_VARIABLES_GROUP_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
 import { specialInputAssistantButtonKeys } from '@/pages/settings/pages/prompts/store'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { PRESET_VARIABLES_GROUP_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
-import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
-import { useSnackbar } from 'notistack'
 import Toast from '@/utils/globalSnackbar'
 
 const DropDownMenuItem: FC<{
@@ -93,7 +92,6 @@ const TitleBar = () => {
     onDelete,
   } = useSettingPromptsContext()
   const { editHTML } = useShortcutEditorActions()
-  const { enqueueSnackbar } = useSnackbar()
 
   const isEditingSpecialButtonKey =
     editButtonKey &&
@@ -158,8 +156,10 @@ const TitleBar = () => {
 
   const handleSave = () => {
     // 先判断template里是否有未使用的必须变量
-    const requiredVariables = Object.values(PRESET_VARIABLES_GROUP_MAP).flatMap(
-      (group) =>
+    if (editNode.data.type === 'shortcuts') {
+      const requiredVariables = Object.values(
+        PRESET_VARIABLES_GROUP_MAP,
+      ).flatMap((group) =>
         group
           .filter(
             ({ permissionKeys = [], requiredInSettingEditor }) =>
@@ -168,22 +168,23 @@ const TitleBar = () => {
               requiredInSettingEditor,
           )
           .map(({ variable }) => variable),
-    )
-    const template = htmlToTemplate(editHTML)
-    for (const variables of requiredVariables) {
-      if (!template.includes(variables.VariableName)) {
-        Toast.error(
-          t('prompt_editor:preset_variables__error_message__title', {
-            VARIABLE_NAME: `{{${variables.VariableName}}}`,
-          }),
-          {
-            anchorOrigin: {
-              vertical: 'top',
-              horizontal: 'center',
+      )
+      const template = htmlToTemplate(editHTML)
+      for (const variables of requiredVariables) {
+        if (!template.includes(variables.VariableName)) {
+          Toast.error(
+            t('prompt_editor:preset_variables__error_message__title', {
+              VARIABLE_NAME: `{{${variables.VariableName}}}`,
+            }),
+            {
+              anchorOrigin: {
+                vertical: 'top',
+                horizontal: 'center',
+              },
             },
-          },
-        )
-        return
+          )
+          return
+        }
       }
     }
     if (editNode.id === '') {

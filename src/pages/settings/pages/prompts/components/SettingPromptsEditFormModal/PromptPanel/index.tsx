@@ -7,6 +7,7 @@ import { useRecoilState } from 'recoil'
 
 import TemplateContentEditor from '@/features/shortcuts/components/ShortcutsActionsEditor/components/TemplateContentEditor'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
+import { PRESET_VARIABLES_GROUP_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import {
   generateVariableHtmlContent,
@@ -26,39 +27,62 @@ const PromptPanel = () => {
     SettingPromptsEditButtonKeyAtom,
   )
 
-  const placeholder = useMemo(() => {
-    switch (settingPromptsEditButtonKey) {
-      // instant reply
-      case 'inputAssistantComposeReplyButton':
-        return t(
-          'settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder',
-        )
+  const editorPlaceholder = useMemo(() => {
+    let placeholder = ''
 
-      // refine draft
-      case 'inputAssistantRefineDraftButton':
-        return t(
-          'settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder',
-        )
-
-      // compose new
-      case 'inputAssistantComposeNewButton':
-        return t(
-          'settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder',
-        )
-
-      // summary
-      case 'sidebarSummaryButton':
-        return t(
-          'settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder',
-        )
-
-      // context menu
-      case 'textSelectPopupButton':
-      default:
-        return t(
-          'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
-        )
+    if (settingPromptsEditButtonKey === 'textSelectPopupButton') {
+      placeholder = t(
+        'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
+      )
+    } else if (
+      settingPromptsEditButtonKey === 'inputAssistantComposeReplyButton'
+    ) {
+      placeholder = t(
+        'settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder',
+      )
+    } else if (
+      settingPromptsEditButtonKey === 'inputAssistantRefineDraftButton'
+    ) {
+      placeholder = t(
+        'settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder',
+      )
+    } else if (
+      settingPromptsEditButtonKey === 'inputAssistantComposeNewButton'
+    ) {
+      placeholder = t(
+        'settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder',
+      )
+    } else if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+      placeholder = t(
+        'settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder',
+      )
     }
+
+    if (placeholder) {
+      const presetVariables =
+        PRESET_VARIABLES_GROUP_MAP[
+          'prompt_editor:preset_variables__system__title'
+        ]
+      presetVariables.forEach(({ variable, permissionKeys = [] }) => {
+        if (
+          permissionKeys.length === 0 ||
+          permissionKeys.includes(settingPromptsEditButtonKey!)
+        ) {
+          placeholder += `\n{{${variable?.label}}}`
+        }
+      })
+
+      if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+        placeholder +=
+          `\n\n` +
+          t(
+            'settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder__example',
+          ) +
+          `\nOutput a summary of the {{PAGE_CONTENT}} on {{CURRENT_WEBPAGE_DOMAIN}}.`
+      }
+    }
+
+    return placeholder
   }, [t, settingPromptsEditButtonKey])
 
   const theme = useCustomTheme()
@@ -124,7 +148,7 @@ const PromptPanel = () => {
       <TemplateContentEditor
         innerRef={inputRef}
         html={editHTML}
-        placeholder={placeholder}
+        placeholder={editorPlaceholder}
         sx={memoSx}
         onChange={(event) => updateEditHTML(event.target.value)}
         onMouseUp={(event) => {

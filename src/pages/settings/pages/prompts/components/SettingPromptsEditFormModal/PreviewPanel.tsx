@@ -19,7 +19,7 @@ import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/compone
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const PreviewPanel = () => {
-  const { t } = useTranslation(['client'])
+  const { t } = useTranslation(['client', 'prompt_editor'])
   const { editNode, generatePreviewActions } = useSettingPromptsContext()
 
   const title = editNode?.text
@@ -98,7 +98,7 @@ const PreviewPanel = () => {
             t.palette.mode === 'dark' ? '#fff' : 'rgba(0, 0, 0, 0.38)',
         }}
       >
-        Preview
+        {t('prompt_editor:preview_panel__title')}
       </Typography>
 
       {currentConversationId && clientConversationMessages.length > 0 ? (

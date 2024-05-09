@@ -297,6 +297,7 @@ const useSidebarSettings = () => {
             type: 'Search',
             title: 'AI-powered search',
             meta: baseMetaConfig,
+            // meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
           } as Partial<IChatConversation>,
         },
       })

@@ -221,8 +221,9 @@ const useSearchWithAI = () => {
           await askAIWIthShortcuts(searchActions)
         } catch (err) {
           console.error(err)
+        } finally {
+          isFetchingRef.current = false
         }
-        isFetchingRef.current = false
       }
     },
     [askAIWIthShortcuts, clientConversation],

@@ -4,20 +4,15 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { DropdownMenu } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
-import {
-  SettingPromptsEditButtonKeyAtom,
-  specialInputAssistantButtonKeys,
-} from '@/pages/settings/pages/prompts/store'
-import cloneDeep from 'lodash-es/cloneDeep'
+import { specialInputAssistantButtonKeys } from '@/pages/settings/pages/prompts/store'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { IContextMenuItem } from '@/features/contextMenu/types'
 
 const DropDownMenuItem: FC<{
   label: string
@@ -84,16 +79,20 @@ const DropDownMenuItem: FC<{
 const TitleBar = () => {
   const { t } = useTranslation(['settings', 'common'])
 
-  const { node, editNode, selectedIcon, onSave, onCancel, onDelete } =
-    useSettingPromptsContext()
-  const { editHTML, generateActions } = useShortcutEditorActions()
-  const [settingPromptsEditButtonKey] = useRecoilState(
-    SettingPromptsEditButtonKeyAtom,
-  )
+  const {
+    node,
+    editNode,
+    editButtonKey,
+    generateSaveActions,
+    onSave,
+    onCancel,
+    onDelete,
+  } = useSettingPromptsContext()
+  const { editHTML } = useShortcutEditorActions()
 
   const isEditingSpecialButtonKey =
-    settingPromptsEditButtonKey &&
-    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey) &&
+    editButtonKey &&
+    specialInputAssistantButtonKeys.includes(editButtonKey) &&
     false
 
   const isDisabled = !editNode.data.editable
@@ -146,7 +145,7 @@ const TitleBar = () => {
     return disabledSave
   }, [
     isDisabled,
-    settingPromptsEditButtonKey,
+    editButtonKey,
     editNode.text,
     editNode.data.visibility,
     editHTML,
@@ -156,28 +155,7 @@ const TitleBar = () => {
     if (editNode.id === '') {
       editNode.id = v4()
     }
-    const actions = generateActions(
-      editNode.text,
-      settingPromptsEditButtonKey === 'sidebarSummaryButton',
-    )
-    // Summary custom prompts 需要特殊处理，将输出端转成 AI
-    if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
-      const askChatGPTAction = actions.find(
-        (action) => action.type === 'ASK_CHATGPT',
-      )
-      if (askChatGPTAction) {
-        const originalData = cloneDeep(editNode)
-        delete originalData.data.actions
-        askChatGPTAction.parameters.AskChatGPTActionQuestion = {
-          meta: {
-            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-            contextMenu: originalData,
-          },
-          text: askChatGPTAction.parameters.template || '',
-        }
-        askChatGPTAction.parameters.AskChatGPTActionType = 'ASK_CHAT_GPT_HIDDEN'
-      }
-    }
+    const actions = generateSaveActions()
     onSave?.(
       mergeWithObject([
         editNode,
@@ -244,7 +222,7 @@ const TitleBar = () => {
           <DropDownMenuItem
             label={t('common:delete')}
             color="error"
-            onClick={() => onDelete(editNode.id)}
+            onClick={() => onDelete?.(editNode.id)}
           />
         )}
       </DropdownMenu>

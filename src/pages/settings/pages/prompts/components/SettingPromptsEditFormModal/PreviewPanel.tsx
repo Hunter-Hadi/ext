@@ -20,19 +20,19 @@ import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const PreviewPanel = () => {
   const { t } = useTranslation(['settings', 'common', 'client'])
-  const { editNode } = useSettingPromptsContext()
+  const { editNode, generatePreviewActions } = useSettingPromptsContext()
 
   const title = editNode?.text
 
-  const { generateActions, editHTML, variables } = useShortcutEditorActions()
+  const { editHTML, variables } = useShortcutEditorActions()
 
   const template = useMemo(() => htmlToTemplate(editHTML), [editHTML])
 
-  const generateActionsRef = useRef(generateActions)
-  generateActionsRef.current = generateActions
+  const generateActionsRef = useRef(generatePreviewActions)
+  generateActionsRef.current = generatePreviewActions
 
   const actions = useMemo(() => {
-    return generateActionsRef.current(editNode?.text)
+    return generateActionsRef.current()
   }, [editNode?.text, template, variables])
 
   const config = useMemo(() => {
@@ -169,12 +169,6 @@ const PreviewPanel = () => {
             showCloseButton={false}
             isSaveLastRunShortcuts={false}
             {...config}
-            systemVariables={config.systemVariables?.map((item) => {
-              if (item.valueType === 'Text') {
-                return { ...item, defaultValue: '' }
-              }
-              return item
-            })}
             modelKey="PromptPreview"
             title={title}
             template={template}

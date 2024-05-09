@@ -36,6 +36,12 @@ export type IPresetVariablesGroupItem = {
   examples: I18nextKeysType[]
   // 限制 System variables 在哪些场景下可用
   permissionKeys?: IChromeExtensionButtonSettingKey[]
+  // 限制 System variables 在编辑预览的时候是否出现在variable表单里
+  showInPreviewEditor?: boolean
+  // 限制 System variables 在编辑预览的时候的默认值
+  previewEditorDefaultValue?: string
+  // 编辑必须选择项
+  requiredInSettingEditor?: boolean
 }
 
 export const PRESET_VARIABLE_MAP: {
@@ -137,6 +143,7 @@ export const PRESET_VARIABLE_MAP: {
     systemVariable: true,
     valueType: 'Text',
     label: 'FULL_CONTEXT',
+    placeholder: 'Full context',
   },
   TARGET_CONTEXT: {
     VariableName: 'TARGET_CONTEXT',
@@ -144,6 +151,7 @@ export const PRESET_VARIABLE_MAP: {
     systemVariable: true,
     valueType: 'Text',
     label: 'TARGET_CONTEXT',
+    placeholder: 'Target context',
   },
   DRAFT_CONTEXT: {
     VariableName: 'DRAFT_CONTEXT',
@@ -151,6 +159,7 @@ export const PRESET_VARIABLE_MAP: {
     systemVariable: true,
     valueType: 'Text',
     label: 'DRAFT_CONTEXT',
+    placeholder: 'Draft context',
   },
   SUMMARY_PAGE_CONTENT_REPRESENTATION: {
     VariableName: 'SUMMARY_PAGE_CONTENT_REPRESENTATION',
@@ -158,6 +167,7 @@ export const PRESET_VARIABLE_MAP: {
     systemVariable: true,
     valueType: 'Text',
     label: 'PAGE_CONTENT',
+    placeholder: 'Page content',
   },
 }
 
@@ -174,6 +184,8 @@ export const PRESET_VARIABLES_GROUP_MAP: {
         'prompt_editor:preset_variables__system__selected_text__description__example2',
       ],
       permissionKeys: ['textSelectPopupButton'],
+      showInPreviewEditor: true,
+      previewEditorDefaultValue: ''
     },
     {
       variable: PRESET_VARIABLE_MAP.CURRENT_WEBSITE_DOMAIN,
@@ -196,6 +208,8 @@ export const PRESET_VARIABLES_GROUP_MAP: {
         'prompt_editor:preset_variables__system__full_context__description',
       examples: [],
       permissionKeys: ['inputAssistantComposeReplyButton'],
+      showInPreviewEditor: true,
+      previewEditorDefaultValue: ''
     },
     {
       variable: PRESET_VARIABLE_MAP.TARGET_CONTEXT,
@@ -203,6 +217,9 @@ export const PRESET_VARIABLES_GROUP_MAP: {
         'prompt_editor:preset_variables__system__target_context__description',
       examples: [],
       permissionKeys: ['inputAssistantComposeReplyButton'],
+      showInPreviewEditor: true,
+      previewEditorDefaultValue: '',
+      requiredInSettingEditor: true,
     },
     {
       variable: PRESET_VARIABLE_MAP.DRAFT_CONTEXT,
@@ -210,6 +227,8 @@ export const PRESET_VARIABLES_GROUP_MAP: {
         'prompt_editor:preset_variables__system__draft_context__description',
       examples: [],
       permissionKeys: ['inputAssistantRefineDraftButton'],
+      showInPreviewEditor: true,
+      previewEditorDefaultValue: ''
     },
     {
       variable: PRESET_VARIABLE_MAP.SUMMARY_PAGE_CONTENT_REPRESENTATION,
@@ -219,6 +238,9 @@ export const PRESET_VARIABLES_GROUP_MAP: {
         'prompt_editor:preset_variables__system__summary_page_content_representation__description__example1',
       ],
       permissionKeys: ['sidebarSummaryButton'],
+      showInPreviewEditor: true,
+      previewEditorDefaultValue: '',
+      requiredInSettingEditor: true,
     },
   ],
   // 'prompt_editor:preset_variables__web_search__title': [

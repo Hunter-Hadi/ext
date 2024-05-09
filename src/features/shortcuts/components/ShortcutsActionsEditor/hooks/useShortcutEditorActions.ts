@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import {
+  IPresetActionSetVariable,
   IPresetVariableName,
   PRESET_VARIABLE_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
@@ -132,9 +133,17 @@ const useShortcutEditorActions = () => {
       }
     })
   }
+
+  /**
+   * @since 2024-05-09
+   * 添加一个overrideSystemVariables参数，用于生成actions的时候把某些变量强制设置成systemVariables
+   * 并设置对应的默认值，比如preview的时候有些变量需要在表单内出现并设置的场景
+   * 后续prompt preview编辑器更改后可以考虑移除此参数
+   */
   const generateActions = (
     title: string,
     isOriginalMessage: boolean = false,
+    overrideSystemVariables: IPresetActionSetVariable[] = [],
   ): ISetActionsType => {
     const { editHTML, variables } = shortcutActionEditor
     const template = htmlToTemplate(editHTML)
@@ -171,6 +180,28 @@ const useShortcutEditorActions = () => {
     ) {
       systemVariables.push(PRESET_VARIABLE_MAP.WEB_SEARCH_QUERY)
     }
+    // 需要强制设置成系统变量
+    overrideSystemVariables.forEach((overrideItem) => {
+      if (
+        variableMap.get(overrideItem.VariableName) &&
+        PRESET_VARIABLE_MAP[overrideItem.VariableName]
+      ) {
+        const hasIndex = systemVariables.findIndex(
+          (item) => item.VariableName === overrideItem.VariableName,
+        )
+        if (hasIndex > -1) {
+          systemVariables[hasIndex] = {
+            ...systemVariables[hasIndex],
+            ...overrideItem,
+          }
+        } else {
+          systemVariables.push({
+            ...PRESET_VARIABLE_MAP[overrideItem.VariableName],
+            ...overrideItem,
+          })
+        }
+      }
+    })
     // 执行一些需要运行的操作：Current Date, live crawling、web search
     // 24.04.07: 新增 FULL_CONTEXT, TARGET_CONTEXT, DRAFT_CONTEXT
     const specialActions: ISetActionsType = []
@@ -387,7 +418,7 @@ const useShortcutEditorActions = () => {
         specialActions.push(...getContextActions)
       }
     }
-
+    // 获取summary内容
     if (variableMap.get('SUMMARY_PAGE_CONTENT_REPRESENTATION')) {
       const {
         VariableName: key,
@@ -408,7 +439,6 @@ const useShortcutEditorActions = () => {
         },
       })
     }
-    debugger
     if (
       customVariables.length > 0 ||
       systemVariables.filter(

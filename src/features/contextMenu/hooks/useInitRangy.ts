@@ -19,6 +19,7 @@ import {
   FloatingDropdownMenuState,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
+import { InstantReplyButtonIdToInputMap } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
 import {
   ContextMenuDraftType,
   ISelectionElement,
@@ -493,6 +494,7 @@ const useInitRangy = () => {
       'INSERT_ABOVE',
       'DISCARD',
       'COPY',
+      'ACCEPT',
     ]
     const selectedDraftContextMenuType = getDraftContextMenuTypeById(
       floatingDropdownMenuSystemItems.selectedDraftContextMenuId || '',
@@ -567,6 +569,26 @@ const useInitRangy = () => {
         break
       case 'ACCEPT':
         {
+          try {
+            const instantReplyButtonId =
+              currentSelectionRefElement.current?.target?.getAttribute(
+                'maxai-input-assistant-button-id',
+              )
+            if (instantReplyButtonId) {
+              const inputBox =
+                InstantReplyButtonIdToInputMap.get(instantReplyButtonId)
+              if (inputBox) {
+                if (inputBox.contentEditable) {
+                  inputBox.innerHTML = lastOutputRef.current
+                } else {
+                  // eslint-disable-next-line no-extra-semi
+                  ;(inputBox as HTMLInputElement).value = lastOutputRef.current
+                }
+              }
+            }
+          } catch (err) {
+            console.error(err)
+          }
         }
         break
       case 'COPY':

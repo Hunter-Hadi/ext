@@ -13,6 +13,7 @@ import {
 import {
   type IInputAssistantButtonObserverData,
   InputAssistantButtonElementRouteMap,
+  InstantReplyButtonIdToInputMap,
 } from './InputAssistantButtonManager'
 
 export interface IInputAssistantButton {
@@ -158,13 +159,24 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               findSelectorParent('.amn .ams.bkI', inputAssistantButton) ||
               findSelectorParent('.amn .ams.bkH', inputAssistantButton)
 
-            replyButton?.click()
-
-            // Need to figure: Opening sidebar will seize the focus
-            // setTimeout(() => {
-            //   const replyTextarea = findSelectorParent('div[contenteditable="true"]', inputAssistantButton)
-            //   replyTextarea?.focus();
-            // })
+            if (replyButton) {
+              const emailItem = findSelectorParent(
+                'div[role="list"] div[role="listitem"] > div > div > div > [id]',
+                replyButton,
+                12,
+              )
+              if (emailItem) {
+                setTimeout(() => {
+                  const inputBox = emailItem.querySelector<HTMLElement>(
+                    'div[contenteditable="true"]',
+                  )
+                  if (inputBox) {
+                    InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+                  }
+                }, 100)
+              }
+              replyButton.click()
+            }
           }
         },
         displayText: (t) =>

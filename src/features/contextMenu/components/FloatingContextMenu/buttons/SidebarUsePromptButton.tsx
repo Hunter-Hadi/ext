@@ -20,6 +20,7 @@ import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { useContextMenuList } from '@/features/contextMenu'
 import {
@@ -60,6 +61,7 @@ const SidebarUsePromptButton: FC<{
     setSidebarUsePromptSelectContextMenu,
   ] = useRecoilState(SidebarUsePromptSelectContextMenuState(buttonId.current))
   const { askAIWIthShortcuts } = useClientChat()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const [root, setRoot] = React.useState<HTMLElement | null>(null)
   const testid = 'max-ai__actions__button--use-prompt'
   const [open, setOpen] = useState(false)
@@ -146,7 +148,10 @@ const SidebarUsePromptButton: FC<{
                 sx={sx}
                 data-testid={testid}
                 className={className}
-                onClick={() => setOpen(!open)}
+                disabled={smoothConversationLoading}
+                onClick={() => {
+                  setOpen(!open)
+                }}
               >
                 <UseChatGptIcon
                   sx={{
@@ -170,7 +175,10 @@ const SidebarUsePromptButton: FC<{
                   }}
                   data-testid={testid}
                   className={className}
-                  onClick={() => setOpen(!open)}
+                  disabled={smoothConversationLoading}
+                  onClick={() => {
+                    setOpen(!open)
+                  }}
                 >
                   <UseChatGptIcon
                     sx={{

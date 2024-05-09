@@ -113,7 +113,9 @@ export const focusContextWindowInput = () => {
     `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
   ) as HTMLTextAreaElement
   if (textareaEl) {
-    textareaEl.focus()
+    // NOTE: !!!下方千万不能直接focus，否则会导致floating ui初始化的时候直接滚动到顶部
+    // https://github.com/floating-ui/floating-ui/issues/2752
+    // textareaEl.focus()
     setTimeout(() => {
       textareaEl?.focus()
     }, 1)

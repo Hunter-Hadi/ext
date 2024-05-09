@@ -451,6 +451,20 @@ export const findFirstTierMenuHeight = (menuList: IContextMenuItem[] = []) => {
 }
 
 /**
+ * absolute 定位用的
+ */
+// class FloatingUIMiddlewareCache {
+//   private cache: Record<string, any> = {}
+//   get(key: string) {
+//     return this.cache[key]
+//   }
+//   set(key: string, value: any) {
+//     this.cache[key] = value
+//   }
+// }
+// const floatingUIMiddlewareCache = new FloatingUIMiddlewareCache()
+
+/**
  * @description: floating ui的middleware
  */
 export const getFloatingContextMenuMiddleware = (
@@ -465,32 +479,28 @@ export const getFloatingContextMenuMiddleware = (
     return {
       name: 'customMiddleware',
       fn: (state) => {
-        const windowRect = document.documentElement.getBoundingClientRect()
-        const rect = state.rects.floating
-        const maxX = windowRect.width - rect.width
-        const maxY = windowRect.height - rect.height
-        const minX = 0
-        const minY = 0
-        const currentX =
-          state.x +
+        const offsetX = state.middlewareData.offset?.x || 8
+        const offsetY = state.middlewareData.offset?.y || 8
+        const minX = offsetX
+        const minY = offsetY
+        const maxX =
+          document.documentElement.clientWidth -
+          state.elements.floating.offsetWidth -
+          offsetX
+        const maxY =
+          document.documentElement.clientHeight -
+          state.elements.floating.offsetHeight -
+          offsetY
+        const dragX =
           referenceElementDragOffsetRef.current.x +
           referenceElementDragOffsetRef.current.prevX
-        const currentY =
-          state.y +
+        const dragY =
           referenceElementDragOffsetRef.current.y +
           referenceElementDragOffsetRef.current.prevY
+        const currentX = state.x + dragX
+        const currentY = state.y + dragY
         const x = Math.min(Math.max(currentX, minX), maxX)
         const y = Math.min(Math.max(currentY, minY), maxY)
-        // console.log(
-        //   `[ContextWindow]: customMiddleware`,
-        //   '\n',
-        //   x,
-        //   y,
-        //   '\n',
-        //   currentX,
-        //   currentY,
-        // )
-
         return {
           x,
           y,
@@ -498,6 +508,87 @@ export const getFloatingContextMenuMiddleware = (
             rects: true,
           },
         }
+        // absolute 定位用的
+        //   const cachePosition = floatingUIMiddlewareCache.get(
+        //     'statePosition',
+        //   ) || { x: 0, y: 0 }
+        //   // 因为state.x和state.y是基于滚动位置计算的，所以这里要计算真实的scrollTop和scrollLeft
+        //   const floatingElementRect =
+        //     state.elements.floating.getBoundingClientRect()
+        //   if (cachePosition.x !== state.x || cachePosition.y !== state.y) {
+        //     if (
+        //       floatingElementRect.width + floatingElementRect.height > 0 &&
+        //       floatingElementRect.left !== 0 &&
+        //       floatingElementRect.top !== 0
+        //     ) {
+        //       // 更新缓存
+        //       floatingUIMiddlewareCache.set('statePosition', {
+        //         x: state.x,
+        //         y: state.y,
+        //         scrollTop: state.y - floatingElementRect.top,
+        //         scrollLeft: state.x - floatingElementRect.left,
+        //       })
+        //     }
+        //   }
+        //   if (!floatingUIMiddlewareCache.get('statePosition')) {
+        //     return state
+        //   }
+        //   const currentPosition = floatingUIMiddlewareCache.get('statePosition')
+        //   const scrollTop = currentPosition.scrollTop || 0
+        //   const scrollLeft = currentPosition.scrollLeft || 0
+        //   const dragX =
+        //     referenceElementDragOffsetRef.current.x +
+        //     referenceElementDragOffsetRef.current.prevX
+        //   const dragY =
+        //     referenceElementDragOffsetRef.current.y +
+        //     referenceElementDragOffsetRef.current.prevY
+        //   const minX = offsetX
+        //   const minY = offsetY
+        //   // 最大Y值 = 页面高度 + 滚动高度 - 拖拽Y值 - 当前Y值 - 浮动框高度
+        //   const maxY =
+        //     document.documentElement.clientHeight +
+        //     scrollTop -
+        //     state.elements.floating.offsetHeight -
+        //     offsetY
+        //   // 最大X值 = 页面宽度 + 滚动宽度 - 拖拽X值 - 当前X值 - 浮动框宽度
+        //   const maxX =
+        //     document.documentElement.clientWidth +
+        //     scrollLeft -
+        //     state.elements.floating.offsetWidth -
+        //     offsetX
+        //   const currentX = state.x + dragX
+        //   const currentY = state.y + dragY
+        //   const x = Math.min(Math.max(currentX, minX), maxX)
+        //   const y = Math.min(Math.max(currentY, minY), maxY)
+        //   console.log(
+        //     `[ContextWindow] customMiddleware offset [${offsetX}, ${offsetY}]`,
+        //     '\n',
+        //     `currentPosition: [${currentPosition.x}, ${currentPosition.y}, ${currentPosition.scrollLeft}, ${currentPosition.scrollTop}]`,
+        //     '\n',
+        //     `floatingElementRect: ${floatingElementRect.left}, ${floatingElementRect.top}`,
+        //     '\n',
+        //     `scroll: ${scrollLeft}, ${scrollTop}`,
+        //     '\n',
+        //     `client: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}`,
+        //     '\n',
+        //     `state: ${state.x}, ${state.y}`,
+        //     '\n',
+        //     `drag: ${dragX}, ${dragY}`,
+        //     '\n',
+        //     `min: ${minX}, ${minY}`,
+        //     '\n',
+        //     `max: ${maxX}, ${maxY}`,
+        //     '\n',
+        //     `result: ${x}, ${y}`,
+        //   )
+        //   return {
+        //     x,
+        //     y,
+        //     reset: {
+        //       rects: true,
+        //     },
+        //   }
+        // },
       },
     }
   }

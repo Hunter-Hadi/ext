@@ -11,7 +11,7 @@ export interface ITooltipIconButton extends Omit<IconButtonProps, 'title'> {
   title: React.ReactNode | string
   placement?: TextOnlyTooltipProps['placement']
   TooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
-  PopperProps?: PopperProps;
+  PopperProps?: Omit<PopperProps, 'open'> & { open?: boolean } // fix type error
   loading?: boolean
 }
 const TooltipIconButton: FC<ITooltipIconButton> = (props) => {

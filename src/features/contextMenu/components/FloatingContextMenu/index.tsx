@@ -144,6 +144,7 @@ const FloatingContextMenu: FC<{
   })
   const { x, y, strategy, refs, context, update } = useFloating({
     open: floatingDropdownMenu.open,
+    strategy: 'fixed',
     onOpenChange: (open, event, reason) => {
       if (reason === 'outside-press' || reason === 'escape-key') {
         if (isGlobalVideoPopupOpen()) {

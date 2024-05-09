@@ -124,7 +124,7 @@ const SidebarPromotionDialog = () => {
 
   return (
     <Dialog
-      open={true}
+      open={open}
       disableScrollLock={true}
       onClose={(e, reason) => {
         if (reason === 'backdropClick') return // 点击背景不关闭，防止用户看不到弹窗

@@ -22,7 +22,7 @@ import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
+  [`& > .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.mode === 'dark' ? '#393743' : '#ffffff',
     borderLeft: '4px solid #9065B0',
     color: 'rgba(0, 0, 0, 0.87)',
@@ -55,9 +55,7 @@ const SidebarUserMessageContexts: FC<{
   const renderShortContent = useMemo(() => {
     return contexts?.[0]?.value?.slice(0, 500).trim() || ''
   }, [contexts])
-  if (!attachments.length && !contexts?.length) {
-    return null
-  }
+
   const extractedContentAttachments = attachments.filter(
     (attachment) => attachment.extractedContent,
   )
@@ -74,6 +72,9 @@ const SidebarUserMessageContexts: FC<{
       }
     }
   }, [open])
+  if (!attachments.length && !contexts?.length) {
+    return null
+  }
 
   return (
     <Stack
@@ -233,6 +234,9 @@ const SidebarUserMessageContexts: FC<{
                             }}
                           />
                           <CopyTooltipIconButton
+                            PopperProps={{
+                              disablePortal: true,
+                            }}
                             copyText={context.value?.trim() ?? ''}
                           />
                         </Stack>

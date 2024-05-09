@@ -7,7 +7,13 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'gemini-pro',
     maxTokens: 32768,
-    tags: ['Beta', 'Vision'],
+    tags: (currentConversationType) => {
+      const tags = ['Beta']
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
     poweredBy: 'Google',
     description: (t) =>
       t(`client:provider__gemini__model__gemini_pro__description`),
@@ -22,7 +28,13 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'gemini-1.5-pro',
     maxTokens: 1000 * 1000,
-    tags: ['Beta', 'Vision'],
+    tags: (currentConversationType) => {
+      const tags = ['Beta']
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
     poweredBy: 'Google',
     description: (t) =>
       t(`client:provider__gemini__model__gemini_1_5_pro__description`),

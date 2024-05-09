@@ -29,13 +29,13 @@ import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/Si
 import SidebarHomeView from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import {
   clientRestartChromeExtension,
   getMaxAISidebarRootElement,
 } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import { ISidebarConversationType } from '@/features/sidebar/types'
 
 interface IGmailChatBoxProps {
   sx?: SxProps
@@ -164,8 +164,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           // 这么做条件渲染是为了，让点击事件在 isShowChatBoxHomeView 为 false 时，可以正常执行
           !isShowChatBoxHomeView
             ? {
-                display: 'none',
-              }
+              display: 'none',
+            }
             : null
         }
       />
@@ -191,7 +191,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         minHeight={170}
         spacing={1}
         flexShrink={0}
-        // bgcolor={'#fff'}
+      // bgcolor={'#fff'}
       >
         <Stack
           maxWidth={isInImmersiveChat ? '768px' : 'initial'}
@@ -244,7 +244,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   variant={'normalOutlined'}
                   disabled={loading}
                   onClick={() => {
-                    onReGenerate && onReGenerate()
+                    onReGenerate?.()
                   }}
                   sx={shortcutsActionBtnSxMemo}
                   data-testid="sidebar_actions__regenerate"
@@ -281,7 +281,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 variant={'normalOutlined'}
                 startIcon={<StopOutlinedIcon />}
                 onClick={() => {
-                  onStopGenerate && onStopGenerate()
+                  onStopGenerate?.()
                 }}
                 data-testid="sidebar_actions__stop_generating"
               >

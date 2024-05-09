@@ -1,5 +1,5 @@
 /**
- * 单页面应用下 react root 的 守护进程
+ * 单页面应用下 root 的 守护进程
  *
  * 1. 确保在 root 被移除后，能够重新创建 root
  * 2. 确保在 root 被移除后，react 组件中的副作用能正确移除
@@ -8,7 +8,7 @@
 import { Root } from 'react-dom/client'
 
 interface ISPARootProtectorProps {
-  // shadowRoot 的 id
+  // 需要监听的 root element id
   rootId: string
 
   // react root, 一般为 createRoot 的返回值
@@ -42,10 +42,9 @@ class SPARootProtector {
       }
 
       for (const mutation of mutationsList) {
-        if (mutation.type === 'childList') {
+        if (mutation.type === 'childList' && mutation.removedNodes.length > 0) {
           mutation.removedNodes.forEach((node) => {
             const element = node as HTMLElement
-
             const removedRootIndex = this.protectedRootList.findIndex(
               (item) => item.rootId === element.id,
             )
@@ -62,6 +61,22 @@ class SPARootProtector {
               removeRootObj.renderFn()
             }
           })
+        } else {
+          // 如果 mutation.removedNodes 小于0，也需要去判断下 保护进程中的 root element 是否存在
+          for (let i = 0; i < this.protectedRootList.length; i++) {
+            const protectedRootObj = this.protectedRootList[i]
+            const protectedRoot = document.getElementById(
+              protectedRootObj.rootId,
+            )
+            // 不存在的话，重新创建
+            if (!protectedRoot) {
+              protectedRootObj.reactRoot && protectedRootObj.reactRoot.unmount()
+              this.removeProtectedRoot(protectedRootObj.rootId)
+              protectedRootObj.renderFn()
+            } else {
+              continue
+            }
+          }
         }
       }
     })

@@ -211,7 +211,6 @@ const useSearchWithAI = () => {
 
   const runSearchActions = useCallback(
     async (searchActions: ISetActionsType) => {
-      // 等到了Search板块再开始请求
       if (
         searchActions.length > 0 &&
         !isFetchingRef.current &&
@@ -230,9 +229,16 @@ const useSearchWithAI = () => {
   )
 
   useEffect(() => {
-    runSearchActions(waitRunActions).finally(() => {
-      setWaitRunActions([])
-    })
+    // 等到了Search板块再开始请求
+    if (
+      waitRunActions.length > 0 &&
+      !isFetchingRef.current &&
+      clientConversation?.type === 'Search'
+    ) {
+      runSearchActions(waitRunActions).finally(() => {
+        setWaitRunActions([])
+      })
+    }
   }, [askAIWIthShortcuts, clientConversation, waitRunActions])
 
   return {

@@ -114,8 +114,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
           borderRadius: '4px',
           bgcolor: (t) =>
             t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
-          color:
-            isActived ? '#fff' : 'primary.main',
+          color: (t) => t.palette.mode === 'dark' && isActived ? '#FFF' : 'primary.main',
         }}
       >
         <Typography
@@ -152,8 +151,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
               borderRadius: '4px',
               bgcolor: (t) =>
                 t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
-              color:
-                isActived ? '#fff' : 'primary.main',
+              color: (t) => t.palette.mode === 'dark' && isActived ? '#FFF' : 'primary.main',
             }}
           >
             <Typography

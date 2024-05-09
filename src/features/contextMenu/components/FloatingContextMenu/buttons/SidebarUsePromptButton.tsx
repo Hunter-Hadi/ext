@@ -26,6 +26,7 @@ import {
   DropdownMenu,
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
+import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
@@ -260,7 +261,15 @@ const RenderDropdownItem: FC<{
   const setSelectContextMenu = useSetRecoilState(
     SidebarUsePromptSelectContextMenuState(buttonId),
   )
-
+  const { t } = useTranslation(['prompt'])
+  const menuLabel = useMemo(() => {
+    const id = menuItem.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
+    const key: any = `prompt:${id}`
+    if (t(key) !== id) {
+      return t(key)
+    }
+    return menuItem.text
+  }, [menuItem.text, t])
   if (menuItem.data.type === 'group') {
     if (deep === 0) {
       if (index > 0) {
@@ -288,7 +297,7 @@ const RenderDropdownItem: FC<{
           }}
         >
           <Typography textAlign={'left'} fontSize={12} color={'text.secondary'}>
-            {menuItem.text}
+            {menuLabel}
           </Typography>
         </Box>,
       )
@@ -338,7 +347,7 @@ const RenderDropdownItem: FC<{
   return (
     <LiteDropdownMenuItem
       icon={menuItem.data.icon}
-      label={menuItem.text}
+      label={menuLabel}
       onClick={() => {
         setSelectContextMenu(menuItem)
       }}

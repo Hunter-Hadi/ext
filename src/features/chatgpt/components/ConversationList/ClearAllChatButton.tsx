@@ -13,9 +13,9 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ClearAllChatButtonMoreActions from '@/features/chatgpt/components/ConversationList/ClearAllChatButtonMoreActions'
 import { clientRemoveConversationsByType } from '@/features/chatgpt/utils/chatConversationUtils'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface IProps {
   variant?: 'icon' | 'buttonText'
@@ -107,6 +107,9 @@ const ClearAllChatButton: FC<IProps> = (props) => {
 
       {variant === 'icon' && (
         <TextOnlyTooltip
+          PopperProps={{
+            disablePortal: true,
+          }}
           floatingMenuTooltip={currentSidebarConversationType === 'ContextMenu'}
           placement={'top'}
           title={currentDeleteAllButtonTitle}

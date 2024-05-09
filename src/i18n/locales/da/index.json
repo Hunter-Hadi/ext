@@ -57,7 +57,8 @@
     "team_plan": "Holdplan",
     "manage_my_plan": "Administrer min plan",
     "watch_video": "Se video",
-    "input_content": "Indtast indhold"
+    "input_content": "Indtast indhold",
+    "discard": "Fjern"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Lad AI generere personlige beskedbesvarelser for dig på få sekunder med bare et klik på WhatsApp, Discord, Telegram, Messenger og Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Skab AI-kunst og billeder",
     "sidebar__promotion_dialog__content_item5__description": "Omdan hurtigt dine visioner til fantastiske billeder. Enkelt, kraftfuldt, transformerende.",
-    "sidebar__promotion_dialog__cta_button": "Opgrader nu - Lås op for alle funktioner",
+    "sidebar__promotion_dialog__cta_button": "Begrænset tids tilbud: Få 53% RABAT nu!",
     "provider__bard_web_app__model__gemini__description": "Den mest avancerede model af Google.",
     "translation_advanced__title": "Oversættelsesindstillinger",
     "translation_advanced__source_lang_select__label": "Kildesprog",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler, AI-opsummeringer, AI-søgninger og øjeblikkelige svar.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mine egne prompts",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Tilføj mit eget prompt",
-    "sidebar__summary__advanced__title": "Avancerede opsummeringsindstillinger"
+    "sidebar__summary__advanced__title": "Avancerede opsummeringsindstillinger",
+    "floating_menu__discard_changes_card__ai_response__title": "Vil du forkaste AI-svaret?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vil du forkaste dit udkast?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

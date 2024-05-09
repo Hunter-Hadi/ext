@@ -57,7 +57,8 @@
     "team_plan": "תוכנית צוות",
     "manage_my_plan": "ניהול התוכנית שלי",
     "watch_video": "צפה בסרטון",
-    "input_content": "תוכן הקלט"
+    "input_content": "תוכן הקלט",
+    "discard": "התעלם"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "תן לבינה מלאכותית ליצור תשובות אישיות בשניות עם לחיצה אחת ב-WhatsApp, Discord, Telegram, Messenger ו-Slack.",
     "sidebar__promotion_dialog__content_item5__title": "יצירת אמנות ותמונות באמצעות AI",
     "sidebar__promotion_dialog__content_item5__description": "הפיכת חזונותיך לתמונות מרהיבות במהירות. פשוט, עוצמתי, מהפכני.",
-    "sidebar__promotion_dialog__cta_button": "שדרג עכשיו - הפעל את כל התכונות",
+    "sidebar__promotion_dialog__cta_button": "הצעת זמן מוגבל: השתמש ב-53% הנחה עכשיו!",
     "provider__bard_web_app__model__gemini__description": "הדגם המתקדם ביותר של גוגל.",
     "translation_advanced__title": "הגדרות תרגום",
     "translation_advanced__source_lang_select__label": "שפת מקור",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "GPT-4 של OpenAI, מותאם למהירות ויעילות, מתבלט ביישור זמן ותשובות יציבות ביישור זמן ופלט עקבי.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "הצעות שלי",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "הוסף הצעה שלי",
-    "sidebar__summary__advanced__title": "אפשרויות סיכום מתקדמות"
+    "sidebar__summary__advanced__title": "אפשרויות סיכום מתקדמות",
+    "floating_menu__discard_changes_card__ai_response__title": "האם ברצונך לבטל את תגובת המודעה המלאכותית?",
+    "floating_menu__discard_changes_card__your_draft__title": "האם ברצונך לבטל את הטיוטה שלך?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

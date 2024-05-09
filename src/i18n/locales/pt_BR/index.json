@@ -57,7 +57,8 @@
     "team_plan": "Plano de equipe",
     "manage_my_plan": "Gerenciar meu plano",
     "watch_video": "Assistir vídeo",
-    "input_content": "Conteúdo de entrada"
+    "input_content": "Conteúdo de entrada",
+    "discard": "Descartar"
   },
   "settings": {
     "left_menu__me": "Eu e MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Deixe a IA gerar respostas personalizadas para você em segundos com apenas um clique no WhatsApp, Discord, Telegram, Messenger e Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Crie arte e imagens com IA",
     "sidebar__promotion_dialog__content_item5__description": "Transforme rapidamente suas visões em imagens deslumbrantes. Simples, poderoso, transformador.",
-    "sidebar__promotion_dialog__cta_button": "Atualize agora - Desbloqueie todos os recursos",
+    "sidebar__promotion_dialog__cta_button": "Oferta por tempo limitado: Aproveite 53% DE DESCONTO agora!",
     "provider__bard_web_app__model__gemini__description": "O modelo mais avançado do Google.",
     "translation_advanced__title": "Configurações de tradução",
     "translation_advanced__source_lang_select__label": "Idioma de origem",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "O MaxAI Elite oferece consultas de IA ilimitadas, resumos de IA, pesquisas de IA e respostas instantâneas.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Minhas próprias sugestões",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adicionar minha própria sugestão",
-    "sidebar__summary__advanced__title": "Opções avançadas de resumo"
+    "sidebar__summary__advanced__title": "Opções avançadas de resumo",
+    "floating_menu__discard_changes_card__ai_response__title": "Você deseja descartar a resposta da IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "Você deseja descartar seu rascunho?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

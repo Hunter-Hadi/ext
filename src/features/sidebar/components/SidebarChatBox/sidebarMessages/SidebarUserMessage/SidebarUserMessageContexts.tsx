@@ -1,12 +1,13 @@
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
+import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { styled, SxProps } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { FC, Fragment, useMemo, useState } from 'react'
+import React, { FC, Fragment, useEffect, useMemo, useState } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
@@ -14,12 +15,14 @@ import LargeTextBox from '@/components/LargeTextBox'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
 import { IUserChatMessage } from '@/features/chatgpt/types'
+import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
+import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
+  [`& > .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.mode === 'dark' ? '#393743' : '#ffffff',
     borderLeft: '4px solid #9065B0',
     color: 'rgba(0, 0, 0, 0.87)',
@@ -52,12 +55,26 @@ const SidebarUserMessageContexts: FC<{
   const renderShortContent = useMemo(() => {
     return contexts?.[0]?.value?.slice(0, 500).trim() || ''
   }, [contexts])
-  if (!attachments.length && !contexts?.length) {
-    return null
-  }
+
   const extractedContentAttachments = attachments.filter(
     (attachment) => attachment.extractedContent,
   )
+  useEffect(() => {
+    if (open) {
+      const contextWindowRoot = getMaxAIFloatingContextMenuRootElement()
+      if (isFloatingContextMenuVisible() && contextWindowRoot) {
+        const clickEvent = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+        })
+        contextWindowRoot.dispatchEvent(clickEvent)
+      }
+    }
+  }, [open])
+  if (!attachments.length && !contexts?.length) {
+    return null
+  }
 
   return (
     <Stack
@@ -73,7 +90,14 @@ const SidebarUserMessageContexts: FC<{
           setOpen(false)
         }}
       >
-        <Stack direction={'row'} maxWidth={'calc(100% - 16px)'}>
+        <Box
+          component={'div'}
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            maxWidth: 'calc(100% - 16px)',
+          }}
+        >
           <LightTooltip
             open={open}
             PopperProps={{
@@ -210,6 +234,9 @@ const SidebarUserMessageContexts: FC<{
                             }}
                           />
                           <CopyTooltipIconButton
+                            PopperProps={{
+                              disablePortal: true,
+                            }}
                             copyText={context.value?.trim() ?? ''}
                           />
                         </Stack>
@@ -244,8 +271,8 @@ const SidebarUserMessageContexts: FC<{
             onClose={() => setOpen(false)}
           >
             <Stack
-              onClick={() => {
-                setOpen(true)
+              onClick={(event) => {
+                setOpen(!open)
               }}
               gap={1}
               sx={{
@@ -410,7 +437,7 @@ const SidebarUserMessageContexts: FC<{
               )}
             </Stack>
           </LightTooltip>
-        </Stack>
+        </Box>
       </MaxAIClickAwayListener>
     </Stack>
   )

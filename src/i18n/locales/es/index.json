@@ -57,7 +57,8 @@
     "team_plan": "Plan de equipo",
     "manage_my_plan": "Administrar mi plan",
     "watch_video": "Ver video",
-    "input_content": "Contenido de entrada"
+    "input_content": "Contenido de entrada",
+    "discard": "Descartar"
   },
   "settings": {
     "left_menu__me": "Yo y MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Deje que la IA genere respuestas de mensajes personalizadas para usted en segundos con solo un clic en WhatsApp, Discord, Telegram, Messenger y Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Crea arte e imágenes con IA",
     "sidebar__promotion_dialog__content_item5__description": "Transforma rápidamente tus visiones en impresionantes imágenes. Simple, poderoso, transformador.",
-    "sidebar__promotion_dialog__cta_button": "Mejora ahora - Desbloquea todas las funciones",
+    "sidebar__promotion_dialog__cta_button": "¡Oferta por tiempo limitado: ¡Reclama un 53% DE DESCUENTO ahora!",
     "provider__bard_web_app__model__gemini__description": "El modelo más avanzado de Google.",
     "translation_advanced__title": "Configuración de traducción",
     "translation_advanced__source_lang_select__label": "Idioma de origen",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite ofrece consultas de IA ilimitadas, resúmenes de IA, búsquedas de IA y respuestas instantáneas.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mis propias sugerencias",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Agregar mi propia sugerencia",
-    "sidebar__summary__advanced__title": "Opciones avanzadas de resumen"
+    "sidebar__summary__advanced__title": "Opciones avanzadas de resumen",
+    "floating_menu__discard_changes_card__ai_response__title": "¿Deseas descartar la respuesta de IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "¿Deseas descartar tu borrador?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

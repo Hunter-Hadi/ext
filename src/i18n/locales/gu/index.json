@@ -57,7 +57,8 @@
     "team_plan": "ટીમ પ્લાન",
     "manage_my_plan": "મારી યોજના સંચાલિત કરો",
     "watch_video": "વિડિઓ જુઓ",
-    "input_content": "ઇનપુટ સામગ્રી"
+    "input_content": "ઇનપુટ સામગ્રી",
+    "discard": "છોડો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -633,7 +634,7 @@
     "sidebar__conversation_share__share_panel__success_tip": "શેર કરેલી વાર્તા URL ક્લિપબોર્ડ પર કૉપિ થઇ ગઈ છે!",
     "sidebar__conversation_share__share_panel__error_tip": "હવે શેર કરી શકતા નથી. કૃપા કરીને તમારું નેટવર્ક ચેક કરો અથવા પછી ફરી પ્રયાસ કરો.",
     "sidebar__promotion_dialog__title": "{{VERSION}}માં નવી પ્રીમિયમ વ્યાજો",
-    "sidebar__promotion_dialog__cta_button": "હવે અપગ્રેડ કરો - બધા વ્યાપારની સુવિધાઓ ખોલો",
+    "sidebar__promotion_dialog__cta_button": "સીમિત સમય પ્રદાન: હવે 53% છૂટ મેળવો!",
     "translation_advanced__title": "અનુવાદ સેટિંગ્સ",
     "translation_advanced__source_lang_select__label": "સોર્સ ભાષા",
     "translation_advanced__target_lang_select__label": "લક્ષ્ય ભાષા",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI એલિટ અમર્યાદિત AI પ્રશ્નો, AI સંગ્રહણો, AI શોધો અને તક્ષણિક જવાબો આપે છે.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "મારા પ્રોમ્પ્ટ્સ",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "મારી પ્રોમ્પ્ટ ઉમેરો",
-    "sidebar__summary__advanced__title": "અગ્રણી સારાંશ વિકલ્પો"
+    "sidebar__summary__advanced__title": "અગ્રણી સારાંશ વિકલ્પો",
+    "floating_menu__discard_changes_card__ai_response__title": "શું તમે AI પ્રતિસાદ છોડવા માંગો છો?",
+    "floating_menu__discard_changes_card__your_draft__title": "શું તમે તમારી ડ્રાફ્ટ છોડવા માંગો છો?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

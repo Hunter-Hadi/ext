@@ -57,7 +57,8 @@
     "team_plan": "Pla d'equip",
     "manage_my_plan": "Gestiona el meu pla",
     "watch_video": "Veure vídeo",
-    "input_content": "Contingut d'entrada"
+    "input_content": "Contingut d'entrada",
+    "discard": "Descartar"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Deixa que l'IA generi respostes de missatges personalitzades per a tu en segons amb només un clic a WhatsApp, Discord, Telegram, Messenger i Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Crea art i imatges d'IA",
     "sidebar__promotion_dialog__content_item5__description": "Converteix ràpidament les teves visions en imatges impressionants. Senzill, potent, transformador.",
-    "sidebar__promotion_dialog__cta_button": "Millora ara - Desbloqueja totes les funcionalitats",
+    "sidebar__promotion_dialog__cta_button": "Oferta per temps limitat: Reclama ara un 53% DE DESCOMPTE!",
     "provider__bard_web_app__model__gemini__description": "El model més avançat de Google.",
     "translation_advanced__title": "Configuració de traducció",
     "translation_advanced__source_lang_select__label": "Idioma d'origen",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite ofereix consultes d'IA il·limitades, resums d'IA, cerques d'IA i respostes instantànies.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Les meves pròpies indicacions",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Afegir la meva pròpia indicació",
-    "sidebar__summary__advanced__title": "Opcions avançades de resum"
+    "sidebar__summary__advanced__title": "Opcions avançades de resum",
+    "floating_menu__discard_changes_card__ai_response__title": "Voleu descartar la resposta de l'IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "Voleu descartar l'esborrany?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

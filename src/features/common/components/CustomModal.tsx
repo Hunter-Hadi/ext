@@ -48,6 +48,7 @@ const CustomModal: FC<IProps> = ({
             sx={{
               color: 'white',
               bgcolor: '#616161',
+              fontSize: 24,
               '&:hover': {
                 bgcolor: '#7e7e7e',
               },

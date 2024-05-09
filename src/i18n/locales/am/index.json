@@ -57,7 +57,8 @@
     "team_plan": "ቡድን እቃ",
     "manage_my_plan": "እቃዎን ማስተካከያ",
     "watch_video": "ቪዲዮ ይመልከቱ",
-    "input_content": "የግብዣ ይዘት"
+    "input_content": "የግብዣ ይዘት",
+    "discard": "ማጥፋት"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "በአይነት ከሚገኙ AI መልእክቶች የሚገባውን መልዕክት ያሳውቁን በሳንቲም, ድርብስት, ቴሌግራም, መስኮችም, እና ስላክ ውስጥ ከአንድ ጠቀሜታ በሚገኘው ዋስትና ይገባል።",
     "sidebar__promotion_dialog__content_item5__title": "የአስር ስጦታዎችን እና ምስሎችን ፍራፍሬ ማስተላለፍ",
     "sidebar__promotion_dialog__content_item5__description": "በቀላሉ የሚገኘውን የአስር ስጦታዎችን ለመቀየር በአንድ ከንቲባ የሚገኘውን የማስተላለፍ ማስተላለፍ።",
-    "sidebar__promotion_dialog__cta_button": "አድርግ አሁን - ሁሉንም ማንነት ያግኙ",
+    "sidebar__promotion_dialog__cta_button": "የተጠቀሰ ጊዜ እንዲሁም: 53% OFF ይግቡ!",
     "provider__bard_web_app__model__gemini__description": "በGoogle የተሻለ ማስታወቂያ.",
     "translation_advanced__title": "የተሻለ ትርጓሜዎች",
     "translation_advanced__source_lang_select__label": "የመጀመሪያ ቋንቋ",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite የማጠቃለያ እድል ሁኔታዎችን፣ የማጠቃለያ ማጠቃለያዎችን፣ የማጠቃለያ ዝግጅቶችንና የማጠቃለያ ተመሳሳይ መልዕክቶችን ይቀላቀሉ።",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "የእኔ ምርጫዎች",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "የእኔ ምርጫ ጨምር",
-    "sidebar__summary__advanced__title": "የተሻለ ጥቅም አማራጭ አማራጭ"
+    "sidebar__summary__advanced__title": "የተሻለ ጥቅም አማራጭ አማራጭ",
+    "floating_menu__discard_changes_card__ai_response__title": "እባክዎ የ AI መልዕክትን ይጠቀም ይፈልጋሉ?",
+    "floating_menu__discard_changes_card__your_draft__title": "እባክዎ የምርጫውን ማጥፋት ይፈልጋሉ?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

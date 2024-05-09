@@ -1,4 +1,5 @@
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
 import { backdropClasses } from '@mui/material/Backdrop'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -21,6 +22,8 @@ import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
+const CTA_BUTTON_LINK = `https://app.maxai.me/pricing`
+
 const SidebarPromotionDialog = () => {
   const { t } = useTranslation(['client'])
   const { browserAgent } = useBrowserAgent()
@@ -28,8 +31,8 @@ const SidebarPromotionDialog = () => {
 
   const [open, setOpen] = useState(false)
 
-  const routerToPricing = () => {
-    window.open('https://app.maxai.me/pricing')
+  const routerToPage = () => {
+    window.open(CTA_BUTTON_LINK)
     handleClose()
   }
 
@@ -100,10 +103,10 @@ const SidebarPromotionDialog = () => {
         title: t('sidebar__promotion_dialog__content_item2__title'),
         description: t('sidebar__promotion_dialog__content_item2__description'),
       },
-      {
-        title: t('sidebar__promotion_dialog__content_item3__title'),
-        description: t('sidebar__promotion_dialog__content_item3__description'),
-      },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item3__title'),
+      //   description: t('sidebar__promotion_dialog__content_item3__description'),
+      // },
       {
         title: t('sidebar__promotion_dialog__content_item4__title'),
         description: t('sidebar__promotion_dialog__content_item4__description'),
@@ -150,6 +153,7 @@ const SidebarPromotionDialog = () => {
           maxHeight: 'calc(100vh - 100px)',
           p: 2,
           gap: 2,
+          textAlign: 'left',
         }}
       >
         {/* title */}
@@ -184,7 +188,7 @@ const SidebarPromotionDialog = () => {
             )}
             width={832}
             height={468}
-            onClick={routerToPricing}
+            onClick={routerToPage}
             sx={{
               cursor: 'pointer',
             }}
@@ -233,8 +237,9 @@ const SidebarPromotionDialog = () => {
           <Button
             variant="contained"
             fullWidth
-            href={`https://app.maxai.me/pricing`}
+            href={CTA_BUTTON_LINK}
             target={'_blank'}
+            startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
             sx={{
               fontSize: 16,
               px: 2,

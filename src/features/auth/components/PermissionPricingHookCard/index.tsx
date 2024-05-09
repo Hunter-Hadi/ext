@@ -19,7 +19,7 @@ import { isUsageLimitPermissionSceneType } from '@/features/auth/utils/permissio
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
-import useVideoPopupController from '@/features/video_popup/hooks/useVideoPopupController'
+import { openGlobalVideoPopup } from '@/features/video_popup/utils'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 interface IProps {
@@ -36,15 +36,13 @@ const PermissionPricingHookCard: FC<IProps> = ({
   const { currentUserPlan, userInfo, isPayingUser } = useUserInfo()
   const permissionCard = usePermissionCard(permissionSceneType)
 
-  const { openVideoPopup } = useVideoPopupController()
-
   const chatSystemMessageType =
     message.meta?.systemMessageType ||
     message.extra?.systemMessageType ||
     'normal'
 
   const systemMessageText = useMemo(
-    () => formatChatMessageContent(message),
+    () => formatChatMessageContent(message, false),
     [message],
   )
   const ctaButtonText = useMemo(() => {
@@ -111,7 +109,8 @@ const PermissionPricingHookCard: FC<IProps> = ({
               cursor: permissionCard.videoUrl ? 'pointer' : 'auto',
             }}
             onClick={() => {
-              permissionCard.videoUrl && openVideoPopup(permissionCard.videoUrl)
+              permissionCard.videoUrl &&
+                openGlobalVideoPopup(permissionCard.videoUrl)
             }}
           >
             <img

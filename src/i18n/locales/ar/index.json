@@ -57,7 +57,8 @@
     "team_plan": "خطة الفريق",
     "manage_my_plan": "إدارة خطتي",
     "watch_video": "شاهد الفيديو",
-    "input_content": "محتوى الإدخال"
+    "input_content": "محتوى الإدخال",
+    "discard": "تجاهل"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "دع الذكاء الاصطناعي يولد ردود رسائل شخصية لك في ثوانٍ مع واحدة فقط من النقرات على WhatsApp و Discord و Telegram و Messenger و Slack.",
     "sidebar__promotion_dialog__content_item5__title": "إنشاء فن وصور AI",
     "sidebar__promotion_dialog__content_item5__description": "تحويل رؤيتك بسرعة إلى صور مذهلة. بسيطة، قوية، محولة.",
-    "sidebar__promotion_dialog__cta_button": "قم بالترقية الآن - فتح جميع الميزات",
+    "sidebar__promotion_dialog__cta_button": "عرض لفترة محدودة: احصل على خصم 53% الآن!",
     "provider__bard_web_app__model__gemini__description": "أحدث نموذج من قوقل.",
     "translation_advanced__title": "إعدادات الترجمة",
     "translation_advanced__source_lang_select__label": "اللغة المصدر",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "يقدم MaxAI Elite استعلامات AI غير محدودة وملخصات AI وبحثًا AI وردود فورية.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "مشاركاتي الخاصة",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "إضافة مشاركتي الخاصة",
-    "sidebar__summary__advanced__title": "خيارات ملخص متقدمة"
+    "sidebar__summary__advanced__title": "خيارات ملخص متقدمة",
+    "floating_menu__discard_changes_card__ai_response__title": "هل ترغب في تجاهل استجابة الذكاء الاصطناعي؟",
+    "floating_menu__discard_changes_card__your_draft__title": "هل ترغب في التخلص من مسودتك؟"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

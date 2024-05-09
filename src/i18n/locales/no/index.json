@@ -57,7 +57,8 @@
     "team_plan": "Teamplan",
     "manage_my_plan": "Administrer planen min",
     "watch_video": "Se video",
-    "input_content": "Innhold for inndata"
+    "input_content": "Innhold for inndata",
+    "discard": "Fjern"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "La AI generere personlige meldingssvar for deg på sekunder med bare ett klikk på WhatsApp, Discord, Telegram, Messenger og Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Lag AI-kunst og bilder",
     "sidebar__promotion_dialog__content_item5__description": "Gjør visjonene dine om til fantastiske bilder raskt. Enkelt, kraftig, transformerende.",
-    "sidebar__promotion_dialog__cta_button": "Oppgrader nå - Lås opp alle funksjoner",
+    "sidebar__promotion_dialog__cta_button": "Begrenset tilbud: Få 53% AV nå!",
     "provider__bard_web_app__model__gemini__description": "Den mest avanserte modellen fra Google.",
     "translation_advanced__title": "Oversettelsesinnstillinger",
     "translation_advanced__source_lang_select__label": "Kildespråk",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite tilbyr ubegrensede AI-forespørsler, AI-sammendrag, AI-søk og umiddelbare svar.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mine egne oppgaver",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Legg til min egen oppgave",
-    "sidebar__summary__advanced__title": "Avanserte sammendragsalternativer"
+    "sidebar__summary__advanced__title": "Avanserte sammendragsalternativer",
+    "floating_menu__discard_changes_card__ai_response__title": "Vil du forkaste AI-responsen?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vil du forkaste utkastet ditt?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

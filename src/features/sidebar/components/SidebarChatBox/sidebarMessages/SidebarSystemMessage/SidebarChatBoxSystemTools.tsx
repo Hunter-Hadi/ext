@@ -19,12 +19,7 @@ const SidebarChatBoxSystemTools: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { currentSidebarConversationMessages, currentSidebarConversationType } =
     useSidebarSettings()
-  const lastMessage =
-    currentSidebarConversationMessages.length > 0
-      ? currentSidebarConversationMessages[
-          currentSidebarConversationMessages.length - 1
-        ]
-      : undefined
+  const lastMessage = currentSidebarConversationMessages.at(-1)
   // const { currentUserPlan, userInfo } = useUserInfo()
   const { regenerate } = useClientChat()
   const { regenerateSearchWithAI } = useSearchWithAI()
@@ -71,7 +66,7 @@ const SidebarChatBoxSystemTools: FC<{
             }}
             onClick={async () => {
               if (currentSidebarConversationType === 'Search') {
-                await regenerateSearchWithAI()
+                await regenerateSearchWithAI(true)
                 return
               }
               await regenerate()

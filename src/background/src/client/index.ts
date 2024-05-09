@@ -912,6 +912,9 @@ export const ClientMessageInit = () => {
             saveKeys.forEach((key) => (filterInfo[key] = ext[key]))
             return filterInfo
           }
+          if (userInfo) {
+            delete (userInfo as any).settings
+          }
           const sendData: Record<string, any> = {
             userInfo,
             ...clientData,
@@ -923,6 +926,8 @@ export const ClientMessageInit = () => {
               await Browser.extension.isAllowedFileSchemeAccess()
             const isAllowedIncognito =
               await Browser.extension.isAllowedIncognitoAccess()
+            delete selfExtension.icons
+            delete (selfExtension as any).description
             Object.assign(sendData, {
               allExtensions: allExtensions.map((ext) => formatExt(ext, false)),
               selfExtension,
@@ -939,6 +944,32 @@ export const ClientMessageInit = () => {
           return {
             success: true,
             data: true,
+            message: 'ok',
+          }
+        }
+        case 'Client_switchVideoPopup': {
+          const { videoSrc, open } = data
+          const tabs = await Browser.tabs.query({
+            active: true,
+            currentWindow: true,
+            status: 'complete',
+          })
+          if (tabs.length > 0 && tabs[0]) {
+            const tab = tabs[0]
+            if (tab && tab?.id) {
+              await Browser.tabs.sendMessage(tab.id, {
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+                event: 'Client_listenSwitchVideoPopup',
+                data: {
+                  videoSrc,
+                  open,
+                },
+              })
+            }
+          }
+          return {
+            success: true,
+            data: null,
             message: 'ok',
           }
         }

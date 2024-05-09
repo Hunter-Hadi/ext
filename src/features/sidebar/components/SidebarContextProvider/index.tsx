@@ -6,6 +6,7 @@ import {
   ChatPanelContextValue,
 } from '@/features/chatgpt/store/ChatPanelContext'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getInputMediator } from '@/store/InputMediator'
@@ -17,11 +18,14 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
   const {
     currentSidebarConversationId,
     currentSidebarConversationType,
+    updateSidebarConversationType,
     createSidebarConversation,
     sidebarSettings,
   } = useSidebarSettings()
   const [conversationStatus, setConversationStatus] =
     useState<ConversationStatusType>('success')
+
+  const [initialized, setInitialized] = useState(false)
 
   // 这里记录immersive page里的状态，初始化时和sidebarSettings里一致
   const [immersiveSettings, setImmersiveSettings] = useState(sidebarSettings)
@@ -53,7 +57,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
   const conversationTypeRef = useRef(currentSidebarConversationType)
   conversationTypeRef.current = currentSidebarConversationType
 
-  const sidebarContextValue = useMemo<ChatPanelContextValue>(() => {
+  const sidebarContextValue = useMemo(() => {
     /**
      * 区分immersive chat和sidebar里的状态
      */
@@ -66,29 +70,28 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
      * @param newConversationId
      * @param conversationType
      */
-    const updateConversationId: ChatPanelContextValue['updateConversationId'] =
-      async (
-        newConversationId,
-        conversationType?: ISidebarConversationType,
-      ) => {
-        const map: Record<
-          string,
-          keyof Exclude<typeof sidebarSettings, undefined>
-        > = {
-          Chat: 'chat',
-          Summary: 'summary',
-          Search: 'search',
-          Art: 'art',
-        }
-        if (map[conversationType || sidebarConversationTypeRef.current]) {
-          return setImmersiveSettings((prev) => ({
-            ...prev,
-            [map[sidebarConversationTypeRef.current]]: {
-              conversationId: newConversationId,
-            },
-          }))
-        }
+    const updateConversationId = async (
+      newConversationId: string,
+      conversationType?: ISidebarConversationType,
+    ) => {
+      const map: Record<
+        string,
+        keyof Exclude<typeof sidebarSettings, undefined>
+      > = {
+        Chat: 'chat',
+        Summary: 'summary',
+        Search: 'search',
+        Art: 'art',
       }
+      if (map[conversationType || sidebarConversationTypeRef.current]) {
+        return setImmersiveSettings((prev) => ({
+          ...prev,
+          [map[sidebarConversationTypeRef.current]]: {
+            conversationId: newConversationId,
+          },
+        }))
+      }
+    }
 
     /**
      * 创建conversation
@@ -162,9 +165,34 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
     sidebarContextValue,
   ])
 
+  // 记录hash变化
+  useEffectOnce(() => {
+    const [_, route, id] = window.location.hash.replace('#', '')?.split('/')
+    const routeMap: Record<string, ISidebarConversationType> = {
+      chat: 'Chat',
+      search: 'Search',
+      art: 'Art',
+    }
+    const type = routeMap[route] || currentSidebarConversationType
+    updateSidebarConversationType(type)
+    if (id) {
+      sidebarContextValue
+        .updateConversationId(id, type)
+        .finally(() => setInitialized(true))
+    } else {
+      setInitialized(true)
+    }
+  })
+
+  useEffect(() => {
+    if (initialized) {
+      window.location.hash = `#/${currentSidebarConversationType.toLowerCase()}/${immersiveConversationId}`
+    }
+  }, [initialized, currentSidebarConversationType, immersiveConversationId])
+
   return (
     <ChatPanelContext.Provider value={sidebarContextValue}>
-      {children}
+      {initialized && children}
     </ChatPanelContext.Provider>
   )
 }

@@ -12,8 +12,8 @@ import { isSystemMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { useRangy } from '@/features/contextMenu'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {
+  ContextWindowDraftContextMenuState,
   FloatingDropdownMenuState,
-  FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
 import { SidebarSystemMessage } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages'
 import SidebarUserMessageContexts from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts'
@@ -27,7 +27,7 @@ const WritingMessageBox: FC<{
   const { onChange } = props
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
-    FloatingDropdownMenuSystemItemsState,
+    ContextWindowDraftContextMenuState,
   )
   const {
     currentFloatingContextMenuDraft,

@@ -57,7 +57,8 @@
     "team_plan": "Timski plan",
     "manage_my_plan": "Upravljaj mojim planom",
     "watch_video": "Pogledaj video",
-    "input_content": "Unesite sadržaj"
+    "input_content": "Unesite sadržaj",
+    "discard": "Odbaci"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Dozvolite veštačkoj inteligenciji da generiše personalizovane odgovore na poruke za vas u sekundama sa samo jednim klikom na WhatsApp, Discord, Telegram, Messenger i Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Kreirajte AI umetnost i slike",
     "sidebar__promotion_dialog__content_item5__description": "Brzo pretvorite svoje vizije u impresivne slike. Jednostavno, moćno, transformišuće.",
-    "sidebar__promotion_dialog__cta_button": "Nadogradi sada - Otključaj sve funkcije",
+    "sidebar__promotion_dialog__cta_button": "Ograničena ponuda: Iskoristite 53% POPUST sada!",
     "provider__bard_web_app__model__gemini__description": "Najnapredniji model od strane Google-a.",
     "translation_advanced__title": "Podešavanja prevoda",
     "translation_advanced__source_lang_select__label": "Izvorni jezik",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite nudi neograničene AI upite, AI sažetke, AI pretrage i trenutne odgovore.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moji sopstveni podsticaji",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj svoj podsticaj",
-    "sidebar__summary__advanced__title": "Napredne opcije rezimea"
+    "sidebar__summary__advanced__title": "Napredne opcije rezimea",
+    "floating_menu__discard_changes_card__ai_response__title": "Da li želite da odbacite AI odgovor?",
+    "floating_menu__discard_changes_card__your_draft__title": "Da li želite da odbacite svoju skicu?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

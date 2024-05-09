@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -36,6 +36,7 @@ const useSearchWithAI = () => {
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const [waitRunActions, setWaitRunActions] = useState<ISetActionsType>([])
+
   const memoPrevQuestions = useMemo(() => {
     const memoQuestions = []
     // 从后往前，直到include_history为false
@@ -52,7 +53,12 @@ const useSearchWithAI = () => {
     }
     return memoQuestions
   }, [clientConversationMessages])
-  const createSearchWithAI = async (query: string, includeHistory: boolean) => {
+
+  const createSearchWithAI = async (
+    query: string,
+    includeHistory: boolean,
+    runActionsImmediately: boolean = false,
+  ) => {
     if (isFetchingRef.current) {
       return
     }
@@ -105,7 +111,11 @@ const useSearchWithAI = () => {
         includeHistory,
       )
       lastMessageIdRef.current = messageId
-      setWaitRunActions(actions)
+      if (runActionsImmediately) {
+        runSearchActions(actions)
+      } else {
+        setWaitRunActions(actions)
+      }
     } catch (e) {
       console.log('创建Conversation失败', e)
     }
@@ -116,6 +126,7 @@ const useSearchWithAI = () => {
   useEffect(() => {
     createSearchWithAIRef.current = createSearchWithAI
   }, [createSearchWithAI])
+
   const getSearchWithAIConversationId = async () => {
     return (
       (await getChromeExtensionLocalStorage())?.sidebarSettings?.search
@@ -137,7 +148,7 @@ const useSearchWithAI = () => {
       cacheConversationId &&
       (await clientGetConversation(cacheConversationId))
     ) {
-      // nothing
+      // do nothing
     } else {
       cacheConversationId = await createConversation('Search')
     }
@@ -148,7 +159,10 @@ const useSearchWithAI = () => {
       [startMessage],
     )
   }
-  const regenerateSearchWithAI = async () => {
+
+  const regenerateSearchWithAI = async (
+    runActionsImmediately: boolean = false,
+  ) => {
     try {
       if (currentConversationId) {
         let lastAIResponse: IAIResponseMessage | null = null
@@ -177,6 +191,7 @@ const useSearchWithAI = () => {
               lastQuestion,
               lastAIResponse?.originalMessage?.metadata?.includeHistory ||
                 false,
+              runActionsImmediately,
             )
           }, 200)
         } else {
@@ -194,6 +209,26 @@ const useSearchWithAI = () => {
     }
   }
 
+  const runSearchActions = useCallback(
+    async (searchActions: ISetActionsType) => {
+      if (
+        searchActions.length > 0 &&
+        !isFetchingRef.current &&
+        clientConversation?.type === 'Search'
+      ) {
+        isFetchingRef.current = true
+        try {
+          await askAIWIthShortcuts(searchActions)
+        } catch (err) {
+          console.error(err)
+        } finally {
+          isFetchingRef.current = false
+        }
+      }
+    },
+    [askAIWIthShortcuts, clientConversation],
+  )
+
   useEffect(() => {
     // 等到了Search板块再开始请求
     if (
@@ -201,14 +236,9 @@ const useSearchWithAI = () => {
       !isFetchingRef.current &&
       clientConversation?.type === 'Search'
     ) {
-      isFetchingRef.current = true
-      askAIWIthShortcuts(waitRunActions)
-        .then()
-        .catch()
-        .finally(async () => {
-          setWaitRunActions([])
-          isFetchingRef.current = false
-        })
+      runSearchActions(waitRunActions).finally(() => {
+        setWaitRunActions([])
+      })
     }
   }, [askAIWIthShortcuts, clientConversation, waitRunActions])
 

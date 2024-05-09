@@ -13,15 +13,13 @@ import TooltipButton from '@/components/TooltipButton'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
-import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
-import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
+import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
 import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
 import SidebarChatHistoryButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatHistoryButton'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
-import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarChatBoxInputActions: FC<{
@@ -44,7 +42,6 @@ const SidebarChatBoxInputActions: FC<{
           ? 'rgba(255, 255, 255, 0.08)'
           : 'rgba(0, 0, 0, 0.16)'
       },
-
       '&:hover': {
         color: 'primary.main',
         borderColor: 'primary.main',
@@ -69,6 +66,12 @@ const SidebarChatBoxInputActions: FC<{
       currentSidebarConversationType !== 'Summary' &&
       !isMaxAIImmersiveChatPage() &&
       !smoothConversationLoading
+    )
+  }, [currentSidebarConversationType, smoothConversationLoading])
+
+  const isUsePromptIconButtonShow = useMemo(() => {
+    return (
+      currentSidebarConversationType === 'Chat' && !smoothConversationLoading
     )
   }, [currentSidebarConversationType, smoothConversationLoading])
 
@@ -106,11 +109,8 @@ const SidebarChatBoxInputActions: FC<{
       spacing={1}
       width={'100%'}
     >
-      {currentSidebarConversationType === 'Chat' && (
-        <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
-      )}
-      {currentSidebarConversationType === 'Art' && (
-        <AIProviderModelSelectorButton sidebarConversationType={'Art'} />
+      {(currentSidebarConversationType === 'Chat' || currentSidebarConversationType === 'Search' || currentSidebarConversationType === 'Art') && (
+        <AIProviderModelSelectorButton sidebarConversationType={currentSidebarConversationType} />
       )}
       <Typography
         component={'span'}
@@ -173,21 +173,18 @@ const SidebarChatBoxInputActions: FC<{
         />
 
         {/* use prompt btn */}
-        {currentSidebarConversationType === 'Chat' &&
-          !smoothConversationLoading && (
-            <FloatingInputButton
-              sx={actionsBtnColorSxMemo}
-              onBeforeShowContextMenu={() => {
-                return {
-                  template: inputValue || '',
-                  target:
-                    getMaxAISidebarRootElement()?.querySelector(
-                      `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
-                    )?.parentElement || (ref.current as HTMLElement),
-                }
-              }}
-            />
-          )}
+
+        <SidebarUsePromptButton
+          sx={{
+            ...actionsBtnColorSxMemo,
+            visibility: isUsePromptIconButtonShow ? 'visible' : 'hidden',
+            position: isUsePromptIconButtonShow ? 'relative' : 'absolute',
+            [`&.${buttonClasses.contained}`]: {
+              color: 'white',
+            },
+          }}
+          text={inputValue}
+        />
 
         {/* send btn */}
         <TooltipButton

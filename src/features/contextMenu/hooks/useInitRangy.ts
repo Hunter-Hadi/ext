@@ -14,9 +14,9 @@ import {
 } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import {
+  ContextWindowDraftContextMenuState,
   FloatingDropdownMenuLastFocusRangeState,
   FloatingDropdownMenuState,
-  FloatingDropdownMenuSystemItemsState,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
 import {
@@ -44,10 +44,10 @@ import rangyLib from '@/lib/rangy/rangy-core'
 import initRangyPosition from '@/lib/rangy/rangy-position'
 import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
 import { AppDBStorageState } from '@/store'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import Log from '@/utils/Log'
 
 import { useRangy } from './useRangy'
-import {isMaxAIImmersiveChatPage} from "@/utils/dataHelper/websiteHelper";
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -80,7 +80,7 @@ const useInitRangy = () => {
   // 绑定点击或者按键的placeholder事件
   useBindRichTextEditorLineTextPlaceholder()
   const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
-    useRecoilState(FloatingDropdownMenuSystemItemsState)
+    useRecoilState(ContextWindowDraftContextMenuState)
   const targetElementRef = useRef<HTMLElement | null>(null)
   const selectionElementRef = useRef<
     ISelectionElement | IVirtualIframeSelectionElement | null
@@ -495,7 +495,7 @@ const useInitRangy = () => {
       'COPY',
     ]
     const selectedDraftContextMenuType = getDraftContextMenuTypeById(
-      floatingDropdownMenuSystemItems.selectContextMenuId || '',
+      floatingDropdownMenuSystemItems.selectedDraftContextMenuId || '',
     )
     if (!selectedDraftContextMenuType) {
       console.log(
@@ -514,7 +514,7 @@ const useInitRangy = () => {
         showModelSelector: false,
       })
       setFloatingDropdownMenuSystemItems({
-        selectContextMenuId: '',
+        selectedDraftContextMenuId: '',
         lastOutput: '',
       })
       hideRangy(true)
@@ -597,7 +597,7 @@ const useInitRangy = () => {
       default:
         break
     }
-  }, [floatingDropdownMenuSystemItems.selectContextMenuId])
+  }, [floatingDropdownMenuSystemItems.selectedDraftContextMenuId])
   useEffect(() => {
     if (!floatingDropdownMenu.open) {
       setFloatingDropdownMenuLastFocusRange((prevState) => {

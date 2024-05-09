@@ -27,6 +27,7 @@ const startHideInHostHandle = debounce(() => {
     }
   }
 }, 100)
+
 const stopHideInHostHandle = debounce(() => {
   {
     const host = getCurrentDomainHost()
@@ -46,6 +47,9 @@ const stopHideInHostHandle = debounce(() => {
       if (minimizeApp) {
         minimizeApp.style.display = ''
       }
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'))
+      }, 300)
     }
   }
 }, 100)

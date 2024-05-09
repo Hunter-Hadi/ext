@@ -57,7 +57,8 @@
     "team_plan": "Komandos planas",
     "manage_my_plan": "Valdyti mano planą",
     "watch_video": "Žiūrėti vaizdo įrašą",
-    "input_content": "Įvesties turinys"
+    "input_content": "Įvesties turinys",
+    "discard": "Atmesti"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Leiskite dirbti su Jums kartu ir generuoti asmeniškus žinučių atsakymus per kelias sekundes vienu paspaudimu WhatsApp, Discord, Telegram, Messenger ir Slack programose.",
     "sidebar__promotion_dialog__content_item5__title": "Kurkite AI meną ir paveikslus",
     "sidebar__promotion_dialog__content_item5__description": "Greitai paverčia savo vizijas nuostabiais paveikslais. Paprasta, galinga, transformuojanti.",
-    "sidebar__promotion_dialog__cta_button": "Dabar atnaujinkite - Atrakinkite visas funkcijas",
+    "sidebar__promotion_dialog__cta_button": "Ribotas laikas pasiūlymas: Gaukite 53% NUOLAIDĄ dabar!",
     "provider__bard_web_app__model__gemini__description": "Pažangiausias Google modelis.",
     "translation_advanced__title": "Vertimo nustatymai",
     "translation_advanced__source_lang_select__label": "Ištekstinė kalba",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite siūlo neribotą AI užklausų, AI santraukų, AI paieškų ir momentinių atsakymų.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mano pačių užduotys",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridėti savo užduotį",
-    "sidebar__summary__advanced__title": "Išplėstinės santraukos parinktys"
+    "sidebar__summary__advanced__title": "Išplėstinės santraukos parinktys",
+    "floating_menu__discard_changes_card__ai_response__title": "Ar norite atsisakyti AI atsakymo?",
+    "floating_menu__discard_changes_card__your_draft__title": "Ar norite atsisakyti savo juodraščio?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

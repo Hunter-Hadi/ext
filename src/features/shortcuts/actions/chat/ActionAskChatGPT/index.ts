@@ -3,7 +3,7 @@ import last from 'lodash-es/last'
 import { v4 as uuidV4 } from 'uuid'
 
 import {
-  checkISThirdPartyAIProvider,
+  checkIsThirdPartyAIProvider,
   clientAskAIQuestion,
 } from '@/background/src/chat/util'
 import {
@@ -145,7 +145,7 @@ export class ActionAskChatGPT extends Action {
         contexts,
       } = this.question.meta
       // 设置includeHistory
-      if (contextMenu?.id) {
+      if (contextMenu?.id && this.question.meta.includeHistory === undefined) {
         this.question.meta.includeHistory = false
       }
       if (!contexts) {
@@ -194,7 +194,7 @@ export class ActionAskChatGPT extends Action {
         )
         this.question.meta.MaxAIPromptActionConfig = MaxAIPromptActionConfig
         if (conversation) {
-          if (!AIProvider || checkISThirdPartyAIProvider(AIProvider)) {
+          if (!AIProvider || checkIsThirdPartyAIProvider(AIProvider)) {
             // 确认是third-party AI provider, 需要获取默认的prompt
             const result = await clientFetchMaxAIAPI<{
               data?: {
@@ -352,7 +352,7 @@ export class ActionAskChatGPT extends Action {
           .catch()
 
         // 2. 判断是否是第三方AI provider， 是的话需要判断是否已经达到每日使用上限
-        if (AIProvider && checkISThirdPartyAIProvider(AIProvider)) {
+        if (AIProvider && checkIsThirdPartyAIProvider(AIProvider)) {
           // 如果是第三方AI provider，需要判断是否已经达到每日使用上限
           const { data: logThirdPartyResult } =
             await clientMessageChannelEngine.postMessage({

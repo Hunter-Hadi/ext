@@ -57,7 +57,8 @@
     "team_plan": "Takım planı",
     "manage_my_plan": "Planımı yönet",
     "watch_video": "Videoyu izle",
-    "input_content": "Giriş içeriği"
+    "input_content": "Giriş içeriği",
+    "discard": "At"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Yapay zeka ile saniyeler içinde WhatsApp, Discord, Telegram, Messenger ve Slack'te sadece bir tıklama ile kişiselleştirilmiş mesaj yanıtları oluşturun.",
     "sidebar__promotion_dialog__content_item5__title": "AI sanatı ve görüntüleri oluşturun",
     "sidebar__promotion_dialog__content_item5__description": "Vizyonlarınızı hızla etkileyici görüntülere dönüştürün. Basit, güçlü, dönüştürücü.",
-    "sidebar__promotion_dialog__cta_button": "Şimdi yükselt - Tüm özellikleri açın",
+    "sidebar__promotion_dialog__cta_button": "Sınırlı süreli teklif: Şimdi %53 İNDİRİM kazanın!",
     "provider__bard_web_app__model__gemini__description": "Google tarafından geliştirilen en gelişmiş model.",
     "translation_advanced__title": "Çeviri ayarları",
     "translation_advanced__source_lang_select__label": "Kaynak dil",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite, sınırsız AI sorguları, AI özetleri, AI aramaları ve anlık yanıtlar sunar.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Kendi ipuçlarım",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Kendi ipucu ekleyin",
-    "sidebar__summary__advanced__title": "Gelişmiş özet seçenekleri"
+    "sidebar__summary__advanced__title": "Gelişmiş özet seçenekleri",
+    "floating_menu__discard_changes_card__ai_response__title": "AI yanıtını atmak istiyor musunuz?",
+    "floating_menu__discard_changes_card__your_draft__title": "Taslak dosyanızı silmek istiyor musunuz?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

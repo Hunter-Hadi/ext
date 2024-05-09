@@ -57,7 +57,8 @@
     "team_plan": "Paket Tim",
     "manage_my_plan": "Kelola paket saya",
     "watch_video": "Tonton video",
-    "input_content": "Konten Input"
+    "input_content": "Konten Input",
+    "discard": "Buang"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Biarkan AI menghasilkan balasan pesan yang dipersonalisasi untuk Anda dalam hitungan detik dengan hanya satu klik di WhatsApp, Discord, Telegram, Messenger, dan Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Buat seni dan gambar AI",
     "sidebar__promotion_dialog__content_item5__description": "Ubah visi Anda menjadi gambar yang menakjubkan dengan cepat. Sederhana, kuat, dan transformatif.",
-    "sidebar__promotion_dialog__cta_button": "Tingkatkan sekarang - Buka semua fitur",
+    "sidebar__promotion_dialog__cta_button": "Penawaran terbatas: Klaim 53% OFF sekarang!",
     "provider__bard_web_app__model__gemini__description": "Model paling canggih oleh Google.",
     "translation_advanced__title": "Pengaturan Terjemahan",
     "translation_advanced__source_lang_select__label": "Bahasa Sumber",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite menawarkan kueri AI tanpa batas, ringkasan AI, pencarian AI, dan balasan instan.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Prompt saya sendiri",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Tambahkan prompt saya sendiri",
-    "sidebar__summary__advanced__title": "Opsi ringkasan lanjutan"
+    "sidebar__summary__advanced__title": "Opsi ringkasan lanjutan",
+    "floating_menu__discard_changes_card__ai_response__title": "Apakah Anda ingin membuang respons AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Apakah Anda ingin membuang draf Anda?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

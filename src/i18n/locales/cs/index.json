@@ -57,7 +57,8 @@
     "team_plan": "Plán týmu",
     "manage_my_plan": "Spravovat můj plán",
     "watch_video": "Sledovat video",
-    "input_content": "Vstupní obsah"
+    "input_content": "Vstupní obsah",
+    "discard": "Zahodit"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Nechejte AI generovat personalizované odpovědi na zprávy za vteřiny jedním kliknutím na WhatsApp, Discord, Telegram, Messenger a Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Vytvářejte umění a obrázky pomocí AI",
     "sidebar__promotion_dialog__content_item5__description": "Rychle proměňte své vize v ohromující obrázky. Jednoduché, výkonné, transformační.",
-    "sidebar__promotion_dialog__cta_button": "Nyní upgradujte - Odblokovat všechny funkce",
+    "sidebar__promotion_dialog__cta_button": "Omezená nabídka: Získejte nyní 53% SLEVA!",
     "provider__bard_web_app__model__gemini__description": "Nejvyspělejší model od Googlu.",
     "translation_advanced__title": "Nastavení překladu",
     "translation_advanced__source_lang_select__label": "Výchozí jazyk",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite nabízí neomezené dotazy AI, shrnutí AI, vyhledávání AI a okamžité odpovědi.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Moje vlastní podněty",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Přidat můj vlastní podnět",
-    "sidebar__summary__advanced__title": "Pokročilé možnosti shrnutí"
+    "sidebar__summary__advanced__title": "Pokročilé možnosti shrnutí",
+    "floating_menu__discard_changes_card__ai_response__title": "Chcete zrušit odpověď AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Chcete zrušit svůj koncept?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

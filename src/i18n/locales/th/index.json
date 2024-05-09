@@ -57,7 +57,8 @@
     "team_plan": "แผนทีม",
     "manage_my_plan": "จัดการแผนของฉัน",
     "watch_video": "ดูวิดีโอ",
-    "input_content": "เนื้อหาที่ป้อน"
+    "input_content": "เนื้อหาที่ป้อน",
+    "discard": "ทิ้ง"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "ให้ AI สร้างข้อความตอบกลับที่ปรับแต่งสำหรับคุณในไม่กี่วินาทีด้วยการคลิกเพียงครั้งเดียวบน WhatsApp, Discord, Telegram, Messenger, และ Slack",
     "sidebar__promotion_dialog__content_item5__title": "สร้างศิลปะและภาพ AI",
     "sidebar__promotion_dialog__content_item5__description": "แปลงวิสัยทัศน์ของคุณให้กลายเป็นภาพที่น่าตื่นตาตื่นใจอย่างรวดเร็ว ง่าย และมีประสิทธิผล",
-    "sidebar__promotion_dialog__cta_button": "อัปเกรดตอนนี้ - เปิดใช้งานคุณสมบัติทั้งหมด",
+    "sidebar__promotion_dialog__cta_button": "ข้อเสนอจำกัดเวลา: เคลม 53% ลดราคาเดี๋ยวนี้!",
     "provider__bard_web_app__model__gemini__description": "รุ่นที่ล้ำสมัยที่สุดจาก Google",
     "translation_advanced__title": "การตั้งค่าการแปล",
     "translation_advanced__source_lang_select__label": "ภาษาต้นทาง",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite ให้บริการคำถาม AI ไม่จำกัด, สรุป AI, การค้นหา AI และการตอบกลับทันที",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "คำถามของฉันเอง",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "เพิ่มคำถามของฉัน",
-    "sidebar__summary__advanced__title": "ตัวเลือกสรุปขั้นสูง"
+    "sidebar__summary__advanced__title": "ตัวเลือกสรุปขั้นสูง",
+    "floating_menu__discard_changes_card__ai_response__title": "คุณต้องการที่จะละทิ้งการตอบสนองของ AI หรือไม่?",
+    "floating_menu__discard_changes_card__your_draft__title": "คุณต้องการที่จะละทิ้งร่างของคุณหรือไม่?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

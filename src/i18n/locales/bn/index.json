@@ -57,7 +57,8 @@
     "team_plan": "দলের পরিকল্পনা",
     "manage_my_plan": "আমার পরিকল্পনা পরিচালনা করুন",
     "watch_video": "ভিডিও দেখুন",
-    "input_content": "ইনপুট কন্টেন্ট"
+    "input_content": "ইনপুট কন্টেন্ট",
+    "discard": "বাতিল করুন"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "এক ক্লিকে সেকেন্ডেই আপনার জন্য ব্যক্তিগত বার্তা উত্পন্ন করতে এইচটিএমএল, ডিসকর্ড, টেলিগ্রাম, মেসেঞ্জার এবং স্ল্যাকে এইআই ব্যবহার করুন।",
     "sidebar__promotion_dialog__content_item5__title": "আই আর্ট এবং চিত্র তৈরি করুন",
     "sidebar__promotion_dialog__content_item5__description": "আপনার ভাবনাগুলি দ্রুত অসাধারণ চিত্রে পরিণত করুন। সহজ, শক্তিশালী, পরিবর্তনশীল।",
-    "sidebar__promotion_dialog__cta_button": "এখন আপগ্রেড করুন - সমস্ত বৈশিষ্ট্য আনলক করুন",
+    "sidebar__promotion_dialog__cta_button": "সীমিত সময়ের অফার: এখনই 53% ছাড় দাবি করুন!",
     "provider__bard_web_app__model__gemini__description": "গুগলের দ্বারা সর্বাধিক উন্নত মডেল।",
     "translation_advanced__title": "অনুবাদ সেটিংস",
     "translation_advanced__source_lang_select__label": "উত্স ভাষা",
@@ -770,7 +771,8 @@
     "permission__pricing_hook__footer_tip": "MaxAI এলিট অসীম AI কুয়েরি, AI সংক্ষেপ, AI অনুসন্ধান এবং তাৎক্ষণিক উত্তর দেয়।",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "আমার নিজের প্রম্পটগুলি",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "আমার নিজের প্রম্পট যোগ করুন",
-    "sidebar__summary__advanced__title": "উন্নত সারসংক্ষেপ বিকল্পগুলি"
+    "sidebar__summary__advanced__title": "উন্নত সারসংক্ষেপ বিকল্পগুলি",
+    "floating_menu__discard_changes_card__your_draft__title": "আপনি কি আপনার খসড়া বাতিল করতে চান?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

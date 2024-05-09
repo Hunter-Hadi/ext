@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -57,7 +58,7 @@ export interface ActionSetVariablesConfirmData {
   data: {
     [key: string]: string | number | undefined
   }
-  type: 'close' | 'confirm' | 'cancel'
+  type: 'close' | 'confirm' | 'cancel' | 'input' | 'change'
   success: boolean
 }
 interface ActionSetVariablesModalProps
@@ -68,9 +69,16 @@ interface ActionSetVariablesModalProps
   showCloseButton?: boolean
   isSaveLastRunShortcuts?: boolean
   onShow?: () => void
-  onClose?: () => void
+  onBeforeClose?: () => boolean
+  onClose?: (reason: 'close' | 'runPrompt' | 'reset') => void
+  onChange?: (
+    data: ActionSetVariablesConfirmData,
+    reason: 'runPromptStart' | 'runPromptEnd',
+  ) => void
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
   disabled?: boolean
+  onInputCustomVariable?: (data: ActionSetVariablesConfirmData) => void
+  sx?: SxProps
 }
 
 const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
@@ -81,13 +89,17 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     modelKey,
     onShow,
     onClose,
+    onChange,
+    onBeforeClose,
+    onInputCustomVariable,
     actions,
     answerInsertMessageId,
     askChatGPTActionParameters,
     showModelSelector = false,
     showCloseButton = true,
     isSaveLastRunShortcuts,
-    disabled
+    disabled,
+    sx,
   } = props
   const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -119,6 +131,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     [key in string]: ReturnType<typeof register>
   }>({})
   const closeModal = async (isCancel: boolean) => {
+    if (onBeforeClose && !onBeforeClose()) {
+      return
+    }
     pendingPromises.forEach((promise) => {
       promise.resolve({
         data: getValues(),
@@ -130,7 +145,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       reset()
       setForm({})
       setShow(false)
-      onClose?.()
+      onClose?.('close')
     }
   }
   const validateForm = async () => {
@@ -143,7 +158,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     return success
   }
   const confirmModal = async (textAreaElementIndex?: number) => {
-    debugger
+    if (loading || disabled) return
     if (isNumber(textAreaElementIndex)) {
       const nextTextAreaElement = inputBoxRef.current?.querySelectorAll(
         `textarea[id]`,
@@ -208,8 +223,15 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setForm({})
       reset()
       setShow(false)
-      onClose?.()
     }
+    onChange?.(
+      {
+        data: getValues(),
+        type: 'change',
+        success: true,
+      },
+      'runPromptStart',
+    )
     const runActions: ISetActionsType = []
     if (config?.template || config?.MaxAIPromptActionConfig) {
       const template = getValues()?.TEMPLATE || config?.template || ''
@@ -231,7 +253,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       Object.keys(presetVariables).forEach((key) => {
         const variableDetail = variableDetailMap[key]
         if (variableDetail?.hidden) {
-          return
+          if (isProduction) {
+            return
+          } else {
+            variableDetail.label = '(Dev show) ' + variableDetail.label
+          }
         }
         if (variableDetail) {
           shortcutsVariables[key] = {
@@ -331,8 +357,16 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             reset()
             setForm({})
             setShow(false)
-            onClose?.()
+            onClose?.('runPrompt')
           }
+          onChange?.(
+            {
+              data: getValues(),
+              type: 'change',
+              success: true,
+            },
+            'runPromptEnd',
+          )
         })
     }
   }
@@ -354,7 +388,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       .concat(currentVariables)
       .forEach((variable) => {
         if (variable.hidden) {
-          return
+          if (isProduction) {
+            return
+          } else if (!variable.label?.startsWith('(Dev show) ')) {
+            variable.label = '(Dev show) ' + variable.label
+          }
         }
         if (variable.valueType === 'Select') {
           selectTypeVariables.push(variable)
@@ -513,14 +551,20 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   useEffect(() => {
     if (show) {
       if (hide) {
-        onClose?.()
+        onClose?.('reset')
       } else {
         const focusEmptyInput = () => {
+          //
           const emptyTextTextarea = Array.from(
             inputBoxRef.current?.querySelectorAll('textarea') || [],
-          ).find((textarea) => {
-            return textarea.value === ''
-          })
+          )
+            .filter((input) => {
+              // aria-hidden="true"
+              return !input.hasAttribute('aria-hidden')
+            })
+            .find((textarea) => {
+              return textarea.value === ''
+            })
           if (emptyTextTextarea) {
             emptyTextTextarea.focus()
           } else {
@@ -558,6 +602,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         width: '100%',
         p: 1,
         gap: 1,
+        boxSizing: 'border-box',
+        ...sx,
       }}
       maxHeight={'60vh'}
       // onKeyDownCapture={(event) => {
@@ -711,6 +757,13 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               label={textTypeVariable.label || 'Label'}
               {...form[textTypeVariable.VariableName]}
               onKeyUp={(event) => {
+                if (!textTypeVariable.systemVariable) {
+                  onInputCustomVariable?.({
+                    data: getValues(),
+                    type: 'input',
+                    success: true,
+                  } as ActionSetVariablesConfirmData)
+                }
                 event.stopPropagation()
               }}
               onKeyDown={async (event) => {
@@ -766,7 +819,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             onClick={async () => await closeModal(true)}
             variant={'secondary'}
           >
-            {t('common:cancel')}
+            {t('common:discard')}
           </Button>
         )}
         <TooltipButton
@@ -782,7 +835,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             width: '32px',
             height: '32px',
             minWidth: 'unset',
-            p: 1,
+            // p: 1,
           }}
         >
           {loading ? (

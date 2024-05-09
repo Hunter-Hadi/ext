@@ -57,7 +57,8 @@
     "team_plan": "ತಂಡ ಯೋಜನೆ",
     "manage_my_plan": "ನನ್ನ ಯೋಜನೆಯನ್ನು ನಿರ್ವಹಿಸಿ",
     "watch_video": "ವೀಡಿಯೊ ನೋಡಿ",
-    "input_content": "ನಮೂದಿಸಿದ ವಿಷಯವನ್ನು"
+    "input_content": "ನಮೂದಿಸಿದ ವಿಷಯವನ್ನು",
+    "discard": "ತ್ಯಜಿಸು"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "ಒಂದು ಕ್ಲಿಕ್‌ನಲ್ಲಿ AI ವ್ಯಕ್ತಿಗಳಿಗೆ ವ್ಹಾಟ್ಸ್‌ಅಪ್, ಡಿಸ್ಕಾರ್ಡ್, ಟೆಲಿಗ್ರಾಮ್ ಮತ್ತು ಸ್ಲ್ಯಾಕ್‌ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸಂದೇಶ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
     "sidebar__promotion_dialog__content_item5__title": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಿ",
     "sidebar__promotion_dialog__content_item5__description": "ನಿಮ್ಮ ದೃಷ್ಟಿಗಳನ್ನು ಅದ್ಭುತವಾದ ಚಿತ್ರಗಳಾಗಿ ಬದಲಾಯಿಸಲು ಹೊಸದಾಗಿ ತೀವ್ರವಾಗಿ ಮಾಡಿ. ಸರಳ, ಶಕ್ತಿಶಾಲಿ, ಬದಲಾವಣೆಯನ್ನು ತಂದುಕೊಳ್ಳಿ.",
-    "sidebar__promotion_dialog__cta_button": "ಈಗ ಮೆಚ್ಚುಗೆಡಿಸಿ - ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
+    "sidebar__promotion_dialog__cta_button": "ಮಿತಿಯುಳ್ಳ ಸಮಯ ಆಫರ್: 53% ಡಿಸ್ಕೌಂಟ್ ಈಗ ಪ್ರಾಪ್ತಿಸಿ!",
     "provider__bard_web_app__model__gemini__description": "Google ದ್ವಾರಾ ಅಭಿವೃದ್ಧಿಗೆ ಬಂದ ಅತ್ಯಂತ ಮುಂದುವರಿದ ಮಾದರಿ.",
     "translation_advanced__title": "ಅನುವಾದ ಸೆಟ್ಟಿಂಗ್ಗಳು",
     "translation_advanced__source_lang_select__label": "ಮೂಲ ಭಾಷೆ",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite ಅನಿವಾರ್ಯ AI ಪ್ರಶ್ನೆಗಳು, AI ಸಂಗ್ರಹಣೆಗಳು, AI ಹುಡುಕುಗಳು ಮತ್ತು ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "ನನ್ನ ಪ್ರಶ್ನೆಗಳು",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "ನನ್ನ ಪ್ರಶ್ನೆನ್ನು ಸೇರಿಸಿ",
-    "sidebar__summary__advanced__title": "ಮುಂದಿನ ಸಾರಾಂಶ ಆಯ್ಕೆಗಳು"
+    "sidebar__summary__advanced__title": "ಮುಂದಿನ ಸಾರಾಂಶ ಆಯ್ಕೆಗಳು",
+    "floating_menu__discard_changes_card__ai_response__title": "ನೀವು AI ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತ್ಯಜಿಸಲು ಬಯಸುತ್ತೀರಾ?",
+    "floating_menu__discard_changes_card__your_draft__title": "ನೀವು ನಿಮ್ಮ ಡ್ರಾಫ್ಟ್ ತ್ಯಜಿಸಲು ಬಯಸುತ್ತೀರಾ?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

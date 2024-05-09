@@ -57,7 +57,8 @@
     "team_plan": "Planul pentru echipă",
     "manage_my_plan": "Gestionează planul meu",
     "watch_video": "Urmărește videoclipul",
-    "input_content": "Conținut de intrare"
+    "input_content": "Conținut de intrare",
+    "discard": "Renunță"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Permiteți IA să genereze răspunsuri personalizate pentru mesaje în câteva secunde, cu doar un clic pe WhatsApp, Discord, Telegram, Messenger și Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Creați artă și imagini AI",
     "sidebar__promotion_dialog__content_item5__description": "Transformați rapid viziunile în imagini uimitoare. Simplu, puternic, transformativ.",
-    "sidebar__promotion_dialog__cta_button": "Upgradează acum - Deblochează toate funcțiile",
+    "sidebar__promotion_dialog__cta_button": "Ofertă limitată în timp: Revendică acum 53% REDUCERE!",
     "provider__bard_web_app__model__gemini__description": "Cel mai avansat model de la Google.",
     "translation_advanced__title": "Setări de traducere",
     "translation_advanced__source_lang_select__label": "Limba sursă",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite oferă interogări AI nelimitate, rezumate AI, căutări AI și răspunsuri instantanee.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Propriile mele sugestii",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adaugă propria mea sugestie",
-    "sidebar__summary__advanced__title": "Opțiuni avansate de rezumat"
+    "sidebar__summary__advanced__title": "Opțiuni avansate de rezumat",
+    "floating_menu__discard_changes_card__ai_response__title": "Doriți să renunțați la răspunsul AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Doriți să renunțați la proiectul dumneavoastră?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

@@ -56,12 +56,12 @@ const BaseSidebarSystemMessage: FC<{
     message?.meta?.systemMessageType === 'needUpgrade'
 
   const systemMessageText = useMemo(
-    () => formatChatMessageContent(message),
+    () => formatChatMessageContent(message, false),
     [message],
   )
 
   // const systemMessageText = useMemo(() => {
-  //   const defaultMessageText = formatChatMessageContent(message)
+  //   const defaultMessageText = formatChatMessageContent(message, false)
   //   if (permissionCard) {
   //     return (
   //       permissionCardToChatMessageText(permissionCard) || defaultMessageText

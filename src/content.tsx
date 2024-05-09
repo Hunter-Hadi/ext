@@ -20,6 +20,7 @@ import {
   MAXAI_SIDEBAR_ID,
   MAXAI_SIDEBAR_WRAPPER_ID,
 } from '@/features/common/constants'
+import { globalVideoPopupRender } from '@/features/video_popup/utils/globalVideoPopupRender'
 import { isSupportWebComponent } from '@/utils/dataHelper/elementHelper'
 import {
   getCurrentDomainHost,
@@ -45,15 +46,24 @@ const mainAppRender = () => {
     () => import('./pages/chat/ImmersiveChatApp'),
   )
 
-  const link = document.createElement('link')
-  // 24.05.07: fix tencent cloud console style issue
-  if (domainHost === 'console.cloud.tencent.com') {
-    link.setAttribute('charset', 'utf-8')
-    link.setAttribute('data-role', 'global')
+  const CONTENT_CSS_LINK_TAG_ID = `${MAXAI_CHROME_EXTENSION_ID}_CONTENT_CSS_LINK_TAG`
+  const renderContentCssTag = () => {
+    const link = document.createElement('link')
+    // 24.05.07: fix tencent cloud console style issue
+    if (domainHost === 'console.cloud.tencent.com') {
+      link.setAttribute('charset', 'utf-8')
+      link.setAttribute('data-role', 'global')
+    }
+    link.id = CONTENT_CSS_LINK_TAG_ID
+    link.rel = 'stylesheet'
+    link.href = Browser.runtime.getURL('content.css')
+    document.head.appendChild(link)
   }
-  link.rel = 'stylesheet'
-  link.href = Browser.runtime.getURL('content.css')
-  document.head.appendChild(link)
+  renderContentCssTag()
+  SPARootProtector.addProtectedRoot({
+    rootId: CONTENT_CSS_LINK_TAG_ID,
+    renderFn: renderContentCssTag,
+  })
 
   const fontLink = document.createElement('link')
   // 24.05.07: fix tencent cloud console style issue
@@ -80,10 +90,7 @@ const mainAppRender = () => {
     supportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
   )
   contextMenu.id = MAXAI_CONTEXT_MENU_ID
-  if (
-    domainHost === 'youtube.com' ||
-    domainHost === 'studio.youtube.com'
-  ) {
+  if (domainHost === 'youtube.com' || domainHost === 'studio.youtube.com') {
     contextMenu.contentEditable = 'true'
   }
   document.body.appendChild(contextMenu)
@@ -143,13 +150,15 @@ const mainAppRender = () => {
       </RecoilRoot>
     </React.StrictMode>,
   )
+
+  globalVideoPopupRender()
 }
 const ChatGPTWebAppRender = () => {
   if (location.host === CHATGPT_WEBAPP_HOST) {
     const script = document.createElement('script')
     script.type = 'module'
     script.src = Browser.runtime.getURL('/pages/chatgpt/fileUploadServer.js')
-      ; (document.head || document.documentElement).append(script)
+    ;(document.head || document.documentElement).append(script)
     import('./pages/OpenAIDaemonProcess').then((module) => {
       const { default: OpenAIDaemonProcess } = module
       const div = document.createElement('div')

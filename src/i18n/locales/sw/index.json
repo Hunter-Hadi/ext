@@ -57,7 +57,8 @@
     "team_plan": "Mpango wa timu",
     "manage_my_plan": "Simamia mpango wangu",
     "watch_video": "Angalia video",
-    "input_content": "Yaliyomo ya kuingiza"
+    "input_content": "Yaliyomo ya kuingiza",
+    "discard": "Ondoa"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Acha AI itengeneze majibu ya ujumbe yaliyobinafsishwa kwa sekunde moja tu kwa kubofya moja kwenye WhatsApp, Discord, Telegram, Messenger, na Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Unda sanaa na picha za AI",
     "sidebar__promotion_dialog__content_item5__description": "Haraka geuza maono yako kuwa picha za kuvutia. Rahisi, yenye nguvu, yenye mabadiliko.",
-    "sidebar__promotion_dialog__cta_button": "Sasisha sasa - Fungua vipengele vyote",
+    "sidebar__promotion_dialog__cta_button": "Ofa ya muda mdogo: Dai 53% PUNGUZO sasa!",
     "provider__bard_web_app__model__gemini__description": "Mfano wenye maendeleo zaidi na Google.",
     "translation_advanced__title": "Mipangilio ya Tafsiri",
     "translation_advanced__source_lang_select__label": "Lugha ya chanzo",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite inatoa maswali ya AI yasiyokuwa na kikomo, muhtasari wa AI, utafutaji wa AI, na majibu ya papo hapo.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Majibu yangu mwenyewe",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ongeza swali langu mwenyewe",
-    "sidebar__summary__advanced__title": "Chaguzi za muhtasari za juu"
+    "sidebar__summary__advanced__title": "Chaguzi za muhtasari za juu",
+    "floating_menu__discard_changes_card__ai_response__title": "Je, unataka kuacha majibu ya AI?",
+    "floating_menu__discard_changes_card__your_draft__title": "Je, unataka kuacha rasimu yako?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

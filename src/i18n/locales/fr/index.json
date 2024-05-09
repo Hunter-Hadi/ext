@@ -57,7 +57,8 @@
     "team_plan": "Plan d'équipe",
     "manage_my_plan": "Gérer mon plan",
     "watch_video": "Regarder la vidéo",
-    "input_content": "Contenu de l'entrée"
+    "input_content": "Contenu de l'entrée",
+    "discard": "Rejeter"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Laissez l'IA générer des réponses de message personnalisées pour vous en quelques secondes avec un simple clic sur WhatsApp, Discord, Telegram, Messenger et Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Créez de l'art et des images IA",
     "sidebar__promotion_dialog__content_item5__description": "Transformez rapidement vos visions en images époustouflantes. Simple, puissant, transformateur.",
-    "sidebar__promotion_dialog__cta_button": "Mettre à niveau maintenant - Débloquer toutes les fonctionnalités",
+    "sidebar__promotion_dialog__cta_button": "Offre limitée dans le temps : Profitez de 53% de réduction maintenant !",
     "provider__bard_web_app__model__gemini__description": "Le modèle le plus avancé par Google.",
     "translation_advanced__title": "Paramètres de traduction",
     "translation_advanced__source_lang_select__label": "Langue source",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite offre des requêtes d'IA illimitées, des résumés d'IA, des recherches d'IA et des réponses instantanées.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mes propres suggestions",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ajouter ma propre suggestion",
-    "sidebar__summary__advanced__title": "Options de résumé avancées"
+    "sidebar__summary__advanced__title": "Options de résumé avancées",
+    "floating_menu__discard_changes_card__ai_response__title": "Voulez-vous ignorer la réponse de l'IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "Voulez-vous abandonner votre brouillon?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

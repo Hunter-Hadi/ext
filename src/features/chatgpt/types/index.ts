@@ -9,6 +9,7 @@ import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
+import { type ISidebarConversationType } from '@/features/sidebar/types'
 
 export type IChatMessagePublishStatus = 'unpublished' | 'success' | 'error'
 
@@ -237,7 +238,9 @@ export interface IAIProviderModel {
   title: string
   titleTag: string
   value: string
-  tags: string[]
+  tags:
+    | string[]
+    | ((currentConversationType: ISidebarConversationType) => string[])
   maxTokens: number
   // modelCategory?: 'fastText' | 'advancedText' | 'imageGenerate'
   description: (t: TFunction<['common', 'client']>) => React.ReactNode

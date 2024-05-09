@@ -676,12 +676,16 @@ const socialMediaPrompts = [
                         valueType: 'Text',
                         placeholder: 'Enter target post/comment',
                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+                        systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Enter key points',
+                        systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'The domain of the current website',
@@ -746,6 +750,7 @@ const socialMediaPrompts = [
                         defaultValue:
                           '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
                         systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Target post/comment',
@@ -753,6 +758,8 @@ const socialMediaPrompts = [
                         valueType: 'Text',
                         placeholder: 'Enter target post/comment',
                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+                        systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Key points',
@@ -1534,12 +1541,14 @@ const emailPrompts = [
                         placeholder: 'Enter email context',
                         defaultValue:
                           '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
+                        systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
-                        placeholder: 'Enter key points',
+                        placeholder: 'Outline your email in brief notes',
                       },
                       {
                         label: 'AI Response language',
@@ -1598,6 +1607,7 @@ const emailPrompts = [
                         defaultValue:
                           '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
                         systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Target email',
@@ -1607,12 +1617,14 @@ const emailPrompts = [
                         placeholder: 'Enter email context',
                         defaultValue:
                           '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
+                        systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
-                        placeholder: 'Enter key points',
+                        placeholder: 'Outline your email in brief notes',
                       },
                       {
                         label: 'AI Response language',
@@ -1751,6 +1763,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                   placeholder: 'Enter target message',
                   defaultValue:
                     '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                  systemVariable: true,
                 },
                 {
                   label: 'AI Response language',
@@ -1838,6 +1851,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                   placeholder: 'Enter target message',
                   defaultValue:
                     '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                  systemVariable: true,
                 },
                 {
                   label: 'AI Response language',
@@ -1925,6 +1939,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                   placeholder: 'Enter target message',
                   defaultValue:
                     '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                  systemVariable: true,
                 },
                 {
                   label: 'AI Response language',
@@ -2012,6 +2027,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                   placeholder: 'Enter target message',
                   defaultValue:
                     '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                  systemVariable: true,
                 },
                 {
                   label: 'AI Response language',
@@ -2099,6 +2115,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                   placeholder: 'Enter target message',
                   defaultValue:
                     '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                  systemVariable: true,
                 },
                 {
                   label: 'AI Response language',
@@ -2186,6 +2203,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                   placeholder: 'Enter target message',
                   defaultValue:
                     '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                  systemVariable: true,
                 },
                 {
                   label: 'AI Response language',
@@ -2273,6 +2291,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                   placeholder: 'Enter target message',
                   defaultValue:
                     '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                  systemVariable: true,
                 },
                 {
                   label: 'AI Response language',
@@ -2360,6 +2379,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                   placeholder: 'Enter target message',
                   defaultValue:
                     '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                  systemVariable: true,
                 },
                 {
                   label: 'AI Response language',
@@ -2454,6 +2474,8 @@ const chatAppPrompts: IContextMenuItem[] = [
                         placeholder: 'Enter target message',
                         defaultValue:
                           '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                        systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Key points',
@@ -2525,6 +2547,7 @@ const chatAppPrompts: IContextMenuItem[] = [
                         defaultValue:
                           '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
                         systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Target message',
@@ -2534,6 +2557,8 @@ const chatAppPrompts: IContextMenuItem[] = [
                         placeholder: 'Enter target message',
                         defaultValue:
                           '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                        systemVariable: true,
+                        hidden: true,
                       },
                       {
                         label: 'Key points',

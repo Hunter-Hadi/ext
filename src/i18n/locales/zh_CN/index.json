@@ -57,7 +57,8 @@
     "team_plan": "团队计划",
     "manage_my_plan": "管理我的计划",
     "watch_video": "观看视频",
-    "input_content": "输入内容"
+    "input_content": "输入内容",
+    "discard": "丢弃"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "让AI在WhatsApp、Discord、Telegram、Messenger和Slack上，只需点击一次即可为您生成个性化的消息回复。",
     "sidebar__promotion_dialog__content_item5__title": "创作AI艺术和图像",
     "sidebar__promotion_dialog__content_item5__description": "将您的想象迅速转化为令人惊叹的图像。简单、强大、变革性。",
-    "sidebar__promotion_dialog__cta_button": "立即升级 - 解锁所有功能",
+    "sidebar__promotion_dialog__cta_button": "限时优惠：立即领取53%折扣！",
     "provider__bard_web_app__model__gemini__description": "谷歌最先进的模型。",
     "translation_advanced__title": "翻译设置",
     "translation_advanced__source_lang_select__label": "源语言",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite提供无限的AI查询、AI摘要、AI搜索和即时回复。",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "我的提示",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "添加我的提示",
-    "sidebar__summary__advanced__title": "高级摘要选项"
+    "sidebar__summary__advanced__title": "高级摘要选项",
+    "floating_menu__discard_changes_card__ai_response__title": "您是否要放弃AI回应？",
+    "floating_menu__discard_changes_card__your_draft__title": "您要放弃草稿吗？"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

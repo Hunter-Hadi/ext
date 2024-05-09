@@ -57,7 +57,8 @@
     "team_plan": "Gói nhóm",
     "manage_my_plan": "Quản lý gói của tôi",
     "watch_video": "Xem video",
-    "input_content": "Nội dung đầu vào"
+    "input_content": "Nội dung đầu vào",
+    "discard": "Loại bỏ"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Hãy để trí tuệ nhân tạo tạo ra các tin nhắn cá nhân hóa cho bạn chỉ trong vài giây với một cú nhấp chuột trên WhatsApp, Discord, Telegram, Messenger và Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Tạo nghệ thuật và hình ảnh AI",
     "sidebar__promotion_dialog__content_item5__description": "Biến tưởng của bạn thành những hình ảnh tuyệt đẹp một cách nhanh chóng. Đơn giản, mạnh mẽ, biến đổi.",
-    "sidebar__promotion_dialog__cta_button": "Nâng cấp ngay - Mở khóa tất cả tính năng",
+    "sidebar__promotion_dialog__cta_button": "Ưu đãi giới hạn: Nhận ngay 53% GIẢM!",
     "provider__bard_web_app__model__gemini__description": "Mô hình tiên tiến nhất của Google.",
     "translation_advanced__title": "Cài đặt dịch",
     "translation_advanced__source_lang_select__label": "Ngôn ngữ nguồn",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite cung cấp không giới hạn truy vấn AI, tóm tắt AI, tìm kiếm AI và phản hồi tức thì.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Câu hỏi của tôi",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Thêm câu hỏi của tôi",
-    "sidebar__summary__advanced__title": "Tùy chọn tóm tắt nâng cao"
+    "sidebar__summary__advanced__title": "Tùy chọn tóm tắt nâng cao",
+    "floating_menu__discard_changes_card__ai_response__title": "Bạn có muốn hủy phản hồi của AI không?",
+    "floating_menu__discard_changes_card__your_draft__title": "Bạn có muốn hủy bỏ bản nháp của bạn không?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

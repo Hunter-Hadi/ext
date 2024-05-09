@@ -57,7 +57,8 @@
     "team_plan": "Teamplan",
     "manage_my_plan": "Hantera mitt plan",
     "watch_video": "Titta på video",
-    "input_content": "Innehåll för inmatning"
+    "input_content": "Innehåll för inmatning",
+    "discard": "Kasta"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Låt AI generera personliga meddelandesvar åt dig på några sekunder med bara ett klick på WhatsApp, Discord, Telegram, Messenger och Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Skapa AI-konst och bilder",
     "sidebar__promotion_dialog__content_item5__description": "Omvandla snabbt dina visioner till fantastiska bilder. Enkelt, kraftfullt, transformerande.",
-    "sidebar__promotion_dialog__cta_button": "Uppgradera nu - Lås upp alla funktioner",
+    "sidebar__promotion_dialog__cta_button": "Begränsat erbjudande: Hävda 53% RABATT nu!",
     "provider__bard_web_app__model__gemini__description": "Den mest avancerade modellen av Google.",
     "translation_advanced__title": "Översättningsinställningar",
     "translation_advanced__source_lang_select__label": "Källspråk",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite erbjuder obegränsade AI-förfrågningar, AI-summeringar, AI-sökningar och omedelbara svar.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mina egna förslag",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lägg till mitt eget förslag",
-    "sidebar__summary__advanced__title": "Avancerade sammanfattningsalternativ"
+    "sidebar__summary__advanced__title": "Avancerade sammanfattningsalternativ",
+    "floating_menu__discard_changes_card__ai_response__title": "Vill du kasta AI-svaret?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vill du kasta din utkast?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

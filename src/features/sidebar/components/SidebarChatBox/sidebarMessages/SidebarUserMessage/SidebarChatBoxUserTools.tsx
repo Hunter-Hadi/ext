@@ -12,7 +12,7 @@ const SidebarChatBoxUserTools: FC<{
   message: IUserChatMessage
 }> = (props) => {
   const { message } = props
-  const currentMessageText = formatChatMessageContent(message)
+  const currentMessageText = formatChatMessageContent(message, true)
   return (
     <Stack
       direction={'row'}
@@ -21,6 +21,9 @@ const SidebarChatBoxUserTools: FC<{
       justifyContent={'flex-end'}
     >
       <CopyTooltipIconButton
+        PopperProps={{
+          disablePortal: true,
+        }}
         copyText={currentMessageText}
         onCopy={() => {
           if (TEMP_CLOSE_HOSTS.includes(window.location.host)) {

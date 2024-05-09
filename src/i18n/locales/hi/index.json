@@ -57,7 +57,8 @@
     "team_plan": "टीम प्लान",
     "manage_my_plan": "मेरी योजना का प्रबंधन करें",
     "watch_video": "वीडियो देखें",
-    "input_content": "इनपुट सामग्री"
+    "input_content": "इनपुट सामग्री",
+    "discard": "छोड़ें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "एक क्लिक पर व्हाट्सएप, डिस्कॉर्ड, टेलीग्राम, मैसेंजर और स्लैक पर केवल कुछ सेकंड में आपके लिए व्यक्तिगत संदेशों को उत्पन्न करने के लिए AI का उपयोग करें।",
     "sidebar__promotion_dialog__content_item5__title": "AI कला और छवियों को बनाएँ",
     "sidebar__promotion_dialog__content_item5__description": "अपने दृश्यों को तेजी से शानदार छवियों में बदलें। सरल, शक्तिशाली, परिवर्तनकारी।",
-    "sidebar__promotion_dialog__cta_button": "अभी अपग्रेड करें - सभी सुविधाओं को खोलें",
+    "sidebar__promotion_dialog__cta_button": "सीमित समय का प्रस्ताव: अभी 53% छूट प्राप्त करें!",
     "provider__bard_web_app__model__gemini__description": "Google द्वारा सबसे उन्नत मॉडल।",
     "translation_advanced__title": "अनुवाद सेटिंग्स",
     "translation_advanced__source_lang_select__label": "स्रोत भाषा",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite असीमित AI क्वेरी, AI सारांश, AI खोज और तत्क्षण उत्तर प्रदान करता है।",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "मेरे खुद के प्रॉम्प्ट",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "अपना प्रॉम्प्ट जोड़ें",
-    "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प"
+    "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प",
+    "floating_menu__discard_changes_card__ai_response__title": "क्या आप AI प्रतिक्रिया को छोड़ना चाहते हैं?",
+    "floating_menu__discard_changes_card__your_draft__title": "क्या आप अपने ड्राफ्ट को छोड़ना चाहते हैं?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

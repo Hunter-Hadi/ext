@@ -54,7 +54,8 @@
     "team_plan": "Թիմային պլան",
     "manage_my_plan": "Կառավարել իմ պլանը",
     "watch_video": "Տեսնել տեսանյութը",
-    "input_content": "Մուտքագրեք բովանդակությունը"
+    "input_content": "Մուտքագրեք բովանդակությունը",
+    "discard": "Հեռացնել"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -620,7 +621,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Թույլատրեք AI-ին գեներացնել ձեր համար անհատական նամակները վարժեցնելու համար միայն մեկ կտտացողությամբ WhatsApp, Discord, Telegram, Messenger և Slack-ում:",
     "sidebar__promotion_dialog__content_item5__title": "Ստեղծել AI արվեստ և պատկերներ",
     "sidebar__promotion_dialog__content_item5__description": "Արագությամբ վերադարձնեք ձեր տեսարժան պատկերները հոդվածներին: Պարզ, արագ, փոքրաթաթերթային:",
-    "sidebar__promotion_dialog__cta_button": "Թարմացնել հիմա - Բացահայտեք բոլոր հատկությունները",
+    "sidebar__promotion_dialog__cta_button": "Ժամանակավոր առաջարկ: Գնահատեք 53% զեղչը հիմա!",
     "provider__bard_web_app__model__gemini__description": "Գոլորշինը առաջարկում է Google-ի ամենակարճատեսական մոդելը։",
     "translation_advanced__title": "Թարգմանության պարամետրեր",
     "translation_advanced__source_lang_select__label": "Աղբյուր լեզու",
@@ -767,7 +768,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI-ի GPT-4-ն է, որը արագությամբ և արագացումներով է լավագույնը: Այն համակարգիչներին առաջացնում է լավագույն լուծումներ ստանալու ժամանակակից խնդիրների, բաց ավարտված հրահանգների և այլնի համար:",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Իմ սեփական հարցերը",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ավելացնել իմ սեփական հարց",
-    "sidebar__summary__advanced__title": "Առաջինը ավելին՝ ամբողջական տեսականին"
+    "sidebar__summary__advanced__title": "Առաջինը ավելին՝ ամբողջական տեսականին",
+    "floating_menu__discard_changes_card__ai_response__title": "Դուք ցանկանում եք մերժել AI պատասխանը?",
+    "floating_menu__discard_changes_card__your_draft__title": "Ցանկանու՞մ եք հեռացնել ձեր փուղարկումը:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

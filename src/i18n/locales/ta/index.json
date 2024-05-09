@@ -57,7 +57,8 @@
     "team_plan": "குழு திட்டம்",
     "manage_my_plan": "என் திட்டத்தை நிர்வகிக்கவும்",
     "watch_video": "வீடியோ பாருங்கள்",
-    "input_content": "உள்ளீடு உள்ளிடவும்"
+    "input_content": "உள்ளீடு உள்ளிடவும்",
+    "discard": "நிராகரி"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "ஒரு கிளியெட் முறையில் வாட்ஸ்அப், டிஸ்கார்ட், டெலிகிராம், மெசஞ்சர் மற்றும் ஸ்லாக் இல் நீங்கள் தனிப்பட்ட செய்தி பதில்களை ஐஏ உருவாக்குகிறது.",
     "sidebar__promotion_dialog__content_item5__title": "ஐயாவியாக AI கலை மற்றும் படங்களை உருவாக்கு",
     "sidebar__promotion_dialog__content_item5__description": "உங்கள் கண்ணே மிகுந்த படங்களாக மாற்ற வேகமாக உருவாக்குவது. எளிமையான, சக்திவாய்ந்த, மாற்றுத்திறனானது.",
-    "sidebar__promotion_dialog__cta_button": "இப்போது மேம்படுத்துவதற்கான அனைத்து அம்சங்களையும் விடுவிக்கவும்",
+    "sidebar__promotion_dialog__cta_button": "வரம்பு நேரத்தில் செல்லுபடி: 53% தள்ளுபடி பெறுங்கள்!",
     "provider__bard_web_app__model__gemini__description": "Google மூலம் மிகவும் மேம்படுத்தப்பட்ட மாதிரி.",
     "translation_advanced__title": "மொழிபெயர்ப்பு அமைப்புகள்",
     "translation_advanced__source_lang_select__label": "மூல மொழி",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description2": "OpenAI ஐன் GPT-4, வேகமாக மற்றும் செயல்பாட்டில் முன்னணி முறையில் உருவாக்கப்படுகின்றது, மர்மம் மற்றும் முன்னேற்றத்துடன் அறிவிப்புகளையும் மேலாண்மையான பதில்களையும் தருகின்றது.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "எனது பிரம்பங்கள்",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "எனது பிரம்பத்தைச் சேர்க்க",
-    "sidebar__summary__advanced__title": "மேம்பட்ட சுருக்கம் விருப்பங்கள்"
+    "sidebar__summary__advanced__title": "மேம்பட்ட சுருக்கம் விருப்பங்கள்",
+    "floating_menu__discard_changes_card__ai_response__title": "நீங்கள் ஆர்டிஃபியை விலக்குவதற்கு விரும்புகிறீர்களா?",
+    "floating_menu__discard_changes_card__your_draft__title": "உங்கள் மதிப்பீட்டை நிராகரிக்க விரும்புகிறீர்களா?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

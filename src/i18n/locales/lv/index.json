@@ -57,7 +57,8 @@
     "team_plan": "Komandas plāns",
     "manage_my_plan": "Pārvaldīt manu plānu",
     "watch_video": "Skatīt video",
-    "input_content": "Ievadiet saturu"
+    "input_content": "Ievadiet saturu",
+    "discard": "Atmest"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Ļaujiet AI ģenerēt personalizētas ziņu atbildes jums sekundēs ar vienu klikšķi uz WhatsApp, Discord, Telegram, Messenger un Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Radīt AI mākslu un attēlus",
     "sidebar__promotion_dialog__content_item5__description": "Ātri pārvērtiet savas redzes par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši.",
-    "sidebar__promotion_dialog__cta_button": "Jaunināt tagad - Atbloķējiet visas funkcijas",
+    "sidebar__promotion_dialog__cta_button": "Ierobežots laiks: Saņem 53% atlaidi tagad!",
     "provider__bard_web_app__model__gemini__description": "Visattīstītākais Google modeļa variants.",
     "translation_advanced__title": "Tulkošanas iestatījumi",
     "translation_advanced__source_lang_select__label": "Avota valoda",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite piedāvā neierobežotus AI vaicājumus, AI kopsavilkumus, AI meklēšanas rezultātus un momentānas atbildes.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Mani paša uzdevumi",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pievienot savu uzdevumu",
-    "sidebar__summary__advanced__title": "Papildu kopsavilkuma opcijas"
+    "sidebar__summary__advanced__title": "Papildu kopsavilkuma opcijas",
+    "floating_menu__discard_changes_card__ai_response__title": "Vai vēlaties atmest AI atbildi?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vai vēlaties atmest savu melnrakstu?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

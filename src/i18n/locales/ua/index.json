@@ -57,7 +57,8 @@
     "team_plan": "План для команди",
     "manage_my_plan": "Керувати моїм планом",
     "watch_video": "Переглянути відео",
-    "input_content": "Введіть вміст"
+    "input_content": "Введіть вміст",
+    "discard": "Відхилити"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Дозвольте штучний інтелект створювати персоналізовані відповіді на повідомлення за кілька секунд одним кліком у WhatsApp, Discord, Telegram, Messenger та Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Створюйте мистецтво та зображення штучного інтелекту",
     "sidebar__promotion_dialog__content_item5__description": "Швидко перетворюйте свої бачення на захоплюючі зображення. Просто, потужно, трансформуюче.",
-    "sidebar__promotion_dialog__cta_button": "Оновити зараз - Розблокуйте всі функції",
+    "sidebar__promotion_dialog__cta_button": "Обмежений часовий пропозиція: Отримайте 53% ЗНИЖКУ зараз!",
     "provider__bard_web_app__model__gemini__description": "Найбільш розширена модель від Google.",
     "translation_advanced__title": "Налаштування перекладу",
     "translation_advanced__source_lang_select__label": "Мова джерела",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite пропонує необмежену кількість запитів штучного інтелекту, штучних резюме, пошуків штучного інтелекту та миттєвих відповідей.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Мої власні пропозиції",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Додати свою пропозицію",
-    "sidebar__summary__advanced__title": "Розширені параметри підсумку"
+    "sidebar__summary__advanced__title": "Розширені параметри підсумку",
+    "floating_menu__discard_changes_card__ai_response__title": "Ви хочете відхилити відповідь ШІ?",
+    "floating_menu__discard_changes_card__your_draft__title": "Ви бажаєте відмінити ваш чернетку?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

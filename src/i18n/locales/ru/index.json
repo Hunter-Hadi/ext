@@ -57,7 +57,8 @@
     "team_plan": "План для команды",
     "manage_my_plan": "Управление моим планом",
     "watch_video": "Смотреть видео",
-    "input_content": "Вводите содержимое"
+    "input_content": "Вводите содержимое",
+    "discard": "Отменить"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Позвольте ИИ генерировать персонализированные ответы на сообщения за секунды всего одним нажатием кнопки в WhatsApp, Discord, Telegram, Messenger и Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Создание искусства и изображений с помощью ИИ",
     "sidebar__promotion_dialog__content_item5__description": "Быстро превращайте свои видения в потрясающие изображения. Просто, мощно, трансформирующе.",
-    "sidebar__promotion_dialog__cta_button": "Обновить сейчас - Разблокировать все функции",
+    "sidebar__promotion_dialog__cta_button": "Ограниченное предложение: Получите сейчас скидку 53%!",
     "provider__bard_web_app__model__gemini__description": "Самая передовая модель от Google.",
     "translation_advanced__title": "Настройки перевода",
     "translation_advanced__source_lang_select__label": "Исходный язык",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite предлагает неограниченные запросы ИИ, резюме ИИ, поиски ИИ и мгновенные ответы.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Мои собственные подсказки",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Добавить свою подсказку",
-    "sidebar__summary__advanced__title": "Расширенные варианты сводки"
+    "sidebar__summary__advanced__title": "Расширенные варианты сводки",
+    "floating_menu__discard_changes_card__ai_response__title": "Вы хотите отменить ответ ИИ?",
+    "floating_menu__discard_changes_card__your_draft__title": "Вы хотите отменить черновик?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

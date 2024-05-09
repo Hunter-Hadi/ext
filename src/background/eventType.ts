@@ -25,6 +25,8 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_listenTabUrlUpdate'
   // iframe
   | 'Iframe_ListenGetPageContent'
+  // global video popup
+  | 'Client_listenSwitchVideoPopup'
 
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
@@ -81,6 +83,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_logUserUsageInfo'
   // iframe
   | 'Iframe_sendPageContent'
+  // global video popup
+  | 'Client_switchVideoPopup'
   | IWebsiteContextSendEvent
 
 // chat.openai.com(daemon process) 监听task event

@@ -30,7 +30,7 @@ const SidebarCopyButton: FC<{
   const { message, onCopy } = props
   const { t } = useTranslation(['common'])
   const memoCopyText = useMemo(() => {
-    return formatAIMessageContent(message)
+    return formatAIMessageContent(message, true)
   }, [message])
   const copyButtonRef = useRef<HTMLButtonElement>(null)
   const [isHover, setIsHover] = useState(false)

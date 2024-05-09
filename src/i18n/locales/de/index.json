@@ -57,7 +57,8 @@
     "team_plan": "Team-Plan",
     "manage_my_plan": "Meinen Plan verwalten",
     "watch_video": "Video ansehen",
-    "input_content": "Eingabeinhalt"
+    "input_content": "Eingabeinhalt",
+    "discard": "Verwerfen"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie in Sekundenschnelle generieren - mit nur einem Klick auf WhatsApp, Discord, Telegram, Messenger und Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Künstliche Intelligenz-Kunst und Bilder erstellen",
     "sidebar__promotion_dialog__content_item5__description": "Verwandeln Sie Ihre Visionen schnell in atemberaubende Bilder. Einfach, leistungsstark, transformierend.",
-    "sidebar__promotion_dialog__cta_button": "Jetzt upgraden - Alle Funktionen freischalten",
+    "sidebar__promotion_dialog__cta_button": "Begrenztes Angebot: Jetzt 53% Rabatt sichern!",
     "provider__bard_web_app__model__gemini__description": "Das fortschrittlichste Modell von Google.",
     "translation_advanced__title": "Übersetzungseinstellungen",
     "translation_advanced__source_lang_select__label": "Ausgangssprache",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite bietet unbegrenzte KI-Abfragen, KI-Zusammenfassungen, KI-Suchen und sofortige Antworten.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Meine eigenen Vorschläge",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Eigenen Vorschlag hinzufügen",
-    "sidebar__summary__advanced__title": "Erweiterte Zusammenfassungsoptionen"
+    "sidebar__summary__advanced__title": "Erweiterte Zusammenfassungsoptionen",
+    "floating_menu__discard_changes_card__ai_response__title": "Möchten Sie die KI-Antwort verwerfen?",
+    "floating_menu__discard_changes_card__your_draft__title": "Möchten Sie Ihren Entwurf verwerfen?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

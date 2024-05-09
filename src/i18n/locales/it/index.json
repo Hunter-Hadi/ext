@@ -57,7 +57,8 @@
     "team_plan": "Piano di squadra",
     "manage_my_plan": "Gestisci il mio piano",
     "watch_video": "Guarda il video",
-    "input_content": "Contenuto di input"
+    "input_content": "Contenuto di input",
+    "discard": "Scarta"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Lascia che l'IA generi risposte personalizzate per te in pochi secondi con un solo clic su WhatsApp, Discord, Telegram, Messenger e Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Crea arte e immagini AI",
     "sidebar__promotion_dialog__content_item5__description": "Trasforma rapidamente le tue visioni in immagini sbalorditive. Semplice, potente, trasformativo.",
-    "sidebar__promotion_dialog__cta_button": "Aggiorna ora - Sblocca tutte le funzionalità",
+    "sidebar__promotion_dialog__cta_button": "Offerta a tempo limitato: Richiedi ora il 53% DI SCONTO!",
     "provider__bard_web_app__model__gemini__description": "Il modello più avanzato di Google.",
     "translation_advanced__title": "Impostazioni di traduzione",
     "translation_advanced__source_lang_select__label": "Lingua di origine",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite offre query AI illimitate, riassunti AI, ricerche AI e risposte istantanee.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Le mie domande",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Aggiungi la mia domanda",
-    "sidebar__summary__advanced__title": "Opzioni avanzate di riepilogo"
+    "sidebar__summary__advanced__title": "Opzioni avanzate di riepilogo",
+    "floating_menu__discard_changes_card__ai_response__title": "Vuoi eliminare la risposta dell'IA?",
+    "floating_menu__discard_changes_card__your_draft__title": "Vuoi eliminare la tua bozza?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

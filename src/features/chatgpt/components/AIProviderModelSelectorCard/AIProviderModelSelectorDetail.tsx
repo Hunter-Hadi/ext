@@ -8,19 +8,30 @@ import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import EllipsisTextWithTooltip from '@/features/common/components/EllipsisTextWithTooltip'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 const AIProviderModelSelectorDetail: FC<{
   AIProviderModel: string
   AIProvider: IAIProviderType
   hideAIProviderIcon?: boolean
+
 }> = (props) => {
   const { AIProviderModel, AIProvider, hideAIProviderIcon = false } = props
   const { t } = useTranslation(['common', 'client'])
   const { getAIProviderModelDetail } = useAIProviderModelsMap()
+  const { currentSidebarConversationType } = useSidebarSettings()
   const currentAIProviderModelDetail = useMemo(() => {
     return getAIProviderModelDetail(AIProvider, AIProviderModel)
   }, [getAIProviderModelDetail, AIProvider, AIProviderModel])
+
+  const currentAIProviderModelTags = useMemo(() => {
+    if (currentAIProviderModelDetail) {
+      return typeof currentAIProviderModelDetail.tags === 'function' ? currentAIProviderModelDetail.tags(currentSidebarConversationType) : currentAIProviderModelDetail.tags
+    }
+    return []
+  }, [currentAIProviderModelDetail, currentSidebarConversationType])
+
   return (
     <AppLoadingLayout loading={!currentAIProviderModelDetail}>
       <Stack
@@ -60,9 +71,9 @@ const AIProviderModelSelectorDetail: FC<{
                 {t('client:provider__model__selector__disabled__description')}
               </Typography>
             )}
-            {currentAIProviderModelDetail?.tags?.length ? (
+            {currentAIProviderModelTags.length ? (
               <Stack direction={'row'} flexWrap={'wrap'} gap={'4px'}>
-                {currentAIProviderModelDetail.tags.map((tag) => {
+                {currentAIProviderModelTags.map((tag) => {
                   return (
                     <Typography
                       key={tag}

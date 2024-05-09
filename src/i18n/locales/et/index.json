@@ -57,7 +57,8 @@
     "team_plan": "Meeskonna plaan",
     "manage_my_plan": "Halda oma plaani",
     "watch_video": "Vaata videot",
-    "input_content": "Sisestage sisu"
+    "input_content": "Sisestage sisu",
+    "discard": "Loobu"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -623,7 +624,7 @@
     "sidebar__promotion_dialog__content_item4__description": "Lase AI-l genereerida isikupärastatud sõnumivastused vaid ühe klõpsuga WhatsAppis, Discordis, Telegramis, Messengeris ja Slackis.",
     "sidebar__promotion_dialog__content_item5__title": "Loo AI kunsti ja pilte",
     "sidebar__promotion_dialog__content_item5__description": "Muuda oma visioonid kiiresti hämmastavateks piltideks. Lihtne, võimas, muutlik.",
-    "sidebar__promotion_dialog__cta_button": "Täiusta kohe - Ava kõik funktsioonid",
+    "sidebar__promotion_dialog__cta_button": "Piiratud aja pakkumine: Nõua nüüd 53% ALLAHINDLUST!",
     "provider__bard_web_app__model__gemini__description": "Google kõige arenenum mudel.",
     "translation_advanced__title": "Tõlke seaded",
     "translation_advanced__source_lang_select__label": "Allikakeel",
@@ -770,7 +771,9 @@
     "permission__pricing_hook__footer_tip": "MaxAI Elite pakub piiramatut AI päringuid, AI kokkuvõtteid, AI otsinguid ja koheseid vastuseid.",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "Minu enda vihjed",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lisa oma vihje",
-    "sidebar__summary__advanced__title": "Täpsemad kokkuvõtte valikud"
+    "sidebar__summary__advanced__title": "Täpsemad kokkuvõtte valikud",
+    "floating_menu__discard_changes_card__ai_response__title": "Kas soovite AI-vastusest loobuda?",
+    "floating_menu__discard_changes_card__your_draft__title": "Kas soovite oma mustandi kustutada?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

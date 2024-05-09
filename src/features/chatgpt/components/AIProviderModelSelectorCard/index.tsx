@@ -62,7 +62,10 @@ const AIProviderModelTagIcon: FC<{
 
 interface AIModelSelectorCardProps {
   sidebarConversationType: ISidebarConversationType
-  currentModelDetail: any
+  currentModelDetail: {
+    value: string;
+    AIProvider: string;
+  }
   sx?: SxProps
   onClose?: (event: React.MouseEvent<HTMLDivElement>) => void
 }

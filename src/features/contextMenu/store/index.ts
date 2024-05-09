@@ -99,3 +99,20 @@ export const FloatingDropdownMenuItemsSelector = selector<string[]>({
     return Object.values(hoverIdMap).filter((id) => id)
   },
 })
+
+export const FloatingContextWindowChangesState = atom<{
+  contextWindowMode:
+    | 'READ'
+    | 'EDITED_VARIABLES'
+    | 'EDIT_VARIABLES'
+    | 'AI_RESPONSE'
+    | 'CUSTOM_INPUT'
+    | 'LOADING'
+  discardChangesModalVisible: boolean
+}>({
+  key: 'FloatingContextWindowModeState',
+  default: {
+    contextWindowMode: 'READ',
+    discardChangesModalVisible: false,
+  },
+})

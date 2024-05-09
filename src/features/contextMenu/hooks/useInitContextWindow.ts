@@ -9,6 +9,7 @@ import { isSystemMessageByType } from '@/features/chatgpt/utils/chatMessageUtils
 import { MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID } from '@/features/common/constants'
 import {
   ContextWindowDraftContextMenuState,
+  FloatingContextWindowChangesState,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
   useContextMenuList,
@@ -220,44 +221,48 @@ const useInitContextWindow = () => {
    * 5. CUSTOM_INPUT: 自定义的输入
    * 6. LOADING: 加载中
    */
-  const contextWindowMode = useMemo<
-    | 'READ'
-    | 'EDITED_VARIABLES'
-    | 'EDIT_VARIABLES'
-    | 'AI_RESPONSE'
-    | 'CUSTOM_INPUT'
-    | 'LOADING'
-  >(() => {
-    if (loading) {
-      return 'LOADING'
-    }
-    /**
-     * 是否是InstantReply的按钮
-     */
-    const isInstantReplyButton =
-      currentSelection?.activeElement?.hasAttribute(
-        'maxai-input-assistant-button-id',
-      ) || false
-    console.log(
-      `[ContextWindow] currentSelection`,
-      currentSelection,
-      isInstantReplyButton,
-    )
-    if (currentSelection?.selectionInputAble || isInstantReplyButton) {
-      if (inputValue && contextWindowList.length === 0) {
-        return 'CUSTOM_INPUT'
+  const [, setContextWindowChanges] = useRecoilState(
+    FloatingContextWindowChangesState,
+  )
+  useEffect(() => {
+    const getCurrentState = () => {
+      if (loading) {
+        return 'LOADING'
       }
-      if (currentFloatingContextMenuDraft) {
-        return 'AI_RESPONSE'
+      /**
+       * 是否是InstantReply的按钮
+       */
+      const isInstantReplyButton =
+        currentSelection?.activeElement?.hasAttribute(
+          'maxai-input-assistant-button-id',
+        ) || false
+      console.log(
+        `[ContextWindow] currentSelection`,
+        currentSelection,
+        isInstantReplyButton,
+      )
+      if (currentSelection?.selectionInputAble || isInstantReplyButton) {
+        if (inputValue && contextWindowList.length === 0) {
+          return 'CUSTOM_INPUT'
+        }
+        if (currentFloatingContextMenuDraft) {
+          return 'AI_RESPONSE'
+        }
       }
-    }
-    if (isSettingCustomVariablesMemo) {
-      if (isInputCustomVariables) {
-        return 'EDITED_VARIABLES'
+      if (isSettingCustomVariablesMemo) {
+        if (isInputCustomVariables) {
+          return 'EDITED_VARIABLES'
+        }
+        return 'EDIT_VARIABLES'
       }
-      return 'EDIT_VARIABLES'
+      return 'READ'
     }
-    return 'READ'
+    setContextWindowChanges((prev) => {
+      return {
+        ...prev,
+        contextWindowMode: getCurrentState(),
+      }
+    })
   }, [
     currentSelection,
     inputValue,
@@ -678,7 +683,6 @@ const useInitContextWindow = () => {
     console.log('AIInput remove', floatingDropdownMenu.open)
   }, [floatingDropdownMenu.open])
   return {
-    contextWindowMode,
     loading,
     isFloatingMenuVisible,
     inputValue,

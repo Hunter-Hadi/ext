@@ -58,7 +58,13 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'claude-3-haiku',
     maxTokens: 200000,
-    tags: ['Vision'],
+    tags: (currentConversationType) => {
+      const tags = []
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_haiku__description`),
@@ -73,7 +79,13 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'claude-3-sonnet',
     maxTokens: 200000,
-    tags: ['Vision'],
+    tags: (currentConversationType) => {
+      const tags = []
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_sonnet__description`),
@@ -88,7 +100,13 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'claude-3-opus',
     maxTokens: 200000,
-    tags: ['Beta', 'Vision'],
+    tags: (currentConversationType) => {
+      const tags = ['Beta']
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_opus__description`),

@@ -92,6 +92,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
       .AIModel ||
     SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel
+
   const currentSidebarConversationTypeModels = useMemo(() => {
     return getModelOptionsForConversationType(sidebarConversationType)
       .filter((model) => {
@@ -110,6 +111,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         return model
       })
   }, [sidebarConversationType, remoteAIProviderConfig.hiddenAIProviders])
+
   const currentModelDetail = useMemo(() => {
     const AIProviderSelectorModel = ChatAIProviderModelSelectorOptions.find(
       (option) => option.value === currentAIModel,
@@ -134,6 +136,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
       AIProvider: currentAIProvider,
     }
   }, [AI_PROVIDER_MODEL_MAP, currentAIModel, currentAIProvider])
+
   const isSelectedMaxAIModel = useMemo(() => {
     // hover的优先级最高
     if (hoverModel) {
@@ -152,6 +155,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     }
     return null
   }, [currentModelDetail?.value, sidebarConversationType, hoverModel])
+
   return (
     <Box
       onClick={(event: React.MouseEvent<HTMLDivElement>) => {
@@ -221,7 +225,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                 AIModelOption.value === currentModelDetail?.value
               }
               onClick={async () => {
-                if (isHoverThirdPartyModel) {
+                if (isHoverThirdPartyModel || AIModelOption.value === currentModelDetail?.value) {
                   return
                 }
                 await updateAIProviderModel(
@@ -292,6 +296,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
               <KeyboardArrowRightOutlinedIcon
                 sx={{
                   fontSize: '20px',
+                  color: (t) => t.palette.mode === 'dark' ? '#FFF' : 'inherit'
                 }}
               />
             </Stack>

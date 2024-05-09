@@ -280,6 +280,15 @@ const useSidebarSettings = () => {
       })
       setSidebarSummaryConversationId(conversationId)
     } else if (conversationType === 'Search') {
+      // 获取当前AIProvider
+      // 获取当前AIProvider的model
+      // 获取当前AIProvider的model的maxTokens
+      const baseMetaConfig: Partial<IChatConversationMeta> = {
+        AIProvider: AIProvider,
+        AIModel: AIModel,
+        maxTokens:
+          getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 16384,
+      }
       // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -287,7 +296,8 @@ const useSidebarSettings = () => {
           initConversationData: {
             type: 'Search',
             title: 'AI-powered search',
-            meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
+            meta: baseMetaConfig,
+            // meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
           } as Partial<IChatConversation>,
         },
       })

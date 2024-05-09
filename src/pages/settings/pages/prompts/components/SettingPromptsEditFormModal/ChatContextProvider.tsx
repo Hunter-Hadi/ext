@@ -25,7 +25,7 @@ const ChatContextProvider: FC<{ children: React.ReactNode }> = (props) => {
       updateConversationStatus,
       updateConversationId: async (newId) => updateConversationId(newId),
       createConversation: async (conversationType, AIProvider, AIModel) => {
-        const newConversationId = await createSidebarConversation('PromptPreview', AIProvider, AIModel)
+        const newConversationId = await createSidebarConversation('Chat', AIProvider, AIModel)
         updateConversationId(newConversationId)
         return newConversationId
       },
@@ -34,7 +34,7 @@ const ChatContextProvider: FC<{ children: React.ReactNode }> = (props) => {
   }, [conversationId, conversationStatus])
 
   useEffectOnce(() => {
-    chatContextValue.createConversation('PromptPreview')
+    chatContextValue.createConversation('Chat')
   })
 
   return (

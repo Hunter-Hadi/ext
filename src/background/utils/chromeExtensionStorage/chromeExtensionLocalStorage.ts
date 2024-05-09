@@ -66,10 +66,6 @@ export const MAXAI_DEFAULT_AI_PROVIDER_CONFIG: {
     AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
     AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
   },
-  PromptPreview: {
-    AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
-  }
 }
 
 export const defaultChromeExtensionLocalStorage =

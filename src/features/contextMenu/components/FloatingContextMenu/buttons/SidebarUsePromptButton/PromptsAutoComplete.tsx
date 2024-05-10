@@ -412,7 +412,7 @@ const RenderDropdownItem: FC<{
             <LiteDropdownMenuItem
               isGroup
               icon={menuItem.data.icon}
-              label={menuItem.text}
+              label={menuLabel}
             />
           }
           menuSx={{

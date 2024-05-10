@@ -61,7 +61,7 @@ const PromptsAutoComplete: FC<{
     true,
   )
   console.log(`PromptsAutoComplete`, direction, query)
-  const { t } = useTranslation(['prompt'])
+  const { t } = useTranslation(['common', 'prompt'])
   const formatOptions = useMemo<GroupByPromptType[]>(() => {
     const filterOptions: IContextMenuItemWithChildren[] = []
     const loopChildren = (children: IContextMenuItemWithChildren[]) => {
@@ -171,6 +171,7 @@ const PromptsAutoComplete: FC<{
         }}
         disablePortal
         open
+        noOptionsText={t('common:no_options')}
         size={'small'}
         autoHighlight
         options={formatOptions}

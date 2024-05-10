@@ -55,7 +55,12 @@ const SidebarUsePromptButton: FC<{
   }, [message, text])
   const isRunningRef = useRef(false)
   const handleRunActions = async (actions: ISetActionsType) => {
-    if (actions && actions.length > 0 && !smoothConversationLoading) {
+    if (
+      actions &&
+      actions.length > 0 &&
+      !smoothConversationLoading &&
+      !isRunningRef.current
+    ) {
       try {
         isRunningRef.current = true
         const runActions: ISetActionsType = cloneDeep(actions || []).map(

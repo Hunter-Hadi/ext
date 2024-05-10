@@ -81,6 +81,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     data: {
       type: 'shortcuts',
       editable: false,
+      icon: 'Done',
     },
     children: [],
   },

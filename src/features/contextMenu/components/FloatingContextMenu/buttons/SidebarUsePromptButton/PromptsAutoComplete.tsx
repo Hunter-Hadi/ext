@@ -12,7 +12,6 @@ import React, {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { atomFamily } from 'recoil'
 
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -54,36 +53,59 @@ const PromptsAutoComplete: FC<{
     }
     return 'bottom'
   }, [placement])
-  console.log(`PromptsAutoComplete`, direction)
   const [query, setQuery] = useState<string>('')
   const { originContextMenuList, contextMenuList } = useContextMenuList(
     buttonSettingsKey,
     query,
     true,
   )
+  console.log(`PromptsAutoComplete`, direction, query)
   const { t } = useTranslation(['prompt'])
   const formatOptions = useMemo<GroupByPromptType[]>(() => {
+    const filterOptions: IContextMenuItemWithChildren[] = []
+    const loopChildren = (children: IContextMenuItemWithChildren[]) => {
+      children.forEach((item) => {
+        if (item.data.type === 'group') {
+          filterOptions.push(item)
+          loopChildren(item.children)
+        } else {
+          filterOptions.push(item)
+        }
+      })
+    }
+    contextMenuList.forEach((item) => {
+      if (item.data.type === 'group') {
+        filterOptions.push(item)
+        loopChildren(item.children)
+      } else {
+        filterOptions.push(item)
+      }
+    })
     const parentMap = new Map<string, IContextMenuItem>()
     originContextMenuList.forEach((item) => {
       if (item.data.type === 'group') {
         parentMap.set(item.id, item)
       }
     })
-    return originContextMenuList.map((item) => {
-      const id = item.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
-      const key: any = `prompt:${id}`
-      let menuText = item.text
-      if (t(key) !== id) {
-        menuText = t(key)
-      }
-      return {
-        id: item.id,
-        text: menuText,
-        parent: parentMap.get(item.parent)?.text || '',
-        icon: item.data.icon,
-      }
-    })
-  }, [originContextMenuList, t])
+    return filterOptions
+      .filter((option) => {
+        return option.data.type === 'shortcuts'
+      })
+      .map((item) => {
+        const id = item.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
+        const key: any = `prompt:${id}`
+        let menuText = item.text
+        if (t(key) !== id) {
+          menuText = t(key)
+        }
+        return {
+          id: item.id,
+          text: menuText,
+          parent: parentMap.get(item.parent)?.text || '',
+          icon: item.data.icon,
+        }
+      })
+  }, [contextMenuList, t, originContextMenuList])
   const handleSelectPromptId = (promptId: string) => {
     const prompt = promptId
       ? originContextMenuList.find(
@@ -110,6 +132,9 @@ const PromptsAutoComplete: FC<{
       }}
     >
       <Autocomplete<GroupByPromptType>
+        filterOptions={(options) => {
+          return options
+        }}
         popupIcon={null}
         inputValue={query}
         onInputChange={(_, value) => {
@@ -308,13 +333,6 @@ const ContextMenuDivider: FC<{
     />
   )
 }
-export const SidebarUsePromptSelectContextMenuState = atomFamily<
-  IContextMenuItemWithChildren | null,
-  string
->({
-  key: 'SidebarUsePromptSelectContextMenuState',
-  default: null,
-})
 const RenderDropdownItem: FC<{
   onSelectPromptId: (promptId: string) => void
   menuItem: IContextMenuItemWithChildren
@@ -322,7 +340,16 @@ const RenderDropdownItem: FC<{
   index: number
   deep?: number
 }> = ({ onSelectPromptId, menuItem, root, index, deep = 0 }) => {
+  const { t } = useTranslation(['prompt'])
   const nodeList: ReactNode[] = []
+  const menuLabel = useMemo(() => {
+    const id = menuItem.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
+    const key: any = `prompt:${id}`
+    if (t(key) !== id) {
+      return t(key)
+    }
+    return menuItem.text
+  }, [menuItem.text, t])
   if (menuItem.data.type === 'group') {
     if (deep === 0) {
       if (index > 0) {
@@ -350,7 +377,7 @@ const RenderDropdownItem: FC<{
           }}
         >
           <Typography textAlign={'left'} fontSize={12} color={'text.secondary'}>
-            {menuItem.text}
+            {menuLabel}
           </Typography>
         </Box>,
       )
@@ -400,7 +427,7 @@ const RenderDropdownItem: FC<{
   return (
     <LiteDropdownMenuItem
       icon={menuItem.data.icon}
-      label={menuItem.text}
+      label={menuLabel}
       onClick={() => {
         onSelectPromptId(menuItem.id)
       }}

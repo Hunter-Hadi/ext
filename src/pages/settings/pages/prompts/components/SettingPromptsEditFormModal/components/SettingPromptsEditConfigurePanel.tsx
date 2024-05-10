@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
@@ -19,10 +20,19 @@ import {
   specialInputAssistantButtonKeys,
 } from '@/pages/settings/pages/prompts/store'
 
-const ConfigurePanel: FC<{ iconSetting?: boolean }> = ({ iconSetting }) => {
-  const { t } = useTranslation(['settings', 'common'])
-  const { editNode, selectedIcon, setEditNode, setSelectedIcon } =
-    useSettingPromptsEditContext()
+const ConfigurePanel: FC<{
+  iconSetting?: boolean
+  onNextClick?: () => void
+}> = ({ iconSetting, onNextClick }) => {
+  const { t } = useTranslation(['settings', 'common', 'prompt_editor'])
+  const {
+    editNode,
+    selectedIcon,
+    errors,
+    setEditNode,
+    setSelectedIcon,
+    setErrors,
+  } = useSettingPromptsEditContext()
 
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
@@ -37,6 +47,14 @@ const ConfigurePanel: FC<{ iconSetting?: boolean }> = ({ iconSetting }) => {
 
   const isDisabled = !editNode.data.editable
 
+  const handleNext = () => {
+    if (editNode.text.trim() === '') {
+      setErrors((prev) => ({ ...prev, promptTitle: true }))
+      return
+    }
+    onNextClick?.()
+  }
+
   return (
     <Stack spacing={2}>
       <Stack spacing={1} pb={1}>
@@ -47,20 +65,22 @@ const ConfigurePanel: FC<{ iconSetting?: boolean }> = ({ iconSetting }) => {
           <span style={{ color: 'red' }}>*</span>
         </Typography>
         <TextField
-          size={'small'}
+          size="small"
           autoFocus
           value={editNode.text}
           placeholder={t(
             'settings:feature_card__prompts__edit_prompt__field_name__placeholder',
           )}
           onChange={(event) => {
-            setEditNode((prev) => {
-              return {
-                ...prev,
-                text: event.target.value,
-              }
-            })
+            const newValue = event.target.value
+            if (newValue.trim() !== '') {
+              setErrors((prev) => ({ ...prev, promptTitle: false }))
+            }
+            setEditNode((prev) => ({ ...prev, text: newValue }))
           }}
+          error={!!errors?.promptTitle}
+          FormHelperTextProps={{ sx: { ml: 0 } }}
+          helperText={errors?.promptTitle ? 'Title is required' : ''}
         />
       </Stack>
 
@@ -150,6 +170,14 @@ const ConfigurePanel: FC<{ iconSetting?: boolean }> = ({ iconSetting }) => {
           />
         )}
       </Stack>
+      {editNode.data.type === 'shortcuts' && (
+        <Box mt={2}>
+          <Button variant="contained" onClick={handleNext}>
+            Next: Add prompt
+            {t('prompt_editor:config_panel__next_button__title')}
+          </Button>
+        </Box>
+      )}
     </Stack>
   )
 }

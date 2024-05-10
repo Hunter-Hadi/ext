@@ -17,11 +17,13 @@ import { getMaxAISidebarSelection } from '@/features/sidebar/utils/chatMessagesH
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import CustomVariable from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/CustomVariables'
 import PresetVariables from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/PresetVariables'
+import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 
 const PromptPanel = () => {
   const { t } = useTranslation(['settings', 'common', 'prompt_editor'])
 
+  const { errors, setErrors } = useSettingPromptsEditContext()
   const { editHTML, updateEditHTML } = useShortcutEditorActions()
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
@@ -62,7 +64,7 @@ const PromptPanel = () => {
       const presetVariables =
         PRESET_VARIABLES_GROUP_MAP[
           'prompt_editor:preset_variables__system__title'
-          ]
+        ]
       presetVariables.forEach(({ variable, permissionKeys = [] }) => {
         if (
           permissionKeys.length === 0 ||
@@ -150,7 +152,14 @@ const PromptPanel = () => {
         html={editHTML}
         placeholder={editorPlaceholder}
         sx={memoSx}
-        onChange={(event) => updateEditHTML(event.target.value)}
+        error={errors?.promptTemplate}
+        onChange={(event) => {
+          const newValue = event.target.value
+          updateEditHTML(newValue)
+          if (newValue.trim() !== '') {
+            setErrors((prev) => ({ ...prev, promptTemplate: false }))
+          }
+        }}
         onMouseUp={(event) => {
           console.log(
             'ContentEditable onClick',

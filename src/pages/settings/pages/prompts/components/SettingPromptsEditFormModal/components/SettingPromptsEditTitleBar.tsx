@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { v4 } from 'uuid'
 
@@ -12,6 +12,7 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 import { PRESET_VARIABLES_GROUP_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
+import { useGenerateSaveActions } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useGenerateActions'
 import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 import { specialInputAssistantButtonKeys } from '@/pages/settings/pages/prompts/store'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
@@ -79,19 +80,42 @@ const DropDownMenuItem: FC<{
   )
 }
 
-const TitleBar = () => {
+const TitleBar: FC<{
+  tabIndex: number
+  changeTabIndex?: (newIndex: number) => void
+}> = ({ tabIndex, changeTabIndex }) => {
   const { t } = useTranslation(['settings', 'common', 'prompt_editor'])
 
   const {
     node,
     editNode,
     editButtonKey,
-    generateSaveActions,
+    setErrors,
     onSave,
     onCancel,
     onDelete,
   } = useSettingPromptsEditContext()
   const { editHTML } = useShortcutEditorActions()
+  const generateSaveActions = useGenerateSaveActions()
+
+  /**
+   * 目前新增了默认的预设模板，create的时候是直接渲染在表单内，用户可直接保存
+   * 这里记录一下次数，create的时候必须进入过prompt panel后才可保存
+   */
+  const [changePromptPanelCount, setChangePromptPanelCount] = useState(0)
+  useEffect(() => {
+    setChangePromptPanelCount(0)
+  }, [node])
+  useEffect(() => {
+    if (tabIndex === 1) {
+      setChangePromptPanelCount((prev) => prev + 1)
+    }
+  }, [tabIndex])
+
+  const isNotInEditPrompt =
+    node.id === '' &&
+    editNode.data.type === 'shortcuts' &&
+    changePromptPanelCount === 0
 
   const isEditingSpecialButtonKey =
     editButtonKey &&
@@ -136,6 +160,9 @@ const TitleBar = () => {
     if (isDisabled) {
       return true
     }
+    if (isNotInEditPrompt) {
+      return true
+    }
     let disabledSave = editNode.text === ''
     if (!disabledSave && editNode.data.type === 'shortcuts') {
       disabledSave = disabledSave || editHTML.trim() === ''
@@ -148,7 +175,8 @@ const TitleBar = () => {
     return disabledSave
   }, [
     isDisabled,
-    editButtonKey,
+    isNotInEditPrompt,
+    isEditingSpecialButtonKey,
     editNode.text,
     editNode.data.visibility,
     editHTML,
@@ -172,6 +200,8 @@ const TitleBar = () => {
       const template = htmlToTemplate(editHTML)
       for (const variables of requiredVariables) {
         if (!template.includes(variables.VariableName)) {
+          changeTabIndex?.(1)
+          setErrors((prev) => ({ ...prev, promptTemplate: true }))
           Toast.error(
             t('prompt_editor:preset_variables__error_message__title', {
               VARIABLE_NAME: `{{${variables.VariableName}}}`,
@@ -187,13 +217,13 @@ const TitleBar = () => {
         }
       }
     }
-    if (editNode.id === '') {
-      editNode.id = v4()
-    }
     const actions = generateSaveActions()
     onSave?.(
       mergeWithObject([
-        editNode,
+        {
+          ...editNode,
+          id: editNode.id || v4(),
+        },
         {
           data: {
             actions,
@@ -268,7 +298,7 @@ const TitleBar = () => {
         sx={{ borderRadius: '8px' }}
         onClick={handleSave}
       >
-        {t('common:save')}
+        {editNode.id ? t('common:save') : t('common:create')}
       </Button>
     </Stack>
   )

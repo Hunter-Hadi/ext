@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { Theme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -17,23 +17,26 @@ import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/Side
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
+import {
+  useGeneratePreviewActions
+} from "@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useGenerateActions";
+import useClientChat from "@/features/chatgpt/hooks/useClientChat";
 
 const PreviewPanel = () => {
   const { t } = useTranslation(['client', 'prompt_editor'])
-  const { editNode, generatePreviewActions } = useSettingPromptsEditContext()
+  const { editNode } = useSettingPromptsEditContext()
+  const generatePreviewActions = useGeneratePreviewActions()
 
   const title = editNode?.text
 
-  const { editHTML, variables } = useShortcutEditorActions()
+  const { editHTML } = useShortcutEditorActions()
 
   const template = useMemo(() => htmlToTemplate(editHTML), [editHTML])
 
-  const generateActionsRef = useRef(generatePreviewActions)
-  generateActionsRef.current = generatePreviewActions
-
-  const actions = useMemo(() => {
-    return generateActionsRef.current()
-  }, [editNode?.text, template, variables])
+  const actions = useMemo(
+    () => generatePreviewActions(),
+    [generatePreviewActions],
+  )
 
   const config = useMemo(() => {
     return {
@@ -54,6 +57,7 @@ const PreviewPanel = () => {
     })
   }, [config])
 
+  const { stopGenerate } = useClientChat()
   const {
     currentConversationId,
     clientWritingMessage,
@@ -87,6 +91,10 @@ const PreviewPanel = () => {
         '& .MuiButton-root': {
           textTransform: 'none',
         },
+        // 这里先用display去隐藏掉preview use prompt的功能
+        ' .max-ai__actions__button--use-max-ai': {
+          display: 'none',
+        }
       }}
     >
       <Typography
@@ -156,7 +164,7 @@ const PreviewPanel = () => {
                 disableElevation
                 variant={'normalOutlined'}
                 startIcon={<StopOutlinedIcon />}
-                onClick={() => {}}
+                onClick={stopGenerate}
                 data-testid="sidebar_actions__stop_generating"
               >
                 {t('client:sidebar__button__stop_generating')}

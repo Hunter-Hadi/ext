@@ -1,5 +1,3 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import React, { FC, memo, useState } from 'react'
@@ -49,7 +47,7 @@ const SettingPromptsEditFormModal: FC<{
         onDelete={onDelete}
         onCancel={onCancel}
       >
-        <SettingPromptsEditTitleBar />
+        <SettingPromptsEditTitleBar tabIndex={tabIndex} changeTabIndex={setTabIndex} />
         <Stack direction="row" flex={1} overflow="hidden">
           <Stack flex={1} overflow="auto" p={2}>
             {node.data.type === 'shortcuts' && (
@@ -59,16 +57,10 @@ const SettingPromptsEditFormModal: FC<{
               />
             )}
             {tabIndex === 0 && (
-              <>
-                <SettingPromptsEditConfigurePanel iconSetting={iconSetting} />
-                {node.data.type === 'shortcuts' && (
-                  <Box mt={2}>
-                    <Button variant="contained" onClick={() => setTabIndex(1)}>
-                      Next: Add prompt
-                    </Button>
-                  </Box>
-                )}
-              </>
+              <SettingPromptsEditConfigurePanel
+                iconSetting={iconSetting}
+                onNextClick={() => setTabIndex(1)}
+              />
             )}
             {tabIndex === 1 && <SettingPromptsEditPromptPanel />}
           </Stack>

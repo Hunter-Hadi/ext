@@ -122,11 +122,13 @@ export const LiteDropdownMenuItem = React.forwardRef<
       <Box>
         {CustomRenderNode || (
           <Stack direction={'row'} spacing={1} px={1} alignItems={'center'}>
-            <ContextMenuIcon
-              size={16}
-              icon={icon || 'Empty'}
-              sx={{ color: 'primary.main', flexShrink: 0 }}
-            />
+            {icon && (
+              <ContextMenuIcon
+                size={16}
+                icon={icon || 'Empty'}
+                sx={{ color: 'primary.main', flexShrink: 0 }}
+              />
+            )}
             <Typography
               fontSize={14}
               textAlign={'left'}

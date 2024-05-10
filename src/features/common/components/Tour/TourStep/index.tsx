@@ -11,7 +11,7 @@ import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Gap } from '@/features/common/components/Tour/hooks/useTarget'
-import { TourPlacement } from '@/features/common/components/Tour/TourMask'
+import { Placement } from '@/features/common/components/Tour/TourMask'
 import TriangleArrow from '@/features/common/components/Tour/TourStep/TriangleArrow'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
@@ -33,7 +33,7 @@ export interface TourStepInfo {
   title: ReactNode
   description?: ReactNode
   imgCover?: string
-  placement?: TourPlacement
+  placement?: Placement
   mask?:
     | boolean
     | {

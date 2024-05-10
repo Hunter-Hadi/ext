@@ -13,7 +13,7 @@ import PresetVariablesTag from '@/features/shortcuts/components/ShortcutsActions
 import useShortcutEditorActionVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import { promptNameToVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
-import VariableFormModel from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/PromptPanel/VariableFormModel'
+import VariableFormModel from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/VariableFormModel'
 
 export interface IPromptVariableEditorExposeRef {
   addVariable: (variableLabel: string) => void

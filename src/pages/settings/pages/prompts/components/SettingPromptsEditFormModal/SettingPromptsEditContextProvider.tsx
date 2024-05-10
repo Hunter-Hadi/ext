@@ -1,51 +1,13 @@
 import { cloneDeep } from 'lodash-es'
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
-import { createContext, Dispatch, SetStateAction, useContext } from 'react'
 import { useRecoilState } from 'recoil'
 
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 import { PRESET_VARIABLES_GROUP_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { SettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
-
-export type SettingPromptsContextType = {
-  node: IContextMenuItem
-  editNode: IContextMenuItem
-  editButtonKey?: IChromeExtensionButtonSettingKey | null
-  selectedIcon?: IContextMenuIconKey
-  setEditNode: Dispatch<SetStateAction<IContextMenuItem>>
-  setSelectedIcon: Dispatch<SetStateAction<IContextMenuIconKey | undefined>>
-  generateSaveActions: () => ISetActionsType
-  generatePreviewActions: () => ISetActionsType
-  onSave?: (node: IContextMenuItem) => void
-  onDelete?: (id: string) => void
-  onCancel?: () => void
-}
-
-const emptyNode = {
-  id: 'root',
-  parent: '',
-  droppable: true,
-  text: '',
-  data: {
-    editable: true,
-    type: 'shortcuts',
-  },
-} as const
-
-export const SettingPromptsContext = createContext<SettingPromptsContextType>({
-  node: emptyNode,
-  editNode: emptyNode,
-  setEditNode: () => {},
-  setSelectedIcon: () => {},
-  generateSaveActions: () => [],
-  generatePreviewActions: () => [],
-})
-
-export const useSettingPromptsContext = () => useContext(SettingPromptsContext)
 
 const SettingPromptsContextProvider: FC<{
   node: IContextMenuItem
@@ -75,7 +37,13 @@ const SettingPromptsContextProvider: FC<{
     setEditNode(cloneNode)
     setSelectedIcon(cloneNode.data?.icon as any)
     setActions(cloneNode.data.actions || [])
-  }, [node])
+    // 初始化预设模板
+    if (settingPromptsEditButtonKey) {
+      // const defaultTemplate =
+      //   EXAMPLE_PROMPT_TEMPLATE_MAPS[settingPromptsEditButtonKey]
+      // promptTemplateToHtml(defaultTemplate, {})
+    }
+  }, [node, settingPromptsEditButtonKey])
 
   const generateActionsRef = useRef(generateActions)
   generateActionsRef.current = generateActions
@@ -124,13 +92,13 @@ const SettingPromptsContextProvider: FC<{
           // 这里处理一下label，比如FULL_CONTEXT转换成Full context
           const label = item.variable.label
             ? item.variable.label
-              .split('_')
-              .map((word, index) =>
-                index === 0
-                  ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                  : word.toLowerCase(),
-              )
-              .join(' ')
+                .split('_')
+                .map((word, index) =>
+                  index === 0
+                    ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                    : word.toLowerCase(),
+                )
+                .join(' ')
             : item.variable.label
           return {
             VariableName: item.variable.VariableName,
@@ -172,7 +140,7 @@ const SettingPromptsContextProvider: FC<{
   }, [editNode])
 
   return (
-    <SettingPromptsContext.Provider
+    <SettingPromptsEditContext.Provider
       value={{
         node,
         editNode,
@@ -188,7 +156,7 @@ const SettingPromptsContextProvider: FC<{
       }}
     >
       {children}
-    </SettingPromptsContext.Provider>
+    </SettingPromptsEditContext.Provider>
   )
 }
 export default SettingPromptsContextProvider

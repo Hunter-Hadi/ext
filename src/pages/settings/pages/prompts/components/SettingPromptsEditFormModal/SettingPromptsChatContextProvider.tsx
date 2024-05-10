@@ -1,12 +1,12 @@
-import React, {FC, useMemo, useState} from 'react'
+import React, { FC, useMemo, useState } from 'react'
 
 import { ConversationStatusType } from '@/background/provider/chat'
 import {
   ChatPanelContext,
   ChatPanelContextValue,
 } from '@/features/chatgpt/store/ChatPanelContext'
-import useEffectOnce from "@/features/common/hooks/useEffectOnce";
-import useSidebarSettings from "@/features/sidebar/hooks/useSidebarSettings";
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ChatContextProvider: FC<{ children: React.ReactNode }> = (props) => {
   const { children } = props
@@ -25,7 +25,11 @@ const ChatContextProvider: FC<{ children: React.ReactNode }> = (props) => {
       updateConversationStatus,
       updateConversationId: async (newId) => updateConversationId(newId),
       createConversation: async (conversationType, AIProvider, AIModel) => {
-        const newConversationId = await createSidebarConversation('Chat', AIProvider, AIModel)
+        const newConversationId = await createSidebarConversation(
+          'Chat',
+          AIProvider,
+          AIModel,
+        )
         updateConversationId(newConversationId)
         return newConversationId
       },

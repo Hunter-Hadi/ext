@@ -2,7 +2,7 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
@@ -13,7 +13,7 @@ import {
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import AIResponseLanguageEditor from '@/features/shortcuts/components/ShortcutsActionsEditor/components/AIResponseLanguageEditor'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
-import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
+import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 import {
   SettingPromptsEditButtonKeyAtom,
   specialInputAssistantButtonKeys,
@@ -22,7 +22,7 @@ import {
 const ConfigurePanel: FC<{ iconSetting?: boolean }> = ({ iconSetting }) => {
   const { t } = useTranslation(['settings', 'common'])
   const { editNode, selectedIcon, setEditNode, setSelectedIcon } =
-    useSettingPromptsContext()
+    useSettingPromptsEditContext()
 
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,

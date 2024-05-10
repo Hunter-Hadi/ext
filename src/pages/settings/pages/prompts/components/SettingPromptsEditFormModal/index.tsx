@@ -6,14 +6,13 @@ import React, { FC, memo, useState } from 'react'
 
 import CustomModal from '@/features/common/components/CustomModal'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import ChatContextProvider from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/ChatContextProvider'
-import SettingPromptsContextProvider from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
-import TabBar from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/TabBar'
-
-import ConfigurePanel from './ConfigurePanel'
-import PreviewPanel from './PreviewPanel'
-import PromptPanel from './PromptPanel'
-import TitleBar from './TitleBar'
+import SettingPromptsEditConfigurePanel from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/SettingPromptsEditConfigurePanel'
+import SettingPromptsEditPreviewPanel from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/SettingPromptsEditPreviewPanel'
+import SettingPromptsEditPromptPanel from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/SettingPromptsEditPromptPanel'
+import SettingPromptsEditTabBar from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/SettingPromptsEditTabBar'
+import SettingPromptsEditTitleBar from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/SettingPromptsEditTitleBar'
+import SettingPromptsChatContextProvider from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsChatContextProvider'
+import SettingPromptsEditContextProvider from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsEditContextProvider'
 import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
 
 const SettingPromptsEditFormModal: FC<{
@@ -44,24 +43,24 @@ const SettingPromptsEditFormModal: FC<{
         borderRadius: 2,
       }}
     >
-      <SettingPromptsContextProvider
+      <SettingPromptsEditContextProvider
         node={node}
         onSave={onSave}
         onDelete={onDelete}
         onCancel={onCancel}
       >
-        <TitleBar />
+        <SettingPromptsEditTitleBar />
         <Stack direction="row" flex={1} overflow="hidden">
           <Stack flex={1} overflow="auto" p={2}>
             {node.data.type === 'shortcuts' && (
-              <TabBar
+              <SettingPromptsEditTabBar
                 value={tabIndex}
                 onChange={(_, newValue) => setTabIndex(newValue)}
               />
             )}
             {tabIndex === 0 && (
               <>
-                <ConfigurePanel iconSetting={iconSetting} />
+                <SettingPromptsEditConfigurePanel iconSetting={iconSetting} />
                 {node.data.type === 'shortcuts' && (
                   <Box mt={2}>
                     <Button variant="contained" onClick={() => setTabIndex(1)}>
@@ -71,20 +70,20 @@ const SettingPromptsEditFormModal: FC<{
                 )}
               </>
             )}
-            {tabIndex === 1 && <PromptPanel />}
+            {tabIndex === 1 && <SettingPromptsEditPromptPanel />}
           </Stack>
           {node.data.type === 'shortcuts' && (
             <>
               <Divider orientation="vertical" sx={{ my: 0 }} />
               <Stack flex={1} overflow="auto">
-                <ChatContextProvider>
-                  <PreviewPanel />
-                </ChatContextProvider>
+                <SettingPromptsChatContextProvider>
+                  <SettingPromptsEditPreviewPanel />
+                </SettingPromptsChatContextProvider>
               </Stack>
             </>
           )}
         </Stack>
-      </SettingPromptsContextProvider>
+      </SettingPromptsEditContextProvider>
     </CustomModal>
   )
 }

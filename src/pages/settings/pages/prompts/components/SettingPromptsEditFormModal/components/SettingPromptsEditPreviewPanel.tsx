@@ -15,12 +15,12 @@ import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsA
 import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
-import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
+import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const PreviewPanel = () => {
   const { t } = useTranslation(['client', 'prompt_editor'])
-  const { editNode, generatePreviewActions } = useSettingPromptsContext()
+  const { editNode, generatePreviewActions } = useSettingPromptsEditContext()
 
   const title = editNode?.text
 

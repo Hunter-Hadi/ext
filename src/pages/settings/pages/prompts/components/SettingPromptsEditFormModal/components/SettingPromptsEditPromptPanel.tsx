@@ -15,8 +15,8 @@ import {
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import { getMaxAISidebarSelection } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import CustomVariable from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/PromptPanel/CustomVariables'
-import PresetVariables from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/PromptPanel/PresetVariables'
+import CustomVariable from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/CustomVariables'
+import PresetVariables from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/PresetVariables'
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 
 const PromptPanel = () => {
@@ -62,7 +62,7 @@ const PromptPanel = () => {
       const presetVariables =
         PRESET_VARIABLES_GROUP_MAP[
           'prompt_editor:preset_variables__system__title'
-        ]
+          ]
       presetVariables.forEach(({ variable, permissionKeys = [] }) => {
         if (
           permissionKeys.length === 0 ||

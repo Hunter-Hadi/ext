@@ -12,7 +12,7 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 import { PRESET_VARIABLES_GROUP_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
-import { useSettingPromptsContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/SettingPromptsContextProvider'
+import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 import { specialInputAssistantButtonKeys } from '@/pages/settings/pages/prompts/store'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import Toast from '@/utils/globalSnackbar'
@@ -90,7 +90,7 @@ const TitleBar = () => {
     onSave,
     onCancel,
     onDelete,
-  } = useSettingPromptsContext()
+  } = useSettingPromptsEditContext()
   const { editHTML } = useShortcutEditorActions()
 
   const isEditingSpecialButtonKey =

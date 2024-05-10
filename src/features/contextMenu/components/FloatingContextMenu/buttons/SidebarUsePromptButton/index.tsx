@@ -5,7 +5,6 @@ import {
   offset,
   shift,
   useClick,
-  useDismiss,
   useFloating,
   useInteractions,
   useRole,
@@ -119,15 +118,8 @@ const SidebarUsePromptButton: FC<{
     whileElementsMounted: autoUpdate,
   })
   const click = useClick(context)
-  const dismiss = useDismiss(context, {
-    capture: true,
-  })
   const role = useRole(context)
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-    role,
-  ])
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, role])
   if (NO_SUPPORT_HOST.includes(getCurrentDomainHost()) || !root) {
     return null
   }

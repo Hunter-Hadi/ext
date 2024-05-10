@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import React, {
   FC,
   ReactNode,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -148,6 +149,14 @@ const PromptsAutoComplete: FC<{
         inputValue={query}
         onInputChange={(_, value) => {
           setQuery(value)
+        }}
+        onKeyDownCapture={(event) => {
+          // esc
+          if (event.key === 'Escape') {
+            if (onClose) {
+              onClose()
+            }
+          }
         }}
         onChange={(_, value: GroupByPromptType | null, reason: string) => {
           handleSelectPromptId(value?.id || '')
@@ -359,6 +368,9 @@ const RenderDropdownItem: FC<{
     }
     return menuItem.text
   }, [menuItem.text, t])
+  const handleSelectPromptId = useCallback(() => {
+    onSelectPromptId(menuItem.id)
+  }, [menuItem.id, onSelectPromptId])
   if (menuItem.data.type === 'group') {
     if (deep === 0) {
       if (index > 0) {
@@ -437,9 +449,7 @@ const RenderDropdownItem: FC<{
     <LiteDropdownMenuItem
       icon={menuItem.data.icon}
       label={menuLabel}
-      onClick={() => {
-        onSelectPromptId(menuItem.id)
-      }}
+      onClick={handleSelectPromptId}
     />
   )
 }

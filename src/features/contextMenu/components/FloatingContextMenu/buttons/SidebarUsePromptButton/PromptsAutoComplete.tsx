@@ -23,6 +23,7 @@ import {
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
@@ -116,7 +117,7 @@ const PromptsAutoComplete: FC<{
         }
       })
   }, [contextMenuList, t, originContextMenuList])
-  const handleSelectPromptId = (promptId: string) => {
+  const handleSelectPromptId = async (promptId: string) => {
     const prompt = promptId
       ? originContextMenuList.find(
           (item) =>
@@ -124,6 +125,9 @@ const PromptsAutoComplete: FC<{
         )
       : null
     if (prompt?.data.actions && onSelectActions) {
+      await FavoriteMediatorFactory.getMediator(
+        buttonSettingsKey,
+      ).favoriteContextMenu(prompt)
       onSelectActions(prompt.data.actions as ISetActionsType)
     }
     if (onClose) {
@@ -170,7 +174,7 @@ const PromptsAutoComplete: FC<{
           }, 100)
         }}
         disablePortal
-        open
+        open={query !== ''}
         noOptionsText={t('common:no_options')}
         size={'small'}
         autoHighlight
@@ -182,6 +186,22 @@ const PromptsAutoComplete: FC<{
           height: 40,
           mt: direction === 'top' ? '360px' : 0,
           bgcolor: 'background.paper',
+          '& ul[role="listbox"]': {
+            bgcolor: 'red',
+          },
+        }}
+        ListboxProps={{
+          sx: {
+            '& > li:last-of-type': {
+              '& > div:last-of-type': {
+                display: 'none',
+              },
+            },
+          },
+          style: {
+            maxHeight: 360,
+            boxSizing: 'border-box',
+          },
         }}
         componentsProps={{
           popper: {
@@ -259,14 +279,9 @@ const PromptsAutoComplete: FC<{
                 </Typography>
               </Box>
               <ul style={{ padding: 0 }}>{params.children}</ul>
+              <ContextMenuDivider contextMenuId={params.key} />
             </li>
           )
-        }}
-        ListboxProps={{
-          style: {
-            maxHeight: 360,
-            boxSizing: 'border-box',
-          },
         }}
         renderInput={(params) => <TextField {...params} ref={inputRef} />}
       />

@@ -139,7 +139,7 @@ const ConfigurePanel: FC<{
         onChange={() => toggleAIResponseLanguage()}
       />
 
-      <Stack>
+      <Stack spacing={1}>
         <Stack direction={'row'} alignItems="center">
           <Typography variant={'body1'}>
             {t(
@@ -154,7 +154,6 @@ const ConfigurePanel: FC<{
           <VisibilitySettingCard
             mode={'white'}
             disabled={isDisabled}
-            sx={{ mt: 2 }}
             defaultValue={editNode.data.visibility}
             onChange={async (newVisibilitySetting) => {
               setEditNode((prev) => {
@@ -173,7 +172,6 @@ const ConfigurePanel: FC<{
       {editNode.data.type === 'shortcuts' && (
         <Box mt={2}>
           <Button variant="contained" onClick={handleNext}>
-            Next: Add prompt
             {t('prompt_editor:config_panel__next_button__title')}
           </Button>
         </Box>

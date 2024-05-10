@@ -3,7 +3,6 @@ import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { useCallback, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState } from 'recoil'
 
 import TemplateContentEditor from '@/features/shortcuts/components/ShortcutsActionsEditor/components/TemplateContentEditor'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
@@ -18,43 +17,34 @@ import { useCustomTheme } from '@/hooks/useCustomTheme'
 import CustomVariable from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/CustomVariables'
 import PresetVariables from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/PresetVariables'
 import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
-import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
+import { EXAMPLE_PROMPT_TEMPLATE_MAPS } from '@/pages/settings/pages/prompts/store'
 
 const PromptPanel = () => {
   const { t } = useTranslation(['settings', 'common', 'prompt_editor'])
 
-  const { errors, setErrors } = useSettingPromptsEditContext()
+  const { editButtonKey, errors, setErrors } = useSettingPromptsEditContext()
   const { editHTML, updateEditHTML } = useShortcutEditorActions()
-  const [settingPromptsEditButtonKey] = useRecoilState(
-    SettingPromptsEditButtonKeyAtom,
-  )
 
   const editorPlaceholder = useMemo(() => {
     let placeholder = ''
 
-    if (settingPromptsEditButtonKey === 'textSelectPopupButton') {
+    if (editButtonKey === 'textSelectPopupButton') {
       placeholder = t(
         'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
       )
-    } else if (
-      settingPromptsEditButtonKey === 'inputAssistantComposeReplyButton'
-    ) {
+    } else if (editButtonKey === 'inputAssistantComposeReplyButton') {
       placeholder = t(
         'settings:feature_card__prompts__edit_instant_reply_prompt__compose_reply__field_template__placeholder',
       )
-    } else if (
-      settingPromptsEditButtonKey === 'inputAssistantRefineDraftButton'
-    ) {
+    } else if (editButtonKey === 'inputAssistantRefineDraftButton') {
       placeholder = t(
         'settings:feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder',
       )
-    } else if (
-      settingPromptsEditButtonKey === 'inputAssistantComposeNewButton'
-    ) {
+    } else if (editButtonKey === 'inputAssistantComposeNewButton') {
       placeholder = t(
         'settings:feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder',
       )
-    } else if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+    } else if (editButtonKey === 'sidebarSummaryButton') {
       placeholder = t(
         'settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder',
       )
@@ -68,25 +58,26 @@ const PromptPanel = () => {
       presetVariables.forEach(({ variable, permissionKeys = [] }) => {
         if (
           permissionKeys.length === 0 ||
-          permissionKeys.includes(settingPromptsEditButtonKey!)
+          permissionKeys.includes(editButtonKey!)
         ) {
           placeholder += `\n{{${variable?.label}}}`
         }
       })
 
-      if (settingPromptsEditButtonKey === 'sidebarSummaryButton') {
+      if (editButtonKey && EXAMPLE_PROMPT_TEMPLATE_MAPS[editButtonKey]) {
         placeholder +=
           `\n\n` +
           t(
             'settings:feature_card__prompts__edit_summary_prompt__field_template__placeholder__example',
           ) +
-          `\nOutput a summary of the {{PAGE_CONTENT}} on {{CURRENT_WEBPAGE_DOMAIN}}.`
+          `\n${EXAMPLE_PROMPT_TEMPLATE_MAPS[editButtonKey]}`
       }
     }
 
     return placeholder
-  }, [t, settingPromptsEditButtonKey])
+  }, [t, editButtonKey])
 
+  // TODO 这部分逻辑和ShortcutsActionsEditor里有重复，后续要优化
   const theme = useCustomTheme()
   const inputRef = useRef<HTMLDivElement>(null)
   const lastSelectionRangeRef = useRef<Range | null>(null)
@@ -134,7 +125,12 @@ const PromptPanel = () => {
         </Typography>
       </Stack>
 
-      <Stack bgcolor="#F4F4F4" borderRadius="8px" spacing={1} p={1}>
+      <Stack
+        bgcolor={theme.isDarkMode ? 'rgba(0, 0, 0, 0.2)' : '#F4F4F4'}
+        borderRadius="8px"
+        spacing={1}
+        p={1}
+      >
         <PresetVariables
           onClick={(variable) => {
             addTextVariableToHTML(variable)

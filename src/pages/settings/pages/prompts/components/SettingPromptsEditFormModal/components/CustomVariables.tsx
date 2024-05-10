@@ -14,6 +14,7 @@ import useShortcutEditorActionVariables from '@/features/shortcuts/components/Sh
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import { promptNameToVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import VariableFormModel from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/components/VariableFormModel'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 export interface IPromptVariableEditorExposeRef {
   addVariable: (variableLabel: string) => void
@@ -40,6 +41,11 @@ const CustomVariable = React.forwardRef<
   const [editOpen, setEditOpen] = useState(false)
   const [editingVariable, setEditingVariable] =
     useState<IActionSetVariable | null>(null)
+  const { isDarkMode } = useCustomTheme()
+
+  const borderColor = isDarkMode
+    ? 'customColor.borderColor'
+    : 'rgb(224, 224, 224)'
 
   return (
     <Stack spacing={1}>
@@ -52,8 +58,7 @@ const CustomVariable = React.forwardRef<
       <Stack
         sx={{
           border: '1px solid',
-          // borderColor: 'customColor.borderColor',
-          borderColor: 'rgb(224, 224, 224)',
+          borderColor,
           bgcolor: 'customColor.paperBackground',
           borderRadius: '8px',
           overflow: 'hidden',
@@ -66,8 +71,6 @@ const CustomVariable = React.forwardRef<
             flexDirection="row"
             alignItems="center"
             bgcolor="rgba(0, 0, 0, 0.08)"
-            borderRight="1px solid"
-            borderColor="inherit"
             height="100%"
           >
             <Typography variant="body2">
@@ -82,6 +85,8 @@ const CustomVariable = React.forwardRef<
             gap={1}
             flexWrap="wrap"
             alignItems="center"
+            borderLeft="1px solid"
+            borderColor={borderColor}
           >
             {!variables.length && (
               // 防止高度出现坍塌，先渲染一个空的元素

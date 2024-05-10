@@ -12,6 +12,8 @@ import useShortcutEditorActionsVariables, {
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
+import { useTheme } from '@mui/material/styles'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const PresetVariables: FC<{
   onClick?: (variable: IActionSetVariable) => void
@@ -22,6 +24,12 @@ const PresetVariables: FC<{
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
   )
+  const { isDarkMode } = useCustomTheme()
+
+  const borderColor = isDarkMode
+    ? 'customColor.borderColor'
+    : 'rgb(224, 224, 224)'
+
   return (
     <Stack spacing={1}>
       <Stack direction="row" alignItems="center" spacing={0.5}>
@@ -34,8 +42,7 @@ const PresetVariables: FC<{
       <Stack
         sx={{
           border: '1px solid',
-          // borderColor: 'customColor.borderColor',
-          borderColor: 'rgb(224, 224, 224)',
+          borderColor,
           bgcolor: 'customColor.paperBackground',
           borderRadius: '8px',
           overflow: 'hidden',
@@ -65,8 +72,6 @@ const PresetVariables: FC<{
                   flexDirection="row"
                   alignItems="center"
                   bgcolor="rgba(0, 0, 0, 0.08)"
-                  borderRight="1px solid"
-                  borderColor="inherit"
                   height="100%"
                 >
                   <Typography variant="body2">
@@ -81,6 +86,8 @@ const PresetVariables: FC<{
                   gap={1}
                   flexWrap="wrap"
                   alignItems="center"
+                  borderLeft="1px solid"
+                  borderColor={borderColor}
                 >
                   {presetVariables.map(
                     ({
@@ -107,7 +114,9 @@ const PresetVariables: FC<{
                           >
                             {`{{${variable.label}}}`}
                             {requiredInSettingEditor && (
-                              <span style={{ marginLeft: '1px', color: 'red' }}>*</span>
+                              <span style={{ marginLeft: '1px', color: 'red' }}>
+                                *
+                              </span>
                             )}
                           </PresetVariablesTag>
                         )

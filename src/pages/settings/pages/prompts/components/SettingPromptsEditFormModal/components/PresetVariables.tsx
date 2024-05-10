@@ -11,9 +11,8 @@ import useShortcutEditorActionsVariables, {
   PRESET_VARIABLES_GROUP_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
-import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
-import { useTheme } from '@mui/material/styles'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 
 const PresetVariables: FC<{
   onClick?: (variable: IActionSetVariable) => void

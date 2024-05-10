@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import React, { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useClientConversationListener from '@/features/chatgpt/hooks/useClientConversationListener'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
@@ -15,12 +16,10 @@ import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsA
 import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
+import { useGeneratePreviewActions } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useGenerateActions'
 import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
+import { getPreviewEditorSystemVariables } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/utils'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
-import {
-  useGeneratePreviewActions
-} from "@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useGenerateActions";
-import useClientChat from "@/features/chatgpt/hooks/useClientChat";
 
 const PreviewPanel = () => {
   const { t } = useTranslation(['client', 'prompt_editor'])
@@ -39,9 +38,34 @@ const PreviewPanel = () => {
   )
 
   const config = useMemo(() => {
+    // 有些变量是run shortcuts时会覆盖，具体在useShortCutsParameters里
+    // 这里取出预设的一些变量，设置并覆盖
+    const overrideVariables = getPreviewEditorSystemVariables(false)
+
+    const setModalConfig = actions.find(
+      (item) => item.type === 'SET_VARIABLES_MODAL',
+    )?.parameters.SetVariablesModalConfig
+
+    const configActions = setModalConfig?.actions || []
+
+    overrideVariables.forEach((item) => {
+      configActions.push({
+        type: 'SET_VARIABLE',
+        parameters: {
+          Variable: {
+            key: item.VariableName,
+            value: item.defaultValue,
+            overwrite: true,
+            isBuiltIn: true,
+            label: item.label,
+          },
+        },
+      })
+    })
+
     return {
-      ...(actions.find((item) => item.type === 'SET_VARIABLES_MODAL')
-        ?.parameters.SetVariablesModalConfig || {}),
+      ...setModalConfig,
+      actions: configActions,
       template,
       modelKey: 'PromptPreview',
     }
@@ -94,7 +118,7 @@ const PreviewPanel = () => {
         // 这里先用display去隐藏掉preview use prompt的功能
         ' .max-ai__actions__button--use-max-ai': {
           display: 'none',
-        }
+        },
       }}
     >
       <Typography

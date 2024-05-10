@@ -2,10 +2,9 @@ import { cloneDeep } from 'lodash-es'
 import { useCallback, useRef } from 'react'
 
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
-import useShortcutEditorActionsVariables, {
-  PRESET_VARIABLES_GROUP_MAP,
-} from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import useShortcutEditorActionsVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
+import { getPreviewEditorSystemVariables } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/utils'
 
 /**
  * @since 2024-05-09 这里是生成preview的actions，后续需要更改
@@ -21,31 +20,7 @@ export const useGeneratePreviewActions = () => {
 
   return useCallback(() => {
     // 先获取到预设的系统变量
-    const overrideSystemVariables = Object.values(
-      PRESET_VARIABLES_GROUP_MAP,
-    ).flatMap((group) =>
-      group
-        .filter((item) => item.showInPreviewEditor)
-        .map((item) => {
-          // 这里处理一下label，比如FULL_CONTEXT转换成Full context
-          const label = item.variable.label
-            ? item.variable.label
-                .split('_')
-                .map((word, index) =>
-                  index === 0
-                    ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                    : word.toLowerCase(),
-                )
-                .join(' ')
-            : item.variable.label
-          return {
-            VariableName: item.variable.VariableName,
-            valueType: item.variable.valueType,
-            label,
-            defaultValue: item.previewEditorDefaultValue || label,
-          }
-        }),
-    )
+    const overrideSystemVariables = getPreviewEditorSystemVariables()
     const actions = generateActionsRef.current(
       editNode.text,
       false,

@@ -196,6 +196,7 @@ export const PRESET_VARIABLES_GROUP_MAP: {
         'prompt_editor:preset_variables__system__current_website_domain__example1',
         'prompt_editor:preset_variables__system__current_website_domain__example2',
       ],
+      previewEditorDefaultValue: 'www.maxai.me',
     },
     {
       variable: PRESET_VARIABLE_MAP.SYSTEM_CURRENT_DATE,

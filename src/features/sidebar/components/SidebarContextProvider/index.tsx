@@ -173,16 +173,19 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
   // 记录hash变化
   useEffectOnce(() => {
-    const [_, route, conversationId] = window.location.hash.replace('#', '')?.split('/')
+    const [_, route, conversationId] = window.location.hash
+      .replace('#', '')
+      ?.split('/')
 
-    const type = conversationTypeRouteMap[route] || currentSidebarConversationType
+    const type =
+      conversationTypeRouteMap[route] || currentSidebarConversationType
     updateSidebarConversationType(type)
     if (conversationId) {
       sidebarContextValue
         .updateConversationId(conversationId, type)
         .finally(() => setInitialized(true))
 
-      clientGetConversation(conversationId).then(conversation => {
+      clientGetConversation(conversationId).then((conversation) => {
         if (!conversation) {
           sidebarContextValue.createConversation(conversationTypeRef.current)
         }
@@ -194,7 +197,9 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
   useEffect(() => {
     if (initialized) {
-      window.location.hash = `#/${currentSidebarConversationType.toLowerCase()}/${immersiveConversationId}`
+      window.location.hash = `#/${currentSidebarConversationType.toLowerCase()}${
+        immersiveConversationId ? `/${immersiveConversationId}` : ''
+      }`
     }
   }, [initialized, currentSidebarConversationType, immersiveConversationId])
 

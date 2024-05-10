@@ -373,9 +373,7 @@ export const useClientConversationListener = () => {
 
   useEffect(() => {
     if (clientConversation && clientConversation.isDelete) {
-      if (isMaxAIImmersiveChatPage()) {
-        resetConversation()
-      }
+      resetConversation()
     }
   }, [clientConversation, resetConversation])
 }

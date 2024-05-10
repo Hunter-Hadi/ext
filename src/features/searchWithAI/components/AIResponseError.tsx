@@ -51,7 +51,7 @@ const AIResponseError: FC<IProps> = ({
       return systemMessage
     }
     return null
-  }, [message, permissionCard])
+  }, [permissionCard])
 
   const [errorStatus, setErrorStatus] = useState<'UNAUTHORIZED' | 'TRY_AGAIN'>()
 
@@ -232,16 +232,12 @@ const AIResponseError: FC<IProps> = ({
         sx={{
           whiteSpace: 'pre-wrap',
           width: '100%',
-          p: 1.5,
           gap: 1,
           wordBreak: 'break-word',
-          borderRadius: '8px',
-          bgcolor: 'customColor.secondaryBackground',
           boxSizing: 'border-box',
           '& > div': {
             width: '100%',
             mx: 'auto!important',
-            padding: 0,
             '& svg + p': {
               fontSize: '16px',
             },

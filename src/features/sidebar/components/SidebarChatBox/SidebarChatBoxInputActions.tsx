@@ -109,9 +109,11 @@ const SidebarChatBoxInputActions: FC<{
       spacing={1}
       width={'100%'}
     >
-      {(currentSidebarConversationType === 'Chat' || currentSidebarConversationType === 'Search' || currentSidebarConversationType === 'Art') && (
-        <AIProviderModelSelectorButton sidebarConversationType={currentSidebarConversationType} />
-      )}
+      {(currentSidebarConversationType === 'Chat' ||
+        // currentSidebarConversationType === 'Search' ||
+        currentSidebarConversationType === 'Art') && (
+          <AIProviderModelSelectorButton sidebarConversationType={currentSidebarConversationType} />
+        )}
       <Typography
         component={'span'}
         color={'text.secondary'}

@@ -226,6 +226,8 @@ const CrawlingResultsWithEngine = (
                 ?.children()
                 ?.last()
                 ?.children()
+                ?.last()
+                ?.children()
                 ?.first()
                 ?.text()
 

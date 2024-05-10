@@ -111,16 +111,76 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = findSelectorParent(
+              'div[contenteditable="true"]',
+              inputAssistantButton,
+              11,
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = findSelectorParent(
+              'div[contenteditable="true"]',
+              inputAssistantButton,
+              11,
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       refineDraftButton: {
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = findSelectorParent(
+              'div[contenteditable="true"]',
+              inputAssistantButton,
+              11,
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       appendPosition: 1,
       CTAButtonStyle: {

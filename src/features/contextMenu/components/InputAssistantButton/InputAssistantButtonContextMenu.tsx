@@ -45,6 +45,18 @@ interface InputAssistantButtonContextMenuProps {
   disabled?: boolean
   onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
+
+// 会触发 onSelectionEffect 的 actions
+const selectionEffectActions = new Set([
+  // instant reply
+  'GET_CONTENTS_OF_WEBPAGE',
+  'GET_EMAIL_CONTENTS_OF_WEBPAGE',
+  'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+  'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
+  // refine draft
+  'GET_EMAIL_DRAFT_OF_WEBPAGE'
+])
+
 const InputAssistantButtonContextMenu: FC<
   InputAssistantButtonContextMenuProps
 > = (props) => {
@@ -154,13 +166,11 @@ const InputAssistantButtonContextMenu: FC<
         onSelectionEffectListener = (event, data) => {
           if (
             event === 'action' &&
-            [
-              'GET_CONTENTS_OF_WEBPAGE',
-              'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-              'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-              'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
-            ].includes(data?.type) &&
-            data?.status === 'complete'
+            data?.status === 'complete' &&
+            (
+              selectionEffectActions.has(data?.type) ||
+              (data?.type === 'SET_VARIABLES_MODAL' && data?.parameters?.MaxAIPromptActionConfig?.promptName === 'Compose with key points') // compose new
+            )
           ) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
@@ -192,7 +202,7 @@ const InputAssistantButtonContextMenu: FC<
           // onSelectionEffect && onSelectionEffect();
         })
     }
-    return () => {}
+    return () => { }
   }, [clickContextMenu, shortCutsEngine])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
@@ -238,9 +248,9 @@ const InputAssistantButtonContextMenu: FC<
         }}
         {...(disabled
           ? {
-              customOpen: true,
-              referenceElementOpen: false,
-            }
+            customOpen: true,
+            referenceElementOpen: false,
+          }
           : {})}
       />
     </CacheProvider>

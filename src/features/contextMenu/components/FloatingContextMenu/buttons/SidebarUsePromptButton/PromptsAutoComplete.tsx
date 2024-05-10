@@ -84,7 +84,16 @@ const PromptsAutoComplete: FC<{
     const parentMap = new Map<string, IContextMenuItem>()
     originContextMenuList.forEach((item) => {
       if (item.data.type === 'group') {
-        parentMap.set(item.id, item)
+        const id = item.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
+        const key: any = `prompt:${id}`
+        let menuText = item.text
+        if (t(key) !== id) {
+          menuText = t(key)
+        }
+        parentMap.set(item.id, {
+          ...item,
+          text: menuText,
+        })
       }
     })
     return filterOptions

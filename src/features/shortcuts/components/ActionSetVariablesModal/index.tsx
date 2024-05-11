@@ -78,6 +78,7 @@ interface ActionSetVariablesModalProps
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
   disabled?: boolean
   onInputCustomVariable?: (data: ActionSetVariablesConfirmData) => void
+  notBuiltInVariables?: string[]
   sx?: SxProps
 }
 
@@ -100,6 +101,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     isSaveLastRunShortcuts,
     disabled,
     sx,
+    notBuiltInVariables,
   } = props
   const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -267,6 +269,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             overwrite: true,
             isBuiltIn: variableDetail.systemVariable,
             label: variableDetail.label,
+          }
+          if (notBuiltInVariables?.includes(key)) {
+            shortcutsVariables[key].isBuiltIn = false
           }
         } else {
           shortcutsVariables[key] = {

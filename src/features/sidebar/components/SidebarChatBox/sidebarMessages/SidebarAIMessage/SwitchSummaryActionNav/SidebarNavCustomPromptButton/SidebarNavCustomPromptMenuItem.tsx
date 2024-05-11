@@ -50,6 +50,11 @@ const SidebarNavCustomPromptMenuItem: FC<ISidebarNavCustomPromptMenuItemType> = 
   const open = Boolean(anchorEl)
   const isGroup = menuItem.data.type === 'group'
 
+  // should not render when group has no children
+  if (isGroup && menuItem.children.length === 0) {
+    return null
+  }
+
   return <CustomPromptMenuListItem
     selected={menuItem.id === actionPromptId}
     onClick={(event) => {

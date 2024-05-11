@@ -58,7 +58,9 @@
     "manage_my_plan": "Halda oma plaani",
     "watch_video": "Vaata videot",
     "input_content": "Sisestage sisu",
-    "discard": "Loobu"
+    "discard": "Loobu",
+    "create": "Loo",
+    "update": "Uuenda"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI juhendmustrid.\nMustris võib olla mis tahes arv järgmistest muutujatest:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI prompti mall.\nMall võib sisaldada järgmisi muutujaid:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI juhendmustrid.\nMustris võib olla mis tahes arv järgmistest muutujatest:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Näiteks küsimuse mall:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Näiteks küsimuse mall:",
+    "feature_card__prompts__confirm__cancel__description": "Kas olete kindel, et soovite tühistada? Pange tähele, et tühistamisel kaotate kõik salvestamata muudatused.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Jah, tühista",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Tagasi redigeerimise juurde"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "sihtkonteksti sisu",
     "preset_variables__system__draft_context__description": "mustandi konteksti sisu",
     "preset_variables__system__summary_page_content_representation__description": "praeguse veebilehe/PDF-i/YouTube'i video sisu",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Väljasta kokkuvõte {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Väljasta kokkuvõte {{PAGE_CONTENT}}",
+    "configure_panel__title": "Seadista",
+    "config_panel__next_button__title": "Järgmine: Lisa küsimus",
+    "prompt_panel__title": "Küsimus",
+    "preview_panel__title": "Eelvaade",
+    "preset_variables__error_message__title": "Palun valige võimalused `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Uuenda muutuja",
+    "add_variable__custom__title": "Muutujad",
+    "add_variable__update_button__title": "Uuenda"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klõpsuga vihjed",

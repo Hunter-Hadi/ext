@@ -58,7 +58,9 @@
     "manage_my_plan": "Pamahalaan ang aking plano",
     "watch_video": "Panoorin ang video",
     "input_content": "Laman ng Input",
-    "discard": "I-discard"
+    "discard": "I-discard",
+    "create": "Lumikha",
+    "update": "I-update"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Ang template ng AI prompt.\nAng template ay maaaring maglaman ng anumang bilang ng mga sumusunod na variables:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Ang template ng AI prompt.\nMaaaring isama ang anumang bilang ng mga sumusunod na variables:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Halimbawa ng template ng prompt:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Halimbawa ng template ng prompt:",
+    "feature_card__prompts__confirm__cancel__description": "Sigurado ka bang gusto mong kanselahin? Paki-tandaan na kapag kanselado, mawawala ang anumang hindi naisilid na mga pagbabago.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Oo, kanselahin",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Bumalik sa pag-e-edit"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "nilalaman ng target na konteksto",
     "preset_variables__system__draft_context__description": "nilalaman ng draft na konteksto",
     "preset_variables__system__summary_page_content_representation__description": "ang nilalaman ng kasalukuyang webpage/PDF/YouTube video",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Ilabas ang isang buod ng {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Ilabas ang isang buod ng {{PAGE_CONTENT}}",
+    "configure_panel__title": "I-configure",
+    "config_panel__next_button__title": "Susunod: Magdagdag ng prompt",
+    "prompt_panel__title": "Prompt",
+    "preview_panel__title": "Preview",
+    "preset_variables__error_message__title": "Pakipili ang mga kakayahan `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "I-update ang variable",
+    "add_variable__custom__title": "Mga Variable",
+    "add_variable__update_button__title": "I-update"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click mga prompt",

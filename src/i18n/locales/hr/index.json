@@ -58,7 +58,9 @@
     "manage_my_plan": "Upravljaj mojim planom",
     "watch_video": "Pogledaj video",
     "input_content": "Unos sadržaja",
-    "discard": "Odbaci"
+    "discard": "Odbaci",
+    "create": "Stvori",
+    "update": "Ažuriraj"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Predložak AI uputa.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Predložak AI upita.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Predložak AI uputa.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Primjer predloška upute:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Primjer predloška upute:",
+    "feature_card__prompts__confirm__cancel__description": "Jeste li sigurni da želite otkazati? Imajte na umu da će se izgubiti sve nespremljene promjene.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, otkaži",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Natrag na uređivanje"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "sadržaj ciljnog konteksta",
     "preset_variables__system__draft_context__description": "sadržaj privremenog konteksta",
     "preset_variables__system__summary_page_content_representation__description": "sadržaj trenutne web stranice/PDF-a/YouTube videa",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Ispiši sažetak {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Ispiši sažetak {{PAGE_CONTENT}}",
+    "configure_panel__title": "Konfiguriraj",
+    "config_panel__next_button__title": "Sljedeće: Dodaj upit",
+    "prompt_panel__title": "Upit",
+    "preview_panel__title": "Pregled",
+    "preset_variables__error_message__title": "Odaberite mogućnosti `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Ažuriraj varijablu",
+    "add_variable__custom__title": "Varijable",
+    "add_variable__update_button__title": "Ažuriraj"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik upute",

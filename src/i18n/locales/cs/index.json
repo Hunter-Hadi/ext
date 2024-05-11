@@ -58,7 +58,9 @@
     "manage_my_plan": "Spravovat můj plán",
     "watch_video": "Sledovat video",
     "input_content": "Vstupní obsah",
-    "discard": "Zahodit"
+    "discard": "Zahodit",
+    "create": "Vytvořit",
+    "update": "Aktualizovat"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablona AI promptu.\nŠablona může obsahovat libovolný počet následujících proměnných:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablona AI podnětu.\nŠablona může obsahovat libovolné množství následujících proměnných:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Příklad šablony dotazu:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Příklad šablony dotazu:",
+    "feature_card__prompts__confirm__cancel__description": "Jste si jisti, že chcete zrušit? Vezměte prosím na vědomí, že po zrušení budou ztraceny všechny neuložené změny.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Ano, zrušit",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Zpět k úpravám"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "obsah cílového kontextu",
     "preset_variables__system__draft_context__description": "obsah konceptu",
     "preset_variables__system__summary_page_content_representation__description": "obsah aktuální webové stránky/PDF/YouTube video",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Výstup shrnutí {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Výstup shrnutí {{PAGE_CONTENT}}",
+    "configure_panel__title": "Konfigurace",
+    "config_panel__next_button__title": "Další: Přidat podnět",
+    "prompt_panel__title": "Podnět",
+    "preview_panel__title": "Náhled",
+    "preset_variables__error_message__title": "Vyberte prosím možnosti `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Aktualizovat proměnnou",
+    "add_variable__custom__title": "Proměnné",
+    "add_variable__update_button__title": "Aktualizovat"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-kliknutí na podněty",

@@ -58,7 +58,9 @@
     "manage_my_plan": "จัดการแผนของฉัน",
     "watch_video": "ดูวิดีโอ",
     "input_content": "เนื้อหาที่ป้อน",
-    "discard": "ทิ้ง"
+    "discard": "ทิ้ง",
+    "create": "สร้าง",
+    "update": "อัปเดต"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "เทมเพลตข้อความ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "แม่แบบข้อความ AI\nแม่แบบสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "เทมเพลตข้อความ AI\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้หลายตัว:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ตัวอย่างเทมเพลตโปรด:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ตัวอย่างเทมเพลตโปรด:",
+    "feature_card__prompts__confirm__cancel__description": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิก? โปรดทราบว่าหากยกเลิกแล้ว การเปลี่ยนแปลงที่ยังไม่ได้บันทึกจะหายไป",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "ใช่ ยกเลิก",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "กลับไปแก้ไข"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "เนื้อหาเป้าหมายของบริบท",
     "preset_variables__system__draft_context__description": "เนื้อหาร่างของบริบท",
     "preset_variables__system__summary_page_content_representation__description": "เนื้อหาของหน้าเว็บ/ไฟล์ PDF/วิดีโอ YouTube ปัจจุบัน",
-    "preset_variables__system__summary_page_content_representation__description__example1": "แสดงสรุปของ {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "แสดงสรุปของ {{PAGE_CONTENT}}",
+    "configure_panel__title": "กำหนดค่า",
+    "config_panel__next_button__title": "ถัดไป: เพิ่มคำถาม",
+    "prompt_panel__title": "คำถาม",
+    "preview_panel__title": "ดูตัวอย่าง",
+    "preset_variables__error_message__title": "โปรดเลือกความสามารถ `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "อัปเดตตัวแปร",
+    "add_variable__custom__title": "ตัวแปร",
+    "add_variable__update_button__title": "อัปเดต"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-คลิกเพื่อใช้คำพูด",

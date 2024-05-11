@@ -58,7 +58,9 @@
     "manage_my_plan": "माझी योजना व्यवस्थापित करा",
     "watch_video": "व्हिडिओ पहा",
     "input_content": "इनपुट सामग्री",
-    "discard": "काढा"
+    "discard": "काढा",
+    "create": "तयार करा",
+    "update": "अद्यतनित करा"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालीलप्रमाणे कोणत्याही संख्येनंतर असू शकतात:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालील चरणांमध्ये कोणत्याही संख्येने भरलेल्या अनुक्रमांकांमध्ये समाविष्ट केले जाऊ शकतात:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "एआय प्रॉम्प्ट टेम्पलेट।\nटेम्पलेटमध्ये खालीलप्रमाणे कोणत्याही संख्येनंतर असू शकतात:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "उदाहरण प्रॉम्प्ट टेम्पलेट:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "उदाहरण प्रॉम्प्ट टेम्पलेट:",
+    "feature_card__prompts__confirm__cancel__description": "तुम्हाला खात्री आहे की तुम्ही रद्द करू इच्छिता? कृपया लक्षात घ्या की एकदा रद्द केल्यानंतर, कोणत्याही सेव्ह केलेल्या बदलांची कोणतीही बदल करण्याची संधी नसेल.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "होय, रद्द करा",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "संपादनाकडे परत जा"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "लक्षित संदर्भ सामग्री",
     "preset_variables__system__draft_context__description": "मसवती संदर्भ सामग्री",
     "preset_variables__system__summary_page_content_representation__description": "वर्तमान वेबपेज/PDF/YouTube व्हिडिओची सामग्री",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} चे संक्षेप आउटपुट करा"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} चे संक्षेप आउटपुट करा",
+    "configure_panel__title": "संरचीत करा",
+    "config_panel__next_button__title": "पुढे: प्रॉम्प्ट जोडा",
+    "prompt_panel__title": "प्रॉम्प्ट",
+    "preview_panel__title": "पूर्वावलोकन",
+    "preset_variables__error_message__title": "कृपया क्षमतांची निवड करा `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "चर अद्यतनित करा",
+    "add_variable__custom__title": "चर",
+    "add_variable__update_button__title": "अद्यतनित करा"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",

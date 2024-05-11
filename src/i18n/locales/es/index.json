@@ -58,7 +58,9 @@
     "manage_my_plan": "Administrar mi plan",
     "watch_video": "Ver video",
     "input_content": "Contenido de entrada",
-    "discard": "Descartar"
+    "discard": "Descartar",
+    "create": "Crear",
+    "update": "Actualizar"
   },
   "settings": {
     "left_menu__me": "Yo y MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "La plantilla de sugerencia de IA.\nLa plantilla puede incluir cualquier número de las siguientes variables:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "La plantilla de sugerencia de IA.\nLa plantilla puede incluir cualquier número de las siguientes variables:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "La plantilla de sugerencia de IA.\nLa plantilla puede incluir cualquier número de las siguientes variables:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Plantilla de ejemplo:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Plantilla de ejemplo:",
+    "feature_card__prompts__confirm__cancel__description": "¿Estás seguro de que quieres cancelar? Ten en cuenta que una vez cancelado, se perderán todos los cambios no guardados.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Sí, cancelar",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Volver a editar"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "contenido de contexto objetivo",
     "preset_variables__system__draft_context__description": "contenido de contexto de borrador",
     "preset_variables__system__summary_page_content_representation__description": "el contenido de la página web/PDF/video de YouTube actual",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Genera un resumen del {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Genera un resumen del {{PAGE_CONTENT}}",
+    "configure_panel__title": "Configurar",
+    "config_panel__next_button__title": "Siguiente: Agregar indicación",
+    "prompt_panel__title": "Indicación",
+    "preview_panel__title": "Vista previa",
+    "preset_variables__error_message__title": "Por favor selecciona las capacidades `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Actualizar variable",
+    "add_variable__custom__title": "Variables",
+    "add_variable__update_button__title": "Actualizar"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clic",

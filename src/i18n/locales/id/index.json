@@ -58,7 +58,9 @@
     "manage_my_plan": "Kelola paket saya",
     "watch_video": "Tonton video",
     "input_content": "Konten Input",
-    "discard": "Buang"
+    "discard": "Buang",
+    "create": "Buat",
+    "update": "Perbarui"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Template AI prompt.\nTemplate dapat mencakup beberapa variabel berikut:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Template AI prompt.\nTemplate dapat mencakup sejumlah variabel berikut:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Template AI prompt.\nTemplate dapat mencakup beberapa variabel berikut:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Contoh template prompt:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Contoh template prompt:",
+    "feature_card__prompts__confirm__cancel__description": "Apakah Anda yakin ingin membatalkan? Harap dicatat bahwa setelah dibatalkan, semua perubahan yang belum disimpan akan hilang.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Ya, batalkan",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Kembali ke pengeditan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "konten konteks target",
     "preset_variables__system__draft_context__description": "konten konteks draf",
     "preset_variables__system__summary_page_content_representation__description": "konten dari halaman web/PDF/video YouTube saat ini",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Outputkan ringkasan dari {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Outputkan ringkasan dari {{PAGE_CONTENT}}",
+    "configure_panel__title": "Konfigurasi",
+    "config_panel__next_button__title": "Selanjutnya: Tambahkan prompt",
+    "prompt_panel__title": "Prompt",
+    "preview_panel__title": "Pratinjau",
+    "preset_variables__error_message__title": "Harap pilih kemampuan `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Perbarui variabel",
+    "add_variable__custom__title": "Variabel",
+    "add_variable__update_button__title": "Perbarui"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompt",

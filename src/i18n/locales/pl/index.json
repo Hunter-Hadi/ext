@@ -58,7 +58,9 @@
     "manage_my_plan": "Zarządzaj moim planem",
     "watch_video": "Obejrzyj film",
     "input_content": "Treść wejściowa",
-    "discard": "Odrzuć"
+    "discard": "Odrzuć",
+    "create": "Utwórz",
+    "update": "Aktualizuj"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Szablon podpowiedzi AI.\nSzablon może zawierać dowolną liczbę następujących zmiennych:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Szablon podpowiedzi AI.\nSzablon może zawierać dowolną liczbę następujących zmiennych:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Szablon podpowiedzi AI.\nSzablon może zawierać dowolną liczbę następujących zmiennych:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Szablon przykładowego polecenia:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Szablon przykładowego polecenia:",
+    "feature_card__prompts__confirm__cancel__description": "Czy na pewno chcesz anulować? Proszę zauważyć, że po anulowaniu wszystkie niezapisane zmiany zostaną utracone.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Tak, anuluj",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Powrót do edycji"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "treść docelowego kontekstu",
     "preset_variables__system__draft_context__description": "treść roboczego kontekstu",
     "preset_variables__system__summary_page_content_representation__description": "treść aktualnej strony internetowej/PDF/wideo YouTube",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Wygeneruj podsumowanie {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Wygeneruj podsumowanie {{PAGE_CONTENT}}",
+    "configure_panel__title": "Konfiguruj",
+    "config_panel__next_button__title": "Dalej: Dodaj podpowiedź",
+    "prompt_panel__title": "Podpowiedź",
+    "preview_panel__title": "Podgląd",
+    "preset_variables__error_message__title": "Proszę wybrać możliwości `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Aktualizuj zmienną",
+    "add_variable__custom__title": "Zmienne",
+    "add_variable__update_button__title": "Aktualizuj"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-kliknięcie na podpowiedzi",

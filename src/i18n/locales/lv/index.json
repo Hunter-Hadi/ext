@@ -58,7 +58,9 @@
     "manage_my_plan": "Pārvaldīt manu plānu",
     "watch_video": "Skatīt video",
     "input_content": "Ievadiet saturu",
-    "discard": "Atmest"
+    "discard": "Atmest",
+    "create": "Izveidot",
+    "update": "Atjaunināt"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI pamata veidne.\nVeidnē var iekļaut jebkuru skaitu sekojošo mainīgo:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI iedvesmas veidne.\nVeidnē var iekļaut jebkuru šādu mainīgo skaitu:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI pamata veidne.\nVeidnē var iekļaut jebkuru skaitu sekojošo mainīgo:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Piemēra pamata veidne:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Piemēra pamata veidne:",
+    "feature_card__prompts__confirm__cancel__description": "Vai tiešām vēlaties atcelt? Lūdzu, ņemiet vērā, ka pēc atcelšanas tiks zaudētas visas nesaglabātās izmaiņas.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Jā, atcelt",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Atpakaļ pie rediģēšanas"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "mērķa konteksta saturs",
     "preset_variables__system__draft_context__description": "melnraksta konteksta saturs",
     "preset_variables__system__summary_page_content_representation__description": "pašreizējās tīmekļa lapas/PDF/YouTube video saturs",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Izvadiet {{PAGE_CONTENT}} kopsavilkumu"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Izvadiet {{PAGE_CONTENT}} kopsavilkumu",
+    "configure_panel__title": "Konfigurēt",
+    "config_panel__next_button__title": "Nākamais: Pievienot norādi",
+    "prompt_panel__title": "Norāde",
+    "preview_panel__title": "Priekšskatījums",
+    "preset_variables__error_message__title": "Lūdzu, atlasiet iespējas `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Atjaunināt mainīgo",
+    "add_variable__custom__title": "Mainīgie",
+    "add_variable__update_button__title": "Atjaunināt"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikšķa pamudinājumi",

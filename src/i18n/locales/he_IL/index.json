@@ -58,7 +58,9 @@
     "manage_my_plan": "ניהול התוכנית שלי",
     "watch_video": "צפה בסרטון",
     "input_content": "תוכן קלט",
-    "discard": "התעלם"
+    "discard": "התעלם",
+    "create": "צור",
+    "update": "עדכן"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "תבנית הצעת המודעה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "תבנית הצעת המענה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "תבנית הצעת המודעה של AI.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "תבנית לדוגמה:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "תבנית לדוגמה:",
+    "feature_card__prompts__confirm__cancel__description": "האם אתה בטוח שברצונך לבטל? שים לב שכל השינויים שלא נשמרו יאבדו.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "כן, בטל",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "חזור לעריכה"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "תוכן הקשר היעד",
     "preset_variables__system__draft_context__description": "תוכן הקשר הטיוטה",
     "preset_variables__system__summary_page_content_representation__description": "תוכן הדף הנוכחי/קובץ PDF/סרטון YouTube",
-    "preset_variables__system__summary_page_content_representation__description__example1": "הצג סיכום של {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "הצג סיכום של {{PAGE_CONTENT}}",
+    "configure_panel__title": "הגדר",
+    "config_panel__next_button__title": "הבא: הוסף פרומט",
+    "prompt_panel__title": "פרומט",
+    "preview_panel__title": "תצוגה מקדימה",
+    "preset_variables__error_message__title": "יש לבחור יכולות `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "עדכן משתנה",
+    "add_variable__custom__title": "משתנים",
+    "add_variable__update_button__title": "עדכן"
   },
   "prompt_library": {
     "use_prompt_library__title": "פרומטים בלחיצה אחת",

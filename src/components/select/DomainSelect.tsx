@@ -164,15 +164,15 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       onInputChange={
         options.length === 0
           ? (_, value) => {
-            if (value !== props?.value?.[0]) {
-              setSelected(null)
+              if (value !== props?.value?.[0]) {
+                setSelected(null)
+              }
+              if (value.length === 0) {
+                setOpen(false)
+              } else {
+                setOpen(true)
+              }
             }
-            if (value.length === 0) {
-              setOpen(false)
-            } else {
-              setOpen(true)
-            }
-          }
           : void 0
       }
       slotProps={{
@@ -192,9 +192,9 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       sx={{
         width: 160,
         [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]: {
-          fontSize: 24
+          fontSize: 24,
         },
-        ...sx
+        ...sx,
       }}
       autoHighlight
       getOptionLabel={(option) => option.label}
@@ -206,7 +206,9 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
         )
       }}
       filterOptions={
-        options?.length === 0 ? freeSolofilterOptions : filterOptions
+        options?.length === 0 && !isEditingSpecialInputAssistantButtonKey
+          ? freeSolofilterOptions
+          : filterOptions
       }
       renderInput={(params) => (
         <TextField
@@ -224,7 +226,9 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
             <img
               width={16}
               height={16}
-              src={domain2Favicon(option.label === 'MaxAI PDF Viewer' ? 'maxai.me' : option.value)}
+              src={domain2Favicon(
+                option.label === 'MaxAI PDF Viewer' ? 'maxai.me' : option.value,
+              )}
               style={{ marginRight: 8 }}
             />
             <Typography color={'text.primary'} noWrap fontSize={14}>

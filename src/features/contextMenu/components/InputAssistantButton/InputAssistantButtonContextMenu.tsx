@@ -54,7 +54,9 @@ const selectionEffectActions = new Set([
   'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
   'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
   // refine draft
-  'GET_EMAIL_DRAFT_OF_WEBPAGE'
+  'GET_EMAIL_DRAFT_OF_WEBPAGE',
+  // compose new, key point or custom prompt with custom variables
+  'SET_VARIABLES_MODAL'
 ])
 
 const InputAssistantButtonContextMenu: FC<
@@ -167,14 +169,12 @@ const InputAssistantButtonContextMenu: FC<
           if (
             event === 'action' &&
             data?.status === 'complete' &&
-            (
-              selectionEffectActions.has(data?.type) ||
-              (data?.type === 'SET_VARIABLES_MODAL' && data?.parameters?.MaxAIPromptActionConfig?.promptName === 'Compose with key points') // compose new
-            )
+            selectionEffectActions.has(data?.type)
           ) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
             onSelectionEffect() // 这里会报错只是因为 ts 定义错了，实际使用不会报错，未来可能会根据定义再扩展这个 function
+            shortCutsEngine?.removeListener(onSelectionEffectListener!)
           }
         }
         shortCutsEngine?.addListener(onSelectionEffectListener)
@@ -195,7 +195,6 @@ const InputAssistantButtonContextMenu: FC<
           isRunningRef.current = false
 
           if (onSelectionEffectListener) {
-            shortCutsEngine?.removeListener(onSelectionEffectListener)
             shortCutsEngine?.setActions([])
           }
           // temporary support onSelectionEffect

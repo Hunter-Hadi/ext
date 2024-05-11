@@ -171,6 +171,7 @@ const useInitContextWindow = () => {
   } = useFloatingContextMenuDraft()
   const { continueConversationInSidebar } = useSidebarSettings()
   const draftContextMenuList = useDraftContextMenuList()
+  console.log('testestdraftContextMenuList', draftContextMenuList)
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
     inputValue,

@@ -21,7 +21,9 @@ const SettingPromptsEditFormModal: FC<{
   onCancel?: () => void
   open: boolean
 }> = ({ open, node, onSave, onDelete, onCancel, iconSetting }) => {
-  const [tabIndex, setTabIndex] = useState(0)
+  const [tabIndex, setTabIndex] = useState(
+    node.id && node.data.type === 'shortcuts' ? 1 : 0,
+  )
 
   return (
     <CustomModal
@@ -39,6 +41,8 @@ const SettingPromptsEditFormModal: FC<{
         height: 'calc(100% - 112px)',
         maxWidth: 'auto',
         borderRadius: 2,
+        bgcolor: 'background.paper',
+        backgroundImage: 'none'
       }}
     >
       <SettingPromptsEditContextProvider

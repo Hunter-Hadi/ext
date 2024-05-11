@@ -29,7 +29,9 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
         lineHeight: 'auto',
 
         [`&.${tabClasses.selected}`]: {
-          background: isDark ? 'rgb(32, 33, 36)' : 'rgba(255, 255, 255, 1)',
+          background: isDark
+            ? t.palette?.customColor.main
+            : 'rgba(255, 255, 255, 1)',
           color: isDark ? '#fff' : 'rgba(0, 0, 0, 0.87)',
           borderColor: isDark
             ? t.palette?.customColor!.borderColor

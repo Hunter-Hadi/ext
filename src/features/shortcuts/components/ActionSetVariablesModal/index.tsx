@@ -385,7 +385,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const formData = getValues()
     // 在preview编辑器里需要reset, 因为不确定对其他地方有无影响
     // 这里先这么处理，理论上可以删掉这个判断直接reset
-    if (showCloseButton) {
+    if (modelKey === 'PromptPreview') {
       reset()
     }
     // 先添加系统预设的变量
@@ -393,6 +393,13 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       // 再添加用户自定义的变量
       .concat(currentVariables)
       .forEach((variable) => {
+        // 在preview编辑器里需要保存编辑的值
+        const registerValue =
+          modelKey === 'PromptPreview' &&
+          formData[variable.VariableName] !== undefined
+            ? formData[variable.VariableName]
+            : variable.defaultValue?.trim()
+
         if (variable.hidden) {
           if (isProduction) {
             return
@@ -411,14 +418,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               variable.VariableName,
             )
           ) {
-            setValue(variable.VariableName, variable.defaultValue)
+            setValue(variable.VariableName, registerValue)
           }
         }
         const validates = variable.validates || []
         reactHookFormRegisterMap[variable.VariableName] = register(
           variable.VariableName,
           {
-            value: variable.defaultValue?.trim(),
+            value: registerValue,
             validate: (value) => {
               for (let i = 0; i < validates.length; i++) {
                 const validateItem = validates[i]

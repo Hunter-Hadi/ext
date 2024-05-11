@@ -47,6 +47,7 @@ export class ActionGetContentsOfURL extends Action {
 
       if (
         currentUrl &&
+        currentUrl.startsWith('http') &&
         shortcutsMessageChannelEngine &&
         clientConversationEngine
       ) {
@@ -78,10 +79,25 @@ export class ActionGetContentsOfURL extends Action {
           this.taskId,
         )
         // NOTE: webgpt的代码是错误和成功都会返回data，所以这里也要这样写
-        if (response.success) {
+        if (response.success && response.readabilityText) {
           this.output = response?.readabilityText || ''
         } else {
-          this.error = response?.readabilityText || ''
+          // 判断是不是404/403/401
+          if (response.status === 404) {
+            this.error =
+              'Could not fetch the page.\nMake sure the URL is correct.'
+          } else if (response.status === 403) {
+            this.error =
+              'Could not fetch the page.\nThe URL is forbidden to access.'
+          } else if (response.status === 401) {
+            this.error =
+              'Could not fetch the page.\nThe URL is unauthorized to access.'
+          } else {
+            this.error = `Unable to fetch the provided URL due to network issues or website restrictions.\n\nTroubleshooting Steps:
+- disable VPN if in use, and ensure your internet connection is active and stable.
+- visit the URL directly in your browser, activate the MaxAI Sidebar on the same web page, and use the prompt on the page.`
+            return
+          }
         }
       } else {
         this.error = 'Could not fetch the page.\nMake sure the URL is correct.'

@@ -105,7 +105,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
-  const [hide, setHide] = useState(false)
+  const [isHideInOtherConversationType, setIsHideInOtherConversationType] =
+    useState(false)
   const currentBreakpoint = useCurrentBreakpoint()
   const [config, setConfig] = useState<ActionSetVariablesModalConfig | null>(
     null,
@@ -548,14 +549,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   }, [shortCutsEngine])
   useEffect(() => {
     if (currentSidebarConversationType === 'Chat') {
-      setHide(false)
+      setIsHideInOtherConversationType(false)
     } else {
-      setHide(true)
+      setIsHideInOtherConversationType(true)
     }
   }, [currentSidebarConversationType])
   useEffect(() => {
     if (show) {
-      if (hide) {
+      if (isHideInOtherConversationType) {
         onClose?.('reset')
       } else {
         const focusEmptyInput = () => {
@@ -585,14 +586,17 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         onShow?.()
       }
     } else {
-      setHide(false)
+      setIsHideInOtherConversationType(false)
     }
-  }, [show, hide])
-  if (!props.show && (!show || hide || Object.keys(form).length === 0)) {
+  }, [show, isHideInOtherConversationType])
+  if (
+    !props.show &&
+    (!show || isHideInOtherConversationType || Object.keys(form).length === 0)
+  ) {
     console.log(
       'ActionSetVariablesModal not show or hide or form is empty',
       show,
-      hide,
+      isHideInOtherConversationType,
       form,
     )
     return null

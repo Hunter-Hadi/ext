@@ -136,11 +136,13 @@ const PromptPanel = () => {
             addTextVariableToHTML(variable)
           }}
         />
-        <CustomVariable
-          onAddTextVariable={(variable) => {
-            addTextVariableToHTML(variable)
-          }}
-        />
+        {editButtonKey !== 'sidebarSummaryButton' && (
+          <CustomVariable
+            onAddTextVariable={(variable) => {
+              addTextVariableToHTML(variable)
+            }}
+          />
+        )}
       </Stack>
 
       <TemplateContentEditor

@@ -112,7 +112,6 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
         onSelectionEffect: ({ id: buttonId }) => {
-          debugger
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
             inputAssistantButtonSelector,
@@ -294,7 +293,6 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
             )) as HTMLElement
 
           if (inputAssistantButton) {
-            debugger
             const rootElement =
               document.querySelector<HTMLDivElement>(
                 'div[data-app-section="ConversationContainer"]',

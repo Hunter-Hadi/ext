@@ -204,7 +204,7 @@ const TitleBar: FC<{
           setErrors((prev) => ({ ...prev, promptTemplate: true }))
           Toast.error(
             t('prompt_editor:preset_variables__error_message__title', {
-              VARIABLE_NAME: `{{${variables.VariableName}}}`,
+              VARIABLE_NAME: `{{${variables.label}}}`,
             }),
             {
               anchorOrigin: {

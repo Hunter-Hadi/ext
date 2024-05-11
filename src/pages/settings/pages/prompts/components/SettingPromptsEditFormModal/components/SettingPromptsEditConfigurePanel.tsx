@@ -140,10 +140,12 @@ const ConfigurePanel: FC<{
         </Stack>
       )}
 
-      <AIResponseLanguageEditor
-        checked={enabledAIResponseLanguage}
-        onChange={() => toggleAIResponseLanguage()}
-      />
+      {editNode.data.type === 'shortcuts' && (
+        <AIResponseLanguageEditor
+          checked={enabledAIResponseLanguage}
+          onChange={() => toggleAIResponseLanguage()}
+        />
+      )}
 
       <Stack spacing={1}>
         <Stack direction={'row'} alignItems="center">

@@ -47,7 +47,10 @@ const SettingPromptsEditFormModal: FC<{
         onDelete={onDelete}
         onCancel={onCancel}
       >
-        <SettingPromptsEditTitleBar tabIndex={tabIndex} changeTabIndex={setTabIndex} />
+        <SettingPromptsEditTitleBar
+          tabIndex={tabIndex}
+          changeTabIndex={setTabIndex}
+        />
         <Stack direction="row" flex={1} overflow="hidden">
           <Stack flex={1} overflow="auto" p={2}>
             {node.data.type === 'shortcuts' && (

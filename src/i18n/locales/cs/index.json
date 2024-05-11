@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Další: Přidat podnět",
     "prompt_panel__title": "Podnět",
     "preview_panel__title": "Náhled",
-    "preset_variables__error_message__title": "Vyberte prosím možnosti `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Vyberte prosím kontext `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Aktualizovat proměnnou",
     "add_variable__custom__title": "Proměnné",
     "add_variable__update_button__title": "Aktualizovat"

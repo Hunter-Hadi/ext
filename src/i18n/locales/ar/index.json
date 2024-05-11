@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "التالي: إضافة استفسار",
     "prompt_panel__title": "استفسار",
     "preview_panel__title": "معاينة",
-    "preset_variables__error_message__title": "يرجى تحديد القدرات `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "يرجى تحديد السياق `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "تحديث المتغير",
     "add_variable__custom__title": "المتغيرات",
     "add_variable__update_button__title": "تحديث"

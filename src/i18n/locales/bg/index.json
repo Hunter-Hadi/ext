@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Следващо: Добавяне на подсказка",
     "prompt_panel__title": "Подсказка",
     "preview_panel__title": "Преглед",
-    "preset_variables__error_message__title": "Моля, изберете възможности `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Моля, изберете контекст `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Актуализиране на променлива",
     "add_variable__custom__title": "Променливи",
     "add_variable__update_button__title": "Актуализиране"

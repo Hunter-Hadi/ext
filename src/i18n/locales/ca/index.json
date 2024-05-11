@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Següent: Afegir indicació",
     "prompt_panel__title": "Indicació",
     "preview_panel__title": "Previsualització",
-    "preset_variables__error_message__title": "Seleccioneu les capacitats `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Si us plau, seleccioneu el context `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Actualitza la variable",
     "add_variable__custom__title": "Variables",
     "add_variable__update_button__title": "Actualitza"

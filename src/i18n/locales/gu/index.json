@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "આગામી: પ્રોંપ્ટ ઉમેરો",
     "prompt_panel__title": "પ્રોંપ્ટ",
     "preview_panel__title": "પૂર્વાવલોકન",
-    "preset_variables__error_message__title": "કૃપા કરીને `{{VARIABLE_NAME}}` ક્ષમતાઓ પસંદ કરો",
+    "preset_variables__error_message__title": "કૃપા કરીને સંદર્ભ `{{VARIABLE_NAME}}` પસંદ કરો",
     "add_variable__update__title": "ચર અપડેટ કરો",
     "add_variable__custom__title": "ચરો",
     "add_variable__update_button__title": "અપડેટ કરો"

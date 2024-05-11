@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Ďalšie: Pridať podnet",
     "prompt_panel__title": "Podnet",
     "preview_panel__title": "Náhľad",
-    "preset_variables__error_message__title": "Prosím vyberte schopnosti `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Prosím vyberte kontext `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Aktualizovať premennú",
     "add_variable__custom__title": "Premenné",
     "add_variable__update_button__title": "Aktualizovať"

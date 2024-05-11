@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "下一步：添加提示",
     "prompt_panel__title": "提示",
     "preview_panel__title": "预览",
-    "preset_variables__error_message__title": "请选择功能 `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "请选择上下文 `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "更新变量",
     "add_variable__custom__title": "变量",
     "add_variable__update_button__title": "更新"

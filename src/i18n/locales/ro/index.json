@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Următorul: Adaugă prompt",
     "prompt_panel__title": "Prompt",
     "preview_panel__title": "Previzualizare",
-    "preset_variables__error_message__title": "Te rugăm să selectezi capacitățile `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Vă rugăm să selectați contextul `{{Nume_VARIABILĂ}}`",
     "add_variable__update__title": "Actualizează variabila",
     "add_variable__custom__title": "Variabile",
     "add_variable__update_button__title": "Actualizează"

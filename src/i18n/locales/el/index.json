@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Επόμενο: Προσθήκη προτροπής",
     "prompt_panel__title": "Προτροπή",
     "preview_panel__title": "Προεπισκόπηση",
-    "preset_variables__error_message__title": "Παρακαλούμε επιλέξτε τις δυνατότητες `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Παρακαλώ επιλέξτε το περιβάλλον `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Ενημέρωση μεταβλητής",
     "add_variable__custom__title": "Μεταβλητές",
     "add_variable__update_button__title": "Ενημέρωση"

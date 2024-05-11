@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Järgmine: Lisa küsimus",
     "prompt_panel__title": "Küsimus",
     "preview_panel__title": "Eelvaade",
-    "preset_variables__error_message__title": "Palun valige võimalused `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Palun valige kontekst `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Uuenda muutuja",
     "add_variable__custom__title": "Muutujad",
     "add_variable__update_button__title": "Uuenda"

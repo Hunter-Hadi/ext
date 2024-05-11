@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "ಮುಂದೆ: ಪ್ರಾಂಪ್ಟ್ ಸೇರಿಸು",
     "prompt_panel__title": "ಪ್ರಾಂಪ್ಟ್",
     "preview_panel__title": "ಪೂರ್ವದೃಷ್ಟಿ",
-    "preset_variables__error_message__title": "ದಯವಿಟ್ಟು `{{VARIABLE_NAME}}` ಸಾಮರ್ಥ್ಯಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "preset_variables__error_message__title": "ದಯವಿಟ್ಟು ಸಂದರ್ಭ `{{VARIABLE_NAME}}` ಆಯ್ಕೆಮಾಡಿ",
     "add_variable__update__title": "ವ್ಯತ್ಯಾಸಗೊಳಿಸುವ ಮಾಹಿತಿ",
     "add_variable__custom__title": "ಮಾಹಿತಿಗಳು",
     "add_variable__update_button__title": "ನವೀಕರಿಸು"

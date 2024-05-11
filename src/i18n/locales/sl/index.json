@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Naprej: Dodaj napotek",
     "prompt_panel__title": "Napotek",
     "preview_panel__title": "Predogled",
-    "preset_variables__error_message__title": "Prosimo, izberite zmožnosti `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Prosimo, izberite kontekst `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Posodobi spremenljivko",
     "add_variable__custom__title": "Spremenljivke",
     "add_variable__update_button__title": "Posodobi"

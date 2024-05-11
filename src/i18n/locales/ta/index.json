@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "அடுத்தது: விருப்பத்தைச் சேர்க்கவும்",
     "prompt_panel__title": "உண்மையானது",
     "preview_panel__title": "முன்னோட்டம்",
-    "preset_variables__error_message__title": "தயவுசெய்து `{{VARIABLE_NAME}}` முடிவுகளைத் தேர்ந்தெடுக்கவும்",
+    "preset_variables__error_message__title": "தயவுசெய்து `{{VARIABLE_NAME}}` உள்ளடக்கத்தைத் தேர்ந்தெடுக்கவும்",
     "add_variable__update__title": "மாற்றி முடிக்க",
     "add_variable__custom__title": "மாற்றங்கள்",
     "add_variable__update_button__title": "மேம்படுத்து"

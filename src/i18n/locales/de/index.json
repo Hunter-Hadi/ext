@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Weiter: Prompt hinzufügen",
     "prompt_panel__title": "Prompt",
     "preview_panel__title": "Vorschau",
-    "preset_variables__error_message__title": "Bitte wählen Sie die Fähigkeiten `{{VARIABLE_NAME}}` aus",
+    "preset_variables__error_message__title": "Bitte wählen Sie den Kontext `{{VARIABLE_NAME}}` aus",
     "add_variable__update__title": "Variable aktualisieren",
     "add_variable__custom__title": "Variablen",
     "add_variable__update_button__title": "Aktualisieren"

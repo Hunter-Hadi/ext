@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "తరువాత: ప్రాంప్ట్ జోడించండి",
     "prompt_panel__title": "ప్రాంప్ట్",
     "preview_panel__title": "ప్రివ్యూ",
-    "preset_variables__error_message__title": "దయచేసి క్షమతాలను `{{VARIABLE_NAME}}` ఎంచుకోండి",
+    "preset_variables__error_message__title": "దయచేసి కంటెక్స్ట్ `{{VARIABLE_NAME}}` ఎంచుకోండి",
     "add_variable__update__title": "వ్యారబుల్‌ను నవీకరించు",
     "add_variable__custom__title": "వ్యారబుల్‌లు",
     "add_variable__update_button__title": "నవీకరించు"

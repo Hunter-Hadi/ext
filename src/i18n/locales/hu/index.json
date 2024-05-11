@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Következő: Prompt hozzáadása",
     "prompt_panel__title": "Prompt",
     "preview_panel__title": "Előnézet",
-    "preset_variables__error_message__title": "Kérjük, válasszon `{{VARIABLE_NAME}}` képességeket",
+    "preset_variables__error_message__title": "Kérlek válassz `{{VARIABLE_NAME}}` kontextust",
     "add_variable__update__title": "Változó frissítése",
     "add_variable__custom__title": "Változók",
     "add_variable__update_button__title": "Frissítés"

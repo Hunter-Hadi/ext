@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Ifuatayo: Ongeza onyo",
     "prompt_panel__title": "Onyo",
     "preview_panel__title": "Tazama",
-    "preset_variables__error_message__title": "Tafadhali chagua uwezo `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Tafadhali chagua muktadha `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Sasisha kigezo",
     "add_variable__custom__title": "Vigezo",
     "add_variable__update_button__title": "Sasisha"

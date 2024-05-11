@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Հաջորդը: Ավելացնել հրահանգ",
     "prompt_panel__title": "Հրահանգ",
     "preview_panel__title": "Դիտել",
-    "preset_variables__error_message__title": "Խնդրում ենք ընտրել `{{VARIABLE_NAME}}` համարով հնարավորությունները",
+    "preset_variables__error_message__title": "Ընտրեք համատեքստը `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Թարմացնել փոփոխականը",
     "add_variable__custom__title": "Փոփոխականներ",
     "add_variable__update_button__title": "Թարմացնել"

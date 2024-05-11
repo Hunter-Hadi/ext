@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "পরবর্তী: প্রম্পট যোগ করুন",
     "prompt_panel__title": "প্রম্পট",
     "preview_panel__title": "প্রিভিউ",
-    "preset_variables__error_message__title": "দয়া করে ক্ষমতা `{{VARIABLE_NAME}}` নির্বাচন করুন",
+    "preset_variables__error_message__title": "অনুগ্রহ করে সন্দর্ভ `{{VARIABLE_NAME}}` নির্বাচন করুন",
     "add_variable__update__title": "ভেরিয়েবল আপডেট করুন",
     "add_variable__custom__title": "ভেরিয়েবলসমূহ",
     "add_variable__update_button__title": "আপডেট করুন"

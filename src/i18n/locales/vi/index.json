@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Tiếp theo: Thêm gợi ý",
     "prompt_panel__title": "Gợi ý",
     "preview_panel__title": "Xem trước",
-    "preset_variables__error_message__title": "Vui lòng chọn khả năng `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Vui lòng chọn ngữ cảnh `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Cập nhật biến số",
     "add_variable__custom__title": "Biến số",
     "add_variable__update_button__title": "Cập nhật"

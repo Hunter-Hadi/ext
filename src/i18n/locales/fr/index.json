@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Suivant : Ajouter une invite",
     "prompt_panel__title": "Invite",
     "preview_panel__title": "Aperçu",
-    "preset_variables__error_message__title": "Veuillez sélectionner les capacités `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Veuillez sélectionner le contexte `{{NOM_VARIABLE}}`",
     "add_variable__update__title": "Mettre à jour la variable",
     "add_variable__custom__title": "Variables",
     "add_variable__update_button__title": "Mettre à jour"

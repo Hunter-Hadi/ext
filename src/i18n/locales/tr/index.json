@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Sonraki: İpucu ekle",
     "prompt_panel__title": "İpucu",
     "preview_panel__title": "Önizleme",
-    "preset_variables__error_message__title": "Lütfen `{{VARIABLE_NAME}}` yeteneklerini seçin",
+    "preset_variables__error_message__title": "Lütfen bağlam seçin `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Değişkeni güncelle",
     "add_variable__custom__title": "Değişkenler",
     "add_variable__update_button__title": "Güncelle"

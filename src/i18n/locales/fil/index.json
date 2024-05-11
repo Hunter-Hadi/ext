@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Susunod: Magdagdag ng prompt",
     "prompt_panel__title": "Prompt",
     "preview_panel__title": "Preview",
-    "preset_variables__error_message__title": "Pakipili ang mga kakayahan `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Mangyaring piliin ang konteksto `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "I-update ang variable",
     "add_variable__custom__title": "Mga Variable",
     "add_variable__update_button__title": "I-update"

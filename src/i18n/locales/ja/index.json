@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "次へ：プロンプトを追加",
     "prompt_panel__title": "プロンプト",
     "preview_panel__title": "プレビュー",
-    "preset_variables__error_message__title": "機能 `{{VARIABLE_NAME}}` を選択してください",
+    "preset_variables__error_message__title": "コンテキスト `{{VARIABLE_NAME}}` を選択してください",
     "add_variable__update__title": "変数を更新",
     "add_variable__custom__title": "変数",
     "add_variable__update_button__title": "更新"

@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Далі: Додати підказку",
     "prompt_panel__title": "Підказка",
     "preview_panel__title": "Попередній перегляд",
-    "preset_variables__error_message__title": "Будь ласка, виберіть можливості `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Будь ласка, виберіть контекст `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Оновити змінну",
     "add_variable__custom__title": "Змінні",
     "add_variable__update_button__title": "Оновити"

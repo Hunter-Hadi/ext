@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Sljedeće: Dodaj upit",
     "prompt_panel__title": "Upit",
     "preview_panel__title": "Pregled",
-    "preset_variables__error_message__title": "Odaberite mogućnosti `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Odaberite kontekst `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Ažuriraj varijablu",
     "add_variable__custom__title": "Varijable",
     "add_variable__update_button__title": "Ažuriraj"

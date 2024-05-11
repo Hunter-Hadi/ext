@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "ቀጣይ: ማስተካከል ጨምር",
     "prompt_panel__title": "መልስ",
     "preview_panel__title": "የተጠቃሚ ማሳያ",
-    "preset_variables__error_message__title": "እባክዎ እርስዎን `{{VARIABLE_NAME}}` እንዴት ይምረጡ",
+    "preset_variables__error_message__title": "እባክዎ ማስተካከያ `{{VARIABLE_NAME}}` ይምረጡ",
     "add_variable__update__title": "የተዘረዘሩትን ቪልት አዘምን",
     "add_variable__custom__title": "ተጠቃሚዎች",
     "add_variable__update_button__title": "አዘምን"

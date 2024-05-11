@@ -821,7 +821,7 @@
     "preset_variables__tooltip__variable_name_prefix": "Variables about the",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variable placeholder",
     "preset_variables__tooltip__table__column_name__description__title": "Will be replaced with",
-    "preset_variables__error_message__title": "Please select capabilities `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Please select context `{{VARIABLE_NAME}}`",
     "add_variable__title": "Add new variables",
     "add_variable__update__title": "Update variable",
     "add_variable__custom__title": "Variables",

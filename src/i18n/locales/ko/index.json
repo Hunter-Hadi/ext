@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "다음: 프롬프트 추가",
     "prompt_panel__title": "프롬프트",
     "preview_panel__title": "미리보기",
-    "preset_variables__error_message__title": "`{{VARIABLE_NAME}}` 기능을 선택해주세요.",
+    "preset_variables__error_message__title": "컨텍스트 `{{VARIABLE_NAME}}`을(를) 선택하세요",
     "add_variable__update__title": "변수 업데이트",
     "add_variable__custom__title": "변수",
     "add_variable__update_button__title": "업데이트"

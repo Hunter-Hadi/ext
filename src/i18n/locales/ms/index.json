@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Seterusnya: Tambah prompt",
     "prompt_panel__title": "Prompt",
     "preview_panel__title": "Pratonton",
-    "preset_variables__error_message__title": "Sila pilih keupayaan `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Sila pilih konteks `{{NAMA_PEMUTARAN}}`",
     "add_variable__update__title": "Kemaskini pembolehubah",
     "add_variable__custom__title": "Pembolehubah",
     "add_variable__update_button__title": "Kemaskini"

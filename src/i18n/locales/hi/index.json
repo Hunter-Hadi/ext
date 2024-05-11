@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "आगे बढ़ें: प्रॉम्प्ट जोड़ें",
     "prompt_panel__title": "प्रॉम्प्ट",
     "preview_panel__title": "पूर्वावलोकन",
-    "preset_variables__error_message__title": "कृपया क्षमताएँ `{{VARIABLE_NAME}}` का चयन करें",
+    "preset_variables__error_message__title": "कृपया संदर्भ `{{VARIABLE_NAME}}` का चयन करें",
     "add_variable__update__title": "चर अपडेट करें",
     "add_variable__custom__title": "चर",
     "add_variable__update_button__title": "अपडेट करें"

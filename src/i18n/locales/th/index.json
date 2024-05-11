@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "ถัดไป: เพิ่มคำถาม",
     "prompt_panel__title": "คำถาม",
     "preview_panel__title": "ดูตัวอย่าง",
-    "preset_variables__error_message__title": "โปรดเลือกความสามารถ `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "โปรดเลือกบริบท `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "อัปเดตตัวแปร",
     "add_variable__custom__title": "ตัวแปร",
     "add_variable__update_button__title": "อัปเดต"

@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "അടുത്തത്: പ്രോംപ്റ്റ് ചേർക്കുക",
     "prompt_panel__title": "പ്രോംപ്റ്റ്",
     "preview_panel__title": "പ്രിവ്യൂ",
-    "preset_variables__error_message__title": "ദയവായി ക്ഷമിക്കുക `{{VARIABLE_NAME}}` സാധ്യതകൾ തിരഞ്ഞെടുക്കുക",
+    "preset_variables__error_message__title": "ദയവായി കൺടെക്സ്റ്റ് `{{VARIABLE_NAME}}` തിരഞ്ഞെടുക്കുക",
     "add_variable__update__title": "വാരിയബിൾ അപ്‌ഡേറ്റ് ചെയ്യുക",
     "add_variable__custom__title": "വാരിയബിൾസ്",
     "add_variable__update_button__title": "അപ്‌ഡേറ്റ് ചെയ്യുക"

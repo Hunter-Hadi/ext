@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "Kitas: Pridėti užduotį",
     "prompt_panel__title": "Užduotis",
     "preview_panel__title": "Peržiūra",
-    "preset_variables__error_message__title": "Prašome pasirinkti galimybes `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "Prašome pasirinkti kontekstą `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "Atnaujinti kintamąjį",
     "add_variable__custom__title": "Kintamieji",
     "add_variable__update_button__title": "Atnaujinti"

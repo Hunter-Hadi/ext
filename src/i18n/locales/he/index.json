@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "הבא: הוסף פרומט",
     "prompt_panel__title": "פרומט",
     "preview_panel__title": "תצוגה מקדימה",
-    "preset_variables__error_message__title": "יש לבחור יכולות `{{VARIABLE_NAME}}`",
+    "preset_variables__error_message__title": "בחר את ההקשר `{{VARIABLE_NAME}}` בבקשה",
     "add_variable__update__title": "עדכן משתנה",
     "add_variable__custom__title": "משתנים",
     "add_variable__update_button__title": "עדכן"

@@ -1040,7 +1040,7 @@
     "config_panel__next_button__title": "اگلا: پرامپٹ شامل کریں",
     "prompt_panel__title": "پرامپٹ",
     "preview_panel__title": "پیش نظارہ",
-    "preset_variables__error_message__title": "براہ کرم قابلیتوں `{{VARIABLE_NAME}}` کا انتخاب کریں",
+    "preset_variables__error_message__title": "براہ کرم متناظری منتخب کریں `{{VARIABLE_NAME}}`",
     "add_variable__update__title": "متغیر کو اپ ڈیٹ کریں",
     "add_variable__custom__title": "متغیرات",
     "add_variable__update_button__title": "اپ ڈیٹ کریں"

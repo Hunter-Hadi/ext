@@ -175,6 +175,18 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
     setAnchorEl(null)
   }, [onChange])
 
+  const customPromptMenuList = useMemo(() => {
+    const renderCustomPromptMenuList = RenderCustomPromptMenuList(contextMenuList, {
+      level: 0,
+      actionPromptId: actionNavMetadata?.key,
+      onClick: handleClick,
+    })
+    if (renderCustomPromptMenuList.length > 0) {
+      renderCustomPromptMenuList.push(<Divider sx={{ my: '2px' }} />)
+    }
+    return renderCustomPromptMenuList
+  }, [actionNavMetadata?.key, contextMenuList, handleClick])
+
   // initialize loaded
   useEffect(() => {
     return () => {
@@ -307,12 +319,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
               autoFocusItem
             // onKeyDown={(event) => {}}
             >
-              {...RenderCustomPromptMenuList(contextMenuList, {
-                level: 0,
-                actionPromptId: actionNavMetadata?.key,
-                onClick: handleClick,
-              })}
-              {contextMenuList.length > 0 && <Divider sx={{ my: '2px' }} />}
+              {...customPromptMenuList}
               <CustomPromptMenuListItem
                 onClick={(event) => {
                   event.stopPropagation()

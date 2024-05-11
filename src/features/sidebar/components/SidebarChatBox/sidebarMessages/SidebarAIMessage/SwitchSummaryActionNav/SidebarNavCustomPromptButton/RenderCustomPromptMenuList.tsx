@@ -8,6 +8,25 @@ import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 
 import SidebarNavCustomPromptMenuItem from './SidebarNavCustomPromptMenuItem'
 
+export const checkIsValidGroup = (menuItem: IContextMenuItemWithChildren): boolean => {
+  if (menuItem.children.length === 0) {
+    return false
+  }
+  let result = false
+  for (let i = 0; i < menuItem.children.length; i++) {
+    const childItem = menuItem.children[i]
+    if (childItem.data.type === 'shortcuts') {
+      result = true
+    } else {
+      result = checkIsValidGroup(childItem)
+    }
+    if (result) {
+      break
+    }
+  }
+  return result
+}
+
 const RenderCustomPromptMenuList = (
   menuList: IContextMenuItemWithChildren[],
   {
@@ -23,7 +42,7 @@ const RenderCustomPromptMenuList = (
   const nodeList: ReactNode[] = []
   menuList.forEach((menuItem) => {
     if (menuItem.data.type === 'group' && level === 0) {
-      if (menuItem.children.length > 0) {
+      if (checkIsValidGroup(menuItem)) {
         nodeList.push(
           <Divider textAlign="left" sx={{ maxWidth: '100%', my: '1px!important', overflow: 'hidden' }}>
             <Typography

@@ -714,10 +714,6 @@ const useInitRangy = () => {
         }
       })
     }
-    console.log(
-      'testestInstantReplyButtonIdToInputMap',
-      InstantReplyButtonIdToInputMap,
-    )
   }, [floatingDropdownMenu.open])
 }
 

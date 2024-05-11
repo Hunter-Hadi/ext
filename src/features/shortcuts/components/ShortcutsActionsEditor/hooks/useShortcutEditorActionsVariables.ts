@@ -185,7 +185,7 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       ],
       permissionKeys: ['textSelectPopupButton'],
       showInPreviewEditor: true,
-      previewEditorDefaultValue: '',
+      previewEditorDefaultValue: 'Selected text',
       requiredInSettingEditor: true,
     },
     {
@@ -211,7 +211,7 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       examples: [],
       permissionKeys: ['inputAssistantComposeReplyButton'],
       showInPreviewEditor: true,
-      previewEditorDefaultValue: ''
+      previewEditorDefaultValue: 'Full context'
     },
     {
       variable: PRESET_VARIABLE_MAP.TARGET_CONTEXT,
@@ -220,7 +220,7 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       examples: [],
       permissionKeys: ['inputAssistantComposeReplyButton'],
       showInPreviewEditor: true,
-      previewEditorDefaultValue: '',
+      previewEditorDefaultValue: 'Target context',
       requiredInSettingEditor: true,
     },
     {
@@ -230,7 +230,7 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       examples: [],
       permissionKeys: ['inputAssistantRefineDraftButton'],
       showInPreviewEditor: true,
-      previewEditorDefaultValue: '',
+      previewEditorDefaultValue: 'Draft context',
       requiredInSettingEditor: true,
     },
     {
@@ -242,7 +242,7 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       ],
       permissionKeys: ['sidebarSummaryButton'],
       showInPreviewEditor: true,
-      previewEditorDefaultValue: '',
+      previewEditorDefaultValue: 'Page content',
       requiredInSettingEditor: true,
     },
   ],

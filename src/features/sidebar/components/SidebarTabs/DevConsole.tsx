@@ -4,6 +4,7 @@ import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { atomFamily, useRecoilState, useRecoilValue } from 'recoil'
@@ -74,9 +75,10 @@ const useDraggableDevConsole = (id: string) => {
 }
 const DevConsole: FC<{
   isSidebar?: boolean
+  sx?: SxProps
 }> = (props) => {
   const [, setAppLocalStorage] = useRecoilState(AppLocalStorageState)
-  const { isSidebar = false } = props
+  const { isSidebar = false, sx } = props
   const { position, handleMouseDown, handleMouseUp } = useDraggableDevConsole(
     isSidebar ? 'sidebar' : 'floatingContextMenu',
   )
@@ -126,6 +128,7 @@ const DevConsole: FC<{
               border: '1px solid',
               borderColor: 'customColor.borderColor',
               borderRadius: '4px',
+              ...sx,
             }
           : {
               top: position.y,
@@ -142,6 +145,7 @@ const DevConsole: FC<{
               border: '1px solid',
               borderColor: 'customColor.borderColor',
               borderRadius: '4px',
+              ...sx,
             }
       }
     >

@@ -31,7 +31,7 @@ export const getPreviewEditorSystemVariables = (
           VariableName: item.variable.VariableName,
           valueType: item.variable.valueType,
           label,
-          defaultValue: item.previewEditorDefaultValue || label,
+          defaultValue: item.previewEditorDefaultValue,
         }
       }),
   )

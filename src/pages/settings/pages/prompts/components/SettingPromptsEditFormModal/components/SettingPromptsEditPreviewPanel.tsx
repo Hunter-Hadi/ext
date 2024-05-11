@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import React, { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import DevContent from '@/components/DevContent'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useClientConversationListener from '@/features/chatgpt/hooks/useClientConversationListener'
@@ -16,6 +17,7 @@ import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsA
 import { htmlToTemplate } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
+import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import { useGeneratePreviewActions } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useGenerateActions'
 import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 import { getPreviewEditorSystemVariables } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/utils'
@@ -40,7 +42,9 @@ const PreviewPanel = () => {
   const config = useMemo(() => {
     // 有些变量是run shortcuts时会覆盖，具体在useShortCutsParameters里
     // 这里取出预设的一些变量，设置并覆盖
-    const overrideVariables = getPreviewEditorSystemVariables(false)
+    const overrideVariables = getPreviewEditorSystemVariables(false).filter(
+      (item) => item.defaultValue,
+    )
 
     const setModalConfig = actions.find(
       (item) => item.type === 'SET_VARIABLES_MODAL',
@@ -121,6 +125,13 @@ const PreviewPanel = () => {
         },
       }}
     >
+      <DevContent>
+        <DevConsole isSidebar sx={{ right: 0 }} />
+        <Typography id={'chat-panel'} color={'text.primary'} fontSize={'16px'}>
+          {currentConversationId}
+        </Typography>
+      </DevContent>
+
       <Typography
         fontSize="16px"
         textAlign="center"

@@ -236,6 +236,11 @@ interface ActionParameters {
   ActionGetItemFromListRangeEnd?: number
   ActionGetItemFromMatchKey?: string
   ActionGetItemFromMatchValue?: any
+  // repeat
+  ActionRepeatWithEachActions?: ISetActionsType
+  // repeat with each concurrent limit - 最大并发数默认为1
+  ActionRepeatWithEachConcurrentLimit?: number
+  ActionRepeatCount?: number
 }
 
 export default ActionParameters

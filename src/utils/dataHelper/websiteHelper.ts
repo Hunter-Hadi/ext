@@ -84,6 +84,11 @@ export const getCurrentDomainHost = (fromUrl?: string) => {
         crxPageUrl === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
       ) {
         return Browser.runtime.getURL('/pages/pdf/web/viewer.html')
+      } else if (
+        // crx page - settings
+        crxPageUrl === Browser.runtime.getURL('/pages/settings/index.html')
+      ) {
+        return Browser.runtime.getURL('/pages/settings/index.html')
       }
     }
 
@@ -111,6 +116,20 @@ export const isMaxAIImmersiveChatPage = () => {
     return (
       getCurrentDomainHost() ===
       Browser.runtime.getURL('/pages/chat/index.html')
+    )
+  } catch (e) {
+    return false
+  }
+}
+
+/**
+ * 判断是否是MaxAI的settings页面
+ */
+export const isMaxAISettingsPage = () => {
+  try {
+    return (
+      getCurrentDomainHost() ===
+      Browser.runtime.getURL('/pages/settings/index.html')
     )
   } catch (e) {
     return false

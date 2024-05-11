@@ -111,6 +111,7 @@
     "feature_card__prompts__edit_prompt_group__title": "Edit prompt group",
     "feature_card__prompts__edit_prompt__field_name__title": "Name",
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Enter name",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Title is required",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icon",
     "feature_card__prompts__edit_prompt__field_template__title": "Prompt template",
     "feature_card__prompts__edit_prompt__field_template__placeholder": "The AI prompt template.\nThe template can include any number of the following variables:",

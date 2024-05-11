@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Modèle de prompt d'exemple :",
     "feature_card__prompts__confirm__cancel__description": "Êtes-vous sûr de vouloir annuler ? Veuillez noter que toute modification non enregistrée sera perdue.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Oui, annuler",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "Retour à l'édition"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Retour à l'édition",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Le titre est requis"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Direct",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Confiant",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Décontracté",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continuer dans le chat"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continuer dans le chat",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Accepter et copier"
   },
   "prompt_editor": {
     "preset_variables__title": "Fonctionnalités",

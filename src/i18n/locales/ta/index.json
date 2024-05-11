@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "உதாரண கேள்வி வார்ப்பு:",
     "feature_card__prompts__confirm__cancel__description": "நீங்கள் நிச்சயமாக ரத்து செய்ய விரும்புகிறீர்களா? தயவுசெய்து மனப்படுத்தப்படாத மாற்றங்கள் இருந்தால், அதை ரத்து செய்யப்பட்டுவிடப்படும்.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "ஆமாம், ரத்து செய்யுங்கள்",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "திரும்பி திருத்துக"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "திரும்பி திருத்துக",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "தலைப்பு தேவை"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "திரும்ப சொல்லுக",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ஆதரவாளர்",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "மாற்றமான",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "அடுத்து உரையில் தொடர்க"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "அடுத்து உரையில் தொடர்க",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "ஏற்கனவே ஏற்றுவித்து நகல் செய்க"
   },
   "prompt_editor": {
     "preset_variables__title": "திறன்கள்",

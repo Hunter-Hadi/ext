@@ -80,7 +80,13 @@ const ConfigurePanel: FC<{
           }}
           error={!!errors?.promptTitle}
           FormHelperTextProps={{ sx: { ml: 0 } }}
-          helperText={errors?.promptTitle ? 'Title is required' : ''}
+          helperText={
+            errors?.promptTitle
+              ? t(
+                  'settings:feature_card__prompts__edit_prompt__field_name__error__title',
+                )
+              : ''
+          }
         />
       </Stack>
 

@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ಉದಾಹರಣೆ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್:",
     "feature_card__prompts__confirm__cancel__description": "ಖಾತರಿಯಾಗಿ ರದ್ದು ಮಾಡಲು ನೀವು ಖಚಿತವಾಗಿದ್ದೀರಿಯೇ? ದಯವಿಟ್ಟು ಗಮನಿಸಿ, ರದ್ದು ಮಾಡಲು ನಿಮ್ಮಲ್ಲಿ ಯಾವುದೇ ಹೊಂದಿಕೆಗಳು ಉಳಿದಿರುವುದಿಲ್ಲ.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "ಹೌದು, ರದ್ದು ಮಾಡಿ",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "ಸಂಪಾದನೆಗೆ ಹಿಂತಿರುಗಿ"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "ಸಂಪಾದನೆಗೆ ಹಿಂತಿರುಗಿ",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ಶೀರ್ಷಿಕೆ ಅಗತ್ಯವಿದೆ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "ಸ್ಪಷ್ಟ",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ನಂಬಿಕೆಯುಳ್ಳ",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "ಸಾಮಾನ್ಯ",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "ಸ್ವೀಕರಿಸಿ ಮತ್ತು ನಕಲಿ ಮಾಡಿ"
   },
   "prompt_editor": {
     "preset_variables__title": "ಸಾಮರ್ಥ್ಯಗಳು",

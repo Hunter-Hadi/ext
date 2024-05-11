@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Esempio di modello di prompt:",
     "feature_card__prompts__confirm__cancel__description": "Sei sicuro di voler annullare? Nota che una volta annullato, tutte le modifiche non salvate andranno perse.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sì, annulla",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "Torna alla modifica"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Torna alla modifica",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Il titolo è obbligatorio"
   },
   "client": {
     "sidebar__button__close_sidebar": "Chiudi la barra laterale",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Diretto",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Fiducioso",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informale",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continua in chat"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continua in chat",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Accetta e copia"
   },
   "prompt_editor": {
     "preset_variables__title": "Funzionalità",

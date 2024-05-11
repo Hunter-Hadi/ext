@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ഉദാഹരണ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്:",
     "feature_card__prompts__confirm__cancel__description": "നിങ്ങൾ താൽപ്പര്യപ്പെടുന്നുണ്ടോ എന്ന് ഉറപ്പാക്കാൻ താൽപ്പര്യപ്പെടുന്നുണ്ടോ? ദയവായി ശ്രമിക്കുന്നത് റദ്ദാക്കിയാൽ, ഏതെങ്കിലും സേവ് ചെയ്യാനാവാത്ത മാറ്റങ്ങൾ നഷ്ടപ്പെടും.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "അതെ, റദ്ദാക്കുക",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "എഡിറ്റിംഗിലേക്ക് മടങ്ങുക"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "എഡിറ്റിംഗിലേക്ക് മടങ്ങുക",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ശീർഷകം ആവശ്യമാണ്"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "സ്ഥിരമായ",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ആത്മവിശ്വാസമുള്ള",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "അനാവശ്യം",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ചാറ്റില്‍ തുടരുക"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ചാറ്റില്‍ തുടരുക",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "സ്വീകരിക്കുകയും പകർത്തുകയും"
   },
   "prompt_editor": {
     "preset_variables__title": "സാധ്യതകൾ",

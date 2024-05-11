@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Esimerkki kysymyspohjasta:",
     "feature_card__prompts__confirm__cancel__description": "Oletko varma, että haluat peruuttaa? Huomaa, että peruuttamisen jälkeen kaikki tallentamattomat muutokset menetetään.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Kyllä, peruuta",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "Takaisin muokkaamiseen"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Takaisin muokkaamiseen",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Otsikko vaaditaan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Suoraviivainen",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Itsevarma",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Rentoutunut",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Jatka keskustelua"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Jatka keskustelua",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Hyväksy ja kopioi"
   },
   "prompt_editor": {
     "preset_variables__title": "Ominaisuudet",

@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ઉદાહરણ પ્રોમ્પ્ટ ટેમ્પલેટ:",
     "feature_card__prompts__confirm__cancel__description": "શું તમે ખાતરી છો કે તમે રદ કરવા માંગો છો? કૃપા કરીને ધ્યાન આપો કે એકવાર રદ કરેલ પછી, કોઈપણ સંગ્રહિત થયેલ ફેરફારો ગુમ થશે.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "હા, રદ કરો",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "સંપાદન પર પાછા જાઓ"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "સંપાદન પર પાછા જાઓ",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "શીર્ષક જરૂરી છે"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "સીધીસાધી",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "આત્મવિશ્વાસી",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "આરામદાયક",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ચેટમાં ચાલો રહેવું"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ચેટમાં ચાલો રહેવું",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "સ્વીકારો અને કૉપી કરો"
   },
   "prompt_editor": {
     "preset_variables__title": "ક્ષમતાઓ",

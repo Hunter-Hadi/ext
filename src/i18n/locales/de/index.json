@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Beispiel Vorlagentext:",
     "feature_card__prompts__confirm__cancel__description": "Sind Sie sicher, dass Sie abbrechen möchten? Bitte beachten Sie, dass nach dem Abbrechen alle nicht gespeicherten Änderungen verloren gehen.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, abbrechen",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "Zurück zur Bearbeitung"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Zurück zur Bearbeitung",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel ist erforderlich"
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Direkt",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Selbstbewusst",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Lässig",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Im Chat fortsetzen"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Im Chat fortsetzen",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Akzeptieren und kopieren"
   },
   "prompt_editor": {
     "preset_variables__title": "Fähigkeiten",

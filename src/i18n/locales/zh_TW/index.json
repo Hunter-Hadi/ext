@@ -269,7 +269,8 @@
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "範例提示模板：",
     "feature_card__prompts__confirm__cancel__description": "您確定要取消嗎？請注意，一旦取消，任何未保存的更改將丟失。",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "是的，取消",
-    "feature_card__prompts__confirm__cancel__cancel_button_text": "返回編輯"
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "返回編輯",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "需要標題"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",
@@ -983,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "直接",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "自信",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "隨意",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "繼續聊天"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "繼續聊天",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "接受並複製"
   },
   "prompt_editor": {
     "preset_variables__title": "功能",

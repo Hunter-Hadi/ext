@@ -40,7 +40,7 @@ export const VARIABLE_AI_RESPONSE_TONE: IActionSetVariable = {
 // output
 export const OUTPUT_CHAT_COMPLETE: IActionSetVariable = {
   label: 'Chat complete',
-  VariableName: 'ChatComplete',
+  VariableName: 'CHAT_COMPLETE',
   valueType: 'Text',
   systemVariable: true,
 }

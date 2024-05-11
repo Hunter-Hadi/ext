@@ -17,6 +17,8 @@ import {
   SettingsPageRouteContext,
 } from '@/pages/settings/context'
 import SettingsLoginPage from '@/pages/settings/pages/login'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
 
 export const SETTINGS_PAGE_MENU_WIDTH = {
   xs: 250,
@@ -75,9 +77,7 @@ const SettingsSidebarPage = React.lazy(
 const SettingsApp: FC = () => {
   const { loaded, isLogin } = useAuthLogin()
   const onceScrollRef = useRef(false)
-  const [route, setRoute] = useState(() =>
-    getLocationHashRoute()[0],
-  )
+  const [route, setRoute] = useState(() => getLocationHashRoute()[0])
 
   useEffect(() => {
     if (route) {
@@ -121,6 +121,9 @@ const SettingsApp: FC = () => {
       // do nothing
     }
   }, [route, isLogin])
+  useEffectOnce(() => {
+    renderGlobalSnackbar()
+  })
   useClientMessageListenerForBackground()
   useInitMixPanel()
   return (

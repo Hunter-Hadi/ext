@@ -58,7 +58,9 @@
     "manage_my_plan": "আমার পরিকল্পনা পরিচালনা করুন",
     "watch_video": "ভিডিও দেখুন",
     "input_content": "ইনপুট কন্টেন্ট",
-    "discard": "বাতিল করুন"
+    "discard": "বাতিল করুন",
+    "create": "তৈরি করুন",
+    "update": "আপডেট করুন"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির মধ্যে যেকোনো সংখ্যক অংশ থাকতে পারে:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "এই এআই প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যেকোনো সংখ্যক অন্তর্ভুক্ত হতে পারে:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "উদাহরণ প্রম্পট টেমপ্লেট:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "উদাহরণ প্রম্পট টেমপ্লেট:",
+    "feature_card__prompts__confirm__cancel__description": "আপনি কি নিশ্চিত যে আপনি বাতিল করতে চান? দয়া করে মনে রাখবেন, একবার বাতিল করা হলে সংরক্ষিত না করা পর্যন্ত কোনও পরিবর্তন হারায়।",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "হ্যাঁ, বাতিল করুন",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "সম্পাদনা করা ফিরে যান"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -772,7 +777,8 @@
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "আমার নিজের প্রম্পটগুলি",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "আমার নিজের প্রম্পট যোগ করুন",
     "sidebar__summary__advanced__title": "উন্নত সারসংক্ষেপ বিকল্পগুলি",
-    "floating_menu__discard_changes_card__your_draft__title": "আপনি কি আপনার খসড়া বাতিল করতে চান?"
+    "floating_menu__discard_changes_card__your_draft__title": "আপনি কি আপনার খসড়া বাতিল করতে চান?",
+    "floating_menu__discard_changes_card__ai_response__title": "আপনি কি এই এই এই প্রতিক্রিয়াটি বাতিল করতে চান?"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -1027,7 +1033,15 @@
     "preset_variables__system__target_context__description": "লক্ষ্য প্রসঙ্গ বিষয়বস্তু",
     "preset_variables__system__draft_context__description": "খসড়া প্রসঙ্গ বিষয়বস্তু",
     "preset_variables__system__summary_page_content_representation__description": "বর্তমান ওয়েবপেজ/পিডিএফ/ইউটিউব ভিডিওর সামগ্রী",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} এর সংক্ষিপ্ত বিবরণ প্রদান করুন"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} এর সংক্ষিপ্ত বিবরণ প্রদান করুন",
+    "configure_panel__title": "কনফিগার করুন",
+    "config_panel__next_button__title": "পরবর্তী: প্রম্পট যোগ করুন",
+    "prompt_panel__title": "প্রম্পট",
+    "preview_panel__title": "প্রিভিউ",
+    "preset_variables__error_message__title": "দয়া করে ক্ষমতা `{{VARIABLE_NAME}}` নির্বাচন করুন",
+    "add_variable__update__title": "ভেরিয়েবল আপডেট করুন",
+    "add_variable__custom__title": "ভেরিয়েবলসমূহ",
+    "add_variable__update_button__title": "আপডেট করুন"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ক্লিক প্রম্পট",

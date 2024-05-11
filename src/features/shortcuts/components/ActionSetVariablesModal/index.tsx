@@ -37,7 +37,7 @@ import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export interface ActionSetVariablesModalConfig {
-  modelKey?: 'Sidebar' | 'FloatingContextMenu'
+  modelKey?: 'Sidebar' | 'FloatingContextMenu' | 'PromptPreview'
   variables: IActionSetVariable[]
   systemVariables: IActionSetVariable[]
   title: string
@@ -63,8 +63,11 @@ export interface ActionSetVariablesConfirmData {
 }
 interface ActionSetVariablesModalProps
   extends Partial<ActionSetVariablesModalConfig> {
-  modelKey: 'Sidebar' | 'FloatingContextMenu'
+  modelKey: 'Sidebar' | 'FloatingContextMenu' | 'PromptPreview'
+  show?: boolean
   showModelSelector?: boolean
+  showCloseButton?: boolean
+  isSaveLastRunShortcuts?: boolean
   onShow?: () => void
   onBeforeClose?: () => boolean
   onClose?: (reason: 'close' | 'runPrompt' | 'reset') => void
@@ -73,6 +76,7 @@ interface ActionSetVariablesModalProps
     reason: 'runPromptStart' | 'runPromptEnd',
   ) => void
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
+  disabled?: boolean
   onInputCustomVariable?: (data: ActionSetVariablesConfirmData) => void
   sx?: SxProps
 }
@@ -92,6 +96,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     answerInsertMessageId,
     askChatGPTActionParameters,
     showModelSelector = false,
+    showCloseButton = true,
+    isSaveLastRunShortcuts,
+    disabled,
     sx,
   } = props
   const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
@@ -134,10 +141,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         success: false,
       } as ActionSetVariablesConfirmData)
     })
-    reset()
-    setForm({})
-    setShow(false)
-    onClose?.('close')
+    if (showCloseButton) {
+      reset()
+      setForm({})
+      setShow(false)
+      onClose?.('close')
+    }
   }
   const validateForm = async () => {
     const success = await trigger()
@@ -149,6 +158,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     return success
   }
   const confirmModal = async (textAreaElementIndex?: number) => {
+    if (loading || disabled) return
     if (isNumber(textAreaElementIndex)) {
       const nextTextAreaElement = inputBoxRef.current?.querySelectorAll(
         `textarea[id]`,
@@ -198,14 +208,22 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setShow(true)
       return
     }
-    // 如果没有任何值，就不运行
-    if (Object.keys(getValues()).length === 0) {
-      return
+    // 如果没有任何值，就不运行，非自动执行时判断是否有template
+    if (autoExecute) {
+      if (Object.keys(getValues()).length === 0) {
+        return
+      }
+    } else {
+      if (Object.keys(getValues()).length === 0 && !config?.template) {
+        return
+      }
     }
     const presetVariables = cloneDeep(getValues())
-    setForm({})
-    reset()
-    setShow(false)
+    if (showCloseButton) {
+      setForm({})
+      reset()
+      setShow(false)
+    }
     onChange?.(
       {
         data: getValues(),
@@ -234,7 +252,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       const shortcutsVariables: Record<string, IShortCutsParameter> = {}
       Object.keys(presetVariables).forEach((key) => {
         const variableDetail = variableDetailMap[key]
-        if (variableDetail.hidden) {
+        if (variableDetail?.hidden) {
           if (isProduction) {
             return
           } else {
@@ -323,7 +341,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           },
         })
       }
-      await askAIWIthShortcuts(runActions)
+      await askAIWIthShortcuts(runActions, { isSaveLastRunShortcuts })
         .then(() => {
           // done
           const error = shortCutsEngine?.getNextAction()?.error || ''
@@ -335,10 +353,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         .catch()
         .finally(() => {
           // 重置
-          reset()
-          setForm({})
-          setShow(false)
-          onClose?.('runPrompt')
+          if (showCloseButton) {
+            reset()
+            setForm({})
+            setShow(false)
+            onClose?.('runPrompt')
+          }
           onChange?.(
             {
               data: getValues(),
@@ -350,6 +370,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         })
     }
   }
+
   const currentModalConfig = useMemo(() => {
     const reactHookFormRegisterMap: {
       [key in string]: ReturnType<typeof register>
@@ -361,6 +382,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const selectTypeVariables: IActionSetVariable[] = []
     const textTypeVariables: IActionSetVariable[] = []
     const formData = getValues()
+    // 在preview编辑器里需要reset, 因为不确定对其他地方有无影响
+    // 这里先这么处理，理论上可以删掉这个判断直接reset
+    if (showCloseButton) {
+      reset()
+    }
     // 先添加系统预设的变量
     currentSystemVariables
       // 再添加用户自定义的变量
@@ -424,7 +450,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     // 计算单个textarea的最大行数 = ((60vh - title - select - actions) / textareaCount) / 24px
     const maxHeight = window.innerHeight * 0.6
     // 标题高度
-    const titleHeight = 36
+    const titleHeight =
+      selectTypeVariables.length + textTypeVariables.length > 0 ? 36 : 30
     // 选择框行数
     const selectLine = Math.ceil(currentSelectTotalCount / 3)
     // 选择框高度
@@ -455,6 +482,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setForm(reactHookFormRegisterMap)
     })
     return {
+      titleHeight,
       currentTitle,
       currentSelectTotalCount,
       currentSystemVariables,
@@ -560,7 +588,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setHide(false)
     }
   }, [show, hide])
-  if (!show || hide || Object.keys(form).length === 0) {
+  if (!props.show && (!show || hide || Object.keys(form).length === 0)) {
     console.log(
       'ActionSetVariablesModal not show or hide or form is empty',
       show,
@@ -605,7 +633,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       {/*Header*/}
       <Stack
         flexShrink={0}
-        height={36}
+        height={currentModalConfig.titleHeight}
         direction={'row'}
         alignItems={'start'}
         justifyContent={'space-between'}
@@ -615,34 +643,49 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           width={0}
           flex={1}
           component={'div'}
-          sx={{
-            borderRadius: '4px',
-            p: '4px 8px',
-            bgcolor: 'rgba(0, 0, 0, 0.87)',
-          }}
+          display={'flex'}
+          alignItems={'center'}
         >
-          <Typography fontSize={'14px'} color={'#fff'} fontWeight={600} noWrap>
+          <Typography
+            fontSize={'14px'}
+            color={'#fff'}
+            fontWeight={600}
+            height={30}
+            lineHeight="30px"
+            sx={{
+              borderRadius: '4px',
+              p: '0 8px',
+              bgcolor: 'rgba(0, 0, 0, 0.87)',
+              width: showCloseButton ? '100%' : 'auto',
+            }}
+            noWrap
+          >
             {currentModalConfig.currentTitle}
           </Typography>
         </Box>
-        <IconButton
-          data-testid={`close-modal-button`}
-          onClick={async () => await closeModal(true)}
-          sx={{
-            flexShrink: 0,
-            position: 'relative',
-            top: '-8px',
-            right: '-8px',
-          }}
-        >
-          <CloseIcon sx={{ fontSize: '24px' }} />
-        </IconButton>
+        {showCloseButton && (
+          <IconButton
+            data-testid={`close-modal-button`}
+            onClick={async () => await closeModal(true)}
+            sx={{
+              flexShrink: 0,
+              position: 'relative',
+              top: '-8px',
+              right: '-8px',
+            }}
+          >
+            <CloseIcon sx={{ fontSize: '24px' }} />
+          </IconButton>
+        )}
       </Stack>
       {/*Select*/}
       <Stack
         flexShrink={0}
         flexWrap={'wrap'}
         direction={'row'}
+        display={
+          currentModalConfig.selectTypeVariables.length ? undefined : 'none'
+        }
         sx={{
           gap: '16px',
         }}
@@ -697,6 +740,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         ref={inputBoxRef}
         flex={1}
         height={0}
+        display={
+          currentModalConfig.textTypeVariables.length ? undefined : 'none'
+        }
         sx={{
           overflowY: 'auto',
         }}
@@ -766,24 +812,27 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         flexShrink={0}
       >
         {showModelSelector && (
-          <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
+          <Box mr="auto">
+            <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
+          </Box>
         )}
-        <Button
-          sx={{
-            height: '32px',
-            ml: 'auto',
-          }}
-          onClick={async () => await closeModal(true)}
-          variant={'secondary'}
-        >
-          {t('common:discard')}
-        </Button>
+        {showCloseButton && (
+          <Button
+            sx={{
+              height: '32px',
+            }}
+            onClick={async () => await closeModal(true)}
+            variant={'secondary'}
+          >
+            {t('common:discard')}
+          </Button>
+        )}
         <TooltipButton
           title={t(`client:sidebar__button__send_to_ai`)}
           TooltipProps={{
             description: '⏎',
           }}
-          disabled={loading}
+          disabled={loading || disabled}
           onClick={async () => await confirmModal()}
           variant={'contained'}
           // color={'primary.main'}
@@ -791,6 +840,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             width: '32px',
             height: '32px',
             minWidth: 'unset',
+            // p: 1,
           }}
         >
           {loading ? (

@@ -58,7 +58,9 @@
     "manage_my_plan": "Spravovať môj plán",
     "watch_video": "Pozrite si video",
     "input_content": "Vstupný obsah",
-    "discard": "Zahodiť"
+    "discard": "Zahodiť",
+    "create": "Vytvoriť",
+    "update": "Aktualizovať"
   },
   "settings": {
     "left_menu__me": "Ja a MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Šablóna AI promptu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Šablóna AI podnetu.\nŠablóna môže obsahovať ľubovoľný počet nasledujúcich premenných:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Príklad šablóny podnetu:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Príklad šablóny podnetu:",
+    "feature_card__prompts__confirm__cancel__description": "Ste si istí, že chcete zrušiť? Vezmite prosím na vedomie, že po zrušení sa stratia všetky neuložené zmeny.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Áno, zrušiť",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Späť na úpravu"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "obsah cieľového kontextu",
     "preset_variables__system__draft_context__description": "obsah konceptu",
     "preset_variables__system__summary_page_content_representation__description": "obsah aktuálnej webovej stránky/PDF/YouTube videa",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Výstupom je súhrn {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Výstupom je súhrn {{PAGE_CONTENT}}",
+    "configure_panel__title": "Konfigurácia",
+    "config_panel__next_button__title": "Ďalšie: Pridať podnet",
+    "prompt_panel__title": "Podnet",
+    "preview_panel__title": "Náhľad",
+    "preset_variables__error_message__title": "Prosím vyberte schopnosti `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Aktualizovať premennú",
+    "add_variable__custom__title": "Premenné",
+    "add_variable__update_button__title": "Aktualizovať"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikové podnety",

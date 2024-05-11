@@ -58,7 +58,9 @@
     "manage_my_plan": "Διαχείριση του σχεδίου μου",
     "watch_video": "Παρακολούθηση βίντεο",
     "input_content": "Περιεχόμενο εισαγωγής",
-    "discard": "Απόρριψη"
+    "discard": "Απόρριψη",
+    "create": "Δημιουργία",
+    "update": "Ενημέρωση"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Το πρότυπο της AI πρότασης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιονδήποτε αριθμό από τις παρακάτω μεταβλητές:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Το πρότυπο της αυτόματης απάντησης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις παρακάτω μεταβλητές:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Το πρότυπο της AI πρότασης.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιονδήποτε αριθμό από τις παρακάτω μεταβλητές:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Παράδειγμα πρότυπου εντολής:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Παράδειγμα πρότυπου εντολής:",
+    "feature_card__prompts__confirm__cancel__description": "Είστε σίγουρος ότι θέλετε να ακυρώσετε; Παρακαλούμε σημειώστε ότι μόλις ακυρώσετε, οποιεσδήποτε μη αποθηκευμένες αλλαγές θα χαθούν.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Ναι, ακύρωση",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Επιστροφή στην επεξεργασία"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "περιεχόμενο στόχου πλαισίου",
     "preset_variables__system__draft_context__description": "περιεχόμενο προσχέδιου πλαισίου",
     "preset_variables__system__summary_page_content_representation__description": "το περιεχόμενο της τρέχουσας ιστοσελίδας/PDF/βίντεο YouTube",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Εμφάνιση μιας σύνοψης του {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Εμφάνιση μιας σύνοψης του {{PAGE_CONTENT}}",
+    "configure_panel__title": "Ρύθμιση",
+    "config_panel__next_button__title": "Επόμενο: Προσθήκη προτροπής",
+    "prompt_panel__title": "Προτροπή",
+    "preview_panel__title": "Προεπισκόπηση",
+    "preset_variables__error_message__title": "Παρακαλούμε επιλέξτε τις δυνατότητες `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Ενημέρωση μεταβλητής",
+    "add_variable__custom__title": "Μεταβλητές",
+    "add_variable__update_button__title": "Ενημέρωση"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-κλικ προτροπές",

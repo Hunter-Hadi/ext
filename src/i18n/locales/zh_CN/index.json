@@ -58,7 +58,9 @@
     "manage_my_plan": "管理我的计划",
     "watch_video": "观看视频",
     "input_content": "输入内容",
-    "discard": "丢弃"
+    "discard": "丢弃",
+    "create": "创建",
+    "update": "更新"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "示例提示模板："
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "示例提示模板：",
+    "feature_card__prompts__confirm__cancel__description": "确定要取消吗？请注意，一旦取消，任何未保存的更改都将丢失。",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "是的，取消",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "返回编辑"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "目标上下文内容",
     "preset_variables__system__draft_context__description": "草稿上下文内容",
     "preset_variables__system__summary_page_content_representation__description": "当前网页/PDF/YouTube视频的内容",
-    "preset_variables__system__summary_page_content_representation__description__example1": "输出{{PAGE_CONTENT}}的摘要"
+    "preset_variables__system__summary_page_content_representation__description__example1": "输出{{PAGE_CONTENT}}的摘要",
+    "configure_panel__title": "配置",
+    "config_panel__next_button__title": "下一步：添加提示",
+    "prompt_panel__title": "提示",
+    "preview_panel__title": "预览",
+    "preset_variables__error_message__title": "请选择功能 `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "更新变量",
+    "add_variable__custom__title": "变量",
+    "add_variable__update_button__title": "更新"
   },
   "prompt_library": {
     "use_prompt_library__title": "1键提示",

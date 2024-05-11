@@ -495,7 +495,6 @@ export class ActionAskChatGPT extends Action {
               }
             },
             onError: async (error: any) => {
-              console.log(1111, 'error', error)
               this.log.error(`send question error`, error)
               errorMessage =
                 error?.message || error || 'Error detected. Please try again.'

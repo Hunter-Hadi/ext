@@ -58,7 +58,9 @@
     "manage_my_plan": "എന്റെ പ്ലാൻ മാനേജ് ചെയ്യുക",
     "watch_video": "വീഡിയോ കാണുക",
     "input_content": "ഇൻപുട്ട് ഉള്ളടക്കം",
-    "discard": "നിരസ്ത്രമമാക്കുക"
+    "discard": "നിരസ്ത്രമമാക്കുക",
+    "create": "സൃഷ്ടിക്കുക",
+    "update": "അപ്‌ഡേറ്റ് ചെയ്യുക"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "എ.ഐ. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് പലതരം വാരിയബിൾസ് ഉൾക്കൊള്ളാം:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "എയ്‌ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് ഏതെങ്കിലും എണ്ണം ചരങ്ങളും ഉൾപ്പെടുത്താവുന്നു:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "എ.ഐ. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റിൽ താങ്കൾക്ക് പലതരം വാരിയബിൾസ് ഉൾക്കൊള്ളാം:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ഉദാഹരണ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ഉദാഹരണ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്:",
+    "feature_card__prompts__confirm__cancel__description": "നിങ്ങൾ താൽപ്പര്യപ്പെടുന്നുണ്ടോ എന്ന് ഉറപ്പാക്കാൻ താൽപ്പര്യപ്പെടുന്നുണ്ടോ? ദയവായി ശ്രമിക്കുന്നത് റദ്ദാക്കിയാൽ, ഏതെങ്കിലും സേവ് ചെയ്യാനാവാത്ത മാറ്റങ്ങൾ നഷ്ടപ്പെടും.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "അതെ, റദ്ദാക്കുക",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "എഡിറ്റിംഗിലേക്ക് മടങ്ങുക"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "ലക്ഷ്യ സംദേശം ഉള്ളടക്കം",
     "preset_variables__system__draft_context__description": "ഡ്രാഫ്റ്റ് സംദേശം ഉള്ളടക്കം",
     "preset_variables__system__summary_page_content_representation__description": "നിലവിലെ വെബ്‌പേജിന്റെ/PDF/YouTube വീഡിയോയുടെ ഉള്ളടക്കം",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} യുടെ ഒരു സംഗ്രഹം പ്രകടിപ്പിക്കുക"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} യുടെ ഒരു സംഗ്രഹം പ്രകടിപ്പിക്കുക",
+    "configure_panel__title": "ക്രമീകരിക്കുക",
+    "config_panel__next_button__title": "അടുത്തത്: പ്രോംപ്റ്റ് ചേർക്കുക",
+    "prompt_panel__title": "പ്രോംപ്റ്റ്",
+    "preview_panel__title": "പ്രിവ്യൂ",
+    "preset_variables__error_message__title": "ദയവായി ക്ഷമിക്കുക `{{VARIABLE_NAME}}` സാധ്യതകൾ തിരഞ്ഞെടുക്കുക",
+    "add_variable__update__title": "വാരിയബിൾ അപ്‌ഡേറ്റ് ചെയ്യുക",
+    "add_variable__custom__title": "വാരിയബിൾസ്",
+    "add_variable__update_button__title": "അപ്‌ഡേറ്റ് ചെയ്യുക"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompt",

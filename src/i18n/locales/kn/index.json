@@ -58,7 +58,9 @@
     "manage_my_plan": "ನನ್ನ ಯೋಜನೆಯನ್ನು ನಿರ್ವಹಿಸಿ",
     "watch_video": "ವೀಡಿಯೊ ನೋಡಿ",
     "input_content": "ನಮೂದಿಸಿದ ವಿಷಯವನ್ನು",
-    "discard": "ತ್ಯಜಿಸು"
+    "discard": "ತ್ಯಜಿಸು",
+    "create": "ರಚಿಸು",
+    "update": "ನವೀಕರಿಸು"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "ಏಪ್ರಾಚ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಲ್ಲಿ ಈ ಕೆಳಗಿನ ವ್ಯತ್ಯಾಸಗಳಲ್ಲಿ ಯಾವುದೇ ಸಂಖ್ಯೆಯನ್ನು ಹೊಂದಿರಬಹುದು:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "ಏಕ್ಷಣ್ ಪ್ರತಿಕ್ರಿಯೆ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಲ್ಲಿ ಹೀಗೆ ಯಾವುದೇ ಸಂಖ್ಯೆಯ ಮುದ್ರಣಗಳನ್ನು ಹೊಂದಿರಬಹುದು:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "ಏಪ್ರಾಚ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಲ್ಲಿ ಈ ಕೆಳಗಿನ ವ್ಯತ್ಯಾಸಗಳಲ್ಲಿ ಯಾವುದೇ ಸಂಖ್ಯೆಯನ್ನು ಹೊಂದಿರಬಹುದು:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ಉದಾಹರಣೆ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ಉದಾಹರಣೆ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್:",
+    "feature_card__prompts__confirm__cancel__description": "ಖಾತರಿಯಾಗಿ ರದ್ದು ಮಾಡಲು ನೀವು ಖಚಿತವಾಗಿದ್ದೀರಿಯೇ? ದಯವಿಟ್ಟು ಗಮನಿಸಿ, ರದ್ದು ಮಾಡಲು ನಿಮ್ಮಲ್ಲಿ ಯಾವುದೇ ಹೊಂದಿಕೆಗಳು ಉಳಿದಿರುವುದಿಲ್ಲ.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "ಹೌದು, ರದ್ದು ಮಾಡಿ",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "ಸಂಪಾದನೆಗೆ ಹಿಂತಿರುಗಿ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "ಲಕ್ಷಿತ ಸಂದರ್ಭ ವಿಷಯವನ್ನು ವಿವರಿಸುವ ವಿಷಯವನ್ನು",
     "preset_variables__system__draft_context__description": "ಡ್ರಾಫ್ಟ್ ಸಂದರ್ಭ ವಿಷಯವನ್ನು ವಿವರಿಸುವ ವಿಷಯವನ್ನು",
     "preset_variables__system__summary_page_content_representation__description": "ಪ್ರಸ್ತುತ ವೆಬ್‌ಪೇಜ್/PDF/YouTube ವೀಡಿಯೊ ನ ವಿಷಯವನ್ನು",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} ನ ಸಂಕ್ಷೇಪಣೆಯನ್ನು ಪ್ರದರ್ಶಿಸಿ"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} ನ ಸಂಕ್ಷೇಪಣೆಯನ್ನು ಪ್ರದರ್ಶಿಸಿ",
+    "configure_panel__title": "ಸಂರೂಪಿಸು",
+    "config_panel__next_button__title": "ಮುಂದೆ: ಪ್ರಾಂಪ್ಟ್ ಸೇರಿಸು",
+    "prompt_panel__title": "ಪ್ರಾಂಪ್ಟ್",
+    "preview_panel__title": "ಪೂರ್ವದೃಷ್ಟಿ",
+    "preset_variables__error_message__title": "ದಯವಿಟ್ಟು `{{VARIABLE_NAME}}` ಸಾಮರ್ಥ್ಯಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "add_variable__update__title": "ವ್ಯತ್ಯಾಸಗೊಳಿಸುವ ಮಾಹಿತಿ",
+    "add_variable__custom__title": "ಮಾಹಿತಿಗಳು",
+    "add_variable__update_button__title": "ನವೀಕರಿಸು"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",

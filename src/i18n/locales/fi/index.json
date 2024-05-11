@@ -58,7 +58,9 @@
     "manage_my_plan": "Hallinnoi suunnitelmaani",
     "watch_video": "Katso video",
     "input_content": "Syötä sisältö",
-    "discard": "Hylkää"
+    "discard": "Hylkää",
+    "create": "Luo",
+    "update": "Päivitä"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-pyyntöpohja.\nPohja voi sisältää mitä tahansa seuraavista muuttujista:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-pohjapohja.\nPohjassa voi olla mitä tahansa seuraavista muuttujista:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-pyyntöpohja.\nPohja voi sisältää mitä tahansa seuraavista muuttujista:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Esimerkki kysymyspohjasta:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Esimerkki kysymyspohjasta:",
+    "feature_card__prompts__confirm__cancel__description": "Oletko varma, että haluat peruuttaa? Huomaa, että peruuttamisen jälkeen kaikki tallentamattomat muutokset menetetään.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Kyllä, peruuta",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Takaisin muokkaamiseen"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "kohdekontekstin sisältö",
     "preset_variables__system__draft_context__description": "luonnoskontekstin sisältö",
     "preset_variables__system__summary_page_content_representation__description": "nykyisen verkkosivun/PDF:n/YouTube-videon sisältö",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Tulosta yhteenveto {{PAGE_CONTENT}}:sta"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Tulosta yhteenveto {{PAGE_CONTENT}}:sta",
+    "configure_panel__title": "Määritä",
+    "config_panel__next_button__title": "Seuraava: Lisää kysymys",
+    "prompt_panel__title": "Kysymys",
+    "preview_panel__title": "Esikatselu",
+    "preset_variables__error_message__title": "Valitse ominaisuudet `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Päivitä muuttuja",
+    "add_variable__custom__title": "Muuttujat",
+    "add_variable__update_button__title": "Päivitä"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikkaus vihjeet",

@@ -58,7 +58,9 @@
     "manage_my_plan": "Gerir o meu plano",
     "watch_video": "Ver vídeo",
     "input_content": "Conteúdo de entrada",
-    "discard": "Descartar"
+    "discard": "Descartar",
+    "create": "Criar",
+    "update": "Atualizar"
   },
   "settings": {
     "left_menu__me": "Eu e o MaxAI",
@@ -264,7 +266,10 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "O modelo de sugestão da IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "O modelo de sugestão da IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Modelo de exemplo do prompt:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Modelo de exemplo do prompt:",
+    "feature_card__prompts__confirm__cancel__description": "Tem a certeza de que deseja cancelar? Por favor, note que uma vez cancelado, quaisquer alterações não guardadas serão perdidas.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Sim, cancelar",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Voltar à edição"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",
@@ -1028,7 +1033,15 @@
     "preset_variables__system__target_context__description": "conteúdo do contexto alvo",
     "preset_variables__system__draft_context__description": "conteúdo do contexto de rascunho",
     "preset_variables__system__summary_page_content_representation__description": "o conteúdo da página atual/PDF/vídeo do YouTube",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Apresentar um resumo do {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Apresentar um resumo do {{PAGE_CONTENT}}",
+    "configure_panel__title": "Configurar",
+    "config_panel__next_button__title": "Seguinte: Adicionar prompt",
+    "prompt_panel__title": "Prompt",
+    "preview_panel__title": "Pré-visualização",
+    "preset_variables__error_message__title": "Por favor, selecione as capacidades `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Atualizar variável",
+    "add_variable__custom__title": "Variáveis",
+    "add_variable__update_button__title": "Atualizar"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clique",

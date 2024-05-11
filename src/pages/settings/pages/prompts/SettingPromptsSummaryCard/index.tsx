@@ -128,6 +128,9 @@ const SettingPrompsSummaryCard: FC = () => {
       deleteMenuItemById(confirmId)
       setEditNode(null)
     }
+    if (type === 'cancel') {
+      setEditNode(null)
+    }
     setConfirmOpen(false)
     setConfirmType(null)
   }
@@ -219,7 +222,7 @@ const SettingPrompsSummaryCard: FC = () => {
           node={editNode}
           iconSetting={true}
           onSave={handleOnSave}
-          onCancel={() => setEditNode(null)}
+          onCancel={() => handleActionConfirmOpen('cancel')}
           onDelete={(id) => handleActionConfirmOpen('delete', id)}
           setEditNode={setEditNode}
         />

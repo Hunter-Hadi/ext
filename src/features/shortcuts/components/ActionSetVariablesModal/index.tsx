@@ -316,7 +316,10 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                   id: config.contextMenuId || uuidV4(),
                   droppable: false,
                   parent: uuidV4(),
-                  text: config.title,
+                  text:
+                    modelKey === 'PromptPreview'
+                      ? title || config.title
+                      : config.title,
                   data: {
                     editable: false,
                     type: 'shortcuts',

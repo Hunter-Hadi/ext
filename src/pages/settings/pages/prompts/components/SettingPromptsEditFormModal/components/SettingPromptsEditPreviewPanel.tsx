@@ -215,7 +215,8 @@ const PreviewPanel = () => {
             modelKey="PromptPreview"
             title={title}
             template={template}
-            disabled={!template}
+            disabled={!template || !title}
+            notBuiltInVariables={['SELECTED_TEXT', 'DRAFT_CONTEXT']}
           />
         </Stack>
       </Stack>

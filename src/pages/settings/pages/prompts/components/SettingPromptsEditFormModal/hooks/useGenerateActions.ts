@@ -63,6 +63,13 @@ export const useGeneratePreviewActions = () => {
             ),
         )
     }
+
+    // 强制设置messageVisibleText为标题
+    // const askGptAction = actions.find((item) => item.type === 'ASK_CHATGPT')
+    // if (askGptAction?.parameters?.AskChatGPTActionQuestion?.meta) {
+    //   askGptAction.parameters.AskChatGPTActionQuestion.meta.messageVisibleText =
+    //     editNode.text
+    // }
     return actions
   }, [editNode.text, editHTML, variables])
 }

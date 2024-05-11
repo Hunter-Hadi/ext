@@ -50,4 +50,5 @@ export interface MaxAIPromptActionConfig {
   promptActionType: MaxAIPromptActionType
   variables: IActionSetVariable[]
   output: IActionSetVariable[]
+  AIModel?: string
 }

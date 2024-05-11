@@ -110,7 +110,7 @@ const SidebarChatBoxInputActions: FC<{
       width={'100%'}
     >
       {(currentSidebarConversationType === 'Chat' ||
-        // currentSidebarConversationType === 'Search' ||
+        currentSidebarConversationType === 'Search' ||
         currentSidebarConversationType === 'Art') && (
         <AIProviderModelSelectorButton
           sidebarConversationType={currentSidebarConversationType}

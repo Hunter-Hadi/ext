@@ -160,6 +160,9 @@ class MaxAIClaudeChat extends BaseChat {
           }
           return variableMap
         }, {})
+      if (options.meta.MaxAIPromptActionConfig.AIModel) {
+        clonePostBody.model_name = options.meta.MaxAIPromptActionConfig.AIModel
+      }
       postBody = clonePostBody
     }
     const controller = new AbortController()

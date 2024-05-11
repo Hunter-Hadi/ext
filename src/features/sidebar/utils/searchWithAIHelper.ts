@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import { v4 as uuidV4 } from 'uuid'
 
+import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import {
   SEARCH__ANSWER__PROMPT_ID,
@@ -125,6 +126,11 @@ export const generateSearchWithAIActions = async (
     noQuotes: true,
     noCommand: true,
   })
+  const prevQuestionsText = includeHistory
+    ? prevQuestions
+        .map((question, index) => `${index + 1}) ${question}`)
+        .join('\n')
+    : ''
   const actions: ISetActionsType = [
     {
       type: 'DATE',
@@ -185,6 +191,9 @@ export const generateSearchWithAIActions = async (
       parameters: {
         VariableMap: {
           SELECTED_TEXT: currentQuestion,
+          PREVIOUS_QUESTIONS: prevQuestionsText,
+          CURRENT_QUESTION: currentQuestion,
+          SMART_QUERY_COUNT: copilot ? '3' : '1',
         },
       },
     },
@@ -192,16 +201,67 @@ export const generateSearchWithAIActions = async (
       type: 'ASK_CHATGPT',
       parameters: {
         AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+        MaxAIPromptActionConfig: {
+          promptId: 'b481731b-19e3-4713-8f0b-81fd7b2d5169',
+          promptName: '[Search] smart query',
+          promptActionType: 'chat_complete',
+          AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+          variables: [
+            {
+              label: 'Current question',
+              VariableName: 'CURRENT_QUESTION',
+              valueType: 'Text',
+            },
+            {
+              label: 'Smart query count',
+              VariableName: 'SMART_QUERY_COUNT',
+              valueType: 'Text',
+              systemVariable: true,
+              hidden: true,
+            },
+            {
+              label: 'Previous questions',
+              VariableName: 'PREVIOUS_QUESTIONS',
+              valueType: 'Text',
+              systemVariable: true,
+              hidden: true,
+            },
+            {
+              label: 'Current date',
+              VariableName: 'CURRENT_DATE',
+              valueType: 'Text',
+              systemVariable: true,
+              hidden: true,
+            },
+            {
+              label: 'AI Response language',
+              VariableName: 'AI_RESPONSE_LANGUAGE',
+              valueType: 'Text',
+              systemVariable: true,
+            },
+            {
+              label: 'Tone',
+              VariableName: 'AI_RESPONSE_WRITING_STYLE',
+              valueType: 'Text',
+              systemVariable: true,
+            },
+            {
+              label: 'Writing style',
+              VariableName: 'AI_RESPONSE_TONE',
+              valueType: 'Text',
+              systemVariable: true,
+            },
+          ],
+          output: [
+            {
+              label: 'The completion string from the LLM',
+              VariableName: 'ChatComplete',
+              valueType: 'Text',
+            },
+          ],
+        },
         AskChatGPTActionQuestion: {
-          text: includeHistory
-            ? generateSmartSearchPromptWithPreviousQuestion(
-                prevQuestions.concat(currentQuestion),
-                copilot,
-              )
-            : generateSmartSearchPromptWithPreviousQuestion(
-                [currentQuestion],
-                copilot,
-              ),
+          text: '',
           meta: {
             includeHistory,
             temperature: 0,

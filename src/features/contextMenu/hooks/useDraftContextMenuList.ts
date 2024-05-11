@@ -12,7 +12,7 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 // 支持 Accept_and_copy 的网站
 const AcceptAndCopySupportedHosts = new Set([
   'mail.google.com',
-  // 'outlook.live.com',
+  'outlook.live.com',
 ])
 
 const useDraftContextMenuList = () => {

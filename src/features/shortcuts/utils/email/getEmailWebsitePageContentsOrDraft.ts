@@ -7,6 +7,7 @@ import EmailCorrespondence, {
 import { removeEmailContentQuote } from '@/features/shortcuts/utils/email/removeEmailContentQuote'
 import { wait } from '@/utils'
 import { delayAndScrollToInputAssistantButton } from '@/utils/dataHelper/elementHelper'
+import { getInstantReplyDataHelper } from '@/utils/dataHelper/instantReplyHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const emailWebsiteTrafficRankings = [
@@ -353,6 +354,29 @@ const outlookGetSingleEmailText = (originElement: HTMLElement | null) => {
 export const getEmailWebsitePageContentsOrDraft = async (
   inputAssistantButtonElementSelector: string,
 ): Promise<{ targetReplyEmailContext: string; emailContext: string }> => {
+  // 优化：将上次获取的 context 缓存起来，然后判断
+  //// - 1. 如果点的是和上次点的同一个 button
+  //// - 2. 或者还是在同一个 context window 里进行操作
+  // 那么通过直接返回上次缓存的 context 即可
+  const instantReplyDataHelper = getInstantReplyDataHelper()
+  if (
+    instantReplyDataHelper.getAttribute('aria-operation-selector-id') ===
+    inputAssistantButtonElementSelector
+  ) {
+    const fullContextCache = instantReplyDataHelper.getAttribute(
+      'data-full-context-cache',
+    )
+    const targetContextCache = instantReplyDataHelper.getAttribute(
+      'data-target-context-cache',
+    )
+    if (targetContextCache) {
+      return {
+        targetReplyEmailContext: targetContextCache,
+        emailContext: fullContextCache || targetContextCache,
+      }
+    }
+  }
+
   const host = getCurrentDomainHost()
   let hasMore = false
   let iframeSelector = ''
@@ -366,6 +390,10 @@ export const getEmailWebsitePageContentsOrDraft = async (
           inputAssistantButtonElementSelector,
         )) as HTMLButtonElement)) ||
     null
+  instantReplyDataHelper.setAttribute(
+    'aria-operation-selector-id',
+    inputAssistantButtonElementSelector,
+  )
   if (host === 'mail.google.com') {
     try {
       // 邮件列表容器
@@ -509,6 +537,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
 
         if (emailCorrespondence.emails.length > 0) {
           emailCorrespondence.sortEmails()
+          instantReplyDataHelper.setAttribute(
+            'data-full-context-cache',
+            emailCorrespondence.emailContext.emailContext,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-target-context-cache',
+            emailCorrespondence.emailContext.targetReplyEmailContext,
+          )
           return emailCorrespondence.emailContext
         }
       }
@@ -620,6 +656,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
             }
           }
         })
+        instantReplyDataHelper.setAttribute(
+          'data-full-context-cache',
+          emailCorrespondence.emailContext.emailContext,
+        )
+        instantReplyDataHelper.setAttribute(
+          'data-target-context-cache',
+          emailCorrespondence.emailContext.targetReplyEmailContext,
+        )
         return emailCorrespondence.emailContext
       }
     }
@@ -800,6 +844,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
         })
 
         if (emailCorrespondence.emails.length > 0) {
+          instantReplyDataHelper.setAttribute(
+            'data-full-context-cache',
+            emailCorrespondence.emailContext.emailContext,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-target-context-cache',
+            emailCorrespondence.emailContext.targetReplyEmailContext,
+          )
           return emailCorrespondence.emailContext
         }
 
@@ -823,6 +875,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
       if (modalElement && modalElement.contains(inputAssistantButtonElement)) {
         const emailContext = outlookGetSingleEmailText(modalEmailContextElement)
         if (emailContext) {
+          instantReplyDataHelper.setAttribute(
+            'data-full-context-cache',
+            emailContext.emailContext,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-target-context-cache',
+            emailContext.targetReplyEmailContext,
+          )
           return emailContext
         }
         emailContextSelector = '#ReadingPaneContainerId'
@@ -837,6 +897,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
           detailEmailContextElement,
         )
         if (emailContext) {
+          instantReplyDataHelper.setAttribute(
+            'data-full-context-cache',
+            emailContext.emailContext,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-target-context-cache',
+            emailContext.targetReplyEmailContext,
+          )
           return emailContext
         }
         emailContextSelector = '#ReadingPaneContainerId'
@@ -996,6 +1064,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
         }
         emailCorrespondence.sortEmails()
         if (emailCorrespondence.emails.length > 0) {
+          instantReplyDataHelper.setAttribute(
+            'data-full-context-cache',
+            emailCorrespondence.emailContext.emailContext,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-target-context-cache',
+            emailCorrespondence.emailContext.targetReplyEmailContext,
+          )
           return emailCorrespondence.emailContext
         }
         emailContextSelector = 'div[data-app-section="ConversationContainer"]'
@@ -1171,6 +1247,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
         }
         emailCorrespondence.sortEmails()
         if (emailCorrespondence.emails.length > 0) {
+          instantReplyDataHelper.setAttribute(
+            'data-full-context-cache',
+            emailCorrespondence.emailContext.emailContext,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-target-context-cache',
+            emailCorrespondence.emailContext.targetReplyEmailContext,
+          )
           return emailCorrespondence.emailContext
         }
         emailContextSelector = 'div[data-app-section="ConversationContainer"]'
@@ -1191,6 +1275,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
       if (modalElement && modalElement.contains(inputAssistantButtonElement)) {
         const emailContext = outlookGetSingleEmailText(modalEmailContextElement)
         if (emailContext) {
+          instantReplyDataHelper.setAttribute(
+            'data-full-context-cache',
+            emailContext.emailContext,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-target-context-cache',
+            emailContext.targetReplyEmailContext,
+          )
           return emailContext
         }
         emailContextSelector = '#ReadingPaneContainerId'
@@ -1207,6 +1299,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
           detailEmailContextElement,
         )
         if (emailContext) {
+          instantReplyDataHelper.setAttribute(
+            'data-full-context-cache',
+            emailContext.emailContext,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-target-context-cache',
+            emailContext.targetReplyEmailContext,
+          )
           return emailContext
         }
         emailContextSelector = '#ReadingPaneContainerId'

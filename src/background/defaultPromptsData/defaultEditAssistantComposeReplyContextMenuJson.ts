@@ -4,6 +4,12 @@ import {
   VARIABLE_AI_RESPONSE_TONE,
   VARIABLE_AI_RESPONSE_WRITING_STYLE,
   VARIABLE_CURRENT_WEBSITE_DOMAIN,
+  VARIABLE_EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
+  VARIABLE_EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
+  VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+  VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
+  VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+  VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
 } from '@/background/defaultPromptsData/systemVariables'
 import {
   ChatAppWebsites,
@@ -38,16 +44,8 @@ const socialMediaPrompts = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'The context of the social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                },
-                {
-                  label: 'The target social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                },
+                VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -89,16 +87,8 @@ const socialMediaPrompts = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'The context of the social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                },
-                {
-                  label: 'The target social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                },
+                VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -140,16 +130,8 @@ const socialMediaPrompts = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'The context of the social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                },
-                {
-                  label: 'The target social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                },
+                VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -191,16 +173,8 @@ const socialMediaPrompts = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'The context of the social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                },
-                {
-                  label: 'The target social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                },
+                VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -242,16 +216,8 @@ const socialMediaPrompts = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'The context of the social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                },
-                {
-                  label: 'The target social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                },
+                VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -293,16 +259,8 @@ const socialMediaPrompts = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'The context of the social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                },
-                {
-                  label: 'The target social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                },
+                VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -344,16 +302,8 @@ const socialMediaPrompts = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'The context of the social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                },
-                {
-                  label: 'The target social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                },
+                VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -395,16 +345,8 @@ const socialMediaPrompts = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'The context of the social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                },
-                {
-                  label: 'The target social media post or comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                },
+                VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -462,22 +404,12 @@ const socialMediaPrompts = [
                     promptActionType: 'chat_complete',
                     variables: [
                       {
-                        label: 'Target post/comment',
-                        VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                        valueType: 'Text',
-                        placeholder: 'Enter target post/comment',
-                        defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
-                      {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Enter key points',
-                        systemVariable: true,
-                        hidden: true,
                       },
+                      VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                       VARIABLE_CURRENT_WEBSITE_DOMAIN,
                       VARIABLE_AI_RESPONSE_LANGUAGE,
                       VARIABLE_AI_RESPONSE_TONE,
@@ -504,30 +436,13 @@ const socialMediaPrompts = [
                     promptActionType: 'chat_complete',
                     variables: [
                       {
-                        label: 'Context',
-                        VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-                        valueType: 'Text',
-                        placeholder: 'Enter context',
-                        defaultValue:
-                          '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
-                      {
-                        label: 'Target post/comment',
-                        VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                        valueType: 'Text',
-                        placeholder: 'Enter target post/comment',
-                        defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
-                      {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Enter key points',
                       },
+                      VARIABLE_SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                      VARIABLE_SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                       VARIABLE_CURRENT_WEBSITE_DOMAIN,
                       VARIABLE_AI_RESPONSE_LANGUAGE,
                       VARIABLE_AI_RESPONSE_TONE,
@@ -618,12 +533,14 @@ const emailPrompts = [
               promptName: 'Yes',
               promptActionType: 'chat_complete',
               variables: [
-                VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 {
-                  label: 'The context of the sliced email',
+                  label: 'The context of the email',
                   VariableName: 'SLICE_EMAIL_CONTEXT',
                   valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
                 },
+                VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -684,9 +601,11 @@ const emailPrompts = [
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 {
-                  label: 'The context of the sliced email',
+                  label: 'The context of the email',
                   VariableName: 'SLICE_EMAIL_CONTEXT',
                   valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -748,9 +667,11 @@ const emailPrompts = [
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 {
-                  label: 'The context of the sliced email',
+                  label: 'The context of the email',
                   VariableName: 'SLICE_EMAIL_CONTEXT',
                   valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -812,9 +733,11 @@ const emailPrompts = [
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 {
-                  label: 'The context of the sliced email',
+                  label: 'The context of the email',
                   VariableName: 'SLICE_EMAIL_CONTEXT',
                   valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -876,9 +799,11 @@ const emailPrompts = [
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 {
-                  label: 'The context of the sliced email',
+                  label: 'The context of the email',
                   VariableName: 'SLICE_EMAIL_CONTEXT',
                   valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -940,9 +865,11 @@ const emailPrompts = [
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 {
-                  label: 'The context of the sliced email',
+                  label: 'The context of the email',
                   VariableName: 'SLICE_EMAIL_CONTEXT',
                   valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -1004,9 +931,11 @@ const emailPrompts = [
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 {
-                  label: 'The context of the sliced email',
+                  label: 'The context of the email',
                   VariableName: 'SLICE_EMAIL_CONTEXT',
                   valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -1065,33 +994,13 @@ const emailPrompts = [
                     promptActionType: 'chat_complete',
                     variables: [
                       {
-                        label: 'Email context',
-                        VariableName:
-                          'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
-                        valueType: 'Text',
-                        placeholder: 'Enter email context',
-                        defaultValue:
-                          '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
-                      {
-                        label: 'Target email',
-                        VariableName:
-                          'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
-                        valueType: 'Text',
-                        placeholder: 'Enter email context',
-                        defaultValue:
-                          '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
-                      {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Outline your email in brief notes',
                       },
+                      VARIABLE_EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
+                      VARIABLE_EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
                       VARIABLE_AI_RESPONSE_LANGUAGE,
                       VARIABLE_AI_RESPONSE_TONE,
                       VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -1117,33 +1026,13 @@ const emailPrompts = [
                     promptActionType: 'chat_complete',
                     variables: [
                       {
-                        label: 'Email context',
-                        VariableName:
-                          'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
-                        valueType: 'Text',
-                        placeholder: 'Enter email context',
-                        defaultValue:
-                          '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
-                      {
-                        label: 'Target email',
-                        VariableName:
-                          'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
-                        valueType: 'Text',
-                        placeholder: 'Enter email context',
-                        defaultValue:
-                          '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
-                      {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Outline your email in brief notes',
                       },
+                      VARIABLE_EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
+                      VARIABLE_EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
                       VARIABLE_AI_RESPONSE_LANGUAGE,
                       VARIABLE_AI_RESPONSE_TONE,
                       VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -1233,26 +1122,8 @@ const chatAppPrompts: IContextMenuItem[] = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'Context',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Target message',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target message',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                  systemVariable: true,
-                },
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -1294,26 +1165,8 @@ const chatAppPrompts: IContextMenuItem[] = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'Context',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Target message',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target message',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                  systemVariable: true,
-                },
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -1355,26 +1208,8 @@ const chatAppPrompts: IContextMenuItem[] = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'Context',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Target message',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target message',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                  systemVariable: true,
-                },
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -1416,26 +1251,8 @@ const chatAppPrompts: IContextMenuItem[] = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'Context',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Target message',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target message',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                  systemVariable: true,
-                },
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -1477,26 +1294,8 @@ const chatAppPrompts: IContextMenuItem[] = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'Context',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Target message',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target message',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                  systemVariable: true,
-                },
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -1538,26 +1337,8 @@ const chatAppPrompts: IContextMenuItem[] = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'Context',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Target message',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target message',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                  systemVariable: true,
-                },
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -1599,26 +1380,8 @@ const chatAppPrompts: IContextMenuItem[] = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'Context',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Target message',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target message',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                  systemVariable: true,
-                },
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -1660,26 +1423,8 @@ const chatAppPrompts: IContextMenuItem[] = [
               promptActionType: 'chat_complete',
               variables: [
                 VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                {
-                  label: 'Context',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Target message',
-                  VariableName:
-                    'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target message',
-                  defaultValue:
-                    '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                  systemVariable: true,
-                },
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                 VARIABLE_AI_RESPONSE_LANGUAGE,
                 VARIABLE_AI_RESPONSE_WRITING_STYLE,
                 VARIABLE_AI_RESPONSE_TONE,
@@ -1737,24 +1482,14 @@ const chatAppPrompts: IContextMenuItem[] = [
                     promptName: 'Reply with key points',
                     promptActionType: 'chat_complete',
                     variables: [
-                      VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                      {
-                        label: 'Target message',
-                        VariableName:
-                          'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                        valueType: 'Text',
-                        placeholder: 'Enter target message',
-                        defaultValue:
-                          '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
                       {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Enter key points',
                       },
+                      VARIABLE_CURRENT_WEBSITE_DOMAIN,
+                      VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                       VARIABLE_AI_RESPONSE_LANGUAGE,
                       VARIABLE_AI_RESPONSE_TONE,
                       VARIABLE_AI_RESPONSE_WRITING_STYLE,
@@ -1779,35 +1514,15 @@ const chatAppPrompts: IContextMenuItem[] = [
                     promptName: 'Reply with key points',
                     promptActionType: 'chat_complete',
                     variables: [
-                      VARIABLE_CURRENT_WEBSITE_DOMAIN,
-                      {
-                        label: 'Context',
-                        VariableName:
-                          'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                        valueType: 'Text',
-                        placeholder: 'Enter context',
-                        defaultValue:
-                          '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
-                      {
-                        label: 'Target message',
-                        VariableName:
-                          'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
-                        valueType: 'Text',
-                        placeholder: 'Enter target message',
-                        defaultValue:
-                          '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
-                        systemVariable: true,
-                        hidden: true,
-                      },
                       {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Enter key points',
                       },
+                      VARIABLE_CURRENT_WEBSITE_DOMAIN,
+                      VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                      VARIABLE_MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                       VARIABLE_AI_RESPONSE_LANGUAGE,
                       VARIABLE_AI_RESPONSE_TONE,
                       VARIABLE_AI_RESPONSE_WRITING_STYLE,

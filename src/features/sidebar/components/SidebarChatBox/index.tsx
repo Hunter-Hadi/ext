@@ -122,9 +122,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   const isShowChatBoxHomeView = useMemo(() => {
     return (
-      messages.length <= 0 &&
-      !writingMessage &&
-      conversationType !== 'Summary'
+      messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
     )
   }, [messages, writingMessage, conversationType])
 
@@ -164,8 +162,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           // 这么做条件渲染是为了，让点击事件在 isShowChatBoxHomeView 为 false 时，可以正常执行
           !isShowChatBoxHomeView
             ? {
-              display: 'none',
-            }
+                display: 'none',
+              }
             : null
         }
       />
@@ -191,7 +189,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         minHeight={170}
         spacing={1}
         flexShrink={0}
-      // bgcolor={'#fff'}
+        // bgcolor={'#fff'}
       >
         <Stack
           maxWidth={isInImmersiveChat ? '768px' : 'initial'}
@@ -291,9 +289,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           </Box>
           <ActionSetVariablesModal
             showModelSelector
-            onClose={() => {
-              setIsSettingVariables(false)
+            onChange={(data, reason) => {
+              if (reason === 'runPromptStart') {
+                setIsSettingVariables(false)
+              }
             }}
+            onClose={() => setIsSettingVariables(false)}
             onShow={() => setIsSettingVariables(true)}
             modelKey={'Sidebar'}
           />

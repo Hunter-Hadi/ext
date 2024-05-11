@@ -13,6 +13,12 @@ import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
+const conversationTypeRouteMap: Record<string, ISidebarConversationType> = {
+  chat: 'Chat',
+  search: 'Search',
+  art: 'Art',
+}
+
 const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
   const { children } = props
   const {
@@ -167,18 +173,23 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
   // 记录hash变化
   useEffectOnce(() => {
-    const [_, route, id] = window.location.hash.replace('#', '')?.split('/')
-    const routeMap: Record<string, ISidebarConversationType> = {
-      chat: 'Chat',
-      search: 'Search',
-      art: 'Art',
-    }
-    const type = routeMap[route] || currentSidebarConversationType
+    const [_, route, conversationId] = window.location.hash
+      .replace('#', '')
+      ?.split('/')
+
+    const type =
+      conversationTypeRouteMap[route] || currentSidebarConversationType
     updateSidebarConversationType(type)
-    if (id) {
+    if (conversationId) {
       sidebarContextValue
-        .updateConversationId(id, type)
+        .updateConversationId(conversationId, type)
         .finally(() => setInitialized(true))
+
+      clientGetConversation(conversationId).then((conversation) => {
+        if (!conversation) {
+          sidebarContextValue.createConversation(conversationTypeRef.current)
+        }
+      })
     } else {
       setInitialized(true)
     }
@@ -186,7 +197,9 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
   useEffect(() => {
     if (initialized) {
-      window.location.hash = `#/${currentSidebarConversationType.toLowerCase()}/${immersiveConversationId}`
+      window.location.hash = `#/${currentSidebarConversationType.toLowerCase()}${
+        immersiveConversationId ? `/${immersiveConversationId}` : ''
+      }`
     }
   }, [initialized, currentSidebarConversationType, immersiveConversationId])
 

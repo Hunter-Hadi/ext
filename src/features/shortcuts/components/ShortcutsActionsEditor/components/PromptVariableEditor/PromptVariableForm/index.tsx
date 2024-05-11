@@ -65,19 +65,21 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
     const validation = await trigger()
     const formData = getValues()
     const label = (formData?.label || '').trim()
-    if (
-      variables.find(
-        (variable) => variable.label?.toLowerCase() === label.toLowerCase(),
-      ) ||
-      (PRESET_VARIABLE_MAP as any)[label.toUpperCase()]
-    ) {
-      setError('label', {
-        type: 'custom',
-        message: t(
-          'prompt_editor:add_variable__error_message__variable_name_repeated',
-        ),
-      })
-      return
+    if (type === 'add') {
+      if (
+        variables.find(
+          (variable) => variable.label?.toLowerCase() === label.toLowerCase(),
+        ) ||
+        (PRESET_VARIABLE_MAP as any)[label.toUpperCase()]
+      ) {
+        setError('label', {
+          type: 'custom',
+          message: t(
+            'prompt_editor:add_variable__error_message__variable_name_repeated',
+          ),
+        })
+        return
+      }
     }
     if (validation) {
       onConfirm?.({

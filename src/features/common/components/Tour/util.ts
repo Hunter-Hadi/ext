@@ -1,4 +1,4 @@
-import { TourPlacement } from '@/features/common/components/Tour/TourMask'
+import { Placement } from '@/features/common/components/Tour/TourMask'
 
 export function isInViewPort(
   element: HTMLElement,
@@ -23,8 +23,8 @@ export function isInViewPort(
  */
 export function getPlacement(
   targetElement?: HTMLElement | null,
-  placement?: TourPlacement,
-  stepPlacement?: TourPlacement,
+  placement?: Placement,
+  stepPlacement?: Placement,
 ) {
   return (
     stepPlacement ?? placement ?? (targetElement === null ? 'center' : 'bottom')

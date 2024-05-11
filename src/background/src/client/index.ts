@@ -929,7 +929,7 @@ export const ClientMessageInit = () => {
             delete selfExtension.icons
             delete (selfExtension as any).description
             Object.assign(sendData, {
-              allExtensions: allExtensions.map((ext) => formatExt(ext, false)),
+              allExtensions: allExtensions.map((ext) => formatExt(ext)),
               selfExtension,
               isAllowedFile,
               isAllowedIncognito,

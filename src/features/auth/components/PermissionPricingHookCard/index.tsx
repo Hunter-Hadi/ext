@@ -101,7 +101,20 @@ const PermissionPricingHookCard: FC<IProps> = ({
   // 获取到 permissionCard 才渲染
   if (permissionCard) {
     return (
-      <Stack spacing={1.5} color="white">
+      <Stack
+        spacing={1.5}
+        data-testid={'pricing-hooks-card'}
+        data-permission-scene-type={
+          permissionSceneType ? permissionSceneType : undefined
+        }
+        sx={{
+          p: 1.5,
+          borderRadius: 2,
+          boxSizing: 'border-box',
+          bgcolor: '#3B3D3E',
+          color: 'white',
+        }}
+      >
         {permissionCard.imageUrl ? (
           <Stack
             sx={{

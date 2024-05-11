@@ -51,6 +51,17 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
         .forEach((element: any) => {
           element.style.maxWidth = '95%'
         })
+
+      // 使用 u1.menux@gmail.com 这个账号登录youtube，右边会多一栏 ytd-live-chat-frame#chat 的元素，当打开 sidebar 会把这块遮挡住
+      const ytdLiveChatFrame = document.querySelector<HTMLDivElement>(
+        'ytd-live-chat-frame#chat',
+      )
+      if (ytdLiveChatFrame) {
+        // 获取display
+        if (window.getComputedStyle(ytdLiveChatFrame).position === 'fixed') {
+          ytdLiveChatFrame.style.right = `${chatBoxElementWidth}px`
+        }
+      }
     }
 
     if (host === 'mail.qq.com') {
@@ -171,6 +182,17 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
         .forEach((element: any) => {
           element.style.maxWidth = ''
         })
+
+      // 使用 u1.menux@gmail.com 这个账号登录youtube，右边会多一栏 ytd-live-chat-frame#chat 的元素，当打开 sidebar 会把这块遮挡住
+      const ytdLiveChatFrame = document.querySelector<HTMLDivElement>(
+        'ytd-live-chat-frame#chat',
+      )
+      if (ytdLiveChatFrame) {
+        // 获取display
+        if (window.getComputedStyle(ytdLiveChatFrame).position === 'fixed') {
+          ytdLiveChatFrame.style.right = ''
+        }
+      }
     }
     if (host === 'studio.youtube.com') {
       const youTubeStudioContainer = document.querySelector(

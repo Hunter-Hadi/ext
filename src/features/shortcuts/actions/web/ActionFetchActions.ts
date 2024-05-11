@@ -24,6 +24,7 @@ export class ActionFetchActions extends Action {
         this.parameters.template || '',
       )
       if (needHistory) {
+        // 如果需要history，那么需要处理contextMenu默认清除上下文的情况
         actions = actions.map((action: IAction) => {
           if (action.type === 'ASK_CHATGPT') {
             if (action.parameters.AskChatGPTActionQuestion?.meta) {

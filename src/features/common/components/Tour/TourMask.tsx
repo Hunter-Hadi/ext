@@ -4,7 +4,7 @@ import { v4 as uuidV4 } from 'uuid'
 export type Alignment = 'start' | 'end'
 export type Side = 'top' | 'right' | 'bottom' | 'left'
 export type AlignedPlacement = `${Side}-${Alignment}`
-export type TourPlacement = Side | AlignedPlacement
+export type Placement = Side | AlignedPlacement
 
 import type { PosInfo } from './hooks/useTarget'
 

@@ -1,9 +1,12 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
-import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
+import {
+  FloatingContextWindowChangesState,
+  FloatingDropdownMenuState,
+} from '@/features/contextMenu/store'
 import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
 import {
   cloneRect,
@@ -30,11 +33,17 @@ const useFloatingContextMenu = () => {
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-
+  const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
+    FloatingContextWindowChangesState,
+  )
   const memoIsFloatingMenuVisible = useMemo(() => {
     return floatingDropdownMenu.open
   }, [floatingDropdownMenu.open])
 
+  const contextWindowModeRef = useRef(contextWindowChanges.contextWindowMode)
+  useEffect(() => {
+    contextWindowModeRef.current = contextWindowChanges.contextWindowMode
+  }, [contextWindowChanges.contextWindowMode])
   /**
    * 展示floating menu 基于virtual selection
    * @param element
@@ -51,6 +60,18 @@ const useFloatingContextMenu = () => {
       openFloatingContextMenu?: boolean,
       forceShowModelSelector?: boolean,
     ) => {
+      if (contextWindowModeRef.current !== 'READ') {
+        if (contextWindowModeRef.current !== 'LOADING') {
+          // 如果是编辑模式，不展示floating menu
+          setContextWindowChanges((prev) => {
+            return {
+              ...prev,
+              discardChangesModalVisible: true,
+            }
+          })
+        }
+        return
+      }
       let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
         element
       /**

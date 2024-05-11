@@ -15,8 +15,9 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil'
 
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import DevContent from '@/components/DevContent'
@@ -29,7 +30,10 @@ import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
 } from '@/features/common/constants'
-import { useFloatingContextMenu } from '@/features/contextMenu'
+import {
+  FloatingContextWindowChangesState,
+  useFloatingContextMenu,
+} from '@/features/contextMenu'
 import {
   FloatingContextMenuPopupSettingButton,
   FloatingContextMenuShortcutButtonGroup,
@@ -65,7 +69,6 @@ const FloatingContextMenu: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
   const {
-    contextWindowMode,
     loading,
     askAIWithContextWindow,
     inputValue,
@@ -79,7 +82,9 @@ const FloatingContextMenu: FC<{
     floatingDropdownMenu,
     setFloatingDropdownMenu,
   } = useFloatingContextMenu()
-  const [discardChangesModalOpen, setDiscardChangesModalOpen] = useState(false)
+  const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
+    FloatingContextWindowChangesState,
+  )
   const currentWidth = useMemo(() => {
     if (floatingDropdownMenu.rootRect) {
       const minWidth = Math.max(
@@ -166,31 +171,36 @@ const FloatingContextMenu: FC<{
           }
         }
         console.log(
-          `[ContextWindow] [FloatingContextMenu] [onOpenChange] [${reason}] [${contextWindowMode}]`,
+          `[ContextWindow] [FloatingContextMenu] [onOpenChange] [${reason}] [${contextWindowChanges.contextWindowMode}]`,
         )
-        if (contextWindowMode !== 'READ') {
-          if (contextWindowMode === 'LOADING') {
+        if (contextWindowChanges.contextWindowMode !== 'READ') {
+          if (contextWindowChanges.contextWindowMode === 'LOADING') {
             // AI正在运行，不需要弹出确认框，不需要关闭
             return
           }
           // custom variables 的编辑模式下，需要特殊处理
           if (
-            (contextWindowMode === 'EDIT_VARIABLES' ||
-              contextWindowMode === 'EDITED_VARIABLES') &&
+            (contextWindowChanges.contextWindowMode === 'EDIT_VARIABLES' ||
+              contextWindowChanges.contextWindowMode === 'EDITED_VARIABLES') &&
             reason === 'outside-press'
           ) {
             // 点击外部区域，不需要弹出确认框，因为这个时候用户可能是在复制内容
             return
           }
           if (
-            contextWindowMode === 'EDIT_VARIABLES' &&
+            contextWindowChanges.contextWindowMode === 'EDIT_VARIABLES' &&
             reason === 'escape-key'
           ) {
             // 按下esc键，不需要弹出确认框，直接关闭，因为用户没有做任何修改
             hideFloatingContextMenu()
             return
           }
-          setDiscardChangesModalOpen(true)
+          setContextWindowChanges((prev) => {
+            return {
+              ...prev,
+              discardChangesModalVisible: true,
+            }
+          })
           return
         }
       }
@@ -346,7 +356,7 @@ const FloatingContextMenu: FC<{
         >
           <DevContent>
             <Typography fontSize={'14px'} color={'text.primary'}>
-              {contextWindowMode}(debug)
+              {contextWindowChanges.contextWindowMode}(debug)
             </Typography>
           </DevContent>
         </Box>
@@ -393,8 +403,16 @@ const FloatingContextMenu: FC<{
                     setIsInputCustomVariables(true)
                   }}
                   onBeforeClose={() => {
-                    if (contextWindowMode === 'EDITED_VARIABLES') {
-                      setDiscardChangesModalOpen(true)
+                    if (
+                      contextWindowChanges.contextWindowMode ===
+                      'EDITED_VARIABLES'
+                    ) {
+                      setContextWindowChanges((prev) => {
+                        return {
+                          ...prev,
+                          discardChangesModalVisible: true,
+                        }
+                      })
                       return false
                     }
                     return true
@@ -601,9 +619,11 @@ const FloatingContextMenu: FC<{
       </div>
       <DiscardChangesModal
         type={
-          contextWindowMode === 'AI_RESPONSE' ? 'AI_RESPONSE' : 'USER_DRAFT'
+          contextWindowChanges.contextWindowMode === 'AI_RESPONSE'
+            ? 'AI_RESPONSE'
+            : 'USER_DRAFT'
         }
-        open={discardChangesModalOpen}
+        open={contextWindowChanges.discardChangesModalVisible}
         onClose={(reason) => {
           if (reason === 'discard') {
             // discard changes
@@ -611,7 +631,12 @@ const FloatingContextMenu: FC<{
           } else if (reason === 'cancel') {
             focusContextWindowInput()
           }
-          setDiscardChangesModalOpen(false)
+          setContextWindowChanges((prev) => {
+            return {
+              ...prev,
+              discardChangesModalVisible: false,
+            }
+          })
         }}
       />
     </FloatingPortal>

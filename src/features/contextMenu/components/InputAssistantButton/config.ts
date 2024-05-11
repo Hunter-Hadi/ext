@@ -120,7 +120,10 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )) as HTMLElement
 
-          if (inputAssistantButton) {
+          if (
+            inputAssistantButton &&
+            !InstantReplyButtonIdToInputMap.has(buttonId)
+          ) {
             const inputBox = findSelectorParent(
               'div[contenteditable="true"]',
               inputAssistantButton,
@@ -145,7 +148,10 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )) as HTMLElement
 
-          if (inputAssistantButton) {
+          if (
+            inputAssistantButton &&
+            !InstantReplyButtonIdToInputMap.has(buttonId)
+          ) {
             const inputBox = findSelectorParent(
               'div[contenteditable="true"]',
               inputAssistantButton,
@@ -170,7 +176,10 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )) as HTMLElement
 
-          if (inputAssistantButton) {
+          if (
+            inputAssistantButton &&
+            !InstantReplyButtonIdToInputMap.has(buttonId)
+          ) {
             const inputBox = findSelectorParent(
               'div[contenteditable="true"]',
               inputAssistantButton,
@@ -220,21 +229,24 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               findSelectorParent('.amn .ams.bkH', inputAssistantButton)
 
             if (replyButton) {
-              const emailItem = findSelectorParent(
-                'div[role="list"] div[role="listitem"] > div > div > div > [id]',
-                replyButton,
-                12,
-              )
-              if (emailItem) {
-                setTimeout(() => {
-                  const inputBox = emailItem.querySelector<HTMLElement>(
-                    'div[contenteditable="true"]',
-                  )
-                  if (inputBox) {
-                    InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
-                  }
-                }, 100)
+              if (!InstantReplyButtonIdToInputMap.has(buttonId)) {
+                const emailItem = findSelectorParent(
+                  'div[role="list"] div[role="listitem"] > div > div > div > [id]',
+                  replyButton,
+                  12,
+                )
+                if (emailItem) {
+                  setTimeout(() => {
+                    const inputBox = emailItem.querySelector<HTMLElement>(
+                      'div[contenteditable="true"]',
+                    )
+                    if (inputBox) {
+                      InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+                    }
+                  }, 100)
+                }
               }
+
               replyButton.click()
             }
           }
@@ -282,6 +294,46 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            debugger
+            const rootElement =
+              document.querySelector<HTMLDivElement>(
+                'div[data-app-section="ConversationContainer"]',
+              ) ||
+              document.querySelector<HTMLDivElement>(
+                'div[data-app-section="MailReadCompose"] div[data-app-section="ItemContainer"]',
+              )
+
+            if (rootElement && rootElement.contains(inputAssistantButton)) {
+              const emailItem = Array.from(
+                rootElement.querySelectorAll(
+                  '& > div > div:has(div[tabindex])',
+                ),
+              ).find((emailContainer) =>
+                emailContainer.contains(inputAssistantButton),
+              )
+              if (emailItem) {
+                setTimeout(() => {
+                  const inputBox = emailItem.querySelector<HTMLElement>(
+                    'div[contenteditable="true"]',
+                  )
+                  if (inputBox) {
+                    InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+                  }
+                }, 500)
+              }
+            }
+          }
+        },
       },
       appendPosition: 1,
       CTAButtonStyle: {
@@ -332,6 +384,34 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
                 ?.childElementCount === 4
             ) {
               replyButton = replyButton?.nextElementSibling as HTMLElement
+            }
+
+            const rootElement =
+              document.querySelector<HTMLDivElement>(
+                'div[data-app-section="ConversationContainer"]',
+              ) ||
+              document.querySelector<HTMLDivElement>(
+                'div[data-app-section="MailReadCompose"] div[data-app-section="ItemContainer"]',
+              )
+
+            if (rootElement && rootElement.contains(inputAssistantButton)) {
+              const emailItem = Array.from(
+                rootElement.querySelectorAll(
+                  '& > div > div:has(div[tabindex])',
+                ),
+              ).find((emailContainer) =>
+                emailContainer.contains(inputAssistantButton),
+              )
+              if (emailItem) {
+                setTimeout(() => {
+                  const inputBox = emailItem.querySelector<HTMLElement>(
+                    'div[contenteditable="true"]',
+                  )
+                  if (inputBox) {
+                    InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+                  }
+                }, 500)
+              }
             }
 
             replyButton?.click()

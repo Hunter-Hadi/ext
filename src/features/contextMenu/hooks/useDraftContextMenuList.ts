@@ -9,6 +9,12 @@ import { RangyState } from '@/features/contextMenu/store'
 import { getInputMediator } from '@/store/InputMediator'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
+// 支持 Accept_and_copy 的网站
+const AcceptAndCopySupportedHosts = new Set([
+  'mail.google.com',
+  // 'outlook.live.com',
+])
+
 const useDraftContextMenuList = () => {
   const [searchText, setSearchText] = useState<string>('')
   const { currentSelection } = useRecoilValue(RangyState)
@@ -41,8 +47,8 @@ const useDraftContextMenuList = () => {
         CONTEXT_MENU_DRAFT_TYPES.INSERT,
         CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION,
       ]
-      // 目前只有 gmail 支持 Accept_and_copy
-      if (getCurrentDomainHost() !== 'mail.google.com') {
+      const host = getCurrentDomainHost()
+      if (!AcceptAndCopySupportedHosts.has(host)) {
         filteredId.push(CONTEXT_MENU_DRAFT_TYPES.ACCEPT_AND_COPY)
       }
     } else if (currentSelection?.selectionElement?.isEditableElement) {

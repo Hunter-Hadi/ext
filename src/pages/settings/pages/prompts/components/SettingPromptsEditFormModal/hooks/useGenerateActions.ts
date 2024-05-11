@@ -26,11 +26,12 @@ export const useGeneratePreviewActions = () => {
       false,
       overrideSystemVariables,
     )
-    // 修改预设的系统变量默认值
-    // 防止SET_VARIABLE里设置了强制覆盖的值，导致preview里修改不成功
     const setVariablesModalConfig = actions.find(
       (item) => item.type === 'SET_VARIABLES_MODAL',
     )?.parameters.SetVariablesModalConfig
+
+    // 修改预设的系统变量默认值
+    // 防止SET_VARIABLE里设置了强制覆盖的值，导致preview里修改不成功
     if (setVariablesModalConfig?.actions) {
       setVariablesModalConfig.actions = setVariablesModalConfig.actions.filter(
         (item) => {
@@ -48,6 +49,19 @@ export const useGeneratePreviewActions = () => {
           return true
         },
       )
+    }
+
+    // 过滤重复设置的变量
+    // 因为已经强制设置了某些变量为系统变量，这里针对可能在variables里出现的重复变量做一遍过滤
+    if (setVariablesModalConfig?.variables) {
+      setVariablesModalConfig.variables =
+        setVariablesModalConfig.variables.filter(
+          (variable) =>
+            !setVariablesModalConfig.systemVariables.find(
+              (systemVariable) =>
+                systemVariable.VariableName === variable.VariableName,
+            ),
+        )
     }
     return actions
   }, [editNode.text, editHTML, variables])

@@ -382,6 +382,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const selectTypeVariables: IActionSetVariable[] = []
     const textTypeVariables: IActionSetVariable[] = []
     const formData = getValues()
+    // 在preview编辑器里需要reset, 因为不确定对其他地方有无影响
+    // 这里先这么处理，理论上可以删掉这个判断直接reset
+    if (showCloseButton) {
+      reset()
+    }
     // 先添加系统预设的变量
     currentSystemVariables
       // 再添加用户自定义的变量

@@ -579,10 +579,10 @@ const developmentHotReload = () => {
         })
       }
     })
-    Browser.tabs.create({
-      url: `chrome-extension://${Browser.runtime.id}/pages/settings/index.html#/my-own-prompts`,
-      active: true,
-    })
+    // Browser.tabs.create({
+    //   url: `chrome-extension://${Browser.runtime.id}/pages/settings/index.html#/my-own-prompts`,
+    //   active: true,
+    // })
     // createChromeExtensionOptionsPage('#/my-own-prompts')
     // createChromeExtensionImmersiveChatPage('')
   }

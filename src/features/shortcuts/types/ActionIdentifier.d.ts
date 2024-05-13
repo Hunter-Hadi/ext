@@ -99,6 +99,10 @@ type ActionIdentifier =
   | 'SCRIPTS_GET_ITEM_FROM_LIST'
   // if条件
   | 'SCRIPTS_CONDITIONAL'
+  // 重复
+  | 'REPEAT'
+  // 遍历
+  | 'REPEAT_WITH_EACH'
 
 // `1webgpt action identifiers
 type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'

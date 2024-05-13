@@ -58,7 +58,9 @@
     "manage_my_plan": "Gestiona el meu pla",
     "watch_video": "Veure vídeo",
     "input_content": "Contingut d'entrada",
-    "discard": "Descartar"
+    "discard": "Descartar",
+    "create": "Crear",
+    "update": "Actualitzar"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "La plantilla de suggeriment d'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "La plantilla de suggeriment de l'IA.\nLa plantilla pot incloure qualsevol nombre de les variables següents:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Plantilla d'exemple de prompt:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Plantilla d'exemple de prompt:",
+    "feature_card__prompts__confirm__cancel__description": "Esteu segur que voleu cancel·lar? Tingueu en compte que un cop cancel·lat, es perdran els canvis no desats.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Sí, cancel·la",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Torna a l'edició",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Cal un títol"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Directe",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Segur",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informal",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continua al xat"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continua al xat",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Accepta i copia"
   },
   "prompt_editor": {
     "preset_variables__title": "Funcionalitats",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "contingut de context objectiu",
     "preset_variables__system__draft_context__description": "contingut de context esborrany",
     "preset_variables__system__summary_page_content_representation__description": "el contingut de la pàgina web/PDF/vídeo de YouTube actual",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Genera un resum del {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Genera un resum del {{PAGE_CONTENT}}",
+    "configure_panel__title": "Configura",
+    "config_panel__next_button__title": "Següent: Afegir indicació",
+    "prompt_panel__title": "Indicació",
+    "preview_panel__title": "Previsualització",
+    "preset_variables__error_message__title": "Si us plau, seleccioneu el context `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Actualitza la variable",
+    "add_variable__custom__title": "Variables",
+    "add_variable__update_button__title": "Actualitza"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clic",

@@ -12,20 +12,21 @@ import { useCustomTheme } from '@/hooks/useCustomTheme'
 const PresetVariablesTag: FC<{
   onClick?: (variable: IPresetActionSetVariable) => void
   presetVariable: IPresetActionSetVariable
-}> = ({ onClick, presetVariable }) => {
+  children?: React.ReactNode
+}> = ({ onClick, presetVariable, children }) => {
   const theme = useCustomTheme()
 
   const color = theme.isDarkMode
     ? hexChangeLightnessAndSaturation(
-      generateRandomColor(presetVariable.VariableName),
-      0.75,
-      0.9,
-    )
+        generateRandomColor(presetVariable.VariableName),
+        0.75,
+        0.9,
+      )
     : hexChangeLightnessAndSaturation(
-      generateRandomColor(presetVariable.VariableName),
-      0.3,
-      0.95,
-    )
+        generateRandomColor(presetVariable.VariableName),
+        0.3,
+        0.95,
+      )
   return (
     <Typography
       sx={(t) => {
@@ -46,7 +47,7 @@ const PresetVariablesTag: FC<{
         onClick && onClick(presetVariable)
       }}
     >
-      {`{{${presetVariable.label}}}`}
+      {children ? children : `{{${presetVariable.label}}}`}
     </Typography>
   )
 }

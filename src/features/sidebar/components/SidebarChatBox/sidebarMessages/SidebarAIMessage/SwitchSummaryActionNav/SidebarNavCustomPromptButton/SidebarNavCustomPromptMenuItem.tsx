@@ -15,7 +15,7 @@ import {
 } from '@/components/ContextMenuIcon'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 
-import RenderCustomPromptMenuList from './RenderCustomPromptMenuList';
+import RenderCustomPromptMenuList, { checkIsValidGroup } from './RenderCustomPromptMenuList';
 
 export const CustomPromptMenuListIcon = styled(({ children, ...props }: ListItemIconProps) => (
   <ListItemIcon {...props}>
@@ -49,6 +49,11 @@ const SidebarNavCustomPromptMenuItem: FC<ISidebarNavCustomPromptMenuItemType> = 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const open = Boolean(anchorEl)
   const isGroup = menuItem.data.type === 'group'
+
+  // should not render when group has no children
+  if (isGroup && !checkIsValidGroup(menuItem)) {
+    return null
+  }
 
   return <CustomPromptMenuListItem
     selected={menuItem.id === actionPromptId}

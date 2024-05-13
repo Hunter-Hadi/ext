@@ -58,7 +58,9 @@
     "manage_my_plan": "مدیریت طرح من",
     "watch_video": "تماشای ویدیو",
     "input_content": "محتوای ورودی",
-    "discard": "دور انداختن"
+    "discard": "دور انداختن",
+    "create": "ایجاد",
+    "update": "به‌روزرسانی"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "قالب پیشنهاد هوش مصنوعی.\nاین قالب می‌تواند شامل هر تعدادی از متغیرهای زیر باشد:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "قالب پیشنهاد هوش مصنوعی.\nاین قالب می‌تواند شامل هر تعدادی از متغیرهای زیر باشد:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "قالب پیشنهاد هوش مصنوی.\nاین قالب می‌تواند شامل هر تعدادی از متغیرهای زیر باشد:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "الگوی نمونه پرسش:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "الگوی نمونه پرسش:",
+    "feature_card__prompts__confirm__cancel__description": "آیا مطمئن هستید که می‌خواهید لغو کنید؟ لطفا توجه داشته باشید که پس از لغو، هر تغییر ذخیره نشده‌ای از بین خواهد رفت.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "بله، لغو کن",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "بازگشت به ویرایش",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان الزامی است"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "ساده و روشن",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "مطمئن",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیررسمی",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ادامه در چت"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ادامه در چت",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "پذیرش و کپی"
   },
   "prompt_editor": {
     "preset_variables__title": "قابلیت‌ها",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "محتوای متن هدف",
     "preset_variables__system__draft_context__description": "محتوای متن پیش‌نویس",
     "preset_variables__system__summary_page_content_representation__description": "محتوای صفحه/فایل PDF/ویدیو YouTube فعلی",
-    "preset_variables__system__summary_page_content_representation__description__example1": "خروجی خلاصه‌ای از {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "خروجی خلاصه‌ای از {{PAGE_CONTENT}}",
+    "configure_panel__title": "پیکربندی",
+    "config_panel__next_button__title": "بعدی: اضافه کردن سوال",
+    "prompt_panel__title": "سوال",
+    "preview_panel__title": "پیش‌نمایش",
+    "preset_variables__error_message__title": "لطفاً متغیر محیطی `{{VARIABLE_NAME}}` را انتخاب کنید",
+    "add_variable__update__title": "به‌روزرسانی متغیر",
+    "add_variable__custom__title": "متغیرها",
+    "add_variable__update_button__title": "به‌روزرسانی"
   },
   "prompt_library": {
     "use_prompt_library__title": "پیشنهادهای 1 کلیک",

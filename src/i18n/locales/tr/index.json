@@ -58,7 +58,9 @@
     "manage_my_plan": "Planımı yönet",
     "watch_video": "Videoyu izle",
     "input_content": "Giriş içeriği",
-    "discard": "At"
+    "discard": "At",
+    "create": "Oluştur",
+    "update": "Güncelle"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI prompt şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI prompt şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI prompt şablonu.\nŞablon aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Örnek prompt şablonu:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Örnek prompt şablonu:",
+    "feature_card__prompts__confirm__cancel__description": "İptal etmek istediğinizden emin misiniz? Lütfen unutmayın, iptal edildiğinde kaydedilmemiş değişiklikler kaybolacaktır.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Evet, iptal et",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Düzenlemeye geri dön",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Başlık gereklidir"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Doğrudan",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Güvenli",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Sıradan",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Sohbete devam et"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Sohbete devam et",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Kabul et ve kopyala"
   },
   "prompt_editor": {
     "preset_variables__title": "Yetenekler",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "hedef bağlam içeriği",
     "preset_variables__system__draft_context__description": "taslak bağlam içeriği",
     "preset_variables__system__summary_page_content_representation__description": "geçerli web sayfasının/PDF'in/YouTube videosunun içeriği",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} hakkında bir özet çıktısı verin"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} hakkında bir özet çıktısı verin",
+    "configure_panel__title": "Yapılandır",
+    "config_panel__next_button__title": "Sonraki: İpucu ekle",
+    "prompt_panel__title": "İpucu",
+    "preview_panel__title": "Önizleme",
+    "preset_variables__error_message__title": "Lütfen bağlam seçin `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Değişkeni güncelle",
+    "add_variable__custom__title": "Değişkenler",
+    "add_variable__update_button__title": "Güncelle"
   },
   "prompt_library": {
     "use_prompt_library__title": "1 tıklamayla ipuçları",

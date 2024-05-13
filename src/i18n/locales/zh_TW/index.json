@@ -58,7 +58,9 @@
     "manage_my_plan": "管理我的方案",
     "watch_video": "觀看影片",
     "input_content": "輸入內容",
-    "discard": "捨棄"
+    "discard": "捨棄",
+    "create": "創建",
+    "update": "更新"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI提示範本。\n範本可以包含以下任意數量的變數：",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI提示模板。\n模板可以包含以下任意数量的变量：",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "範例提示模板："
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "範例提示模板：",
+    "feature_card__prompts__confirm__cancel__description": "您確定要取消嗎？請注意，一旦取消，任何未保存的更改將丟失。",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "是的，取消",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "返回編輯",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "需要標題"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "直接",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "自信",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "隨意",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "繼續聊天"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "繼續聊天",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "接受並複製"
   },
   "prompt_editor": {
     "preset_variables__title": "功能",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "目標內容",
     "preset_variables__system__draft_context__description": "草稿內容",
     "preset_variables__system__summary_page_content_representation__description": "當前網頁/ PDF/ YouTube 視頻的內容",
-    "preset_variables__system__summary_page_content_representation__description__example1": "輸出{{PAGE_CONTENT}}的摘要"
+    "preset_variables__system__summary_page_content_representation__description__example1": "輸出{{PAGE_CONTENT}}的摘要",
+    "configure_panel__title": "配置",
+    "config_panel__next_button__title": "下一步：添加提示",
+    "prompt_panel__title": "提示",
+    "preview_panel__title": "預覽",
+    "preset_variables__error_message__title": "請選擇上下文 `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "更新變量",
+    "add_variable__custom__title": "變量",
+    "add_variable__update_button__title": "更新"
   },
   "prompt_library": {
     "use_prompt_library__title": "1點擊提示",

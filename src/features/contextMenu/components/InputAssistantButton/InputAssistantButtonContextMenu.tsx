@@ -45,6 +45,20 @@ interface InputAssistantButtonContextMenuProps {
   disabled?: boolean
   onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
+
+// 会触发 onSelectionEffect 的 actions
+// const selectionEffectActions = new Set([
+//   // instant reply
+//   'GET_CONTENTS_OF_WEBPAGE',
+//   'GET_EMAIL_CONTENTS_OF_WEBPAGE',
+//   'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+//   'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
+//   // refine draft
+//   'GET_EMAIL_DRAFT_OF_WEBPAGE',
+//   // key point or custom prompt with custom variables
+//   'SET_VARIABLES_MODAL'
+// ])
+
 const InputAssistantButtonContextMenu: FC<
   InputAssistantButtonContextMenuProps
 > = (props) => {
@@ -153,18 +167,13 @@ const InputAssistantButtonContextMenu: FC<
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
           if (
-            event === 'action' &&
-            [
-              'GET_CONTENTS_OF_WEBPAGE',
-              'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-              'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-              'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
-            ].includes(data?.type) &&
-            data?.status === 'complete'
+            event === 'beforeRunAction' &&
+            data?.action?.type === 'ASK_CHATGPT'
           ) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
             onSelectionEffect() // 这里会报错只是因为 ts 定义错了，实际使用不会报错，未来可能会根据定义再扩展这个 function
+            shortCutsEngine?.removeListener(onSelectionEffectListener!)
           }
         }
         shortCutsEngine?.addListener(onSelectionEffectListener)
@@ -185,14 +194,13 @@ const InputAssistantButtonContextMenu: FC<
           isRunningRef.current = false
 
           if (onSelectionEffectListener) {
-            shortCutsEngine?.removeListener(onSelectionEffectListener)
             shortCutsEngine?.setActions([])
           }
           // temporary support onSelectionEffect
           // onSelectionEffect && onSelectionEffect();
         })
     }
-    return () => {}
+    return () => { }
   }, [clickContextMenu, shortCutsEngine])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
@@ -238,9 +246,9 @@ const InputAssistantButtonContextMenu: FC<
         }}
         {...(disabled
           ? {
-              customOpen: true,
-              referenceElementOpen: false,
-            }
+            customOpen: true,
+            referenceElementOpen: false,
+          }
           : {})}
       />
     </CacheProvider>

@@ -1,7 +1,6 @@
 import {
   autoUpdate,
   flip,
-  FloatingFocusManager,
   offset,
   shift,
   useClick,
@@ -184,28 +183,26 @@ const SidebarUsePromptButton: FC<{
         )}
       </Box>
       {open && (
-        <FloatingFocusManager context={context} modal={false}>
-          <Box
-            ref={refs.setFloating}
-            style={floatingStyles}
-            {...getFloatingProps()}
-            sx={{
-              width: 300,
-              height: 400,
-              zIndex: 9999,
+        <Box
+          ref={refs.setFloating}
+          style={floatingStyles}
+          {...getFloatingProps()}
+          sx={{
+            width: 300,
+            height: 400,
+            zIndex: 9999,
+          }}
+        >
+          <PromptsAutoComplete
+            placement={placement}
+            root={root}
+            buttonSettingsKey={'textSelectPopupButton'}
+            onSelectActions={handleRunActions}
+            onClose={() => {
+              setOpen(false)
             }}
-          >
-            <PromptsAutoComplete
-              placement={placement}
-              root={root}
-              buttonSettingsKey={'textSelectPopupButton'}
-              onSelectActions={handleRunActions}
-              onClose={() => {
-                setOpen(false)
-              }}
-            />
-          </Box>
-        </FloatingFocusManager>
+          />
+        </Box>
       )}
     </>
   )

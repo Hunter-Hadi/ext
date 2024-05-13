@@ -8,8 +8,8 @@ import {
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { getChatMessagesContent } from '@/features/shortcuts/utils/chatApp/getChatMessages'
 import { type IChatMessagesContextData } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
+import { getChatMessagesContent } from '@/features/shortcuts/utils/chatApp/getChatMessages'
 import {
   calculateMaxHistoryQuestionResponseTokens,
   sliceTextByTokens,
@@ -87,7 +87,7 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
                     value:
                       MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                     overwrite: true,
-                    isBuiltIn: false,
+                    isBuiltIn: true,
                     label: 'Target message',
                   },
                   MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT: {

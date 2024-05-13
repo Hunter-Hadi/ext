@@ -58,7 +58,9 @@
     "manage_my_plan": "నా ప్లాన్ నిర్వహించండి",
     "watch_video": "వీడియో చూడండి",
     "input_content": "ఇన్పుట్ కంటెంట్",
-    "discard": "విస్మరించు"
+    "discard": "విస్మరించు",
+    "create": "సృష్టించు",
+    "update": "నవీకరించు"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "యూఎక్స్ ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో కొన్ని మొత్తం వ్యతిరేక చర్యలు ఉండవచ్చు:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "యూనికార్డ్ మూలకం టెంప్లేట్.\nఈ టెంప్లేట్‌లో కొన్ని వేరియబుల్స్ ఉంచవచ్చు:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "యూఎక్స్ ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో కొన్ని మొత్తం వ్యతిరేక చర్యలు ఉండవచ్చు:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ఉదాహరణ ప్రాంప్టు టెంప్లేట్:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "ఉదాహరణ ప్రాంప్టు టెంప్లేట్:",
+    "feature_card__prompts__confirm__cancel__description": "మీరు ఖాతాను రద్దు చేయాలని నిర్ధారించారా? దయచేసి గమనిక పడండి, ఒకేసారి రద్దు చేసిన తరువాత ఏదైనా సేవ్ చేసిన మార్పులు కోలుకోవడం ఉంటుంది.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "అవును, రద్దు చేయండి",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "ఎడిటింగ్‌కు తిరిగి వెళ్లండి",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "టైటిల్ అవసరం"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "స్పష్టవాది",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ఆత్మవిశ్వాసం",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "క్యాజ్యువల్",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "చాట్‌లో కొనసాగించు"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "చాట్‌లో కొనసాగించు",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "అంగీకరించి మరియు కాపీ చేయండి"
   },
   "prompt_editor": {
     "preset_variables__title": "సామర్థ్యాలు",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "లక్ష్య సందర్భ విషయం",
     "preset_variables__system__draft_context__description": "డ్రాఫ్ట్ సందర్భ విషయం",
     "preset_variables__system__summary_page_content_representation__description": "ప్రస్తుత వెబ్‌పేజీ/PDF/YouTube వీడియో విషయం",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} యొక్క సంగ్రహం నివేదించండి"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} యొక్క సంగ్రహం నివేదించండి",
+    "configure_panel__title": "ఆకృతీకరించు",
+    "config_panel__next_button__title": "తరువాత: ప్రాంప్ట్ జోడించండి",
+    "prompt_panel__title": "ప్రాంప్ట్",
+    "preview_panel__title": "ప్రివ్యూ",
+    "preset_variables__error_message__title": "దయచేసి కంటెక్స్ట్ `{{VARIABLE_NAME}}` ఎంచుకోండి",
+    "add_variable__update__title": "వ్యారబుల్‌ను నవీకరించు",
+    "add_variable__custom__title": "వ్యారబుల్‌లు",
+    "add_variable__update_button__title": "నవీకరించు"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-క్లిక్ ప్రాంప్టులు",

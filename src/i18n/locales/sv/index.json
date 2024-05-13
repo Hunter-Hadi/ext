@@ -58,7 +58,9 @@
     "manage_my_plan": "Hantera mitt plan",
     "watch_video": "Titta på video",
     "input_content": "Innehåll för inmatning",
-    "discard": "Kasta"
+    "discard": "Kasta",
+    "create": "Skapa",
+    "update": "Uppdatera"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-promptmall.\nMallen kan inkludera valfritt antal av följande variabler:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Exempel på promptmall:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Exempel på promptmall:",
+    "feature_card__prompts__confirm__cancel__description": "Är du säker på att du vill avbryta? Observera att alla osparade ändringar kommer att gå förlorade.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, avbryt",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Tillbaka till redigering",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel krävs"
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Rakt på sak",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Självsäker",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Avslappnad",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Fortsätt i chatt"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Fortsätt i chatt",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Acceptera och kopiera"
   },
   "prompt_editor": {
     "preset_variables__title": "Färdigheter",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "mål sammanhanget innehåll",
     "preset_variables__system__draft_context__description": "utkast sammanhanget innehåll",
     "preset_variables__system__summary_page_content_representation__description": "innehållet på den aktuella webbsidan/PDF:en/YouTube-videon",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Generera en sammanfattning av {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Generera en sammanfattning av {{PAGE_CONTENT}}",
+    "configure_panel__title": "Konfigurera",
+    "config_panel__next_button__title": "Nästa: Lägg till prompt",
+    "prompt_panel__title": "Prompt",
+    "preview_panel__title": "Förhandsgranska",
+    "preset_variables__error_message__title": "Vänligen välj sammanhang `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Uppdatera variabel",
+    "add_variable__custom__title": "Variabler",
+    "add_variable__update_button__title": "Uppdatera"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klicka-promptar",

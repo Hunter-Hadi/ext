@@ -133,13 +133,13 @@ const PromptLibraryIconButton: FC<{
       const actions = promptLibraryCardDetailDataToActions(
         selectedPromptLibraryCard,
       )
-      if (actions && shortCutsEngine?.status === 'idle') {
+      if (actions && shortCutsEngine?.status !== 'running') {
         updateSidebarConversationType('Chat')
         cancelSelectPromptLibraryCard()
         askAIWIthShortcuts(actions).then().catch()
       }
     }
-  }, [selectedPromptLibraryCard])
+  }, [selectedPromptLibraryCard, shortCutsEngine])
   useEffect(() => {
     if (!isOpenPromptLibraryEditForm && promptLibraryOpen) {
       // 为了方便esc

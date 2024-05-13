@@ -142,6 +142,7 @@ const useArtTextToImage = () => {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'AI_RESPONSE_MESSAGE_ID',
+            USER_INPUT: text,
           },
         },
         {
@@ -149,6 +150,43 @@ const useArtTextToImage = () => {
           parameters: {
             isEnabledDetectAIResponseLanguage: false,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+            MaxAIPromptActionConfig: {
+              promptId: '816e3fe0-bd04-418e-8f6e-d33d8c4dba67',
+              promptName: '[Art] dalle3 prompt optimization',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'User input',
+                  VariableName: 'USER_INPUT',
+                  valueType: 'Text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'Text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'Text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'Text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'Text',
+                },
+              ],
+            },
             AskChatGPTActionQuestion: {
               text: text,
               meta: {

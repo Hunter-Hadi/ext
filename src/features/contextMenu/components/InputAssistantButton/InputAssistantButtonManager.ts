@@ -28,6 +28,8 @@ export const InputAssistantButtonElementRouteMap = new Map<
   Document | ShadowRoot | HTMLElement | Element
 >()
 
+export const InstantReplyButtonIdToInputMap = new Map<string, HTMLElement>()
+
 class InputAssistantButtonManager {
   host: WritingAssistantButtonGroupConfigHostType
   timer?: ReturnType<typeof setInterval>

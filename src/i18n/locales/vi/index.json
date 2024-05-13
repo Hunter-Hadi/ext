@@ -58,7 +58,9 @@
     "manage_my_plan": "Quản lý gói của tôi",
     "watch_video": "Xem video",
     "input_content": "Nội dung đầu vào",
-    "discard": "Loại bỏ"
+    "discard": "Loại bỏ",
+    "create": "Tạo mới",
+    "update": "Cập nhật"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Mẫu gợi ý của trí tuệ nhân tạo.\nMẫu này có thể bao gồm bất kỳ số lượng biến sau đây:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Mẫu gợi ý ví dụ:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Mẫu gợi ý ví dụ:",
+    "feature_card__prompts__confirm__cancel__description": "Bạn có chắc chắn muốn hủy? Lưu ý rằng sau khi hủy, mọi thay đổi chưa được lưu sẽ bị mất.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Có, hủy",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Quay lại chỉnh sửa",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tiêu đề là bắt buộc"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Trực tiếp",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Tự tin",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Thân mật",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Tiếp tục trong cuộc trò chuyện"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Tiếp tục trong cuộc trò chuyện",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Chấp nhận và sao chép"
   },
   "prompt_editor": {
     "preset_variables__title": "Khả năng",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "nội dung ngữ cảnh mục tiêu",
     "preset_variables__system__draft_context__description": "nội dung ngữ cảnh nháp",
     "preset_variables__system__summary_page_content_representation__description": "nội dung của trang web/PDF/Video YouTube hiện tại",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Xuất một bản tóm tắt về {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Xuất một bản tóm tắt về {{PAGE_CONTENT}}",
+    "configure_panel__title": "Cấu hình",
+    "config_panel__next_button__title": "Tiếp theo: Thêm gợi ý",
+    "prompt_panel__title": "Gợi ý",
+    "preview_panel__title": "Xem trước",
+    "preset_variables__error_message__title": "Vui lòng chọn ngữ cảnh `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Cập nhật biến số",
+    "add_variable__custom__title": "Biến số",
+    "add_variable__update_button__title": "Cập nhật"
   },
   "prompt_library": {
     "use_prompt_library__title": "Gợi ý 1-click",

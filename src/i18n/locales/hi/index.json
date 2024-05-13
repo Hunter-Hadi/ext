@@ -58,7 +58,9 @@
     "manage_my_plan": "मेरी योजना का प्रबंधन करें",
     "watch_video": "वीडियो देखें",
     "input_content": "इनपुट सामग्री",
-    "discard": "छोड़ें"
+    "discard": "छोड़ें",
+    "create": "बनाएँ",
+    "update": "अपडेट करें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित किसी भी संख्या के चरों को शामिल किया जा सकता है:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से किसी भी संख्या शामिल हो सकती है:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "एआई प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित किसी भी संख्या के चरों को शामिल किया जा सकता है:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "उदाहरण प्रॉम्प्ट टेम्पलेट:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "उदाहरण प्रॉम्प्ट टेम्पलेट:",
+    "feature_card__prompts__confirm__cancel__description": "क्या आप वाकई रद्द करना चाहते हैं? कृपया ध्यान दें कि एक बार रद्द कर दिया जाएगा, तो कोई भी असहेजित परिवर्तन खो जाएगा।",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "हाँ, रद्द करें",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "संपादन पर वापस जाएं",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "शीर्षक आवश्यक है"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "सीधा",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "आत्मविश्वास",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "आराम से",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "चैट में जारी रखें"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "चैट में जारी रखें",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "स्वीकार करें और कॉपी करें"
   },
   "prompt_editor": {
     "preset_variables__title": "क्षमताएँ",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "लक्षित संदर्भ सामग्री",
     "preset_variables__system__draft_context__description": "मसौदे का संदर्भ सामग्री",
     "preset_variables__system__summary_page_content_representation__description": "वर्तमान वेबपेज/पीडीएफ/यूट्यूब वीडियो की सामग्री",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} का संक्षेप आउटपुट करें"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} का संक्षेप आउटपुट करें",
+    "configure_panel__title": "कॉन्फ़िगर करें",
+    "config_panel__next_button__title": "आगे बढ़ें: प्रॉम्प्ट जोड़ें",
+    "prompt_panel__title": "प्रॉम्प्ट",
+    "preview_panel__title": "पूर्वावलोकन",
+    "preset_variables__error_message__title": "कृपया संदर्भ `{{VARIABLE_NAME}}` का चयन करें",
+    "add_variable__update__title": "चर अपडेट करें",
+    "add_variable__custom__title": "चर",
+    "add_variable__update_button__title": "अपडेट करें"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",

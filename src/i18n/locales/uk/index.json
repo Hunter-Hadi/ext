@@ -58,7 +58,9 @@
     "manage_my_plan": "میرا پلان مینج کریں",
     "watch_video": "ویڈیو دیکھیں",
     "input_content": "داخلی مواد",
-    "discard": "رد کریں"
+    "discard": "رد کریں",
+    "create": "تشکیل دیں",
+    "update": "اپ ڈیٹ کریں"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں مندرجہ ذیل متغیرات کی کوئی بھی تعداد شامل کی جا سکتی ہے:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں مندرجہ ذیل متغیرات کی کوئی بھی تعداد شامل کی جا سکتی ہے:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں مندرجہ ذیل متغیرات کی کوئی بھی تعداد شامل کی جا سکتی ہے:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "مثال پرامپٹ ٹیمپلیٹ:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "مثال پرامپٹ ٹیمپلیٹ:",
+    "feature_card__prompts__confirm__cancel__description": "کیا آپ واقعی منسوخ کرنا چاہتے ہیں؟ براہ کرم نوٹ فرمائیں کہ ایک بار منسوخ کردیا جائے گا تو کوئی بھی غیر محفوظ تبدیلیاں ضائع ہوجائیں گی۔",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "جی ہاں، منسوخ کریں",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "ترمیم پر واپس جائیں",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان ضروری ہے"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "سیدھا سادہ",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "پر اعتماد",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیر رسمی",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "چیٹ میں جاری رکھیں"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "چیٹ میں جاری رکھیں",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "قبول کریں اور کاپی کریں"
   },
   "prompt_editor": {
     "preset_variables__title": "صلاحیتوں",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "ہدف سیاق کا مواد",
     "preset_variables__system__draft_context__description": "ڈرافٹ سیاق کا مواد",
     "preset_variables__system__summary_page_content_representation__description": "موجودہ ویب پیج / پی ڈی ایف / یوٹیوب ویڈیو کا مواد",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} کا خلاصہ دکھائیں"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} کا خلاصہ دکھائیں",
+    "configure_panel__title": "تشکیل دیں",
+    "config_panel__next_button__title": "اگلا: پرامپٹ شامل کریں",
+    "prompt_panel__title": "پرامپٹ",
+    "preview_panel__title": "پیش نظارہ",
+    "preset_variables__error_message__title": "براہ کرم متناظری منتخب کریں `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "متغیر کو اپ ڈیٹ کریں",
+    "add_variable__custom__title": "متغیرات",
+    "add_variable__update_button__title": "اپ ڈیٹ کریں"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-کلک پرامپٹس",

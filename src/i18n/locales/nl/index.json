@@ -58,7 +58,9 @@
     "manage_my_plan": "Beheer mijn plan",
     "watch_video": "Bekijk video",
     "input_content": "Invoerinformatie",
-    "discard": "Afwijzen"
+    "discard": "Afwijzen",
+    "create": "Creëren",
+    "update": "Bijwerken"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "De AI prompt sjabloon.\nDe sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Voorbeeld prompt sjabloon:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Voorbeeld prompt sjabloon:",
+    "feature_card__prompts__confirm__cancel__description": "Weet je zeker dat je wilt annuleren? Houd er rekening mee dat alle niet-opgeslagen wijzigingen verloren gaan zodra je annuleert.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, annuleren",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Terug naar bewerken",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel is verplicht"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Duidelijk",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Zelfverzekerd",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informeel",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Doorgaan in chat"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Doorgaan in chat",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Accepteren en kopiëren"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogelijkheden",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "doelcontext inhoud",
     "preset_variables__system__draft_context__description": "conceptcontext inhoud",
     "preset_variables__system__summary_page_content_representation__description": "de inhoud van de huidige webpagina/PDF/YouTube-video",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Geef een samenvatting van de {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Geef een samenvatting van de {{PAGE_CONTENT}}",
+    "configure_panel__title": "Configureren",
+    "config_panel__next_button__title": "Volgende: Prompt toevoegen",
+    "prompt_panel__title": "Prompt",
+    "preview_panel__title": "Voorbeeld",
+    "preset_variables__error_message__title": "Selecteer alstublieft context `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Variabele bijwerken",
+    "add_variable__custom__title": "Variabelen",
+    "add_variable__update_button__title": "Bijwerken"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",

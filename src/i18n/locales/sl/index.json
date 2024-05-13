@@ -58,7 +58,9 @@
     "manage_my_plan": "Upravljanje mojega načrta",
     "watch_video": "Oglejte si video",
     "input_content": "Vsebina vnosa",
-    "discard": "Zavrzi"
+    "discard": "Zavrzi",
+    "create": "Ustvari",
+    "update": "Posodobi"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Predloga za AI spodbudo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Predloga za AI sporočilo.\nPredloga lahko vsebuje poljubno število naslednjih spremenljivk:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Predloga za AI spodbudo.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Primer predloge za spodbudo:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Primer predloge za spodbudo:",
+    "feature_card__prompts__confirm__cancel__description": "Ali ste prepričani, da želite preklicati? Prosimo, upoštevajte, da bodo vsi neshranjeni podatki izgubljeni.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, prekliči",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Nazaj na urejanje",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obvezen"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Neposredno",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Samozavestno",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Priložnostno",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Nadaljuj v klepet"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Nadaljuj v klepet",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Sprejmi in kopiraj"
   },
   "prompt_editor": {
     "preset_variables__title": "Sposobnosti",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "vsebina ciljnega konteksta",
     "preset_variables__system__draft_context__description": "vsebina osnutka konteksta",
     "preset_variables__system__summary_page_content_representation__description": "vsebina trenutne spletne strani/PDF/YouTube videa",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Izpiši povzetek {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Izpiši povzetek {{PAGE_CONTENT}}",
+    "configure_panel__title": "Konfiguriraj",
+    "config_panel__next_button__title": "Naprej: Dodaj napotek",
+    "prompt_panel__title": "Napotek",
+    "preview_panel__title": "Predogled",
+    "preset_variables__error_message__title": "Prosimo, izberite kontekst `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Posodobi spremenljivko",
+    "add_variable__custom__title": "Spremenljivke",
+    "add_variable__update_button__title": "Posodobi"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikni spodbude",

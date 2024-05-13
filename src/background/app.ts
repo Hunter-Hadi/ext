@@ -571,13 +571,18 @@ const developmentHotReload = () => {
         backgroundRestartChromeExtension().then(() => {
           // setTimeout(async () => {
           //   await Browser.tabs.create({
-          //     url: `chrome-extension://${Browser.runtime.id}/pages/settings/index.html`,
+          //     url: `chrome-extension://${Browser.runtime.id}/pages/settings/index.html#/my-own-prompts`,
           //     active: true,
           //   })
+          //
           // }, 1000)
         })
       }
     })
+    // Browser.tabs.create({
+    //   url: `chrome-extension://${Browser.runtime.id}/pages/settings/index.html#/my-own-prompts`,
+    //   active: true,
+    // })
     // createChromeExtensionOptionsPage('#/my-own-prompts')
     // createChromeExtensionImmersiveChatPage('')
   }

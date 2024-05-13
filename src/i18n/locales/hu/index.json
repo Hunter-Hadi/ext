@@ -58,7 +58,9 @@
     "manage_my_plan": "Tervem kezelése",
     "watch_video": "Videó megtekintése",
     "input_content": "Bemeneti tartalom",
-    "discard": "Elvetés"
+    "discard": "Elvetés",
+    "create": "Létrehozás",
+    "update": "Frissítés"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Az AI prompt sablon.\nA sablon tartalmazhat bármennyi a következő változók közül:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Az AI prompt sablonja.\nA sablon tartalmazhat bármennyi a következő változóból:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Példa prompt sablon:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Példa prompt sablon:",
+    "feature_card__prompts__confirm__cancel__description": "Biztosan megszakítja? Kérjük, vegye figyelembe, hogy a megszakítás után az összes mentetlen változtatás elveszik.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Igen, megszakítás",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Vissza a szerkesztéshez",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "A cím kötelező"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Egyszerű",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Magabiztos",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Lazább",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Folytatás a csevegésben"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Folytatás a csevegésben",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Elfogadás és másolás"
   },
   "prompt_editor": {
     "preset_variables__title": "Képességek",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "cél kontextus tartalom",
     "preset_variables__system__draft_context__description": "vázlat kontextus tartalom",
     "preset_variables__system__summary_page_content_representation__description": "a jelenlegi weboldal/tartalom/PDF/YouTube videó tartalma",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Készítsen összefoglalót a(z) {{PAGE_CONTENT}}-ról"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Készítsen összefoglalót a(z) {{PAGE_CONTENT}}-ról",
+    "configure_panel__title": "Konfigurálás",
+    "config_panel__next_button__title": "Következő: Prompt hozzáadása",
+    "prompt_panel__title": "Prompt",
+    "preview_panel__title": "Előnézet",
+    "preset_variables__error_message__title": "Kérlek válassz `{{VARIABLE_NAME}}` kontextust",
+    "add_variable__update__title": "Változó frissítése",
+    "add_variable__custom__title": "Változók",
+    "add_variable__update_button__title": "Frissítés"
   },
   "prompt_library": {
     "use_prompt_library__title": "1 kattintásos segédletek",

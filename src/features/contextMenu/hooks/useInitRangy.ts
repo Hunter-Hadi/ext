@@ -19,6 +19,7 @@ import {
   FloatingDropdownMenuState,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
+import { InstantReplyButtonIdToInputMap } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
 import {
   ContextMenuDraftType,
   ISelectionElement,
@@ -56,6 +57,69 @@ const RangyLog = new Log('ContextMenu/Rangy')
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
+
+const copyText = (text: string) => {
+  const textarea = document.createElement('textarea')
+  textarea.style.cssText = `
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 1px;
+              height: 1px;
+              padding: 0;
+              border: none;
+              outline: none;
+              boxShadow: none;
+              background: transparent;
+              z-index: -1;
+            `
+  textarea.value = text
+  textarea.oncopy = (event) => event.stopPropagation()
+  document.body.appendChild(textarea)
+  textarea.select()
+  document.execCommand('copy', false, '')
+  textarea.oncopy = null
+  textarea.remove()
+}
+
+// 自动聚焦并把光标移动到末尾
+function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
+  try {
+    if (inputBox.contentEditable) {
+      inputBox.focus()
+      const range = document.createRange()
+      const selection = window.getSelection()
+      const childNodes = inputBox.childNodes
+      const lastNode = childNodes[childNodes.length - 1]
+      if (lastNode) {
+        // 如果存在子节点，将光标移动到最后一个子节点的末尾
+        const lastNodeRange = document.createRange()
+        lastNodeRange.selectNodeContents(lastNode)
+        const lastNodeContentsLength = lastNodeRange.toString().length
+        range.setStart(lastNode, lastNodeContentsLength)
+        range.setEnd(lastNode, lastNodeContentsLength)
+      } else {
+        // 如果没有子节点，直接将光标移动到元素的起始位
+        range.selectNodeContents(inputBox)
+      }
+      selection?.removeAllRanges()
+      selection?.addRange(range)
+    } else if (
+      inputBox instanceof HTMLInputElement ||
+      inputBox instanceof HTMLTextAreaElement
+    ) {
+      inputBox.focus()
+      const valueLength = inputBox.value.length
+      inputBox.setSelectionRange(valueLength, valueLength)
+    }
+    setTimeout(() => {
+      inputBox.scrollIntoView({ block: 'end' })
+    }, 100)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 const useInitRangy = () => {
   const {
     show,
@@ -493,6 +557,7 @@ const useInitRangy = () => {
       'INSERT_ABOVE',
       'DISCARD',
       'COPY',
+      'ACCEPT_AND_COPY',
     ]
     const selectedDraftContextMenuType = getDraftContextMenuTypeById(
       floatingDropdownMenuSystemItems.selectedDraftContextMenuId || '',
@@ -565,30 +630,41 @@ const useInitRangy = () => {
           console.log('AIInput TRY_AGAIN', lastAIMessageId)
         }
         break
+      case 'ACCEPT_AND_COPY':
+        {
+          try {
+            const instantReplyButtonId =
+              currentSelectionRefElement.current?.target?.getAttribute(
+                'maxai-input-assistant-button-id',
+              )
+            if (instantReplyButtonId) {
+              copyText(lastOutputRef.current)
+              const inputBox =
+                InstantReplyButtonIdToInputMap.get(instantReplyButtonId)
+              if (inputBox) {
+                if (inputBox.contentEditable) {
+                  inputBox.innerHTML = lastOutputRef.current.replaceAll(
+                    /\n/g,
+                    '<br />',
+                  )
+                } else {
+                  // eslint-disable-next-line no-extra-semi
+                  ;(inputBox as HTMLInputElement).value = lastOutputRef.current
+                }
+                setTimeout(() => {
+                  focusAndMoveCursorToEnd(inputBox)
+                }, 100)
+              }
+            }
+          } catch (err) {
+            console.error(err)
+          }
+        }
+        break
       case 'COPY':
         {
           try {
-            const textarea = document.createElement('textarea')
-            textarea.style.cssText = `
-              position: fixed;
-              top: 0;
-              left: 0;
-              width: 1px;
-              height: 1px;
-              padding: 0;
-              border: none;
-              outline: none;
-              boxShadow: none;
-              background: transparent;
-              z-index: -1;
-            `
-            textarea.value = lastOutputRef.current
-            textarea.oncopy = (event) => event.stopPropagation()
-            document.body.appendChild(textarea)
-            textarea.select()
-            document.execCommand('copy', false, '')
-            textarea.oncopy = null
-            textarea.remove()
+            copyText(lastOutputRef.current)
           } catch (e) {
             console.error(e)
           }
@@ -598,6 +674,7 @@ const useInitRangy = () => {
         break
     }
   }, [floatingDropdownMenuSystemItems.selectedDraftContextMenuId])
+
   useEffect(() => {
     if (!floatingDropdownMenu.open) {
       setFloatingDropdownMenuLastFocusRange((prevState) => {

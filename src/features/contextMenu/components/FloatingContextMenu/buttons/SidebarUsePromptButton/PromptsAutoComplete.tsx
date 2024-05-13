@@ -171,7 +171,7 @@ const PromptsAutoComplete: FC<{
             if (onClose) {
               onClose()
             }
-          }, 100)
+          }, 200)
         }}
         disablePortal
         open={query !== ''}
@@ -353,7 +353,7 @@ const ContextMenuDivider: FC<{
       data-testid={`max-ai-context-menu-divider`}
       key={contextMenuId + '_group_spector'}
       aria-disabled={true}
-      onClick={(event: any) => {
+      onClickCapture={(event: any) => {
         event.stopPropagation()
         event.preventDefault()
       }}
@@ -408,7 +408,7 @@ const RenderDropdownItem: FC<{
             px: 1,
             pointerEvents: 'none',
           }}
-          onClick={(event: any) => {
+          onClickCapture={(event: any) => {
             event.stopPropagation()
             event.preventDefault()
           }}

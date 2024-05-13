@@ -1,3 +1,10 @@
+import {
+  OUTPUT_CHAT_COMPLETE,
+  VARIABLE_AI_RESPONSE_LANGUAGE,
+  VARIABLE_AI_RESPONSE_TONE,
+  VARIABLE_AI_RESPONSE_WRITING_STYLE,
+  VARIABLE_CURRENT_WEBSITE_DOMAIN,
+} from '@/background/defaultPromptsData/systemVariables'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export default [
@@ -25,35 +32,11 @@ export default [
                   valueType: 'Text',
                   placeholder: 'Enter key points',
                 },
-                {
-                  label: 'AI Response language',
-                  VariableName: 'AI_RESPONSE_LANGUAGE',
-                  defaultValue: 'English',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Tone',
-                  VariableName: 'AI_RESPONSE_TONE',
-                  defaultValue: 'Default',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Writing style',
-                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
-                  defaultValue: 'Default',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
+                VARIABLE_AI_RESPONSE_LANGUAGE,
+                VARIABLE_AI_RESPONSE_WRITING_STYLE,
+                VARIABLE_AI_RESPONSE_TONE,
               ],
-              output: [
-                {
-                  label: 'The completion string from the LLM',
-                  VariableName: 'ChatComplete',
-                  valueType: 'Text',
-                },
-              ],
+              output: [OUTPUT_CHAT_COMPLETE],
             },
             SetVariablesModalConfig: {
               contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
@@ -112,48 +95,15 @@ export default [
               promptName: 'Compose with key points',
               promptActionType: 'chat_complete',
               variables: [
-                {
-                  label: 'The domain of the current website',
-                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
-                  valueType: 'Text',
-                  systemVariable: true,
-                  hidden: true,
-                },
+                VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 {
                   label: 'Key points',
                   VariableName: 'KEY_POINTS',
                   valueType: 'Text',
                   placeholder: 'Enter key points',
                 },
-                {
-                  label: 'AI Response language',
-                  VariableName: 'AI_RESPONSE_LANGUAGE',
-                  defaultValue: 'English',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Tone',
-                  VariableName: 'AI_RESPONSE_TONE',
-                  defaultValue: 'Default',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-                {
-                  label: 'Writing style',
-                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
-                  defaultValue: 'Default',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
               ],
-              output: [
-                {
-                  label: 'The completion string from the LLM',
-                  VariableName: 'ChatComplete',
-                  valueType: 'Text',
-                },
-              ],
+              output: [OUTPUT_CHAT_COMPLETE],
             },
             SetVariablesModalConfig: {
               contextMenuId: '1cc8f601-27ac-474f-a70c-20ed1177711a',

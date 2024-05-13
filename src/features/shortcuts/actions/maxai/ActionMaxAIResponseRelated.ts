@@ -1,5 +1,6 @@
 import { APP_VERSION, SUMMARY__RELATED_QUESTIONS__PROMPT_ID } from '@/constants'
 import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/chatgpt/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import {
   IShortcutEngineExternalEngine,
   withLoadingDecorators,
@@ -31,12 +32,20 @@ export class ActionMaxAIResponseRelated extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     // 生成summary相关的related questions
-    // const { clientConversationEngine, shortcutsEngine } = engine
-    // const conversation =
-    //   await clientConversationEngine?.getCurrentConversation()
+    const { clientConversationEngine } = engine
+    const conversation =
+      await clientConversationEngine?.getCurrentConversation()
+    const messages = conversation?.messages || []
+    // TODO: 第一版只给summary的默认的all的related questions，后续可以根据需求再扩展
+    let needToGenerateRelatedQuestions = false
+    const AIResponseMessage = messages[0]
+    if (isAIMessage(AIResponseMessage)) {
+      needToGenerateRelatedQuestions =
+        AIResponseMessage?.originalMessage?.metadata?.navMetadata?.key === 'all'
+    }
     // const systemPrompt = conversation?.meta.systemPrompt
     const summaryContent = this.parameters.compliedTemplate || ''
-    if (summaryContent) {
+    if (summaryContent && needToGenerateRelatedQuestions) {
       const result = await clientFetchMaxAIAPI<{
         status: string
         text: string

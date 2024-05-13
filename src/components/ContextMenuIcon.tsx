@@ -44,6 +44,7 @@ import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined
 import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined'
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
 import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined'
+import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined'
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined'
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
@@ -80,11 +81,13 @@ import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress'
 import { SxProps } from '@mui/material/styles'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 import React, { FC, useMemo } from 'react'
 
 import { EzMailAIIcon } from '@/components/CustomIcon'
+import { ReadIcon } from '@/features/searchWithAI/components/SearchWithAIIcons'
 export const CONTEXT_MENU_ICONS = [
   'AutoFix',
   'Done',
@@ -176,6 +179,9 @@ export const CONTEXT_MENU_ICONS = [
   'KeyboardArrowDownIcon',
   'Attachment',
   'SidebarPanel',
+  'Layers',
+  'Loading',
+  'SummaryInfo',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -509,6 +515,17 @@ const ContextMenuIcon: FC<{
           </svg>
         </SvgIcon>
       )
+    case 'Layers':
+      return <LayersOutlinedIcon sx={sxMemo} />
+    case 'Loading':
+      return (
+        <CircularProgress
+          size={(sxMemo.fontSize as number) || 24}
+          sx={sxMemo}
+        />
+      )
+    case 'SummaryInfo':
+      return <ReadIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

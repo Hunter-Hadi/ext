@@ -29,7 +29,9 @@ import {
   ActionGetSocialMediaPostDraftOfWebPage,
   ActionGetYoutubeTranscriptOfURL,
   ActionInsertUserInput,
+  ActionList,
   ActionMaxAIProcessBuiltInParameters,
+  ActionMaxAIResponseRelated,
   ActionOpenURLs,
   ActionOperationElement,
   ActionRenderChatGPTPrompt,
@@ -89,6 +91,7 @@ const ActionClassMap = {
   [ActionDictionary.type]: ActionDictionary,
   [ActionGetDictionaryValue.type]: ActionGetDictionaryValue,
   [ActionSetDictionaryValue.type]: ActionSetDictionaryValue,
+  [ActionList.type]: ActionList,
   [ActionGetItemFromList.type]: ActionGetItemFromList,
   // web
   [ActionURL.type]: ActionURL,
@@ -128,6 +131,7 @@ const ActionClassMap = {
   [ActionsMaxAISummaryLog.type]: ActionsMaxAISummaryLog,
   [ActionMaxAIProcessBuiltInParameters.type]:
     ActionMaxAIProcessBuiltInParameters,
+  [ActionMaxAIResponseRelated.type]: ActionMaxAIResponseRelated,
 }
 
 class ShortCutsEngine implements IShortcutEngine {

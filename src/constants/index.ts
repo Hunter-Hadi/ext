@@ -125,7 +125,7 @@ export const SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID =
   '5278969d-1d86-4df2-a3e8-48e50dbbd86e' // [Summary] Summarize comments
 export const SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID =
   '029d848d-7c28-4a3a-baae-353292ea7691' // [Summary] Show transcript
-
+export const SUMMARY__RELATED_QUESTIONS__PROMPT_ID = 'related_questions'
 // Send notification
 export const NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID =
   '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a' // [Summary] tokens have reached maximum limit
@@ -162,4 +162,5 @@ export const PRESET_PROMPT_IDS = [
   'f6177317-8773-4036-be9b-5905116c855f',
   '5278969d-1d86-4df2-a3e8-48e50dbbd86e',
   '029d848d-7c28-4a3a-baae-353292ea7691',
+  SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
 ]

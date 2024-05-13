@@ -183,19 +183,104 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
               messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
               text: '',
               originalMessage: {
-                status: 'complete',
                 metadata: {
-                  isComplete: true,
                   deepDive: {
                     title: {
-                      title: 'Deep dive',
-                      titleIcon: 'TipsAndUpdates',
+                      title: ' ',
+                      titleIcon: 'Loading',
                     },
-                    value: 'Ask AI anything about the page...',
                   },
                 },
               },
             } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'MAXAI_RESPONSE_RELATED',
+          parameters: {
+            template: `{{SUMMARY_CONTENTS}}`,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'SCRIPTS_CONDITIONAL',
+          parameters: {
+            WFFormValues: {
+              Value: '',
+              WFSerializationType: 'WFDictionaryFieldValue',
+            },
+            WFCondition: 'Equals',
+            WFConditionalIfTrueActions: [
+              // 说明没有拿到related questions
+              {
+                type: 'CHAT_MESSAGE',
+                parameters: {
+                  ActionChatMessageOperationType: 'update',
+                  ActionChatMessageConfig: {
+                    type: 'ai',
+                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                    text: '',
+                    originalMessage: {
+                      status: 'complete',
+                      metadata: {
+                        isComplete: true,
+                        deepDive: {
+                          title: {
+                            title: 'Deep dive',
+                            titleIcon: 'TipsAndUpdates',
+                            titleIconSize: 20,
+                          },
+                          value: 'Ask AI anything about the page...',
+                        },
+                      },
+                    },
+                  } as IAIResponseMessage,
+                },
+              },
+            ],
+            WFConditionalIfFalseActions: [
+              {
+                type: 'RENDER_TEMPLATE',
+                parameters: {
+                  template: `{{SUMMARY_CONTENTS}}`,
+                },
+              },
+              {
+                type: 'SCRIPTS_LIST',
+                parameters: {},
+              },
+              {
+                type: 'CHAT_MESSAGE',
+                parameters: {
+                  ActionChatMessageOperationType: 'update',
+                  ActionChatMessageConfig: {
+                    type: 'ai',
+                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                    text: '',
+                    originalMessage: {
+                      status: 'complete',
+                      metadata: {
+                        isComplete: true,
+                        deepDive: {
+                          title: {
+                            title: 'Related',
+                            titleIcon: 'Layers',
+                            titleIconSize: 20,
+                          },
+                          type: 'related',
+                          value: `{{LAST_ACTION_OUTPUT}}` as any,
+                        },
+                      },
+                    },
+                  } as IAIResponseMessage,
+                },
+              },
+            ],
           },
         },
         // {

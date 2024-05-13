@@ -149,7 +149,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                   color: 'text.primary',
                   whiteSpace: 'nowrap',
                   textOverflow: 'ellipsis',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
                 }}
               />
             )}
@@ -175,7 +175,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               <Stack spacing={1}>
                 <Stack direction={'row'} alignItems="center" spacing={1}>
                   {renderData.sourcesLoading &&
-                    !renderData.messageIsComplete ? (
+                  !renderData.messageIsComplete ? (
                     <CircularProgress size={18} />
                   ) : (
                     <CaptivePortalIcon
@@ -256,7 +256,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                     </Stack>
                   )}
                   {isWaitFirstAIResponseText &&
-                    !renderData.messageIsComplete ? (
+                  !renderData.messageIsComplete ? (
                     <SidebarAIMessageSkeletonContent
                       contentType={renderData.content.contentType}
                     />
@@ -275,8 +275,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
           </Stack>
         ) : (
           <div
-            className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''
-              }`}
+            className={`markdown-body ${
+              isDarkMode ? 'markdown-body-dark' : ''
+            }`}
           >
             <AppSuspenseLoadingLayout>
               <CustomMarkdown>{renderData.answer}</CustomMarkdown>
@@ -309,32 +310,24 @@ export const MetadataTitleRender: FC<{
 }> = (props) => {
   const { fontSx } = props
   const { title, titleIcon, titleIconSize } = props.title
-  const titleIconSizeDefault = titleIcon === 'SummaryInfo' ? 20 : 16
+  console.log(`MetadataTitleRender`, props.title)
+  const currentTitleIconSize = titleIconSize || 20
   return (
     <Stack direction={'row'} alignItems="center" spacing={1}>
       {titleIcon && (
         <Stack
           alignItems={'center'}
           justifyContent={'center'}
-          width={titleIconSizeDefault}
-          height={titleIconSizeDefault}
+          width={currentTitleIconSize}
+          height={currentTitleIconSize}
         >
-          {titleIcon === 'SummaryInfo' ? (
-            <ReadIcon
-              sx={{
-                color: 'primary.main',
-                fontSize: titleIconSize || 20,
-              }}
-            />
-          ) : (
-            <ContextMenuIcon
-              sx={{
-                color: 'primary.main',
-                fontSize: titleIconSize || 18,
-              }}
-              icon={titleIcon}
-            />
-          )}
+          <ContextMenuIcon
+            sx={{
+              color: 'primary.main',
+              fontSize: currentTitleIconSize,
+            }}
+            icon={titleIcon}
+          />
         </Stack>
       )}
       <Typography

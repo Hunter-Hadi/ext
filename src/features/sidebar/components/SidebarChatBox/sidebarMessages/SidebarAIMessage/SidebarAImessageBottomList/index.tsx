@@ -7,6 +7,7 @@ import { IAIResponseOriginalMessageMetaDeep } from '@/features/chatgpt/types'
 import { messageListContainerId } from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import { MetadataTitleRender } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
 import { HeightUpdateScrolling } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/HeightUpdateScrolling'
+import SidebarAImessageRelatedQuestions from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList/components/SidebarAImessageRelatedQuestions'
 import TranscriptView from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList/components/SidebarAImessageTimestampedSummary'
 
 interface ISidebarAImessageBottomVIew {
@@ -67,6 +68,13 @@ const SidebarAImessageBottomList: FC<ISidebarAImessageBottomVIew> = (props) => {
               <TranscriptView
                 transcriptList={sidebarAIMessageBottomInfo.value}
                 loading={props.loading}
+              />
+            </AppSuspenseLoadingLayout>
+          )}
+          {sidebarAIMessageBottomInfo.type === 'related' && (
+            <AppSuspenseLoadingLayout>
+              <SidebarAImessageRelatedQuestions
+                relatedQuestions={sidebarAIMessageBottomInfo.value}
               />
             </AppSuspenseLoadingLayout>
           )}

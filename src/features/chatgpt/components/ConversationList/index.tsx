@@ -31,7 +31,6 @@ import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { AppLocalStorageState } from '@/store'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import MoreActionsButton from './MoreActionsButton'
 
@@ -55,12 +54,8 @@ const ConversationList: FC<IProps> = (props) => {
   } = props
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const {
-    currentConversationId,
-    createConversation,
-    updateConversationId,
-    resetConversation,
-  } = useClientConversation()
+  const { currentConversationId, updateConversationId, resetConversation } =
+    useClientConversation()
   const { updateSidebarSettings, updateSidebarConversationType } =
     useSidebarSettings()
   const { disposeBackgroundChatSystem } = useClientConversation()
@@ -420,15 +415,6 @@ const ConversationList: FC<IProps> = (props) => {
                                 const newConversations =
                                   await fetchPaginationConversations()
                                 setPaginationConversations(newConversations)
-                                if (conversationType === 'ContextMenu') {
-                                  await createConversation('ContextMenu')
-                                } else if (!isMaxAIImmersiveChatPage()) {
-                                  await updateSidebarSettings({
-                                    [conversationType.toLowerCase()]: {
-                                      conversationId: '',
-                                    },
-                                  })
-                                }
                               }}
                               conversationType={conversation.type}
                               conversationId={conversation.id}

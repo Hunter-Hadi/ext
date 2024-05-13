@@ -75,12 +75,7 @@ export class ActionMaxAIResponseRelated extends Action {
             ],
           },
         ],
-        message_content: [
-          {
-            type: 'text',
-            text: '',
-          },
-        ],
+        message_content: [],
         streaming: false,
         chrome_extension_version: APP_VERSION,
         prompt_id: SUMMARY__RELATED_QUESTIONS__PROMPT_ID,

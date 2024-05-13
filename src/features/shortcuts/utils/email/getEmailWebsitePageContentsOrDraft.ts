@@ -295,7 +295,6 @@ const outlookGetSingleEmailText = (originElement: HTMLElement | null) => {
     let count = 0
     while (
       !currentOriginElement.querySelector('#divRplyFwdMsg') &&
-      !currentOriginElement.querySelector('#divRplyFwdMsg') &&
       count < 10
     ) {
       count++
@@ -312,7 +311,7 @@ const outlookGetSingleEmailText = (originElement: HTMLElement | null) => {
       emailInfoElement?.nextElementSibling as HTMLDivElement
     if (emailInfoElement && emailQuoteElement) {
       const textNodeList = Array.from(
-        emailInfoElement.querySelector('font')?.childNodes || [],
+        emailInfoElement.querySelector('[style*="font"]')?.childNodes || [],
       ).filter((item) => !(item as HTMLElement).tagName)
       // 顺序分别是 From, Sent, To, Subject
       if (textNodeList.length === 4) {

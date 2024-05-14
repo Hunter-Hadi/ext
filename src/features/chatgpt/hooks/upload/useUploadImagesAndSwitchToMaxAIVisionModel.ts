@@ -45,6 +45,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
             'claude-3-opus',
             'claude-3-haiku',
             'gemini-pro',
+            'gemini-1.5-pro',
           ].includes(clientConversation.meta.AIModel),
       )
       if (
@@ -58,6 +59,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           'claude-3-opus',
           'claude-3-haiku',
           'gemini-pro',
+          'gemini-1.5-pro',
         ].includes(clientConversation.meta.AIModel)
       ) {
         if (createConversationResolveRef.current) {
@@ -117,6 +119,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
             'claude-3-sonnet',
             'claude-3-opus',
             'claude-3-haiku',
+            'gemini-pro',
             'gemini-1.5-pro',
           ].includes(conversation?.meta?.AIModel)
         ) {
@@ -159,7 +162,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       )
     }
     if (currentAIProvider === 'MAXAI_GEMINI') {
-      return ['gemini-pro'].includes(currentAIProviderModel)
+      return ['gemini-pro', 'gemini-1.5-pro'].includes(currentAIProviderModel)
     }
     return false
   }, [currentAIProvider, currentAIProviderModel])

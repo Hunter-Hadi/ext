@@ -72,7 +72,7 @@ const ConfigurePanel: FC<{
             'settings:feature_card__prompts__edit_prompt__field_name__placeholder',
           )}
           onChange={(event) => {
-            const newValue = event.target.value
+            const newValue = event.target.value.slice(0, 100)
             if (newValue.trim() !== '') {
               setErrors((prev) => ({ ...prev, promptTitle: false }))
             }

@@ -206,7 +206,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
           >
             {ctaButtonText}
           </Button>
-          <Stack direction={'row'} spacing={0.5} alignItems="start" px={1}>
+          <Stack direction={'row'} spacing={0.5} alignItems="start">
             {/*<PricingHooksRocketIcon*/}
             {/*  sx={{*/}
             {/*    fontSize: 20,*/}

@@ -569,6 +569,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__title": "Upgrade for unlimited gpt-4-turbo with vision",
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1": "Monthly advanced text query limit exceeded. Upgrade now for unlimited queries, or check back next month when the monthly queries are reset.",
     "permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2": "OpenAI's revolutionary advancement in AI technology with GPT-4-Vision – a groundbreaking leap in AI technology that integrates image processing with the advanced language understanding of GPT-4.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Upgrade for unlimited gpt-4o with vision",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAI's new flagship model provides GPT-4-level intelligence, with more up-to-date responses, is 2x faster, and can reason across audio, vision, and text in real time.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__title": "Upgrade for unlimited claude-3-opus with vision",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__description1": "Anthropic's most intelligent model, with a 200k-token capability. Experience the best-in-market performance on highly complex tasks, open-ended prompts, and sight-unseen scenarios with remarkable fluency and human-like understanding.",
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title": "Upgrade for unlimited claude-3-sonnet with vision",

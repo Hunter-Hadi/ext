@@ -4,7 +4,6 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/chatgpt/types'
@@ -43,22 +42,16 @@ const SidebarAImessageRelatedQuestions: FC<{
                 width={'100%'}
                 sx={{
                   my: '14px',
+                  px: 1,
                 }}
                 gap={1}
               >
-                <ContextMenuIcon
-                  icon={'Search'}
-                  sx={{
-                    color: 'text.primary',
-                    fontSize: '20px',
-                  }}
-                />
                 <Typography
                   fontSize={'16px'}
                   fontWeight={500}
                   width={0}
                   flex={1}
-                  noWrap
+                  whiteSpace="normal"
                   color={'text.primary'}
                 >
                   {relatedQuestion.title}

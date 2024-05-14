@@ -206,17 +206,17 @@ const PermissionPricingHookCard: FC<IProps> = ({
           >
             {ctaButtonText}
           </Button>
-          {/*<Stack direction={'row'} spacing={0.5} alignItems="center">*/}
-          {/*  <PricingHooksRocketIcon*/}
-          {/*    sx={{*/}
-          {/*      fontSize: 20,*/}
-          {/*      color: 'primary.main',*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*</Stack>*/}
-          <Typography fontSize={14} color="rgba(255, 255, 255, 0.7)" textAlign="center">
-            {t('client:permission__pricing_hook__footer_tip')}
-          </Typography>
+          <Stack direction={'row'} spacing={0.5} alignItems="start" px={1}>
+            {/*<PricingHooksRocketIcon*/}
+            {/*  sx={{*/}
+            {/*    fontSize: 20,*/}
+            {/*    color: 'primary.main',*/}
+            {/*  }}*/}
+            {/*/>*/}
+            <Typography fontSize={14} color="rgba(255, 255, 255, 0.7)">
+              {t('client:permission__pricing_hook__footer_tip')}
+            </Typography>
+          </Stack>
         </Stack>
       </Stack>
     )

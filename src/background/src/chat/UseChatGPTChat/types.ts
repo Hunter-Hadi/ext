@@ -160,7 +160,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     title: 'gpt-4o',
     value: MAXAI_CHATGPT_MODEL_GPT_4O,
     titleTag: 'New',
-    tags: ['New'],
+    tags: ['New', 'Vision'],
     poweredBy: 'OpenAI',
     description: (t) =>
       t('client:provider__chatgpt__model__gpt_4o__description'),

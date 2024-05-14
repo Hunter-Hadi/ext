@@ -29,7 +29,7 @@ const SidebarPromotionDialog = () => {
   const { browserAgent } = useBrowserAgent()
   const { userInfo, isPayingUser } = useUserInfo()
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
 
   const routerToPage = () => {
     window.open(CTA_BUTTON_LINK)
@@ -206,13 +206,12 @@ const SidebarPromotionDialog = () => {
             }}
           />
 
-          <Stack py={2}>
+          <Stack py={2} spacing={1}>
             <Typography
               fontSize={18}
               color="text.primary"
               flex={1}
               fontWeight={800}
-              my={1}
             >
               {t('sidebar__promotion_dialog__content__title')}
             </Typography>

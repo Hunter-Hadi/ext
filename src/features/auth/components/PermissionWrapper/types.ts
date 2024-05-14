@@ -247,7 +247,6 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4O: {
-    videoUrl: `https://www.youtube.com/embed/mAi1D9cbGos`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-4o.png',
     )}`,

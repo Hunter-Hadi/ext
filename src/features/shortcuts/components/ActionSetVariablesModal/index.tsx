@@ -54,10 +54,11 @@ export interface ActionSetVariablesModalConfig {
   // askAI时额外的字段
   askChatGPTActionParameters?: ActionParameters
   MaxAIPromptActionConfig?: MaxAIPromptActionConfig
-
   // one click prompt 的类型
   promptType?: IPromptLibraryCardType
   isOneClickPrompt?: boolean
+  // 设置运行时显示在target的变量
+  notBuiltInVariables?: string[]
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -83,7 +84,6 @@ interface ActionSetVariablesModalProps
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
   disabled?: boolean
   onInputCustomVariable?: (data: ActionSetVariablesConfirmData) => void
-  notBuiltInVariables?: string[]
   sx?: SxProps
 }
 
@@ -149,7 +149,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         success: false,
       } as ActionSetVariablesConfirmData)
     })
-    if (showCloseButton) {
+    if (modelKey !== 'PromptPreview') {
       reset()
       setForm({})
       setShow(false)
@@ -228,7 +228,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       }
     }
     const presetVariables = cloneDeep(getValues())
-    if (showCloseButton) {
+    if (modelKey !== 'PromptPreview') {
       setForm({})
       reset()
       setShow(false)
@@ -276,7 +276,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             isBuiltIn: variableDetail.systemVariable,
             label: variableDetail.label,
           }
-          if (notBuiltInVariables?.includes(key)) {
+          const currentNotBuiltInVariables =
+            notBuiltInVariables || config?.notBuiltInVariables
+          if (currentNotBuiltInVariables?.includes(key)) {
             shortcutsVariables[key].isBuiltIn = false
           }
         } else {
@@ -322,10 +324,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 id: config.contextMenuId || uuidV4(),
                 droppable: false,
                 parent: uuidV4(),
-                text:
-                  modelKey === 'PromptPreview'
-                    ? title || config.title
-                    : config.title,
+                text: config.title,
                 data: {
                   editable: false,
                   type: 'shortcuts',
@@ -352,7 +351,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         .catch()
         .finally(() => {
           // 重置
-          if (showCloseButton) {
+          if (modelKey !== 'PromptPreview') {
             reset()
             setForm({})
             setShow(false)

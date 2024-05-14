@@ -26,13 +26,8 @@ const ContextMenuRoot: FC = () => {
     useState<ConversationStatusType>('success')
   const { createSidebarConversation } = useSidebarSettings()
   const ChatPanelContextValue = useMemo<ChatPanelContextValue>(() => {
-    return {
-      conversationStatus: conversationStatus,
-      updateConversationStatus: updateConversationStatus,
-      updateConversationId: async () => {
-        setConversationId('')
-      },
-      createConversation: async (conversationType, AIProvider, AIModel) => {
+    const createConversation: ChatPanelContextValue['createConversation'] =
+      async (conversationType, AIProvider, AIModel) => {
         if (!AIProvider || !AIModel) {
           // 说明要用默认的或者用户最后选择的
           const settings = await getChromeExtensionLocalStorage()
@@ -71,8 +66,17 @@ const ContextMenuRoot: FC = () => {
           },
         })
         return newConversationId
+      }
+    return {
+      conversationStatus: conversationStatus,
+      updateConversationStatus: updateConversationStatus,
+      updateConversationId: async () => {
+        setConversationId('')
       },
-      resetConversation: async () => {},
+      createConversation,
+      resetConversation: async () => {
+        await createConversation('ContextMenu')
+      },
       conversationId,
       setConversationId,
     }

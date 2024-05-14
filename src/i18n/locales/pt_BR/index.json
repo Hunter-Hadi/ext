@@ -58,7 +58,9 @@
     "manage_my_plan": "Gerenciar meu plano",
     "watch_video": "Assistir vídeo",
     "input_content": "Conteúdo de entrada",
-    "discard": "Descartar"
+    "discard": "Descartar",
+    "create": "Criar",
+    "update": "Atualizar"
   },
   "settings": {
     "left_menu__me": "Eu e MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "O modelo de sugestão da IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "O modelo de sugestão de IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "O modelo de sugestão da IA.\nO modelo pode incluir qualquer número das seguintes variáveis:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Modelo de prompt de exemplo:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Modelo de prompt de exemplo:",
+    "feature_card__prompts__confirm__cancel__description": "Tem certeza de que deseja cancelar? Observe que, uma vez cancelado, quaisquer alterações não salvas serão perdidas.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Sim, cancelar",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Voltar para edição",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Título é obrigatório"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Direto",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Confiante",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informal",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continuar no chat"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continuar no chat",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Aceitar e copiar"
   },
   "prompt_editor": {
     "preset_variables__title": "Recursos",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "conteúdo do contexto de destino",
     "preset_variables__system__draft_context__description": "conteúdo do contexto de rascunho",
     "preset_variables__system__summary_page_content_representation__description": "o conteúdo da página atual/PDF/vídeo do YouTube",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Exiba um resumo do {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Exiba um resumo do {{PAGE_CONTENT}}",
+    "configure_panel__title": "Configurar",
+    "config_panel__next_button__title": "Próximo: Adicionar prompt",
+    "prompt_panel__title": "Prompt",
+    "preview_panel__title": "Visualização",
+    "preset_variables__error_message__title": "Por favor, selecione o contexto `{{NOME_VARIAVEL}}`",
+    "add_variable__update__title": "Atualizar variável",
+    "add_variable__custom__title": "Variáveis",
+    "add_variable__update_button__title": "Atualizar"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clique",

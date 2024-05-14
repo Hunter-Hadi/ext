@@ -217,6 +217,9 @@ class UseChatGPTPlusChat extends BaseChat {
           }
           return variableMap
         }, {})
+      if (options.meta.MaxAIPromptActionConfig.AIModel) {
+        clonePostBody.model_name = options.meta.MaxAIPromptActionConfig.AIModel
+      }
       postBody = clonePostBody
     }
     const controller = new AbortController()
@@ -328,7 +331,6 @@ class UseChatGPTPlusChat extends BaseChat {
     } else {
       // 目前来说，能进到这里的一定是jsonMode
       try {
-        postBody.model_name = 'qq'
         const response = await fetch(
           `${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`,
           {

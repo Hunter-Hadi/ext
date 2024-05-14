@@ -4,9 +4,7 @@ import React, { FC, useEffect } from 'react'
 import useTarget, {
   Gap,
 } from '@/features/common/components/Tour/hooks/useTarget'
-import TourMask, {
-  TourPlacement,
-} from '@/features/common/components/Tour/TourMask'
+import TourMask, { Placement } from '@/features/common/components/Tour/TourMask'
 import TourStep, {
   TourStepInfo,
 } from '@/features/common/components/Tour/TourStep'
@@ -148,7 +146,7 @@ const Tour: FC<TourProps> = (props) => {
               placement={
                 placement.startsWith('auto')
                   ? stepPlacement
-                  : (placement as TourPlacement)
+                  : (placement as Placement)
               }
               renderPanel={renderPanel}
               mask={stepMask}

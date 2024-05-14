@@ -180,6 +180,15 @@ export class ActionAskChatGPT extends Action {
               variable.VariableName,
               variable.defaultValue || '',
             )
+            // 如果是AI response language相关的变量，需要把默认值设置为空
+            if (
+              variable.VariableName === 'AI_RESPONSE_WRITING_STYLE' ||
+              variable.VariableName === 'AI_RESPONSE_TONE'
+            ) {
+              if (variable.defaultValue === 'Default') {
+                variable.defaultValue = ''
+              }
+            }
             return variable
           })
         MaxAIPromptActionConfig.output = MaxAIPromptActionConfig.output.map(
@@ -495,7 +504,6 @@ export class ActionAskChatGPT extends Action {
               }
             },
             onError: async (error: any) => {
-              console.log(1111, 'error', error)
               this.log.error(`send question error`, error)
               errorMessage =
                 error?.message || error || 'Error detected. Please try again.'

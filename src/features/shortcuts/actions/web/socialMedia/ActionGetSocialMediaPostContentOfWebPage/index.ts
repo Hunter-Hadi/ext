@@ -109,7 +109,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
                     key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
                     value: SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                     overwrite: true,
-                    isBuiltIn: false,
+                    isBuiltIn: true,
                     label: 'Target post/comment',
                   },
                   SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: {
@@ -130,7 +130,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
                     key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS',
                     value: result.previousComments,
                     overwrite: true,
-                    isBuiltIn: false,
+                    isBuiltIn: true,
                     label: 'Comments',
                   },
                 },

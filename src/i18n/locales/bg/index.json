@@ -58,7 +58,9 @@
     "manage_my_plan": "Управление на моя план",
     "watch_video": "Гледай видео",
     "input_content": "Въведете съдържание",
-    "discard": "Отхвърли"
+    "discard": "Отхвърли",
+    "create": "Създай",
+    "update": "Актуализирай"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблонът на AI подсказка.\nШаблонът може да включва произволен брой от следните променливи:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Примерен шаблон за подсказка:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Примерен шаблон за подсказка:",
+    "feature_card__prompts__confirm__cancel__description": "Сигурни ли сте, че искате да отмените? Моля, имайте предвид, че веднъж отменено, всички незапазени промени ще бъдат загубени.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Да, отмени",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Обратно към редактирането",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Заглавието е задължително"
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Ясен",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Уверен",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Неофициален",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Продължи в чата"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Продължи в чата",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Приеми и копирай"
   },
   "prompt_editor": {
     "preset_variables__title": "Възможности",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "съдържание на целевия контекст",
     "preset_variables__system__draft_context__description": "съдържание на черновия контекст",
     "preset_variables__system__summary_page_content_representation__description": "съдържанието на текущата уеб страница/ PDF / YouTube видео",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Изведете обобщение на {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Изведете обобщение на {{PAGE_CONTENT}}",
+    "configure_panel__title": "Настройки",
+    "config_panel__next_button__title": "Следващо: Добавяне на подсказка",
+    "prompt_panel__title": "Подсказка",
+    "preview_panel__title": "Преглед",
+    "preset_variables__error_message__title": "Моля, изберете контекст `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Актуализиране на променлива",
+    "add_variable__custom__title": "Променливи",
+    "add_variable__update_button__title": "Актуализиране"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клик промптове",

@@ -22,7 +22,10 @@ import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/uti
 import { AppDBStorageState } from '@/store'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import {
+  isMaxAIImmersiveChatPage,
+  isMaxAISettingsPage,
+} from '@/utils/dataHelper/websiteHelper'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -311,7 +314,9 @@ export const useClientConversationListener = () => {
     if (
       !clientConversation ||
       clientConversation.messages.length === 0 ||
-      isCreatingConversationRef.current
+      isCreatingConversationRef.current ||
+      isMaxAIImmersiveChatPage() ||
+      isMaxAISettingsPage()
     ) {
       return
     }
@@ -372,9 +377,7 @@ export const useClientConversationListener = () => {
 
   useEffect(() => {
     if (clientConversation && clientConversation.isDelete) {
-      if (isMaxAIImmersiveChatPage()) {
-        resetConversation()
-      }
+      resetConversation()
     }
   }, [clientConversation, resetConversation])
 }

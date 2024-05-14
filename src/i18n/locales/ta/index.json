@@ -58,7 +58,9 @@
     "manage_my_plan": "என் திட்டத்தை நிர்வகிக்கவும்",
     "watch_video": "வீடியோ பாருங்கள்",
     "input_content": "உள்ளீடு உள்ளிடவும்",
-    "discard": "நிராகரி"
+    "discard": "நிராகரி",
+    "create": "உருவாக்கு",
+    "update": "புதுப்பிக்கவும்"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "மனித அறிவு வார்ப்புரு.\nவார்ப்புருக்கில் பின்வரும் மாறியாக எந்த எண்ணிக்கையான மாறிகளையும் சேர்க்கலாம்:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "முன்னரே உள்ளிடப்பட்ட தாவல் வடிவமைப்பு.\nவடிவமைப்பில் பின்வரும் மாறியாக எண்ணிக்கையில் ஏதேனும் எண்களை சேர்க்கலாம்:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "மனித அறிவு வார்ப்புரு.\nவார்ப்புருக்கில் பின்வரும் மாறியாக எந்த எண்ணிக்கையான மாறிகளையும் சேர்க்கலாம்:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "உதாரண கேள்வி வார்ப்பு:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "உதாரண கேள்வி வார்ப்பு:",
+    "feature_card__prompts__confirm__cancel__description": "நீங்கள் நிச்சயமாக ரத்து செய்ய விரும்புகிறீர்களா? தயவுசெய்து மனப்படுத்தப்படாத மாற்றங்கள் இருந்தால், அதை ரத்து செய்யப்பட்டுவிடப்படும்.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "ஆமாம், ரத்து செய்யுங்கள்",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "திரும்பி திருத்துக",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "தலைப்பு தேவை"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "திரும்ப சொல்லுக",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ஆதரவாளர்",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "மாற்றமான",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "அடுத்து உரையில் தொடர்க"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "அடுத்து உரையில் தொடர்க",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "ஏற்கனவே ஏற்றுவித்து நகல் செய்க"
   },
   "prompt_editor": {
     "preset_variables__title": "திறன்கள்",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "இலக்கு சூழல் உள்ளடக்கம்",
     "preset_variables__system__draft_context__description": "வரைவு சூழல் உள்ளடக்கம்",
     "preset_variables__system__summary_page_content_representation__description": "தற்போதைய வலைப்பக்கம்/PDF/YouTube வீடியோ உள்ளடக்கம்",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} ஒன்றின் சுருக்கத்தை வெளியிடுங்கள்"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}} ஒன்றின் சுருக்கத்தை வெளியிடுங்கள்",
+    "configure_panel__title": "கட்டமைக்க",
+    "config_panel__next_button__title": "அடுத்தது: விருப்பத்தைச் சேர்க்கவும்",
+    "prompt_panel__title": "உண்மையானது",
+    "preview_panel__title": "முன்னோட்டம்",
+    "preset_variables__error_message__title": "தயவுசெய்து `{{VARIABLE_NAME}}` உள்ளடக்கத்தைத் தேர்ந்தெடுக்கவும்",
+    "add_variable__update__title": "மாற்றி முடிக்க",
+    "add_variable__custom__title": "மாற்றங்கள்",
+    "add_variable__update_button__title": "மேம்படுத்து"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-கிளிக் புரவலாக்கல்கள்",

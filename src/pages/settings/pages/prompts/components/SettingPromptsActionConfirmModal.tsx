@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
-export type IConfirmActionType = 'restore' | 'delete' | 'deleteAll'
+export type IConfirmActionType = 'cancel' | 'restore' | 'delete' | 'deleteAll'
 
 const SettingPromptsActionConfirmModal: FC<{
   open: boolean
@@ -39,6 +39,9 @@ const SettingPromptsActionConfirmModal: FC<{
         'settings:feature_card__prompts__confirm__delete_all__description',
       )
     }
+    if (actionType === 'cancel') {
+      return t('settings:feature_card__prompts__confirm__cancel__description')
+    }
     // restore type
     return t('settings:feature_card__prompts__confirm__restore__description')
   }, [actionType, nodeType, t])
@@ -49,10 +52,24 @@ const SettingPromptsActionConfirmModal: FC<{
         'settings:feature_card__prompts__confirm__delete__confirm_button_text',
       )
     }
+    if (actionType === 'cancel') {
+      return t(
+        'settings:feature_card__prompts__confirm__cancel__confirm_button_text',
+      )
+    }
     // restore type
     return t(
       'settings:feature_card__prompts__confirm__restore__confirm_button_text',
     )
+  }, [actionType])
+
+  const cancelText = useMemo(() => {
+    if (actionType === 'cancel') {
+      return t(
+        'settings:feature_card__prompts__confirm__cancel__cancel_button_text',
+      )
+    }
+    return t('common:cancel')
   }, [actionType])
 
   const handleConfirm = () => {
@@ -76,7 +93,7 @@ const SettingPromptsActionConfirmModal: FC<{
         <Typography>{confirmText}</Typography>
         <Stack direction={'row-reverse'} gap={1} mt={2}>
           <Button variant="contained" onClick={onClose}>
-            {t('common:cancel')}
+            {cancelText}
           </Button>
           <Button
             variant="contained"

@@ -12,7 +12,6 @@ import { useTranslation } from 'react-i18next'
 import AIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorDetail'
 import {
   AIProviderModelSelectorOption,
-  ChatAIProviderModelSelectorOptions,
   getModelOptionsForConversationType,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import ThirdPartyAIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/ThirdPartyAIProviderModelSelectorDetail'
@@ -23,12 +22,10 @@ import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
 import {
-  SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG,
   useClientConversation,
 } from '@/features/chatgpt/hooks/useClientConversation'
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 const AIProviderModelTagIcon: FC<{
   tag: string
@@ -65,11 +62,15 @@ const AIProviderModelTagIcon: FC<{
 
 interface AIModelSelectorCardProps {
   sidebarConversationType: ISidebarConversationType
+  currentModelDetail: {
+    value: string;
+    AIProvider: string;
+  }
   sx?: SxProps
   onClose?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
-  const { sidebarConversationType, sx, onClose } = props
+  const { sidebarConversationType, sx, currentModelDetail, onClose } = props
   const { t } = useTranslation(['common', 'client'])
   const [hoverModel, setHoverModel] =
     useState<AIProviderModelSelectorOption | null>(null)
@@ -78,20 +79,9 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     useThirdAIProviderModels()
   const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
-  const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
-  const { AI_PROVIDER_MODEL_MAP, getAIProviderModelDetail } =
+  const { getAIProviderModelDetail } =
     useAIProviderModelsMap()
-  // 当前sidebarConversationType的AI provider
-  const currentAIProvider =
-    sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
-      .AIProvider ||
-    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIProvider
-  // 当前sidebarConversationType的AI model
-  const currentAIModel =
-    sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
-      .AIModel ||
-    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel
 
   const currentSidebarConversationTypeModels = useMemo(() => {
     return getModelOptionsForConversationType(sidebarConversationType)
@@ -111,31 +101,6 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         return model
       })
   }, [sidebarConversationType, remoteAIProviderConfig.hiddenAIProviders])
-
-  const currentModelDetail = useMemo(() => {
-    const AIProviderSelectorModel = ChatAIProviderModelSelectorOptions.find(
-      (option) => option.value === currentAIModel,
-    )
-    if (
-      AIProviderSelectorModel &&
-      AIProviderSelectorModel.AIProvider === currentAIProvider
-    ) {
-      // 说明是从AI Provider Selector选中的Model
-      return {
-        label: AIProviderSelectorModel.label,
-        value: AIProviderSelectorModel.value,
-        AIProvider: AIProviderSelectorModel.AIProvider,
-      }
-    }
-    const models = AI_PROVIDER_MODEL_MAP[currentAIProvider]
-    const currentModel =
-      models.find((model) => model.value === currentAIModel) || models?.[0]
-    return {
-      label: currentModel?.title,
-      value: currentModel?.value,
-      AIProvider: currentAIProvider,
-    }
-  }, [AI_PROVIDER_MODEL_MAP, currentAIModel, currentAIProvider])
 
   const isSelectedMaxAIModel = useMemo(() => {
     // hover的优先级最高

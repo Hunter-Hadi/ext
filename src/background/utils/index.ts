@@ -103,12 +103,17 @@ export const createBackgroundMessageListener = (
     if (id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID) {
       return
     }
-    return new Promise((resolve) => {
-      listener(_RUNTIME_, event, rest, sender).then((result) => {
-        if (result && Object.prototype.hasOwnProperty.call(result, 'success')) {
-          resolve(result)
-        }
-      })
+    return new Promise((resolve, reject) => {
+      listener(_RUNTIME_, event, rest, sender)
+        .then((result) => {
+          if (
+            result &&
+            Object.prototype.hasOwnProperty.call(result, 'success')
+          ) {
+            resolve(result)
+          }
+        })
+        .catch((err) => reject(err))
     })
   }
   Browser.runtime.onMessage.addListener(currentListener)

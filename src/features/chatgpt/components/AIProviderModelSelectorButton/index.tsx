@@ -6,7 +6,14 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { type FC, type SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  type FC,
+  type SyntheticEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
@@ -23,11 +30,13 @@ import {
   useClientConversation,
 } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import {
   getMaxAIFloatingContextMenuRootElement,
   getMaxAISidebarRootElement,
 } from '@/utils'
+import { isMaxAISettingsPage } from '@/utils/dataHelper/websiteHelper'
 
 const AIProviderModelSelectorButton: FC<{
   disabled?: boolean
@@ -46,13 +55,23 @@ const AIProviderModelSelectorButton: FC<{
   } = props
   const { clientConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
+  const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   const [isHoverButton, setIsHoverButton] = useState(false)
   // 当前sidebarConversationType的AI provider
-  const [currentChatAIProvider, setCurrentChatAIProvider] = useState(clientConversation?.meta.AIProvider ||
-    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIProvider)
+  const [currentChatAIProvider, setCurrentChatAIProvider] = useState(
+    clientConversation?.meta.AIProvider ||
+      sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
+        .AIProvider ||
+      SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType]
+        .AIProvider,
+  )
   // 当前sidebarConversationType的AI model
-  const [currentChatModel, setCurrentChatModel] = useState(clientConversation?.meta.AIModel ||
-    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel)
+  const [currentChatModel, setCurrentChatModel] = useState(
+    clientConversation?.meta.AIModel ||
+      sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
+        .AIModel ||
+      SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel,
+  )
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
 
   const currentModelDetail = useMemo(() => {
@@ -137,27 +156,38 @@ const AIProviderModelSelectorButton: FC<{
   }, [open])
 
   useEffect(() => {
-    if (clientConversation?.meta.AIProvider && currentChatAIProvider !== clientConversation?.meta.AIProvider) {
+    if (
+      clientConversation?.meta.AIProvider &&
+      currentChatAIProvider !== clientConversation?.meta.AIProvider
+    ) {
       setCurrentChatAIProvider(clientConversation?.meta.AIProvider)
     }
   }, [clientConversation?.meta.AIProvider])
 
   useEffect(() => {
-    if (clientConversation?.meta.AIModel && currentChatModel !== clientConversation?.meta.AIModel) {
+    if (
+      clientConversation?.meta.AIModel &&
+      currentChatModel !== clientConversation?.meta.AIModel
+    ) {
       setCurrentChatModel(clientConversation?.meta.AIModel)
     }
   }, [clientConversation?.meta.AIModel])
 
   useEffect(() => {
     const mouseEventHandler = (event: MouseEvent) => {
-      const aiProviderCard =
+      let aiProviderCard =
         size === 'small'
           ? (getMaxAIFloatingContextMenuRootElement()?.querySelector(
-            '#MaxAIProviderSelectorCard',
-          ) as HTMLElement)
+              '#MaxAIProviderSelectorCard',
+            ) as HTMLElement)
           : (getMaxAISidebarRootElement()?.querySelector(
-            '#MaxAIProviderSelectorCard',
-          ) as HTMLElement)
+              '#MaxAIProviderSelectorCard',
+            ) as HTMLElement)
+      if (!aiProviderCard && isMaxAISettingsPage()) {
+        aiProviderCard = document.querySelector(
+          '#MaxAIProviderSelectorCard',
+        ) as HTMLElement
+      }
       if (aiProviderCard) {
         const rect = aiProviderCard.getBoundingClientRect()
         const x = (event as MouseEvent).clientX
@@ -281,6 +311,7 @@ const AIProviderModelSelectorButton: FC<{
             <Box>
               <AIModelSelectorCard
                 sidebarConversationType={sidebarConversationType}
+                currentModelDetail={currentModelDetail}
                 onClose={handleClose}
               />
             </Box>

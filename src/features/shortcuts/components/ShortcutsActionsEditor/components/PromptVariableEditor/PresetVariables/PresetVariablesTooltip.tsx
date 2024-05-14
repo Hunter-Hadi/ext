@@ -19,6 +19,7 @@ import {
   PRESET_VARIABLES_GROUP_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
+import { SxProps } from '@mui/material/styles'
 
 const PresetVariablesTable: FC<{
   tableData: IPresetVariablesGroupItem[]
@@ -70,6 +71,7 @@ const PresetVariablesTable: FC<{
             {tableData.map((variableGroupItem) => {
               const variable = variableGroupItem.variable
               const description = variableGroupItem.description
+              const required = variableGroupItem.requiredInSettingEditor
               return (
                 <TableRow
                   key={variable.VariableName}
@@ -79,6 +81,9 @@ const PresetVariablesTable: FC<{
                 >
                   <TableCell component="th" scope="row">
                     {`{{${variable.label}}}`}
+                    {required && (
+                      <span style={{ marginLeft: '2px', color: 'red' }}>*</span>
+                    )}
                   </TableCell>
                   <TableCell align="left">{t(description as any)}</TableCell>
                 </TableRow>
@@ -92,11 +97,11 @@ const PresetVariablesTable: FC<{
 }
 const PopperId = 'preset-variables-tooltip'
 
-const PresetVariablesTooltip = () => {
+const PresetVariablesTooltip: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { t } = useTranslation(['prompt_editor'])
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const [settingPromptsEditButtonKey] = useRecoilState(
-    SettingPromptsEditButtonKeyAtom
+    SettingPromptsEditButtonKeyAtom,
   )
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
@@ -110,8 +115,8 @@ const PresetVariablesTooltip = () => {
   const id = open ? PopperId : undefined
 
   return (
-    <Box>
-      <IconButton aria-describedby={PopperId} onClick={handleClick}>
+    <>
+      <IconButton aria-describedby={PopperId} onClick={handleClick} sx={sx}>
         <HelpOutlineIcon fontSize="small" />
       </IconButton>
       <Popover
@@ -139,25 +144,29 @@ const PresetVariablesTooltip = () => {
             <br />
             <Divider sx={{ my: 1 }} />
           </Typography>
-          {Object.keys(PRESET_VARIABLES_GROUP_MAP).map((groupKey) => {
-            const variables = PRESET_VARIABLES_GROUP_MAP[
-              groupKey
-            ].filter(({ permissionKeys = [] }) => permissionKeys.length === 0 || permissionKeys.includes(settingPromptsEditButtonKey!))
-            return (
-              <Stack key={groupKey} spacing={2} mt={3}>
-                <Typography variant="body2">
-                  {`${t(
-                    'prompt_editor:preset_variables__tooltip__variable_name_prefix',
-                  )} "${t(groupKey as any)}"`}
-                </Typography>
-                <PresetVariablesTable tableData={variables} />
-                <Divider />
-              </Stack>
-            )
-          })}
+          {Object.keys(PRESET_VARIABLES_GROUP_MAP).map(
+            (groupKey, index, array) => {
+              const variables = PRESET_VARIABLES_GROUP_MAP[groupKey].filter(
+                ({ permissionKeys = [] }) =>
+                  permissionKeys.length === 0 ||
+                  permissionKeys.includes(settingPromptsEditButtonKey!),
+              )
+              return (
+                <Stack key={groupKey} spacing={2} mt={3}>
+                  <Typography variant="body2">
+                    {`${t(
+                      'prompt_editor:preset_variables__tooltip__variable_name_prefix',
+                    )} "${t(groupKey as any)}"`}
+                  </Typography>
+                  <PresetVariablesTable tableData={variables} />
+                  {index !== array.length - 1 && <Divider />}
+                </Stack>
+              )
+            },
+          )}
         </Box>
       </Popover>
-    </Box>
+    </>
   )
 }
 export default PresetVariablesTooltip

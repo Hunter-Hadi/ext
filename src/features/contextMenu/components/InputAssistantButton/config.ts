@@ -120,10 +120,7 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )) as HTMLElement
 
-          if (
-            inputAssistantButton &&
-            !InstantReplyButtonIdToInputMap.has(buttonId)
-          ) {
+          if (inputAssistantButton) {
             const inputBox = findSelectorParent(
               'div[contenteditable="true"]',
               inputAssistantButton,
@@ -148,10 +145,7 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )) as HTMLElement
 
-          if (
-            inputAssistantButton &&
-            !InstantReplyButtonIdToInputMap.has(buttonId)
-          ) {
+          if (inputAssistantButton) {
             const inputBox = findSelectorParent(
               'div[contenteditable="true"]',
               inputAssistantButton,
@@ -176,10 +170,7 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )) as HTMLElement
 
-          if (
-            inputAssistantButton &&
-            !InstantReplyButtonIdToInputMap.has(buttonId)
-          ) {
+          if (inputAssistantButton) {
             const inputBox = findSelectorParent(
               'div[contenteditable="true"]',
               inputAssistantButton,
@@ -229,22 +220,20 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               findSelectorParent('.amn .ams.bkH', inputAssistantButton)
 
             if (replyButton) {
-              if (!InstantReplyButtonIdToInputMap.has(buttonId)) {
-                const emailItem = findSelectorParent(
-                  'div[role="list"] div[role="listitem"] > div > div > div > [id]',
-                  replyButton,
-                  12,
-                )
-                if (emailItem) {
-                  setTimeout(() => {
-                    const inputBox = emailItem.querySelector<HTMLElement>(
-                      'div[contenteditable="true"]',
-                    )
-                    if (inputBox) {
-                      InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
-                    }
-                  }, 100)
-                }
+              const emailItem = findSelectorParent(
+                'div[role="list"] div[role="listitem"] > div > div > div > [id]',
+                replyButton,
+                12,
+              )
+              if (emailItem) {
+                setTimeout(() => {
+                  const inputBox = emailItem.querySelector<HTMLElement>(
+                    'div[contenteditable="true"]',
+                  )
+                  if (inputBox) {
+                    InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+                  }
+                }, 100)
               }
 
               replyButton.click()

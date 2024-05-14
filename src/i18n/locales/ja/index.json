@@ -58,7 +58,9 @@
     "manage_my_plan": "プランを管理する",
     "watch_video": "ビデオを見る",
     "input_content": "入力内容",
-    "discard": "破棄"
+    "discard": "破棄",
+    "create": "作成",
+    "update": "更新"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AIのプロンプトテンプレート。\nテンプレートには以下の変数を任意の数含めることができます：",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AIのプロンプトテンプレート。\nテンプレートには以下の変数を任意の数含めることができます:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AIのプロンプトテンプレート。\nテンプレートには以下の変数を任意の数含めることができます：",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "例示プロンプトテンプレート："
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "例示プロンプトテンプレート：",
+    "feature_card__prompts__confirm__cancel__description": "キャンセルしてもよろしいですか？キャンセルすると、保存されていない変更が失われます。",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "はい、キャンセル",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "編集に戻る",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "タイトルは必須です"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "わかりやすい",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "自信あり",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "カジュアル",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "チャットで続ける"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "チャットで続ける",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "受け入れてコピー"
   },
   "prompt_editor": {
     "preset_variables__title": "機能",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "ターゲットコンテキストの内容",
     "preset_variables__system__draft_context__description": "ドラフトコンテキストの内容",
     "preset_variables__system__summary_page_content_representation__description": "現在のウェブページ/PDF/YouTubeビデオのコンテンツ",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}}の要約を出力する。"
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}}の要約を出力する。",
+    "configure_panel__title": "設定",
+    "config_panel__next_button__title": "次へ：プロンプトを追加",
+    "prompt_panel__title": "プロンプト",
+    "preview_panel__title": "プレビュー",
+    "preset_variables__error_message__title": "コンテキスト `{{VARIABLE_NAME}}` を選択してください",
+    "add_variable__update__title": "変数を更新",
+    "add_variable__custom__title": "変数",
+    "add_variable__update_button__title": "更新"
   },
   "prompt_library": {
     "use_prompt_library__title": "1クリックのプロンプト",

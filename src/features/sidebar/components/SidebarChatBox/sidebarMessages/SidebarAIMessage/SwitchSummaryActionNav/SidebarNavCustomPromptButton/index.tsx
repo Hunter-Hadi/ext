@@ -114,8 +114,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
           borderRadius: '4px',
           bgcolor: (t) =>
             t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
-          color:
-            isActived ? '#fff' : 'primary.main',
+          color: (t) => t.palette.mode === 'dark' && isActived ? '#FFF' : 'primary.main',
         }}
       >
         <Typography
@@ -152,8 +151,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
               borderRadius: '4px',
               bgcolor: (t) =>
                 t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
-              color:
-                isActived ? '#fff' : 'primary.main',
+              color: (t) => t.palette.mode === 'dark' && isActived ? '#FFF' : 'primary.main',
             }}
           >
             <Typography
@@ -176,6 +174,18 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
     setSummaryActionItem(menuItem)
     setAnchorEl(null)
   }, [onChange])
+
+  const customPromptMenuList = useMemo(() => {
+    const renderCustomPromptMenuList = RenderCustomPromptMenuList(contextMenuList, {
+      level: 0,
+      actionPromptId: actionNavMetadata?.key,
+      onClick: handleClick,
+    })
+    if (renderCustomPromptMenuList.length > 0) {
+      renderCustomPromptMenuList.push(<Divider sx={{ my: '2px' }} />)
+    }
+    return renderCustomPromptMenuList
+  }, [actionNavMetadata?.key, contextMenuList, handleClick])
 
   // initialize loaded
   useEffect(() => {
@@ -309,12 +319,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
               autoFocusItem
             // onKeyDown={(event) => {}}
             >
-              {...RenderCustomPromptMenuList(contextMenuList, {
-                level: 0,
-                actionPromptId: actionNavMetadata?.key,
-                onClick: handleClick,
-              })}
-              {contextMenuList.length > 0 && <Divider sx={{ my: '2px' }} />}
+              {...customPromptMenuList}
               <CustomPromptMenuListItem
                 onClick={(event) => {
                   event.stopPropagation()

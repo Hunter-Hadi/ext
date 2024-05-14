@@ -58,7 +58,9 @@
     "manage_my_plan": "Управление моим планом",
     "watch_video": "Смотреть видео",
     "input_content": "Вводите содержимое",
-    "discard": "Отменить"
+    "discard": "Отменить",
+    "create": "Создать",
+    "update": "Обновить"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Шаблон подсказки ИИ.\nШаблон может включать любое количество следующих переменных:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Пример шаблона подсказки:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Пример шаблона подсказки:",
+    "feature_card__prompts__confirm__cancel__description": "Вы уверены, что хотите отменить? Обратите внимание, что после отмены все несохраненные изменения будут потеряны.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Да, отменить",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Вернуться к редактированию",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Требуется заголовок"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Простой и понятный",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Уверенный",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Неформальный",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Продолжить в чате"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Продолжить в чате",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Принять и скопировать"
   },
   "prompt_editor": {
     "preset_variables__title": "Возможности",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "содержание целевого контекста",
     "preset_variables__system__draft_context__description": "содержание чернового контекста",
     "preset_variables__system__summary_page_content_representation__description": "содержимое текущей веб-страницы/PDF/YouTube видео",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Выведите сводку {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Выведите сводку {{PAGE_CONTENT}}",
+    "configure_panel__title": "Настройка",
+    "config_panel__next_button__title": "Далее: Добавить подсказку",
+    "prompt_panel__title": "Подсказка",
+    "preview_panel__title": "Предварительный просмотр",
+    "preset_variables__error_message__title": "Пожалуйста, выберите контекст `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Обновить переменную",
+    "add_variable__custom__title": "Переменные",
+    "add_variable__update_button__title": "Обновить"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клик подсказки",

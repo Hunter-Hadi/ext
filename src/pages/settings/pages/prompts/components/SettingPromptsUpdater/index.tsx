@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { rootId } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
 
-import SettingPromptEditFormModal from './SettingPromptsUpdateFormModal'
+import SettingPromptEditFormModal from '../SettingPromptsEditFormModal'
 
 const addNewMenuItem = async (setEditNode: Dispatch<SetStateAction<IContextMenuItem | null>>) => {
   setEditNode({

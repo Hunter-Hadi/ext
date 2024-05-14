@@ -58,7 +58,9 @@
     "manage_my_plan": "내 플랜 관리",
     "watch_video": "동영상 시청",
     "input_content": "입력 내용",
-    "discard": "버리기"
+    "discard": "버리기",
+    "create": "만들기",
+    "update": "업데이트"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n다음 변수 중 어떤 수의 변수를 포함할 수 있습니다:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI 프롬프트 템플릿입니다.\n다음 변수 중 어떤 수의 변수를 포함할 수 있습니다:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "예시 프롬프트 템플릿:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "예시 프롬프트 템플릿:",
+    "feature_card__prompts__confirm__cancel__description": "취소하시겠습니까? 취소하면 저장되지 않은 변경 사항이 모두 삭제됩니다.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "예, 취소",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "편집으로 돌아가기",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "제목은 필수입니다"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "직설적인",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "자신감 있는",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "캐주얼한",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "채팅에서 계속하기"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "채팅에서 계속하기",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "수락하고 복사"
   },
   "prompt_editor": {
     "preset_variables__title": "기능",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "대상 컨텍스트 내용",
     "preset_variables__system__draft_context__description": "드래프트 컨텍스트 내용",
     "preset_variables__system__summary_page_content_representation__description": "현재 웹페이지/PDF/YouTube 비디오의 내용",
-    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}}에 대한 요약을 출력합니다."
+    "preset_variables__system__summary_page_content_representation__description__example1": "{{PAGE_CONTENT}}에 대한 요약을 출력합니다.",
+    "configure_panel__title": "구성",
+    "config_panel__next_button__title": "다음: 프롬프트 추가",
+    "prompt_panel__title": "프롬프트",
+    "preview_panel__title": "미리보기",
+    "preset_variables__error_message__title": "컨텍스트 `{{VARIABLE_NAME}}`을(를) 선택하세요",
+    "add_variable__update__title": "변수 업데이트",
+    "add_variable__custom__title": "변수",
+    "add_variable__update_button__title": "업데이트"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-클릭 프롬프트",

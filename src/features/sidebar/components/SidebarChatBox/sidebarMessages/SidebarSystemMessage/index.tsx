@@ -75,16 +75,12 @@ const BaseSidebarSystemMessage: FC<{
       return {
         whiteSpace: 'pre-wrap',
         width: '100%',
-        p: 1.5,
         gap: 1,
         wordBreak: 'break-word',
-        borderRadius: '8px',
-        bgcolor: '#3B3D3E',
         '& > div': {
           width: '100%',
           maxWidth: 450,
           mx: 'auto!important',
-          padding: 0,
         },
       } as SxProps
     } else {
@@ -109,10 +105,6 @@ const BaseSidebarSystemMessage: FC<{
   return (
     <Stack
       className={'chat-message--text'}
-      data-testid={isPricingHooksCard ? 'pricing-hooks-card' : undefined}
-      data-permission-scene-type={
-        permissionSceneType ? permissionSceneType : undefined
-      }
       sx={
         {
           boxSizing: 'border-box',

@@ -13,6 +13,7 @@ import SearchAdvanced from '@/features/sidebar/components/SidebarChatBox/Sidebar
 import SummaryAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/SummaryAdvanced'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAISidebarRootElement } from '@/utils'
+import { isMaxAISettingsPage } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * AI设置
@@ -82,10 +83,15 @@ const SidebarAIAdvanced: FC<{
       >
         <ClickAwayListener
           onClickAway={(event) => {
-            const MaxAIAIAdvancedCard =
+            let MaxAIAIAdvancedCard =
               getMaxAISidebarRootElement()?.querySelector(
                 '#MaxAIAIAdvancedCard',
               ) as HTMLElement
+            if (!MaxAIAIAdvancedCard && isMaxAISettingsPage()) {
+              MaxAIAIAdvancedCard = document.querySelector(
+                '#MaxAIAIAdvancedCard',
+              ) as HTMLElement
+            }
             if (MaxAIAIAdvancedCard) {
               const rect = MaxAIAIAdvancedCard.getBoundingClientRect()
               const x = (event as MouseEvent).clientX

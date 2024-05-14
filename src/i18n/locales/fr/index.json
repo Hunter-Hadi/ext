@@ -58,7 +58,9 @@
     "manage_my_plan": "Gérer mon plan",
     "watch_video": "Regarder la vidéo",
     "input_content": "Contenu de l'entrée",
-    "discard": "Rejeter"
+    "discard": "Rejeter",
+    "create": "Créer",
+    "update": "Mettre à jour"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "Le modèle de suggestion IA.\nLe modèle peut inclure un nombre quelconque des variables suivantes :",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "Le modèle de suggestion IA.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "Le modèle de suggestion IA.\nLe modèle peut inclure un nombre quelconque des variables suivantes :",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Modèle de prompt d'exemple :"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Modèle de prompt d'exemple :",
+    "feature_card__prompts__confirm__cancel__description": "Êtes-vous sûr de vouloir annuler ? Veuillez noter que toute modification non enregistrée sera perdue.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Oui, annuler",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Retour à l'édition",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Le titre est requis"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Direct",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Confiant",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Décontracté",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continuer dans le chat"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continuer dans le chat",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Accepter et copier"
   },
   "prompt_editor": {
     "preset_variables__title": "Fonctionnalités",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "contenu du contexte cible",
     "preset_variables__system__draft_context__description": "contenu du brouillon",
     "preset_variables__system__summary_page_content_representation__description": "le contenu de la page web/PDF/vidéo YouTube actuelle",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Affichez un résumé du {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Affichez un résumé du {{PAGE_CONTENT}}",
+    "configure_panel__title": "Configurer",
+    "config_panel__next_button__title": "Suivant : Ajouter une invite",
+    "prompt_panel__title": "Invite",
+    "preview_panel__title": "Aperçu",
+    "preset_variables__error_message__title": "Veuillez sélectionner le contexte `{{NOM_VARIABLE}}`",
+    "add_variable__update__title": "Mettre à jour la variable",
+    "add_variable__custom__title": "Variables",
+    "add_variable__update_button__title": "Mettre à jour"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts en 1 clic",

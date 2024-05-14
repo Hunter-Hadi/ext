@@ -58,7 +58,9 @@
     "manage_my_plan": "Administrer planen min",
     "watch_video": "Se video",
     "input_content": "Innhold for inndata",
-    "discard": "Fjern"
+    "discard": "Fjern",
+    "create": "Opprett",
+    "update": "Oppdater"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI-promptmal.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Eksempel på promptmal:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Eksempel på promptmal:",
+    "feature_card__prompts__confirm__cancel__description": "Er du sikker på at du vil avbryte? Vær oppmerksom på at eventuelle ulagrede endringer vil gå tapt.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, avbryt",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Tilbake til redigering",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tittel er påkrevd"
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Enkel",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Selvsikker",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Uformell",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Fortsett i chat"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Fortsett i chat",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Godta og kopier"
   },
   "prompt_editor": {
     "preset_variables__title": "Ferdigheter",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "innhold i målkontekst",
     "preset_variables__system__draft_context__description": "innhold i utkastskontekst",
     "preset_variables__system__summary_page_content_representation__description": "innholdet på gjeldende nettside/PDF/YouTube-video",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Vis en oppsummering av {{PAGE_CONTENT}}"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Vis en oppsummering av {{PAGE_CONTENT}}",
+    "configure_panel__title": "Konfigurer",
+    "config_panel__next_button__title": "Neste: Legg til prompt",
+    "prompt_panel__title": "Prompt",
+    "preview_panel__title": "Forhåndsvisning",
+    "preset_variables__error_message__title": "Vennligst velg kontekst `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Oppdater variabel",
+    "add_variable__custom__title": "Variabler",
+    "add_variable__update_button__title": "Oppdater"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikk-prompts",

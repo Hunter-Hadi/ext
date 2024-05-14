@@ -58,7 +58,9 @@
     "manage_my_plan": "Valdyti mano planą",
     "watch_video": "Žiūrėti vaizdo įrašą",
     "input_content": "Įvesties turinys",
-    "discard": "Atmesti"
+    "discard": "Atmesti",
+    "create": "Kurti",
+    "update": "Atnaujinti"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "AI šablonas.\nŠablonas gali apimti bet kokį kintamąjį iš šių:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Pavyzdinis šablono užrašas:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "Pavyzdinis šablono užrašas:",
+    "feature_card__prompts__confirm__cancel__description": "Ar tikrai norite atšaukti? Prašome prisiminti, kad atšaukus visi neišsaugoti pakeitimai bus prarasti.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "Taip, atšaukti",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "Grįžti prie redagavimo",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Pavadinimas yra privalomas"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Aiškus",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Pasitikintis",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Neformalus",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Tęsti pokalbį"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Tęsti pokalbį",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "Priimti ir kopijuoti"
   },
   "prompt_editor": {
     "preset_variables__title": "Galiai",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "tikslinis kontekstas",
     "preset_variables__system__draft_context__description": "juodraštis",
     "preset_variables__system__summary_page_content_representation__description": "dabartinės svetainės/PDF/YouTube vaizdo turinys",
-    "preset_variables__system__summary_page_content_representation__description__example1": "Išvesti {{PAGE_CONTENT}} santrauką"
+    "preset_variables__system__summary_page_content_representation__description__example1": "Išvesti {{PAGE_CONTENT}} santrauką",
+    "configure_panel__title": "Konfigūruoti",
+    "config_panel__next_button__title": "Kitas: Pridėti užduotį",
+    "prompt_panel__title": "Užduotis",
+    "preview_panel__title": "Peržiūra",
+    "preset_variables__error_message__title": "Prašome pasirinkti kontekstą `{{VARIABLE_NAME}}`",
+    "add_variable__update__title": "Atnaujinti kintamąjį",
+    "add_variable__custom__title": "Kintamieji",
+    "add_variable__update_button__title": "Atnaujinti"
   },
   "prompt_library": {
     "use_prompt_library__title": "Vieno paspaudimo užklausos",

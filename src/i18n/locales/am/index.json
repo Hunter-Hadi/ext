@@ -58,7 +58,9 @@
     "manage_my_plan": "እቃዎን ማስተካከያ",
     "watch_video": "ቪዲዮ ይመልከቱ",
     "input_content": "የግብዣ ይዘት",
-    "discard": "ማጥፋት"
+    "discard": "ማጥፋት",
+    "create": "ይፍጠሩ",
+    "update": "አዘምን"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -264,7 +266,11 @@
     "feature_card__prompts__edit_instant_reply_prompt__refine_draft__field_template__placeholder": "የማስታወቂያ መሰረታዊ ስፍራ ትርጉም።\nየማስታወቂያ ትርጉም የሚሆነው ስፍራ የሚኖር በማስታወቂያ ስፍራ የሚሆነው ባህሪዎች የሚሆኑት ናቸው:",
     "feature_card__prompts__edit_instant_reply_prompt__compose_new__field_template__placeholder": "የማስታወቂያ መሰረታዊ ማስጠንቀቂያ።\nማስታወቂያው የሚከተለው ስም፣ ስም-አይነት እና ሌሎች ቫርያብሎችን ይጨምሩ:",
     "feature_card__prompts__edit_summary_prompt__field_template__placeholder": "የማስታወቂያ መሰረታዊ ስፍራ ትርጉም።\nየማስታወቂያ ትርጉም የሚሆነው ስፍራ የሚኖር በማስታወቂያ ስፍራ የሚሆነው ባህሪዎች የሚሆኑት ናቸው:",
-    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "የማስተካከያ መልዕክት ማስጠንቀቂያ:"
+    "feature_card__prompts__edit_summary_prompt__field_template__placeholder__example": "የማስተካከያ መልዕክት ማስጠንቀቂያ:",
+    "feature_card__prompts__confirm__cancel__description": "እርስዎ ተወዳጅነት ለመሰረዝ ነው? እባክዎ በዚህ ማስተላለፊያ ውስጥ ያለውን ሁሉንም ያስተዳድር ይችላል.",
+    "feature_card__prompts__confirm__cancel__confirm_button_text": "አዎ, ሰርዝ",
+    "feature_card__prompts__confirm__cancel__cancel_button_text": "ወደ እንዲሁም ለማስተካከል",
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ርዕስ አስፈላጊ ነው"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -978,7 +984,8 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "በቀለ ቅንጅት",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "በቀለ ማስታወቂያ",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "በቀለ የግል ቅንጅት",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል",
+    "5aafdf09-36e4-46a0-be37-5eba07364f33": "ተቀብሎ እና መግለጫ ይፈጥሩ"
   },
   "prompt_editor": {
     "preset_variables__title": "እውቀት",
@@ -1028,7 +1035,15 @@
     "preset_variables__system__target_context__description": "የአማርኛ መግለጫ ይዘት",
     "preset_variables__system__draft_context__description": "የተላቀቁ መግለጫ ይዘት",
     "preset_variables__system__summary_page_content_representation__description": "የዚህ የመሣሪያ ወይም የPDF/YouTube ቪዲዮ የይዘት ይዘት",
-    "preset_variables__system__summary_page_content_representation__description__example1": "የ{{PAGE_CONTENT}} መሣሪያን የሚጠቀሙ ማስታወሻዎች ይሰጣሉ"
+    "preset_variables__system__summary_page_content_representation__description__example1": "የ{{PAGE_CONTENT}} መሣሪያን የሚጠቀሙ ማስታወሻዎች ይሰጣሉ",
+    "configure_panel__title": "ማዘዣውን ይቀይሩ",
+    "config_panel__next_button__title": "ቀጣይ: ማስተካከል ጨምር",
+    "prompt_panel__title": "መልስ",
+    "preview_panel__title": "የተጠቃሚ ማሳያ",
+    "preset_variables__error_message__title": "እባክዎ ማስተካከያ `{{VARIABLE_NAME}}` ይምረጡ",
+    "add_variable__update__title": "የተዘረዘሩትን ቪልት አዘምን",
+    "add_variable__custom__title": "ተጠቃሚዎች",
+    "add_variable__update_button__title": "አዘምን"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click መልእክት",

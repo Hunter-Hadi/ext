@@ -162,6 +162,9 @@ const SettingPromptsWritingAssistantCard: FC = () => {
       deleteMenuItemById(confirmId)
       setEditNode(null)
     }
+    if (type === 'cancel') {
+      setEditNode(null)
+    }
     setConfirmOpen(false)
     setConfirmType(null)
   }
@@ -290,7 +293,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
             node={editNode}
             iconSetting={true}
             onSave={handleOnSave}
-            onCancel={() => setEditNode(null)}
+            onCancel={() => handleActionConfirmOpen('cancel')}
             onDelete={(id) => handleActionConfirmOpen('delete', id)}
             setEditNode={setEditNode}
           />
@@ -309,7 +312,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
         <Stack
           height={0}
           flex={1}
-        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+          // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
         >
           <Stack height={'100%'}>
             <DevContent>

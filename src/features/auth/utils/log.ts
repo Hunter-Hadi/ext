@@ -1,5 +1,6 @@
 import debounce from 'lodash-es/debounce'
 
+import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 import defaultEditAssistantComposeReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
 import defaultInputAssistantComposeNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
 import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
@@ -434,7 +435,10 @@ export const getPromptTypeByContextMenu = (
         instantType: 'reply',
       }
     } else if (
-      PRESET_PROMPT_IDS.find((promptId) => promptId === contextMenuId)
+      PRESET_PROMPT_IDS.find((promptId) => promptId === contextMenuId) ||
+      defaultContextMenuJson.find(
+        (contextMenu) => contextMenu.id === contextMenuId,
+      )
     ) {
       return {
         promptType: 'preset',

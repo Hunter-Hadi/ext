@@ -83,8 +83,8 @@ const ConfigurePanel: FC<{
           helperText={
             errors?.promptTitle
               ? t(
-                  'settings:feature_card__prompts__edit_prompt__field_name__error__title',
-                )
+                'settings:feature_card__prompts__edit_prompt__field_name__error__title',
+              )
               : ''
           }
         />
@@ -131,7 +131,7 @@ const ConfigurePanel: FC<{
                       })
                     }}
                   >
-                    <ContextMenuIcon icon={icon} sx={{ fontSize: 20 }} />
+                    <ContextMenuIcon icon={icon} sx={{ fontSize: 20, minWidth: '20px' }} />
                   </Button>
                 )
               },

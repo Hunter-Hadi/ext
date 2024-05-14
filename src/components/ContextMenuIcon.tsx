@@ -176,7 +176,7 @@ export const CONTEXT_MENU_ICONS = [
   'CommentOutlined',
   'ClosedCaptionOffOutlined',
   'SubjectOutlined',
-  'KeyboardArrowDownIcon',
+  'KeyboardArrowDown',
   'Attachment',
   'SidebarPanel',
   'Layers',

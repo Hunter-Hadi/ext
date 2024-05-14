@@ -67,11 +67,22 @@ const messengerGetChatMessagesFromNodeList = (
         datetime: '',
         content: '',
       }
-      const messageGridCellsBox = messageBox.querySelector<HTMLElement>(
-        '[data-scope="messages_table"][role] div:is([role] + div, span + div):not([role])',
+      let messageGridCellsBox = messageBox.querySelector<HTMLElement>(
+        '[data-scope="messages_table"][role] [role] > [role] + [role="none"]',
+      )
+      let messageBubble = messageGridCellsBox?.querySelector<HTMLElement>(
+        '& > [role="presentation"]:nth-child(1)',
       )
       if (!messageGridCellsBox) {
-        continue
+        messageGridCellsBox = messageBox.querySelector<HTMLElement>(
+          '[data-scope="messages_table"][role] div:is([role] + div, span + div):not([role])',
+        )
+        if (!messageGridCellsBox) {
+          continue
+        }
+        messageBubble = messageGridCellsBox.querySelector<HTMLElement>(
+          '& > div:has(> [role])',
+        )
       }
       const usernameBox = messageBox.querySelector<HTMLElement>(
         `[data-scope="messages_table"][role] > [role="presentation"] h4[dir] > span, 
@@ -111,9 +122,6 @@ const messengerGetChatMessagesFromNodeList = (
           }`
         }
       }
-      const messageBubble = messageGridCellsBox?.querySelector<HTMLElement>(
-        '& > div:has(> [role])',
-      )
       if (messageBubble) {
         const messageContent =
           messageBubble.querySelector<HTMLElement>('span[dir] > div[dir]') ||

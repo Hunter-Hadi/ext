@@ -407,13 +407,17 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
               )
               if (emailItem) {
                 setTimeout(() => {
-                  const inputBox = emailItem.querySelector<HTMLElement>(
-                    'div[contenteditable="true"]',
-                  )
+                  const inputBox =
+                    emailItem.querySelector<HTMLElement>(
+                      'div[contenteditable="true"]',
+                    ) ||
+                    document.querySelector(
+                      '#ReadingPaneContainerId div[id] > div[role="textbox"][contenteditable="true"]',
+                    )
                   if (inputBox) {
                     InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
                   }
-                }, 500)
+                }, 1000)
               }
             }
 

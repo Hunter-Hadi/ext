@@ -206,9 +206,7 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
         )
       }}
       filterOptions={
-        options?.length === 0 && !isEditingSpecialInputAssistantButtonKey
-          ? freeSolofilterOptions
-          : filterOptions
+        options?.length === 0 ? freeSolofilterOptions : filterOptions
       }
       renderInput={(params) => (
         <TextField

@@ -21,7 +21,6 @@ import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
-import { useTheme } from '@mui/material/styles'
 
 const CTA_BUTTON_LINK = `https://app.maxai.me/pricing`
 
@@ -30,7 +29,7 @@ const SidebarPromotionDialog = () => {
   const { browserAgent } = useBrowserAgent()
   const { userInfo, isPayingUser } = useUserInfo()
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   const routerToPage = () => {
     window.open(CTA_BUTTON_LINK)

@@ -48,7 +48,6 @@ const SidebarAImessageRelatedQuestions: FC<{
               >
                 <Typography
                   fontSize={'16px'}
-                  fontWeight={500}
                   width={0}
                   flex={1}
                   whiteSpace="normal"

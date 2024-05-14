@@ -29,7 +29,7 @@ const SidebarPromotionDialog = () => {
   const { browserAgent } = useBrowserAgent()
   const { userInfo, isPayingUser } = useUserInfo()
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   const routerToPage = () => {
     window.open(CTA_BUTTON_LINK)

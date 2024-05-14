@@ -28,7 +28,7 @@ const SidebarAIMessageImageContent: FC<{
   AIMessage: IAIResponseMessage
 }> = (props) => {
   const { AIMessage } = props
-  const boxRef = useRef<HTMLElement | null>(null)
+  const boxRef = useRef<HTMLDivElement | null>(null)
   const [boxRect, setBoxRect] = useState([0, 0])
   const [count, setCount] = useState(1)
   const [b, setB] = useState('1:1')
@@ -128,6 +128,7 @@ const SidebarAIMessageImageContent: FC<{
   // 宋老师要求第一版本最简单实现
   return (
     <Stack
+      component={'div'}
       ref={boxRef}
       mt={1}
       minHeight={'16px'}

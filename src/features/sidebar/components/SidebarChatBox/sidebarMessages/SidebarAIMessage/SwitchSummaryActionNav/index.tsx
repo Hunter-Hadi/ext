@@ -86,7 +86,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
       icon: navItem.titleIcon,
       key: navItem.key,
     })
-    askAIWIthShortcuts(actions)
+    await askAIWIthShortcuts(actions)
   }
 
   const clickCustomPromptTriggerActionChange = async (menuItem: IContextMenuItemWithChildren) => {

@@ -211,6 +211,7 @@ const messengerGetChatMessagesFromNodeList = (
 }
 
 export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
+  debugger
   // [role="main"] [role][aria-label][tabindex]:has(> span) h1 > span
   const chatroomName =
     document

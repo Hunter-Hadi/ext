@@ -68,8 +68,8 @@ export interface IInputAssistantButtonGroupConfig
 
 export const EmailWebsites = [
   'mail.google.com',
-  'outlook.office.com',
   'outlook.live.com',
+  'outlook.office.com',
   'outlook.office365.com',
 ] as const
 
@@ -1015,6 +1015,7 @@ const YouTubeWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
       CTAButtonStyle: {
         padding: '8px 18px',
         iconSize: 16,
+        borderWidth: 0,
         borderRadius: '18px',
       },
       InputAssistantBoxSx: {

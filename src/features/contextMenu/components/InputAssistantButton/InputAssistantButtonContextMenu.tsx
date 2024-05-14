@@ -153,10 +153,9 @@ const InputAssistantButtonContextMenu: FC<
     ) {
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
-          console.log('testestevent', event, data)
           if (
-            event === 'beforeRunAction' &&
-            data?.action?.type === 'ASK_CHATGPT'
+            (data?.action?.type === 'ASK_CHATGPT' && event === 'beforeRunAction') ||
+            (event === 'action' && data?.type === 'SET_VARIABLES_MODAL' && data?.status === 'complete')
           ) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error

@@ -447,7 +447,8 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
     {
       enable: true,
       rootSelectors: [
-        'div[data-testid="toolBar"] > div:nth-child(2) div[role="button"][data-testid]',
+        'div[data-testid="toolBar"] [role="button"][data-testid="tweetButtonInline"]',
+        'div[data-testid="toolBar"] [role="button"][data-testid="tweetButton"]',
       ],
       rootSelectorStyle: 'order:2;',
       rootParentDeep: 1,
@@ -492,6 +493,7 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
       },
       rootSelectors: [
         'div[role="progressbar"] + div > div > div > div > div > div > div > div > div > div:not([data-testid="toolBar"]) > div > div[role="button"][data-testid="tweetButtonInline"]',
+        'div:has([data-testid^="tweetTextarea"]) > [data-testid="tweetButtonInline"][role="button"][tabindex]',
       ],
       rootParentDeep: 1,
       rootWrapperTagName: 'div',
@@ -500,9 +502,20 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
         onSelectionEffect: () => {
-          const replyTextarea = document.querySelector(
-            'div[role="button"][data-testid="tweetButtonInline"]',
-          )?.parentElement?.firstElementChild as HTMLElement
+          let replyTextarea: HTMLElement | null = null
+          if (
+            document.querySelector(
+              'div[role="progressbar"] + div > div > div > div > div > div > div > div > div > div:not([data-testid="toolBar"]) > div > div[role="button"][data-testid="tweetButtonInline"]',
+            )
+          ) {
+            replyTextarea = document.querySelector(
+              'div[role="button"][data-testid="tweetButtonInline"]',
+            )?.parentElement?.firstElementChild as HTMLElement
+          } else {
+            replyTextarea = document.querySelector<HTMLElement>(
+              '[data-testid^="tweetTextarea"]',
+            )
+          }
           replyTextarea?.click()
         },
       },

@@ -347,7 +347,10 @@ export class ActionAskChatGPT extends Action {
             data: {
               name: contextMenu?.text || fallbackId,
               id: contextMenu?.id || fallbackId,
-              type: getPromptTypeByContextMenu(contextMenu).promptType,
+              type: getPromptTypeByContextMenu(contextMenu, {
+                isOneClickPrompt: this.question.meta.isOneClickPrompt,
+                oneClickPromptType: this.question.meta.promptType,
+              }).promptType,
               featureName: getFeatureNameByConversationAndContextMenu(
                 conversation,
                 contextMenu,

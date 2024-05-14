@@ -20,6 +20,7 @@ import { isProduction } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { IPromptLibraryCardType } from '@/features/prompt_library/types'
 import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import {
   getSetVariablesModalSelectCache,
@@ -53,6 +54,10 @@ export interface ActionSetVariablesModalConfig {
   // askAI时额外的字段
   askChatGPTActionParameters?: ActionParameters
   MaxAIPromptActionConfig?: MaxAIPromptActionConfig
+
+  // one click prompt 的类型
+  promptType?: IPromptLibraryCardType
+  isOneClickPrompt?: boolean
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -190,6 +195,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
    * 校验表单并运行actions
    * @param autoExecute
    */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const validateFormAndRunActions = async (autoExecute: boolean) => {
     const isHaveEmptyValue =
       Object.values(getValues()).filter(
@@ -300,56 +306,40 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         answerInsertMessageId || config.answerInsertMessageId || ''
       const currentParameters =
         askChatGPTActionParameters || config.askChatGPTActionParameters || {}
-      if (isProduction) {
-        runActions.push({
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTActionType: insertMessageId
-              ? 'ASK_CHAT_GPT_HIDDEN'
-              : 'ASK_CHAT_GPT_WITH_PREFIX',
-            AskChatGPTActionQuestion: {
-              text: '{{LAST_ACTION_OUTPUT}}',
-              meta: {
-                outputMessageId: insertMessageId,
-                contextMenu: {
-                  id: config.contextMenuId || uuidV4(),
-                  droppable: false,
-                  parent: uuidV4(),
-                  text:
-                    modelKey === 'PromptPreview'
-                      ? title || config.title
-                      : config.title,
-                  data: {
-                    editable: false,
-                    type: 'shortcuts',
-                    actions: [],
-                  },
+
+      runActions.push({
+        type: 'ASK_CHATGPT',
+        parameters: {
+          template: '{{LAST_ACTION_OUTPUT}}',
+          AskChatGPTActionType: insertMessageId
+            ? 'ASK_CHAT_GPT_HIDDEN'
+            : 'ASK_CHAT_GPT_WITH_PREFIX',
+          AskChatGPTActionQuestion: {
+            text: '{{LAST_ACTION_OUTPUT}}',
+            meta: {
+              outputMessageId: insertMessageId,
+              contextMenu: {
+                id: config.contextMenuId || uuidV4(),
+                droppable: false,
+                parent: uuidV4(),
+                text:
+                  modelKey === 'PromptPreview'
+                    ? title || config.title
+                    : config.title,
+                data: {
+                  editable: false,
+                  type: 'shortcuts',
+                  actions: [],
                 },
               },
+              isOneClickPrompt: config.isOneClickPrompt,
+              promptType: config.promptType,
             },
-            MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
-            ...currentParameters,
           },
-        })
-      } else {
-        runActions.push({
-          type: 'ASK_CHATGPT',
-          parameters: {
-            AskChatGPTActionType: insertMessageId
-              ? 'ASK_CHAT_GPT_HIDDEN'
-              : 'ASK_CHAT_GPT_WITH_PREFIX',
-            AskChatGPTActionQuestion: {
-              text: '{{LAST_ACTION_OUTPUT}}',
-              meta: {
-                outputMessageId: insertMessageId,
-              },
-            },
-            MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
-            ...currentParameters,
-          },
-        })
-      }
+          MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
+          ...currentParameters,
+        },
+      })
       await askAIWIthShortcuts(runActions, { isSaveLastRunShortcuts })
         .then(() => {
           // done

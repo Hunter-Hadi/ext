@@ -143,7 +143,7 @@ const AIResponseError: FC<IProps> = ({
     ) {
       return (
         text +
-        '\nAlternatively, you can switch to Free Al or other premium Al models managed by MaxAl for a more reliable experience.'
+        '\nAlternatively, you can switch to Free AI or other premium AI models managed by MaxAI for a more reliable experience.'
       )
     }
     // 如果是inHouse的错误，直接显示错误信息
@@ -256,9 +256,8 @@ const AIResponseError: FC<IProps> = ({
       <Box className="search-with-ai--text" sx={sxCache}>
         <AppSuspenseLoadingLayout>
           <Box
-            className={`markdown-body ${
-              isDarkMode ? 'markdown-body-dark' : ''
-            }`}
+            className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''
+              }`}
           >
             <CustomMarkdown>{textCover}</CustomMarkdown>
           </Box>

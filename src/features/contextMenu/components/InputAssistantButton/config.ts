@@ -68,8 +68,8 @@ export interface IInputAssistantButtonGroupConfig
 
 export const EmailWebsites = [
   'mail.google.com',
-  'outlook.office.com',
   'outlook.live.com',
+  'outlook.office.com',
   'outlook.office365.com',
 ] as const
 
@@ -273,11 +273,47 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = document.querySelector<HTMLElement>(
+              '#ReadingPaneContainerId div[id] > div[role="textbox"][contenteditable="true"]',
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = document.querySelector<HTMLElement>(
+              '#ReadingPaneContainerId div[id] > div[role="textbox"][contenteditable="true"]',
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       refineDraftButton: {
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
@@ -293,32 +329,11 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
             )) as HTMLElement
 
           if (inputAssistantButton) {
-            const rootElement =
-              document.querySelector<HTMLDivElement>(
-                'div[data-app-section="ConversationContainer"]',
-              ) ||
-              document.querySelector<HTMLDivElement>(
-                'div[data-app-section="MailReadCompose"] div[data-app-section="ItemContainer"]',
-              )
-
-            if (rootElement && rootElement.contains(inputAssistantButton)) {
-              const emailItem = Array.from(
-                rootElement.querySelectorAll(
-                  '& > div > div:has(div[tabindex])',
-                ),
-              ).find((emailContainer) =>
-                emailContainer.contains(inputAssistantButton),
-              )
-              if (emailItem) {
-                setTimeout(() => {
-                  const inputBox = emailItem.querySelector<HTMLElement>(
-                    'div[contenteditable="true"]',
-                  )
-                  if (inputBox) {
-                    InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
-                  }
-                }, 500)
-              }
+            const inputBox = document.querySelector<HTMLElement>(
+              '#ReadingPaneContainerId div[id] > div[role="textbox"][contenteditable="true"]',
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
             }
           }
         },
@@ -989,6 +1004,7 @@ const YouTubeWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
       CTAButtonStyle: {
         padding: '8px 18px',
         iconSize: 16,
+        borderWidth: 0,
         borderRadius: '18px',
       },
       InputAssistantBoxSx: {

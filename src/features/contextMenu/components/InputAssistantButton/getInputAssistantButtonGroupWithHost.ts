@@ -124,13 +124,13 @@ const getOutlookButtonGroup = (
   //   editPanelElement.querySelector<HTMLInputElement>('input[maxlength="255"]')
   //     ?.value || ''
   // 1. 不在列表
-  // 2. 没有toOrCC的用户
-  // 3. 没有fwdMsg
+  // 2. 没有toOrCC的用户 (240513：感觉不应该判断这个，因为从 compose new 点进去加一个 toOrCC 的用户也是可以的，这样就不会显示 compose new button 了)
+  // 3. 没有fwdMsg (240513：只要没有 fwdMsg 就应该是要 compose new)
   // 4. 不在dialog中
   // 240401: 满足上面4条情况但有有subject的情况下显示 reply button，所以去除了subject的判断
   if (
     !listContainer?.contains(keyElement) &&
-    toOrCC === 0 &&
+    // toOrCC === 0 &&
     !fwdMsg &&
     !isDialog
     // && !subject

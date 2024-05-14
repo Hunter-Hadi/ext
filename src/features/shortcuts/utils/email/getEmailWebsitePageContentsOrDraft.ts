@@ -358,28 +358,6 @@ export const getEmailWebsitePageContentsOrDraft = async (
   //// - 2. 或者还是在同一个 context window 里进行操作
   // 那么通过直接返回上次缓存的 context 即可
   const instantReplyDataHelper = getInstantReplyDataHelper()
-  if (
-    instantReplyDataHelper.getAttribute('aria-operation-selector-id') ===
-    inputAssistantButtonElementSelector
-  ) {
-    const fullContextCache = instantReplyDataHelper.getAttribute(
-      'data-full-context-cache',
-    )
-    const targetContextCache = instantReplyDataHelper.getAttribute(
-      'data-target-context-cache',
-    )
-    if (targetContextCache) {
-      return {
-        targetReplyEmailContext: targetContextCache,
-        emailContext: fullContextCache || targetContextCache,
-      }
-    }
-  }
-
-  const host = getCurrentDomainHost()
-  let hasMore = false
-  let iframeSelector = ''
-  let emailContextSelector = 'body'
   const inputAssistantButtonElement =
     (inputAssistantButtonElementSelector &&
       ((InputAssistantButtonElementRouteMap.get(
@@ -389,10 +367,38 @@ export const getEmailWebsitePageContentsOrDraft = async (
           inputAssistantButtonElementSelector,
         )) as HTMLButtonElement)) ||
     null
-  instantReplyDataHelper.setAttribute(
-    'aria-operation-selector-id',
-    inputAssistantButtonElementSelector,
-  )
+  if (inputAssistantButtonElement) {
+    const instantReplyButtonId = inputAssistantButtonElement.getAttribute(
+      'maxai-input-assistant-button-id',
+    )
+    if (
+      instantReplyDataHelper.getAttribute('aria-operation-selector-id') ===
+      instantReplyButtonId
+    ) {
+      const fullContextCache = instantReplyDataHelper.getAttribute(
+        'data-full-context-cache',
+      )
+      const targetContextCache = instantReplyDataHelper.getAttribute(
+        'data-target-context-cache',
+      )
+      if (targetContextCache) {
+        return {
+          targetReplyEmailContext: targetContextCache,
+          emailContext: fullContextCache || targetContextCache,
+        }
+      }
+    }
+    instantReplyDataHelper.setAttribute(
+      'aria-operation-selector-id',
+      instantReplyButtonId!,
+    )
+  }
+
+  const host = getCurrentDomainHost()
+  let hasMore = false
+  let iframeSelector = ''
+  let emailContextSelector = 'body'
+
   if (host === 'mail.google.com') {
     try {
       // 邮件列表容器

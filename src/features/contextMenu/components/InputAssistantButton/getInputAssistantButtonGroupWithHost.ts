@@ -111,9 +111,9 @@ const getOutlookButtonGroup = (
   const editPanelElement = document.querySelector(
     '#ReadingPaneContainerId',
   ) as HTMLElement
-  const toOrCC = editPanelElement.querySelectorAll(
-    'div[role="textbox"]:has(#removeButton)',
-  ).length
+  // const toOrCC = editPanelElement.querySelectorAll(
+  //   'div[role="textbox"]:has(#removeButton)',
+  // ).length
   const fwdMsg =
     editPanelElement.querySelector('#RplyFwdMsg') ||
     editPanelElement.querySelector('#divRplyFwdMsg')

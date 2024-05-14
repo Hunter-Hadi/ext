@@ -622,7 +622,17 @@ async function fixManifestTooLongName() {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = []
+  const keys = [
+    'sidebar__tabs__summary__tooltip__page',
+    'sidebar__tabs__summary__tooltip__default_email',
+    'sidebar__tabs__summary__tooltip__pdf_crx',
+    'sidebar__tabs__summary__tooltip__youtube_video',
+    'home_view_content_nav__summary_page__title',
+    'home_view_content_nav__summary_video__title',
+    'home_view_content_nav__summary_email__title',
+    'home_view_content_nav__summary_PDF__title',
+    'sidebar_tour__step__2__description_2',
+  ]
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
   await fixManifestTooLongName()

@@ -68,8 +68,11 @@ const messengerGetChatMessagesFromNodeList = (
         content: '',
       }
       const messageGridCellsBox = messageBox.querySelector<HTMLElement>(
-        '[data-scope="messages_table"][role] [role] > [role] + [role="none"]',
+        '[data-scope="messages_table"][role] div:is([role] + div, span + div):not([role])',
       )
+      if (!messageGridCellsBox) {
+        continue
+      }
       const usernameBox = messageBox.querySelector<HTMLElement>(
         `[data-scope="messages_table"][role] > [role="presentation"] h4[dir] > span, 
         [data-scope="messages_table"][role] > span, 
@@ -92,11 +95,16 @@ const messengerGetChatMessagesFromNodeList = (
             const avatar = messageBox.querySelector(
               '[role="presentation"] [aria-hidden] span > img[alt]',
             )
-            messageData.user =
-              findLongestCommonSubstring(
-                avatar?.getAttribute('alt') || '',
-                replyToBox.textContent || '',
-              ) || 'Anonymous'
+            if (avatar) {
+              messageData.user =
+                findLongestCommonSubstring(
+                  avatar?.getAttribute('alt') || '',
+                  replyToBox.textContent || '',
+                ) || 'Anonymous'
+            } else {
+              messageData.user =
+                replyToBox.textContent?.split(' ')[0] || 'Anonymous'
+            }
           }
           messageData.extraLabel = `this message is that ${
             replyToBox.textContent || ''
@@ -104,7 +112,7 @@ const messengerGetChatMessagesFromNodeList = (
         }
       }
       const messageBubble = messageGridCellsBox?.querySelector<HTMLElement>(
-        '& > [role="presentation"]:nth-child(1)',
+        '& > div:has(> [role])',
       )
       if (messageBubble) {
         const messageContent =
@@ -211,7 +219,6 @@ const messengerGetChatMessagesFromNodeList = (
 }
 
 export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
-  debugger
   // [role="main"] [role][aria-label][tabindex]:has(> span) h1 > span
   const chatroomName =
     document
@@ -232,7 +239,7 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
 
   const chatMessagesNodeList = Array.from(
     document.querySelectorAll<HTMLElement>(
-      '[role="main"] [role="grid"][aria-label] div[class]:has(+ [role="gridcell"])',
+      '[role="main"] [role="grid"][aria-label] div[class]:has(+ div[role="gridcell"])',
     ),
   )
 

@@ -21,9 +21,7 @@ import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdP
 import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
-import {
-  useClientConversation,
-} from '@/features/chatgpt/hooks/useClientConversation'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import { ISidebarConversationType } from '@/features/sidebar/types'
@@ -63,8 +61,8 @@ const AIProviderModelTagIcon: FC<{
 interface AIModelSelectorCardProps {
   sidebarConversationType: ISidebarConversationType
   currentModelDetail: {
-    value: string;
-    AIProvider: string;
+    value: string
+    AIProvider: string
   }
   sx?: SxProps
   onClose?: (event: React.MouseEvent<HTMLDivElement>) => void
@@ -80,8 +78,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
   const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
   const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
-  const { getAIProviderModelDetail } =
-    useAIProviderModelsMap()
+  const { getAIProviderModelDetail } = useAIProviderModelsMap()
 
   const currentSidebarConversationTypeModels = useMemo(() => {
     return getModelOptionsForConversationType(sidebarConversationType)
@@ -190,7 +187,12 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                 AIModelOption.value === currentModelDetail?.value
               }
               onClick={async () => {
-                if (isHoverThirdPartyModel || AIModelOption.value === currentModelDetail?.value) {
+                if (
+                  isHoverThirdPartyModel ||
+                  (AIModelOption.AIProvider ===
+                    currentModelDetail?.AIProvider &&
+                    AIModelOption.value === currentModelDetail?.value)
+                ) {
                   return
                 }
                 await updateAIProviderModel(
@@ -261,7 +263,8 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
               <KeyboardArrowRightOutlinedIcon
                 sx={{
                   fontSize: '20px',
-                  color: (t) => t.palette.mode === 'dark' ? '#FFF' : 'inherit'
+                  color: (t) =>
+                    t.palette.mode === 'dark' ? '#FFF' : 'inherit',
                 }}
               />
             </Stack>

@@ -995,7 +995,7 @@
     "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Շարունակեք խոսքի մեջ",
     "5aafdf09-36e4-46a0-be37-5eba07364f33": "Ընդունել և պատճենել"
   },
-  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4o. The only generative AI extension you need.",
   "name": "MaxAI.me: 1-կլիք AI, որը աշխատում է GPT-4o, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "prompt_editor": {

@@ -3,7 +3,10 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
+import {
+  MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+  MAXAI_CHATGPT_MODEL_GPT_4O,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import LanguageSelect from '@/components/select/LanguageSelect'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import APITemperatureSlider from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/components/APITemperatureSlider'
@@ -40,7 +43,8 @@ const ChatAdvanced = () => {
           />
         )}
         {currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
-          currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO && (
+          currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO &&
+          currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4O && (
             <APITemperatureSlider provider={'USE_CHAT_GPT_PLUS'} />
           )}
         {currentAIProvider === 'OPENAI_API' && (

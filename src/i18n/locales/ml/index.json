@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "എന്റെ പ്രോംപ്റ്റ് ചേർക്കുക",
     "sidebar__summary__advanced__title": "ഉൾപ്പെടുത്തിയ സംഗ്രഹ ഐച്ഛികങ്ങൾ",
     "floating_menu__discard_changes_card__ai_response__title": "എന്തെങ്കിലും എന്ന് AI പ്രതികരണം ഉപേക്ഷിക്കാൻ ആഗ്രഹിക്കുന്നുണ്ടോ?",
-    "floating_menu__discard_changes_card__your_draft__title": "നിങ്ങളുടെ ഡ്രാഫ്റ്റ് നിരസിക്കാൻ ആഗ്രഹമുണ്ടോ?"
+    "floating_menu__discard_changes_card__your_draft__title": "നിങ്ങളുടെ ഡ്രാഫ്റ്റ് നിരസിക്കാൻ ആഗ്രഹമുണ്ടോ?",
+    "provider__chatgpt__model__gpt_4o__description": "ഓപ്പൺഎയിയുടെ ഏറ്റവും പുതിയതും വേഗത്തിൽ മൾട്ടിമോഡൽ ഫ്ലാഗ്ഷിപ്പ് മോഡൽ. ടെക്സ്റ്റ്, ഓഡിയോ, ചിത്രങ്ങൾ ഇൻപുട്ടുകൾ അനുവദിക്കുന്നതും ഔട്ട്പുട്ടുകൾ ഒരുപോലെ സമാഹരിക്കുന്നതും ആണ് GPT-4o, ഭാഷകളും, ദൃശ്യവും, ഓഡിയോയും മനോഹരമായ പ്രകടനം നൽകുന്നതുമായ അടിസ്ഥാനത്തിൽ അത് എ.ഐ. വിപുലതയും സ്വാഭാവിക ഇൻററാക്ഷൻയും നിരീക്ഷണങ്ങളും ഉണ്ടാക്കുന്നു.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "വിജനൊട്ടുള്ള അപ്ഗ്രേഡ് ചെയ്യുക gpt-4o യുടെ അനവധി",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "ഓപ്പൺഎയിയുടെ പുതിയ ഫ്ലാഗ്ഷിപ്പ് മോഡൽ GPT-4-നുള്ള ബുദ്ധിമുട്ടുകൾ നൽകുന്നു, അപ്ഡേറ്റ് ചെയ്ത ഉത്തരങ്ങൾ കൂടുതൽ ഉണ്ടാക്കുന്നു, 2x വേഗത്തിൽ പ്രവർത്തിക്കുന്നു, ഓഡിയോ, ദൃശ്യവും ടെക്സ്റ്റിൽ ജീവിക്കുന്നു.",
+    "sidebar__promotion_dialog__content__title": "മാക്സ്‌എയി.മെയിൽ ജിപിടി-4o പരിചയപ്പെടുത്തുന്നു",
+    "sidebar__promotion_dialog__content_item7__title": "ഓപ്പൺഎയിയുടെ പുതിയ ഫ്ലാഗ്ഷിപ്പ് മോഡൽ",
+    "sidebar__promotion_dialog__content_item7__description": "GPT-4-നുള്ള ബുദ്ധിമുട്ടുകൾ നൽകുന്നു, അപ്ഡേറ്റ് ചെയ്ത ഉത്തരങ്ങൾ കൂടുതൽ ഉണ്ടാക്കുന്നു.",
+    "sidebar__promotion_dialog__content_item8__title": "2x വേഗത്തിൽ",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo-ക്ക് പതിവായി GPT-4o 2x വേഗത്തിൽ പ്രവർത്തിക്കുന്നു.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" എന്നാണ് \"ഒമ്നിമോഡൽ\"",
+    "sidebar__promotion_dialog__content_item9__description": "ഓഡിയോ, ദൃശ്യവും ടെക്സ്റ്റിൽ ജീവിക്കുന്നുവെന്ന് പ്രത്യേകിച്ച് ആരോഗ്യമായി കണക്കാക്കാൻ കഴിയുന്നു.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite അപരിമിതമായ AI ചോദ്യങ്ങൾ നൽകുന്നുവെങ്കിലും എല്ലാ സവിശേഷതകൾ അൺലോക്ക് ചെയ്യുന്നു."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

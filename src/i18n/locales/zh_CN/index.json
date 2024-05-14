@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "添加我的提示",
     "sidebar__summary__advanced__title": "高级摘要选项",
     "floating_menu__discard_changes_card__ai_response__title": "您是否要放弃AI回应？",
-    "floating_menu__discard_changes_card__your_draft__title": "您要放弃草稿吗？"
+    "floating_menu__discard_changes_card__your_draft__title": "您要放弃草稿吗？",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAI的最新和最快的多模态旗舰模型。GPT-4o无缝地结合了文本、音频和图像输入和输出，以接近人类的响应时间和出色的性能，在语言、视觉和音频理解方面表现出色，为AI的多功能性和自然交互设定了新标准。",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "升级以获取无限的带有视觉的gpt-4o",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAI的新旗舰模型提供了GPT-4级的智能，具有更及时的响应，速度提高了2倍，并且可以实时跨音频、视觉和文本进行推理。",
+    "sidebar__promotion_dialog__content__title": "在MaxAI.me上推出GPT-4o",
+    "sidebar__promotion_dialog__content_item7__title": "OpenAI的新旗舰模型",
+    "sidebar__promotion_dialog__content_item7__description": "提供GPT-4级的智能，并具有更及时的响应。",
+    "sidebar__promotion_dialog__content_item8__title": "速度提高了2倍",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o比GPT-4 Turbo快2倍。",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\"代表\"全模型\"",
+    "sidebar__promotion_dialog__content_item9__description": "可以实时跨音频、视觉和文本进行推理。",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite提供无限的AI查询并解锁所有功能。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

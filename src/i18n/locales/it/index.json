@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Aggiungi la mia domanda",
     "sidebar__summary__advanced__title": "Opzioni avanzate di riepilogo",
     "floating_menu__discard_changes_card__ai_response__title": "Vuoi eliminare la risposta dell'IA?",
-    "floating_menu__discard_changes_card__your_draft__title": "Vuoi eliminare la tua bozza?"
+    "floating_menu__discard_changes_card__your_draft__title": "Vuoi eliminare la tua bozza?",
+    "provider__chatgpt__model__gpt_4o__description": "Il nuovo e più veloce modello multimodale di punta di OpenAI. Combinando in modo fluido input e output di testo, audio e immagini, GPT-4o offre tempi di risposta quasi umani e prestazioni eccezionali in tutte le lingue, la visione e la comprensione audio, stabilendo un nuovo standard per la versatilità e l'interazione naturale dell'IA.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Aggiorna per gpt-4o illimitato con visione",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Il nuovo modello di punta di OpenAI fornisce intelligenza di livello GPT-4, con risposte più aggiornate, è 2 volte più veloce e può ragionare in tempo reale su audio, visione e testo.",
+    "sidebar__promotion_dialog__content__title": "Presentazione di GPT-4o su MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Il nuovo modello di punta di OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Fornisce intelligenza di livello GPT-4 e risposte più aggiornate.",
+    "sidebar__promotion_dialog__content_item8__title": "2 volte più veloce",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o è 2 volte più veloce di GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" per \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Può ragionare in tempo reale su audio, visione e testo.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite offre query illimitate all'IA e sblocca tutte le funzionalità."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

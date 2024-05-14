@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Eigenen Vorschlag hinzufügen",
     "sidebar__summary__advanced__title": "Erweiterte Zusammenfassungsoptionen",
     "floating_menu__discard_changes_card__ai_response__title": "Möchten Sie die KI-Antwort verwerfen?",
-    "floating_menu__discard_changes_card__your_draft__title": "Möchten Sie Ihren Entwurf verwerfen?"
+    "floating_menu__discard_changes_card__your_draft__title": "Möchten Sie Ihren Entwurf verwerfen?",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAI's neuestes und schnellstes multimodales Flaggschiff-Modell. GPT-4o kombiniert nahtlos Text-, Audio- und Bildinputs und -outputs und liefert beinahe menschenähnliche Reaktionszeiten und außergewöhnliche Leistung in verschiedenen Sprachen, Visionen und Audioverständnis. Damit setzt es einen neuen Maßstab für KI-Vielseitigkeit und natürliche Interaktion.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Upgrade für unbegrenztes gpt-4o mit Vision",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Das neue Flaggschiff-Modell von OpenAI bietet Intelligenz auf GPT-4-Niveau, mit aktuelleren Antworten, ist doppelt so schnell und kann in Echtzeit über Audio, Vision und Text argumentieren.",
+    "sidebar__promotion_dialog__content__title": "Vorstellung von GPT-4o auf MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Das neue Flaggschiff-Modell von OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Bietet Intelligenz auf GPT-4-Niveau und aktuellere Antworten.",
+    "sidebar__promotion_dialog__content_item8__title": "Doppelt so schnell",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o ist doppelt so schnell wie GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" für \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Kann in Echtzeit über Audio, Vision und Text argumentieren.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite bietet unbegrenzte KI-Abfragen und schaltet alle Funktionen frei."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

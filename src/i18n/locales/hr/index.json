@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj svoj prijedlog",
     "sidebar__summary__advanced__title": "Napredne opcije sažetka",
     "floating_menu__discard_changes_card__ai_response__title": "Želite li odbaciti AI odgovor?",
-    "floating_menu__discard_changes_card__your_draft__title": "Želite li odbaciti svoju skicu?"
+    "floating_menu__discard_changes_card__your_draft__title": "Želite li odbaciti svoju skicu?",
+    "provider__chatgpt__model__gpt_4o__description": "Najnoviji i najbrži multimodalni flagship model tvrtke OpenAI. GPT-4o bez problema kombinira tekst, audio i slikovne ulaze i izlaze, pružajući gotovo ljudska vremena odgovora i izvanredne performanse u razumijevanju jezika, vizije i zvuka, postavljajući novi standard za AI svestranost i prirodnu interakciju.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Nadogradite za neograničeni gpt-4o s vizijom",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Novi flagship model tvrtke OpenAI pruža inteligenciju na razini GPT-4, s ažurnijim odgovorima, dvostruko je brži i može zaključivati ​​na temelju audio, vizualnih i tekstualnih podataka u stvarnom vremenu.",
+    "sidebar__promotion_dialog__content__title": "Predstavljamo GPT-4o na MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Novi flagship model tvrtke OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Pruža inteligenciju na razini GPT-4 i s ažurnijim odgovorima.",
+    "sidebar__promotion_dialog__content_item8__title": "Dvostruko brži",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o je dvostruko brži od GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" za \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Može zaključivati ​​na temelju audio, vizualnih i tekstualnih podataka u stvarnom vremenu.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite nudi neograničene upite AI-a i otključava sve značajke."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

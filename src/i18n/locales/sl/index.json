@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj svoj namig",
     "sidebar__summary__advanced__title": "Napredne možnosti povzetka",
     "floating_menu__discard_changes_card__ai_response__title": "Ali želite zavreči odgovor AI?",
-    "floating_menu__discard_changes_card__your_draft__title": "Ali želite zavreči osnutek?"
+    "floating_menu__discard_changes_card__your_draft__title": "Ali želite zavreči osnutek?",
+    "provider__chatgpt__model__gpt_4o__description": "Najnovejši in najhitrejši multimodalni model OpenAI. GPT-4o brezhibno združuje besedilne, zvočne in slikovne vhode ter izhode, kar omogoča skoraj človeške odzivne čase in izjemno zmogljivost pri razumevanju jezikov, vizije in zvoka, postavljajoč nov standard za vsestranskost in naravno interakcijo umetne inteligence.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Nadgradite za neomejen gpt-4o z vizijo",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Novi paradni model OpenAI zagotavlja inteligenco na ravni GPT-4, z bolj posodobljenimi odgovori, je 2x hitrejši in lahko v realnem času razmišlja o zvoku, viziji in besedilu.",
+    "sidebar__promotion_dialog__content__title": "Predstavljamo GPT-4o na MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Novi paradni model OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Zagotavlja inteligenco na ravni GPT-4 in z bolj posodobljenimi odgovori.",
+    "sidebar__promotion_dialog__content_item8__title": "2x hitrejši",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o je 2x hitrejši od GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" za \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Lahko razmišlja o zvoku, viziji in besedilu v realnem času.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ponuja neomejena iskanja umetne inteligence in odklene vse funkcije."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

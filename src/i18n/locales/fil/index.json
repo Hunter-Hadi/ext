@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Magdagdag ng sariling prompt",
     "sidebar__summary__advanced__title": "Mga Advanced na Pagpipilian sa Buod",
     "floating_menu__discard_changes_card__ai_response__title": "Gusto mo bang itapon ang AI response?",
-    "floating_menu__discard_changes_card__your_draft__title": "Gusto mo bang itapon ang iyong draft?"
+    "floating_menu__discard_changes_card__your_draft__title": "Gusto mo bang itapon ang iyong draft?",
+    "provider__chatgpt__model__gpt_4o__description": "Pinakabagong at pinakamabilis na pangunahing modelo ng OpenAI. Nang walang kahirap-hirap, pinagsasama ng GPT-4o ang mga input at output na teksto, tunog, at imahe, nagbibigay ng halos tao na oras ng pagtugon at kahusayan sa iba't ibang wika, pang-unawa sa paningin at tunog, na nagtatatag ng isang bagong pamantayan para sa kakayahang magamit at likas na pakikipag-ugnayan ng AI.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Mag-upgrade para sa walang hanggang gpt-4o na may paningin",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Ang bagong pangunahing modelo ng OpenAI ay nagbibigay ng intelihensya na katulad ng GPT-4, may mas bago at mas mabilis na mga tugon, at kayang mag-isip tungkol sa tunog, paningin, at teksto nang real-time.",
+    "sidebar__promotion_dialog__content__title": "Ipakilala ang GPT-4o sa MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Bagong pangunahing modelo ng OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Nagbibigay ng intelihensya na katulad ng GPT-4 at may mas bago at mas mabilis na mga tugon.",
+    "sidebar__promotion_dialog__content_item8__title": "2 beses mas mabilis",
+    "sidebar__promotion_dialog__content_item8__description": "Ang GPT-4o ay 2 beses mas mabilis kaysa sa GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" para sa \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Kayang mag-isip tungkol sa tunog, paningin, at teksto nang real-time.",
+    "sidebar__promotion_dialog__footer_tips": "Ang MaxAI Elite ay nag-aalok ng walang hanggang mga pagtatanong sa AI at nagbubukas ng lahat ng mga tampok."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

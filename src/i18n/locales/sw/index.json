@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Ongeza swali langu mwenyewe",
     "sidebar__summary__advanced__title": "Chaguzi za muhtasari za juu",
     "floating_menu__discard_changes_card__ai_response__title": "Je, unataka kuacha majibu ya AI?",
-    "floating_menu__discard_changes_card__your_draft__title": "Je, unataka kuacha rasimu yako?"
+    "floating_menu__discard_changes_card__your_draft__title": "Je, unataka kuacha rasimu yako?",
+    "provider__chatgpt__model__gpt_4o__description": "Mfano mpya na wa kipekee wa OpenAI. Kwa kuunganisha kwa urahisi maandishi, sauti, na picha, GPT-4o hutoa majibu karibu ya binadamu na utendaji bora katika lugha, ufahamu wa maono, na sauti, ukiweka kiwango kipya cha ubunifu na mwingiliano asilia wa AI.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Sasisha kwa gpt-4o isiyo na kikomo na maono",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Mfano mpya wa bendera ya OpenAI unatoa akili sawa na GPT-4, majibu zaidi yaliyosasishwa, ni mara 2 haraka, na inaweza kufikiria kwa wakati halisi kupitia sauti, maono, na maandishi.",
+    "sidebar__promotion_dialog__content__title": "Kutambulisha GPT-4o kwenye MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Mfano mpya wa bendera ya OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Hutoa akili sawa na GPT-4 na majibu zaidi yaliyosasishwa.",
+    "sidebar__promotion_dialog__content_item8__title": "Maradufu haraka",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o ni mara 2 haraka kuliko GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" kwa \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Inaweza kufikiria kupitia sauti, maono, na maandishi kwa wakati halisi.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite inatoa maswali yasiyo na kikomo ya AI na kufungua vipengele vyote."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

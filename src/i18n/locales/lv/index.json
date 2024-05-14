@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pievienot savu uzdevumu",
     "sidebar__summary__advanced__title": "Papildu kopsavilkuma opcijas",
     "floating_menu__discard_changes_card__ai_response__title": "Vai vēlaties atmest AI atbildi?",
-    "floating_menu__discard_changes_card__your_draft__title": "Vai vēlaties atmest savu melnrakstu?"
+    "floating_menu__discard_changes_card__your_draft__title": "Vai vēlaties atmest savu melnrakstu?",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAI jaunākais un ātrākais multimodālais karogs. GPT-4o bez problēmām apvieno teksta, audio un attēlu ievades un izvades, nodrošinot gandrīz cilvēciskus atbildes laikus un izcilu veiktspēju visās valodās, redzes un audio saprašanā, radot jaunu standartu AI daudzpusībai un dabiskai mijiedarbībai.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Jauniniet, lai iegūtu neierobežotu gpt-4o ar redzi",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAI jaunais karogs nodrošina GPT-4 līmeņa intelektu, ar aktuālākām atbildēm, ir 2x ātrāks un spēj loģiski domāt, ņemot vērā audio, redzi un tekstu reāllaikā.",
+    "sidebar__promotion_dialog__content__title": "Iepazīstiet GPT-4o vietnē MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "OpenAI jaunais karogs",
+    "sidebar__promotion_dialog__content_item7__description": "Nodrošina GPT-4 līmeņa intelektu un ar aktuālākām atbildēm.",
+    "sidebar__promotion_dialog__content_item8__title": "2x ātrāks",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o ir 2x ātrāks nekā GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" no \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Spēj loģiski domāt, ņemot vērā audio, redzi un tekstu reāllaikā.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite piedāvā neierobežotas AI vaicājumus un atbloķē visus funkcionalitātes."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

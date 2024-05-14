@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Afegir la meva pròpia indicació",
     "sidebar__summary__advanced__title": "Opcions avançades de resum",
     "floating_menu__discard_changes_card__ai_response__title": "Voleu descartar la resposta de l'IA?",
-    "floating_menu__discard_changes_card__your_draft__title": "Voleu descartar l'esborrany?"
+    "floating_menu__discard_changes_card__your_draft__title": "Voleu descartar l'esborrany?",
+    "provider__chatgpt__model__gpt_4o__description": "El model multimodal més nou i ràpid de OpenAI. GPT-4o combina de manera perfecta text, àudio i imatges per oferir temps de resposta quasi humans i un rendiment excepcional en diferents idiomes, visió i comprensió d'àudio, establint un nou estàndard en versatilitat i interacció natural de la IA.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Millora per a gpt-4o il·limitat amb visió",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "El nou model principal de OpenAI proporciona una intel·ligència de nivell GPT-4, amb respostes més actualitzades, és el doble de ràpid i pot raonar en temps real amb àudio, visió i text.",
+    "sidebar__promotion_dialog__content__title": "Presentació de GPT-4o a MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "El nou model principal de OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Proporciona una intel·ligència de nivell GPT-4 i amb respostes més actualitzades.",
+    "sidebar__promotion_dialog__content_item8__title": "2 vegades més ràpid",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o és 2 vegades més ràpid que GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" per \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Pot raonar en temps real amb àudio, visió i text.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ofereix consultes d'IA il·limitades i desbloqueja totes les funcionalitats."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

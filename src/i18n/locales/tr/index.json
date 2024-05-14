@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Kendi ipucu ekleyin",
     "sidebar__summary__advanced__title": "Gelişmiş özet seçenekleri",
     "floating_menu__discard_changes_card__ai_response__title": "AI yanıtını atmak istiyor musunuz?",
-    "floating_menu__discard_changes_card__your_draft__title": "Taslak dosyanızı silmek istiyor musunuz?"
+    "floating_menu__discard_changes_card__your_draft__title": "Taslak dosyanızı silmek istiyor musunuz?",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAI'nin en yeni ve en hızlı multimodal amiral gemisi modeli. Metin, ses ve görüntü girişlerini ve çıkışlarını sorunsuz bir şekilde birleştiren GPT-4o, insan benzeri yanıt süreleri ve diller, görme ve ses anlayışında olağanüstü performans sunarak AI çok yönlülüğü ve doğal etkileşim için yeni bir standart belirliyor.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Sınırsız gpt-4o ile yükseltme",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAI'nin yeni amiral gemisi modeli GPT-4 seviyesinde zeka sağlar, daha güncel yanıtlar sunar, 2 kat daha hızlıdır ve gerçek zamanlı olarak ses, görüntü ve metin üzerinde akıl yürütebilir.",
+    "sidebar__promotion_dialog__content__title": "MaxAI.me'de GPT-4o'yu tanıtıyoruz",
+    "sidebar__promotion_dialog__content_item7__title": "OpenAI'nin yeni amiral gemisi modeli",
+    "sidebar__promotion_dialog__content_item7__description": "GPT-4 seviyesinde zeka sağlar ve daha güncel yanıtlar sunar.",
+    "sidebar__promotion_dialog__content_item8__title": "2 kat daha hızlı",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo'dan 2 kat daha hızlıdır.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" harfi için \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Gerçek zamanlı olarak ses, görüntü ve metin üzerinde akıl yürütebilir.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite sınırsız AI sorguları sunar ve tüm özellikleri açar."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

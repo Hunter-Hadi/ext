@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "મારી પ્રોમ્પ્ટ ઉમેરો",
     "sidebar__summary__advanced__title": "અગ્રણી સારાંશ વિકલ્પો",
     "floating_menu__discard_changes_card__ai_response__title": "શું તમે AI પ્રતિસાદ છોડવા માંગો છો?",
-    "floating_menu__discard_changes_card__your_draft__title": "શું તમે તમારી ડ્રાફ્ટ છોડવા માંગો છો?"
+    "floating_menu__discard_changes_card__your_draft__title": "શું તમે તમારી ડ્રાફ્ટ છોડવા માંગો છો?",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAIનું નવીનતમ અને ઝડપીથી બહુભાષી ફ્લેગશિપ મોડેલ. GPT-4o ટેક્સ્ટ, ઓડિયો અને છબિઓને એકત્ર કરીને મોકલે છે અને નજીકથી માનવીની પ્રતિસાદ સમય અને ભાષાઓની સમજ માટે અસાધારણ પ્રદર્શન આપે છે, જે એઆઈની વિવિધતા અને પ્રાકૃતિક અન્તરક્રિયા માટે એક નવી માનક સ્થાપિત કરે છે.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "વિશેષજ્ઞ લઈને gpt-4o માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAIનું નવું ફ્લેગશિપ મોડેલ GPT-4-સમાન બુદ્ધિમતા પૂરી કરે છે, આધુનિક પ્રતિસાદો સાથે અપડેટ કરે છે, 2x ઝડપી છે અને ઓડિયો, છબિ અને ટેક્સ્ટને ખાસ સમયમાં કારણ આપી શકે છે.",
+    "sidebar__promotion_dialog__content__title": "MaxAI.me પર GPT-4o નું પ્રસ્તાવના",
+    "sidebar__promotion_dialog__content_item7__title": "OpenAIનું નવું ફ્લેગશિપ મોડેલ",
+    "sidebar__promotion_dialog__content_item7__description": "GPT-4-સમાન બુદ્ધિમતા આપે છે અને આધુનિક પ્રતિસાદો સાથે છે.",
+    "sidebar__promotion_dialog__content_item8__title": "2x ઝડપી",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o GPT-4 Turbo કરતાં 2x ઝડપી છે.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" માટે \"ઓમ્નિમોડેલ\"",
+    "sidebar__promotion_dialog__content_item9__description": "ઓડિયો, છબિ અને ટેક્સ્ટ પર વાચક કરી શકે છે.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite અમરીકી સંયમની અનિમિત્ત અનિમિત્ત એઆઈ પ્રશ્નો અને બધા વ્યાપારને ખોલે છે."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

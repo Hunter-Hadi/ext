@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Lägg till mitt eget förslag",
     "sidebar__summary__advanced__title": "Avancerade sammanfattningsalternativ",
     "floating_menu__discard_changes_card__ai_response__title": "Vill du kasta AI-svaret?",
-    "floating_menu__discard_changes_card__your_draft__title": "Vill du kasta din utkast?"
+    "floating_menu__discard_changes_card__your_draft__title": "Vill du kasta din utkast?",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAI:s nyaste och snabbaste multimodala flaggskeppsmodell. Genom att sömlöst kombinera text-, ljud- och bildinmatning och utmatning levererar GPT-4o svarstider nära mänskliga och enastående prestanda över språk, vision och ljudförståelse, vilket sätter en ny standard för AI:s mångsidighet och naturliga interaktion.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Uppgradera för obegränsad gpt-4o med vision",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAI:s nya flaggskeppsmodell ger GPT-4-nivå intelligens, med mer aktuella svar, är 2x snabbare och kan resonera över ljud, vision och text i realtid.",
+    "sidebar__promotion_dialog__content__title": "Introducerar GPT-4o på MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "OpenAI:s nya flaggskeppsmodell",
+    "sidebar__promotion_dialog__content_item7__description": "Ger GPT-4-nivå intelligens och med mer aktuella svar.",
+    "sidebar__promotion_dialog__content_item8__title": "2x snabbare",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o är 2x snabbare än GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" för \"Omnimodell\"",
+    "sidebar__promotion_dialog__content_item9__description": "Kan resonera över ljud, vision och text i realtid.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite erbjuder obegränsade AI-förfrågningar och låser upp alla funktioner."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

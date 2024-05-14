@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "افزودن پرسش خودم",
     "sidebar__summary__advanced__title": "گزینه‌های پیشرفته خلاصه",
     "floating_menu__discard_changes_card__ai_response__title": "آیا می خواهید پاسخ هوش مصنوعی را لغو کنید؟",
-    "floating_menu__discard_changes_card__your_draft__title": "آیا می خواهید پیش نویس خود را لغو کنید؟"
+    "floating_menu__discard_changes_card__your_draft__title": "آیا می خواهید پیش نویس خود را لغو کنید؟",
+    "provider__chatgpt__model__gpt_4o__description": "جدیدترین و سریعترین مدل چندحالته OpenAI. با ترکیب بی درز ورودی‌ها و خروجی‌های متن، صوت و تصویر، GPT-4o زمان پاسخ دادن نزدیک به انسان را ارائه می‌دهد و عملکرد استثنایی خود را در زبان‌ها، بینش و درک صوتی به نمایش می‌گذارد و استاندارد جدیدی را برای چندکاربردی و تعامل طبیعی هوش مصنوعی قرار می‌دهد.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "ارتقاء برای استفاده نامحدود از gpt-4o با بینش",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "مدل پرچمدار جدید OpenAI هوش GPT-4 را ارائه می‌دهد که با پاسخ‌های به‌روزتر، دو برابر سریع‌تر است و می‌تواند به صورت زمان‌واقع درک صوت، بینش و متن را داشته باشد.",
+    "sidebar__promotion_dialog__content__title": "معرفی GPT-4o در MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "مدل پرچمدار جدید OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "هوش سطح GPT-4 را ارائه می‌دهد و با پاسخ‌های به‌روزتر است.",
+    "sidebar__promotion_dialog__content_item8__title": "دو برابر سریع",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o دو برابر سریعتر از GPT-4 Turbo است.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" برای \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "می‌تواند به صورت زمان‌واقع درک صوت، بینش و متن را داشته باشد.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite پرس‌وجوهای نامحدود هوش مصنوعی را ارائه می‌دهد و تمامی ویژگی‌ها را قفل می‌کند."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

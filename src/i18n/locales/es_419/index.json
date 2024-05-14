@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Agregar mi propia sugerencia",
     "sidebar__summary__advanced__title": "Opciones avanzadas de resumen",
     "floating_menu__discard_changes_card__ai_response__title": "¿Deseas descartar la respuesta de IA?",
-    "floating_menu__discard_changes_card__your_draft__title": "¿Deseas descartar tu borrador?"
+    "floating_menu__discard_changes_card__your_draft__title": "¿Deseas descartar tu borrador?",
+    "provider__chatgpt__model__gpt_4o__description": "El modelo insignia multimodal más nuevo y rápido de OpenAI. Combinando sin problemas entradas y salidas de texto, audio e imagen, GPT-4o ofrece tiempos de respuesta casi humanos y un rendimiento excepcional en varios idiomas, visión y comprensión de audio, estableciendo un nuevo estándar de versatilidad y interacción natural de la IA.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Actualiza para obtener gpt-4o ilimitado con visión",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "El nuevo modelo insignia de OpenAI proporciona inteligencia de nivel GPT-4, con respuestas más actualizadas, es 2 veces más rápido y puede razonar en tiempo real a través de audio, visión y texto.",
+    "sidebar__promotion_dialog__content__title": "Presentamos GPT-4o en MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "El nuevo modelo insignia de OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Proporciona inteligencia de nivel GPT-4 y con respuestas más actualizadas.",
+    "sidebar__promotion_dialog__content_item8__title": "2 veces más rápido",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o es 2 veces más rápido que GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" para \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Puede razonar en tiempo real a través de audio, visión y texto.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ofrece consultas de IA ilimitadas y desbloquea todas las funciones."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

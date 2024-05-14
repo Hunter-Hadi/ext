@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Pridať môj vlastný podnet",
     "sidebar__summary__advanced__title": "Pokročilé možnosti súhrnu",
     "floating_menu__discard_changes_card__ai_response__title": "Chcete zahodiť odpoveď AI?",
-    "floating_menu__discard_changes_card__your_draft__title": "Chcete zahodiť váš návrh?"
+    "floating_menu__discard_changes_card__your_draft__title": "Chcete zahodiť váš návrh?",
+    "provider__chatgpt__model__gpt_4o__description": "Najnovší a najrýchlejší multimodálny vlajkový model od OpenAI. GPT-4o bezproblémovo kombinuje textové, zvukové a obrazové vstupy a výstupy, poskytuje takmer ľudské reakčné časy a vynikajúce výkony vo viacerých jazykoch, rozpoznávaní obrazu a zvuku, nastavuje nový štandard pre univerzálnosť a prirodzenú interakciu s umelou inteligenciou.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Vylepšenie pre neobmedzený gpt-4o s rozpoznávaním obrazu",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Nový vlajkový model od OpenAI poskytuje inteligenciu na úrovni GPT-4 s aktuálnymi odpoveďami, je dvojnásobne rýchlejší a dokáže v reálnom čase uvažovať nad zvukom, obrazom a textom.",
+    "sidebar__promotion_dialog__content__title": "Predstavujeme GPT-4o na MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Nový vlajkový model od OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Poskytuje inteligenciu na úrovni GPT-4 s aktuálnymi odpoveďami.",
+    "sidebar__promotion_dialog__content_item8__title": "Dvojnásobne rýchlejší",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o je dvojnásobne rýchlejší ako GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" pre \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Dokáže v reálnom čase uvažovať nad zvukom, obrazom a textom.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ponúka neobmedzené dotazy na umelú inteligenciu a odomkne všetky funkcie."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Tilføj mit eget prompt",
     "sidebar__summary__advanced__title": "Avancerede opsummeringsindstillinger",
     "floating_menu__discard_changes_card__ai_response__title": "Vil du forkaste AI-svaret?",
-    "floating_menu__discard_changes_card__your_draft__title": "Vil du forkaste dit udkast?"
+    "floating_menu__discard_changes_card__your_draft__title": "Vil du forkaste dit udkast?",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAI's nyeste og hurtigste multimodale flagskibmodel. Ved at kombinere tekst, lyd og billedinput og -output leverer GPT-4o næsten menneskelige svartider og enestående ydeevne på tværs af sprog, vision og lydforståelse og sætter en ny standard for AI alsidighed og naturlig interaktion.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Opgrader for ubegrænset gpt-4o med vision",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAI's nye flagskibmodel giver GPT-4-niveau intelligens, med mere opdaterede svar, er 2x hurtigere og kan tænke på tværs af lyd, vision og tekst i realtid.",
+    "sidebar__promotion_dialog__content__title": "Introduktion af GPT-4o på MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "OpenAI's nye flagskibmodel",
+    "sidebar__promotion_dialog__content_item7__description": "Giver GPT-4-niveau intelligens og med mere opdaterede svar.",
+    "sidebar__promotion_dialog__content_item8__title": "2x hurtigere",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o er 2x hurtigere end GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" for \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Kan tænke på tværs af lyd, vision og tekst i realtid.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler og låser alle funktioner op."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

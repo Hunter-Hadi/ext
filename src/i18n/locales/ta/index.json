@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "எனது பிரம்பத்தைச் சேர்க்க",
     "sidebar__summary__advanced__title": "மேம்பட்ட சுருக்கம் விருப்பங்கள்",
     "floating_menu__discard_changes_card__ai_response__title": "நீங்கள் ஆர்டிஃபியை விலக்குவதற்கு விரும்புகிறீர்களா?",
-    "floating_menu__discard_changes_card__your_draft__title": "உங்கள் மதிப்பீட்டை நிராகரிக்க விரும்புகிறீர்களா?"
+    "floating_menu__discard_changes_card__your_draft__title": "உங்கள் மதிப்பீட்டை நிராகரிக்க விரும்புகிறீர்களா?",
+    "provider__chatgpt__model__gpt_4o__description": "ஓபன்ஏஐயின் புதியப் படைப்பு மற்றும் வேகமான பல்வேறு மொழிகளில் உருவாக்கப்பட்ட பல்வேறு மூலங்களை ஒருங்கிணைந்து வெளியிடுகிறது. GPT-4o மற்றும் மொழி, பார்வையின் மற்றும் ஒலிப்புக்களின் புள்ளிவிவரங்களை மொத்தமாக சேர்த்துக்கொண்டு, மனிதர்களுக்கு அருகிலுள்ள பதில் நேரம் மற்றும் அதிகப்படியான செயல்பாடுகளை வழங்குகிறது, எனவே ஐயியின் மற்றும் இயக்க மொழிகளின் மீது புதிய நிலையை அமைக்கும்.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "பார்வையின் மூலத்துடன் எதிர்பார்க்கும் gpt-4o க்கு மேம்படுத்தல்",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "ஓபன்ஏஐயின் புதிய படைப்பு மாதிரி GPT-4 மொழிபெயர்ப்புடன் உள்ளது, மேலும் புதுப்பிக்கப்பட்ட பதில்களைக் கொண்டுள்ளது, 2 மடங்கு விரைவானது மற்றும் உணர்வுகளை ஒலி, பார்வை, மற்றும் உரையின் மூலத்தில் ஆன நேரத்தில் கருதலாக முடியும்.",
+    "sidebar__promotion_dialog__content__title": "MaxAI.me இல் GPT-4o ஐ அறிமுகப்படுத்துகிறது",
+    "sidebar__promotion_dialog__content_item7__title": "ஓபன்ஏஐயின் புதிய படைப்பு மாதிரி",
+    "sidebar__promotion_dialog__content_item7__description": "GPT-4 மொழிபெயர்ப்புடன் உள்ளது மற்றும் மேலும் புதுப்பிக்கப்பட்ட பதில்களைக் கொண்டுள்ளது.",
+    "sidebar__promotion_dialog__content_item8__title": "2 மடங்கு விரைவானது",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo ஐ மேல் பெரியதாக உள்ள GPT-4o 2 மடங்கு விரைவானது.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" என்றால் \"ஒம்னிமோடெல்\"",
+    "sidebar__promotion_dialog__content_item9__description": "ஒலி, பார்வை, மற்றும் உரையின் மூலத்தில் நிகழ்வுகளை கருதலாக முடியும்.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite முதன்முதலில் அளவிலான AI விசாரணைகளை வழங்குகிறது மற்றும் அனைத்து அம்சங்களையும் விடுவிக்கிறது."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

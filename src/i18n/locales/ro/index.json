@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Adaugă propria mea sugestie",
     "sidebar__summary__advanced__title": "Opțiuni avansate de rezumat",
     "floating_menu__discard_changes_card__ai_response__title": "Doriți să renunțați la răspunsul AI?",
-    "floating_menu__discard_changes_card__your_draft__title": "Doriți să renunțați la proiectul dumneavoastră?"
+    "floating_menu__discard_changes_card__your_draft__title": "Doriți să renunțați la proiectul dumneavoastră?",
+    "provider__chatgpt__model__gpt_4o__description": "Cel mai nou și cel mai rapid model multimodal al OpenAI. Combinând în mod transparent intrări și ieșiri de text, audio și imagine, GPT-4o oferă timp de răspuns aproape uman și performanță excepțională în ceea ce privește limbile, viziunea și înțelegerea audio, stabilind un nou standard pentru versatilitatea și interacțiunea naturală a IA.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Upgrade pentru gpt-4o nelimitat cu viziune",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Noul model emblematic al OpenAI oferă inteligență la nivelul GPT-4, cu răspunsuri mai actualizate, este de două ori mai rapid și poate raționa în timp real asupra audio, viziunii și textului.",
+    "sidebar__promotion_dialog__content__title": "Prezentarea GPT-4o pe MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Noul model emblematic al OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Oferă inteligență la nivelul GPT-4 și cu răspunsuri mai actualizate.",
+    "sidebar__promotion_dialog__content_item8__title": "De două ori mai rapid",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o este de două ori mai rapid decât GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" pentru \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Poate raționa în timp real asupra audio, viziunii și textului.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite oferă interogări AI nelimitate și deblochează toate funcțiile."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

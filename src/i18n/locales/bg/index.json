@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Добави моята собствена подсказка",
     "sidebar__summary__advanced__title": "Разширени опции за обобщение",
     "floating_menu__discard_changes_card__ai_response__title": "Искате ли да отхвърлите отговора на ИИ?",
-    "floating_menu__discard_changes_card__your_draft__title": "Искате ли да отхвърлите черновата си версия?"
+    "floating_menu__discard_changes_card__your_draft__title": "Искате ли да отхвърлите черновата си версия?",
+    "provider__chatgpt__model__gpt_4o__description": "Най-новият и най-бързият мултимодален флагмански модел на OpenAI. GPT-4o комбинира текстови, аудио и изображения входове и изходи, осигурява близки до човешките времена за отговор и изключителна производителност в различни езици, визия и разбиране на аудио, задавайки нов стандарт за универсалност и естествена интеракция на ИИ.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Надстройка за неограничено използване на gpt-4o с визия",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Новият флагмански модел на OpenAI предоставя интелигентност на ниво GPT-4, с по-актуални отговори, е два пъти по-бърз и може да резонира в реално време с аудио, визия и текст.",
+    "sidebar__promotion_dialog__content__title": "Представяне на GPT-4o в MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Новият флагмански модел на OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Предоставя интелигентност на ниво GPT-4 и с по-актуални отговори.",
+    "sidebar__promotion_dialog__content_item8__title": "Двойно по-бърз",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o е два пъти по-бърз от GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" за \"Омнимодел\"",
+    "sidebar__promotion_dialog__content_item9__description": "Може да резонира в реално време с аудио, визия и текст.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite предлага неограничени заявки към ИИ и отключва всички функции."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

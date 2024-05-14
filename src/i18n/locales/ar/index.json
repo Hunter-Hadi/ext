@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "إضافة مشاركتي الخاصة",
     "sidebar__summary__advanced__title": "خيارات ملخص متقدمة",
     "floating_menu__discard_changes_card__ai_response__title": "هل ترغب في تجاهل استجابة الذكاء الاصطناعي؟",
-    "floating_menu__discard_changes_card__your_draft__title": "هل ترغب في التخلص من مسودتك؟"
+    "floating_menu__discard_changes_card__your_draft__title": "هل ترغب في التخلص من مسودتك؟",
+    "provider__chatgpt__model__gpt_4o__description": "أحدث نموذج رائد من OpenAI والأسرع. يجمع بسلاسة بين النصوص والصوت والصور، يقدم GPT-4o أوقات استجابة تقرب من الإنسان وأداء استثنائي عبر اللغات وفهم الرؤية والصوت، مما يضع معيارًا جديدًا لقابلية استخدام الذكاء الاصطناعي والتفاعل الطبيعي.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "الترقية للحصول على gpt-4o غير المحدود مع الرؤية",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "يوفر النموذج الرائد الجديد من OpenAI ذكاءً على مستوى GPT-4، مع إجابات أكثر حداثة وسرعة مضاعفة وقدرة على التفكير في الوقت الحقيقي عبر الصوت والرؤية والنص.",
+    "sidebar__promotion_dialog__content__title": "تقديم GPT-4o على MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "النموذج الرائد الجديد من OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "يوفر ذكاءً على مستوى GPT-4 وإجابات أكثر حداثة.",
+    "sidebar__promotion_dialog__content_item8__title": "سرعة مضاعفة",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o أسرع بمعدل 2 مرات من GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" لـ \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "يمكنه التفكير في الوقت الحقيقي عبر الصوت والرؤية والنص.",
+    "sidebar__promotion_dialog__footer_tips": "يقدم MaxAI Elite استعلامات غير محدودة للذكاء الاصطناعي ويفتح جميع الميزات."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Dodaj moją własną podpowiedź",
     "sidebar__summary__advanced__title": "Zaawansowane opcje podsumowania",
     "floating_menu__discard_changes_card__ai_response__title": "Czy chcesz odrzucić odpowiedź AI?",
-    "floating_menu__discard_changes_card__your_draft__title": "Czy chcesz odrzucić swój szkic?"
+    "floating_menu__discard_changes_card__your_draft__title": "Czy chcesz odrzucić swój szkic?",
+    "provider__chatgpt__model__gpt_4o__description": "Najnowszy i najszybszy flagowy model multimodalny OpenAI. GPT-4o łączy tekst, dźwięk i obrazy, dostarczając odpowiedzi niemal ludzkich czasów reakcji i wyjątkowej wydajności w zakresie rozumienia języków, wizji i dźwięku, ustanawiając nowy standard wszechstronności i naturalnej interakcji sztucznej inteligencji.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Uaktualnij dla nieograniczonego gpt-4o z wizją",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Nowy flagowy model OpenAI zapewnia inteligencję na poziomie GPT-4, z bardziej aktualnymi odpowiedziami, jest 2 razy szybszy i potrafi rozumować w czasie rzeczywistym na podstawie dźwięku, wizji i tekstu.",
+    "sidebar__promotion_dialog__content__title": "Przedstawiamy GPT-4o na MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Nowy flagowy model OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Zapewnia inteligencję na poziomie GPT-4 i bardziej aktualne odpowiedzi.",
+    "sidebar__promotion_dialog__content_item8__title": "2 razy szybszy",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o jest 2 razy szybszy niż GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" dla \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Potrafi rozumować w czasie rzeczywistym na podstawie dźwięku, wizji i tekstu.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite oferuje nieograniczone zapytania AI i odblokowuje wszystkie funkcje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Додати свою пропозицію",
     "sidebar__summary__advanced__title": "Розширені параметри підсумку",
     "floating_menu__discard_changes_card__ai_response__title": "Ви хочете відхилити відповідь ШІ?",
-    "floating_menu__discard_changes_card__your_draft__title": "Ви бажаєте відмінити ваш чернетку?"
+    "floating_menu__discard_changes_card__your_draft__title": "Ви бажаєте відмінити ваш чернетку?",
+    "provider__chatgpt__model__gpt_4o__description": "Найновіша та найшвидша багатомодальна флагманська модель OpenAI. Поєднуючи текст, аудіо та зображення як вхідні, так і вихідні дані, GPT-4o надає майже людський час реакції та виняткову продуктивність у всіх мовах, розумінні зору та аудіо, встановлюючи новий стандарт універсальності ШІ та природної взаємодії.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Оновлення для необмеженого gpt-4o з візуалізацією",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Нова флагманська модель OpenAI надає інтелект на рівні GPT-4, з більш актуальними відповідями, працює вдвічі швидше та може мислити через аудіо, візуалізацію та текст у реальному часі.",
+    "sidebar__promotion_dialog__content__title": "Представляємо GPT-4o на MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Нова флагманська модель OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Надає інтелект на рівні GPT-4 та з більш актуальними відповідями.",
+    "sidebar__promotion_dialog__content_item8__title": "Удвічі швидше",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o працює вдвічі швидше, ніж GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" для \"Омнімоделі\"",
+    "sidebar__promotion_dialog__content_item9__description": "Може мислити через аудіо, візуалізацію та текст у реальному часі.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite пропонує необмежені запити ШІ та розблоковує всі функції."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

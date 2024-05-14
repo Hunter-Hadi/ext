@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Tambahkan prompt saya sendiri",
     "sidebar__summary__advanced__title": "Opsi ringkasan lanjutan",
     "floating_menu__discard_changes_card__ai_response__title": "Apakah Anda ingin membuang respons AI?",
-    "floating_menu__discard_changes_card__your_draft__title": "Apakah Anda ingin membuang draf Anda?"
+    "floating_menu__discard_changes_card__your_draft__title": "Apakah Anda ingin membuang draf Anda?",
+    "provider__chatgpt__model__gpt_4o__description": "Model andalan terbaru dan tercepat dari OpenAI. Menggabungkan teks, audio, dan gambar secara mulus, GPT-4o memberikan waktu respons yang hampir manusiawi dan performa luar biasa dalam berbagai bahasa, pemahaman visual, dan audio, menetapkan standar baru untuk kecanggihan dan interaksi alami AI.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Upgrade untuk gpt-4o tanpa batas dengan visi",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Model andalan baru dari OpenAI menyediakan kecerdasan tingkat GPT-4, dengan respons terkini, 2x lebih cepat, dan mampu berpikir melintasi audio, visi, dan teks secara real-time.",
+    "sidebar__promotion_dialog__content__title": "Perkenalkan GPT-4o di MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Model andalan baru dari OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Menyediakan kecerdasan tingkat GPT-4 dengan respons terkini.",
+    "sidebar__promotion_dialog__content_item8__title": "2x lebih cepat",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o 2x lebih cepat dari GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" untuk \"Omnimodel\"",
+    "sidebar__promotion_dialog__content_item9__description": "Mampu berpikir melintasi audio, visi, dan teks secara real-time.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite menawarkan kueri AI tanpa batas dan membuka semua fitur."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

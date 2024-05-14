@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Добавить свою подсказку",
     "sidebar__summary__advanced__title": "Расширенные варианты сводки",
     "floating_menu__discard_changes_card__ai_response__title": "Вы хотите отменить ответ ИИ?",
-    "floating_menu__discard_changes_card__your_draft__title": "Вы хотите отменить черновик?"
+    "floating_menu__discard_changes_card__your_draft__title": "Вы хотите отменить черновик?",
+    "provider__chatgpt__model__gpt_4o__description": "Самая новая и быстрая многофункциональная флагманская модель от OpenAI. GPT-4o безупречно сочетает текстовые, аудио- и изображения ввода и вывода, обеспечивая почти человеческое время отклика и выдающуюся производительность в различных языках, видении и понимании аудио, устанавливая новый стандарт для универсальности и естественного взаимодействия с ИИ.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Повышение до неограниченного gpt-4o с видением",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Новая флагманская модель от OpenAI предоставляет интеллект на уровне GPT-4, с более актуальными ответами, работает в 2 раза быстрее и способна рассуждать на основе аудио, видео и текста в режиме реального времени.",
+    "sidebar__promotion_dialog__content__title": "Представляем GPT-4o на MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "Новая флагманская модель от OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "Предоставляет интеллект на уровне GPT-4 и более актуальные ответы.",
+    "sidebar__promotion_dialog__content_item8__title": "В 2 раза быстрее",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o работает в 2 раза быстрее, чем GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" означает \"Омни-модель\"",
+    "sidebar__promotion_dialog__content_item9__description": "Способна рассуждать на основе аудио, видео и текста в режиме реального времени.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite предлагает неограниченные запросы к ИИ и разблокирует все функции."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

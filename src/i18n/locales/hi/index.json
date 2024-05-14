@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "अपना प्रॉम्प्ट जोड़ें",
     "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प",
     "floating_menu__discard_changes_card__ai_response__title": "क्या आप AI प्रतिक्रिया को छोड़ना चाहते हैं?",
-    "floating_menu__discard_changes_card__your_draft__title": "क्या आप अपने ड्राफ्ट को छोड़ना चाहते हैं?"
+    "floating_menu__discard_changes_card__your_draft__title": "क्या आप अपने ड्राफ्ट को छोड़ना चाहते हैं?",
+    "provider__chatgpt__model__gpt_4o__description": "ओपनएआई का नवीनतम और सबसे तेज़ मल्टीमोडल फ़्लैगशिप मॉडल। पाठ, ऑडियो और छवि इनपुट और आउटपुट को सहजता से मिलाकर, GPT-4o मानवीय प्रतिक्रिया के समय और भाषा, दृष्टि और ऑडियो समझ के अत्यधिक प्रदर्शन को प्रदान करता है, जो AI की बहुमुखीता और प्राकृतिक अंतराक्रिया के लिए एक नया मानक स्थापित करता है।",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "विज़न के साथ असीमित gpt-4o के लिए अपग्रेड करें",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "ओपनएआई का नया फ़्लैगशिप मॉडल GPT-4 स्तरीय बुद्धिमत्ता प्रदान करता है, जिसमें अद्यतित प्रतिक्रियाएँ होती हैं, 2 गुना तेज़ है और ऑडियो, विज़न और पाठ के बीच वास्तविक समय में तर्क कर सकता है।",
+    "sidebar__promotion_dialog__content__title": "MaxAI.me पर GPT-4o का परिचय",
+    "sidebar__promotion_dialog__content_item7__title": "ओपनएआई का नया फ़्लैगशिप मॉडल",
+    "sidebar__promotion_dialog__content_item7__description": "GPT-4 स्तरीय बुद्धिमत्ता प्रदान करता है और अद्यतित प्रतिक्रियाएँ हैं।",
+    "sidebar__promotion_dialog__content_item8__title": "2 गुना तेज़",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo से GPT-4o 2 गुना तेज़ है।",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" के लिए \"ओम्नीमॉडल\"",
+    "sidebar__promotion_dialog__content_item9__description": "ऑडियो, विज़न और पाठ के बीच वास्तविक समय में तर्क कर सकता है।",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite असीमित AI क्वेरी प्रदान करता है और सभी सुविधाओं को अनलॉक करता है।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

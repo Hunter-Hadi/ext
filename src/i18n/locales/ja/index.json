@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "プロンプトを追加する",
     "sidebar__summary__advanced__title": "高度なサマリーオプション",
     "floating_menu__discard_changes_card__ai_response__title": "AIの応答を破棄しますか？",
-    "floating_menu__discard_changes_card__your_draft__title": "下書きを破棄しますか？"
+    "floating_menu__discard_changes_card__your_draft__title": "下書きを破棄しますか？",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAIの最新かつ最速のマルチモーダルフラッグシップモデル。テキスト、音声、画像の入出力をシームレスに組み合わせ、GPT-4oは人間に近い応答時間と優れたパフォーマンスを提供し、言語、ビジョン、音声理解のすべてで新たなAIの多様性と自然なインタラクションの基準を設定します。",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "ビジョン付きの無制限のGPT-4oにアップグレード",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAIの新しいフラッグシップモデルは、GPT-4レベルの知能を提供し、最新の応答をより高速に処理し、リアルタイムでオーディオ、ビジョン、テキストを推論することができます。",
+    "sidebar__promotion_dialog__content__title": "MaxAI.meでGPT-4oをご紹介",
+    "sidebar__promotion_dialog__content_item7__title": "OpenAIの新しいフラッグシップモデル",
+    "sidebar__promotion_dialog__content_item7__description": "GPT-4レベルの知能を提供し、最新の応答を提供します。",
+    "sidebar__promotion_dialog__content_item8__title": "2倍速",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4oはGPT-4 Turboよりも2倍速です。",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\"は\"オムニモデル\"",
+    "sidebar__promotion_dialog__content_item9__description": "リアルタイムでオーディオ、ビジョン、テキストを推論することができます。",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Eliteでは無制限のAIクエリが可能であり、すべての機能が利用できます。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

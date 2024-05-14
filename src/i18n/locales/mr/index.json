@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "माझे स्वतःचे प्रॉम्प्ट जोडा",
     "sidebar__summary__advanced__title": "उन्नत सारांश विकल्प",
     "floating_menu__discard_changes_card__ai_response__title": "तुम्हाला AI प्रतिसाद वगळायला आवडेल का?",
-    "floating_menu__discard_changes_card__your_draft__title": "तुम्हाला आपले मसूद विसरणार आहात का?"
+    "floating_menu__discard_changes_card__your_draft__title": "तुम्हाला आपले मसूद विसरणार आहात का?",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAIचे नवीनतम आणि जलद मल्टिमोडल फ्लॅगशिप मॉडेल. पाठ, ऑडिओ आणि इमेज प्रविष्टींचा एकत्रित वापर करून, GPT-4o मानवपेक्षा प्रतिसाद काळाच्या वेळा आणि भाषांमध्ये अद्वितीय कार्यक्षमता देतो, ज्ञान, आणि ऑडिओ समजून, AI विविधतेसाठी नवीन मानक स्थापित करतो.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "विजनसह अमर्यादित gpt-4o साठी अपग्रेड करा",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "OpenAIचे नवीन फ्लॅगशिप मॉडेल GPT-4-स्तरीय बुद्धिमत्ता प्रदान करते, अद्याप अद्याप उत्तरे देणारे आहे, 2 वेळा जलद आहे आणि ऑडिओ, विजन आणि पाठांमध्ये तत्काल वेळेत तरंगटन करू शकतो.",
+    "sidebar__promotion_dialog__content__title": "MaxAI.me वर GPT-4o चे परिचय",
+    "sidebar__promotion_dialog__content_item7__title": "OpenAIचे नवीन फ्लॅगशिप मॉडेल",
+    "sidebar__promotion_dialog__content_item7__description": "GPT-4-स्तरीय बुद्धिमत्ता प्रदान करते आणि अद्याप अद्याप उत्तरे देतात.",
+    "sidebar__promotion_dialog__content_item8__title": "2 वेळा जलद",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turboपेक्षा GPT-4o 2 वेळा जलद आहे.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" चे \"ओम्निमॉडेल\"",
+    "sidebar__promotion_dialog__content_item9__description": "ऑडिओ, विजन आणि पाठांमध्ये तत्काल वेळेत तरंगटन करू शकतो.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite अमर्यादित AI क्वेरी प्रदान करते आणि सर्व सुविधांचा अनलॉक करते."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

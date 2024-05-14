@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Saját kérdés hozzáadása",
     "sidebar__summary__advanced__title": "Speciális összegzési lehetőségek",
     "floating_menu__discard_changes_card__ai_response__title": "Szeretné elvetni az AI választ?",
-    "floating_menu__discard_changes_card__your_draft__title": "Szeretné eldobni a piszkozatát?"
+    "floating_menu__discard_changes_card__your_draft__title": "Szeretné eldobni a piszkozatát?",
+    "provider__chatgpt__model__gpt_4o__description": "OpenAI legújabb és leggyorsabb multimodális zászlóshajó modellje. A GPT-4o szöveges, hang- és képbevitelt és -kimenetet tökéletesen kombinálva közel emberi válaszidőt és kivételes teljesítményt nyújt a nyelvek, a látás és a hang megértése terén, új mércét állítva az AI sokoldalúságában és természetes interakciójában.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "Frissítés korlátlan gpt-4o-val és látással",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "Az OpenAI új zászlóshajó modellje GPT-4-szintű intelligenciát biztosít, frissebb válaszokkal, kétszer gyorsabb és valós időben tud gondolkodni a hang, a látás és a szöveg területén.",
+    "sidebar__promotion_dialog__content__title": "Bemutatkozik a GPT-4o a MaxAI.me oldalon",
+    "sidebar__promotion_dialog__content_item7__title": "Az OpenAI új zászlóshajó modellje",
+    "sidebar__promotion_dialog__content_item7__description": "GPT-4-szintű intelligenciát biztosít és frissebb válaszokkal rendelkezik.",
+    "sidebar__promotion_dialog__content_item8__title": "Kétszer gyorsabb",
+    "sidebar__promotion_dialog__content_item8__description": "A GPT-4o kétszer gyorsabb, mint a GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" az \"Omnimodell\" rövidítése",
+    "sidebar__promotion_dialog__content_item9__description": "Valós időben tud gondolkodni a hang, a látás és a szöveg területén.",
+    "sidebar__promotion_dialog__footer_tips": "A MaxAI Elite korlátlan AI lekérdezést kínál és minden funkciót felold."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

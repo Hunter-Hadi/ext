@@ -779,7 +779,18 @@
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "הוסף הצעה שלי",
     "sidebar__summary__advanced__title": "אפשרויות סיכום מתקדמות",
     "floating_menu__discard_changes_card__ai_response__title": "האם ברצונך לבטל את תשובת המודעה המלאכותית?",
-    "floating_menu__discard_changes_card__your_draft__title": "האם ברצונך לבטל את הטיוטה שלך?"
+    "floating_menu__discard_changes_card__your_draft__title": "האם ברצונך לבטל את הטיוטה שלך?",
+    "provider__chatgpt__model__gpt_4o__description": "הדגם החדש והמהיר ביותר של OpenAI. בשילוב מתמיד של טקסט, שמע ותמונה כקלט וכפלט, GPT-4o מספק זמני תגובה דומים לאנושיים וביצועים יוצאי דופן במגוון שפות, ראייה והבנה של שמע, ומציב סטנדרט חדש לגמישות ואינטראקציה טבעית של AI.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "שדרג ל-GPT-4o בלתי מוגבל עם ראייה",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "הדגם החדש של OpenAI מספק אינטיליגנציה ברמת GPT-4, עם תגובות מעודכנות יותר, מהיר בפי 2 ומסוגל להיסיק בין שמע, ראייה וטקסט בזמן אמת.",
+    "sidebar__promotion_dialog__content__title": "מבצע: GPT-4o על MaxAI.me",
+    "sidebar__promotion_dialog__content_item7__title": "הדגם החדש של OpenAI",
+    "sidebar__promotion_dialog__content_item7__description": "מספק אינטיליגנציה ברמת GPT-4 ותגובות מעודכנות יותר.",
+    "sidebar__promotion_dialog__content_item8__title": "מהיר בפי 2",
+    "sidebar__promotion_dialog__content_item8__description": "GPT-4o מהיר בפי 2 מ-GPT-4 Turbo.",
+    "sidebar__promotion_dialog__content_item9__title": "\"O\" עבור \"אומנימודל\"",
+    "sidebar__promotion_dialog__content_item9__description": "יכול להיסיק בין שמע, ראייה וטקסט בזמן אמת.",
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite מציע אין-סופי שאילתות AI ומפתח את כל התכונות."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

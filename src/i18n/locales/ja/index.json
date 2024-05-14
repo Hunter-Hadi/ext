@@ -1,6 +1,6 @@
 {
   "description": "ChatGPT、Claude 3、Gemini 1.5によってパワーアップされた1クリックAIをどこでもご利用ください。必要なのはこの生成型AI拡張機能だけです。",
-  "name": "MaxAI.me：GPT-4、Claude 3、Gemini 1.5による1クリックAI",
+  "name": "MaxAI.me：GPT-4o、Claude 3、Gemini 1.5による1クリックAI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ログアウト",

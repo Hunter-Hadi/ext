@@ -1,6 +1,6 @@
 {
   "description": "Bruk 1-klikk AI hvor som helst, drevet av ChatGPT, Claude 3, Gemini 1.5, GPT-4. Den eneste generative AI-utvidelsen du trenger.",
-  "name": "MaxAI.me: 1-klikk AI drevet av GPT-4, Claude 3, Gemini 1.5",
+  "name": "MaxAI.me: 1-klikk AI drevet av GPT-4o, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logg ut",

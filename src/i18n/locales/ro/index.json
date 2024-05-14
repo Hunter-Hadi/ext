@@ -1,6 +1,6 @@
 {
   "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
-  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4o, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Deconectare",

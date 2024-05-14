@@ -1,6 +1,6 @@
 {
   "description": "Använd 1-klicks AI var som helst, drivet av ChatGPT, Claude 3, Gemini 1.5, GPT-4. Den enda generativa AI-tillägget du behöver.",
-  "name": "MaxAI.me: 1-klicks AI drivet av GPT-4, Claude 3, Gemini 1.5",
+  "name": "MaxAI.me: 1-klicks AI drivet av GPT-4o, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logga ut",

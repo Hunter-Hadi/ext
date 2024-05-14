@@ -1,6 +1,6 @@
 {
   "description": "GPT-4, Claude 3, Gemini 1.5 द्वारा संचालित 1-क्लिक AI कहींथले वापरा. आपल्याला आवश्यक असेलेले एकमेकांत्रित उत्पन्न AI विस्तार.",
-  "name": "MaxAI.me: GPT-4, Claude 3, Gemini 1.5 द्वारा संचालित 1-क्लिक AI",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4o, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "लॉग आउट करा",

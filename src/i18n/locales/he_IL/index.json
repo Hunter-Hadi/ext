@@ -1,6 +1,6 @@
 {
   "description": "השתמש ב-AI בלחיצה אחת בכל מקום, מופעל על ידי ChatGPT, Claude 3, Gemini 1.5, GPT-4. התוסף היחיד שאתה צריך ליצירת AI יוצרת.",
-  "name": "MaxAI.me: הפעלת AI בלחיצה אחת עם GPT-4, Claude 3, Gemini 1.5",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4o, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "התנתק",

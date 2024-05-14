@@ -1,6 +1,6 @@
 {
   "description": "Kasuta 1-kliki AI-d kõikjal, toetatud ChatGPT, Claude 3, Gemini 1.5, GPT-4. Ainuke generatiivne AI laiendus, mida vajad.",
-  "name": "MaxAI.me: 1-kliki AI, mida toetab GPT-4, Claude 3, Gemini 1.5",
+  "name": "MaxAI.me: 1-klikk AI, mida toetab GPT-4o, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logi välja",

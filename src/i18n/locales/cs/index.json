@@ -1,6 +1,6 @@
 {
   "description": "Použijte 1-klikové AI kdekoli, poháněné ChatGPT, Claude 3, Gemini 1.5, GPT-4. Jediné generativní rozšíření AI, které potřebujete.",
-  "name": "MaxAI.me: 1-klikové AI poháněné GPT-4, Claude 3, Gemini 1.5",
+  "name": "MaxAI.me: 1-klikové AI poháněné GPT-4o, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odhlásit se",

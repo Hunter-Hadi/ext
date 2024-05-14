@@ -1,6 +1,6 @@
 {
   "description": "GPT-4, Claude 3, Gemini 1.5로 구동되는 어디서든지 사용할 수 있는 1-클릭 AI. 필요한 유일한 생성형 AI 확장 기능.",
-  "name": "MaxAI.me: GPT-4, Claude 3, Gemini 1.5로 구동되는 1-클릭 AI",
+  "name": "MaxAI.me: GPT-4o, Claude 3, Gemini 1.5에 의해 제공되는 1-클릭 AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "로그아웃",

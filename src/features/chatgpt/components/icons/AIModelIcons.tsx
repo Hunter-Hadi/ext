@@ -6,9 +6,11 @@ import { IAIProviderType } from '@/background/provider/chat'
 import {
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+  MAXAI_CHATGPT_MODEL_GPT_4O,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import {
   ChatGPT4Icon,
+  ChatGPT4OIcon,
   ChatGPTIcon,
   ClaudeIcon,
   DALLEIcon,
@@ -42,6 +44,15 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
     case MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO:
       return (
         <ChatGPTIcon
+          sx={{
+            ...sx,
+            fontSize: size,
+          }}
+        />
+      )
+    case MAXAI_CHATGPT_MODEL_GPT_4O:
+      return (
+        <ChatGPT4OIcon
           sx={{
             ...sx,
             fontSize: size,

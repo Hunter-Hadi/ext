@@ -13,6 +13,7 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 const AcceptAndCopyActionSupportedHosts = new Set([
   'mail.google.com',
   'outlook.live.com',
+  'youtube.com',
 ])
 
 const useDraftContextMenuList = () => {

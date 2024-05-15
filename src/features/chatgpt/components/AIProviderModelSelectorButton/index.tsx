@@ -20,7 +20,9 @@ import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChat
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { isThirdPartyAIProvider } from '@/features/chatgpt'
-import AIModelSelectorCard from '@/features/chatgpt/components/AIProviderModelSelectorCard'
+import AIModelSelectorCard, {
+  AIProviderModelTagIcon,
+} from '@/features/chatgpt/components/AIProviderModelSelectorCard'
 import { ChatAIProviderModelSelectorOptions } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
@@ -274,6 +276,10 @@ const AIProviderModelSelectorButton: FC<{
               >
                 {currentModelDetail.label}
               </Typography>
+            )}
+            {/* 2024-05-15 临时需求，针对gemini-1.5-pro显示Beta标签 */}
+            {currentModelDetail?.value === 'gemini-1.5-pro' && (
+              <AIProviderModelTagIcon ml={0} tag="Beta" />
             )}
             {!disabled && (
               <ContextMenuIcon

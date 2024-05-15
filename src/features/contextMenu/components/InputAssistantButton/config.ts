@@ -1118,20 +1118,63 @@ const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGrou
       rootParentDeep: 2,
       rootStyle: 'display: flex;align-items: center;margin-top: 8px',
       rootWrapperTagName: 'div',
-      composeNewButton: {
-        tooltip: 'client:input_assistant_button__compose_new__tooltip',
-        buttonKey: 'inputAssistantComposeNewButton',
-        permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
-      },
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onSelectionEffect: ({ id: buttonId }) => {
+          if (InstantReplyButtonIdToInputMap.has(buttonId)) {
+            return
+          }
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+
+          if (inputAssistantButton) {
+            const inputBox = findParentEqualSelector(
+              'ytcp-commentbox #body #main',
+              inputAssistantButton as HTMLElement,
+              6,
+            )?.querySelector<HTMLElement>('textarea')
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       refineDraftButton: {
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onSelectionEffect: ({ id: buttonId }) => {
+          if (InstantReplyButtonIdToInputMap.has(buttonId)) {
+            return
+          }
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+
+          if (inputAssistantButton) {
+            const inputBox = findParentEqualSelector(
+              'ytcp-commentbox #body #main',
+              inputAssistantButton as HTMLElement,
+              6,
+            )?.querySelector<HTMLElement>('textarea')
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       CTAButtonStyle: {
         padding: '10px 9px',
@@ -1146,7 +1189,7 @@ const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGrou
         borderRadius: '18px',
         marginLeft: '24px',
       },
-    },
+    } as IInputAssistantButtonGroupConfig,
     {
       enable: (rootElement) => {
         const commentDialog = findParentEqualSelector(
@@ -1177,15 +1220,29 @@ const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGrou
               inputAssistantButtonSelector,
             )
 
-          findSelectorParent(
-            '#reply-button [role="button"]',
-            inputAssistantButton as HTMLElement,
-            2,
-          )?.click()
+          if (inputAssistantButton) {
+            const ytcpComment = findParentEqualSelector(
+              'ytcp-comment',
+              inputAssistantButton as HTMLElement,
+              9,
+            )
 
-          setTimeout(() => {
-            inputAssistantButton?.parentElement?.remove()
-          })
+            findSelectorParent(
+              '#reply-button [role="button"]',
+              inputAssistantButton as HTMLElement,
+              2,
+            )?.click()
+
+            setTimeout(() => {
+              const inputBox = ytcpComment?.querySelector<HTMLElement>(
+                'ytcp-commentbox #body #main textarea',
+              )
+              if (inputBox) {
+                InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+              }
+              inputAssistantButton?.parentElement?.remove()
+            }, 100)
+          }
         },
       },
       CTAButtonStyle: {

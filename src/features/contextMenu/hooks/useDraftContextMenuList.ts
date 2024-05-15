@@ -14,6 +14,7 @@ const AcceptAndCopyActionSupportedHosts = new Set([
   'mail.google.com',
   'outlook.live.com',
   'youtube.com',
+  'studio.youtube.com',
 ])
 
 const useDraftContextMenuList = () => {

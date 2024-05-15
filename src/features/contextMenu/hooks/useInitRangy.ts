@@ -85,7 +85,7 @@ const copyText = (text: string) => {
 // 自动聚焦并把光标移动到末尾
 function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
   try {
-    if (inputBox.contentEditable) {
+    if (inputBox.contentEditable === 'true') {
       inputBox.focus()
       const range = document.createRange()
       const selection = window.getSelection()
@@ -667,7 +667,7 @@ const useInitRangy = () => {
               const inputBox =
                 InstantReplyButtonIdToInputMap.get(instantReplyButtonId)
               if (inputBox) {
-                if (inputBox.contentEditable) {
+                if (inputBox.contentEditable === 'true') {
                   inputBox.innerHTML = lastOutputRef.current.replaceAll(
                     /\n/g,
                     '<br />',

@@ -8,7 +8,7 @@
     "dev": "node ./build/esbuild.config.mjs --app=usechatgpt",
     "test": "cross-env NODE_ENV=test node ./build/esbuild.config.mjs --app=usechatgpt",
     "release": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
-    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}",
+    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx,html,css,json,yaml}",
     "prepare": "husky"
   },
   "dependencies": {
@@ -148,9 +148,8 @@
     "node": ">=16.0.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json}": [
-      "prettier --write",
-      "eslint --fix"
+    "src/**/*.{js,jsx,ts,tsx,html,css,json,yaml}": [
+      "prettier --write"
     ]
   }
 }

@@ -1,62 +1,62 @@
-import '@/i18n';
+import '@/i18n'
 
-import RefreshIcon from '@mui/icons-material/Refresh';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import Alert from '@mui/material/Alert';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import React, { FC, useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { useTranslation } from 'react-i18next';
-import { RecoilRoot, useSetRecoilState } from 'recoil';
-import Browser from 'webextension-polyfill';
+import RefreshIcon from '@mui/icons-material/Refresh'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import Alert from '@mui/material/Alert'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import React, { FC, useState } from 'react'
+import { createRoot } from 'react-dom/client'
+import { useTranslation } from 'react-i18next'
+import { RecoilRoot, useSetRecoilState } from 'recoil'
+import Browser from 'webextension-polyfill'
 
-import { backgroundSendClientMessage } from '@/background/utils';
-import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage';
-import AppThemeProvider from '@/components/AppTheme';
-import { UseChatGptIcon } from '@/components/CustomIcon';
-import TooltipButton from '@/components/TooltipButton';
-import { APP_USE_CHAT_GPT_HOST } from '@/constants';
-import useEffectOnce from '@/features/common/hooks/useEffectOnce';
-import { useInitI18n } from '@/i18n/hooks';
-import { AppDBStorageState } from '@/store';
-import { chromeExtensionClientOpenPage } from '@/utils';
+import { backgroundSendClientMessage } from '@/background/utils'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
+import AppThemeProvider from '@/components/AppTheme'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import TooltipButton from '@/components/TooltipButton'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useInitI18n } from '@/i18n/hooks'
+import { AppDBStorageState } from '@/store'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
-import BulletList from '../../components/BulletList';
+import BulletList from '../../components/BulletList'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
-const root = createRoot(document.getElementById('root') as HTMLDivElement);
+const root = createRoot(document.getElementById('root') as HTMLDivElement)
 const App: FC<{
-  isSpecialPage: boolean;
+  isSpecialPage: boolean
 }> = (props) => {
-  const updateAppSettings = useSetRecoilState(AppDBStorageState);
-  const { isSpecialPage } = props;
-  useInitI18n();
-  const { t } = useTranslation(['common', 'client']);
-  const [shortCutKey, setShorCutKey] = useState('');
-  const [currentTabId, setCurrentTabId] = useState<number | undefined>();
+  const updateAppSettings = useSetRecoilState(AppDBStorageState)
+  const { isSpecialPage } = props
+  useInitI18n()
+  const { t } = useTranslation(['common', 'client'])
+  const [shortCutKey, setShorCutKey] = useState('')
+  const [currentTabId, setCurrentTabId] = useState<number | undefined>()
   const init = async () => {
-    const commands = (await Browser.commands.getAll()) || [];
+    const commands = (await Browser.commands.getAll()) || []
     setShorCutKey(
       commands.find((command) => command.name === '_execute_action')
         ?.shortcut || 'unset',
-    );
+    )
     const tabs = await Browser.tabs.query({
       active: true,
       currentWindow: true,
-    });
+    })
 
     if (tabs && tabs[0]) {
-      setCurrentTabId(tabs[0].id);
+      setCurrentTabId(tabs[0].id)
     }
-  };
+  }
   useEffectOnce(() => {
-    init();
-    getLiteChromeExtensionDBStorage().then(updateAppSettings);
-  });
+    init()
+    getLiteChromeExtensionDBStorage().then(updateAppSettings)
+  })
   return (
     <Stack
       minWidth={400}
@@ -107,11 +107,11 @@ const App: FC<{
             minWidth: 'unset',
           }}
           onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
+            event.stopPropagation()
+            event.preventDefault()
             chromeExtensionClientOpenPage({
               key: 'options',
-            });
+            })
           }}
         >
           <SettingsOutlinedIcon sx={{ fontSize: 16, color: 'text.primary' }} />
@@ -148,8 +148,8 @@ const App: FC<{
           startIcon={<RefreshIcon sx={{ fontSize: 16, color: 'inherit' }} />}
           onClick={async () => {
             if (currentTabId) {
-              await Browser.tabs.reload(currentTabId);
-              window.close();
+              await Browser.tabs.reload(currentTabId)
+              window.close()
             }
           }}
         >
@@ -178,7 +178,7 @@ const App: FC<{
           <Link
             href={'#'}
             onClick={async () => {
-              await chromeExtensionClientOpenPage({ key: 'shortcuts' });
+              await chromeExtensionClientOpenPage({ key: 'shortcuts' })
             }}
           >
             {t('client:popup__set_shortcut__description3')}
@@ -187,25 +187,25 @@ const App: FC<{
         </Typography>
       </Stack>
     </Stack>
-  );
-};
+  )
+}
 
 const init = async () => {
   // hide popup
   const currentTab = await Browser.tabs.query({
     active: true,
     currentWindow: true,
-  });
+  })
 
   setTimeout(async () => {
-    let isSpecialPage = false;
+    let isSpecialPage = false
     try {
-      const tabId = currentTab && currentTab[0] && currentTab[0].id;
+      const tabId = currentTab && currentTab[0] && currentTab[0].id
       const tabUrl =
-        (currentTab && currentTab[0] && currentTab[0].url) || 'chrome://';
+        (currentTab && currentTab[0] && currentTab[0].url) || 'chrome://'
       isSpecialPage =
         tabUrl.startsWith('chrome') ||
-        tabUrl.startsWith('https://chrome.google.com/webstore');
+        tabUrl.startsWith('https://chrome.google.com/webstore')
       if (isSpecialPage) {
         if (
           tabUrl.includes('pages/pdf/web') &&
@@ -213,35 +213,35 @@ const init = async () => {
         ) {
           // pdf page
         } else {
-          throw new Error('isSpecialPage');
+          throw new Error('isSpecialPage')
         }
       }
       if (tabId) {
-        await Browser.tabs.sendMessage(tabId, {});
+        await Browser.tabs.sendMessage(tabId, {})
         const result = await backgroundSendClientMessage(
           tabId,
           'Client_listenOpenChatMessageBox',
           {
             type: 'shortcut',
           },
-        );
+        )
         if (result) {
           Browser.action.setPopup({
             popup: '',
-          });
-          window.close();
+          })
+          window.close()
         } else {
-          throw new Error('no result');
+          throw new Error('no result')
         }
       }
     } catch (e) {
       if (isSpecialPage) {
         chromeExtensionClientOpenPage({
           url: Browser.runtime.getURL(`/pages/chat/index.html`),
-        });
-        return;
+        })
+        return
       }
-      console.log(e);
+      console.log(e)
       root.render(
         <React.StrictMode>
           <RecoilRoot>
@@ -250,12 +250,12 @@ const init = async () => {
             </AppThemeProvider>
           </RecoilRoot>
         </React.StrictMode>,
-      );
+      )
     } finally {
       Browser.action.setBadgeText({
         text: '',
-      });
+      })
     }
-  }, 100);
-};
-init();
+  }, 100)
+}
+init()

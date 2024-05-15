@@ -226,8 +226,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Reduced ChatGPT webpage refreshes",
     "feature_card__chatgpt_stable_mode__protips__title": "Protips",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT stable mode is a feature that reduces ChatGPT interruptions and network errors.",
-    "feature_card__perks__one_click_prompts__title": "1-click prompts",
-    "feature_card__perks__one_click_prompts__card_title": "1-click prompts",
+    "feature_card__perks__one_click_prompts__title": "AI prompt library",
+    "feature_card__perks__one_click_prompts__card_title": "AI prompt library",
     "feature_card__perks__one_click_prompts__card_description": "Turn hours-long tasks into minutes using our expanding collection of prompts for marketing, sales, copywriting, operation, productivity, and customer support.",
     "feature_card__perks__one_click_prompts__card_button_text": "Get MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Rewards",
@@ -290,7 +290,7 @@
     "sidebar__speed_dial__search_history__button": "Search history",
     "sidebar__speed_dial__summary_history__button": "Summary history",
     "sidebar__speed_dial__art_history__button": "Art history",
-    "sidebar__speed_dial__one_click_prompts__button": "1-click prompts",
+    "sidebar__speed_dial__one_click_prompts__button": "AI prompt library",
     "sidebar__speed_dial__restart_extension__button": "Restart extension",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Restart MaxAI.me extension?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "A quick extension restart can clear all existing glitches.",
@@ -700,7 +700,7 @@
     "art__text_to_image__advanced__aspect_ratio__title": "Aspect ratio",
     "art__text_to_image__advanced__content_type__title": "Content type",
     "art__model__dalle3__description": "DALL-E 3, developed by OpenAI, is a revolutionary text-to-image model that creates highly detailed images from textual descriptions, showcasing a significant advancement in AI-driven image generation.",
-    "home_view_content_nav__one_click_prompts_title": "1-click prompts",
+    "home_view_content_nav__one_click_prompts_title": "AI prompt library",
     "home_view_content_nav__my_own_prompts__title": "My own prompts",
     "home_view_content_nav__summary_page__title": "Summarize & ask on page",
     "home_view_content_nav__summary_video__title": "Summarize & ask on video",
@@ -840,8 +840,8 @@
     "ai_response_language__settings__label_2": "language setting"
   },
   "prompt_library": {
-    "use_prompt_library__title": "1-Click Prompts",
-    "use_prompt_library__title__tooltip": "1-click prompts",
+    "use_prompt_library__title": "High quality AI prompt library",
+    "use_prompt_library__title__tooltip": "AI prompt library",
     "tab__favorites__title": "Favorites",
     "tab__public__title": "Public",
     "tab__own__title": "Own",
@@ -894,7 +894,7 @@
     "sidebar_tour__step__5__feature_2__title": "Settings",
     "sidebar_tour__step__5__feature_3__title": "Chat history",
     "sidebar_tour__step__5__feature_4__title": "AI screenshot",
-    "sidebar_tour__step__5__feature_5__title": "1-click prompts",
+    "sidebar_tour__step__5__feature_5__title": "AI prompt library",
     "sidebar_tour__step__5__feature_6__title": "Use prompt"
   },
   "quota_usage_card": {

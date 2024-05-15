@@ -110,7 +110,7 @@ const App: FC<{
             event.stopPropagation()
             event.preventDefault()
             chromeExtensionClientOpenPage({
-              key: 'options',
+              key: 'add',
             })
           }}
         >

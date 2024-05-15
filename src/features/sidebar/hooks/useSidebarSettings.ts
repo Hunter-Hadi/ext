@@ -140,6 +140,20 @@ const useSidebarSettings = () => {
       }
     })
   }
+  const updateImmersiveSettings = async (
+    newImmersiveSettings: IChromeExtensionLocalStorage['immersiveSettings'],
+  ) => {
+    await setChromeExtensionLocalStorage({
+      immersiveSettings: newImmersiveSettings,
+    })
+    const savedAppLocalStorage = await getChromeExtensionLocalStorage()
+    setAppLocalStorage((prev) => {
+      return {
+        ...prev,
+        immersiveSettings: savedAppLocalStorage.immersiveSettings,
+      }
+    })
+  }
   const updateSidebarConversationType = (
     newSidebarConversationType: ISidebarConversationType,
   ) => {
@@ -394,6 +408,7 @@ const useSidebarSettings = () => {
     createSidebarConversation,
     resetSidebarConversation,
     sidebarSettings: appLocalStorage.sidebarSettings,
+    immersiveSettings: appLocalStorage.immersiveSettings,
     currentSidebarConversationType,
     currentSidebarAIProvider,
     currentSidebarConversation,
@@ -407,6 +422,7 @@ const useSidebarSettings = () => {
     sidebarSummaryConversationId,
     updateSidebarSummaryConversationId,
     continueConversationInSidebar,
+    updateImmersiveSettings,
   }
 }
 export default useSidebarSettings

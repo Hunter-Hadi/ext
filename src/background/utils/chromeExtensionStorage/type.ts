@@ -216,7 +216,24 @@ export interface IChromeExtensionLocalStorage {
         [key in string]: string
       }
     }
-  }
+  },
+  immersiveSettings?: {
+    chat?: {
+      conversationId?: string
+      AIProvider?: IAIProviderType
+      AIModel?: string
+    }
+    search?: {
+      conversationId?: string
+      AIProvider?: IAIProviderType
+      AIModel?: string
+    }
+    art?: {
+      conversationId?: string
+      AIProvider?: IAIProviderType
+      AIModel?: string
+    }
+  },
   thirdProviderSettings?: {
     [P in IAIProviderType]?: IThirdProviderSettings[P]
   }

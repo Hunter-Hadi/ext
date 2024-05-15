@@ -16,7 +16,6 @@ import {
   IUserRole,
   IUserRoleType,
 } from '@/features/auth/types'
-import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 export const getMaxAIChromeExtensionAccessToken = async (): Promise<string> => {
@@ -186,12 +185,6 @@ export const fetchUserSubscriptionInfo = async (): Promise<
         // usage:19
         if (result?.data?.roles && isArray(result.data.roles)) {
           let is_one_times_pay_user = false
-          await setDailyUsageLimitData({
-            has_reached_limit: result.data.has_reached_limit,
-            limit_value: result.data.limit_value,
-            next_reset_timestamp: result.data.next_reset_timestamp,
-            usage: result.data.usage,
-          })
           let role =
             result.data.roles.find((role: { name: string; exp_time: number }) =>
               checkIsPayingUser(role?.name as IUserRoleType),

@@ -148,7 +148,11 @@
     "node": ">=16.0.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,html,css,json,yaml}": [
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "src/**/*.{html,css,json,yaml}": [
       "prettier --write"
     ]
   }

@@ -11,10 +11,13 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 // 支持 Accept_and_copy action 的网站
 const AcceptAndCopyActionSupportedHosts = new Set([
+  // Mail
   'mail.google.com',
   'outlook.live.com',
+  // Social media
   'youtube.com',
   'studio.youtube.com',
+  'linkedin.com',
 ])
 
 const useDraftContextMenuList = () => {

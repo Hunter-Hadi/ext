@@ -567,6 +567,29 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
+        onSelectionEffect: ({ id: buttonId }) => {
+          if (InstantReplyButtonIdToInputMap.has(buttonId)) {
+            return
+          }
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = findSelectorParent(
+              '.ql-editor[contenteditable="true"]',
+              inputAssistantButton,
+              6,
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
@@ -578,11 +601,57 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
         DropdownButtonStyle: {
           padding: '0px',
         },
+        onSelectionEffect: ({ id: buttonId }) => {
+          if (InstantReplyButtonIdToInputMap.has(buttonId)) {
+            return
+          }
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = findSelectorParent(
+              '.ql-editor[contenteditable="true"]',
+              inputAssistantButton,
+              6,
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       refineDraftButton: {
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onSelectionEffect: ({ id: buttonId }) => {
+          if (InstantReplyButtonIdToInputMap.has(buttonId)) {
+            return
+          }
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = findSelectorParent(
+              '.ql-editor[contenteditable="true"]',
+              inputAssistantButton,
+              6,
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       CTAButtonStyle: {
         iconSize: 16,
@@ -631,15 +700,25 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
               inputAssistantButtonSelector,
             )
 
-          inputAssistantButton?.parentNode?.parentNode
-            ?.querySelector<HTMLElement>(
-              'button[data-finite-scroll-hotkey="c"]',
-            )
-            ?.click()
+          if (inputAssistantButton) {
+            inputAssistantButton.parentNode?.parentNode
+              ?.querySelector<HTMLElement>(
+                'button[data-finite-scroll-hotkey="c"]',
+              )
+              ?.click()
 
-          setTimeout(() => {
-            inputAssistantButton?.parentElement?.remove()
-          })
+            setTimeout(() => {
+              const inputBox = findSelectorParent(
+                '.ql-editor[contenteditable="true"]',
+                inputAssistantButton as HTMLElement,
+                3,
+              )
+              if (inputBox) {
+                InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+              }
+              inputAssistantButton.parentElement?.remove()
+            }, 100)
+          }
         },
       },
       appendPosition: 0,
@@ -674,11 +753,26 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
               inputAssistantButtonSelector,
             )
 
-          inputAssistantButton?.parentNode?.parentNode
-            ?.querySelector<HTMLElement>(
-              'button.comments-comment-social-bar__reply-action-button',
-            )
-            ?.click()
+          if (inputAssistantButton) {
+            inputAssistantButton?.parentNode?.parentNode
+              ?.querySelector<HTMLElement>(
+                'button.comments-comment-social-bar__reply-action-button',
+              )
+              ?.click()
+            if (InstantReplyButtonIdToInputMap.has(buttonId)) {
+              return
+            }
+            setTimeout(() => {
+              const inputBox = findSelectorParent(
+                '.ql-editor[contenteditable="true"]',
+                inputAssistantButton as HTMLElement,
+                6,
+              )
+              if (inputBox) {
+                InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+              }
+            }, 100)
+          }
         },
       },
       appendPosition: 0,

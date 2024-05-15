@@ -45,7 +45,10 @@ import rangyLib from '@/lib/rangy/rangy-core'
 import initRangyPosition from '@/lib/rangy/rangy-position'
 import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
 import { AppDBStorageState } from '@/store'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import {
+  getCurrentDomainHost,
+  isMaxAIImmersiveChatPage,
+} from '@/utils/dataHelper/websiteHelper'
 import Log from '@/utils/Log'
 
 import { useRangy } from './useRangy'
@@ -83,14 +86,14 @@ const copyText = (text: string) => {
 }
 
 // 自动聚焦并把光标移动到末尾
+const triggerEvents = ['input', 'change', 'keyup', 'paste']
 function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
   try {
+    inputBox.focus()
     if (inputBox.contentEditable === 'true') {
-      inputBox.focus()
       const range = document.createRange()
       const selection = window.getSelection()
-      const childNodes = inputBox.childNodes
-      const lastNode = childNodes[childNodes.length - 1]
+      const lastNode = Array.from(inputBox.childNodes || []).at(-1)
       if (lastNode) {
         // 如果存在子节点，将光标移动到最后一个子节点的末尾
         const lastNodeRange = document.createRange()
@@ -98,6 +101,9 @@ function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
         const lastNodeContentsLength = lastNodeRange.toString().length
         range.setStart(lastNode, lastNodeContentsLength)
         range.setEnd(lastNode, lastNodeContentsLength)
+        setTimeout(() => {
+          (lastNode as HTMLElement).scrollIntoView({ block: 'end' })
+        }, 100)
       } else {
         // 如果没有子节点，直接将光标移动到元素的起始位
         range.selectNodeContents(inputBox)
@@ -108,40 +114,47 @@ function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
       inputBox instanceof HTMLInputElement ||
       inputBox instanceof HTMLTextAreaElement
     ) {
-      inputBox.focus()
       const valueLength = inputBox.value.length
       inputBox.setSelectionRange(valueLength, valueLength)
     }
-    setTimeout(() => {
-      inputBox.scrollIntoView({ block: 'end' })
-      // 触发事件，让编辑框可能绑定的事件监听器生效
+    inputBox.scrollIntoView({ block: 'end' })
+
+    // 触发事件，让编辑框可能绑定的事件监听器生效
+    triggerEvents.forEach((eventName) => {
       inputBox.dispatchEvent(
-        new Event('input', {
+        new Event(eventName, {
           bubbles: true,
           cancelable: true,
         }),
       )
-      inputBox.dispatchEvent(
-        new Event('change', {
-          bubbles: true,
-          cancelable: true,
-        }),
-      )
-      inputBox.dispatchEvent(
-        new Event('keyup', {
-          bubbles: true,
-          cancelable: true,
-        }),
-      )
-      inputBox.dispatchEvent(
-        new Event('paste', {
-          bubbles: true,
-          cancelable: true,
-        }),
-      )
-    }, 100)
+    })
   } catch (err) {
     console.error(err)
+  }
+}
+
+// 插入内容到编辑框
+const insertContentToInputBox = (
+  inputBox: HTMLElement | null | undefined,
+  content: string,
+) => {
+  if (inputBox) {
+    const host = getCurrentDomainHost()
+    if (inputBox.contentEditable === 'true') {
+      // 有些网站回复别人会自动 quote mention
+      let quoteMention = ''
+      if (host === 'linkedin.com') {
+        quoteMention = inputBox.querySelector('a.ql-mention')?.outerHTML || ''
+      }
+
+      inputBox.innerHTML = quoteMention + content.replaceAll(/\n/g, '<br />')
+    } else {
+      // eslint-disable-next-line no-extra-semi
+      ;(inputBox as HTMLInputElement).value = content
+    }
+    setTimeout(() => {
+      focusAndMoveCursorToEnd(inputBox)
+    }, 100)
   }
 }
 
@@ -666,20 +679,7 @@ const useInitRangy = () => {
               copyText(lastOutputRef.current)
               const inputBox =
                 InstantReplyButtonIdToInputMap.get(instantReplyButtonId)
-              if (inputBox) {
-                if (inputBox.contentEditable === 'true') {
-                  inputBox.innerHTML = lastOutputRef.current.replaceAll(
-                    /\n/g,
-                    '<br />',
-                  )
-                } else {
-                  // eslint-disable-next-line no-extra-semi
-                  ;(inputBox as HTMLInputElement).value = lastOutputRef.current
-                }
-                setTimeout(() => {
-                  focusAndMoveCursorToEnd(inputBox)
-                }, 100)
-              }
+              insertContentToInputBox(inputBox, lastOutputRef.current)
             }
           } catch (err) {
             console.error(err)

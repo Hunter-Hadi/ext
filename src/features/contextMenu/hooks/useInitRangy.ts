@@ -114,6 +114,31 @@ function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
     }
     setTimeout(() => {
       inputBox.scrollIntoView({ block: 'end' })
+      // 触发事件，让编辑框可能绑定的事件监听器生效
+      inputBox.dispatchEvent(
+        new Event('input', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+      inputBox.dispatchEvent(
+        new Event('change', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+      inputBox.dispatchEvent(
+        new Event('keyup', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+      inputBox.dispatchEvent(
+        new Event('paste', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
     }, 100)
   } catch (err) {
     console.error(err)

@@ -19,6 +19,7 @@ import {
 import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
+import { IPromptLibraryCardType } from '@/features/prompt_library/types'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
@@ -400,10 +401,23 @@ const generateTrackParams = async (
 
 export const getPromptTypeByContextMenu = (
   contextMenuItem: IContextMenuItem | undefined,
+  oneClickPromptMeta?: {
+    isOneClickPrompt?: boolean
+    oneClickPromptType?: IPromptLibraryCardType
+  },
 ): {
   promptType: 'preset' | 'custom' | 'freestyle'
   instantType?: 'reply' | 'refine' | 'new' | null
 } => {
+  const { isOneClickPrompt = false, oneClickPromptType = 'public' } =
+    oneClickPromptMeta ?? {}
+
+  if (isOneClickPrompt) {
+    return {
+      promptType: oneClickPromptType === 'private' ? 'custom' : 'preset',
+    }
+  }
+
   if (contextMenuItem) {
     const contextMenuId = contextMenuItem.id
     const presetActionPromptIds = Object.values(CONTEXT_MENU_DRAFT_TYPES)

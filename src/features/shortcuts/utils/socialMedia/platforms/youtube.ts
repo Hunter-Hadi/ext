@@ -16,17 +16,16 @@ import {
   findParentEqualSelector,
   findSelectorParent,
 } from '@/utils/dataHelper/elementHelper'
+import { getInstantReplyDataHelper } from '@/utils/dataHelper/instantReplyHelper'
 
 const getYouTubeCommentContent = async (
   ytdCommentBox: HTMLElement,
 ): Promise<ICommentData> => {
   const author =
-    ytdCommentBox.querySelector<HTMLElement>('#author-text yt-formatted-string')
-      ?.innerText || ''
+    ytdCommentBox.querySelector<HTMLElement>('a#author-text')?.innerText || ''
   const date =
-    ytdCommentBox.querySelector<HTMLElement>(
-      'yt-formatted-string.published-time-text',
-    )?.innerText || ''
+    ytdCommentBox.querySelector<HTMLElement>('#published-time-text')
+      ?.innerText || ''
   const commentText =
     ytdCommentBox.querySelector<HTMLElement>('#content-text')?.innerText || ''
   const like =
@@ -44,6 +43,42 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
   try {
+    // 优化：将上次获取的 context 缓存起来，然后判断
+    //// - 1. 如果点的是和上次点的同一个 button
+    //// - 2. 或者还是在同一个 context window 里进行操作
+    // 那么通过直接返回上次缓存的 context 即可
+    //// - 点击的是 Instant reply button 的话一定会有 instantReplyButtonId
+    //// - 否则点击的就是 Summarize button, 这时候就会缓存 Transcript
+    const instantReplyDataHelper = getInstantReplyDataHelper()
+    const instantReplyButtonId =
+      inputAssistantButton.getAttribute('maxai-input-assistant-button-id') || ''
+    if (instantReplyButtonId) {
+      if (
+        instantReplyDataHelper.getAttribute('aria-operation-selector-id') ===
+        instantReplyButtonId
+      ) {
+        const fullContextCache = instantReplyDataHelper.getAttribute(
+          'data-full-context-cache',
+        )
+        const targetContextCache = instantReplyDataHelper.getAttribute(
+          'data-target-context-cache',
+        )
+        if (targetContextCache) {
+          return {
+            postText: fullContextCache || targetContextCache,
+            SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: targetContextCache,
+            SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT:
+              fullContextCache || targetContextCache,
+            SOCIAL_MEDIA_PAGE_CONTENT: '',
+          }
+        }
+      }
+      instantReplyDataHelper.setAttribute(
+        'aria-operation-selector-id',
+        instantReplyButtonId,
+      )
+    }
+
     const youTubeVideoId = YoutubeTranscript.retrieveVideoId(
       window.location.href,
     )
@@ -51,9 +86,30 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
     let youTubeSocialMediaPostContext: SocialMediaPostContext | null = null
     if (youTubeVideoId) {
       // youTube transcript
-      const youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
-        await YoutubeTranscript.fetchTranscript(window.location.href),
+      let youTubeTranscriptText = ''
+      if (
+        instantReplyDataHelper.getAttribute('aria-youtube-video-id') ===
+        youTubeVideoId
+      ) {
+        youTubeTranscriptText =
+          instantReplyDataHelper.getAttribute(
+            'data-youtube-transcript-cache',
+          ) || ''
+      }
+      instantReplyDataHelper.setAttribute(
+        'aria-youtube-video-id',
+        youTubeVideoId,
       )
+      if (!youTubeTranscriptText) {
+        youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
+          await YoutubeTranscript.fetchTranscript(window.location.href),
+        )
+        instantReplyDataHelper.setAttribute(
+          'data-youtube-transcript-cache',
+          youTubeTranscriptText,
+        )
+      }
+
       const youTubeVideoMetaData = document.querySelector('ytd-watch-metadata')
       const title =
         (
@@ -143,12 +199,14 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
         )
       }
     }
+
     if (youTubeSocialMediaPostContext) {
       // comment box
       const youtubeCommentBoxSelector = '#body.ytd-comment-view-model'
       const ytdCommentBox = findParentEqualSelector(
         youtubeCommentBoxSelector,
         inputAssistantButton,
+        8,
       )
       if (ytdCommentBox) {
         // 视频底下的评论
@@ -182,6 +240,20 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           youTubeSocialMediaPostContext.addCommentList(commentList)
         }
       }
+
+      if (instantReplyButtonId) {
+        instantReplyDataHelper.setAttribute(
+          'data-full-context-cache',
+          youTubeSocialMediaPostContext.data
+            .SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+        )
+        instantReplyDataHelper.setAttribute(
+          'data-target-context-cache',
+          youTubeSocialMediaPostContext.data
+            .SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
+        )
+      }
+
       return youTubeSocialMediaPostContext.data
     }
   } catch (e) {
@@ -189,6 +261,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   }
   return SocialMediaPostContext.emptyData
 }
+
 export const getYouTubeSocialMediaPostCommentsContent: (
   result: ISocialMediaPostContextData,
 ) => Promise<ISocialMediaPostContextData | null> = async (result) => {
@@ -331,6 +404,7 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
     return null
   }
 }
+
 export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
   inputAssistantButton,
 ) => {

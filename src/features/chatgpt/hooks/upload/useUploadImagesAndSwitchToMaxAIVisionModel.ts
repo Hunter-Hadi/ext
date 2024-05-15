@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useRef } from 'react'
 
-import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
+import {
+  MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+  MAXAI_CHATGPT_MODEL_GPT_4O,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -37,10 +40,12 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           clientConversation?.meta?.AIModel &&
           [
             MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+            MAXAI_CHATGPT_MODEL_GPT_4O,
             'claude-3-sonnet',
             'claude-3-opus',
             'claude-3-haiku',
             'gemini-pro',
+            'gemini-1.5-pro',
           ].includes(clientConversation.meta.AIModel),
       )
       if (
@@ -49,10 +54,12 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         clientConversation?.meta?.AIModel &&
         [
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+          MAXAI_CHATGPT_MODEL_GPT_4O,
           'claude-3-sonnet',
           'claude-3-opus',
           'claude-3-haiku',
           'gemini-pro',
+          'gemini-1.5-pro',
         ].includes(clientConversation.meta.AIModel)
       ) {
         if (createConversationResolveRef.current) {
@@ -108,10 +115,12 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           !conversation?.meta?.AIModel ||
           ![
             MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+            MAXAI_CHATGPT_MODEL_GPT_4O,
             'claude-3-sonnet',
             'claude-3-opus',
             'claude-3-haiku',
             'gemini-pro',
+            'gemini-1.5-pro',
           ].includes(conversation?.meta?.AIModel)
         ) {
           await createConversation(
@@ -142,7 +151,8 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     }
     if (
       currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
-      currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO
+      (currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO ||
+        currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4O)
     ) {
       return true
     }
@@ -152,7 +162,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       )
     }
     if (currentAIProvider === 'MAXAI_GEMINI') {
-      return ['gemini-pro'].includes(currentAIProviderModel)
+      return ['gemini-pro', 'gemini-1.5-pro'].includes(currentAIProviderModel)
     }
     return false
   }, [currentAIProvider, currentAIProviderModel])

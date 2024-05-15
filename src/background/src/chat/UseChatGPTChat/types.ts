@@ -42,6 +42,7 @@ export interface IMaxAIRequestHistoryMessage {
 
 export const MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO = 'gpt-3.5-turbo'
 export const MAXAI_CHATGPT_MODEL_GPT_4_TURBO = 'gpt-4-turbo-preview'
+export const MAXAI_CHATGPT_MODEL_GPT_4O = 'gpt-4o'
 
 export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   {
@@ -155,4 +156,15 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   //     roles: ['pro', 'elite'],
   //   },
   // },
+  {
+    title: 'gpt-4o',
+    value: MAXAI_CHATGPT_MODEL_GPT_4O,
+    titleTag: 'New',
+    tags: ['New', 'Vision'],
+    poweredBy: 'OpenAI',
+    description: (t) =>
+      t('client:provider__chatgpt__model__gpt_4o__description'),
+    maxTokens: 128000,
+    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+  }
 ]

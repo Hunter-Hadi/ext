@@ -70,10 +70,11 @@ const PreviewPanel = () => {
     return {
       ...setModalConfig,
       actions: configActions,
+      title,
       template,
       modelKey: 'PromptPreview',
     }
-  }, [actions, template])
+  }, [actions, title, template])
 
   useEffect(() => {
     // 为了能让ActionSetVariablesModal组件能正常执行

@@ -347,7 +347,10 @@ export class ActionAskChatGPT extends Action {
             data: {
               name: contextMenu?.text || fallbackId,
               id: contextMenu?.id || fallbackId,
-              type: getPromptTypeByContextMenu(contextMenu).promptType,
+              type: getPromptTypeByContextMenu(contextMenu, {
+                isOneClickPrompt: this.question.meta.isOneClickPrompt,
+                oneClickPromptType: this.question.meta.promptType,
+              }).promptType,
               featureName: getFeatureNameByConversationAndContextMenu(
                 conversation,
                 contextMenu,
@@ -521,7 +524,7 @@ export class ActionAskChatGPT extends Action {
                 return
               } else {
                 if (errorMessage.startsWith('Too many requests in 1 hour')) {
-                  errorMessage = `Too many requests. Try again later, or use premium AI models managed by MaxAl instead to ensure reliable and high-quality AI performance and user experience.
+                  errorMessage = `Too many requests. Try again later, or use premium AI models managed by MaxAI instead to ensure reliable and high-quality AI performance and user experience.
                 ![switch-provider](${getChromeExtensionAssetsURL(
                   '/images/on-boarding/switch-AI-model.gif',
                 )})`

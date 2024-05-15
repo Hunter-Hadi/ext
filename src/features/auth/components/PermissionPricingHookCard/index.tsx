@@ -1,3 +1,4 @@
+import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -9,7 +10,6 @@ import { useTranslation } from 'react-i18next'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import {
   PricingHooksFeatureIcon,
-  PricingHooksRocketIcon,
 } from '@/features/auth/components/PermissionPricingHookCard/icons'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
@@ -189,7 +189,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
         )}
 
         {/* cta button */}
-        <Stack spacing={2} mt={'16px !important'}>
+        <Stack spacing={1} mt={'16px !important'}>
           <Button
             fullWidth
             sx={{
@@ -200,18 +200,19 @@ const PermissionPricingHookCard: FC<IProps> = ({
             variant={'contained'}
             color={'primary'}
             target={'_blank'}
+            startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
             href={ctaButtonLink}
             onClick={ctaButtonClick}
           >
             {ctaButtonText}
           </Button>
           <Stack direction={'row'} spacing={0.5} alignItems="start">
-            <PricingHooksRocketIcon
-              sx={{
-                fontSize: 20,
-                color: 'primary.main',
-              }}
-            />
+            {/*<PricingHooksRocketIcon*/}
+            {/*  sx={{*/}
+            {/*    fontSize: 20,*/}
+            {/*    color: 'primary.main',*/}
+            {/*  }}*/}
+            {/*/>*/}
             <Typography fontSize={14} color="rgba(255, 255, 255, 0.7)">
               {t('client:permission__pricing_hook__footer_tip')}
             </Typography>

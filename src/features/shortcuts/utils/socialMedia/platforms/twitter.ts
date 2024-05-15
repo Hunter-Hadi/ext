@@ -11,6 +11,7 @@ import {
   findParentEqualSelector,
   findSelectorParent,
 } from '@/utils/dataHelper/elementHelper'
+import { getInstantReplyDataHelper } from '@/utils/dataHelper/instantReplyHelper'
 
 /**
  * 获取Twitter消息详情
@@ -43,6 +44,40 @@ const getTweetDetail = (tweetElement: HTMLElement): ISocialMediaPost => {
 export const twitterGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
+  // 优化：将上次获取的 context 缓存起来，然后判断
+  //// - 1. 如果点的是和上次点的同一个 button
+  //// - 2. 或者还是在同一个 context window 里进行操作
+  // 那么通过直接返回上次缓存的 context 即可
+  const instantReplyDataHelper = getInstantReplyDataHelper()
+  const instantReplyButtonId =
+    inputAssistantButton.getAttribute('maxai-input-assistant-button-id') || ''
+  if (instantReplyButtonId) {
+    if (
+      instantReplyDataHelper.getAttribute('aria-operation-selector-id') ===
+      instantReplyButtonId
+    ) {
+      const fullContextCache = instantReplyDataHelper.getAttribute(
+        'data-full-context-cache',
+      )
+      const targetContextCache = instantReplyDataHelper.getAttribute(
+        'data-target-context-cache',
+      )
+      if (targetContextCache) {
+        return {
+          postText: fullContextCache || targetContextCache,
+          SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: targetContextCache,
+          SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT:
+            fullContextCache || targetContextCache,
+          SOCIAL_MEDIA_PAGE_CONTENT: '',
+        }
+      }
+    }
+    instantReplyDataHelper.setAttribute(
+      'aria-operation-selector-id',
+      instantReplyButtonId,
+    )
+  }
+
   const tweetRoot = findSelectorParent(
     'article[data-testid="tweet"]',
     inputAssistantButton,
@@ -73,10 +108,26 @@ export const twitterGetPostContent: GetSocialMediaPostContentFunction = async (
         firstPost as ISocialMediaPost,
       )
       twitterSocialMediaPostContext.addCommentList(tweetList)
+      instantReplyDataHelper.setAttribute(
+        'data-full-context-cache',
+        twitterSocialMediaPostContext.data.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+      )
+      instantReplyDataHelper.setAttribute(
+        'data-target-context-cache',
+        twitterSocialMediaPostContext.data.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
+      )
       return twitterSocialMediaPostContext.data
     } else {
       const twitterSocialMediaPostContext = new SocialMediaPostContext(
         getTweetDetail(tweetRoot),
+      )
+      instantReplyDataHelper.setAttribute(
+        'data-full-context-cache',
+        twitterSocialMediaPostContext.data.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+      )
+      instantReplyDataHelper.setAttribute(
+        'data-target-context-cache',
+        twitterSocialMediaPostContext.data.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
       )
       return twitterSocialMediaPostContext.data
     }

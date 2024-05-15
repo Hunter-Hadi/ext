@@ -46,19 +46,6 @@ interface InputAssistantButtonContextMenuProps {
   onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
 
-// 会触发 onSelectionEffect 的 actions
-// const selectionEffectActions = new Set([
-//   // instant reply
-//   'GET_CONTENTS_OF_WEBPAGE',
-//   'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-//   'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-//   'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
-//   // refine draft
-//   'GET_EMAIL_DRAFT_OF_WEBPAGE',
-//   // key point or custom prompt with custom variables
-//   'SET_VARIABLES_MODAL'
-// ])
-
 const InputAssistantButtonContextMenu: FC<
   InputAssistantButtonContextMenuProps
 > = (props) => {
@@ -167,8 +154,8 @@ const InputAssistantButtonContextMenu: FC<
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
           if (
-            event === 'beforeRunAction' &&
-            data?.action?.type === 'ASK_CHATGPT'
+            (data?.action?.type === 'ASK_CHATGPT' && event === 'beforeRunAction') ||
+            (event === 'action' && data?.type === 'SET_VARIABLES_MODAL' && data?.status === 'complete')
           ) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error

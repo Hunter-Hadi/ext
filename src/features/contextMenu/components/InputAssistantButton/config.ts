@@ -68,8 +68,8 @@ export interface IInputAssistantButtonGroupConfig
 
 export const EmailWebsites = [
   'mail.google.com',
-  'outlook.office.com',
   'outlook.live.com',
+  'outlook.office.com',
   'outlook.office365.com',
 ] as const
 
@@ -273,11 +273,47 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = document.querySelector<HTMLElement>(
+              '#ReadingPaneContainerId div[id] > div[role="textbox"][contenteditable="true"]',
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            const inputBox = document.querySelector<HTMLElement>(
+              '#ReadingPaneContainerId div[id] > div[role="textbox"][contenteditable="true"]',
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
       },
       refineDraftButton: {
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
@@ -293,32 +329,11 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
             )) as HTMLElement
 
           if (inputAssistantButton) {
-            const rootElement =
-              document.querySelector<HTMLDivElement>(
-                'div[data-app-section="ConversationContainer"]',
-              ) ||
-              document.querySelector<HTMLDivElement>(
-                'div[data-app-section="MailReadCompose"] div[data-app-section="ItemContainer"]',
-              )
-
-            if (rootElement && rootElement.contains(inputAssistantButton)) {
-              const emailItem = Array.from(
-                rootElement.querySelectorAll(
-                  '& > div > div:has(div[tabindex])',
-                ),
-              ).find((emailContainer) =>
-                emailContainer.contains(inputAssistantButton),
-              )
-              if (emailItem) {
-                setTimeout(() => {
-                  const inputBox = emailItem.querySelector<HTMLElement>(
-                    'div[contenteditable="true"]',
-                  )
-                  if (inputBox) {
-                    InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
-                  }
-                }, 500)
-              }
+            const inputBox = document.querySelector<HTMLElement>(
+              '#ReadingPaneContainerId div[id] > div[role="textbox"][contenteditable="true"]',
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
             }
           }
         },
@@ -392,13 +407,17 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
               )
               if (emailItem) {
                 setTimeout(() => {
-                  const inputBox = emailItem.querySelector<HTMLElement>(
-                    'div[contenteditable="true"]',
-                  )
+                  const inputBox =
+                    emailItem.querySelector<HTMLElement>(
+                      'div[contenteditable="true"]',
+                    ) ||
+                    document.querySelector(
+                      '#ReadingPaneContainerId div[id] > div[role="textbox"][contenteditable="true"]',
+                    )
                   if (inputBox) {
                     InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
                   }
-                }, 500)
+                }, 1000)
               }
             }
 
@@ -428,7 +447,8 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
     {
       enable: true,
       rootSelectors: [
-        'div[data-testid="toolBar"] > div:nth-child(2) div[role="button"][data-testid]',
+        'div[data-testid="toolBar"] [role="button"][data-testid="tweetButtonInline"]',
+        'div[data-testid="toolBar"] [role="button"][data-testid="tweetButton"]',
       ],
       rootSelectorStyle: 'order:2;',
       rootParentDeep: 1,
@@ -473,6 +493,7 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
       },
       rootSelectors: [
         'div[role="progressbar"] + div > div > div > div > div > div > div > div > div > div:not([data-testid="toolBar"]) > div > div[role="button"][data-testid="tweetButtonInline"]',
+        'div:has([data-testid^="tweetTextarea"]) > [data-testid="tweetButtonInline"][role="button"][tabindex]',
       ],
       rootParentDeep: 1,
       rootWrapperTagName: 'div',
@@ -481,9 +502,20 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
         onSelectionEffect: () => {
-          const replyTextarea = document.querySelector(
-            'div[role="button"][data-testid="tweetButtonInline"]',
-          )?.parentElement?.firstElementChild as HTMLElement
+          let replyTextarea: HTMLElement | null = null
+          if (
+            document.querySelector(
+              'div[role="progressbar"] + div > div > div > div > div > div > div > div > div > div:not([data-testid="toolBar"]) > div > div[role="button"][data-testid="tweetButtonInline"]',
+            )
+          ) {
+            replyTextarea = document.querySelector(
+              'div[role="button"][data-testid="tweetButtonInline"]',
+            )?.parentElement?.firstElementChild as HTMLElement
+          } else {
+            replyTextarea = document.querySelector<HTMLElement>(
+              '[data-testid^="tweetTextarea"]',
+            )
+          }
           replyTextarea?.click()
         },
       },
@@ -989,6 +1021,7 @@ const YouTubeWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
       CTAButtonStyle: {
         padding: '8px 18px',
         iconSize: 16,
+        borderWidth: 0,
         borderRadius: '18px',
       },
       InputAssistantBoxSx: {

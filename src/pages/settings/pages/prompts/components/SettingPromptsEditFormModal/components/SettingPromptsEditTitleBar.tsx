@@ -243,14 +243,14 @@ const TitleBar: FC<{
       py={1}
       px={2}
     >
-      <Stack direction="row" alignItems="center" spacing={1}>
+      <Stack direction="row" alignItems="center" spacing={1} overflow="hidden">
         {node.data?.icon && (
           <ContextMenuIcon
             icon={node.data.icon}
             sx={{ fontSize: 24, color: 'primary.main' }}
           />
         )}
-        <Typography variant="h6">{modalTitle}</Typography>
+        <Typography variant="h6" noWrap>{modalTitle}</Typography>
       </Stack>
 
       <DropdownMenu

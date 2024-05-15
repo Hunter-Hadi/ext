@@ -233,24 +233,6 @@ export const generateSearchWithAIActions = async (
               systemVariable: true,
               hidden: true,
             },
-            {
-              label: 'AI Response language',
-              VariableName: 'AI_RESPONSE_LANGUAGE',
-              valueType: 'Text',
-              systemVariable: true,
-            },
-            {
-              label: 'Tone',
-              VariableName: 'AI_RESPONSE_WRITING_STYLE',
-              valueType: 'Text',
-              systemVariable: true,
-            },
-            {
-              label: 'Writing style',
-              VariableName: 'AI_RESPONSE_TONE',
-              valueType: 'Text',
-              systemVariable: true,
-            },
           ],
           output: [
             {

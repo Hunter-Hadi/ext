@@ -103,6 +103,13 @@ export type IAIResponseOriginalMessageMetadataTitle = {
   titleIcon?: string
   titleIconSize?: number
 }
+/**
+ * summary底下的related questions
+ */
+export type IAIResponseOriginalMessageMetaDeepRelatedData = {
+  title: string
+  icon?: string
+}
 export type IAIResponseOriginalMessageMetaDeep = {
   title?: IAIResponseOriginalMessageMetadataTitle
 } & (
@@ -113,6 +120,10 @@ export type IAIResponseOriginalMessageMetaDeep = {
   | {
       type: 'transcript' | 'timestampedSummary'
       value: TranscriptResponse[]
+    }
+  | {
+      type: 'related'
+      value: IAIResponseOriginalMessageMetaDeepRelatedData[]
     }
 )
 

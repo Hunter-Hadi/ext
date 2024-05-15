@@ -158,7 +158,6 @@ const useInitContextWindow = () => {
   const {
     createConversation,
     getConversation,
-    resetConversation,
     currentConversationId,
     conversationStatus,
     currentConversationIdRef,
@@ -657,7 +656,7 @@ const useInitContextWindow = () => {
     const createContextMenuConversation = async () => {
       if (currentConversationIdRef.current) {
         isCreatingConversationRef.current = true
-        await resetConversation()
+
         const conversation = await getConversation(
           currentConversationIdRef.current,
         )

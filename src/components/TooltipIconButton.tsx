@@ -34,7 +34,7 @@ const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
       }}
       {...TooltipProps}
     >
-      <div>
+      <span>
         <IconButton {...iconButtonProps}>
           {loading ? (
             <CircularProgress size={16} sx={{ m: '0 auto' }} />
@@ -42,7 +42,7 @@ const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
             children
           )}
         </IconButton>
-      </div>
+      </span>
     </TextOnlyTooltip>
   )
 }

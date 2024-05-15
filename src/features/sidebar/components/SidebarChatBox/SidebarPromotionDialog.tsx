@@ -95,22 +95,22 @@ const SidebarPromotionDialog = () => {
 
   const promotionDescription = useMemo(() => {
     return [
-      {
-        title: t('sidebar__promotion_dialog__content_item1__title'),
-        description: t('sidebar__promotion_dialog__content_item1__description'),
-      },
-      {
-        title: t('sidebar__promotion_dialog__content_item2__title'),
-        description: t('sidebar__promotion_dialog__content_item2__description'),
-      },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item1__title'),
+      //   description: t('sidebar__promotion_dialog__content_item1__description'),
+      // },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item2__title'),
+      //   description: t('sidebar__promotion_dialog__content_item2__description'),
+      // },
       // {
       //   title: t('sidebar__promotion_dialog__content_item3__title'),
       //   description: t('sidebar__promotion_dialog__content_item3__description'),
       // },
-      {
-        title: t('sidebar__promotion_dialog__content_item4__title'),
-        description: t('sidebar__promotion_dialog__content_item4__description'),
-      },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item4__title'),
+      //   description: t('sidebar__promotion_dialog__content_item4__description'),
+      // },
       // {
       //   title: t('sidebar__promotion_dialog__content_item5__title'),
       //   description: t('sidebar__promotion_dialog__content_item5__description'),
@@ -119,6 +119,18 @@ const SidebarPromotionDialog = () => {
       //   title: t('sidebar__promotion_dialog__content_item6__title'),
       //   description: t('sidebar__promotion_dialog__content_item6__description'),
       // },
+      {
+        title: t('sidebar__promotion_dialog__content_item7__title'),
+        description: t('sidebar__promotion_dialog__content_item7__description'),
+      },
+      {
+        title: t('sidebar__promotion_dialog__content_item8__title'),
+        description: t('sidebar__promotion_dialog__content_item8__description'),
+      },
+      {
+        title: t('sidebar__promotion_dialog__content_item9__title'),
+        description: t('sidebar__promotion_dialog__content_item9__description'),
+      },
     ]
   }, [t])
 
@@ -194,7 +206,16 @@ const SidebarPromotionDialog = () => {
             }}
           />
 
-          <Stack py={2}>
+          <Stack py={2} spacing={1}>
+            <Typography
+              fontSize={18}
+              color="text.primary"
+              flex={1}
+              fontWeight={800}
+            >
+              {t('sidebar__promotion_dialog__content__title')}
+            </Typography>
+
             {promotionDescription.map((descriptionItem) => (
               <Stack
                 key={descriptionItem.title}
@@ -233,7 +254,7 @@ const SidebarPromotionDialog = () => {
           </Stack>
         </Stack>
         {/* cta button */}
-        <Box flexShrink={0}>
+        <Stack flexShrink={0} spacing={1}>
           <Button
             variant="contained"
             fullWidth
@@ -252,7 +273,10 @@ const SidebarPromotionDialog = () => {
           >
             {t('sidebar__promotion_dialog__cta_button')}
           </Button>
-        </Box>
+          <Typography fontSize={14} color="text.secondary" textAlign="center">
+            {t('sidebar__promotion_dialog__footer_tips')}
+          </Typography>
+        </Stack>
       </Stack>
     </Dialog>
   )

@@ -7,7 +7,9 @@
     "pdf": "node ./build/pdf.js",
     "dev": "node ./build/esbuild.config.mjs --app=usechatgpt",
     "test": "cross-env NODE_ENV=test node ./build/esbuild.config.mjs --app=usechatgpt",
-    "release": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"
+    "release": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
+    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -129,7 +131,9 @@
     "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
     "https-proxy-agent": "^7.0.1",
+    "husky": "^9.0.11",
     "less": "^4.1.3",
+    "lint-staged": "^15.2.2",
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.21",
     "prettier": "^2.2.1",
@@ -143,12 +147,10 @@
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
   },
-  "prettier": {
-    "semi": false,
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "always",
-    "proseWrap": "always"
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }

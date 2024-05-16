@@ -32,7 +32,6 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
@@ -59,9 +58,7 @@ const InputAssistantButtonContextMenu: FC<
     disabled,
     onSelectionEffect,
   } = props
-  const { showFloatingContextMenuWithElement, hideFloatingContextMenu } =
-    useFloatingContextMenu()
-  const { updateSidebarConversationType } = useSidebarSettings()
+  const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
   const { currentSidebarConversationType, currentConversationId } =
@@ -154,8 +151,11 @@ const InputAssistantButtonContextMenu: FC<
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
           if (
-            (data?.action?.type === 'ASK_CHATGPT' && event === 'beforeRunAction') ||
-            (event === 'action' && data?.type === 'SET_VARIABLES_MODAL' && data?.status === 'complete')
+            (data?.action?.type === 'ASK_CHATGPT' &&
+              event === 'beforeRunAction') ||
+            (event === 'action' &&
+              data?.type === 'SET_VARIABLES_MODAL' &&
+              data?.status === 'complete')
           ) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
@@ -187,7 +187,7 @@ const InputAssistantButtonContextMenu: FC<
           // onSelectionEffect && onSelectionEffect();
         })
     }
-    return () => { }
+    return () => {}
   }, [clickContextMenu, shortCutsEngine])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
@@ -231,11 +231,12 @@ const InputAssistantButtonContextMenu: FC<
         onClickReferenceElement={() => {
           // TODO
         }}
+        hoverIcon={null}
         {...(disabled
           ? {
-            customOpen: true,
-            referenceElementOpen: false,
-          }
+              customOpen: true,
+              referenceElementOpen: false,
+            }
           : {})}
       />
     </CacheProvider>

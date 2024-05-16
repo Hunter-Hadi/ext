@@ -34,6 +34,11 @@ export class ActionFetchActions extends Action {
                 []
             }
           }
+          if (action.type === 'SET_VARIABLES_MODAL') {
+            if (action.parameters.SetVariablesModalConfig) {
+              action.parameters.SetVariablesModalConfig.includeHistory = true
+            }
+          }
           return action
         })
       }

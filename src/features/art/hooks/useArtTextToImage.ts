@@ -142,8 +142,15 @@ const useArtTextToImage = () => {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'AI_RESPONSE_MESSAGE_ID',
-            USER_INPUT: text,
           },
+        },
+        {
+          type: 'SET_VARIABLE_MAP',
+          parameters: {
+            VariableMap: {
+              USER_INPUT: text,
+            }
+          }
         },
         {
           type: 'ASK_CHATGPT',

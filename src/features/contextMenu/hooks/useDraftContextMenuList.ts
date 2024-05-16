@@ -18,6 +18,7 @@ const AcceptAndCopyActionSupportedHosts = new Set([
   'youtube.com',
   'studio.youtube.com',
   'linkedin.com',
+  // 'facebook.com',
 ])
 
 const useDraftContextMenuList = () => {

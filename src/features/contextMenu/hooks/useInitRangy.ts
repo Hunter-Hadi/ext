@@ -146,6 +146,35 @@ const insertContentToInputBox = (
       if (host === 'linkedin.com') {
         quoteMention = inputBox.querySelector('a.ql-mention')?.outerHTML || ''
       }
+      // Facebook 编辑器使用的是 Lexical, 只能通过它的实例提供的方法插入内容，无法使用 innerHTML 插入
+      else if (host === 'facebook.com') {
+        const lexicalEditorInstance = (inputBox as any)?.__lexicalEditor
+        if (lexicalEditorInstance) {
+          const editorStateJson = lexicalEditorInstance
+            .getEditorState()
+            .toJSON()
+          if (editorStateJson?.root?.children?.[0]) {
+            editorStateJson.root.children[0].children = [
+              {
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: content,
+                type: 'text',
+                version: 1,
+              },
+            ]
+            const newEditorState =
+              lexicalEditorInstance.parseEditorState(editorStateJson)
+            if (newEditorState) {
+              lexicalEditorInstance.setEditorState(newEditorState)
+              lexicalEditorInstance.update()
+            }
+          }
+        }
+        return
+      }
 
       inputBox.innerHTML = quoteMention + content.replaceAll(/\n/g, '<br />')
     } else {

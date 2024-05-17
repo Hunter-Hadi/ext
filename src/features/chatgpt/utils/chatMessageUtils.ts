@@ -3,7 +3,7 @@ import {
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
-} from '@/features/chatgpt/types'
+} from '@/features/indexed_db/conversations/models/Message'
 
 /**
  * 消息是否是AI消息

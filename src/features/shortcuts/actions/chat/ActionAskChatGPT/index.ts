@@ -13,16 +13,16 @@ import {
 } from '@/features/auth/utils/log'
 import { isPermissionCardSceneType } from '@/features/auth/utils/permissionHelper'
 import { getAIProviderChatFiles } from '@/features/chatgpt'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import {
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
-} from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
-import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+} from '@/features/indexed_db/conversations/models/Message'
 import {
   IShortcutEngineExternalEngine,
   withLoadingDecorators,
@@ -123,7 +123,9 @@ export class ActionAskChatGPT extends Action {
       }
       // 如果没有parentMessageId，则生成一个parentMessageId
       if (!this.question.parentMessageId) {
-        const conversation = await clientGetConversation(conversationId)
+        const conversation = await ClientConversationManager.getConversation(
+          conversationId,
+        )
         const messages = conversation?.messages || []
         this.question.parentMessageId = last(messages)?.messageId || ''
       }
@@ -427,7 +429,9 @@ export class ActionAskChatGPT extends Action {
         let outputMessage: IChatMessage | null = null
         if (outputMessageId) {
           const messages = (
-            await clientGetConversation(this.question.conversationId)
+            await ClientConversationManager.getConversation(
+              this.question.conversationId,
+            )
           )?.messages
           outputMessage =
             messages?.find(
@@ -668,7 +672,9 @@ export class ActionAskChatGPT extends Action {
     }
     if (this.question?.conversationId) {
       const messages = (
-        await clientGetConversation(this.question?.conversationId)
+        await ClientConversationManager.getConversation(
+          this.question?.conversationId,
+        )
       )?.messages
       if (messages && messages.length > 0) {
         // 找到最后一条AI消息

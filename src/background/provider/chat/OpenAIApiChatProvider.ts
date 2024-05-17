@@ -10,9 +10,10 @@ import {
   IOpenAIApiChatMessage,
   openAIAPISystemPromptGenerator,
 } from '@/background/src/chat/OpenAIApiChat/types'
-import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 class OpenAIApiChatProvider implements ChatAdapterInterface {
   private openAiApiChat: OpenAIApiChat
@@ -34,7 +35,7 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
   get conversation() {
     return this.openAiApiChat.conversation
   }
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     if (
       initConversationData?.id &&
       this.openAiApiChat.conversation?.id &&

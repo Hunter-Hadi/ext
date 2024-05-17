@@ -1,7 +1,6 @@
 import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 import {
   IPresetActionSetVariable,
   IPresetVariableName,
@@ -17,6 +16,8 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 
 const variablesToVariableMap = (variables: IActionSetVariable[]) => {
   const variableMap = new Map<string, IActionSetVariable>()

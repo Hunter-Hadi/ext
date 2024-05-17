@@ -42,9 +42,6 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_askChatGPTQuestion'
   | 'Client_abortAskChatGPTQuestion'
   | 'Client_modifyMessages'
-  | 'Client_getLiteConversation'
-  | 'Client_updateConversation'
-  | 'Client_duplicateConversation'
   | 'Client_openUrl'
   | 'Client_closeUrl'
   | 'Client_updateIcon'
@@ -63,10 +60,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_emitPricingHooks'
   | 'Client_getLiteChromeExtensionSettings'
   | 'Client_getContextMenuActions'
-  | 'Client_getAllConversation'
-  | 'Client_getAllPaginationConversation'
-  | 'Client_removeAllConversation'
-  | 'Client_removeConversationByType'
+  | 'Client_getAllOldVersionConversationIds'
   | 'Client_proxyFetchAPI'
   | 'Client_abortProxyFetchAPI'
   | 'Client_getIframePageContent'
@@ -85,6 +79,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Iframe_sendPageContent'
   // global video popup
   | 'Client_switchVideoPopup'
+  // 客户端使用conversationDB
+  | 'Client_useIndexedDB'
   | IWebsiteContextSendEvent
 
 // chat.openai.com(daemon process) 监听task event

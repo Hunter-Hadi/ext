@@ -2,20 +2,20 @@ import { isArray } from 'lodash-es'
 import sanitizeHtml from 'sanitize-html'
 import sanitize from 'sanitize-html'
 
-import { IChatConversation } from '@/background/src/chatConversations'
-import {
-  IAIResponseMessage,
-  IChatMessage,
-  ISystemChatMessage,
-  IThirdChatMessage,
-  IUserChatMessage,
-} from '@/features/chatgpt/types'
 import {
   isAIMessage,
   isSystemMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+  ISystemChatMessage,
+  IThirdChatMessage,
+  IUserChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { getOriginalFileURL } from '@/utils/dataHelper/websiteHelper'
 export const formatSecondsAsTimestamp = (seconds: string) => {
@@ -404,7 +404,7 @@ export const safeGetAttachmentExtractedContent = (
  * @param needSystemOrThirdMessage 是否需要系统消息或第三方消息
  */
 export const formatMessagesToLiteHistory = async (
-  conversation: IChatConversation,
+  conversation: IConversation,
   needSystemOrThirdMessage: boolean,
 ): Promise<string> => {
   const title = conversation.title

@@ -7,9 +7,10 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useMemo, useState } from 'react'
 
-import { IAIResponseOriginalMessageSourceLink } from '@/features/chatgpt/types'
 import { SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT } from '@/features/searchWithAI/constants'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
+
+import { IAIResponseOriginalMessageSourceLink } from '@/features/indexed_db/conversations/models/Message';
 
 const SidebarAIMessageCopilotStep: FC<{
   loading?: boolean

@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ClearAllChatButtonMoreActions from '@/features/chatgpt/components/ConversationList/ClearAllChatButtonMoreActions'
-import { clientRemoveConversationsByType } from '@/features/chatgpt/utils/chatConversationUtils'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -189,7 +189,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
                 color={'error'}
                 onClick={async () => {
                   try {
-                    await clientRemoveConversationsByType(
+                    await ClientConversationManager.softDeleteByType(
                       currentSidebarConversationType,
                     )
                     onDelete?.()

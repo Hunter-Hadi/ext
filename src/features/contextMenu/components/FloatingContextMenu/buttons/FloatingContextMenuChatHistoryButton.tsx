@@ -15,7 +15,6 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
-import { IChatConversation } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import TextOnlyTooltip, {
@@ -24,9 +23,10 @@ import TextOnlyTooltip, {
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { useFloatingContextMenu } from '@/features/contextMenu'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import SidebarChatBoxMessageItem from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
@@ -38,9 +38,7 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   container?: HTMLElement
 }> = (props) => {
   const { conversationId, onDuplicateConversation, container } = props
-  const [conversation, setConversation] = useState<IChatConversation | null>(
-    null,
-  )
+  const [conversation, setConversation] = useState<IConversation | null>(null)
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
   const ref = useRef<HTMLDivElement>(null)
@@ -48,7 +46,7 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   useEffect(() => {
     if (conversationId && conversation?.id !== conversationId) {
       setLoading(true)
-      clientGetConversation(conversationId)
+      ClientConversationManager.getConversation(conversationId)
         .then((conversation) => {
           setConversation(conversation)
         })
@@ -124,13 +122,9 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
           variant={'contained'}
           color={'primary'}
           onClick={async () => {
-            await continueConversationInSidebar(
-              conversationId,
-              {
-                type: 'Chat',
-              },
-              true,
-            )
+            await continueConversationInSidebar(conversationId, {
+              type: 'Chat',
+            })
             onDuplicateConversation?.(conversationId)
           }}
         >

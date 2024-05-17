@@ -2,7 +2,7 @@ import { debounce, throttle } from 'lodash-es'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
-import { IChatMessage } from '@/features/chatgpt/types'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 
 import { SidebarPageState } from '../store'
 
@@ -34,9 +34,8 @@ const useMessageListPaginator = (
 
   const total = useMemo(() => list.length, [list])
 
-  const [sidebarPageState, setSidebarPageState] = useRecoilState(
-    SidebarPageState,
-  )
+  const [sidebarPageState, setSidebarPageState] =
+    useRecoilState(SidebarPageState)
   const { messageListPageNum: pageNum } = sidebarPageState
   const setPageNum = useCallback(
     (pageOrPageSetter: number | ((preState: number) => number)) => {

@@ -9,9 +9,9 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
@@ -146,7 +146,7 @@ const useSearchWithAI = () => {
     let cacheConversationId = await getSearchWithAIConversationId()
     if (
       cacheConversationId &&
-      (await clientGetConversation(cacheConversationId))
+      (await ClientConversationManager.getConversation(cacheConversationId))
     ) {
       // do nothing
     } else {

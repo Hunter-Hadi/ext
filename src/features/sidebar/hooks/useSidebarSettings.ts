@@ -5,10 +5,6 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { IAIProviderType } from '@/background/provider/chat'
 import { openAIAPISystemPromptGenerator } from '@/background/src/chat/OpenAIApiChat/types'
 import {
-  IChatConversation,
-  IChatConversationMeta,
-} from '@/background/src/chatConversations'
-import {
   getChromeExtensionLocalStorage,
   setChromeExtensionLocalStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
@@ -17,13 +13,14 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { IChatMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import {
-  clientChatConversationModifyChatMessages,
-  clientDuplicateChatConversation,
-} from '@/features/chatgpt/utils/clientChatConversation'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useFloatingContextMenu } from '@/features/contextMenu'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import {
+  IConversation,
+  IConversationMeta,
+} from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import {
   ClientWritingMessageStateFamily,
   SidebarPageState,
@@ -95,7 +92,7 @@ const useSidebarSettings = () => {
       Summary: clientConversationMap[sidebarSummaryConversationId],
       Art: clientConversationMap[currentArtConversationId || ''],
     } as {
-      [key in ISidebarConversationType]: IChatConversation | null
+      [key in ISidebarConversationType]: IConversation | null
     }
   }, [
     clientConversationMap,
@@ -116,7 +113,7 @@ const useSidebarSettings = () => {
   }, [currentSidebarConversationId, sidebarConversationTypeofConversationMap])
   const currentSidebarConversation = useMemo(() => {
     return clientConversationMap[currentSidebarConversationId || ''] as
-      | IChatConversation
+      | IConversation
       | undefined
   }, [currentSidebarConversationId, clientConversationMap])
 
@@ -158,7 +155,9 @@ const useSidebarSettings = () => {
     getInputMediator('chatBoxInputMediator').updateInputValue('')
     console.log('新版Conversation 清除conversation')
     const currentConversation = currentSidebarConversationId
-      ? await clientGetConversation(currentSidebarConversationId)
+      ? await ClientConversationManager.getConversation(
+          currentSidebarConversationId,
+        )
       : null
     if (currentConversation) {
       if (currentConversation.type === 'Summary') {
@@ -203,7 +202,7 @@ const useSidebarSettings = () => {
       // 获取当前AIProvider的model
       // 获取当前AIProvider的model的maxTokens
       console.log('新版Conversation ', AIProvider, AIModel)
-      const baseMetaConfig: Partial<IChatConversationMeta> = {
+      const baseMetaConfig: Partial<IConversationMeta> = {
         AIProvider: AIProvider,
         AIModel: AIModel,
         maxTokens:
@@ -221,7 +220,7 @@ const useSidebarSettings = () => {
             type: 'Chat',
             title: 'Ask AI anything',
             meta: baseMetaConfig,
-          } as Partial<IChatConversation>,
+          } as Partial<IConversation>,
         },
       })
       if (result.success) {
@@ -237,7 +236,10 @@ const useSidebarSettings = () => {
     } else if (conversationType === 'Summary') {
       conversationId = getPageSummaryConversationId()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
-      if (conversationId && (await clientGetConversation(conversationId))) {
+      if (
+        conversationId &&
+        (await ClientConversationManager.getConversation(conversationId))
+      ) {
         if (updateSetting) {
           await updateSidebarSettings({
             summary: {
@@ -275,7 +277,7 @@ const useSidebarSettings = () => {
               // ${pageSummaryData.pageSummaryContent}
               // \`\`\``,
             }),
-          } as Partial<IChatConversation>,
+          } as Partial<IConversation>,
         },
       })
       setSidebarSummaryConversationId(conversationId)
@@ -283,7 +285,7 @@ const useSidebarSettings = () => {
       // 获取当前AIProvider
       // 获取当前AIProvider的model
       // 获取当前AIProvider的model的maxTokens
-      const baseMetaConfig: Partial<IChatConversationMeta> = {
+      const baseMetaConfig: Partial<IConversationMeta> = {
         AIProvider: AIProvider,
         AIModel: AIModel,
         maxTokens:
@@ -298,7 +300,7 @@ const useSidebarSettings = () => {
             title: 'AI-powered search',
             meta: baseMetaConfig,
             // meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
-          } as Partial<IChatConversation>,
+          } as Partial<IConversation>,
         },
       })
       if (result.success) {
@@ -320,7 +322,7 @@ const useSidebarSettings = () => {
             type: 'Art',
             title: 'AI-powered image generate',
             meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art),
-          } as Partial<IChatConversation>,
+          } as Partial<IConversation>,
         },
       })
       if (result.success) {
@@ -334,7 +336,7 @@ const useSidebarSettings = () => {
         }
       }
     } else if (conversationType === 'ContextMenu') {
-      const baseMetaConfig: Partial<IChatConversationMeta> = {
+      const baseMetaConfig: Partial<IConversationMeta> = {
         AIProvider: AIProvider,
         AIModel: AIModel,
         maxTokens:
@@ -347,7 +349,7 @@ const useSidebarSettings = () => {
             type: 'ContextMenu',
             title: 'AI-powered writing assistant',
             meta: baseMetaConfig,
-          } as Partial<IChatConversation>,
+          } as Partial<IConversation>,
         },
       })
       if (result.success) {
@@ -360,20 +362,28 @@ const useSidebarSettings = () => {
     setSidebarSummaryConversationId(id || getPageSummaryConversationId())
   }
   const continueConversationInSidebar = async (
-    ...args: Parameters<typeof clientDuplicateChatConversation>
+    ...args: Parameters<
+      typeof ClientConversationManager.addOrUpdateConversation
+    >
   ) => {
     if (isDuplicatingRef.current) {
       return
     }
     isDuplicatingRef.current = true
-    const [conversationId, updateConversationData, syncConversationToDB] =
-      args as Parameters<typeof clientDuplicateChatConversation>
+    const [conversationId, updateConversationData, options] =
+      args as Parameters<
+        typeof ClientConversationManager.addOrUpdateConversation
+      >
     // 需要复制当前的conversation
-    const newConversation = await clientDuplicateChatConversation(
-      conversationId,
-      updateConversationData,
-      syncConversationToDB,
-    )
+    const newConversation =
+      await ClientConversationManager.addOrUpdateConversation(
+        conversationId,
+        updateConversationData,
+        {
+          ...options,
+          duplicate: true,
+        },
+      )
     if (newConversation) {
       if (['Chat', 'Search', 'Summary', 'Art'].includes(newConversation.type)) {
         await updateSidebarSettings({

@@ -4,9 +4,12 @@ import throttle from 'lodash-es/throttle'
 import React, { FC, lazy, useEffect, useMemo, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useInterval from '@/features/common/hooks/useInterval'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import useMessageListPaginator from '@/features/sidebar/hooks/useMessageListPaginator'
 import { getMaxAISidebarRootElement } from '@/utils'
 
@@ -236,9 +239,9 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         })}
         {/* 如果 writingMessage.messageId 在 slicedMessageList 中存在，则不渲染 */}
         {writingMessage &&
-          !slicedMessageList.find(
-            (msg) => msg.messageId === writingMessage.messageId,
-          ) ? (
+        !slicedMessageList.find(
+          (msg) => msg.messageId === writingMessage.messageId,
+        ) ? (
           <SidebarChatBoxMessageItem
             className={'use-chat-gpt-ai__writing-message-item'}
             message={writingMessage}

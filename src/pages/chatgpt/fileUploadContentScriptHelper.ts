@@ -1,6 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { IChatUploadFile } from '@/features/chatgpt/types'
+
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 const MAX_AI_CHAT_GPT_MESSAGE_KEY = 'MAX_AI_CHAT_GPT_MESSAGE_KEY'
 
 const getFileUploadInput = () => {

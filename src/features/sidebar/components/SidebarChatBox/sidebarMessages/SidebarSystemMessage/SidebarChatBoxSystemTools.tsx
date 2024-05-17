@@ -5,9 +5,10 @@ import { useTranslation } from 'react-i18next'
 
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
-import { ISystemChatMessage } from '@/features/chatgpt/types'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
 
 const SidebarChatBoxSystemTools: FC<{
   solutionsShow: boolean

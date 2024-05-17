@@ -8,9 +8,10 @@ import {
 import { MaxAIGeminiChat } from '@/background/src/chat'
 import { IMaxAIRequestHistoryMessage } from '@/background/src/chat/UseChatGPTChat/types'
 import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
-import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 class MaxAIGeminiChatProvider implements ChatAdapterInterface {
   private maxAIGeminiChat: MaxAIGeminiChat
@@ -30,7 +31,7 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
   get conversation() {
     return this.maxAIGeminiChat.conversation
   }
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     return await this.maxAIGeminiChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {

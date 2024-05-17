@@ -14,11 +14,12 @@ import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LargeTextBox from '@/components/LargeTextBox'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
-import { IUserChatMessage } from '@/features/chatgpt/types'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
+
+import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message';
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({

@@ -20,9 +20,10 @@ import {
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 import Log from '@/utils/Log'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
+
+import { IChatMessageExtraMetaType } from '@/features/indexed_db/conversations/models/Message';
 
 const log = new Log('Background/Chat/MaxAIClaudeChat')
 

@@ -1,9 +1,10 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { IGetSummaryNavActionsParams } from '@/features/sidebar/utils/pageSummaryHelper'
+
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 
 export const youTubeSummaryCommentsChangeTool = async (
   actions: ISetActionsType,

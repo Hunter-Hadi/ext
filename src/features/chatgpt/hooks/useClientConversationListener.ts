@@ -13,12 +13,17 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   ClientConversationMapState,
+  ClientConversationMessageMapState,
   ClientUploadedFilesState,
 } from '@/features/chatgpt/store'
-import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import {
+  IChatUploadFile,
+  ISystemChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { AppDBStorageState } from '@/store'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
@@ -42,6 +47,9 @@ export const useClientConversationListener = () => {
   const [, setClientConversationMap] = useRecoilState(
     ClientConversationMapState,
   )
+  const [, setConversationMessagesMap] = useRecoilState(
+    ClientConversationMessageMapState,
+  )
   const appDBStorage = useRecoilValue(AppDBStorageState)
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
   const { currentAIProvider } = useAIProviderModels()
@@ -54,6 +62,7 @@ export const useClientConversationListener = () => {
     currentConversationIdRef,
     clientConversation,
   } = useClientConversation()
+
   const updateConversationStatusRef = useRef(updateConversationStatus)
   useEffect(() => {
     updateConversationStatusRef.current = updateConversationStatus
@@ -150,6 +159,16 @@ export const useClientConversationListener = () => {
               [conversation.id]: conversation,
             }
           })
+          ClientConversationMessageManager.getMessages(conversation.id).then(
+            (messages) => {
+              setConversationMessagesMap((prevState) => {
+                return {
+                  ...prevState,
+                  [conversation.id]: messages,
+                }
+              })
+            },
+          )
         } else if (!conversation) {
           // 如果是删除的话，就不会有conversation
           setClientConversationMap((prevState) => {
@@ -266,7 +285,7 @@ export const useClientConversationListener = () => {
        * 检查Chat状态
        */
       const checkChatGPTStatus = async () => {
-        clientGetConversation(currentConversationId).then(
+        ClientConversationManager.getConversation(currentConversationId).then(
           async (conversation) => {
             if (conversation) {
               console.log(
@@ -278,6 +297,16 @@ export const useClientConversationListener = () => {
                   ...prevState,
                   [conversation.id]: conversation,
                 }
+              })
+              ClientConversationMessageManager.getMessages(
+                conversation.id,
+              ).then((messages) => {
+                setConversationMessagesMap((prevState) => {
+                  return {
+                    ...prevState,
+                    [conversation.id]: messages,
+                  }
+                })
               })
             }
           },

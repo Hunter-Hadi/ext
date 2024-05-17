@@ -5,19 +5,16 @@ import defaultEditAssistantComposeReplyContextMenuJson from '@/background/defaul
 import defaultInputAssistantComposeNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
 import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
 import { IAIProviderType } from '@/background/provider/chat'
-import { IChatConversation } from '@/background/src/chatConversations'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PRESET_PROMPT_IDS } from '@/constants'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
-import {
-  clientGetConversation,
-  clientGetConversationAIModelAndProvider,
-} from '@/features/chatgpt/utils/chatConversationUtils'
 import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
@@ -67,9 +64,10 @@ const permissionSceneTypeToLogType = async (
     const currentSummaryConversationId =
       sidebarSettings?.summary?.conversationId
     if (currentSummaryConversationId) {
-      const currentSummaryConversation = await clientGetConversation(
-        currentSummaryConversationId,
-      )
+      const currentSummaryConversation =
+        await ClientConversationManager.getConversation(
+          currentSummaryConversationId,
+        )
       summaryModel = currentSummaryConversation?.meta.AIModel || summaryModel
     }
 
@@ -100,9 +98,10 @@ const permissionSceneTypeToLogType = async (
     let searchModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search.AIModel
     const currentSearchConversationId = sidebarSettings?.search?.conversationId
     if (currentSearchConversationId) {
-      const currentSearchConversation = await clientGetConversation(
-        currentSearchConversationId,
-      )
+      const currentSearchConversation =
+        await ClientConversationManager.getConversation(
+          currentSearchConversationId,
+        )
       searchModel = currentSearchConversation?.meta.AIModel || searchModel
     }
 
@@ -117,9 +116,10 @@ const permissionSceneTypeToLogType = async (
     let artModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art.AIModel
     const currentArtConversationId = sidebarSettings?.art?.conversationId
     if (currentArtConversationId) {
-      const currentArtConversation = await clientGetConversation(
-        currentArtConversationId,
-      )
+      const currentArtConversation =
+        await ClientConversationManager.getConversation(
+          currentArtConversationId,
+        )
       artModel = currentArtConversation?.meta.AIModel || artModel
     }
     const isPro = sidebarSettings?.art?.isEnabledConversationalMode
@@ -133,9 +133,8 @@ const permissionSceneTypeToLogType = async (
     sourceConversationId || sidebarSettings?.chat?.conversationId || ''
   let chatModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIModel
   if (currentChatConversationId) {
-    const currentChatConversation = await clientGetConversation(
-      currentChatConversationId,
-    )
+    const currentChatConversation =
+      await ClientConversationManager.getConversation(currentChatConversationId)
     chatModel = currentChatConversation?.meta.AIModel || chatModel
   }
 
@@ -267,13 +266,15 @@ const generateTrackParams = async (
     let AIProvider = propAIProvider
     if (propConversationId) {
       const conversationAIModelAndProvider =
-        await clientGetConversationAIModelAndProvider(propConversationId)
-      if (conversationAIModelAndProvider.aiModel) {
-        AIModel = conversationAIModelAndProvider.aiModel
+        await ClientConversationManager.getConversationAIProviderAndAIModel(
+          propConversationId,
+        )
+      if (conversationAIModelAndProvider.AIModel) {
+        AIModel = conversationAIModelAndProvider.AIModel
       }
-      if (conversationAIModelAndProvider.provider) {
+      if (conversationAIModelAndProvider.AIProvider) {
         AIProvider =
-          BEAUTIFY_PROVIDER_NAME[conversationAIModelAndProvider.provider]
+          BEAUTIFY_PROVIDER_NAME[conversationAIModelAndProvider.AIProvider]
       }
     }
     // 结束获取 AIModel 和 AIProvider
@@ -463,7 +464,7 @@ export const getPromptTypeByContextMenu = (
 }
 
 export const getFeatureNameByConversationAndContextMenu = (
-  conversation: IChatConversation | null,
+  conversation: IConversation | null,
   contextMenuItem?: IContextMenuItem,
 ) => {
   if (conversation) {

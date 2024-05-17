@@ -4,17 +4,20 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
-import { IChatConversation } from '@/background/src/chatConversations'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
-import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import {
-  clientChatConversationModifyChatMessages,
-  clientUpdateChatConversation,
-} from '@/features/chatgpt/utils/clientChatConversation'
+  ClientConversationMapState,
+  ClientConversationMessageMapState,
+} from '@/features/chatgpt/store'
+import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
@@ -77,11 +80,13 @@ const useClientConversation = () => {
     updateConversationStatus,
     resetConversation,
   } = useChatPanelContext()
+  const clientConversationMessagesMap = useRecoilValue(
+    ClientConversationMessageMapState,
+  )
   const clientConversationMap = useRecoilValue(ClientConversationMapState)
-  const clientConversation: IChatConversation | undefined =
-    currentConversationId
-      ? clientConversationMap[currentConversationId]
-      : undefined
+  const clientConversation: IConversation | undefined = currentConversationId
+    ? clientConversationMap[currentConversationId]
+    : undefined
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
     ClientWritingMessageStateFamily(currentConversationId || ''),
   )
@@ -97,10 +102,10 @@ const useClientConversation = () => {
 
   const clientConversationMessages = useMemo(() => {
     if (currentConversationId) {
-      return clientConversationMap[currentConversationId]?.messages || []
+      return clientConversationMessagesMap[currentConversationId] || []
     }
     return []
-  }, [currentConversationId, clientConversationMap])
+  }, [currentConversationId, clientConversationMessagesMap])
   const disposeBackgroundChatSystem = async (conversationId?: string) => {
     const port = new ContentScriptConnectionV2()
     // 复原background conversation
@@ -113,14 +118,16 @@ const useClientConversation = () => {
     return result.success
   }
   const updateConversation = async (
-    conversation: Partial<IChatConversation>,
+    conversation: Partial<IConversation>,
     conversationId: string,
     syncConversationToDB = false,
   ) => {
-    await clientUpdateChatConversation(
+    await ClientConversationManager.addOrUpdateConversation(
       conversationId || currentConversationIdRef.current || '',
       conversation,
-      syncConversationToDB,
+      {
+        syncConversationToDB,
+      },
     )
   }
   const pushMessage = async (
@@ -241,7 +248,10 @@ const useClientConversation = () => {
   const getCurrentConversation = async () => {
     const conversationId = currentConversationIdRef.current
     if (conversationId) {
-      return (await clientGetConversation(conversationId)) || null
+      return (
+        (await ClientConversationManager.getConversation(conversationId)) ||
+        null
+      )
     }
     return null
   }
@@ -281,7 +291,7 @@ const useClientConversation = () => {
     updateMessage,
     updateClientWritingMessage,
     updateClientConversationLoading,
-    getConversation: clientGetConversation,
+    getConversation: ClientConversationManager.getConversation,
     getCurrentConversation,
   }
 }

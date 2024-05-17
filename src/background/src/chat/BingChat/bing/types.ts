@@ -1,5 +1,6 @@
-import { IAIProviderModel } from '@/features/chatgpt/types'
 import { I18nextKeysType } from '@/i18next'
+
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
 
 export enum BingConversationStyle {
   Creative = 'creative',

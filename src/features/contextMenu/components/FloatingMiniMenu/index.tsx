@@ -110,7 +110,7 @@ const FloatingMiniMenu: FC<{
       !floatingDropdownMenu.open
     setFinalShow(isShow)
     if (!tempSelection?.selectionRect || !isShow) {
-      return;
+      return
     }
     const rect = computedRectPosition(tempSelection.selectionRect)
     if (!isProduction) {

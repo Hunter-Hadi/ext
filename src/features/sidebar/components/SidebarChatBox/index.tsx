@@ -14,12 +14,12 @@ import AutoHeightTextarea, {
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
+import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
 import {
   IAIResponseMessage,
   IChatMessage,
   IUserChatMessageExtraType,
-} from '@/features/chatgpt/types'
-import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
+} from '@/features/indexed_db/conversations/models/Message'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'

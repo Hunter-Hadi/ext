@@ -16,11 +16,11 @@ import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useContextMenuList } from '@/features/contextMenu'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
@@ -69,9 +69,10 @@ const usePageSummary = () => {
     updateClientConversationLoading(true)
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
-      const pageSummaryConversation = await clientGetConversation(
-        pageSummaryConversationId,
-      )
+      const pageSummaryConversation =
+        await ClientConversationManager.getConversation(
+          pageSummaryConversationId,
+        )
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         await updateSidebarSettings({

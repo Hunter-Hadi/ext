@@ -1,12 +1,13 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import { IExecuteOperationResult } from '@/features/shortcuts/utils/OperationElementHelper'
+
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
 export class ActionOperationElement extends Action {
   static type: ActionIdentifier = 'OPERATION_ELEMENT'
   constructor(

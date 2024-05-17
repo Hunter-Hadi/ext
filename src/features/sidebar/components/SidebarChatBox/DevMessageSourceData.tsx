@@ -6,7 +6,7 @@ import React, { FC, useMemo } from 'react'
 
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import DevContent from '@/components/DevContent'
-import { IChatMessage } from '@/features/chatgpt/types'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 const DevMessageSourceData: FC<{
   message: IChatMessage
 }> = ({ message }) => {

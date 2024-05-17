@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientForceRemoveConversation } from '@/features/chatgpt/utils/chatConversationUtils'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -140,7 +140,9 @@ const ClearChatButton: FC<{
                   if (currentConversationId === conversationId) {
                     await resetConversation()
                   }
-                  await clientForceRemoveConversation(conversationId)
+                  await ClientConversationManager.softDeleteConversation(
+                    conversationId,
+                  )
                   onDelete?.()
                 }}
                 sx={{

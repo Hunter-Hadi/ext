@@ -20,9 +20,10 @@ import AIProviderInfoCard from '@/features/chatgpt/components/ThirdPartAIProvide
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
-import { IAIProviderModel } from '@/features/chatgpt/types'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
+
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
 
 const ThirdPartyAIProvidersOptions = list2Options(
   AIProviderOptions.filter((AIProviderOption) => AIProviderOption.thirdParty),

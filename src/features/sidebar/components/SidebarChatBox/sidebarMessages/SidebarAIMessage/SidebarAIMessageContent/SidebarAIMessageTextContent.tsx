@@ -1,9 +1,10 @@
 import React, { FC, useMemo } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const SidebarAIMessageTextContent: FC<{

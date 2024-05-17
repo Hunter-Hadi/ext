@@ -19,7 +19,6 @@ import {
   ContextMenuIcon,
 } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { type IAIResponseMessage, type IAIResponseOriginalMessageNavMetadata } from '@/features/chatgpt/types';
 import { useContextMenuList } from '@/features/contextMenu'
 // import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
@@ -28,6 +27,7 @@ import { chromeExtensionClientOpenPage } from '@/utils'
 
 import RenderCustomPromptMenuList from './RenderCustomPromptMenuList'
 import { CustomPromptMenuListIcon, CustomPromptMenuListItem } from './SidebarNavCustomPromptMenuItem'
+import { IAIResponseMessage, IAIResponseOriginalMessageNavMetadata } from '@/features/indexed_db/conversations/models/Message';
 
 
 interface ISidebarNavCustomPromptButtonProps {

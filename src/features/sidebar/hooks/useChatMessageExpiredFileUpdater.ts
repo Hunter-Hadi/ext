@@ -5,12 +5,12 @@ import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IChatMessage } from '@/features/chatgpt/types'
 import {
   isAIMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { chatMessageAttachmentStateFamily } from '@/features/sidebar/store/chatMessageStore'
 import {
   clientGetMaxAIFileUrlWithFileId,

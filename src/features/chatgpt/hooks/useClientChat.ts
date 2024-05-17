@@ -2,20 +2,20 @@ import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IChatConversation } from '@/background/src/chatConversations'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import {
   IAIProviderModel,
   IChatUploadFile,
   IUserChatMessage,
-} from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+} from '@/features/indexed_db/conversations/models/Message'
+import { createIndexedDBQuery } from '@/features/indexed_db/utils'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -52,7 +52,6 @@ const useClientChat = () => {
     pushPricingHookMessage,
     hideConversationLoading,
     showConversationLoading,
-    updateConversation,
     getCurrentConversation,
     updateClientConversationLoading,
   } = useClientConversation()
@@ -267,35 +266,18 @@ const useClientChat = () => {
       showConversationLoading()
       const currentConversationId = currentConversationIdRef.current
       if (currentConversationId) {
-        const {
-          conversation,
-          lastRunActionsMessageId,
-          lastRunActionsParams,
-          lastRunActions,
-        } = await getLastRunShortcuts(currentConversationId)
-        if (conversation && lastRunActions.length > 0) {
-          let needDeleteCount = 0
-          // 删除消息
-          // 1. 找到最后一次运行的shortcuts的messageId
-          const messages = conversation?.messages || []
-          if (lastRunActionsMessageId) {
-            for (let i = messages.length - 1; i >= 0; i--) {
-              if (messages[i].messageId === lastRunActionsMessageId) {
-                break
-              }
-              needDeleteCount++
-            }
-          } else {
-            needDeleteCount = messages.length
-          }
-          // 2. 删除消息
-          await clientChatConversationModifyChatMessages(
-            'delete',
-            currentConversationId,
-            // 因为第一条消息才会没有lastRunActionsMessageId, 此时需要删除全部
-            needDeleteCount,
-            [],
-          )
+        const { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
+          await getLastRunShortcuts(currentConversationId)
+        if (lastRunActions.length > 0) {
+          console.log(needDeleteMessageIds)
+          // 1. TODO - 删除消息
+          // await clientChatConversationModifyChatMessages(
+          //   'delete',
+          //   currentConversationId,
+          //   // 因为第一条消息才会没有lastRunActionsMessageId, 此时需要删除全部
+          //   needDeleteCount,
+          //   [],
+          // )
           const waitRunActions = lastRunActions.map((action) => {
             if (
               action.type === 'ASK_CHATGPT' &&
@@ -313,9 +295,10 @@ const useClientChat = () => {
         } else {
           // 理论上不会进来, 兼容旧代码用的
           console.log('regenerate actions is empty')
-          const currentConversation = await clientGetConversation(
-            currentConversationId,
-          )
+          const currentConversation =
+            await ClientConversationManager.getConversation(
+              currentConversationId,
+            )
           const messages = currentConversation?.messages || []
           // 寻找最后一个user message
           let needDeleteCount = 0
@@ -383,20 +366,19 @@ const useClientChat = () => {
     actions: ISetActionsType,
     params?: any[],
   ) => {
-    const conversation = await clientGetConversation(conversationId)
-    const messages = conversation?.messages || []
-    const lastRunActionsMessageId = messages.at(-1)?.messageId || ''
-    await updateConversation(
-      {
-        meta: {
-          lastRunActions: actions,
-          lastRunActionsParams: params || getParams().shortCutsParameters,
-          lastRunActionsMessageId,
-        },
-      },
+    const messages = await createIndexedDBQuery('conversations')
+      .messages.where('conversationId')
+      .equals(conversationId)
+      .sortBy('created_at')
+      .then()
+    const lastRunActionsMessageId =
+      messages[messages.length - 1]?.messageId || ''
+    await createIndexedDBQuery('conversations').conversationLocalStorage.put({
       conversationId,
-      false,
-    )
+      lastRunActions: actions,
+      lastRunActionsParams: params || getParams().shortCutsParameters,
+      lastRunActionsMessageId,
+    })
   }
   /**
    * 获取最后一次运行的shortcuts
@@ -408,23 +390,43 @@ const useClientChat = () => {
     lastRunActions: ISetActionsType
     lastRunActionsMessageId: string
     lastRunActionsParams?: any[]
-    conversation: IChatConversation | null
+    needDeleteMessageIds: string[]
   }> => {
-    const conversation = await clientGetConversation(conversationId)
-    if (conversation?.meta.lastRunActions) {
+    const conversationLocalStorage = await createIndexedDBQuery(
+      'conversations',
+    ).conversationLocalStorage.get(conversationId)
+    if (conversationLocalStorage?.lastRunActions) {
+      let needDeleteMessageIds: string[] = []
+      if (conversationLocalStorage.lastRunActionsMessageId) {
+        const messages = await createIndexedDBQuery('conversations')
+          .messages.where('conversationId')
+          .equals(conversationId)
+          .sortBy('created_at')
+          .then()
+        const lastRunActionsMessageIndex = messages.findIndex(
+          (message) =>
+            message.messageId ===
+            conversationLocalStorage.lastRunActionsMessageId,
+        )
+        if (lastRunActionsMessageIndex !== -1) {
+          needDeleteMessageIds = messages
+            .slice(lastRunActionsMessageIndex + 1)
+            .map((message) => message.messageId)
+        }
+      }
       return {
-        lastRunActions: conversation.meta.lastRunActions || [],
+        lastRunActions: conversationLocalStorage.lastRunActions || [],
         lastRunActionsMessageId:
-          conversation.meta.lastRunActionsMessageId || '',
-        conversation,
-        lastRunActionsParams: conversation.meta.lastRunActionsParams,
+          conversationLocalStorage.lastRunActionsMessageId || '',
+        lastRunActionsParams: conversationLocalStorage.lastRunActionsParams,
+        needDeleteMessageIds,
       }
     }
     return {
       lastRunActions: [],
       lastRunActionsMessageId: '',
       lastRunActionsParams: undefined,
-      conversation: null,
+      needDeleteMessageIds: [],
     }
   }
 

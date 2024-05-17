@@ -1,14 +1,14 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
-import { IChatConversation } from '@/background/src/chatConversations/index'
 import { backgroundGetBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/background'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import {
   getMaxAIChromeExtensionAccessToken,
   getMaxAIChromeExtensionUserId,
 } from '@/features/auth/utils'
-import { IChatMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 
 export const maxAIRequest = async (path: string, data: any) => {
   return await fetch(`${APP_USE_CHAT_GPT_API_HOST}${path}`, {
@@ -60,7 +60,7 @@ export const getDBConversationDetail = async (conversationId: string) => {
  * @param conversation
  */
 export const addOrUpdateDBConversation = async (
-  conversation: IChatConversation,
+  conversation: IConversation,
 ) => {
   if (!(await isEnableSyncConversation())) {
     return
@@ -99,7 +99,7 @@ export const shareConversation = async (
 const maxAIMessageRequest = async (
   path: string,
   data: any,
-  conversation: IChatConversation,
+  conversation: IConversation,
 ) => {
   try {
     if (!(await isEnableSyncConversation())) {
@@ -123,7 +123,7 @@ const maxAIMessageRequest = async (
  * @param messages
  */
 export const addOrUpdateDBConversationMessages = async (
-  conversation: IChatConversation,
+  conversation: IConversation,
   messages: IChatMessage[],
 ) => {
   if (messages.length === 0) {
@@ -178,7 +178,7 @@ export const addOrUpdateDBConversationMessages = async (
  * @param messageIds
  */
 export const deleteDBConversationMessages = async (
-  conversation: IChatConversation,
+  conversation: IConversation,
   messageIds: string[],
 ) => {
   if (messageIds.length === 0) {
@@ -213,7 +213,7 @@ export const deleteDBConversationMessages = async (
  * @param filters
  */
 export const getDBConversationMessages = async (
-  conversation: IChatConversation,
+  conversation: IConversation,
   filters?: {
     page?: number
     page_size?: number

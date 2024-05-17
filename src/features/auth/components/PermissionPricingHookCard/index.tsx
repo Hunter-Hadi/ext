@@ -17,10 +17,11 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { isUsageLimitPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { openGlobalVideoPopup } from '@/features/video_popup/utils'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
+
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
 
 interface IProps {
   permissionSceneType: PermissionWrapperCardSceneType

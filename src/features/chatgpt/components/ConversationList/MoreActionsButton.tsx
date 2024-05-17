@@ -16,7 +16,7 @@ import MaxAIMenu from '@/components/MaxAIMenu'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { clientForceRemoveConversation } from '@/features/chatgpt/utils/chatConversationUtils'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -256,7 +256,9 @@ const MoreActionsButton: FC<{
                   if (currentConversationId === conversationId) {
                     await resetConversation()
                   }
-                  await clientForceRemoveConversation(conversationId)
+                  await ClientConversationManager.softDeleteConversation(
+                    conversationId,
+                  )
                   onDelete?.()
                   // resetConversation里已经做了处理先注释掉下面的代码防止重复创建
                   // if (isInImmersiveChat) {

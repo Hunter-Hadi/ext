@@ -8,12 +8,12 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { IChatConversation } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DropdownIconButton from '@/components/DropdownIconButton'
 import useSyncConversation from '@/features/chatgpt/hooks/useSyncConversation'
-import { clientGetUserAllConversations } from '@/features/chatgpt/utils/chatConversationUtils'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 
 const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
@@ -55,7 +55,7 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
       const getPageConversations = async (page: number) => {
         const result = await clientFetchMaxAIAPI<{
           status: string
-          data: IChatConversation[]
+          data: IConversation[]
           total_page: number
         }>(`/conversation/get_conversations_basic`, {
           page_size: 10,
@@ -81,35 +81,37 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
         }
       }
       // 先获取本地的会话
-      clientGetUserAllConversations().then((userAllConversations) => {
-        if (isFree) {
-          return
-        }
-        setLocalConversationIds(
-          // 过滤出没删除且消息数量大于0的会话
-          userAllConversations
-            .filter(
-              (conversation) =>
-                conversation.messages.length > 0 &&
-                conversation.isDelete !== true,
-            )
-            .map((conversation) => conversation.id),
-        )
-        // 获取远程的会话
-        getPageConversations(0)
-          .then(() => {
-            if (isFree) {
-              return
-            }
-            setDbConversationIds(dbConversationIds)
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-          .finally(() => {
-            setLoadingRemoteConversations(false)
-          })
-      })
+      ClientConversationManager.getAllOldVersionConversationIds().then(
+        (userAllConversations) => {
+          if (isFree) {
+            return
+          }
+          setLocalConversationIds(
+            // 过滤出没删除且消息数量大于0的会话
+            userAllConversations
+              .filter(
+                (conversation) =>
+                  conversation.messages.length > 0 &&
+                  conversation.isDelete !== true,
+              )
+              .map((conversation) => conversation.id),
+          )
+          // 获取远程的会话
+          getPageConversations(0)
+            .then(() => {
+              if (isFree) {
+                return
+              }
+              setDbConversationIds(dbConversationIds)
+            })
+            .catch((e) => {
+              console.error(e)
+            })
+            .finally(() => {
+              setLoadingRemoteConversations(false)
+            })
+        },
+      )
     }
     return () => {
       isFree = true

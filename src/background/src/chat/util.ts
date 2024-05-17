@@ -10,7 +10,6 @@ import {
   IMaxAIChatMessageContentType,
   IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
-import { IChatConversation } from '@/background/src/chatConversations'
 import {
   createClientMessageListener,
   safeGetBrowserTab,
@@ -24,18 +23,19 @@ import {
   CHATGPT_WEBAPP_HOST,
   CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB,
 } from '@/constants'
-import {
-  IAIResponseMessage,
-  IAIResponseOriginalMessage,
-  IChatMessage,
-  IUserChatMessage,
-} from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import {
   isAIMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import {
+  IAIResponseMessage,
+  IAIResponseOriginalMessage,
+  IChatMessage,
+  IUserChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import {
   calculateMaxResponseTokens,
   getTextTokens,
@@ -423,7 +423,7 @@ export const chatMessageToMaxAIRequestMessage = (
  * 处理AI提问的参数
  */
 export const processAskAIParameters = async (
-  conversation: IChatConversation,
+  conversation: IConversation,
   question: IUserChatMessage,
 ) => {
   const { includeHistory, historyMessages } = question?.meta || {}

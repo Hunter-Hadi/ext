@@ -48,7 +48,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       let aiProvider = promptDetail.aiProvider
       let aiModel = promptDetail.aiModel
 
-      const conversation = await ConversationManager.getClientConversation(
+      const conversation = await ConversationManager.getConversationById(
         promptDetail.conversationId,
       )
       if (conversation) {

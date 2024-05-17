@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
-import { IChatMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import {
   clientGetMaxAIFileUrlWithFileId,

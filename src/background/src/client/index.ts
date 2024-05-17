@@ -1,4 +1,3 @@
-import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { backendApiReportPricingHooks } from '@/background/api'
@@ -8,7 +7,9 @@ import {
   getWindowIdOfChatGPTTab,
   processPreSaveChatMessage,
 } from '@/background/src/chat/util'
-import ConversationManager from '@/background/src/chatConversations'
+import ConversationManager, {
+  getAllOldVersionConversationIds,
+} from '@/background/src/chatConversations'
 import backgroundCommandHandler from '@/background/src/client/backgroundCommandHandler'
 import { openPDFViewer } from '@/background/src/pdf'
 import {
@@ -34,17 +35,16 @@ import {
   fetchUserSubscriptionInfo,
   getChromeExtensionUserInfo,
   getMaxAIChromeExtensionAccessToken,
-  getMaxAIChromeExtensionUserId,
   getMaxAIChromeExtensionUserQuotaUsage,
 } from '@/features/auth/utils'
-import { IChatMessage } from '@/features/chatgpt/types'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
+import { initIndexedDBChannel } from '@/features/indexed_db/channel'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
 import { convertBlobToBase64 } from '@/utils/dataHelper/fileHelper'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import Log from '@/utils/Log'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
@@ -453,45 +453,11 @@ export const ClientMessageInit = () => {
             message: 'ok',
           }
         }
-        case 'Client_getAllConversation': {
-          const conversations = await ConversationManager.getAllConversation()
-          const userId = await getMaxAIChromeExtensionUserId()
-          const filterConversations = conversations.filter((conversation) => {
-            if (!conversation.authorId || conversation.authorId === userId) {
-              return true
-            }
-            return false
-          })
+        case 'Client_getAllOldVersionConversationIds': {
+          const conversationIds = await getAllOldVersionConversationIds()
           return {
             success: true,
-            data: filterConversations,
-            message: 'ok',
-          }
-        }
-        case 'Client_getAllPaginationConversation': {
-          const allPaginationConversations =
-            await ConversationManager.getAllPaginationConversations()
-          return {
-            success: true,
-            data: allPaginationConversations,
-            message: 'ok',
-          }
-        }
-        case 'Client_removeAllConversation': {
-          const result = await ConversationManager.clearAllConversations()
-          return {
-            success: result,
-            data: result,
-            message: 'ok',
-          }
-        }
-        case 'Client_removeConversationByType': {
-          const result = await ConversationManager.clearConversationsByType(
-            data.type,
-          )
-          return {
-            success: result,
-            data: result,
+            data: conversationIds,
             message: 'ok',
           }
         }
@@ -504,133 +470,6 @@ export const ClientMessageInit = () => {
             message: 'ok',
           }
         }
-        case 'Client_getLiteConversation':
-          {
-            const datetime = new Date().getTime()
-            const { conversationId } = data
-            const conversation =
-              await ConversationManager.getClientConversation(conversationId)
-            // console.log('新版Conversation，获取conversation', conversation)
-            console.log(
-              '[DB_Conversation] openDatabase using time [Client_getLiteConversation]:',
-              new Date().getTime() - datetime,
-            )
-            return {
-              success: conversation?.id ? true : false,
-              data: conversation,
-              message: 'ok',
-            }
-          }
-          break
-        case 'Client_updateConversation': {
-          const {
-            conversationId,
-            updateConversationData,
-            syncConversationToDB,
-          } = data
-          let oldConversation =
-            await ConversationManager.conversationDB.getConversationById(
-              conversationId,
-            )
-          if (
-            !oldConversation &&
-            updateConversationData.id &&
-            updateConversationData.messages &&
-            updateConversationData.messages.length > 0
-          ) {
-            oldConversation = updateConversationData
-          }
-
-          if (oldConversation) {
-            await ConversationManager.conversationDB.addOrUpdateConversation(
-              mergeWithObject([oldConversation, updateConversationData]),
-              {
-                syncConversationToDB: syncConversationToDB === true,
-                reason: 'Client_updateConversation',
-              },
-            )
-            const newConversationData =
-              await ConversationManager.getClientConversation(conversationId)
-            sender.tab?.id &&
-              (await Browser.tabs.sendMessage(sender.tab.id, {
-                event: 'Client_listenUpdateConversationMessages',
-                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-                data: {
-                  conversation: newConversationData,
-                  conversationId,
-                },
-              }))
-            console.log(
-              '新版Conversation，更新conversation',
-              newConversationData,
-            )
-            return {
-              success: true,
-              data: newConversationData,
-              message: 'ok',
-            }
-          }
-          return {
-            success: false,
-            data: false,
-            message: 'ok',
-          }
-        }
-        case 'Client_duplicateConversation':
-          {
-            const {
-              conversationId,
-              updateConversationData,
-              syncConversationToDB,
-            } = data
-            const oldConversation =
-              await ConversationManager.conversationDB.getConversationById(
-                conversationId,
-              )
-            if (oldConversation) {
-              if (!updateConversationData.id) {
-                // 如果没传入id，就生成一个新的id
-                updateConversationData.id = uuidV4()
-              }
-              await ConversationManager.conversationDB.addOrUpdateConversation(
-                mergeWithObject([oldConversation, updateConversationData]),
-                {
-                  syncConversationToDB: syncConversationToDB === true,
-                  reason: 'Client_duplicateConversation',
-                },
-              )
-              const newConversationData =
-                await ConversationManager.getClientConversation(
-                  updateConversationData.id,
-                )
-              if (newConversationData) {
-                sender.tab?.id &&
-                  (await Browser.tabs.sendMessage(sender.tab.id, {
-                    event: 'Client_listenUpdateConversationMessages',
-                    id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-                    data: {
-                      conversation: newConversationData,
-                      conversationId: newConversationData.id,
-                    },
-                  }))
-              }
-              console.log(
-                '新版Conversation，复制conversation',
-                newConversationData,
-              )
-              return {
-                success: true,
-                data: newConversationData,
-                message: 'ok',
-              }
-            }
-            return {
-              success: false,
-              data: false,
-              message: 'ok',
-            }
-          }
-          break
         case 'Client_modifyMessages':
           {
             const { conversationId, action, deleteCount, newMessages } = data
@@ -674,7 +513,7 @@ export const ClientMessageInit = () => {
                 event: 'Client_listenUpdateConversationMessages',
                 id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
-                  conversation: await ConversationManager.getClientConversation(
+                  conversation: await ConversationManager.getConversationById(
                     conversationId,
                   ),
                   conversationId,
@@ -979,4 +818,5 @@ export const ClientMessageInit = () => {
     }
     return undefined
   })
+  initIndexedDBChannel()
 }

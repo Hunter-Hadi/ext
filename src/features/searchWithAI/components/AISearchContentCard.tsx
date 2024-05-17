@@ -9,7 +9,6 @@ import React, { useMemo } from 'react'
 import { FC, useCallback, useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 import useSearchWithAISources from '@/features/searchWithAI/hooks/useSearchWithAISources'
 
 import useSearchWithAICore from '../hooks/useSearchWithAICore'
@@ -25,6 +24,8 @@ import AISearchSources from './AISearchSources'
 import SearchWithAIFooter from './SearchWithAIFooter'
 import SearchWithAIHeader from './SearchWithAIHeader'
 import { ReadIcon } from './SearchWithAIIcons'
+
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 
 interface IProps {
   question: string

@@ -7,8 +7,8 @@ import {
   SEARCH__ANSWER__PROMPT_ID,
   SEARCH__SMART_QUERY__PROMPT_ID,
 } from '@/constants'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'

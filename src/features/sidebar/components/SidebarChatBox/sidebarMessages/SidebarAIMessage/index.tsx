@@ -10,10 +10,6 @@ import { useTranslation } from 'react-i18next'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
-  IAIResponseMessage,
-  IAIResponseOriginalMessageMetadataTitle,
-} from '@/features/chatgpt/types'
-import {
   CaptivePortalIcon,
   ReadIcon,
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
@@ -26,6 +22,7 @@ import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarCh
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 import { SwitchSummaryActionNav } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SwitchSummaryActionNav'
+import { IAIResponseMessage, IAIResponseOriginalMessageMetadataTitle } from '@/features/indexed_db/conversations/models/Message';
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 

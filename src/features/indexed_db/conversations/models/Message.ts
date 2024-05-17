@@ -1,6 +1,4 @@
-// 基础的聊天消息类型
 import { TFunction } from 'i18next'
-import React from 'react'
 
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import { IArtTextToImageMetadata } from '@/features/art/types'
@@ -9,15 +7,16 @@ import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
-import { type ISidebarConversationType } from '@/features/sidebar/types'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export type IChatMessagePublishStatus = 'unpublished' | 'success' | 'error'
 
 export interface IChatMessage {
-  type: 'user' | 'ai' | 'system' | 'third'
-  text: string
   messageId: string
   parentMessageId?: string
+  conversationId?: string
+  type: 'user' | 'ai' | 'system' | 'third'
+  text: string
   // 不同的message存放数据的地方
   meta?: {
     [key: string]: any
@@ -40,7 +39,6 @@ export interface IUserChatMessage extends IChatMessage {
   type: 'user'
   text: string
   messageId: string
-  conversationId: string
   parentMessageId?: string
   meta?: IChatMessageExtraMetaType
 }
@@ -89,7 +87,6 @@ export type IAIResponseOriginalMessageCopilotStep = {
   valueType?: 'text' | 'tags' | 'list' | 'table' | 'image' | 'link'
   value?: string | string[] | Record<string, any>
 }
-
 export type IAIResponseOriginalMessageSourceLink = {
   title: string
   url: string
@@ -97,7 +94,6 @@ export type IAIResponseOriginalMessageSourceLink = {
   img: string
   from?: string
 }
-
 export type IAIResponseOriginalMessageMetadataTitle = {
   title: string
   titleIcon?: string
@@ -115,7 +111,6 @@ export type IAIResponseOriginalMessageMetaDeep = {
       value: TranscriptResponse[]
     }
 )
-
 export type IAIResponseOriginalMessageNavMetadata = {
   key: string
   title: string
@@ -177,6 +172,7 @@ export interface IAIResponseOriginalMessage {
     navMetadata?: IAIResponseOriginalMessageNavMetadata
   }
 }
+
 // AI返回的消息
 export interface IAIResponseMessage extends IChatMessage {
   type: 'ai'

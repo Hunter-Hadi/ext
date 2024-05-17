@@ -12,14 +12,13 @@ import {
   getAIProviderSettings,
   setAIProviderSettings,
 } from '@/background/src/chat/util'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 import { backgroundSendAllClientMessage } from '@/background/utils'
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { APP_VERSION } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
 import { MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL } from '@/features/common/constants'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
 
 const log = new Log('Background/Chat/ChatSystem')
@@ -103,7 +102,7 @@ class ChatSystem implements ChatSystemInterface {
     }
     return false
   }
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     if (!this.currentAdapter) {
       return ''
     }
@@ -116,7 +115,7 @@ class ChatSystem implements ChatSystemInterface {
     if (!conversationId) {
       return false
     }
-    const conversationDetail = await ConversationManager.getClientConversation(
+    const conversationDetail = await ConversationManager.getConversationById(
       conversationId,
     )
     const conversationProvider = conversationDetail?.meta.AIProvider
@@ -180,7 +179,7 @@ class ChatSystem implements ChatSystemInterface {
     })
   }
   async updateClientConversationMessages(conversationId: string) {
-    const conversation = await ConversationManager.getClientConversation(
+    const conversation = await ConversationManager.getConversationById(
       conversationId,
     )
     backgroundSendAllClientMessage('Client_listenUpdateConversationMessages', {
@@ -188,7 +187,7 @@ class ChatSystem implements ChatSystemInterface {
       conversationId,
     })
   }
-  async switchAdapterWithConversation(conversation: IChatConversation) {
+  async switchAdapterWithConversation(conversation: IConversation) {
     const currentConversationAIProvider = conversation.meta.AIProvider
     if (currentConversationAIProvider) {
       console.log('新版Conversation 切换会话: ', conversation?.id, conversation)

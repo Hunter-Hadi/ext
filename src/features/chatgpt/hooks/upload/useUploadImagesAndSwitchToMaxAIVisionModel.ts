@@ -4,8 +4,8 @@ import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGP
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 
@@ -101,7 +101,9 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       }
       createConversationResolveRef.current = resolve
       const conversation = currentConversationIdRef.current
-        ? await clientGetConversation(currentConversationIdRef.current)
+        ? await ClientConversationManager.getConversation(
+            currentConversationIdRef.current,
+          )
         : undefined
       if (conversation && conversation.type === 'Chat') {
         if (

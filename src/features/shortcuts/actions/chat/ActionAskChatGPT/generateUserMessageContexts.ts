@@ -1,8 +1,9 @@
 import { orderBy } from 'lodash-es'
 
-import { IUserChatMessageExtraMetaContextType } from '@/features/chatgpt/types'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+
+import { IUserChatMessageExtraMetaContextType } from '@/features/indexed_db/conversations/models/Message';
 
 const generateUserMessageContexts = (
   shortCutsParameters: Record<string, IShortCutsParameter>,

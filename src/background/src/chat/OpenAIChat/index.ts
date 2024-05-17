@@ -10,9 +10,7 @@ import {
   createDaemonProcessTab,
   getAIProviderSettings,
 } from '@/background/src/chat/util'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 import {
   backgroundSendAllClientMessage,
   backgroundSendClientMessage,
@@ -23,7 +21,8 @@ import {
   CHATGPT_WEBAPP_HOST,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 import { wait } from '@/utils'
 import Log from '@/utils/Log'
 
@@ -250,7 +249,7 @@ class OpenAIChat extends BaseChat {
       this.keepAlive()
     }
   }
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     const currentModel =
       initConversationData.meta?.AIModel ||
       (await getAIProviderSettings('OPENAI'))?.model
@@ -261,10 +260,9 @@ class OpenAIChat extends BaseChat {
         AIModel: currentModel,
       },
     })
-    this.conversation =
-      await ConversationManager.conversationDB.getConversationById(
-        conversationId,
-      )
+    this.conversation = await ConversationManager.getConversationById(
+      conversationId,
+    )
     await this.sendDaemonProcessTask('OpenAIDaemonProcess_createConversation', {
       conversationId: this.conversation?.meta?.AIConversationId || '',
       model: this.conversation?.meta?.AIModel || '',
@@ -274,10 +272,9 @@ class OpenAIChat extends BaseChat {
   async removeConversation(conversationId: string) {
     if (this.conversation) {
       // 更新conversation, 获取实际的ChatGPT conversation id
-      this.conversation =
-        await ConversationManager.conversationDB.getConversationById(
-          this.conversation.id,
-        )
+      this.conversation = await ConversationManager.getConversationById(
+        this.conversation.id,
+      )
     }
     if (!this.conversation?.meta.AIConversationId) {
       await this.removeConversationWithCache()

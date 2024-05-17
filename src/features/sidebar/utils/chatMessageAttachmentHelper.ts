@@ -1,10 +1,13 @@
 import lodashGet from 'lodash-es/get'
 
-import { IChatMessage, IChatUploadFile } from '@/features/chatgpt/types'
 import {
   isAIMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
+import {
+  IChatMessage,
+  IChatUploadFile,
+} from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 
 /**

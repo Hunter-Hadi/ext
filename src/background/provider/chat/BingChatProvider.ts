@@ -6,9 +6,10 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { BingChat } from '@/background/src/chat'
-import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 class BingChatProvider implements ChatAdapterInterface {
   private bingChat: BingChat
@@ -29,7 +30,7 @@ class BingChatProvider implements ChatAdapterInterface {
   get conversation() {
     return this.bingChat.conversation
   }
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     if (
       initConversationData?.id &&
       this.bingChat.conversation?.id &&

@@ -2,8 +2,9 @@ import {
   MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   MAXAI_VISION_MODEL_UPLOAD_CONFIG,
 } from '@/background/src/chat/constant'
-import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
+
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
 
 export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
   {

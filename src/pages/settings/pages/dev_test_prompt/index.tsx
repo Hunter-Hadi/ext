@@ -7,10 +7,6 @@ import {
   IAIProviderType,
 } from '@/background/provider/chat'
 import { openAIAPISystemPromptGenerator } from '@/background/src/chat/OpenAIApiChat/types'
-import {
-  IChatConversation,
-  IChatConversationMeta,
-} from '@/background/src/chatConversations'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import {
@@ -18,6 +14,10 @@ import {
   ChatPanelContextValue,
 } from '@/features/chatgpt/store/ChatPanelContext'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import {
+  IConversation,
+  IConversationMeta,
+} from '@/features/indexed_db/conversations/models/Conversation'
 import SidebarChatPanel from '@/features/sidebar/components/SidebarChatPanel'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 
@@ -68,7 +68,7 @@ const ChatPanelItem: FC<{
     currentModel?: string,
   ) => {
     console.log('新版Conversation ', AIProvider, AIModel)
-    const baseMetaConfig: Partial<IChatConversationMeta> = {
+    const baseMetaConfig: Partial<IConversationMeta> = {
       AIProvider: currentAIProvider || AIProvider,
       AIModel: currentModel || AIModel,
       maxTokens:
@@ -86,7 +86,7 @@ const ChatPanelItem: FC<{
           type: 'Chat',
           title: 'Ask AI anything',
           meta: baseMetaConfig,
-        } as Partial<IChatConversation>,
+        } as Partial<IConversation>,
       },
     })
     setState({

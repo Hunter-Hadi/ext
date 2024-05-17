@@ -14,13 +14,14 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 import {
   formatAIMessageContent,
   formatAIMessageContentForClipboard,
 } from '@/features/sidebar/utils/chatMessagesHelper'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
+
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 const AFTER_COPIED_CLOSE_HOSTS = ['www.linkedin.com']
 
 const SidebarCopyButton: FC<{

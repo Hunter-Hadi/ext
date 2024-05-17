@@ -9,7 +9,6 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { atomFamily, useRecoilState, useRecoilValue } from 'recoil'
 
-import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
 import {
   getChromeExtensionLocalStorage,
@@ -18,6 +17,7 @@ import {
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarSummaryConversationIdState } from '@/features/sidebar/store'
@@ -103,7 +103,7 @@ const DevConsole: FC<{
   const renderConversation = useMemo(() => {
     const clonedConversation: any = cloneDeep(
       clientConversation,
-    ) as IChatConversation
+    ) as IConversation
     if (clonedConversation) {
       clonedConversation.messages = []
     }

@@ -13,13 +13,14 @@ import CustomMarkdown from '@/components/CustomMarkdown'
 import { APP_USE_CHAT_GPT_HOST, CHATGPT_WEBAPP_HOST } from '@/constants'
 import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
-import { ISystemChatMessage } from '@/features/chatgpt/types'
 
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_PROVIDER_MAP,
 } from '../constants'
 import SearchWithAIProviderOptions from '../constants/searchWithAIProviderOptions'
+
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
 
 interface IProps {
   message: string

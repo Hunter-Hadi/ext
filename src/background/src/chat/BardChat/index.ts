@@ -8,7 +8,9 @@ import {
 } from '@/background/src/chat/BardChat/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+
+
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 function generateReqId() {
   return Math.floor(Math.random() * 900000) + 100000

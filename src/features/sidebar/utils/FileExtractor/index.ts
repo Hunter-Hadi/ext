@@ -1,8 +1,9 @@
 import { checkFileNameIsImage } from '@/background/utils/uplpadFileProcessHelper'
 import { MaxAIAddOrUpdateUploadFile } from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
-import { IChatUploadFile } from '@/features/chatgpt/types'
 import SpecialTypeFileExtractor from '@/features/sidebar/utils/FileExtractor/SpecialTypeFileExtractor'
 import globalSnackbar from '@/utils/globalSnackbar'
+
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 export interface FileExtractorResult {
   success: boolean
   error?: string

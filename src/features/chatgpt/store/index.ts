@@ -1,15 +1,25 @@
 import { atom, atomFamily } from 'recoil'
 
 import {
-  IChatConversation,
-  PaginationConversation,
-} from '@/background/src/chatConversations'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+  IConversation,
+  IPaginationConversation,
+} from '@/features/indexed_db/conversations/models/Conversation'
+import {
+  IChatMessage,
+  IChatUploadFile,
+} from '@/features/indexed_db/conversations/models/Message'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export const ClientConversationMapState = atom<{
-  [key: string]: IChatConversation
+  [key: string]: IConversation
 }>({
   key: 'ClientConversationMapState',
+  default: {},
+})
+export const ClientConversationMessageMapState = atom<{
+  [key: string]: IChatMessage[]
+}>({
+  key: 'ClientConversationMessageMapState',
   default: {},
 })
 
@@ -36,7 +46,27 @@ export const ClientUploadedFilesState = atomFamily<
   },
 })
 
-export const PaginationConversationsState = atom<PaginationConversation[]>({
+export type PaginationConversationsFilterType = {
+  type: ISidebarConversationType
+  page_size: number
+  page: number
+  isDelete: boolean
+  total_page: number
+}
+
+export const PaginationConversationsFilterState =
+  atom<PaginationConversationsFilterType>({
+    key: 'PaginationConversationsFilterState',
+    default: {
+      type: 'Chat',
+      page_size: 50,
+      page: 0,
+      isDelete: false,
+      total_page: 0,
+    },
+  })
+
+export const PaginationConversationsState = atom<IPaginationConversation[]>({
   key: 'PaginationConversationsState',
   default: [],
 })

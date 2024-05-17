@@ -13,7 +13,6 @@ import React, {
 import { useRecoilValue } from 'recoil'
 
 import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIModelUploadFile'
-import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
@@ -30,6 +29,8 @@ import {
   getMaxAISidebarActiveElement,
 } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+
+import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message';
 
 export const LINE_HEIGHT = 24
 

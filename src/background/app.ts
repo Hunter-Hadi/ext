@@ -13,7 +13,9 @@ import cloneDeep from 'lodash-es/cloneDeep'
 
 import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
-import ConversationManager from '@/background/src/chatConversations'
+import ConversationManager, {
+  getAllOldVersionConversationIds,
+} from '@/background/src/chatConversations'
 import { ClientMessageInit } from '@/background/src/client'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import {
@@ -42,7 +44,6 @@ import {
   checkIsPayingUser,
   getChromeExtensionUserInfo,
 } from '@/features/auth/utils'
-import { IChatMessage } from '@/features/chatgpt/types'
 import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
@@ -52,6 +53,7 @@ import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChann
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
+
 /**
  * background.js 入口
  *
@@ -360,9 +362,6 @@ const initChromeExtensionUpdated = async () => {
     ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY,
     false,
   )
-
-  // TODO: 预计2024-01移除这段逻辑, 更新老用户的conversation的authorId字段
-  await ConversationManager.getAllConversation()
   // NOTE: 远程更新AI配置
   setTimeout(() => {
     updateRemoteAIProviderConfigAsync().then().catch()
@@ -645,14 +644,30 @@ const initChromeExtensionTabUrlChangeListener = () => {
   })
 }
 import { v4 as uuidV4 } from 'uuid'
+
+import {
+  isAIMessage,
+  isUserMessage,
+} from '@/features/chatgpt/utils/chatMessageUtils'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 const devMockConversation = async () => {
   const isProduction = String(process.env.NODE_ENV) === 'production'
   if (isProduction) {
     return
   }
   // 保证不运行
-  return
-  const totalConversation = await ConversationManager.getAllConversation()
+  const totalConversationIds = await getAllOldVersionConversationIds()
+  const totalConversation: IConversation[] = []
+  for (let i = 0; i < totalConversationIds.length; i++) {
+    const conversation =
+      await ConversationManager.oldVersionConversationDB.getConversationById(
+        totalConversationIds[i],
+      )
+    if (conversation) {
+      totalConversation.push(conversation)
+    }
+  }
   if (totalConversation.length < 5 || totalConversation.length > 50) {
     return
   }
@@ -668,6 +683,27 @@ const devMockConversation = async () => {
         const mockMessage = cloneDeep(mergeMessages[randomIndex])
         mockMessage.messageId = uuidV4()
         ;(mockMessage as any).conversationId = conversationId
+        if (isAIMessage(mockMessage)) {
+          if (mockMessage.originalMessage?.metadata?.attachments) {
+            mockMessage.originalMessage.metadata.attachments =
+              mockMessage.originalMessage.metadata.attachments.map(
+                (attachment: any) => {
+                  attachment.id = uuidV4()
+                  return attachment
+                },
+              )
+          }
+        }
+        if (isUserMessage(mockMessage)) {
+          if (mockMessage.meta?.attachments) {
+            mockMessage.meta.attachments = mockMessage.meta.attachments.map(
+              (attachment: any) => {
+                attachment.id = uuidV4()
+                return attachment
+              },
+            )
+          }
+        }
         return mockMessage
       })
     // 重新整理parentMessageId
@@ -680,14 +716,14 @@ const devMockConversation = async () => {
     return newMessages
   }
   console.log('totalConversation', totalConversation)
-  const randomConversationCount = 100
+  const randomConversationCount = 200
   const randomConversations = new Array(randomConversationCount)
     .fill(0)
     .map(() => {
       const randomIndex = Math.floor(Math.random() * totalConversation.length)
       const conversation = cloneDeep(totalConversation[randomIndex])
       conversation.id = uuidV4()
-      conversation.messages = getMergeMessages(200, conversation.id)
+      conversation.messages = getMergeMessages(100, conversation.id)
       return conversation
     })
   let index = 0
@@ -698,7 +734,7 @@ const devMockConversation = async () => {
       conversation.id,
       conversation.messages.length,
     )
-    await ConversationManager.conversationDB.addOrUpdateConversation(
+    await ConversationManager.oldVersionConversationDB.addOrUpdateConversation(
       conversation,
     )
   }

@@ -10,11 +10,12 @@ import useAIProviderModels, {
 } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
-import { IAIProviderModel } from '@/features/chatgpt/types'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
+
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
 
 /**
  * 选择第三方AIProvider的model

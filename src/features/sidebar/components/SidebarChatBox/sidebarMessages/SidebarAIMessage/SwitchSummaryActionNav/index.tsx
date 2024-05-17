@@ -8,7 +8,6 @@ import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensi
 import { ContextMenuIcon, type IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
-import { type IAIResponseMessage, type IAIResponseOriginalMessageNavMetadata } from '@/features/chatgpt/types'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
@@ -25,6 +24,7 @@ import {
 } from '@/features/sidebar/utils/pageSummaryNavPrompt'
 
 import SidebarNavCustomPromptButton from './SidebarNavCustomPromptButton'
+import { IAIResponseMessage, IAIResponseOriginalMessageNavMetadata } from '@/features/indexed_db/conversations/models/Message';
 
 interface IProps {
   message: IAIResponseMessage

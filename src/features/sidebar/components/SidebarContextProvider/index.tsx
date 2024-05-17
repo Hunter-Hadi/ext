@@ -5,8 +5,8 @@ import {
   ChatPanelContext,
   ChatPanelContextValue,
 } from '@/features/chatgpt/store/ChatPanelContext'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getInputMediator } from '@/store/InputMediator'
@@ -126,7 +126,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         getInputMediator('floatingMenuInputMediator').updateInputValue('')
         getInputMediator('chatBoxInputMediator').updateInputValue('')
         const currentConversation = conversationId
-          ? await clientGetConversation(conversationId)
+          ? await ClientConversationManager.getConversation(conversationId)
           : null
         if (currentConversation) {
           await createConversation(
@@ -185,11 +185,13 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         .updateConversationId(conversationId, type)
         .finally(() => setInitialized(true))
 
-      clientGetConversation(conversationId).then((conversation) => {
-        if (!conversation) {
-          sidebarContextValue.createConversation(conversationTypeRef.current)
-        }
-      })
+      ClientConversationManager.getConversation(conversationId).then(
+        (conversation) => {
+          if (!conversation) {
+            sidebarContextValue.createConversation(conversationTypeRef.current)
+          }
+        },
+      )
     } else {
       setInitialized(true)
     }

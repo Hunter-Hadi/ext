@@ -8,12 +8,12 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { IChatConversationShareConfig } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { WWW_PROJECT_HOST } from '@/constants'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IConversationShareConfig } from '@/features/indexed_db/conversations/models/Conversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import globalSnackbar from '@/utils/globalSnackbar'
 
@@ -36,7 +36,7 @@ const ShareButtonGroup: FC = () => {
     setAnchorEl(null)
   }
   const switchShareType = async (
-    shareType: IChatConversationShareConfig['shareType'],
+    shareType: IConversationShareConfig['shareType'],
   ) => {
     if (!clientConversation?.id) {
       return
@@ -57,7 +57,7 @@ const ShareButtonGroup: FC = () => {
         share_enabled: enabled,
       })
       if (shareConfig?.data?.status === 'OK') {
-        await clientUpdateChatConversation(
+        await ClientConversationManager.addOrUpdateConversation(
           clientConversation.id,
           {
             share: {
@@ -66,7 +66,9 @@ const ShareButtonGroup: FC = () => {
               shareType,
             },
           },
-          true,
+          {
+            syncConversationToDB: true,
+          },
         )
       } else {
         globalSnackbar.error(
@@ -183,7 +185,7 @@ const ShareButtonGroup: FC = () => {
         }
         currentCopyShareId = shareConfig.data.data.id
         // 上传成功，写入数据库
-        await clientUpdateChatConversation(
+        await ClientConversationManager.addOrUpdateConversation(
           conversationId,
           {
             share: {
@@ -192,7 +194,9 @@ const ShareButtonGroup: FC = () => {
               shareType: 'public',
             },
           },
-          false,
+          {
+            syncConversationToDB: true,
+          },
         )
       } catch (e) {
         errorTips()

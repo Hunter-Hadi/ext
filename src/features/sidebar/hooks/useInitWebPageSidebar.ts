@@ -4,10 +4,10 @@ import { useRecoilValue } from 'recoil'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -58,7 +58,9 @@ const useInitWebPageSidebar = () => {
           if (!conversationId) {
             return
           }
-          const conversation = await clientGetConversation(conversationId)
+          const conversation = await ClientConversationManager.getConversation(
+            conversationId,
+          )
           if (
             conversation &&
             conversation.meta.AIProvider &&

@@ -11,12 +11,11 @@ import {
   IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -36,7 +35,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   get conversation() {
     return this.useChatGPTPlusChat.conversation
   }
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     return await this.useChatGPTPlusChat.createConversation(
       initConversationData,
     )
@@ -52,10 +51,9 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIRequestHistoryMessage[] = []
-    const conversationDetail =
-      await ConversationManager.conversationDB.getConversationById(
-        question.conversationId,
-      )
+    const conversationDetail = await ConversationManager.getConversationById(
+      question.conversationId,
+    )
     let backendAPI: IMaxAIChatGPTBackendAPIType = 'get_chatgpt_response'
     const docId = conversationDetail?.meta?.docId
     if (conversationDetail) {

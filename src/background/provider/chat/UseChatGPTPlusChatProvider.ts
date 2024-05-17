@@ -95,7 +95,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         })
       }
       question.meta?.historyMessages?.forEach((message) => {
-        chat_history.push(chatMessageToMaxAIRequestMessage(message))
+        chat_history.push(chatMessageToMaxAIRequestMessage(message, true))
       })
       if (docId && chat_history?.[0]?.role === 'ai') {
         // summary里面的chat history不包括页面的自动summary对话

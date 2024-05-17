@@ -79,7 +79,6 @@ const SettingPromptsContextProvider: FC<{
           )
         }
       }
-      // debugger
       setVariables(Array.from(variablesMap.values()))
       const defaultHtml = promptTemplateToHtml(defaultTemplate, variablesMap)
       updateEditHTML(defaultHtml)

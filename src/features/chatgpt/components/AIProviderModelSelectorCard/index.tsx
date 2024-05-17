@@ -147,7 +147,6 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
       }}
     >
       <MenuList
-        autoFocusItem
         id={'maxai-ai-model-selector-menu'}
         aria-labelledby="maxai-ai-model-selector-menu"
         sx={{

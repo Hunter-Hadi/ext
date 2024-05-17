@@ -246,7 +246,7 @@ export const generateSearchWithAIActions = async (
           text: '',
           meta: {
             // smart query以{ response_in_json: true, streaming: false }请求调用
-            isEnabledJsonMode: true,
+            // isEnabledJsonMode: true,
             includeHistory,
             temperature: 0,
             messageVisibleText: query,

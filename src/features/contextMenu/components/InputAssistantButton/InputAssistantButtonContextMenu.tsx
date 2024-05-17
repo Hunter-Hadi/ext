@@ -9,6 +9,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { useSetRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -23,6 +24,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import {
+  FloatingContextWindowChangesState,
   useContextMenuList,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
@@ -58,7 +60,11 @@ const InputAssistantButtonContextMenu: FC<
     disabled,
     onSelectionEffect,
   } = props
-  const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
+  const { floatingDropdownMenuOpen, showFloatingContextMenuWithElement } =
+    useFloatingContextMenu()
+  const setContextWindowChanges = useSetRecoilState(
+    FloatingContextWindowChangesState,
+  )
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
   const { currentSidebarConversationType, currentConversationId } =
@@ -226,7 +232,15 @@ const InputAssistantButtonContextMenu: FC<
         // customOpen={disabled}
         // referenceElementOpen={!disabled}
         onClickContextMenu={async (contextMenu) => {
-          setClickContextMenu(contextMenu)
+          if (floatingDropdownMenuOpen) {
+            // 已经有打开的dropdown menu，先弹窗提醒是否要丢弃
+            setContextWindowChanges((prev) => ({
+              ...prev,
+              discardChangesModalVisible: true,
+            }))
+          } else {
+            setClickContextMenu(contextMenu)
+          }
         }}
         onClickReferenceElement={() => {
           // TODO

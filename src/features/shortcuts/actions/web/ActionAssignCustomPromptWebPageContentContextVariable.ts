@@ -1,11 +1,4 @@
-import {
-  ChatAppWebsites,
-  type ChatAppWebsitesType,
-  EmailWebsites,
-  type EmailWebsitesType,
-  SocialMediaWebsites,
-  type SocialMediaWebsitesType,
-} from '@/features/contextMenu/components/InputAssistantButton/config'
+import { getInstantReplyWebsiteType } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -29,18 +22,21 @@ export class ActionAssignCustomPromptWebPageContentContextVariable extends Actio
     params: ActionParameters & ActionParameters['VariableMap'],
     engine: IShortcutEngineExternalEngine,
   ) {
-    const host = getCurrentDomainHost()
     const {
       CUSTOM_PROMPT_HAS_DRAFT_CONTEXT = false,
       CUSTOM_PROMPT_HAS_FULL_CONTEXT = false,
       CUSTOM_PROMPT_HAS_TARGET_CONTEXT = false,
+      MAXAI__INSTANT_REPLY__WEBSITE_TYPE:
+        instantReplyWebsiteType = getInstantReplyWebsiteType(
+          getCurrentDomainHost(),
+        ),
     } = params
 
     try {
       const actions: ISetActionsType = []
 
       // Email
-      if (EmailWebsites.includes(host as EmailWebsitesType)) {
+      if (instantReplyWebsiteType === 'EMAIL') {
         if (CUSTOM_PROMPT_HAS_DRAFT_CONTEXT) {
           actions.push(
             {
@@ -103,7 +99,7 @@ export class ActionAssignCustomPromptWebPageContentContextVariable extends Actio
         }
       }
       // Social media
-      else if (SocialMediaWebsites.includes(host as SocialMediaWebsitesType)) {
+      else if (instantReplyWebsiteType === 'SOCIAL_MEDIA') {
         if (CUSTOM_PROMPT_HAS_DRAFT_CONTEXT) {
           actions.push(
             {
@@ -166,7 +162,7 @@ export class ActionAssignCustomPromptWebPageContentContextVariable extends Actio
         }
       }
       // Chat app website
-      else if (ChatAppWebsites.includes(host as ChatAppWebsitesType)) {
+      else if (instantReplyWebsiteType === 'CHAT_APP_WEBSITE') {
         if (CUSTOM_PROMPT_HAS_DRAFT_CONTEXT) {
           actions.push(
             {

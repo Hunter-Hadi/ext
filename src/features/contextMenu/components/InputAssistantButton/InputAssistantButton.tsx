@@ -77,6 +77,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     InputAssistantBoxSx, // 按钮容器样式
     DropdownButtonStyle, // 按钮样式
     CTAButtonStyle, // 按钮样式
+    instantReplyWebsiteType,
   } = buttonConfig
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const { t } = useTranslation(['client'])
@@ -178,6 +179,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
       dropdownButtonSx,
     }
   }, [CTAButtonStyle, DropdownButtonStyle, isCTAHover, buttonGroup])
+
   const inputAssistantBoxStyle = useMemo(() => {
     const cloneSx = (cloneDeep(InputAssistantBoxSx) as any) || {}
     buttonGroup.forEach((button) => {
@@ -198,6 +200,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
       ...(isBoxHover ? InputAssistantBoxSxHover : {}),
     } as React.CSSProperties
   }, [InputAssistantBoxSx, isBoxHover, buttonGroup])
+
   useEffect(() => {
     if (shadowRoot) {
       const emotionRoot = document.createElement('style')
@@ -209,6 +212,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
       })
     }
   }, [shadowRoot])
+
   useEffect(() => {
     setContextMenuContainer(
       document
@@ -216,6 +220,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         ?.shadowRoot?.querySelector('div') as HTMLElement,
     )
   }, [])
+
   return (
     <div
       style={{
@@ -242,9 +247,10 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[0]?.onSelectionEffect &&
             (() => buttonGroup[0].onSelectionEffect!(observerData))
           }
+          instantReplyWebsiteType={instantReplyWebsiteType}
           disabled={smoothConversationLoading}
         >
-          <Box style={{ width: '100%', height: 'inherit' }} component="div">
+          <Box style={{ width: '100%', height: 'inherit' }} component='div'>
             <TextOnlyTooltip
               placement={placement}
               zIndex={2000000}
@@ -344,6 +350,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[1]?.onSelectionEffect &&
             (() => buttonGroup[1].onSelectionEffect!(observerData))
           }
+          instantReplyWebsiteType={instantReplyWebsiteType}
           disabled={smoothConversationLoading}
         >
           <Box>
@@ -371,8 +378,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                       position={'absolute'}
                       top={`-${DropdownButtonStyle?.transparentHeight || 0}px`}
                       width={'100%'}
-                      height={`${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      height={`${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       bgcolor={isProduction ? 'transparent' : 'red'}
                       zIndex={2000001}
                     />
@@ -392,11 +400,13 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     </Button>
                     <Box
                       position={'absolute'}
-                      bottom={`-${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      bottom={`-${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       width={'100%'}
-                      height={`${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      height={`${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       bgcolor={isProduction ? 'transparent' : 'red'}
                       zIndex={2000001}
                     />

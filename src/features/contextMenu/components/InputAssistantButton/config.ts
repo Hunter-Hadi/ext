@@ -28,9 +28,14 @@ export interface IInputAssistantButton {
   displayTextSx?: SxProps
 }
 export type IInputAssistantButtonKeyType =
-  | 'composeNewButton'
-  | 'composeReplyButton'
-  | 'refineDraftButton'
+  | 'inputAssistantComposeReplyButton'
+  | 'inputAssistantComposeNewButton'
+  | 'inputAssistantRefineDraftButton'
+
+export type IInstantReplyWebsiteType =
+  | 'EMAIL'
+  | 'SOCIAL_MEDIA'
+  | 'CHAT_APP_WEBSITE'
 
 interface IInputAssistantButtonGroupConfigBase {
   composeNewButton: IInputAssistantButton
@@ -64,6 +69,8 @@ export interface IInputAssistantButtonGroupConfig
   InputAssistantBoxSx?: SxProps
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
+  // 默认情况下都会根据网站类型区分，有特殊情况需要混用，可以强制定义
+  instantReplyWebsiteType?: IInstantReplyWebsiteType
 }
 
 export const EmailWebsites = [
@@ -90,6 +97,23 @@ export const ChatAppWebsites = [
   'web.telegram.org',
   'messenger.com',
 ] as const
+
+export const specialChatAppWebsites = ['linkedin.com'] as const
+
+export const getInstantReplyWebsiteType = (
+  host: string,
+): IInstantReplyWebsiteType | undefined => {
+  if (EmailWebsites.includes(host as EmailWebsitesType)) {
+    return 'EMAIL'
+  }
+  if (SocialMediaWebsites.includes(host as SocialMediaWebsitesType)) {
+    return 'SOCIAL_MEDIA'
+  }
+  if (ChatAppWebsites.includes(host as ChatAppWebsitesType)) {
+    return 'CHAT_APP_WEBSITE'
+  }
+  return void 0
+}
 
 export type EmailWebsitesType = (typeof EmailWebsites)[number]
 export type SocialMediaWebsitesType = (typeof SocialMediaWebsites)[number]
@@ -787,6 +811,102 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
         transform: 'translateY(-2px)',
       },
     } as IInputAssistantButtonGroupConfig,
+    // message in LinkedIn
+    {
+      instantReplyWebsiteType: 'CHAT_APP_WEBSITE',
+      enable: (rootElement) => {
+        const chatWindow =
+          findParentEqualSelector('[id][role="dialog"]', rootElement, 8) ||
+          findParentEqualSelector(
+            '.msg-convo-wrapper[id][data-feedback-redacted]',
+            rootElement,
+            6,
+          )
+        if (chatWindow) {
+          return Boolean(
+            chatWindow.querySelector<HTMLElement>(
+              '.msg-s-message-list-container',
+            ),
+          )
+        }
+        return false
+      },
+      rootSelectors: ['.msg-form__footer .msg-form__right-actions'],
+      appendPosition: 0,
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onSelectionEffect: ({ id: buttonId }) => {
+          if (InstantReplyButtonIdToInputMap.has(buttonId)) {
+            return
+          }
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+          if (inputAssistantButton) {
+            const inputBox = findSelectorParent(
+              'form [role="textbox"][contenteditable="true"]',
+              inputAssistantButton as HTMLElement,
+              5,
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onSelectionEffect: ({ id: buttonId }) => {
+          if (InstantReplyButtonIdToInputMap.has(buttonId)) {
+            return
+          }
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+          if (inputAssistantButton) {
+            const inputBox = findSelectorParent(
+              'form [role="textbox"][contenteditable="true"]',
+              inputAssistantButton as HTMLElement,
+              5,
+            )
+            if (inputBox) {
+              InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
+            }
+          }
+        },
+      },
+      CTAButtonStyle: {
+        padding: '4px 6px',
+        iconSize: 16,
+        borderRadius: '16px 0 0 16px',
+        transparentHeight: 6,
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 16px 16px 0',
+        padding: '2px 0px',
+        transparentHeight: 6,
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '16px',
+        marginRight: '8px',
+      },
+    } as IInputAssistantButtonGroupConfig,
   ]
 
 const FacebookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
@@ -826,6 +946,7 @@ const FacebookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
               inputAssistantButton,
               3,
             )
+
             if (inputBox) {
               InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
             }

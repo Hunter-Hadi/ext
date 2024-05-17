@@ -7,6 +7,10 @@ import {
   discordGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/discord'
 import {
+  linkedInGetChatMessages,
+  linkedInGetDraftContent,
+} from '@/features/shortcuts/utils/chatApp/platforms/linkedIn'
+import {
   messengerGetChatMessages,
   messengerGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/messenger'
@@ -51,6 +55,9 @@ export const getChatMessagesContent = async (
     if (host === 'messenger.com') {
       return await messengerGetChatMessages(inputAssistantButton)
     }
+    if (host === 'linkedin.com') {
+      return await linkedInGetChatMessages(inputAssistantButton)
+    }
   }
   return ChatMessagesContext.emptyData
 }
@@ -78,6 +85,9 @@ export const getChatMessageDraftContent = async (
     }
     if (host === 'messenger.com') {
       return await messengerGetDraftContent(inputAssistantButton)
+    }
+    if (host === 'linkedin.com') {
+      return await linkedInGetDraftContent(inputAssistantButton)
     }
   }
   return ''

@@ -5,6 +5,10 @@ import {
   VARIABLE_AI_RESPONSE_WRITING_STYLE,
   VARIABLE_CURRENT_WEBSITE_DOMAIN,
 } from '@/background/defaultPromptsData/systemVariables'
+import {
+  EmailWebsites,
+  SocialMediaWebsites,
+} from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export default [
@@ -63,12 +67,7 @@ export default [
     data: {
       editable: false,
       visibility: {
-        whitelist: [
-          'outlook.live.com',
-          'outlook.office365.com',
-          'mail.google.com',
-          'outlook.office.com',
-        ],
+        whitelist: [...EmailWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },
@@ -130,15 +129,7 @@ export default [
     data: {
       editable: false,
       visibility: {
-        whitelist: [
-          'twitter.com',
-          'linkedin.com',
-          'facebook.com',
-          'youtube.com',
-          'studio.youtube.com',
-          'instagram.com',
-          'reddit.com',
-        ],
+        whitelist: [...SocialMediaWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },

@@ -86,7 +86,7 @@ const copyText = (text: string) => {
 }
 
 // 自动聚焦并把光标移动到末尾
-const triggerEvents = ['input', 'change', 'keyup', 'paste']
+const triggerEvents = ['input', 'change']
 function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
   try {
     inputBox.focus()
@@ -102,7 +102,8 @@ function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
         range.setStart(lastNode, lastNodeContentsLength)
         range.setEnd(lastNode, lastNodeContentsLength)
         setTimeout(() => {
-          (lastNode as HTMLElement).scrollIntoView({ block: 'end' })
+          // eslint-disable-next-line no-extra-semi
+          ;(lastNode as HTMLElement).scrollIntoView({ block: 'end' })
         }, 100)
       } else {
         // 如果没有子节点，直接将光标移动到元素的起始位
@@ -139,12 +140,21 @@ const insertContentToInputBox = (
   content: string,
 ) => {
   if (inputBox) {
+    // 是否要全选
     const host = getCurrentDomainHost()
     if (inputBox.contentEditable === 'true') {
       // 有些网站回复别人会自动 quote mention
       let quoteMention = ''
       if (host === 'linkedin.com') {
-        quoteMention = inputBox.querySelector('a.ql-mention')?.outerHTML || ''
+        // message in LinkedIn
+        if (inputBox.matches('.msg-form__contenteditable')) {
+          inputBox.parentElement
+            ?.querySelector('.msg-form__placeholder')
+            ?.classList.remove('msg-form__placeholder')
+          content = `<p>${content}</p>`
+        } else {
+          quoteMention = inputBox.querySelector('a.ql-mention')?.outerHTML || ''
+        }
       }
       // Facebook 编辑器使用的是 Lexical, 只能通过它的实例提供的方法插入内容，无法使用 innerHTML 插入
       else if (host === 'facebook.com') {

@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -62,7 +62,7 @@ const InputAssistantButtonContextMenu: FC<
   } = props
   const { floatingDropdownMenuOpen, showFloatingContextMenuWithElement } =
     useFloatingContextMenu()
-  const setContextWindowChanges = useSetRecoilState(
+  const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
     FloatingContextWindowChangesState,
   )
   const [clickContextMenu, setClickContextMenu] =
@@ -207,6 +207,30 @@ const InputAssistantButtonContextMenu: FC<
       })
     }
   }, [root, rootId])
+  const clickContextMenuRef = useRef<IContextMenuItem>()
+
+  useEffect(() => {
+    if (!clickContextMenuRef.current) return
+    if (!floatingDropdownMenuOpen) {
+      // 点击了丢弃，执行新的context menu
+      if (
+        !contextWindowChanges.discardChangesModalVisible &&
+        contextWindowChanges.contextWindowMode === 'READ'
+      ) {
+        // 这里需要判断丢弃完毕的状态，否则会在showFloatingContextMenuWithVirtualElement里被return掉
+        setClickContextMenu(clickContextMenuRef.current)
+        clickContextMenuRef.current = undefined
+      }
+    } else if (!contextWindowChanges.discardChangesModalVisible) {
+      // 点击了取消
+      clickContextMenuRef.current = undefined
+    }
+  }, [
+    floatingDropdownMenuOpen,
+    contextWindowChanges.contextWindowMode,
+    contextWindowChanges.discardChangesModalVisible,
+  ])
+
   if (!root || !emotionCacheRef.current) {
     return null
   }
@@ -234,6 +258,7 @@ const InputAssistantButtonContextMenu: FC<
         onClickContextMenu={async (contextMenu) => {
           if (floatingDropdownMenuOpen) {
             // 已经有打开的dropdown menu，先弹窗提醒是否要丢弃
+            clickContextMenuRef.current = contextMenu
             setContextWindowChanges((prev) => ({
               ...prev,
               discardChangesModalVisible: true,

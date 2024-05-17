@@ -140,7 +140,7 @@ const insertContentToInputBox = (
   content: string,
 ) => {
   if (inputBox) {
-    // 是否要全选
+    inputBox.focus()
     const host = getCurrentDomainHost()
     if (inputBox.contentEditable === 'true') {
       // 有些网站回复别人会自动 quote mention
@@ -156,33 +156,27 @@ const insertContentToInputBox = (
           quoteMention = inputBox.querySelector('a.ql-mention')?.outerHTML || ''
         }
       }
-      // Facebook 编辑器使用的是 Lexical, 只能通过它的实例提供的方法插入内容，无法使用 innerHTML 插入
+      // Facebook 编辑器使用的是 Lexical, 无法使用 innerHTML 直接插入
       else if (host === 'facebook.com') {
-        const lexicalEditorInstance = (inputBox as any)?.__lexicalEditor
-        if (lexicalEditorInstance) {
-          const editorStateJson = lexicalEditorInstance
-            .getEditorState()
-            .toJSON()
-          if (editorStateJson?.root?.children?.[0]) {
-            editorStateJson.root.children[0].children = [
-              {
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: content,
-                type: 'text',
-                version: 1,
-              },
-            ]
-            const newEditorState =
-              lexicalEditorInstance.parseEditorState(editorStateJson)
-            if (newEditorState) {
-              lexicalEditorInstance.setEditorState(newEditorState)
-              lexicalEditorInstance.update()
-            }
-          }
-        }
+        inputBox.focus()
+        const range = document.createRange()
+        range.selectNodeContents(inputBox)
+        const selection = window.getSelection()
+        selection?.removeAllRanges()
+        selection?.addRange(range)
+
+        setTimeout(() => {
+          const clipboardData = new DataTransfer()
+          clipboardData.setData('text/plain', content)
+          inputBox.dispatchEvent(
+            new ClipboardEvent('paste', {
+              clipboardData,
+              bubbles: true,
+              cancelable: true,
+            }),
+          )
+        }, 100)
+
         return
       }
 

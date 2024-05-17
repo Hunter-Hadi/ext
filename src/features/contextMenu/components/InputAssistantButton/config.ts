@@ -973,7 +973,7 @@ const FacebookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
             const inputBox = findSelectorParent(
               'div[role="textbox"][contenteditable="true"]',
               inputAssistantButton,
-              3,
+              6,
             )
             if (inputBox) {
               InstantReplyButtonIdToInputMap.set(buttonId, inputBox)
@@ -1001,7 +1001,7 @@ const FacebookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
             const inputBox = findSelectorParent(
               'div[role="textbox"][contenteditable="true"]',
               inputAssistantButton,
-              3,
+              6,
             )
             if (inputBox) {
               InstantReplyButtonIdToInputMap.set(buttonId, inputBox)

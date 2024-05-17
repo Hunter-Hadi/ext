@@ -405,8 +405,25 @@ export const chatMessageToMaxAIRequestMessage = (
         }
       })
     }
+    let userContextText = ''
+    // 拼接上下文
+    if (message.meta?.contexts?.length) {
+      userMessageQuestion.text =
+        message.meta.messageVisibleText ||
+        message.meta.contextMenu?.text ||
+        message.text
+
+      userContextText = '\n\nContexts\n'
+
+      message.meta.contexts.forEach((context) => {
+        userContextText += `  • ${context.key}: ${context.value}\n`
+      })
+    }
     if (extractedContent) {
       userMessageQuestion.text += `${extractedContent}`
+    }
+    if (userContextText) {
+      userMessageQuestion.text += `${userContextText}`
     }
     userMessageContent.unshift(userMessageQuestion)
     baseRequestMessage.content = userMessageContent

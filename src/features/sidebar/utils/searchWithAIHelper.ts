@@ -245,8 +245,8 @@ export const generateSearchWithAIActions = async (
         AskChatGPTActionQuestion: {
           text: '',
           meta: {
-            // TODO smart query以{ response_in_json: true, streaming: false }请求调用
-            // isEnabledJsonMode: true,
+            // smart query以{ response_in_json: true, streaming: false }请求调用
+            isEnabledJsonMode: true,
             includeHistory,
             temperature: 0,
             messageVisibleText: query,

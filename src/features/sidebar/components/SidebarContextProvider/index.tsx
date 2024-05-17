@@ -118,7 +118,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         await updateConversationId(conversationId, conversationType)
         if (AIProvider || AIModel) {
           updateImmersiveSettings({
-            [settingsType]: { conversationId, AIProvider, AIModel },
+            [settingsType]: { AIProvider, AIModel },
           })
         }
         return conversationId
@@ -169,11 +169,16 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
       immersiveSettingsRef.current = newSettings
       if (!immersiveConversationId) {
         // 初始化没有id，比如首次安装的时候登陆成功后不打开sidebar直接打开immersive chat
-        sidebarContextValue.createConversation(
-          sidebarConversationTypeRef.current,
-        )
+        sidebarContextValue
+          .createConversation(sidebarConversationTypeRef.current)
+          .then()
+          .catch()
+          .finally(() => {
+            setInitialized(true)
+          })
+      } else {
+        setInitialized(true)
       }
-      setInitialized(true)
     }
   }, [
     localSettings,

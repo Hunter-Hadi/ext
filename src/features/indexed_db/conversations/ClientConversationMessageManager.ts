@@ -1,8 +1,17 @@
 import { UpdateSpec } from 'dexie'
+import orderBy from 'lodash-es/orderBy'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
-import { createIndexedDBQuery } from '@/features/indexed_db/utils'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+  ISystemChatMessage,
+  IUserChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
+import {
+  createIndexedDBQuery,
+  getProjectionFields,
+} from '@/features/indexed_db/utils'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export class ClientConversationMessageManager {
@@ -34,15 +43,101 @@ export class ClientConversationMessageManager {
    */
   static async getMessages(conversationId: string) {
     try {
-      const messages = await createIndexedDBQuery('conversations')
-        .messages.where('conversationId')
-        .equals(conversationId)
-        .toArray()
-        .then()
+      const messagesIds = await this.getMessageIds(conversationId)
+      // 因为获取indexedDB的数据是通过postMessage的方式，所以这里不能一次性获取所有数据，否则会导致数据过大，无法传输
+      // 这里循环获取数据
+      const messages: IChatMessage[] = []
+      const chunkSize = 50
+      for (let i = 0; i < messagesIds.length; i += chunkSize) {
+        const messageIds = messagesIds.slice(i, i + chunkSize)
+        const result = await createIndexedDBQuery('conversations')
+          .messages.where('messageId')
+          .anyOf(messageIds)
+          .toArray()
+          .then()
+        messages.push(...result)
+      }
       console.log(`ConversationDB[V3] 获取消息`, messages)
       return messages
     } catch (e) {
       console.log(`ConversationDB[V3] 获取消息失败`, e)
+      return []
+    }
+  }
+
+  static async getMessageByMessageId(messageId: string) {
+    try {
+      const message = await createIndexedDBQuery('conversations')
+        .messages.get(messageId)
+        .then()
+      console.log(`ConversationDB[V3] 获取消息`, message)
+      return message || null
+    } catch (e) {
+      console.log(`ConversationDB[V3] 获取消息失败`, e)
+      return null
+    }
+  }
+
+  /**
+   * 获取type类型的消息
+   * @param conversationId
+   * @param type
+   * @param position
+   * @example
+   *
+   * // 获取对话用户的第一条消息
+   * const message = await ClientConversationMessageManager.getMessageByMessageType('user', 'start')
+   * // 获取对话用户的最后一条消息
+   * const message = await ClientConversationMessageManager.getMessageByMessageType('user', 'end')
+   *
+   */
+  static async getMessageByMessageType(
+    conversationId: string,
+    type: IChatMessage['type'],
+    position: 'start' | 'end' = 'end',
+  ) {
+    try {
+      const messagesIds = (await createIndexedDBQuery('conversations')
+        .messages.where('conversationId')
+        .equals(conversationId)
+        .toArray(
+          getProjectionFields<IChatMessage>([
+            'messageId',
+            'created_at',
+            'type',
+          ]),
+        )
+        .then()) as { messageId: string; type: string }[]
+      const findItem = orderBy(
+        messagesIds,
+        ['created_at'],
+        [position === 'start' ? 'asc' : 'desc'],
+      ).find((item) => item.type === type)
+      const message = this.getMessageByMessageId(findItem?.messageId || '')
+      console.log(
+        `ConversationDB[V3] 获取${type}类型${position}的消息`,
+        message,
+      )
+      return message
+    } catch (e) {
+      console.log(`ConversationDB[V3] 获取${type}类型的消息错误`, e)
+      return null
+    }
+  }
+
+  static async getMessageIds(conversationId: string): Promise<string[]> {
+    try {
+      const messagesIds = (await createIndexedDBQuery('conversations')
+        .messages.where('conversationId')
+        .equals(conversationId)
+        .toArray(getProjectionFields<IChatMessage>(['messageId', 'created_at']))
+        .then()) as { messageId: string }[]
+      console.log(`ConversationDB[V3] 获取消息Ids数量`, messagesIds.length)
+      return orderBy(messagesIds, ['created_at'], ['desc']).map(
+        (item) => item.messageId,
+      )
+    } catch (e) {
+      console.log(`ConversationDB[V3] 获取消息Ids数量失败`, e)
       return []
     }
   }
@@ -77,7 +172,11 @@ export class ClientConversationMessageManager {
       return false
     }
   }
-  static async updateMessage(updateMessageData: Partial<IChatMessage>) {
+  static async updateMessage(
+    updateMessageData: Partial<
+      IUserChatMessage | IAIResponseMessage | ISystemChatMessage | IChatMessage
+    >,
+  ) {
     try {
       if (!updateMessageData.messageId) {
         return false
@@ -102,10 +201,52 @@ export class ClientConversationMessageManager {
       const result = await createIndexedDBQuery('conversations')
         .messages.bulkDelete(messageIds)
         .then()
+      // TODO: 需要删除附件
       return result
     } catch (e) {
       console.log(`ConversationDB[V3] 删除消息失败`, e)
       return false
+    }
+  }
+
+  /**
+   * 比较远程和本地的对话消息数据
+   * @param remoteMessages
+   */
+  static async diffRemoteConversationMessagesData(
+    remoteMessages: IChatMessage[],
+  ) {
+    const remoteMessageIds = remoteMessages.map((item) => item.messageId)
+    const localMessages = await createIndexedDBQuery('conversations')
+      .messages.where('messageId')
+      .anyOf(remoteMessageIds)
+      .toArray()
+      .then()
+    const conversationId =
+      remoteMessages.find((item) => item.conversationId)?.conversationId || ''
+    if (conversationId) {
+      const localMessageIds = localMessages.map((item) => item.messageId)
+      // 本地不存在的消息
+      const notExistLocalMessages = localMessages.filter(
+        (item) => !remoteMessageIds.includes(item.messageId),
+      )
+      if (notExistLocalMessages.length > 0) {
+        // 写入本地
+        await this.addMessages(conversationId, notExistLocalMessages)
+      }
+      // 本地存在的消息，用远程存在的消息覆盖本地
+      const existRemoteMessages = remoteMessages.filter((item) =>
+        localMessageIds.includes(item.messageId),
+      )
+      // TODO: 这里本来最好的做法是对比updated_at，但是这里只是简单的覆盖
+      //
+      if (existRemoteMessages.length > 0) {
+        const messageChanges = existRemoteMessages.map((item) => ({
+          key: item.messageId,
+          changes: item,
+        }))
+        await this.updateMessagesWithChanges(messageChanges)
+      }
     }
   }
 }

@@ -4,6 +4,7 @@ import uniqBy from 'lodash-es/uniqBy'
 
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
@@ -136,7 +137,8 @@ export const checkConversationNeedSync = async (
       totalCount: 0,
     }
   }
-  const localMessages = localConversation?.messages || []
+  const localConversationMessagesIds =
+    await ClientConversationMessageManager.getMessageIds(conversationId)
   const hasConversationData = await clientFetchMaxAIAPI<{
     status: string
     data: IConversation[]
@@ -147,8 +149,8 @@ export const checkConversationNeedSync = async (
     syncLog.info(conversationId, `接口报错, 需要同步`)
     return {
       needSync: true,
-      needSyncCount: localMessages.length || 0,
-      totalCount: localMessages.length || 0,
+      needSyncCount: localConversationMessagesIds.length || 0,
+      totalCount: localConversationMessagesIds.length || 0,
     }
   }
   // 判断messagesIds是否一致
@@ -164,16 +166,13 @@ export const checkConversationNeedSync = async (
     syncLog.info(conversationId, `接口报错, 需要同步`)
     return {
       needSync: true,
-      needSyncCount: localMessages.length || 0,
-      totalCount: localMessages.length || 0,
+      needSyncCount: localConversationMessagesIds.length || 0,
+      totalCount: localConversationMessagesIds.length || 0,
     }
   }
   const remoteConversationMessagesIds =
     remoteConversationMessagesIdsData.data.data || []
 
-  const localConversationMessagesIds = localMessages.map(
-    (message) => message.messageId,
-  )
   const totalCount = Math.max(
     localConversationMessagesIds.length,
     remoteConversationMessagesIds.length,
@@ -289,12 +288,11 @@ export const syncLocalConversationToRemote = async (
     return result
   }
   const needUploadConversation: any = cloneDeep(conversation)
-  const localMessagesIds = conversation.messages.map(
-    (message) => message.messageId,
+  const localMessagesIds = await ClientConversationMessageManager.getMessageIds(
+    conversation.id,
   )
-  let needUploadMessages: IChatMessage[] = cloneDeep(
-    needUploadConversation.messages,
-  )
+  let needUploadMessages: IChatMessage[] =
+    await ClientConversationMessageManager.getMessages(conversation.id)
   needUploadMessages = uniqBy(needUploadMessages, 'messageId')
   const conversationId = needUploadConversation.id
   if (!needUploadConversation.authorId) {
@@ -330,7 +328,7 @@ export const syncLocalConversationToRemote = async (
     (message) => !remoteMessagesIds.includes(message.messageId),
   )
   // 计算下载的消息
-  const needDownloadMessagesIds = remoteMessagesIds.filter(
+  let needDownloadMessagesIds = remoteMessagesIds.filter(
     (messageId) => !localMessagesIds.includes(messageId),
   )
   // 这里可以算出来需要上传的消息数量，和本地已经有的消息数量，更新progress
@@ -369,6 +367,10 @@ export const syncLocalConversationToRemote = async (
     `需要下载${needDownloadMessagesIds.length}条消息`,
     needSyncToLocalDB ? `开始下载到本地` : `不需要下载到本地`,
   )
+  // NOTE: !!因为聊天记录是分页加载的，所以在渲染的时候会自动下载同步到本地
+  // 所以这里设置为[]，不需要在这个auto Sync阶段下载
+  // 只上传服务器没有的消息就行
+  needDownloadMessagesIds = []
   for (
     let i = 0;
     i < needDownloadMessagesIds.length;
@@ -403,27 +405,10 @@ export const syncLocalConversationToRemote = async (
       addToLocalMessages.length,
       `条消息`,
     )
-
-    const mergeMessages = conversation.messages
-      .concat(addToLocalMessages)
-      .sort((prev, next) => {
-        // 按照时间排序, asc
-        const prevTime = prev.created_at
-          ? new Date(prev.created_at).getTime()
-          : 0
-        const nextTime = next.created_at
-          ? new Date(next.created_at).getTime()
-          : 0
-        return prevTime - nextTime
-      })
-    // await clientUpdateChatConversation(
-    //   conversationId,
-    //   {
-    //     ...conversation,
-    //     messages: mergeMessages,
-    //   },
-    //   false,
-    // )
+    await ClientConversationMessageManager.addMessages(
+      conversationId,
+      addToLocalMessages,
+    )
   }
   syncLog.info(
     conversationId,

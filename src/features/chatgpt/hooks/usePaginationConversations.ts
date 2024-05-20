@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
+import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {
   PaginationConversationsFilterState,
   PaginationConversationsFilterType,
@@ -200,6 +201,7 @@ const usePaginationConversations = (
             diffTimeUsage = new Date().getTime() - time
           }
         }
+        const authorId = await getMaxAIChromeExtensionUserId()
         // 从本地获取filter.page_size个对话
         const conversations = await createIndexedDBQuery('conversations')
           .conversations.orderBy('updated_at')
@@ -208,6 +210,7 @@ const usePaginationConversations = (
               lastMessageId: { $exists: true },
               type: { $eq: filter.type },
               isDelete: { $eq: filter.isDelete },
+              authorId: { $eq: authorId },
             }),
           )
           .reverse()
@@ -233,9 +236,9 @@ const usePaginationConversations = (
       getNextPageParam: (lastPage, allPages, lastPageParam) => {
         // 说明本地和远程都没有数据
         if (lastPage.length === 0) {
-          console.log(
-            `ConversationDB[V3][对话列表] 获取列表[${lastPageParam}]没有数据`,
-          )
+          // console.log(
+          //   `ConversationDB[V3][对话列表] 获取列表[${lastPageParam}]没有数据`,
+          // )
           return undefined
         }
         return lastPageParam + 1

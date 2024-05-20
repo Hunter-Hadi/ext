@@ -147,7 +147,7 @@ const PreviewPanel = () => {
       {currentConversationId && clientConversationMessages.length > 0 ? (
         <SidebarChatBoxMessageListContainer
           conversationId={currentConversationId}
-          loading={loading}
+          isAIResponding={loading}
           messages={clientConversationMessages}
           writingMessage={clientWritingMessage.writingMessage}
           sx={{

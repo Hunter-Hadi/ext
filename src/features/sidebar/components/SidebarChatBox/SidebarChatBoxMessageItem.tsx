@@ -1,4 +1,6 @@
 import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import dayjs from 'dayjs'
 import React, { FC, useMemo, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -112,6 +114,10 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
       key={message.messageId}
     >
       <DevContent>
+        <Typography color={'text.primary'}>
+          !!!!!!{order}-
+          {dayjs(message.created_at).format('YYYY-MM-DD HH:mm:ss')}
+        </Typography>
         <DevMessageSourceData message={message} />
       </DevContent>
       <AppSuspenseLoadingLayout>

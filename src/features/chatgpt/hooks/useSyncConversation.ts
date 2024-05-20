@@ -249,7 +249,7 @@ export const useSyncConversation = () => {
         }
         const localConversation =
           await ClientConversationManager.getConversation(conversationId)
-        if (!localConversation || localConversation.messages.length === 0) {
+        if (!localConversation) {
           return
         }
         const syncState = await snapshot.getPromise(

@@ -43,6 +43,7 @@ import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/fea
 import {
   checkIsPayingUser,
   getChromeExtensionUserInfo,
+  getMaxAIChromeExtensionUserId,
 } from '@/features/auth/utils'
 import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
@@ -715,6 +716,7 @@ const devMockConversation = async () => {
     })
     return newMessages
   }
+  const authorId = await getMaxAIChromeExtensionUserId()
   console.log('totalConversation', totalConversation)
   const randomConversationCount = 200
   const randomConversations = new Array(randomConversationCount)
@@ -723,6 +725,7 @@ const devMockConversation = async () => {
       const randomIndex = Math.floor(Math.random() * totalConversation.length)
       const conversation = cloneDeep(totalConversation[randomIndex])
       conversation.id = uuidV4()
+      conversation.authorId = authorId
       conversation.messages = getMergeMessages(100, conversation.id)
       return conversation
     })

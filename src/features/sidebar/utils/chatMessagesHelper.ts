@@ -8,6 +8,7 @@ import {
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import {
   IAIResponseMessage,
@@ -408,7 +409,9 @@ export const formatMessagesToLiteHistory = async (
   needSystemOrThirdMessage: boolean,
 ): Promise<string> => {
   const title = conversation.title
-  const messages = conversation.messages || []
+  const messages = await ClientConversationMessageManager.getMessages(
+    conversation.id,
+  )
   const conversationType = conversation.type
   const liteHistory: string[] = []
   messages.forEach((message) => {

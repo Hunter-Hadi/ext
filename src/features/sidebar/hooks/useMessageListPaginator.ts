@@ -2,7 +2,8 @@ import { debounce, throttle } from 'lodash-es'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
-import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import usePaginationConversationMessages from '@/features/chatgpt/hooks/usePaginationConversationMessages'
 
 import { SidebarPageState } from '../store'
 
@@ -16,7 +17,6 @@ interface ISliceMessageOptions {
 const useMessageListPaginator = (
   ready: boolean,
   scrollContainerRef: React.RefObject<HTMLElement>,
-  list: IChatMessage[],
   coverOptions?: ISliceMessageOptions,
 ) => {
   const {
@@ -32,11 +32,19 @@ const useMessageListPaginator = (
   const originalScrollHeight = useRef(0)
   const scrollTop = useRef(0)
 
-  const total = useMemo(() => list.length, [list])
+  const { currentConversationId } = useClientConversation()
+  const {
+    pageNum,
+    isLoading,
+    messages,
+    isFetchingNextPage,
+    hasNextPage,
+    fetchNextPage,
+  } = usePaginationConversationMessages(currentConversationId || '')
 
   const [sidebarPageState, setSidebarPageState] =
     useRecoilState(SidebarPageState)
-  const { messageListPageNum: pageNum } = sidebarPageState
+  const { messageListPageNum: showPageNum } = sidebarPageState
   const setPageNum = useCallback(
     (pageOrPageSetter: number | ((preState: number) => number)) => {
       setSidebarPageState((preState) => {
@@ -72,17 +80,25 @@ const useMessageListPaginator = (
   }
 
   const loadMore = useCallback(() => {
-    if (!ready) {
+    if (
+      !ready ||
+      isFetchingNextPage ||
+      !hasNextPage ||
+      !currentConversationId
+    ) {
       return
     }
-    setPageNum((prePageNum) => {
-      if (prePageNum * pageSize >= total) {
-        return prePageNum
-      }
-      return prePageNum + 1
-    })
-  }, [ready, total, pageSize])
-
+    fetchNextPage()
+  }, [
+    ready,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+    currentConversationId,
+  ])
+  useEffect(() => {
+    setPageNum(pageNum)
+  }, [pageNum])
   const loadMoreRef = useRef(loadMore)
   useEffect(() => {
     loadMoreRef.current = debounce(loadMore, 100)
@@ -142,9 +158,10 @@ const useMessageListPaginator = (
   }, [buffer])
 
   const slicedMessageList = useMemo(() => {
-    if (pageSize === -1) return list
-    return list.slice(-(pageNum * pageSize))
-  }, [list, pageNum, pageSize])
+    console.log(`ConversationDB[V3][对话消息列表] slicedMessageList`, messages)
+    if (pageSize === -1) return messages
+    return messages.slice(-(showPageNum * pageSize))
+  }, [messages, showPageNum, pageSize])
 
   useEffect(() => {
     // 当 slicedMessageList 变化时需要重新挂载 observe 的监听节点
@@ -152,17 +169,17 @@ const useMessageListPaginator = (
   }, [refreshMonitorTarget, slicedMessageList])
 
   useEffect(() => {
-    if (ready && list.length > pageSize) {
+    if (ready && hasNextPage) {
       startMonitor()
     }
 
     return () => {
       observer.current && observer.current.disconnect()
     }
-  }, [ready, startMonitor, list, pageSize])
+  }, [ready, startMonitor, messages, hasNextPage])
 
   useEffect(() => {
-    if (!ready || list.length <= pageSize) {
+    if (!ready || !hasNextPage) {
       return
     }
 
@@ -180,7 +197,7 @@ const useMessageListPaginator = (
     return () => {
       scrollContainer?.removeEventListener('scroll', debounceRecordScrollInfo)
     }
-  }, [ready, list.length, pageSize])
+  }, [ready, messages.length, hasNextPage])
 
   useEffect(() => {
     if (!ready) {
@@ -189,14 +206,18 @@ const useMessageListPaginator = (
     // 当 pageNum 变化时，代表滚动加载了
     // 需要把滚动位置移动到 lastTimeObserverTarget.current 的位置
     const scrollContainer = getScrollContainerElement()
+    debugger
     if (scrollContainer && scrollTop.current >= 0) {
       const currentScrollHeight = scrollContainer?.scrollHeight
       scrollContainer.scrollTop =
         scrollTop.current + currentScrollHeight - originalScrollHeight.current
     }
-  }, [ready, pageNum])
+  }, [ready, showPageNum])
 
   return {
+    isLoading,
+    isFetchingNextPage,
+    messages,
     pageNum: sidebarPageState.messageListPageNum,
     slicedMessageList,
     loadMore,

@@ -21,6 +21,7 @@ export interface IChatMessage {
   meta?: {
     [key: string]: any
   }
+  originalMessage?: IAIResponseOriginalMessage
   // 由indexDB管理，不需要主动设置/更新 - 2.0版本才有 - 2024-01-30
   created_at?: string
   updated_at?: string

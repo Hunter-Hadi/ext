@@ -13,6 +13,7 @@ import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { WWW_PROJECT_HOST } from '@/constants'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IConversationShareConfig } from '@/features/indexed_db/conversations/models/Conversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import globalSnackbar from '@/utils/globalSnackbar'
@@ -23,7 +24,8 @@ const createShareLink = (shareId: string) => {
 
 const ShareButtonGroup: FC = () => {
   const { t } = useTranslation(['client'])
-  const { clientConversation } = useClientConversation()
+  const { clientConversation, clientConversationMessages } =
+    useClientConversation()
   const [isUploadingConversation, setIsUploadingConversation] = useState(false)
   const [buttonLoading, setButtonLoading] = useState(false)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -125,9 +127,10 @@ const ShareButtonGroup: FC = () => {
       try {
         setIsUploadingConversation(true)
         const needUploadConversation: any = cloneDeep(clientConversation)
-        const needUploadMessages = cloneDeep(needUploadConversation.messages)
-        // 消息是分开存的, 需要删除
-        delete needUploadConversation.messages
+        const needUploadMessages =
+          await ClientConversationMessageManager.getMessages(
+            needUploadConversation.id,
+          )
         // 需要上传
         const result = await clientFetchMaxAIAPI<{
           status: string
@@ -223,7 +226,7 @@ const ShareButtonGroup: FC = () => {
       currentTarget: event.currentTarget || fallbackTarget,
     } as any)
   }
-  if (!clientConversation?.messages.length) {
+  if (clientConversationMessages.length <= 0) {
     return null
   }
   return (

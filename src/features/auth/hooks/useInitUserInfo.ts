@@ -6,14 +6,13 @@ import { v4 as uuidV4 } from 'uuid'
 import { AuthUserInfoState, UserQuotaUsageState } from '@/features/auth/store'
 import { IUserQuotaUsageInfo } from '@/features/auth/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 import Log from '@/utils/Log'
-
-import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
@@ -201,10 +200,8 @@ const useInitUserInfo = (isInit = true) => {
           message.text === 'You have successfully upgraded to MaxAI Basic.',
       )
     ) {
-      clientChatConversationModifyChatMessages(
-        'add',
+      ClientConversationMessageManager.addMessages(
         currentSidebarConversationId,
-        0,
         [
           {
             messageId: uuidV4(),

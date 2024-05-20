@@ -9,7 +9,7 @@ import {
   isAIMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { chatMessageAttachmentStateFamily } from '@/features/sidebar/store/chatMessageStore'
 import {
@@ -69,12 +69,7 @@ const useChatMessageExpiredFileUpdater = (message: IChatMessage) => {
                 }),
               )
               lodashSet(newMessage, needUpdateKey, newAttachments)
-              await clientChatConversationModifyChatMessages(
-                'update',
-                currentConversationId,
-                0,
-                [newMessage],
-              )
+              await ClientConversationMessageManager.updateMessage(newMessage)
               return newAttachments
             }
             return needUpdateKey

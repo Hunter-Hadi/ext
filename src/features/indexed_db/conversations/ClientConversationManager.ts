@@ -214,19 +214,10 @@ export class ClientConversationManager {
       if (!localConversation) {
         if (last_msg?.messageId && last_msg.updated_at) {
           delete (cloneRemoteConversation as any).last_msg
-          const oldMessage = await createIndexedDBQuery('conversations')
-            .messages.get(last_msg.messageId)
+          // 更新对话
+          await createIndexedDBQuery('conversations')
+            .messages.put(last_msg)
             .then()
-          if (
-            !oldMessage?.updated_at ||
-            new Date(last_msg.updated_at).getTime() >
-              new Date(oldMessage.updated_at).getTime()
-          ) {
-            // 更新对话
-            await createIndexedDBQuery('conversations')
-              .messages.put(last_msg)
-              .then()
-          }
         }
         // 本地没有，添加到本地
         await clientUseIndexedDB('ConversationDBMigrateConversationV3', {

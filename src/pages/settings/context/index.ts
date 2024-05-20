@@ -66,12 +66,6 @@ export const settingsPageRouterList = [
     label: 'left_menu__help',
     divider: false,
   },
-  {
-    route: '/dev-test-prompt' as const,
-    label: 'Test prompt',
-    divider: false,
-    devOnly: true,
-  },
 ]
 
 export type ISettingsRouteType =

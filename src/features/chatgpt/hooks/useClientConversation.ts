@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
@@ -8,11 +8,12 @@ import { PermissionWrapperCardSceneType } from '@/features/auth/components/Permi
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
   ClientConversationMapState,
-  ClientConversationMessageMapState,
+  PaginationConversationMessagesStateFamily,
 } from '@/features/chatgpt/store'
 import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import {
   IAIResponseMessage,
@@ -80,15 +81,15 @@ const useClientConversation = () => {
     updateConversationStatus,
     resetConversation,
   } = useChatPanelContext()
-  const clientConversationMessagesMap = useRecoilValue(
-    ClientConversationMessageMapState,
-  )
   const clientConversationMap = useRecoilValue(ClientConversationMapState)
   const clientConversation: IConversation | undefined = currentConversationId
     ? clientConversationMap[currentConversationId]
     : undefined
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
     ClientWritingMessageStateFamily(currentConversationId || ''),
+  )
+  const [clientConversationMessages] = useRecoilState(
+    PaginationConversationMessagesStateFamily(currentConversationId || ''),
   )
   const currentSidebarConversationType = clientConversation?.type || 'Chat'
   const currentConversationIdRef = useRef(currentConversationId)
@@ -99,13 +100,6 @@ const useClientConversation = () => {
   useEffect(() => {
     currentConversationTypeRef.current = clientConversation?.type
   }, [currentConversationTypeRef])
-
-  const clientConversationMessages = useMemo(() => {
-    if (currentConversationId) {
-      return clientConversationMessagesMap[currentConversationId] || []
-    }
-    return []
-  }, [currentConversationId, clientConversationMessagesMap])
   const disposeBackgroundChatSystem = async (conversationId?: string) => {
     const port = new ContentScriptConnectionV2()
     // 复原background conversation
@@ -135,10 +129,8 @@ const useClientConversation = () => {
     conversationId?: string,
   ) => {
     if (conversationId || currentConversationIdRef.current) {
-      await clientChatConversationModifyChatMessages(
-        'add',
+      await ClientConversationMessageManager.addMessages(
         conversationId || currentConversationIdRef.current || '',
-        0,
         [newMessage],
       )
     }
@@ -148,12 +140,7 @@ const useClientConversation = () => {
     conversationId?: string,
   ) => {
     if (conversationId && message.messageId) {
-      await clientChatConversationModifyChatMessages(
-        'update',
-        conversationId,
-        0,
-        [message],
-      )
+      await ClientConversationMessageManager.updateMessage(message)
     }
   }
   const deleteMessage = async (count: number, conversationId?: string) => {
@@ -198,23 +185,18 @@ const useClientConversation = () => {
       showChatBox()
     }
     if (addToConversationId) {
-      await clientChatConversationModifyChatMessages(
-        'add',
-        addToConversationId,
-        0,
-        [
-          {
-            type: 'system',
-            text: 'Upgrade to Pro',
-            messageId: uuidV4(),
-            parentMessageId: '',
-            meta: {
-              systemMessageType: 'needUpgrade',
-              permissionSceneType: permissionSceneType,
-            },
+      await ClientConversationMessageManager.addMessages(addToConversationId, [
+        {
+          type: 'system',
+          text: 'Upgrade to Pro',
+          messageId: uuidV4(),
+          parentMessageId: '',
+          meta: {
+            systemMessageType: 'needUpgrade',
+            permissionSceneType: permissionSceneType,
           },
-        ],
-      )
+        },
+      ])
     }
   }
   /**

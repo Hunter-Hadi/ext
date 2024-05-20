@@ -1,7 +1,6 @@
-import { orderBy } from 'lodash-es'
+import last from 'lodash-es/last'
 
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 
 /**
@@ -12,39 +11,30 @@ export const stopActionMessageStatus = async (params: {
   engine: IShortcutEngineExternalEngine
 }) => {
   try {
-    const currentConversation =
-      await params.engine.clientConversationEngine?.getCurrentConversation()
-    if (currentConversation && currentConversation.id) {
-      const messagesSortByTime = orderBy(
-        currentConversation.messages.filter(isAIMessage),
-        (message) =>
-          message.updated_at ? new Date(message.updated_at).getTime() : -1,
-        ['desc'],
+    const currentConversationId = await params.engine.clientConversationEngine
+      ?.currentConversationIdRef.current
+    if (currentConversationId) {
+      const messageIds = await ClientConversationMessageManager.getMessageIds(
+        currentConversationId,
       )
-      const lastAIMessage = messagesSortByTime[0]
+      const lastAIMessageId = last(messageIds)
+      const lastAIMessage =
+        await ClientConversationMessageManager.getMessageByMessageId(
+          lastAIMessageId!,
+        )
       if (!lastAIMessage) {
         return
       }
       if (lastAIMessage.originalMessage) {
-        await clientChatConversationModifyChatMessages(
-          'update',
-          currentConversation.id,
-          0,
-          [
-            {
-              type: 'ai',
-              messageId: lastAIMessage.messageId,
-              originalMessage: {
-                metadata: {
-                  sources: {
-                    status: 'complete',
-                  },
-                  isComplete: true,
-                },
-              },
+        await ClientConversationMessageManager.updateMessagesWithChanges([
+          {
+            key: lastAIMessage.messageId,
+            changes: {
+              'metadata.sources.status': 'complete',
+              'metadata.isComplete': true,
             } as any,
-          ],
-        )
+          },
+        ])
       }
     }
   } catch (e) {

@@ -1,9 +1,11 @@
 import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import throttle from 'lodash-es/throttle'
 import React, { FC, lazy, useEffect, useMemo, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useInterval from '@/features/common/hooks/useInterval'
 import {
@@ -26,14 +28,20 @@ const messageItemOnReadyFlag = 'message-item-on-ready-flag'
 
 interface IProps {
   conversationId: string
-  messages: IChatMessage[]
   writingMessage: IChatMessage | null
-  loading?: boolean
+  isAIResponding?: boolean
+  onLoadingChatHistory?: (loading: boolean) => void
   sx?: SxProps
 }
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
-  const { conversationId, writingMessage, messages, loading, sx } = props
+  const {
+    conversationId,
+    writingMessage,
+    isAIResponding,
+    sx,
+    onLoadingChatHistory,
+  } = props
 
   const scrollContainerRef = useRef<HTMLElement | null>(null)
 
@@ -43,11 +51,13 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   const [messageItemIsReady, setMessageItemIsReady] = useState(false)
   // const { currentSidebarConversationType } = useSidebarSettings()
 
-  const { slicedMessageList, changePageNumber } = useMessageListPaginator(
-    !!(messageItemIsReady && conversationId),
-    scrollContainerRef,
+  const {
+    isFetchingNextPage,
+    isLoading,
     messages,
-  )
+    slicedMessageList,
+    changePageNumber,
+  } = useMessageListPaginator(messageItemIsReady, scrollContainerRef)
 
   // 用 interval 来找 message-item-on-ready-flag 元素
   // 用于判断 Suspense 是否完成
@@ -58,7 +68,9 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       const messageItemOnReadyFlagElement = sidebarRoot?.querySelector(
         `#${messageItemOnReadyFlag}`,
       )
+      debugger
       if (messageItemOnReadyFlagElement) {
+        debugger
         setMessageItemIsReady(true)
       }
     },
@@ -90,7 +102,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   // 当 loading 变化为 true 时，强制滚动到底部
   useEffect(() => {
     // 临时解决方案，为了保证在 付费卡点出现 时能够正常滚动到底部
-    if (loading && lastMessageType === 'system') {
+    if (isAIResponding && lastMessageType === 'system') {
       handleScrollToBottom(true)
     }
     // 240401: 当用户输入信息后，此时 loading 为 true，writingMessage 为 null
@@ -108,15 +120,15 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     //   //是因为 summary nav 功能切换的时候loading会为true而writingMessage为空
     //   return
     // }
-    if (loading) {
+    if (isAIResponding) {
       handleScrollToBottom()
       setTimeout(() => {
         changePageNumber(1)
       }, 0)
     }
-  }, [loading, writingMessage, lastMessageType])
+  }, [isAIResponding, writingMessage, lastMessageType])
 
-  console.log(`slicedMessageList`, loading, lastMessageType)
+  console.log(`slicedMessageList`, isAIResponding, lastMessageType)
 
   useEffect(() => {
     if (writingMessage) {
@@ -135,7 +147,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         handleScrollToBottom(true)
       }, 500)
     }
-  }, [messageItemIsReady && conversationId])
+  }, [conversationId, messageItemIsReady])
 
   // 当用户主动滚动 message list 时，如果滚动到底部，设置 needScrollToBottomRef.current 为 true
   // 当用户主动滚动 message list 时，如果往顶部滚动，设置 needScrollToBottomRef.current 为 false
@@ -167,33 +179,11 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   // 当页面 onfocus 时，判断 是否需要滚动到底部
   useFocus(handleScrollToBottom)
 
-  // const lastScrollId = useRef('')
-  // useEffect(() => {
-  //   if (messages.length > 0) {
-  //     for (let i = messages.length - 1; i >= 0; i--) {
-  //       const message = messages[i]
-  //       if (message) {
-  //         // if (message.type === 'user' || message.type === 'system') {
-  //         const containerElement = scrollContainerRef.current
-  //         if (
-  //           lastScrollId.current &&
-  //           lastScrollId.current !== message.messageId
-  //         ) {
-  //           needScrollToBottomRef.current = true
-  //           setTimeout(() => {
-  //             containerElement &&
-  //               containerElement.scrollTo(0, containerElement.scrollHeight)
-  //           }, 0)
-  //         }
-  //         lastScrollId.current = message.messageId
-  //         break
-  //       }
-  //     }
-  //   }
-  // }, [messages])
-
+  /**
+   * 发消息的时候，如果最后一条消息是 search / summary / art，需要滚动到底部
+   */
   useEffect(() => {
-    if (loading) {
+    if (isAIResponding) {
       // 这里的 scrollToBottom 需要兼容 search / summary 的情况
       // 当在 loading 时，如果最后一条消息是 search / summary
       // 判断 needScrollToBottomRef.current 为 true 时滚动到底部
@@ -211,8 +201,13 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         }
       }
     }
-  }, [loading, messages])
+  }, [isAIResponding, messages])
 
+  useEffect(() => {
+    if (onLoadingChatHistory) {
+      onLoadingChatHistory(isLoading)
+    }
+  }, [isLoading, onLoadingChatHistory])
   return (
     <Box
       ref={scrollContainerRef}
@@ -225,14 +220,20 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       }}
     >
       <AppSuspenseLoadingLayout>
-        <Box id={messageItemOnReadyFlag} />
+        <AppLoadingLayout loading={isLoading} />
+        {!isLoading && <Box id={messageItemOnReadyFlag} />}
+        {isFetchingNextPage && (
+          <Stack width={'100%'} alignItems={'center'} justifyContent={'center'}>
+            <AppLoadingLayout loading={true} />
+          </Stack>
+        )}
         {slicedMessageList.map((message, index) => {
           return (
             <SidebarChatBoxMessageItem
               key={message.messageId + '_sidebar_chat_message_' + String(index)}
               className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
               message={message}
-              loading={loading}
+              loading={isAIResponding}
               order={index + 1}
             />
           )

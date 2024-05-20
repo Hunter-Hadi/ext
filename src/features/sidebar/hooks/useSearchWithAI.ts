@@ -11,6 +11,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -152,12 +153,9 @@ const useSearchWithAI = () => {
     } else {
       cacheConversationId = await createConversation('Search')
     }
-    await clientChatConversationModifyChatMessages(
-      'add',
-      cacheConversationId,
-      0,
-      [startMessage],
-    )
+    await ClientConversationMessageManager.addMessages(cacheConversationId, [
+      startMessage,
+    ])
   }
 
   const regenerateSearchWithAI = async (

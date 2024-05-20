@@ -16,11 +16,10 @@ import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useContextMenuList } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
-import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
@@ -80,11 +79,12 @@ const usePageSummary = () => {
             conversationId: pageSummaryConversationId,
           },
         })
-
-        const aiMessage = pageSummaryConversation.messages?.find((message) =>
-          isAIMessage(message),
-        ) as IAIResponseMessage
-
+        const aiMessage =
+          ClientConversationMessageManager.getMessageByMessageType(
+            pageSummaryConversationId,
+            'ai',
+            'start',
+          )
         if (writingLoading) {
           updateClientConversationLoading(false)
           updateConversationMap((prevState) => {

@@ -29,6 +29,10 @@ import {
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
+import {
+  backgroundConversationDB,
+  backgroundConversationDBGetMessageIds,
+} from '@/features/indexed_db/conversations/background'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import {
   IAIResponseMessage,
@@ -459,13 +463,20 @@ export const processAskAIParameters = async (
       systemPromptTokens -
       questionPromptTokens -
       calculateMaxResponseTokens(conversationUsingModelMaxTokens)
+    const messageIds = await backgroundConversationDBGetMessageIds(
+      conversation.id,
+    )
     // 寻找本次提问的历史记录开始和结束节点
     let startIndex: number | null = null
     let endIndex: number | null = null
-    for (let i = conversation.messages.length - 1; i >= 0; i--) {
-      const message = conversation.messages[i]
+    for (let i = messageIds.length - 1; i >= 0; i--) {
+      const message = await backgroundConversationDB.messages.get(messageIds[i])
       // 如果是ai回复，那么标记开始
-      if (isAIMessage(message) && formatAIMessageContent(message, false)) {
+      if (
+        message &&
+        isAIMessage(message) &&
+        formatAIMessageContent(message, false)
+      ) {
         if (endIndex === null) {
           endIndex = i
         }
@@ -481,6 +492,7 @@ export const processAskAIParameters = async (
       }
       // 如果是用户消息，从非includeHistory的消息开始
       if (
+        message &&
         isUserMessage(message) &&
         formatUserMessageContent(message) &&
         startIndex === null
@@ -511,18 +523,19 @@ export const processAskAIParameters = async (
         historyTokensUsed < maxHistoryTokens &&
         historyCountUsed < maxHistoryCount
       ) {
-        let message: IChatMessage | null = null
+        let messageId: string | null = null
         if (addMessagePosition === 'end') {
-          message = conversation.messages[endIndex] || null
+          messageId = messageIds[endIndex] || null
           endIndex -= 1
         } else {
-          message = conversation.messages[startIndex] || null
+          messageId = messageIds[startIndex] || null
           startIndex += 1
         }
-        if (!message) {
+        if (!messageId) {
           break
         }
-        if (message.type !== 'system' && message.type !== 'third') {
+        const message = await backgroundConversationDB.messages.get(messageId)
+        if (message && message.type !== 'system' && message.type !== 'third') {
           const messageToken = await getMessageTokens(message)
           // 如果当前消息的token数大于最大历史记录token数，那么不添加
           if (historyTokensUsed + messageToken > maxHistoryTokens) {

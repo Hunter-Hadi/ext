@@ -16,12 +16,6 @@ export const ClientConversationMapState = atom<{
   key: 'ClientConversationMapState',
   default: {},
 })
-export const ClientConversationMessageMapState = atom<{
-  [key: string]: IChatMessage[]
-}>({
-  key: 'ClientConversationMessageMapState',
-  default: {},
-})
 
 export const ThirdPartyAIProviderConfirmDialogState = atom<{
   open: boolean
@@ -68,5 +62,13 @@ export const PaginationConversationsFilterState =
 
 export const PaginationConversationsState = atom<IPaginationConversation[]>({
   key: 'PaginationConversationsState',
+  default: [],
+})
+
+export const PaginationConversationMessagesStateFamily = atomFamily<
+  IChatMessage[],
+  string
+>({
+  key: 'PaginationConversationMessagesStateFamily',
   default: [],
 })

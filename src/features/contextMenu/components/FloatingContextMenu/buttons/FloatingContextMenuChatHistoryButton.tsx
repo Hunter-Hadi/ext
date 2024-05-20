@@ -25,8 +25,8 @@ import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/C
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { useFloatingContextMenu } from '@/features/contextMenu'
-import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
-import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarChatBoxMessageItem from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
@@ -38,24 +38,24 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   container?: HTMLElement
 }> = (props) => {
   const { conversationId, onDuplicateConversation, container } = props
-  const [conversation, setConversation] = useState<IConversation | null>(null)
+  const [messageList, setMessageList] = useState<IChatMessage[]>([])
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
   const ref = useRef<HTMLDivElement>(null)
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    if (conversationId && conversation?.id !== conversationId) {
+    if (conversationId) {
       setLoading(true)
-      ClientConversationManager.getConversation(conversationId)
-        .then((conversation) => {
-          setConversation(conversation)
+      ClientConversationMessageManager.getMessages(conversationId)
+        .then((messages) => {
+          setMessageList(messages)
         })
         .catch()
         .finally(() => {
           setLoading(false)
         })
     }
-  }, [conversation, conversationId])
+  }, [conversationId])
   useEffect(() => {
     // 检测内部变化，更新滚动条
     const observer = new MutationObserver(() => {
@@ -72,7 +72,7 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
     return () => {
       observer.disconnect()
     }
-  }, [conversation])
+  }, [messageList])
   if (!conversationId) {
     return null
   }
@@ -96,7 +96,7 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
             overflowY: 'auto',
           }}
         >
-          {conversation?.messages.map((message, index) => {
+          {messageList.map((message, index) => {
             return (
               <SidebarChatBoxMessageItem
                 key={

@@ -64,6 +64,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
+  const [isLoadingHistory, setIsLoadingHistory] = useState(false)
   const [isSettingVariables, setIsSettingVariables] = useState(false)
   const { t } = useTranslation(['common', 'client'])
   const [isShowContinueButton, setIsShowContinueButton] = useState(false)
@@ -122,9 +123,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   const isShowChatBoxHomeView = useMemo(() => {
     return (
-      messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
+      !isLoadingHistory &&
+      messages.length <= 0 &&
+      !writingMessage &&
+      conversationType !== 'Summary'
     )
-  }, [messages, writingMessage, conversationType])
+  }, [isLoadingHistory, messages, writingMessage, conversationType])
 
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
@@ -168,11 +172,11 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         }
       />
 
-      {conversationId && messages.length > 0 ? (
+      {conversationId ? (
         <SidebarChatBoxMessageListContainer
+          onLoadingChatHistory={setIsLoadingHistory}
           conversationId={conversationId}
-          loading={loading}
-          messages={messages}
+          isAIResponding={loading}
           writingMessage={writingMessage}
           sx={{
             textAlign: 'left',

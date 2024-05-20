@@ -13,7 +13,8 @@ import {
 } from '@/features/auth/utils/log'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import {
@@ -768,46 +769,45 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       transcriptData,
     )
     this.viewLatestTranscriptData = transcriptData
-    await clientChatConversationModifyChatMessages(
-      'update',
-      conversationId,
-      0,
-      [
-        {
-          type: 'ai',
-          messageId: messageId,
-          originalMessage: {
-            metadata: {
-              isComplete: false,
-              sources: {
-                status: 'complete',
-              },
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing video',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: this.currentWebPageTitle,
-                  },
-                ],
-              },
-              deepDive: [
-                {
-                  type: 'timestampedSummary',
-                  status: 'complete',
-                  title: {
-                    title: 'Summary',
-                    titleIcon: 'SummaryInfo',
-                  },
-                  value: transcriptData,
-                },
-              ],
+    await ClientConversationMessageManager.updateMessage({
+      messageId,
+      metadata: {
+        isComplete: false,
+        sources: {
+          status: 'complete',
+        },
+        copilot: {
+          steps: [
+            {
+              title: 'Analyzing video',
+              status: 'complete',
+              icon: 'SmartToy',
+              value: this.currentWebPageTitle,
             },
+          ],
+        },
+        deepDive: [
+          {
+            type: 'timestampedSummary',
+            status: 'complete',
+            title: {
+              title: 'Summary',
+              titleIcon: 'SummaryInfo',
+            },
+            value: transcriptData,
           },
-        } as any,
-      ],
-    )
+          {
+            title: {
+              title: 'Deep dive',
+              titleIcon: 'TipsAndUpdates',
+            },
+            value: 'Ask AI anything about the video...',
+          },
+        ],
+      },
+      type: 'ai',
+      text: '',
+    } as IAIResponseMessage)
   }
 
   async updateSummaryYoutubeStatusToComplete() {}
@@ -820,53 +820,45 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     const conversationId =
       params.engine.clientConversationEngine?.currentConversationId
     if (conversationId && this.currentMessageId) {
-      await clientChatConversationModifyChatMessages(
-        'update',
-        conversationId,
-        0,
-        [
-          {
-            type: 'ai',
-            messageId: this.currentMessageId,
-            originalMessage: {
-              metadata: {
-                isComplete: false,
-                sources: {
-                  status: 'complete',
-                },
-                copilot: {
-                  steps: [
-                    {
-                      title: 'Analyzing video',
-                      status: 'complete',
-                      icon: 'SmartToy',
-                      value: this.currentWebPageTitle,
-                    },
-                  ],
-                },
-                deepDive: [
-                  {
-                    type: 'timestampedSummary',
-                    status: 'complete',
-                    title: {
-                      title: 'Summary',
-                      titleIcon: 'SummaryInfo',
-                    },
-                    value: this.viewLatestTranscriptData,
-                  },
-                  {
-                    title: {
-                      title: 'Deep dive',
-                      titleIcon: 'TipsAndUpdates',
-                    },
-                    value: 'Ask AI anything about the video...',
-                  },
-                ],
-              },
+      await ClientConversationMessageManager.updateMessage({
+        type: 'ai',
+        messageId: this.currentMessageId,
+        originalMessage: {
+          metadata: {
+            isComplete: false,
+            sources: {
+              status: 'complete',
             },
-          } as any,
-        ],
-      )
+            copilot: {
+              steps: [
+                {
+                  title: 'Analyzing video',
+                  status: 'complete',
+                  icon: 'SmartToy',
+                  value: this.currentWebPageTitle,
+                },
+              ],
+            },
+            deepDive: [
+              {
+                type: 'timestampedSummary',
+                title: {
+                  title: 'Summary',
+                  titleIcon: 'SummaryInfo',
+                },
+                value: this.viewLatestTranscriptData as any,
+              },
+              {
+                title: {
+                  title: 'Deep dive',
+                  titleIcon: 'TipsAndUpdates',
+                },
+                value: 'Ask AI anything about the video...',
+              },
+            ],
+          },
+        },
+      })
       await stopActionMessageStatus(params)
       return true
     }

@@ -8,8 +8,7 @@ import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUp
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   IAIProviderModel,
   IChatUploadFile,
@@ -103,24 +102,19 @@ const useClientChat = () => {
           })
         if (attachmentIsLimit) {
           // 如果tokens长度超过限制
-          await clientChatConversationModifyChatMessages(
-            'add',
-            conversationId,
-            0,
-            [
-              {
-                type: 'system',
-                text: t(
-                  `client:provider__chatgpt__upload_file_error__too_long__text`,
-                ),
-                messageId: uuidV4(),
-                conversationId,
-                meta: {
-                  status: 'error',
-                },
+          await ClientConversationMessageManager.addMessages(conversationId, [
+            {
+              type: 'system',
+              text: t(
+                `client:provider__chatgpt__upload_file_error__too_long__text`,
+              ),
+              messageId: uuidV4(),
+              conversationId,
+              meta: {
+                status: 'error',
               },
-            ],
-          )
+            },
+          ])
           await aiProviderRemoveAllFiles()
           getInputMediator('chatBoxInputMediator').updateInputValue('')
           getInputMediator('floatingMenuInputMediator').updateInputValue('')
@@ -295,28 +289,26 @@ const useClientChat = () => {
         } else {
           // 理论上不会进来, 兼容旧代码用的
           console.log('regenerate actions is empty')
-          const currentConversation =
-            await ClientConversationManager.getConversation(
+          const messageIds =
+            await ClientConversationMessageManager.getMessageIds(
               currentConversationId,
             )
-          const messages = currentConversation?.messages || []
           // 寻找最后一个user message
-          let needDeleteCount = 0
+          const needDeleteIds: string[] = []
           let lastUserMessage: IUserChatMessage | null = null
-          for (let i = messages.length - 1; i >= 0; i--) {
-            needDeleteCount++
-            if (messages[i].type === 'user') {
-              lastUserMessage = messages[i] as IUserChatMessage
+          for (let i = messageIds.length - 1; i >= 0; i--) {
+            needDeleteIds.push(messageIds[i])
+            const message =
+              await ClientConversationMessageManager.getMessageByMessageId(
+                messageIds[i],
+              )
+            if (message?.type === 'user') {
+              lastUserMessage = message as IUserChatMessage
               break
             }
           }
           if (lastUserMessage) {
-            await clientChatConversationModifyChatMessages(
-              'delete',
-              currentConversationId,
-              needDeleteCount,
-              [],
-            )
+            await ClientConversationMessageManager.deleteMessages(needDeleteIds)
             await askAIWIthShortcuts([
               {
                 type: 'ASK_CHATGPT',

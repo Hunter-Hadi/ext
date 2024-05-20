@@ -1,3 +1,5 @@
+import orderBy from 'lodash-es/orderBy'
+
 import ConversationManager from '@/background/src/chatConversations'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { isUserMessage } from '@/features/chatgpt/utils/chatMessageUtils'
@@ -205,4 +207,22 @@ export const backgroundMigrateConversationV3 = async (
         .catch()
       return backgroundConversationDB.conversations.get(conversation.id)
     })
+}
+
+export const backgroundConversationDBGetMessageIds = async (
+  conversationId: string,
+) => {
+  const messages = await backgroundConversationDB.messages
+    .where('conversationId')
+    .equals(conversationId)
+    .toArray((messages) =>
+      messages.map((message) => ({
+        messageId: message.messageId,
+        created_at: message.created_at,
+      })),
+    )
+  console.log(`ConversationDB[V3] 获取消息Ids数量`, messages.length)
+  return orderBy(messages, ['created_at'], ['desc']).map(
+    (item) => item.messageId,
+  )
 }

@@ -13,11 +13,9 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   ClientConversationMapState,
-  ClientConversationMessageMapState,
   ClientUploadedFilesState,
 } from '@/features/chatgpt/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
@@ -46,9 +44,6 @@ const port = new ContentScriptConnectionV2({
 export const useClientConversationListener = () => {
   const [, setClientConversationMap] = useRecoilState(
     ClientConversationMapState,
-  )
-  const [, setConversationMessagesMap] = useRecoilState(
-    ClientConversationMessageMapState,
   )
   const appDBStorage = useRecoilValue(AppDBStorageState)
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
@@ -159,16 +154,6 @@ export const useClientConversationListener = () => {
               [conversation.id]: conversation,
             }
           })
-          ClientConversationMessageManager.getMessages(conversation.id).then(
-            (messages) => {
-              setConversationMessagesMap((prevState) => {
-                return {
-                  ...prevState,
-                  [conversation.id]: messages,
-                }
-              })
-            },
-          )
         } else if (!conversation) {
           // 如果是删除的话，就不会有conversation
           setClientConversationMap((prevState) => {
@@ -201,10 +186,8 @@ export const useClientConversationListener = () => {
                 (item) => item.messageId === errorItem.id,
               )
             ) {
-              clientChatConversationModifyChatMessages(
-                'add',
+              ClientConversationMessageManager.addMessages(
                 currentConversationIdRef.current,
-                0,
                 [
                   {
                     messageId: errorItem.id,
@@ -213,11 +196,7 @@ export const useClientConversationListener = () => {
                       `File ${errorItem.fileName} upload error.`,
                     type: 'system',
                     meta: {
-                      status:
-                        errorItem.uploadErrorMessage ===
-                        `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
-                          ? 'info'
-                          : 'error',
+                      status: 'error',
                     },
                   } as ISystemChatMessage,
                 ],
@@ -238,10 +217,8 @@ export const useClientConversationListener = () => {
               (item) => item.messageId === errorItem.id,
             )
           ) {
-            clientChatConversationModifyChatMessages(
-              'add',
+            ClientConversationMessageManager.addMessages(
               currentConversationIdRef.current,
-              0,
               [
                 {
                   messageId: errorItem.id,
@@ -290,23 +267,12 @@ export const useClientConversationListener = () => {
             if (conversation) {
               console.log(
                 `新版Conversation [${currentConversationId}]effect更新`,
-                conversation.messages,
               )
               setClientConversationMap((prevState) => {
                 return {
                   ...prevState,
                   [conversation.id]: conversation,
                 }
-              })
-              ClientConversationMessageManager.getMessages(
-                conversation.id,
-              ).then((messages) => {
-                setConversationMessagesMap((prevState) => {
-                  return {
-                    ...prevState,
-                    [conversation.id]: messages,
-                  }
-                })
               })
             }
           },
@@ -342,7 +308,7 @@ export const useClientConversationListener = () => {
   useEffect(() => {
     if (
       !clientConversation ||
-      clientConversation.messages.length === 0 ||
+      clientConversationMessages.length === 0 ||
       isCreatingConversationRef.current ||
       isMaxAIImmersiveChatPage() ||
       isMaxAISettingsPage()
@@ -356,6 +322,7 @@ export const useClientConversationListener = () => {
         new Date(clientConversation.updated_at).getTime() + autoArchiveTime
       const now = Date.now()
       if (now > archiveTime) {
+        // 判断当前会话的消息数量
         console.log(
           `自动归档时间[触发][${clientConversation.type}], 超过[${(
             (now - archiveTime) /

@@ -188,6 +188,14 @@ export interface IAIResponseOriginalMessage {
     navMetadata?: IAIResponseOriginalMessageNavMetadata
   }
 }
+
+export interface IAIResponseSourceCitation {
+  snippet: string
+  content: string
+  start_index: number
+  length: number
+}
+
 // AI返回的消息
 export interface IAIResponseMessage extends IChatMessage {
   type: 'ai'
@@ -195,6 +203,7 @@ export interface IAIResponseMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
   originalMessage?: IAIResponseOriginalMessage
+  sourceCitations?: IAIResponseSourceCitation[]
 }
 
 // 系统消息

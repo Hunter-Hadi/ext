@@ -21,7 +21,10 @@ import {
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
+import {
+  IAIResponseSourceCitation,
+  IChatMessageExtraMetaType,
+} from '@/features/chatgpt/types'
 import Log from '@/utils/Log'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
@@ -97,6 +100,7 @@ class UseChatGPTPlusChat extends BaseChat {
       data: {
         text: string
         conversationId: string
+        sourceCitations?: IAIResponseSourceCitation[]
       }
     }) => void,
   ) {
@@ -232,6 +236,7 @@ class UseChatGPTPlusChat extends BaseChat {
     let messageResult = ''
     let hasError = false
     let conversationId = this.conversation?.id || ''
+    const sourceCitations: IAIResponseSourceCitation[] = []
     let isTokenExpired = false
     if (postBody.streaming) {
       await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
@@ -259,6 +264,20 @@ class UseChatGPTPlusChat extends BaseChat {
                   data: {
                     text: messageResult,
                     conversationId: conversationId,
+                  },
+                })
+            }
+            if (messageData?.sources) {
+              sourceCitations.push(...messageData.sources)
+              onMessage &&
+                onMessage({
+                  type: 'message',
+                  done: false,
+                  error: '',
+                  data: {
+                    text: messageResult,
+                    conversationId,
+                    sourceCitations,
                   },
                 })
             }
@@ -414,6 +433,7 @@ class UseChatGPTPlusChat extends BaseChat {
           data: {
             text: messageResult,
             conversationId,
+            sourceCitations,
           },
         })
     }

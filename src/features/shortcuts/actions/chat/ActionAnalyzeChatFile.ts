@@ -68,11 +68,17 @@ export class ActionAnalyzeChatFile extends Action {
         })
       if (this.isStopAction) return
       // 如果触发了limit，就截取其中400k上传作为docId
-      if (isLimit) {
+      // PDF summary的时候，大于5000字上传
+      if (
+        isLimit ||
+        (conversation?.type === 'Summary' &&
+          text.length >= 5000 &&
+          getPageSummaryType() === 'PDF_CRX_SUMMARY')
+      ) {
         if (immediateUpdateConversation) {
           const uploadData = await sliceTextByTokens(
             text,
-            systemPromptTokensLimit,
+            this.MAX_UPLOAD_TEXT_FILE_TOKENS,
             {
               thread: 4,
               partOfTextLength: 20 * 1000,

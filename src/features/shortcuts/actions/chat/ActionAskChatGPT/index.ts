@@ -452,6 +452,9 @@ export class ActionAskChatGPT extends Action {
               if (message.conversationId) {
                 AIConversationId = message.conversationId
               }
+              if (message.sourceCitations?.length) {
+                this.answer.sourceCitations = message.sourceCitations
+              }
               this.output = this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
               if (outputMessage && this.status === 'running') {
@@ -474,6 +477,7 @@ export class ActionAskChatGPT extends Action {
                               text: message.text,
                             },
                           },
+                          sourceCitations: message.sourceCitations,
                         } as IAIResponseMessage,
                       ]),
                     ],
@@ -532,12 +536,6 @@ export class ActionAskChatGPT extends Action {
               }
             },
           })
-          console.log(
-            1111,
-            this.status,
-            conversationId,
-            clientConversationEngine,
-          )
           if (this.status !== 'running') {
             return
           }

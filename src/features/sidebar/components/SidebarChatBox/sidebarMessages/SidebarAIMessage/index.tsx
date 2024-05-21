@@ -280,7 +280,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             }`}
           >
             <AppSuspenseLoadingLayout>
-              <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+              <CustomMarkdown citations={message.sourceCitations}>
+                {renderData.answer}
+              </CustomMarkdown>
             </AppSuspenseLoadingLayout>
           </div>
         )}

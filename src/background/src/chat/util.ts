@@ -26,7 +26,7 @@ import {
 } from '@/constants'
 import {
   IAIResponseMessage,
-  IAIResponseOriginalMessage,
+  IAIResponseOriginalMessage, IAIResponseSourceCitation,
   IChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
@@ -159,6 +159,7 @@ export const clientAskAIQuestion = async (
       conversationId: string
       text: string
       originalMessage?: IAIResponseOriginalMessage
+      sourceCitations?: IAIResponseSourceCitation[]
     }) => Promise<void>
     onError?: (error: string) => Promise<void>
   },

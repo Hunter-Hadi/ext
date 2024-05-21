@@ -28,7 +28,7 @@ import { AppState } from '@/store'
 const useInitWebPageSidebar = () => {
   const appState = useRecoilValue(AppState)
   const { createPageSummary, resetPageSummary } = usePageSummary()
-  const { pageUrl, startListen } = usePageUrlChange()
+  const { pageUrl, documentTitle, startListen } = usePageUrlChange()
   const {
     sidebarSummaryConversationId,
     sidebarChatConversationId,
@@ -152,14 +152,26 @@ const useInitWebPageSidebar = () => {
   // - 切换url的时候为了省下token，直接切换到chat
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
   const pageUrlIsUsedRef = useRef(false)
+  const documentTitleRef = useRef('')
   useEffect(() => {
     if (pageUrl) {
       // 页面变化重置page summary和summary conversation id
       resetPageSummary()
+      const pageSummaryType = getPageSummaryType()
+      if (
+        pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
+        pageSummaryType === 'PDF_CRX_SUMMARY'
+      ) {
+        // youtube下需要等得document.title变化后在执行, 否则获取到的是之前的document.title
+        if (documentTitleRef.current === documentTitle) {
+          return
+        }
+        documentTitleRef.current = documentTitle
+      }
       updateSidebarSummaryConversationId()
       pageUrlIsUsedRef.current = false
     }
-  }, [pageUrl])
+  }, [pageUrl, documentTitle])
   useEffect(() => {
     if (!pageUrlIsUsedRef.current && pageUrl) {
       const pageSummaryType = getPageSummaryType()

@@ -60,7 +60,11 @@
     "watch_video": "Watch video",
     "input_content": "Input content",
     "create": "Create",
-    "update": "Update"
+    "update": "Update",
+    "continue_with_google": "Continue with Google",
+    "continue_with_email": "Continue with email",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -790,7 +794,19 @@
     "context_window__chat_history__button__title": "Context menu history",
     "context_window__chat_history__empty__title": "No context menu history available yet",
     "context_window__chat_history__continue_in_chat__title": "Continue in chat",
-    "sidebar__nav__concat_us__checkbox_title": "Allow error information collection"
+    "sidebar__nav__concat_us__checkbox_title": "Allow error information collection",
+
+    "login_modal__title__part1": "Sign in to get",
+    "login_modal__title__part2": "FREE",
+    "login_modal__title__part3": "AI queries every day",
+    "login_modal__email__placeholder": "Enter your email address...",
+    "login_modal__footer_text__part1": "By signing up, you agree to the",
+    "login_modal__footer_text__part2": "and",
+    "login_modal__footer_text__tooltip": "Your privacy is our top priority. We only collect your name and email for login and settings sync, keeping it confidential and not sharing it with anyone else.",
+    "login_modal__login_with_email__title": "Continue with Email",
+    "login_modal__indicator1_label": "Top 50 genAI apps",
+    "login_modal__indicator2_label": "Active users",
+    "login_modal__indicator3_label": "5-star ratings"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

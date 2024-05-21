@@ -7,6 +7,7 @@ import { createBackgroundMessageListener } from '@/background/utils'
 import {
   backgroundConversationDB,
   backgroundConversationDBRemoveConversation,
+  backgroundConversationDBRemoveMessages,
   backgroundMigrateConversationV3,
 } from '@/features/indexed_db/conversations/background'
 import {
@@ -93,29 +94,44 @@ const listener: IndexedDBListener = async (type: string, data: any) => {
             }
           } catch (e) {
             console.error('IndexedDBQueryChain error', e, chain)
+            return {
+              success: false,
+              data: null,
+              message: '',
+            }
           }
         }
       }
       break
     case 'ConversationDBRemoveConversation':
-      return backgroundConversationDBRemoveConversation(
+      return await backgroundConversationDBRemoveConversation(
         data.conversationId,
         data.softDelete,
       )
-    case 'ConversationDBMigrateConversationV3': {
-      const { conversation, conversationId } = data
-      if (conversation) {
-        return backgroundMigrateConversationV3(conversation)
-      } else if (conversationId) {
-        const oldConversation =
-          await ConversationManager.oldVersionConversationDB.getConversationById(
-            data.conversationId,
-          )
-        if (!oldConversation) {
-          return undefined
+    case 'ConversationDBMigrateConversationV3':
+      {
+        const { conversation, conversationId } = data
+        if (conversation) {
+          return await backgroundMigrateConversationV3(conversation)
+        } else if (conversationId) {
+          const oldConversation =
+            await ConversationManager.oldVersionConversationDB.getConversationById(
+              data.conversationId,
+            )
+          if (!oldConversation) {
+            return undefined
+          }
+          return await backgroundMigrateConversationV3(oldConversation)
         }
-        return backgroundMigrateConversationV3(oldConversation)
       }
+      break
+    case 'ConversationDBDeleteMessages': {
+      const { conversationId, messageIds } = data
+      const result = await backgroundConversationDBRemoveMessages(
+        conversationId,
+        messageIds,
+      )
+      return result
     }
   }
   return undefined as any

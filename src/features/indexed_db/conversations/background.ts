@@ -1,3 +1,7 @@
+/**
+ * 运行环境必须在background
+ */
+
 import orderBy from 'lodash-es/orderBy'
 
 import ConversationManager from '@/background/src/chatConversations'
@@ -8,12 +12,7 @@ import { IConversation } from '@/features/indexed_db/conversations/models/Conver
 import { ConversationDB } from '@/features/indexed_db/conversations/models/db'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 
-/**
- * 运行环境必须在background
- */
-
 export const backgroundConversationDB = new ConversationDB()
-
 /**
  * 删除对话
  * @param conversationId
@@ -64,6 +63,38 @@ export const backgroundConversationDBRemoveConversation = async (
     return false
   }
 }
+/**
+ * 删除消息
+ * @param conversationIds
+ * @param messageIds
+ */
+export const backgroundConversationDBRemoveMessages = async (
+  conversationIds: string,
+  messageIds: string[],
+) => {
+  try {
+    const attachments = await backgroundConversationDB.attachments
+      .where('messageId')
+      .anyOf(messageIds)
+      .toArray()
+    await backgroundConversationDB.transaction(
+      'rw',
+      backgroundConversationDB.messages,
+      backgroundConversationDB.attachments,
+      () => {
+        backgroundConversationDB.messages.bulkDelete(messageIds)
+        backgroundConversationDB.attachments.bulkDelete(
+          attachments.map((attachment) => attachment.id),
+        )
+      },
+    )
+    return true
+  } catch (e) {
+    console.error(`ConversationDB 删除对话${conversationIds}的消息失败`, e)
+    return false
+  }
+}
+
 /**
  * 迁移对话到V3版本
  * @description - 因为是迁移，所以要用事务

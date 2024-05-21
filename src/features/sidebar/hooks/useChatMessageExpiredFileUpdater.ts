@@ -69,7 +69,10 @@ const useChatMessageExpiredFileUpdater = (message: IChatMessage) => {
                 }),
               )
               lodashSet(newMessage, needUpdateKey, newAttachments)
-              await ClientConversationMessageManager.updateMessage(newMessage)
+              await ClientConversationMessageManager.updateMessage(
+                currentConversationId,
+                newMessage,
+              )
               return newAttachments
             }
             return needUpdateKey

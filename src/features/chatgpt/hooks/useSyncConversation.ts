@@ -85,7 +85,7 @@ const ConversationAutoSyncStateFamily = atomFamily<
   },
 })
 
-const syncLog = new Log('SyncConversation')
+const syncLog = new Log('ConversationDB[V3]')
 
 export const useSyncConversation = () => {
   const { t } = useTranslation(['client'])

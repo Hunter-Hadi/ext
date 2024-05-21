@@ -41,7 +41,6 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_removeChatGPTConversation'
   | 'Client_askChatGPTQuestion'
   | 'Client_abortAskChatGPTQuestion'
-  | 'Client_modifyMessages'
   | 'Client_openUrl'
   | 'Client_closeUrl'
   | 'Client_updateIcon'

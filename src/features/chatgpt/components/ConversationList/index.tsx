@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Divider from '@mui/material/Divider'
@@ -152,25 +151,6 @@ const ConversationList: FC<IProps> = (props) => {
         }}
       >
         <Stack>
-          <Button
-            variant={'contained'}
-            component={'button'}
-            disabled={!hasNextPage || isFetching}
-            onClick={() => fetchNextPage()}
-          >
-            Next
-          </Button>
-          <Button
-            variant={'contained'}
-            component={'button'}
-            onClick={() =>
-              updatePaginationFilter({
-                type: 'Search',
-              })
-            }
-          >
-            updatePaginationFilter
-          </Button>
           <Typography color={'text.primary'}>
             {paginationConversations.length}
           </Typography>

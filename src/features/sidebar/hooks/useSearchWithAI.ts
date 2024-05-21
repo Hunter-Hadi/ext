@@ -9,7 +9,6 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
@@ -163,26 +162,26 @@ const useSearchWithAI = () => {
   ) => {
     try {
       if (currentConversationId) {
-        let lastAIResponse: IAIResponseMessage | null = null
-        let deleteCount = 0
-        for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
-          const message = clientConversationMessages[i]
-          deleteCount++
-          if (message.type === 'ai') {
-            lastAIResponse = message as IAIResponseMessage
-            break
-          }
-        }
+        const lastAIResponse: IAIResponseMessage | null =
+          (await ClientConversationMessageManager.getMessageByMessageType(
+            currentConversationId,
+            'ai',
+            'end',
+          )) as IAIResponseMessage
+        const needDeleteMessageIds =
+          await ClientConversationMessageManager.getDeleteMessageIds(
+            currentConversationId,
+            lastAIResponse.messageId,
+            'end',
+          )
         const lastQuestion =
           lastAIResponse?.originalMessage?.metadata?.title?.title ||
           lastAIResponse?.text ||
           ''
         if (lastQuestion) {
-          await clientChatConversationModifyChatMessages(
-            'delete',
+          await ClientConversationMessageManager.deleteMessages(
             currentConversationId,
-            deleteCount,
-            [],
+            needDeleteMessageIds,
           )
           setTimeout(async () => {
             await createSearchWithAIRef.current(
@@ -194,11 +193,12 @@ const useSearchWithAI = () => {
           }, 200)
         } else {
           // 如果没有找到last question，那么就重新生成Conversation
-          await clientChatConversationModifyChatMessages(
-            'delete',
+          // 删除全部消息
+          await ClientConversationMessageManager.deleteMessages(
             currentConversationId,
-            9999,
-            [],
+            await ClientConversationMessageManager.getMessageIds(
+              currentConversationId,
+            ),
           )
         }
       }

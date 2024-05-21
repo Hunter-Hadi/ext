@@ -1,3 +1,5 @@
+import findLastIndex from 'lodash-es/findLastIndex'
+
 import ChatMessagesContext, {
   IChatMessageData,
 } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
@@ -161,14 +163,16 @@ export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
           2,
         )
       ) {
-        replyMessageBoxIndex = chatMessagesNodeList.findLastIndex(
+        replyMessageBoxIndex = findLastIndex(
+          chatMessagesNodeList,
           (messageBox) =>
             messageBox.matches(
               '.c-message_kit__background--labels[data-qa="message_container"]',
             ),
         )
       } else {
-        replyMessageBoxIndex = chatMessages.findLastIndex(
+        replyMessageBoxIndex = findLastIndex(
+          chatMessages,
           (message) => message.user !== username,
         )
       }
@@ -177,7 +181,8 @@ export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
         '[data-qa="message_container"]',
         inputAssistantButton,
       )
-      replyMessageBoxIndex = chatMessagesNodeList.findLastIndex(
+      replyMessageBoxIndex = findLastIndex(
+        chatMessagesNodeList,
         (messageBox) => messageBox !== replyMessageBox,
       )
     }

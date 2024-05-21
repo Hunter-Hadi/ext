@@ -11,7 +11,6 @@ import {
   PaginationConversationMessagesStateFamily,
 } from '@/features/chatgpt/store'
 import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
@@ -128,7 +127,10 @@ const useClientConversation = () => {
     newMessage: IChatMessage,
     conversationId?: string,
   ) => {
-    if (conversationId || currentConversationIdRef.current) {
+    if (
+      (conversationId || currentConversationIdRef.current) &&
+      newMessage.messageId
+    ) {
       await ClientConversationMessageManager.addMessages(
         conversationId || currentConversationIdRef.current || '',
         [newMessage],
@@ -139,17 +141,27 @@ const useClientConversation = () => {
     message: IChatMessage,
     conversationId?: string,
   ) => {
-    if (conversationId && message.messageId) {
-      await ClientConversationMessageManager.updateMessage(message)
+    if (
+      (conversationId || currentConversationIdRef.current) &&
+      message.messageId
+    ) {
+      await ClientConversationMessageManager.updateMessage(
+        conversationId || currentConversationIdRef.current || '',
+        message,
+      )
     }
   }
-  const deleteMessage = async (count: number, conversationId?: string) => {
-    if (conversationId || currentConversationIdRef.current) {
-      await clientChatConversationModifyChatMessages(
-        'delete',
+  const deleteMessage = async (
+    messageIds: string[],
+    conversationId?: string,
+  ) => {
+    if (
+      (conversationId || currentConversationIdRef.current) &&
+      messageIds.length > 0
+    ) {
+      await ClientConversationMessageManager.deleteMessages(
         conversationId || currentConversationIdRef.current || '',
-        count,
-        [],
+        messageIds,
       )
     }
   }

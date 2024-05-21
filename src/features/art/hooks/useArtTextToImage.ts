@@ -31,12 +31,10 @@ const useArtTextToImage = () => {
     currentConversationId,
     createConversation,
     getConversation,
+    clientConversationMessages,
   } = useClientConversation()
-  const {
-    sidebarSettings,
-    updateSidebarConversationType,
-    currentSidebarConversationMessages,
-  } = useSidebarSettings()
+  const { sidebarSettings, updateSidebarConversationType } =
+    useSidebarSettings()
   const { isPayingUser } = useUserInfo()
   const startTextToImage = async (text: string) => {
     if (!isShowChatBox()) {
@@ -78,8 +76,8 @@ const useArtTextToImage = () => {
         },
       ]
       // 倒序合成
-      for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
-        const message = currentSidebarConversationMessages[i]
+      for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
+        const message = clientConversationMessages[i]
         if (isAIMessage(message) && message.originalMessage) {
           const question = message.originalMessage.metadata?.title?.title || ''
           const answer =

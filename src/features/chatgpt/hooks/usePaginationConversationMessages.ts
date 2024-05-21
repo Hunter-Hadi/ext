@@ -11,10 +11,7 @@ import { useAuthLogin } from '@/features/auth'
 import { PaginationConversationMessagesStateFamily } from '@/features/chatgpt/store'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
-import {
-  createIndexedDBQuery,
-  getProjectionFields,
-} from '@/features/indexed_db/utils'
+import { createIndexedDBQuery } from '@/features/indexed_db/utils'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 
 export const PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY =
@@ -54,30 +51,23 @@ const usePaginationConversationMessages = (conversationId: string) => {
           if (result?.data?.data) {
             remoteMessages = result.data.data
             await ClientConversationMessageManager.diffRemoteConversationMessagesData(
+              conversationId,
               remoteMessages,
             )
           }
           diffTimeUsage = new Date().getTime() - time
         }
         // 从本地获取filter.page_size个对话消息
-        const filterMessages = (await createIndexedDBQuery('conversations')
-          .messages.where('conversationId')
-          .equals(conversationId)
-          .toArray(getProjectionFields(['messageId', 'created_at']))
-          .then()) as Array<{
-          messageId: string
-          created_at: string
-        }>
+        const filterMessageIds =
+          await ClientConversationMessageManager.getMessageIds(conversationId)
         const offset =
           data.pageParam * PAGINATION_CONVERSATION_MESSAGES_QUERY_PAGE_SIZE
         const limit = PAGINATION_CONVERSATION_MESSAGES_QUERY_PAGE_SIZE
         const offsetMessageIds = orderBy(
-          filterMessages,
+          filterMessageIds,
           ['created_at'],
           ['desc'],
-        )
-          .slice(offset, offset + limit)
-          .map((message) => message.messageId)
+        ).slice(offset, offset + limit)
         const paginationMessages = await createIndexedDBQuery('conversations')
           .messages.where('messageId')
           .anyOf(offsetMessageIds)
@@ -119,6 +109,14 @@ const usePaginationConversationMessages = (conversationId: string) => {
         .reduce((prev, current) => prev.concat(current), []) || []
     setMessages(newMessages)
   }, [data?.pages, setMessages])
+  /**
+   * 当conversationId变化时，重置totalPageRef
+   */
+  useEffect(() => {
+    if (conversationId) {
+      totalPageRef.current = 0
+    }
+  }, [conversationId])
   return {
     messages,
     isLoading,

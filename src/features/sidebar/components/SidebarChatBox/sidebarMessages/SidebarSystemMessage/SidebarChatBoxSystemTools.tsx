@@ -5,10 +5,9 @@ import { useTranslation } from 'react-i18next'
 
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-
-import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
 
 const SidebarChatBoxSystemTools: FC<{
   solutionsShow: boolean
@@ -18,9 +17,10 @@ const SidebarChatBoxSystemTools: FC<{
 }> = (props) => {
   const { message, onSolutionToggle, solutionsShow, loading } = props
   const { t } = useTranslation(['common', 'client'])
-  const { currentSidebarConversationMessages, currentSidebarConversationType } =
-    useSidebarSettings()
-  const lastMessage = currentSidebarConversationMessages.at(-1)
+  const { clientConversationMessages, currentSidebarConversationType } =
+    useClientConversation()
+  const lastMessage =
+    clientConversationMessages[clientConversationMessages.length - 1]
   // const { currentUserPlan, userInfo } = useUserInfo()
   const { regenerate } = useClientChat()
   const { regenerateSearchWithAI } = useSearchWithAI()

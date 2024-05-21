@@ -5,11 +5,8 @@ import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
   createDaemonProcessTab,
   getWindowIdOfChatGPTTab,
-  processPreSaveChatMessage,
 } from '@/background/src/chat/util'
-import ConversationManager, {
-  getAllOldVersionConversationIds,
-} from '@/background/src/chatConversations'
+import { getAllOldVersionConversationIds } from '@/background/src/chatConversations'
 import backgroundCommandHandler from '@/background/src/client/backgroundCommandHandler'
 import { openPDFViewer } from '@/background/src/pdf'
 import {
@@ -40,7 +37,6 @@ import {
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
 import { initIndexedDBChannel } from '@/features/indexed_db/channel'
-import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
@@ -470,62 +466,6 @@ export const ClientMessageInit = () => {
             message: 'ok',
           }
         }
-        case 'Client_modifyMessages':
-          {
-            const { conversationId, action, deleteCount, newMessages } = data
-            let success = false
-            console.log('新版Conversation，更新消息', conversationId, data)
-            if (action === 'add') {
-              if (newMessages.length === 0) {
-                return {
-                  success: true,
-                  data: true,
-                  message: 'ok',
-                }
-              }
-              const processedMessages = await Promise.all(
-                newMessages.map(async (message: IChatMessage) => {
-                  return await processPreSaveChatMessage(message)
-                }),
-              )
-              success = await ConversationManager.pushMessages(
-                conversationId,
-                processedMessages,
-              )
-            } else if (action === 'delete') {
-              success = await ConversationManager.deleteMessages(
-                conversationId,
-                deleteCount,
-              )
-            } else if (action === 'clear') {
-              success = await ConversationManager.deleteMessages(
-                conversationId,
-                99999999,
-              )
-            } else if (action === 'update') {
-              success = await ConversationManager.updateMessage(
-                conversationId,
-                newMessages[0],
-              )
-            }
-            sender.tab?.id &&
-              (await Browser.tabs.sendMessage(sender.tab.id, {
-                event: 'Client_listenUpdateConversationMessages',
-                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-                data: {
-                  conversation: await ConversationManager.getConversationById(
-                    conversationId,
-                  ),
-                  conversationId,
-                },
-              }))
-            return {
-              success,
-              data: true,
-              message: 'ok',
-            }
-          }
-          break
         case 'Client_proxyFetchAPI': {
           try {
             const { url, options, abortTaskId } = data

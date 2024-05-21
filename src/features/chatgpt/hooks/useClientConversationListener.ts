@@ -1,10 +1,11 @@
 // hooks/useClientChatGPTFiles.ts
 import { HTMLParagraphElement } from 'linkedom'
+import { sortBy } from 'lodash-es'
 import cloneDeep from 'lodash-es/cloneDeep'
 import isArray from 'lodash-es/isArray'
 import isNumber from 'lodash-es/isNumber'
 import { useCallback, useEffect, useRef } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { useCreateClientMessageListener } from '@/background/utils'
@@ -14,8 +15,10 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import {
   ClientConversationMapState,
   ClientUploadedFilesState,
+  PaginationConversationMessagesStateFamily,
 } from '@/features/chatgpt/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { useFocus } from '@/features/common/hooks/useFocus'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
@@ -29,6 +32,7 @@ import {
   isMaxAIImmersiveChatPage,
   isMaxAISettingsPage,
 } from '@/utils/dataHelper/websiteHelper'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -376,6 +380,89 @@ export const useClientConversationListener = () => {
       resetConversation()
     }
   }, [clientConversation, resetConversation])
+  const updateConversationMessages = useRecoilCallback(
+    ({ set, snapshot }) =>
+      async (
+        changeType: 'add' | 'update' | 'delete' | 'focus',
+        conversationId: string,
+        messageIds: string[],
+      ) => {
+        const conversationState = await snapshot.getPromise(
+          ClientConversationMapState,
+        )
+        if (conversationState[conversationId]) {
+          // 说明当前的conversation是存在的
+          switch (changeType) {
+            case 'add':
+            case 'update':
+              {
+                const messages =
+                  await ClientConversationMessageManager.getMessagesByMessageIds(
+                    messageIds,
+                  )
+                set(
+                  PaginationConversationMessagesStateFamily(conversationId),
+                  (prevState) => {
+                    return sortBy(
+                      prevState.concat(messages),
+                      'created_at',
+                      'asc',
+                    )
+                  },
+                )
+              }
+              break
+            case 'delete':
+              {
+                set(
+                  PaginationConversationMessagesStateFamily(conversationId),
+                  (prevState) => {
+                    return prevState.filter(
+                      (item) => !messageIds.includes(item.messageId),
+                    )
+                  },
+                )
+              }
+              break
+          }
+          return true
+        }
+        return undefined
+      },
+    [],
+  )
+  useFocus(() => {
+    if (currentConversationIdRef.current) {
+      // TODO: 强行更新全部的消息, 以后可以优化
+      ClientConversationMessageManager.getMessageIds(
+        currentConversationIdRef.current!,
+      ).then(async (messageIds) => {
+        await updateConversationMessages(
+          'focus',
+          currentConversationIdRef.current!,
+          messageIds,
+        )
+      })
+    }
+  })
+  // 更新对话消息
+  useEffect(() => {
+    const unsubscribe = OneShotCommunicator.receive(
+      'ConversationMessagesUpdate',
+      async (data) => {
+        const { changeType, conversationId, messageIds } = data
+        if (currentConversationIdRef.current !== conversationId) {
+          return undefined
+        }
+        return await updateConversationMessages(
+          changeType,
+          conversationId,
+          messageIds,
+        )
+      },
+    )
+    return () => unsubscribe()
+  }, [updateConversationMessages])
 }
 
 export default useClientConversationListener

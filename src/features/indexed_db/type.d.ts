@@ -34,4 +34,11 @@ export type IndexedDBListener = {
       conversation?: IConversation
     },
   ): Promise<IConversation | undefined>
+  (
+    type: 'ConversationDBDeleteMessages',
+    data: {
+      conversationId: string
+      messageIds: string[]
+    },
+  ): Promise<boolean>
 }

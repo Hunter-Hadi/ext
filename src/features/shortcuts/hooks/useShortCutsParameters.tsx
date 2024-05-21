@@ -6,11 +6,11 @@ import {
   DEFAULT_AI_OUTPUT_LANGUAGE_ID,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/constants'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppDBStorageState, AppState } from '@/store'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
@@ -26,7 +26,7 @@ export interface IShortCutsParameter {
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
   const { currentSelection } = useRangy()
-  const { currentSidebarConversationMessages } = useSidebarSettings()
+  const { clientConversationMessages } = useClientConversation()
 
   const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const appDBStorage = useRecoilValue(AppDBStorageState)
@@ -69,7 +69,7 @@ const useShortCutsParameters = () => {
         )?.value || '',
       LAST_AI_OUTPUT:
         listReverseFind(
-          currentSidebarConversationMessages,
+          clientConversationMessages,
           (item) => item.type === 'ai',
         )?.text || '',
       AI_RESPONSE_LANGUAGE: userSelectedLanguage,

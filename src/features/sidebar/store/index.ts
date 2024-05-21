@@ -2,7 +2,7 @@ import { atom, atomFamily } from 'recoil'
 
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
 
 import { SummaryParamsPromptType } from '../utils/pageSummaryNavPrompt'
 

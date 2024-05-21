@@ -1,3 +1,5 @@
+import findLastIndex from 'lodash-es/findLastIndex'
+
 import ChatMessagesContext, {
   IChatMessageData,
 } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
@@ -127,14 +129,16 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
 
     if (channelTextArea) {
       if (channelTextArea.querySelector<HTMLElement>('[class^="replyBar"]')) {
-        replyMessageBoxIndex = chatMessagesNodeList.findLastIndex(
+        replyMessageBoxIndex = findLastIndex(
+          chatMessagesNodeList,
           (messageBox) =>
             messageBox.matches(
               '[id^="chat-messages"]:has(> [class*="replying"])',
             ),
         )
       } else {
-        replyMessageBoxIndex = chatMessages.findLastIndex(
+        replyMessageBoxIndex = findLastIndex(
+          chatMessages,
           (message) => message.user !== username,
         )
       }
@@ -144,7 +148,8 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
         inputAssistantButton,
         8,
       )
-      replyMessageBoxIndex = chatMessagesNodeList.findLastIndex(
+      replyMessageBoxIndex = findLastIndex(
+        chatMessagesNodeList,
         (messageBox) => messageBox === replyMessageBox,
       )
     }

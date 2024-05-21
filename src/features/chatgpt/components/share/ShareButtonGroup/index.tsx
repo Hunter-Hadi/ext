@@ -4,7 +4,6 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Menu from '@mui/material/Menu'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -14,6 +13,7 @@ import { WWW_PROJECT_HOST } from '@/constants'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { uploadClientConversationToRemote } from '@/features/indexed_db/conversations/clientService'
 import { IConversationShareConfig } from '@/features/indexed_db/conversations/models/Conversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import globalSnackbar from '@/utils/globalSnackbar'
@@ -126,19 +126,14 @@ const ShareButtonGroup: FC = () => {
       // 上传会话和消息
       try {
         setIsUploadingConversation(true)
-        const needUploadConversation: any = cloneDeep(clientConversation)
         const needUploadMessages =
           await ClientConversationMessageManager.getMessages(
-            needUploadConversation.id,
+            clientConversation.id,
           )
         // 需要上传
-        const result = await clientFetchMaxAIAPI<{
-          status: string
-        }>('/conversation/upsert_conversation', needUploadConversation)
-        if (result.data?.status !== 'OK') {
-          errorTips()
-          return
-        }
+        const result = await uploadClientConversationToRemote(
+          clientConversation,
+        )
         // 上传消息
         const conversationId = needUploadConversation.id
         // 每次上传30条消息

@@ -2,6 +2,7 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import uniqBy from 'lodash-es/uniqBy'
 
+import { isEnableSyncConversation } from '@/background/src/chatConversations/conversationToDBHelper'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
@@ -15,13 +16,16 @@ const syncLog = new Log('SyncConversation')
 
 /**
  * 上传消息
- * @param messages
  * @param conversationId
+ * @param messages
  */
-export const clientUploadMessage = async (
-  messages: IChatMessage[],
+export const clientUploadMessagesToRemote = async (
   conversationId: string,
+  messages: IChatMessage[],
 ) => {
+  if (!(await isEnableSyncConversation())) {
+    return true
+  }
   let result = await clientFetchMaxAIAPI<{
     status: string
   }>('/conversation/add_messages', {
@@ -47,6 +51,45 @@ export const clientUploadMessage = async (
   }
   return result.data?.status === 'OK'
 }
+
+/**
+ * 批量删除message的接口,根据传入的message_ids
+ * https://dev.maxai.me/conversation/delete_messages
+ * @param conversationId
+ * @param messageIds
+ */
+export const clientDeleteMessagesToRemote = async (
+  conversationId: string,
+  messageIds: string[],
+) => {
+  if (!(await isEnableSyncConversation())) {
+    return true
+  }
+  let result = await clientFetchMaxAIAPI<{
+    status: string
+  }>('/conversation/delete_messages', {
+    conversation_id: conversationId,
+    message_ids: messageIds,
+  })
+  // 重试2次
+  if (result.data?.status !== 'OK') {
+    result = await clientFetchMaxAIAPI<{
+      status: string
+    }>('/conversation/delete_messages', {
+      conversation_id: conversationId,
+      message_ids: messageIds,
+    })
+    if (result.data?.status !== 'OK') {
+      result = await clientFetchMaxAIAPI<{
+        status: string
+      }>('/conversation/delete_messages', {
+        conversation_id: conversationId,
+        message_ids: messageIds,
+      })
+    }
+  }
+  return result.data?.status === 'OK'
+}
 /**
  * 下载消息到本地
  * @param conversationId
@@ -56,6 +99,9 @@ export const downloadRemoteMessagesToClient = async (
   conversationId: string,
   messageIds: string[],
 ) => {
+  if (!(await isEnableSyncConversation())) {
+    return []
+  }
   let downloadMessagesData = await clientFetchMaxAIAPI<{
     status: string
     data: IChatMessage[]
@@ -89,6 +135,9 @@ export const downloadRemoteMessagesToClient = async (
  * @param conversationId
  */
 export const clientDownloadConversation = async (conversationId: string) => {
+  if (!(await isEnableSyncConversation())) {
+    return []
+  }
   // https://dev.maxai.me/conversation/get_conversation
   let downloadConversationData = await clientFetchMaxAIAPI<{
     status: string
@@ -113,7 +162,7 @@ export const clientDownloadConversation = async (conversationId: string) => {
       })
     }
   }
-  return downloadConversationData.data?.data
+  return downloadConversationData.data?.data || []
 }
 /**
  * 检查会话是否需要同步
@@ -126,6 +175,13 @@ export const checkConversationNeedSync = async (
   needSyncCount: number
   totalCount: number
 }> => {
+  if (!(await isEnableSyncConversation())) {
+    return {
+      needSync: false,
+      needSyncCount: 0,
+      totalCount: 0,
+    }
+  }
   const localConversation = await ClientConversationManager.getConversation(
     conversationId,
   )
@@ -214,14 +270,19 @@ export const checkConversationNeedSync = async (
 export const uploadClientConversationToRemote = async (
   conversation: IConversation,
 ) => {
+  if (!(await isEnableSyncConversation())) {
+    return true
+  }
+  const uploadConversation: any = cloneDeep(conversation)
+  delete uploadConversation.messages
   const result = await clientFetchMaxAIAPI<{
     status: string
-  }>('/conversation/upsert_conversation', conversation)
+  }>('/conversation/upsert_conversation', uploadConversation)
   if (result.data?.status !== 'OK') {
-    syncLog.error(conversation.id, `同步失败, 服务器错误`)
+    syncLog.error(uploadConversation.id, `同步失败, 服务器错误`)
     return false
   }
-  syncLog.info(conversation.id, `同步成功`)
+  syncLog.info(uploadConversation.id, `同步成功`)
   return true
 }
 
@@ -232,6 +293,9 @@ export const uploadClientConversationToRemote = async (
 export const deleteRemoteConversationByType = async (
   type: ISidebarConversationType,
 ) => {
+  if (!(await isEnableSyncConversation())) {
+    return true
+  }
   // https://dev.maxai.me/conversation/delete_conversation_by_type
   try {
     const result = await clientFetchMaxAIAPI<{
@@ -268,6 +332,9 @@ export const syncLocalConversationToRemote = async (
     reason: 'start' | 'progress' | 'end',
   ) => void,
 ) => {
+  if (!(await isEnableSyncConversation())) {
+    return true
+  }
   let current = 0
   let total = 0
   let successCount = 0
@@ -300,13 +367,11 @@ export const syncLocalConversationToRemote = async (
   }
   syncLog.info(conversationId, `开始同步`)
   generateResult(true, 'start')
-  // 消息是分开存的, 需要删除
-  delete needUploadConversation.messages
   // 需要上传
-  const result = await clientFetchMaxAIAPI<{
-    status: string
-  }>('/conversation/upsert_conversation', needUploadConversation)
-  if (result.data?.status !== 'OK') {
+  const isUploadConversationSuccess = await uploadClientConversationToRemote(
+    needUploadConversation,
+  )
+  if (!isUploadConversationSuccess) {
     syncLog.error(conversationId, `同步失败, 服务器错误`)
     return generateResult(false, 'end')
   }
@@ -335,14 +400,14 @@ export const syncLocalConversationToRemote = async (
   total = needUploadMessages.length + needDownloadMessagesIds.length
   syncLog.info(conversationId, `需要上传${needUploadMessages.length}条消息`)
   generateResult(true, 'progress')
-  // 每次上传10条消息
-  const perUploadToRemoteCount = 10
+  // 每次上传30条消息
+  const perUploadToRemoteCount = 30
   // 上传消息到remote
   // 上传消息
   for (let i = 0; i < needUploadMessages.length; i += perUploadToRemoteCount) {
-    const isUploadSuccess = await clientUploadMessage(
-      needUploadMessages.slice(i, i + perUploadToRemoteCount),
+    const isUploadSuccess = await clientUploadMessagesToRemote(
       conversationId,
+      needUploadMessages.slice(i, i + perUploadToRemoteCount),
     )
     if (isUploadSuccess) {
       successCount += perUploadToRemoteCount

@@ -57,7 +57,7 @@ const AutoSyncConversation: FC<{
     >
       {conversationAutoSyncState.autoSyncStatus === 'uploading' && (
         <>
-          <Typography fontSize={'14px'}>
+          <Typography fontSize={'14px'} color={'text.primary'}>
             {`(${conversationAutoSyncState.autoSyncStep}/${conversationAutoSyncState.autoSyncTotalCount})`}
           </Typography>
           <SyncOutlinedIcon

@@ -11,53 +11,8 @@ import {
   getChromeExtensionLocalStorage,
   MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
-import {
-  IAIProviderModel,
-  IAIResponseMessage,
-  IChatMessage,
-  ISystemChatMessage,
-  IUserChatMessage,
-} from '@/features/indexed_db/conversations/models/Message'
-
-/**
- * Client更新Conversation的信息
- * @param action
- * @param conversationId
- * @param deleteCount
- * @param newMessages
- */
-export const clientChatConversationModifyChatMessages = async (
-  action: 'add' | 'delete' | 'clear' | 'update',
-  conversationId: string,
-  deleteCount: number,
-  newMessages: Array<
-    IChatMessage | ISystemChatMessage | IAIResponseMessage | IUserChatMessage
-  >,
-) => {
-  try {
-    console.log(
-      'clientChatConversationModifyChatMessages',
-      action,
-      conversationId,
-      newMessages,
-    )
-    const port = new ContentScriptConnectionV2()
-    const result = await port.postMessage({
-      event: 'Client_modifyMessages',
-      data: {
-        conversationId,
-        action,
-        deleteCount,
-        newMessages,
-      },
-    })
-    return result.success
-  } catch (e) {
-    return false
-  }
-}
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 
 /**
  * @deprecated 由于 context window 分离，导致这里获取不到 正确的 conversation, 要获取正确的用 useClientConversation

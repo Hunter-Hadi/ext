@@ -16,16 +16,15 @@ import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useContextMenuList } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
 import {
   allSummaryNavList,
   getContextMenuByNavMetadataKey,
-  getPageSummaryConversationId,
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 
@@ -80,7 +79,7 @@ const usePageSummary = () => {
           },
         })
         const aiMessage =
-          ClientConversationMessageManager.getMessageByMessageType(
+          await ClientConversationMessageManager.getMessageByMessageType(
             pageSummaryConversationId,
             'ai',
             'start',
@@ -96,12 +95,10 @@ const usePageSummary = () => {
           isGeneratingPageSummaryRef.current = false
           return
         }
-
         let isValidAIMessage =
           aiMessage &&
           aiMessage?.originalMessage &&
           aiMessage?.originalMessage.metadata?.isComplete
-
         if (
           aiMessage &&
           aiMessage?.originalMessage &&
@@ -139,11 +136,11 @@ const usePageSummary = () => {
         }
 
         // 如果没有AI消息，那么清空所有消息，然后添加AI消息
-        await clientChatConversationModifyChatMessages(
-          'clear',
+        await ClientConversationMessageManager.deleteMessages(
           pageSummaryConversationId,
-          0,
-          [],
+          await ClientConversationMessageManager.getMessageIds(
+            pageSummaryConversationId,
+          ),
         )
       }
       try {
@@ -165,11 +162,11 @@ const usePageSummary = () => {
               summaryLifetimesQuota - 1,
             )
           } else {
-            await clientChatConversationModifyChatMessages(
-              'clear',
+            await ClientConversationMessageManager.deleteMessages(
               pageSummaryConversationId,
-              0,
-              [],
+              await ClientConversationMessageManager.getMessageIds(
+                pageSummaryConversationId,
+              ),
             )
             await pushPricingHookMessage('PAGE_SUMMARY')
             authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {

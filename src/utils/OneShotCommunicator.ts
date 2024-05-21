@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid'
 export type IOneShotCommunicatorCustomEventNameType =
   | 'SetVariablesModal'
   | 'QuickSearchSelectedText'
+  | 'ConversationMessagesUpdate'
 /**
  * 一次性通信器
  */
@@ -61,6 +62,10 @@ class OneShotCommunicator {
           response = await result
         } else {
           response = result
+        }
+        // 如果回调函数没有返回值，则不发送回去
+        if (response === undefined) {
+          return
         }
         // 将回调函数的结果发送回去
         const resolver = this.pending.get(uuid)

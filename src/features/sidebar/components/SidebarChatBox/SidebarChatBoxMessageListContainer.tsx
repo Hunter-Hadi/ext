@@ -68,9 +68,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       const messageItemOnReadyFlagElement = sidebarRoot?.querySelector(
         `#${messageItemOnReadyFlag}`,
       )
-      debugger
       if (messageItemOnReadyFlagElement) {
-        debugger
         setMessageItemIsReady(true)
       }
     },

@@ -451,6 +451,7 @@ export class ActionAskChatGPT extends Action {
                   outputMessage.originalMessage
                 ) {
                   await ClientConversationMessageManager.updateMessagesWithChanges(
+                    conversationId,
                     [
                       {
                         key: outputMessageId || '',
@@ -463,6 +464,7 @@ export class ActionAskChatGPT extends Action {
                 } else {
                   // TODO 这里只有更新，其实要区别更新/覆盖
                   await ClientConversationMessageManager.updateMessagesWithChanges(
+                    conversationId,
                     [
                       {
                         key: outputMessageId || '',
@@ -524,14 +526,17 @@ export class ActionAskChatGPT extends Action {
             isAIMessage(outputMessage) &&
             outputMessage.originalMessage
           ) {
-            await ClientConversationMessageManager.updateMessagesWithChanges([
-              {
-                key: outputMessageId || '',
-                changes: {
-                  'originalMessage.metadata.isComplete': true,
-                } as any,
-              },
-            ])
+            await ClientConversationMessageManager.updateMessagesWithChanges(
+              conversationId,
+              [
+                {
+                  key: outputMessageId || '',
+                  changes: {
+                    'originalMessage.metadata.isComplete': true,
+                  } as any,
+                },
+              ],
+            )
           }
           if (
             this.answer &&
@@ -668,14 +673,17 @@ export class ActionAskChatGPT extends Action {
           needStopAIMessage.originalMessage
         ) {
           // 更新消息的isComplete/sources.status
-          await ClientConversationMessageManager.updateMessagesWithChanges([
-            {
-              key: needStopAIMessage.messageId,
-              changes: {
-                'originalMessage.metadata.isComplete': true,
-              } as any,
-            },
-          ])
+          await ClientConversationMessageManager.updateMessagesWithChanges(
+            this.question.conversationId,
+            [
+              {
+                key: needStopAIMessage.messageId,
+                changes: {
+                  'originalMessage.metadata.isComplete': true,
+                } as any,
+              },
+            ],
+          )
         }
       }
     }

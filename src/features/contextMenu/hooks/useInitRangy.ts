@@ -7,6 +7,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   MAXAI_CLIPBOARD_ID,
   MAXAI_CONTEXT_MENU_ID,
@@ -36,7 +37,6 @@ import {
   removeAllSelectionMarker,
   useBindRichTextEditorLineTextPlaceholder,
 } from '@/features/contextMenu/utils/selectionHelper'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useCommands from '@/hooks/useCommands'
 import { listenIframeMessage } from '@/iframeDocumentEnd'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -136,7 +136,7 @@ const useInitRangy = () => {
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const { currentSidebarConversationMessages } = useSidebarSettings()
+  const { clientConversationMessages } = useClientConversation()
   // 保存打开floatingMenu前最后的选区
   const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
     FloatingDropdownMenuLastFocusRangeState,
@@ -609,14 +609,10 @@ const useInitRangy = () => {
       case 'TRY_AGAIN':
         {
           let lastAIMessageId = ''
-          if (currentSidebarConversationMessages.length > 0) {
+          if (clientConversationMessages.length > 0) {
             let isFindUserMessage = false
-            for (
-              let i = currentSidebarConversationMessages.length - 1;
-              i >= 0;
-              i--
-            ) {
-              const message = currentSidebarConversationMessages[i]
+            for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
+              const message = clientConversationMessages[i]
               if (message.type === 'user') {
                 isFindUserMessage = true
               }

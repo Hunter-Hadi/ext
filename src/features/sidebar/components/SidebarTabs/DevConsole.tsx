@@ -93,6 +93,7 @@ const DevConsole: FC<{
   )
   const clientConversationMap = useRecoilValue(ClientConversationMapState)
   const {
+    clientConversationMessages,
     clientWritingMessage,
     currentConversationId,
     conversationStatus,
@@ -104,9 +105,6 @@ const DevConsole: FC<{
     const clonedConversation: any = cloneDeep(
       clientConversation,
     ) as IConversation
-    if (clonedConversation) {
-      clonedConversation.messages = []
-    }
     return clonedConversation
   }, [clientConversation])
   return (
@@ -248,7 +246,7 @@ const DevConsole: FC<{
             </p>
             <p>
               currentSidebarAIProvider: {currentSidebarAIProvider} - [
-              {clientConversation?.messages.length}]
+              {clientConversationMessages.length}]
             </p>
             <p>currentSidebarAIMode: {currentAIProviderModel}</p>
             <p>currentSidebarConversationId: {currentSidebarConversationId}</p>

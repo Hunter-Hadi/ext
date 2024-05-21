@@ -26,15 +26,18 @@ export const stopActionMessageStatus = async (params: {
         return
       }
       if (lastAIMessage.originalMessage) {
-        await ClientConversationMessageManager.updateMessagesWithChanges([
-          {
-            key: lastAIMessage.messageId,
-            changes: {
-              'metadata.sources.status': 'complete',
-              'metadata.isComplete': true,
-            } as any,
-          },
-        ])
+        await ClientConversationMessageManager.updateMessagesWithChanges(
+          currentConversationId,
+          [
+            {
+              key: lastAIMessage.messageId,
+              changes: {
+                'metadata.sources.status': 'complete',
+                'metadata.isComplete': true,
+              } as any,
+            },
+          ],
+        )
       }
     }
   } catch (e) {

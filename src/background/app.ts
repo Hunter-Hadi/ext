@@ -376,31 +376,31 @@ const initChromeExtensionMessage = () => {
   new ChatSystemFactory()
   ClientMessageInit()
   ShortcutMessageBackgroundInit()
-  Browser.runtime.onMessage.addListener(
-    (message, sender, sendResponse: any) => {
-      if (
-        message?.id &&
-        message.id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID
-      ) {
-        return
-      }
-      if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
-        console.log('inboxsdk__injectPageWorld')
-        if (Browser.scripting && sender.tab?.id) {
-          console.log('inboxsdk__injectPageWorld 2')
-          // MV3
-          Browser.scripting.executeScript({
-            target: { tabId: sender.tab.id },
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            world: 'MAIN',
-            files: ['pageWorld.js'],
-          })
-          sendResponse(true)
-        }
-      }
-    },
-  )
+  // Browser.runtime.onMessage.addListener(
+  //   (message, sender, sendResponse: any) => {
+  //     if (
+  //       message?.id &&
+  //       message.id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID
+  //     ) {
+  //       return
+  //     }
+  //     if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
+  //       console.log('inboxsdk__injectPageWorld')
+  //       if (Browser.scripting && sender.tab?.id) {
+  //         console.log('inboxsdk__injectPageWorld 2')
+  //         // MV3
+  //         Browser.scripting.executeScript({
+  //           target: { tabId: sender.tab.id },
+  //           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //           // @ts-ignore
+  //           world: 'MAIN',
+  //           files: ['pageWorld.js'],
+  //         })
+  //         sendResponse(true)
+  //       }
+  //     }
+  //   },
+  // )
   // search with AI
   SearchWithAIMessageInit()
 }

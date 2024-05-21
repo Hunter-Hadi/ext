@@ -769,7 +769,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       transcriptData,
     )
     this.viewLatestTranscriptData = transcriptData
-    await ClientConversationMessageManager.updateMessage({
+    await ClientConversationMessageManager.updateMessage(conversationId, {
       messageId,
       metadata: {
         isComplete: false,
@@ -820,7 +820,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     const conversationId =
       params.engine.clientConversationEngine?.currentConversationId
     if (conversationId && this.currentMessageId) {
-      await ClientConversationMessageManager.updateMessage({
+      await ClientConversationMessageManager.updateMessage(conversationId, {
         type: 'ai',
         messageId: this.currentMessageId,
         originalMessage: {

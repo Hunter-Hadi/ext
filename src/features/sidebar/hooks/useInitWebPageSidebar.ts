@@ -11,10 +11,8 @@ import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/M
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import {
-  getPageSummaryConversationId,
-  getPageSummaryType,
-} from '@/features/sidebar/utils/pageSummaryHelper'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
 
 /**
@@ -201,32 +199,6 @@ const useInitWebPageSidebar = () => {
       window.removeEventListener('MaxAIContinueSearchWithAI', listener)
     }
   }, [])
-  // // focus的时候更新消息
-  // useFocus(() => {
-  //   if (currentConversationIdRef.current) {
-  //     const start = new Date().getTime()
-  //     clientGetConversation(currentConversationIdRef.current).then(
-  //       (conversation) => {
-  //         if (conversation) {
-  //           console.log('UsingUsingUsing', new Date().getTime() - start, 'ms')
-  //           console.log('新版Conversation refocus更新', conversation.messages)
-  //           if (conversation.isDelete) {
-  //             if (isMaxAIImmersiveChatPage()) {
-  //               // immersive chat page下先在这里触发reset
-  //               resetConversation()
-  //             }
-  //           }
-  //           updateConversationMap((prevState) => {
-  //             return {
-  //               ...prevState,
-  //               [conversation.id]: conversation,
-  //             }
-  //           })
-  //         }
-  //       },
-  //     )
-  //   }
-  // })
   useEffectOnce(() => {
     startListen()
   })

@@ -252,20 +252,21 @@ export function completeLastAIMessageOnStop() {
           await clientConversationEngine.getCurrentConversation()
         if (currentConversation) {
           const lastMessage =
-            currentConversation.messages[
-              currentConversation.messages.length - 1
-            ]
-          if (isAIMessage(lastMessage)) {
+            await ClientConversationMessageManager.getMessageByPosition('end')
+          if (lastMessage && isAIMessage(lastMessage)) {
             if (lastMessage.originalMessage) {
-              await ClientConversationMessageManager.updateMessagesWithChanges([
-                {
-                  key: lastMessage.messageId,
-                  changes: {
-                    'metadata.sources.status': 'complete',
-                    'metadata.isComplete': true,
-                  } as any,
-                },
-              ])
+              await ClientConversationMessageManager.updateMessagesWithChanges(
+                currentConversation.id,
+                [
+                  {
+                    key: lastMessage.messageId,
+                    changes: {
+                      'metadata.sources.status': 'complete',
+                      'metadata.isComplete': true,
+                    } as any,
+                  },
+                ],
+              )
             }
           }
         }
@@ -299,12 +300,11 @@ export function completeLastAIMessageOnError() {
             await clientConversationEngine.getCurrentConversation()
           if (currentConversation) {
             const lastMessage =
-              currentConversation.messages[
-                currentConversation.messages.length - 1
-              ]
-            if (isAIMessage(lastMessage)) {
+              await ClientConversationMessageManager.getMessageByPosition('end')
+            if (lastMessage && isAIMessage(lastMessage)) {
               if (lastMessage.originalMessage) {
                 await ClientConversationMessageManager.updateMessagesWithChanges(
+                  currentConversation.id,
                   [
                     {
                       key: lastMessage.messageId,

@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   deleteRemoteConversationByType,
   downloadRemoteMessagesToClient,
@@ -191,42 +192,57 @@ export class ClientConversationManager {
       .anyOf(remoteConversationIds)
       .toArray()
       .then()
-
     // 对比 updated_at
     for (const remoteConversation of APIConversations) {
       const localConversation = localConversations.find(
         (conversation) => conversation.id === remoteConversation.id,
       )
       const cloneRemoteConversation = cloneDeep(remoteConversation)
-      let last_msg: IChatMessage | undefined =
-        (cloneRemoteConversation as any)?.last_msg || undefined
+      let last_msg: IChatMessage | null =
+        (cloneRemoteConversation as any)?.last_msg || null
       // 如果有last_msg，就不用再去查了
       if (last_msg) {
+        cloneRemoteConversation.lastMessageId = last_msg.messageId
         delete (cloneRemoteConversation as any).last_msg
       } else if (cloneRemoteConversation.lastMessageId) {
         // 获取最后一条消息
-        last_msg = (
-          await downloadRemoteMessagesToClient(cloneRemoteConversation.id, [
-            cloneRemoteConversation.lastMessageId,
-          ])
-        )?.[0]
+        last_msg = await ClientConversationMessageManager.getMessageByMessageId(
+          cloneRemoteConversation.lastMessageId,
+        )
+        if (!last_msg) {
+          last_msg = (
+            await downloadRemoteMessagesToClient(cloneRemoteConversation.id, [
+              cloneRemoteConversation.lastMessageId,
+            ])
+          )?.[0]
+        }
       }
+      // 如果本地没有，添加到本地
       if (!localConversation) {
+        // 添加消息到本地
         if (last_msg?.messageId && last_msg.updated_at) {
-          delete (cloneRemoteConversation as any).last_msg
           // 更新对话
           await createIndexedDBQuery('conversations')
             .messages.put(last_msg)
             .then()
         }
-        // 本地没有，添加到本地
-        await clientUseIndexedDB('ConversationDBMigrateConversationV3', {
-          conversation: cloneRemoteConversation,
-        })
+        const isV3 = cloneRemoteConversation.version === 3
+        const isSuccess = await clientUseIndexedDB(
+          'ConversationDBMigrateConversationV3',
+          {
+            conversation: cloneRemoteConversation,
+          },
+        )
+        // 如果之前不是v3，且成功了，就更新remote
+        if (!isV3 && isSuccess) {
+          uploadClientConversationToRemote(cloneRemoteConversation)
+            .then()
+            .catch()
+        }
         continue
       }
       if (
-        new Date(cloneRemoteConversation.updated_at).getTime() >
+        new Date(cloneRemoteConversation.updated_at).getTime() >=
         new Date(localConversation.updated_at).getTime()
       ) {
         // 更新对话

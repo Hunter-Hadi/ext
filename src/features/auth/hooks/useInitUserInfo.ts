@@ -5,12 +5,12 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { AuthUserInfoState, UserQuotaUsageState } from '@/features/auth/store'
 import { IUserQuotaUsageInfo } from '@/features/auth/types'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 import Log from '@/utils/Log'
 const port = new ContentScriptConnectionV2()
@@ -19,8 +19,8 @@ const log = new Log('Features/Auth/UseChatGPTPlusChat')
 const useInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
   const setUserQuotaUsageInfo = useSetRecoilState(UserQuotaUsageState)
-  const { currentSidebarConversationMessages, currentSidebarConversationId } =
-    useSidebarSettings()
+  const { clientConversationMessages, currentConversationIdRef } =
+    useClientConversation()
   const needPushUpgradeMessage = useRef(false)
   const upgradeTextRef = useRef('')
   const syncUserInfo = async (forceUpdate = false) => {
@@ -191,9 +191,9 @@ const useInitUserInfo = (isInit = true) => {
     }
     // 如果是升级，需要在侧边栏显示升级消息
     if (
-      currentSidebarConversationId &&
+      currentConversationIdRef.current &&
       !listReverseFind(
-        currentSidebarConversationMessages,
+        clientConversationMessages,
         (message) =>
           message.text === 'You have successfully upgraded to MaxAI Elite.' ||
           message.text === 'You have successfully upgraded to MaxAI Pro.' ||
@@ -201,7 +201,7 @@ const useInitUserInfo = (isInit = true) => {
       )
     ) {
       ClientConversationMessageManager.addMessages(
-        currentSidebarConversationId,
+        currentConversationIdRef.current,
         [
           {
             messageId: uuidV4(),
@@ -216,7 +216,7 @@ const useInitUserInfo = (isInit = true) => {
       )
       isPushUpgradeMessageRef.current = true
     }
-  }, [currentSidebarConversationId, currentSidebarConversationMessages])
+  }, [clientConversationMessages])
   useEffectOnce(() => {
     if (isInit) {
       syncUserInfo()

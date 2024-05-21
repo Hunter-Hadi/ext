@@ -158,7 +158,10 @@ const useMessageListPaginator = (
   }, [buffer])
 
   const slicedMessageList = useMemo(() => {
-    console.log(`ConversationDB[V3][对话消息列表] slicedMessageList`, messages)
+    console.log(
+      `ConversationDB[V3][对话消息列表] slicedMessageList[${showPageNum}]`,
+      messages,
+    )
     if (pageSize === -1) return messages
     return messages.slice(-(showPageNum * pageSize))
   }, [messages, showPageNum, pageSize])
@@ -206,7 +209,6 @@ const useMessageListPaginator = (
     // 当 pageNum 变化时，代表滚动加载了
     // 需要把滚动位置移动到 lastTimeObserverTarget.current 的位置
     const scrollContainer = getScrollContainerElement()
-    debugger
     if (scrollContainer && scrollTop.current >= 0) {
       const currentScrollHeight = scrollContainer?.scrollHeight
       scrollContainer.scrollTop =

@@ -12,8 +12,8 @@ import Typography from '@mui/material/Typography'
 import uniqBy from 'lodash-es/uniqBy'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useSingleThirdProviderSettings } from '@/features/chatgpt/hooks/useThirdProviderSettings'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 const ArrowDropDownIconCustom = () => {
@@ -31,12 +31,10 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const ChatGPTPluginsSelector: FC = () => {
-  const { currentSidebarConversationMessages } = useSidebarSettings()
+  const { clientConversationMessages } = useClientConversation()
   const [error, setError] = useState(false)
-  const [
-    openAIProviderSettings,
-    updateOpenAIProviderSettings,
-  ] = useSingleThirdProviderSettings('OPENAI')
+  const [openAIProviderSettings, updateOpenAIProviderSettings] =
+    useSingleThirdProviderSettings('OPENAI')
   const enabledPlugins = useMemo(() => {
     return openAIProviderSettings?.plugins || []
   }, [openAIProviderSettings])
@@ -91,7 +89,7 @@ const ChatGPTPluginsSelector: FC = () => {
             }}
             value={openAIProviderSettings?.plugins || []}
             multiple
-            disabled={currentSidebarConversationMessages.length > 0}
+            disabled={clientConversationMessages.length > 0}
             MenuProps={{
               anchorOrigin: {
                 vertical: 'top',

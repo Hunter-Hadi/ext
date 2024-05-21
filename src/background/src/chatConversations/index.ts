@@ -1,10 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import {
-  addOrUpdateDBConversation,
-  addOrUpdateDBConversationMessages,
-  deleteDBConversationMessages,
-} from '@/background/src/chatConversations/conversationToDBHelper'
+import { backgroundAddOrUpdateDBConversation } from '@/background/src/chatConversations/conversationToDBHelper'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {
   backgroundConversationDB,
@@ -12,30 +8,33 @@ import {
   backgroundMigrateConversationV3,
 } from '@/features/indexed_db/conversations/background'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export const getAllOldVersionConversationIds = (): Promise<string[]> => {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open('conversationDB', 1)
     request.onsuccess = (event) => {
-      const db = (event.target as IDBOpenDBRequest).result
-      const transaction = db.transaction(['conversations'], 'readonly')
-      const objectStore = transaction.objectStore('conversations')
-      // only get conversationIds
-      const cursor = objectStore.openKeyCursor()
-      const conversationIds: string[] = []
-      cursor.onsuccess = (event) => {
-        const cursor = (event.target as IDBRequest).result
-        if (cursor) {
-          conversationIds.push(cursor.key as string)
-          cursor.continue()
-        } else {
-          resolve(conversationIds)
+      try {
+        const db = (event.target as IDBOpenDBRequest).result
+        const transaction = db.transaction(['conversations'], 'readonly')
+        const objectStore = transaction.objectStore('conversations')
+        // only get conversationIds
+        const cursor = objectStore.openKeyCursor()
+        const conversationIds: string[] = []
+        cursor.onsuccess = (event) => {
+          const cursor = (event.target as IDBRequest).result
+          if (cursor) {
+            conversationIds.push(cursor.key as string)
+            cursor.continue()
+          } else {
+            resolve(conversationIds)
+          }
         }
-      }
-      cursor.onerror = (event) => {
-        reject((event.target as any)?.error || '')
+        cursor.onerror = (event) => {
+          resolve([])
+        }
+      } catch (e) {
+        resolve([])
       }
     }
   })
@@ -118,7 +117,6 @@ class OldVersionConversationDB {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
-        conversation = await migratingToConversationV2(conversation)
         console.log(
           `DB_Conversation addOrUpdateConversation [同步会话][${reason}]`,
           conversation,
@@ -131,7 +129,7 @@ class OldVersionConversationDB {
         transaction.oncomplete = () => {
           if (syncConversationToDB) {
             // 同步会话到后端
-            addOrUpdateDBConversation(conversation).then().catch()
+            // addOrUpdateDBConversation(conversation).then().catch()
           }
           resolve() // 操作成功完成，解析 Promise
         }
@@ -283,7 +281,7 @@ export default class ConversationManager {
       await backgroundConversationDB.conversations.put(conversation)
       if (syncConversationToDB) {
         // 同步会话到后端
-        addOrUpdateDBConversation(conversation).then().catch()
+        backgroundAddOrUpdateDBConversation(conversation).then().catch()
       }
       return true
     } catch (error) {
@@ -339,136 +337,4 @@ export default class ConversationManager {
     console.log('新版Conversation getConversation', conversation)
     return conversation
   }
-
-  static async pushMessages(
-    conversationId: string,
-    newMessages: IChatMessage[],
-  ) {
-    const conversation =
-      await this.oldVersionConversationDB.getConversationById(conversationId)
-    if (!conversation) {
-      return false
-    }
-    const addTimeNewMessages = newMessages.map((newMessage, index) => {
-      if (!newMessage.parentMessageId) {
-        // 如果是第一条消息，那么parentMessageId是最后一条消息
-        if (index === 0) {
-          const conversationLastMessage =
-            conversation.messages[conversation.messages.length - 1]
-          if (conversationLastMessage) {
-            newMessage.parentMessageId = conversationLastMessage.messageId || ''
-          } else {
-            newMessage.parentMessageId = ''
-          }
-        } else {
-          // 如果不是第一条消息，那么parentMessageId是前一条消息
-          const parentMessage = newMessages[index - 1]
-          newMessage.parentMessageId = parentMessage?.messageId || ''
-        }
-      }
-      if (!newMessage.created_at) {
-        newMessage.created_at = new Date().toISOString()
-      }
-      if (!newMessage.updated_at) {
-        newMessage.updated_at = new Date().toISOString()
-      }
-      if (!newMessage.publishStatus) {
-        newMessage.publishStatus = 'unpublished'
-      }
-      return newMessage
-    })
-    conversation.messages = conversation.messages.concat(addTimeNewMessages)
-    await this.addOrUpdateConversation(conversation)
-    addOrUpdateDBConversationMessages(conversation, addTimeNewMessages)
-      .then()
-      .catch()
-    return true
-  }
-  static async updateMessage(
-    conversationId: string,
-    updateMessage: IChatMessage,
-  ) {
-    const conversation =
-      await this.oldVersionConversationDB.getConversationById(conversationId)
-    if (!conversation) {
-      return false
-    }
-    const messageIndex = conversation.messages.findIndex(
-      (message) => message.messageId === updateMessage.messageId,
-    )
-    if (messageIndex === -1) {
-      return false
-    }
-    if (!updateMessage.created_at) {
-      updateMessage.created_at = new Date().toISOString()
-    }
-    updateMessage.updated_at = new Date().toISOString()
-    updateMessage = mergeWithObject([
-      conversation.messages[messageIndex],
-      updateMessage,
-    ])
-    conversation.messages[messageIndex] = updateMessage
-    await this.addOrUpdateConversation(conversation)
-    addOrUpdateDBConversationMessages(conversation, [updateMessage])
-      .then()
-      .catch()
-    return true
-  }
-  static async deleteMessages(conversationId: string, deleteCount: number) {
-    const conversation = await this.getConversationById(conversationId)
-    if (!conversation) {
-      return false
-    }
-    const deleteMessageIds: string[] = []
-    let finallyDeleteCount = deleteCount
-    if (deleteCount > conversation.messages.length) {
-      finallyDeleteCount = conversation.messages.length
-    }
-    // 从后往前删除
-    while (conversation.messages.length > 0 && finallyDeleteCount > 0) {
-      const deleteMessageId = conversation.messages.pop()?.messageId
-      if (deleteMessageId) {
-        deleteMessageIds.push(deleteMessageId)
-      }
-      finallyDeleteCount--
-    }
-    // save
-    await this.addOrUpdateConversation(conversation)
-    deleteDBConversationMessages(conversation, deleteMessageIds).then().catch()
-    return true
-  }
-}
-
-/**
- * 迁移Conversation到V2
- * @param conversation
- * @deprecated - 已经有V3版本了 - 2024-05-15
- */
-export const migratingToConversationV2 = async (
-  conversation: IConversation,
-) => {
-  if (conversation.version === 2) {
-    return conversation
-  }
-  if (conversation.authorId) {
-    conversation.authorId = await getMaxAIChromeExtensionUserId()
-  }
-  if (!Object.prototype.hasOwnProperty.call(conversation, 'isDelete')) {
-    conversation.isDelete = false
-  }
-  conversation.messages = conversation.messages.map((message) => {
-    if (!message.created_at) {
-      message.created_at = new Date().toISOString()
-    }
-    if (!message.updated_at) {
-      message.updated_at = new Date().toISOString()
-    }
-    if (!message.publishStatus) {
-      message.publishStatus = 'unpublished'
-    }
-    return message
-  })
-  conversation.version = 2
-  console.log('DB_Conversation migratingToConversationV2', conversation)
-  return conversation
 }

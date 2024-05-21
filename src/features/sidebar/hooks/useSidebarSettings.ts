@@ -13,22 +13,21 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   IConversation,
   IConversationMeta,
 } from '@/features/indexed_db/conversations/models/Conversation'
-import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import {
   ClientWritingMessageStateFamily,
   SidebarPageState,
   SidebarSummaryConversationIdState,
 } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
 import {
-  getPageSummaryConversationId,
   getPageSummaryType,
   IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
@@ -101,28 +100,12 @@ const useSidebarSettings = () => {
     sidebarSummaryConversationId,
     currentArtConversationId,
   ])
-  const sidebarConversationTypeMessageMap = useMemo(() => {
-    return {
-      Chat: sidebarConversationTypeofConversationMap.Chat?.messages || [],
-      Search: sidebarConversationTypeofConversationMap.Search?.messages || [],
-      Summary: sidebarConversationTypeofConversationMap.Summary?.messages || [],
-      Art: sidebarConversationTypeofConversationMap.Art?.messages || [],
-    } as {
-      [key in ISidebarConversationType]: IChatMessage[]
-    }
-  }, [currentSidebarConversationId, sidebarConversationTypeofConversationMap])
   const currentSidebarConversation = useMemo(() => {
     return clientConversationMap[currentSidebarConversationId || ''] as
       | IConversation
       | undefined
   }, [currentSidebarConversationId, clientConversationMap])
 
-  // 当前sidebar conversation type对应的messages
-  const currentSidebarConversationMessages = useMemo(() => {
-    return (
-      sidebarConversationTypeMessageMap[currentSidebarConversationType] || []
-    )
-  }, [currentSidebarConversationType, sidebarConversationTypeMessageMap])
   const updateSidebarSettings = async (
     newSidebarSettings: IChromeExtensionLocalStorage['sidebarSettings'],
   ) => {
@@ -162,11 +145,11 @@ const useSidebarSettings = () => {
     if (currentConversation) {
       if (currentConversation.type === 'Summary') {
         // Summary有点不一样，需要清除所有的message
-        await clientChatConversationModifyChatMessages(
-          'delete',
+        await ClientConversationMessageManager.deleteMessages(
           currentConversation.id,
-          9999999,
-          [],
+          await ClientConversationMessageManager.getMessageIds(
+            currentConversation.id,
+          ),
         )
         setSidebarSummaryConversationId('')
       }
@@ -408,8 +391,6 @@ const useSidebarSettings = () => {
     currentSidebarAIProvider,
     currentSidebarConversation,
     currentSidebarConversationId,
-    currentSidebarConversationMessages,
-    sidebarConversationTypeMessageMap,
     sidebarConversationTypeofConversationMap,
     updateSidebarSettings,
     updateSidebarConversationType,

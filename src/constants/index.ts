@@ -23,6 +23,8 @@ export const CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB = `CHROME_EXTENSIO
 
 // doc
 export const CHROME_EXTENSION_MAIL_TO = `https://www.maxai.me/contact-us`
+// help
+export const CHROME_EXTENSION_HELP_TO = 'https://www.maxai.me/learning-center'
 
 /**
  * MARK: 设计问题，历史遗留

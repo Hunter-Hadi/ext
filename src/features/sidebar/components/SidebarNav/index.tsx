@@ -1,5 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close'
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import { Typography } from '@mui/material'
 import Divider from '@mui/material/Divider'
@@ -12,7 +13,7 @@ import Browser from 'webextension-polyfill'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { APP_VERSION } from '@/constants'
+import { APP_VERSION, CHROME_EXTENSION_HELP_TO } from '@/constants'
 import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
 import SidebarInfoCollectionModal from '@/features/sidebar/components/SidebarNav/SidebarInfoCollectionModal'
 import SidebarReleaseNotesButton from '@/features/sidebar/components/SidebarNav/SidebarReleaseNotesButton'
@@ -167,6 +168,21 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         </TextOnlyTooltip>
 
         <SidebarReleaseNotesButton />
+
+        {/* help btn */}
+        <TextOnlyTooltip title={t('common:help_center')} placement="left">
+          <IconButton
+            data-testid={`maxai--sidebar--contact_us--button`}
+            sx={{ flexShrink: 0, width: 'max-content' }}
+            onClick={() => window.open(CHROME_EXTENSION_HELP_TO)}
+          >
+            <HelpOutlineIcon
+              sx={{
+                fontSize: '20px',
+              }}
+            />
+          </IconButton>
+        </TextOnlyTooltip>
 
         {/* email btn */}
         <TextOnlyTooltip title={t('common:contact_us')} placement="left">

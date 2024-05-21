@@ -142,4 +142,3 @@ export const string2DomainFaviconUrl = (
 export const checkIsEmail = (email: string) => {
   return EmailValidator.validate(email)
 }
-;``

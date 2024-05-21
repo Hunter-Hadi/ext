@@ -153,7 +153,10 @@ export default class PDFCitation implements ICitationService {
       await this.scrollElement(startMarked)
 
       range.setStart(startMarked.firstChild!, start.offset)
-      range.setEnd(endMarked.firstChild!, end.offset)
+      range.setEnd(
+        endMarked.firstChild!,
+        Math.min(endMarked.firstChild!.nodeValue?.length || 0, end.offset + 1),
+      )
 
       const selection = window.getSelection()
       if (selection) {
@@ -199,6 +202,7 @@ export default class PDFCitation implements ICitationService {
           if (item.type === 'endMarkedContent') {
             return
           }
+          let startOffset = 0
           let offset = 0
           markedChildIndex += 1
           const str = item.hasEOL ? `${item.str}\n` : item.str
@@ -221,6 +225,7 @@ export default class PDFCitation implements ICitationService {
               if (str[i] === searchString[currentContent.length]) {
                 if (!currentContent.length) {
                   // 首次匹配中
+                  startOffset = i
                   offset = i
                 }
                 currentContent += str[i]
@@ -237,6 +242,18 @@ export default class PDFCitation implements ICitationService {
             }
           }
           if (currentContent.length) {
+            if (
+              currentContent.length === searchString.length &&
+              !matches.length
+            ) {
+              // 匹配项就处于当前text内，所以先插入一个起始的匹配
+              matches.push({
+                pageNum,
+                markedIndex,
+                markedChildIndex,
+                offset: startOffset,
+              })
+            }
             matches.push({
               pageNum,
               markedIndex,

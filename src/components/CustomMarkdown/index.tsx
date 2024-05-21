@@ -240,7 +240,13 @@ const CustomMarkdown: FC<{
   citations?: IAIResponseSourceCitation[]
   children: string
 }> = (props) => {
-  const { citations, children } = props
+  const { children } = props
+
+  // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号
+  const citations = useMemo(() => {
+    return props.citations?.filter((item) => item.start_index > -1)
+  }, [props.citations])
+
   const formatMarkdownText = useMemo(() => {
     try {
       if (typeof children === 'string') {

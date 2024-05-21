@@ -1,6 +1,5 @@
-import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
 import CircularProgress from '@mui/material/CircularProgress'
-import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
 import React, { FC, useState } from 'react'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -20,8 +19,8 @@ const CitationTag: FC<IProps> = (props) => {
 
   const handleClick = async () => {
     if (loading) return
+    if (!title) setLoading(true)
     const { content } = citations[index]
-    setLoading(true)
     const citationService = CitationFactory.getCitationService()
     if (citationService) {
       const title = await citationService.findText(content).catch(console.error)
@@ -32,45 +31,54 @@ const CitationTag: FC<IProps> = (props) => {
 
   return (
     <>
+      {/*<TextOnlyTooltip placement="top" title={`Scroll to page ${title}`}>*/}
+      {/*  <IconButton*/}
+      {/*    color="inherit"*/}
+      {/*    size="small"*/}
+      {/*    sx={{*/}
+      {/*      width: 30,*/}
+      {/*      height: 24,*/}
+      {/*      background: 'rgba(138, 101, 171, 0.1)',*/}
+      {/*      marginRight: '2px!important',*/}
+      {/*      borderRadius: '14px',*/}
+      {/*    }}*/}
+      {/*    onClick={handleClick}*/}
+      {/*  >*/}
+      {/*    {loading ? (*/}
+      {/*      <CircularProgress*/}
+      {/*        size={16}*/}
+      {/*        sx={{ m: '0 auto', color: 'primary.main' }}*/}
+      {/*      />*/}
+      {/*    ) : (*/}
+      {/*      <FormatListBulletedOutlinedIcon*/}
+      {/*        sx={{*/}
+      {/*          fontSize: '16px',*/}
+      {/*          color: 'primary.main',*/}
+      {/*        }}*/}
+      {/*      />*/}
+      {/*    )}*/}
+      {/*  </IconButton>*/}
+      {/*</TextOnlyTooltip>*/}
+
       <TextOnlyTooltip placement="top" title={`Scroll to page ${title}`}>
-        <IconButton
-          color="inherit"
-          size="small"
-          sx={{
-            width: 30,
-            height: 24,
-            background: 'rgba(138, 101, 171, 0.1)',
-            marginRight: '2px!important',
-            borderRadius: '14px',
-          }}
+        <div
+          style={{ minWidth: 22, display: 'inline-block', textAlign: 'center' }}
           onClick={handleClick}
         >
           {loading ? (
             <CircularProgress
               size={16}
-              sx={{ m: '0 auto', color: 'primary.main' }}
-            />
-          ) : (
-            <FormatListBulletedOutlinedIcon
               sx={{
-                fontSize: '16px',
+                m: '0 auto',
                 color: 'primary.main',
+                verticalAlign: 'middle',
               }}
             />
+          ) : (
+            <Link sx={{ cursor: 'pointer' }}>[{index + 1}]</Link>
           )}
-        </IconButton>
+        </div>
       </TextOnlyTooltip>
-
-      {/*<TextOnlyTooltip placement="top" title={`Scroll to page ${title}`}>*/}
-      {/*  {loading ? (*/}
-      {/*    <CircularProgress*/}
-      {/*      size={16}*/}
-      {/*      sx={{ m: '0 auto', color: 'primary.main' }}*/}
-      {/*    />*/}
-      {/*  ) : (*/}
-      {/*    <Link sx={{ cursor: 'pointer' }}>[{index + 1}]</Link>*/}
-      {/*  )}*/}
-      {/*</TextOnlyTooltip>*/}
 
       {/*{show &&*/}
       {/*  containerGroups.map((group, index) => (*/}

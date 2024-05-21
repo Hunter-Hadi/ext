@@ -60,7 +60,11 @@
     "input_content": "ನಮೂದಿಸಿದ ವಿಷಯವನ್ನು",
     "discard": "ತ್ಯಜಿಸು",
     "create": "ರಚಿಸು",
-    "update": "ನವೀಕರಿಸು"
+    "update": "ನವೀಕರಿಸು",
+    "continue_with_google": "ಗೂಗಲ್ ಜೊತೆ ಮುಂದುವರಿಯಿರಿ",
+    "continue_with_email": "ಇಮೇಲ್ ಜೊತೆ ಮುಂದುವರಿಯಿರಿ",
+    "privacy_policy": "ಗೌಪ್ಯತೆ ನೀತಿ",
+    "terms_of_service": "ಸೇವೆಯ ನಿಯಮಗಳು"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o ಗೆ GPT-4 Turbo ಕಿಂತ 2x ವೇಗವಾಗಿದೆ.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" ಅನ್ನು \"ಒಮ್ನಿಮೋಡೆಲ್\" ಎಂದು",
     "sidebar__promotion_dialog__content_item9__description": "ಧ್ವನಿ, ದೃಶ್ಯ ಮತ್ತು ಪಠ್ಯದ ಮೂಲಕ ನಿಜವಾಗಿಯೂ ಆರ್ಥಿಕ ಸಮಯದಲ್ಲಿ ತರ್ಕಿಸಬಲ್ಲದು.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ಅಸಂಖ್ಯಾತ AI ಪ್ರಶ್ನೆಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ ಮತ್ತು ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡುತ್ತದೆ."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ಅಸಂಖ್ಯಾತ AI ಪ್ರಶ್ನೆಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ ಮತ್ತು ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡುತ್ತದೆ.",
+    "login_modal__title__part1": "ಪಡೆಯಲು ಸೈನ್ ಇನ್ ಮಾಡಿ",
+    "login_modal__title__part2": "ಉಚಿತ",
+    "login_modal__title__part3": "AI ಪ್ರಶ್ನೆಗಳನ್ನು ಪ್ರತಿದಿನ",
+    "login_modal__email__placeholder": "ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ...",
+    "login_modal__footer_text__part1": "ಸೈನ್ ಅಪ್ ಮಾಡುವುದರ ಮೂಲಕ, ನೀವು ಒಪ್ಪಿಕೊಳ್ಳುವುದು",
+    "login_modal__footer_text__part2": "ಮತ್ತು",
+    "login_modal__footer_text__tooltip": "ನಿಮ್ಮ ಗೌಪ್ಯತೆ ನಮೂದಿಸುವುದು ನಮ್ಮ ಅತ್ಯುತ್ತಮ ಪ್ರಾಥಮಿಕತೆ. ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಇಮೇಲ್ ಗೂಪ್ತವಾಗಿ ನಮೂದಿಸಲ್ಪಡುತ್ತದೆ, ಮತ್ತು ಯಾರಿಗೂ ಹಂಚಿಕೊಡಲು ಇಲ್ಲ.",
+    "login_modal__login_with_email__title": "ಇಮೇಲ್ ಜೊತೆ ಮುಂದುವರಿಯಿರಿ",
+    "login_modal__indicator1_label": "ಟಾಪ್ 50 ಜೆನ್AI ಅಪ್ಲಿಕೇಶನ್ಗಳು",
+    "login_modal__indicator2_label": "ಸಕ್ರಿಯ ಬಳಕೆದಾರರು",
+    "login_modal__indicator3_label": "5 ತಾರೆಯ ಮೌಲ್ಯಮಾಪನಗಳು"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

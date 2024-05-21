@@ -60,7 +60,11 @@
     "input_content": "Indtast indhold",
     "discard": "Fjern",
     "create": "Opret",
-    "update": "Opdater"
+    "update": "Opdater",
+    "continue_with_google": "Fortsæt med Google",
+    "continue_with_email": "Fortsæt med e-mail",
+    "privacy_policy": "Fortrolighedspolitik",
+    "terms_of_service": "Servicevilkår"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o er 2x hurtigere end GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" for \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Kan tænke på tværs af lyd, vision og tekst i realtid.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler og låser alle funktioner op."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite tilbyder ubegrænsede AI-forespørgsler og låser alle funktioner op.",
+    "login_modal__title__part1": "Log ind for at få",
+    "login_modal__title__part2": "GRATIS",
+    "login_modal__title__part3": "AI-forespørgsler hver dag",
+    "login_modal__email__placeholder": "Indtast din e-mailadresse...",
+    "login_modal__footer_text__part1": "Ved at tilmelde dig accepterer du",
+    "login_modal__footer_text__part2": "og",
+    "login_modal__footer_text__tooltip": "Din privatliv er vores højeste prioritet. Vi indsamler kun dit navn og din e-mail til login og synkronisering af indstillinger, og vi holder det fortroligt og deler det ikke med andre.",
+    "login_modal__login_with_email__title": "Fortsæt med e-mail",
+    "login_modal__indicator1_label": "Top 50 genAI-apps",
+    "login_modal__indicator2_label": "Aktive brugere",
+    "login_modal__indicator3_label": "5-stjernede vurderinger"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

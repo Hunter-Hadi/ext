@@ -60,7 +60,11 @@
     "input_content": "輸入內容",
     "discard": "捨棄",
     "create": "創建",
-    "update": "更新"
+    "update": "更新",
+    "continue_with_google": "使用 Google 登入",
+    "continue_with_email": "使用電子郵件登入",
+    "privacy_policy": "隱私政策",
+    "terms_of_service": "服務條款"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o比GPT-4 Turbo快2倍。",
     "sidebar__promotion_dialog__content_item9__title": "“O”代表“全模型”",
     "sidebar__promotion_dialog__content_item9__description": "可以实时处理音频、视觉和文本。",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite提供无限的AI查询并解锁所有功能。"
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite提供无限的AI查询并解锁所有功能。",
+    "login_modal__title__part1": "登入以獲取",
+    "login_modal__title__part2": "免費",
+    "login_modal__title__part3": "AI 查詢每天",
+    "login_modal__email__placeholder": "輸入您的電子郵件地址...",
+    "login_modal__footer_text__part1": "註冊即表示您同意",
+    "login_modal__footer_text__part2": "和",
+    "login_modal__footer_text__tooltip": "我們非常重視您的隱私。我們僅收集您的姓名和電子郵件用於登錄和設置同步，並保密不與他人分享。",
+    "login_modal__login_with_email__title": "使用電子郵件繼續",
+    "login_modal__indicator1_label": "前50個 genAI 應用程式",
+    "login_modal__indicator2_label": "活躍用戶",
+    "login_modal__indicator3_label": "5星評分"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -60,7 +60,11 @@
     "input_content": "محتوای ورودی",
     "discard": "دور انداختن",
     "create": "ایجاد",
-    "update": "به‌روزرسانی"
+    "update": "به‌روزرسانی",
+    "continue_with_google": "ادامه با گوگل",
+    "continue_with_email": "ادامه با ایمیل",
+    "privacy_policy": "سیاست حفظ حریم خصوصی",
+    "terms_of_service": "شرایط خدمات"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o دو برابر سریعتر از GPT-4 Turbo است.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" برای \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "می‌تواند به صورت زمان‌واقع درک صوت، بینش و متن را داشته باشد.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite پرس‌وجوهای نامحدود هوش مصنوعی را ارائه می‌دهد و تمامی ویژگی‌ها را قفل می‌کند."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite پرس‌وجوهای نامحدود هوش مصنوعی را ارائه می‌دهد و تمامی ویژگی‌ها را قفل می‌کند.",
+    "login_modal__title__part1": "ورود برای دریافت",
+    "login_modal__title__part2": "رایگان",
+    "login_modal__title__part3": "پرسش های هوش مصنوعی روزانه",
+    "login_modal__email__placeholder": "آدرس ایمیل خود را وارد کنید...",
+    "login_modal__footer_text__part1": "با عضویت، شما با",
+    "login_modal__footer_text__part2": "موافقت می کنید",
+    "login_modal__footer_text__tooltip": "حریم خصوصی شما برای ما اولویت است. ما تنها نام و ایمیل شما را برای ورود و همگام سازی تنظیمات جمع آوری می کنیم و آن را محرمانه نگه می داریم و با هیچ کس دیگری به اشتراک نمی گذاریم.",
+    "login_modal__login_with_email__title": "ادامه با ایمیل",
+    "login_modal__indicator1_label": "50 برنامه genAI برتر",
+    "login_modal__indicator2_label": "کاربران فعال",
+    "login_modal__indicator3_label": "امتیازات 5 ستاره"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

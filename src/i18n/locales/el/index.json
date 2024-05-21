@@ -60,7 +60,11 @@
     "input_content": "Περιεχόμενο εισαγωγής",
     "discard": "Απόρριψη",
     "create": "Δημιουργία",
-    "update": "Ενημέρωση"
+    "update": "Ενημέρωση",
+    "continue_with_google": "Συνέχεια με το Google",
+    "continue_with_email": "Συνέχεια με email",
+    "privacy_policy": "Πολιτική Απορρήτου",
+    "terms_of_service": "Όροι Χρήσης"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "Το GPT-4o είναι 2 φορές πιο γρήγορο από το GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" για \"Ολοκληρωμένο Μοντέλο\"",
     "sidebar__promotion_dialog__content_item9__description": "Μπορεί να σκέφτεται με βάση ήχο, εικόνα και κείμενο σε πραγματικό χρόνο.",
-    "sidebar__promotion_dialog__footer_tips": "Το MaxAI Elite προσφέρει απεριόριστες ερωτήσεις AI και ξεκλειδώνει όλες τις λειτουργίες."
+    "sidebar__promotion_dialog__footer_tips": "Το MaxAI Elite προσφέρει απεριόριστες ερωτήσεις AI και ξεκλειδώνει όλες τις λειτουργίες.",
+    "login_modal__title__part1": "Συνδεθείτε για να λάβετε",
+    "login_modal__title__part2": "ΔΩΡΕΑΝ",
+    "login_modal__title__part3": "ερωτήσεις AI κάθε μέρα",
+    "login_modal__email__placeholder": "Εισαγάγετε το email σας...",
+    "login_modal__footer_text__part1": "Με την εγγραφή σας, αποδέχεστε τους",
+    "login_modal__footer_text__part2": "και",
+    "login_modal__footer_text__tooltip": "Η ιδιωτικότητά σας είναι η προτεραιότητά μας. Συλλέγουμε μόνο το όνομα και το email σας για την είσοδο και τον συγχρονισμό των ρυθμίσεων, κρατώντας τα εμπιστευτικά και μην τα μοιραζόμενα με κανέναν άλλο.",
+    "login_modal__login_with_email__title": "Συνέχεια με Email",
+    "login_modal__indicator1_label": "Κορυφαίες 50 εφαρμογές genAI",
+    "login_modal__indicator2_label": "Ενεργοί χρήστες",
+    "login_modal__indicator3_label": "Αξιολογήσεις 5 αστέρων"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

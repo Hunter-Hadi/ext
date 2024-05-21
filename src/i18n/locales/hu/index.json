@@ -60,7 +60,11 @@
     "input_content": "Bemeneti tartalom",
     "discard": "Elvetés",
     "create": "Létrehozás",
-    "update": "Frissítés"
+    "update": "Frissítés",
+    "continue_with_google": "Folytatás a Google-fiókkal",
+    "continue_with_email": "Folytatás e-maillel",
+    "privacy_policy": "Adatvédelmi irányelvek",
+    "terms_of_service": "Szolgáltatási feltételek"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "A GPT-4o kétszer gyorsabb, mint a GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" az \"Omnimodell\" rövidítése",
     "sidebar__promotion_dialog__content_item9__description": "Valós időben tud gondolkodni a hang, a látás és a szöveg területén.",
-    "sidebar__promotion_dialog__footer_tips": "A MaxAI Elite korlátlan AI lekérdezést kínál és minden funkciót felold."
+    "sidebar__promotion_dialog__footer_tips": "A MaxAI Elite korlátlan AI lekérdezést kínál és minden funkciót felold.",
+    "login_modal__title__part1": "Jelentkezzen be, hogy",
+    "login_modal__title__part2": "INGYENES",
+    "login_modal__title__part3": "AI lekérdezést kapjon naponta",
+    "login_modal__email__placeholder": "Adja meg az e-mail címét...",
+    "login_modal__footer_text__part1": "Regisztrációval elfogadja a",
+    "login_modal__footer_text__part2": "és a",
+    "login_modal__footer_text__tooltip": "Az adatvédelem az elsődleges szempontunk. Csak a nevét és az e-mail címét gyűjtjük be a bejelentkezéshez és a beállítások szinkronizálásához, bizalmasan kezeljük, és nem osztjuk meg senkivel.",
+    "login_modal__login_with_email__title": "Folytatás e-maillel",
+    "login_modal__indicator1_label": "Top 50 genAI alkalmazás",
+    "login_modal__indicator2_label": "Aktív felhasználók",
+    "login_modal__indicator3_label": "5 csillagos értékelések"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

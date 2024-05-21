@@ -60,7 +60,11 @@
     "input_content": "داخلی مواد",
     "discard": "رد کریں",
     "create": "تشکیل دیں",
-    "update": "اپ ڈیٹ کریں"
+    "update": "اپ ڈیٹ کریں",
+    "continue_with_google": "Google سے جاری رکھیں",
+    "continue_with_email": "ای میل کے ساتھ جاری رکھیں",
+    "privacy_policy": "رازداری کی پالیسی",
+    "terms_of_service": "خدمات کی شرائط"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o GPT-4 Turbo سے 2x تیز ہے۔",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" برائے \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "آڈیو، وژن اور متن پر حقیقی وقت میں تفکر کر سکتا ہے۔",
-    "sidebar__promotion_dialog__footer_tips": "میکس اے آئی الائٹ غیر محدود AI سوالات پیش کرتا ہے اور تمام خصوصیات کو آزاد کرتا ہے۔"
+    "sidebar__promotion_dialog__footer_tips": "میکس اے آئی الائٹ غیر محدود AI سوالات پیش کرتا ہے اور تمام خصوصیات کو آزاد کرتا ہے۔",
+    "login_modal__title__part1": "حاصل کرنے کے لئے سائن ان کریں",
+    "login_modal__title__part2": "مفت",
+    "login_modal__title__part3": "روزانہ AI سوالات",
+    "login_modal__email__placeholder": "اپنا ای میل پتہ درج کریں...",
+    "login_modal__footer_text__part1": "سائن اپ کرکے، آپ اتفاق کرتے ہیں",
+    "login_modal__footer_text__part2": "اور",
+    "login_modal__footer_text__tooltip": "آپ کی خصوصیت ہماری اولین ترجیح ہے۔ صرف آپ کے نام اور ای میل کو لاگ ان اور ترتیبات کے لئے جمع کیا جاتا ہے، یہ خفیہ رکھا جاتا ہے اور کسی کے ساتھ شئیر نہیں کیا جاتا ہے۔",
+    "login_modal__login_with_email__title": "ای میل کے ساتھ جاری رکھیں",
+    "login_modal__indicator1_label": "تاپ 50 genAI ایپس",
+    "login_modal__indicator2_label": "فعال صارفین",
+    "login_modal__indicator3_label": "5 ستارہ درجات"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

@@ -60,7 +60,11 @@
     "input_content": "Syötä sisältö",
     "discard": "Hylkää",
     "create": "Luo",
-    "update": "Päivitä"
+    "update": "Päivitä",
+    "continue_with_google": "Jatka Googlella",
+    "continue_with_email": "Jatka sähköpostilla",
+    "privacy_policy": "Tietosuojakäytäntö",
+    "terms_of_service": "Käyttöehdot"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o on 2x nopeampi kuin GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" tarkoittaa \"Omnimallia\"",
     "sidebar__promotion_dialog__content_item9__description": "Pystyy päättelyyn reaaliajassa äänen, näkemyksen ja tekstin yli.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite tarjoaa rajattomat tekoälykyselyt ja avaa kaikki ominaisuudet."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite tarjoaa rajattomat tekoälykyselyt ja avaa kaikki ominaisuudet.",
+    "login_modal__title__part1": "Kirjaudu sisään saadaksesi",
+    "login_modal__title__part2": "ILMAISET",
+    "login_modal__title__part3": "AI-kyselyt joka päivä",
+    "login_modal__email__placeholder": "Syötä sähköpostiosoitteesi...",
+    "login_modal__footer_text__part1": "Rekisteröitymällä hyväksyt",
+    "login_modal__footer_text__part2": "ja",
+    "login_modal__footer_text__tooltip": "Yksityisyytesi on meille tärkeää. Keräämme vain nimesi ja sähköpostiosoitteesi kirjautumista ja asetusten synkronointia varten, pitäen sen luottamuksellisena emmekä jaa sitä kenenkään muun kanssa.",
+    "login_modal__login_with_email__title": "Jatka sähköpostilla",
+    "login_modal__indicator1_label": "Top 50 genAI-sovellusta",
+    "login_modal__indicator2_label": "Aktiiviset käyttäjät",
+    "login_modal__indicator3_label": "5 tähden arvostelut"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

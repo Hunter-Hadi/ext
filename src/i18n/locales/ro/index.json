@@ -60,7 +60,11 @@
     "input_content": "Conținut de intrare",
     "discard": "Renunță",
     "create": "Creează",
-    "update": "Actualizează"
+    "update": "Actualizează",
+    "continue_with_google": "Continuă cu Google",
+    "continue_with_email": "Continuă cu email",
+    "privacy_policy": "Politica de confidențialitate",
+    "terms_of_service": "Termenii serviciului"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o este de două ori mai rapid decât GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" pentru \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Poate raționa în timp real asupra audio, viziunii și textului.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite oferă interogări AI nelimitate și deblochează toate funcțiile."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite oferă interogări AI nelimitate și deblochează toate funcțiile.",
+    "login_modal__title__part1": "Conectează-te pentru a obține",
+    "login_modal__title__part2": "GRATUIT",
+    "login_modal__title__part3": "interogări AI în fiecare zi",
+    "login_modal__email__placeholder": "Introduceți adresa dvs. de email...",
+    "login_modal__footer_text__part1": "Prin înregistrare, sunteți de acord cu",
+    "login_modal__footer_text__part2": "și",
+    "login_modal__footer_text__tooltip": "Confidențialitatea dvs. este prioritatea noastră. Colectăm doar numele și adresa dvs. de email pentru conectare și sincronizare setări, păstrându-le confidențiale și fără a le partaja cu nimeni altcineva.",
+    "login_modal__login_with_email__title": "Continuă cu Email",
+    "login_modal__indicator1_label": "Top 50 aplicații genAI",
+    "login_modal__indicator2_label": "Utilizatori activi",
+    "login_modal__indicator3_label": "Evaluări cu 5 stele"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

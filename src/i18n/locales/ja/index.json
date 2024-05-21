@@ -60,7 +60,11 @@
     "input_content": "入力内容",
     "discard": "破棄",
     "create": "作成",
-    "update": "更新"
+    "update": "更新",
+    "continue_with_google": "Googleで続行",
+    "continue_with_email": "メールで続行",
+    "privacy_policy": "プライバシーポリシー",
+    "terms_of_service": "利用規約"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4oはGPT-4 Turboよりも2倍速です。",
     "sidebar__promotion_dialog__content_item9__title": "\"O\"は\"オムニモデル\"",
     "sidebar__promotion_dialog__content_item9__description": "リアルタイムでオーディオ、ビジョン、テキストを推論することができます。",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Eliteでは無制限のAIクエリが可能であり、すべての機能が利用できます。"
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Eliteでは無制限のAIクエリが可能であり、すべての機能が利用できます。",
+    "login_modal__title__part1": "サインインして",
+    "login_modal__title__part2": "無料",
+    "login_modal__title__part3": "AIクエリを毎日受け取る",
+    "login_modal__email__placeholder": "メールアドレスを入力してください...",
+    "login_modal__footer_text__part1": "登録することで、以下に同意します：",
+    "login_modal__footer_text__part2": "および",
+    "login_modal__footer_text__tooltip": "あなたのプライバシーは最優先です。ログインと設定の同期のために、名前とメールアドレスのみを収集し、機密保持し、他の誰とも共有しません。",
+    "login_modal__login_with_email__title": "メールで続行",
+    "login_modal__indicator1_label": "トップ50のgenAIアプリ",
+    "login_modal__indicator2_label": "アクティブユーザー",
+    "login_modal__indicator3_label": "5つ星評価"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

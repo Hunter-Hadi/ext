@@ -60,7 +60,11 @@
     "input_content": "Nội dung đầu vào",
     "discard": "Loại bỏ",
     "create": "Tạo mới",
-    "update": "Cập nhật"
+    "update": "Cập nhật",
+    "continue_with_google": "Tiếp tục với Google",
+    "continue_with_email": "Tiếp tục với email",
+    "privacy_policy": "Chính sách bảo mật",
+    "terms_of_service": "Điều khoản dịch vụ"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o nhanh gấp đôi so với GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" cho \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Có thể suy luận qua âm thanh, khả năng nhìn và văn bản trong thời gian thực.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite cung cấp truy vấn AI không giới hạn và mở khóa tất cả các tính năng."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite cung cấp truy vấn AI không giới hạn và mở khóa tất cả các tính năng.",
+    "login_modal__title__part1": "Đăng nhập để nhận",
+    "login_modal__title__part2": "MIỄN PHÍ",
+    "login_modal__title__part3": "các truy vấn AI hàng ngày",
+    "login_modal__email__placeholder": "Nhập địa chỉ email của bạn...",
+    "login_modal__footer_text__part1": "Bằng cách đăng ký, bạn đồng ý với",
+    "login_modal__footer_text__part2": "và",
+    "login_modal__footer_text__tooltip": "Quyền riêng tư của bạn là ưu tiên hàng đầu của chúng tôi. Chúng tôi chỉ thu thập tên và email của bạn để đăng nhập và đồng bộ cài đặt, giữ nó bí mật và không chia sẻ với bất kỳ ai khác.",
+    "login_modal__login_with_email__title": "Tiếp tục với Email",
+    "login_modal__indicator1_label": "50 ứng dụng genAI hàng đầu",
+    "login_modal__indicator2_label": "Người dùng hoạt động",
+    "login_modal__indicator3_label": "Đánh giá 5 sao"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

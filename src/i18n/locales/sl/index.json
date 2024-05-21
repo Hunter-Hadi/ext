@@ -60,7 +60,11 @@
     "input_content": "Vsebina vnosa",
     "discard": "Zavrzi",
     "create": "Ustvari",
-    "update": "Posodobi"
+    "update": "Posodobi",
+    "continue_with_google": "Nadaljujte z Google",
+    "continue_with_email": "Nadaljujte z e-pošto",
+    "privacy_policy": "Politika zasebnosti",
+    "terms_of_service": "Pogoji storitve"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o je 2x hitrejši od GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" za \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Lahko razmišlja o zvoku, viziji in besedilu v realnem času.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ponuja neomejena iskanja umetne inteligence in odklene vse funkcije."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ponuja neomejena iskanja umetne inteligence in odklene vse funkcije.",
+    "login_modal__title__part1": "Prijavite se, da dobite",
+    "login_modal__title__part2": "BREZPLAČNO",
+    "login_modal__title__part3": "vprašanja AI vsak dan",
+    "login_modal__email__placeholder": "Vnesite svoj e-poštni naslov...",
+    "login_modal__footer_text__part1": "S prijavo se strinjate z",
+    "login_modal__footer_text__part2": "in",
+    "login_modal__footer_text__tooltip": "Vaša zasebnost je naša najvišja prednost. Zbiramo samo vaše ime in e-pošto za prijavo in sinhronizacijo nastavitev, ohranjamo jo zaupno in je ne delimo z nikomer drugim.",
+    "login_modal__login_with_email__title": "Nadaljujte z e-pošto",
+    "login_modal__indicator1_label": "Top 50 genAI aplikacij",
+    "login_modal__indicator2_label": "Aktivni uporabniki",
+    "login_modal__indicator3_label": "Ocene s 5 zvezdicami"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

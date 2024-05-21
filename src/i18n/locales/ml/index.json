@@ -60,7 +60,11 @@
     "input_content": "ഇൻപുട്ട് ഉള്ളടക്കം",
     "discard": "നിരസ്ത്രമമാക്കുക",
     "create": "സൃഷ്ടിക്കുക",
-    "update": "അപ്‌ഡേറ്റ് ചെയ്യുക"
+    "update": "അപ്‌ഡേറ്റ് ചെയ്യുക",
+    "continue_with_google": "ഗൂഗിൾ ഉപയോഗിച്ച് തുടരുക",
+    "continue_with_email": "ഇമെയിൽ ഉപയോഗിച്ച് തുടരുക",
+    "privacy_policy": "സ്വകാര്യതാ നയം",
+    "terms_of_service": "സേവന നിബന്ധനകൾ"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo-ക്ക് പതിവായി GPT-4o 2x വേഗത്തിൽ പ്രവർത്തിക്കുന്നു.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" എന്നാണ് \"ഒമ്നിമോഡൽ\"",
     "sidebar__promotion_dialog__content_item9__description": "ഓഡിയോ, ദൃശ്യവും ടെക്സ്റ്റിൽ ജീവിക്കുന്നുവെന്ന് പ്രത്യേകിച്ച് ആരോഗ്യമായി കണക്കാക്കാൻ കഴിയുന്നു.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite അപരിമിതമായ AI ചോദ്യങ്ങൾ നൽകുന്നുവെങ്കിലും എല്ലാ സവിശേഷതകൾ അൺലോക്ക് ചെയ്യുന്നു."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite അപരിമിതമായ AI ചോദ്യങ്ങൾ നൽകുന്നുവെങ്കിലും എല്ലാ സവിശേഷതകൾ അൺലോക്ക് ചെയ്യുന്നു.",
+    "login_modal__title__part1": "ലോഗിൻ ചെയ്യുക",
+    "login_modal__title__part2": "സൗജന്യം",
+    "login_modal__title__part3": "എന്നിവയിൽ ഏറ്റവും മികച്ച AI ചോദ്യങ്ങൾ നേടുക",
+    "login_modal__email__placeholder": "നിങ്ങളുടെ ഇമെയിൽ വിലാസം നൽകുക...",
+    "login_modal__footer_text__part1": "സൈൻ അപ്പ് ചെയ്യുന്നതിന്, നിങ്ങൾ അംഗീകരിക്കുന്നു",
+    "login_modal__footer_text__part2": "ഉം",
+    "login_modal__footer_text__tooltip": "നിങ്ങളുടെ സ്വകാര്യത ഞങ്ങളുടെ മുഖ്യധ്യാനമാണ്. ലോഗിൻ ചെയ്യാൻ പേരും ഇമെയിൽ വിലാസവും മാത്രമേ ഞങ്ങൾ ശേഖരിക്കുന്നു, അത് മറ്റൊരുവരോട് പങ്കിടുന്നില്ല.",
+    "login_modal__login_with_email__title": "ഇമെയിൽ ഉപയോഗിച്ച് തുടരുക",
+    "login_modal__indicator1_label": "മുകളിലേക്ക് 50 genAI ആപ്പുകൾ",
+    "login_modal__indicator2_label": "സജീവ ഉപയോക്താക്കൾ",
+    "login_modal__indicator3_label": "5-നക്ഷത്ര അഭിപ്രായങ്ങൾ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

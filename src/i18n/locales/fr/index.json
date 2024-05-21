@@ -60,7 +60,11 @@
     "input_content": "Contenu de l'entrée",
     "discard": "Rejeter",
     "create": "Créer",
-    "update": "Mettre à jour"
+    "update": "Mettre à jour",
+    "continue_with_google": "Continuer avec Google",
+    "continue_with_email": "Continuer avec email",
+    "privacy_policy": "Politique de confidentialité",
+    "terms_of_service": "Conditions d'utilisation"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o est 2 fois plus rapide que GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" pour \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Peut raisonner en temps réel sur l'audio, la vision et le texte.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite offre des requêtes d'IA illimitées et débloque toutes les fonctionnalités."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite offre des requêtes d'IA illimitées et débloque toutes les fonctionnalités.",
+    "login_modal__title__part1": "Connectez-vous pour obtenir",
+    "login_modal__title__part2": "GRATUIT",
+    "login_modal__title__part3": "requêtes IA chaque jour",
+    "login_modal__email__placeholder": "Entrez votre adresse email...",
+    "login_modal__footer_text__part1": "En vous inscrivant, vous acceptez les",
+    "login_modal__footer_text__part2": "et",
+    "login_modal__footer_text__tooltip": "Votre vie privée est notre priorité. Nous ne collectons que votre nom et votre email pour la connexion et la synchronisation des paramètres, en le gardant confidentiel et sans le partager avec qui que ce soit.",
+    "login_modal__login_with_email__title": "Continuer avec Email",
+    "login_modal__indicator1_label": "Top 50 applications genAI",
+    "login_modal__indicator2_label": "Utilisateurs actifs",
+    "login_modal__indicator3_label": "Évaluations 5 étoiles"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

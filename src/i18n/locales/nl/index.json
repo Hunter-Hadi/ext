@@ -60,7 +60,11 @@
     "input_content": "Invoerinformatie",
     "discard": "Afwijzen",
     "create": "Creëren",
-    "update": "Bijwerken"
+    "update": "Bijwerken",
+    "continue_with_google": "Doorgaan met Google",
+    "continue_with_email": "Doorgaan met e-mail",
+    "privacy_policy": "Privacybeleid",
+    "terms_of_service": "Gebruiksvoorwaarden"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o is 2x sneller dan GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" voor \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Kan in realtime redeneren over audio, visie en tekst.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite biedt onbeperkte AI-query's en ontgrendelt alle functies."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite biedt onbeperkte AI-query's en ontgrendelt alle functies.",
+    "login_modal__title__part1": "Meld je aan om",
+    "login_modal__title__part2": "GRATIS",
+    "login_modal__title__part3": "AI-vragen per dag te krijgen",
+    "login_modal__email__placeholder": "Voer je e-mailadres in...",
+    "login_modal__footer_text__part1": "Door je aan te melden, ga je akkoord met de",
+    "login_modal__footer_text__part2": "en",
+    "login_modal__footer_text__tooltip": "Je privacy is onze hoogste prioriteit. We verzamelen alleen je naam en e-mailadres voor het inloggen en synchroniseren van instellingen, houden het vertrouwelijk en delen het niet met anderen.",
+    "login_modal__login_with_email__title": "Doorgaan met E-mail",
+    "login_modal__indicator1_label": "Top 50 genAI-apps",
+    "login_modal__indicator2_label": "Actieve gebruikers",
+    "login_modal__indicator3_label": "5-sterren beoordelingen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

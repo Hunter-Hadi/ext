@@ -5,7 +5,7 @@ import MenuItem, { menuItemClasses } from '@mui/material/MenuItem'
 import MenuList from '@mui/material/MenuList'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
+import Typography, { TypographyProps } from '@mui/material/Typography'
 import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -25,10 +25,12 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-const AIProviderModelTagIcon: FC<{
-  tag: string
-}> = (props) => {
-  const { tag } = props
+export const AIProviderModelTagIcon: FC<
+  {
+    tag: string
+  } & TypographyProps
+> = (props) => {
+  const { tag, ...rest } = props
   return (
     <Typography
       component={'span'}
@@ -52,6 +54,7 @@ const AIProviderModelTagIcon: FC<{
         borderColor: 'primary.main',
         color: 'primary.main',
       }}
+      {...rest}
     >
       {tag}
     </Typography>
@@ -144,7 +147,6 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
       }}
     >
       <MenuList
-        autoFocusItem
         id={'maxai-ai-model-selector-menu'}
         aria-labelledby="maxai-ai-model-selector-menu"
         sx={{

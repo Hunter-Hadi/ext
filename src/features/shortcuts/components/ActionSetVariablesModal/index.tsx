@@ -59,6 +59,9 @@ export interface ActionSetVariablesModalConfig {
   isOneClickPrompt?: boolean
   // 设置运行时显示在target的变量
   notBuiltInVariables?: string[]
+  // 设置是否需要携带上下文
+  includeHistory?: boolean
+
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -107,6 +110,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     disabled,
     sx,
     notBuiltInVariables,
+    includeHistory,
   } = props
   const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -308,8 +312,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         answerInsertMessageId || config.answerInsertMessageId || ''
       const currentParameters =
         askChatGPTActionParameters || config.askChatGPTActionParameters || {}
-
-      runActions.push({
+      const currentIncludeHistory = includeHistory ?? config.includeHistory ?? undefined
+      const askGptAction: ISetActionsType[number] = {
         type: 'ASK_CHATGPT',
         parameters: {
           template: '{{LAST_ACTION_OUTPUT}}',
@@ -338,7 +342,17 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
           ...currentParameters,
         },
-      })
+      }
+      if (modelKey === 'Sidebar') {
+        // TODO 待确认 如果是在sidebar里调用携带上下文
+        // askGptAction.parameters!.AskChatGPTActionQuestion!.meta!.includeHistory =
+        //   true
+      }
+      if (currentIncludeHistory !== undefined) {
+        askGptAction.parameters!.AskChatGPTActionQuestion!.meta!.includeHistory =
+          currentIncludeHistory
+      }
+      runActions.push(askGptAction)
       await askAIWIthShortcuts(runActions, { isSaveLastRunShortcuts })
         .then(() => {
           // done

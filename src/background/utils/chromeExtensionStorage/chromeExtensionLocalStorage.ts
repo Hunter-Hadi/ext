@@ -113,6 +113,17 @@ export const defaultChromeExtensionLocalStorage =
           chatConversationCache: {},
         },
       },
+      immersiveSettings: {
+        chat: {
+          conversationId: '',
+        },
+        search: {
+          conversationId: '',
+        },
+        art: {
+          conversationId: '',
+        }
+      },
       thirdProviderSettings: {
         [AI_PROVIDER_MAP.BING]: {
           conversationStyle: BingConversationStyle.Balanced,

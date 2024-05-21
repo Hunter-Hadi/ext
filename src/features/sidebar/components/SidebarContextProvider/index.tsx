@@ -12,6 +12,12 @@ import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
+
+type ImmersiveSettingsKey = keyof Exclude<
+  IChromeExtensionLocalStorage['immersiveSettings'],
+  undefined
+>
 
 const conversationTypeRouteMap: Record<string, ISidebarConversationType> = {
   chat: 'Chat',
@@ -22,46 +28,36 @@ const conversationTypeRouteMap: Record<string, ISidebarConversationType> = {
 const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
   const { children } = props
   const {
-    currentSidebarConversationId,
     currentSidebarConversationType,
     updateSidebarConversationType,
     createSidebarConversation,
-    sidebarSettings,
+    updateImmersiveSettings,
+    immersiveSettings: localSettings,
   } = useSidebarSettings()
+
   const [conversationStatus, setConversationStatus] =
     useState<ConversationStatusType>('success')
 
   const [initialized, setInitialized] = useState(false)
 
-  // 这里记录immersive page里的状态，初始化时和sidebarSettings里一致
-  const [immersiveSettings, setImmersiveSettings] = useState(sidebarSettings)
+  // 多个immersive page不需要同步，这里只记录初始化时的状态
+  const [immersiveSettings, setImmersiveSettings] = useState(localSettings)
   const sidebarConversationTypeRef = useRef(currentSidebarConversationType)
   sidebarConversationTypeRef.current = currentSidebarConversationType
+  const immersiveSettingsRef = useRef(immersiveSettings)
+  immersiveSettingsRef.current = immersiveSettings
+
   const immersiveConversationId = useMemo(() => {
-    let currentId = currentSidebarConversationId
     switch (currentSidebarConversationType) {
       case 'Chat':
-        currentId = immersiveSettings?.chat?.conversationId
-        break
+        return immersiveSettings?.chat?.conversationId
       case 'Search':
-        currentId = immersiveSettings?.search?.conversationId
-        break
-      case 'Summary':
-        currentId = immersiveSettings?.summary?.conversationId
-        break
+        return immersiveSettings?.search?.conversationId
       case 'Art':
-        currentId = immersiveSettings?.art?.conversationId
-        break
+        return immersiveSettings?.art?.conversationId
     }
-    return currentId || currentSidebarConversationId
-  }, [
-    currentSidebarConversationType,
-    currentSidebarConversationId,
-    immersiveSettings,
-  ])
-
-  const conversationTypeRef = useRef(currentSidebarConversationType)
-  conversationTypeRef.current = currentSidebarConversationType
+    return ''
+  }, [currentSidebarConversationType, immersiveSettings])
 
   const sidebarContextValue = useMemo(() => {
     /**
@@ -80,19 +76,18 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
       newConversationId: string,
       conversationType?: ISidebarConversationType,
     ) => {
-      const map: Record<
-        string,
-        keyof Exclude<typeof sidebarSettings, undefined>
-      > = {
+      const map: Record<string, ImmersiveSettingsKey> = {
         Chat: 'chat',
-        Summary: 'summary',
         Search: 'search',
         Art: 'art',
       }
-      if (map[conversationType || sidebarConversationTypeRef.current]) {
+      const settingsType =
+        map[conversationType || sidebarConversationTypeRef.current]
+      if (settingsType) {
         return setImmersiveSettings((prev) => ({
           ...prev,
-          [map[sidebarConversationTypeRef.current]]: {
+          [settingsType]: {
+            ...prev?.[settingsType],
             conversationId: newConversationId,
           },
         }))
@@ -106,6 +101,14 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
      */
     const createConversation: ChatPanelContextValue['createConversation'] =
       async (conversationType, AIProvider, AIModel) => {
+        const settingsType =
+          sidebarConversationTypeRef.current.toLowerCase() as ImmersiveSettingsKey
+        const conversationTypeConfig =
+          immersiveSettingsRef.current?.[settingsType]
+        if ((!AIProvider || !AIModel) && conversationTypeConfig) {
+          AIProvider = conversationTypeConfig.AIProvider
+          AIModel = conversationTypeConfig.AIModel
+        }
         const conversationId = await createSidebarConversation(
           conversationType,
           AIProvider,
@@ -113,6 +116,11 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
           false,
         )
         await updateConversationId(conversationId, conversationType)
+        if (AIProvider || AIModel) {
+          updateImmersiveSettings({
+            [settingsType]: { AIProvider, AIModel },
+          })
+        }
         return conversationId
       }
 
@@ -151,22 +159,30 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
     }
   }, [immersiveConversationId, conversationStatus])
 
-  // 初始化时sidebarSettings为空，同步数据后更新至immersiveSettings
+  // 初始化时immersiveSettings为空，同步数据后更新至immersiveSettings
   const isSyncRef = useRef(false)
   useEffect(() => {
-    if (!isSyncRef.current && sidebarSettings) {
+    if (!isSyncRef.current && localSettings) {
       isSyncRef.current = true
-      setImmersiveSettings(
-        mergeWithObject([sidebarSettings, immersiveSettings]),
-      )
+      const newSettings = mergeWithObject([localSettings, immersiveSettings])
+      setImmersiveSettings(newSettings)
+      immersiveSettingsRef.current = newSettings
       if (!immersiveConversationId) {
         // 初始化没有id，比如首次安装的时候登陆成功后不打开sidebar直接打开immersive chat
-        sidebarContextValue.createConversation(conversationTypeRef.current)
+        sidebarContextValue
+          .createConversation(sidebarConversationTypeRef.current)
+          .then()
+          .catch()
+          .finally(() => {
+            setInitialized(true)
+          })
+      } else {
+        setInitialized(true)
       }
     }
   }, [
+    localSettings,
     immersiveSettings,
-    sidebarSettings,
     immersiveConversationId,
     sidebarContextValue,
   ])
@@ -187,11 +203,11 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
       clientGetConversation(conversationId).then((conversation) => {
         if (!conversation) {
-          sidebarContextValue.createConversation(conversationTypeRef.current)
+          sidebarContextValue.createConversation(
+            sidebarConversationTypeRef.current,
+          )
         }
       })
-    } else {
-      setInitialized(true)
     }
   })
 

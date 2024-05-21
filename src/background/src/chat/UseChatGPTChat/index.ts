@@ -160,8 +160,9 @@ class UseChatGPTPlusChat extends BaseChat {
         /**
          * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong
          * 将 OpenAI API的温度控制加一个最大值限制：1.2 - 2023-10-9 - @huangsong
+         * 隐藏temperature的设置，固定传1 - 2024-05021 - @tongda
          * */
-        temperature,
+        temperature: 1,
       },
       doc_id ? { doc_id } : {},
       meta?.isEnabledJsonMode

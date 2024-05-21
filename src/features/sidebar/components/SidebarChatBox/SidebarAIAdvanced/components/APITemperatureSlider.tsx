@@ -14,6 +14,8 @@ import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderS
 const APITemperatureSlider: FC<{
   provider: IAIProviderType
 }> = (props) => {
+  // 隐藏temperature的设置
+  return null
   const { provider } = props
   const { t } = useTranslation(['common', 'client'])
   const { saveThirdProviderSettings, currentThirdProviderSettings } =

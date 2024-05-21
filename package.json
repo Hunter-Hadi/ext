@@ -27,6 +27,7 @@
     "cheerio": "1.0.0-rc.12",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",
+    "email-validator": "^2.0.4",
     "eventsource-parser": "^0.1.0",
     "expiry-map": "^2.0.0",
     "file-saver": "^2.0.5",

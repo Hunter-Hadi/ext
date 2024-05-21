@@ -69,14 +69,6 @@ const SignUpWithEmailForm = () => {
                   borderRadius: 2,
                 },
               }}
-              sx={{
-                '.MuiFormLabel-root': {
-                  color: 'rgba(0, 0, 0, 0.38)',
-                },
-                '.MuiFormLabel-root.Mui-focused': {
-                  color: 'primary.main',
-                },
-              }}
               onKeyDown={() => {
                 if (errorData) {
                   setErrorData('')

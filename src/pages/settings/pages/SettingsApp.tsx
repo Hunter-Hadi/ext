@@ -4,7 +4,9 @@ import React, { type FC, lazy, useEffect, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
+import UnLoginOverlay from '@/features/auth/components/UnLoginOverlay'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useInitMixPanel } from '@/features/mixpanel/utils'
 import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
@@ -16,8 +18,6 @@ import {
   setLocationHashRoute,
   SettingsPageRouteContext,
 } from '@/pages/settings/context'
-import SettingsLoginPage from '@/pages/settings/pages/login'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
 
 export const SETTINGS_PAGE_MENU_WIDTH = {
@@ -261,7 +261,8 @@ const SettingsApp: FC = () => {
                   </Stack>
                 </SyncSettingCheckerWrapper>
               ) : (
-                <SettingsLoginPage />
+                // <SettingsLoginPage />
+                <UnLoginOverlay />
               )}
             </AppLoadingLayout>
           </AppSuspenseLoadingLayout>

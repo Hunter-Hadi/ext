@@ -10,13 +10,17 @@ import { AuthState } from '@/features/auth//store'
 import SignUpCard from '@/features/auth/components/SignUpCard'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useCommands from '@/hooks/useCommands'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import {
+  isMaxAIImmersiveChatPage,
+  isMaxAISettingsPage,
+} from '@/utils/dataHelper/websiteHelper'
 
 const UnLoginOverlay = () => {
   const { t } = useTranslation()
   const { isLogin } = useRecoilValue(AuthState)
   const { chatBoxShortCutKey } = useCommands()
   const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
+  const isInSettingsPage = isMaxAISettingsPage()
 
   if (isLogin) {
     return null
@@ -48,7 +52,7 @@ const UnLoginOverlay = () => {
           <IconButton
             sx={{ flexShrink: 0, color: 'text.secondary' }}
             onClick={() => {
-              if (isInImmersiveChatPage) {
+              if (isInImmersiveChatPage || isInSettingsPage) {
                 window.close()
                 return
               }

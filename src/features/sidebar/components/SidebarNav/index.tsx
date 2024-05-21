@@ -29,7 +29,7 @@ interface IProps {
 }
 
 const SidebarNav: FC<IProps> = ({ sx }) => {
-  const { t } = useTranslation(['common', 'client'])
+  const { t } = useTranslation(['common', 'client', 'settings'])
 
   const { currentSidebarConversationType } = useSidebarSettings()
   const { chatBoxShortCutKey } = useCommands()
@@ -170,9 +170,9 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         <SidebarReleaseNotesButton />
 
         {/* help btn */}
-        <TextOnlyTooltip title={t('common:help_center')} placement="left">
+        <TextOnlyTooltip title={t('settings:left_menu__help')} placement="left">
           <IconButton
-            data-testid={`maxai--sidebar--contact_us--button`}
+            data-testid={`maxai--sidebar--help_center--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
             onClick={() => window.open(CHROME_EXTENSION_HELP_TO)}
           >

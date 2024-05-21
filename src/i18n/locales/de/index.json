@@ -60,7 +60,11 @@
     "input_content": "Eingabeinhalt",
     "discard": "Verwerfen",
     "create": "Erstellen",
-    "update": "Aktualisieren"
+    "update": "Aktualisieren",
+    "continue_with_google": "Mit Google fortfahren",
+    "continue_with_email": "Mit E-Mail fortfahren",
+    "privacy_policy": "Datenschutzrichtlinie",
+    "terms_of_service": "Nutzungsbedingungen"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o ist doppelt so schnell wie GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" für \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Kann in Echtzeit über Audio, Vision und Text argumentieren.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite bietet unbegrenzte KI-Abfragen und schaltet alle Funktionen frei."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite bietet unbegrenzte KI-Abfragen und schaltet alle Funktionen frei.",
+    "login_modal__title__part1": "Melden Sie sich an, um",
+    "login_modal__title__part2": "KOSTENLOS",
+    "login_modal__title__part3": "KI-Anfragen pro Tag zu erhalten",
+    "login_modal__email__placeholder": "Geben Sie Ihre E-Mail-Adresse ein...",
+    "login_modal__footer_text__part1": "Durch die Anmeldung stimmen Sie den",
+    "login_modal__footer_text__part2": "und",
+    "login_modal__footer_text__tooltip": "Ihre Privatsphäre hat für uns oberste Priorität. Wir erfassen nur Ihren Namen und Ihre E-Mail-Adresse für die Anmeldung und die Synchronisierung der Einstellungen, halten sie vertraulich und geben sie nicht an Dritte weiter.",
+    "login_modal__login_with_email__title": "Mit E-Mail fortfahren",
+    "login_modal__indicator1_label": "Top 50 genAI-Apps",
+    "login_modal__indicator2_label": "Aktive Benutzer",
+    "login_modal__indicator3_label": "5-Sterne-Bewertungen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

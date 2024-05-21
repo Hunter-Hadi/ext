@@ -60,7 +60,11 @@
     "input_content": "የግብዣ ይዘት",
     "discard": "ማጥፋት",
     "create": "ይፍጠሩ",
-    "update": "አዘምን"
+    "update": "አዘምን",
+    "continue_with_google": "በ Google ይግቡ",
+    "continue_with_email": "በ ኢሜይል ይግቡ",
+    "privacy_policy": "ግላዊ መርህ",
+    "terms_of_service": "የአገልግሎት ውሂብ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o በ GPT-4 Turbo እንዳይሰራ ነው።",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" ለ \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "በቀላሉ የሚሰራ የማስተላለፊያ ሞዴል የሚገኙትን የማስተላለፊያ ለማስተላለፍ የሚያስችል የሆነ የማስተላለፊያ ሞዴል ነው።",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite የሚሰሩትን AI ጥያቄዎች እና ሁሉንም ክፍሎች ያከታተሉትን የሚያስችል የሆነ የማስተላለፊያ ሞዴል ነው።"
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite የሚሰሩትን AI ጥያቄዎች እና ሁሉንም ክፍሎች ያከታተሉትን የሚያስችል የሆነ የማስተላለፊያ ሞዴል ነው።",
+    "login_modal__title__part1": "ይግቡ እንዴት ለዚህ",
+    "login_modal__title__part2": "ነፃ",
+    "login_modal__title__part3": "AI ጥያቄዎች በዓለም በመጠቀም በቀን",
+    "login_modal__email__placeholder": "ኢሜይል አድራሻዎን ያስገቡ...",
+    "login_modal__footer_text__part1": "በመመሪያዎቹ ላይ ይመልከቱ, እንዴት ለማስተዋወቅ ይፈልጉ",
+    "login_modal__footer_text__part2": "እና",
+    "login_modal__footer_text__tooltip": "የግላዊነትዎ ዝርዝር ነው። በመጠቀም እና በማስተዋወቅ የሚያስችል ነው። እንዴት ለማስተዋወቅ ይፈልጉ",
+    "login_modal__login_with_email__title": "በ ኢሜይል ይግቡ",
+    "login_modal__indicator1_label": "ብርሃን 50 የገንዘብ AI መስተዳድሪዎች",
+    "login_modal__indicator2_label": "የእንግሊዝኛ ተጠቃሚዎች",
+    "login_modal__indicator3_label": "5-አመት የተለያዩ ምርጥ ሙዚቃዎች"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

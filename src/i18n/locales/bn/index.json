@@ -60,7 +60,11 @@
     "input_content": "ইনপুট কন্টেন্ট",
     "discard": "বাতিল করুন",
     "create": "তৈরি করুন",
-    "update": "আপডেট করুন"
+    "update": "আপডেট করুন",
+    "continue_with_google": "গুগল দিয়ে চালিয়ে যান",
+    "continue_with_email": "ইমেল দিয়ে চালিয়ে যান",
+    "privacy_policy": "গোপনীয়তা নীতি",
+    "terms_of_service": "সেবা প্রদানের শর্তাবলী"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo এর চেয়ে GPT-4o 2 গুণ দ্রুত।",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" এর জন্য \"অমনিমোডেল\"",
     "sidebar__promotion_dialog__content_item9__description": "অডিও, দৃষ্টি এবং টেক্সট পরিবেশনায় সত্যিকারের সময়ে কারণ করতে পারে।",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite সর্বশেষ AI কুয়েরি সরবরাহ করে এবং সমস্ত বৈশিষ্ট্য আনলক করে।"
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite সর্বশেষ AI কুয়েরি সরবরাহ করে এবং সমস্ত বৈশিষ্ট্য আনলক করে।",
+    "login_modal__title__part1": "পেতে সাইন ইন করুন",
+    "login_modal__title__part2": "ফ্রি",
+    "login_modal__title__part3": "এআই কুয়েরি প্রতিদিন",
+    "login_modal__email__placeholder": "আপনার ইমেল ঠিকানা লিখুন...",
+    "login_modal__footer_text__part1": "সাইন আপ করে আপনি সম্মত হন",
+    "login_modal__footer_text__part2": "এবং",
+    "login_modal__footer_text__tooltip": "আপনার গোপনীয়তা আমাদের উচ্চতম প্রাথমিক। আমরা শুধুমাত্র আপনার নাম এবং ইমেল সংগ্রহ করি লগইন এবং সেটিংস সিঙ্ক করার জন্য, এটি গোপনীয় রাখি এবং কাউকেও শেয়ার করি না।",
+    "login_modal__login_with_email__title": "ইমেল দিয়ে চালিয়ে যান",
+    "login_modal__indicator1_label": "শীর্ষ 50 জেনএআই অ্যাপস",
+    "login_modal__indicator2_label": "সক্রিয় ব্যবহারকারী",
+    "login_modal__indicator3_label": "5-স্টার রেটিং"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

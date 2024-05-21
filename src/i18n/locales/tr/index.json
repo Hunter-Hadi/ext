@@ -60,7 +60,11 @@
     "input_content": "Giriş içeriği",
     "discard": "At",
     "create": "Oluştur",
-    "update": "Güncelle"
+    "update": "Güncelle",
+    "continue_with_google": "Google ile Devam Et",
+    "continue_with_email": "E-posta ile Devam Et",
+    "privacy_policy": "Gizlilik Politikası",
+    "terms_of_service": "Hizmet Şartları"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo'dan 2 kat daha hızlıdır.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" harfi için \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Gerçek zamanlı olarak ses, görüntü ve metin üzerinde akıl yürütebilir.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite sınırsız AI sorguları sunar ve tüm özellikleri açar."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite sınırsız AI sorguları sunar ve tüm özellikleri açar.",
+    "login_modal__title__part1": "Giriş yaparak",
+    "login_modal__title__part2": "ÜCRETSİZ",
+    "login_modal__title__part3": "AI sorgusu alın",
+    "login_modal__email__placeholder": "E-posta adresinizi girin...",
+    "login_modal__footer_text__part1": "Kaydolarak, kabul ediyorsunuz",
+    "login_modal__footer_text__part2": "ve",
+    "login_modal__footer_text__tooltip": "Gizliliğiniz bizim için en önemli önceliktir. Sadece giriş ve ayarlar senkronizasyonu için adınızı ve e-postanızı topluyoruz, gizli tutuyoruz ve başka kimseyle paylaşmıyoruz.",
+    "login_modal__login_with_email__title": "E-posta ile Devam Et",
+    "login_modal__indicator1_label": "En İyi 50 genAI uygulaması",
+    "login_modal__indicator2_label": "Aktif kullanıcılar",
+    "login_modal__indicator3_label": "5 yıldızlı derecelendirmeler"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

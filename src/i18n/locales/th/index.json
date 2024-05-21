@@ -60,7 +60,11 @@
     "input_content": "เนื้อหาที่ป้อน",
     "discard": "ทิ้ง",
     "create": "สร้าง",
-    "update": "อัปเดต"
+    "update": "อัปเดต",
+    "continue_with_google": "เข้าสู่ระบบด้วย Google",
+    "continue_with_email": "เข้าสู่ระบบด้วยอีเมล",
+    "privacy_policy": "นโยบายความเป็นส่วนตัว",
+    "terms_of_service": "เงื่อนไขการให้บริการ"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o เร็วขึ้น 2 เท่าของ GPT-4 Turbo",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" สำหรับ \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "สามารถใช้เหตุผลในการวิเคราะห์เสียง การมองเห็น และข้อความในเวลาจริง",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ให้บริการคำถาม AI ไม่จำกัดและปลดล็อกคุณสมบัติทั้งหมด"
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite ให้บริการคำถาม AI ไม่จำกัดและปลดล็อกคุณสมบัติทั้งหมด",
+    "login_modal__title__part1": "เข้าสู่ระบบเพื่อรับ",
+    "login_modal__title__part2": "ฟรี",
+    "login_modal__title__part3": "คำถาม AI ทุกวัน",
+    "login_modal__email__placeholder": "กรอกที่อยู่อีเมลของคุณ...",
+    "login_modal__footer_text__part1": "เมื่อคุณลงทะเบียนเข้าใช้งาน คุณยินยอมตาม",
+    "login_modal__footer_text__part2": "และ",
+    "login_modal__footer_text__tooltip": "ความเป็นส่วนตัวของคุณเป็นสิ่งสำคัญสูงสุดของเรา เราจะเก็บข้อมูลชื่อและอีเมลของคุณเพื่อเข้าสู่ระบบและการตั้งค่าเท่านั้น โดยเราจะเก็บไว้เป็นความลับและไม่เปิดเผยให้ผู้อื่น",
+    "login_modal__login_with_email__title": "เข้าสู่ระบบด้วยอีเมล",
+    "login_modal__indicator1_label": "แอป genAI 50 อันดับแรก",
+    "login_modal__indicator2_label": "ผู้ใช้งานที่ใช้งานอยู่",
+    "login_modal__indicator3_label": "คะแนน 5 ดาว"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

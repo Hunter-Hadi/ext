@@ -60,7 +60,11 @@
     "input_content": "ఇన్పుట్ కంటెంట్",
     "discard": "విస్మరించు",
     "create": "సృష్టించు",
-    "update": "నవీకరించు"
+    "update": "నవీకరించు",
+    "continue_with_google": "Googleతో కొనసాగండి",
+    "continue_with_email": "ఇమెయిల్‌తో కొనసాగండి",
+    "privacy_policy": "గోప్యతా నియమాలు",
+    "terms_of_service": "సేవల నిబంధనలు"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o GPT-4 Turbo కంటే 2x త్వరగా ఉంటుంది.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" కోసం \"ఒమ్నిమోడల్\"",
     "sidebar__promotion_dialog__content_item9__description": "ఆడియో, విజన్, మరియు టెక్స్ట్‌ను రియల్ టైమ్‌లో రీజన్ చేయగలడు.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite అన్ని లక్షణాలను అందిస్తుంది మరియు అనివార్య AI ప్రశ్నలకు ఎక్కువ ఉపయోగాలను అందిస్తుంది."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite అన్ని లక్షణాలను అందిస్తుంది మరియు అనివార్య AI ప్రశ్నలకు ఎక్కువ ఉపయోగాలను అందిస్తుంది.",
+    "login_modal__title__part1": "పొందడానికి సైన్ ఇన్ చేయండి",
+    "login_modal__title__part2": "ఉచిత",
+    "login_modal__title__part3": "AI ప్రశ్నలు ప్రతి రోజు",
+    "login_modal__email__placeholder": "మీ ఇమెయిల్ చర్యకు...",
+    "login_modal__footer_text__part1": "సైన్ అప్ చేయడం ద్వారా, మీరు ఒప్పుకుంటారు",
+    "login_modal__footer_text__part2": "మరియు",
+    "login_modal__footer_text__tooltip": "మీ గోప్యతా మానసికి మేలుకోవడం మా అత్యుత్తమ ప్రాధాన్యత. మేము మీ పేరు మరియు ఇమెయిల్‌ను మాత్రమే సేకరించి, గోప్యంగా ఉంచి మరియు మరొకరికి షేర్ చేయడం లేదు.",
+    "login_modal__login_with_email__title": "ఇమెయిల్‌తో కొనసాగండి",
+    "login_modal__indicator1_label": "50 టాప్ genAI యాప్‌లు",
+    "login_modal__indicator2_label": "క్రియాశీల వాడుకరులు",
+    "login_modal__indicator3_label": "5-స్టార్ రేటింగ్‌లు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

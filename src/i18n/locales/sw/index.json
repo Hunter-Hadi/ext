@@ -60,7 +60,11 @@
     "input_content": "Yaliyomo ya kuingiza",
     "discard": "Ondoa",
     "create": "Unda",
-    "update": "Sasisha"
+    "update": "Sasisha",
+    "continue_with_google": "Endelea na Google",
+    "continue_with_email": "Endelea na barua pepe",
+    "privacy_policy": "Sera ya Faragha",
+    "terms_of_service": "Masharti ya Huduma"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o ni mara 2 haraka kuliko GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" kwa \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Inaweza kufikiria kupitia sauti, maono, na maandishi kwa wakati halisi.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite inatoa maswali yasiyo na kikomo ya AI na kufungua vipengele vyote."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite inatoa maswali yasiyo na kikomo ya AI na kufungua vipengele vyote.",
+    "login_modal__title__part1": "Ingia ili upate",
+    "login_modal__title__part2": "BURE",
+    "login_modal__title__part3": "maswali ya AI kila siku",
+    "login_modal__email__placeholder": "Ingiza anwani yako ya barua pepe...",
+    "login_modal__footer_text__part1": "Kwa kujiandikisha, unakubaliana na",
+    "login_modal__footer_text__part2": "na",
+    "login_modal__footer_text__tooltip": "Faragha yako ni kipaumbele chetu. Tunakusanya jina lako na barua pepe tu kwa ajili ya kuingia na kusawazisha mipangilio, tukilinda usiri wake na kutokushiriki na mtu mwingine yeyote.",
+    "login_modal__login_with_email__title": "Endelea na Barua pepe",
+    "login_modal__indicator1_label": "Programu za genAI maarufu 50",
+    "login_modal__indicator2_label": "Watumiaji wanaofanya kazi",
+    "login_modal__indicator3_label": "Tathmini za nyota 5"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

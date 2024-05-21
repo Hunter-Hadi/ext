@@ -60,7 +60,11 @@
     "input_content": "محتوى الإدخال",
     "discard": "تجاهل",
     "create": "إنشاء",
-    "update": "تحديث"
+    "update": "تحديث",
+    "continue_with_google": "متابعة باستخدام جوجل",
+    "continue_with_email": "متابعة باستخدام البريد الإلكتروني",
+    "privacy_policy": "سياسة الخصوصية",
+    "terms_of_service": "شروط الخدمة"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o أسرع بمعدل 2 مرات من GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" لـ \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "يمكنه التفكير في الوقت الحقيقي عبر الصوت والرؤية والنص.",
-    "sidebar__promotion_dialog__footer_tips": "يقدم MaxAI Elite استعلامات غير محدودة للذكاء الاصطناعي ويفتح جميع الميزات."
+    "sidebar__promotion_dialog__footer_tips": "يقدم MaxAI Elite استعلامات غير محدودة للذكاء الاصطناعي ويفتح جميع الميزات.",
+    "login_modal__title__part1": "تسجيل الدخول للحصول على",
+    "login_modal__title__part2": "مجانًا",
+    "login_modal__title__part3": "استفسارات الذكاء الاصطناعي كل يوم",
+    "login_modal__email__placeholder": "أدخل عنوان بريدك الإلكتروني...",
+    "login_modal__footer_text__part1": "بالتسجيل، فإنك توافق على",
+    "login_modal__footer_text__part2": "و",
+    "login_modal__footer_text__tooltip": "خصوصيتك هي أولويتنا. نقوم فقط بجمع اسمك وعنوان بريدك الإلكتروني لتسجيل الدخول ومزامنة الإعدادات، ونحتفظ بها بسرية ولا نشاركها مع أي شخص آخر.",
+    "login_modal__login_with_email__title": "متابعة باستخدام البريد الإلكتروني",
+    "login_modal__indicator1_label": "أفضل 50 تطبيقًا للذكاء الاصطناعي",
+    "login_modal__indicator2_label": "المستخدمون النشطون",
+    "login_modal__indicator3_label": "تقييمات بخمس نجوم"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

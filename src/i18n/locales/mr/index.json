@@ -60,7 +60,11 @@
     "input_content": "इनपुट सामग्री",
     "discard": "काढा",
     "create": "तयार करा",
-    "update": "अद्यतनित करा"
+    "update": "अद्यतनित करा",
+    "continue_with_google": "Google सह जारी ठेवा",
+    "continue_with_email": "ईमेलसह जारी ठेवा",
+    "privacy_policy": "गोपनीयता धोरण",
+    "terms_of_service": "सेवा अटी"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turboपेक्षा GPT-4o 2 वेळा जलद आहे.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" चे \"ओम्निमॉडेल\"",
     "sidebar__promotion_dialog__content_item9__description": "ऑडिओ, विजन आणि पाठांमध्ये तत्काल वेळेत तरंगटन करू शकतो.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite अमर्यादित AI क्वेरी प्रदान करते आणि सर्व सुविधांचा अनलॉक करते."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite अमर्यादित AI क्वेरी प्रदान करते आणि सर्व सुविधांचा अनलॉक करते.",
+    "login_modal__title__part1": "साइन इन करण्यासाठी",
+    "login_modal__title__part2": "मोफत",
+    "login_modal__title__part3": "AI प्रश्न दररोजचे",
+    "login_modal__email__placeholder": "तुमचा ईमेल पत्ता प्रविष्ट करा...",
+    "login_modal__footer_text__part1": "साइन अप करून, तुम्ही मान्य करता",
+    "login_modal__footer_text__part2": "आणि",
+    "login_modal__footer_text__tooltip": "तुमची गोपनीयता आमच्या मुख्यत्वात आहे. आम्ही फक्त तुमचं नाव आणि ईमेल संग्रहीत करतो आणि सेटिंग्ज सिंक करतो, त्याची गोपनीयता ठेवतो आणि कोणताही दुसर्‍यांसह सामायिक करत नाही.",
+    "login_modal__login_with_email__title": "ईमेलसह जारी ठेवा",
+    "login_modal__indicator1_label": "टॉप 50 genAI अ‍ॅप्स",
+    "login_modal__indicator2_label": "सक्रिय वापरकर्ते",
+    "login_modal__indicator3_label": "5-तारा मुल्यांकने"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

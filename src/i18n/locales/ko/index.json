@@ -60,7 +60,11 @@
     "input_content": "입력 내용",
     "discard": "버리기",
     "create": "만들기",
-    "update": "업데이트"
+    "update": "업데이트",
+    "continue_with_google": "Google로 계속하기",
+    "continue_with_email": "이메일로 계속하기",
+    "privacy_policy": "개인정보 처리 방침",
+    "terms_of_service": "서비스 약관"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo보다 GPT-4o는 2배 빠릅니다.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\"는 \"옴니모델\"을 의미합니다",
     "sidebar__promotion_dialog__content_item9__description": "실시간으로 오디오, 비전 및 텍스트를 근거로 추론할 수 있습니다.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite은 무제한 AI 쿼리를 제공하며 모든 기능을 잠금 해제합니다."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite은 무제한 AI 쿼리를 제공하며 모든 기능을 잠금 해제합니다.",
+    "login_modal__title__part1": "로그인하여",
+    "login_modal__title__part2": "무료로",
+    "login_modal__title__part3": "매일 AI 쿼리 받기",
+    "login_modal__email__placeholder": "이메일 주소를 입력하세요...",
+    "login_modal__footer_text__part1": "가입하면 동의하는 것으로 간주됩니다.",
+    "login_modal__footer_text__part2": "및",
+    "login_modal__footer_text__tooltip": "당사는 개인정보 보호를 최우선으로 합니다. 로그인 및 설정 동기화를 위해 이름과 이메일만 수집하며, 기밀로 유지하고 다른 사람과 공유하지 않습니다.",
+    "login_modal__login_with_email__title": "이메일로 계속하기",
+    "login_modal__indicator1_label": "상위 50개의 genAI 앱",
+    "login_modal__indicator2_label": "활성 사용자",
+    "login_modal__indicator3_label": "5성 평점"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

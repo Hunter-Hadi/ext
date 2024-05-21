@@ -60,7 +60,11 @@
     "input_content": "Sisestage sisu",
     "discard": "Loobu",
     "create": "Loo",
-    "update": "Uuenda"
+    "update": "Uuenda",
+    "continue_with_google": "Jätka Google'iga",
+    "continue_with_email": "Jätka e-posti teel",
+    "privacy_policy": "Privaatsuspoliitika",
+    "terms_of_service": "Teenuse tingimused"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o on 2x kiirem kui GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" tähistab \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Suudab reaalajas mõelda heli, nägemise ja teksti üle.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite pakub piiramatuid AI päringuid ja avab kõik funktsioonid."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite pakub piiramatuid AI päringuid ja avab kõik funktsioonid.",
+    "login_modal__title__part1": "Logige sisse, et saada",
+    "login_modal__title__part2": "TASUTA",
+    "login_modal__title__part3": "AI päringuid igapäevaselt",
+    "login_modal__email__placeholder": "Sisestage oma e-posti aadress...",
+    "login_modal__footer_text__part1": "Registreerudes nõustute",
+    "login_modal__footer_text__part2": "ja",
+    "login_modal__footer_text__tooltip": "Teie privaatsus on meie peamine prioriteet. Kogume ainult teie nime ja e-posti aadressi sisselogimiseks ja seadete sünkroonimiseks, hoides seda konfidentsiaalsena ega jaga seda kellegagi.",
+    "login_modal__login_with_email__title": "Jätka e-posti teel",
+    "login_modal__indicator1_label": "Top 50 genAI rakendust",
+    "login_modal__indicator2_label": "Aktiivsed kasutajad",
+    "login_modal__indicator3_label": "5-tärni hinnangud"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

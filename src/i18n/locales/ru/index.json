@@ -60,7 +60,11 @@
     "input_content": "Вводите содержимое",
     "discard": "Отменить",
     "create": "Создать",
-    "update": "Обновить"
+    "update": "Обновить",
+    "continue_with_google": "Продолжить с Google",
+    "continue_with_email": "Продолжить с электронной почтой",
+    "privacy_policy": "Политика конфиденциальности",
+    "terms_of_service": "Условия использования"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o работает в 2 раза быстрее, чем GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" означает \"Омни-модель\"",
     "sidebar__promotion_dialog__content_item9__description": "Способна рассуждать на основе аудио, видео и текста в режиме реального времени.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite предлагает неограниченные запросы к ИИ и разблокирует все функции."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite предлагает неограниченные запросы к ИИ и разблокирует все функции.",
+    "login_modal__title__part1": "Войдите, чтобы получить",
+    "login_modal__title__part2": "БЕСПЛАТНО",
+    "login_modal__title__part3": "ИИ-запросы каждый день",
+    "login_modal__email__placeholder": "Введите адрес электронной почты...",
+    "login_modal__footer_text__part1": "Регистрируясь, вы соглашаетесь с",
+    "login_modal__footer_text__part2": "и",
+    "login_modal__footer_text__tooltip": "Ваша конфиденциальность - наш главный приоритет. Мы собираем только ваше имя и адрес электронной почты для входа и синхронизации настроек, храня это конфиденциально и не передавая никому еще.",
+    "login_modal__login_with_email__title": "Продолжить с электронной почтой",
+    "login_modal__indicator1_label": "Топ-50 приложений genAI",
+    "login_modal__indicator2_label": "Активные пользователи",
+    "login_modal__indicator3_label": "Рейтинг 5 звезд"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

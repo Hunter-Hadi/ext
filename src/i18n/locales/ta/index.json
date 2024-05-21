@@ -60,7 +60,11 @@
     "input_content": "உள்ளீடு உள்ளிடவும்",
     "discard": "நிராகரி",
     "create": "உருவாக்கு",
-    "update": "புதுப்பிக்கவும்"
+    "update": "புதுப்பிக்கவும்",
+    "continue_with_google": "கூகிளுடன் தொடர்ந்து செல்லுங்கள்",
+    "continue_with_email": "மின்னஞ்சலுடன் தொடர்ந்து செல்லுங்கள்",
+    "privacy_policy": "தனியுரிமை கொள்கை",
+    "terms_of_service": "சேவை விதிமுறைகள்"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4 Turbo ஐ மேல் பெரியதாக உள்ள GPT-4o 2 மடங்கு விரைவானது.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" என்றால் \"ஒம்னிமோடெல்\"",
     "sidebar__promotion_dialog__content_item9__description": "ஒலி, பார்வை, மற்றும் உரையின் மூலத்தில் நிகழ்வுகளை கருதலாக முடியும்.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite முதன்முதலில் அளவிலான AI விசாரணைகளை வழங்குகிறது மற்றும் அனைத்து அம்சங்களையும் விடுவிக்கிறது."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite முதன்முதலில் அளவிலான AI விசாரணைகளை வழங்குகிறது மற்றும் அனைத்து அம்சங்களையும் விடுவிக்கிறது.",
+    "login_modal__title__part1": "பெறுவதற்கு உள்நுழையவும்",
+    "login_modal__title__part2": "இலவசமாக",
+    "login_modal__title__part3": "அரசைப் பற்றி வினாக்களை பெறுங்கள்",
+    "login_modal__email__placeholder": "உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடவும்...",
+    "login_modal__footer_text__part1": "பதிவு செய்வதன் மூலம், நீங்கள் ஒப்புக்கொள்கிறீர்கள்",
+    "login_modal__footer_text__part2": "மற்றும்",
+    "login_modal__footer_text__tooltip": "உங்கள் தனியுரிமை எங்கள் முதன்மை. உங்கள் பெயர் மற்றும் மின்னஞ்சலை மட்டும் சேகரிக்கும் மற்றும் அமைப்புகள் ஒருவருக்கும் பகிரப்படாது.",
+    "login_modal__login_with_email__title": "மின்னஞ்சலுடன் தொடர்ந்து செல்லுங்கள்",
+    "login_modal__indicator1_label": "மிகப் பிரபலமான 50 ஜென்ஐ பயன்பாடுகள்",
+    "login_modal__indicator2_label": "செயலில் உள்ள பயனர்கள்",
+    "login_modal__indicator3_label": "5 நட்சத்திர மதிப்பீடுகள்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

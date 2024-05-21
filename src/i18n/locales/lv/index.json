@@ -60,7 +60,11 @@
     "input_content": "Ievadiet saturu",
     "discard": "Atmest",
     "create": "Izveidot",
-    "update": "Atjaunināt"
+    "update": "Atjaunināt",
+    "continue_with_google": "Turpināt ar Google",
+    "continue_with_email": "Turpināt ar e-pastu",
+    "privacy_policy": "Privātuma politika",
+    "terms_of_service": "Pakalpojuma noteikumi"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o ir 2x ātrāks nekā GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" no \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Spēj loģiski domāt, ņemot vērā audio, redzi un tekstu reāllaikā.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite piedāvā neierobežotas AI vaicājumus un atbloķē visus funkcionalitātes."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite piedāvā neierobežotas AI vaicājumus un atbloķē visus funkcionalitātes.",
+    "login_modal__title__part1": "Pierakstieties, lai saņemtu",
+    "login_modal__title__part2": "BEZMAKSAS",
+    "login_modal__title__part3": "AI vaicājumus katru dienu",
+    "login_modal__email__placeholder": "Ievadiet savu e-pasta adresi...",
+    "login_modal__footer_text__part1": "Reģistrējoties, jūs piekrītat",
+    "login_modal__footer_text__part2": "un",
+    "login_modal__footer_text__tooltip": "Jūsu privātums ir mūsu galvenais uzdevums. Mēs vācam tikai jūsu vārdu un e-pasta adresi, lai nodrošinātu pierakstu un sinhronizētu iestatījumus, to paturētu konfidenciālu un nekoplietu citiem.",
+    "login_modal__login_with_email__title": "Turpināt ar e-pastu",
+    "login_modal__indicator1_label": "Top 50 genAI lietotnes",
+    "login_modal__indicator2_label": "Aktīvie lietotāji",
+    "login_modal__indicator3_label": "5 zvaigžņu novērtējumi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

@@ -60,7 +60,11 @@
     "input_content": "תוכן הקלט",
     "discard": "התעלם",
     "create": "צור",
-    "update": "עדכן"
+    "update": "עדכן",
+    "continue_with_google": "המשך עם Google",
+    "continue_with_email": "המשך עם דוא\"ל",
+    "privacy_policy": "מדיניות פרטיות",
+    "terms_of_service": "תנאי השימוש"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o מהיר בפי 2 מ-GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" עבור \"אומנימודל\"",
     "sidebar__promotion_dialog__content_item9__description": "יכול להסיק מסקנות בשמע, ראייה וטקסט בזמן אמת.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite מציע אין-סופיות שאילתות AI ומפתח את כל התכונות."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite מציע אין-סופיות שאילתות AI ומפתח את כל התכונות.",
+    "login_modal__title__part1": "התחבר כדי לקבל",
+    "login_modal__title__part2": "חינם",
+    "login_modal__title__part3": "שאילתות AI בכל יום",
+    "login_modal__email__placeholder": "הזן את כתובת הדוא\"ל שלך...",
+    "login_modal__footer_text__part1": "על ידי הרשמה, אתה מסכים ל",
+    "login_modal__footer_text__part2": "ול",
+    "login_modal__footer_text__tooltip": "הפרטיות שלך היא העדיפות העליונה שלנו. אנחנו מאספים רק את שמך וכתובת הדוא\"ל שלך לצורך התחברות וסנכרון הגדרות, ושומרים על סודיות ואינם משתפים אותה עם אף אחד אחר.",
+    "login_modal__login_with_email__title": "המשך עם דוא\"ל",
+    "login_modal__indicator1_label": "50 האפליקציות המובילות של genAI",
+    "login_modal__indicator2_label": "משתמשים פעילים",
+    "login_modal__indicator3_label": "דירוג 5 כוכבים"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

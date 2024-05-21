@@ -60,7 +60,11 @@
     "input_content": "Konten Input",
     "discard": "Buang",
     "create": "Buat",
-    "update": "Perbarui"
+    "update": "Perbarui",
+    "continue_with_google": "Lanjutkan dengan Google",
+    "continue_with_email": "Lanjutkan dengan email",
+    "privacy_policy": "Kebijakan Privasi",
+    "terms_of_service": "Syarat Layanan"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o 2x lebih cepat dari GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" untuk \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Mampu berpikir melintasi audio, visi, dan teks secara real-time.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite menawarkan kueri AI tanpa batas dan membuka semua fitur."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite menawarkan kueri AI tanpa batas dan membuka semua fitur.",
+    "login_modal__title__part1": "Masuk untuk mendapatkan",
+    "login_modal__title__part2": "GRATIS",
+    "login_modal__title__part3": "pertanyaan AI setiap hari",
+    "login_modal__email__placeholder": "Masukkan alamat email Anda...",
+    "login_modal__footer_text__part1": "Dengan mendaftar, Anda menyetujui",
+    "login_modal__footer_text__part2": "dan",
+    "login_modal__footer_text__tooltip": "Privasi Anda adalah prioritas utama kami. Kami hanya mengumpulkan nama dan email Anda untuk masuk dan sinkronisasi pengaturan, menjaga kerahasiaannya dan tidak membagikannya kepada siapa pun.",
+    "login_modal__login_with_email__title": "Lanjutkan dengan Email",
+    "login_modal__indicator1_label": "50 aplikasi genAI teratas",
+    "login_modal__indicator2_label": "Pengguna aktif",
+    "login_modal__indicator3_label": "Rating 5 bintang"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

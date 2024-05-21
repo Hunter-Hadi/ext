@@ -60,7 +60,11 @@
     "input_content": "ઇનપુટ સામગ્રી",
     "discard": "છોડો",
     "create": "બનાવો",
-    "update": "અપડેટ કરો"
+    "update": "અપડેટ કરો",
+    "continue_with_google": "ગૂગલ સાથે ચાલો",
+    "continue_with_email": "ઇમેઇલ સાથે ચાલો",
+    "privacy_policy": "ગોપનીયતા નીતિ",
+    "terms_of_service": "સેવાઓની શરતો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o GPT-4 Turbo કરતાં 2x ઝડપી છે.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" માટે \"ઓમ્નિમોડેલ\"",
     "sidebar__promotion_dialog__content_item9__description": "ઓડિયો, છબિ અને ટેક્સ્ટ પર વાચક કરી શકે છે.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite અમરીકી સંયમની અનિમિત્ત અનિમિત્ત એઆઈ પ્રશ્નો અને બધા વ્યાપારને ખોલે છે."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite અમરીકી સંયમની અનિમિત્ત અનિમિત્ત એઆઈ પ્રશ્નો અને બધા વ્યાપારને ખોલે છે.",
+    "login_modal__title__part1": "મેળવવા માટે સાઇન ઇન કરો",
+    "login_modal__title__part2": "મુફત",
+    "login_modal__title__part3": "AI પ્રશ્નો દિવસભર",
+    "login_modal__email__placeholder": "તમારું ઇમેઇલ એડ્રેસ દાખલ કરો...",
+    "login_modal__footer_text__part1": "સાઇન અપ કરીને, તમે સંમત થાઓ છો",
+    "login_modal__footer_text__part2": "અને",
+    "login_modal__footer_text__tooltip": "તમારી ગોપનીયતા અમારી મુખ્ય ચિંતા છે. અમે ફક્ત તમારું નામ અને ઇમેઇલ સંગ્રહ કરીએ છીએ જે લોગિન અને સેટિંગ્સ સિંક માટે છે, તેને ગોપનીય રાખીએ છીએ અને કોઈને પણ શેર નહીં કરીએ.",
+    "login_modal__login_with_email__title": "ઇમેઇલ સાથે ચાલો",
+    "login_modal__indicator1_label": "Top 50 genAI એપ્સ",
+    "login_modal__indicator2_label": "સક્રિય વપરાશકર્તાઓ",
+    "login_modal__indicator3_label": "5 તારાંકની રેટિંગ્સ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

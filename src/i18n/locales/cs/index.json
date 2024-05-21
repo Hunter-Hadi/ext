@@ -60,7 +60,11 @@
     "input_content": "Vstupní obsah",
     "discard": "Zahodit",
     "create": "Vytvořit",
-    "update": "Aktualizovat"
+    "update": "Aktualizovat",
+    "continue_with_google": "Pokračovat s Google",
+    "continue_with_email": "Pokračovat s emailem",
+    "privacy_policy": "Zásady ochrany osobních údajů",
+    "terms_of_service": "Podmínky služby"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o je dvojnásobně rychlejší než GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" pro \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Dokáže v reálném čase uvažovat o zvuku, vizí a textu.",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite nabízí neomezené dotazy na umělou inteligenci a odemyká všechny funkce."
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite nabízí neomezené dotazy na umělou inteligenci a odemyká všechny funkce.",
+    "login_modal__title__part1": "Přihlaste se pro získání",
+    "login_modal__title__part2": "ZDARMA",
+    "login_modal__title__part3": "dotazy AI každý den",
+    "login_modal__email__placeholder": "Zadejte svou emailovou adresu...",
+    "login_modal__footer_text__part1": "Registrací souhlasíte s",
+    "login_modal__footer_text__part2": "a",
+    "login_modal__footer_text__tooltip": "Vaše soukromí je naší nejvyšší prioritou. Sbíráme pouze vaše jméno a email pro přihlášení a synchronizaci nastavení, uchováváme je důvěrně a nezveřejňujeme je nikomu dalšímu.",
+    "login_modal__login_with_email__title": "Pokračovat s emailem",
+    "login_modal__indicator1_label": "Top 50 genAI aplikací",
+    "login_modal__indicator2_label": "Aktivní uživatelé",
+    "login_modal__indicator3_label": "Hodnocení 5 hvězdiček"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

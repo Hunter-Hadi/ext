@@ -57,7 +57,11 @@
     "input_content": "Մուտքագրեք բովանդակությունը",
     "discard": "Հեռացնել",
     "create": "Ստեղծել",
-    "update": "Թարմացնել"
+    "update": "Թարմացնել",
+    "continue_with_google": "Շարունակել Google-ով",
+    "continue_with_email": "Շարունակել էլ․ փոստով",
+    "privacy_policy": "Գաղտնիության պայմաններ",
+    "terms_of_service": "Ծառայության պայմաններ"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -787,7 +791,18 @@
     "sidebar__promotion_dialog__content_item8__description": "GPT-4o-ն 2 անգամ արագացում է GPT-4 Turbo-ից:",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" համար \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Կարողություն է հաշվարկել ձայնի, պատկերի և տեքստի միջև միաժամանակակից:",
-    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite-ը առանձնացնում է անսահմանափակ AI հարցումներ և բացում է բոլոր գործիքները:"
+    "sidebar__promotion_dialog__footer_tips": "MaxAI Elite-ը առանձնացնում է անսահմանափակ AI հարցումներ և բացում է բոլոր գործիքները:",
+    "login_modal__title__part1": "Մուտք գործելու համար",
+    "login_modal__title__part2": "ԱՆՎՃԱՐ",
+    "login_modal__title__part3": "AI հարցեր յուրաքանչյուր օր",
+    "login_modal__email__placeholder": "Մուտքագրեք ձեր էլ․ փոստի հասցեն...",
+    "login_modal__footer_text__part1": "Գրանցվելով, դուք համաձայնություն եք տալիս",
+    "login_modal__footer_text__part2": "և",
+    "login_modal__footer_text__tooltip": "Ձեր գաղտնիությունը մեր առաջին պաշտպանության է: Մենք միայն ձեր անունը և էլ․ փոստը հավաքում ենք մուտքի և կարգավորման համար, այնպես որ դատարկելու ենք և չենք տրամադրում ուրիշներին:",
+    "login_modal__login_with_email__title": "Շարունակել էլ․ փոստով",
+    "login_modal__indicator1_label": "Լավագույն 50 genAI հավելվածներ",
+    "login_modal__indicator2_label": "Ակտիվ օգտատերեր",
+    "login_modal__indicator3_label": "5-աստիճանաբարձր գնահատականներ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

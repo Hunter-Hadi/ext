@@ -60,7 +60,11 @@
     "input_content": "Laman ng Input",
     "discard": "I-discard",
     "create": "Lumikha",
-    "update": "I-update"
+    "update": "I-update",
+    "continue_with_google": "Magpatuloy gamit ang Google",
+    "continue_with_email": "Magpatuloy gamit ang email",
+    "privacy_policy": "Patakaran sa Privacy",
+    "terms_of_service": "Mga Tuntunin ng Serbisyo"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "Ang GPT-4o ay 2 beses mas mabilis kaysa sa GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" para sa \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Kayang mag-isip tungkol sa tunog, paningin, at teksto nang real-time.",
-    "sidebar__promotion_dialog__footer_tips": "Ang MaxAI Elite ay nag-aalok ng walang hanggang mga pagtatanong sa AI at nagbubukas ng lahat ng mga tampok."
+    "sidebar__promotion_dialog__footer_tips": "Ang MaxAI Elite ay nag-aalok ng walang hanggang mga pagtatanong sa AI at nagbubukas ng lahat ng mga tampok.",
+    "login_modal__title__part1": "Mag-sign in para makakuha ng",
+    "login_modal__title__part2": "LIBRE",
+    "login_modal__title__part3": "AI queries araw-araw",
+    "login_modal__email__placeholder": "Ilagay ang iyong email address...",
+    "login_modal__footer_text__part1": "Sa pamamagitan ng pag-sign up, sumasang-ayon ka sa",
+    "login_modal__footer_text__part2": "at",
+    "login_modal__footer_text__tooltip": "Ang iyong privacy ay aming pangunahing prayoridad. Kami lamang ang nagkakolekta ng iyong pangalan at email para sa login at pagsasaayos ng mga setting, ito ay pinapanatiling kumpidensyal at hindi ibinabahagi sa iba.",
+    "login_modal__login_with_email__title": "Magpatuloy gamit ang Email",
+    "login_modal__indicator1_label": "Top 50 genAI apps",
+    "login_modal__indicator2_label": "Aktibong mga gumagamit",
+    "login_modal__indicator3_label": "5-bituin na rating"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

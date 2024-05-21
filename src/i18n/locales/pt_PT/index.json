@@ -60,7 +60,11 @@
     "input_content": "Conteúdo de entrada",
     "discard": "Descartar",
     "create": "Criar",
-    "update": "Atualizar"
+    "update": "Atualizar",
+    "continue_with_google": "Continuar com o Google",
+    "continue_with_email": "Continuar com email",
+    "privacy_policy": "Política de Privacidade",
+    "terms_of_service": "Termos de Serviço"
   },
   "settings": {
     "left_menu__me": "Eu e o MaxAI",
@@ -790,7 +794,18 @@
     "sidebar__promotion_dialog__content_item8__description": "O GPT-4o é duas vezes mais rápido que o GPT-4 Turbo.",
     "sidebar__promotion_dialog__content_item9__title": "\"O\" para \"Omnimodel\"",
     "sidebar__promotion_dialog__content_item9__description": "Pode raciocinar em tempo real por meio de áudio, visão e texto.",
-    "sidebar__promotion_dialog__footer_tips": "O MaxAI Elite oferece consultas ilimitadas de IA e desbloqueia todos os recursos."
+    "sidebar__promotion_dialog__footer_tips": "O MaxAI Elite oferece consultas ilimitadas de IA e desbloqueia todos os recursos.",
+    "login_modal__title__part1": "Inicie sessão para obter",
+    "login_modal__title__part2": "GRÁTIS",
+    "login_modal__title__part3": "consultas de IA todos os dias",
+    "login_modal__email__placeholder": "Insira o seu endereço de email...",
+    "login_modal__footer_text__part1": "Ao registar-se, concorda com os",
+    "login_modal__footer_text__part2": "e",
+    "login_modal__footer_text__tooltip": "A sua privacidade é a nossa principal prioridade. Apenas recolhemos o seu nome e email para iniciar sessão e sincronizar definições, mantendo-os confidenciais e sem partilhar com mais ninguém.",
+    "login_modal__login_with_email__title": "Continuar com Email",
+    "login_modal__indicator1_label": "Top 50 aplicações genAI",
+    "login_modal__indicator2_label": "Utilizadores ativos",
+    "login_modal__indicator3_label": "Classificações de 5 estrelas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

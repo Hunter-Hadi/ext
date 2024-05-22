@@ -1,13 +1,11 @@
 import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { IUserChatMessage } from '@/features/chatgpt/types'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
+import SidebarContextCleared from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarContextCleared'
 import SidebarChatBoxUserTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarChatBoxUserTools'
 import SidebarUserMessageContexts from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
@@ -17,7 +15,6 @@ const BaseSidebarUserMessage: FC<{
   order?: number
   container?: HTMLElement
 }> = (props) => {
-  const { t } = useTranslation(['client'])
   const { message, order, container } = props
   const memoSx = useMemo(() => {
     return {
@@ -48,13 +45,7 @@ const BaseSidebarUserMessage: FC<{
 
   return (
     <Box component={'div'} className={'chat-message--user'}>
-      {showDivider && (
-        <Divider sx={{ mb: 2 }}>
-          <Typography color={'text.secondary'} fontSize={'12px'}>
-            {t('client:sidebar__conversation__message__context_cleared')}
-          </Typography>
-        </Divider>
-      )}
+      {showDivider && <SidebarContextCleared message={message} />}
       <SidebarUserMessageContexts message={message} container={container} />
       <Stack
         className={'chat-message--text'}

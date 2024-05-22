@@ -122,7 +122,6 @@ export default class PDFCitation implements ICitationService {
    * @param matches
    */
   async selectMatches(matches: IPDFCitationMatch[]) {
-    debugger
     if (!matches.length) return
 
     const start = matches[0]
@@ -148,12 +147,29 @@ export default class PDFCitation implements ICitationService {
       }
       return match.container
     }
-    const startMarked = getMarkedElement(start)
-    const endMarked = getMarkedElement(end)
+    let startMarked = getMarkedElement(start)
+    let endMarked = getMarkedElement(end)
+    if (!startMarked || !endMarked) {
+      // 没有找到对应节点，这里先选中第一页的内容
+      const spans = document.querySelectorAll(
+        `.pdfViewer .page[data-page-number="${start.pageNum}"] .textLayer span[role="presentation"]`,
+      )
+      startMarked = spans[0]
+      endMarked = spans[spans.length - 1]
+    }
     if (startMarked && endMarked) {
-      await this.scrollElement(startMarked)
+      // 有可能选中的第一个元素是页脚，这里判断一下
+      const targetElement =
+        startMarked.getBoundingClientRect().top <
+        endMarked.getBoundingClientRect().top
+          ? startMarked
+          : endMarked
+      await this.scrollElement(targetElement)
 
-      range.setStart(startMarked.firstChild!, start.offset)
+      range.setStart(
+        startMarked.firstChild!,
+        Math.min(startMarked.firstChild!.nodeValue?.length || 0, start.offset),
+      )
       range.setEnd(
         endMarked.firstChild!,
         Math.min(endMarked.firstChild!.nodeValue?.length || 0, end.offset + 1),
@@ -164,8 +180,6 @@ export default class PDFCitation implements ICitationService {
         selection.removeAllRanges()
         selection.addRange(range)
       }
-    } else {
-      // 其他情况，比如没找到节点的话
     }
   }
 
@@ -173,7 +187,6 @@ export default class PDFCitation implements ICitationService {
    * 查找文本
    */
   async findText(searchString: string, startIndex: number) {
-    debugger
     if (!searchString) {
       return ''
     }
@@ -215,7 +228,10 @@ export default class PDFCitation implements ICitationService {
         let itemIndex = 0
 
         textContent.items.some(
-          (item: { type: string; hasEOL: boolean; str: string }, index: number) => {
+          (
+            item: { type: string; hasEOL: boolean; str: string },
+            index: number,
+          ) => {
             if (item.type === 'beginMarkedContentProps') {
               parentNode = createNode(parentNode)
               return

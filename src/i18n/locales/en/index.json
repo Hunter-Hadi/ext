@@ -795,6 +795,8 @@
     "context_window__chat_history__empty__title": "No context menu history available yet",
     "context_window__chat_history__continue_in_chat__title": "Continue in chat",
     "sidebar__nav__concat_us__checkbox_title": "Allow error information collection",
+    "sidebar__context_clear__delete__title": "Confirm deletion",
+    "sidebar__context_clear__delete__description": "After deleting the context state, the chat will retain the context history.",
 
     "login_modal__title__part1": "Sign in to get",
     "login_modal__title__part2": "FREE",

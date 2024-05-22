@@ -42,9 +42,13 @@ const useSearchWithAI = () => {
     // 从后往前，直到include_history为false
     for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
       const message = clientConversationMessages[i] as IAIResponseMessage
-      memoQuestions.unshift(
-        message?.originalMessage?.metadata?.title?.title || message.text || '',
-      )
+      // search里chat的时候只会带有originalMessage的ai message
+      // 其他消息，比如use prompt的时候不应该携带进来
+      if (message?.originalMessage) {
+        memoQuestions.unshift(
+          message?.originalMessage?.metadata?.title?.title || message.text || '',
+        )
+      }
       if (message.type === 'ai') {
         if (message?.originalMessage?.metadata?.includeHistory === false) {
           break

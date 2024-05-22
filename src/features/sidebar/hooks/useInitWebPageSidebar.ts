@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useRecoilValue } from 'recoil'
 
+import { IAIProviderType } from '@/background/provider/chat'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -16,7 +17,6 @@ import {
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
-import { IAIProviderType } from '@/background/provider/chat'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat

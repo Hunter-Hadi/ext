@@ -29,41 +29,41 @@ const ClearAllChatButton: FC<IProps> = (props) => {
   const { onDelete, variant = 'buttonText', sx, conversationType } = props
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
-  // const { currentSidebarConversationType } = useClientConversation()
   const { currentSidebarConversationType } = useSidebarSettings()
-  const isContextWindow =
-    (conversationType || currentSidebarConversationType) === 'ContextMenu'
+  const currentConversationType =
+    conversationType || currentSidebarConversationType
+  const isContextWindow = currentConversationType === 'ContextMenu'
   const currentDeleteAllButtonTitle = useMemo(() => {
-    if (currentSidebarConversationType === 'Summary') {
+    if (currentConversationType === 'Summary') {
       return t('client:immersive_chat__delete_all_summary__button__title')
     }
-    if (currentSidebarConversationType === 'Search') {
+    if (currentConversationType === 'Search') {
       return t('client:immersive_chat__delete_all_search__button__title')
     }
-    if (currentSidebarConversationType === 'Art') {
+    if (currentConversationType === 'Art') {
       return t('client:immersive_chat__delete_all_art__button__title')
     }
-    if (currentSidebarConversationType === 'ContextMenu') {
+    if (currentConversationType === 'ContextMenu') {
       return t('client:immersive_chat__delete_all_context_menu__button__title')
     }
     return t('client:immersive_chat__delete_all_chat__button__title')
-  }, [t, currentSidebarConversationType])
+  }, [t, currentConversationType])
 
   const currentDeleteAllConfirmTitle = useMemo(() => {
-    if (currentSidebarConversationType === 'Summary') {
+    if (currentConversationType === 'Summary') {
       return t('client:immersive_chat__delete_all_summary__title')
     }
-    if (currentSidebarConversationType === 'Search') {
+    if (currentConversationType === 'Search') {
       return t('client:immersive_chat__delete_all_search__title')
     }
-    if (currentSidebarConversationType === 'Art') {
+    if (currentConversationType === 'Art') {
       return t('client:immersive_chat__delete_all_art__title')
     }
-    if (currentSidebarConversationType === 'ContextMenu') {
+    if (currentConversationType === 'ContextMenu') {
       return t('client:immersive_chat__delete_all_context_menu__title')
     }
     return t('client:immersive_chat__delete_all_chat__title')
-  }, [t, currentSidebarConversationType])
+  }, [t, currentConversationType])
 
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
@@ -110,7 +110,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
           PopperProps={{
             disablePortal: true,
           }}
-          floatingMenuTooltip={currentSidebarConversationType === 'ContextMenu'}
+          floatingMenuTooltip={currentConversationType === 'ContextMenu'}
           placement={'top'}
           title={currentDeleteAllButtonTitle}
         >
@@ -190,7 +190,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
                 onClick={async () => {
                   try {
                     await clientRemoveConversationsByType(
-                      currentSidebarConversationType,
+                      currentConversationType,
                     )
                     onDelete?.()
                   } catch (e) {

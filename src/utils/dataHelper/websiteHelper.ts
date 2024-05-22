@@ -102,6 +102,9 @@ export const getCurrentDomainHost = (fromUrl?: string) => {
     if (host.includes('larksuite.com')) {
       return 'larksuite.com'
     }
+    if (host === 'x.com') {
+      return 'twitter.com'
+    }
     return host
   } catch (e) {
     return ''

@@ -447,8 +447,7 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
     {
       enable: true,
       rootSelectors: [
-        'div[data-testid="toolBar"] [role="button"][data-testid="tweetButtonInline"]',
-        'div[data-testid="toolBar"] [role="button"][data-testid="tweetButton"]',
+        'div[data-testid="toolBar"] > div:nth-child(2) [role="button"][data-testid]',
       ],
       rootSelectorStyle: 'order:2;',
       rootParentDeep: 1,

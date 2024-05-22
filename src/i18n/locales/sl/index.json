@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Nadaljujte z e-pošto",
     "login_modal__indicator1_label": "Top 50 genAI aplikacij",
     "login_modal__indicator2_label": "Aktivni uporabniki",
-    "login_modal__indicator3_label": "Ocene s 5 zvezdicami"
+    "login_modal__indicator3_label": "Ocene s 5 zvezdicami",
+    "sidebar__context_clear__delete__title": "Izbriši vrstico \"Počisti kontekst\"",
+    "sidebar__context_clear__delete__description": "Brisanje te vrstice \"Počisti kontekst\" bo vključilo prejšnjo zgodovino klepeta s trenutnim kontekstom pogovora. AI bo upoštevala združeno zgodovino klepeta pri odgovarjanju na vaša sporočila."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

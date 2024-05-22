@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "เข้าสู่ระบบด้วยอีเมล",
     "login_modal__indicator1_label": "แอป genAI 50 อันดับแรก",
     "login_modal__indicator2_label": "ผู้ใช้งานที่ใช้งานอยู่",
-    "login_modal__indicator3_label": "คะแนน 5 ดาว"
+    "login_modal__indicator3_label": "คะแนน 5 ดาว",
+    "sidebar__context_clear__delete__title": "ลบบรรทัด \"ล้างบริบท\"",
+    "sidebar__context_clear__delete__description": "การลบบรรทัด \"ล้างบริบท\" นี้จะรวมประวัติการสนทนาก่อนหน้านี้กับบริบทการสนทนาปัจจุบัน ระบบ AI จะพิจารณาประวัติการสนทนาที่รวมกันเมื่อตอบกลับข้อความของคุณ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

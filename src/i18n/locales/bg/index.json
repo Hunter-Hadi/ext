@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Продължи с имейл",
     "login_modal__indicator1_label": "Топ 50 genAI приложения",
     "login_modal__indicator2_label": "Активни потребители",
-    "login_modal__indicator3_label": "Оценки с 5 звезди"
+    "login_modal__indicator3_label": "Оценки с 5 звезди",
+    "sidebar__context_clear__delete__title": "Изтриване на линията \"Контекстът е изчистен\"",
+    "sidebar__context_clear__delete__description": "Изтриването на тази линия \"Контекстът е изчистен\" ще включи предишната чат история с текущия контекст на разговора. Изкуственият интелект ще вземе предвид комбинираната чат история при отговаряне на вашите съобщения."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

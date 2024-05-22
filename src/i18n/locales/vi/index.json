@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Tiếp tục với Email",
     "login_modal__indicator1_label": "50 ứng dụng genAI hàng đầu",
     "login_modal__indicator2_label": "Người dùng hoạt động",
-    "login_modal__indicator3_label": "Đánh giá 5 sao"
+    "login_modal__indicator3_label": "Đánh giá 5 sao",
+    "sidebar__context_clear__delete__title": "Xóa dòng \"Đã xóa ngữ cảnh\"",
+    "sidebar__context_clear__delete__description": "Việc xóa dòng \"Đã xóa ngữ cảnh\" này sẽ bao gồm lịch sử trò chuyện trước đó với ngữ cảnh trò chuyện hiện tại. Trí tuệ nhân tạo sẽ xem xét lịch sử trò chuyện kết hợp khi phản hồi tin nhắn của bạn."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

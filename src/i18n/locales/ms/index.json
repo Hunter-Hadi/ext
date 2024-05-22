@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Teruskan dengan Emel",
     "login_modal__indicator1_label": "50 aplikasi genAI teratas",
     "login_modal__indicator2_label": "Pengguna aktif",
-    "login_modal__indicator3_label": "Penilaian 5 bintang"
+    "login_modal__indicator3_label": "Penilaian 5 bintang",
+    "sidebar__context_clear__delete__title": "Padam baris \"Konteks dibersihkan\"",
+    "sidebar__context_clear__delete__description": "Menghapus baris \"Konteks dibersihkan\" ini akan menyertakan riwayat chat sebelumnya dengan konteks percakapan saat ini. Kecerdasan Buatan akan mempertimbangkan gabungan riwayat chat saat merespons pesan Anda."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

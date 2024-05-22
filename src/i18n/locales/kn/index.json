@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "ಇಮೇಲ್ ಜೊತೆ ಮುಂದುವರಿಯಿರಿ",
     "login_modal__indicator1_label": "ಟಾಪ್ 50 ಜೆನ್AI ಅಪ್ಲಿಕೇಶನ್ಗಳು",
     "login_modal__indicator2_label": "ಸಕ್ರಿಯ ಬಳಕೆದಾರರು",
-    "login_modal__indicator3_label": "5 ತಾರೆಯ ಮೌಲ್ಯಮಾಪನಗಳು"
+    "login_modal__indicator3_label": "5 ತಾರೆಯ ಮೌಲ್ಯಮಾಪನಗಳು",
+    "sidebar__context_clear__delete__title": "ಕಂಟೆಕ್ಸ್ಟ್ ಅಳಿಸಿದ \"ಲೈನ್\" ಅನ್ನು ಅಳಿಸಿ",
+    "sidebar__context_clear__delete__description": "ಈ \"ಕಂಟೆಕ್ಸ್ಟ್ ಅಳಿಸಿದ\" ಲೈನ್ ಅನ್ನು ಅಳಿಸುವುದರಿಂದ, ಹಿಂದಿನ ಚಾಟ್ ಇತಿಹಾಸವನ್ನು ಪ್ರಸ್ತುತ ಸಂಭಾಷಣೆ ಸಂದರ್ಭದಲ್ಲಿ ಸೇರಿಸಲಾಗುತ್ತದೆ. ನೀವು ಸಂದೇಶಗಳಿಗೆ ಉತ್ತರಿಸುವಾಗ, ಯುನಿಟ್ ಚಾಟ್ ಇತಿಹಾಸವನ್ನು ಆಲೋಚಿಸುವುದು."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Continua con Email",
     "login_modal__indicator1_label": "Top 50 app genAI",
     "login_modal__indicator2_label": "Utenti attivi",
-    "login_modal__indicator3_label": "Valutazioni a 5 stelle"
+    "login_modal__indicator3_label": "Valutazioni a 5 stelle",
+    "sidebar__context_clear__delete__title": "Elimina la riga \"Contesto cancellato\"",
+    "sidebar__context_clear__delete__description": "L'eliminazione di questa riga \"Contesto cancellato\" includerà la cronologia della chat precedente con il contesto della conversazione attuale. L'IA prenderà in considerazione la cronologia della chat combinata quando risponderà ai tuoi messaggi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

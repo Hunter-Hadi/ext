@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Nastavi sa Emailom",
     "login_modal__indicator1_label": "Top 50 genAI aplikacija",
     "login_modal__indicator2_label": "Aktivni korisnici",
-    "login_modal__indicator3_label": "Ocene sa 5 zvezdica"
+    "login_modal__indicator3_label": "Ocene sa 5 zvezdica",
+    "sidebar__context_clear__delete__title": "Obriši liniju \"Očišćen kontekst\"",
+    "sidebar__context_clear__delete__description": "Brisanje ove linije \"Očišćen kontekst\" će uključiti prethodnu istoriju razgovora sa trenutnim kontekstom. Veštačka inteligencija će uzeti u obzir kombinovanu istoriju razgovora prilikom odgovaranja na vaše poruke."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

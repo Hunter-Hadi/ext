@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Magpatuloy gamit ang Email",
     "login_modal__indicator1_label": "Top 50 genAI apps",
     "login_modal__indicator2_label": "Aktibong mga gumagamit",
-    "login_modal__indicator3_label": "5-bituin na rating"
+    "login_modal__indicator3_label": "5-bituin na rating",
+    "sidebar__context_clear__delete__title": "Burahin ang linyang \"Nalinis ang Konteksto\"",
+    "sidebar__context_clear__delete__description": "Ang pagbubura ng linyang ito na \"Nalinis ang Konteksto\" ay maglalaman ng nakaraang kasaysayan ng chat kasama ang kasalukuyang konteksto ng usapan. Ang AI ay bibigyang-pansin ang pinagsamang kasaysayan ng chat kapag nagre-respond sa iyong mga mensahe."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

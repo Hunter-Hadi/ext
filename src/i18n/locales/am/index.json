@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "በ ኢሜይል ይግቡ",
     "login_modal__indicator1_label": "ብርሃን 50 የገንዘብ AI መስተዳድሪዎች",
     "login_modal__indicator2_label": "የእንግሊዝኛ ተጠቃሚዎች",
-    "login_modal__indicator3_label": "5-አመት የተለያዩ ምርጥ ሙዚቃዎች"
+    "login_modal__indicator3_label": "5-አመት የተለያዩ ምርጥ ሙዚቃዎች",
+    "sidebar__context_clear__delete__title": "የ\"ተወሰነ መግለጫ\" መርጧልን ማጥፋት",
+    "sidebar__context_clear__delete__description": "የተወሰነ \"ተወሰነ መግለጫ\" መርጧልን ማጥፋት የቀረበው የአሁኑ የድርጅት ዝርዝር ከቀሪው የአሁኑ የአይነት የድርጅት ታሪክ ጋር የሚገኙ የድርጅቶች ታሪኮችን የሚገኘውን የAI ተግባራት በመጠቀም ይመልከቱ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

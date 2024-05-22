@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Endelea na Barua pepe",
     "login_modal__indicator1_label": "Programu za genAI maarufu 50",
     "login_modal__indicator2_label": "Watumiaji wanaofanya kazi",
-    "login_modal__indicator3_label": "Tathmini za nyota 5"
+    "login_modal__indicator3_label": "Tathmini za nyota 5",
+    "sidebar__context_clear__delete__title": "Futa mstari wa \"Muktadha umefutwa\"",
+    "sidebar__context_clear__delete__description": "Kufuta mstari huu wa \"Muktadha umefutwa\" kutajumuisha historia ya mazungumzo ya awali pamoja na muktadha wa mazungumzo ya sasa. AI itazingatia historia ya mazungumzo iliyounganishwa wakati inajibu ujumbe wako."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

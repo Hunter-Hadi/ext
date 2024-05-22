@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Pokračovať s Emailom",
     "login_modal__indicator1_label": "Top 50 genAI aplikácií",
     "login_modal__indicator2_label": "Aktívni používatelia",
-    "login_modal__indicator3_label": "Hodnotenia s 5 hviezdičkami"
+    "login_modal__indicator3_label": "Hodnotenia s 5 hviezdičkami",
+    "sidebar__context_clear__delete__title": "Odstrániť riadok \"Kontext vymazaný\"",
+    "sidebar__context_clear__delete__description": "Vymazanie tohto riadku \"Kontext vymazaný\" zahrnie predchádzajúcu históriu chatu s aktuálnym kontextom konverzácie. AI bude pri odpovedaní na vaše správy brať do úvahy kombinovanú históriu chatu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

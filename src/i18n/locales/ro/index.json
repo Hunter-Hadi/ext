@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Continuă cu Email",
     "login_modal__indicator1_label": "Top 50 aplicații genAI",
     "login_modal__indicator2_label": "Utilizatori activi",
-    "login_modal__indicator3_label": "Evaluări cu 5 stele"
+    "login_modal__indicator3_label": "Evaluări cu 5 stele",
+    "sidebar__context_clear__delete__title": "Șterge linia \"Contextul a fost șters\"",
+    "sidebar__context_clear__delete__description": "Ștergerea acestei linii \"Contextul a fost șters\" va include istoricul conversației anterioare cu contextul actual. IA va lua în considerare istoricul chat-ului combinat atunci când răspunde la mesajele tale."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

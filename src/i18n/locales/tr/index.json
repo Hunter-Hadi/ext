@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "E-posta ile Devam Et",
     "login_modal__indicator1_label": "En İyi 50 genAI uygulaması",
     "login_modal__indicator2_label": "Aktif kullanıcılar",
-    "login_modal__indicator3_label": "5 yıldızlı derecelendirmeler"
+    "login_modal__indicator3_label": "5 yıldızlı derecelendirmeler",
+    "sidebar__context_clear__delete__title": "Bağlam temizlendi satırını sil",
+    "sidebar__context_clear__delete__description": "Bu \"Bağlam temizlendi\" satırını silmek, mevcut sohbet bağlamıyla önceki sohbet geçmişini içerecektir. Yapay zeka, mesajlarınıza yanıt verirken birleştirilmiş sohbet geçmiyini dikkate alacaktır."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

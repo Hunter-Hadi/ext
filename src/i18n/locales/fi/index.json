@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Jatka sähköpostilla",
     "login_modal__indicator1_label": "Top 50 genAI-sovellusta",
     "login_modal__indicator2_label": "Aktiiviset käyttäjät",
-    "login_modal__indicator3_label": "5 tähden arvostelut"
+    "login_modal__indicator3_label": "5 tähden arvostelut",
+    "sidebar__context_clear__delete__title": "Poista \"Konteksti tyhjennetty\" rivi",
+    "sidebar__context_clear__delete__description": "Tämän \"Konteksti tyhjennetty\" rivin poistaminen sisältää aiemman keskusteluhistorian nykyisen keskustelukontekstin kanssa. Tekoäly ottaa yhdistetyn keskusteluhistorian huomioon vastatessaan viesteihisi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

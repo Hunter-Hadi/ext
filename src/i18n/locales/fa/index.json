@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "ادامه با ایمیل",
     "login_modal__indicator1_label": "50 برنامه genAI برتر",
     "login_modal__indicator2_label": "کاربران فعال",
-    "login_modal__indicator3_label": "امتیازات 5 ستاره"
+    "login_modal__indicator3_label": "امتیازات 5 ستاره",
+    "sidebar__context_clear__delete__title": "حذف خط \"پاک کردن متن\"",
+    "sidebar__context_clear__delete__description": "حذف این خط \"پاک کردن متن\" شامل تاریخچه گفتگوی قبلی با متن فعلی خواهد بود. هنگام پاسخ دادن به پیام‌های شما، هوش مصنوعی تاریخچه گفتگوی ترکیبی را در نظر خواهد گرفت."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

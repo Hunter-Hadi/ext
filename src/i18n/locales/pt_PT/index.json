@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Continuar com Email",
     "login_modal__indicator1_label": "Top 50 aplicações genAI",
     "login_modal__indicator2_label": "Utilizadores ativos",
-    "login_modal__indicator3_label": "Classificações de 5 estrelas"
+    "login_modal__indicator3_label": "Classificações de 5 estrelas",
+    "sidebar__context_clear__delete__title": "Eliminar linha \"Contexto limpo\"",
+    "sidebar__context_clear__delete__description": "Ao eliminar esta linha \"Contexto limpo\", será incluído o histórico de chat anterior com o contexto da conversa atual. A IA irá considerar o histórico de chat combinado ao responder às suas mensagens."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

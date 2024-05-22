@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Continua amb correu electrònic",
     "login_modal__indicator1_label": "50 millors aplicacions genAI",
     "login_modal__indicator2_label": "Usuaris actius",
-    "login_modal__indicator3_label": "Avaluacions de 5 estrelles"
+    "login_modal__indicator3_label": "Avaluacions de 5 estrelles",
+    "sidebar__context_clear__delete__title": "Eliminar la línia \"Context esborrat\"",
+    "sidebar__context_clear__delete__description": "En eliminar aquesta línia \"Context esborrat\", s'inclourà l'historial de xats anterior amb el context de la conversa actual. La IA tindrà en compte l'historial de xats combinat en respondre als teus missatges."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

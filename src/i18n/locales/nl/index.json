@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Doorgaan met E-mail",
     "login_modal__indicator1_label": "Top 50 genAI-apps",
     "login_modal__indicator2_label": "Actieve gebruikers",
-    "login_modal__indicator3_label": "5-sterren beoordelingen"
+    "login_modal__indicator3_label": "5-sterren beoordelingen",
+    "sidebar__context_clear__delete__title": "Verwijder \"Context gewist\" regel",
+    "sidebar__context_clear__delete__description": "Het verwijderen van deze \"Context gewist\" regel zal de vorige chatgeschiedenis met de huidige gesprekscontext bevatten. De AI zal de gecombineerde chatgeschiedenis in overweging nemen bij het reageren op uw berichten."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

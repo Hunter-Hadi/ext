@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Continuer avec Email",
     "login_modal__indicator1_label": "Top 50 applications genAI",
     "login_modal__indicator2_label": "Utilisateurs actifs",
-    "login_modal__indicator3_label": "Évaluations 5 étoiles"
+    "login_modal__indicator3_label": "Évaluations 5 étoiles",
+    "sidebar__context_clear__delete__title": "Supprimer la ligne \"Contexte effacé\"",
+    "sidebar__context_clear__delete__description": "La suppression de cette ligne \"Contexte effacé\" inclura l'historique du chat précédent avec le contexte de conversation actuel. L'IA tiendra compte de l'historique du chat combiné lorsqu'elle répondra à vos messages."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

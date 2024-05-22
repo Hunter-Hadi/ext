@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "ईमेल के साथ जारी रखें",
     "login_modal__indicator1_label": "शीर्ष 50 genAI ऐप्स",
     "login_modal__indicator2_label": "सक्रिय उपयोगकर्ता",
-    "login_modal__indicator3_label": "5 स्टार रेटिंग"
+    "login_modal__indicator3_label": "5 स्टार रेटिंग",
+    "sidebar__context_clear__delete__title": "लाइन हटाएं \"संदर्भ साफ किया गया\"",
+    "sidebar__context_clear__delete__description": "इस \"संदर्भ साफ किया गया\" लाइन को हटाने से पहले चैट का पिछला इतिहास मौजूदा वार्तालाप संदर्भ के साथ शामिल होगा। AI आपके संदेशों का जवाब देते समय संयुक्त चैट इतिहास को ध्यान में रखेगा।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

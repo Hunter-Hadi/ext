@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Продолжить с электронной почтой",
     "login_modal__indicator1_label": "Топ-50 приложений genAI",
     "login_modal__indicator2_label": "Активные пользователи",
-    "login_modal__indicator3_label": "Рейтинг 5 звезд"
+    "login_modal__indicator3_label": "Рейтинг 5 звезд",
+    "sidebar__context_clear__delete__title": "Удалить строку \"Очистка контекста\"",
+    "sidebar__context_clear__delete__description": "Удаление этой строки \"Очистка контекста\" включит предыдущую историю чата с текущим контекстом разговора. Искусственный интеллект будет учитывать объединенную историю чата при ответе на ваши сообщения."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

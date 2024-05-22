@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "使用电子邮件继续",
     "login_modal__indicator1_label": "前50个genAI应用",
     "login_modal__indicator2_label": "活跃用户",
-    "login_modal__indicator3_label": "5星评级"
+    "login_modal__indicator3_label": "5星评级",
+    "sidebar__context_clear__delete__title": "删除“清除上下文”行",
+    "sidebar__context_clear__delete__description": "删除此“清除上下文”行将包括当前对话上下文的先前聊天记录。AI在回复您的消息时将考虑组合的聊天记录。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

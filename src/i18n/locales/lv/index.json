@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Turpināt ar e-pastu",
     "login_modal__indicator1_label": "Top 50 genAI lietotnes",
     "login_modal__indicator2_label": "Aktīvie lietotāji",
-    "login_modal__indicator3_label": "5 zvaigžņu novērtējumi"
+    "login_modal__indicator3_label": "5 zvaigžņu novērtējumi",
+    "sidebar__context_clear__delete__title": "Dzēst \"Notīrīt kontekstu\" rindu",
+    "sidebar__context_clear__delete__description": "Izdzēšot šo \"Notīrīt kontekstu\" rindu, tiks iekļauta iepriekšējā čata vēsture ar pašreizējo sarunu kontekstu. AI ņems vērā apvienoto čata vēsturi, atbildot uz jūsu ziņojumiem."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

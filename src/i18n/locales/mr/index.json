@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "ईमेलसह जारी ठेवा",
     "login_modal__indicator1_label": "टॉप 50 genAI अ‍ॅप्स",
     "login_modal__indicator2_label": "सक्रिय वापरकर्ते",
-    "login_modal__indicator3_label": "5-तारा मुल्यांकने"
+    "login_modal__indicator3_label": "5-तारा मुल्यांकने",
+    "sidebar__context_clear__delete__title": "मिटवा \"संदर्भ साफ केला\" लाइन",
+    "sidebar__context_clear__delete__description": "ही \"संदर्भ साफ केला\" लाइन मिटवताना, ताज्या चर्चेच्या संदर्भासह पूर्वीचे चॅट इतिहास समाविष्ट होईल. AI आपल्या संदेशांच्या प्रतिसादासाठी एकत्रित चॅट इतिहासाला मान्य करेल."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -802,7 +802,9 @@
     "login_modal__login_with_email__title": "Շարունակել էլ․ փոստով",
     "login_modal__indicator1_label": "Լավագույն 50 genAI հավելվածներ",
     "login_modal__indicator2_label": "Ակտիվ օգտատերեր",
-    "login_modal__indicator3_label": "5-աստիճանաբարձր գնահատականներ"
+    "login_modal__indicator3_label": "5-աստիճանաբարձր գնահատականներ",
+    "sidebar__context_clear__delete__title": "Ջնջել \"Դատարկված համապատասխանություն\" տողը",
+    "sidebar__context_clear__delete__description": "Այս \"Դատարկված համապատասխանության\" տողի ջնջումը կներառի նախորդ զրուցարանի պատմությունը ընթացիկ խորհրդատվականի հետ. Արվեստագետը կհասկանա միավորված զրուցարանի պատմությունը ձեր նամակներին պատասխանելիս:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

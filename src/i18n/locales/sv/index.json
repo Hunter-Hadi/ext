@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Fortsätt med E-post",
     "login_modal__indicator1_label": "Topp 50 genAI-appar",
     "login_modal__indicator2_label": "Aktiva användare",
-    "login_modal__indicator3_label": "5-stjärniga betyg"
+    "login_modal__indicator3_label": "5-stjärniga betyg",
+    "sidebar__context_clear__delete__title": "Radera raden \"Kontext rensad\"",
+    "sidebar__context_clear__delete__description": "Att radera denna rad \"Kontext rensad\" kommer att inkludera tidigare chatt historik med den aktuella konversationskontexten. AI:en kommer att ta hänsyn till den kombinerade chatt historiken när den svarar på dina meddelanden."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

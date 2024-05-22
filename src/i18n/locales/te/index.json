@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "ఇమెయిల్‌తో కొనసాగండి",
     "login_modal__indicator1_label": "50 టాప్ genAI యాప్‌లు",
     "login_modal__indicator2_label": "క్రియాశీల వాడుకరులు",
-    "login_modal__indicator3_label": "5-స్టార్ రేటింగ్‌లు"
+    "login_modal__indicator3_label": "5-స్టార్ రేటింగ్‌లు",
+    "sidebar__context_clear__delete__title": "కంటెంట్ తొలగించు పనిముట్లు తొలగించు",
+    "sidebar__context_clear__delete__description": "ఈ కంటెంట్ తొలగించు పనిముట్లను తొలగించడం వలన ప్రస్తుత సంభాషణ సందర్భంతో ముందస్తు చాట్ చరిత్రను కలిగి ఉంచేసేది. మీ సందేశాలకు స్పందనగా జవాబు ఇవ్వడానికి, AI మీ సందేశాలను సేరుకునే చాట్ చరిత్రను పరిగణించేది."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "המשך עם דוא\"ל",
     "login_modal__indicator1_label": "50 האפליקציות המובילות של genAI",
     "login_modal__indicator2_label": "משתמשים פעילים",
-    "login_modal__indicator3_label": "דירוג 5 כוכבים"
+    "login_modal__indicator3_label": "דירוג 5 כוכבים",
+    "sidebar__context_clear__delete__title": "מחק את השורה \"ניקוי ההקשר\"",
+    "sidebar__context_clear__delete__description": "מחיקת שורת \"ניקוי ההקשר\" תכלול את ההיסטוריה של הצ'אט הקודם עם ההקשר הנוכחי של השיחה. המערכת תשקול את ההיסטוריה המשולבת בעת הגבת הודעותיך."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

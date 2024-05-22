@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Продовжити з електронною поштою",
     "login_modal__indicator1_label": "Топ-50 додатків genAI",
     "login_modal__indicator2_label": "Активні користувачі",
-    "login_modal__indicator3_label": "Рейтинг 5 зірок"
+    "login_modal__indicator3_label": "Рейтинг 5 зірок",
+    "sidebar__context_clear__delete__title": "Видалити рядок \"Очистити контекст\"",
+    "sidebar__context_clear__delete__description": "Видалення цього рядка \"Очистити контекст\" включить попередню історію чату з поточним контекстом розмови. Штучний інтелект буде враховувати комбіновану історію чату при відповіді на ваші повідомлення."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "ઇમેઇલ સાથે ચાલો",
     "login_modal__indicator1_label": "Top 50 genAI એપ્સ",
     "login_modal__indicator2_label": "સક્રિય વપરાશકર્તાઓ",
-    "login_modal__indicator3_label": "5 તારાંકની રેટિંગ્સ"
+    "login_modal__indicator3_label": "5 તારાંકની રેટિંગ્સ",
+    "sidebar__context_clear__delete__title": "સંદર્ભ સાફ કરો લાઇન કાઢી નાખો",
+    "sidebar__context_clear__delete__description": "આ \"સંદર્ભ સાફ કરેલ\" લાઇનને કાઢી નાખવાથી હાલના ચેટ ઇતિહાસને સાથેજ માંગે છે. એઆઈ તમારા સંદેશોને જવાબ આપતાં સંયુક્ત ચેટ ઇતિહાસને ધ્યાનમાં લેશે."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

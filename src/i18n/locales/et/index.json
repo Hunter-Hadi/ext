@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Jätka e-posti teel",
     "login_modal__indicator1_label": "Top 50 genAI rakendust",
     "login_modal__indicator2_label": "Aktiivsed kasutajad",
-    "login_modal__indicator3_label": "5-tärni hinnangud"
+    "login_modal__indicator3_label": "5-tärni hinnangud",
+    "sidebar__context_clear__delete__title": "Kustuta \"Konteksti puhastatud\" rida",
+    "sidebar__context_clear__delete__description": "Selle \"Konteksti puhastatud\" rea kustutamine hõlmab eelmist vestluse ajalugu koos praeguse vestluskontekstiga. AI arvestab ühendatud vestluse ajalugu vastates teie sõnumitele."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

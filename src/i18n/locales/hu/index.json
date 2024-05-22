@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Folytatás e-maillel",
     "login_modal__indicator1_label": "Top 50 genAI alkalmazás",
     "login_modal__indicator2_label": "Aktív felhasználók",
-    "login_modal__indicator3_label": "5 csillagos értékelések"
+    "login_modal__indicator3_label": "5 csillagos értékelések",
+    "sidebar__context_clear__delete__title": "Törölje a \"Kontextus törölve\" sort",
+    "sidebar__context_clear__delete__description": "A \"Kontextus törölve\" sor törlése magában foglalja az előző csevegéstörténetet a jelenlegi beszélgetési kontextussal. Az AI figyelembe veszi a kombinált csevegéstörténetet, amikor válaszol az üzeneteire."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

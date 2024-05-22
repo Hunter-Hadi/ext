@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "ای میل کے ساتھ جاری رکھیں",
     "login_modal__indicator1_label": "تاپ 50 genAI ایپس",
     "login_modal__indicator2_label": "فعال صارفین",
-    "login_modal__indicator3_label": "5 ستارہ درجات"
+    "login_modal__indicator3_label": "5 ستارہ درجات",
+    "sidebar__context_clear__delete__title": "لائن \"کنٹیکسٹ صاف\" کو حذف کریں",
+    "sidebar__context_clear__delete__description": "اس \"کنٹیکسٹ صاف\" لائن کو حذف کرنے سے پہلے چیٹ کی تاریخ کو موجودہ بات چیت کے ساتھ شامل کیا جائے گا۔ جب آپ کے پیغاموں کا جواب دینے کے لئے AI استعمال ہوتا ہے تو وہ مشترکہ چیٹ کی تاریخ کو درنظر رکھتا ہے۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

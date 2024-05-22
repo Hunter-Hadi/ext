@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Συνέχεια με Email",
     "login_modal__indicator1_label": "Κορυφαίες 50 εφαρμογές genAI",
     "login_modal__indicator2_label": "Ενεργοί χρήστες",
-    "login_modal__indicator3_label": "Αξιολογήσεις 5 αστέρων"
+    "login_modal__indicator3_label": "Αξιολογήσεις 5 αστέρων",
+    "sidebar__context_clear__delete__title": "Διαγραφή γραμμής \"Εκκαθάριση περιβάλλοντος\"",
+    "sidebar__context_clear__delete__description": "Η διαγραφή αυτής της γραμμής \"Εκκαθάριση περιβάλλοντος\" θα συμπεριλάβει το προηγούμενο ιστορικό συνομιλίας με το τρέχον περιβάλλον συνομιλίας. Το AI θα λάβει υπόψη του το συνδυασμένο ιστορικό συνομιλίας κατά την απάντηση στα μηνύματά σας."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

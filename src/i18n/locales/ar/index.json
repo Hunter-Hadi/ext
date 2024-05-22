@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "متابعة باستخدام البريد الإلكتروني",
     "login_modal__indicator1_label": "أفضل 50 تطبيقًا للذكاء الاصطناعي",
     "login_modal__indicator2_label": "المستخدمون النشطون",
-    "login_modal__indicator3_label": "تقييمات بخمس نجوم"
+    "login_modal__indicator3_label": "تقييمات بخمس نجوم",
+    "sidebar__context_clear__delete__title": "حذف سطر \"تم مسح السياق\"",
+    "sidebar__context_clear__delete__description": "سيؤدي حذف هذا السطر \"تم مسح السياق\" إلى تضمين سجل المحادثة السابقة مع سياق المحادثة الحالي. ستأخذ الذكاء الاصطناعي بعين الاعتبار تاريخ المحادثة المجتمعة عند الرد على رسائلك."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

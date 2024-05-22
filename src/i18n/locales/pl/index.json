@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Kontynuuj z adresem e-mail",
     "login_modal__indicator1_label": "Top 50 aplikacji genAI",
     "login_modal__indicator2_label": "Aktywni użytkownicy",
-    "login_modal__indicator3_label": "Oceny 5 gwiazdek"
+    "login_modal__indicator3_label": "Oceny 5 gwiazdek",
+    "sidebar__context_clear__delete__title": "Usuń linię \"Wyczyszczony kontekst\"",
+    "sidebar__context_clear__delete__description": "Usunięcie tej linii \"Wyczyszczony kontekst\" spowoduje uwzględnienie wcześniejszej historii czatu wraz z bieżącym kontekstem rozmowy. AI będzie brać pod uwagę połączoną historię czatu przy odpowiadaniu na Twoje wiadomości."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

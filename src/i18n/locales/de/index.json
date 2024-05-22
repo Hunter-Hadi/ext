@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Mit E-Mail fortfahren",
     "login_modal__indicator1_label": "Top 50 genAI-Apps",
     "login_modal__indicator2_label": "Aktive Benutzer",
-    "login_modal__indicator3_label": "5-Sterne-Bewertungen"
+    "login_modal__indicator3_label": "5-Sterne-Bewertungen",
+    "sidebar__context_clear__delete__title": "Löschen Sie die Zeile \"Kontext gelöscht\"",
+    "sidebar__context_clear__delete__description": "Das Löschen dieser Zeile \"Kontext gelöscht\" umfasst den vorherigen Chat-Verlauf mit dem aktuellen Gesprächskontext. Die KI berücksichtigt den kombinierten Chat-Verlauf bei der Beantwortung Ihrer Nachrichten."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

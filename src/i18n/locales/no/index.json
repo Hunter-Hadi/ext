@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Fortsett med e-post",
     "login_modal__indicator1_label": "Topp 50 genAI-apper",
     "login_modal__indicator2_label": "Aktive brukere",
-    "login_modal__indicator3_label": "5-stjerners vurderinger"
+    "login_modal__indicator3_label": "5-stjerners vurderinger",
+    "sidebar__context_clear__delete__title": "Slett linjen \"Kontekst slettet\"",
+    "sidebar__context_clear__delete__description": "Hvis du sletter denne linjen \"Kontekst slettet\", vil den forrige samtalehistorikken bli inkludert sammen med gjeldende samtalekontekst. AI-en vil ta hensyn til den kombinerte samtalehistorikken når den svarer på meldingene dine."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

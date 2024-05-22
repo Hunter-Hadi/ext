@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Fortsæt med e-mail",
     "login_modal__indicator1_label": "Top 50 genAI-apps",
     "login_modal__indicator2_label": "Aktive brugere",
-    "login_modal__indicator3_label": "5-stjernede vurderinger"
+    "login_modal__indicator3_label": "5-stjernede vurderinger",
+    "sidebar__context_clear__delete__title": "Slet \"Ryd kontekst\" linje",
+    "sidebar__context_clear__delete__description": "Hvis du sletter denne \"Ryd kontekst\" linje, vil den tidligere chat-historik blive inkluderet sammen med den aktuelle samtalekontekst. AI'en vil tage den kombinerede chat-historik i betragtning, når den svarer på dine beskeder."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

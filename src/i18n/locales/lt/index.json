@@ -805,7 +805,9 @@
     "login_modal__login_with_email__title": "Tęsti su el. paštu",
     "login_modal__indicator1_label": "Top 50 genAI programos",
     "login_modal__indicator2_label": "Aktyvūs naudotojai",
-    "login_modal__indicator3_label": "5 žvaigždučių įvertinimai"
+    "login_modal__indicator3_label": "5 žvaigždučių įvertinimai",
+    "sidebar__context_clear__delete__title": "Ištrinti \"Valyti kontekstą\" eilutę",
+    "sidebar__context_clear__delete__description": "Ištrinant šią \"Valyti kontekstą\" eilutę, bus įtraukta ankstesnė pokalbio istorija su dabartiniu pokalbio kontekstu. Dirbtinio intelekto sistema atsižvelgs į visą pokalbio istoriją atsakydama į jūsų žinutes."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

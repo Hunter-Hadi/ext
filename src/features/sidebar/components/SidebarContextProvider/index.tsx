@@ -1,18 +1,20 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 
 import { ConversationStatusType } from '@/background/provider/chat'
+import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
+import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {
   ChatPanelContext,
   ChatPanelContextValue,
 } from '@/features/chatgpt/store/ChatPanelContext'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
 
 type ImmersiveSettingsKey = keyof Exclude<
   IChromeExtensionLocalStorage['immersiveSettings'],
@@ -23,6 +25,25 @@ const conversationTypeRouteMap: Record<string, ISidebarConversationType> = {
   chat: 'Chat',
   search: 'Search',
   art: 'Art',
+}
+
+// sidebar里切换用户和退出登录暂时没问题，immersive chat里先拆出来单独处理
+const SidebarImmersiveUserChange: FC<{ context: ChatPanelContextValue }> = (
+  props,
+) => {
+  const { context } = props
+  const { conversationId, createConversation } = context
+  useFocus(async () => {
+    if (!conversationId) return
+    const conversation = await clientGetConversation(conversationId)
+    if (conversation) {
+      const userId = await getMaxAIChromeExtensionUserId()
+      if (conversation.authorId !== userId) {
+        createConversation(conversation.type)
+      }
+    }
+  })
+  return null
 }
 
 const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
@@ -222,6 +243,9 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
   return (
     <ChatPanelContext.Provider value={sidebarContextValue}>
       {initialized && children}
+      {initialized && (
+        <SidebarImmersiveUserChange context={sidebarContextValue} />
+      )}
     </ChatPanelContext.Provider>
   )
 }

@@ -19,6 +19,7 @@ export class ActionFetchActions extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      // 本次ask
       const needHistory = this.parameters.ActionFetchActionsWithHistory || false
       let actions = await clientGetContextMenuRunActions(
         this.parameters.template || '',

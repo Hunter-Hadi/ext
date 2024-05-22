@@ -24,6 +24,7 @@ import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
 import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const getYouTubeUrlTime = (url: string) => {
   try {
@@ -242,8 +243,11 @@ const CustomMarkdown: FC<{
 }> = (props) => {
   const { children } = props
 
-  // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号
+  // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号，目前只针对PDF显示
   const citations = useMemo(() => {
+    if (getPageSummaryType() !== 'PDF_CRX_SUMMARY') {
+      return
+    }
     return props.citations?.filter((item) => item.start_index > -1)
   }, [props.citations])
 

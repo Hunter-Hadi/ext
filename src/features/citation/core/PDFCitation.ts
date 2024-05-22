@@ -1,4 +1,9 @@
-import { ICitationService } from '@/features/citation/types'
+import {
+  ICitationMatch,
+  ICitationNode,
+  ICitationService,
+} from '@/features/citation/types'
+import { createNode } from '@/features/citation/utils'
 
 // https://github.com/mozilla/pdf.js/issues/1875
 // pdf.js可以用这种方式去全文匹配，如果是换行必须要用空格去替换掉否则匹配不出来
@@ -9,11 +14,8 @@ import { ICitationService } from '@/features/citation/types'
 // PDFViewerApplication.findBar.findNextButton.click();
 // renderTextLayer
 
-export interface IPDFCitationMatch {
+export interface IPDFCitationMatch extends ICitationMatch {
   pageNum: number
-  markedIndex: number
-  markedChildIndex: number
-  offset: number
 }
 
 export default class PDFCitation implements ICitationService {
@@ -21,7 +23,12 @@ export default class PDFCitation implements ICitationService {
   private pdfDocument: any
   private pdfViewer: any
 
+  // 记录查询的缓存
   caches: Map<string, IPDFCitationMatch[]> = new Map()
+  // 记录每页的字符数量
+  pages: number[] = []
+  // 查询状态
+  loading = false
 
   constructor() {
     this.init()
@@ -93,7 +100,6 @@ export default class PDFCitation implements ICitationService {
     const container = document.querySelector('#viewerContainer')
     if (!container || !element) return
 
-    // 滚动到页面正中间
     const containerRect = container.getBoundingClientRect()
     const elementRect = element.getBoundingClientRect()
     // 计算目标元素相对于容器的位置
@@ -105,7 +111,6 @@ export default class PDFCitation implements ICitationService {
     // 计算滚动位置，使目标元素位于容器顶部加上 offset
     const scrollTop = elementOffsetTop - 50
 
-    // 滚动页面
     container.scrollTo({
       top: scrollTop,
       behavior: 'auto',
@@ -117,6 +122,7 @@ export default class PDFCitation implements ICitationService {
    * @param matches
    */
   async selectMatches(matches: IPDFCitationMatch[]) {
+    debugger
     if (!matches.length) return
 
     const start = matches[0]
@@ -134,18 +140,13 @@ export default class PDFCitation implements ICitationService {
     // 选中元素
     const range = document.createRange()
     const getMarkedElement = (match: IPDFCitationMatch) => {
-      if (match.markedIndex >= 0) {
-        // 有.markedContent元素
-        return document.querySelector(
-          `.pdfViewer .page[data-page-number="${
-            match.pageNum
-          }"] .textLayer .markedContent:nth-of-type(${match.markedIndex + 1})`,
-        )?.children[match.markedChildIndex]
+      if (typeof match.container === 'string') {
+        return document.querySelector(match.container)
       }
-      // 无.markedContent元素
-      return document.querySelector(
-        `.pdfViewer .page[data-page-number="${match.pageNum}"] .textLayer`,
-      )?.children[match.markedChildIndex]
+      if (typeof match.container === 'function') {
+        return match.container()
+      }
+      return match.container
     }
     const startMarked = getMarkedElement(start)
     const endMarked = getMarkedElement(end)
@@ -163,75 +164,104 @@ export default class PDFCitation implements ICitationService {
         selection.removeAllRanges()
         selection.addRange(range)
       }
+    } else {
+      // 其他情况，比如没找到节点的话
     }
   }
 
   /**
    * 查找文本
    */
-  async findText(searchString: string) {
+  async findText(searchString: string, startIndex: number) {
+    debugger
+    if (!searchString) {
+      return ''
+    }
     if (this.caches.get(searchString)) {
       const result = this.caches.get(searchString)!
       await this.selectMatches(result)
       return `${result[0] ? result[0].pageNum : ''}`
     }
+    if (this.loading) {
+      return ''
+    }
 
     const numPages = this.pdfDocument.numPages
     let matches: IPDFCitationMatch[] = []
     let currentContent = ''
+    let totalPageTextLength = 0
+    this.loading = true
 
     /**
      * 这里匹配内容的算法要优化，目前效率不太行
      */
-    for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-      const page = await this.pdfDocument.getPage(pageNum)
-      const textContent = await page.getTextContent({
-        includeMarkedContent: true,
-      })
+    const findByPages = async (start: number, end: number) => {
+      for (let pageNum = start; pageNum <= end; pageNum++) {
+        const page = await this.pdfDocument.getPage(pageNum)
+        const textContent = await page.getTextContent({
+          includeMarkedContent: true,
+        })
 
-      let markedIndex = -1
-      let markedChildIndex = -1
+        if (typeof this.pages[pageNum - 1] === 'number') {
+          totalPageTextLength += this.pages[pageNum - 1]
+          if (startIndex > totalPageTextLength - 1) {
+            continue
+          }
+        }
 
-      textContent.items.some(
-        (item: { type: string; hasEOL: boolean; str: string }) => {
-          if (item.type === 'beginMarkedContentProps') {
-            markedIndex += 1
-            markedChildIndex = -1
-            return
-          }
-          if (item.type === 'endMarkedContent') {
-            return
-          }
-          let startOffset = 0
-          let offset = 0
-          markedChildIndex += 1
-          const str = item.hasEOL ? `${item.str}\n` : item.str
-          let isEqual = false
-          if (
-            str ===
-            searchString.slice(
-              currentContent.length,
-              currentContent.length + str.length,
-            )
-          ) {
-            isEqual = true
-            currentContent += str
-            if (currentContent.length === searchString.length) {
-              offset = str.length
+        const pageNode = createNode()
+        let parentNode: ICitationNode | null = pageNode
+        let pageTextLength = 0
+        let itemIndex = 0
+
+        textContent.items.some(
+          (item: { type: string; hasEOL: boolean; str: string }, index: number) => {
+            if (item.type === 'beginMarkedContentProps') {
+              parentNode = createNode(parentNode)
+              return
             }
-          }
-          if (!isEqual) {
+            if (item.type === 'endMarkedContent') {
+              parentNode = parentNode?.parent || null
+              return
+            }
+            const currentNode = createNode(parentNode)
+
+            let startOffset = 0
+            let endOffset = 0
+            const str = item.hasEOL ? `${item.str}\n` : item.str
+            pageTextLength += str.length
+            itemIndex = index
+
+            if (item.hasEOL && item.str) {
+              // 这种元素实际会在下一个插入一个<br/>节点
+              createNode(parentNode)
+            }
+
+            if (
+              currentContent &&
+              str.length <= searchString.length - currentContent.length
+            ) {
+              if (
+                str[0] !== searchString[currentContent.length] &&
+                str[str.length - 1] !==
+                  searchString[currentContent.length + str.length - 1]
+              ) {
+                matches = []
+                currentContent = ''
+                return
+              }
+            }
             for (let i = 0; i < str.length; i++) {
               if (str[i] === searchString[currentContent.length]) {
                 if (!currentContent.length) {
                   // 首次匹配中
                   startOffset = i
-                  offset = i
+                  endOffset = i
                 }
                 currentContent += str[i]
                 if (currentContent.length === searchString.length) {
                   // 匹配完毕
-                  offset = i
+                  endOffset = i
                   break
                 }
               } else {
@@ -240,43 +270,94 @@ export default class PDFCitation implements ICitationService {
                 currentContent = ''
               }
             }
-          }
-          if (currentContent.length) {
-            if (
-              currentContent.length === searchString.length &&
-              !matches.length
-            ) {
-              // 匹配项就处于当前text内，所以先插入一个起始的匹配
-              matches.push({
-                pageNum,
-                markedIndex,
-                markedChildIndex,
-                offset: startOffset,
-              })
+            if (currentContent.length) {
+              if (
+                !matches.length ||
+                currentContent.length === searchString.length
+              ) {
+                let node: ICitationNode | null = parentNode
+                let markedContentSelector = ''
+                while (node && node !== pageNode) {
+                  // 有.markedContent元素
+                  markedContentSelector =
+                    ` > .markedContent:nth-child(${node.index + 1})` +
+                    markedContentSelector
+                  node = node.parent
+                }
+                const container = `.pdfViewer .page[data-page-number="${pageNum}"] .textLayer${markedContentSelector} > :nth-child(${
+                  currentNode.index + 1
+                })`
+                if (!matches.length) {
+                  // 匹配项就处于当前text内，所以先插入一个起始的匹配
+                  matches.push({
+                    pageNum,
+                    text: str,
+                    container,
+                    offset: startOffset,
+                  })
+                }
+                if (currentContent.length === searchString.length) {
+                  // 结尾项
+                  matches.push({
+                    pageNum,
+                    text: str,
+                    container,
+                    offset: endOffset,
+                  })
+                }
+              }
             }
-            matches.push({
-              pageNum,
-              markedIndex,
-              markedChildIndex,
-              offset,
-            })
-          }
-          if (item.hasEOL && item.str) {
-            // 这种元素实际会在下一个插入一个<br/>节点
-            markedChildIndex += 1
-          }
-          if (currentContent.length === searchString.length) {
-            return true
-          }
-        },
-      )
+            if (currentContent.length === searchString.length) {
+              return true
+            }
+          },
+        )
 
+        pageTextLength += 1
+        if (itemIndex === textContent.items.length - 1) {
+          this.pages[pageNum - 1] = pageTextLength
+        }
+
+        if (currentContent.length === searchString.length) {
+          break
+        }
+
+        if (currentContent.length) {
+          currentContent += '\n'
+        }
+      }
+    }
+
+    const step = 100
+    let beforeStart = 1
+    let afterStart = numPages
+
+    while (beforeStart <= afterStart) {
+      // 先找开头100页
+      let end = Math.min(numPages, beforeStart + step)
+      await findByPages(beforeStart, end)
       if (currentContent.length === searchString.length) {
         break
       }
+      while (currentContent.length > 0 && beforeStart < end) {
+        // 继续找下一页
+        beforeStart = end + 1
+        end = Math.min(numPages, beforeStart + 1)
+        await findByPages(beforeStart, end)
+      }
 
-      if (currentContent.length) {
-        currentContent += '\n'
+      // 找尾部100页
+      afterStart = Math.max(end + 1, afterStart - step + 1)
+      end = Math.min(numPages, afterStart + step)
+      await findByPages(afterStart, end)
+      if (currentContent.length === searchString.length) {
+        break
+      }
+      while (currentContent.length > 0 && afterStart < end) {
+        // 继续找下一页
+        afterStart = end + 1
+        end = Math.min(numPages, afterStart + 1)
+        await findByPages(afterStart, end)
       }
     }
 
@@ -286,91 +367,164 @@ export default class PDFCitation implements ICitationService {
       await this.selectMatches(matches)
     }
 
+    this.loading = false
     return `${matches[0] ? matches[0].pageNum : ''}`
-
-    // 以下方法原本是想去计算位置然后用一个div模拟高亮选区，实际计算出的坐标有点问题，弃用掉
-    // for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-    //   const page = await this.pdfDocument.getPage(pageNum)
-    //   const textContent = await page.getTextContent()
-    //   // const viewport = page.getViewport({
-    //   //   scale: scale * pdfjsLib.PixelsPerInch.PDF_TO_CSS_UNITS,
-    //   //   rotation: (page.rotate) % 360,
-    //   // })
-    //   const viewport = page.getViewport({ scale })
-    //   const { items, styles } = textContent
-    //
-    //   // const pageWidth = viewport.width
-    //   // const pageHeight = viewport.height
-    //   const pageWidth = page.view[2] - page.view[0]
-    //   const pageHeight = page.view[3] = page.view[1]
-    //
-    //   outer: for (const item of items) {
-    //     const str = item.hasEOL ? `${item.str}\n` : item.str
-    //     for (let i = 0; i < str.length; i++) {
-    //       if (currentContent.length === searchString.length) {
-    //         this.PDFViewerApplication.page = pageNum
-    //         return matches
-    //       }
-    //       if (str[i] !== searchString[currentContent.length + i]) {
-    //         matches = []
-    //         currentContent = ''
-    //         continue outer
-    //       }
-    //     }
-    //     // const tx = transform(viewport.transform, item.transform)
-    //     const [scaleX, shearY, shearX, scaleY, translateX, translateY] =
-    //       item.transform
-    //     // let angle = Math.atan2(tx[1], tx[0])
-    //     // const style = styles[item.fontName]
-    //     //
-    //     // if (style.vertical) {
-    //     //   angle += Math.PI / 2
-    //     // }
-    //     // const fontHeight = Math.hypot(tx[2], tx[3])
-    //     // const fontAscent = fontHeight * getAscent(style.fontFamily, ctx);
-    //     // let left, top
-    //     //
-    //     // if (angle === 0) {
-    //     //   left = tx[4]
-    //     //   top = tx[5]
-    //     // } else {
-    //     //   left = tx[4] + fontAscent * Math.sin(angle);
-    //     //   top = tx[5] - fontAscent * Math.cos(angle);
-    //     // }
-    //
-    //     const container = this.PDFViewerApplication.pdfViewer.getPageView(
-    //       pageNum - 1,
-    //     ).div
-    //
-    //     // 计算缩放后的位置和大小
-    //     const scaledWidth =
-    //       (item.width / pageWidth) * container.clientWidth * scale
-    //     const scaledHeight =
-    //       (item.height / pageHeight) * container.clientHeight * scale
-    //
-    //     // 转换为 HTML 坐标系（左上角）
-    //     const x = (translateX / pageWidth) * 100 + '%'
-    //     const y =
-    //       ((pageHeight - (translateY + item.height)) / pageHeight) * 100 + '%'
-    //     // const x = (translateX / pageWidth) * container.clientWidth * scale
-    //     // const y =
-    //     //   (container.clientHeight -
-    //     //     (translateY / pageHeight) * container.clientHeight -
-    //     //     scaledHeight) *
-    //     //   scale
-    //
-    //     // const x = tx[4]
-    //     // const y = tx[5]
-    //
-    //     const layout = {
-    //       top: y,
-    //       left: x,
-    //       right: x + scaledWidth,
-    //       bottom: y + scaledHeight,
-    //       width: scaledWidth,
-    //       height: scaledHeight,
-    //     }
-    //   }
-    // }
   }
+
+  /**
+   * 查找文本
+   * 大文本会切割收尾，按照startIndex查找不准确
+   */
+  // async findText(searchString: string, startIndex: number) {
+  //   if (!searchString) {
+  //     return ''
+  //   }
+  //   if (this.caches.get(searchString)) {
+  //     const result = this.caches.get(searchString)!
+  //     await this.selectMatches(result)
+  //     return `${result[0] ? result[0].pageNum : ''}`
+  //   }
+  //
+  //   const numPages = this.pdfDocument.numPages
+  //   const matches: IPDFCitationMatch[] = []
+  //   let totalPageTextLength = 0
+  //   let beforePageTextLength = 0
+  //
+  //   /**
+  //    * 这里匹配内容的算法要优化，目前效率不太行
+  //    */
+  //   for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+  //     const page = await this.pdfDocument.getPage(pageNum)
+  //     const textContent = await page.getTextContent({
+  //       includeMarkedContent: true,
+  //     })
+  //
+  //     if (typeof this.pages[pageNum - 2] === 'number') {
+  //       beforePageTextLength += this.pages[pageNum - 2]
+  //     }
+  //
+  //     if (typeof this.pages[pageNum - 1] === 'number') {
+  //       totalPageTextLength += this.pages[pageNum - 1]
+  //       if (startIndex > totalPageTextLength - 1) {
+  //         continue
+  //       }
+  //     }
+  //
+  //     const pageNode = createNode()
+  //     let parentNode: ICitationNode | null = pageNode
+  //     let pageTextLength = 0
+  //
+  //     textContent.items.some(
+  //       (item: { type: string; hasEOL: boolean; str: string }) => {
+  //         if (item.type === 'beginMarkedContentProps') {
+  //           parentNode = createNode(parentNode)
+  //           return
+  //         }
+  //         if (item.type === 'endMarkedContent') {
+  //           parentNode = parentNode?.parent || null
+  //           return
+  //         }
+  //         const currentNode = createNode(parentNode)
+  //
+  //         const str = item.hasEOL ? `${item.str}\n` : item.str
+  //
+  //         if (item.hasEOL && item.str) {
+  //           // 这种元素实际会在下一个插入一个<br/>节点
+  //           createNode(parentNode)
+  //         }
+  //
+  //         if (matches.length === 2) {
+  //           pageTextLength += str.length
+  //           return
+  //         }
+  //
+  //         if (
+  //           startIndex >= beforePageTextLength + pageTextLength &&
+  //           startIndex <= beforePageTextLength + pageTextLength + str.length - 1
+  //         ) {
+  //           debugger
+  //           // 起始位置
+  //           let node: ICitationNode | null = parentNode
+  //           let markedContentSelector = ''
+  //           while (node && node !== pageNode) {
+  //             // 有.markedContent元素
+  //             markedContentSelector =
+  //               ` > .markedContent:nth-child(${node.index + 1})` +
+  //               markedContentSelector
+  //             node = node.parent
+  //           }
+  //           const container = `.pdfViewer .page[data-page-number="${pageNum}"] .textLayer${markedContentSelector} > :nth-child(${
+  //             currentNode.index + 1
+  //           })`
+  //           for (let i = 0; i < str.length; i++) {
+  //             if (beforePageTextLength + pageTextLength + i === startIndex) {
+  //               // 首部匹配中
+  //               matches.push({
+  //                 pageNum,
+  //                 text: str,
+  //                 container,
+  //                 offset: i,
+  //               })
+  //               break
+  //             }
+  //           }
+  //         }
+  //         if (
+  //           startIndex + searchString.length >=
+  //           beforePageTextLength + pageTextLength &&
+  //           startIndex + searchString.length <=
+  //           beforePageTextLength + pageTextLength + str.length
+  //         ) {
+  //           // 结束位置
+  //           let node: ICitationNode | null = parentNode
+  //           let markedContentSelector = ''
+  //           while (node && node !== pageNode) {
+  //             // 有.markedContent元素
+  //             markedContentSelector =
+  //               ` > .markedContent:nth-child(${node.index + 1})` +
+  //               markedContentSelector
+  //             node = node.parent
+  //           }
+  //           const container = `.pdfViewer .page[data-page-number="${pageNum}"] .textLayer${markedContentSelector} > :nth-child(${
+  //             currentNode.index + 1
+  //           })`
+  //           for (let i = 0; i < str.length; i++) {
+  //             if (
+  //               beforePageTextLength + pageTextLength + i ===
+  //               startIndex + searchString.length - 1
+  //             ) {
+  //               // 尾部匹配中
+  //               matches.push({
+  //                 pageNum,
+  //                 text: str,
+  //                 container,
+  //                 offset: i,
+  //               })
+  //               break
+  //             }
+  //           }
+  //         }
+  //
+  //         pageTextLength += str.length
+  //
+  //         return
+  //       },
+  //     )
+  //
+  //     pageTextLength += 1
+  //     this.pages[pageNum - 1] = pageTextLength
+  //
+  //     if (matches.length === 2) {
+  //       break
+  //     }
+  //   }
+  //
+  //   this.caches.set(searchString, matches)
+  //
+  //   if (matches.length) {
+  //     await this.selectMatches(matches)
+  //   }
+  //
+  //   return `${matches[0] ? matches[0].pageNum : ''}`
+  // }
 }

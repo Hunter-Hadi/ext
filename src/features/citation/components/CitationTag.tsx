@@ -20,10 +20,16 @@ const CitationTag: FC<IProps> = (props) => {
   const handleClick = async () => {
     if (loading) return
     if (!title) setLoading(true)
-    const { content } = citations[index]
+    const { content, start_index } = citations[index]
     const citationService = CitationFactory.getCitationService()
+    if (citationService?.loading) {
+      setLoading(false)
+      return
+    }
     if (citationService) {
-      const title = await citationService.findText(content).catch(console.error)
+      const title = await citationService
+        .findText(content, start_index)
+        .catch(console.error)
       setTitle(title || '')
     }
     setLoading(false)

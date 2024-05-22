@@ -16,6 +16,7 @@ import {
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
+import { IAIProviderType } from '@/background/provider/chat'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat
@@ -202,8 +203,10 @@ const useInitWebPageSidebar = () => {
   useEffect(() => {
     const listener = (event: any) => {
       const aiMessage: IAIResponseMessage = event?.detail?.aiMessage
+      const aiProvider: IAIProviderType = event?.detail?.aiProvider
+      const aiModel: string = event?.detail?.aiModel
       if (aiMessage) {
-        continueInSearchWithAI(aiMessage).then().catch()
+        continueInSearchWithAI(aiMessage, aiProvider, aiModel).then().catch()
       }
     }
     window.addEventListener('MaxAIContinueSearchWithAI', listener)

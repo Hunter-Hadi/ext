@@ -211,6 +211,7 @@ const AISearchContentCard: FC<IProps> = ({
           <SearchWithAIFooter
             aiMessage={memoAIResponseMessage}
             handleAskQuestion={handleAskQuestion}
+            aiProvider={currentAIProvider}
           />
         </>
       ) : null}

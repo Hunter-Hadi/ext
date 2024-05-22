@@ -46,7 +46,7 @@ const SidebarContextCleared: FC<{
       meta: {
         includeHistory: true,
       },
-    } as IChatMessage
+    } as any
     await clientChatConversationModifyChatMessages(
       'update',
       conversationId,

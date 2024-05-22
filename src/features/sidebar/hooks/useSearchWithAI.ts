@@ -19,6 +19,8 @@ import {
   isShowChatBox,
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { IAIProviderType } from '@/background/provider/chat'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 const useSearchWithAI = () => {
   const { currentSidebarConversationType, updateSidebarConversationType } =
@@ -46,7 +48,9 @@ const useSearchWithAI = () => {
       // 其他消息，比如use prompt的时候不应该携带进来
       if (message?.originalMessage) {
         memoQuestions.unshift(
-          message?.originalMessage?.metadata?.title?.title || message.text || '',
+          message?.originalMessage?.metadata?.title?.title ||
+            message.text ||
+            '',
         )
       }
       if (message.type === 'ai') {
@@ -140,7 +144,11 @@ const useSearchWithAI = () => {
   /**
    * 专门搜索引擎的search with ai板块往sidebar继续聊天的入口
    */
-  const continueInSearchWithAI = async (startMessage: IAIResponseMessage) => {
+  const continueInSearchWithAI = async (
+    startMessage: IAIResponseMessage,
+    aiProvider: IAIProviderType,
+    aiModel: string,
+  ) => {
     if (!isShowChatBox()) {
       showChatBox()
     }
@@ -148,13 +156,22 @@ const useSearchWithAI = () => {
       await updateSidebarConversationType('Search')
     }
     let cacheConversationId = await getSearchWithAIConversationId()
+    let conversation: IChatConversation | null = null
+    if (cacheConversationId) {
+      conversation = await clientGetConversation(cacheConversationId)
+    }
     if (
-      cacheConversationId &&
-      (await clientGetConversation(cacheConversationId))
+      conversation &&
+      conversation.meta.AIProvider === aiProvider &&
+      conversation.meta.AIModel === aiModel
     ) {
       // do nothing
     } else {
-      cacheConversationId = await createConversation('Search')
+      cacheConversationId = await createConversation(
+        'Search',
+        aiProvider,
+        aiModel,
+      )
     }
     await clientChatConversationModifyChatMessages(
       'add',

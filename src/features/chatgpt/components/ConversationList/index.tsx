@@ -17,7 +17,7 @@ import { useRecoilState } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
-import InfiniteLoaderWrapper from '@/features/chatgpt/components/ConversationList/InfiniteLoaderWrapper'
+import InfiniteFixedSizeLoaderWrapper from '@/features/chatgpt/components/ConversationList/InfiniteFixedSizeLoaderWrapper'
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import useAIProviderModels, {
   useAIProviderModelsMap,
@@ -156,7 +156,7 @@ const ConversationList: FC<IProps> = (props) => {
           </Typography>
         </Stack>
         <AppLoadingLayout loading={loading}>
-          <InfiniteLoaderWrapper
+          <InfiniteFixedSizeLoaderWrapper
             loadNextPage={() => fetchNextPage()}
             hasNextPage={hasNextPage}
             isNextPageLoading={isFetching}

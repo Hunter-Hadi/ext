@@ -134,6 +134,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
     <>
       {isLoading ? (
         <Skeleton
+          className={'maxai--lazy-load--skeleton'}
           id={`lazy-image-${lazyImageIdRef.current}`}
           variant="rectangular"
           height={height}

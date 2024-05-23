@@ -6,12 +6,11 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import SidebarChatBoxUserTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarChatBoxUserTools'
 import SidebarUserMessageContexts from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
-
-import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message';
 
 const BaseSidebarUserMessage: FC<{
   message: IUserChatMessage

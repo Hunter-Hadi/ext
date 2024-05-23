@@ -100,6 +100,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
     console.log(
       `ConversationDB[V3][对话消息列表] conversationId[${conversationId}]`,
       data?.pageParams,
+      data?.pages,
     )
     // 反向遍历，保证消息列表是按照时间顺序排列， 用concat是为了避免直接修改messages
     const newMessages =

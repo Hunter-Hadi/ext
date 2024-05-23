@@ -1,9 +1,8 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import dayjs from 'dayjs'
-import React, { FC, useMemo, useRef, useState } from 'react'
+import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react'
 
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevContent from '@/components/DevContent'
 import {
   isAIMessage,
@@ -30,10 +29,14 @@ interface IProps {
   className?: string
   loading?: boolean
   container?: HTMLElement
+  onChangeHeight?: (height: number) => void
 }
 
 const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
-  const { message, className, loading, order, container } = props
+  const { message, className, loading, order, container, onChangeHeight } =
+    props
+  const messageBoxRef = useRef<HTMLDivElement | null>(null)
+  const messageBoxHeightRef = useRef<number>(0)
   const { isDarkMode } = useCustomTheme()
   useChatMessageExpiredFileUpdater(message)
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
@@ -54,9 +57,37 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
           }),
     }
   }, [isHover])
-
+  useEffect(() => {
+    // 检测高度变化，ResizeObserver
+    if (messageBoxRef.current) {
+      const resizeObserver = new ResizeObserver(() => {
+        if (!messageBoxRef.current) {
+          return
+        }
+        if (
+          messageBoxRef.current?.querySelector('.maxai--lazy-load--skeleton') ||
+          messageBoxRef.current?.querySelector('.maxai--loading')
+        ) {
+          return
+        }
+        const height = messageBoxRef.current?.offsetHeight
+        if (height && height !== messageBoxHeightRef.current) {
+          messageBoxHeightRef.current = height
+          if (onChangeHeight) {
+            onChangeHeight(height)
+          }
+        }
+      })
+      resizeObserver.observe(messageBoxRef.current)
+      return () => {
+        resizeObserver.disconnect()
+      }
+    }
+  }, [onChangeHeight])
   return (
     <Stack
+      ref={messageBoxRef}
+      component={'div'}
       className={className}
       sx={{
         maxWidth: isInImmersiveChat ? '768px' : 'initial',
@@ -120,26 +151,24 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
         </Typography>
         <DevMessageSourceData message={message} />
       </DevContent>
-      <AppSuspenseLoadingLayout>
-        {isSystemMessage(message) && (
-          <SidebarSystemMessage loading={loading} message={message} />
-        )}
-        {isAIMessage(message) && (
-          <SidebarAIMessage
-            isDarkMode={isDarkMode}
-            message={message as IAIResponseMessage}
-            order={order}
-          />
-        )}
-        {isUserMessage(message) && (
-          <SidebarUserMessage
-            message={message}
-            order={order}
-            container={container}
-          />
-        )}
-      </AppSuspenseLoadingLayout>
+      {isSystemMessage(message) && (
+        <SidebarSystemMessage loading={loading} message={message} />
+      )}
+      {isAIMessage(message) && (
+        <SidebarAIMessage
+          isDarkMode={isDarkMode}
+          message={message as IAIResponseMessage}
+          order={order}
+        />
+      )}
+      {isUserMessage(message) && (
+        <SidebarUserMessage
+          message={message}
+          order={order}
+          container={container}
+        />
+      )}
     </Stack>
   )
 }
-export default SidebarChatBoxMessageItem
+export default memo(SidebarChatBoxMessageItem)

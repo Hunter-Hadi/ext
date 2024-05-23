@@ -679,10 +679,16 @@ const devMockConversation = async () => {
   const getMergeMessages = (count: number, conversationId: string) => {
     const newMessages = Array(count)
       .fill(0)
-      .map(() => {
+      .map((value, index) => {
         const randomIndex = Math.floor(Math.random() * mergeMessages.length)
         const mockMessage = cloneDeep(mergeMessages[randomIndex])
         mockMessage.messageId = uuidV4()
+        mockMessage.created_at = new Date(
+          new Date().getTime() + index * 1000 * 60,
+        ).toISOString()
+        mockMessage.updated_at = new Date(
+          new Date().getTime() + index * 1000 * 60,
+        ).toISOString()
         ;(mockMessage as any).conversationId = conversationId
         if (isAIMessage(mockMessage)) {
           if (mockMessage.originalMessage?.metadata?.attachments) {

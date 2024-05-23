@@ -1,14 +1,12 @@
 import Stack from '@mui/material/Stack'
 import React, { FC, useMemo } from 'react'
 
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
+import { IAIResponseOriginalMessageMetaDeep } from '@/features/indexed_db/conversations/models/Message'
 import { messageListContainerId } from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import { MetadataTitleRender } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
 import { HeightUpdateScrolling } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/HeightUpdateScrolling'
 import TranscriptView from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList/components/SidebarAImessageTimestampedSummary'
-
-import { IAIResponseOriginalMessageMetaDeep } from '@/features/indexed_db/conversations/models/Message';
 
 interface ISidebarAImessageBottomVIew {
   data:
@@ -41,11 +39,9 @@ const SidebarAImessageBottomList: FC<ISidebarAImessageBottomVIew> = (props) => {
                 props.isDarkMode ? 'markdown-body-dark' : ''
               }`}
             >
-              <AppSuspenseLoadingLayout>
-                <CustomMarkdown>
-                  {sidebarAIMessageBottomInfo.value}
-                </CustomMarkdown>
-              </AppSuspenseLoadingLayout>
+              <CustomMarkdown>
+                {sidebarAIMessageBottomInfo.value}
+              </CustomMarkdown>
             </div>
           )}
           {sidebarAIMessageBottomInfo.type === 'transcript' && (
@@ -55,21 +51,17 @@ const SidebarAImessageBottomList: FC<ISidebarAImessageBottomVIew> = (props) => {
                 otherHeight: 380,
               }}
             >
-              <AppSuspenseLoadingLayout>
-                <TranscriptView
-                  transcriptList={sidebarAIMessageBottomInfo.value}
-                  loading={props.loading}
-                />
-              </AppSuspenseLoadingLayout>
-            </HeightUpdateScrolling>
-          )}
-          {sidebarAIMessageBottomInfo.type === 'timestampedSummary' && (
-            <AppSuspenseLoadingLayout>
               <TranscriptView
                 transcriptList={sidebarAIMessageBottomInfo.value}
                 loading={props.loading}
               />
-            </AppSuspenseLoadingLayout>
+            </HeightUpdateScrolling>
+          )}
+          {sidebarAIMessageBottomInfo.type === 'timestampedSummary' && (
+            <TranscriptView
+              transcriptList={sidebarAIMessageBottomInfo.value}
+              loading={props.loading}
+            />
           )}
         </Stack>
       ))}

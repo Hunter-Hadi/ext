@@ -7,8 +7,12 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import CustomMarkdown from '@/components/CustomMarkdown'
+import {
+  IAIResponseMessage,
+  IAIResponseOriginalMessageMetadataTitle,
+} from '@/features/indexed_db/conversations/models/Message'
 import {
   CaptivePortalIcon,
   ReadIcon,
@@ -22,9 +26,6 @@ import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarCh
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 import { SwitchSummaryActionNav } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SwitchSummaryActionNav'
-import { IAIResponseMessage, IAIResponseOriginalMessageMetadataTitle } from '@/features/indexed_db/conversations/models/Message';
-
-const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 interface IProps {
   message: IAIResponseMessage
@@ -146,7 +147,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                   color: 'text.primary',
                   whiteSpace: 'nowrap',
                   textOverflow: 'ellipsis',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
                 }}
               />
             )}
@@ -172,7 +173,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               <Stack spacing={1}>
                 <Stack direction={'row'} alignItems="center" spacing={1}>
                   {renderData.sourcesLoading &&
-                    !renderData.messageIsComplete ? (
+                  !renderData.messageIsComplete ? (
                     <CircularProgress size={18} />
                   ) : (
                     <CaptivePortalIcon
@@ -253,7 +254,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                     </Stack>
                   )}
                   {isWaitFirstAIResponseText &&
-                    !renderData.messageIsComplete ? (
+                  !renderData.messageIsComplete ? (
                     <SidebarAIMessageSkeletonContent
                       contentType={renderData.content.contentType}
                     />
@@ -272,12 +273,11 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
           </Stack>
         ) : (
           <div
-            className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''
-              }`}
+            className={`markdown-body ${
+              isDarkMode ? 'markdown-body-dark' : ''
+            }`}
           >
-            <AppSuspenseLoadingLayout>
-              <CustomMarkdown>{renderData.answer}</CustomMarkdown>
-            </AppSuspenseLoadingLayout>
+            <CustomMarkdown>{renderData.answer}</CustomMarkdown>
           </div>
         )}
         {!coverLoading ? (

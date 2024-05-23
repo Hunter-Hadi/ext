@@ -404,7 +404,9 @@ export const useClientConversationListener = () => {
                   PaginationConversationMessagesStateFamily(conversationId),
                   (prevState) => {
                     return sortBy(
-                      prevState.concat(messages),
+                      prevState
+                        .filter((item) => !messageIds.includes(item.messageId))
+                        .concat(messages),
                       'created_at',
                       'asc',
                     )

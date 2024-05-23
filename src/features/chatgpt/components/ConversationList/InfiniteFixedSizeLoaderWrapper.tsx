@@ -3,9 +3,9 @@ import Stack from '@mui/material/Stack'
 import React from 'react'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeList } from 'react-window'
-import InfiniteLoader from 'react-window-infinite-loader'
+import InfiniteFixedSizeLoader from 'react-window-infinite-loader'
 
-export interface IInfiniteLoaderWrapperProps<T> {
+export interface IInfiniteFixedSizeLoaderWrapperProps<T> {
   hasNextPage: boolean
   isNextPageLoading: boolean
   loadNextPage: () => void
@@ -14,8 +14,8 @@ export interface IInfiniteLoaderWrapperProps<T> {
   itemSize?: number
 }
 
-const InfiniteLoaderWrapper: <T>(
-  props: IInfiniteLoaderWrapperProps<T>,
+const InfiniteFixedSizeLoaderWrapper: <T>(
+  props: IInfiniteFixedSizeLoaderWrapperProps<T>,
 ) => JSX.Element = (props) => {
   const {
     hasNextPage,
@@ -47,7 +47,7 @@ const InfiniteLoaderWrapper: <T>(
     return renderItem({ index, style }, items[index]) as JSX.Element
   }
   return (
-    <InfiniteLoader
+    <InfiniteFixedSizeLoader
       isItemLoaded={isItemLoaded}
       itemCount={itemCount}
       loadMoreItems={loadMoreItems}
@@ -72,8 +72,8 @@ const InfiniteLoaderWrapper: <T>(
           )}
         </AutoSizer>
       )}
-    </InfiniteLoader>
+    </InfiniteFixedSizeLoader>
   )
 }
 
-export default InfiniteLoaderWrapper
+export default InfiniteFixedSizeLoaderWrapper

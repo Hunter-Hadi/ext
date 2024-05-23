@@ -51,6 +51,7 @@ const useChatMessageExpiredFileUpdater = (message: IChatMessage) => {
           needUpdateKeys.map(async (needUpdateKey) => {
             const newMessage = cloneDeep(message)
             const attachments = lodashGet(newMessage, needUpdateKey)
+            let hasUpdate = false
             if (attachments instanceof Array) {
               const newAttachments = await Promise.all(
                 attachments.map(async (attachment) => {
@@ -59,20 +60,25 @@ const useChatMessageExpiredFileUpdater = (message: IChatMessage) => {
                       attachment.uploadedFileId,
                       {},
                     )
-                    attachment.uploadedFileId =
-                      newFile?.file_id || attachment.uploadedFileId
-                    attachment.uploadedUrl =
-                      newFile?.file_url || attachment.uploadedUrl
-                    return attachment
+                    if (newFile) {
+                      hasUpdate = true
+                      attachment.uploadedFileId =
+                        newFile?.file_id || attachment.uploadedFileId
+                      attachment.uploadedUrl =
+                        newFile?.file_url || attachment.uploadedUrl
+                    }
                   }
                   return attachment
                 }),
               )
-              lodashSet(newMessage, needUpdateKey, newAttachments)
-              await ClientConversationMessageManager.updateMessage(
-                currentConversationId,
-                newMessage,
-              )
+              if (hasUpdate) {
+                lodashSet(newMessage, needUpdateKey, newAttachments)
+                // 更新消息
+                await ClientConversationMessageManager.updateMessage(
+                  currentConversationId,
+                  newMessage,
+                )
+              }
               return newAttachments
             }
             return needUpdateKey
@@ -95,7 +101,7 @@ const useChatMessageExpiredFileUpdater = (message: IChatMessage) => {
         }))
       }
     }
-  }, [message])
+  }, [message.messageId])
 }
 
 export default useChatMessageExpiredFileUpdater

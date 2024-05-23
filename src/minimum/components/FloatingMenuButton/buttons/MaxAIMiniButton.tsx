@@ -56,6 +56,7 @@ const MaxAIMiniButton: FC<{
         placement={'left'}
       >
         <Button
+          data-testid="quick-access-maxai-mini-button"
           sx={{
             width: 42,
             height: 32,

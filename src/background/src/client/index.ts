@@ -948,7 +948,6 @@ export const ClientMessageInit = () => {
           }
         }
         case 'Client_switchVideoPopup': {
-          const { videoSrc, open } = data
           const tabs = await Browser.tabs.query({
             active: true,
             currentWindow: true,
@@ -960,10 +959,7 @@ export const ClientMessageInit = () => {
               await Browser.tabs.sendMessage(tab.id, {
                 id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 event: 'Client_listenSwitchVideoPopup',
-                data: {
-                  videoSrc,
-                  open,
-                },
+                data: data,
               })
             }
           }

@@ -21,13 +21,15 @@ const GlobalVideoPopup: FC<IVideoPopupProps> = (props) => {
   const { videoWidth, videoHeight, onClose, sx } = props
   const [videoSrc, setVideoSrc] = useState('')
   const [open, setOpen] = useState(false)
+  const [autoplay, setAutoplay] = useState(false)
 
   useCreateClientMessageListener(async (event, data) => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenSwitchVideoPopup': {
-        const { videoSrc, open } = data
+        const { videoSrc, open, autoplay = false } = data
         setVideoSrc(videoSrc)
         setOpen(open)
+        setAutoplay(autoplay)
         return {
           success: true,
           data: {},
@@ -84,7 +86,11 @@ const GlobalVideoPopup: FC<IVideoPopupProps> = (props) => {
           }}
         >
           <Box width={videoWidth} height={videoHeight}>
-            <YoutubePlayerBox borderRadius={4} youtubeLink={videoSrc} />
+            <YoutubePlayerBox
+              borderRadius={4}
+              youtubeLink={videoSrc}
+              autoplay={autoplay}
+            />
           </Box>
         </Stack>
       </CustomModal>

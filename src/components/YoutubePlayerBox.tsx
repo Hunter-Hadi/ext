@@ -10,9 +10,10 @@ interface YoutubePlayerBoxProps {
   cover?: string
   borderRadius?: number
   sx?: SxProps
+  autoplay?: boolean
 }
 const YoutubePlayerBox: FC<YoutubePlayerBoxProps> = (props) => {
-  const { youtubeLink, borderRadius = 16, cover, sx } = props
+  const { youtubeLink, borderRadius = 16, cover, sx, autoplay } = props
   const [isAccessYoutube, setIsAccessYoutube] = useState(false)
   const [videoLoaded, setVideoLoaded] = useState(false)
   const currentShowEmbedLink = useMemo(() => {
@@ -21,6 +22,17 @@ const YoutubePlayerBox: FC<YoutubePlayerBoxProps> = (props) => {
     }
     return true
   }, [cover, isAccessYoutube, videoLoaded])
+
+  const fixYoutubeLink = useMemo(() => {
+    const url = new URL(youtubeLink)
+    const searchParams = new URLSearchParams(url.search)
+    if (autoplay) {
+      searchParams.set('autoplay', '1')
+    }
+    url.search = searchParams.toString()
+    return url.toString()
+  }, [youtubeLink, autoplay])
+
   useEffectOnce(() => {
     clientFetchAPI('https://www.youtube.com/t/terms', {
       parse: 'text',
@@ -68,7 +80,7 @@ const YoutubePlayerBox: FC<YoutubePlayerBoxProps> = (props) => {
         title="YouTube video player"
         width="560"
         height="315"
-        src={youtubeLink}
+        src={fixYoutubeLink}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen

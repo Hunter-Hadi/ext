@@ -2,6 +2,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
+import useFloatingContextMenuPin from '@/features/contextMenu/hooks/useFloatingContextMenuPin'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import {
   FloatingContextWindowChangesState,
@@ -30,6 +31,8 @@ const log = new Log('ContextMenu/useFloatingContextMenu')
 const useFloatingContextMenu = () => {
   const setAppState = useSetRecoilState(AppState)
   const { saveCurrentSelection, show, hideRangy, tempSelection } = useRangy()
+  const { floatingDropdownMenuPin, setFloatingDropdownMenuPin } =
+    useFloatingContextMenuPin()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -39,6 +42,9 @@ const useFloatingContextMenu = () => {
   const memoIsFloatingMenuVisible = useMemo(() => {
     return floatingDropdownMenu.open
   }, [floatingDropdownMenu.open])
+
+  const floatingDropdownMenuPinRef = useRef(floatingDropdownMenuPin)
+  floatingDropdownMenuPinRef.current = floatingDropdownMenuPin
 
   const contextWindowModeRef = useRef(contextWindowChanges.contextWindowMode)
   useEffect(() => {
@@ -174,12 +180,14 @@ const useFloatingContextMenu = () => {
       if (isFloatingContextMenuOpen) {
         floatingContextMenuSaveDraftToChatBox()
       }
-      hideRangy()
-      setFloatingDropdownMenu({
-        open: false,
-        rootRect: null,
-        showModelSelector: !!forceShowModelSelector,
-      })
+      if (!floatingDropdownMenuPinRef.current) {
+        hideRangy()
+        setFloatingDropdownMenu({
+          open: false,
+          rootRect: null,
+          showModelSelector: !!forceShowModelSelector,
+        })
+      }
       // immersive page下显示的就是sidebar，不处理
       if (isMaxAIImmersiveChatPage()) {
         return
@@ -248,7 +256,8 @@ const useFloatingContextMenu = () => {
       )
     }
   }
-  const hideFloatingContextMenu = () => {
+  const hideFloatingContextMenu = (force = false) => {
+    if (!force && floatingDropdownMenuPin) return
     setFloatingDropdownMenu({
       open: false,
       rootRect: null,
@@ -257,7 +266,9 @@ const useFloatingContextMenu = () => {
   }
   return {
     floatingDropdownMenu,
+    floatingDropdownMenuPin,
     setFloatingDropdownMenu,
+    setFloatingDropdownMenuPin,
     isFloatingMenuVisible: memoIsFloatingMenuVisible,
     showFloatingContextMenu,
     hideFloatingContextMenu,

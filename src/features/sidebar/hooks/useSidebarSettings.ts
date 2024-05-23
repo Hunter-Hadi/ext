@@ -401,7 +401,7 @@ const useSidebarSettings = () => {
       }
     }
     showChatBox()
-    hideFloatingContextMenu()
+    hideFloatingContextMenu(true)
     isDuplicatingRef.current = false
   }
   return {

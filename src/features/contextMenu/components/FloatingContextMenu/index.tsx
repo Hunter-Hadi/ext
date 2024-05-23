@@ -42,6 +42,8 @@ import FloatingContextMenuChatHistoryButton from '@/features/contextMenu/compone
 import FloatingContextMenuContinueChatButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuContinueChatButton'
 import DiscardChangesModal from '@/features/contextMenu/components/FloatingContextMenu/DiscardChangesModal'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import FloatingContextMenuTitleBar
+  from "@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuTitleBar";
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
 import { useFloatingContextMenuDraftHistoryChange } from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
@@ -81,6 +83,7 @@ const FloatingContextMenu: FC<{
   const {
     hideFloatingContextMenu,
     floatingDropdownMenu,
+    floatingDropdownMenuPin,
     setFloatingDropdownMenu,
   } = useFloatingContextMenu()
   const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
@@ -193,7 +196,7 @@ const FloatingContextMenu: FC<{
             reason === 'escape-key'
           ) {
             // 按下esc键，不需要弹出确认框，直接关闭，因为用户没有做任何修改
-            hideFloatingContextMenu()
+            hideFloatingContextMenu(true)
             return
           }
           setContextWindowChanges((prev) => {
@@ -205,6 +208,7 @@ const FloatingContextMenu: FC<{
           return
         }
       }
+      if (reason !== 'escape-key' && floatingDropdownMenuPin) return
       setFloatingDropdownMenu((prev) => {
         return {
           ...prev,
@@ -348,7 +352,6 @@ const FloatingContextMenu: FC<{
           sx={{
             position: 'absolute',
             width: '100%',
-            // bgcolor: 'rgba(0,0,0,0.2)',
             zIndex: 10,
             cursor: 'grab',
             height: '20px',
@@ -383,18 +386,19 @@ const FloatingContextMenu: FC<{
                 display: 'flex',
                 flexDirection: 'column',
                 width: '100%',
-                padding: '7px 12px',
+                padding: '8px 12px',
               }}
               onKeyPress={(event) => {
                 event.stopPropagation()
               }}
             >
+              <FloatingContextMenuTitleBar />
+              <WritingMessageBox />
               {floatingDropdownMenu.open && (
                 <DevContent>
                   <DevConsole />
                 </DevContent>
               )}
-              <WritingMessageBox />
               {floatingDropdownMenu.open && (
                 <ActionSetVariablesModal
                   sx={{
@@ -629,7 +633,7 @@ const FloatingContextMenu: FC<{
         onClose={(reason) => {
           if (reason === 'discard') {
             // discard changes
-            hideFloatingContextMenu()
+            hideFloatingContextMenu(true)
           } else if (reason === 'cancel') {
             focusContextWindowInput()
           }

@@ -206,6 +206,7 @@ export interface IChromeExtensionLocalStorage {
     }
     contextMenu?: {
       currentAIModel?: string
+      isPinned?: boolean
     }
     common?: {
       currentAIProvider?: IAIProviderType

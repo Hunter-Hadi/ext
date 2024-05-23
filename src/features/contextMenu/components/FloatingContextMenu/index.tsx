@@ -39,6 +39,7 @@ import {
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import FloatingContextMenuChatHistoryButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuChatHistoryButton'
+import FloatingContextMenuContinueChatButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuContinueChatButton'
 import DiscardChangesModal from '@/features/contextMenu/components/FloatingContextMenu/DiscardChangesModal'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
@@ -562,6 +563,7 @@ const FloatingContextMenu: FC<{
                       ml={'auto'}
                       mr={0}
                     >
+                      <FloatingContextMenuContinueChatButton />
                       <FloatingContextMenuPopupSettingButton />
                       <Divider
                         orientation="vertical"

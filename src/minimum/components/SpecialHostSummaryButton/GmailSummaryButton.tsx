@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -38,41 +39,55 @@ const GmailSummaryButton: FC = () => {
               }
         }
       >
-        <Button
-          startIcon={
-            <UseChatGptIcon
-              sx={{
-                fontSize: 16,
-                color: 'inherit',
-              }}
-            />
-          }
-          variant={'contained'}
-          onClick={() => {
-            showChatBox()
-            const timer = setInterval(() => {
-              if (
-                getMaxAISidebarRootElement()?.querySelector(
-                  'p[data-testid="max-ai__summary-tab"]',
-                )
-              ) {
-                clearInterval(timer)
-                window.dispatchEvent(
-                  new CustomEvent('MaxAISwitchSidebarTab', {
-                    detail: {
-                      type: 'Summary' as ISidebarConversationType,
-                    },
-                  }),
-                )
-              }
-            }, 500)
+        <TextOnlyTooltip
+          arrow
+          PopperProps={{
+            disablePortal: true,
+            sx: {
+              '& > div': {
+                maxWidth: 'unset',
+                width: 'max-content',
+              },
+            },
           }}
-          sx={{
-            borderRadius: '18px',
-          }}
+          title={t('client:sidebar__tabs__summary__tooltip__default_email')}
         >
-          {t('client:social_media_summary_button__text')}
-        </Button>
+          <Button
+            startIcon={
+              <UseChatGptIcon
+                sx={{
+                  fontSize: 16,
+                  color: 'inherit',
+                }}
+              />
+            }
+            variant={'contained'}
+            onClick={() => {
+              showChatBox()
+              const timer = setInterval(() => {
+                if (
+                  getMaxAISidebarRootElement()?.querySelector(
+                    'p[data-testid="max-ai__summary-tab"]',
+                  )
+                ) {
+                  clearInterval(timer)
+                  window.dispatchEvent(
+                    new CustomEvent('MaxAISwitchSidebarTab', {
+                      detail: {
+                        type: 'Summary' as ISidebarConversationType,
+                      },
+                    }),
+                  )
+                }
+              }, 500)
+            }}
+            sx={{
+              borderRadius: '18px',
+            }}
+          >
+            {t('client:social_media_summary_button__text')}
+          </Button>
+        </TextOnlyTooltip>
       </Box>
     </DynamicComponent>
   )

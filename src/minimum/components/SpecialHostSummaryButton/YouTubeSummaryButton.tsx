@@ -1,11 +1,13 @@
 import Button from '@mui/material/Button'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import { ISidebarConversationType } from '@/features/sidebar/types'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAISidebarRootElement } from '@/utils'
 
@@ -18,6 +20,23 @@ const YouTubeSummaryButton: FC = () => {
   const [renderElement, setRenderElement] = React.useState<HTMLElement | null>(
     null,
   )
+
+  const buttonTooltipKey = useMemo(() => {
+    const summaryType = getPageSummaryType()
+    switch (summaryType) {
+      case 'DEFAULT_EMAIL_SUMMARY':
+        return 'client:sidebar__tabs__summary__tooltip__default_email'
+      case 'PAGE_SUMMARY':
+        return 'client:sidebar__tabs__summary__tooltip__page'
+      case 'PDF_CRX_SUMMARY':
+        return 'client:sidebar__tabs__summary__tooltip__pdf_crx'
+      case 'YOUTUBE_VIDEO_SUMMARY':
+        return 'client:sidebar__tabs__summary__tooltip__youtube_video'
+      default:
+        return 'client:sidebar__tabs__summary__tooltip__page'
+    }
+  }, [])
+
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null
     if (element) {
@@ -66,41 +85,50 @@ const YouTubeSummaryButton: FC = () => {
       customElementName={'max-ai-youtube-summary-button'}
       rootContainer={renderElement}
     >
-      <Button
-        sx={{
-          borderRadius: '18px',
+      <TextOnlyTooltip
+        arrow
+        PopperProps={{
+          disablePortal: true,
         }}
-        onClick={() => {
-          showChatBox()
-          const timer = setInterval(() => {
-            if (
-              getMaxAISidebarRootElement()?.querySelector(
-                'p[data-testid="max-ai__summary-tab"]',
-              )
-            ) {
-              clearInterval(timer)
-              window.dispatchEvent(
-                new CustomEvent('MaxAISwitchSidebarTab', {
-                  detail: {
-                    type: 'Summary' as ISidebarConversationType,
-                  },
-                }),
-              )
-            }
-          }, 500)
-        }}
-        variant={'contained'}
-        startIcon={
-          <UseChatGptIcon
-            sx={{
-              fontSize: 16,
-              color: 'inherit',
-            }}
-          />
-        }
+        title={t(buttonTooltipKey)}
+        placement={'left'}
       >
-        {t('client:youtube_summary_button__text')}
-      </Button>
+        <Button
+          sx={{
+            borderRadius: '18px',
+          }}
+          onClick={() => {
+            showChatBox()
+            const timer = setInterval(() => {
+              if (
+                getMaxAISidebarRootElement()?.querySelector(
+                  'p[data-testid="max-ai__summary-tab"]',
+                )
+              ) {
+                clearInterval(timer)
+                window.dispatchEvent(
+                  new CustomEvent('MaxAISwitchSidebarTab', {
+                    detail: {
+                      type: 'Summary' as ISidebarConversationType,
+                    },
+                  }),
+                )
+              }
+            }, 500)
+          }}
+          variant={'contained'}
+          startIcon={
+            <UseChatGptIcon
+              sx={{
+                fontSize: 16,
+                color: 'inherit',
+              }}
+            />
+          }
+        >
+          {t('client:youtube_summary_button__text')}
+        </Button>
+      </TextOnlyTooltip>
     </DynamicComponent>
   )
 }

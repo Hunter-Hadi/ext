@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "برای فعالسازی افزونه در این صفحه، آن را بازنشانی کنید.",
     "sidebar__refresh_page__button": "بازنشانی این صفحه",
-    "floating_menu__button__cta__tooltip": "از هوش مصنوعی بخواهید متن را ویرایش، خلاصه، توضیح یا تولید کند",
+    "floating_menu__button__cta__tooltip": "از هوش مصنوعی بخواهید که متن انتخاب شده را بازنویسی، ترجمه، خلاصه کند یا توضیح دهد.",
     "floating_menu__button__hide_menu": "مخفی کردن منو",
     "floating_menu__button__hide_menu__until_next_visit": "مخفی کردن منو تا بازدید بعدی",
     "floating_menu__button__hide_menu__this_site": "مخفی کردن منو برای این سایت",

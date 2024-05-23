@@ -312,7 +312,7 @@
     "sidebar__input__art__placeholder": "Ask AI...",
     "sidebar__input__tokens_limited__title": "tokens max",
     "sidebar__mini_button__screenshot__tooltip": "AI screenshot",
-    "floating_menu__button__cta__tooltip": "Ask AI to edit, summarize, explain, or generate text",
+    "floating_menu__button__cta__tooltip": "Ask AI to rewrite, translate, summarize, or explain the selected text.",
     "floating_menu__button__hide_menu": "Hide menu",
     "floating_menu__button__hide_menu__until_next_visit": "Hide menu until next visit",
     "floating_menu__button__hide_menu__this_site": "Hide menu for this site",

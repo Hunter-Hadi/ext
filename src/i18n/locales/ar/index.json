@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "قم بتحديث هذه الصفحة لتفعيل الامتداد على هذه الصفحة.",
     "sidebar__refresh_page__button": "تحديث هذه الصفحة",
-    "floating_menu__button__cta__tooltip": "اطلب من الذكاء الاصطناعي تحرير أو إنشاء نص، أو تلخيصه، أو شرحه",
+    "floating_menu__button__cta__tooltip": "اسأل الذكاء الاصطناعي لإعادة صياغة أو ترجمة أو تلخيص أو شرح النص المحدد.",
     "floating_menu__button__hide_menu": "إخفاء القائمة",
     "floating_menu__button__hide_menu__until_next_visit": "إخفاء القائمة حتى الزيارة القادمة",
     "floating_menu__button__hide_menu__this_site": "إخفاء القائمة لهذا الموقع",

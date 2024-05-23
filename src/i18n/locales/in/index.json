@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Muat ulang halaman ini untuk mengaktifkan ekstensi di halaman ini.",
     "sidebar__refresh_page__button": "Muat ulang halaman ini",
-    "floating_menu__button__cta__tooltip": "Minta AI untuk mengedit, merangkum, menjelaskan, atau menghasilkan teks",
+    "floating_menu__button__cta__tooltip": "Minta AI untuk menulis ulang, menerjemahkan, merangkum, atau menjelaskan teks yang dipilih.",
     "floating_menu__button__hide_menu": "Sembunyikan menu",
     "floating_menu__button__hide_menu__until_next_visit": "Sembunyikan menu sampai kunjungan berikutnya",
     "floating_menu__button__hide_menu__this_site": "Sembunyikan menu untuk situs ini",

@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "इस पेज को रिफ्रेश करें ताकि इस पेज पर एक्सटेंशन सक्रिय हो सके।",
     "sidebar__refresh_page__button": "इस पेज को रिफ्रेश करें",
-    "floating_menu__button__cta__tooltip": "AI से संपादित, संक्षेपित, समझाया या पाठ उत्पन्न करने के लिए AI से पूछें",
+    "floating_menu__button__cta__tooltip": "चयनित पाठ को दोहराने, अनुवाद करने, संक्षेपित करने या समझाने के लिए AI से पूछें।",
     "floating_menu__button__hide_menu": "मेनू छिपाएं",
     "floating_menu__button__hide_menu__until_next_visit": "अगले दौरे तक मेनू छिपाएं",
     "floating_menu__button__hide_menu__this_site": "इस साइट के लिए मेनू छिपाएं",

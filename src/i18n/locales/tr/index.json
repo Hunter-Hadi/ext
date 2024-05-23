@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Bu sayfayı uzantıyı etkinleştirmek için yenileyin.",
     "sidebar__refresh_page__button": "Bu sayfayı yenile",
-    "floating_menu__button__cta__tooltip": "AI'ya metin düzenlemesini, özetlemesini, açıklamasını veya oluşturmasını isteyin",
+    "floating_menu__button__cta__tooltip": "Seçili metni yeniden yazdırmak, çevirmek, özetlemek veya açıklamak için AI'ya sorun.",
     "floating_menu__button__hide_menu": "Menüyü Gizle",
     "floating_menu__button__hide_menu__until_next_visit": "Sonraki ziyarete kadar menüyü gizle",
     "floating_menu__button__hide_menu__this_site": "Bu site için menüyü gizle",

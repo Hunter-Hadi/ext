@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Vernieuw deze pagina om de extensie op deze pagina te activeren.",
     "sidebar__refresh_page__button": "Vernieuw deze pagina",
-    "floating_menu__button__cta__tooltip": "Vraag AI om tekst te bewerken, samenvatten, uitleggen of genereren",
+    "floating_menu__button__cta__tooltip": "Vraag AI om de geselecteerde tekst te herschrijven, vertalen, samenvatten of uitleggen.",
     "floating_menu__button__hide_menu": "Menu verbergen",
     "floating_menu__button__hide_menu__until_next_visit": "Menu verbergen tot het volgende bezoek",
     "floating_menu__button__hide_menu__this_site": "Menu verbergen voor deze website",

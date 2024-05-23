@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "¡MaxAI.me!",
     "sidebar__refresh_page__description": "Actualiza esta página para activar la extensión en esta página.",
     "sidebar__refresh_page__button": "Actualizar esta página",
-    "floating_menu__button__cta__tooltip": "Pídele a la IA que edite, resuma, explique o genere texto",
+    "floating_menu__button__cta__tooltip": "Pide a la IA que reescriba, traduzca, resuma o explique el texto seleccionado.",
     "floating_menu__button__hide_menu": "Ocultar menú",
     "floating_menu__button__hide_menu__until_next_visit": "Ocultar menú hasta la próxima visita",
     "floating_menu__button__hide_menu__this_site": "Ocultar menú para este sitio",

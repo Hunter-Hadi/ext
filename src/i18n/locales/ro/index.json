@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Reîmprospătați această pagină pentru a activa extensia pe această pagină.",
     "sidebar__refresh_page__button": "Reîmprospătați această pagină",
-    "floating_menu__button__cta__tooltip": "Solicitați AI-ul să editeze, să rezume, să explice sau să genereze text",
+    "floating_menu__button__cta__tooltip": "Solicitați AI să rescrie, traducă, rezume sau explice textul selectat.",
     "floating_menu__button__hide_menu": "Ascundeți meniul",
     "floating_menu__button__hide_menu__until_next_visit": "Ascundeți meniul până la următoarea vizită",
     "floating_menu__button__hide_menu__this_site": "Ascundeți meniul pentru acest site",

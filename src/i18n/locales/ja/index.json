@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me！",
     "sidebar__refresh_page__description": "このページをリフレッシュして、このページで拡張機能を有効にします。",
     "sidebar__refresh_page__button": "このページをリフレッシュ",
-    "floating_menu__button__cta__tooltip": "AIにテキストの編集、要約、説明、生成を依頼する",
+    "floating_menu__button__cta__tooltip": "選択したテキストをAIに書き直し、翻訳、要約、または説明してもらうためにお問い合わせください。",
     "floating_menu__button__hide_menu": "メニューを非表示にする",
     "floating_menu__button__hide_menu__until_next_visit": "次回訪問までメニューを非表示にする",
     "floating_menu__button__hide_menu__this_site": "このサイトでメニューを非表示にする",

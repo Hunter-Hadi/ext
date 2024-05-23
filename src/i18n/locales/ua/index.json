@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Оновіть цю сторінку, щоб активувати розширення на цій сторінці.",
     "sidebar__refresh_page__button": "Оновити цю сторінку",
-    "floating_menu__button__cta__tooltip": "Попросіть ШІ відредагувати, підсумувати, пояснити або згенерувати текст",
+    "floating_menu__button__cta__tooltip": "Запитайте ШІ, щоб переписати, перекласти, підсумувати або пояснити вибраний текст.",
     "floating_menu__button__hide_menu": "Сховати меню",
     "floating_menu__button__hide_menu__until_next_visit": "Сховати меню до наступного відвідування",
     "floating_menu__button__hide_menu__this_site": "Сховати меню для цього сайту",

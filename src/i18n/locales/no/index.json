@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Last inn denne siden på nytt for å aktivere utvidelsen på denne siden.",
     "sidebar__refresh_page__button": "Last inn denne siden på nytt",
-    "floating_menu__button__cta__tooltip": "Be AI om å redigere, oppsummere, forklare eller generere tekst",
+    "floating_menu__button__cta__tooltip": "Be AI til å omskrive, oversette, oppsummere eller forklare den valgte teksten.",
     "floating_menu__button__hide_menu": "Skjul menyen",
     "floating_menu__button__hide_menu__until_next_visit": "Skjul menyen til neste besøk",
     "floating_menu__button__hide_menu__this_site": "Skjul menyen for dette nettstedet",

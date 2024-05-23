@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Az oldal frissítése a bővítmény aktiválásához ezen az oldalon.",
     "sidebar__refresh_page__button": "Oldal frissítése",
-    "floating_menu__button__cta__tooltip": "Kérje az AI-t, hogy szerkessze, összefoglalja, magyarázza vagy generáljon szöveget",
+    "floating_menu__button__cta__tooltip": "Kérje az AI-t, hogy átírja, lefordítsa, összefoglalja vagy magyarázza el a kiválasztott szöveget.",
     "floating_menu__button__hide_menu": "Menü elrejtése",
     "floating_menu__button__hide_menu__until_next_visit": "Menü elrejtése a következő látogatásig",
     "floating_menu__button__hide_menu__this_site": "Menü elrejtése erre az oldalra",

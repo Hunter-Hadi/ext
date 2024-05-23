@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Tải lại trang này để kích hoạt tiện ích trên trang này.",
     "sidebar__refresh_page__button": "Tải lại trang này",
-    "floating_menu__button__cta__tooltip": "Yêu cầu AI chỉnh sửa, tóm tắt, giải thích hoặc tạo văn bản",
+    "floating_menu__button__cta__tooltip": "Yêu cầu AI viết lại, dịch, tóm tắt hoặc giải thích văn bản đã chọn.",
     "floating_menu__button__hide_menu": "Ẩn menu",
     "floating_menu__button__hide_menu__until_next_visit": "Ẩn menu cho lần ghé thăm kế tiếp",
     "floating_menu__button__hide_menu__this_site": "Ẩn menu cho trang web này",

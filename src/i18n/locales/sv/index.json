@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Uppdatera den här sidan för att aktivera tillägget på denna sida.",
     "sidebar__refresh_page__button": "Uppdatera den här sidan",
-    "floating_menu__button__cta__tooltip": "Be AI att redigera, sammanfatta, förklara eller generera text",
+    "floating_menu__button__cta__tooltip": "Be AI för att omskriva, översätta, sammanfatta eller förklara den valda texten.",
     "floating_menu__button__hide_menu": "Dölj menyn",
     "floating_menu__button__hide_menu__until_next_visit": "Dölj menyn tills nästa besök",
     "floating_menu__button__hide_menu__this_site": "Dölj menyn för denna webbplats",

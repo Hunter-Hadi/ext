@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "이 페이지를 새로 고침하여 이 페이지에서 확장 프로그램을 활성화하세요.",
     "sidebar__refresh_page__button": "이 페이지 새로 고침",
-    "floating_menu__button__cta__tooltip": "AI에게 텍스트 편집, 요약, 설명 또는 생성을 요청하세요",
+    "floating_menu__button__cta__tooltip": "선택한 텍스트를 AI에게 다시 작성, 번역, 요약 또는 설명하도록 요청하세요.",
     "floating_menu__button__hide_menu": "메뉴 숨기기",
     "floating_menu__button__hide_menu__until_next_visit": "다음 방문까지 메뉴 숨기기",
     "floating_menu__button__hide_menu__this_site": "이 사이트에서 메뉴 숨기기",

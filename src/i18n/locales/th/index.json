@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "รีเฟรชหน้านี้เพื่อเปิดใช้งานส่วนขยายในหน้านี้",
     "sidebar__refresh_page__button": "รีเฟรชหน้านี้",
-    "floating_menu__button__cta__tooltip": "ขอให้ AI แก้ไข สรุป อธิบาย หรือสร้างข้อความ",
+    "floating_menu__button__cta__tooltip": "ขอให้ AI เขียนใหม่ แปลภาษา สรุปหรืออธิบายเนื้อหาที่เลือก",
     "floating_menu__button__hide_menu": "ซ่อนเมนู",
     "floating_menu__button__hide_menu__until_next_visit": "ซ่อนเมนูจนกระทั่งเยี่ยมชมครั้งถัดไป",
     "floating_menu__button__hide_menu__this_site": "ซ่อนเมนูสำหรับเว็บไซต์นี้",

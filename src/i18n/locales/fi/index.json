@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Päivitä tämä sivu aktivoidaksesi laajennuksen tällä sivulla.",
     "sidebar__refresh_page__button": "Päivitä tämä sivu",
-    "floating_menu__button__cta__tooltip": "Pyydä tekoälyä muokkaamaan, tiivistämään, selittämään tai luomaan tekstiä",
+    "floating_menu__button__cta__tooltip": "Pyydä tekoälyä uudelleenkirjoittamaan, kääntämään, tiivistämään tai selittämään valittu teksti.",
     "floating_menu__button__hide_menu": "Piilota valikko",
     "floating_menu__button__hide_menu__until_next_visit": "Piilota valikko seuraavaan vierailuun asti",
     "floating_menu__button__hide_menu__this_site": "Piilota valikko tältä sivustolta",

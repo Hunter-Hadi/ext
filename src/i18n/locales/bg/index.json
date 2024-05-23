@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Опреснете тази страница, за да активирате разширението на тази страница.",
     "sidebar__refresh_page__button": "Опресни тази страница",
-    "floating_menu__button__cta__tooltip": "Попитайте AI за редакция, обобщение, обяснение или генериране на текст",
+    "floating_menu__button__cta__tooltip": "Попитайте AI да пренапише, преведе, резюмира или обясни избрания текст.",
     "floating_menu__button__hide_menu": "Скрий менюто",
     "floating_menu__button__hide_menu__until_next_visit": "Скрий менюто до следващото посещение",
     "floating_menu__button__hide_menu__this_site": "Скрий менюто за този сайт",

@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "רענן את הדף כדי להפעיל את הרחבה על הדף הזה.",
     "sidebar__refresh_page__button": "רענן את הדף הזה",
-    "floating_menu__button__cta__tooltip": "בקש מהבינה המלאכותית לערוך, לסכם, להסביר או ליצור טקסט",
+    "floating_menu__button__cta__tooltip": "בקש מהמערכת לכתוב מחדש, לתרגם, לסכם או להסביר את הטקסט שנבחר.",
     "floating_menu__button__hide_menu": "הסתר תפריט",
     "floating_menu__button__hide_menu__until_next_visit": "הסתר תפריט עד הביקור הבא",
     "floating_menu__button__hide_menu__this_site": "הסתר תפריט באתר זה",

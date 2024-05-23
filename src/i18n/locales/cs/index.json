@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Obnovte tuto stránku, abyste aktivovali rozšíření na této stránce.",
     "sidebar__refresh_page__button": "Obnovit tuto stránku",
-    "floating_menu__button__cta__tooltip": "Požádejte AI o úpravu, shrnutí, vysvětlení nebo generování textu",
+    "floating_menu__button__cta__tooltip": "Požádejte AI o přepsání, překlad, shrnutí nebo vysvětlení vybraného textu.",
     "floating_menu__button__hide_menu": "Skrýt menu",
     "floating_menu__button__hide_menu__until_next_visit": "Skrýt menu do příští návštěvy",
     "floating_menu__button__hide_menu__this_site": "Skrýt menu pro tuto stránku",

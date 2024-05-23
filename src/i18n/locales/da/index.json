@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Opdater denne side for at aktivere udvidelsen på denne side.",
     "sidebar__refresh_page__button": "Opdater denne side",
-    "floating_menu__button__cta__tooltip": "Bed AI om at redigere, opsummere, forklare eller generere tekst",
+    "floating_menu__button__cta__tooltip": "Bed AI om at omskrive, oversætte, opsummere eller forklare den valgte tekst.",
     "floating_menu__button__hide_menu": "Skjul menu",
     "floating_menu__button__hide_menu__until_next_visit": "Skjul menu indtil næste besøg",
     "floating_menu__button__hide_menu__this_site": "Skjul menu for dette websted",

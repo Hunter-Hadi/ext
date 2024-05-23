@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Selle lehe värskendamiseks ja laienduse aktiveerimiseks värskendage seda lehte.",
     "sidebar__refresh_page__button": "Värskenda seda lehte",
-    "floating_menu__button__cta__tooltip": "Palu AI-l teksti redigeerida, kokku võtta, selgitada või genereerida",
+    "floating_menu__button__cta__tooltip": "Paluge AI-l valitud teksti ümber kirjutada, tõlkida, kokku võtta või selgitada.",
     "floating_menu__button__hide_menu": "Peida menüü",
     "floating_menu__button__hide_menu__until_next_visit": "Peida menüü järgmise külastuseni",
     "floating_menu__button__hide_menu__this_site": "Peida menüü sellel saidil",

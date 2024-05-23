@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me！",
     "sidebar__refresh_page__description": "刷新此页面以激活该扩展。",
     "sidebar__refresh_page__button": "刷新此页面",
-    "floating_menu__button__cta__tooltip": "请 AI 编辑、摘要、解释或生成文本",
+    "floating_menu__button__cta__tooltip": "请AI重写、翻译、概述或解释所选文本。",
     "floating_menu__button__hide_menu": "隐藏菜单",
     "floating_menu__button__hide_menu__until_next_visit": "隐藏菜单直到下次访问",
     "floating_menu__button__hide_menu__this_site": "隐藏此站点的菜单",

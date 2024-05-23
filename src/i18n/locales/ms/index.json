@@ -297,7 +297,7 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Muat semula halaman ini untuk mengaktifkan sambungan pada halaman ini.",
     "sidebar__refresh_page__button": "Muat semula halaman ini",
-    "floating_menu__button__cta__tooltip": "Minta AI untuk mengedit, merangkum, menjelaskan, atau menghasilkan teks",
+    "floating_menu__button__cta__tooltip": "Minta AI menulis semula, menterjemah, merangkum, atau menjelaskan teks yang dipilih.",
     "floating_menu__button__hide_menu": "Sembunyikan menu",
     "floating_menu__button__hide_menu__until_next_visit": "Sembunyikan menu sehingga lawatan seterusnya",
     "floating_menu__button__hide_menu__this_site": "Sembunyikan menu untuk laman ini",

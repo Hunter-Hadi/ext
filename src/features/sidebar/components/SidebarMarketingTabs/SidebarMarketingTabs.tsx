@@ -324,9 +324,6 @@ const SurveyTabButton: FC = () => {
     <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5}>
       <LightTooltip
         onOpen={() => {
-          mixpanelTrack(`referral_card_showed`, {
-            referralType: 'AFFILIATE',
-          })
           setIsOpen(true)
         }}
         onClose={() => {

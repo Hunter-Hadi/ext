@@ -31,6 +31,7 @@ import {
   removeAllRange,
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
+import OnboardingTooltip from '@/features/onboarding/components/OnboardingTooltip'
 import useCommands from '@/hooks/useCommands'
 
 const FloatingMiniMenu: FC<{
@@ -110,7 +111,7 @@ const FloatingMiniMenu: FC<{
       !floatingDropdownMenu.open
     setFinalShow(isShow)
     if (!tempSelection?.selectionRect || !isShow) {
-      return;
+      return
     }
     const rect = computedRectPosition(tempSelection.selectionRect)
     if (!isProduction) {
@@ -252,52 +253,66 @@ const FloatingMiniMenu: FC<{
         }}
       >
         <Box component={'div'} className={'max-ai__click-menu-button--box'}>
-          <TooltipButton
-            TooltipProps={{
-              floatingMenuTooltip: true,
-              placement,
-              description: chatBoxShortCutKey,
-              sx: {
-                maxWidth: 360,
-              },
+          <OnboardingTooltip
+            floatingMenuTooltip
+            arrow
+            title="Click to ask AI to rewrite, translate, summarize, or explain the selected text."
+            placement={placement}
+            sx={{
+              maxWidth: 440,
             }}
-            title={t('client:floating_menu__button__cta__tooltip')}
-            className={'usechatgpt-ai__context-menu--handle-button'}
-            id={'max_ai__floating_context_menu__cta_button'}
-            size={'small'}
-            variant={'text'}
-            onMouseUp={(event) => {
-              event.stopPropagation()
-              event.preventDefault()
-            }}
-            onMouseDown={(event) => {
-              event.stopPropagation()
-              event.preventDefault()
-            }}
-            onClick={(event: any) => {
-              event.stopPropagation()
-              event.preventDefault()
-              const selectionCount = window.getSelection()?.rangeCount
-              if (selectionCount && selectionCount > 0) {
-                const lastFocusRange = window
-                  .getSelection()
-                  ?.getRangeAt(0)
-                  ?.cloneRange()
-                setFloatingDropdownMenuLastFocusRange({
-                  range: lastFocusRange || null,
-                  selectionText: window?.getSelection()?.toString() || '',
-                })
-              }
-              tempSelection && showFloatingContextMenu()
+            contentProps={{
+              shortcut: chatBoxShortCutKey,
             }}
           >
-            <UseChatGptIcon
-              sx={{
-                fontSize: '18px',
-                // color: 'inherit',
+            <TooltipButton
+              TooltipProps={{
+                open: true,
+                floatingMenuTooltip: true,
+                placement,
+                description: chatBoxShortCutKey,
+                sx: {
+                  maxWidth: 360,
+                },
               }}
-            />
-          </TooltipButton>
+              title={t('client:floating_menu__button__cta__tooltip')}
+              className={'usechatgpt-ai__context-menu--handle-button'}
+              id={'max_ai__floating_context_menu__cta_button'}
+              size={'small'}
+              variant={'text'}
+              onMouseUp={(event) => {
+                event.stopPropagation()
+                event.preventDefault()
+              }}
+              onMouseDown={(event) => {
+                event.stopPropagation()
+                event.preventDefault()
+              }}
+              onClick={(event: any) => {
+                event.stopPropagation()
+                event.preventDefault()
+                const selectionCount = window.getSelection()?.rangeCount
+                if (selectionCount && selectionCount > 0) {
+                  const lastFocusRange = window
+                    .getSelection()
+                    ?.getRangeAt(0)
+                    ?.cloneRange()
+                  setFloatingDropdownMenuLastFocusRange({
+                    range: lastFocusRange || null,
+                    selectionText: window?.getSelection()?.toString() || '',
+                  })
+                }
+                tempSelection && showFloatingContextMenu()
+              }}
+            >
+              <UseChatGptIcon
+                sx={{
+                  fontSize: '18px',
+                  // color: 'inherit',
+                }}
+              />
+            </TooltipButton>
+          </OnboardingTooltip>
         </Box>
         <FloatingContextMenuMiniMenuSearchWithAIButton
           placement={placement}

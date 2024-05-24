@@ -64,7 +64,8 @@
     "continue_with_google": "Continue with Google",
     "continue_with_email": "Continue with email",
     "privacy_policy": "Privacy Policy",
-    "terms_of_service": "Terms of Service"
+    "terms_of_service": "Terms of Service",
+    "shortcut":"Shortcut"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",

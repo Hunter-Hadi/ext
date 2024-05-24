@@ -7,7 +7,8 @@
     "pdf": "node ./build/pdf.js",
     "dev": "node ./build/esbuild.config.mjs --app=usechatgpt",
     "test": "cross-env NODE_ENV=test node ./build/esbuild.config.mjs --app=usechatgpt",
-    "release": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"
+    "release": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
+    "lint": "eslint --ext .ts,.tsx,.js,.jsx ./src --fix"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",

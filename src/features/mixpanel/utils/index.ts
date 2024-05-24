@@ -48,7 +48,11 @@ export const mixpanelTrack = async (
       ...(await getCurrentUserLogInfo()),
       currentDomain: getCurrentDomainHost(),
     }
-
+    window.postMessage({
+      event: 'MAX_AI_MIXPANEL_TRACK',
+      type: eventName,
+      data: paramsCover,
+    })
     console.log(`mixpanel.track eventName: `, eventName, paramsCover)
     mixpanel.track(eventName, paramsCover)
   } catch (e) {

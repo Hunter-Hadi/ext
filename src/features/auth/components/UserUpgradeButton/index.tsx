@@ -22,7 +22,7 @@ import { getMaxAISidebarRootElement } from '@/utils'
 
 const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { isFreeUser } = useUserInfo()
-  const { t } = useTranslation(['common', 'client'])
+  const { t } = useTranslation(['client'])
   const { currentConversationId, currentSidebarConversationType } =
     useClientConversation()
 
@@ -89,111 +89,117 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
         >
           {t('client:sidebar__top_bar__upgrade__title')}
         </Typography>
-      </Button>
 
-      <Popper
-        open={open}
-        anchorEl={anchorEl}
-        placement="top"
-        container={getMaxAISidebarRootElement()}
-        transition
-      >
-        {({ TransitionProps }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin: 'center bottom',
-            }}
-          >
-            <Paper
-              sx={{
-                borderRadius: 2.5,
-                border: '1px solid #EBEBEB',
-                boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-                p: 2,
+        <Popper
+          open={open}
+          anchorEl={anchorEl}
+          placement="top"
+          container={getMaxAISidebarRootElement()}
+          transition
+        >
+          {({ TransitionProps }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin: 'center bottom',
               }}
             >
-              <Stack spacing={2}>
-                <Typography fontSize={18} fontWeight={600}>
-                  Supercharge your productivity with AI
-                </Typography>
+              <Paper
+                sx={{
+                  borderRadius: 2.5,
+                  border: '1px solid #EBEBEB',
+                  boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
+                  p: 2,
+                }}
+              >
+                <Stack spacing={2}>
+                  <Typography fontSize={18} fontWeight={600}>
+                    {t('client:sidebar__user_upgrade_card__title')}
+                  </Typography>
 
-                <Divider />
+                  <Divider />
 
-                <Stack direction="row" spacing={1}>
-                  <CheckCircleOutlineIcon
-                    sx={{ color: 'rgba(0, 170, 61, 1)' }}
-                  />
-                  <Typography>Unlimited AI queries</Typography>
-                </Stack>
-                <Stack direction="row" spacing={1}>
-                  <CheckCircleOutlineIcon
-                    sx={{ color: 'rgba(0, 170, 61, 1)' }}
-                  />
-                  <Typography>Full access to all features</Typography>
-                </Stack>
-                <Stack direction="row" spacing={1}>
-                  <CheckCircleOutlineIcon
-                    sx={{ color: 'rgba(0, 170, 61, 1)' }}
-                  />
-                  <Typography>Early access to new features</Typography>
-                </Stack>
+                  <Stack direction="row" spacing={1}>
+                    <CheckCircleOutlineIcon
+                      sx={{ color: 'rgba(0, 170, 61, 1)' }}
+                    />
+                    <Typography>
+                      {t('client:sidebar__user_upgrade_card__item1__title')}
+                    </Typography>
+                  </Stack>
+                  <Stack direction="row" spacing={1}>
+                    <CheckCircleOutlineIcon
+                      sx={{ color: 'rgba(0, 170, 61, 1)' }}
+                    />
+                    <Typography>
+                      {t('client:sidebar__user_upgrade_card__item2__title')}
+                    </Typography>
+                  </Stack>
+                  <Stack direction="row" spacing={1}>
+                    <CheckCircleOutlineIcon
+                      sx={{ color: 'rgba(0, 170, 61, 1)' }}
+                    />
+                    <Typography>
+                      {t('client:sidebar__user_upgrade_card__item3__title')}
+                    </Typography>
+                  </Stack>
 
-                <Link
-                  color="primary.main"
-                  target="_blank"
-                  underline="none"
-                  onClick={handleClick}
-                >
-                  Learn more
-                </Link>
-
-                <Box position="relative">
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
-                    sx={{
-                      fontSize: 16,
-                      px: 2,
-                      py: 1.5,
-                      borderRadius: 2,
-                    }}
+                  <Link
+                    color="primary.main"
+                    target="_blank"
+                    underline="none"
                     onClick={handleClick}
                   >
-                    {t('client:sidebar__top_bar__upgrade__title')}
-                  </Button>
-                  <Typography
-                    fontSize={12}
-                    mt={0.5}
-                    color="text.secondary"
-                    textAlign="center"
-                  >
-                    Cancel anytime
-                  </Typography>
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      right: 10,
-                      top: 0,
-                      transform: 'translateY(-50%)',
-                      bgcolor: 'rgba(255, 126, 53, 1)',
-                      color: '#fff',
-                      borderRadius: 2,
-                      px: 1,
-                      py: 0.5,
-                    }}
-                  >
-                    <Typography fontSize={16} fontWeight={500} lineHeight={1}>
-                      Save 53% now
+                    {t('client:sidebar__user_upgrade_card__learn_more__title')}
+                  </Link>
+
+                  <Box position="relative">
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
+                      sx={{
+                        fontSize: 16,
+                        px: 2,
+                        py: 1.5,
+                        borderRadius: 2,
+                      }}
+                      onClick={handleClick}
+                    >
+                      {t('client:sidebar__top_bar__upgrade__title')}
+                    </Button>
+                    <Typography
+                      fontSize={12}
+                      mt={0.5}
+                      color="text.secondary"
+                      textAlign="center"
+                    >
+                      {t('client:sidebar__user_upgrade_card__footer__title')}
                     </Typography>
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        right: 10,
+                        top: 0,
+                        transform: 'translateY(-50%)',
+                        bgcolor: 'rgba(255, 126, 53, 1)',
+                        color: '#fff',
+                        borderRadius: 2,
+                        px: 1,
+                        py: 0.5,
+                      }}
+                    >
+                      <Typography fontSize={16} fontWeight={500} lineHeight={1}>
+                        {t('client:sidebar__user_upgrade_card__discount__title')}
+                      </Typography>
+                    </Box>
                   </Box>
-                </Box>
-              </Stack>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
+                </Stack>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      </Button>
     </LoginLayout>
   )
 }

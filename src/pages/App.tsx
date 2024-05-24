@@ -12,6 +12,7 @@ import AppInit from '@/components/AppInit'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import { isShowChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import SidebarPage from '@/pages/sidebar'
@@ -126,14 +127,16 @@ const App: FC = () => {
           >
             <AppInit />
             <Announcement />
-            <SidebarTopBar />
-            <BrowserVersionDetector>
-              <AppSuspenseLoadingLayout>
-                <Stack flex={1} height={0}>
-                  <SidebarPage open={appState.loadedAppSidebar} />
-                </Stack>
-              </AppSuspenseLoadingLayout>
-            </BrowserVersionDetector>
+            <SidebarContextProvider>
+              <SidebarTopBar />
+              <BrowserVersionDetector>
+                <AppSuspenseLoadingLayout>
+                  <Stack flex={1} height={0}>
+                    <SidebarPage open={appState.loadedAppSidebar} />
+                  </Stack>
+                </AppSuspenseLoadingLayout>
+              </BrowserVersionDetector>
+            </SidebarContextProvider>
           </Stack>
         </Box>
       </Resizable>

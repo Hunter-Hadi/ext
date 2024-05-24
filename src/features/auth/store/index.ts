@@ -34,3 +34,14 @@ export const UserQuotaUsageState = atom<
     // nextRefreshTime: '',
   },
 })
+
+export const DailyLimitState = atom<{
+  show: boolean
+  barHeight: number
+}>({
+  key: 'DailyLimitState',
+  default: {
+    show: false,
+    barHeight: 0
+  }
+})

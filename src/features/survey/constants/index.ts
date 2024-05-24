@@ -6,5 +6,4 @@ export const VALID_SURVEY_KEYS = [
 ] as const
 
 // 临时的标记，因为目前只有一种 survey，所以先写死
-export const currentSurveyKey: ISurveyKeyType = 'zztest3'
-// export const currentSurveyKey: ISurveyKeyType = 'feedback'
+export const currentSurveyKey: ISurveyKeyType = 'feedback'

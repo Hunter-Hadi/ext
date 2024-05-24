@@ -11,7 +11,7 @@ import useSurveyStatus from '@/features/survey/hooks/useSurveyStatus'
 
 const SidebarSurveyDialog = () => {
   // 当前渲染 survey key
-  const { canShowSurvey } = useSurveyStatus()
+  const { canShowSurvey, alreadyPoppedSurveyModal } = useSurveyStatus()
 
   const [open, setOpen] = useState(false)
 
@@ -20,7 +20,9 @@ const SidebarSurveyDialog = () => {
   }
 
   useEffect(() => {
-    if (canShowSurvey) {
+    // 可以看到 survey 并且没有弹过 survey modal
+    // 才弹 survey modal
+    if (canShowSurvey && !alreadyPoppedSurveyModal) {
       // 加个延迟让用户看到聊天框
       setTimeout(async () => {
         await setChromeExtensionOnBoardingData(
@@ -32,7 +34,7 @@ const SidebarSurveyDialog = () => {
         mixpanelTrack('survey_card_showed')
       }, 1500)
     }
-  }, [canShowSurvey])
+  }, [canShowSurvey, alreadyPoppedSurveyModal])
 
   return (
     <Dialog

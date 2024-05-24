@@ -6,9 +6,14 @@ import Typography from '@mui/material/Typography'
 import isEmpty from 'lodash-es/isEmpty'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { useFloatingContextMenu, useRangy } from '@/features/contextMenu'
+import {
+  FloatingContextWindowChangesState,
+  useFloatingContextMenu,
+  useRangy,
+} from '@/features/contextMenu'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useFloatingContextMenuPin from '@/features/contextMenu/hooks/useFloatingContextMenuPin'
 
@@ -88,18 +93,29 @@ const ContextText: FC = () => {
 
 const FloatingContextMenuTitleBar: FC = () => {
   const { t } = useTranslation(['common', 'client'])
+
+  const { hideFloatingContextMenu } = useFloatingContextMenu()
   const { currentFloatingContextMenuDraft, selectedDraftUserMessage } =
     useFloatingContextMenuDraft()
   const { floatingDropdownMenuPin, setFloatingDropdownMenuPin } =
     useFloatingContextMenuPin()
-  const { hideFloatingContextMenu } = useFloatingContextMenu()
+  const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
+    FloatingContextWindowChangesState,
+  )
 
   const onPin = () => {
     setFloatingDropdownMenuPin(!floatingDropdownMenuPin)
   }
 
   const onClose = () => {
-    hideFloatingContextMenu(true)
+    if (contextWindowChanges.contextWindowMode !== 'READ') {
+      setContextWindowChanges((prev) => ({
+        ...prev,
+        discardChangesModalVisible: true,
+      }))
+    } else {
+      hideFloatingContextMenu(true)
+    }
   }
 
   return (
@@ -113,6 +129,23 @@ const FloatingContextMenuTitleBar: FC = () => {
       }}
       component={'div'}
     >
+      {/*drag box*/}
+      {/*<Box*/}
+      {/*  sx={{*/}
+      {/*    position: 'absolute',*/}
+      {/*    width: '100%',*/}
+      {/*    zIndex: 10,*/}
+      {/*    cursor: 'grab',*/}
+      {/*    height: '20px',*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <DevContent>*/}
+      {/*    <Typography fontSize={'14px'} color={'text.primary'}>*/}
+      {/*      {contextWindowChanges.contextWindowMode}(debug)*/}
+      {/*    </Typography>*/}
+      {/*  </DevContent>*/}
+      {/*</Box>*/}
+
       {isEmpty(currentFloatingContextMenuDraft) && !selectedDraftUserMessage ? (
         <ContextText />
       ) : null}
@@ -133,8 +166,7 @@ const FloatingContextMenuTitleBar: FC = () => {
               width: 'auto',
               height: 20,
               color: 'inherit',
-              minWidth: 'unset',
-              padding: '0 6px',
+              padding: '0 3px',
             }}
             onClick={onPin}
           >
@@ -167,11 +199,10 @@ const FloatingContextMenuTitleBar: FC = () => {
               width: 'auto',
               height: 20,
               color: 'inherit',
-              minWidth: 'unset',
-              padding: 0,
-              paddingRight: '5px',
-              marginRight: '-5px',
+              padding: '3px',
+              marginRight: '-3px',
             }}
+            disabled={contextWindowChanges.contextWindowMode === 'LOADING'}
             onClick={onClose}
           >
             <CloseOutlinedIcon

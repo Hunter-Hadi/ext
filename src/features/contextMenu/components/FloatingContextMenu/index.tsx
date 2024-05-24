@@ -42,8 +42,7 @@ import FloatingContextMenuChatHistoryButton from '@/features/contextMenu/compone
 import FloatingContextMenuContinueChatButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuContinueChatButton'
 import DiscardChangesModal from '@/features/contextMenu/components/FloatingContextMenu/DiscardChangesModal'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
-import FloatingContextMenuTitleBar
-  from "@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuTitleBar";
+import FloatingContextMenuTitleBar from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuTitleBar'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
 import { useFloatingContextMenuDraftHistoryChange } from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
@@ -155,6 +154,10 @@ const FloatingContextMenu: FC<{
     open: floatingDropdownMenu.open,
     strategy: 'fixed',
     onOpenChange: (open, event, reason) => {
+      if (reason !== 'escape-key' && floatingDropdownMenuPin) {
+        // pin状态下只允许按esc主动退出
+        return
+      }
       if (reason === 'outside-press' || reason === 'escape-key') {
         if (isGlobalVideoPopupOpen()) {
           closeGlobalVideoPopup()
@@ -208,7 +211,6 @@ const FloatingContextMenu: FC<{
           return
         }
       }
-      if (reason !== 'escape-key' && floatingDropdownMenuPin) return
       setFloatingDropdownMenu((prev) => {
         return {
           ...prev,
@@ -347,23 +349,6 @@ const FloatingContextMenu: FC<{
         id={MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
       >
-        {/*drag box*/}
-        <Box
-          sx={{
-            position: 'absolute',
-            width: '100%',
-            zIndex: 10,
-            cursor: 'grab',
-            height: '20px',
-          }}
-          onMouseDown={handleDragStart}
-        >
-          <DevContent>
-            <Typography fontSize={'14px'} color={'text.primary'}>
-              {contextWindowChanges.contextWindowMode}(debug)
-            </Typography>
-          </DevContent>
-        </Box>
         <FloatingContextMenuList
           customOpen
           defaultPlacement={safePlacement.contextMenuPlacement}
@@ -392,6 +377,24 @@ const FloatingContextMenu: FC<{
                 event.stopPropagation()
               }}
             >
+              {/*drag box*/}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  width: '100%',
+                  left: 0,
+                  top: 0,
+                  cursor: 'grab',
+                  height: '28px',
+                }}
+                onMouseDown={handleDragStart}
+              >
+                <DevContent>
+                  <Typography fontSize={'14px'} color={'text.primary'}>
+                    {contextWindowChanges.contextWindowMode}(debug)
+                  </Typography>
+                </DevContent>
+              </Box>
               <FloatingContextMenuTitleBar />
               <WritingMessageBox />
               {floatingDropdownMenu.open && (

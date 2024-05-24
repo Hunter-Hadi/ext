@@ -66,7 +66,10 @@ const useFloatingContextMenu = () => {
       openFloatingContextMenu?: boolean,
       forceShowModelSelector?: boolean,
     ) => {
-      if (contextWindowModeRef.current !== 'READ') {
+      if (
+        contextWindowModeRef.current !== 'READ' &&
+        !floatingDropdownMenuPinRef.current
+      ) {
         if (contextWindowModeRef.current !== 'LOADING') {
           // 如果是编辑模式，不展示floating menu
           setContextWindowChanges((prev) => {

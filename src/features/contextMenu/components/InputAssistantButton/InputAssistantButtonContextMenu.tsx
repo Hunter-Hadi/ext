@@ -149,7 +149,7 @@ const InputAssistantButtonContextMenu: FC<
       !isRunningRef.current &&
       clickContextMenu &&
       runContextMenuRef.current &&
-      sidebarSettingsTypeRef.current === 'ContextMenu'
+      currentSidebarConversationType === 'ContextMenu'
     ) {
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
@@ -191,7 +191,7 @@ const InputAssistantButtonContextMenu: FC<
         })
     }
     return () => {}
-  }, [clickContextMenu, shortCutsEngine])
+  }, [clickContextMenu, shortCutsEngine, currentSidebarConversationType])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
       const emotionRoot = document.createElement('style')

@@ -9,7 +9,6 @@ import { useInitMixPanel } from '@/features/mixpanel/utils'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
-import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useInitWebPageSidebar from '@/features/sidebar/hooks/useInitWebPageSidebar'
 import useSidebarDropEvent from '@/features/sidebar/hooks/useSidebarDropEvent'
@@ -86,20 +85,11 @@ const SidebarDragWrapper: FC<{
 
 const SidebarPage: FC<{
   open?: boolean
-  disableContextProvider?: boolean
 }> = (props) => {
-  const { open = false, disableContextProvider } = props
+  const { open = false } = props
   const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
-  const ContextProvider = disableContextProvider
-    ? React.Fragment
-    : SidebarContextProvider
-  console.log(
-    'SidebarPage disableContextProvider',
-    disableContextProvider,
-    open,
-  )
   return (
-    <ContextProvider>
+    <>
       <SidebarPageInit />
       {!isImmersiveChatRef.current && <WebPageSidebarInit />}
       {isImmersiveChatRef.current && <ImmersiveChatPageSidebarInit />}
@@ -136,7 +126,7 @@ const SidebarPage: FC<{
         }}
       />
       {/*<ActionSetVariablesModal modelKey={'Sidebar'} />*/}
-    </ContextProvider>
+    </>
   )
 }
 export default SidebarPage

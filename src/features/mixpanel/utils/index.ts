@@ -43,7 +43,11 @@ export const mixpanelTrack = async (
 ) => {
   try {
     const paramsCover = { ...params, ...(await getCurrentUserLogInfo()) }
-
+    window.postMessage({
+      event: 'MAX_AI_MIXPANEL_TRACK',
+      type: eventName,
+      data: paramsCover
+    })
     console.log(`mixpanel.track eventName: `, eventName, paramsCover)
     mixpanel.track(eventName, paramsCover)
   } catch (e) {

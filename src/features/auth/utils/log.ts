@@ -238,6 +238,9 @@ export const authEmitPricingHooksLog = debounce(
         currentDomain: getCurrentDomainHost(),
         ...trackParams,
       })
+
+      console.log('TEST', 'mixpanel track', { type, logType, sceneType, ...trackParams })
+
       const port = new ContentScriptConnectionV2()
       await port.postMessage({
         event: 'Client_emitPricingHooks',

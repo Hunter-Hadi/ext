@@ -1,4 +1,6 @@
 import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
@@ -13,6 +15,9 @@ import { GiftIcon } from '@/components/CustomIcon'
 import { useAuthLogin } from '@/features/auth'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
+import SidebarSurveyContent from '@/features/sidebar/components/SidebarChatBox/SidebarSurveyDialog/SidebarSurveyContent'
+import { currentSurveyKey } from '@/features/survey/constants'
+import useSurveyStatus from '@/features/survey/hooks/useSurveyStatus'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
@@ -301,10 +306,81 @@ const AffiliateTabButton: FC = () => {
           <Typography
             fontSize={12}
             color={'inherit'}
-            data-testid={`max-ai__rewards-tab`}
+            data-testid={`max-ai__survey_tab`}
             lineHeight={1}
           >
             {t('client:sidebar__marketing_tabs__affiliate__tab__title')}
+          </Typography>
+        </Button>
+      </LightTooltip>
+    </Box>
+  )
+}
+const SurveyTabButton: FC = () => {
+  const { t } = useTranslation(['common', 'client'])
+  const [isOpen, setIsOpen] = React.useState(false)
+  const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
+  return (
+    <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5}>
+      <LightTooltip
+        onOpen={() => {
+          mixpanelTrack(`referral_card_showed`, {
+            referralType: 'AFFILIATE',
+          })
+          setIsOpen(true)
+        }}
+        onClose={() => {
+          setIsOpen(false)
+        }}
+        PopperProps={{
+          disablePortal: true,
+        }}
+        placement="left"
+        title={
+          <Stack
+            sx={{
+              bgcolor: 'background.paper',
+              maxWidth: '360px',
+            }}
+          >
+            <SidebarSurveyContent
+              surveyKey={currentSurveyKey}
+              closeBtn={false}
+            />
+          </Stack>
+        }
+      >
+        <Button
+          data-testid={`maxai--sidebar--survey_tab`}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 0.5,
+            minWidth: 'unset',
+            width: '100%',
+            color: 'text.secondary',
+            py: 0.5,
+            position: 'relative',
+            borderRadius: 2,
+            '&:hover': {
+              bgcolor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(44, 44, 44, 1)'
+                  : 'rgba(144, 101, 176, 0.16)',
+              color: 'primary.main',
+            },
+          }}
+        >
+          {isOpen ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
+          <Typography
+            fontSize={12}
+            color={'inherit'}
+            data-testid={`max-ai__rewards-tab`}
+            lineHeight={1}
+          >
+            {t('client:sidebar__marketing_tabs__survey__tab__title')}
           </Typography>
         </Button>
       </LightTooltip>
@@ -319,6 +395,7 @@ const AffiliateTabButton: FC = () => {
 const SidebarMarketingTabs: FC = () => {
   const { isLogin, loaded } = useAuthLogin()
   const { isFreeUser } = useUserInfo()
+  const { canShowSurvey } = useSurveyStatus()
   if (!isLogin || !loaded) {
     return null
   }
@@ -331,6 +408,7 @@ const SidebarMarketingTabs: FC = () => {
     >
       {isFreeUser && <RewardsTabButton />}
       {!isFreeUser && <AffiliateTabButton />}
+      {canShowSurvey && <SurveyTabButton />}
     </Stack>
   )
 }

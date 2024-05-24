@@ -19,6 +19,7 @@ interface IProps {
   surveyKey: ISurveyKeyType
   handleCloseClick?: () => void
   sx?: SxProps
+  closeBtn?: boolean
 }
 
 const CTA_BUTTON_LINK = `${APP_USE_CHAT_GPT_HOST}/survey/feedback`
@@ -27,6 +28,7 @@ const SidebarSurveyContent: FC<IProps> = ({
   surveyKey,
   handleCloseClick,
   sx,
+  closeBtn = true,
 }) => {
   const { t } = useTranslation(['client'])
 
@@ -60,9 +62,11 @@ const SidebarSurveyContent: FC<IProps> = ({
           {t('client:sidebar__survey_dialog__title')}
         </Typography>
 
-        <IconButton onClick={handleCloseClick}>
-          <CloseOutlinedIcon sx={{ fontSize: 24, color: 'text.primary' }} />
-        </IconButton>
+        {closeBtn && (
+          <IconButton onClick={handleCloseClick}>
+            <CloseOutlinedIcon sx={{ fontSize: 24, color: 'text.primary' }} />
+          </IconButton>
+        )}
       </Stack>
       {/* content */}
       <Stack

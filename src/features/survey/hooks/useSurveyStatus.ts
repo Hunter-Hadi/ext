@@ -28,10 +28,6 @@ const useSurveyStatus = () => {
       // 用户信息加载完毕, 才能判断是否弹窗
       return false
     }
-    if (alreadyPoppedSurveyModal) {
-      // 弹过了，不弹窗
-      return false
-    }
     if (filledOutSurveyState[currentSurveyKey]) {
       // 如果已经填写过了当前 survey，不弹窗
       return false
@@ -73,13 +69,7 @@ const useSurveyStatus = () => {
 
     // 理论上不会走到这里，因为用户肯定会有 注册时间或者付费时间
     return false
-  }, [
-    userInfo,
-    isPayingUser,
-    filledOutSurveyState,
-    alreadyPoppedSurveyModal,
-    loaded,
-  ])
+  }, [userInfo, isPayingUser, filledOutSurveyState, loaded])
 
   useEffect(() => {
     // 用户信息加载完毕
@@ -96,6 +86,7 @@ const useSurveyStatus = () => {
 
   return {
     canShowSurvey,
+    alreadyPoppedSurveyModal,
   }
 }
 

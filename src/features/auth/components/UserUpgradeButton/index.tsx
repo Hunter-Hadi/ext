@@ -95,6 +95,9 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           anchorEl={anchorEl}
           placement="top"
           container={getMaxAISidebarRootElement()}
+          onClick={event => {
+            event.stopPropagation()
+          }}
           transition
         >
           {({ TransitionProps }) => (
@@ -109,6 +112,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                   borderRadius: 2.5,
                   border: '1px solid #EBEBEB',
                   boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
+                  minWidth: 300,
                   p: 2,
                 }}
               >
@@ -149,6 +153,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                     target="_blank"
                     underline="none"
                     onClick={handleClick}
+                    sx={{ cursor: 'pointer' }}
                   >
                     {t('client:sidebar__user_upgrade_card__learn_more__title')}
                   </Link>

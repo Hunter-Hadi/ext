@@ -1,9 +1,8 @@
 import React, { FC } from 'react'
 
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 import SidebarAIMessageImageContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent'
 import SidebarAIMessageTextContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageTextContent'
-
-import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 
 const SidebarAIMessageContent: FC<{
   AIMessage: IAIResponseMessage

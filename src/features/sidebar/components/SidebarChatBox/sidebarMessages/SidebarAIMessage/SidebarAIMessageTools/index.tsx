@@ -6,11 +6,10 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
-
-import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 
 const SidebarAIMessageTools: FC<{
   useChatGPTAble?: boolean

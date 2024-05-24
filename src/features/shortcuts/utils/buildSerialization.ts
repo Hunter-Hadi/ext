@@ -1,10 +1,10 @@
-import {
-  Value,
-  ValueObject,
-  ValueArray,
-} from '@/features/shortcuts/types/Value'
 import WFDictionaryFieldValueItem from '@/features/shortcuts/types/IOS_WF/WFDictionaryFieldValueItem'
 import WFSerialization from '@/features/shortcuts/types/IOS_WF/WFSerialization'
+import {
+  Value,
+  ValueArray,
+  ValueObject,
+} from '@/features/shortcuts/types/Value'
 import { getItemType } from '@/features/shortcuts/utils/getItemType'
 
 const valueMap = [

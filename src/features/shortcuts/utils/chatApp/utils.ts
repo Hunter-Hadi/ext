@@ -4,7 +4,7 @@ export const findLongestCommonSubstring = (str1: string, str2: string) => {
   let maxLength = 0 // 最长共同子串的长度
   let end = 0 // 最长共同子串结束的位置
   // 创建一个二维数组来保存共同子串的长度
-  let lengths = Array.from({ length: str1.length + 1 }, () =>
+  const lengths = Array.from({ length: str1.length + 1 }, () =>
     Array(str2.length + 1).fill(0),
   )
 

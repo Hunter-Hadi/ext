@@ -13,7 +13,6 @@ import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIMod
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
-
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {

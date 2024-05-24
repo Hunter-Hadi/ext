@@ -4,6 +4,7 @@ import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Popover from '@mui/material/Popover'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -19,7 +20,6 @@ import {
   PRESET_VARIABLES_GROUP_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
-import { SxProps } from '@mui/material/styles'
 
 const PresetVariablesTable: FC<{
   tableData: IPresetVariablesGroupItem[]

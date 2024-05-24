@@ -6,7 +6,6 @@ import { FC } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 import {
   ISearchWithAIProviderType,

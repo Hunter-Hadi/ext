@@ -18,7 +18,6 @@ import {
   setLocationHashRoute,
   SettingsPageRouteContext,
 } from '@/pages/settings/context'
-import SettingsLoginPage from '@/pages/settings/pages/login'
 import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
 
 export const SETTINGS_PAGE_MENU_WIDTH = {

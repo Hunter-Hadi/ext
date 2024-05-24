@@ -8,7 +8,6 @@ import {
 import { BardChat } from '@/background/src/chat'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 class BardChatProvider implements ChatAdapterInterface {

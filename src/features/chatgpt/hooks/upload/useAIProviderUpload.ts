@@ -11,12 +11,11 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientUploadedFilesState } from '@/features/chatgpt/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import globalSnackbar from '@/utils/globalSnackbar'
-
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 /**
  * AI Provider的上传文件处理

@@ -8,8 +8,8 @@ import {
   ChatPanelContextValue,
 } from '@/features/chatgpt/store/ChatPanelContext'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { useFocus } from '@/features/common/hooks/useFocus'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getInputMediator } from '@/store/InputMediator'

@@ -21,9 +21,8 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
-import { list2Options } from '@/utils/dataHelper/arrayHelper'
-
 import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { list2Options } from '@/utils/dataHelper/arrayHelper'
 
 const ThirdPartyAIProvidersOptions = list2Options(
   AIProviderOptions.filter((AIProviderOption) => AIProviderOption.thirdParty),

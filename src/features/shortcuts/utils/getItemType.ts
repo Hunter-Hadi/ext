@@ -1,6 +1,6 @@
 import WFItemType from '@/features/shortcuts/types/IOS_WF/WFItemType'
 
-type itemType = string | number | [] | {}
+type itemType = string | number | [] | Record<string, any>
 
 const itemTypeMap = [
   {

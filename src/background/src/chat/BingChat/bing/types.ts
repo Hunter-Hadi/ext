@@ -1,6 +1,5 @@
-import { I18nextKeysType } from '@/i18next'
-
 import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { I18nextKeysType } from '@/i18next'
 
 export enum BingConversationStyle {
   Creative = 'creative',

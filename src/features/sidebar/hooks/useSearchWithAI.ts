@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import { IAIProviderType } from '@/background/provider/chat'
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
@@ -19,7 +20,6 @@ import {
   isShowChatBox,
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
-import { IAIProviderType } from '@/background/provider/chat'
 
 const useSearchWithAI = () => {
   const { currentSidebarConversationType, updateSidebarConversationType } =

@@ -1,6 +1,4 @@
 import { MAXAI_NORMAL_MODEL_UPLOAD_CONFIG } from '@/background/src/chat/constant'
-
-
 import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
 
 export const MAXAI_FREE_MODELS: IAIProviderModel[] = [

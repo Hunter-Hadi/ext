@@ -1,13 +1,12 @@
 import { createClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message';
 
 import {
   SEARCH_WITH_AI_ROOT_ID,
   SEARCH_WITH_AI_SHADOW_CONTAINER_ID,
 } from '../constants'
 import { ISearchPageKey } from './SearchPageAdapter'
-
-import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message';
 
 export function getSearchWithAIRootElement() {
   return document

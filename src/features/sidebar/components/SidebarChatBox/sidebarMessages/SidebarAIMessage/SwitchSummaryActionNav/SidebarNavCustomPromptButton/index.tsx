@@ -22,12 +22,12 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useContextMenuList } from '@/features/contextMenu'
 // import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import { IAIResponseMessage, IAIResponseOriginalMessageNavMetadata } from '@/features/indexed_db/conversations/models/Message';
 import { type IPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper';
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 import RenderCustomPromptMenuList from './RenderCustomPromptMenuList'
 import { CustomPromptMenuListIcon, CustomPromptMenuListItem } from './SidebarNavCustomPromptMenuItem'
-import { IAIResponseMessage, IAIResponseOriginalMessageNavMetadata } from '@/features/indexed_db/conversations/models/Message';
 
 
 interface ISidebarNavCustomPromptButtonProps {

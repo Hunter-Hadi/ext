@@ -9,6 +9,7 @@ import { ContextMenuIcon, type IContextMenuIconKey } from '@/components/ContextM
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import { IAIResponseMessage, IAIResponseOriginalMessageNavMetadata } from '@/features/indexed_db/conversations/models/Message';
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
   allSummaryNavList,
@@ -24,7 +25,6 @@ import {
 } from '@/features/sidebar/utils/pageSummaryNavPrompt'
 
 import SidebarNavCustomPromptButton from './SidebarNavCustomPromptButton'
-import { IAIResponseMessage, IAIResponseOriginalMessageNavMetadata } from '@/features/indexed_db/conversations/models/Message';
 
 interface IProps {
   message: IAIResponseMessage

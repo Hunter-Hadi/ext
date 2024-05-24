@@ -37,10 +37,9 @@ import { IConversation } from '@/features/indexed_db/conversations/models/Conver
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessage,
+  IAIResponseSourceCitation,
   IChatMessage,
-  IUserChatMessage,
-  IAIResponseSourceCitation
-} from '@/features/indexed_db/conversations/models/Message'
+  IUserChatMessage} from '@/features/indexed_db/conversations/models/Message'
 import {
   calculateMaxResponseTokens,
   getTextTokens,

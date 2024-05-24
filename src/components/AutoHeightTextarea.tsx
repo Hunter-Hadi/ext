@@ -21,6 +21,7 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message';
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -29,8 +30,6 @@ import {
   getMaxAISidebarActiveElement,
 } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-
-import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message';
 
 export const LINE_HEIGHT = 24
 

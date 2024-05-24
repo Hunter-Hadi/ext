@@ -11,8 +11,6 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
-
-
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 export interface ChatIconFileListProps {

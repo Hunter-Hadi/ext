@@ -4,7 +4,6 @@ import {
 } from '@/background/provider/chat/ChatAdapter'
 import { OpenAIChat } from '@/background/src/chat'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 class OpenAIChatProvider implements ChatAdapterInterface {

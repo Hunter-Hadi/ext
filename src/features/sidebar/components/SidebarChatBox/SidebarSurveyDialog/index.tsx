@@ -4,7 +4,6 @@ import Dialog, { dialogClasses } from '@mui/material/Dialog'
 import React, { useEffect, useState } from 'react'
 
 import { setChromeExtensionOnBoardingData } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
-import { mixpanelTrack } from '@/features/mixpanel/utils'
 import SidebarSurveyContent from '@/features/sidebar/components/SidebarChatBox/SidebarSurveyDialog/SidebarSurveyContent'
 import { currentSurveyKey } from '@/features/survey/constants'
 import useSurveyStatus from '@/features/survey/hooks/useSurveyStatus'
@@ -31,7 +30,6 @@ const SidebarSurveyDialog = () => {
         )
 
         setOpen(true)
-        mixpanelTrack('survey_card_showed')
       }, 1500)
     }
   }, [canShowSurvey, alreadyPoppedSurveyModal])

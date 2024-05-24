@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import ProLink from '@/features/common/components/ProLink'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { ISurveyKeyType } from '@/features/survey/types'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
@@ -34,8 +35,18 @@ const SidebarSurveyContent: FC<IProps> = ({
 
   const routerToPage = () => {
     window.open(CTA_BUTTON_LINK)
+    mixpanelTrack('survey_card_clicked', {
+      surveyType: surveyKey,
+    })
     // handleCloseClick && handleCloseClick()
   }
+
+  useEffectOnce(() => {
+    // 渲染 SidebarSurveyContent 卡片时，触发 mixpanel 事件
+    mixpanelTrack('survey_card_showed', {
+      surveyType: surveyKey,
+    })
+  })
 
   return (
     <Stack
@@ -90,7 +101,15 @@ const SidebarSurveyContent: FC<IProps> = ({
         <Stack py={2} spacing={2}>
           <Typography fontSize={16} lineHeight={1.5}>
             {t('client:sidebar__survey_dialog__description__item1__part1')}{' '}
-            <ProLink href={CTA_BUTTON_LINK} underline="always">
+            <ProLink
+              href={CTA_BUTTON_LINK}
+              underline="always"
+              onClick={() => {
+                mixpanelTrack('survey_card_clicked', {
+                  surveyType: surveyKey,
+                })
+              }}
+            >
               {t('client:sidebar__survey_dialog__description__item1__part2')}
             </ProLink>
             ?

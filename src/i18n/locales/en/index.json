@@ -788,6 +788,15 @@
     "sidebar__promotion_dialog__footer_tips": "MaxAI Elite offers unlimited AI queries and unlocks all features.",
     "sidebar__conversation__message__context_cleared": "Context cleared",
     "sidebar__conversation__message__context_triggered_content_review": "Context cleared to bypass moderation",
+
+    "sidebar__survey_dialog__title": "Thank you for using MaxaI.me!",
+    "sidebar__survey_dialog__description__item1__part1": "As one of our most active customers, could you please take 1 minute to",
+    "sidebar__survey_dialog__description__item1__part2": "tell us about your experience",
+    "sidebar__survey_dialog__description__item2": "This is super helpful: it helps us create the best AI experience for you :)",
+    "sidebar__survey_dialog__thanks": "Thanks so much",
+    "sidebar__survey_dialog__by_who": "MaxAI.me team",
+    "sidebar__survey_dialog__cta_button_text": "Tell us about your experience",
+
     "translation_advanced__title": "Translation settings",
     "translation_advanced__source_lang_select__label": "Source language",
     "translation_advanced__target_lang_select__label": "Target language",

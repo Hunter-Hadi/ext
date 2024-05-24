@@ -125,7 +125,11 @@ const RewardsTabButton: FC = () => {
             position: 'relative',
             borderRadius: 2,
             '&:hover': {
-              bgcolor: '#9065b014',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(44, 44, 44, 1)'
+                  : 'rgba(144, 101, 176, 0.16)',
+              color: 'primary.main',
             },
           }}
         >
@@ -285,7 +289,11 @@ const AffiliateTabButton: FC = () => {
             position: 'relative',
             borderRadius: 2,
             '&:hover': {
-              bgcolor: '#9065b014',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(44, 44, 44, 1)'
+                  : 'rgba(144, 101, 176, 0.16)',
+              color: 'primary.main',
             },
           }}
         >

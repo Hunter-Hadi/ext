@@ -85,6 +85,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Iframe_sendPageContent'
   // global video popup
   | 'Client_switchVideoPopup'
+  // 客户端获取 survey 状态
+  | 'Client_updateMaxAISurveyStatus'
   | IWebsiteContextSendEvent
 
 // chat.openai.com(daemon process) 监听task event

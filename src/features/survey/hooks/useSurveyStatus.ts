@@ -1,0 +1,102 @@
+import dayjs from 'dayjs'
+import { useEffect, useMemo, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+
+import { getChromeExtensionOnBoardingData } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { currentSurveyKey } from '@/features/survey/constants'
+import { HaveFilledOutSurveyAtom } from '@/features/survey/store'
+
+const useSurveyStatus = () => {
+  const [loaded, setLoaded] = useState(false)
+  const { userInfo, isPayingUser } = useUserInfo()
+  const filledOutSurveyState = useRecoilValue(HaveFilledOutSurveyAtom)
+  const [alreadyPoppedSurveyModal, setAlreadyPoppedSurveyModal] =
+    useState(false)
+
+  const syncAlreadyPoppedSurveyModal = async () => {
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    if (onBoardingData['ON_BOARDING_EXTENSION_SURVEY_DIALOG_ALERT']) {
+      setAlreadyPoppedSurveyModal(true)
+    } else {
+      setAlreadyPoppedSurveyModal(false)
+    }
+  }
+
+  const canShowSurvey = useMemo(() => {
+    if (!loaded) {
+      // 用户信息加载完毕, 才能判断是否弹窗
+      return false
+    }
+    if (alreadyPoppedSurveyModal) {
+      // 弹过了，不弹窗
+      return false
+    }
+    if (filledOutSurveyState[currentSurveyKey]) {
+      // 如果已经填写过了当前 survey，不弹窗
+      return false
+    }
+
+    // 注册时间
+    const createAt = userInfo?.created_at
+    // 第一次付费时间
+    const subscribedAt = userInfo?.subscribed_at
+
+    // 没登录时不弹窗
+    if (userInfo === null) {
+      return false
+    }
+
+    // 不是付费用户不弹窗
+    if (!isPayingUser) {
+      return false
+    }
+
+    if (subscribedAt) {
+      const limitDays = 14
+      // 付费时间大于跟现在比大于 14 天, 弹窗
+      if (dayjs(Date.now()).diff(subscribedAt * 1000, 'day') > limitDays) {
+        // 触发 弹窗
+        return true
+      }
+      return false
+    } else if (createAt) {
+      // 如果后端没有传回有效的第一次付费时间，就用注册时间比较
+      const limitDays = 21
+      // 注册时间跟现在比大于 21 天, 弹窗
+      if (dayjs(Date.now()).diff(createAt, 'day') > limitDays) {
+        // 触发 弹窗
+        return true
+      }
+      return false
+    }
+
+    // 理论上不会走到这里，因为用户肯定会有 注册时间或者付费时间
+    return false
+  }, [
+    userInfo,
+    isPayingUser,
+    filledOutSurveyState,
+    alreadyPoppedSurveyModal,
+    loaded,
+  ])
+
+  useEffect(() => {
+    // 用户信息加载完毕
+    if (userInfo) {
+      // 同步是否弹过 survey modal 的状态，
+      // 同步完才能 set loaded 为 true
+      syncAlreadyPoppedSurveyModal().then(() => {
+        setLoaded(true)
+      })
+    }
+  }, [userInfo])
+
+  // useFocus(syncAlreadyPoppedSurveyModal)
+
+  return {
+    canShowSurvey,
+  }
+}
+
+export default useSurveyStatus

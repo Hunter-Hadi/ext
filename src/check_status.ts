@@ -88,3 +88,20 @@ observer.observe(document.querySelector('body') as HTMLBodyElement, {
   childList: true,
   subtree: true,
 })
+
+window.addEventListener('message', function (event) {
+  // We only accept messages from ourselves
+  if (event.source != window) return
+
+  if (event.data.type && event.data.type == 'MAXAI_UPDATE_SURVEY_STATUS') {
+    port.postMessage({
+      event: 'Client_updateMaxAISurveyStatus',
+      data: {
+        surveyKeys: event.data?.data?.surveyType
+          ? [event.data?.data?.surveyType]
+          : [],
+        forceUpdate: true,
+      },
+    })
+  }
+})

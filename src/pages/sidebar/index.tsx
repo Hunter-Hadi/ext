@@ -8,6 +8,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { useInitMixPanel } from '@/features/mixpanel/utils'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
+import SidebarSurveyDialog from '@/features/sidebar/components/SidebarChatBox/SidebarSurveyDialog'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
 import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
@@ -113,6 +114,7 @@ const SidebarPage: FC<{
         >
           <SidebarTour />
           <SidebarPromotionDialog />
+          <SidebarSurveyDialog />
           <SidebarDragWrapper>
             {!isImmersiveChatRef.current && <ChatBoxHeader />}
             <AppSuspenseLoadingLayout>

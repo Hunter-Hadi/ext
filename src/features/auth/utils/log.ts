@@ -23,10 +23,7 @@ import { IPromptLibraryCardType } from '@/features/prompt_library/types'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
-import {
-  getCurrentDomainHost,
-  isMaxAIImmersiveChatPage,
-} from '@/utils/dataHelper/websiteHelper'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const BEAUTIFY_PROVIDER_NAME: Record<IAIProviderType, string> = {
   USE_CHAT_GPT_PLUS: 'in_house',
@@ -233,7 +230,6 @@ export const authEmitPricingHooksLog = debounce(
       mixpanelTrack(type, {
         logType,
         sceneType,
-        currentDomain: getCurrentDomainHost(),
         ...trackParams,
       })
       const port = new ContentScriptConnectionV2()

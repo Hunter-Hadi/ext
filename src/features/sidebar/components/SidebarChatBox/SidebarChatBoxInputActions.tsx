@@ -4,12 +4,12 @@ import { buttonClasses } from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
 import TooltipButton from '@/components/TooltipButton'
+import UserUpgradeButton from '@/features/auth/components/UserUpgradeButton'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
@@ -116,16 +116,10 @@ const SidebarChatBoxInputActions: FC<{
           sidebarConversationType={currentSidebarConversationType}
         />
       )}
-      <Typography
-        component={'span'}
-        color={'text.secondary'}
-        fontSize={12}
-        // 用等宽字体，不然会左右闪烁宽度
-        fontFamily={'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'}
-      >
-        {/*{Math.floor(currentMaxInputLength / 1000) + 'k '}*/}
-        {/*{t('client:sidebar__input__tokens_limited__title')}*/}
-      </Typography>
+
+      {/* Upgrade */}
+      <UserUpgradeButton />
+
       <Box
         component={'div'}
         display={'flex'}

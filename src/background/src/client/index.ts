@@ -40,6 +40,7 @@ import {
 import { IChatMessage } from '@/features/chatgpt/types'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
+import { updateSurveyStatusInBackground } from '@/features/survey/background/utils'
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
@@ -966,6 +967,17 @@ export const ClientMessageInit = () => {
           return {
             success: true,
             data: null,
+            message: 'ok',
+          }
+        }
+        case 'Client_updateMaxAISurveyStatus': {
+          const result = await updateSurveyStatusInBackground(
+            data.surveyKeys,
+            data.forceUpdate,
+          )
+          return {
+            success: true,
+            data: result,
             message: 'ok',
           }
         }

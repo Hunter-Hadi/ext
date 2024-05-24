@@ -65,7 +65,7 @@ const permissionSceneTypeToLogType = async (
       sidebarSettings?.summary?.conversationId
     if (currentSummaryConversationId) {
       const currentSummaryConversation =
-        await ClientConversationManager.getConversation(
+        await ClientConversationManager.getConversationById(
           currentSummaryConversationId,
         )
       summaryModel = currentSummaryConversation?.meta.AIModel || summaryModel
@@ -99,7 +99,7 @@ const permissionSceneTypeToLogType = async (
     const currentSearchConversationId = sidebarSettings?.search?.conversationId
     if (currentSearchConversationId) {
       const currentSearchConversation =
-        await ClientConversationManager.getConversation(
+        await ClientConversationManager.getConversationById(
           currentSearchConversationId,
         )
       searchModel = currentSearchConversation?.meta.AIModel || searchModel
@@ -117,7 +117,7 @@ const permissionSceneTypeToLogType = async (
     const currentArtConversationId = sidebarSettings?.art?.conversationId
     if (currentArtConversationId) {
       const currentArtConversation =
-        await ClientConversationManager.getConversation(
+        await ClientConversationManager.getConversationById(
           currentArtConversationId,
         )
       artModel = currentArtConversation?.meta.AIModel || artModel
@@ -134,7 +134,9 @@ const permissionSceneTypeToLogType = async (
   let chatModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIModel
   if (currentChatConversationId) {
     const currentChatConversation =
-      await ClientConversationManager.getConversation(currentChatConversationId)
+      await ClientConversationManager.getConversationById(
+        currentChatConversationId,
+      )
     chatModel = currentChatConversation?.meta.AIModel || chatModel
   }
 

@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid'
 export type IOneShotCommunicatorCustomEventNameType =
   | 'SetVariablesModal'
   | 'QuickSearchSelectedText'
+  | 'ConversationUpdate'
   | 'ConversationMessagesUpdate'
 /**
  * 一次性通信器

@@ -7,8 +7,8 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import CustomMarkdown from '@/components/CustomMarkdown'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
@@ -26,6 +26,8 @@ import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarCh
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 import { SwitchSummaryActionNav } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SwitchSummaryActionNav'
+
+const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 interface IProps {
   message: IAIResponseMessage
@@ -277,7 +279,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               isDarkMode ? 'markdown-body-dark' : ''
             }`}
           >
-            <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+            <AppSuspenseLoadingLayout>
+              <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+            </AppSuspenseLoadingLayout>
           </div>
         )}
         {!coverLoading ? (

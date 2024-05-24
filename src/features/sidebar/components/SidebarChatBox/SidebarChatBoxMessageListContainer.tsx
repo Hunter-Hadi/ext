@@ -1,77 +1,135 @@
 import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import cloneDeep from 'lodash-es/cloneDeep'
 import throttle from 'lodash-es/throttle'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useCallback, useEffect, useRef } from 'react'
 
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import usePaginationConversationMessages from '@/features/chatgpt/hooks/usePaginationConversationMessages'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { useFocus } from '@/features/common/hooks/useFocus'
-import {
-  IAIResponseMessage,
-  IChatMessage,
-} from '@/features/indexed_db/conversations/models/Message'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarChatBoxMessageItem from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
-import SidebarMessagesListWrapper from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarMessagesList'
 
 export const messageListContainerId = 'message-list-scroll-container'
-
-const messageItemOnReadyFlag = 'message-item-on-ready-flag'
 
 interface IProps {
   conversationId: string
   writingMessage: IChatMessage | null
   isAIResponding?: boolean
-  onLoadingChatHistory?: (loading: boolean) => void
   sx?: SxProps
 }
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
-  const {
-    conversationId,
-    writingMessage,
-    isAIResponding,
-    sx,
-    onLoadingChatHistory,
-  } = props
+  const { conversationId, writingMessage, isAIResponding, sx } = props
 
   const scrollContainerRef = useRef<HTMLElement | null>(null)
 
-  // 用于判断 当前触发的 effect 时是否需要滚动到底部
-  const needScrollToBottomRef = useRef(true)
+  // 新增的消息不是通过分页加载到messages里的，是直接插入的
+  const lastMessageIdRef = useRef<string | null>(null)
 
-  const [messageItemIsReady, setMessageItemIsReady] = useState(false)
-
-  const { currentConversationId } = useClientConversation()
   const {
-    isLoading,
-    messages,
+    paginationMessages,
     isFetchingNextPage,
+    isLoading,
     hasNextPage,
     fetchNextPage,
-  } = usePaginationConversationMessages(currentConversationId || '')
-  const [m2, setM2] = useState<IChatMessage[]>([])
-  useEffect(() => {
-    setM2(cloneDeep(messages))
-  }, [messages])
+    getPreviousPageLastMessageId,
+    resetPreviousPageLastMessageId,
+    lastPaginationMessageIdRef,
+  } = usePaginationConversationMessages(conversationId)
 
-  const handleScrollToBottom = (force = false) => {
-    // TODO
+  const loadMore = useCallback(() => {
+    if (isFetchingNextPage || !hasNextPage) {
+      return
+    }
+    // load next page
+    fetchNextPage().then().catch()
+  }, [isFetchingNextPage, hasNextPage, fetchNextPage])
+  const loadMoreRef = useRef(loadMore)
+  useEffect(() => {
+    loadMoreRef.current = loadMore
+  }, [loadMore])
+
+  const handleScrollToMessage = (messageId: string) => {
+    const containerElement = scrollContainerRef.current
+    if (!containerElement) {
+      return
+    }
+    const messageElements = containerElement.querySelectorAll(
+      `[data-message-id]`,
+    ) as NodeListOf<HTMLElement>
+    const messageElementIndex = Array.from(messageElements).findIndex(
+      (element) => element.getAttribute('data-message-id') === messageId,
+    )
+    const messageElement = messageElements[messageElementIndex]
+    // 如果是向上滚动，需要滚动到 messageElement 的顶部
+    // 如果是向下滚动，需要滚动到 messageElement 的底部
+    const isLastMessage = messageElementIndex === messageElements.length - 1
+    if (messageElement) {
+      console.log(
+        `scroll to message: ${messageId}`,
+        isLastMessage,
+        messageElement?.offsetTop + messageElement?.offsetHeight,
+        containerElement?.scrollHeight,
+      )
+      containerElement.scrollTo(
+        0,
+        isLastMessage
+          ? messageElement.offsetTop + messageElement.offsetHeight
+          : messageElement.offsetTop,
+      )
+    }
   }
 
-  // 当用户主动滚动 message list 时，如果滚动到底部，设置 needScrollToBottomRef.current 为 true
-  // 当用户主动滚动 message list 时，如果往顶部滚动，设置 needScrollToBottomRef.current 为 false
+  const handleScrollToBottom = () => {
+    const containerElement = scrollContainerRef.current
+    if (containerElement) {
+      containerElement.scrollTo(0, containerElement.scrollHeight)
+    }
+  }
+  const messageHeightUpdate = () => {
+    if (!scrollContainerRef.current) {
+      return
+    }
+    const previousPageLastMessageId = getPreviousPageLastMessageId()
+    if (previousPageLastMessageId) {
+      // 滚动到上一页的第一条消息
+      handleScrollToMessage(previousPageLastMessageId)
+    } else {
+      console.log(`scroll to message effect nothing`)
+    }
+  }
+
   useEffect(() => {
     const containerElement = scrollContainerRef.current
     if (!containerElement) {
       return
     }
     const handleScroll = (event: any) => {
+      const scrollTop = containerElement.scrollTop
+      const scrollHeight = containerElement.scrollHeight
+      const clientHeight = containerElement.clientHeight
+      const isScrolledToBottom = clientHeight + scrollTop >= scrollHeight
+      // 小于0表示往上滚动
       if (event.deltaY < 0) {
-        needScrollToBottomRef.current = false
+        resetPreviousPageLastMessageId('')
+        if (containerElement.scrollTop <= containerElement.offsetHeight / 10) {
+          // load more
+          loadMoreRef.current()
+        }
         return
+      } else {
+        // 判断是否滚动到底部
+        if (isScrolledToBottom) {
+          if (lastMessageIdRef.current) {
+            console.log(
+              `scroll to message [手动滚动到底部]`,
+              lastMessageIdRef.current,
+            )
+            resetPreviousPageLastMessageId(lastMessageIdRef.current)
+          }
+        }
       }
     }
 
@@ -84,36 +142,21 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   // 当页面 onfocus 时，判断 是否需要滚动到底部
   useFocus(handleScrollToBottom)
 
-  /**
-   * 发消息的时候，如果最后一条消息是 search / summary / art，需要滚动到底部
-   */
   useEffect(() => {
-    if (isAIResponding) {
-      // 这里的 scrollToBottom 需要兼容 search / summary 的情况
-      // 当在 loading 时，如果最后一条消息是 search / summary
-      // 判断 needScrollToBottomRef.current 为 true 时滚动到底部
-      const lastMessage = messages[messages.length - 1]
-      if (lastMessage && lastMessage.type === 'ai') {
-        const lastMessageOriginalData = (lastMessage as IAIResponseMessage)
-          ?.originalMessage
-        if (
-          lastMessageOriginalData &&
-          (lastMessageOriginalData.metadata?.shareType === 'search' ||
-            lastMessageOriginalData.metadata?.shareType === 'summary' ||
-            lastMessageOriginalData.metadata?.shareType === 'art')
-        ) {
-          handleScrollToBottom()
-        }
-      }
+    const writingMessageId = writingMessage?.messageId || ''
+    if (
+      writingMessageId &&
+      !paginationMessages.find((msg) => msg.messageId === writingMessageId)
+    ) {
+      lastMessageIdRef.current = writingMessageId
+      // console.log(`scroll to message [最新消息]`, lastMessageIdRef.current)
+      resetPreviousPageLastMessageId(writingMessageId)
+    } else {
+      lastMessageIdRef.current = lastPaginationMessageIdRef.current
+      // console.log(`scroll to message [列表最后信息]`, lastMessageIdRef.current)
     }
-  }, [isAIResponding, messages])
+  }, [writingMessage?.messageId, paginationMessages])
 
-  useEffect(() => {
-    if (onLoadingChatHistory) {
-      onLoadingChatHistory(isLoading)
-    }
-  }, [isLoading, onLoadingChatHistory])
-  console.log('AutoSizer2 render list', messages.length, messages)
   return (
     <Box
       ref={scrollContainerRef}
@@ -125,27 +168,42 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         ...sx,
       }}
     >
-      <AppLoadingLayout loading={isLoading} />
-      {!isLoading && <Box id={messageItemOnReadyFlag} />}
       {isFetchingNextPage && (
-        <Stack width={'100%'} alignItems={'center'} justifyContent={'center'}>
-          <AppLoadingLayout loading={true} />
+        <Stack
+          width={'100%'}
+          alignItems={'center'}
+          justifyContent={'center'}
+          sx={{
+            my: '16px',
+          }}
+        >
+          <CircularProgress size={16} sx={{ m: '0 auto' }} />
         </Stack>
       )}
-      <SidebarMessagesListWrapper
-        messages={m2}
-        hasNextPage={hasNextPage}
-        fetchNextPage={fetchNextPage}
-        isFetchingNextPage={isFetchingNextPage}
-      />
-      {/* 如果 writingMessage.messageId 在 slicedMessageList 中存在，则不渲染 */}
+      <AppLoadingLayout loading={isLoading} />
+      {paginationMessages.map((message, index) => {
+        return (
+          <SidebarChatBoxMessageItem
+            key={message.messageId + '_sidebar_chat_message_' + String(index)}
+            className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
+            message={message}
+            loading={isAIResponding}
+            order={index + 1}
+            onChangeHeight={messageHeightUpdate}
+          />
+        )
+      })}
+      {/* 如果 writingMessage.messageId 在 messages 中存在，则不渲染 */}
       {writingMessage &&
-      !messages.find((msg) => msg.messageId === writingMessage.messageId) ? (
+      !paginationMessages.find(
+        (msg) => msg.messageId === writingMessage.messageId,
+      ) ? (
         <SidebarChatBoxMessageItem
           className={'use-chat-gpt-ai__writing-message-item'}
           message={writingMessage}
           loading={true}
           order={-1}
+          onChangeHeight={messageHeightUpdate}
         />
       ) : null}
     </Box>

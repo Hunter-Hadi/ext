@@ -33,7 +33,9 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
 
   if (currentChatConversationId) {
     const currentChatConversation =
-      await ClientConversationManager.getConversation(currentChatConversationId)
+      await ClientConversationManager.getConversationById(
+        currentChatConversationId,
+      )
     currentAIProvider =
       currentChatConversation?.meta.AIProvider || currentAIProvider
     currentModelValue =

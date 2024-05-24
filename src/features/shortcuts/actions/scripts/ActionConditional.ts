@@ -1,4 +1,5 @@
-import { isEqual, isObject } from 'lodash-es'
+import isEqual from 'lodash-es/isEqual'
+import isObject from 'lodash-es/isObject'
 
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { parametersParserDecorator } from '@/features/shortcuts'

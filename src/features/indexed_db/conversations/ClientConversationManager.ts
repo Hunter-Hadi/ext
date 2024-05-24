@@ -19,14 +19,36 @@ import {
 } from '@/features/indexed_db/utils'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export class ClientConversationManager {
+  /**
+   * 推送对话变更
+   * @param changeType
+   * @param conversationIds
+   * @private
+   */
+  private static notifyConversationChange(
+    changeType: 'add' | 'update' | 'delete',
+    conversationIds: string[],
+  ) {
+    // 通知对话消息变更
+    OneShotCommunicator.send('ConversationUpdate', {
+      changeType,
+      conversationIds,
+    })
+      .then()
+      .catch()
+  }
   /**
    * 获取conversation
    * @param conversationId
    * @param force - 无视isDelete和authorId
    */
-  static getConversation = async (conversationId: string, force = false) => {
+  static getConversationById = async (
+    conversationId: string,
+    force = false,
+  ) => {
     try {
       const conversation = await createIndexedDBQuery('conversations')
         .conversations.get(conversationId)
@@ -49,6 +71,36 @@ export class ClientConversationManager {
       return null
     }
   }
+  /**
+   * 用conversationIds获取对话
+   * @param conversationIds
+   * @param force
+   */
+  static getConversationsByIds = async (
+    conversationIds: string[],
+    force = false,
+  ) => {
+    try {
+      const conversations = (
+        await createIndexedDBQuery('conversations')
+          .conversations.where('id')
+          .anyOf(conversationIds)
+          .toArray()
+          .then()
+      ).filter((conversation) => conversation?.id)
+      if (!force) {
+        const authorId = await getMaxAIChromeExtensionUserId()
+        return conversations.filter(
+          (conversation) =>
+            !conversation.isDelete && conversation.authorId === authorId,
+        )
+      }
+      return conversations
+    } catch (e) {
+      return []
+    }
+  }
+
   /**
    * 更新对话
    * @param conversationId
@@ -75,10 +127,8 @@ export class ClientConversationManager {
     if (!conversationId) {
       return
     }
-    const cacheConversation = await ClientConversationManager.getConversation(
-      conversationId,
-      true,
-    )
+    const cacheConversation =
+      await ClientConversationManager.getConversationById(conversationId, true)
     const saveData = mergeWithObject([
       cacheConversation || {},
       updateConversationData,
@@ -87,6 +137,10 @@ export class ClientConversationManager {
     await createIndexedDBQuery('conversations')
       .conversations.put(saveData)
       .then()
+    this.notifyConversationChange(
+      cacheConversation && !duplicate ? 'update' : 'add',
+      [conversationId],
+    )
     if (syncConversationToDB) {
       if (waitSync) {
         await uploadClientConversationToRemote(saveData)
@@ -102,11 +156,17 @@ export class ClientConversationManager {
    * @param conversationId
    */
   static softDeleteConversation = async (conversationId: string) => {
-    await clientUseIndexedDB('ConversationDBRemoveConversation', {
-      conversationId,
-      softDelete: true,
-    })
-    const conversation = await ClientConversationManager.getConversation(
+    const isRemoveSuccess = await clientUseIndexedDB(
+      'ConversationDBRemoveConversation',
+      {
+        conversationId,
+        softDelete: true,
+      },
+    )
+    if (isRemoveSuccess) {
+      this.notifyConversationChange('delete', [conversationId])
+    }
+    const conversation = await ClientConversationManager.getConversationById(
       conversationId,
       true,
     )
@@ -129,6 +189,7 @@ export class ClientConversationManager {
       .toArray(getProjectionFields(['id']))
       .then()
     const conversationIds = conversations.map((conversation) => conversation.id)
+
     if (await deleteRemoteConversationByType(type)) {
       // 批量软删除
       await createIndexedDBQuery('conversations')
@@ -136,6 +197,9 @@ export class ClientConversationManager {
         .anyOf(conversationIds)
         .modify({ isDelete: true })
         .then()
+      conversationIds.forEach((conversationId) => {
+        this.notifyConversationChange('delete', [conversationId])
+      })
     }
   }
 
@@ -147,7 +211,7 @@ export class ClientConversationManager {
     conversationId: string,
   ) => {
     try {
-      const conversation = await ClientConversationManager.getConversation(
+      const conversation = await ClientConversationManager.getConversationById(
         conversationId,
       )
       return {

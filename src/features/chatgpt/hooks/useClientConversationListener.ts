@@ -1,9 +1,9 @@
 // hooks/useClientChatGPTFiles.ts
 import { HTMLParagraphElement } from 'linkedom'
-import { sortBy } from 'lodash-es'
 import cloneDeep from 'lodash-es/cloneDeep'
 import isArray from 'lodash-es/isArray'
 import isNumber from 'lodash-es/isNumber'
+import orderBy from 'lodash-es/orderBy'
 import { useCallback, useEffect, useRef } from 'react'
 import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 
@@ -149,7 +149,7 @@ export const useClientConversationListener = () => {
           data: {},
         }
       }
-      case 'Client_listenUpdateConversationMessages': {
+      case 'Client_listenUpdateConversation': {
         const { conversation, conversationId } = data
         if (conversation?.id) {
           setClientConversationMap((prevState) => {
@@ -266,21 +266,19 @@ export const useClientConversationListener = () => {
        * 检查Chat状态
        */
       const checkChatGPTStatus = async () => {
-        ClientConversationManager.getConversation(currentConversationId).then(
-          async (conversation) => {
-            if (conversation) {
-              console.log(
-                `新版Conversation [${currentConversationId}]effect更新`,
-              )
-              setClientConversationMap((prevState) => {
-                return {
-                  ...prevState,
-                  [conversation.id]: conversation,
-                }
-              })
-            }
-          },
-        )
+        ClientConversationManager.getConversationById(
+          currentConversationId,
+        ).then(async (conversation) => {
+          if (conversation) {
+            console.log(`新版Conversation [${currentConversationId}]effect更新`)
+            setClientConversationMap((prevState) => {
+              return {
+                ...prevState,
+                [conversation.id]: conversation,
+              }
+            })
+          }
+        })
         const result = await port.postMessage({
           event: 'Client_checkChatGPTStatus',
           data: {
@@ -403,7 +401,7 @@ export const useClientConversationListener = () => {
                 set(
                   PaginationConversationMessagesStateFamily(conversationId),
                   (prevState) => {
-                    return sortBy(
+                    return orderBy(
                       prevState
                         .filter((item) => !messageIds.includes(item.messageId))
                         .concat(messages),

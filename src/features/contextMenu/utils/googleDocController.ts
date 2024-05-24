@@ -1,4 +1,4 @@
-import { debounce } from 'lodash-es'
+import debounce from 'lodash-es/debounce'
 
 import { IRangyRect } from '@/features/contextMenu/types'
 import {
@@ -20,7 +20,7 @@ export enum IGoogleDocEventType {
   KEYUP = 'keyup',
   FOCUS = 'focus',
   BLUR = 'blur',
-  SCROLL = 'scroll'
+  SCROLL = 'scroll',
 }
 
 export interface IGoogleDocRect extends IRangyRect {}
@@ -394,7 +394,7 @@ export class GoogleDocController extends EventEmitter {
       // inputElement里总是在最后会加入一个br换行符
       return content.slice(0, -1)
     }
-    return content;
+    return content
   }
 
   /**

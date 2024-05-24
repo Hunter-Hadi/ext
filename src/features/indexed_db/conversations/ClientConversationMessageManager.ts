@@ -82,8 +82,12 @@ export class ClientConversationMessageManager {
   private static async asyncUploadConversationLastMessageId(
     conversationId: string,
   ) {
-    const lastMessage = await this.getMessageByPosition('end')
-    const conversation = await ClientConversationManager.getConversation(
+    const lastMessage = await this.getMessageByTimeFrame(
+      conversationId,
+      'latest',
+    )
+    console.log(`ConversationDB[V3] 异步上传对话最后消息ID`, lastMessage)
+    const conversation = await ClientConversationManager.getConversationById(
       conversationId,
     )
     if (lastMessage?.messageId && conversation) {
@@ -158,8 +162,10 @@ export class ClientConversationMessageManager {
         .anyOf(messageIds)
         .toArray()
         .then()
-      console.log(`ConversationDB[V3] 获取消息`, messages)
-      return messages
+
+      const orderByArray = orderBy(messages, ['created_at'], ['desc'])
+      console.log(`ConversationDB[V3] 获取消息`, orderByArray)
+      return orderByArray
     } catch (e) {
       console.log(`ConversationDB[V3] 获取消息失败`, e)
       return []
@@ -325,34 +331,29 @@ export class ClientConversationMessageManager {
       return []
     }
   }
-
   /**
-   * 获取第一个/最后一个消息
+   * 获取对话消息Ids
    * @param conversationId
-   * @param position
+   * @param timeFrame
    */
-  static async getMessageByPosition(
+  static async getMessageByTimeFrame(
     conversationId: string,
-    position: 'start' | 'end' = 'end',
+    timeFrame: 'latest' | 'earliest' = 'latest',
   ) {
     try {
-      const messagesIds = (await createIndexedDBQuery('conversations')
-        .messages.where('conversationId')
-        .equals(conversationId)
-        .toArray(getProjectionFields<IChatMessage>(['messageId', 'created_at']))
-        .then()) as { messageId: string }[]
-      const findItem = orderBy(
-        messagesIds,
-        ['created_at'],
-        [position === 'start' ? 'asc' : 'desc'],
-      )[0]
-      const message = await this.getMessageByMessageId(
-        findItem?.messageId || '',
-      )
-      console.log(`ConversationDB[V3] 获取${position}的消息`, message)
+      const messageIds = await this.getMessageIds(conversationId)
+      const targetMessageId =
+        timeFrame === 'latest'
+          ? messageIds[0]
+          : messageIds[messageIds.length - 1]
+      if (!targetMessageId) {
+        return null
+      }
+      const message = await this.getMessageByMessageId(targetMessageId)
+      console.log(`ConversationDB[V3] 获取${timeFrame}的消息`, message)
       return message
-    } catch (e) {
-      console.log(`ConversationDB[V3] 获取${position}的消息错误`, e)
+    } catch (error) {
+      console.log(`ConversationDB[V3] 获取${timeFrame}的消息错误`, error)
       return null
     }
   }
@@ -460,13 +461,14 @@ export class ClientConversationMessageManager {
       localMessageIds.includes(item.messageId),
     )
     // TODO: 这里本来最好的做法是对比updated_at，但是这里只是简单的覆盖
+    // NOTE: 这里不用this.updateMessagesWithChanges，因为这里不需要通知变更也不需要上传远程
     //
     if (existRemoteMessages.length > 0) {
-      const messageChanges = existRemoteMessages.map((item) => ({
-        key: item.messageId,
-        changes: item,
-      }))
-      await this.updateMessagesWithChanges(conversationId, messageChanges)
+      for (const remoteMessage of existRemoteMessages) {
+        await createIndexedDBQuery('conversations')
+          .messages.put(remoteMessage)
+          .then()
+      }
     }
   }
 }

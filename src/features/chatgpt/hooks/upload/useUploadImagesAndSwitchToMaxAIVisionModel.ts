@@ -101,7 +101,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       }
       createConversationResolveRef.current = resolve
       const conversation = currentConversationIdRef.current
-        ? await ClientConversationManager.getConversation(
+        ? await ClientConversationManager.getConversationById(
             currentConversationIdRef.current,
           )
         : undefined

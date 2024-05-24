@@ -139,7 +139,9 @@ export const useSyncConversation = () => {
             })
             //获取本地会话
             let localConversation =
-              await ClientConversationManager.getConversation(conversationId)
+              await ClientConversationManager.getConversationById(
+                conversationId,
+              )
             if (!localConversation) {
               syncLog.info(
                 conversationId,
@@ -248,7 +250,7 @@ export const useSyncConversation = () => {
           return
         }
         const localConversation =
-          await ClientConversationManager.getConversation(conversationId)
+          await ClientConversationManager.getConversationById(conversationId)
         if (!localConversation) {
           return
         }

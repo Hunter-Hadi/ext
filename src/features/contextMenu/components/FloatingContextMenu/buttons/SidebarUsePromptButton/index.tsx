@@ -150,33 +150,35 @@ const SidebarUsePromptButton: FC<{
           </IconButton>
         ) : (
           <TextOnlyTooltip title={t('client:sidebar__button__use_prompt')}>
-            <Button
-              id={`MaxAISidebarUsePromptButton`}
-              variant={'outlined'}
-              sx={{
-                p: '5px',
-                minWidth: 'unset',
-                ...sx,
-              }}
-              data-testid={testid}
-              className={className}
-              disabled={smoothConversationLoading}
-              onClick={(event) => {
-                setAnchorEl(anchorEl ? null : event.currentTarget)
-              }}
-              ref={refs.setReference}
-              {...getReferenceProps()}
-            >
-              <UseChatGptIcon
+            <div>
+              <Button
+                id={`MaxAISidebarUsePromptButton`}
+                variant={'outlined'}
                 sx={{
-                  color: (t: any) =>
-                    t.palette.mode === 'dark'
-                      ? 'rgba(255,255,255,.87)'
-                      : 'rgba(0,0,0,.6)',
-                  fontSize: '18px',
+                  p: '5px',
+                  minWidth: 'unset',
+                  ...sx,
                 }}
-              />
-            </Button>
+                data-testid={testid}
+                className={className}
+                disabled={smoothConversationLoading}
+                onClick={(event) => {
+                  setAnchorEl(anchorEl ? null : event.currentTarget)
+                }}
+                ref={refs.setReference}
+                {...getReferenceProps()}
+              >
+                <UseChatGptIcon
+                  sx={{
+                    color: (t: any) =>
+                      t.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,.87)'
+                        : 'rgba(0,0,0,.6)',
+                    fontSize: '18px',
+                  }}
+                />
+              </Button>
+            </div>
           </TextOnlyTooltip>
         )}
       </Box>

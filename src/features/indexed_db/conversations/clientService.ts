@@ -182,7 +182,7 @@ export const checkConversationNeedSync = async (
       totalCount: 0,
     }
   }
-  const localConversation = await ClientConversationManager.getConversation(
+  const localConversation = await ClientConversationManager.getConversationById(
     conversationId,
   )
   if (!localConversation) {

@@ -134,7 +134,6 @@ const ConversationList: FC<IProps> = (props) => {
       type: conversationType,
     })
   }, [conversationType])
-
   return (
     <Stack height={'100%'} spacing={1} p={1} sx={sx}>
       <Stack

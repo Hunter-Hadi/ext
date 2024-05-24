@@ -243,7 +243,7 @@ const useClientConversation = () => {
     const conversationId = currentConversationIdRef.current
     if (conversationId) {
       return (
-        (await ClientConversationManager.getConversation(conversationId)) ||
+        (await ClientConversationManager.getConversationById(conversationId)) ||
         null
       )
     }
@@ -285,7 +285,7 @@ const useClientConversation = () => {
     updateMessage,
     updateClientWritingMessage,
     updateClientConversationLoading,
-    getConversation: ClientConversationManager.getConversation,
+    getConversation: ClientConversationManager.getConversationById,
     getCurrentConversation,
   }
 }

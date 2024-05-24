@@ -29,9 +29,10 @@ const HistoryTextDownloadButton: FC<{
     <TooltipIconButton
       title={t('client:sidebar__share__share_button__tooltip')}
       onClick={async () => {
-        const conversation = await ClientConversationManager.getConversation(
-          currentConversationId,
-        )
+        const conversation =
+          await ClientConversationManager.getConversationById(
+            currentConversationId,
+          )
         if (conversation?.title) {
           const needDownloadText = await formatMessagesToLiteHistory(
             conversation,

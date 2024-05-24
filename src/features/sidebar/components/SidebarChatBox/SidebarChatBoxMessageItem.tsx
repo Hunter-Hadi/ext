@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography'
 import dayjs from 'dayjs'
 import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react'
 
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevContent from '@/components/DevContent'
 import {
   isAIMessage,
@@ -29,7 +30,7 @@ interface IProps {
   className?: string
   loading?: boolean
   container?: HTMLElement
-  onChangeHeight?: (height: number) => void
+  onChangeHeight?: (height: number, messageId: string) => void
 }
 
 const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
@@ -60,7 +61,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
   useEffect(() => {
     // 检测高度变化，ResizeObserver
     if (messageBoxRef.current) {
-      const resizeObserver = new ResizeObserver(() => {
+      const handleResize = () => {
         if (!messageBoxRef.current) {
           return
         }
@@ -71,12 +72,19 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
           return
         }
         const height = messageBoxRef.current?.offsetHeight
-        if (height && height !== messageBoxHeightRef.current) {
+        if (
+          height &&
+          height !== messageBoxHeightRef.current &&
+          Math.abs(height - messageBoxHeightRef.current) > 10
+        ) {
           messageBoxHeightRef.current = height
           if (onChangeHeight) {
-            onChangeHeight(height)
+            onChangeHeight(height, message.messageId)
           }
         }
+      }
+      const resizeObserver = new ResizeObserver(() => {
+        handleResize()
       })
       resizeObserver.observe(messageBoxRef.current)
       return () => {
@@ -86,6 +94,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
   }, [onChangeHeight])
   return (
     <Stack
+      data-message-id={message.messageId}
       ref={messageBoxRef}
       component={'div'}
       className={className}
@@ -151,23 +160,25 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
         </Typography>
         <DevMessageSourceData message={message} />
       </DevContent>
-      {isSystemMessage(message) && (
-        <SidebarSystemMessage loading={loading} message={message} />
-      )}
-      {isAIMessage(message) && (
-        <SidebarAIMessage
-          isDarkMode={isDarkMode}
-          message={message as IAIResponseMessage}
-          order={order}
-        />
-      )}
-      {isUserMessage(message) && (
-        <SidebarUserMessage
-          message={message}
-          order={order}
-          container={container}
-        />
-      )}
+      <AppSuspenseLoadingLayout>
+        {isSystemMessage(message) && (
+          <SidebarSystemMessage loading={loading} message={message} />
+        )}
+        {isAIMessage(message) && (
+          <SidebarAIMessage
+            isDarkMode={isDarkMode}
+            message={message as IAIResponseMessage}
+            order={order}
+          />
+        )}
+        {isUserMessage(message) && (
+          <SidebarUserMessage
+            message={message}
+            order={order}
+            container={container}
+          />
+        )}
+      </AppSuspenseLoadingLayout>
     </Stack>
   )
 }

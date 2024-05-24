@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import {

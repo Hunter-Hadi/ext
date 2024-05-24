@@ -1,6 +1,6 @@
 import chokidar from 'chokidar'
 import path from 'path'
-import {debounce} from 'lodash-es'
+import debounce from 'lodash-es/debounce'
 import WebSocket, { WebSocketServer } from 'ws';
 import {spawn} from 'child_process'
 

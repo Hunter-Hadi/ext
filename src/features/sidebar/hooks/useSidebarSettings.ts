@@ -138,7 +138,7 @@ const useSidebarSettings = () => {
     getInputMediator('chatBoxInputMediator').updateInputValue('')
     console.log('新版Conversation 清除conversation')
     const currentConversation = currentSidebarConversationId
-      ? await ClientConversationManager.getConversation(
+      ? await ClientConversationManager.getConversationById(
           currentSidebarConversationId,
         )
       : null
@@ -221,7 +221,7 @@ const useSidebarSettings = () => {
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (
         conversationId &&
-        (await ClientConversationManager.getConversation(conversationId))
+        (await ClientConversationManager.getConversationById(conversationId))
       ) {
         if (updateSetting) {
           await updateSidebarSettings({

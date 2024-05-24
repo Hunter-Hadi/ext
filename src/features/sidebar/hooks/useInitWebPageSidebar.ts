@@ -56,9 +56,8 @@ const useInitWebPageSidebar = () => {
           if (!conversationId) {
             return
           }
-          const conversation = await ClientConversationManager.getConversation(
-            conversationId,
-          )
+          const conversation =
+            await ClientConversationManager.getConversationById(conversationId)
           if (
             conversation &&
             conversation.meta.AIProvider &&

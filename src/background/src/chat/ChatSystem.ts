@@ -182,7 +182,7 @@ class ChatSystem implements ChatSystemInterface {
     const conversation = await ConversationManager.getConversationById(
       conversationId,
     )
-    backgroundSendAllClientMessage('Client_listenUpdateConversationMessages', {
+    backgroundSendAllClientMessage('Client_listenUpdateConversation', {
       conversation: conversation,
       conversationId,
     })

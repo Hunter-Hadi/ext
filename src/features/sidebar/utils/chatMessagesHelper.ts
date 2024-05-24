@@ -1,4 +1,4 @@
-import { isArray } from 'lodash-es'
+import isArray from 'lodash-es/isArray'
 import sanitizeHtml from 'sanitize-html'
 import sanitize from 'sanitize-html'
 

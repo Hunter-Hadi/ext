@@ -3,7 +3,7 @@
  * @since - 2023-08-15
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
-import { cloneDeep } from 'lodash-es'
+import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
@@ -68,7 +68,7 @@ const usePageSummary = () => {
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
       const pageSummaryConversation =
-        await ClientConversationManager.getConversation(
+        await ClientConversationManager.getConversationById(
           pageSummaryConversationId,
         )
       // 如果已经存在了，并且有AI消息，那么就不用创建了

@@ -126,7 +126,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         getInputMediator('floatingMenuInputMediator').updateInputValue('')
         getInputMediator('chatBoxInputMediator').updateInputValue('')
         const currentConversation = conversationId
-          ? await ClientConversationManager.getConversation(conversationId)
+          ? await ClientConversationManager.getConversationById(conversationId)
           : null
         if (currentConversation) {
           await createConversation(
@@ -185,7 +185,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         .updateConversationId(conversationId, type)
         .finally(() => setInitialized(true))
 
-      ClientConversationManager.getConversation(conversationId).then(
+      ClientConversationManager.getConversationById(conversationId).then(
         (conversation) => {
           if (!conversation) {
             sidebarContextValue.createConversation(conversationTypeRef.current)

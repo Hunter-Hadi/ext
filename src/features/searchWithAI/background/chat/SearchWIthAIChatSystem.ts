@@ -159,7 +159,7 @@ class SearchWIthAIChatSystem {
         type: 'Chat',
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
-        messages: [],
+        paginationMessages: [],
         meta,
       })) || ''
     )

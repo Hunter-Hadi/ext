@@ -146,7 +146,7 @@ const useSearchWithAI = () => {
     let cacheConversationId = await getSearchWithAIConversationId()
     if (
       cacheConversationId &&
-      (await ClientConversationManager.getConversation(cacheConversationId))
+      (await ClientConversationManager.getConversationById(cacheConversationId))
     ) {
       // do nothing
     } else {

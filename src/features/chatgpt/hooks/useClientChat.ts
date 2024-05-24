@@ -358,9 +358,9 @@ const useClientChat = () => {
     params?: any[],
   ) => {
     const lastMessage =
-      await ClientConversationMessageManager.getMessageByPosition(
+      await ClientConversationMessageManager.getMessageByTimeFrame(
         conversationId,
-        'end',
+        'latest',
       )
     const lastRunActionsMessageId = lastMessage?.messageId
     await createIndexedDBQuery('conversations')

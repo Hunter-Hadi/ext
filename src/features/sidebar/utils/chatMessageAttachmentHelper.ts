@@ -51,7 +51,7 @@ export const getChatMessageAttachments = (
  * @param attachment
  */
 export const isMaxAIAttachmentExpired = (attachment: IChatUploadFile) => {
-  if (attachment.uploadedUrl && attachment.uploadedFileId) {
+  if (attachment && attachment?.uploadedUrl && attachment?.uploadedFileId) {
     try {
       const urlParams = new URL(attachment.uploadedUrl).searchParams
       const xAmzDate = urlParams.get('X-Amz-Date') || '' // 20211018T080000Z

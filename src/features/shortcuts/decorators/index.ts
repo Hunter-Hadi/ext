@@ -252,7 +252,10 @@ export function completeLastAIMessageOnStop() {
           await clientConversationEngine.getCurrentConversation()
         if (currentConversation) {
           const lastMessage =
-            await ClientConversationMessageManager.getMessageByPosition('end')
+            await ClientConversationMessageManager.getMessageByTimeFrame(
+              currentConversation.id,
+              'latest',
+            )
           if (lastMessage && isAIMessage(lastMessage)) {
             if (lastMessage.originalMessage) {
               await ClientConversationMessageManager.updateMessagesWithChanges(
@@ -300,7 +303,10 @@ export function completeLastAIMessageOnError() {
             await clientConversationEngine.getCurrentConversation()
           if (currentConversation) {
             const lastMessage =
-              await ClientConversationMessageManager.getMessageByPosition('end')
+              await ClientConversationMessageManager.getMessageByTimeFrame(
+                currentConversation.id,
+                'latest',
+              )
             if (lastMessage && isAIMessage(lastMessage)) {
               if (lastMessage.originalMessage) {
                 await ClientConversationMessageManager.updateMessagesWithChanges(

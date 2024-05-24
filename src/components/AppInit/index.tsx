@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button'
+import cloneDeep from 'lodash-es/cloneDeep'
 import React, { useEffect } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
@@ -13,11 +14,14 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import { useInitSyncConversation } from '@/features/chatgpt/hooks/useSyncConversation'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
@@ -34,6 +38,7 @@ import {
 } from '@/utils/dataHelper/websiteHelper'
 import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
 import Log from '@/utils/Log'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 import { clientSetBrowserUAInfo } from '@/utils/sendMaxAINotification/client'
 const log = new Log('AppInit')
 
@@ -123,6 +128,63 @@ const ContextMenuInit = () => {
   return <ContextMenuRoot />
 }
 
+/**
+ * 客户端对话初始化
+ * @constructor
+ */
+const ClientConversationInit = () => {
+  const [, setClientConversationMap] = useRecoilState(
+    ClientConversationMapState,
+  )
+  const { updatePaginationConversations } = usePaginationConversations(
+    {},
+    false,
+  )
+  // 更新对话消息
+  useEffect(() => {
+    const unsubscribe = OneShotCommunicator.receive(
+      'ConversationUpdate',
+      async (data) => {
+        const { changeType, conversationIds } = data
+        switch (changeType) {
+          case 'add':
+          case 'update':
+          case 'delete': {
+            if (changeType !== 'delete') {
+              const conversations =
+                await ClientConversationManager.getConversationsByIds(
+                  conversationIds,
+                )
+              setClientConversationMap((prev) => {
+                const newClientConversationMap = cloneDeep(prev)
+                conversations.forEach((conversation) => {
+                  if (conversation) {
+                    newClientConversationMap[conversation.id] = conversation
+                  }
+                })
+                return newClientConversationMap
+              })
+            } else {
+              setClientConversationMap((prev) => {
+                const newClientConversationMap = cloneDeep(prev)
+                conversationIds.forEach((conversationId: string) => {
+                  delete newClientConversationMap[conversationId]
+                })
+                return newClientConversationMap
+              })
+            }
+            await updatePaginationConversations(conversationIds)
+            return true
+          }
+        }
+        return undefined
+      },
+    )
+    return () => unsubscribe()
+  }, [])
+  return <></>
+}
+
 const AppInit = () => {
   useHideInHost()
   useClientMessageListenerForBackground()
@@ -146,6 +208,7 @@ const AppInit = () => {
   useInitSyncConversation()
   return (
     <>
+      <ClientConversationInit />
       <MaxAISubscriptionUpdate />
       <MAXAIPDFAIViewerErrorAlert />
       <MaxAIPDFAIViewerTopBarButtonGroup />

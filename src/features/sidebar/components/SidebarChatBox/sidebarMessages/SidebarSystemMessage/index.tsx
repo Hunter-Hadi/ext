@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useState } from 'react'
 
-import CustomMarkdown from '@/components/CustomMarkdown'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
 import ThirdPartyAIProviderErrorSolution from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderErrorSolution'
 import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
@@ -13,6 +13,8 @@ import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatB
 import SidebarChatBoxSystemTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarChatBoxSystemTools'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+
+const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 /**
  * 转换permissionWrapper的Card信息为markdown
@@ -150,7 +152,9 @@ const BaseSidebarSystemMessage: FC<{
                     isDarkMode ? 'markdown-body-dark' : ''
                   }`}
                 >
-                  <CustomMarkdown>{systemMessageText}</CustomMarkdown>
+                  <AppSuspenseLoadingLayout>
+                    <CustomMarkdown>{systemMessageText}</CustomMarkdown>
+                  </AppSuspenseLoadingLayout>
                 </div>
               </Stack>
 

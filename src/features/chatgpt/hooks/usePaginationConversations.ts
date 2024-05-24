@@ -1,5 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
+import cloneDeep from 'lodash-es/cloneDeep'
+import orderBy from 'lodash-es/orderBy'
 import { useEffect, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
@@ -11,6 +13,7 @@ import {
   PaginationConversationsState,
 } from '@/features/chatgpt/store'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   IConversation,
   IPaginationConversation,
@@ -25,16 +28,16 @@ import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 export const PAGINATION_CONVERSATION_QUERY_KEY =
   'PAGINATION_CONVERSATION_QUERY_KEY'
 
-const conversationsToPaginationConversations = async (
+export const conversationsToPaginationConversations = async (
   conversations: IConversation[],
 ) => {
   const paginationConversations = await Promise.all(
     conversations.map(async (conversation) => {
       const lastMessage = conversation.lastMessageId
-        ? await createIndexedDBQuery('conversations')
-            .messages.get(conversation.lastMessageId)
-            .then()
-        : undefined
+        ? await ClientConversationMessageManager.getMessageByMessageId(
+            conversation.lastMessageId,
+          )
+        : null
       let conversationDisplaysTime =
         lastMessage?.updated_at || conversation.updated_at || ''
       let conversationDisplaysText = ''
@@ -172,7 +175,7 @@ const usePaginationConversations = (
         let diffTimeUsage = 0
         let remoteConversations: IConversation[] = []
         if (
-          data.pageParam > totalPageRef.current ||
+          totalPageRef.current >= totalPageRef.current ||
           totalPageRef.current === 0
         ) {
           const result = await clientFetchMaxAIAPI<{
@@ -255,11 +258,15 @@ const usePaginationConversations = (
     return []
   }
   const updatePaginationConversations = async (conversationIds: string[]) => {
-    const conversations = await createIndexedDBQuery('conversations')
-      .conversations.where('id')
-      .anyOf(conversationIds)
-      .toArray()
-      .then()
+    const conversations = await ClientConversationManager.getConversationsByIds(
+      conversationIds,
+      true,
+    )
+    // 更新对话列表
+    console.log(
+      `ConversationDB[V3][对话列表] 外部更新对话列表: `,
+      conversations,
+    )
     const updateMap = new Map<string, IPaginationConversation>()
     const deletedMap = new Map<string, IConversation>()
     const paginationConversations =
@@ -277,17 +284,24 @@ const usePaginationConversations = (
     })
     setPaginationConversations((previous) => {
       // 基于idDelete更新
-      return previous
-        .map((conversation) => {
-          const newConversation = updateMap.get(conversation.id)
-          if (newConversation) {
-            return newConversation
-          }
-          return conversation
-        })
-        .filter((conversation) => {
-          return !deletedMap.has(conversation.id)
-        })
+      return orderBy(
+        previous
+          .map((conversation) => {
+            const newConversation = updateMap.get(conversation.id)
+            if (newConversation) {
+              const cloneConversation = cloneDeep(newConversation)
+              updateMap.delete(conversation.id)
+              return cloneConversation
+            }
+            return conversation
+          })
+          .concat(Array.from(updateMap.values()))
+          .filter((conversation) => {
+            return !deletedMap.has(conversation.id)
+          }),
+        ['updated_at'],
+        ['desc'],
+      )
     })
   }
   const updatePaginationFilter = (

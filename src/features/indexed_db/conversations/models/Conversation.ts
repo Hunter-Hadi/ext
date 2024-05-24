@@ -73,7 +73,7 @@ export interface IPaginationConversation {
   created_at: string // 创建时间
   updated_at: string // 更新时间
   type: ISidebarConversationType // 对话类型
-  lastMessage?: IChatMessage
+  lastMessage: IChatMessage | null
   AIProvider?: IAIProviderType // AI提供商
   AIModel?: string // AI模型
   // 非Conversation字段

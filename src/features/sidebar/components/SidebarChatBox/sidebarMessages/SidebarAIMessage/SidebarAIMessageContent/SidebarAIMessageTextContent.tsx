@@ -1,9 +1,10 @@
 import React, { FC, useMemo } from 'react'
 
-import CustomMarkdown from '@/components/CustomMarkdown'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const SidebarAIMessageTextContent: FC<{
   AIMessage: IAIResponseMessage
@@ -24,7 +25,9 @@ const SidebarAIMessageTextContent: FC<{
   }, [AIMessage])
   return (
     <div className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}>
-      <CustomMarkdown>{currentContentValue}</CustomMarkdown>
+      <AppSuspenseLoadingLayout>
+        <CustomMarkdown>{currentContentValue}</CustomMarkdown>
+      </AppSuspenseLoadingLayout>
     </div>
   )
 }

@@ -90,6 +90,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
           width: '100%',
           height: 0,
           flex: 1,
+          flexDirection: isInImmersiveChatPage ? 'column-reverse' : 'column',
         }}
       >
         <SidebarMarketingTabs />

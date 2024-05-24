@@ -111,6 +111,12 @@ const SidebarSurveyContent: FC<IProps> = ({
                   surveyType: surveyKey,
                 })
               }}
+              sx={{
+                color: (t) =>
+                  t.palette.mode === 'dark' ? 'text.primary' : 'primary.main',
+                textDecorationColor: (t) =>
+                  t.palette.mode === 'dark' ? '#fff' : t.palette.primary.main,
+              }}
             >
               {t('client:sidebar__survey_dialog__description__item1__part2')}
             </ProLink>

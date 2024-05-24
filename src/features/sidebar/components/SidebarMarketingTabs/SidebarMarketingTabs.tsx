@@ -1,6 +1,5 @@
 import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
@@ -318,17 +317,11 @@ const AffiliateTabButton: FC = () => {
 }
 const SurveyTabButton: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const [isOpen, setIsOpen] = React.useState(false)
+
   const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
   return (
     <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5}>
       <LightTooltip
-        onOpen={() => {
-          setIsOpen(true)
-        }}
-        onClose={() => {
-          setIsOpen(false)
-        }}
         PopperProps={{
           disablePortal: true,
         }}
@@ -370,7 +363,7 @@ const SurveyTabButton: FC = () => {
             },
           }}
         >
-          {isOpen ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
+          <FavoriteIcon />
           <Typography
             fontSize={12}
             color={'inherit'}

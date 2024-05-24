@@ -11,6 +11,7 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { GiftIcon } from '@/components/CustomIcon'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
@@ -116,6 +117,13 @@ const RewardsTabButton: FC = () => {
       >
         <Button
           data-testid={`maxai--sidebar--rewards_tab`}
+          target={'_blank'}
+          href={'https://app.maxai.me/rewards'}
+          onClick={() => {
+            mixpanelTrack(`referral_card_clicked`, {
+              referralType: 'REWARDS',
+            })
+          }}
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -280,6 +288,13 @@ const AffiliateTabButton: FC = () => {
       >
         <Button
           data-testid={`maxai--sidebar--rewards_tab`}
+          target={'_blank'}
+          href={'https://www.maxai.me/affiliate'}
+          onClick={() => {
+            mixpanelTrack(`referral_card_clicked`, {
+              referralType: 'AFFILIATE',
+            })
+          }}
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -342,6 +357,13 @@ const SurveyTabButton: FC = () => {
       >
         <Button
           data-testid={`maxai--sidebar--survey_tab`}
+          target={'_blank'}
+          href={`${APP_USE_CHAT_GPT_HOST}/survey/feedback`}
+          onClick={() => {
+            mixpanelTrack('survey_card_clicked', {
+              surveyType: currentSurveyKey,
+            })
+          }}
           sx={{
             display: 'flex',
             flexDirection: 'column',

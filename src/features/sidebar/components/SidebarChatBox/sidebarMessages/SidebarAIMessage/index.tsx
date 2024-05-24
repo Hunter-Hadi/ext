@@ -26,6 +26,7 @@ import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarCh
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 import { SwitchSummaryActionNav } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SwitchSummaryActionNav'
+import SidebarContextCleared from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarContextCleared'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
@@ -128,11 +129,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   return (
     <Box component={'div'} className={'chat-message--AI'}>
       {isContextCleared && !isTriggeredContentReview && props.order !== 1 && (
-        <Divider sx={{ mb: 2 }}>
-          <Typography color={'text.secondary'} fontSize={'12px'}>
-            {t('client:sidebar__conversation__message__context_cleared')}
-          </Typography>
-        </Divider>
+        <SidebarContextCleared message={message} />
       )}
       <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
         {isSummaryMessage && (
@@ -280,7 +277,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             }`}
           >
             <AppSuspenseLoadingLayout>
-              <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+              <CustomMarkdown citations={message.sourceCitations}>
+                {renderData.answer}
+              </CustomMarkdown>
             </AppSuspenseLoadingLayout>
           </div>
         )}
@@ -310,32 +309,24 @@ export const MetadataTitleRender: FC<{
 }> = (props) => {
   const { fontSx } = props
   const { title, titleIcon, titleIconSize } = props.title
-  const titleIconSizeDefault = titleIcon === 'SummaryInfo' ? 20 : 16
+  console.log(`MetadataTitleRender`, props.title)
+  const currentTitleIconSize = titleIconSize || 20
   return (
     <Stack direction={'row'} alignItems="center" spacing={1}>
       {titleIcon && (
         <Stack
           alignItems={'center'}
           justifyContent={'center'}
-          width={titleIconSizeDefault}
-          height={titleIconSizeDefault}
+          width={currentTitleIconSize}
+          height={currentTitleIconSize}
         >
-          {titleIcon === 'SummaryInfo' ? (
-            <ReadIcon
-              sx={{
-                color: 'primary.main',
-                fontSize: titleIconSize || 20,
-              }}
-            />
-          ) : (
-            <ContextMenuIcon
-              sx={{
-                color: 'primary.main',
-                fontSize: titleIconSize || 18,
-              }}
-              icon={titleIcon}
-            />
-          )}
+          <ContextMenuIcon
+            sx={{
+              color: 'primary.main',
+              fontSize: currentTitleIconSize,
+            }}
+            icon={titleIcon}
+          />
         </Stack>
       )}
       <Typography

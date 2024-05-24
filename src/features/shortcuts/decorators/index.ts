@@ -100,7 +100,26 @@ export function parametersParserDecorator(filterPath?: string[]) {
           return
         }
         if (typeof value === 'string') {
+          // console.log('parametersParserDecorator path', path, value)
+          // 有且只有一个变量: {{LAST_ACTION_OUTPUT}}
           const renderValue = shortcutsRenderTemplate(value, parameters).data
+          if (
+            value.startsWith('{{') &&
+            value.endsWith('}}') &&
+            (renderValue.includes(`[object Object]`) ||
+              renderValue.includes(`[object Array]`))
+          ) {
+            // 如果是[object Object]或者[object Array]，看看Variable是否有对应的
+            const variableName = value.slice(2, -2)
+            const variableData = parameters[variableName]
+            if (
+              variableData instanceof Array ||
+              variableData instanceof Object
+            ) {
+              lodashSet(actionInstance.parameters, path, variableData)
+              return
+            }
+          }
           try {
             // 看看是不是json
             const data = JSON.parse(renderValue)

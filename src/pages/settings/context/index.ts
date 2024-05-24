@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { CHROME_EXTENSION_HELP_TO } from '@/constants'
+
 export const settingsPageRouterList = [
   {
     route: '/me' as const,
@@ -64,6 +66,7 @@ export const settingsPageRouterList = [
   {
     route: '/help' as const,
     label: 'left_menu__help',
+    link: CHROME_EXTENSION_HELP_TO,
     divider: false,
   },
 ]

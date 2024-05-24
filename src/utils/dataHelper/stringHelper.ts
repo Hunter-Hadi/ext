@@ -1,3 +1,5 @@
+import * as EmailValidator from 'email-validator'
+
 export const domain2HttpsDomain = (domain: string, filterExtension = false) => {
   if (!domain) {
     return ''
@@ -118,7 +120,8 @@ export const httpLink2Hostname = (httpLink: string) => {
     return ''
   }
   try {
-    const regExp = /^(?:https?:\/\/)?(?:www\.)?((?:(?!www\.|\.).)+\.[-a-zA-Z0-9.]+)/gm
+    const regExp =
+      /^(?:https?:\/\/)?(?:www\.)?((?:(?!www\.|\.).)+\.[-a-zA-Z0-9.]+)/gm
     const host = httpLink.match(regExp)
     return (host ? host[0] : '').toLowerCase()
   } catch (e) {
@@ -134,4 +137,8 @@ export const string2DomainFaviconUrl = (
     httpLink2Hostname(keywordOrDomain) ||
     `${keywordOrDomain?.toLowerCase()}.com`
   return `https://www.google.com/s2/favicons?sz=${faviconSize}&domain_url=${domain}`
+}
+
+export const checkIsEmail = (email: string) => {
+  return EmailValidator.validate(email)
 }

@@ -120,6 +120,20 @@ const useSidebarSettings = () => {
       }
     })
   }
+  const updateImmersiveSettings = async (
+    newImmersiveSettings: IChromeExtensionLocalStorage['immersiveSettings'],
+  ) => {
+    await setChromeExtensionLocalStorage({
+      immersiveSettings: newImmersiveSettings,
+    })
+    const savedAppLocalStorage = await getChromeExtensionLocalStorage()
+    setAppLocalStorage((prev) => {
+      return {
+        ...prev,
+        immersiveSettings: savedAppLocalStorage.immersiveSettings,
+      }
+    })
+  }
   const updateSidebarConversationType = (
     newSidebarConversationType: ISidebarConversationType,
   ) => {
@@ -236,10 +250,10 @@ const useSidebarSettings = () => {
       const conversationTitleMap: {
         [key in IPageSummaryType]: string
       } = {
-        PAGE_SUMMARY: 'Summarize & ask on page',
-        DEFAULT_EMAIL_SUMMARY: 'Summarize & ask on email',
-        PDF_CRX_SUMMARY: 'Summarize & ask on PDF',
-        YOUTUBE_VIDEO_SUMMARY: 'Summarize & ask on video',
+        PAGE_SUMMARY: 'Summarize & ask about page',
+        DEFAULT_EMAIL_SUMMARY: 'Summarize & ask about email',
+        PDF_CRX_SUMMARY: 'Summarize & ask about PDF',
+        YOUTUBE_VIDEO_SUMMARY: 'Summarize & ask about video',
       }
       const pageSummaryType = getPageSummaryType()
       // 如果没有，那么就创建一个
@@ -387,6 +401,7 @@ const useSidebarSettings = () => {
     createSidebarConversation,
     resetSidebarConversation,
     sidebarSettings: appLocalStorage.sidebarSettings,
+    immersiveSettings: appLocalStorage.immersiveSettings,
     currentSidebarConversationType,
     currentSidebarAIProvider,
     currentSidebarConversation,
@@ -398,6 +413,7 @@ const useSidebarSettings = () => {
     sidebarSummaryConversationId,
     updateSidebarSummaryConversationId,
     continueConversationInSidebar,
+    updateImmersiveSettings,
   }
 }
 export default useSidebarSettings

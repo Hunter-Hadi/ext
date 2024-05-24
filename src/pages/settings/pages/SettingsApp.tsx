@@ -4,6 +4,7 @@ import React, { type FC, lazy, useEffect, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
+import UnLoginOverlay from '@/features/auth/components/UnLoginOverlay'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useInitMixPanel } from '@/features/mixpanel/utils'
@@ -255,7 +256,8 @@ const SettingsApp: FC = () => {
                   </Stack>
                 </SyncSettingCheckerWrapper>
               ) : (
-                <SettingsLoginPage />
+                // <SettingsLoginPage />
+                <UnLoginOverlay />
               )}
             </AppLoadingLayout>
           </AppSuspenseLoadingLayout>

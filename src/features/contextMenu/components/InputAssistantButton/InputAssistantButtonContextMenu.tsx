@@ -9,6 +9,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -23,6 +24,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import {
+  FloatingContextWindowChangesState,
   useContextMenuList,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
@@ -32,7 +34,6 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
@@ -45,19 +46,6 @@ interface InputAssistantButtonContextMenuProps {
   disabled?: boolean
   onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
-
-// 会触发 onSelectionEffect 的 actions
-// const selectionEffectActions = new Set([
-//   // instant reply
-//   'GET_CONTENTS_OF_WEBPAGE',
-//   'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-//   'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-//   'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
-//   // refine draft
-//   'GET_EMAIL_DRAFT_OF_WEBPAGE',
-//   // key point or custom prompt with custom variables
-//   'SET_VARIABLES_MODAL'
-// ])
 
 const InputAssistantButtonContextMenu: FC<
   InputAssistantButtonContextMenuProps
@@ -72,9 +60,11 @@ const InputAssistantButtonContextMenu: FC<
     disabled,
     onSelectionEffect,
   } = props
-  const { showFloatingContextMenuWithElement, hideFloatingContextMenu } =
+  const { floatingDropdownMenuOpen, showFloatingContextMenuWithElement } =
     useFloatingContextMenu()
-  const { updateSidebarConversationType } = useSidebarSettings()
+  const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
+    FloatingContextWindowChangesState,
+  )
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
   const { currentSidebarConversationType, currentConversationId } =
@@ -167,8 +157,11 @@ const InputAssistantButtonContextMenu: FC<
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
           if (
-            event === 'beforeRunAction' &&
-            data?.action?.type === 'ASK_CHATGPT'
+            (data?.action?.type === 'ASK_CHATGPT' &&
+              event === 'beforeRunAction') ||
+            (event === 'action' &&
+              data?.type === 'SET_VARIABLES_MODAL' &&
+              data?.status === 'complete')
           ) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
@@ -200,7 +193,7 @@ const InputAssistantButtonContextMenu: FC<
           // onSelectionEffect && onSelectionEffect();
         })
     }
-    return () => { }
+    return () => {}
   }, [clickContextMenu, shortCutsEngine])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
@@ -214,6 +207,30 @@ const InputAssistantButtonContextMenu: FC<
       })
     }
   }, [root, rootId])
+  const clickContextMenuRef = useRef<IContextMenuItem>()
+
+  useEffect(() => {
+    if (!clickContextMenuRef.current) return
+    if (!floatingDropdownMenuOpen) {
+      // 点击了丢弃，执行新的context menu
+      if (
+        !contextWindowChanges.discardChangesModalVisible &&
+        contextWindowChanges.contextWindowMode === 'READ'
+      ) {
+        // 这里需要判断丢弃完毕的状态，否则会在showFloatingContextMenuWithVirtualElement里被return掉
+        setClickContextMenu(clickContextMenuRef.current)
+        clickContextMenuRef.current = undefined
+      }
+    } else if (!contextWindowChanges.discardChangesModalVisible) {
+      // 点击了取消
+      clickContextMenuRef.current = undefined
+    }
+  }, [
+    floatingDropdownMenuOpen,
+    contextWindowChanges.contextWindowMode,
+    contextWindowChanges.discardChangesModalVisible,
+  ])
+
   if (!root || !emotionCacheRef.current) {
     return null
   }
@@ -239,16 +256,26 @@ const InputAssistantButtonContextMenu: FC<
         // customOpen={disabled}
         // referenceElementOpen={!disabled}
         onClickContextMenu={async (contextMenu) => {
-          setClickContextMenu(contextMenu)
+          if (floatingDropdownMenuOpen) {
+            // 已经有打开的dropdown menu，先弹窗提醒是否要丢弃
+            clickContextMenuRef.current = contextMenu
+            setContextWindowChanges((prev) => ({
+              ...prev,
+              discardChangesModalVisible: true,
+            }))
+          } else {
+            setClickContextMenu(contextMenu)
+          }
         }}
         onClickReferenceElement={() => {
           // TODO
         }}
+        hoverIcon={null}
         {...(disabled
           ? {
-            customOpen: true,
-            referenceElementOpen: false,
-          }
+              customOpen: true,
+              referenceElementOpen: false,
+            }
           : {})}
       />
     </CacheProvider>

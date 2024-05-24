@@ -1,7 +1,6 @@
 import AES from 'crypto-js/aes'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import Browser from 'webextension-polyfill'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import ConversationManager from '@/background/src/chatConversations'
@@ -11,7 +10,6 @@ import {
   APP_VERSION,
   DEFAULT_AI_OUTPUT_LANGUAGE_ID,
 } from '@/constants'
-import { fetchUserSubscriptionInfo } from '@/features/auth/utils'
 import { getCurrentUserLogInfo } from '@/features/auth/utils'
 import {
   contextMenuIsFavoriteContextMenu,
@@ -23,10 +21,8 @@ import { getAccessToken } from '@/utils/request'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
 dayjs.extend(utc)
 
-export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
-  'CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY'
 /**
- * 记录用户发送chat的次数情况
+ * 在 background 中 记录用户发送chat的次数情况
  * @param promptDetail
  */
 export const logAndConfirmDailyUsageLimit = async (promptDetail: {
@@ -135,7 +131,6 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       if (body.data && body.status === 'OK') {
         console.log('logApiAndConfirmIsLimited api result', body.data)
         // 更新本地的缓存
-        await setDailyUsageLimitData(body.data)
         // // 更新用户的SubscriptionInfo
         // if (body.data.has_reached_limit) {
         //   getChromeExtensionUserInfo(true).then().catch()
@@ -145,16 +140,6 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       }
       return false
     } catch (e) {
-      if ((e as any)?.message === 'Failed to fetch') {
-        const subscriptionInfo = await fetchUserSubscriptionInfo()
-        if (subscriptionInfo?.name === 'free') {
-          // 说明请求被恶意拦截了
-          const cache = await getDailyUsageLimitData()
-          cache.has_reached_limit = true
-          await setDailyUsageLimitData(cache)
-          return true
-        }
-      }
       console.log('logApiAndConfirmIsLimited error', e)
       return false
     }
@@ -225,63 +210,4 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   //     resolve(false)
   //   }
   // })
-}
-
-/**
- * 更新本地每日使用上限
- * @param data
- */
-export const setDailyUsageLimitData = async (data: {
-  has_reached_limit: boolean
-  next_reset_timestamp: number
-  usage: number
-  limit_value: number
-}): Promise<void> => {
-  try {
-    console.log('logApiAndConfirmIsLimited update cache', data)
-    await Browser.storage.local.set({
-      [CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY]: JSON.stringify(data),
-    })
-  } catch (e) {
-    console.log(e)
-  }
-}
-
-/**
- * 获取本地每日使用上限
- */
-export const getDailyUsageLimitData = async (): Promise<{
-  has_reached_limit: boolean
-  next_reset_timestamp: number
-  usage: number
-  limit_value: number
-}> => {
-  try {
-    const cache = await Browser.storage.local.get(
-      CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY,
-    )
-    if (cache[CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY]) {
-      const data = JSON.parse(cache[CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY])
-      return {
-        has_reached_limit: data.has_reached_limit,
-        next_reset_timestamp: data.next_reset_timestamp,
-        usage: data.usage,
-        limit_value: data.limit_value,
-      }
-    }
-    return {
-      has_reached_limit: false,
-      next_reset_timestamp: 0,
-      usage: 0,
-      limit_value: 0,
-    }
-  } catch (e) {
-    console.log(e)
-    return {
-      has_reached_limit: false,
-      next_reset_timestamp: 0,
-      usage: 0,
-      limit_value: 0,
-    }
-  }
 }

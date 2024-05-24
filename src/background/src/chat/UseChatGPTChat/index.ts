@@ -21,7 +21,10 @@ import {
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { IChatMessageExtraMetaType } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIResponseSourceCitation,
+  IChatMessageExtraMetaType,
+} from '@/features/chatgpt/types'
 import Log from '@/utils/Log'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
@@ -97,6 +100,7 @@ class UseChatGPTPlusChat extends BaseChat {
       data: {
         text: string
         conversationId: string
+        sourceCitations?: IAIResponseSourceCitation[]
       }
     }) => void,
   ) {
@@ -129,13 +133,17 @@ class UseChatGPTPlusChat extends BaseChat {
       userConfig!.model ||
       USE_CHAT_GPT_PLUS_MODELS[0].value
     this.clearFiles()
-    let temperature = isNumber(userConfig?.temperature)
+    let temperature: number | undefined = isNumber(userConfig?.temperature)
       ? userConfig!.temperature
       : 1
+    // 隐藏temperature的设置，默认值由后端去控制 - 2024-05-21 - @tongda
+    // 这里判断一下，因为某些action是有设置固定值的，比如说smart query的时候
     if (typeof meta?.temperature === 'number') {
       temperature = meta.temperature
+      temperature = Math.min(temperature, 1.2)
+    } else {
+      temperature = undefined
     }
-    temperature = Math.min(temperature, 1.2)
     let postBody = Object.assign(
       {
         chat_history,
@@ -156,6 +164,7 @@ class UseChatGPTPlusChat extends BaseChat {
         /**
          * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong
          * 将 OpenAI API的温度控制加一个最大值限制：1.2 - 2023-10-9 - @huangsong
+         * 隐藏temperature的设置，默认值由后端去控制 - 2024-05-21 - @tongda
          * */
         temperature,
       },
@@ -232,6 +241,7 @@ class UseChatGPTPlusChat extends BaseChat {
     let messageResult = ''
     let hasError = false
     let conversationId = this.conversation?.id || ''
+    const sourceCitations: IAIResponseSourceCitation[] = []
     let isTokenExpired = false
     if (postBody.streaming) {
       await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
@@ -259,6 +269,20 @@ class UseChatGPTPlusChat extends BaseChat {
                   data: {
                     text: messageResult,
                     conversationId: conversationId,
+                  },
+                })
+            }
+            if (messageData?.sources) {
+              sourceCitations.push(...messageData.sources)
+              onMessage &&
+                onMessage({
+                  type: 'message',
+                  done: false,
+                  error: '',
+                  data: {
+                    text: messageResult,
+                    conversationId,
+                    sourceCitations,
                   },
                 })
             }
@@ -414,6 +438,7 @@ class UseChatGPTPlusChat extends BaseChat {
           data: {
             text: messageResult,
             conversationId,
+            sourceCitations,
           },
         })
     }

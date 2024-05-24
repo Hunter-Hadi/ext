@@ -67,6 +67,7 @@ interface MenuItemProps {
   label: string
   menuItem: IContextMenuItemWithChildren
   disabled?: boolean
+  hoverIcon?: React.ReactNode
 }
 
 // eslint-disable-next-line react/display-name
@@ -163,7 +164,7 @@ export const LiteDropdownMenuItem = React.forwardRef<
 
 // eslint-disable-next-line react/display-name
 export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
-  ({ label, disabled, menuItem, ...props }, ref) => {
+  ({ label, disabled, menuItem, hoverIcon, ...props }, ref) => {
     const floatingUiProps: any = props
     const { t } = useTranslation(['prompt'])
     const hoverIds = useRecoilValue(FloatingDropdownMenuItemsSelector)
@@ -306,18 +307,19 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
                 fontSize: 16,
               }}
             />
+          ) : isLastHover && hoverIcon !== undefined ? (
+            hoverIcon
           ) : (
-            isLastHover && (
-              <KeyboardReturnIcon
-                sx={{
-                  color: (t) =>
-                    t.palette.mode === 'dark'
-                      ? '#ffffff85'
-                      : 'rgba(55, 53, 47, 0.45)',
-                  fontSize: 16,
-                }}
-              />
-            )
+            <KeyboardReturnIcon
+              className="floating-context-menu-item__footer-hover-icon"
+              sx={{
+                color: (t) =>
+                  t.palette.mode === 'dark'
+                    ? '#ffffff85'
+                    : 'rgba(55, 53, 47, 0.45)',
+                fontSize: 16,
+              }}
+            />
           )}
         </span>
       </Box>
@@ -342,6 +344,7 @@ export interface MenuProps {
   onClickContextMenu?: (contextMenu: IContextMenuItem) => void
   onClickReferenceElement?: (event: React.MouseEvent<any, MouseEvent>) => void
   menuWidth?: number
+  hoverIcon?: React.ReactNode
 }
 
 // eslint-disable-next-line react/display-name

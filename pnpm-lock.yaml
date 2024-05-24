@@ -65,6 +65,9 @@ dependencies:
   dexie-react-hooks:
     specifier: ^1.1.7
     version: 1.1.7(@types/react@18.2.72)(dexie@4.0.4)(react@18.2.0)
+  email-validator:
+    specifier: ^2.0.4
+    version: 2.0.4
   eventsource-parser:
     specifier: ^0.1.0
     version: 0.1.0
@@ -4196,6 +4199,11 @@ packages:
       extract-zip: 2.0.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /email-validator@2.0.4:
+    resolution: {integrity: sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==}
+    engines: {node: '>4.0'}
     dev: false
 
   /emoji-regex@8.0.0:

@@ -1,6 +1,6 @@
 {
   "name": "MaxAI",
-  "version": "4.2.6",
+  "version": "4.2.9",
   "description": "..",
   "author": "",
   "scripts": {
@@ -30,6 +30,7 @@
     "dayjs": "^1.11.7",
     "dexie": "^4.0.4",
     "dexie-react-hooks": "^1.1.7",
+    "email-validator": "^2.0.4",
     "eventsource-parser": "^0.1.0",
     "expiry-map": "^2.0.0",
     "file-saver": "^2.0.5",

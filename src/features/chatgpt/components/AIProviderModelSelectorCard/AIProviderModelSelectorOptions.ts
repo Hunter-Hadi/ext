@@ -2,6 +2,7 @@ import { IAIProviderType } from '@/background/provider/chat'
 import {
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+  MAXAI_CHATGPT_MODEL_GPT_4O,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 
@@ -25,31 +26,38 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     },
     {
       mainPart: true,
+      label: 'gpt-4o',
+      value: MAXAI_CHATGPT_MODEL_GPT_4O,
+      AIProvider: 'USE_CHAT_GPT_PLUS',
+      tag: 'New',
+    },
+    {
+      mainPart: true,
       label: 'gpt-4-turbo',
       value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
       AIProvider: 'USE_CHAT_GPT_PLUS',
-      tag: 'Vision',
+      // tag: 'Vision',
     },
     {
       mainPart: true,
       label: 'claude-3-opus',
       value: 'claude-3-opus',
       AIProvider: 'MAXAI_CLAUDE',
-      tag: 'Beta',
+      // tag: 'Beta',
     },
     {
       mainPart: true,
       label: 'claude-3-sonnet',
       value: 'claude-3-sonnet',
       AIProvider: 'MAXAI_CLAUDE',
-      tag: 'Vision',
+      // tag: 'Vision',
     },
     {
       mainPart: true,
       label: 'claude-3-haiku',
       value: 'claude-3-haiku',
       AIProvider: 'MAXAI_CLAUDE',
-      tag: 'Vision',
+      // tag: 'Vision',
     },
     {
       tag: 'Beta',
@@ -59,7 +67,7 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       AIProvider: 'MAXAI_GEMINI',
     },
     {
-      tag: 'Beta',
+      // tag: 'Beta',
       mainPart: true,
       label: 'gemini-pro',
       value: 'gemini-pro',
@@ -117,6 +125,13 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
     },
     {
       mainPart: true,
+      label: 'gpt-4o',
+      value: MAXAI_CHATGPT_MODEL_GPT_4O,
+      AIProvider: 'USE_CHAT_GPT_PLUS',
+      tag: 'New',
+    },
+    {
+      mainPart: true,
       label: 'gpt-4-turbo',
       value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
       AIProvider: 'USE_CHAT_GPT_PLUS',
@@ -126,7 +141,7 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       label: 'claude-3-opus',
       value: 'claude-3-opus',
       AIProvider: 'MAXAI_CLAUDE',
-      tag: 'Beta',
+      // tag: 'Beta',
     },
     {
       mainPart: true,
@@ -145,14 +160,14 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       label: 'gemini-1.5-pro',
       value: 'gemini-1.5-pro',
       AIProvider: 'MAXAI_GEMINI',
-      tag: 'Beta',
+      // tag: 'Beta',
     },
     {
       mainPart: true,
       label: 'gemini-pro',
       value: 'gemini-pro',
       AIProvider: 'MAXAI_GEMINI',
-      tag: 'Beta',
+      // tag: 'Beta',
     },
     {
       mainPart: true,

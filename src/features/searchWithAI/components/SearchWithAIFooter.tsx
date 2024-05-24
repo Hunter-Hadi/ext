@@ -8,13 +8,22 @@ import { useTranslation } from 'react-i18next'
 
 
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
+import {
+  ISearchWithAIProviderType,
+  SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER,
+} from '@/features/searchWithAI/constants'
 
 interface IProps {
   handleAskQuestion: () => void
   aiMessage: IAIResponseMessage | null
+  aiProvider: ISearchWithAIProviderType
 }
 
-const SearchWithAIFooter: FC<IProps> = ({ handleAskQuestion, aiMessage }) => {
+const SearchWithAIFooter: FC<IProps> = ({
+  handleAskQuestion,
+  aiMessage,
+  aiProvider,
+}) => {
   const { t } = useTranslation(['client', 'common'])
   return (
     <Stack p={2} spacing={1} alignItems="flex-start">
@@ -27,6 +36,8 @@ const SearchWithAIFooter: FC<IProps> = ({ handleAskQuestion, aiMessage }) => {
               new CustomEvent('MaxAIContinueSearchWithAI', {
                 detail: {
                   aiMessage,
+                  aiProvider,
+                  aiModel: SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[aiProvider],
                 },
               }),
             )

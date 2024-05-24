@@ -346,7 +346,10 @@ export class ActionAskChatGPT extends Action {
             data: {
               name: contextMenu?.text || fallbackId,
               id: contextMenu?.id || fallbackId,
-              type: getPromptTypeByContextMenu(contextMenu).promptType,
+              type: getPromptTypeByContextMenu(contextMenu, {
+                isOneClickPrompt: this.question.meta.isOneClickPrompt,
+                oneClickPromptType: this.question.meta.promptType,
+              }).promptType,
               featureName: getFeatureNameByConversationAndContextMenu(
                 conversation,
                 contextMenu,
@@ -442,6 +445,9 @@ export class ActionAskChatGPT extends Action {
               if (message.conversationId) {
                 AIConversationId = message.conversationId
               }
+              if (message.sourceCitations?.length) {
+                this.answer.sourceCitations = message.sourceCitations
+              }
               this.output = this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
               if (outputMessage && this.status === 'running') {
@@ -457,6 +463,7 @@ export class ActionAskChatGPT extends Action {
                         key: outputMessageId || '',
                         changes: {
                           'originalMessage.content.text': message.text,
+                          'sourceCitations':message.sourceCitations
                         } as any,
                       },
                     ],
@@ -504,7 +511,7 @@ export class ActionAskChatGPT extends Action {
                 return
               } else {
                 if (errorMessage.startsWith('Too many requests in 1 hour')) {
-                  errorMessage = `Too many requests. Try again later, or use premium AI models managed by MaxAl instead to ensure reliable and high-quality AI performance and user experience.
+                  errorMessage = `Too many requests. Try again later, or use premium AI models managed by MaxAI instead to ensure reliable and high-quality AI performance and user experience.
                 ![switch-provider](${getChromeExtensionAssetsURL(
                   '/images/on-boarding/switch-AI-model.gif',
                 )})`
@@ -512,12 +519,6 @@ export class ActionAskChatGPT extends Action {
               }
             },
           })
-          console.log(
-            1111,
-            this.status,
-            conversationId,
-            clientConversationEngine,
-          )
           if (this.status !== 'running') {
             return
           }

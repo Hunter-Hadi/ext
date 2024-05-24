@@ -100,6 +100,13 @@ export type IAIResponseOriginalMessageMetadataTitle = {
   titleIcon?: string
   titleIconSize?: number
 }
+/**
+ * summary底下的related questions
+ */
+export type IAIResponseOriginalMessageMetaDeepRelatedData = {
+  title: string
+  icon?: string
+}
 export type IAIResponseOriginalMessageMetaDeep = {
   title?: IAIResponseOriginalMessageMetadataTitle
 } & (
@@ -110,6 +117,10 @@ export type IAIResponseOriginalMessageMetaDeep = {
   | {
       type: 'transcript' | 'timestampedSummary'
       value: TranscriptResponse[]
+    }
+  | {
+      type: 'related'
+      value: IAIResponseOriginalMessageMetaDeepRelatedData[]
     }
 )
 export type IAIResponseOriginalMessageNavMetadata = {
@@ -174,6 +185,13 @@ export interface IAIResponseOriginalMessage {
   }
 }
 
+export interface IAIResponseSourceCitation {
+  snippet: string
+  content: string
+  start_index: number
+  length: number
+}
+
 // AI返回的消息
 export interface IAIResponseMessage extends IChatMessage {
   type: 'ai'
@@ -181,6 +199,7 @@ export interface IAIResponseMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
   originalMessage?: IAIResponseOriginalMessage
+  sourceCitations?: IAIResponseSourceCitation[]
 }
 
 // 系统消息

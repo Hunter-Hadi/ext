@@ -3,6 +3,7 @@ import React, { FC, useEffect, useRef } from 'react'
 
 import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import UnLoginOverlay from '@/features/auth/components/UnLoginOverlay'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useInitMixPanel } from '@/features/mixpanel/utils'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
@@ -119,6 +120,7 @@ const SidebarPage: FC<{
             </AppSuspenseLoadingLayout>
           </SidebarDragWrapper>
           {!isImmersiveChatRef.current && <SidebarNav />}
+          <UnLoginOverlay />
         </Stack>
       )}
       {/*// 为了在Sidebar没有渲染的时候能执行shortcuts*/}

@@ -124,6 +124,7 @@ const FloatingContextMenuList: FC<
     menuWidth,
     onClickReferenceElement,
     hoverOpen,
+    hoverIcon,
     ...rest
   } = props
   const { t } = useTranslation(['prompt'])
@@ -185,6 +186,7 @@ const FloatingContextMenuList: FC<
           nodeList.push(
             <RenderDropdownItem
               menuWidth={menuWidth}
+              hoverIcon={hoverIcon}
               onClickContextMenu={onClickContextMenu}
               zIndex={2147483602}
               {...rest}
@@ -215,6 +217,7 @@ const FloatingContextMenuList: FC<
         nodeList.push(
           <RenderDropdownItem
             menuWidth={menuWidth}
+            hoverIcon={hoverIcon}
             onClickContextMenu={onClickContextMenu}
             key={menuItem.id}
             label={''}
@@ -243,6 +246,7 @@ const FloatingContextMenuList: FC<
       onClickReferenceElement={onClickReferenceElement}
       hoverOpen={hoverOpen}
       menuWidth={menuWidth}
+      hoverIcon={hoverIcon}
     >
       {RenderMenuList}
     </DropdownMenu>

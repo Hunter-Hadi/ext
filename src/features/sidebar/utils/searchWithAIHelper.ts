@@ -233,24 +233,6 @@ export const generateSearchWithAIActions = async (
               systemVariable: true,
               hidden: true,
             },
-            {
-              label: 'AI Response language',
-              VariableName: 'AI_RESPONSE_LANGUAGE',
-              valueType: 'Text',
-              systemVariable: true,
-            },
-            {
-              label: 'Tone',
-              VariableName: 'AI_RESPONSE_WRITING_STYLE',
-              valueType: 'Text',
-              systemVariable: true,
-            },
-            {
-              label: 'Writing style',
-              VariableName: 'AI_RESPONSE_TONE',
-              valueType: 'Text',
-              systemVariable: true,
-            },
           ],
           output: [
             {
@@ -263,6 +245,8 @@ export const generateSearchWithAIActions = async (
         AskChatGPTActionQuestion: {
           text: '',
           meta: {
+            // smart query以{ response_in_json: true, streaming: false }请求调用
+            // isEnabledJsonMode: true,
             includeHistory,
             temperature: 0,
             messageVisibleText: query,

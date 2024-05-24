@@ -19,6 +19,7 @@ export class ActionFetchActions extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      // 本次ask
       const needHistory = this.parameters.ActionFetchActionsWithHistory || false
       let actions = await clientGetContextMenuRunActions(
         this.parameters.template || '',
@@ -32,6 +33,11 @@ export class ActionFetchActions extends Action {
                 true
               action.parameters.AskChatGPTActionQuestion.meta.historyMessages =
                 []
+            }
+          }
+          if (action.type === 'SET_VARIABLES_MODAL') {
+            if (action.parameters.SetVariablesModalConfig) {
+              action.parameters.SetVariablesModalConfig.includeHistory = true
             }
           }
           return action

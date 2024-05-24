@@ -18,6 +18,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_FAST_TEXT_MODEL_GPT_3_5_TURBO',
   'MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU',
   'MAXAI_FAST_TEXT_MODEL_GEMINI_PRO',
+  'MAXAI_ADVANCED_MODEL_GPT_4O',
   'MAXAI_ADVANCED_MODEL_GPT_4_TURBO',
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_OPUS',
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_SONNET',
@@ -241,6 +242,20 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         )}`,
         `${t(
           'client:permission__pricing_hook__fast_text_usage__gemini_pro__description2',
+        )}`,
+      ].join('\n\n')
+    },
+  },
+  MAXAI_ADVANCED_MODEL_GPT_4O: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gpt-4o.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__advanced_text_usage__gpt_4o__title'),
+    description: (t) => {
+      return [
+        `${t(
+          'client:permission__pricing_hook__advanced_text_usage__gpt_4o__description1',
         )}`,
       ].join('\n\n')
     },

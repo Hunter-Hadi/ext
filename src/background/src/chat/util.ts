@@ -39,6 +39,7 @@ import {
   IAIResponseOriginalMessage,
   IChatMessage,
   IUserChatMessage,
+  IAIResponseSourceCitation
 } from '@/features/indexed_db/conversations/models/Message'
 import {
   calculateMaxResponseTokens,
@@ -163,6 +164,7 @@ export const clientAskAIQuestion = async (
       conversationId: string
       text: string
       originalMessage?: IAIResponseOriginalMessage
+      sourceCitations?: IAIResponseSourceCitation[]
     }) => Promise<void>
     onError?: (error: string) => Promise<void>
   },
@@ -358,6 +360,7 @@ export const getMessageTokens = async (message: IChatMessage) => {
 
 export const chatMessageToMaxAIRequestMessage = (
   message: IChatMessage,
+  isHistory?: boolean,
 ): IMaxAIRequestHistoryMessage => {
   const baseRequestMessage: IMaxAIRequestHistoryMessage = {
     role:
@@ -409,8 +412,30 @@ export const chatMessageToMaxAIRequestMessage = (
         }
       })
     }
+    let userContextText = ''
+    // 拼接上下文，并且是系统预设的prompt
+    if (
+      isHistory &&
+      message.meta?.contexts?.length &&
+      message.meta.MaxAIPromptActionConfig
+    ) {
+      userMessageQuestion.text = `# ${
+        message.meta.messageVisibleText ||
+        message.meta.contextMenu?.text ||
+        message.text
+      }`
+
+      userContextText = '\n\n## Contexts'
+
+      message.meta.contexts.forEach((context) => {
+        userContextText += `\n\n### ${context.key}\n${context.value}`
+      })
+    }
     if (extractedContent) {
       userMessageQuestion.text += `${extractedContent}`
+    }
+    if (userContextText) {
+      userMessageQuestion.text += `${userContextText}`
     }
     userMessageContent.unshift(userMessageQuestion)
     baseRequestMessage.content = userMessageContent

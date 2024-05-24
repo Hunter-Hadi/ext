@@ -164,15 +164,15 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       onInputChange={
         options.length === 0
           ? (_, value) => {
-              if (value !== props?.value?.[0]) {
-                setSelected(null)
-              }
-              if (value.length === 0) {
-                setOpen(false)
-              } else {
-                setOpen(true)
-              }
+            if (value !== props?.value?.[0]) {
+              setSelected(null)
             }
+            if (value.length === 0) {
+              setOpen(false)
+            } else {
+              setOpen(true)
+            }
+          }
           : void 0
       }
       slotProps={{
@@ -197,7 +197,7 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
         ...sx,
       }}
       autoHighlight
-      getOptionLabel={(option) => option.label}
+      getOptionLabel={(option) => option.label || ''}
       options={memoOptions}
       onChange={(event: any, newValue) => {
         setSelected(newValue)
@@ -206,9 +206,7 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
         )
       }}
       filterOptions={
-        options?.length === 0 && !isEditingSpecialInputAssistantButtonKey
-          ? freeSolofilterOptions
-          : filterOptions
+        options?.length === 0 && !isEditingSpecialInputAssistantButtonKey ? freeSolofilterOptions : filterOptions
       }
       renderInput={(params) => (
         <TextField

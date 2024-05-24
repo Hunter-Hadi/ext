@@ -20,6 +20,7 @@ import { isProduction } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { IPromptLibraryCardType } from '@/features/prompt_library/types'
 import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import {
   getSetVariablesModalSelectCache,
@@ -53,6 +54,14 @@ export interface ActionSetVariablesModalConfig {
   // askAI时额外的字段
   askChatGPTActionParameters?: ActionParameters
   MaxAIPromptActionConfig?: MaxAIPromptActionConfig
+  // one click prompt 的类型
+  promptType?: IPromptLibraryCardType
+  isOneClickPrompt?: boolean
+  // 设置运行时显示在target的变量
+  notBuiltInVariables?: string[]
+  // 设置是否需要携带上下文
+  includeHistory?: boolean
+
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -78,7 +87,6 @@ interface ActionSetVariablesModalProps
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
   disabled?: boolean
   onInputCustomVariable?: (data: ActionSetVariablesConfirmData) => void
-  notBuiltInVariables?: string[]
   sx?: SxProps
 }
 
@@ -102,6 +110,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     disabled,
     sx,
     notBuiltInVariables,
+    includeHistory,
   } = props
   const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -144,7 +153,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         success: false,
       } as ActionSetVariablesConfirmData)
     })
-    if (showCloseButton) {
+    if (modelKey !== 'PromptPreview') {
       reset()
       setForm({})
       setShow(false)
@@ -190,6 +199,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
    * 校验表单并运行actions
    * @param autoExecute
    */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const validateFormAndRunActions = async (autoExecute: boolean) => {
     const isHaveEmptyValue =
       Object.values(getValues()).filter(
@@ -222,7 +232,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       }
     }
     const presetVariables = cloneDeep(getValues())
-    if (showCloseButton) {
+    if (modelKey !== 'PromptPreview') {
       setForm({})
       reset()
       setShow(false)
@@ -270,7 +280,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             isBuiltIn: variableDetail.systemVariable,
             label: variableDetail.label,
           }
-          if (notBuiltInVariables?.includes(key)) {
+          const currentNotBuiltInVariables =
+            notBuiltInVariables || config?.notBuiltInVariables
+          if (currentNotBuiltInVariables?.includes(key)) {
             shortcutsVariables[key].isBuiltIn = false
           }
         } else {
@@ -300,56 +312,47 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         answerInsertMessageId || config.answerInsertMessageId || ''
       const currentParameters =
         askChatGPTActionParameters || config.askChatGPTActionParameters || {}
-      if (isProduction) {
-        runActions.push({
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTActionType: insertMessageId
-              ? 'ASK_CHAT_GPT_HIDDEN'
-              : 'ASK_CHAT_GPT_WITH_PREFIX',
-            AskChatGPTActionQuestion: {
-              text: '{{LAST_ACTION_OUTPUT}}',
-              meta: {
-                outputMessageId: insertMessageId,
-                contextMenu: {
-                  id: config.contextMenuId || uuidV4(),
-                  droppable: false,
-                  parent: uuidV4(),
-                  text:
-                    modelKey === 'PromptPreview'
-                      ? title || config.title
-                      : config.title,
-                  data: {
-                    editable: false,
-                    type: 'shortcuts',
-                    actions: [],
-                  },
+      const currentIncludeHistory = includeHistory ?? config.includeHistory ?? undefined
+      const askGptAction: ISetActionsType[number] = {
+        type: 'ASK_CHATGPT',
+        parameters: {
+          template: '{{LAST_ACTION_OUTPUT}}',
+          AskChatGPTActionType: insertMessageId
+            ? 'ASK_CHAT_GPT_HIDDEN'
+            : 'ASK_CHAT_GPT_WITH_PREFIX',
+          AskChatGPTActionQuestion: {
+            text: '{{LAST_ACTION_OUTPUT}}',
+            meta: {
+              outputMessageId: insertMessageId,
+              contextMenu: {
+                id: config.contextMenuId || uuidV4(),
+                droppable: false,
+                parent: uuidV4(),
+                text: config.title,
+                data: {
+                  editable: false,
+                  type: 'shortcuts',
+                  actions: [],
                 },
               },
+              isOneClickPrompt: config.isOneClickPrompt,
+              promptType: config.promptType,
             },
-            MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
-            ...currentParameters,
           },
-        })
-      } else {
-        runActions.push({
-          type: 'ASK_CHATGPT',
-          parameters: {
-            AskChatGPTActionType: insertMessageId
-              ? 'ASK_CHAT_GPT_HIDDEN'
-              : 'ASK_CHAT_GPT_WITH_PREFIX',
-            AskChatGPTActionQuestion: {
-              text: '{{LAST_ACTION_OUTPUT}}',
-              meta: {
-                outputMessageId: insertMessageId,
-              },
-            },
-            MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
-            ...currentParameters,
-          },
-        })
+          MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
+          ...currentParameters,
+        },
       }
+      if (modelKey === 'Sidebar') {
+        // TODO 待确认 如果是在sidebar里调用携带上下文
+        // askGptAction.parameters!.AskChatGPTActionQuestion!.meta!.includeHistory =
+        //   true
+      }
+      if (currentIncludeHistory !== undefined) {
+        askGptAction.parameters!.AskChatGPTActionQuestion!.meta!.includeHistory =
+          currentIncludeHistory
+      }
+      runActions.push(askGptAction)
       await askAIWIthShortcuts(runActions, { isSaveLastRunShortcuts })
         .then(() => {
           // done
@@ -362,7 +365,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         .catch()
         .finally(() => {
           // 重置
-          if (showCloseButton) {
+          if (modelKey !== 'PromptPreview') {
             reset()
             setForm({})
             setShow(false)

@@ -9,10 +9,10 @@ import { RangyState } from '@/features/contextMenu/store'
 import { getInputMediator } from '@/store/InputMediator'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
-// 支持 Accept_and_copy 的网站
-const AcceptAndCopySupportedHosts = new Set([
+// 支持 Accept_and_copy action 的网站
+const AcceptAndCopyActionSupportedHosts = new Set([
   'mail.google.com',
-  // 'outlook.live.com',
+  'outlook.live.com',
 ])
 
 const useDraftContextMenuList = () => {
@@ -48,7 +48,7 @@ const useDraftContextMenuList = () => {
         CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION,
       ]
       const host = getCurrentDomainHost()
-      if (!AcceptAndCopySupportedHosts.has(host)) {
+      if (!AcceptAndCopyActionSupportedHosts.has(host)) {
         filteredId.push(CONTEXT_MENU_DRAFT_TYPES.ACCEPT_AND_COPY)
       }
     } else if (currentSelection?.selectionElement?.isEditableElement) {

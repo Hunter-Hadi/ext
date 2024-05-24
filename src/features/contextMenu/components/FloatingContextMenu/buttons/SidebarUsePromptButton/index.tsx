@@ -65,7 +65,7 @@ const SidebarUsePromptButton: FC<{
           (action) => {
             if (action.type === 'FETCH_ACTIONS') {
               // 本次不携带history，但是后续需要携带
-              action.parameters.ActionFetchActionsWithHistory = true
+              // action.parameters.ActionFetchActionsWithHistory = true
             }
             return action
           },

@@ -139,6 +139,13 @@ const PromptsAutoComplete: FC<{
       inputRef.current?.querySelector('input')?.focus()
     }
   }, [])
+
+  const boxShadow =
+    direction === 'top'
+      ? 'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px -1px 4px, rgb(15 15 15 / 20%) 0px -1px 16px'
+      : 'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px'
+  const borderRadius = '6px'
+
   return (
     <Box
       sx={{
@@ -212,6 +219,12 @@ const PromptsAutoComplete: FC<{
                 enabled: false,
               },
             ],
+          },
+          paper: {
+            sx: {
+              borderRadius,
+              boxShadow,
+            },
           },
         }}
         renderOption={(props, option, state) => {
@@ -297,9 +310,9 @@ const PromptsAutoComplete: FC<{
           // borderColor: 'red',
           zIndex: query ? -1 : 2147483630,
           visibility: query ? 'hidden' : 'visible',
-          // visibility: query ? 'hidden' : 'hidden',
           bgcolor: 'background.paper',
-          borderRadius: '8px',
+          borderRadius,
+          boxShadow,
           ...(direction === 'top'
             ? {
                 bottom: 40,

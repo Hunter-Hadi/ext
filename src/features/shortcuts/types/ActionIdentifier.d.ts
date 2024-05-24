@@ -78,10 +78,12 @@ type ActionIdentifier =
   | 'CHAT_MESSAGE'
   // MaxAI 总结完成后记录数据的 action
   | 'MAXAI_SUMMARY_LOG'
-  //MaxAI 处理内置的变量
+  // MaxAI 处理内置的变量
   | 'MAXAI_PROCESS_BUILT_IN_PARAMETERS'
   // 获取消息
   | 'MAXAI_GET_CHAT_MESSAGES'
+  // 获取AI Response后的消息
+  | 'MAXAI_RESPONSE_RELATED'
   // 分配 System Prompt 应获取 (Email | Social Media | Chat App website) 页面上下文变量
   | 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIABLE'
   // =========[Scripts]=========
@@ -91,6 +93,8 @@ type ActionIdentifier =
   | 'SCRIPTS_GET_DICTIONARY_VALUE'
   // 在传递给操作的字典中设置值。
   | 'SCRIPTS_SET_DICTIONARY_VALUE'
+  // 列表
+  | 'SCRIPTS_LIST'
   // 从列表中获取指定索引的值。
   | 'SCRIPTS_GET_ITEM_FROM_LIST'
   // if条件

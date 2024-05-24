@@ -59,7 +59,7 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
       }
       if (question.meta) {
         question.meta.historyMessages?.forEach((message) => {
-          chat_history.push(chatMessageToMaxAIRequestMessage(message))
+          chat_history.push(chatMessageToMaxAIRequestMessage(message, true))
         })
         question.meta.includeHistory = false
         question.meta.maxHistoryMessageCnt = 0

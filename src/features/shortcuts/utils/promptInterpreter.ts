@@ -262,7 +262,8 @@ export const promptLibraryCardDetailDataToActions = (
           template,
           contextMenuId: uuidV4(),
           title: promptLibraryCard.prompt_title,
-
+          isOneClickPrompt: true,
+          promptType: promptLibraryCard.type ?? 'public',
           variables: customVariables,
           systemVariables,
           actions: specialActions,
@@ -279,9 +280,28 @@ export const promptLibraryCardDetailDataToActions = (
       type: 'ASK_CHATGPT',
       parameters: {
         template,
+        AskChatGPTActionQuestion: {
+          text: '',
+          meta: {
+            isOneClickPrompt: true,
+            promptType: promptLibraryCard.type ?? 'public',
+            contextMenu: {
+              id: promptLibraryCard.id,
+              droppable: false,
+              parent: uuidV4(),
+              text: promptLibraryCard.prompt_title,
+              data: {
+                editable: false,
+                type: 'shortcuts',
+                actions: [],
+              },
+            },
+          },
+        },
       },
     })
   }
+
   console.log(template)
   return actions
 }

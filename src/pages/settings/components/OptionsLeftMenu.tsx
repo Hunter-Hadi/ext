@@ -32,7 +32,11 @@ const OptionsLeftMenu: FC<{
               }}
               selected={route === menuItem.route}
               onClick={() => {
-                setRoute(menuItem.route)
+                if (menuItem.link) {
+                  window.open(menuItem.link)
+                } else {
+                  setRoute(menuItem.route)
+                }
               }}
             >
               <ListItemText primary={t(menuItem.label as any)} />

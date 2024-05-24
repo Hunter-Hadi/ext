@@ -18,10 +18,13 @@ import Browser from 'webextension-polyfill'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import { IAIResponseSourceCitation } from '@/features/chatgpt/types'
+import CitationTag from '@/features/citation/components/CitationTag'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
 import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const getYouTubeUrlTime = (url: string) => {
   try {
@@ -219,19 +222,48 @@ const preprocessLaTeX = (content: string) => {
   )
   return inlineProcessedContent
 }
+
+/**
+ * 处理citation
+ * 目前这版后端值返回citations的信息，不会在内容里插入对应的引文，所以这里先处理一下，添加到最后
+ * @param content
+ */
+const formatCitation = (citations: IAIResponseSourceCitation[]) => {
+  if (!citations.length) return ''
+  let content = ''
+  citations.forEach((citation, index) => {
+    content += `[T${index}]({})`
+  })
+  return content
+}
+
 const CustomMarkdown: FC<{
+  citations?: IAIResponseSourceCitation[]
   children: string
 }> = (props) => {
+  const { children } = props
+
+  // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号，目前只针对PDF显示
+  const citations = useMemo(() => {
+    if (getPageSummaryType() !== 'PDF_CRX_SUMMARY') {
+      return
+    }
+    return props.citations?.filter((item) => item.start_index > -1)
+  }, [props.citations])
+
   const formatMarkdownText = useMemo(() => {
     try {
-      if (typeof props.children === 'string') {
-        return preprocessLaTeX(props.children)
+      if (typeof children === 'string') {
+        if (citations?.length && !children.includes('[T0]')) {
+          return preprocessLaTeX(children) + formatCitation(citations)
+        }
+        return preprocessLaTeX(children)
       }
-      return props.children
+      return children
     } catch (e) {
-      return props.children
+      return children
     }
-  }, [props.children])
+  }, [citations, children])
   return useMemo(
     () => (
       <>
@@ -276,6 +308,17 @@ const CustomMarkdown: FC<{
             },
             // eslint-disable-next-line react/display-name
             a: ({ node, ...props }) => {
+              if (citations && typeof props.children?.[0] === 'string') {
+                const match = props.children[0].match(/T(\d+)/)
+                if (match) {
+                  return (
+                    <CitationTag
+                      citations={citations}
+                      index={Number(match[1])}
+                    />
+                  )
+                }
+              }
               return (
                 // eslint-disable-next-line react/prop-types
                 <OverrideAnchor href={props.href} title={props.title}>
@@ -358,7 +401,7 @@ const CustomMarkdown: FC<{
         </ReactMarkdown>
       </>
     ),
-    [props.children],
+    [citations, formatMarkdownText],
   )
 }
 export default CustomMarkdown

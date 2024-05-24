@@ -23,6 +23,8 @@ export const CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB = `CHROME_EXTENSIO
 
 // doc
 export const CHROME_EXTENSION_MAIL_TO = `https://www.maxai.me/contact-us`
+// help
+export const CHROME_EXTENSION_HELP_TO = 'https://www.maxai.me/learning-center'
 
 /**
  * MARK: 设计问题，历史遗留
@@ -125,7 +127,7 @@ export const SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID =
   '5278969d-1d86-4df2-a3e8-48e50dbbd86e' // [Summary] Summarize comments
 export const SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID =
   '029d848d-7c28-4a3a-baae-353292ea7691' // [Summary] Show transcript
-
+export const SUMMARY__RELATED_QUESTIONS__PROMPT_ID = 'related_questions'
 // Send notification
 export const NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID =
   '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a' // [Summary] tokens have reached maximum limit
@@ -162,4 +164,9 @@ export const PRESET_PROMPT_IDS = [
   SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID,
   SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID,
   SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
+  SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
 ]
+
+export const LOVED_BY_NUM = '1M+'
+
+export const STAR_RATINGS_NUM = '13K+'

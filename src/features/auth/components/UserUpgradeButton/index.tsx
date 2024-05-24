@@ -87,7 +87,8 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
             userSelect: 'none',
           }}
         >
-          {t('client:sidebar__top_bar__upgrade__title')}
+          {/*{t('client:sidebar__top_bar__upgrade__title')}*/}
+          Upgrade
         </Typography>
 
         <Popper

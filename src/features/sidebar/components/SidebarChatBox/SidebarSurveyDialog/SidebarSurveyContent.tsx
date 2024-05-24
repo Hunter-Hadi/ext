@@ -52,6 +52,8 @@ const SidebarSurveyContent: FC<IProps> = ({
     <Stack
       sx={{
         textAlign: 'left',
+        color: 'text.primary',
+        bgcolor: (t) => (t.palette.mode === 'dark' ? '#3B3D3E' : '#fff'),
         ...sx,
       }}
     >

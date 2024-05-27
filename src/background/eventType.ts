@@ -80,6 +80,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_switchVideoPopup'
   // 客户端使用conversationDB
   | 'Client_useIndexedDB'
+  // 客户端获取 survey 状态
+  | 'Client_updateMaxAISurveyStatus'
   | IWebsiteContextSendEvent
 
 // chat.openai.com(daemon process) 监听task event

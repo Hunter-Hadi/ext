@@ -9,6 +9,7 @@ import { isProduction } from '@/constants'
 import { getMaxAIWebSiteClientUserId } from '@/features/auth/utils'
 import { getCurrentUserLogInfo } from '@/features/auth/utils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const MIXPANEL_PROJECT_ID = String(process.env.MIXPANEL_PROJECT_ID)
 
@@ -42,8 +43,16 @@ export const mixpanelTrack = async (
   params?: Record<string, any>,
 ) => {
   try {
-    const paramsCover = { ...params, ...(await getCurrentUserLogInfo()) }
-
+    const paramsCover = {
+      ...params,
+      ...(await getCurrentUserLogInfo()),
+      currentDomain: getCurrentDomainHost(),
+    }
+    window.postMessage({
+      event: 'MAX_AI_MIXPANEL_TRACK',
+      type: eventName,
+      data: paramsCover,
+    })
     console.log(`mixpanel.track eventName: `, eventName, paramsCover)
     mixpanel.track(eventName, paramsCover)
   } catch (e) {

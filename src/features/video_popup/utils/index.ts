@@ -5,7 +5,10 @@ import {
 } from '@/features/video_popup/constant'
 import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 
-export const openGlobalVideoPopup = async (videoSrc: string) => {
+export const openGlobalVideoPopup = async (
+  videoSrc: string,
+  autoplay = false,
+) => {
   const port = new ContentScriptConnectionV2({
     runtime: 'client',
   })
@@ -14,6 +17,7 @@ export const openGlobalVideoPopup = async (videoSrc: string) => {
     data: {
       videoSrc: videoSrc,
       open: true,
+      autoplay,
     },
   })
 }
@@ -25,7 +29,9 @@ export const closeGlobalVideoPopup = async () => {
   await port.postMessage({
     event: 'Client_switchVideoPopup',
     data: {
+      videoSrc: '',
       open: false,
+      autoplay: false,
     },
   })
 }

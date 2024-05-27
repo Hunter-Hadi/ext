@@ -27,6 +27,7 @@ import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShort
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
 import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import useInitSurveyState from '@/features/survey/hooks/useInitSurveyState'
 import { useInitI18n } from '@/i18n/hooks'
 import useHideInHost from '@/minimum/hooks/useHideInHost'
 import { AppDBStorageState, AppLocalStorageState } from '@/store'
@@ -206,6 +207,8 @@ const AppInit = () => {
   useInitOneClickShareButton()
   // 初始化是否开启同步对话
   useInitSyncConversation()
+
+  useInitSurveyState()
   return (
     <>
       <ClientConversationInit />

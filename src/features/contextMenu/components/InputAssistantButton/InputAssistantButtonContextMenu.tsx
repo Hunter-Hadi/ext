@@ -99,15 +99,12 @@ const InputAssistantButtonContextMenu: FC<
               currentHostFreeTrialTimes - 1,
             )
           } else {
-            // 2024-04-30 付费卡点在当前context window里显示，没问题可以删除注释及代码
+            // 2024-04-30 付费卡点在当前context window里显示
             // 如果没有免费试用次数, 则显示付费卡片
-            // showChatBox()
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType, {
               conversationId: currentConversationId,
             })
-            // updateSidebarConversationType('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
-            // hideFloatingContextMenu()
             return
           }
         }
@@ -152,7 +149,7 @@ const InputAssistantButtonContextMenu: FC<
       !isRunningRef.current &&
       clickContextMenu &&
       runContextMenuRef.current &&
-      sidebarSettingsTypeRef.current === 'ContextMenu'
+      currentSidebarConversationType === 'ContextMenu'
     ) {
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
@@ -194,7 +191,7 @@ const InputAssistantButtonContextMenu: FC<
         })
     }
     return () => {}
-  }, [clickContextMenu, shortCutsEngine])
+  }, [clickContextMenu, shortCutsEngine, currentSidebarConversationType])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
       const emotionRoot = document.createElement('style')

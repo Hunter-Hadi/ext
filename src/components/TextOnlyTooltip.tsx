@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack'
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 
@@ -64,7 +64,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
           '&[data-popper-placement*="left"] > div': {
             marginRight: props.arrow ? '12px!important' : '4px!important',
           },
-          '& > div': {
+          [`& > .${tooltipClasses.tooltip}`]: {
             fontWeight: 400,
             color: 'rgba(255,255,255,0.87)',
             fontSize: '14px',

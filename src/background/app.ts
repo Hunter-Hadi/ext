@@ -367,6 +367,14 @@ const initChromeExtensionUpdated = async () => {
   setTimeout(() => {
     updateRemoteAIProviderConfigAsync().then().catch()
   }, (1 + Math.floor(Math.random() * 9)) * 1000)
+
+  // 测试环境下，刷新插件更新 survey dialog 的弹窗标记
+  if (!isProduction) {
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_EXTENSION_SURVEY_DIALOG_ALERT',
+      false,
+    )
+  }
 }
 
 /**
@@ -607,9 +615,10 @@ const initExternalMessageListener = () => {
     message,
     sender,
   ) {
-    // 测试环境跳过 插件白名单 检测
-    if (!isProduction || extensionWhiteList.includes(sender.id ?? '')) {
-      if (message.event === 'GET_MAXAI_USERINFO') {
+    // 外部插件获取 maxai 插件中的用户信息
+    if (message.event === 'GET_MAXAI_USERINFO') {
+      // 测试环境跳过 插件白名单 检测
+      if (!isProduction || extensionWhiteList.includes(sender.id ?? '')) {
         const userinfo = await getChromeExtensionUserInfo(false)
         return {
           isLogin: !!userinfo,
@@ -617,7 +626,6 @@ const initExternalMessageListener = () => {
         }
       }
     }
-    return undefined
   })
 }
 

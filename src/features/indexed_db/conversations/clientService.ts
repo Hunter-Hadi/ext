@@ -467,10 +467,12 @@ export const syncLocalConversationToRemote = async (
     conversationId,
     `需要下载${needDownloadMessagesIds.length}条消息`,
     needSyncToLocalDB ? `开始下载到本地` : `不需要下载到本地`,
+    `!![不再下载到本地，只通过分页加载的方式下载]`,
   )
   // NOTE: !!因为聊天记录是分页加载的，所以在渲染的时候会自动下载同步到本地
   // 所以这里设置为[]，不需要在这个auto Sync阶段下载
   // 只上传服务器没有的消息就行
+  successCount += needDownloadMessagesIds.length
   needDownloadMessagesIds = []
   for (
     let i = 0;

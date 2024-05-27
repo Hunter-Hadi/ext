@@ -31,7 +31,6 @@ const ShareButtonGroup: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const isShareable = clientConversation?.share?.enable === true
   const shareId = clientConversation?.share?.id
-  console.log(`ShareButtonGroup`, clientConversation)
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }

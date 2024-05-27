@@ -691,11 +691,13 @@ const devMockConversation = async () => {
         const randomIndex = Math.floor(Math.random() * mergeMessages.length)
         const mockMessage = cloneDeep(mergeMessages[randomIndex])
         mockMessage.messageId = uuidV4()
+
+        const day3 = 3 * 24 * 60 * 60 * 1000
         mockMessage.created_at = new Date(
-          new Date().getTime() + index * 1000 * 60,
+          new Date().getTime() - day3 + index * 1000 * 60,
         ).toISOString()
         mockMessage.updated_at = new Date(
-          new Date().getTime() + index * 1000 * 60,
+          new Date().getTime() - day3 + index * 1000 * 60,
         ).toISOString()
         ;(mockMessage as any).conversationId = conversationId
         if (isAIMessage(mockMessage)) {

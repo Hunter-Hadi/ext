@@ -2,12 +2,13 @@ import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
+import last from 'lodash-es/last'
 import throttle from 'lodash-es/throttle'
 import React, { FC, useCallback, useEffect, useRef } from 'react'
 
 import usePaginationConversationMessages from '@/features/chatgpt/hooks/usePaginationConversationMessages'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
-import { useFocus } from '@/features/common/hooks/useFocus'
+import useBlur from '@/features/common/hooks/useBlur'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarChatBoxMessageItem from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
 
@@ -139,8 +140,23 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       containerElement.removeEventListener('wheel', throttleHandleScroll)
   }, [])
 
-  // 当页面 onfocus 时，判断 是否需要滚动到底部
-  useFocus(handleScrollToBottom)
+  /**
+   * 如果在其他页面更新了消息，在focus的时候需要滚动到最新消息
+   */
+  const blurMessageIdRef = useRef<string | null>(null)
+  useBlur(() => {
+    blurMessageIdRef.current = lastMessageIdRef.current
+  })
+  useEffect(() => {
+    if (blurMessageIdRef.current) {
+      const lastPaginationMessage = last(paginationMessages)
+      if (lastPaginationMessage?.messageId !== blurMessageIdRef.current) {
+        console.log(`scroll to message [失去焦点]`, blurMessageIdRef.current)
+        handleScrollToBottom()
+      }
+      blurMessageIdRef.current = null
+    }
+  }, [paginationMessages])
 
   useEffect(() => {
     const writingMessageId = writingMessage?.messageId || ''

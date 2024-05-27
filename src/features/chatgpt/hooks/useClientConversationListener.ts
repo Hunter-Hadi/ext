@@ -396,6 +396,7 @@ export const useClientConversationListener = () => {
           switch (changeType) {
             case 'add':
             case 'update':
+            case 'focus':
               {
                 const messages =
                   await ClientConversationMessageManager.getMessagesByMessageIds(

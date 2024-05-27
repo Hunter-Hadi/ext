@@ -309,7 +309,6 @@ export const MetadataTitleRender: FC<{
 }> = (props) => {
   const { fontSx } = props
   const { title, titleIcon, titleIconSize } = props.title
-  console.log(`MetadataTitleRender`, props.title)
   const currentTitleIconSize = titleIconSize || 20
   return (
     <Stack direction={'row'} alignItems="center" spacing={1}>

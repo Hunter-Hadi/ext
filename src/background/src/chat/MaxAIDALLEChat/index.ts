@@ -19,7 +19,10 @@ import {
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
-import { IChatMessageExtraMetaType, IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
+import {
+  IChatMessageExtraMetaType,
+  IChatUploadFile,
+} from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
 
 const log = new Log('Background/Chat/MaxAIDALLEChat')

@@ -112,12 +112,21 @@ export const backgroundMigrateConversationV3 = async (
   const startTime = new Date().getTime()
   // 如果是V3版本, 不需要迁移
   if (conversation.version !== 3) {
+    /**
+     * 老版本没有这个字段
+     */
     if (!conversation.authorId) {
       conversation.authorId = await getMaxAIChromeExtensionUserId()
     }
+    /**
+     * 老版本没有这个字段
+     */
     if (!Object.prototype.hasOwnProperty.call(conversation, 'isDelete')) {
       conversation.isDelete = false
     }
+    /**
+     * 提取最后运行的shortcuts
+     */
     if (
       conversation.meta.lastRunActions ||
       conversation.meta.lastRunActionsParams ||
@@ -131,6 +140,16 @@ export const backgroundMigrateConversationV3 = async (
       conversation.meta.lastRunActions = undefined
       conversation.meta.lastRunActionsParams = undefined
       conversation.meta.lastRunActionsMessageId = undefined
+    }
+    /**
+     * 更新share字段
+     */
+    if (conversation.share) {
+      conversation.share.id = conversation.share.shareId
+      conversation.share.enable = conversation.share.enabled
+      delete conversation.share.shareId
+      delete conversation.share.enabled
+      delete conversation.share.shareType
     }
   }
   const messages = conversation.messages || []

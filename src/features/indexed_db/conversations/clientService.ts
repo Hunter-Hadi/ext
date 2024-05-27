@@ -134,7 +134,9 @@ export const downloadRemoteMessagesToClient = async (
  * 下载会话
  * @param conversationId
  */
-export const clientDownloadConversation = async (conversationId: string) => {
+export const clientDownloadConversationToLocal = async (
+  conversationId: string,
+) => {
   if (!(await isEnableSyncConversation())) {
     return []
   }
@@ -164,6 +166,37 @@ export const clientDownloadConversation = async (conversationId: string) => {
   }
   return downloadConversationData.data?.data || []
 }
+
+/**
+ * 分享会话
+ * @param conversationId
+ * @param enable
+ */
+export const clientShareConversation = async (
+  conversationId: string,
+  enable: boolean,
+) => {
+  try {
+    const shareConfig = await clientFetchMaxAIAPI<{
+      status: string
+      data?: {
+        id?: string
+      }
+    }>('/conversation/share_conversation', {
+      id: conversationId,
+      share_enabled: enable,
+    })
+    return shareConfig?.data?.status === 'OK'
+      ? {
+          enable,
+          id: shareConfig.data?.data?.id,
+        }
+      : null
+  } catch (e) {
+    return null
+  }
+}
+
 /**
  * 检查会话是否需要同步
  * @param conversationId
@@ -218,10 +251,13 @@ export const checkConversationNeedSync = async (
     page_size: 2000,
     sort: 'desc',
   })
+  /**
+   * 如果接口报错，或者没有数据，并且本地有数据, 就需要同步
+   */
   if (remoteConversationMessagesIdsData.data?.status !== 'OK') {
     syncLog.info(conversationId, `接口报错, 需要同步`)
     return {
-      needSync: true,
+      needSync: localConversationMessagesIds.length > 0,
       needSyncCount: localConversationMessagesIds.length || 0,
       totalCount: localConversationMessagesIds.length || 0,
     }

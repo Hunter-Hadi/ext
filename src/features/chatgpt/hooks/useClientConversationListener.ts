@@ -270,7 +270,10 @@ export const useClientConversationListener = () => {
           currentConversationId,
         ).then(async (conversation) => {
           if (conversation) {
-            console.log(`新版Conversation [${currentConversationId}]effect更新`)
+            console.log(
+              `ConversationDB[V3] [${currentConversationId}]effect更新`,
+              conversation,
+            )
             setClientConversationMap((prevState) => {
               return {
                 ...prevState,

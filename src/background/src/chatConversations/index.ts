@@ -247,12 +247,12 @@ export default class ConversationManager {
       type: 'Chat',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
-      paginationMessages: [], // 虽然废弃了，但是为了兼容老数据，还是要加上
+      messages: [], // 虽然废弃了，但是为了兼容老数据，还是要加上
       meta: {},
       isDelete: false,
       version: 3,
       share: {
-        shareId: undefined,
+        id: undefined,
         shareType: 'private',
       },
     }

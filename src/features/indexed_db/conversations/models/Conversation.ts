@@ -30,8 +30,19 @@ export interface IConversation {
 
 // 分享配置
 export interface IConversationShareConfig {
-  enabled?: boolean
+  enable?: boolean
+  id?: string
+  /**
+   * @deprecated - 2024-05-27 - 3.0版本后废弃
+   */
   shareType?: 'public' | 'private'
+  /**
+   * @deprecated - 2024-05-27 - 3.0版本后废弃
+   */
+  enabled?: boolean
+  /**
+   * @deprecated - 2024-05-27 - 3.0版本后废弃
+   */
   shareId?: string
 }
 

@@ -150,8 +150,8 @@ const useArtTextToImage = () => {
           parameters: {
             VariableMap: {
               USER_INPUT: text,
-            }
-          }
+            },
+          },
         },
         {
           type: 'ASK_CHATGPT',

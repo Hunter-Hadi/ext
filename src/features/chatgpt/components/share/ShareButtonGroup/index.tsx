@@ -12,10 +12,10 @@ import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { WWW_PROJECT_HOST } from '@/constants'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
-import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
-import { uploadClientConversationToRemote } from '@/features/indexed_db/conversations/clientService'
-import { IConversationShareConfig } from '@/features/indexed_db/conversations/models/Conversation'
-import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import {
+  clientShareConversation,
+  syncLocalConversationToRemote,
+} from '@/features/indexed_db/conversations/clientService'
 import globalSnackbar from '@/utils/globalSnackbar'
 
 const createShareLink = (shareId: string) => {
@@ -29,47 +29,37 @@ const ShareButtonGroup: FC = () => {
   const [isUploadingConversation, setIsUploadingConversation] = useState(false)
   const [buttonLoading, setButtonLoading] = useState(false)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const isShareable = clientConversation?.share?.enabled === true
-  const shareId = clientConversation?.share?.shareId
+  const isShareable = clientConversation?.share?.enable === true
+  const shareId = clientConversation?.share?.id
+  console.log(`ShareButtonGroup`, clientConversation)
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
   const handleClose = () => {
     setAnchorEl(null)
   }
-  const switchShareType = async (
-    shareType: IConversationShareConfig['shareType'],
-  ) => {
+  const switchShareType = async (enable: boolean) => {
     if (!clientConversation?.id) {
-      return
-    }
-    if (clientConversation.share?.shareType === shareType) {
       return
     }
     try {
       setButtonLoading(true)
-      const enabled = shareType === 'public'
-      const shareConfig = await clientFetchMaxAIAPI<{
-        status: string
-        data?: {
-          id?: string
-        }
-      }>('/conversation/share_conversation', {
-        id: clientConversation.id,
-        share_enabled: enabled,
-      })
-      if (shareConfig?.data?.status === 'OK') {
+      const shareConfig = await clientShareConversation(
+        clientConversation.id,
+        enable,
+      )
+      if (shareConfig?.id) {
         await ClientConversationManager.addOrUpdateConversation(
           clientConversation.id,
           {
             share: {
-              enabled,
-              shareId: shareId || shareConfig?.data?.data?.id || '',
-              shareType,
+              enable: shareConfig.enable,
+              id: shareConfig.id,
             },
           },
           {
             syncConversationToDB: true,
+            waitSync: true,
           },
         )
       } else {
@@ -100,17 +90,19 @@ const ShareButtonGroup: FC = () => {
   const handleShareConversation = async (
     event: React.MouseEvent<HTMLElement>,
   ) => {
+    if (!clientConversation?.id) {
+      return
+    }
     const parent = event.currentTarget.parentElement
     let currentCopyShareId = ''
-    // TODO: 年前上线的版本
     if (shareId) {
-      currentCopyShareId = shareId
       if (isShareable) {
         // 打开dropdown并复制连接到剪贴板
       } else {
         // 如果是私有的, 切换为公开
-        await switchShareType('public')
+        await switchShareType(true)
       }
+      currentCopyShareId = shareId
     } else {
       const errorTips = () => {
         globalSnackbar.error(
@@ -125,77 +117,39 @@ const ShareButtonGroup: FC = () => {
       }
       // 上传会话和消息
       try {
-        setIsUploadingConversation(true)
-        const needUploadMessages =
-          await ClientConversationMessageManager.getMessages(
-            clientConversation.id,
+        if (!currentCopyShareId) {
+          setIsUploadingConversation(true)
+          const needShareConversation =
+            await ClientConversationManager.getConversationById(
+              clientConversation.id,
+            )
+          if (!needShareConversation) {
+            errorTips()
+            return
+          }
+          await syncLocalConversationToRemote(needShareConversation)
+          // 上传完消息后, 获取分享链接
+          const shareConfig = await clientShareConversation(
+            needShareConversation.id,
+            true,
           )
-        // 需要上传
-        const result = await uploadClientConversationToRemote(
-          clientConversation,
-        )
-        // 上传消息
-        const conversationId = needUploadConversation.id
-        // 每次上传30条消息
-        const perUploadCount = 30
-        const messageChunks = []
-        for (let i = 0; i < needUploadMessages.length; i += perUploadCount) {
-          messageChunks.push(needUploadMessages.slice(i, i + perUploadCount))
-        }
-        for (const messageChunk of messageChunks) {
-          let result = await clientFetchMaxAIAPI<{
-            status: string
-          }>('/conversation/add_messages', {
-            conversation_id: conversationId,
-            messages: messageChunk,
-          })
-          // 重试2次
-          if (result.data?.status !== 'OK') {
-            result = await clientFetchMaxAIAPI<{
-              status: string
-            }>('/conversation/add_messages', {
-              conversation_id: conversationId,
-              messages: messageChunk,
-            })
-            if (result.data?.status !== 'OK') {
-              await clientFetchMaxAIAPI<{
-                status: string
-              }>('/conversation/add_messages', {
-                conversation_id: conversationId,
-                messages: messageChunk,
-              })
-            }
+          if (shareConfig?.id && shareConfig.enable) {
+            currentCopyShareId = shareConfig.id
+            // 上传成功，写入数据库
+            await ClientConversationManager.addOrUpdateConversation(
+              needShareConversation.id,
+              {
+                share: {
+                  enable: true,
+                  id: shareConfig.id,
+                },
+              },
+              {
+                syncConversationToDB: true,
+              },
+            )
           }
         }
-        // 上传完消息后, 获取分享链接
-        const shareConfig = await clientFetchMaxAIAPI<{
-          status: string
-          data?: {
-            id?: string
-          }
-        }>('/conversation/share_conversation', {
-          id: conversationId,
-          share_enabled: true,
-        })
-        if (result.data?.status !== 'OK' || !shareConfig?.data?.data?.id) {
-          errorTips()
-          return
-        }
-        currentCopyShareId = shareConfig.data.data.id
-        // 上传成功，写入数据库
-        await ClientConversationManager.addOrUpdateConversation(
-          conversationId,
-          {
-            share: {
-              enabled: true,
-              shareId: shareConfig.data.data.id,
-              shareType: 'public',
-            },
-          },
-          {
-            syncConversationToDB: true,
-          },
-        )
       } catch (e) {
         errorTips()
       } finally {
@@ -319,7 +273,7 @@ const ShareButtonGroup: FC = () => {
               data-testid={'maxai--conversation--share-private-button'}
               disabled={buttonLoading}
               onClick={async () => {
-                await switchShareType('private')
+                await switchShareType(false)
               }}
             >
               <Stack width={'100%'}>
@@ -364,7 +318,7 @@ const ShareButtonGroup: FC = () => {
             <Button
               disabled={buttonLoading}
               onClick={async () => {
-                await switchShareType('public')
+                await switchShareType(true)
               }}
             >
               <Stack width={'100%'}>

@@ -463,7 +463,7 @@ export class ActionAskChatGPT extends Action {
                         key: outputMessageId || '',
                         changes: {
                           'originalMessage.content.text': message.text,
-                          'sourceCitations':message.sourceCitations
+                          sourceCitations: message.sourceCitations,
                         } as any,
                       },
                     ],

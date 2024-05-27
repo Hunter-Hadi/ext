@@ -61,7 +61,6 @@ export interface ActionSetVariablesModalConfig {
   notBuiltInVariables?: string[]
   // 设置是否需要携带上下文
   includeHistory?: boolean
-
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -312,7 +311,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         answerInsertMessageId || config.answerInsertMessageId || ''
       const currentParameters =
         askChatGPTActionParameters || config.askChatGPTActionParameters || {}
-      const currentIncludeHistory = includeHistory ?? config.includeHistory ?? undefined
+      const currentIncludeHistory =
+        includeHistory ?? config.includeHistory ?? undefined
       const askGptAction: ISetActionsType[number] = {
         type: 'ASK_CHATGPT',
         parameters: {
@@ -611,12 +611,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     !props.show &&
     (!show || isHideInOtherConversationType || Object.keys(form).length === 0)
   ) {
-    console.log(
-      'ActionSetVariablesModal not show or hide or form is empty',
-      show,
-      isHideInOtherConversationType,
-      form,
-    )
+    // console.log(
+    //   'ActionSetVariablesModal not show or hide or form is empty',
+    //   show,
+    //   isHideInOtherConversationType,
+    //   form,
+    // )
     return null
   }
   return (

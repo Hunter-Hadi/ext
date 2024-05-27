@@ -62,6 +62,9 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
           ytdLiveChatFrame.style.right = `${chatBoxElementWidth}px`
         }
       }
+
+      // 添加以下样式，能让context menu的AIModelSelector显示出来
+      document.body.style.position = 'relative'
     }
 
     if (host === 'mail.qq.com') {
@@ -193,6 +196,9 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
           ytdLiveChatFrame.style.right = ''
         }
       }
+
+      // 添加以下样式，能让context menu的AIModelSelector显示出来
+      document.body.style.position = ''
     }
     if (host === 'studio.youtube.com') {
       const youTubeStudioContainer = document.querySelector(

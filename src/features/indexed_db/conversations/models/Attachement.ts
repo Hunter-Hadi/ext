@@ -6,4 +6,5 @@ export interface IIndexDBAttachment {
   fileName: string // 文件名
   fileType: string // 文件类型
   binaryData?: string // 二进制数据
+  extractedText?: string // 提取的文本
 }

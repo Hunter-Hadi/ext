@@ -6,6 +6,8 @@ import useAIProviderUpload, {
   MaxAIAddOrUpdateUploadFile,
 } from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
+import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import FileExtractor from '@/features/sidebar/utils/FileExtractor'
 import globalSnackbar from '@/utils/globalSnackbar'
 
@@ -48,35 +50,83 @@ const useDocUploadAndTextExtraction = () => {
           })
         }),
       )
-      // 为了节省性能，一个一个提取
-      for (const fileId in uploadFileMap) {
-        const docFile = uploadFileMap[fileId]
-        const extractedResult = await FileExtractor.extractFile(
-          docFile,
-          addOrUpdateUploadFileRef.current,
-          fileId,
-        )
-        if (extractedResult.success) {
-          await addOrUpdateUploadFileRef.current(fileId, {
-            ...extractedResult.chatUploadFile,
-            uploadStatus: 'success',
-            uploadProgress: 100,
-          })
-        } else if (extractedResult.error) {
-          await addOrUpdateUploadFileRef.current(fileId, {
-            uploadStatus: 'error',
-            uploadProgress: 0,
-            uploadErrorMessage: extractedResult.error,
-          })
-          globalSnackbar.error(extractedResult.error, {
-            autoHideDuration: 3000,
-            anchorOrigin: {
-              vertical: 'top',
-              horizontal: 'right',
-            },
-          })
+      const extractTextPromises = async () => {
+        // 为了节省性能，一个一个提取
+        for (const fileId in uploadFileMap) {
+          const docFile = uploadFileMap[fileId]
+          const extractedResult = await FileExtractor.extractFile(
+            docFile,
+            addOrUpdateUploadFileRef.current,
+            fileId,
+          )
+          if (extractedResult.success) {
+            await addOrUpdateUploadFileRef.current(fileId, {
+              ...extractedResult.chatUploadFile,
+              uploadStatus: 'success',
+              uploadProgress: 80,
+            })
+          } else if (extractedResult.error) {
+            await addOrUpdateUploadFileRef.current(fileId, {
+              uploadStatus: 'error',
+              uploadProgress: 0,
+              uploadErrorMessage: extractedResult.error,
+            })
+            globalSnackbar.error(extractedResult.error, {
+              autoHideDuration: 3000,
+              anchorOrigin: {
+                vertical: 'top',
+                horizontal: 'right',
+              },
+            })
+          }
         }
       }
+      const uploadResultMap: Record<string, Partial<IChatUploadFile>> = {}
+      const uploadTextPromises = async () => {
+        const fileIds = Object.keys(uploadFileMap)
+        await Promise.all(
+          fileIds.map(async (fileId) => {
+            const file = uploadFileMap[fileId]
+            if (file) {
+              const uploadResult = await maxAIFileUpload(file, {
+                useCase: 'multimodal',
+                filename: file.name,
+              })
+              if (uploadResult.success) {
+                uploadResultMap[fileId] = {
+                  uploadStatus: 'success',
+                  uploadProgress: 100,
+                  uploadedFileId: uploadResult.file_id,
+                  uploadedUrl: uploadResult.file_url,
+                }
+              } else {
+                uploadResultMap[fileId] = {
+                  uploadStatus: 'error',
+                  uploadProgress: 0,
+                  uploadErrorMessage: uploadResult.error,
+                }
+                globalSnackbar.error(uploadResult.error, {
+                  autoHideDuration: 3000,
+                  anchorOrigin: {
+                    vertical: 'top',
+                    horizontal: 'right',
+                  },
+                })
+              }
+            }
+            return file
+          }),
+        )
+      }
+      await Promise.all([extractTextPromises(), uploadTextPromises()])
+      await Promise.all(
+        Object.keys(uploadResultMap).map(async (fileId) => {
+          await addOrUpdateUploadFileRef.current(
+            fileId,
+            uploadResultMap[fileId],
+          )
+        }),
+      )
     }
   }
   return {

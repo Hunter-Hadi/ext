@@ -27,6 +27,15 @@ export const fetchSSE = async (
         // 418 I'm a teapot
       }
     }
+    if (resp.status === 413) {
+      throw new Error(
+        JSON.stringify({
+          message:
+            "Your input has reached the model's token limit. If you believe this is an error, please contact us at hello@maxai.me",
+          detail: '',
+        }),
+      )
+    }
     throw new Error(
       JSON.stringify(
         !isEmpty(error)

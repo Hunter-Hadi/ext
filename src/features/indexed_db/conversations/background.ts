@@ -159,31 +159,56 @@ export const backgroundMigrateConversationV3 = async (
     if (!Object.prototype.hasOwnProperty.call(conversation, 'lastMessageId')) {
       conversation.lastMessageId = messages[messages.length - 1].messageId
     }
+
     await Promise.all(
       messages.map(async (message) => {
         message.conversationId = conversation.id
-        if (isUserMessage(message) && message.meta?.attachments) {
-          message.meta.attachments = await Promise.all(
-            message.meta.attachments.map(async (attachment) => {
-              // 如果是提取文件内容的文件, 先还原文件,再存成附件
-              if (attachment.extractedContent) {
-                try {
-                  const file = new File(
-                    [attachment.extractedContent],
-                    attachment.fileName,
-                    {
-                      type: attachment.fileType,
-                    },
-                  )
-                  const getAttachmentBinaryData = async () => {
-                    return new Promise<string>((resolve) => {
-                      const reader = new FileReader()
-                      reader.onload = () => {
-                        resolve(reader.result as string)
-                      }
-                      reader.readAsArrayBuffer(file)
-                    })
+        // TODO: 为了上线速度，不拆把attachments缓存表了 - 2024-05-28
+        const TODO = true
+        if (!TODO) {
+          if (isUserMessage(message) && message.meta?.attachments) {
+            message.meta.attachments = await Promise.all(
+              message.meta.attachments.map(async (attachment) => {
+                // 如果是提取文件内容的文件, 先还原文件,再存成附件
+                if (attachment.extractedContent) {
+                  try {
+                    const file = new File(
+                      [attachment.extractedContent],
+                      attachment.fileName,
+                      {
+                        type: attachment.fileType,
+                      },
+                    )
+                    const getAttachmentBinaryData = async () => {
+                      return new Promise<string>((resolve) => {
+                        const reader = new FileReader()
+                        reader.onload = () => {
+                          resolve(reader.result as string)
+                        }
+                        reader.readAsArrayBuffer(file)
+                      })
+                    }
+                    const newAttachment: IIndexDBAttachment = {
+                      id: attachment.id,
+                      created_at: new Date().toISOString(),
+                      updated_at: new Date().toISOString(),
+                      fileSize: attachment.fileSize,
+                      fileName: attachment.fileName,
+                      fileType: attachment.fileType,
+                      binaryData: await getAttachmentBinaryData(),
+                      extractedText: attachment.extractedContent,
+                    }
+                    attachment.extractedContent = undefined
+                    saveAttachments.push(newAttachment)
+                  } catch (e) {
+                    console.error(
+                      `ConversationDB[V3] 迁移对话${conversation.id}的消息${message.messageId}的附件失败`,
+                    )
                   }
+                } else if (
+                  attachment.base64Data &&
+                  attachment.fileType.includes('image')
+                ) {
                   const newAttachment: IIndexDBAttachment = {
                     id: attachment.id,
                     created_at: new Date().toISOString(),
@@ -191,34 +216,15 @@ export const backgroundMigrateConversationV3 = async (
                     fileSize: attachment.fileSize,
                     fileName: attachment.fileName,
                     fileType: attachment.fileType,
-                    binaryData: await getAttachmentBinaryData(),
+                    binaryData: attachment.base64Data,
                   }
-                  attachment.extractedContent = undefined
+                  attachment.base64Data = undefined
                   saveAttachments.push(newAttachment)
-                } catch (e) {
-                  console.error(
-                    `ConversationDB[V3] 迁移对话${conversation.id}的消息${message.messageId}的附件失败`,
-                  )
                 }
-              } else if (
-                attachment.base64Data &&
-                attachment.fileType.includes('image')
-              ) {
-                const newAttachment: IIndexDBAttachment = {
-                  id: attachment.id,
-                  created_at: new Date().toISOString(),
-                  updated_at: new Date().toISOString(),
-                  fileSize: attachment.fileSize,
-                  fileName: attachment.fileName,
-                  fileType: attachment.fileType,
-                  binaryData: attachment.base64Data,
-                }
-                attachment.base64Data = undefined
-                saveAttachments.push(newAttachment)
-              }
-              return attachment
-            }),
-          )
+                return attachment
+              }),
+            )
+          }
         }
         saveMessages.push(message)
         return message

@@ -366,7 +366,7 @@ export class ChatGPTConversation {
     this.conversationId = props.conversationId || undefined
     this.conversationInfo = {
       title: '',
-      paginationMessages: [],
+      messages: [],
     }
   }
   async updateTitle(title: string) {
@@ -392,7 +392,7 @@ export class ChatGPTConversation {
         await result.json()
       this.conversationInfo = {
         title: chatGPTConversationRaw.title,
-        paginationMessages: mappingToMessages(
+        messages: mappingToMessages(
           chatGPTConversationRaw.current_node,
           chatGPTConversationRaw.mapping,
         ),
@@ -409,7 +409,7 @@ export class ChatGPTConversation {
       this.conversationId = undefined
       this.conversationInfo = {
         title: '',
-        paginationMessages: [],
+        messages: [],
       }
     }
   }
@@ -777,7 +777,7 @@ export class ChatGPTConversation {
       })
       this.conversationInfo = {
         title: '',
-        paginationMessages: [],
+        messages: [],
       }
     }
   }

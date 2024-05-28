@@ -8,9 +8,9 @@ import { VALID_SURVEY_KEYS } from '@/features/survey/constants'
 import { ISurveyKeyType } from '@/features/survey/types'
 
 export const updateSurveyStatusInBackground = async (
+  forceUpdate = false,
   // 默认不穿参数，获取和更新 所有的合法 survey key
   surveyKeys = VALID_SURVEY_KEYS,
-  forceUpdate = false,
 ): Promise<Partial<Record<ISurveyKeyType, boolean>> | null> => {
   try {
     const cacheData = await getChromeExtensionLocalStorage()

@@ -242,6 +242,57 @@ export class ClientConversationManager {
   }
 
   /**
+   * 获取所有对话ids
+   * @param force - 是否强制获取
+   */
+  static async getAllConversationIds(force: boolean = false) {
+    try {
+      const authorId = await getMaxAIChromeExtensionUserId()
+      const conversationsIds = await createIndexedDBQuery('conversations')
+        .conversations.where({
+          authorId,
+          ...(force
+            ? {}
+            : {
+                isDelete: false,
+              }),
+        })
+        .toArray(getProjectionFields(['id']))
+        .then()
+      return conversationsIds as string[]
+    } catch (e) {
+      return []
+    }
+  }
+  /**
+   * 获取所有对话
+   * @param force - 是否强制获取
+   */
+  static async getAllConversations(force: boolean = false) {
+    try {
+      const conversationIds = await this.getAllConversationIds(force)
+      // 因为获取indexedDB的数据是通过postMessage的方式，所以这里不能一次性获取所有数据，否则会导致数据过大，无法传输
+      // 这里循环获取数据
+      const messages: IConversation[] = []
+      const chunkSize = 50
+      for (let i = 0; i < conversationIds.length; i += chunkSize) {
+        const partOfConversationIds = conversationIds.slice(i, i + chunkSize)
+        const result = await createIndexedDBQuery('conversations')
+          .conversations.where('id')
+          .anyOf(partOfConversationIds)
+          .toArray()
+          .then()
+        messages.push(...result)
+      }
+      console.log(`ConversationDB[V3] 获取对话`, messages)
+      return messages
+    } catch (e) {
+      console.log(`ConversationDB[V3] 获取对话失败`, e)
+      return []
+    }
+  }
+
+  /**
    * 对比分页对话数据
    * @param APIConversations - 接口获取的对话数据
    */

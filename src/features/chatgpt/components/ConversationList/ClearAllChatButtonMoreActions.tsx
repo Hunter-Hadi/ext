@@ -81,19 +81,15 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
         }
       }
       // 先获取本地的会话
-      ClientConversationManager.getAllOldVersionConversationIds().then(
+      ClientConversationManager.getAllConversations().then(
         (userAllConversations) => {
           if (isFree) {
             return
           }
+          // 过滤出没删除且消息数量大于0的会话
           setLocalConversationIds(
-            // 过滤出没删除且消息数量大于0的会话
             userAllConversations
-              .filter(
-                (conversation) =>
-                  conversation.messages.length > 0 &&
-                  conversation.isDelete !== true,
-              )
+              .filter((conversation) => conversation.lastMessageId)
               .map((conversation) => conversation.id),
           )
           // 获取远程的会话

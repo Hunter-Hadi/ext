@@ -8,6 +8,7 @@ import { styled, SxProps } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, Fragment, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
@@ -15,7 +16,7 @@ import LargeTextBox from '@/components/LargeTextBox'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message';
+import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
@@ -44,6 +45,7 @@ const SidebarUserMessageContexts: FC<{
   sx?: SxProps
   container?: HTMLElement
 }> = (props) => {
+  const { t } = useTranslation(['client'])
   const { message, sx, container } = props
   const [open, setOpen] = useState(false)
   const attachments = useMemo(() => {
@@ -172,7 +174,9 @@ const SidebarUserMessageContexts: FC<{
                             <ErrorOutlineOutlinedIcon
                               sx={{ fontSize: '12px', color: 'inherit' }}
                             />
-                            {`Formatting may be inconsistent from source.`}
+                            {t(
+                              `client:chat__user_message__contexts__file__preview__tips`,
+                            )}
                           </Typography>
                           <LargeTextBox
                             text={extractedContent}
@@ -207,6 +211,7 @@ const SidebarUserMessageContexts: FC<{
                             boxSizing: 'border-box',
                           }}
                           src={attachment.uploadedUrl}
+                          fileId={attachment.uploadedFileId}
                           alt={attachment.fileName}
                           width={384}
                           height={384}
@@ -288,7 +293,6 @@ const SidebarUserMessageContexts: FC<{
               <Stack
                 width={'100%'}
                 ml={'auto'}
-                mb={0.5}
                 flexDirection={'row'}
                 gap={1}
                 alignItems={'flex-end'}
@@ -312,10 +316,13 @@ const SidebarUserMessageContexts: FC<{
                           <LazyLoadImage
                             imgStyle={{
                               borderRadius: '8px',
-                              objectFit: 'cover',
+                              border: '1px solid #00000014',
+                              objectFit: 'contain',
+                              boxSizing: 'border-box',
                             }}
                             key={attachment.uploadedUrl}
                             src={attachment.uploadedUrl}
+                            fileId={attachment.uploadedFileId}
                             alt={attachment.fileName}
                             width={64}
                             height={48}

@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "Ini sangat membantu: ia membantu kami mencipta pengalaman AI terbaik untuk anda :)",
     "sidebar__survey_dialog__thanks": "Terima kasih banyak",
     "sidebar__survey_dialog__by_who": "Pasukan MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Beritahu kami tentang pengalaman anda"
+    "sidebar__survey_dialog__cta_button_text": "Beritahu kami tentang pengalaman anda",
+    "chat__user_message__contexts__file__preview__tips": "Pemformatan mungkin tidak konsisten dari sumber."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

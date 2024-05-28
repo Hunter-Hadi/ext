@@ -834,7 +834,8 @@
     "login_modal__login_with_email__title": "Continue with Email",
     "login_modal__indicator1_label": "Top 50 genAI apps",
     "login_modal__indicator2_label": "Active users",
-    "login_modal__indicator3_label": "5-star ratings"
+    "login_modal__indicator3_label": "5-star ratings",
+    "chat__user_message__contexts__file__preview__tips": "Formatting may be inconsistent from source."
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

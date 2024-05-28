@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "ይህ ተጨማሪ ነው: ይህ እኛን የሚጠቀም የAI ውስጥ ይጠቀሙ :)",
     "sidebar__survey_dialog__thanks": "እኛን ከልቤ አመሰግናለሁ",
     "sidebar__survey_dialog__by_who": "MaxAI.me ቡድን",
-    "sidebar__survey_dialog__cta_button_text": "እኛን እንዴት እንደሚረዳው እንዲሁም አስተያየት"
+    "sidebar__survey_dialog__cta_button_text": "እኛን እንዴት እንደሚረዳው እንዲሁም አስተያየት",
+    "chat__user_message__contexts__file__preview__tips": "በመረጃ ከመመልከት ይችላሉ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

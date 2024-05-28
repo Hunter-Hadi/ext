@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "Aceasta este extrem de utilă: ne ajută să creăm cea mai bună experiență AI pentru dumneavoastră :)",
     "sidebar__survey_dialog__thanks": "Mulțumim mult",
     "sidebar__survey_dialog__by_who": "Echipa MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Spuneți-ne despre experiența dumneavoastră"
+    "sidebar__survey_dialog__cta_button_text": "Spuneți-ne despre experiența dumneavoastră",
+    "chat__user_message__contexts__file__preview__tips": "Formatarea poate fi inconsistentă din sursă."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

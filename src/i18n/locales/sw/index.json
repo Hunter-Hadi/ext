@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "Hii ni muhimu sana: inatusaidia kuunda uzoefu bora wa AI kwako :)",
     "sidebar__survey_dialog__thanks": "Asante sana",
     "sidebar__survey_dialog__by_who": "Timu ya MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Tuambie uzoefu wako"
+    "sidebar__survey_dialog__cta_button_text": "Tuambie uzoefu wako",
+    "chat__user_message__contexts__file__preview__tips": "Umbo linaweza kuwa tofauti kutoka chanzo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

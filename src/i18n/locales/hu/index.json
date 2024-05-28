@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "Ez nagyon hasznos: segít nekünk a legjobb AI élmény létrehozásában :)",
     "sidebar__survey_dialog__thanks": "Nagyon köszönjük",
     "sidebar__survey_dialog__by_who": "MaxAI.me csapat",
-    "sidebar__survey_dialog__cta_button_text": "Meséljen nekünk tapasztalatairól"
+    "sidebar__survey_dialog__cta_button_text": "Meséljen nekünk tapasztalatairól",
+    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrásból."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

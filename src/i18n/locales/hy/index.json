@@ -831,7 +831,8 @@
     "sidebar__survey_dialog__description__item2": "Այսպիսով շատ օգտակար է: Սա մեզ օգնում է ստեղծել լավագույն AI առաջադրանքը ձեր համար :)",
     "sidebar__survey_dialog__thanks": "Շնորհակալություն շատ",
     "sidebar__survey_dialog__by_who": "MaxAI.me թիմը",
-    "sidebar__survey_dialog__cta_button_text": "Ասեք մեր մասին"
+    "sidebar__survey_dialog__cta_button_text": "Ասեք մեր մասին",
+    "chat__user_message__contexts__file__preview__tips": "Ձևանմուշը կարող է տարբերվել աղյուսակից։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "هذا مفيد جدًا: يساعدنا على إنشاء أفضل تجربة AI بالنسبة لك :)",
     "sidebar__survey_dialog__thanks": "شكرًا جزيلا",
     "sidebar__survey_dialog__by_who": "فريق MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "أخبرنا عن تجربتك"
+    "sidebar__survey_dialog__cta_button_text": "أخبرنا عن تجربتك",
+    "chat__user_message__contexts__file__preview__tips": "قد تكون التنسيقات غير متسقة من المصدر."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

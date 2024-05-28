@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "See on väga kasulik: see aitab meil luua teile parima AI kogemuse :)",
     "sidebar__survey_dialog__thanks": "Suur tänu",
     "sidebar__survey_dialog__by_who": "MaxAI.me meeskond",
-    "sidebar__survey_dialog__cta_button_text": "Räägi meile oma kogemusest"
+    "sidebar__survey_dialog__cta_button_text": "Räägi meile oma kogemusest",
+    "chat__user_message__contexts__file__preview__tips": "Vormindamine võib olla allikast ebajärjekindel."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

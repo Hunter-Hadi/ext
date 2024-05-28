@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "हे खूप मदतगार आहे: हे आपल्यासाठी सर्वोत्कृष्ट AI अनुभव तयार करण्यासाठी मदत करते :)",
     "sidebar__survey_dialog__thanks": "धन्यवाद",
     "sidebar__survey_dialog__by_who": "MaxAI.me टीम",
-    "sidebar__survey_dialog__cta_button_text": "आपल्या अनुभवाबद्दल सांगा"
+    "sidebar__survey_dialog__cta_button_text": "आपल्या अनुभवाबद्दल सांगा",
+    "chat__user_message__contexts__file__preview__tips": "स्रोतपासून स्वरुपण असंगठित असू शकतो."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

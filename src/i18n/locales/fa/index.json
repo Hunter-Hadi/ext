@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "این بسیار کمک می‌کند: به ما کمک می‌کند تا بهترین تجربه هوش مصنوعی را برای شما ایجاد کنیم :)",
     "sidebar__survey_dialog__thanks": "بسیار سپاسگزاریم",
     "sidebar__survey_dialog__by_who": "تیم MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "درباره تجربه خود به ما بگویید"
+    "sidebar__survey_dialog__cta_button_text": "درباره تجربه خود به ما بگویید",
+    "chat__user_message__contexts__file__preview__tips": "قالب بندی ممکن است از منبع متفاوت باشد."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

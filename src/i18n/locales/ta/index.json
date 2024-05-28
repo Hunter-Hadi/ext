@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "இது மிகவும் உதவுகிறது: இது உங்களுக்கு சிறந்த AI அனுபவத்தை உருவாக்குகிறது :)",
     "sidebar__survey_dialog__thanks": "மிக்க நன்றி",
     "sidebar__survey_dialog__by_who": "MaxAI.me குழு",
-    "sidebar__survey_dialog__cta_button_text": "உங்கள் அனுபவத்தை எங்களுக்கு சொல்லுங்கள்"
+    "sidebar__survey_dialog__cta_button_text": "உங்கள் அனுபவத்தை எங்களுக்கு சொல்லுங்கள்",
+    "chat__user_message__contexts__file__preview__tips": "மூலம் வருமானத்திலிருந்து வடிவமைப்பு அட்டவணை மாறுபட்டுள்ளது."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

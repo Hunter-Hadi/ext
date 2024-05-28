@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "Ovo je veoma korisno: pomaže nam da stvorimo najbolje AI iskustvo za vas :)",
     "sidebar__survey_dialog__thanks": "Hvala puno",
     "sidebar__survey_dialog__by_who": "MaxAI.me tim",
-    "sidebar__survey_dialog__cta_button_text": "Kažite nam o svom iskustvu"
+    "sidebar__survey_dialog__cta_button_text": "Kažite nam o svom iskustvu",
+    "chat__user_message__contexts__file__preview__tips": "Formatiranje može biti neskladno sa izvorom."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

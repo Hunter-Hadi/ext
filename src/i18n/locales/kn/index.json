@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "ಇದು ತುಂಬಾ ಉಪಯುಕ್ತ: ಇದು ನಿಮಗಾಗಿ ಅತ್ಯುತ್ತಮ AI ಅನುಭವವನ್ನು ರಚಿಸುವುದಕ್ಕೆ ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ :)",
     "sidebar__survey_dialog__thanks": "ಧನ್ಯವಾದಗಳು",
     "sidebar__survey_dialog__by_who": "MaxAI.me ತಂಡ",
-    "sidebar__survey_dialog__cta_button_text": "ನಿಮ್ಮ ಅನುಭವದ ಬಗ್ಗೆ ನಮಗೆ ತಿಳಿಸಿ"
+    "sidebar__survey_dialog__cta_button_text": "ನಿಮ್ಮ ಅನುಭವದ ಬಗ್ಗೆ ನಮಗೆ ತಿಳಿಸಿ",
+    "chat__user_message__contexts__file__preview__tips": "ಮೂಲದಿಂದ ಸ್ವರೂಪಣೆ ಅನಿಯಮಿತವಾಗಿರಬಹುದು."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

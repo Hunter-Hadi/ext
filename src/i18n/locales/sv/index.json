@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "Detta är superhjälpsamt: det hjälper oss att skapa den bästa AI-upplevelsen för dig :)",
     "sidebar__survey_dialog__thanks": "Tack så mycket",
     "sidebar__survey_dialog__by_who": "MaxAI.me-teamet",
-    "sidebar__survey_dialog__cta_button_text": "Berätta om din upplevelse"
+    "sidebar__survey_dialog__cta_button_text": "Berätta om din upplevelse",
+    "chat__user_message__contexts__file__preview__tips": "Formatering kan vara inkonsekvent från källan."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

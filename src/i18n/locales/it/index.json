@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "Questo è molto utile: ci aiuta a creare la migliore esperienza di IA per te :)",
     "sidebar__survey_dialog__thanks": "Grazie mille",
     "sidebar__survey_dialog__by_who": "Il team di MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Raccontaci la tua esperienza"
+    "sidebar__survey_dialog__cta_button_text": "Raccontaci la tua esperienza",
+    "chat__user_message__contexts__file__preview__tips": "La formattazione potrebbe essere inconsistente dalla fonte."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

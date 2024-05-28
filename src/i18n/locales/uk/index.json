@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "یہ بہت مددگار ہے: یہ ہمیں آپ کے لئے بہترین AI تجربہ بنانے میں مدد کرتا ہے :)",
     "sidebar__survey_dialog__thanks": "بہت بہت شکریہ",
     "sidebar__survey_dialog__by_who": "MaxAI.me ٹیم",
-    "sidebar__survey_dialog__cta_button_text": "ہمیں اپنے تجربے کے بارے میں بتائیں"
+    "sidebar__survey_dialog__cta_button_text": "ہمیں اپنے تجربے کے بارے میں بتائیں",
+    "chat__user_message__contexts__file__preview__tips": "فارمیٹنگ ممکن ہے کہ سورس سے غیر متوازن ہو"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

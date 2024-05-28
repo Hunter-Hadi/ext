@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "Això és molt útil: ens ajuda a crear la millor experiència d'IA per a tu :)",
     "sidebar__survey_dialog__thanks": "Moltes gràcies",
     "sidebar__survey_dialog__by_who": "Equip de MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Explica'ns la teva experiència"
+    "sidebar__survey_dialog__cta_button_text": "Explica'ns la teva experiència",
+    "chat__user_message__contexts__file__preview__tips": "El format pot ser inconsistent amb l'origen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

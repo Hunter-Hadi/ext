@@ -834,7 +834,8 @@
     "sidebar__survey_dialog__description__item2": "정말로 도움이 됩니다: 당신을 위한 최고의 AI 경험을 만들 수 있게 도와줍니다 :)",
     "sidebar__survey_dialog__thanks": "정말 감사합니다",
     "sidebar__survey_dialog__by_who": "MaxAI.me 팀",
-    "sidebar__survey_dialog__cta_button_text": "경험에 대해 말씀해주세요"
+    "sidebar__survey_dialog__cta_button_text": "경험에 대해 말씀해주세요",
+    "chat__user_message__contexts__file__preview__tips": "소스에서 서식이 일관되지 않을 수 있습니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

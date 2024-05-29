@@ -27,6 +27,7 @@ const getArgs = () => {
 // const args = getArgs()
 
 const node_env = String(process.env.NODE_ENV || 'development')
+const api_env = String(process.env.API_ENV || 'development')
 
 const isProduction = node_env === 'production'
 
@@ -54,16 +55,16 @@ const MixPanelProjectIdConfig = {
   production: '56ac2c299c42140f6d81dec2a4ea9a3c',
 }
 
-const MIXPANEL_PROJECT_ID = MixPanelProjectIdConfig[node_env]
+const MIXPANEL_PROJECT_ID = MixPanelProjectIdConfig[api_env]
 
-console.log(`Running in ${node_env} mode`)
-console.log(`config:\n`, HostConfig[node_env])
+console.log(`Running in ${node_env} mode, api_env: ${api_env}`)
+console.log(`config:\n`, HostConfig[api_env])
 
-const WWW_PROJECT_HOST = HostConfig[node_env].wwwProjectHost
+const WWW_PROJECT_HOST = HostConfig[api_env].wwwProjectHost
 
-const APP_USE_CHAT_GPT_HOST = HostConfig[node_env].appProjectHost
+const APP_USE_CHAT_GPT_HOST = HostConfig[api_env].appProjectHost
 
-const APP_USE_CHAT_GPT_API_HOST = HostConfig[node_env].appProjectAPIHost
+const APP_USE_CHAT_GPT_API_HOST = HostConfig[api_env].appProjectAPIHost
 
 const APP_NAME = 'MaxAI.me'
 const NODE_ENV = isProduction ? 'production' : 'development'
@@ -88,4 +89,4 @@ const getReplaceEnv = () => {
   })
   return replaceEnv
 }
-export { env, getReplaceEnv, isProduction }
+export { api_env, env, getReplaceEnv, isProduction }

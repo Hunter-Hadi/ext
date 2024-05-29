@@ -341,18 +341,10 @@ export class ClientConversationManager {
             .messages.put(last_msg)
             .then()
         }
-        const isV3 = cloneRemoteConversation.version === 3
-        const isSuccess = await clientUseIndexedDB(
-          'ConversationDBMigrateConversationV3',
-          {
+        if (cloneRemoteConversation.version !== 3) {
+          await clientUseIndexedDB('ConversationDBMigrateConversationV3', {
             conversation: cloneRemoteConversation,
-          },
-        )
-        // 如果之前不是v3，且成功了，就更新remote
-        if (!isV3 && isSuccess) {
-          uploadClientConversationToRemote(cloneRemoteConversation)
-            .then()
-            .catch()
+          })
         }
         continue
       }

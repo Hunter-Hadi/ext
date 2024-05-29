@@ -25,6 +25,7 @@ import {
   dbSift,
 } from '@/features/indexed_db/utils'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 
 export const PAGINATION_CONVERSATION_QUERY_KEY =
   'PAGINATION_CONVERSATION_QUERY_KEY'
@@ -54,11 +55,16 @@ export const conversationsToPaginationConversations = async (
           )
         }
         // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
-        if (lastMessage && typeof lastMessage?.text !== 'string') {
-          lastMessage.text = JSON.stringify(lastMessage.text)
+        if (lastMessage && !conversationDisplaysText) {
+          conversationDisplaysText = formatChatMessageContent(
+            lastMessage,
+            false,
+          )
         }
-        conversationDisplaysText =
-          conversation.name || lastMessage?.text || conversation.title
+        if (!conversationDisplaysText) {
+          conversationDisplaysText =
+            conversation.name || conversation.title || ''
+        }
       } catch (e) {
         console.error('对话列表显示文本错误', e)
       }

@@ -376,12 +376,22 @@ export const formatChatMessageContent = (
   message: IChatMessage,
   isDownload: boolean,
 ) => {
-  if (isUserMessage(message)) {
-    return formatUserMessageContent(message)
-  } else if (isAIMessage(message)) {
-    return formatAIMessageContent(message, isDownload)
-  } else {
-    return formatThirdOrSystemMessageContent(message as ISystemChatMessage)
+  try {
+    let result = ''
+    if (isUserMessage(message)) {
+      result = formatUserMessageContent(message)
+    } else if (isAIMessage(message)) {
+      result = formatAIMessageContent(message, isDownload)
+    } else {
+      result = formatThirdOrSystemMessageContent(message as ISystemChatMessage)
+    }
+    // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
+    if (typeof result !== 'string') {
+      return JSON.stringify(result)
+    }
+    return result
+  } catch (e) {
+    return ''
   }
 }
 export const safeGetAttachmentExtractedContent = (

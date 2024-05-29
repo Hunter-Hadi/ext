@@ -77,7 +77,12 @@ const ConversationList: FC<IProps> = (props) => {
     isFetching,
     updatePaginationConversations,
     updatePaginationFilter,
-  } = usePaginationConversations({}, done)
+  } = usePaginationConversations(
+    {
+      type: conversationType,
+    },
+    done,
+  )
 
   const [editingConversationId, setEditingConversationId] = useState('')
   const [hoveringConversationId, setHoveringConversationId] = useState('')

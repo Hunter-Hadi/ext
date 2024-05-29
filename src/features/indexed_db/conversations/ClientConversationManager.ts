@@ -339,14 +339,14 @@ export class ClientConversationManager {
           [last_msg],
         )
       }
-      // 如果是旧版本, 更新，添加到本地
+      // 如果是旧版本, 更新，更新到本地
       if (cloneRemoteConversation.version !== CURRENT_CONVERSATION_VERSION) {
         await clientUseIndexedDB('ConversationDBMigrateConversationV3', {
           conversation: cloneRemoteConversation,
         })
         continue
       }
-      // 如果本地没有对话，添加对话
+      // 如果本地没有对话，添加对话到本地
       if (!localConversation) {
         // 添加对话
         await ClientConversationManager.addOrUpdateConversation(

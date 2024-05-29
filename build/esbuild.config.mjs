@@ -256,7 +256,7 @@ async function buildFiles() {
 async function release() {
   const manifest = await fs.readJson(`${buildDir}/manifest.json`)
   const version = manifest.version
-  let archiveName = `releases/MaxAI-${version}-${dayjs().format(
+  let archiveName = `releases/MaxAI[${buildEnv.api_env}]-${version}-${dayjs().format(
     'YYYY-MM-DD-HH-mm',
   )}.zip`
   const archive = archiver('zip', { zlib: { level: 9 } })

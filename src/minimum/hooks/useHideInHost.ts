@@ -5,6 +5,7 @@ import {
   MAXAI_MINIMIZE_CONTAINER_ID,
 } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { isShowChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const startHideInHostHandle = debounce(() => {
@@ -12,6 +13,10 @@ const startHideInHostHandle = debounce(() => {
   if (host === 'youtube.com') {
     // youtube.com全屏播放器处理
     // sidebar
+    if (isShowChatBox()) {
+      // sidebar打开会给body加上relative
+      document.body.style.position = ''
+    }
     if (document.documentElement.style.position === 'relative') {
       document.documentElement.style.position = 'unset'
       document
@@ -39,6 +44,10 @@ const stopHideInHostHandle = debounce(() => {
         document
           .querySelector(`#${MAXAI_APP_ROOT_ID}`)
           ?.classList.replace('close', 'open')
+      }
+      if (isShowChatBox()) {
+        // sidebar打开需要给body重新加上relative
+        document.body.style.position = 'relative'
       }
       // quick access
       const minimizeApp = document.querySelector(

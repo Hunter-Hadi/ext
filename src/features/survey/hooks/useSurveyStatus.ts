@@ -25,11 +25,10 @@ const useSurveyStatus = () => {
 
   const canShowSurvey = useMemo(() => {
     if (!loaded) {
-      // 用户信息加载完毕, 才能判断是否弹窗
       return false
     }
     if (filledOutSurveyState[currentSurveyKey]) {
-      // 如果已经填写过了当前 survey，不弹窗
+      // 如果已经填写过了当前 survey，不再显示 survey
       return false
     }
 
@@ -38,21 +37,21 @@ const useSurveyStatus = () => {
     // 第一次付费时间
     const subscribedAt = userInfo?.subscribed_at
 
-    // 没登录时不弹窗
+    // 没登录时不显示 survey
     if (userInfo === null) {
       return false
     }
 
-    // 不是付费用户不弹窗
+    // 不是付费用户不显示 survey
     if (!isPayingUser) {
       return false
     }
 
     if (subscribedAt) {
       const limitDays = 14
-      // 付费时间大于跟现在比大于 14 天, 弹窗
+      // 付费时间大于跟现在比大于 14 天, 不显示 survey
       if (dayjs(Date.now()).diff(subscribedAt * 1000, 'day') > limitDays) {
-        // 触发 弹窗
+        // 显示 survey
         return true
       }
       return false
@@ -61,7 +60,7 @@ const useSurveyStatus = () => {
       const limitDays = 21
       // 注册时间跟现在比大于 21 天, 弹窗
       if (dayjs(Date.now()).diff(createAt, 'day') > limitDays) {
-        // 触发 弹窗
+        // 显示 survey
         return true
       }
       return false
@@ -85,6 +84,7 @@ const useSurveyStatus = () => {
   // useFocus(syncAlreadyPoppedSurveyModal)
 
   return {
+    loaded,
     canShowSurvey,
     alreadyPoppedSurveyModal,
   }

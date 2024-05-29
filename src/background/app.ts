@@ -49,6 +49,7 @@ import {
 } from '@/features/common/constants'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
+import { updateSurveyStatusInBackground } from '@/features/survey/background/utils'
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
@@ -368,7 +369,11 @@ const initChromeExtensionUpdated = async () => {
     updateRemoteAIProviderConfigAsync().then().catch()
   }, (1 + Math.floor(Math.random() * 9)) * 1000)
 
-  // 测试环境下，刷新插件更新 survey dialog 的弹窗标记
+  // 插件更新时强制更新 survey 状态
+  if (isProduction) {
+    updateSurveyStatusInBackground(true)
+  }
+  // 本地开发环境下，刷新插件更新 survey dialog 的弹窗标记
   if (!isProduction) {
     await setChromeExtensionOnBoardingData(
       'ON_BOARDING_EXTENSION_SURVEY_DIALOG_ALERT',

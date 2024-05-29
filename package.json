@@ -5,7 +5,7 @@
   "author": "",
   "scripts": {
     "pdf": "node ./build/pdf.js",
-    "dev": "node API_ENV=development NODE_ENV=development ./build/esbuild.config.mjs --app=usechatgpt",
+    "dev": "cross-env API_ENV=development NODE_ENV=development node ./build/esbuild.config.mjs --app=usechatgpt",
     "test": "cross-env API_ENV=test NODE_ENV=development node ./build/esbuild.config.mjs --app=usechatgpt",
     "release": "cross-env API_ENV=production NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
     "release:test": "cross-env API_ENV=test NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"

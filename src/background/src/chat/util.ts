@@ -26,7 +26,8 @@ import {
 } from '@/constants'
 import {
   IAIResponseMessage,
-  IAIResponseOriginalMessage, IAIResponseSourceCitation,
+  IAIResponseOriginalMessage,
+  IAIResponseSourceCitation,
   IChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'

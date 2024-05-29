@@ -26,7 +26,7 @@ const SidebarAIMessageTextContent: FC<{
   return (
     <div className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}>
       <AppSuspenseLoadingLayout>
-        <CustomMarkdown citations={AIMessage.sourceCitations}>
+        <CustomMarkdown citations={AIMessage.sourceCitations || AIMessage.originalMessage?.metadata?.sourceCitations}>
           {currentContentValue}
         </CustomMarkdown>
       </AppSuspenseLoadingLayout>

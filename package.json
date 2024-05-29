@@ -5,9 +5,10 @@
   "author": "",
   "scripts": {
     "pdf": "node ./build/pdf.js",
-    "dev": "node ./build/esbuild.config.mjs --app=usechatgpt",
-    "test": "cross-env NODE_ENV=test node ./build/esbuild.config.mjs --app=usechatgpt",
-    "release": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"
+    "dev": "node API_ENV=development NODE_ENV=development ./build/esbuild.config.mjs --app=usechatgpt",
+    "test": "cross-env API_ENV=test NODE_ENV=development node ./build/esbuild.config.mjs --app=usechatgpt",
+    "release": "cross-env API_ENV=production NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
+    "release:test": "cross-env API_ENV=test NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",

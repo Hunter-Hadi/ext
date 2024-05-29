@@ -333,11 +333,11 @@ export class ClientConversationManager {
           )?.[0]
         }
       }
+      // 更新最后一条消息
       if (last_msg) {
-        await ClientConversationMessageManager.addMessages(
-          remoteConversation.id,
-          [last_msg],
-        )
+        await createIndexedDBQuery('conversations')
+          .messages.put(last_msg)
+          .then()
       }
       // 如果是旧版本, 更新，更新到本地
       if (cloneRemoteConversation.version !== CURRENT_CONVERSATION_VERSION) {

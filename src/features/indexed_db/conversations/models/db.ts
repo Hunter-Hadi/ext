@@ -1,5 +1,6 @@
 import Dexie from 'dexie'
 
+import { CURRENT_CONVERSATION_VERSION } from '@/features/indexed_db/conversations/constant'
 import type { IIndexDBAttachment } from '@/features/indexed_db/conversations/models/Attachement'
 import type { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import type { IConversationLocalStorage } from '@/features/indexed_db/conversations/models/ConversationAction'
@@ -13,7 +14,7 @@ export class ConversationDB extends Dexie {
 
   constructor() {
     super('ConversationDB')
-    this.version(1).stores({
+    this.version(CURRENT_CONVERSATION_VERSION).stores({
       conversations:
         'id,lastMessageId,authorId,name,created_at,updated_at,type',
       messages:

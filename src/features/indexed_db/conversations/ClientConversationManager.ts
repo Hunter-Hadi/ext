@@ -9,6 +9,7 @@ import {
   downloadRemoteMessagesToClient,
   uploadClientConversationToRemote,
 } from '@/features/indexed_db/conversations/clientService'
+import { CURRENT_CONVERSATION_VERSION } from '@/features/indexed_db/conversations/constant'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import {
@@ -332,20 +333,29 @@ export class ClientConversationManager {
           )?.[0]
         }
       }
-      // 如果本地没有，添加到本地
+      if (last_msg) {
+        await ClientConversationMessageManager.addMessages(
+          remoteConversation.id,
+          [last_msg],
+        )
+      }
+      // 如果是旧版本, 更新，添加到本地
+      if (cloneRemoteConversation.version !== CURRENT_CONVERSATION_VERSION) {
+        await clientUseIndexedDB('ConversationDBMigrateConversationV3', {
+          conversation: cloneRemoteConversation,
+        })
+        continue
+      }
+      // 如果本地没有对话，添加对话
       if (!localConversation) {
-        // 添加消息到本地
-        if (last_msg?.messageId && last_msg.updated_at) {
-          // 更新对话
-          await createIndexedDBQuery('conversations')
-            .messages.put(last_msg)
-            .then()
-        }
-        if (cloneRemoteConversation.version !== 3) {
-          await clientUseIndexedDB('ConversationDBMigrateConversationV3', {
-            conversation: cloneRemoteConversation,
-          })
-        }
+        // 添加对话
+        await ClientConversationManager.addOrUpdateConversation(
+          cloneRemoteConversation.id,
+          cloneRemoteConversation,
+          {
+            syncConversationToDB: false,
+          },
+        )
         continue
       }
       if (

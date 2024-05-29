@@ -112,6 +112,7 @@ export const backgroundMigrateConversationV3 = async (
   const startTime = new Date().getTime()
   // 如果是V3版本, 不需要迁移
   if (conversation.version !== 3) {
+    conversation.version = 3
     /**
      * 老版本没有这个字段
      */
@@ -159,9 +160,21 @@ export const backgroundMigrateConversationV3 = async (
     if (!Object.prototype.hasOwnProperty.call(conversation, 'lastMessageId')) {
       conversation.lastMessageId = messages[messages.length - 1].messageId
     }
-
+    // 寻找最后一条消息的时间
+    let lastMessageIdCreatedAt: string | null = null
     await Promise.all(
       messages.map(async (message) => {
+        if (!conversation.lastMessageId) {
+          if (
+            message.created_at &&
+            (!lastMessageIdCreatedAt ||
+              new Date(lastMessageIdCreatedAt).getTime() <
+                new Date(message.created_at).getTime())
+          ) {
+            conversation.lastMessageId = message.messageId
+            lastMessageIdCreatedAt = message.created_at
+          }
+        }
         message.conversationId = conversation.id
         // TODO: 为了上线速度，不拆把attachments缓存表了 - 2024-05-28
         const TODO = true

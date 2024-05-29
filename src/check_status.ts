@@ -104,4 +104,11 @@ window.addEventListener('message', function (event) {
       },
     })
   }
+
+  if (event.data.type && event.data.type == 'MAXAI_CREATE_PAYMENT_URL') {
+    port.postMessage({
+      event: 'Client_createPaymentUrl',
+      data: event.data.data
+    })
+  }
 })

@@ -9,8 +9,8 @@ import {
   useSetRecoilState,
 } from 'recoil'
 
-import { clientGetMaxAIBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/client'
 import { useAuthLogin } from '@/features/auth'
+import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import {
@@ -335,20 +335,20 @@ export const useInitSyncConversation = () => {
   const setConversationSyncGlobalState = useSetRecoilState(
     ConversationSyncGlobalState,
   )
+  const { maxAIBetaFeaturesLoaded, maxAIBetaFeatures } =
+    useMaxAIBetaFeatures(true)
   const { isLogin, loaded } = useAuthLogin()
   useEffect(() => {
-    if (!loaded) {
+    if (!loaded || !maxAIBetaFeaturesLoaded) {
       return
     }
     if (isLogin) {
-      clientGetMaxAIBetaFeatureSettings().then((settings) => {
-        setConversationSyncGlobalState((prev) => {
-          return {
-            ...prev,
-            loaded: true,
-            enabled: settings.chat_sync,
-          }
-        })
+      setConversationSyncGlobalState((prev) => {
+        return {
+          ...prev,
+          loaded: true,
+          enabled: maxAIBetaFeatures.chat_sync || false,
+        }
       })
     } else {
       setConversationSyncGlobalState((prev) => {
@@ -359,6 +359,6 @@ export const useInitSyncConversation = () => {
         }
       })
     }
-  }, [isLogin, loaded])
+  }, [isLogin, loaded, maxAIBetaFeaturesLoaded, maxAIBetaFeatures.chat_sync])
 }
 export default useSyncConversation

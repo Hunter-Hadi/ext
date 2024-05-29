@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { WWW_PROJECT_HOST } from '@/constants'
+import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import {
@@ -24,6 +25,7 @@ const createShareLink = (shareId: string) => {
 
 const ShareButtonGroup: FC = () => {
   const { t } = useTranslation(['client'])
+  const { maxAIBetaFeatures, maxAIBetaFeaturesLoaded } = useMaxAIBetaFeatures()
   const { clientConversation, clientConversationMessages } =
     useClientConversation()
   const [isUploadingConversation, setIsUploadingConversation] = useState(false)
@@ -173,6 +175,9 @@ const ShareButtonGroup: FC = () => {
     handleOpen({
       currentTarget: event.currentTarget || fallbackTarget,
     } as any)
+  }
+  if (maxAIBetaFeaturesLoaded && !maxAIBetaFeatures.chat_sync) {
+    return null
   }
   if (clientConversationMessages.length <= 0) {
     return null

@@ -5,8 +5,8 @@ import orderBy from 'lodash-es/orderBy'
 import { useEffect, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
-import { clientGetMaxAIBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/client'
 import { useAuthLogin } from '@/features/auth'
+import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {
   PaginationConversationsFilterState,
@@ -42,7 +42,7 @@ export const conversationsToPaginationConversations = async (
         : null
       let conversationDisplaysTime =
         lastMessage?.updated_at || conversation.updated_at || ''
-      let conversationDisplaysText = ''
+      let conversationDisplaysText = conversation.name || ''
       try {
         // 美化一下时间
         if (dayjs().diff(dayjs(conversation.updated_at), 'days') > 0) {
@@ -61,9 +61,9 @@ export const conversationsToPaginationConversations = async (
             false,
           )
         }
+        // 理论上不会出现这种情况
         if (!conversationDisplaysText) {
-          conversationDisplaysText =
-            conversation.name || conversation.title || ''
+          conversationDisplaysText = conversation.title || ''
         }
       } catch (e) {
         console.error('对话列表显示文本错误', e)
@@ -161,7 +161,7 @@ const usePaginationConversations = (
     PaginationConversationsState,
   )
   // 是否开启了云同步功能
-  const enableSyncFeatureRef = useRef(false)
+  const { maxAIBetaFeaturesLoaded, maxAIBetaFeatures } = useMaxAIBetaFeatures()
   const totalPageRef = useRef(filter.total_page)
   const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQuery({
@@ -170,6 +170,7 @@ const usePaginationConversations = (
         filter.type,
         filter.isDelete,
         filter.page_size,
+        maxAIBetaFeatures.chat_sync,
       ],
       queryFn: async (data) => {
         // 更新filter
@@ -184,7 +185,7 @@ const usePaginationConversations = (
         let diffTimeUsage = 0
         let remoteConversations: IConversation[] = []
         if (
-          enableSyncFeatureRef.current &&
+          maxAIBetaFeatures.chat_sync &&
           (totalPageRef.current >= totalPageRef.current ||
             totalPageRef.current === 0)
         ) {
@@ -256,7 +257,7 @@ const usePaginationConversations = (
         }
         return lastPageParam + 1
       },
-      enabled: controlEnable && enabled && isLogin,
+      enabled: controlEnable && maxAIBetaFeaturesLoaded && enabled && isLogin,
       refetchOnWindowFocus: false,
     })
 
@@ -339,10 +340,7 @@ const usePaginationConversations = (
       },
       ...initFilter,
     })
-    clientGetMaxAIBetaFeatureSettings().then((settings) => {
-      enableSyncFeatureRef.current = settings.chat_sync
-      setEnabled(controlEnable)
-    })
+    setEnabled(controlEnable)
   }, [controlEnable])
   return {
     loading: !enabled || !isLogin || isLoading,

@@ -72,8 +72,8 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
               }))
             })
         : []
-      const lastMessageId = orderBy(messages, ['created_at'], ['desc'])?.[0]
-        ?.messageId
+      const lastMessageId =
+        orderBy(messages, ['created_at'], ['desc'])?.[0]?.messageId || ''
       const lastMessage = await backgroundConversationDB.messages.get(
         lastMessageId,
       )

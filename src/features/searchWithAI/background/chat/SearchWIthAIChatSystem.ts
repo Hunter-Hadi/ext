@@ -65,6 +65,11 @@ class SearchWIthAIChatSystem {
             const question = data.question
             await this.createConversation(question.conversationId)
             await this.sendQuestion(taskId, sender, question)
+            return {
+              success: true,
+              data: {},
+              message: '',
+            }
             break
           }
           case 'SWAI_abortAskChatGPTQuestion': {

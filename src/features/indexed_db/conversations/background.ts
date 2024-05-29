@@ -36,6 +36,7 @@ export const backgroundConversationDBRemoveConversation = async (
     .where('messageId')
     .anyOf(messages.map((message) => message.messageId))
     .toArray()
+  debugger
   try {
     if (softDelete) {
       conversation.isDelete = true
@@ -49,10 +50,10 @@ export const backgroundConversationDBRemoveConversation = async (
         () => {
           backgroundConversationDB.conversations.delete(conversationId)
           backgroundConversationDB.messages.bulkDelete(
-            messages.map((m) => m.messageId),
+            messages.map((message) => message.messageId),
           )
           backgroundConversationDB.attachments.bulkDelete(
-            attachments.map((a) => a.id),
+            attachments.map((attachment) => attachment.id),
           )
         },
       )
@@ -203,6 +204,7 @@ export const backgroundMigrateConversationV3 = async (
                     }
                     const newAttachment: IIndexDBAttachment = {
                       id: attachment.id,
+                      messageId: message.messageId,
                       created_at: new Date().toISOString(),
                       updated_at: new Date().toISOString(),
                       fileSize: attachment.fileSize,
@@ -224,6 +226,7 @@ export const backgroundMigrateConversationV3 = async (
                 ) {
                   const newAttachment: IIndexDBAttachment = {
                     id: attachment.id,
+                    messageId: message.messageId,
                     created_at: new Date().toISOString(),
                     updated_at: new Date().toISOString(),
                     fileSize: attachment.fileSize,

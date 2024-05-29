@@ -1,5 +1,6 @@
 export interface IIndexDBAttachment {
   id: string
+  messageId: string // 消息ID
   created_at: string // 创建时间
   updated_at: string // 更新时间
   fileSize: number // 文件大小

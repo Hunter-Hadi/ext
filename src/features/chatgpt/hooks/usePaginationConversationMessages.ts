@@ -6,11 +6,11 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import first from 'lodash-es/first'
 import last from 'lodash-es/last'
 import orderBy from 'lodash-es/orderBy'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
-import { clientGetMaxAIBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/client'
 import { useAuthLogin } from '@/features/auth'
+import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import { PaginationConversationMessagesStateFamily } from '@/features/chatgpt/store'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
@@ -21,23 +21,26 @@ export const PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY =
 const PAGINATION_CONVERSATION_MESSAGES_QUERY_PAGE_SIZE = 10
 const usePaginationConversationMessages = (conversationId: string) => {
   const { isLogin } = useAuthLogin()
-  const [loaded, setLoaded] = useState(false)
+  const { maxAIBetaFeaturesLoaded, maxAIBetaFeatures } = useMaxAIBetaFeatures()
   const [paginationMessages, setMessages] = useRecoilState(
     PaginationConversationMessagesStateFamily(conversationId),
   )
   const totalPageRef = useRef(0)
   // 是否开启了云同步功能
-  const enableSyncFeatureRef = useRef(false)
   const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: [PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY, conversationId],
+      queryKey: [
+        PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY,
+        conversationId,
+        maxAIBetaFeatures.chat_sync,
+      ],
       queryFn: async (data) => {
         // 从远程获取filter.page_size个对话消息
         const time = new Date().getTime()
         let diffTimeUsage = 0
         let remoteMessages: IChatMessage[] = []
         if (
-          enableSyncFeatureRef.current &&
+          maxAIBetaFeatures.chat_sync &&
           (totalPageRef.current >= data.pageParam || totalPageRef.current === 0)
         ) {
           const result = await clientFetchMaxAIAPI<{
@@ -94,7 +97,8 @@ const usePaginationConversationMessages = (conversationId: string) => {
         }
         return lastPageParam + 1
       },
-      enabled: conversationId !== '' && isLogin && loaded,
+      enabled: conversationId !== '' && isLogin && maxAIBetaFeaturesLoaded,
+      refetchOnWindowFocus: false,
     })
   const lastPaginationMessageIdRef = useRef<string>('')
   const previousPageLastMessageIdRef = useRef<{
@@ -215,12 +219,6 @@ const usePaginationConversationMessages = (conversationId: string) => {
       totalPageRef.current = 0
     }
   }, [conversationId])
-  useEffect(() => {
-    clientGetMaxAIBetaFeatureSettings().then((settings) => {
-      enableSyncFeatureRef.current = settings.chat_sync
-      setLoaded(true)
-    })
-  }, [])
   return {
     data,
     paginationMessages,

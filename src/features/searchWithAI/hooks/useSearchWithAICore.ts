@@ -245,7 +245,6 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
       userSelectedLanguage = DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
     }
-
     // 1. GET_CONTENTS_OF_HTML
     let sources: ICrawlingSearchResult[] = []
     if (webAccessPrompt) {
@@ -413,7 +412,6 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       loadingRef.current = false
       return
     }, PROVIDER_TIMEOUT_DURATION[searchWithAISettings.aiProvider])
-
     await searchWithAIAskQuestion(
       {
         type: 'user',

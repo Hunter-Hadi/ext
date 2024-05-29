@@ -19,7 +19,7 @@ export class ConversationDB extends Dexie {
         'id,lastMessageId,authorId,name,created_at,updated_at,type',
       messages:
         'messageId,conversationId,parentMessageId,created_at,updated_at,type,[conversationId+created_at+messageId]',
-      attachments: 'id,created_at,updated_at',
+      attachments: 'id,messageId,created_at,updated_at',
       conversationLocalStorage: 'conversationId',
     })
     this.conversations = this.table('conversations')

@@ -78,7 +78,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
     if (renderLabel) {
       return renderLabel(value, option || {}, index)
     }
-    return <ListItemText primary={option.label} />
+    return <ListItemText primary={option?.label || ''} />
   }
   useEffect(() => {
     if (!selectValue && defaultValue) {

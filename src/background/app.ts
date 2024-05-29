@@ -47,6 +47,7 @@ import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
 } from '@/features/common/constants'
+import paymentManager from '@/features/payment/background/PaymentManager'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import WebsiteContextManager from '@/features/websiteContext/background'
@@ -73,6 +74,7 @@ export const startChromeExtensionBackground = () => {
     initChromeExtensionDisabled()
     initChromeExtensionUninstalled()
     initChromeExtensionTabUrlChangeListener()
+    initChromeExtensionCreatePaymentListener()
     initExternalMessageListener()
     // feature
     // hot reload
@@ -652,6 +654,29 @@ const initChromeExtensionTabUrlChangeListener = () => {
     }
   })
 }
+
+/**
+ * 插件payment支付监听初始化
+ */
+const initChromeExtensionCreatePaymentListener = () => {
+  const tabUrls: Record<number, string> = {}
+
+  Browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (tab.url && tabUrls[tabId] && tab.url !== tabUrls[tabId]) {
+      // url变化
+      paymentManager.changePage(tabId, tabUrls[tabId], tab.url)
+    }
+    if (tab.url) {
+      tabUrls[tabId] = tab.url
+    }
+  })
+
+  Browser.tabs.onRemoved.addListener((tabId) => {
+    paymentManager.closePage(tabId, tabUrls[tabId])
+    delete tabUrls[tabId]
+  })
+}
+
 import { v4 as uuidV4 } from 'uuid'
 const devMockConversation = async () => {
   const isProduction = String(process.env.NODE_ENV) === 'production'

@@ -245,7 +245,13 @@ const useClientChat = () => {
     })
     if (isSaveLastRunShortcuts && !isNeedSaveLastRunShortcuts) {
       // 4. 保存最后一次运行的shortcuts
-      await saveLastRunShortcuts(conversationId, actions, overwriteParameters)
+      await saveLastRunShortcuts(
+        conversationId,
+        actions,
+        overwriteParameters.length > 0
+          ? overwriteParameters
+          : getParams().shortCutsParameters,
+      )
     }
     await updateClientConversationLoading(false)
     // 5. 运行shortcuts
@@ -346,74 +352,6 @@ const useClientChat = () => {
     })
   }
 
-  /**
-   * 保存最后一次运行的shortcuts
-   * @param conversationId
-   * @param actions
-   * @param params
-   */
-  const saveLastRunShortcuts = async (
-    conversationId: string,
-    actions: ISetActionsType,
-    params?: any[],
-  ) => {
-    const lastMessage =
-      await ClientConversationMessageManager.getMessageByTimeFrame(
-        conversationId,
-        'latest',
-      )
-    const lastRunActionsMessageId = lastMessage?.messageId
-    await createIndexedDBQuery('conversations')
-      .conversationLocalStorage.put({
-        conversationId,
-        lastRunActions: actions,
-        lastRunActionsParams: params || getParams().shortCutsParameters,
-        lastRunActionsMessageId,
-      })
-      .then()
-  }
-  /**
-   * 获取最后一次运行的shortcuts
-   * @param conversationId
-   */
-  const getLastRunShortcuts = async (
-    conversationId: string,
-  ): Promise<{
-    lastRunActions: ISetActionsType
-    lastRunActionsMessageId: string
-    lastRunActionsParams?: any[]
-    needDeleteMessageIds: string[]
-  }> => {
-    const conversationLocalStorage = await createIndexedDBQuery(
-      'conversations',
-    ).conversationLocalStorage.get(conversationId)
-    let needDeleteMessageIds = []
-    if (
-      conversationLocalStorage?.lastRunActions &&
-      conversationLocalStorage?.lastRunActionsMessageId
-    ) {
-      needDeleteMessageIds =
-        await ClientConversationMessageManager.getDeleteMessageIds(
-          conversationId,
-          conversationLocalStorage.lastRunActionsMessageId,
-          'end',
-        )
-      return {
-        lastRunActions: conversationLocalStorage.lastRunActions || [],
-        lastRunActionsMessageId:
-          conversationLocalStorage.lastRunActionsMessageId || '',
-        lastRunActionsParams: conversationLocalStorage.lastRunActionsParams,
-        needDeleteMessageIds,
-      }
-    }
-    return {
-      lastRunActions: [],
-      lastRunActionsMessageId: '',
-      lastRunActionsParams: undefined,
-      needDeleteMessageIds: [],
-    }
-  }
-
   return {
     shortCutsEngine,
     askAIQuestion,
@@ -423,6 +361,83 @@ const useClientChat = () => {
     continueChat,
     checkAttachments,
     loading: smoothConversationLoading,
+  }
+}
+
+/**
+ * 保存最后一次运行的shortcuts
+ * @param conversationId
+ * @param actions
+ * @param params
+ */
+export const saveLastRunShortcuts = async (
+  conversationId: string,
+  actions: ISetActionsType,
+  params?: any[],
+) => {
+  debugger
+  const lastMessage =
+    await ClientConversationMessageManager.getMessageByTimeFrame(
+      conversationId,
+      'latest',
+    )
+  const lastRunActionsMessageId = lastMessage?.messageId
+  await createIndexedDBQuery('conversations')
+    .conversationLocalStorage.put({
+      conversationId,
+      lastRunActions: actions,
+      lastRunActionsParams: params,
+      lastRunActionsMessageId,
+    })
+    .then()
+}
+
+/**
+ * 获取最后一次运行的shortcuts
+ * @param conversationId
+ */
+export const getLastRunShortcuts = async (
+  conversationId: string,
+): Promise<{
+  lastRunActions: ISetActionsType
+  lastRunActionsMessageId: string
+  lastRunActionsParams?: any[]
+  needDeleteMessageIds: string[]
+}> => {
+  const conversationLocalStorage = await createIndexedDBQuery('conversations')
+    .conversationLocalStorage.get(conversationId)
+    .then()
+  let needDeleteMessageIds = []
+  if (
+    conversationLocalStorage?.lastRunActions &&
+    conversationLocalStorage.lastRunActions.length > 0
+  ) {
+    if (conversationLocalStorage.lastRunActionsMessageId) {
+      needDeleteMessageIds =
+        await ClientConversationMessageManager.getDeleteMessageIds(
+          conversationId,
+          conversationLocalStorage.lastRunActionsMessageId,
+          'latest',
+        )
+    } else {
+      // 如果Chat是第一次对话，lastMessageId是没有的
+      // 需要删除所有的message
+      needDeleteMessageIds =
+        await ClientConversationMessageManager.getMessageIds(conversationId)
+    }
+    return {
+      lastRunActions: conversationLocalStorage.lastRunActions || [],
+      lastRunActionsMessageId:
+        conversationLocalStorage.lastRunActionsMessageId || '',
+      lastRunActionsParams: conversationLocalStorage.lastRunActionsParams,
+      needDeleteMessageIds,
+    }
+  }
+  return {
+    lastRunActions: [],
+    lastRunActionsMessageId: '',
+    lastRunActionsParams: undefined,
+    needDeleteMessageIds: [],
   }
 }
 export default useClientChat

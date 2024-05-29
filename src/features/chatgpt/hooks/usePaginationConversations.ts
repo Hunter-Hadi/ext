@@ -5,6 +5,7 @@ import orderBy from 'lodash-es/orderBy'
 import { useEffect, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
+import { clientGetMaxAIBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/client'
 import { useAuthLogin } from '@/features/auth'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {
@@ -153,6 +154,8 @@ const usePaginationConversations = (
   const [paginationConversations, setPaginationConversations] = useRecoilState(
     PaginationConversationsState,
   )
+  // 是否开启了云同步功能
+  const enableSyncFeatureRef = useRef(false)
   const totalPageRef = useRef(filter.total_page)
   const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQuery({
@@ -175,8 +178,9 @@ const usePaginationConversations = (
         let diffTimeUsage = 0
         let remoteConversations: IConversation[] = []
         if (
-          totalPageRef.current >= totalPageRef.current ||
-          totalPageRef.current === 0
+          enableSyncFeatureRef.current &&
+          (totalPageRef.current >= totalPageRef.current ||
+            totalPageRef.current === 0)
         ) {
           const result = await clientFetchMaxAIAPI<{
             current_page: number
@@ -287,11 +291,12 @@ const usePaginationConversations = (
       return orderBy(
         previous
           .map((conversation) => {
-            const newConversation = updateMap.get(conversation.id)
+            const newConversation = cloneDeep(updateMap.get(conversation.id))
             if (newConversation) {
-              const cloneConversation = cloneDeep(newConversation)
+              // 排序不变
+              newConversation.updated_at = conversation.updated_at
               updateMap.delete(conversation.id)
-              return cloneConversation
+              return newConversation
             }
             return conversation
           })
@@ -327,7 +332,10 @@ const usePaginationConversations = (
       },
       ...initFilter,
     })
-    setEnabled(controlEnable)
+    clientGetMaxAIBetaFeatureSettings().then((settings) => {
+      enableSyncFeatureRef.current = settings.chat_sync
+      setEnabled(controlEnable)
+    })
   }, [controlEnable])
   return {
     loading: !enabled || !isLogin || isLoading,

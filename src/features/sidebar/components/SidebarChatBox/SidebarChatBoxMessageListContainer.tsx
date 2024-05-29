@@ -19,10 +19,17 @@ interface IProps {
   writingMessage: IChatMessage | null
   isAIResponding?: boolean
   sx?: SxProps
+  onLoadingChatHistory?: (isLoading: boolean) => void
 }
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
-  const { conversationId, writingMessage, isAIResponding, sx } = props
+  const {
+    conversationId,
+    writingMessage,
+    isAIResponding,
+    sx,
+    onLoadingChatHistory,
+  } = props
 
   const scrollContainerRef = useRef<HTMLElement | null>(null)
 
@@ -173,6 +180,23 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     }
   }, [writingMessage?.messageId, paginationMessages])
 
+  useEffect(() => {
+    onLoadingChatHistory?.(isFetchingNextPage || isLoading)
+  }, [isFetchingNextPage, isLoading])
+  // return (
+  //   <>
+  //     <Typography color={'text.primary'}>
+  //       {paginationMessages.length}
+  //       {isFetchingNextPage ? `fetching...` : ''}
+  //     </Typography>
+  //     <Button
+  //       disabled={isFetchingNextPage || !hasNextPage}
+  //       onClick={() => fetchNextPage()}
+  //     >
+  //       Fetch next page
+  //     </Button>
+  //   </>
+  // )
   return (
     <Box
       ref={scrollContainerRef}

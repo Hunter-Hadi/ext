@@ -162,7 +162,6 @@ export class ClientConversationMessageManager {
         .anyOf(messageIds)
         .toArray()
         .then()
-
       const orderByArray = orderBy(messages, ['created_at'], ['desc'])
       console.log(`ConversationDB[V3] 获取消息`, orderByArray)
       return orderByArray
@@ -317,15 +316,19 @@ export class ClientConversationMessageManager {
    */
   static async getMessageIds(conversationId: string): Promise<string[]> {
     try {
-      const messagesIds = (await createIndexedDBQuery('conversations')
-        .messages.where('conversationId')
-        .equals(conversationId)
-        .toArray(getProjectionFields<IChatMessage>(['messageId', 'created_at']))
-        .then()) as { messageId: string }[]
-      console.log(`ConversationDB[V3] 获取消息Ids数量`, messagesIds.length)
-      return orderBy(messagesIds, ['created_at'], ['desc']).map(
-        (item) => item.messageId,
+      const messagesIdWithCreatedList = (await createIndexedDBQuery(
+        'conversations',
       )
+        .messages.where('[conversationId+created_at+messageId]')
+        .between([conversationId, ''], [conversationId, '\uffff'])
+        .keys()
+        .then()) as [string, string, string][]
+      const sortedList = messagesIdWithCreatedList.sort((prev, next) => {
+        // [conversationId, created_at, messageId]
+        return new Date(next[1]).getTime() - new Date(prev[1]).getTime()
+      })
+      console.log(`ConversationDB[V3] 获取消息Ids数量`, sortedList.length)
+      return sortedList.map((item) => item[2])
     } catch (e) {
       console.log(`ConversationDB[V3] 获取消息Ids数量失败`, e)
       return []
@@ -362,12 +365,12 @@ export class ClientConversationMessageManager {
    * 获取删除消息的消息Ids
    * @param conversationId
    * @param upToMessageId
-   * @param position
+   * @param timeFrame
    */
   static async getDeleteMessageIds(
     conversationId: string,
     upToMessageId: string,
-    position: 'start' | 'end' = 'end',
+    timeFrame: 'latest' | 'earliest' = 'latest',
   ) {
     try {
       const messagesIds = await this.getMessageIds(conversationId)
@@ -376,15 +379,15 @@ export class ClientConversationMessageManager {
         return []
       }
       console.log(
-        `ConversationDB[V3] 获取${position}的删除消息ids`,
+        `ConversationDB[V3] 获取${timeFrame}的删除消息ids`,
         messagesIds,
         findIndex,
       )
-      return position === 'start'
+      return timeFrame === 'latest'
         ? messagesIds.slice(0, findIndex)
         : messagesIds.slice(findIndex + 1)
     } catch (e) {
-      console.log(`ConversationDB[V3] 获取${position}的删除消息ids错误`, e)
+      console.log(`ConversationDB[V3] 获取${timeFrame}的删除消息ids错误`, e)
       return []
     }
   }
@@ -393,19 +396,19 @@ export class ClientConversationMessageManager {
    * 获取type类型的消息
    * @param conversationId
    * @param type
-   * @param position
+   * @param timeFrame
    * @example
    *
    * // 获取对话用户的第一条消息
-   * const message = await ClientConversationMessageManager.getMessageByMessageType('user', 'start')
+   * const message = await ClientConversationMessageManager.getMessageByMessageType('user', 'latest')
    * // 获取对话用户的最后一条消息
-   * const message = await ClientConversationMessageManager.getMessageByMessageType('user', 'end')
+   * const message = await ClientConversationMessageManager.getMessageByMessageType('user', 'earliest')
    *
    */
   static async getMessageByMessageType(
     conversationId: string,
     type: IChatMessage['type'],
-    position: 'start' | 'end' = 'end',
+    timeFrame: 'latest' | 'earliest' = 'latest',
   ) {
     try {
       const messagesIds = (await createIndexedDBQuery('conversations')
@@ -422,13 +425,13 @@ export class ClientConversationMessageManager {
       const findItem = orderBy(
         messagesIds,
         ['created_at'],
-        [position === 'start' ? 'asc' : 'desc'],
+        [timeFrame === 'latest' ? 'desc' : 'asc'],
       ).find((item) => item.type === type)
       const message = await this.getMessageByMessageId(
         findItem?.messageId || '',
       )
       console.log(
-        `ConversationDB[V3] 获取${type}类型${position}的消息`,
+        `ConversationDB[V3] 获取${type}类型${timeFrame}的消息`,
         message,
       )
       return message

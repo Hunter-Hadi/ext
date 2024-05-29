@@ -54,7 +54,6 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   )
 
   const renderData = useMemo(() => {
-    console.log('simply message', message)
     try {
       const currentRenderData = {
         title: message.originalMessage?.metadata?.title,

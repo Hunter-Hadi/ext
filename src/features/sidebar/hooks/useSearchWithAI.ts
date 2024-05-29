@@ -157,7 +157,9 @@ const useSearchWithAI = () => {
     let cacheConversationId = await getSearchWithAIConversationId()
     let conversation: IChatConversation | null = null
     if (cacheConversationId) {
-      conversation = await ClientConversationManager.getConversationById(cacheConversationId)
+      conversation = await ClientConversationManager.getConversationById(
+        cacheConversationId,
+      )
     }
     if (
       conversation &&
@@ -186,13 +188,13 @@ const useSearchWithAI = () => {
           (await ClientConversationMessageManager.getMessageByMessageType(
             currentConversationId,
             'ai',
-            'end',
+            'latest',
           )) as IAIResponseMessage
         const needDeleteMessageIds =
           await ClientConversationMessageManager.getDeleteMessageIds(
             currentConversationId,
             lastAIResponse.messageId,
-            'end',
+            'latest',
           )
         const lastQuestion =
           lastAIResponse?.originalMessage?.metadata?.title?.title ||

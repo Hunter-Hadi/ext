@@ -14,9 +14,9 @@ import AutoHeightTextarea, {
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
+import { getLastRunShortcuts } from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
 import {
-  IAIResponseMessage,
   IChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/indexed_db/conversations/models/Message'
@@ -66,8 +66,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   } = props
   const [isLoadingHistory, setIsLoadingHistory] = useState(false)
   const [isSettingVariables, setIsSettingVariables] = useState(false)
-  const { t } = useTranslation(['common', 'client'])
+  const [isShowRegenerateButton, setIsShowRegenerateButton] = useState(true)
   const [isShowContinueButton, setIsShowContinueButton] = useState(false)
+  const { t } = useTranslation(['common', 'client'])
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
   const textareaPlaceholder = useMemo(() => {
@@ -108,19 +109,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     }
   }, [])
 
-  const tempIsShowRegenerate = useMemo(() => {
-    if (conversationType === 'Chat' && messages.length > 0) {
-      const lastMessage = messages[messages.length - 1]
-      if (lastMessage && lastMessage.type === 'ai') {
-        const AIMessage = lastMessage as IAIResponseMessage
-        if (AIMessage?.originalMessage?.metadata?.shareType === 'search') {
-          return false
-        }
-      }
-    }
-    return true
-  }, [messages, conversationType])
-
   const isShowChatBoxHomeView = useMemo(() => {
     return (
       !isLoadingHistory &&
@@ -138,10 +126,20 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   )
 
   useEffect(() => {
-    if (messages.length > 0) {
+    if (messages.length > 0 && conversationId) {
       setIsShowContinueButton(messages[messages.length - 1].type === 'ai')
+      getLastRunShortcuts(conversationId).then((result) => {
+        if (result.lastRunActions.length > 0) {
+          setIsShowRegenerateButton(true)
+        } else {
+          setIsShowRegenerateButton(false)
+        }
+      })
+    } else {
+      setIsShowContinueButton(false)
+      setIsShowRegenerateButton(false)
     }
-  }, [messages])
+  }, [messages, conversationId])
 
   return (
     <Stack
@@ -238,44 +236,43 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
               }}
             />
 
-            {!loading && messages.length > 0 && tempIsShowRegenerate && (
-              <>
+            {!loading && isShowRegenerateButton && (
+              <Button
+                disableElevation
+                startIcon={<CachedIcon />}
+                variant={'normalOutlined'}
+                disabled={loading}
+                onClick={() => {
+                  onReGenerate?.()
+                }}
+                sx={shortcutsActionBtnSxMemo}
+                data-testid="sidebar_actions__regenerate"
+              >
+                {t('client:sidebar__button__regenerate')}
+              </Button>
+            )}
+            {!loading &&
+              conversationType !== 'Search' &&
+              conversationType !== 'Art' &&
+              isShowContinueButton && (
                 <Button
                   disableElevation
-                  startIcon={<CachedIcon />}
+                  startIcon={<ContextMenuIcon icon={'FastForward'} />}
                   variant={'normalOutlined'}
                   disabled={loading}
                   onClick={() => {
-                    onReGenerate?.()
+                    handleSendMessage &&
+                      handleSendMessage('Continue', {
+                        includeHistory: true,
+                        regenerate: false,
+                      })
                   }}
                   sx={shortcutsActionBtnSxMemo}
-                  data-testid="sidebar_actions__regenerate"
+                  data-testid="sidebar_actions__continue"
                 >
-                  {t('client:sidebar__button__regenerate')}
+                  {t('client:sidebar__button__continue')}
                 </Button>
-                {isShowContinueButton &&
-                  conversationType !== 'Search' &&
-                  conversationType !== 'Art' && (
-                    <Button
-                      disableElevation
-                      startIcon={<ContextMenuIcon icon={'FastForward'} />}
-                      variant={'normalOutlined'}
-                      disabled={loading}
-                      onClick={() => {
-                        handleSendMessage &&
-                          handleSendMessage('Continue', {
-                            includeHistory: true,
-                            regenerate: false,
-                          })
-                      }}
-                      sx={shortcutsActionBtnSxMemo}
-                      data-testid="sidebar_actions__continue"
-                    >
-                      {t('client:sidebar__button__continue')}
-                    </Button>
-                  )}
-              </>
-            )}
+              )}
             {loading && (
               <Button
                 sx={shortcutsActionBtnSxMemo}

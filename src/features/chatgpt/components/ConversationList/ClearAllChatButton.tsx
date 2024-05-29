@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import ClearAllChatButtonMoreActions from '@/features/chatgpt/components/ConversationList/ClearAllChatButtonMoreActions'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
@@ -101,7 +100,8 @@ const ClearAllChatButton: FC<IProps> = (props) => {
               </Typography>
             </Stack>
           </Button>
-          <ClearAllChatButtonMoreActions disablePortal={isContextWindow} />
+          {/*NOTE: 先不需要这个按钮*/}
+          {/*<ClearAllChatButtonMoreActions disablePortal={isContextWindow} />*/}
         </Box>
       )}
 

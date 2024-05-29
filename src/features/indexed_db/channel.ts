@@ -39,6 +39,7 @@ const listener: IndexedDBListener = async (type: string, data: any) => {
   switch (type) {
     case 'IndexedDBQueryChain':
       {
+        const startTime = new Date().getTime()
         const indexedDBName = data.indexedDBName
         const chain: IndexedDBChainType[] = data.chain || []
         let currentDexieDB: any = null
@@ -87,6 +88,11 @@ const listener: IndexedDBListener = async (type: string, data: any) => {
             const result = chainFunction.then
               ? await chainFunction
               : chainFunction
+            console.log(
+              'ConversationDB[V3] IndexedDBQueryChain',
+              new Date().getTime() - startTime,
+              'ms',
+            )
             return {
               success: true,
               data: result,

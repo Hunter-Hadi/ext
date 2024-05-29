@@ -17,7 +17,7 @@ export class ConversationDB extends Dexie {
       conversations:
         'id,lastMessageId,authorId,name,created_at,updated_at,type',
       messages:
-        'messageId,conversationId,parentMessageId,created_at,updated_at,type',
+        'messageId,conversationId,parentMessageId,created_at,updated_at,type,[conversationId+created_at+messageId]',
       attachments: 'id,created_at,updated_at',
       conversationLocalStorage: 'conversationId',
     })

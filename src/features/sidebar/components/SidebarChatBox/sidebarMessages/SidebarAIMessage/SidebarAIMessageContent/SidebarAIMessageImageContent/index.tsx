@@ -178,6 +178,7 @@ const SidebarAIMessageImageContent: FC<{
               SkeletonSx={{
                 width: '100%',
               }}
+              fileId={renderData.image.uploadedFileId}
               height={height}
               src={renderData.image?.uploadedUrl || ''}
               alt={`Variation 1 of ${renderDataList.length}`}

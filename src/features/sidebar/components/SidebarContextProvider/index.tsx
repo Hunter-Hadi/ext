@@ -35,7 +35,9 @@ const SidebarImmersiveUserChange: FC<{ context: ChatPanelContextValue }> = (
   const { conversationId, createConversation } = context
   useFocus(async () => {
     if (!conversationId) return
-    const conversation = await ClientConversationManager.getConversationById(conversationId)
+    const conversation = await ClientConversationManager.getConversationById(
+      conversationId,
+    )
     if (conversation) {
       const userId = await getMaxAIChromeExtensionUserId()
       if (conversation.authorId !== userId) {
@@ -225,7 +227,9 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
       ClientConversationManager.getConversationById(conversationId).then(
         (conversation) => {
           if (!conversation) {
-            sidebarContextValue.createConversation(conversationTypeRef.current)
+            sidebarContextValue.createConversation(
+              sidebarConversationTypeRef.current,
+            )
           }
         },
       )

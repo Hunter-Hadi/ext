@@ -41,7 +41,14 @@ export class PaymentManager {
       this.removePayment(beforeUrl)
     } else if (payment?.cancelUrl) {
       // 在支付页面切换到其他页面时候强制跳转支付失败页面
-      Browser.tabs.update(tabId, { url: payment.cancelUrl })
+      // chrome.webNavigation为敏感权限，目前在content_script里无法准确监听到浏览器的后退前进事件
+      // 所以这里只去判断返回的链接是否和cancelUrl是同一个域名并且地址不一样就跳到支付失败页面
+      if (
+        new URL(payment.cancelUrl).origin === new URL(newUrl).origin &&
+        !newUrl.includes(payment.cancelUrl)
+      ) {
+        Browser.tabs.update(tabId, { url: payment.cancelUrl })
+      }
     }
   }
 }

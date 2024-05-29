@@ -38,7 +38,7 @@ const HostConfig = {
     appProjectAPIHost: 'https://dev.maxai.me',
   },
   test: {
-    wwwProjectHost: 'https://test.d35dysdwr52gaf.amplifyapp.com/',
+    wwwProjectHost: 'https://test.d35dysdwr52gaf.amplifyapp.com',
     appProjectHost: 'https://test.d3kf9o74pc4m0c.amplifyapp.com',
     appProjectAPIHost: 'https://test.maxai.me',
   },

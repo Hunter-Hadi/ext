@@ -20,11 +20,11 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import { IAIResponseSourceCitation } from '@/features/chatgpt/types'
 import CitationTag from '@/features/citation/components/CitationTag'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
 import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const getYouTubeUrlTime = (url: string) => {
   try {
@@ -255,7 +255,7 @@ const CustomMarkdown: FC<{
     try {
       if (typeof children === 'string') {
         if (citations?.length && !children.includes('[T0]')) {
-          return preprocessLaTeX(children) + formatCitation(citations)
+          return preprocessLaTeX(children) + ' ' + formatCitation(citations)
         }
         return preprocessLaTeX(children)
       }

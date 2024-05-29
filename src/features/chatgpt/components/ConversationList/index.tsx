@@ -1,6 +1,5 @@
 import Chip from '@mui/material/Chip'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
-import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
@@ -52,7 +51,6 @@ const ConversationList: FC<IProps> = (props) => {
     conversationType,
     sx,
     hideClearAllButton = false,
-    divider = false,
     onSelectConversation,
     emptyFeedback,
   } = props
@@ -149,11 +147,6 @@ const ConversationList: FC<IProps> = (props) => {
           overflowY: 'auto',
         }}
       >
-        <Stack>
-          <Typography color={'text.primary'}>
-            {paginationConversations.length}
-          </Typography>
-        </Stack>
         <AppLoadingLayout loading={loading}>
           <InfiniteFixedSizeLoaderWrapper
             loadNextPage={() => fetchNextPage()}
@@ -422,9 +415,6 @@ const ConversationList: FC<IProps> = (props) => {
                       </Stack>
                     </Stack>
                   </Stack>
-                  {divider && index !== paginationConversations.length - 1 && (
-                    <Divider flexItem />
-                  )}
                 </Stack>
               )
             }}

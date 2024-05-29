@@ -375,7 +375,6 @@ export const saveLastRunShortcuts = async (
   actions: ISetActionsType,
   params?: any[],
 ) => {
-  debugger
   const lastMessage =
     await ClientConversationMessageManager.getMessageByTimeFrame(
       conversationId,

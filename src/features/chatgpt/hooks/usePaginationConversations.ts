@@ -251,6 +251,7 @@ const usePaginationConversations = (
         return lastPageParam + 1
       },
       enabled: controlEnable && enabled && isLogin,
+      refetchOnWindowFocus: false,
     })
 
   useEffect(() => {

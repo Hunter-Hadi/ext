@@ -751,8 +751,8 @@ export const ClientMessageInit = () => {
         }
         case 'Client_updateMaxAISurveyStatus': {
           const result = await updateSurveyStatusInBackground(
-            data.surveyKeys,
             data.forceUpdate,
+            data.surveyKeys,
           )
           return {
             success: true,

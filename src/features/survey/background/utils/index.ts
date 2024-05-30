@@ -14,10 +14,13 @@ export const updateSurveyStatusInBackground = async (
 ): Promise<Partial<Record<ISurveyKeyType, boolean>> | null> => {
   try {
     const cacheData = await getChromeExtensionLocalStorage()
-    if (cacheData.surveyStatus && !forceUpdate) {
-      return cacheData.surveyStatus
+    if (!forceUpdate) {
+      return cacheData.surveyStatus ?? null
     }
     const token = await getMaxAIChromeExtensionAccessToken()
+    if (!token) {
+      return null
+    }
     const result = await fetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/find_user_survey_key`,
       {

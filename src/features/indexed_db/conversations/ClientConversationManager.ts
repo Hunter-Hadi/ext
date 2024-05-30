@@ -157,7 +157,6 @@ export class ClientConversationManager {
    * @param conversationId
    */
   static softDeleteConversation = async (conversationId: string) => {
-    debugger
     const isRemoveSuccess = await clientUseIndexedDB(
       'ConversationDBRemoveConversation',
       {

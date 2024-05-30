@@ -291,20 +291,13 @@ const usePaginationConversations = (
             }
             return conversation
           })
-          .concat(Array.from(conversationMap.values())),
+          .concat(Array.from(conversationMap.values()))
+          .filter((conversation) => conversation.type === filter.type),
         ['updated_at'],
         ['desc'],
       )
     })
-  }, [data?.pages])
-  // 因为上面是动态更新，不是覆盖，所以这里需要过滤
-  useEffect(() => {
-    setPaginationConversations((previous) => {
-      return previous.filter(
-        (conversation) => conversation.title === filter.type,
-      )
-    })
-  }, [filter.type])
+  }, [data?.pages, filter.type])
   const fetchPaginationConversations = async () => {
     return []
   }

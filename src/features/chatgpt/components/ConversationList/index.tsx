@@ -145,10 +145,6 @@ const ConversationList: FC<IProps> = (props) => {
         spacing={1}
         className={'conversation-list'}
         sx={{
-          borderBottom: `1px solid`,
-          borderColor:
-            // 隐藏了 clear all button 就不需要显示 borderBottom
-            hideClearAllButton ? 'transparent' : 'customColor.borderColor',
           overflowY: 'auto',
         }}
       >
@@ -429,7 +425,15 @@ const ConversationList: FC<IProps> = (props) => {
           ? renderEmptyFeedback()
           : null}
       </Stack>
-      <Stack flexShrink={0}>
+      <Stack
+        flexShrink={0}
+        sx={{
+          borderTop: `1px solid`,
+          borderColor:
+            // 隐藏了 clear all button 就不需要显示 borderBottom
+            hideClearAllButton ? 'transparent' : 'customColor.borderColor',
+        }}
+      >
         {hideClearAllButton ? null : (
           <ClearAllChatButton
             onDelete={() => {

@@ -12,6 +12,7 @@ import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtension
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
+import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
@@ -48,7 +49,11 @@ const useSidebarSettings = () => {
     useRecoilState(SidebarPageState)
   const { getAIProviderModelDetail } = useAIProviderModelsMap()
   const { hideFloatingContextMenu } = useFloatingContextMenu()
-  const isDuplicatingRef = useRef(false)
+  const { updatePaginationConversations } = usePaginationConversations(
+    {},
+    false,
+  )
+  const isContinueInChatProgressRef = useRef(false)
   const currentSidebarConversationType =
     sidebarPageState.sidebarConversationType
   const currentSidebarAIProvider =
@@ -363,10 +368,10 @@ const useSidebarSettings = () => {
       typeof ClientConversationManager.addOrUpdateConversation
     >
   ) => {
-    if (isDuplicatingRef.current) {
+    if (isContinueInChatProgressRef.current) {
       return
     }
-    isDuplicatingRef.current = true
+    isContinueInChatProgressRef.current = true
     const [conversationId, updateConversationData, options] =
       args as Parameters<
         typeof ClientConversationManager.addOrUpdateConversation
@@ -378,9 +383,11 @@ const useSidebarSettings = () => {
         updateConversationData,
         {
           ...options,
-          duplicate: true,
+          syncConversationToDB: true,
+          waitSync: true,
         },
       )
+    updatePaginationConversations([conversationId]).then().catch()
     if (newConversation) {
       if (['Chat', 'Search', 'Summary', 'Art'].includes(newConversation.type)) {
         await updateSidebarSettings({
@@ -395,7 +402,7 @@ const useSidebarSettings = () => {
     }
     showChatBox()
     hideFloatingContextMenu(true)
-    isDuplicatingRef.current = false
+    isContinueInChatProgressRef.current = false
   }
   return {
     createSidebarConversation,

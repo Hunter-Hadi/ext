@@ -7,17 +7,18 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const FloatingContextMenuContinueChatButton: FC = () => {
   const { t } = useTranslation(['client'])
-  const { currentConversationId, clientConversation } = useClientConversation()
+  const { currentConversationId, clientConversationMessages } =
+    useClientConversation()
   const { continueConversationInSidebar } = useSidebarSettings()
 
   const handleClick = () => {
     if (!currentConversationId) return
-    continueConversationInSidebar(currentConversationId, { type: 'Chat' }, true)
+    continueConversationInSidebar(currentConversationId, { type: 'Chat' })
       .then()
       .catch()
   }
 
-  if (!clientConversation?.messages.length) {
+  if (!clientConversationMessages.length) {
     // 没有消息不显示
     return null
   }

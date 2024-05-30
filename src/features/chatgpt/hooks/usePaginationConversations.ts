@@ -257,7 +257,7 @@ const usePaginationConversations = (
         return lastPageParam + 1
       },
       enabled: controlEnable && maxAIBetaFeaturesLoaded && enabled && isLogin,
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: true,
     })
 
   useEffect(() => {

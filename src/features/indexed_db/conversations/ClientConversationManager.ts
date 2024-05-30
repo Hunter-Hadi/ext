@@ -1,5 +1,4 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import { v4 as uuidV4 } from 'uuid'
 
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
@@ -107,7 +106,6 @@ export class ClientConversationManager {
    * @param conversationId
    * @param updateConversationData
    * @param options
-   * @param options.duplicate - 是否复制对话
    * @param options.waitSync - 是否等待同步
    * @param options.syncConversationToDB - 是否同步到远程
    */
@@ -115,16 +113,11 @@ export class ClientConversationManager {
     conversationId: string,
     updateConversationData: Partial<IConversation>,
     options?: {
-      duplicate?: boolean
       syncConversationToDB?: boolean
       waitSync?: boolean
     },
   ) => {
-    const {
-      syncConversationToDB = false,
-      waitSync = false,
-      duplicate = false,
-    } = options || {}
+    const { syncConversationToDB = false, waitSync = false } = options || {}
     if (!conversationId) {
       return
     }
@@ -133,15 +126,13 @@ export class ClientConversationManager {
     const saveData = mergeWithObject([
       cacheConversation || {},
       updateConversationData,
-      duplicate ? { id: uuidV4() } : {},
     ])
     await createIndexedDBQuery('conversations')
       .conversations.put(saveData)
       .then()
-    this.notifyConversationChange(
-      cacheConversation && !duplicate ? 'update' : 'add',
-      [conversationId],
-    )
+    this.notifyConversationChange(cacheConversation ? 'update' : 'add', [
+      conversationId,
+    ])
     if (syncConversationToDB) {
       if (waitSync) {
         await uploadClientConversationToRemote(saveData)

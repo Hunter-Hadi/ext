@@ -7,6 +7,7 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import PermissionDailyLimitBar from '@/features/auth/components/PermissionDailyLimitBar'
 import useActivity from '@/features/auth/hooks/useActivity'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 
@@ -20,6 +21,7 @@ const SidebarTopBar: FC = () => {
   } = useActivity()
   return (
     <Stack>
+      <PermissionDailyLimitBar />
       {/*黑五*/}
       {/*deprecated*/}
       {isShowActivityBanner && false && (

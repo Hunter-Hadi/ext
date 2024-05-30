@@ -1,5 +1,6 @@
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { mixpanelIdentify } from '@/features/mixpanel/utils'
+import { clientUpdateSurveyStatus } from '@/features/survey/utils'
 import Log from '@/utils/Log'
 const log = new Log('ContentScript/CheckIsLogin')
 
@@ -87,4 +88,16 @@ observer.observe(document.querySelector('body') as HTMLBodyElement, {
   attributes: true,
   childList: true,
   subtree: true,
+})
+
+window.addEventListener('message', function (event) {
+  // We only accept messages from ourselves
+  if (event.source != window) return
+
+  if (event.data.type && event.data.type == 'MAXAI_UPDATE_SURVEY_STATUS') {
+    clientUpdateSurveyStatus(
+      true,
+      event.data?.data?.surveyType ? [event.data?.data?.surveyType] : undefined,
+    )
+  }
 })

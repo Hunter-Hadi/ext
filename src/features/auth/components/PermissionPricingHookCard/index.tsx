@@ -1,4 +1,4 @@
-import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -8,9 +8,7 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import {
-  PricingHooksFeatureIcon,
-} from '@/features/auth/components/PermissionPricingHookCard/icons'
+import { PricingHooksFeatureIcon } from '@/features/auth/components/PermissionPricingHookCard/icons'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
@@ -123,7 +121,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
             }}
             onClick={() => {
               permissionCard.videoUrl &&
-                openGlobalVideoPopup(permissionCard.videoUrl)
+                openGlobalVideoPopup(permissionCard.videoUrl, true)
             }}
           >
             <img

@@ -15,6 +15,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { APP_VERSION, CHROME_EXTENSION_HELP_TO } from '@/constants'
 import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
+import { SidebarMarketingTabs } from '@/features/sidebar/components/SidebarMarketingTabs'
 import SidebarInfoCollectionModal from '@/features/sidebar/components/SidebarNav/SidebarInfoCollectionModal'
 import SidebarReleaseNotesButton from '@/features/sidebar/components/SidebarNav/SidebarReleaseNotesButton'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
@@ -84,13 +85,15 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
 
       {/* nav content */}
       <Stack
-        justifyContent={isInImmersiveChatPage ? 'start' : 'end'}
+        justifyContent={'space-between'}
         sx={{
           width: '100%',
           height: 0,
           flex: 1,
+          flexDirection: isInImmersiveChatPage ? 'column-reverse' : 'column',
         }}
       >
+        <SidebarMarketingTabs />
         <SidebarTabs />
       </Stack>
 

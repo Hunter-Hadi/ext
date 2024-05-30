@@ -6,6 +6,7 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { SummaryParamsPromptType } from '@/features/sidebar/utils/pageSummaryNavPrompt'
+import { ISurveyKeyType } from '@/features/survey/types'
 
 export type IChromeExtensionButtonSettingKey =
   // Context menu
@@ -206,6 +207,7 @@ export interface IChromeExtensionLocalStorage {
     }
     contextMenu?: {
       currentAIModel?: string
+      isPinned?: boolean
     }
     common?: {
       currentAIProvider?: IAIProviderType
@@ -216,7 +218,7 @@ export interface IChromeExtensionLocalStorage {
         [key in string]: string
       }
     }
-  },
+  }
   immersiveSettings?: {
     chat?: {
       conversationId?: string
@@ -233,9 +235,12 @@ export interface IChromeExtensionLocalStorage {
       AIProvider?: IAIProviderType
       AIModel?: string
     }
-  },
+  }
   thirdProviderSettings?: {
     [P in IAIProviderType]?: IThirdProviderSettings[P]
+  }
+  surveyStatus?: {
+    [key in ISurveyKeyType]?: boolean
   }
 }
 export type IChromeExtensionLocalStorageUpdateFunction = (

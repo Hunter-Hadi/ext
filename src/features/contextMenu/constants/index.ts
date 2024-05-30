@@ -275,18 +275,18 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     },
     children: [],
   },
-  {
-    id: CONTEXT_MENU_DRAFT_TYPES.CONTINUE_IN_CHAT,
-    text: 'Continue in chat',
-    parent: 'root',
-    droppable: false,
-    data: {
-      icon: 'SidebarPanel',
-      type: 'shortcuts',
-      editable: false,
-    },
-    children: [],
-  },
+  // {
+  //   id: CONTEXT_MENU_DRAFT_TYPES.CONTINUE_IN_CHAT,
+  //   text: 'Continue in chat',
+  //   parent: 'root',
+  //   droppable: false,
+  //   data: {
+  //     icon: 'SidebarPanel',
+  //     type: 'shortcuts',
+  //     editable: false,
+  //   },
+  //   children: [],
+  // },
   {
     id: CONTEXT_MENU_DRAFT_TYPES.DISCARD,
     text: 'Discard',

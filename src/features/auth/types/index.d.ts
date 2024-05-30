@@ -43,6 +43,8 @@ export type IUseChatGPTUserInfo = {
   roles: IUserRole[]
   subscription_plan_name: IUserPlanNameType
   group_id?: string
+  // 用户第一次付费的时间戳（单位: 秒）
+  subscribed_at?: number | null
 }
 
 export type IUserQuotaUsageInfo = {

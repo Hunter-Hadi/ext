@@ -23,10 +23,7 @@ import { IPromptLibraryCardType } from '@/features/prompt_library/types'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
-import {
-  getCurrentDomainHost,
-  isMaxAIImmersiveChatPage,
-} from '@/utils/dataHelper/websiteHelper'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const BEAUTIFY_PROVIDER_NAME: Record<IAIProviderType, string> = {
   USE_CHAT_GPT_PLUS: 'in_house',
@@ -188,15 +185,16 @@ export const authEmitPricingHooksLog = debounce(
     meta?: {
       // 根据 conversationId 获取 到的 ai model 和 provider，优先级更高
       conversationId?: string
+      conversationType?: string
       AIModel?: string
       AIProvider?: string
-
       inContextMenu?: boolean
     },
   ) => {
     try {
       const {
         conversationId: propConversationId,
+        conversationType: propConversationType,
         AIModel: propAIModel,
         AIProvider: propAIProvider,
       } = meta ?? {}
@@ -211,6 +209,7 @@ export const authEmitPricingHooksLog = debounce(
         propConversationId,
         propAIModel,
         propAIProvider,
+        propConversationType,
       )
 
       if (meta?.inContextMenu && trackParams.featureName) {
@@ -233,7 +232,6 @@ export const authEmitPricingHooksLog = debounce(
       mixpanelTrack(type, {
         logType,
         sceneType,
-        currentDomain: getCurrentDomainHost(),
         ...trackParams,
       })
       const port = new ContentScriptConnectionV2()
@@ -260,6 +258,7 @@ const generateTrackParams = async (
   propConversationId?: string,
   propAIModel?: string,
   propAIProvider?: string,
+  propConversationType?: string,
 ) => {
   try {
     // 1. 开始获取 AIModel 和 AIProvider
@@ -297,6 +296,10 @@ const generateTrackParams = async (
       paywallName = 'SEARCH'
     } else if (sceneType.startsWith('SEARCH_WITH_AI_')) {
       paywallName = 'SEARCH_WITH_AI'
+    } else if (sceneType.includes('PROACTIVE_UPGRADE')) {
+      paywallName = 'PROACTIVE_UPGRADE'
+    } else if (sceneType.includes('TOP_BAR_FAST_TEXT_MODEL')) {
+      paywallName = 'TOP_BAR_FAST_TEXT_MODEL'
     } else {
       paywallName = 'UNKNOWN'
     }
@@ -336,6 +339,8 @@ const generateTrackParams = async (
         suffix = `search`
       } else if (sceneType.includes('IMAGE_GENERATE_MODEL')) {
         suffix = `art`
+      } else if (propConversationType) {
+        suffix = propConversationType.toLowerCase()
       } else {
         suffix = `chat`
       }

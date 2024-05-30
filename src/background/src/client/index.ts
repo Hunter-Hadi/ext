@@ -40,6 +40,7 @@ import {
 import { IChatMessage } from '@/features/chatgpt/types'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
+import { updateSurveyStatusInBackground } from '@/features/survey/background/utils'
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
@@ -948,7 +949,6 @@ export const ClientMessageInit = () => {
           }
         }
         case 'Client_switchVideoPopup': {
-          const { videoSrc, open } = data
           const tabs = await Browser.tabs.query({
             active: true,
             currentWindow: true,
@@ -960,16 +960,24 @@ export const ClientMessageInit = () => {
               await Browser.tabs.sendMessage(tab.id, {
                 id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 event: 'Client_listenSwitchVideoPopup',
-                data: {
-                  videoSrc,
-                  open,
-                },
+                data: data,
               })
             }
           }
           return {
             success: true,
             data: null,
+            message: 'ok',
+          }
+        }
+        case 'Client_updateMaxAISurveyStatus': {
+          const result = await updateSurveyStatusInBackground(
+            data.forceUpdate,
+            data.surveyKeys,
+          )
+          return {
+            success: true,
+            data: result,
             message: 'ok',
           }
         }

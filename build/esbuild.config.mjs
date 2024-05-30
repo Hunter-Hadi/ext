@@ -164,17 +164,17 @@ async function esbuildConfig() {
       isProduction
         ? []
         : [
-            copyStaticFilesPlugin({
-              source: ['build/hot_reload/hot_reload.content.js'],
-              target: `${buildDir}`,
-              copyWithFolder: false,
-            }),
-            copyStaticFilesPlugin({
-              source: ['src/lib/react-devtools.js'],
-              target: `${buildDir}`,
-              copyWithFolder: false,
-            }),
-          ],
+          copyStaticFilesPlugin({
+            source: ['build/hot_reload/hot_reload.content.js'],
+            target: `${buildDir}`,
+            copyWithFolder: false,
+          }),
+          copyStaticFilesPlugin({
+            source: ['src/lib/react-devtools.js'],
+            target: `${buildDir}`,
+            copyWithFolder: false,
+          }),
+        ],
     ),
     outdir: buildDir,
   })
@@ -202,6 +202,7 @@ async function esbuildConfig() {
       writeFileSync(`${target}/index.html`, html, 'utf-8')
     }
   }
+
   await copyHTML()
   try {
     fs.writeJsonSync(`${releasesDir}/meta.json`, result.metafile)
@@ -209,6 +210,7 @@ async function esbuildConfig() {
     // console.error(e.message || e)
   }
 }
+
 async function updateManifest() {
   const manifest = await fs.readJson(`${buildDir}/manifest.json`)
   let addWebAccessibleResources = []
@@ -222,7 +224,7 @@ async function updateManifest() {
     import(chrome.runtime.getURL(importPath));
 })();`
     fs.writeFileSync(`${buildDir}/import_${contentScriptPath}`, jsContent)
-    if (contentScriptPath === 'check_status.js' && isProduction) {
+    if (contentScriptPath === 'check_status.js' && buildEnv.api_env === 'production' && isProduction) {
       // prod env check_status script matches
       contentScript.matches = ['https://app.maxai.me/*']
     }
@@ -233,6 +235,7 @@ async function updateManifest() {
   })
   fs.writeJsonSync(`${buildDir}/manifest.json`, manifest, { spaces: 2 })
 }
+
 async function buildFiles() {
   try {
     const startTimestamp = Date.now()
@@ -253,7 +256,7 @@ async function buildFiles() {
 async function release() {
   const manifest = await fs.readJson(`${buildDir}/manifest.json`)
   const version = manifest.version
-  let archiveName = `releases/MaxAI-${version}-${dayjs().format(
+  let archiveName = `releases/MaxAI[${buildEnv.api_env}]-${version}-${dayjs().format(
     'YYYY-MM-DD-HH-mm',
   )}.zip`
   const archive = archiver('zip', { zlib: { level: 9 } })

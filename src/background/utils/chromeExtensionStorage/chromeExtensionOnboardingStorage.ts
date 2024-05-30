@@ -36,6 +36,8 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK'
   // on boarding tooltip cache key
   | IOnBoardingTooltipOpenedCacheKey
+  // sidebar 中 survey dialog 是否弹窗过的标记
+  | 'ON_BOARDING_EXTENSION_SURVEY_DIALOG_ALERT'
 
 export type OnBoardingMapType = {
   [key in OnBoardingKeyType]?: boolean | string | number
@@ -62,6 +64,9 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     // 关闭free trail - 2023-10-17 - @HuangSong
     ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES: 0,
     ON_BOARDING_MAXAI_3_0: false,
+
+    // sidebar 中 survey dialog 是否弹窗过的标记
+    ON_BOARDING_EXTENSION_SURVEY_DIALOG_ALERT: false,
   }
   /**
    * InputAssistantButton onBoarding Keys

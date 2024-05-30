@@ -4,12 +4,14 @@ import '@/i18n'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
+import { useRecoilValue } from 'recoil'
 
 import Announcement from '@/components/Announcement'
 import AppInit from '@/components/AppInit'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import useActivity from '@/features/auth/hooks/useActivity'
+import { DailyLimitState } from '@/features/auth/store'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
@@ -21,6 +23,13 @@ import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 const App: FC = () => {
   const { isShowActivityBanner } = useActivity()
   const { currentSidebarConversationType } = useSidebarSettings()
+  const dailyLimitState = useRecoilValue(DailyLimitState)
+
+  let topBarHeight = isShowActivityBanner ? 96 : 48
+  if (dailyLimitState.show) {
+    topBarHeight += dailyLimitState.barHeight
+  }
+
   return (
     <Box
       component={'div'}
@@ -72,7 +81,7 @@ const App: FC = () => {
                     transition: 'transform 0.3s ease-in-out',
                     borderStyle: 'solid',
                   }}
-                  height={`calc(100vh - ${isShowActivityBanner ? 96 : 48}px)`}
+                  height={`calc(100vh - ${topBarHeight}px)`}
                   borderColor={'customColor.borderColor'}
                 >
                   <SidebarNav />
@@ -98,7 +107,7 @@ const App: FC = () => {
                 />
 
                 <Stack height={'100%'} width={'100vw'}>
-                  <SidebarPage open disableContextProvider />
+                  <SidebarPage open />
                 </Stack>
               </Stack>
             </AppSuspenseLoadingLayout>

@@ -35,7 +35,7 @@ const useDraftContextMenuList = () => {
     const filteredList = CONTEXT_MENU_DRAFT_LIST.filter((item) => {
       return item.text.toLowerCase().includes(searchText.toLowerCase())
     })
-    let filteredId = []
+    let filteredId: string[] = []
     // 如果点击的是 Instant reply button, 过滤掉 Insert below, Insert, Replace
     if (
       currentSelection?.selectionElement?.target?.getAttribute(

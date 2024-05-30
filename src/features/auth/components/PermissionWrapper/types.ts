@@ -41,6 +41,10 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SEARCH_WITH_AI_CHATGPT',
   'SEARCH_WITH_AI_HIGH_TRAFFIC',
 
+  // 特殊付费卡点
+  'PROACTIVE_UPGRADE',
+  'TOP_BAR_FAST_TEXT_MODEL',
+
   /**
    * @deprecated 统一为: MAXAI_INSTANT_REPLY、MAXAI_INSTANT_REPLY、MAXAI_INSTANT_REFINE、MAXAI_INSTANT_NEW - 2024-04-30
    * @inheritDoc - https://ikjt09m6ta.larksuite.com/docx/LbLfdXGfWo0naAxPTh1u8XkSs5b
@@ -457,6 +461,18 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/search-with-ai.png',
     )}`,
     videoUrl: `https://www.youtube.com/embed/1uZuyqqySO0`,
+    title: (t) => t('client:permission__pricing_hook__ai_search__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__ai_search__description'),
+  },
+  // 这个目前UpgradeButton里hover显示
+  PROACTIVE_UPGRADE: {
+    title: (t) => t('client:permission__pricing_hook__ai_search__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__ai_search__description'),
+  },
+  // 这个目前在sidebar/immersive chat里顶部显示
+  TOP_BAR_FAST_TEXT_MODEL: {
     title: (t) => t('client:permission__pricing_hook__ai_search__title'),
     description: (t) =>
       t('client:permission__pricing_hook__ai_search__description'),

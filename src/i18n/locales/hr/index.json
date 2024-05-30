@@ -64,7 +64,8 @@
     "continue_with_google": "Nastavi s Googleom",
     "continue_with_email": "Nastavi s e-poštom",
     "privacy_policy": "Pravila o privatnosti",
-    "terms_of_service": "Uvjeti korištenja"
+    "terms_of_service": "Uvjeti korištenja",
+    "shortcut": "Prečica"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Ovo je izuzetno korisno: pomaže nam stvoriti najbolje AI iskustvo za vas :)",
     "sidebar__survey_dialog__thanks": "Hvala puno",
     "sidebar__survey_dialog__by_who": "MaxAI.me tim",
-    "sidebar__survey_dialog__cta_button_text": "Kažite nam o svom iskustvu"
+    "sidebar__survey_dialog__cta_button_text": "Kažite nam o svom iskustvu",
+    "floating_menu__input__placeholder__after_ai_response": "Recite AI-u što treba učiniti sljedeće..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Osigurajte najmanje 1,500 visokoučinkovitih naprednih tekstualnih upita svaki mjesec. Nakon dostizanja limita, brzina i kvaliteta modela mogu biti smanjeni.",
     "image_generate__secondary__content": "Visokoučinkoviti upiti slika: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Osigurajte najmanje 1,500 visokoučinkovitih upita slika svaki mjesec. Nakon dostizanja limita, brzina i kvaliteta modela mogu biti smanjeni."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite da biste zamolili AI da prepiše, prevede, sažme ili objasni odabrani tekst.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Možete upisati \"{{KEY_TEXT}}\" da biste brzo pronašli ovu opciju.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Također možete zamoliti AI da izvrši bilo koju radnju na odabranom tekstu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Pritisnite",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "za dolje.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Pritisnite",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "za gore.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Pritisnite",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Unesi",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "da biste odabrali opciju.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknite da biste zamijenili odabrani tekst AI-generiranim sadržajem.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Možete zamoliti AI da poboljša AI odgovor kako god želite."
   }
 }

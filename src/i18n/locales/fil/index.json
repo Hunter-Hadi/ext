@@ -64,7 +64,8 @@
     "continue_with_google": "Magpatuloy gamit ang Google",
     "continue_with_email": "Magpatuloy gamit ang email",
     "privacy_policy": "Patakaran sa Privacy",
-    "terms_of_service": "Mga Tuntunin ng Serbisyo"
+    "terms_of_service": "Mga Tuntunin ng Serbisyo",
+    "shortcut": "Shortcut"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Ito ay napakahalaga: ito ay tumutulong sa amin na lumikha ng pinakamahusay na AI experience para sa iyo :)",
     "sidebar__survey_dialog__thanks": "Maraming salamat",
     "sidebar__survey_dialog__by_who": "MaxAI.me team",
-    "sidebar__survey_dialog__cta_button_text": "Sabihin sa amin ang iyong karanasan"
+    "sidebar__survey_dialog__cta_button_text": "Sabihin sa amin ang iyong karanasan",
+    "floating_menu__input__placeholder__after_ai_response": "Sabihin sa AI kung ano ang susunod na gawin..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Siguraduhing mayroong hindi bababa sa 1,500 high-speed advanced text query bawat buwan. Pagkatapos maabot ang limitasyon, maaaring bawasan ang bilis at kalidad ng modelo.",
     "image_generate__secondary__content": "Mga high-speed image query: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Siguraduhing mayroong hindi bababa sa 1,500 high-speed image query bawat buwan. Pagkatapos maabot ang limitasyon, maaaring bawasan ang bilis at kalidad ng modelo."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "I-click para hilingin sa AI na magsulat muli, isalin, buodin, o ipaliwanag ang napiling teksto.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Maaari mong i-type ang \"{{KEY_TEXT}}\" upang madaling makita ang opsiyong ito.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Maaari ka ring magtanong sa AI na gawin ang anumang aksyon sa napiling teksto.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Pindutin",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "upang pumunta sa ibaba.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Pindutin",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "upang pumunta sa itaas.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Pindutin",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "upang piliin ang opsiyon.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "I-click upang palitan ang napiling teksto ng nilikhang laman ng AI.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Maaari kang magtanong sa AI na ayusin ang tugon ng AI kahit na gusto mo."
   }
 }

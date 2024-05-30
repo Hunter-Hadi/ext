@@ -64,7 +64,8 @@
     "continue_with_google": "Продолжить с Google",
     "continue_with_email": "Продолжить с электронной почтой",
     "privacy_policy": "Политика конфиденциальности",
-    "terms_of_service": "Условия использования"
+    "terms_of_service": "Условия использования",
+    "shortcut": "Ярлык"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Это очень полезно: это помогает нам создавать лучший опыт работы с ИИ для вас :)",
     "sidebar__survey_dialog__thanks": "Большое спасибо",
     "sidebar__survey_dialog__by_who": "Команда MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Расскажите нам о своем опыте"
+    "sidebar__survey_dialog__cta_button_text": "Расскажите нам о своем опыте",
+    "floating_menu__input__placeholder__after_ai_response": "Скажите ИИ, что делать дальше..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Убедитесь, что каждый месяц у вас есть не менее 1 500 быстрых запросов расширенного текста. После достижения лимита скорость и качество модели могут быть снижены.",
     "image_generate__secondary__content": "Запросы изображений высокой скорости: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Убедитесь, что каждый месяц у вас есть не менее 1 500 запросов изображений высокой скорости. После достижения лимита скорость и качество модели могут быть снижены."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Нажмите, чтобы попросить ИИ переписать, перевести, суммировать или объяснить выбранный текст.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Вы можете набрать \"{{KEY_TEXT}}\", чтобы быстро найти эту опцию.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Вы также можете попросить ИИ выполнить любое действие с выбранным текстом.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Нажмите",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "чтобы прокрутить вниз.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Нажмите",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "чтобы прокрутить вверх.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Нажмите",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Ввод",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "чтобы выбрать опцию.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Нажмите, чтобы заменить выбранный текст сгенерированным ИИ контентом.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Вы можете попросить ИИ уточнить ответ ИИ так, как вам нужно."
   }
 }

@@ -64,7 +64,8 @@
     "continue_with_google": "கூகிளுடன் தொடர்ந்து செல்லுங்கள்",
     "continue_with_email": "மின்னஞ்சலுடன் தொடர்ந்து செல்லுங்கள்",
     "privacy_policy": "தனியுரிமை கொள்கை",
-    "terms_of_service": "சேவை விதிமுறைகள்"
+    "terms_of_service": "சேவை விதிமுறைகள்",
+    "shortcut": "குறுக்கீடு"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "இது மிகவும் உதவுகிறது: இது உங்களுக்கு சிறந்த AI அனுபவத்தை உருவாக்குகிறது :)",
     "sidebar__survey_dialog__thanks": "மிக்க நன்றி",
     "sidebar__survey_dialog__by_who": "MaxAI.me குழு",
-    "sidebar__survey_dialog__cta_button_text": "உங்கள் அனுபவத்தை எங்களுக்கு சொல்லுங்கள்"
+    "sidebar__survey_dialog__cta_button_text": "உங்கள் அனுபவத்தை எங்களுக்கு சொல்லுங்கள்",
+    "floating_menu__input__placeholder__after_ai_response": "AI-ஐ அடிப்படையில் என்ன செய்ய கூறுங்கள்..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "ஒரு மாதத்தின் வரம்புக்கு குறைவாகவோ அதன் பின்னர் மாதத்தின் வரம்பு அதிகரிக்கப்படும் என்று உறுதியாக்கவும், மாதத்தின் வரம்பு அதிகரிக்கப்படும் பின்னர் மாதத்தின் வரம்பு மாதிரி மாதிரியில் குறைந்து செல்லும்.",
     "image_generate__secondary__content": "உயர் வேக படங்கள் விசாரணைகள்: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "ஒரு மாதத்தின் வரம்புக்கு குறைவாகவோ அதன் பின்னர் மாதத்தின் வரம்பு அதிகரிக்கப்படும் என்று உறுதியாக்கவும், மாதத்தின் வரம்பு அதிகரிக்கப்படும் பின்னர் மாதத்தின் வரம்பு மாதிரி மாதிரியில் குறைந்து செல்லும்."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "தேர்ந்தெடுக்கப்பட்ட உரையை மீண்டும் எழுத, மொழிபெயர்க்க, சுருக்கம் செய்ய அல்லது விளக்கமாக கேட்க ஐயை கூறுங்கள்.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "இந்த விருப்பத்தை விரைவில் கண்டறிய நீங்கள் \"{{KEY_TEXT}}\" என்று தட்டச்சு செய்யலாம்.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "நீங்கள் தேர்ந்தெடுத்த உரையில் ஏதேனும் செயல்பாட்டை ஐயை கூறி அழைக்க முடியும்.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "கீழே செல்ல அழுத்தவும்",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "அழுத்தவும்.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "மேலே செல்ல அழுத்தவும்",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "அழுத்தவும்.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "தேர்ந்தெடுத்த விருப்பத்தை தேர்ந்தெடுக்க அழுத்தவும்",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "அழுத்தவும்",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "என்று செல்லவும்.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "ஐயமிடப்பட்ட உரையை தேர்ந்தெடுத்த உரையுடன் மாற்றுக.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI பதிலை நீங்கள் எப்படி விரைவில் மேம்படுத்த முடியும் என்று கூறுங்கள்."
   }
 }

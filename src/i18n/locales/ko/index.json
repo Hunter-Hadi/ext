@@ -64,7 +64,8 @@
     "continue_with_google": "Google로 계속하기",
     "continue_with_email": "이메일로 계속하기",
     "privacy_policy": "개인정보 처리 방침",
-    "terms_of_service": "서비스 약관"
+    "terms_of_service": "서비스 약관",
+    "shortcut": "바로 가기"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "정말로 도움이 됩니다: 당신을 위한 최고의 AI 경험을 만들 수 있게 도와줍니다 :)",
     "sidebar__survey_dialog__thanks": "정말 감사합니다",
     "sidebar__survey_dialog__by_who": "MaxAI.me 팀",
-    "sidebar__survey_dialog__cta_button_text": "경험에 대해 말씀해주세요"
+    "sidebar__survey_dialog__cta_button_text": "경험에 대해 말씀해주세요",
+    "floating_menu__input__placeholder__after_ai_response": "AI에게 다음 작업을 알려주세요..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "매월 최소 1,500개의 고속 고급 텍스트 쿼리를 보장하세요. 한도에 도달한 후 모델의 속도와 품질이 감소될 수 있습니다.",
     "image_generate__secondary__content": "고속 이미지 쿼리: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "매월 최소 1,500개의 고속 이미지 쿼리를 보장하세요. 한도에 도달한 후 모델의 속도와 품질이 감소될 수 있습니다."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "선택한 텍스트를 재작성, 번역, 요약 또는 설명하기 위해 AI에게 질문하려면 클릭하세요.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "이 옵션을 빠르게 찾으려면 \"{{KEY_TEXT}}\"를 입력할 수 있습니다.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "또한 AI에게 선택한 텍스트에 대해 어떤 작업을 수행하도록 할 수도 있습니다.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "아래로 이동하려면",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "를 누르세요.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "위로 이동하려면",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "를 누르세요.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "옵션을 선택하려면",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "를 누르세요.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "를 누르세요.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "AI가 생성한 콘텐츠로 선택한 텍스트를 대체하려면 클릭하세요.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI에게 AI 응답을 원하는 대로 개선하도록 할 수 있습니다."
   }
 }

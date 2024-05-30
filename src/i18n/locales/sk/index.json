@@ -64,7 +64,8 @@
     "continue_with_google": "Pokračovať s Google",
     "continue_with_email": "Pokračovať s emailom",
     "privacy_policy": "Zásady ochrany osobných údajov",
-    "terms_of_service": "Podmienky služby"
+    "terms_of_service": "Podmienky služby",
+    "shortcut": "Skratka"
   },
   "settings": {
     "left_menu__me": "Ja a MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Je to veľmi užitočné: pomáha nám vytvárať najlepší AI zážitok pre vás :)",
     "sidebar__survey_dialog__thanks": "Veľmi pekne ďakujem",
     "sidebar__survey_dialog__by_who": "Tím MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Povedzte nám o svojom zážitku"
+    "sidebar__survey_dialog__cta_button_text": "Povedzte nám o svojom zážitku",
+    "floating_menu__input__placeholder__after_ai_response": "Povedzte AI, čo má robiť ďalej..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych pokročilých textových dotazov každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu.",
     "image_generate__secondary__content": "Rýchle dotazy na obrázky: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych dotazov na obrázky každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite pre požiadanie AI o prepísanie, preklad, zhrnutie alebo vysvetlenie vybraného textu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Môžete napísať \"{{KEY_TEXT}}\" pre rýchle nájdenie tejto možnosti.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Môžete tiež požiadať AI o vykonanie akcie na vybranom texte.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Stlačte",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "pre posun nadol.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Stlačte",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "pre posun nahor.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Stlačte",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pre výber možnosti.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknite pre nahradenie vybraného textu obsahom generovaným AI.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Môžete požiadať AI o upresnenie odpovede AI podľa vlastných predstáv."
   }
 }

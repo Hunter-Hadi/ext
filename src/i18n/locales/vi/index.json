@@ -64,7 +64,8 @@
     "continue_with_google": "Tiếp tục với Google",
     "continue_with_email": "Tiếp tục với email",
     "privacy_policy": "Chính sách bảo mật",
-    "terms_of_service": "Điều khoản dịch vụ"
+    "terms_of_service": "Điều khoản dịch vụ",
+    "shortcut": "Phím tắt"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Điều này rất hữu ích: nó giúp chúng tôi tạo ra trải nghiệm AI tốt nhất cho bạn :)",
     "sidebar__survey_dialog__thanks": "Cảm ơn rất nhiều",
     "sidebar__survey_dialog__by_who": "Đội MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Cho chúng tôi biết về trải nghiệm của bạn"
+    "sidebar__survey_dialog__cta_button_text": "Cho chúng tôi biết về trải nghiệm của bạn",
+    "floating_menu__input__placeholder__after_ai_response": "Nói với AI điều gì cần làm tiếp theo..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn văn bản nâng cao tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
     "image_generate__secondary__content": "Truy vấn hình ảnh tốc độ cao: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn hình ảnh tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Nhấp để yêu cầu AI viết lại, dịch, tóm tắt hoặc giải thích đoạn văn bản đã chọn.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Bạn có thể gõ \"{{KEY_TEXT}}\" để nhanh chóng tìm tùy chọn này.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Bạn cũng có thể yêu cầu AI thực hiện bất kỳ hành động nào trên đoạn văn bản đã chọn.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Nhấn",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "để di chuyển xuống.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Nhấn",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "để di chuyển lên.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Nhấn",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "để chọn tùy chọn.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Nhấp để thay thế đoạn văn bản đã chọn bằng nội dung do AI tạo ra.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Bạn có thể yêu cầu AI điều chỉnh phản hồi của AI theo ý muốn."
   }
 }

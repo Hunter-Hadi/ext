@@ -64,7 +64,8 @@
     "continue_with_google": "Lanjutkan dengan Google",
     "continue_with_email": "Lanjutkan dengan email",
     "privacy_policy": "Kebijakan Privasi",
-    "terms_of_service": "Syarat Layanan"
+    "terms_of_service": "Syarat Layanan",
+    "shortcut": "Pintasan"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Ini sangat membantu: ini membantu kami menciptakan pengalaman AI terbaik untuk Anda :)",
     "sidebar__survey_dialog__thanks": "Terima kasih banyak",
     "sidebar__survey_dialog__by_who": "Tim MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Beritahu kami tentang pengalaman Anda"
+    "sidebar__survey_dialog__cta_button_text": "Beritahu kami tentang pengalaman Anda",
+    "floating_menu__input__placeholder__after_ai_response": "Beritahu AI apa yang harus dilakukan selanjutnya..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri teks lanjutan kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",
     "image_generate__secondary__content": "Kueri gambar kecepatan tinggi: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri gambar kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik untuk meminta AI menulis ulang, menerjemahkan, merangkum, atau menjelaskan teks yang dipilih.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Anda dapat mengetik \"{{KEY_TEXT}}\" untuk dengan cepat menemukan opsi ini.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Anda juga dapat meminta AI melakukan tindakan apa pun pada teks yang dipilih.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Tekan",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "untuk ke bawah.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Tekan",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "untuk ke atas.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Tekan",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "untuk memilih opsi.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klik untuk mengganti teks yang dipilih dengan konten yang dihasilkan oleh AI.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Anda dapat meminta AI untuk menyempurnakan respons AI sesuai keinginan Anda."
   }
 }

@@ -64,7 +64,8 @@
     "continue_with_google": "Continuar com o Google",
     "continue_with_email": "Continuar com email",
     "privacy_policy": "Política de Privacidade",
-    "terms_of_service": "Termos de Serviço"
+    "terms_of_service": "Termos de Serviço",
+    "shortcut": "Atalho"
   },
   "settings": {
     "left_menu__me": "Eu e o MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Isso é super útil: nos ajuda a criar a melhor experiência de IA para você :)",
     "sidebar__survey_dialog__thanks": "Muito obrigado",
     "sidebar__survey_dialog__by_who": "Equipe MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Nos conte sobre sua experiência"
+    "sidebar__survey_dialog__cta_button_text": "Nos conte sobre sua experiência",
+    "floating_menu__input__placeholder__after_ai_response": "Diga à IA o que fazer a seguir..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas avançadas de texto em alta velocidade por mês. Após atingir o limite, a velocidade e qualidade do modelo podem ser reduzidas.",
     "image_generate__secondary__content": "Consultas de imagem em alta velocidade: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas de imagem em alta velocidade por mês. Após atingir o limite, a velocidade e qualidade do modelo podem ser reduzidas."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Clique para pedir à IA para reescrever, traduzir, resumir ou explicar o texto selecionado.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Pode digitar \"{{KEY_TEXT}}\" para encontrar rapidamente esta opção.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Também pode pedir à IA para executar qualquer ação no texto selecionado.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Pressione",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "para descer.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Pressione",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "para subir.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Pressione",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "para selecionar a opção.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Clique para substituir o texto selecionado por conteúdo gerado pela IA.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Pode pedir à IA para refinar a resposta da IA como quiser."
   }
 }

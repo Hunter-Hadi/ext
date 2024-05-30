@@ -64,7 +64,8 @@
     "continue_with_google": "Googleで続行",
     "continue_with_email": "メールで続行",
     "privacy_policy": "プライバシーポリシー",
-    "terms_of_service": "利用規約"
+    "terms_of_service": "利用規約",
+    "shortcut": "ショートカット"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "これは非常に役立ちます：あなたのために最高のAI体験を作り出すのに役立ちます :)",
     "sidebar__survey_dialog__thanks": "どうもありがとうございます",
     "sidebar__survey_dialog__by_who": "MaxAI.meチーム",
-    "sidebar__survey_dialog__cta_button_text": "ご意見をお聞かせください"
+    "sidebar__survey_dialog__cta_button_text": "ご意見をお聞かせください",
+    "floating_menu__input__placeholder__after_ai_response": "次にAIに何をするか伝えてください..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "毎月少なくとも1,500の高速な高度なテキストクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
     "image_generate__secondary__content": "高速なイメージクエリ：{{QUERIES}}",
     "image_generate__secondary__content__tooltip": "毎月少なくとも1,500の高速なイメージクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。"
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "選択したテキストを書き換え、翻訳、要約、または説明するためにAIに質問するにはクリックしてください。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "このオプションをすばやく見つけるために「{{KEY_TEXT}}」と入力できます。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "また、選択したテキストに対してAIに任意のアクションを実行するように依頼することもできます。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "下に移動するには",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "を押します。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "上に移動するには",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "を押します。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "オプションを選択するには",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "を押します。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "を押します。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "選択したテキストをAIが生成したコンテンツで置き換えるにはクリックしてください。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AIにAIの応答を自由に改善するように依頼することができます。"
   }
 }

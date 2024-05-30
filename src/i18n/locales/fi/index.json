@@ -64,7 +64,8 @@
     "continue_with_google": "Jatka Googlella",
     "continue_with_email": "Jatka sähköpostilla",
     "privacy_policy": "Tietosuojakäytäntö",
-    "terms_of_service": "Käyttöehdot"
+    "terms_of_service": "Käyttöehdot",
+    "shortcut": "Pikanäppäin"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Tämä on todella hyödyllistä: se auttaa meitä luomaan parhaan AI-kokemuksen sinulle :)",
     "sidebar__survey_dialog__thanks": "Kiitos paljon",
     "sidebar__survey_dialog__by_who": "MaxAI.me-tiimi",
-    "sidebar__survey_dialog__cta_button_text": "Kerro meille kokemuksestasi"
+    "sidebar__survey_dialog__cta_button_text": "Kerro meille kokemuksestasi",
+    "floating_menu__input__placeholder__after_ai_response": "Kerro AI:lle mitä tehdä seuraavaksi..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa edistynyttä tekstikyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
     "image_generate__secondary__content": "Nopeat kuvakyselyt: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa kuvakyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikkaa pyytääksesi AI:ta kirjoittamaan, kääntämään, tiivistämään tai selittämään valitun tekstin.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Voit kirjoittaa \"{{KEY_TEXT}}\" löytääksesi tämän vaihtoehdon nopeasti.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Voit myös pyytää AI:ta suorittamaan minkä tahansa toiminnon valitulle tekstille.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Paina",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "siirtyäksesi alaspäin.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Paina",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "siirtyäksesi ylöspäin.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Paina",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "valitaksesi vaihtoehdon.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klikkaa korvataksesi valitun tekstin AI:n luomalla sisällöllä.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Voit pyytää AI:ta hienosäätämään AI-vastausta haluamallasi tavalla."
   }
 }

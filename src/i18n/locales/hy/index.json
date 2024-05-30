@@ -61,7 +61,8 @@
     "continue_with_google": "Շարունակել Google-ով",
     "continue_with_email": "Շարունակել էլ․ փոստով",
     "privacy_policy": "Գաղտնիության պայմաններ",
-    "terms_of_service": "Ծառայության պայմաններ"
+    "terms_of_service": "Ծառայության պայմաններ",
+    "shortcut": "Շորտկատ"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -831,7 +832,8 @@
     "sidebar__survey_dialog__description__item2": "Այսպիսով շատ օգտակար է: Սա մեզ օգնում է ստեղծել լավագույն AI առաջադրանքը ձեր համար :)",
     "sidebar__survey_dialog__thanks": "Շնորհակալություն շատ",
     "sidebar__survey_dialog__by_who": "MaxAI.me թիմը",
-    "sidebar__survey_dialog__cta_button_text": "Ասեք մեր մասին"
+    "sidebar__survey_dialog__cta_button_text": "Ասեք մեր մասին",
+    "floating_menu__input__placeholder__after_ai_response": "Ասեք AI-ին, թե ինչպես հաջողվելու..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Հավասարականացրեք առավելագույնը 1,500 արագ առաջադրանք ամիսը: Առավելագույնը սահմանին հասանելի չէ, ապա մոդելի արագությունը և որակը կարող են լուծարվել:",
     "image_generate__secondary__content": "Արագ պատկերագրությունների բարձր արագությամբ հարցումներ՝ {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Հավասարականացրեք առավելագույնը 1,500 արագ պատկերագրություն ամիսը: Առավելագույնը սահմանին հասանելի չէ, ապա մոդելի արագությունը և որակը կարող են լուծարվել:"
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Սեղմեք, որպեսզի հարցնել AI-ին, որպեսզի վերագրել, թարգմանել, ամփոփել կամ բացատրել ընտրված տեքստը։",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Դուք կարող եք գրել \"{{KEY_TEXT}}\", որպեսզի արագ գտնել այս ընտրանքը։",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Դուք նաև կարող եք հարցնել AI-ին, որպեսզի կատարել ցանկացած գործողություն ընտրված տեքստի վրա։",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Սեղմեք",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "բերելու համար։",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Սեղմեք",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "բերելու համար։",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Սեղմեք",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Ներմուծել",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "ընտրելու համար։",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Սեղմեք, որպեսզի փոխարինեք ընտրված տեքստը AI-ի գեներացված բովանդակով։",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Դուք կարող եք հարցնել AI-ին, որպեսզի ձեռքով վերաբերեք AI-ի պատասխանը։"
   }
 }

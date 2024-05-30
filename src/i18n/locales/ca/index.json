@@ -64,7 +64,8 @@
     "continue_with_google": "Continua amb Google",
     "continue_with_email": "Continua amb correu electrònic",
     "privacy_policy": "Política de privacitat",
-    "terms_of_service": "Termes del servei"
+    "terms_of_service": "Termes del servei",
+    "shortcut": "Drecera"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Això és molt útil: ens ajuda a crear la millor experiència d'IA per a tu :)",
     "sidebar__survey_dialog__thanks": "Moltes gràcies",
     "sidebar__survey_dialog__by_who": "Equip de MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Explica'ns la teva experiència"
+    "sidebar__survey_dialog__cta_button_text": "Explica'ns la teva experiència",
+    "floating_menu__input__placeholder__after_ai_response": "Indica a l'IA què fer a continuació..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes avançades de text d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
     "image_generate__secondary__content": "Consultes d'imatges d'alta velocitat: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes d'imatges d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Feu clic per demanar a l'IA que reescriu, tradueixi, resumisca o expliqui el text seleccionat.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Podeu escriure \"{{KEY_TEXT}}\" per trobar ràpidament aquesta opció.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "També podeu demanar a l'IA que realitzi qualsevol acció sobre el text seleccionat.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Prem",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "per baixar.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Prem",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "per pujar.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Prem",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "per seleccionar l'opció.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Feu clic per substituir el text seleccionat per un contingut generat per l'IA.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Podeu demanar a l'IA que millore la resposta de l'IA com vulgueu."
   }
 }

@@ -312,10 +312,11 @@ export class ClientConversationManager {
         cloneRemoteConversation.lastMessageId = last_msg.messageId
         delete (cloneRemoteConversation as any).last_msg
       } else if (cloneRemoteConversation.lastMessageId) {
-        // 获取最后一条消息
+        // 先从本地获取最后一条消息
         last_msg = await ClientConversationMessageManager.getMessageByMessageId(
           cloneRemoteConversation.lastMessageId,
         )
+        // 如果还是没有，就从远程获取
         if (!last_msg) {
           last_msg = (
             await downloadRemoteMessagesToClient(cloneRemoteConversation.id, [

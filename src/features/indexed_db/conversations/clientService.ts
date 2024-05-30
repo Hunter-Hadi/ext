@@ -369,6 +369,15 @@ export const syncLocalConversationToRemote = async (
   ) => void,
 ) => {
   if (!(await isEnableSyncConversation())) {
+    onProgress?.(
+      {
+        current: 0,
+        total: 0,
+        progress: 0,
+        successCount: 0,
+      },
+      'end',
+    )
     return true
   }
   let current = 0

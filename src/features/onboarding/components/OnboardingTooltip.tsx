@@ -115,7 +115,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
         ...resetProps.PopperProps,
         style: {
           ...props.style,
-          zIndex: 2147483620,
+          zIndex: 2147483619,
         },
         sx: {
           '&[data-popper-placement*="bottom"] > div': {

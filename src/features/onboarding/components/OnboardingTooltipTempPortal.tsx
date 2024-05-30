@@ -70,10 +70,13 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
   }, [propContainer, onboardingConfig])
 
   const syncAlreadyOpenedCacheBySceneType = useCallback(() => {
+    if (alreadyOpened) {
+      return
+    }
     getAlreadyOpenedCacheBySceneType(sceneType).then((opened) => {
       setAlreadyOpened(opened)
     })
-  }, [sceneType])
+  }, [sceneType, alreadyOpened])
 
   // // 用 useInterval 来找 referenceElement
   // useInterval(
@@ -128,11 +131,7 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
 
   useFocus(syncAlreadyOpenedCacheBySceneType)
 
-  useEffectOnce(() => {
-    getAlreadyOpenedCacheBySceneType(sceneType).then((opened) => {
-      setAlreadyOpened(opened)
-    })
-  })
+  useEffectOnce(syncAlreadyOpenedCacheBySceneType)
 
   if (sceneType === 'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM') {
     console.log('referenceElement', referenceElement, alreadyOpened, container)

@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 
+import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
 import { IOnboardingTooltipProps } from '@/features/onboarding/components/OnboardingTooltip'
 import { IOnBoardingSceneType } from '@/features/onboarding/types'
 import useCommands from '@/hooks/useCommands'
-import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
 export type IOnBoardingTooltipConfigType = {
   referenceElementSelector: string
   tooltipProps?: Partial<
@@ -62,14 +62,25 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `div[data-id="${CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION}"].floating-context-menu-item`,
         tooltipProps: {
-          title: 'Click to replace selected text with AI-generated content.',
           floatingMenuTooltip: true,
           placement: 'right-start',
           sx: {
-            maxWidth: 370,
+            maxWidth: 390,
           },
           InformationBarProps: {
             shortcut: 'Enter',
+          },
+          slotProps: {
+            popper: {
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 8],
+                  },
+                },
+              ],
+            },
           },
         },
       }

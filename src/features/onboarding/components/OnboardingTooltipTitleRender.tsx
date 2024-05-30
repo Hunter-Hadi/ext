@@ -74,6 +74,10 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
     )
   }
 
+  if (sceneType === 'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM') {
+    return <>{'Click to replace selected text with AI-generated content.'}</>
+  }
+
   return (
     <>
       ERROR!! You need to provide some content for

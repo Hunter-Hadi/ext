@@ -48,11 +48,8 @@ import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
 } from '@/features/common/constants'
-<<<<<<< HEAD
-import paymentManager from '@/features/payment/background/PaymentManager'
-=======
 import { devResetAllOnboardingTooltipOpenedCache } from '@/features/onboarding/utils'
->>>>>>> features-onboarding-tooltips-zhouruibin-20240524
+import paymentManager from '@/features/payment/background/PaymentManager'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import WebsiteContextManager from '@/features/websiteContext/background'

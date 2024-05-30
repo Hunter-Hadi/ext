@@ -4,6 +4,7 @@ import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect } from 'react'
 
+import DevContent from '@/components/DevContent'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSyncConversation from '@/features/chatgpt/hooks/useSyncConversation'
 
@@ -47,37 +48,40 @@ const AutoSyncConversation: FC<{
     }
   }, [currentConversationId, enabled])
   return (
-    <Stack
-      direction={'row'}
-      alignItems={'center'}
-      gap={1}
-      sx={{
-        ...sx,
-      }}
-    >
-      {conversationAutoSyncState.autoSyncStatus === 'uploading' && (
-        <>
-          <Typography fontSize={'14px'} color={'text.primary'}>
-            {`(${conversationAutoSyncState.autoSyncStep}/${conversationAutoSyncState.autoSyncTotalCount})`}
-          </Typography>
-          <SyncOutlinedIcon
-            sx={{
-              color: 'primary.main',
-              // 一直旋转
-              animation: 'spin 2s linear infinite',
-              '@keyframes spin': {
-                from: {
-                  transform: 'rotate(0deg)',
+    <DevContent>
+      {/*NOTE: 不给用户看上传进度*/}
+      <Stack
+        direction={'row'}
+        alignItems={'center'}
+        gap={1}
+        sx={{
+          ...sx,
+        }}
+      >
+        {conversationAutoSyncState.autoSyncStatus === 'uploading' && (
+          <>
+            <Typography fontSize={'14px'} color={'text.primary'}>
+              {`(${conversationAutoSyncState.autoSyncStep}/${conversationAutoSyncState.autoSyncTotalCount})`}
+            </Typography>
+            <SyncOutlinedIcon
+              sx={{
+                color: 'primary.main',
+                // 一直旋转
+                animation: 'spin 2s linear infinite',
+                '@keyframes spin': {
+                  from: {
+                    transform: 'rotate(0deg)',
+                  },
+                  to: {
+                    transform: 'rotate(360deg)',
+                  },
                 },
-                to: {
-                  transform: 'rotate(360deg)',
-                },
-              },
-            }}
-          />
-        </>
-      )}
-    </Stack>
+              }}
+            />
+          </>
+        )}
+      </Stack>
+    </DevContent>
   )
 }
 export default AutoSyncConversation

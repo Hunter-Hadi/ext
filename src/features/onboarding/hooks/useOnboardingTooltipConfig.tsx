@@ -66,9 +66,21 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
             }
           },
           floatingMenuTooltip: true,
-          placement: 'left',
+          placement: 'top-start',
           sx: {
             maxWidth: 440,
+          },
+          slotProps: {
+            popper: {
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [24, 8],
+                  },
+                },
+              ],
+            },
           },
         },
       }

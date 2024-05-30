@@ -191,6 +191,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
           menuItem.id && isHover
       )
     }, [isHover, floatingDropdownMenuSelectedItem.lastHoverContextMenuId])
+
     return (
       <Box
         {...props}
@@ -1025,7 +1026,7 @@ export const MenuComponent = React.forwardRef<
                 }}
                 component={'div'}
                 ref={refs.setFloating}
-                className="Menu"
+                className={`Menu dropdown-menu`}
                 style={{
                   position: strategy,
                   top: y ?? 0,

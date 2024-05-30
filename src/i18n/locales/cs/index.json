@@ -64,7 +64,8 @@
     "continue_with_google": "Pokračovat s Google",
     "continue_with_email": "Pokračovat s emailem",
     "privacy_policy": "Zásady ochrany osobních údajů",
-    "terms_of_service": "Podmínky služby"
+    "terms_of_service": "Podmínky služby",
+    "shortcut": "Zkratka"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "To je velmi užitečné: pomáhá nám vytvářet nejlepší AI zážitek pro vás :)",
     "sidebar__survey_dialog__thanks": "Moc děkujeme",
     "sidebar__survey_dialog__by_who": "Tým MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Řekněte nám o svém zážitku"
+    "sidebar__survey_dialog__cta_button_text": "Řekněte nám o svém zážitku",
+    "floating_menu__input__placeholder__after_ai_response": "Řekněte AI, co má udělat dál..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých pokročilých textových dotazů každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu.",
     "image_generate__secondary__content": "Rychlé dotazy na obrázky: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých dotazů na obrázky každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikněte pro požádání AI o přepsání, překlad, shrnutí nebo vysvětlení vybraného textu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Můžete napsat \"{{KEY_TEXT}}\" pro rychlé nalezení této možnosti.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Můžete také požádat AI o provedení jakékoli akce na vybraném textu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Stiskněte",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "pro pohyb dolů.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Stiskněte",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "pro pohyb nahoru.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Stiskněte",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pro výběr možnosti.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klikněte pro nahrazení vybraného textu obsahem generovaným AI.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Můžete požádat AI, aby upravilo obsah generovaný AI podle vašich přání."
   }
 }

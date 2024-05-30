@@ -31,6 +31,7 @@ import {
   removeAllRange,
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
+import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
 import useCommands from '@/hooks/useCommands'
 
 const FloatingMiniMenu: FC<{
@@ -110,7 +111,7 @@ const FloatingMiniMenu: FC<{
       !floatingDropdownMenu.open
     setFinalShow(isShow)
     if (!tempSelection?.selectionRect || !isShow) {
-      return;
+      return
     }
     const rect = computedRectPosition(tempSelection.selectionRect)
     if (!isProduction) {
@@ -174,6 +175,7 @@ const FloatingMiniMenu: FC<{
       handleCloseClickContextMenuButton()
     }
   }, [clientWritingMessage.loading])
+
   return (
     <Paper
       elevation={3}
@@ -320,6 +322,10 @@ const FloatingMiniMenu: FC<{
         />
         <FloatingContextMenuMiniMenuMoreButton placement={placement} />
       </Stack>
+      <OnboardingTooltipTempPortal
+        showStateTrigger={() => show}
+        sceneType="CONTEXT_MENU_CTA_BUTTON"
+      />
     </Paper>
   )
 }

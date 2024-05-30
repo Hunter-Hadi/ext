@@ -64,7 +64,8 @@
     "continue_with_google": "Jätka Google'iga",
     "continue_with_email": "Jätka e-posti teel",
     "privacy_policy": "Privaatsuspoliitika",
-    "terms_of_service": "Teenuse tingimused"
+    "terms_of_service": "Teenuse tingimused",
+    "shortcut": "Kiirklahv"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "See on väga kasulik: see aitab meil luua teile parima AI kogemuse :)",
     "sidebar__survey_dialog__thanks": "Suur tänu",
     "sidebar__survey_dialog__by_who": "MaxAI.me meeskond",
-    "sidebar__survey_dialog__cta_button_text": "Räägi meile oma kogemusest"
+    "sidebar__survey_dialog__cta_button_text": "Räägi meile oma kogemusest",
+    "floating_menu__input__placeholder__after_ai_response": "Ütle AI-le, mida järgmiseks teha..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret edasijõudnud tekstipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
     "image_generate__secondary__content": "Kiired pildipäringud: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret pildipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klõpsake, et küsida AI-lt valitud teksti ümberkirjutamist, tõlkimist, kokkuvõtet või selgitust.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Saate kiiresti leida selle valiku, tippides \"{{KEY_TEXT}}\".",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Samuti saate paluda AI-l teha valitud tekstiga mis tahes toimingut.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Vajutage",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "liikumiseks allapoole.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Vajutage",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "liikumiseks ülespoole.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Vajutage",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Sisestage",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "valiku valimiseks.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klõpsake, et asendada valitud tekst AI-genereritud sisuga.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Saate küsida AI-lt, et ta täpsustaks AI-ga genereeritud sisu vastavalt oma soovile."
   }
 }

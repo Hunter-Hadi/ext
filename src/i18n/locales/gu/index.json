@@ -64,7 +64,8 @@
     "continue_with_google": "ગૂગલ સાથે ચાલો",
     "continue_with_email": "ઇમેઇલ સાથે ચાલો",
     "privacy_policy": "ગોપનીયતા નીતિ",
-    "terms_of_service": "સેવાઓની શરતો"
+    "terms_of_service": "સેવાઓની શરતો",
+    "shortcut": "શોર્ટકટ"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "આ ખૂબ મદદગાર છે: તે તમારા માટે સૌથી સરસ AI અનુભવ બનાવે છે :)",
     "sidebar__survey_dialog__thanks": "ખૂબ આભાર",
     "sidebar__survey_dialog__by_who": "MaxAI.me ટીમ",
-    "sidebar__survey_dialog__cta_button_text": "તમારી અનુભવ વિશે કહો"
+    "sidebar__survey_dialog__cta_button_text": "તમારી અનુભવ વિશે કહો",
+    "floating_menu__input__placeholder__after_ai_response": "AIને આપવામાં આવે છે કે આગળ શું કરવું..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "મહિનેની કમાલ કમાલ એડવાન્સ ટેક્સ્ટ પ્રશ્નો ખોલવા માટે 1,500 કમાલ કમાલ પ્રશ્નો આપો. મર્યાદા પૂરી થઈ જતી પછી, મોડેલની ગતિ અને ગુણવત્તા ઘટી શકે છે.",
     "image_generate__secondary__content": "હાઈ-સ્પીડ ઇમેજ પ્રશ્નો: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "મહિનેની કમાલ કમાલ ઇમેજ પ્રશ્નો ખોલવા માટે 1,500 કમાલ કમાલ પ્રશ્નો આપો. મર્યાદા પૂરી થઈ જતી પછી, મોડેલની ગતિ અને ગુણવત્તા ઘટી શકે છે."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "પસંદ કરેલા ટેક્સ્ટને પુનઃલેખન, અનુવાદ, સંક્ષેપણ અથવા સમજાવવા માટે AIને પૂછવા માટે ક્લિક કરો.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "તમે આ વિકલ્પ શીઘ્રઇ શોધવા માટે \"{{KEY_TEXT}}\" ટાઇપ કરી શકો છો.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "તમે પણ AIને પસંદ કરેલા ટેક્સ્ટ પર કોઈપણ ક્રિયા કરવા માટે પૂછી શકો છો.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "નીચે જવા માટે",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "દબાવો.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "ઉપર જવા માટે",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "દબાવો.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "પસંદગી કરવા માટે",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "દબાવો",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "વિકલ્પ પસંદ કરવા માટે.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "પસંદ કરેલા ટેક્સ્ટને AIદ્વારા ઉત્પન્ન કરેલ સામગ્રીથી બદલવા માટે ક્લિક કરો.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "તમે AI પર આધાર રાખીને AI દ્વારા બનાવેલ સામગ્રીને જેવું પણ તમે ચાહો તેવું સુધારવા માટે પૂછી શકો છો."
   }
 }

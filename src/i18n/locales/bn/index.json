@@ -64,7 +64,8 @@
     "continue_with_google": "গুগল দিয়ে চালিয়ে যান",
     "continue_with_email": "ইমেল দিয়ে চালিয়ে যান",
     "privacy_policy": "গোপনীয়তা নীতি",
-    "terms_of_service": "সেবা প্রদানের শর্তাবলী"
+    "terms_of_service": "সেবা প্রদানের শর্তাবলী",
+    "shortcut": "শর্টকাট"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__by_who": "MaxAI.me দল",
     "sidebar__survey_dialog__cta_button_text": "আপনার অভিজ্ঞতা সম্পর্কে আমাদের জানান",
     "sidebar__context_clear__delete__title": "\"সংশ্লিষ্টতা মুছে ফেলা\" লাইন মুছুন",
-    "sidebar__context_clear__delete__description": "এই \"সংশ্লিষ্টতা মুছে ফেলা\" লাইন মুছলে বর্তমান চ্যাট ইতিহাসসহ পূর্বের চ্যাট ইতিহাসকে যোগ করা হবে। এই চ্যাট ইতিহাস একত্রিত করে AI আপনার মেসেজের উত্তর দেওয়ার সময় বিবেচনা করবে।"
+    "sidebar__context_clear__delete__description": "এই \"সংশ্লিষ্টতা মুছে ফেলা\" লাইন মুছলে বর্তমান চ্যাট ইতিহাসসহ পূর্বের চ্যাট ইতিহাসকে যোগ করা হবে। এই চ্যাট ইতিহাস একত্রিত করে AI আপনার মেসেজের উত্তর দেওয়ার সময় বিবেচনা করবে।",
+    "floating_menu__input__placeholder__after_ai_response": "বলুন এআইকে পরবর্তীতে কি করতে হবে..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "মাসিক কমপক্ষে 1,500 উচ্চ গতির এডভান্সড টেক্সট ক্যুয়েরি নিশ্চিত করুন। সীমা অর্জন করার পরে মডেলের গতি এবং মান হ্রাস হতে পারে।",
     "image_generate__secondary__content": "উচ্চ গতির ইমেজ ক্যুয়েরি: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "মাসিক কমপক্ষে 1,500 উচ্চ গতির ইমেজ ক্যুয়েরি নিশ্চিত করুন। সীমা অর্জন করার পরে মডেলের গতি এবং মান হ্রাস হতে পারে।"
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "ক্লিক করুন যেখানে এআইকে বলুন যে নির্বাচিত পাঠ্যটি পুনরায় লেখা, অনুবাদ করা, সংক্ষেপ করা বা ব্যাখ্যা করা হবে।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "আপনি এই অপশনটি দ্রুত খুঁজতে \"{{KEY_TEXT}}\" টাইপ করতে পারেন।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "আপনি এছাড়াও এআইকে বলতে পারেন নির্বাচিত পাঠ্যে কোনও ক্রিয়া সম্পাদন করতে।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "চাপুন",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "নিচে যেতে।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "চাপুন",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "উপরে যেতে।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "চাপুন",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "এন্টার",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "অপশনটি নির্বাচন করতে।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "ক্লিক করুন এআই-জেনারেটেড কনটেন্ট দিয়ে নির্বাচিত পাঠ্যটি প্রতিস্থাপন করতে।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "আপনি চাইলে AI-কে বলতে পারেন যেভাবেই আপনি চান তারপরে AI-তৈরি করা সামগ্রিক বিষয়বস্তুটি পরিষ্কার করতে।"
   }
 }

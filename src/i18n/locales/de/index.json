@@ -64,7 +64,8 @@
     "continue_with_google": "Mit Google fortfahren",
     "continue_with_email": "Mit E-Mail fortfahren",
     "privacy_policy": "Datenschutzrichtlinie",
-    "terms_of_service": "Nutzungsbedingungen"
+    "terms_of_service": "Nutzungsbedingungen",
+    "shortcut": "Verknüpfung"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Das ist super hilfreich: Es hilft uns, das beste KI-Erlebnis für Sie zu schaffen :)",
     "sidebar__survey_dialog__thanks": "Vielen Dank",
     "sidebar__survey_dialog__by_who": "MaxAI.me Team",
-    "sidebar__survey_dialog__cta_button_text": "Erzählen Sie uns von Ihren Erfahrungen"
+    "sidebar__survey_dialog__cta_button_text": "Erzählen Sie uns von Ihren Erfahrungen",
+    "floating_menu__input__placeholder__after_ai_response": "Sagen Sie der KI, was als nächstes zu tun ist..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits fortgeschrittene Textabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",
     "image_generate__secondary__content": "Hochgeschwindigkeits Bildabfragen: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits Bildabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klicken Sie hier, um die KI aufzufordern, den ausgewählten Text neu zu schreiben, zu übersetzen, zusammenzufassen oder zu erklären.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Sie können \"{{KEY_TEXT}}\" eingeben, um diese Option schnell zu finden.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Sie können die KI auch bitten, eine beliebige Aktion auf den ausgewählten Text auszuführen.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Drücken Sie",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "um nach unten zu gehen.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Drücken Sie",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "um nach oben zu gehen.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Drücken Sie",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Eingabe",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "um die Option auszuwählen.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klicken Sie hier, um den ausgewählten Text durch von der KI generierten Inhalt zu ersetzen.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Sie können die KI bitten, den KI-generierten Inhalt nach Belieben zu verfeinern."
   }
 }

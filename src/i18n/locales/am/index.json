@@ -64,7 +64,8 @@
     "continue_with_google": "በ Google ይግቡ",
     "continue_with_email": "በ ኢሜይል ይግቡ",
     "privacy_policy": "ግላዊ መርህ",
-    "terms_of_service": "የአገልግሎት ውሂብ"
+    "terms_of_service": "የአገልግሎት ውሂብ",
+    "shortcut": "ተጨማሪ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "ይህ ተጨማሪ ነው: ይህ እኛን የሚጠቀም የAI ውስጥ ይጠቀሙ :)",
     "sidebar__survey_dialog__thanks": "እኛን ከልቤ አመሰግናለሁ",
     "sidebar__survey_dialog__by_who": "MaxAI.me ቡድን",
-    "sidebar__survey_dialog__cta_button_text": "እኛን እንዴት እንደሚረዳው እንዲሁም አስተያየት"
+    "sidebar__survey_dialog__cta_button_text": "እኛን እንዴት እንደሚረዳው እንዲሁም አስተያየት",
+    "floating_menu__input__placeholder__after_ai_response": "እዚህ ያለ AI እይታ ያግኙ..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "ማሳወቂያ ጥሩ ጥሩ ጥያቄዎች ከሆነ በስፋት 1,500 የተሳሳተ ጥሩ ጥሩ ጥያቄዎች እንዲሁም በማሳወቂያው የሚያስቀምጡ ስፋቶች የሚያስተካክሉትን የተሳሳተ ጥሩ ጥሩ ጥያቄዎች ይመልከቱ።",
     "image_generate__secondary__content": "የተሳሳተ ምስል ጥሩ ጥሩ ጥያቄዎች: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "ማሳወቂያ ጥሩ ጥሩ ጥያቄዎች ከሆነ በስፋት 1,500 የተሳሳተ ምስል ጥሩ ጥሩ ጥያቄዎች እንዲሁም በማሳወቂያው የሚያስቀምጡ ስፋቶች የሚያስተካክሉትን የተሳሳተ ምስል ጥሩ ጥሩ ጥያቄዎች ይመልከቱ።"
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "የተመለሰውን ጽሁፍና ትርጉም ወደ AI ጠይቀው ይጠይቃል።",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "ይህንን አማራጭ ይፈልጋሉ \"{{KEY_TEXT}}\".",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "ሌሎች ምልክቶችን ለማግኘት AI ይጠይቃል።",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "ይጠቅማል",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "ለውጥ ይጠቅማል።",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "ይጠቅማል",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "ለላይ ይጠቅማል።",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "ይጠቅማል",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "ይጫኑ",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "የአማራጭን አማራጭ ይምረጡ።",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "የተመለሰውን የአማራጭ ጽሁፍ ይቀይሩ።",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "እባክዎ ለማስተካከል አንዳንድ ጥያቄ ያግኙን AI-ን የAI-ተሰናክሏል ይሰጣል."
   }
 }

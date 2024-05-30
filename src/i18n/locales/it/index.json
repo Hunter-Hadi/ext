@@ -64,7 +64,8 @@
     "continue_with_google": "Continua con Google",
     "continue_with_email": "Continua con email",
     "privacy_policy": "Informativa sulla privacy",
-    "terms_of_service": "Termini di servizio"
+    "terms_of_service": "Termini di servizio",
+    "shortcut": "Scorciatoia"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Questo è molto utile: ci aiuta a creare la migliore esperienza di IA per te :)",
     "sidebar__survey_dialog__thanks": "Grazie mille",
     "sidebar__survey_dialog__by_who": "Il team di MaxAI.me",
-    "sidebar__survey_dialog__cta_button_text": "Raccontaci la tua esperienza"
+    "sidebar__survey_dialog__cta_button_text": "Raccontaci la tua esperienza",
+    "floating_menu__input__placeholder__after_ai_response": "Dì all'IA cosa fare dopo..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Assicurati almeno 1.500 query avanzate di testo ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",
     "image_generate__secondary__content": "Query di immagini ad alta velocità: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Assicurati almeno 1.500 query di immagini ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Clicca per chiedere all'IA di riscrivere, tradurre, riassumere o spiegare il testo selezionato.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Puoi digitare \"{{KEY_TEXT}}\" per trovare rapidamente questa opzione.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Puoi anche chiedere all'IA di eseguire qualsiasi azione sul testo selezionato.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Premi",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "per scorrere verso il basso.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Premi",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "per scorrere verso l'alto.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Premi",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Invio",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "per selezionare l'opzione.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Clicca per sostituire il testo selezionato con il contenuto generato dall'IA.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puoi chiedere all'IA di perfezionare i contenuti generati dall'IA come preferisci."
   }
 }

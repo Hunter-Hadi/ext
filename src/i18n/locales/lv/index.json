@@ -64,7 +64,8 @@
     "continue_with_google": "Turpināt ar Google",
     "continue_with_email": "Turpināt ar e-pastu",
     "privacy_policy": "Privātuma politika",
-    "terms_of_service": "Pakalpojuma noteikumi"
+    "terms_of_service": "Pakalpojuma noteikumi",
+    "shortcut": "Saīsne"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -834,7 +835,8 @@
     "sidebar__survey_dialog__description__item2": "Tas ir ļoti noderīgi: tas palīdz mums radīt labāko AI pieredzi tieši jums :)",
     "sidebar__survey_dialog__thanks": "Liels paldies",
     "sidebar__survey_dialog__by_who": "MaxAI.me komanda",
-    "sidebar__survey_dialog__cta_button_text": "Pastāstiet mums par savu pieredzi"
+    "sidebar__survey_dialog__cta_button_text": "Pastāstiet mums par savu pieredzi",
+    "floating_menu__input__placeholder__after_ai_response": "Pateikt AI, ko darīt tālāk..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -1169,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma papildinātus teksta vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
     "image_generate__secondary__content": "Augsta ātruma attēlu vaicājumi: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma attēlu vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Noklikšķiniet, lai lūgtu AI pārrakstīt, tulkojot, apkopot vai skaidrot izvēlēto tekstu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Jūs varat ierakstīt \"{{KEY_TEXT}}\", lai ātri atrastu šo opciju.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Jūs arī varat lūgt AI veikt jebkādu darbību ar izvēlēto tekstu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Nospiediet",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "lai pārvietotos uz leju.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Nospiediet",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "lai pārvietotos uz augšu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Nospiediet",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Ievadiet",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "lai izvēlētos opciju.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Noklikšķiniet, lai aizstātu izvēlēto tekstu ar AI ģenerētu saturu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Jūs varat lūgt AI precizēt AI ģenerēto saturu, kā vien vēlaties."
   }
 }

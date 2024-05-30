@@ -1184,6 +1184,6 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "เพื่อเลือกตัวเลือก",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "คลิกเพื่อแทนที่ข้อความที่เลือกด้วยเนื้อหาที่ AI สร้างขึ้น",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "คุณสามารถขอให้ AI ปรับปรุงการตอบสนองของ AI ได้ตามต้องการ"
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "คุณสามารถขอให้ AI ปรับปรุงเนื้อหาที่ AI สร้างขึ้นได้อย่างใดก็ได้"
   }
 }

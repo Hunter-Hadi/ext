@@ -1184,6 +1184,6 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Въведете",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "за да изберете опцията.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Щракнете, за да замените избрания текст със съдържание, генерирано от ИИ.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Можете да помолите ИИ да уточни отговора на ИИ по всякакъв начин, както искате."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Можете да поискате от AI да уточни съдържанието, генерирано от AI, по всякакъв начин."
   }
 }

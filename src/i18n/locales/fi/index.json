@@ -1184,6 +1184,6 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "valitaksesi vaihtoehdon.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klikkaa korvataksesi valitun tekstin AI:n luomalla sisällöllä.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Voit pyytää AI:ta hienosäätämään AI-vastausta haluamallasi tavalla."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Voit pyytää tekoälyä tarkentamaan tekoälyn luomaa sisältöä haluamallasi tavalla."
   }
 }

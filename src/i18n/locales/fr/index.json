@@ -1184,6 +1184,6 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Entrée",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pour sélectionner l'option.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Cliquez pour remplacer le texte sélectionné par du contenu généré par l'IA.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Vous pouvez demander à l'IA de peaufiner la réponse de l'IA comme vous le souhaitez."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Vous pouvez demander à l'IA de peaufiner le contenu généré par l'IA comme vous le souhaitez."
   }
 }

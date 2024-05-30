@@ -1184,6 +1184,6 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "tuşuna basın.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Seçili metni AI tarafından oluşturulan içerikle değiştirmek için tıklayın.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI'ya AI yanıtını istediğiniz gibi geliştirmesini söyleyebilirsiniz."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI tarafından oluşturulan içeriği istediğiniz gibi geliştirmek için AI'ya sorabilirsiniz."
   }
 }

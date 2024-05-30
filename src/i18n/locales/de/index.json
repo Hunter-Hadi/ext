@@ -1184,6 +1184,6 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Eingabe",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "um die Option auszuwählen.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klicken Sie hier, um den ausgewählten Text durch von der KI generierten Inhalt zu ersetzen.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Sie können die KI bitten, die KI-Antwort nach Belieben zu verfeinern."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Sie können die KI bitten, den KI-generierten Inhalt nach Belieben zu verfeinern."
   }
 }

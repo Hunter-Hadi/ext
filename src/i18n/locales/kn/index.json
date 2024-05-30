@@ -1169,5 +1169,8 @@
     "advanced_text__secondary__content__tooltip": "ಕಡಿಮೆಯಾಗಿಲ್ಲದೆ ಪ್ರತಿ ತಿಂಗಳು 1,500 ಹೆಚ್ಚು ವೇಗದ ಪ್ರಾಧಾನ್ಯತಾಪೂರ್ಣ ಪಠ್ಯ ಪ್ರಶ್ನೆಗಳನ್ನು ಖಚಿತಪಡಿಸಿ. ಮಿತಿಯನ್ನು ತಲುಪಿದ ನಂತರ, ಮಾದರಿಯ ವೇಗ ಮತ್ತು ಗುಣಮಟ್ಟ ಕಡಿಮೆಯಾಗಬಹುದು.",
     "image_generate__secondary__content": "ಹೆಚ್ಚು ವೇಗದ ಚಿತ್ರ ಪ್ರಶ್ನೆಗಳು: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "ಕಡಿಮೆಯಾಗಿಲ್ಲದೆ ಪ್ರತಿ ತಿಂಗಳು 1,500 ಹೆಚ್ಚು ವೇಗದ ಚಿತ್ರ ಪ್ರಶ್ನೆಗಳನ್ನು ಖಚಿತಪಡಿಸಿ. ಮಿತಿಯನ್ನು ತಲುಪಿದ ನಂತರ, ಮಾದರಿಯ ವೇಗ ಮತ್ತು ಗುಣಮಟ್ಟ ಕಡಿಮೆಯಾಗಬಹುದು."
+  },
+  "onboarding": {
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "ನೀವು ಬಯಸಿದಂತೆ AI-ಗೆ AI-ನ ಉತ್ಪನ್ನವಾದ ವಿಷಯವನ್ನು ಸರಿಪಡಿಸಲು ಕೇಳಬಹುದು."
   }
 }

@@ -696,6 +696,7 @@ const FloatingContextMenu: FC<{
             showStateTrigger={() => {
               return (
                 floatingDropdownMenu.open &&
+                !activeAIResponseMessage &&
                 (currentFloatingContextMenuDraft === '' ||
                   inputValue.length > 0)
               )

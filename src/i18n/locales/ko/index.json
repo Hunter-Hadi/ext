@@ -1183,7 +1183,7 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "옵션을 선택하려면",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "를 누르세요.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "를 누르세요.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "AI가 생성한 콘텐츠로 선택한 텍스트를 대체하려면 클릭하세요.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "선택한 텍스트를 AI로 생성된 콘텐츠로 대체하려면 클릭하세요.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI가 생성한 콘텐츠를 원하는 대로 개선하기 위해 AI에게 질문할 수 있습니다."
   }
 }

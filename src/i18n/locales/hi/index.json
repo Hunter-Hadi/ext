@@ -1183,7 +1183,7 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "विकल्प का चयन करने के लिए",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "दबाएं",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "Enter",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "चयनित पाठ को AI द्वारा उत्पन्न सामग्री से बदलने के लिए क्लिक करें।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "चयनित पाठ को AI-उत्पन्न सामग्री के साथ बदलने के लिए क्लिक करें।",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "आप AI से कह सकते हैं कि आप किसी भी तरीके से AI द्वारा उत्पन्न सामग्री को सुधारेंगे।"
   }
 }

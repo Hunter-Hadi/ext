@@ -625,7 +625,9 @@ async function fixManifestTooLongName() {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = []
+  const keys = [
+    'onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1',
+  ]
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
   await fixManifestTooLongName()

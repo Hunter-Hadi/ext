@@ -1183,7 +1183,7 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "לחץ",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "כדי לבחור את האפשרות.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "לחץ כדי להחליף את הטקסט שנבחר בתוכן שנוצר על ידי האינטיליגנציה המלאכותית.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "לחץ כדי להחליף את הטקסט הנבחר עם תוכן שנוצר על ידי AI.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "תוכל לבקש מהמודע המלאכותי לשפר את תוכן שנוצר על ידי המודע המלאכותי בדיוק כפי שתרצה."
   }
 }

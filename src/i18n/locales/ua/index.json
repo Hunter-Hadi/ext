@@ -1183,7 +1183,7 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Натисніть",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Введіть",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "щоб вибрати опцію.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Натисніть, щоб замінити вибраний текст змістом, створеним ШІ.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Клацніть, щоб замінити виділений текст змістом, створеним штучним інтелектом.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Ви можете попросити ШІ вдосконалити згенерований ним контент так, як вам потрібно."
   }
 }

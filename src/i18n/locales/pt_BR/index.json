@@ -1183,7 +1183,7 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Pressione",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "para selecionar a opção.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Clique para substituir o texto selecionado pelo conteúdo gerado pela IA.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Clique para substituir o texto selecionado por conteúdo gerado por IA.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Você pode pedir para a IA refinar o conteúdo gerado pela IA da maneira que desejar."
   }
 }

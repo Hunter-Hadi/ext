@@ -1183,7 +1183,7 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "চাপুন",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "এন্টার",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "অপশনটি নির্বাচন করতে।",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "ক্লিক করুন এআই-জেনারেটেড কনটেন্ট দিয়ে নির্বাচিত পাঠ্যটি প্রতিস্থাপন করতে।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "এই ক্লিক করুন যেটা নির্বাচিত টেক্সটকে AI-তৈরি কন্টেন্ট দিয়ে প্রতিস্থাপন করবে।",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "আপনি চাইলে AI-কে বলতে পারেন যেভাবেই আপনি চান তারপরে AI-তৈরি করা সামগ্রিক বিষয়বস্তুটি পরিষ্কার করতে।"
   }
 }

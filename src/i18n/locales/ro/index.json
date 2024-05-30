@@ -1183,7 +1183,7 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Apăsați",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pentru a selecta opțiunea.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Apăsați pentru a înlocui textul selectat cu conținut generat de AI.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Faceți clic pentru a înlocui textul selectat cu conținut generat de AI.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puteți solicita AI să rafineze conținutul generat de AI așa cum doriți."
   }
 }

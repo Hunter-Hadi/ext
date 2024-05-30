@@ -1183,7 +1183,7 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Nhấn",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "để chọn tùy chọn.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Nhấp để thay thế đoạn văn bản đã chọn bằng nội dung do AI tạo ra.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Nhấp để thay thế văn bản đã chọn bằng nội dung được tạo bởi trí tuệ nhân tạo.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Bạn có thể yêu cầu AI điều chỉnh nội dung do AI tạo ra theo ý muốn của bạn."
   }
 }

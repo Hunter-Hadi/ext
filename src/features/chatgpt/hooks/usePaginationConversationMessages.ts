@@ -41,7 +41,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
         let remoteMessages: IChatMessage[] = []
         if (
           maxAIBetaFeatures.chat_sync &&
-          (totalPageRef.current >= data.pageParam || totalPageRef.current === 0)
+          totalPageRef.current >= data.pageParam
         ) {
           const result = await clientFetchMaxAIAPI<{
             current_page: number

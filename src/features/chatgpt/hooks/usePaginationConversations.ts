@@ -186,8 +186,7 @@ const usePaginationConversations = (
         let remoteConversations: IConversation[] = []
         if (
           maxAIBetaFeatures.chat_sync &&
-          (totalPageRef.current >= totalPageRef.current ||
-            totalPageRef.current === 0)
+          totalPageRef.current >= data.pageParam
         ) {
           const result = await clientFetchMaxAIAPI<{
             current_page: number
@@ -262,10 +261,50 @@ const usePaginationConversations = (
     })
 
   useEffect(() => {
-    setPaginationConversations(
-      data?.pages?.reduce((acc, page) => acc.concat(page), []) || [],
-    )
+    const conversationMap = new Map<string, IPaginationConversation>()
+    data?.pages?.forEach((page) => {
+      page.forEach((conversation) => {
+        conversationMap.set(conversation.id, conversation)
+      })
+    })
+    setPaginationConversations((previous) => {
+      return orderBy(
+        previous
+          .map((conversation) => {
+            if (conversationMap.get(conversation.id)) {
+              // 如果时间不一样，更新
+              if (
+                conversationMap.get(conversation.id)?.updated_at !==
+                conversation.updated_at
+              ) {
+                const newConversation = cloneDeep(
+                  conversationMap.get(conversation.id),
+                )
+                conversationMap.delete(conversation.id)
+                // 排序不变
+                newConversation!.updated_at = conversation.updated_at
+                return newConversation!
+              } else {
+                // 时间一样，删除
+                conversationMap.delete(conversation.id)
+              }
+            }
+            return conversation
+          })
+          .concat(Array.from(conversationMap.values())),
+        ['updated_at'],
+        ['desc'],
+      )
+    })
   }, [data?.pages])
+  // 因为上面是动态更新，不是覆盖，所以这里需要过滤
+  useEffect(() => {
+    setPaginationConversations((previous) => {
+      return previous.filter(
+        (conversation) => conversation.title === filter.type,
+      )
+    })
+  }, [filter.type])
   const fetchPaginationConversations = async () => {
     return []
   }

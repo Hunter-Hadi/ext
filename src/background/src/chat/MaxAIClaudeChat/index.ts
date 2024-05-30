@@ -170,6 +170,10 @@ class MaxAIClaudeChat extends BaseChat {
     if (taskId) {
       this.taskList[taskId] = () => controller.abort()
     }
+    // claude search answer下不传递chat_history，否则会触发claude的报错 - 2024-05-30 - @xianhui
+    if (backendAPI === 'get_claude_response' && postBody.prompt_name === '[Search] answer') {
+      postBody.chat_history = []
+    }
     log.info('streaming start', postBody)
     // 后端会每段每段的给前端返回数据
     // 前端保持匀速输出内容

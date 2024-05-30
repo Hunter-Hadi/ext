@@ -3,7 +3,12 @@ import { useMemo } from 'react'
 import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
 import { IOnboardingTooltipProps } from '@/features/onboarding/components/OnboardingTooltip'
 import { IOnBoardingSceneType } from '@/features/onboarding/types'
+import {
+  findOnboardingTooltipElement,
+  getAlreadyOpenedCacheBySceneType,
+} from '@/features/onboarding/utils'
 import useCommands from '@/hooks/useCommands'
+import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 export type IOnBoardingTooltipConfigType = {
   referenceElementSelector: string
   tooltipProps?: Partial<
@@ -24,6 +29,9 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           sx: {
             maxWidth: 400,
           },
+          style: {
+            zIndex: 2147483621,
+          },
           InformationBarProps: {
             shortcut: chatBoxShortCutKey,
           },
@@ -36,10 +44,30 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
         // referenceElementSelector: `textarea#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
         referenceElementSelector: `div#ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT`,
         tooltipProps: {
+          beforeTooltipShow: async () => {
+            // FLOATING_CONTEXT_MENU_LIST_BOX 没打开过，不展示 FLOATING_CONTEXT_MENU_INPUT_BOX
+            const contextMenuListBoxOpened =
+              await getAlreadyOpenedCacheBySceneType(
+                'FLOATING_CONTEXT_MENU_LIST_BOX',
+              )
+            const root = getMaxAIFloatingContextMenuRootElement()
+            if (
+              !contextMenuListBoxOpened ||
+              !!findOnboardingTooltipElement(
+                'FLOATING_CONTEXT_MENU_LIST_BOX',
+                root,
+              )
+            ) {
+              // 阻止 Tooltip 打开
+              return false
+            } else {
+              return true
+            }
+          },
           floatingMenuTooltip: true,
-          placement: 'top-start',
+          placement: 'left',
           sx: {
-            maxWidth: 420,
+            maxWidth: 440,
           },
         },
       }
@@ -81,6 +109,19 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
                 },
               ],
             },
+          },
+        },
+      }
+    }
+
+    if (sceneType === 'FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE') {
+      return {
+        referenceElementSelector: `div#ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT`,
+        tooltipProps: {
+          floatingMenuTooltip: true,
+          placement: 'left',
+          sx: {
+            maxWidth: 300,
           },
         },
       }

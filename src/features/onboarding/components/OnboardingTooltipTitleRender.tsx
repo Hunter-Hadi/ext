@@ -14,30 +14,33 @@ interface IOnboardingTooltipTitleRenderProps {
 const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
   sceneType,
 }) => {
-  const { t } = useTranslation()
-
-  console.log(`FLOATING_CONTEXT_MENU_LIST_BOX`, sceneType)
+  const { t } = useTranslation(['prompt', 'onboarding'])
 
   if (sceneType === 'CONTEXT_MENU_CTA_BUTTON') {
     return (
-      <>
-        {
-          'Click to ask AI to rewrite, translate, summarize, or explain the selected text.'
-        }
-      </>
+      <>{t('onboarding:onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text')}</>
     )
   }
+
   if (sceneType === 'FLOATING_CONTEXT_MENU_INPUT_BOX') {
     return (
       <Stack>
-        <Typography
-          fontSize={14}
-          lineHeight={1.5}
-        >{`Type "make shorter" to quickly find this option.`}</Typography>
-        <Typography
-          fontSize={14}
-          lineHeight={1.5}
-        >{`You can also ask AI to perform any action on the selected text.`}</Typography>
+        <Typography fontSize={14} lineHeight={1.5}>
+          {t(
+            'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1',
+            {
+              // Improve writing 的 i18n key
+              // 这里的 improve writing 这个词，i18n的时候，有没有办法直接使用menu里的那个 Improve writing 的 i18n 的结果，
+              // 这样能保证，tooltip里的 improve writing 的名字，和下拉菜单里的，一定是一样的，这样用户就一定能成功滤出来 - @huangsong
+              KEY_TEXT: t('prompt:4e54395c-5e8b-4bbd-a309-b6057a4737d3'),
+            },
+          )}
+        </Typography>
+        <Typography fontSize={14} lineHeight={1.5}>
+          {t(
+            'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2',
+          )}
+        </Typography>
       </Stack>
     )
   }
@@ -46,28 +49,50 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
     return (
       <Stack spacing={1.5}>
         <Stack direction={'row'} alignItems="center" spacing={0.5}>
-          <Typography fontSize={14} lineHeight={1.5}>{`Hit`}</Typography>
+          <Typography fontSize={14} lineHeight={1.5}>
+            {t(
+              'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1',
+            )}
+          </Typography>
           <ShortcutKeyBox>
             <ArrowDropDownIcon />
           </ShortcutKeyBox>
           <Typography fontSize={14} lineHeight={1.5}>
-            {`to go down.`}
+            {t(
+              'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2',
+            )}
           </Typography>
         </Stack>
         <Stack direction={'row'} alignItems="center" spacing={0.5}>
-          <Typography fontSize={14} lineHeight={1.5}>{`Hit`}</Typography>
+          <Typography fontSize={14} lineHeight={1.5}>
+            {t(
+              'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1',
+            )}
+          </Typography>
           <ShortcutKeyBox>
             <ArrowDropUpIcon />
           </ShortcutKeyBox>
           <Typography fontSize={14} lineHeight={1.5}>
-            {`to go up.`}
+            {t(
+              'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2',
+            )}
           </Typography>
         </Stack>
         <Stack direction={'row'} alignItems="center" spacing={0.5}>
-          <Typography fontSize={14} lineHeight={1.5}>{`Hit`}</Typography>
-          <ShortcutKeyBox name={'Enter'} />
           <Typography fontSize={14} lineHeight={1.5}>
-            {`to select the option.`}
+            {t(
+              'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1',
+            )}
+          </Typography>
+          <ShortcutKeyBox
+            name={t(
+              'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2',
+            )}
+          />
+          <Typography fontSize={14} lineHeight={1.5}>
+            {t(
+              'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3',
+            )}
           </Typography>
         </Stack>
       </Stack>
@@ -75,15 +100,26 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
   }
 
   if (sceneType === 'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM') {
-    return <>{'Click to replace selected text with AI-generated content.'}</>
+    return (
+      <>
+        {t(
+          'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1',
+        )}
+      </>
+    )
   }
 
-  return (
-    <>
-      ERROR!! You need to provide some content for
-      OnboardingTooltipTitleRender!!
-    </>
-  )
+  if (sceneType === 'FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE') {
+    return (
+      <>
+        {t(
+          'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1',
+        )}
+      </>
+    )
+  }
+
+  return null
 }
 
 export default OnboardingTooltipTitleRender

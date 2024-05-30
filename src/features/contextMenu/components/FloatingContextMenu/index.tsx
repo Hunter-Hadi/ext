@@ -45,7 +45,9 @@ import FloatingContextMenuList from '@/features/contextMenu/components/FloatingC
 import FloatingContextMenuTitleBar from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuTitleBar'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
-import { useFloatingContextMenuDraftHistoryChange } from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
+import useFloatingContextMenuDraft, {
+  useFloatingContextMenuDraftHistoryChange,
+} from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useInitContextWindow, {
   focusContextWindowInput,
 } from '@/features/contextMenu/hooks/useInitContextWindow'
@@ -80,6 +82,8 @@ const FloatingContextMenu: FC<{
     setIsSettingCustomVariables,
     setIsInputCustomVariables,
   } = useInitContextWindow()
+  const { currentFloatingContextMenuDraft, activeAIResponseMessage } =
+    useFloatingContextMenuDraft()
   const {
     hideFloatingContextMenu,
     floatingDropdownMenu,
@@ -388,8 +392,8 @@ const FloatingContextMenu: FC<{
                   height: 10,
                   // background: 'red',
                   position: 'absolute',
-                  top: 28,
-                  left: 32,
+                  bottom: 48,
+                  left: 0,
                   pointerEvents: 'none',
                   zIndex: -1,
                 }}
@@ -667,19 +671,37 @@ const FloatingContextMenu: FC<{
           })
         }}
       />
-      <OnboardingTooltipTempPortal
-        showStateTrigger={() => floatingDropdownMenu.open}
-        sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX"
-      />
+
       <OnboardingTooltipTempPortal
         showStateTrigger={() => floatingDropdownMenu.open}
         sceneType="FLOATING_CONTEXT_MENU_LIST_BOX"
+      />
+      <OnboardingTooltipTempPortal
+        showStateTrigger={() => {
+          if (loading) {
+            return false
+          }
+          return (
+            floatingDropdownMenu.open && currentFloatingContextMenuDraft === ''
+          )
+        }}
+        sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX"
       />
       <OnboardingTooltipTempPortal
         showStateTrigger={() =>
           floatingDropdownMenu.open && contextWindowList.length > 0
         }
         sceneType="FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM"
+      />
+      <OnboardingTooltipTempPortal
+        showStateTrigger={() => {
+          if (loading) {
+            return false
+          }
+
+          return floatingDropdownMenu.open && !!activeAIResponseMessage
+        }}
+        sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE"
       />
     </FloatingPortal>
   )

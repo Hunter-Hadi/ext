@@ -46,6 +46,9 @@ export interface IOnboardingTooltipProps extends TooltipProps {
   minimumTooltip?: boolean
 
   InformationBarProps?: ITooltipInformationBarProps
+
+  // 在打开 Tooltip 之前的 回掉函数，如果这个函数返回 false ，会阻止 Tooltip 打开
+  beforeTooltipShow?: () => Promise<boolean> | boolean
 }
 
 const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
@@ -57,6 +60,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
     minimumTooltip,
     floatingMenuTooltip,
     InformationBarProps,
+    beforeTooltipShow,
     ...resetProps
   } = props
 
@@ -77,16 +81,22 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
 
   const [open, setOpen] = React.useState(false)
 
-  const openTooltip = useCallback(() => {
-    // 根据 sceneType 获取 onboarding cache
-    // 判断是否打开过，如果打开过则不再显示
-    getAlreadyOpenedCacheBySceneType(sceneType).then((opened) => {
+  const openTooltip = useCallback(async () => {
+    // 如果返回 false ，会阻止 Tooltip 打开
+    const beforeTooltipShowResponse = beforeTooltipShow
+      ? await beforeTooltipShow()
+      : true
+
+    if (beforeTooltipShowResponse) {
+      // 根据 sceneType 获取 onboarding cache
+      // 判断是否打开过，如果打开过则不再显示
+      const opened = await getAlreadyOpenedCacheBySceneType(sceneType)
       if (!opened) {
         setOpen(true)
         setOpenedCacheBySceneType(sceneType)
       }
-    })
-  }, [sceneType])
+    }
+  }, [sceneType, beforeTooltipShow])
 
   const closeTooltip = useCallback(() => {
     setOpen(false)
@@ -110,12 +120,13 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
       placement={props.placement || 'top'}
       {...resetProps}
       open={open}
+      id={`ONBOARDING_TOOLTIP__${sceneType}`}
       PopperProps={{
         container,
         ...resetProps.PopperProps,
         style: {
-          ...props.style,
           zIndex: 2147483619,
+          ...props.style,
         },
         sx: {
           '&[data-popper-placement*="bottom"] > div': {

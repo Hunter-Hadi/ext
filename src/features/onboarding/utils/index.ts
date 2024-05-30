@@ -4,10 +4,7 @@ import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
-import {
-  CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY,
-  isProduction,
-} from '@/constants'
+import { CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY } from '@/constants'
 import {
   IOnBoardingSceneType,
   IOnBoardingTooltipOpenedCacheKey,
@@ -22,18 +19,21 @@ export const onBoardingSceneTypeToOnBoardingCacheKey = (
 // 刷新所有的 onboarding tooltip opened cache
 // 用于测试环境调试
 export const devResetAllOnboardingTooltipOpenedCache = async () => {
-  if (isProduction) {
-    return
-  }
-  const OnboardingTooltipOpenedCacheKeys: IOnBoardingTooltipOpenedCacheKey[] = [
-    'ON_BOARDING_TOOLTIP__CONTEXT_MENU_CTA_BUTTON__OPENED',
-    'ON_BOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__OPENED',
-    'ON_BOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_LIST_BOX__OPENED',
-    'ON_BOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__OPENED',
+  // zztest
+  // if (isProduction) {
+  //   return
+  // }
+  const OnboardingTooltipSceneTypes: IOnBoardingSceneType[] = [
+    'CONTEXT_MENU_CTA_BUTTON',
+    'FLOATING_CONTEXT_MENU_INPUT_BOX',
+    'FLOATING_CONTEXT_MENU_LIST_BOX',
+    'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM',
+    'FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE',
   ]
 
   const data = await getChromeExtensionOnBoardingData()
-  OnboardingTooltipOpenedCacheKeys.forEach((cacheKey) => {
+  OnboardingTooltipSceneTypes.forEach((sceneType) => {
+    const cacheKey = onBoardingSceneTypeToOnBoardingCacheKey(sceneType)
     data[cacheKey] = false
   })
 
@@ -58,4 +58,11 @@ export const setOpenedCacheBySceneType = async (
   const currentSceneTypeCacheKey =
     onBoardingSceneTypeToOnBoardingCacheKey(sceneType)
   await setChromeExtensionOnBoardingData(currentSceneTypeCacheKey, true)
+}
+
+export const findOnboardingTooltipElement = (
+  sceneType: IOnBoardingSceneType,
+  rootElement: HTMLElement | null = document.body,
+) => {
+  return rootElement?.querySelector(`#ONBOARDING_TOOLTIP__${sceneType}`)
 }

@@ -113,7 +113,7 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
         }
       })
       observerRef.current.observe(container, {
-        childList: true,
+        // childList: true,
         subtree: true,
         attributes: true,
       })
@@ -133,9 +133,13 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
 
   useEffectOnce(syncAlreadyOpenedCacheBySceneType)
 
-  if (sceneType === 'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM') {
-    console.log('referenceElement', referenceElement, alreadyOpened, container)
-  }
+  console.log(
+    'referenceElement',
+    sceneType,
+    referenceElement,
+    alreadyOpened,
+    container,
+  )
 
   // // 如果已经展示过了，不再渲染任何内容
   // if (alreadyOpened) {

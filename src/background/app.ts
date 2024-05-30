@@ -371,9 +371,10 @@ const initChromeExtensionUpdated = async () => {
   }, (1 + Math.floor(Math.random() * 9)) * 1000)
 
   // 测试环境 刷新插件时，重置所有的onboarding tooltip opened cache
-  if (!isProduction) {
-    devResetAllOnboardingTooltipOpenedCache()
-  }
+  // zztest
+  // if (!isProduction) {
+  devResetAllOnboardingTooltipOpenedCache()
+  // }
 }
 
 /**

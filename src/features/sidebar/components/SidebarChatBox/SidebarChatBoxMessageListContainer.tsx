@@ -6,6 +6,7 @@ import last from 'lodash-es/last'
 import throttle from 'lodash-es/throttle'
 import React, { FC, useCallback, useEffect, useRef } from 'react'
 
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import usePaginationConversationMessages from '@/features/chatgpt/hooks/usePaginationConversationMessages'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import useBlur from '@/features/common/hooks/useBlur'
@@ -23,19 +24,13 @@ interface IProps {
 }
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
-  const {
-    conversationId,
-    writingMessage,
-    isAIResponding,
-    sx,
-    onLoadingChatHistory,
-  } = props
+  const { writingMessage, isAIResponding, sx, onLoadingChatHistory } = props
 
   const scrollContainerRef = useRef<HTMLElement | null>(null)
 
   // 新增的消息不是通过分页加载到messages里的，是直接插入的
   const lastMessageIdRef = useRef<string | null>(null)
-
+  const { currentConversationId } = useClientConversation()
   const {
     paginationMessages,
     isFetchingNextPage,
@@ -45,7 +40,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     getPreviousPageLastMessageId,
     resetPreviousPageLastMessageId,
     lastPaginationMessageIdRef,
-  } = usePaginationConversationMessages(conversationId)
+  } = usePaginationConversationMessages(currentConversationId || '')
 
   const loadMore = useCallback(() => {
     if (isFetchingNextPage || !hasNextPage) {

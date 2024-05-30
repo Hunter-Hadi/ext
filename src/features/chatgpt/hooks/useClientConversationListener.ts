@@ -96,24 +96,48 @@ export const useClientConversationListener = () => {
       return
     }
 
-    const updateFiles = async () => {
+    const updateConversation = async () => {
+      ClientConversationManager.getConversationById(currentConversationId).then(
+        async (conversation) => {
+          if (conversation) {
+            const isDelete = conversation.isDelete
+            console.log(
+              `ConversationDB[V3] [${currentConversationId}]effect更新`,
+              conversation,
+            )
+            if (isDelete) {
+              setClientConversationMap((prevState) => {
+                const newState = cloneDeep(prevState)
+                delete newState[conversation.id]
+                return newState
+              })
+            } else {
+              setClientConversationMap((prevState) => {
+                return {
+                  ...prevState,
+                  [conversation.id]: conversation,
+                }
+              })
+            }
+          }
+        },
+      )
       const result = await port.postMessage({
         event: 'Client_chatGetFiles',
         data: {
           conversationId: currentConversationId,
         },
       })
-
       if (isArray(result.data)) {
         setFilesRef.current(result.data)
       }
     }
 
-    updateFiles()
-    window.addEventListener('focus', updateFiles)
+    updateConversation()
+    window.addEventListener('focus', updateConversation)
 
     return () => {
-      window.removeEventListener('focus', updateFiles)
+      window.removeEventListener('focus', updateConversation)
     }
   }, [currentConversationId])
 

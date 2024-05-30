@@ -30,12 +30,6 @@ const WritingMessageBox: FC<{
     selectedDraftUserMessage,
     activeAIResponseMessage,
   } = useFloatingContextMenuDraft()
-  console.log(
-    `zztest currentFloatingContextMenuDraft,`,
-    currentFloatingContextMenuDraft,
-    selectedDraftUserMessage,
-    activeAIResponseMessage,
-  )
   useEffect(() => {
     console.log(
       'AIInput currentFloatingContextMenuDraft: ',

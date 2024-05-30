@@ -332,6 +332,7 @@
     "floating_menu__button__clear_suggested__all_sites": "Clear suggested prompts for all sites",
     "floating_menu__button__switch_to_sidebar": "Switch to sidebar",
     "floating_menu__input__placeholder": "Ask AI to edit or generate...",
+    "floating_menu__input__placeholder__after_ai_response": "Tell AI what to do next...",
     "floating_menu__input__running_placeholder": "AI is writing...",
     "floating_menu__draft_card__context__title": "Context",
     "floating_menu__discard_changes_card__ai_response__title": "Do you want to discard the AI response?",

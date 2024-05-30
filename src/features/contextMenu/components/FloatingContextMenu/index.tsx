@@ -330,6 +330,17 @@ const FloatingContextMenu: FC<{
     }
   }, [floatingDropdownMenu.rootRect])
 
+  const textareaPlaceholder = useMemo(() => {
+    if (floatingDropdownMenu.open) {
+      if (activeAIResponseMessage) {
+        return t('client:floating_menu__input__placeholder__after_ai_response')
+      } else {
+        return t('client:floating_menu__input__placeholder')
+      }
+    }
+    return ''
+  }, [t, floatingDropdownMenu.open, activeAIResponseMessage])
+
   return (
     <FloatingPortal root={root}>
       <div
@@ -524,11 +535,7 @@ const FloatingContextMenu: FC<{
                               />
                             )
                           }
-                          placeholder={
-                            floatingDropdownMenu.open
-                              ? t('client:floating_menu__input__placeholder')
-                              : ''
-                          }
+                          placeholder={textareaPlaceholder}
                           InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
                           sx={{
                             border: 'none',

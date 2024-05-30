@@ -137,7 +137,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
                 } else {
                   resolve(true)
                 }
-              }, 100)
+              }, 500)
             })
           },
           floatingMenuTooltip: true,

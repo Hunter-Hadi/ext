@@ -680,36 +680,36 @@ const FloatingContextMenu: FC<{
       />
 
       <OnboardingTooltipTempPortal
-        showStateTrigger={() => floatingDropdownMenu.open}
+        showStateTrigger={floatingDropdownMenu.open}
         sceneType="FLOATING_CONTEXT_MENU_LIST_BOX"
       />
+
       <OnboardingTooltipTempPortal
-        showStateTrigger={() => {
-          if (loading) {
-            return false
-          }
-          return (
-            floatingDropdownMenu.open && currentFloatingContextMenuDraft === ''
-          )
-        }}
-        sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX"
-      />
-      <OnboardingTooltipTempPortal
-        showStateTrigger={() =>
+        showStateTrigger={
           floatingDropdownMenu.open && contextWindowList.length > 0
         }
         sceneType="FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM"
       />
-      <OnboardingTooltipTempPortal
-        showStateTrigger={() => {
-          if (loading) {
-            return false
-          }
-
-          return floatingDropdownMenu.open && !!activeAIResponseMessage
-        }}
-        sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE"
-      />
+      {loading ? null : (
+        <>
+          <OnboardingTooltipTempPortal
+            showStateTrigger={() => {
+              return (
+                floatingDropdownMenu.open &&
+                (currentFloatingContextMenuDraft === '' ||
+                  inputValue.length > 0)
+              )
+            }}
+            sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX"
+          />
+          <OnboardingTooltipTempPortal
+            showStateTrigger={
+              floatingDropdownMenu.open && !!activeAIResponseMessage
+            }
+            sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE"
+          />
+        </>
+      )}
     </FloatingPortal>
   )
 }

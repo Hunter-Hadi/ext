@@ -99,6 +99,7 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
     // 或者已经展示过了，不需要再监听
     if (referenceElement || alreadyOpened) {
       observerRef.current?.disconnect()
+      observerRef.current = null
     }
     if (container && onboardingConfig?.referenceElementSelector) {
       // 用 MutationObserver 来检测邮件内容是否加载完成
@@ -121,6 +122,7 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
 
     return () => {
       observerRef.current?.disconnect()
+      observerRef.current = null
     }
   }, [
     container,
@@ -132,14 +134,6 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
   useFocus(syncAlreadyOpenedCacheBySceneType)
 
   useEffectOnce(syncAlreadyOpenedCacheBySceneType)
-
-  console.log(
-    'referenceElement',
-    sceneType,
-    referenceElement,
-    alreadyOpened,
-    container,
-  )
 
   // // 如果已经展示过了，不再渲染任何内容
   // if (alreadyOpened) {

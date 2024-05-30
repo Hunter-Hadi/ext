@@ -323,7 +323,7 @@ const FloatingMiniMenu: FC<{
         <FloatingContextMenuMiniMenuMoreButton placement={placement} />
       </Stack>
       <OnboardingTooltipTempPortal
-        showStateTrigger={() => show}
+        showStateTrigger={show}
         sceneType="CONTEXT_MENU_CTA_BUTTON"
       />
     </Paper>

@@ -50,6 +50,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
               await getAlreadyOpenedCacheBySceneType(
                 'FLOATING_CONTEXT_MENU_LIST_BOX',
               )
+            // 不能和 FLOATING_CONTEXT_MENU_LIST_BOX tooltip 同时显示
             const root = getMaxAIFloatingContextMenuRootElement()
             if (
               !contextMenuListBoxOpened ||
@@ -118,6 +119,27 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `div#ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT`,
         tooltipProps: {
+          beforeTooltipShow: async () => {
+            return new Promise((resolve) => {
+              // 因为 FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE tooltip 可能比 FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM tooltip 先执行渲染判断，
+              // 所以 需要延迟一点再判断是否展示
+              setTimeout(() => {
+                const root = getMaxAIFloatingContextMenuRootElement()
+                // 不能和 FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM tooltip 同时显示
+                if (
+                  findOnboardingTooltipElement(
+                    'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM',
+                    root,
+                  )
+                ) {
+                  // 阻止 Tooltip 打开
+                  resolve(false)
+                } else {
+                  resolve(true)
+                }
+              }, 100)
+            })
+          },
           floatingMenuTooltip: true,
           placement: 'left',
           sx: {

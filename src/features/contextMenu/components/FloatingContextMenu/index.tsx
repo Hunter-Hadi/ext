@@ -52,6 +52,7 @@ import {
   getContextMenuRenderPosition,
   getFloatingContextMenuMiddleware,
 } from '@/features/contextMenu/utils'
+import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import {
@@ -317,6 +318,7 @@ const FloatingContextMenu: FC<{
       })
     }
   }, [floatingDropdownMenu.rootRect])
+
   return (
     <FloatingPortal root={root}>
       <div
@@ -388,6 +390,22 @@ const FloatingContextMenu: FC<{
                 event.stopPropagation()
               }}
             >
+              {/* 由于 直接把 onboarding tooltip 挂在 textarea 会导致 tooltip 位置显示不可控制（具体表现：出现不正确的 placement） */}
+              {/* 所以这里创建一个元素来绑定 onboarding tooltip  位置 */}
+              <Box
+                id="ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT"
+                sx={{
+                  width: 10,
+                  height: 10,
+                  // background: 'red',
+                  position: 'absolute',
+                  top: 28,
+                  left: 32,
+                  pointerEvents: 'none',
+                  zIndex: -1,
+                }}
+              />
+
               {floatingDropdownMenu.open && (
                 <DevContent>
                   <DevConsole />
@@ -434,6 +452,7 @@ const FloatingContextMenu: FC<{
                   modelKey={'FloatingContextMenu'}
                 />
               )}
+
               <Stack width={'100%'} gap={0.5}>
                 <Stack direction={'row'} alignItems={'end'} gap={1}>
                   <Stack
@@ -638,6 +657,20 @@ const FloatingContextMenu: FC<{
             }
           })
         }}
+      />
+      <OnboardingTooltipTempPortal
+        showStateTrigger={() => floatingDropdownMenu.open}
+        sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX"
+      />
+      <OnboardingTooltipTempPortal
+        showStateTrigger={() => floatingDropdownMenu.open}
+        sceneType="FLOATING_CONTEXT_MENU_LIST_BOX"
+      />
+      <OnboardingTooltipTempPortal
+        showStateTrigger={() =>
+          floatingDropdownMenu.open && contextWindowList.length > 0
+        }
+        sceneType="FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM"
       />
     </FloatingPortal>
   )

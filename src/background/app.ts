@@ -10,6 +10,7 @@ export type {
   IOpenAIChatSendEvent,
 } from './eventType'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { v4 as uuidV4 } from 'uuid'
 
 import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
@@ -47,6 +48,7 @@ import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
 } from '@/features/common/constants'
+import { devResetAllOnboardingTooltipOpenedCache } from '@/features/onboarding/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import WebsiteContextManager from '@/features/websiteContext/background'
@@ -367,6 +369,11 @@ const initChromeExtensionUpdated = async () => {
   setTimeout(() => {
     updateRemoteAIProviderConfigAsync().then().catch()
   }, (1 + Math.floor(Math.random() * 9)) * 1000)
+
+  // 测试环境 刷新插件时，重置所有的onboarding tooltip opened cache
+  if (!isProduction) {
+    devResetAllOnboardingTooltipOpenedCache()
+  }
 }
 
 /**
@@ -644,7 +651,6 @@ const initChromeExtensionTabUrlChangeListener = () => {
     }
   })
 }
-import { v4 as uuidV4 } from 'uuid'
 const devMockConversation = async () => {
   const isProduction = String(process.env.NODE_ENV) === 'production'
   if (isProduction) {

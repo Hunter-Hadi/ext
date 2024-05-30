@@ -1,10 +1,15 @@
 import { styled } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
-import React, { FC, PropsWithChildren } from 'react'
+import React, { FC, PropsWithChildren, useCallback, useEffect } from 'react'
 
-import TooltipContentBox, {
-  ITooltipContentBoxProps,
-} from '@/features/onboarding/components/TooltipContentBox'
+import TooltipInformationBar, {
+  ITooltipInformationBarProps,
+} from '@/features/onboarding/components/TooltipInformationBar'
+import { IOnBoardingSceneType } from '@/features/onboarding/types'
+import {
+  getAlreadyOpenedCacheBySceneType,
+  setOpenedCacheBySceneType,
+} from '@/features/onboarding/utils'
 import {
   getAppMinimizeContainerElement,
   getMaxAIFloatingContextMenuRootElement,
@@ -30,18 +35,30 @@ const BlackTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }))
 
-interface IOnboardingTooltipProps extends TooltipProps {
+export interface IOnboardingTooltipProps extends TooltipProps {
+  sceneType: IOnBoardingSceneType
+
+  // 外部组件可以通过传入 triggerState 控制 OnboardingTooltip是否显示，
+  // 如果传递了 showStateTrigger, 内部需要根据 showStateTrigger 控制 Tooltip 的显示状态，同时只显示一次（根据 sceneType 获取 onboarding cache flag）
+  showStateTrigger?: () => boolean
+
   floatingMenuTooltip?: boolean
   minimumTooltip?: boolean
 
-  contentProps?: ITooltipContentBoxProps
+  InformationBarProps?: ITooltipInformationBarProps
 }
 
 const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
   props,
 ) => {
-  const { minimumTooltip, floatingMenuTooltip, contentProps, ...resetProps } =
-    props
+  const {
+    sceneType,
+    showStateTrigger,
+    minimumTooltip,
+    floatingMenuTooltip,
+    InformationBarProps,
+    ...resetProps
+  } = props
 
   let container: any = document.body
   if (minimumTooltip) {
@@ -57,11 +74,42 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
   if (!container) {
     container = document.body
   }
+
+  const [open, setOpen] = React.useState(false)
+
+  const openTooltip = useCallback(() => {
+    // 根据 sceneType 获取 onboarding cache
+    // 判断是否打开过，如果打开过则不再显示
+    getAlreadyOpenedCacheBySceneType(sceneType).then((opened) => {
+      if (!opened) {
+        setOpen(true)
+        setOpenedCacheBySceneType(sceneType)
+      }
+    })
+  }, [sceneType])
+
+  const closeTooltip = useCallback(() => {
+    setOpen(false)
+  }, [])
+
+  useEffect(() => {
+    if (!showStateTrigger) {
+      // 如果没传入 showStateTrigger，直接显示
+      openTooltip()
+      return
+    }
+    if (showStateTrigger()) {
+      openTooltip()
+    } else {
+      closeTooltip()
+    }
+  }, [showStateTrigger, openTooltip, closeTooltip])
+
   return (
     <BlackTooltip
-      {...resetProps}
-      open
       placement={props.placement || 'top'}
+      {...resetProps}
+      open={open}
       PopperProps={{
         container,
         ...resetProps.PopperProps,
@@ -71,24 +119,24 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
         },
         sx: {
           '&[data-popper-placement*="bottom"] > div': {
-            marginTop: props.arrow ? '8px!important' : '4px!important',
+            marginTop: props.arrow ? '10px!important' : '4px!important',
           },
           '&[data-popper-placement*="top"] > div': {
-            marginBottom: props.arrow ? '8px!important' : '4px!important',
+            marginBottom: props.arrow ? '10px!important' : '4px!important',
           },
           '&[data-popper-placement*="right"] > div': {
-            marginLeft: props.arrow ? '8px!important' : '4px!important',
+            marginLeft: props.arrow ? '10px!important' : '4px!important',
           },
           '&[data-popper-placement*="left"] > div': {
-            marginRight: props.arrow ? '8px!important' : '4px!important',
+            marginRight: props.arrow ? '10px!important' : '4px!important',
           },
           ...props.PopperProps?.sx,
         },
       }}
       title={
-        <TooltipContentBox {...contentProps}>
+        <TooltipInformationBar {...InformationBarProps}>
           {resetProps.title}
-        </TooltipContentBox>
+        </TooltipInformationBar>
       }
     >
       <div>{props.children}</div>

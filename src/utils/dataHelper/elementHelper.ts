@@ -1,12 +1,58 @@
+// 根据 style 判断 element 是否可见
 export const elementCheckVisibility = (element: HTMLElement) => {
-  if (element) {
-    const rect = element.getBoundingClientRect()
-    if (rect.width === 0 && rect.height === 0) {
+  if (!element) return false
+
+  const react = element.getBoundingClientRect()
+  if (react.width === 0 && react.height === 0) {
+    return false
+  }
+
+  // 检查元素本身的 display, visibility 和 opacity 属性
+  const style = window.getComputedStyle(element)
+  if (
+    style.display === 'none' ||
+    style.visibility === 'hidden' ||
+    style.opacity === '0'
+  ) {
+    return false
+  }
+
+  // 检查祖先元素的可见性，尽可能减少递归深度
+  let parent = element.parentElement
+  while (parent) {
+    const parentStyle = window.getComputedStyle(parent)
+    if (
+      parentStyle.display === 'none' ||
+      parentStyle.visibility === 'hidden' ||
+      parentStyle.opacity === '0'
+    ) {
       return false
     }
-    return true
+    parent = parent.parentElement
   }
-  return false
+
+  return true
+}
+
+// 检查元素是否在视口中
+export const elementCheckInViewport = (element: HTMLElement) => {
+  if (!element) return false
+
+  const rect = element.getBoundingClientRect()
+  const windowHeight =
+    window.innerHeight || document.documentElement.clientHeight
+  const windowWidth = window.innerWidth || document.documentElement.clientWidth
+
+  const vertInView = rect.top <= windowHeight && rect.top + rect.height >= 0
+  const horInView = rect.left <= windowWidth && rect.left + rect.width >= 0
+
+  return vertInView && horInView
+}
+
+// 综合检查元素是否可见
+export const elementCheckFullyVisible = (element: HTMLElement) => {
+  // TODO: refine 当元素被遮挡时，也会返回 true，需要优化
+  return elementCheckVisibility(element) && elementCheckInViewport(element)
 }
 
 export const isSupportWebComponent = () => {
@@ -104,4 +150,21 @@ export const findParentEqualSelector = (
   } catch (e) {
     return null
   }
+}
+
+/**
+ * 判断一个元素是否在 shadowRoot 中
+ *
+ * @param {Element} element - 要检查的元素
+ * @returns {Document} - 如果元素在 shadowRoot 中，返回这个 shadowRoot， 否则返回 null
+ */
+export const isElementInShadowRoot = (element: HTMLElement) => {
+  let parent = element.parentNode
+  while (parent) {
+    if (parent.toString() === '[object ShadowRoot]') {
+      return parent as Document
+    }
+    parent = parent.parentNode
+  }
+  return null
 }

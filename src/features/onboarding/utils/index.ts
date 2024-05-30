@@ -19,10 +19,6 @@ export const onBoardingSceneTypeToOnBoardingCacheKey = (
 // 刷新所有的 onboarding tooltip opened cache
 // 用于测试环境调试
 export const devResetAllOnboardingTooltipOpenedCache = async () => {
-  // zztest
-  // if (isProduction) {
-  //   return
-  // }
   const OnboardingTooltipSceneTypes: IOnBoardingSceneType[] = [
     'CONTEXT_MENU_CTA_BUTTON',
     'FLOATING_CONTEXT_MENU_INPUT_BOX',

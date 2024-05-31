@@ -5,12 +5,19 @@ import { useRecoilValue } from 'recoil'
 import { getChromeExtensionOnBoardingData } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { currentSurveyKey } from '@/features/survey/constants'
-import { HaveFilledOutSurveyAtom } from '@/features/survey/store'
+import {
+  FirstFetchSurveyStatusLoadedAtom,
+  HaveFilledOutSurveyAtom,
+} from '@/features/survey/store'
 
 const useSurveyStatus = () => {
   const [loaded, setLoaded] = useState(false)
   const { userInfo, isPayingUser } = useUserInfo()
+
   const filledOutSurveyState = useRecoilValue(HaveFilledOutSurveyAtom)
+  const firstFetchSurveyStatusLoaded = useRecoilValue(
+    FirstFetchSurveyStatusLoadedAtom,
+  )
   const [alreadyPoppedSurveyModal, setAlreadyPoppedSurveyModal] =
     useState(false)
 
@@ -24,7 +31,7 @@ const useSurveyStatus = () => {
   }
 
   const canShowSurvey = useMemo(() => {
-    if (!loaded) {
+    if (!loaded || !firstFetchSurveyStatusLoaded) {
       return false
     }
     if (filledOutSurveyState[currentSurveyKey]) {
@@ -32,15 +39,15 @@ const useSurveyStatus = () => {
       return false
     }
 
-    // 注册时间
-    const createAt = userInfo?.created_at
-    // 第一次付费时间
-    const subscribedAt = userInfo?.subscribed_at
-
     // 没登录时不显示 survey
     if (userInfo === null) {
       return false
     }
+
+    // 注册时间
+    const createAt = userInfo?.created_at
+    // 第一次付费时间
+    const subscribedAt = userInfo?.subscribed_at
 
     // 不是付费用户不显示 survey
     if (!isPayingUser) {
@@ -68,7 +75,13 @@ const useSurveyStatus = () => {
 
     // 理论上不会走到这里，因为用户肯定会有 注册时间或者付费时间
     return false
-  }, [userInfo, isPayingUser, filledOutSurveyState, loaded])
+  }, [
+    userInfo,
+    isPayingUser,
+    filledOutSurveyState,
+    loaded,
+    firstFetchSurveyStatusLoaded,
+  ])
 
   useEffect(() => {
     // 用户信息加载完毕

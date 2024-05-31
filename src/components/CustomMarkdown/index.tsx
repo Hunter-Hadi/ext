@@ -255,7 +255,7 @@ const CustomMarkdown: FC<{
     try {
       if (typeof children === 'string') {
         if (citations?.length && !children.includes('[T0]')) {
-          return preprocessLaTeX(children) + formatCitation(citations)
+          return preprocessLaTeX(children) + ' ' + formatCitation(citations)
         }
         return preprocessLaTeX(children)
       }

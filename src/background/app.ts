@@ -10,6 +10,7 @@ export type {
   IOpenAIChatSendEvent,
 } from './eventType'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { v4 as uuidV4 } from 'uuid'
 
 import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
@@ -49,6 +50,8 @@ import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
 } from '@/features/common/constants'
+import { devResetAllOnboardingTooltipOpenedCache } from '@/features/onboarding/utils'
+import paymentManager from '@/features/payment/background/PaymentManager'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import WebsiteContextManager from '@/features/websiteContext/background'
@@ -76,6 +79,7 @@ export const startChromeExtensionBackground = () => {
     initChromeExtensionDisabled()
     initChromeExtensionUninstalled()
     initChromeExtensionTabUrlChangeListener()
+    initChromeExtensionCreatePaymentListener()
     initExternalMessageListener()
     // feature
     // hot reload
@@ -375,6 +379,12 @@ const initChromeExtensionUpdated = async () => {
       false,
     )
   }
+
+  // 测试环境 刷新插件时，重置所有的onboarding tooltip opened cache
+  // zztest
+  if (!isProduction) {
+    devResetAllOnboardingTooltipOpenedCache()
+  }
 }
 
 /**
@@ -652,7 +662,30 @@ const initChromeExtensionTabUrlChangeListener = () => {
     }
   })
 }
-import { v4 as uuidV4 } from 'uuid'
+
+
+/**
+ * 插件payment支付监听初始化
+ */
+const initChromeExtensionCreatePaymentListener = () => {
+  const tabUrls: Record<number, string> = {}
+
+  Browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (tab.url && tabUrls[tabId] && tab.url !== tabUrls[tabId]) {
+      // url变化
+      paymentManager.changePage(tabId, tabUrls[tabId], tab.url)
+    }
+    if (tab.url) {
+      tabUrls[tabId] = tab.url
+    }
+  })
+
+  Browser.tabs.onRemoved.addListener((tabId) => {
+    paymentManager.closePage(tabId, tabUrls[tabId])
+    delete tabUrls[tabId]
+  })
+}
+
 
 import {
   isAIMessage,
@@ -660,6 +693,7 @@ import {
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+
 const devMockConversation = async () => {
   const isProduction = String(process.env.NODE_ENV) === 'production'
   if (isProduction) {

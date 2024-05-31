@@ -96,12 +96,12 @@ export default class PDFCitation implements ICitationService {
    * 滚动到元素位置
    * @param element
    */
-  async scrollElement(element: Element) {
+  async scrollElement(element: Element | DOMRect) {
     const container = document.querySelector('#viewerContainer')
     if (!container || !element) return
 
     const containerRect = container.getBoundingClientRect()
-    const elementRect = element.getBoundingClientRect()
+    const elementRect = element instanceof Element ? element.getBoundingClientRect() : element
     // 计算目标元素相对于容器的位置
     const elementOffsetTop =
       elementRect.top - containerRect.top + container.scrollTop
@@ -158,14 +158,6 @@ export default class PDFCitation implements ICitationService {
       endMarked = spans[spans.length - 1]
     }
     if (startMarked && endMarked) {
-      // 有可能选中的第一个元素是页脚，这里判断一下
-      const targetElement =
-        startMarked.getBoundingClientRect().top <
-        endMarked.getBoundingClientRect().top
-          ? startMarked
-          : endMarked
-      await this.scrollElement(targetElement)
-
       range.setStart(
         startMarked.firstChild!,
         Math.min(startMarked.firstChild!.nodeValue?.length || 0, start.offset),
@@ -179,7 +171,9 @@ export default class PDFCitation implements ICitationService {
       if (selection) {
         selection.removeAllRanges()
         selection.addRange(range)
+        await this.scrollElement(selection.getRangeAt(0).getBoundingClientRect())
       }
+
     }
   }
 
@@ -205,182 +199,186 @@ export default class PDFCitation implements ICitationService {
     let totalPageTextLength = 0
     this.loading = true
 
-    /**
-     * 这里匹配内容的算法要优化，目前效率不太行
-     */
-    const findByPages = async (start: number, end: number) => {
-      for (let pageNum = start; pageNum <= end; pageNum++) {
-        const page = await this.pdfDocument.getPage(pageNum)
-        const textContent = await page.getTextContent({
-          includeMarkedContent: true,
-        })
+    try {
+      /**
+       * 这里匹配内容的算法要优化，目前效率不太行
+       */
+      const findByPages = async (start: number, end: number) => {
+        for (let pageNum = start; pageNum <= end; pageNum++) {
+          const page = await this.pdfDocument.getPage(pageNum)
+          const textContent = await page.getTextContent({
+            includeMarkedContent: true,
+          })
 
-        if (typeof this.pages[pageNum - 1] === 'number') {
-          totalPageTextLength += this.pages[pageNum - 1]
-          if (startIndex > totalPageTextLength - 1) {
-            continue
+          if (typeof this.pages[pageNum - 1] === 'number') {
+            totalPageTextLength += this.pages[pageNum - 1]
+            if (startIndex > totalPageTextLength - 1) {
+              continue
+            }
           }
-        }
 
-        const pageNode = createNode()
-        let parentNode: ICitationNode | null = pageNode
-        let pageTextLength = 0
-        let itemIndex = 0
+          const pageNode = createNode()
+          let parentNode: ICitationNode | null = pageNode
+          let pageTextLength = 0
+          let itemIndex = 0
 
-        textContent.items.some(
-          (
-            item: { type: string; hasEOL: boolean; str: string },
-            index: number,
-          ) => {
-            if (item.type === 'beginMarkedContentProps') {
-              parentNode = createNode(parentNode)
-              return
-            }
-            if (item.type === 'endMarkedContent') {
-              parentNode = parentNode?.parent || null
-              return
-            }
-            const currentNode = createNode(parentNode)
-
-            let startOffset = 0
-            let endOffset = 0
-            const str = item.hasEOL ? `${item.str}\n` : item.str
-            pageTextLength += str.length
-            itemIndex = index
-
-            if (item.hasEOL && item.str) {
-              // 这种元素实际会在下一个插入一个<br/>节点
-              createNode(parentNode)
-            }
-
-            if (
-              currentContent &&
-              str.length <= searchString.length - currentContent.length
-            ) {
-              if (
-                str[0] !== searchString[currentContent.length] &&
-                str[str.length - 1] !==
-                  searchString[currentContent.length + str.length - 1]
-              ) {
-                matches = []
-                currentContent = ''
+          textContent.items.some(
+            (
+              item: { type: string; hasEOL: boolean; str: string },
+              index: number,
+            ) => {
+              if (item.type === 'beginMarkedContentProps' || item.type === 'beginMarkedContent') {
+                parentNode = createNode(parentNode)
                 return
               }
-            }
-            for (let i = 0; i < str.length; i++) {
-              if (str[i] === searchString[currentContent.length]) {
-                if (!currentContent.length) {
-                  // 首次匹配中
-                  startOffset = i
-                  endOffset = i
-                }
-                currentContent += str[i]
-                if (currentContent.length === searchString.length) {
-                  // 匹配完毕
-                  endOffset = i
-                  break
-                }
-              } else {
-                // 未匹配中
-                matches = []
-                currentContent = ''
+              if (item.type === 'endMarkedContent') {
+                parentNode = parentNode?.parent || null
+                return
               }
-            }
-            if (currentContent.length) {
+              const currentNode = createNode(parentNode)
+
+              let startOffset = 0
+              let endOffset = 0
+              const str = item.hasEOL ? `${item.str}\n` : (item.str || '')
+              pageTextLength += str.length
+              itemIndex = index
+
+              if (item.hasEOL && item.str) {
+                // 这种元素实际会在下一个插入一个<br/>节点
+                createNode(parentNode)
+              }
+
               if (
-                !matches.length ||
-                currentContent.length === searchString.length
+                currentContent &&
+                str.length <= searchString.length - currentContent.length
               ) {
-                let node: ICitationNode | null = parentNode
-                let markedContentSelector = ''
-                while (node && node !== pageNode) {
-                  // 有.markedContent元素
-                  markedContentSelector =
-                    ` > .markedContent:nth-child(${node.index + 1})` +
-                    markedContentSelector
-                  node = node.parent
-                }
-                const container = `.pdfViewer .page[data-page-number="${pageNum}"] .textLayer${markedContentSelector} > :nth-child(${
-                  currentNode.index + 1
-                })`
-                if (!matches.length) {
-                  // 匹配项就处于当前text内，所以先插入一个起始的匹配
-                  matches.push({
-                    pageNum,
-                    text: str,
-                    container,
-                    offset: startOffset,
-                  })
-                }
-                if (currentContent.length === searchString.length) {
-                  // 结尾项
-                  matches.push({
-                    pageNum,
-                    text: str,
-                    container,
-                    offset: endOffset,
-                  })
+                if (
+                  str[0] !== searchString[currentContent.length] &&
+                  str[str.length - 1] !==
+                  searchString[currentContent.length + str.length - 1]
+                ) {
+                  matches = []
+                  currentContent = ''
+                  return
                 }
               }
-            }
-            if (currentContent.length === searchString.length) {
-              return true
-            }
-          },
-        )
+              for (let i = 0; i < str.length; i++) {
+                if (str[i] === searchString[currentContent.length]) {
+                  if (!currentContent.length) {
+                    // 首次匹配中
+                    startOffset = i
+                    endOffset = i
+                  }
+                  currentContent += str[i]
+                  if (currentContent.length === searchString.length) {
+                    // 匹配完毕
+                    endOffset = i
+                    break
+                  }
+                } else {
+                  // 未匹配中
+                  matches = []
+                  currentContent = ''
+                }
+              }
+              if (currentContent.length) {
+                if (
+                  !matches.length ||
+                  currentContent.length === searchString.length
+                ) {
+                  let node: ICitationNode | null = parentNode
+                  let markedContentSelector = ''
+                  while (node && node !== pageNode) {
+                    // 有.markedContent元素
+                    markedContentSelector =
+                      ` > .markedContent:nth-child(${node.index + 1})` +
+                      markedContentSelector
+                    node = node.parent
+                  }
+                  const container = `.pdfViewer .page[data-page-number="${pageNum}"] .textLayer${markedContentSelector} > :nth-child(${
+                    currentNode.index + 1
+                  })`
+                  if (!matches.length) {
+                    // 匹配项就处于当前text内，所以先插入一个起始的匹配
+                    matches.push({
+                      pageNum,
+                      text: str,
+                      container,
+                      offset: startOffset,
+                    })
+                  }
+                  if (currentContent.length === searchString.length) {
+                    // 结尾项
+                    matches.push({
+                      pageNum,
+                      text: str,
+                      container,
+                      offset: endOffset,
+                    })
+                  }
+                }
+              }
+              if (currentContent.length === searchString.length) {
+                return true
+              }
+            },
+          )
 
-        pageTextLength += 1
-        if (itemIndex === textContent.items.length - 1) {
-          this.pages[pageNum - 1] = pageTextLength
+          pageTextLength += 1
+          if (itemIndex === textContent.items.length - 1) {
+            this.pages[pageNum - 1] = pageTextLength
+          }
+
+          if (currentContent.length === searchString.length) {
+            break
+          }
+
+          if (currentContent.length) {
+            currentContent += '\n'
+          }
         }
+      }
 
+      const step = 100
+      let beforeStart = 1
+      let afterStart = numPages
+
+      while (beforeStart <= afterStart) {
+        // 先找开头100页
+        let end = Math.min(numPages, beforeStart + step)
+        await findByPages(beforeStart, end)
         if (currentContent.length === searchString.length) {
           break
         }
+        while (currentContent.length > 0 && beforeStart < end) {
+          // 继续找下一页
+          beforeStart = end + 1
+          end = Math.min(numPages, beforeStart + 1)
+          await findByPages(beforeStart, end)
+        }
 
-        if (currentContent.length) {
-          currentContent += '\n'
+        // 找尾部100页
+        afterStart = Math.max(end + 1, afterStart - step + 1)
+        end = Math.min(numPages, afterStart + step)
+        await findByPages(afterStart, end)
+        if (currentContent.length === searchString.length) {
+          break
+        }
+        while (currentContent.length > 0 && afterStart < end) {
+          // 继续找下一页
+          afterStart = end + 1
+          end = Math.min(numPages, afterStart + 1)
+          await findByPages(afterStart, end)
         }
       }
-    }
 
-    const step = 100
-    let beforeStart = 1
-    let afterStart = numPages
+      this.caches.set(searchString, matches)
 
-    while (beforeStart <= afterStart) {
-      // 先找开头100页
-      let end = Math.min(numPages, beforeStart + step)
-      await findByPages(beforeStart, end)
-      if (currentContent.length === searchString.length) {
-        break
+      if (matches.length) {
+        await this.selectMatches(matches)
       }
-      while (currentContent.length > 0 && beforeStart < end) {
-        // 继续找下一页
-        beforeStart = end + 1
-        end = Math.min(numPages, beforeStart + 1)
-        await findByPages(beforeStart, end)
-      }
-
-      // 找尾部100页
-      afterStart = Math.max(end + 1, afterStart - step + 1)
-      end = Math.min(numPages, afterStart + step)
-      await findByPages(afterStart, end)
-      if (currentContent.length === searchString.length) {
-        break
-      }
-      while (currentContent.length > 0 && afterStart < end) {
-        // 继续找下一页
-        afterStart = end + 1
-        end = Math.min(numPages, afterStart + 1)
-        await findByPages(afterStart, end)
-      }
-    }
-
-    this.caches.set(searchString, matches)
-
-    if (matches.length) {
-      await this.selectMatches(matches)
+    } catch (e) {
+      console.error(e)
     }
 
     this.loading = false

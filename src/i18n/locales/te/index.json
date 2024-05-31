@@ -64,7 +64,8 @@
     "continue_with_google": "Googleతో కొనసాగండి",
     "continue_with_email": "ఇమెయిల్‌తో కొనసాగండి",
     "privacy_policy": "గోప్యతా నియమాలు",
-    "terms_of_service": "సేవల నిబంధనలు"
+    "terms_of_service": "సేవల నిబంధనలు",
+    "shortcut": "షార్ట్కట్"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "మా అఫీలియేట్ ప్రోగ్రామ్లో చేరండి మరియు",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "MaxAI ని షేర్ చేసి పొందుతారు!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "అఫీలియేట్ ప్రోగ్రామ్లో చేరండి",
-    "sidebar__marketing_tabs__survey__tab__title": "సర్వే",
+    "sidebar__marketing_tabs__survey__tab__title": "అభిప్రాయం",
     "sidebar__user_upgrade_card__title": "AI తో మీ ఉత్పత్తిని మంచించండి",
     "sidebar__user_upgrade_card__item1__title": "అనివార్యమైన AI ప్రశ్నలు",
     "sidebar__user_upgrade_card__item2__title": "అన్ని లక్షణాలకు పూర్తి ప్రవేశం",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "చాలా ధన్యవాదాలు",
     "sidebar__survey_dialog__by_who": "MaxAI.me టీమ్",
     "sidebar__survey_dialog__cta_button_text": "మీ అనుభవం గురించి మాకు చెప్పండి",
-    "chat__user_message__contexts__file__preview__tips": "మూలం నుండి ఫార్మాటింగ్ అసమంజసం ఉంటాయి."
+    "floating_menu__input__placeholder__after_ai_response": "AI కు తర్వాత ఏమి చేయాలని చెప్పండి..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "మాసంలో కనీసం 1,500 హై-స్పీడ్ అడ్వాన్స్డ్ టెక్స్ట్ క్వెరీలను ఖచ్చితంగా నమోదు చేయండి. పరిమితిని చేర్చిన తరువాత, మోడల్ యొక్క వేగం మరియు గుర్తింపు క్వాలిటీ తగ్గించబడవచ్చు.",
     "image_generate__secondary__content": "హై-స్పీడ్ ఇమేజ్ క్వెరీలు: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "మాసంలో కనీసం 1,500 హై-స్పీడ్ ఇమేజ్ క్వెరీలను ఖచ్చితంగా నమోదు చేయండి. పరిమితిని చేర్చిన తరువాత, మోడల్ యొక్క వేగం మరియు గుర్తింపు క్వాలిటీ తగ్గించబడవచ్చు."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "ఎంచుకోబడిన వచనాన్ని మళ్ళీ రాయండి, అనువాదించండి, సంగ్రహించండి లేదా వివరించండి కోసం AI కో అడ్డు చేయండి.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "ఈ ఎంపికను త్వరగా కనుగొనడానికి \"{{KEY_TEXT}}\" టైప్ చేయగలరు.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "మీరు కూడా AI ని ఎంతో పని చేయడానికి ఎంచుకోవచ్చు.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "దాటి",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "కొనసాగండి.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "దాటి",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "పైకి వెళ్ళండి.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "దాటి",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "ఎంటర్",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "ఎంపికను ఎంచుకోవడానికి.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "ఎయి-జనరేటెడ్ కంటెంట్‌తో ఎంచుకున్న వచనాన్ని మార్చడానికి క్లిక్ చేయండి.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "మీరు ఎప్పుడైనా కావలసినంత ఆర్టిఫిషియల్ ఇంటెలిజెన్స్ ద్వారా సృష్టించబడిన కంటెంట్‌ను మీరు ఎలా మెరుగుపర్చాలో అన్ని అడగండి."
   }
 }

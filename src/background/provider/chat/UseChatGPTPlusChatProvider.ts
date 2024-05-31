@@ -14,10 +14,10 @@ import {
 import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
 import ConversationManager from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { backgroundConversationDB } from '@/features/indexed_db/conversations/background'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
+import { isRichAIMessage} from '@/features/chatgpt/utils/chatMessageUtils'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -77,7 +77,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       const lastMessage = await backgroundConversationDB.messages.get(
         lastMessageId,
       )
-      if (lastMessage && isAIMessage(lastMessage)) {
+      if (lastMessage && isRichAIMessage(lastMessage)) {
         // 有originalMessage说明是增强型的AI message
         if (
           lastMessage.originalMessage &&

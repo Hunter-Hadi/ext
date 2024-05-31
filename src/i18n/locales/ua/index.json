@@ -64,7 +64,8 @@
     "continue_with_google": "Продовжити з Google",
     "continue_with_email": "Продовжити з електронною поштою",
     "privacy_policy": "Політика конфіденційності",
-    "terms_of_service": "Умови надання послуг"
+    "terms_of_service": "Умови надання послуг",
+    "shortcut": "Скорочення"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Приєднуйтесь до нашої партнерської програми та заробляйте",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "постійну комісію за розповсюдження MaxAI!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Приєднатися до партнерської програми",
-    "sidebar__marketing_tabs__survey__tab__title": "Опитування",
+    "sidebar__marketing_tabs__survey__tab__title": "Зворотній зв'язок",
     "sidebar__user_upgrade_card__title": "Підвищте свою продуктивність з AI",
     "sidebar__user_upgrade_card__item1__title": "Необмежені запити AI",
     "sidebar__user_upgrade_card__item2__title": "Повний доступ до всіх функцій",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Дуже дякуємо",
     "sidebar__survey_dialog__by_who": "Команда MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Розповісти нам про свій досвід",
-    "chat__user_message__contexts__file__preview__tips": "Форматування може бути неоднаковим від початкового джерела."
+    "floating_menu__input__placeholder__after_ai_response": "Скажіть ШІ, що робити далі..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Забезпечте щонайменше 1 500 швидких розширених текстових запитів щомісяця. Після досягнення ліміту швидкість та якість моделі можуть бути знижені.",
     "image_generate__secondary__content": "Швидкі запити на зображення: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Забезпечте щонайменше 1 500 швидких запитів на зображення щомісяця. Після досягнення ліміту швидкість та якість моделі можуть бути знижені."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Натисніть, щоб попросити ШІ переписати, перекласти, підсумувати або пояснити вибраний текст.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Ви можете набрати \"{{KEY_TEXT}}\", щоб швидко знайти цю опцію.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Ви також можете попросити ШІ виконати будь-яку дію з вибраним текстом.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Натисніть",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "щоб прокрутитися вниз.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Натисніть",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "щоб прокрутитися вгору.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Натисніть",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Введіть",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "щоб вибрати опцію.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Клацніть, щоб замінити виділений текст змістом, створеним штучним інтелектом.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Ви можете попросити ШІ вдосконалити згенерований ним контент так, як вам потрібно."
   }
 }

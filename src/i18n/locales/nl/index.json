@@ -64,7 +64,8 @@
     "continue_with_google": "Doorgaan met Google",
     "continue_with_email": "Doorgaan met e-mail",
     "privacy_policy": "Privacybeleid",
-    "terms_of_service": "Gebruiksvoorwaarden"
+    "terms_of_service": "Gebruiksvoorwaarden",
+    "shortcut": "Snelkoppeling"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Doe mee aan ons partnerprogramma en verdien",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "terugkerende commissie door MaxAI te delen!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Doe mee aan het partnerprogramma",
-    "sidebar__marketing_tabs__survey__tab__title": "Enquête",
+    "sidebar__marketing_tabs__survey__tab__title": "Feedback",
     "sidebar__user_upgrade_card__title": "Verhoog je productiviteit met AI",
     "sidebar__user_upgrade_card__item1__title": "Onbeperkte AI-vragen",
     "sidebar__user_upgrade_card__item2__title": "Volledige toegang tot alle functies",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Heel erg bedankt",
     "sidebar__survey_dialog__by_who": "MaxAI.me team",
     "sidebar__survey_dialog__cta_button_text": "Vertel ons over je ervaring",
-    "chat__user_message__contexts__file__preview__tips": "De opmaak kan inconsistent zijn vanuit de bron."
+    "floating_menu__input__placeholder__after_ai_response": "Vertel AI wat de volgende stap is..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid geavanceerde tekstvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
     "image_generate__secondary__content": "Hoge snelheid afbeeldingsvragen: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid afbeeldingsvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik om AI te vragen om de geselecteerde tekst opnieuw te schrijven, te vertalen, samen te vatten of uit te leggen.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Je kunt \"{{KEY_TEXT}}\" typen om deze optie snel te vinden.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Je kunt AI ook vragen om elke actie uit te voeren op de geselecteerde tekst.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Druk op",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "om naar beneden te gaan.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Druk op",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "omhoog te gaan.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Druk op",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "om de optie te selecteren.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klik om de geselecteerde tekst te vervangen door AI-gemaakte inhoud.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "U kunt de AI vragen om de door AI gegenereerde inhoud naar wens te verfijnen."
   }
 }

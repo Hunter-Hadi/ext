@@ -45,9 +45,28 @@ export const isSystemMessageByStatus = (
   return isSystemMessage(message) && message.meta.status === status
 }
 
+/**
+ * 消息是否是对应类型的系统消息
+ * @param message
+ * @param type
+ */
 export const isSystemMessageByType = (
   message: IChatMessage,
   type: ISystemChatMessage['meta']['systemMessageType'],
 ) => {
   return isSystemMessage(message) && message.meta.systemMessageType === type
+}
+
+/**
+ * 消息是否是增强型AI消息
+ * @param message
+ */
+export const isRichAIMessage = (
+  message: IChatMessage,
+): message is IAIResponseMessage => {
+  return (
+    isAIMessage(message) &&
+    message.originalMessage !== undefined &&
+    !message.originalMessage.liteMode
+  )
 }

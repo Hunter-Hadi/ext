@@ -64,7 +64,8 @@
     "continue_with_google": "使用 Google 登入",
     "continue_with_email": "使用電子郵件登入",
     "privacy_policy": "隱私政策",
-    "terms_of_service": "服務條款"
+    "terms_of_service": "服務條款",
+    "shortcut": "快捷方式"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "加入我們的推廣計劃，並賺取",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "分享MaxAI的循環佣金！",
     "sidebar__marketing_tabs__affiliate__card__button__title": "加入推廣計劃",
-    "sidebar__marketing_tabs__survey__tab__title": "調查",
+    "sidebar__marketing_tabs__survey__tab__title": "意見回饋",
     "sidebar__user_upgrade_card__title": "使用AI提升您的生產力",
     "sidebar__user_upgrade_card__item1__title": "無限制的AI查詢",
     "sidebar__user_upgrade_card__item2__title": "完全訪問所有功能",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "非常感謝",
     "sidebar__survey_dialog__by_who": "MaxAI.me團隊",
     "sidebar__survey_dialog__cta_button_text": "告訴我們您的經歷",
-    "chat__user_message__contexts__file__preview__tips": "來源可能會有格式不一致。"
+    "floating_menu__input__placeholder__after_ai_response": "告訴AI下一步該做什麼..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "每月至少確保1,500次高速高級文本查詢。達到限制後，模型的速度和質量可能會降低。",
     "image_generate__secondary__content": "高速圖像查詢：{{QUERIES}}",
     "image_generate__secondary__content__tooltip": "每月至少確保1,500次高速圖像查詢。達到限制後，模型的速度和質量可能會降低。"
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "點擊以要求AI重新撰寫、翻譯、摘要或解釋所選文字。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "您可以輸入\"{{KEY_TEXT}}\"來快速找到此選項。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "您也可以要求AI對所選文字執行任何操作。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "按",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "向下移動。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "按",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "向上移動。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "按",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "選擇該選項。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "點擊以使用 AI 生成的內容替換所選文字。",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "您可以隨心所欲地要求AI改進AI生成的內容。"
   }
 }

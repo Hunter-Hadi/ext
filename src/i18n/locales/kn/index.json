@@ -818,7 +818,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "ನಮ್ಮ ಅಫೀಲಿಯೇಟ್ ಪ್ರೋಗ್ರಾಮ್ ಗೆ ಸೇರಿ",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "MaxAI ಹಂತವನ್ನು ಹಂಚಿಕೊಳ್ಳುವ ಪ್ರತಿಷ್ಠಾನದ ಮೂಲಕ ಪ್ರತಿಷ್ಠೆ ಗಳನ್ನು ಗಳಿಸಿ!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "ಅಫೀಲಿಯೇಟ್ ಪ್ರೋಗ್ರಾಮ್ ಗೆ ಸೇರಿ",
-    "sidebar__marketing_tabs__survey__tab__title": "ಸರ್ವೇ",
+    "sidebar__marketing_tabs__survey__tab__title": "ಪ್ರತಿಕ್ರಿಯೆ",
     "sidebar__user_upgrade_card__title": "ಎನ್ನೆಲ್ಲಾ ಸೌಲಭ್ಯಗಳನ್ನು AI ನೊಂದಿಗೆ ಹೆಚ್ಚಿಸಿ",
     "sidebar__user_upgrade_card__item1__title": "ಅಸಂಖ್ಯಾತ AI ಪ್ರಶ್ನೆಗಳು",
     "sidebar__user_upgrade_card__item2__title": "ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳ ಪೂರ್ಣ ಪ್ರವೇಶ",
@@ -1170,5 +1170,9 @@
     "advanced_text__secondary__content__tooltip": "ಕಡಿಮೆಯಾಗಿಲ್ಲದೆ ಪ್ರತಿ ತಿಂಗಳು 1,500 ಹೆಚ್ಚು ವೇಗದ ಪ್ರಾಧಾನ್ಯತಾಪೂರ್ಣ ಪಠ್ಯ ಪ್ರಶ್ನೆಗಳನ್ನು ಖಚಿತಪಡಿಸಿ. ಮಿತಿಯನ್ನು ತಲುಪಿದ ನಂತರ, ಮಾದರಿಯ ವೇಗ ಮತ್ತು ಗುಣಮಟ್ಟ ಕಡಿಮೆಯಾಗಬಹುದು.",
     "image_generate__secondary__content": "ಹೆಚ್ಚು ವೇಗದ ಚಿತ್ರ ಪ್ರಶ್ನೆಗಳು: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "ಕಡಿಮೆಯಾಗಿಲ್ಲದೆ ಪ್ರತಿ ತಿಂಗಳು 1,500 ಹೆಚ್ಚು ವೇಗದ ಚಿತ್ರ ಪ್ರಶ್ನೆಗಳನ್ನು ಖಚಿತಪಡಿಸಿ. ಮಿತಿಯನ್ನು ತಲುಪಿದ ನಂತರ, ಮಾದರಿಯ ವೇಗ ಮತ್ತು ಗುಣಮಟ್ಟ ಕಡಿಮೆಯಾಗಬಹುದು."
+  },
+  "onboarding": {
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "ನೀವು ಬಯಸಿದಂತೆ AI-ಗೆ AI-ನ ಉತ್ಪನ್ನವಾದ ವಿಷಯವನ್ನು ಸರಿಪಡಿಸಲು ಕೇಳಬಹುದು.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "ಆಯ್-ಜನರೇಟೆಡ್ ವಿಷಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯವನ್ನು ಬದಲಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ."
   }
 }

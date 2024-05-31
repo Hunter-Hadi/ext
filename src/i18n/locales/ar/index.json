@@ -64,7 +64,8 @@
     "continue_with_google": "متابعة باستخدام جوجل",
     "continue_with_email": "متابعة باستخدام البريد الإلكتروني",
     "privacy_policy": "سياسة الخصوصية",
-    "terms_of_service": "شروط الخدمة"
+    "terms_of_service": "شروط الخدمة",
+    "shortcut": "اختصار"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "انضم إلى برنامج الشركاء الخاص بنا واكسب",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "عمولة مستمرة لمشاركة MaxAI!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "انضم إلى برنامج الشركاء",
-    "sidebar__marketing_tabs__survey__tab__title": "استطلاع",
+    "sidebar__marketing_tabs__survey__tab__title": "تعليقات",
     "sidebar__user_upgrade_card__title": "زد من إنتاجيتك مع الذكاء الاصطناعي",
     "sidebar__user_upgrade_card__item1__title": "استفسارات AI غير محدودة",
     "sidebar__user_upgrade_card__item2__title": "وصول كامل إلى جميع الميزات",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "شكرًا جزيلا",
     "sidebar__survey_dialog__by_who": "فريق MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "أخبرنا عن تجربتك",
-    "chat__user_message__contexts__file__preview__tips": "قد تكون التنسيقات غير متسقة من المصدر."
+    "floating_menu__input__placeholder__after_ai_response": "أخبر الذكاء الاصطناعي ما يجب فعله بعد ذلك..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "تأكد من وجود ما لا يقل عن 1,500 استعلام نص متقدم عالي السرعة كل شهر. بعد الوصول إلى الحد، قد يتم تقليل سرعة وجودة النموذج.",
     "image_generate__secondary__content": "استعلامات الصور عالية السرعة: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "تأكد من وجود ما لا يقل عن 1,500 استعلام صورة عالية السرعة كل شهر. بعد الوصول إلى الحد، قد يتم تقليل سرعة وجودة النموذج."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "انقر لطلب من الذكاء الاصطناعي إعادة صياغة أو ترجمة أو تلخيص أو شرح النص المحدد.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "يمكنك كتابة \"{{KEY_TEXT}}\" للعثور بسرعة على هذا الخيار.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "يمكنك أيضًا طلب من الذكاء الاصطناعي تنفيذ أي إجراء على النص المحدد.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "اضغط",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "للانتقال لأسفل.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "اضغط",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "للانتقال لأعلى.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "اضغط",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "لتحديد الخيار.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "انقر لاستبدال النص المحدد بمحتوى تم إنشاؤه بواسطة الذكاء الاصطناعي.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "يمكنك طلب من الذكاء الاصطناعي تحسين المحتوى الذي تم إنشاؤه بواسطة الذكاء الاصطناعي كما تريد."
   }
 }

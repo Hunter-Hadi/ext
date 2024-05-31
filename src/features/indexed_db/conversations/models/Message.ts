@@ -129,10 +129,18 @@ export type IAIResponseOriginalMessageNavMetadata = {
   icon?: string
 }
 
+export interface IAIResponseSourceCitation {
+  snippet: string
+  content: string
+  start_index: number
+  length: number
+}
+
 export interface IAIResponseOriginalMessage {
   id?: string
   create_time?: string
   update_time?: string
+  liteMode?: boolean
   author?: {
     role: string
     name: string
@@ -182,14 +190,9 @@ export interface IAIResponseOriginalMessage {
     related?: string[]
     // message 选中的 nav 信息
     navMetadata?: IAIResponseOriginalMessageNavMetadata
+    // citations原文信息
+    sourceCitations?: IAIResponseSourceCitation[]
   }
-}
-
-export interface IAIResponseSourceCitation {
-  snippet: string
-  content: string
-  start_index: number
-  length: number
 }
 
 // AI返回的消息
@@ -199,6 +202,10 @@ export interface IAIResponseMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
   originalMessage?: IAIResponseOriginalMessage
+  /**
+   * @deprecated
+   * @description - 移动到originalMessage.metadata里
+   */
   sourceCitations?: IAIResponseSourceCitation[]
 }
 

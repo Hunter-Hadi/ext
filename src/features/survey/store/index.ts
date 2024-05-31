@@ -11,3 +11,9 @@ export const HaveFilledOutSurveyAtom = atom<
     feedback: false,
   },
 })
+
+// 第一次 fetch survey 状态，是否结束
+export const FirstFetchSurveyStatusLoadedAtom = atom<boolean>({
+  key: 'firstFetchSurveyStatusLoadedAtom',
+  default: false,
+})

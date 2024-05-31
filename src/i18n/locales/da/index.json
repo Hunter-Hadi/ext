@@ -64,7 +64,8 @@
     "continue_with_google": "Fortsæt med Google",
     "continue_with_email": "Fortsæt med e-mail",
     "privacy_policy": "Fortrolighedspolitik",
-    "terms_of_service": "Servicevilkår"
+    "terms_of_service": "Servicevilkår",
+    "shortcut": "Genvej"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Deltag i vores affiliate program og tjen",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "gentagende provision for at dele MaxAI!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Deltag i affiliate program",
-    "sidebar__marketing_tabs__survey__tab__title": "Undersøgelse",
+    "sidebar__marketing_tabs__survey__tab__title": "Feedback",
     "sidebar__user_upgrade_card__title": "Forøg din produktivitet med AI",
     "sidebar__user_upgrade_card__item1__title": "Ubegrænsede AI-forespørgsler",
     "sidebar__user_upgrade_card__item2__title": "Fuld adgang til alle funktioner",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Mange tak",
     "sidebar__survey_dialog__by_who": "MaxAI.me team",
     "sidebar__survey_dialog__cta_button_text": "Fortæl os om din oplevelse",
-    "chat__user_message__contexts__file__preview__tips": "Formatering kan være inkonsekvent fra kilden."
+    "floating_menu__input__placeholder__after_ai_response": "Fortæl AI hvad den skal gøre næste gang..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige avancerede tekstforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",
     "image_generate__secondary__content": "Hurtige billedforespørgsler: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige billedforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik for at bede AI om at omskrive, oversætte, opsummere eller forklare den valgte tekst.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Du kan skrive \"{{KEY_TEXT}}\" for at finde denne mulighed hurtigt.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Du kan også bede AI om at udføre en handling på den valgte tekst.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Tryk",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "for at gå ned.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Tryk",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "for at gå op.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Tryk",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "for at vælge muligheden.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klik for at erstatte den valgte tekst med AI-genereret indhold.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan bede AI om at forfine det AI-genererede indhold, som du ønsker."
   }
 }

@@ -1,3 +1,4 @@
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { VALID_SURVEY_KEYS } from '@/features/survey/constants'
 import { ISurveyKeyType } from '@/features/survey/types'
@@ -18,4 +19,9 @@ export const clientUpdateSurveyStatus = async (
     },
   })
   return result.data || {}
+}
+
+export const getSurveyStatusInChromeExtensionLocalStorage = async () => {
+  const appLocalStorage = await getChromeExtensionLocalStorage()
+  return appLocalStorage?.surveyStatus ?? null
 }

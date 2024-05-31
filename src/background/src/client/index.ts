@@ -37,6 +37,7 @@ import {
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
 import { initIndexedDBChannel } from '@/features/indexed_db/channel'
+import paymentManager from "@/features/payment/background/PaymentManager";
 import { updateSurveyStatusInBackground } from '@/features/survey/background/utils'
 import WebsiteContextManager, {
   IWebsiteContext,
@@ -758,6 +759,15 @@ export const ClientMessageInit = () => {
             success: true,
             data: result,
             message: 'ok',
+          }
+        }
+        case 'Client_createPaymentUrl': {
+          console.log('TEST createPaymentUrl', data)
+          paymentManager.addPayment(data)
+          return {
+            success: true,
+            data: null,
+            message: 'ok'
           }
         }
         default:

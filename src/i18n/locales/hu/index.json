@@ -64,7 +64,8 @@
     "continue_with_google": "Folytatás a Google-fiókkal",
     "continue_with_email": "Folytatás e-maillel",
     "privacy_policy": "Adatvédelmi irányelvek",
-    "terms_of_service": "Szolgáltatási feltételek"
+    "terms_of_service": "Szolgáltatási feltételek",
+    "shortcut": "Gyorsbillentyű"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Csatlakozzon partnerprogramunkhoz és keressen",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "ismétlődő jutalékot a MaxAI megosztásáért!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Csatlakozzon a partnerprogramhoz",
-    "sidebar__marketing_tabs__survey__tab__title": "Kérdőív",
+    "sidebar__marketing_tabs__survey__tab__title": "Visszajelzés",
     "sidebar__user_upgrade_card__title": "Növelje termelékenységét AI-val",
     "sidebar__user_upgrade_card__item1__title": "Korlátlan AI lekérdezések",
     "sidebar__user_upgrade_card__item2__title": "Teljes hozzáférés az összes funkcióhoz",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Nagyon köszönjük",
     "sidebar__survey_dialog__by_who": "MaxAI.me csapat",
     "sidebar__survey_dialog__cta_button_text": "Meséljen nekünk tapasztalatairól",
-    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrásból."
+    "floating_menu__input__placeholder__after_ai_response": "Mondja meg az AI-nak, mit tegyen ezután..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű előrehaladott szöveg lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
     "image_generate__secondary__content": "Magas sebességű kép lekérdezések: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű kép lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kattintson az AI megkérdezéséhez, hogy újraírja, lefordítsa, összefoglalja vagy elmagyarázza a kiválasztott szöveget.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Beírhatja a \"{{KEY_TEXT}}\" szöveget, hogy gyorsan megtalálja ezt az opciót.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Az AI-t is kérheti, hogy hajtson végre bármilyen műveletet a kiválasztott szövegen.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Nyomja meg a",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "gombot az alábbiak szerint.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Nyomja meg a",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "gombot az alábbiak szerint.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Nyomja meg a",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "gombot, majd",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "az opció kiválasztásához.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kattintson az AI által generált tartalommal való kiválasztott szöveg helyettesítéséhez.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Kérdezheti az AI-t, hogy finomítsa az AI által generált tartalmat bármilyen módon."
   }
 }

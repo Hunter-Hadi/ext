@@ -64,7 +64,8 @@
     "continue_with_google": "Продължи с Google",
     "continue_with_email": "Продължи с имейл",
     "privacy_policy": "Политика за поверителност",
-    "terms_of_service": "Условия за ползване"
+    "terms_of_service": "Условия за ползване",
+    "shortcut": "Бърз път"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Присъединете се към нашата партньорска програма и спечелете",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "постоянна комисионна за споделяне на MaxAI!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Присъединете се към партньорската програма",
-    "sidebar__marketing_tabs__survey__tab__title": "Анкета",
+    "sidebar__marketing_tabs__survey__tab__title": "Обратна връзка",
     "sidebar__user_upgrade_card__title": "Увеличете продуктивността си с изкуствен интелект",
     "sidebar__user_upgrade_card__item1__title": "Неограничени AI заявки",
     "sidebar__user_upgrade_card__item2__title": "Пълен достъп до всички функции",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Благодарим ви много",
     "sidebar__survey_dialog__by_who": "Екипът на MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Разкажете ни за вашето преживяване",
-    "chat__user_message__contexts__file__preview__tips": "Форматирането може да бъде несъвместимо с източника."
+    "floating_menu__input__placeholder__after_ai_response": "Кажете на ИИ какво да направи следващото..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Уверете се, че имате поне 1,500 бързи напреднали текстови заявки всеки месец. След достигане на лимита, скоростта и качеството на модела могат да бъдат намалени.",
     "image_generate__secondary__content": "Бързи заявки за изображения: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Уверете се, че имате поне 1,500 бързи заявки за изображения всеки месец. След достигане на лимита, скоростта и качеството на модела могат да бъдат намалени."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Щракнете, за да помолите ИИ да пренапише, преведе, резюмира или обясни избрания текст.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Можете да напишете \"{{KEY_TEXT}}\", за да намерите бързо тази опция.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Също така можете да помолите ИИ да изпълни всяко действие върху избрания текст.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Натиснете",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "за да отидете надолу.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Натиснете",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "за да отидете нагоре.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Натиснете",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Въведете",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "за да изберете опцията.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Щракнете, за да замените избрания текст със съдържание, генерирано от AI.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Можете да поискате от AI да уточни съдържанието, генерирано от AI, по всякакъв начин."
   }
 }

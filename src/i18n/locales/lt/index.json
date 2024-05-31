@@ -64,7 +64,8 @@
     "continue_with_google": "Prisijungti su „Google“",
     "continue_with_email": "Prisijungti su el. paštu",
     "privacy_policy": "Privatumo politika",
-    "terms_of_service": "Paslaugų teikimo sąlygos"
+    "terms_of_service": "Paslaugų teikimo sąlygos",
+    "shortcut": "Trumpikas kelias"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Prisijunkite prie mūsų partnerystės programos ir uždirbkite",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "pasikartojančią komisiją dalindamiesi MaxAI!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Prisijungti prie partnerystės programos",
-    "sidebar__marketing_tabs__survey__tab__title": "Apklausa",
+    "sidebar__marketing_tabs__survey__tab__title": "Atsiliepimai",
     "sidebar__user_upgrade_card__title": "Padidinkite savo produktyvumą su AI",
     "sidebar__user_upgrade_card__item1__title": "Neribotos AI užklausos",
     "sidebar__user_upgrade_card__item2__title": "Visiškas prieiga prie visų funkcijų",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Labai ačiū",
     "sidebar__survey_dialog__by_who": "MaxAI.me komanda",
     "sidebar__survey_dialog__cta_button_text": "Pasakokite apie savo patirtį",
-    "chat__user_message__contexts__file__preview__tips": "Formatavimas gali būti nenuoseklus iš šaltinio."
+    "floating_menu__input__placeholder__after_ai_response": "Pasakykite AI, ką daryti toliau..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų pažangių teksto užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
     "image_generate__secondary__content": "Greitos vaizdo užklausos: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų vaizdo užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Spustelėkite, norėdami paprašyti AI peržiūrėti, išversti, santraukoti ar paaiškinti pasirinktą tekstą.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Galite įvesti „{{KEY_TEXT}}“, kad greitai rastumėte šią parinktį.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Taip pat galite paprašyti AI atlikti bet kokį veiksmą su pasirinktu tekstu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Paspauskite",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "norėdami judėti žemyn.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Paspauskite",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "norėdami judėti aukštyn.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Paspauskite",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Įvesti",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "norint pasirinkti parinktį.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Spustelėkite, kad pakeistumėte pažymėtą tekstą su AI sugeneruotu turiniu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Galite paprašyti dirbtinio intelekto patobulinti dirbtinio intelekto sukurtą turinį taip, kaip norite."
   }
 }

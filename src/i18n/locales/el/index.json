@@ -64,7 +64,8 @@
     "continue_with_google": "Συνέχεια με το Google",
     "continue_with_email": "Συνέχεια με email",
     "privacy_policy": "Πολιτική Απορρήτου",
-    "terms_of_service": "Όροι Χρήσης"
+    "terms_of_service": "Όροι Χρήσης",
+    "shortcut": "Συντόμευση"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Γίνετε μέλος του προγράμματος συνεργατών μας και κερδίστε",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "επαναλαμβανόμενη προμήθεια για την κοινοποίηση του MaxAI!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Γίνετε μέλος του προγράμματος συνεργατών",
-    "sidebar__marketing_tabs__survey__tab__title": "Έρευνα",
+    "sidebar__marketing_tabs__survey__tab__title": "Ανατροφοδότηση",
     "sidebar__user_upgrade_card__title": "Ενισχύστε την παραγωγικότητά σας με την AI",
     "sidebar__user_upgrade_card__item1__title": "Απεριόριστες ερωτήσεις AI",
     "sidebar__user_upgrade_card__item2__title": "Πλήρης πρόσβαση σε όλες τις λειτουργίες",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Ευχαριστούμε πολύ",
     "sidebar__survey_dialog__by_who": "Ομάδα MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Πείτε μας για την εμπειρία σας",
-    "chat__user_message__contexts__file__preview__tips": "Η μορφοποίηση μπορεί να είναι ασυνεπής από την πηγή."
+    "floating_menu__input__placeholder__after_ai_response": "Πείτε στο AI τι να κάνει μετά..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Βεβαιωθείτε ότι έχετε τουλάχιστον 1.500 ερωτήσεις προηγμένου κειμένου υψηλής ταχύτητας κάθε μήνα. Μετά την επίτευξη του ορίου, η ταχύτητα και η ποιότητα του μοντέλου μπορεί να μειωθούν.",
     "image_generate__secondary__content": "Ερωτήσεις εικόνας υψηλής ταχύτητας: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Βεβαιωθείτε ότι έχετε τουλάχιστον 1.500 ερωτήσεις εικόνας υψηλής ταχύτητας κάθε μήνα. Μετά την επίτευξη του ορίου, η ταχύτητα και η ποιότητα του μοντέλου μπορεί να μειωθούν."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Κάντε κλικ για να ζητήσετε από το AI να αναδιατάξει, να μεταφράσει, να συνοψίσει ή να εξηγήσει το επιλεγμένο κείμενο.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Μπορείτε να πληκτρολογήσετε \"{{KEY_TEXT}}\" για να βρείτε γρήγορα αυτήν την επιλογή.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Μπορείτε επίσης να ζητήσετε από το AI να εκτελέσει οποιαδήποτε ενέργεια στο επιλεγμένο κείμενο.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Πατήστε",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "για να κατέβετε.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Πατήστε",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "για να ανεβείτε.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Πατήστε",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "για να επιλέξετε την επιλογή.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Κάντε κλικ για να αντικαταστήσετε το επιλεγμένο κείμενο με περιεχόμενο που δημιουργήθηκε από την τεχνητή νοημοσύνη.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Μπορείτε να ζητήσετε από την AI να βελτιώσει το περιεχόμενο που δημιουργήθηκε από την AI όπως εσείς θέλετε."
   }
 }

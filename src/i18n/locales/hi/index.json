@@ -64,7 +64,8 @@
     "continue_with_google": "Google के साथ जारी रखें",
     "continue_with_email": "ईमेल के साथ जारी रखें",
     "privacy_policy": "गोपनीयता नीति",
-    "terms_of_service": "सेवा की शर्तें"
+    "terms_of_service": "सेवा की शर्तें",
+    "shortcut": "शॉर्टकट"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "हमारे सहयोगी कार्यक्रम में शामिल हों और कमाएं",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "MaxAI को साझा करने के लिए आय आयोजित करें!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "सहयोगी कार्यक्रम में शामिल हों",
-    "sidebar__marketing_tabs__survey__tab__title": "सर्वेक्षण",
+    "sidebar__marketing_tabs__survey__tab__title": "प्रतिक्रिया",
     "sidebar__user_upgrade_card__title": "AI के साथ अपनी प्रोडक्टिविटी को बढ़ाएं",
     "sidebar__user_upgrade_card__item1__title": "असीमित AI क्वेरी",
     "sidebar__user_upgrade_card__item2__title": "सभी सुविधाओं का पूरा उपयोग",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "बहुत धन्यवाद",
     "sidebar__survey_dialog__by_who": "MaxAI.me टीम",
     "sidebar__survey_dialog__cta_button_text": "हमें अपने अनुभव के बारे में बताएं",
-    "chat__user_message__contexts__file__preview__tips": "स्रोत से स्वरूपण अस्थिर हो सकता है।"
+    "floating_menu__input__placeholder__after_ai_response": "AI को बताएं कि अगला क्या करना है..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "महीने में कम से कम 1,500 उच्च गति वाले उन्नत पाठ प्रश्न सुनिश्चित करें। सीमा तक पहुंचने के बाद, मॉडल की गति और गुणवत्ता कम हो सकती है।",
     "image_generate__secondary__content": "उच्च गति वाले छवि प्रश्न: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "महीने में कम से कम 1,500 उच्च गति वाले छवि प्रश्न सुनिश्चित करें। सीमा तक पहुंचने के बाद, मॉडल की गति और गुणवत्ता कम हो सकती है।"
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "चयनित पाठ को पुन: लिखें, अनुवाद करें, संक्षेप में देखें या समझें के लिए AI से पूछने के लिए क्लिक करें।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "इस विकल्प को तेजी से ढूंढने के लिए आप \"{{KEY_TEXT}}\" टाइप कर सकते हैं।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "आप AI से चयनित पाठ पर कोई भी कार्रवाई करने के लिए भी पूछ सकते हैं।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "नीचे जाने के लिए",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "दबाएं।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "ऊपर जाने के लिए",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "दबाएं।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "विकल्प का चयन करने के लिए",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "दबाएं",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "चयनित पाठ को AI-उत्पन्न सामग्री के साथ बदलने के लिए क्लिक करें।",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "आप AI से कह सकते हैं कि आप किसी भी तरीके से AI द्वारा उत्पन्न सामग्री को सुधारेंगे।"
   }
 }

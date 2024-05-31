@@ -64,7 +64,8 @@
     "continue_with_google": "Continuer avec Google",
     "continue_with_email": "Continuer avec email",
     "privacy_policy": "Politique de confidentialité",
-    "terms_of_service": "Conditions d'utilisation"
+    "terms_of_service": "Conditions d'utilisation",
+    "shortcut": "Raccourci"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Rejoignez notre programme d'affiliation et gagnez",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "une commission récurrente en partageant MaxAI !",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Rejoindre le programme d'affiliation",
-    "sidebar__marketing_tabs__survey__tab__title": "Enquête",
+    "sidebar__marketing_tabs__survey__tab__title": "Retour d'information",
     "sidebar__user_upgrade_card__title": "Boostez votre productivité avec l'IA",
     "sidebar__user_upgrade_card__item1__title": "Requêtes IA illimitées",
     "sidebar__user_upgrade_card__item2__title": "Accès complet à toutes les fonctionnalités",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Merci beaucoup",
     "sidebar__survey_dialog__by_who": "L'équipe MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Parlez-nous de votre expérience",
-    "chat__user_message__contexts__file__preview__tips": "La mise en forme peut être incohérente par rapport à la source."
+    "floating_menu__input__placeholder__after_ai_response": "Indiquez à l'IA ce qu'elle doit faire ensuite..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes de texte avancé à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites.",
     "image_generate__secondary__content": "Requêtes d'image à grande vitesse : {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes d'image à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Cliquez pour demander à l'IA de réécrire, traduire, résumer ou expliquer le texte sélectionné.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Vous pouvez taper \"{{KEY_TEXT}}\" pour trouver rapidement cette option.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Vous pouvez également demander à l'IA d'effectuer n'importe quelle action sur le texte sélectionné.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Appuyez sur",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "pour descendre.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Appuyez sur",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "pour monter.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Appuyez sur",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Entrée",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pour sélectionner l'option.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Cliquez pour remplacer le texte sélectionné par du contenu généré par l'IA.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Vous pouvez demander à l'IA de peaufiner le contenu généré par l'IA comme vous le souhaitez."
   }
 }

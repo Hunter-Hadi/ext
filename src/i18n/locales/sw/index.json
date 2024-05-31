@@ -64,7 +64,8 @@
     "continue_with_google": "Endelea na Google",
     "continue_with_email": "Endelea na barua pepe",
     "privacy_policy": "Sera ya Faragha",
-    "terms_of_service": "Masharti ya Huduma"
+    "terms_of_service": "Masharti ya Huduma",
+    "shortcut": "Njia ya mkato"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "Jiunge na programu yetu ya washirika na kupata",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "tume inayorudiwa kwa kushiriki MaxAI!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "Jiunge na programu ya washirika",
-    "sidebar__marketing_tabs__survey__tab__title": "Utafiti",
+    "sidebar__marketing_tabs__survey__tab__title": "Maoni",
     "sidebar__user_upgrade_card__title": "Ongeza ufanisi wako na AI",
     "sidebar__user_upgrade_card__item1__title": "Maswali ya AI yasiyokuwa na kikomo",
     "sidebar__user_upgrade_card__item2__title": "Upatikanaji kamili wa vipengele vyote",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "Asante sana",
     "sidebar__survey_dialog__by_who": "Timu ya MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Tuambie uzoefu wako",
-    "chat__user_message__contexts__file__preview__tips": "Umbo linaweza kuwa tofauti kutoka chanzo."
+    "floating_menu__input__placeholder__after_ai_response": "Eleza AI ifuatayo ifanye..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya maandishi ya juu kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
     "image_generate__secondary__content": "Maswali ya picha kwa kasi kubwa: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya picha kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Bonyeza kuuliza AI iandike upya, itafsiri, itafupishe, au ieleze maandishi yaliyochaguliwa.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Unaweza kuingiza \"{{KEY_TEXT}}\" ili kupata chaguo hili haraka.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Pia unaweza kuuliza AI ifanye hatua yoyote kwenye maandishi yaliyochaguliwa.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Bonyeza",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "kwenda chini.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "Bonyeza",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "kwenda juu.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "Bonyeza",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Ingiza",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "kuchagua chaguo.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Bonyeza ili kubadilisha maandishi yaliyochaguliwa na maudhui yaliyotengenezwa na AI.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Unaweza kuuliza AI kuboresha yaliyotengenezwa na AI kama unavyotaka."
   }
 }

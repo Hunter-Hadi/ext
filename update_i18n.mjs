@@ -281,6 +281,9 @@ const updateI18nJson = async (
     if (_.get(sourceJson, `quota_usage_card.${key}`)) {
       return `quota_usage_card.${key}`
     }
+    if (_.get(sourceJson, `onboarding.${key}`)) {
+      return `onboarding.${key}`
+    }
     return key
   })
   let needUpdateLanguages = i18nDirs
@@ -622,7 +625,9 @@ async function fixManifestTooLongName() {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = []
+  const keys = [
+    'onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1',
+  ]
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
   await fixManifestTooLongName()

@@ -64,7 +64,8 @@
     "continue_with_google": "ادامه با گوگل",
     "continue_with_email": "ادامه با ایمیل",
     "privacy_policy": "سیاست حفظ حریم خصوصی",
-    "terms_of_service": "شرایط خدمات"
+    "terms_of_service": "شرایط خدمات",
+    "shortcut": "میانبر"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -818,7 +819,7 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "به برنامه همکاری ما بپیوندید و",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "کمیسیون تکراری بابت به اشتراک گذاری MaxAI کسب کنید!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "به برنامه همکاری بپیوندید",
-    "sidebar__marketing_tabs__survey__tab__title": "نظرسنجی",
+    "sidebar__marketing_tabs__survey__tab__title": "بازخورد",
     "sidebar__user_upgrade_card__title": "با هوش مصنوعی به بهره‌وری خود قدرت ببخشید",
     "sidebar__user_upgrade_card__item1__title": "پرسش‌های هوش مصنوعی نامحدود",
     "sidebar__user_upgrade_card__item2__title": "دسترسی کامل به تمام ویژگی‌ها",
@@ -835,7 +836,7 @@
     "sidebar__survey_dialog__thanks": "بسیار سپاسگزاریم",
     "sidebar__survey_dialog__by_who": "تیم MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "درباره تجربه خود به ما بگویید",
-    "chat__user_message__contexts__file__preview__tips": "قالب بندی ممکن است از منبع متفاوت باشد."
+    "floating_menu__input__placeholder__after_ai_response": "به هوش مصنوعی بگوید که بعداً چه کاری انجام دهد..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -1170,5 +1171,19 @@
     "advanced_text__secondary__content__tooltip": "حداقل 1,500 کوئری پیشرفته متنی با سرعت بالا را در هر ماه تضمین کنید. پس از رسیدن به حد، سرعت و کیفیت مدل ممکن است کاهش یابد.",
     "image_generate__secondary__content": "کوئری‌های تصویری با سرعت بالا: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "حداقل 1,500 کوئری تصویری با سرعت بالا را در هر ماه تضمین کنید. پس از رسیدن به حد، سرعت و کیفیت مدل ممکن است کاهش یابد."
+  },
+  "onboarding": {
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "برای درخواست بازنویسی، ترجمه، خلاصه‌سازی یا توضیح متن انتخاب شده، کلیک کنید.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "می‌توانید \"{{KEY_TEXT}}\" را تایپ کنید تا به سرعت این گزینه را پیدا کنید.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "همچنین می‌توانید از هوش مصنوعی بخواهید هر عملی را روی متن انتخاب شده انجام دهد.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "برای پایین رفتن",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "را فشار دهید.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "برای بالا رفتن",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "را فشار دهید.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "برای انتخاب گزینه",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "را فشار دهید.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "برای جایگزینی متن انتخاب شده با محتوای تولید شده توسط هوش مصنوعی کلیک کنید.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "می‌توانید از هوش مصنوعی بخواهید تا محتوای تولید شده توسط آن را به دلخواه خود بهبود دهد."
   }
 }

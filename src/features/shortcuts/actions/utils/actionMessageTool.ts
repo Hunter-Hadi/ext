@@ -32,8 +32,8 @@ export const stopActionMessageStatus = async (params: {
             {
               key: lastAIMessage.messageId,
               changes: {
-                'metadata.sources.status': 'complete',
-                'metadata.isComplete': true,
+                'originalMessage.metadata.sources.status': 'complete',
+                'originalMessage.metadata.isComplete': true,
               } as any,
             },
           ],

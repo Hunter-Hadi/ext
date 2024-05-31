@@ -29,6 +29,7 @@ const ConversationList: FC<IProps> = (props) => {
     hideClearAllButton = false,
     emptyFeedback,
     conversationType,
+    onSelectConversation,
   } = props
   const { resetConversation, currentSidebarConversationType } =
     useClientConversation()
@@ -79,6 +80,7 @@ const ConversationList: FC<IProps> = (props) => {
             loadNextPage={fetchNextPage}
             hasNextPage={hasNextPage}
             isNextPageLoading={isFetching}
+            onSelectItem={onSelectConversation}
           />
         </AppLoadingLayout>
         {!loading && paginationConversations.length === 0

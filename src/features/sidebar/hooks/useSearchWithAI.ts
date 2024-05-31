@@ -191,6 +191,7 @@ const useSearchWithAI = () => {
             'ai',
             'latest',
           )) as IAIResponseMessage
+        debugger
         const needDeleteMessageIds =
           await ClientConversationMessageManager.getDeleteMessageIds(
             currentConversationId,

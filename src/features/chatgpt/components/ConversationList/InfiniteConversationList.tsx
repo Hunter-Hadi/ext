@@ -195,7 +195,7 @@ const Row = memo(function RowItem({
     disposeBackgroundChatSystem(conversation.id).then().catch()
     console.log(`handleSelectConversation 44`, conversation.id)
     onSelectItem?.(conversation)
-  }, [conversation, onSelectItem])
+  }, [conversation, onSelectItem, smoothConversationLoading])
   if (!conversation) {
     return (
       <Stack

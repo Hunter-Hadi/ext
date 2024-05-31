@@ -283,8 +283,8 @@ export function completeLastAIMessageOnStop() {
                   {
                     key: lastMessage.messageId,
                     changes: {
-                      'metadata.sources.status': 'complete',
-                      'metadata.isComplete': true,
+                      'originalMessage.metadata.sources.status': 'complete',
+                      'originalMessage.metadata.isComplete': true,
                     } as any,
                   },
                 ],
@@ -334,8 +334,8 @@ export function completeLastAIMessageOnError() {
                     {
                       key: lastMessage.messageId,
                       changes: {
-                        'metadata.sources.status': 'complete',
-                        'metadata.isComplete': true,
+                        'originalMessage.metadata.sources.status': 'complete',
+                        'originalMessage.metadata.isComplete': true,
                       } as any,
                     },
                   ],

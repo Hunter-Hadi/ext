@@ -331,6 +331,7 @@ export const useSyncConversation = () => {
     loaded: conversationSyncGlobalState.loaded,
   }
 }
+
 export const useInitSyncConversation = () => {
   const setConversationSyncGlobalState = useSetRecoilState(
     ConversationSyncGlobalState,
@@ -361,4 +362,5 @@ export const useInitSyncConversation = () => {
     }
   }, [isLogin, loaded, maxAIBetaFeaturesLoaded, maxAIBetaFeatures.chat_sync])
 }
+
 export default useSyncConversation

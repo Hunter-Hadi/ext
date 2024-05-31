@@ -198,15 +198,26 @@ export class ClientConversationMessageManager {
       return false
     }
   }
-  // https://dexie.org/docs/Table/Table.bulkUpdate()
+  /**
+   * 更新消息
+   * @param conversationId
+   * @param messageChanges
+   * @param options
+   * @inheritdoc https://dexie.org/docs/Table/Table.bulkUpdate()
+   */
   static async updateMessagesWithChanges(
     conversationId: string,
     messageChanges: ReadonlyArray<{
       key: string
       changes: UpdateSpec<IChatMessage>
     }>,
+    options?: {
+      notifyChange?: boolean
+      syncMessageToDB?: boolean
+    },
   ) {
     try {
+      const { notifyChange = true, syncMessageToDB = true } = options || {}
       if (messageChanges.length === 0) {
         return true
       }
@@ -226,20 +237,23 @@ export class ClientConversationMessageManager {
         conversationId,
         changedMessageIds,
       )
-      this.asyncUploadConversationLastMessageId(conversationId).then().catch()
-      createIndexedDBQuery('conversations')
-        .messages.bulkGet(changedMessageIds)
-        .then((messages) => {
-          const validMessages: IChatMessage[] = []
-          messages.forEach((message) => {
-            if (message) {
-              validMessages.push(message)
-            }
-          })
-          clientUploadMessagesToRemote(conversationId, validMessages)
-            .then()
-            .catch()
-        })
+      if (notifyChange) {
+        this.asyncUploadConversationLastMessageId(conversationId).then().catch()
+      }
+      const updatedMessages = await this.getMessagesByMessageIds(
+        changedMessageIds,
+      )
+      const validMessages: IChatMessage[] = []
+      updatedMessages.forEach((message) => {
+        if (message) {
+          validMessages.push(message)
+        }
+      })
+      if (syncMessageToDB) {
+        clientUploadMessagesToRemote(conversationId, validMessages)
+          .then()
+          .catch()
+      }
       return updateResult
     } catch (e) {
       console.log(`ConversationDB[V3] 更新消息失败`, e)
@@ -251,14 +265,20 @@ export class ClientConversationMessageManager {
    * 更新消息
    * @param conversationId
    * @param updateMessageData
+   * @param options
    */
   static async updateMessage(
     conversationId: string,
     updateMessageData: Partial<
       IUserChatMessage | IAIResponseMessage | ISystemChatMessage | IChatMessage
     >,
+    options?: {
+      notifyChange?: boolean
+      syncMessageToDB?: boolean
+    },
   ) {
     try {
+      const { notifyChange = true, syncMessageToDB = true } = options || {}
       if (!updateMessageData.messageId) {
         return false
       }
@@ -271,12 +291,16 @@ export class ClientConversationMessageManager {
       const updateResult = await createIndexedDBQuery('conversations')
         .messages.put(mergeMessage)
         .then()
-      this.notifyConversationMessageChange('update', conversationId, [
-        mergeMessage.messageId,
-      ])
-      clientUploadMessagesToRemote(conversationId, [mergeMessage])
-        .then()
-        .catch()
+      if (notifyChange) {
+        this.notifyConversationMessageChange('update', conversationId, [
+          mergeMessage.messageId,
+        ])
+      }
+      if (syncMessageToDB) {
+        clientUploadMessagesToRemote(conversationId, [mergeMessage])
+          .then()
+          .catch()
+      }
       this.asyncUploadConversationLastMessageId(conversationId).then().catch()
       console.log(`ConversationDB[V3] 更新消息`, updateResult)
       return true

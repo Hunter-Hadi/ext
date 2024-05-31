@@ -36,7 +36,6 @@ export const backgroundConversationDBRemoveConversation = async (
     .where('messageId')
     .anyOf(messages.map((message) => message.messageId))
     .toArray()
-  debugger
   try {
     if (softDelete) {
       conversation.isDelete = true

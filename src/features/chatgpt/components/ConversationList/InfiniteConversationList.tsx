@@ -1,4 +1,5 @@
 import Chip from '@mui/material/Chip'
+import CircularProgress from '@mui/material/CircularProgress'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
@@ -14,7 +15,6 @@ import MoreActionsButton from '@/features/chatgpt/components/ConversationList/Mo
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { IPaginationConversation } from '@/features/indexed_db/conversations/models/Conversation'
@@ -116,10 +116,6 @@ const Row = memo(function RowItem({
   const { updateSidebarConversationType, updateSidebarSettings } =
     useSidebarSettings()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
-  const { updatePaginationConversations } = usePaginationConversations(
-    {},
-    false,
-  )
   const modelLabelMap = useMemo(() => {
     const map: {
       [key in IAIProviderType]: {
@@ -138,7 +134,7 @@ const Row = memo(function RowItem({
   }, [AI_PROVIDER_MODEL_MAP])
 
   const conversation = items[index]
-  const isSelected = conversation.id === currentConversationId
+  const isSelected = conversation?.id === currentConversationId
   const editingConversationName = useRef('')
   const handleConversationRename = useCallback(
     async (conversation: IPaginationConversation) => {
@@ -154,10 +150,9 @@ const Row = memo(function RowItem({
           },
         )
         editingConversationName.current = ''
-        await updatePaginationConversations([conversation.id])
       }
     },
-    [updatePaginationConversations],
+    [],
   )
   const handleSelectConversation = useCallback(async () => {
     console.log(`handleSelectConversation 11`, conversation.id)
@@ -195,6 +190,21 @@ const Row = memo(function RowItem({
     console.log(`handleSelectConversation 44`, conversation.id)
     onSelectItem?.(conversation)
   }, [conversation, onSelectItem])
+  if (!conversation) {
+    return (
+      <Stack
+        style={style}
+        width={'100%'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        sx={{
+          my: '16px',
+        }}
+      >
+        <CircularProgress size={16} sx={{ m: '0 auto' }} />
+      </Stack>
+    )
+  }
   return (
     <Stack
       key={conversation.id}

@@ -178,15 +178,6 @@ class ChatSystem implements ChatSystemInterface {
       files: this.chatFiles,
     })
   }
-  async updateClientConversationMessages(conversationId: string) {
-    const conversation = await ConversationManager.getConversationById(
-      conversationId,
-    )
-    backgroundSendAllClientMessage('Client_listenUpdateConversation', {
-      conversation: conversation,
-      conversationId,
-    })
-  }
   async switchAdapterWithConversation(conversation: IConversation) {
     const currentConversationAIProvider = conversation.meta.AIProvider
     if (currentConversationAIProvider) {
@@ -201,8 +192,6 @@ class ChatSystem implements ChatSystemInterface {
       await this.switchAdapter(currentConversationAIProvider)
       // 创建conversation
       await this.currentAdapter?.createConversation(conversation)
-      // 更新客户端的聊天记录
-      await this.updateClientConversationMessages(conversation.id)
     }
   }
 }

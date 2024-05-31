@@ -32,7 +32,6 @@ import {
   useClientConversation,
 } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import {
   getMaxAIFloatingContextMenuRootElement,
@@ -57,21 +56,17 @@ const AIProviderModelSelectorButton: FC<{
   } = props
   const { clientConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
-  const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   const [isHoverButton, setIsHoverButton] = useState(false)
   // 当前sidebarConversationType的AI provider
   const [currentChatAIProvider, setCurrentChatAIProvider] = useState(
     clientConversation?.meta.AIProvider ||
-      sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
-        .AIProvider ||
+      clientConversation?.meta.AIProvider ||
       SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType]
         .AIProvider,
   )
   // 当前sidebarConversationType的AI model
   const [currentChatModel, setCurrentChatModel] = useState(
     clientConversation?.meta.AIModel ||
-      sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
-        .AIModel ||
       SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel,
   )
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()

@@ -217,10 +217,6 @@ export default class ChatSystemFactory {
                     )
                   }
                 }
-                // 更新客户端的聊天记录
-                await currentChatSystem.updateClientConversationMessages(
-                  conversation.id,
-                )
               }
             }
             await currentChatSystem.sendQuestion(taskId, sender, question)
@@ -246,9 +242,6 @@ export default class ChatSystemFactory {
             console.log('新版Conversation 删除会话', conversationId)
             const success = await currentChatSystem.removeConversation(
               conversationId || '',
-            )
-            await currentChatSystem.updateClientConversationMessages(
-              conversationId,
             )
             return {
               success,

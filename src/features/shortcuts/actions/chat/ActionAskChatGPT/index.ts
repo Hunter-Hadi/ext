@@ -467,6 +467,9 @@ export class ActionAskChatGPT extends Action {
                         } as any,
                       },
                     ],
+                    {
+                      syncMessageToDB: false,
+                    },
                   )
                 } else {
                   // TODO 这里只有更新，其实要区别更新/覆盖

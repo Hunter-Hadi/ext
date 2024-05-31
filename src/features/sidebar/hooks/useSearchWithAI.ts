@@ -12,6 +12,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -155,7 +156,7 @@ const useSearchWithAI = () => {
       await updateSidebarConversationType('Search')
     }
     let cacheConversationId = await getSearchWithAIConversationId()
-    let conversation: IChatConversation | null = null
+    let conversation: IConversation | null = null
     if (cacheConversationId) {
       conversation = await ClientConversationManager.getConversationById(
         cacheConversationId,

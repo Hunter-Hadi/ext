@@ -1,8 +1,9 @@
+import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { clientGetMaxAIBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/client'
+import { useAuthLogin } from '@/features/auth'
 import { MaxAIBetaFeaturesState } from '@/features/auth/store'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 
 /**
  * 获取MaxAI Beta功能开关
@@ -12,16 +13,19 @@ const useMaxAIBetaFeatures = (autoFetchSettings = false) => {
   const [maxAIBetaFeatures, setMaxAIBetaFeatures] = useRecoilState(
     MaxAIBetaFeaturesState,
   )
-  useEffectOnce(() => {
-    if (autoFetchSettings) {
+  const { loaded, isLogin } = useAuthLogin()
+  const onceRef = useRef(false)
+  useEffect(() => {
+    if (autoFetchSettings && isLogin && !onceRef.current && loaded) {
+      onceRef.current = true
       clientGetMaxAIBetaFeatureSettings().then((features) => {
         setMaxAIBetaFeatures({
-          loaded: true,
           features,
+          loaded: true,
         })
       })
     }
-  })
+  }, [loaded, isLogin])
   return {
     maxAIBetaFeatures: maxAIBetaFeatures.features,
     maxAIBetaFeaturesLoaded: maxAIBetaFeatures.loaded,

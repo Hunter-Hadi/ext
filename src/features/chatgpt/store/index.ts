@@ -8,14 +8,6 @@ import {
   IChatMessage,
   IChatUploadFile,
 } from '@/features/indexed_db/conversations/models/Message'
-import { ISidebarConversationType } from '@/features/sidebar/types'
-
-export const ClientConversationMapState = atom<{
-  [key: string]: IConversation
-}>({
-  key: 'ClientConversationMapState',
-  default: {},
-})
 
 export const ThirdPartyAIProviderConfirmDialogState = atom<{
   open: boolean
@@ -40,25 +32,13 @@ export const ClientUploadedFilesState = atomFamily<
   },
 })
 
-export type PaginationConversationsFilterType = {
-  type: ISidebarConversationType
-  page_size: number
-  page: number
-  isDelete: boolean
-  total_page: number
-}
-
-export const PaginationConversationsFilterState =
-  atom<PaginationConversationsFilterType>({
-    key: 'PaginationConversationsFilterState',
-    default: {
-      type: 'Chat',
-      page_size: 50,
-      page: 0,
-      isDelete: false,
-      total_page: 0,
-    },
-  })
+export const ClientConversationStateFamily = atomFamily<
+  IConversation | null,
+  string
+>({
+  key: 'ClientConversationStateFamily',
+  default: null,
+})
 
 export const PaginationConversationsState = atom<IPaginationConversation[]>({
   key: 'PaginationConversationsState',

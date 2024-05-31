@@ -189,9 +189,7 @@ export class ClientConversationManager {
         .anyOf(conversationIds)
         .modify({ isDelete: true })
         .then()
-      conversationIds.forEach((conversationId) => {
-        this.notifyConversationChange('delete', [conversationId])
-      })
+      this.notifyConversationChange('delete', conversationIds)
     }
   }
 

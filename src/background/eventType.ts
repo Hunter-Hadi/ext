@@ -17,7 +17,6 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_updateAppSettings'
   | 'Client_listenUpdateIframeInput'
   | 'Client_listenUploadFilesChange'
-  | 'Client_listenUpdateConversation'
   | 'Client_ListenGetIframePageContentResponse'
   | 'Client_ListenProxyWebsocket'
   // 尝试更新客户端会受到sidebar影响的box的样式

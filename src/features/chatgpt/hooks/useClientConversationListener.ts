@@ -1,6 +1,5 @@
 // hooks/useClientChatGPTFiles.ts
 import { HTMLParagraphElement } from 'linkedom'
-import cloneDeep from 'lodash-es/cloneDeep'
 import isArray from 'lodash-es/isArray'
 import isNumber from 'lodash-es/isNumber'
 import orderBy from 'lodash-es/orderBy'
@@ -13,7 +12,7 @@ import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUp
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
-  ClientConversationMapState,
+  ClientConversationStateFamily,
   ClientUploadedFilesState,
   PaginationConversationMessagesStateFamily,
 } from '@/features/chatgpt/store'
@@ -46,17 +45,14 @@ const port = new ContentScriptConnectionV2({
  * - 自动归档 - v4.2.0 - 2024-04
  */
 export const useClientConversationListener = () => {
-  const [, setClientConversationMap] = useRecoilState(
-    ClientConversationMapState,
-  )
   const appDBStorage = useRecoilValue(AppDBStorageState)
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
   const { currentAIProvider } = useAIProviderModels()
   const {
+    currentConversationId,
     createConversation,
     resetConversation,
     updateConversationStatus,
-    currentConversationId,
     clientConversationMessages,
     currentConversationIdRef,
     clientConversation,
@@ -91,55 +87,46 @@ export const useClientConversationListener = () => {
     blurDelayRef.current = blurDelay
   }, [blurDelay])
 
+  const updateConversation = useRecoilCallback(
+    ({ set }) =>
+      async () => {
+        if (currentConversationId) {
+          const result = await port.postMessage({
+            event: 'Client_chatGetFiles',
+            data: {
+              conversationId: currentConversationId,
+            },
+          })
+          if (isArray(result.data)) {
+            setFilesRef.current(result.data)
+          }
+          const conversation =
+            await ClientConversationManager.getConversationById(
+              currentConversationId,
+            )
+          console.log(
+            `ConversationDB[V3] 更新会话[${currentConversationId}]`,
+            conversation,
+          )
+          set(
+            ClientConversationStateFamily(currentConversationId),
+            conversation,
+          )
+        }
+      },
+    [currentConversationId],
+  )
+
   useEffect(() => {
     if (!currentConversationId) {
       return
     }
-
-    const updateConversation = async () => {
-      ClientConversationManager.getConversationById(currentConversationId).then(
-        async (conversation) => {
-          if (conversation) {
-            const isDelete = conversation.isDelete
-            console.log(
-              `ConversationDB[V3] [${currentConversationId}]effect更新`,
-              conversation,
-            )
-            if (isDelete) {
-              setClientConversationMap((prevState) => {
-                const newState = cloneDeep(prevState)
-                delete newState[conversation.id]
-                return newState
-              })
-            } else {
-              setClientConversationMap((prevState) => {
-                return {
-                  ...prevState,
-                  [conversation.id]: conversation,
-                }
-              })
-            }
-          }
-        },
-      )
-      const result = await port.postMessage({
-        event: 'Client_chatGetFiles',
-        data: {
-          conversationId: currentConversationId,
-        },
-      })
-      if (isArray(result.data)) {
-        setFilesRef.current(result.data)
-      }
-    }
-
-    updateConversation()
     window.addEventListener('focus', updateConversation)
-
+    updateConversation().then().catch()
     return () => {
       window.removeEventListener('focus', updateConversation)
     }
-  }, [currentConversationId])
+  }, [updateConversation])
 
   useCreateClientMessageListener(async (event, data) => {
     switch (event as IChromeExtensionClientListenEvent) {
@@ -171,27 +158,6 @@ export const useClientConversationListener = () => {
           success: true,
           message: '',
           data: {},
-        }
-      }
-      case 'Client_listenUpdateConversation': {
-        const { conversation, conversationId } = data
-        if (conversation?.id) {
-          setClientConversationMap((prevState) => {
-            return {
-              ...prevState,
-              [conversation.id]: conversation,
-            }
-          })
-        } else if (!conversation) {
-          // 如果是删除的话，就不会有conversation
-          setClientConversationMap((prevState) => {
-            const newState = cloneDeep(prevState)
-            delete newState[conversationId]
-            return newState
-          })
-        }
-        return {
-          success: true,
         }
       }
       default:
@@ -290,22 +256,6 @@ export const useClientConversationListener = () => {
        * 检查Chat状态
        */
       const checkChatGPTStatus = async () => {
-        ClientConversationManager.getConversationById(
-          currentConversationId,
-        ).then(async (conversation) => {
-          if (conversation) {
-            console.log(
-              `ConversationDB[V3] [${currentConversationId}]effect更新`,
-              conversation,
-            )
-            setClientConversationMap((prevState) => {
-              return {
-                ...prevState,
-                [conversation.id]: conversation,
-              }
-            })
-          }
-        })
         const result = await port.postMessage({
           event: 'Client_checkChatGPTStatus',
           data: {
@@ -413,9 +363,9 @@ export const useClientConversationListener = () => {
         messageIds: string[],
       ) => {
         const conversationState = await snapshot.getPromise(
-          ClientConversationMapState,
+          ClientConversationStateFamily(conversationId),
         )
-        if (conversationState[conversationId]) {
+        if (conversationState) {
           // 说明当前的conversation是存在的
           switch (changeType) {
             case 'add':

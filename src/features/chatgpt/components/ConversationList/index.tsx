@@ -5,7 +5,8 @@ import React, { FC, useCallback, useEffect } from 'react'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import InfiniteConversationList from '@/features/chatgpt/components/ConversationList/InfiniteConversationList'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import usePaginationConversations, {
+import {
+  useFetchPaginationConversations,
   useUpgradeConversationsToV3,
 } from '@/features/chatgpt/hooks/usePaginationConversations'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
@@ -24,12 +25,13 @@ interface IProps {
 
 const ConversationList: FC<IProps> = (props) => {
   const {
-    conversationType,
     sx,
     hideClearAllButton = false,
     emptyFeedback,
+    conversationType,
   } = props
-  const { resetConversation } = useClientConversation()
+  const { resetConversation, currentSidebarConversationType } =
+    useClientConversation()
   const { updateSidebarSettings, updateSidebarConversationType } =
     useSidebarSettings()
 
@@ -37,12 +39,11 @@ const ConversationList: FC<IProps> = (props) => {
   const {
     loading,
     paginationConversations,
-    fetchPaginationConversations,
     fetchNextPage,
     hasNextPage,
     isFetching,
     updatePaginationFilter,
-  } = usePaginationConversations(
+  } = useFetchPaginationConversations(
     {
       type: conversationType,
     },
@@ -96,15 +97,14 @@ const ConversationList: FC<IProps> = (props) => {
         {hideClearAllButton ? null : (
           <ClearAllChatButton
             onDelete={() => {
-              fetchPaginationConversations().then((conversations) => {
-                const needCleanConversationType = conversationType.toLowerCase()
-                updateSidebarSettings({
-                  [needCleanConversationType]: {
-                    conversationId: '',
-                  },
-                }).then(() => {
-                  updateSidebarConversationType('Chat')
-                })
+              const needCleanConversationType =
+                currentSidebarConversationType.toLowerCase()
+              updateSidebarSettings({
+                [needCleanConversationType]: {
+                  conversationId: '',
+                },
+              }).then(() => {
+                updateSidebarConversationType('Chat')
               })
               resetConversation()
             }}

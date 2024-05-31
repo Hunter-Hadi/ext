@@ -7,7 +7,7 @@ import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChat
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
-  ClientConversationMapState,
+  ClientConversationStateFamily,
   PaginationConversationMessagesStateFamily,
 } from '@/features/chatgpt/store'
 import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
@@ -80,10 +80,9 @@ const useClientConversation = () => {
     updateConversationStatus,
     resetConversation,
   } = useChatPanelContext()
-  const clientConversationMap = useRecoilValue(ClientConversationMapState)
-  const clientConversation: IConversation | undefined = currentConversationId
-    ? clientConversationMap[currentConversationId]
-    : undefined
+  const clientConversation = useRecoilValue(
+    ClientConversationStateFamily(currentConversationId || ''),
+  )
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
     ClientWritingMessageStateFamily(currentConversationId || ''),
   )

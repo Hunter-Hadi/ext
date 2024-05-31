@@ -1,6 +1,6 @@
 import merge from 'lodash-es/merge'
 import { useMemo, useRef } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { openAIAPISystemPromptGenerator } from '@/background/src/chat/OpenAIApiChat/types'
@@ -12,8 +12,6 @@ import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtension
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
-import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
@@ -44,15 +42,10 @@ const useSidebarSettings = () => {
     useRecoilState(SidebarSummaryConversationIdState)
   const [appLocalStorage, setAppLocalStorage] =
     useRecoilState(AppLocalStorageState)
-  const clientConversationMap = useRecoilValue(ClientConversationMapState)
   const [sidebarPageState, setSidebarPageSate] =
     useRecoilState(SidebarPageState)
   const { getAIProviderModelDetail } = useAIProviderModelsMap()
   const { hideFloatingContextMenu } = useFloatingContextMenu()
-  const { updatePaginationConversations } = usePaginationConversations(
-    {},
-    false,
-  )
   const isContinueInChatProgressRef = useRef(false)
   const currentSidebarConversationType =
     sidebarPageState.sidebarConversationType
@@ -88,28 +81,6 @@ const useSidebarSettings = () => {
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
     ClientWritingMessageStateFamily(currentSidebarConversationId || ''),
   )
-
-  const sidebarConversationTypeofConversationMap = useMemo(() => {
-    return {
-      Chat: clientConversationMap[sidebarChatConversationId || ''],
-      Search: clientConversationMap[currentSearchConversationId || ''],
-      Summary: clientConversationMap[sidebarSummaryConversationId],
-      Art: clientConversationMap[currentArtConversationId || ''],
-    } as {
-      [key in ISidebarConversationType]: IConversation | null
-    }
-  }, [
-    clientConversationMap,
-    sidebarChatConversationId,
-    currentSearchConversationId,
-    sidebarSummaryConversationId,
-    currentArtConversationId,
-  ])
-  const currentSidebarConversation = useMemo(() => {
-    return clientConversationMap[currentSidebarConversationId || ''] as
-      | IConversation
-      | undefined
-  }, [currentSidebarConversationId, clientConversationMap])
 
   const updateSidebarSettings = async (
     newSidebarSettings: IChromeExtensionLocalStorage['sidebarSettings'],
@@ -387,7 +358,6 @@ const useSidebarSettings = () => {
           waitSync: true,
         },
       )
-    updatePaginationConversations([conversationId]).then().catch()
     if (newConversation) {
       if (['Chat', 'Search', 'Summary', 'Art'].includes(newConversation.type)) {
         await updateSidebarSettings({
@@ -411,9 +381,7 @@ const useSidebarSettings = () => {
     immersiveSettings: appLocalStorage.immersiveSettings,
     currentSidebarConversationType,
     currentSidebarAIProvider,
-    currentSidebarConversation,
     currentSidebarConversationId,
-    sidebarConversationTypeofConversationMap,
     updateSidebarSettings,
     updateSidebarConversationType,
     sidebarChatConversationId,

@@ -13,7 +13,7 @@ import UserUpgradeButton from '@/features/auth/components/UserUpgradeButton'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
-import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message';
+import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message'
 import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
 import SidebarChatHistoryButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatHistoryButton'

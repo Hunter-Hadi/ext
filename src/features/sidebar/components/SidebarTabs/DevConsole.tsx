@@ -16,7 +16,6 @@ import {
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -91,7 +90,6 @@ const DevConsole: FC<{
   const sidebarSummaryConversationId = useRecoilValue(
     SidebarSummaryConversationIdState,
   )
-  const clientConversationMap = useRecoilValue(ClientConversationMapState)
   const {
     clientConversationMessages,
     clientWritingMessage,
@@ -283,7 +281,6 @@ const DevConsole: FC<{
           </Stack>
         )}
         <Stack width={200} flexShrink={0}>
-          <pre>{Object.keys(clientConversationMap).join('\n')}</pre>
           <DevShortcutsLog isSidebar={isSidebar} />
         </Stack>
       </Stack>

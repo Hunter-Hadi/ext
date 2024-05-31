@@ -1,18 +1,11 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
-import cloneDeep from 'lodash-es/cloneDeep'
 import orderBy from 'lodash-es/orderBy'
 import { useEffect, useRef, useState } from 'react'
-import { useRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
-import {
-  PaginationConversationsFilterState,
-  PaginationConversationsFilterType,
-  PaginationConversationsState,
-} from '@/features/chatgpt/store'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
@@ -25,7 +18,9 @@ import {
   dbSift,
 } from '@/features/indexed_db/utils'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export const PAGINATION_CONVERSATION_QUERY_KEY =
   'PAGINATION_CONVERSATION_QUERY_KEY'
@@ -40,8 +35,7 @@ export const conversationsToPaginationConversations = async (
             conversation.lastMessageId,
           )
         : null
-      let conversationDisplaysTime =
-        lastMessage?.updated_at || conversation.updated_at || ''
+      let conversationDisplaysTime = conversation.updated_at || ''
       let conversationDisplaysText = conversation.name || ''
       try {
         // 美化一下时间
@@ -150,209 +144,155 @@ export const useUpgradeConversationsToV3 = () => {
   return { done }
 }
 
-const usePaginationConversations = (
+export type PaginationConversationsFilterType = {
+  type: ISidebarConversationType
+  page_size: number
+  page: number
+  isDelete: boolean
+  total_page: number
+}
+
+export const useFetchPaginationConversations = (
   initFilter: Partial<PaginationConversationsFilterType>,
   controlEnable = false,
 ) => {
   const { isLogin } = useAuthLogin()
   const [enabled, setEnabled] = useState(false)
-  const [filter, setFilter] = useRecoilState(PaginationConversationsFilterState)
-  const [paginationConversations, setPaginationConversations] = useRecoilState(
-    PaginationConversationsState,
-  )
+  const [filter, setFilter] = useState<PaginationConversationsFilterType>({
+    type: 'Chat',
+    page_size: 10,
+    page: 0,
+    isDelete: false,
+    total_page: 0,
+  })
+  const [paginationConversations, setPaginationConversations] = useState<
+    Array<IPaginationConversation & { order?: number }>
+  >([])
   // 是否开启了云同步功能
   const { maxAIBetaFeaturesLoaded, maxAIBetaFeatures } = useMaxAIBetaFeatures()
   const totalPageRef = useRef(filter.total_page)
-  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
-    useInfiniteQuery({
-      queryKey: [
-        PAGINATION_CONVERSATION_QUERY_KEY,
-        filter.type,
-        filter.isDelete,
-        filter.page_size,
-        maxAIBetaFeatures.chat_sync,
-      ],
-      queryFn: async (data) => {
-        // 更新filter
+  const remoteConversationPageLoadedRef = useRef<Record<number, boolean>>({})
+  const {
+    refetch,
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isLoading,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: [
+      PAGINATION_CONVERSATION_QUERY_KEY,
+      maxAIBetaFeatures.chat_sync,
+      filter.type,
+      filter.isDelete,
+      filter.page_size,
+    ],
+    queryFn: async (data) => {
+      // 更新filter
+      setFilter((prev) => {
+        return {
+          ...prev,
+          page: data.pageParam,
+        }
+      })
+      // 从远程获取filter.page_size个对话
+      const time = new Date().getTime()
+      let diffTimeUsage = 0
+      let remoteConversations: IConversation[] = []
+      console.debug(
+        `ConversationDB[V3] 获取会话列表:`,
+        `\nAPI最大页数:`,
+        totalPageRef.current,
+        `\n当前页数:`,
+        data.pageParam,
+        `\n是否远程加载:`,
+        remoteConversationPageLoadedRef.current[data.pageParam],
+      )
+      if (
+        maxAIBetaFeatures.chat_sync &&
+        totalPageRef.current >= data.pageParam &&
+        !remoteConversationPageLoadedRef.current[data.pageParam]
+      ) {
+        const result = await clientFetchMaxAIAPI<{
+          current_page: number
+          current_page_size: number
+          data: []
+          msg: string
+          status: string
+          total_page: number
+        }>(`/conversation/get_conversation_list`, {
+          ...filter,
+          page: data.pageParam,
+        })
+        remoteConversationPageLoadedRef.current[data.pageParam] = true
+        totalPageRef.current = Math.max(result.data?.total_page || 0, 0)
         setFilter((prev) => {
           return {
             ...prev,
-            page: data.pageParam,
+            total_page: totalPageRef.current,
           }
         })
-        // 从远程获取filter.page_size个对话
-        const time = new Date().getTime()
-        let diffTimeUsage = 0
-        let remoteConversations: IConversation[] = []
-        if (
-          maxAIBetaFeatures.chat_sync &&
-          totalPageRef.current >= data.pageParam
-        ) {
-          const result = await clientFetchMaxAIAPI<{
-            current_page: number
-            current_page_size: number
-            data: []
-            msg: string
-            status: string
-            total_page: number
-          }>(`/conversation/get_conversation_list`, {
-            ...filter,
-            page: data.pageParam,
-          })
-          totalPageRef.current = Math.max(result.data?.total_page || 0, 0)
-          setFilter((prev) => {
-            return {
-              ...prev,
-              total_page: totalPageRef.current,
-            }
-          })
-          if (result?.data?.data) {
-            remoteConversations = result.data.data
-            await ClientConversationManager.diffRemoteConversationData(
-              remoteConversations,
-            )
-            diffTimeUsage = new Date().getTime() - time
-          }
-        }
-        const authorId = await getMaxAIChromeExtensionUserId()
-        // 从本地获取filter.page_size个对话
-        const conversations = await createIndexedDBQuery('conversations')
-          .conversations.orderBy('updated_at')
-          .filter(
-            dbSift({
-              lastMessageId: { $exists: true },
-              type: { $eq: filter.type },
-              isDelete: { $eq: filter.isDelete },
-              authorId: { $eq: authorId },
-            }),
+        if (result?.data?.data) {
+          remoteConversations = result.data.data
+          await ClientConversationManager.diffRemoteConversationData(
+            remoteConversations,
           )
-          .reverse()
-          .offset(data.pageParam * filter.page_size)
-          .limit(filter.page_size)
-          .toArray()
-          .then()
-        const paginationConversations =
-          await conversationsToPaginationConversations(conversations)
-        console.log(
-          `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
-            conversations.length
-          }/${
-            paginationConversations.length
-          }]耗时: Diff[${diffTimeUsage}]ms, LocalQuery[${
-            new Date().getTime() - time - diffTimeUsage
-          }】`,
-          filter,
-        )
-        return paginationConversations
-      },
-      initialPageParam: 0,
-      getNextPageParam: (lastPage, allPages, lastPageParam) => {
-        // 说明本地和远程都没有数据
-        if (lastPage.length === 0) {
-          // console.log(
-          //   `ConversationDB[V3][对话列表] 获取列表[${lastPageParam}]没有数据`,
-          // )
-          return undefined
+          diffTimeUsage = new Date().getTime() - time
         }
-        return lastPageParam + 1
-      },
-      enabled: controlEnable && maxAIBetaFeaturesLoaded && enabled && isLogin,
-      refetchOnWindowFocus: true,
-    })
-
-  useEffect(() => {
-    const conversationMap = new Map<string, IPaginationConversation>()
-    data?.pages?.forEach((page) => {
-      page.forEach((conversation) => {
-        conversationMap.set(conversation.id, conversation)
-      })
-    })
-    setPaginationConversations((previous) => {
-      return orderBy(
-        previous
-          .map((conversation) => {
-            if (conversationMap.get(conversation.id)) {
-              // 如果时间不一样，更新
-              if (
-                conversationMap.get(conversation.id)?.updated_at !==
-                conversation.updated_at
-              ) {
-                const newConversation = cloneDeep(
-                  conversationMap.get(conversation.id),
-                )
-                conversationMap.delete(conversation.id)
-                // 排序不变
-                newConversation!.updated_at = conversation.updated_at
-                return newConversation!
-              } else {
-                // 时间一样，删除
-                conversationMap.delete(conversation.id)
-              }
-            }
-            return conversation
-          })
-          .concat(Array.from(conversationMap.values()))
-          .filter((conversation) => conversation.type === filter.type),
-        ['updated_at'],
-        ['desc'],
-      )
-    })
-  }, [data?.pages, filter.type])
-  const fetchPaginationConversations = async () => {
-    return []
-  }
-  const updatePaginationConversations = async (conversationIds: string[]) => {
-    const conversations = await ClientConversationManager.getConversationsByIds(
-      conversationIds,
-      true,
-    )
-    // 更新对话列表
-    console.log(
-      `ConversationDB[V3][对话列表] 外部更新对话列表: `,
-      conversations,
-    )
-    const updateMap = new Map<string, IPaginationConversation>()
-    const deletedMap = new Map<string, IConversation>()
-    const paginationConversations =
-      await conversationsToPaginationConversations(
-        conversations.filter((conversation) => {
-          if (conversation.isDelete) {
-            deletedMap.set(conversation.id, conversation)
-            return false
-          }
-          return true
-        }),
-      )
-    paginationConversations.forEach((conversation) => {
-      updateMap.set(conversation.id, conversation)
-    })
-    setPaginationConversations((previous) => {
-      // 基于idDelete更新
-      return orderBy(
-        previous
-          .map((conversation) => {
-            const newConversation = cloneDeep(updateMap.get(conversation.id))
-            if (newConversation) {
-              // 排序不变
-              newConversation.updated_at = conversation.updated_at
-              updateMap.delete(conversation.id)
-              return newConversation
-            }
-            return conversation
-          })
-          .concat(Array.from(updateMap.values()))
-          .filter((conversation) => {
-            return !deletedMap.has(conversation.id)
+      }
+      const authorId = await getMaxAIChromeExtensionUserId()
+      // 从本地获取filter.page_size个对话
+      const conversations = await createIndexedDBQuery('conversations')
+        .conversations.orderBy('updated_at')
+        .filter(
+          dbSift({
+            lastMessageId: { $exists: true },
+            type: { $eq: filter.type },
+            isDelete: { $eq: filter.isDelete },
+            authorId: { $eq: authorId },
           }),
-        ['updated_at'],
-        ['desc'],
+        )
+        .reverse()
+        .offset(data.pageParam * filter.page_size)
+        .limit(filter.page_size)
+        .toArray()
+        .then()
+      const paginationConversations =
+        await conversationsToPaginationConversations(conversations)
+      console.log(
+        `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
+          conversations.length
+        }/${
+          paginationConversations.length
+        }]耗时: Diff[${diffTimeUsage}]ms, LocalQuery[${
+          new Date().getTime() - time - diffTimeUsage
+        }】`,
+        filter,
       )
-    })
-  }
+      return paginationConversations as Array<
+        IPaginationConversation & { order?: number }
+      >
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages, lastPageParam) => {
+      // 说明本地和远程都没有数据
+      if (lastPage.length === 0) {
+        // console.log(
+        //   `ConversationDB[V3][对话列表] 获取列表[${lastPageParam}]没有数据`,
+        // )
+        return undefined
+      }
+      return lastPageParam + 1
+    },
+    enabled: controlEnable && maxAIBetaFeaturesLoaded && enabled && isLogin,
+    refetchOnWindowFocus: true,
+  })
+
   const updatePaginationFilter = (
     filter: Partial<PaginationConversationsFilterType>,
   ) => {
     totalPageRef.current = filter.total_page || 0
+    remoteConversationPageLoadedRef.current = {}
     setFilter((prev) => {
       return {
         ...prev,
@@ -360,30 +300,72 @@ const usePaginationConversations = (
       }
     })
   }
+  useEffect(() => {
+    const unsubscribe = OneShotCommunicator.receive(
+      'ConversationUpdate',
+      async (data) => {
+        const { changeType } = data
+        switch (changeType) {
+          case 'add':
+          case 'delete':
+          case 'update': {
+            await refetch()
+            return true
+          }
+        }
+        return undefined
+      },
+    )
+
+    return () => unsubscribe()
+  }, [refetch])
+
+  useEffect(() => {
+    if (data) {
+      setPaginationConversations((prevState) => {
+        const orderMap = new Map<string, number>()
+        prevState.forEach((conversation, index) => {
+          if (conversation.order) {
+            orderMap.set(conversation.id, conversation.order)
+          }
+        })
+        const newConversations = data.pages.flat() || []
+        newConversations.forEach((conversation, index) => {
+          if (orderMap.has(conversation.id)) {
+            conversation.order = orderMap.get(conversation.id)
+          }
+        })
+        return orderBy(
+          newConversations,
+          ['order', 'updated_at'],
+          ['desc', 'desc'],
+        ).map((conversation) => {
+          if (conversation.order === undefined && conversation.updated_at) {
+            conversation.order = new Date(conversation.updated_at).getTime()
+          }
+          return conversation
+        })
+      })
+    }
+  }, [data?.pages])
+
   // 初始化filter
   useEffect(() => {
-    setFilter({
-      ...{
-        page: 0,
-        page_size: 50,
-        type: 'Chat',
-        isDelete: false,
-        total_page: 0,
-      },
-      ...initFilter,
+    setFilter((prevState) => {
+      return {
+        ...prevState,
+        ...initFilter,
+      }
     })
     setEnabled(controlEnable)
   }, [controlEnable])
+
   return {
     loading: !enabled || !isLogin || isLoading,
     paginationConversations,
     fetchNextPage,
-    fetchPaginationConversations,
     hasNextPage,
     isFetching: isFetchingNextPage,
-    updatePaginationConversations,
     updatePaginationFilter,
   }
 }
-
-export default usePaginationConversations

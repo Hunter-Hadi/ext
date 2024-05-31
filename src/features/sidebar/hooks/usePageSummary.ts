@@ -5,7 +5,7 @@
  */
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -15,7 +15,6 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { useContextMenuList } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
@@ -31,7 +30,6 @@ import {
 const usePageSummary = () => {
   const { updateSidebarSettings, updateSidebarSummaryConversationId } =
     useSidebarSettings()
-  const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { clientWritingMessage, updateClientConversationLoading } =
     useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
@@ -82,16 +80,10 @@ const usePageSummary = () => {
           await ClientConversationMessageManager.getMessageByMessageType(
             pageSummaryConversationId,
             'ai',
-            'start',
+            'earliest',
           )
         if (writingLoading) {
           updateClientConversationLoading(false)
-          updateConversationMap((prevState) => {
-            return {
-              ...prevState,
-              [pageSummaryConversation.id]: pageSummaryConversation,
-            }
-          })
           isGeneratingPageSummaryRef.current = false
           return
         }
@@ -125,12 +117,6 @@ const usePageSummary = () => {
 
         if (isValidAIMessage) {
           updateClientConversationLoading(false)
-          updateConversationMap((prevState) => {
-            return {
-              ...prevState,
-              [pageSummaryConversation.id]: pageSummaryConversation,
-            }
-          })
           isGeneratingPageSummaryRef.current = false
           return
         }

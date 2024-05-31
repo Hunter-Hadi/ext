@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Çok teşekkürler",
     "sidebar__survey_dialog__by_who": "MaxAI.me ekibi",
     "sidebar__survey_dialog__cta_button_text": "Deneyiminizi bize anlatın",
-    "floating_menu__input__placeholder__after_ai_response": "AI'ya ne yapmasını söyleyin..."
+    "floating_menu__input__placeholder__after_ai_response": "AI'ya ne yapmasını söyleyin...",
+    "sidebar__unable_subscription__title": "Eylem gerekiyor - Aboneliğinizi otomatik olarak yenileyemedik.",
+    "sidebar__unable_subscription__link__title": "Her gün saatlerce zaman kazanmak için şimdi düzeltin."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

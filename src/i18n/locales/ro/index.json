@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Mulțumim mult",
     "sidebar__survey_dialog__by_who": "Echipa MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Spuneți-ne despre experiența dumneavoastră",
-    "floating_menu__input__placeholder__after_ai_response": "Spuneți AI ce să facă în continuare..."
+    "floating_menu__input__placeholder__after_ai_response": "Spuneți AI ce să facă în continuare...",
+    "sidebar__unable_subscription__title": "Acțiune necesară - Nu am putut reînnoi automat abonamentul tău.",
+    "sidebar__unable_subscription__link__title": "Rezolvă acum pentru a economisi ore în fiecare zi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

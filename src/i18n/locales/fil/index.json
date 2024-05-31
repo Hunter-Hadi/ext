@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Maraming salamat",
     "sidebar__survey_dialog__by_who": "MaxAI.me team",
     "sidebar__survey_dialog__cta_button_text": "Sabihin sa amin ang iyong karanasan",
-    "floating_menu__input__placeholder__after_ai_response": "Sabihin sa AI kung ano ang susunod na gawin..."
+    "floating_menu__input__placeholder__after_ai_response": "Sabihin sa AI kung ano ang susunod na gawin...",
+    "sidebar__unable_subscription__title": "Kailangan ng Aksyon - Hindi namin maaring i-automatikong i-renew ang iyong subscription.",
+    "sidebar__unable_subscription__link__title": "Ayusin ito ngayon upang makatipid ng oras araw-araw."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

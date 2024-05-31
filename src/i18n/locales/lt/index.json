@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Labai ačiū",
     "sidebar__survey_dialog__by_who": "MaxAI.me komanda",
     "sidebar__survey_dialog__cta_button_text": "Pasakokite apie savo patirtį",
-    "floating_menu__input__placeholder__after_ai_response": "Pasakykite AI, ką daryti toliau..."
+    "floating_menu__input__placeholder__after_ai_response": "Pasakykite AI, ką daryti toliau...",
+    "sidebar__unable_subscription__title": "Veiksmas būtinas - Nepavyko automatiškai pratęsti jūsų prenumeratos.",
+    "sidebar__unable_subscription__link__title": "Taisykite tai dabar, kad sutaupytumėte valandas kiekvieną dieną."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

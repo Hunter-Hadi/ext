@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Tack så mycket",
     "sidebar__survey_dialog__by_who": "MaxAI.me-teamet",
     "sidebar__survey_dialog__cta_button_text": "Berätta om din upplevelse",
-    "floating_menu__input__placeholder__after_ai_response": "Säg till AI vad den ska göra härnäst..."
+    "floating_menu__input__placeholder__after_ai_response": "Säg till AI vad den ska göra härnäst...",
+    "sidebar__unable_subscription__title": "Åtgärd krävs - Vi kunde inte förnya din prenumeration automatiskt.",
+    "sidebar__unable_subscription__link__title": "Fixa det nu för att spara timmar varje dag."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

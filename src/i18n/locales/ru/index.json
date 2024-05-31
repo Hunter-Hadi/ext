@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Большое спасибо",
     "sidebar__survey_dialog__by_who": "Команда MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Расскажите нам о своем опыте",
-    "floating_menu__input__placeholder__after_ai_response": "Скажите ИИ, что делать дальше..."
+    "floating_menu__input__placeholder__after_ai_response": "Скажите ИИ, что делать дальше...",
+    "sidebar__unable_subscription__title": "Действие требуется - Мы не смогли автоматически продлить вашу подписку.",
+    "sidebar__unable_subscription__link__title": "Исправьте это сейчас, чтобы экономить несколько часов каждый день."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

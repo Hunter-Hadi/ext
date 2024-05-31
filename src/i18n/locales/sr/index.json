@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Hvala puno",
     "sidebar__survey_dialog__by_who": "MaxAI.me tim",
     "sidebar__survey_dialog__cta_button_text": "Kažite nam o svom iskustvu",
-    "floating_menu__input__placeholder__after_ai_response": "Recite AI-u šta da radi sledeće..."
+    "floating_menu__input__placeholder__after_ai_response": "Recite AI-u šta da radi sledeće...",
+    "sidebar__unable_subscription__title": "Potrebna akcija - Nismo mogli automatski obnoviti vašu pretplatu.",
+    "sidebar__unable_subscription__link__title": "Popravite sada da biste uštedeli sate svakog dana."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

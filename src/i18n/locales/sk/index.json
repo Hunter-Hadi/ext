@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Veľmi pekne ďakujem",
     "sidebar__survey_dialog__by_who": "Tím MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Povedzte nám o svojom zážitku",
-    "floating_menu__input__placeholder__after_ai_response": "Povedzte AI, čo má robiť ďalej..."
+    "floating_menu__input__placeholder__after_ai_response": "Povedzte AI, čo má robiť ďalej...",
+    "sidebar__unable_subscription__title": "Vyžaduje sa akcia - Nepodarilo sa nám automaticky obnoviť vašu predplatnú službu.",
+    "sidebar__unable_subscription__link__title": "Opravte to teraz a ušetrite hodiny denne."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

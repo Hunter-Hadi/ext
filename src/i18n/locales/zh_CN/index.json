@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "非常感谢",
     "sidebar__survey_dialog__by_who": "MaxAI.me团队",
     "sidebar__survey_dialog__cta_button_text": "告诉我们您的体验",
-    "floating_menu__input__placeholder__after_ai_response": "告诉AI下一步该做什么..."
+    "floating_menu__input__placeholder__after_ai_response": "告诉AI下一步该做什么...",
+    "sidebar__unable_subscription__title": "需要采取行动 - 我们无法自动续订您的订阅。",
+    "sidebar__unable_subscription__link__title": "立即修复以节省每天数小时。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Liels paldies",
     "sidebar__survey_dialog__by_who": "MaxAI.me komanda",
     "sidebar__survey_dialog__cta_button_text": "Pastāstiet mums par savu pieredzi",
-    "floating_menu__input__placeholder__after_ai_response": "Pateikt AI, ko darīt tālāk..."
+    "floating_menu__input__placeholder__after_ai_response": "Pateikt AI, ko darīt tālāk...",
+    "sidebar__unable_subscription__title": "Nepieciešama darbība - Mēs nevarējām automātiski atjaunot jūsu abonementu.",
+    "sidebar__unable_subscription__link__title": "Labojiet to tagad, lai ietaupītu stundas katru dienu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

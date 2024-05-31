@@ -664,6 +664,8 @@
     "sidebar__daily_limit__title": "You've reached your daily query limit. More free queries will be available tomorrow.",
     "sidebar__daily_limit__link__title": "Upgrade now for unlimited queries instantly.",
     "sidebar__share__share_button__tooltip": "Download chat",
+    "sidebar__unable_subscription__title": "Action required - We were unable to automatically renew your subscription.",
+    "sidebar__unable_subscription__link__title": "Fix it now to save hours every day.",
     "input_assistant_button__compose_new__tooltip": "Quick compose",
     "input_assistant_button__compose_reply__tooltip": "Instant reply",
     "input_assistant_button__refine_draft__tooltip": "Edit or review draft",

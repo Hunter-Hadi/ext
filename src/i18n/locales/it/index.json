@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Grazie mille",
     "sidebar__survey_dialog__by_who": "Il team di MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Raccontaci la tua esperienza",
-    "floating_menu__input__placeholder__after_ai_response": "Dì all'IA cosa fare dopo..."
+    "floating_menu__input__placeholder__after_ai_response": "Dì all'IA cosa fare dopo...",
+    "sidebar__unable_subscription__title": "Azione richiesta - Non siamo riusciti a rinnovare automaticamente la tua sottoscrizione.",
+    "sidebar__unable_subscription__link__title": "Risolvi ora per risparmiare ore ogni giorno."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

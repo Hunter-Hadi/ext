@@ -836,7 +836,9 @@
     "sidebar__survey_dialog__thanks": "Muito obrigado",
     "sidebar__survey_dialog__by_who": "Equipe MaxAI.me",
     "sidebar__survey_dialog__cta_button_text": "Nos conte sobre sua experiência",
-    "floating_menu__input__placeholder__after_ai_response": "Diga à IA o que fazer a seguir..."
+    "floating_menu__input__placeholder__after_ai_response": "Diga à IA o que fazer a seguir...",
+    "sidebar__unable_subscription__title": "Ação necessária - Não conseguimos renovar automaticamente a sua subscrição.",
+    "sidebar__unable_subscription__link__title": "Corrija agora para poupar horas todos os dias."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

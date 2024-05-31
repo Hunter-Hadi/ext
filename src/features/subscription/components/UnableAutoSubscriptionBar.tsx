@@ -26,18 +26,24 @@ const UnableAutoSubscriptionBar = () => {
   const { show, barHeight } = unableSubscriptionState
 
   /**
-   * 打开sidebar的时候需要重新显示，并记录mixpanel
+   * 打开sidebar的时候需要重新显示
    */
   useEffect(() => {
     if (!isMaxAIImmersiveChatPage() && !appState.open) return
-    if (isSubscriptionPaymentFailed) {
-      trackSubscriptionFailedReminderRef.current('showed')
-    }
     setUnableSubscriptionState((prev) => ({
       ...prev,
       show: isSubscriptionPaymentFailed,
     }))
   }, [appState.open, isSubscriptionPaymentFailed])
+
+  /**
+   * 显示记录mixpanel
+   */
+  useEffect(() => {
+    if (show) {
+      trackSubscriptionFailedReminderRef.current('showed')
+    }
+  }, [show]);
 
   if (!show) return null
 

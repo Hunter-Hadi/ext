@@ -53,7 +53,13 @@ const InfiniteConversationList: <T>(
   const itemCount = hasNextPage
     ? conversations.length + 1
     : conversations.length
-  const loadMoreItems = isNextPageLoading ? () => {} : loadNextPage
+  const loadMoreItems = async () => {
+    console.debug(`ConversationDB[V3] loadMoreItems`)
+    if (isNextPageLoading) {
+      return
+    }
+    await loadNextPage()
+  }
   const isItemLoaded = (index: number) =>
     !hasNextPage || index < conversations.length
 

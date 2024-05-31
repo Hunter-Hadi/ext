@@ -259,7 +259,7 @@ export const useFetchPaginationConversations = (
         .then()
       const paginationConversations =
         await conversationsToPaginationConversations(conversations)
-      console.log(
+      console.debug(
         `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
           conversations.length
         }/${
@@ -300,6 +300,12 @@ export const useFetchPaginationConversations = (
       }
     })
   }
+  const isFetchingRef = useRef(false)
+  const isRefetchingRef = useRef(false)
+  useEffect(() => {
+    isFetchingRef.current = isFetchingNextPage
+  }, [isFetchingNextPage])
+
   useEffect(() => {
     const unsubscribe = OneShotCommunicator.receive(
       'ConversationUpdate',
@@ -309,7 +315,15 @@ export const useFetchPaginationConversations = (
           case 'add':
           case 'delete':
           case 'update': {
-            await refetch()
+            if (!isFetchingRef.current && !isRefetchingRef.current) {
+              isRefetchingRef.current = true
+              refetch()
+                .then()
+                .catch()
+                .finally(() => {
+                  isRefetchingRef.current = false
+                })
+            }
             return true
           }
         }
@@ -336,15 +350,15 @@ export const useFetchPaginationConversations = (
           }
         })
         return orderBy(
-          newConversations,
+          newConversations.map((conversation) => {
+            if (conversation.order === undefined && conversation.updated_at) {
+              conversation.order = new Date(conversation.updated_at).getTime()
+            }
+            return conversation
+          }),
           ['order', 'updated_at'],
           ['desc', 'desc'],
-        ).map((conversation) => {
-          if (conversation.order === undefined && conversation.updated_at) {
-            conversation.order = new Date(conversation.updated_at).getTime()
-          }
-          return conversation
-        })
+        )
       })
     }
   }, [data?.pages])

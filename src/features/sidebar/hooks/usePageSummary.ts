@@ -18,6 +18,12 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { useContextMenuList } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import {
+  checkRemoteConversationIsExist,
+  clientDownloadConversationToLocal,
+} from '@/features/indexed_db/conversations/clientService'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
@@ -65,10 +71,43 @@ const usePageSummary = () => {
     updateClientConversationLoading(true)
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
-      const pageSummaryConversation =
+      let pageSummaryConversation =
         await ClientConversationManager.getConversationById(
           pageSummaryConversationId,
         )
+      //如果没有，那么去remote看看有没有
+      if (await checkRemoteConversationIsExist(pageSummaryConversationId)) {
+        // 如果有，那么就同步一下
+        const conversations = await clientDownloadConversationToLocal(
+          pageSummaryConversationId,
+        )
+        pageSummaryConversation = conversations?.[0] || null
+        if (pageSummaryConversation) {
+          await ClientConversationManager.addOrUpdateConversation(
+            pageSummaryConversationId,
+            pageSummaryConversation,
+          )
+          // 下载10条消息
+          const result = await clientFetchMaxAIAPI<{
+            current_page: number
+            current_page_size: number
+            data: IChatMessage[]
+            msg: string
+            status: string
+            total_page: number
+          }>(`/conversation/get_messages_after_datetime`, {
+            conversation_id: pageSummaryConversation.id,
+            page: 0,
+            page_size: 10,
+          })
+          if (result?.data?.data) {
+            await ClientConversationMessageManager.diffRemoteConversationMessagesData(
+              pageSummaryConversation.id,
+              result.data.data,
+            )
+          }
+        }
+      }
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         await updateSidebarSettings({

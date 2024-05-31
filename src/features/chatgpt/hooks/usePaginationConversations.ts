@@ -24,6 +24,7 @@ import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export const PAGINATION_CONVERSATION_QUERY_KEY =
   'PAGINATION_CONVERSATION_QUERY_KEY'
+export const PAGINATION_CONVERSATION_QUERY_PAGE_SIZE = 10
 
 export const conversationsToPaginationConversations = async (
   conversations: IConversation[],
@@ -160,7 +161,7 @@ export const useFetchPaginationConversations = (
   const [enabled, setEnabled] = useState(false)
   const [filter, setFilter] = useState<PaginationConversationsFilterType>({
     type: 'Chat',
-    page_size: 10,
+    page_size: PAGINATION_CONVERSATION_QUERY_PAGE_SIZE,
     page: 0,
     isDelete: false,
     total_page: 0,

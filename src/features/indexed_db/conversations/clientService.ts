@@ -198,6 +198,28 @@ export const clientShareConversation = async (
 }
 
 /**
+ * 检查远程会话是否存在
+ * @param conversationId
+ */
+export const checkRemoteConversationIsExist = async (
+  conversationId: string,
+) => {
+  if (!(await isEnableSyncConversation())) {
+    return false
+  }
+  const hasConversationData = await clientFetchMaxAIAPI<{
+    status: string
+    data: IConversation[]
+  }>('/conversation/get_conversations_basic_by_ids', {
+    ids: [conversationId],
+  })
+  return (
+    hasConversationData.data?.status === 'OK' &&
+    hasConversationData.data?.data?.length > 0
+  )
+}
+
+/**
  * 检查会话是否需要同步
  * @param conversationId
  */
@@ -228,13 +250,10 @@ export const checkConversationNeedSync = async (
   }
   const localConversationMessagesIds =
     await ClientConversationMessageManager.getMessageIds(conversationId)
-  const hasConversationData = await clientFetchMaxAIAPI<{
-    status: string
-    data: IConversation[]
-  }>('/conversation/get_conversations_basic_by_ids', {
-    ids: [conversationId],
-  })
-  if (hasConversationData.data?.status !== 'OK') {
+  const hasConversationData = await checkRemoteConversationIsExist(
+    conversationId,
+  )
+  if (!hasConversationData) {
     syncLog.info(conversationId, `接口报错, 需要同步`)
     return {
       needSync: true,

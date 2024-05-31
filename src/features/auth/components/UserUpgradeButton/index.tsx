@@ -115,6 +115,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                   boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
                   minWidth: 300,
                   p: 2,
+                  mb: 1,
                 }}
               >
                 <Stack spacing={2}>

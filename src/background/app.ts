@@ -33,6 +33,7 @@ import {
   isSettingsLastModifiedEqual,
 } from '@/background/utils/syncSettings'
 import {
+  APP_USE_CHAT_GPT_HOST,
   APP_VERSION,
   CHATGPT_WEBAPP_HOST,
   isProduction,
@@ -41,6 +42,7 @@ import {
 import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/features/activity/constants'
 import {
   checkIsPayingUser,
+  checkIsSubscriptionPaymentFailed,
   getChromeExtensionUserInfo,
 } from '@/features/auth/utils'
 import { IChatMessage } from '@/features/chatgpt/types'
@@ -326,6 +328,21 @@ const initChromeExtensionUpdated = async () => {
       await Browser.tabs.create({ url })
     }
   }
+  /**
+   * @since 2024-05-31
+   * @description 4.2.13版本插件升级的时候对满足显示续费失败提醒条件的用户弹出/subscription/failed页面
+   */
+  const executeUpdatedCheckSubscription = async () => {
+    const result = await getChromeExtensionUserInfo(true)
+    const url = `${APP_USE_CHAT_GPT_HOST}/subscription/failed`
+    if (
+      result &&
+      checkIsSubscriptionPaymentFailed(result.subscription_payment_failed_at)
+    ) {
+      await Browser.tabs.create({ url })
+    }
+  }
+
   if (APP_VERSION === '2.4.3') {
     setTimeout(
       executeBlackFridayPromotion,
@@ -385,6 +402,12 @@ const initChromeExtensionUpdated = async () => {
   if (!isProduction) {
     devResetAllOnboardingTooltipOpenedCache()
   }
+
+  // 每次升级都检测一遍是否是续费失败了
+  setTimeout(
+    () => executeUpdatedCheckSubscription(),
+    (1 + Math.floor(Math.random() * 9)) * 1000,
+  )
 }
 
 /**
@@ -684,7 +707,6 @@ const initChromeExtensionCreatePaymentListener = () => {
     delete tabUrls[tabId]
   })
 }
-
 
 const devMockConversation = async () => {
   const isProduction = String(process.env.NODE_ENV) === 'production'

@@ -79,7 +79,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       containerElement.scrollTo(
         0,
         isLastMessage
-          ? messageElement.offsetTop + messageElement.offsetHeight
+          ? containerElement?.scrollHeight
           : messageElement.offsetTop,
       )
     }

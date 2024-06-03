@@ -153,6 +153,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
       }
     }
   }
+  const previousMessagesCount = useRef(0)
   useEffect(() => {
     // 反向遍历，保证消息列表是按照时间顺序排列， 用concat是为了避免直接修改messages
     const newMessages = last(data?.pages)
@@ -160,11 +161,18 @@ const usePaginationConversationMessages = (conversationId: string) => {
       setPaginationMessages((previousMessages) => {
         if (data?.pages.length) {
           if (data?.pages.length > 1) {
+            const isLoadMore =
+              previousMessagesCount.current < newMessages.length
             // 如果分页大于1，取上一页的最后一个消息，其实就是messages的第一条消息
-            const previousPageLastMessageId = previousMessages?.[0]?.messageId
+            const previousPageLastMessageId = isLoadMore
+              ? previousMessages?.[0]?.messageId
+              : previousMessages?.[previousMessages.length - 1]?.messageId
             if (previousPageLastMessageId) {
               console.log(
                 `scroll to message [分页] id: ${previousPageLastMessageId}`,
+                isLoadMore
+                  ? previousMessages?.[0]
+                  : previousMessages?.[previousMessages.length - 1],
               )
               previousPageLastMessageIdRef.current = {
                 messageId: previousPageLastMessageId,

@@ -65,12 +65,6 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
         if (!messageBoxRef.current) {
           return
         }
-        if (
-          messageBoxRef.current?.querySelector('.maxai--lazy-load--skeleton') ||
-          messageBoxRef.current?.querySelector('.maxai--loading')
-        ) {
-          return
-        }
         const height = messageBoxRef.current?.offsetHeight
         if (
           height &&

@@ -293,6 +293,7 @@ export class ClientConversationManager {
     const remoteConversationIds = APIConversations.map(
       (conversation) => conversation.id,
     )
+    const authorId = await getMaxAIChromeExtensionUserId()
     const localConversations = await createIndexedDBQuery('conversations')
       .conversations.where('id')
       .anyOf(remoteConversationIds)
@@ -304,6 +305,7 @@ export class ClientConversationManager {
         (conversation) => conversation.id === remoteConversation.id,
       )
       const cloneRemoteConversation = cloneDeep(remoteConversation)
+      cloneRemoteConversation.authorId = authorId
       let last_msg: IChatMessage | null =
         (cloneRemoteConversation as any)?.last_msg || null
       // 如果有last_msg，就不用再去查了

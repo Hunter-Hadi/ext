@@ -249,7 +249,7 @@ export const useFetchPaginationConversations = (
         .conversations.orderBy('updated_at')
         .filter(
           dbSift({
-            lastMessageId: { $exists: true },
+            // lastMessageId: { $exists: true },
             type: { $eq: filter.type },
             isDelete: { $eq: filter.isDelete },
             authorId: { $eq: authorId },
@@ -260,13 +260,25 @@ export const useFetchPaginationConversations = (
         .limit(filter.page_size)
         .toArray()
         .then()
+      const coneversationsCount = await createIndexedDBQuery('conversations')
+        .conversations.orderBy('updated_at')
+        .filter(
+          dbSift({
+            type: { $eq: filter.type },
+            isDelete: { $eq: filter.isDelete },
+            authorId: { $eq: authorId },
+          }),
+        )
+        .reverse()
+        .keys()
+        .then()
       const paginationConversations =
         await conversationsToPaginationConversations(conversations)
       console.debug(
         `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
           conversations.length
-        }/${
-          paginationConversations.length
+        }/${paginationConversations.length}/${
+          coneversationsCount.length
         }]耗时: Diff[${diffTimeUsage}]ms, LocalQuery[${
           new Date().getTime() - time - diffTimeUsage
         }】`,
@@ -279,7 +291,7 @@ export const useFetchPaginationConversations = (
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       // 说明本地和远程都没有数据
-      if (lastPage.length === 0) {
+      if (lastPage.length === 0 && lastPageParam >= totalPageRef.current) {
         // console.log(
         //   `ConversationDB[V3][对话列表] 获取列表[${lastPageParam}]没有数据`,
         // )
@@ -377,6 +389,16 @@ export const useFetchPaginationConversations = (
     setEnabled(controlEnable)
   }, [controlEnable])
 
+  useEffect(() => {
+    console.log(
+      'ConversationDB[V3][对话列表] 获取列表',
+      isLoading,
+      isFetchingNextPage,
+      enabled,
+      isLogin,
+      data?.pages,
+    )
+  }, [isLoading, isFetchingNextPage, enabled, isLogin, data?.pages])
   return {
     loading: !enabled || !isLogin || isLoading,
     paginationConversations,

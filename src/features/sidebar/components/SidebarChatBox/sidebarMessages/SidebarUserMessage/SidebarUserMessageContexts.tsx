@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography'
 import React, { FC, Fragment, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { getMessageAttachmentExtractedContent } from '@/background/src/chat/util'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LargeTextBox from '@/components/LargeTextBox'
@@ -17,7 +18,6 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message'
-import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -58,8 +58,8 @@ const SidebarUserMessageContexts: FC<{
     return contexts?.[0]?.value?.slice(0, 500).trim() || ''
   }, [contexts])
 
-  const extractedContentAttachments = attachments.filter(
-    (attachment) => attachment.extractedContent,
+  const extractedContentAttachments = attachments.filter((attachment) =>
+    getMessageAttachmentExtractedContent(attachment, message),
   )
   useEffect(() => {
     if (open) {
@@ -124,11 +124,9 @@ const SidebarUserMessageContexts: FC<{
                     ) {
                       showDivider = true
                     }
-                    if (attachment.extractedContent) {
-                      const extractedContent =
-                        safeGetAttachmentExtractedContent(
-                          attachment.extractedContent,
-                        )
+                    const attachmentExtractedContent =
+                      getMessageAttachmentExtractedContent(attachment, message)
+                    if (attachmentExtractedContent) {
                       return (
                         <Stack
                           width={384}
@@ -179,7 +177,7 @@ const SidebarUserMessageContexts: FC<{
                             )}
                           </Typography>
                           <LargeTextBox
-                            text={extractedContent}
+                            text={attachmentExtractedContent}
                             sx={{
                               mt: 1,
                             }}

@@ -26,6 +26,10 @@ export interface IChatMessage {
   created_at?: string
   updated_at?: string
   publishStatus?: IChatMessagePublishStatus
+  // 不同的message存放需要额外下载数据的地方
+  extendContent?: {
+    [key: string]: any
+  }
 }
 
 export interface IAskChatGPTActionQuestionType
@@ -42,9 +46,15 @@ export interface IUserChatMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
   meta?: IChatMessageExtraMetaType
+  extendContent?: IUserChatMessageExtendContentType
 }
 
-export interface IUserChatMessageExtraMetaContextType {
+export type IUserChatMessageExtendContentType = {
+  // 附件提取的内容
+  attachmentExtractedContents?: Record<string, string>
+}
+
+export type IUserChatMessageExtraMetaContextType = {
   type: 'text'
   value: string
   key: string
@@ -53,6 +63,7 @@ export interface IUserChatMessageExtraMetaContextType {
 export type IChatMessageExtraMetaType = {
   // 是否自动判断AIResponseLanguage
   isEnabledDetectAIResponseLanguage?: boolean
+  // contextMenu的配置
   contextMenu?: IContextMenuItem
   // 温度
   temperature?: number
@@ -76,6 +87,8 @@ export type IChatMessageExtraMetaType = {
   contexts?: IUserChatMessageExtraMetaContextType[]
   // MaxAI prompt Action Config
   MaxAIPromptActionConfig?: MaxAIPromptActionConfig
+  // 是否有编辑结构, 用来regenerate
+  hasEditStructure?: boolean
   [key: string]: any
 }
 
@@ -129,18 +142,10 @@ export type IAIResponseOriginalMessageNavMetadata = {
   icon?: string
 }
 
-export interface IAIResponseSourceCitation {
-  snippet: string
-  content: string
-  start_index: number
-  length: number
-}
-
 export interface IAIResponseOriginalMessage {
   id?: string
   create_time?: string
   update_time?: string
-  liteMode?: boolean
   author?: {
     role: string
     name: string
@@ -190,9 +195,14 @@ export interface IAIResponseOriginalMessage {
     related?: string[]
     // message 选中的 nav 信息
     navMetadata?: IAIResponseOriginalMessageNavMetadata
-    // citations原文信息
-    sourceCitations?: IAIResponseSourceCitation[]
   }
+}
+
+export interface IAIResponseSourceCitation {
+  snippet: string
+  content: string
+  start_index: number
+  length: number
 }
 
 // AI返回的消息
@@ -202,10 +212,6 @@ export interface IAIResponseMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
   originalMessage?: IAIResponseOriginalMessage
-  /**
-   * @deprecated
-   * @description - 移动到originalMessage.metadata里
-   */
   sourceCitations?: IAIResponseSourceCitation[]
 }
 
@@ -253,6 +259,9 @@ export interface IChatUploadFile {
   uploadErrorMessage?: string
   uploadedUrl?: string
   uploadedFileId?: string
+  /**
+   * @deprecated - 移动到extendContent.attachmentExtractedContents
+   */
   extractedContent?: string
   meta?: any
 }

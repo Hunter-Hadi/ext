@@ -146,11 +146,20 @@ const useClientChat = () => {
         await updateClientConversationLoading(false)
         return
       }
+      const attachmentExtractedContents: Record<string, string> = {}
+      attachments.forEach((attachment) => {
+        attachmentExtractedContents[attachment.id] =
+          attachment.extractedContent || ''
+        delete attachment.extractedContent
+      })
       question = mergeWithObject([
         question,
         {
           meta: {
             attachments,
+          },
+          extendContent: {
+            attachmentExtractedContents,
           },
         },
       ])

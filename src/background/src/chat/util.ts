@@ -39,6 +39,7 @@ import {
   IAIResponseOriginalMessage,
   IAIResponseSourceCitation,
   IChatMessage,
+  IChatUploadFile,
   IUserChatMessage,
 } from '@/features/indexed_db/conversations/models/Message'
 import {
@@ -331,6 +332,17 @@ export const setAIProviderSettings = async <T extends IAIProviderType>(
   }
 }
 
+export const getMessageAttachmentExtractedContent = (
+  attachment: IChatUploadFile,
+  message: IChatMessage,
+) => {
+  const attachmentExtractedContent =
+    message.extendContent?.attachmentExtractedContents?.[attachment.id] ||
+    attachment.extractedContent ||
+    ''
+  return safeGetAttachmentExtractedContent(attachmentExtractedContent)
+}
+
 /**
  * 获取消息的token数
  * @param message
@@ -340,8 +352,12 @@ export const getMessageTokens = async (message: IChatMessage) => {
     const attachments = message.meta?.attachments || []
     const attachmentTokens = sum(
       attachments.map((attachment) => {
-        if (attachment.extractedContent) {
-          return getTextTokens(attachment.extractedContent).length
+        const attachmentExtractedContent = getMessageAttachmentExtractedContent(
+          attachment,
+          message,
+        )
+        if (attachmentExtractedContent) {
+          return getTextTokens(attachmentExtractedContent).length
         }
         return 0
       }),
@@ -387,7 +403,9 @@ export const chatMessageToMaxAIRequestMessage = (
     if (message.meta?.attachments) {
       message.meta.attachments.forEach((attachment) => {
         if (attachment.uploadStatus === 'success') {
-          if (attachment.extractedContent) {
+          const attachmentExtractedContent =
+            getMessageAttachmentExtractedContent(attachment, message)
+          if (attachmentExtractedContent) {
             if (!extractedContent) {
               extractedContent = `\n\n---\n\nBelow, you will find the information and content of the file(s) mentioned above. Each file is delimited by <file></file>:\n\n`
             }
@@ -395,9 +413,7 @@ export const chatMessageToMaxAIRequestMessage = (
               attachment.fileName
             }\n\nFile Size: ${filesizeFormatter(
               attachment.fileSize,
-            )}\n\nFile Content:\n${safeGetAttachmentExtractedContent(
-              attachment.extractedContent,
-            )}\n</file>\n\n`
+            )}\n\nFile Content:\n${attachmentExtractedContent}\n</file>\n\n`
           } else if (
             attachment.uploadedUrl &&
             attachment.fileType.includes('image')

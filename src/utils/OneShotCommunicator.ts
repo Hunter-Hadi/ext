@@ -29,7 +29,7 @@ class OneShotCommunicator {
     return new Promise((resolve, reject) => {
       const timeoutHandle = setTimeout(() => {
         this.pending.delete(uniqueId)
-        reject(new Error('Timeout Error'))
+        resolve(undefined)
         // reject(
         //   new Error(
         //     'Timeout Error' +

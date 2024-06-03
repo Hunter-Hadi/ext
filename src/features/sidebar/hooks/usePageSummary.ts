@@ -76,7 +76,10 @@ const usePageSummary = () => {
           pageSummaryConversationId,
         )
       //如果没有，那么去remote看看有没有
-      if (await checkRemoteConversationIsExist(pageSummaryConversationId)) {
+      if (
+        !pageSummaryConversation &&
+        (await checkRemoteConversationIsExist(pageSummaryConversationId))
+      ) {
         // 如果有，那么就同步一下
         const conversations = await clientDownloadConversationToLocal(
           pageSummaryConversationId,

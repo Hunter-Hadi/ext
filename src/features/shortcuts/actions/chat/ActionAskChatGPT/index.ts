@@ -455,7 +455,7 @@ export class ActionAskChatGPT extends Action {
                   metadata: {
                     ...this.answer.originalMessage?.metadata,
                     sourceCitations: message.sourceCitations,
-                  }
+                  },
                 }
               }
               this.output = this.answer.text
@@ -473,7 +473,8 @@ export class ActionAskChatGPT extends Action {
                         key: outputMessageId || '',
                         changes: {
                           'originalMessage.content.text': message.text,
-                          'metadata.sourceCitations': message.sourceCitations,
+                          'originalMessage.metadata.sourceCitations':
+                            message.sourceCitations,
                         } as any,
                       },
                     ],

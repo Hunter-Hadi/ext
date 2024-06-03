@@ -2,7 +2,6 @@
 import { HTMLParagraphElement } from 'linkedom'
 import isArray from 'lodash-es/isArray'
 import isNumber from 'lodash-es/isNumber'
-import orderBy from 'lodash-es/orderBy'
 import { useCallback, useEffect, useRef } from 'react'
 import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 
@@ -14,10 +13,8 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import {
   ClientConversationStateFamily,
   ClientUploadedFilesState,
-  PaginationConversationMessagesStateFamily,
 } from '@/features/chatgpt/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { useFocus } from '@/features/common/hooks/useFocus'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
@@ -31,7 +28,6 @@ import {
   isMaxAIImmersiveChatPage,
   isMaxAISettingsPage,
 } from '@/utils/dataHelper/websiteHelper'
-import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -89,12 +85,12 @@ export const useClientConversationListener = () => {
 
   const updateConversation = useRecoilCallback(
     ({ set }) =>
-      async () => {
-        if (currentConversationId) {
+      async (updateConversationId: string) => {
+        if (updateConversationId) {
           const result = await port.postMessage({
             event: 'Client_chatGetFiles',
             data: {
-              conversationId: currentConversationId,
+              conversationId: updateConversationId,
             },
           })
           if (isArray(result.data)) {
@@ -102,31 +98,36 @@ export const useClientConversationListener = () => {
           }
           const conversation =
             await ClientConversationManager.getConversationById(
-              currentConversationId,
+              updateConversationId,
             )
           console.log(
-            `ConversationDB[V3] 更新会话[${currentConversationId}]`,
+            `ConversationDB[V3] 更新会话[${updateConversationId}]`,
             conversation,
           )
-          set(
-            ClientConversationStateFamily(currentConversationId),
-            conversation,
-          )
+          console.log(`ConversationMessagesUpdate!!! 更新会话`, conversation)
+          set(ClientConversationStateFamily(updateConversationId), conversation)
         }
       },
-    [currentConversationId],
+    [],
   )
 
   useEffect(() => {
     if (!currentConversationId) {
       return
     }
-    window.addEventListener('focus', updateConversation)
-    updateConversation().then().catch()
-    return () => {
-      window.removeEventListener('focus', updateConversation)
+    const updateConversationListener = () => {
+      console.log(
+        `ConversationMessagesUpdate!!! 更新会话1111`,
+        currentConversationId,
+      )
+      updateConversation(currentConversationId).then().catch()
     }
-  }, [updateConversation])
+    window.addEventListener('focus', updateConversationListener)
+    updateConversationListener()
+    return () => {
+      window.removeEventListener('focus', updateConversationListener)
+    }
+  }, [updateConversation, currentConversationId])
 
   useCreateClientMessageListener(async (event, data) => {
     switch (event as IChromeExtensionClientListenEvent) {
@@ -355,92 +356,6 @@ export const useClientConversationListener = () => {
       resetConversation()
     }
   }, [clientConversation, resetConversation])
-  const updateConversationMessages = useRecoilCallback(
-    ({ set, snapshot }) =>
-      async (
-        changeType: 'add' | 'update' | 'delete' | 'focus',
-        conversationId: string,
-        messageIds: string[],
-      ) => {
-        const conversationState = await snapshot.getPromise(
-          ClientConversationStateFamily(conversationId),
-        )
-        if (conversationState) {
-          // 说明当前的conversation是存在的
-          switch (changeType) {
-            case 'add':
-            case 'update':
-            case 'focus':
-              {
-                const messages =
-                  await ClientConversationMessageManager.getMessagesByMessageIds(
-                    messageIds,
-                  )
-                set(
-                  PaginationConversationMessagesStateFamily(conversationId),
-                  (prevState) => {
-                    return orderBy(
-                      prevState
-                        .filter((item) => !messageIds.includes(item.messageId))
-                        .concat(messages),
-                      'created_at',
-                      'asc',
-                    )
-                  },
-                )
-              }
-              break
-            case 'delete':
-              {
-                set(
-                  PaginationConversationMessagesStateFamily(conversationId),
-                  (prevState) => {
-                    return prevState.filter(
-                      (item) => !messageIds.includes(item.messageId),
-                    )
-                  },
-                )
-              }
-              break
-          }
-          return true
-        }
-        return undefined
-      },
-    [],
-  )
-  useFocus(() => {
-    if (currentConversationIdRef.current) {
-      // TODO: 强行更新全部的消息, 以后可以优化
-      ClientConversationMessageManager.getMessageIds(
-        currentConversationIdRef.current!,
-      ).then(async (messageIds) => {
-        await updateConversationMessages(
-          'focus',
-          currentConversationIdRef.current!,
-          messageIds,
-        )
-      })
-    }
-  })
-  // 更新对话消息
-  useEffect(() => {
-    const unsubscribe = OneShotCommunicator.receive(
-      'ConversationMessagesUpdate',
-      async (data) => {
-        const { changeType, conversationId, messageIds } = data
-        if (currentConversationIdRef.current !== conversationId) {
-          return undefined
-        }
-        return await updateConversationMessages(
-          changeType,
-          conversationId,
-          messageIds,
-        )
-      },
-    )
-    return () => unsubscribe()
-  }, [updateConversationMessages])
 }
 
 export default useClientConversationListener

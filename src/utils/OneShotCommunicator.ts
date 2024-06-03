@@ -30,6 +30,14 @@ class OneShotCommunicator {
       const timeoutHandle = setTimeout(() => {
         this.pending.delete(uniqueId)
         reject(new Error('Timeout Error'))
+        // reject(
+        //   new Error(
+        //     'Timeout Error' +
+        //     customEventName +
+        //     '\n' +
+        //     JSON.stringify(data, null, 2),
+        //   ),
+        // )
       }, timeout)
 
       this.pending.set(uniqueId, (response: any) => {

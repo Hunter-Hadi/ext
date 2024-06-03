@@ -225,8 +225,10 @@ export const useFetchPaginationConversations = (
           ...filter,
           page: data.pageParam,
         })
-        remoteConversationPageLoadedRef.current[data.pageParam] = true
-        totalPageRef.current = Math.max(result.data?.total_page || 0, 0)
+        if (result?.data?.status === 'OK') {
+          remoteConversationPageLoadedRef.current[data.pageParam] = true
+          totalPageRef.current = Math.max(result.data?.total_page || 0, 0)
+        }
         setFilter((prev) => {
           return {
             ...prev,

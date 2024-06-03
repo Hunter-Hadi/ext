@@ -1,6 +1,6 @@
 import { APP_VERSION, SUMMARY__RELATED_QUESTIONS__PROMPT_ID } from '@/constants'
-import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/chatgpt/types'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/indexed_db/conversations/models/Message'
 import {
   IShortcutEngineExternalEngine,
   withLoadingDecorators,
@@ -33,13 +33,18 @@ export class ActionMaxAIResponseRelated extends Action {
   ) {
     // 生成summary相关的related questions
     const { clientConversationEngine } = engine
-    const conversation =
-      await clientConversationEngine?.getCurrentConversation()
-    const messages = conversation?.messages || []
+    const conversationId =
+      clientConversationEngine?.currentConversationIdRef.current || ''
+    const AIResponseMessage = conversationId
+      ? await ClientConversationMessageManager.getMessageByMessageType(
+          conversationId,
+          'ai',
+          'latest',
+        )
+      : null
     // TODO: 第一版只给summary的默认的all的related questions，后续可以根据需求再扩展
     let needToGenerateRelatedQuestions = false
-    const AIResponseMessage = messages[0]
-    if (isAIMessage(AIResponseMessage)) {
+    if (AIResponseMessage) {
       needToGenerateRelatedQuestions =
         AIResponseMessage?.originalMessage?.metadata?.navMetadata?.key === 'all'
     }

@@ -71,6 +71,7 @@ export class ClientConversationManager {
       return null
     }
   }
+
   /**
    * 用conversationIds获取对话
    * @param conversationIds

@@ -835,7 +835,8 @@
     "sidebar__survey_dialog__cta_button_text": "Ասեք մեր մասին",
     "floating_menu__input__placeholder__after_ai_response": "Ասեք AI-ին, թե ինչպես հաջողվելու...",
     "sidebar__unable_subscription__title": "Գործողության պահանջ - Մենք չենք կարողանալ ավտոմատ նորացնել ձեր բաժնականությունը:",
-    "sidebar__unable_subscription__link__title": "Ուղարկեք դառնալու ժամանակը խոշորագույնը:"
+    "sidebar__unable_subscription__link__title": "Ուղարկեք դառնալու ժամանակը խոշորագույնը:",
+    "chat__user_message__contexts__file__preview__tips": "Ձևանմուշը կարող է տարբերվել աղյուսակից։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "ספר לנו על החוויה שלך",
     "floating_menu__input__placeholder__after_ai_response": "ספר לאינטיליגנציה המלאכותית מה לעשות אחר כך...",
     "sidebar__unable_subscription__title": "פעולה נדרשת - לא הצלחנו לחדש את המינוי שלך באופן אוטומטי.",
-    "sidebar__unable_subscription__link__title": "תקן זאת עכשיו כדי לחסוך שעות כל יום."
+    "sidebar__unable_subscription__link__title": "תקן זאת עכשיו כדי לחסוך שעות כל יום.",
+    "chat__user_message__contexts__file__preview__tips": "העיצוב עשוי להיות לא עקבי מהמקור."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

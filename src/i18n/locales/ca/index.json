@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Explica'ns la teva experiència",
     "floating_menu__input__placeholder__after_ai_response": "Indica a l'IA què fer a continuació...",
     "sidebar__unable_subscription__title": "Acció requerida - No hem pogut renovar automàticament la teva subscripció.",
-    "sidebar__unable_subscription__link__title": "Soluciona-ho ara per estalviar hores cada dia."
+    "sidebar__unable_subscription__link__title": "Soluciona-ho ara per estalviar hores cada dia.",
+    "chat__user_message__contexts__file__preview__tips": "El format pot ser inconsistent amb l'origen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

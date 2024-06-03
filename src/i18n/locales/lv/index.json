@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Pastāstiet mums par savu pieredzi",
     "floating_menu__input__placeholder__after_ai_response": "Pateikt AI, ko darīt tālāk...",
     "sidebar__unable_subscription__title": "Nepieciešama darbība - Mēs nevarējām automātiski atjaunot jūsu abonementu.",
-    "sidebar__unable_subscription__link__title": "Labojiet to tagad, lai ietaupītu stundas katru dienu."
+    "sidebar__unable_subscription__link__title": "Labojiet to tagad, lai ietaupītu stundas katru dienu.",
+    "chat__user_message__contexts__file__preview__tips": "Formatēšana var būt nesaskaņota no avota."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

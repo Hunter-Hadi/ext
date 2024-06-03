@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Beritahu kami tentang pengalaman anda",
     "floating_menu__input__placeholder__after_ai_response": "Beritahu AI apa yang perlu dilakukan seterusnya...",
     "sidebar__unable_subscription__title": "Tindakan diperlukan - Kami tidak dapat memperbaharui langganan anda secara automatik.",
-    "sidebar__unable_subscription__link__title": "Perbaiki sekarang untuk menjimatkan berjam-jam setiap hari."
+    "sidebar__unable_subscription__link__title": "Perbaiki sekarang untuk menjimatkan berjam-jam setiap hari.",
+    "chat__user_message__contexts__file__preview__tips": "Pemformatan mungkin tidak konsisten dari sumber."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

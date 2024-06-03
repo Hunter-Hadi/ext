@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Meséljen nekünk tapasztalatairól",
     "floating_menu__input__placeholder__after_ai_response": "Mondja meg az AI-nak, mit tegyen ezután...",
     "sidebar__unable_subscription__title": "Cselekvés szükséges - Nem sikerült automatikusan megújítani az előfizetését.",
-    "sidebar__unable_subscription__link__title": "Javítsa most, hogy órákat takarítson meg minden nap."
+    "sidebar__unable_subscription__link__title": "Javítsa most, hogy órákat takarítson meg minden nap.",
+    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrásból."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

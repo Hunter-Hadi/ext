@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "أخبرنا عن تجربتك",
     "floating_menu__input__placeholder__after_ai_response": "أخبر الذكاء الاصطناعي ما يجب فعله بعد ذلك...",
     "sidebar__unable_subscription__title": "الإجراء المطلوب - لم نتمكن من تجديد اشتراكك تلقائيًا.",
-    "sidebar__unable_subscription__link__title": "قم بإصلاحه الآن لتوفير ساعات كل يوم."
+    "sidebar__unable_subscription__link__title": "قم بإصلاحه الآن لتوفير ساعات كل يوم.",
+    "chat__user_message__contexts__file__preview__tips": "قد تكون التنسيقات غير متسقة من المصدر."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

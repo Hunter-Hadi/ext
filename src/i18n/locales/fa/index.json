@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "درباره تجربه خود به ما بگویید",
     "floating_menu__input__placeholder__after_ai_response": "به هوش مصنوعی بگوید که بعداً چه کاری انجام دهد...",
     "sidebar__unable_subscription__title": "نیاز به اقدام - ما قادر به تمدید خودکار اشتراک شما نبودیم.",
-    "sidebar__unable_subscription__link__title": "همین حالا آن را برطرف کنید تا هر روز ساعت‌ها صرفه جویی کنید."
+    "sidebar__unable_subscription__link__title": "همین حالا آن را برطرف کنید تا هر روز ساعت‌ها صرفه جویی کنید.",
+    "chat__user_message__contexts__file__preview__tips": "قالب بندی ممکن است از منبع متفاوت باشد."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

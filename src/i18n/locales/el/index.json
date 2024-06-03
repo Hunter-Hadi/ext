@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Πείτε μας για την εμπειρία σας",
     "floating_menu__input__placeholder__after_ai_response": "Πείτε στο AI τι να κάνει μετά...",
     "sidebar__unable_subscription__title": "Απαιτείται ενέργεια - Δεν μπορέσαμε να ανανεώσουμε αυτόματα τη συνδρομή σας.",
-    "sidebar__unable_subscription__link__title": "Διορθώστε το τώρα για να εξοικονομήσετε ώρες κάθε μέρα."
+    "sidebar__unable_subscription__link__title": "Διορθώστε το τώρα για να εξοικονομήσετε ώρες κάθε μέρα.",
+    "chat__user_message__contexts__file__preview__tips": "Η μορφοποίηση μπορεί να είναι ασυνεπής από την πηγή."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

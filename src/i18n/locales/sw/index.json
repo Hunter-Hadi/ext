@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Tuambie uzoefu wako",
     "floating_menu__input__placeholder__after_ai_response": "Eleza AI ifuatayo ifanye...",
     "sidebar__unable_subscription__title": "Hatua inahitajika - Hatukuweza kusasisha moja kwa moja usajili wako.",
-    "sidebar__unable_subscription__link__title": "Tatua sasa ili kuokoa masaa kila siku."
+    "sidebar__unable_subscription__link__title": "Tatua sasa ili kuokoa masaa kila siku.",
+    "chat__user_message__contexts__file__preview__tips": "Umbo linaweza kuwa tofauti kutoka chanzo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

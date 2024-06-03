@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Řekněte nám o svém zážitku",
     "floating_menu__input__placeholder__after_ai_response": "Řekněte AI, co má udělat dál...",
     "sidebar__unable_subscription__title": "Vyžaduje se akce - Nepodařilo se nám automaticky obnovit váš předplatný.",
-    "sidebar__unable_subscription__link__title": "Opravte to nyní a ušetřete hodiny každý den."
+    "sidebar__unable_subscription__link__title": "Opravte to nyní a ušetřete hodiny každý den.",
+    "chat__user_message__contexts__file__preview__tips": "Formátování může být nekonzistentní ze zdroje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

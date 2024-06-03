@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Parlez-nous de votre expérience",
     "floating_menu__input__placeholder__after_ai_response": "Indiquez à l'IA ce qu'elle doit faire ensuite...",
     "sidebar__unable_subscription__title": "Action requise - Nous n'avons pas pu renouveler automatiquement votre abonnement.",
-    "sidebar__unable_subscription__link__title": "Réglez-le maintenant pour économiser des heures chaque jour."
+    "sidebar__unable_subscription__link__title": "Réglez-le maintenant pour économiser des heures chaque jour.",
+    "chat__user_message__contexts__file__preview__tips": "La mise en forme peut être incohérente par rapport à la source."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

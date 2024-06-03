@@ -70,11 +70,13 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
               break
             }
           }
-          if (question||selectionText) {
-            await OneShotCommunicator.send('QuickSearchSelectedText', {
-              question:question||selectionText,
+          if (question || selectionText) {
+            OneShotCommunicator.send('QuickSearchSelectedText', {
+              question: question || selectionText,
               includeHistory: false,
             })
+              .then()
+              .catch()
           }
         }}
       >

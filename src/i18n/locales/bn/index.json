@@ -838,7 +838,8 @@
     "sidebar__context_clear__delete__description": "এই \"সংশ্লিষ্টতা মুছে ফেলা\" লাইন মুছলে বর্তমান চ্যাট ইতিহাসসহ পূর্বের চ্যাট ইতিহাসকে যোগ করা হবে। এই চ্যাট ইতিহাস একত্রিত করে AI আপনার মেসেজের উত্তর দেওয়ার সময় বিবেচনা করবে।",
     "floating_menu__input__placeholder__after_ai_response": "বলুন এআইকে পরবর্তীতে কি করতে হবে...",
     "sidebar__unable_subscription__title": "কার্যকর করতে হবে - আমরা আপনার সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে নবায়ন করতে পারিনি।",
-    "sidebar__unable_subscription__link__title": "প্রতিদিন ঘন্টার সময় বাঁচাতে এখনই সমস্যাটি ঠিক করুন।"
+    "sidebar__unable_subscription__link__title": "প্রতিদিন ঘন্টার সময় বাঁচাতে এখনই সমস্যাটি ঠিক করুন।",
+    "chat__user_message__contexts__file__preview__tips": "ফরম্যাটিং উৎস থেকে অস্থির হতে পারে।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

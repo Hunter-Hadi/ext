@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Kažite nam o svom iskustvu",
     "floating_menu__input__placeholder__after_ai_response": "Recite AI-u što treba učiniti sljedeće...",
     "sidebar__unable_subscription__title": "Potrebna radnja - Nismo mogli automatski obnoviti vašu pretplatu.",
-    "sidebar__unable_subscription__link__title": "Popravite to sada kako biste uštedjeli sate svaki dan."
+    "sidebar__unable_subscription__link__title": "Popravite to sada kako biste uštedjeli sate svaki dan.",
+    "chat__user_message__contexts__file__preview__tips": "Formatiranje može biti neujednačeno iz izvora."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

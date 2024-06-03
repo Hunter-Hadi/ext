@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Kerro meille kokemuksestasi",
     "floating_menu__input__placeholder__after_ai_response": "Kerro AI:lle mitä tehdä seuraavaksi...",
     "sidebar__unable_subscription__title": "Toimi tarvitaan - Emme pystyneet uusimaan tilaustasi automaattisesti.",
-    "sidebar__unable_subscription__link__title": "Korjaa se nyt säästääksesi tunteja joka päivä."
+    "sidebar__unable_subscription__link__title": "Korjaa se nyt säästääksesi tunteja joka päivä.",
+    "chat__user_message__contexts__file__preview__tips": "Muotoilu voi olla epäjohdonmukainen lähteestä."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

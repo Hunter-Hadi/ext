@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "ご意見をお聞かせください",
     "floating_menu__input__placeholder__after_ai_response": "次にAIに何をするか伝えてください...",
     "sidebar__unable_subscription__title": "アクションが必要です - サブスクリプションを自動的に更新できませんでした。",
-    "sidebar__unable_subscription__link__title": "毎日数時間を節約するために今すぐ修正してください。"
+    "sidebar__unable_subscription__link__title": "毎日数時間を節約するために今すぐ修正してください。",
+    "chat__user_message__contexts__file__preview__tips": "ソースからの書式設定が一貫していない場合があります。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

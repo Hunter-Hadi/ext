@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "हमें अपने अनुभव के बारे में बताएं",
     "floating_menu__input__placeholder__after_ai_response": "AI को बताएं कि अगला क्या करना है...",
     "sidebar__unable_subscription__title": "कार्रवाई आवश्यक - हम आपकी सदस्यता को स्वचालित रूप से नवीनीकरण नहीं कर सके।",
-    "sidebar__unable_subscription__link__title": "अब इसे ठीक करें और प्रतिदिन कई घंटे बचाएं।"
+    "sidebar__unable_subscription__link__title": "अब इसे ठीक करें और प्रतिदिन कई घंटे बचाएं।",
+    "chat__user_message__contexts__file__preview__tips": "स्रोत से स्वरूपण अस्थिर हो सकता है।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "आपल्या अनुभवाबद्दल सांगा",
     "floating_menu__input__placeholder__after_ai_response": "AIला काय करावं सांगा...",
     "sidebar__unable_subscription__title": "कार्यवाही आवश्यक - आपले सदस्यता स्वयंप्रत्याख्यान करण्यात आले नाही.",
-    "sidebar__unable_subscription__link__title": "प्रतिदिन अनेक तास बचवण्यासाठी आत्ताच ते ठरवा."
+    "sidebar__unable_subscription__link__title": "प्रतिदिन अनेक तास बचवण्यासाठी आत्ताच ते ठरवा.",
+    "chat__user_message__contexts__file__preview__tips": "स्रोतपासून स्वरुपण असंगठित असू शकतो."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

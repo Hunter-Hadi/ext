@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "告訴我們您的經歷",
     "floating_menu__input__placeholder__after_ai_response": "告訴AI下一步該做什麼...",
     "sidebar__unable_subscription__title": "需要採取行動 - 我們無法自動續訂您的訂閱。",
-    "sidebar__unable_subscription__link__title": "立即修復以節省每天數小時。"
+    "sidebar__unable_subscription__link__title": "立即修復以節省每天數小時。",
+    "chat__user_message__contexts__file__preview__tips": "來源可能會有格式不一致。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

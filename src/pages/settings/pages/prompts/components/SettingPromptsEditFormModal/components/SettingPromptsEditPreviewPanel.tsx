@@ -84,6 +84,8 @@ const PreviewPanel = () => {
       task: 'open',
       config,
     })
+      .then()
+      .catch()
   }, [config])
 
   const { stopGenerate } = useClientChat()

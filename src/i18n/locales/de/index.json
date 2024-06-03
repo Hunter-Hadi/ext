@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Erzählen Sie uns von Ihren Erfahrungen",
     "floating_menu__input__placeholder__after_ai_response": "Sagen Sie der KI, was als nächstes zu tun ist...",
     "sidebar__unable_subscription__title": "Handlung erforderlich - Wir konnten Ihr Abonnement nicht automatisch verlängern.",
-    "sidebar__unable_subscription__link__title": "Beheben Sie es jetzt, um jeden Tag Stunden zu sparen."
+    "sidebar__unable_subscription__link__title": "Beheben Sie es jetzt, um jeden Tag Stunden zu sparen.",
+    "chat__user_message__contexts__file__preview__tips": "Die Formatierung kann von der Quelle abweichen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

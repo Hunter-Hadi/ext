@@ -838,7 +838,8 @@
     "sidebar__survey_dialog__cta_button_text": "Deneyiminizi bize anlatın",
     "floating_menu__input__placeholder__after_ai_response": "AI'ya ne yapmasını söyleyin...",
     "sidebar__unable_subscription__title": "Eylem gerekiyor - Aboneliğinizi otomatik olarak yenileyemedik.",
-    "sidebar__unable_subscription__link__title": "Her gün saatlerce zaman kazanmak için şimdi düzeltin."
+    "sidebar__unable_subscription__link__title": "Her gün saatlerce zaman kazanmak için şimdi düzeltin.",
+    "chat__user_message__contexts__file__preview__tips": "Biçimlendirme kaynaktan tutarsız olabilir."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

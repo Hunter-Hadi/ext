@@ -1,7 +1,9 @@
 // hooks/useClientChatGPTFiles.ts
 import { HTMLParagraphElement } from 'linkedom'
+import cloneDeep from 'lodash-es/cloneDeep'
 import isArray from 'lodash-es/isArray'
 import isNumber from 'lodash-es/isNumber'
+import orderBy from 'lodash-es/orderBy'
 import { useCallback, useEffect, useRef } from 'react'
 import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 
@@ -13,11 +15,13 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import {
   ClientConversationStateFamily,
   ClientUploadedFilesState,
+  PaginationConversationMessagesStateFamily,
 } from '@/features/chatgpt/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
+  IChatMessage,
   IChatUploadFile,
   ISystemChatMessage,
 } from '@/features/indexed_db/conversations/models/Message'
@@ -28,6 +32,7 @@ import {
   isMaxAIImmersiveChatPage,
   isMaxAISettingsPage,
 } from '@/utils/dataHelper/websiteHelper'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -356,6 +361,120 @@ export const useClientConversationListener = () => {
       resetConversation()
     }
   }, [clientConversation, resetConversation])
+
+  /**
+   * 更新消息
+   */
+  const handleUpdateMessages = useRecoilCallback(
+    ({ set }) =>
+      async (data: any) => {
+        const { changeType, messageIds, conversationId } = data
+        if (conversationId !== currentConversationIdRef.current) {
+          return undefined
+        }
+        switch (changeType) {
+          case 'add': {
+            const messages =
+              await ClientConversationMessageManager.getMessagesByMessageIds(
+                messageIds,
+              )
+            const newMessageMap: Record<string, IChatMessage> = {}
+            messages.forEach((newMessage) => {
+              newMessageMap[newMessage.messageId] = newMessage
+            })
+            set(
+              PaginationConversationMessagesStateFamily(conversationId),
+              (prevState) => {
+                return orderBy(
+                  prevState
+                    .map((message) => {
+                      if (newMessageMap[message.messageId]) {
+                        const newMessage = cloneDeep(
+                          newMessageMap[message.messageId],
+                        )
+                        delete newMessageMap[message.messageId]
+                        return newMessage
+                      }
+                      return message
+                    })
+                    .concat(Object.values(newMessageMap).map((item) => item)),
+                  ['created_at'],
+                  ['asc'],
+                )
+              },
+            )
+            break
+          }
+          case 'update': {
+            const messages =
+              await ClientConversationMessageManager.getMessagesByMessageIds(
+                messageIds,
+              )
+            set(
+              PaginationConversationMessagesStateFamily(conversationId),
+              (prevState) => {
+                return prevState.map((message) => {
+                  const newMessage = messages.find(
+                    (item) => item.messageId === message.messageId,
+                  )
+                  if (newMessage) {
+                    return newMessage
+                  }
+                  return message
+                })
+              },
+            )
+            break
+          }
+          case 'delete': {
+            set(
+              PaginationConversationMessagesStateFamily(conversationId),
+              (prevState) => {
+                return prevState.filter(
+                  (message) => !messageIds.includes(message.messageId),
+                )
+              },
+            )
+            break
+          }
+          case 'init': {
+            const messagesIds =
+              await ClientConversationMessageManager.getMessageIds(
+                conversationId,
+              )
+            const messages =
+              await ClientConversationMessageManager.getMessagesByMessageIds(
+                messagesIds,
+              )
+            set(
+              PaginationConversationMessagesStateFamily(conversationId),
+              messages,
+            )
+            break
+          }
+        }
+        return true
+      },
+    [currentConversationId],
+  )
+
+  useEffect(() => {
+    const unsubscribe = OneShotCommunicator.receive(
+      'ConversationMessagesUpdate',
+      async (data) => {
+        return await handleUpdateMessages(data)
+      },
+    )
+    if (currentConversationId) {
+      // 获取当前的conversation的数据
+      handleUpdateMessages({
+        changeType: 'init',
+        messageIds: [],
+        conversationId: currentConversationId,
+      })
+    }
+    return () => unsubscribe()
+  }, [handleUpdateMessages, currentConversationId])
 }
 
 export default useClientConversationListener

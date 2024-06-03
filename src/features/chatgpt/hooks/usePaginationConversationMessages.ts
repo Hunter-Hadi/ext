@@ -6,12 +6,10 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import first from 'lodash-es/first'
 import last from 'lodash-es/last'
 import orderBy from 'lodash-es/orderBy'
-import { useEffect, useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useEffect, useRef, useState } from 'react'
 
 import { useAuthLogin } from '@/features/auth'
 import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
-import { PaginationConversationMessagesStateFamily } from '@/features/chatgpt/store'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
@@ -23,11 +21,11 @@ const PAGINATION_CONVERSATION_MESSAGES_QUERY_PAGE_SIZE = 10
 const usePaginationConversationMessages = (conversationId: string) => {
   const { isLogin } = useAuthLogin()
   const { maxAIBetaFeaturesLoaded, maxAIBetaFeatures } = useMaxAIBetaFeatures()
-  const [paginationMessages, setPaginationMessages] = useRecoilState(
-    PaginationConversationMessagesStateFamily(conversationId),
+  const [paginationMessages, setPaginationMessages] = useState<IChatMessage[]>(
+    [],
   )
   const totalPageRef = useRef(0)
-  const remoteConversationMesssagesPageLoadedRef = useRef<
+  const remoteConversationMessagesPageLoadedRef = useRef<
     Record<number, boolean>
   >({})
   const {
@@ -52,7 +50,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
       if (
         maxAIBetaFeatures.chat_sync &&
         totalPageRef.current >= data.pageParam &&
-        !remoteConversationMesssagesPageLoadedRef.current[data.pageParam]
+        !remoteConversationMessagesPageLoadedRef.current[data.pageParam]
       ) {
         const result = await clientFetchMaxAIAPI<{
           current_page: number
@@ -67,8 +65,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
           page_size: PAGINATION_CONVERSATION_MESSAGES_QUERY_PAGE_SIZE,
         })
         if (result?.data?.status === 'OK') {
-          remoteConversationMesssagesPageLoadedRef.current[data.pageParam] =
-            true
+          remoteConversationMessagesPageLoadedRef.current[data.pageParam] = true
           totalPageRef.current = Math.max(result.data?.total_page || 0, 0)
         }
         if (result?.data?.data) {
@@ -243,7 +240,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
                 })
               })
             }
-            break
+            return true
           }
           case 'delete':
           case 'add': {
@@ -291,7 +288,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
   useEffect(() => {
     if (conversationId) {
       totalPageRef.current = 0
-      remoteConversationMesssagesPageLoadedRef.current = {}
+      remoteConversationMessagesPageLoadedRef.current = {}
     }
   }, [conversationId])
   return {

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useAuthLogin } from '@/features/auth'
 import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
@@ -51,10 +52,14 @@ export const conversationsToPaginationConversations = async (
         }
         // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
         if (lastMessage && !conversationDisplaysText) {
-          conversationDisplaysText = formatChatMessageContent(
-            lastMessage,
-            false,
-          )
+          const messageContent = formatChatMessageContent(lastMessage, false)
+          if (isAIMessage(lastMessage)) {
+            conversationDisplaysText =
+              lastMessage.originalMessage?.metadata?.title?.title ||
+              messageContent
+          } else {
+            conversationDisplaysText = messageContent
+          }
         }
         // 理论上不会出现这种情况
         if (!conversationDisplaysText) {
@@ -291,14 +296,7 @@ export const useFetchPaginationConversations = (
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       // 说明本地和远程都没有数据
-      console.log(
-        `ConversationDB[V3][对话列表] 获取列表 hasMore`,
-        !(lastPage.length === 0 && lastPageParam >= totalPageRef.current),
-      )
       if (lastPage.length === 0 && lastPageParam >= totalPageRef.current) {
-        // console.log(
-        //   `ConversationDB[V3][对话列表] 获取列表[${lastPageParam}]没有数据`,
-        // )
         return undefined
       }
       return lastPageParam + 1

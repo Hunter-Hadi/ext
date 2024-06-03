@@ -256,7 +256,7 @@ export const checkConversationNeedSync = async (
   if (!hasConversationData) {
     syncLog.info(conversationId, `接口报错, 需要同步`)
     return {
-      needSync: true,
+      needSync: localConversationMessagesIds.length > 0,
       needSyncCount: localConversationMessagesIds.length || 0,
       totalCount: localConversationMessagesIds.length || 0,
     }

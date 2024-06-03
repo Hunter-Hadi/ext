@@ -67,12 +67,6 @@ const InfiniteConversationList: <T>(
     await loadNextPage()
   }
   const isItemLoaded = (index: number) => {
-    console.log(
-      `ConversationDB[V3][对话列表] 获取列表`,
-      hasNextPage,
-      index,
-      conversations.length,
-    )
     return !hasNextPage || index < conversations.length
   }
   const handleSelectItemOrLoadMore = useCallback(

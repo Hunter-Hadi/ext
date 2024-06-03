@@ -190,7 +190,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
                 onClick={async () => {
                   try {
                     await ClientConversationManager.softDeleteByType(
-                      currentSidebarConversationType,
+                      currentConversationType,
                     )
                     onDelete?.()
                   } catch (e) {

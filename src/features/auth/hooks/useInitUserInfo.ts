@@ -78,51 +78,63 @@ const useInitUserInfo = (isInit = true) => {
       if (!currentUserInfo) {
         return false
       }
+      /**
+       * Client_getUseChatGPTUserSubscriptionInfo只返回userInfo.role
+       * 处理subscription_payment_failed_at的信息，这里改成调用Client_getUseChatGPTUserInfo
+       */
+      // const result = await port.postMessage({
+      //   event: 'Client_getUseChatGPTUserSubscriptionInfo',
+      //   data: {},
+      // })
       const result = await port.postMessage({
-        event: 'Client_getUseChatGPTUserSubscriptionInfo',
-        data: {},
+        event: 'Client_getUseChatGPTUserInfo',
+        data: { forceUpdate: true },
       })
-      if (result.success && result.data?.name) {
-        const newRole = result.data
-        if (newRole) {
-          setUserInfo((prevState) => {
-            let newUserInfo = cloneDeep(prevState.user)
-            if (!newUserInfo) {
-              newUserInfo = cloneDeep(currentUserInfo)
-            }
-            if (!newUserInfo) {
-              return {
-                user: null,
-                loading: false,
-              }
-            }
-            if (
-              newUserInfo.role?.name &&
-              newUserInfo.role.name !== newRole.name &&
-              newRole.name !== 'free'
-            ) {
-              // 角色发生变化
-              needPushUpgradeMessage.current = true
-              if (newRole.name === 'elite') {
-                upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Elite.'
-              } else if (newRole.name === 'pro') {
-                upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Pro.'
-              } else if (newRole.name === 'basic') {
-                upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Basic.'
-              }
-            }
+      if (result.success && result.data?.role?.name) {
+        const newRole = result.data?.role
+        setUserInfo((prevState) => {
+          let newUserInfo = cloneDeep(prevState.user)
+          if (!newUserInfo) {
+            newUserInfo = cloneDeep(currentUserInfo)
+          }
+          if (!newUserInfo) {
             return {
-              user: {
-                ...newUserInfo,
-                role: newRole,
-              },
+              user: null,
               loading: false,
             }
-          })
-        }
+          }
+          if (
+            newUserInfo.role?.name &&
+            newUserInfo.role.name !== newRole.name &&
+            newRole.name !== 'free'
+          ) {
+            // 角色发生变化
+            needPushUpgradeMessage.current = true
+            if (newRole.name === 'elite') {
+              upgradeTextRef.current =
+                'You have successfully upgraded to MaxAI Elite.'
+            } else if (newRole.name === 'pro') {
+              upgradeTextRef.current =
+                'You have successfully upgraded to MaxAI Pro.'
+            } else if (newRole.name === 'basic') {
+              upgradeTextRef.current =
+                'You have successfully upgraded to MaxAI Basic.'
+            }
+          }
+          return {
+            user: {
+              ...newUserInfo,
+              role: newRole,
+            },
+            loading: false,
+          }
+        })
+      }
+      if (result.success && result.data?.email) {
+        setUserInfo({
+          user: result.data,
+          loading: false,
+        })
       }
       return false
     } catch (e) {

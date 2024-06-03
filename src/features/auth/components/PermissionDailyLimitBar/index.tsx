@@ -1,15 +1,10 @@
-import InfoIcon from '@mui/icons-material/Info'
 import Box from '@mui/material/Box'
-import IconButton from '@mui/material/IconButton'
-import Link from '@mui/material/Link'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import React, { FC, useCallback, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import Browser from 'webextension-polyfill'
 
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import WarningBar from '@/components/WarningBar'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { DailyLimitState } from '@/features/auth/store'
@@ -51,7 +46,7 @@ const setDailyLimitStatus = async (status: IDailyLimitStatus) => {
   }
 }
 
-const PermissionPricingLimitBar: FC = () => {
+const PermissionDailyLimitBar: FC = () => {
   const { t } = useTranslation(['client'])
   const { currentConversationIdRef, clientConversation } =
     useClientConversation()
@@ -148,56 +143,14 @@ const PermissionPricingLimitBar: FC = () => {
         }
       }}
     >
-      <Stack
-        direction="row"
-        spacing={1}
-        p={1.5}
-        pr="60px"
-        sx={{
-          position: 'relative',
-          bgcolor: 'rgba(255, 239, 188, 1)',
-          color: 'rgba(132, 49, 0, 1)',
-        }}
-      >
-        <InfoIcon sx={{ colo: 'inherit', fontSize: 20, mt: '2px' }} />
-        <Stack spacing={1}>
-          <Typography
-            sx={{
-              fontSize: 14,
-            }}
-          >
-            {t('client:sidebar__daily_limit__title')}
-          </Typography>
-          <Link
-            href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
-            target={'_blank'}
-            sx={{ color: 'inherit', fontSize: 16, fontWeight: 500 }}
-            onClick={() => {}}
-          >
-            {t('client:sidebar__daily_limit__link__title')}
-          </Link>
-        </Stack>
-
-        <IconButton
-          sx={{
-            position: 'absolute',
-            right: '8px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-          }}
-          onClick={handleClose}
-        >
-          <ContextMenuIcon
-            icon="Close"
-            sx={{
-              color: 'rgba(0, 0, 0, 0.6)',
-              fontSize: '24px',
-            }}
-          />
-        </IconButton>
-      </Stack>
+      <WarningBar
+        title={t('client:sidebar__daily_limit__title')}
+        content={t('client:sidebar__daily_limit__link__title')}
+        href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+        onClose={handleClose}
+      />
     </Box>
   )
 }
 
-export default PermissionPricingLimitBar
+export default PermissionDailyLimitBar

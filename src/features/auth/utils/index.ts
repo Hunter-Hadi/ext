@@ -397,3 +397,17 @@ export const getCurrentUserLogInfo = async () => {
     currentRole,
   }
 }
+
+export const checkIsSubscriptionPaymentFailed = (
+  subscriptionPaymentFailedAt?: IUseChatGPTUserInfo['subscription_payment_failed_at'],
+) => {
+  // subscription_payment_failed_at是空值，不显示续费失败提示
+  if (!subscriptionPaymentFailedAt) {
+    return false
+  }
+  // 判断是否显示续费失败提示
+  // 当前时间距离subscription_payment_failed_at小于等于30天
+  const failedAt = dayjs(subscriptionPaymentFailedAt * 1000)
+  const diffDays = dayjs().utc().diff(failedAt, 'day')
+  return diffDays <= 30
+}

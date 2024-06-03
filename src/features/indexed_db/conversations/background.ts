@@ -112,6 +112,7 @@ export const backgroundMigrateConversationV3 = async (
   const startTime = new Date().getTime()
   // 如果是V3版本, 不需要迁移
   if (conversation.version !== 3) {
+    conversation.version = 3
     /**
      * 老版本没有这个字段
      */
@@ -189,6 +190,7 @@ export const backgroundMigrateConversationV3 = async (
                       })
                     }
                     const newAttachment: IIndexDBAttachment = {
+                      messageId: message.messageId,
                       id: attachment.id,
                       created_at: new Date().toISOString(),
                       updated_at: new Date().toISOString(),
@@ -210,6 +212,7 @@ export const backgroundMigrateConversationV3 = async (
                   attachment.fileType.includes('image')
                 ) {
                   const newAttachment: IIndexDBAttachment = {
+                    messageId: message.messageId,
                     id: attachment.id,
                     created_at: new Date().toISOString(),
                     updated_at: new Date().toISOString(),

@@ -301,6 +301,7 @@ export class ClientConversationManager {
       .then()
     // 对比 updated_at
     for (const remoteConversation of APIConversations) {
+      debugger
       const localConversation = localConversations.find(
         (conversation) => conversation.id === remoteConversation.id,
       )

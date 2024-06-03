@@ -301,14 +301,16 @@ export class ClientConversationManager {
       .then()
     // 对比 updated_at
     for (const remoteConversation of APIConversations) {
-      debugger
       const localConversation = localConversations.find(
         (conversation) => conversation.id === remoteConversation.id,
       )
       const cloneRemoteConversation = cloneDeep(remoteConversation)
       cloneRemoteConversation.authorId = authorId
-      let last_msg: IChatMessage | null =
-        (cloneRemoteConversation as any)?.last_msg || null
+      let last_msg: IChatMessage | null = cloneDeep(
+        (cloneRemoteConversation as any)?.last_msg || null,
+      )
+      // 删掉后端给的多余字段
+      delete (cloneRemoteConversation as any).last_msg
       // 如果有last_msg，就不用再去查了
       if (last_msg) {
         cloneRemoteConversation.lastMessageId = last_msg.messageId

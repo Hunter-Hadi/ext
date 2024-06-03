@@ -291,6 +291,10 @@ export const useFetchPaginationConversations = (
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       // 说明本地和远程都没有数据
+      console.log(
+        `ConversationDB[V3][对话列表] 获取列表 hasMore`,
+        !(lastPage.length === 0 && lastPageParam >= totalPageRef.current),
+      )
       if (lastPage.length === 0 && lastPageParam >= totalPageRef.current) {
         // console.log(
         //   `ConversationDB[V3][对话列表] 获取列表[${lastPageParam}]没有数据`,

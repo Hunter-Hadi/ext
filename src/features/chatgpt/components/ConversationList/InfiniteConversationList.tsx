@@ -5,7 +5,14 @@ import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import memoize from 'memoize-one'
-import React, { memo, useCallback, useMemo, useRef, useState } from 'react'
+import React, {
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { areEqual, FixedSizeList } from 'react-window'
 import InfiniteFixedSizeLoader from 'react-window-infinite-loader'
@@ -33,7 +40,7 @@ export interface IInfiniteConversationListProps<T> {
 const createConversationListData = memoize(
   (
     items: IPaginationConversation[],
-    onSelectItem?: (conversation: IPaginationConversation) => void,
+    onSelectItem?: (conversation?: IPaginationConversation) => void,
   ) => ({
     items,
     onSelectItem,
@@ -54,16 +61,35 @@ const InfiniteConversationList: <T>(
     ? conversations.length + 1
     : conversations.length
   const loadMoreItems = async () => {
-    console.debug(`ConversationDB[V3] loadMoreItems`)
     if (isNextPageLoading) {
       return
     }
     await loadNextPage()
   }
-  const isItemLoaded = (index: number) =>
-    !hasNextPage || index < conversations.length
+  const isItemLoaded = (index: number) => {
+    console.log(
+      `ConversationDB[V3][对话列表] 获取列表`,
+      hasNextPage,
+      index,
+      conversations.length,
+    )
+    return !hasNextPage || index < conversations.length
+  }
+  const handleSelectItemOrLoadMore = useCallback(
+    (conversation?: IPaginationConversation) => {
+      if (conversation) {
+        onSelectItem?.(conversation)
+      } else {
+        loadMoreItems()
+      }
+    },
+    [loadMoreItems, onSelectItem],
+  )
 
-  const itemData = createConversationListData(conversations, onSelectItem)
+  const itemData = createConversationListData(
+    conversations,
+    handleSelectItemOrLoadMore,
+  )
   return (
     <InfiniteFixedSizeLoader
       isItemLoaded={isItemLoaded}
@@ -102,7 +128,7 @@ const Row = memo(function RowItem({
 }: {
   data: {
     items: IPaginationConversation[]
-    onSelectItem?: (conversation: IPaginationConversation) => void
+    onSelectItem?: (conversation?: IPaginationConversation) => void
   }
   index: number
   style: React.CSSProperties
@@ -196,6 +222,18 @@ const Row = memo(function RowItem({
     console.log(`handleSelectConversation 44`, conversation.id)
     onSelectItem?.(conversation)
   }, [conversation, onSelectItem, smoothConversationLoading])
+  useEffect(() => {
+    if (!conversation) {
+      // 说明是loading
+      const timer = setTimeout(() => {
+        // 10s后还没有加载出来，说明有问题
+        onSelectItem?.(undefined)
+      }, 10 * 1000)
+      return () => {
+        clearTimeout(timer)
+      }
+    }
+  }, [conversation, onSelectItem])
   if (!conversation) {
     return (
       <Stack

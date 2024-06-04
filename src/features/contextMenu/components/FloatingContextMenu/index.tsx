@@ -149,6 +149,7 @@ const FloatingContextMenu: FC<{
       contextMenuPlacement,
     }
   }, [floatingDropdownMenu.rootRect, currentWidth])
+  const referenceElementRef = useRef<HTMLDivElement>(null)
   const referenceElementDragOffsetRef = useRef({
     prevX: 0,
     prevY: 0,
@@ -252,36 +253,6 @@ const FloatingContextMenu: FC<{
       y: event.clientY,
     }
   }
-  const handleDragEnd = (event: MouseEvent) => {
-    if (isDragRef.current) {
-      event.preventDefault()
-      isDragRef.current = false
-      referenceElementDragOffsetRef.current = {
-        x: 0,
-        y: 0,
-        prevX:
-          referenceElementDragOffsetRef.current.x +
-          referenceElementDragOffsetRef.current.prevX,
-        prevY:
-          referenceElementDragOffsetRef.current.y +
-          referenceElementDragOffsetRef.current.prevY,
-      }
-    }
-  }
-  const handleDragMove = (event: MouseEvent) => {
-    if (isDragRef.current) {
-      event.preventDefault()
-      const diffX = event.clientX - mouseStartRectRef.current!.x
-      const diffY = event.clientY - mouseStartRectRef.current!.y
-      referenceElementDragOffsetRef.current = {
-        x: diffX,
-        y: diffY,
-        prevX: referenceElementDragOffsetRef.current.prevX,
-        prevY: referenceElementDragOffsetRef.current.prevY,
-      }
-      update()
-    }
-  }
   useEffect(() => {
     if (!floatingDropdownMenu.open) {
       referenceElementDragOffsetRef.current = {
@@ -293,13 +264,55 @@ const FloatingContextMenu: FC<{
     }
   }, [floatingDropdownMenu.open])
   useEffect(() => {
+    const handleDragEnd = (event: MouseEvent) => {
+      if (isDragRef.current) {
+        event.preventDefault()
+        isDragRef.current = false
+        referenceElementDragOffsetRef.current = {
+          x: 0,
+          y: 0,
+          prevX:
+            referenceElementDragOffsetRef.current.x +
+            referenceElementDragOffsetRef.current.prevX,
+          prevY:
+            referenceElementDragOffsetRef.current.y +
+            referenceElementDragOffsetRef.current.prevY,
+        }
+      }
+    }
+    const handleDragMove = (event: MouseEvent) => {
+      if (isDragRef.current) {
+        event.preventDefault()
+        const diffX = event.clientX - mouseStartRectRef.current!.x
+        const diffY = event.clientY - mouseStartRectRef.current!.y
+        referenceElementDragOffsetRef.current = {
+          x: diffX,
+          y: diffY,
+          prevX: referenceElementDragOffsetRef.current.prevX,
+          prevY: referenceElementDragOffsetRef.current.prevY,
+        }
+        /**
+         * FloatingContextMenuList里的MenuList绑定的是referenceElement的DOM元素位置关系
+         * 当前这里每次拖动的时候修改的是MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID这个DOM
+         * 所以拖拽的时候MenuList没有变化，这里简单的做法是触发一次DropdownMenu的更新修改referenceElement元素
+         */
+        if (referenceElementRef.current) {
+          if (referenceElementRef.current.style.marginLeft) {
+            referenceElementRef.current.style.marginLeft = ''
+          } else {
+            referenceElementRef.current.style.marginLeft = '0.5px'
+          }
+        }
+        update()
+      }
+    }
     document.addEventListener('mousemove', handleDragMove)
     document.addEventListener('mouseup', handleDragEnd)
     return () => {
       document.removeEventListener('mousemove', handleDragMove)
       document.removeEventListener('mouseup', handleDragEnd)
     }
-  }, [])
+  }, [update])
   useClientConversationListener()
   useFloatingContextMenuDraftHistoryChange()
   // 选中区域高亮
@@ -373,8 +386,10 @@ const FloatingContextMenu: FC<{
           hoverOpen={false}
           menuList={contextWindowList}
           referenceElementOpen={floatingDropdownMenu.open}
+          referenceElementRef={referenceElementRef}
           referenceElement={
             <div
+              ref={referenceElementRef}
               style={{
                 boxSizing: 'border-box',
                 border: '1px solid',

@@ -115,6 +115,7 @@ const FloatingContextMenuList: FC<
     root,
     referenceElement,
     referenceElementOpen,
+    referenceElementRef,
     menuList,
     customOpen,
     needAutoUpdate,
@@ -246,6 +247,7 @@ const FloatingContextMenuList: FC<
       needAutoUpdate={needAutoUpdate}
       referenceElement={referenceElement}
       referenceElementOpen={referenceElementOpen}
+      referenceElementRef={referenceElementRef}
       defaultPlacement={defaultPlacement}
       defaultFallbackPlacements={defaultFallbackPlacements}
       onClickContextMenu={onClickContextMenu}

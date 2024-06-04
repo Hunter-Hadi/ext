@@ -259,13 +259,21 @@ export const backgroundMigrateConversationV3 = async (
           )
           message.meta.attachments = message.meta.attachments.map(
             (attachment) => {
-              if (
-                attachment.extractedContent &&
-                extendContent.attachmentExtractedContents
-              ) {
-                extendContent.attachmentExtractedContents[attachment.id] =
-                  String(attachment.extractedContent)
-                delete attachment.extractedContent
+              try {
+                if (
+                  attachment.extractedContent &&
+                  extendContent.attachmentExtractedContents
+                ) {
+                  extendContent.attachmentExtractedContents[attachment.id] =
+                    typeof attachment.extractedContent === 'string'
+                      ? attachment.extractedContent
+                      : JSON.stringify(attachment.extractedContent, null, 2)
+                  delete attachment.extractedContent
+                }
+              } catch (e) {
+                console.error(
+                  `ConversationDB[V3] 迁移对话${conversation.id}的消息${message.messageId}的附件失败`,
+                )
               }
               return attachment
             },

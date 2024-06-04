@@ -3,6 +3,7 @@
  */
 
 import orderBy from 'lodash-es/orderBy'
+import { v4 as uuidV4 } from 'uuid'
 
 import ConversationManager from '@/background/src/chatConversations'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
@@ -153,7 +154,26 @@ export const backgroundMigrateConversationV3 = async (
       delete conversation.share.shareType
     }
   }
-  const messages = conversation.messages || []
+  let messages = conversation.messages || []
+  /**
+   * NOTE: 因为4.2.13之前的版本的continue in chat的消息没有重置messageId
+   * 所以indexedDB包括数据库的messageId的主键是重复的
+   * 所以这里要重置messageId
+   */
+  if (
+    conversation.type === 'Chat' &&
+    conversation.title === 'AI-powered writing assistant'
+  ) {
+    messages = orderBy(messages, ['created_at'], ['asc']).map(
+      (message, index) => {
+        const newMessageId = uuidV4()
+        const newParentMessageId = messages[index - 1]?.messageId || undefined
+        message.messageId = newMessageId
+        message.parentMessageId = newParentMessageId
+        return message
+      },
+    )
+  }
   const saveMessages: IChatMessage[] = []
   const saveAttachments: IIndexDBAttachment[] = []
   if (messages.length > 0) {

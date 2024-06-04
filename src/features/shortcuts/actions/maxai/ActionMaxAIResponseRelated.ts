@@ -5,11 +5,15 @@ import {
   IShortcutEngineExternalEngine,
   withLoadingDecorators,
 } from '@/features/shortcuts'
+import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import { TranscriptTimestampedParamType } from '@/features/shortcuts/actions/web/socialMedia/ActionGetYoutubeSocialMediaSummaryInfo/ActionGetYoutubeSocialMediaTranscriptTimestamped'
 import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import {sliceTextByTokens} from "@/features/shortcuts/utils/tokenizer";
+import { formatSecondsAsTimestamp } from '@/features/sidebar/utils/chatMessagesHelper'
 
 /**
  * @since 2024-05-13
@@ -36,16 +40,67 @@ export class ActionMaxAIResponseRelated extends Action {
     const conversation =
       await clientConversationEngine?.getCurrentConversation()
     const messages = conversation?.messages || []
-    // TODO: 第一版只给summary的默认的all的related questions，后续可以根据需求再扩展
-    let needToGenerateRelatedQuestions = false
     const AIResponseMessage = messages[0]
-    if (isAIMessage(AIResponseMessage)) {
-      needToGenerateRelatedQuestions =
-        AIResponseMessage?.originalMessage?.metadata?.navMetadata?.key === 'all'
-    }
     // const systemPrompt = conversation?.meta.systemPrompt
-    const summaryContent = this.parameters.compliedTemplate || ''
-    if (summaryContent && needToGenerateRelatedQuestions) {
+
+    let summaryContent = this.parameters.compliedTemplate || ''
+
+    // 处理额外信息，比如youtube transcript和timestamped
+    if (
+      conversation?.type === 'Summary' &&
+      conversation?.meta?.pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' &&
+      summaryContent &&
+      isAIMessage(AIResponseMessage)
+    ) {
+      const navKey =
+        AIResponseMessage?.originalMessage?.metadata?.navMetadata?.key
+      /**
+       * 转换timestamped或者transcript的内容
+       * ## xxx
+       * ### xx
+       * ### xx
+       */
+      if (navKey === 'timestamped' || navKey === 'transcript') {
+        try {
+          const transcript: (
+            | TranscriptTimestampedParamType
+            | TranscriptResponse
+          )[] = JSON.parse(summaryContent)
+          if (Array.isArray(transcript) && transcript.length) {
+            summaryContent = ''
+            transcript
+              .filter((item) =>
+                item.status ? item.status === 'complete' : true,
+              )
+              .forEach((item, index) => {
+                if (index > 0) summaryContent += '\n'
+                // summaryContent += `${formatSecondsAsTimestamp(item.start)} ${
+                //   item.text
+                // }\n`
+                summaryContent += `## ${item.text}\n`
+                item.children?.forEach((child) => {
+                  // summaryContent += `   - ${formatSecondsAsTimestamp(
+                  //   child.start,
+                  // )} ${child.text}\n`
+                  summaryContent += `### ${formatSecondsAsTimestamp(
+                    child.start,
+                  )} ${child.text}\n`
+                })
+              })
+            // related questions用的model是gpt-3.5-turbo，所以这里的max_response_tokens是16384
+            // transcript目前没有处理内容，视频很长的情况下transcript会很大，这里需要做处理
+            // 预留1000 token给related questions response
+            const { isLimit, text } = await sliceTextByTokens(summaryContent, 16384 - 1000)
+            if (isLimit) {
+              summaryContent = text
+            }
+          }
+        } catch (e) {
+          console.error(e)
+        }
+      }
+    }
+    if (summaryContent) {
       const result = await clientFetchMaxAIAPI<{
         status: string
         text: string

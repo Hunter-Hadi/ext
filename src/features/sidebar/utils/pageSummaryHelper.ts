@@ -204,7 +204,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'SUMMARY_CONTENTS',
+            VariableName: 'RELATED_QUESTIONS',
           },
         },
         {
@@ -247,7 +247,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
               {
                 type: 'RENDER_TEMPLATE',
                 parameters: {
-                  template: `{{SUMMARY_CONTENTS}}`,
+                  template: `{{RELATED_QUESTIONS}}`,
                 },
               },
               {
@@ -435,20 +435,104 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
               messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
               text: '',
               originalMessage: {
-                status: 'complete',
                 metadata: {
-                  isComplete: true,
                   deepDive: {
                     title: {
-                      title: 'Deep dive',
-                      titleIcon: 'TipsAndUpdates',
+                      title: ' ',
+                      titleIcon: 'Loading',
                     },
-                    value: 'Ask AI anything about the email...',
                   },
                 },
               },
             } as IAIResponseMessage,
           },
+        },
+        {
+          type: 'MAXAI_RESPONSE_RELATED',
+          parameters: {
+            template: `{{SUMMARY_CONTENTS}}`,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'RELATED_QUESTIONS',
+          },
+        },
+        {
+          type: 'SCRIPTS_CONDITIONAL',
+          parameters: {
+            WFFormValues: {
+              Value: '',
+              WFSerializationType: 'WFDictionaryFieldValue',
+            },
+            WFCondition: 'Equals',
+            WFConditionalIfTrueActions: [
+              // 说明没有拿到related questions
+              {
+                type: 'CHAT_MESSAGE',
+                parameters: {
+                  ActionChatMessageOperationType: 'update',
+                  ActionChatMessageConfig: {
+                    type: 'ai',
+                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                    text: '',
+                    originalMessage: {
+                      status: 'complete',
+                      metadata: {
+                        isComplete: true,
+                        deepDive: {
+                          title: {
+                            title: 'Deep dive',
+                            titleIcon: 'TipsAndUpdates',
+                          },
+                          value: 'Ask AI anything about the email...',
+                        },
+                      },
+                    },
+                  } as IAIResponseMessage,
+                },
+              },
+            ],
+            WFConditionalIfFalseActions: [
+              {
+                type: 'RENDER_TEMPLATE',
+                parameters: {
+                  template: `{{RELATED_QUESTIONS}}`,
+                },
+              },
+              {
+                type: 'SCRIPTS_LIST',
+                parameters: {},
+              },
+              {
+                type: 'CHAT_MESSAGE',
+                parameters: {
+                  ActionChatMessageOperationType: 'update',
+                  ActionChatMessageConfig: {
+                    type: 'ai',
+                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                    text: '',
+                    originalMessage: {
+                      status: 'complete',
+                      metadata: {
+                        isComplete: true,
+                        deepDive: {
+                          title: {
+                            title: 'Related',
+                            titleIcon: 'Layers',
+                            titleIconSize: 20,
+                          },
+                          type: 'related',
+                          value: `{{LAST_ACTION_OUTPUT}}` as any,
+                        },
+                      },
+                    },
+                  } as IAIResponseMessage,
+                },
+              },
+            ]
+          }
         },
         // {
         //   type: 'CREATE_WEBSITE_CONTEXT',
@@ -606,19 +690,103 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
               messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
               text: '',
               originalMessage: {
-                status: 'complete',
                 metadata: {
-                  isComplete: true,
                   deepDive: {
                     title: {
-                      title: 'Deep dive',
-                      titleIcon: 'TipsAndUpdates',
+                      title: ' ',
+                      titleIcon: 'Loading',
                     },
-                    value: 'Ask AI anything about the PDF...',
                   },
                 },
               },
             } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'MAXAI_RESPONSE_RELATED',
+          parameters: {
+            template: `{{SUMMARY_CONTENTS}}`,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'RELATED_QUESTIONS',
+          },
+        },
+        {
+          type: 'SCRIPTS_CONDITIONAL',
+          parameters: {
+            WFFormValues: {
+              Value: '',
+              WFSerializationType: 'WFDictionaryFieldValue',
+            },
+            WFCondition: 'Equals',
+            WFConditionalIfTrueActions: [
+              // 说明没有拿到related questions
+              {
+                type: 'CHAT_MESSAGE',
+                parameters: {
+                  ActionChatMessageOperationType: 'update',
+                  ActionChatMessageConfig: {
+                    type: 'ai',
+                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                    text: '',
+                    originalMessage: {
+                      status: 'complete',
+                      metadata: {
+                        isComplete: true,
+                        deepDive: {
+                          title: {
+                            title: 'Deep dive',
+                            titleIcon: 'TipsAndUpdates',
+                          },
+                          value: 'Ask AI anything about the PDF...',
+                        },
+                      },
+                    },
+                  } as IAIResponseMessage,
+                },
+              },
+            ],
+            WFConditionalIfFalseActions: [
+              {
+                type: 'RENDER_TEMPLATE',
+                parameters: {
+                  template: `{{RELATED_QUESTIONS}}`,
+                },
+              },
+              {
+                type: 'SCRIPTS_LIST',
+                parameters: {},
+              },
+              {
+                type: 'CHAT_MESSAGE',
+                parameters: {
+                  ActionChatMessageOperationType: 'update',
+                  ActionChatMessageConfig: {
+                    type: 'ai',
+                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                    text: '',
+                    originalMessage: {
+                      status: 'complete',
+                      metadata: {
+                        isComplete: true,
+                        deepDive: {
+                          title: {
+                            title: 'Related',
+                            titleIcon: 'Layers',
+                            titleIconSize: 20,
+                          },
+                          type: 'related',
+                          value: `{{LAST_ACTION_OUTPUT}}` as any,
+                        },
+                      },
+                    },
+                  } as IAIResponseMessage,
+                },
+              },
+            ]
           },
         },
         // {
@@ -775,23 +943,112 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
               messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               text: '',
               originalMessage: {
-                status: 'complete',
                 metadata: {
-                  isComplete: true,
                   deepDive: [
                     {
                       title: {
-                        title: 'Deep dive',
-                        titleIcon: 'TipsAndUpdates',
+                        title: ' ',
+                        titleIcon: 'Loading',
                       },
-                      value: 'Ask AI anything about the video...',
                     },
                   ],
                 },
-                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
+        },
+        {
+          type: 'MAXAI_RESPONSE_RELATED',
+          parameters: {
+            template: `{{SUMMARY_CONTENTS}}`,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'RELATED_QUESTIONS',
+          },
+        },
+        {
+          type: 'SCRIPTS_CONDITIONAL',
+          parameters: {
+            WFFormValues: {
+              Value: '',
+              WFSerializationType: 'WFDictionaryFieldValue'
+            },
+            WFCondition: 'Equals',
+            WFConditionalIfTrueActions: [
+              // 说明没有拿到related questions
+              {
+                type: 'CHAT_MESSAGE',
+                parameters: {
+                  ActionChatMessageOperationType: 'update',
+                  ActionChatMessageConfig: {
+                    type: 'ai',
+                    messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                    text: '',
+                    originalMessage: {
+                      status: 'complete',
+                      metadata: {
+                        isComplete: true,
+                        deepDive: [
+                          {
+                            title: {
+                              title: 'Deep dive',
+                              titleIcon: 'TipsAndUpdates',
+                            },
+                            value: 'Ask AI anything about the video...',
+                          },
+                        ],
+                      },
+                      includeHistory: false,
+                    },
+                  } as IAIResponseMessage,
+                },
+              },
+            ],
+            WFConditionalIfFalseActions: [
+              {
+                type: 'RENDER_TEMPLATE',
+                parameters: {
+                  template: `{{RELATED_QUESTIONS}}`,
+                },
+              },
+              {
+                type: 'SCRIPTS_LIST',
+                parameters: {},
+              },
+              {
+                type: 'CHAT_MESSAGE',
+                parameters: {
+                  ActionChatMessageOperationType: 'update',
+                  ActionChatMessageConfig: {
+                    type: 'ai',
+                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                    text: '',
+                    originalMessage: {
+                      status: 'complete',
+                      metadata: {
+                        isComplete: true,
+                        deepDive: [
+                          {
+                            title: {
+                              title: 'Related',
+                              titleIcon: 'Layers',
+                              titleIconSize: 20,
+                            },
+                            type: 'related',
+                            value: `{{LAST_ACTION_OUTPUT}}` as any,
+                          }
+                        ],
+                      },
+                      includeHistory: false,
+                    },
+                  } as IAIResponseMessage,
+                },
+              },
+            ],
+          }
         },
         // {
         //   type: 'CREATE_WEBSITE_CONTEXT',

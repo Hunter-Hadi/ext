@@ -4,30 +4,25 @@
  * 用 referenceElement 的位置来定位 tooltip
  */
 
-import React, {
-  FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { FC, useCallback, useMemo, useState } from 'react'
 
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { useFocus } from '@/features/common/hooks/useFocus'
+import useInterval from '@/features/common/hooks/useInterval'
 import OnboardingTooltip, {
   IOnboardingTooltipProps,
 } from '@/features/onboarding/components/OnboardingTooltip'
 import OnboardingTooltipTitleRender from '@/features/onboarding/components/OnboardingTooltipTitleRender'
 import useOnboardingTooltipConfig from '@/features/onboarding/hooks/useOnboardingTooltipConfig'
 import { IOnBoardingSceneType } from '@/features/onboarding/types'
-import { getAlreadyOpenedCacheBySceneType } from '@/features/onboarding/utils'
+import {
+  findOnboardingReferenceElement,
+  getAlreadyOpenedCacheBySceneType,
+} from '@/features/onboarding/utils'
 import {
   getAppMinimizeContainerElement,
   getMaxAIFloatingContextMenuRootElement,
   getMaxAISidebarRootElement,
 } from '@/utils'
-import { elementCheckFullyVisible } from '@/utils/dataHelper/elementHelper'
 
 interface IOnboardingTooltipTempPortalProps {
   title?: React.ReactNode
@@ -42,12 +37,12 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
   container: propContainer,
   showStateTrigger,
 }) => {
-  // 已经 展示过这个 sceneType 的 onboarding 标记
-  const [alreadyOpened, setAlreadyOpened] = useState<boolean>(false)
+  // 已经 展示过这个 sceneType 的 onboarding 标记, 默认为 true
+  // 这个 标记 需要在 组件第一次加载时同步一次缓存
+  const [alreadyOpened, setAlreadyOpened] = useState<boolean>(true)
   const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(
     null,
   )
-  const observerRef = useRef<MutationObserver | null>(null)
   const onboardingConfig = useOnboardingTooltipConfig(sceneType)
 
   const container = useMemo(() => {
@@ -57,12 +52,19 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
     let container: HTMLElement | null = document.body
     if (onboardingConfig?.tooltipProps?.minimumTooltip) {
       container = getAppMinimizeContainerElement()
-    } else {
-      container = onboardingConfig?.tooltipProps?.floatingMenuTooltip
-        ? getMaxAIFloatingContextMenuRootElement()
-        : getMaxAISidebarRootElement()
+    } else if (onboardingConfig?.tooltipProps?.floatingMenuTooltip) {
+      container = getMaxAIFloatingContextMenuRootElement()
     }
-
+    if (onboardingConfig?.containerFinder) {
+      container = onboardingConfig?.containerFinder()
+    }
+    if (onboardingConfig?.tooltipProps?.PopperProps?.container) {
+      container = onboardingConfig.tooltipProps.PopperProps
+        .container as HTMLElement
+    }
+    if (!container) {
+      container = getMaxAISidebarRootElement()
+    }
     if (!container) {
       container = document.body
     }
@@ -70,75 +72,45 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
   }, [propContainer, onboardingConfig])
 
   const syncAlreadyOpenedCacheBySceneType = useCallback(() => {
-    if (alreadyOpened) {
-      return
-    }
     getAlreadyOpenedCacheBySceneType(sceneType).then((opened) => {
       setAlreadyOpened(opened)
     })
-  }, [sceneType, alreadyOpened])
+  }, [sceneType])
 
-  // // 用 useInterval 来找 referenceElement
-  // useInterval(
-  //   () => {
-  //     if (onboardingConfig?.referenceElementSelector) {
-  //       const referenceElement = container.querySelector<HTMLElement>(
-  //         onboardingConfig.referenceElementSelector,
-  //       )
-  //       if (referenceElement) {
-  //         setReferenceElement(referenceElement)
-  //       }
-  //     }
-  //   },
-  //   // 找到了就不找了
-  //   referenceElement ? null : 500,
-  // )
-
-  useEffect(() => {
-    // 已经找到了 referenceElement，不需要再监听
-    // 或者已经展示过了，不需要再监听
-    if (referenceElement || alreadyOpened) {
-      observerRef.current?.disconnect()
-      observerRef.current = null
-    }
-    if (container && onboardingConfig?.referenceElementSelector) {
-      // 用 MutationObserver 来检测邮件内容是否加载完成
-      observerRef.current = new MutationObserver(() => {
-        const referenceElement = container.querySelector<HTMLElement>(
+  // 用 useInterval 来找 referenceElement
+  useInterval(
+    () => {
+      if (container && onboardingConfig?.referenceElementSelector) {
+        const referenceElement = findOnboardingReferenceElement(
+          container,
           onboardingConfig.referenceElementSelector,
         )
-        if (referenceElement && elementCheckFullyVisible(referenceElement)) {
+        if (referenceElement) {
           setReferenceElement(referenceElement)
         } else {
           setReferenceElement(null)
         }
-      })
-      observerRef.current.observe(container, {
-        // childList: true,
-        subtree: true,
-        attributes: true,
-      })
-    }
-
-    return () => {
-      observerRef.current?.disconnect()
-      observerRef.current = null
-    }
-  }, [
-    container,
-    onboardingConfig?.referenceElementSelector,
-    referenceElement,
-    alreadyOpened,
-  ])
-
-  useFocus(syncAlreadyOpenedCacheBySceneType)
+      }
+    },
+    // 找到了就不找了, 没有 container 不找
+    // 已经展示过了，不找了
+    alreadyOpened || referenceElement || !container ? null : 300,
+  )
 
   useEffectOnce(syncAlreadyOpenedCacheBySceneType)
 
-  // // 如果已经展示过了，不再渲染任何内容
-  // if (alreadyOpened) {
-  //   return null
-  // }
+  if (sceneType.includes('INSTANT_REPLY__OUTLOOK')) {
+    console.log(
+      'zztest referenceElement',
+      container,
+      referenceElement,
+      onboardingConfig,
+    )
+  }
+
+  if (alreadyOpened) {
+    return null
+  }
 
   if (!onboardingConfig || !referenceElement) {
     return null
@@ -163,6 +135,7 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
           arrow={onboardingConfig.tooltipProps?.arrow ?? true}
           PopperProps={{
             ...onboardingConfig.tooltipProps?.PopperProps,
+            container,
             anchorEl: {
               getBoundingClientRect: () => {
                 return referenceElement.getBoundingClientRect()

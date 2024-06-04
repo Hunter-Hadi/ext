@@ -70,7 +70,7 @@ const HomeViewContentNav = () => {
           // 找到 prompt library button，触发点击事件
           const promptLibraryBtn =
             queryShadowContainerElementSelector<HTMLElement>(
-              MAXAI_SIDEBAR_ID,
+              `#${MAXAI_SIDEBAR_ID}`,
               `#${MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID}`,
             )
 

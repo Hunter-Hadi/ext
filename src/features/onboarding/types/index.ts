@@ -1,13 +1,7 @@
-export type IOnBoardingSceneType =
-  | 'CONTEXT_MENU_CTA_BUTTON'
-  | 'FLOATING_CONTEXT_MENU_INPUT_BOX'
-  | 'FLOATING_CONTEXT_MENU_LIST_BOX'
-  | 'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM'
-  | 'FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE'
+import { ONBOARDING_TOOLTIP_SCENE_TYPES } from '@/features/onboarding/constants'
 
-// export type IOnBoardingTooltipOpenedCacheKey =
-//   | 'ON_BOARDING_TOOLTIP__CONTEXT_MENU_CTA_BUTTON__OPENED'
-//   | 'ON_BOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__OPENED'
+export type IOnBoardingSceneType =
+  (typeof ONBOARDING_TOOLTIP_SCENE_TYPES)[number]
 
 // 使用模板字面量类型来生成 IOnBoardingTooltipOpenedCacheKey
 export type IOnBoardingTooltipOpenedCacheKey =

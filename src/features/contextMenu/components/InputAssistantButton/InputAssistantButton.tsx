@@ -19,6 +19,8 @@ import { isProduction } from '@/constants'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
 import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
+import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
+import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 
 import { type IInputAssistantButtonObserverData } from './InputAssistantButtonManager'
 
@@ -230,182 +232,221 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
       onMouseLeave={() => setIsBoxHover(false)}
     >
       {buttonGroup[0] && (
-        <InputAssistantButtonContextMenu
-          rootId={rootId}
-          buttonKey={buttonGroup[0].buttonKey}
-          permissionWrapperCardSceneType={
-            buttonGroup[0].permissionWrapperCardSceneType
-          }
-          root={contextMenuContainer as HTMLElement}
-          shadowRoot={shadowRoot}
-          onSelectionEffect={
-            buttonGroup[0]?.onSelectionEffect &&
-            (() => buttonGroup[0].onSelectionEffect!(observerData))
-          }
-          disabled={smoothConversationLoading}
-        >
-          <Box style={{ width: '100%', height: 'inherit' }} component="div">
-            <TextOnlyTooltip
-              placement={placement}
-              zIndex={2000000}
-              PopperProps={{
-                container: contextMenuContainer as HTMLElement,
-              }}
-              title={
-                buttonGroup[0]?.tooltip ? t(buttonGroup[0].tooltip as any) : ''
-              }
-            >
-              <div
-                style={{
-                  height: 'inherit',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  position: 'relative',
-                  cursor: 'pointer',
+        <>
+          <InputAssistantButtonContextMenu
+            rootId={rootId}
+            buttonKey={buttonGroup[0].buttonKey}
+            permissionWrapperCardSceneType={
+              buttonGroup[0].permissionWrapperCardSceneType
+            }
+            root={contextMenuContainer as HTMLElement}
+            shadowRoot={shadowRoot}
+            onSelectionEffect={
+              buttonGroup[0]?.onSelectionEffect &&
+              (() => buttonGroup[0].onSelectionEffect!(observerData))
+            }
+            disabled={smoothConversationLoading}
+          >
+            <Box style={{ width: '100%', height: 'inherit' }} component="div">
+              <TextOnlyTooltip
+                placement={placement}
+                zIndex={2000000}
+                PopperProps={{
+                  container: contextMenuContainer as HTMLElement,
                 }}
-                onMouseEnter={() => {
-                  setIsCTAHover(true)
-                }}
-                onMouseLeave={() => {
-                  setIsCTAHover(false)
-                }}
+                title={
+                  buttonGroup[0]?.tooltip
+                    ? t(buttonGroup[0].tooltip as any)
+                    : ''
+                }
               >
-                {emotionCacheRef.current && (
-                  <CacheProvider value={emotionCacheRef.current}>
-                    <Box
-                      position={'absolute'}
-                      top={`-${CTAButtonStyle?.transparentHeight || 0}px`}
-                      width={'100%'}
-                      height={`${CTAButtonStyle?.transparentHeight || 0}px`}
-                      bgcolor={isProduction ? 'transparent' : 'red'}
-                      zIndex={2000001}
-                    />
-                    <Button
-                      id={`maxAIInputAssistantCtaButton${rootId}`}
-                      data-testid={'maxai-input-assistant-cta-button'}
-                      disabled={smoothConversationLoading}
-                      sx={memoButtonSx.ctaButtonSx}
-                    >
-                      {smoothConversationLoading ? (
-                        <CircularProgress
-                          size={
-                            (memoButtonSx.ctaButtonSx as any)?.iconSize || 16
-                          }
-                          sx={{
-                            fontSize: `inherit`,
-                            color: '#fff',
-                          }}
-                        />
-                      ) : (
-                        <UseChatGptIcon
+                <div
+                  style={{
+                    height: 'inherit',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    position: 'relative',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={() => {
+                    setIsCTAHover(true)
+                  }}
+                  onMouseLeave={() => {
+                    setIsCTAHover(false)
+                  }}
+                >
+                  {emotionCacheRef.current && (
+                    <CacheProvider value={emotionCacheRef.current}>
+                      <Box
+                        position={'absolute'}
+                        top={`-${CTAButtonStyle?.transparentHeight || 0}px`}
+                        width={'100%'}
+                        height={`${CTAButtonStyle?.transparentHeight || 0}px`}
+                        bgcolor={isProduction ? 'transparent' : 'red'}
+                        zIndex={2000001}
+                      />
+                      <Button
+                        id={`maxAIInputAssistantCtaButton${rootId}`}
+                        data-testid={'maxai-input-assistant-cta-button'}
+                        disabled={smoothConversationLoading}
+                        sx={memoButtonSx.ctaButtonSx}
+                      >
+                        {smoothConversationLoading ? (
+                          <CircularProgress
+                            size={
+                              (memoButtonSx.ctaButtonSx as any)?.iconSize || 16
+                            }
+                            sx={{
+                              fontSize: `inherit`,
+                              color: '#fff',
+                            }}
+                          />
+                        ) : (
+                          <UseChatGptIcon
+                            sx={{
+                              fontSize: `inherit`,
+                              color: 'inherit',
+                            }}
+                          />
+                        )}
+                        {buttonGroup[0].displayText && (
+                          <Typography
+                            component={'span'}
+                            fontSize={'14px'}
+                            sx={buttonGroup[0].displayTextSx}
+                          >
+                            {typeof buttonGroup[0].displayText === 'function'
+                              ? buttonGroup[0].displayText(t)
+                              : buttonGroup[0].displayText}
+                          </Typography>
+                        )}
+                      </Button>
+                      <Box
+                        position={'absolute'}
+                        bottom={`-${CTAButtonStyle?.transparentHeight || 0}px`}
+                        width={'100%'}
+                        height={`${CTAButtonStyle?.transparentHeight || 0}px`}
+                        bgcolor={isProduction ? 'transparent' : 'red'}
+                        zIndex={2000001}
+                      />
+                    </CacheProvider>
+                  )}
+                </div>
+              </TextOnlyTooltip>
+            </Box>
+          </InputAssistantButtonContextMenu>
+          {buttonGroup[0].onboardingTooltipSceneType &&
+          emotionCacheRef.current ? (
+            <CacheProvider value={emotionCacheRef.current}>
+              <OnboardingTooltipTempPortal
+                // 找到 maxai-input-assistant-button 元素下的第一个 div
+                container={queryShadowContainerElementSelector(
+                  `maxai-input-assistant-button[maxai-input-assistant-button-id="${rootId}"]`,
+                  'div:first-of-type',
+                )}
+                sceneType={buttonGroup[0].onboardingTooltipSceneType}
+              />
+            </CacheProvider>
+          ) : null}
+        </>
+      )}
+      {buttonGroup[1] && (
+        <>
+          <InputAssistantButtonContextMenu
+            rootId={rootId}
+            buttonKey={buttonGroup[1].buttonKey}
+            permissionWrapperCardSceneType={
+              buttonGroup[1].permissionWrapperCardSceneType
+            }
+            root={contextMenuContainer as HTMLElement}
+            shadowRoot={shadowRoot}
+            onSelectionEffect={
+              buttonGroup[1]?.onSelectionEffect &&
+              (() => buttonGroup[1].onSelectionEffect!(observerData))
+            }
+            disabled={smoothConversationLoading}
+          >
+            <Box>
+              <TextOnlyTooltip
+                placement={placement}
+                zIndex={2000000}
+                PopperProps={{
+                  container: contextMenuContainer as HTMLElement,
+                }}
+                title={
+                  buttonGroup[1]?.tooltip
+                    ? t(buttonGroup[1].tooltip as any)
+                    : ''
+                }
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    position: 'relative',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {emotionCacheRef.current && (
+                    <CacheProvider value={emotionCacheRef.current}>
+                      <Box
+                        position={'absolute'}
+                        top={`-${
+                          DropdownButtonStyle?.transparentHeight || 0
+                        }px`}
+                        width={'100%'}
+                        height={`${
+                          DropdownButtonStyle?.transparentHeight || 0
+                        }px`}
+                        bgcolor={isProduction ? 'transparent' : 'red'}
+                        zIndex={2000001}
+                      />
+                      <Button
+                        id={`maxAIInputAssistantDropdownButton${rootId}`}
+                        data-testid={'maxai-input-assistant-dropdown-button'}
+                        disabled={smoothConversationLoading}
+                        sx={memoButtonSx.dropdownButtonSx}
+                      >
+                        <ContextMenuIcon
+                          icon={'ArrowDropDown'}
                           sx={{
                             fontSize: `inherit`,
                             color: 'inherit',
                           }}
                         />
-                      )}
-                      {buttonGroup[0].displayText && (
-                        <Typography
-                          component={'span'}
-                          fontSize={'14px'}
-                          sx={buttonGroup[0].displayTextSx}
-                        >
-                          {typeof buttonGroup[0].displayText === 'function'
-                            ? buttonGroup[0].displayText(t)
-                            : buttonGroup[0].displayText}
-                        </Typography>
-                      )}
-                    </Button>
-                    <Box
-                      position={'absolute'}
-                      bottom={`-${CTAButtonStyle?.transparentHeight || 0}px`}
-                      width={'100%'}
-                      height={`${CTAButtonStyle?.transparentHeight || 0}px`}
-                      bgcolor={isProduction ? 'transparent' : 'red'}
-                      zIndex={2000001}
-                    />
-                  </CacheProvider>
-                )}
-              </div>
-            </TextOnlyTooltip>
-          </Box>
-        </InputAssistantButtonContextMenu>
-      )}
-      {buttonGroup[1] && (
-        <InputAssistantButtonContextMenu
-          rootId={rootId}
-          buttonKey={buttonGroup[1].buttonKey}
-          permissionWrapperCardSceneType={
-            buttonGroup[1].permissionWrapperCardSceneType
-          }
-          root={contextMenuContainer as HTMLElement}
-          shadowRoot={shadowRoot}
-          onSelectionEffect={
-            buttonGroup[1]?.onSelectionEffect &&
-            (() => buttonGroup[1].onSelectionEffect!(observerData))
-          }
-          disabled={smoothConversationLoading}
-        >
-          <Box>
-            <TextOnlyTooltip
-              placement={placement}
-              zIndex={2000000}
-              PopperProps={{
-                container: contextMenuContainer as HTMLElement,
-              }}
-              title={
-                buttonGroup[1]?.tooltip ? t(buttonGroup[1].tooltip as any) : ''
-              }
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  position: 'relative',
-                  cursor: 'pointer',
-                }}
-              >
-                {emotionCacheRef.current && (
-                  <CacheProvider value={emotionCacheRef.current}>
-                    <Box
-                      position={'absolute'}
-                      top={`-${DropdownButtonStyle?.transparentHeight || 0}px`}
-                      width={'100%'}
-                      height={`${DropdownButtonStyle?.transparentHeight || 0
+                      </Button>
+                      <Box
+                        position={'absolute'}
+                        bottom={`-${
+                          DropdownButtonStyle?.transparentHeight || 0
                         }px`}
-                      bgcolor={isProduction ? 'transparent' : 'red'}
-                      zIndex={2000001}
-                    />
-                    <Button
-                      id={`maxAIInputAssistantDropdownButton${rootId}`}
-                      data-testid={'maxai-input-assistant-dropdown-button'}
-                      disabled={smoothConversationLoading}
-                      sx={memoButtonSx.dropdownButtonSx}
-                    >
-                      <ContextMenuIcon
-                        icon={'ArrowDropDown'}
-                        sx={{
-                          fontSize: `inherit`,
-                          color: 'inherit',
-                        }}
+                        width={'100%'}
+                        height={`${
+                          DropdownButtonStyle?.transparentHeight || 0
+                        }px`}
+                        bgcolor={isProduction ? 'transparent' : 'red'}
+                        zIndex={2000001}
                       />
-                    </Button>
-                    <Box
-                      position={'absolute'}
-                      bottom={`-${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
-                      width={'100%'}
-                      height={`${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
-                      bgcolor={isProduction ? 'transparent' : 'red'}
-                      zIndex={2000001}
-                    />
-                  </CacheProvider>
+                    </CacheProvider>
+                  )}
+                </div>
+              </TextOnlyTooltip>
+            </Box>
+          </InputAssistantButtonContextMenu>
+          {buttonGroup[1].onboardingTooltipSceneType &&
+          emotionCacheRef.current ? (
+            <CacheProvider value={emotionCacheRef.current}>
+              <OnboardingTooltipTempPortal
+                // 找到 maxai-input-assistant-button 元素下的第一个 div
+                container={queryShadowContainerElementSelector(
+                  `maxai-input-assistant-button[maxai-input-assistant-button-id="${rootId}"]`,
+                  'div:first-of-type',
                 )}
-              </div>
-            </TextOnlyTooltip>
-          </Box>
-        </InputAssistantButtonContextMenu>
+                sceneType={buttonGroup[1].onboardingTooltipSceneType}
+              />
+            </CacheProvider>
+          ) : null}
+        </>
       )}
     </div>
   )

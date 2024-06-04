@@ -680,7 +680,9 @@ const FloatingContextMenu: FC<{
       />
 
       <OnboardingTooltipTempPortal
-        showStateTrigger={floatingDropdownMenu.open}
+        showStateTrigger={
+          floatingDropdownMenu.open && contextWindowList.length > 0
+        }
         sceneType="FLOATING_CONTEXT_MENU_LIST_BOX"
       />
 

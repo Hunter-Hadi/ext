@@ -40,7 +40,7 @@ export interface IOnboardingTooltipProps extends TooltipProps {
 
   // 外部组件可以通过传入 triggerState 控制 OnboardingTooltip是否显示，
   // 如果传递了 showStateTrigger, 内部需要根据 showStateTrigger 控制 Tooltip 的显示状态，同时只显示一次（根据 sceneType 获取 onboarding cache flag）
-  // 使用 function 的好处，是 showStateTrigger 会一直更新触发 useEffect,  OnboardingTooltip 就会实时的判断是否显示 tooltip
+  // 使用 function 的问题，是 showStateTrigger 如果是匿名函数会一直更新触发 useEffect,  OnboardingTooltip 就会一直去判断是否显示 tooltip
   showStateTrigger?: boolean | (() => boolean)
 
   floatingMenuTooltip?: boolean
@@ -132,7 +132,8 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
         container,
         ...resetProps.PopperProps,
         style: {
-          zIndex: 2147483619,
+          textAlign: 'left',
+          zIndex: 2147483621,
           ...props.style,
         },
         sx: {

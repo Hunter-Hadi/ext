@@ -16,12 +16,6 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
 }) => {
   const { t } = useTranslation(['prompt', 'onboarding'])
 
-  if (sceneType === 'CONTEXT_MENU_CTA_BUTTON') {
-    return (
-      <>{t('onboarding:onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text')}</>
-    )
-  }
-
   if (sceneType === 'FLOATING_CONTEXT_MENU_INPUT_BOX') {
     return (
       <Stack>
@@ -96,26 +90,6 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
           </Typography>
         </Stack>
       </Stack>
-    )
-  }
-
-  if (sceneType === 'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM') {
-    return (
-      <>
-        {t(
-          'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1',
-        )}
-      </>
-    )
-  }
-
-  if (sceneType === 'FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE') {
-    return (
-      <>
-        {t(
-          'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1',
-        )}
-      </>
     )
   }
 

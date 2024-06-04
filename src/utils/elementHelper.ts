@@ -82,12 +82,11 @@ export function insertAfter(newNode: Element, existingNode: any) {
   existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling)
 }
 
-export function queryShadowContainerElementSelector<T extends Element>(
-  shadowRootId: string,
-  selectors: string,
-) {
+export function queryShadowContainerElementSelector<
+  T extends HTMLElement = HTMLElement,
+>(shadowRootSelector: string, selectors: string) {
   return document
-    .querySelector(`#${shadowRootId}`)
+    .querySelector(shadowRootSelector)
     ?.shadowRoot?.querySelector<T>(selectors)
 }
 

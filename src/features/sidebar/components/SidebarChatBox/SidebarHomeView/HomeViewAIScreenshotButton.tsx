@@ -14,7 +14,7 @@ const HomeViewAIScreenshotButton: FC = () => {
   const handleClick = () => {
     const timer = setInterval(() => {
       const screenshotBtn = queryShadowContainerElementSelector<HTMLElement>(
-        MAXAI_APP_ROOT_ID,
+        `#${MAXAI_APP_ROOT_ID}`,
         'button[data-testid="maxai-take-screenshot"]',
       )
       if (screenshotBtn) {

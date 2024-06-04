@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
 import FloatingMenuButton from '@/minimum/components/FloatingMenuButton'
 import SpecialHostSummaryButton from '@/minimum/components/SpecialHostSummaryButton'
 import MinimumAppInit from '@/minimum/MinimumAppInit'
@@ -20,9 +21,9 @@ const MinimumApp: FC = () => {
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           if (mutation.type === 'attributes') {
-            const isOpen = (mutation.target as HTMLDivElement)?.classList?.contains(
-              'open',
-            )
+            const isOpen = (
+              mutation.target as HTMLDivElement
+            )?.classList?.contains('open')
             setSidebarOpen(isOpen || false)
           }
         })
@@ -35,13 +36,21 @@ const MinimumApp: FC = () => {
       }
     }, 500)
   })
+
+  const showMiniCtaButton = React.useMemo(() => {
+    return appDBStorage.userSettings?.quickAccess?.enabled && !sidebarOpen
+  }, [appDBStorage.userSettings?.quickAccess?.enabled, sidebarOpen])
+
   return (
     <AppSuspenseLoadingLayout>
       <MinimumAppInit />
-      {appDBStorage.userSettings?.quickAccess?.enabled && !sidebarOpen && (
-        <FloatingMenuButton />
-      )}
+      {showMiniCtaButton && <FloatingMenuButton />}
       <SpecialHostSummaryButton />
+      <OnboardingTooltipTempPortal
+        sceneType="QUICK_ACCESS_CTA_BUTTON"
+        // showStateTrigger={appDBStorage.userSettings?.quickAccess?.enabled}
+        showStateTrigger={showMiniCtaButton}
+      />
     </AppSuspenseLoadingLayout>
   )
 }

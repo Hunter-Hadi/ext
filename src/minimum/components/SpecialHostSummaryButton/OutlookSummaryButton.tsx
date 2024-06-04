@@ -1,12 +1,13 @@
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
+import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAISidebarRootElement } from '@/utils'
@@ -19,14 +20,19 @@ const OutlookSummaryButton: FC = () => {
       style: 'display: flex;align-items: center;gap: 8px;',
     },
   )
+  const [summaryButtonContainer, setSummaryButtonContainer] =
+    useState<HTMLElement | null>(null)
+
   return (
     <DynamicComponent
       rootContainer={element}
       customElementName={'max-ai-outlook-summary-button'}
       style={'order:1'}
+      onSetContainer={setSummaryButtonContainer}
     >
       <TextOnlyTooltip
         arrow
+        placement={'bottom'}
         PopperProps={{
           disablePortal: true,
           sx: {
@@ -44,6 +50,7 @@ const OutlookSummaryButton: FC = () => {
             mr: 1,
             borderRadius: '16px',
           }}
+          data-testid="maxai-outlook-summary-button"
           variant={'contained'}
           onClick={() => {
             showChatBox()
@@ -76,6 +83,12 @@ const OutlookSummaryButton: FC = () => {
           </Stack>
         </Button>
       </TextOnlyTooltip>
+      {summaryButtonContainer && (
+        <OnboardingTooltipTempPortal
+          sceneType="EMAIL_SUMMARY_BUTTON"
+          container={summaryButtonContainer}
+        />
+      )}
     </DynamicComponent>
   )
 }

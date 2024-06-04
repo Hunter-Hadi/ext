@@ -17,6 +17,7 @@ const DynamicComponent: FC<{
   style?: string
   children: React.ReactNode
   checkVisibility?: boolean
+  onSetContainer?: (container: HTMLElement) => void
 }> = (props) => {
   const {
     rootContainer,
@@ -24,6 +25,7 @@ const DynamicComponent: FC<{
     children,
     style,
     checkVisibility = true,
+    onSetContainer,
   } = props
   const [container, setContainer] = useState<HTMLElement | null>(null)
   const emotionCacheRef = useRef<EmotionCache | null>(null)
@@ -70,9 +72,17 @@ const DynamicComponent: FC<{
     }
     return () => {}
   }, [rootContainer, container, customElementName, checkVisibility, style])
+
+  useEffect(() => {
+    if (onSetContainer && container) {
+      onSetContainer(container)
+    }
+  }, [container, onSetContainer])
+
   if (!container || !emotionCacheRef.current) {
     return null
   }
+
   return createPortal(
     <CacheProvider value={emotionCacheRef.current}>{children}</CacheProvider>,
     container,

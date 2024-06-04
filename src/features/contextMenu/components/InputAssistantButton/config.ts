@@ -4,6 +4,7 @@ import { type TFunction } from 'i18next/index.v4'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
+import { IOnBoardingSceneType } from '@/features/onboarding/types'
 import { I18nextKeysType } from '@/i18next'
 import {
   findParentEqualSelector,
@@ -20,6 +21,7 @@ export interface IInputAssistantButton {
   tooltip?: I18nextKeysType
   buttonKey: IChromeExtensionButtonSettingKey
   permissionWrapperCardSceneType: PermissionWrapperCardSceneType
+  onboardingTooltipSceneType?: IOnBoardingSceneType
   InputAssistantBoxSx?: SxProps
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
@@ -111,6 +113,7 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
+        onboardingTooltipSceneType: 'INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
@@ -136,6 +139,8 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
@@ -161,6 +166,7 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onboardingTooltipSceneType: 'INSTANT_REPLY__GMAIL__REFINE_DRAFT_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
@@ -205,6 +211,8 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       composeReplyButton: {
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
@@ -273,6 +281,8 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__OUTLOOK__COMPOSE_NEW_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
@@ -296,6 +306,8 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__OUTLOOK__COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
@@ -319,6 +331,8 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__OUTLOOK__REFINE_DRAFT_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
@@ -369,6 +383,8 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
       composeReplyButton: {
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__OUTLOOK__COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
@@ -456,16 +472,22 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__TWITTER__COMPOSE_NEW_BUTTON',
       },
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__TWITTER__COMPOSE_REPLY_BUTTON',
       },
       refineDraftButton: {
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__TWITTER__REFINE_DRAFT_BUTTON',
       },
       CTAButtonStyle: {
         iconSize: 16,
@@ -500,6 +522,8 @@ const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__TWITTER__COMPOSE_REPLY_BUTTON',
         onSelectionEffect: () => {
           let replyTextarea: HTMLElement | null = null
           if (
@@ -548,11 +572,15 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_NEW',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__LINKEDIN__COMPOSE_NEW_BUTTON',
       },
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__LINKEDIN__COMPOSE_REPLY_BUTTON',
         CTAButtonStyle: {
           padding: '2px 6px',
         },
@@ -564,6 +592,8 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REFINE',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__LINKEDIN__REFINE_DRAFT_BUTTON',
       },
       CTAButtonStyle: {
         iconSize: 16,
@@ -602,6 +632,8 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__LINKEDIN__COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =
@@ -645,6 +677,8 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MAXAI_INSTANT_REPLY',
+        onboardingTooltipSceneType:
+          'INSTANT_REPLY__LINKEDIN__COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =

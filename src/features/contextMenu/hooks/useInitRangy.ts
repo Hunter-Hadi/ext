@@ -247,6 +247,18 @@ const useInitRangy = () => {
           if (!activeElement) {
             return
           }
+          /**
+           * google sheets页面下，点击单元格获取的selectionElement是#waffle-rich-text-editor
+           * 编辑单元格时此元素才会移动到编辑的单元格内，并且点击的时候document.getSelection().toString()获取到的是\n
+           * 后续有其他网页处理需要统一配置，目前先放在此处处理，判断是否在编辑状态
+           */
+          if (location.href.startsWith('https://docs.google.com/spreadsheets')) {
+            if (activeElement.id === 'waffle-rich-text-editor') {
+              if (!activeElement.hasAttribute('aria-label')) {
+                return
+              }
+            }
+          }
           const { editableElement } = getEditableElement(activeElement)
           if (editableElement) {
             activeElement = editableElement

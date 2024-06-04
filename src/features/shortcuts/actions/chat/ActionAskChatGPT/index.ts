@@ -111,6 +111,25 @@ export class ActionAskChatGPT extends Action {
         messageId,
         text,
       }
+      /**
+       * 因为会被parametersParserDecorator处理，所以这里要把attachmentExtractedContents的值转换成string
+       */
+      if (this.question.extendContent?.attachmentExtractedContents) {
+        Object.keys(
+          this.question.extendContent.attachmentExtractedContents,
+        ).forEach((key) => {
+          if (
+            typeof this.question!.extendContent!.attachmentExtractedContents![
+              key
+            ] !== 'string'
+          ) {
+            this.question!.extendContent!.attachmentExtractedContents![key] =
+              JSON.stringify(
+                this.question!.extendContent!.attachmentExtractedContents![key],
+              )
+          }
+        })
+      }
       // 如果没有messageId，则生成一个messageId
       if (!this.question.messageId) {
         this.question.messageId = uuidV4()

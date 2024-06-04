@@ -146,6 +146,7 @@ export interface IAIResponseOriginalMessage {
   id?: string
   create_time?: string
   update_time?: string
+  liteMode?: boolean
   author?: {
     role: string
     name: string
@@ -195,6 +196,8 @@ export interface IAIResponseOriginalMessage {
     related?: string[]
     // message 选中的 nav 信息
     navMetadata?: IAIResponseOriginalMessageNavMetadata
+    // citations
+    sourceCitations: IAIResponseSourceCitation[]
   }
 }
 
@@ -212,7 +215,6 @@ export interface IAIResponseMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
   originalMessage?: IAIResponseOriginalMessage
-  sourceCitations?: IAIResponseSourceCitation[]
 }
 
 // 系统消息

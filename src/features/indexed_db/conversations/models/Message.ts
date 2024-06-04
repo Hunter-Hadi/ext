@@ -197,7 +197,7 @@ export interface IAIResponseOriginalMessage {
     // message 选中的 nav 信息
     navMetadata?: IAIResponseOriginalMessageNavMetadata
     // citations
-    sourceCitations: IAIResponseSourceCitation[]
+    sourceCitations?: IAIResponseSourceCitation[]
   }
 }
 

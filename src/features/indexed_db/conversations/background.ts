@@ -324,7 +324,7 @@ export const backgroundConversationDBGetMessageIds = async (
       })),
     )
   console.log(`ConversationDB[V3] 获取消息Ids数量`, messages.length)
-  return orderBy(messages, ['created_at'], ['desc']).map(
+  return orderBy(messages, ['created_at'], ['asc']).map(
     (item) => item.messageId,
   )
 }

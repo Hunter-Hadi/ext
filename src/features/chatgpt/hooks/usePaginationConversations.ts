@@ -177,6 +177,7 @@ export const useFetchPaginationConversations = (
   // 是否开启了云同步功能
   const { maxAIBetaFeaturesLoaded, maxAIBetaFeatures } = useMaxAIBetaFeatures()
   const totalPageRef = useRef(filter.total_page)
+  const localIndexRef = useRef(0)
   const remoteConversationPageLoadedRef = useRef<Record<number, boolean>>({})
   const {
     refetch,
@@ -214,6 +215,10 @@ export const useFetchPaginationConversations = (
         `\n是否远程加载:`,
         remoteConversationPageLoadedRef.current[data.pageParam],
       )
+      if (data.pageParam === 0) {
+        // reset localIndexRef
+        localIndexRef.current = 0
+      }
       if (
         maxAIBetaFeatures.chat_sync &&
         totalPageRef.current >= data.pageParam &&
@@ -261,12 +266,13 @@ export const useFetchPaginationConversations = (
           }),
         )
         .reverse()
-        .offset(data.pageParam * filter.page_size)
+        .offset(localIndexRef.current || data.pageParam * filter.page_size)
         .limit(filter.page_size)
         .toArray()
         .then()
       const paginationConversations =
         await conversationsToPaginationConversations(conversations)
+      localIndexRef.current += paginationConversations.length
       console.debug(
         `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
           conversations.length

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
@@ -164,22 +164,40 @@ const useClientConversation = () => {
       )
     }
   }
-  const showConversationLoading = () => {
-    setClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading: true,
-      }
-    })
-  }
-  const hideConversationLoading = () => {
-    setClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading: false,
-      }
-    })
-  }
+  const showConversationLoading = useRecoilCallback(
+    ({ set }) =>
+      () => {
+        set(
+          ClientWritingMessageStateFamily(
+            currentConversationIdRef.current || '',
+          ),
+          (prevState) => {
+            return {
+              ...prevState,
+              loading: true,
+            }
+          },
+        )
+      },
+    [],
+  )
+  const hideConversationLoading = useRecoilCallback(
+    ({ set }) =>
+      () => {
+        set(
+          ClientWritingMessageStateFamily(
+            currentConversationIdRef.current || '',
+          ),
+          (prevState) => {
+            return {
+              ...prevState,
+              loading: false,
+            }
+          },
+        )
+      },
+    [],
+  )
   const pushPricingHookMessage = async (
     permissionSceneType: PermissionWrapperCardSceneType,
   ) => {
@@ -226,14 +244,23 @@ const useClientConversation = () => {
    * 更新当前conversation的loading
    * @param loading
    */
-  const updateClientConversationLoading = (loading: boolean) => {
-    setClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading,
-      }
-    })
-  }
+  const updateClientConversationLoading = useRecoilCallback(
+    ({ set }) =>
+      (loading: boolean) => {
+        set(
+          ClientWritingMessageStateFamily(
+            currentConversationIdRef.current || '',
+          ),
+          (prevState) => {
+            return {
+              ...prevState,
+              loading,
+            }
+          },
+        )
+      },
+    [],
+  )
 
   /**
    * 获取当前conversation

@@ -1,6 +1,6 @@
 import merge from 'lodash-es/merge'
 import { useMemo, useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilCallback, useRecoilState } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { openAIAPISystemPromptGenerator } from '@/background/src/chat/OpenAIApiChat/types'
@@ -78,9 +78,6 @@ const useSidebarSettings = () => {
     sidebarSummaryConversationId,
     currentArtConversationId,
   ])
-  const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
-    ClientWritingMessageStateFamily(currentSidebarConversationId || ''),
-  )
 
   const updateSidebarSettings = async (
     newSidebarSettings: IChromeExtensionLocalStorage['sidebarSettings'],
@@ -120,42 +117,53 @@ const useSidebarSettings = () => {
       }
     })
   }
-  const resetSidebarConversation = async () => {
-    if (clientWritingMessage.loading) {
-      return
-    }
-    getInputMediator('floatingMenuInputMediator').updateInputValue('')
-    getInputMediator('chatBoxInputMediator').updateInputValue('')
-    console.log('新版Conversation 清除conversation')
-    const currentConversation = currentSidebarConversationId
-      ? await ClientConversationManager.getConversationById(
-          currentSidebarConversationId,
+
+  const resetSidebarConversation = useRecoilCallback(
+    ({ set, snapshot }) =>
+      async () => {
+        const clientWritingMessage = await snapshot.getPromise(
+          ClientWritingMessageStateFamily(currentSidebarConversationId || ''),
         )
-      : null
-    if (currentConversation) {
-      if (currentConversation.type === 'Summary') {
-        // Summary有点不一样，需要清除所有的message
-        await ClientConversationMessageManager.deleteMessages(
-          currentConversation.id,
-          await ClientConversationMessageManager.getMessageIds(
-            currentConversation.id,
-          ),
+        if (clientWritingMessage.loading) {
+          return
+        }
+        getInputMediator('floatingMenuInputMediator').updateInputValue('')
+        getInputMediator('chatBoxInputMediator').updateInputValue('')
+        console.log('新版Conversation 清除conversation')
+        set(
+          ClientWritingMessageStateFamily(currentSidebarConversationId || ''),
+          {
+            writingMessage: null,
+            loading: false,
+          },
         )
-        setSidebarSummaryConversationId('')
-      }
-      await createSidebarConversation(
-        currentConversation.type,
-        currentConversation.meta.AIProvider!,
-        currentConversation.meta.AIModel!,
-      )
-    } else {
-      await createSidebarConversation(currentSidebarConversationType)
-    }
-    setClientWritingMessage({
-      writingMessage: null,
-      loading: false,
-    })
-  }
+        const currentConversation = currentSidebarConversationId
+          ? await ClientConversationManager.getConversationById(
+              currentSidebarConversationId,
+            )
+          : null
+        if (currentConversation) {
+          if (currentConversation.type === 'Summary') {
+            // Summary有点不一样，需要清除所有的message
+            await ClientConversationMessageManager.deleteMessages(
+              currentConversation.id,
+              await ClientConversationMessageManager.getMessageIds(
+                currentConversation.id,
+              ),
+            )
+            setSidebarSummaryConversationId('')
+          }
+          await createSidebarConversation(
+            currentConversation.type,
+            currentConversation.meta.AIProvider!,
+            currentConversation.meta.AIModel!,
+          )
+        } else {
+          await createSidebarConversation(currentSidebarConversationType)
+        }
+      },
+    [currentSidebarConversationId],
+  )
 
   const createSidebarConversation = async (
     conversationType: ISidebarConversationType,

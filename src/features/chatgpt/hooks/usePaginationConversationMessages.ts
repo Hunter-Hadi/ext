@@ -214,6 +214,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
     isFetchingRef.current = isFetchingNextPage
   }, [isFetchingNextPage])
 
+  const timerRef = useRef<number | null>(null)
   useEffect(() => {
     const unsubscribe = OneShotCommunicator.receive(
       'ConversationMessagesUpdate',
@@ -240,6 +241,24 @@ const usePaginationConversationMessages = (conversationId: string) => {
                 })
               })
             }
+            /**
+             * 因为这里不用refetch的话，会导致下一次data.pages更新到paginationMessages的时候state是之前的
+             * 所以这里需要refetch一下，但是可以用setTimeout来防抖
+             */
+            if (timerRef.current) {
+              clearTimeout(timerRef.current)
+            }
+            setTimeout(() => {
+              if (!isFetchingRef.current && !isRefetchingRef.current) {
+                isRefetchingRef.current = true
+                refetch()
+                  .then()
+                  .catch()
+                  .finally(() => {
+                    isRefetchingRef.current = false
+                  })
+              }
+            }, 1000)
             return true
           }
           case 'delete':

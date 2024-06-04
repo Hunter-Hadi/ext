@@ -36,8 +36,12 @@ import {
 const usePageSummary = () => {
   const { updateSidebarSettings, updateSidebarSummaryConversationId } =
     useSidebarSettings()
-  const { clientWritingMessage, updateClientConversationLoading } =
-    useClientConversation()
+  const {
+    clientWritingMessage,
+    updateClientConversationLoading,
+    showConversationLoading,
+    hideConversationLoading,
+  } = useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
@@ -69,6 +73,7 @@ const usePageSummary = () => {
     const writingLoading = clientWritingMessageRef.current.loading
 
     updateClientConversationLoading(true)
+    showConversationLoading()
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
       let pageSummaryConversation =
@@ -258,6 +263,8 @@ const usePageSummary = () => {
       } catch (e) {
         console.log('创建Conversation失败', e)
         isGeneratingPageSummaryRef.current = false
+      } finally {
+        hideConversationLoading()
       }
     }
   }

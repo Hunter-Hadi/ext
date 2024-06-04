@@ -61,6 +61,7 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
         }
       }
       if (this.isStopAction) return
+      // TODO 某些视频这里返回的只有英文，下面处理结果要针对用户语言优化
       const transcripts = await this.getYoutubeTranscript()
       if (this.isStopAction) return
       if (!transcripts || transcripts.length === 0) {

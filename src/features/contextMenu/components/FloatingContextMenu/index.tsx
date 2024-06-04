@@ -455,8 +455,14 @@ const FloatingContextMenu: FC<{
                   sx={{
                     mt: 2,
                   }}
-                  onInputCustomVariable={() => {
-                    setIsInputCustomVariables(true)
+                  onInputCustomVariable={({ data, variables }) => {
+                    // 判断是否有输入内容的输入框，过滤系统参数
+                    const isInput = variables?.some((variable) =>
+                      variable.systemVariable
+                        ? false
+                        : data[variable.VariableName],
+                    )
+                    setIsInputCustomVariables(!!isInput)
                   }}
                   onBeforeClose={() => {
                     if (

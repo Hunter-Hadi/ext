@@ -699,6 +699,7 @@ const FloatingContextMenu: FC<{
               return (
                 floatingDropdownMenu.open &&
                 !activeAIResponseMessage &&
+                !isSettingCustomVariables &&
                 (currentFloatingContextMenuDraft === '' ||
                   inputValue.length > 0)
               )

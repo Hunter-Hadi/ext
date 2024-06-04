@@ -254,7 +254,7 @@ export const useFetchPaginationConversations = (
         .conversations.orderBy('updated_at')
         .filter(
           dbSift({
-            // lastMessageId: { $exists: true },
+            lastMessageId: { $exists: true },
             type: { $eq: filter.type },
             isDelete: { $eq: filter.isDelete },
             authorId: { $eq: authorId },
@@ -265,25 +265,11 @@ export const useFetchPaginationConversations = (
         .limit(filter.page_size)
         .toArray()
         .then()
-      const coneversationsCount = await createIndexedDBQuery('conversations')
-        .conversations.orderBy('updated_at')
-        .filter(
-          dbSift({
-            type: { $eq: filter.type },
-            isDelete: { $eq: filter.isDelete },
-            authorId: { $eq: authorId },
-          }),
-        )
-        .reverse()
-        .keys()
-        .then()
       const paginationConversations =
         await conversationsToPaginationConversations(conversations)
       console.debug(
         `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
           conversations.length
-        }/${paginationConversations.length}/${
-          coneversationsCount.length
         }]耗时: Diff[${diffTimeUsage}]ms, LocalQuery[${
           new Date().getTime() - time - diffTimeUsage
         }】`,

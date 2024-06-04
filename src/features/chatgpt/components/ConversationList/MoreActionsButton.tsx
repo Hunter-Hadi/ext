@@ -90,26 +90,28 @@ const MoreActionsButton: FC<{
         placement={'top'}
         title={t('client:immersive_chat__more_actions_button__title')}
       >
-        <IconButton
-          disabled={smoothConversationLoading}
-          onClick={(event: MouseEvent<HTMLElement>) => {
-            event.preventDefault()
-            event.stopPropagation()
-            setAnchorEl(event.currentTarget)
-          }}
-          sx={{
-            p: 0.5,
-          }}
-        >
-          <ContextMenuIcon icon={'More'} size={16} />
-        </IconButton>
+        <div>
+          <IconButton
+            disabled={smoothConversationLoading}
+            onClick={(event: MouseEvent<HTMLElement>) => {
+              event.preventDefault()
+              event.stopPropagation()
+              setAnchorEl(event.currentTarget)
+            }}
+            sx={{
+              p: 0.5,
+            }}
+          >
+            <ContextMenuIcon icon={'More'} size={16} />
+          </IconButton>
+        </div>
       </TextOnlyTooltip>
 
       <MaxAIMenu
         rootContainer={() => {
           return isContextWindow
             ? getMaxAIFloatingContextMenuRootElement()?.querySelector(
-                'div[data-testid="maxai--context-window--chat-history--root"]',
+                'div.maxai--conversation-list',
               ) || undefined
             : undefined
         }}
@@ -128,8 +130,15 @@ const MoreActionsButton: FC<{
             },
           },
         }}
-        transformOrigin={{ horizontal: 'left', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'left', vertical: 'center' }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        offset={[-110, 8]}
       >
         <MenuItem
           onClick={(event) => {

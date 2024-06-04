@@ -104,6 +104,7 @@ const InfiniteConversationList: <T>(
               itemCount={itemCount}
               onItemsRendered={onItemsRendered}
               ref={ref}
+              className={'maxai--conversation-list'}
               {...props}
             >
               {Row}
@@ -362,6 +363,9 @@ const Row = memo(function RowItem({
                 onClickAway={() => handleConversationRename(conversation)}
               >
                 <TextField
+                  onClick={(event) => {
+                    event.stopPropagation()
+                  }}
                   data-testid={'maxai--conversation--rename-chat--input'}
                   size={'small'}
                   autoFocus

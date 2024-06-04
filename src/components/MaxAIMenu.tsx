@@ -12,6 +12,7 @@ type rootContainer = HTMLElement | (() => HTMLElement | undefined)
 const MaxAIMenu: FC<
   MenuProps & {
     rootContainer?: rootContainer
+    offset?: [number, number]
   }
 > = (props) => {
   const [menuElement, setMenuElement] = useState<HTMLElement | null>(null)
@@ -24,6 +25,7 @@ const MaxAIMenu: FC<
     disablePortal,
     rootContainer,
     children,
+    offset,
     ...rest
   } = props
   const memoMenuProps: Partial<MenuProps> = useMemo(() => {
@@ -61,8 +63,8 @@ const MaxAIMenu: FC<
       const top = targetElementRect.top - containerRect.top
       const left = targetElementRect.left - containerRect.left
       anchorPosition = {
-        top,
-        left,
+        left: left + (offset ? offset[0] : 0),
+        top: top + (offset ? offset[1] : 0),
       }
     }
     const anchorReference = anchorPosition ? 'anchorPosition' : 'anchorEl'
@@ -76,6 +78,7 @@ const MaxAIMenu: FC<
       rootContainer,
     }
   }, [
+    offset,
     anchorEl,
     disablePortal,
     transformOrigin,

@@ -64,7 +64,8 @@
     "continue_with_google": "ಗೂಗಲ್ ಜೊತೆ ಮುಂದುವರಿಯಿರಿ",
     "continue_with_email": "ಇಮೇಲ್ ಜೊತೆ ಮುಂದುವರಿಯಿರಿ",
     "privacy_policy": "ಗೌಪ್ಯತೆ ನೀತಿ",
-    "terms_of_service": "ಸೇವೆಯ ನಿಯಮಗಳು"
+    "terms_of_service": "ಸೇವೆಯ ನಿಯಮಗಳು",
+    "shortcut": "ಶೀಘ್ರದಲ್ಲಿ"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -818,14 +819,14 @@
     "sidebar__marketing_tabs__affiliate__card__description__part_1": "ನಮ್ಮ ಅಫೀಲಿಯೇಟ್ ಪ್ರೋಗ್ರಾಮ್ ಗೆ ಸೇರಿ",
     "sidebar__marketing_tabs__affiliate__card__description__part_2": "MaxAI ಹಂತವನ್ನು ಹಂಚಿಕೊಳ್ಳುವ ಪ್ರತಿಷ್ಠಾನದ ಮೂಲಕ ಪ್ರತಿಷ್ಠೆ ಗಳನ್ನು ಗಳಿಸಿ!",
     "sidebar__marketing_tabs__affiliate__card__button__title": "ಅಫೀಲಿಯೇಟ್ ಪ್ರೋಗ್ರಾಮ್ ಗೆ ಸೇರಿ",
-    "sidebar__marketing_tabs__survey__tab__title": "ಸರ್ವೇ",
-    "sidebar__user_upgrade_card__title": "ಎನ್ನೆಲ್ಲಾ ಸೌಲಭ್ಯಗಳನ್ನು AI ನೊಂದಿಗೆ ಹೆಚ್ಚಿಸಿ",
-    "sidebar__user_upgrade_card__item1__title": "ಅಸಂಖ್ಯಾತ AI ಪ್ರಶ್ನೆಗಳು",
-    "sidebar__user_upgrade_card__item2__title": "ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳ ಪೂರ್ಣ ಪ್ರವೇಶ",
-    "sidebar__user_upgrade_card__item3__title": "ಹೊಸ ವೈಶಿಷ್ಟ್ಯಗಳ ಮೊದಲ ಪ್ರವೇಶ",
+    "sidebar__marketing_tabs__survey__tab__title": "ಪ್ರತಿಕ್ರಿಯೆ",
+    "sidebar__user_upgrade_card__title": "ಮ್ಯಾಕ್ಸ್‌ಐ ಎಲೈಟ್‌ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ · ವಾರಾಂತ್ಯದ",
+    "sidebar__user_upgrade_card__item1__title": "ಅಸಂಖ್ಯಾತ ಎನ್ನಿಸಿ ಬಳಕೆ",
+    "sidebar__user_upgrade_card__item2__title": "ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
+    "sidebar__user_upgrade_card__item3__title": "ಪ್ರತಿ ದಿನವೂ ಹೊರತುಪಡಿಸಿಕೊಳ್ಳಿ",
     "sidebar__user_upgrade_card__learn_more__title": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
     "sidebar__user_upgrade_card__discount__title": "ಈಗ 53% ಉಳಿಸಿ",
-    "sidebar__user_upgrade_card__footer__title": "ಯಾವಾಗಲೂ ರದ್ದು ಮಾಡಬಹುದು",
+    "sidebar__user_upgrade_card__footer__title": "ಮುಂದಿನ ಪುಟಕ್ಕೆ ನೀವು ಹೆಚ್ಚು ಹಣ ಪಾವತಿಸಲ್ಪಡುವುದಿಲ್ಲ.",
     "sidebar__daily_limit__title": "ನೀವು ನಿಮ್ಮ ದೈನಂದಿನ ಪ್ರಶ್ನೆ ಮಿತಿಯನ್ನು ತಲುಪಿದ್ದೀರಿ. ಮರುದಿನ ಹೆಚ್ಚಿನ ಉಚಿತ ಪ್ರಶ್ನೆಗಳು ಲಭ್ಯವಾಗುತ್ತವೆ.",
     "sidebar__daily_limit__link__title": "ಇಂದ್ಯಾಕ್ಷನ್ ಪ್ರಶ್ನೆಗಳಿಗೆ ಮಿತಿಯಿಲ್ಲದ ಪ್ರಶ್ನೆಗಳನ್ನು ಈಗ ಪಡೆಯಿರಿ.",
     "sidebar__survey_dialog__title": "MaxaI.me ಬಳಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು!",
@@ -834,7 +835,10 @@
     "sidebar__survey_dialog__description__item2": "ಇದು ತುಂಬಾ ಉಪಯುಕ್ತ: ಇದು ನಿಮಗಾಗಿ ಅತ್ಯುತ್ತಮ AI ಅನುಭವವನ್ನು ರಚಿಸುವುದಕ್ಕೆ ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ :)",
     "sidebar__survey_dialog__thanks": "ಧನ್ಯವಾದಗಳು",
     "sidebar__survey_dialog__by_who": "MaxAI.me ತಂಡ",
-    "sidebar__survey_dialog__cta_button_text": "ನಿಮ್ಮ ಅನುಭವದ ಬಗ್ಗೆ ನಮಗೆ ತಿಳಿಸಿ"
+    "sidebar__survey_dialog__cta_button_text": "ನಿಮ್ಮ ಅನುಭವದ ಬಗ್ಗೆ ನಮಗೆ ತಿಳಿಸಿ",
+    "floating_menu__input__placeholder__after_ai_response": "AI-ಗೆ ಮುಂದುವರೆಸಲು ಏನು ಹೇಳಿ...",
+    "sidebar__unable_subscription__title": "ಕ್ರಿಯೆ ಅಗತ್ಯವಿದೆ - ನಿಮ್ಮ ಚಂದಾವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    "sidebar__unable_subscription__link__title": "ಪ್ರತಿದಿನ ಹೊರತುಪಡಿಸಲು ಈಗ ಅದನ್ನು ಸರಿಪಡಿಸಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -1172,6 +1176,16 @@
   },
   "onboarding": {
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "ನೀವು ಬಯಸಿದಂತೆ AI-ಗೆ AI-ನ ಉತ್ಪನ್ನವಾದ ವಿಷಯವನ್ನು ಸರಿಪಡಿಸಲು ಕೇಳಬಹುದು.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "ಆಯ್-ಜನರೇಟೆಡ್ ವಿಷಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯವನ್ನು ಬದಲಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "ಆಯ್-ಜನರೇಟೆಡ್ ವಿಷಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯವನ್ನು ಬದಲಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "ಆಯ್ಕೆಯಾದ ಪಠ್ಯವನ್ನು ಪುನರ್ರಚಿಸಲು, ಅನುವಾದಿಸಲು, ಸಂಗ್ರಹಿಸಲು ಅಥವಾ ವಿವರಿಸಲು AI-ಗೆ ಕೇಳಿ.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "ಈ ಆಯ್ಕೆಯನ್ನು ತ್ವರಿತವಾಗಿ ಹುಡುಕಲು \"{{KEY_TEXT}}\" ಟೈಪ್ ಮಾಡಬಹುದು.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "ನೀವು ಆಯ್ಕೆಯ ಪಠ್ಯದ ಮೇಲೆ AI-ಗೆ ಯಾವುದೇ ಕ್ರಿಯೆಯನ್ನು ನಡೆಸಲು ಕೇಳಬಹುದು.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "ಕೆಳಗೆ ಹೋಗಲು",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part2": "ಒತ್ತಿರಿ.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1": "ಮೇಲೆ ಹೋಗಲು",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "ಒತ್ತಿರಿ.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "ಆಯ್ಕೆ ಮಾಡಲು",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "ಒತ್ತಿರಿ.",
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "ಅಥವಾ ಆಯ್ಕೆಯನ್ನು ಆರಿಸಲು Enter ಒತ್ತಿರಿ."
   }
 }

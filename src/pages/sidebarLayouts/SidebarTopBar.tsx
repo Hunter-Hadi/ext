@@ -10,6 +10,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import PermissionDailyLimitBar from '@/features/auth/components/PermissionDailyLimitBar'
 import useActivity from '@/features/auth/hooks/useActivity'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import UnableAutoSubscriptionBar from "@/features/subscription/components/UnableAutoSubscriptionBar";
 
 const SidebarTopBar: FC = () => {
   const { t } = useTranslation(['client'])
@@ -21,7 +22,12 @@ const SidebarTopBar: FC = () => {
   } = useActivity()
   return (
     <Stack>
+      {/* 无法自动订阅提示 */}
+      <UnableAutoSubscriptionBar />
+
+      {/* free用户daily limit提示 */}
       <PermissionDailyLimitBar />
+
       {/*黑五*/}
       {/*deprecated*/}
       {isShowActivityBanner && false && (

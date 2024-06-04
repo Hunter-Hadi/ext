@@ -45,6 +45,9 @@ export type IUseChatGPTUserInfo = {
   group_id?: string
   // 用户第一次付费的时间戳（单位: 秒）
   subscribed_at?: number | null
+  subscription_cancelled_at?: null | number;
+  subscription_payment_failed_at?: null | number;
+  subscription_type: 'SUBSCRIPTION' | 'ONE_TIME';
 }
 
 export type IUserQuotaUsageInfo = {

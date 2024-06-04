@@ -100,4 +100,11 @@ window.addEventListener('message', function (event) {
       event.data?.data?.surveyType ? [event.data?.data?.surveyType] : undefined,
     )
   }
+
+  if (event.data.type && event.data.type == 'MAXAI_CREATE_PAYMENT_URL') {
+    port.postMessage({
+      event: 'Client_createPaymentUrl',
+      data: event.data.data
+    })
+  }
 })

@@ -108,7 +108,7 @@ const MaxAISubscriptionUpdate = () => {
     if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
       const pathname = window.location.pathname
       if (
-        ['/my-plan', '/pricing', '/payment/error', '/payment/success'].includes(
+        ['/my-plan', '/pricing', '/payment/error', '/payment/success', '/subscription/failed'].includes(
           pathname,
         )
       ) {

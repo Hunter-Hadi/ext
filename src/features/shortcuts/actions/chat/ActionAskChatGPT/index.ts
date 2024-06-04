@@ -453,7 +453,17 @@ export class ActionAskChatGPT extends Action {
                 AIConversationId = message.conversationId
               }
               if (message.sourceCitations?.length) {
-                this.answer.sourceCitations = message.sourceCitations
+                this.answer.originalMessage = {
+                  ...this.answer.originalMessage,
+                  // 这个字段代表本条消息不是rich message
+                  // 目前sourceCitations只会在chat的时候输出
+                  // 如果后续要在outputMessage里添加sourceCitations要额外处理
+                  liteMode: true,
+                  metadata: {
+                    ...this.answer.originalMessage?.metadata,
+                    sourceCitations: message.sourceCitations,
+                  }
+                }
               }
               this.output = this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
@@ -476,8 +486,10 @@ export class ActionAskChatGPT extends Action {
                             content: {
                               text: message.text,
                             },
+                            metadata: {
+                              sourceCitations: message.sourceCitations,
+                            },
                           },
-                          sourceCitations: message.sourceCitations,
                         } as IAIResponseMessage,
                       ]),
                     ],

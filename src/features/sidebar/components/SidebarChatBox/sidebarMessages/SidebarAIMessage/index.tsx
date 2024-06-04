@@ -47,7 +47,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const isTriggeredContentReview =
     message.originalMessage?.metadata?.isTriggeredContentReview === true
 
-  const isRichAIMessage = message.originalMessage !== undefined && !liteMode
+  const isRichAIMessage = message.originalMessage !== undefined && !message.originalMessage.liteMode && !liteMode
   const isSummaryMessage = useMemo(
     () => message.originalMessage?.metadata?.shareType === 'summary',
     [message],
@@ -67,6 +67,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         content: message.originalMessage?.content,
         messageIsComplete: message.originalMessage?.metadata?.isComplete,
         deepDive: message.originalMessage?.metadata?.deepDive,
+        sourceCitations: message.sourceCitations || message.originalMessage?.metadata?.sourceCitations,
       } //nonsense:后面可以优化为数组根据type类型去渲染，并加载对应组件统一化更高
 
       if (Object.keys(currentRenderData?.sources || {}).length > 1) {
@@ -93,6 +94,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         content: undefined,
         messageIsComplete: false,
         deepDive: undefined,
+        sourceCitations: undefined
       }
     }
   }, [message])
@@ -277,7 +279,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             }`}
           >
             <AppSuspenseLoadingLayout>
-              <CustomMarkdown citations={message.sourceCitations}>
+              <CustomMarkdown citations={renderData.sourceCitations}>
                 {renderData.answer}
               </CustomMarkdown>
             </AppSuspenseLoadingLayout>

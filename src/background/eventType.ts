@@ -87,6 +87,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_switchVideoPopup'
   // 客户端获取 survey 状态
   | 'Client_updateMaxAISurveyStatus'
+  // 客户端创建 paymentUrl
+  | 'Client_createPaymentUrl'
   | IWebsiteContextSendEvent
 
 // chat.openai.com(daemon process) 监听task event

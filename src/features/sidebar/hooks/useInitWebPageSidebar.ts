@@ -156,8 +156,6 @@ const useInitWebPageSidebar = () => {
   const documentTitleRef = useRef('')
   useEffect(() => {
     if (pageUrl) {
-      // 页面变化重置page summary和summary conversation id
-      resetPageSummary()
       const pageSummaryType = getPageSummaryType()
       if (
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
@@ -169,6 +167,8 @@ const useInitWebPageSidebar = () => {
         }
         documentTitleRef.current = documentTitle
       }
+      // 页面变化重置page summary和summary conversation id
+      resetPageSummary()
       updateSidebarSummaryConversationId()
       pageUrlIsUsedRef.current = false
     }

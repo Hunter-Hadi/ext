@@ -8,11 +8,11 @@ import {
   UPDATE_VARIANT_TEMPLATES,
 } from '@/features/abTester/constants'
 
-const useUpdateModalABTester = (show: boolean) => {
+const useUpdateModalABTester = () => {
   const updateVariant = useMemo(() => {
     const randomIndex = Date.now() % UPDATE_VARIANT.length
     return UPDATE_VARIANT[randomIndex]
-  }, [show])
+  }, [])
 
   const updateVariantTemplate = UPDATE_VARIANT_TEMPLATES[updateVariant]
 

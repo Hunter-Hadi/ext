@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -38,8 +38,16 @@ const SidebarPromotionDialog = () => {
 
   const [open, setOpen] = useState(false)
 
+  const { updateVariant, updateVariantTemplate } = useUpdateModalABTester()
+
+  const updateVariantRef = useRef(updateVariant)
+  updateVariantRef.current = updateVariant
+
   const handleClick = () => {
-    mixpanelTrack('update_modal_clicked')
+    mixpanelTrack('update_modal_clicked', {
+      testFeature: 'extensionUpdateModal',
+      testVersion: `1-${updateVariant}`,
+    })
     handleClose()
     window.open(CTA_BUTTON_LINK)
   }
@@ -106,12 +114,13 @@ const SidebarPromotionDialog = () => {
         )
 
         setOpen(true)
-        mixpanelTrack('update_modal_showed')
+        mixpanelTrack('update_modal_showed', {
+          testFeature: 'extensionUpdateModal',
+          testVersion: `1-${updateVariantRef.current}`,
+        })
       }, 1500)
     })
   }, [browserAgent, userInfo, isPayingUser])
-
-  const { updateVariantTemplate } = useUpdateModalABTester(open)
 
   return (
     <Dialog

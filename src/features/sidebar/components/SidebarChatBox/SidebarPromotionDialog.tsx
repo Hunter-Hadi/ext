@@ -7,6 +7,8 @@ import Dialog, { dialogClasses } from '@mui/material/Dialog'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -20,7 +22,9 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
+import useSurveyFilledOutStatus from '@/features/survey/hooks/useSurveyFilledOutStatus'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
+dayjs.extend(utc)
 
 const CTA_BUTTON_LINK = `https://app.maxai.me/pricing`
 
@@ -28,6 +32,9 @@ const SidebarPromotionDialog = () => {
   const { t } = useTranslation(['client'])
   const { browserAgent } = useBrowserAgent()
   const { userInfo, isPayingUser } = useUserInfo()
+
+  const { alreadyFilledOutSurvey: surveyCancelCompletedFilledOut } =
+    useSurveyFilledOutStatus('funnel_survey__survey_cancel_completed')
 
   const [open, setOpen] = useState(false)
 
@@ -62,6 +69,16 @@ const SidebarPromotionDialog = () => {
     const timeLimit = new Date().getTime() - 3 * 24 * 60 * 60 * 1000
     if (new Date(createAt).getTime() > timeLimit) {
       return
+    }
+
+    // subscription_cancelled_at 存在，并且没有填写过 survey_cancel_completed survey
+    if (userInfo.subscription_cancelled_at && !surveyCancelCompletedFilledOut) {
+      const cancelledAt = dayjs.utc(userInfo.subscription_cancelled_at)
+      const now = dayjs.utc()
+      if (now.diff(cancelledAt, 'day') < 30) {
+        // 不显示 SidebarPromotionDialog， 因为这时候需要显示 survey_cancel_completed survey dialog
+        return
+      }
     }
 
     getChromeExtensionOnBoardingData().then((onBoardingData) => {

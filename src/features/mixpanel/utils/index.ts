@@ -76,3 +76,20 @@ export const mixpanelIdentify = (
     // do nothing
   }
 }
+
+export const getBasicInfoForMixpanel = () => {
+  try {
+    return {
+      browser: getBrowserAgent(),
+      currentDomain: getCurrentDomainHost(),
+      currentURL: location.href,
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      screenHeight: window.screen.height,
+      screenWidth: window.screen.width,
+      isDesktop: window.screen.width > window.screen.height,
+      // TODO: more info
+    }
+  } catch (error) {
+    return {}
+  }
+}

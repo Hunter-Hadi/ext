@@ -16,8 +16,7 @@ import { useAuthLogin } from '@/features/auth'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import SidebarSurveyContent from '@/features/sidebar/components/SidebarChatBox/SidebarSurveyDialog/SidebarSurveyContent'
-import { currentSurveyKey } from '@/features/survey/constants'
-import useSurveyStatus from '@/features/survey/hooks/useSurveyStatus'
+import useFeedbackSurveyStatus from '@/features/survey/hooks/useFeedbackSurveyStatus'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
@@ -348,10 +347,7 @@ const SurveyTabButton: FC = () => {
               maxWidth: '360px',
             }}
           >
-            <SidebarSurveyContent
-              surveyKey={currentSurveyKey}
-              closeBtn={false}
-            />
+            <SidebarSurveyContent surveyKey={'feedback'} closeBtn={false} />
           </Stack>
         }
       >
@@ -361,7 +357,7 @@ const SurveyTabButton: FC = () => {
           href={`${APP_USE_CHAT_GPT_HOST}/survey/feedback`}
           onClick={() => {
             mixpanelTrack('survey_card_clicked', {
-              surveyType: currentSurveyKey,
+              surveyType: 'feedback',
             })
           }}
           sx={{
@@ -407,7 +403,7 @@ const SurveyTabButton: FC = () => {
 const SidebarMarketingTabs: FC = () => {
   const { isLogin, loaded } = useAuthLogin()
   const { isFreeUser } = useUserInfo()
-  const { canShowSurvey } = useSurveyStatus()
+  const { canShowSurvey } = useFeedbackSurveyStatus()
   if (!isLogin || !loaded) {
     return null
   }

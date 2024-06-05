@@ -14,6 +14,7 @@ import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useInitWebPageSidebar from '@/features/sidebar/hooks/useInitWebPageSidebar'
 import useSidebarDropEvent from '@/features/sidebar/hooks/useSidebarDropEvent'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import FunnelSurveyDialog from '@/features/survey/components/FunnelSurveyDialog'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -105,6 +106,7 @@ const SidebarPage: FC<{
           <SidebarTour />
           <SidebarPromotionDialog />
           <SidebarSurveyDialog />
+          <FunnelSurveyDialog sceneType="SURVEY_CANCEL_COMPLETED" />
           <SidebarDragWrapper>
             {!isImmersiveChatRef.current && <ChatBoxHeader />}
             <AppSuspenseLoadingLayout>

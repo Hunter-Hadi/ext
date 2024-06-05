@@ -33,6 +33,7 @@ import {
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppLocalStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -178,6 +179,8 @@ const useSidebarSettings = () => {
       AIModel =
         SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[conversationType].AIModel
     }
+    const domain = getCurrentDomainHost()
+    const path = window.location.href
     if (conversationType === 'Chat') {
       // 获取当前AIProvider
       // 获取当前AIProvider的model
@@ -201,6 +204,8 @@ const useSidebarSettings = () => {
             type: 'Chat',
             title: 'Ask AI anything',
             meta: baseMetaConfig,
+            domain,
+            path,
           } as Partial<IConversation>,
         },
       })
@@ -248,6 +253,8 @@ const useSidebarSettings = () => {
             id: conversationId,
             type: 'Summary',
             title: conversationTitleMap[pageSummaryType],
+            domain,
+            path,
             meta: merge({
               ...SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary,
               pageSummaryType,
@@ -279,6 +286,8 @@ const useSidebarSettings = () => {
           initConversationData: {
             type: 'Search',
             title: 'AI-powered search',
+            domain,
+            path,
             meta: baseMetaConfig,
             // meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
           } as Partial<IConversation>,
@@ -302,6 +311,8 @@ const useSidebarSettings = () => {
           initConversationData: {
             type: 'Art',
             title: 'AI-powered image generate',
+            domain,
+            path,
             meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art),
           } as Partial<IConversation>,
         },
@@ -329,6 +340,8 @@ const useSidebarSettings = () => {
           initConversationData: {
             type: 'ContextMenu',
             title: 'AI-powered writing assistant',
+            domain,
+            path,
             meta: baseMetaConfig,
           } as Partial<IConversation>,
         },

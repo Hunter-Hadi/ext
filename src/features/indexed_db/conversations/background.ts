@@ -7,7 +7,10 @@ import { v4 as uuidV4 } from 'uuid'
 
 import ConversationManager from '@/background/src/chatConversations'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
-import { isUserMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import {
+  isAIMessage,
+  isUserMessage,
+} from '@/features/chatgpt/utils/chatMessageUtils'
 import { IIndexDBAttachment } from '@/features/indexed_db/conversations/models/Attachement'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { ConversationDB } from '@/features/indexed_db/conversations/models/db'
@@ -180,7 +183,6 @@ export const backgroundMigrateConversationV3 = async (
     if (!Object.prototype.hasOwnProperty.call(conversation, 'lastMessageId')) {
       conversation.lastMessageId = messages[messages.length - 1].messageId
     }
-
     await Promise.all(
       messages.map(async (message) => {
         message.conversationId = conversation.id
@@ -279,6 +281,22 @@ export const backgroundMigrateConversationV3 = async (
             },
           )
           message.extendContent = extendContent
+        }
+        if (isAIMessage(message)) {
+          if (message.originalMessage?.metadata?.sourceWebpage?.url) {
+            if (!conversation.domain && !conversation.path) {
+              try {
+                const url = new URL(
+                  message.originalMessage.metadata.sourceWebpage.url,
+                )
+                conversation.domain = url.host
+                conversation.path =
+                  message.originalMessage.metadata.sourceWebpage.url
+              } catch (e) {
+                // ignore
+              }
+            }
+          }
         }
         saveMessages.push(message)
         return message

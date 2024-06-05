@@ -26,6 +26,8 @@ export interface IConversation {
   // 2024-05-14后用3.0, 单独存储消息和attachments
   version?: number // 版本号
   lastMessageId?: string // 最后一条消息的ID
+  domain?: string // host // 创建的时候的域名
+  path?: string // path // 创建的时候的路径
 }
 
 // 分享配置

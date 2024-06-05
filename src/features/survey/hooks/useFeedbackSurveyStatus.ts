@@ -9,9 +9,8 @@ import {
   HaveFilledOutSurveyAtom,
 } from '@/features/survey/store'
 
-import { ISurveyKeyType } from '../types'
-
-const useFeedbackSurveyStatus = (surveyKey?: ISurveyKeyType) => {
+const useFeedbackSurveyStatus = () => {
+  const surveyKey = 'feedback'
   const [loaded, setLoaded] = useState(false)
   const { userInfo, isPayingUser } = useUserInfo()
 
@@ -35,7 +34,7 @@ const useFeedbackSurveyStatus = (surveyKey?: ISurveyKeyType) => {
     if (!loaded || !firstFetchSurveyStatusLoaded) {
       return false
     }
-    if (surveyKey !== undefined && filledOutSurveyState[surveyKey]) {
+    if (filledOutSurveyState[surveyKey]) {
       // 如果已经填写过了当前 survey，不再显示 survey
       return false
     }

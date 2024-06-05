@@ -9,6 +9,7 @@ import { isProduction } from '@/constants'
 import { getMaxAIWebSiteClientUserId } from '@/features/auth/utils'
 import { getCurrentUserLogInfo } from '@/features/auth/utils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { getBrowserAgent } from '@/utils/dataHelper/browserInfoHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const MIXPANEL_PROJECT_ID = String(process.env.MIXPANEL_PROJECT_ID)

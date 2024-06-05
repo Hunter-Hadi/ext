@@ -91,7 +91,7 @@ const FloatingContextMenu: FC<{
 
   const { currentFloatingContextMenuDraft, activeAIResponseMessage } =
     useFloatingContextMenuDraft()
-  console.log('zztest activeAIResponseMessage', activeAIResponseMessage)
+
   const {
     hideFloatingContextMenu,
     floatingDropdownMenu,

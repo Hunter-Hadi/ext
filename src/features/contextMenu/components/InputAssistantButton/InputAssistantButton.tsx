@@ -20,7 +20,6 @@ import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConv
 import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
 import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
 import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
-import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 
 import { type IInputAssistantButtonObserverData } from './InputAssistantButtonManager'
 
@@ -219,7 +218,6 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         ?.shadowRoot?.querySelector('div') as HTMLElement,
     )
   }, [])
-  console.log(`zztest order`, order)
   return (
     <div
       style={{
@@ -338,14 +336,10 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             </Box>
           </InputAssistantButtonContextMenu>
           {buttonGroup[0].onboardingTooltipSceneType &&
-          emotionCacheRef.current &&
-          // 只有页面中第一个 instant reply 按钮才会渲染 OnboardingTooltip
-          order === 1 ? (
+          emotionCacheRef.current ? (
             <CacheProvider value={emotionCacheRef.current}>
               <OnboardingTooltipTempPortal
-                // 找到 maxai-input-assistant-button 元素下的第一个 div
-                container={queryShadowContainerElementSelector(
-                  `maxai-input-assistant-button[maxai-input-assistant-button-id="${rootId}"]`,
+                container={shadowRoot.querySelector<HTMLElement>(
                   'div:first-of-type',
                 )}
                 sceneType={buttonGroup[0].onboardingTooltipSceneType}
@@ -438,14 +432,10 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             </Box>
           </InputAssistantButtonContextMenu>
           {buttonGroup[1].onboardingTooltipSceneType &&
-          emotionCacheRef.current &&
-          // 只有页面中第一个 instant reply 按钮才会渲染 OnboardingTooltip
-          order === 1 ? (
+          emotionCacheRef.current ? (
             <CacheProvider value={emotionCacheRef.current}>
               <OnboardingTooltipTempPortal
-                // 找到 maxai-input-assistant-button 元素下的第一个 div
-                container={queryShadowContainerElementSelector(
-                  `maxai-input-assistant-button[maxai-input-assistant-button-id="${rootId}"]`,
+                container={shadowRoot.querySelector<HTMLElement>(
                   'div:first-of-type',
                 )}
                 sceneType={buttonGroup[1].onboardingTooltipSceneType}

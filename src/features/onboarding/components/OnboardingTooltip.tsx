@@ -99,8 +99,10 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
       // 判断是否打开过，如果打开过则不再显示
       const opened = await getAlreadyOpenedCacheBySceneType(sceneType)
       if (!opened) {
-        setOpen(true)
-        setOpenedCacheBySceneType(sceneType)
+        // 设置完缓存，再 setOpen
+        setOpenedCacheBySceneType(sceneType).then(() => {
+          setOpen(true)
+        })
       }
     }
   }, [sceneType, beforeTooltipShow, container])
@@ -163,8 +165,8 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
           sx={{
             position: 'relative',
             p: 1.5,
-            pt: 2,
-            pr: 2,
+            pt: 2.25,
+            pr: 2.25,
             textTransform: 'none',
           }}
         >
@@ -173,8 +175,8 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
             onClick={closeTooltip}
             sx={{
               position: 'absolute',
-              top: 4,
-              right: 4,
+              top: 3,
+              right: 3,
               p: '2px',
             }}
           >

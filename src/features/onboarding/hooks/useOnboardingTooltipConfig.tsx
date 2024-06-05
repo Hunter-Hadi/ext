@@ -16,6 +16,8 @@ export type IOnBoardingTooltipConfigType = {
   // 在 OnboardingTooltip render 之前调用，返回 false 会阻止 OnboardingTooltip 渲染
   // beforeTooltipRender?: () => boolean
   containerFinder?: () => HTMLElement
+  // 仅在第一次渲染时展示，之后不再展示
+  onlyFirstRenderEnable?: number
   tooltipProps?: Partial<
     Omit<IOnboardingTooltipProps, 'children' | 'sceneType'>
   >
@@ -205,7 +207,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           minimumTooltip: true,
           placement: 'left',
           sx: {
-            maxWidth: 364,
+            maxWidth: 375,
           },
           InformationBarProps: {
             shortcut: chatBoxShortCutKey,
@@ -230,6 +232,9 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
         tooltipProps: {
           title: t('onboarding:onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text'),
           placement: 'bottom',
+          sx: {
+            width: 390,
+          },
         },
       }
     }
@@ -241,7 +246,22 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           title: t('onboarding:onboarding_tooltip__PDF_SUMMARY_BUTTON__text'),
           placement: 'bottom',
           sx: {
-            width: 365,
+            width: 380,
+          },
+        },
+      }
+    }
+
+    if (sceneType === 'YOUTUBE_SUMMARY_BUTTON') {
+      return {
+        referenceElementSelector: `button[data-testid="maxai-youtube-summary-button"]`,
+        tooltipProps: {
+          title: t(
+            'onboarding:onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text',
+          ),
+          placement: 'bottom',
+          sx: {
+            width: 400,
           },
         },
       }
@@ -256,7 +276,6 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-cta-button"]`,
         tooltipProps: {
-          title: 'Click to generate a personalized reply instantly.',
           placement: 'bottom',
           style: {
             zIndex: 2147483601,
@@ -273,11 +292,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-dropdown-button"]`,
         tooltipProps: {
-          title: 'Click to improve your draft.',
           placement: 'right',
-          sx: {
-            minWidth: 240,
-          },
         },
       }
     }
@@ -290,8 +305,10 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-cta-button"]`,
         tooltipProps: {
-          title: 'Click to generate a personalized draft instantly.',
           placement: 'bottom',
+          sx: {
+            width: 470,
+          },
         },
       }
     }

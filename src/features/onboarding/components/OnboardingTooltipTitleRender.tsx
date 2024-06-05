@@ -93,6 +93,25 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
     )
   }
 
+  if (sceneType === 'INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON') {
+    return (
+      <>
+        {t(
+          'onboarding:onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text',
+        )}
+      </>
+    )
+  }
+  if (sceneType === 'INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON') {
+    return (
+      <>
+        {t(
+          'onboarding:onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text',
+        )}
+      </>
+    )
+  }
+
   return null
 }
 

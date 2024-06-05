@@ -2,7 +2,13 @@ import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { getAccessToken } from '@/utils/request'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 // 上传的文件用途
-export type MaxAIFileUploadUseCase = 'summary' | 'multimodal'
+export type MaxAIFileUploadUseCase =
+  // 总结
+  | 'summary'
+  // 多模态
+  | 'multimodal'
+  // 提取文本的文档
+  | 'extracted_doc'
 export type MaxAIFileUploadResponse = {
   file_id: string
   file_url: string

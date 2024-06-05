@@ -89,7 +89,7 @@ const useDocUploadAndTextExtraction = () => {
             const file = uploadFileMap[fileId]
             if (file) {
               const uploadResult = await maxAIFileUpload(file, {
-                useCase: 'multimodal',
+                useCase: 'extracted_doc',
                 filename: file.name,
               })
               if (uploadResult.success) {

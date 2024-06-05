@@ -25,7 +25,10 @@ import {
   ISelectionElement,
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
-import { getDraftContextMenuTypeById } from '@/features/contextMenu/utils'
+import {
+  getDraftContextMenuTypeById,
+  isOutOfViewport,
+} from '@/features/contextMenu/utils'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
 import {
   createSandboxIframeClickAndKeydownEvent,
@@ -118,7 +121,11 @@ function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
       const valueLength = inputBox.value.length
       inputBox.setSelectionRange(valueLength, valueLength)
     }
-    inputBox.scrollIntoView({ block: 'end' })
+    // input Box不在可视区域内再进行滚动到此元素
+    const rect = inputBox.getBoundingClientRect()
+    if (isOutOfViewport(rect)) {
+      inputBox.scrollIntoView({ block: 'end' })
+    }
 
     // 触发事件，让编辑框可能绑定的事件监听器生效
     triggerEvents.forEach((eventName) => {

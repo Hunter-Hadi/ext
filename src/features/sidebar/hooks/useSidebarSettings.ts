@@ -191,6 +191,8 @@ const useSidebarSettings = () => {
         AIModel: AIModel,
         maxTokens:
           getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 4096,
+        domain,
+        path,
       }
       // 如果是OPENAI_API，那么就加上systemPrompt
       if (AIProvider === 'OPENAI_API') {
@@ -204,8 +206,6 @@ const useSidebarSettings = () => {
             type: 'Chat',
             title: 'Ask AI anything',
             meta: baseMetaConfig,
-            domain,
-            path,
           } as Partial<IConversation>,
         },
       })
@@ -253,11 +253,11 @@ const useSidebarSettings = () => {
             id: conversationId,
             type: 'Summary',
             title: conversationTitleMap[pageSummaryType],
-            domain,
-            path,
             meta: merge({
               ...SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary,
               pageSummaryType,
+              domain,
+              path,
               //               pageSummaryId: pageSummaryData.pageSummaryId,
               //               pageSummaryType: pageSummaryData.pageSummaryType,
               //               systemPrompt: `The following text delimited by triple backticks is the context text:
@@ -278,6 +278,8 @@ const useSidebarSettings = () => {
         AIModel: AIModel,
         maxTokens:
           getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 16384,
+        domain,
+        path,
       }
       // 创建一个新的conversation
       const result = await port.postMessage({
@@ -286,8 +288,6 @@ const useSidebarSettings = () => {
           initConversationData: {
             type: 'Search',
             title: 'AI-powered search',
-            domain,
-            path,
             meta: baseMetaConfig,
             // meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
           } as Partial<IConversation>,
@@ -311,9 +311,10 @@ const useSidebarSettings = () => {
           initConversationData: {
             type: 'Art',
             title: 'AI-powered image generate',
-            domain,
-            path,
-            meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art),
+            meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art, {
+              domain,
+              path,
+            }),
           } as Partial<IConversation>,
         },
       })
@@ -333,6 +334,8 @@ const useSidebarSettings = () => {
         AIModel: AIModel,
         maxTokens:
           getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 4096,
+        domain,
+        path,
       }
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -340,8 +343,6 @@ const useSidebarSettings = () => {
           initConversationData: {
             type: 'ContextMenu',
             title: 'AI-powered writing assistant',
-            domain,
-            path,
             meta: baseMetaConfig,
           } as Partial<IConversation>,
         },

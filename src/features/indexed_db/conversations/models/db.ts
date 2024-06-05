@@ -16,7 +16,7 @@ export class ConversationDB extends Dexie {
     super('ConversationDB')
     this.version(CURRENT_CONVERSATION_VERSION).stores({
       conversations:
-        'id,lastMessageId,authorId,name,created_at,updated_at,type,domain',
+        'id,lastMessageId,authorId,name,created_at,updated_at,type,meta.domain',
       messages:
         'messageId,conversationId,parentMessageId,created_at,updated_at,type,[conversationId+created_at+messageId]',
       attachments: 'id,messageId,created_at,updated_at',

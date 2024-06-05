@@ -4,6 +4,7 @@
 
 import orderBy from 'lodash-es/orderBy'
 import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
 
 import ConversationManager from '@/background/src/chatConversations'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
@@ -15,6 +16,49 @@ import { IIndexDBAttachment } from '@/features/indexed_db/conversations/models/A
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { ConversationDB } from '@/features/indexed_db/conversations/models/db'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+
+export const backgroundGetCurrentDomainHost = (fromUrl: string) => {
+  try {
+    const urlObj = new URL(fromUrl)
+    if (!urlObj) {
+      return ''
+    }
+    if (urlObj.href.includes(Browser.runtime.id)) {
+      const crxPageUrl = urlObj.origin + urlObj.pathname
+      // crx page - immersive chat
+      if (crxPageUrl === Browser.runtime.getURL('/pages/chat/index.html')) {
+        return Browser.runtime.getURL('/pages/chat/index.html')
+      } else if (
+        // crx page - pdf viewer
+        crxPageUrl === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
+      ) {
+        return Browser.runtime.getURL('/pages/pdf/web/viewer.html')
+      } else if (
+        // crx page - settings
+        crxPageUrl === Browser.runtime.getURL('/pages/settings/index.html')
+      ) {
+        return Browser.runtime.getURL('/pages/settings/index.html')
+      }
+    }
+
+    if (urlObj.host === '' && urlObj.origin === 'file://') {
+      // 本地文件 (暂定本地文件返回 origin + pathname)
+      return urlObj.origin + urlObj.pathname
+    }
+
+    const host = urlObj.host.replace(/^www\./, '').replace(/:\d+$/, '')
+    // lark doc的子域名是动态的，所以需要特殊处理
+    if (host.includes('larksuite.com')) {
+      return 'larksuite.com'
+    }
+    if (host === 'x.com') {
+      return 'twitter.com'
+    }
+    return host
+  } catch (e) {
+    return ''
+  }
+}
 
 export const backgroundConversationDB = new ConversationDB()
 /**
@@ -142,9 +186,9 @@ export const backgroundMigrateConversationV3 = async (
         conversation.meta.lastRunActionsParams
       saveConversationAction.lastRunActionsMessageId =
         conversation.meta.lastRunActionsMessageId
-      conversation.meta.lastRunActions = undefined
-      conversation.meta.lastRunActionsParams = undefined
-      conversation.meta.lastRunActionsMessageId = undefined
+      delete conversation.meta.lastRunActions
+      delete conversation.meta.lastRunActionsParams
+      delete conversation.meta.lastRunActionsMessageId
     }
     /**
      * 更新share字段
@@ -284,13 +328,15 @@ export const backgroundMigrateConversationV3 = async (
         }
         if (isAIMessage(message)) {
           if (message.originalMessage?.metadata?.sourceWebpage?.url) {
-            if (!conversation.domain && !conversation.path) {
+            if (!conversation.meta?.domain && !conversation.meta?.path) {
+              if (!conversation.meta) {
+                conversation.meta = {}
+              }
               try {
-                const url = new URL(
+                conversation.meta.domain = backgroundGetCurrentDomainHost(
                   message.originalMessage.metadata.sourceWebpage.url,
                 )
-                conversation.domain = url.host
-                conversation.path =
+                conversation.meta.path =
                   message.originalMessage.metadata.sourceWebpage.url
               } catch (e) {
                 // ignore

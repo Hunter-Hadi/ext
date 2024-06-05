@@ -822,13 +822,20 @@ const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
             6,
           )
         if (chatWindow) {
+          // 下面是判断发送按钮能否点击
+          // const sendButtonDisabled = rootElement.querySelector('.msg-form__send-button')?.disabled
+
+          // 下面是判断是否有聊天列表
+          // const hasMessageList = Boolean(chatWindow.querySelector<HTMLElement>('.msg-s-message-list-container'))
+
+          // 有chat window去判断是否有允许编辑的输入框
           return Boolean(
-            chatWindow.querySelector<HTMLElement>(
-              '.msg-s-message-list-container',
+            chatWindow.querySelector(
+              'form [role="textbox"][contenteditable="true"]',
             ),
           )
         }
-        return false
+        return Boolean(chatWindow)
       },
       rootSelectors: ['.msg-form__footer .msg-form__right-actions'],
       appendPosition: 0,

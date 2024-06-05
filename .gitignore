@@ -114,3 +114,8 @@ releases
 
 .vscode
 test_crx
+
+# Compressed format
+**/*.7z
+**/*.zip
+**/*.rar

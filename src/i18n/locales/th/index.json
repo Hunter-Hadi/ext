@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "บอก AI ว่าต้องการทำอะไรต่อ...",
     "sidebar__unable_subscription__title": "ต้องดำเนินการ - เราไม่สามารถต่ออายุการสมัครสมาชิกของคุณโดยอัตโนมัติได้",
     "sidebar__unable_subscription__link__title": "แก้ไขเดี๋ยวนี้เพื่อประหยัดเวลาหลายชั่วโมงทุกวัน",
-    "chat__user_message__contexts__file__preview__tips": "การจัดรูปแบบอาจไม่สม่ำเสมอจากแหล่งที่มา"
+    "chat__user_message__contexts__file__preview__tips": "การจัดรูปแบบอาจไม่สม่ำเสมอจากแหล่งที่มา",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "ไฟล์ที่อัปโหลดมีขนาดใหญ่เกินไป โปรดใช้โมเดล AI ที่มีหน้าต่างความสัมพันธ์ของบริบทใหญ่กว่าหรืออัปโหลดไฟล์ที่มีขนาดเล็กกว่า"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Sagen Sie der KI, was als nächstes zu tun ist...",
     "sidebar__unable_subscription__title": "Handlung erforderlich - Wir konnten Ihr Abonnement nicht automatisch verlängern.",
     "sidebar__unable_subscription__link__title": "Beheben Sie es jetzt, um jeden Tag Stunden zu sparen.",
-    "chat__user_message__contexts__file__preview__tips": "Die Formatierung kann von der Quelle abweichen."
+    "chat__user_message__contexts__file__preview__tips": "Die Formatierung kann von der Quelle abweichen.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Die hochgeladenen Dateien sind zu groß. Bitte verwenden Sie ein KI-Modell mit einem größeren Kontextfenster oder laden Sie kleinere Dateien hoch."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

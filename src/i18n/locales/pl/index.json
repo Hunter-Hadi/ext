@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Powiedz AI, co zrobić dalej...",
     "sidebar__unable_subscription__title": "Wymagane działanie - Nie udało nam się automatycznie odnowić Twojej subskrypcji.",
     "sidebar__unable_subscription__link__title": "Napraw to teraz, aby zaoszczędzić godziny każdego dnia.",
-    "chat__user_message__contexts__file__preview__tips": "Formatowanie może być niekonsekwentne w stosunku do źródła."
+    "chat__user_message__contexts__file__preview__tips": "Formatowanie może być niekonsekwentne w stosunku do źródła.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Przesłane pliki są zbyt duże. Proszę użyć modelu AI z większym oknem kontekstowym lub przesłać mniejsze pliki."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

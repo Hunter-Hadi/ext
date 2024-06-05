@@ -1,7 +1,9 @@
+import sum from 'lodash-es/sum'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { v4 as uuidV4 } from 'uuid'
 
+import { MAXAI_VISION_MODEL_UPLOAD_CONFIG } from '@/background/src/chat/constant'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
@@ -89,6 +91,29 @@ const useClientChat = () => {
       const extractText = attachments
         .map((attachment) => attachment?.extractedContent || '')
         .join('')
+      const totalFileSizes = sum(
+        attachments.map((attachment) => attachment.fileSize || 0),
+      )
+      if (totalFileSizes > MAXAI_VISION_MODEL_UPLOAD_CONFIG.maxFileSize) {
+        // 如果文件总大小超过20MB
+        await ClientConversationMessageManager.addMessages(conversationId, [
+          {
+            type: 'system',
+            text: t(
+              `client:provider__chatgpt__upload_file_error__total_too_large__text`,
+            ),
+            messageId: uuidV4(),
+            conversationId,
+            meta: {
+              status: 'error',
+            },
+          },
+        ])
+        await aiProviderRemoveAllFiles()
+        getInputMediator('chatBoxInputMediator').updateInputValue('')
+        getInputMediator('floatingMenuInputMediator').updateInputValue('')
+        return false
+      }
       if (extractText) {
         // 因为我们没有对attachment的extractedContent进行限制，所以这里需要计算tokens的长度
         const conversationMaxTokens =

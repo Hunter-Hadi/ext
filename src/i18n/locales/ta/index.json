@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "AI-ஐ அடிப்படையில் என்ன செய்ய கூறுங்கள்...",
     "sidebar__unable_subscription__title": "செயல்பாடு தேவை - உங்கள் சந்தாவை தானியங்கி மீண்டும் புதுப்பிக்க முடியவில்லை.",
     "sidebar__unable_subscription__link__title": "தினமும் மணி நேரத்தை சேமிக்க இப்போது சரிசெய்யுங்கள்.",
-    "chat__user_message__contexts__file__preview__tips": "மூலம் வருமானத்திலிருந்து வடிவமைப்பு அட்டவணை மாறுபட்டுள்ளது."
+    "chat__user_message__contexts__file__preview__tips": "மூலம் வருமானத்திலிருந்து வடிவமைப்பு அட்டவணை மாறுபட்டுள்ளது.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "பதிவேற்றப்பட்ட கோப்புகள் மிகப் பெரியவைகள். தயவுசெய்து ஒரு பெரிய உள்ளடக்க சாளரத்துடன் ஐஏ மாதிரி பயன்படுத்தவும் அல்லது சிறிய கோப்புகளை பதிவேற்றுக."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

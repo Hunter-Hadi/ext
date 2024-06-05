@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "AI'ya ne yapmasını söyleyin...",
     "sidebar__unable_subscription__title": "Eylem gerekiyor - Aboneliğinizi otomatik olarak yenileyemedik.",
     "sidebar__unable_subscription__link__title": "Her gün saatlerce zaman kazanmak için şimdi düzeltin.",
-    "chat__user_message__contexts__file__preview__tips": "Biçimlendirme kaynaktan tutarsız olabilir."
+    "chat__user_message__contexts__file__preview__tips": "Biçimlendirme kaynaktan tutarsız olabilir.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Yüklenen dosyalar çok büyük. Lütfen daha geniş bir bağlam penceresine sahip bir AI modeli kullanın veya daha küçük dosyalar yükleyin."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

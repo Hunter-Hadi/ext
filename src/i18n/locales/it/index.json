@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Dì all'IA cosa fare dopo...",
     "sidebar__unable_subscription__title": "Azione richiesta - Non siamo riusciti a rinnovare automaticamente la tua sottoscrizione.",
     "sidebar__unable_subscription__link__title": "Risolvi ora per risparmiare ore ogni giorno.",
-    "chat__user_message__contexts__file__preview__tips": "La formattazione potrebbe essere inconsistente dalla fonte."
+    "chat__user_message__contexts__file__preview__tips": "La formattazione potrebbe essere inconsistente dalla fonte.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "I file caricati sono troppo grandi. Utilizza un modello di intelligenza artificiale con una finestra di contesto più ampia o carica file più piccoli."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Mondja meg az AI-nak, mit tegyen ezután...",
     "sidebar__unable_subscription__title": "Cselekvés szükséges - Nem sikerült automatikusan megújítani az előfizetését.",
     "sidebar__unable_subscription__link__title": "Javítsa most, hogy órákat takarítson meg minden nap.",
-    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrásból."
+    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrásból.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "A feltöltött fájlok túl nagyok. Kérlek használj egy AI modellt, amelynek nagyobb a kontextus ablaka, vagy tölts fel kisebb fájlokat."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

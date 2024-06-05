@@ -839,7 +839,8 @@
     "sidebar__survey_dialog__cta_button_text": "ನಿಮ್ಮ ಅನುಭವದ ಬಗ್ಗೆ ನಮಗೆ ತಿಳಿಸಿ",
     "floating_menu__input__placeholder__after_ai_response": "AI-ಗೆ ಮುಂದುವರೆಸಲು ಏನು ಹೇಳಿ...",
     "sidebar__unable_subscription__title": "ಕ್ರಿಯೆ ಅಗತ್ಯವಿದೆ - ನಿಮ್ಮ ಚಂದಾವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
-    "sidebar__unable_subscription__link__title": "ಪ್ರತಿದಿನ ಹೊರತುಪಡಿಸಲು ಈಗ ಅದನ್ನು ಸರಿಪಡಿಸಿ."
+    "sidebar__unable_subscription__link__title": "ಪ್ರತಿದಿನ ಹೊರತುಪಡಿಸಲು ಈಗ ಅದನ್ನು ಸರಿಪಡಿಸಿ.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "ಅಪ್‌ಲೋಡ್ ಮಾಡಿದ ಕಡತಗಳು ತುಂಬ ದೊಡ್ಡವು. ದಯವಿಟ್ಟು ಹೆಚ್ಚಿನ ಸಂದರ್ಭ ವಿಂಡೋ ಹೊಂದಿರುವ AI ಮಾದರಿಯನ್ನು ಬಳಸಿ ಅಥವಾ ಕಡಿಮೆ ಕಡತಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Povejte AI, kaj naj naredi naslednje...",
     "sidebar__unable_subscription__title": "Dejanje zahtevano - Nismo mogli samodejno obnoviti vaše naročnine.",
     "sidebar__unable_subscription__link__title": "Popravite zdaj, da prihranite ure vsak dan.",
-    "chat__user_message__contexts__file__preview__tips": "Oblikovanje se lahko razlikuje od izvora."
+    "chat__user_message__contexts__file__preview__tips": "Oblikovanje se lahko razlikuje od izvora.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Naložene datoteke so prevelike. Prosimo, uporabite model umetne inteligence z večjim kontekstnim oknom ali naložite manjše datoteke."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

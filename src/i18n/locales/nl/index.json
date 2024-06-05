@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Vertel AI wat de volgende stap is...",
     "sidebar__unable_subscription__title": "Actie vereist - We konden uw abonnement niet automatisch verlengen.",
     "sidebar__unable_subscription__link__title": "Los het nu op om elke dag uren te besparen.",
-    "chat__user_message__contexts__file__preview__tips": "De opmaak kan inconsistent zijn vanuit de bron."
+    "chat__user_message__contexts__file__preview__tips": "De opmaak kan inconsistent zijn vanuit de bron.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "De geüploade bestanden zijn te groot. Gebruik alstublieft een AI-model met een groter contextvenster of upload kleinere bestanden."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

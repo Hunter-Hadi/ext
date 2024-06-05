@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "বলুন এআইকে পরবর্তীতে কি করতে হবে...",
     "sidebar__unable_subscription__title": "কার্যকর করতে হবে - আমরা আপনার সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে নবায়ন করতে পারিনি।",
     "sidebar__unable_subscription__link__title": "প্রতিদিন ঘন্টার সময় বাঁচাতে এখনই সমস্যাটি ঠিক করুন।",
-    "chat__user_message__contexts__file__preview__tips": "ফরম্যাটিং উৎস থেকে অস্থির হতে পারে।"
+    "chat__user_message__contexts__file__preview__tips": "ফরম্যাটিং উৎস থেকে অস্থির হতে পারে।",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "আপলোড করা ফাইলগুলি অনেক বড়। দয়া করে একটি এইআই মডেল ব্যবহার করুন যার কনটেক্সট উইন্ডো বড় আছে বা ছোট ফাইলগুলি আপলোড করুন।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

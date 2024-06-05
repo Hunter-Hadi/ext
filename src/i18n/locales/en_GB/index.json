@@ -425,6 +425,7 @@
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Upload docs or images to MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Upload docs to MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "The file uploaded is too large. Consider using an AI model with a larger context window, or uploading a file of a smaller size.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "The uploaded files are too large. Please use an AI model with a larger context window or upload smaller files.",
     "provider__poe__title": "Claude (Poe)",
     "provider__poe__short_description": "Access Claude beyond the US and UK.",
     "provider__poe__auth_description": "Use your own Poe to power the extension.",

@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Säg till AI vad den ska göra härnäst...",
     "sidebar__unable_subscription__title": "Åtgärd krävs - Vi kunde inte förnya din prenumeration automatiskt.",
     "sidebar__unable_subscription__link__title": "Fixa det nu för att spara timmar varje dag.",
-    "chat__user_message__contexts__file__preview__tips": "Formatering kan vara inkonsekvent från källan."
+    "chat__user_message__contexts__file__preview__tips": "Formatering kan vara inkonsekvent från källan.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "De uppladdade filerna är för stora. Använd en AI-modell med ett större sammanhangsfönster eller ladda upp mindre filer."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

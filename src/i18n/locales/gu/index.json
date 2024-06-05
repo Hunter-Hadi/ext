@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "AIને આપવામાં આવે છે કે આગળ શું કરવું...",
     "sidebar__unable_subscription__title": "ક્રિયા જરૂરી - અમે તમારી સંપૂર્ણતાને આપત્તિથી નવીનીકરણ કરી શક્યતા નથી.",
     "sidebar__unable_subscription__link__title": "દિવસો બચાવવા માટે હવે તેને ઠીક કરો.",
-    "chat__user_message__contexts__file__preview__tips": "સ્રોતમાંથી ફોર્મેટિંગ અનિયમિત હોઈ શકે છે."
+    "chat__user_message__contexts__file__preview__tips": "સ્રોતમાંથી ફોર્મેટિંગ અનિયમિત હોઈ શકે છે.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "અપલોડ કરેલા ફાઇલો ખૂબ મોટી છે. મહેરબાની કરીને એક વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરો અથવા લઘુ ફાઇલો અપલોડ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

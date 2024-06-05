@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Ütle AI-le, mida järgmiseks teha...",
     "sidebar__unable_subscription__title": "Tegevus vajalik - Me ei suutnud teie tellimust automaatselt pikendada.",
     "sidebar__unable_subscription__link__title": "Parandage see kohe, et säästa tunde igapäevaselt.",
-    "chat__user_message__contexts__file__preview__tips": "Vormindamine võib olla allikast ebajärjekindel."
+    "chat__user_message__contexts__file__preview__tips": "Vormindamine võib olla allikast ebajärjekindel.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Üles laaditud failid on liiga suured. Palun kasutage AI mudelit, millel on suurem kontekstaken või laadige üles väiksemad failid."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

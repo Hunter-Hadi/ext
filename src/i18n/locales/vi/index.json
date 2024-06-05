@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Nói với AI điều gì cần làm tiếp theo...",
     "sidebar__unable_subscription__title": "Yêu cầu hành động - Chúng tôi không thể tự động gia hạn đăng ký của bạn.",
     "sidebar__unable_subscription__link__title": "Sửa ngay để tiết kiệm hàng giờ mỗi ngày.",
-    "chat__user_message__contexts__file__preview__tips": "Định dạng có thể không nhất quán từ nguồn."
+    "chat__user_message__contexts__file__preview__tips": "Định dạng có thể không nhất quán từ nguồn.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Các tệp đã tải lên quá lớn. Vui lòng sử dụng một mô hình AI với cửa sổ ngữ cảnh lớn hơn hoặc tải lên các tệp nhỏ hơn."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

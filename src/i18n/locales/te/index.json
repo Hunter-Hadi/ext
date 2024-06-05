@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "AI కు తర్వాత ఏమి చేయాలని చెప్పండి...",
     "sidebar__unable_subscription__title": "చర్య అవసరం - మేము మీ చందాన్ని స్వయంగా పునరుద్ధరించలేము.",
     "sidebar__unable_subscription__link__title": "రోజుకు కొన్ని గంటలు సేవ్ చేయడానికి ఇప్పుడే దారిచేయండి.",
-    "chat__user_message__contexts__file__preview__tips": "మూలం నుండి ఫార్మాటింగ్ అసమంజసం ఉంటాయి."
+    "chat__user_message__contexts__file__preview__tips": "మూలం నుండి ఫార్మాటింగ్ అసమంజసం ఉంటాయి.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "అప్లోడ్ చేసిన ఫైళ్ళు చాలా పెద్దవిగా ఉన్నాయి. దయచేసి ఒక పెద్ద కంటెక్స్ట్ విండోతో AI మోడల్ ఉపయోగించండి లేదా తక్కువ సైజులో ఫైళ్ళు అప్లోడ్ చేయండి."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

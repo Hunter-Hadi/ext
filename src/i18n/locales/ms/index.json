@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Beritahu AI apa yang perlu dilakukan seterusnya...",
     "sidebar__unable_subscription__title": "Tindakan diperlukan - Kami tidak dapat memperbaharui langganan anda secara automatik.",
     "sidebar__unable_subscription__link__title": "Perbaiki sekarang untuk menjimatkan berjam-jam setiap hari.",
-    "chat__user_message__contexts__file__preview__tips": "Pemformatan mungkin tidak konsisten dari sumber."
+    "chat__user_message__contexts__file__preview__tips": "Pemformatan mungkin tidak konsisten dari sumber.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Fail muat naik fail terlalu besar. Sila gunakan model AI dengan tetingkap konteks yang lebih besar atau muat naik fail yang lebih kecil."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

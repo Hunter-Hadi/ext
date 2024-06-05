@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Скажите ИИ, что делать дальше...",
     "sidebar__unable_subscription__title": "Действие требуется - Мы не смогли автоматически продлить вашу подписку.",
     "sidebar__unable_subscription__link__title": "Исправьте это сейчас, чтобы экономить несколько часов каждый день.",
-    "chat__user_message__contexts__file__preview__tips": "Форматирование может отличаться от источника."
+    "chat__user_message__contexts__file__preview__tips": "Форматирование может отличаться от источника.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Загруженные файлы слишком большие. Пожалуйста, используйте модель искусственного интеллекта с более широким окном контекста или загрузите меньшие файлы."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

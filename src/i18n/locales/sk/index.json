@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Povedzte AI, čo má robiť ďalej...",
     "sidebar__unable_subscription__title": "Vyžaduje sa akcia - Nepodarilo sa nám automaticky obnoviť vašu predplatnú službu.",
     "sidebar__unable_subscription__link__title": "Opravte to teraz a ušetrite hodiny denne.",
-    "chat__user_message__contexts__file__preview__tips": "Formátovanie môže byť nekonzistentné zo zdroja."
+    "chat__user_message__contexts__file__preview__tips": "Formátovanie môže byť nekonzistentné zo zdroja.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Nahrané súbory sú príliš veľké. Použite prosím model AI s väčším kontextovým oknom alebo nahrajte menšie súbory."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

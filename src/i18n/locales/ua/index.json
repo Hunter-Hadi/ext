@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Скажіть ШІ, що робити далі...",
     "sidebar__unable_subscription__title": "Дія потрібна - Ми не змогли автоматично продовжити вашу підписку.",
     "sidebar__unable_subscription__link__title": "Виправте це зараз, щоб заощадити години кожного дня.",
-    "chat__user_message__contexts__file__preview__tips": "Форматування може бути неоднаковим з джерела."
+    "chat__user_message__contexts__file__preview__tips": "Форматування може бути неоднаковим з джерела.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Завантажені файли занадто великі. Будь ласка, використовуйте модель штучного інтелекту з більшим вікном контексту або завантажуйте менші файли."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

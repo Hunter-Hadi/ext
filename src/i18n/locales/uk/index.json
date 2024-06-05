@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "AI سے کہیں کہ اگلا کام کیا کرے...",
     "sidebar__unable_subscription__title": "کارروائی درخواست شدہ - ہم آپ کی سبسکرپشن خودکار تجدید نہیں کر سکے.",
     "sidebar__unable_subscription__link__title": "ابھی اسے درست کریں تاکہ روزانہ کئی گھنٹے بچا سکیں.",
-    "chat__user_message__contexts__file__preview__tips": "فارمیٹنگ ممکن ہے کہ سورس سے غیر متوازن ہو"
+    "chat__user_message__contexts__file__preview__tips": "فارمیٹنگ ممکن ہے کہ سورس سے غیر متوازن ہو",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "آپلوڈ کردہ فائلیں بہت بڑی ہیں۔ براہ کرم ایک AI ماڈل استعمال کریں جس کے پاس زیادہ بڑی سیاقت ونڈو ہو یا چھوٹی فائلیں اپ لوڈ کریں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

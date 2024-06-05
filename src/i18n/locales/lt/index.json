@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Pasakykite AI, ką daryti toliau...",
     "sidebar__unable_subscription__title": "Veiksmas būtinas - Nepavyko automatiškai pratęsti jūsų prenumeratos.",
     "sidebar__unable_subscription__link__title": "Taisykite tai dabar, kad sutaupytumėte valandas kiekvieną dieną.",
-    "chat__user_message__contexts__file__preview__tips": "Formatavimas gali būti nenuoseklus iš šaltinio."
+    "chat__user_message__contexts__file__preview__tips": "Formatavimas gali būti nenuoseklus iš šaltinio.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Įkelti failai yra per dideli. Prašome naudoti AI modelį su didesniu konteksto langeliu arba įkelti mažesnius failus."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

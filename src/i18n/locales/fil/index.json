@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Sabihin sa AI kung ano ang susunod na gawin...",
     "sidebar__unable_subscription__title": "Kailangan ng Aksyon - Hindi namin maaring i-automatikong i-renew ang iyong subscription.",
     "sidebar__unable_subscription__link__title": "Ayusin ito ngayon upang makatipid ng oras araw-araw.",
-    "chat__user_message__contexts__file__preview__tips": "Ang pag-format ay maaaring hindi magkakatugma mula sa pinagmulan."
+    "chat__user_message__contexts__file__preview__tips": "Ang pag-format ay maaaring hindi magkakatugma mula sa pinagmulan.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Ang mga na-upload na mga file ay masyadong malalaki. Mangyaring gamitin ang isang AI model na may mas malaking bintana ng konteksto o mag-upload ng mas maliit na mga file."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

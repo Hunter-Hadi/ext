@@ -839,7 +839,8 @@
     "floating_menu__input__placeholder__after_ai_response": "Indica a l'IA què fer a continuació...",
     "sidebar__unable_subscription__title": "Acció requerida - No hem pogut renovar automàticament la teva subscripció.",
     "sidebar__unable_subscription__link__title": "Soluciona-ho ara per estalviar hores cada dia.",
-    "chat__user_message__contexts__file__preview__tips": "El format pot ser inconsistent amb l'origen."
+    "chat__user_message__contexts__file__preview__tips": "El format pot ser inconsistent amb l'origen.",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Els fitxers carregats són massa grans. Si us plau, utilitzeu un model d'IA amb una finestra de context més gran o carregueu fitxers més petits."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

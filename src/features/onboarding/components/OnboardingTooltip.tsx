@@ -1,3 +1,6 @@
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
 import { styled } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import React, { FC, PropsWithChildren, useCallback, useEffect } from 'react'
@@ -22,7 +25,7 @@ const BlackTooltip = styled(({ className, ...props }: TooltipProps) => (
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.common.black,
     color: '#fff',
-    padding: '12px',
+    padding: '0px',
     fontSize: '14px',
     lineHeight: '1.5',
     boxSizing: 'border-box',
@@ -49,7 +52,10 @@ export interface IOnboardingTooltipProps extends TooltipProps {
   InformationBarProps?: ITooltipInformationBarProps
 
   // 在打开 Tooltip 之前的 回掉函数，如果这个函数返回 false ，会阻止 Tooltip 打开
-  beforeTooltipShow?: () => Promise<boolean> | boolean
+  beforeTooltipShow?: (
+    container?: HTMLElement | null,
+    sceneType?: IOnBoardingSceneType,
+  ) => Promise<boolean> | boolean
 }
 
 const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
@@ -65,7 +71,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
     ...resetProps
   } = props
 
-  let container: any = document.body
+  let container: HTMLElement | null = document.body
   if (minimumTooltip) {
     container = getAppMinimizeContainerElement()
   } else {
@@ -74,7 +80,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
       : getMaxAISidebarRootElement()
   }
   if (props.PopperProps?.container) {
-    container = props.PopperProps.container
+    container = props.PopperProps.container as HTMLElement
   }
   if (!container) {
     container = document.body
@@ -85,7 +91,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
   const openTooltip = useCallback(async () => {
     // 如果返回 false ，会阻止 Tooltip 打开
     const beforeTooltipShowResponse = beforeTooltipShow
-      ? await beforeTooltipShow()
+      ? await beforeTooltipShow(container, sceneType)
       : true
 
     if (beforeTooltipShowResponse) {
@@ -97,7 +103,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
         setOpenedCacheBySceneType(sceneType)
       }
     }
-  }, [sceneType, beforeTooltipShow])
+  }, [sceneType, beforeTooltipShow, container])
 
   const closeTooltip = useCallback(() => {
     setOpen(false)
@@ -153,9 +159,36 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
         },
       }}
       title={
-        <TooltipInformationBar {...InformationBarProps}>
-          {resetProps.title}
-        </TooltipInformationBar>
+        <Box
+          sx={{
+            position: 'relative',
+            p: 1.5,
+            pt: 2,
+            pr: 2,
+            textTransform: 'none',
+          }}
+        >
+          <IconButton
+            size="small"
+            onClick={closeTooltip}
+            sx={{
+              position: 'absolute',
+              top: 4,
+              right: 4,
+              p: '2px',
+            }}
+          >
+            <CloseOutlinedIcon
+              sx={{
+                fontSize: '14px',
+                color: 'text.secondary',
+              }}
+            />
+          </IconButton>
+          <TooltipInformationBar {...InformationBarProps}>
+            {resetProps.title}
+          </TooltipInformationBar>
+        </Box>
       }
     >
       <div>{props.children}</div>

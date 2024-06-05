@@ -66,9 +66,10 @@ interface InputAssistantButtonProps {
   buttonSize?: InputAssistantButtonSize // 按钮尺寸
   placement?: InputAssistantButtonPosition // 按钮弹出位置
   observerData: IInputAssistantButtonObserverData
+  order?: number // 按钮排序
 }
 const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
-  const { observerData, placement } = props
+  const { observerData, placement, order } = props
   const {
     id: rootId,
     config: buttonConfig,
@@ -218,6 +219,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         ?.shadowRoot?.querySelector('div') as HTMLElement,
     )
   }, [])
+  console.log(`zztest order`, order)
   return (
     <div
       style={{
@@ -336,7 +338,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             </Box>
           </InputAssistantButtonContextMenu>
           {buttonGroup[0].onboardingTooltipSceneType &&
-          emotionCacheRef.current ? (
+          emotionCacheRef.current &&
+          // 只有页面中第一个 instant reply 按钮才会渲染 OnboardingTooltip
+          order === 1 ? (
             <CacheProvider value={emotionCacheRef.current}>
               <OnboardingTooltipTempPortal
                 // 找到 maxai-input-assistant-button 元素下的第一个 div
@@ -434,7 +438,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             </Box>
           </InputAssistantButtonContextMenu>
           {buttonGroup[1].onboardingTooltipSceneType &&
-          emotionCacheRef.current ? (
+          emotionCacheRef.current &&
+          // 只有页面中第一个 instant reply 按钮才会渲染 OnboardingTooltip
+          order === 1 ? (
             <CacheProvider value={emotionCacheRef.current}>
               <OnboardingTooltipTempPortal
                 // 找到 maxai-input-assistant-button 元素下的第一个 div

@@ -79,11 +79,19 @@ const FloatingContextMenu: FC<{
     inputValue,
     contextWindowList,
     isSettingCustomVariables,
+    isSettingCustomVariablesRef,
     setIsSettingCustomVariables,
     setIsInputCustomVariables,
   } = useInitContextWindow()
+  console.log(
+    'isSettingCustomVariables,isSettingCustomVariablesRef',
+    isSettingCustomVariables,
+    isSettingCustomVariablesRef,
+  )
+
   const { currentFloatingContextMenuDraft, activeAIResponseMessage } =
     useFloatingContextMenuDraft()
+  console.log('zztest activeAIResponseMessage', activeAIResponseMessage)
   const {
     hideFloatingContextMenu,
     floatingDropdownMenu,
@@ -699,7 +707,7 @@ const FloatingContextMenu: FC<{
               return (
                 floatingDropdownMenu.open &&
                 !activeAIResponseMessage &&
-                !isSettingCustomVariables &&
+                !isSettingCustomVariablesRef &&
                 (currentFloatingContextMenuDraft === '' ||
                   inputValue.length > 0)
               )

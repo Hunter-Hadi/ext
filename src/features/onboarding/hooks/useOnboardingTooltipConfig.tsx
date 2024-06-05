@@ -13,6 +13,8 @@ import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 export type IOnBoardingTooltipConfigType = {
   // 选择器支持字符串数组
   referenceElementSelector: string | string[]
+  // 在 OnboardingTooltip render 之前调用，返回 false 会阻止 OnboardingTooltip 渲染
+  // beforeTooltipRender?: () => boolean
   containerFinder?: () => HTMLElement
   tooltipProps?: Partial<
     Omit<IOnboardingTooltipProps, 'children' | 'sceneType'>
@@ -248,10 +250,8 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
     // ==================== instant reply start ====================
     // compose reply button
     if (
-      sceneType === 'INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__OUTLOOK__COMPOSE_REPLY_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__TWITTER__COMPOSE_REPLY_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__LINKEDIN__COMPOSE_REPLY_BUTTON'
+      sceneType.startsWith('INSTANT_REPLY__') &&
+      sceneType.endsWith('__COMPOSE_REPLY_BUTTON')
     ) {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-cta-button"]`,
@@ -267,26 +267,25 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
 
     // refine draft button
     if (
-      sceneType === 'INSTANT_REPLY__GMAIL__REFINE_DRAFT_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__OUTLOOK__REFINE_DRAFT_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__TWITTER__REFINE_DRAFT_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__LINKEDIN__REFINE_DRAFT_BUTTON'
+      sceneType.startsWith('INSTANT_REPLY__') &&
+      sceneType.endsWith('__REFINE_DRAFT_BUTTON')
     ) {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-dropdown-button"]`,
         tooltipProps: {
           title: 'Click to improve your draft.',
           placement: 'right',
+          sx: {
+            minWidth: 240,
+          },
         },
       }
     }
 
     // compose new button
     if (
-      sceneType === 'INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__OUTLOOK__COMPOSE_NEW_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__TWITTER__COMPOSE_NEW_BUTTON' ||
-      sceneType === 'INSTANT_REPLY__LINKEDIN__COMPOSE_NEW_BUTTON'
+      sceneType.startsWith('INSTANT_REPLY__') &&
+      sceneType.endsWith('__COMPOSE_NEW_BUTTON')
     ) {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-cta-button"]`,

@@ -4,7 +4,7 @@
  * 用 referenceElement 的位置来定位 tooltip
  */
 
-import React, { FC, useCallback, useMemo, useState } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useInterval from '@/features/common/hooks/useInterval'
@@ -37,6 +37,7 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
   container: propContainer,
   showStateTrigger,
 }) => {
+  const [enable, setEnable] = useState<boolean>(false)
   // 已经 展示过这个 sceneType 的 onboarding 标记, 默认为 true
   // 这个 标记 需要在 组件第一次加载时同步一次缓存
   const [alreadyOpened, setAlreadyOpened] = useState<boolean>(true)
@@ -71,6 +72,14 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
     return container
   }, [propContainer, onboardingConfig])
 
+  const intervalEnable = useMemo(() => {
+    // 如果已经展示过了，就不再开启计时器
+    // 如果已经找到了 referenceElement，就不再开启计时器
+    // 如果没有 container，就不开启计时器
+    // 如果 enable 为 false，就不开启计时器
+    return !alreadyOpened && !referenceElement && container && enable
+  }, [alreadyOpened, referenceElement, container, enable])
+
   const syncAlreadyOpenedCacheBySceneType = useCallback(() => {
     getAlreadyOpenedCacheBySceneType(sceneType).then((opened) => {
       setAlreadyOpened(opened)
@@ -94,18 +103,17 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
     },
     // 找到了就不找了, 没有 container 不找
     // 已经展示过了，不找了
-    alreadyOpened || referenceElement || !container ? null : 300,
+    intervalEnable ? 300 : null,
   )
 
   useEffectOnce(syncAlreadyOpenedCacheBySceneType)
 
-  if (sceneType.includes('INSTANT_REPLY__OUTLOOK')) {
-    console.log(
-      'zztest referenceElement',
-      container,
-      referenceElement,
-      onboardingConfig,
-    )
+  useEffect(() => {
+    setEnable(true)
+  }, [])
+
+  if (!enable) {
+    return null
   }
 
   if (alreadyOpened) {

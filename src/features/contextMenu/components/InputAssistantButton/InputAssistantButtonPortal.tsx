@@ -14,9 +14,8 @@ const InputAssistantPortal: FC = () => {
   const [allObserverData, setAllObserverData] = useState<
     IInputAssistantButtonObserverData[]
   >([])
-  const inputAssistantPortalRef = React.useRef<InputAssistantButtonManager | null>(
-    null,
-  )
+  const inputAssistantPortalRef =
+    React.useRef<InputAssistantButtonManager | null>(null)
   useEffectOnce(() => {
     inputAssistantPortalRef.current = new InputAssistantButtonManager()
     inputAssistantPortalRef.current.createInputAssistantButtonListener(
@@ -103,9 +102,12 @@ const InputAssistantPortal: FC = () => {
   }, [currentPageShow])
   return (
     <>
-      {allObserverData.map((observerData) => {
+      {allObserverData.map((observerData, index) => {
         return createPortal(
-          <InputAssistantButton observerData={observerData} />,
+          <InputAssistantButton
+            observerData={observerData}
+            order={index + 1}
+          />,
           observerData.renderRootElement,
           observerData.id,
         )

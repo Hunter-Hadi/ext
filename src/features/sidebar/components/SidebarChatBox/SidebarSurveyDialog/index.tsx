@@ -5,8 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 import { setChromeExtensionOnBoardingData } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import SidebarSurveyContent from '@/features/sidebar/components/SidebarChatBox/SidebarSurveyDialog/SidebarSurveyContent'
-import { currentSurveyKey } from '@/features/survey/constants'
-import useSurveyStatus from '@/features/survey/hooks/useSurveyStatus'
+import useFeedbackSurveyStatus from '@/features/survey/hooks/useFeedbackSurveyStatus'
 
 const SidebarSurveyDialog = () => {
   // 当前渲染 survey key
@@ -14,7 +13,7 @@ const SidebarSurveyDialog = () => {
     canShowSurvey,
     alreadyPoppedSurveyModal,
     loaded: surveyStatusLoaded,
-  } = useSurveyStatus()
+  } = useFeedbackSurveyStatus()
 
   const [open, setOpen] = useState(false)
 
@@ -70,7 +69,7 @@ const SidebarSurveyDialog = () => {
         }}
       >
         <SidebarSurveyContent
-          surveyKey={currentSurveyKey}
+          surveyKey={'feedback'}
           handleCloseClick={handleClose}
         />
       </Box>

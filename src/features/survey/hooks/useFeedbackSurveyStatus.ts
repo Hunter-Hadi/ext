@@ -4,13 +4,14 @@ import { useRecoilValue } from 'recoil'
 
 import { getChromeExtensionOnBoardingData } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { currentSurveyKey } from '@/features/survey/constants'
 import {
   FirstFetchSurveyStatusLoadedAtom,
   HaveFilledOutSurveyAtom,
 } from '@/features/survey/store'
 
-const useSurveyStatus = () => {
+import { ISurveyKeyType } from '../types'
+
+const useFeedbackSurveyStatus = (surveyKey?: ISurveyKeyType) => {
   const [loaded, setLoaded] = useState(false)
   const { userInfo, isPayingUser } = useUserInfo()
 
@@ -34,7 +35,7 @@ const useSurveyStatus = () => {
     if (!loaded || !firstFetchSurveyStatusLoaded) {
       return false
     }
-    if (filledOutSurveyState[currentSurveyKey]) {
+    if (surveyKey !== undefined && filledOutSurveyState[surveyKey]) {
       // 如果已经填写过了当前 survey，不再显示 survey
       return false
     }
@@ -81,6 +82,7 @@ const useSurveyStatus = () => {
     filledOutSurveyState,
     loaded,
     firstFetchSurveyStatusLoaded,
+    surveyKey,
   ])
 
   useEffect(() => {
@@ -103,4 +105,4 @@ const useSurveyStatus = () => {
   }
 }
 
-export default useSurveyStatus
+export default useFeedbackSurveyStatus

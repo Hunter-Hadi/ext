@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "för att välja alternativet.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klicka för att ersätta den markerade texten med AI-genererat innehåll.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan be AI att förbättra det AI-genererade innehållet på vilket sätt du vill."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Tack för att du delade din upplevelse med oss. 🙏",
+    "funnel_survey__submit_success__description": "Vi kommer noggrant granska ditt svar och leverera en ännu bättre upplevelse för dig!",
+    "funnel_survey__cta_button__submit_text": "Skicka mitt svar",
+    "funnel_survey__cta_button__loading_text": "Skickar...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Berätta om dina bekymmer",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Vad fick dig att bestämma dig för att avbryta din prenumeration på MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Berätta vad som fick dig att avbryta..."
   }
 }

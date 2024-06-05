@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "lai izvēlētos opciju.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Noklikšķiniet, lai aizstātu atlasīto tekstu ar AI ģenerētu saturu.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Jūs varat lūgt AI precizēt AI ģenerēto saturu, kā vien vēlaties."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Paldies, ka dalījāties savu pieredzi ar mums. 🙏",
+    "funnel_survey__submit_success__description": "Mēs rūpīgi izvērtēsim jūsu atbildi un nodrošināsim vēl labāku pieredzi jums!",
+    "funnel_survey__cta_button__submit_text": "Iesniegt manu atbildi",
+    "funnel_survey__cta_button__loading_text": "Notiek iesniegšana...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Pastāstiet mums par savām bažām",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Kas lika jums atteikties no MaxAI.me abonēšanas?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Pastāstiet mums, kas izraisīja jūsu atteikšanos..."
   }
 }

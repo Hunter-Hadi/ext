@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "选择该选项。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "点击以用AI生成的内容替换所选文本。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "您可以随心要求AI优化AI生成的内容。"
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "感谢您与我们分享您的经验。🙏",
+    "funnel_survey__submit_success__description": "我们将仔细审查您的答案，并为您提供更好的体验！",
+    "funnel_survey__cta_button__submit_text": "提交我的答案",
+    "funnel_survey__cta_button__loading_text": "正在提交...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "告诉我们您的顾虑",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "是什么原因导致您决定取消MaxAI.me订阅？",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "告诉我们是什么原因导致您取消..."
   }
 }

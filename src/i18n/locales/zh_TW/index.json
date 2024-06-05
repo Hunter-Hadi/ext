@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "選擇該選項。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "點擊以使用 AI 生成的內容替換所選文字。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "您可以隨心所欲地要求AI改進AI生成的內容。"
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "感謝您與我們分享您的經驗。🙏",
+    "funnel_survey__submit_success__description": "我們將仔細審查您的答案，並為您提供更好的體驗！",
+    "funnel_survey__cta_button__submit_text": "提交我的答案",
+    "funnel_survey__cta_button__loading_text": "正在提交...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "告訴我們您的顧慮",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "是什麼原因讓您決定取消 MaxAI.me 訂閱？",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "告訴我們造成您取消的原因..."
   }
 }

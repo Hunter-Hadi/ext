@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pre výber možnosti.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknite pre nahradenie vybraného textu obsahom generovaným umelou inteligenciou.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Môžete požiadať AI, aby upravil obsah generovaný AI podľa vašich predstáv."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Ďakujeme, že ste sa podelili o svoje skúsenosti s nami. 🙏",
+    "funnel_survey__submit_success__description": "Dôkladne preskúmame vašu odpoveď a poskytneme vám ešte lepšiu skúsenosť!",
+    "funnel_survey__cta_button__submit_text": "Odoslať moju odpoveď",
+    "funnel_survey__cta_button__loading_text": "Odosielanie...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Povedzte nám o svojich obavách",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Čo vás priviedlo k zrušeniu vášho predplatného MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Povedzte nám, čo spôsobilo vaše zrušenie..."
   }
 }

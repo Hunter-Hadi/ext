@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "за да изберете опцията.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Щракнете, за да замените избрания текст със съдържание, генерирано от AI.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Можете да поискате от AI да уточни съдържанието, генерирано от AI, по всякакъв начин."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Благодарим Ви, че споделихте своето преживяване с нас. 🙏",
+    "funnel_survey__submit_success__description": "Ще прегледаме внимателно вашите отговори и ще предоставим още по-добро преживяване за вас!",
+    "funnel_survey__cta_button__submit_text": "Изпрати моят отговор",
+    "funnel_survey__cta_button__loading_text": "Изпращане...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Споделете вашите притеснения",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Какво ви накара да откажете абонамента си за MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Споделете какво ви накара да откажете..."
   }
 }

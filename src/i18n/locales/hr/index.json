@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "da biste odabrali opciju.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknite da zamijenite odabrani tekst s AI-generiranim sadržajem.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Možete AI-u postaviti pitanje kako biste poboljšali sadržaj koji je generirao AI."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Hvala vam što ste podijelili svoje iskustvo s nama. 🙏",
+    "funnel_survey__submit_success__description": "Pažljivo ćemo pregledati vaš odgovor i pružiti još bolje iskustvo za vas!",
+    "funnel_survey__cta_button__submit_text": "Pošalji moj odgovor",
+    "funnel_survey__cta_button__loading_text": "Slanje...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Recite nam o svojim brigama",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Što vas je natjeralo da otkažete pretplatu na MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Recite nam što je uzrokovalo vašu otkazivanje..."
   }
 }

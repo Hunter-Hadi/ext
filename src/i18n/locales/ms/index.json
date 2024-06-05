@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "untuk memilih pilihan.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klik untuk menggantikan teks yang dipilih dengan kandungan yang dihasilkan oleh AI.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Anda boleh meminta AI untuk menyempurnakan kandungan yang dihasilkan oleh AI mengikut kehendak anda."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Terima kasih kerana berkongsi pengalaman anda dengan kami. 🙏",
+    "funnel_survey__submit_success__description": "Kami akan mengkaji jawapan anda dengan teliti dan memberikan pengalaman yang lebih baik untuk anda!",
+    "funnel_survey__cta_button__submit_text": "Hantar jawapan saya",
+    "funnel_survey__cta_button__loading_text": "Sedang menghantar...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Beritahu kami tentang kebimbangan anda",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Apa yang membuatkan anda memutuskan untuk membatalkan langganan MaxAI.me anda?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Beritahu kami apa yang menyebabkan anda membatalkan..."
   }
 }

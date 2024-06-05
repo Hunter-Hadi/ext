@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "را فشار دهید.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "برای جایگزینی متن انتخاب شده با محتوای تولید شده توسط هوش مصنوعی کلیک کنید.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "می‌توانید از هوش مصنوعی بخواهید تا محتوای تولید شده توسط آن را به دلخواه خود بهبود دهد."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "از به اشتراک گذاشتن تجربه خود با ما متشکریم. 🙏",
+    "funnel_survey__submit_success__description": "ما پاسخ شما را با دقت بررسی خواهیم کرد و تجربه بهتری را برای شما ارائه خواهیم داد!",
+    "funnel_survey__cta_button__submit_text": "ارسال پاسخ من",
+    "funnel_survey__cta_button__loading_text": "در حال ارسال...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "درباره نگرانی‌های خود به ما بگویید",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "چه چیزی شما را متقاعد کرد که اشتراک MaxAI.me خود را لغو کنید؟",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "به ما بگویید چه علتی باعث لغو شدن شما شده است..."
   }
 }

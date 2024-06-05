@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "kuchagua chaguo.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Bonyeza ili kubadilisha maandishi yaliyochaguliwa na maudhui yaliyotengenezwa na AI.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Unaweza kuuliza AI kuboresha yaliyotengenezwa na AI kama unavyotaka."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Asante kwa kushiriki uzoefu wako nasi. 🙏",
+    "funnel_survey__submit_success__description": "Tutakagua jibu lako kwa umakini na kutoa uzoefu bora zaidi kwako!",
+    "funnel_survey__cta_button__submit_text": "Wasilisha jibu langu",
+    "funnel_survey__cta_button__loading_text": "Inatuma...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Tuambie kuhusu wasiwasi wako",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Nini kilichokufanya uamue kufuta usajili wako wa MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Tuambie kilichosababisha kufuta..."
   }
 }

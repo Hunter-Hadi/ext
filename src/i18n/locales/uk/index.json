@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "اختیار کو منتخب کرنے کے لئے.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "منتخب متن کو AI تیار کردہ مواد سے تبدیل کرنے کے لئے کلک کریں۔",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "آپ AI سے کہ سکتے ہیں کہ آپ جو چاہیں وہ AI تیار کردہ مواد کو مزید درست کرے۔"
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "ہمیں اپنے تجربے کا شکریہ دینے کے لئے آپ کا شکریہ. 🙏",
+    "funnel_survey__submit_success__description": "ہم آپ کے جواب کا جائزہ لیں گے اور آپ کے لئے اور بہتر تجربہ فراہم کریں گے!",
+    "funnel_survey__cta_button__submit_text": "میرا جواب دیں",
+    "funnel_survey__cta_button__loading_text": "جمع ہو رہا ہے...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "ہمیں اپنے تشویشات کے بارے میں بتائیں",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "آپ نے کیا وجہ تھی کہ آپ نے اپنے MaxAI.me سبسکرپشن منسوخ کرنے کا فیصلہ کیا؟",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "ہمیں بتائیں کہ آپ نے کیا وجہ ہے..."
   }
 }

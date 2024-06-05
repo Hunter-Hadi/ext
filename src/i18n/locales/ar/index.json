@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "لتحديد الخيار.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "انقر لاستبدال النص المحدد بمحتوى تم إنشاؤه بواسطة الذكاء الاصطناعي.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "يمكنك طلب من الذكاء الاصطناعي تحسين المحتوى الذي تم إنشاؤه بواسطة الذكاء الاصطناعي كما تريد."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "شكرًا لمشاركة تجربتك معنا. 🙏",
+    "funnel_survey__submit_success__description": "سنقوم بمراجعة إجابتك بعناية وتقديم تجربة أفضل لك!",
+    "funnel_survey__cta_button__submit_text": "إرسال إجابتي",
+    "funnel_survey__cta_button__loading_text": "جارٍ الإرسال...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "أخبرنا عن مخاوفك",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "ما الذي دفعك لإلغاء اشتراكك في MaxAI.me؟",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "أخبرنا ما الذي تسبب في إلغاء الاشتراك..."
   }
 }

@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "az opció kiválasztásához.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kattintson az AI által generált tartalommal való kiválasztott szöveg helyettesítéséhez.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Kérdezheti az AI-t, hogy finomítsa az AI által generált tartalmat bármilyen módon."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Köszönjük, hogy megosztotta velünk tapasztalatait. 🙏",
+    "funnel_survey__submit_success__description": "Gondosan áttekintjük válaszát és még jobb élményt nyújtunk Önnek!",
+    "funnel_survey__cta_button__submit_text": "Válaszom elküldése",
+    "funnel_survey__cta_button__loading_text": "Küldés folyamatban...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Mondja el aggodalmait",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Miért döntött úgy, hogy megszünteti a MaxAI.me előfizetését?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Mondja el, mi okozta a lemondást..."
   }
 }

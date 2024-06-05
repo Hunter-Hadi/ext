@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "per selezionare l'opzione.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Fare clic per sostituire il testo selezionato con contenuti generati dall'IA.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puoi chiedere all'IA di perfezionare i contenuti generati dall'IA come preferisci."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Grazie per aver condiviso la tua esperienza con noi. 🙏",
+    "funnel_survey__submit_success__description": "Esamineremo attentamente la tua risposta e forniremo un'esperienza ancora migliore per te!",
+    "funnel_survey__cta_button__submit_text": "Invia la mia risposta",
+    "funnel_survey__cta_button__loading_text": "Invio in corso...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Parlaci delle tue preoccupazioni",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Cosa ti ha spinto a cancellare la tua sottoscrizione a MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Dicci cosa ti ha causato la cancellazione..."
   }
 }

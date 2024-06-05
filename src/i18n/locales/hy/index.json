@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "ընտրելու համար։",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Սեղմեք, որպեսզի փոխարինեք ընտրված տեքստը AI-ի գեներացված բովանդակությամբ։",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Դուք կարող եք հարցնել AI-ին, որ ձեր պատասխանը վերաբերվի AI-ի գեներացված ուրիշ բովանդակությանը:"
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Շնորհակալություն, որ կիրառեցիք ձեր արտադրանքը մեզ հետ բաժանելու համար: 🙏",
+    "funnel_survey__submit_success__description": "Մենք կարողանանք ավելի լավագույն արտադրանք ստեղծել ձեր համար, հարգելի հաճախորդ:",
+    "funnel_survey__cta_button__submit_text": "Ավելացնել պատասխանը",
+    "funnel_survey__cta_button__loading_text": "Ներկայացում...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Ասեք մեզ ձեր խնդրերի մասին",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Ինչպե՞ս կարողացեք չեղարկել MaxAI.me-ի բաժնում:",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Ասեք մեզ, թե ինչու չեղարկեցիք..."
   }
 }

@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "を押します。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "選択したテキストをAIが生成したコンテンツで置き換えるにはクリックしてください。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AIが生成したコンテンツを自由に洗練させることができます。"
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "ご意見を共有していただきありがとうございます。🙏",
+    "funnel_survey__submit_success__description": "お客様の回答を丁寧に確認し、さらに良い体験を提供できるよう努めます！",
+    "funnel_survey__cta_button__submit_text": "回答を送信する",
+    "funnel_survey__cta_button__loading_text": "送信中...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "ご不満をお聞かせください",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "MaxAI.meのサブスクリプションをキャンセルする決め手は何でしたか？",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "キャンセルの原因を教えてください..."
   }
 }

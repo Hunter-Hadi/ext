@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "чтобы выбрать опцию.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Щелкните, чтобы заменить выбранный текст сгенерированным искусственным интеллектом.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Вы можете попросить ИИ улучшить созданный им контент так, как вам нужно."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Спасибо, что поделились своим опытом с нами. 🙏",
+    "funnel_survey__submit_success__description": "Мы внимательно рассмотрим ваш ответ и предоставим вам еще лучший опыт!",
+    "funnel_survey__cta_button__submit_text": "Отправить мой ответ",
+    "funnel_survey__cta_button__loading_text": "Отправка...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Расскажите нам о ваших опасениях",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Что заставило вас решить отменить подписку на MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Расскажите, что привело к отмене..."
   }
 }

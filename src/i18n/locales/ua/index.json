@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "щоб вибрати опцію.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Клацніть, щоб замінити виділений текст змістом, створеним штучним інтелектом.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Ви можете попросити ШІ вдосконалити згенерований ним контент так, як вам потрібно."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Дякуємо, що поділилися своїм досвідом з нами. 🙏",
+    "funnel_survey__submit_success__description": "Ми ретельно переглянемо вашу відповідь і забезпечимо ще кращий досвід для вас!",
+    "funnel_survey__cta_button__submit_text": "Надіслати мою відповідь",
+    "funnel_survey__cta_button__loading_text": "Відправка...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Розкажіть нам про ваші обурення",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Чим ви керувалися, приймаючи рішення про скасування підписки на MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Розкажіть нам, що спонукало вас до скасування..."
   }
 }

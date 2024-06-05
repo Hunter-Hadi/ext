@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "를 누르세요.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "선택한 텍스트를 AI로 생성된 콘텐츠로 대체하려면 클릭하세요.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI가 생성한 콘텐츠를 원하는 대로 개선하기 위해 AI에게 질문할 수 있습니다."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "경험을 공유해 주셔서 감사합니다. 🙏",
+    "funnel_survey__submit_success__description": "귀하의 답변을 신중히 검토하여 더 나은 경험을 제공하겠습니다!",
+    "funnel_survey__cta_button__submit_text": "답변 제출하기",
+    "funnel_survey__cta_button__loading_text": "제출 중...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "우려 사항을 알려주세요",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "MaxAI.me 구독을 취소하게 된 이유는 무엇인가요?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "취소된 이유를 알려주세요..."
   }
 }

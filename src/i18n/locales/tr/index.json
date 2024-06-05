@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "tuşuna basın.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Seçili metni yapay zeka tarafından oluşturulan içerikle değiştirmek için tıklayın.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI tarafından oluşturulan içeriği istediğiniz gibi geliştirmek için AI'ya sorabilirsiniz."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Deneyiminizi bizimle paylaştığınız için teşekkür ederiz. 🙏",
+    "funnel_survey__submit_success__description": "Cevabınızı dikkatlice gözden geçireceğiz ve sizin için daha iyi bir deneyim sunacağız!",
+    "funnel_survey__cta_button__submit_text": "Cevabımı Gönder",
+    "funnel_survey__cta_button__loading_text": "Gönderiliyor...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Endişeleriniz hakkında bize bildirin",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "MaxAI.me aboneliğinizi iptal etme kararınızı ne etkiledi?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "İptal etmenize neden olanları bize anlatın..."
   }
 }

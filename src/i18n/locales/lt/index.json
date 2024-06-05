@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "norint pasirinkti parinktį.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Spustelėkite, kad pakeistumėte pažymėtą tekstą su AI sugeneruotu turiniu.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Galite paprašyti dirbtinio intelekto patobulinti dirbtinio intelekto sukurtą turinį taip, kaip norite."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Dėkojame, kad pasidalinote savo patirtimi su mumis. 🙏",
+    "funnel_survey__submit_success__description": "Mes atidžiai peržiūrėsime jūsų atsakymą ir suteiksime dar geresnę patirtį!",
+    "funnel_survey__cta_button__submit_text": "Pateikti mano atsakymą",
+    "funnel_survey__cta_button__loading_text": "Siunčiama...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Pasakykite mums apie savo rūpesčius",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Kas lėmė jūsų sprendimą nutraukti MaxAI.me prenumeratą?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Pasakykite, kas lėmė jūsų nutraukimą..."
   }
 }

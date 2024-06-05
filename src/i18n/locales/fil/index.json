@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "upang piliin ang opsiyon.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "I-click para palitan ang napiling teksto gamit ang nilikhang AI content.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Maaari kang magtanong sa AI upang mapabuti ang nilikhang nilalaman ng AI kahit na anong gusto mo."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Salamat sa pagbahagi ng iyong karanasan sa amin. 🙏",
+    "funnel_survey__submit_success__description": "Maingat naming susuriin ang iyong sagot at maghahatid ng mas magandang karanasan para sa iyo!",
+    "funnel_survey__cta_button__submit_text": "Isumite ang aking sagot",
+    "funnel_survey__cta_button__loading_text": "Inii-submit...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Sabihin sa amin ang iyong mga alalahanin",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Ano ang nagpasya sa iyo na kanselahin ang iyong subscription sa MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Ipabatid sa amin kung ano ang sanhi ng iyong pagkansela..."
   }
 }

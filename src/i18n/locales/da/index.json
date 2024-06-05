@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "for at vælge muligheden.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klik for at erstatte den valgte tekst med AI-genereret indhold.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan bede AI om at forfine det AI-genererede indhold, som du ønsker."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Tak fordi du delte din oplevelse med os. 🙏",
+    "funnel_survey__submit_success__description": "Vi vil nøje gennemgå dit svar og levere en endnu bedre oplevelse til dig!",
+    "funnel_survey__cta_button__submit_text": "Indsend mit svar",
+    "funnel_survey__cta_button__loading_text": "Indsender...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Fortæl os om dine bekymringer",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Hvad fik dig til at beslutte at afbestille dit MaxAI.me-abonnement?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Fortæl os hvad der fik dig til at afbestille..."
   }
 }

@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "valitaksesi vaihtoehdon.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Napsauta korvataksesi valitun tekstin tekoälyn luomalla sisällöllä.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Voit pyytää tekoälyä tarkentamaan tekoälyn luomaa sisältöä haluamallasi tavalla."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Kiitos, kun jaat kokemuksesi kanssamme. 🙏",
+    "funnel_survey__submit_success__description": "Käsittelemme vastauksesi huolellisesti ja tarjoamme sinulle vielä paremman kokemuksen!",
+    "funnel_survey__cta_button__submit_text": "Lähetä vastaukseni",
+    "funnel_survey__cta_button__loading_text": "Lähetetään...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Kerro meille huolenaiheistasi",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Mikä sai sinut päättämään peruuttaa MaxAI.me-tilauksesi?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Kerro, mikä aiheutti peruutuksen..."
   }
 }

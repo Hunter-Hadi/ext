@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "כדי לבחור את האפשרות.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "לחץ כדי להחליף את הטקסט הנבחר עם תוכן שנוצר על ידי AI.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "תוכל לבקש מהמודע המלאכותי לשפר את תוכן שנוצר על ידו בדיוק כפי שתרצה."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "תודה על שיתוף החוויה שלך איתנו. 🙏",
+    "funnel_survey__submit_success__description": "אנחנו נבדוק בקפידה את התשובה שלך ונעניק לך חוויה טובה יותר!",
+    "funnel_survey__cta_button__submit_text": "שלח את התשובה שלי",
+    "funnel_survey__cta_button__loading_text": "מבצע...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "ספר לנו על הדאגות שלך",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "מה גרם לך לבטל את מנוי MaxAI.me שלך?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "ספר לנו מה גרם לך לבטל..."
   }
 }

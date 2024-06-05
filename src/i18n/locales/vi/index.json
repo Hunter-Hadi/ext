@@ -1187,5 +1187,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "để chọn tùy chọn.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Nhấp để thay thế văn bản đã chọn bằng nội dung được tạo bởi trí tuệ nhân tạo.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Bạn có thể yêu cầu AI điều chỉnh nội dung do AI tạo ra theo ý muốn của bạn."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "Cảm ơn bạn đã chia sẻ trải nghiệm của mình với chúng tôi. 🙏",
+    "funnel_survey__submit_success__description": "Chúng tôi sẽ xem xét cẩn thận câu trả lời của bạn và mang đến một trải nghiệm tốt hơn cho bạn!",
+    "funnel_survey__cta_button__submit_text": "Gửi câu trả lời của tôi",
+    "funnel_survey__cta_button__loading_text": "Đang gửi...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Hãy cho chúng tôi biết về những lo ngại của bạn",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "Điều gì khiến bạn quyết định hủy đăng ký MaxAI.me?",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Hãy cho chúng tôi biết điều gì đã khiến bạn hủy..."
   }
 }

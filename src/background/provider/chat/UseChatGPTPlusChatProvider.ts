@@ -14,10 +14,10 @@ import {
 import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
 import ConversationManager from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import { isRichAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { backgroundConversationDB } from '@/features/indexed_db/conversations/background'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
-import { isRichAIMessage} from '@/features/chatgpt/utils/chatMessageUtils'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -90,7 +90,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       if (docId && !isUnFinishAIMessage) {
         backendAPI = 'chat_with_document'
       } else if (conversationDetail?.type === 'Summary') {
-        backendAPI = 'get_summarize_response'
+        backendAPI = 'chat_with_small_document'
       }
       // 没有docId或者isUnFinishAIMessage的情况下，需要发送系统提示
       if (

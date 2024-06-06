@@ -12,6 +12,7 @@ import {
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import { chromeExtensionLogout } from '@/background/utils'
+import { backgroundRequestHeaderGenerator } from '@/background/utils/backgroundRequestHeaderGenerator'
 import {
   AI_PROVIDER_MAP,
   APP_USE_CHAT_GPT_API_HOST,
@@ -245,6 +246,7 @@ class UseChatGPTPlusChat extends BaseChat {
     let isTokenExpired = false
     if (postBody.streaming) {
       await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
+        taskId,
         provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
         method: 'POST',
         signal,
@@ -360,10 +362,10 @@ class UseChatGPTPlusChat extends BaseChat {
           {
             method: 'POST',
             signal,
-            headers: {
+            headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
-            },
+            }),
             body: JSON.stringify(postBody),
           },
         )

@@ -72,6 +72,12 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
     return container
   }, [propContainer, onboardingConfig])
 
+  const syncAlreadyOpenedCacheBySceneType = useCallback(() => {
+    getAlreadyOpenedCacheBySceneType(sceneType).then((opened) => {
+      setAlreadyOpened(opened)
+    })
+  }, [sceneType])
+
   const intervalEnable = useMemo(() => {
     // 如果已经展示过了，就不再开启计时器
     // 如果已经找到了 referenceElement，就不再开启计时器
@@ -79,12 +85,6 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
     // 如果 enable 为 false，就不开启计时器
     return !alreadyOpened && !referenceElement && container && enable
   }, [alreadyOpened, referenceElement, container, enable])
-
-  const syncAlreadyOpenedCacheBySceneType = useCallback(() => {
-    getAlreadyOpenedCacheBySceneType(sceneType).then((opened) => {
-      setAlreadyOpened(opened)
-    })
-  }, [sceneType])
 
   // 用 useInterval 来找 referenceElement
   useInterval(
@@ -101,8 +101,6 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
         }
       }
     },
-    // 找到了就不找了, 没有 container 不找
-    // 已经展示过了，不找了
     intervalEnable ? 300 : null,
   )
 

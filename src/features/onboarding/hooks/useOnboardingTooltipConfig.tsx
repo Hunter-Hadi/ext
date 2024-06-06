@@ -232,9 +232,6 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
         tooltipProps: {
           title: t('onboarding:onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text'),
           placement: 'bottom',
-          sx: {
-            width: 390,
-          },
         },
       }
     }
@@ -245,9 +242,6 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
         tooltipProps: {
           title: t('onboarding:onboarding_tooltip__PDF_SUMMARY_BUTTON__text'),
           placement: 'bottom',
-          sx: {
-            width: 380,
-          },
         },
       }
     }
@@ -260,9 +254,6 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
             'onboarding:onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text',
           ),
           placement: 'bottom',
-          sx: {
-            width: 345,
-          },
         },
       }
     }
@@ -306,9 +297,6 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-cta-button"]`,
         tooltipProps: {
           placement: 'bottom',
-          sx: {
-            width: 470,
-          },
         },
       }
     }

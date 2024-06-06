@@ -165,7 +165,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
           sx={{
             position: 'relative',
             p: 1.5,
-            pt: 2.25,
+            pt: 2,
             pr: 2.25,
             textTransform: 'none',
           }}

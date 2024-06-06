@@ -270,6 +270,9 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           closeWhenElementClick: true,
           title: t('onboarding:onboarding_tooltip__PDF_SUMMARY_BUTTON__text'),
           placement: 'bottom',
+          sx: {
+            width: 'max-content',
+          },
         },
       }
     }

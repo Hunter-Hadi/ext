@@ -398,19 +398,21 @@ const FloatingContextMenu: FC<{
             >
               {/* 由于 直接把 onboarding tooltip 挂在 textarea 会导致 tooltip 位置显示不可控制（具体表现：出现不正确的 placement） */}
               {/* 所以这里创建一个元素来绑定 onboarding tooltip  位置 */}
-              <Box
-                id="ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT"
-                sx={{
-                  width: 10,
-                  height: 10,
-                  // background: 'red',
-                  position: 'absolute',
-                  bottom: 48,
-                  left: 0,
-                  pointerEvents: 'none',
-                  zIndex: -1,
-                }}
-              />
+              {!loading ? (
+                <Box
+                  id="ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT"
+                  sx={{
+                    width: 10,
+                    height: 10,
+                    // background: 'red',
+                    position: 'absolute',
+                    bottom: 48,
+                    left: 0,
+                    pointerEvents: 'none',
+                    zIndex: -1,
+                  }}
+                />
+              ) : null}
 
               {/*drag box*/}
               <Box
@@ -437,9 +439,10 @@ const FloatingContextMenu: FC<{
                   <DevConsole />
                 </DevContent>
               )}
-              {floatingDropdownMenu.open && (
+              {
                 <ActionSetVariablesModal
                   sx={{
+                    display: floatingDropdownMenu.open ? 'flex' : 'none',
                     mt: 2,
                   }}
                   onInputCustomVariable={() => {
@@ -476,7 +479,7 @@ const FloatingContextMenu: FC<{
                   onShow={() => setIsSettingCustomVariables(true)}
                   modelKey={'FloatingContextMenu'}
                 />
-              )}
+              }
 
               <Stack width={'100%'} gap={0.5}>
                 <Stack direction={'row'} alignItems={'end'} gap={1}>
@@ -701,6 +704,7 @@ const FloatingContextMenu: FC<{
               return (
                 floatingDropdownMenu.open &&
                 !activeAIResponseMessage &&
+                !isSettingCustomVariables &&
                 (currentFloatingContextMenuDraft === '' ||
                   inputValue.length > 0)
               )

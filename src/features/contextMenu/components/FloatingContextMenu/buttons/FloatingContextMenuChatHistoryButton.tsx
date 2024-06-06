@@ -27,7 +27,7 @@ import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
-import SidebarChatBoxMessageItem from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
+import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
@@ -37,7 +37,7 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   onDuplicateConversation?: (conversationId: string) => void
   container?: HTMLElement
 }> = (props) => {
-  const { conversationId, onDuplicateConversation, container } = props
+  const { conversationId, onDuplicateConversation } = props
   const [messageList, setMessageList] = useState<IChatMessage[]>([])
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
@@ -77,61 +77,37 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
     return null
   }
   return (
-    <AppLoadingLayout loading={loading}>
-      <Stack
-        width={'100%'}
-        height={0}
-        flex={1}
-        gap={1}
-        p={1}
-        boxSizing={'border-box'}
-      >
+    <>
+      <SidebarChatBoxMessageListContainer
+        conversationId={conversationId}
+        isAIResponding={false}
+        writingMessage={null}
+        sx={{
+          textAlign: 'left',
+        }}
+      />
+      <AppLoadingLayout loading={loading}>
         <Stack
-          width={'100%'}
-          ref={ref}
-          component={'div'}
-          height={0}
-          flex={1}
-          sx={{
-            overflowY: 'auto',
-          }}
+          direction={'row'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          mb={2}
         >
-          {messageList.map((message, index) => {
-            return (
-              <SidebarChatBoxMessageItem
-                key={
-                  message.messageId + '_sidebar_chat_message_' + String(index)
-                }
-                className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-                message={message}
-                loading={loading}
-                order={index + 1}
-                container={container}
-              />
-            )
-          })}
+          <Button
+            variant={'contained'}
+            color={'primary'}
+            onClick={async () => {
+              await continueConversationInSidebar(conversationId, {
+                type: 'Chat',
+              })
+              onDuplicateConversation?.(conversationId)
+            }}
+          >
+            {t('client:context_window__chat_history__continue_in_chat__title')}
+          </Button>
         </Stack>
-      </Stack>
-      <Stack
-        direction={'row'}
-        justifyContent={'center'}
-        alignItems={'center'}
-        mb={1}
-      >
-        <Button
-          variant={'contained'}
-          color={'primary'}
-          onClick={async () => {
-            await continueConversationInSidebar(conversationId, {
-              type: 'Chat',
-            })
-            onDuplicateConversation?.(conversationId)
-          }}
-        >
-          {t('client:context_window__chat_history__continue_in_chat__title')}
-        </Button>
-      </Stack>
-    </AppLoadingLayout>
+      </AppLoadingLayout>
+    </>
   )
 }
 
@@ -342,14 +318,14 @@ const FloatingContextMenuChatHistoryButton: FC<{
                 {isClickOpenOnce && (
                   <Stack height={'100%'}>
                     <Stack
-                      direction="row"
+                      direction='row'
                       spacing={1}
-                      alignItems="center"
+                      alignItems='center'
                       px={2}
                       py={2}
-                      position="relative"
+                      position='relative'
                     >
-                      <IconButton onClick={handleCloseModal} size="small">
+                      <IconButton onClick={handleCloseModal} size='small'>
                         {selectedConversationId ? (
                           <ArrowBackIcon
                             sx={{
@@ -376,7 +352,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                         )}
                       </Typography>
                       <ClearAllChatButton
-                        variant="icon"
+                        variant='icon'
                         sx={{
                           p: '5px',
                           pointerEvents: selectedConversationId
@@ -384,7 +360,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                             : 'auto',
                           opacity: selectedConversationId ? 0 : 1,
                         }}
-                        conversationType="ContextMenu"
+                        conversationType='ContextMenu'
                         onDelete={async () => {
                           await createConversation('ContextMenu')
                           handleCloseModal()
@@ -400,7 +376,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                     <Box
                       height={0}
                       flex={1}
-                      overflow="auto"
+                      overflow='auto'
                       sx={{
                         display: selectedConversationId ? 'none' : 'flex',
                       }}
@@ -422,9 +398,9 @@ const FloatingContextMenuChatHistoryButton: FC<{
                         }}
                         emptyFeedback={
                           <Stack
-                            alignItems="center"
-                            justifyContent="center"
-                            height="100%"
+                            alignItems='center'
+                            justifyContent='center'
+                            height='100%'
                           >
                             <LazyLoadImage
                               height={160}

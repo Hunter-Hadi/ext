@@ -58,7 +58,8 @@ export interface IConversationMeta {
   topP?: number // topP
   docId?: string // 聊天文档id
   attachments?: IChatUploadFile[] // 附件
-
+  domain?: string //创建的时候的域名
+  path?: string // 创建的时候的路径
   /**
    * @deprecated - 2024-05-14 - 3.0版本后废弃 - 因为不上传到后端
    * 最后运行的shortcuts

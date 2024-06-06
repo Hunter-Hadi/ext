@@ -9,6 +9,7 @@ import { isProduction } from '@/constants'
 import { getMaxAIWebSiteClientUserId } from '@/features/auth/utils'
 import { getCurrentUserLogInfo } from '@/features/auth/utils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { getBrowserAgent } from '@/utils/dataHelper/browserInfoHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const MIXPANEL_PROJECT_ID = String(process.env.MIXPANEL_PROJECT_ID)
@@ -74,5 +75,22 @@ export const mixpanelIdentify = (
     }
   } catch (e) {
     // do nothing
+  }
+}
+
+export const getBasicInfoForMixpanel = () => {
+  try {
+    return {
+      browser: getBrowserAgent(),
+      currentDomain: getCurrentDomainHost(),
+      currentURL: location.href,
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      screenHeight: window.screen.height,
+      screenWidth: window.screen.width,
+      isDesktop: window.screen.width > window.screen.height,
+      // TODO: more info
+    }
+  } catch (error) {
+    return {}
   }
 }

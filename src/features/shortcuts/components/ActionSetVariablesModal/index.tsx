@@ -68,6 +68,7 @@ export interface ActionSetVariablesConfirmData {
   }
   type: 'close' | 'confirm' | 'cancel' | 'input' | 'change'
   success: boolean
+  variables?: IActionSetVariable[]
 }
 interface ActionSetVariablesModalProps
   extends Partial<ActionSetVariablesModalConfig> {
@@ -789,6 +790,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                     data: getValues(),
                     type: 'input',
                     success: true,
+                    variables: currentModalConfig.textTypeVariables
                   } as ActionSetVariablesConfirmData)
                 }
                 event.stopPropagation()

@@ -338,6 +338,19 @@ export const isPointInRects = (x: number, y: number, rects: IRangyRect[]) => {
   return false
 }
 
+/**
+ * 判断元素是否超出可视区域
+ */
+export const isOutOfViewport = (rect: IRangyRect) => {
+  return (
+    rect.top < 0 ||
+    rect.left < 0 ||
+    rect.bottom >
+      (window.innerHeight || document.documentElement.clientHeight) ||
+    rect.right > (window.innerWidth || document.documentElement.clientWidth)
+  )
+}
+
 export const mergeRects = (rects: IRangyRect[]) => {
   if (!rects.length) return emptyRect
   const rect = { ...rects[0] }

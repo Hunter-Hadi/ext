@@ -14,6 +14,7 @@ import {
   findParentEqualSelector,
   findSelectorParent,
 } from '@/utils/dataHelper/elementHelper'
+import { getInstantReplyDataHelper } from '@/utils/dataHelper/instantReplyHelper'
 
 const getYouTubeStudioCommentContent = async (
   ytcpCommentBox: HTMLElement,
@@ -36,9 +37,19 @@ const getYouTubeStudioCommentContent = async (
     expandButton.click()
     await delayAndScrollToInputAssistantButton(100)
   }
-  const commentText =
-    (ytcpCommentBox.querySelector('#content-text') as any as HTMLDivElement)
-      ?.innerText || ''
+  let commentText = ''
+
+  ytcpCommentBox
+    .querySelector<HTMLElement>('#content-text')
+    ?.childNodes.forEach((node) => {
+      if ((node as HTMLElement).tagName === 'IMG') {
+        const emoji = (node as HTMLElement).getAttribute('alt') || ''
+        commentText += emoji
+      } else {
+        commentText += node.textContent
+      }
+    })
+
   return {
     author: author.replace(/\n/g, '').trim(),
     date,
@@ -49,6 +60,41 @@ const getYouTubeStudioCommentContent = async (
 export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction =
   async (inputAssistantButton) => {
     try {
+      // 优化：将上次获取的 context 缓存起来，然后判断
+      //// - 1. 如果点的是和上次点的同一个 button
+      //// - 2. 或者还是在同一个 context window 里进行操作
+      // 那么通过直接返回上次缓存的 context 即可
+      const instantReplyDataHelper = getInstantReplyDataHelper()
+      const instantReplyButtonId =
+        inputAssistantButton.getAttribute('maxai-input-assistant-button-id') ||
+        ''
+      if (instantReplyButtonId) {
+        if (
+          instantReplyDataHelper.getAttribute('aria-operation-selector-id') ===
+          instantReplyButtonId
+        ) {
+          const fullContextCache = instantReplyDataHelper.getAttribute(
+            'data-full-context-cache',
+          )
+          const targetContextCache = instantReplyDataHelper.getAttribute(
+            'data-target-context-cache',
+          )
+          if (targetContextCache) {
+            return {
+              postText: fullContextCache || targetContextCache,
+              SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: targetContextCache,
+              SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT:
+                fullContextCache || targetContextCache,
+              SOCIAL_MEDIA_PAGE_CONTENT: '',
+            }
+          }
+        }
+        instantReplyDataHelper.setAttribute(
+          'aria-operation-selector-id',
+          instantReplyButtonId,
+        )
+      }
+
       // comment box
       const ytcpCommentBox = findParentEqualSelector(
         'ytcp-comment',
@@ -66,26 +112,84 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction =
           sourceVideoLink?.href || '',
         )
         if (youTubeVideoId) {
-          const youTubeVideoInfo =
-            await YoutubeTranscript.fetchYouTubeVideoInfo(
-              youTubeVideoId,
-              uuidV4(),
-            )
-          const title =
-            youTubeVideoInfo?.title ||
-            (document.querySelector('#back-button')
-              ? document.querySelector<HTMLElement>('#entity-name')
-              : commentBoxRoot?.querySelector<HTMLHeadingElement>(
-                  '#video-title > yt-formatted-string',
-                )
-            )?.innerText ||
-            ''
-          const author =
-            youTubeVideoInfo?.author ||
-            (!document.querySelector('#back-button') &&
-              document.querySelector<HTMLElement>('#entity-name')?.innerText) ||
-            ''
-          const date = youTubeVideoInfo?.date || ''
+          let title = '',
+            author = '',
+            date = '',
+            transcriptText = ''
+          if (
+            instantReplyDataHelper.getAttribute('aria-youtube-video-id') ===
+            youTubeVideoId
+          ) {
+            title =
+              instantReplyDataHelper.getAttribute(
+                'data-youtube-video-title-cache',
+              ) || ''
+            author =
+              instantReplyDataHelper.getAttribute(
+                'data-youtube-video-author-cache',
+              ) || ''
+            date =
+              instantReplyDataHelper.getAttribute(
+                'data-youtube-video-date-cache',
+              ) || ''
+            transcriptText =
+              instantReplyDataHelper.getAttribute(
+                'data-youtube-transcript-cache',
+              ) || ''
+          }
+          instantReplyDataHelper.setAttribute(
+            'aria-youtube-video-id',
+            youTubeVideoId,
+          )
+
+          if (!transcriptText) {
+            const youTubeVideoInfo =
+              await YoutubeTranscript.fetchYouTubeVideoInfo(
+                youTubeVideoId,
+                uuidV4(),
+              )
+            title = youTubeVideoInfo?.title || ''
+            author = youTubeVideoInfo?.author || ''
+            date = youTubeVideoInfo?.date || ''
+            transcriptText = youTubeVideoInfo?.transcriptText || ''
+          }
+
+          if (!title) {
+            title =
+              (document.querySelector('#back-button')
+                ? document.querySelector<HTMLElement>('#entity-name')
+                : commentBoxRoot?.querySelector<HTMLHeadingElement>(
+                    '#video-title > yt-formatted-string',
+                  )
+              )?.innerText || ''
+          }
+          if (!author) {
+            author =
+              (!document.querySelector('#back-button') &&
+                document.querySelector<HTMLElement>('#entity-name')
+                  ?.innerText) ||
+              ''
+          }
+
+          instantReplyDataHelper.setAttribute(
+            'data-youtube-video-title-cache',
+            title,
+          )
+
+          instantReplyDataHelper.setAttribute(
+            'data-youtube-video-author-cache',
+            author,
+          )
+
+          instantReplyDataHelper.setAttribute(
+            'data-youtube-video-date-cache',
+            date,
+          )
+          instantReplyDataHelper.setAttribute(
+            'data-youtube-transcript-cache',
+            transcriptText,
+          )
+
           // 上下文
           const youTubeSocialMediaPostContext = new SocialMediaPostContext(
             {
@@ -97,7 +201,7 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction =
             {
               postTitle: 'Video post',
               meta: {
-                'Post video transcript': youTubeVideoInfo?.transcriptText || '',
+                'Post video transcript': transcriptText,
               },
             },
           )
@@ -135,6 +239,18 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction =
                   ])
                 }
               }
+            }
+            if (instantReplyButtonId) {
+              instantReplyDataHelper.setAttribute(
+                'data-full-context-cache',
+                youTubeSocialMediaPostContext.data
+                  .SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+              )
+              instantReplyDataHelper.setAttribute(
+                'data-target-context-cache',
+                youTubeSocialMediaPostContext.data
+                  .SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
+              )
             }
             return youTubeSocialMediaPostContext.data
           }

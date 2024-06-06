@@ -335,6 +335,7 @@ export interface MenuProps {
   root?: HTMLElement
   referenceElement?: React.ReactNode
   referenceElementOpen?: boolean
+  referenceElementRef?: React.ForwardedRef<any>
   customOpen?: boolean
   needAutoUpdate?: boolean
   zIndex?: number
@@ -357,6 +358,7 @@ export const MenuComponent = React.forwardRef<
     {
       referenceElement,
       referenceElementOpen,
+      referenceElementRef,
       zIndex,
       children,
       label,
@@ -759,7 +761,7 @@ export const MenuComponent = React.forwardRef<
         destroy = true
       }
     }, [floatingDropdownMenuSelectedItem.lastHoverContextMenuId, children])
-    const referenceRef = useMergeRefs([refs.setReference, forwardedRef])
+    const referenceRef = useMergeRefs([refs.setReference, forwardedRef, referenceElementRef])
     const handleExecuteActions = useCallback(() => {
       const lastHoverId =
         floatingDropdownMenuSelectedItem.lastHoverContextMenuId

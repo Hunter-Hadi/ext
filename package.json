@@ -7,10 +7,12 @@
     "pdf": "node ./build/pdf.js",
     "dev": "cross-env API_ENV=development NODE_ENV=development node ./build/esbuild.config.mjs --app=usechatgpt",
     "test": "cross-env API_ENV=test NODE_ENV=development node ./build/esbuild.config.mjs --app=usechatgpt",
-    "release": "cross-env API_ENV=production NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
+    "release:dev": "cross-env API_ENV=development NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
     "release:test": "cross-env API_ENV=test NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
-    "lint": "eslint --ext .ts,.tsx,.js,.jsx ./src --quiet --fix",
-    "format": "prettier --write ./src"
+    "release": "cross-env API_ENV=production NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
+    "format": "prettier --write ./src",
+    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx,html,css,json,yaml}",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -140,7 +142,9 @@
     "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
     "https-proxy-agent": "^7.0.1",
+    "husky": "^9.0.11",
     "less": "^4.1.3",
+    "lint-staged": "^15.2.2",
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.21",
     "prettier": "^2.2.1",
@@ -154,12 +158,13 @@
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
   },
-  "prettier": {
-    "semi": false,
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "always",
-    "proseWrap": "always"
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "src/**/*.{html,css,json,yaml}": [
+      "prettier --write"
+    ]
   }
 }

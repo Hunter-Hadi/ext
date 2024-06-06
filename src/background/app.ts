@@ -56,6 +56,7 @@ import { devResetAllOnboardingTooltipOpenedCache } from '@/features/onboarding/u
 import paymentManager from '@/features/payment/background/PaymentManager'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
+import { resetFunnelSurveyOpenedStorageFlag } from '@/features/survey/utils/storageWithSceneType'
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
@@ -398,10 +399,12 @@ const initChromeExtensionUpdated = async () => {
   }
 
   // 测试环境 刷新插件时，重置所有的onboarding tooltip opened cache
-  // zztest
   if (!isProduction) {
     devResetAllOnboardingTooltipOpenedCache()
   }
+
+  // SURVEY_CANCEL_COMPLETED survey 每次插件更新的时候弹出来就行
+  resetFunnelSurveyOpenedStorageFlag('SURVEY_CANCEL_COMPLETED')
 
   // 每次升级都检测一遍是否是续费失败了
   setTimeout(

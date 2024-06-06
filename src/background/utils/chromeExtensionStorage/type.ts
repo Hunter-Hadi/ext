@@ -2,6 +2,7 @@ import { IAIProviderType } from '@/background/provider/chat'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { IArtTextToImageMetadata } from '@/features/art/types'
+import { type IInputAssistantButtonKeyType } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import { ISidebarConversationType } from '@/features/sidebar/types'
@@ -12,9 +13,7 @@ export type IChromeExtensionButtonSettingKey =
   // Context menu
   | 'textSelectPopupButton'
   // Instant reply
-  | 'inputAssistantComposeReplyButton'
-  | 'inputAssistantComposeNewButton'
-  | 'inputAssistantRefineDraftButton'
+  | IInputAssistantButtonKeyType
   // Summary
   | 'sidebarSummaryButton'
 

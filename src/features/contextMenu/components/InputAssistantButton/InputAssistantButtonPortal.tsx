@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useRecoilValue } from 'recoil'
 
@@ -9,14 +9,16 @@ import InputAssistantButtonManager, {
 } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
 import { AppDBStorageState } from '@/store'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+
 const InputAssistantPortal: FC = () => {
   const appSetting = useRecoilValue(AppDBStorageState)
   const [allObserverData, setAllObserverData] = useState<
     IInputAssistantButtonObserverData[]
   >([])
-  const inputAssistantPortalRef = React.useRef<InputAssistantButtonManager | null>(
+  const inputAssistantPortalRef = useRef<InputAssistantButtonManager | null>(
     null,
   )
+
   useEffectOnce(() => {
     inputAssistantPortalRef.current = new InputAssistantButtonManager()
     inputAssistantPortalRef.current.createInputAssistantButtonListener(
@@ -25,6 +27,7 @@ const InputAssistantPortal: FC = () => {
       },
     )
   })
+
   const currentPageShow = useMemo(() => {
     // gmail?: boolean
     // outlook?: boolean
@@ -92,6 +95,7 @@ const InputAssistantPortal: FC = () => {
     }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])
+
   useEffect(() => {
     if (inputAssistantPortalRef.current) {
       if (currentPageShow) {
@@ -101,6 +105,7 @@ const InputAssistantPortal: FC = () => {
       }
     }
   }, [currentPageShow])
+
   return (
     <>
       {allObserverData.map((observerData) => {

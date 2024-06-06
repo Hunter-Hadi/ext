@@ -1,5 +1,6 @@
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { mixpanelIdentify } from '@/features/mixpanel/utils'
+import { ISurveyKeyType } from '@/features/survey/types'
 import { clientUpdateSurveyStatus } from '@/features/survey/utils'
 import Log from '@/utils/Log'
 const log = new Log('ContentScript/CheckIsLogin')
@@ -95,16 +96,16 @@ window.addEventListener('message', function (event) {
   if (event.source != window) return
 
   if (event.data.type && event.data.type == 'MAXAI_UPDATE_SURVEY_STATUS') {
-    clientUpdateSurveyStatus(
-      true,
-      event.data?.data?.surveyType ? [event.data?.data?.surveyType] : undefined,
-    )
+    const surveyType = event.data?.data?.surveyType
+    if (surveyType) {
+      clientUpdateSurveyStatus(true, [surveyType] as ISurveyKeyType[])
+    }
   }
 
   if (event.data.type && event.data.type == 'MAXAI_CREATE_PAYMENT_URL') {
     port.postMessage({
       event: 'Client_createPaymentUrl',
-      data: event.data.data
+      data: event.data.data,
     })
   }
 })

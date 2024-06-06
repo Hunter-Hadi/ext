@@ -13,7 +13,6 @@ import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
-  IChromeExtensionButtonSettingKey,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
@@ -29,22 +28,49 @@ import {
   useFloatingContextMenu,
 } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
-import { type IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
-import { IContextMenuItem } from '@/features/contextMenu/types'
+import {
+  type IInputAssistantButton,
+  type IInputAssistantButtonKeyType,
+  type IInstantReplyWebsiteType,
+} from '@/features/contextMenu/components/InputAssistantButton/config'
+import { type IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
-import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
+import { type IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
   rootId: string
   shadowRoot: ShadowRoot
-  buttonKey: IChromeExtensionButtonSettingKey
+  buttonKey: IInputAssistantButtonKeyType
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
   disabled?: boolean
+  instantReplyWebsiteType: IInstantReplyWebsiteType
   onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
+}
+
+// [Instant reply id, Refine draft id, Compose new id?]
+const systemPromptContextMenuMap: Record<
+  IInstantReplyWebsiteType,
+  Record<IInputAssistantButtonKeyType, string>
+> = {
+  EMAIL: {
+    inputAssistantComposeNewButton: 'c73787fb-e2fd-41f2-8ad0-854b2a624022',
+    inputAssistantComposeReplyButton: 'cf4e0b8e-a5da-4d4f-8244-c748466e7c35',
+    inputAssistantRefineDraftButton: '451284fb-8f5b-4f5a-81c8-f97d20ced787',
+  },
+  SOCIAL_MEDIA: {
+    inputAssistantComposeNewButton: 'fef7401d-ecd3-4bae-94b1-8307cf85fa2f',
+    inputAssistantComposeReplyButton: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
+    inputAssistantRefineDraftButton: '8ca12784-e40f-4cd6-82eb-14aba0bf8566',
+  },
+  CHAT_APP_WEBSITE: {
+    inputAssistantComposeNewButton: '',
+    inputAssistantComposeReplyButton: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    inputAssistantRefineDraftButton: '5962ed83-6526-4665-9d94-5c47bc0b931a',
+  },
 }
 
 const InputAssistantButtonContextMenu: FC<
@@ -58,6 +84,7 @@ const InputAssistantButtonContextMenu: FC<
     shadowRoot,
     permissionWrapperCardSceneType,
     disabled,
+    instantReplyWebsiteType,
     onSelectionEffect,
   } = props
   const { floatingDropdownMenuOpen, showFloatingContextMenuWithElement } =
@@ -82,6 +109,21 @@ const InputAssistantButtonContextMenu: FC<
     }
     return true
   }, [permissionWrapperCardSceneType, currentUserPlan])
+
+  const filterContextMenuList = useMemo(() => {
+    const filterIds = new Set()
+    Object.keys(systemPromptContextMenuMap).forEach((websiteType) => {
+      const systemPromptGroupId =
+        systemPromptContextMenuMap[websiteType as IInstantReplyWebsiteType][
+          buttonKey
+        ]
+      if (websiteType !== instantReplyWebsiteType && systemPromptGroupId) {
+        filterIds.add(systemPromptGroupId)
+      }
+    })
+    return contextMenuList.filter((item) => !filterIds.has(item.id))
+  }, [contextMenuList, instantReplyWebsiteType, buttonKey])
+
   const runContextMenu = useCallback(
     async (contextMenu: IContextMenuItem) => {
       if (!smoothConversationLoading && contextMenu.data.actions) {
@@ -176,6 +218,17 @@ const InputAssistantButtonContextMenu: FC<
       if (buttonElement) {
         showFloatingContextMenuWithElement(buttonElement, '', true)
       }
+      clickContextMenu.data.actions?.unshift({
+        type: 'SET_VARIABLE',
+        parameters: {
+          Variable: {
+            key: 'MAXAI__INSTANT_REPLY__WEBSITE_TYPE',
+            value: instantReplyWebsiteType,
+            overwrite: true,
+            isBuiltIn: true,
+          },
+        },
+      })
       runContextMenuRef
         .current(clickContextMenu)
         .then()
@@ -186,12 +239,16 @@ const InputAssistantButtonContextMenu: FC<
           if (onSelectionEffectListener) {
             shortCutsEngine?.setActions([])
           }
-          // temporary support onSelectionEffect
-          // onSelectionEffect && onSelectionEffect();
         })
     }
     return () => {}
-  }, [clickContextMenu, shortCutsEngine, currentSidebarConversationType])
+  }, [
+    clickContextMenu,
+    shortCutsEngine,
+    currentSidebarConversationType,
+    instantReplyWebsiteType,
+  ])
+
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
       const emotionRoot = document.createElement('style')
@@ -231,6 +288,7 @@ const InputAssistantButtonContextMenu: FC<
   if (!root || !emotionCacheRef.current) {
     return null
   }
+
   return (
     <CacheProvider value={emotionCacheRef.current}>
       <FloatingContextMenuList
@@ -245,7 +303,7 @@ const InputAssistantButtonContextMenu: FC<
           'left',
         ]}
         root={root}
-        menuList={contextMenuList}
+        menuList={filterContextMenuList}
         needAutoUpdate
         hoverOpen={false}
         menuWidth={240}

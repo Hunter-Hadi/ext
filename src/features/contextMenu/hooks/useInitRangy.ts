@@ -26,7 +26,10 @@ import {
   ISelectionElement,
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
-import { getDraftContextMenuTypeById } from '@/features/contextMenu/utils'
+import {
+  getDraftContextMenuTypeById,
+  isOutOfViewport,
+} from '@/features/contextMenu/utils'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
 import {
   createSandboxIframeClickAndKeydownEvent,
@@ -45,7 +48,10 @@ import rangyLib from '@/lib/rangy/rangy-core'
 import initRangyPosition from '@/lib/rangy/rangy-position'
 import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
 import { AppDBStorageState } from '@/store'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import {
+  getCurrentDomainHost,
+  isMaxAIImmersiveChatPage,
+} from '@/utils/dataHelper/websiteHelper'
 import Log from '@/utils/Log'
 
 import { useRangy } from './useRangy'
@@ -83,14 +89,14 @@ const copyText = (text: string) => {
 }
 
 // 自动聚焦并把光标移动到末尾
+const triggerEvents = ['input', 'change']
 function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
   try {
-    if (inputBox.contentEditable) {
-      inputBox.focus()
+    inputBox.focus()
+    if (inputBox.contentEditable === 'true') {
       const range = document.createRange()
       const selection = window.getSelection()
-      const childNodes = inputBox.childNodes
-      const lastNode = childNodes[childNodes.length - 1]
+      const lastNode = Array.from(inputBox.childNodes || []).at(-1)
       if (lastNode) {
         // 如果存在子节点，将光标移动到最后一个子节点的末尾
         const lastNodeRange = document.createRange()
@@ -98,6 +104,10 @@ function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
         const lastNodeContentsLength = lastNodeRange.toString().length
         range.setStart(lastNode, lastNodeContentsLength)
         range.setEnd(lastNode, lastNodeContentsLength)
+        setTimeout(() => {
+          // eslint-disable-next-line no-extra-semi
+          ;(lastNode as HTMLElement).scrollIntoView({ block: 'end' })
+        }, 100)
       } else {
         // 如果没有子节点，直接将光标移动到元素的起始位
         range.selectNodeContents(inputBox)
@@ -108,15 +118,83 @@ function focusAndMoveCursorToEnd(inputBox: HTMLElement) {
       inputBox instanceof HTMLInputElement ||
       inputBox instanceof HTMLTextAreaElement
     ) {
-      inputBox.focus()
       const valueLength = inputBox.value.length
       inputBox.setSelectionRange(valueLength, valueLength)
     }
-    setTimeout(() => {
+    // input Box不在可视区域内再进行滚动到此元素
+    const rect = inputBox.getBoundingClientRect()
+    if (isOutOfViewport(rect)) {
       inputBox.scrollIntoView({ block: 'end' })
-    }, 100)
+    }
+
+    // 触发事件，让编辑框可能绑定的事件监听器生效
+    triggerEvents.forEach((eventName) => {
+      inputBox.dispatchEvent(
+        new Event(eventName, {
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+    })
   } catch (err) {
     console.error(err)
+  }
+}
+
+// 插入内容到编辑框
+const insertContentToInputBox = (
+  inputBox: HTMLElement | null | undefined,
+  content: string,
+) => {
+  if (inputBox) {
+    inputBox.focus()
+    const host = getCurrentDomainHost()
+    if (inputBox.contentEditable === 'true') {
+      // 有些网站回复别人会自动 quote mention
+      let quoteMention = ''
+      if (host === 'linkedin.com') {
+        // message in LinkedIn
+        if (inputBox.matches('.msg-form__contenteditable')) {
+          inputBox.parentElement
+            ?.querySelector('.msg-form__placeholder')
+            ?.classList.remove('msg-form__placeholder')
+          content = `<p>${content}</p>`
+        } else {
+          quoteMention = inputBox.querySelector('a.ql-mention')?.outerHTML || ''
+        }
+      }
+      // Facebook 编辑器使用的是 Lexical, 无法使用 innerHTML 直接插入
+      else if (host === 'facebook.com') {
+        inputBox.focus()
+        const range = document.createRange()
+        range.selectNodeContents(inputBox)
+        const selection = window.getSelection()
+        selection?.removeAllRanges()
+        selection?.addRange(range)
+
+        setTimeout(() => {
+          const clipboardData = new DataTransfer()
+          clipboardData.setData('text/plain', content)
+          inputBox.dispatchEvent(
+            new ClipboardEvent('paste', {
+              clipboardData,
+              bubbles: true,
+              cancelable: true,
+            }),
+          )
+        }, 100)
+
+        return
+      }
+
+      inputBox.innerHTML = quoteMention + content.replaceAll(/\n/g, '<br />')
+    } else {
+      // eslint-disable-next-line no-extra-semi
+      ;(inputBox as HTMLInputElement).value = content
+    }
+    setTimeout(() => {
+      focusAndMoveCursorToEnd(inputBox)
+    }, 100)
   }
 }
 
@@ -246,6 +324,20 @@ const useInitRangy = () => {
           }
           if (!activeElement) {
             return
+          }
+          /**
+           * google sheets页面下，点击单元格获取的selectionElement是#waffle-rich-text-editor
+           * 编辑单元格时此元素才会移动到编辑的单元格内，并且点击的时候document.getSelection().toString()获取到的是\n
+           * 后续有其他网页处理需要统一配置，目前先放在此处处理，判断是否在编辑状态
+           */
+          if (
+            location.href.startsWith('https://docs.google.com/spreadsheets')
+          ) {
+            if (activeElement.id === 'waffle-rich-text-editor') {
+              if (!activeElement.hasAttribute('aria-label')) {
+                return
+              }
+            }
           }
           const { editableElement } = getEditableElement(activeElement)
           if (editableElement) {
@@ -637,20 +729,7 @@ const useInitRangy = () => {
               copyText(lastOutputRef.current)
               const inputBox =
                 InstantReplyButtonIdToInputMap.get(instantReplyButtonId)
-              if (inputBox) {
-                if (inputBox.contentEditable) {
-                  inputBox.innerHTML = lastOutputRef.current.replaceAll(
-                    /\n/g,
-                    '<br />',
-                  )
-                } else {
-                  // eslint-disable-next-line no-extra-semi
-                  ;(inputBox as HTMLInputElement).value = lastOutputRef.current
-                }
-                setTimeout(() => {
-                  focusAndMoveCursorToEnd(inputBox)
-                }, 100)
-              }
+              insertContentToInputBox(inputBox, lastOutputRef.current)
             }
           } catch (err) {
             console.error(err)

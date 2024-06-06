@@ -108,7 +108,8 @@ export const youTubeSummaryCommentsChangeTool = async (
         },
       },
       {
-        type: 'YOUTUBE_GET_COMMENTS', //不能删除，做为为下面的判断
+        // TODO 后续优化掉这个，可以用RENDER_TEMPLATE配合SCRIPTS_CONDITIONAL实现
+        type: 'YOUTUBE_GET_COMMENTS',
         parameters: {},
       },
       {
@@ -127,7 +128,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                 ActionChatMessageConfig: {
                   type: 'ai',
                   messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
-                  text: `{{LAST_ACTION_OUTPUT}`,
+                  text: '',
                   originalMessage: {
                     status: 'complete',
                     metadata: {
@@ -142,27 +143,6 @@ export const youTubeSummaryCommentsChangeTool = async (
                         },
                       ],
                     },
-                    content: {
-                      text: `{{LAST_ACTION_OUTPUT}}`,
-                      title: {
-                        title: 'Summary',
-                      },
-                      contentType: 'text',
-                    },
-                    includeHistory: false,
-                  },
-                } as IAIResponseMessage,
-              },
-            },
-            {
-              type: 'CHAT_MESSAGE',
-              parameters: {
-                ActionChatMessageOperationType: 'update',
-                ActionChatMessageConfig: {
-                  type: 'ai',
-                  messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
-                  text: '',
-                  originalMessage: {
                     content: {
                       title: {
                         title: 'Summary',
@@ -191,6 +171,72 @@ export const youTubeSummaryCommentsChangeTool = async (
               },
             },
             {
+              type: 'SET_VARIABLE',
+              parameters: {
+                VariableName: 'SUMMARY_CONTENTS',
+              },
+            },
+            {
+              type: 'CHAT_MESSAGE',
+              parameters: {
+                ActionChatMessageOperationType: 'update',
+                ActionChatMessageConfig: {
+                  type: 'ai',
+                  messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  text: '',
+                  originalMessage: {
+                    metadata: {
+                      deepDive: [
+                        {
+                          title: {
+                            title: ' ',
+                            titleIcon: 'Loading',
+                          },
+                        },
+                      ],
+                    },
+                  },
+                } as IAIResponseMessage,
+              },
+            },
+            {
+              type: 'MAXAI_RESPONSE_RELATED',
+              parameters: {
+                template: `{{SUMMARY_CONTENTS}}`,
+              },
+            },
+            {
+              type: 'SET_VARIABLE',
+              parameters: {
+                VariableName: 'RELATED_QUESTIONS',
+              },
+            },
+            {
+              type: 'MAXAI_SUMMARY_LOG',
+              parameters: {},
+            },
+          ],
+        },
+      },
+      // 下面这样写主要避免在上面的SCRIPTS_CONDITIONAL里再嵌套SCRIPTS_CONDITIONAL
+      {
+        type: 'RENDER_TEMPLATE',
+        parameters: {
+          template: '{{RELATED_QUESTIONS}}',
+        },
+      },
+      {
+        type: 'SCRIPTS_CONDITIONAL',
+        parameters: {
+          WFFormValues: {
+            Value: '',
+            WFSerializationType: 'WFDictionaryFieldValue',
+          },
+          WFCondition: 'Equals',
+          WFConditionalIfTrueActions: [
+            // 说明没有拿到related questions
+            // 注意这里不要覆盖掉No comments found的情况
+            {
               type: 'CHAT_MESSAGE',
               parameters: {
                 ActionChatMessageOperationType: 'update',
@@ -217,9 +263,46 @@ export const youTubeSummaryCommentsChangeTool = async (
                 } as IAIResponseMessage,
               },
             },
+          ],
+          WFConditionalIfFalseActions: [
             {
-              type: 'MAXAI_SUMMARY_LOG',
+              type: 'RENDER_TEMPLATE',
+              parameters: {
+                template: `{{RELATED_QUESTIONS}}`,
+              },
+            },
+            {
+              type: 'SCRIPTS_LIST',
               parameters: {},
+            },
+            {
+              type: 'CHAT_MESSAGE',
+              parameters: {
+                ActionChatMessageOperationType: 'update',
+                ActionChatMessageConfig: {
+                  type: 'ai',
+                  messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                  text: '',
+                  originalMessage: {
+                    status: 'complete',
+                    metadata: {
+                      isComplete: true,
+                      deepDive: [
+                        {
+                          title: {
+                            title: 'Related',
+                            titleIcon: 'Layers',
+                            titleIconSize: 20,
+                          },
+                          type: 'related',
+                          value: `{{LAST_ACTION_OUTPUT}}` as any,
+                        },
+                      ],
+                    },
+                    includeHistory: false,
+                  },
+                } as IAIResponseMessage,
+              },
             },
           ],
         },
@@ -296,49 +379,209 @@ export const youTubeSummaryTranscriptChangeTool = async (
       parameters: {},
     },
     {
-      type: 'CHAT_MESSAGE',
+      type: 'SET_VARIABLE',
       parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: '',
-          originalMessage: {
-            status: 'complete',
-            content: undefined,
-            metadata: {
-              isComplete: true,
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing video',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+        VariableName: 'SUMMARY_TRANSCRIPTS',
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFCondition: 'Equals',
+        WFFormValues: {
+          Value: '[]',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFConditionalIfTrueActions: [
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: params.messageId || '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing video',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
                   },
-                ],
-              },
-              deepDive: [
-                {
-                  type: 'transcript',
-                  title: {
-                    title: 'Transcript',
-                    titleIcon: 'Menu',
-                  },
-                  value: `{{LAST_ACTION_OUTPUT}}`,
+                  includeHistory: false,
                 },
-                {
-                  title: {
-                    title: 'Deep dive',
-                    titleIcon: 'TipsAndUpdates',
-                  },
-                  value: 'Ask AI anything about the video...',
-                },
-              ],
+              } as IAIResponseMessage,
             },
-            includeHistory: false,
           },
-        } as IAIResponseMessage,
+        ],
+        WFConditionalIfFalseActions: [
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing video',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                    deepDive: [
+                      {
+                        type: 'transcript',
+                        title: {
+                          title: 'Transcript',
+                          titleIcon: 'Menu',
+                        },
+                        value: `{{SUMMARY_TRANSCRIPTS}}`,
+                      },
+                      {
+                        title: {
+                          title: ' ',
+                          titleIcon: 'Loading',
+                        },
+                        value: '',
+                      },
+                    ],
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'MAXAI_RESPONSE_RELATED',
+            parameters: {
+              template: `{{SUMMARY_TRANSCRIPTS}}`,
+            },
+          },
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              VariableName: 'RELATED_QUESTIONS',
+            },
+          },
+        ],
+      },
+    },
+    {
+      type: 'RENDER_TEMPLATE',
+      parameters: {
+        template: '{{RELATED_QUESTIONS}}',
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFCondition: 'Equals',
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFConditionalIfTrueActions: [
+          // 没有related question
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  content: undefined,
+                  metadata: {
+                    isComplete: true,
+                    deepDive: [
+                      {
+                        type: 'transcript',
+                        title: {
+                          title: 'Transcript',
+                          titleIcon: 'Menu',
+                        },
+                        value: `{{SUMMARY_TRANSCRIPTS}}`,
+                      },
+                      {
+                        title: {
+                          title: 'Deep dive',
+                          titleIcon: 'TipsAndUpdates',
+                        },
+                        value: 'Ask AI anything about the video...',
+                      },
+                    ],
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有related question
+          {
+            type: 'RENDER_TEMPLATE',
+            parameters: {
+              template: `{{RELATED_QUESTIONS}}`,
+            },
+          },
+          {
+            type: 'SCRIPTS_LIST',
+            parameters: {},
+          },
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  content: undefined,
+                  metadata: {
+                    isComplete: true,
+                    deepDive: [
+                      {
+                        type: 'transcript',
+                        title: {
+                          title: 'Transcript',
+                          titleIcon: 'Menu',
+                        },
+                        value: `{{SUMMARY_TRANSCRIPTS}}`,
+                      },
+                      {
+                        title: {
+                          title: 'Related',
+                          titleIcon: 'Layers',
+                        },
+                        type: 'related',
+                        value: '{{LAST_ACTION_OUTPUT}}' as any,
+                      },
+                    ],
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
       },
     },
   ]
@@ -410,49 +653,212 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
       parameters: {},
     },
     {
-      type: 'CHAT_MESSAGE',
+      type: 'SET_VARIABLE',
       parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: '',
-          originalMessage: {
-            status: 'complete',
-            content: undefined,
-            metadata: {
-              isComplete: true,
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing video',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+        VariableName: 'TRANSCRIPT_TIMESTAMPED',
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFCondition: 'Equals',
+        WFFormValues: {
+          // 空数组代表没有TRANSCRIPT_TIMESTAMPED
+          Value: '[]',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFConditionalIfTrueActions: [
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: params.messageId || '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing video',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
                   },
-                ],
-              },
-              deepDive: [
-                {
-                  type: 'timestampedSummary',
-                  title: {
-                    title: 'Summary',
-                    titleIcon: 'SummaryInfo',
-                  },
-                  value: `{{LAST_ACTION_OUTPUT}}`,
+                  includeHistory: false,
                 },
-                {
-                  title: {
-                    title: 'Deep dive',
-                    titleIcon: 'TipsAndUpdates',
-                  },
-                  value: 'Ask AI anything about the video...',
-                },
-              ],
+              } as IAIResponseMessage,
             },
-            includeHistory: false,
           },
-        } as IAIResponseMessage,
+        ],
+        WFConditionalIfFalseActions: [
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: params.messageId ||`{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing video',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}'
+                        },
+                      ]
+                    },
+                    deepDive: [
+                      {
+                        type: 'timestampedSummary',
+                        title: {
+                          title: 'Summary',
+                          titleIcon: 'SummaryInfo',
+                        },
+                        value: `{{TRANSCRIPT_TIMESTAMPED}}`,
+                      },
+                      {
+                        title: {
+                          title: ' ',
+                          titleIcon: 'Loading',
+                        },
+                        value: '',
+                      },
+                    ],
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'MAXAI_RESPONSE_RELATED',
+            parameters: {
+              template: `{{TRANSCRIPT_TIMESTAMPED}}`,
+            },
+          },
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              VariableName: 'RELATED_QUESTIONS',
+            },
+          },
+        ],
+      },
+    },
+    // 下面这样写主要避免在上面的SCRIPTS_CONDITIONAL里再嵌套SCRIPTS_CONDITIONAL
+    {
+      type: 'RENDER_TEMPLATE',
+      parameters: {
+        template: '{{RELATED_QUESTIONS}}',
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFCondition: 'Equals',
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFConditionalIfTrueActions: [
+          // 没有related question
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  content: undefined,
+                  metadata: {
+                    isComplete: true,
+                    deepDive: [
+                      {
+                        type: 'timestampedSummary',
+                        title: {
+                          title: 'Summary',
+                          titleIcon: 'SummaryInfo',
+                        },
+                        value: `{{TRANSCRIPT_TIMESTAMPED}}`,
+                      },
+                      {
+                        title: {
+                          title: 'Deep dive',
+                          titleIcon: 'TipsAndUpdates',
+                        },
+                        value: 'Ask AI anything about the video...',
+                      },
+                    ],
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有related question
+          {
+            type: 'RENDER_TEMPLATE',
+            parameters: {
+              template: `{{RELATED_QUESTIONS}}`,
+            },
+          },
+          {
+            type: 'SCRIPTS_LIST',
+            parameters: {},
+          },
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: params.messageId || '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  content: undefined,
+                  metadata: {
+                    isComplete: true,
+                    deepDive: [
+                      {
+                        type: 'timestampedSummary',
+                        title: {
+                          title: 'Summary',
+                          titleIcon: 'SummaryInfo',
+                        },
+                        value: `{{TRANSCRIPT_TIMESTAMPED}}`,
+                      },
+                      {
+                        title: {
+                          title: 'Related',
+                          titleIcon: 'Layers',
+                          titleIconSize: 20,
+                        },
+                        type: 'related',
+                        value: `{{LAST_ACTION_OUTPUT}}` as any,
+                      },
+                    ],
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
       },
     },
   ]

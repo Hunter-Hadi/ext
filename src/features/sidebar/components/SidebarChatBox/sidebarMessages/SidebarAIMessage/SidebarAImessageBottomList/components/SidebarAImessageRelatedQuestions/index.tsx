@@ -6,7 +6,7 @@ import React, { FC } from 'react'
 
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/chatgpt/types'
+import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/indexed_db/conversations/models/Message'
 
 const SidebarAImessageRelatedQuestions: FC<{
   relatedQuestions: IAIResponseOriginalMessageMetaDeepRelatedData[]
@@ -50,7 +50,7 @@ const SidebarAImessageRelatedQuestions: FC<{
                   fontSize={'16px'}
                   width={0}
                   flex={1}
-                  whiteSpace="normal"
+                  whiteSpace='normal'
                   color={'text.primary'}
                 >
                   {relatedQuestion.title}

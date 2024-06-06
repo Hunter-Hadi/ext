@@ -624,18 +624,8 @@
     "sidebar__conversation_share__share_panel__copied_tip": "تم نسخ الرابط",
     "sidebar__conversation_share__share_panel__success_tip": "تم نسخ عنوان URL للمحادثة المشتركة إلى الحافظة!",
     "sidebar__conversation_share__share_panel__error_tip": "غير قادر على المشاركة في الوقت الحالي. يرجى التحقق من الشبكة الخاصة بك أو المحاولة مرة أخرى لاحقًا.",
-    "sidebar__promotion_dialog__title": "ميزات متميزة جديدة في {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "`جيميني-1.5` مع الرؤية",
-    "sidebar__promotion_dialog__content_item1__description": "جرب أحدث وأكثر النماذج تقدمًا من Google. يوفر سرعة أسرع ، نافذة سياق بطاقة 1 مليون ، تحسين الوضعيات ، وميزات أمان محسنة.",
-    "sidebar__promotion_dialog__content_item2__title": "`كلود-3` مع الرؤية",
-    "sidebar__promotion_dialog__content_item2__description": "الوصول إلى نماذج الجيل التالي من Anthropic ، كلها في مكان واحد في MaxAI: Opus ، الخيار الأكثر ذكاءً ؛ Sonnet ، الخيار الأكثر توازنًا ؛ و Haiku ، أسرع نموذج.",
-    "sidebar__promotion_dialog__content_item3__title": "نافذة السياق على Google Doc و Microsoft Word",
-    "sidebar__promotion_dialog__content_item3__description": "يمكنك الآن تحديد أي نص في Google Doc أو Microsoft Word لتحسين كتابتك - تحسين الكتابة، إصلاح الإملاء والقواعد النحوية، جعل أي نص أقصر / أطول، تبسيط اللغة، إعادة صياغة، تغيير النبرة، وأكثر!",
-    "sidebar__promotion_dialog__content_item4__title": "الرد الفوري على الرسائل",
-    "sidebar__promotion_dialog__content_item4__description": "دع الذكاء الاصطناعي يولد ردود رسائل شخصية لك في ثوانٍ مع واحدة فقط من النقرات على WhatsApp و Discord و Telegram و Messenger و Slack.",
-    "sidebar__promotion_dialog__content_item5__title": "إنشاء فن وصور AI",
-    "sidebar__promotion_dialog__content_item5__description": "تحويل رؤيتك بسرعة إلى صور مذهلة. بسيطة، قوية، محولة.",
-    "sidebar__promotion_dialog__cta_button": "عرض لفترة محدودة: احصل على خصم 53% الآن!",
+    "sidebar__promotion_dialog__title": "اكتشف الميزات التي توفر الوقت في {{VERSION}}",
+    "sidebar__promotion_dialog__cta_button": "ترقية",
     "provider__bard_web_app__model__gemini__description": "أحدث نموذج من قوقل.",
     "translation_advanced__title": "إعدادات الترجمة",
     "translation_advanced__source_lang_select__label": "اللغة المصدر",
@@ -680,8 +670,6 @@
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "قم بتحميل المستندات أو الصور إلى MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "تحميل المستندات إلى MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "الملف المرفوع كبير جدًا. يُرجى النظر في استخدام نموذج AI يحتوي على نافذة سياق أكبر أو تحميل ملف بحجم أصغر.",
-    "sidebar__promotion_dialog__content_item6__title": "مساعد كتابة الرسائل",
-    "sidebar__promotion_dialog__content_item6__description": "اسمح للذكاء الاصطناعي بإنشاء ردود رسائل شخصية لك في ثوانٍ مع وجود نقرة واحدة فقط على ديسكورد.",
     "immersive_chat__more_actions_button__title": "المزيد",
     "immersive_chat__rename_chat__button__title": "إعادة تسمية",
     "provider__gemini__model__gemini_1_5_pro__description": "جيميني 1.5 هو نموذج الجيل التالي من Google الذي يقدم أداءً محسّنًا وهندسة MoE فعالة واختراقًا في فهم السياق الطويل بنوافذ تصل إلى 1 مليون رمز، مما يمكّن قدرات متقدمة في معالجة النصوص والشفرة والصور والصوت والفيديو.",
@@ -788,14 +776,7 @@
     "provider__chatgpt__model__gpt_4o__description": "أحدث نموذج رائد من OpenAI والأسرع. يجمع بسلاسة بين النصوص والصوت والصور، يقدم GPT-4o أوقات استجابة تقرب من الإنسان وأداء استثنائي عبر اللغات وفهم الرؤية والصوت، مما يضع معيارًا جديدًا لقابلية استخدام الذكاء الاصطناعي والتفاعل الطبيعي.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__title": "الترقية للحصول على gpt-4o غير المحدود مع الرؤية",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__description1": "يوفر النموذج الرائد الجديد من OpenAI ذكاءً على مستوى GPT-4، مع إجابات أكثر حداثة وسرعة مضاعفة وقدرة على التفكير في الوقت الحقيقي عبر الصوت والرؤية والنص.",
-    "sidebar__promotion_dialog__content__title": "تقديم GPT-4o على MaxAI.me",
-    "sidebar__promotion_dialog__content_item7__title": "النموذج الرائد الجديد من OpenAI",
-    "sidebar__promotion_dialog__content_item7__description": "يوفر ذكاءً على مستوى GPT-4 وإجابات أكثر حداثة.",
-    "sidebar__promotion_dialog__content_item8__title": "سرعة مضاعفة",
-    "sidebar__promotion_dialog__content_item8__description": "GPT-4o أسرع بمعدل 2 مرات من GPT-4 Turbo.",
-    "sidebar__promotion_dialog__content_item9__title": "\"O\" لـ \"Omnimodel\"",
-    "sidebar__promotion_dialog__content_item9__description": "يمكنه التفكير في الوقت الحقيقي عبر الصوت والرؤية والنص.",
-    "sidebar__promotion_dialog__footer_tips": "يقدم MaxAI Elite استعلامات غير محدودة للذكاء الاصطناعي ويفتح جميع الميزات.",
+    "sidebar__promotion_dialog__footer_tips": "لن يتم خصم أي رسوم حتى الصفحة التالية.",
     "login_modal__title__part1": "تسجيل الدخول للحصول على",
     "login_modal__title__part2": "مجانًا",
     "login_modal__title__part3": "استفسارات الذكاء الاصطناعي كل يوم",
@@ -839,8 +820,62 @@
     "floating_menu__input__placeholder__after_ai_response": "أخبر الذكاء الاصطناعي ما يجب فعله بعد ذلك...",
     "sidebar__unable_subscription__title": "الإجراء المطلوب - لم نتمكن من تجديد اشتراكك تلقائيًا.",
     "sidebar__unable_subscription__link__title": "قم بإصلاحه الآن لتوفير ساعات كل يوم.",
-    "chat__user_message__contexts__file__preview__tips": "قد تكون التنسيقات غير متسقة من المصدر.",
-    "provider__chatgpt__upload_file_error__total_too_large__text": "الملفات المرفوعة كبيرة جدًا. يُرجى استخدام نموذج AI يحتوي على نافذة سياق أكبر أو تحميل ملفات أصغر."
+    "sidebar__promotion_dialog__gpt_4o__content__title": "الوصول إلى GPT-4o",
+    "sidebar__promotion_dialog__gpt_4o__content_item1__title": "نموذج العلامة التجارية الجديدة لـ OpenAI",
+    "sidebar__promotion_dialog__gpt_4o__content_item1__description": "يوفر ذكاءً على مستوى GPT-4 واستجابات أحدث.",
+    "sidebar__promotion_dialog__gpt_4o__content_item2__title": "أسرع بمقدار 2",
+    "sidebar__promotion_dialog__gpt_4o__content_item2__description": "يعمل GPT-4o بمقدار 2 أسرع من GPT-4 Turbo.",
+    "sidebar__promotion_dialog__gpt_4o__content_item3__title": "\"O\" لـ \"Omnimodel\"",
+    "sidebar__promotion_dialog__gpt_4o__content_item3__description": "يمكنه التفكير في الصوت والرؤية والنص في الوقت الحقيقي.",
+    "sidebar__promotion_dialog__claude_3__content__title": "الوصول إلى Claude-3",
+    "sidebar__promotion_dialog__claude_3__content_item1__description": "نماذج AI الجيل القادم من Anthropic.",
+    "sidebar__promotion_dialog__claude_3__content_item2__title": "Claude-3-Opus",
+    "sidebar__promotion_dialog__claude_3__content_item2__description": "الخيار الأكثر ذكاءً.",
+    "sidebar__promotion_dialog__claude_3__content_item3__title": "Claude-3-Sonnet",
+    "sidebar__promotion_dialog__claude_3__content_item3__description": "الخيار الأكثر توازنًا.",
+    "sidebar__promotion_dialog__claude_3__content_item4__title": "Claude-3-Haiku",
+    "sidebar__promotion_dialog__claude_3__content_item4__description": "أسرع نموذج.",
+    "sidebar__promotion_dialog__gemini_1": {},
+    "sidebar__promotion_dialog__art__content__title": "إنشاء فن وصور AI",
+    "sidebar__promotion_dialog__art__content_item1__description": "قم بتضاعف إبداعك وإنتاجيتك بمساعدة نماذج AI الأكثر تقدمًا.",
+    "sidebar__promotion_dialog__art__content_item2__description": "حوّل رؤيتك إلى صور مذهلة بسرعة.",
+    "sidebar__promotion_dialog__art__content_item3__description": "بسيطة وقوية ومحولة.",
+    "sidebar__promotion_dialog__summary__content__title": "وفر الوقت في المقالات الطويلة ومقاطع الفيديو",
+    "sidebar__promotion_dialog__summary__content_item1__description": "لخص PDF ومقاطع الفيديو على YouTube والتقارير وصفحات الويب في ثوانٍ.",
+    "sidebar__promotion_dialog__summary__content_item2__description": "احصل على الأفكار الرئيسية فورًا.",
+    "sidebar__promotion_dialog__summary__content_item3__description": "احصل على إجابات فورية من خلال التحدث مع أوراق البحث ومقاطع الفيديو والمقالات.",
+    "sidebar__promotion_dialog__summary__content_item4__description": "جربه على أي تطبيق ويب أو موقع تستخدمه. لا حاجة للنسخ أو اللصق أو التبديل بين السياقات.",
+    "sidebar__promotion_dialog__instant_reply__content__title": "وفر الوقت في المراسلات البريدية",
+    "sidebar__promotion_dialog__instant_reply__content_item1__description": "دع AI يكتب ردودًا شخصية واحترافية، وتحسين النغمة، وفحص الإملاء والقواعد النحوية بالنيابة عنك.",
+    "sidebar__promotion_dialog__instant_reply__content_item2__description": "جربه على البريد الإلكتروني: Gmail، Outlook.",
+    "sidebar__promotion_dialog__instant_reply__content_item3__description": "جربه على وسائل التواصل الاجتماعي: LinkedIn، YouTube، Facebook، Twitter، Instagram، Reddit.",
+    "sidebar__promotion_dialog__instant_reply__content_item4__description": "جربه على الرسائل: WhatsApp، Discord، Telegram، Messenger، Slack.",
+    "sidebar__promotion_dialog__search__content__title": "البحث بسرعة 10 مرات أسرع باستخدام AI",
+    "sidebar__promotion_dialog__search__content_item1__description": "محرك الإجابة الدردشة الذي تلجأ إليه مع وصول إلى الويب.",
+    "sidebar__promotion_dialog__search__content_item2__description": "احصل على إجابات AI موثوقة وحديثة مع وصول فوري إلى الويب والمعرفة والاستشهادات.",
+    "sidebar__promotion_dialog__search__content_item3__description": "ابحث عن إجابات موثوقة بسرعة من خلال التحدث مع جميع أفضل نماذج AI في مكان واحد.",
+    "sidebar__promotion_dialog__rewriter__content__title": "اكتب بشكل أفضل ببضع نقرات",
+    "sidebar__promotion_dialog__rewriter__content_item1__description": "كن محترفًا وواضحًا ومقنعًا ببضع نقرات، ليس بضع ساعات.",
+    "sidebar__promotion_dialog__rewriter__content_item2__description": "قم بتحسين كتابتك وتلميعها باقتراحات قواعد النحو والأسلوب المدعومة بالذكاء الاصطناعي.",
+    "sidebar__promotion_dialog__rewriter__content_item3__description": "جربه على أي تطبيق ويب أو موقع تستخدمه. لا حاجة للنسخ أو اللصق أو التبديل بين السياقات.",
+    "sidebar__promotion_dialog__prompts__content__title": "رمز الغش الخاص بك للذكاء الاصطناعي",
+    "sidebar__promotion_dialog__prompts__content_item1__description": "الوصول إلى مكتبة AI prompt عالية الجودة صُممت واستعرضت من قبل خبراء AI prompt.",
+    "sidebar__promotion_dialog__prompts__content_item2__description": "يدعم مجموعة واسعة من الصناعات وحالات الاستخدام.",
+    "sidebar__promotion_dialog__prompts__content_item3__description": "أكمل مهامك اليومية في دقائق الآن مع AI prompts، ليس بعد الآن ساعات.",
+    "sidebar__promotion_dialog__prompts__content_item4__description": "أنشئ prompts الخاصة بك ونظمها للاستخدام المستمر.",
+    "sidebar__promotion_dialog__translator__content__title": "تجاوز حواجز اللغة",
+    "sidebar__promotion_dialog__translator__content_item1__description": "ترجمة بين اللغات للمقالات والوثائق.",
+    "sidebar__promotion_dialog__translator__content_item2__description": "الوصول إلى المعلومات بأي لغة.",
+    "sidebar__promotion_dialog__translator__content_item3__description": "احصل على مساعدة في الكتابة باستخدام ترجمات دقيقة وطبيعية عبر عدة لغات.",
+    "sidebar__promotion_dialog__translator__content_item4__description": "جربه على أي تطبيق ويب أو موقع تستخدمه. لا حاجة للنسخ أو اللصق أو التبديل بين السياقات.",
+    "sidebar__promotion_dialog__vision__content__title": "استخدم قوة رؤية AI",
+    "sidebar__promotion_dialog__vision__content_item1__description": "استخرج النص من الصور بسهولة.",
+    "sidebar__promotion_dialog__vision__content_item2__description": "اسأل أسئلة حول أي صورة واحصل على إجابات فورية.",
+    "sidebar__promotion_dialog__vision__content_item3__description": "ما عليك سوى التقاط لقطة شاشة وطرح أي أسئلة فورًا.",
+    "sidebar__promotion_dialog__vision__content_item4__description": "مدعوم بأفضل نماذج AI: GPT-4o، Claude-3-opus، Gemini-1.5-pro.",
+    "sidebar__promotion_dialog__discount__title": "وفر 53% الآن",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "الملفات المرفوعة كبيرة جدًا. يُرجى استخدام نموذج AI بنافذة سياق أكبر أو تحميل ملفات أصغر.",
+    "chat__user_message__contexts__file__preview__tips": "قد يكون التنسيق غير متسق من المصدر."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",
@@ -1189,5 +1224,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "لتحديد الخيار.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "انقر لاستبدال النص المحدد بمحتوى تم إنشاؤه بواسطة الذكاء الاصطناعي.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "يمكنك طلب من الذكاء الاصطناعي تحسين المحتوى الذي تم إنشاؤه بواسطة الذكاء الاصطناعي كما تريد."
+  },
+  "survey": {
+    "funnel_survey__submit_success__title": "شكرًا لمشاركة تجربتك معنا. 🙏",
+    "funnel_survey__submit_success__description": "سنقوم بمراجعة إجابتك بعناية وتقديم تجربة أفضل لك!",
+    "funnel_survey__cta_button__submit_text": "إرسال إجابتي",
+    "funnel_survey__cta_button__loading_text": "جارٍ الإرسال...",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "أخبرنا عن مخاوفك",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "ما الذي دفعك لإلغاء اشتراكك في MaxAI.me؟",
+    "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "أخبرنا ما الذي تسبب في إلغاء الاشتراك..."
   }
 }

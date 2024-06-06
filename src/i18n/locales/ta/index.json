@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "எந்த படத்திற்கும் கேள்விகளை கேட்கவும் முடியும்.",
     "sidebar__promotion_dialog__vision__content_item3__description": "எளிதாக ஒரு ஸ்கிரீன்ஷாட் எடுக்கி எந்த கேள்வியையும் உங்களுக்கு செல்லும்.",
     "sidebar__promotion_dialog__vision__content_item4__description": "சிறந்த AI மாதிரிகள்: GPT-4o, Claude-3-opus, Gemini-1.5-pro ஆல் இயங்குகின்றன.",
-    "sidebar__promotion_dialog__discount__title": "இப்போது 53% சேமிக்கவும்"
+    "sidebar__promotion_dialog__discount__title": "இப்போது 53% சேமிக்கவும்",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "பதிவேற்றப்பட்ட கோப்புகள் மிகப் பெரியவையாக உள்ளன. மிகுந்த உள்ளடக்க சாளர சாப்பிடுகை அல்லது சிறிய கோப்புகளை பதிவேற்றுக.",
+    "chat__user_message__contexts__file__preview__tips": "மூலம் வருமானத்தில் வடிவமைப்பு அட்டவணை ஒழுங்கு இருக்கலாம்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

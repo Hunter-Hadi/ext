@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Stil spørgsmål om ethvert billede og få øjeblikkelige svar.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Tag simpelthen et skærmbillede og stil spørgsmål med det samme.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Drevet af de bedste AI-modeller: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Spar 53% nu"
+    "sidebar__promotion_dialog__discount__title": "Spar 53% nu",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "De uploadede filer er for store. Brug venligst en AI-model med et større kontekstvindue eller upload mindre filer.",
+    "chat__user_message__contexts__file__preview__tips": "Formatering kan være inkonsekvent fra kilden."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Uzdodiet jautājumus par jebkuru attēlu un saņemiet nekavējoties atbildes.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Vienkārši uzņemiet ekrānuzņēmumu un uzdodiet jautājumus nekavējoties.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Darbojas ar labākajiem AI modeļiem: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ietaupiet 53% tagad"
+    "sidebar__promotion_dialog__discount__title": "Ietaupiet 53% tagad",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Augšupielādētie faili ir pārāk lieli. Lūdzu, izmantojiet AI modeli ar lielāku konteksta logu vai augšupielādējiet mazākus failus.",
+    "chat__user_message__contexts__file__preview__tips": "Formatēšana var būt nesaskaņota no avota."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Pune întrebări despre orice imagine și primește răspunsuri instantanee.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Fă rapid o captură de ecran și pune orice întrebări imediat.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Cu cele mai bune modele AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Economisește 53% acum"
+    "sidebar__promotion_dialog__discount__title": "Economisește 53% acum",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Fișierele încărcate sunt prea mari. Vă rugăm să utilizați un model AI cu o fereastră de context mai mare sau să încărcați fișiere mai mici.",
+    "chat__user_message__contexts__file__preview__tips": "Formatarea poate fi inconsistentă față de sursă."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

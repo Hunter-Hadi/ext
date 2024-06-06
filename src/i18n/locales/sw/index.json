@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Uliza maswali kuhusu picha yoyote na upate majibu papo hapo.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Chukua skrini tu na ulize maswali yoyote mara moja.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Inayo nguvu kutokana na mifano bora ya AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Punguza 53% sasa"
+    "sidebar__promotion_dialog__discount__title": "Punguza 53% sasa",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Faili zilizopakiwa ni kubwa sana. Tafadhali tumia mfano wa AI wenye dirisha kubwa la muktadha au pakia faili ndogo.",
+    "chat__user_message__contexts__file__preview__tips": "Umbizo linaweza kuwa lisilo thabiti kutoka chanzo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "對任何圖像提出問題並立即獲得答案。",
     "sidebar__promotion_dialog__vision__content_item3__description": "只需截圖，立即提出任何問題。",
     "sidebar__promotion_dialog__vision__content_item4__description": "由最佳 AI 模型驅動：GPT-4o、Claude-3-opus、Gemini-1.5-pro。",
-    "sidebar__promotion_dialog__discount__title": "現在節省 53%"
+    "sidebar__promotion_dialog__discount__title": "現在節省 53%",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "上傳的檔案太大。請使用具有更大內容視窗的AI模型，或上傳較小的檔案。",
+    "chat__user_message__contexts__file__preview__tips": "格式可能與來源不一致。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

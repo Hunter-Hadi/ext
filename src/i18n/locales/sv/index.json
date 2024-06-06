@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Ställ frågor om vilken bild som helst och få omedelbara svar.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Ta enkelt en skärmdump och ställ omedelbart vilka frågor som helst.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Drivs av de bästa AI-modellerna: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Spara 53% nu"
+    "sidebar__promotion_dialog__discount__title": "Spara 53% nu",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "De uppladdade filerna är för stora. Använd en AI-modell med ett större sammanhangsfönster eller ladda upp mindre filer.",
+    "chat__user_message__contexts__file__preview__tips": "Formateringen kan vara inkonsekvent från källan."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

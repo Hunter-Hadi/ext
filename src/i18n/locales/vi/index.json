@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Đặt câu hỏi về bất kỳ hình ảnh nào và nhận câu trả lời tức thì.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Chỉ cần chụp màn hình và đặt bất kỳ câu hỏi nào ngay lập tức.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Được cung cấp bởi các mô hình AI tốt nhất: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Tiết kiệm 53% ngay bây giờ"
+    "sidebar__promotion_dialog__discount__title": "Tiết kiệm 53% ngay bây giờ",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Các tệp đã tải lên quá lớn. Vui lòng sử dụng một mô hình AI với cửa sổ ngữ cảnh lớn hơn hoặc tải lên các tệp nhỏ hơn.",
+    "chat__user_message__contexts__file__preview__tips": "Định dạng có thể không nhất quán so với nguồn."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

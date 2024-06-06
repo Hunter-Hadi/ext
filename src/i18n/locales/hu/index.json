@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Kérdezz bármilyen képről és kapj azonnali válaszokat.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Csak készíts egy képernyőképet és tegyél fel bármilyen kérdést azonnal.",
     "sidebar__promotion_dialog__vision__content_item4__description": "A legjobb AI modellek által támogatott: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Most 53% kedvezmény"
+    "sidebar__promotion_dialog__discount__title": "Most 53% kedvezmény",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "A feltöltött fájlok túl nagyok. Kérlek használj egy AI modellt, amelynek nagyobb a kontextus ablaka, vagy tölts fel kisebb fájlokat.",
+    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrástól."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

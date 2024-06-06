@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ถามคำถามเกี่ยวกับรูปภาพใดก็ได้และรับคำตอบทันที",
     "sidebar__promotion_dialog__vision__content_item3__description": "เพียงแค่ถ่ายภาพหน้าจอและถามคำถามใดก็ได้ทันที",
     "sidebar__promotion_dialog__vision__content_item4__description": "ขับเคลื่อนด้วยโมเดล AI ที่ดีที่สุด: GPT-4o, Claude-3-opus, Gemini-1.5-pro",
-    "sidebar__promotion_dialog__discount__title": "ประหยัด 53% ตอนนี้"
+    "sidebar__promotion_dialog__discount__title": "ประหยัด 53% ตอนนี้",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "ไฟล์ที่อัปโหลดใหญ่เกินไป โปรดใช้โมเดล AI ที่มีหน้าต่างความสัมพันธ์ของบริบทใหญ่กว่าหรืออัปโหลดไฟล์ที่เล็กกว่า",
+    "chat__user_message__contexts__file__preview__tips": "การจัดรูปแบบอาจไม่สอดคล้องกับแหล่งที่มา"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "যেকোনো ছবি সম্পর্কে প্রশ্ন করুন এবং তাৎপর্যপূর্ণ উত্তর পেতে পারুন।",
     "sidebar__promotion_dialog__vision__content_item3__description": "সহজেই একটি স্ক্রিনশট নিন এবং সামগ্রিক প্রশ্ন করুন।",
     "sidebar__promotion_dialog__vision__content_item4__description": "সেরা এআই মডেলদ্বয়ের কাছ থেকে প্রচুর শক্তি: জিপিটি-৪০, ক্লোড-৩-অপুস, জেমিনি-১.৫-প্রো।",
-    "sidebar__promotion_dialog__discount__title": "এখন ৫৩% বাঁচুন"
+    "sidebar__promotion_dialog__discount__title": "এখন ৫৩% বাঁচুন",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "আপলোড করা ফাইলগুলি অনেক বড়। দয়া করে একটি এইচআই মডেল ব্যবহার করুন যার সংশ্লেষণ উইন্ডো বড় আছে বা ছোট ফাইলগুলি আপলোড করুন।",
+    "chat__user_message__contexts__file__preview__tips": "সোর্স থেকে ফরম্যাটিং অস্থির হতে পারে।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

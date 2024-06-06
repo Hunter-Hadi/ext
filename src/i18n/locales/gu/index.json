@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "કોઈપણ છબી વિશે પ્રશ્નો કરો અને તકનીકી જવાબો મેળવો.",
     "sidebar__promotion_dialog__vision__content_item3__description": "સરળતાથી સ્ક્રીનશોટ લેવું અને તકનીકી પ્રશ્નો કરો.",
     "sidebar__promotion_dialog__vision__content_item4__description": "શ્રેષ્ઠ એઆઈ મોડેલ્સદ્વારા પ્રાધિક્યતા: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "હમણાં 53% બચાવો"
+    "sidebar__promotion_dialog__discount__title": "હમણાં 53% બચાવો",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "અપલોડ કરેલા ફાઇલો ખૂબ મોટી છે. કૃપા કરીને વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરો અથવા લઘુ ફાઇલો અપલોડ કરો.",
+    "chat__user_message__contexts__file__preview__tips": "સ્રોતમાંથી ફોર્મેટિંગ અસંગત હોઈ શકે છે."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

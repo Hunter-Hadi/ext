@@ -1,4 +1,5 @@
 import { APP_VERSION, SUMMARY__RELATED_QUESTIONS__PROMPT_ID } from '@/constants'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/indexed_db/conversations/models/Message'
 import {
@@ -47,20 +48,12 @@ export class ActionMaxAIResponseRelated extends Action {
           'latest',
         )
       : null
-    // TODO: 第一版只给summary的默认的all的related questions，后续可以根据需求再扩展
-    let needToGenerateRelatedQuestions = false
-    if (AIResponseMessage) {
-      needToGenerateRelatedQuestions =
-        AIResponseMessage?.originalMessage?.metadata?.navMetadata?.key === 'all'
-    }
-    // const systemPrompt = conversation?.meta.systemPrompt
-
     let summaryContent = this.parameters.compliedTemplate || ''
-
     // 处理额外信息，比如youtube transcript和timestamped
     if (
       conversation?.type === 'Summary' &&
       conversation?.meta?.pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' &&
+      AIResponseMessage &&
       summaryContent &&
       isAIMessage(AIResponseMessage)
     ) {

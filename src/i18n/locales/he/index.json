@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "שאל שאלות על כל תמונה וקבל תשובות מיידיות.",
     "sidebar__promotion_dialog__vision__content_item3__description": "פשוט צלם צילום מסך ושאל שאלות מיידיות.",
     "sidebar__promotion_dialog__vision__content_item4__description": "מופעל על ידי הדגמים הטובים ביותר: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "חסוך 53% עכשיו"
+    "sidebar__promotion_dialog__discount__title": "חסוך 53% עכשיו",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "הקבצים שהועלו גדולים מדי. אנא השתמש בדגם AI עם חלון קשר גדול יותר או העלה קבצים קטנים יותר.",
+    "chat__user_message__contexts__file__preview__tips": "העיצוב עשוי להיות לא עקבי מהמקור."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

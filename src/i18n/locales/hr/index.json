@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Postavljajte pitanja o bilo kojoj slici i dobijte trenutne odgovore.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Jednostavno snimite snimku zaslona i postavite bilo kakva pitanja odmah.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Pokreće najbolje AI modele: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Uštedite 53% sada"
+    "sidebar__promotion_dialog__discount__title": "Uštedite 53% sada",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Prenesene datoteke su prevelike. Molimo koristite AI model s većim prozorom konteksta ili prenesite manje datoteke.",
+    "chat__user_message__contexts__file__preview__tips": "Formatiranje može biti neujednačeno iz izvora."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

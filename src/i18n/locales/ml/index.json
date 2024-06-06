@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ഏതെങ്കിലും ചിത്രത്തിലേക്ക് ചോദ്യം ചെയ്യുക, പ്രത്യുത്തരം എന്നിവയും ലഭിക്കുക.",
     "sidebar__promotion_dialog__vision__content_item3__description": "സ്ക്രീൻഷോട്ട് എടുക്കുകയും ഏതെങ്കിലും ചോദ്യങ്ങൾ താഴെ പറയുന്നത് ചോദിക്കുക.",
     "sidebar__promotion_dialog__vision__content_item4__description": "ഏറ്റവും മികച്ച എ.ഐ. മോഡലുകൾ പ്രവർത്തിപ്പിക്കുന്നു: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "ഇപ്പോൾ 53% സഞ്ചയം"
+    "sidebar__promotion_dialog__discount__title": "ഇപ്പോൾ 53% സഞ്ചയം",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "അപ്‌ലോഡ് ചെയ്ത ഫയലുകൾ വളരെ പെട്ടന്നതാണ്. ദയവായി ഒരു പ്രമേയം ജനറേറ്റർ ഉപയോഗിച്ച് പുതിയ ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യുക.",
+    "chat__user_message__contexts__file__preview__tips": "ഫോർമാറ്റിംഗ് ഉറപ്പാക്കാൻ ഉള്ള സ്രോതസ്സിൽ അനുസരിച്ച് അനന്യമായിരിക്കാം."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

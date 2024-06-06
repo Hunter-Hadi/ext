@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Задавайте въпроси за всяко изображение и получавайте незабавни отговори.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Просто направете снимка на екрана и задайте въпроси веднага.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Задвижван от най-добрите AI модели: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Спестете 53% сега"
+    "sidebar__promotion_dialog__discount__title": "Спестете 53% сега",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Качените файлове са твърде големи. Моля, използвайте модел на изкуствен интелект с по-голям контекст или качете по-малки файлове.",
+    "chat__user_message__contexts__file__preview__tips": "Форматирането може да бъде несъвместимо с източника."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

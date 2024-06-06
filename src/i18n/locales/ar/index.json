@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "اسأل أسئلة حول أي صورة واحصل على إجابات فورية.",
     "sidebar__promotion_dialog__vision__content_item3__description": "ما عليك سوى التقاط لقطة شاشة وطرح أي أسئلة فورًا.",
     "sidebar__promotion_dialog__vision__content_item4__description": "مدعوم بأفضل نماذج AI: GPT-4o، Claude-3-opus، Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "وفر 53% الآن"
+    "sidebar__promotion_dialog__discount__title": "وفر 53% الآن",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "الملفات المرفوعة كبيرة جدًا. يُرجى استخدام نموذج AI بنافذة سياق أكبر أو تحميل ملفات أصغر.",
+    "chat__user_message__contexts__file__preview__tips": "قد يكون التنسيق غير متسق من المصدر."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

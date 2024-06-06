@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Haz preguntas sobre cualquier imagen y obtén respuestas instantáneas.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Simplemente toma una captura de pantalla y haz preguntas de inmediato.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Impulsado por los mejores modelos de IA: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ahorra un 53% ahora"
+    "sidebar__promotion_dialog__discount__title": "Ahorra un 53% ahora",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Los archivos cargados son demasiado grandes. Utilice un modelo de IA con una ventana de contexto más grande o cargue archivos más pequeños.",
+    "chat__user_message__contexts__file__preview__tips": "La formatación puede ser inconsistente desde la fuente."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

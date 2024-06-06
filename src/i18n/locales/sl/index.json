@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Postavljajte vprašanja o kateri koli sliki in takoj dobite odgovore.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Preprosto posnemite zaslon in takoj postavite katera koli vprašanja.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Poganja ga najboljši AI modeli: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Prihranite 53% zdaj"
+    "sidebar__promotion_dialog__discount__title": "Prihranite 53% zdaj",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Naložene datoteke so prevelike. Prosimo, uporabite model umetne inteligence z večjim kontekstnim oknom ali naložite manjše datoteke.",
+    "chat__user_message__contexts__file__preview__tips": "Oblikovanje se lahko razlikuje od izvora."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

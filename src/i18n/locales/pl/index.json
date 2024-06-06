@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Zadawaj pytania dotyczące dowolnego obrazu i otrzymuj natychmiastowe odpowiedzi.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Po prostu zrób zrzut ekranu i zadaj pytania od razu.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Napędzane przez najlepsze modele AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Oszczędź teraz 53%"
+    "sidebar__promotion_dialog__discount__title": "Oszczędź teraz 53%",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Przesłane pliki są zbyt duże. Proszę użyć modelu AI z większym oknem kontekstowym lub przesłać mniejsze pliki.",
+    "chat__user_message__contexts__file__preview__tips": "Formatowanie może być niekonsekwentne w porównaniu do źródła."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

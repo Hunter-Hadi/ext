@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "どんな画像に対しても質問し、即座に回答を得ます。",
     "sidebar__promotion_dialog__vision__content_item3__description": "スクリーンショットを撮ってすぐに質問できます。",
     "sidebar__promotion_dialog__vision__content_item4__description": "最高のAIモデル（GPT-4o、Claude-3-opus、Gemini-1.5-pro）によって強化されています。",
-    "sidebar__promotion_dialog__discount__title": "今すぐ53%割引"
+    "sidebar__promotion_dialog__discount__title": "今すぐ53%割引",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "アップロードされたファイルが大きすぎます。より大きなコンテキストウィンドウを持つAIモデルを使用するか、より小さいファイルをアップロードしてください。",
+    "chat__user_message__contexts__file__preview__tips": "ソースからの書式設定が一貫していない場合があります。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

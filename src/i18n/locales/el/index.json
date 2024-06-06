@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Κάντε ερωτήσεις για οποιαδήποτε εικόνα και λάβετε άμεσες απαντήσεις.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Απλά τραβήξτε μια στιγμιότυπη εικόνα και κάντε ερωτήσεις αμέσως.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Με την υποστήριξη των καλύτερων μοντέλων τεχνητής νοημοσύνης: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Εξοικονομήστε 53% τώρα"
+    "sidebar__promotion_dialog__discount__title": "Εξοικονομήστε 53% τώρα",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Τα ανεβασμένα αρχεία είναι πολύ μεγάλα. Χρησιμοποιήστε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή ανεβάστε μικρότερα αρχεία.",
+    "chat__user_message__contexts__file__preview__tips": "Η μορφοποίηση μπορεί να είναι ανεπαρκής από την πηγή."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

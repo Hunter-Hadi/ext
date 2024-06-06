@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ጥያቄዎችን ለመጻፍ ጥያቄ የሚገኙ የምግብ መስሪያዎችን ጥያቄ መልእክት.",
     "sidebar__promotion_dialog__vision__content_item3__description": "በቀላሉ ሱማሌን የጥያቄዎችን ጥያቄ ለመጻፍ ጥያቄ የሚገኙ.",
     "sidebar__promotion_dialog__vision__content_item4__description": "በሩቅ በማስተላለፍ የሚገኙ የብሔራዊና የፍቃድ መስሪያዎች: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "ከምስል 53% ይቀርባል"
+    "sidebar__promotion_dialog__discount__title": "ከምስል 53% ይቀርባል",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "የማታውቂያ ፋይሎች በጣም እየተጠቀሙ ነው። እባክዎ የትርጉም መልኩን ያስቀምጡ ወይም ፋይሎችን በጣም እንዴት እንደሚጠቀሙ AI ሞዴል ይጠቀሙ።",
+    "chat__user_message__contexts__file__preview__tips": "በመረጃ ላይ የተሰናዳን ማስተካከያ ይሻላል።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

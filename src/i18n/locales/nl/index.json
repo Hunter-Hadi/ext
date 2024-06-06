@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Stel vragen over elke afbeelding en krijg direct antwoorden.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Maak eenvoudig een schermafbeelding en stel onmiddellijk vragen.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Aangedreven door de beste AI-modellen: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Bespaar nu 53%"
+    "sidebar__promotion_dialog__discount__title": "Bespaar nu 53%",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "De geüploade bestanden zijn te groot. Gebruik alstublieft een AI-model met een groter contextvenster of upload kleinere bestanden.",
+    "chat__user_message__contexts__file__preview__tips": "De opmaak kan inconsistent zijn vanuit de bron."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

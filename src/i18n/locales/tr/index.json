@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Herhangi bir görüntü hakkında sorular sorun ve anında yanıtlar alın.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Basitçe ekran görüntüsü alın ve hemen herhangi bir soru sorun.",
     "sidebar__promotion_dialog__vision__content_item4__description": "En iyi yapay zeka modelleriyle desteklenir: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Şimdi %53 tasarruf edin"
+    "sidebar__promotion_dialog__discount__title": "Şimdi %53 tasarruf edin",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Yüklenen dosyalar çok büyük. Lütfen daha geniş bir bağlam penceresine sahip bir AI modeli kullanın veya daha küçük dosyalar yükleyin.",
+    "chat__user_message__contexts__file__preview__tips": "Biçimlendirme kaynağından farklı olabilir."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

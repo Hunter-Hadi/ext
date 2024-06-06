@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Kladite otázky o akomkoľvek obrázku a získajte okamžité odpovede.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Jednoducho urobte snímku obrazovky a okamžite položte akékoľvek otázky.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Poháňané najlepšími modelmi AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ušetrite teraz 53%"
+    "sidebar__promotion_dialog__discount__title": "Ušetrite teraz 53%",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Nahrané súbory sú príliš veľké. Použite prosím model AI s väčším kontextovým oknom alebo nahrajte menšie súbory.",
+    "chat__user_message__contexts__file__preview__tips": "Formátovanie môže byť nekonzistentné zo zdroja."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

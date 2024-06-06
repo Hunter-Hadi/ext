@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "سوالاتی در مورد هر تصویر بپرسید و پاسخ‌های فوری دریافت کنید.",
     "sidebar__promotion_dialog__vision__content_item3__description": "فقط یک عکس از صفحه بگیرید و هر سوالی را فوراً بپرسید.",
     "sidebar__promotion_dialog__vision__content_item4__description": "با بهترین مدل‌های هوش مصنوعی: GPT-4o، Claude-3-opus، Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "هم‌اکنون 53% صرفه‌جویی کنید"
+    "sidebar__promotion_dialog__discount__title": "هم‌اکنون 53% صرفه‌جویی کنید",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "فایل‌های آپلود شده بیش از حد بزرگ هستند. لطفاً از یک مدل هوش مصنوعی با پنجره متناسب بزرگتر استفاده کنید یا فایل‌های کوچکتری را آپلود کنید.",
+    "chat__user_message__contexts__file__preview__tips": "قالب‌بندی ممکن است ناهمسان باشد."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

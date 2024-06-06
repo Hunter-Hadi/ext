@@ -53,7 +53,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
         // referenceElementSelector: `textarea#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
         referenceElementSelector: `div#ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT`,
         tooltipProps: {
-          beforeTooltipShow: async () => {
+          beforeTooltipShow: async (container?: HTMLElement | null) => {
             // FLOATING_CONTEXT_MENU_LIST_BOX 没打开过，不展示 FLOATING_CONTEXT_MENU_INPUT_BOX
             const contextMenuListBoxOpened =
               await getAlreadyOpenedCacheBySceneType(
@@ -71,6 +71,18 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
               // 阻止 Tooltip 打开
               return false
             } else {
+              // 由于 FLOATING_CONTEXT_MENU_INPUT_BOX 打开之前，页面可能进入loading 状态，会导致 referenceElement 为空，所以在真正打开之前
+              // 需要再次判断 referenceElement 是否存在
+              if (container) {
+                const referenceElement = container.querySelector(
+                  `div#ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT`,
+                )
+                if (referenceElement) {
+                  return true
+                } else {
+                  return false
+                }
+              }
               return true
             }
           },

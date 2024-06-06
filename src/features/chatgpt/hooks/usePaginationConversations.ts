@@ -25,7 +25,7 @@ import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export const PAGINATION_CONVERSATION_QUERY_KEY =
   'PAGINATION_CONVERSATION_QUERY_KEY'
-export const PAGINATION_CONVERSATION_QUERY_PAGE_SIZE = 10
+export const PAGINATION_CONVERSATION_QUERY_PAGE_SIZE = 20
 
 export const conversationsToPaginationConversations = async (
   conversations: IConversation[],

@@ -128,6 +128,7 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
         <OnboardingTooltip
           sceneType={sceneType}
           {...onboardingConfig.tooltipProps}
+          referenceElement={referenceElement}
           showStateTrigger={showStateTrigger}
           title={
             // 可以外部传入

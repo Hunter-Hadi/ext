@@ -79,7 +79,7 @@ const TooltipInformationBar: FC<
             }}
           />
           <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
-            <Typography color='text.secondary' fontSize={12}>
+            <Typography color='rgba(255, 255, 255, 0.7)' fontSize={12}>
               {String(process.env.APP_NAME)}
             </Typography>
           </TextOnlyTooltip>

@@ -51,11 +51,15 @@ export interface IOnboardingTooltipProps extends TooltipProps {
 
   InformationBarProps?: ITooltipInformationBarProps
 
+  referenceElement: HTMLElement
+
   // 在打开 Tooltip 之前的 回掉函数，如果这个函数返回 false ，会阻止 Tooltip 打开
   beforeTooltipShow?: (
     container?: HTMLElement | null,
     sceneType?: IOnBoardingSceneType,
   ) => Promise<boolean> | boolean
+
+  closeWhenElementClick?: boolean
 }
 
 const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
@@ -68,6 +72,8 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
     floatingMenuTooltip,
     InformationBarProps,
     beforeTooltipShow,
+    closeWhenElementClick,
+    referenceElement,
     ...resetProps
   } = props
 
@@ -130,6 +136,15 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
     }
   }, [showStateTrigger, openTooltip, closeTooltip])
 
+  useEffect(() => {
+    if (referenceElement && closeWhenElementClick && open) {
+      referenceElement.addEventListener('click', closeTooltip)
+      return () => {
+        referenceElement.removeEventListener('click', closeTooltip)
+      }
+    }
+  }, [closeWhenElementClick, referenceElement, open])
+
   return (
     <BlackTooltip
       placement={props.placement || 'top'}
@@ -183,7 +198,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
             <CloseOutlinedIcon
               sx={{
                 fontSize: '14px',
-                color: 'text.secondary',
+                color: 'rgba(255, 255, 255, 0.7)',
               }}
             />
           </IconButton>

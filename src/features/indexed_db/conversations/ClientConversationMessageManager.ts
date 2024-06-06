@@ -107,6 +107,31 @@ export class ClientConversationMessageManager {
   }
 
   /**
+   * 获取对话消息Ids
+   * @param conversationId
+   */
+  static async getMessageIds(conversationId: string): Promise<string[]> {
+    try {
+      const messagesIdWithCreatedList = (await createIndexedDBQuery(
+        'conversations',
+      )
+        .messages.where('[conversationId+created_at+messageId]')
+        .between([conversationId, ''], [conversationId, '\uffff'])
+        .keys()
+        .then()) as [string, string, string][]
+      const sortedList = messagesIdWithCreatedList.sort((prev, next) => {
+        // [conversationId, created_at, messageId]
+        return new Date(next[1]).getTime() - new Date(prev[1]).getTime()
+      })
+      console.log(`ConversationDB[V3] 获取消息Ids数量`, sortedList.length)
+      return sortedList.map((item) => item[2])
+    } catch (e) {
+      console.log(`ConversationDB[V3] 获取消息Ids数量失败`, e)
+      return []
+    }
+  }
+
+  /**
    * 获取所有消息
    * @param conversationId
    */
@@ -115,7 +140,7 @@ export class ClientConversationMessageManager {
       const messagesIds = await this.getMessageIds(conversationId)
       // 因为获取indexedDB的数据是通过postMessage的方式，所以这里不能一次性获取所有数据，否则会导致数据过大，无法传输
       // 这里循环获取数据
-      const messages: IChatMessage[] = []
+      let messages: IChatMessage[] = []
       const chunkSize = 50
       for (let i = 0; i < messagesIds.length; i += chunkSize) {
         const messageIds = messagesIds.slice(i, i + chunkSize)
@@ -126,10 +151,11 @@ export class ClientConversationMessageManager {
           .then()
         messages.push(...result)
       }
-      console.log(`ConversationDB[V3] 获取消息`, messages)
+      messages = orderBy(messages, ['created_at'], ['desc'])
+      console.log(`ConversationDB[V3] 获取全部消息`, messages)
       return messages
     } catch (e) {
-      console.log(`ConversationDB[V3] 获取消息失败`, e)
+      console.log(`ConversationDB[V3] 获取全部消息失败`, e)
       return []
     }
   }
@@ -333,31 +359,6 @@ export class ClientConversationMessageManager {
       return false
     }
   }
-
-  /**
-   * 获取对话消息Ids
-   * @param conversationId
-   */
-  static async getMessageIds(conversationId: string): Promise<string[]> {
-    try {
-      const messagesIdWithCreatedList = (await createIndexedDBQuery(
-        'conversations',
-      )
-        .messages.where('[conversationId+created_at+messageId]')
-        .between([conversationId, ''], [conversationId, '\uffff'])
-        .keys()
-        .then()) as [string, string, string][]
-      const sortedList = messagesIdWithCreatedList.sort((prev, next) => {
-        // [conversationId, created_at, messageId]
-        return new Date(next[1]).getTime() - new Date(prev[1]).getTime()
-      })
-      console.log(`ConversationDB[V3] 获取消息Ids数量`, sortedList.length)
-      return sortedList.map((item) => item[2])
-    } catch (e) {
-      console.log(`ConversationDB[V3] 获取消息Ids数量失败`, e)
-      return []
-    }
-  }
   /**
    * 获取对话消息Ids
    * @param conversationId
@@ -398,6 +399,9 @@ export class ClientConversationMessageManager {
   ) {
     try {
       const messagesIds = await this.getMessageIds(conversationId)
+      const messages = await this.getMessagesByMessageIds(messagesIds)
+      console.log(messages)
+      debugger
       const findIndex = messagesIds.findIndex((item) => item === upToMessageId)
       if (findIndex === -1) {
         return []
@@ -408,7 +412,7 @@ export class ClientConversationMessageManager {
         findIndex,
       )
       return timeFrame === 'latest'
-        ? messagesIds.slice(0, findIndex)
+        ? messagesIds.slice(0, findIndex + 1)
         : messagesIds.slice(findIndex)
     } catch (e) {
       console.log(`ConversationDB[V3] 获取${timeFrame}的删除消息ids错误`, e)

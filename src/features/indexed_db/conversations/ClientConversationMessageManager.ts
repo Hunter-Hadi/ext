@@ -399,9 +399,6 @@ export class ClientConversationMessageManager {
   ) {
     try {
       const messagesIds = await this.getMessageIds(conversationId)
-      const messages = await this.getMessagesByMessageIds(messagesIds)
-      console.log(messages)
-      debugger
       const findIndex = messagesIds.findIndex((item) => item === upToMessageId)
       if (findIndex === -1) {
         return []

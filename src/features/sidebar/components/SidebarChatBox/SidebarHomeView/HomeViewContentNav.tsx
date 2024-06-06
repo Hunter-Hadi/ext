@@ -70,7 +70,7 @@ const HomeViewContentNav = () => {
           // 找到 prompt library button，触发点击事件
           const promptLibraryBtn =
             queryShadowContainerElementSelector<HTMLElement>(
-              MAXAI_SIDEBAR_ID,
+              `#${MAXAI_SIDEBAR_ID}`,
               `#${MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID}`,
             )
 
@@ -152,7 +152,7 @@ const HomeViewDefaultNavItem: FC<{
   return (
     <Stack
       direction={'row'}
-      alignItems="center"
+      alignItems='center'
       spacing={0.5}
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
@@ -181,7 +181,7 @@ const HomeViewDefaultNavItem: FC<{
         fontSize={14}
         fontWeight={400}
         lineHeight={1.5}
-        color="inherit"
+        color='inherit'
       >
         {navItem.title}
       </Typography>

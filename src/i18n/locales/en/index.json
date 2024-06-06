@@ -1046,7 +1046,14 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "to select the option.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Click to replace the selected text with AI-generated content.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "You can ask AI to refine the AI-generated content however you want."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "You can ask AI to refine the AI-generated content however you want.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Click to open the sidebar to chat with AI, summarize any page, ask the web, or create AI art.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Click to summarize and ask questions about this email.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Click to summarize and ask questions about this PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Click to summarize and ask questions about this YouTube video.",
+
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Click to generate a personalized reply instantly.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Click to generate a personalized draft instantly, or improve your draft."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

@@ -1,12 +1,13 @@
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
+import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAISidebarRootElement } from '@/utils'
@@ -14,10 +15,15 @@ import { getMaxAISidebarRootElement } from '@/utils'
 const PDFSummaryButton: FC = () => {
   const { t } = useTranslation(['client'])
   const { element } = useFindElement('#toolbarViewerRight')
+
+  const [summaryButtonContainer, setSummaryButtonContainer] =
+    useState<HTMLElement | null>(null)
+
   return (
     <DynamicComponent
       rootContainer={element}
       customElementName={'max-ai-pdf-summary-button'}
+      onSetContainer={setSummaryButtonContainer}
     >
       <TextOnlyTooltip
         arrow
@@ -41,6 +47,7 @@ const PDFSummaryButton: FC = () => {
             borderRadius: '12px',
           }}
           variant={'contained'}
+          data-testid='maxai-pdf-summary-button'
           onClick={() => {
             showChatBox()
             const timer = setInterval(() => {
@@ -72,6 +79,12 @@ const PDFSummaryButton: FC = () => {
           </Stack>
         </Button>
       </TextOnlyTooltip>
+      {summaryButtonContainer && (
+        <OnboardingTooltipTempPortal
+          sceneType='PDF_SUMMARY_BUTTON'
+          container={summaryButtonContainer}
+        />
+      )}
     </DynamicComponent>
   )
 }

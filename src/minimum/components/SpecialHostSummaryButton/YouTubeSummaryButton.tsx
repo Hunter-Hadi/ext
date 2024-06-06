@@ -6,6 +6,7 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
+import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -20,6 +21,9 @@ const YouTubeSummaryButton: FC = () => {
   const [renderElement, setRenderElement] = React.useState<HTMLElement | null>(
     null,
   )
+
+  const [summaryButtonContainer, setSummaryButtonContainer] =
+    React.useState<HTMLElement | null>(null)
 
   const buttonTooltipKey = useMemo(() => {
     const summaryType = getPageSummaryType()
@@ -39,8 +43,7 @@ const YouTubeSummaryButton: FC = () => {
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null
-    if (element) {
-      console.log('useFindElement', '2222')
+    if (element && element?.innerText?.length > 0) {
       // 插入到element的nextSibling
       const button = document.createElement('div')
       button.className = MAXAI_YOUTUBE_SUMMARY_BUTTON
@@ -84,6 +87,7 @@ const YouTubeSummaryButton: FC = () => {
       checkVisibility={false}
       customElementName={'max-ai-youtube-summary-button'}
       rootContainer={renderElement}
+      onSetContainer={setSummaryButtonContainer}
     >
       <TextOnlyTooltip
         arrow
@@ -97,6 +101,7 @@ const YouTubeSummaryButton: FC = () => {
           sx={{
             borderRadius: '18px',
           }}
+          data-testid='maxai-youtube-summary-button'
           onClick={() => {
             showChatBox()
             const timer = setInterval(() => {
@@ -129,6 +134,12 @@ const YouTubeSummaryButton: FC = () => {
           {t('client:youtube_summary_button__text')}
         </Button>
       </TextOnlyTooltip>
+      {summaryButtonContainer && (
+        <OnboardingTooltipTempPortal
+          sceneType='YOUTUBE_SUMMARY_BUTTON'
+          container={summaryButtonContainer}
+        />
+      )}
     </DynamicComponent>
   )
 }

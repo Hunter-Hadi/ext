@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useRecoilValue } from 'recoil'
 
@@ -15,10 +15,8 @@ const InputAssistantPortal: FC = () => {
   const [allObserverData, setAllObserverData] = useState<
     IInputAssistantButtonObserverData[]
   >([])
-  const inputAssistantPortalRef = useRef<InputAssistantButtonManager | null>(
-    null,
-  )
-
+  const inputAssistantPortalRef =
+    React.useRef<InputAssistantButtonManager | null>(null)
   useEffectOnce(() => {
     inputAssistantPortalRef.current = new InputAssistantButtonManager()
     inputAssistantPortalRef.current.createInputAssistantButtonListener(
@@ -108,9 +106,12 @@ const InputAssistantPortal: FC = () => {
 
   return (
     <>
-      {allObserverData.map((observerData) => {
+      {allObserverData.map((observerData, index) => {
         return createPortal(
-          <InputAssistantButton observerData={observerData} />,
+          <InputAssistantButton
+            observerData={observerData}
+            order={index + 1}
+          />,
           observerData.renderRootElement,
           observerData.id,
         )

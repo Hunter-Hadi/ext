@@ -79,11 +79,19 @@ const FloatingContextMenu: FC<{
     inputValue,
     contextWindowList,
     isSettingCustomVariables,
+    isSettingCustomVariablesRef,
     setIsSettingCustomVariables,
     setIsInputCustomVariables,
   } = useInitContextWindow()
+  console.log(
+    'isSettingCustomVariables,isSettingCustomVariablesRef',
+    isSettingCustomVariables,
+    isSettingCustomVariablesRef,
+  )
+
   const { currentFloatingContextMenuDraft, activeAIResponseMessage } =
     useFloatingContextMenuDraft()
+
   const {
     hideFloatingContextMenu,
     floatingDropdownMenu,
@@ -412,7 +420,7 @@ const FloatingContextMenu: FC<{
               {/* 由于 直接把 onboarding tooltip 挂在 textarea 会导致 tooltip 位置显示不可控制（具体表现：出现不正确的 placement） */}
               {/* 所以这里创建一个元素来绑定 onboarding tooltip  位置 */}
               <Box
-                id="ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT"
+                id='ONBOARDING_TOOLTIP__FLOATING_CONTEXT_MENU_INPUT_BOX__REFERENCE_ELEMENT'
                 sx={{
                   width: 10,
                   height: 10,
@@ -589,7 +597,7 @@ const FloatingContextMenu: FC<{
                 </Stack>
                 <Stack
                   direction={'row'}
-                  justifyContent="space-between"
+                  justifyContent='space-between'
                   onClick={() => {
                     const textareaEl =
                       getMaxAIFloatingContextMenuRootElement()?.querySelector(
@@ -616,7 +624,7 @@ const FloatingContextMenu: FC<{
                   {!loading && (
                     <Stack
                       direction={'row'}
-                      alignItems="center"
+                      alignItems='center'
                       gap={1}
                       ml={'auto'}
                       mr={0}
@@ -624,8 +632,8 @@ const FloatingContextMenu: FC<{
                       <FloatingContextMenuContinueChatButton />
                       <FloatingContextMenuPopupSettingButton />
                       <Divider
-                        orientation="vertical"
-                        variant="middle"
+                        orientation='vertical'
+                        variant='middle'
                         flexItem
                         sx={{
                           my: 0.5,
@@ -701,15 +709,17 @@ const FloatingContextMenu: FC<{
       />
 
       <OnboardingTooltipTempPortal
-        showStateTrigger={floatingDropdownMenu.open}
-        sceneType="FLOATING_CONTEXT_MENU_LIST_BOX"
+        showStateTrigger={
+          floatingDropdownMenu.open && contextWindowList.length > 0
+        }
+        sceneType='FLOATING_CONTEXT_MENU_LIST_BOX'
       />
 
       <OnboardingTooltipTempPortal
         showStateTrigger={
           floatingDropdownMenu.open && contextWindowList.length > 0
         }
-        sceneType="FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM"
+        sceneType='FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM'
       />
       {loading ? null : (
         <>
@@ -718,17 +728,18 @@ const FloatingContextMenu: FC<{
               return (
                 floatingDropdownMenu.open &&
                 !activeAIResponseMessage &&
+                !isSettingCustomVariablesRef &&
                 (currentFloatingContextMenuDraft === '' ||
                   inputValue.length > 0)
               )
             }}
-            sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX"
+            sceneType='FLOATING_CONTEXT_MENU_INPUT_BOX'
           />
           <OnboardingTooltipTempPortal
             showStateTrigger={
               floatingDropdownMenu.open && !!activeAIResponseMessage
             }
-            sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE"
+            sceneType='FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE'
           />
         </>
       )}

@@ -5,6 +5,7 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY } from '@/constants'
+import { ONBOARDING_TOOLTIP_SCENE_TYPES } from '@/features/onboarding/constants'
 import {
   IOnBoardingSceneType,
   IOnBoardingTooltipOpenedCacheKey,
@@ -19,13 +20,7 @@ export const onBoardingSceneTypeToOnBoardingCacheKey = (
 // 刷新所有的 onboarding tooltip opened cache
 // 用于测试环境调试
 export const devResetAllOnboardingTooltipOpenedCache = async () => {
-  const OnboardingTooltipSceneTypes: IOnBoardingSceneType[] = [
-    'CONTEXT_MENU_CTA_BUTTON',
-    'FLOATING_CONTEXT_MENU_INPUT_BOX',
-    'FLOATING_CONTEXT_MENU_LIST_BOX',
-    'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM',
-    'FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE',
-  ]
+  const OnboardingTooltipSceneTypes = ONBOARDING_TOOLTIP_SCENE_TYPES
 
   const data = await getChromeExtensionOnBoardingData()
   OnboardingTooltipSceneTypes.forEach((sceneType) => {
@@ -61,4 +56,20 @@ export const findOnboardingTooltipElement = (
   rootElement: HTMLElement | null = document.body,
 ) => {
   return rootElement?.querySelector(`#ONBOARDING_TOOLTIP__${sceneType}`)
+}
+
+export const findOnboardingReferenceElement = (
+  container: HTMLElement,
+  selector: string | string[],
+) => {
+  if (Array.isArray(selector)) {
+    for (let i = 0; i < selector.length; i++) {
+      const element = container.querySelector<HTMLElement>(selector[i])
+      if (element) {
+        return element
+      }
+    }
+  } else {
+    return container.querySelector<HTMLElement>(selector)
+  }
 }

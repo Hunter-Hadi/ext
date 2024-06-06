@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "選擇該選項。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "點擊以使用 AI 生成的內容替換所選文字。",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "您可以隨心所欲地要求AI改進AI生成的內容。"
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "您可以隨心所欲地要求AI改進AI生成的內容。",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "點擊以打開側邊欄與AI聊天、總結任何頁面、問問題或創作AI藝術。",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "點擊以總結並提問關於這封電子郵件的內容。",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "點擊以總結並提問關於這個PDF的內容。",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "點擊以總結並提問關於這個YouTube視頻的內容。",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "點擊以立即生成個人化回復。",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "點擊以立即生成個人化草稿，或改善您的草稿。"
   },
   "survey": {
     "funnel_survey__submit_success__title": "感謝您與我們分享您的經驗。🙏",

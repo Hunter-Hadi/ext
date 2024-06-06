@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "för att välja alternativet.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klicka för att ersätta den markerade texten med AI-genererat innehåll.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan be AI att förbättra det AI-genererade innehållet på vilket sätt du vill."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan be AI att förbättra det AI-genererade innehållet på vilket sätt du vill.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Klicka för att öppna sidofältet för att chatta med AI, sammanfatta vilken sida som helst, fråga webben eller skapa AI-konst.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Klicka för att sammanfatta och ställa frågor om detta e-postmeddelande.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klicka för att sammanfatta och ställa frågor om denna PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klicka för att sammanfatta och ställa frågor om denna YouTube-video.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klicka för att omedelbart generera ett personligt svar.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klicka för att omedelbart generera ett personligt utkast eller förbättra ditt utkast."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Tack för att du delade din upplevelse med oss. 🙏",

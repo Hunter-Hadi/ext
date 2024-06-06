@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "para seleccionar la opción.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Haz clic para reemplazar el texto seleccionado con contenido generado por IA.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puedes pedirle a la IA que mejore el contenido generado por la IA como desees."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puedes pedirle a la IA que mejore el contenido generado por la IA como desees.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Haz clic para abrir la barra lateral y chatear con IA, resumir cualquier página, preguntar a la web o crear arte de IA.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Haz clic para resumir y hacer preguntas sobre este correo electrónico.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Haz clic para resumir y hacer preguntas sobre este PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Haz clic para resumir y hacer preguntas sobre este video de YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Haz clic para generar una respuesta personalizada al instante.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Haz clic para generar un borrador personalizado al instante o mejorar tu borrador."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Gracias por compartir tu experiencia con nosotros. 🙏",

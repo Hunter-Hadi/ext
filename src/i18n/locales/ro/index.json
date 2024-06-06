@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pentru a selecta opțiunea.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Faceți clic pentru a înlocui textul selectat cu conținut generat de AI.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puteți solicita AI să rafineze conținutul generat de AI așa cum doriți."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puteți solicita AI să rafineze conținutul generat de AI așa cum doriți.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Apăsați pentru a deschide bara laterală pentru a discuta cu AI, rezuma orice pagină, întrebați web-ul sau creați artă AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Apăsați pentru a rezuma și a pune întrebări despre acest email.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Apăsați pentru a rezuma și a pune întrebări despre acest fișier PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Apăsați pentru a rezuma și a pune întrebări despre acest videoclip YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Apăsați pentru a genera instantaneu un răspuns personalizat.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Apăsați pentru a genera instantaneu un proiect personalizat sau pentru a vă îmbunătăți proiectul."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Vă mulțumim că ne-ați împărtășit experiența dumneavoastră. 🙏",

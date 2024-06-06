@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "per seleccionar l'opció.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Feu clic per substituir el text seleccionat amb contingut generat per AI.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Pots demanar a l'IA que millore el contingut generat per l'IA com vulguis."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Pots demanar a l'IA que millore el contingut generat per l'IA com vulguis.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Feu clic per obrir la barra lateral per xatejar amb IA, resumir qualsevol pàgina, preguntar a la web o crear art d'IA.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Feu clic per resumir i fer preguntes sobre aquest correu electrònic.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Feu clic per resumir i fer preguntes sobre aquest PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Feu clic per resumir i fer preguntes sobre aquest vídeo de YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Feu clic per generar una resposta personalitzada instantàniament.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Feu clic per generar un esborrany personalitzat instantàniament o millorar el vostre esborrany."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Gràcies per compartir la teva experiència amb nosaltres. 🙏",

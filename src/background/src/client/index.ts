@@ -309,7 +309,12 @@ export const ClientMessageInit = () => {
           break
         case 'Client_logCallApiRequest':
           {
-            const result = await logAndConfirmDailyUsageLimit(data)
+            const requestId = uuidV4()
+            await backgroundRequestHeaderGenerator.addTaskIdHeader(
+              requestId,
+              sender,
+            )
+            const result = await logAndConfirmDailyUsageLimit(requestId, data)
             return {
               data: result,
               success: true,

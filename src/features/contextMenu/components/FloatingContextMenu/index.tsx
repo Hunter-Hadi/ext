@@ -79,15 +79,9 @@ const FloatingContextMenu: FC<{
     inputValue,
     contextWindowList,
     isSettingCustomVariables,
-    isSettingCustomVariablesRef,
     setIsSettingCustomVariables,
     setIsInputCustomVariables,
   } = useInitContextWindow()
-  console.log(
-    'isSettingCustomVariables,isSettingCustomVariablesRef',
-    isSettingCustomVariables,
-    isSettingCustomVariablesRef,
-  )
 
   const { currentFloatingContextMenuDraft, activeAIResponseMessage } =
     useFloatingContextMenuDraft()
@@ -707,7 +701,6 @@ const FloatingContextMenu: FC<{
               return (
                 floatingDropdownMenu.open &&
                 !activeAIResponseMessage &&
-                !isSettingCustomVariablesRef &&
                 (currentFloatingContextMenuDraft === '' ||
                   inputValue.length > 0)
               )

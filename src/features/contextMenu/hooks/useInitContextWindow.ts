@@ -692,7 +692,6 @@ const useInitContextWindow = () => {
     contextWindowList,
     setIsSettingCustomVariables,
     setIsInputCustomVariables,
-    isSettingCustomVariablesRef: isSettingCustomVariables,
     isSettingCustomVariables: isSettingCustomVariablesMemo,
     askAIWithContextWindow,
     isHaveContextWindowContext,

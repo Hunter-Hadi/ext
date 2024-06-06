@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Введіть",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "щоб вибрати опцію.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Клацніть, щоб замінити виділений текст змістом, створеним штучним інтелектом.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Ви можете попросити ШІ вдосконалити згенерований ним контент так, як вам потрібно."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Ви можете попросити ШІ вдосконалити згенерований ним контент так, як вам потрібно.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Натисніть, щоб відкрити бічну панель для спілкування з штучним інтелектом, підсумовування будь-якої сторінки, запитання до вебу або створення мистецтва штучного інтелекту.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Натисніть, щоб підсумувати та задати питання про цей електронний лист.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Натисніть, щоб підсумувати та задати питання про цей PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Натисніть, щоб підсумувати та задати питання про це відео на YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Натисніть, щоб миттєво згенерувати персоналізовану відповідь.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Натисніть, щоб миттєво згенерувати персоналізований проект або покращити свій проект."
   }
 }

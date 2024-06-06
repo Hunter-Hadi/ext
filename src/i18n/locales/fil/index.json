@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "upang piliin ang opsiyon.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "I-click para palitan ang napiling teksto gamit ang nilikhang AI content.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Maaari kang magtanong sa AI upang mapabuti ang nilikhang nilalaman ng AI kahit na anong gusto mo."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Maaari kang magtanong sa AI upang mapabuti ang nilikhang nilalaman ng AI kahit na anong gusto mo.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "I-click para buksan ang sidebar upang makipag-chat sa AI, i-summarize ang anumang pahina, magtanong sa web, o lumikha ng AI art.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "I-click para i-summarize at magtanong tungkol sa email na ito.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "I-click para i-summarize at magtanong tungkol sa PDF na ito.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "I-click para i-summarize at magtanong tungkol sa YouTube video na ito.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "I-click para agad na lumikha ng personal na tugon.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "I-click para agad na lumikha ng draft na personal, o pagbutihin ang iyong draft."
   }
 }

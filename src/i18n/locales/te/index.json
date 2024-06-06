@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "ఎంటర్",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "ఎంపికను ఎంచుకోవడానికి.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "ఎయి-జనరేటెడ్ కంటెంట్‌తో ఎంచుకున్న వచనాన్ని మార్చడానికి క్లిక్ చేయండి.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "మీరు ఎప్పుడైనా కావలసినంత ఆర్టిఫిషియల్ ఇంటెలిజెన్స్ ద్వారా సృష్టించబడిన కంటెంట్‌ను మీరు ఎలా మెరుగుపర్చాలో అన్ని అడగండి."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "మీరు ఎప్పుడైనా కావలసినంత ఆర్టిఫిషియల్ ఇంటెలిజెన్స్ ద్వారా సృష్టించబడిన కంటెంట్‌ను మీరు ఎలా మెరుగుపర్చాలో అన్ని అడగండి.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "ఐఐతో చాట్ చేయడానికి, పేజీని సంగ్రహించడానికి, వెబ్‌ని అడిగించడానికి లేదా ఐఐ కళాకారత్వం సృష్టించడానికి సైడ్‌బార్‌ను తెరవండి.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "ఈ ఇమెయిల్‌ని సంగ్రహించడానికి మరియు ప్రశ్నలను అడిగించడానికి క్లిక్ చేయండి.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "ఈ PDF ని సంగ్రహించడానికి మరియు ప్రశ్నలను అడిగించడానికి క్లిక్ చేయండి.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "ఈ YouTube వీడియోని సంగ్రహించడానికి మరియు ప్రశ్నలను అడిగించడానికి క్లిక్ చేయండి.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "వ్యక్తిగత జవాబుని తక్షణం సృష్టించడానికి క్లిక్ చేయండి.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "వ్యక్తిగత డ్రాఫ్ట్‌ని తక్షణం సృష్టించడానికి లేదా మీ డ్రాఫ్ట్‌ని మెరుగైనపుడు మెరుగుపరచడానికి క్లిక్ చేయండి."
   }
 }

@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "for å velge alternativet.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klikk for å erstatte den valgte teksten med AI-generert innhold.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan be AI om å forbedre AI-generert innhold slik du ønsker."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan be AI om å forbedre AI-generert innhold slik du ønsker.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Klikk for å åpne sidepanelet for å chatte med AI, oppsummere hvilken som helst side, spørre nettet eller lage AI-kunst.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Klikk for å oppsummere og stille spørsmål om denne e-posten.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klikk for å oppsummere og stille spørsmål om denne PDF-en.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klikk for å oppsummere og stille spørsmål om denne YouTube-videoen.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klikk for å generere et personlig svar umiddelbart.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klikk for å generere et personlig utkast umiddelbart, eller forbedre utkastet ditt."
   }
 }

@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "દબાવો",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "વિકલ્પ પસંદ કરવા માટે.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "એઆઈ-જન્યુએરેટેડ સામગ્રીથી પસંદ કરેલા ટેક્સ્ટને બદલવા માટે ક્લિક કરો.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "તમે AI પર આધાર રાખીને AI દ્વારા બનાવેલ સામગ્રીને જેવું પણ તમે ચાહો તેવું સુધારવા માટે પૂછી શકો છો."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "તમે AI પર આધાર રાખીને AI દ્વારા બનાવેલ સામગ્રીને જેવું પણ તમે ચાહો તેવું સુધારવા માટે પૂછી શકો છો.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "એઆઈ સાથે ચેટ કરવા, કોઈ પૃષ્ઠની સંક્ષેપણ કરવા, વેબ પર પ્રશ્નો કરવા અથવા એઆઈ આર્ટ બનાવવા માટે સાઇડબાર ખોલવા માટે ક્લિક કરો.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "આ ઇમેઇલ વિશે સંક્ષેપણ કરવા અને પ્રશ્નો પૂછવા માટે ક્લિક કરો.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "આ PDF વિશે સંક્ષેપણ કરવા અને પ્રશ્નો પૂછવા માટે ક્લિક કરો.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "આ YouTube વિડિઓ વિશે સંક્ષેપણ કરવા અને પ્રશ્નો પૂછવા માટે ક્લિક કરો.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "વ્યક્તિગત જવાબ તક તક જનરેટ કરવા માટે ક્લિક કરો.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "વ્યક્તિગત ડ્રાફ્ટ તક તક જનરેટ કરવા માટે ક્લિક કરો અથવા તમારો ડ્રાફ્ટ સુધારો."
   }
 }

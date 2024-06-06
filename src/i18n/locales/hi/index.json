@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "दबाएं",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "चयनित पाठ को AI-उत्पन्न सामग्री के साथ बदलने के लिए क्लिक करें।",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "आप AI से कह सकते हैं कि आप किसी भी तरीके से AI द्वारा उत्पन्न सामग्री को सुधारेंगे।"
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "आप AI से कह सकते हैं कि आप किसी भी तरीके से AI द्वारा उत्पन्न सामग्री को सुधारेंगे।",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "एआई के साथ चैट करने, किसी भी पेज को संक्षेप में करने, वेब से सवाल पूछने या एआई कला बनाने के लिए साइडबार खोलने के लिए क्लिक करें।",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "इस ईमेल के बारे में संक्षेप और सवाल पूछने के लिए क्लिक करें।",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "इस PDF के बारे में संक्षेप और सवाल पूछने के लिए क्लिक करें।",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "इस YouTube वीडियो के बारे में संक्षेप और सवाल पूछने के लिए क्लिक करें।",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "तत्काल उत्तर उत्पन्न करने के लिए क्लिक करें।",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "तत्काल ड्राफ्ट उत्पन्न करने के लिए क्लिक करें, या अपने ड्राफ्ट को सुधारें।"
   }
 }

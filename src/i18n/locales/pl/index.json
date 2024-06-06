@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "aby wybrać opcję.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknij, aby zastąpić wybrany tekst treścią wygenerowaną przez sztuczną inteligencję.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Możesz poprosić AI o doprecyzowanie treści wygenerowanej przez AI według własnych preferencji."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Możesz poprosić AI o doprecyzowanie treści wygenerowanej przez AI według własnych preferencji.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Kliknij, aby otworzyć pasek boczny i porozmawiać z AI, podsumować dowolną stronę, zadać pytanie o stronę lub stworzyć sztukę AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Kliknij, aby podsumować i zadać pytania dotyczące tej wiadomości e-mail.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kliknij, aby podsumować i zadać pytania dotyczące tego pliku PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kliknij, aby podsumować i zadać pytania dotyczące tego filmu na YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kliknij, aby natychmiast wygenerować spersonalizowaną odpowiedź.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknij, aby natychmiast wygenerować szkic wiadomości lub ulepszyć swój szkic."
   }
 }

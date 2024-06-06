@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Unesi",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "da biste izabrali opciju.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknite da zamenite izabrani tekst sa sadržajem generisanim od strane veštačke inteligencije.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Možete AI-u postaviti pitanje da unapredi AI-generisani sadržaj kako god želite."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Možete AI-u postaviti pitanje da unapredi AI-generisani sadržaj kako god želite.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Kliknite da otvorite bočnu traku za razgovor sa veštačkom inteligencijom, sumirajte bilo koju stranicu, pitajte veb ili kreirajte umetnost veštačke inteligencije.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Kliknite da sumirate i postavite pitanja o ovoj e-pošti.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kliknite da sumirate i postavite pitanja o ovom PDF-u.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kliknite da sumirate i postavite pitanja o ovom YouTube videu.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kliknite da generišete personalizovan odgovor odmah.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknite da generišete personalizovani nacrt odmah ili poboljšate svoj nacrt."
   }
 }

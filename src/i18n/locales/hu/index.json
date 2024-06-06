@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "gombot, majd",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "az opció kiválasztásához.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kattintson az AI által generált tartalommal való kiválasztott szöveg helyettesítéséhez.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Kérdezheti az AI-t, hogy finomítsa az AI által generált tartalmat bármilyen módon."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Kérdezheti az AI-t, hogy finomítsa az AI által generált tartalmat bármilyen módon.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Kattintson a sáv megnyitásához, hogy beszélgethessen az AI-val, összefoglalhatja bármelyik oldalt, kérdezheti a webet vagy létrehozhat AI művészetet.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Kattintson az e-mail összefoglalásához és kérdések feltevéséhez erről az e-mailről.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kattintson a PDF összefoglalásához és kérdések feltevéséhez erről a PDF-ről.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kattintson a YouTube videó összefoglalásához és kérdések feltevéséhez erről a videóról.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kattintson a személyre szabott válasz azonnali generálásához.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kattintson a személyre szabott vázlat azonnali generálásához, vagy javítsa a vázlatát."
   }
 }

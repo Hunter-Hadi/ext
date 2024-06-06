@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "για να επιλέξετε την επιλογή.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Κάντε κλικ για να αντικαταστήσετε το επιλεγμένο κείμενο με περιεχόμενο που δημιουργήθηκε από την τεχνητή νοημοσύνη.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Μπορείτε να ζητήσετε από την AI να βελτιώσει το περιεχόμενο που δημιουργήθηκε από την AI όπως εσείς θέλετε."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Μπορείτε να ζητήσετε από την AI να βελτιώσει το περιεχόμενο που δημιουργήθηκε από την AI όπως εσείς θέλετε.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Κάντε κλικ για να ανοίξετε την πλαϊνή γραμμή για συνομιλία με την AI, περίληψη οποιασδήποτε σελίδας, ερώτηση στον ιστό ή δημιουργία AI τέχνης.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Κάντε κλικ για να περιλάβετε και να κάνετε ερωτήσεις σχετικά με αυτό το email.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Κάντε κλικ για να περιλάβετε και να κάνετε ερωτήσεις σχετικά με αυτό το PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Κάντε κλικ για να περιλάβετε και να κάνετε ερωτήσεις σχετικά με αυτό το YouTube βίντεο.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Κάντε κλικ για να δημιουργήσετε αμέσως μια εξατομικευμένη απάντηση.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Κάντε κλικ για να δημιουργήσετε αμέσως ένα εξατομικευμένο προσχέδιο ή να βελτιώσετε το προσχέδιό σας."
   }
 }

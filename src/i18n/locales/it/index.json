@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Invio",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "per selezionare l'opzione.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Fare clic per sostituire il testo selezionato con contenuti generati dall'IA.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puoi chiedere all'IA di perfezionare i contenuti generati dall'IA come preferisci."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puoi chiedere all'IA di perfezionare i contenuti generati dall'IA come preferisci.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Clicca per aprire la barra laterale per chattare con l'IA, riassumere qualsiasi pagina, fare domande sul web o creare arte IA.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Clicca per riassumere e fare domande su questa email.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Clicca per riassumere e fare domande su questo PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Clicca per riassumere e fare domande su questo video di YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Clicca per generare una risposta personalizzata istantaneamente.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Clicca per generare una bozza personalizzata istantaneamente o migliorare la tua bozza."
   }
 }

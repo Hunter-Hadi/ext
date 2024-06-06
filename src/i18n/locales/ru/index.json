@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Ввод",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "чтобы выбрать опцию.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Щелкните, чтобы заменить выбранный текст сгенерированным искусственным интеллектом.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Вы можете попросить ИИ улучшить созданный им контент так, как вам нужно."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Вы можете попросить ИИ улучшить созданный им контент так, как вам нужно.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Нажмите, чтобы открыть боковую панель для общения с ИИ, краткого изложения любой страницы, задания вопросов по вебу или создания ИИ-арт.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Нажмите, чтобы составить краткое изложение и задать вопросы по этому электронному письму.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Нажмите, чтобы составить краткое изложение и задать вопросы по этому PDF-файлу.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Нажмите, чтобы составить краткое изложение и задать вопросы по этому видео на YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Нажмите, чтобы мгновенно сгенерировать персонализированный ответ.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Нажмите, чтобы мгновенно сгенерировать персонализированный черновик или улучшить свой черновик."
   }
 }

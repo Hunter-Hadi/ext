@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Įvesti",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "norint pasirinkti parinktį.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Spustelėkite, kad pakeistumėte pažymėtą tekstą su AI sugeneruotu turiniu.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Galite paprašyti dirbtinio intelekto patobulinti dirbtinio intelekto sukurtą turinį taip, kaip norite."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Galite paprašyti dirbtinio intelekto patobulinti dirbtinio intelekto sukurtą turinį taip, kaip norite.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Spustelėkite, norėdami atidaryti šoninę juostą ir pradėti pokalbį su dirbtine intelektu, santraukos kūrimą bet kurioje svetainėje, užduoti internetui klausimų arba kurti dirbtinio intelekto meną.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Spustelėkite, norėdami sukurti santrauką ir užduoti klausimus apie šį el. laišką.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Spustelėkite, norėdami sukurti santrauką ir užduoti klausimus apie šį PDF failą.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Spustelėkite, norėdami sukurti santrauką ir užduoti klausimus apie šį YouTube vaizdo įrašą.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Spustelėkite, norėdami iškart sugeneruoti asmeninį atsakymą.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Spustelėkite, norėdami iškart sugeneruoti asmeninį projektą arba pagerinti savo projektą."
   }
 }

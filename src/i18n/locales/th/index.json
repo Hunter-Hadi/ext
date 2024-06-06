@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "เพื่อเลือกตัวเลือก",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "คลิกเพื่อแทนที่ข้อความที่เลือกด้วยเนื้อหาที่สร้างโดย AI",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "คุณสามารถขอให้ AI ปรับปรุงเนื้อหาที่ AI สร้างขึ้นได้อย่างใดก็ได้"
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "คุณสามารถขอให้ AI ปรับปรุงเนื้อหาที่ AI สร้างขึ้นได้อย่างใดก็ได้",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "คลิกเพื่อเปิดแถบด้านข้างเพื่อสนทนากับ AI, สรุปหน้าเว็บใดก็ได้, ถามเว็บ, หรือสร้างศิลปะ AI",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "คลิกเพื่อสรุปและถามคำถามเกี่ยวกับอีเมลนี้",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "คลิกเพื่อสรุปและถามคำถามเกี่ยวกับ PDF นี้",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "คลิกเพื่อสรุปและถามคำถามเกี่ยวกับวิดีโอ YouTube นี้",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "คลิกเพื่อสร้างการตอบกลับทันทีที่กำหนดเอง",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "คลิกเพื่อสร้างแบบร่างทันทีที่กำหนดเอง หรือปรับปรุงแบบร่างของคุณ"
   }
 }

@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Въведете",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "за да изберете опцията.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Щракнете, за да замените избрания текст със съдържание, генерирано от AI.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Можете да поискате от AI да уточни съдържанието, генерирано от AI, по всякакъв начин."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Можете да поискате от AI да уточни съдържанието, генерирано от AI, по всякакъв начин.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Щракнете, за да отворите страничната лента и да чатите с изкуствен интелект, резюмирате всяка страница, задавате въпроси на уеба или създавате изкуствена интелигентност.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Щракнете, за да резюмирате и зададете въпроси за този имейл.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Щракнете, за да резюмирате и зададете въпроси за този PDF файл.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Щракнете, за да резюмирате и зададете въпроси за това YouTube видео.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Щракнете, за да генерирате персонализиран отговор мигновено.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Щракнете, за да генерирате персонализиран черновик мигновено или да подобрите своя черновик."
   }
 }

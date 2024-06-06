@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pro výběr možnosti.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknutím nahraďte vybraný text obsahem generovaným umělou inteligencí.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Můžete požádat AI, aby upravilo obsah generovaný AI podle vašich přání."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Můžete požádat AI, aby upravilo obsah generovaný AI podle vašich přání.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Klikněte pro otevření postranního panelu a chatování s umělou inteligencí, shrnutí stránky, dotazování webu nebo tvorbu uměleckých děl pomocí umělé inteligence.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Klikněte pro shrnutí a položení otázek k této e-mailové zprávě.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klikněte pro shrnutí a položení otázek k tomuto PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klikněte pro shrnutí a položení otázek k tomuto YouTube videu.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klikněte pro okamžité vygenerování personalizované odpovědi.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klikněte pro okamžité vygenerování personalizovaného návrhu nebo vylepšení vašeho návrhu."
   }
 }

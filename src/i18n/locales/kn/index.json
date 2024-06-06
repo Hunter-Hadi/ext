@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part2": "ಒತ್ತಿರಿ.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1": "ಆಯ್ಕೆ ಮಾಡಲು",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "ಒತ್ತಿರಿ.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "ಅಥವಾ ಆಯ್ಕೆಯನ್ನು ಆರಿಸಲು Enter ಒತ್ತಿರಿ."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "ಅಥವಾ ಆಯ್ಕೆಯನ್ನು ಆರಿಸಲು Enter ಒತ್ತಿರಿ.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "ಐಎಸ್‌ನೊಂದಿಗೆ ಚಾಟ್ ಮಾಡಲು, ಯಾವುದೇ ಪುಟವನ್ನು ಸಂಗ್ರಹಿಸಲು, ವೆಬ್‌ಗೆ ಪ್ರಶ್ನೆ ಹಾಕಲು ಅಥವಾ ಐಎಸ್ ಕಲಾಕೃತಿ ರಚಿಸಲು ಸೈಡ್‌ಬಾರ್‌ನೊಂದಿಗೆ ತೆರಳಿ.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "ಈ ಇಮೇಲ್‌ಗೆ ಸಂಗ್ರಹಿಸಿ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಲು ಸಂಗ್ರಹಿಸಿ.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "ಈ PDF ಗೆ ಸಂಗ್ರಹಿಸಿ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಲು ಸಂಗ್ರಹಿಸಿ.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "ಈ YouTube ವಿಡಿಯೋಗೆ ಸಂಗ್ರಹಿಸಿ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಲು ಸಂಗ್ರಹಿಸಿ.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "ವ್ಯಕ್ತಿಗೊಂದು ತಕ್ಷಣ ಉತ್ತರ ರಚಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "ವ್ಯಕ್ತಿಗೊಂದು ತಕ್ಷಣ ಡ್ರಾಫ್ಟ್ ರಚಿಸಲು ಅಥವಾ ನಿಮ್ಮ ಡ್ರಾಫ್ಟ್ ಮೇಲೆ ಮೇಲೆ ಕೆಲಸ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ."
   }
 }

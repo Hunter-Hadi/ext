@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "를 누르세요.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "를 누르세요.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "선택한 텍스트를 AI로 생성된 콘텐츠로 대체하려면 클릭하세요.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI가 생성한 콘텐츠를 원하는 대로 개선하기 위해 AI에게 질문할 수 있습니다."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI가 생성한 콘텐츠를 원하는 대로 개선하기 위해 AI에게 질문할 수 있습니다.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "사이드바를 열어 AI와 채팅하거나 페이지를 요약하고 웹에 질문하거나 AI 아트를 만들기 위해 클릭하세요.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "이 이메일을 요약하고 질문하기 위해 클릭하세요.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "이 PDF를 요약하고 질문하기 위해 클릭하세요.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "이 YouTube 동영상을 요약하고 질문하기 위해 클릭하세요.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "개인화된 답장을 즉시 생성하기 위해 클릭하세요.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "개인화된 초안을 즉시 생성하거나 초안을 개선하기 위해 클릭하세요."
   }
 }

@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Ingiza",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "kuchagua chaguo.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Bonyeza ili kubadilisha maandishi yaliyochaguliwa na maudhui yaliyotengenezwa na AI.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Unaweza kuuliza AI kuboresha yaliyotengenezwa na AI kama unavyotaka."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Unaweza kuuliza AI kuboresha yaliyotengenezwa na AI kama unavyotaka.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Bonyeza ili kufungua upau wa pembeni kuongea na AI, kuhitimisha ukurasa wowote, kuuliza mtandao, au kuunda sanaa ya AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Bonyeza ili kuhitimisha na kuuliza maswali kuhusu barua pepe hii.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Bonyeza ili kuhitimisha na kuuliza maswali kuhusu PDF hii.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Bonyeza ili kuhitimisha na kuuliza maswali kuhusu video hii ya YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Bonyeza ili kuzalisha jibu la kibinafsi mara moja.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Bonyeza ili kuzalisha rasimu ya kibinafsi mara moja, au boresha rasimu yako."
   }
 }

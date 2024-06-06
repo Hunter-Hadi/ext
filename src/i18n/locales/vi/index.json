@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "để chọn tùy chọn.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Nhấp để thay thế văn bản đã chọn bằng nội dung được tạo bởi trí tuệ nhân tạo.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Bạn có thể yêu cầu AI điều chỉnh nội dung do AI tạo ra theo ý muốn của bạn."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Bạn có thể yêu cầu AI điều chỉnh nội dung do AI tạo ra theo ý muốn của bạn.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Nhấp để mở thanh bên để trò chuyện với AI, tóm tắt bất kỳ trang nào, hỏi web hoặc tạo nghệ thuật AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Nhấp để tóm tắt và đặt câu hỏi về email này.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Nhấp để tóm tắt và đặt câu hỏi về PDF này.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Nhấp để tóm tắt và đặt câu hỏi về video YouTube này.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Nhấp để tạo ngay lập tức một câu trả lời cá nhân.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Nhấp để tạo ngay lập tức một bản nháp cá nhân hoặc cải thiện bản nháp của bạn."
   }
 }

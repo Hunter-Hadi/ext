@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "valitaksesi vaihtoehdon.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Napsauta korvataksesi valitun tekstin tekoälyn luomalla sisällöllä.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Voit pyytää tekoälyä tarkentamaan tekoälyn luomaa sisältöä haluamallasi tavalla."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Voit pyytää tekoälyä tarkentamaan tekoälyn luomaa sisältöä haluamallasi tavalla.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Napsauta avataksesi sivupalkin, jotta voit keskustella tekoälyn kanssa, tiivistää minkä tahansa sivun, kysyä verkosta tai luoda tekoälytaidetta.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Napsauta tiivistääksesi ja kysyäksesi kysymyksiä tästä sähköpostista.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Napsauta tiivistääksesi ja kysyäksesi kysymyksiä tästä PDF-tiedostosta.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Napsauta tiivistääksesi ja kysyäksesi kysymyksiä tästä YouTube-videosta.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Napsauta luodaksesi välittömästi henkilökohtaisen vastauksen.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Napsauta luodaksesi välittömästi henkilökohtaisen luonnoksen tai parantaaksesi luonnostasi."
   }
 }

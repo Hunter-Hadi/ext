@@ -1186,6 +1186,12 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "ይጫኑ",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "የአማራጭን አማራጭ ይምረጡ።",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "የተመረጠ የአስተካክል ጽሁፍን AI-ተግባር የተሰረዘ ጽሑፍ ለመርጠም ይጠቀሙ.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "እባክዎ ለማስተካከል አንዳንድ ጥያቄ ያግኙን AI-ን የAI-ተሰናክሏል ይሰጣል."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "እባክዎ ለማስተካከል አንዳንድ ጥያቄ ያግኙን AI-ን የAI-ተሰናክሏል ይሰጣል.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "የማስተካከያ ማጣሪያዎችን ይጠቀሙ ወደ ስልጠና ይክፈቱ፣ የድረ-ገጽ ጥቅም ይጠቀሙ፣ የድረ-ገጽ ጥያቄዎችን ጥያቄ ይጠቀሙ፣ ወደ AI አርት ይጠቀሙ.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "የድረ-ገጽ ጥቅም እና ጥያቄዎችን ይጠቀሙ፣ ወደ ይላሉ የድረ-ገጽ ጥቅም ጥያቄዎችን ጥያቄ ይጠቀሙ.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "የፕድን ድረ-ገጽ ጥቅም እና ጥያቄዎችን ይጠቀሙ፣ ወደ ይላሉ የፕድን ድረ-ገጽ ጥቅም ጥያቄዎችን ጥያቄ ይጠቀሙ.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "የYouTube ቪዲዮ ድረ-ገጽ ጥቅም እና ጥያቄዎችን ይጠቀሙ፣ ወደ ይላሉ YouTube ቪዲዮ ድረ-ገጽ ጥቅም ጥያቄዎችን ጥያቄ ይጠቀሙ.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "የሚጠቀሙበት ጥቅም አልተጠቀሙም የGmail መልክት ወይም መግለጫ ይጠቀሙ።",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "የሚጠቀሙበት የGmail መልክት ወይም መግለጫ ይጠቀሙ።"
   }
 }

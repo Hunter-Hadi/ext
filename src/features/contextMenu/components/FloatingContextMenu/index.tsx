@@ -703,6 +703,11 @@ const FloatingContextMenu: FC<{
               floatingDropdownMenu.open &&
               !activeAIResponseMessage &&
               !isSettingCustomVariables &&
+              contextWindowList.length > 0 &&
+              contextWindowList.some(
+                (item) => item.id === '30f27496-1faf-4a00-87cf-b53926d35bfd',
+              ) &&
+              // contextWindowList
               (currentFloatingContextMenuDraft === '' || inputValue.length > 0)
             )
           }}
@@ -712,7 +717,9 @@ const FloatingContextMenu: FC<{
       {!loading ? (
         <OnboardingTooltipTempPortal
           showStateTrigger={
-            floatingDropdownMenu.open && !!activeAIResponseMessage
+            floatingDropdownMenu.open &&
+            !!activeAIResponseMessage &&
+            activeAIResponseMessage.type === 'ai'
           }
           sceneType="FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE"
         />

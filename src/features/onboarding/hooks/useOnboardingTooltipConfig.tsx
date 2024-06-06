@@ -33,6 +33,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button#max_ai__floating_context_menu__cta_button`,
         tooltipProps: {
+          closeWhenElementClick: true,
           title: t(
             'onboarding:onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text',
           ),
@@ -91,6 +92,9 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           sx: {
             maxWidth: 440,
           },
+          style: {
+            zIndex: 2147483620,
+          },
           slotProps: {
             popper: {
               modifiers: [
@@ -116,6 +120,9 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           sx: {
             maxWidth: 320,
           },
+          style: {
+            zIndex: 2147483620,
+          },
         },
       }
     }
@@ -131,6 +138,9 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           placement: 'right-start',
           sx: {
             maxWidth: 390,
+          },
+          style: {
+            zIndex: 2147483620,
           },
           InformationBarProps: {
             shortcut: 'Enter',
@@ -184,6 +194,9 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           sx: {
             maxWidth: 300,
           },
+          style: {
+            zIndex: 2147483620,
+          },
         },
       }
     }
@@ -192,6 +205,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="quick-access-maxai-mini-button"]`,
         tooltipProps: {
+          closeWhenElementClick: true,
           title: t(
             'onboarding:onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text',
           ),
@@ -242,6 +256,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           `button[data-testid="maxai-outlook-summary-button"]`,
         ],
         tooltipProps: {
+          closeWhenElementClick: true,
           title: t('onboarding:onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text'),
           placement: 'bottom',
         },
@@ -252,6 +267,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="maxai-pdf-summary-button"]`,
         tooltipProps: {
+          closeWhenElementClick: true,
           title: t('onboarding:onboarding_tooltip__PDF_SUMMARY_BUTTON__text'),
           placement: 'bottom',
         },
@@ -262,6 +278,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="maxai-youtube-summary-button"]`,
         tooltipProps: {
+          closeWhenElementClick: true,
           title: t(
             'onboarding:onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text',
           ),
@@ -279,6 +296,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-cta-button"]`,
         tooltipProps: {
+          closeWhenElementClick: true,
           placement: 'bottom',
           style: {
             zIndex: 2147483601,
@@ -295,6 +313,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-dropdown-button"]`,
         tooltipProps: {
+          closeWhenElementClick: true,
           placement: 'right',
         },
       }
@@ -308,6 +327,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `button[data-testid="maxai-input-assistant-cta-button"]`,
         tooltipProps: {
+          closeWhenElementClick: true,
           placement: 'bottom',
         },
       }

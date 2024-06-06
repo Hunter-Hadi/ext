@@ -261,7 +261,7 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
           ),
           placement: 'bottom',
           sx: {
-            width: 400,
+            width: 345,
           },
         },
       }

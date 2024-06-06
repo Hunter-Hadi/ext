@@ -1,8 +1,8 @@
 import { createParser } from 'eventsource-parser'
 import isEmpty from 'lodash-es/isEmpty'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import { IAIProviderType } from '@/background/provider/chat'
-import { backgroundRequestHeaderGenerator } from '@/background/utils/backgroundRequestHeaderGenerator'
 import { AI_PROVIDER_MAP, CHATGPT_WEBAPP_HOST } from '@/constants'
 
 import { streamAsyncIterable } from './stream-async-inerable'

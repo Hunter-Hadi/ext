@@ -126,10 +126,10 @@ export class ClientConversationMessageManager {
           .then()
         messages.push(...result)
       }
-      console.log(`ConversationDB[V3] 获取消息`, messages)
-      return messages
+      console.log(`ConversationDB[V3] 获取全部消息`, messages)
+      return orderBy(messages, ['created_at'], ['asc'])
     } catch (e) {
-      console.log(`ConversationDB[V3] 获取消息失败`, e)
+      console.log(`ConversationDB[V3] 获取全部消息失败`, e)
       return []
     }
   }

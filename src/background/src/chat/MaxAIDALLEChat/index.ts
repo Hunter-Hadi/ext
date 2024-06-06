@@ -1,6 +1,7 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
@@ -161,10 +162,10 @@ class MaxAIDALLEChat extends BaseChat {
           {
             method: 'POST',
             signal,
-            headers: {
+            headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
-            },
+            }),
             body: JSON.stringify(postBody),
           },
         ).then((res) => res.json())
@@ -194,10 +195,10 @@ class MaxAIDALLEChat extends BaseChat {
           {
             method: 'POST',
             signal,
-            headers: {
+            headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
-            },
+            }),
             body: JSON.stringify({
               prompt: message_content?.[0]?.text || '',
               chrome_extension_version: APP_VERSION,

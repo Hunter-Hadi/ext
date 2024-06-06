@@ -176,6 +176,7 @@ class MaxAIGeminiChat extends BaseChat {
     let conversationId = this.conversation?.id || ''
     let isTokenExpired = false
     await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
+      taskId,
       provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       method: 'POST',
       signal,

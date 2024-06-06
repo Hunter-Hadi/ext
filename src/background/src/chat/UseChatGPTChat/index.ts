@@ -2,6 +2,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import isNumber from 'lodash-es/isNumber'
 import Browser from 'webextension-polyfill'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
@@ -12,7 +13,6 @@ import {
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import { chromeExtensionLogout } from '@/background/utils'
-import { backgroundRequestHeaderGenerator } from '@/background/utils/backgroundRequestHeaderGenerator'
 import {
   AI_PROVIDER_MAP,
   APP_USE_CHAT_GPT_API_HOST,

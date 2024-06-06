@@ -1,5 +1,5 @@
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import { getAccessToken } from '@/utils/request'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 // 上传的文件用途
 export type MaxAIFileUploadUseCase =

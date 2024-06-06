@@ -55,7 +55,6 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_restartApp'
   | 'Client_logCallApiRequest'
   | 'Client_logThirdPartyDailyUsage'
-  | 'Client_emitPricingHooks'
   | 'Client_getLiteChromeExtensionSettings'
   | 'Client_getContextMenuActions'
   | 'Client_getAllOldVersionConversationIds'

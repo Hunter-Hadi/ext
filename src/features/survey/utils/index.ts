@@ -1,3 +1,4 @@
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
@@ -6,7 +7,6 @@ import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { VALID_SURVEY_KEYS } from '@/features/survey/constants'
 import { IFunnelSurveySceneType, ISurveyKeyType } from '@/features/survey/types'
 import { aesJsonEncrypt } from '@/utils/encryptionHelper'
-import { getAccessToken } from '@/utils/request'
 
 import { FUNNEL_SURVEY_MIXPANEL_EVENTNAME } from '../constants/funnel_survey'
 

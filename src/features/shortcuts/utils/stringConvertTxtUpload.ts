@@ -1,6 +1,6 @@
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
-import { getAccessToken } from '@/utils/request'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 // export const MaxUploadTxtFileSize = 1024 * 1024 * 32 // 32MB

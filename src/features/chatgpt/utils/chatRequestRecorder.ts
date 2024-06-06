@@ -3,6 +3,7 @@ import debounce from 'lodash-es/debounce'
 import omit from 'lodash-es/omit'
 import Browser from 'webextension-polyfill'
 
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
@@ -11,7 +12,6 @@ import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensi
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { aesJsonEncrypt } from '@/utils/encryptionHelper'
 import { getFingerPrint } from '@/utils/fingerPrint'
-import { getAccessToken } from '@/utils/request'
 
 interface IChatRequestCountRecordType {
   // 记录用户发送chat的次数情况
@@ -94,9 +94,8 @@ export const increaseChatGPTRequestCount = async (
         if (
           !cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider]
         ) {
-          cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][
-            provider
-          ] = {}
+          cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider] =
+            {}
         }
         if (
           !cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider][
@@ -120,9 +119,8 @@ export const increaseChatGPTRequestCount = async (
     })
     console.log('CHATGPT_REQUEST_COUNT_RECORD', cacheData)
     const dateRequestCount = omit(cacheData)
-    const {
-      ON_BOARDING_RECORD_FIRST_MESSAGE,
-    } = await getChromeExtensionOnBoardingData()
+    const { ON_BOARDING_RECORD_FIRST_MESSAGE } =
+      await getChromeExtensionOnBoardingData()
     if (!ON_BOARDING_RECORD_FIRST_MESSAGE) {
       // 用户第一次使用需要发送数据
       fetchChatGPTErrorRecord()

@@ -1,23 +1,9 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
+import { backgroundPost } from '@/background/api/backgroundFetch'
 import { backgroundGetBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/background'
-import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import {
-  getMaxAIChromeExtensionAccessToken,
-  getMaxAIChromeExtensionUserId,
-} from '@/features/auth/utils'
+import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-
-export const maxAIRequest = async (path: string, data: any) => {
-  return await fetch(`${APP_USE_CHAT_GPT_API_HOST}${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
-    },
-    body: data === undefined ? undefined : JSON.stringify(data),
-  })
-}
 
 /**
  * 是否开启同步对话的feature
@@ -45,5 +31,5 @@ export const backgroundAddOrUpdateDBConversation = async (
     // 不需要保存messages
     delete uploadConversation.messages
   }
-  await maxAIRequest('/conversation/upsert_conversation', uploadConversation)
+  await backgroundPost('/conversation/upsert_conversation', uploadConversation)
 }

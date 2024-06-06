@@ -1,7 +1,7 @@
 import { Readability } from '@mozilla/readability'
 import { parseHTML } from 'linkedom'
 
-import BackgroundAbortFetch from '@/background/utils/BackgroundAbortFetch'
+import BackgroundAbortFetch from '@/background/api/BackgroundAbortFetch'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
 /**

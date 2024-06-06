@@ -171,7 +171,10 @@ class MaxAIClaudeChat extends BaseChat {
       this.taskList[taskId] = () => controller.abort()
     }
     // claude search answer下不传递chat_history，否则会触发claude的报错 - 2024-05-30 - @xianhui
-    if (backendAPI === 'get_claude_response' && postBody.prompt_name === '[Search] answer') {
+    if (
+      backendAPI === 'get_claude_response' &&
+      postBody.prompt_name === '[Search] answer'
+    ) {
       postBody.chat_history = []
     }
     log.info('streaming start', postBody)
@@ -182,6 +185,7 @@ class MaxAIClaudeChat extends BaseChat {
     let conversationId = this.conversation?.id || ''
     let isTokenExpired = false
     await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
+      taskId,
       provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       method: 'POST',
       signal,

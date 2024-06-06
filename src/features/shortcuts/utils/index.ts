@@ -1,8 +1,8 @@
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { convertBase64ToBlob } from '@/utils/dataHelper/fileHelper'
 import { getFingerPrint } from '@/utils/fingerPrint'
-import { getAccessToken } from '@/utils/request'
 
 export const templateWordToExamples = (
   word: string,

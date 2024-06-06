@@ -2,6 +2,7 @@ import AES from 'crypto-js/aes'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import { IAIProviderType } from '@/background/provider/chat'
 import ConversationManager from '@/background/src/chatConversations'
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
@@ -17,7 +18,6 @@ import {
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { LANGUAGE_CODE_MAP } from '@/i18n/types'
 import { getFingerPrint } from '@/utils/fingerPrint'
-import { getAccessToken } from '@/utils/request'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
 dayjs.extend(utc)
 

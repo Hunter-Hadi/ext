@@ -513,6 +513,9 @@ export class ActionAskChatGPT extends Action {
                         },
                       },
                     ],
+                    {
+                      syncMessageToDB: false,
+                    },
                   )
                 }
               } else if (

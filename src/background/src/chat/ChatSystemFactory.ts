@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import {
   BardChatProvider,
   BingChatProvider,
@@ -29,7 +30,6 @@ import { UseChatGPTPlusChat } from '@/background/src/chat/UseChatGPTChat'
 import { processAskAIParameters } from '@/background/src/chat/util'
 import ConversationManager from '@/background/src/chatConversations'
 import { createBackgroundMessageListener } from '@/background/utils'
-import { backgroundRequestHeaderGenerator } from '@/background/utils/backgroundRequestHeaderGenerator'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'

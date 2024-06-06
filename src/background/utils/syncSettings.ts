@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 
+import { backgroundGet, backgroundPost } from '@/background/api/backgroundFetch'
 import {
   getChromeExtensionDBStorage,
   setChromeExtensionDBStorage,
@@ -7,12 +8,11 @@ import {
 import { IChromeExtensionDBStorage } from '@/background/utils/index'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { get, post } from '@/utils/request'
 
 export const syncServerSettingsToLocalSettings = async () => {
   try {
     console.log('同步服务器设置到本地')
-    const result = await get<{
+    const result = await backgroundGet<{
       settings: IChromeExtensionDBStorage
     }>('/user/get_user_info')
     if (result?.status === 'OK') {
@@ -38,7 +38,7 @@ export const syncLocalSettingsToServerSettings = async () => {
     console.log('同步本地设置到服务器')
     const lastModified = dayjs().utc().valueOf()
     const localSettings = await getChromeExtensionDBStorage()
-    const result = await post<{
+    const result = await backgroundPost<{
       status: 'OK' | 'ERROR'
     }>('/user/save_user_settings', {
       settings: {
@@ -63,7 +63,7 @@ export const isSettingsLastModifiedEqual = async (): Promise<boolean> => {
     // 更新的时候要强制更新contextMenu
     await forceUpdateContextMenuReadOnlyOption()
     console.log('检测本地设置和服务器设置时间是否一致')
-    const result = await get<{
+    const result = await backgroundGet<{
       settings: IChromeExtensionDBStorage
     }>('/user/get_user_settings_last_modified')
     if (result?.status === 'OK') {
@@ -97,7 +97,7 @@ export const checkSettingsSync = async (): Promise<{
     const localSettings = await getChromeExtensionDBStorage()
     // 更新的时候要强制更新contextMenu
     await forceUpdateContextMenuReadOnlyOption()
-    const result = await get<{
+    const result = await backgroundGet<{
       settings: IChromeExtensionDBStorage
     }>('/user/get_user_info')
     if (result?.status === 'OK') {

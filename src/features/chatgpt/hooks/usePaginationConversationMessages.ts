@@ -46,7 +46,6 @@ const usePaginationConversationMessages = (conversationId: string) => {
       const time = new Date().getTime()
       let diffTimeUsage = 0
       let remoteMessages: IChatMessage[] = []
-
       if (
         maxAIBetaFeatures.chat_sync &&
         totalPageRef.current >= data.pageParam &&
@@ -304,10 +303,18 @@ const usePaginationConversationMessages = (conversationId: string) => {
   /**
    * 当conversationId变化时，重置totalPageRef
    */
+  const previousConversationIdRef = useRef<string | null>(null)
   useEffect(() => {
     if (conversationId) {
-      totalPageRef.current = 0
-      remoteConversationMessagesPageLoadedRef.current = {}
+      if (!previousConversationIdRef.current) {
+        previousConversationIdRef.current = conversationId
+        return
+      }
+      if (previousConversationIdRef.current !== conversationId) {
+        totalPageRef.current = 0
+        previousConversationIdRef.current = conversationId
+        remoteConversationMessagesPageLoadedRef.current = {}
+      }
     }
   }, [conversationId])
   return {

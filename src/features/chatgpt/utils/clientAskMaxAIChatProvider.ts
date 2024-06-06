@@ -1,3 +1,4 @@
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import { IAIProviderType } from '@/background/provider/chat'
 import {
   IMaxAIChatMessageContent,
@@ -7,7 +8,6 @@ import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { getAccessToken } from '@/utils/request'
 
 const clientAskMaxAIChatProvider = async (
   aiProvider: IAIProviderType,

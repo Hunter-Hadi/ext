@@ -43,8 +43,7 @@ const YouTubeSummaryButton: FC = () => {
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null
-    if (element) {
-      console.log('useFindElement', '2222')
+    if (element && element?.innerText?.length > 0) {
       // 插入到element的nextSibling
       const button = document.createElement('div')
       button.className = MAXAI_YOUTUBE_SUMMARY_BUTTON

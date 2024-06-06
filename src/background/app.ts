@@ -400,11 +400,11 @@ const initChromeExtensionUpdated = async () => {
 
   // 测试环境 刷新插件时，重置所有的onboarding tooltip opened cache
   if (!isProduction) {
-    devResetAllOnboardingTooltipOpenedCache()
+    await devResetAllOnboardingTooltipOpenedCache()
   }
 
   // SURVEY_CANCEL_COMPLETED survey 每次插件更新的时候弹出来就行
-  resetFunnelSurveyOpenedStorageFlag('SURVEY_CANCEL_COMPLETED')
+  await resetFunnelSurveyOpenedStorageFlag('SURVEY_CANCEL_COMPLETED')
 
   // 每次升级都检测一遍是否是续费失败了
   setTimeout(
@@ -689,7 +689,6 @@ const initChromeExtensionTabUrlChangeListener = () => {
   })
 }
 
-
 /**
  * 插件payment支付监听初始化
  */
@@ -711,7 +710,6 @@ const initChromeExtensionCreatePaymentListener = () => {
     delete tabUrls[tabId]
   })
 }
-
 
 import {
   isAIMessage,

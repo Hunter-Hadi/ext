@@ -48,7 +48,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
     //// - 2. 或者还是在同一个 context window 里进行操作
     // 那么通过直接返回上次缓存的 context 即可
     //// - 点击的是 Instant reply button 的话一定会有 instantReplyButtonId
-    //// - 否则点击的就是 Summarize button, 这时候就会缓存 Transcript
+    //// - 否则点击的就是 Summarize button
     const instantReplyDataHelper = getInstantReplyDataHelper()
     const instantReplyButtonId =
       inputAssistantButton.getAttribute('maxai-input-assistant-button-id') || ''
@@ -85,6 +85,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
     // 上下文
     let youTubeSocialMediaPostContext: SocialMediaPostContext | null = null
     if (youTubeVideoId) {
+      // YouTube 会额外根据 video id 缓存 Transcript text
       // youTube transcript
       let youTubeTranscriptText = ''
       if (
@@ -93,7 +94,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       ) {
         youTubeTranscriptText =
           instantReplyDataHelper.getAttribute(
-            'data-youtube-transcript-cache',
+            'data-youtube-video-transcript-cache',
           ) || ''
       }
       instantReplyDataHelper.setAttribute(
@@ -105,7 +106,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           await YoutubeTranscript.fetchTranscript(window.location.href),
         )
         instantReplyDataHelper.setAttribute(
-          'data-youtube-transcript-cache',
+          'data-youtube-video-transcript-cache',
           youTubeTranscriptText,
         )
       }

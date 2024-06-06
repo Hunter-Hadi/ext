@@ -2,9 +2,10 @@ import isNumber from 'lodash-es/isNumber'
 import { v4 as uuidV4 } from 'uuid'
 
 import inputAssistantButtonBaseConfig, {
-  IInputAssistantButton,
-  IInputAssistantButtonGroupConfig,
-  WritingAssistantButtonGroupConfigHostType,
+  getInstantReplyWebsiteType,
+  type IInputAssistantButton,
+  type IInputAssistantButtonGroupConfig,
+  type WritingAssistantButtonGroupConfigHostType,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import getInputAssistantButtonGroupWithHost from '@/features/contextMenu/components/InputAssistantButton/getInputAssistantButtonGroupWithHost'
 import { mergeElementCssText } from '@/features/contextMenu/utils'
@@ -67,6 +68,9 @@ class InputAssistantButtonManager {
             rootSelectorStyle,
             rootParentDeep = 0,
           } = config
+          config.instantReplyWebsiteType ||= getInstantReplyWebsiteType(
+            this.host,
+          )
           let isAddNew = false
           // temp fix select shadowRoot
           for (const rootSelector of rootSelectors) {

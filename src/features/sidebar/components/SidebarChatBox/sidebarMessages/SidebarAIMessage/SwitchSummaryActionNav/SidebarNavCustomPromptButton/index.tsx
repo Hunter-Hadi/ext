@@ -247,7 +247,13 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
           }, 100)
         }}
         sx={{
-          px: '12px'
+          px: '12px',
+          bgcolor: (t) =>
+            t.palette.mode === 'dark' || isActived
+              ? undefined
+              : 'background.paper',
+          color: isActived ? undefined : 'primary.main',
+          boxShadow: 'none',
         }}
       >
         <Stack direction={'row'} alignItems={'center'}>
@@ -275,6 +281,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
               fontSize: 18,
               transition: 'all 0.2s ease-in-out',
               transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+              color: isActived ? '#fff' : 'primary.main',
             }}
           />
         </Stack>

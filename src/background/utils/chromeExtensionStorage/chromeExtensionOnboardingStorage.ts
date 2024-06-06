@@ -9,6 +9,7 @@ import {
   WritingAssistantButtonGroupConfigHostType,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IOnBoardingTooltipOpenedCacheKey } from '@/features/onboarding/types'
+import { ISurveyOpenedOnBoardingStorageKey } from '@/features/survey/types'
 
 export type OnBoardingKeyType =
   | 'ON_BOARDING_RECORD_FIRST_MESSAGE'
@@ -36,8 +37,8 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK'
   // on boarding tooltip cache key
   | IOnBoardingTooltipOpenedCacheKey
-  // sidebar 中 survey dialog 是否弹窗过的标记
-  | 'ON_BOARDING_EXTENSION_SURVEY_DIALOG_ALERT'
+  //  survey dialog 是否弹窗过的标记
+  | ISurveyOpenedOnBoardingStorageKey
 
 export type OnBoardingMapType = {
   [key in OnBoardingKeyType]?: boolean | string | number

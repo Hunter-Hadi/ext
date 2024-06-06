@@ -284,6 +284,9 @@ const updateI18nJson = async (
     if (_.get(sourceJson, `onboarding.${key}`)) {
       return `onboarding.${key}`
     }
+    if (_.get(sourceJson, `survey.${key}`)) {
+      return `survey.${key}`
+    }
     return key
   })
   let needUpdateLanguages = i18nDirs

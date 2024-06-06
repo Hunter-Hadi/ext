@@ -183,36 +183,53 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   }, [message.originalMessage?.metadata?.title?.title])
 
   return (
-    <ButtonGroup variant="outlined" aria-label="Basic button group">
-      {summaryNavList.map((navItem) => (
-        <TextOnlyTooltip key={navItem.key} title={t(navItem.tooltip as any)}>
-          <Button
-            disabled={loading}
-            variant={
-              actionNavMetadata?.key === navItem.key ? 'contained' : 'outlined'
-            }
-            onClick={() => clickNavTriggerActionChange(navItem)}
-          >
-            <ContextMenuIcon
+    <div>
+      <ButtonGroup
+        variant="outlined"
+        aria-label="Basic button group"
+        sx={{
+          boxShadow:
+            '0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
+        }}
+      >
+        {summaryNavList.map((navItem) => (
+          <TextOnlyTooltip key={navItem.key} title={t(navItem.tooltip as any)}>
+            <Button
+              disabled={loading}
+              variant={
+                actionNavMetadata?.key === navItem.key ? 'contained' : 'outlined'
+              }
               sx={{
-                color:
-                  actionNavMetadata?.key === navItem.key ? '#fff' : 'primary.main',
-                fontSize: 18,
+                bgcolor: (t) =>
+                  t.palette.mode === 'dark' || actionNavMetadata?.key === navItem.key
+                    ? undefined
+                    : 'background.paper',
+                color: actionNavMetadata?.key === navItem.key ? undefined : 'primary.main',
+                boxShadow: 'none',
               }}
-              icon={navItem.titleIcon}
-            />
-          </Button>
-        </TextOnlyTooltip>
-      ))}
-      <SidebarNavCustomPromptButton
-        // 如果 custom prompt 被删了那默认也会显示 system prompt，所以粗暴一点直接判断 actived 不是 system prompt 就是 custom prompt
-        actived={actionNavMetadata && summaryNavList.every(navItem => actionNavMetadata.key !== navItem.key)}
-        message={message}
-        summaryType={summaryType}
-        loading={loading}
-        actionNavMetadata={actionNavMetadata}
-        onChange={clickCustomPromptTriggerActionChange}
-      />
-    </ButtonGroup>
+              onClick={() => clickNavTriggerActionChange(navItem)}
+            >
+              <ContextMenuIcon
+                sx={{
+                  color:
+                    actionNavMetadata?.key === navItem.key ? '#fff' : 'primary.main',
+                  fontSize: 18,
+                }}
+                icon={navItem.titleIcon}
+              />
+            </Button>
+          </TextOnlyTooltip>
+        ))}
+        <SidebarNavCustomPromptButton
+          // 如果 custom prompt 被删了那默认也会显示 system prompt，所以粗暴一点直接判断 actived 不是 system prompt 就是 custom prompt
+          actived={actionNavMetadata && summaryNavList.every(navItem => actionNavMetadata.key !== navItem.key)}
+          message={message}
+          summaryType={summaryType}
+          loading={loading}
+          actionNavMetadata={actionNavMetadata}
+          onChange={clickCustomPromptTriggerActionChange}
+        />
+      </ButtonGroup>
+    </div>
   )
 }

@@ -9,6 +9,7 @@ import {
   ChatAppWebsites,
   EmailWebsites,
   SocialMediaWebsites,
+  specialChatAppWebsites,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
@@ -1361,7 +1362,7 @@ const chatAppPrompts: IContextMenuItem[] = [
     data: {
       editable: false,
       visibility: {
-        whitelist: [...ChatAppWebsites],
+        whitelist: [...ChatAppWebsites, ...specialChatAppWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },

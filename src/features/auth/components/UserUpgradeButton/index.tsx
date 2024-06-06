@@ -82,7 +82,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           fontSize={14}
           fontWeight={700}
           lineHeight={1.4}
-          color="text.primary"
+          color='text.primary'
           sx={{
             userSelect: 'none',
           }}
@@ -94,9 +94,9 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
         <Popper
           open={open}
           anchorEl={anchorEl}
-          placement="top"
+          placement='top'
           container={getMaxAISidebarRootElement()}
-          onClick={event => {
+          onClick={(event) => {
             event.stopPropagation()
           }}
           transition
@@ -125,44 +125,44 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
 
                   <Divider />
 
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction='row' spacing={1} alignItems='center'>
                     <CheckCircleOutlineIcon
-                      sx={{ color: 'rgba(0, 170, 61, 1)' }}
+                      sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
                     />
-                    <Typography>
+                    <Typography fontSize={16}>
                       {t('client:sidebar__user_upgrade_card__item1__title')}
                     </Typography>
                   </Stack>
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction='row' spacing={1} alignItems='center'>
                     <CheckCircleOutlineIcon
-                      sx={{ color: 'rgba(0, 170, 61, 1)' }}
+                      sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
                     />
-                    <Typography>
+                    <Typography fontSize={16}>
                       {t('client:sidebar__user_upgrade_card__item2__title')}
                     </Typography>
                   </Stack>
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction='row' spacing={1} alignItems='center'>
                     <CheckCircleOutlineIcon
-                      sx={{ color: 'rgba(0, 170, 61, 1)' }}
+                      sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
                     />
-                    <Typography>
+                    <Typography fontSize={16}>
                       {t('client:sidebar__user_upgrade_card__item3__title')}
                     </Typography>
                   </Stack>
 
                   <Link
-                    color="primary.main"
-                    target="_blank"
-                    underline="none"
+                    color='primary.main'
+                    target='_blank'
+                    underline='none'
                     onClick={handleClick}
-                    sx={{ cursor: 'pointer' }}
+                    sx={{ cursor: 'pointer', fontSize: 16 }}
                   >
                     {t('client:sidebar__user_upgrade_card__learn_more__title')}
                   </Link>
 
-                  <Box position="relative">
+                  <Box position='relative'>
                     <Button
-                      variant="contained"
+                      variant='contained'
                       fullWidth
                       startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
                       sx={{
@@ -178,8 +178,8 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                     <Typography
                       fontSize={12}
                       mt={0.5}
-                      color="text.secondary"
-                      textAlign="center"
+                      color='text.secondary'
+                      textAlign='center'
                     >
                       {t('client:sidebar__user_upgrade_card__footer__title')}
                     </Typography>
@@ -197,7 +197,9 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                       }}
                     >
                       <Typography fontSize={16} fontWeight={500} lineHeight={1}>
-                        {t('client:sidebar__user_upgrade_card__discount__title')}
+                        {t(
+                          'client:sidebar__user_upgrade_card__discount__title',
+                        )}
                       </Typography>
                     </Box>
                   </Box>

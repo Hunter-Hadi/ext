@@ -409,7 +409,7 @@ export class ClientConversationMessageManager {
         findIndex,
       )
       return timeFrame === 'latest'
-        ? messagesIds.slice(0, findIndex + 1)
+        ? messagesIds.slice(0, findIndex)
         : messagesIds.slice(findIndex)
     } catch (e) {
       console.log(`ConversationDB[V3] 获取${timeFrame}的删除消息ids错误`, e)

@@ -64,11 +64,11 @@ const ContextText: FC = () => {
         flexDirection: 'row',
       }}
       flex={1}
-      fontSize="12px"
+      fontSize='12px'
       fontWeight={400}
-      color="text.secondary"
-      whiteSpace="pre-wrap"
-      overflow="hidden"
+      color='text.secondary'
+      whiteSpace='pre-wrap'
+      overflow='hidden'
     >
       <span style={{ flexShrink: 0 }}>
         {t('client:floating_menu__draft_card__context__title')}:{' '}
@@ -108,20 +108,43 @@ const FloatingContextMenuTitleBar: FC = () => {
   }
 
   const onClose = () => {
-    if (contextWindowChanges.contextWindowMode !== 'READ') {
+    /**
+     * 改为按Esc触发事件，这样由FloatingContextMenu里统一逻辑处理
+     * 注意这里无法直接使用event.currentTarget.dispatchEvent去触发，因为react的合成事件
+     * 担心会触发网页其他地方的逻辑先注释掉
+     */
+    // document.body.dispatchEvent(
+    //   new KeyboardEvent('keydown', {
+    //     key: 'Escape',
+    //     code: 'Escape',
+    //     keyCode: 27,
+    //     bubbles: true,
+    //     cancelable: true,
+    //   }),
+    // )
+    if (contextWindowChanges.contextWindowMode === 'LOADING') {
+      // AI正在运行
+      return
+    }
+    if (
+      contextWindowChanges.contextWindowMode === 'READ' ||
+      contextWindowChanges.contextWindowMode === 'EDIT_VARIABLES'
+    ) {
+      // 未编辑过，直接关闭
+      hideFloatingContextMenu(true)
+    } else {
+      // 正在编辑，弹出discard
       setContextWindowChanges((prev) => ({
         ...prev,
         discardChangesModalVisible: true,
       }))
-    } else {
-      hideFloatingContextMenu(true)
     }
   }
 
   return (
     <Stack
-      direction="row"
-      justifyContent="end"
+      direction='row'
+      justifyContent='end'
       sx={{
         wordBreak: 'break-word',
         color: (t) =>
@@ -129,39 +152,22 @@ const FloatingContextMenuTitleBar: FC = () => {
       }}
       component={'div'}
     >
-      {/*drag box*/}
-      {/*<Box*/}
-      {/*  sx={{*/}
-      {/*    position: 'absolute',*/}
-      {/*    width: '100%',*/}
-      {/*    zIndex: 10,*/}
-      {/*    cursor: 'grab',*/}
-      {/*    height: '20px',*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  <DevContent>*/}
-      {/*    <Typography fontSize={'14px'} color={'text.primary'}>*/}
-      {/*      {contextWindowChanges.contextWindowMode}(debug)*/}
-      {/*    </Typography>*/}
-      {/*  </DevContent>*/}
-      {/*</Box>*/}
-
       {isEmpty(currentFloatingContextMenuDraft) && !selectedDraftUserMessage ? (
         <ContextText />
       ) : null}
 
-      <Stack direction="row" justifyContent="end">
+      <Stack direction='row' justifyContent='end'>
         <TextOnlyTooltip
           title={t(
             floatingDropdownMenuPin
               ? 'client:floating_menu__pin_button__pinned__title'
               : 'client:floating_menu__pin_button__unpinned__title',
           )}
-          placement="bottom"
+          placement='bottom'
           floatingMenuTooltip
         >
           <IconButton
-            size="small"
+            size='small'
             sx={{
               width: 'auto',
               height: 20,
@@ -176,7 +182,7 @@ const FloatingContextMenuTitleBar: FC = () => {
                   fontSize: 16,
                   transform: 'rotate(45deg)',
                 }}
-                color="primary"
+                color='primary'
               />
             ) : (
               <PushPinOutlined
@@ -190,11 +196,11 @@ const FloatingContextMenuTitleBar: FC = () => {
         </TextOnlyTooltip>
         <TextOnlyTooltip
           title={t('client:floating_menu__close_button__title')}
-          placement="bottom"
+          placement='bottom'
           floatingMenuTooltip
         >
           <IconButton
-            size="small"
+            size='small'
             sx={{
               width: 'auto',
               height: 20,

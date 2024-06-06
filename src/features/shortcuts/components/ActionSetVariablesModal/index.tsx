@@ -76,6 +76,7 @@ interface ActionSetVariablesModalProps
   show?: boolean
   showModelSelector?: boolean
   showCloseButton?: boolean
+  showDiscardButton?: boolean
   isSaveLastRunShortcuts?: boolean
   onShow?: () => void
   onBeforeClose?: () => boolean
@@ -106,6 +107,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     askChatGPTActionParameters,
     showModelSelector = false,
     showCloseButton = true,
+    showDiscardButton = showCloseButton,
     isSaveLastRunShortcuts,
     disabled,
     sx,
@@ -674,12 +676,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             color={'#fff'}
             fontWeight={600}
             height={30}
-            lineHeight="30px"
+            lineHeight='30px'
             sx={{
               borderRadius: '4px',
               p: '0 8px',
               bgcolor: 'rgba(0, 0, 0, 0.87)',
-              width: showCloseButton ? '100%' : 'auto',
+              width: modelKey !== 'PromptPreview' ? '100%' : 'auto',
             }}
             noWrap
           >
@@ -790,7 +792,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                     data: getValues(),
                     type: 'input',
                     success: true,
-                    variables: currentModalConfig.textTypeVariables
+                    variables: currentModalConfig.textTypeVariables,
                   } as ActionSetVariablesConfirmData)
                 }
                 event.stopPropagation()
@@ -836,11 +838,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         flexShrink={0}
       >
         {showModelSelector && (
-          <Box mr="auto">
+          <Box mr='auto'>
             <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
           </Box>
         )}
-        {showCloseButton && (
+        {showDiscardButton && (
           <Button
             sx={{
               height: '32px',

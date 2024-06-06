@@ -459,6 +459,8 @@ const FloatingContextMenu: FC<{
                   sx={{
                     mt: 2,
                   }}
+                  showCloseButton={false}
+                  showDiscardButton={true}
                   onInputCustomVariable={({ data, variables }) => {
                     // 判断是否有输入内容的输入框，过滤系统参数
                     const isInput = variables?.some((variable) =>
@@ -741,4 +743,5 @@ const FloatingContextMenu: FC<{
     </FloatingPortal>
   )
 }
+
 export { FloatingContextMenu }

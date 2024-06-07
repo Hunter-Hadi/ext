@@ -3,6 +3,7 @@ import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import isNumber from 'lodash-es/isNumber'
 import React, { FC, useMemo } from 'react'
 import Highlight from 'react-highlight'
 import ReactMarkdown from 'react-markdown'
@@ -18,8 +19,8 @@ import Browser from 'webextension-polyfill'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
-import { IAIResponseSourceCitation } from '@/features/chatgpt/types'
 import CitationTag from '@/features/citation/components/CitationTag'
+import { IAIResponseSourceCitation } from '@/features/indexed_db/conversations/models/Message'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
@@ -165,7 +166,7 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
   const lang = props.className?.match(/language-(\w+)/)?.[1] || 'code'
   return (
     <Stack
-      bgcolor="#000"
+      bgcolor='#000'
       sx={{
         borderRadius: '6px',
         mb: 2,
@@ -173,10 +174,10 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
       }}
     >
       <Stack
-        justifyContent="space-between"
+        justifyContent='space-between'
         alignItems={'center'}
-        direction="row"
-        component="div"
+        direction='row'
+        component='div'
         sx={{
           px: 2,
           py: 0.5,
@@ -184,7 +185,7 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
           color: 'rgb(217,217,227)',
         }}
       >
-        <Typography component="span" fontSize={12}>
+        <Typography component='span' fontSize={12}>
           {lang}
         </Typography>
         <CopyTooltipIconButton
@@ -197,7 +198,7 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
           <span style={{ marginLeft: '4px', fontSize: '12px' }}>Copy code</span>
         </CopyTooltipIconButton>
       </Stack>
-      <Box fontSize={14} bgcolor="#000" color={'#fff'}>
+      <Box fontSize={14} bgcolor='#000' color={'#fff'}>
         <AppSuspenseLoadingLayout>
           <Highlight className={lang + ' ' + className}>{children}</Highlight>
         </AppSuspenseLoadingLayout>
@@ -248,7 +249,12 @@ const CustomMarkdown: FC<{
     if (getPageSummaryType() !== 'PDF_CRX_SUMMARY') {
       return
     }
-    return props.citations?.filter((item) => item.start_index > -1)
+    return props.citations?.filter((item) => {
+      if (isNumber(item.start_index)) {
+        return item.start_index > -1
+      }
+      return true
+    })
   }, [props.citations])
 
   const formatMarkdownText = useMemo(() => {

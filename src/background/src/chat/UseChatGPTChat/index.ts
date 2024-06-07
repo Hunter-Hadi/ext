@@ -205,7 +205,7 @@ class UseChatGPTPlusChat extends BaseChat {
         } as any
       })
     }
-    if (backendAPI === 'chat_with_small_document') {
+    if (backendAPI === 'get_summarize_response') {
       // 后端会自动调整model
       delete (postBody as any).model_name
     }

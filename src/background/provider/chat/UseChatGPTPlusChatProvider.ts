@@ -2,6 +2,7 @@ import orderBy from 'lodash-es/orderBy'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
@@ -13,11 +14,19 @@ import {
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
 import ConversationManager from '@/background/src/chatConversations'
-import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import {
+  APP_USE_CHAT_GPT_API_HOST,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+  SUMMARY__CITATION__PROMPT_ID,
+} from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { isRichAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { backgroundConversationDB } from '@/features/indexed_db/conversations/background'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIResponseSourceCitation,
+  IChatUploadFile,
+} from '@/features/indexed_db/conversations/models/Message'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -90,7 +99,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       if (docId && !isUnFinishAIMessage) {
         backendAPI = 'chat_with_document'
       } else if (conversationDetail?.type === 'Summary') {
-        backendAPI = 'chat_with_small_document'
+        backendAPI = 'get_summarize_response'
       }
       // 没有docId或者isUnFinishAIMessage的情况下，需要发送系统提示
       if (
@@ -129,6 +138,28 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {
+          const conversationId = question.conversationId
+
+          if (
+            done &&
+            backendAPI === 'get_summarize_response' &&
+            data.text &&
+            (!data.sourceCitations || data.sourceCitations?.length === 0)
+          ) {
+            const conversation = await ConversationManager.getConversationById(
+              conversationId || '',
+            )
+            if (conversation?.meta?.systemPrompt) {
+              // HACK: 临时逻辑，对所有summarize的消息请求citation
+              // 拦截并且获取sourceCitations
+              data.sourceCitations = await this.tempGetCitation(
+                taskId,
+                question.text,
+                data.text,
+                conversation.meta.systemPrompt,
+              )
+            }
+          }
           await this.sendResponseToClient(sender.tab.id, {
             taskId,
             data: {
@@ -144,6 +175,70 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         }
       },
     )
+  }
+  async tempGetCitation(
+    taskId: string,
+    question: string,
+    AIResponse: string,
+    systemPrompt: string,
+  ): Promise<IAIResponseSourceCitation[] | undefined> {
+    try {
+      const result = await fetch(
+        `${APP_USE_CHAT_GPT_API_HOST}/gpt/chat_small_document_citation`,
+        {
+          method: 'POST',
+          headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
+          }),
+          body: JSON.stringify({
+            chat_history: [
+              {
+                role: 'system',
+                content: [
+                  {
+                    type: 'text',
+                    text: systemPrompt,
+                  },
+                ],
+              },
+              {
+                role: 'ai',
+                content: [
+                  {
+                    type: 'text',
+                    text: AIResponse,
+                  },
+                ],
+              },
+            ],
+            streaming: false,
+            temperature: 0.2,
+            message_content: [
+              {
+                type: 'text',
+                text: question,
+              },
+            ],
+            prompt_name: 'summary_citation',
+            prompt_id: SUMMARY__CITATION__PROMPT_ID,
+          }),
+        },
+      )
+      const data: {
+        status: string
+        sources: Array<{
+          content: string
+          snippet: string
+        }>
+      } = await result.json()
+      if (data.status === 'OK') {
+        return data.sources
+      }
+      return []
+    } catch (e) {
+      return undefined
+    }
   }
   async abortAskQuestion(messageId: string) {
     return await this.useChatGPTPlusChat.abortTask(messageId)

@@ -127,7 +127,10 @@ export const SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID =
   '5278969d-1d86-4df2-a3e8-48e50dbbd86e' // [Summary] Summarize comments
 export const SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID =
   '029d848d-7c28-4a3a-baae-353292ea7691' // [Summary] Show transcript
-export const SUMMARY__RELATED_QUESTIONS__PROMPT_ID = 'related_questions'
+export const SUMMARY__RELATED_QUESTIONS__PROMPT_ID =
+  'bce1c389-062c-4e78-8db1-972a4434151e'
+export const SUMMARY__CITATION__PROMPT_ID =
+  'b04b796f-84d8-40cc-a1d7-e7564a8e103d'
 // Send notification
 export const NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID =
   '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a' // [Summary] tokens have reached maximum limit

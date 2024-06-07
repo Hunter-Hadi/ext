@@ -191,12 +191,15 @@ const useSearchWithAI = () => {
             'ai',
             'latest',
           )) as IAIResponseMessage
-        const needDeleteMessageIds =
-          await ClientConversationMessageManager.getDeleteMessageIds(
-            currentConversationId,
-            lastAIResponse.messageId,
-            'latest',
-          )
+        const needDeleteMessageIds = lastAIResponse?.messageId
+          ? [lastAIResponse.messageId]
+          : []
+        // const needDeleteMessageIds =
+        //   await ClientConversationMessageManager.getDeleteMessageIds(
+        //     currentConversationId,
+        //     lastAIResponse.messageId,
+        //     'latest',
+        //   )
         const lastQuestion =
           lastAIResponse?.originalMessage?.metadata?.title?.title ||
           lastAIResponse?.text ||

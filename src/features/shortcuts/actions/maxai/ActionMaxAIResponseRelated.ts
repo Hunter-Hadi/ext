@@ -1,4 +1,5 @@
 import { APP_VERSION, SUMMARY__RELATED_QUESTIONS__PROMPT_ID } from '@/constants'
+import { generateQuestionAnalyticsData } from '@/features/auth/utils/log'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/indexed_db/conversations/models/Message'
@@ -14,6 +15,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * @since 2024-05-13
@@ -36,7 +38,7 @@ export class ActionMaxAIResponseRelated extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     // 生成summary相关的related questions
-    const { clientConversationEngine } = engine
+    const { clientConversationEngine, clientMessageChannelEngine } = engine
     const conversationId =
       clientConversationEngine?.currentConversationIdRef.current || ''
     const conversation =
@@ -107,6 +109,34 @@ export class ActionMaxAIResponseRelated extends Action {
       }
     }
     if (summaryContent) {
+      const analyticsData = await generateQuestionAnalyticsData(
+        {
+          conversationId: clientConversationEngine?.currentConversationId,
+          meta: {
+            analytics: {},
+          },
+        } as any,
+        SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
+      )
+      /**
+       * 前端不再依赖call_api来触发paywall付费卡点了
+       * call_api主要是用来做log记录的，让我们自己能看到、分析用户的使用情况
+       */
+      clientMessageChannelEngine
+        ?.postMessage({
+          event: 'Client_logCallApiRequest',
+          data: {
+            name: 'related_questions',
+            id: SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
+            type: analyticsData.promptType,
+            featureName: analyticsData.featureName,
+            host: getCurrentDomainHost(),
+            conversationId: clientConversationEngine?.currentConversationId,
+            url: location.href,
+          },
+        })
+        .then()
+        .catch()
       const result = await clientFetchMaxAIAPI<{
         status: string
         text: string
@@ -140,9 +170,10 @@ export class ActionMaxAIResponseRelated extends Action {
         streaming: false,
         chrome_extension_version: APP_VERSION,
         prompt_id: SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
-        prompt_name: 'related_questions',
+        prompt_name: analyticsData.featureName,
+        prompt_type: analyticsData.promptType,
         prompt_action_type: 'chat_complete',
-        prompt_type: 'preset',
+        feature_name: '',
         temperature: 1,
       })
       const relatedQuestionsText = result?.data?.text || '[]'

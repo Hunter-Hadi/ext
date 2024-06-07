@@ -16,7 +16,8 @@ interface IHomeViewAISearchInputProps {}
 const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
   const { createSearchWithAI } = useSearchWithAI()
   const { createConversation } = useClientConversation()
-  const {currentSidebarConversationType,updateSidebarConversationType} = useSidebarSettings()
+  const { currentSidebarConversationType, updateSidebarConversationType } =
+    useSidebarSettings()
 
   // const { cleanConversation } = useClientConversation()
 
@@ -54,7 +55,11 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
     setLoading(false)
   }
   useEffect(() => {
-    if (waitAskQuestion && currentSidebarConversationType === 'Search' && onceRef.current) {
+    if (
+      waitAskQuestion &&
+      currentSidebarConversationType === 'Search' &&
+      onceRef.current
+    ) {
       onceRef.current = false
       createSearchWithAI(waitAskQuestion, false)
       setWaitAskQuestion('')
@@ -62,7 +67,7 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
   }, [waitAskQuestion, currentSidebarConversationType, createSearchWithAI])
   return (
     <Stack
-      direction="row"
+      direction='row'
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
 
@@ -85,11 +90,11 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
         }
       }}
     >
-      <form onSubmit={handleSubmit} autoComplete="off">
+      <form onSubmit={handleSubmit} autoComplete='off'>
         <OutlinedInput
-          size="small"
+          size='small'
           placeholder={t('client:home_view_content_nav__ai_search_placeholder')}
-          name="searchValue"
+          name='searchValue'
           disabled={loading}
           sx={{
             pr: 1,
@@ -102,10 +107,10 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
             },
           }}
           startAdornment={
-            <InputAdornment position="end" sx={{ ml: '3px', mr: '0px' }}>
+            <InputAdornment position='end' sx={{ ml: '3px', mr: '0px' }}>
               <IconButton
-                type="submit"
-                size="small"
+                type='submit'
+                size='small'
                 sx={{ color: 'text.primary' }}
               >
                 {loading ? (

@@ -183,14 +183,15 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     systemPrompt: string,
   ): Promise<IAIResponseSourceCitation[] | undefined> {
     try {
+      const headers = backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
+      })
       const result = await fetch(
         `${APP_USE_CHAT_GPT_API_HOST}/gpt/chat_small_document_citation`,
         {
           method: 'POST',
-          headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
-          }),
+          headers,
           body: JSON.stringify({
             chat_history: [
               {

@@ -38,12 +38,7 @@ const useFunnelSurveyOpenTimer = (
       return
     }
 
-    if (!loaded) {
-      return
-    }
-
-    // 没登录时不弹窗
-    if (!userInfo) {
+    if (!loaded || !enabled) {
       return
     }
 
@@ -52,7 +47,7 @@ const useFunnelSurveyOpenTimer = (
     }
 
     // 如果 subscription_cancelled_at 是空值，不弹窗
-    if (!userInfo.subscription_cancelled_at) {
+    if (!userInfo?.subscription_cancelled_at) {
       return
     }
 
@@ -60,10 +55,17 @@ const useFunnelSurveyOpenTimer = (
     const now = dayjs.utc()
     if (now.diff(cancelledAt, 'day') < 30) {
       openPopup(1200) // 1.2s
+      setAlreadyPoppedSurveyModal(true)
     } else {
       closePopup()
     }
-  }, [enabled, sceneType, userInfo, loaded, alreadyPoppedSurveyModal])
+  }, [
+    enabled,
+    sceneType,
+    userInfo?.subscription_cancelled_at,
+    loaded,
+    alreadyPoppedSurveyModal,
+  ])
 
   useEffect(() => {
     // 用户信息加载完毕

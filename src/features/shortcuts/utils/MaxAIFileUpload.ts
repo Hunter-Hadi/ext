@@ -48,7 +48,7 @@ export const maxAIFileUpload = async (
     formData.append('use_case', useCase)
     fetch(`${APP_USE_CHAT_GPT_API_HOST}/app/upload_file`, {
       method: 'POST',
-      headers: await clientRequestHeaderGenerator('', {
+      headers: await clientRequestHeaderGenerator({
         Authorization: `Bearer ${accessToken}`,
       }),
       body: formData,

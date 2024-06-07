@@ -1,4 +1,5 @@
 import merge from 'lodash-es/merge'
+import Browser from 'webextension-polyfill'
 
 import { convertHexToString } from '@/background/api/backgroundRequestHeaderGenerator'
 import { APP_VERSION } from '@/constants'
@@ -8,17 +9,20 @@ import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/backgr
 
 /**
  * Generate client request header
- * @param formUrl
  * @param headerInit
+ * @param formUrl
  */
 export const clientRequestHeaderGenerator = async (
-  formUrl?: string,
   headerInit?: HeadersInit,
+  formUrl?: string,
 ) => {
   try {
     const uaInfo = await backgroundGetBrowserUAInfo()
     const senderUrl =
-      formUrl || typeof window !== 'undefined' ? window.location.href : ''
+      formUrl ||
+      (typeof window !== 'undefined'
+        ? window.location.href
+        : Browser.runtime.getURL('/pages/settings/index.html'))
     const domain = getCurrentDomainHost(senderUrl)
     const path = senderUrl
     // 稍微添加一下逆向的难度
@@ -48,6 +52,7 @@ export const clientRequestHeaderGenerator = async (
     }
     return merge(hexHeaders, headerInit)
   } catch (e) {
+    debugger
     return headerInit
   }
 }

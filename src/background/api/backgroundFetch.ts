@@ -71,6 +71,7 @@ export const backgroundGet = <T>(
 ): Promise<IResponse<T>> => {
   return new Promise((resolve, reject) => {
     try {
+      const { headers, ...rest } = options || {}
       getAccessToken().then((accessToken) => {
         if (!accessToken) {
           reject(new Error('no accessToken'))
@@ -81,8 +82,9 @@ export const backgroundGet = <T>(
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${accessToken}`,
+            ...headers,
           },
-          ...options,
+          ...rest,
         })
           .then((response) => {
             if (response.ok) {

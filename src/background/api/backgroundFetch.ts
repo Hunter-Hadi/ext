@@ -30,6 +30,7 @@ export const backgroundPost = <T>(
   options?: RequestInit,
 ): Promise<IResponse<T>> => {
   return new Promise((resolve, reject) => {
+    const { headers, ...rest } = options || {}
     getAccessToken().then((accessToken) => {
       if (!accessToken) {
         reject(new Error('no accessToken'))
@@ -38,12 +39,13 @@ export const backgroundPost = <T>(
       }
       fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
         method: 'POST',
+        body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
+          ...headers,
         },
-        body: JSON.stringify(data),
-        ...options,
+        ...rest,
       })
         .then((response) => {
           if (response.ok) {

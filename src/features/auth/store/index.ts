@@ -1,6 +1,7 @@
 import { atom } from 'recoil'
 
 import { IMaxAIBetaFeatures } from '@/background/utils/maxAIBetaFeatureSettings/constant'
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { IUseChatGPTUserInfo, IUserQuotaUsageInfo } from '@/features/auth/types'
 
 export const AuthState = atom<{
@@ -55,5 +56,16 @@ export const MaxAIBetaFeaturesState = atom<{
   default: {
     loaded: false,
     features: {},
+  },
+})
+
+export const PricingModalState = atom<{
+  show: boolean
+  conversationId?: string
+  permissionSceneType?: PermissionWrapperCardSceneType
+}>({
+  key: 'PricingModalState',
+  default: {
+    show: false,
   },
 })

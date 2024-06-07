@@ -30,6 +30,7 @@ export const usePermissionCard = (
         ctaButtonOnClick: settings.ctaButtonOnClick,
         imageUrl: settings.imageUrl,
         videoUrl: settings.videoUrl,
+        modalImageUrl: settings.modalImageUrl,
         sceneType,
       }
       return permissionCard

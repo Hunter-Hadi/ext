@@ -149,6 +149,8 @@ class MaxAIGeminiChat extends BaseChat {
       clonePostBody.prompt_id = options.meta.MaxAIPromptActionConfig.promptId
       clonePostBody.prompt_name =
         options.meta.MaxAIPromptActionConfig.promptName
+      clonePostBody.prompt_type =
+        options.meta.MaxAIPromptActionConfig.promptActionType || ''
       clonePostBody.prompt_inputs =
         options.meta.MaxAIPromptActionConfig.variables.reduce<
           Record<string, string>
@@ -161,6 +163,7 @@ class MaxAIGeminiChat extends BaseChat {
       if (options.meta.MaxAIPromptActionConfig.AIModel) {
         clonePostBody.model_name = options.meta.MaxAIPromptActionConfig.AIModel
       }
+
       postBody = clonePostBody
     }
     const controller = new AbortController()

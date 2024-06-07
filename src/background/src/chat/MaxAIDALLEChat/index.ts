@@ -154,6 +154,8 @@ class MaxAIDALLEChat extends BaseChat {
             clonePostBody.model_name =
               options.meta.MaxAIPromptActionConfig.AIModel
           }
+          clonePostBody.prompt_type =
+            options.meta.MaxAIPromptActionConfig.promptActionType || ''
           postBody = clonePostBody
         }
         // 说明需要转换自然语言为prompt

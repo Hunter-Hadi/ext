@@ -151,6 +151,8 @@ class MaxAIClaudeChat extends BaseChat {
       clonePostBody.prompt_id = options.meta.MaxAIPromptActionConfig.promptId
       clonePostBody.prompt_name =
         options.meta.MaxAIPromptActionConfig.promptName
+      clonePostBody.prompt_type =
+        options.meta.MaxAIPromptActionConfig.promptActionType || ''
       clonePostBody.prompt_inputs =
         options.meta.MaxAIPromptActionConfig.variables.reduce<
           Record<string, string>

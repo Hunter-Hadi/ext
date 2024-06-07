@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "کسی بھی تصویر کے بارے میں سوال کریں اور فوری جوابات حاصل کریں۔",
     "sidebar__promotion_dialog__vision__content_item3__description": "بس ایک سکرین شاٹ لیں اور فوری سوالات پوچھیں۔",
     "sidebar__promotion_dialog__vision__content_item4__description": "بہترین AI ماڈلز: GPT-4o، Claude-3-opus، Gemini-1.5-pro کی طاقت سے چلتا ہے۔",
-    "sidebar__promotion_dialog__discount__title": "اب 53٪ بچائیں"
+    "sidebar__promotion_dialog__discount__title": "اب 53٪ بچائیں",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "آپلوڈ کردہ فائلیں بہت بڑی ہیں۔ براہ کرم ایک AI ماڈل استعمال کریں جس کے پاس زیادہ کنٹیکسٹ ونڈو ہو یا چھوٹی فائلیں اپ لوڈ کریں۔",
+    "chat__user_message__contexts__file__preview__tips": "فارمیٹنگ ممکن ہے کہ سورس سے متفق نہ ہو۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "دبائیں.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "اختیار کو منتخب کرنے کے لئے.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "منتخب متن کو AI تیار کردہ مواد سے تبدیل کرنے کے لئے کلک کریں۔",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "آپ AI سے کہ سکتے ہیں کہ آپ جو چاہیں وہ AI تیار کردہ مواد کو مزید درست کرے۔"
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "آپ AI سے کہ سکتے ہیں کہ آپ جو چاہیں وہ AI تیار کردہ مواد کو مزید درست کرے۔",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "سائڈبار کو کھولنے کے لئے کلک کریں تاکہ آپ AI سے چیٹ کر سکیں، کسی بھی صفحے کا خلاصہ کریں، ویب سے سوال کریں یا AI آرٹ بنائیں۔",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "اس ای میل کا خلاصہ کرنے اور سوالات پوچھنے کے لئے کلک کریں۔",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "اس PDF کا خلاصہ کرنے اور سوالات پوچھنے کے لئے کلک کریں۔",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "اس یوٹیوب ویڈیو کا خلاصہ کرنے اور سوالات پوچھنے کے لئے کلک کریں۔",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "فوری طور پر ایک شخصیت پر مبنی جواب تشکیل دینے کے لئے کلک کریں۔",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "فوری طور پر ایک شخصیت پر مبنی ڈرافٹ تشکیل دینے کے لئے کلک کریں یا اپنے ڈرافٹ کو بہتر بنائیں۔"
   },
   "survey": {
     "funnel_survey__submit_success__title": "ہمیں اپنے تجربے کا شکریہ دینے کے لئے آپ کا شکریہ. 🙏",

@@ -18,7 +18,6 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
-import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -36,9 +35,6 @@ const SidebarChatHistoryButton: FC<{
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
   const isImmersiveChatPage = isMaxAIImmersiveChatPage()
   const paperRef = useRef<HTMLDivElement>()
-
-  const { setPaginationConversations, fetchPaginationConversations } =
-    usePaginationConversations()
 
   const {
     currentSidebarConversationType,

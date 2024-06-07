@@ -3,9 +3,9 @@
  * @since - 2023-08-15
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
-import { cloneDeep } from 'lodash-es'
+import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -15,27 +15,33 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useContextMenuList } from '@/features/contextMenu'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import {
+  checkRemoteConversationIsExist,
+  clientDownloadConversationToLocal,
+} from '@/features/indexed_db/conversations/clientService'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
 import {
   allSummaryNavList,
   getContextMenuByNavMetadataKey,
-  getPageSummaryConversationId,
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const usePageSummary = () => {
   const { updateSidebarSettings, updateSidebarSummaryConversationId } =
     useSidebarSettings()
-  const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const { clientWritingMessage, updateClientConversationLoading } =
-    useClientConversation()
+  const {
+    clientWritingMessage,
+    updateClientConversationLoading,
+    showConversationLoading,
+    hideConversationLoading,
+  } = useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
@@ -67,11 +73,54 @@ const usePageSummary = () => {
     const writingLoading = clientWritingMessageRef.current.loading
 
     updateClientConversationLoading(true)
+    showConversationLoading()
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
-      const pageSummaryConversation = await clientGetConversation(
-        pageSummaryConversationId,
-      )
+      let pageSummaryConversation =
+        await ClientConversationManager.getConversationById(
+          pageSummaryConversationId,
+        )
+      //如果没有，那么去remote看看有没有
+      const localMessages = pageSummaryConversation
+        ? await ClientConversationMessageManager.getMessageIds(
+            pageSummaryConversation.id,
+          )
+        : []
+      if (
+        localMessages.length === 0 &&
+        (await checkRemoteConversationIsExist(pageSummaryConversationId))
+      ) {
+        // 如果有，那么就同步一下
+        const conversations = await clientDownloadConversationToLocal(
+          pageSummaryConversationId,
+        )
+        pageSummaryConversation = conversations?.[0] || null
+        if (pageSummaryConversation) {
+          await ClientConversationManager.addOrUpdateConversation(
+            pageSummaryConversationId,
+            pageSummaryConversation,
+          )
+          // 下载10条消息
+          const result = await clientFetchMaxAIAPI<{
+            current_page: number
+            current_page_size: number
+            data: IChatMessage[]
+            msg: string
+            status: string
+            total_page: number
+          }>(`/conversation/get_messages_after_datetime`, {
+            conversation_id: pageSummaryConversation.id,
+            page: 0,
+            page_size: 10,
+          })
+          if (result?.data?.data) {
+            await ClientConversationMessageManager.diffRemoteConversationMessagesData(
+              pageSummaryConversation.id,
+              result.data.data,
+            )
+          }
+        }
+      }
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         await updateSidebarSettings({
@@ -79,28 +128,21 @@ const usePageSummary = () => {
             conversationId: pageSummaryConversationId,
           },
         })
-
-        const aiMessage = pageSummaryConversation.messages?.find((message) =>
-          isAIMessage(message),
-        ) as IAIResponseMessage
-
+        const aiMessage =
+          await ClientConversationMessageManager.getMessageByMessageType(
+            pageSummaryConversationId,
+            'ai',
+            'earliest',
+          )
         if (writingLoading) {
           updateClientConversationLoading(false)
-          updateConversationMap((prevState) => {
-            return {
-              ...prevState,
-              [pageSummaryConversation.id]: pageSummaryConversation,
-            }
-          })
           isGeneratingPageSummaryRef.current = false
           return
         }
-
         let isValidAIMessage =
           aiMessage &&
           aiMessage?.originalMessage &&
           aiMessage?.originalMessage.metadata?.isComplete
-
         if (
           aiMessage &&
           aiMessage?.originalMessage &&
@@ -127,22 +169,16 @@ const usePageSummary = () => {
 
         if (isValidAIMessage) {
           updateClientConversationLoading(false)
-          updateConversationMap((prevState) => {
-            return {
-              ...prevState,
-              [pageSummaryConversation.id]: pageSummaryConversation,
-            }
-          })
           isGeneratingPageSummaryRef.current = false
           return
         }
 
         // 如果没有AI消息，那么清空所有消息，然后添加AI消息
-        await clientChatConversationModifyChatMessages(
-          'clear',
+        await ClientConversationMessageManager.deleteMessages(
           pageSummaryConversationId,
-          0,
-          [],
+          await ClientConversationMessageManager.getMessageIds(
+            pageSummaryConversationId,
+          ),
         )
       }
       try {
@@ -164,11 +200,11 @@ const usePageSummary = () => {
               summaryLifetimesQuota - 1,
             )
           } else {
-            await clientChatConversationModifyChatMessages(
-              'clear',
+            await ClientConversationMessageManager.deleteMessages(
               pageSummaryConversationId,
-              0,
-              [],
+              await ClientConversationMessageManager.getMessageIds(
+                pageSummaryConversationId,
+              ),
             )
             await pushPricingHookMessage('PAGE_SUMMARY')
             authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
@@ -227,6 +263,8 @@ const usePageSummary = () => {
       } catch (e) {
         console.log('创建Conversation失败', e)
         isGeneratingPageSummaryRef.current = false
+      } finally {
+        hideConversationLoading()
       }
     }
   }

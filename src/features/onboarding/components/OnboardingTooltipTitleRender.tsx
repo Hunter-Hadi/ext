@@ -16,12 +16,6 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
 }) => {
   const { t } = useTranslation(['prompt', 'onboarding'])
 
-  if (sceneType === 'CONTEXT_MENU_CTA_BUTTON') {
-    return (
-      <>{t('onboarding:onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text')}</>
-    )
-  }
-
   if (sceneType === 'FLOATING_CONTEXT_MENU_INPUT_BOX') {
     return (
       <Stack>
@@ -48,7 +42,7 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
   if (sceneType === 'FLOATING_CONTEXT_MENU_LIST_BOX') {
     return (
       <Stack spacing={1.5}>
-        <Stack direction={'row'} alignItems="center" spacing={0.5}>
+        <Stack direction={'row'} alignItems='center' spacing={0.5}>
           <Typography fontSize={14} lineHeight={1.5}>
             {t(
               'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1',
@@ -63,7 +57,7 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
             )}
           </Typography>
         </Stack>
-        <Stack direction={'row'} alignItems="center" spacing={0.5}>
+        <Stack direction={'row'} alignItems='center' spacing={0.5}>
           <Typography fontSize={14} lineHeight={1.5}>
             {t(
               'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text2__part1',
@@ -78,7 +72,7 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
             )}
           </Typography>
         </Stack>
-        <Stack direction={'row'} alignItems="center" spacing={0.5}>
+        <Stack direction={'row'} alignItems='center' spacing={0.5}>
           <Typography fontSize={14} lineHeight={1.5}>
             {t(
               'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part1',
@@ -99,21 +93,20 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
     )
   }
 
-  if (sceneType === 'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM') {
+  if (sceneType === 'INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON') {
     return (
       <>
         {t(
-          'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1',
+          'onboarding:onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text',
         )}
       </>
     )
   }
-
-  if (sceneType === 'FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE') {
+  if (sceneType === 'INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON') {
     return (
       <>
         {t(
-          'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1',
+          'onboarding:onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text',
         )}
       </>
     )
@@ -132,8 +125,8 @@ const ShortcutKeyBox: FC<{
   return (
     <Stack
       direction={'row'}
-      alignItems="center"
-      justifyContent="center"
+      alignItems='center'
+      justifyContent='center'
       sx={{
         bgcolor: '#FFFFFF33',
         border: '1px solid',

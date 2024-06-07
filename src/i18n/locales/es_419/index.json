@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Haz preguntas sobre cualquier imagen y obtén respuestas instantáneas.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Simplemente toma una captura de pantalla y haz preguntas de inmediato.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Impulsado por los mejores modelos de IA: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ahorra un 53% ahora"
+    "sidebar__promotion_dialog__discount__title": "Ahorra un 53% ahora",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Los archivos cargados son demasiado grandes. Utilice un modelo de IA con una ventana de contexto más grande o cargue archivos más pequeños.",
+    "chat__user_message__contexts__file__preview__tips": "La formatación puede ser inconsistente desde la fuente."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "para seleccionar la opción.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Haz clic para reemplazar el texto seleccionado con contenido generado por IA.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puedes pedirle a la IA que mejore el contenido generado por la IA como desees."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puedes pedirle a la IA que mejore el contenido generado por la IA como desees.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Haz clic para abrir la barra lateral y chatear con IA, resumir cualquier página, preguntar a la web o crear arte de IA.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Haz clic para resumir y hacer preguntas sobre este correo electrónico.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Haz clic para resumir y hacer preguntas sobre este PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Haz clic para resumir y hacer preguntas sobre este video de YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Haz clic para generar una respuesta personalizada al instante.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Haz clic para generar un borrador personalizado al instante o mejorar tu borrador."
   },
   "survey": {
     "funnel_survey__submit_success__title": "¡Gracias por compartir tu experiencia con nosotros! 🙏",

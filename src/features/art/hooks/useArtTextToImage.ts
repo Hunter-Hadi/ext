@@ -10,9 +10,12 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
@@ -28,12 +31,10 @@ const useArtTextToImage = () => {
     currentConversationId,
     createConversation,
     getConversation,
+    clientConversationMessages,
   } = useClientConversation()
-  const {
-    sidebarSettings,
-    updateSidebarConversationType,
-    currentSidebarConversationMessages,
-  } = useSidebarSettings()
+  const { sidebarSettings, updateSidebarConversationType } =
+    useSidebarSettings()
   const { isPayingUser } = useUserInfo()
   const startTextToImage = async (text: string) => {
     if (!isShowChatBox()) {
@@ -75,8 +76,8 @@ const useArtTextToImage = () => {
         },
       ]
       // 倒序合成
-      for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
-        const message = currentSidebarConversationMessages[i]
+      for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
+        const message = clientConversationMessages[i]
         if (isAIMessage(message) && message.originalMessage) {
           const question = message.originalMessage.metadata?.title?.title || ''
           const answer =
@@ -149,8 +150,8 @@ const useArtTextToImage = () => {
           parameters: {
             VariableMap: {
               USER_INPUT: text,
-            }
-          }
+            },
+          },
         },
         {
           type: 'ASK_CHATGPT',

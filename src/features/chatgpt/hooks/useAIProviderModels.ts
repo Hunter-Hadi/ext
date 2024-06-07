@@ -17,7 +17,7 @@ import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/t
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIProviderModel } from '@/features/chatgpt/types'
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
 import { AppLocalStorageState } from '@/store'
 
 export const useAIProviderModelsMap = () => {

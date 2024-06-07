@@ -9,7 +9,7 @@ import React, { useMemo } from 'react'
 import { FC, useCallback, useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import useSearchWithAISources from '@/features/searchWithAI/hooks/useSearchWithAISources'
 
 import useSearchWithAICore from '../hooks/useSearchWithAICore'

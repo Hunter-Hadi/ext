@@ -12,8 +12,8 @@ import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUp
 import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIModelUploadFile'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { IChatUploadFile } from '@/features/chatgpt/types'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
@@ -75,12 +75,12 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     conversationStatus !== 'success' ||
     smoothConversationLoading
   ) {
-    console.log(
-      `ChatIconFileUpload:`,
-      AIProviderConfig,
-      conversationStatus,
-      smoothConversationLoading,
-    )
+    // console.log(
+    //   `ChatIconFileUpload:`,
+    //   AIProviderConfig,
+    //   conversationStatus,
+    //   smoothConversationLoading,
+    // )
     return <></>
   }
   return (

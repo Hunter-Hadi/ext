@@ -1,4 +1,4 @@
-import { debounce } from 'lodash-es'
+import debounce from 'lodash-es/debounce'
 import React, { FC, useCallback, useEffect, useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'

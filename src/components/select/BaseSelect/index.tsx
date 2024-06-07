@@ -109,7 +109,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
           }}
           component={'span'}
         >
-          {option.label}
+          {option?.label || ''}
         </Typography>
       </ListItemText>
     )

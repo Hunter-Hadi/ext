@@ -69,12 +69,6 @@ export const settingsPageRouterList = [
     link: CHROME_EXTENSION_HELP_TO,
     divider: false,
   },
-  {
-    route: '/dev-test-prompt' as const,
-    label: 'Test prompt',
-    divider: false,
-    devOnly: true,
-  },
 ]
 
 export type ISettingsRouteType =

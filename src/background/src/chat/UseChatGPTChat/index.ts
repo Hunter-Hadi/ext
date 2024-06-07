@@ -24,7 +24,7 @@ import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import {
   IAIResponseSourceCitation,
   IChatMessageExtraMetaType,
-} from '@/features/chatgpt/types'
+} from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 

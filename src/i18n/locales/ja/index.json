@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "どんな画像に対しても質問し、即座に回答を得ます。",
     "sidebar__promotion_dialog__vision__content_item3__description": "スクリーンショットを撮ってすぐに質問できます。",
     "sidebar__promotion_dialog__vision__content_item4__description": "最高のAIモデル（GPT-4o、Claude-3-opus、Gemini-1.5-pro）によって強化されています。",
-    "sidebar__promotion_dialog__discount__title": "今すぐ53%割引"
+    "sidebar__promotion_dialog__discount__title": "今すぐ53%割引",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "アップロードされたファイルが大きすぎます。より大きなコンテキストウィンドウを持つAIモデルを使用するか、より小さいファイルをアップロードしてください。",
+    "chat__user_message__contexts__file__preview__tips": "ソースからの書式設定が一貫していない場合があります。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "を押します。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "を押します。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "選択したテキストをAIが生成したコンテンツで置き換えるにはクリックしてください。",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AIが生成したコンテンツを自由に洗練させることができます。"
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AIが生成したコンテンツを自由に洗練させることができます。",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "サイドバーを開いてAIとチャットしたり、ページを要約したり、ウェブに質問したり、AIアートを作成するためにクリックしてください。",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "このメールを要約し、質問をするためにクリックしてください。",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "このPDFを要約し、質問をするためにクリックしてください。",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "このYouTubeビデオを要約し、質問をするためにクリックしてください。",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "個別の返信を即座に生成するためにクリックしてください。",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "個別の下書きを即座に生成するか、下書きを改善するためにクリックしてください。"
   },
   "survey": {
     "funnel_survey__submit_success__title": "ご意見を共有していただきありがとうございます。🙏",

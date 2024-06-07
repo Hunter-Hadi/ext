@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import {
   formatAIMessageContent,
   formatAIMessageContentForClipboard,
@@ -37,7 +37,7 @@ const SidebarCopyButton: FC<{
   const [delayIsHover, setDelayIsHover] = useState(false)
   const [copyButtonKey, setCopyButtonKey] = useState('')
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
-  const { currentConversationTypeRef } = useClientConversation()
+  const { currentSidebarConversationType } = useClientConversation()
   const [anchorPosition, setAnchorPosition] = useState<
     | {
         top: number
@@ -103,7 +103,7 @@ const SidebarCopyButton: FC<{
           setAnchorEl(event.currentTarget)
           if (
             event.currentTarget &&
-            currentConversationTypeRef.current === 'ContextMenu'
+            currentSidebarConversationType === 'ContextMenu'
           ) {
             // NOTE:这个计算比较复杂，也许有更好的方法
             setAnchorPosition({

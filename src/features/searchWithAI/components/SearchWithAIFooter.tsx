@@ -6,7 +6,7 @@ import { FC } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER,

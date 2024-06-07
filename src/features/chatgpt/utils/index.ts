@@ -10,7 +10,7 @@ import {
   IAIProviderType,
 } from '@/background/provider/chat'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { wait } from '@/utils'

@@ -1,10 +1,13 @@
 import lodashGet from 'lodash-es/get'
 
-import { IChatMessage, IChatUploadFile } from '@/features/chatgpt/types'
 import {
   isAIMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
+import {
+  IChatMessage,
+  IChatUploadFile,
+} from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 
 /**
@@ -48,7 +51,7 @@ export const getChatMessageAttachments = (
  * @param attachment
  */
 export const isMaxAIAttachmentExpired = (attachment: IChatUploadFile) => {
-  if (attachment.uploadedUrl && attachment.uploadedFileId) {
+  if (attachment && attachment?.uploadedUrl && attachment?.uploadedFileId) {
     try {
       const urlParams = new URL(attachment.uploadedUrl).searchParams
       const xAmzDate = urlParams.get('X-Amz-Date') || '' // 20211018T080000Z

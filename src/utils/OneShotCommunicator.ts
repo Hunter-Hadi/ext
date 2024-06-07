@@ -3,6 +3,8 @@ import { v4 as uuidV4 } from 'uuid'
 export type IOneShotCommunicatorCustomEventNameType =
   | 'SetVariablesModal'
   | 'QuickSearchSelectedText'
+  | 'ConversationUpdate'
+  | 'ConversationMessagesUpdate'
 /**
  * 一次性通信器
  */
@@ -27,7 +29,15 @@ class OneShotCommunicator {
     return new Promise((resolve, reject) => {
       const timeoutHandle = setTimeout(() => {
         this.pending.delete(uniqueId)
-        reject(new Error('Timeout Error'))
+        resolve(undefined)
+        // reject(
+        //   new Error(
+        //     'Timeout Error' +
+        //     customEventName +
+        //     '\n' +
+        //     JSON.stringify(data, null, 2),
+        //   ),
+        // )
       }, timeout)
 
       this.pending.set(uniqueId, (response: any) => {
@@ -61,6 +71,10 @@ class OneShotCommunicator {
           response = await result
         } else {
           response = result
+        }
+        // 如果回调函数没有返回值，则不发送回去
+        if (response === undefined) {
+          return
         }
         // 将回调函数的结果发送回去
         const resolver = this.pending.get(uuid)

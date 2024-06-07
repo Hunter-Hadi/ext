@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "어떤 이미지에 대한 질문을 하고 즉시 답변을 받으세요.",
     "sidebar__promotion_dialog__vision__content_item3__description": "스크린샷을 찍고 즉시 질문하세요.",
     "sidebar__promotion_dialog__vision__content_item4__description": "GPT-4o, Claude-3-opus, Gemini-1.5-pro와 같은 최고의 AI 모델로 구동됩니다.",
-    "sidebar__promotion_dialog__discount__title": "지금 53% 할인"
+    "sidebar__promotion_dialog__discount__title": "지금 53% 할인",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "업로드한 파일이 너무 큽니다. 더 큰 컨텍스트 창을 가진 AI 모델을 사용하거나 더 작은 파일을 업로드해주세요.",
+    "chat__user_message__contexts__file__preview__tips": "소스로부터의 포맷팅이 일관되지 않을 수 있습니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "를 누르세요.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "를 누르세요.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "선택한 텍스트를 AI로 생성된 콘텐츠로 대체하려면 클릭하세요.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI가 생성한 콘텐츠를 원하는 대로 개선하기 위해 AI에게 질문할 수 있습니다."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI가 생성한 콘텐츠를 원하는 대로 개선하기 위해 AI에게 질문할 수 있습니다.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "사이드바를 열어 AI와 채팅하거나 페이지를 요약하고 웹에 질문하거나 AI 아트를 만들 수 있습니다.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "이 이메일을 요약하고 질문을 하려면 클릭하세요.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "이 PDF를 요약하고 질문을 하려면 클릭하세요.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "이 YouTube 동영상을 요약하고 질문을 하려면 클릭하세요.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "개인화된 답장을 즉시 생성하려면 클릭하세요.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "개인화된 초안을 즉시 생성하거나 초안을 개선하려면 클릭하세요."
   },
   "survey": {
     "funnel_survey__submit_success__title": "경험을 공유해 주셔서 감사합니다. 🙏",

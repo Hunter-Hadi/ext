@@ -2,12 +2,17 @@ import { useEffect, useMemo, useRef } from 'react'
 import { atomFamily, useRecoilState, useSetRecoilState } from 'recoil'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import {
-  isAIMessage, isSystemMessage,
-  isSystemMessageByStatus, isSystemMessageByType,
+  isAIMessage,
+  isSystemMessage,
+  isSystemMessageByStatus,
+  isSystemMessageByType,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
+import {
+  IAIResponseMessage,
+  IUserChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 
 /**
  * AI持续生成的草稿和用户选择的答案
@@ -40,7 +45,10 @@ const useFloatingContextMenuDraftHistoryChange = () => {
   useEffect(() => {
     // 目前context window里只显示ai/付费卡点/错误消息
     const newMessages = clientConversationMessages.filter(
-      (item) => isAIMessage(item) || isSystemMessageByType(item, 'needUpgrade') || isSystemMessageByStatus(item, 'error'),
+      (item) =>
+        isAIMessage(item) ||
+        isSystemMessageByType(item, 'needUpgrade') ||
+        isSystemMessageByStatus(item, 'error'),
     ) as IAIResponseMessage[]
     console.log('clientConversationMessages', clientConversationMessages)
     setHistoryState((prev) => {
@@ -149,10 +157,6 @@ const useFloatingContextMenuDraft = () => {
         return message as IUserChatMessage
       }
     }
-    console.log(
-      'useFloatingContextMenuDraftHistoryChange',
-      clientConversationMessages,
-    )
     return null
   }, [activeAIResponseMessage, clientConversationMessages])
 

@@ -1,4 +1,5 @@
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   IShortcutEngineExternalEngine,
   parametersParserDecorator,
@@ -34,14 +35,18 @@ export class ActionGetChatMessages extends Action {
     try {
       const messageType = this.parameters.ActionChatMessageType
       const { clientConversationEngine } = engine
-      const conversation =
-        await clientConversationEngine?.getCurrentConversation()
-      if (conversation?.messages) {
+      const conversationId =
+        clientConversationEngine?.currentConversationIdRef.current || ''
+      const messages = await ClientConversationMessageManager.getMessages(
+        conversationId,
+      )
+
+      if (messages.length > 0) {
         this.output = messageType
-          ? conversation.messages.filter(
+          ? messages.filter(
               (message) => isAIMessage(message) && message.type === messageType,
             )
-          : conversation.messages
+          : messages
       } else {
         this.output = []
       }

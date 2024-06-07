@@ -12,7 +12,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
-} from '@/features/chatgpt/types'
+} from '@/features/indexed_db/conversations/models/Message'
 import {
   CaptivePortalIcon,
   ReadIcon,
@@ -47,14 +47,16 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const isTriggeredContentReview =
     message.originalMessage?.metadata?.isTriggeredContentReview === true
 
-  const isRichAIMessage = message.originalMessage !== undefined && !message.originalMessage.liteMode && !liteMode
+  const isRichAIMessage =
+    message.originalMessage !== undefined &&
+    !message.originalMessage.liteMode &&
+    !liteMode
   const isSummaryMessage = useMemo(
     () => message.originalMessage?.metadata?.shareType === 'summary',
     [message],
   )
 
   const renderData = useMemo(() => {
-    console.log('simply message', message)
     try {
       const currentRenderData = {
         title: message.originalMessage?.metadata?.title,
@@ -67,7 +69,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         content: message.originalMessage?.content,
         messageIsComplete: message.originalMessage?.metadata?.isComplete,
         deepDive: message.originalMessage?.metadata?.deepDive,
-        sourceCitations: message.sourceCitations || message.originalMessage?.metadata?.sourceCitations,
+        sourceCitations: message.originalMessage?.metadata?.sourceCitations,
       } //nonsense:后面可以优化为数组根据type类型去渲染，并加载对应组件统一化更高
 
       if (Object.keys(currentRenderData?.sources || {}).length > 1) {
@@ -94,7 +96,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         content: undefined,
         messageIsComplete: false,
         deepDive: undefined,
-        sourceCitations: undefined
+        sourceCitations: undefined,
       }
     }
   }, [message])
@@ -311,7 +313,6 @@ export const MetadataTitleRender: FC<{
 }> = (props) => {
   const { fontSx } = props
   const { title, titleIcon, titleIconSize } = props.title
-  console.log(`MetadataTitleRender`, props.title)
   const currentTitleIconSize = titleIconSize || 20
   return (
     <Stack direction={'row'} alignItems="center" spacing={1}>

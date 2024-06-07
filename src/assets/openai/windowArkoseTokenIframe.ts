@@ -40,10 +40,10 @@ class ArkoseTokenIframeGenerator {
     this.enforcement = undefined
     this.pendingPromises = []
     if (this.model === 'gpt_3_5') {
-      ;(window as any).useArkoseSetupEnforcementgpt35 =
+      (window as any).useArkoseSetupEnforcementgpt35 =
         this.useArkoseSetupEnforcement.bind(this)
     } else if (this.model === 'gpt_4') {
-      ;(window as any)['useArkoseSetupEnforcementchatgpt-paid'] =
+      (window as any)['useArkoseSetupEnforcementchatgpt-paid'] =
         this.useArkoseSetupEnforcement.bind(this)
     }
     this.injectScript()

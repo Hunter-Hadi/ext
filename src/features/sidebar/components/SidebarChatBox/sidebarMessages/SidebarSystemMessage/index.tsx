@@ -8,7 +8,7 @@ import React, { FC, useMemo, useState } from 'react'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
 import ThirdPartyAIProviderErrorSolution from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderErrorSolution'
-import { ISystemChatMessage } from '@/features/chatgpt/types'
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import SidebarChatBoxSystemTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarChatBoxSystemTools'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
@@ -129,11 +129,11 @@ const BaseSidebarSystemMessage: FC<{
                 p: 0,
                 width: '100%',
               },
-              '& > div:first-child': {
+              '& > div:first-of-type': {
                 display: 'none',
               },
               '& .markdown-body': {
-                '& > p:first-child': {
+                '& > p:first-of-type': {
                   mt: 0,
                 },
               },

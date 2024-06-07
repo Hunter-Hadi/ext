@@ -3,7 +3,6 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { MaxAIExtensionIdManager } from '@/background/utils/extensionId'
 import { type IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import {
   SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
@@ -21,8 +20,8 @@ import {
   SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
   SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
 } from '@/constants'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -43,7 +42,6 @@ import {
   isNeedGetIframePageContent,
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -1539,23 +1537,6 @@ export const getSummaryActionCopilotStepTitle = (type: IPageSummaryType) => {
   }
 }
 
-const getCurrentPageUrl = () => {
-  const pageUrl = window.location.href
-  return pageUrl
-}
-
-const PAGE_SUMMARY_CONVERSATION_ID_MAP: {
-  [key in string]: string
-} = {}
-export const getPageSummaryConversationId = (url?: string) => {
-  const pageUrl = url || getCurrentPageUrl()
-  if (!PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]) {
-    PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(
-      pageUrl + MaxAIExtensionIdManager.MaxAIExtensionId,
-    )
-  }
-  return PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]
-}
 export const getPageSummaryType = (): IPageSummaryType => {
   if (getCurrentDomainHost() === 'youtube.com') {
     if (YoutubeTranscript.retrieveVideoId(window.location.href)) {

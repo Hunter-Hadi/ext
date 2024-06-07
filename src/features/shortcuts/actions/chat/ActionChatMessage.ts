@@ -48,7 +48,10 @@ export class ActionChatMessage extends Action {
       } else if (operationType === 'update') {
         await conversationEngine.updateMessage(messageConfig, conversationId)
       } else if (operationType === 'delete') {
-        await conversationEngine.deleteMessage(1, conversationId)
+        await conversationEngine.deleteMessage(
+          [messageConfig.messageId],
+          conversationId,
+        )
       }
       this.output = String(messageConfig.messageId)
     } catch (e) {

@@ -179,12 +179,6 @@ const FloatingContextMenuList: FC<
           </Box>,
         )
         menuItem.children.forEach((childMenuItem, index) => {
-          console.log(
-            `SPECIAL_NEED_DIVIDER_KEYS`,
-            SPECIAL_NEED_DIVIDER_KEYS,
-            childMenuItem.id,
-            childMenuItem.text,
-          )
           if (SPECIAL_NEED_DIVIDER_KEYS.includes(childMenuItem.id)) {
             nodeList.push(
               <ContextMenuDivider contextMenuId={childMenuItem.id} />,

@@ -20,8 +20,8 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { IChatMessage } from '@/features/chatgpt/types'
 import PromptsAutoComplete from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton/PromptsAutoComplete'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { getMaxAISidebarRootElement } from '@/utils'
@@ -150,7 +150,7 @@ const SidebarUsePromptButton: FC<{
           </IconButton>
         ) : (
           <TextOnlyTooltip title={t('client:sidebar__button__use_prompt')}>
-            <span>
+            <div>
               <Button
                 id={`MaxAISidebarUsePromptButton`}
                 variant={'outlined'}
@@ -178,7 +178,7 @@ const SidebarUsePromptButton: FC<{
                   }}
                 />
               </Button>
-            </span>
+            </div>
           </TextOnlyTooltip>
         )}
       </Box>

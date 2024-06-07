@@ -17,7 +17,6 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_updateAppSettings'
   | 'Client_listenUpdateIframeInput'
   | 'Client_listenUploadFilesChange'
-  | 'Client_listenUpdateConversationMessages'
   | 'Client_ListenGetIframePageContentResponse'
   | 'Client_ListenProxyWebsocket'
   // 尝试更新客户端会受到sidebar影响的box的样式
@@ -41,10 +40,6 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_removeChatGPTConversation'
   | 'Client_askChatGPTQuestion'
   | 'Client_abortAskChatGPTQuestion'
-  | 'Client_modifyMessages'
-  | 'Client_getLiteConversation'
-  | 'Client_updateConversation'
-  | 'Client_duplicateConversation'
   | 'Client_openUrl'
   | 'Client_closeUrl'
   | 'Client_updateIcon'
@@ -63,10 +58,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_emitPricingHooks'
   | 'Client_getLiteChromeExtensionSettings'
   | 'Client_getContextMenuActions'
-  | 'Client_getAllConversation'
-  | 'Client_getAllPaginationConversation'
-  | 'Client_removeAllConversation'
-  | 'Client_removeConversationByType'
+  | 'Client_getAllOldVersionConversationIds'
   | 'Client_proxyFetchAPI'
   | 'Client_abortProxyFetchAPI'
   | 'Client_getIframePageContent'
@@ -85,6 +77,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Iframe_sendPageContent'
   // global video popup
   | 'Client_switchVideoPopup'
+  // 客户端使用conversationDB
+  | 'Client_useIndexedDB'
   // 客户端获取 survey 状态
   | 'Client_updateMaxAISurveyStatus'
   // 客户端创建 paymentUrl

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { formatMessagesToLiteHistory } from '@/features/sidebar/utils/chatMessagesHelper'
 
 const HistoryTextDownloadButton: FC<{
@@ -29,7 +29,10 @@ const HistoryTextDownloadButton: FC<{
     <TooltipIconButton
       title={t('client:sidebar__share__share_button__tooltip')}
       onClick={async () => {
-        const conversation = await clientGetConversation(currentConversationId)
+        const conversation =
+          await ClientConversationManager.getConversationById(
+            currentConversationId,
+          )
         if (conversation?.title) {
           const needDownloadText = await formatMessagesToLiteHistory(
             conversation,

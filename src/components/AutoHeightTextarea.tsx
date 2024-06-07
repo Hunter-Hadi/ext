@@ -13,7 +13,6 @@ import React, {
 import { useRecoilValue } from 'recoil'
 
 import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIModelUploadFile'
-import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
@@ -22,6 +21,7 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message';
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'

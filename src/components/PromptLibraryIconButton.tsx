@@ -194,7 +194,7 @@ const PromptLibraryIconButton: FC<{
         anchorEl={anchorEl}
         placement={placement}
         transition
-        keepMounted={isClickOpenOnce}
+        // keepMounted={isClickOpenOnce}
       >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>

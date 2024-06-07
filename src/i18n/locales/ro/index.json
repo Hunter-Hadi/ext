@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Pune întrebări despre orice imagine și primește răspunsuri instantanee.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Fă rapid o captură de ecran și pune orice întrebări imediat.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Cu cele mai bune modele AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Economisește 53% acum"
+    "sidebar__promotion_dialog__discount__title": "Economisește 53% acum",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Fișierele încărcate sunt prea mari. Vă rugăm să utilizați un model AI cu o fereastră de context mai mare sau să încărcați fișiere mai mici.",
+    "chat__user_message__contexts__file__preview__tips": "Formatarea poate fi inconsistentă față de sursă."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pentru a selecta opțiunea.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Faceți clic pentru a înlocui textul selectat cu conținut generat de AI.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puteți solicita AI să rafineze conținutul generat de AI așa cum doriți."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Puteți solicita AI să rafineze conținutul generat de AI așa cum doriți.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Apăsați pentru a deschide bara laterală pentru a discuta cu AI, rezuma orice pagină, întrebați web-ul sau creați artă AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Apăsați pentru a rezuma și a pune întrebări despre acest email.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Apăsați pentru a rezuma și a pune întrebări despre acest fișier PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Apăsați pentru a rezuma și a pune întrebări despre acest videoclip YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Apăsați pentru a genera instantaneu un răspuns personalizat.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Apăsați pentru a genera instantaneu un proiect personalizat sau pentru a vă îmbunătăți proiectul."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Vă mulțumim că ne-ați împărtășit experiența dumneavoastră. 🙏",

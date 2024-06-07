@@ -3,8 +3,8 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { OpenAIChat } from '@/background/src/chat'
-import { IChatConversation } from '@/background/src/chatConversations'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
   private openAIChat: OpenAIChat
@@ -34,7 +34,7 @@ class OpenAIChatProvider implements ChatAdapterInterface {
     return await this.openAIChat.abortAskQuestion(messageId)
   }
 
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     if (
       initConversationData?.id &&
       this.openAIChat.conversation?.id &&

@@ -3,8 +3,9 @@ import { HTMLParagraphElement } from 'linkedom'
 import cloneDeep from 'lodash-es/cloneDeep'
 import isArray from 'lodash-es/isArray'
 import isNumber from 'lodash-es/isNumber'
+import orderBy from 'lodash-es/orderBy'
 import { useCallback, useEffect, useRef } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { useCreateClientMessageListener } from '@/background/utils'
@@ -12,13 +13,18 @@ import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUp
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
-  ClientConversationMapState,
+  ClientConversationStateFamily,
   ClientUploadedFilesState,
+  PaginationConversationMessagesStateFamily,
 } from '@/features/chatgpt/store'
-import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import {
+  IChatMessage,
+  IChatUploadFile,
+  ISystemChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { AppDBStorageState } from '@/store'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
@@ -26,6 +32,7 @@ import {
   isMaxAIImmersiveChatPage,
   isMaxAISettingsPage,
 } from '@/utils/dataHelper/websiteHelper'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -39,21 +46,19 @@ const port = new ContentScriptConnectionV2({
  * - 自动归档 - v4.2.0 - 2024-04
  */
 export const useClientConversationListener = () => {
-  const [, setClientConversationMap] = useRecoilState(
-    ClientConversationMapState,
-  )
   const appDBStorage = useRecoilValue(AppDBStorageState)
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
   const { currentAIProvider } = useAIProviderModels()
   const {
+    currentConversationId,
     createConversation,
     resetConversation,
     updateConversationStatus,
-    currentConversationId,
     clientConversationMessages,
     currentConversationIdRef,
     clientConversation,
   } = useClientConversation()
+
   const updateConversationStatusRef = useRef(updateConversationStatus)
   useEffect(() => {
     updateConversationStatusRef.current = updateConversationStatus
@@ -83,31 +88,51 @@ export const useClientConversationListener = () => {
     blurDelayRef.current = blurDelay
   }, [blurDelay])
 
+  const updateConversation = useRecoilCallback(
+    ({ set }) =>
+      async (updateConversationId: string) => {
+        if (updateConversationId) {
+          const result = await port.postMessage({
+            event: 'Client_chatGetFiles',
+            data: {
+              conversationId: updateConversationId,
+            },
+          })
+          if (isArray(result.data)) {
+            setFilesRef.current(result.data)
+          }
+          const conversation =
+            await ClientConversationManager.getConversationById(
+              updateConversationId,
+            )
+          console.log(
+            `ConversationDB[V3] 更新会话[${updateConversationId}]`,
+            conversation,
+          )
+          console.log(`ConversationMessagesUpdate!!! 更新会话`, conversation)
+          set(ClientConversationStateFamily(updateConversationId), conversation)
+        }
+      },
+    [],
+  )
+
   useEffect(() => {
     if (!currentConversationId) {
       return
     }
-
-    const updateFiles = async () => {
-      const result = await port.postMessage({
-        event: 'Client_chatGetFiles',
-        data: {
-          conversationId: currentConversationId,
-        },
-      })
-
-      if (isArray(result.data)) {
-        setFilesRef.current(result.data)
-      }
+    const updateConversationListener = () => {
+      console.log(
+        `ConversationMessagesUpdate!!! 更新会话1111`,
+        currentConversationId,
+      )
+      updateConversation(currentConversationId).then().catch()
     }
-
-    updateFiles()
-    window.addEventListener('focus', updateFiles)
-
+    window.addEventListener('focus', updateConversationListener)
+    updateConversationListener()
     return () => {
-      window.removeEventListener('focus', updateFiles)
+      window.removeEventListener('focus', updateConversationListener)
     }
-  }, [currentConversationId])
+  }, [updateConversation, currentConversationId])
 
   useCreateClientMessageListener(async (event, data) => {
     switch (event as IChromeExtensionClientListenEvent) {
@@ -141,27 +166,6 @@ export const useClientConversationListener = () => {
           data: {},
         }
       }
-      case 'Client_listenUpdateConversationMessages': {
-        const { conversation, conversationId } = data
-        if (conversation?.id) {
-          setClientConversationMap((prevState) => {
-            return {
-              ...prevState,
-              [conversation.id]: conversation,
-            }
-          })
-        } else if (!conversation) {
-          // 如果是删除的话，就不会有conversation
-          setClientConversationMap((prevState) => {
-            const newState = cloneDeep(prevState)
-            delete newState[conversationId]
-            return newState
-          })
-        }
-        return {
-          success: true,
-        }
-      }
       default:
         break
     }
@@ -182,10 +186,8 @@ export const useClientConversationListener = () => {
                 (item) => item.messageId === errorItem.id,
               )
             ) {
-              clientChatConversationModifyChatMessages(
-                'add',
+              ClientConversationMessageManager.addMessages(
                 currentConversationIdRef.current,
-                0,
                 [
                   {
                     messageId: errorItem.id,
@@ -194,11 +196,7 @@ export const useClientConversationListener = () => {
                       `File ${errorItem.fileName} upload error.`,
                     type: 'system',
                     meta: {
-                      status:
-                        errorItem.uploadErrorMessage ===
-                        `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
-                          ? 'info'
-                          : 'error',
+                      status: 'error',
                     },
                   } as ISystemChatMessage,
                 ],
@@ -219,10 +217,8 @@ export const useClientConversationListener = () => {
               (item) => item.messageId === errorItem.id,
             )
           ) {
-            clientChatConversationModifyChatMessages(
-              'add',
+            ClientConversationMessageManager.addMessages(
               currentConversationIdRef.current,
-              0,
               [
                 {
                   messageId: errorItem.id,
@@ -266,22 +262,6 @@ export const useClientConversationListener = () => {
        * 检查Chat状态
        */
       const checkChatGPTStatus = async () => {
-        clientGetConversation(currentConversationId).then(
-          async (conversation) => {
-            if (conversation) {
-              console.log(
-                `新版Conversation [${currentConversationId}]effect更新`,
-                conversation.messages,
-              )
-              setClientConversationMap((prevState) => {
-                return {
-                  ...prevState,
-                  [conversation.id]: conversation,
-                }
-              })
-            }
-          },
-        )
         const result = await port.postMessage({
           event: 'Client_checkChatGPTStatus',
           data: {
@@ -313,7 +293,7 @@ export const useClientConversationListener = () => {
   useEffect(() => {
     if (
       !clientConversation ||
-      clientConversation.messages.length === 0 ||
+      clientConversationMessages.length === 0 ||
       isCreatingConversationRef.current ||
       isMaxAIImmersiveChatPage() ||
       isMaxAISettingsPage()
@@ -327,6 +307,7 @@ export const useClientConversationListener = () => {
         new Date(clientConversation.updated_at).getTime() + autoArchiveTime
       const now = Date.now()
       if (now > archiveTime) {
+        // 判断当前会话的消息数量
         console.log(
           `自动归档时间[触发][${clientConversation.type}], 超过[${(
             (now - archiveTime) /
@@ -380,6 +361,120 @@ export const useClientConversationListener = () => {
       resetConversation()
     }
   }, [clientConversation, resetConversation])
+
+  /**
+   * 更新消息
+   */
+  const handleUpdateMessages = useRecoilCallback(
+    ({ set }) =>
+      async (data: any) => {
+        const { changeType, messageIds, conversationId } = data
+        if (conversationId !== currentConversationIdRef.current) {
+          return undefined
+        }
+        switch (changeType) {
+          case 'add': {
+            const messages =
+              await ClientConversationMessageManager.getMessagesByMessageIds(
+                messageIds,
+              )
+            const newMessageMap: Record<string, IChatMessage> = {}
+            messages.forEach((newMessage) => {
+              newMessageMap[newMessage.messageId] = newMessage
+            })
+            set(
+              PaginationConversationMessagesStateFamily(conversationId),
+              (prevState) => {
+                return orderBy(
+                  prevState
+                    .map((message) => {
+                      if (newMessageMap[message.messageId]) {
+                        const newMessage = cloneDeep(
+                          newMessageMap[message.messageId],
+                        )
+                        delete newMessageMap[message.messageId]
+                        return newMessage
+                      }
+                      return message
+                    })
+                    .concat(Object.values(newMessageMap).map((item) => item)),
+                  ['created_at'],
+                  ['asc'],
+                )
+              },
+            )
+            break
+          }
+          case 'update': {
+            const messages =
+              await ClientConversationMessageManager.getMessagesByMessageIds(
+                messageIds,
+              )
+            set(
+              PaginationConversationMessagesStateFamily(conversationId),
+              (prevState) => {
+                return prevState.map((message) => {
+                  const newMessage = messages.find(
+                    (item) => item.messageId === message.messageId,
+                  )
+                  if (newMessage) {
+                    return newMessage
+                  }
+                  return message
+                })
+              },
+            )
+            break
+          }
+          case 'delete': {
+            set(
+              PaginationConversationMessagesStateFamily(conversationId),
+              (prevState) => {
+                return prevState.filter(
+                  (message) => !messageIds.includes(message.messageId),
+                )
+              },
+            )
+            break
+          }
+          case 'init': {
+            const messagesIds =
+              await ClientConversationMessageManager.getMessageIds(
+                conversationId,
+              )
+            const messages =
+              await ClientConversationMessageManager.getMessagesByMessageIds(
+                messagesIds,
+              )
+            set(
+              PaginationConversationMessagesStateFamily(conversationId),
+              messages,
+            )
+            break
+          }
+        }
+        return true
+      },
+    [currentConversationId],
+  )
+
+  useEffect(() => {
+    const unsubscribe = OneShotCommunicator.receive(
+      'ConversationMessagesUpdate',
+      async (data) => {
+        return await handleUpdateMessages(data)
+      },
+    )
+    if (currentConversationId) {
+      // 获取当前的conversation的数据
+      handleUpdateMessages({
+        changeType: 'init',
+        messageIds: [],
+        conversationId: currentConversationId,
+      })
+    }
+    return () => unsubscribe()
+  }, [handleUpdateMessages, currentConversationId])
 }
 
 export default useClientConversationListener

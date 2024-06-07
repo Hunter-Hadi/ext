@@ -14,7 +14,9 @@ import { v4 as uuidV4 } from 'uuid'
 
 import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
-import ConversationManager from '@/background/src/chatConversations'
+import ConversationManager, {
+  getAllOldVersionConversationIds,
+} from '@/background/src/chatConversations'
 import { ClientMessageInit } from '@/background/src/client'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import {
@@ -44,8 +46,8 @@ import {
   checkIsPayingUser,
   checkIsSubscriptionPaymentFailed,
   getChromeExtensionUserInfo,
+  getMaxAIChromeExtensionUserId,
 } from '@/features/auth/utils'
-import { IChatMessage } from '@/features/chatgpt/types'
 import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
@@ -58,6 +60,7 @@ import { resetFunnelSurveyOpenedStorageFlag } from '@/features/survey/utils/stor
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
+
 /**
  * background.js 入口
  *
@@ -382,9 +385,6 @@ const initChromeExtensionUpdated = async () => {
     ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY,
     false,
   )
-
-  // TODO: 预计2024-01移除这段逻辑, 更新老用户的conversation的authorId字段
-  await ConversationManager.getAllConversation()
   // NOTE: 远程更新AI配置
   setTimeout(() => {
     updateRemoteAIProviderConfigAsync().then().catch()
@@ -400,11 +400,11 @@ const initChromeExtensionUpdated = async () => {
 
   // 测试环境 刷新插件时，重置所有的onboarding tooltip opened cache
   if (!isProduction) {
-    devResetAllOnboardingTooltipOpenedCache()
+    await devResetAllOnboardingTooltipOpenedCache()
   }
 
   // SURVEY_CANCEL_COMPLETED survey 每次插件更新的时候弹出来就行
-  resetFunnelSurveyOpenedStorageFlag('SURVEY_CANCEL_COMPLETED')
+  await resetFunnelSurveyOpenedStorageFlag('SURVEY_CANCEL_COMPLETED')
 
   // 每次升级都检测一遍是否是续费失败了
   setTimeout(
@@ -420,31 +420,31 @@ const initChromeExtensionMessage = () => {
   new ChatSystemFactory()
   ClientMessageInit()
   ShortcutMessageBackgroundInit()
-  Browser.runtime.onMessage.addListener(
-    (message, sender, sendResponse: any) => {
-      if (
-        message?.id &&
-        message.id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID
-      ) {
-        return
-      }
-      if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
-        console.log('inboxsdk__injectPageWorld')
-        if (Browser.scripting && sender.tab?.id) {
-          console.log('inboxsdk__injectPageWorld 2')
-          // MV3
-          Browser.scripting.executeScript({
-            target: { tabId: sender.tab.id },
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            world: 'MAIN',
-            files: ['pageWorld.js'],
-          })
-          sendResponse(true)
-        }
-      }
-    },
-  )
+  // Browser.runtime.onMessage.addListener(
+  //   (message, sender, sendResponse: any) => {
+  //     if (
+  //       message?.id &&
+  //       message.id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID
+  //     ) {
+  //       return
+  //     }
+  //     if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
+  //       console.log('inboxsdk__injectPageWorld')
+  //       if (Browser.scripting && sender.tab?.id) {
+  //         console.log('inboxsdk__injectPageWorld 2')
+  //         // MV3
+  //         Browser.scripting.executeScript({
+  //           target: { tabId: sender.tab.id },
+  //           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //           // @ts-ignore
+  //           world: 'MAIN',
+  //           files: ['pageWorld.js'],
+  //         })
+  //         sendResponse(true)
+  //       }
+  //     }
+  //   },
+  // )
   // search with AI
   SearchWithAIMessageInit()
 }
@@ -711,14 +711,30 @@ const initChromeExtensionCreatePaymentListener = () => {
   })
 }
 
+import {
+  isAIMessage,
+  isUserMessage,
+} from '@/features/chatgpt/utils/chatMessageUtils'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+
 const devMockConversation = async () => {
   const isProduction = String(process.env.NODE_ENV) === 'production'
   if (isProduction) {
     return
   }
   // 保证不运行
-  return
-  const totalConversation = await ConversationManager.getAllConversation()
+  const totalConversationIds = await getAllOldVersionConversationIds()
+  const totalConversation: IConversation[] = []
+  for (let i = 0; i < totalConversationIds.length; i++) {
+    const conversation =
+      await ConversationManager.oldVersionConversationDB.getConversationById(
+        totalConversationIds[i],
+      )
+    if (conversation) {
+      totalConversation.push(conversation)
+    }
+  }
   if (totalConversation.length < 5 || totalConversation.length > 50) {
     return
   }
@@ -729,11 +745,40 @@ const devMockConversation = async () => {
   const getMergeMessages = (count: number, conversationId: string) => {
     const newMessages = Array(count)
       .fill(0)
-      .map(() => {
+      .map((value, index) => {
         const randomIndex = Math.floor(Math.random() * mergeMessages.length)
         const mockMessage = cloneDeep(mergeMessages[randomIndex])
         mockMessage.messageId = uuidV4()
+
+        const day3 = 3 * 24 * 60 * 60 * 1000
+        mockMessage.created_at = new Date(
+          new Date().getTime() - day3 + index * 1000 * 60,
+        ).toISOString()
+        mockMessage.updated_at = new Date(
+          new Date().getTime() - day3 + index * 1000 * 60,
+        ).toISOString()
         ;(mockMessage as any).conversationId = conversationId
+        if (isAIMessage(mockMessage)) {
+          if (mockMessage.originalMessage?.metadata?.attachments) {
+            mockMessage.originalMessage.metadata.attachments =
+              mockMessage.originalMessage.metadata.attachments.map(
+                (attachment: any) => {
+                  attachment.id = uuidV4()
+                  return attachment
+                },
+              )
+          }
+        }
+        if (isUserMessage(mockMessage)) {
+          if (mockMessage.meta?.attachments) {
+            mockMessage.meta.attachments = mockMessage.meta.attachments.map(
+              (attachment: any) => {
+                attachment.id = uuidV4()
+                return attachment
+              },
+            )
+          }
+        }
         return mockMessage
       })
     // 重新整理parentMessageId
@@ -745,15 +790,17 @@ const devMockConversation = async () => {
     })
     return newMessages
   }
+  const authorId = await getMaxAIChromeExtensionUserId()
   console.log('totalConversation', totalConversation)
-  const randomConversationCount = 100
+  const randomConversationCount = 200
   const randomConversations = new Array(randomConversationCount)
     .fill(0)
     .map(() => {
       const randomIndex = Math.floor(Math.random() * totalConversation.length)
       const conversation = cloneDeep(totalConversation[randomIndex])
       conversation.id = uuidV4()
-      conversation.messages = getMergeMessages(200, conversation.id)
+      conversation.authorId = authorId
+      conversation.messages = getMergeMessages(100, conversation.id)
       return conversation
     })
   let index = 0
@@ -764,7 +811,7 @@ const devMockConversation = async () => {
       conversation.id,
       conversation.messages.length,
     )
-    await ConversationManager.conversationDB.addOrUpdateConversation(
+    await ConversationManager.oldVersionConversationDB.addOrUpdateConversation(
       conversation,
     )
   }

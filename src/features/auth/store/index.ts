@@ -1,5 +1,6 @@
 import { atom } from 'recoil'
 
+import { IMaxAIBetaFeatures } from '@/background/utils/maxAIBetaFeatureSettings/constant'
 import { IUseChatGPTUserInfo, IUserQuotaUsageInfo } from '@/features/auth/types'
 
 export const AuthState = atom<{
@@ -42,6 +43,17 @@ export const DailyLimitState = atom<{
   key: 'DailyLimitState',
   default: {
     show: false,
-    barHeight: 0
-  }
+    barHeight: 0,
+  },
+})
+
+export const MaxAIBetaFeaturesState = atom<{
+  loaded: boolean
+  features: IMaxAIBetaFeatures
+}>({
+  key: 'MaxAIBetaFeaturesState',
+  default: {
+    loaded: false,
+    features: {},
+  },
 })

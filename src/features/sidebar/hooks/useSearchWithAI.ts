@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import { IAIProviderType } from '@/background/provider/chat'
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
@@ -9,9 +10,10 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
@@ -19,8 +21,6 @@ import {
   isShowChatBox,
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
-import { IAIProviderType } from '@/background/provider/chat'
-import { IChatConversation } from '@/background/src/chatConversations'
 
 const useSearchWithAI = () => {
   const { currentSidebarConversationType, updateSidebarConversationType } =
@@ -156,9 +156,11 @@ const useSearchWithAI = () => {
       await updateSidebarConversationType('Search')
     }
     let cacheConversationId = await getSearchWithAIConversationId()
-    let conversation: IChatConversation | null = null
+    let conversation: IConversation | null = null
     if (cacheConversationId) {
-      conversation = await clientGetConversation(cacheConversationId)
+      conversation = await ClientConversationManager.getConversationById(
+        cacheConversationId,
+      )
     }
     if (
       conversation &&
@@ -173,12 +175,9 @@ const useSearchWithAI = () => {
         aiModel,
       )
     }
-    await clientChatConversationModifyChatMessages(
-      'add',
-      cacheConversationId,
-      0,
-      [startMessage],
-    )
+    await ClientConversationMessageManager.addMessages(cacheConversationId, [
+      startMessage,
+    ])
   }
 
   const regenerateSearchWithAI = async (
@@ -186,26 +185,26 @@ const useSearchWithAI = () => {
   ) => {
     try {
       if (currentConversationId) {
-        let lastAIResponse: IAIResponseMessage | null = null
-        let deleteCount = 0
-        for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
-          const message = clientConversationMessages[i]
-          deleteCount++
-          if (message.type === 'ai') {
-            lastAIResponse = message as IAIResponseMessage
-            break
-          }
-        }
+        const lastAIResponse: IAIResponseMessage | null =
+          (await ClientConversationMessageManager.getMessageByMessageType(
+            currentConversationId,
+            'ai',
+            'latest',
+          )) as IAIResponseMessage
+        const needDeleteMessageIds =
+          await ClientConversationMessageManager.getDeleteMessageIds(
+            currentConversationId,
+            lastAIResponse.messageId,
+            'latest',
+          )
         const lastQuestion =
           lastAIResponse?.originalMessage?.metadata?.title?.title ||
           lastAIResponse?.text ||
           ''
         if (lastQuestion) {
-          await clientChatConversationModifyChatMessages(
-            'delete',
+          await ClientConversationMessageManager.deleteMessages(
             currentConversationId,
-            deleteCount,
-            [],
+            needDeleteMessageIds,
           )
           setTimeout(async () => {
             await createSearchWithAIRef.current(
@@ -217,11 +216,12 @@ const useSearchWithAI = () => {
           }, 200)
         } else {
           // 如果没有找到last question，那么就重新生成Conversation
-          await clientChatConversationModifyChatMessages(
-            'delete',
+          // 删除全部消息
+          await ClientConversationMessageManager.deleteMessages(
             currentConversationId,
-            9999,
-            [],
+            await ClientConversationMessageManager.getMessageIds(
+              currentConversationId,
+            ),
           )
         }
       }

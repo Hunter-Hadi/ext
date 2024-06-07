@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Postavljajte pitanja o bilo kojoj slici i dobijte trenutne odgovore.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Jednostavno snimite snimku zaslona i postavite bilo kakva pitanja odmah.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Pokreće najbolje AI modele: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Uštedite 53% sada"
+    "sidebar__promotion_dialog__discount__title": "Uštedite 53% sada",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Prenesene datoteke su prevelike. Molimo koristite AI model s većim prozorom konteksta ili prenesite manje datoteke.",
+    "chat__user_message__contexts__file__preview__tips": "Formatiranje može biti neujednačeno iz izvora."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Unesi",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "da biste odabrali opciju.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknite da zamijenite odabrani tekst s AI-generiranim sadržajem.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Možete AI-u postaviti pitanje kako biste poboljšali sadržaj koji je generirao AI."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Možete AI-u postaviti pitanje kako biste poboljšali sadržaj koji je generirao AI.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Kliknite da biste otvorili bočnu traku za razgovor s AI, saželi bilo koju stranicu, pitali web ili stvorili AI umjetnost.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Kliknite da biste saželi i postavljali pitanja o ovoj e-pošti.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kliknite da biste saželi i postavljali pitanja o ovom PDF-u.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kliknite da biste saželi i postavljali pitanja o ovom YouTube videu.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kliknite da biste odmah generirali personaliziran odgovor.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknite da biste odmah generirali personalizirani nacrt, ili poboljšali svoj nacrt."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Hvala vam što ste podijelili svoje iskustvo s nama. 🙏",

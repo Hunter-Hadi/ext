@@ -22,7 +22,7 @@ import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHel
 import {
   IChatMessageExtraMetaType,
   IChatUploadFile,
-} from '@/features/chatgpt/types'
+} from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
 
 const log = new Log('Background/Chat/MaxAIDALLEChat')

@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "对任何图像提出问题并立即获得答案。",
     "sidebar__promotion_dialog__vision__content_item3__description": "只需截屏并立即提出任何问题。",
     "sidebar__promotion_dialog__vision__content_item4__description": "由最佳AI模型驱动：GPT-4o、Claude-3-opus、Gemini-1.5-pro。",
-    "sidebar__promotion_dialog__discount__title": "现在节省53%"
+    "sidebar__promotion_dialog__discount__title": "现在节省53%",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "上传的文件太大。请使用具有更大上下文窗口的AI模型或上传较小的文件。",
+    "chat__user_message__contexts__file__preview__tips": "格式可能与源不一致。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "选择该选项。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "点击以用AI生成的内容替换所选文本。",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "您可以随心要求AI优化AI生成的内容。"
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "您可以随心要求AI优化AI生成的内容。",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "点击打开侧边栏与AI聊天、总结任何页面、询问网络或创建AI艺术。",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "点击总结并提问有关此电子邮件的问题。",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "点击总结并提问有关此PDF的问题。",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "点击总结并提问有关此YouTube视频的问题。",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "点击立即生成个性化回复。",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "点击立即生成个性化草稿，或改进您的草稿。"
   },
   "survey": {
     "funnel_survey__submit_success__title": "感谢您与我们分享您的经验。🙏",

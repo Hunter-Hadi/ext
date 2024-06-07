@@ -5,17 +5,15 @@ import { IAIProviderType } from '@/background/provider/chat'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import {
-  getPageSummaryConversationId,
-  getPageSummaryType,
-} from '@/features/sidebar/utils/pageSummaryHelper'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
 
 /**
@@ -59,7 +57,8 @@ const useInitWebPageSidebar = () => {
           if (!conversationId) {
             return
           }
-          const conversation = await clientGetConversation(conversationId)
+          const conversation =
+            await ClientConversationManager.getConversationById(conversationId)
           if (
             conversation &&
             conversation.meta.AIProvider &&
@@ -214,32 +213,6 @@ const useInitWebPageSidebar = () => {
       window.removeEventListener('MaxAIContinueSearchWithAI', listener)
     }
   }, [])
-  // // focus的时候更新消息
-  // useFocus(() => {
-  //   if (currentConversationIdRef.current) {
-  //     const start = new Date().getTime()
-  //     clientGetConversation(currentConversationIdRef.current).then(
-  //       (conversation) => {
-  //         if (conversation) {
-  //           console.log('UsingUsingUsing', new Date().getTime() - start, 'ms')
-  //           console.log('新版Conversation refocus更新', conversation.messages)
-  //           if (conversation.isDelete) {
-  //             if (isMaxAIImmersiveChatPage()) {
-  //               // immersive chat page下先在这里触发reset
-  //               resetConversation()
-  //             }
-  //           }
-  //           updateConversationMap((prevState) => {
-  //             return {
-  //               ...prevState,
-  //               [conversation.id]: conversation,
-  //             }
-  //           })
-  //         }
-  //       },
-  //     )
-  //   }
-  // })
   useEffectOnce(() => {
     startListen()
   })

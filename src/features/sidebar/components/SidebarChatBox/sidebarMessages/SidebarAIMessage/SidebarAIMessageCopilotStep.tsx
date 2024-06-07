@@ -6,7 +6,7 @@ import React, { FC, useMemo } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { IAIResponseOriginalMessageCopilotStep } from '@/features/chatgpt/types'
+import { IAIResponseOriginalMessageCopilotStep } from '@/features/indexed_db/conversations/models/Message';
 
 const SidebarAIMessageCopilotStep: FC<{
   messageIsComplete?: boolean

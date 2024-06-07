@@ -10,7 +10,7 @@ import {
 import { ClaudeAttachment } from '@/background/src/chat/ClaudeWebappChat/claude/types'
 import ConversationManager from '@/background/src/chatConversations'
 import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 // 为了减少请求claude.ai网页，设置一个本地的token key
 const cacheTokenKey = 'CHROME_EXTENSION_LOCAL_STORAGE_CLAUDE_TOKEN_KEY'
@@ -79,9 +79,7 @@ class ClaudeWebappChat extends BaseChat {
     }
     if (this.conversation) {
       this.conversation.meta.AIConversationId = conversationId
-      await ConversationManager.conversationDB.addOrUpdateConversation(
-        this.conversation,
-      )
+      await ConversationManager.addOrUpdateConversation(this.conversation)
     }
     return this.conversation?.id || ''
   }

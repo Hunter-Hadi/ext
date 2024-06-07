@@ -10,7 +10,6 @@ import {
   IMaxAIChatMessageContentType,
   IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
-import { IChatConversation } from '@/background/src/chatConversations'
 import {
   createClientMessageListener,
   safeGetBrowserTab,
@@ -24,19 +23,25 @@ import {
   CHATGPT_WEBAPP_HOST,
   CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB,
 } from '@/constants'
-import {
-  IAIResponseMessage,
-  IAIResponseOriginalMessage,
-  IAIResponseSourceCitation,
-  IChatMessage,
-  IUserChatMessage,
-} from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import {
   isAIMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
+import {
+  backgroundConversationDB,
+  backgroundConversationDBGetMessageIds,
+} from '@/features/indexed_db/conversations/background'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import {
+  IAIResponseMessage,
+  IAIResponseOriginalMessage,
+  IAIResponseSourceCitation,
+  IChatMessage,
+  IChatUploadFile,
+  IUserChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import {
   calculateMaxResponseTokens,
   getTextTokens,
@@ -327,6 +332,17 @@ export const setAIProviderSettings = async <T extends IAIProviderType>(
   }
 }
 
+export const getMessageAttachmentExtractedContent = (
+  attachment: IChatUploadFile,
+  message: IChatMessage,
+) => {
+  const attachmentExtractedContent =
+    message.extendContent?.attachmentExtractedContents?.[attachment.id] ||
+    attachment.extractedContent ||
+    ''
+  return safeGetAttachmentExtractedContent(attachmentExtractedContent)
+}
+
 /**
  * 获取消息的token数
  * @param message
@@ -336,8 +352,12 @@ export const getMessageTokens = async (message: IChatMessage) => {
     const attachments = message.meta?.attachments || []
     const attachmentTokens = sum(
       attachments.map((attachment) => {
-        if (attachment.extractedContent) {
-          return getTextTokens(attachment.extractedContent).length
+        const attachmentExtractedContent = getMessageAttachmentExtractedContent(
+          attachment,
+          message,
+        )
+        if (attachmentExtractedContent) {
+          return getTextTokens(attachmentExtractedContent).length
         }
         return 0
       }),
@@ -383,7 +403,9 @@ export const chatMessageToMaxAIRequestMessage = (
     if (message.meta?.attachments) {
       message.meta.attachments.forEach((attachment) => {
         if (attachment.uploadStatus === 'success') {
-          if (attachment.extractedContent) {
+          const attachmentExtractedContent =
+            getMessageAttachmentExtractedContent(attachment, message)
+          if (attachmentExtractedContent) {
             if (!extractedContent) {
               extractedContent = `\n\n---\n\nBelow, you will find the information and content of the file(s) mentioned above. Each file is delimited by <file></file>:\n\n`
             }
@@ -391,9 +413,7 @@ export const chatMessageToMaxAIRequestMessage = (
               attachment.fileName
             }\n\nFile Size: ${filesizeFormatter(
               attachment.fileSize,
-            )}\n\nFile Content:\n${safeGetAttachmentExtractedContent(
-              attachment.extractedContent,
-            )}\n</file>\n\n`
+            )}\n\nFile Content:\n${attachmentExtractedContent}\n</file>\n\n`
           } else if (
             attachment.uploadedUrl &&
             attachment.fileType.includes('image')
@@ -448,7 +468,7 @@ export const chatMessageToMaxAIRequestMessage = (
  * 处理AI提问的参数
  */
 export const processAskAIParameters = async (
-  conversation: IChatConversation,
+  conversation: IConversation,
   question: IUserChatMessage,
 ) => {
   const { includeHistory, historyMessages } = question?.meta || {}
@@ -484,13 +504,20 @@ export const processAskAIParameters = async (
       systemPromptTokens -
       questionPromptTokens -
       calculateMaxResponseTokens(conversationUsingModelMaxTokens)
+    const messageIds = await backgroundConversationDBGetMessageIds(
+      conversation.id,
+    )
     // 寻找本次提问的历史记录开始和结束节点
     let startIndex: number | null = null
     let endIndex: number | null = null
-    for (let i = conversation.messages.length - 1; i >= 0; i--) {
-      const message = conversation.messages[i]
+    for (let i = messageIds.length - 1; i >= 0; i--) {
+      const message = await backgroundConversationDB.messages.get(messageIds[i])
       // 如果是ai回复，那么标记开始
-      if (isAIMessage(message) && formatAIMessageContent(message, false)) {
+      if (
+        message &&
+        isAIMessage(message) &&
+        formatAIMessageContent(message, false)
+      ) {
         if (endIndex === null) {
           endIndex = i
         }
@@ -506,6 +533,7 @@ export const processAskAIParameters = async (
       }
       // 如果是用户消息，从非includeHistory的消息开始
       if (
+        message &&
         isUserMessage(message) &&
         formatUserMessageContent(message) &&
         startIndex === null
@@ -536,18 +564,19 @@ export const processAskAIParameters = async (
         historyTokensUsed < maxHistoryTokens &&
         historyCountUsed < maxHistoryCount
       ) {
-        let message: IChatMessage | null = null
+        let messageId: string | null = null
         if (addMessagePosition === 'end') {
-          message = conversation.messages[endIndex] || null
+          messageId = messageIds[endIndex] || null
           endIndex -= 1
         } else {
-          message = conversation.messages[startIndex] || null
+          messageId = messageIds[startIndex] || null
           startIndex += 1
         }
-        if (!message) {
+        if (!messageId) {
           break
         }
-        if (message.type !== 'system' && message.type !== 'third') {
+        const message = await backgroundConversationDB.messages.get(messageId)
+        if (message && message.type !== 'system' && message.type !== 'third') {
           const messageToken = await getMessageTokens(message)
           // 如果当前消息的token数大于最大历史记录token数，那么不添加
           if (historyTokensUsed + messageToken > maxHistoryTokens) {

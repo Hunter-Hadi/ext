@@ -2,8 +2,7 @@ import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
+import CustomMarkdown from '@/components/CustomMarkdown'
 
 interface IProps {
   message: string
@@ -43,13 +42,11 @@ const AIResponseMessage: FC<IProps> = (props) => {
 
   return (
     <Box className="search-with-ai--text" sx={sxCache}>
-      <AppSuspenseLoadingLayout>
-        <Box
-          className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}
-        >
-          <CustomMarkdown>{defaultText.replace(/^\s+/, '')}</CustomMarkdown>
-        </Box>
-      </AppSuspenseLoadingLayout>
+      <Box
+        className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}
+      >
+        <CustomMarkdown>{defaultText.replace(/^\s+/, '')}</CustomMarkdown>
+      </Box>
     </Box>
   )
 }

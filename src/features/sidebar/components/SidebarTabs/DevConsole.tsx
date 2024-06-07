@@ -9,7 +9,6 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { atomFamily, useRecoilState, useRecoilValue } from 'recoil'
 
-import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
 import {
   getChromeExtensionLocalStorage,
@@ -17,7 +16,7 @@ import {
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarSummaryConversationIdState } from '@/features/sidebar/store'
@@ -91,8 +90,8 @@ const DevConsole: FC<{
   const sidebarSummaryConversationId = useRecoilValue(
     SidebarSummaryConversationIdState,
   )
-  const clientConversationMap = useRecoilValue(ClientConversationMapState)
   const {
+    clientConversationMessages,
     clientWritingMessage,
     currentConversationId,
     conversationStatus,
@@ -103,10 +102,7 @@ const DevConsole: FC<{
   const renderConversation = useMemo(() => {
     const clonedConversation: any = cloneDeep(
       clientConversation,
-    ) as IChatConversation
-    if (clonedConversation) {
-      clonedConversation.messages = []
-    }
+    ) as IConversation
     return clonedConversation
   }, [clientConversation])
   return (
@@ -248,7 +244,7 @@ const DevConsole: FC<{
             </p>
             <p>
               currentSidebarAIProvider: {currentSidebarAIProvider} - [
-              {clientConversation?.messages.length}]
+              {clientConversationMessages.length}]
             </p>
             <p>currentSidebarAIMode: {currentAIProviderModel}</p>
             <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
@@ -285,7 +281,6 @@ const DevConsole: FC<{
           </Stack>
         )}
         <Stack width={200} flexShrink={0}>
-          <pre>{Object.keys(clientConversationMap).join('\n')}</pre>
           <DevShortcutsLog isSidebar={isSidebar} />
         </Stack>
       </Stack>

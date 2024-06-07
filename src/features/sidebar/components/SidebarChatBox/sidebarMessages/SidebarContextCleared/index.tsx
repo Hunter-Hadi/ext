@@ -11,8 +11,8 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
-import { IChatMessage } from '@/features/chatgpt/types'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarContextCleared: FC<{
@@ -47,11 +47,9 @@ const SidebarContextCleared: FC<{
         includeHistory: true,
       },
     } as any
-    await clientChatConversationModifyChatMessages(
-      'update',
+    await ClientConversationMessageManager.updateMessage(
       conversationId,
-      0,
-      [newMessage],
+      newMessage,
     )
   }
 

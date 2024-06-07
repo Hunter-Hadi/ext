@@ -3,7 +3,7 @@ import React, { FC, useMemo } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
-import { IAIResponseOriginalMessageMetaDeep } from '@/features/chatgpt/types'
+import { IAIResponseOriginalMessageMetaDeep } from '@/features/indexed_db/conversations/models/Message'
 import { messageListContainerId } from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import { MetadataTitleRender } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
 import { HeightUpdateScrolling } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/HeightUpdateScrolling'

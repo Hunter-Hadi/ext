@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "שאל שאלות על כל תמונה וקבל תשובות מיידיות.",
     "sidebar__promotion_dialog__vision__content_item3__description": "פשוט צלם צילום מסך ושאל שאלות מיידיות.",
     "sidebar__promotion_dialog__vision__content_item4__description": "מופעל על ידי הדגמים הטובים ביותר: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "חסוך 53% עכשיו"
+    "sidebar__promotion_dialog__discount__title": "חסוך 53% עכשיו",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "הקבצים שהועלו גדולים מדי. אנא השתמש בדגם AI עם חלון קשר גדול יותר או העלה קבצים קטנים יותר.",
+    "chat__user_message__contexts__file__preview__tips": "העיצוב עשוי להיות לא עקבי מהמקור."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "כדי לבחור את האפשרות.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "לחץ כדי להחליף את הטקסט הנבחר עם תוכן שנוצר על ידי AI.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "תוכל לבקש מהמודע המלאכותי לשפר את תוכן שנוצר על ידי המודע המלאכותי בדיוק כפי שתרצה."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "תוכל לבקש מהמודע המלאכותי לשפר את תוכן שנוצר על ידי המודע המלאכותי בדיוק כפי שתרצה.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "לחץ כדי לפתוח את סרגל הצד ולשוחח עם AI, לסכם כל דף, לשאול את הרשת או ליצור אמנות AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "לחץ כדי לסכם ולשאול שאלות על מייל זה.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "לחץ כדי לסכם ולשאול שאלות על PDF זה.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "לחץ כדי לסכם ולשאול שאלות על סרטון YouTube זה.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "לחץ כדי ליצור תשובה אישית באופן מיידי.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "לחץ כדי ליצור טיוטה אישית באופן מיידי או לשפר את הטיוטה שלך."
   },
   "survey": {
     "funnel_survey__submit_success__title": "תודה על שיתוף החוויה שלך איתנו. 🙏",

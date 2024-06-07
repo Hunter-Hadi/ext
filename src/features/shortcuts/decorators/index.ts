@@ -3,8 +3,8 @@ import lodashSet from 'lodash-es/set'
 import { v4 as uuidV4 } from 'uuid'
 
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
@@ -271,28 +271,22 @@ export function completeLastAIMessageOnStop() {
           await clientConversationEngine.getCurrentConversation()
         if (currentConversation) {
           const lastMessage =
-            currentConversation.messages[
-              currentConversation.messages.length - 1
-            ]
-          if (isAIMessage(lastMessage)) {
+            await ClientConversationMessageManager.getMessageByTimeFrame(
+              currentConversation.id,
+              'latest',
+            )
+          if (lastMessage && isAIMessage(lastMessage)) {
             if (lastMessage.originalMessage) {
-              await clientChatConversationModifyChatMessages(
-                'update',
-                clientConversationEngine?.currentConversationIdRef.current,
-                0,
+              await ClientConversationMessageManager.updateMessagesWithChanges(
+                currentConversation.id,
                 [
                   {
-                    type: 'ai',
-                    messageId: lastMessage.messageId,
-                    originalMessage: {
-                      metadata: {
-                        sources: {
-                          status: 'complete',
-                        },
-                        isComplete: true,
-                      },
-                    },
-                  } as any,
+                    key: lastMessage.messageId,
+                    changes: {
+                      'originalMessage.metadata.sources.status': 'complete',
+                      'originalMessage.metadata.isComplete': true,
+                    } as any,
+                  },
                 ],
               )
             }
@@ -328,28 +322,22 @@ export function completeLastAIMessageOnError() {
             await clientConversationEngine.getCurrentConversation()
           if (currentConversation) {
             const lastMessage =
-              currentConversation.messages[
-                currentConversation.messages.length - 1
-              ]
-            if (isAIMessage(lastMessage)) {
+              await ClientConversationMessageManager.getMessageByTimeFrame(
+                currentConversation.id,
+                'latest',
+              )
+            if (lastMessage && isAIMessage(lastMessage)) {
               if (lastMessage.originalMessage) {
-                await clientChatConversationModifyChatMessages(
-                  'update',
-                  clientConversationEngine?.currentConversationIdRef.current,
-                  0,
+                await ClientConversationMessageManager.updateMessagesWithChanges(
+                  currentConversation.id,
                   [
                     {
-                      type: 'ai',
-                      messageId: lastMessage.messageId,
-                      originalMessage: {
-                        metadata: {
-                          sources: {
-                            status: 'complete',
-                          },
-                          isComplete: true,
-                        },
-                      },
-                    } as any,
+                      key: lastMessage.messageId,
+                      changes: {
+                        'originalMessage.metadata.sources.status': 'complete',
+                        'originalMessage.metadata.isComplete': true,
+                      } as any,
+                    },
                   ],
                 )
               }

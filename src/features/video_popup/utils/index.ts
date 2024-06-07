@@ -44,7 +44,7 @@ export const isVideoPopupElementChildren = (
 ) => {
   if (element) {
     const globalVideoPopupWrapper = queryShadowContainerElementSelector(
-      MAXAI_GLOBAL_VIDEO_POPUP_CONTAINER_ID,
+      `#${MAXAI_GLOBAL_VIDEO_POPUP_CONTAINER_ID}`,
       `#${MAXAI_GLOBAL_VIDEO_POPUP_WRAPPER_ID}`,
     )
     if (globalVideoPopupWrapper) {

@@ -84,14 +84,13 @@ const PreviewPanel = () => {
       task: 'open',
       config,
     })
+      .then()
+      .catch()
   }, [config])
 
   const { stopGenerate } = useClientChat()
-  const {
-    currentConversationId,
-    clientWritingMessage,
-    clientConversationMessages,
-  } = useClientConversation()
+  const { currentConversationId, clientWritingMessage } =
+    useClientConversation()
   const { smoothConversationLoading: loading } =
     useSmoothConversationLoading(500)
   useClientConversationListener()
@@ -134,8 +133,8 @@ const PreviewPanel = () => {
       </DevContent>
 
       <Typography
-        fontSize="16px"
-        textAlign="center"
+        fontSize='16px'
+        textAlign='center'
         sx={{
           padding: '16px 12px',
           color: (t: Theme) =>
@@ -145,11 +144,10 @@ const PreviewPanel = () => {
         {t('prompt_editor:preview_panel__title')}
       </Typography>
 
-      {currentConversationId && clientConversationMessages.length > 0 ? (
+      {currentConversationId ? (
         <SidebarChatBoxMessageListContainer
           conversationId={currentConversationId}
-          loading={loading}
-          messages={clientConversationMessages}
+          isAIResponding={loading}
           writingMessage={clientWritingMessage.writingMessage}
           sx={{
             textAlign: 'left',
@@ -201,7 +199,7 @@ const PreviewPanel = () => {
                 variant={'normalOutlined'}
                 startIcon={<StopOutlinedIcon />}
                 onClick={stopGenerate}
-                data-testid="sidebar_actions__stop_generating"
+                data-testid='sidebar_actions__stop_generating'
               >
                 {t('client:sidebar__button__stop_generating')}
               </Button>
@@ -213,7 +211,7 @@ const PreviewPanel = () => {
             showCloseButton={false}
             isSaveLastRunShortcuts={false}
             {...config}
-            modelKey="PromptPreview"
+            modelKey='PromptPreview'
             title={title}
             template={template}
             disabled={!template || !title}

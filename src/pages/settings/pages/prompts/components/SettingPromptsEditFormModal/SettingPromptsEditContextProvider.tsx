@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es'
+import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 

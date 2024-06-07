@@ -1,13 +1,12 @@
 import { ConversationStatusType } from '@/background/provider/chat'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 import { backgroundSendAllClientMessage } from '@/background/utils'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
 
 class BaseChat {
-  conversation: IChatConversation | undefined
+  conversation: IConversation | undefined
   chatFiles: IChatUploadFile[]
   log: Log
   status: ConversationStatusType = 'needAuth'
@@ -27,7 +26,7 @@ class BaseChat {
     await this.updateStatus('needAuth')
     this.active = false
   }
-  async createConversation(newConversation?: Partial<IChatConversation>) {
+  async createConversation(newConversation?: Partial<IConversation>) {
     this.conversation = await ConversationManager.createConversation({
       ...newConversation,
     })

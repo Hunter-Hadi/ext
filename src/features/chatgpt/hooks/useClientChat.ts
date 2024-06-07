@@ -1,21 +1,22 @@
+import sum from 'lodash-es/sum'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IChatConversation } from '@/background/src/chatConversations'
+import { MAXAI_VISION_MODEL_UPLOAD_CONFIG } from '@/background/src/chat/constant'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   IAIProviderModel,
   IChatUploadFile,
   IUserChatMessage,
-} from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+} from '@/features/indexed_db/conversations/models/Message'
+import { createIndexedDBQuery } from '@/features/indexed_db/utils'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -52,7 +53,6 @@ const useClientChat = () => {
     pushPricingHookMessage,
     hideConversationLoading,
     showConversationLoading,
-    updateConversation,
     getCurrentConversation,
     updateClientConversationLoading,
   } = useClientConversation()
@@ -91,6 +91,29 @@ const useClientChat = () => {
       const extractText = attachments
         .map((attachment) => attachment?.extractedContent || '')
         .join('')
+      const totalFileSizes = sum(
+        attachments.map((attachment) => attachment.fileSize || 0),
+      )
+      if (totalFileSizes > MAXAI_VISION_MODEL_UPLOAD_CONFIG.maxFileSize) {
+        // 如果文件总大小超过20MB
+        await ClientConversationMessageManager.addMessages(conversationId, [
+          {
+            type: 'system',
+            text: t(
+              `client:provider__chatgpt__upload_file_error__total_too_large__text`,
+            ),
+            messageId: uuidV4(),
+            conversationId,
+            meta: {
+              status: 'error',
+            },
+          },
+        ])
+        await aiProviderRemoveAllFiles()
+        getInputMediator('chatBoxInputMediator').updateInputValue('')
+        getInputMediator('floatingMenuInputMediator').updateInputValue('')
+        return false
+      }
       if (extractText) {
         // 因为我们没有对attachment的extractedContent进行限制，所以这里需要计算tokens的长度
         const conversationMaxTokens =
@@ -104,24 +127,19 @@ const useClientChat = () => {
           })
         if (attachmentIsLimit) {
           // 如果tokens长度超过限制
-          await clientChatConversationModifyChatMessages(
-            'add',
-            conversationId,
-            0,
-            [
-              {
-                type: 'system',
-                text: t(
-                  `client:provider__chatgpt__upload_file_error__too_long__text`,
-                ),
-                messageId: uuidV4(),
-                conversationId,
-                meta: {
-                  status: 'error',
-                },
+          await ClientConversationMessageManager.addMessages(conversationId, [
+            {
+              type: 'system',
+              text: t(
+                `client:provider__chatgpt__upload_file_error__too_long__text`,
+              ),
+              messageId: uuidV4(),
+              conversationId,
+              meta: {
+                status: 'error',
               },
-            ],
-          )
+            },
+          ])
           await aiProviderRemoveAllFiles()
           getInputMediator('chatBoxInputMediator').updateInputValue('')
           getInputMediator('floatingMenuInputMediator').updateInputValue('')
@@ -153,11 +171,20 @@ const useClientChat = () => {
         await updateClientConversationLoading(false)
         return
       }
+      const attachmentExtractedContents: Record<string, string> = {}
+      attachments.forEach((attachment) => {
+        attachmentExtractedContents[attachment.id] =
+          attachment.extractedContent || ''
+        delete attachment.extractedContent
+      })
       question = mergeWithObject([
         question,
         {
           meta: {
             attachments,
+          },
+          extendContent: {
+            attachmentExtractedContents,
           },
         },
       ])
@@ -252,7 +279,13 @@ const useClientChat = () => {
     })
     if (isSaveLastRunShortcuts && !isNeedSaveLastRunShortcuts) {
       // 4. 保存最后一次运行的shortcuts
-      await saveLastRunShortcuts(conversationId, actions, overwriteParameters)
+      await saveLastRunShortcuts(
+        conversationId,
+        actions,
+        overwriteParameters.length > 0
+          ? overwriteParameters
+          : getParams().shortCutsParameters,
+      )
     }
     await updateClientConversationLoading(false)
     // 5. 运行shortcuts
@@ -267,34 +300,13 @@ const useClientChat = () => {
       showConversationLoading()
       const currentConversationId = currentConversationIdRef.current
       if (currentConversationId) {
-        const {
-          conversation,
-          lastRunActionsMessageId,
-          lastRunActionsParams,
-          lastRunActions,
-        } = await getLastRunShortcuts(currentConversationId)
-        if (conversation && lastRunActions.length > 0) {
-          let needDeleteCount = 0
-          // 删除消息
-          // 1. 找到最后一次运行的shortcuts的messageId
-          const messages = conversation?.messages || []
-          if (lastRunActionsMessageId) {
-            for (let i = messages.length - 1; i >= 0; i--) {
-              if (messages[i].messageId === lastRunActionsMessageId) {
-                break
-              }
-              needDeleteCount++
-            }
-          } else {
-            needDeleteCount = messages.length
-          }
-          // 2. 删除消息
-          await clientChatConversationModifyChatMessages(
-            'delete',
+        const { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
+          await getLastRunShortcuts(currentConversationId)
+        if (lastRunActions.length > 0) {
+          console.log(needDeleteMessageIds)
+          await ClientConversationMessageManager.deleteMessages(
             currentConversationId,
-            // 因为第一条消息才会没有lastRunActionsMessageId, 此时需要删除全部
-            needDeleteCount,
-            [],
+            needDeleteMessageIds,
           )
           const waitRunActions = lastRunActions.map((action) => {
             if (
@@ -313,26 +325,28 @@ const useClientChat = () => {
         } else {
           // 理论上不会进来, 兼容旧代码用的
           console.log('regenerate actions is empty')
-          const currentConversation = await clientGetConversation(
-            currentConversationId,
-          )
-          const messages = currentConversation?.messages || []
+          const messageIds =
+            await ClientConversationMessageManager.getMessageIds(
+              currentConversationId,
+            )
           // 寻找最后一个user message
-          let needDeleteCount = 0
+          const needDeleteIds: string[] = []
           let lastUserMessage: IUserChatMessage | null = null
-          for (let i = messages.length - 1; i >= 0; i--) {
-            needDeleteCount++
-            if (messages[i].type === 'user') {
-              lastUserMessage = messages[i] as IUserChatMessage
+          for (let i = messageIds.length - 1; i >= 0; i--) {
+            needDeleteIds.push(messageIds[i])
+            const message =
+              await ClientConversationMessageManager.getMessageByMessageId(
+                messageIds[i],
+              )
+            if (message?.type === 'user') {
+              lastUserMessage = message as IUserChatMessage
               break
             }
           }
           if (lastUserMessage) {
-            await clientChatConversationModifyChatMessages(
-              'delete',
+            await ClientConversationMessageManager.deleteMessages(
               currentConversationId,
-              needDeleteCount,
-              [],
+              needDeleteIds,
             )
             await askAIWIthShortcuts([
               {
@@ -372,62 +386,6 @@ const useClientChat = () => {
     })
   }
 
-  /**
-   * 保存最后一次运行的shortcuts
-   * @param conversationId
-   * @param actions
-   * @param params
-   */
-  const saveLastRunShortcuts = async (
-    conversationId: string,
-    actions: ISetActionsType,
-    params?: any[],
-  ) => {
-    const conversation = await clientGetConversation(conversationId)
-    const messages = conversation?.messages || []
-    const lastRunActionsMessageId = messages.at(-1)?.messageId || ''
-    await updateConversation(
-      {
-        meta: {
-          lastRunActions: actions,
-          lastRunActionsParams: params || getParams().shortCutsParameters,
-          lastRunActionsMessageId,
-        },
-      },
-      conversationId,
-      false,
-    )
-  }
-  /**
-   * 获取最后一次运行的shortcuts
-   * @param conversationId
-   */
-  const getLastRunShortcuts = async (
-    conversationId: string,
-  ): Promise<{
-    lastRunActions: ISetActionsType
-    lastRunActionsMessageId: string
-    lastRunActionsParams?: any[]
-    conversation: IChatConversation | null
-  }> => {
-    const conversation = await clientGetConversation(conversationId)
-    if (conversation?.meta.lastRunActions) {
-      return {
-        lastRunActions: conversation.meta.lastRunActions || [],
-        lastRunActionsMessageId:
-          conversation.meta.lastRunActionsMessageId || '',
-        conversation,
-        lastRunActionsParams: conversation.meta.lastRunActionsParams,
-      }
-    }
-    return {
-      lastRunActions: [],
-      lastRunActionsMessageId: '',
-      lastRunActionsParams: undefined,
-      conversation: null,
-    }
-  }
-
   return {
     shortCutsEngine,
     askAIQuestion,
@@ -437,6 +395,82 @@ const useClientChat = () => {
     continueChat,
     checkAttachments,
     loading: smoothConversationLoading,
+  }
+}
+
+/**
+ * 保存最后一次运行的shortcuts
+ * @param conversationId
+ * @param actions
+ * @param params
+ */
+export const saveLastRunShortcuts = async (
+  conversationId: string,
+  actions: ISetActionsType,
+  params?: any[],
+) => {
+  const lastMessage =
+    await ClientConversationMessageManager.getMessageByTimeFrame(
+      conversationId,
+      'latest',
+    )
+  const lastRunActionsMessageId = lastMessage?.messageId
+  await createIndexedDBQuery('conversations')
+    .conversationLocalStorage.put({
+      conversationId,
+      lastRunActions: actions,
+      lastRunActionsParams: params,
+      lastRunActionsMessageId,
+    })
+    .then()
+}
+
+/**
+ * 获取最后一次运行的shortcuts
+ * @param conversationId
+ */
+export const getLastRunShortcuts = async (
+  conversationId: string,
+): Promise<{
+  lastRunActions: ISetActionsType
+  lastRunActionsMessageId: string
+  lastRunActionsParams?: any[]
+  needDeleteMessageIds: string[]
+}> => {
+  const conversationLocalStorage = await createIndexedDBQuery('conversations')
+    .conversationLocalStorage.get(conversationId)
+    .then()
+  let needDeleteMessageIds = []
+  if (
+    conversationLocalStorage?.lastRunActions &&
+    conversationLocalStorage.lastRunActions.length > 0
+  ) {
+    if (conversationLocalStorage.lastRunActionsMessageId) {
+      needDeleteMessageIds =
+        await ClientConversationMessageManager.getDeleteMessageIds(
+          conversationId,
+          conversationLocalStorage.lastRunActionsMessageId,
+          'latest',
+        )
+    } else {
+      // 如果Chat是第一次对话，lastMessageId是没有的
+      // 需要删除所有的message
+      needDeleteMessageIds =
+        await ClientConversationMessageManager.getMessageIds(conversationId)
+    }
+    return {
+      lastRunActions: conversationLocalStorage.lastRunActions || [],
+      lastRunActionsMessageId:
+        conversationLocalStorage.lastRunActionsMessageId || '',
+      lastRunActionsParams: conversationLocalStorage.lastRunActionsParams,
+      needDeleteMessageIds,
+    }
+  }
+  return {
+    lastRunActions: [],
+    lastRunActionsMessageId: '',
+    lastRunActionsParams: undefined,
+    needDeleteMessageIds: [],
   }
 }
 export default useClientChat

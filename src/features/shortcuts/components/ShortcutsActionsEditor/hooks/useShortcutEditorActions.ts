@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
 import {
   IPresetActionSetVariable,
   IPresetVariableName,

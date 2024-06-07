@@ -6,9 +6,9 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { ClaudeWebappChat } from '@/background/src/chat/ClaudeWebappChat'
-import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 class ClaudeChatProvider implements ChatAdapterInterface {
   private claudeWebappChat: ClaudeWebappChat
@@ -28,7 +28,7 @@ class ClaudeChatProvider implements ChatAdapterInterface {
   get conversation() {
     return this.claudeWebappChat.conversation
   }
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     if (this.claudeWebappChat.conversation?.id) {
       console.log('新版Conversation 因为conversation id变了, 移除conversation')
       await this.claudeWebappChat.removeConversation()

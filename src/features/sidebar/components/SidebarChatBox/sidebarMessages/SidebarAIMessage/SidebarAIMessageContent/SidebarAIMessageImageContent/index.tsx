@@ -9,7 +9,10 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import { CHROME_EXTENSION_CHAT_MESSAGE_BOX_WIDTH } from '@/constants'
 import { IArtTextToImageMetadata } from '@/features/art/types'
 import { artTextToAspectRatio } from '@/features/art/utils'
-import { IAIResponseMessage, IChatUploadFile } from '@/features/chatgpt/types'
+import {
+  IAIResponseMessage,
+  IChatUploadFile,
+} from '@/features/indexed_db/conversations/models/Message'
 import SidebarAIMessageImageContentDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 
 interface IAIMessageImageData extends IChatUploadFile {
@@ -175,6 +178,7 @@ const SidebarAIMessageImageContent: FC<{
               SkeletonSx={{
                 width: '100%',
               }}
+              fileId={renderData.image.uploadedFileId}
               height={height}
               src={renderData.image?.uploadedUrl || ''}
               alt={`Variation 1 of ${renderDataList.length}`}
@@ -186,6 +190,7 @@ const SidebarAIMessageImageContent: FC<{
   )
   return (
     <Stack
+      component={'div'}
       ref={boxRef}
       mt={1}
       sx={{

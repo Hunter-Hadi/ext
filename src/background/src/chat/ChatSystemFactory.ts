@@ -27,12 +27,11 @@ import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIC
 import { PoeChat } from '@/background/src/chat/PoeChat'
 import { UseChatGPTPlusChat } from '@/background/src/chat/UseChatGPTChat'
 import { processAskAIParameters } from '@/background/src/chat/util'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 import { createBackgroundMessageListener } from '@/background/utils'
 import { AI_PROVIDER_MAP } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 import { ChatSystem } from './ChatSystem'
 
@@ -103,7 +102,7 @@ export default class ChatSystemFactory {
         switch (event) {
           case 'Client_createChatGPTConversation': {
             const initConversationData = (data.initConversationData ||
-              {}) as IChatConversation
+              {}) as IConversation
             if (!initConversationData.id) {
               initConversationData.id = uuidV4()
             }
@@ -194,7 +193,7 @@ export default class ChatSystemFactory {
             console.log('[Background]新版Conversation 提问', question)
             if (question.conversationId) {
               const conversation =
-                await ConversationManager.conversationDB.getConversationById(
+                await ConversationManager.getConversationById(
                   question.conversationId,
                 )
               if (conversation) {
@@ -218,10 +217,6 @@ export default class ChatSystemFactory {
                     )
                   }
                 }
-                // 更新客户端的聊天记录
-                await currentChatSystem.updateClientConversationMessages(
-                  conversation.id,
-                )
               }
             }
             await currentChatSystem.sendQuestion(taskId, sender, question)
@@ -247,9 +242,6 @@ export default class ChatSystemFactory {
             console.log('新版Conversation 删除会话', conversationId)
             const success = await currentChatSystem.removeConversation(
               conversationId || '',
-            )
-            await currentChatSystem.updateClientConversationMessages(
-              conversationId,
             )
             return {
               success,
@@ -278,7 +270,7 @@ export default class ChatSystemFactory {
             // 如果没提问直接上传文件, 则需要先切换adapter
             if (!currentChatSystem.currentAdapter) {
               const conversation =
-                await ConversationManager.conversationDB.getConversationById(
+                await ConversationManager.getConversationById(
                   currentChatSystem.conversationId,
                 )
               if (conversation) {
@@ -337,7 +329,7 @@ export default class ChatSystemFactory {
             // 如果没提问直接上传文件, 则需要先切换adapter
             if (!currentChatSystem.currentAdapter) {
               const conversation =
-                await ConversationManager.conversationDB.getConversationById(
+                await ConversationManager.getConversationById(
                   currentChatSystem.conversationId,
                 )
               if (conversation) {

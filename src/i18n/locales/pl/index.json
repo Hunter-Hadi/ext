@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Zadawaj pytania dotyczące dowolnego obrazu i otrzymuj natychmiastowe odpowiedzi.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Po prostu zrób zrzut ekranu i zadaj pytania od razu.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Napędzane przez najlepsze modele AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Oszczędź teraz 53%"
+    "sidebar__promotion_dialog__discount__title": "Oszczędź teraz 53%",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Przesłane pliki są zbyt duże. Proszę użyć modelu AI z większym oknem kontekstowym lub przesłać mniejsze pliki.",
+    "chat__user_message__contexts__file__preview__tips": "Formatowanie może być niekonsekwentne w porównaniu do źródła."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "aby wybrać opcję.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknij, aby zastąpić wybrany tekst treścią wygenerowaną przez sztuczną inteligencję.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Możesz poprosić AI o doprecyzowanie treści wygenerowanej przez AI według własnych preferencji."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Możesz poprosić AI o doprecyzowanie treści wygenerowanej przez AI według własnych preferencji.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Kliknij, aby otworzyć pasek boczny i porozmawiać z AI, podsumować dowolną stronę, zadać pytanie o sieć lub stworzyć sztukę AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Kliknij, aby podsumować i zadać pytania dotyczące tej wiadomości e-mail.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kliknij, aby podsumować i zadać pytania dotyczące tego pliku PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kliknij, aby podsumować i zadać pytania dotyczące tego filmu na YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kliknij, aby natychmiast wygenerować spersonalizowaną odpowiedź.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknij, aby natychmiast wygenerować spersonalizowany szkic lub ulepszyć swój szkic."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Dziękujemy za podzielenie się swoim doświadczeniem z nami. 🙏",

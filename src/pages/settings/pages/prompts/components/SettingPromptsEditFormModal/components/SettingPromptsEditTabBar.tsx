@@ -6,6 +6,7 @@ import Tab, { tabClasses } from '@mui/material/Tab'
 import Tabs, { tabsClasses, type TabsProps } from '@mui/material/Tabs'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { useSettingPromptsEditContext } from '@/pages/settings/pages/prompts/components/SettingPromptsEditFormModal/hooks/useSettingPromptsEditContext'
 
 const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(

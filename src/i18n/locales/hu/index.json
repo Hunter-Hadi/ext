@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Kérdezz bármilyen képről és kapj azonnali válaszokat.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Csak készíts egy képernyőképet és tegyél fel bármilyen kérdést azonnal.",
     "sidebar__promotion_dialog__vision__content_item4__description": "A legjobb AI modellek által támogatott: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Most 53% kedvezmény"
+    "sidebar__promotion_dialog__discount__title": "Most 53% kedvezmény",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "A feltöltött fájlok túl nagyok. Kérlek használj egy AI modellt, amelynek nagyobb a kontextus ablaka, vagy tölts fel kisebb fájlokat.",
+    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrástól."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "gombot, majd",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "az opció kiválasztásához.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kattintson az AI által generált tartalommal való kiválasztott szöveg helyettesítéséhez.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Kérdezheti az AI-t, hogy finomítsa az AI által generált tartalmat bármilyen módon."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Kérdezheti az AI-t, hogy finomítsa az AI által generált tartalmat bármilyen módon.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Kattintson a sáv megnyitásához, hogy beszéljen az AI-val, összefoglalja bármelyik oldalt, kérdezze a webet vagy hozzon létre AI művészetet.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Kattintson az e-mail összefoglalásához és kérdések feltevéséhez erről az e-mailről.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kattintson a PDF összefoglalásához és kérdések feltevéséhez erről a PDF-ről.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kattintson a YouTube videó összefoglalásához és kérdések feltevéséhez erről a YouTube videóról.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kattintson a személyre szabott válasz azonnali generálásához.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kattintson a személyre szabott vázlat azonnali generálásához, vagy javítsa a vázlatát."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Köszönjük, hogy megosztotta velünk tapasztalatait. 🙏",

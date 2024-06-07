@@ -3,7 +3,7 @@ import {
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
-} from '@/features/chatgpt/types'
+} from '@/features/indexed_db/conversations/models/Message'
 
 /**
  * 消息是否是AI消息
@@ -12,7 +12,7 @@ import {
 export const isAIMessage = (
   message: IChatMessage,
 ): message is IAIResponseMessage => {
-  return message.type === 'ai'
+  return message?.type === 'ai'
 }
 /**
  * 消息是否是用户消息
@@ -21,7 +21,7 @@ export const isAIMessage = (
 export const isUserMessage = (
   message: IChatMessage,
 ): message is IUserChatMessage => {
-  return message.type === 'user'
+  return message?.type === 'user'
 }
 /**
  * 消息是否是系统消息
@@ -30,7 +30,7 @@ export const isUserMessage = (
 export const isSystemMessage = (
   message: IChatMessage,
 ): message is ISystemChatMessage => {
-  return message.type === 'system' || message.type === 'third'
+  return message?.type === 'system' || message?.type === 'third'
 }
 
 /**

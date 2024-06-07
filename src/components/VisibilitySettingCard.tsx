@@ -10,8 +10,8 @@ import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import { isEqual } from 'lodash-es'
 import cloneDeep from 'lodash-es/cloneDeep'
+import isEqual from 'lodash-es/isEqual'
 import uniq from 'lodash-es/uniq'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -173,7 +173,9 @@ const VisibilitySettingCard: FC<{
           </Button>
         </ListItem>
         {memoizedDomains.map((site) => {
-          const isPDFViewer = settingPromptsEditButtonKey === 'sidebarSummaryButton' && site === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
+          const isPDFViewer =
+            settingPromptsEditButtonKey === 'sidebarSummaryButton' &&
+            site === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
           const favicon = domain2Favicon(isPDFViewer ? 'maxai.me' : site)
           const website = isPDFViewer ? 'MaxAI PDF Viewer' : site
           return (
@@ -265,12 +267,12 @@ const VisibilitySettingCard: FC<{
                 }
                 setNewSite(value)
               }}
-            // multiple={Boolean(
-            //   settingPromptsEditButtonKey &&
-            //     inputAssistantButtonKeys.includes(
-            //       settingPromptsEditButtonKey,
-            //     ),
-            // )}
+              // multiple={Boolean(
+              //   settingPromptsEditButtonKey &&
+              //     inputAssistantButtonKeys.includes(
+              //       settingPromptsEditButtonKey,
+              //     ),
+              // )}
             />
           </Stack>
         </DialogContent>

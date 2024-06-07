@@ -1,7 +1,7 @@
 import {
   IAskChatGPTActionQuestionType,
   IChatMessage,
-} from '@/features/chatgpt/types'
+} from '@/features/indexed_db/conversations/models/Message'
 import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'

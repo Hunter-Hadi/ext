@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { debounce } from 'lodash-es'
+import debounce from 'lodash-es/debounce'
 import { v4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
@@ -350,17 +350,20 @@ const initIframe = async () => {
         }
       }, 50)
     })
-    editPanel?.addEventListener('scroll', debounce(event => {
-      if (isOfficeWordEditing()) {
-        if (getOfficeWordSelectedElements().length) {
-          // 有选区，重置下位置
-          handleClickOrKeyUp({
-            ...event,
-            target: document.activeElement
-          })
+    editPanel?.addEventListener(
+      'scroll',
+      debounce((event) => {
+        if (isOfficeWordEditing()) {
+          if (getOfficeWordSelectedElements().length) {
+            // 有选区，重置下位置
+            handleClickOrKeyUp({
+              ...event,
+              target: document.activeElement,
+            })
+          }
         }
-      }
-    }, 200))
+      }, 200),
+    )
   }
   Browser.runtime.onMessage.addListener((message, sender) => {
     if (sender.id === Browser.runtime.id) {

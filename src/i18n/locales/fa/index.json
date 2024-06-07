@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "سوالاتی در مورد هر تصویر بپرسید و پاسخ‌های فوری دریافت کنید.",
     "sidebar__promotion_dialog__vision__content_item3__description": "فقط یک عکس از صفحه بگیرید و هر سوالی را فوراً بپرسید.",
     "sidebar__promotion_dialog__vision__content_item4__description": "با بهترین مدل‌های هوش مصنوعی: GPT-4o، Claude-3-opus، Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "هم‌اکنون 53% صرفه‌جویی کنید"
+    "sidebar__promotion_dialog__discount__title": "هم‌اکنون 53% صرفه‌جویی کنید",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "فایل‌های آپلود شده بیش از حد بزرگ هستند. لطفاً از یک مدل هوش مصنوعی با پنجره متناسب بزرگتر استفاده کنید یا فایل‌های کوچکتری را آپلود کنید.",
+    "chat__user_message__contexts__file__preview__tips": "قالب‌بندی ممکن است ناهمسان باشد."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "را فشار دهید.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "برای جایگزینی متن انتخاب شده با محتوای تولید شده توسط هوش مصنوعی کلیک کنید.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "می‌توانید از هوش مصنوعی بخواهید تا محتوای تولید شده توسط آن را به دلخواه خود بهبود دهد."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "می‌توانید از هوش مصنوعی بخواهید تا محتوای تولید شده توسط آن را به دلخواه خود بهبود دهد.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "برای باز کردن نوار کناری و گفتگو با هوش مصنوعی، خلاصه‌ای از هر صفحه، پرسیدن سوال درباره وب یا ایجاد هنر هوش مصنوعی کلیک کنید.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "برای خلاصه کردن و پرسیدن سوال درباره این ایمیل کلیک کنید.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "برای خلاصه کردن و پرسیدن سوال درباره این فایل PDF کلیک کنید.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "برای خلاصه کردن و پرسیدن سوال درباره این ویدیو YouTube کلیک کنید.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "برای تولید یک پاسخ شخصی فوری کلیک کنید.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "برای تولید یک پیش‌نویس شخصی فوری یا بهبود پیش‌نویس خود کلیک کنید."
   },
   "survey": {
     "funnel_survey__submit_success__title": "از به اشتراک گذاشتن تجربه خود با ما متشکریم. 🙏",

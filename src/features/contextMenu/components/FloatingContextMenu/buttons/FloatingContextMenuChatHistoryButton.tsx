@@ -15,7 +15,6 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
-import { IChatConversation } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import TextOnlyTooltip, {
@@ -24,10 +23,8 @@ import TextOnlyTooltip, {
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { useFloatingContextMenu } from '@/features/contextMenu'
-import SidebarChatBoxMessageItem from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
+import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
@@ -37,107 +34,42 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   onDuplicateConversation?: (conversationId: string) => void
   container?: HTMLElement
 }> = (props) => {
-  const { conversationId, onDuplicateConversation, container } = props
-  const [conversation, setConversation] = useState<IChatConversation | null>(
-    null,
-  )
+  const { conversationId, onDuplicateConversation } = props
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
-  const ref = useRef<HTMLDivElement>(null)
-  const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    if (conversationId && conversation?.id !== conversationId) {
-      setLoading(true)
-      clientGetConversation(conversationId)
-        .then((conversation) => {
-          setConversation(conversation)
-        })
-        .catch()
-        .finally(() => {
-          setLoading(false)
-        })
-    }
-  }, [conversation, conversationId])
-  useEffect(() => {
-    // 检测内部变化，更新滚动条
-    const observer = new MutationObserver(() => {
-      if (ref.current) {
-        ref.current.scrollTop = ref.current.scrollHeight
-      }
-    })
-    if (ref.current) {
-      observer.observe(ref.current, {
-        childList: true,
-        subtree: true,
-      })
-    }
-    return () => {
-      observer.disconnect()
-    }
-  }, [conversation])
   if (!conversationId) {
     return null
   }
   return (
-    <AppLoadingLayout loading={loading}>
-      <Stack
-        width={'100%'}
-        height={0}
-        flex={1}
-        gap={1}
-        p={1}
-        boxSizing={'border-box'}
-      >
-        <Stack
-          width={'100%'}
-          ref={ref}
-          component={'div'}
-          height={0}
-          flex={1}
-          sx={{
-            overflowY: 'auto',
-          }}
-        >
-          {conversation?.messages.map((message, index) => {
-            return (
-              <SidebarChatBoxMessageItem
-                key={
-                  message.messageId + '_sidebar_chat_message_' + String(index)
-                }
-                className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-                message={message}
-                loading={loading}
-                order={index + 1}
-                container={container}
-              />
-            )
-          })}
-        </Stack>
-      </Stack>
+    <>
+      <SidebarChatBoxMessageListContainer
+        conversationId={conversationId}
+        isAIResponding={false}
+        writingMessage={null}
+        sx={{
+          textAlign: 'left',
+        }}
+      />
       <Stack
         direction={'row'}
         justifyContent={'center'}
         alignItems={'center'}
-        mb={1}
+        mb={2}
       >
         <Button
           variant={'contained'}
           color={'primary'}
           onClick={async () => {
-            await continueConversationInSidebar(
-              conversationId,
-              {
-                type: 'Chat',
-              },
-              true,
-            )
+            await continueConversationInSidebar(conversationId, {
+              type: 'Chat',
+            })
             onDuplicateConversation?.(conversationId)
           }}
         >
           {t('client:context_window__chat_history__continue_in_chat__title')}
         </Button>
       </Stack>
-    </AppLoadingLayout>
+    </>
   )
 }
 
@@ -348,14 +280,14 @@ const FloatingContextMenuChatHistoryButton: FC<{
                 {isClickOpenOnce && (
                   <Stack height={'100%'}>
                     <Stack
-                      direction="row"
+                      direction='row'
                       spacing={1}
-                      alignItems="center"
+                      alignItems='center'
                       px={2}
                       py={2}
-                      position="relative"
+                      position='relative'
                     >
-                      <IconButton onClick={handleCloseModal} size="small">
+                      <IconButton onClick={handleCloseModal} size='small'>
                         {selectedConversationId ? (
                           <ArrowBackIcon
                             sx={{
@@ -382,7 +314,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                         )}
                       </Typography>
                       <ClearAllChatButton
-                        variant="icon"
+                        variant='icon'
                         sx={{
                           p: '5px',
                           pointerEvents: selectedConversationId
@@ -390,7 +322,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                             : 'auto',
                           opacity: selectedConversationId ? 0 : 1,
                         }}
-                        conversationType="ContextMenu"
+                        conversationType='ContextMenu'
                         onDelete={async () => {
                           await createConversation('ContextMenu')
                           handleCloseModal()
@@ -406,7 +338,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                     <Box
                       height={0}
                       flex={1}
-                      overflow="auto"
+                      overflow='auto'
                       sx={{
                         display: selectedConversationId ? 'none' : 'flex',
                       }}
@@ -428,9 +360,9 @@ const FloatingContextMenuChatHistoryButton: FC<{
                         }}
                         emptyFeedback={
                           <Stack
-                            alignItems="center"
-                            justifyContent="center"
-                            height="100%"
+                            alignItems='center'
+                            justifyContent='center'
+                            height='100%'
                           >
                             <LazyLoadImage
                               height={160}

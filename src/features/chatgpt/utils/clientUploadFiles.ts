@@ -4,7 +4,7 @@ import {
   checkFileTypeIsImage,
   file2base64,
 } from '@/background/utils/uplpadFileProcessHelper'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 export const formatClientUploadFiles = (filesArray: File[]) => {
   return Promise.all(

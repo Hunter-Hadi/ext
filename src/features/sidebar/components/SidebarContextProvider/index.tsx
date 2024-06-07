@@ -7,9 +7,9 @@ import {
   ChatPanelContext,
   ChatPanelContextValue,
 } from '@/features/chatgpt/store/ChatPanelContext'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getInputMediator } from '@/store/InputMediator'
@@ -35,7 +35,9 @@ const SidebarImmersiveUserChange: FC<{ context: ChatPanelContextValue }> = (
   const { conversationId, createConversation } = context
   useFocus(async () => {
     if (!conversationId) return
-    const conversation = await clientGetConversation(conversationId)
+    const conversation = await ClientConversationManager.getConversationById(
+      conversationId,
+    )
     if (conversation) {
       const userId = await getMaxAIChromeExtensionUserId()
       if (conversation.authorId !== userId) {
@@ -155,7 +157,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         getInputMediator('floatingMenuInputMediator').updateInputValue('')
         getInputMediator('chatBoxInputMediator').updateInputValue('')
         const currentConversation = conversationId
-          ? await clientGetConversation(conversationId)
+          ? await ClientConversationManager.getConversationById(conversationId)
           : null
         if (currentConversation) {
           await createConversation(
@@ -222,13 +224,17 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         .updateConversationId(conversationId, type)
         .finally(() => setInitialized(true))
 
-      clientGetConversation(conversationId).then((conversation) => {
-        if (!conversation) {
-          sidebarContextValue.createConversation(
-            sidebarConversationTypeRef.current,
-          )
-        }
-      })
+      ClientConversationManager.getConversationById(conversationId).then(
+        (conversation) => {
+          if (!conversation) {
+            sidebarContextValue.createConversation(
+              sidebarConversationTypeRef.current,
+            )
+          }
+        },
+      )
+    } else {
+      setInitialized(true)
     }
   })
 

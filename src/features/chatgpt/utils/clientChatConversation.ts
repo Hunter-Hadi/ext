@@ -7,113 +7,12 @@ import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/type
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
-import { IChatConversation } from '@/background/src/chatConversations'
 import {
   getChromeExtensionLocalStorage,
   MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import {
-  IAIProviderModel,
-  IAIResponseMessage,
-  IChatMessage,
-  ISystemChatMessage,
-  IUserChatMessage,
-} from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-
-/**
- * Client更新Conversation的信息
- * @param action
- * @param conversationId
- * @param deleteCount
- * @param newMessages
- */
-export const clientChatConversationModifyChatMessages = async (
-  action: 'add' | 'delete' | 'clear' | 'update',
-  conversationId: string,
-  deleteCount: number,
-  newMessages: Array<
-    IChatMessage | ISystemChatMessage | IAIResponseMessage | IUserChatMessage
-  >,
-) => {
-  try {
-    console.log(
-      'clientChatConversationModifyChatMessages',
-      action,
-      conversationId,
-      newMessages,
-    )
-    const port = new ContentScriptConnectionV2()
-    const result = await port.postMessage({
-      event: 'Client_modifyMessages',
-      data: {
-        conversationId,
-        action,
-        deleteCount,
-        newMessages,
-      },
-    })
-    return result.success
-  } catch (e) {
-    return false
-  }
-}
-
-/**
- * Client更新Conversation的信息
- * @param conversationId - 需要更新的conversationId
- * @param updateConversationData - 需要更新的数据
- * @param syncConversationToDB - 是否同步到服务器
- */
-
-export const clientUpdateChatConversation = async (
-  conversationId: string,
-  updateConversationData: Partial<IChatConversation>,
-  syncConversationToDB: boolean,
-) => {
-  try {
-    const port = new ContentScriptConnectionV2()
-    const result = await port.postMessage({
-      event: 'Client_updateConversation',
-      data: {
-        conversationId,
-        updateConversationData,
-        syncConversationToDB,
-      },
-    })
-    return result.success
-  } catch (e) {
-    return false
-  }
-}
-
-/**
- * Client复制Conversation
- * @param conversationId
- * @param updateConversationData
- * @param syncConversationToDB
- */
-export const clientDuplicateChatConversation = async (
-  conversationId: string,
-  updateConversationData: Partial<IChatConversation>,
-  syncConversationToDB: boolean,
-): Promise<IChatConversation | null> => {
-  try {
-    const port = new ContentScriptConnectionV2()
-    const result = await port.postMessage({
-      event: 'Client_duplicateConversation',
-      data: {
-        conversationId,
-        updateConversationData,
-        syncConversationToDB,
-      },
-    })
-    return result.success ? result.data : null
-  } catch (e) {
-    return null
-  }
-}
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 
 /**
  * @deprecated 由于 context window 分离，导致这里获取不到 正确的 conversation, 要获取正确的用 useClientConversation
@@ -133,9 +32,10 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
   let currentModelValue = MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel
 
   if (currentChatConversationId) {
-    const currentChatConversation = await clientGetConversation(
-      currentChatConversationId,
-    )
+    const currentChatConversation =
+      await ClientConversationManager.getConversationById(
+        currentChatConversationId,
+      )
     currentAIProvider =
       currentChatConversation?.meta.AIProvider || currentAIProvider
     currentModelValue =

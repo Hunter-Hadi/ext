@@ -11,6 +11,7 @@ import {
   getMaxAIFloatingContextMenuRootElement,
   getMaxAISidebarRootElement,
 } from '@/utils'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -37,6 +38,7 @@ interface LazyLoadImageProps {
   maxRetryTimes?: number
   SkeletonSx?: SxProps
   imgStyle?: React.CSSProperties
+  fileId?: string
 }
 
 const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
@@ -50,6 +52,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
     preview,
     placement,
     imgStyle,
+    fileId,
   } = props
   const [imageSrc, setImageSrc] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -73,6 +76,22 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
               parse: 'blob',
             })
             if (result) {
+              if (
+                fileId &&
+                (result.responseRaw?.status === 403 ||
+                  result.responseRaw?.status === 404 ||
+                  result.responseRaw?.status === 401)
+              ) {
+                // 403和404的图片不再重试
+                setImageSrc(
+                  getChromeExtensionAssetsURL(
+                    `/images/svg-icons/image-invalid.svg`,
+                  ),
+                )
+                setIsLoading(false)
+                resolve(true)
+                return
+              }
               setImageSrc(URL.createObjectURL(result.data))
               setIsLoading(false)
               resolve(true)
@@ -134,11 +153,13 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
     <>
       {isLoading ? (
         <Skeleton
+          className={'maxai--lazy-load--skeleton'}
           id={`lazy-image-${lazyImageIdRef.current}`}
           variant="rectangular"
           height={height}
           sx={{
             width: width,
+            borderRadius: imgStyle?.borderRadius || 0,
             ...SkeletonSx,
           }}
         />

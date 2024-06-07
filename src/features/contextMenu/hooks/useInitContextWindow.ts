@@ -490,13 +490,9 @@ const useInitContextWindow = () => {
           currentContextMenu.id === CONTEXT_MENU_DRAFT_TYPES.CONTINUE_IN_CHAT &&
           currentConversationIdRef.current
         ) {
-          continueConversationInSidebar(
-            currentConversationIdRef.current,
-            {
-              type: 'Chat',
-            },
-            true,
-          )
+          continueConversationInSidebar(currentConversationIdRef.current, {
+            type: 'Chat',
+          })
             .then()
             .catch()
           return

@@ -1,20 +1,23 @@
-import { useEffect, useMemo, useRef } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useEffect, useRef } from 'react'
+import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
-import { IChatConversation } from '@/background/src/chatConversations'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
-import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import {
-  clientChatConversationModifyChatMessages,
-  clientUpdateChatConversation,
-} from '@/features/chatgpt/utils/clientChatConversation'
+  ClientConversationStateFamily,
+  PaginationConversationMessagesStateFamily,
+} from '@/features/chatgpt/store'
+import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
@@ -77,13 +80,14 @@ const useClientConversation = () => {
     updateConversationStatus,
     resetConversation,
   } = useChatPanelContext()
-  const clientConversationMap = useRecoilValue(ClientConversationMapState)
-  const clientConversation: IChatConversation | undefined =
-    currentConversationId
-      ? clientConversationMap[currentConversationId]
-      : undefined
+  const clientConversation = useRecoilValue(
+    ClientConversationStateFamily(currentConversationId || ''),
+  )
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
     ClientWritingMessageStateFamily(currentConversationId || ''),
+  )
+  const [clientConversationMessages] = useRecoilState(
+    PaginationConversationMessagesStateFamily(currentConversationId || ''),
   )
   const currentSidebarConversationType = clientConversation?.type || 'Chat'
   const currentConversationIdRef = useRef(currentConversationId)
@@ -94,13 +98,6 @@ const useClientConversation = () => {
   useEffect(() => {
     currentConversationTypeRef.current = clientConversation?.type
   }, [currentConversationTypeRef])
-
-  const clientConversationMessages = useMemo(() => {
-    if (currentConversationId) {
-      return clientConversationMap[currentConversationId]?.messages || []
-    }
-    return []
-  }, [currentConversationId, clientConversationMap])
   const disposeBackgroundChatSystem = async (conversationId?: string) => {
     const port = new ContentScriptConnectionV2()
     // 复原background conversation
@@ -113,25 +110,28 @@ const useClientConversation = () => {
     return result.success
   }
   const updateConversation = async (
-    conversation: Partial<IChatConversation>,
+    conversation: Partial<IConversation>,
     conversationId: string,
     syncConversationToDB = false,
   ) => {
-    await clientUpdateChatConversation(
+    await ClientConversationManager.addOrUpdateConversation(
       conversationId || currentConversationIdRef.current || '',
       conversation,
-      syncConversationToDB,
+      {
+        syncConversationToDB,
+      },
     )
   }
   const pushMessage = async (
     newMessage: IChatMessage,
     conversationId?: string,
   ) => {
-    if (conversationId || currentConversationIdRef.current) {
-      await clientChatConversationModifyChatMessages(
-        'add',
+    if (
+      (conversationId || currentConversationIdRef.current) &&
+      newMessage.messageId
+    ) {
+      await ClientConversationMessageManager.addMessages(
         conversationId || currentConversationIdRef.current || '',
-        0,
         [newMessage],
       )
     }
@@ -140,41 +140,64 @@ const useClientConversation = () => {
     message: IChatMessage,
     conversationId?: string,
   ) => {
-    if (conversationId && message.messageId) {
-      await clientChatConversationModifyChatMessages(
-        'update',
-        conversationId,
-        0,
-        [message],
-      )
-    }
-  }
-  const deleteMessage = async (count: number, conversationId?: string) => {
-    if (conversationId || currentConversationIdRef.current) {
-      await clientChatConversationModifyChatMessages(
-        'delete',
+    if (
+      (conversationId || currentConversationIdRef.current) &&
+      message.messageId
+    ) {
+      await ClientConversationMessageManager.updateMessage(
         conversationId || currentConversationIdRef.current || '',
-        count,
-        [],
+        message,
       )
     }
   }
-  const showConversationLoading = () => {
-    setClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading: true,
-      }
-    })
+  const deleteMessage = async (
+    messageIds: string[],
+    conversationId?: string,
+  ) => {
+    if (
+      (conversationId || currentConversationIdRef.current) &&
+      messageIds.length > 0
+    ) {
+      await ClientConversationMessageManager.deleteMessages(
+        conversationId || currentConversationIdRef.current || '',
+        messageIds,
+      )
+    }
   }
-  const hideConversationLoading = () => {
-    setClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading: false,
-      }
-    })
-  }
+  const showConversationLoading = useRecoilCallback(
+    ({ set }) =>
+      () => {
+        set(
+          ClientWritingMessageStateFamily(
+            currentConversationIdRef.current || '',
+          ),
+          (prevState) => {
+            return {
+              ...prevState,
+              loading: true,
+            }
+          },
+        )
+      },
+    [],
+  )
+  const hideConversationLoading = useRecoilCallback(
+    ({ set }) =>
+      () => {
+        set(
+          ClientWritingMessageStateFamily(
+            currentConversationIdRef.current || '',
+          ),
+          (prevState) => {
+            return {
+              ...prevState,
+              loading: false,
+            }
+          },
+        )
+      },
+    [],
+  )
   const pushPricingHookMessage = async (
     permissionSceneType: PermissionWrapperCardSceneType,
   ) => {
@@ -191,23 +214,18 @@ const useClientConversation = () => {
       showChatBox()
     }
     if (addToConversationId) {
-      await clientChatConversationModifyChatMessages(
-        'add',
-        addToConversationId,
-        0,
-        [
-          {
-            type: 'system',
-            text: 'Upgrade to Pro',
-            messageId: uuidV4(),
-            parentMessageId: '',
-            meta: {
-              systemMessageType: 'needUpgrade',
-              permissionSceneType: permissionSceneType,
-            },
+      await ClientConversationMessageManager.addMessages(addToConversationId, [
+        {
+          type: 'system',
+          text: 'Upgrade to Pro',
+          messageId: uuidV4(),
+          parentMessageId: '',
+          meta: {
+            systemMessageType: 'needUpgrade',
+            permissionSceneType: permissionSceneType,
           },
-        ],
-      )
+        },
+      ])
     }
   }
   /**
@@ -226,14 +244,23 @@ const useClientConversation = () => {
    * 更新当前conversation的loading
    * @param loading
    */
-  const updateClientConversationLoading = (loading: boolean) => {
-    setClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading,
-      }
-    })
-  }
+  const updateClientConversationLoading = useRecoilCallback(
+    ({ set }) =>
+      (loading: boolean) => {
+        set(
+          ClientWritingMessageStateFamily(
+            currentConversationIdRef.current || '',
+          ),
+          (prevState) => {
+            return {
+              ...prevState,
+              loading,
+            }
+          },
+        )
+      },
+    [],
+  )
 
   /**
    * 获取当前conversation
@@ -241,7 +268,10 @@ const useClientConversation = () => {
   const getCurrentConversation = async () => {
     const conversationId = currentConversationIdRef.current
     if (conversationId) {
-      return (await clientGetConversation(conversationId)) || null
+      return (
+        (await ClientConversationManager.getConversationById(conversationId)) ||
+        null
+      )
     }
     return null
   }
@@ -281,7 +311,7 @@ const useClientConversation = () => {
     updateMessage,
     updateClientWritingMessage,
     updateClientConversationLoading,
-    getConversation: clientGetConversation,
+    getConversation: ClientConversationManager.getConversationById,
     getCurrentConversation,
   }
 }

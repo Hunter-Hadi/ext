@@ -1,6 +1,6 @@
-import { orderBy } from 'lodash-es'
+import orderBy from 'lodash-es/orderBy'
 
-import { IUserChatMessageExtraMetaContextType } from '@/features/chatgpt/types'
+import { IUserChatMessageExtraMetaContextType } from '@/features/indexed_db/conversations/models/Message'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 

@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Uzdodiet jautājumus par jebkuru attēlu un saņemiet nekavējoties atbildes.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Vienkārši uzņemiet ekrānuzņēmumu un uzdodiet jautājumus nekavējoties.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Darbojas ar labākajiem AI modeļiem: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ietaupiet 53% tagad"
+    "sidebar__promotion_dialog__discount__title": "Ietaupiet 53% tagad",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Augšupielādētie faili ir pārāk lieli. Lūdzu, izmantojiet AI modeli ar lielāku konteksta logu vai augšupielādējiet mazākus failus.",
+    "chat__user_message__contexts__file__preview__tips": "Formatēšana var būt nesaskaņota no avota."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Ievadiet",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "lai izvēlētos opciju.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Noklikšķiniet, lai aizstātu atlasīto tekstu ar AI ģenerētu saturu.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Jūs varat lūgt AI precizēt AI ģenerēto saturu, kā vien vēlaties."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Jūs varat lūgt AI precizēt AI ģenerēto saturu, kā vien vēlaties.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Noklikšķiniet, lai atvērtu sānjoslu un sazinātos ar AI, apkopotu jebkuru lapu, uzdotu jautājumus par tīmekli vai izveidotu AI mākslu.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Noklikšķiniet, lai apkopotu un uzdotu jautājumus par šo e-pastu.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Noklikšķiniet, lai apkopotu un uzdotu jautājumus par šo PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Noklikšķiniet, lai apkopotu un uzdotu jautājumus par šo YouTube video.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Noklikšķiniet, lai nekavējoties ģenerētu personalizētu atbildi.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Noklikšķiniet, lai nekavējoties ģenerētu personalizētu melnrakstu vai uzlabotu savu melnrakstu."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Paldies, ka dalījāties savu pieredzi ar mums. 🙏",

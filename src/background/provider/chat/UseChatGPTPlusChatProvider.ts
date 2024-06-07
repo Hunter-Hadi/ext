@@ -1,3 +1,4 @@
+import orderBy from 'lodash-es/orderBy'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
@@ -11,11 +12,11 @@ import {
   IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { backgroundConversationDB } from '@/features/indexed_db/conversations/background'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 import { isRichAIMessage} from '@/features/chatgpt/utils/chatMessageUtils'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
@@ -36,7 +37,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   get conversation() {
     return this.useChatGPTPlusChat.conversation
   }
-  async createConversation(initConversationData: Partial<IChatConversation>) {
+  async createConversation(initConversationData: Partial<IConversation>) {
     return await this.useChatGPTPlusChat.createConversation(
       initConversationData,
     )
@@ -52,18 +53,30 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIRequestHistoryMessage[] = []
-    const conversationDetail =
-      await ConversationManager.conversationDB.getConversationById(
-        question.conversationId,
-      )
+    const conversationDetail = await ConversationManager.getConversationById(
+      question.conversationId || '',
+    )
     let backendAPI: IMaxAIChatGPTBackendAPIType = 'get_chatgpt_response'
     const docId = conversationDetail?.meta?.docId
     if (conversationDetail) {
       // 查看最后一条消息是不是待完成的aiMessage
       let isUnFinishAIMessage = false // 其实这里的意思是summary的message有没有完成
-      const lastMessage =
-        conversationDetail.messages.length &&
-        conversationDetail.messages[conversationDetail.messages.length - 1]
+      const messages = question.conversationId
+        ? await backgroundConversationDB.messages
+            .where('conversationId')
+            .equals(question.conversationId)
+            .toArray((list) => {
+              return list.map((item) => ({
+                messageId: item.messageId,
+                created_at: item.created_at,
+              }))
+            })
+        : []
+      const lastMessageId =
+        orderBy(messages, ['created_at'], ['desc'])?.[0]?.messageId || ''
+      const lastMessage = await backgroundConversationDB.messages.get(
+        lastMessageId,
+      )
       if (lastMessage && isRichAIMessage(lastMessage)) {
         // 有originalMessage说明是增强型的AI message
         if (

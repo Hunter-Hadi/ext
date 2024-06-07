@@ -1,0 +1,1 @@
+export const CURRENT_CONVERSATION_VERSION = 3

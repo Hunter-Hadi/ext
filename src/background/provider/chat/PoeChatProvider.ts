@@ -7,7 +7,7 @@ import {
 } from '@/background/provider/chat/ChatAdapter'
 import { PoeChat } from '@/background/src/chat'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
 
 /**
  * @deprecated - poe是竞对, 不再维护

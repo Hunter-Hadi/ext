@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
 
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
-import { IUserChatMessage } from '@/features/chatgpt/types'
+import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message';
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 

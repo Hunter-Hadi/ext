@@ -67,9 +67,6 @@ const SettingsPerksPage = lazy(() => import('@/pages/settings/pages/perks'))
 const SettingsSearchWithAIPage = lazy(
   () => import('@/pages/settings/pages/search_with_ai'),
 )
-const SettingsDevTestPrompt = React.lazy(
-  () => import('@/pages/settings/pages/dev_test_prompt'),
-)
 const SettingsSidebarPage = React.lazy(
   () => import('@/pages/settings/pages/sidebar'),
 )
@@ -236,9 +233,6 @@ const SettingsApp: FC = () => {
                       {route === '/perks' && <SettingsPerksPage />}
                       {route === '/search-with-ai' && (
                         <SettingsSearchWithAIPage />
-                      )}
-                      {route === '/dev-test-prompt' && (
-                        <SettingsDevTestPrompt />
                       )}
                     </Stack>
                   </Stack>

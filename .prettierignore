@@ -1,3 +1,5 @@
 /pdf/**/*.js
 !/src/lib/react-devtools.js
+src/i18n/locales/**/*.json
+src/lib/**/*.*
 /dist/*

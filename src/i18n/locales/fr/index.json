@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Posez des questions sur n'importe quelle image et obtenez des réponses instantanées.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Prenez simplement une capture d'écran et posez immédiatement des questions.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Alimenté par les meilleurs modèles d'IA : GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Économisez 53% maintenant"
+    "sidebar__promotion_dialog__discount__title": "Économisez 53% maintenant",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Les fichiers téléchargés sont trop volumineux. Veuillez utiliser un modèle d'IA avec une fenêtre contextuelle plus grande ou télécharger des fichiers plus petits.",
+    "chat__user_message__contexts__file__preview__tips": "La mise en forme peut être incohérente par rapport à la source."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Entrée",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pour sélectionner l'option.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Cliquez pour remplacer le texte sélectionné par du contenu généré par l'IA.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Vous pouvez demander à l'IA de peaufiner le contenu généré par l'IA comme vous le souhaitez."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Vous pouvez demander à l'IA de peaufiner le contenu généré par l'IA comme vous le souhaitez.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Cliquez pour ouvrir la barre latérale et discuter avec l'IA, résumer n'importe quelle page, poser des questions sur le web ou créer de l'art IA.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Cliquez pour résumer et poser des questions sur cet e-mail.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Cliquez pour résumer et poser des questions sur ce PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Cliquez pour résumer et poser des questions sur cette vidéo YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Cliquez pour générer une réponse personnalisée instantanément.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Cliquez pour générer un brouillon personnalisé instantanément ou améliorer votre brouillon."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Merci d'avoir partagé votre expérience avec nous. 🙏",

@@ -11,9 +11,9 @@ import {
   MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppLocalStorageState } from '@/store'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 const useThirdProviderSettings = () => {
   const [appLocalStorage, setAppLocalStorage] =

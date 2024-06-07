@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ጥያቄዎችን ለመጻፍ ጥያቄ የሚገኙ የምግብ መስሪያዎችን ጥያቄ መልእክት.",
     "sidebar__promotion_dialog__vision__content_item3__description": "በቀላሉ ሱማሌን የጥያቄዎችን ጥያቄ ለመጻፍ ጥያቄ የሚገኙ.",
     "sidebar__promotion_dialog__vision__content_item4__description": "በሩቅ በማስተላለፍ የሚገኙ የብሔራዊና የፍቃድ መስሪያዎች: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "ከምስል 53% ይቀርባል"
+    "sidebar__promotion_dialog__discount__title": "ከምስል 53% ይቀርባል",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "የማታውቂያ ፋይሎች በጣም እየተጠቀሙ ነው። እባክዎ የትርጉም መልኩን ያስቀምጡ ወይም ፋይሎችን በጣም እንዴት እንደሚጠቀሙ AI ሞዴል ይጠቀሙ።",
+    "chat__user_message__contexts__file__preview__tips": "በመረጃ ላይ የተሰናዳን ማስተካከያ ይሻላል።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "ይጫኑ",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "የአማራጭን አማራጭ ይምረጡ።",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "የተመረጠ የአስተካክል ጽሁፍን AI-ተግባር የተሰረዘ ጽሑፍ ለመርጠም ይጠቀሙ.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "እባክዎ ለማስተካከል አንዳንድ ጥያቄ ያግኙን AI-ን የAI-ተሰናክሏል ይሰጣል."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "እባክዎ ለማስተካከል አንዳንድ ጥያቄ ያግኙን AI-ን የAI-ተሰናክሏል ይሰጣል.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "ለስልክ ጋር በአንድ ጊዜ የሚከተለውን ስልክ ለመከታተል, የሚከተለውን ገጽ ማግኘት, የሚጠየቁትን የድረ-ገጽ ጥያቄ ለመጠየቅ ወደ AI ተከታተሉ.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "የዚህ ኢሜል ጥቅም ለመጠቀም እና ጥያቄዎች ለመጠየቅ ይጠቀሙ.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "የዚህ PDF ጥቅም ለመጠቀም እና ጥያቄዎች ለመጠየቅ ይጠቀሙ.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "የዚህ YouTube ቪዲዮ ጥቅም ለመጠቀም እና ጥያቄዎች ለመጠየቅ ይጠቀሙ.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "የሚከተለውን መልእክት በአንድ ጊዜ የሚከተለውን መልእክት ለመጠየቅ ወደ AI ተከታተሉ.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "የሚከተለውን መልእክት በአንድ ጊዜ የሚከተለውን መልእክት ለመጠየቅ ወደ AI ተከታተሉ."
   },
   "survey": {
     "funnel_survey__submit_success__title": "እኛን ለማስተላለፍ እናመሰግናለን. 🙏",

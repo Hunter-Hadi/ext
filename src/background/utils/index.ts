@@ -72,9 +72,14 @@ export const backgroundSendClientMessage = async (
     } catch (e) {
       console.error(
         'backgroundSendClientMessage: \t',
-        e,
+        '\n',
+        event,
+        '\n',
         currentTab.url,
+        '\n',
         currentTab.id,
+        '\n',
+        e,
       )
       return undefined
     }

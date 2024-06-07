@@ -1,21 +1,22 @@
-import { isArray } from 'lodash-es'
+import isArray from 'lodash-es/isArray'
 import sanitizeHtml from 'sanitize-html'
 import sanitize from 'sanitize-html'
 
-import { IChatConversation } from '@/background/src/chatConversations'
-import {
-  IAIResponseMessage,
-  IChatMessage,
-  ISystemChatMessage,
-  IThirdChatMessage,
-  IUserChatMessage,
-} from '@/features/chatgpt/types'
 import {
   isAIMessage,
   isSystemMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+  ISystemChatMessage,
+  IThirdChatMessage,
+  IUserChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { getOriginalFileURL } from '@/utils/dataHelper/websiteHelper'
 export const formatSecondsAsTimestamp = (seconds: string) => {
@@ -375,12 +376,22 @@ export const formatChatMessageContent = (
   message: IChatMessage,
   isDownload: boolean,
 ) => {
-  if (isUserMessage(message)) {
-    return formatUserMessageContent(message)
-  } else if (isAIMessage(message)) {
-    return formatAIMessageContent(message, isDownload)
-  } else {
-    return formatThirdOrSystemMessageContent(message as ISystemChatMessage)
+  try {
+    let result = ''
+    if (isUserMessage(message)) {
+      result = formatUserMessageContent(message)
+    } else if (isAIMessage(message)) {
+      result = formatAIMessageContent(message, isDownload)
+    } else {
+      result = formatThirdOrSystemMessageContent(message as ISystemChatMessage)
+    }
+    // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
+    if (typeof result !== 'string') {
+      return JSON.stringify(result)
+    }
+    return result
+  } catch (e) {
+    return ''
   }
 }
 export const safeGetAttachmentExtractedContent = (
@@ -404,11 +415,13 @@ export const safeGetAttachmentExtractedContent = (
  * @param needSystemOrThirdMessage 是否需要系统消息或第三方消息
  */
 export const formatMessagesToLiteHistory = async (
-  conversation: IChatConversation,
+  conversation: IConversation,
   needSystemOrThirdMessage: boolean,
 ): Promise<string> => {
   const title = conversation.title
-  const messages = conversation.messages || []
+  const messages = await ClientConversationMessageManager.getMessages(
+    conversation.id,
+  )
   const conversationType = conversation.type
   const liteHistory: string[] = []
   messages.forEach((message) => {

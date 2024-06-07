@@ -1,5 +1,5 @@
-import { sortBy } from 'lodash-es'
 import cloneDeep from 'lodash-es/cloneDeep'
+import sortBy from 'lodash-es/sortBy'
 import uniqBy from 'lodash-es/uniqBy'
 import { useMemo, useRef } from 'react'
 

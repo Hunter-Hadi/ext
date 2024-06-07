@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Kysy kysymyksiä mistä tahansa kuvasta ja saat välittömät vastaukset.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Ota yksinkertaisesti kuvakaappaus ja kysy mitä tahansa kysymyksiä välittömästi.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Parhaiden tekoälymallien avulla: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Säästä nyt 53%"
+    "sidebar__promotion_dialog__discount__title": "Säästä nyt 53%",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Ladatut tiedostot ovat liian suuria. Käytä AI-mallia, jossa on suurempi kontekstiruutu tai lataa pienempiä tiedostoja.",
+    "chat__user_message__contexts__file__preview__tips": "Muotoilu voi olla epäjohdonmukaista lähteestä."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "valitaksesi vaihtoehdon.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Napsauta korvataksesi valitun tekstin tekoälyn luomalla sisällöllä.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Voit pyytää tekoälyä tarkentamaan tekoälyn luomaa sisältöä haluamallasi tavalla."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Voit pyytää tekoälyä tarkentamaan tekoälyn luomaa sisältöä haluamallasi tavalla.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Napsauta avataksesi sivupalkin keskustellaksesi tekoälyn kanssa, tiivistääksesi minkä tahansa sivun, kysyäksesi verkosta tai luodaksesi tekoälytaidetta.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Napsauta tiivistääksesi ja kysyäksesi kysymyksiä tästä sähköpostista.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Napsauta tiivistääksesi ja kysyäksesi kysymyksiä tästä PDF-tiedostosta.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Napsauta tiivistääksesi ja kysyäksesi kysymyksiä tästä YouTube-videosta.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Napsauta luodaksesi välittömästi henkilökohtaisen vastauksen.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Napsauta luodaksesi välittömästi henkilökohtaisen luonnoksen tai parantaaksesi luonnostasi."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Kiitos, kun jaat kokemuksesi kanssamme. 🙏",

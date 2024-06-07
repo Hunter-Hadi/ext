@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Stel vragen over elke afbeelding en krijg direct antwoorden.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Maak eenvoudig een schermafbeelding en stel onmiddellijk vragen.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Aangedreven door de beste AI-modellen: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Bespaar nu 53%"
+    "sidebar__promotion_dialog__discount__title": "Bespaar nu 53%",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "De geüploade bestanden zijn te groot. Gebruik alstublieft een AI-model met een groter contextvenster of upload kleinere bestanden.",
+    "chat__user_message__contexts__file__preview__tips": "De opmaak kan inconsistent zijn vanuit de bron."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "om de optie te selecteren.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klik om de geselecteerde tekst te vervangen door AI-gemaakte inhoud.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "U kunt de AI vragen om de door AI gegenereerde inhoud naar wens te verfijnen."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "U kunt de AI vragen om de door AI gegenereerde inhoud naar wens te verfijnen.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Klik om de zijbalk te openen om te chatten met AI, een pagina samen te vatten, het web te bevragen of AI-kunst te maken.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Klik om deze e-mail samen te vatten en vragen te stellen.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klik om dit PDF-bestand samen te vatten en vragen te stellen.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klik om deze YouTube-video samen te vatten en vragen te stellen.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klik om direct een gepersonaliseerd antwoord te genereren.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klik om direct een gepersonaliseerde conceptversie te genereren of je concept te verbeteren."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Bedankt voor het delen van uw ervaring met ons. 🙏",

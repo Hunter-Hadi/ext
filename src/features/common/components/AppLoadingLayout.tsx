@@ -19,6 +19,7 @@ const AppLoadingLayout: FC<{
     <React.Fragment>
       {loading ? (
         <Box
+          className={'maxai--loading'}
           sx={{
             display: 'flex',
             alignContent: 'center',

@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Herhangi bir görüntü hakkında sorular sorun ve anında yanıtlar alın.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Basitçe ekran görüntüsü alın ve hemen herhangi bir soru sorun.",
     "sidebar__promotion_dialog__vision__content_item4__description": "En iyi yapay zeka modelleriyle desteklenir: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Şimdi %53 tasarruf edin"
+    "sidebar__promotion_dialog__discount__title": "Şimdi %53 tasarruf edin",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Yüklenen dosyalar çok büyük. Lütfen daha geniş bir bağlam penceresine sahip bir AI modeli kullanın veya daha küçük dosyalar yükleyin.",
+    "chat__user_message__contexts__file__preview__tips": "Biçimlendirme kaynağından farklı olabilir."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "tuşuna basın.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Seçili metni yapay zeka tarafından oluşturulan içerikle değiştirmek için tıklayın.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI tarafından oluşturulan içeriği istediğiniz gibi geliştirmek için AI'ya sorabilirsiniz."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "AI tarafından oluşturulan içeriği istediğiniz gibi geliştirmek için AI'ya sorabilirsiniz.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Yapay zeka ile sohbet etmek, herhangi bir sayfayı özetlemek, web'e soru sormak veya yapay zeka sanatı oluşturmak için kenar çubuğunu açmak için tıklayın.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Bu e-posta hakkında özet yapmak ve sorular sormak için tıklayın.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Bu PDF hakkında özet yapmak ve sorular sormak için tıklayın.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Bu YouTube videosu hakkında özet yapmak ve sorular sormak için tıklayın.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kişiselleştirilmiş bir yanıt anında oluşturmak için tıklayın.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kişiselleştirilmiş bir taslak anında oluşturmak veya taslağınızı iyileştirmek için tıklayın."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Deneyiminizi bizimle paylaştığınız için teşekkür ederiz. 🙏",

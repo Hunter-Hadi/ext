@@ -19,10 +19,10 @@ import {
   ContextMenuIcon,
 } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { type IAIResponseMessage, type IAIResponseOriginalMessageNavMetadata } from '@/features/chatgpt/types';
 import { useContextMenuList } from '@/features/contextMenu'
 // import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import { IAIResponseMessage, IAIResponseOriginalMessageNavMetadata } from '@/features/indexed_db/conversations/models/Message';
 import { type IPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper';
 import { chromeExtensionClientOpenPage } from '@/utils'
 

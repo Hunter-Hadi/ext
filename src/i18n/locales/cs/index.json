@@ -873,7 +873,9 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Kladejte otázky k libovolnému obrázku a okamžitě získávejte odpovědi.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Jednoduše udělejte snímek obrazovky a okamžitě položte otázky.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Poháněno nejlepšími AI modely: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ušetřete 53% nyní"
+    "sidebar__promotion_dialog__discount__title": "Ušetřete 53% nyní",
+    "provider__chatgpt__upload_file_error__total_too_large__text": "Nahrané soubory jsou příliš velké. Použijte prosím model AI s větším oknem kontextu nebo nahrajte menší soubory.",
+    "chat__user_message__contexts__file__preview__tips": "Formátování může být nekonzistentní oproti zdroji."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1221,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "pro výběr možnosti.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Kliknutím nahraďte vybraný text obsahem generovaným umělou inteligencí.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Můžete požádat AI, aby upravilo obsah generovaný AI podle vašich přání."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Můžete požádat AI, aby upravilo obsah generovaný AI podle vašich přání.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Klikněte pro otevření postranního panelu a chatování s umělou inteligencí, shrnutí libovolné stránky, dotazování webu nebo tvorbu uměleckých děl pomocí umělé inteligence.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Klikněte pro shrnutí a položení otázek k této e-mailové zprávě.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klikněte pro shrnutí a položení otázek k tomuto PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klikněte pro shrnutí a položení otázek k tomuto YouTube videu.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klikněte pro okamžité vygenerování personalizované odpovědi.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klikněte pro okamžité vygenerování personalizovaného návrhu nebo vylepšení vašeho návrhu."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Děkujeme, že jste se s námi podělili o svou zkušenost. 🙏",

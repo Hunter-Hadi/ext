@@ -1,4 +1,4 @@
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 import {
   IShortcutEngineExternalEngine,
   pushOutputToChat,

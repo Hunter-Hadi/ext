@@ -2,6 +2,7 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import BackgroundAbortFetch from '@/background/api/BackgroundAbortFetch'
+import { backgroundPost } from '@/background/api/backgroundFetch'
 import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
@@ -422,6 +423,25 @@ export const ClientMessageInit = () => {
             }
           }
           break
+        case 'Client_emitPricingHooks': {
+          const { action, name } = data
+          const userInfo = await getChromeExtensionUserInfo(false)
+          if (name) {
+            const data: Record<string, string> = {
+              action,
+              name,
+            }
+            if (userInfo?.role?.name) {
+              data.role = userInfo.role.name
+            }
+            await backgroundPost(`/user/cardlog`, data)
+          }
+          return {
+            success: true,
+            data: true,
+            message: 'ok',
+          }
+        }
         case 'Client_getLiteChromeExtensionSettings': {
           let fromUrl = sender.tab?.url || sender.url
           if (!fromUrl) {

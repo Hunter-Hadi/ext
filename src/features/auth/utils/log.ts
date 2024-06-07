@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash-es/cloneDeep'
 import debounce from 'lodash-es/debounce'
 
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
@@ -12,11 +13,10 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
-import { IContextMenuItem } from '@/features/contextMenu/types'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
-import { IPromptLibraryCardType } from '@/features/prompt_library/types'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
@@ -407,31 +407,46 @@ const generateTrackParams = async (
   }
 }
 
+/**
+ * 生成问题的分析数据给 mixpanel或者后端接口
+ * @param userMessage
+ * @param contextMenuItemId
+ */
+export const generateQuestionAnalyticsData = async (
+  userMessage: IUserChatMessage,
+  contextMenuItemId?: string,
+) => {
+  const analytics = cloneDeep(userMessage.meta?.analytics || {})
+  if (!analytics.promptType) {
+    const { promptType } = getPromptTypeByContextMenu(contextMenuItemId)
+    analytics.promptType = promptType
+  }
+  const conversation = userMessage.conversationId
+    ? await ClientConversationManager.getConversationById(
+        userMessage.conversationId,
+      )
+    : null
+  if (!analytics.featureName && conversation) {
+    analytics.featureName = getFeatureNameByConversationAndContextMenu(
+      conversation,
+      contextMenuItemId,
+    )
+  }
+  console.log(`generateQuestionAnalyticsData`, analytics)
+  return analytics
+}
+
 export const getPromptTypeByContextMenu = (
-  contextMenuItem: IContextMenuItem | undefined,
-  oneClickPromptMeta?: {
-    isOneClickPrompt?: boolean
-    oneClickPromptType?: IPromptLibraryCardType
-  },
+  contextMenuItemId?: string,
 ): {
   promptType: 'preset' | 'custom' | 'freestyle'
   instantType?: 'reply' | 'refine' | 'new' | null
 } => {
-  const { isOneClickPrompt = false, oneClickPromptType = 'public' } =
-    oneClickPromptMeta ?? {}
-
-  if (isOneClickPrompt) {
-    return {
-      promptType: oneClickPromptType === 'private' ? 'custom' : 'preset',
-    }
-  }
-
-  if (contextMenuItem) {
-    const contextMenuId = contextMenuItem.id
+  if (contextMenuItemId) {
     const presetActionPromptIds = Object.values(CONTEXT_MENU_DRAFT_TYPES)
     if (
       defaultInputAssistantRefineDraftContextMenuJson.find(
-        (item) => item.id === contextMenuId,
+        (item) => item.id === contextMenuItemId,
       )
     ) {
       return {
@@ -440,7 +455,7 @@ export const getPromptTypeByContextMenu = (
       }
     } else if (
       defaultInputAssistantComposeNewContextMenuJson.find(
-        (item) => item.id === contextMenuId,
+        (item) => item.id === contextMenuItemId,
       )
     ) {
       return {
@@ -449,7 +464,7 @@ export const getPromptTypeByContextMenu = (
       }
     } else if (
       defaultEditAssistantComposeReplyContextMenuJson.find(
-        (item) => item.id === contextMenuId,
+        (item) => item.id === contextMenuItemId,
       )
     ) {
       return {
@@ -457,16 +472,16 @@ export const getPromptTypeByContextMenu = (
         instantType: 'reply',
       }
     } else if (
-      PRESET_PROMPT_IDS.find((promptId) => promptId === contextMenuId) ||
+      PRESET_PROMPT_IDS.find((promptId) => promptId === contextMenuItemId) ||
       defaultContextMenuJson.find(
-        (contextMenu) => contextMenu.id === contextMenuId,
+        (contextMenu) => contextMenu.id === contextMenuItemId,
       )
     ) {
       return {
         promptType: 'preset',
       }
     } else if (
-      presetActionPromptIds.find((promptId) => promptId === contextMenuId)
+      presetActionPromptIds.find((promptId) => promptId === contextMenuItemId)
     ) {
       return {
         promptType: 'preset',
@@ -486,12 +501,12 @@ export const getPromptTypeByContextMenu = (
 
 export const getFeatureNameByConversationAndContextMenu = (
   conversation: IConversation | null,
-  contextMenuItem?: IContextMenuItem,
+  contextMenuItemId?: string,
 ) => {
   if (conversation) {
     // 1. 先判断是否是 instant
     const { promptType, instantType } =
-      getPromptTypeByContextMenu(contextMenuItem)
+      getPromptTypeByContextMenu(contextMenuItemId)
 
     if (promptType === 'preset') {
       if (instantType === 'refine') {

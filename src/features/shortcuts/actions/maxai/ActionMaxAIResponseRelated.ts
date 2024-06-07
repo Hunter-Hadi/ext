@@ -141,6 +141,8 @@ export class ActionMaxAIResponseRelated extends Action {
         chrome_extension_version: APP_VERSION,
         prompt_id: SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
         prompt_name: 'related_questions',
+        prompt_action_type: 'chat_complete',
+        prompt_type: 'preset',
         temperature: 1,
       })
       const relatedQuestionsText = result?.data?.text || '[]'

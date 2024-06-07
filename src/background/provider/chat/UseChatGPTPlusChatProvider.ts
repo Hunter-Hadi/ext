@@ -222,6 +222,8 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
             ],
             prompt_name: 'summary_citation',
             prompt_id: SUMMARY__CITATION__PROMPT_ID,
+            prompt_action_type: 'chat_complete',
+            prompt_type: 'preset',
           }),
         },
       )

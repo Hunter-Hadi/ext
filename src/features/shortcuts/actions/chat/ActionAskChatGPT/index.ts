@@ -8,8 +8,7 @@ import {
 } from '@/background/src/chat/util'
 import {
   authEmitPricingHooksLog,
-  getFeatureNameByConversationAndContextMenu,
-  getPromptTypeByContextMenu,
+  generateQuestionAnalyticsData,
 } from '@/features/auth/utils/log'
 import { isPermissionCardSceneType } from '@/features/auth/utils/permissionHelper'
 import { getAIProviderChatFiles } from '@/features/chatgpt'
@@ -335,6 +334,10 @@ export class ActionAskChatGPT extends Action {
         }
       }
       this.question.meta.messageVisibleText = messageVisibleText
+      this.question.meta.analytics = await generateQuestionAnalyticsData(
+        this.question,
+        contextMenu?.id,
+      )
       if (
         clientConversationEngine &&
         clientMessageChannelEngine &&
@@ -365,14 +368,8 @@ export class ActionAskChatGPT extends Action {
             data: {
               name: contextMenu?.text || fallbackId,
               id: contextMenu?.id || fallbackId,
-              type: getPromptTypeByContextMenu(contextMenu, {
-                isOneClickPrompt: this.question.meta.isOneClickPrompt,
-                oneClickPromptType: this.question.meta.promptType,
-              }).promptType,
-              featureName: getFeatureNameByConversationAndContextMenu(
-                conversation,
-                contextMenu,
-              ),
+              type: this.question.meta.analytics.promptType,
+              featureName: this.question.meta.analytics.featureName,
               host: getCurrentDomainHost(),
               conversationId: clientConversationEngine.currentConversationId,
               url: location.href,

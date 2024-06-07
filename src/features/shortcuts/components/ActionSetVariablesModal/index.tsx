@@ -20,7 +20,7 @@ import { isProduction } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { IPromptLibraryCardType } from '@/features/prompt_library/types'
+import { IUserMessageMetaType } from '@/features/indexed_db/conversations/models/Message'
 import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import {
   getSetVariablesModalSelectCache,
@@ -35,6 +35,7 @@ import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIP
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export interface ActionSetVariablesModalConfig {
@@ -54,13 +55,12 @@ export interface ActionSetVariablesModalConfig {
   // askAI时额外的字段
   askChatGPTActionParameters?: ActionParameters
   MaxAIPromptActionConfig?: MaxAIPromptActionConfig
-  // one click prompt 的类型
-  promptType?: IPromptLibraryCardType
-  isOneClickPrompt?: boolean
   // 设置运行时显示在target的变量
   notBuiltInVariables?: string[]
   // 设置是否需要携带上下文
   includeHistory?: boolean
+  // 需要添加到question的meta的数据
+  questionMeta?: Partial<IUserMessageMetaType>
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -325,22 +325,23 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             : 'ASK_CHAT_GPT_WITH_PREFIX',
           AskChatGPTActionQuestion: {
             text: '{{LAST_ACTION_OUTPUT}}',
-            meta: {
-              outputMessageId: insertMessageId,
-              contextMenu: {
-                id: config.contextMenuId || uuidV4(),
-                droppable: false,
-                parent: uuidV4(),
-                text: config.title,
-                data: {
-                  editable: false,
-                  type: 'shortcuts',
-                  actions: [],
+            meta: mergeWithObject([
+              {
+                outputMessageId: insertMessageId,
+                contextMenu: {
+                  id: config.contextMenuId || uuidV4(),
+                  droppable: false,
+                  parent: uuidV4(),
+                  text: config.title,
+                  data: {
+                    editable: false,
+                    type: 'shortcuts',
+                    actions: [],
+                  },
                 },
               },
-              isOneClickPrompt: config.isOneClickPrompt,
-              promptType: config.promptType,
-            },
+              config.questionMeta || {},
+            ]),
           },
           MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
           ...currentParameters,

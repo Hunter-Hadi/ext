@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "لتحديد الخيار.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "انقر لاستبدال النص المحدد بمحتوى تم إنشاؤه بواسطة الذكاء الاصطناعي.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "يمكنك طلب من الذكاء الاصطناعي تحسين المحتوى الذي تم إنشاؤه بواسطة الذكاء الاصطناعي كما تريد."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "يمكنك طلب من الذكاء الاصطناعي تحسين المحتوى الذي تم إنشاؤه بواسطة الذكاء الاصطناعي كما تريد.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "انقر لفتح الشريط الجانبي للدردشة مع الذكاء الاصطناعي، أو تلخيص أي صفحة، أو طرح أسئلة عن الويب، أو إنشاء فن الذكاء الاصطناعي.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "انقر لتلخيص وطرح أسئلة حول هذا البريد الإلكتروني.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "انقر لتلخيص وطرح أسئلة حول هذا المستند PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "انقر لتلخيص وطرح أسئلة حول هذا الفيديو على YouTube.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "انقر لإنشاء رد شخصي فوري.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "انقر لإنشاء مسودة شخصية فورية، أو تحسين مسودتك."
   },
   "survey": {
     "funnel_survey__submit_success__title": "شكرًا لمشاركة تجربتك معنا. 🙏",

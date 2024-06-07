@@ -17,7 +17,7 @@ import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export const PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY =
   'PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY'
-const PAGINATION_CONVERSATION_MESSAGES_QUERY_PAGE_SIZE = 10
+const PAGINATION_CONVERSATION_MESSAGES_QUERY_PAGE_SIZE = 20
 const usePaginationConversationMessages = (conversationId: string) => {
   const { isLogin } = useAuthLogin()
   const { maxAIBetaFeaturesLoaded, maxAIBetaFeatures } = useMaxAIBetaFeatures()

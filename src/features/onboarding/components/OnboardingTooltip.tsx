@@ -1,3 +1,6 @@
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
 import { styled } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import React, { FC, PropsWithChildren, useCallback, useEffect } from 'react'
@@ -22,7 +25,7 @@ const BlackTooltip = styled(({ className, ...props }: TooltipProps) => (
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.common.black,
     color: '#fff',
-    padding: '12px',
+    padding: '0px',
     fontSize: '14px',
     lineHeight: '1.5',
     boxSizing: 'border-box',
@@ -40,7 +43,7 @@ export interface IOnboardingTooltipProps extends TooltipProps {
 
   // 外部组件可以通过传入 triggerState 控制 OnboardingTooltip是否显示，
   // 如果传递了 showStateTrigger, 内部需要根据 showStateTrigger 控制 Tooltip 的显示状态，同时只显示一次（根据 sceneType 获取 onboarding cache flag）
-  // 使用 function 的好处，是 showStateTrigger 会一直更新触发 useEffect,  OnboardingTooltip 就会实时的判断是否显示 tooltip
+  // 使用 function 的问题，是 showStateTrigger 如果是匿名函数会一直更新触发 useEffect,  OnboardingTooltip 就会一直去判断是否显示 tooltip
   showStateTrigger?: boolean | (() => boolean)
 
   floatingMenuTooltip?: boolean
@@ -48,8 +51,15 @@ export interface IOnboardingTooltipProps extends TooltipProps {
 
   InformationBarProps?: ITooltipInformationBarProps
 
+  referenceElement: HTMLElement
+
   // 在打开 Tooltip 之前的 回掉函数，如果这个函数返回 false ，会阻止 Tooltip 打开
-  beforeTooltipShow?: () => Promise<boolean> | boolean
+  beforeTooltipShow?: (
+    container?: HTMLElement | null,
+    sceneType?: IOnBoardingSceneType,
+  ) => Promise<boolean> | boolean
+
+  closeWhenElementClick?: boolean
 }
 
 const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
@@ -62,10 +72,12 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
     floatingMenuTooltip,
     InformationBarProps,
     beforeTooltipShow,
+    closeWhenElementClick,
+    referenceElement,
     ...resetProps
   } = props
 
-  let container: any = document.body
+  let container: HTMLElement | null = document.body
   if (minimumTooltip) {
     container = getAppMinimizeContainerElement()
   } else {
@@ -74,7 +86,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
       : getMaxAISidebarRootElement()
   }
   if (props.PopperProps?.container) {
-    container = props.PopperProps.container
+    container = props.PopperProps.container as HTMLElement
   }
   if (!container) {
     container = document.body
@@ -85,7 +97,7 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
   const openTooltip = useCallback(async () => {
     // 如果返回 false ，会阻止 Tooltip 打开
     const beforeTooltipShowResponse = beforeTooltipShow
-      ? await beforeTooltipShow()
+      ? await beforeTooltipShow(container, sceneType)
       : true
 
     if (beforeTooltipShowResponse) {
@@ -93,11 +105,13 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
       // 判断是否打开过，如果打开过则不再显示
       const opened = await getAlreadyOpenedCacheBySceneType(sceneType)
       if (!opened) {
-        setOpen(true)
-        setOpenedCacheBySceneType(sceneType)
+        // 设置完缓存，再 setOpen
+        setOpenedCacheBySceneType(sceneType).then(() => {
+          setOpen(true)
+        })
       }
     }
-  }, [sceneType, beforeTooltipShow])
+  }, [sceneType, beforeTooltipShow, container])
 
   const closeTooltip = useCallback(() => {
     setOpen(false)
@@ -122,6 +136,15 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
     }
   }, [showStateTrigger, openTooltip, closeTooltip])
 
+  useEffect(() => {
+    if (referenceElement && closeWhenElementClick && open) {
+      referenceElement.addEventListener('click', closeTooltip)
+      return () => {
+        referenceElement.removeEventListener('click', closeTooltip)
+      }
+    }
+  }, [closeWhenElementClick, referenceElement, open])
+
   return (
     <BlackTooltip
       placement={props.placement || 'top'}
@@ -132,7 +155,8 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
         container,
         ...resetProps.PopperProps,
         style: {
-          zIndex: 2147483619,
+          textAlign: 'left',
+          zIndex: 2147483621,
           ...props.style,
         },
         sx: {
@@ -152,9 +176,36 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
         },
       }}
       title={
-        <TooltipInformationBar {...InformationBarProps}>
-          {resetProps.title}
-        </TooltipInformationBar>
+        <Box
+          sx={{
+            position: 'relative',
+            p: 1.5,
+            pt: 2,
+            pr: 2.25,
+            textTransform: 'none',
+          }}
+        >
+          <IconButton
+            size='small'
+            onClick={closeTooltip}
+            sx={{
+              position: 'absolute',
+              top: 3,
+              right: 3,
+              p: '2px',
+            }}
+          >
+            <CloseOutlinedIcon
+              sx={{
+                fontSize: '14px',
+                color: 'rgba(255, 255, 255, 0.7)',
+              }}
+            />
+          </IconButton>
+          <TooltipInformationBar {...InformationBarProps}>
+            {resetProps.title}
+          </TooltipInformationBar>
+        </Box>
       }
     >
       <div>{props.children}</div>

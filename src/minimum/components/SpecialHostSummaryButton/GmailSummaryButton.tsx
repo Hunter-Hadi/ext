@@ -1,12 +1,13 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
+import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAISidebarRootElement } from '@/utils'
@@ -17,10 +18,15 @@ const GmailSummaryButton: FC = () => {
   const { element } = useFindElement(
     isPopout ? 'div[jsaction] .G-tF' : 'div[jsaction] > .adF',
   )
+
+  const [summaryButtonContainer, setSummaryButtonContainer] =
+    useState<HTMLElement | null>(null)
+
   return (
     <DynamicComponent
       rootContainer={element}
       customElementName={'max-ai-gmail-summary-button'}
+      onSetContainer={setSummaryButtonContainer}
     >
       <Box
         sx={
@@ -61,6 +67,7 @@ const GmailSummaryButton: FC = () => {
                 }}
               />
             }
+            data-testid='maxai-gmail-summary-button'
             variant={'contained'}
             onClick={() => {
               showChatBox()
@@ -88,6 +95,12 @@ const GmailSummaryButton: FC = () => {
             {t('client:social_media_summary_button__text')}
           </Button>
         </TextOnlyTooltip>
+        {summaryButtonContainer && (
+          <OnboardingTooltipTempPortal
+            sceneType='EMAIL_SUMMARY_BUTTON'
+            container={summaryButtonContainer}
+          />
+        )}
       </Box>
     </DynamicComponent>
   )

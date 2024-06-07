@@ -122,7 +122,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
               Value: '',
               WFSerializationType: 'WFDictionaryFieldValue',
             },
-            // 如果Active message id为空，获取最后一条AI消息
+            // 如果Active message id为空，获取新的ai消息
             WFConditionalIfTrueActions: [
               {
                 type: 'MAXAI_GET_CHAT_MESSAGES',
@@ -133,7 +133,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
               {
                 type: 'SCRIPTS_GET_ITEM_FROM_LIST',
                 parameters: {
-                  ActionGetItemFromListType: 'last',
+                  ActionGetItemFromListType: 'first',
                 },
               },
             ],

@@ -23,10 +23,7 @@ import TextOnlyTooltip, {
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { useFloatingContextMenu } from '@/features/contextMenu'
-import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
-import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
@@ -38,41 +35,8 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   container?: HTMLElement
 }> = (props) => {
   const { conversationId, onDuplicateConversation } = props
-  const [messageList, setMessageList] = useState<IChatMessage[]>([])
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
-  const ref = useRef<HTMLDivElement>(null)
-  const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    if (conversationId) {
-      setLoading(true)
-      ClientConversationMessageManager.getMessages(conversationId)
-        .then((messages) => {
-          setMessageList(messages)
-        })
-        .catch()
-        .finally(() => {
-          setLoading(false)
-        })
-    }
-  }, [conversationId])
-  useEffect(() => {
-    // 检测内部变化，更新滚动条
-    const observer = new MutationObserver(() => {
-      if (ref.current) {
-        ref.current.scrollTop = ref.current.scrollHeight
-      }
-    })
-    if (ref.current) {
-      observer.observe(ref.current, {
-        childList: true,
-        subtree: true,
-      })
-    }
-    return () => {
-      observer.disconnect()
-    }
-  }, [messageList])
   if (!conversationId) {
     return null
   }
@@ -86,27 +50,25 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
           textAlign: 'left',
         }}
       />
-      <AppLoadingLayout loading={loading}>
-        <Stack
-          direction={'row'}
-          justifyContent={'center'}
-          alignItems={'center'}
-          mb={2}
+      <Stack
+        direction={'row'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        mb={2}
+      >
+        <Button
+          variant={'contained'}
+          color={'primary'}
+          onClick={async () => {
+            await continueConversationInSidebar(conversationId, {
+              type: 'Chat',
+            })
+            onDuplicateConversation?.(conversationId)
+          }}
         >
-          <Button
-            variant={'contained'}
-            color={'primary'}
-            onClick={async () => {
-              await continueConversationInSidebar(conversationId, {
-                type: 'Chat',
-              })
-              onDuplicateConversation?.(conversationId)
-            }}
-          >
-            {t('client:context_window__chat_history__continue_in_chat__title')}
-          </Button>
-        </Stack>
-      </AppLoadingLayout>
+          {t('client:context_window__chat_history__continue_in_chat__title')}
+        </Button>
+      </Stack>
     </>
   )
 }

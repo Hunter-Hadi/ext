@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Eingabe",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "um die Option auszuwählen.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klicken Sie hier, um den ausgewählten Text durch KI-generierten Inhalt zu ersetzen.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Sie können die KI bitten, den KI-generierten Inhalt nach Belieben zu verfeinern."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Sie können die KI bitten, den KI-generierten Inhalt nach Belieben zu verfeinern.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Klicken Sie hier, um die Seitenleiste zu öffnen und mit KI zu chatten, eine Seite zusammenzufassen, das Web zu fragen oder KI-Kunst zu erstellen.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Klicken Sie hier, um diese E-Mail zusammenzufassen und Fragen dazu zu stellen.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klicken Sie hier, um dieses PDF zusammenzufassen und Fragen dazu zu stellen.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klicken Sie hier, um dieses YouTube-Video zusammenzufassen und Fragen dazu zu stellen.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klicken Sie hier, um sofort eine personalisierte Antwort zu generieren.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klicken Sie hier, um sofort einen personalisierten Entwurf zu generieren oder Ihren Entwurf zu verbessern."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Vielen Dank, dass Sie Ihre Erfahrung mit uns teilen. 🙏",

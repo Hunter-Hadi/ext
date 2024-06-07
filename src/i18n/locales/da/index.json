@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "for at vælge muligheden.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klik for at erstatte den valgte tekst med AI-genereret indhold.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan bede AI om at forfine det AI-genererede indhold, som du ønsker."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Du kan bede AI om at forfine det AI-genererede indhold, som du ønsker.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Klik for at åbne sidepanelet for at chatte med AI, opsummere enhver side, spørge nettet eller skabe AI-kunst.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Klik for at opsummere og stille spørgsmål om denne e-mail.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klik for at opsummere og stille spørgsmål om denne PDF.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klik for at opsummere og stille spørgsmål om denne YouTube-video.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klik for at generere et personligt svar øjeblikkeligt.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klik for at generere et personligt udkast øjeblikkeligt eller forbedre dit udkast."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Tak fordi du delte din oplevelse med os. 🙏",

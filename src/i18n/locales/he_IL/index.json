@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "כדי לבחור את האפשרות.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "לחץ כדי להחליף את הטקסט הנבחר עם תוכן שנוצר על ידי AI.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "תוכל לבקש מהמודע המלאכותי לשפר את תוכן שנוצר על ידו בדיוק כפי שתרצה."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "תוכל לבקש מהמודע המלאכותי לשפר את תוכן שנוצר על ידו בדיוק כפי שתרצה.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "לחץ כדי לפתוח את הסרגל הצדי ולשוחח עם AI, לסכם כל דף, לשאול את הרשת או ליצור אמנות AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "לחץ כדי לסכם ולשאול שאלות על מייל זה.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "לחץ כדי לסכם ולשאול שאלות על PDF זה.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "לחץ כדי לסכם ולשאול שאלות על סרטון YouTube זה.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "לחץ כדי ליצור תשובה אישית באופן מיידי.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "לחץ כדי ליצור טיוטה אישית באופן מיידי או לשפר את הטיוטה שלך."
   },
   "survey": {
     "funnel_survey__submit_success__title": "תודה על שיתוף החוויה שלך איתנו. 🙏",

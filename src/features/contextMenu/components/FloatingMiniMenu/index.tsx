@@ -45,7 +45,8 @@ const FloatingMiniMenu: FC<{
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
   )
-  const { clientWritingMessage } = useClientConversation()
+  const { clientWritingMessage, updateClientConversationLoading } =
+    useClientConversation()
   // 保存打开floatingMenu前最后的选区
   const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
     FloatingDropdownMenuLastFocusRangeState,
@@ -309,22 +310,21 @@ const FloatingMiniMenu: FC<{
           placement={placement}
           buttonSettingKey={'textSelectPopupButton'}
           onClick={(favoriteContextMenu) => {
+            updateClientConversationLoading(true)
+            updateSelectedId((prevState) => {
+              return {
+                ...prevState,
+                selectedContextMenuId: favoriteContextMenu.id,
+              }
+            })
             tempSelection && showFloatingContextMenu()
-            setTimeout(() => {
-              updateSelectedId((prevState) => {
-                return {
-                  ...prevState,
-                  selectedContextMenuId: favoriteContextMenu.id,
-                }
-              })
-            }, 100)
           }}
         />
         <FloatingContextMenuMiniMenuMoreButton placement={placement} />
       </Stack>
       <OnboardingTooltipTempPortal
         showStateTrigger={show}
-        sceneType="CONTEXT_MENU_CTA_BUTTON"
+        sceneType='CONTEXT_MENU_CTA_BUTTON'
       />
     </Paper>
   )

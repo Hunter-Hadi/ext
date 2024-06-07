@@ -16,13 +16,14 @@ export const useUserSettings = () => {
   )
   const setUserSettings = useCallback(
     async (newUserSettings: typeof userSettings) => {
+      await setChromeExtensionDBStorage((settings) => {
+        console.log('TEST', newUserSettings)
+        settings.userSettings = newUserSettings
+        return settings
+      })
       setAppDBStorage({
         ...appDBStorage,
         userSettings: newUserSettings,
-      })
-      await setChromeExtensionDBStorage((settings) => {
-        settings.userSettings = newUserSettings
-        return settings
       })
       debounceSetUserSettings()
     },

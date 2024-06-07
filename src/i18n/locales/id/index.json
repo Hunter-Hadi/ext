@@ -1223,7 +1223,13 @@
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part2": "Enter",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text3__part3": "untuk memilih opsi.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1": "Klik untuk mengganti teks yang dipilih dengan konten yang dihasilkan oleh AI.",
-    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Anda dapat meminta AI untuk menyempurnakan konten yang dihasilkan oleh AI sesuai keinginan Anda."
+    "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1": "Anda dapat meminta AI untuk menyempurnakan konten yang dihasilkan oleh AI sesuai keinginan Anda.",
+    "onboarding_tooltip__QUICK_ACCESS_CTA_BUTTON__text": "Klik untuk membuka sidebar untuk chat dengan AI, ringkaskan halaman apa pun, tanyakan web, atau buat seni AI.",
+    "onboarding_tooltip__EMAIL_SUMMARY_BUTTON__text": "Klik untuk ringkasan dan tanya pertanyaan tentang email ini.",
+    "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klik untuk ringkasan dan tanya pertanyaan tentang PDF ini.",
+    "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klik untuk ringkasan dan tanya pertanyaan tentang video YouTube ini.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klik untuk menghasilkan balasan pribadi secara instan.",
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klik untuk menghasilkan draf pribadi secara instan, atau tingkatkan draf Anda."
   },
   "survey": {
     "funnel_survey__submit_success__title": "Terima kasih telah berbagi pengalaman Anda dengan kami. 🙏",

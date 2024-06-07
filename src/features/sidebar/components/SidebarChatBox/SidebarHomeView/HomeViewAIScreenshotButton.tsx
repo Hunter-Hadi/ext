@@ -14,7 +14,7 @@ const HomeViewAIScreenshotButton: FC = () => {
   const handleClick = () => {
     const timer = setInterval(() => {
       const screenshotBtn = queryShadowContainerElementSelector<HTMLElement>(
-        MAXAI_APP_ROOT_ID,
+        `#${MAXAI_APP_ROOT_ID}`,
         'button[data-testid="maxai-take-screenshot"]',
       )
       if (screenshotBtn) {
@@ -27,7 +27,7 @@ const HomeViewAIScreenshotButton: FC = () => {
   return (
     <Stack
       direction={'row'}
-      alignItems="center"
+      alignItems='center'
       spacing={0.5}
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
@@ -58,7 +58,7 @@ const HomeViewAIScreenshotButton: FC = () => {
         fontSize={14}
         fontWeight={500}
         lineHeight={1.5}
-        color="inherit"
+        color='inherit'
       >
         {t('common:ai_screenshot')}
       </Typography>

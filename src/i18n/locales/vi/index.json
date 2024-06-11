@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Vượt quá giới hạn truy vấn văn bản nâng cao hàng tháng. Nâng cấp ngay để có số lượng truy vấn không giới hạn hoặc kiểm tra lại vào tháng sau khi số lượng truy vấn hàng tháng được đặt lại.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Mô hình mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu token đột phá, an toàn nâng cao và khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Vượt quá giới hạn truy vấn văn bản nâng cao hàng tháng. Nâng cấp ngay để có số lượng truy vấn không giới hạn hoặc kiểm tra lại vào tháng sau khi số lượng truy vấn hàng tháng được đặt lại.",
-    "permission__pricing_modal__title": "Nâng cấp lên MaxAI Elite · Hàng năm",
+    "permission__pricing_modal__title": "Nâng cấp lên MaxAI Elite",
     "permission__pricing_modal__description": "Nghiên cứu và viết nhanh hơn mà không bị giới hạn bằng cách nâng cấp lên gói MaxAI Elite.",
     "permission__pricing_modal__item1__title": "Sử dụng AI không giới hạn",
     "permission__pricing_modal__item2__title": "Mở khóa tất cả các tính năng",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "mỗi tháng",
     "permission__pricing_modal__price__desc2": "được thanh toán hàng năm",
     "permission__pricing_modal__cta_button__footer__title": "Tham gia 1 triệu chuyên gia nâng cao năng suất của họ với MaxAI.",
-    "permission__pricing_modal__footer__title": "Xem tất cả các gói."
+    "permission__pricing_modal__footer__title": "Xem tất cả các gói.",
+    "permission__pricing_modal__cta_button__title": "Nâng cấp ngay",
+    "permission__pricing_modal__discount__title": "Tiết kiệm 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

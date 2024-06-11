@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "মাসিক উন্নত পাঠ অনুসন্ধানের সীমা অতিক্রম করেছে। সীমা ছাড়াও অসীম অনুসন্ধানের জন্য এখনই আপগ্রেড করুন, অথবা মাসিক অনুসন্ধানগুলি রিসেট হওয়ার পরে আবার চেষ্টা করুন।",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Google-র সর্বশেষ এবং সর্বাধিক উন্নত মডেল। এটি দ্রুত গতি, একটি পুরোভূমি 1M টোকেন সংকেত উইন্ডো, উন্নত সুরক্ষা এবং পাঠ, কোড, চিত্র, শব্দ, অডিও এবং ভিডিও প্রসেসিং জন্য উন্নত সুযোগ প্রদান করে।",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "মাসিক উন্নত পাঠ অনুসন্ধানের সীমা অতিক্রম করেছে। সীমা ছাড়াও অসীম অনুসন্ধানের জন্য এখনই আপগ্রেড করুন, অথবা মাসিক অনুসন্ধানগুলি রিসেট হওয়ার পরে আবার চেষ্টা করুন।",
-    "permission__pricing_modal__title": "ম্যাক্সএআই এলিটে আপগ্রেড করুন · বার্ষিক",
+    "permission__pricing_modal__title": "ম্যাক্সএইআই ইলিটে আপগ্রেড করুন",
     "permission__pricing_modal__description": "ম্যাক্সএআই এলিট পরিকল্পনায় সীমাহীন এআই ব্যবহার করুন এবং সীমাহীন দ্রুতি সহ গবেষণা এবং লেখার জন্য আপগ্রেড করুন।",
     "permission__pricing_modal__item1__title": "সীমাহীন এআই ব্যবহার",
     "permission__pricing_modal__item2__title": "সব বৈশিষ্ট্য আনলক করুন",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "প্রতি মাসে",
     "permission__pricing_modal__price__desc2": "বার্ষিক বিল হবে",
     "permission__pricing_modal__cta_button__footer__title": "ম্যাক্সএআই দিয়ে তাদের উৎপাদকদের উন্নতি করে এক মিলিয়ন পেশাদারের সঙ্গে যোগদান করুন।",
-    "permission__pricing_modal__footer__title": "সমস্ত পরিকল্পনা দেখুন।"
+    "permission__pricing_modal__footer__title": "সমস্ত পরিকল্পনা দেখুন।",
+    "permission__pricing_modal__cta_button__title": "এখন আপগ্রেড করুন",
+    "permission__pricing_modal__discount__title": "53% সংরক্ষণ করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

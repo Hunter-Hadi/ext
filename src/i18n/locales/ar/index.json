@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "تم تجاوز الحد الشهري للاستعلام المتقدم عن النص. قم بالترقية الآن للاستعلامات غير المحدودة، أو تحقق مرة أخرى في الشهر القادم عند إعادة تعيين الاستعلامات الشهرية.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "أحدث وأكثر نموذج متقدم من Google. يوفر سرعة أعلى، نافذة سياقية تصل إلى 1 مليون رمز، سلامة محسّنة، وإمكانيات متقدمة في مجال معالجة النص والشفرة والصور والصوت والفيديو.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "تم تجاوز الحد الشهري للاستعلام المتقدم عن النص. قم بالترقية الآن للاستعلامات غير المحدودة، أو تحقق مرة أخرى في الشهر القادم عند إعادة تعيين الاستعلامات الشهرية.",
-    "permission__pricing_modal__title": "قم بالترقية إلى MaxAI Elite · سنويًا",
+    "permission__pricing_modal__title": "ترقية إلى MaxAI Elite",
     "permission__pricing_modal__description": "قم بالبحث والكتابة بشكل أسرع دون حدود من خلال الترقية إلى خطة MaxAI Elite.",
     "permission__pricing_modal__item1__title": "استخدام غير محدود للذكاء الاصطناعي",
     "permission__pricing_modal__item2__title": "فتح جميع الميزات",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "شهريًا",
     "permission__pricing_modal__price__desc2": "مدفوع سنويًا",
     "permission__pricing_modal__cta_button__footer__title": "انضم إلى أكثر من مليون محترف يعززون إنتاجيتهم مع MaxAI.",
-    "permission__pricing_modal__footer__title": "عرض جميع الخطط."
+    "permission__pricing_modal__footer__title": "عرض جميع الخطط.",
+    "permission__pricing_modal__cta_button__title": "قم بالترقية الآن",
+    "permission__pricing_modal__discount__title": "احفظ 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

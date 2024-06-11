@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Превышен ежемесячный лимит запросов на расширенный текст. Обновите сейчас для неограниченных запросов или проверьте снова в следующем месяце, когда ежемесячные запросы сбросятся.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Самая новая и передовая модель от Google. Она предлагает более быструю скорость, прорывное окно контекста из 1 млн токенов, улучшенную безопасность и расширенные возможности в области обработки текста, кода, изображений, аудио и видео.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Превышен ежемесячный лимит запросов на расширенный текст. Обновите сейчас для неограниченных запросов или проверьте снова в следующем месяце, когда ежемесячные запросы сбросятся.",
-    "permission__pricing_modal__title": "Улучшите до MaxAI Elite · Годовой",
+    "permission__pricing_modal__title": "Повысьте до MaxAI Elite",
     "permission__pricing_modal__description": "Исследуйте и пишите быстрее без ограничений, обновившись до плана MaxAI Elite.",
     "permission__pricing_modal__item1__title": "Неограниченное использование ИИ",
     "permission__pricing_modal__item2__title": "Разблокировка всех функций",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "в месяц",
     "permission__pricing_modal__price__desc2": "ежегодно",
     "permission__pricing_modal__cta_button__footer__title": "Присоединяйтесь к более чем 1 млн профессионалов, повышающих свою продуктивность с помощью MaxAI.",
-    "permission__pricing_modal__footer__title": "Просмотреть все планы."
+    "permission__pricing_modal__footer__title": "Просмотреть все планы.",
+    "permission__pricing_modal__cta_button__title": "Обновить сейчас",
+    "permission__pricing_modal__discount__title": "Сэкономьте 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

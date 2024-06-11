@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "ಮಾಸಿಕ ಉನ್ನತ ಪಠ್ಯ ಪ್ರಶ್ನೆ ಮಿತಿಯನ್ನು ಮೀರಿದ್ದು. ಅನಿಮಿತ ಪ್ರಶ್ನೆಗಳಿಗಾಗಿ ಅನಿಮಿತ ಪ್ರಶ್ನೆಗಳನ್ನು ಮೀರಿಸಲು ಈಗ ಮುಂದುವರೆಸಿ, ಅಥವಾ ಮಾಸಿಕ ಪ್ರಶ್ನೆಗಳು ಮರುಹೊತ್ತಿಗೆ ಮರಳಿ ಬರುವ ತಿಂಗಳಲ್ಲಿ ಪರಿಶೀಲಿಸಿ.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Google ಯಾವುದೇ ಹೊಸ ಮತ್ತು ಅತ್ಯುತ್ತಮ ಮಾದರಿ. ಇದು ಹೆಚ್ಚು ವೇಗ, ಪುಟಕ್ಕೆ 1M ಟೋಕನ್ ಸಂದರ್ಭ ಜಾಲವನ್ನು ಬೀರುವ ಪ್ರವೇಶದ್ವಾರ, ಮುಂದುವರೆದ ಸುರಕ್ಷತೆ, ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಆಡಿಯೋ, ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಸೆಸಿಂಗ್ ಮೂಲಕ ಮುಂದುವರಿದ ಸಾಮರ್ಥ್ಯಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "ಮಾಸಿಕ ಉನ್ನತ ಪಠ್ಯ ಪ್ರಶ್ನೆ ಮಿತಿಯನ್ನು ಮೀರಿದ್ದು. ಅನಿಮಿತ ಪ್ರಶ್ನೆಗಳಿಗಾಗಿ ಅನಿಮಿತ ಪ್ರಶ್ನೆಗಳನ್ನು ಮೀರಿಸಲು ಈಗ ಮುಂದುವರೆಸಿ, ಅಥವಾ ಮಾಸಿಕ ಪ್ರಶ್ನೆಗಳು ಮರುಹೊತ್ತಿಗೆ ಮರಳಿ ಬರುವ ತಿಂಗಳಲ್ಲಿ ಪರಿಶೀಲಿಸಿ.",
-    "permission__pricing_modal__title": "MaxAI Elite · ವಾರ್ಷಿಕ",
+    "permission__pricing_modal__title": "MaxAI ಎಲೈಟ್‌ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_modal__description": "ಮುಂದುವರೆಸಿ ಮತ್ತು ಮೌಲ್ಯಾಂಕನ ಇಲ್ಲದೆ ಹೆಚ್ಚಿನ ಗಬರುತ್ವವನ್ನು ಪಡೆಯಲು MaxAI Elite ಯೋಜನೆಗೆ ಮೆರುಗುಹಾಕಿ.",
     "permission__pricing_modal__item1__title": "ಅಸಂಖ್ಯಾತ AI ಉಪಯೋಗ",
     "permission__pricing_modal__item2__title": "ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "ಪ್ರತಿ ತಿಂಗಳು",
     "permission__pricing_modal__price__desc2": "ವಾರ್ಷಿಕ ಬಿಲ್ಲಿಂಗ್",
     "permission__pricing_modal__cta_button__footer__title": "MaxAI ನೊಂದಿಗೆ ಅವರ ಉತ್ಪಾದಕತ್ವವನ್ನು ಹೆಚ್ಚಿಸುವ 1M+ ಪ್ರೊಫೆಶನಲ್‌ಗಳ ಸಂಖ್ಯೆಯಲ್ಲಿ ಸೇರಿ.",
-    "permission__pricing_modal__footer__title": "ಎಲ್ಲ ಯೋಜನೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ."
+    "permission__pricing_modal__footer__title": "ಎಲ್ಲ ಯೋಜನೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ.",
+    "permission__pricing_modal__cta_button__title": "ಈಗ ಮೇಲ್ಪಡಿಸಿ",
+    "permission__pricing_modal__discount__title": "53% ಉಳಿತಾಯ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

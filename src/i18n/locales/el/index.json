@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Υπέρβαση του μηνιαίου ορίου προηγμένης αναζήτησης κειμένου. Αναβαθμίστε τώρα για απεριόριστες αναζητήσεις ή ελέγξτε ξανά τον επόμενο μήνα όταν επαναφέρονται οι μηνιαίες αναζητήσεις.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Το πιο προηγμένο και νέο μοντέλο της Google. Προσφέρει μεγαλύτερη ταχύτητα, ένα καινοτόμο παράθυρο 1M token context, βελτιωμένη ασφάλεια και προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Υπέρβαση του μηνιαίου ορίου προηγμένης αναζήτησης κειμένου. Αναβαθμίστε τώρα για απεριόριστες αναζητήσεις ή ελέγξτε ξανά τον επόμενο μήνα όταν επαναφέρονται οι μηνιαίες αναζητήσεις.",
-    "permission__pricing_modal__title": "Αναβαθμίστε σε MaxAI Elite · Ετήσια",
+    "permission__pricing_modal__title": "Αναβάθμιση σε MaxAI Elite",
     "permission__pricing_modal__description": "Έρευνα και γράψτε πιο γρήγορα χωρίς περιορισμούς αναβαθμίζοντας στο πλάνο MaxAI Elite.",
     "permission__pricing_modal__item1__title": "Απεριόριστη χρήση AI",
     "permission__pricing_modal__item2__title": "Ξεκλειδώστε όλες τις δυνατότητες",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "ανά μήνα",
     "permission__pricing_modal__price__desc2": "τιμολογείται ετησίως",
     "permission__pricing_modal__cta_button__footer__title": "Ενταχθείτε στους 1M+ επαγγελματίες που αυξάνουν την παραγωγικότητά τους με το MaxAI.",
-    "permission__pricing_modal__footer__title": "Προβολή όλων των πλάνων."
+    "permission__pricing_modal__footer__title": "Προβολή όλων των πλάνων.",
+    "permission__pricing_modal__cta_button__title": "Αναβάθμιση τώρα",
+    "permission__pricing_modal__discount__title": "Εξοικονομήστε 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

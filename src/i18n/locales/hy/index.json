@@ -878,7 +878,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Ամսական բարձրացման սահմանը գերազանցվել է։ Թարմացրեք ձեր բազմաթիվ հարցումները անսահմանափակության համար, կամ վերադարձնեք հաջորդ ամիս, երբ ամսական հարցումները ստանալու սահմանը վերականգնվելու է։",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Google-ի նորացված և ամենաբարձրացված մոդելը։ Այն առաջարկում է արագին արագություն, նորացված 1M նշանակումի պատուհան, բարձրանալով անվտանգությունը և բարձրանալով համակարգչային գործարարությունը տեքստի, ծրագրավորումի, պատկերի, ձայնի և վիդեոյի մշակման համար։",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Ամսական բարձրացման սահմանը գերազանցվել է։ Թարմացրեք ձեր բազմաթիվ հարցումները անսահմանափակության համար, կամ վերադարձնեք հաջորդ ամիս, երբ ամսական հարցումները ստանալու սահմանը վերականգնվելու է։",
-    "permission__pricing_modal__title": "Բարձրացնել MaxAI Elite · Տարեկան",
+    "permission__pricing_modal__title": "Խաղարկեք MaxAI Elite-ին",
     "permission__pricing_modal__description": "Ուսուցիչերի և գրողականությունը արագությամբ աշխատեք առանց սահմանափակության, բարձրացնելով MaxAI Elite պլանին։",
     "permission__pricing_modal__item1__title": "Անսահմանափակ AI օգտագործում",
     "permission__pricing_modal__item2__title": "Բացահայտեք բոլոր հատկությունները",
@@ -887,7 +887,9 @@
     "permission__pricing_modal__price__desc1": "ամսական",
     "permission__pricing_modal__price__desc2": "տարեկան վճարով",
     "permission__pricing_modal__cta_button__footer__title": "Միացեք 1M+ պրոֆեսիոնալներին, որոնք բարձրացնում են իրենց արագությունը MaxAI-ի միջոցով։",
-    "permission__pricing_modal__footer__title": "Դիտեք բոլոր պլաները։"
+    "permission__pricing_modal__footer__title": "Դիտեք բոլոր պլաները։",
+    "permission__pricing_modal__cta_button__title": "Թարմացնել հիմա",
+    "permission__pricing_modal__discount__title": "Գնալ 53%-ը"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

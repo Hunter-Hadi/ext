@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Havi fejlett szöveglekérdezési korlát túllépve. Frissíts most az korlátlan lekérdezésekért, vagy gyere vissza jövő hónapban, amikor a havi lekérdezések visszaállnak.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "A Google legújabb és legfejlettebb modellje. Gyorsabb sebességet, áttörést jelentő 1M tokenes kontextusablakot, fokozott biztonságot és fejlett képességeket kínál szöveg, kód, kép, hang és videó feldolgozás terén.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Havi fejlett szöveglekérdezési korlát túllépve. Frissíts most az korlátlan lekérdezésekért, vagy gyere vissza jövő hónapban, amikor a havi lekérdezések visszaállnak.",
-    "permission__pricing_modal__title": "Frissíts a MaxAI Elite · Éves csomagra",
+    "permission__pricing_modal__title": "Frissítés MaxAI Elite-re",
     "permission__pricing_modal__description": "Kutass és írj korlátok nélkül gyorsabban a MaxAI Elite csomagra való frissítéssel.",
     "permission__pricing_modal__item1__title": "Korlátlan AI használat",
     "permission__pricing_modal__item2__title": "Minden funkció feloldása",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "havonta",
     "permission__pricing_modal__price__desc2": "éves számlázás",
     "permission__pricing_modal__cta_button__footer__title": "Csatlakozz a MaxAI-vel termelékenységüket növelő 1 millió szakemberhez.",
-    "permission__pricing_modal__footer__title": "Az összes csomag megtekintése."
+    "permission__pricing_modal__footer__title": "Az összes csomag megtekintése.",
+    "permission__pricing_modal__cta_button__title": "Frissítés most",
+    "permission__pricing_modal__discount__title": "53% megtakarítás"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

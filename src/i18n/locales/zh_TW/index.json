@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "已超出每月高級文本查詢限制。立即升級以獲得無限查詢，或在下個月重置每月查詢數。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Google最新、最先進的模型。它提供更快的速度，突破性的100萬令牌上下文窗口，增強的安全性，以及在文本、代碼、圖像、音頻和視頻處理方面的高級功能。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "已超出每月高級文本查詢限制。立即升級以獲得無限查詢，或在下個月重置每月查詢數。",
-    "permission__pricing_modal__title": "升級到MaxAI Elite · 年度",
+    "permission__pricing_modal__title": "升級至MaxAI精英版",
     "permission__pricing_modal__description": "通過升級到MaxAI Elite計劃，無限制地進行研究和撰寫，提高效率。",
     "permission__pricing_modal__item1__title": "無限AI使用",
     "permission__pricing_modal__item2__title": "解鎖所有功能",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "每月",
     "permission__pricing_modal__price__desc2": "年度結算",
     "permission__pricing_modal__cta_button__footer__title": "加入100萬+專業人士，提高生產力，使用MaxAI。",
-    "permission__pricing_modal__footer__title": "查看所有計劃。"
+    "permission__pricing_modal__footer__title": "查看所有計劃。",
+    "permission__pricing_modal__cta_button__title": "立即升級",
+    "permission__pricing_modal__discount__title": "節省53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

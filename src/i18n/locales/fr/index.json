@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Limite mensuelle de requêtes de texte avancé dépassée. Mettez à niveau maintenant pour des requêtes illimitées, ou revenez le mois prochain lorsque les requêtes mensuelles seront réinitialisées.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Le modèle le plus récent et le plus avancé de Google. Il offre une vitesse plus rapide, une fenêtre contextuelle de 1 million de jetons révolutionnaire, une sécurité améliorée et des fonctionnalités avancées pour le traitement du texte, du code, de l'image, de l'audio et de la vidéo.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Limite mensuelle de requêtes de texte avancé dépassée. Mettez à niveau maintenant pour des requêtes illimitées, ou revenez le mois prochain lorsque les requêtes mensuelles seront réinitialisées.",
-    "permission__pricing_modal__title": "Passer à MaxAI Elite · Annuel",
+    "permission__pricing_modal__title": "Passer à MaxAI Elite",
     "permission__pricing_modal__description": "Recherchez et écrivez plus rapidement sans limites en passant au plan MaxAI Elite.",
     "permission__pricing_modal__item1__title": "Utilisation illimitée de l'IA",
     "permission__pricing_modal__item2__title": "Débloquez toutes les fonctionnalités",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "par mois",
     "permission__pricing_modal__price__desc2": "facturé annuellement",
     "permission__pricing_modal__cta_button__footer__title": "Rejoignez plus d'un million de professionnels qui boostent leur productivité avec MaxAI.",
-    "permission__pricing_modal__footer__title": "Voir tous les plans."
+    "permission__pricing_modal__footer__title": "Voir tous les plans.",
+    "permission__pricing_modal__cta_button__title": "Mettre à niveau maintenant",
+    "permission__pricing_modal__discount__title": "Économisez 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

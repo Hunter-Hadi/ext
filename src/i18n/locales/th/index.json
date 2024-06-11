@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "เกินขีดจำกัดการค้นหาข้อความขั้นสูงรายเดือน อัปเกรดเดี๋ยวนี้เพื่อค้นหาไม่จำกัด หรือกลับมาตรวจสอบใหม่ในเดือนถัดไปเมื่อคำค้นหารายเดือนถูกรีเซ็ต",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "โมเดลล่าสุดและที่สุดของ Google มีความเร็วที่เร็วขึ้น หน้าต่างบริบทของโทเค็น 1M ที่เป็นการเปลี่ยนแปลง ความปลอดภัยที่ถูกพัฒนาและความสามารถขั้นสูงที่เกี่ยวข้องกับการประมวลผลข้อความ รหัส ภาพ เสียง และวิดีโอ",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "เกินขีดจำกัดการค้นหาข้อความขั้นสูงรายเดือน อัปเกรดเดี๋ยวนี้เพื่อค้นหาไม่จำกัด หรือกลับมาตรวจสอบใหม่ในเดือนถัดไปเมื่อคำค้นหารายเดือนถูกรีเซ็ต",
-    "permission__pricing_modal__title": "อัปเกรดเป็น MaxAI Elite · รายปี",
+    "permission__pricing_modal__title": "อัปเกรดเป็น MaxAI Elite",
     "permission__pricing_modal__description": "ทำการวิจัยและเขียนได้อย่างรวดเร็วโดยไม่มีข้อจำกัดโดยอัปเกรดเป็นแผน MaxAI Elite",
     "permission__pricing_modal__item1__title": "การใช้ AI ไม่จำกัด",
     "permission__pricing_modal__item2__title": "ปลดล็อกคุณสมบัติทั้งหมด",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "ต่อเดือน",
     "permission__pricing_modal__price__desc2": "เรียกเก็บรายปี",
     "permission__pricing_modal__cta_button__footer__title": "เข้าร่วมกับมืออาชีพกว่า 1 ล้านคนในการเพิ่มผลิตภัณฑ์ของพวกเขาด้วย MaxAI",
-    "permission__pricing_modal__footer__title": "ดูแผนทั้งหมด"
+    "permission__pricing_modal__footer__title": "ดูแผนทั้งหมด",
+    "permission__pricing_modal__cta_button__title": "อัพเกรดเดี๋ยวนี้",
+    "permission__pricing_modal__discount__title": "ประหยัด 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

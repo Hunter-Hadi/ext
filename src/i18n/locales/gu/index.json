@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "માસિક એડવાન્સ ટેક્સ્ટ પ્રશ્ન મર્યાદા પાર થઈ ગઈ. અમરીકામાં માસિક પ્રશ્નો રીસેટ થાય ત્યારે અમરીકા માટે અમરીકા કરો.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Googleનું નવું અને સૌથી આગ્રગણ્ય મોડેલ. તે ઝડપથી હોય, એક પ્રવિષ્ટિ 1M ટોકન સંદર્ભ વિન્ડો, વધુ સુરક્ષા, અને ટેક્સ્ટ, કોડ, છબી, ઓડિયો, અને વિડિયો પ્રક્રિયાઓ પર એડવાન્સ ક્ષમતાઓ પૂરી કરે છે.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "માસિક એડવાન્સ ટેક્સ્ટ પ્રશ્ન મર્યાદા પાર થઈ ગઈ. અમરીકામાં માસિક પ્રશ્નો રીસેટ થાય ત્યારે અમરીકા માટે અમરીકા કરો.",
-    "permission__pricing_modal__title": "MaxAI Elite · વાર્ષિક માટે અપગ્રેડ કરો",
+    "permission__pricing_modal__title": "MaxAI એલિટ માટે અપગ્રેડ કરો",
     "permission__pricing_modal__description": "માક્સએઆઈ એલિટ પ્લાનમાં અપગ્રેડ કરીને મરીજ અને લખાણ બિનવાળી અનભ્યાસી લખાણ કરો.",
     "permission__pricing_modal__item1__title": "અમરીકામાં અનિયમિત AI ઉપયોગ",
     "permission__pricing_modal__item2__title": "બધા વ્યાપારને ખોલો",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "પ્રતિ મહિને",
     "permission__pricing_modal__price__desc2": "વાર્ષિક બિલ્ડ",
     "permission__pricing_modal__cta_button__footer__title": "MaxAI સાથે તમારી ઉત્પાદકતાને વધારો આપતા 1M+ વ્યાપારમાં જોડાઓ.",
-    "permission__pricing_modal__footer__title": "બધા પ્લાન્સ જુઓ."
+    "permission__pricing_modal__footer__title": "બધા પ્લાન્સ જુઓ.",
+    "permission__pricing_modal__cta_button__title": "હવે અપગ્રેડ કરો",
+    "permission__pricing_modal__discount__title": "53% બચાવો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

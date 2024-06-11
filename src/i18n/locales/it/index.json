@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Limite mensile di query di testo avanzato superato. Esegui l'upgrade ora per query illimitate o controlla il mese prossimo quando le query mensili vengono ripristinate.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Il modello più nuovo e avanzato di Google. Offre maggiore velocità, una finestra di contesto di 1M token rivoluzionaria, sicurezza migliorata e funzionalità avanzate per l'elaborazione di testi, codici, immagini, audio e video.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Limite mensile di query di testo avanzato superato. Esegui l'upgrade ora per query illimitate o controlla il mese prossimo quando le query mensili vengono ripristinate.",
-    "permission__pricing_modal__title": "Passa a MaxAI Elite · Annuale",
+    "permission__pricing_modal__title": "Passa a MaxAI Elite",
     "permission__pricing_modal__description": "Ricerca e scrivi più velocemente senza limiti passando al piano MaxAI Elite.",
     "permission__pricing_modal__item1__title": "Utilizzo AI illimitato",
     "permission__pricing_modal__item2__title": "Sblocca tutte le funzionalità",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "al mese",
     "permission__pricing_modal__price__desc2": "fatturato annualmente",
     "permission__pricing_modal__cta_button__footer__title": "Unisciti a oltre 1M di professionisti che aumentano la loro produttività con MaxAI.",
-    "permission__pricing_modal__footer__title": "Visualizza tutti i piani."
+    "permission__pricing_modal__footer__title": "Visualizza tutti i piani.",
+    "permission__pricing_modal__cta_button__title": "Aggiorna ora",
+    "permission__pricing_modal__discount__title": "Risparmia il 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "월간 고급 텍스트 쿼리 제한이 초과되었습니다. 무제한 쿼리를 위해 지금 업그레이드하거나 월간 쿼리가 초기화되는 다음 달에 다시 확인하세요.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Google의 최신 및 가장 고급 모델입니다. 더 빠른 속도, 100만 토큰 컨텍스트 창, 향상된 안전성 및 텍스트, 코드, 이미지, 오디오, 비디오 처리를 위한 고급 기능을 제공합니다.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "월간 고급 텍스트 쿼리 제한이 초과되었습니다. 무제한 쿼리를 위해 지금 업그레이드하거나 월간 쿼리가 초기화되는 다음 달에 다시 확인하세요.",
-    "permission__pricing_modal__title": "MaxAI Elite로 업그레이드 · 연간",
+    "permission__pricing_modal__title": "MaxAI 엘리트로 업그레이드",
     "permission__pricing_modal__description": "MaxAI Elite 플랜으로 제한 없이 더 빠르게 연구하고 글을 작성하세요.",
     "permission__pricing_modal__item1__title": "무제한 AI 사용",
     "permission__pricing_modal__item2__title": "모든 기능 잠금 해제",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "월당",
     "permission__pricing_modal__price__desc2": "연간 청구",
     "permission__pricing_modal__cta_button__footer__title": "MaxAI로 생산성을 높이는 100만 명 이상의 전문가에 합류하세요.",
-    "permission__pricing_modal__footer__title": "모든 플랜 보기."
+    "permission__pricing_modal__footer__title": "모든 플랜 보기.",
+    "permission__pricing_modal__cta_button__title": "지금 업그레이드",
+    "permission__pricing_modal__discount__title": "53% 할인"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

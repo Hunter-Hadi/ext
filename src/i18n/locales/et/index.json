@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Kuu edasijõudnud tekstipäringute limiit on ületatud. Uuenda nüüd piiramatu päringute jaoks või kontrolli järgmisel kuul, kui kuupõhised päringud lähtestatakse.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Google'i uusim ja kõige arenenum mudel. See pakub kiiremat kiirust, läbimurdelist 1M tokeni kontekstakent, täiustatud turvalisust ning edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Kuu edasijõudnud tekstipäringute limiit on ületatud. Uuenda nüüd piiramatu päringute jaoks või kontrolli järgmisel kuul, kui kuupõhised päringud lähtestatakse.",
-    "permission__pricing_modal__title": "Uuenda MaxAI Elite · Aastane",
+    "permission__pricing_modal__title": "Tõsta tasemele MaxAI Elite",
     "permission__pricing_modal__description": "Uuendades MaxAI Elite plaanile, saad uurida ja kirjutada ilma piiranguteta.",
     "permission__pricing_modal__item1__title": "Piiramatu AI kasutamine",
     "permission__pricing_modal__item2__title": "Avasta kõik funktsioonid",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "kuus",
     "permission__pricing_modal__price__desc2": "aastase arveldusega",
     "permission__pricing_modal__cta_button__footer__title": "Liitu 1M+ professionaaliga, kes suurendavad oma tootlikkust MaxAI-ga.",
-    "permission__pricing_modal__footer__title": "Vaata kõiki plaane."
+    "permission__pricing_modal__footer__title": "Vaata kõiki plaane.",
+    "permission__pricing_modal__cta_button__title": "Täiusta kohe",
+    "permission__pricing_modal__discount__title": "Säästa 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

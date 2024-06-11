@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Prekročený mesačný limit pokročilého textového vyhľadávania. Aktualizujte teraz na neobmedzené vyhľadávania alebo sa vráťte budúci mesiac, keď sa mesačné vyhľadávania obnovia.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Najnovší a najpokročilejší model od Google. Ponúka rýchlejšiu rýchlosť, prelomové okno kontextu s 1 miliónom tokenov, vylepšenú bezpečnosť a pokročilé schopnosti v spracovaní textu, kódu, obrázkov, zvuku a videa.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Prekročený mesačný limit pokročilého textového vyhľadávania. Aktualizujte teraz na neobmedzené vyhľadávania alebo sa vráťte budúci mesiac, keď sa mesačné vyhľadávania obnovia.",
-    "permission__pricing_modal__title": "Aktualizujte na MaxAI Elite · Ročne",
+    "permission__pricing_modal__title": "Vylepšite na MaxAI Elite",
     "permission__pricing_modal__description": "Vylepšite sa na plán MaxAI Elite a výskum a písanie bez obmedzení.",
     "permission__pricing_modal__item1__title": "Neobmedzené používanie AI",
     "permission__pricing_modal__item2__title": "Odomknite všetky funkcie",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "za mesiac",
     "permission__pricing_modal__price__desc2": "fakturované ročne",
     "permission__pricing_modal__cta_button__footer__title": "Pripojte sa k viac ako 1 miliónu profesionálov, ktorí zvyšujú svoju produktivitu s MaxAI.",
-    "permission__pricing_modal__footer__title": "Zobraziť všetky plány."
+    "permission__pricing_modal__footer__title": "Zobraziť všetky plány.",
+    "permission__pricing_modal__cta_button__title": "Aktualizovať teraz",
+    "permission__pricing_modal__discount__title": "Ušetrite 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

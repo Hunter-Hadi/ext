@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Kuukausittainen kehittyneiden tekstihakujen raja ylittyi. Päivitä nyt rajattomiin hakuja varten tai tarkista tilanne ensi kuussa, kun kuukausittaiset haut nollataan.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Googlen uusin ja edistyksellisin malli. Se tarjoaa nopeamman suorituskyvyn, läpimurron 1 miljoonan sanan kontekstirajapinnan, parannetun turvallisuuden sekä kehittyneitä ominaisuuksia teksti-, koodi-, kuva-, ääni- ja videokäsittelyssä.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Kuukausittainen kehittyneiden tekstihakujen raja ylittyi. Päivitä nyt rajattomiin hakuja varten tai tarkista tilanne ensi kuussa, kun kuukausittaiset haut nollataan.",
-    "permission__pricing_modal__title": "Päivitä MaxAI Elite · Vuosittain",
+    "permission__pricing_modal__title": "Päivitä MaxAI Eliteen",
     "permission__pricing_modal__description": "Tutki ja kirjoita rajattomasti päivittämällä MaxAI Eliten suunnitelmaan.",
     "permission__pricing_modal__item1__title": "Rajaton tekoälyn käyttö",
     "permission__pricing_modal__item2__title": "Avaa kaikki ominaisuudet",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "kuukaudessa",
     "permission__pricing_modal__price__desc2": "laskutetaan vuosittain",
     "permission__pricing_modal__cta_button__footer__title": "Liity yli 1 miljoonan ammattilaisen joukkoon ja lisää tuottavuuttasi MaxAI:n avulla.",
-    "permission__pricing_modal__footer__title": "Katso kaikki suunnitelmat."
+    "permission__pricing_modal__footer__title": "Katso kaikki suunnitelmat.",
+    "permission__pricing_modal__cta_button__title": "Päivitä nyt",
+    "permission__pricing_modal__discount__title": "Säästä 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Månadsvis avancerad textfrågebegränsning överskriden. Uppgradera nu för obegränsade frågor eller kom tillbaka nästa månad när de månatliga frågorna återställs.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Googles nyaste och mest avancerade modell. Den erbjuder snabbare hastighet, ett genombrott på 1 miljon tokens kontextfönster, förbättrad säkerhet och avancerade funktioner inom text, kod, bild, ljud och videobehandling.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Månadsvis avancerad textfrågebegränsning överskriden. Uppgradera nu för obegränsade frågor eller kom tillbaka nästa månad när de månatliga frågorna återställs.",
-    "permission__pricing_modal__title": "Uppgradera till MaxAI Elite · Årligen",
+    "permission__pricing_modal__title": "Uppgradera till MaxAI Elite",
     "permission__pricing_modal__description": "Forska och skriv snabbare utan begränsningar genom att uppgradera till MaxAI Elite-planen.",
     "permission__pricing_modal__item1__title": "Obegränsad AI-användning",
     "permission__pricing_modal__item2__title": "Lås upp alla funktioner",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "per månad",
     "permission__pricing_modal__price__desc2": "faktureras årligen",
     "permission__pricing_modal__cta_button__footer__title": "Gå med i 1M+ yrkesverksamma som ökar sin produktivitet med MaxAI.",
-    "permission__pricing_modal__footer__title": "Visa alla planer."
+    "permission__pricing_modal__footer__title": "Visa alla planer.",
+    "permission__pricing_modal__cta_button__title": "Uppgradera nu",
+    "permission__pricing_modal__discount__title": "Spara 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

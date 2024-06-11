@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Mjesečno prekoračenje limita naprednih tekstualnih upita. Nadogradite se sada za neograničene upite ili provjerite sljedeći mjesec kada se mjesečni upiti resetiraju.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Najnoviji i najnapredniji model tvrtke Google. Nudi veću brzinu, probojni kontekstni prozor od 1 milijun tokena, poboljšanu sigurnost i napredne mogućnosti u obradi teksta, koda, slika, zvuka i videozapisa.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Mjesečno prekoračenje limita naprednih tekstualnih upita. Nadogradite se sada za neograničene upite ili provjerite sljedeći mjesec kada se mjesečni upiti resetiraju.",
-    "permission__pricing_modal__title": "Nadogradite na MaxAI Elite · Godišnje",
+    "permission__pricing_modal__title": "Nadogradite na MaxAI Elite",
     "permission__pricing_modal__description": "Istražujte i pišite brže bez ograničenja nadogradnjom na MaxAI Elite plan.",
     "permission__pricing_modal__item1__title": "Neograničeno korištenje AI-a",
     "permission__pricing_modal__item2__title": "Otključajte sve značajke",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "mjesečno",
     "permission__pricing_modal__price__desc2": "plaćanje godišnje",
     "permission__pricing_modal__cta_button__footer__title": "Pridružite se više od 1M profesionalaca koji povećavaju svoju produktivnost s MaxAI.",
-    "permission__pricing_modal__footer__title": "Prikaži sve planove."
+    "permission__pricing_modal__footer__title": "Prikaži sve planove.",
+    "permission__pricing_modal__cta_button__title": "Nadogradite sada",
+    "permission__pricing_modal__discount__title": "Uštedite 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

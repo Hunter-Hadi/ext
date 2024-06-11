@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Przekroczono miesięczny limit zaawansowanych zapytań tekstowych. Zaktualizuj teraz, aby uzyskać nielimitowane zapytania lub sprawdź ponownie w przyszłym miesiącu, gdy miesięczne zapytania zostaną zresetowane.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Najnowszy i najbardziej zaawansowany model Google. Oferuje szybszą prędkość, przełomowe okno kontekstowe o długości 1 miliona tokenów, zwiększone bezpieczeństwo oraz zaawansowane możliwości w zakresie przetwarzania tekstu, kodu, obrazów, dźwięku i wideo.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Przekroczono miesięczny limit zaawansowanych zapytań tekstowych. Zaktualizuj teraz, aby uzyskać nielimitowane zapytania lub sprawdź ponownie w przyszłym miesiącu, gdy miesięczne zapytania zostaną zresetowane.",
-    "permission__pricing_modal__title": "Ulepsz do MaxAI Elite · Rocznie",
+    "permission__pricing_modal__title": "Zaktualizuj do MaxAI Elite",
     "permission__pricing_modal__description": "Badaj i pisz szybciej bez ograniczeń, ulepszając plan MaxAI Elite.",
     "permission__pricing_modal__item1__title": "Nieograniczone korzystanie z AI",
     "permission__pricing_modal__item2__title": "Odblokuj wszystkie funkcje",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "miesięcznie",
     "permission__pricing_modal__price__desc2": "rozliczane rocznie",
     "permission__pricing_modal__cta_button__footer__title": "Dołącz do ponad 1 miliona profesjonalistów, którzy zwiększają swoją produktywność dzięki MaxAI.",
-    "permission__pricing_modal__footer__title": "Wyświetl wszystkie plany."
+    "permission__pricing_modal__footer__title": "Wyświetl wszystkie plany.",
+    "permission__pricing_modal__cta_button__title": "Zaktualizuj teraz",
+    "permission__pricing_modal__discount__title": "Oszczędź 53%"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

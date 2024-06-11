@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "Monatliches fortgeschrittenes Textabfrage-Limit überschritten. Aktualisieren Sie jetzt für unbegrenzte Abfragen oder überprüfen Sie nächsten Monat, wenn die monatlichen Abfragen zurückgesetzt werden.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Googles neuestes und fortschrittlichstes Modell. Es bietet eine schnellere Geschwindigkeit, ein bahnbrechendes Kontextfenster von 1 Million Token, verbesserte Sicherheit und erweiterte Funktionen für Text-, Code-, Bild-, Audio- und Videobearbeitung.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Monatliches fortgeschrittenes Textabfrage-Limit überschritten. Aktualisieren Sie jetzt für unbegrenzte Abfragen oder überprüfen Sie nächsten Monat, wenn die monatlichen Abfragen zurückgesetzt werden.",
-    "permission__pricing_modal__title": "Upgrade auf MaxAI Elite · Jährlich",
+    "permission__pricing_modal__title": "Auf MaxAI Elite upgraden",
     "permission__pricing_modal__description": "Forschen und schreiben Sie schneller ohne Grenzen, indem Sie zum MaxAI Elite-Plan upgraden.",
     "permission__pricing_modal__item1__title": "Unbegrenzte KI-Nutzung",
     "permission__pricing_modal__item2__title": "Alle Funktionen freischalten",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "pro Monat",
     "permission__pricing_modal__price__desc2": "jährlich abgerechnet",
     "permission__pricing_modal__cta_button__footer__title": "Schließen Sie sich 1M+ Fachleuten an und steigern Sie Ihre Produktivität mit MaxAI.",
-    "permission__pricing_modal__footer__title": "Alle Pläne anzeigen."
+    "permission__pricing_modal__footer__title": "Alle Pläne anzeigen.",
+    "permission__pricing_modal__cta_button__title": "Jetzt upgraden",
+    "permission__pricing_modal__discount__title": "53% sparen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

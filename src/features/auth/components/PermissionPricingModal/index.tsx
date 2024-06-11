@@ -215,6 +215,9 @@ const PermissionPricingModal: FC<IProps> = () => {
                   fontSize={20}
                   fontWeight={500}
                   color='rgba(0, 0, 0, 0.6)'
+                  sx={{
+                    textDecoration: 'line-through',
+                  }}
                 >
                   $40
                 </Typography>
@@ -242,7 +245,7 @@ const PermissionPricingModal: FC<IProps> = () => {
                   loading={loading}
                   onClick={ctaButtonClick}
                 >
-                  {t('client:sidebar__top_bar__upgrade__title')}
+                  {t('client:permission__pricing_modal__cta_button__title')}
                 </LoadingButton>
                 <Box
                   sx={{
@@ -258,7 +261,7 @@ const PermissionPricingModal: FC<IProps> = () => {
                   }}
                 >
                   <Typography fontSize={16} fontWeight={500} lineHeight={1}>
-                    {t('client:sidebar__user_upgrade_card__discount__title')}
+                    {t('client:permission__pricing_modal__discount__title')}
                   </Typography>
                 </Box>
               </Box>

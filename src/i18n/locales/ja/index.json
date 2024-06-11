@@ -881,7 +881,7 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description": "月間の高度なテキストクエリ制限を超えました。無制限のクエリを利用するために今すぐアップグレードするか、次の月に月間クエリがリセットされるのをお待ちください。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Googleの最新かつ最も高度なモデルです。より高速な処理、画期的な100万トークンのコンテキストウィンドウ、強化された安全性、テキスト、コード、画像、オーディオ、ビデオ処理の高度な機能を提供します。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "月間の高度なテキストクエリ制限を超えました。無制限のクエリを利用するために今すぐアップグレードするか、次の月に月間クエリがリセットされるのをお待ちください。",
-    "permission__pricing_modal__title": "MaxAI Elite · 年間プランにアップグレード",
+    "permission__pricing_modal__title": "MaxAI Eliteへのアップグレード",
     "permission__pricing_modal__description": "MaxAI Eliteプランにアップグレードして制限なく研究や執筆を行いましょう。",
     "permission__pricing_modal__item1__title": "無制限のAI利用",
     "permission__pricing_modal__item2__title": "すべての機能を解除",
@@ -890,7 +890,9 @@
     "permission__pricing_modal__price__desc1": "月額",
     "permission__pricing_modal__price__desc2": "年間請求",
     "permission__pricing_modal__cta_button__footer__title": "MaxAIで生産性を向上させている100万人以上のプロフェッショナルに参加しましょう。",
-    "permission__pricing_modal__footer__title": "すべてのプランを表示"
+    "permission__pricing_modal__footer__title": "すべてのプランを表示",
+    "permission__pricing_modal__cta_button__title": "今すぐアップグレード",
+    "permission__pricing_modal__discount__title": "53%オフ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

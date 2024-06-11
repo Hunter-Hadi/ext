@@ -402,6 +402,7 @@ export class ActionAskChatGPT extends Action {
                 conversationId,
                 AIProvider,
                 AIModel,
+                paywallType: 'RESPONSE',
               },
             )
             // 展示sidebar
@@ -612,6 +613,7 @@ export class ActionAskChatGPT extends Action {
                 inContextMenu:
                   clientConversationEngine.clientConversation?.type ===
                   'ContextMenu',
+                paywallType: 'RESPONSE',
               })
               // 展示sidebar
               // showChatBox()

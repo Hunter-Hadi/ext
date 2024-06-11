@@ -23,6 +23,9 @@ export const globalVideoPopupRender = () => {
   const GlobalVideoPopup = React.lazy(
     () => import('../components/GlobalVideoPopup'),
   )
+  const PermissionPricingModal = React.lazy(
+    () => import('@/features/auth/components/PermissionPricingModal'),
+  )
 
   const container = document.createElement(
     supportWebComponent ? 'use-chat-gpt-ai' : 'div',
@@ -61,6 +64,9 @@ export const globalVideoPopupRender = () => {
         <CacheProvider value={cache}>
           <AppThemeProvider shadowRootElement={shadowRootElement}>
             <GlobalVideoPopup />
+
+            {/* TODO：临时放在这，后面可以拆出globalPopupRender专门存放全局弹窗组件 */}
+            <PermissionPricingModal />
           </AppThemeProvider>
         </CacheProvider>
       </RecoilRoot>

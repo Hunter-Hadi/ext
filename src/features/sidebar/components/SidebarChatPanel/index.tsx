@@ -80,6 +80,7 @@ const SidebarChatPanel = () => {
             await pushPricingHookMessage('PAGE_SUMMARY')
             authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
               conversationId: currentConversationId,
+              paywallType: 'RESPONSE',
             })
           } else {
             await askAIQuestion({

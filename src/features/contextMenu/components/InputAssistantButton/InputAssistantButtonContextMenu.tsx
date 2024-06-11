@@ -145,6 +145,7 @@ const InputAssistantButtonContextMenu: FC<
             // 如果没有免费试用次数, 则显示付费卡片
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType, {
               conversationId: currentConversationId,
+              paywallType: 'RESPONSE',
             })
             await pushPricingHookMessage(permissionWrapperCardSceneType)
             return

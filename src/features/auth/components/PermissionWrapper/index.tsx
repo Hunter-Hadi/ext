@@ -117,7 +117,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
         >
           <Stack
             spacing={1}
-            component="div"
+            component='div'
             width={300}
             data-testid={'pricing-hooks-card'}
             data-permission-scene-type={sceneType}
@@ -181,7 +181,13 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       )
                       memoizedPermissionCard.ctaButtonOnClick?.(event)
                       setOpen(false)
-                      authEmitPricingHooksLog('click', permissionCard.sceneType)
+                      authEmitPricingHooksLog(
+                        'click',
+                        permissionCard.sceneType,
+                        {
+                          paywallType: 'RESPONSE',
+                        },
+                      )
                     }}
                   >
                     <Button fullWidth variant={'contained'}>
@@ -251,6 +257,9 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                         authEmitPricingHooksLog(
                           'show',
                           permissionCard.sceneType,
+                          {
+                            paywallType: 'RESPONSE',
+                          },
                         )
                       }
                     },
@@ -291,6 +300,9 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                         authEmitPricingHooksLog(
                           'show',
                           permissionCard.sceneType,
+                          {
+                            paywallType: 'RESPONSE',
+                          },
                         )
                       }
                     },

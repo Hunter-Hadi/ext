@@ -121,6 +121,7 @@ const PermissionDailyLimitBar: FC = () => {
     authEmitPricingHooksLog('show', 'TOP_BAR_FAST_TEXT_MODEL', {
       conversationId: currentConversationIdRef.current,
       conversationType: clientConversation.type,
+      paywallType: 'TOPBAR',
     })
   }, [appState.open, show, clientConversation?.type])
 
@@ -133,7 +134,7 @@ const PermissionDailyLimitBar: FC = () => {
 
   return (
     <Box
-      id="maxai-daily-limit-bar"
+      id='maxai-daily-limit-bar'
       ref={(ref: any) => {
         if (ref && dailyLimitState.barHeight !== ref.offsetHeight) {
           setDailyLimitState((prev) => ({

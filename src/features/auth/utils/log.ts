@@ -8,6 +8,7 @@ import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaul
 import { IAIProviderType } from '@/background/provider/chat'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PRESET_PROMPT_IDS } from '@/constants'
+import { getPaywallVariant } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
@@ -183,13 +184,14 @@ export const authEmitPricingHooksLog = debounce(
   async (
     action: 'show' | 'click',
     sceneType: PermissionWrapperCardSceneType,
-    meta?: {
+    meta: {
       // 根据 conversationId 获取 到的 ai model 和 provider，优先级更高
       conversationId?: string
       conversationType?: string
       AIModel?: string
       AIProvider?: string
       inContextMenu?: boolean
+      paywallType: 'TOPBAR' | 'MODAL' | 'PROACTIVE' | 'RESPONSE'
     },
   ) => {
     try {
@@ -198,7 +200,8 @@ export const authEmitPricingHooksLog = debounce(
         conversationType: propConversationType,
         AIModel: propAIModel,
         AIProvider: propAIProvider,
-      } = meta ?? {}
+        paywallType,
+      } = meta
 
       const logType = await permissionSceneTypeToLogType(
         sceneType,
@@ -230,9 +233,13 @@ export const authEmitPricingHooksLog = debounce(
       }
 
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
+      const paywallVariant = await getPaywallVariant()
       mixpanelTrack(type, {
         logType,
         sceneType,
+        paywallType,
+        testFeature: 'extensionPaywall',
+        testVersion: paywallVariant,
         ...trackParams,
       })
       const port = new ContentScriptConnectionV2()

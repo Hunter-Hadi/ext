@@ -228,6 +228,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         // card log 直接获取 当前 ai provider 默认的 model name
         AIModel: SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[aiProvide],
         AIProvider: aiProvide,
+        paywallType: 'RESPONSE',
       })
       updateConversation({
         loading: false,

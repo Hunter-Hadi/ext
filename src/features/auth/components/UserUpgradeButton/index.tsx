@@ -1,7 +1,7 @@
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
+import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Grow from '@mui/material/Grow'
 import Link from '@mui/material/Link'
@@ -14,10 +14,12 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import useUserABTestInfo from '@/features/abTester/hooks/useUserABTestInfo'
 import LoginLayout from '@/features/auth/components/LoginLayout'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
 import { getMaxAISidebarRootElement } from '@/utils'
 
 const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
@@ -25,6 +27,9 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { t } = useTranslation(['client'])
   const { currentConversationId, currentSidebarConversationType } =
     useClientConversation()
+  const { abTestInfo } = useUserABTestInfo()
+  const { loading, createPaymentSubscription } = usePaymentCreator()
+  const { paywallVariant } = abTestInfo
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
 
@@ -37,6 +42,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
     authEmitPricingHooksLog('show', 'PROACTIVE_UPGRADE', {
       conversationId: currentConversationId,
       conversationType: currentSidebarConversationType,
+      paywallType: 'PROACTIVE',
     })
   }
 
@@ -45,19 +51,26 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   }
 
   const handleClick = () => {
-    handlePopoverClose()
     authEmitPricingHooksLog('click', 'PROACTIVE_UPGRADE', {
       conversationId: currentConversationId,
       conversationType: currentSidebarConversationType,
+      paywallType: 'PROACTIVE',
     })
-    window.open(href)
+    if (paywallVariant === '1-2') {
+      createPaymentSubscription().finally(() => {
+        handlePopoverClose()
+      })
+    } else {
+      handlePopoverClose()
+      window.open(href)
+    }
   }
 
   if (!isFreeUser) return null
 
   return (
     <LoginLayout>
-      <Button
+      <LoadingButton
         sx={{
           borderRadius: 2,
           p: 0.5,
@@ -73,6 +86,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           },
           ...sx,
         }}
+        loading={loading}
         onClick={handleClick}
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
@@ -85,6 +99,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           color='text.primary'
           sx={{
             userSelect: 'none',
+            opacity: loading ? 0 : 1,
           }}
         >
           {/*{t('client:sidebar__top_bar__upgrade__title')}*/}
@@ -161,7 +176,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                   </Link>
 
                   <Box position='relative'>
-                    <Button
+                    <LoadingButton
                       variant='contained'
                       fullWidth
                       startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
@@ -171,10 +186,11 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                         py: 1.5,
                         borderRadius: 2,
                       }}
+                      loading={loading}
                       onClick={handleClick}
                     >
                       {t('client:sidebar__top_bar__upgrade__title')}
-                    </Button>
+                    </LoadingButton>
                     <Typography
                       fontSize={12}
                       mt={0.5}
@@ -208,7 +224,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
             </Grow>
           )}
         </Popper>
-      </Button>
+      </LoadingButton>
     </LoginLayout>
   )
 }

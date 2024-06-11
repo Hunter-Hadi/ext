@@ -162,6 +162,14 @@ const FloatingContextMenu: FC<{
     open: floatingDropdownMenu.open,
     strategy: 'fixed',
     onOpenChange: (open, event, reason) => {
+      // TOOD 临时逻辑
+      if (
+        document
+          .querySelector('#MAXAI_GLOBAL_VIDEO_POPUP_CONTAINER_ID')
+          ?.shadowRoot?.querySelector('#MAX_AI_PRICING_MODAL')
+      ) {
+        return
+      }
       if (reason !== 'escape-key' && floatingDropdownMenuPin) {
         // pin状态下只允许按esc主动退出
         return

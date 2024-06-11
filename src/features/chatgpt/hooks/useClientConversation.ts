@@ -1,10 +1,17 @@
 import { useEffect, useRef } from 'react'
-import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
+import {
+  useRecoilCallback,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
+} from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
+import { getPaywallVariant } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { PricingModalState } from '@/features/auth/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
   ClientConversationStateFamily,
@@ -89,6 +96,7 @@ const useClientConversation = () => {
   const [clientConversationMessages] = useRecoilState(
     PaginationConversationMessagesStateFamily(currentConversationId || ''),
   )
+  const setPricingModalState = useSetRecoilState(PricingModalState)
   const currentSidebarConversationType = clientConversation?.type || 'Chat'
   const currentConversationIdRef = useRef(currentConversationId)
   const currentConversationTypeRef = useRef(clientConversation?.type)
@@ -214,6 +222,23 @@ const useClientConversation = () => {
       showChatBox()
     }
     if (addToConversationId) {
+      // 判断是否是paywall test version
+      const paywallVariant = await getPaywallVariant()
+      if (paywallVariant === '1-2') {
+        window.postMessage({
+          event: 'MAX_AI_PRICING_MODAL',
+          type: 'show',
+          data: {
+            conversationId: addToConversationId,
+            permissionSceneType,
+          },
+        })
+        setPricingModalState({
+          show: true,
+          conversationId: addToConversationId,
+          permissionSceneType,
+        })
+      }
       await ClientConversationMessageManager.addMessages(addToConversationId, [
         {
           type: 'system',

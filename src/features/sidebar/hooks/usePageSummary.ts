@@ -209,6 +209,7 @@ const usePageSummary = () => {
             await pushPricingHookMessage('PAGE_SUMMARY')
             authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
               conversationId: currentConversationId,
+              paywallType: 'RESPONSE',
             })
             isGeneratingPageSummaryRef.current = false
             updateClientConversationLoading(false)

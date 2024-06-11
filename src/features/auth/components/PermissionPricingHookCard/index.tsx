@@ -15,7 +15,7 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { isUsageLimitPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { openGlobalVideoPopup } from '@/features/video_popup/utils'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
@@ -60,6 +60,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
   const ctaButtonClick = (e: React.MouseEvent) => {
     authEmitPricingHooksLog('click', permissionSceneType, {
       conversationId: currentConversationIdRef.current,
+      paywallType: 'RESPONSE',
     })
 
     permissionCard?.ctaButtonOnClick && permissionCard?.ctaButtonOnClick(e)
@@ -154,7 +155,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
             ) : null}
           </Stack>
         ) : null}
-        <Stack direction={'row'} alignItems="start" spacing={1}>
+        <Stack direction={'row'} alignItems='start' spacing={1}>
           {typeof permissionCard.title !== 'string' ? (
             permissionCard.title
           ) : (
@@ -204,14 +205,14 @@ const PermissionPricingHookCard: FC<IProps> = ({
           >
             {ctaButtonText}
           </Button>
-          <Stack direction={'row'} spacing={0.5} alignItems="start">
+          <Stack direction={'row'} spacing={0.5} alignItems='start'>
             {/*<PricingHooksRocketIcon*/}
             {/*  sx={{*/}
             {/*    fontSize: 20,*/}
             {/*    color: 'primary.main',*/}
             {/*  }}*/}
             {/*/>*/}
-            <Typography fontSize={14} color="rgba(255, 255, 255, 0.7)">
+            <Typography fontSize={14} color='rgba(255, 255, 255, 0.7)'>
               {t('client:permission__pricing_hook__footer_tip')}
             </Typography>
           </Stack>
@@ -223,7 +224,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
   // 获取不到 permissionCard 渲染 systemMessageText
   // 理论上不该执行到这
   return (
-    <Stack direction={'row'} alignItems="flex-start" spacing={1.5} mb={2}>
+    <Stack direction={'row'} alignItems='flex-start' spacing={1.5} mb={2}>
       {systemMessageText}
     </Stack>
   )

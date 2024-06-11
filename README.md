@@ -1,103 +1,65 @@
-# TypeScript, React, Rollup, and Chrome v3 Manifest Starter
+# MaxAI Chrome Extension
+> MaxAI 浏览器插件
 
-This is a bare bones starter for building React/Typescript extensions for Chrome
-using `manifest_version: 3`.
+## 项目结构
 
-Under the hood, this starter leans pretty heavily on the infrastructure from
-[Extend Chrome](https://www.extend-chrome.dev/rollup-plugin). The primary
-difference is this starter integrates some foundational code and manifest
-configuration for v3 which I couldn't find in the boilerplate examples they
-offer.
-
-## Notes
-
-In my tinkering with this starter there are a few notes that I find helpful.
-
-### 1. Manually bundle files
-
-If you reference files that can't be automatically recognized, use the
-`web_accessible_resources` property in manifest to explicitly bundle them.
-
-```json
-"web_accessible_resources": [
-    {
-      "resources": [
-        "pages/popup/index.html",
-        "pages/popup/App.tsx",
-        "pages/popup/minimum.tsx"
-      ],
-      "matches": [
-        "<all_urls>"
-      ]
-    }
-  ]
+```
+├── build                        // 构建脚本
+├── dist                         // 构建内容
+├── releases                     // 可发布的压缩包
+├── src                          // 项目代码，多项目的话是公共代码
+│    ├── assets                 // 公共资源
+│    ├── background             // background进程的代码 
+│    ├── components             // 公共组件
+│    ├── constants              // 公共常量
+│    ├── features               // 业务模块，模块下的目录结构和src一致
+│    │    ├── module1           // 模块1
+│    │    └── module2           // 模块1 
+│    ├── hooks                  // 公共hook
+│    ├── i18n                   // 国际化
+│    ├── lib                    // 第三方依赖
+│    ├── minimum                // 页面上侧边栏按钮
+│    ├── pages                  // 页面文件
+│    ├── rules                  // 页面文件
+│    ├── stores                 // 全局共享状态
+│    ├── styles                 // 样式
+│    ├── utils                  // 公共方法
+│    ├── background.ts          // background入口文件
+│    ├── check_status.ts        // 登录状态检测以及和web app通信
+│    ├── content.tsx            // content入口文件
+│    ├── manifest.json          // 插件配置文件
+├── README.md                   // 项目说明
+└── package.json
 ```
 
-### 2. Split v2 and v3 manifests
+## 运行项目
 
-Though a little hacky, I have had some success generating v2 and v3 manifests
-with a little customization to this starter. The approach can be
-[seen on my extension Link Roamer](https://github.com/rossmoody/link-roamer/blob/main/rollup.config.js).
+统一用pnpm
 
-The premise is pretty simple: hook into a specific string value throughout your
-app and programmatically fire v2 or v3 API methods depending on the esbuildConfig
-environment.
-
-In this way,
-[functions can be conditionally](https://github.com/rossmoody/link-roamer/blob/main/src/scripts/Chrome.ts)
-compiled.
-
-```js
-if ('isV3Manifest') {
-  return (
-    await chrome.scripting.executeScript({
-      target: { tabId },
-      func,
-    })
-  )[0].result
-} else {
-  return (
-    await browser.tabs.executeScript(tabId, {
-      code: `(${func})()`,
-    })
-  )[0]
-}
+```shell
+pnpm install
+```
+```shell
+pnpm run dev
 ```
 
-## Development
+到chrome浏览器扩展设置里将dist文件夹拖入
 
-For development with automatic reloading:
+## 构建项目
 
-```sh
-npm run start
+```shell
+pnpm run release
 ```
 
-Open the [Extensions Dashboard](chrome://extensions), enable "Developer mode",
-click "Load unpacked", and choose the `dist` folder.
+## 发布项目
 
-When you make changes in `src` the background script and any content script will
-reload automatically.
+1. 修改src/manifest.json里的插件版本
+2. 项目构建完成后将releases/MaxAI[production]-x.x.x.zip发到群里测试
+3. 测试通过无误后@发布人员验收发布
+4. 发布完成后合并到prod分支并修改package.json的版本添加release: x.x.x的commit
 
-## Production
+## 注意事项
 
-When it's time to publish your Chrome extension, make a production esbuildConfig to
-submit to the Chrome Web Store. This boilerplate will use the version in
-`package.json`, unless you add a version to `src/manifest.json`.
-
-> Make sure you have updated the name and version of your extension in
-> `package.json`.
-
-Run the following line:
-
-```sh
-yarn esbuildConfig
-```
-
-This will create a ZIP file with your package name and version in the `releases`
-folder.
-
----
-
-## More apps by me
-
-I like making things. [Check out what I'm up to lately](https://rossmoody.com).
+1. 需要添加插件新的权限时要确认该权限是否是敏感权限
+   > https://developer.chrome.com/docs/extensions/reference/permissions-list
+2. 如果为敏感权限需要调研有无其他可替代的方案

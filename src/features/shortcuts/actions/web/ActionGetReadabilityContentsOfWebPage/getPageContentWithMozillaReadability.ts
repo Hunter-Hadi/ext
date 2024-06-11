@@ -17,13 +17,14 @@ function removeImagesFromMarkdown(markdownText: string): string {
 
 const getPageContentWithMozillaReadability = async (
   replaceBody?: HTMLElement,
+  options?: any,
 ) => {
   try {
-    const clonedDocument = (document.cloneNode(true) as any) as HTMLDocument
+    const clonedDocument = document.cloneNode(true) as any as HTMLDocument
     if (clonedDocument && replaceBody) {
       clonedDocument.body.innerHTML = replaceBody.innerHTML
     }
-    const reader = new Readability(clonedDocument as any)
+    const reader = new Readability(clonedDocument as any, options)
     const readabilityArticle = reader.parse()
     if (!readabilityArticle || !readabilityArticle?.content) {
       return document.body.innerText || ''

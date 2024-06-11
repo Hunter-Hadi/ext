@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import useUserABTestInfo from '@/features/abTester/hooks/useUserABTestInfo'
+import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import LoginLayout from '@/features/auth/components/LoginLayout'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
@@ -50,7 +51,8 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
     setAnchorEl(null)
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    const { paywallVariant } = await getChromeExtensionUserABTest()
     authEmitPricingHooksLog('click', 'PROACTIVE_UPGRADE', {
       conversationId: currentConversationId,
       conversationType: currentSidebarConversationType,

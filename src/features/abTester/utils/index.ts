@@ -4,9 +4,26 @@ import {
   CHROME_EXTENSION_USER_ABTEST_SAVE_KEY,
   PAYWALL_VARIANT,
 } from '@/features/abTester/constants'
-import { IPaywallVariant, IUserABTestInfo } from '@/features/abTester/types'
-import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
+import { IUserABTestInfo } from '@/features/abTester/types'
+import {
+  getMaxAIChromeExtensionUserId,
+  getMaxAIWebSiteClientUserId,
+} from '@/features/auth/utils'
 
+export const generateRandomNumber = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+export const generateABTestInfo = (): IUserABTestInfo => {
+  return {
+    paywallVariant:
+      PAYWALL_VARIANT[generateRandomNumber(0, PAYWALL_VARIANT.length - 1)],
+  }
+}
+
+/**
+ * 获取本地保存所有用户的abtest信息
+ */
 export const getChromeExtensionUsersABTest = async (): Promise<
   Record<string, IUserABTestInfo>
 > => {
@@ -23,20 +40,53 @@ export const getChromeExtensionUsersABTest = async (): Promise<
   return {}
 }
 
+/**
+ * 获取本地保存用户的abtest信息
+ */
 export const getChromeExtensionUserABTest = async (
-  userId: string,
+  userId?: string,
 ): Promise<IUserABTestInfo> => {
   const usersABTest = await getChromeExtensionUsersABTest()
-  return usersABTest[userId] || {}
+
+  if (!userId) {
+    // 获取用户id
+    userId = await getMaxAIChromeExtensionUserId()
+  }
+  if (!userId) {
+    // 获取client user id
+    userId = await getMaxAIWebSiteClientUserId()
+  }
+  if (!userId) {
+    // 生成一个userId
+    userId = 'guest'
+  }
+
+  const abTestInfo = usersABTest[userId] || {}
+
+  // 在generateABTestInfo里加入新的key并在下方添加新的判断
+  // if (!abTestInfo.xx1 || !abTestInfo.xx2) {
+  if (!abTestInfo.paywallVariant) {
+    Object.assign(abTestInfo, {
+      ...generateABTestInfo(),
+      ...abTestInfo,
+    })
+    await saveChromeExtensionUserABTest(userId, abTestInfo)
+  }
+
+  return abTestInfo
 }
 
+/**
+ * 修改本地保存用户的abtest信息
+ * @param userId
+ * @param abTestInfo
+ */
 export const saveChromeExtensionUserABTest = async (
   userId: string,
   abTestInfo: IUserABTestInfo,
 ) => {
   try {
     const usersABTest = await getChromeExtensionUsersABTest()
-    await getChromeExtensionUserABTest(userId)
     await Browser.storage.local.set({
       [CHROME_EXTENSION_USER_ABTEST_SAVE_KEY]: JSON.stringify({
         ...usersABTest,
@@ -47,29 +97,4 @@ export const saveChromeExtensionUserABTest = async (
   } catch (e) {
     return false
   }
-}
-
-export const generatePaywallVariant = () => {
-  return PAYWALL_VARIANT[Date.now() % PAYWALL_VARIANT.length]
-}
-
-export const getPaywallVariant = async (
-  userId?: string,
-): Promise<IPaywallVariant> => {
-  if (!userId) {
-    userId = await getMaxAIChromeExtensionUserId()
-  }
-
-  if (!userId) {
-    return '1-1'
-  }
-
-  const abTestInfo = await getChromeExtensionUserABTest(userId)
-
-  if (!abTestInfo.paywallVariant) {
-    abTestInfo.paywallVariant =
-      PAYWALL_VARIANT[Date.now() % PAYWALL_VARIANT.length]
-    saveChromeExtensionUserABTest(userId, abTestInfo)
-  }
-  return abTestInfo.paywallVariant
 }

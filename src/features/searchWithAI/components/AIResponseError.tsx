@@ -11,9 +11,10 @@ import { v4 as uuidV4 } from 'uuid'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import { APP_USE_CHAT_GPT_HOST, CHATGPT_WEBAPP_HOST } from '@/constants'
+import useUserABTestInfo from '@/features/abTester/hooks/useUserABTestInfo'
 import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
-import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
 
 import {
   ISearchWithAIProviderType,
@@ -52,6 +53,10 @@ const AIResponseError: FC<IProps> = ({
     }
     return null
   }, [permissionCard])
+
+  const {
+    abTestInfo: { paywallVariant },
+  } = useUserABTestInfo()
 
   const [errorStatus, setErrorStatus] = useState<'UNAUTHORIZED' | 'TRY_AGAIN'>()
 
@@ -186,20 +191,20 @@ const AIResponseError: FC<IProps> = ({
   const ErrorButton = useMemo(() => {
     if (errorStatus === 'UNAUTHORIZED' && authLink) {
       return (
-        <Stack direction={'row'} spacing={1} alignItems="center">
+        <Stack direction={'row'} spacing={1} alignItems='center'>
           <Link
             href={authLink}
-            target="_blank"
+            target='_blank'
             sx={{
               width: 'max-content',
             }}
           >
-            <Button variant="normalOutlined">
+            <Button variant='normalOutlined'>
               Log into {providerOption.label}
             </Button>
           </Link>
           <Button
-            variant="normalOutlined"
+            variant='normalOutlined'
             onClick={handleAsk}
             sx={{
               color: (t) =>
@@ -217,7 +222,7 @@ const AIResponseError: FC<IProps> = ({
     return (
       <Button
         fullWidth
-        variant="normalOutlined"
+        variant='normalOutlined'
         startIcon={<SearchOutlinedIcon />}
         onClick={handleAsk}
       >
@@ -247,17 +252,19 @@ const AIResponseError: FC<IProps> = ({
         <PermissionPricingHookCard
           permissionSceneType={pricingHookMessage.meta.permissionSceneType}
           message={pricingHookMessage}
+          paywallVariant={paywallVariant}
         />
       </Stack>
     )
   }
   return (
     <Stack spacing={2}>
-      <Box className="search-with-ai--text" sx={sxCache}>
+      <Box className='search-with-ai--text' sx={sxCache}>
         <AppSuspenseLoadingLayout>
           <Box
-            className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''
-              }`}
+            className={`markdown-body ${
+              isDarkMode ? 'markdown-body-dark' : ''
+            }`}
           >
             <CustomMarkdown>{textCover}</CustomMarkdown>
           </Box>

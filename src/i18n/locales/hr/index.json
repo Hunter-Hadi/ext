@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "Uštedite 53%",
     "home_view__chat__title": "AI chat",
     "home_view__chat__description": "Istražujte 10 puta brže razgovarajući s GPT-4o, Claude 3, Gemini 1.5 i drugima.",
-    "home_view__sample_prompt__explore_more": "Istražite biblioteku AI uputa"
+    "home_view__sample_prompt__explore_more": "Istražite biblioteku AI uputa",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Dobijte trenutne odgovore uz pristup webu u stvarnom vremenu, znanju i citatima s Claudeom.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dobijte trenutne odgovore uz pristup webu u stvarnom vremenu, znanju i citatima s ChatGPT-om."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

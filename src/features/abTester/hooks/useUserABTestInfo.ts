@@ -13,12 +13,12 @@ const useUserABTestInfo = () => {
   const { userInfo } = useUserInfo()
   const [abTestInfo, setABTestInfo] = useRecoilState(UserABTestInfoState)
 
-  const userId = (userInfo as any)?.user_id
-
   const handleInit = useCallback(async () => {
-    const info = await getChromeExtensionUserABTest(userId)
+    const info = await getChromeExtensionUserABTest(
+      userInfo?.client_user_id || '',
+    )
     setABTestInfo(info)
-  }, [userId])
+  }, [userInfo?.client_user_id])
 
   useEffect(() => {
     handleInit()
@@ -30,7 +30,6 @@ const useUserABTestInfo = () => {
   useFocus(handleInit)
 
   return {
-    userId,
     abTestInfo,
   }
 }

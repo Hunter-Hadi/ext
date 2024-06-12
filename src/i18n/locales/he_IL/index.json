@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "חסוך 53%",
     "home_view__chat__title": "צ'אט של AI",
     "home_view__chat__description": "מחקר במהירות 10 פעמים יותר על ידי שיחה עם GPT-4o, Claude 3, Gemini 1.5 ועוד.",
-    "home_view__sample_prompt__explore_more": "חקור את ספריית הפרומפטים של AI"
+    "home_view__sample_prompt__explore_more": "חקור את ספריית הפרומפטים של AI",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "קבל תשובות מיידיות עם גישה לרשת בזמן אמת, ידע וציטוטים עם Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "קבל תשובות מיידיות עם גישה לרשת בזמן אמת, ידע וציטוטים עם ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

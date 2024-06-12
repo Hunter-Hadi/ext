@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "53% बचत करा",
     "home_view__chat__title": "AI चॅट",
     "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 आणि इतरांसह चॅट करून 10 वेळा त्वरित संशोधन करा.",
-    "home_view__sample_prompt__explore_more": "AI प्रॉम्प्ट लायब्ररी शोधा"
+    "home_view__sample_prompt__explore_more": "AI प्रॉम्प्ट लायब्ररी शोधा",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "क्लोडसह वेब प्रवेश, ज्ञान आणि संदर्भांसह तत्काळ उत्तरे मिळवा.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPTसह वेब प्रवेश, ज्ञान आणि संदर्भांसह तत्काळ उत्तरे मिळवा."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

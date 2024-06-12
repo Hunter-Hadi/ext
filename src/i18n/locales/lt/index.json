@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "Išsaugokite 53%",
     "home_view__chat__title": "AI pokalbis",
     "home_view__chat__description": "Tyrimai 10 kartų greitesni, bendraujant su GPT-4o, Claude 3, Gemini 1.5 ir daugiau.",
-    "home_view__sample_prompt__explore_more": "Tyrinėkite AI paskatų biblioteką"
+    "home_view__sample_prompt__explore_more": "Tyrinėkite AI paskatų biblioteką",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Gaukite momentinius atsakymus su realiu laiko interneto prieiga, žiniomis ir citatomis su Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Gaukite momentinius atsakymus su realiu laiko interneto prieiga, žiniomis ir citatomis su ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

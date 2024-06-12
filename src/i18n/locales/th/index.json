@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "ประหยัด 53%",
     "home_view__chat__title": "แชท AI",
     "home_view__chat__description": "วิจัยได้เร็วขึ้น 10 เท่าโดยการสนทนากับ GPT-4o, Claude 3, Gemini 1.5 และอื่น ๆ",
-    "home_view__sample_prompt__explore_more": "สำรวจห้องสมุดคำพูด AI"
+    "home_view__sample_prompt__explore_more": "สำรวจห้องสมุดคำพูด AI",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "รับคำตอบทันทีด้วยการเข้าถึงเว็บแบบเรียลไทม์ ความรู้ และการอ้างอิงด้วย Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "รับคำตอบทันทีด้วยการเข้าถึงเว็บแบบเรียลไทม์ ความรู้ และการอ้างอิงด้วย ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

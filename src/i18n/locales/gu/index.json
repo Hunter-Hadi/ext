@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "53% બચાવો",
     "home_view__chat__title": "એઆઈ ચેટ",
     "home_view__chat__description": "જીપીટી-4o, ક્લોડ 3, જેમિની 1.5 અને વધુ સાથે ચેટ કરીને 10x વધુ તેજીથી શોધશો.",
-    "home_view__sample_prompt__explore_more": "એઆઈ પ્રોમ્પ્ટ લાઇબ્રેરી અન્વેષણ કરો"
+    "home_view__sample_prompt__explore_more": "એઆઈ પ્રોમ્પ્ટ લાઇબ્રેરી અન્વેષણ કરો",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "ક્લોડ સાથે વાત કરીને તકનીકી પ્રવૃત્તિ, જ્ઞાન અને ઉદાહરણોની સાથે તકનીકી પ્રવૃત્તિની તક મેળવો.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ચેટજીપીટી સાથે વાત કરીને તકનીકી પ્રવૃત્તિ, જ્ઞાન અને ઉદાહરણોની સાથે તકનીકી પ્રવૃત્તિની તક મેળવો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "Economisește 53%",
     "home_view__chat__title": "Chat AI",
     "home_view__chat__description": "Cercetează de 10 ori mai rapid prin chat cu GPT-4o, Claude 3, Gemini 1.5 și altele.",
-    "home_view__sample_prompt__explore_more": "Explorează biblioteca de prompt-uri AI"
+    "home_view__sample_prompt__explore_more": "Explorează biblioteca de prompt-uri AI",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Obțineți răspunsuri instantanee cu acces web în timp real, cunoștințe și citări cu Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obțineți răspunsuri instantanee cu acces web în timp real, cunoștințe și citări cu ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

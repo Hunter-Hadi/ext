@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "Hifadhi 53%",
     "home_view__chat__title": "Mazungumzo ya AI",
     "home_view__chat__description": "Tafiti kwa kasi mara 10 zaidi kwa kuzungumza na GPT-4o, Claude 3, Gemini 1.5, na wengine.",
-    "home_view__sample_prompt__explore_more": "Chunguza maktaba ya mada za AI"
+    "home_view__sample_prompt__explore_more": "Chunguza maktaba ya mada za AI",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Pata majibu ya papo hapo na ufikiaji wa wavuti halisi, maarifa, na marejeo kwa kutumia Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Pata majibu ya papo hapo na ufikiaji wa wavuti halisi, maarifa, na marejeo kwa kutumia ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "Εξοικονομήστε 53%",
     "home_view__chat__title": "Συνομιλία με την Τεχνητή Νοημοσύνη",
     "home_view__chat__description": "Έρευνα 10 φορές πιο γρήγορα συνομιλώντας με το GPT-4o, το Claude 3, το Gemini 1.5 και άλλους.",
-    "home_view__sample_prompt__explore_more": "Εξερεύνηση βιβλιοθήκης AI prompts"
+    "home_view__sample_prompt__explore_more": "Εξερεύνηση βιβλιοθήκης AI prompts",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Λάβετε άμεσες απαντήσεις με πρόσβαση σε πραγματικό χρόνο στον ιστό, γνώση και αναφορές με τον Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Λάβετε άμεσες απαντήσεις με πρόσβαση σε πραγματικό χρόνο στον ιστό, γνώση και αναφορές με το ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

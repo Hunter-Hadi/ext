@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "احفظ 53%",
     "home_view__chat__title": "محادثة الذكاء الاصطناعي",
     "home_view__chat__description": "قم بالبحث بسرعة 10 مرات أكبر عن طريق الدردشة مع GPT-4o و Claude 3 و Gemini 1.5 وغيرهم.",
-    "home_view__sample_prompt__explore_more": "استكشف مكتبة تلميحات الذكاء الاصطناعي"
+    "home_view__sample_prompt__explore_more": "استكشف مكتبة تلميحات الذكاء الاصطناعي",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "احصل على إجابات فورية مع وصول الويب في الوقت الحقيقي والمعرفة والاستشهادات مع كلود.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "احصل على إجابات فورية مع وصول الويب في الوقت الحقيقي والمعرفة والاستشهادات مع ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

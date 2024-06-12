@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "53% megtakarítás",
     "home_view__chat__title": "AI csevegés",
     "home_view__chat__description": "Kutass 10-szer gyorsabban a GPT-4o, Claude 3, Gemini 1.5 és másokkal való csevegéssel.",
-    "home_view__sample_prompt__explore_more": "Fedezze fel az AI prompt könyvtárat"
+    "home_view__sample_prompt__explore_more": "Fedezze fel az AI prompt könyvtárat",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Azonnali válaszokat kaphat valós idejű webhelyhozzáféréssel, ismeretekkel és hivatkozásokkal Claude segítségével.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Azonnali válaszokat kaphat valós idejű webhelyhozzáféréssel, ismeretekkel és hivatkozásokkal ChatGPT segítségével."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

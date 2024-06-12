@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "Spara 53%",
     "home_view__chat__title": "AI-chatt",
     "home_view__chat__description": "Forska 10 gånger snabbare genom att chatta med GPT-4o, Claude 3, Gemini 1.5 och mer.",
-    "home_view__sample_prompt__explore_more": "Utforska AI-promptbiblioteket"
+    "home_view__sample_prompt__explore_more": "Utforska AI-promptbiblioteket",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Få omedelbara svar med realtidswebbåtkomst, kunskap och källhänvisningar med Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Få omedelbara svar med realtidswebbåtkomst, kunskap och källhänvisningar med ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

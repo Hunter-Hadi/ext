@@ -5,10 +5,7 @@ import {
   PAYWALL_VARIANT,
 } from '@/features/abTester/constants'
 import { IUserABTestInfo } from '@/features/abTester/types'
-import {
-  getMaxAIChromeExtensionUserId,
-  getMaxAIWebSiteClientUserId,
-} from '@/features/auth/utils'
+import { getMaxAIWebSiteClientUserId } from '@/features/auth/utils'
 
 export const generateRandomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
@@ -48,10 +45,10 @@ export const getChromeExtensionUserABTest = async (
 ): Promise<IUserABTestInfo> => {
   const usersABTest = await getChromeExtensionUsersABTest()
 
-  if (!userId) {
-    // 获取用户id
-    userId = await getMaxAIChromeExtensionUserId()
-  }
+  // if (!userId) {
+  //   // 获取user id
+  //   userId = await getMaxAIChromeExtensionUserId()
+  // }
   if (!userId) {
     // 获取client user id
     userId = await getMaxAIWebSiteClientUserId()
@@ -64,12 +61,11 @@ export const getChromeExtensionUserABTest = async (
   const abTestInfo = usersABTest[userId] || {}
 
   // 在generateABTestInfo里加入新的key并在下方添加新的判断
-  // if (!abTestInfo.xx1 || !abTestInfo.xx2) {
-  if (!abTestInfo.paywallVariant) {
-    Object.assign(abTestInfo, {
-      ...generateABTestInfo(),
-      ...abTestInfo,
-    })
+  if (
+    !abTestInfo.paywallVariant ||
+    !PAYWALL_VARIANT.includes(abTestInfo.paywallVariant)
+  ) {
+    abTestInfo.paywallVariant = generateABTestInfo().paywallVariant
     await saveChromeExtensionUserABTest(userId, abTestInfo)
   }
 

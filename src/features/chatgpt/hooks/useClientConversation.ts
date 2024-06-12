@@ -224,7 +224,7 @@ const useClientConversation = () => {
     if (addToConversationId) {
       // 判断是否是paywall test version
       const { paywallVariant } = await getChromeExtensionUserABTest()
-      if (paywallVariant === '1-2') {
+      if (paywallVariant === '2-2') {
         window.postMessage({
           event: 'MAX_AI_PRICING_MODAL',
           type: 'show',

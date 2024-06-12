@@ -76,6 +76,9 @@ const PermissionPricingModal: FC<IProps> = () => {
     createPaymentSubscription()
   }
 
+  const description =
+    permissionCard?.modalDescription || permissionCard?.description
+
   return (
     <Modal
       open={show}
@@ -135,8 +138,8 @@ const PermissionPricingModal: FC<IProps> = () => {
               bgcolor: 'rgba(244, 244, 244, 1)',
             }}
           >
-            {typeof permissionCard?.description !== 'string' ? (
-              permissionCard?.description
+            {typeof description !== 'string' ? (
+              description
             ) : (
               <Typography
                 fontSize={16}
@@ -144,7 +147,7 @@ const PermissionPricingModal: FC<IProps> = () => {
                   whiteSpace: 'pre-wrap',
                 }}
               >
-                {permissionCard?.description}
+                {description}
               </Typography>
             )}
           </Stack>

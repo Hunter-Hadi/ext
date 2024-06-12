@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "节省53%",
     "home_view__chat__title": "AI聊天",
     "home_view__chat__description": "与GPT-4o、Claude 3、Gemini 1.5等进行聊天，以实现10倍的研究速度。",
-    "home_view__sample_prompt__explore_more": "探索AI提示库"
+    "home_view__sample_prompt__explore_more": "探索AI提示库",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "使用Claude进行实时网络访问、知识和引用的即时答案。",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "使用ChatGPT进行实时网络访问、知识和引用的即时答案。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

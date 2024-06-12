@@ -895,7 +895,9 @@
     "permission__pricing_modal__discount__title": "53% ይቀርብ",
     "home_view__chat__title": "የማስታወቂያ የሰው አስተዳደር",
     "home_view__chat__description": "በ GPT-4o, Claude 3, Gemini 1.5 እና በሌሎች መሣሪያዎች እንዲሁም የሚሰራውን 10x በትክክል የሚሻለውን ለማስታወቂያ ይምረጡ.",
-    "home_view__sample_prompt__explore_more": "የማስታወቂያ AI መሣሪያዎችን ለመስራት ይጫኑ"
+    "home_view__sample_prompt__explore_more": "የማስታወቂያ AI መሣሪያዎችን ለመስራት ይጫኑ",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "የሰነድ ያልታወቀ መልዕክት እና ማስታወቂያዎችን የሚጠቀሙ በርካታ የድርጅት እና የምርት አጠቃቀም ከ Claude ጋር ይጠቀሙ።",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "የሰነድ ያልታወቀ መልዕክት እና ማስታወቂያዎችን የሚጠቀሙ በርካታ የድርጅት እና የምርት አጠቃቀም ከ ChatGPT ጋር ይጠቀሙ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "由最佳AI模型驱动：GPT-4o、Claude-3-opus、Gemini-1.5-pro。",
     "sidebar__promotion_dialog__discount__title": "现在节省53%",
     "provider__chatgpt__upload_file_error__total_too_large__text": "上传的文件太大。请使用具有更大上下文窗口的AI模型或上传较小的文件。",
-    "chat__user_message__contexts__file__preview__tips": "格式可能与源不一致。"
+    "chat__user_message__contexts__file__preview__tips": "格式可能与源不一致。",
+    "home_view__chat__title": "AI聊天",
+    "home_view__chat__description": "与GPT-4o、Claude 3、Gemini 1.5等进行聊天，以实现10倍的研究速度。",
+    "home_view__sample_prompt__explore_more": "探索AI提示库"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

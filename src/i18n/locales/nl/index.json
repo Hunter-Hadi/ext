@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Aangedreven door de beste AI-modellen: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Bespaar nu 53%",
     "provider__chatgpt__upload_file_error__total_too_large__text": "De geüploade bestanden zijn te groot. Gebruik alstublieft een AI-model met een groter contextvenster of upload kleinere bestanden.",
-    "chat__user_message__contexts__file__preview__tips": "De opmaak kan inconsistent zijn vanuit de bron."
+    "chat__user_message__contexts__file__preview__tips": "De opmaak kan inconsistent zijn vanuit de bron.",
+    "home_view__chat__title": "AI-chat",
+    "home_view__chat__description": "Onderzoek 10x sneller door te chatten met GPT-4o, Claude 3, Gemini 1.5 en meer.",
+    "home_view__sample_prompt__explore_more": "Verken AI-promptbibliotheek"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Pokreće najbolje AI modele: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Uštedite 53% sada",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Postavljeni fajlovi su preveliki. Molimo koristite AI model sa većim prozorom konteksta ili postavite manje fajlove.",
-    "chat__user_message__contexts__file__preview__tips": "Formatiranje može biti neskladno sa izvorom."
+    "chat__user_message__contexts__file__preview__tips": "Formatiranje može biti neskladno sa izvorom.",
+    "home_view__chat__title": "AI čet",
+    "home_view__chat__description": "Istražujte 10 puta brže razgovarajući sa GPT-4o, Claude 3, Gemini 1.5 i drugima.",
+    "home_view__sample_prompt__explore_more": "Istražite biblioteku AI uputa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

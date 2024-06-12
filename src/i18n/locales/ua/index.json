@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Працює на найкращих AI-моделях: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Зекономте 53% зараз",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Завантажені файли занадто великі. Будь ласка, використовуйте модель штучного інтелекту з більшим вікном контексту або завантажуйте менші файли.",
-    "chat__user_message__contexts__file__preview__tips": "Форматування може бути неоднаковим у вихідному джерелі."
+    "chat__user_message__contexts__file__preview__tips": "Форматування може бути неоднаковим у вихідному джерелі.",
+    "home_view__chat__title": "Чат з штучним інтелектом",
+    "home_view__chat__description": "Досліджуйте в 10 разів швидше, спілкуючись з GPT-4o, Claude 3, Gemini 1.5 та багатьма іншими.",
+    "home_view__sample_prompt__explore_more": "Досліджуйте бібліотеку AI промптів"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Με την υποστήριξη των καλύτερων μοντέλων τεχνητής νοημοσύνης: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Εξοικονομήστε 53% τώρα",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Τα ανεβασμένα αρχεία είναι πολύ μεγάλα. Χρησιμοποιήστε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή ανεβάστε μικρότερα αρχεία.",
-    "chat__user_message__contexts__file__preview__tips": "Η μορφοποίηση μπορεί να είναι ανεπαρκής από την πηγή."
+    "chat__user_message__contexts__file__preview__tips": "Η μορφοποίηση μπορεί να είναι ανεπαρκής από την πηγή.",
+    "home_view__chat__title": "Συνομιλία με την Τεχνητή Νοημοσύνη",
+    "home_view__chat__description": "Έρευνα 10 φορές πιο γρήγορα συνομιλώντας με το GPT-4o, Claude 3, Gemini 1.5 και άλλους.",
+    "home_view__sample_prompt__explore_more": "Εξερεύνηση βιβλιοθήκης AI prompts"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

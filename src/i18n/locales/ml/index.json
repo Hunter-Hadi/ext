@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "ഏറ്റവും മികച്ച എ.ഐ. മോഡലുകൾ പ്രവർത്തിപ്പിക്കുന്നു: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "ഇപ്പോൾ 53% സഞ്ചയം",
     "provider__chatgpt__upload_file_error__total_too_large__text": "അപ്‌ലോഡ് ചെയ്ത ഫയലുകൾ വളരെ പെട്ടന്നതാണ്. ദയവായി ഒരു പ്രമേയം ജനറേറ്റർ ഉപയോഗിച്ച് പുതിയ ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യുക.",
-    "chat__user_message__contexts__file__preview__tips": "ഫോർമാറ്റിംഗ് ഉറപ്പാക്കാൻ ഉള്ള സ്രോതസ്സിൽ അനുസരിച്ച് അനന്യമായിരിക്കാം."
+    "chat__user_message__contexts__file__preview__tips": "ഫോർമാറ്റിംഗ് ഉറപ്പാക്കാൻ ഉള്ള സ്രോതസ്സിൽ അനുസരിച്ച് അനന്യമായിരിക്കാം.",
+    "home_view__chat__title": "എ.ഐ. ചാറ്റ്",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 എന്നിവർക്ക് സംസാരിക്കുമ്പോൾ 10 പതിവ് വിജ്ഞാനം പഠിക്കുക.",
+    "home_view__sample_prompt__explore_more": "എ.ഐ. പ്രോംപ്റ്റ് ലൈബ്രറി അധിഷ്ഠിപ്പിക്കുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

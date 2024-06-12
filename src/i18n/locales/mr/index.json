@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "सर्वोत्तम AI मॉडेलांद्वारे संचालित: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "आता 53% बचत करा",
     "provider__chatgpt__upload_file_error__total_too_large__text": "अपलोड केलेल्या फाइलं खूप मोठी आहेत. कृपया एक AI मॉडेल वापरा ज्याचा प्रमाण विंडो जास्त मोठी आहे किंवा लहान फाइल अपलोड करा.",
-    "chat__user_message__contexts__file__preview__tips": "स्त्रोतातून स्वरुपण असंगठित असू शकतो."
+    "chat__user_message__contexts__file__preview__tips": "स्त्रोतातून स्वरुपण असंगठित असू शकतो.",
+    "home_view__chat__title": "AI चॅट",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 आणि इतरांसह चॅट करून 10 वेळा त्वरित संशोधन करा.",
+    "home_view__sample_prompt__explore_more": "AI प्रॉम्प्ट लायब्ररी शोधा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

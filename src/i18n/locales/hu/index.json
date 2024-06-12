@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "A legjobb AI modellek által támogatott: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Most 53% kedvezmény",
     "provider__chatgpt__upload_file_error__total_too_large__text": "A feltöltött fájlok túl nagyok. Kérlek használj egy AI modellt, amelynek nagyobb a kontextus ablaka, vagy tölts fel kisebb fájlokat.",
-    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrástól."
+    "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrástól.",
+    "home_view__chat__title": "AI csevegés",
+    "home_view__chat__description": "Kutass 10-szer gyorsabban a GPT-4o, Claude 3, Gemini 1.5 és másokkal való csevegéssel.",
+    "home_view__sample_prompt__explore_more": "Fedezze fel az AI prompt könyvtárat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

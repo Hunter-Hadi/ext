@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "সেরা এআই মডেলদ্বয়ের কাছ থেকে প্রচুর শক্তি: জিপিটি-৪০, ক্লোড-৩-অপুস, জেমিনি-১.৫-প্রো।",
     "sidebar__promotion_dialog__discount__title": "এখন ৫৩% বাঁচুন",
     "provider__chatgpt__upload_file_error__total_too_large__text": "আপলোড করা ফাইলগুলি অনেক বড়। দয়া করে একটি এইচআই মডেল ব্যবহার করুন যার সংশ্লেষণ উইন্ডো বড় আছে বা ছোট ফাইলগুলি আপলোড করুন।",
-    "chat__user_message__contexts__file__preview__tips": "সোর্স থেকে ফরম্যাটিং অস্থির হতে পারে।"
+    "chat__user_message__contexts__file__preview__tips": "সোর্স থেকে ফরম্যাটিং অস্থির হতে পারে।",
+    "home_view__chat__title": "এই আই চ্যাট",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 এবং আরো সাথে কথা বলে 10 গুন দ্রুত গবেষণা করুন।",
+    "home_view__sample_prompt__explore_more": "আরও AI প্রম্পট লাইব্রেরি অন্বেষণ করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

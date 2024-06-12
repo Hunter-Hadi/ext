@@ -872,7 +872,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Գործածելով լավագույն AI մոդելները՝ GPT-4o, Claude-3-opus, Gemini-1.5-pro:",
     "sidebar__promotion_dialog__discount__title": "Պահպանեք 53% հիմա",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Վերբեռնված ֆայլերը չեն կարող լինել շատ մեծ։ Խնդրում եմ օգտագործեք AI մոդել, որը ունի ավելի մեծ պատուհանակաշրջանառություն՝ կամ վերբեռնեք փոքր ֆայլեր։",
-    "chat__user_message__contexts__file__preview__tips": "Ձևանմուշային ձևաչափը կարող է տարբերվել աղյուսակից։"
+    "chat__user_message__contexts__file__preview__tips": "Ձևանմուշային ձևաչափը կարող է տարբերվել աղյուսակից։",
+    "home_view__chat__title": "Արվեստինգային խոսք",
+    "home_view__chat__description": "Գիտելիքները հանդեպ մեծացնելու համար խոսքերով GPT-4o, Claude 3, Gemini 1.5 և այլնի հետ:",
+    "home_view__sample_prompt__explore_more": "Իմանալ ավելին AI խորագրերի մասին"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

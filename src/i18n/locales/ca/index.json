@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Amb els millors models d'IA: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Estalvia un 53% ara",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Els fitxers carregats són massa grans. Si us plau, utilitzeu un model d'IA amb una finestra de context més gran o carregueu fitxers més petits.",
-    "chat__user_message__contexts__file__preview__tips": "El format pot ser inconsistent amb la font."
+    "chat__user_message__contexts__file__preview__tips": "El format pot ser inconsistent amb la font.",
+    "home_view__chat__title": "Xat d'IA",
+    "home_view__chat__description": "Investiga 10 vegades més ràpidament xatejant amb GPT-4o, Claude 3, Gemini 1.5 i més.",
+    "home_view__sample_prompt__explore_more": "Explora la biblioteca de suggeriments d'IA"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

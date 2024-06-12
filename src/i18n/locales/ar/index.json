@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "مدعوم بأفضل نماذج AI: GPT-4o، Claude-3-opus، Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "وفر 53% الآن",
     "provider__chatgpt__upload_file_error__total_too_large__text": "الملفات المرفوعة كبيرة جدًا. يُرجى استخدام نموذج AI بنافذة سياق أكبر أو تحميل ملفات أصغر.",
-    "chat__user_message__contexts__file__preview__tips": "قد يكون التنسيق غير متسق من المصدر."
+    "chat__user_message__contexts__file__preview__tips": "قد يكون التنسيق غير متسق من المصدر.",
+    "home_view__chat__title": "محادثة الذكاء الاصطناعي",
+    "home_view__chat__description": "قم بالبحث بسرعة 10 مرات أكبر عن طريق الدردشة مع GPT-4o و Claude 3 و Gemini 1.5 وغيرها.",
+    "home_view__sample_prompt__explore_more": "استكشف مكتبة تلميحات الذكاء الاصطناعي"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

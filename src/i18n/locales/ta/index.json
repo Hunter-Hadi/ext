@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "சிறந்த AI மாதிரிகள்: GPT-4o, Claude-3-opus, Gemini-1.5-pro ஆல் இயங்குகின்றன.",
     "sidebar__promotion_dialog__discount__title": "இப்போது 53% சேமிக்கவும்",
     "provider__chatgpt__upload_file_error__total_too_large__text": "பதிவேற்றப்பட்ட கோப்புகள் மிகப் பெரியவையாக உள்ளன. மிகுந்த உள்ளடக்க சாளர சாப்பிடுகை அல்லது சிறிய கோப்புகளை பதிவேற்றுக.",
-    "chat__user_message__contexts__file__preview__tips": "மூலம் வருமானத்தில் வடிவமைப்பு அட்டவணை ஒழுங்கு இருக்கலாம்."
+    "chat__user_message__contexts__file__preview__tips": "மூலம் வருமானத்தில் வடிவமைப்பு அட்டவணை ஒழுங்கு இருக்கலாம்.",
+    "home_view__chat__title": "ஏதேனும் செய்தியை அறிவிக்கும் மொழி",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 முதலியவர்களுடன் உரையாடி 10 மடங்கு விஞ்ஞானத்தை ஆராய்ந்து படிக்கலாம்.",
+    "home_view__sample_prompt__explore_more": "AI உதவி நூலகத்தை ஆராய்க"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

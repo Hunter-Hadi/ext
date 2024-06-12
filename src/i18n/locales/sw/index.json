@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Inayo nguvu kutokana na mifano bora ya AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Punguza 53% sasa",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Faili zilizopakiwa ni kubwa sana. Tafadhali tumia mfano wa AI wenye dirisha kubwa la muktadha au pakia faili ndogo.",
-    "chat__user_message__contexts__file__preview__tips": "Umbizo linaweza kuwa lisilo thabiti kutoka chanzo."
+    "chat__user_message__contexts__file__preview__tips": "Umbizo linaweza kuwa lisilo thabiti kutoka chanzo.",
+    "home_view__chat__title": "Mazungumzo ya AI",
+    "home_view__chat__description": "Tafiti kwa kasi mara 10 zaidi kwa kuzungumza na GPT-4o, Claude 3, Gemini 1.5, na wengine.",
+    "home_view__sample_prompt__explore_more": "Chunguza maktaba ya mada za AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

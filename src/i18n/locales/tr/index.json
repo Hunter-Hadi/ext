@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "En iyi yapay zeka modelleriyle desteklenir: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Şimdi %53 tasarruf edin",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Yüklenen dosyalar çok büyük. Lütfen daha geniş bir bağlam penceresine sahip bir AI modeli kullanın veya daha küçük dosyalar yükleyin.",
-    "chat__user_message__contexts__file__preview__tips": "Biçimlendirme kaynağından farklı olabilir."
+    "chat__user_message__contexts__file__preview__tips": "Biçimlendirme kaynağından farklı olabilir.",
+    "home_view__chat__title": "AI sohbeti",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 ve daha fazlasıyla sohbet ederek 10 kat daha hızlı araştırma yapın.",
+    "home_view__sample_prompt__explore_more": "AI prompt kütüphanesini keşfedin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

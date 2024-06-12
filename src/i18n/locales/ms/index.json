@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Didukung oleh model AI terbaik: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Hemat 53% sekarang",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Fail muat naik fail terlalu besar. Sila gunakan model AI dengan tetingkap konteks yang lebih besar atau muat naik fail yang lebih kecil.",
-    "chat__user_message__contexts__file__preview__tips": "Pemformatan mungkin tidak konsisten dari sumber."
+    "chat__user_message__contexts__file__preview__tips": "Pemformatan mungkin tidak konsisten dari sumber.",
+    "home_view__chat__title": "Perbualan AI",
+    "home_view__chat__description": "Kaji selaju 10 kali ganda dengan bersembang dengan GPT-4o, Claude 3, Gemini 1.5, dan lain-lain.",
+    "home_view__sample_prompt__explore_more": "Terokai perpustakaan rangsangan AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

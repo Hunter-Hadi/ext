@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Cu cele mai bune modele AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Economisește 53% acum",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Fișierele încărcate sunt prea mari. Vă rugăm să utilizați un model AI cu o fereastră de context mai mare sau să încărcați fișiere mai mici.",
-    "chat__user_message__contexts__file__preview__tips": "Formatarea poate fi inconsistentă față de sursă."
+    "chat__user_message__contexts__file__preview__tips": "Formatarea poate fi inconsistentă față de sursă.",
+    "home_view__chat__title": "Chat AI",
+    "home_view__chat__description": "Cercetează de 10 ori mai rapid prin chat cu GPT-4o, Claude 3, Gemini 1.5 și altele.",
+    "home_view__sample_prompt__explore_more": "Explorează biblioteca de prompt-uri AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

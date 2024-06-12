@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Powered by the best AI models: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Tipirin ang 53% ngayon",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Ang mga na-upload na mga file ay masyadong malalaki. Mangyaring gamitin ang isang AI model na may mas malaking bintana ng konteksto o mag-upload ng mas maliit na mga file.",
-    "chat__user_message__contexts__file__preview__tips": "Ang pag-format ay maaaring hindi magkakatugma mula sa pinagmulan."
+    "chat__user_message__contexts__file__preview__tips": "Ang pag-format ay maaaring hindi magkakatugma mula sa pinagmulan.",
+    "home_view__chat__title": "AI chat",
+    "home_view__chat__description": "Mag-research ng 10 beses mas mabilis sa pamamagitan ng pakikipag-chat kay GPT-4o, Claude 3, Gemini 1.5, at iba pa.",
+    "home_view__sample_prompt__explore_more": "Tuklasin ang AI prompt library"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

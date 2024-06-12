@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Parhaiden tekoälymallien avulla: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Säästä nyt 53%",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Ladatut tiedostot ovat liian suuria. Käytä AI-mallia, jossa on suurempi kontekstiruutu tai lataa pienempiä tiedostoja.",
-    "chat__user_message__contexts__file__preview__tips": "Muotoilu voi olla epäjohdonmukaista lähteestä."
+    "chat__user_message__contexts__file__preview__tips": "Muotoilu voi olla epäjohdonmukaista lähteestä.",
+    "home_view__chat__title": "AI-keskustelu",
+    "home_view__chat__description": "Tutki 10 kertaa nopeammin keskustelemalla GPT-4o:n, Claude 3:n, Gemini 1.5:n ja muiden kanssa.",
+    "home_view__sample_prompt__explore_more": "Tutustu AI-prompt-kirjastoon"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

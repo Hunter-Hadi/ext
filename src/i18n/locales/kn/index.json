@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "ಅತ್ಯುತ್ತಮ AI ಮಾದರಿಗಳಿಂದ ಪ್ರಾಮುಖ್ಯತೆಯನ್ನು ಪಡೆದಿರುವುದು: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "ಈಗ 53% ಉಳಿಸಿ",
     "provider__chatgpt__upload_file_error__total_too_large__text": "ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾದ ಕಡತಗಳು ತುಂಬ ದೊಡ್ಡವು. ದಯವಿಟ್ಟು ಒಂದು ಹೆಚ್ಚು ಸಂದರ್ಭ ವಿಂಡೋವ್ ಅಥವಾ ಕಡಿಮೆ ಕಡತಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.",
-    "chat__user_message__contexts__file__preview__tips": "ಬಂಡಿಗಳು ಮೂಲದಿಂದ ಅನಿಯಮಿತವಾಗಿರಬಹುದು."
+    "chat__user_message__contexts__file__preview__tips": "ಬಂಡಿಗಳು ಮೂಲದಿಂದ ಅನಿಯಮಿತವಾಗಿರಬಹುದು.",
+    "home_view__chat__title": "AI ಚಾಟ್",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 ಮತ್ತು ಇನ್ನಷ್ಟು ಜನರೊಂದಿಗೆ ಮಾತಾಡುವುದರಿಂದ 10 ಸಲ ಹೆಚ್ಚು ತಜ್ಞತೆಯನ್ನು ಪಡೆಯಿರಿ.",
+    "home_view__sample_prompt__explore_more": "AI ಪ್ರಾಂಪ್ಟ್ ಲೈಬ್ರರಿಯನ್ನು ಅನ್ವೇಷಿಸಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

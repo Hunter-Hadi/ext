@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "ఉత్తమ AI మోడల్స్: GPT-4o, Claude-3-opus, Gemini-1.5-pro ద్వారా పవర్ చేయబడింది.",
     "sidebar__promotion_dialog__discount__title": "ఇప్పుడు 53% సేవ్ చేయండి",
     "provider__chatgpt__upload_file_error__total_too_large__text": "అప్లోడ్ చేసిన ఫైళ్ళు చాలా పెద్దవిగా ఉన్నాయి. దయచేసి ఒక పెద్ద కంటెక్స్ట్ విండోతో AI మోడల్ ఉపయోగించండి లేదా తక్కువ సైజులో ఫైళ్ళు అప్లోడ్ చేయండి.",
-    "chat__user_message__contexts__file__preview__tips": "మూలం నుండి ఫార్మాటింగ్ అసమంజసం ఉంటది."
+    "chat__user_message__contexts__file__preview__tips": "మూలం నుండి ఫార్మాటింగ్ అసమంజసం ఉంటది.",
+    "home_view__chat__title": "AI చాట్",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 మరియు మరీ చాలా తెలివైనవిగా చాట్ చేసి 10x త్వరగా అధ్యయనం చేయండి.",
+    "home_view__sample_prompt__explore_more": "AI ప్రాంప్ట్ లైబ్రరీని అన్వేషించండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "Alimenté par les meilleurs modèles d'IA : GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
     "sidebar__promotion_dialog__discount__title": "Économisez 53% maintenant",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Les fichiers téléchargés sont trop volumineux. Veuillez utiliser un modèle d'IA avec une fenêtre contextuelle plus grande ou télécharger des fichiers plus petits.",
-    "chat__user_message__contexts__file__preview__tips": "La mise en forme peut être incohérente par rapport à la source."
+    "chat__user_message__contexts__file__preview__tips": "La mise en forme peut être incohérente par rapport à la source.",
+    "home_view__chat__title": "Chat IA",
+    "home_view__chat__description": "Recherchez 10 fois plus rapidement en discutant avec GPT-4o, Claude 3, Gemini 1.5 et plus encore.",
+    "home_view__sample_prompt__explore_more": "Explorer la bibliothèque de suggestions d'IA"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -875,7 +875,10 @@
     "sidebar__promotion_dialog__vision__content_item4__description": "بہترین AI ماڈلز: GPT-4o، Claude-3-opus، Gemini-1.5-pro کی طاقت سے چلتا ہے۔",
     "sidebar__promotion_dialog__discount__title": "اب 53٪ بچائیں",
     "provider__chatgpt__upload_file_error__total_too_large__text": "آپلوڈ کردہ فائلیں بہت بڑی ہیں۔ براہ کرم ایک AI ماڈل استعمال کریں جس کے پاس زیادہ کنٹیکسٹ ونڈو ہو یا چھوٹی فائلیں اپ لوڈ کریں۔",
-    "chat__user_message__contexts__file__preview__tips": "فارمیٹنگ ممکن ہے کہ سورس سے متفق نہ ہو۔"
+    "chat__user_message__contexts__file__preview__tips": "فارمیٹنگ ممکن ہے کہ سورس سے متفق نہ ہو۔",
+    "home_view__chat__title": "AI چیٹ",
+    "home_view__chat__description": "GPT-4o، Claude 3، Gemini 1.5 اور مزید کے ساتھ چیٹ کرکے 10 گنا تیز تحقیق کریں۔",
+    "home_view__sample_prompt__explore_more": "AI پرومپٹ لائبریری کا استکشاف کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

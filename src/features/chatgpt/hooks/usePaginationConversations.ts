@@ -300,7 +300,7 @@ export const useFetchPaginationConversations = (
             conversations.length
           }]耗时: Diff[${diffTimeUsage}]ms, LocalQuery[${
             new Date().getTime() - time - diffTimeUsage
-          }】`,
+          }】index[${remoteConversationStateRef.current.localIndex}]`,
           filter,
         )
         return paginationConversations as Array<
@@ -468,16 +468,6 @@ export const useFetchPaginationConversations = (
     setEnabled(controlEnable)
   }, [controlEnable])
 
-  useEffect(() => {
-    console.log(
-      'ConversationDB[V3][对话列表] 获取列表',
-      isLoading,
-      isFetchingNextPage,
-      enabled,
-      isLogin,
-      data?.pages,
-    )
-  }, [isLoading, isFetchingNextPage, enabled, isLogin, data?.pages])
   return {
     loading: !enabled || !isLogin || isLoading,
     paginationConversations,

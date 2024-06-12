@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Csatlakozz a MaxAI-vel termelékenységüket növelő 1 millió szakemberhez.",
     "permission__pricing_modal__footer__title": "Az összes csomag megtekintése.",
     "permission__pricing_modal__cta_button__title": "Frissítés most",
-    "permission__pricing_modal__discount__title": "53% megtakarítás"
+    "permission__pricing_modal__discount__title": "53% megtakarítás",
+    "home_view__chat__title": "AI csevegés",
+    "home_view__chat__description": "Kutass 10-szer gyorsabban a GPT-4o, Claude 3, Gemini 1.5 és másokkal való csevegéssel.",
+    "home_view__sample_prompt__explore_more": "Fedezze fel az AI prompt könyvtárat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

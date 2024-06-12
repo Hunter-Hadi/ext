@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Pievienojieties vairāk nekā 1M profesionāļu, kas paaugstina savu produktivitāti ar MaxAI.",
     "permission__pricing_modal__footer__title": "Skatīt visus plānus.",
     "permission__pricing_modal__cta_button__title": "Jaunināt tagad",
-    "permission__pricing_modal__discount__title": "Ietaupiet 53%"
+    "permission__pricing_modal__discount__title": "Ietaupiet 53%",
+    "home_view__chat__title": "AI tērzēšana",
+    "home_view__chat__description": "Veiciet pētījumus 10 reizes ātrāk, sarunājoties ar GPT-4o, Claude 3, Gemini 1.5 un citiem.",
+    "home_view__sample_prompt__explore_more": "Izpētiet AI pamata bibliotēku"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

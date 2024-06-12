@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "MaxAI తో మార్పులు చేసే 1M+ ప్రొఫెషనల్‌లుగా చేరండి.",
     "permission__pricing_modal__footer__title": "అన్ని ప్లాన్‌లను చూడండి.",
     "permission__pricing_modal__cta_button__title": "ఇప్పుడే నవీకరించండి",
-    "permission__pricing_modal__discount__title": "53% సేవ్ చేయండి"
+    "permission__pricing_modal__discount__title": "53% సేవ్ చేయండి",
+    "home_view__chat__title": "AI చాట్",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 మరియు మరీ చాలా తెలివైనవిగా చాట్ చేసి 10x త్వరగా అధ్యయనం చేయండి.",
+    "home_view__sample_prompt__explore_more": "AI ప్రాంప్ట్ లైబ్రరీని అన్వేషించండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

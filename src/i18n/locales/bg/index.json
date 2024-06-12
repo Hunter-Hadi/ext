@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Присъединете се към 1M+ професионалисти, които повишават продуктивността си с MaxAI.",
     "permission__pricing_modal__footer__title": "Вижте всички планове.",
     "permission__pricing_modal__cta_button__title": "Надстройте сега",
-    "permission__pricing_modal__discount__title": "Запазете 53%"
+    "permission__pricing_modal__discount__title": "Запазете 53%",
+    "home_view__chat__title": "AI чат",
+    "home_view__chat__description": "Изследвайте 10 пъти по-бързо, като разговаряте с GPT-4o, Claude 3, Gemini 1.5 и други.",
+    "home_view__sample_prompt__explore_more": "Разгледайте библиотеката с AI подсказки"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

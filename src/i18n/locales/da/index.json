@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Bliv en del af 1M+ fagfolk der øger deres produktivitet med MaxAI.",
     "permission__pricing_modal__footer__title": "Se alle planer.",
     "permission__pricing_modal__cta_button__title": "Opgrader nu",
-    "permission__pricing_modal__discount__title": "Spar 53%"
+    "permission__pricing_modal__discount__title": "Spar 53%",
+    "home_view__chat__title": "AI chat",
+    "home_view__chat__description": "Forskning 10x hurtigere ved at chatte med GPT-4o, Claude 3, Gemini 1.5 og mere.",
+    "home_view__sample_prompt__explore_more": "Udforsk AI prompt bibliotek"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

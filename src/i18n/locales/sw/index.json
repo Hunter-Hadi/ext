@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Jiunge na wataalamu zaidi ya milioni 1 wanaoboresha ufanisi wao na MaxAI.",
     "permission__pricing_modal__footer__title": "Angalia mipango yote.",
     "permission__pricing_modal__cta_button__title": "Sasisha sasa",
-    "permission__pricing_modal__discount__title": "Hifadhi 53%"
+    "permission__pricing_modal__discount__title": "Hifadhi 53%",
+    "home_view__chat__title": "Mazungumzo ya AI",
+    "home_view__chat__description": "Tafiti kwa kasi mara 10 zaidi kwa kuzungumza na GPT-4o, Claude 3, Gemini 1.5, na wengine.",
+    "home_view__sample_prompt__explore_more": "Chunguza maktaba ya mada za AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

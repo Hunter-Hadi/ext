@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "انضم إلى أكثر من مليون محترف يعززون إنتاجيتهم مع MaxAI.",
     "permission__pricing_modal__footer__title": "عرض جميع الخطط.",
     "permission__pricing_modal__cta_button__title": "قم بالترقية الآن",
-    "permission__pricing_modal__discount__title": "احفظ 53%"
+    "permission__pricing_modal__discount__title": "احفظ 53%",
+    "home_view__chat__title": "محادثة الذكاء الاصطناعي",
+    "home_view__chat__description": "قم بالبحث بسرعة 10 مرات أكبر عن طريق الدردشة مع GPT-4o و Claude 3 و Gemini 1.5 وغيرهم.",
+    "home_view__sample_prompt__explore_more": "استكشف مكتبة تلميحات الذكاء الاصطناعي"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

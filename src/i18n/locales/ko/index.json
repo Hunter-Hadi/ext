@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "MaxAI로 생산성을 높이는 100만 명 이상의 전문가에 합류하세요.",
     "permission__pricing_modal__footer__title": "모든 플랜 보기.",
     "permission__pricing_modal__cta_button__title": "지금 업그레이드",
-    "permission__pricing_modal__discount__title": "53% 할인"
+    "permission__pricing_modal__discount__title": "53% 할인",
+    "home_view__chat__title": "AI 채팅",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 등과 대화하여 10배 더 빠르게 연구하세요.",
+    "home_view__sample_prompt__explore_more": "AI 프롬프트 라이브러리 탐색"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Únete a más de 1 millón de profesionales que aumentan su productividad con MaxAI.",
     "permission__pricing_modal__footer__title": "Ver todos los planes.",
     "permission__pricing_modal__cta_button__title": "Mejora ahora",
-    "permission__pricing_modal__discount__title": "Ahorra 53%"
+    "permission__pricing_modal__discount__title": "Ahorra 53%",
+    "home_view__chat__title": "Chat de IA",
+    "home_view__chat__description": "Investiga 10 veces más rápido chateando con GPT-4o, Claude 3, Gemini 1.5 y más.",
+    "home_view__sample_prompt__explore_more": "Explorar biblioteca de sugerencias de IA"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

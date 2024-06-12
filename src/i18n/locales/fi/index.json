@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Liity yli 1 miljoonan ammattilaisen joukkoon ja lisää tuottavuuttasi MaxAI:n avulla.",
     "permission__pricing_modal__footer__title": "Katso kaikki suunnitelmat.",
     "permission__pricing_modal__cta_button__title": "Päivitä nyt",
-    "permission__pricing_modal__discount__title": "Säästä 53%"
+    "permission__pricing_modal__discount__title": "Säästä 53%",
+    "home_view__chat__title": "AI-keskustelu",
+    "home_view__chat__description": "Tutki 10 kertaa nopeammin keskustelemalla GPT-4o:n, Claude 3:n, Gemini 1.5:n ja muiden kanssa.",
+    "home_view__sample_prompt__explore_more": "Tutustu AI-prompt-kirjastoon"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

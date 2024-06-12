@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Alătură-te celor peste 1M de profesioniști care își măresc productivitatea cu MaxAI.",
     "permission__pricing_modal__footer__title": "Vezi toate planurile.",
     "permission__pricing_modal__cta_button__title": "Upgradează acum",
-    "permission__pricing_modal__discount__title": "Economisește 53%"
+    "permission__pricing_modal__discount__title": "Economisește 53%",
+    "home_view__chat__title": "Chat AI",
+    "home_view__chat__description": "Cercetează de 10 ori mai rapid prin chat cu GPT-4o, Claude 3, Gemini 1.5 și altele.",
+    "home_view__sample_prompt__explore_more": "Explorează biblioteca de prompt-uri AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "MaxAI ನೊಂದಿಗೆ ಅವರ ಉತ್ಪಾದಕತ್ವವನ್ನು ಹೆಚ್ಚಿಸುವ 1M+ ಪ್ರೊಫೆಶನಲ್‌ಗಳ ಸಂಖ್ಯೆಯಲ್ಲಿ ಸೇರಿ.",
     "permission__pricing_modal__footer__title": "ಎಲ್ಲ ಯೋಜನೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ.",
     "permission__pricing_modal__cta_button__title": "ಈಗ ಮೇಲ್ಪಡಿಸಿ",
-    "permission__pricing_modal__discount__title": "53% ಉಳಿತಾಯ"
+    "permission__pricing_modal__discount__title": "53% ಉಳಿತಾಯ",
+    "home_view__chat__title": "AI ಚಾಟ್",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 ಮತ್ತು ಇನ್ನಷ್ಟು ಜನರೊಂದಿಗೆ ಮಾತಾಡುವುದರಿಂದ 10 ಸಲ ಹೆಚ್ಚು ತಜ್ಞತೆಯನ್ನು ಪಡೆಯಿರಿ.",
+    "home_view__sample_prompt__explore_more": "AI ಪ್ರಾಂಪ್ಟ್ ಲೈಬ್ರರಿಯನ್ನು ಅನ್ವೇಷಿಸಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "MaxAI સાથે તમારી ઉત્પાદકતાને વધારો આપતા 1M+ વ્યાપારમાં જોડાઓ.",
     "permission__pricing_modal__footer__title": "બધા પ્લાન્સ જુઓ.",
     "permission__pricing_modal__cta_button__title": "હવે અપગ્રેડ કરો",
-    "permission__pricing_modal__discount__title": "53% બચાવો"
+    "permission__pricing_modal__discount__title": "53% બચાવો",
+    "home_view__chat__title": "એઆઈ ચેટ",
+    "home_view__chat__description": "જીપીટી-4o, ક્લોડ 3, જેમિની 1.5 અને વધુ સાથે ચેટ કરીને 10x વધુ તેજીથી શોધશો.",
+    "home_view__sample_prompt__explore_more": "એઆઈ પ્રોમ્પ્ટ લાઇબ્રેરી અન્વેષણ કરો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

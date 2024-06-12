@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Prisijunkite prie 1M+ profesionalų, kurie didina savo produktyvumą su MaxAI.",
     "permission__pricing_modal__footer__title": "Peržiūrėti visus planus.",
     "permission__pricing_modal__cta_button__title": "Atnaujinti dabar",
-    "permission__pricing_modal__discount__title": "Išsaugokite 53%"
+    "permission__pricing_modal__discount__title": "Išsaugokite 53%",
+    "home_view__chat__title": "AI pokalbis",
+    "home_view__chat__description": "Tyrimai 10 kartų greitesni, bendraujant su GPT-4o, Claude 3, Gemini 1.5 ir daugiau.",
+    "home_view__sample_prompt__explore_more": "Tyrinėkite AI paskatų biblioteką"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

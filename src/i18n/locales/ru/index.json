@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Присоединяйтесь к более чем 1 млн профессионалов, повышающих свою продуктивность с помощью MaxAI.",
     "permission__pricing_modal__footer__title": "Просмотреть все планы.",
     "permission__pricing_modal__cta_button__title": "Обновить сейчас",
-    "permission__pricing_modal__discount__title": "Сэкономьте 53%"
+    "permission__pricing_modal__discount__title": "Сэкономьте 53%",
+    "home_view__chat__title": "Чат с ИИ",
+    "home_view__chat__description": "Исследуйте в 10 раз быстрее, общаясь с GPT-4o, Claude 3, Gemini 1.5 и другими.",
+    "home_view__sample_prompt__explore_more": "Изучить библиотеку AI подсказок"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

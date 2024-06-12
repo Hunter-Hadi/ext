@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "Sertai lebih daripada 1 juta profesional yang meningkatkan produktiviti mereka dengan MaxAI.",
     "permission__pricing_modal__footer__title": "Lihat semua pelan.",
     "permission__pricing_modal__cta_button__title": "Naik taraf sekarang",
-    "permission__pricing_modal__discount__title": "Jimat 53%"
+    "permission__pricing_modal__discount__title": "Jimat 53%",
+    "home_view__chat__title": "Perbualan AI",
+    "home_view__chat__description": "Kaji selaju 10 kali ganda dengan bersembang dengan GPT-4o, Claude 3, Gemini 1.5, dan lain-lain.",
+    "home_view__sample_prompt__explore_more": "Terokai perpustakaan rangsangan AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

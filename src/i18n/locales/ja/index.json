@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "MaxAIで生産性を向上させている100万人以上のプロフェッショナルに参加しましょう。",
     "permission__pricing_modal__footer__title": "すべてのプランを表示",
     "permission__pricing_modal__cta_button__title": "今すぐアップグレード",
-    "permission__pricing_modal__discount__title": "53%オフ"
+    "permission__pricing_modal__discount__title": "53%オフ",
+    "home_view__chat__title": "AI チャット",
+    "home_view__chat__description": "GPT-4o、Claude 3、Gemini 1.5などとチャットして10倍速く研究しましょう。",
+    "home_view__sample_prompt__explore_more": "AIプロンプトライブラリを探索する"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

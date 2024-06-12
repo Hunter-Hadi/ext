@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "加入超过100万专业人士，与MaxAI一起提高生产力。",
     "permission__pricing_modal__footer__title": "查看所有计划。",
     "permission__pricing_modal__cta_button__title": "立即升级",
-    "permission__pricing_modal__discount__title": "节省53%"
+    "permission__pricing_modal__discount__title": "节省53%",
+    "home_view__chat__title": "AI聊天",
+    "home_view__chat__description": "与GPT-4o、Claude 3、Gemini 1.5等进行聊天，以实现10倍的研究速度。",
+    "home_view__sample_prompt__explore_more": "探索AI提示库"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

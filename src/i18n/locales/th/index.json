@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "เข้าร่วมกับมืออาชีพกว่า 1 ล้านคนในการเพิ่มผลิตภัณฑ์ของพวกเขาด้วย MaxAI",
     "permission__pricing_modal__footer__title": "ดูแผนทั้งหมด",
     "permission__pricing_modal__cta_button__title": "อัพเกรดเดี๋ยวนี้",
-    "permission__pricing_modal__discount__title": "ประหยัด 53%"
+    "permission__pricing_modal__discount__title": "ประหยัด 53%",
+    "home_view__chat__title": "แชท AI",
+    "home_view__chat__description": "วิจัยได้เร็วขึ้น 10 เท่าโดยการสนทนากับ GPT-4o, Claude 3, Gemini 1.5 และอื่น ๆ",
+    "home_view__sample_prompt__explore_more": "สำรวจห้องสมุดคำพูด AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

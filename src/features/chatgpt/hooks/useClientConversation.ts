@@ -257,11 +257,20 @@ const useClientConversation = () => {
    * 更新当前conversation的writingMessage
    * @param message
    */
-  const updateClientWritingMessage = (message: IAIResponseMessage | null) => {
+  const updateClientWritingMessage = (
+    message:
+      | IAIResponseMessage
+      | null
+      | ((prevMessage: IChatMessage | null) => IChatMessage | null),
+  ) => {
     setClientWritingMessage((prevState) => {
+      const newMessage =
+        typeof message === 'function'
+          ? message(prevState.writingMessage)
+          : message
       return {
         ...prevState,
-        writingMessage: message,
+        writingMessage: newMessage,
       }
     })
   }

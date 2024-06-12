@@ -591,17 +591,14 @@ export class ActionAskChatGPT extends Action {
               conversationId,
             )
             // 移除AI writing message
-            // TODO 这里临时解决，因为上方的pushMessage是异步添加到分页的message里的，这里过早改为null会有闪烁问题
-            setTimeout(() => {
-              clientConversationEngine.updateClientWritingMessage(
-                (prevMessage) => {
-                  if (prevMessage?.messageId === this.answer?.messageId) {
-                    return null
-                  }
-                  return prevMessage
-                },
-              )
-            }, 200)
+            clientConversationEngine.updateClientWritingMessage(
+              (prevMessage) => {
+                if (prevMessage?.messageId === this.answer?.messageId) {
+                  return null
+                }
+                return prevMessage
+              },
+            )
           }
 
           // 如果是 smart search，并且报错了需要用 messageVisibleText 做 fallback 处理

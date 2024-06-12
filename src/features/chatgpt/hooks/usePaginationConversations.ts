@@ -176,9 +176,17 @@ export const useFetchPaginationConversations = (
   >([])
   // 是否开启了云同步功能
   const { maxAIBetaFeaturesLoaded, maxAIBetaFeatures } = useMaxAIBetaFeatures()
-  const totalPageRef = useRef(filter.total_page)
-  const localIndexRef = useRef(0)
-  const remoteConversationPageLoadedRef = useRef<Record<number, boolean>>({})
+  const remoteConversationStateRef = useRef<{
+    type: string
+    totalPage: number
+    cache: Record<number, boolean>
+    localIndex: number
+  }>({
+    type: '',
+    totalPage: 0,
+    cache: {},
+    localIndex: 0,
+  })
   const {
     refetch,
     data,
@@ -202,6 +210,19 @@ export const useFetchPaginationConversations = (
           page: data.pageParam,
         }
       })
+      if (remoteConversationStateRef.current.type !== filter.type) {
+        remoteConversationStateRef.current = {
+          type: filter.type,
+          totalPage: 0,
+          cache: {},
+          localIndex: 0,
+        }
+      }
+      if (data.pageParam === 0) {
+        remoteConversationStateRef.current.localIndex = 0
+      }
+      const { totalPage, localIndex, cache } =
+        remoteConversationStateRef.current
       // 从远程获取filter.page_size个对话
       const time = new Date().getTime()
       let diffTimeUsage = 0
@@ -209,20 +230,18 @@ export const useFetchPaginationConversations = (
       console.debug(
         `ConversationDB[V3] 获取会话列表:`,
         `\nAPI最大页数:`,
-        totalPageRef.current,
+        totalPage,
         `\n当前页数:`,
         data.pageParam,
         `\n是否远程加载:`,
-        remoteConversationPageLoadedRef.current[data.pageParam],
+        cache[data.pageParam],
+        `\n localIndex:`,
+        localIndex,
       )
-      if (data.pageParam === 0) {
-        // reset localIndexRef
-        localIndexRef.current = 0
-      }
       if (
         maxAIBetaFeatures.chat_sync &&
-        totalPageRef.current >= data.pageParam &&
-        !remoteConversationPageLoadedRef.current[data.pageParam]
+        totalPage >= data.pageParam &&
+        (!cache[data.pageParam] || data.pageParam === 0)
       ) {
         const result = await clientFetchMaxAIAPI<{
           current_page: number
@@ -236,13 +255,16 @@ export const useFetchPaginationConversations = (
           page: data.pageParam,
         })
         if (result?.data?.status === 'OK') {
-          remoteConversationPageLoadedRef.current[data.pageParam] = true
-          totalPageRef.current = Math.max(result.data?.total_page || 0, 0)
+          remoteConversationStateRef.current.cache[data.pageParam] = true
+          remoteConversationStateRef.current.totalPage = Math.max(
+            result.data?.total_page || 0,
+            0,
+          )
         }
         setFilter((prev) => {
           return {
             ...prev,
-            total_page: totalPageRef.current,
+            total_page: totalPage,
           }
         })
         if (result?.data?.data) {
@@ -266,13 +288,14 @@ export const useFetchPaginationConversations = (
           }),
         )
         .reverse()
-        .offset(localIndexRef.current || data.pageParam * filter.page_size)
+        .offset(localIndex || data.pageParam * filter.page_size)
         .limit(filter.page_size)
         .toArray()
         .then()
       const paginationConversations =
         await conversationsToPaginationConversations(conversations)
-      localIndexRef.current += paginationConversations.length
+      remoteConversationStateRef.current.localIndex +=
+        paginationConversations.length
       console.debug(
         `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
           conversations.length
@@ -288,20 +311,27 @@ export const useFetchPaginationConversations = (
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       // 说明本地和远程都没有数据
-      if (lastPage.length === 0 && lastPageParam >= totalPageRef.current) {
+      if (
+        lastPage.length === 0 &&
+        lastPageParam >= remoteConversationStateRef.current.totalPage
+      ) {
         return undefined
       }
       return lastPageParam + 1
     },
     enabled: controlEnable && maxAIBetaFeaturesLoaded && enabled && isLogin,
-    refetchOnWindowFocus: true,
+    refetchOnWindowFocus: false,
   })
 
   const updatePaginationFilter = (
     filter: Partial<PaginationConversationsFilterType>,
   ) => {
-    totalPageRef.current = filter.total_page || 0
-    remoteConversationPageLoadedRef.current = {}
+    remoteConversationStateRef.current = {
+      type: filter.type || '',
+      totalPage: 0,
+      cache: {},
+      localIndex: 0,
+    }
     setFilter((prev) => {
       return {
         ...prev,

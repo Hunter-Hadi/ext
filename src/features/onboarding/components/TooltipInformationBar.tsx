@@ -1,5 +1,6 @@
-import { SxProps, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import React, { FC, PropsWithChildren } from 'react'
 import { useTranslation } from 'react-i18next'
 

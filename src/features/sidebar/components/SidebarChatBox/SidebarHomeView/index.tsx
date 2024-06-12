@@ -26,7 +26,13 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
   const isInMaxAIImmersiveChat = isMaxAIImmersiveChatPage()
 
   return (
-    <Stack flex={1} sx={sx}>
+    <Stack
+      flex={1}
+      sx={{
+        overflowY: 'auto',
+        ...sx,
+      }}
+    >
       <Stack
         px={2}
         width='100%'
@@ -35,6 +41,7 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
         alignItems='center'
         position='relative'
         sx={{
+          minHeight: 460,
           // 这么做条件渲染是为了，让 内部组件的 useEffect 可以完整的执行，不会被卸载
           display: currentSidebarConversationType === 'Chat' ? 'flex' : 'none',
         }}

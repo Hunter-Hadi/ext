@@ -507,7 +507,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/max-ai-paid-model-gpt-3-5-turbo.png',
     )}`,
     modalImageUrl: getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gpt-3-5-turbo.png',
+      '/images/upgrade/modal/gpt-3.5-turbo.png',
     ),
     title: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__title'),

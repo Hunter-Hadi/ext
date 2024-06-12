@@ -187,8 +187,11 @@ const PermissionPricingModalContent: FC<IProps> = (props) => {
         <Box mt={1} textAlign='center'>
           <Link
             fontSize={14}
-            color='text.secondary'
             href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+            sx={{
+              color: (t) =>
+                t.palette.mode === 'dark' ? 'text.secondary' : '#fff',
+            }}
             target='_blank'
           >
             {t('client:permission__pricing_modal__footer__title')}

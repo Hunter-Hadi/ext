@@ -204,6 +204,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         flex: 1,
         height: 0,
         overflowY: 'auto',
+        display: paginationMessages.length > 0 ? 'block' : 'none',
         ...sx,
       }}
     >

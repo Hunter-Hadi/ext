@@ -160,8 +160,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       <SidebarHeader />
 
       <SidebarHomeView
+        isSettingVariables={isSettingVariables}
         sx={
-          // 这么做条件渲染是为了，让点击事件在 isShowChatBoxHomeView 为 false 时，可以正常执行
+          // 这么做条件渲染是为了，让 内部组件的 useEffect 可以完整的执行，不会被卸载
           !isShowChatBoxHomeView
             ? {
                 display: 'none',
@@ -188,7 +189,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         mt={'auto'}
         justifyContent={'end'}
         alignItems={'center'}
-        minHeight={170}
+        minHeight={192}
         spacing={1}
         flexShrink={0}
         // bgcolor={'#fff'}
@@ -211,6 +212,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             gap={1}
             mb={1}
             position={'relative'}
+            minHeight={40}
           >
             <SidebarChatBoxChatSpeedDial
               disabledMainButton={loading}
@@ -246,7 +248,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   onReGenerate?.()
                 }}
                 sx={shortcutsActionBtnSxMemo}
-                data-testid="sidebar_actions__regenerate"
+                data-testid='sidebar_actions__regenerate'
               >
                 {t('client:sidebar__button__regenerate')}
               </Button>
@@ -268,7 +270,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                       })
                   }}
                   sx={shortcutsActionBtnSxMemo}
-                  data-testid="sidebar_actions__continue"
+                  data-testid='sidebar_actions__continue'
                 >
                   {t('client:sidebar__button__continue')}
                 </Button>
@@ -282,7 +284,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 onClick={() => {
                   onStopGenerate?.()
                 }}
-                data-testid="sidebar_actions__stop_generating"
+                data-testid='sidebar_actions__stop_generating'
               >
                 {t('client:sidebar__button__stop_generating')}
               </Button>

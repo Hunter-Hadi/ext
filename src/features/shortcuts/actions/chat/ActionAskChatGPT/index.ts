@@ -595,7 +595,6 @@ export class ActionAskChatGPT extends Action {
             setTimeout(() => {
               clientConversationEngine.updateClientWritingMessage(
                 (prevMessage) => {
-                  console.log('TEST 11', prevMessage, this.answer)
                   if (prevMessage?.messageId === this.answer?.messageId) {
                     return null
                   }

@@ -329,7 +329,7 @@ const Row = memo(function RowItem({
                     ? 'Context menu'
                     : conversation.type
                 }
-                size="small"
+                size='small'
               />
               <Typography
                 noWrap

@@ -124,9 +124,17 @@ export class ClientConversationManager {
     }
     const cacheConversation =
       await ClientConversationManager.getConversationById(conversationId, true)
+    let updated_at = cacheConversation?.updated_at
+    // 如果要同步到远程，就更新updated_at
+    if (syncConversationToDB) {
+      updated_at = updateConversationData.updated_at || new Date().toISOString()
+    }
     const saveData = mergeWithObject([
       cacheConversation || {},
       updateConversationData,
+      {
+        updated_at,
+      },
     ])
     await createIndexedDBQuery('conversations')
       .conversations.put(saveData)

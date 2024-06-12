@@ -159,6 +159,7 @@ export interface IAIResponseOriginalMessage {
     language?: string
   }
   metadata?: {
+    AIModel?: string
     // 附件
     attachments?: IChatUploadFile[]
     // 是否触发了内容审核

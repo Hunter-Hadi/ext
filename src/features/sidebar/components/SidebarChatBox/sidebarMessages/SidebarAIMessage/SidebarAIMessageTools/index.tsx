@@ -6,9 +6,10 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
-import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
+import AIMessageModelSuggestions from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools/AIMessageModelSuggestions'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 const SidebarAIMessageTools: FC<{
@@ -113,6 +114,7 @@ const SidebarAIMessageTools: FC<{
             className={'max-ai__actions__button--use-max-ai'}
           />
         )}
+      <AIMessageModelSuggestions AIMessage={message} />
     </Stack>
   )
 }

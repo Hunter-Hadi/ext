@@ -41,7 +41,6 @@ const EllipsisTextWithTooltip: FC<IProps> = ({
     if (textRef.current) {
       const textEl = textRef.current
       // scrollHeight > offsetHeight 说明有溢出, 渲染 Tooltip
-      console.log(`zztest`, textEl, textEl.offsetHeight, textEl.offsetHeight)
       setDisableTooltip(textEl.offsetHeight >= textEl.scrollHeight)
     }
   }, [])

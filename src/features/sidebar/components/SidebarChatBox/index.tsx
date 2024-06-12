@@ -64,7 +64,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
-  const [isLoadingHistory, setIsLoadingHistory] = useState(false)
+  const [isLoadingChatMessages, setIsLoadingChatMessages] = useState(false)
+  const [isFetchNextPage, setIsFetchNextPage] = useState(false)
   const [isSettingVariables, setIsSettingVariables] = useState(false)
   const [isShowRegenerateButton, setIsShowRegenerateButton] = useState(true)
   const [isShowContinueButton, setIsShowContinueButton] = useState(false)
@@ -110,13 +111,26 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   }, [])
 
   const isShowChatBoxHomeView = useMemo(() => {
+    // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
+    // 具体问题是因为，在第一次切换 conversationId 时，会有一个瞬间
+    // isLoadingChatMessages 和 isFetchNextPage 等于 false，并且 messages.length 等于 0
+
+    // console.log(
+    //   'isShowChatBoxHomeView',
+    //   isLoadingChatMessages,
+    //   isFetchNextPage,
+    //   messages,
+    // )
     return (
-      !isLoadingHistory &&
-      messages.length <= 0 &&
-      !writingMessage &&
-      conversationType !== 'Summary'
+      messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
     )
-  }, [isLoadingHistory, messages, writingMessage, conversationType])
+  }, [
+    // isLoadingChatMessages,
+    // isFetchNextPage,
+    messages,
+    writingMessage,
+    conversationType,
+  ])
 
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
@@ -173,7 +187,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
       {conversationId ? (
         <SidebarChatBoxMessageListContainer
-          onLoadingChatHistory={setIsLoadingHistory}
+          onLoadingChatMessages={setIsLoadingChatMessages}
+          onFetchingNextPage={setIsFetchNextPage}
           conversationId={conversationId}
           isAIResponding={loading}
           writingMessage={writingMessage}

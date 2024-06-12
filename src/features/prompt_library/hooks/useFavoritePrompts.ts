@@ -11,6 +11,7 @@ const useFavoritePrompts = () => {
     queryKey: [PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS],
     queryFn: PromptLibraryService.getFavouritePrompts,
     enabled: isLogin,
+    retry: false,
   })
 }
 

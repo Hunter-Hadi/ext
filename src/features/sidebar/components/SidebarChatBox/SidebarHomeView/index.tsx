@@ -41,7 +41,7 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
         alignItems='center'
         position='relative'
         sx={{
-          minHeight: 460,
+          minHeight: 420,
           // 这么做条件渲染是为了，让 内部组件的 useEffect 可以完整的执行，不会被卸载
           display: currentSidebarConversationType === 'Chat' ? 'flex' : 'none',
         }}

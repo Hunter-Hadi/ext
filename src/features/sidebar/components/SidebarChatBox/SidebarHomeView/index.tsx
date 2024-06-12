@@ -9,6 +9,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import SidebarSamplePrompt from '@/features/onboarding/components/SidebarSamplePrompt'
 import HomeViewContentNav from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewContentNav'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface ISidebarHomeViewProps {
   isSettingVariables?: boolean
@@ -21,6 +22,8 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
 }) => {
   const { t } = useTranslation(['client'])
   const { currentSidebarConversationType } = useSidebarSettings()
+
+  const isInMaxAIImmersiveChat = isMaxAIImmersiveChatPage()
 
   return (
     <Stack flex={1} sx={sx}>
@@ -46,6 +49,7 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
             alignItems={'center'}
             my={'auto'}
             px={2.5}
+            maxWidth={isInMaxAIImmersiveChat ? 'unset' : 502}
           >
             <QuestionAnswerIcon
               sx={{
@@ -168,7 +172,12 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
         </Stack>
       )}
 
-      <Stack alignItems='center' maxWidth={768} mx='auto' width='100%'>
+      <Stack
+        alignItems='center'
+        maxWidth={isInMaxAIImmersiveChat ? 768 : 502}
+        mx='auto'
+        width='100%'
+      >
         <SidebarSamplePrompt isSettingVariables={isSettingVariables} />
       </Stack>
     </Stack>

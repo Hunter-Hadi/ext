@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import shuffle from 'lodash-es/shuffle'
-import React, { useEffect, useMemo } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'

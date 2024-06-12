@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useAuthLogin } from '@/features/auth'
 import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { clientGetRemoteBasicConversation } from '@/features/indexed_db/conversations/clientService'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
@@ -293,31 +294,64 @@ const usePaginationConversationMessages = (conversationId: string) => {
         return
       }
       isRefetching.current = true
-      await queryClient.setQueryData(
-        [
-          PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY,
+      try {
+        const remoteConversation = await clientGetRemoteBasicConversation(
           conversationId,
-          maxAIBetaFeatures.chat_sync,
-        ],
-        (data: any) => {
-          return {
-            pages: data?.pages?.slice(0, 1),
-            pageParams: data?.pageParams?.slice(0, 1),
-          }
-        },
-      )
-      refetch()
-        .then()
-        .catch()
-        .finally(() => {
-          isRefetching.current = false
-        })
+        )
+        if (!remoteConversation) {
+          return
+        }
+        if (
+          remoteConversation.lastMessageId &&
+          !paginationMessages.find(
+            (message) => message.messageId === remoteConversation.lastMessageId,
+          )
+        ) {
+          console.log(
+            `ConversationDB[V3][对话消息列表] conversationId [focus][需要更新]`,
+            remoteConversation.lastMessageId,
+          )
+          await queryClient.setQueryData(
+            [
+              PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY,
+              conversationId,
+              maxAIBetaFeatures.chat_sync,
+            ],
+            (data: any) => {
+              return {
+                pages: data?.pages?.slice(0, 1),
+                pageParams: data?.pageParams?.slice(0, 1),
+              }
+            },
+          )
+          await refetch()
+        } else {
+          // 如果最后一条消息已经存在，不需要操作
+          console.log(
+            `ConversationDB[V3][对话消息列表] conversationId [focus][不需要更新]`,
+            remoteConversation.lastMessageId,
+          )
+        }
+      } catch (e) {
+        console.error(
+          'ConversationDB[V3][对话消息列表] conversationId [focus]',
+          e,
+        )
+      } finally {
+        isRefetching.current = false
+      }
     }
     window.addEventListener('focus', listener)
     return () => {
       window.removeEventListener('focus', listener)
     }
-  }, [conversationId, maxAIBetaFeatures.chat_sync])
+  }, [
+    conversationId,
+    maxAIBetaFeatures.chat_sync,
+    paginationMessages,
+    queryClient,
+    refetch,
+  ])
 
   return {
     data,

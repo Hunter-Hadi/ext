@@ -19,7 +19,7 @@ export const FUNNEL_SURVEY_CONFIG: Record<
     questionSetting: [
       {
         type: 'input',
-        name: 'What concerns are keeping you from installing the extension?',
+        name: 'What made you decide to cancel your MaxAI.me subscription?',
         label:
           'survey:funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1',
         meta: {

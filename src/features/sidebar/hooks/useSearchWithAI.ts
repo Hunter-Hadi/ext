@@ -108,6 +108,7 @@ const useSearchWithAI = () => {
           await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
           authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
             conversationId: currentConversationId,
+            paywallType: 'RESPONSE',
           })
           updateClientConversationLoading(false)
           return
@@ -191,12 +192,15 @@ const useSearchWithAI = () => {
             'ai',
             'latest',
           )) as IAIResponseMessage
-        const needDeleteMessageIds =
-          await ClientConversationMessageManager.getDeleteMessageIds(
-            currentConversationId,
-            lastAIResponse.messageId,
-            'latest',
-          )
+        const needDeleteMessageIds = lastAIResponse?.messageId
+          ? [lastAIResponse.messageId]
+          : []
+        // const needDeleteMessageIds =
+        //   await ClientConversationMessageManager.getDeleteMessageIds(
+        //     currentConversationId,
+        //     lastAIResponse.messageId,
+        //     'latest',
+        //   )
         const lastQuestion =
           lastAIResponse?.originalMessage?.metadata?.title?.title ||
           lastAIResponse?.text ||

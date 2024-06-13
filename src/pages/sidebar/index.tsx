@@ -100,13 +100,13 @@ const SidebarPage: FC<{
           flex={1}
           height={0}
           position={'relative'}
-          direction="row"
+          direction='row'
           id={'MaxAISidebarContainer'}
         >
           <SidebarTour />
           <SidebarPromotionDialog />
           <SidebarSurveyDialog />
-          <FunnelSurveyDialog sceneType="SURVEY_CANCEL_COMPLETED" />
+          <FunnelSurveyDialog sceneType='SURVEY_CANCEL_COMPLETED' />
           <SidebarDragWrapper>
             {!isImmersiveChatRef.current && <ChatBoxHeader />}
             <AppSuspenseLoadingLayout>
@@ -129,7 +129,6 @@ const SidebarPage: FC<{
           opacity: 0,
         }}
       />
-      {/*<ActionSetVariablesModal modelKey={'Sidebar'} />*/}
     </>
   )
 }

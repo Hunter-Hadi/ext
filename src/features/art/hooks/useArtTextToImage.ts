@@ -57,6 +57,7 @@ const useArtTextToImage = () => {
       await pushPricingHookMessage('MAXAI_IMAGE_GENERATE_MODEL')
       authEmitPricingHooksLog('show', `MAXAI_IMAGE_GENERATE_MODEL`, {
         conversationId: currentConversationId,
+        paywallType: 'RESPONSE',
       })
       return
     }

@@ -115,8 +115,10 @@ export type PermissionWrapperCardType = {
   sceneType: PermissionWrapperCardSceneType
   imageUrl?: string
   videoUrl?: string
+  modalImageUrl?: string
   title: React.ReactNode
   description: React.ReactNode
+  modalDescription?: React.ReactNode
   ctaButtonText?: React.ReactNode
   ctaButtonLink?: string
   ctaButtonOnClick?: (event: React.MouseEvent) => void
@@ -125,11 +127,16 @@ export type PermissionWrapperCardType = {
 export type PermissionWrapperI18nCardType = {
   imageUrl?: string
   videoUrl?: string
+  modalImageUrl?: string
   title: (
     t: TFunction<['common', 'client']>,
     isFreeUser?: boolean,
   ) => React.ReactNode
   description: (
+    t: TFunction<['common', 'client']>,
+    isFreeUser?: boolean,
+  ) => React.ReactNode
+  modalDescription?: (
     t: TFunction<['common', 'client']>,
     isFreeUser?: boolean,
   ) => React.ReactNode
@@ -145,6 +152,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-3rd-party-model.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/ai-3rd.png',
+    ),
     title: (t) => t('client:permission__pricing_hook__3rd_party_usage__title'),
     description: (t) => {
       return `${t(
@@ -166,13 +176,16 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/maxai-art-and-images.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/ai-art.png',
+    ),
     title: (t) =>
       t('client:permission__pricing_hook__max_ai_paid_model__maxai_art__title'),
     description: (t, isFreeUser) => {
       return `${t(
         isFreeUser
-          ? 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description'
-          : 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description',
+          ? 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__free__description'
+          : 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description',
       )}`
     },
   },
@@ -193,75 +206,95 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-3-5-turbo.png',
     )}`,
+    modalImageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gpt-3.5-turbo.png',
+    )}`,
     title: (t) =>
       t(
         'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__title',
       ),
     description: (t, isFreeUser) => {
-      return [
-        `${t(
-          isFreeUser
-            ? 'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__free__description1'
-            : 'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__paid__description1',
-        )}`,
-        `${t(
-          'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__description2',
-        )}`,
-      ].join('\n\n')
+      return isFreeUser
+        ? [
+            t(
+              'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__free__description1',
+            ),
+            t(
+              'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__description2',
+            ),
+          ].join('\n\n')
+        : t(
+            'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__paid__description1',
+          )
     },
   },
   MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-3-haiku.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/claude-3-haiku.png',
+    ),
     title: (t) =>
       t(
         'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__title',
       ),
     description: (t, isFreeUser) => {
-      return [
-        `${t(
-          isFreeUser
-            ? 'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__free__description1'
-            : 'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__paid__description1',
-        )}`,
-        `${t(
-          'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__description2',
-        )}`,
-      ].join('\n\n')
+      return isFreeUser
+        ? [
+            t(
+              'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__free__description1',
+            ),
+            t(
+              'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__description2',
+            ),
+          ].join('\n\n')
+        : t(
+            'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__paid__description1',
+          )
     },
   },
   MAXAI_FAST_TEXT_MODEL_GEMINI_PRO: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gemini-pro.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gemini-pro.png',
+    ),
     title: (t) =>
       t('client:permission__pricing_hook__fast_text_usage__gemini_pro__title'),
     description: (t, isFreeUser) => {
-      return [
-        `${t(
-          isFreeUser
-            ? 'client:permission__pricing_hook__fast_text_usage__gemini_pro__free__description1'
-            : 'client:permission__pricing_hook__fast_text_usage__gemini_pro__paid__description1',
-        )}`,
-        `${t(
-          'client:permission__pricing_hook__fast_text_usage__gemini_pro__description2',
-        )}`,
-      ].join('\n\n')
+      return isFreeUser
+        ? [
+            t(
+              'client:permission__pricing_hook__fast_text_usage__gemini_pro__free__description1',
+            ),
+            t(
+              'client:permission__pricing_hook__fast_text_usage__gemini_pro__description2',
+            ),
+          ].join('\n\n')
+        : t(
+            'client:permission__pricing_hook__fast_text_usage__gemini_pro__paid__description1',
+          )
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4O: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-4o.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gpt-4o.png',
+    ),
     title: (t) =>
       t('client:permission__pricing_hook__advanced_text_usage__gpt_4o__title'),
-    description: (t) => {
-      return [
-        `${t(
-          'client:permission__pricing_hook__advanced_text_usage__gpt_4o__description1',
-        )}`,
-      ].join('\n\n')
+    description: (t, isFreeUser) => {
+      return isFreeUser
+        ? t(
+            'client:permission__pricing_hook__advanced_text_usage__gpt_4o__free__description',
+          )
+        : t(
+            'client:permission__pricing_hook__advanced_text_usage__gpt_4o__paid__description',
+          )
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4_TURBO: {
@@ -269,7 +302,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-4-turbo.png',
     )}`,
-
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gpt-4-turbo.png',
+    ),
     title: (t) =>
       t(
         'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__title',
@@ -286,9 +321,6 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1',
         )}`,
-        `${t(
-          'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2',
-        )}`,
       ].join('\n\n')
     },
   },
@@ -296,48 +328,63 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-3-opus.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/claude-3-opus.png',
+    ),
     title: (t) =>
       t(
         'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__title',
       ),
-    description: (t) => {
-      return [
-        `${t(
-          'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__description1',
-        )}`,
-      ].join('\n\n')
+    description: (t, isFreeUser) => {
+      return isFreeUser
+        ? t(
+            'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__free__description',
+          )
+        : t(
+            'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__paid__description',
+          )
     },
   },
   MAXAI_ADVANCED_MODEL_CLAUDE_3_SONNET: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-3-sonnet.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/claude-3-sonnet.png',
+    ),
     title: (t) =>
       t(
         'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title',
       ),
-    description: (t) => {
-      return [
-        `${t(
-          'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description1',
-        )}`,
-      ].join('\n\n')
+    description: (t, isFreeUser) => {
+      return isFreeUser
+        ? t(
+            'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__free__description',
+          )
+        : t(
+            'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description',
+          )
     },
   },
   MAXAI_ADVANCED_MODEL_GEMINI_1_5_PRO: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gemini-1-5-pro.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gemini-1.5-pro.png',
+    ),
     title: (t) =>
       t(
         'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title',
       ),
-    description: (t) => {
-      return [
-        `${t(
-          'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description1',
-        )}`,
-      ].join('\n\n')
+    description: (t, isFreeUser) => {
+      return isFreeUser
+        ? t(
+            'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description',
+          )
+        : t(
+            'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description',
+          )
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4: {
@@ -345,6 +392,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-4.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gpt-4.png',
+    ),
     title: (t) =>
       t('client:permission__pricing_hook__advanced_text_usage__gpt_4__title'),
     description: (t, isFreeUser) => {
@@ -359,9 +409,6 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `${t(
           'client:permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1',
         )}`,
-        `${t(
-          'client:permission__pricing_hook__advanced_text_usage__gpt_4__description2',
-        )}`,
       ].join('\n\n')
     },
   },
@@ -369,13 +416,16 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/maxai-art-and-images.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/ai-art.png',
+    ),
     title: (t) =>
       t('client:permission__pricing_hook__max_ai_paid_model__maxai_art__title'),
     description: (t, isFreeUser) => {
       return `${t(
         isFreeUser
-          ? 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description'
-          : 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description',
+          ? 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__free__description'
+          : 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description',
       )}`
     },
   },
@@ -385,6 +435,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/ai-instant-reply.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/ai-instant-reply.png',
+    ),
     videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
@@ -394,6 +447,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/ai-instant-reply.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/ai-instant-reply.png',
+    ),
     videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
@@ -403,6 +459,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/ai-instant-reply.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/ai-instant-reply.png',
+    ),
     videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
@@ -413,6 +472,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/page-summary.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/ai-summary.png',
+    ),
     videoUrl: `https://www.youtube.com/embed/72UM1jMaJhY`,
     title: (t) => t('client:permission__pricing_hook__ai_summary__title'),
     description: (t) =>
@@ -423,11 +485,18 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-3-haiku.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/claude-3-haiku.png',
+    ),
     videoUrl: `https://www.youtube.com/embed/kgO6OnurRpQ`,
     title: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__description'),
+    modalDescription: (t) =>
+      t(
+        'client:permission__pricing_hook__search_with_ai_claude__modal__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_now'),
     ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
@@ -437,10 +506,17 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-3-5-turbo.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gpt-3.5-turbo.png',
+    ),
     title: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__description'),
+    modalDescription: (t) =>
+      t(
+        'client:permission__pricing_hook__search_with_ai_chatgpt__modal__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_now'),
     ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
@@ -460,6 +536,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/search-with-ai.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/ai-search.png',
+    ),
     videoUrl: `https://www.youtube.com/embed/1uZuyqqySO0`,
     title: (t) => t('client:permission__pricing_hook__ai_search__title'),
     description: (t) =>

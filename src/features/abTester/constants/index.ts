@@ -1,18 +1,11 @@
-import { TFunction } from 'i18next'
-
+import {
+  IPaywallVariant,
+  IUpdateVariant,
+  IUpdateVariantConfig,
+} from '@/features/abTester/types'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
-export type IUpdateVariant = (typeof UPDATE_VARIANT)[number]
-
-export type IUpdateVariantConfig = {
-  image: string
-  title: (t: TFunction<['client']>) => string
-  descriptions: (
-    t: TFunction<['client']>,
-  ) => { title?: string; description: string }[]
-}
-
-export const UPDATE_VARIANT = [
+export const UPDATE_VARIANT: IUpdateVariant[] = [
   'gpt-4o',
   'claude-3-opus',
   'gemini-1.5-pro',
@@ -24,7 +17,7 @@ export const UPDATE_VARIANT = [
   'prompts',
   'translator',
   'vision',
-] as const
+]
 
 export const UPDATE_VARIANT_TEMPLATES: Record<
   IUpdateVariant,
@@ -339,3 +332,12 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
     ],
   },
 }
+
+export const PAYWALL_VARIANT: IPaywallVariant[] = ['2-1', '2-2']
+
+/**
+ * A/B Test专用的存储
+ * 比如某些场景下要记录用户id来进行A/B Test的判断
+ */
+export const CHROME_EXTENSION_USER_ABTEST_SAVE_KEY =
+  'CHROME_EXTENSION_USER_ABTEST_SAVE_KEY'

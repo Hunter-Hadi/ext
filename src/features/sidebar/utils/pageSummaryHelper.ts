@@ -529,8 +529,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                   } as IAIResponseMessage,
                 },
               },
-            ]
-          }
+            ],
+          },
         },
         // {
         //   type: 'CREATE_WEBSITE_CONTEXT',
@@ -784,7 +784,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                   } as IAIResponseMessage,
                 },
               },
-            ]
+            ],
           },
         },
         // {
@@ -972,7 +972,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           parameters: {
             WFFormValues: {
               Value: '',
-              WFSerializationType: 'WFDictionaryFieldValue'
+              WFSerializationType: 'WFDictionaryFieldValue',
             },
             WFCondition: 'Equals',
             WFConditionalIfTrueActions: [
@@ -1037,7 +1037,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                             },
                             type: 'related',
                             value: `{{LAST_ACTION_OUTPUT}}` as any,
-                          }
+                          },
                         ],
                       },
                       includeHistory: false,
@@ -1046,7 +1046,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                 },
               },
             ],
-          }
+          },
         },
         // {
         //   type: 'CREATE_WEBSITE_CONTEXT',
@@ -1569,9 +1569,12 @@ export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
 
 const isNeedGetSpecialHostPageContent = () => {
   const host = getCurrentDomainHost()
-  return ['docs.google.com', 'cnbc.com', 'github.com'].find(
-    (item) => item === host,
-  )
+  return [
+    'docs.google.com',
+    'cnbc.com',
+    'github.com',
+    'timesofindia.indiatimes.com',
+  ].find((item) => item === host)
 }
 const getSpecialHostPageContent = async () => {
   const host = getCurrentDomainHost()
@@ -1740,6 +1743,14 @@ const getSpecialHostPageContent = async () => {
         })
         return pageContent
       }
+    }
+  } else if (host === 'timesofindia.indiatimes.com') {
+    const contentContainer = document.querySelector(
+      '#app .nonAppView > .contentwrapper',
+    ) as HTMLDivElement
+    if (contentContainer) {
+      return contentContainer.innerText
+      // return getPageContentWithMozillaReadability(contentContainer)
     }
   }
   return ''

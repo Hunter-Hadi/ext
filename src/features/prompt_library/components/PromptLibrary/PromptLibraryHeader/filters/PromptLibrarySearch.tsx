@@ -21,8 +21,18 @@ const PromptLibrarySearch: FC = () => {
       const value = searchValue.current
       event?.stopPropagation()
       if (value !== null && value !== '' && value.length <= 2) {
-        // 解析失败报错显示错误提示
+        // 搜索 value 不能低于 3 个字符
         snackNotifications.warning('Enter at least 3 characters to search.', {
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'center',
+          },
+        })
+        return
+      }
+      if (value !== null && value !== '' && value.length > 100) {
+        // 搜索 value 不能超过 100 个字符
+        snackNotifications.warning('Enter no more than 100 characters', {
           anchorOrigin: {
             vertical: 'top',
             horizontal: 'center',
@@ -64,8 +74,8 @@ const PromptLibrarySearch: FC = () => {
     <TextField
       defaultValue={searchQuery}
       label={t('prompt_library:filters__query__placeholder')}
-      variant="outlined"
-      size="small"
+      variant='outlined'
+      size='small'
       sx={memoSx}
       onChange={(event: any) => {
         const value = event.target.value
@@ -83,8 +93,8 @@ const PromptLibrarySearch: FC = () => {
       InputProps={{
         sx: { height: 44, fontSize: '16px' },
         endAdornment: (
-          <InputAdornment position="end">
-            <IconButton onClick={handleDoSearch} edge="end">
+          <InputAdornment position='end'>
+            <IconButton onClick={handleDoSearch} edge='end'>
               <SearchIcon />
             </IconButton>
           </InputAdornment>

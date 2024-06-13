@@ -25,11 +25,13 @@ export const usePermissionCard = (
       const permissionCard: PermissionWrapperCardType = {
         title: settings.title(t, isFreeUser),
         description: settings.description(t, isFreeUser),
+        modalDescription: settings.modalDescription?.(t, isFreeUser),
         ctaButtonText: settings.ctaButtonText && settings.ctaButtonText(t),
         ctaButtonLink: settings.ctaButtonLink,
         ctaButtonOnClick: settings.ctaButtonOnClick,
         imageUrl: settings.imageUrl,
         videoUrl: settings.videoUrl,
+        modalImageUrl: settings.modalImageUrl,
         sceneType,
       }
       return permissionCard

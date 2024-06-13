@@ -214,6 +214,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         // 记录日志
         authEmitPricingHooksLog('show', this.permissionSceneType, {
           conversationId,
+          paywallType: 'RESPONSE',
         })
 
         // 触发用量上限时 更新 user subscription info

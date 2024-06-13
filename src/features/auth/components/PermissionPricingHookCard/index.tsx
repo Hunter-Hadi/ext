@@ -8,14 +8,16 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { IPaywallVariant } from '@/features/abTester/types'
 import { PricingHooksFeatureIcon } from '@/features/auth/components/PermissionPricingHookCard/icons'
+import PermissionPricingModalContent from '@/features/auth/components/PermissionPricingModal/PermissionPricingModalContent'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { isUsageLimitPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { openGlobalVideoPopup } from '@/features/video_popup/utils'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
@@ -23,11 +25,13 @@ import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/clien
 interface IProps {
   permissionSceneType: PermissionWrapperCardSceneType
   message: ISystemChatMessage
+  paywallVariant?: IPaywallVariant
 }
 
 const PermissionPricingHookCard: FC<IProps> = ({
   permissionSceneType,
   message,
+  paywallVariant,
 }) => {
   const { t } = useTranslation()
   const { currentConversationIdRef } = useClientConversation()
@@ -60,6 +64,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
   const ctaButtonClick = (e: React.MouseEvent) => {
     authEmitPricingHooksLog('click', permissionSceneType, {
       conversationId: currentConversationIdRef.current,
+      paywallType: 'RESPONSE',
     })
 
     permissionCard?.ctaButtonOnClick && permissionCard?.ctaButtonOnClick(e)
@@ -154,7 +159,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
             ) : null}
           </Stack>
         ) : null}
-        <Stack direction={'row'} alignItems="start" spacing={1}>
+        <Stack direction={'row'} alignItems='start' spacing={1}>
           {typeof permissionCard.title !== 'string' ? (
             permissionCard.title
           ) : (
@@ -187,35 +192,46 @@ const PermissionPricingHookCard: FC<IProps> = ({
         )}
 
         {/* cta button */}
-        <Stack spacing={1} mt={'16px !important'}>
-          <Button
-            fullWidth
+        {paywallVariant === '2-2' ? (
+          <PermissionPricingModalContent
+            permissionCard={permissionCard}
             sx={{
-              height: 48,
-              fontSize: '16px',
-              fontWeight: 500,
+              pt: 0,
+              px: 0,
+              pb: 0,
             }}
-            variant={'contained'}
-            color={'primary'}
-            target={'_blank'}
-            startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
-            href={ctaButtonLink}
-            onClick={ctaButtonClick}
-          >
-            {ctaButtonText}
-          </Button>
-          <Stack direction={'row'} spacing={0.5} alignItems="start">
-            {/*<PricingHooksRocketIcon*/}
-            {/*  sx={{*/}
-            {/*    fontSize: 20,*/}
-            {/*    color: 'primary.main',*/}
-            {/*  }}*/}
-            {/*/>*/}
-            <Typography fontSize={14} color="rgba(255, 255, 255, 0.7)">
-              {t('client:permission__pricing_hook__footer_tip')}
-            </Typography>
+          />
+        ) : (
+          <Stack spacing={1} mt={'16px !important'}>
+            <Button
+              fullWidth
+              sx={{
+                height: 48,
+                fontSize: '16px',
+                fontWeight: 500,
+              }}
+              variant={'contained'}
+              color={'primary'}
+              target={'_blank'}
+              startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
+              href={ctaButtonLink}
+              onClick={ctaButtonClick}
+            >
+              {ctaButtonText}
+            </Button>
+            <Stack direction={'row'} spacing={0.5} alignItems='start'>
+              {/*<PricingHooksRocketIcon*/}
+              {/*  sx={{*/}
+              {/*    fontSize: 20,*/}
+              {/*    color: 'primary.main',*/}
+              {/*  }}*/}
+              {/*/>*/}
+              <Typography fontSize={14} color='rgba(255, 255, 255, 0.7)'>
+                {t('client:permission__pricing_hook__footer_tip')}
+              </Typography>
+            </Stack>
           </Stack>
-        </Stack>
+        )}
       </Stack>
     )
   }
@@ -223,7 +239,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
   // 获取不到 permissionCard 渲染 systemMessageText
   // 理论上不该执行到这
   return (
-    <Stack direction={'row'} alignItems="flex-start" spacing={1.5} mb={2}>
+    <Stack direction={'row'} alignItems='flex-start' spacing={1.5} mb={2}>
       {systemMessageText}
     </Stack>
   )

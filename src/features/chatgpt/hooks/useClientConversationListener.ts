@@ -303,8 +303,19 @@ export const useClientConversationListener = () => {
     const autoArchiveTime =
       appDBStorage.userSettings?.sidebar?.autoArchive?.[clientConversation.type]
     if (autoArchiveTime && isNumber(autoArchiveTime)) {
-      const archiveTime =
-        new Date(clientConversation.updated_at).getTime() + autoArchiveTime
+      const messageUpdatedAt =
+        clientConversationMessages[clientConversationMessages.length - 1]
+          .updated_at
+      const conversationUpdatedAt = clientConversation.updated_at
+
+      const updatedTime = messageUpdatedAt
+        ? Math.max(
+            new Date(messageUpdatedAt).getTime(),
+            new Date(conversationUpdatedAt).getTime(),
+          )
+        : new Date(conversationUpdatedAt).getTime()
+
+      const archiveTime = updatedTime + autoArchiveTime
       const now = Date.now()
       if (now > archiveTime) {
         // 判断当前会话的消息数量

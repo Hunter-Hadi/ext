@@ -9,6 +9,7 @@ import React, { useCallback, useState } from 'react'
 import { FC } from 'react'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import useUserABTestInfo from '@/features/abTester/hooks/useUserABTestInfo'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import ThirdPartyProvider from '@/features/searchWithAI/components/AIProviderBar/ThirdPartyProvider'
 import SearchWIthAIProviderIcon from '@/features/searchWithAI/components/SearchWIthAIProviderIcon'
@@ -38,6 +39,10 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
     loading,
   } = useSearchWithProvider()
 
+  const {
+    abTestInfo: { paywallVariant },
+  } = useUserABTestInfo()
+
   const isProviderActive = (provider: ISearchWithAIProviderType) => {
     return currentProvider === provider
   }
@@ -45,7 +50,7 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
   const renderIcon = (provider: ISearchWithAIProviderOptionsType) => {
     const providerIcon = (
       <IconButton
-        className="search-with-ai-provider-button"
+        className='search-with-ai-provider-button'
         sx={{
           p: 1,
           borderRadius: 0,
@@ -95,6 +100,7 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
           }}
           allowedRoles={provider.permission.allowedRoles}
           sceneType={provider.permission.sceneType}
+          paywallVariant={paywallVariant}
         >
           {providerIcon}
         </PermissionWrapper>
@@ -114,9 +120,9 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
 
   return (
     <Stack
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
+      direction='row'
+      justifyContent='center'
+      alignItems='center'
       sx={{
         borderRadius: 1,
         border: '1px solid',
@@ -150,7 +156,7 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
             }}
             key={provider.value}
             title={<Typography fontSize={12}>{provider.label}</Typography>}
-            placement="top"
+            placement='top'
           >
             <span>{renderIcon(provider)}</span>
           </Tooltip>
@@ -198,7 +204,7 @@ export const PreChangeCheckerTooltip = (
           },
         },
       }}
-      placement="left"
+      placement='left'
       title={
         <ClickAwayListener
           mouseEvent={'onMouseDown'}

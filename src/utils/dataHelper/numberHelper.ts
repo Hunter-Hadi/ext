@@ -79,3 +79,8 @@ export const numberDisplayPercent = (percent: number, digits = 2) => {
   }
   return `${(percent * 100).toFixed(digits)}%`
 }
+
+export function roundToDecimal(number: number, decimalPlaces = 0) {
+  const multiplier = 10 ** decimalPlaces
+  return Math.round(number * multiplier) / multiplier
+}

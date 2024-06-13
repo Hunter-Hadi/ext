@@ -97,6 +97,18 @@ const useShortCutsEngine = () => {
               return shortCutsParameter
             },
           )
+          /**
+           * 没找到的参数，添加到参数列表
+           */
+          Object.keys(overwriteParametersMap).forEach((key) => {
+            if (
+              !shortCutsParameters.find(
+                (shortCutsParameter) => shortCutsParameter.key === key,
+              )
+            ) {
+              shortCutsParameters.push(overwriteParametersMap[key])
+            }
+          })
           await shortCutsEngine.run({
             parameters: shortCutsParameters,
             engine: {

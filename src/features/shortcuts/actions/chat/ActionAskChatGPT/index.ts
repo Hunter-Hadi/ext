@@ -103,6 +103,15 @@ export class ActionAskChatGPT extends Action {
       const MaxAIPromptActionConfig =
         this.parameters.MaxAIPromptActionConfig ||
         this.question?.meta?.MaxAIPromptActionConfig
+      if (params.MAXAI_SUGGESTION_AI_MODEL) {
+        // 正常的聊天，但是用户点了suggest AI model
+        if (!MaxAIPromptActionConfig) {
+          debugger
+        } else {
+          // 如果是MaxAI prompt action，需要设置AIModel
+          MaxAIPromptActionConfig.AIModel = params.MAXAI_SUGGESTION_AI_MODEL
+        }
+      }
       this.question = {
         type: 'user',
         ...this.parameters.AskChatGPTActionQuestion,

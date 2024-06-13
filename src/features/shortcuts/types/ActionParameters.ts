@@ -65,6 +65,8 @@ interface ActionParameters {
   AI_RESPONSE_TONE?: string
   AI_RESPONSE_WRITING_STYLE?: string
   // TODO 需要实现
+  // 用于处理suggestion的AI model
+  MAXAI_SUGGESTION_AI_MODEL?: string
   Advanced?: boolean
   AssertionType?: AssertionType
   CustomOutputName?: string

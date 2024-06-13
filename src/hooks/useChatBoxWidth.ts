@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
 
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -18,6 +19,16 @@ const RESIZE_ENABLE = {
 
 const limitPageWidth = 150
 
+// 为了 可以在不同组件中获取到当前 sidebar，需要把 sidebar styles 保存在 recoil 中
+const SidebarStylesAtom = atom({
+  key: 'SidebarStylesAtom',
+  default: {
+    minWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
+    visibleWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
+    maxWidth: 0,
+  },
+})
+
 // 参考浏览器F12的交互实现
 // 1. 初始宽度取`(屏幕宽度-limitPageWidth)`和`本地缓存的宽度`的最小值
 // 2. 每次手动调整宽度后，将宽度存入本地缓存
@@ -26,12 +37,13 @@ const limitPageWidth = 150
 const useChatBoxWidth = () => {
   const { sidebarSettings, updateSidebarSettings } = useSidebarSettings()
   const [loaded, setLoaded] = useState<boolean>(false)
-  const [visibleWidth, setVisibleWidth] = useState<number>(
-    CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-  )
-  const [maxWidth, setMaxWidth] = useState<number>(0)
+  const [sidebarStyles, setSidebarStyles] = useRecoilState(SidebarStylesAtom)
+  const { maxWidth } = sidebarStyles
   const setLocalWidth = async (width: number) => {
-    setVisibleWidth(width)
+    setSidebarStyles((pre) => ({
+      ...pre,
+      visibleWidth: width,
+    }))
     if (!loaded) {
       return
     }
@@ -50,16 +62,22 @@ const useChatBoxWidth = () => {
           0) - limitPageWidth,
         CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
       )
-      setMaxWidth(maxWidth)
+      setSidebarStyles((pre) => ({
+        ...pre,
+        maxWidth,
+      }))
     }
     window.addEventListener('resize', resize)
     resize()
     return () => {
       window.removeEventListener('resize', resize)
     }
-  }, [setMaxWidth])
+  }, [])
   useEffect(() => {
-    setVisibleWidth(Math.min(maxWidth, visibleWidth))
+    setSidebarStyles((pre) => ({
+      ...pre,
+      visibleWidth: Math.min(pre.visibleWidth, maxWidth),
+    }))
   }, [maxWidth])
   const onceRef = useRef(false)
   useEffect(() => {
@@ -67,21 +85,33 @@ const useChatBoxWidth = () => {
       return
     }
     if (sidebarSettings?.common?.chatBoxWidth && maxWidth) {
-      setVisibleWidth(Math.min(maxWidth, sidebarSettings?.common?.chatBoxWidth))
+      setSidebarStyles((pre) => ({
+        ...pre,
+        visibleWidth: Math.min(
+          maxWidth,
+          sidebarSettings?.common?.chatBoxWidth ?? pre.minWidth,
+        ),
+      }))
       onceRef.current = true
       setLoaded(true)
     }
   }, [sidebarSettings?.common?.chatBoxWidth, maxWidth])
   return {
-    minWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-    maxWidth,
+    loaded,
+    minWidth: sidebarStyles.minWidth,
+    maxWidth: sidebarStyles.maxWidth,
     resizeEnable: {
       ...RESIZE_ENABLE,
       // 如果是新标签页，不允许左右拖动
       left: !isMaxAIImmersiveChatPage(),
     },
-    visibleWidth,
+    visibleWidth: sidebarStyles.visibleWidth,
     setLocalWidth,
   }
 }
+
+export const useChatBoxStyles = () => {
+  return useRecoilValue(SidebarStylesAtom)
+}
+
 export default useChatBoxWidth

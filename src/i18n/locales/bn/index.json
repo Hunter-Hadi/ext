@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "ম্যাক্সএআই দিয়ে তাদের উৎপাদকদের উন্নতি করে এক মিলিয়ন পেশাদারের সঙ্গে যোগদান করুন।",
     "permission__pricing_modal__footer__title": "সমস্ত পরিকল্পনা দেখুন।",
     "permission__pricing_modal__cta_button__title": "এখন আপগ্রেড করুন",
-    "permission__pricing_modal__discount__title": "53% সংরক্ষণ করুন"
+    "permission__pricing_modal__discount__title": "53% সংরক্ষণ করুন",
+    "home_view__chat__title": "এই আই চ্যাট",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 এবং আরো সাথে কথা বলে 10 গুন দ্রুত গবেষণা করুন।",
+    "home_view__sample_prompt__explore_more": "আরও AI প্রম্পট লাইব্রেরি অন্বেষণ করুন",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "ক্লোড দিয়ে সত্যিকারের সময়সাপেক্ষ ওয়েব অ্যাক্সেস, জ্ঞান এবং উদ্ধৃতি দিয়ে তাৎক্ষণিক উত্তর পান।",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "চ্যাটজিপিটি দিয়ে সত্যিকারের সময়সাপেক্ষ ওয়েব অ্যাক্সেস, জ্ঞান এবং উদ্ধৃতি দিয়ে তাৎক্ষণিক উত্তর পান।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

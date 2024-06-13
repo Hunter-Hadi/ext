@@ -892,7 +892,10 @@
     "permission__pricing_modal__cta_button__footer__title": "MaxAI के साथ अपनी उत्पादकता को बढ़ाने वाले 1M+ पेशेवरों में शामिल हों।",
     "permission__pricing_modal__footer__title": "सभी योजनाएँ देखें।",
     "permission__pricing_modal__cta_button__title": "अभी अपग्रेड करें",
-    "permission__pricing_modal__discount__title": "53% बचाएं"
+    "permission__pricing_modal__discount__title": "53% बचाएं",
+    "home_view__chat__title": "एआई चैट",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 और अधिक के साथ चैट करके 10 गुना तेजी से शोध करें।",
+    "home_view__sample_prompt__explore_more": "एआई प्रॉम्प्ट पुस्तकालय का अन्वेषण करें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

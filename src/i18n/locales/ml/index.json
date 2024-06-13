@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "MaxAI ഉപയോഗിക്കുന്ന 1M+ പൊതുജനങ്ങൾക്ക് ചേർന്ന് അവരുടെ ഉത്പാദനശേഖരം പെരുക്കുക.",
     "permission__pricing_modal__footer__title": "എല്ലാ പ്ലാനുകളും കാണുക.",
     "permission__pricing_modal__cta_button__title": "ഇപ്പോൾ അപ്‌ഗ്രേഡ് ചെയ്യുക",
-    "permission__pricing_modal__discount__title": "53% സംരക്ഷിക്കുക"
+    "permission__pricing_modal__discount__title": "53% സംരക്ഷിക്കുക",
+    "home_view__chat__title": "എ.ഐ. ചാറ്റ്",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 എന്നിവർക്ക് സംസാരിക്കുമ്പോൾ 10 പതിവ് വിജ്ഞാനം പഠിക്കുക.",
+    "home_view__sample_prompt__explore_more": "എ.ഐ. പ്രോംപ്റ്റ് ലൈബ്രറി അധിഷ്ഠിപ്പിക്കുക",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "ക്ലോഡ് ഉപയോഗിച്ച് വിവരങ്ങൾ, അറിവ്, സൂചനകൾ എന്നിവയുമായി സമയത്തെ വെബ്ബ് ആക്സസ് ഉപയോഗിച്ച് ഇടപെടൽ ലഭിക്കുക.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ചാറ്റ്‌ജിപിടി ഉപയോഗിച്ച് വിവരങ്ങൾ, അറിവ്, സൂചനകൾ എന്നിവയുമായി സമയത്തെ വെബ്ബ് ആക്സസ് ഉപയോഗിച്ച് ഇടപെടൽ ലഭിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

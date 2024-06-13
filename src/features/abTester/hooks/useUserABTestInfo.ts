@@ -1,34 +1,24 @@
 /**
  * 用于paywall展示的时候A/B test是否显示弹窗
  */
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
+import { useRecoilState } from 'recoil'
 
-import { IUserABTestInfo } from '@/features/abTester/types'
-import {
-  generatePaywallVariant,
-  getChromeExtensionUserABTest,
-  saveChromeExtensionUserABTest,
-} from '@/features/abTester/utils'
+import { UserABTestInfoState } from '@/features/abTester/store'
+import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { useFocus } from '@/features/common/hooks/useFocus'
 
 const useUserABTestInfo = () => {
   const { userInfo } = useUserInfo()
-  const [abTestInfo, setABTestInfo] = useState<IUserABTestInfo>({})
-
-  const userId = (userInfo as any)?.user_id
+  const [abTestInfo, setABTestInfo] = useRecoilState(UserABTestInfoState)
 
   const handleInit = useCallback(async () => {
-    if (userId) {
-      getChromeExtensionUserABTest(userId).then((result) => {
-        if (!result.paywallVariant) {
-          result.paywallVariant = generatePaywallVariant()
-          saveChromeExtensionUserABTest(userId, result)
-        }
-        setABTestInfo(result)
-      })
-    }
-  }, [userId])
+    const info = await getChromeExtensionUserABTest(
+      userInfo?.client_user_id || '',
+    )
+    setABTestInfo(info)
+  }, [userInfo?.client_user_id])
 
   useEffect(() => {
     handleInit()
@@ -40,7 +30,6 @@ const useUserABTestInfo = () => {
   useFocus(handleInit)
 
   return {
-    userId,
     abTestInfo,
   }
 }

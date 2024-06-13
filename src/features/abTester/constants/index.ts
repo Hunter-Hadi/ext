@@ -333,7 +333,7 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
   },
 }
 
-export const PAYWALL_VARIANT: IPaywallVariant[] = ['1-1', '1-2']
+export const PAYWALL_VARIANT: IPaywallVariant[] = ['2-1', '2-2']
 
 /**
  * A/B Test专用的存储

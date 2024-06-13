@@ -28,10 +28,8 @@ const PromptLibraryList: FC<{
   const { promptLibraryRuntime } = useContext(PromptLibraryRuntimeContext)!
   const { checkMaxAIChromeExtensionInstall } = usePromptLibraryAuth()
   const { data, isLoading, isFetching } = usePromptLibraryList()
-  const {
-    activeTab,
-    promptLibraryListParameters,
-  } = usePromptLibraryParameters()
+  const { activeTab, promptLibraryListParameters } =
+    usePromptLibraryParameters()
   const currentBreakpoint = usePromptLibraryBreakpoint()
   const itemWidth = useMemo(() => {
     if (currentBreakpoint === 'xs') {

@@ -93,6 +93,9 @@ export const submitFunnelSurvey = async (payload: {
         `${APP_USE_CHAT_GPT_API_HOST}/app/send_mixpanel_log`,
         {
           method: 'POST',
+          headers: {
+            'content-Type': 'application/json',
+          },
           body: JSON.stringify({
             info: aesJsonEncrypt(data),
           }),

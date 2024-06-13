@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "Pridružite se više od 1M profesionalaca koji povećavaju svoju produktivnost uz pomoć MaxAI.",
     "permission__pricing_modal__footer__title": "Pogledajte sve planove.",
     "permission__pricing_modal__cta_button__title": "Nadogradi sada",
-    "permission__pricing_modal__discount__title": "Uštedi 53%"
+    "permission__pricing_modal__discount__title": "Uštedi 53%",
+    "home_view__chat__title": "AI čet",
+    "home_view__chat__description": "Istražujte 10 puta brže razgovarajući sa GPT-4o, Claude 3, Gemini 1.5 i drugima.",
+    "home_view__sample_prompt__explore_more": "Istražite biblioteku AI uputa",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Dobijte trenutne odgovore sa pristupom webu u realnom vremenu, znanjem i citatima uz Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dobijte trenutne odgovore sa pristupom webu u realnom vremenu, znanjem i citatima uz ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "میکس اے آئی کے ساتھ اپنی پیداواریت کو بڑھائیں جو 1M+ پیشہ وران کر رہے ہیں۔",
     "permission__pricing_modal__footer__title": "تمام منصوبوں کو دیکھیں۔",
     "permission__pricing_modal__cta_button__title": "ابھی اپ گریڈ کریں",
-    "permission__pricing_modal__discount__title": "53% بچائیں"
+    "permission__pricing_modal__discount__title": "53% بچائیں",
+    "home_view__chat__title": "AI چیٹ",
+    "home_view__chat__description": "GPT-4o، Claude 3، Gemini 1.5 اور مزید کے ساتھ چیٹ کرکے 10 گنا تیز تحقیق کریں۔",
+    "home_view__sample_prompt__explore_more": "AI پرومپٹ لائبریری کا استکشاف کریں",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "کلوڈ کے ساتھ فوری جوابات حاصل کریں جو وقت کے ساتھ ویب رسائی، علم اور حوالے کے ساتھ ہوتے ہیں۔",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "چیٹ جی پی ٹی کے ساتھ فوری جوابات حاصل کریں جو وقت کے ساتھ ویب رسائی، علم اور حوالے کے ساتھ ہوتے ہیں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

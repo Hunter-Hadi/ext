@@ -889,7 +889,12 @@
     "permission__pricing_modal__cta_button__footer__title": "Միացեք 1M+ պրոֆեսիոնալներին, որոնք բարձրացնում են իրենց արագությունը MaxAI-ի միջոցով։",
     "permission__pricing_modal__footer__title": "Դիտեք բոլոր պլաները։",
     "permission__pricing_modal__cta_button__title": "Թարմացնել հիմա",
-    "permission__pricing_modal__discount__title": "Գնալ 53%-ը"
+    "permission__pricing_modal__discount__title": "Գնալ 53%-ը",
+    "home_view__chat__title": "Արվեստին խոսք",
+    "home_view__chat__description": "Գիտակցեք 10 անգամ արագությամբ հետապնդելով GPT-4o, Claude 3, Gemini 1.5 և այլն:",
+    "home_view__sample_prompt__explore_more": "Իմացեք ավելին AI հուշադրության գրադարանի մասին",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Ստացեք անմիջապես պատասխաններ իրականացվող վեբ մուտքով, իրականացվող գիտելիքներով և հղումներով Claude-ի հետ:",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Ստացեք անմիջապես պատասխաններ իրականացվող վեբ մուտքով, իրականացվող գիտելիքներով և հղումներով ChatGPT-ի հետ:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -205,7 +205,8 @@ const init = async () => {
         (currentTab && currentTab[0] && currentTab[0].url) || 'chrome://'
       isSpecialPage =
         tabUrl.startsWith('chrome') ||
-        tabUrl.startsWith('https://chrome.google.com/webstore')
+        tabUrl.startsWith('https://chrome.google.com/webstore') ||
+        tabUrl.startsWith('https://chromewebstore.google.com')
       if (isSpecialPage) {
         if (
           tabUrl.includes('pages/pdf/web') &&

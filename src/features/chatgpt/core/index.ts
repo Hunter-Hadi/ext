@@ -269,6 +269,7 @@ export const generateArkoseToken = async (model: string, dx?: string) => {
   const needWaitArkoseToken = [
     'text-davinci-002-render-sha',
     // 'text-davinci-002-render-sha-mobile',
+    'gpt-4o',
     'gpt-4',
     'gpt-4-code-interpreter',
     'gpt-4-browsing',
@@ -532,7 +533,9 @@ export class ChatGPTConversation {
         }
       } else {
         // NOTE: 目前只用在了gpt-4-code-interpreter
-        postMessage.messages[0].metadata = params?.meta?.meta || {}
+        if (params?.meta?.meta) {
+          postMessage.messages[0].metadata = params.meta.meta
+        }
       }
     }
     if (
@@ -548,14 +551,16 @@ export class ChatGPTConversation {
     // chatgpt 返回的图片渲染 =>
     // {"message": {"id": "a5e2dd9f-1a7e-4205-a87d-59ea449d14d6", "author": {"role": "tool", "name": "dalle.text2im", "metadata": {}}, "create_time": null, "update_time": null, "content": {"content_type": "multimodal_text", "parts": [{"content_type": "image_asset_pointer", "asset_pointer": "file-service://file-3lZoyavh3UZ9QJT5k1dJjk4J", "size_bytes": 295596, "width": 1024, "height": 1024, "fovea": 512, "metadata": {"dalle": {"gen_id": "IhqIYwGXKd1cDQxE", "prompt": "A serene, luminous full moon in a starlit night sky, with a whimsical twist: a classic ping pong ball gently resting on its surface. The moon's craters and texture are detailed, reflecting soft moonlight. The ping pong ball, with its matte white surface and subtle shadows, contrasts with the moon's rugged terrain. The surrounding space is filled with twinkling stars, adding to the tranquil and surreal atmosphere.", "seed": 4286421595, "serialization_title": "DALL-E generation metadata"}}}]}, "status": "finished_successfully", "end_turn": null, "weight": 1.0, "metadata": {"message_type": "next", "model_slug": "gpt-4", "parent_id": "16d78db9-9f94-418a-a8b8-ae671d95b291"}, "recipient": "all"}, "conversation_id": "9c00faab-8c70-4ae3-a55a-002264bd816b", "error": null}
     const displayImageIds: string[] = []
+    const overrideHeaders = {}
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
       provider: AI_PROVIDER_MAP.OPENAI,
       method: 'POST',
       signal: params.signal,
       headers: {
+        accept: 'text/event-stream',
         'Content-Type': 'application/json',
         'Oai-Device-Id': getDeviceId(),
-        'Oai-Language': '',
+        'Oai-Language': 'en-US',
         Authorization: `Bearer ${this.token}`,
         ...(arkoseToken
           ? {
@@ -568,6 +573,7 @@ export class ChatGPTConversation {
             }
           : {}),
         ...(proofToken ? { 'Openai-Sentinel-Proof-Token': proofToken } : {}),
+        ...overrideHeaders,
       } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: async (message: string) => {

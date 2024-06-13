@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "Sumali sa 1M+ mga propesyonal na nagpapataas ng kanilang produktibidad gamit ang MaxAI.",
     "permission__pricing_modal__footer__title": "Tingnan ang lahat ng mga plano.",
     "permission__pricing_modal__cta_button__title": "Mag-upgrade ngayon",
-    "permission__pricing_modal__discount__title": "I-save ang 53%"
+    "permission__pricing_modal__discount__title": "I-save ang 53%",
+    "home_view__chat__title": "AI chat",
+    "home_view__chat__description": "Mag-research ng 10 beses mas mabilis sa pamamagitan ng pakikipag-chat kay GPT-4o, Claude 3, Gemini 1.5, at iba pa.",
+    "home_view__sample_prompt__explore_more": "Tuklasin ang AI prompt library",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Makakuha ng mga sagot agad na may real-time na web access, kaalaman, at mga sanggunian gamit ang Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Makakuha ng mga sagot agad na may real-time na web access, kaalaman, at mga sanggunian gamit ang ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

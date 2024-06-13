@@ -9,7 +9,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
-import { getPaywallVariant } from '@/features/abTester/utils'
+import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { PricingModalState } from '@/features/auth/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
@@ -223,8 +223,8 @@ const useClientConversation = () => {
     }
     if (addToConversationId) {
       // 判断是否是paywall test version
-      const paywallVariant = await getPaywallVariant()
-      if (paywallVariant === '1-2') {
+      const { paywallVariant } = await getChromeExtensionUserABTest()
+      if (paywallVariant === '2-2') {
         window.postMessage({
           event: 'MAX_AI_PRICING_MODAL',
           type: 'show',
@@ -257,11 +257,20 @@ const useClientConversation = () => {
    * 更新当前conversation的writingMessage
    * @param message
    */
-  const updateClientWritingMessage = (message: IAIResponseMessage | null) => {
+  const updateClientWritingMessage = (
+    message:
+      | IAIResponseMessage
+      | null
+      | ((prevMessage: IChatMessage | null) => IChatMessage | null),
+  ) => {
     setClientWritingMessage((prevState) => {
+      const newMessage =
+        typeof message === 'function'
+          ? message(prevState.writingMessage)
+          : message
       return {
         ...prevState,
-        writingMessage: message,
+        writingMessage: newMessage,
       }
     })
   }

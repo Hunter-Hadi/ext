@@ -207,16 +207,28 @@ export const checkRemoteConversationIsExist = async (
   if (!(await isEnableSyncConversation())) {
     return false
   }
+  return (await clientGetRemoteBasicConversation(conversationId)) !== null
+}
+/**
+ * 获取远程会话简单信息
+ * @param conversationId
+ */
+export const clientGetRemoteBasicConversation = async (
+  conversationId: string,
+): Promise<Omit<IConversation, 'meta'> | null> => {
+  if (!(await isEnableSyncConversation())) {
+    return null
+  }
   const hasConversationData = await clientFetchMaxAIAPI<{
     status: string
-    data: IConversation[]
+    data: Omit<IConversation, 'meta'>[]
   }>('/conversation/get_conversations_basic_by_ids', {
     ids: [conversationId],
   })
-  return (
-    hasConversationData.data?.status === 'OK' &&
+  return hasConversationData.data?.status === 'OK' &&
     hasConversationData.data?.data?.length > 0
-  )
+    ? hasConversationData.data.data[0]
+    : null
 }
 
 /**

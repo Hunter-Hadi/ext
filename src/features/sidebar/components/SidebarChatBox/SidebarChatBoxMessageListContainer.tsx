@@ -19,7 +19,8 @@ interface IProps {
   writingMessage: IChatMessage | null
   isAIResponding?: boolean
   sx?: SxProps
-  onLoadingChatHistory?: (isLoading: boolean) => void
+  onLoadingChatMessages?: (isLoading: boolean) => void
+  onFetchingNextPage?: (isFetchingNextPage: boolean) => void
 }
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
@@ -27,7 +28,8 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     writingMessage,
     isAIResponding,
     sx,
-    onLoadingChatHistory,
+    onLoadingChatMessages,
+    onFetchingNextPage,
     conversationId,
   } = props
 
@@ -180,8 +182,11 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   }, [writingMessage?.messageId, paginationMessages])
 
   useEffect(() => {
-    onLoadingChatHistory?.(isFetchingNextPage || isLoading)
-  }, [isFetchingNextPage, isLoading])
+    onLoadingChatMessages?.(isLoading)
+  }, [isLoading])
+  useEffect(() => {
+    onFetchingNextPage?.(isFetchingNextPage)
+  }, [isFetchingNextPage])
   // return (
   //   <>
   //     <Typography color={'text.primary'}>
@@ -204,6 +209,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         flex: 1,
         height: 0,
         overflowY: 'auto',
+        display: paginationMessages.length > 0 ? 'block' : 'none',
         ...sx,
       }}
     >

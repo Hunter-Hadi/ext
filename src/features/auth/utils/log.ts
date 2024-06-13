@@ -8,7 +8,7 @@ import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaul
 import { IAIProviderType } from '@/background/provider/chat'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PRESET_PROMPT_IDS } from '@/constants'
-import { getPaywallVariant } from '@/features/abTester/utils'
+import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
@@ -233,7 +233,7 @@ export const authEmitPricingHooksLog = debounce(
       }
 
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
-      const paywallVariant = await getPaywallVariant()
+      const { paywallVariant } = await getChromeExtensionUserABTest()
       mixpanelTrack(type, {
         logType,
         sceneType,

@@ -1,4 +1,5 @@
 import { sha3_512 } from 'js-sha3'
+import lodashGet from 'lodash-es/get'
 
 import { CHATGPT_WEBAPP_HOST } from '@/constants'
 
@@ -6,29 +7,31 @@ function getProofConfig() {
   return [
     navigator.hardwareConcurrency + screen.width + screen.height,
     new Date().toString(),
-    4294705152,
+    lodashGet(performance, 'memory.jsHeapSizeLimit', 0),
     0,
     navigator.userAgent,
+    '',
+    '',
+    navigator.language,
+    navigator.languages.join(','),
+    0,
   ]
 }
 export async function calcProofToken(seed: string, diff: string) {
   const config = getProofConfig()
-
-  for (let i = 0; i < 1e5; i++) {
+  const S = performance.now()
+  for (let i = 0; i < 5e5; i++) {
     config[3] = i
+    config[9] = Math.round(performance.now() - S)
     const jsonData = JSON.stringify(config)
     const base = btoa(
       String.fromCharCode(...new TextEncoder().encode(jsonData)),
     )
-    const hashHex = sha3_512(seed + base)
-    console.debug('POW', i, base, hashHex)
-    if (hashHex.slice(0, diff.length) <= diff) {
-      return 'gAAAAAB' + base
+    if (sha3_512(seed + base).slice(0, diff.length) <= diff) {
+      return base
     }
   }
-
-  const base = btoa(seed)
-  return 'gAAAAABwQ8Lk5FbGpA2NcR9dShT6gYjU7VxZ4D' + base
+  return 'wQ8Lk5FbGpA2NcR9dShT6gYjU7VxZ4De'
 }
 
 /**
@@ -47,6 +50,7 @@ const generateSentinelChatRequirementsToken = async (
   proofToken: string
 }> => {
   try {
+    const p = `gAAAAAC` + (await calcProofToken(Math.random().toString(), '0'))
     const result = await fetch(
       `https://${CHATGPT_WEBAPP_HOST}/backend-api/sentinel/chat-requirements`,
       {
@@ -56,7 +60,7 @@ const generateSentinelChatRequirementsToken = async (
           Authorization: `Bearer ${jwtToken}`,
         },
         body: JSON.stringify({
-          conversation_mode_kind: kind,
+          p,
         }),
       },
     )
@@ -74,7 +78,8 @@ const generateSentinelChatRequirementsToken = async (
       if (data?.proofofwork?.required) {
         const seed = data.proofofwork.seed
         const difficulty = data.proofofwork.difficulty
-        returnObject.proofToken = await calcProofToken(seed, difficulty)
+        returnObject.proofToken =
+          `gAAAAAB` + (await calcProofToken(seed, difficulty))
       }
       return returnObject
     }

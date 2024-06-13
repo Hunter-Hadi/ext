@@ -43,7 +43,7 @@ const EllipsisTextWithTooltip: FC<IProps> = ({
       // scrollHeight > offsetHeight 说明有溢出, 渲染 Tooltip
       setDisableTooltip(textEl.offsetHeight >= textEl.scrollHeight)
     }
-  }, [textRef])
+  }, [])
 
   useEffect(() => {
     if (rendered) {
@@ -72,10 +72,12 @@ const EllipsisTextWithTooltip: FC<IProps> = ({
 
   return (
     <Tooltip
-      title={disableTooltip ? '' : tooltip}
+      title={
+        disableTooltip ? '' : <Typography fontSize={12}>{tooltip}</Typography>
+      }
       PopperProps={{
         style: {
-          zIndex: tooltipZIndex || 9999,
+          zIndex: tooltipZIndex || 2147483620,
           maxWidth: 180,
         },
       }}

@@ -133,6 +133,14 @@ class SearchWIthAIChatSystem {
       }
     }
 
+    if (!question.meta) {
+      question.meta = {}
+    }
+    question.meta.analytics = {
+      promptType: 'preset',
+      featureName: 'search_with_ai',
+    }
+
     return (
       this.currentAdapter?.sendQuestion(taskId, sender, question) ||
       Promise.resolve()

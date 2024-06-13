@@ -1,6 +1,6 @@
 import { createClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message';
+import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message'
 
 import {
   SEARCH_WITH_AI_ROOT_ID,

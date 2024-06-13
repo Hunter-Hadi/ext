@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 import { MagicBookIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
@@ -195,6 +196,13 @@ const PromptLibraryIconButton: FC<{
         placement={placement}
         transition
         // keepMounted={isClickOpenOnce}
+        sx={{
+          zIndex: '2147483620',
+          width: isImmersiveChatPage ? 'unset' : '100%',
+          '& > div': {
+            minWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
+          },
+        }}
       >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
@@ -223,7 +231,7 @@ const PromptLibraryIconButton: FC<{
                     : `calc(100% - 24px)`,
                   height: 'calc(100vh - 140px)',
                   maxHeight: '1067px',
-                  minWidth: 402,
+                  minWidth: 496,
                   ml: isImmersiveChatPage ? 0 : 1,
                   p: 2,
                 }}

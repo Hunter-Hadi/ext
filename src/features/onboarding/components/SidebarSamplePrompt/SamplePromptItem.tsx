@@ -4,7 +4,6 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 
 import EllipsisTextWithTooltip from '@/features/common/components/EllipsisTextWithTooltip'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface ISamplePromptItemProps {
   id: string
@@ -13,6 +12,7 @@ interface ISamplePromptItemProps {
   onClick?: (id: string) => void
   order?: number
   sx?: SxProps
+  showLineClamp?: number
 }
 
 const SamplePromptItem: FC<ISamplePromptItemProps> = ({
@@ -21,8 +21,8 @@ const SamplePromptItem: FC<ISamplePromptItemProps> = ({
   disabled,
   onClick,
   order,
+  showLineClamp = 1,
 }) => {
-  const isInMaxAIImmersiveChat = isMaxAIImmersiveChatPage()
   return (
     <Fade
       in
@@ -34,14 +34,18 @@ const SamplePromptItem: FC<ISamplePromptItemProps> = ({
         sx={{
           px: 2,
           py: 1.5,
+          bgcolor: disabled
+            ? 'customColor.secondaryBackground'
+            : 'background.paper',
           border: '1px solid',
           borderColor: 'customColor.borderColor',
-          boxShadow: '0px 1px 2px 0px #0000000D',
-          cursor: disabled ? 'not-allowed' : 'pointer',
+          boxShadow: disabled ? 'none' : '0px 1px 2px 0px #0000000D',
+          cursor: disabled ? 'default' : 'pointer',
           transition: 'border-color 0.3s',
+          borderRadius: 2,
           flex: 1,
           '&:hover': {
-            borderColor: 'primary.main',
+            borderColor: disabled ? 'customColor.borderColor' : 'primary.main',
           },
         }}
         onClick={() => {
@@ -54,14 +58,14 @@ const SamplePromptItem: FC<ISamplePromptItemProps> = ({
         <EllipsisTextWithTooltip
           tip={title}
           resizeListener
-          lineClamp={isInMaxAIImmersiveChat ? 2 : 1}
+          lineClamp={showLineClamp}
           sx={{
             fontSize: '14px',
             lineHeight: '21px',
             whiteSpace: 'normal',
             wordBreak: 'break-word',
-            minHeight: isInMaxAIImmersiveChat ? '42px' : '21px',
-            color: 'text.primary',
+            minHeight: showLineClamp * 21,
+            color: disabled ? 'text.disabled' : 'text.primary',
           }}
         >
           {title}

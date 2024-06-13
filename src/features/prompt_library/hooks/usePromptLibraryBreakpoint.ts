@@ -50,7 +50,8 @@ const usePromptLibraryBreakpoint = (
       return 'md'
     } else if (sidebarWidth <= 1280) {
       return 'lg'
-    } else if (sidebarWidth <= 1920) {
+    } else if (sidebarWidth <= 1920 || sidebarWidth > 1920) {
+      // 暂时没有 2xl 的设计，所以 大于 1920 的都算 xl
       return 'xl'
     }
     return 'xs'

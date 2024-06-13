@@ -1,7 +1,7 @@
 import isNumber from 'lodash-es/isNumber'
 import Browser from 'webextension-polyfill'
 
-import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import {
   maxAIRequestBodyAnalysisGenerator,
   maxAIRequestBodyPromptActionGenerator,
@@ -356,10 +356,13 @@ class UseChatGPTPlusChat extends BaseChat {
           {
             method: 'POST',
             signal,
-            headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${this.token}`,
-            }),
+            headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(
+              taskId,
+              {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${this.token}`,
+              },
+            ),
             body: JSON.stringify(postBody),
           },
         )

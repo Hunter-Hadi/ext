@@ -1,4 +1,4 @@
-import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import { ChatAdapterInterface } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import { createBackgroundMessageListener } from '@/background/utils'
@@ -64,7 +64,7 @@ class SearchWIthAIChatSystem {
             }
             const taskId = data.taskId
             const question = data.question
-            await backgroundRequestHeaderGenerator.addTaskIdHeader(
+            await backgroundRequestHeadersGenerator.addTaskIdHeaders(
               taskId,
               sender,
             )

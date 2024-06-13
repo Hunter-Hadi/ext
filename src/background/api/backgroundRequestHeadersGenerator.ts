@@ -77,8 +77,8 @@ export const convertHexToString = (hexString: string): string => {
 /**
  * 用于所有的请求添加一些 header
  */
-class BackgroundRequestHeaderGenerator {
-  private taskIdHeaderMap: Map<
+class BackgroundRequestHeadersGenerator {
+  private taskIdHeadersMap: Map<
     string,
     {
       headers: HeadersInit
@@ -86,7 +86,7 @@ class BackgroundRequestHeaderGenerator {
       sender: Runtime.MessageSender
     }
   > = new Map()
-  async addTaskIdHeader(taskId: string, sender: Runtime.MessageSender) {
+  async addTaskIdHeaders(taskId: string, sender: Runtime.MessageSender) {
     // "{\"browser\":{\"name\":\"Chrome\",\"version\":\"125.0.0.0\",\"major\":\"125\"},\"os\":{\"name\":\"Mac OS\",\"version\":\"10.15.7\"}}"
     const uaInfo = await backgroundGetBrowserUAInfo()
     const senderUrl = (sender.tab?.url || sender.url || '').slice(0, 1000)
@@ -117,28 +117,28 @@ class BackgroundRequestHeaderGenerator {
         [convertHexToString(`582d436c69656e742d50617468`)]: path,
       }),
     }
-    this.taskIdHeaderMap.set(taskId, {
+    this.taskIdHeadersMap.set(taskId, {
       headers: hexHeaders,
       createdTime: Date.now(),
       sender,
     })
-    this.removeUnusedTaskIdHeader()
+    this.removeUnusedTaskIdHeaders()
   }
-  removeUnusedTaskIdHeader() {
+  removeUnusedTaskIdHeaders() {
     const now = Date.now()
-    for (const [taskId, { createdTime }] of this.taskIdHeaderMap) {
+    for (const [taskId, { createdTime }] of this.taskIdHeadersMap) {
       if (now - createdTime > 1000 * 60 * 5) {
-        this.taskIdHeaderMap.delete(taskId)
+        this.taskIdHeadersMap.delete(taskId)
       }
     }
   }
-  getTaskIdHeader(taskId?: string, headers?: HeadersInit) {
+  getTaskIdHeaders(taskId?: string, headers?: HeadersInit) {
     return merge(
-      taskId ? this.taskIdHeaderMap.get(taskId)?.headers : undefined,
+      taskId ? this.taskIdHeadersMap.get(taskId)?.headers : undefined,
       headers,
     )
   }
 }
 
-export const backgroundRequestHeaderGenerator =
-  new BackgroundRequestHeaderGenerator()
+export const backgroundRequestHeadersGenerator =
+  new BackgroundRequestHeadersGenerator()

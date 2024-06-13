@@ -1,7 +1,7 @@
 import merge from 'lodash-es/merge'
 import Browser from 'webextension-polyfill'
 
-import { convertHexToString } from '@/background/api/backgroundRequestHeaderGenerator'
+import { convertHexToString } from '@/background/api/backgroundRequestHeadersGenerator'
 import { APP_VERSION } from '@/constants'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { aesJsonEncrypt } from '@/utils/encryptionHelper'

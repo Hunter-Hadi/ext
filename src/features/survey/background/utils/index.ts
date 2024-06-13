@@ -1,4 +1,4 @@
-import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import {
   getChromeExtensionLocalStorage,
   setChromeExtensionLocalStorage,
@@ -27,7 +27,7 @@ export const updateSurveyStatusInBackground = async (
       `${APP_USE_CHAT_GPT_API_HOST}/user/find_user_survey_key`,
       {
         method: 'POST',
-        headers: backgroundRequestHeaderGenerator.getTaskIdHeader(requestId, {
+        headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(requestId, {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         }),

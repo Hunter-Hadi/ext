@@ -3,7 +3,7 @@ import Browser from 'webextension-polyfill'
 
 import BackgroundAbortFetch from '@/background/api/BackgroundAbortFetch'
 import { backgroundPost } from '@/background/api/backgroundFetch'
-import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
   createDaemonProcessTab,
@@ -312,7 +312,7 @@ export const ClientMessageInit = () => {
         case 'Client_logCallApiRequest':
           {
             const requestId = uuidV4()
-            await backgroundRequestHeaderGenerator.addTaskIdHeader(
+            await backgroundRequestHeadersGenerator.addTaskIdHeaders(
               requestId,
               sender,
             )
@@ -483,7 +483,7 @@ export const ClientMessageInit = () => {
             const requestId = uuidV4()
             // 只有MaxAI的api才会添加taskId
             if (url.startsWith(APP_USE_CHAT_GPT_API_HOST)) {
-              await backgroundRequestHeaderGenerator.addTaskIdHeader(
+              await backgroundRequestHeadersGenerator.addTaskIdHeaders(
                 requestId,
                 sender,
               )
@@ -492,7 +492,7 @@ export const ClientMessageInit = () => {
               url,
               {
                 ...parseOptions,
-                headers: backgroundRequestHeaderGenerator.getTaskIdHeader(
+                headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(
                   requestId,
                   parseOptions.headers,
                 ),
@@ -774,7 +774,7 @@ export const ClientMessageInit = () => {
         }
         case 'Client_updateMaxAISurveyStatus': {
           const requestId = uuidV4()
-          await backgroundRequestHeaderGenerator.addTaskIdHeader(
+          await backgroundRequestHeadersGenerator.addTaskIdHeaders(
             requestId,
             sender,
           )

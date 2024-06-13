@@ -2,7 +2,7 @@ import orderBy from 'lodash-es/orderBy'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
-import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
@@ -185,10 +185,13 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     systemPrompt: string,
   ): Promise<IAIResponseSourceCitation[] | undefined> {
     try {
-      const headers = backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
-      })
+      const headers = backgroundRequestHeadersGenerator.getTaskIdHeaders(
+        taskId,
+        {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
+        },
+      )
       const result = await fetch(
         `${APP_USE_CHAT_GPT_API_HOST}/gpt/chat_small_document_citation`,
         {

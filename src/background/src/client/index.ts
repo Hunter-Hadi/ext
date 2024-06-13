@@ -27,6 +27,7 @@ import {
   isSettingsLastModifiedEqual,
 } from '@/background/utils/syncSettings'
 import {
+  APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
@@ -480,10 +481,13 @@ export const ClientMessageInit = () => {
             const { url, options, abortTaskId } = data
             const { parse = 'json', ...parseOptions } = options
             const requestId = uuidV4()
-            await backgroundRequestHeaderGenerator.addTaskIdHeader(
-              requestId,
-              sender,
-            )
+            // 只有MaxAI的api才会添加taskId
+            if (url.startsWith(APP_USE_CHAT_GPT_API_HOST)) {
+              await backgroundRequestHeaderGenerator.addTaskIdHeader(
+                requestId,
+                sender,
+              )
+            }
             const result = await BackgroundAbortFetch.fetch(
               url,
               {
@@ -769,9 +773,15 @@ export const ClientMessageInit = () => {
           }
         }
         case 'Client_updateMaxAISurveyStatus': {
+          const requestId = uuidV4()
+          await backgroundRequestHeaderGenerator.addTaskIdHeader(
+            requestId,
+            sender,
+          )
           const result = await updateSurveyStatusInBackground(
             data.forceUpdate,
             data.surveyKeys,
+            requestId,
           )
           return {
             success: true,

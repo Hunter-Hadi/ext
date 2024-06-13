@@ -52,7 +52,6 @@ export const clientRequestHeaderGenerator = async (
     }
     return merge(hexHeaders, headerInit)
   } catch (e) {
-    debugger
     return headerInit
   }
 }

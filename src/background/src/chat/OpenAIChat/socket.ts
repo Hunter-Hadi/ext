@@ -28,6 +28,7 @@
 //
 
 import { CHATGPT_WEBAPP_HOST } from '@/constants'
+import { getOpenAIDeviceId } from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 
 interface IChatGPTRawMessage {
   message: {
@@ -451,6 +452,8 @@ class ChatGPTSocketService {
           {
             method: 'GET',
             headers: {
+              'Oai-Device-Id': await getOpenAIDeviceId(),
+              'Oai-Language': 'en-US',
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
             },

@@ -135,6 +135,11 @@
   "declarative_net_request": {
     "rule_resources": [
       {
+        "id": "ruleset_chatgpt",
+        "enabled": true,
+        "path": "rules/chatgpt.json"
+      },
+      {
         "id": "ruleset_bing",
         "enabled": true,
         "path": "rules/bing.json"

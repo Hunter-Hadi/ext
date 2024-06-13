@@ -1,9 +1,11 @@
 import { sha3_512 } from 'js-sha3'
 import lodashGet from 'lodash-es/get'
+import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
 
 import { CHATGPT_WEBAPP_HOST } from '@/constants'
 
-function getProofConfig() {
+export function getProofConfig() {
   return [
     navigator.hardwareConcurrency + screen.width + screen.height,
     new Date().toString(),
@@ -17,6 +19,17 @@ function getProofConfig() {
     0,
   ]
 }
+export const getOpenAIDeviceId = async () => {
+  let value = (await Browser.storage.local.get('oai_device_id'))?.[
+    'oai_device_id'
+  ]
+  if (!value) {
+    value = uuidV4()
+    await Browser.storage.local.set({ oai_device_id: value })
+  }
+  return value
+}
+
 export async function calcProofToken(seed: string, diff: string) {
   const config = getProofConfig()
   const S = performance.now()

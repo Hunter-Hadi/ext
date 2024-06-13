@@ -1,0 +1,27 @@
+# 基于产品功能划分feature
+
+## 目录
+- chat-base
+  - chat
+  - summary
+  - art
+  - search
+  - citation
+- page-translator
+- search-with-ai
+- context-menu
+- shortcuts
+- marketing
+  - ab-test
+  - activity
+  - mixpanel
+  - onboarding
+  - referral
+- indexed-db
+- common
+- auth
+  - login
+  - permission
+- pricing
+  - payment
+- prompt-library

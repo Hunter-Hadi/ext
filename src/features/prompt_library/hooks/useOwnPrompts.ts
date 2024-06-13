@@ -11,6 +11,7 @@ const useOwnPrompts = () => {
     queryKey: [PROMPT_LIBRARY_API.GET_OWN_PROMPTS],
     queryFn: PromptLibraryService.getOwnPrompts,
     enabled: isLogin,
+    retry: false,
   })
 }
 

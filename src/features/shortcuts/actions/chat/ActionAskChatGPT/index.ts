@@ -8,8 +8,7 @@ import {
 } from '@/background/src/chat/util'
 import {
   authEmitPricingHooksLog,
-  getFeatureNameByConversationAndContextMenu,
-  getPromptTypeByContextMenu,
+  generateQuestionAnalyticsData,
 } from '@/features/auth/utils/log'
 import { isPermissionCardSceneType } from '@/features/auth/utils/permissionHelper'
 import { getAIProviderChatFiles } from '@/features/chatgpt'
@@ -335,6 +334,10 @@ export class ActionAskChatGPT extends Action {
         }
       }
       this.question.meta.messageVisibleText = messageVisibleText
+      this.question.meta.analytics = await generateQuestionAnalyticsData(
+        this.question,
+        contextMenu?.id,
+      )
       if (
         clientConversationEngine &&
         clientMessageChannelEngine &&
@@ -365,14 +368,8 @@ export class ActionAskChatGPT extends Action {
             data: {
               name: contextMenu?.text || fallbackId,
               id: contextMenu?.id || fallbackId,
-              type: getPromptTypeByContextMenu(contextMenu, {
-                isOneClickPrompt: this.question.meta.isOneClickPrompt,
-                oneClickPromptType: this.question.meta.promptType,
-              }).promptType,
-              featureName: getFeatureNameByConversationAndContextMenu(
-                conversation,
-                contextMenu,
-              ),
+              type: this.question.meta.analytics.promptType,
+              featureName: this.question.meta.analytics.featureName,
               host: getCurrentDomainHost(),
               conversationId: clientConversationEngine.currentConversationId,
               url: location.href,
@@ -591,7 +588,17 @@ export class ActionAskChatGPT extends Action {
               conversationId,
             )
             // 移除AI writing message
-            clientConversationEngine.updateClientWritingMessage(null)
+            // TODO 这里临时解决，因为上方的pushMessage是异步添加到分页的message里的，这里过早改为null会有闪烁问题
+            setTimeout(() => {
+              clientConversationEngine.updateClientWritingMessage(
+                (prevMessage) => {
+                  if (prevMessage?.messageId === this.answer?.messageId) {
+                    return null
+                  }
+                  return prevMessage
+                },
+              )
+            }, 200)
           }
 
           // 如果是 smart search，并且报错了需要用 messageVisibleText 做 fallback 处理

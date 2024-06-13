@@ -1,15 +1,14 @@
 import orderBy from 'lodash-es/orderBy'
 
-import { IUserChatMessageExtraMetaContextType } from '@/features/indexed_db/conversations/models/Message'
+import { IUserMessageMetaContextDataType } from '@/features/indexed_db/conversations/models/Message'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 const generateUserMessageContexts = (
   shortCutsParameters: Record<string, IShortCutsParameter>,
   promptText: string,
-): IUserChatMessageExtraMetaContextType[] => {
-  const contextMap: Map<string, IUserChatMessageExtraMetaContextType> =
-    new Map()
+): IUserMessageMetaContextDataType[] => {
+  const contextMap: Map<string, IUserMessageMetaContextDataType> = new Map()
   const customVariables = Object.keys(shortCutsParameters).filter(
     (key) => shortCutsParameters[key].isBuiltIn !== true,
   )

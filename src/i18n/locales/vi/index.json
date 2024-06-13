@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "Tham gia 1 triệu chuyên gia nâng cao năng suất của họ với MaxAI.",
     "permission__pricing_modal__footer__title": "Xem tất cả các gói.",
     "permission__pricing_modal__cta_button__title": "Nâng cấp ngay",
-    "permission__pricing_modal__discount__title": "Tiết kiệm 53%"
+    "permission__pricing_modal__discount__title": "Tiết kiệm 53%",
+    "home_view__chat__title": "Trò chuyện với AI",
+    "home_view__chat__description": "Nghiên cứu nhanh gấp 10 lần bằng cách trò chuyện với GPT-4o, Claude 3, Gemini 1.5 và nhiều hơn nữa.",
+    "home_view__sample_prompt__explore_more": "Khám phá thư viện gợi ý AI",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Nhận câu trả lời tức thì với truy cập web, kiến thức và trích dẫn thời gian thực với Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Nhận câu trả lời tức thì với truy cập web, kiến thức và trích dẫn thời gian thực với ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

@@ -45,7 +45,7 @@ export interface IUserChatMessage extends IChatMessage {
   text: string
   messageId: string
   parentMessageId?: string
-  meta?: IChatMessageExtraMetaType
+  meta?: IUserMessageMetaType
   extendContent?: IUserChatMessageExtendContentType
 }
 
@@ -54,13 +54,13 @@ export type IUserChatMessageExtendContentType = {
   attachmentExtractedContents?: Record<string, string>
 }
 
-export type IUserChatMessageExtraMetaContextType = {
+export type IUserMessageMetaContextDataType = {
   type: 'text'
   value: string
   key: string
 }
 
-export type IChatMessageExtraMetaType = {
+export type IUserMessageMetaType = {
   // 是否自动判断AIResponseLanguage
   isEnabledDetectAIResponseLanguage?: boolean
   // contextMenu的配置
@@ -84,11 +84,18 @@ export type IChatMessageExtraMetaType = {
   // quote的消息
   quoteMessage?: IChatMessage
   // 上下文
-  contexts?: IUserChatMessageExtraMetaContextType[]
+  contexts?: IUserMessageMetaContextDataType[]
   // MaxAI prompt Action Config
   MaxAIPromptActionConfig?: MaxAIPromptActionConfig
   // 是否有编辑结构, 用来regenerate
   hasEditStructure?: boolean
+  /**
+   * 用来发给api或者mixpanel的数据，但是这个字段需要通用一点的命名
+   */
+  analytics?: {
+    promptType?: 'preset' | 'custom' | 'freestyle'
+    featureName?: string
+  }
   [key: string]: any
 }
 
@@ -205,8 +212,8 @@ export interface IAIResponseOriginalMessage {
 export interface IAIResponseSourceCitation {
   snippet: string
   content: string
-  start_index: number
-  length: number
+  start_index?: number
+  length?: number
 }
 
 // AI返回的消息

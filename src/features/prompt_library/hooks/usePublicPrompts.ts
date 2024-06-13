@@ -6,18 +6,10 @@ import PromptLibraryService, {
 } from '@/features/prompt_library/service'
 
 const usePublicPrompts = () => {
-  const {
-    promptLibraryListParameters,
-    updatePromptLibraryListParameters,
-  } = usePromptLibraryParameters()
-  const {
-    enabled,
-    use_case,
-    category,
-    page,
-    page_size,
-    query,
-  } = promptLibraryListParameters
+  const { promptLibraryListParameters, updatePromptLibraryListParameters } =
+    usePromptLibraryParameters()
+  const { enabled, use_case, category, page, page_size, query } =
+    promptLibraryListParameters
   return useQuery({
     queryKey: [
       PROMPT_LIBRARY_API.SEARCH_PROMPT,
@@ -41,6 +33,7 @@ const usePublicPrompts = () => {
     },
     placeholderData: keepPreviousData,
     enabled,
+    retry: false,
   })
 }
 

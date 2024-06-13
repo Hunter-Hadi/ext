@@ -1,6 +1,9 @@
-import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 
+import {
+  maxAIRequestBodyAnalysisGenerator,
+  maxAIRequestBodyPromptActionGenerator,
+} from '@/background/api/maxAIRequestBodyGenerator'
 import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
@@ -20,7 +23,7 @@ import {
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { IChatMessageExtraMetaType } from '@/features/indexed_db/conversations/models/Message'
+import { IUserMessageMetaType } from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
@@ -84,7 +87,7 @@ class MaxAIClaudeChat extends BaseChat {
       regenerate?: boolean
       streaming?: boolean
       chat_history?: IMaxAIRequestHistoryMessage[]
-      meta?: IChatMessageExtraMetaType
+      meta?: IUserMessageMetaType
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -145,25 +148,16 @@ class MaxAIClaudeChat extends BaseChat {
     // 如果有meta.MaxAIPromptActionConfig，就需要用/use_prompt_action
     if (options?.meta?.MaxAIPromptActionConfig) {
       backendAPI = 'use_prompt_action'
-      const clonePostBody: any = cloneDeep(postBody)
-      // 去掉message_content
-      delete clonePostBody.message_content
-      clonePostBody.prompt_id = options.meta.MaxAIPromptActionConfig.promptId
-      clonePostBody.prompt_name =
-        options.meta.MaxAIPromptActionConfig.promptName
-      clonePostBody.prompt_inputs =
-        options.meta.MaxAIPromptActionConfig.variables.reduce<
-          Record<string, string>
-        >((variableMap, variable) => {
-          if (variable.VariableName) {
-            variableMap[variable.VariableName] = variable.defaultValue || ''
-          }
-          return variableMap
-        }, {})
-      if (options.meta.MaxAIPromptActionConfig.AIModel) {
-        clonePostBody.model_name = options.meta.MaxAIPromptActionConfig.AIModel
-      }
-      postBody = clonePostBody
+      postBody = await maxAIRequestBodyPromptActionGenerator(
+        postBody,
+        options.meta.MaxAIPromptActionConfig,
+      )
+    }
+    if (options?.meta?.analytics) {
+      postBody = await maxAIRequestBodyAnalysisGenerator(
+        postBody,
+        options.meta.analytics,
+      )
     }
     const controller = new AbortController()
     const signal = controller.signal
@@ -171,7 +165,10 @@ class MaxAIClaudeChat extends BaseChat {
       this.taskList[taskId] = () => controller.abort()
     }
     // claude search answer下不传递chat_history，否则会触发claude的报错 - 2024-05-30 - @xianhui
-    if (backendAPI === 'get_claude_response' && postBody.prompt_name === '[Search] answer') {
+    if (
+      backendAPI === 'get_claude_response' &&
+      postBody.prompt_name === '[Search] answer'
+    ) {
       postBody.chat_history = []
     }
     log.info('streaming start', postBody)
@@ -182,6 +179,7 @@ class MaxAIClaudeChat extends BaseChat {
     let conversationId = this.conversation?.id || ''
     let isTokenExpired = false
     await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
+      taskId,
       provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       method: 'POST',
       signal,

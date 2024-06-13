@@ -118,6 +118,7 @@ export type PermissionWrapperCardType = {
   modalImageUrl?: string
   title: React.ReactNode
   description: React.ReactNode
+  modalDescription?: React.ReactNode
   ctaButtonText?: React.ReactNode
   ctaButtonLink?: string
   ctaButtonOnClick?: (event: React.MouseEvent) => void
@@ -132,6 +133,10 @@ export type PermissionWrapperI18nCardType = {
     isFreeUser?: boolean,
   ) => React.ReactNode
   description: (
+    t: TFunction<['common', 'client']>,
+    isFreeUser?: boolean,
+  ) => React.ReactNode
+  modalDescription?: (
     t: TFunction<['common', 'client']>,
     isFreeUser?: boolean,
   ) => React.ReactNode
@@ -480,11 +485,18 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-3-haiku.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/claude-3-haiku.png',
+    ),
     videoUrl: `https://www.youtube.com/embed/kgO6OnurRpQ`,
     title: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__description'),
+    modalDescription: (t) =>
+      t(
+        'client:permission__pricing_hook__search_with_ai_claude__modal__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_now'),
     ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
@@ -494,10 +506,17 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-3-5-turbo.png',
     )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gpt-3.5-turbo.png',
+    ),
     title: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__description'),
+    modalDescription: (t) =>
+      t(
+        'client:permission__pricing_hook__search_with_ai_chatgpt__modal__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_now'),
     ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,

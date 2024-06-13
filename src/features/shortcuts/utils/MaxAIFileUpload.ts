@@ -1,5 +1,6 @@
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import { getAccessToken } from '@/utils/request'
+import { clientRequestHeaderGenerator } from '@/utils/clientRequestHeaderGenerator'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 // 上传的文件用途
 export type MaxAIFileUploadUseCase =
@@ -47,9 +48,9 @@ export const maxAIFileUpload = async (
     formData.append('use_case', useCase)
     fetch(`${APP_USE_CHAT_GPT_API_HOST}/app/upload_file`, {
       method: 'POST',
-      headers: {
+      headers: await clientRequestHeaderGenerator({
         Authorization: `Bearer ${accessToken}`,
-      },
+      }),
       body: formData,
     })
       .then((response) => response.json())

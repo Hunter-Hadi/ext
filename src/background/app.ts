@@ -516,6 +516,7 @@ const initChromeExtensionAction = () => {
       if (
         currentTab?.url?.startsWith('chrome') ||
         currentTab?.url?.startsWith('https://chrome.google.com/webstore') ||
+        currentTab?.url?.startsWith('https://chromewebstore.google.com') ||
         currentTab?.url?.startsWith(`https://${CHATGPT_WEBAPP_HOST}`)
       ) {
         // NOTE: extensions shortcuts的设置页面不应该弹出来阻止用户设置快捷键

@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import {
   BardChatProvider,
   BingChatProvider,
@@ -188,6 +189,10 @@ export default class ChatSystemFactory {
           }
           case 'Client_askChatGPTQuestion': {
             const { taskId, question } = data
+            await backgroundRequestHeaderGenerator.addTaskIdHeader(
+              taskId,
+              sender,
+            )
             // 每次提问的时候尝试更新一下model的白名单
             updateRemoteAIProviderConfigAsync().then().catch()
             console.log('[Background]新版Conversation 提问', question)

@@ -4,7 +4,7 @@ import {
   MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   MAXAI_VISION_MODEL_UPLOAD_CONFIG,
 } from '@/background/src/chat/constant'
-import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 // import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import dayjs from 'dayjs'
 
@@ -166,5 +166,5 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
       t('client:provider__chatgpt__model__gpt_4o__description'),
     maxTokens: 128000,
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
-  }
+  },
 ]

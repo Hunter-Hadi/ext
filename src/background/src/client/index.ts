@@ -1,6 +1,9 @@
+import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
-import { backendApiReportPricingHooks } from '@/background/api'
+import BackgroundAbortFetch from '@/background/api/BackgroundAbortFetch'
+import { backgroundPost } from '@/background/api/backgroundFetch'
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
   createDaemonProcessTab,
@@ -17,7 +20,6 @@ import {
   createChromeExtensionOptionsPage,
   safeGetBrowserTab,
 } from '@/background/utils'
-import BackgroundAbortFetch from '@/background/utils/BackgroundAbortFetch'
 import { getContextMenuActions } from '@/background/utils/buttonSettings'
 import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 import {
@@ -37,7 +39,7 @@ import {
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
 import { initIndexedDBChannel } from '@/features/indexed_db/channel'
-import paymentManager from "@/features/payment/background/PaymentManager";
+import paymentManager from '@/features/payment/background/PaymentManager'
 import { updateSurveyStatusInBackground } from '@/features/survey/background/utils'
 import WebsiteContextManager, {
   IWebsiteContext,
@@ -308,7 +310,12 @@ export const ClientMessageInit = () => {
           break
         case 'Client_logCallApiRequest':
           {
-            const result = await logAndConfirmDailyUsageLimit(data)
+            const requestId = uuidV4()
+            await backgroundRequestHeaderGenerator.addTaskIdHeader(
+              requestId,
+              sender,
+            )
+            const result = await logAndConfirmDailyUsageLimit(requestId, data)
             return {
               data: result,
               success: true,
@@ -427,7 +434,7 @@ export const ClientMessageInit = () => {
             if (userInfo?.role?.name) {
               data.role = userInfo.role.name
             }
-            await backendApiReportPricingHooks(data)
+            await backgroundPost(`/user/cardlog`, data)
           }
           return {
             success: true,
@@ -472,9 +479,20 @@ export const ClientMessageInit = () => {
           try {
             const { url, options, abortTaskId } = data
             const { parse = 'json', ...parseOptions } = options
+            const requestId = uuidV4()
+            await backgroundRequestHeaderGenerator.addTaskIdHeader(
+              requestId,
+              sender,
+            )
             const result = await BackgroundAbortFetch.fetch(
               url,
-              parseOptions,
+              {
+                ...parseOptions,
+                headers: backgroundRequestHeaderGenerator.getTaskIdHeader(
+                  requestId,
+                  parseOptions.headers,
+                ),
+              },
               abortTaskId,
             )
             let resultData: any = null
@@ -767,7 +785,7 @@ export const ClientMessageInit = () => {
           return {
             success: true,
             data: null,
-            message: 'ok'
+            message: 'ok',
           }
         }
         default:

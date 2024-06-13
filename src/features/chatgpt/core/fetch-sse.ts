@@ -1,6 +1,7 @@
 import { createParser } from 'eventsource-parser'
 import isEmpty from 'lodash-es/isEmpty'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP, CHATGPT_WEBAPP_HOST } from '@/constants'
 
@@ -11,9 +12,17 @@ export const fetchSSE = async (
   options: RequestInit & {
     onMessage: (message: string) => void
     provider: IAIProviderType
+    taskId?: string
   },
 ) => {
   const { onMessage, ...fetchOptions } = options
+  if (fetchOptions.taskId) {
+    fetchOptions.headers = backgroundRequestHeaderGenerator.getTaskIdHeader(
+      fetchOptions.taskId,
+      fetchOptions.headers,
+    )
+    delete fetchOptions.taskId
+  }
   const resp = await fetch(resource, fetchOptions)
   console.log(resp, 'straming resp')
   if (!resp.ok) {

@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "Bli med 1 million fagpersoner som øker produktiviteten sin med MaxAI.",
     "permission__pricing_modal__footer__title": "Se alle planer.",
     "permission__pricing_modal__cta_button__title": "Oppgrader nå",
-    "permission__pricing_modal__discount__title": "Spar 53%"
+    "permission__pricing_modal__discount__title": "Spar 53%",
+    "home_view__chat__title": "AI-chat",
+    "home_view__chat__description": "Forskning 10x raskere ved å chatte med GPT-4o, Claude 3, Gemini 1.5 og mer.",
+    "home_view__sample_prompt__explore_more": "Utforsk AI-promptbiblioteket",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Få øyeblikkelige svar med sanntids nettaksess, kunnskap og referanser med Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Få øyeblikkelige svar med sanntids nettaksess, kunnskap og referanser med ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

@@ -2,7 +2,7 @@
  * 获取对话消息的分页数据
  * @param conversationId
  */
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import first from 'lodash-es/first'
 import last from 'lodash-es/last'
 import orderBy from 'lodash-es/orderBy'
@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useAuthLogin } from '@/features/auth'
 import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
+import { clientGetRemoteBasicConversation } from '@/features/indexed_db/conversations/clientService'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
@@ -24,10 +25,14 @@ const usePaginationConversationMessages = (conversationId: string) => {
   const [paginationMessages, setPaginationMessages] = useState<IChatMessage[]>(
     [],
   )
-  const totalPageRef = useRef(0)
-  const remoteConversationMessagesPageLoadedRef = useRef<
-    Record<number, boolean>
-  >({})
+  const queryClient = useQueryClient()
+  const remoteConversationMessagesStateRef = useRef<{
+    conversationId: string
+    totalPage: number
+  }>({
+    conversationId: '',
+    totalPage: 0,
+  })
   const {
     data,
     refetch,
@@ -47,10 +52,16 @@ const usePaginationConversationMessages = (conversationId: string) => {
       let diffTimeUsage = 0
       let remoteMessages: IChatMessage[] = []
       if (
-        maxAIBetaFeatures.chat_sync &&
-        totalPageRef.current >= data.pageParam &&
-        !remoteConversationMessagesPageLoadedRef.current[data.pageParam]
+        remoteConversationMessagesStateRef.current.conversationId !==
+        conversationId
       ) {
+        remoteConversationMessagesStateRef.current = {
+          conversationId,
+          totalPage: 0,
+        }
+      }
+      const { totalPage } = remoteConversationMessagesStateRef.current
+      if (maxAIBetaFeatures.chat_sync && totalPage >= data.pageParam) {
         const result = await clientFetchMaxAIAPI<{
           current_page: number
           current_page_size: number
@@ -64,8 +75,10 @@ const usePaginationConversationMessages = (conversationId: string) => {
           page_size: PAGINATION_CONVERSATION_MESSAGES_QUERY_PAGE_SIZE,
         })
         if (result?.data?.status === 'OK') {
-          remoteConversationMessagesPageLoadedRef.current[data.pageParam] = true
-          totalPageRef.current = Math.max(result.data?.total_page || 0, 0)
+          remoteConversationMessagesStateRef.current.totalPage = Math.max(
+            result.data?.total_page || 0,
+            0,
+          )
         }
         if (result?.data?.data) {
           remoteMessages = result.data.data
@@ -207,13 +220,6 @@ const usePaginationConversationMessages = (conversationId: string) => {
     }
   }, [data?.pages])
 
-  const isFetchingRef = useRef(false)
-  const isRefetchingRef = useRef(false)
-  useEffect(() => {
-    isFetchingRef.current = isFetchingNextPage
-  }, [isFetchingNextPage])
-
-  const timerRef = useRef<number | null>(null)
   useEffect(() => {
     const unsubscribe = OneShotCommunicator.receive(
       'ConversationMessagesUpdate',
@@ -240,37 +246,33 @@ const usePaginationConversationMessages = (conversationId: string) => {
                 })
               })
             }
-            /**
-             * 因为这里不用refetch的话，会导致下一次data.pages更新到paginationMessages的时候state是之前的
-             * 所以这里需要refetch一下，但是可以用setTimeout来防抖
-             */
-            if (timerRef.current) {
-              clearTimeout(timerRef.current)
-            }
-            setTimeout(() => {
-              if (!isFetchingRef.current && !isRefetchingRef.current) {
-                isRefetchingRef.current = true
-                refetch()
-                  .then()
-                  .catch()
-                  .finally(() => {
-                    isRefetchingRef.current = false
-                  })
-              }
-            }, 1000)
             return true
           }
-          case 'delete':
+          case 'delete': {
+            setPaginationMessages((previousMessages) => {
+              return previousMessages.filter(
+                (message) => !messageIds.includes(message.messageId),
+              )
+            })
+            return true
+          }
           case 'add': {
-            if (!isFetchingRef.current && !isRefetchingRef.current) {
-              isRefetchingRef.current = true
-              refetch()
-                .then()
-                .catch()
-                .finally(() => {
-                  isRefetchingRef.current = false
-                })
-              break
+            const messages =
+              await ClientConversationMessageManager.getMessagesByMessageIds(
+                messageIds,
+              )
+            console.log(
+              `ConversationDB[V3][对话消息列表] conversationId [add]`,
+              messages,
+            )
+            if (messages.length) {
+              setPaginationMessages((previousMessages) => {
+                return orderBy(
+                  previousMessages.concat(messages),
+                  ['created_at'],
+                  ['asc'],
+                )
+              })
             }
             return true
           }
@@ -282,41 +284,75 @@ const usePaginationConversationMessages = (conversationId: string) => {
     return () => unsubscribe()
   }, [refetch, setPaginationMessages])
 
+  const isRefetching = useRef(false)
+  /**
+   * 每当窗口获得焦点时，重新获取对话消息，只保留第一页的数据，并且refetch
+   */
   useEffect(() => {
-    const listener = () => {
-      if (!isFetchingRef.current && !isRefetchingRef.current) {
-        isRefetchingRef.current = true
-        refetch()
-          .then()
-          .catch()
-          .finally(() => {
-            isRefetchingRef.current = false
-          })
+    const listener = async () => {
+      if (isRefetching.current) {
+        return
+      }
+      isRefetching.current = true
+      try {
+        const remoteConversation = await clientGetRemoteBasicConversation(
+          conversationId,
+        )
+        if (!remoteConversation) {
+          return
+        }
+        if (
+          remoteConversation.lastMessageId &&
+          !paginationMessages.find(
+            (message) => message.messageId === remoteConversation.lastMessageId,
+          )
+        ) {
+          console.log(
+            `ConversationDB[V3][对话消息列表] conversationId [focus][需要更新]`,
+            remoteConversation.lastMessageId,
+          )
+          await queryClient.setQueryData(
+            [
+              PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY,
+              conversationId,
+              maxAIBetaFeatures.chat_sync,
+            ],
+            (data: any) => {
+              return {
+                pages: data?.pages?.slice(0, 1),
+                pageParams: data?.pageParams?.slice(0, 1),
+              }
+            },
+          )
+          await refetch()
+        } else {
+          // 如果最后一条消息已经存在，不需要操作
+          console.log(
+            `ConversationDB[V3][对话消息列表] conversationId [focus][不需要更新]`,
+            remoteConversation.lastMessageId,
+          )
+        }
+      } catch (e) {
+        console.error(
+          'ConversationDB[V3][对话消息列表] conversationId [focus]',
+          e,
+        )
+      } finally {
+        isRefetching.current = false
       }
     }
     window.addEventListener('focus', listener)
     return () => {
       window.removeEventListener('focus', listener)
     }
-  }, [])
+  }, [
+    conversationId,
+    maxAIBetaFeatures.chat_sync,
+    paginationMessages,
+    queryClient,
+    refetch,
+  ])
 
-  /**
-   * 当conversationId变化时，重置totalPageRef
-   */
-  const previousConversationIdRef = useRef<string | null>(null)
-  useEffect(() => {
-    if (conversationId) {
-      if (!previousConversationIdRef.current) {
-        previousConversationIdRef.current = conversationId
-        return
-      }
-      if (previousConversationIdRef.current !== conversationId) {
-        totalPageRef.current = 0
-        previousConversationIdRef.current = conversationId
-        remoteConversationMessagesPageLoadedRef.current = {}
-      }
-    }
-  }, [conversationId])
   return {
     data,
     paginationMessages,

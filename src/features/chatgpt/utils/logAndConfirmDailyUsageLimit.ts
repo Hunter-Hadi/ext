@@ -2,6 +2,8 @@ import AES from 'crypto-js/aes'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
+import { getAccessToken } from '@/background/api/backgroundFetch'
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
 import { IAIProviderType } from '@/background/provider/chat'
 import ConversationManager from '@/background/src/chatConversations'
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
@@ -17,25 +19,28 @@ import {
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { LANGUAGE_CODE_MAP } from '@/i18n/types'
 import { getFingerPrint } from '@/utils/fingerPrint'
-import { getAccessToken } from '@/utils/request'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
 dayjs.extend(utc)
 
 /**
  * 在 background 中 记录用户发送chat的次数情况
+ * @param requestId
  * @param promptDetail
  */
-export const logAndConfirmDailyUsageLimit = async (promptDetail: {
-  id: string
-  name: string
-  type: string
-  host: string
-  conversationId: string
-  featureName: string
-  url: string
-  aiProvider?: IAIProviderType
-  aiModel?: string
-}): Promise<void> => {
+export const logAndConfirmDailyUsageLimit = async (
+  requestId: string,
+  promptDetail: {
+    id: string
+    name: string
+    type: string
+    host: string
+    conversationId: string
+    featureName: string
+    url: string
+    aiProvider?: IAIProviderType
+    aiModel?: string
+  },
+): Promise<void> => {
   // 不再需要去判断 has_reached_limit，因为前端不再依赖call_api来触发paywall付费卡点 - 2024-04-17 - @huangsong
   console.log('[CALL_API] promptDetail', promptDetail)
   const logApiAndConfirmIsLimited = async () => {
@@ -119,11 +124,11 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         body: JSON.stringify({
           info_object: text,
         }),
-        headers: {
+        headers: backgroundRequestHeaderGenerator.getTaskIdHeader(requestId, {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
           fp: `${fingerprint}`,
-        },
+        }),
       })
       const body = await result.json()
       // has_reached_limit:false

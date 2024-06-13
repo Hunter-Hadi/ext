@@ -55,7 +55,6 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_restartApp'
   | 'Client_logCallApiRequest'
   | 'Client_logThirdPartyDailyUsage'
-  | 'Client_emitPricingHooks'
   | 'Client_getLiteChromeExtensionSettings'
   | 'Client_getContextMenuActions'
   | 'Client_getAllOldVersionConversationIds'
@@ -63,6 +62,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_abortProxyFetchAPI'
   | 'Client_getIframePageContent'
   | 'Client_ListenProxyWebsocketResponse'
+  | 'Client_emitPricingHooks'
   // 上传文件相关
   | 'Client_chatUploadFiles'
   | 'Client_chatUploadFilesChange'

@@ -255,6 +255,7 @@ export const promptLibraryCardDetailDataToActions = (
         label: 'Writing style',
       })
     }
+
     actions.push({
       type: 'SET_VARIABLES_MODAL',
       parameters: {
@@ -262,8 +263,12 @@ export const promptLibraryCardDetailDataToActions = (
           template,
           contextMenuId: uuidV4(),
           title: promptLibraryCard.prompt_title,
-          isOneClickPrompt: true,
-          promptType: promptLibraryCard.type ?? 'public',
+          questionMeta: {
+            analytics: {
+              promptType:
+                promptLibraryCard.type === 'private' ? 'custom' : 'preset',
+            },
+          },
           variables: customVariables,
           systemVariables,
           actions: specialActions,
@@ -283,8 +288,10 @@ export const promptLibraryCardDetailDataToActions = (
         AskChatGPTActionQuestion: {
           text: '',
           meta: {
-            isOneClickPrompt: true,
-            promptType: promptLibraryCard.type ?? 'public',
+            analytics: {
+              promptType:
+                promptLibraryCard.type === 'private' ? 'custom' : 'preset',
+            },
             contextMenu: {
               id: promptLibraryCard.id,
               droppable: false,

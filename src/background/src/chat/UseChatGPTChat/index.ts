@@ -1,7 +1,11 @@
-import cloneDeep from 'lodash-es/cloneDeep'
 import isNumber from 'lodash-es/isNumber'
 import Browser from 'webextension-polyfill'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import {
+  maxAIRequestBodyAnalysisGenerator,
+  maxAIRequestBodyPromptActionGenerator,
+} from '@/background/api/maxAIRequestBodyGenerator'
 import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
@@ -23,7 +27,7 @@ import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHel
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import {
   IAIResponseSourceCitation,
-  IChatMessageExtraMetaType,
+  IUserMessageMetaType,
 } from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
@@ -91,7 +95,7 @@ class UseChatGPTPlusChat extends BaseChat {
       streaming?: boolean
       chat_history?: IMaxAIRequestHistoryMessage[]
       backendAPI?: IMaxAIChatGPTBackendAPIType
-      meta?: IChatMessageExtraMetaType
+      meta?: IUserMessageMetaType
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -211,25 +215,16 @@ class UseChatGPTPlusChat extends BaseChat {
     // 如果有meta.MaxAIPromptActionConfig，就需要用/use_prompt_action
     if (options?.meta?.MaxAIPromptActionConfig) {
       backendAPI = 'use_prompt_action'
-      const clonePostBody: any = cloneDeep(postBody)
-      // 去掉message_content
-      delete clonePostBody.message_content
-      clonePostBody.prompt_id = options.meta.MaxAIPromptActionConfig.promptId
-      clonePostBody.prompt_name =
-        options.meta.MaxAIPromptActionConfig.promptName
-      clonePostBody.prompt_inputs =
-        options.meta.MaxAIPromptActionConfig.variables.reduce<
-          Record<string, string>
-        >((variableMap, variable) => {
-          if (variable.VariableName) {
-            variableMap[variable.VariableName] = variable.defaultValue || ''
-          }
-          return variableMap
-        }, {})
-      if (options.meta.MaxAIPromptActionConfig.AIModel) {
-        clonePostBody.model_name = options.meta.MaxAIPromptActionConfig.AIModel
-      }
-      postBody = clonePostBody
+      postBody = await maxAIRequestBodyPromptActionGenerator(
+        postBody,
+        options.meta.MaxAIPromptActionConfig,
+      )
+    }
+    if (options?.meta?.analytics) {
+      postBody = await maxAIRequestBodyAnalysisGenerator(
+        postBody,
+        options.meta.analytics,
+      )
     }
     const controller = new AbortController()
     const signal = controller.signal
@@ -245,6 +240,7 @@ class UseChatGPTPlusChat extends BaseChat {
     let isTokenExpired = false
     if (postBody.streaming) {
       await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
+        taskId,
         provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
         method: 'POST',
         signal,
@@ -360,10 +356,10 @@ class UseChatGPTPlusChat extends BaseChat {
           {
             method: 'POST',
             signal,
-            headers: {
+            headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
-            },
+            }),
             body: JSON.stringify(postBody),
           },
         )

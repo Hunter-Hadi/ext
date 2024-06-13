@@ -16,6 +16,7 @@ import {
   IUserRole,
   IUserRoleType,
 } from '@/features/auth/types'
+import { clientRequestHeaderGenerator } from '@/utils/clientRequestHeaderGenerator'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 export const getMaxAIChromeExtensionAccessToken = async (): Promise<string> => {
@@ -159,6 +160,30 @@ export const getMaxAIChromeExtensionUserQuotaUsage = async (
   }
 }
 
+/**
+ * 获取当前用户所在的tab的url
+ */
+export const getCurrentFocusTabUrl = async () => {
+  const currentFocusTabs = await Browser.tabs.query({
+    active: true,
+    currentWindow: true,
+  })
+  const currentTabUrl = currentFocusTabs[0]?.url || ''
+  let focusUrl = ''
+  try {
+    // 确保是合法的url
+    if (currentTabUrl && new URL(currentTabUrl)) {
+      focusUrl = currentTabUrl
+    }
+  } catch (e) {
+    // do nothing
+  }
+  if (!focusUrl) {
+    focusUrl = Browser.runtime.getURL('/pages/settings/index.html')
+  }
+  return focusUrl
+}
+
 export const fetchUserSubscriptionInfo = async (): Promise<
   IUserRole | undefined
 > => {
@@ -170,9 +195,12 @@ export const fetchUserSubscriptionInfo = async (): Promise<
     const response = await fetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_subscription_info`,
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: await clientRequestHeaderGenerator(
+          {
+            Authorization: `Bearer ${token}`,
+          },
+          await getCurrentFocusTabUrl(),
+        ),
       },
     )
     if (response.ok) {
@@ -312,9 +340,12 @@ export const fetchUserInfo = async (): Promise<
     const response = await fetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_info`,
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: await clientRequestHeaderGenerator(
+          {
+            Authorization: `Bearer ${token}`,
+          },
+          await getCurrentFocusTabUrl(),
+        ),
       },
     )
     if (response.ok) {
@@ -345,9 +376,9 @@ export const fetchUserQuotaUsageInfo = async (): Promise<
     const response = await fetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_quota_usage`,
       {
-        headers: {
+        headers: await clientRequestHeaderGenerator({
           Authorization: `Bearer ${token}`,
-        },
+        }),
       },
     )
     if (response.ok) {

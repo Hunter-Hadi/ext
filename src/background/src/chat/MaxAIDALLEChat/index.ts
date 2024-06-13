@@ -1,6 +1,10 @@
-import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 
+import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import {
+  maxAIRequestBodyAnalysisGenerator,
+  maxAIRequestBodyPromptActionGenerator,
+} from '@/background/api/maxAIRequestBodyGenerator'
 import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
@@ -20,8 +24,8 @@ import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import {
-  IChatMessageExtraMetaType,
   IChatUploadFile,
+  IUserMessageMetaType,
 } from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
 
@@ -83,7 +87,7 @@ class MaxAIDALLEChat extends BaseChat {
       taskId: string
       regenerate?: boolean
       chat_history?: IMaxAIRequestHistoryMessage[]
-      meta?: IChatMessageExtraMetaType
+      meta?: IUserMessageMetaType
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -133,27 +137,16 @@ class MaxAIDALLEChat extends BaseChat {
         // 如果有meta.MaxAIPromptActionConfig，就需要用/use_prompt_action
         if (options?.meta?.MaxAIPromptActionConfig) {
           backendAPI = 'use_prompt_action'
-          const clonePostBody: any = cloneDeep(postBody)
-          // 去掉message_content
-          delete clonePostBody.message_content
-          clonePostBody.prompt_id =
-            options.meta.MaxAIPromptActionConfig.promptId
-          clonePostBody.prompt_name =
-            options.meta.MaxAIPromptActionConfig.promptName
-          clonePostBody.prompt_inputs =
-            options.meta.MaxAIPromptActionConfig.variables.reduce<
-              Record<string, string>
-            >((variableMap, variable) => {
-              if (variable.VariableName) {
-                variableMap[variable.VariableName] = variable.defaultValue || ''
-              }
-              return variableMap
-            }, {})
-          if (options.meta.MaxAIPromptActionConfig.AIModel) {
-            clonePostBody.model_name =
-              options.meta.MaxAIPromptActionConfig.AIModel
-          }
-          postBody = clonePostBody
+          postBody = await maxAIRequestBodyPromptActionGenerator(
+            postBody,
+            options.meta.MaxAIPromptActionConfig,
+          )
+        }
+        if (options?.meta?.analytics) {
+          postBody = await maxAIRequestBodyAnalysisGenerator(
+            postBody,
+            options.meta.analytics,
+          )
         }
         // 说明需要转换自然语言为prompt
         const result = await fetch(
@@ -161,10 +154,10 @@ class MaxAIDALLEChat extends BaseChat {
           {
             method: 'POST',
             signal,
-            headers: {
+            headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
-            },
+            }),
             body: JSON.stringify(postBody),
           },
         ).then((res) => res.json())
@@ -189,31 +182,38 @@ class MaxAIDALLEChat extends BaseChat {
             })
         }
       } else {
+        let postBody = {
+          prompt: message_content?.[0]?.text || '',
+          chrome_extension_version: APP_VERSION,
+          model_name:
+            this.conversation?.meta.AIModel ||
+            userConfig!.model ||
+            MAXAI_IMAGE_GENERATE_MODELS[0].value,
+          prompt_id: meta?.contextMenu?.id || 'chat',
+          prompt_name: meta?.contextMenu?.text || 'chat',
+          style: userConfig?.contentType || 'vivid',
+          size:
+            userConfig?.resolution?.length === 2
+              ? `${userConfig.resolution[0]}x${userConfig.resolution[1]}`
+              : `1024x1024`,
+          n: userConfig?.generateCount || 1,
+        }
+        if (options?.meta?.analytics) {
+          postBody = await maxAIRequestBodyAnalysisGenerator(
+            postBody,
+            options.meta.analytics,
+          )
+        }
         const result = await fetch(
           `${APP_USE_CHAT_GPT_API_HOST}/gpt/get_image_generate_response`,
           {
             method: 'POST',
             signal,
-            headers: {
+            headers: backgroundRequestHeaderGenerator.getTaskIdHeader(taskId, {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
-            },
-            body: JSON.stringify({
-              prompt: message_content?.[0]?.text || '',
-              chrome_extension_version: APP_VERSION,
-              model_name:
-                this.conversation?.meta.AIModel ||
-                userConfig!.model ||
-                MAXAI_IMAGE_GENERATE_MODELS[0].value,
-              prompt_id: meta?.contextMenu?.id || 'chat',
-              prompt_name: meta?.contextMenu?.text || 'chat',
-              style: userConfig?.contentType || 'vivid',
-              size:
-                userConfig?.resolution?.length === 2
-                  ? `${userConfig.resolution[0]}x${userConfig.resolution[1]}`
-                  : `1024x1024`,
-              n: userConfig?.generateCount || 1,
             }),
+            body: JSON.stringify(postBody),
           },
         ).then((res) => res.json())
         if (result.status === 'OK' && result.data?.length) {

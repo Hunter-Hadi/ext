@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "Bergabunglah dengan 1 juta+ profesional yang meningkatkan produktivitas mereka dengan MaxAI.",
     "permission__pricing_modal__footer__title": "Lihat semua paket.",
     "permission__pricing_modal__cta_button__title": "Tingkatkan sekarang",
-    "permission__pricing_modal__discount__title": "Simpan 53%"
+    "permission__pricing_modal__discount__title": "Simpan 53%",
+    "home_view__chat__title": "Obrolan AI",
+    "home_view__chat__description": "Penelitian 10x lebih cepat dengan mengobrol dengan GPT-4o, Claude 3, Gemini 1.5, dan lainnya.",
+    "home_view__sample_prompt__explore_more": "Jelajahi perpustakaan AI prompt",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Dapatkan jawaban instan dengan akses web secara real-time, pengetahuan, dan kutipan dengan Claude.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dapatkan jawaban instan dengan akses web secara real-time, pengetahuan, dan kutipan dengan ChatGPT."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

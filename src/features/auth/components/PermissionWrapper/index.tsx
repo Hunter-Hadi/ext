@@ -12,6 +12,7 @@ import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import { IPaywallVariant } from '@/features/abTester/types'
 import { useAuthLogin, usePermissionCard } from '@/features/auth'
 import {
   PermissionWrapperCardSceneType,
@@ -39,6 +40,7 @@ export interface PermissionWrapperProps {
   children: React.ReactNode
   TooltipProps?: Omit<TextOnlyTooltipProps, 'title' | 'children'>
   BoxProps?: BoxProps
+  paywallVariant?: IPaywallVariant
 }
 
 const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
@@ -49,6 +51,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
     BoxProps,
     TooltipProps,
     children,
+    paywallVariant,
   } = props
   const permissionCard = usePermissionCard(sceneType)!
   const [modifyPermissionCard, setModifyPermissionCard] = useState<
@@ -64,6 +67,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
   const { isLogin } = useAuthLogin()
   const [open, setOpen] = useState(false)
   const idRef = useRef(uuidV4())
+
   useEffect(() => {
     const listener = (event: any) => {
       if (event.detail.id === idRef.current) return
@@ -95,6 +99,39 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
   if (hasPermissionMemo) {
     return <>{children}</>
   }
+
+  if (paywallVariant === '2-2') {
+    return (
+      <Box {...BoxProps}>
+        <Box>
+          {React.Children.map(children, (child) => {
+            // modify child props
+            if (React.isValidElement(child)) {
+              const newProps = {
+                ...child.props,
+                ...(child.props.onClick && {
+                  onClick: async (event: any) => {
+                    event?.stopPropagation?.()
+                    event?.preventDefault?.()
+                    window.postMessage({
+                      event: 'MAX_AI_PRICING_MODAL',
+                      type: 'show',
+                      data: {
+                        permissionSceneType: memoizedPermissionCard.sceneType,
+                      },
+                    })
+                  },
+                }),
+              }
+              return React.cloneElement(child, newProps)
+            }
+            return child
+          })}
+        </Box>
+      </Box>
+    )
+  }
+
   return (
     <TextOnlyTooltip
       arrow

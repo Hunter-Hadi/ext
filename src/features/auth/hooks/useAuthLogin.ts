@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
+import { getAccessToken } from '@/background/api/backgroundFetch'
 import { AuthState } from '@/features/auth/store'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import { AppState } from '@/store'
-import { getAccessToken } from '@/utils/request'
 
 export const useAuthLogin = () => {
   const [appState] = useRecoilState(AppState)

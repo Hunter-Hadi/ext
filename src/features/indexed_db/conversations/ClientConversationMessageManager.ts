@@ -99,7 +99,6 @@ export class ClientConversationMessageManager {
           },
           {
             syncConversationToDB: true,
-            waitSync: true,
           },
         )
       }
@@ -215,7 +214,9 @@ export class ClientConversationMessageManager {
         conversationId,
         saveMessages.map((item) => item.messageId),
       )
-      this.asyncUploadConversationLastMessageId(conversationId).then().catch()
+      await this.asyncUploadConversationLastMessageId(conversationId)
+        .then()
+        .catch()
       clientUploadMessagesToRemote(conversationId, saveMessages).then().catch()
       console.log(`ConversationDB[V3] 添加消息`, result)
       return result
@@ -264,7 +265,9 @@ export class ClientConversationMessageManager {
         changedMessageIds,
       )
       if (notifyChange) {
-        this.asyncUploadConversationLastMessageId(conversationId).then().catch()
+        await this.asyncUploadConversationLastMessageId(conversationId)
+          .then()
+          .catch()
       }
       const updatedMessages = await this.getMessagesByMessageIds(
         changedMessageIds,
@@ -327,7 +330,9 @@ export class ClientConversationMessageManager {
           .then()
           .catch()
       }
-      this.asyncUploadConversationLastMessageId(conversationId).then().catch()
+      await this.asyncUploadConversationLastMessageId(conversationId)
+        .then()
+        .catch()
       console.log(`ConversationDB[V3] 更新消息`, updateResult)
       return true
     } catch (e) {
@@ -352,7 +357,9 @@ export class ClientConversationMessageManager {
       })
       this.notifyConversationMessageChange('delete', conversationId, messageIds)
       clientDeleteMessagesToRemote(conversationId, messageIds).then().catch()
-      this.asyncUploadConversationLastMessageId(conversationId).then().catch()
+      await this.asyncUploadConversationLastMessageId(conversationId)
+        .then()
+        .catch()
       return result
     } catch (e) {
       console.log(`ConversationDB[V3] 删除消息失败`, e)

@@ -892,7 +892,12 @@
     "permission__pricing_modal__cta_button__footer__title": "MaxAI ile üretkenliklerini artıran 1M+ profesyonelin arasına katılın.",
     "permission__pricing_modal__footer__title": "Tüm planları görüntüleyin.",
     "permission__pricing_modal__cta_button__title": "Şimdi yükselt",
-    "permission__pricing_modal__discount__title": "Yüzde 53 tasarruf edin"
+    "permission__pricing_modal__discount__title": "Yüzde 53 tasarruf edin",
+    "home_view__chat__title": "AI sohbeti",
+    "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 ve daha fazlasıyla sohbet ederek 10 kat daha hızlı araştırma yapın.",
+    "home_view__sample_prompt__explore_more": "AI prompt kütüphanesini keşfedin",
+    "permission__pricing_hook__search_with_ai_claude__modal__description": "Claude ile gerçek zamanlı web erişimi, bilgi ve alıntılarla anında cevaplar alın.",
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT ile gerçek zamanlı web erişimi, bilgi ve alıntılarla anında cevaplar alın."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

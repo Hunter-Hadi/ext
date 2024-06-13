@@ -139,8 +139,10 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {
           const conversationId = question.conversationId
-
+          const TODO = true
+          // NOTE: 先不上线单独调用citation的接口，等待后续的需求
           if (
+            !TODO &&
             done &&
             backendAPI === 'get_summarize_response' &&
             data.text &&

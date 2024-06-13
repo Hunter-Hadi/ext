@@ -41,9 +41,11 @@ const createConversationListData = memoize(
   (
     items: IPaginationConversation[],
     onSelectItem?: (conversation?: IPaginationConversation) => void,
+    isNextPageLoading?: boolean,
   ) => ({
     items,
     onSelectItem,
+    isNextPageLoading,
   }),
 )
 
@@ -83,6 +85,7 @@ const InfiniteConversationList: <T>(
   const itemData = createConversationListData(
     conversations,
     handleSelectItemOrLoadMore,
+    isNextPageLoading,
   )
   return (
     <InfiniteFixedSizeLoader
@@ -124,12 +127,13 @@ const Row = memo(function RowItem({
   data: {
     items: IPaginationConversation[]
     onSelectItem?: (conversation?: IPaginationConversation) => void
+    isNextPageLoading?: boolean
   }
   index: number
   style: React.CSSProperties
 }) {
   // Data passed to List as "itemData" is available as props.data
-  const { items, onSelectItem } = data
+  const { items, onSelectItem, isNextPageLoading } = data
   const [isHover, setIsHover] = useState(false)
   const [editingConversationId, setEditingConversationId] = useState('')
   const {
@@ -218,17 +222,17 @@ const Row = memo(function RowItem({
     onSelectItem?.(conversation)
   }, [conversation, onSelectItem, smoothConversationLoading])
   useEffect(() => {
-    if (!conversation) {
+    if (!conversation && !isNextPageLoading) {
       // 说明是loading
       const timer = setTimeout(() => {
-        // 10s后还没有加载出来，说明有问题
+        // 如果已经加载完毕，但是还显示loading，说明有问题
         onSelectItem?.(undefined)
-      }, 10 * 1000)
+      }, 1000)
       return () => {
         clearTimeout(timer)
       }
     }
-  }, [conversation, onSelectItem])
+  }, [conversation, onSelectItem, isNextPageLoading])
   if (!conversation) {
     return (
       <Stack
@@ -329,7 +333,7 @@ const Row = memo(function RowItem({
                     ? 'Context menu'
                     : conversation.type
                 }
-                size="small"
+                size='small'
               />
               <Typography
                 noWrap

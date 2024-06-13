@@ -3,7 +3,7 @@ import Browser from 'webextension-polyfill'
 
 import BackgroundAbortFetch from '@/background/api/BackgroundAbortFetch'
 import { backgroundPost } from '@/background/api/backgroundFetch'
-import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
   createDaemonProcessTab,
@@ -27,6 +27,7 @@ import {
   isSettingsLastModifiedEqual,
 } from '@/background/utils/syncSettings'
 import {
+  APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
@@ -311,7 +312,7 @@ export const ClientMessageInit = () => {
         case 'Client_logCallApiRequest':
           {
             const requestId = uuidV4()
-            await backgroundRequestHeaderGenerator.addTaskIdHeader(
+            await backgroundRequestHeadersGenerator.addTaskIdHeaders(
               requestId,
               sender,
             )
@@ -480,15 +481,18 @@ export const ClientMessageInit = () => {
             const { url, options, abortTaskId } = data
             const { parse = 'json', ...parseOptions } = options
             const requestId = uuidV4()
-            await backgroundRequestHeaderGenerator.addTaskIdHeader(
-              requestId,
-              sender,
-            )
+            // 只有MaxAI的api才会添加taskId
+            if (url.startsWith(APP_USE_CHAT_GPT_API_HOST)) {
+              await backgroundRequestHeadersGenerator.addTaskIdHeaders(
+                requestId,
+                sender,
+              )
+            }
             const result = await BackgroundAbortFetch.fetch(
               url,
               {
                 ...parseOptions,
-                headers: backgroundRequestHeaderGenerator.getTaskIdHeader(
+                headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(
                   requestId,
                   parseOptions.headers,
                 ),
@@ -769,9 +773,15 @@ export const ClientMessageInit = () => {
           }
         }
         case 'Client_updateMaxAISurveyStatus': {
+          const requestId = uuidV4()
+          await backgroundRequestHeadersGenerator.addTaskIdHeaders(
+            requestId,
+            sender,
+          )
           const result = await updateSurveyStatusInBackground(
             data.forceUpdate,
             data.surveyKeys,
+            requestId,
           )
           return {
             success: true,

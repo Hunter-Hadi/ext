@@ -374,10 +374,10 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
           saveData.arkoseToken = arkoseToken
         }
         const proofToken = chatRequirementsResult?.data?.proofofwork?.required
-          ? await calcProofToken(
-              chatRequirementsResult.data.proofofwork?.seed,
-              chatRequirementsResult.data.proofofwork?.difficulty,
-            )
+          ? `gAAAAAB${await calcProofToken(
+              chatRequirementsResult.data.proofofwork.seed,
+              chatRequirementsResult.data.proofofwork.difficulty,
+            )}`
           : ''
         if (proofToken) {
           saveData.proofToken = proofToken

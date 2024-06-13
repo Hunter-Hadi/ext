@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
 import { getAccessToken } from '@/background/api/backgroundFetch'
-import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import { IAIProviderType } from '@/background/provider/chat'
 import ConversationManager from '@/background/src/chatConversations'
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
@@ -124,7 +124,7 @@ export const logAndConfirmDailyUsageLimit = async (
         body: JSON.stringify({
           info_object: text,
         }),
-        headers: backgroundRequestHeaderGenerator.getTaskIdHeader(requestId, {
+        headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(requestId, {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
           fp: `${fingerprint}`,

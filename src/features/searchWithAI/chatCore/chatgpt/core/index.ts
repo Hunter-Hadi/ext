@@ -2,6 +2,7 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import { CHATGPT_WEBAPP_HOST } from '@/constants'
+import { getOpenAIDeviceId } from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 import {
   getSearchWithAISettings,
@@ -152,7 +153,7 @@ export interface IChatGPTDaemonProcess {
   removeCacheConversation: () => Promise<void>
 }
 
-const CHAT_GPT_PROXY_HOST = `https://chat.openai.com`
+const CHAT_GPT_PROXY_HOST = `https://chatgpt.com`
 const CHAT_TITLE = 'MaxAI.me - Search With AI'
 
 const chatGptRequest = (
@@ -385,6 +386,9 @@ export class ChatGPTConversation {
       method: 'POST',
       signal: params.signal,
       headers: {
+        accept: 'text/event-stream',
+        'Oai-Device-Id': await getOpenAIDeviceId(),
+        'Oai-Language': 'en-US',
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
         ...(proofToken ? { 'Openai-Sentinel-Proof-Token': proofToken } : {}),

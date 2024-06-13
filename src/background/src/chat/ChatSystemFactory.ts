@@ -1,6 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { backgroundRequestHeaderGenerator } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import {
   BardChatProvider,
   BingChatProvider,
@@ -189,7 +189,7 @@ export default class ChatSystemFactory {
           }
           case 'Client_askChatGPTQuestion': {
             const { taskId, question } = data
-            await backgroundRequestHeaderGenerator.addTaskIdHeader(
+            await backgroundRequestHeadersGenerator.addTaskIdHeaders(
               taskId,
               sender,
             )

@@ -1,4 +1,5 @@
 import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
 
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import { IChatGPTModelType, IChatGPTPluginType } from '@/background/utils'
@@ -86,11 +87,13 @@ export interface IChatGPTConversation {
   id: string
   conversationId?: string
 }
-function getDeviceId() {
-  let value = localStorage.getItem('oai_device_id')
+async function getOpenAIDeviceId() {
+  let value = (await Browser.storage.local.get('oai_device_id'))?.[
+    'oai_device_id'
+  ]
   if (!value) {
     value = uuidV4()
-    localStorage.setItem('oai_device_id', value)
+    await Browser.storage.local.set({ oai_device_id: value })
   }
   return value
 }
@@ -557,9 +560,9 @@ export class ChatGPTConversation {
       method: 'POST',
       signal: params.signal,
       headers: {
-        accept: 'text/event-stream',
         'Content-Type': 'application/json',
-        'Oai-Device-Id': getDeviceId(),
+        accept: 'text/event-stream',
+        'Oai-Device-Id': await getOpenAIDeviceId(),
         'Oai-Language': 'en-US',
         Authorization: `Bearer ${this.token}`,
         ...(arkoseToken

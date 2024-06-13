@@ -5,7 +5,7 @@
 import orderBy from 'lodash-es/orderBy'
 import { v4 as uuidV4 } from 'uuid'
 
-import { backgroundGetCurrentDomainHost } from '@/background/api/backgroundRequestHeaderGenerator'
+import { backgroundGetCurrentDomainHost } from '@/background/api/backgroundRequestHeadersGenerator'
 import ConversationManager from '@/background/src/chatConversations'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {

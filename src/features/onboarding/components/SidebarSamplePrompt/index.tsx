@@ -1,5 +1,8 @@
+import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
+import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import shuffle from 'lodash-es/shuffle'
 import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -10,6 +13,7 @@ import { SAMPLE_PROMPT_POOL } from '@/features/onboarding/constants/sample_promp
 import usePromptLibraryCardDetail from '@/features/prompt_library/hooks/usePromptLibraryCardDetail'
 import { promptLibraryCardDetailDataToActions } from '@/features/shortcuts/utils/promptInterpreter'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useChatBoxStyles } from '@/hooks/useChatBoxWidth'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 //从 SAMPLE_PROMPT_POOL 随机 几个 sample prompt
@@ -25,7 +29,11 @@ interface ISidebarSamplePromptPrompt {
 const SidebarSamplePrompt: FC<ISidebarSamplePromptPrompt> = ({
   isSettingVariables,
 }) => {
-  const { t } = useTranslation('client')
+  const { t } = useTranslation(['client'])
+  const theme = useTheme()
+
+  const isDownMdWithWidow = useMediaQuery(theme.breakpoints.down('md')) // 窗口宽度小于 1024 时为 true
+
   const { currentSidebarConversationType, updateSidebarConversationType } =
     useSidebarSettings()
   const { askAIWIthShortcuts, shortCutsEngine } = useClientChat()
@@ -35,14 +43,43 @@ const SidebarSamplePrompt: FC<ISidebarSamplePromptPrompt> = ({
   const [selectSamplePromptId, setSelectSamplePromptId] =
     React.useState<string>('')
 
+  const { visibleWidth: sidebarWidth } = useChatBoxStyles()
+
   const isInMaxAIImmersiveChat = isMaxAIImmersiveChatPage()
+
+  const samplePromptItemXs = useMemo(() => {
+    if (isInMaxAIImmersiveChat) {
+      // 在 maxai immersive chat 页面，直接使用 窗口宽度的 breakpoint
+      return isDownMdWithWidow ? 12 : 3
+    } else {
+      // 不在 maxai immersive chat 页面时，需要计算 sidebarWidth
+      const themeBreakpoints = theme.breakpoints.values
+      return sidebarWidth < themeBreakpoints.md ? 12 : 3
+    }
+  }, [
+    isInMaxAIImmersiveChat,
+    sidebarWidth,
+    isDownMdWithWidow,
+    theme.breakpoints.values,
+  ])
+
+  const samplePromptLineClamp = useMemo(() => {
+    return samplePromptItemXs >= 12 ? 1 : 2
+  }, [samplePromptItemXs])
 
   const { data, isFetching } = usePromptLibraryCardDetail(
     selectSamplePromptId,
     'public',
   )
 
+  const showExploreMore = useMemo(() => {
+    return !isSettingVariables && !selectSamplePromptId
+  }, [isSettingVariables, selectSamplePromptId])
+
   const handleExploreMore = () => {
+    if (isFetching) {
+      return
+    }
     // 找到 prompt library btn, 模拟点击
     const timer = setInterval(() => {
       const promptLibraryBtn = getMaxAISidebarRootElement()?.querySelector(
@@ -75,8 +112,8 @@ const SidebarSamplePrompt: FC<ISidebarSamplePromptPrompt> = ({
     return null
   }
   return (
-    <Stack spacing={1.5} px={1.5} pt={1.5} pb={3} width='100%'>
-      {!isSettingVariables && (
+    <Stack spacing={1.5} px={1.5} pt={2} pb={3} width='100%'>
+      {showExploreMore && (
         <Typography
           fontSize={14}
           lineHeight={1.5}
@@ -85,28 +122,28 @@ const SidebarSamplePrompt: FC<ISidebarSamplePromptPrompt> = ({
             width: 'max-content',
             mx: 'auto !important',
             cursor: 'pointer',
-            color: 'text.primary',
+            color: isFetching ? 'text.disabled' : 'text.primary',
           }}
           onClick={handleExploreMore}
         >
           {t('client:home_view__sample_prompt__explore_more')}
         </Typography>
       )}
-      <Stack
-        direction={isInMaxAIImmersiveChat ? 'row' : 'column'}
-        spacing={1.5}
-        sx={[isInMaxAIImmersiveChat ? {} : {}]}
-      >
-        {samplePromptList.map((samplePrompt, index) => (
-          <SamplePromptItem
-            key={samplePrompt.id}
-            id={samplePrompt.id}
-            title={samplePrompt.title}
-            disabled={isFetching}
-            onClick={setSelectSamplePromptId}
-            order={index + 1}
-          />
-        ))}
+      <Stack>
+        <Grid container spacing={1.5}>
+          {samplePromptList.map((samplePrompt, index) => (
+            <Grid key={samplePrompt.id} item xs={samplePromptItemXs}>
+              <SamplePromptItem
+                id={samplePrompt.id}
+                title={samplePrompt.title}
+                disabled={isFetching}
+                onClick={setSelectSamplePromptId}
+                order={index + 1}
+                showLineClamp={samplePromptLineClamp}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Stack>
     </Stack>
   )

@@ -182,6 +182,28 @@ class MaxAIDALLEChat extends BaseChat {
             })
         }
       } else {
+        let postBody = {
+          prompt: message_content?.[0]?.text || '',
+          chrome_extension_version: APP_VERSION,
+          model_name:
+            this.conversation?.meta.AIModel ||
+            userConfig!.model ||
+            MAXAI_IMAGE_GENERATE_MODELS[0].value,
+          prompt_id: meta?.contextMenu?.id || 'chat',
+          prompt_name: meta?.contextMenu?.text || 'chat',
+          style: userConfig?.contentType || 'vivid',
+          size:
+            userConfig?.resolution?.length === 2
+              ? `${userConfig.resolution[0]}x${userConfig.resolution[1]}`
+              : `1024x1024`,
+          n: userConfig?.generateCount || 1,
+        }
+        if (options?.meta?.analytics) {
+          postBody = await maxAIRequestBodyAnalysisGenerator(
+            postBody,
+            options.meta.analytics,
+          )
+        }
         const result = await fetch(
           `${APP_USE_CHAT_GPT_API_HOST}/gpt/get_image_generate_response`,
           {
@@ -191,22 +213,7 @@ class MaxAIDALLEChat extends BaseChat {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
             }),
-            body: JSON.stringify({
-              prompt: message_content?.[0]?.text || '',
-              chrome_extension_version: APP_VERSION,
-              model_name:
-                this.conversation?.meta.AIModel ||
-                userConfig!.model ||
-                MAXAI_IMAGE_GENERATE_MODELS[0].value,
-              prompt_id: meta?.contextMenu?.id || 'chat',
-              prompt_name: meta?.contextMenu?.text || 'chat',
-              style: userConfig?.contentType || 'vivid',
-              size:
-                userConfig?.resolution?.length === 2
-                  ? `${userConfig.resolution[0]}x${userConfig.resolution[1]}`
-                  : `1024x1024`,
-              n: userConfig?.generateCount || 1,
-            }),
+            body: JSON.stringify(postBody),
           },
         ).then((res) => res.json())
         if (result.status === 'OK' && result.data?.length) {

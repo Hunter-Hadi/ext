@@ -227,6 +227,7 @@ const preprocessLaTeX = (content: string) => {
 /**
  * 处理citation
  * 目前这版后端值返回citations的信息，不会在内容里插入对应的引文，所以这里先处理一下，添加到最后
+ * chat_with_document/v2接口新增返回
  * @param content
  */
 const formatCitation = (citations: IAIResponseSourceCitation[]) => {
@@ -240,9 +241,10 @@ const formatCitation = (citations: IAIResponseSourceCitation[]) => {
 
 const CustomMarkdown: FC<{
   citations?: IAIResponseSourceCitation[]
+  isComplete?: boolean
   children: string
 }> = (props) => {
-  const { children } = props
+  const { isComplete, children } = props
 
   // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号，目前只针对PDF显示
   const citations = useMemo(() => {
@@ -260,7 +262,7 @@ const CustomMarkdown: FC<{
   const formatMarkdownText = useMemo(() => {
     try {
       if (typeof children === 'string') {
-        if (citations?.length && !children.includes('[T0]')) {
+        if (citations?.length && !children.includes('[T0]') && isComplete) {
           return preprocessLaTeX(children) + ' ' + formatCitation(citations)
         }
         return preprocessLaTeX(children)
@@ -269,7 +271,7 @@ const CustomMarkdown: FC<{
     } catch (e) {
       return children
     }
-  }, [citations, children])
+  }, [citations, isComplete, children])
   return useMemo(
     () => (
       <>

@@ -451,6 +451,7 @@ export class ActionAskChatGPT extends Action {
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
               this.log.info('message', message)
+              console.log(1111, 'message', message)
               this.answer = {
                 messageId: (message.messageId as string) || uuidV4(),
                 parentMessageId:
@@ -462,18 +463,22 @@ export class ActionAskChatGPT extends Action {
               if (message.conversationId) {
                 AIConversationId = message.conversationId
               }
-              if (message.sourceCitations?.length) {
-                this.answer.originalMessage = {
-                  ...this.answer.originalMessage,
-                  // 这个字段代表本条消息不是rich message
-                  // 目前sourceCitations只会在chat的时候输出
-                  // 如果后续要在outputMessage里添加sourceCitations要额外处理
-                  liteMode: true,
-                  metadata: {
-                    ...this.answer.originalMessage?.metadata,
-                    sourceCitations: message.sourceCitations,
-                  },
-                }
+              // if (message.sourceCitations?.length) {
+              //   this.answer.originalMessage = {
+              //     ...this.answer.originalMessage,
+              //     // 这个字段代表本条消息不是rich message
+              //     // 目前sourceCitations只会在chat的时候输出
+              //     // 如果后续要在outputMessage里添加sourceCitations要额外处理
+              //     liteMode: true,
+              //     metadata: {
+              //       ...this.answer.originalMessage?.metadata,
+              //       sourceCitations: message.sourceCitations,
+              //     },
+              //   }
+              // }
+              if (message.originalMessage?.metadata?.sourceCitations) {
+                // TODO 后续会去掉liteMode，渲染的时候以有无对应属性去显示组件
+                message.originalMessage.liteMode = true
               }
               this.output = this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
@@ -488,11 +493,11 @@ export class ActionAskChatGPT extends Action {
                     [
                       {
                         key: outputMessageId || '',
-                        changes: {
-                          'originalMessage.content.text': message.text,
-                          'originalMessage.metadata.sourceCitations':
-                            message.sourceCitations,
-                        } as any,
+                        changes: message.originalMessage
+                          ? { originalMessage: message.originalMessage }
+                          : ({
+                              'originalMessage.content.text': message.text,
+                            } as any),
                       },
                     ],
                     {
@@ -506,9 +511,11 @@ export class ActionAskChatGPT extends Action {
                     [
                       {
                         key: outputMessageId || '',
-                        changes: {
-                          text: outputMessage.text + '\n\n' + message.text,
-                        },
+                        changes: message.originalMessage
+                          ? { originalMessage: message.originalMessage }
+                          : {
+                              text: outputMessage.text + '\n\n' + message.text,
+                            },
                       },
                     ],
                     {

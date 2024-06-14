@@ -174,7 +174,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             )}
             {renderData.sources && renderData.sourcesHasContent && (
               <Stack spacing={1}>
-                <Stack direction={'row'} alignItems="center" spacing={1}>
+                <Stack direction={'row'} alignItems='center' spacing={1}>
                   {renderData.sourcesLoading &&
                   !renderData.messageIsComplete ? (
                     <CircularProgress size={18} />
@@ -205,7 +205,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               renderData.content.title?.title !== 'noneShowContent' && (
                 <Stack>
                   {!renderData.messageIsComplete ? (
-                    <Stack direction={'row'} alignItems="center" spacing={1}>
+                    <Stack direction={'row'} alignItems='center' spacing={1}>
                       <CircularProgress size={18} />
                       <Typography
                         sx={{
@@ -220,7 +220,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                       </Typography>
                     </Stack>
                   ) : (
-                    <Stack direction={'row'} alignItems="center" spacing={1}>
+                    <Stack direction={'row'} alignItems='center' spacing={1}>
                       {renderData.content.title?.titleIcon ? (
                         <Stack
                           alignItems={'center'}
@@ -275,17 +275,30 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             )}
           </Stack>
         ) : (
-          <div
-            className={`markdown-body ${
-              isDarkMode ? 'markdown-body-dark' : ''
-            }`}
-          >
-            <AppSuspenseLoadingLayout>
-              <CustomMarkdown citations={renderData.sourceCitations}>
-                {renderData.answer}
-              </CustomMarkdown>
-            </AppSuspenseLoadingLayout>
-          </div>
+          <Stack spacing={2}>
+            <div
+              className={`markdown-body ${
+                isDarkMode ? 'markdown-body-dark' : ''
+              }`}
+            >
+              <AppSuspenseLoadingLayout>
+                <CustomMarkdown
+                  citations={renderData.sourceCitations}
+                  isComplete={renderData.messageIsComplete}
+                >
+                  {renderData.answer}
+                </CustomMarkdown>
+              </AppSuspenseLoadingLayout>
+            </div>
+            {/* lite mode下也显示 */}
+            {renderData.deepDive && (
+              <SidebarAImessageBottomList
+                data={renderData.deepDive}
+                loading={coverLoading}
+                isDarkMode={isDarkMode}
+              />
+            )}
+          </Stack>
         )}
         {!coverLoading ? (
           <SidebarAIMessageTools message={message as IAIResponseMessage} />
@@ -315,7 +328,7 @@ export const MetadataTitleRender: FC<{
   const { title, titleIcon, titleIconSize } = props.title
   const currentTitleIconSize = titleIconSize || 20
   return (
-    <Stack direction={'row'} alignItems="center" spacing={1}>
+    <Stack direction={'row'} alignItems='center' spacing={1}>
       {titleIcon && (
         <Stack
           alignItems={'center'}

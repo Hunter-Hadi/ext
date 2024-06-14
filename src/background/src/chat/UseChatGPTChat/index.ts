@@ -12,6 +12,7 @@ import {
   IMaxAIChatGPTBackendAPIType,
   IMaxAIChatMessageContent,
   IMaxAIRequestHistoryMessage,
+  IMaxAIResponseStreamMessage,
   USE_CHAT_GPT_PLUS_MODELS,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
@@ -26,7 +27,7 @@ import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import {
-  IAIResponseSourceCitation,
+  IAIResponseOriginalMessage,
   IUserMessageMetaType,
 } from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
@@ -104,7 +105,7 @@ class UseChatGPTPlusChat extends BaseChat {
       data: {
         text: string
         conversationId: string
-        sourceCitations?: IAIResponseSourceCitation[]
+        originalMessage?: IAIResponseOriginalMessage
       }
     }) => void,
   ) {
@@ -231,12 +232,16 @@ class UseChatGPTPlusChat extends BaseChat {
     if (taskId) {
       this.taskList[taskId] = () => controller.abort()
     }
+    if (backendAPI === 'chat_with_document') {
+      // 新接口
+      backendAPI = 'chat_with_document/v2'
+    }
     log.info('streaming start', postBody)
     // 后端会每段每段的给前端返回数据
     let messageResult = ''
     let hasError = false
     let conversationId = this.conversation?.id || ''
-    const sourceCitations: IAIResponseSourceCitation[] = []
+    let originalMessage: IAIResponseOriginalMessage | undefined
     let isTokenExpired = false
     if (postBody.streaming) {
       await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
@@ -251,12 +256,113 @@ class UseChatGPTPlusChat extends BaseChat {
         body: JSON.stringify(postBody),
         onMessage: (message: string) => {
           try {
-            const messageData = JSON.parse(message as string)
+            const messageData: IMaxAIResponseStreamMessage | null = JSON.parse(
+              message as string,
+            )
             if (messageData?.conversation_id) {
               conversationId = messageData.conversation_id
             }
-            if (messageData?.text) {
-              messageResult += messageData.text
+            // 增强数据
+            if (messageData?.streaming_status) {
+              if (messageData.text !== undefined) {
+                if (messageData.need_merge) {
+                  messageResult += messageData.text
+                } else {
+                  messageResult = messageData.text
+                }
+                originalMessage = {
+                  ...originalMessage,
+                  content: {
+                    contentType: 'text',
+                    text: messageResult,
+                  },
+                }
+              }
+              if (messageData.citations !== undefined) {
+                switch (messageData.streaming_status) {
+                  case 'start':
+                  case 'in_progress':
+                    // TODO loading状态
+                    originalMessage = {
+                      ...originalMessage,
+                      metadata: {
+                        ...originalMessage?.metadata,
+                        sourceCitations: messageData.citations,
+                      },
+                    }
+                    break
+                  case 'complete':
+                    originalMessage = {
+                      ...originalMessage,
+                      metadata: {
+                        ...originalMessage?.metadata,
+                        sourceCitations: messageData.citations,
+                      },
+                    }
+                    break
+                }
+              }
+              if (messageData.related !== undefined) {
+                switch (messageData.streaming_status) {
+                  case 'start':
+                  case 'in_progress':
+                    // TODO loading状态
+                    originalMessage = {
+                      ...originalMessage,
+                      metadata: {
+                        ...originalMessage?.metadata,
+                        deepDive: {
+                          title: {
+                            title: ' ',
+                            titleIcon: 'Loading',
+                          },
+                          value: '',
+                        },
+                      },
+                    }
+                    break
+                  case 'complete':
+                    originalMessage = {
+                      ...originalMessage,
+                      metadata: {
+                        ...originalMessage?.metadata,
+                        deepDive: {
+                          title: {
+                            title: 'Related',
+                            titleIcon: 'Layers',
+                          },
+                          type: 'related',
+                          value: messageData.related,
+                        },
+                      },
+                    }
+                    break
+                }
+              }
+              onMessage &&
+                onMessage({
+                  type: 'message',
+                  done: false,
+                  error: '',
+                  data: {
+                    text: '',
+                    conversationId,
+                    originalMessage,
+                  },
+                })
+            } else if (messageData?.text || messageData?.sources) {
+              if (messageData.text) {
+                messageResult += messageData.text
+              }
+              if (messageData.sources) {
+                originalMessage = {
+                  ...originalMessage,
+                  metadata: {
+                    ...originalMessage?.metadata,
+                    sourceCitations: messageData.sources,
+                  },
+                }
+              }
               onMessage &&
                 onMessage({
                   type: 'message',
@@ -265,20 +371,7 @@ class UseChatGPTPlusChat extends BaseChat {
                   data: {
                     text: messageResult,
                     conversationId: conversationId,
-                  },
-                })
-            }
-            if (messageData?.sources) {
-              sourceCitations.push(...messageData.sources)
-              onMessage &&
-                onMessage({
-                  type: 'message',
-                  done: false,
-                  error: '',
-                  data: {
-                    text: messageResult,
-                    conversationId,
-                    sourceCitations,
+                    originalMessage,
                   },
                 })
             }
@@ -437,7 +530,7 @@ class UseChatGPTPlusChat extends BaseChat {
           data: {
             text: messageResult,
             conversationId,
-            sourceCitations,
+            originalMessage,
           },
         })
     }

@@ -171,9 +171,12 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 if (bodyTokens > partOfPageSummaryTokensLimit) {
                   this.pageSummaryTaskMap.set(abortTaskId, false)
                   // 确保总结前的长度不超过AI的token限制，后端是16k - 2024-06-14
-                  searchResult.body = (
-                    await sliceTextByTokens(searchResult.body, 8000)
-                  ).text
+                  const sliceSearchResult = await sliceTextByTokens(
+                    searchResult.body,
+                    8000,
+                  )
+                  this.log.info('sliceSearchResult', sliceSearchResult)
+                  searchResult.body = sliceSearchResult.text
                   const summarizeResult = await this.createWebpageSummary(
                     searchResult,
                     summarizePrompt,

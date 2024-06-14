@@ -16,6 +16,7 @@ import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LargeTextBox from '@/components/LargeTextBox'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
+import { MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID } from '@/features/common/constants'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
@@ -71,6 +72,20 @@ const SidebarUserMessageContexts: FC<{
           cancelable: true,
         })
         contextWindowRoot.dispatchEvent(clickEvent)
+
+        // 临时解决在context window下click away失效
+        // 因为ClickAwayListener绑定在了最外层的dom，点击context window阻止了冒泡
+        const contextWindowReference = contextWindowRoot.querySelector(
+          `#${MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}`,
+        )
+        if (contextWindowReference) {
+          const clickListener = () => {
+            setOpen(false)
+          }
+          contextWindowReference.addEventListener('click', clickListener)
+          return () =>
+            contextWindowReference.removeEventListener('click', clickListener)
+        }
       }
     }
   }, [open])
@@ -135,7 +150,7 @@ const SidebarUserMessageContexts: FC<{
                           borderRadius={1}
                           key={attachment.id}
                           border={'1px solid'}
-                          borderColor="customColor.borderColor"
+                          borderColor='customColor.borderColor'
                         >
                           <Typography
                             textAlign={'left'}
@@ -226,7 +241,7 @@ const SidebarUserMessageContexts: FC<{
                             variant={'outlined'}
                             label={context.key}
                             color={'primary'}
-                            size="small"
+                            size='small'
                             sx={{
                               fontSize: '14px',
                               width: 'max-content',
@@ -378,7 +393,7 @@ const SidebarUserMessageContexts: FC<{
                       <Stack
                         key={attachment.id}
                         border={'1px solid'}
-                        borderColor="customColor.borderColor"
+                        borderColor='customColor.borderColor'
                         direction={'row'}
                         gap={1}
                         width={240}

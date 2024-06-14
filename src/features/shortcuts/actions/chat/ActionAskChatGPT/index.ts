@@ -41,6 +41,7 @@ import {
   clientFetchMaxAIAPI,
 } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 // import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
@@ -457,16 +458,27 @@ export class ActionAskChatGPT extends Action {
             )
         }
         try {
+          debugger
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
               this.log.info('message', message)
+              // 从2024-06-14起，AI response的消息会在originalMessage里
               this.answer = {
                 messageId: (message.messageId as string) || uuidV4(),
                 parentMessageId:
                   (message.parentMessageId as string) || uuidV4(),
-                text: (message.text as string) || '',
+                text: '',
                 type: 'ai' as const,
-                originalMessage: message.originalMessage,
+                originalMessage: mergeWithObject([
+                  {
+                    liteMode: message.originalMessage?.liteMode !== true,
+                    content: {
+                      text: message.text,
+                      contentType: 'text',
+                    },
+                  },
+                  message.originalMessage || {},
+                ]),
               }
               if (message.conversationId) {
                 AIConversationId = message.conversationId
@@ -484,7 +496,8 @@ export class ActionAskChatGPT extends Action {
                   },
                 }
               }
-              this.output = this.answer.text
+              this.output =
+                this.answer.originalMessage?.content?.text || this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
               if (outputMessage && this.status === 'running') {
                 // 如果是AI response的消息，并且有originalMessage，则更新originalMessage.content.text
@@ -531,9 +544,7 @@ export class ActionAskChatGPT extends Action {
                 this.status === 'running'
               ) {
                 // 更新客户端的writing message
-                await clientConversationEngine.updateClientWritingMessage(
-                  this.answer,
-                )
+                clientConversationEngine.updateClientWritingMessage(this.answer)
               }
             },
             onError: async (error: any) => {

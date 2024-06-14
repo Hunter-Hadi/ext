@@ -141,7 +141,13 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   useEffect(() => {
     if (messages.length > 0 && conversationId) {
-      setIsShowContinueButton(messages[messages.length - 1].type === 'ai')
+      const lastMessage =
+        new Date(messages[0].updated_at!).getTime() >
+        new Date(messages[messages.length - 1].updated_at!).getTime()
+          ? messages[0]
+          : messages[messages.length - 1]
+
+      setIsShowContinueButton(lastMessage.type === 'ai')
       getLastRunShortcuts(conversationId).then((result) => {
         if (result.lastRunActions.length > 0) {
           setIsShowRegenerateButton(true)

@@ -258,7 +258,7 @@ const AIMessageSuggestionsModelSelector: FC<{
       })
       await askAIWIthShortcuts(lastRunActions, {
         overwriteParameters: lastRunActionsParams,
-        isSaveLastRunShortcuts: false,
+        isSaveLastRunShortcuts: true,
         isOpenSidebarChatBox: false,
       })
     } catch (e) {

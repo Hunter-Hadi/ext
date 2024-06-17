@@ -120,35 +120,6 @@ export class ActionAskChatGPT extends Action {
         text,
       }
       /**
-       * 用户点击的推荐的AI model
-       */
-      const MaxAISuggestionAIModel = params.MAXAI_SUGGESTION_AI_MODEL
-      if (MaxAISuggestionAIModel) {
-        // 正常的聊天，但是用户点了suggest AI model
-        if (!MaxAIPromptActionConfig) {
-          // 设置成Freestyle的MaxAI prompt action
-          MaxAIPromptActionConfig = {
-            promptId: CHAT__AI_MODEL__SUGGESTION__PROMPT_ID,
-            promptName: '[Chat] freestyle ',
-            promptActionType: 'chat_complete',
-            variables: [
-              {
-                ...VARIABLE_SELECTED_TEXT,
-                defaultValue: this.question.text,
-              },
-              VARIABLE_AI_RESPONSE_LANGUAGE,
-              VARIABLE_AI_RESPONSE_WRITING_STYLE,
-              VARIABLE_AI_RESPONSE_TONE,
-            ],
-            output: [OUTPUT_CHAT_COMPLETE],
-          }
-        } else {
-          // 如果是MaxAI prompt action，需要设置AIModel
-          MaxAIPromptActionConfig.AIModel = MaxAISuggestionAIModel
-        }
-      }
-
-      /**
        * 因为会被parametersParserDecorator处理，所以这里要把attachmentExtractedContents的值转换成string
        */
       if (this.question.extendContent?.attachmentExtractedContents) {
@@ -221,6 +192,36 @@ export class ActionAskChatGPT extends Action {
           questionPrompt,
         )
       }
+      // question设置完之后，再来设置MaxAIPromptActionConfig
+      /**
+       * 用户点击的推荐的AI model
+       */
+      const MaxAISuggestionAIModel = params.MAXAI_SUGGESTION_AI_MODEL
+      if (MaxAISuggestionAIModel) {
+        // 正常的聊天，但是用户点了suggest AI model
+        if (!MaxAIPromptActionConfig) {
+          // 设置成Freestyle的MaxAI prompt action
+          MaxAIPromptActionConfig = {
+            promptId: CHAT__AI_MODEL__SUGGESTION__PROMPT_ID,
+            promptName: '[Chat] AI model suggestion ',
+            promptActionType: 'chat_complete',
+            variables: [
+              {
+                ...VARIABLE_SELECTED_TEXT,
+                defaultValue: this.question.text,
+              },
+              VARIABLE_AI_RESPONSE_LANGUAGE,
+              VARIABLE_AI_RESPONSE_WRITING_STYLE,
+              VARIABLE_AI_RESPONSE_TONE,
+            ],
+            output: [OUTPUT_CHAT_COMPLETE],
+            AIModel: MaxAISuggestionAIModel,
+          }
+        } else {
+          // 如果是MaxAI prompt action，需要设置AIModel
+          MaxAIPromptActionConfig.AIModel = MaxAISuggestionAIModel
+        }
+      }
       const conversation =
         (await clientConversationEngine?.getCurrentConversation()) || null
       const AIModel = conversation?.meta?.AIModel
@@ -230,11 +231,18 @@ export class ActionAskChatGPT extends Action {
         // 更新variables和output的值
         MaxAIPromptActionConfig.variables =
           MaxAIPromptActionConfig.variables.map((variable) => {
+            const originDefaultValue = variable.defaultValue
             variable.defaultValue = lodashGet(
               params,
               variable.VariableName,
               variable.defaultValue || '',
             )
+            // 如果VariableName在params里面没有找到对应的值，但是有默认值，需要把默认值设置到variable上
+            // 例如: defaultValue: '123', 此时variable.defaultValue会被lodashGet设置为''
+            // 所以需要把默认值设置到variable上
+            if (originDefaultValue && !variable.defaultValue) {
+              variable.defaultValue = originDefaultValue
+            }
             // 如果是AI response language相关的变量，需要把默认值设置为空
             if (
               variable.VariableName === 'AI_RESPONSE_WRITING_STYLE' ||
@@ -248,11 +256,18 @@ export class ActionAskChatGPT extends Action {
           })
         MaxAIPromptActionConfig.output = MaxAIPromptActionConfig.output.map(
           (variable) => {
+            const originDefaultValue = variable.defaultValue
             variable.defaultValue = lodashGet(
               params,
               variable.VariableName,
               variable.defaultValue || '',
             )
+            // 如果VariableName在params里面没有找到对应的值，但是有默认值，需要把默认值设置到variable上
+            // 例如: defaultValue: '123', 此时variable.defaultValue会被lodashGet设置为''
+            // 所以需要把默认值设置到variable上
+            if (originDefaultValue && !variable.defaultValue) {
+              variable.defaultValue = originDefaultValue
+            }
             return variable
           },
         )

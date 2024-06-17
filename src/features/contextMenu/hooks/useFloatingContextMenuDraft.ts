@@ -11,15 +11,24 @@ import {
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import {
   IAIResponseMessage,
+  ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/indexed_db/conversations/models/Message'
+
+type HistoryMessage = (IAIResponseMessage | ISystemChatMessage) & {
+  // 本条消息对应的draft message
+  selectedDraftMessage?: IUserChatMessage | null
+}
 
 /**
  * AI持续生成的草稿和用户选择的答案
  * @description - 因为AI的regenerate会删除消息，所以需要一个历史消息记录去让用户选择需要的AI response
  */
 const FloatingContextMenuDraftHistoryState = atomFamily<
-  { activeIndex: number; historyMessages: IAIResponseMessage[] },
+  {
+    activeIndex: number
+    historyMessages: HistoryMessage[]
+  },
   string
 >({
   key: 'FloatingContextMenuDraftHistoryState',
@@ -43,20 +52,31 @@ const useFloatingContextMenuDraftHistoryChange = () => {
     FloatingContextMenuDraftHistoryState(currentConversationId || ''),
   )
   useEffect(() => {
-    // 目前context window里只显示ai/付费卡点/错误消息
-    const newMessages = clientConversationMessages.filter(
-      (item) =>
-        isAIMessage(item) ||
-        isSystemMessageByType(item, 'needUpgrade') ||
-        isSystemMessageByStatus(item, 'error'),
-    ) as IAIResponseMessage[]
-    console.log('clientConversationMessages', clientConversationMessages)
+    const newMessagesMap: Record<string, HistoryMessage> = {}
+    const newMessages = clientConversationMessages
+      .map((message, index) => {
+        // 目前context window里只显示ai/付费卡点/错误消息
+        if (isAIMessage(message)) {
+          const prevMessage = clientConversationMessages[index - 1]
+          const selectedDraftMessage =
+            prevMessage && isUserMessage(prevMessage) ? prevMessage : null
+          return (newMessagesMap[message.messageId] = {
+            ...message,
+            selectedDraftMessage,
+          })
+        } else if (
+          isSystemMessageByType(message, 'needUpgrade') ||
+          isSystemMessageByStatus(message, 'error')
+        ) {
+          return (newMessagesMap[message.messageId] = {
+            ...message,
+          } as HistoryMessage)
+        }
+        return null
+      })
+      .filter(Boolean) as HistoryMessage[]
     setHistoryState((prev) => {
       // 找得到messageId的更新，找不到的添加
-      const newMessagesMap = newMessages.reduce((messageMap, message) => {
-        messageMap[message.messageId] = message
-        return messageMap
-      }, {} as Record<string, IAIResponseMessage>)
       const oldHistory = prev.historyMessages.map((message) => {
         if (newMessagesMap[message.messageId]) {
           return newMessagesMap[message.messageId]
@@ -80,11 +100,8 @@ const useFloatingContextMenuDraftHistoryChange = () => {
 }
 
 const useFloatingContextMenuDraft = () => {
-  const {
-    clientWritingMessage,
-    clientConversationMessages,
-    currentConversationId,
-  } = useClientConversation()
+  const { clientWritingMessage, currentConversationId } =
+    useClientConversation()
   const [historyState, setHistoryState] = useRecoilState(
     FloatingContextMenuDraftHistoryState(currentConversationId || ''),
   )
@@ -131,35 +148,6 @@ const useFloatingContextMenuDraft = () => {
     activeMessageIndex,
   ])
 
-  /**
-   * 当前的draft对应的用户消息
-   */
-  const selectedDraftUserMessage = useMemo(() => {
-    // if (!activeAIResponseMessage) {
-    //   return null
-    // }
-    // const activeAIResponseMessageIndex = clientConversationMessages.findIndex(
-    //   (message) => message.messageId === activeAIResponseMessage?.messageId,
-    // )
-    // if (activeAIResponseMessageIndex === -1) {
-    //   return null
-    // }
-    if (
-      activeAIResponseMessage &&
-      isSystemMessageByStatus(activeAIResponseMessage, 'error')
-    ) {
-      return null
-    }
-    //从后往前找到用户的消息
-    for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
-      const message = clientConversationMessages[i]
-      if (isUserMessage(message)) {
-        return message as IUserChatMessage
-      }
-    }
-    return null
-  }, [activeAIResponseMessage, clientConversationMessages])
-
   const goToNextMessage = () => {
     setHistoryState((prev) => ({
       ...prev,
@@ -183,7 +171,7 @@ const useFloatingContextMenuDraft = () => {
 
   return {
     floatingContextMenuDraftMessageIdRef,
-    selectedDraftUserMessage,
+    selectedDraftUserMessage: activeAIResponseMessage?.selectedDraftMessage,
     activeAIResponseMessage,
     historyMessages,
     currentFloatingContextMenuDraft,

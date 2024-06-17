@@ -167,9 +167,16 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                   // 如果abort, 返回 fallbackData
                   return fallbackData
                 }
+                // 网页内容的长度超过了每次总结的长度，需要进行总结
                 if (bodyTokens > partOfPageSummaryTokensLimit) {
                   this.pageSummaryTaskMap.set(abortTaskId, false)
-                  // 网页内容的长度超过了每次总结的长度，需要进行总结
+                  // 确保总结前的长度不超过AI的token限制，后端是16k - 2024-06-14
+                  const sliceSearchResult = await sliceTextByTokens(
+                    searchResult.body,
+                    8000,
+                  )
+                  this.log.info('sliceSearchResult', sliceSearchResult)
+                  searchResult.body = sliceSearchResult.text
                   const summarizeResult = await this.createWebpageSummary(
                     searchResult,
                     summarizePrompt,

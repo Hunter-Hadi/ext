@@ -225,6 +225,9 @@ const usePaginationConversationMessages = (conversationId: string) => {
       'ConversationMessagesUpdate',
       async (data) => {
         const { changeType, messageIds } = data
+        if (conversationId !== data.conversationId) {
+          return
+        }
         switch (changeType) {
           case 'update': {
             const messages =
@@ -282,7 +285,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
     )
 
     return () => unsubscribe()
-  }, [refetch, setPaginationMessages])
+  }, [refetch, conversationId, setPaginationMessages])
 
   const isRefetching = useRef(false)
   /**

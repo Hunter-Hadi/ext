@@ -897,7 +897,10 @@
     "home_view__chat__description": "Kutass 10-szer gyorsabban a GPT-4o, Claude 3, Gemini 1.5 és másokkal való csevegéssel.",
     "home_view__sample_prompt__explore_more": "Fedezze fel az AI prompt könyvtárat",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Azonnali válaszokat kaphat valós idejű webhelyhozzáféréssel, ismeretekkel és hivatkozásokkal Claude segítségével.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Azonnali válaszokat kaphat valós idejű webhelyhozzáféréssel, ismeretekkel és hivatkozásokkal ChatGPT segítségével."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Azonnali válaszokat kaphat valós idejű webhelyhozzáféréssel, ismeretekkel és hivatkozásokkal ChatGPT segítségével.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Legújabb és legfejlettebb modell az Anthropic-tól",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Legújabb és legfejlettebb modell az OpenAI-tól",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Új beszélgetés indítása {{AI_MODEL}}-vel"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

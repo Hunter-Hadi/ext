@@ -897,7 +897,10 @@
     "home_view__chat__description": "Исследуйте в 10 раз быстрее, общаясь с GPT-4o, Claude 3, Gemini 1.5 и другими.",
     "home_view__sample_prompt__explore_more": "Изучить библиотеку AI подсказок",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Получите мгновенные ответы с доступом к вебу в режиме реального времени, знаниями и цитатами с помощью Клода.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Получите мгновенные ответы с доступом к вебу в режиме реального времени, знаниями и цитатами с помощью ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Получите мгновенные ответы с доступом к вебу в режиме реального времени, знаниями и цитатами с помощью ChatGPT.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Самая новая и передовая модель от Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Самая новая и передовая модель от OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Начать новый чат с {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

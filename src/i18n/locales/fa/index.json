@@ -897,7 +897,10 @@
     "home_view__chat__description": "با گپ زدن با GPT-4o، Claude 3، Gemini 1.5 و بیشتر، تحقیقات خود را 10 برابر سریعتر انجام دهید.",
     "home_view__sample_prompt__explore_more": "کتابخانه پیشنهادهای هوش مصنوعی را کاوش کنید",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "با کلود، پاسخ‌های فوری با دسترسی به وب در زمان واقعی، دانش و نقل قول را دریافت کنید.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "با ChatGPT، پاسخ‌های فوری با دسترسی به وب در زمان واقعی، دانش و نقل قول را دریافت کنید."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "با ChatGPT، پاسخ‌های فوری با دسترسی به وب در زمان واقعی، دانش و نقل قول را دریافت کنید.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "جدیدترین و پیشرفته‌ترین مدل توسط Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "جدیدترین و پیشرفته‌ترین مدل توسط OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "شروع چت جدید با {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

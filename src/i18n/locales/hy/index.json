@@ -894,7 +894,10 @@
     "home_view__chat__description": "Գիտակցեք 10 անգամ արագությամբ հետապնդելով GPT-4o, Claude 3, Gemini 1.5 և այլն:",
     "home_view__sample_prompt__explore_more": "Իմացեք ավելին AI հուշադրության գրադարանի մասին",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Ստացեք անմիջապես պատասխաններ իրականացվող վեբ մուտքով, իրականացվող գիտելիքներով և հղումներով Claude-ի հետ:",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Ստացեք անմիջապես պատասխաններ իրականացվող վեբ մուտքով, իրականացվող գիտելիքներով և հղումներով ChatGPT-ի հետ:"
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Ստացեք անմիջապես պատասխաններ իրականացվող վեբ մուտքով, իրականացվող գիտելիքներով և հղումներով ChatGPT-ի հետ:",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Նորագույն և առաջինը առաջարկվող մոդելը Anthropic-ի կողմից",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Նորագույն և առաջինը առաջարկվող մոդելը OpenAI-ի կողմից",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Սկսել նոր խոսելություն {{AI_MODEL}}-ով"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

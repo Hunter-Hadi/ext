@@ -897,7 +897,10 @@
     "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 এবং আরো সাথে কথা বলে 10 গুন দ্রুত গবেষণা করুন।",
     "home_view__sample_prompt__explore_more": "আরও AI প্রম্পট লাইব্রেরি অন্বেষণ করুন",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "ক্লোড দিয়ে সত্যিকারের সময়সাপেক্ষ ওয়েব অ্যাক্সেস, জ্ঞান এবং উদ্ধৃতি দিয়ে তাৎক্ষণিক উত্তর পান।",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "চ্যাটজিপিটি দিয়ে সত্যিকারের সময়সাপেক্ষ ওয়েব অ্যাক্সেস, জ্ঞান এবং উদ্ধৃতি দিয়ে তাৎক্ষণিক উত্তর পান।"
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "চ্যাটজিপিটি দিয়ে সত্যিকারের সময়সাপেক্ষ ওয়েব অ্যাক্সেস, জ্ঞান এবং উদ্ধৃতি দিয়ে তাৎক্ষণিক উত্তর পান।",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "এনথ্রোপিক দ্বারা সর্বশেষ এবং সর্বাধিক উন্নত মডেল",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "ওপেনএআই দ্বারা সর্বশেষ এবং সর্বাধিক উন্নত মডেল",
+    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}} সহ নতুন চ্যাট শুরু করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

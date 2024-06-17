@@ -897,7 +897,10 @@
     "home_view__chat__description": "Recherchez 10 fois plus rapidement en discutant avec GPT-4o, Claude 3, Gemini 1.5 et plus encore.",
     "home_view__sample_prompt__explore_more": "Explorer la bibliothèque de suggestions d'IA",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Obtenez des réponses instantanées avec un accès web en temps réel, des connaissances et des citations avec Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obtenez des réponses instantanées avec un accès web en temps réel, des connaissances et des citations avec ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obtenez des réponses instantanées avec un accès web en temps réel, des connaissances et des citations avec ChatGPT.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Modèle le plus récent et le plus avancé par Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Modèle le plus récent et le plus avancé par OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Commence un nouveau chat avec {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

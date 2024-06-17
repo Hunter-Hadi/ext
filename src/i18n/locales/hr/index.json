@@ -897,7 +897,10 @@
     "home_view__chat__description": "Istražujte 10 puta brže razgovarajući s GPT-4o, Claude 3, Gemini 1.5 i drugima.",
     "home_view__sample_prompt__explore_more": "Istražite biblioteku AI uputa",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Dobijte trenutne odgovore uz pristup webu u stvarnom vremenu, znanju i citatima s Claudeom.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dobijte trenutne odgovore uz pristup webu u stvarnom vremenu, znanju i citatima s ChatGPT-om."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dobijte trenutne odgovore uz pristup webu u stvarnom vremenu, znanju i citatima s ChatGPT-om.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Najnoviji i najnapredniji model od strane Anthropic-a",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Najnoviji i najnapredniji model od strane OpenAI-a",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Započni novi chat s {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

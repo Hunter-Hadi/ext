@@ -897,7 +897,10 @@
     "home_view__chat__description": "Tutki 10 kertaa nopeammin keskustelemalla GPT-4o:n, Claude 3:n, Gemini 1.5:n ja muiden kanssa.",
     "home_view__sample_prompt__explore_more": "Tutustu AI-prompt-kirjastoon",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Saat välittömiä vastauksia reaaliaikaisella verkkopääsyllä, tiedolla ja viitteillä Clauden avulla.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Saat välittömiä vastauksia reaaliaikaisella verkkopääsyllä, tiedolla ja viitteillä ChatGPT:n avulla."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Saat välittömiä vastauksia reaaliaikaisella verkkopääsyllä, tiedolla ja viitteillä ChatGPT:n avulla.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropicin uusin ja kehittynein malli",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAI:n uusin ja kehittynein malli",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Aloita uusi keskustelu {{AI_MODEL}}:n kanssa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

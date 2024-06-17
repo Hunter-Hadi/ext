@@ -897,7 +897,10 @@
     "home_view__chat__description": "Mag-research ng 10 beses mas mabilis sa pamamagitan ng pakikipag-chat kay GPT-4o, Claude 3, Gemini 1.5, at iba pa.",
     "home_view__sample_prompt__explore_more": "Tuklasin ang AI prompt library",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Makakuha ng mga sagot agad na may real-time na web access, kaalaman, at mga sanggunian gamit ang Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Makakuha ng mga sagot agad na may real-time na web access, kaalaman, at mga sanggunian gamit ang ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Makakuha ng mga sagot agad na may real-time na web access, kaalaman, at mga sanggunian gamit ang ChatGPT.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Pinakabagong at pinakamahusay na modelo ng Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Pinakabagong at pinakamahusay na modelo ng OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Magsimula ng bagong chat gamit ang {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

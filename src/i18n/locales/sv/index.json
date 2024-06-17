@@ -897,7 +897,10 @@
     "home_view__chat__description": "Forska 10 gånger snabbare genom att chatta med GPT-4o, Claude 3, Gemini 1.5 och mer.",
     "home_view__sample_prompt__explore_more": "Utforska AI-promptbiblioteket",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Få omedelbara svar med realtidswebbåtkomst, kunskap och källhänvisningar med Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Få omedelbara svar med realtidswebbåtkomst, kunskap och källhänvisningar med ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Få omedelbara svar med realtidswebbåtkomst, kunskap och källhänvisningar med ChatGPT.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Senaste och mest avancerade modellen av Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Senaste och mest avancerade modellen av OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Startar ny chatt med {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

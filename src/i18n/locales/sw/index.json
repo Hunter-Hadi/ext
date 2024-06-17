@@ -897,7 +897,10 @@
     "home_view__chat__description": "Tafiti kwa kasi mara 10 zaidi kwa kuzungumza na GPT-4o, Claude 3, Gemini 1.5, na wengine.",
     "home_view__sample_prompt__explore_more": "Chunguza maktaba ya mada za AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Pata majibu ya papo hapo na ufikiaji wa wavuti halisi, maarifa, na marejeo kwa kutumia Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Pata majibu ya papo hapo na ufikiaji wa wavuti halisi, maarifa, na marejeo kwa kutumia ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Pata majibu ya papo hapo na ufikiaji wa wavuti halisi, maarifa, na marejeo kwa kutumia ChatGPT.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Mfano mpya na wa kisasa zaidi kutoka Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Mfano mpya na wa kisasa zaidi kutoka OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Anza mazungumzo mapya na {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

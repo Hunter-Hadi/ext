@@ -897,7 +897,10 @@
     "home_view__chat__description": "Výskum 10x rýchlejší prostredníctvom rozhovoru s GPT-4o, Claude 3, Gemini 1.5 a ďalšími.",
     "home_view__sample_prompt__explore_more": "Preskúmajte knižnicu AI promptov",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Získajte okamžité odpovede s reálnym prístupom na web, znalosťami a citáciami s Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Získajte okamžité odpovede s reálnym prístupom na web, znalosťami a citáciami s ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Získajte okamžité odpovede s reálnym prístupom na web, znalosťami a citáciami s ChatGPT.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Najnovší a najpokročilejší model od Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Najnovší a najpokročilejší model od OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Začni nový chat s {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

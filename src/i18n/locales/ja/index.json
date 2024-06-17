@@ -897,7 +897,10 @@
     "home_view__chat__description": "GPT-4o、Claude 3、Gemini 1.5などとチャットして10倍速く研究しましょう。",
     "home_view__sample_prompt__explore_more": "AIプロンプトライブラリを探索する",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "クロードを使用して、リアルタイムのウェブアクセス、知識、引用を使って瞬時に回答を取得します。",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPTを使用して、リアルタイムのウェブアクセス、知識、引用を使って瞬時に回答を取得します。"
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPTを使用して、リアルタイムのウェブアクセス、知識、引用を使って瞬時に回答を取得します。",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropicによる最新かつ最も高度なモデル",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAIによる最新かつ最も高度なモデル",
+    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}}との新しいチャットを開始"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

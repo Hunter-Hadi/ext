@@ -897,7 +897,10 @@
     "home_view__chat__description": "قم بالبحث بسرعة 10 مرات أكبر عن طريق الدردشة مع GPT-4o و Claude 3 و Gemini 1.5 وغيرهم.",
     "home_view__sample_prompt__explore_more": "استكشف مكتبة تلميحات الذكاء الاصطناعي",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "احصل على إجابات فورية مع وصول الويب في الوقت الحقيقي والمعرفة والاستشهادات مع كلود.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "احصل على إجابات فورية مع وصول الويب في الوقت الحقيقي والمعرفة والاستشهادات مع ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "احصل على إجابات فورية مع وصول الويب في الوقت الحقيقي والمعرفة والاستشهادات مع ChatGPT.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "أحدث وأكثر النماذج تقدمًا من Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "أحدث وأكثر النماذج تقدمًا من OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "بدء دردشة جديدة مع {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

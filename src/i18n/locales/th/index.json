@@ -897,7 +897,10 @@
     "home_view__chat__description": "วิจัยได้เร็วขึ้น 10 เท่าโดยการสนทนากับ GPT-4o, Claude 3, Gemini 1.5 และอื่น ๆ",
     "home_view__sample_prompt__explore_more": "สำรวจห้องสมุดคำพูด AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "รับคำตอบทันทีด้วยการเข้าถึงเว็บแบบเรียลไทม์ ความรู้ และการอ้างอิงด้วย Claude",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "รับคำตอบทันทีด้วยการเข้าถึงเว็บแบบเรียลไทม์ ความรู้ และการอ้างอิงด้วย ChatGPT"
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "รับคำตอบทันทีด้วยการเข้าถึงเว็บแบบเรียลไทม์ ความรู้ และการอ้างอิงด้วย ChatGPT",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "รุ่นล่าสุดและทันสมัยที่สุดจาก Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "รุ่นล่าสุดและทันสมัยที่สุดจาก OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "เริ่มการสนทนาใหม่กับ {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

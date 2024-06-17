@@ -897,7 +897,10 @@
     "home_view__chat__description": "Kaji selaju 10 kali ganda dengan bersembang dengan GPT-4o, Claude 3, Gemini 1.5, dan lain-lain.",
     "home_view__sample_prompt__explore_more": "Terokai perpustakaan rangsangan AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Dapatkan jawapan segera dengan akses web secara langsung, pengetahuan, dan petikan dengan Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dapatkan jawapan segera dengan akses web secara langsung, pengetahuan, dan petikan dengan ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dapatkan jawapan segera dengan akses web secara langsung, pengetahuan, dan petikan dengan ChatGPT.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Model terbaru dan paling canggih oleh Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Model terbaru dan paling canggih oleh OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Mulakan perbualan baru dengan {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

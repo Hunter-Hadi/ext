@@ -3,7 +3,6 @@ import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import isNumber from 'lodash-es/isNumber'
 import React, { FC, useMemo } from 'react'
 import Highlight from 'react-highlight'
 import ReactMarkdown from 'react-markdown'
@@ -247,22 +246,29 @@ const CustomMarkdown: FC<{
   const { isComplete, children } = props
 
   // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号，目前只针对PDF显示
+  // 目前后端会在原文里插入对应的信息，这里不过滤否则匹配不上
+  // TODO 需要沟通，如果start_index <= -1的情况，是否在后端发送的时候就应该过滤掉
   const citations = useMemo(() => {
     if (getPageSummaryType() !== 'PDF_CRX_SUMMARY') {
       return
     }
-    return props.citations?.filter((item) => {
-      if (isNumber(item.start_index)) {
-        return item.start_index > -1
-      }
-      return true
-    })
+    return props.citations
+    // return props.citations?.filter((item) => {
+    //   if (isNumber(item.start_index)) {
+    //     return item.start_index > -1
+    //   }
+    //   return true
+    // })
   }, [props.citations])
 
   const formatMarkdownText = useMemo(() => {
     try {
       if (typeof children === 'string') {
-        if (citations?.length && !children.includes('[T0]') && isComplete) {
+        if (
+          citations?.length &&
+          isComplete &&
+          !children.match(/\[T(\d+)\]\(\{\}\)/)
+        ) {
           return preprocessLaTeX(children) + ' ' + formatCitation(citations)
         }
         return preprocessLaTeX(children)
@@ -318,14 +324,12 @@ const CustomMarkdown: FC<{
             a: ({ node, ...props }) => {
               if (citations && typeof props.children?.[0] === 'string') {
                 const match = props.children[0].match(/T(\d+)/)
-                if (match) {
-                  return (
-                    <CitationTag
-                      citations={citations}
-                      index={Number(match[1])}
-                    />
-                  )
+                const index = match ? Number(match[1]) : -1
+                if (!citations[index]) {
+                  // 查不到citations
+                  return null
                 }
+                return <CitationTag citations={citations} index={index} />
               }
               return (
                 // eslint-disable-next-line react/prop-types

@@ -1,10 +1,10 @@
 import CircularProgress from '@mui/material/CircularProgress'
-import Link from '@mui/material/Link'
+import IconButton from '@mui/material/IconButton'
 import React, { FC, useState } from 'react'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { IAIResponseSourceCitation } from '@/features/chatgpt/types'
 import CitationFactory from '@/features/citation/core/CitationFactory'
+import { IAIResponseSourceCitation } from '@/features/indexed_db/conversations/models/Message'
 
 interface IProps {
   citations: IAIResponseSourceCitation[]
@@ -28,7 +28,7 @@ const CitationTag: FC<IProps> = (props) => {
     }
     if (citationService) {
       const title = await citationService
-        .findText(content, start_index)
+        .findText(content, start_index!)
         .catch(console.error)
       setTitle(title || '')
     }
@@ -37,54 +37,55 @@ const CitationTag: FC<IProps> = (props) => {
 
   return (
     <>
-      {/*<TextOnlyTooltip placement="top" title={`Scroll to page ${title}`}>*/}
-      {/*  <IconButton*/}
-      {/*    color="inherit"*/}
-      {/*    size="small"*/}
-      {/*    sx={{*/}
-      {/*      width: 30,*/}
-      {/*      height: 24,*/}
-      {/*      background: 'rgba(138, 101, 171, 0.1)',*/}
-      {/*      marginRight: '2px!important',*/}
-      {/*      borderRadius: '14px',*/}
-      {/*    }}*/}
-      {/*    onClick={handleClick}*/}
-      {/*  >*/}
-      {/*    {loading ? (*/}
-      {/*      <CircularProgress*/}
-      {/*        size={16}*/}
-      {/*        sx={{ m: '0 auto', color: 'primary.main' }}*/}
-      {/*      />*/}
-      {/*    ) : (*/}
-      {/*      <FormatListBulletedOutlinedIcon*/}
-      {/*        sx={{*/}
-      {/*          fontSize: '16px',*/}
-      {/*          color: 'primary.main',*/}
-      {/*        }}*/}
-      {/*      />*/}
-      {/*    )}*/}
-      {/*  </IconButton>*/}
-      {/*</TextOnlyTooltip>*/}
-
-      <TextOnlyTooltip placement="top" title={`Scroll to page ${title}`}>
-        <div
-          style={{ minWidth: 22, display: 'inline-block', textAlign: 'center' }}
+      <TextOnlyTooltip placement='top' title={`Scroll to page ${title}`}>
+        <IconButton
+          color='inherit'
+          size='small'
+          sx={{
+            width: 30,
+            height: 24,
+            background: 'rgba(138, 101, 171, 0.1)',
+            marginRight: '2px!important',
+            borderRadius: '14px',
+          }}
           onClick={handleClick}
         >
           {loading ? (
             <CircularProgress
               size={16}
-              sx={{
-                m: '0 auto',
-                color: 'primary.main',
-                verticalAlign: 'middle',
-              }}
+              sx={{ m: '0 auto', color: 'primary.main' }}
             />
           ) : (
-            <Link sx={{ cursor: 'pointer' }}>[{index + 1}]</Link>
+            // <FormatListBulletedOutlinedIcon
+            //   sx={{
+            //     fontSize: '16px',
+            //     color: 'primary.main',
+            //   }}
+            // />
+            <span>{index + 1}</span>
           )}
-        </div>
+        </IconButton>
       </TextOnlyTooltip>
+
+      {/*<TextOnlyTooltip placement="top" title={`Scroll to page ${title}`}>*/}
+      {/*  <div*/}
+      {/*    style={{ minWidth: 22, display: 'inline-block', textAlign: 'center' }}*/}
+      {/*    onClick={handleClick}*/}
+      {/*  >*/}
+      {/*    {loading ? (*/}
+      {/*      <CircularProgress*/}
+      {/*        size={16}*/}
+      {/*        sx={{*/}
+      {/*          m: '0 auto',*/}
+      {/*          color: 'primary.main',*/}
+      {/*          verticalAlign: 'middle',*/}
+      {/*        }}*/}
+      {/*      />*/}
+      {/*    ) : (*/}
+      {/*      <Link sx={{ cursor: 'pointer' }}>[{index + 1}]</Link>*/}
+      {/*    )}*/}
+      {/*  </div>*/}
+      {/*</TextOnlyTooltip>*/}
 
       {/*{show &&*/}
       {/*  containerGroups.map((group, index) => (*/}

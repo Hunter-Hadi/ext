@@ -451,7 +451,6 @@ export class ActionAskChatGPT extends Action {
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
               this.log.info('message', message)
-              console.log(1111, 'message', message)
               this.answer = {
                 messageId: (message.messageId as string) || uuidV4(),
                 parentMessageId:
@@ -463,22 +462,12 @@ export class ActionAskChatGPT extends Action {
               if (message.conversationId) {
                 AIConversationId = message.conversationId
               }
-              // if (message.sourceCitations?.length) {
-              //   this.answer.originalMessage = {
-              //     ...this.answer.originalMessage,
-              //     // 这个字段代表本条消息不是rich message
-              //     // 目前sourceCitations只会在chat的时候输出
-              //     // 如果后续要在outputMessage里添加sourceCitations要额外处理
-              //     liteMode: true,
-              //     metadata: {
-              //       ...this.answer.originalMessage?.metadata,
-              //       sourceCitations: message.sourceCitations,
-              //     },
-              //   }
-              // }
               if (message.originalMessage?.metadata?.sourceCitations) {
                 // TODO 后续会去掉liteMode，渲染的时候以有无对应属性去显示组件
-                message.originalMessage.liteMode = true
+                // 目前sourceCitations只会在chat的时候输出
+                if (!outputMessage?.originalMessage) {
+                  message.originalMessage.liteMode = true
+                }
               }
               this.output = this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
@@ -488,22 +477,37 @@ export class ActionAskChatGPT extends Action {
                   isAIMessage(outputMessage) &&
                   outputMessage.originalMessage
                 ) {
-                  await ClientConversationMessageManager.updateMessagesWithChanges(
+                  await ClientConversationMessageManager.updateMessage(
                     conversationId,
-                    [
-                      {
-                        key: outputMessageId || '',
-                        changes: message.originalMessage
-                          ? { originalMessage: message.originalMessage }
-                          : ({
-                              'originalMessage.content.text': message.text,
-                            } as any),
+                    {
+                      messageId: outputMessageId,
+                      originalMessage: message.originalMessage || {
+                        content: {
+                          contentType: 'text',
+                          text: message.text,
+                        },
                       },
-                    ],
+                    },
                     {
                       syncMessageToDB: false,
                     },
                   )
+                  // await ClientConversationMessageManager.updateMessagesWithChanges(
+                  //   conversationId,
+                  //   [
+                  //     {
+                  //       key: outputMessageId || '',
+                  //       changes: message.originalMessage
+                  //         ? { originalMessage: message.originalMessage }
+                  //         : ({
+                  //             'originalMessage.content.text': message.text,
+                  //           } as any),
+                  //     },
+                  //   ],
+                  //   {
+                  //     syncMessageToDB: false,
+                  //   },
+                  // )
                 } else {
                   // TODO 这里只有更新，其实要区别更新/覆盖
                   await ClientConversationMessageManager.updateMessagesWithChanges(

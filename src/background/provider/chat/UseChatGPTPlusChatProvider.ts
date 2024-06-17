@@ -81,8 +81,11 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
               }))
             })
         : []
+      // 这里需要判断，如果在summary下chat过切换summary nav的时候，需要取的是当前的messageId
       const lastMessageId =
-        orderBy(messages, ['created_at'], ['desc'])?.[0]?.messageId || ''
+        question.meta?.outputMessageId ||
+        orderBy(messages, ['created_at'], ['desc'])?.[0]?.messageId ||
+        ''
       const lastMessage = await backgroundConversationDB.messages.get(
         lastMessageId,
       )

@@ -28,6 +28,7 @@ const SidebarAIMessageTools: FC<{
       direction={'row'}
       alignItems={'center'}
       spacing={0.5}
+      mt={1}
       ref={gmailChatBoxAiToolsRef}
     >
       {messageContentType === 'image' && (
@@ -97,7 +98,7 @@ const SidebarAIMessageTools: FC<{
           <ContextMenuIcon
             icon={'Copy'}
             sx={{
-              fontSize: '16px',
+              fontSize: '20px',
             }}
           />
         </TooltipIconButton>

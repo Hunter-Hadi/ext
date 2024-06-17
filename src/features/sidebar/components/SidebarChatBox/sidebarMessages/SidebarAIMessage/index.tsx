@@ -19,6 +19,7 @@ import {
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
+import SidebarAIMessageAIModel from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageAIModel'
 import SidebarAImessageBottomList from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList'
 import SidebarAIMessageContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent'
 import SidebarAIMessageSkeletonContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageSkeletonContent'
@@ -114,7 +115,6 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       whiteSpace: 'pre-wrap',
       width: '100%',
       p: 1,
-      gap: 1,
       boxSizing: 'border-box',
       wordBreak: 'break-word',
       borderRadius: '8px',
@@ -136,6 +136,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         <SidebarContextCleared message={message} />
       )}
       <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
+        <SidebarAIMessageAIModel
+          AIModel={message.originalMessage?.metadata?.AIModel}
+        />
         {isSummaryMessage && (
           <SwitchSummaryActionNav message={message} loading={coverLoading} />
         )}
@@ -174,7 +177,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             )}
             {renderData.sources && renderData.sourcesHasContent && (
               <Stack spacing={1}>
-                <Stack direction={'row'} alignItems="center" spacing={1}>
+                <Stack direction={'row'} alignItems='center' spacing={1}>
                   {renderData.sourcesLoading &&
                   !renderData.messageIsComplete ? (
                     <CircularProgress size={18} />
@@ -205,7 +208,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               renderData.content.title?.title !== 'noneShowContent' && (
                 <Stack>
                   {!renderData.messageIsComplete ? (
-                    <Stack direction={'row'} alignItems="center" spacing={1}>
+                    <Stack direction={'row'} alignItems='center' spacing={1}>
                       <CircularProgress size={18} />
                       <Typography
                         sx={{
@@ -220,7 +223,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                       </Typography>
                     </Stack>
                   ) : (
-                    <Stack direction={'row'} alignItems="center" spacing={1}>
+                    <Stack direction={'row'} alignItems='center' spacing={1}>
                       {renderData.content.title?.titleIcon ? (
                         <Stack
                           alignItems={'center'}
@@ -315,7 +318,7 @@ export const MetadataTitleRender: FC<{
   const { title, titleIcon, titleIconSize } = props.title
   const currentTitleIconSize = titleIconSize || 20
   return (
-    <Stack direction={'row'} alignItems="center" spacing={1}>
+    <Stack direction={'row'} alignItems='center' spacing={1}>
       {titleIcon && (
         <Stack
           alignItems={'center'}

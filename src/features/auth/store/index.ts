@@ -16,11 +16,15 @@ export const AuthState = atom<{
 export const AuthUserInfoState = atom<{
   user: IUseChatGPTUserInfo | null
   loading: boolean
+  loaded: boolean
+  fetching: boolean
 }>({
   key: 'AuthUserInfoState',
   default: {
     user: null,
     loading: false,
+    loaded: false,
+    fetching: false,
   },
 })
 

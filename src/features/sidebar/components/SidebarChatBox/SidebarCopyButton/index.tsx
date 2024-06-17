@@ -93,7 +93,7 @@ const SidebarCopyButton: FC<{
     <>
       <Button
         ref={copyButtonRef}
-        data-testid="ai-message-tools__hover-to-copy"
+        data-testid='ai-message-tools__hover-to-copy'
         sx={{
           minWidth: 'unset',
           p: '5px',
@@ -121,7 +121,7 @@ const SidebarCopyButton: FC<{
         }}
       >
         <Stack direction={'row'} alignItems={'center'}>
-          <ContentCopyIcon sx={{ fontSize: '16px' }} />
+          <ContentCopyIcon sx={{ fontSize: '20px' }} />
           <ContextMenuIcon
             icon={'ExpandMore'}
             sx={{
@@ -145,7 +145,7 @@ const SidebarCopyButton: FC<{
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        className="popper"
+        className='popper'
         // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
         open={isHover}
         anchorEl={anchorEl}
@@ -190,7 +190,7 @@ const SidebarCopyButton: FC<{
                 color: 'text.primary',
                 borderRadius: '4px',
               }}
-              data-testid="ai-message-tools__copy-with-formatting"
+              data-testid='ai-message-tools__copy-with-formatting'
             >
               <Stack
                 direction={'row'}
@@ -206,7 +206,7 @@ const SidebarCopyButton: FC<{
                       ? 'Done'
                       : 'CopyTextOnly'
                   }
-                  sx={{ fontSize: '16px' }}
+                  sx={{ fontSize: '20px' }}
                 />
                 <Typography fontSize={'16px'}>
                   {t('common:copy_with_formatting')}
@@ -252,7 +252,7 @@ const SidebarCopyButton: FC<{
                     color: 'text.primary',
                     borderRadius: '4px',
                   }}
-                  data-testid="ai-message-tools__copy-as-plain-text"
+                  data-testid='ai-message-tools__copy-as-plain-text'
                 >
                   <Stack
                     direction={'row'}
@@ -266,7 +266,7 @@ const SidebarCopyButton: FC<{
                       icon={
                         copyButtonKey === 'copy_as_plain_text' ? 'Done' : 'Copy'
                       }
-                      sx={{ fontSize: '16px' }}
+                      sx={{ fontSize: '20px' }}
                     />
                     <Typography fontSize={'16px'}>
                       {t('common:copy_as_plain_text')}
@@ -291,7 +291,7 @@ const SidebarCopyButton: FC<{
                     width: '100%',
                   }}
                 >
-                  <ContextMenuIcon icon={'Copy'} sx={{ fontSize: '16px' }} />
+                  <ContextMenuIcon icon={'Copy'} sx={{ fontSize: '20px' }} />
                   <Typography fontSize={'16px'}>
                     {t('common:copy_as_plain_text')}
                   </Typography>

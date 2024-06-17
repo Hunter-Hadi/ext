@@ -96,9 +96,9 @@ const SidebarAIMessageAttachmentsDownloadButton: FC<{
       onClick={downloadAttachments}
     >
       {downloading ? (
-        <CircularProgress size={'16px'} color="inherit" />
+        <CircularProgress size={'20px'} color='inherit' />
       ) : (
-        <ContextMenuIcon icon={'FileDownload'} sx={{ fontSize: '16px' }} />
+        <ContextMenuIcon icon={'FileDownload'} sx={{ fontSize: '20px' }} />
       )}
     </TooltipIconButton>
   )

@@ -24,11 +24,13 @@ const useInitUserInfo = (isInit = true) => {
   const needPushUpgradeMessage = useRef(false)
   const upgradeTextRef = useRef('')
   const syncUserInfo = async (forceUpdate = false) => {
+    let hasError = false
     try {
       setUserInfo((prevState) => {
         return {
           ...prevState,
-          loading: true,
+          loading: prevState.loaded ? false : true,
+          fetching: true,
         }
       })
       const result = await port.postMessage({
@@ -41,11 +43,14 @@ const useInitUserInfo = (isInit = true) => {
         setUserInfo({
           user: result.data,
           loading: false,
+          loaded: true,
+          fetching: false,
         })
         return true
       }
       return false
     } catch (e) {
+      hasError = true
       log.error(e)
       return false
     } finally {
@@ -53,6 +58,8 @@ const useInitUserInfo = (isInit = true) => {
         return {
           ...prevState,
           loading: false,
+          fetching: false,
+          loaded: !hasError,
         }
       })
     }
@@ -101,6 +108,8 @@ const useInitUserInfo = (isInit = true) => {
             return {
               user: null,
               loading: false,
+              loaded: false,
+              fetching: false,
             }
           }
           if (
@@ -127,6 +136,8 @@ const useInitUserInfo = (isInit = true) => {
               role: newRole,
             },
             loading: false,
+            loaded: true,
+            fetching: false,
           }
         })
       }
@@ -134,6 +145,8 @@ const useInitUserInfo = (isInit = true) => {
         setUserInfo({
           user: result.data,
           loading: false,
+          loaded: true,
+          fetching: false,
         })
       }
       return false

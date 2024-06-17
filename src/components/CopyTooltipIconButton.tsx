@@ -70,7 +70,7 @@ const CopyTooltipIconButton: FC<ICopyTooltipIconButton> = (props) => {
         {isCopied ? (
           <ContextMenuIcon icon={'Check'} />
         ) : (
-          icon || <ContentCopyIcon sx={{ fontSize: 16 }} />
+          icon || <ContentCopyIcon sx={{ fontSize: '20px' }} />
         )}
         {props.children}
       </TooltipIconButton>

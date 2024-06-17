@@ -104,13 +104,17 @@ export class ActionAskChatGPT extends Action {
       const MaxAIPromptActionConfig =
         this.parameters.MaxAIPromptActionConfig ||
         this.question?.meta?.MaxAIPromptActionConfig
-      if (params.MAXAI_SUGGESTION_AI_MODEL) {
+      /**
+       * 用户点击的推荐的AI model
+       */
+      const MaxAISuggestionAIModel = params.MAXAI_SUGGESTION_AI_MODEL
+      if (MaxAISuggestionAIModel) {
         // 正常的聊天，但是用户点了suggest AI model
         if (!MaxAIPromptActionConfig) {
-          debugger
+          // 暂时不需要做额外的处理
         } else {
           // 如果是MaxAI prompt action，需要设置AIModel
-          MaxAIPromptActionConfig.AIModel = params.MAXAI_SUGGESTION_AI_MODEL
+          MaxAIPromptActionConfig.AIModel = MaxAISuggestionAIModel
         }
       }
       this.question = {
@@ -458,7 +462,6 @@ export class ActionAskChatGPT extends Action {
             )
         }
         try {
-          debugger
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
               this.log.info('message', message)
@@ -475,6 +478,9 @@ export class ActionAskChatGPT extends Action {
                     content: {
                       text: message.text,
                       contentType: 'text',
+                    },
+                    metadata: {
+                      AIModel: MaxAISuggestionAIModel,
                     },
                   },
                   message.originalMessage || {},

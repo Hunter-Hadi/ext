@@ -71,7 +71,7 @@ const getAIModels = (
         conversationAIModel,
       )
     ) {
-      return [GPT_4O, CLAUDE_3_OPUS]
+      return [GPT_4O]
     }
   } else if (userRoleType === 'pro') {
     if (conversationAIModel !== CLAUDE_3_OPUS.AIModel) {
@@ -105,9 +105,11 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
     }
     const conversationModel = clientConversation?.meta.AIModel || ''
     const models = getAIModels(currentUserPlan, conversationModel)
-    const suggestions = models.filter((model) => model.value !== messageAIModel)
+    const suggestions = models.filter(
+      (model) => model.AIModel !== messageAIModel,
+    )
     let ctaButton: IAIMessageModelSuggestionAIModelButton | null = null
-    const ctaButtonModel = models.find(
+    const ctaButtonAIModel = models.find(
       (model) => model.AIModel === messageAIModel,
     )
     // 当这条消息的AIModel不是当前会话的AIModel时，显示starts with AIModel的按钮
@@ -115,13 +117,13 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
     if (
       messageAIModel &&
       messageAIModel !== conversationModel &&
-      ctaButtonModel &&
+      ctaButtonAIModel &&
       suggestions.length === 0
     ) {
       ctaButton = {
         title: 'client:sidebar__chat__suggestions__starts_new_chat__title',
-        AIProvider: ctaButtonModel.AIProvider,
-        AIModel: ctaButtonModel.AIModel,
+        AIProvider: ctaButtonAIModel.AIProvider,
+        AIModel: ctaButtonAIModel.AIModel,
       }
     }
     return {
@@ -129,13 +131,14 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
       suggestions,
     }
   }, [
-    clientConversation,
+    AIMessage.messageId,
+    clientConversation?.lastMessageId,
+    clientConversation?.meta.AIModel,
     currentSidebarConversationType,
     loading,
     currentUserPlan,
     messageAIModel,
   ])
-  console.log(`AIMessageModelSuggestions: memoConfig: \n`, memoConfig)
   if (!memoConfig) {
     return null
   }
@@ -148,8 +151,71 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
           mx: 0.5,
         }}
       />
+      {memoConfig.ctaButton && (
+        <AIMessageSuggestionsAIModelNewChatButton
+          ctaButton={memoConfig.ctaButton}
+        />
+      )}
       <AIMessageSuggestionsModelSelector suggestions={memoConfig.suggestions} />
     </Stack>
+  )
+}
+
+const AIMessageSuggestionsAIModelNewChatButton: FC<{
+  ctaButton: IAIMessageModelSuggestionAIModelButton
+}> = (props) => {
+  const { ctaButton } = props
+  const { t } = useTranslation(['client'])
+  const {
+    showConversationLoading,
+    hideConversationLoading,
+    createConversation,
+  } = useClientConversation()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
+  const handleClick = async () => {
+    try {
+      if (!ctaButton.AIModel) {
+        return
+      }
+      showConversationLoading()
+      await createConversation('Chat', ctaButton.AIProvider, ctaButton.AIModel)
+    } catch (e) {
+      console.error(e)
+    } finally {
+      hideConversationLoading()
+    }
+  }
+  return (
+    <Button
+      onClick={handleClick}
+      disabled={smoothConversationLoading}
+      sx={{
+        padding: 0,
+        minWidth: 'unset',
+        bgcolor: (t) => (t.palette.mode === 'dark' ? '#282828' : '#EBEBEB'),
+        lineHeight: '20px',
+        fontSize: '14px',
+        color: 'primary.main',
+      }}
+    >
+      <Stack
+        direction={'row'}
+        alignItems={'center'}
+        gap={'4px'}
+        sx={{
+          p: '1px 4px 1px 2px',
+          borderRadius: '8px',
+          '&:hover': {
+            bgcolor: (t) => (t.palette.mode === 'dark' ? '#282828' : '#D6D6D6'),
+          },
+        }}
+      >
+        <AIModelIcons size={18} aiModelValue={ctaButton.AIModel} />
+        {t(ctaButton.title as any, {
+          AI_MODEL: ctaButton.AIModel,
+        })}
+      </Stack>
+    </Button>
   )
 }
 

@@ -1124,3 +1124,9 @@
 .chat-message--text .katex .op-symbol.large-op {
   font-family: KaTeX_Size2 !important;
 }
+
+
+/*MaxAI modified*/
+.chat-message--text .markdown-body p:first-of-type {
+    margin-top: 0;
+}

@@ -486,6 +486,21 @@ export const useClientConversationListener = () => {
     }
     return () => unsubscribe()
   }, [handleUpdateMessages, currentConversationId])
+
+  useEffect(() => {
+    const unsubscribe = OneShotCommunicator.receive(
+      'ConversationUpdate',
+      async (data) => {
+        const { conversationIds } = data
+        if (conversationIds.includes(currentConversationIdRef.current)) {
+          updateConversation(currentConversationIdRef.current!)
+        }
+        return undefined
+      },
+    )
+
+    return () => unsubscribe()
+  }, [])
 }
 
 export default useClientConversationListener

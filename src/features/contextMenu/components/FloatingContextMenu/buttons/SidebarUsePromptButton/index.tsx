@@ -174,7 +174,7 @@ const SidebarUsePromptButton: FC<{
                       t.palette.mode === 'dark'
                         ? 'rgba(255,255,255,.87)'
                         : 'rgba(0,0,0,.6)',
-                    fontSize: '18px',
+                    fontSize: '20px',
                   }}
                 />
               </Button>

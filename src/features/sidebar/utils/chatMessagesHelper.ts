@@ -419,9 +419,10 @@ export const formatMessagesToLiteHistory = async (
   needSystemOrThirdMessage: boolean,
 ): Promise<string> => {
   const title = conversation.title
-  const messages = await ClientConversationMessageManager.getMessages(
-    conversation.id,
-  )
+  // 因为历史记录是倒序的，所以需要反转
+  const messages = (
+    await ClientConversationMessageManager.getMessages(conversation.id)
+  ).reverse()
   const conversationType = conversation.type
   const liteHistory: string[] = []
   messages.forEach((message) => {

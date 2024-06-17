@@ -897,7 +897,17 @@
     "home_view__chat__description": "Recherchez 10 fois plus rapidement en discutant avec GPT-4o, Claude 3, Gemini 1.5 et plus encore.",
     "home_view__sample_prompt__explore_more": "Explorer la bibliothèque de suggestions d'IA",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Obtenez des réponses instantanées avec un accès web en temps réel, des connaissances et des citations avec Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obtenez des réponses instantanées avec un accès web en temps réel, des connaissances et des citations avec ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obtenez des réponses instantanées avec un accès web en temps réel, des connaissances et des citations avec ChatGPT.",
+    "popup__pdf_page__title": "Comment activer le visualiseur MaxAI PDF AI ?",
+    "popup__pdf_page__step1__description1": "Étape 1 : Activer ",
+    "popup__pdf_page__step1__description2": "\"Visualiseur de fichiers PDF\"",
+    "popup__pdf_page__step1__description3": " dans les paramètres de l'extension",
+    "popup__pdf_page__step2__description1": "Étape 2 : Activer ",
+    "popup__pdf_page__step2__description2": "\"Autoriser l'accès aux URL des fichiers\"",
+    "popup__pdf_page__step2__description3": " dans les paramètres de Chrome",
+    "popup__pdf_page__step3__description": "Étape 3 : Faites glisser et ouvrez le PDF dans votre navigateur pour utiliser le visualiseur MaxAI PDF AI",
+    "popup__pdf_page__tip": "Astuce : Assurez-vous que à la fois \"Visualiseur de fichiers PDF\" et \"Autoriser l'accès aux URL des fichiers\" sont activés pour activer l'extension sur les fichiers PDF.",
+    "popup__pdf_page__button": "Activer \"Visualiseur de fichiers PDF\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

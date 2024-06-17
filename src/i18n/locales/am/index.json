@@ -897,7 +897,17 @@
     "home_view__chat__description": "በ GPT-4o, Claude 3, Gemini 1.5 እና በሌሎች መሣሪያዎች እንዲሁም የሚሰራውን 10x በትክክል የሚሻለውን ለማስታወቂያ ይምረጡ.",
     "home_view__sample_prompt__explore_more": "የማስታወቂያ AI መሣሪያዎችን ለመስራት ይጫኑ",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "የሰነድ ያልታወቀ መልዕክት እና ማስታወቂያዎችን የሚጠቀሙ በርካታ የድርጅት እና የምርት አጠቃቀም ከ Claude ጋር ይጠቀሙ።",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "የሰነድ ያልታወቀ መልዕክት እና ማስታወቂያዎችን የሚጠቀሙ በርካታ የድርጅት እና የምርት አጠቃቀም ከ ChatGPT ጋር ይጠቀሙ።"
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "የሰነድ ያልታወቀ መልዕክት እና ማስታወቂያዎችን የሚጠቀሙ በርካታ የድርጅት እና የምርት አጠቃቀም ከ ChatGPT ጋር ይጠቀሙ።",
+    "popup__pdf_page__title": "ለMaxAI PDF AI መተግበሪያ እንዴት እንደሚነገረው መጀመሪያ ይሽጡ?",
+    "popup__pdf_page__step1__description1": "መጀመሪያ 1: አገልግሎትን አድርግ ",
+    "popup__pdf_page__step1__description2": "\"PDF Al viewer\"",
+    "popup__pdf_page__step1__description3": " በተጨማሪ ማቀድ",
+    "popup__pdf_page__step2__description1": "መጀመሪያ 2: አገልግሎትን አድርግ ",
+    "popup__pdf_page__step2__description2": "\"Allow access to file URLs\"",
+    "popup__pdf_page__step2__description3": " በChrome ማቀድ",
+    "popup__pdf_page__step3__description": "መጀመሪያ 3: የPDF ፋይልን በተጠቀሰው በብስክሌር ይክፈቱ",
+    "popup__pdf_page__tip": "የሚቀጥለውን መልኩ: ከተጨማሪ የ“PDF AI viewer” እና “Allow access to file URLs” በሚለው ሁኔታ መጠቀም ይችላሉ እንዴት እንደሚቀጥለው መተግበሪያውን አግኝተው ይሽጡ.",
+    "popup__pdf_page__button": "የ\"PDF AI viewer\" አግኝተው"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

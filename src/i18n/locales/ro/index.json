@@ -897,7 +897,17 @@
     "home_view__chat__description": "Cercetează de 10 ori mai rapid prin chat cu GPT-4o, Claude 3, Gemini 1.5 și altele.",
     "home_view__sample_prompt__explore_more": "Explorează biblioteca de prompt-uri AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Obțineți răspunsuri instantanee cu acces web în timp real, cunoștințe și citări cu Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obțineți răspunsuri instantanee cu acces web în timp real, cunoștințe și citări cu ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obțineți răspunsuri instantanee cu acces web în timp real, cunoștințe și citări cu ChatGPT.",
+    "popup__pdf_page__title": "Cum să activezi vizualizatorul MaxAI PDF AI?",
+    "popup__pdf_page__step1__description1": "Pasul 1: Activează ",
+    "popup__pdf_page__step1__description2": "\"Vizualizator PDF Al\"",
+    "popup__pdf_page__step1__description3": " în setările extensiei",
+    "popup__pdf_page__step2__description1": "Pasul 2: Activează ",
+    "popup__pdf_page__step2__description2": "\"Permite accesul la URL-urile fișierelor\"",
+    "popup__pdf_page__step2__description3": " în setările Chrome",
+    "popup__pdf_page__step3__description": "Pasul 3: Trage și deschide PDF-ul în browser pentru a utiliza vizualizatorul MaxAI PDF AI",
+    "popup__pdf_page__tip": "Sfat Profesional: Asigură-te că atât \"Vizualizatorul PDF AI\" cât și \"Permite accesul la URL-urile fișierelor\" sunt activate pentru a activa extensia pe fișierele PDF.",
+    "popup__pdf_page__button": "Activează \"Vizualizator PDF AI\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

@@ -897,7 +897,17 @@
     "home_view__chat__description": "วิจัยได้เร็วขึ้น 10 เท่าโดยการสนทนากับ GPT-4o, Claude 3, Gemini 1.5 และอื่น ๆ",
     "home_view__sample_prompt__explore_more": "สำรวจห้องสมุดคำพูด AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "รับคำตอบทันทีด้วยการเข้าถึงเว็บแบบเรียลไทม์ ความรู้ และการอ้างอิงด้วย Claude",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "รับคำตอบทันทีด้วยการเข้าถึงเว็บแบบเรียลไทม์ ความรู้ และการอ้างอิงด้วย ChatGPT"
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "รับคำตอบทันทีด้วยการเข้าถึงเว็บแบบเรียลไทม์ ความรู้ และการอ้างอิงด้วย ChatGPT",
+    "popup__pdf_page__title": "วิธีเปิดใช้งาน MaxAI PDF AI viewer",
+    "popup__pdf_page__step1__description1": "ขั้นตอนที่ 1: เปิดใช้งาน ",
+    "popup__pdf_page__step1__description2": "\"PDF AI viewer\"",
+    "popup__pdf_page__step1__description3": " ในการตั้งค่าส่วนขยาย",
+    "popup__pdf_page__step2__description1": "ขั้นตอนที่ 2: เปิดใช้งาน ",
+    "popup__pdf_page__step2__description2": "\"อนุญาตให้เข้าถึง URL ของไฟล์\"",
+    "popup__pdf_page__step2__description3": " ในการตั้งค่า Chrome",
+    "popup__pdf_page__step3__description": "ขั้นตอนที่ 3: ลากและเปิดไฟล์ PDF ในเบราว์เซอร์เพื่อใช้งาน MaxAI PDF AI viewer",
+    "popup__pdf_page__tip": "เคล็ดลับ: ตรวจสอบให้แน่ใจว่า \"PDF AI viewer\" และ \"อนุญาตให้เข้าถึง URL ของไฟล์\" เปิดใช้งานเพื่อเปิดใช้งานส่วนขยายบนไฟล์ PDF",
+    "popup__pdf_page__button": "เปิดใช้งาน \"PDF AI viewer\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

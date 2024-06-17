@@ -897,7 +897,17 @@
     "home_view__chat__description": "Kaji selaju 10 kali ganda dengan bersembang dengan GPT-4o, Claude 3, Gemini 1.5, dan lain-lain.",
     "home_view__sample_prompt__explore_more": "Terokai perpustakaan rangsangan AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Dapatkan jawapan segera dengan akses web secara langsung, pengetahuan, dan petikan dengan Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dapatkan jawapan segera dengan akses web secara langsung, pengetahuan, dan petikan dengan ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dapatkan jawapan segera dengan akses web secara langsung, pengetahuan, dan petikan dengan ChatGPT.",
+    "popup__pdf_page__title": "Bagaimana untuk mengaktifkan pelayar AI PDF MaxAI?",
+    "popup__pdf_page__step1__description1": "Langkah 1: Aktifkan ",
+    "popup__pdf_page__step1__description2": "\"Paparan Al PDF\"",
+    "popup__pdf_page__step1__description3": " dalam tetapan sambungan",
+    "popup__pdf_page__step2__description1": "Langkah 2: Aktifkan ",
+    "popup__pdf_page__step2__description2": "\"Benarkan akses kepada URL fail\"",
+    "popup__pdf_page__step2__description3": " dalam tetapan Chrome",
+    "popup__pdf_page__step3__description": "Langkah 3: Seret dan buka PDF dalam pelayar anda untuk menggunakan pelayar AI PDF MaxAI",
+    "popup__pdf_page__tip": "Tip Pro: Pastikan kedua-dua \"Paparan AI PDF\" dan \"Benarkan akses kepada URL fail\" diaktifkan untuk mengaktifkan sambungan pada fail PDF.",
+    "popup__pdf_page__button": "Aktifkan \"Paparan AI PDF\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

@@ -897,7 +897,17 @@
     "home_view__chat__description": "通過與 GPT-4o、Claude 3、Gemini 1.5 等進行聊天，以更快的速度進行研究 10 倍。",
     "home_view__sample_prompt__explore_more": "探索 AI 提示庫",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "使用Claude即時獲得網絡訪問、知識和引用的即時答案。",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "使用ChatGPT即時獲得網絡訪問、知識和引用的即時答案。"
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "使用ChatGPT即時獲得網絡訪問、知識和引用的即時答案。",
+    "popup__pdf_page__title": "如何啟用MaxAI PDF AI Viewer？",
+    "popup__pdf_page__step1__description1": "步驟1：在擴充功能設定中啟用",
+    "popup__pdf_page__step1__description2": "“PDF AI viewer”",
+    "popup__pdf_page__step1__description3": "在擴充功能設定中",
+    "popup__pdf_page__step2__description1": "步驟2：在Chrome設定中啟用",
+    "popup__pdf_page__step2__description2": "“允許存取檔案URL”",
+    "popup__pdf_page__step2__description3": "在 Chrome 設定中",
+    "popup__pdf_page__step3__description": "步驟3：拖曳並在瀏覽器中開啟PDF以使用MaxAI PDF AI Viewer",
+    "popup__pdf_page__tip": "專業提示：確保同時啟用“PDF AI viewer”和“允許存取檔案URL”，以在PDF檔案上啟用擴充功能。",
+    "popup__pdf_page__button": "啟用“PDF AI viewer”"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

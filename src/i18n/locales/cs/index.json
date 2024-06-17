@@ -897,7 +897,17 @@
     "home_view__chat__description": "Výzkum 10x rychlejší díky chatování s GPT-4o, Claude 3, Gemini 1.5 a dalšími.",
     "home_view__sample_prompt__explore_more": "Prozkoumejte knihovnu AI promptů",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Získejte okamžité odpovědi s přístupem na web v reálném čase, znalostmi a citacemi s Claudem.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Získejte okamžité odpovědi s přístupem na web v reálném čase, znalostmi a citacemi s ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Získejte okamžité odpovědi s přístupem na web v reálném čase, znalostmi a citacemi s ChatGPT.",
+    "popup__pdf_page__title": "Jak aktivovat prohlížeč MaxAI PDF AI?",
+    "popup__pdf_page__step1__description1": "Krok 1: Povolte ",
+    "popup__pdf_page__step1__description2": "\"Prohlížeč PDF Al\"",
+    "popup__pdf_page__step1__description3": " v nastavení rozšíření",
+    "popup__pdf_page__step2__description1": "Krok 2: Povolte ",
+    "popup__pdf_page__step2__description2": "\"Povolit přístup k URL souborům\"",
+    "popup__pdf_page__step2__description3": " v nastavení Chrome",
+    "popup__pdf_page__step3__description": "Krok 3: Přetáhněte a otevřete PDF ve vašem prohlížeči pro použití MaxAI PDF AI prohlížeče",
+    "popup__pdf_page__tip": "Tip: Ujistěte se, že jsou povoleny jak \"Prohlížeč PDF AI\", tak \"Povolit přístup k URL souborům\", abyste mohli aktivovat rozšíření na souborech PDF.",
+    "popup__pdf_page__button": "Povolit \"Prohlížeč PDF AI\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

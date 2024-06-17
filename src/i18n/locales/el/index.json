@@ -897,7 +897,17 @@
     "home_view__chat__description": "Έρευνα 10 φορές πιο γρήγορα συνομιλώντας με το GPT-4o, το Claude 3, το Gemini 1.5 και άλλους.",
     "home_view__sample_prompt__explore_more": "Εξερεύνηση βιβλιοθήκης AI prompts",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Λάβετε άμεσες απαντήσεις με πρόσβαση σε πραγματικό χρόνο στον ιστό, γνώση και αναφορές με τον Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Λάβετε άμεσες απαντήσεις με πρόσβαση σε πραγματικό χρόνο στον ιστό, γνώση και αναφορές με το ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Λάβετε άμεσες απαντήσεις με πρόσβαση σε πραγματικό χρόνο στον ιστό, γνώση και αναφορές με το ChatGPT.",
+    "popup__pdf_page__title": "Πώς να ενεργοποιήσετε τον προβολέα MaxAI PDF AI;",
+    "popup__pdf_page__step1__description1": "Βήμα 1: Ενεργοποίηση ",
+    "popup__pdf_page__step1__description2": "\"Προβολέα PDF Al\"",
+    "popup__pdf_page__step1__description3": " στις ρυθμίσεις της επέκτασης",
+    "popup__pdf_page__step2__description1": "Βήμα 2: Ενεργοποίηση ",
+    "popup__pdf_page__step2__description2": "\"Να επιτρέπεται η πρόσβαση σε διευθύνσεις URL αρχείων\"",
+    "popup__pdf_page__step2__description3": " στις ρυθμίσεις του Chrome",
+    "popup__pdf_page__step3__description": "Βήμα 3: Σύρετε και ανοίξτε το PDF στον περιηγητή σας για να χρησιμοποιήσετε τον προβολέα MaxAI PDF AI",
+    "popup__pdf_page__tip": "Συμβουλή επαγγελματία: Βεβαιωθείτε ότι και οι δύο \"Προβολέας PDF AI\" και \"Να επιτρέπεται η πρόσβαση σε διευθύνσεις URL αρχείων\" είναι ενεργοποιημένοι για να ενεργοποιήσετε την επέκταση σε αρχεία PDF.",
+    "popup__pdf_page__button": "Ενεργοποίηση \"Προβολέας PDF AI\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

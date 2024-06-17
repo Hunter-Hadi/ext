@@ -897,7 +897,17 @@
     "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 등과 대화하여 10배 더 빠르게 연구하세요.",
     "home_view__sample_prompt__explore_more": "AI 프롬프트 라이브러리 탐색",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "클로드와 함께 실시간 웹 액세스, 지식 및 인용문을 통해 즉각적인 답변을 받으세요.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT와 함께 실시간 웹 액세스, 지식 및 인용문을 통해 즉각적인 답변을 받으세요."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT와 함께 실시간 웹 액세스, 지식 및 인용문을 통해 즉각적인 답변을 받으세요.",
+    "popup__pdf_page__title": "MaxAI PDF AI 뷰어를 활성화하는 방법",
+    "popup__pdf_page__step1__description1": "단계 1: 확장 프로그램 설정에서",
+    "popup__pdf_page__step1__description2": "\"PDF AI 뷰어\"",
+    "popup__pdf_page__step1__description3": " 활성화",
+    "popup__pdf_page__step2__description1": "단계 2: Chrome 설정에서",
+    "popup__pdf_page__step2__description2": "\"파일 URL에 대한 액세스 허용\"",
+    "popup__pdf_page__step2__description3": " 활성화",
+    "popup__pdf_page__step3__description": "단계 3: 브라우저에서 PDF 파일을 드래그하여 열어 MaxAI PDF AI 뷰어를 사용하세요",
+    "popup__pdf_page__tip": "전문가 팁: \"PDF AI 뷰어\"와 \"파일 URL에 대한 액세스 허용\"이 모두 활성화되어 있는지 확인하여 PDF 파일에서 확장 프로그램을 활성화하세요.",
+    "popup__pdf_page__button": "\"PDF AI 뷰어\" 활성화"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

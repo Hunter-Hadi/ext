@@ -897,7 +897,17 @@
     "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 ಮತ್ತು ಇನ್ನಷ್ಟು ಜನರೊಂದಿಗೆ ಮಾತಾಡುವುದರಿಂದ 10 ಸಲ ಹೆಚ್ಚು ತಜ್ಞತೆಯನ್ನು ಪಡೆಯಿರಿ.",
     "home_view__sample_prompt__explore_more": "AI ಪ್ರಾಂಪ್ಟ್ ಲೈಬ್ರರಿಯನ್ನು ಅನ್ವೇಷಿಸಿ",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "ಕ್ಲೋಡ್ ನೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಪಡೆಯಿರಿ, ವೇಬ್ ಪ್ರವೇಶದ ಜ್ಞಾನ ಮತ್ತು ಉದಾಹರಣೆಗಳೊಂದಿಗೆ ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT ನೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಪಡೆಯಿರಿ, ವೇಬ್ ಪ್ರವೇಶದ ಜ್ಞಾನ ಮತ್ತು ಉದಾಹರಣೆಗಳೊಂದಿಗೆ ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT ನೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಪಡೆಯಿರಿ, ವೇಬ್ ಪ್ರವೇಶದ ಜ್ಞಾನ ಮತ್ತು ಉದಾಹರಣೆಗಳೊಂದಿಗೆ ತಕ್ಷಣ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
+    "popup__pdf_page__title": "MaxAI PDF AI ವೀಕ್ಷಕವನ್ನು ಹೊಸದಾಗಿ ಸಕ್ರಿಯಗೊಳಿಸುವುದು ಹೇಗೆ?",
+    "popup__pdf_page__step1__description1": "ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ಈ ಹೆಚ್ಚಿನ ಪ್ರವೇಶಿಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ",
+    "popup__pdf_page__step1__description2": "\"PDF AI ವೀಕ್ಷಕ\"",
+    "popup__pdf_page__step1__description3": " ವಿಸ್ತರಣೆ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ",
+    "popup__pdf_page__step2__description1": "ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ಈ ಹೆಚ್ಚಿನ ಪ್ರವೇಶಿಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ",
+    "popup__pdf_page__step2__description2": "\"ಫೈಲ್ ಯುಆರ್‌ಎಲ್‌ಗೆ ಪ್ರವೇಶ ಅನುಮತಿ\"",
+    "popup__pdf_page__step2__description3": " ಕ್ರೋಮ್ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ",
+    "popup__pdf_page__step3__description": "ಹೊಸದಾಗಿ ಸಕ್ರಿಯಗೊಳಿಸಲು, ನೀವು ಬ್ರೌಸರ್‌ನಲ್ಲಿ PDF ಹಾಕಿ ತೆರೆಯಿರಿ ಮತ್ತು ತೆರೆದಾಗ MaxAI PDF AI ವೀಕ್ಷಕವನ್ನು ಬಳಸಿ",
+    "popup__pdf_page__tip": "ಪ್ರೊ ಟಿಪ್: ಪಿಡಿಎಫ್ ಫೈಲ್‌ಗಳ ಮೇಲೆ ವಿಸ್ತರಣೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು, \"PDF AI ವೀಕ್ಷಕ\" ಮತ್ತು \"ಫೈಲ್ ಯುಆರ್‌ಎಲ್‌ಗೆ ಪ್ರವೇಶ ಅನುಮತಿ\" ಎಂಬ ಎರಡೂ ಸಕ್ರಿಯಗೊಂಡಿರುವುದನ್ನು ಖಚಿತಪಡಿಸಿ",
+    "popup__pdf_page__button": "\"PDF AI ವೀಕ್ಷಕ\" ಸಕ್ರಿಯಗೊಳಿಸಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

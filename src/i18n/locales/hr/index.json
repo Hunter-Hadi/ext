@@ -897,7 +897,17 @@
     "home_view__chat__description": "Istražujte 10 puta brže razgovarajući s GPT-4o, Claude 3, Gemini 1.5 i drugima.",
     "home_view__sample_prompt__explore_more": "Istražite biblioteku AI uputa",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Dobijte trenutne odgovore uz pristup webu u stvarnom vremenu, znanju i citatima s Claudeom.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dobijte trenutne odgovore uz pristup webu u stvarnom vremenu, znanju i citatima s ChatGPT-om."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Dobijte trenutne odgovore uz pristup webu u stvarnom vremenu, znanju i citatima s ChatGPT-om.",
+    "popup__pdf_page__title": "Kako aktivirati MaxAI PDF AI preglednik?",
+    "popup__pdf_page__step1__description1": "Korak 1: Omogući ",
+    "popup__pdf_page__step1__description2": "\"PDF Al preglednik\"",
+    "popup__pdf_page__step1__description3": " u postavkama proširenja",
+    "popup__pdf_page__step2__description1": "Korak 2: Omogući ",
+    "popup__pdf_page__step2__description2": "\"Dopusti pristup URL-ovima datoteka\"",
+    "popup__pdf_page__step2__description3": " u postavkama Chromea",
+    "popup__pdf_page__step3__description": "Korak 3: Povuci i otvori PDF u pregledniku da biste koristili MaxAI PDF AI preglednik",
+    "popup__pdf_page__tip": "Pro savjet: Provjerite jesu li omogućeni \"PDF AI preglednik\" i \"Dopusti pristup URL-ovima datoteka\" kako biste aktivirali proširenje na PDF datotekama.",
+    "popup__pdf_page__button": "Omogući \"PDF AI preglednik\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

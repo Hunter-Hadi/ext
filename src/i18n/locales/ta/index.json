@@ -897,7 +897,17 @@
     "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 முதலியவர்களுடன் உரையாடி 10 மடங்கு விஞ்ஞானத்தை ஆராய்ந்து படிக்கலாம்.",
     "home_view__sample_prompt__explore_more": "AI உதவி நூலகத்தை ஆராய்க",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "கிளோடு மூலம் உண்மையான நிகழ்வுகளை, நேரடி வலைப்பதிவுகளை, மற்றும் மேற்கோள்களைப் பெறுங்கள்.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT மூலம் உண்மையான நிகழ்வுகளை, நேரடி வலைப்பதிவுகளை, மற்றும் மேற்கோள்களைப் பெறுங்கள்."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT மூலம் உண்மையான நிகழ்வுகளை, நேரடி வலைப்பதிவுகளை, மற்றும் மேற்கோள்களைப் பெறுங்கள்.",
+    "popup__pdf_page__title": "MaxAI பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை செயலிப்பது எப்படி?",
+    "popup__pdf_page__step1__description1": "படிவத்தை இயக்குங்கள் ",
+    "popup__pdf_page__step1__description2": "\"பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை\"",
+    "popup__pdf_page__step1__description3": " நீக்கும் நிலைகளில்",
+    "popup__pdf_page__step2__description1": "படிவத்தை இயக்குங்கள் ",
+    "popup__pdf_page__step2__description2": "\"கோப்பு URL-க்கு அனுமதி செய்ய\"",
+    "popup__pdf_page__step2__description3": " Chrome நிரல் நிரல் நிலைகளில்",
+    "popup__pdf_page__step3__description": "படியை இழுத்து மீட்டமைக்கவும் மேலும் பிரௌட்டரில் மேற்கொள்ள MaxAI பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை பயன்படுத்துங்கள்",
+    "popup__pdf_page__tip": "முன்னர் உறுதிப்படுத்துவதற்கு உறுதிப்படுத்தப்பட்டுள்ள \"பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை\" மற்றும் \"கோப்பு URL-க்கு அனுமதி செய்ய\" இருக்கும் என்பதை உறுதிப்படுத்தவும்.",
+    "popup__pdf_page__button": "\"பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை\" இயக்குங்கள்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

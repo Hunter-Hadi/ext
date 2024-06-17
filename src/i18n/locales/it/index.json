@@ -897,7 +897,17 @@
     "home_view__chat__description": "Ricerca 10 volte più veloce chattando con GPT-4o, Claude 3, Gemini 1.5 e altri.",
     "home_view__sample_prompt__explore_more": "Esplora la libreria di prompt AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Ottieni risposte istantanee con accesso web in tempo reale, conoscenza e citazioni con Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Ottieni risposte istantanee con accesso web in tempo reale, conoscenza e citazioni con ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Ottieni risposte istantanee con accesso web in tempo reale, conoscenza e citazioni con ChatGPT.",
+    "popup__pdf_page__title": "Come attivare MaxAI PDF AI viewer?",
+    "popup__pdf_page__step1__description1": "Passaggio 1: Abilita ",
+    "popup__pdf_page__step1__description2": "\"Visualizzatore PDF Al\"",
+    "popup__pdf_page__step1__description3": " nelle impostazioni dell'estensione",
+    "popup__pdf_page__step2__description1": "Passaggio 2: Abilita ",
+    "popup__pdf_page__step2__description2": "\"Consenti l'accesso agli URL dei file\"",
+    "popup__pdf_page__step2__description3": " nelle impostazioni di Chrome",
+    "popup__pdf_page__step3__description": "Passaggio 3: Trascina e apri il PDF nel tuo browser per utilizzare MaxAI PDF AI viewer",
+    "popup__pdf_page__tip": "Suggerimento professionale: Assicurati che sia abilitato sia \"Visualizzatore PDF AI\" che \"Consenti l'accesso agli URL dei file\" per attivare l'estensione sui file PDF.",
+    "popup__pdf_page__button": "Abilita \"Visualizzatore PDF AI\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

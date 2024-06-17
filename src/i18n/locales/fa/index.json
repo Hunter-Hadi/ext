@@ -897,7 +897,17 @@
     "home_view__chat__description": "با گپ زدن با GPT-4o، Claude 3، Gemini 1.5 و بیشتر، تحقیقات خود را 10 برابر سریعتر انجام دهید.",
     "home_view__sample_prompt__explore_more": "کتابخانه پیشنهادهای هوش مصنوعی را کاوش کنید",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "با کلود، پاسخ‌های فوری با دسترسی به وب در زمان واقعی، دانش و نقل قول را دریافت کنید.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "با ChatGPT، پاسخ‌های فوری با دسترسی به وب در زمان واقعی، دانش و نقل قول را دریافت کنید."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "با ChatGPT، پاسخ‌های فوری با دسترسی به وب در زمان واقعی، دانش و نقل قول را دریافت کنید.",
+    "popup__pdf_page__title": "چگونه نمایشگر هوش مصنوعی PDF MaxAI را فعال کنیم؟",
+    "popup__pdf_page__step1__description1": "مرحله ۱: فعال کردن ",
+    "popup__pdf_page__step1__description2": "\"نمایشگر PDF Al\"",
+    "popup__pdf_page__step1__description3": " در تنظیمات افزونه",
+    "popup__pdf_page__step2__description1": "مرحله ۲: فعال کردن ",
+    "popup__pdf_page__step2__description2": "\"اجازه دسترسی به URL های فایل\"",
+    "popup__pdf_page__step2__description3": " در تنظیمات Chrome",
+    "popup__pdf_page__step3__description": "مرحله ۳: فایل PDF را بکشید و در مرورگر خود باز کنید تا از نمایشگر هوش مصنوعی PDF MaxAI استفاده کنید",
+    "popup__pdf_page__tip": "نکته حرفه‌ای: برای فعال کردن افزونه در فایل‌های PDF، هر دو \"نمایشگر هوش مصنوعی PDF\" و \"اجازه دسترسی به URL های فایل\" را فعال کنید.",
+    "popup__pdf_page__button": "فعال کردن \"نمایشگر هوش مصنوعی PDF\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -897,7 +897,17 @@
     "home_view__chat__description": "Tafiti kwa kasi mara 10 zaidi kwa kuzungumza na GPT-4o, Claude 3, Gemini 1.5, na wengine.",
     "home_view__sample_prompt__explore_more": "Chunguza maktaba ya mada za AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Pata majibu ya papo hapo na ufikiaji wa wavuti halisi, maarifa, na marejeo kwa kutumia Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Pata majibu ya papo hapo na ufikiaji wa wavuti halisi, maarifa, na marejeo kwa kutumia ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Pata majibu ya papo hapo na ufikiaji wa wavuti halisi, maarifa, na marejeo kwa kutumia ChatGPT.",
+    "popup__pdf_page__title": "Jinsi ya kuamsha Mwangaza wa PDF wa MaxAI?",
+    "popup__pdf_page__step1__description1": "Hatua ya 1: Wezesha ",
+    "popup__pdf_page__step1__description2": "\"Mwangaza wa PDF\"",
+    "popup__pdf_page__step1__description3": " katika mipangilio ya nyongeza",
+    "popup__pdf_page__step2__description1": "Hatua ya 2: Wezesha ",
+    "popup__pdf_page__step2__description2": "\"Ruhusu upatikanaji wa URL za faili\"",
+    "popup__pdf_page__step2__description3": " katika mipangilio ya Chrome",
+    "popup__pdf_page__step3__description": "Hatua ya 3: Buruta na fungua PDF kwenye kivinjari chako ili kutumia Mwangaza wa PDF wa MaxAI",
+    "popup__pdf_page__tip": "Sifa ya Juu: Hakikisha \"Mwangaza wa PDF\" na \"Ruhusu upatikanaji wa URL za faili\" zimeamilishwa ili kuamsha nyongeza kwenye faili za PDF.",
+    "popup__pdf_page__button": "Wezesha \"Mwangaza wa PDF\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -255,6 +255,10 @@ const init = async () => {
           throw new Error('isSpecialPage')
         }
       }
+      if (isPDFPage) {
+        // 浏览器默认pdf page
+        throw new Error('isPDFPage')
+      }
 
       if (tabId) {
         await Browser.tabs.sendMessage(tabId, {})

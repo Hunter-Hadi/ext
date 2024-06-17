@@ -897,7 +897,17 @@
     "home_view__chat__description": "Uurige 10 korda kiiremini, vesteldes GPT-4o, Claude 3, Gemini 1.5 ja teistega.",
     "home_view__sample_prompt__explore_more": "Uurige AI käivituslaadurit lähemalt",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Saage kohe vastuseid reaalajas veebipääsuga, teadmistega ja viidetega Claude'iga.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Saage kohe vastuseid reaalajas veebipääsuga, teadmistega ja viidetega ChatGPT-ga."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Saage kohe vastuseid reaalajas veebipääsuga, teadmistega ja viidetega ChatGPT-ga.",
+    "popup__pdf_page__title": "Kuidas aktiveerida MaxAI PDF AI vaatur?",
+    "popup__pdf_page__step1__description1": "Samm 1: Luba ",
+    "popup__pdf_page__step1__description2": "\"PDF Al vaatur\"",
+    "popup__pdf_page__step1__description3": " laienduse seadetes",
+    "popup__pdf_page__step2__description1": "Samm 2: Luba ",
+    "popup__pdf_page__step2__description2": "\"Luba juurdepääs failide URL-idele\"",
+    "popup__pdf_page__step2__description3": " Chrome'i seadetes",
+    "popup__pdf_page__step3__description": "Samm 3: Lohista ja ava PDF oma brauseris, et kasutada MaxAI PDF AI vaaturit",
+    "popup__pdf_page__tip": "Pro näpunäide: Veendu, et nii \"PDF AI vaatur\" kui ka \"Luba juurdepääs failide URL-idele\" oleksid lubatud, et laiendus PDF-failidel aktiveeruks.",
+    "popup__pdf_page__button": "Luba \"PDF AI vaatur\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

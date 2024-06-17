@@ -897,7 +897,17 @@
     "home_view__chat__description": "Forskning 10x hurtigere ved at chatte med GPT-4o, Claude 3, Gemini 1.5 og mere.",
     "home_view__sample_prompt__explore_more": "Udforsk AI prompt bibliotek",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Få øjeblikkelige svar med realtids webadgang, viden og citater med Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Få øjeblikkelige svar med realtids webadgang, viden og citater med ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Få øjeblikkelige svar med realtids webadgang, viden og citater med ChatGPT.",
+    "popup__pdf_page__title": "Sådan aktiveres MaxAI PDF AI-visning?",
+    "popup__pdf_page__step1__description1": "Trin 1: Aktivér ",
+    "popup__pdf_page__step1__description2": "\"PDF Al-visning\"",
+    "popup__pdf_page__step1__description3": " i udvidelsesindstillinger",
+    "popup__pdf_page__step2__description1": "Trin 2: Aktivér ",
+    "popup__pdf_page__step2__description2": "\"Tillad adgang til fil-URL'er\"",
+    "popup__pdf_page__step2__description3": " i Chrome-indstillinger",
+    "popup__pdf_page__step3__description": "Trin 3: Træk og åbn PDF'en i din browser for at bruge MaxAI PDF AI-visning",
+    "popup__pdf_page__tip": "Pro Tip: Sørg for at både \"PDF AI-visning\" og \"Tillad adgang til fil-URL'er\" er aktiveret for at aktivere udvidelsen på PDF-filer.",
+    "popup__pdf_page__button": "Aktivér \"PDF AI-visning\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

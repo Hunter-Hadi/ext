@@ -897,7 +897,17 @@
     "home_view__chat__description": "Investiga 10 veces más rápido chateando con GPT-4o, Claude 3, Gemini 1.5 y más.",
     "home_view__sample_prompt__explore_more": "Explorar biblioteca de sugerencias de IA",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Obtén respuestas instantáneas con acceso web en tiempo real, conocimiento y citas con Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obtén respuestas instantáneas con acceso web en tiempo real, conocimiento y citas con ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obtén respuestas instantáneas con acceso web en tiempo real, conocimiento y citas con ChatGPT.",
+    "popup__pdf_page__title": "¿Cómo activar el visor de IA de PDF de MaxAI?",
+    "popup__pdf_page__step1__description1": "Paso 1: Habilita ",
+    "popup__pdf_page__step1__description2": "\"Visor de IA de PDF\"",
+    "popup__pdf_page__step1__description3": " en la configuración de la extensión",
+    "popup__pdf_page__step2__description1": "Paso 2: Habilita ",
+    "popup__pdf_page__step2__description2": "\"Permitir acceso a URL de archivos\"",
+    "popup__pdf_page__step2__description3": " en la configuración de Chrome",
+    "popup__pdf_page__step3__description": "Paso 3: Arrastra y abre el PDF en tu navegador para usar el visor de IA de PDF de MaxAI",
+    "popup__pdf_page__tip": "Consejo profesional: Asegúrate de habilitar tanto \"Visor de IA de PDF\" como \"Permitir acceso a URL de archivos\" para activar la extensión en archivos PDF.",
+    "popup__pdf_page__button": "Habilitar \"Visor de IA de PDF\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

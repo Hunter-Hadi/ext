@@ -897,7 +897,17 @@
     "home_view__chat__description": "Исследуйте в 10 раз быстрее, общаясь с GPT-4o, Claude 3, Gemini 1.5 и другими.",
     "home_view__sample_prompt__explore_more": "Изучить библиотеку AI подсказок",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Получите мгновенные ответы с доступом к вебу в режиме реального времени, знаниями и цитатами с помощью Клода.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Получите мгновенные ответы с доступом к вебу в режиме реального времени, знаниями и цитатами с помощью ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Получите мгновенные ответы с доступом к вебу в режиме реального времени, знаниями и цитатами с помощью ChatGPT.",
+    "popup__pdf_page__title": "Как активировать просмотрщик MaxAI PDF AI?",
+    "popup__pdf_page__step1__description1": "Шаг 1: Включите ",
+    "popup__pdf_page__step1__description2": "\"Просмотрщик PDF Al\"",
+    "popup__pdf_page__step1__description3": " в настройках расширения",
+    "popup__pdf_page__step2__description1": "Шаг 2: Включите ",
+    "popup__pdf_page__step2__description2": "\"Разрешить доступ к URL-адресам файлов\"",
+    "popup__pdf_page__step2__description3": " в настройках Chrome",
+    "popup__pdf_page__step3__description": "Шаг 3: Перетащите и откройте PDF-файл в браузере, чтобы использовать просмотрщик MaxAI PDF AI",
+    "popup__pdf_page__tip": "Совет: Убедитесь, что и \"Просмотрщик PDF AI\", и \"Разрешить доступ к URL-адресам файлов\" включены для активации расширения на PDF-файлах.",
+    "popup__pdf_page__button": "Включить \"Просмотрщик PDF AI\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

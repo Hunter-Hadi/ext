@@ -897,7 +897,17 @@
     "home_view__chat__description": "Kutass 10-szer gyorsabban a GPT-4o, Claude 3, Gemini 1.5 és másokkal való csevegéssel.",
     "home_view__sample_prompt__explore_more": "Fedezze fel az AI prompt könyvtárat",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Azonnali válaszokat kaphat valós idejű webhelyhozzáféréssel, ismeretekkel és hivatkozásokkal Claude segítségével.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Azonnali válaszokat kaphat valós idejű webhelyhozzáféréssel, ismeretekkel és hivatkozásokkal ChatGPT segítségével."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Azonnali válaszokat kaphat valós idejű webhelyhozzáféréssel, ismeretekkel és hivatkozásokkal ChatGPT segítségével.",
+    "popup__pdf_page__title": "Hogyan aktiválhatom a MaxAI PDF AI nézőt?",
+    "popup__pdf_page__step1__description1": "1. lépés: Engedélyezze a",
+    "popup__pdf_page__step1__description2": "\"PDF AI nézőt\"",
+    "popup__pdf_page__step1__description3": "a bővítmény beállításaiban",
+    "popup__pdf_page__step2__description1": "2. lépés: Engedélyezze a",
+    "popup__pdf_page__step2__description2": "\"Fájl URL-ek hozzáférését\"",
+    "popup__pdf_page__step2__description3": "a Chrome beállításaiban",
+    "popup__pdf_page__step3__description": "3. lépés: Húzza és nyissa meg a PDF-t a böngészőben a MaxAI PDF AI néző használatához",
+    "popup__pdf_page__tip": "Pro Tipp: Győződjön meg róla, hogy mind a \"PDF AI néző\", mind a \"Fájl URL-ek hozzáférése\" engedélyezve van a bővítmény aktiválásához a PDF fájlokon.",
+    "popup__pdf_page__button": "Engedélyezze a \"PDF AI nézőt\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

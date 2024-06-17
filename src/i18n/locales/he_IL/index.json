@@ -897,7 +897,17 @@
     "home_view__chat__description": "מחקר במהירות 10 פעמים יותר על ידי שיחה עם GPT-4o, Claude 3, Gemini 1.5 ועוד.",
     "home_view__sample_prompt__explore_more": "חקור את ספריית הפרומפטים של AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "קבל תשובות מיידיות עם גישה לרשת בזמן אמת, ידע וציטוטים עם Claude.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "קבל תשובות מיידיות עם גישה לרשת בזמן אמת, ידע וציטוטים עם ChatGPT."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "קבל תשובות מיידיות עם גישה לרשת בזמן אמת, ידע וציטוטים עם ChatGPT.",
+    "popup__pdf_page__title": "כיצד להפעיל את מציג ה-PDF של MaxAI?",
+    "popup__pdf_page__step1__description1": "שלב 1: הפעל ",
+    "popup__pdf_page__step1__description2": "\"מציג PDF Al\"",
+    "popup__pdf_page__step1__description3": " בהגדרות התוסף",
+    "popup__pdf_page__step2__description1": "שלב 2: הפעל ",
+    "popup__pdf_page__step2__description2": "\"אפשר גישה לכתובות URL של קבצים\"",
+    "popup__pdf_page__step2__description3": " בהגדרות Chrome",
+    "popup__pdf_page__step3__description": "שלב 3: גרור ופתח את ה-PDF בדפדפן שלך כדי להשתמש במציג ה-PDF של MaxAI",
+    "popup__pdf_page__tip": "טיפ מקצועי: וודא ששני האפשרויות \"מציג PDF AI\" ו\"אפשר גישה לכתובות URL של קבצים\" מופעלות כדי להפעיל את התוסף על קבצי PDF.",
+    "popup__pdf_page__button": "הפעל \"מציג PDF AI\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

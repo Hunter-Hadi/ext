@@ -897,7 +897,17 @@
     "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 এবং আরো সাথে কথা বলে 10 গুন দ্রুত গবেষণা করুন।",
     "home_view__sample_prompt__explore_more": "আরও AI প্রম্পট লাইব্রেরি অন্বেষণ করুন",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "ক্লোড দিয়ে সত্যিকারের সময়সাপেক্ষ ওয়েব অ্যাক্সেস, জ্ঞান এবং উদ্ধৃতি দিয়ে তাৎক্ষণিক উত্তর পান।",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "চ্যাটজিপিটি দিয়ে সত্যিকারের সময়সাপেক্ষ ওয়েব অ্যাক্সেস, জ্ঞান এবং উদ্ধৃতি দিয়ে তাৎক্ষণিক উত্তর পান।"
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "চ্যাটজিপিটি দিয়ে সত্যিকারের সময়সাপেক্ষ ওয়েব অ্যাক্সেস, জ্ঞান এবং উদ্ধৃতি দিয়ে তাৎক্ষণিক উত্তর পান।",
+    "popup__pdf_page__title": "ম্যাক্সএআই পিডিএফ এআই ভিউয়ার চালু করতে কিভাবে?",
+    "popup__pdf_page__step1__description1": "পদক্ষেপ ১: সক্রিয় করুন ",
+    "popup__pdf_page__step1__description2": "\"পিডিএফ এআই ভিউয়ার\"",
+    "popup__pdf_page__step1__description3": " এক্সটেনশন সেটিংসে",
+    "popup__pdf_page__step2__description1": "পদক্ষেপ ২: সক্রিয় করুন ",
+    "popup__pdf_page__step2__description2": "\"ফাইল URL-গুলি অ্যাক্সেস করার অনুমতি দিন\"",
+    "popup__pdf_page__step2__description3": " ক্রোম সেটিংসে",
+    "popup__pdf_page__step3__description": "পদক্ষেপ ৩: ম্যাক্সএআই পিডিএফ এআই ভিউয়ার ব্যবহার করতে পিডিএফটি টেনে আনুন এবং ব্রাউজারে খুলুন",
+    "popup__pdf_page__tip": "প্রো টিপ: পিডিএফ ফাইলে এক্সটেনশনটি চালু করতে নিশ্চিত করুন যে \"পিডিএফ এআই ভিউয়ার\" এবং \"ফাইল URL-গুলি অ্যাক্সেস করার অনুমতি দিন\" উভয়ই সক্রিয় আছে।",
+    "popup__pdf_page__button": "\"পিডিএফ এআই ভিউয়ার\" সক্ষম করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

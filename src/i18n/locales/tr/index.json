@@ -897,7 +897,17 @@
     "home_view__chat__description": "GPT-4o, Claude 3, Gemini 1.5 ve daha fazlasıyla sohbet ederek 10 kat daha hızlı araştırma yapın.",
     "home_view__sample_prompt__explore_more": "AI prompt kütüphanesini keşfedin",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Claude ile gerçek zamanlı web erişimi, bilgi ve alıntılarla anında cevaplar alın.",
-    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT ile gerçek zamanlı web erişimi, bilgi ve alıntılarla anında cevaplar alın."
+    "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT ile gerçek zamanlı web erişimi, bilgi ve alıntılarla anında cevaplar alın.",
+    "popup__pdf_page__title": "MaxAI PDF AI görüntüleyiciyi nasıl etkinleştiririm?",
+    "popup__pdf_page__step1__description1": "Adım 1: Uzantı ayarlarında ",
+    "popup__pdf_page__step1__description2": "\"PDF Al görüntüleyici\"",
+    "popup__pdf_page__step1__description3": " özelliğini etkinleştirin",
+    "popup__pdf_page__step2__description1": "Adım 2: Chrome ayarlarında ",
+    "popup__pdf_page__step2__description2": "\"Dosya URL'lerine erişime izin ver\"",
+    "popup__pdf_page__step2__description3": " özelliğini etkinleştirin",
+    "popup__pdf_page__step3__description": "Adım 3: MaxAI PDF AI görüntüleyiciyi kullanmak için tarayıcınızda PDF'yi sürükleyip açın",
+    "popup__pdf_page__tip": "İpucu: Uzantıyı PDF dosyalarında etkinleştirmek için hem \"PDF AI görüntüleyici\" hem de \"Dosya URL'lerine erişime izin ver\" özelliklerinin etkin olduğundan emin olun.",
+    "popup__pdf_page__button": "\"PDF AI görüntüleyici\"yi etkinleştir"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

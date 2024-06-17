@@ -3,9 +3,17 @@ import last from 'lodash-es/last'
 import { v4 as uuidV4 } from 'uuid'
 
 import {
+  OUTPUT_CHAT_COMPLETE,
+  VARIABLE_AI_RESPONSE_LANGUAGE,
+  VARIABLE_AI_RESPONSE_TONE,
+  VARIABLE_AI_RESPONSE_WRITING_STYLE,
+  VARIABLE_SELECTED_TEXT,
+} from '@/background/defaultPromptsData/systemVariables'
+import {
   checkIsThirdPartyAIProvider,
   clientAskAIQuestion,
 } from '@/background/src/chat/util'
+import { CHAT__AI_MODEL__SUGGESTION__PROMPT_ID } from '@/constants'
 import {
   authEmitPricingHooksLog,
   generateQuestionAnalyticsData,
@@ -101,22 +109,9 @@ export class ActionAskChatGPT extends Action {
       const messageId =
         this.parameters.AskChatGPTActionQuestion?.messageId || uuidV4()
       // 设置请求的Prompt action
-      const MaxAIPromptActionConfig =
+      let MaxAIPromptActionConfig =
         this.parameters.MaxAIPromptActionConfig ||
         this.question?.meta?.MaxAIPromptActionConfig
-      /**
-       * 用户点击的推荐的AI model
-       */
-      const MaxAISuggestionAIModel = params.MAXAI_SUGGESTION_AI_MODEL
-      if (MaxAISuggestionAIModel) {
-        // 正常的聊天，但是用户点了suggest AI model
-        if (!MaxAIPromptActionConfig) {
-          // 暂时不需要做额外的处理
-        } else {
-          // 如果是MaxAI prompt action，需要设置AIModel
-          MaxAIPromptActionConfig.AIModel = MaxAISuggestionAIModel
-        }
-      }
       this.question = {
         type: 'user',
         ...this.parameters.AskChatGPTActionQuestion,
@@ -124,6 +119,35 @@ export class ActionAskChatGPT extends Action {
         messageId,
         text,
       }
+      /**
+       * 用户点击的推荐的AI model
+       */
+      const MaxAISuggestionAIModel = params.MAXAI_SUGGESTION_AI_MODEL
+      if (MaxAISuggestionAIModel) {
+        // 正常的聊天，但是用户点了suggest AI model
+        if (!MaxAIPromptActionConfig) {
+          // 设置成Freestyle的MaxAI prompt action
+          MaxAIPromptActionConfig = {
+            promptId: CHAT__AI_MODEL__SUGGESTION__PROMPT_ID,
+            promptName: '[Chat] freestyle ',
+            promptActionType: 'chat_complete',
+            variables: [
+              {
+                ...VARIABLE_SELECTED_TEXT,
+                defaultValue: this.question.text,
+              },
+              VARIABLE_AI_RESPONSE_LANGUAGE,
+              VARIABLE_AI_RESPONSE_WRITING_STYLE,
+              VARIABLE_AI_RESPONSE_TONE,
+            ],
+            output: [OUTPUT_CHAT_COMPLETE],
+          }
+        } else {
+          // 如果是MaxAI prompt action，需要设置AIModel
+          MaxAIPromptActionConfig.AIModel = MaxAISuggestionAIModel
+        }
+      }
+
       /**
        * 因为会被parametersParserDecorator处理，所以这里要把attachmentExtractedContents的值转换成string
        */

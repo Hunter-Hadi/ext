@@ -6,7 +6,7 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
-import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
+import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -135,7 +135,7 @@ const YouTubeSummaryButton: FC = () => {
         </Button>
       </TextOnlyTooltip>
       {summaryButtonContainer && (
-        <OnboardingTooltipTempPortal
+        <OnboardingTooltipPortal
           sceneType='YOUTUBE_SUMMARY_BUTTON'
           container={summaryButtonContainer}
         />

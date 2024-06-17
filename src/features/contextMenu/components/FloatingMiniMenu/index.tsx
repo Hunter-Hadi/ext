@@ -31,7 +31,7 @@ import {
   removeAllRange,
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
-import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
+import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import useCommands from '@/hooks/useCommands'
 
 const FloatingMiniMenu: FC<{
@@ -322,7 +322,7 @@ const FloatingMiniMenu: FC<{
         />
         <FloatingContextMenuMiniMenuMoreButton placement={placement} />
       </Stack>
-      <OnboardingTooltipTempPortal
+      <OnboardingTooltipPortal
         showStateTrigger={show}
         sceneType='CONTEXT_MENU_CTA_BUTTON'
       />

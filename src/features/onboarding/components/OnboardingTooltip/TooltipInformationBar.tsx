@@ -15,7 +15,7 @@ export interface ITooltipInformationBarProps {
   sx?: SxProps
 }
 
-const TooltipInformationBar: FC<
+export const TooltipInformationBar: FC<
   PropsWithChildren<ITooltipInformationBarProps>
 > = (props) => {
   const { shortcut, learnMoreLink, sx } = props
@@ -90,8 +90,6 @@ const TooltipInformationBar: FC<
     </Stack>
   )
 }
-
-export default TooltipInformationBar
 
 // TODO: refine
 const ShortcutKeyBox: FC<{

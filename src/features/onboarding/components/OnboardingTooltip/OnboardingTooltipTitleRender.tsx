@@ -11,9 +11,9 @@ interface IOnboardingTooltipTitleRenderProps {
   sceneType: IOnBoardingSceneType
 }
 
-const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
-  sceneType,
-}) => {
+export const OnboardingTooltipTitleRender: FC<
+  IOnboardingTooltipTitleRenderProps
+> = ({ sceneType }) => {
   const { t } = useTranslation(['prompt', 'onboarding'])
 
   if (sceneType === 'FLOATING_CONTEXT_MENU_INPUT_BOX') {
@@ -114,8 +114,6 @@ const OnboardingTooltipTitleRender: FC<IOnboardingTooltipTitleRenderProps> = ({
 
   return null
 }
-
-export default OnboardingTooltipTitleRender
 
 // TODO: refine
 const ShortcutKeyBox: FC<{

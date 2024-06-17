@@ -14,8 +14,6 @@ export const maxAIRequestBodyPromptActionGenerator = async (
 ) => {
   try {
     const clonePostBody: any = cloneDeep(originalPostBody)
-    // 去掉message_content
-    delete clonePostBody.message_content
     clonePostBody.prompt_id = promptActionConfig?.promptId
     clonePostBody.prompt_name = promptActionConfig?.promptName
     clonePostBody.prompt_action_type =

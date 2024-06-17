@@ -135,7 +135,7 @@ export const SUMMARY__CITATION__PROMPT_ID =
 export const NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID =
   '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a' // [Summary] tokens have reached maximum limit
 
-export const CHAT__AI_MODEL__SUGGESTION__PROMPT_ID = `b4b29137-54a8-4cc3-a7e1-2466e6e118fd`
+export const CHAT__AI_MODEL__SUGGESTION__PROMPT_ID = `90bb5983-9912-4b2a-8d5b-1b2510d857b6`
 
 /**
  * ChatGPT Webapp Hosts

@@ -7,7 +7,6 @@ import {
   VARIABLE_AI_RESPONSE_LANGUAGE,
   VARIABLE_AI_RESPONSE_TONE,
   VARIABLE_AI_RESPONSE_WRITING_STYLE,
-  VARIABLE_SELECTED_TEXT,
 } from '@/background/defaultPromptsData/systemVariables'
 import {
   checkIsThirdPartyAIProvider,
@@ -203,12 +202,17 @@ export class ActionAskChatGPT extends Action {
           // 设置成Freestyle的MaxAI prompt action
           MaxAIPromptActionConfig = {
             promptId: CHAT__AI_MODEL__SUGGESTION__PROMPT_ID,
-            promptName: '[Chat] AI model suggestion ',
+            promptName: 'GetLLMResponse',
             promptActionType: 'chat_complete',
             variables: [
               {
-                ...VARIABLE_SELECTED_TEXT,
-                defaultValue: this.question.text,
+                VariableName: 'CURRENT_PROMPT',
+                label: 'the input prompt for the LLM',
+                valueType: 'Text',
+                placeholder: 'the input prompt for the LLM',
+                defaultValue: '',
+                systemVariable: true,
+                hidden: true,
               },
               VARIABLE_AI_RESPONSE_LANGUAGE,
               VARIABLE_AI_RESPONSE_WRITING_STYLE,

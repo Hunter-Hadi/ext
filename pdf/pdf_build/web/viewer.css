@@ -1232,9 +1232,9 @@ select {
 #outerContainer {
   width: 100%;
   height: 100%;
-  position: relative;
-  container: outContainer / inline-size;
-  z-index: 1;
+  /*position: relative;*/
+  /*container: outContainer / inline-size;*/
+  /*z-index: 1;*/
 }
 
 [dir='ltr'] #sidebarContainer {

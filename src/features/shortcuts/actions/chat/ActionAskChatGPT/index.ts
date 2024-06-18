@@ -199,8 +199,11 @@ export class ActionAskChatGPT extends Action {
       const MaxAISuggestionAIModel = params.MAXAI_SUGGESTION_AI_MODEL
       if (MaxAISuggestionAIModel) {
         // 如果用户直接打字聊天，isEnableAIResponseLanguage是false
-        // 此时点击了suggest AI model，需要设置成true，要不然不会检测AI response language
-        isEnableAIResponseLanguage = true
+        // 如果用户用prompt，isEnableAIResponseLanguage有可能是false, 例如English/Chinese/Spanish等
+        // 此时点击了suggest AI model，并且没有用prompt, 需要设置成true，需要检测/使用用户设置的AI response language
+        if (!contextMenu?.id) {
+          isEnableAIResponseLanguage = true
+        }
         // 正常的聊天，但是用户点了suggest AI model
         if (!MaxAIPromptActionConfig) {
           // 设置成Freestyle的MaxAI prompt action

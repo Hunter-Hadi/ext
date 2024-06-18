@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
+import { checkIsThirdPartyAIProvider } from '@/background/src/chat/util'
 import {
   IUserCurrentPlan,
   useUserInfo,
@@ -106,7 +107,11 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
       return null
     }
     const conversationModel = clientConversation?.meta.AIModel || ''
-    const models = getAIModels(currentUserPlan, conversationModel)
+    const AIProvider = clientConversation?.meta.AIProvider || ''
+    // TODO 第三方AIProvider不显示AIModel的推荐
+    const models = checkIsThirdPartyAIProvider(AIProvider)
+      ? []
+      : getAIModels(currentUserPlan, conversationModel)
     const suggestions = models.filter(
       (model) => model.AIModel !== messageAIModel,
     )

@@ -5,7 +5,7 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
@@ -92,6 +92,7 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
   const { currentUserPlan, loading } = useUserInfo()
   const { currentSidebarConversationType, clientConversation } =
     useClientConversation()
+  const [isShowSuggestions, setIsShowSuggestions] = useState(false)
   const messageAIModel = AIMessage.originalMessage?.metadata?.AIModel || ''
   const memoConfig = useMemo(() => {
     const isLastMessage =
@@ -138,7 +139,21 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
     loading,
     currentUserPlan,
     messageAIModel,
+    isShowSuggestions,
   ])
+  useEffect(() => {
+    if (clientConversation?.lastMessageId && clientConversation.id) {
+      getLastRunShortcuts(clientConversation.id).then((result) => {
+        if (result.lastRunActions.length > 0) {
+          setIsShowSuggestions(true)
+        } else {
+          setIsShowSuggestions(false)
+        }
+      })
+    } else {
+      setIsShowSuggestions(false)
+    }
+  }, [clientConversation?.lastMessageId, clientConversation?.id])
   if (!memoConfig) {
     return null
   }

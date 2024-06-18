@@ -159,28 +159,15 @@ export const clientFetchAPI = async <T = any>(
       },
     })
 
-    if (
-      options.method === 'GET' &&
-      response.data.redirected &&
-      response?.data?.response?.url
-    ) {
-      const redirectResponse = await port.postMessage({
-        event: 'Client_proxyFetchAPI',
-        data: {
-          url: response?.data?.response?.url,
-          options,
-          abortTaskId,
-        },
-      })
-      response.data.data = redirectResponse?.data?.data
-      response.data.response = redirectResponse?.data?.response
-    }
-
     if (options?.parse === 'blob' && response?.data?.data?.base64) {
       response.data.data = convertBase64ToBlob(
         response.data.data.base64,
         options?.blobContentType || response.data.data.contentType,
       )
+    }
+    // 搜狗引擎的防爬机制响应是 200 需要手动鉴别
+    if (response?.data?.response?.url.includes('www.sogou.com/antispider')) {
+      response.data.response.status = 301
     }
     return {
       success: response.success,

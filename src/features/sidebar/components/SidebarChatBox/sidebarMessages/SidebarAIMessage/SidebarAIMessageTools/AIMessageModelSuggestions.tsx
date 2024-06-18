@@ -100,7 +100,8 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
     if (
       currentSidebarConversationType !== 'Chat' ||
       loading ||
-      !isLastMessage
+      !isLastMessage ||
+      !isShowSuggestions
     ) {
       return null
     }

@@ -32,38 +32,56 @@ const clientGetContentOfURL = async (
     html: '',
     readabilityText: '',
   }
-  const html = ''
 
-  if (!html) {
-    const fetchHtml = async () => {
-      try {
-        const response = await clientFetchAPI(
-          url,
-          {
-            parse: 'text',
-          },
-          abortTaskId,
-        )
-        result.status = response.responseRaw?.status || 200
-        if (response.success && response.data) {
-          return response.data
-        }
-      } catch (e) {
-        return ''
-      }
-    }
-    result.html = await promiseTimeout(fetchHtml(), timeout, '')
-  }
   try {
-    const doc = parseHTML(result.html).document
-    const reader = new Readability(doc as any).parse()
-    result.title = reader?.title || ''
-    result.body = reader?.content || ''
-    result.readabilityText = reader?.textContent || ''
+    const fetchHtml = async (targetUrl: string) => {
+      const response = await clientFetchAPI(
+        targetUrl,
+        {
+          parse: 'text',
+        },
+        abortTaskId,
+      )
+      result.status = response.responseRaw?.status || 200
+      if (response.success && response.data) {
+        return response.data
+      }
+      throw new Error('Failed to fetch HTML content')
+    }
+
+    const fetchHtmlWithRedirection = async (
+      initialUrl: string,
+    ): Promise<string> => {
+      let htmlContent = await promiseTimeout(fetchHtml(initialUrl), timeout, '')
+      // 搜狗引擎部分页面会重定向，需要做二次请求抓取
+      if (initialUrl.includes('https://www.sogou.com')) {
+        const regex = /window\.location\.replace\("([^"]+)"\)/
+        const match = htmlContent.match(regex)
+        if (match && match[1]) {
+          console.log(`match && match[1]:`, match[1])
+          htmlContent = await promiseTimeout(fetchHtml(match[1]), timeout, '')
+        }
+      }
+      return htmlContent
+    }
+
+    result.html = await fetchHtmlWithRedirection(url)
+
+    const handleReader = (htmlContent: string) => {
+      const doc = parseHTML(htmlContent).document
+      const reader = new Readability(doc as any).parse()
+      result.title = reader?.title || ''
+      result.body = reader?.content || ''
+      result.readabilityText = reader?.textContent || ''
+    }
+
+    handleReader(result.html)
   } catch (e) {
-    console.log(e)
+    console.error(e)
     result.success = false
   }
+
   return result
 }
+
 export default clientGetContentOfURL

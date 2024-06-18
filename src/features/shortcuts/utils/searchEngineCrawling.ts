@@ -462,7 +462,8 @@ const CrawlingResultsWithEngine = (
           // sogou 特殊处理
           // 如果url是 / 开头，需要拼接 location.origin
           let url = extractRealUrl(titleElement.attr('href') ?? '')
-          url = url.startsWith('/') ? location.origin + url : url
+          const baseDomain = 'https://www.sogou.com'
+          url = url.startsWith('/') ? baseDomain + url : url
 
           const fromTextArr = element
             .find('.citeurl')

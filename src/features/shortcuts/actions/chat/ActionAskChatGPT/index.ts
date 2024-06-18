@@ -507,26 +507,32 @@ export class ActionAskChatGPT extends Action {
         try {
           const outputTemplate = this.parameters.outputTemplate || ''
           await clientAskAIQuestion(this.question!, {
-            onMessage: async (message) => {
-              this.log.info('message', message)
+            onMessage: async (AIResponseMessage) => {
+              this.log.info('message', AIResponseMessage)
+              const AIResponseMessageText =
+                AIResponseMessage.originalMessage?.content?.text ||
+                AIResponseMessage.text ||
+                ''
+              // 渲染最终的AI response的消息和Action的结果
               const outputMessageText = outputTemplate
                 ? (
                     await this.parseTemplate(outputTemplate, {
                       ...params,
-                      ACTION_OUTPUT: message.text,
+                      ACTION_OUTPUT: AIResponseMessageText,
                     })
                   ).data
-                : message.text
+                : AIResponseMessageText
               // 从2024-06-14起，AI response的消息会在originalMessage里
               this.answer = {
-                messageId: (message.messageId as string) || uuidV4(),
+                messageId: (AIResponseMessage.messageId as string) || uuidV4(),
                 parentMessageId:
-                  (message.parentMessageId as string) || uuidV4(),
+                  (AIResponseMessage.parentMessageId as string) || uuidV4(),
                 text: '',
                 type: 'ai' as const,
                 originalMessage: mergeWithObject([
+                  // 大部分情况下没有，只有指定了outputMessageId并且outputMessage是type: ai才有
+                  outputMessage?.originalMessage || {},
                   {
-                    liteMode: message.originalMessage?.liteMode !== true,
                     content: {
                       text: outputMessageText,
                       contentType: 'text',
@@ -535,35 +541,33 @@ export class ActionAskChatGPT extends Action {
                       AIModel: MaxAISuggestionAIModel,
                     },
                   },
-                  message.originalMessage || {},
+                  // 大部分情况下也没有，只有返回了sources citation/related questions等额外需要展示的信息才有
+                  AIResponseMessage.originalMessage || {},
                 ]),
               }
               if (this.answer.conversationId) {
                 AIConversationId = this.answer.conversationId
               }
-              if (this.answer.originalMessage?.metadata?.sourceCitations) {
+              if (
+                this.answer.originalMessage?.metadata?.sourceCitations ||
+                this.answer.originalMessage?.metadata?.AIModel
+              ) {
                 // TODO 后续会去掉liteMode，渲染的时候以有无对应属性去显示组件
                 // 目前sourceCitations只会在chat的时候输出
                 if (!outputMessage?.originalMessage) {
                   this.answer.originalMessage.liteMode = true
                 }
               }
-              this.output =
-                this.answer.originalMessage?.content?.text || this.answer.text
-              // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
+              this.output = outputMessageText
+              // 如果有指定的output的消息Id，则需要把AI response添加到指定的Message
               if (outputMessage && this.status === 'running') {
-                // 如果有originalMessage，则更新originalMessage.content.text
-                if (outputMessage.originalMessage) {
+                // 如果是AI message，则更新originalMessage.content.text
+                if (isAIMessage(outputMessage)) {
                   await ClientConversationMessageManager.updateMessage(
                     conversationId,
                     {
                       messageId: outputMessageId,
-                      originalMessage: this.answer.originalMessage || {
-                        content: {
-                          contentType: 'text',
-                          text: outputMessageText,
-                        },
-                      },
+                      originalMessage: this.answer.originalMessage,
                     },
                     {
                       syncMessageToDB: false,
@@ -575,9 +579,6 @@ export class ActionAskChatGPT extends Action {
                     {
                       messageId: outputMessageId,
                       text: outputMessageText,
-                      ...(this.answer.originalMessage
-                        ? { originalMessage: this.answer.originalMessage }
-                        : {}),
                     },
                     {
                       syncMessageToDB: false,

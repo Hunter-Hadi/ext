@@ -3,7 +3,7 @@ import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useMemo, useRef } from 'react'
 import Highlight from 'react-highlight'
 import ReactMarkdown from 'react-markdown'
 import reactNodeToString from 'react-node-to-string'
@@ -19,7 +19,10 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import CitationTag from '@/features/citation/components/CitationTag'
-import { IAIResponseSourceCitation } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIResponseOriginalMessage,
+  IAIResponseSourceCitation,
+} from '@/features/indexed_db/conversations/models/Message'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
@@ -239,29 +242,35 @@ const formatCitation = (citations: IAIResponseSourceCitation[]) => {
 }
 
 const CustomMarkdown: FC<{
-  citations?: IAIResponseSourceCitation[]
-  isComplete?: boolean
+  originalMessage?: IAIResponseOriginalMessage
   children: string
 }> = (props) => {
-  const { isComplete, children } = props
+  const { originalMessage, children } = props
+
+  const { metadata } = originalMessage || {}
+
+  const isComplete = originalMessage ? metadata?.isComplete : true
 
   // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号，目前只针对PDF显示
-  // 目前后端会在原文里插入对应的信息，这里不过滤否则匹配不上
   // TODO 需要沟通，如果start_index <= -1的情况，是否在后端发送的时候就应该过滤掉
   const citations = useMemo(() => {
     if (getPageSummaryType() !== 'PDF_CRX_SUMMARY') {
       return
     }
-    return props.citations
-    // return props.citations?.filter((item) => {
-    //   if (isNumber(item.start_index)) {
-    //     return item.start_index > -1
-    //   }
-    //   return true
-    // })
-  }, [props.citations])
+    return metadata?.sourceCitations?.filter((item) => {
+      if (typeof item.start_index === 'number') {
+        return item.start_index > -1
+      }
+      return true
+    })
+  }, [metadata?.sourceCitations])
 
+  /**
+   * 针对有citation，但是ai response没有返回对应标记的情况，手动在最后插入[1][2][3]这样的标签
+   */
+  const contentHasCitationRef = useRef(true)
   const formatMarkdownText = useMemo(() => {
+    contentHasCitationRef.current = true
     try {
       if (typeof children === 'string') {
         if (
@@ -269,6 +278,7 @@ const CustomMarkdown: FC<{
           isComplete &&
           !children.match(/\[T(\d+)\]\(\{\}\)/)
         ) {
+          contentHasCitationRef.current = false
           return preprocessLaTeX(children) + ' ' + formatCitation(citations)
         }
         return preprocessLaTeX(children)
@@ -329,7 +339,13 @@ const CustomMarkdown: FC<{
                   // 查不到citations
                   return null
                 }
-                return <CitationTag citations={citations} index={index} />
+                return (
+                  <CitationTag
+                    citations={citations}
+                    index={index}
+                    type={contentHasCitationRef.current ? 'icon' : 'number'}
+                  />
+                )
               }
               return (
                 // eslint-disable-next-line react/prop-types

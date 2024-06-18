@@ -1,5 +1,7 @@
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
 import React, { FC, useState } from 'react'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -9,10 +11,11 @@ import { IAIResponseSourceCitation } from '@/features/indexed_db/conversations/m
 interface IProps {
   citations: IAIResponseSourceCitation[]
   index: number
+  type?: 'number' | 'icon'
 }
 
 const CitationTag: FC<IProps> = (props) => {
-  const { citations, index } = props
+  const { citations, index, type = 'icon' } = props
 
   const [loading, setLoading] = useState(false)
   const [title, setTitle] = useState('')
@@ -35,8 +38,8 @@ const CitationTag: FC<IProps> = (props) => {
     setLoading(false)
   }
 
-  return (
-    <>
+  if (type === 'icon') {
+    return (
       <TextOnlyTooltip placement='top' title={`Scroll to page ${title}`}>
         <IconButton
           color='inherit'
@@ -44,49 +47,59 @@ const CitationTag: FC<IProps> = (props) => {
           sx={{
             width: 30,
             height: 24,
-            background: 'rgba(138, 101, 171, 0.1)',
+            // background: 'rgba(138, 101, 171, 0.1)',
+            bgcolor: 'primary.main',
             marginRight: '2px!important',
             borderRadius: '14px',
+            '&:hover': {
+              opacity: 0.6,
+              bgcolor: 'primary.main',
+            },
           }}
           onClick={handleClick}
         >
           {loading ? (
             <CircularProgress
               size={16}
-              sx={{ m: '0 auto', color: 'primary.main' }}
+              sx={{
+                m: '0 auto',
+                color: '#fff',
+              }}
             />
           ) : (
-            // <FormatListBulletedOutlinedIcon
-            //   sx={{
-            //     fontSize: '16px',
-            //     color: 'primary.main',
-            //   }}
-            // />
-            <span>{index + 1}</span>
+            <FormatListBulletedOutlinedIcon
+              sx={{
+                fontSize: '16px',
+                color: '#fff',
+              }}
+            />
           )}
         </IconButton>
       </TextOnlyTooltip>
+    )
+  }
 
-      {/*<TextOnlyTooltip placement="top" title={`Scroll to page ${title}`}>*/}
-      {/*  <div*/}
-      {/*    style={{ minWidth: 22, display: 'inline-block', textAlign: 'center' }}*/}
-      {/*    onClick={handleClick}*/}
-      {/*  >*/}
-      {/*    {loading ? (*/}
-      {/*      <CircularProgress*/}
-      {/*        size={16}*/}
-      {/*        sx={{*/}
-      {/*          m: '0 auto',*/}
-      {/*          color: 'primary.main',*/}
-      {/*          verticalAlign: 'middle',*/}
-      {/*        }}*/}
-      {/*      />*/}
-      {/*    ) : (*/}
-      {/*      <Link sx={{ cursor: 'pointer' }}>[{index + 1}]</Link>*/}
-      {/*    )}*/}
-      {/*  </div>*/}
-      {/*</TextOnlyTooltip>*/}
-
+  return (
+    <>
+      <TextOnlyTooltip placement='top' title={`Scroll to page ${title}`}>
+        <div
+          style={{ minWidth: 22, display: 'inline-block', textAlign: 'center' }}
+          onClick={handleClick}
+        >
+          {loading ? (
+            <CircularProgress
+              size={16}
+              sx={{
+                m: '0 auto',
+                color: 'primary.main',
+                verticalAlign: 'middle',
+              }}
+            />
+          ) : (
+            <Link sx={{ cursor: 'pointer' }}>[{index + 1}]</Link>
+          )}
+        </div>
+      </TextOnlyTooltip>
       {/*{show &&*/}
       {/*  containerGroups.map((group, index) => (*/}
       {/*    <Portal container={group.container} key={index}>*/}

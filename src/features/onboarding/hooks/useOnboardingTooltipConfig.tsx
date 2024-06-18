@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
-import { IOnboardingTooltipProps } from '@/features/onboarding/components/OnboardingTooltip'
+import { IOnboardingTooltipProps } from '@/features/onboarding/components/OnboardingTooltip/OnboardingTooltip'
 import { IOnBoardingSceneType } from '@/features/onboarding/types'
 import {
   findOnboardingTooltipElement,

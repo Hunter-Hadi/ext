@@ -19,7 +19,7 @@ import { isProduction } from '@/constants'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
 import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
-import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
+import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 
 import { type IInputAssistantButtonObserverData } from './InputAssistantButtonManager'
 
@@ -343,7 +343,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           {buttonGroup[0].onboardingTooltipSceneType &&
           emotionCacheRef.current ? (
             <CacheProvider value={emotionCacheRef.current}>
-              <OnboardingTooltipTempPortal
+              <OnboardingTooltipPortal
                 container={shadowRoot.querySelector<HTMLElement>(
                   'div:first-of-type',
                 )}
@@ -440,7 +440,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           {buttonGroup[1].onboardingTooltipSceneType &&
           emotionCacheRef.current ? (
             <CacheProvider value={emotionCacheRef.current}>
-              <OnboardingTooltipTempPortal
+              <OnboardingTooltipPortal
                 container={shadowRoot.querySelector<HTMLElement>(
                   'div:first-of-type',
                 )}

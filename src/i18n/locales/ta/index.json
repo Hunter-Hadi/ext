@@ -898,9 +898,19 @@
     "home_view__sample_prompt__explore_more": "AI உதவி நூலகத்தை ஆராய்க",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "கிளோடு மூலம் உண்மையான நிகழ்வுகளை, நேரடி வலைப்பதிவுகளை, மற்றும் மேற்கோள்களைப் பெறுங்கள்.",
     "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPT மூலம் உண்மையான நிகழ்வுகளை, நேரடி வலைப்பதிவுகளை, மற்றும் மேற்கோள்களைப் பெறுங்கள்.",
-    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "அதிகம் புதிய மாதிரி மற்றும் மேலும் முன்னெடுக்கப்பட்ட மாதிரி ஆன்த்ரோபிக் மூலம்",
-    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "அதிகம் புதிய மாதிரி மற்றும் மேலும் முன்னெடுக்கப்பட்ட மாதிரி ஓபன் ஏஐ",
-    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}} மூடப்பட்ட மாதிரி உடன் புதிய உரையாடலைத் தொடங்குகிறது"
+    "popup__pdf_page__title": "MaxAI பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை செயலிப்பது எப்படி?",
+    "popup__pdf_page__step1__description1": "படிவத்தை இயக்குங்கள் ",
+    "popup__pdf_page__step1__description2": "\"பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை\"",
+    "popup__pdf_page__step1__description3": " நீக்கும் நிலைகளில்",
+    "popup__pdf_page__step2__description1": "படிவத்தை இயக்குங்கள் ",
+    "popup__pdf_page__step2__description2": "\"கோப்பு URL-க்கு அனுமதி செய்ய\"",
+    "popup__pdf_page__step2__description3": " Chrome நிரல் நிரல் நிலைகளில்",
+    "popup__pdf_page__step3__description": "படியை இழுத்து மீட்டமைக்கவும் மேலும் பிரௌட்டரில் மேற்கொள்ள MaxAI பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை பயன்படுத்துங்கள்",
+    "popup__pdf_page__tip": "முன்னர் உறுதிப்படுத்துவதற்கு உறுதிப்படுத்தப்பட்டுள்ள \"பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை\" மற்றும் \"கோப்பு URL-க்கு அனுமதி செய்ய\" இருக்கும் என்பதை உறுதிப்படுத்தவும்.",
+    "popup__pdf_page__button": "\"பி.டி.எஃப் ஏஐ காண்டுப்பாட்டை\" இயக்குங்கள்",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "அதிகம் புதிய மாதிரி மற்றும் மேலும் முன்னெடுக்கப்பட்ட மாதிரி Anthropic மூலம்",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "அதிகம் புதிய மாதிரி மற்றும் மேலும் முன்னெடுக்கப்பட்ட மாதிரி OpenAI மூலம்",
+    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}} மூத்த சந்தேகத்துடன் புதிய உரையாடலைத் தொடங்குக"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

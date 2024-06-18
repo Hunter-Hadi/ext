@@ -7,7 +7,7 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
-import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
+import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAISidebarRootElement } from '@/utils'
@@ -96,7 +96,7 @@ const GmailSummaryButton: FC = () => {
           </Button>
         </TextOnlyTooltip>
         {summaryButtonContainer && (
-          <OnboardingTooltipTempPortal
+          <OnboardingTooltipPortal
             sceneType='EMAIL_SUMMARY_BUTTON'
             container={summaryButtonContainer}
           />

@@ -630,13 +630,26 @@ export class ActionAskChatGPT extends Action {
               }
             },
           })
+          // 结束的时候需要更改isComplete为true
+          if (this.answer?.originalMessage) {
+            this.answer = {
+              ...this.answer,
+              originalMessage: {
+                ...this.answer.originalMessage,
+                metadata: {
+                  ...this.answer.originalMessage.metadata,
+                  isComplete: true,
+                },
+              },
+            }
+          }
           if (this.status !== 'running') {
             return
           }
           if (
             outputMessage &&
             isAIMessage(outputMessage) &&
-            outputMessage.originalMessage
+            this.answer?.originalMessage
           ) {
             await ClientConversationMessageManager.updateMessagesWithChanges(
               conversationId,
@@ -770,44 +783,40 @@ export class ActionAskChatGPT extends Action {
       ])
     }
     if (this.question?.conversationId) {
-      const messageIds = await ClientConversationMessageManager.getMessageIds(
-        this.question.conversationId,
-      )
-      const lastMessageId = last(messageIds)
-      if (lastMessageId) {
-        let needStopAIMessage: IChatMessage | null = null
-        // 如果有outputMessageId，则找到outputMessage
-        if (this.question.meta?.outputMessageId) {
-          needStopAIMessage =
-            await ClientConversationMessageManager.getMessageByMessageId(
-              this.question!.meta!.outputMessageId,
-            )
-        }
-        // 如果 outputMessageId 没有找到，则找到最后一条AI消息
-        if (!needStopAIMessage) {
+      let needStopAIMessage: IChatMessage | null = null
+      // 如果有outputMessageId，则找到outputMessage
+      if (this.question.meta?.outputMessageId) {
+        needStopAIMessage =
           await ClientConversationMessageManager.getMessageByMessageId(
-            lastMessageId,
+            this.question!.meta!.outputMessageId,
           )
-        }
-        // 如果是originalMessage更新消息的isComplete/sources.status
-        if (
-          needStopAIMessage &&
-          isAIMessage(needStopAIMessage) &&
-          needStopAIMessage.originalMessage
-        ) {
-          // 更新消息的isComplete/sources.status
-          await ClientConversationMessageManager.updateMessagesWithChanges(
+      }
+      // 如果 outputMessageId 没有找到，则找到最后一条AI消息
+      if (!needStopAIMessage) {
+        needStopAIMessage =
+          await ClientConversationMessageManager.getMessageByTimeFrame(
             this.question.conversationId,
-            [
-              {
-                key: needStopAIMessage.messageId,
-                changes: {
-                  'originalMessage.metadata.isComplete': true,
-                } as any,
-              },
-            ],
+            'latest',
           )
-        }
+      }
+      // 如果是originalMessage更新消息的isComplete/sources.status
+      if (
+        needStopAIMessage &&
+        isAIMessage(needStopAIMessage) &&
+        needStopAIMessage.originalMessage
+      ) {
+        // 更新消息的isComplete/sources.status
+        await ClientConversationMessageManager.updateMessagesWithChanges(
+          this.question.conversationId,
+          [
+            {
+              key: needStopAIMessage.messageId,
+              changes: {
+                'originalMessage.metadata.isComplete': true,
+              } as any,
+            },
+          ],
+        )
       }
     }
     return true

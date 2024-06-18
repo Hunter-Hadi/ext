@@ -8,10 +8,11 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useInterval from '@/features/common/hooks/useInterval'
-import OnboardingTooltip, {
+import { OnboardingTooltipTitleRender } from '@/features/onboarding/components/OnboardingTooltip'
+import {
   IOnboardingTooltipProps,
-} from '@/features/onboarding/components/OnboardingTooltip'
-import OnboardingTooltipTitleRender from '@/features/onboarding/components/OnboardingTooltipTitleRender'
+  OnboardingTooltip,
+} from '@/features/onboarding/components/OnboardingTooltip/OnboardingTooltip'
 import useOnboardingTooltipConfig from '@/features/onboarding/hooks/useOnboardingTooltipConfig'
 import { IOnBoardingSceneType } from '@/features/onboarding/types'
 import {
@@ -24,14 +25,14 @@ import {
   getMaxAISidebarRootElement,
 } from '@/utils'
 
-interface IOnboardingTooltipTempPortalProps {
+interface IOnboardingTooltipPortalProps {
   title?: React.ReactNode
   sceneType: IOnBoardingSceneType
   container?: HTMLElement | null
   showStateTrigger?: IOnboardingTooltipProps['showStateTrigger']
 }
 
-const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
+export const OnboardingTooltipPortal: FC<IOnboardingTooltipPortalProps> = ({
   title,
   sceneType,
   container: propContainer,
@@ -156,5 +157,3 @@ const OnboardingTooltipTempPortal: FC<IOnboardingTooltipTempPortalProps> = ({
     </>
   )
 }
-
-export default OnboardingTooltipTempPortal

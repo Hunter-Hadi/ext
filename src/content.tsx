@@ -209,9 +209,28 @@ const initClientExtensionId = async () => {
 }
 
 const start = async () => {
+  fixSpecialHostStyleIssues()
   await initClientExtensionId()
   mainAppRender()
   ChatGPTWebAppRender()
 }
 
+const fixSpecialHostStyleIssues = () => {
+  const domainHost = getCurrentDomainHost()
+
+  if (domainHost === 'zapier.com') {
+    // 修复 zapier.com 下 style 标签的顺序问题
+    const styleElements = Array.from(document.getElementsByTagName('style'))
+    const head = document.head
+    for (const styleElement of styleElements) {
+      if (
+        styleElement &&
+        styleElement.getAttribute('data-emotion') &&
+        styleElement.innerHTML.includes('[data-zds]:where')
+      ) {
+        head.insertBefore(styleElement, head.firstChild)
+      }
+    }
+  }
+}
 start().then().catch()

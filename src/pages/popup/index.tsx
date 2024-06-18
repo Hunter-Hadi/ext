@@ -5,6 +5,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -22,6 +23,8 @@ import TooltipButton from '@/components/TooltipButton'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useInitI18n } from '@/i18n/hooks'
+import EnablePDFButton from '@/pages/popup/components/EnablePDFButton'
+import EnablePDFContent from '@/pages/popup/components/EnablePDFContent'
 import { AppDBStorageState } from '@/store'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
@@ -31,9 +34,10 @@ import BulletList from '../../components/BulletList'
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
 const App: FC<{
   isSpecialPage: boolean
+  isPDFPage: boolean
 }> = (props) => {
   const updateAppSettings = useSetRecoilState(AppDBStorageState)
-  const { isSpecialPage } = props
+  const { isSpecialPage, isPDFPage } = props
   useInitI18n()
   const { t } = useTranslation(['common', 'client'])
   const [shortCutKey, setShorCutKey] = useState('')
@@ -57,19 +61,79 @@ const App: FC<{
     init()
     getLiteChromeExtensionDBStorage().then(updateAppSettings)
   })
+
+  const renderContent = () => {
+    if (isPDFPage) {
+      return <EnablePDFContent tabId={currentTabId} />
+    }
+
+    if (isSpecialPage) {
+      return (
+        <Alert severity={'info'}>
+          <Typography fontSize={14} color={'text.primary'} mb={1}>
+            {t('client:popup__special_page__title')}
+          </Typography>
+          <BulletList
+            textProps={{
+              fontSize: 14,
+            }}
+            textList={[
+              t('client:popup__special_page__item1'),
+              t('client:popup__special_page__item2'),
+              t('client:popup__special_page__item3'),
+            ]}
+          />
+        </Alert>
+      )
+    }
+
+    return (
+      <Alert severity={'info'}>
+        <Typography fontSize={14} color={'text.primary'}>
+          {t('client:popup__refresh_page__title')}
+        </Typography>
+      </Alert>
+    )
+  }
+
+  const renderButton = () => {
+    if (isPDFPage) {
+      return <EnablePDFButton tabId={currentTabId} />
+    }
+    if (!isSpecialPage) {
+      return (
+        <Button
+          fullWidth
+          color={'primary'}
+          variant={'contained'}
+          startIcon={<RefreshIcon sx={{ fontSize: 16, color: 'inherit' }} />}
+          sx={{ borderRadius: '8px', p: 1, fontSize: 16, fontWeight: 600 }}
+          onClick={async () => {
+            if (currentTabId) {
+              await Browser.tabs.reload(currentTabId)
+              window.close()
+            }
+          }}
+        >
+          {t('client:popup__refresh_page__button')}
+        </Button>
+      )
+    }
+
+    return null
+  }
+
   return (
-    <Stack
-      minWidth={400}
-      spacing={2}
-      p={1}
-      sx={{ bgcolor: 'background.paper' }}
-    >
+    <Stack minWidth={400} sx={{ bgcolor: 'background.paper' }}>
+      {/* header */}
       <Stack
         boxSizing={'border-box'}
         direction={'row'}
         width={'100%'}
         alignItems={'center'}
         justifyContent={'space-between'}
+        p={2}
+        pb={1.5}
       >
         <Link
           sx={{
@@ -114,49 +178,21 @@ const App: FC<{
             })
           }}
         >
-          <SettingsOutlinedIcon sx={{ fontSize: 16, color: 'text.primary' }} />
+          <SettingsOutlinedIcon sx={{ fontSize: 22, color: 'text.primary' }} />
         </TooltipButton>
       </Stack>
-      {isSpecialPage ? (
-        <Alert severity={'info'}>
-          <Typography fontSize={14} color={'text.primary'} mb={1}>
-            {t('client:popup__special_page__title')}
-          </Typography>
-          <BulletList
-            textProps={{
-              fontSize: 14,
-            }}
-            textList={[
-              t('client:popup__special_page__item1'),
-              t('client:popup__special_page__item2'),
-              t('client:popup__special_page__item3'),
-            ]}
-          />
-        </Alert>
-      ) : (
-        <Alert severity={'info'}>
-          <Typography fontSize={14} color={'text.primary'}>
-            {t('client:popup__refresh_page__title')}
-          </Typography>
-        </Alert>
-      )}
-      {!isSpecialPage && (
-        <Button
-          fullWidth
-          color={'primary'}
-          variant={'contained'}
-          startIcon={<RefreshIcon sx={{ fontSize: 16, color: 'inherit' }} />}
-          onClick={async () => {
-            if (currentTabId) {
-              await Browser.tabs.reload(currentTabId)
-              window.close()
-            }
-          }}
-        >
-          {t('client:popup__refresh_page__button')}
-        </Button>
-      )}
-      <Stack>
+
+      <Divider />
+
+      {/* body */}
+      <Stack spacing={2} p={2} pb={0} maxHeight={360} overflow='auto'>
+        {renderContent()}
+      </Stack>
+
+      {/* footer */}
+      <Stack spacing={2} p={2}>
+        {renderButton()}
+
         <Typography fontSize={14} color={'text.secondary'}>
           <span>{`${t('client:popup__set_shortcut__description1')} `}</span>
           <Box
@@ -199,6 +235,7 @@ const init = async () => {
 
   setTimeout(async () => {
     let isSpecialPage = false
+    let isPDFPage = false
     try {
       const tabId = currentTab && currentTab[0] && currentTab[0].id
       const tabUrl =
@@ -207,6 +244,7 @@ const init = async () => {
         tabUrl.startsWith('chrome') ||
         tabUrl.startsWith('https://chrome.google.com/webstore') ||
         tabUrl.startsWith('https://chromewebstore.google.com')
+      isPDFPage = tabUrl.startsWith('file') && tabUrl.endsWith('.pdf')
       if (isSpecialPage) {
         if (
           tabUrl.includes('pages/pdf/web') &&
@@ -217,6 +255,11 @@ const init = async () => {
           throw new Error('isSpecialPage')
         }
       }
+      if (isPDFPage) {
+        // 浏览器默认pdf page
+        throw new Error('isPDFPage')
+      }
+
       if (tabId) {
         await Browser.tabs.sendMessage(tabId, {})
         const result = await backgroundSendClientMessage(
@@ -247,7 +290,7 @@ const init = async () => {
         <React.StrictMode>
           <RecoilRoot>
             <AppThemeProvider>
-              <App isSpecialPage={isSpecialPage} />
+              <App isSpecialPage={isSpecialPage} isPDFPage={isPDFPage} />
             </AppThemeProvider>
           </RecoilRoot>
         </React.StrictMode>,

@@ -898,9 +898,16 @@
     "home_view__sample_prompt__explore_more": "AI प्रॉम्प्ट लायब्ररी शोधा",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "क्लोडसह वेब प्रवेश, ज्ञान आणि संदर्भांसह तत्काळ उत्तरे मिळवा.",
     "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ChatGPTसह वेब प्रवेश, ज्ञान आणि संदर्भांसह तत्काळ उत्तरे मिळवा.",
-    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropic द्वारा सबसे नवीनतम आणि प्रगत आवृत्ती",
-    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAI द्वारा सबसे नवीनतम आणि प्रगत आवृत्ती",
-    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}} सह नवीन चॅट सुरू करा"
+    "popup__pdf_page__title": "MaxAI PDF AI व्ह्यूअर सक्रिय कसे करावे?",
+    "popup__pdf_page__step1__description1": "पायरी 1: ",
+    "popup__pdf_page__step1__description2": "\"PDF AI व्ह्यूअर\"",
+    "popup__pdf_page__step1__description3": " एक्सटेंशन सेटिंगमध्ये सक्षम करा",
+    "popup__pdf_page__step2__description1": "पायरी 2: ",
+    "popup__pdf_page__step2__description2": "\"फाइल URLसाठी प्रवेश सक्षम करा\"",
+    "popup__pdf_page__step2__description3": " Chrome सेटिंगमध्ये सक्षम करा",
+    "popup__pdf_page__step3__description": "पायरी 3: MaxAI PDF AI व्ह्यूअर वापरण्यासाठी आपल्या ब्राउझरमध्ये PDF खीचा आणा आणा",
+    "popup__pdf_page__tip": "प्रो टिप: \"PDF AI व्ह्यूअर\" आणि \"फाइल URLसाठी प्रवेश सक्षम करा\" दोन्ही सक्षम केले आहे कि PDF फाइलवर एक्सटेंशन सक्रिय करण्यासाठी सुनिश्चित करा.",
+    "popup__pdf_page__button": "\"PDF AI व्ह्यूअर\" सक्षम करा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

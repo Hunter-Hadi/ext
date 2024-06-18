@@ -898,9 +898,16 @@
     "home_view__sample_prompt__explore_more": "એઆઈ પ્રોમ્પ્ટ લાઇબ્રેરી અન્વેષણ કરો",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "ક્લોડ સાથે વાત કરીને તકનીકી પ્રવૃત્તિ, જ્ઞાન અને ઉદાહરણોની સાથે તકનીકી પ્રવૃત્તિની તક મેળવો.",
     "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "ચેટજીપીટી સાથે વાત કરીને તકનીકી પ્રવૃત્તિ, જ્ઞાન અને ઉદાહરણોની સાથે તકનીકી પ્રવૃત્તિની તક મેળવો.",
-    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropic દ્વારા નવીનતમ અને સૌથી આગ્રહી મોડેલ",
-    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAI દ્વારા નવીનતમ અને સૌથી આગ્રહી મોડેલ",
-    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}} સાથે નવું ચેટ શરૂ કરો"
+    "popup__pdf_page__title": "કેવી રીતે MaxAI PDF AI જોઈને સક્રિય કરવું?",
+    "popup__pdf_page__step1__description1": "પગલું 1: સક્ષમ કરો ",
+    "popup__pdf_page__step1__description2": "\"PDF Al viewer\"",
+    "popup__pdf_page__step1__description3": " એક્સ્ટેન્શન સેટિંગ્સમાં",
+    "popup__pdf_page__step2__description1": "પગલું 2: સક્ષમ કરો ",
+    "popup__pdf_page__step2__description2": "\"ફાઇલ URL એક્સેસ મંજૂર કરો\"",
+    "popup__pdf_page__step2__description3": " ક્રોમ સેટિંગ્સમાં",
+    "popup__pdf_page__step3__description": "પગલું 3: માટે મહત્તમ છે કે તમારા બ્રાઉઝરમાં PDF ખીંચો અને ખોલો તેનો ઉપયોગ કરવા માટે MaxAI PDF AI જોઈને સક્રિય કરો",
+    "popup__pdf_page__tip": "પ્રો ટિપ: \"PDF AI viewer\" અને \"ફાઇલ URL એક્સેસ મંજૂર કરો\" બન્ને સક્ષમ હોવું જોઈએ, તો PDF ફાઇલો પર એક્સ્ટેન્શનને સક્રિય કરવા માટે સક્ષમ થશે.",
+    "popup__pdf_page__button": "\"PDF AI viewer\" સક્ષમ કરો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

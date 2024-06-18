@@ -5,9 +5,10 @@ import { styled } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import React, { FC, PropsWithChildren, useCallback, useEffect } from 'react'
 
-import TooltipInformationBar, {
+import {
   ITooltipInformationBarProps,
-} from '@/features/onboarding/components/TooltipInformationBar'
+  TooltipInformationBar,
+} from '@/features/onboarding/components/OnboardingTooltip/TooltipInformationBar'
 import { IOnBoardingSceneType } from '@/features/onboarding/types'
 import {
   getAlreadyOpenedCacheBySceneType,
@@ -62,9 +63,9 @@ export interface IOnboardingTooltipProps extends TooltipProps {
   closeWhenElementClick?: boolean
 }
 
-const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
-  props,
-) => {
+export const OnboardingTooltip: FC<
+  PropsWithChildren<IOnboardingTooltipProps>
+> = (props) => {
   const {
     sceneType,
     showStateTrigger,
@@ -212,5 +213,3 @@ const OnboardingTooltip: FC<PropsWithChildren<IOnboardingTooltipProps>> = (
     </BlackTooltip>
   )
 }
-
-export default OnboardingTooltip

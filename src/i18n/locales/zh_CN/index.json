@@ -898,9 +898,16 @@
     "home_view__sample_prompt__explore_more": "探索AI提示库",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "使用Claude进行实时网络访问、知识和引用的即时答案。",
     "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "使用ChatGPT进行实时网络访问、知识和引用的即时答案。",
-    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropic的最新和最先进的模型",
-    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAI的最新和最先进的模型",
-    "sidebar__chat__suggestions__starts_new_chat__title": "使用{{AI_MODEL}}开始新聊天"
+    "popup__pdf_page__title": "如何激活MaxAI PDF AI查看器？",
+    "popup__pdf_page__step1__description1": "步骤1：在扩展设置中启用",
+    "popup__pdf_page__step1__description2": "“PDF AI查看器”",
+    "popup__pdf_page__step1__description3": "在扩展设置中",
+    "popup__pdf_page__step2__description1": "步骤2：在Chrome设置中启用",
+    "popup__pdf_page__step2__description2": "“允许访问文件URL”",
+    "popup__pdf_page__step2__description3": "在Chrome设置中",
+    "popup__pdf_page__step3__description": "步骤3：拖动并打开PDF文件以使用MaxAI PDF AI查看器",
+    "popup__pdf_page__tip": "专业提示：确保同时启用“PDF AI查看器”和“允许访问文件URL”，以激活PDF文件上的扩展。",
+    "popup__pdf_page__button": "启用“PDF AI查看器”"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

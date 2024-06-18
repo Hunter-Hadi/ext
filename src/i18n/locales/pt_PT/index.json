@@ -898,9 +898,16 @@
     "home_view__sample_prompt__explore_more": "Explorar biblioteca de prompts de IA",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Obtenha respostas instantâneas com acesso à web em tempo real, conhecimento e citações com Claude.",
     "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Obtenha respostas instantâneas com acesso à web em tempo real, conhecimento e citações com ChatGPT.",
-    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "O modelo mais recente e avançado da Anthropic",
-    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "O modelo mais recente e avançado da OpenAI",
-    "sidebar__chat__suggestions__starts_new_chat__title": "Iniciar novo chat com {{AI_MODEL}}"
+    "popup__pdf_page__title": "Como ativar o visualizador de IA em PDF MaxAI?",
+    "popup__pdf_page__step1__description1": "Passo 1: Ative ",
+    "popup__pdf_page__step1__description2": "\"Visualizador de IA em PDF\"",
+    "popup__pdf_page__step1__description3": " nas configurações da extensão",
+    "popup__pdf_page__step2__description1": "Passo 2: Ative ",
+    "popup__pdf_page__step2__description2": "\"Permitir acesso a URLs de arquivo\"",
+    "popup__pdf_page__step2__description3": " nas configurações do Chrome",
+    "popup__pdf_page__step3__description": "Passo 3: Arraste e abra o PDF no seu navegador para usar o visualizador de IA em PDF MaxAI",
+    "popup__pdf_page__tip": "Dica Pro: Certifique-se de que tanto o \"Visualizador de IA em PDF\" quanto o \"Permitir acesso a URLs de arquivo\" estejam ativados para ativar a extensão em arquivos PDF.",
+    "popup__pdf_page__button": "Ativar \"Visualizador de IA em PDF\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

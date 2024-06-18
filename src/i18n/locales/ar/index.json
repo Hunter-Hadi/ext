@@ -898,9 +898,16 @@
     "home_view__sample_prompt__explore_more": "استكشف مكتبة تلميحات الذكاء الاصطناعي",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "احصل على إجابات فورية مع وصول الويب في الوقت الحقيقي والمعرفة والاستشهادات مع كلود.",
     "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "احصل على إجابات فورية مع وصول الويب في الوقت الحقيقي والمعرفة والاستشهادات مع ChatGPT.",
-    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "أحدث وأكثر النماذج تقدمًا من Anthropic",
-    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "أحدث وأكثر النماذج تقدمًا من OpenAI",
-    "sidebar__chat__suggestions__starts_new_chat__title": "بدء دردشة جديدة مع {{AI_MODEL}}"
+    "popup__pdf_page__title": "كيفية تفعيل عارض MaxAI لملفات PDF؟",
+    "popup__pdf_page__step1__description1": "الخطوة 1: قم بتمكين ",
+    "popup__pdf_page__step1__description2": "\"عارض PDF Al\"",
+    "popup__pdf_page__step1__description3": " في إعدادات الامتداد",
+    "popup__pdf_page__step2__description1": "الخطوة 2: قم بتمكين ",
+    "popup__pdf_page__step2__description2": "\"السماح بالوصول إلى روابط الملفات\"",
+    "popup__pdf_page__step2__description3": " في إعدادات Chrome",
+    "popup__pdf_page__step3__description": "الخطوة 3: اسحب وافتح ملف PDF في المتصفح الخاص بك لاستخدام عارض MaxAI لملفات PDF",
+    "popup__pdf_page__tip": "نصيحة مهنية: تأكد من تمكين كل من \"عارض PDF AI\" و \"السماح بالوصول إلى روابط الملفات\" لتفعيل الامتداد على ملفات PDF.",
+    "popup__pdf_page__button": "تمكين \"عارض PDF AI\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

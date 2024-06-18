@@ -2,9 +2,10 @@ import React, { FC, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import { useAuthLogin } from '@/features/auth/hooks/useAuthLogin'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
+import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import FloatingMenuButton from '@/minimum/components/FloatingMenuButton'
 import SpecialHostSummaryButton from '@/minimum/components/SpecialHostSummaryButton'
 import MinimumAppInit from '@/minimum/MinimumAppInit'
@@ -14,6 +15,8 @@ const MinimumApp: FC = () => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
   console.log('MinimumApp appDBStorage', appDBStorage.userSettings?.quickAccess)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { isLogin } = useAuthLogin()
+
   useEffectOnce(() => {
     const timer: ReturnType<typeof setInterval> = setInterval(() => {
       const root = document.querySelector(`#${MAXAI_SIDEBAR_ID}`)
@@ -46,10 +49,10 @@ const MinimumApp: FC = () => {
       <MinimumAppInit />
       {showMiniCtaButton && <FloatingMenuButton />}
       <SpecialHostSummaryButton />
-      <OnboardingTooltipTempPortal
+      <OnboardingTooltipPortal
         sceneType='QUICK_ACCESS_CTA_BUTTON'
         // showStateTrigger={appDBStorage.userSettings?.quickAccess?.enabled}
-        showStateTrigger={showMiniCtaButton}
+        showStateTrigger={showMiniCtaButton && isLogin}
       />
     </AppSuspenseLoadingLayout>
   )

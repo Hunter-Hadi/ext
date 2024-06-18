@@ -898,9 +898,16 @@
     "home_view__sample_prompt__explore_more": "Khám phá thư viện gợi ý AI",
     "permission__pricing_hook__search_with_ai_claude__modal__description": "Nhận câu trả lời tức thì với truy cập web, kiến thức và trích dẫn thời gian thực với Claude.",
     "permission__pricing_hook__search_with_ai_chatgpt__modal__description": "Nhận câu trả lời tức thì với truy cập web, kiến thức và trích dẫn thời gian thực với ChatGPT.",
-    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Mẫu mới nhất và tiên tiến nhất của Anthropic",
-    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Mẫu mới nhất và tiên tiến nhất của OpenAI",
-    "sidebar__chat__suggestions__starts_new_chat__title": "Bắt đầu cuộc trò chuyện mới với {{AI_MODEL}}"
+    "popup__pdf_page__title": "Cách kích hoạt trình xem MaxAI PDF?",
+    "popup__pdf_page__step1__description1": "Bước 1: Bật ",
+    "popup__pdf_page__step1__description2": "\"Trình xem PDF AI\"",
+    "popup__pdf_page__step1__description3": " trong cài đặt tiện ích mở rộng",
+    "popup__pdf_page__step2__description1": "Bước 2: Bật ",
+    "popup__pdf_page__step2__description2": "\"Cho phép truy cập vào URL tệp\"",
+    "popup__pdf_page__step2__description3": " trong cài đặt Chrome",
+    "popup__pdf_page__step3__description": "Bước 3: Kéo và mở tệp PDF trong trình duyệt để sử dụng trình xem MaxAI PDF AI",
+    "popup__pdf_page__tip": "Mẹo chuyên gia: Đảm bảo đã bật cả \"Trình xem PDF AI\" và \"Cho phép truy cập vào URL tệp\" để kích hoạt tiện ích trên các tệp PDF.",
+    "popup__pdf_page__button": "Bật \"Trình xem PDF AI\""
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

@@ -56,7 +56,7 @@ import {
   getContextMenuRenderPosition,
   getFloatingContextMenuMiddleware,
 } from '@/features/contextMenu/utils'
-import OnboardingTooltipTempPortal from '@/features/onboarding/components/OnboardingTooltipTempPortal'
+import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import {
@@ -714,21 +714,21 @@ const FloatingContextMenu: FC<{
         }}
       />
 
-      <OnboardingTooltipTempPortal
+      <OnboardingTooltipPortal
         showStateTrigger={
           floatingDropdownMenu.open && contextWindowList.length > 0
         }
         sceneType='FLOATING_CONTEXT_MENU_LIST_BOX'
       />
 
-      <OnboardingTooltipTempPortal
+      <OnboardingTooltipPortal
         showStateTrigger={
           floatingDropdownMenu.open && contextWindowList.length > 0
         }
         sceneType='FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM'
       />
       {!loading && !isSettingCustomVariables ? (
-        <OnboardingTooltipTempPortal
+        <OnboardingTooltipPortal
           showStateTrigger={() => {
             return (
               floatingDropdownMenu.open &&
@@ -746,7 +746,7 @@ const FloatingContextMenu: FC<{
         />
       ) : null}
       {!loading ? (
-        <OnboardingTooltipTempPortal
+        <OnboardingTooltipPortal
           showStateTrigger={
             floatingDropdownMenu.open &&
             !!activeAIResponseMessage &&

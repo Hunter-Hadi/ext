@@ -51,6 +51,7 @@ interface ActionParameters {
   // TODO 即将废弃
   template?: string
   compliedTemplate?: string
+  outputTemplate?: string
   GMAIL_EMAIL_CONTEXT?: string
   GMAIL_DRAFT_CONTEXT?: string
   LAST_ACTION_OUTPUT?: string
@@ -64,6 +65,7 @@ interface ActionParameters {
   AI_RESPONSE_LANGUAGE?: string
   AI_RESPONSE_TONE?: string
   AI_RESPONSE_WRITING_STYLE?: string
+  ACTION_OUTPUT?: string
   // TODO 需要实现
   // 用于处理suggestion的AI model
   MAXAI_SUGGESTION_AI_MODEL?: string
@@ -211,7 +213,7 @@ interface ActionParameters {
   ActionFetchActionsWithHistory?: boolean
   // 消息
   ActionChatMessageType?: IChatMessage['type']
-  ActionChatMessageOperationType?: 'add' | 'update' | 'delete'
+  ActionChatMessageOperationType?: 'add' | 'update' | 'delete' | 'replace'
   ActionChatMessageConfig?: IChatMessage
   // 是否需要Action产生的变量进行MiddleOut:GET_EMAIL_CONTENTS_OF_WEBPAGE\GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE
   isVariableMiddleOutEnabled?: boolean

@@ -14,6 +14,7 @@ import {
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/indexed_db/conversations/models/Message'
+import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 
 type HistoryMessage = (IAIResponseMessage | ISystemChatMessage) & {
   // 本条消息对应的draft message
@@ -125,7 +126,7 @@ const useFloatingContextMenuDraft = () => {
       return draft
     }
     if (activeMessage) {
-      draft = activeMessage.text
+      draft = formatChatMessageContent(activeMessage, false)
     }
     if (clientWritingMessage.writingMessage?.messageId) {
       // 如果当前正在输入的消息是当前激活的消息，那么需要合并
@@ -134,10 +135,16 @@ const useFloatingContextMenuDraft = () => {
           activeMessage?.messageId &&
         clientWritingMessage.loading // 加上loading，否则会有短暂的重复添加消息导致contextmenu高度闪烁
       ) {
-        draft = draft + '\n\n' + clientWritingMessage.writingMessage.text
+        draft =
+          draft +
+          '\n\n' +
+          formatChatMessageContent(clientWritingMessage.writingMessage, false)
       } else {
         // 否则直接使用当前输入的消息
-        draft = clientWritingMessage.writingMessage.text
+        draft = formatChatMessageContent(
+          clientWritingMessage.writingMessage,
+          false,
+        )
       }
     }
     return draft.replace(/\n{2,}/, '\n\n')

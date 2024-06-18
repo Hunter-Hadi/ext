@@ -1,5 +1,6 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
+import { IMaxAIChatMessageContent } from '@/background/src/chat/UseChatGPTChat/types'
 import { IUserMessageMetaType } from '@/features/indexed_db/conversations/models/Message'
 import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 
@@ -26,6 +27,36 @@ export const maxAIRequestBodyPromptActionGenerator = async (
       }
       return variableMap
     }, {})
+    /**
+     * 这里是因为用户用了AI model suggestion的prompt，需要把message_content的text的内容当作CURRENT_PROMPT
+     * 但是如果用户自己填了CURRENT_PROMPT，就不需要这个操作
+     */
+    if (
+      Object.prototype.hasOwnProperty.call(
+        clonePostBody.prompt_inputs,
+        'CURRENT_PROMPT',
+      ) &&
+      !clonePostBody.prompt_inputs.CURRENT_PROMPT
+    ) {
+      const promptTemplate: IMaxAIChatMessageContent =
+        clonePostBody.message_content?.find(
+          (content: IMaxAIChatMessageContent) => {
+            return content.type === 'text'
+          },
+        )
+      if (promptTemplate) {
+        // 去掉message_content里的text
+        clonePostBody.message_content = clonePostBody.message_content?.filter(
+          (content: IMaxAIChatMessageContent) => {
+            return content.type !== 'text'
+          },
+        )
+        clonePostBody.prompt_inputs.CURRENT_PROMPT = promptTemplate.text || ''
+      }
+    } else {
+      // 删掉message_content
+      delete clonePostBody.message_content
+    }
     if (promptActionConfig?.AIModel) {
       clonePostBody.model_name = promptActionConfig?.AIModel
     }

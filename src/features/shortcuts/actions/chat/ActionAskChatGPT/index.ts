@@ -76,7 +76,7 @@ export class ActionAskChatGPT extends Action {
     super(id, type, parameters, autoExecute)
   }
 
-  @parametersParserDecorator()
+  @parametersParserDecorator(['outputTemplate'])
   @templateParserDecorator()
   @clearUserInput(true)
   @withLoadingDecorators()
@@ -505,9 +505,18 @@ export class ActionAskChatGPT extends Action {
             )
         }
         try {
+          const outputTemplate = this.parameters.outputTemplate || ''
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
               this.log.info('message', message)
+              const outputMessageText = outputTemplate
+                ? (
+                    await this.parseTemplate(outputTemplate, {
+                      ...params,
+                      ACTION_OUTPUT: message.text,
+                    })
+                  ).data
+                : message.text
               // 从2024-06-14起，AI response的消息会在originalMessage里
               this.answer = {
                 messageId: (message.messageId as string) || uuidV4(),
@@ -519,7 +528,7 @@ export class ActionAskChatGPT extends Action {
                   {
                     liteMode: message.originalMessage?.liteMode !== true,
                     content: {
-                      text: message.text,
+                      text: outputMessageText,
                       contentType: 'text',
                     },
                     metadata: {
@@ -560,7 +569,7 @@ export class ActionAskChatGPT extends Action {
                       {
                         key: outputMessageId || '',
                         changes: {
-                          'originalMessage.content.text': message.text,
+                          'originalMessage.content.text': outputMessageText,
                           'originalMessage.metadata.sourceCitations':
                             message.sourceCitations,
                         } as any,
@@ -571,14 +580,13 @@ export class ActionAskChatGPT extends Action {
                     },
                   )
                 } else {
-                  // TODO 这里只有更新，其实要区别更新/覆盖
                   await ClientConversationMessageManager.updateMessagesWithChanges(
                     conversationId,
                     [
                       {
                         key: outputMessageId || '',
                         changes: {
-                          text: outputMessage.text + '\n\n' + message.text,
+                          text: outputMessageText,
                         },
                       },
                     ],

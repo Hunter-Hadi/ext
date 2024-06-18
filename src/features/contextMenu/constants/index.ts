@@ -164,7 +164,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
           type: 'SCRIPTS_GET_DICTIONARY_VALUE',
           parameters: {
             ActionGetDictionaryKey: 'value',
-            ActionGetDictionaryValue: 'text',
+            ActionGetDictionaryValue: 'originalMessage.content.text',
           },
         },
         {
@@ -225,7 +225,14 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
             ActionChatMessageConfig: {
               messageId: '',
               parentMessageId: '{{USER_MESSAGE_ID}}',
-              text: `{{LAST_AI_MESSAGE_OUTPUT}}`,
+              text: ``,
+              originalMessage: {
+                liteMode: true,
+                content: {
+                  contentType: 'text',
+                  text: `{{LAST_AI_MESSAGE_OUTPUT}}`,
+                },
+              },
               type: 'ai',
             },
           },
@@ -257,6 +264,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
               },
             },
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN_QUESTION',
+            outputTemplate: `{{LAST_AI_MESSAGE_OUTPUT}}\n{{ACTION_OUTPUT}}`,
           },
         },
       ],

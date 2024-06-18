@@ -24,6 +24,7 @@ import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatReques
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   IAIResponseMessage,
+  IAIResponseOriginalMessage,
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
@@ -532,31 +533,40 @@ export class ActionAskChatGPT extends Action {
                 originalMessage: mergeWithObject([
                   // 大部分情况下没有，只有指定了outputMessageId并且outputMessage是type: ai才有
                   outputMessage?.originalMessage || {},
+                  // 大部分情况下也没有，只有返回了sources citation/related questions等额外需要展示的信息才有
+                  AIResponseMessage.originalMessage || {},
+                  // 如果有推荐的AI model，需要把AI model传给后端
+                  MaxAISuggestionAIModel
+                    ? {
+                        metadata: {
+                          AIModel: MaxAISuggestionAIModel,
+                        },
+                      }
+                    : {},
                   {
                     content: {
                       text: outputMessageText,
                       contentType: 'text',
                     },
-                    metadata: {
-                      AIModel: MaxAISuggestionAIModel,
-                    },
                   },
-                  // 大部分情况下也没有，只有返回了sources citation/related questions等额外需要展示的信息才有
-                  AIResponseMessage.originalMessage || {},
                 ]),
               }
               if (this.answer.conversationId) {
                 AIConversationId = this.answer.conversationId
               }
-              if (
-                this.answer.originalMessage?.metadata?.sourceCitations ||
-                this.answer.originalMessage?.metadata?.AIModel
-              ) {
+              if (this.answer.originalMessage) {
+                //  如果只有sourceCitations,deepDive，也当作liteMode显示
                 // TODO 后续会去掉liteMode，渲染的时候以有无对应属性去显示组件
-                // 目前sourceCitations只会在chat的时候输出
-                if (!outputMessage?.originalMessage) {
-                  this.answer.originalMessage.liteMode = true
-                }
+                const liteModeKeys: Array<
+                  keyof Required<IAIResponseOriginalMessage>['metadata']
+                > = ['deepDive', 'sourceCitations', 'AIModel']
+                // 有效的metadata数量
+                const validMetadataCount = Object.keys(
+                  this.answer.originalMessage.metadata || {},
+                ).filter(
+                  (metaDataKey: any) => !liteModeKeys.includes(metaDataKey),
+                ).length
+                this.answer.originalMessage.liteMode = validMetadataCount === 0
               }
               this.output = outputMessageText
               // 如果有指定的output的消息Id，则需要把AI response添加到指定的Message

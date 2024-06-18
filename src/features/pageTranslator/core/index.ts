@@ -17,6 +17,7 @@ import {
   isNotToTranslateText,
   isTranslationValidElement,
 } from '@/features/pageTranslator/utils'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 class PageTranslator {
   textNodesSet: Set<Node>
@@ -340,11 +341,24 @@ class PageTranslator {
         cursor: pointer;
       }
     `
+
+    // 这里针对不同网站做下兼容处理，比如某些网站下设定了固定高度导致无法显示出完整的翻译
+    const host = getCurrentDomainHost()
+    if (host === 'tiktok.com') {
+      style.innerHTML += `
+      body.maxai-trans-show [data-e2e="user-post-item-list"] [data-e2e="user-post-item-desc"] {
+        height: auto;
+      }
+      `
+    }
+
     document.head.appendChild(style)
   }
 
   hideTranslateElements() {
     this.isEnable = false
+
+    document.body.classList.remove('maxai-trans-show')
 
     this.translateItemsSet.forEach((translateItem) => {
       translateItem.translateContainerElement?.classList.add('maxai-trans-hide')
@@ -355,6 +369,8 @@ class PageTranslator {
 
   showTranslateElements() {
     this.isEnable = true
+
+    document.body.classList.add('maxai-trans-show')
 
     this.translateItemsSet.forEach((translateItem) => {
       translateItem.translateContainerElement?.classList.remove(

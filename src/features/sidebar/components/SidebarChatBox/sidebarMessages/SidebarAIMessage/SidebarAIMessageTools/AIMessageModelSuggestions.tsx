@@ -107,11 +107,12 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
       return null
     }
     const conversationModel = clientConversation?.meta.AIModel || ''
-    const AIProvider = clientConversation?.meta.AIProvider || ''
+    const AIProvider = clientConversation?.meta.AIProvider
     // TODO 第三方AIProvider不显示AIModel的推荐
-    const models = checkIsThirdPartyAIProvider(AIProvider)
-      ? []
-      : getAIModels(currentUserPlan, conversationModel)
+    const models =
+      AIProvider && checkIsThirdPartyAIProvider(AIProvider)
+        ? []
+        : getAIModels(currentUserPlan, conversationModel)
     const suggestions = models.filter(
       (model) => model.AIModel !== messageAIModel,
     )
@@ -217,6 +218,7 @@ const AIMessageSuggestionsAIModelNewChatButton: FC<{
         lineHeight: '20px',
         fontSize: '14px',
         color: 'primary.main',
+        borderRadius: '8px',
       }}
     >
       <Stack
@@ -303,6 +305,7 @@ const AIMessageSuggestionsModelSelector: FC<{
           lineHeight: '20px',
           fontSize: '14px',
           color: 'primary.main',
+          borderRadius: '8px',
         }}
       >
         <Stack
@@ -336,7 +339,7 @@ const AIMessageSuggestionsModelSelector: FC<{
           gap={'4px'}
           sx={{
             borderRadius: '0 8px 8px 0',
-            mr: '2px',
+            pr: '2px',
             height: '22px',
             '&:hover': {
               bgcolor: (t) =>

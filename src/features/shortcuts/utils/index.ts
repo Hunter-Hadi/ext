@@ -155,6 +155,20 @@ export const clientFetchAPI = async <T = any>(
         abortTaskId,
       },
     })
+
+    if (response?.data?.response?.url) {
+      const redirectResponse = await port.postMessage({
+        event: 'Client_proxyFetchAPI',
+        data: {
+          url: response?.data?.response?.url,
+          options,
+          abortTaskId,
+        },
+      })
+      response.data.data = redirectResponse?.data?.data
+      response.data.response = redirectResponse?.data?.response
+    }
+
     if (options?.parse === 'blob' && response?.data?.data?.base64) {
       response.data.data = convertBase64ToBlob(
         response.data.data.base64,

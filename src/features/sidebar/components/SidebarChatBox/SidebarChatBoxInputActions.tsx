@@ -195,16 +195,14 @@ const SidebarChatBoxInputActions: FC<{
           variant={'contained'}
           disabled={smoothConversationLoading}
           onClick={() => {
-            if (inputValue && inputValue.trim()) {
-              // value 没有值或者都是空格时不触发 ask
-              onSendMessage &&
-                onSendMessage(inputValue, {
-                  includeHistory: !nextMessageIsActionRef.current,
-                  meta: metaDataRef.current,
-                })
-              metaDataRef.current = {}
-              nextMessageIsActionRef.current = false
-            }
+            // value 没有值或者都是空格时不触发 ask
+            onSendMessage &&
+              onSendMessage(inputValue, {
+                includeHistory: !nextMessageIsActionRef.current,
+                meta: metaDataRef.current,
+              })
+            metaDataRef.current = {}
+            nextMessageIsActionRef.current = false
           }}
           data-testid={'sidebar_actions__send_btn'}
         >

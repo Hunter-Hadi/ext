@@ -157,11 +157,11 @@ const useClientChat = () => {
       afterActions?: ISetActionsType
     },
   ) => {
-    await updateClientConversationLoading(true)
     const { beforeActions = [], afterActions = [] } = options || {}
     if (!question.meta?.attachments) {
       const attachments = await getAttachments(question.conversationId)
       if (attachments.length > 0) {
+        await updateClientConversationLoading(true)
         if (!(await checkAttachments(attachments))) {
           await updateClientConversationLoading(false)
           return
@@ -193,6 +193,7 @@ const useClientChat = () => {
     if (question?.meta?.attachments?.length) {
       question.meta.includeHistory = false
     }
+    await updateClientConversationLoading(true)
     await askAIWIthShortcuts([
       ...beforeActions,
       {

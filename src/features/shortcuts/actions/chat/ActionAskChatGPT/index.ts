@@ -357,6 +357,11 @@ export class ActionAskChatGPT extends Action {
           })
         }
         if (additionalText) {
+          // 如果显示的文本本身是空的，附加上文本的话，就会导致显示的是错误的additionalText,
+          // 所以要用空格代替
+          if (messageVisibleText === '') {
+            messageVisibleText = ' '
+          }
           if (
             this.question.text.startsWith(
               'Ignore all previous instructions. ',

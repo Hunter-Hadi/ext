@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " у налаштуваннях Chrome",
     "popup__pdf_page__step3__description": "Крок 3: Перетягніть та відкрийте PDF у вашому браузері, щоб використовувати переглядач MaxAI PDF AI",
     "popup__pdf_page__tip": "Порада: Переконайтеся, що обидва параметри \"Переглядач PDF AI\" та \"Дозволити доступ до URL-адрес файлів\" увімкнені для активації розширення на PDF-файлах.",
-    "popup__pdf_page__button": "Увімкнути \"Переглядач PDF AI\""
+    "popup__pdf_page__button": "Увімкнути \"Переглядач PDF AI\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Найновіша та найпродвинутіша модель від Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Найновіша та найпродвинутіша модель від OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Починає новий чат з {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

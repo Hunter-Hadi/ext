@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " בהגדרות Chrome",
     "popup__pdf_page__step3__description": "שלב 3: גרור ופתח את ה-PDF בדפדפן שלך כדי להשתמש במציג ה-PDF של MaxAI",
     "popup__pdf_page__tip": "טיפ מקצועי: וודא ששני האפשרויות \"מציג PDF AI\" ו-\"אפשר גישה לכתובות URL של קבצים\" מופעלות כדי להפעיל את התוסף על קבצי PDF.",
-    "popup__pdf_page__button": "הפעל \"מציג PDF AI\""
+    "popup__pdf_page__button": "הפעל \"מציג PDF AI\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "הדגם החדש ביותר והמתקדם ביותר מאת Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "הדגם החדש ביותר והמתקדם ביותר מאת OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "מתחיל שיחה חדשה עם {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

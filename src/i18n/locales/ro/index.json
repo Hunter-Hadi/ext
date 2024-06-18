@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " în setările Chrome",
     "popup__pdf_page__step3__description": "Pasul 3: Trage și deschide PDF-ul în browser pentru a utiliza vizualizatorul MaxAI PDF AI",
     "popup__pdf_page__tip": "Sfat Profesional: Asigură-te că atât \"Vizualizatorul PDF AI\" cât și \"Permite accesul la URL-urile fișierelor\" sunt activate pentru a activa extensia pe fișierele PDF.",
-    "popup__pdf_page__button": "Activează \"Vizualizator PDF AI\""
+    "popup__pdf_page__button": "Activează \"Vizualizator PDF AI\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Cel mai nou și avansat model de la Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Cel mai nou și avansat model de la OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Începe o conversație nouă cu {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

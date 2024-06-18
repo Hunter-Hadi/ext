@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " ક્રોમ સેટિંગ્સમાં",
     "popup__pdf_page__step3__description": "પગલું 3: માટે મહત્તમ છે કે તમારા બ્રાઉઝરમાં PDF ખીંચો અને ખોલો તેનો ઉપયોગ કરવા માટે MaxAI PDF AI જોઈને સક્રિય કરો",
     "popup__pdf_page__tip": "પ્રો ટિપ: \"PDF AI viewer\" અને \"ફાઇલ URL એક્સેસ મંજૂર કરો\" બન્ને સક્ષમ હોવું જોઈએ, તો PDF ફાઇલો પર એક્સ્ટેન્શનને સક્રિય કરવા માટે સક્ષમ થશે.",
-    "popup__pdf_page__button": "\"PDF AI viewer\" સક્ષમ કરો"
+    "popup__pdf_page__button": "\"PDF AI viewer\" સક્ષમ કરો",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropic દ્વારા નવીનતમ અને સૌથી આગ્રહી મોડેલ",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAI દ્વારા નવીનતમ અને સૌથી આગ્રહી મોડેલ",
+    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}} સાથે નવું ચેટ શરૂ કરો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

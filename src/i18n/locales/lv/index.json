@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": "Chrome iestatījumos",
     "popup__pdf_page__step3__description": "3. solis: Velciet un atveriet PDF failu pārlūkprogrammā, lai izmantotu MaxAI PDF AI skatītāju",
     "popup__pdf_page__tip": "Profesionāls padoms: Lai aktivizētu paplašinājumu PDF failiem, pārliecinieties, ka ir iespējots gan \"PDF AI skatītājs\", gan \"Atļaut piekļuvi failu URL\".",
-    "popup__pdf_page__button": "Iespējot \"PDF AI skatītāju\""
+    "popup__pdf_page__button": "Iespējot \"PDF AI skatītāju\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Jaunākais un vispārīgākais modelis no Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Jaunākais un vispārīgākais modelis no OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Sākt jaunu čatu ar {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

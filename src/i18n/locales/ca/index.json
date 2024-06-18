@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " a la configuració de Chrome",
     "popup__pdf_page__step3__description": "Pas 3: Arrossega i obre el PDF al teu navegador per utilitzar el visor d'IA de PDF MaxAI",
     "popup__pdf_page__tip": "Consell professional: Assegura't que tant el \"Visor d'IA de PDF\" com \"Permetre l'accés a les URL dels fitxers\" estiguin habilitats per activar l'extensió en els fitxers PDF.",
-    "popup__pdf_page__button": "Habilita el \"Visor d'IA de PDF\""
+    "popup__pdf_page__button": "Habilita el \"Visor d'IA de PDF\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "El model més nou i avançat de Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "El model més nou i avançat de OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Comença una nova conversa amb {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

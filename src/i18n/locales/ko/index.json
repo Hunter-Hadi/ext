@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " 활성화",
     "popup__pdf_page__step3__description": "단계 3: 브라우저에서 PDF 파일을 드래그하여 열어 MaxAI PDF AI 뷰어를 사용하세요",
     "popup__pdf_page__tip": "전문가 팁: \"PDF AI 뷰어\"와 \"파일 URL에 대한 액세스 허용\"이 모두 활성화되어 있는지 확인하여 PDF 파일에서 확장 프로그램을 활성화하세요.",
-    "popup__pdf_page__button": "\"PDF AI 뷰어\" 활성화"
+    "popup__pdf_page__button": "\"PDF AI 뷰어\" 활성화",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropic의 최신 및 가장 고급 모델",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAI의 최신 및 가장 고급 모델",
+    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}}와 새로운 대화 시작"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

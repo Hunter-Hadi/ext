@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " στις ρυθμίσεις του Chrome",
     "popup__pdf_page__step3__description": "Βήμα 3: Σύρετε και ανοίξτε το PDF στον περιηγητή σας για να χρησιμοποιήσετε τον προβολέα MaxAI PDF AI",
     "popup__pdf_page__tip": "Συμβουλή επαγγελματία: Βεβαιωθείτε ότι και οι δύο \"Προβολέας PDF AI\" και \"Να επιτρέπεται η πρόσβαση σε διευθύνσεις URL αρχείων\" είναι ενεργοποιημένοι για να ενεργοποιήσετε την επέκταση σε αρχεία PDF.",
-    "popup__pdf_page__button": "Ενεργοποίηση \"Προβολέας PDF AI\""
+    "popup__pdf_page__button": "Ενεργοποίηση \"Προβολέας PDF AI\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Νεότερο και πιο προηγμένο μοντέλο από την Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Νεότερο και πιο προηγμένο μοντέλο από την OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Ξεκινά νέα συνομιλία με το {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

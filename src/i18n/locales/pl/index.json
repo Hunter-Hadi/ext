@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " w ustawieniach Chrome",
     "popup__pdf_page__step3__description": "Krok 3: Przeciągnij i otwórz plik PDF w przeglądarce, aby korzystać z przeglądarki MaxAI PDF AI",
     "popup__pdf_page__tip": "Porada: Upewnij się, że zarówno \"Przeglądarka plików PDF\" jak i \"Zezwalaj na dostęp do adresów URL plików\" są włączone, aby aktywować rozszerzenie dla plików PDF.",
-    "popup__pdf_page__button": "Włącz \"Przeglądarkę plików PDF\""
+    "popup__pdf_page__button": "Włącz \"Przeglądarkę plików PDF\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Najnowszy i najbardziej zaawansowany model stworzony przez Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Najnowszy i najbardziej zaawansowany model stworzony przez OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Rozpocznij nową rozmowę z {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

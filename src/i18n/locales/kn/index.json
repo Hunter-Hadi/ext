@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " ಕ್ರೋಮ್ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ",
     "popup__pdf_page__step3__description": "ಹೊಸದಾಗಿ ಸಕ್ರಿಯಗೊಳಿಸಲು, ನೀವು ಬ್ರೌಸರ್‌ನಲ್ಲಿ PDF ಹಾಕಿ ತೆರೆಯಿರಿ ಮತ್ತು ತೆರೆದಾಗ MaxAI PDF AI ವೀಕ್ಷಕವನ್ನು ಬಳಸಿ",
     "popup__pdf_page__tip": "ಪ್ರೊ ಟಿಪ್: ಪಿಡಿಎಫ್ ಫೈಲ್‌ಗಳ ಮೇಲೆ ವಿಸ್ತರಣೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು, \"PDF AI ವೀಕ್ಷಕ\" ಮತ್ತು \"ಫೈಲ್ ಯುಆರ್‌ಎಲ್‌ಗೆ ಪ್ರವೇಶ ಅನುಮತಿ\" ಎಂಬ ಎರಡೂ ಸಕ್ರಿಯಗೊಂಡಿರುವುದನ್ನು ಖಚಿತಪಡಿಸಿ",
-    "popup__pdf_page__button": "\"PDF AI ವೀಕ್ಷಕ\" ಸಕ್ರಿಯಗೊಳಿಸಿ"
+    "popup__pdf_page__button": "\"PDF AI ವೀಕ್ಷಕ\" ಸಕ್ರಿಯಗೊಳಿಸಿ",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropic ದ್ವಾರಾ ಹೊಸತಾಗಿ ಮತ್ತು ಅತ್ಯುನ್ನತ ಮಾದರಿ",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAI ದ್ವಾರಾ ಹೊಸತಾಗಿ ಮತ್ತು ಅತ್ಯುನ್ನತ ಮಾದರಿ",
+    "sidebar__chat__suggestions__starts_new_chat__title": "{{AI_MODEL}} ಜೊತೆ ಹೊಸ ಚಾಟ್ ಪ್ರಾರಂಭಿಸುತ್ತದೆ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

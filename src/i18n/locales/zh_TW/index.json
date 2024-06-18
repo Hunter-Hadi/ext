@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": "在 Chrome 設定中",
     "popup__pdf_page__step3__description": "步驟3：拖曳並在瀏覽器中開啟PDF以使用MaxAI PDF AI Viewer",
     "popup__pdf_page__tip": "專業提示：確保同時啟用“PDF AI viewer”和“允許存取檔案URL”，以在PDF檔案上啟用擴充功能。",
-    "popup__pdf_page__button": "啟用“PDF AI viewer”"
+    "popup__pdf_page__button": "啟用“PDF AI viewer”",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Anthropic 最新且最先進的模型",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "OpenAI 最新且最先進的模型",
+    "sidebar__chat__suggestions__starts_new_chat__title": "以 {{AI_MODEL}} 開始新聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

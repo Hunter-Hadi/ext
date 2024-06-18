@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " dans les paramètres de Chrome",
     "popup__pdf_page__step3__description": "Étape 3 : Faites glisser et ouvrez le PDF dans votre navigateur pour utiliser le visualiseur MaxAI PDF AI",
     "popup__pdf_page__tip": "Astuce : Assurez-vous que à la fois \"Visualiseur de fichiers PDF\" et \"Autoriser l'accès aux URL des fichiers\" sont activés pour activer l'extension sur les fichiers PDF.",
-    "popup__pdf_page__button": "Activer \"Visualiseur de fichiers PDF\""
+    "popup__pdf_page__button": "Activer \"Visualiseur de fichiers PDF\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Modèle le plus récent et le plus avancé par Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Modèle le plus récent et le plus avancé par OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Commence un nouveau chat avec {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " في إعدادات Chrome",
     "popup__pdf_page__step3__description": "الخطوة 3: اسحب وافتح ملف PDF في المتصفح الخاص بك لاستخدام عارض MaxAI لملفات PDF",
     "popup__pdf_page__tip": "نصيحة مهنية: تأكد من تمكين كل من \"عارض PDF AI\" و \"السماح بالوصول إلى روابط الملفات\" لتفعيل الامتداد على ملفات PDF.",
-    "popup__pdf_page__button": "تمكين \"عارض PDF AI\""
+    "popup__pdf_page__button": "تمكين \"عارض PDF AI\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "أحدث وأكثر النماذج تقدمًا من Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "أحدث وأكثر النماذج تقدمًا من OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "بدء دردشة جديدة مع {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

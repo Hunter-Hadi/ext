@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " in den Chrome-Einstellungen",
     "popup__pdf_page__step3__description": "Schritt 3: Ziehen Sie die PDF-Datei in Ihren Browser, um den MaxAI PDF AI Viewer zu verwenden",
     "popup__pdf_page__tip": "Profi-Tipp: Stellen Sie sicher, dass sowohl \"PDF AI Viewer\" als auch \"Zugriff auf Datei-URLs erlauben\" aktiviert sind, um die Erweiterung für PDF-Dateien zu aktivieren.",
-    "popup__pdf_page__button": "Aktiviere \"PDF AI Viewer\""
+    "popup__pdf_page__button": "Aktiviere \"PDF AI Viewer\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Neuestes und fortschrittlichstes Modell von Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Neuestes und fortschrittlichstes Modell von OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Startet neuen Chat mit {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

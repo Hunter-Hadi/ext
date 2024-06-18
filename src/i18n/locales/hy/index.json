@@ -904,7 +904,10 @@
     "popup__pdf_page__step2__description3": " Chrome ընթացիկում",
     "popup__pdf_page__step3__description": "Քայլ 3. Տաքեք և բացեք PDF-ն ձեր զննարկիչում, որպեսզի օգտագործեք MaxAI PDF AI դիտումը",
     "popup__pdf_page__tip": "Փորձարկում. Հաստատեք, որ միացված են «PDF AI viewer» և «Allow access to file URLs»-ը, որպեսզի ակտիվացնեք ընդհանուրվածությունը PDF ֆայլերում:",
-    "popup__pdf_page__button": "Միացնել \"PDF AI viewer\""
+    "popup__pdf_page__button": "Միացնել \"PDF AI viewer\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Նորագույն և առաջինը առաջարկվող մոդելը Anthropic-ի կողմից",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Նորագույն և առաջինը առաջարկվող մոդելը OpenAI-ի կողմից",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Սկսել նոր խոսելու համար {{AI_MODEL}}-ով"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

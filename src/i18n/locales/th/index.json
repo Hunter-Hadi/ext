@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " ในการตั้งค่า Chrome",
     "popup__pdf_page__step3__description": "ขั้นตอนที่ 3: ลากและเปิดไฟล์ PDF ในเบราว์เซอร์เพื่อใช้งาน MaxAI PDF AI viewer",
     "popup__pdf_page__tip": "เคล็ดลับ: ตรวจสอบให้แน่ใจว่า \"PDF AI viewer\" และ \"อนุญาตให้เข้าถึง URL ของไฟล์\" เปิดใช้งานเพื่อเปิดใช้งานส่วนขยายบนไฟล์ PDF",
-    "popup__pdf_page__button": "เปิดใช้งาน \"PDF AI viewer\""
+    "popup__pdf_page__button": "เปิดใช้งาน \"PDF AI viewer\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "รุ่นล่าสุดและทันสมัยที่สุดจาก Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "รุ่นล่าสุดและทันสมัยที่สุดจาก OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "เริ่มการสนทนาใหม่กับ {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

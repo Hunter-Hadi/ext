@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " در تنظیمات Chrome",
     "popup__pdf_page__step3__description": "مرحله ۳: فایل PDF را بکشید و در مرورگر خود باز کنید تا از نمایشگر هوش مصنوعی PDF MaxAI استفاده کنید",
     "popup__pdf_page__tip": "نکته حرفه‌ای: برای فعال کردن افزونه در فایل‌های PDF، هر دو \"نمایشگر هوش مصنوعی PDF\" و \"اجازه دسترسی به URL های فایل\" را فعال کنید.",
-    "popup__pdf_page__button": "فعال کردن \"نمایشگر هوش مصنوعی PDF\""
+    "popup__pdf_page__button": "فعال کردن \"نمایشگر هوش مصنوعی PDF\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "جدیدترین و پیشرفته‌ترین مدل توسط Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "جدیدترین و پیشرفته‌ترین مدل توسط OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "شروع چت جدید با {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

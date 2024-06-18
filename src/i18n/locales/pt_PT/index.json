@@ -907,7 +907,10 @@
     "popup__pdf_page__step2__description3": " nas configurações do Chrome",
     "popup__pdf_page__step3__description": "Passo 3: Arraste e abra o PDF no seu navegador para usar o visualizador de IA em PDF MaxAI",
     "popup__pdf_page__tip": "Dica Pro: Certifique-se de que tanto o \"Visualizador de IA em PDF\" quanto o \"Permitir acesso a URLs de arquivo\" estejam ativados para ativar a extensão em arquivos PDF.",
-    "popup__pdf_page__button": "Ativar \"Visualizador de IA em PDF\""
+    "popup__pdf_page__button": "Ativar \"Visualizador de IA em PDF\"",
+    "sidebar__chat__suggestions__model__description__for_claude_3_opus": "O modelo mais recente e avançado da Anthropic",
+    "sidebar__chat__suggestions__model__description__for_gpt_4_o": "O modelo mais recente e avançado da OpenAI",
+    "sidebar__chat__suggestions__starts_new_chat__title": "Iniciar novo chat com {{AI_MODEL}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

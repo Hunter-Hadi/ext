@@ -29,6 +29,8 @@ export default class PDFCitation implements ICitationService {
   pages: number[] = []
   // 查询状态
   loading = false
+  // 查询时间
+  searchTime = Date.now()
 
   constructor() {
     this.init()
@@ -101,7 +103,8 @@ export default class PDFCitation implements ICitationService {
     if (!container || !element) return
 
     const containerRect = container.getBoundingClientRect()
-    const elementRect = element instanceof Element ? element.getBoundingClientRect() : element
+    const elementRect =
+      element instanceof Element ? element.getBoundingClientRect() : element
     // 计算目标元素相对于容器的位置
     const elementOffsetTop =
       elementRect.top - containerRect.top + container.scrollTop
@@ -171,9 +174,10 @@ export default class PDFCitation implements ICitationService {
       if (selection) {
         selection.removeAllRanges()
         selection.addRange(range)
-        await this.scrollElement(selection.getRangeAt(0).getBoundingClientRect())
+        await this.scrollElement(
+          selection.getRangeAt(0).getBoundingClientRect(),
+        )
       }
-
     }
   }
 
@@ -227,7 +231,10 @@ export default class PDFCitation implements ICitationService {
               item: { type: string; hasEOL: boolean; str: string },
               index: number,
             ) => {
-              if (item.type === 'beginMarkedContentProps' || item.type === 'beginMarkedContent') {
+              if (
+                item.type === 'beginMarkedContentProps' ||
+                item.type === 'beginMarkedContent'
+              ) {
                 parentNode = createNode(parentNode)
                 return
               }
@@ -239,7 +246,7 @@ export default class PDFCitation implements ICitationService {
 
               let startOffset = 0
               let endOffset = 0
-              const str = item.hasEOL ? `${item.str}\n` : (item.str || '')
+              const str = item.hasEOL ? `${item.str}\n` : item.str || ''
               pageTextLength += str.length
               itemIndex = index
 
@@ -255,7 +262,7 @@ export default class PDFCitation implements ICitationService {
                 if (
                   str[0] !== searchString[currentContent.length] &&
                   str[str.length - 1] !==
-                  searchString[currentContent.length + str.length - 1]
+                    searchString[currentContent.length + str.length - 1]
                 ) {
                   matches = []
                   currentContent = ''
@@ -343,10 +350,17 @@ export default class PDFCitation implements ICitationService {
       let beforeStart = 1
       let afterStart = numPages
 
-      while (beforeStart <= afterStart) {
+      this.searchTime = Date.now()
+
+      while (beforeStart < afterStart) {
+        if (Date.now() - this.searchTime > 1000 * 20) {
+          // 查询时间大于20s超时返回
+          throw new Error('PDF citation timeout')
+        }
         // 先找开头100页
         let end = Math.min(numPages, beforeStart + step)
         await findByPages(beforeStart, end)
+        beforeStart = end + 1
         if (currentContent.length === searchString.length) {
           break
         }

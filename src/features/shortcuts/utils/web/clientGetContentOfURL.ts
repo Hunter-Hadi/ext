@@ -53,6 +53,7 @@ const clientGetContentOfURL = async (
       initialUrl: string,
     ): Promise<string> => {
       let htmlContent = await promiseTimeout(fetchHtml(initialUrl), timeout, '')
+
       // 搜狗引擎部分页面会重定向，需要做二次请求抓取
       if (initialUrl.includes('https://www.sogou.com')) {
         const regex = /window\.location\.replace\("([^"]+)"\)/

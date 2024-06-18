@@ -156,7 +156,11 @@ export const clientFetchAPI = async <T = any>(
       },
     })
 
-    if (response?.data?.response?.url) {
+    if (
+      options.method === 'GET' &&
+      response.data.redirected &&
+      response?.data?.response?.url
+    ) {
       const redirectResponse = await port.postMessage({
         event: 'Client_proxyFetchAPI',
         data: {

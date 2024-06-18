@@ -56,6 +56,10 @@ export const maxAIRequestBodyPromptActionGenerator = async (
         return content.type !== 'text'
       },
     )
+    // 如果有AIModel，加上model_name
+    if (promptActionConfig?.AIModel) {
+      clonePostBody.model_name = promptActionConfig?.AIModel
+    }
     return clonePostBody
   } catch (e) {
     return originalPostBody

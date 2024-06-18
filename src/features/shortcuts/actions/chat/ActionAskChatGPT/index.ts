@@ -538,34 +538,30 @@ export class ActionAskChatGPT extends Action {
                   message.originalMessage || {},
                 ]),
               }
-              if (message.conversationId) {
-                AIConversationId = message.conversationId
+              if (this.answer.conversationId) {
+                AIConversationId = this.answer.conversationId
               }
-              if (message.originalMessage?.metadata?.sourceCitations) {
+              if (this.answer.originalMessage?.metadata?.sourceCitations) {
                 // TODO 后续会去掉liteMode，渲染的时候以有无对应属性去显示组件
                 // 目前sourceCitations只会在chat的时候输出
                 if (!outputMessage?.originalMessage) {
-                  message.originalMessage.liteMode = true
+                  this.answer.originalMessage.liteMode = true
                 }
               }
               this.output =
                 this.answer.originalMessage?.content?.text || this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
               if (outputMessage && this.status === 'running') {
-                // 如果是AI response的消息，并且有originalMessage，则更新originalMessage.content.text
-                if (
-                  isAIMessage(outputMessage) &&
-                  outputMessage.originalMessage
-                ) {
+                // 如果有originalMessage，则更新originalMessage.content.text
+                if (outputMessage.originalMessage) {
                   await ClientConversationMessageManager.updateMessage(
                     conversationId,
-
                     {
                       messageId: outputMessageId,
-                      originalMessage: message.originalMessage || {
+                      originalMessage: this.answer.originalMessage || {
                         content: {
                           contentType: 'text',
-                          text: message.text,
+                          text: outputMessageText,
                         },
                       },
                     },
@@ -573,35 +569,16 @@ export class ActionAskChatGPT extends Action {
                       syncMessageToDB: false,
                     },
                   )
-                  // await ClientConversationMessageManager.updateMessagesWithChanges(
-                  //   conversationId,
-                  //   [
-                  //     {
-                  //       key: outputMessageId || '',
-                  //       changes: {
-                  //         'originalMessage.content.text': outputMessageText,
-                  //           'originalMessage.metadata.sourceCitations':
-                  //         message.sourceCitations,
-                  //       } as any,
-                  //     },
-                  //   ],
-                  //   {
-                  //     syncMessageToDB: false,
-                  //   },
-                  // )
                 } else {
-                  await ClientConversationMessageManager.updateMessagesWithChanges(
+                  await ClientConversationMessageManager.updateMessage(
                     conversationId,
-                    [
-                      {
-                        key: outputMessageId || '',
-                        changes: message.originalMessage
-                          ? { originalMessage: message.originalMessage }
-                          : {
-                              text: outputMessageText,
-                            },
-                      },
-                    ],
+                    {
+                      messageId: outputMessageId,
+                      text: outputMessageText,
+                      ...(this.answer.originalMessage
+                        ? { originalMessage: this.answer.originalMessage }
+                        : {}),
+                    },
                     {
                       syncMessageToDB: false,
                     },

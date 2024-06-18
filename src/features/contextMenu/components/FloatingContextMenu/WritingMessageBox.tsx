@@ -136,6 +136,7 @@ const WritingMessageBox: FC<{
           }
           sx={{
             mt: 1,
+            mb: 2,
             '& > div': {
               maxWidth: '100%',
               width: '100%',

@@ -58,7 +58,6 @@ const clientGetContentOfURL = async (
         const regex = /window\.location\.replace\("([^"]+)"\)/
         const match = htmlContent.match(regex)
         if (match && match[1]) {
-          console.log(`match && match[1]:`, match[1])
           htmlContent = await promiseTimeout(fetchHtml(match[1]), timeout, '')
         }
       }

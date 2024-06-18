@@ -1,6 +1,7 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
 import { IMaxAIChatMessageContent } from '@/background/src/chat/UseChatGPTChat/types'
+import { CHAT__AI_MODEL__SUGGESTION__PROMPT_ID } from '@/constants'
 import { IUserMessageMetaType } from '@/features/indexed_db/conversations/models/Message'
 import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 
@@ -32,6 +33,7 @@ export const maxAIRequestBodyPromptActionGenerator = async (
      * 但是如果用户自己填了CURRENT_PROMPT，就不需要这个操作
      */
     if (
+      clonePostBody.prompt_id === CHAT__AI_MODEL__SUGGESTION__PROMPT_ID &&
       Object.prototype.hasOwnProperty.call(
         clonePostBody.prompt_inputs,
         'CURRENT_PROMPT',
@@ -45,21 +47,15 @@ export const maxAIRequestBodyPromptActionGenerator = async (
           },
         )
       if (promptTemplate) {
-        // 去掉message_content里的text
-        clonePostBody.message_content = clonePostBody.message_content?.filter(
-          (content: IMaxAIChatMessageContent) => {
-            return content.type !== 'text'
-          },
-        )
         clonePostBody.prompt_inputs.CURRENT_PROMPT = promptTemplate.text || ''
       }
-    } else {
-      // 删掉message_content
-      delete clonePostBody.message_content
     }
-    if (promptActionConfig?.AIModel) {
-      clonePostBody.model_name = promptActionConfig?.AIModel
-    }
+    // 去掉message_content里的text
+    clonePostBody.message_content = clonePostBody.message_content?.filter(
+      (content: IMaxAIChatMessageContent) => {
+        return content.type !== 'text'
+      },
+    )
     return clonePostBody
   } catch (e) {
     return originalPostBody

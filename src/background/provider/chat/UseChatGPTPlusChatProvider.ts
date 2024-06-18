@@ -81,8 +81,11 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
               }))
             })
         : []
+      // 这里需要判断，如果在summary下chat过切换summary nav的时候，需要取的是当前的messageId
       const lastMessageId =
-        orderBy(messages, ['created_at'], ['desc'])?.[0]?.messageId || ''
+        question.meta?.outputMessageId ||
+        orderBy(messages, ['created_at'], ['desc'])?.[0]?.messageId ||
+        ''
       const lastMessage = await backgroundConversationDB.messages.get(
         lastMessageId,
       )
@@ -146,7 +149,8 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
             done &&
             backendAPI === 'get_summarize_response' &&
             data.text &&
-            (!data.sourceCitations || data.sourceCitations?.length === 0)
+            (!data.originalMessage?.metadata?.sourceCitations ||
+              data.originalMessage.metadata.sourceCitations?.length === 0)
           ) {
             const conversation = await ConversationManager.getConversationById(
               conversationId || '',
@@ -154,12 +158,18 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
             if (conversation?.meta?.systemPrompt) {
               // HACK: 临时逻辑，对所有summarize的消息请求citation
               // 拦截并且获取sourceCitations
-              data.sourceCitations = await this.tempGetCitation(
-                taskId,
-                question.text,
-                data.text,
-                conversation.meta.systemPrompt,
-              )
+              data.originalMessage = {
+                ...data.originalMessage,
+                metadata: {
+                  ...data.originalMessage?.metadata,
+                  sourceCitations: await this.tempGetCitation(
+                    taskId,
+                    question.text,
+                    data.text,
+                    conversation.meta.systemPrompt,
+                  ),
+                },
+              }
             }
           }
           await this.sendResponseToClient(sender.tab.id, {
@@ -168,7 +178,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              sourceCitations: data.sourceCitations,
+              originalMessage: data.originalMessage,
               messageId,
             },
             error,

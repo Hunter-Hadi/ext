@@ -541,17 +541,11 @@ export class ActionAskChatGPT extends Action {
               if (message.conversationId) {
                 AIConversationId = message.conversationId
               }
-              if (message.sourceCitations?.length) {
-                this.answer.originalMessage = {
-                  ...this.answer.originalMessage,
-                  // 这个字段代表本条消息不是rich message
-                  // 目前sourceCitations只会在chat的时候输出
-                  // 如果后续要在outputMessage里添加sourceCitations要额外处理
-                  liteMode: true,
-                  metadata: {
-                    ...this.answer.originalMessage?.metadata,
-                    sourceCitations: message.sourceCitations,
-                  },
+              if (message.originalMessage?.metadata?.sourceCitations) {
+                // TODO 后续会去掉liteMode，渲染的时候以有无对应属性去显示组件
+                // 目前sourceCitations只会在chat的时候输出
+                if (!outputMessage?.originalMessage) {
+                  message.originalMessage.liteMode = true
                 }
               }
               this.output =
@@ -563,31 +557,49 @@ export class ActionAskChatGPT extends Action {
                   isAIMessage(outputMessage) &&
                   outputMessage.originalMessage
                 ) {
-                  await ClientConversationMessageManager.updateMessagesWithChanges(
+                  await ClientConversationMessageManager.updateMessage(
                     conversationId,
-                    [
-                      {
-                        key: outputMessageId || '',
-                        changes: {
-                          'originalMessage.content.text': outputMessageText,
-                          'originalMessage.metadata.sourceCitations':
-                            message.sourceCitations,
-                        } as any,
+
+                    {
+                      messageId: outputMessageId,
+                      originalMessage: message.originalMessage || {
+                        content: {
+                          contentType: 'text',
+                          text: message.text,
+                        },
                       },
-                    ],
+                    },
                     {
                       syncMessageToDB: false,
                     },
                   )
+                  // await ClientConversationMessageManager.updateMessagesWithChanges(
+                  //   conversationId,
+                  //   [
+                  //     {
+                  //       key: outputMessageId || '',
+                  //       changes: {
+                  //         'originalMessage.content.text': outputMessageText,
+                  //           'originalMessage.metadata.sourceCitations':
+                  //         message.sourceCitations,
+                  //       } as any,
+                  //     },
+                  //   ],
+                  //   {
+                  //     syncMessageToDB: false,
+                  //   },
+                  // )
                 } else {
                   await ClientConversationMessageManager.updateMessagesWithChanges(
                     conversationId,
                     [
                       {
                         key: outputMessageId || '',
-                        changes: {
-                          text: outputMessageText,
-                        },
+                        changes: message.originalMessage
+                          ? { originalMessage: message.originalMessage }
+                          : {
+                              text: outputMessageText,
+                            },
                       },
                     ],
                     {

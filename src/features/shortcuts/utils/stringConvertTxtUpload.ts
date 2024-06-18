@@ -50,7 +50,7 @@ export const stringConvertTxtUpload = async (
     })
     const formData = new FormData()
     formData.append('file', file, file.name.replace(/\.pdf$/, '.txt'))
-    formData.append('doc_id', md5TextEncrypt(text))
+    formData.append('doc_id', md5HashId)
     fetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/analyze_file`, {
       method: 'POST',
       headers: {

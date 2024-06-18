@@ -4,12 +4,17 @@ import {
   MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   MAXAI_VISION_MODEL_UPLOAD_CONFIG,
 } from '@/background/src/chat/constant'
-import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIProviderModel,
+  IAIResponseOriginalMessageMetaDeepRelatedData,
+  IAIResponseSourceCitation,
+} from '@/features/indexed_db/conversations/models/Message'
 // import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import dayjs from 'dayjs'
 
 export type IMaxAIChatGPTBackendAPIType =
   | 'chat_with_document'
+  | 'chat_with_document/v2'
   | 'get_chatgpt_response'
   | 'get_summarize_response'
   | 'get_gemini_response'
@@ -38,6 +43,36 @@ export interface IMaxAIChatMessageContent {
 export interface IMaxAIRequestHistoryMessage {
   role: 'human' | 'ai' | 'generic' | 'system' | 'function'
   content: IMaxAIChatMessageContent[]
+}
+
+export type IMaxAIResponseStreamStatus = 'start' | 'in_progress' | 'complete'
+
+export interface IMaxAIResponseStreamMessage {
+  conversation_id?: string
+  /**
+   * @deprecated 历史版本，用citations代替
+   */
+  sources?: IAIResponseSourceCitation[]
+  /**
+   * citation相关信息
+   */
+  citations?: IAIResponseSourceCitation[]
+  /**
+   * related相关信息
+   */
+  related?: IAIResponseOriginalMessageMetaDeepRelatedData[]
+  /**
+   * ai response内容
+   */
+  text?: string
+  /**
+   * 当前stream的状态，以key区分当前正在输出的内容
+   */
+  streaming_status: IMaxAIResponseStreamStatus
+  /**
+   * @feature 目前是每批次是全量返回，考虑到数据量问题先预留这个字段
+   */
+  need_merge?: boolean
 }
 
 export const MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO = 'gpt-3.5-turbo'

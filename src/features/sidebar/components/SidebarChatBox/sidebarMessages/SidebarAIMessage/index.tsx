@@ -278,17 +278,30 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             )}
           </Stack>
         ) : (
-          <div
-            className={`markdown-body ${
-              isDarkMode ? 'markdown-body-dark' : ''
-            }`}
-          >
-            <AppSuspenseLoadingLayout>
-              <CustomMarkdown citations={renderData.sourceCitations}>
-                {renderData.answer}
-              </CustomMarkdown>
-            </AppSuspenseLoadingLayout>
-          </div>
+          <Stack spacing={2}>
+            <div
+              className={`markdown-body ${
+                isDarkMode ? 'markdown-body-dark' : ''
+              }`}
+            >
+              <AppSuspenseLoadingLayout>
+                <CustomMarkdown
+                  citations={renderData.sourceCitations}
+                  isComplete={renderData.messageIsComplete}
+                >
+                  {renderData.answer}
+                </CustomMarkdown>
+              </AppSuspenseLoadingLayout>
+            </div>
+            {/* lite mode下也显示 */}
+            {renderData.deepDive && (
+              <SidebarAImessageBottomList
+                data={renderData.deepDive}
+                loading={coverLoading}
+                isDarkMode={isDarkMode}
+              />
+            )}
+          </Stack>
         )}
         {!coverLoading ? (
           <SidebarAIMessageTools message={message as IAIResponseMessage} />

@@ -37,7 +37,6 @@ import { IConversation } from '@/features/indexed_db/conversations/models/Conver
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessage,
-  IAIResponseSourceCitation,
   IChatMessage,
   IChatUploadFile,
   IUserChatMessage,
@@ -165,7 +164,6 @@ export const clientAskAIQuestion = async (
       conversationId: string
       text: string
       originalMessage?: IAIResponseOriginalMessage
-      sourceCitations?: IAIResponseSourceCitation[]
     }) => Promise<void>
     onError?: (error: string) => Promise<void>
   },
@@ -211,7 +209,10 @@ export const clientAskAIQuestion = async (
                 resolve(true)
                 destroyListener()
               })
-            } else if (lastTaskData?.data?.text) {
+            } else if (
+              lastTaskData?.data?.text ||
+              lastTaskData?.data?.originalMessage
+            ) {
               // 如果有lastTaskData?.data?.text，那么执行onMessage
               onMessage?.(lastTaskData.data).finally(() => {
                 resolve(true)
@@ -225,7 +226,10 @@ export const clientAskAIQuestion = async (
           } else {
             if (lastTaskData.error) {
               onError?.(lastTaskData.error)
-            } else if (lastTaskData?.data?.text) {
+            } else if (
+              lastTaskData?.data?.text ||
+              lastTaskData?.data?.originalMessage
+            ) {
               onMessage?.(lastTaskData.data)
             }
             runTask()

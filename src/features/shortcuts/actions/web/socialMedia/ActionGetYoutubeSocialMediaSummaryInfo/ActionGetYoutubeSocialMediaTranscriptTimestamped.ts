@@ -771,39 +771,41 @@ Ignore all previous instructions.${outputLanguage}`
     this.viewLatestTranscriptData = transcriptData
     await ClientConversationMessageManager.updateMessage(conversationId, {
       messageId,
-      metadata: {
-        isComplete: false,
-        sources: {
-          status: 'complete',
-        },
-        copilot: {
-          steps: [
+      originalMessage: {
+        metadata: {
+          isComplete: false,
+          sources: {
+            status: 'complete',
+          },
+          copilot: {
+            steps: [
+              {
+                title: 'Analyzing video',
+                status: 'complete',
+                icon: 'SmartToy',
+                value: this.currentWebPageTitle,
+              },
+            ],
+          },
+          deepDive: [
             {
-              title: 'Analyzing video',
+              type: 'timestampedSummary',
               status: 'complete',
-              icon: 'SmartToy',
-              value: this.currentWebPageTitle,
+              title: {
+                title: 'Summary',
+                titleIcon: 'SummaryInfo',
+              },
+              value: transcriptData,
+            },
+            {
+              title: {
+                title: 'Deep dive',
+                titleIcon: 'TipsAndUpdates',
+              },
+              value: 'Ask AI anything about the video...',
             },
           ],
         },
-        deepDive: [
-          {
-            type: 'timestampedSummary',
-            status: 'complete',
-            title: {
-              title: 'Summary',
-              titleIcon: 'SummaryInfo',
-            },
-            value: transcriptData,
-          },
-          {
-            title: {
-              title: 'Deep dive',
-              titleIcon: 'TipsAndUpdates',
-            },
-            value: 'Ask AI anything about the video...',
-          },
-        ],
       },
       type: 'ai',
       text: '',

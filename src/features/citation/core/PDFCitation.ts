@@ -29,6 +29,8 @@ export default class PDFCitation implements ICitationService {
   pages: number[] = []
   // 查询状态
   loading = false
+  // 查询时间
+  searchTime = Date.now()
 
   constructor() {
     this.init()
@@ -348,7 +350,13 @@ export default class PDFCitation implements ICitationService {
       let beforeStart = 1
       let afterStart = numPages
 
+      this.searchTime = Date.now()
+
       while (beforeStart < afterStart) {
+        if (Date.now() - this.searchTime > 1000 * 20) {
+          // 查询时间大于20s超时返回
+          throw new Error('PDF citation timeout')
+        }
         // 先找开头100页
         let end = Math.min(numPages, beforeStart + step)
         await findByPages(beforeStart, end)

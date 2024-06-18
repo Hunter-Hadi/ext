@@ -50,6 +50,7 @@ const SidebarAIMessageAttachmentsDownloadButton: FC<{
         try {
           const result = await promiseTimeout(
             clientFetchAPI(downloadUrl, {
+              method: 'GET',
               parse: 'blob',
               contentType: 'image/png',
             }),

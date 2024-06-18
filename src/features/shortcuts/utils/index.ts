@@ -146,6 +146,9 @@ export const clientFetchAPI = async <T = any>(
   abortTaskId?: string,
 ): Promise<ClientFetchAPIResponse<T>> => {
   try {
+    if (!options.method) {
+      options.method = 'GET'
+    }
     const port = new ContentScriptConnectionV2()
     const response = await port.postMessage({
       event: 'Client_proxyFetchAPI',

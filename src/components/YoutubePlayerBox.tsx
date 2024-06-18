@@ -36,6 +36,7 @@ const YoutubePlayerBox: FC<YoutubePlayerBoxProps> = (props) => {
   useEffectOnce(() => {
     clientFetchAPI('https://www.youtube.com/t/terms', {
       parse: 'text',
+      method: 'GET',
     })
       .then((result) => {
         if (result.success) {
@@ -46,7 +47,7 @@ const YoutubePlayerBox: FC<YoutubePlayerBoxProps> = (props) => {
   })
   return (
     <Box
-      className="video-container"
+      className='video-container'
       sx={{
         '&.video-container': {
           position: 'relative',
@@ -74,15 +75,15 @@ const YoutubePlayerBox: FC<YoutubePlayerBoxProps> = (props) => {
       }}
     >
       {!currentShowEmbedLink && cover && (
-        <img src={cover} alt="Youtube video cover" />
+        <img src={cover} alt='Youtube video cover' />
       )}
       <iframe
-        title="YouTube video player"
-        width="560"
-        height="315"
+        title='YouTube video player'
+        width='560'
+        height='315'
         src={fixYoutubeLink}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        frameBorder='0'
+        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
         allowFullScreen
         onLoad={() => {
           setVideoLoaded(true)

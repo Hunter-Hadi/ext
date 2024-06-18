@@ -39,6 +39,7 @@ export class YoutubeTranscript {
         const pageHTMLResult = await clientFetchAPI(
           'https://www.youtube.com/watch?v=' + identifier,
           {
+            method: 'GET',
             parse: 'text',
           },
         )
@@ -89,6 +90,7 @@ export class YoutubeTranscript {
       for (let i = 0; i < waitFetchLinks.length; i++) {
         const waitFetchLink = waitFetchLinks[i]
         const xmlResult = await clientFetchAPI(waitFetchLink.link, {
+          method: 'GET',
           parse: 'text',
         })
         if (xmlResult.success) {
@@ -118,6 +120,7 @@ export class YoutubeTranscript {
     const pageContent = await clientFetchAPI(
       'https://www.youtube.com/watch?v=' + videoId,
       {
+        method: 'GET',
         parse: 'text',
       },
       abortTaskId,

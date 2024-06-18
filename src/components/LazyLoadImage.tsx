@@ -74,6 +74,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
             // 用background fetch一次
             const result = await clientFetchAPI(src, {
               parse: 'blob',
+              method: 'GET',
             })
             if (result) {
               if (
@@ -155,7 +156,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
         <Skeleton
           className={'maxai--lazy-load--skeleton'}
           id={`lazy-image-${lazyImageIdRef.current}`}
-          variant="rectangular"
+          variant='rectangular'
           height={height}
           sx={{
             width: width,

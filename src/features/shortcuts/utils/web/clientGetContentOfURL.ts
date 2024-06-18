@@ -38,6 +38,7 @@ const clientGetContentOfURL = async (
       const response = await clientFetchAPI(
         targetUrl,
         {
+          method: 'GET',
           parse: 'text',
         },
         abortTaskId,

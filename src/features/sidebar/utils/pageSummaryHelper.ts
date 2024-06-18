@@ -1645,6 +1645,7 @@ const getSpecialHostPageContent = async () => {
       ) as HTMLAnchorElement
       if (rawLink) {
         const response = await clientFetchAPI(rawLink.href, {
+          method: 'GET',
           parse: 'text',
         })
         if (response.success) {
@@ -1716,6 +1717,7 @@ const getSpecialHostPageContent = async () => {
         otherCommentsUrl.pathname =
           otherCommentsUrl.pathname + `/partials/load_more`
         const result = await clientFetchAPI(otherCommentsUrl.href, {
+          method: 'GET',
           parse: 'text',
         })
         if (result.success) {

@@ -94,7 +94,7 @@ export class ActionAskChatGPT extends Action {
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       // 是否启用了Response指定语言语言
-      const isEnableAIResponseLanguage =
+      let isEnableAIResponseLanguage =
         this.parameters.isEnabledDetectAIResponseLanguage !== false
       const conversationId =
         this.parameters.AskChatGPTActionQuestion?.conversationId ||
@@ -198,6 +198,9 @@ export class ActionAskChatGPT extends Action {
        */
       const MaxAISuggestionAIModel = params.MAXAI_SUGGESTION_AI_MODEL
       if (MaxAISuggestionAIModel) {
+        // 如果用户直接打字聊天，isEnableAIResponseLanguage是false
+        // 此时点击了suggest AI model，需要设置成true，要不然不会检测AI response language
+        isEnableAIResponseLanguage = true
         // 正常的聊天，但是用户点了suggest AI model
         if (!MaxAIPromptActionConfig) {
           // 设置成Freestyle的MaxAI prompt action
@@ -374,7 +377,8 @@ export class ActionAskChatGPT extends Action {
         }
       } else {
         if (MaxAIPromptActionConfig) {
-          // 如果开启了自定义AI response language，那么就不需要检测语言或者使用用户设置的语言
+          // 如果没开启自定义AI response language，那么就不需要检测语言或者使用用户设置的语言
+          // 例如用了English\Spanish\Chinese等prompt，需要把AI_RESPONSE_LANGUAGE设置为空
           MaxAIPromptActionConfig.variables.forEach((variable) => {
             if (variable.VariableName === 'AI_RESPONSE_LANGUAGE') {
               variable.defaultValue = ''

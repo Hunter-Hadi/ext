@@ -244,7 +244,7 @@ export const authEmitPricingHooksLog = debounce(
           ? await ClientConversationManager.getConversationPayWallModel(
               propConversationId,
             )
-          : '',
+          : trackParams.aiModel,
         ...trackParams,
       })
       const port = new ContentScriptConnectionV2()

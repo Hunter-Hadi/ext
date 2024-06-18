@@ -5,11 +5,12 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
+import { checkIsThirdPartyAIProvider } from '@/background/src/chat/util'
 import {
   IUserCurrentPlan,
   useUserInfo,
@@ -92,6 +93,7 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
   const { currentUserPlan, loading } = useUserInfo()
   const { currentSidebarConversationType, clientConversation } =
     useClientConversation()
+  const [isShowSuggestions, setIsShowSuggestions] = useState(false)
   const messageAIModel = AIMessage.originalMessage?.metadata?.AIModel || ''
   const memoConfig = useMemo(() => {
     const isLastMessage =
@@ -99,12 +101,17 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
     if (
       currentSidebarConversationType !== 'Chat' ||
       loading ||
-      !isLastMessage
+      !isLastMessage ||
+      !isShowSuggestions
     ) {
       return null
     }
     const conversationModel = clientConversation?.meta.AIModel || ''
-    const models = getAIModels(currentUserPlan, conversationModel)
+    const AIProvider = clientConversation?.meta.AIProvider || ''
+    // TODO 第三方AIProvider不显示AIModel的推荐
+    const models = checkIsThirdPartyAIProvider(AIProvider)
+      ? []
+      : getAIModels(currentUserPlan, conversationModel)
     const suggestions = models.filter(
       (model) => model.AIModel !== messageAIModel,
     )
@@ -138,7 +145,21 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
     loading,
     currentUserPlan,
     messageAIModel,
+    isShowSuggestions,
   ])
+  useEffect(() => {
+    if (clientConversation?.lastMessageId && clientConversation.id) {
+      getLastRunShortcuts(clientConversation.id).then((result) => {
+        if (result.lastRunActions.length > 0) {
+          setIsShowSuggestions(true)
+        } else {
+          setIsShowSuggestions(false)
+        }
+      })
+    } else {
+      setIsShowSuggestions(false)
+    }
+  }, [clientConversation?.lastMessageId, clientConversation?.id])
   if (!memoConfig) {
     return null
   }

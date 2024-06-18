@@ -2,6 +2,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { isUserMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   deleteRemoteConversationByType,
@@ -222,6 +223,23 @@ export class ClientConversationManager {
         AIModel: null,
         AIProvider: null,
       }
+    }
+  }
+
+  static getConversationPayWallModel = async (conversationId: string) => {
+    try {
+      const latestUserMessage =
+        await ClientConversationMessageManager.getMessageByMessageType(
+          conversationId,
+          'user',
+          'latest',
+        )
+      if (latestUserMessage && isUserMessage(latestUserMessage)) {
+        return latestUserMessage.meta?.MaxAIPromptActionConfig?.AIModel || ''
+      }
+      return ''
+    } catch (e) {
+      return ''
     }
   }
 

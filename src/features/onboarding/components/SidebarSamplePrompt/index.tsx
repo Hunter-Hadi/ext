@@ -50,11 +50,11 @@ const SidebarSamplePrompt: FC<ISidebarSamplePromptPrompt> = ({
   const samplePromptItemXs = useMemo(() => {
     if (isInMaxAIImmersiveChat) {
       // 在 maxai immersive chat 页面，直接使用 窗口宽度的 breakpoint
-      return isDownMdWithWidow ? 12 : 3
+      return isDownMdWithWidow ? 6 : 3
     } else {
       // 不在 maxai immersive chat 页面时，需要计算 sidebarWidth
       const themeBreakpoints = theme.breakpoints.values
-      return sidebarWidth < themeBreakpoints.md ? 12 : 3
+      return sidebarWidth < themeBreakpoints.md ? 6 : 3
     }
   }, [
     isInMaxAIImmersiveChat,
@@ -112,7 +112,7 @@ const SidebarSamplePrompt: FC<ISidebarSamplePromptPrompt> = ({
     return null
   }
   return (
-    <Stack spacing={1.5} px={1.5} pt={2} pb={3} width='100%'>
+    <Stack spacing={1.5} width='100%'>
       {showExploreMore && (
         <Typography
           fontSize={14}

@@ -31,7 +31,9 @@ const SamplePromptItem: FC<ISamplePromptItemProps> = ({
       }}
     >
       <Paper
+        component={'button'}
         sx={{
+          width: '100%',
           px: 2,
           py: 1.5,
           bgcolor: disabled
@@ -56,6 +58,7 @@ const SamplePromptItem: FC<ISamplePromptItemProps> = ({
         }}
       >
         <EllipsisTextWithTooltip
+          textAlign={'left'}
           tip={title}
           resizeListener
           lineClamp={showLineClamp}

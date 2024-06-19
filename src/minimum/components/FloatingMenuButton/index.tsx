@@ -24,7 +24,7 @@ import MaxAIScreenshotMiniButton from '@/minimum/components/FloatingMenuButton/b
 import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
 import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
 import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
-import { isArticlePage as checkIsArticlePage } from '@/minimum/utils'
+import { checkWebpageIsArticlePage as checkIsArticlePage } from '@/minimum/utils'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
 const aboveActionsCount = 3
@@ -131,9 +131,9 @@ const FloatingMenuButton: FC = () => {
     >
       <Draggable
         disabled={!isHoverButton}
-        bounds="parent"
+        bounds='parent'
         position={{ x: 0, y: dragAxisY }}
-        axis="y"
+        axis='y'
         scale={1}
         onStart={() => {}}
         onStop={(e, data) => {

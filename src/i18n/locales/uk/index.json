@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "اس PDF کا خلاصہ کرنے اور سوالات پوچھنے کے لئے کلک کریں۔",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "اس یوٹیوب ویڈیو کا خلاصہ کرنے اور سوالات پوچھنے کے لئے کلک کریں۔",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "فوری طور پر ایک شخصیت پر مبنی جواب تشکیل دینے کے لئے کلک کریں۔",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "فوری طور پر ایک شخصیت پر مبنی ڈرافٹ تشکیل دینے کے لئے کلک کریں یا اپنے ڈرافٹ کو بہتر بنائیں۔"
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "فوری طور پر ایک شخصیت پر مبنی ڈرافٹ تشکیل دینے کے لئے کلک کریں یا اپنے ڈرافٹ کو بہتر بنائیں۔",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "خلاصہ کریں"
   },
   "survey": {
     "funnel_survey__submit_success__title": "ہمیں اپنے تجربے کا شکریہ دینے کے لئے آپ کا شکریہ. 🙏",

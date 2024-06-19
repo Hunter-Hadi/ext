@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "このPDFを要約し、質問をするためにクリックしてください。",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "このYouTubeビデオを要約し、質問をするためにクリックしてください。",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "個別の返信を即座に生成するためにクリックしてください。",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "個別の下書きを即座に生成するか、下書きを改善するためにクリックしてください。"
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "個別の下書きを即座に生成するか、下書きを改善するためにクリックしてください。",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "要約"
   },
   "survey": {
     "funnel_survey__submit_success__title": "ご意見を共有していただきありがとうございます。🙏",

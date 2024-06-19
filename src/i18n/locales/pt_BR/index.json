@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Clique para resumir e fazer perguntas sobre este PDF.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Clique para resumir e fazer perguntas sobre este vídeo do YouTube.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Clique para gerar uma resposta personalizada instantaneamente.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Clique para gerar um rascunho personalizado instantaneamente ou melhorar seu rascunho."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Clique para gerar um rascunho personalizado instantaneamente ou melhorar seu rascunho.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Resumir"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Obrigado por compartilhar sua experiência conosco. 🙏",

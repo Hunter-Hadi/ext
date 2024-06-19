@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Spustelėkite, kad sukurtumėte santrauką ir užduotumėte klausimus apie šį PDF failą.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Spustelėkite, kad sukurtumėte santrauką ir užduotumėte klausimus apie šį YouTube vaizdo įrašą.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Spustelėkite, kad iškart sugeneruotumėte asmeninį atsakymą.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Spustelėkite, kad iškart sugeneruotumėte asmeninį projektą arba patobulintumėte savo projektą."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Spustelėkite, kad iškart sugeneruotumėte asmeninį projektą arba patobulintumėte savo projektą.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Suvesti santrauką"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Dėkojame, kad pasidalinote savo patirtimi su mumis. 🙏",

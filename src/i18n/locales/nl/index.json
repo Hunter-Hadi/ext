@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klik om dit PDF-bestand samen te vatten en vragen te stellen.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klik om deze YouTube-video samen te vatten en vragen te stellen.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klik om direct een gepersonaliseerd antwoord te genereren.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klik om direct een gepersonaliseerde conceptversie te genereren of je concept te verbeteren."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klik om direct een gepersonaliseerde conceptversie te genereren of je concept te verbeteren.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Samenvatten"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Bedankt voor het delen van uw ervaring met ons. 🙏",

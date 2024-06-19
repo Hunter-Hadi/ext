@@ -55,6 +55,15 @@ const SidebarSummarySuggestion: FC<{
       }
     })
   }
+  const handleClick = () => {
+    setSidebarSummarySuggestion((prevState) => {
+      return {
+        ...prevState,
+        userManualHideOrStartChat: true,
+      }
+    })
+    props.onClick?.()
+  }
   const handleUpdateArticlePageInfo = () => {
     setSidebarSummarySuggestion((prevState) => {
       return {
@@ -107,10 +116,14 @@ const SidebarSummarySuggestion: FC<{
   const prevMessageIdRef = useRef('')
   useEffect(() => {
     if (clientConversation?.type === 'Chat' && clientConversation?.id) {
+      const mergeConversationAndLassMessageId =
+        clientConversation.id + (clientConversation.lastMessageId || '')
+      // 如果conversationId变化了，说明用户切换了对话
       if (prevMessageIdRef.current.indexOf(clientConversation.id) === -1) {
-        prevMessageIdRef.current =
-          clientConversation.id + clientConversation.lastMessageId
-      } else {
+        prevMessageIdRef.current = mergeConversationAndLassMessageId
+      } else if (
+        prevMessageIdRef.current !== mergeConversationAndLassMessageId
+      ) {
         // lastMessageId 变化说明用户开始聊天了
         setSidebarSummarySuggestion((prevState) => {
           return {
@@ -158,7 +171,7 @@ const SidebarSummarySuggestion: FC<{
             borderColor: 'primary.main',
           },
         }}
-        onClick={props.onClick}
+        onClick={handleClick}
       >
         <Stack
           direction={'row'}

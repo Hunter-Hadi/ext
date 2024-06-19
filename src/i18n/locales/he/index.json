@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "לחץ כדי לסכם ולשאול שאלות על PDF זה.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "לחץ כדי לסכם ולשאול שאלות על סרטון YouTube זה.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "לחץ כדי ליצור תשובה אישית באופן מיידי.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "לחץ כדי ליצור טיוטה אישית באופן מיידי או לשפר את הטיוטה שלך."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "לחץ כדי ליצור טיוטה אישית באופן מיידי או לשפר את הטיוטה שלך.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "סיכום"
   },
   "survey": {
     "funnel_survey__submit_success__title": "תודה על שיתוף החוויה שלך איתנו. 🙏",

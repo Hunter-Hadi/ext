@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klõpsake PDF-i kokkuvõtte ja küsimuste esitamiseks.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klõpsake YouTube'i video kokkuvõtte ja küsimuste esitamiseks.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klõpsake isikupärastatud vastuse kohe genereerimiseks.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klõpsake isikupärastatud mustandi kohe genereerimiseks või oma mustandit parandamiseks."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klõpsake isikupärastatud mustandi kohe genereerimiseks või oma mustandit parandamiseks.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Kokkuvõte"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Täname teid oma kogemuse jagamise eest. 🙏",

@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kliknite, da povzamete in postavite vprašanja o tem PDF-ju.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kliknite, da povzamete in postavite vprašanja o tem YouTube videu.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kliknite, da takoj generirate personaliziran odgovor.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknite, da takoj generirate personalizirano osnutek ali izboljšate svoj osnutek."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknite, da takoj generirate personalizirano osnutek ali izboljšate svoj osnutek.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Povzetek"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Hvala, ker ste delili svoje izkušnje z nami. 🙏",

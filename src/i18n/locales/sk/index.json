@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kliknite pre zhrnutie a položenie otázok o tomto PDF.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kliknite pre zhrnutie a položenie otázok o tomto YouTube videu.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kliknite pre okamžité vygenerovanie personalizovanej odpovede.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknite pre okamžité vygenerovanie personalizovaného návrhu alebo vylepšenie vášho návrhu."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknite pre okamžité vygenerovanie personalizovaného návrhu alebo vylepšenie vášho návrhu.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Zhrnúť"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Ďakujeme, že ste sa podelili o svoje skúsenosti s nami. 🙏",

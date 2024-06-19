@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Napsauta tiivistääksesi ja kysyäksesi kysymyksiä tästä PDF-tiedostosta.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Napsauta tiivistääksesi ja kysyäksesi kysymyksiä tästä YouTube-videosta.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Napsauta luodaksesi välittömästi henkilökohtaisen vastauksen.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Napsauta luodaksesi välittömästi henkilökohtaisen luonnoksen tai parantaaksesi luonnostasi."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Napsauta luodaksesi välittömästi henkilökohtaisen luonnoksen tai parantaaksesi luonnostasi.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Tiivistä"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Kiitos, kun jaat kokemuksesi kanssamme. 🙏",

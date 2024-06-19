@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "点击总结并提问有关此PDF的问题。",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "点击总结并提问有关此YouTube视频的问题。",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "点击立即生成个性化回复。",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "点击立即生成个性化草稿，或改进您的草稿。"
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "点击立即生成个性化草稿，或改进您的草稿。",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "总结"
   },
   "survey": {
     "funnel_survey__submit_success__title": "感谢您与我们分享您的经验。🙏",

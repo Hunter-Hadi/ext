@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klik for at opsummere og stille spørgsmål om denne PDF.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klik for at opsummere og stille spørgsmål om denne YouTube-video.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klik for at generere et personligt svar øjeblikkeligt.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klik for at generere et personligt udkast øjeblikkeligt eller forbedre dit udkast."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klik for at generere et personligt udkast øjeblikkeligt eller forbedre dit udkast.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Resumé"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Tak fordi du delte din oplevelse med os. 🙏",

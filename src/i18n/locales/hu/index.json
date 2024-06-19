@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kattintson a PDF összefoglalásához és kérdések feltevéséhez erről a PDF-ről.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kattintson a YouTube videó összefoglalásához és kérdések feltevéséhez erről a YouTube videóról.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kattintson a személyre szabott válasz azonnali generálásához.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kattintson a személyre szabott vázlat azonnali generálásához, vagy javítsa a vázlatát."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kattintson a személyre szabott vázlat azonnali generálásához, vagy javítsa a vázlatát.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Összefoglalás"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Köszönjük, hogy megosztotta velünk tapasztalatait. 🙏",

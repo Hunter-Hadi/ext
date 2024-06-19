@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Bu PDF hakkında özet yapmak ve sorular sormak için tıklayın.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Bu YouTube videosu hakkında özet yapmak ve sorular sormak için tıklayın.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kişiselleştirilmiş bir yanıt anında oluşturmak için tıklayın.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kişiselleştirilmiş bir taslak anında oluşturmak veya taslağınızı iyileştirmek için tıklayın."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kişiselleştirilmiş bir taslak anında oluşturmak veya taslağınızı iyileştirmek için tıklayın.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Özetle"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Deneyiminizi bizimle paylaştığınız için teşekkür ederiz. 🙏",

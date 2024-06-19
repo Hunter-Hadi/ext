@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klikk for å oppsummere og stille spørsmål om denne PDF-en.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klikk for å oppsummere og stille spørsmål om denne YouTube-videoen.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klikk for å generere et personlig svar umiddelbart.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klikk for å generere et personlig utkast umiddelbart, eller forbedre utkastet ditt."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klikk for å generere et personlig utkast umiddelbart, eller forbedre utkastet ditt.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Oppsummer"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Takk for at du delte din erfaring med oss. 🙏",

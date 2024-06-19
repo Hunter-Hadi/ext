@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klicken Sie hier, um dieses PDF zusammenzufassen und Fragen dazu zu stellen.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klicken Sie hier, um dieses YouTube-Video zusammenzufassen und Fragen dazu zu stellen.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klicken Sie hier, um sofort eine personalisierte Antwort zu generieren.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klicken Sie hier, um sofort einen personalisierten Entwurf zu generieren oder Ihren Entwurf zu verbessern."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klicken Sie hier, um sofort einen personalisierten Entwurf zu generieren oder Ihren Entwurf zu verbessern.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Zusammenfassen"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Vielen Dank, dass Sie Ihre Erfahrung mit uns teilen. 🙏",

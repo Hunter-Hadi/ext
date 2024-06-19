@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Kliknite da sumirate i postavljate pitanja o ovom PDF-u.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Kliknite da sumirate i postavljate pitanja o ovom YouTube videu.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Kliknite da generišete personalizovan odgovor trenutno.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknite da generišete personalizovani nacrt trenutno ili poboljšate svoj nacrt."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Kliknite da generišete personalizovani nacrt trenutno ili poboljšate svoj nacrt.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Sumiraj"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Hvala vam što ste podelili svoje iskustvo sa nama. 🙏",

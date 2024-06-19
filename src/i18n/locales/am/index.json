@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "የዚህ PDF ጥቅም ለመጠቀም እና ጥያቄዎች ለመጠየቅ ይጠቀሙ.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "የዚህ YouTube ቪዲዮ ጥቅም ለመጠቀም እና ጥያቄዎች ለመጠየቅ ይጠቀሙ.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "የሚከተለውን መልእክት በአንድ ጊዜ የሚከተለውን መልእክት ለመጠየቅ ወደ AI ተከታተሉ.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "የሚከተለውን መልእክት በአንድ ጊዜ የሚከተለውን መልእክት ለመጠየቅ ወደ AI ተከታተሉ."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "የሚከተለውን መልእክት በአንድ ጊዜ የሚከተለውን መልእክት ለመጠየቅ ወደ AI ተከታተሉ.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "ጥቅምት"
   },
   "survey": {
     "funnel_survey__submit_success__title": "እኛን ለማስተላለፍ እናመሰግናለን. 🙏",

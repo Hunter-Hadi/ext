@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Bonyeza ili kuhitimisha na kuuliza maswali kuhusu PDF hii.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Bonyeza ili kuhitimisha na kuuliza maswali kuhusu video hii ya YouTube.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Bonyeza ili kuzalisha jibu la kibinafsi mara moja.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Bonyeza ili kuzalisha rasimu ya kibinafsi mara moja, au boresha rasimu yako."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Bonyeza ili kuzalisha rasimu ya kibinafsi mara moja, au boresha rasimu yako.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Kuhitimisha"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Asante kwa kushiriki uzoefu wako nasi. 🙏",

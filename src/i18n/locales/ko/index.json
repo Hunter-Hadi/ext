@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "이 PDF를 요약하고 질문을 하려면 클릭하세요.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "이 YouTube 동영상을 요약하고 질문을 하려면 클릭하세요.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "개인화된 답장을 즉시 생성하려면 클릭하세요.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "개인화된 초안을 즉시 생성하거나 초안을 개선하려면 클릭하세요."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "개인화된 초안을 즉시 생성하거나 초안을 개선하려면 클릭하세요.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "요약"
   },
   "survey": {
     "funnel_survey__submit_success__title": "경험을 공유해 주셔서 감사합니다. 🙏",

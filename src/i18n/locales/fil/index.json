@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "I-click para i-summarize at magtanong tungkol sa PDF na ito.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "I-click para i-summarize at magtanong tungkol sa YouTube video na ito.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "I-click para agad na lumikha ng personal na tugon.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "I-click para agad na lumikha ng draft na personal, o pagbutihin ang iyong draft."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "I-click para agad na lumikha ng draft na personal, o pagbutihin ang iyong draft.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Buodin"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Salamat sa pagbahagi ng iyong karanasan sa amin. 🙏",

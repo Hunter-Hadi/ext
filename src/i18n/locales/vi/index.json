@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Nhấp để tóm tắt và đặt câu hỏi về PDF này.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Nhấp để tóm tắt và đặt câu hỏi về video YouTube này.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Nhấp để tạo ngay lập tức một câu trả lời cá nhân.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Nhấp để tạo ngay lập tức một bản nháp cá nhân hoặc cải thiện bản nháp của bạn."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Nhấp để tạo ngay lập tức một bản nháp cá nhân hoặc cải thiện bản nháp của bạn.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Tóm tắt"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Cảm ơn bạn đã chia sẻ trải nghiệm của mình với chúng tôi. 🙏",

@@ -1264,7 +1264,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Klicka för att sammanfatta och ställa frågor om denna PDF.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Klicka för att sammanfatta och ställa frågor om denna YouTube-video.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Klicka för att omedelbart generera ett personligt svar.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klicka för att omedelbart generera ett personligt utkast eller förbättra ditt utkast."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Klicka för att omedelbart generera ett personligt utkast eller förbättra ditt utkast.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Sammanfatta"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Tack för att du delade din upplevelse med oss. 🙏",

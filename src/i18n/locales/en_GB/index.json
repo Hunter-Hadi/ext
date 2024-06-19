@@ -1070,7 +1070,8 @@
     "onboarding_tooltip__PDF_SUMMARY_BUTTON__text": "Click to summarize and ask questions about this PDF.",
     "onboarding_tooltip__YOUTUBE_SUMMARY_BUTTON__text": "Click to summarize and ask questions about this YouTube video.",
     "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_REPLY_BUTTON__text": "Click to generate a personalized reply instantly.",
-    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Click to generate a personalized draft instantly, or improve your draft."
+    "onboarding_tooltip__INSTANT_REPLY__GMAIL__COMPOSE_NEW_BUTTON__text": "Click to generate a personalized draft instantly, or improve your draft.",
+    "onboarding__sidebar__chat__suggest_summarize_button__title": "Summarize"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

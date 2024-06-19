@@ -18,7 +18,6 @@ import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 import HomeViewAISearchInput from './HomeViewAISearchInput'
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
 import HomeViewImageUploader from './HomeViewImageUploader'
-import HomeViewPageSummaryButton from './HomeViewPageSummaryButton'
 import HomeViewPdfFUploader from './HomeViewPdfFUploader'
 
 type IHomeViewNavItemValueType =
@@ -94,48 +93,30 @@ const HomeViewContentNav = () => {
   return (
     <Box py={2}>
       <Grid container spacing={1.5}>
-        <Grid item xs={inImmersiveChat ? 12 : 6} order={1}>
-          <Grid container spacing={1.5}>
-            <Grid item xs={12}>
-              <HomeViewAISearchInput />
-            </Grid>
-            {!inImmersiveChat && (
-              <Grid item xs={12}>
-                <HomeViewPageSummaryButton />
-              </Grid>
-            )}
-            {!inImmersiveChat && (
-              <Grid item xs={12}>
-                <HomeViewDefaultNavItem
-                  navItem={HOME_VIEW_CONTENT_NAV_CONFIG['immersive_chat']}
-                />
-              </Grid>
-            )}
+        <Grid item xs={12} order={1} container spacing={1.5}>
+          <Grid item xs={6}>
+            <HomeViewAISearchInput />
+          </Grid>
+          <Grid item xs={6}>
+            <HomeViewDefaultNavItem
+              navItem={HOME_VIEW_CONTENT_NAV_CONFIG['my_own_prompts']}
+            />
           </Grid>
         </Grid>
-        <Grid item xs={6} order={inImmersiveChat ? 4 : 2}>
-          <HomeViewImageUploader />
+        <Grid item xs={6} order={2} container spacing={1.5}>
+          {!inImmersiveChat && (
+            <Grid item xs={12}>
+              <HomeViewDefaultNavItem
+                navItem={HOME_VIEW_CONTENT_NAV_CONFIG['immersive_chat']}
+              />
+            </Grid>
+          )}
+          <Grid item xs={12}>
+            <HomeViewPdfFUploader />
+          </Grid>
         </Grid>
         <Grid item xs={6} order={3}>
-          <HomeViewPdfFUploader />
-        </Grid>
-        <Grid
-          item
-          xs={inImmersiveChat ? 12 : 6}
-          order={inImmersiveChat ? 2 : 4}
-        >
-          <Grid container spacing={1.5}>
-            <Grid item xs={inImmersiveChat ? 6 : 12}>
-              <HomeViewDefaultNavItem
-                navItem={HOME_VIEW_CONTENT_NAV_CONFIG['one_click_prompts']}
-              />
-            </Grid>
-            <Grid item xs={inImmersiveChat ? 6 : 12}>
-              <HomeViewDefaultNavItem
-                navItem={HOME_VIEW_CONTENT_NAV_CONFIG['my_own_prompts']}
-              />
-            </Grid>
-          </Grid>
+          <HomeViewImageUploader />
         </Grid>
       </Grid>
     </Box>

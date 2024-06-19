@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import SidebarSamplePrompt from '@/features/onboarding/components/SidebarSamplePrompt'
-import SidebarSummarySuggestion from '@/features/onboarding/components/SidebarSummarySuggestion'
 import HomeViewContentNav from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewContentNav'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -22,13 +21,10 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
   isSettingVariables,
 }) => {
   const { t } = useTranslation(['client'])
-  const { currentSidebarConversationType, updateSidebarConversationType } =
-    useSidebarSettings()
+  const { currentSidebarConversationType } = useSidebarSettings()
 
   const isInMaxAIImmersiveChat = isMaxAIImmersiveChatPage()
-  const handleSwitchToSummary = () => {
-    updateSidebarConversationType('Summary')
-  }
+
   return (
     <Stack
       flex={1}
@@ -192,7 +188,6 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
         gap={1.5}
       >
         <SidebarSamplePrompt isSettingVariables={isSettingVariables} />
-        <SidebarSummarySuggestion onClick={handleSwitchToSummary} />
       </Stack>
     </Stack>
   )

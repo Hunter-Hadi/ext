@@ -106,7 +106,7 @@ const PlanButton: FC<IPlanButtonProps> = (props) => {
     // 作用在，当组件还在 prefetching 时，用户点击了按钮
     // 会把 isClickedRef.current 设置成 true，
     // 等 prefetching 结束后，再执行 handleClick
-    if (isClickedRef.current && prefetch && prefetching === false) {
+    if (prefetch && isClickedRef.current && prefetching === false) {
       setTimeout(handleClick, 0)
     }
   }, [prefetch, prefetching])

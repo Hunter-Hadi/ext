@@ -45,11 +45,10 @@ export type IUseChatGPTUserInfo = {
   group_id?: string
   // 用户第一次付费的时间戳（单位: 秒）
   subscribed_at?: number | null
-  subscription_cancelled_at?: null | number
   subscription_payment_failed_at?: null | number
   subscription_type: 'SUBSCRIPTION' | 'ONE_TIME'
   // 用户取消订阅的 utc 时间， 示例：2024-06-05T06:31:36.590000+00:00
-  subscription_cancelled_at?: string | null
+  subscription_canceled_at?: string | null
 
   client_user_id?: string | null
 }

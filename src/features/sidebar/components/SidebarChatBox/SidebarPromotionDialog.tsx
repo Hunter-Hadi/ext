@@ -80,9 +80,9 @@ const SidebarPromotionDialog = () => {
       return
     }
 
-    // subscription_cancelled_at 存在，并且没有填写过 survey_cancel_completed survey
-    if (userInfo.subscription_cancelled_at && !surveyCancelCompletedFilledOut) {
-      const cancelledAt = dayjs.utc(userInfo.subscription_cancelled_at)
+    // subscription_canceled_at 存在，并且没有填写过 survey_cancel_completed survey
+    if (userInfo.subscription_canceled_at && !surveyCancelCompletedFilledOut) {
+      const cancelledAt = dayjs.utc(userInfo.subscription_canceled_at)
       const now = dayjs.utc()
       if (now.diff(cancelledAt, 'day') < 30) {
         // 不显示 SidebarPromotionDialog， 因为这时候需要显示 survey_cancel_completed survey dialog

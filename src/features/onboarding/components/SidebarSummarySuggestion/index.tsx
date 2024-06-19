@@ -5,12 +5,13 @@ import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import { SvgIconProps } from '@mui/material/SvgIcon'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { atom, useRecoilState } from 'recoil'
 
 import { useCreateClientMessageListener } from '@/background/utils'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { checkWebpageIsArticlePage } from '@/minimum/utils'
 import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
@@ -38,8 +39,7 @@ const SidebarSummarySuggestion: FC<{
   const { t } = useTranslation(['onboarding'])
   const [sidebarSummarySuggestion, setSidebarSummarySuggestion] =
     useRecoilState(SidebarSummarySuggestionState)
-  // 当用户开始聊天之后，隐藏这个提示
-  const [lastVisibleMessageId, setLastVisibleMessageId] = useState('')
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const { currentSidebarConversationType, clientConversation } =
     useClientConversation()
   const { isArticlePage, articlePageInfo, userManualHideOrStartChat } =
@@ -88,27 +88,7 @@ const SidebarSummarySuggestion: FC<{
       }
     })
   }
-  const isUserStartChatMemo = useMemo(() => {
-    if (!clientConversation?.id) {
-      return false
-    }
-    const isUserStartChat =
-      lastVisibleMessageId !==
-      clientConversation.id + clientConversation.lastMessageId
-    if (isUserStartChat) {
-      setSidebarSummarySuggestion((prevState) => {
-        return {
-          ...prevState,
-          userManualHideOrStartChat: true,
-        }
-      })
-    }
-    return isUserStartChat
-  }, [
-    clientConversation?.id,
-    clientConversation?.lastMessageId,
-    lastVisibleMessageId,
-  ])
+
   useCreateClientMessageListener(async (event) => {
     if (event === 'Client_listenTabUrlUpdate') {
       handleUpdateArticlePageInfo()
@@ -123,22 +103,30 @@ const SidebarSummarySuggestion: FC<{
   useEffect(() => {
     handleUpdateArticlePageInfo()
   }, [])
+  // 当用户开始聊天之后，隐藏这个提示
+  const prevMessageIdRef = useRef('')
   useEffect(() => {
     if (clientConversation?.type === 'Chat' && clientConversation?.id) {
-      setLastVisibleMessageId((prevState) => {
-        if (prevState.indexOf(clientConversation.id) === -1) {
-          return clientConversation.id + clientConversation.lastMessageId
-        }
-        return prevState
-      })
+      if (prevMessageIdRef.current.indexOf(clientConversation.id) === -1) {
+        prevMessageIdRef.current =
+          clientConversation.id + clientConversation.lastMessageId
+      } else {
+        // lastMessageId 变化说明用户开始聊天了
+        setSidebarSummarySuggestion((prevState) => {
+          return {
+            ...prevState,
+            userManualHideOrStartChat: true,
+          }
+        })
+      }
     }
-  }, [clientConversation?.id])
+  }, [clientConversation?.id, smoothConversationLoading])
 
   if (
     currentSidebarConversationType !== 'Chat' ||
     !isArticlePage ||
-    userManualHideOrStartChat ||
-    isUserStartChatMemo
+    smoothConversationLoading ||
+    userManualHideOrStartChat
   ) {
     return null
   }
@@ -240,7 +228,10 @@ const SidebarSummarySuggestion: FC<{
             <CancelRoundedIcon
               sx={{
                 fontSize: '16px',
-                color: 'rgba(0,0,0,.6)',
+                color: (t) =>
+                  t.palette.mode === 'dark'
+                    ? 'rgba(255,255,255,0.6)'
+                    : 'rgba(0,0,0,.6)',
               }}
             />
           </IconButton>

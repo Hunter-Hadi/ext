@@ -27,10 +27,7 @@ import {
   computedRectPosition,
   isRectangleCollidingWithBoundary,
 } from '@/features/contextMenu/utils'
-import {
-  removeAllRange,
-  removeAllSelectionMarker,
-} from '@/features/contextMenu/utils/selectionHelper'
+import { removeAllRange } from '@/features/contextMenu/utils/selectionHelper'
 import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import useCommands from '@/hooks/useCommands'
 
@@ -152,7 +149,6 @@ const FloatingMiniMenu: FC<{
         return
       }
       hideRangy()
-      removeAllSelectionMarker()
       removeAllRange()
     }
   }, [])
@@ -173,7 +169,6 @@ const FloatingMiniMenu: FC<{
       setTimeout(() => {
         handleCloseClickContextMenuButton()
       }, 1000)
-      handleCloseClickContextMenuButton()
     }
   }, [clientWritingMessage.loading])
 

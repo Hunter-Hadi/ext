@@ -17,7 +17,7 @@ import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarSummarySuggestionState = atom<{
   isArticlePage: boolean
-  userManualHide: boolean
+  userManualHideOrStartChat: boolean
   articlePageInfo: {
     title: string
     url: string
@@ -27,7 +27,7 @@ const SidebarSummarySuggestionState = atom<{
   key: 'SidebarSummarySuggestionAtom',
   default: {
     isArticlePage: false,
-    userManualHide: false,
+    userManualHideOrStartChat: false,
     articlePageInfo: null,
   },
 })
@@ -42,7 +42,7 @@ const SidebarSummarySuggestion: FC<{
   const [lastVisibleMessageId, setLastVisibleMessageId] = useState('')
   const { currentSidebarConversationType, clientConversation } =
     useClientConversation()
-  const { isArticlePage, articlePageInfo, userManualHide } =
+  const { isArticlePage, articlePageInfo, userManualHideOrStartChat } =
     sidebarSummarySuggestion
   const handleClearSummarySuggestion = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -51,7 +51,7 @@ const SidebarSummarySuggestion: FC<{
     setSidebarSummarySuggestion((prevState) => {
       return {
         ...prevState,
-        userManualHide: true,
+        userManualHideOrStartChat: true,
       }
     })
   }
@@ -88,14 +88,22 @@ const SidebarSummarySuggestion: FC<{
       }
     })
   }
-  const isUserStartChat = useMemo(() => {
+  const isUserStartChatMemo = useMemo(() => {
     if (!clientConversation?.id) {
       return false
     }
-    return (
+    const isUserStartChat =
       lastVisibleMessageId !==
       clientConversation.id + clientConversation.lastMessageId
-    )
+    if (isUserStartChat) {
+      setSidebarSummarySuggestion((prevState) => {
+        return {
+          ...prevState,
+          userManualHideOrStartChat: true,
+        }
+      })
+    }
+    return isUserStartChat
   }, [
     clientConversation?.id,
     clientConversation?.lastMessageId,
@@ -129,8 +137,8 @@ const SidebarSummarySuggestion: FC<{
   if (
     currentSidebarConversationType !== 'Chat' ||
     !isArticlePage ||
-    userManualHide ||
-    isUserStartChat
+    userManualHideOrStartChat ||
+    isUserStartChatMemo
   ) {
     return null
   }

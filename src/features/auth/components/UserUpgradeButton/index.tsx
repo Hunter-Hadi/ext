@@ -19,7 +19,10 @@ import LoginLayout from '@/features/auth/components/LoginLayout'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import PlanButton from '@/features/pricing/components/PlanButton'
+import { PROMOTION_CODE_MAP } from '@/features/pricing/constants'
 import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
+import usePrefetchStripeLinks from '@/features/pricing/hooks/usePrefetchStripeLinks'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
@@ -38,6 +41,8 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
 
   const href = `${APP_USE_CHAT_GPT_HOST}/pricing`
 
+  const { getStripeLink } = usePrefetchStripeLinks()
+
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
     authEmitPricingHooksLog('show', 'PROACTIVE_UPGRADE', {
@@ -51,16 +56,30 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
     setAnchorEl(null)
   }
 
-  const handleClick = async () => {
+  const sendLog = () => {
     authEmitPricingHooksLog('click', 'PROACTIVE_UPGRADE', {
       conversationId: currentConversationId,
       conversationType: currentSidebarConversationType,
       paywallType: 'PROACTIVE',
     })
+  }
+
+  const handleClick = async () => {
+    sendLog()
     if (paywallVariant === '2-2') {
-      createPaymentSubscription().finally(() => {
-        handlePopoverClose()
-      })
+      const targetPlan = 'elite_yearly'
+      const promotionCode = PROMOTION_CODE_MAP[targetPlan]
+      const cacheStripeLink = await getStripeLink(
+        targetPlan,
+        promotionCode ? promotionCode : undefined,
+      )
+
+      if (cacheStripeLink) {
+        window.open(cacheStripeLink)
+      } else {
+        await createPaymentSubscription(targetPlan)
+      }
+      handlePopoverClose()
     } else {
       handlePopoverClose()
       window.open(href)
@@ -140,21 +159,40 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           </Stack>
 
           <Box position='relative'>
-            <LoadingButton
-              variant='contained'
-              fullWidth
-              startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
-              sx={{
-                fontSize: 16,
-                px: 2,
-                py: 1.5,
-                borderRadius: 2,
-              }}
-              loading={loading}
-              onClick={handleClick}
-            >
-              {t('client:permission__pricing_modal__cta_button__title')}
-            </LoadingButton>
+            {paywallVariant === '2-2' ? (
+              <PlanButton
+                renderType='elite_yearly'
+                fullWidth
+                startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
+                sx={{
+                  fontSize: 16,
+                  px: 2,
+                  py: 1.5,
+                  borderRadius: 2,
+                }}
+                sendLog={sendLog}
+                prefetch
+              >
+                {t('client:permission__pricing_modal__cta_button__title')}
+              </PlanButton>
+            ) : (
+              <LoadingButton
+                variant='contained'
+                fullWidth
+                startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
+                sx={{
+                  fontSize: 16,
+                  px: 2,
+                  py: 1.5,
+                  borderRadius: 2,
+                }}
+                loading={loading}
+                onClick={handleClick}
+              >
+                {t('client:permission__pricing_modal__cta_button__title')}
+              </LoadingButton>
+            )}
+
             <Box
               sx={{
                 position: 'absolute',

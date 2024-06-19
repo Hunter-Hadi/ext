@@ -28,6 +28,7 @@ const SidebarAIMessageTextContent: FC<{
       <AppSuspenseLoadingLayout>
         <CustomMarkdown
           citations={AIMessage.originalMessage?.metadata?.sourceCitations}
+          citationsContent={AIMessage.originalMessage?.metadata?.sources?.links}
         >
           {currentContentValue}
         </CustomMarkdown>

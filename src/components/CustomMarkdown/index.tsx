@@ -2,6 +2,7 @@ import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import isNumber from 'lodash-es/isNumber'
 import React, { FC, useMemo } from 'react'
@@ -17,10 +18,14 @@ import supersub from 'remark-supersub'
 import Browser from 'webextension-polyfill'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import CitationTooltipContent from '@/components/CitationTooltipContent'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import CitationTag from '@/features/citation/components/CitationTag'
-import { IAIResponseSourceCitation } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIResponseOriginalMessageSourceLink,
+  IAIResponseSourceCitation,
+} from '@/features/indexed_db/conversations/models/Message'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
@@ -47,6 +52,7 @@ const OverrideAnchor: FC<{
   children: React.ReactNode
   href?: string
   title?: string
+  citationsContent?: IAIResponseOriginalMessageSourceLink
 }> = (props) => {
   const isYoutubeTimeUrl =
     props.href &&
@@ -107,6 +113,37 @@ const OverrideAnchor: FC<{
       >
         {props.children}
       </Link>
+    )
+  } else if (props?.citationsContent) {
+    // 引用（citation）hover 增强展示
+    return (
+      <Tooltip
+        PopperProps={{
+          className: 'certationTooltp',
+          sx: {
+            [`& > .use-chat-gpt-ai--MuiTooltip-tooltip`]: {
+              p: 0,
+              background: 'red',
+            },
+          },
+        }}
+        sx={{ p: 0 }}
+        title={
+          <CitationTooltipContent
+            source={props?.citationsContent}
+          ></CitationTooltipContent>
+        }
+        placement='top'
+      >
+        <Link
+          sx={{ cursor: 'pointer' }}
+          href={props.href}
+          target={'_blank'}
+          onClick={clickLinkUrl}
+        >
+          {props.children}
+        </Link>
+      </Tooltip>
     )
   } else {
     return (
@@ -240,9 +277,10 @@ const formatCitation = (citations: IAIResponseSourceCitation[]) => {
 
 const CustomMarkdown: FC<{
   citations?: IAIResponseSourceCitation[]
+  citationsContent?: IAIResponseOriginalMessageSourceLink[]
   children: string
 }> = (props) => {
-  const { children } = props
+  const { children, citationsContent } = props
 
   // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号，目前只针对PDF显示
   const citations = useMemo(() => {
@@ -325,9 +363,21 @@ const CustomMarkdown: FC<{
                   )
                 }
               }
+              // citation引用做hover 展示
+              let linkSource
+              if (citationsContent) {
+                const _index = Number(props?.children[0])
+                if (!isNaN(_index)) {
+                  linkSource = citationsContent[_index - 1]
+                }
+              }
               return (
                 // eslint-disable-next-line react/prop-types
-                <OverrideAnchor href={props.href} title={props.title}>
+                <OverrideAnchor
+                  href={props.href}
+                  title={props.title}
+                  citationsContent={linkSource}
+                >
                   {props.children}
                 </OverrideAnchor>
               )

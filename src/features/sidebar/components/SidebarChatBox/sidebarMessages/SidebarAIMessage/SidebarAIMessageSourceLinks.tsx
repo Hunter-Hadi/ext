@@ -4,10 +4,12 @@ import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link'
 import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, useMemo, useState } from 'react'
 
-import { IAIResponseOriginalMessageSourceLink } from '@/features/indexed_db/conversations/models/Message';
+import CitationTooltipContent from '@/components/CitationTooltipContent'
+import { IAIResponseOriginalMessageSourceLink } from '@/features/indexed_db/conversations/models/Message'
 import { SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT } from '@/features/searchWithAI/constants'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 
@@ -18,6 +20,7 @@ const SidebarAIMessageCopilotStep: FC<{
   const currentBreakpoint = useCurrentBreakpoint()
   const { sourceLinks, loading } = props
   const [expandAll, setExpandAll] = useState(false)
+
   const currentRenderSourceLinks = useMemo(() => {
     if (expandAll) {
       return sourceLinks
@@ -58,55 +61,77 @@ const SidebarAIMessageCopilotStep: FC<{
           .fill('')
           .map((_, index) => (
             <Grid item xs={itemWidth} key={index}>
-              <Skeleton variant="rounded" width={'100%'} height={60} />
+              <Skeleton variant='rounded' width={'100%'} height={60} />
             </Grid>
           ))
       ) : (
         <>
           {currentRenderSourceLinks.map((source, index) => (
-            <Grid item xs={itemWidth} key={index}>
-              <Card variant="outlined">
-                <Link href={source.url} target={'_blank'} underline="none">
-                  <Stack p={1} spacing={0.5}>
-                    <Typography
-                      fontSize={14}
-                      color="text.primary"
-                      noWrap
-                      sx={{
-                        p: 0,
-                      }}
-                    >
-                      {source.title}
-                    </Typography>
-                    <Stack direction={'row'} alignItems="center" spacing={0.5}>
-                      <Box
-                        width={16}
-                        height={16}
-                        borderRadius="50%"
-                        overflow="hidden"
-                        flexShrink={0}
-                      >
-                        <img
-                          src={source.favicon}
-                          alt={source?.from}
-                          width="100%"
-                          height="100%"
-                        />
-                      </Box>
-                      <Typography fontSize={12} color="text.secondary" noWrap>
-                        {source?.from}
-                      </Typography>
+            <Grid item xs={itemWidth} key={index} className='sourceGrid'>
+              <Tooltip
+                PopperProps={{
+                  className: 'certationTooltp',
+                  sx: {
+                    [`& > .use-chat-gpt-ai--MuiTooltip-tooltip`]: {
+                      p: 0,
+                      background: 'red',
+                    },
+                  },
+                }}
+                sx={{ p: 0 }}
+                title={
+                  <CitationTooltipContent
+                    source={source}
+                  ></CitationTooltipContent>
+                }
+              >
+                <Card variant='outlined'>
+                  <Link href={source.url} target={'_blank'} underline='none'>
+                    <Stack p={1} spacing={0.5} className='test'>
                       <Typography
-                        fontSize={12}
-                        color="text.secondary"
-                        flexShrink={0}
+                        fontSize={14}
+                        color='text.primary'
+                        noWrap
+                        sx={{
+                          p: 0,
+                        }}
                       >
-                        · {index + 1}
+                        {source.title}
                       </Typography>
+                      <Stack
+                        direction={'row'}
+                        alignItems='center'
+                        spacing={0.5}
+                      >
+                        <Box
+                          width={16}
+                          height={16}
+                          borderRadius='50%'
+                          overflow='hidden'
+                          flexShrink={0}
+                        >
+                          <img
+                            src={source.favicon}
+                            alt={source?.from}
+                            width='100%'
+                            height='100%'
+                          />
+                        </Box>
+                        <Typography fontSize={12} color='text.secondary' noWrap>
+                          {source?.from}
+                        </Typography>
+                        <Typography
+                          fontSize={12}
+                          color='text.secondary'
+                          flexShrink={0}
+                        >
+                          · {index + 1}
+                        </Typography>
+                      </Stack>
                     </Stack>
-                  </Stack>
-                </Link>
-              </Card>
+                  </Link>
+                </Card>
+              </Tooltip>
             </Grid>
           ))}
           {!expandAll && sourceLinks.length > 6 && (
@@ -117,8 +142,8 @@ const SidebarAIMessageCopilotStep: FC<{
                 setExpandAll(true)
               }}
             >
-              <Card variant="outlined">
-                <Link href={'#'} underline="none">
+              <Card variant='outlined'>
+                <Link href={'#'} underline='none'>
                   <Stack p={1} spacing={1}>
                     <Stack direction={'row'} spacing={1}>
                       {hiddenFavicons.map((hiddenFavicon, index) => {
@@ -127,23 +152,23 @@ const SidebarAIMessageCopilotStep: FC<{
                             key={index + hiddenFavicon}
                             width={16}
                             height={16}
-                            borderRadius="50%"
-                            overflow="hidden"
+                            borderRadius='50%'
+                            overflow='hidden'
                             flexShrink={0}
                           >
                             <img
                               src={hiddenFavicon}
-                              width="100%"
-                              height="100%"
+                              width='100%'
+                              height='100%'
                             />
                           </Box>
                         )
                       })}
                     </Stack>
-                    <Stack direction={'row'} alignItems="center" spacing={0.5}>
+                    <Stack direction={'row'} alignItems='center' spacing={0.5}>
                       <Typography
                         fontSize={12}
-                        color="text.secondary"
+                        color='text.secondary'
                         flexShrink={0}
                       >
                         View {hiddenFavicons.length} more

@@ -46,12 +46,12 @@ const useFunnelSurveyOpenTimer = (
       return
     }
 
-    // 如果 subscription_cancelled_at 是空值，不弹窗
-    if (!userInfo?.subscription_cancelled_at) {
+    // 如果 subscription_canceled_at 是空值，不弹窗
+    if (!userInfo?.subscription_canceled_at) {
       return
     }
 
-    const cancelledAt = dayjs.utc(userInfo.subscription_cancelled_at)
+    const cancelledAt = dayjs.utc(userInfo.subscription_canceled_at)
     const now = dayjs.utc()
     if (now.diff(cancelledAt, 'day') < 30) {
       openPopup(1200) // 1.2s
@@ -62,7 +62,7 @@ const useFunnelSurveyOpenTimer = (
   }, [
     enabled,
     sceneType,
-    userInfo?.subscription_cancelled_at,
+    userInfo?.subscription_canceled_at,
     loaded,
     alreadyPoppedSurveyModal,
   ])

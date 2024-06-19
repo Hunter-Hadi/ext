@@ -45,7 +45,7 @@ const useFeedbackSurveyStatus = () => {
     }
 
     // 如果用户取消了 订阅 就不弹窗，（因为这个需要显示 SURVEY_CANCEL_COMPLETED popup）
-    if (userInfo.subscription_cancelled_at) {
+    if (userInfo.subscription_canceled_at) {
       return false
     }
 

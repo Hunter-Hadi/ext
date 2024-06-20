@@ -114,6 +114,7 @@ export type IAIResponseOriginalMessageSourceLink = {
   favicon: string
   img: string
   from?: string
+  body?: string
 }
 export type IAIResponseOriginalMessageMetadataTitle = {
   title: string

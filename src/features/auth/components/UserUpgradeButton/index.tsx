@@ -10,7 +10,7 @@ import Popper from '@mui/material/Popper'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
@@ -35,13 +35,32 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { loading, createPaymentSubscription } = usePaymentCreator()
   const { paywallVariant } = abTestInfo
 
+  const [isClicked, setIsClicked] = React.useState(false)
+  const isClickedRef = React.useRef(false)
+
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
 
   const open = Boolean(anchorEl)
 
   const href = `${APP_USE_CHAT_GPT_HOST}/pricing`
 
-  const { getStripeLink } = usePrefetchStripeLinks()
+  const { getStripeLink, prefetching } = usePrefetchStripeLinks()
+
+  const prefetchEnabled = paywallVariant === '2-2'
+
+  const upgradeButtonLoading = useMemo(() => {
+    if (prefetchEnabled) {
+      // 当开启了 prefetchEnabled 时, button Loading 状态不跟着 fetch checkout loading 走
+      // 当点击了按钮后才跟着 fetch checkout loading 走
+      if (isClicked) {
+        return loading || prefetching
+      } else {
+        return false
+      }
+    } else {
+      return loading
+    }
+  }, [prefetchEnabled, isClicked, loading, prefetching])
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -65,8 +84,13 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   }
 
   const handleClick = async () => {
+    setIsClicked(true)
     sendLog()
-    if (paywallVariant === '2-2') {
+    if (prefetchEnabled) {
+      if (prefetching) {
+        return
+      }
+
       const targetPlan = 'elite_yearly'
       const promotionCode = PROMOTION_CODE_MAP[targetPlan]
       const cacheStripeLink = await getStripeLink(
@@ -84,7 +108,21 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
       handlePopoverClose()
       window.open(href)
     }
+    setIsClicked(false)
   }
+
+  useEffect(() => {
+    isClickedRef.current = isClicked
+  }, [isClicked])
+
+  useEffect(() => {
+    // 作用在，当组件还在 prefetching 时，用户点击了按钮
+    // 会把 isClickedRef.current 设置成 true，
+    // 等 prefetching 结束后，再执行 handleClick
+    if (prefetchEnabled && isClickedRef.current && prefetching === false) {
+      setTimeout(handleClick, 0)
+    }
+  }, [prefetchEnabled, prefetching])
 
   if (!isFreeUser) return null
 
@@ -358,7 +396,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           },
           ...sx,
         }}
-        loading={loading}
+        loading={upgradeButtonLoading}
         onClick={handleClick}
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
@@ -371,7 +409,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           color='text.primary'
           sx={{
             userSelect: 'none',
-            opacity: loading ? 0 : 1,
+            opacity: upgradeButtonLoading ? 0 : 1,
           }}
         >
           {/*{t('client:sidebar__top_bar__upgrade__title')}*/}

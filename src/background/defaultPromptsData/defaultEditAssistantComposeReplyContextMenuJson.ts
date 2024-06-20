@@ -1553,6 +1553,7 @@ const chatAppPrompts: IContextMenuItem[] = [
     },
   },
 ]
+
 export default [
   ...emailPrompts,
   ...socialMediaPrompts,

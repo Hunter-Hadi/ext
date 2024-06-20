@@ -2,15 +2,16 @@ import { PROMOTION_CODE_MAP } from 'src/features/pricing/constants'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import usePaymentSessionFetcher from '@/features/pricing/hooks/usePaymentSessionFetcher'
+import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 import { checkTargetPlanTypeHasPromotion } from '@/features/pricing/utils'
 
 const usePaymentCreator = () => {
   const { loading, createCheckoutSession } = usePaymentSessionFetcher()
 
-  const createPaymentSubscription = async () => {
+  const createPaymentSubscription = async (
+    subscriptionPaymentPlan: RENDER_PLAN_TYPE,
+  ) => {
     try {
-      const subscriptionPaymentPlan = 'elite_yearly'
-
       const targetPaymentPlanHasPromotion = checkTargetPlanTypeHasPromotion(
         subscriptionPaymentPlan,
       )

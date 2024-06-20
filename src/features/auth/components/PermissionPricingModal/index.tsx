@@ -1,7 +1,6 @@
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import CloseIcon from '@mui/icons-material/Close'
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
-import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
@@ -16,7 +15,7 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { usePermissionCard } from '@/features/auth'
 import { PricingModalState } from '@/features/auth/store'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
+import PlanButton from '@/features/pricing/components/PlanButton'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 interface IProps {}
@@ -26,8 +25,6 @@ const PermissionPricingModal: FC<IProps> = () => {
 
   const [pricingModalState, setPricingModalState] =
     useRecoilState(PricingModalState)
-
-  const { loading, createPaymentSubscription } = usePaymentCreator()
 
   const { show, conversationId, permissionSceneType } = pricingModalState
 
@@ -69,13 +66,12 @@ const PermissionPricingModal: FC<IProps> = () => {
     setPricingModalState({ show: false })
   }
 
-  const ctaButtonClick = () => {
-    if (!permissionSceneType || loading) return
+  const sendLog = () => {
+    if (!permissionSceneType) return
     authEmitPricingHooksLog('click', permissionSceneType, {
       conversationId,
       paywallType: 'MODAL',
     })
-    createPaymentSubscription()
   }
 
   const description =
@@ -237,8 +233,8 @@ const PermissionPricingModal: FC<IProps> = () => {
               </Stack>
 
               <Box position='relative'>
-                <LoadingButton
-                  variant='contained'
+                <PlanButton
+                  renderType='elite_yearly'
                   fullWidth
                   startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
                   sx={{
@@ -247,11 +243,11 @@ const PermissionPricingModal: FC<IProps> = () => {
                     py: 1.5,
                     borderRadius: 2,
                   }}
-                  loading={loading}
-                  onClick={ctaButtonClick}
+                  sendLog={sendLog}
+                  prefetch
                 >
                   {t('client:permission__pricing_modal__cta_button__title')}
-                </LoadingButton>
+                </PlanButton>
                 <Box
                   sx={{
                     position: 'absolute',

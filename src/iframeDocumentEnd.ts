@@ -61,6 +61,7 @@ const isBlockUrlList = () => {
   return [
     // github的react-code-view的pdf reader会响应插件发送的message并认为是异常
     'https://viewscreen.githubusercontent.com/view/pdf',
+    'https://notebooks.githubusercontent.com/view',
   ].find((matchUrl) => window.location.href.startsWith(matchUrl))
 }
 const log = new Log('Iframe')

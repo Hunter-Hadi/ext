@@ -50,9 +50,9 @@ export type IPageSummaryType =
   | 'DEFAULT_EMAIL_SUMMARY'
 
 export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
-  [key in IPageSummaryType]: IContextMenuItem
+  [key in IPageSummaryType]: () => IContextMenuItem
 } = {
-  PAGE_SUMMARY: {
+  PAGE_SUMMARY: () => ({
     id: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
     parent: 'root',
     droppable: false,
@@ -303,8 +303,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         blacklist: [],
       },
     },
-  },
-  DEFAULT_EMAIL_SUMMARY: {
+  }),
+  DEFAULT_EMAIL_SUMMARY: () => ({
     id: SUMMARY__SUMMARIZE_EMAIL__PROMPT_ID,
     parent: 'root',
     droppable: false,
@@ -554,8 +554,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         blacklist: [],
       },
     },
-  },
-  PDF_CRX_SUMMARY: {
+  }),
+  PDF_CRX_SUMMARY: () => ({
     id: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
     parent: 'root',
     droppable: false,
@@ -809,8 +809,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         blacklist: [],
       },
     },
-  },
-  YOUTUBE_VIDEO_SUMMARY: {
+  }),
+  YOUTUBE_VIDEO_SUMMARY: () => ({
     id: SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
     parent: 'root',
     droppable: false,
@@ -1070,7 +1070,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         blacklist: [],
       },
     },
-  },
+  }),
 }
 
 export const allSummaryNavList: {
@@ -1373,8 +1373,8 @@ export const getSummaryNavActions: (
 ) => Promise<ISetActionsType> = async (params) => {
   const { type, messageId, title, key, prompt, icon } = params
   try {
-    const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[type])
-    let currentActions = cloneDeep(contextMenu.data.actions || [])
+    const contextMenu = PAGE_SUMMARY_CONTEXT_MENU_MAP[type]()
+    let currentActions = contextMenu.data.actions || []
     // 减少message的大小
     contextMenu.data.actions = []
     if (type === 'YOUTUBE_VIDEO_SUMMARY') {
@@ -1778,7 +1778,7 @@ export const getSummaryCustomPromptActions = async ({
   try {
     const currentCustomPromptActions = cloneDeep(customPromptActions)
 
-    const actions = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[type].data.actions!)
+    const actions = PAGE_SUMMARY_CONTEXT_MENU_MAP[type]().data.actions!
     const askActionIndex = actions.findIndex(
       (action) => action.type === 'ASK_CHATGPT',
     )

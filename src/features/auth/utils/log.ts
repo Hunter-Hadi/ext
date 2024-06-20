@@ -235,11 +235,16 @@ export const authEmitPricingHooksLog = debounce(
       }
 
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
-      const testVersion =
+      let testVersion =
         paywallVariant ||
         (await getChromeExtensionUserABTest().then(
           (abTestInfo) => abTestInfo.paywallVariant,
         ))
+      if (paywallType === 'MODAL') {
+        // 目前modal只会在2-2的test version里显示
+        // 此处的写法是为了防止用户在网络环境等原因下一开始显示了modal后重新生成了testVersion导致记录了错误的值
+        testVersion = '2-2'
+      }
       mixpanelTrack(type, {
         logType,
         sceneType,

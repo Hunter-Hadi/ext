@@ -46,7 +46,8 @@ const CitationTag: FC<IProps> = (props) => {
           size='small'
           sx={{
             width: 30,
-            height: 24,
+            height: 20,
+            top: -1.5,
             // background: 'rgba(138, 101, 171, 0.1)',
             bgcolor: 'primary.main',
             marginRight: '2px!important',
@@ -60,7 +61,7 @@ const CitationTag: FC<IProps> = (props) => {
         >
           {loading ? (
             <CircularProgress
-              size={16}
+              size={14}
               sx={{
                 m: '0 auto',
                 color: '#fff',

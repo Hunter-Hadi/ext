@@ -4,6 +4,8 @@ import React, { FC, useEffect, useMemo, useState } from 'react'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
 
+import useSearchWithAISources from '../hooks/useSearchWithAISources'
+
 interface IProps {
   message: string
   sx?: SxProps
@@ -13,6 +15,7 @@ interface IProps {
 const AIResponseMessage: FC<IProps> = (props) => {
   const { sx, message, isDarkMode } = props
   const [defaultText, setDefaultText] = useState(message || '')
+  const { sources } = useSearchWithAISources()
 
   const sxCache = useMemo<SxProps>(() => {
     return {
@@ -41,11 +44,13 @@ const AIResponseMessage: FC<IProps> = (props) => {
   }, [message])
 
   return (
-    <Box className="search-with-ai--text" sx={sxCache}>
+    <Box className='search-with-ai--text' sx={sxCache}>
       <Box
         className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}
       >
-        <CustomMarkdown>{defaultText.replace(/^\s+/, '')}</CustomMarkdown>
+        <CustomMarkdown citationsContent={sources}>
+          {defaultText.replace(/^\s+/, '')}
+        </CustomMarkdown>
       </Box>
     </Box>
   )

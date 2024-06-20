@@ -26,6 +26,7 @@ import {
   IAIResponseOriginalMessageSourceLink,
   IAIResponseSourceCitation,
 } from '@/features/indexed_db/conversations/models/Message'
+import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
@@ -52,7 +53,9 @@ const OverrideAnchor: FC<{
   children: React.ReactNode
   href?: string
   title?: string
-  citationsContent?: IAIResponseOriginalMessageSourceLink
+  citationsContent?:
+    | IAIResponseOriginalMessageSourceLink
+    | ICrawlingSearchResult
 }> = (props) => {
   const isYoutubeTimeUrl =
     props.href &&
@@ -277,7 +280,9 @@ const formatCitation = (citations: IAIResponseSourceCitation[]) => {
 
 const CustomMarkdown: FC<{
   citations?: IAIResponseSourceCitation[]
-  citationsContent?: IAIResponseOriginalMessageSourceLink[]
+  citationsContent?:
+    | IAIResponseOriginalMessageSourceLink[]
+    | ICrawlingSearchResult[]
   children: string
 }> = (props) => {
   const { children, citationsContent } = props

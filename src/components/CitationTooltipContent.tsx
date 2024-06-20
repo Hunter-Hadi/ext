@@ -3,9 +3,10 @@ import React from 'react'
 
 import MultiLineEllipsisTypography from '@/components/MultiLineEllipsisTypography'
 import { IAIResponseOriginalMessageSourceLink } from '@/features/indexed_db/conversations/models/Message'
+import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
 
 interface CitationTooltipContentProps {
-  source: IAIResponseOriginalMessageSourceLink
+  source: IAIResponseOriginalMessageSourceLink | ICrawlingSearchResult
 }
 
 /**

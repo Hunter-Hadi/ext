@@ -209,13 +209,14 @@ export function withLoadingDecorators() {
     const oldFunc = descriptor.value
     descriptor.value = async function (...args: any[]) {
       const [, engine] = args
-      ;(
-        engine as IShortcutEngineExternalEngine
-      )?.clientConversationEngine?.showConversationLoading()
+      const externalEngine = engine as IShortcutEngineExternalEngine
+      externalEngine?.clientConversationEngine?.showConversationLoading(
+        externalEngine.shortcutsEngine?.conversationId,
+      )
       const value = await oldFunc.apply(this, args)
-      ;(
-        engine as IShortcutEngineExternalEngine
-      )?.clientConversationEngine?.hideConversationLoading()
+      externalEngine?.clientConversationEngine?.hideConversationLoading(
+        externalEngine.shortcutsEngine?.conversationId,
+      )
       return value
     }
   }

@@ -38,7 +38,6 @@ const usePageSummary = () => {
     useSidebarSettings()
   const {
     clientWritingMessage,
-    updateClientConversationLoading,
     showConversationLoading,
     hideConversationLoading,
   } = useClientConversation()
@@ -72,8 +71,7 @@ const usePageSummary = () => {
     const currentPageSummaryType = getPageSummaryType()
     const writingLoading = clientWritingMessageRef.current.loading
 
-    updateClientConversationLoading(true)
-    showConversationLoading()
+    showConversationLoading(pageSummaryConversationId)
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
       let pageSummaryConversation =
@@ -135,7 +133,7 @@ const usePageSummary = () => {
             'earliest',
           )
         if (writingLoading) {
-          updateClientConversationLoading(false)
+          hideConversationLoading(pageSummaryConversationId)
           // isGeneratingPageSummaryRef.current = false
           return
         }
@@ -168,8 +166,8 @@ const usePageSummary = () => {
         }
 
         if (isValidAIMessage) {
-          updateClientConversationLoading(false)
           isGeneratingPageSummaryRef.current = false
+          hideConversationLoading(pageSummaryConversationId)
           return
         }
 
@@ -212,7 +210,7 @@ const usePageSummary = () => {
               paywallType: 'RESPONSE',
             })
             isGeneratingPageSummaryRef.current = false
-            updateClientConversationLoading(false)
+            hideConversationLoading(pageSummaryConversationId)
             return
           }
         }
@@ -265,7 +263,7 @@ const usePageSummary = () => {
         console.log('创建Conversation失败', e)
         isGeneratingPageSummaryRef.current = false
       } finally {
-        hideConversationLoading()
+        hideConversationLoading(pageSummaryConversationId)
       }
     }
   }

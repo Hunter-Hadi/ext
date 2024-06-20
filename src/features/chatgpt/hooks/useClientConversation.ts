@@ -174,11 +174,11 @@ const useClientConversation = () => {
   }
   const showConversationLoading = useRecoilCallback(
     ({ set }) =>
-      () => {
+      (
+        conversationId: string | undefined = currentConversationIdRef.current,
+      ) => {
         set(
-          ClientWritingMessageStateFamily(
-            currentConversationIdRef.current || '',
-          ),
+          ClientWritingMessageStateFamily(conversationId || ''),
           (prevState) => {
             return {
               ...prevState,
@@ -191,11 +191,11 @@ const useClientConversation = () => {
   )
   const hideConversationLoading = useRecoilCallback(
     ({ set }) =>
-      () => {
+      (
+        conversationId: string | undefined = currentConversationIdRef.current,
+      ) => {
         set(
-          ClientWritingMessageStateFamily(
-            currentConversationIdRef.current || '',
-          ),
+          ClientWritingMessageStateFamily(conversationId || ''),
           (prevState) => {
             return {
               ...prevState,
@@ -280,11 +280,12 @@ const useClientConversation = () => {
    */
   const updateClientConversationLoading = useRecoilCallback(
     ({ set }) =>
-      (loading: boolean) => {
+      (
+        loading: boolean,
+        conversationId: string | undefined = currentConversationIdRef.current,
+      ) => {
         set(
-          ClientWritingMessageStateFamily(
-            currentConversationIdRef.current || '',
-          ),
+          ClientWritingMessageStateFamily(conversationId || ''),
           (prevState) => {
             return {
               ...prevState,

@@ -136,7 +136,7 @@ const usePageSummary = () => {
           )
         if (writingLoading) {
           updateClientConversationLoading(false)
-          isGeneratingPageSummaryRef.current = false
+          // isGeneratingPageSummaryRef.current = false
           return
         }
         let isValidAIMessage =

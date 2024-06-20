@@ -299,8 +299,9 @@ const useClientConversation = () => {
   /**
    * 获取当前conversation
    */
-  const getCurrentConversation = async () => {
-    const conversationId = currentConversationIdRef.current
+  const getCurrentConversation = async (
+    conversationId = currentConversationIdRef.current,
+  ) => {
     if (conversationId) {
       return (
         (await ClientConversationManager.getConversationById(conversationId)) ||

@@ -246,7 +246,7 @@ const useClientChat = () => {
     //   return
     // }
     // 3. Model - 付费卡点
-    const currentConversation = await getCurrentConversation()
+    const currentConversation = await getCurrentConversation(conversationId)
     // 如果 执行的 actions 中有 ASK_CHATGPT 的话，就判断是否有 付费卡点
     const hasAskChatGPT = actions.find(
       (action) => action.type === 'ASK_CHATGPT',
@@ -290,8 +290,10 @@ const useClientChat = () => {
     }
     await updateClientConversationLoading(false)
     // 5. 运行shortcuts
-    setShortCutsRef.current(actions)
-    await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
+    // setShortCutsRef.current(actions)
+    // await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
+    setShortCuts(actions)
+    await runShortCuts(isOpenSidebarChatBox, overwriteParameters)
   }
   /**
    * 重新生成最后一次运行的shortcuts

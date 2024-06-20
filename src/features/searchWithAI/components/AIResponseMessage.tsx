@@ -3,6 +3,7 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
+import { IAIResponseOriginalMessage } from '@/features/indexed_db/conversations/models/Message'
 
 import useSearchWithAISources from '../hooks/useSearchWithAISources'
 
@@ -16,6 +17,13 @@ const AIResponseMessage: FC<IProps> = (props) => {
   const { sx, message, isDarkMode } = props
   const [defaultText, setDefaultText] = useState(message || '')
   const { sources } = useSearchWithAISources()
+  const _originalMessage = {
+    metadata: {
+      sources: {
+        links: sources,
+      },
+    },
+  } as IAIResponseOriginalMessage
 
   const sxCache = useMemo<SxProps>(() => {
     return {
@@ -48,7 +56,7 @@ const AIResponseMessage: FC<IProps> = (props) => {
       <Box
         className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}
       >
-        <CustomMarkdown citationsContent={sources}>
+        <CustomMarkdown originalMessage={_originalMessage}>
           {defaultText.replace(/^\s+/, '')}
         </CustomMarkdown>
       </Box>

@@ -282,13 +282,10 @@ const formatCitation = (citations: IAIResponseSourceCitation[]) => {
 const CustomMarkdown: FC<{
   originalMessage?: IAIResponseOriginalMessage
   children: string
-  citationsContent?:
-    | IAIResponseOriginalMessageSourceLink[]
-    | ICrawlingSearchResult[]
 }> = (props) => {
-  const { originalMessage, children, citationsContent } = props
-
+  const { originalMessage, children } = props
   const { metadata } = originalMessage || {}
+  const citationsContent = metadata?.sources?.links
 
   const isComplete = originalMessage ? metadata?.isComplete : true
 

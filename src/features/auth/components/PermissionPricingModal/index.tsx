@@ -49,12 +49,14 @@ const PermissionPricingModal: FC<IProps> = () => {
 
   useEffect(() => {
     if (show && permissionSceneType) {
-      // 记录mixpanel
-      // 防止和response pricing触发防抖冲突
+      // 记录mixpanel防止和response pricing触发防抖冲突
+      // 目前只有paywallVariant为2-2会触发当前modal的显示
       setTimeout(() => {
         authEmitPricingHooksLog('show', permissionSceneType, {
           conversationId,
           paywallType: 'MODAL',
+          // 这里固定写法是因为如果这段时间内用户登录成功被分配到2-1可能会记录错误
+          paywallVariant: '2-2',
         })
       }, 1500)
     }

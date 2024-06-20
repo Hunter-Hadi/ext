@@ -192,6 +192,7 @@ export const authEmitPricingHooksLog = debounce(
       AIProvider?: string
       inContextMenu?: boolean
       paywallType: 'TOPBAR' | 'MODAL' | 'PROACTIVE' | 'RESPONSE'
+      paywallVariant?: string
     },
   ) => {
     try {
@@ -201,6 +202,7 @@ export const authEmitPricingHooksLog = debounce(
         AIModel: propAIModel,
         AIProvider: propAIProvider,
         paywallType,
+        paywallVariant,
       } = meta
 
       const logType = await permissionSceneTypeToLogType(
@@ -233,13 +235,17 @@ export const authEmitPricingHooksLog = debounce(
       }
 
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
-      const { paywallVariant } = await getChromeExtensionUserABTest()
+      const testVersion =
+        paywallVariant ||
+        (await getChromeExtensionUserABTest().then(
+          (abTestInfo) => abTestInfo.paywallVariant,
+        ))
       mixpanelTrack(type, {
         logType,
         sceneType,
         paywallType,
         testFeature: 'extensionPaywall',
-        testVersion: paywallVariant,
+        testVersion,
         paywallModel: propConversationId
           ? await ClientConversationManager.getConversationPayWallModel(
               propConversationId,

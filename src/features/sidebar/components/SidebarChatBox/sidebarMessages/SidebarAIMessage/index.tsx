@@ -151,7 +151,12 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                   fontWeight: 'bold',
                   fontSize: '28px',
                   color: 'text.primary',
-                  whiteSpace: 'nowrap',
+                  whiteSpace:
+                    // search和art板块的标题为用户输入
+                    message.originalMessage?.metadata?.shareType === 'search' ||
+                    message.originalMessage?.metadata?.shareType === 'art'
+                      ? ''
+                      : 'nowrap',
                   textOverflow: 'ellipsis',
                   overflow: 'hidden',
                 }}

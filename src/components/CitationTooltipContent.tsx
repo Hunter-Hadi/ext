@@ -60,6 +60,7 @@ const CitationTooltipContent: React.FC<CitationTooltipContentProps> = ({
                 color: '#4169E1',
               },
             }}
+            align={'left'}
           >
             {source.title}
           </MultiLineEllipsisTypography>
@@ -68,6 +69,7 @@ const CitationTooltipContent: React.FC<CitationTooltipContentProps> = ({
           maxLine={3}
           fontSize={13}
           color='text.secondary'
+          align={'left'}
         >
           {source.body}
         </MultiLineEllipsisTypography>

@@ -44,6 +44,10 @@ const clientGetContentOfURL = async (
         abortTaskId,
       )
       result.status = response.responseRaw?.status || 200
+      // 搜狗引擎的防爬机制响应是 200 需要手动鉴别
+      if (response?.responseRaw?.url.includes('www.sogou.com/antispider')) {
+        result.status = 301
+      }
       if (response.success && response.data) {
         return response.data
       }

@@ -260,6 +260,7 @@ export const authEmitPricingHooksLog = debounce(
         testFeature: 'extensionPaywall',
         testVersion,
         paywallModel,
+        ...trackParams,
       })
       const port = new ContentScriptConnectionV2()
       await port.postMessage({

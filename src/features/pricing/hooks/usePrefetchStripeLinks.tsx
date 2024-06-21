@@ -42,7 +42,9 @@ const usePrefetchStripeLinks = () => {
         //     return data.redirect_url
         //   }
         // } else {
-        const data = await createCheckoutSession(plan, couponCode)
+        const data = await createCheckoutSession(plan, couponCode, {
+          noSendLog: true,
+        })
         if (data && data.redirect_url) {
           return data.redirect_url
         }

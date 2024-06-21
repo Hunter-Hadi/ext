@@ -33,13 +33,6 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     },
     {
       mainPart: true,
-      label: 'gpt-4-turbo',
-      value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-      AIProvider: 'USE_CHAT_GPT_PLUS',
-      // tag: 'Vision',
-    },
-    {
-      mainPart: true,
       label: 'claude-3.5-sonnet',
       value: 'claude-3-5-sonnet',
       AIProvider: 'MAXAI_CLAUDE',
@@ -110,6 +103,12 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     },
     {
       mainPart: true,
+      label: 'gpt-4-turbo',
+      value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+      AIProvider: 'USE_CHAT_GPT_PLUS',
+    },
+    {
+      mainPart: true,
       label: 'gpt-4',
       value: 'gpt-4',
       AIProvider: 'USE_CHAT_GPT_PLUS',
@@ -136,12 +135,6 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       value: MAXAI_CHATGPT_MODEL_GPT_4O,
       AIProvider: 'USE_CHAT_GPT_PLUS',
       tag: 'New',
-    },
-    {
-      mainPart: true,
-      label: 'gpt-4-turbo',
-      value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-      AIProvider: 'USE_CHAT_GPT_PLUS',
     },
     {
       mainPart: true,
@@ -182,6 +175,13 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       value: 'gemini-pro',
       AIProvider: 'MAXAI_GEMINI',
       // tag: 'Beta',
+    },
+    {
+      mainPart: true,
+      label: 'gpt-4-turbo',
+      value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+      AIProvider: 'USE_CHAT_GPT_PLUS',
+      // tag: 'Vision',
     },
     {
       mainPart: true,

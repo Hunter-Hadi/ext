@@ -910,7 +910,12 @@
     "popup__pdf_page__button": "Omogući \"PDF AI pregledač\"",
     "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Najnoviji i najnapredniji model od strane Anthropic-a",
     "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Najnoviji i najnapredniji model od strane OpenAI-a",
-    "sidebar__chat__suggestions__starts_new_chat__title": "Započni novi razgovor sa {{AI_MODEL}}"
+    "sidebar__chat__suggestions__starts_new_chat__title": "Započni novi razgovor sa {{AI_MODEL}}",
+    "provider__claude__model__claude_3_5_opus__description": "Najnoviji proboj kompanije Anthropic u veštačkoj inteligenciji, pruža inteligenciju budućnosti dvostruko brže od modela Claude 3 Opus. Claude 3.5 Sonnet postavlja nove standarde u razmišljanju na nivou diplomskih studija, znanju na nivou osnovnih studija i veštini kodiranja. Odlično razume suptilnost, humor i kompleksne instrukcije dok proizvodi visokokvalitetan sadržaj prirodnom tonom. Sa najmodernijim mogućnostima vizuelnog prepoznavanja i ekonomičnom cenom, Claude 3.5 Sonnet redefiniše mogućnosti veštačke inteligencije za kompleksne zadatke i višekorake radne tokove.",
+    "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__title": "Unapredi za neograničen claude-3.5-sonnet sa vizuelnim prepoznavanjem",
+    "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__free__description": "Anthropic-ov claude-3.5-sonnet kombinuje inteligenciju budućnosti sa udvostručenom brzinom, postavljajući nove standarde u razmišljanju, znanju i kodiranju. Sa poboljšanim razumevanjem suptilnosti, unapređenim mogućnostima vizuelnog prepoznavanja i ograničenjem od 200k tokena, idealan je za kompleksne zadatke koji zahtevaju visoke performanse.",
+    "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__paid__description": "Mesečno je premašen limit naprednih tekstualnih upita. Unapredi sada za neograničene upite ili proveri sledećeg meseca kada se mesečni upiti resetuju.",
+    "sidebar__chat__suggestions__model__description__for_claude_3_5_sonnet": "Najnoviji i najnapredniji model kompanije Anthropic"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

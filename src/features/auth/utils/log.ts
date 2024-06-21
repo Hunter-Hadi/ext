@@ -245,18 +245,21 @@ export const authEmitPricingHooksLog = debounce(
         // 此处的写法是为了防止用户在网络环境等原因下一开始显示了modal后重新生成了testVersion导致记录了错误的值
         testVersion = '2-2'
       }
+      let paywallModel =
+        propConversationId &&
+        (await ClientConversationManager.getConversationPayWallModel(
+          propConversationId,
+        ))
+      if (!paywallModel) {
+        paywallModel = trackParams.aiModel
+      }
       mixpanelTrack(type, {
         logType,
         sceneType,
         paywallType,
         testFeature: 'extensionPaywall',
         testVersion,
-        paywallModel: propConversationId
-          ? await ClientConversationManager.getConversationPayWallModel(
-              propConversationId,
-            )
-          : trackParams.aiModel,
-        ...trackParams,
+        paywallModel,
       })
       const port = new ContentScriptConnectionV2()
       await port.postMessage({

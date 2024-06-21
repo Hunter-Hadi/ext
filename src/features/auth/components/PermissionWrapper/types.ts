@@ -372,7 +372,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/claude-3-5-sonnet.png',
     )}`,
     modalImageUrl: getChromeExtensionAssetsURL(
-      '/images/upgrade/modal/claude-3-sonnet.png',
+      '/images/upgrade/modal/claude-3-5-sonnet.png',
     ),
     title: (t) =>
       t(

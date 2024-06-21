@@ -359,8 +359,10 @@ const FloatingMiniMenu: FC<{
               borderRadius: '50%',
               minWidth: 'unset',
               display: 'flex',
-              boxShadow:
-                '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
+              boxShadow: (t) =>
+                t.palette.mode === 'dark'
+                  ? '0px 0px 1px 0px rgba(255, 255, 255, 0.60), 0px 2px 4px 0px rgba(255, 255, 255, 0.08);'
+                  : '0px 0px 1px 0px rgba(0, 0, 0, 0.24), 0px 2px 4px 0px rgba(0, 0, 0, 0.08);',
               color: 'primary.main',
               '&:hover': {
                 color: 'primary.main',

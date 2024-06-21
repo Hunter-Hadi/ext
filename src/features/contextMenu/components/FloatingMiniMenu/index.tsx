@@ -372,6 +372,7 @@ const FloatingMiniMenu: FC<{
             <UseChatGptIcon
               sx={{
                 fontSize: '10px',
+                marginRight: '1px',
                 // color: 'inherit',
               }}
             />

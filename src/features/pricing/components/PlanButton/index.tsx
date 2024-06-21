@@ -23,15 +23,20 @@ const PlanButton: FC<IPlanButtonProps> = (props) => {
 
   const { isFreeUser } = useUserInfo()
 
-  const { getStripeLink, prefetchStripeLink, prefetching } =
-    usePrefetchStripeLinks()
+  const {
+    getStripeLink,
+    prefetchStripeLink,
+    prefetching,
+  } = usePrefetchStripeLinks()
 
-  const { loading: fetching } = usePaymentSessionFetcher()
+  const {
+    loading: fetching,
+    createCheckoutSession,
+  } = usePaymentSessionFetcher()
 
-  const promotionCode = useMemo(
-    () => PROMOTION_CODE_MAP[renderType],
-    [renderType],
-  )
+  const promotionCode = useMemo(() => PROMOTION_CODE_MAP[renderType], [
+    renderType,
+  ])
 
   const buttonLoading = useMemo(() => {
     if (prefetch && isFreeUser) {
@@ -58,15 +63,19 @@ const PlanButton: FC<IPlanButtonProps> = (props) => {
         return
       }
 
-      const stripeLink = await getStripeLink(
-        renderType,
-        promotionCode ? promotionCode : undefined,
-      )
+      if (prefetch) {
+        const stripeLink = await getStripeLink(
+          renderType,
+          promotionCode ? promotionCode : undefined,
+        )
 
-      if (stripeLink) {
-        window.open(stripeLink)
+        if (stripeLink) {
+          window.open(stripeLink)
+        } else {
+          window.open(`${APP_USE_CHAT_GPT_HOST}/pricing`)
+        }
       } else {
-        window.open(`${APP_USE_CHAT_GPT_HOST}/pricing`)
+        await createCheckoutSession('elite_yearly')
       }
 
       setIsClicked(false)

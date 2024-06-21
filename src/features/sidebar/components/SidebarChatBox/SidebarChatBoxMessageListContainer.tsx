@@ -173,11 +173,11 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       !paginationMessages.find((msg) => msg.messageId === writingMessageId)
     ) {
       lastMessageIdRef.current = writingMessageId
-      // console.log(`scroll to message [最新消息]`, lastMessageIdRef.current)
+      console.log(`scroll to message [最新消息]`, lastMessageIdRef.current)
       resetPreviousPageLastMessageId(writingMessageId)
     } else {
       lastMessageIdRef.current = lastPaginationMessageIdRef.current
-      // console.log(`scroll to message [列表最后信息]`, lastMessageIdRef.current)
+      console.log(`scroll to message [列表最后信息]`, lastMessageIdRef.current)
     }
   }, [writingMessage?.messageId, paginationMessages])
 

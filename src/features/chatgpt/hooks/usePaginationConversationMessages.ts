@@ -207,8 +207,6 @@ const usePaginationConversationMessages = (conversationId: string) => {
           ['created_at'],
           ['asc'],
         )
-        lastPaginationMessageIdRef.current =
-          last(finalMessageList)?.messageId || ''
         console.log(
           `ConversationDB[V3][对话消息列表] conversationId [effect][${conversationId}]`,
           data?.pageParams,
@@ -356,6 +354,10 @@ const usePaginationConversationMessages = (conversationId: string) => {
     refetch,
   ])
 
+  useEffect(() => {
+    lastPaginationMessageIdRef.current =
+      last(paginationMessages)?.messageId || ''
+  }, [paginationMessages])
   return {
     data,
     paginationMessages,

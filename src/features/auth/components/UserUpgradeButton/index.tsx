@@ -29,8 +29,10 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { isFreeUser } = useUserInfo()
   const { t } = useTranslation(['client'])
-  const { currentConversationId, currentSidebarConversationType } =
-    useClientConversation()
+  const {
+    currentConversationId,
+    currentSidebarConversationType,
+  } = useClientConversation()
   const { abTestInfo } = useUserABTestInfo()
   const { loading, createPaymentSubscription } = usePaymentCreator()
   const { paywallVariant } = abTestInfo
@@ -209,7 +211,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                   borderRadius: 2,
                 }}
                 sendLog={sendLog}
-                prefetch
+                // prefetch
               >
                 {t('client:permission__pricing_modal__cta_button__title')}
               </PlanButton>

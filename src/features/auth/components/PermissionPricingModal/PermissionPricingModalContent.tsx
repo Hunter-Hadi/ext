@@ -128,7 +128,7 @@ const PermissionPricingModalContent: FC<IProps> = (props) => {
                 borderRadius: 2,
               }}
               sendLog={sendLog}
-              prefetch
+              // prefetch
             >
               {t('client:permission__pricing_modal__cta_button__title')}
             </PlanButton>

@@ -1,5 +1,6 @@
 import { flip, offset, shift, useFloating } from '@floating-ui/react'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import React, { FC, useCallback, useEffect, useState } from 'react'
@@ -174,13 +175,12 @@ const FloatingMiniMenu: FC<{
 
   return (
     <Paper
-      elevation={3}
+      elevation={0}
       component={'div'}
       ref={refs.setFloating}
       className={`max-ai__click-context-menu ${finalShow ? 'open' : 'close'}`}
       sx={{
         bgcolor: 'transparent',
-        borderRadius: '14px',
         zIndex: finalShow ? 2147483600 : -1,
         position: strategy,
         opacity: finalShow ? 1 : 0,
@@ -189,137 +189,217 @@ const FloatingMiniMenu: FC<{
         width: 'max-content',
       }}
     >
-      <Stack
-        direction={'row'}
-        alignItems={'center'}
+      <Box
         sx={{
-          '& .max-ai__click-menu-button--box': {
-            div: {
-              display: 'flex',
-            },
-            height: '28px',
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            '&:hover': {
-              '&:has(button)&::after': {
-                display: 'none',
-              },
-            },
-            '& button': {
-              bgcolor: 'background.paper',
-              minWidth: 'unset',
-              padding: '5px 8px!important',
-              boxSizing: 'border-box',
-              borderRadius: '0',
-              '&:hover': {
-                bgcolor: (t) =>
-                  t.palette.mode === 'dark'
-                    ? 'rgb(61,61,61)'
-                    : 'rgb(224,224,224)',
-              },
-              '&:has(.max-ai__click-menu-button--box__text-icon)': {
-                padding: '3px 6px!important',
-              },
-            },
-            '&:first-child': {
-              '& button': {
-                borderTopLeftRadius: '14px',
-                borderBottomLeftRadius: '14px',
-                borderTopRightRadius: 0,
-                borderBottomRightRadius: 0,
-              },
-            },
-            '&:not(:last-child)': {
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                right: 0,
-                top: '25%',
-                transform: 'scale(0.5) translateY(-50%)',
-                width: '1px',
-                height: '32px',
-                bgcolor: (t) =>
-                  t.palette.mode === 'dark'
-                    ? 'rgb(61,61,61)'
-                    : 'rgb(224,224,224)',
-              },
+          position: 'relative',
+          '&:hover': {
+            '.mini-icon-button': {
+              visibility: 'hidden',
+              userSelect: 'none',
+              zIndex: -1,
             },
           },
         }}
       >
-        <Box component={'div'} className={'max-ai__click-menu-button--box'}>
-          <TooltipButton
-            TooltipProps={{
-              floatingMenuTooltip: true,
-              placement,
-              description: chatBoxShortCutKey,
-              sx: {
-                maxWidth: 360,
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          sx={{
+            opacity: 0,
+            borderRadius: '14px',
+            // overflow: 'hidden',
+            transition: 'opacity 0.1s ease-in-out',
+            '&:hover': {
+              opacity: 1,
+              boxShadow:
+                '0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)',
+            },
+            '& .max-ai__click-menu-button--box': {
+              div: {
+                display: 'flex',
               },
-            }}
-            title={t('client:floating_menu__button__cta__tooltip')}
-            className={'usechatgpt-ai__context-menu--handle-button'}
-            id={'max_ai__floating_context_menu__cta_button'}
-            size={'small'}
-            variant={'text'}
-            onMouseUp={(event) => {
-              event.stopPropagation()
-              event.preventDefault()
-            }}
-            onMouseDown={(event) => {
-              event.stopPropagation()
-              event.preventDefault()
-            }}
-            onClick={(event: any) => {
-              event.stopPropagation()
-              event.preventDefault()
-              const selectionCount = window.getSelection()?.rangeCount
-              if (selectionCount && selectionCount > 0) {
-                const lastFocusRange = window
-                  .getSelection()
-                  ?.getRangeAt(0)
-                  ?.cloneRange()
-                setFloatingDropdownMenuLastFocusRange({
-                  range: lastFocusRange || null,
-                  selectionText: window?.getSelection()?.toString() || '',
-                })
-              }
+              height: '28px',
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              '&:hover': {
+                '&:has(button)&::after': {
+                  display: 'none',
+                },
+              },
+              '& button': {
+                bgcolor: 'background.paper',
+                minWidth: 'unset',
+                padding: '5px 8px!important',
+                boxSizing: 'border-box',
+                borderRadius: '0',
+                '&:hover': {
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgb(61,61,61)'
+                      : 'rgb(224,224,224)',
+                },
+                '&:has(.max-ai__click-menu-button--box__text-icon)': {
+                  padding: '3px 6px!important',
+                },
+              },
+              '&:first-child': {
+                '& button': {
+                  borderTopLeftRadius: '14px',
+                  borderBottomLeftRadius: '14px',
+                  borderTopRightRadius: 0,
+                  borderBottomRightRadius: 0,
+                },
+              },
+              '&:not(:last-child)': {
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  right: 0,
+                  top: '25%',
+                  transform: 'scale(0.5) translateY(-50%)',
+                  width: '1px',
+                  height: '32px',
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgb(61,61,61)'
+                      : 'rgb(224,224,224)',
+                },
+              },
+            },
+          }}
+        >
+          <Box component={'div'} className={'max-ai__click-menu-button--box'}>
+            <TooltipButton
+              TooltipProps={{
+                floatingMenuTooltip: true,
+                placement,
+                description: chatBoxShortCutKey,
+                sx: {
+                  maxWidth: 360,
+                },
+              }}
+              title={t('client:floating_menu__button__cta__tooltip')}
+              className={'usechatgpt-ai__context-menu--handle-button'}
+              id={'max_ai__floating_context_menu__cta_button'}
+              size={'small'}
+              variant={'text'}
+              onMouseUp={(event) => {
+                event.stopPropagation()
+                event.preventDefault()
+              }}
+              onMouseDown={(event) => {
+                event.stopPropagation()
+                event.preventDefault()
+              }}
+              onClick={(event: any) => {
+                event.stopPropagation()
+                event.preventDefault()
+                const selectionCount = window.getSelection()?.rangeCount
+                if (selectionCount && selectionCount > 0) {
+                  const lastFocusRange = window
+                    .getSelection()
+                    ?.getRangeAt(0)
+                    ?.cloneRange()
+                  setFloatingDropdownMenuLastFocusRange({
+                    range: lastFocusRange || null,
+                    selectionText: window?.getSelection()?.toString() || '',
+                  })
+                }
+                tempSelection && showFloatingContextMenu()
+              }}
+            >
+              <UseChatGptIcon
+                sx={{
+                  fontSize: '18px',
+                  // color: 'inherit',
+                }}
+              />
+            </TooltipButton>
+          </Box>
+          <FloatingContextMenuMiniMenuSearchWithAIButton
+            placement={placement}
+            selectionText={tempSelection?.selectionText}
+          />
+          <FavoriteContextMenuGroup
+            placement={placement}
+            buttonSettingKey={'textSelectPopupButton'}
+            onClick={(favoriteContextMenu) => {
+              updateClientConversationLoading(true)
+              updateSelectedId((prevState) => {
+                return {
+                  ...prevState,
+                  selectedContextMenuId: favoriteContextMenu.id,
+                }
+              })
               tempSelection && showFloatingContextMenu()
+            }}
+          />
+          <FloatingContextMenuMiniMenuMoreButton placement={placement} />
+        </Stack>
+        <Stack
+          className={'mini-icon-button'}
+          sx={{
+            top: 2,
+            left: 2,
+            position: 'absolute',
+            bgcolor: 'background.paper',
+            width: '16px',
+            height: '16px',
+            borderRadius: '50%',
+          }}
+          alignItems={'center'}
+          justifyContent={'center'}
+        >
+          <Button
+            sx={{
+              width: '16px',
+              height: '16px',
+              borderRadius: '50%',
+              minWidth: 'unset',
+              display: 'flex',
+              boxShadow:
+                '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
+              color: 'primary.main',
+              '&:hover': {
+                color: 'primary.main',
+              },
             }}
           >
             <UseChatGptIcon
               sx={{
-                fontSize: '18px',
+                fontSize: '9px',
                 // color: 'inherit',
               }}
             />
-          </TooltipButton>
-        </Box>
-        <FloatingContextMenuMiniMenuSearchWithAIButton
-          placement={placement}
-          selectionText={tempSelection?.selectionText}
-        />
-        <FavoriteContextMenuGroup
-          placement={placement}
-          buttonSettingKey={'textSelectPopupButton'}
-          onClick={(favoriteContextMenu) => {
-            updateClientConversationLoading(true)
-            updateSelectedId((prevState) => {
-              return {
-                ...prevState,
-                selectedContextMenuId: favoriteContextMenu.id,
-              }
-            })
-            tempSelection && showFloatingContextMenu()
-          }}
-        />
-        <FloatingContextMenuMiniMenuMoreButton placement={placement} />
-      </Stack>
+            {/*<SvgIcon*/}
+            {/*  sx={{*/}
+            {/*    fontSize: '12px',*/}
+            {/*    color: 'inherit',*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  <svg*/}
+            {/*    width='24'*/}
+            {/*    height='24'*/}
+            {/*    viewBox='0 0 24 24'*/}
+            {/*    fill='none'*/}
+            {/*    xmlns='http://www.w3.org/2000/svg'*/}
+            {/*  >*/}
+            {/*    <g mask='url(#mask0_1083_221650)'>*/}
+            {/*      <path*/}
+            {/*        d='M8.875 15.125L12 22L15.125 15.125L22 12L15.125 8.875L12 2L8.875 8.875L2 12L8.875 15.125Z'*/}
+            {/*        fill='currentColor'*/}
+            {/*      />*/}
+            {/*    </g>*/}
+            {/*  </svg>*/}
+            {/*</SvgIcon>*/}
+          </Button>
+        </Stack>
+      </Box>
       <OnboardingTooltipPortal
         showStateTrigger={show}
-        sceneType='CONTEXT_MENU_CTA_BUTTON'
+        sceneType='CONTEXT_MENU_CTA_MINI_ICON_BUTTON'
       />
     </Paper>
   )

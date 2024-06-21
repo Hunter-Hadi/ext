@@ -2,7 +2,7 @@ import {
   MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   MAXAI_VISION_MODEL_UPLOAD_CONFIG,
 } from '@/background/src/chat/constant'
-import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
@@ -110,6 +110,27 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_opus__description`),
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
+    //   roles: ['elite'],
+    // },
+    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+  },
+  {
+    title: 'claude-3-5-sonnet',
+    titleTag: '',
+    value: 'claude-3-5-sonnet',
+    maxTokens: 200000,
+    tags: (currentConversationType) => {
+      const tags = ['Beta']
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
+    poweredBy: 'Anthropic',
+    description: (t) =>
+      t(`client:provider__claude__model__claude_3_5_opus__description`),
     // permission: {
     //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
     //   roles: ['elite'],

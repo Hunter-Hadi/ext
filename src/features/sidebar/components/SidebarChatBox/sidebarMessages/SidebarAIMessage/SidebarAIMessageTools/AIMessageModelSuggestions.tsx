@@ -66,21 +66,28 @@ const getAIModels = (
     description:
       'client:sidebar__chat__suggestions__model__description__for_claude_3_opus',
   }
+  const CLAUDE_3_5_SONNET: IConversationSuggestAIModel = {
+    title: 'claude-3-5-sonnet',
+    AIProvider: 'MAXAI_CLAUDE',
+    AIModel: 'claude-3-5-sonnet',
+    description:
+      'client:sidebar__chat__suggestions__model__description__for_claude_3_opus',
+  }
   if (userRoleType === 'elite') {
     if (
       ['claude-3-opus', 'gpt-4', MAXAI_CHATGPT_MODEL_GPT_4_TURBO].includes(
         conversationAIModel,
       )
     ) {
-      return [GPT_4O]
+      return [CLAUDE_3_5_SONNET]
     }
   } else if (userRoleType === 'pro') {
     if (conversationAIModel !== CLAUDE_3_OPUS.AIModel) {
-      return [CLAUDE_3_OPUS]
+      return [CLAUDE_3_5_SONNET]
     }
   } else {
     if (conversationAIModel !== GPT_4O.AIModel) {
-      return [GPT_4O]
+      return [CLAUDE_3_5_SONNET]
     }
   }
   return []

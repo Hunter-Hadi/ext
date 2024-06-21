@@ -202,8 +202,30 @@ const usePaginationConversationMessages = (conversationId: string) => {
             }
           }
         }
+        const finalMessageMap = new Map<string, IChatMessage>()
+        newMessages.forEach((message) => {
+          finalMessageMap.set(message.messageId, message)
+        })
+        previousMessages.map((message) => {
+          if (!finalMessageMap.has(message.messageId)) {
+            finalMessageMap.set(message.messageId, message)
+          } else {
+            // 对比updated_at，保留最新的消息
+            const finalMessage = finalMessageMap.get(message.messageId)
+            if (
+              finalMessage?.updated_at &&
+              message.updated_at &&
+              new Date(finalMessage.updated_at).getTime() >
+                new Date(message.updated_at).getTime()
+            ) {
+              finalMessageMap.set(message.messageId, finalMessage)
+            }
+          }
+        })
         const finalMessageList = orderBy(
-          data?.pages.flat() || [],
+          Array.from(finalMessageMap.values()).filter(
+            (message) => message.conversationId === conversationId,
+          ),
           ['created_at'],
           ['asc'],
         )
@@ -216,7 +238,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
         return finalMessageList
       })
     }
-  }, [data?.pages])
+  }, [data?.pages, conversationId])
 
   useEffect(() => {
     const unsubscribe = OneShotCommunicator.receive(

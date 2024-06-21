@@ -5,7 +5,7 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { PROMOTION_CODE_MAP } from '@/features/pricing/constants'
-import usePaymentSessionFetcher from '@/features/pricing/hooks/usePaymentSessionFetcher'
+import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
 import usePrefetchStripeLinks from '@/features/pricing/hooks/usePrefetchStripeLinks'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 
@@ -23,20 +23,19 @@ const PlanButton: FC<IPlanButtonProps> = (props) => {
 
   const { isFreeUser } = useUserInfo()
 
-  const {
-    getStripeLink,
-    prefetchStripeLink,
-    prefetching,
-  } = usePrefetchStripeLinks()
+  const { getStripeLink, prefetchStripeLink, prefetching } =
+    usePrefetchStripeLinks()
 
-  const {
-    loading: fetching,
-    createCheckoutSession,
-  } = usePaymentSessionFetcher()
+  // const {
+  //   loading: fetching,
+  //   createCheckoutSession,
+  // } = usePaymentSessionFetcher()
+  const { loading: fetching, createPaymentSubscription } = usePaymentCreator()
 
-  const promotionCode = useMemo(() => PROMOTION_CODE_MAP[renderType], [
-    renderType,
-  ])
+  const promotionCode = useMemo(
+    () => PROMOTION_CODE_MAP[renderType],
+    [renderType],
+  )
 
   const buttonLoading = useMemo(() => {
     if (prefetch && isFreeUser) {
@@ -75,7 +74,7 @@ const PlanButton: FC<IPlanButtonProps> = (props) => {
           window.open(`${APP_USE_CHAT_GPT_HOST}/pricing`)
         }
       } else {
-        await createCheckoutSession('elite_yearly')
+        await createPaymentSubscription('elite_yearly')
       }
 
       setIsClicked(false)

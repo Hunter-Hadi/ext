@@ -203,9 +203,11 @@ const usePaginationConversationMessages = (conversationId: string) => {
           }
         }
         const finalMessageMap = new Map<string, IChatMessage>()
-        newMessages.forEach((message) => {
-          finalMessageMap.set(message.messageId, message)
-        })
+        if (data?.pages.length && data.pages.flat) {
+          data.pages.flat().forEach((message) => {
+            finalMessageMap.set(message.messageId, message)
+          })
+        }
         previousMessages.map((message) => {
           if (!finalMessageMap.has(message.messageId)) {
             finalMessageMap.set(message.messageId, message)

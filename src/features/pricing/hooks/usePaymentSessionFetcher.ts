@@ -70,6 +70,7 @@ const usePaymentSessionFetcher = () => {
       options?: {
         coverPriceId?: string
         paymentMethods?: IPaymentSubscriptionMethod[]
+        noSendLog?: boolean
       },
     ) => {
       try {
@@ -101,14 +102,16 @@ const usePaymentSessionFetcher = () => {
         )
         if (result?.data) {
           // 防止和mixpanel防抖冲突
-          setTimeout(() => {
-            mixpanelTrack('purchase_started', {
-              value: price,
-              currency: 'USD',
-              itemName: type,
-              coupon,
-            })
-          }, 1000)
+          if (!options?.noSendLog) {
+            setTimeout(() => {
+              mixpanelTrack('purchase_started', {
+                value: price,
+                currency: 'USD',
+                itemName: type,
+                coupon,
+              })
+            }, 1000)
+          }
           sendPaymentUrlMessage(result.data.redirect_url, type)
           return result.data
         }

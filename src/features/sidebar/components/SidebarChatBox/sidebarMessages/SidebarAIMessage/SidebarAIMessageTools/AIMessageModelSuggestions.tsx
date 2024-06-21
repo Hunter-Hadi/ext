@@ -67,7 +67,7 @@ const getAIModels = (
       'client:sidebar__chat__suggestions__model__description__for_claude_3_opus',
   }
   const CLAUDE_3_5_SONNET: IConversationSuggestAIModel = {
-    title: 'claude-3-5-sonnet',
+    title: 'claude-3.5-sonnet',
     AIProvider: 'MAXAI_CLAUDE',
     AIModel: 'claude-3-5-sonnet',
     description:

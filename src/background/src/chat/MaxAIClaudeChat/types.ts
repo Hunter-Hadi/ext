@@ -117,7 +117,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
-    title: 'claude-3-5-sonnet',
+    title: 'claude-3.5-sonnet',
     titleTag: '',
     value: 'claude-3-5-sonnet',
     maxTokens: 200000,

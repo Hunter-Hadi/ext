@@ -40,7 +40,7 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     },
     {
       mainPart: true,
-      label: 'claude-3-5-sonnet',
+      label: 'claude-3.5-sonnet',
       value: 'claude-3-5-sonnet',
       AIProvider: 'MAXAI_CLAUDE',
       tag: 'Beta',

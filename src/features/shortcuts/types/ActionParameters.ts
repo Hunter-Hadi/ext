@@ -245,8 +245,6 @@ interface ActionParameters {
   // repeat with each concurrent limit - 最大并发数默认为1
   ActionRepeatWithEachConcurrentLimit?: number
   ActionRepeatCount?: number
-  // 搜索模式：增强搜索获取图片等资源
-  SearchMode?: 'enhance'
 }
 
 export default ActionParameters

@@ -334,7 +334,6 @@ export const generateSearchWithAIActions = async (
           site,
           splitWith: SMART_SEARCH_RESPONSE_DELIMITER,
         },
-        SearchMode: 'enhance',
       },
     },
     {
@@ -343,15 +342,6 @@ export const generateSearchWithAIActions = async (
         VariableName: 'SEARCH_SOURCES',
       },
     },
-    // {
-    //   type: 'SET_VARIABLE_MAP',
-    //   parameters: {
-    //     VariableMap: {
-    //       SEARCH_SOURCES: '',
-    //       IMAGE_ARY: '',
-    //     },
-    //   },
-    // },
     {
       type: 'CHAT_MESSAGE',
       parameters: {

@@ -27,16 +27,6 @@ export class ActionSetVariableMap extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      console.log(`this.parameters.VariableMap:`, this.parameters.VariableMap)
-      console.log(`params123:`, params)
-      let _lastOutPut: { [key: string]: any } = {}
-      try {
-        _lastOutPut = JSON.parse(params.LAST_ACTION_OUTPUT as string)
-      } catch (error) {
-        console.log(`error:`, error)
-      }
-      console.log(`_lastOutPut:`, _lastOutPut)
-
       const VariableMap = this.parameters.VariableMap || {}
       if (engine.shortcutsEngine?.setVariable) {
         Object.keys(VariableMap).forEach((VariableName) => {
@@ -47,14 +37,10 @@ export class ActionSetVariableMap extends Action {
                 VariableMap[VariableName] as IShortCutsParameter,
               )
             } else {
-              const _lastOutPutItem = _lastOutPut[VariableName]
-              console.log(`_lastOutPutItem:`, _lastOutPutItem)
-              console.log(`VariableName:`, VariableName)
               // 说明是值
               engine.shortcutsEngine!.setVariable({
                 key: VariableName,
-                value:
-                  VariableMap[VariableName] || JSON.stringify(_lastOutPutItem),
+                value: VariableMap[VariableName],
                 overwrite: true,
               })
             }

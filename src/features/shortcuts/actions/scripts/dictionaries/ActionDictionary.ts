@@ -59,14 +59,11 @@ export class ActionDictionary extends Action {
       // const Dictionary = this.parameters.ActionDictionary || {}
       // this.output = buildSerialization(Dictionary)
       const { shortcutsEngine } = engine
-      console.log(`SCRIPTS_DICTIONARYparams:`, params)
       const dictionary =
         this.parameters.ActionDictionary || params.LAST_ACTION_OUTPUT || {}
       if (!isObject(dictionary)) {
         throw new Error('Dictionary is required')
       }
-      console.log(`dictionary111:`, dictionary)
-
       const variable: IShortCutsParameter = {
         label: 'MaxAI Built-in Action Dictionary',
         key: MAXAI_BUILT_IN_ACTION_DICTIONARY_KEY,

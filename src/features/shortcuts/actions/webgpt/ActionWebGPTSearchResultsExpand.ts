@@ -158,7 +158,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 pageRawContent.body = result.readabilityText
                 pageRawContent.title = result.title
                 sourceMedia.images = [...sourceMedia.images, ...result.images]
-                sourceMedia.videos = [...sourceMedia.videos, ...result.videos]
+                // sourceMedia.videos = [...sourceMedia.videos, ...result.videos]
               }
               console.log(`sourceMedia111:`, sourceMedia)
 
@@ -239,7 +239,6 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       //   return
       // }
       this.output = {
-        test: 111,
         sourceMedia,
         template: template,
       }

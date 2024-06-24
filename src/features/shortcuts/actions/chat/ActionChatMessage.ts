@@ -24,8 +24,6 @@ export class ActionChatMessage extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      console.log(`this.parameters:`, this.parameters)
-
       const messageType = this.parameters.ActionChatMessageType || 'system'
       const operationType =
         this.parameters.ActionChatMessageOperationType || 'add'
@@ -48,7 +46,6 @@ export class ActionChatMessage extends Action {
           conversationId,
         )
       } else if (operationType === 'update') {
-        console.log(`messageConfig:`, messageConfig)
         await conversationEngine.updateMessage(messageConfig, conversationId)
       } else if (operationType === 'delete') {
         await conversationEngine.deleteMessage(

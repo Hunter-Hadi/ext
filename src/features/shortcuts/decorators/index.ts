@@ -93,16 +93,9 @@ export function parametersParserDecorator(filterPath?: string[]) {
   ) {
     const oldFunc = descriptor.value
     descriptor.value = async function (...args: any[]) {
-      console.log(`args:`, args)
-
       const [parameters] = args
       const actionInstance: Action = this as any
-      console.log(`actionInstance:`, actionInstance)
       getAllPathsAndValues(actionInstance.parameters, (path, value) => {
-        console.log(`filterPath:`, filterPath)
-        console.log(`path111:`, path)
-        console.log(`value111:`, value)
-
         if (filterPath?.includes(path[0])) {
           return
         }
@@ -118,9 +111,6 @@ export function parametersParserDecorator(filterPath?: string[]) {
           ) {
             // 如果是[object Object]或者[object Array]，看看Variable是否有对应的
             const variableName = value.slice(2, -2)
-            console.log(`variableName1111:`, variableName)
-            console.log(`parameters[variableName]:`, parameters[variableName])
-
             const variableData = parameters[variableName]
             if (
               variableData instanceof Array ||

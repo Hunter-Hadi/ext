@@ -37,7 +37,6 @@ const clientGetContentOfURL = async (
     images: [] as any[],
     videos: [] as any[],
   }
-  console.log(`urlclientGetContent`, url)
 
   try {
     const fetchHtml = async (targetUrl: string) => {
@@ -60,7 +59,6 @@ const clientGetContentOfURL = async (
       initialUrl: string,
     ): Promise<string> => {
       let htmlContent = await promiseTimeout(fetchHtml(initialUrl), timeout, '')
-
       // 搜狗引擎部分页面会重定向，需要做二次请求抓取
       if (initialUrl.includes('https://www.sogou.com')) {
         const regex = /window\.location\.replace\("([^"]+)"\)/
@@ -69,8 +67,6 @@ const clientGetContentOfURL = async (
           htmlContent = await promiseTimeout(fetchHtml(match[1]), timeout, '')
         }
       }
-      console.log(`htmlContent:`, htmlContent)
-
       return htmlContent
     }
 
@@ -91,11 +87,9 @@ const clientGetContentOfURL = async (
         const tempDiv = document.createElement('div')
         tempDiv.innerHTML = reader?.content
         const images = tempDiv.querySelectorAll('img')
-        const videos = tempDiv.querySelectorAll('video')
+        // const videos = tempDiv.querySelectorAll('video')
         console.log(`1images111`, images)
-        console.log(`videos111`, videos)
-        const imagesAll = doc.querySelectorAll('video')
-        console.log(`imagesAll`, imagesAll)
+        // console.log(`videos111`, videos)
 
         const _resImages = Array.from(images)
           // .slice(0, 3)
@@ -108,25 +102,25 @@ const clientGetContentOfURL = async (
               title: item.title,
             }
           })
-        const _resVideos = Array.from(videos)
-          // .slice(0, 3)
-          .map((item) => {
-            console.log(`Image ${item.title}:`, item.src)
+        // const _resVideos = Array.from(videos)
+        //   // .slice(0, 3)
+        //   .map((item) => {
+        //     console.log(`Image ${item.title}:`, item.src)
 
-            return {
-              src: item.src,
-              poster: item.poster,
-              // title: item.title,
-            }
-          })
+        //     return {
+        //       src: item.src,
+        //       poster: item.poster,
+        //       // title: item.title,
+        //     }
+        //   })
         result.images = _resImages
-        result.videos = _resVideos
+        // result.videos = _resVideos
       }
     }
 
     handleReader(result.html)
   } catch (e) {
-    console.error(e, 'result.html', result.html)
+    console.error(e)
     result.success = false
   }
 

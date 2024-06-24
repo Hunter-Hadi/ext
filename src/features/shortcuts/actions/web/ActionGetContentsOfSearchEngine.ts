@@ -61,8 +61,6 @@ export class ActionGetContentsOfSearchEngine extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      console.log(`this.parameters:`, this.parameters)
-
       let query = String(
         this.parameters?.compliedTemplate ||
           this.parameters?.URLSearchEngineParams?.q ||
@@ -99,9 +97,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
               searchParams,
               itemQuery.trim(),
             )
-            const { html, status, url } = await clientGetContentOfURL(
-              // 'https://www.google.com/search?q=%E9%BB%91%E7%A5%9E%E8%AF%9D%E6%82%9F%E7%A9%BA%0D%0A&sca_esv=a1ec1e102d1231f2&sxsrf=ADLYWIKaBZR70UV-CiKa3tFxsthf7dAvuA%3A1718877314446&ei=gvxzZszjGq6O2roP9LyY0AE&ved=0ahUKEwjMrPX99OmGAxUuh1YBHXQeBhoQ4dUDCBA&uact=5&oq=%E9%BB%91%E7%A5%9E%E8%AF%9D%E6%82%9F%E7%A9%BA%0D%0A&gs_lp=Egxnd3Mtd2l6LXNlcnAiEOm7keelnuivneaCn-epugoyBxAjGLADGCcyBxAjGLADGCcyBxAjGLADGCcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEdIuChQkCJYkCJwBHgCkAEAmAHRAaAB0QGqAQMyLTG4AQPIAQD4AQL4AQGYAgagAg3CAgQQABhHmAMAiAYBkAYKkgcBNqAHtAk&sclient=gws-wiz-serp#ip=1',
-              // 'https://www.google.com/search?q=sougou&oq=sougou&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MhkIARAuGIMBGMcBGJECGLEDGNEDGIAEGIoFMgcIAhAAGIAEMgkIAxAAGAoYgAQyBwgEEAAYgAQyCQgFEAAYChiABDIJCAYQABgKGIAEMgYIBxBFGDzSAQgxNDI4ajBqMagCCLACAQ&sourceid=chrome&ie=UTF-8',
+            const { html, status } = await clientGetContentOfURL(
               fullSearchURL,
               20 * 1000,
               abortTaskId,
@@ -124,7 +120,6 @@ export class ActionGetContentsOfSearchEngine extends Action {
               )}.](${fullSearchURL}) Pass security checks and keep the tab open for stable web access.`
               return []
             }
-            console.log(`url123`, url)
 
             // response is success
             if (status === 200 && html) {
@@ -147,42 +142,16 @@ export class ActionGetContentsOfSearchEngine extends Action {
           // 有错误，不需要继续执行
           return
         }
-        console.log(`searchResultArr:`, searchResultArr)
-
         const mergedSearchResult = uniqBy(
           interleaveMerge(...searchResultArr),
           'url',
         )
-        console.log(`mergedSearchResult:`, mergedSearchResult)
-        const imageArr = [
-          ...new Set(
-            mergedSearchResult
-              .map((item) => {
-                if (item.image) return item.image
-              })
-              .filter((item) => item),
-          ),
-        ]
-        console.log(`imageArr:`, imageArr)
-        // imageArr.forEach(item => {
-        //   window.open(item, '_blank')
-        // })
-
         const slicedSearchResult = mergedSearchResult.slice(0, limit)
-        console.log(`slicedSearchResult:`, slicedSearchResult)
         if (slicedSearchResult.length <= 0) {
           // 根据搜索结果爬取不到 内容
           this.output = '[]'
           this.error =
             'No search results found. Please try again with a different search engine or search query.'
-        } else if (this.parameters?.SearchMode) {
-          this.error = ''
-          const _res = {
-            SEARCH_SOURCES: slicedSearchResult,
-            IMAGE_ARY: imageArr,
-          }
-          // 正确获取到搜索结果，和爬取到的内容
-          this.output = JSON.stringify(_res, null, 2)
         } else {
           this.error = ''
           // 正确获取到搜索结果，和爬取到的内容

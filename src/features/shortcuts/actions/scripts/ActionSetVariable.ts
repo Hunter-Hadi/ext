@@ -34,14 +34,8 @@ export class ActionSetVariable extends Action {
         this.error = 'Action no variable name!'
         return
       }
-      console.log(`engine.shortcutsEngine:`, engine.shortcutsEngine)
-      console.log(`params:`, params)
-      console.log(`Variable:`, Variable)
-
       if (engine.shortcutsEngine?.setVariable) {
         if (typeof Variable === 'string') {
-          console.log(11111)
-
           engine.shortcutsEngine.setVariable({
             key: Variable as string,
             value:
@@ -54,7 +48,6 @@ export class ActionSetVariable extends Action {
           })
           this.output = params.LAST_ACTION_OUTPUT || ''
         } else {
-          console.log(22222)
           engine.shortcutsEngine.setVariable(Variable as IShortCutsParameter)
           this.output = (Variable as IShortCutsParameter).value
         }

@@ -82,18 +82,6 @@ function extractRealUrl(url: string) {
   return url
 }
 
-function convertUnicodeEncodingX(str: string) {
-  return str.replace(/\\x([0-9A-Fa-f]{2})/g, (match, grp) => {
-    return String.fromCharCode(parseInt(grp, 16))
-  })
-}
-
-function convertUnicodeEncoding(str: string) {
-  return str.replace(/\\u([0-9A-Fa-f]{4})/g, (match, grp) => {
-    return String.fromCharCode(parseInt(grp, 16))
-  })
-}
-
 const CrawlingResultsWithEngine = (
   html: string,
   searchEngine: URLSearchEngine | string,
@@ -101,9 +89,6 @@ const CrawlingResultsWithEngine = (
   try {
     const $ = cheerio.load(html)
     let results: ICrawlingSearchResult[] = []
-    console.log(`searchEngine:`, searchEngine)
-    console.log(`html1111:`, html)
-
     switch (searchEngine) {
       case 'google': {
         // 20230919 更新 不获取 rightPanel 的内容
@@ -124,8 +109,6 @@ const CrawlingResultsWithEngine = (
         // }
 
         const searchItems = $('#search #rso > div')
-        console.log(`searchItems:`, searchItems)
-
         if (searchItems.length === 1) {
           // 兼容 kp-wp-tab-overview 类型
           const searchBox = $('#rso #kp-wp-tab-overview:not([style])')
@@ -137,9 +120,6 @@ const CrawlingResultsWithEngine = (
               const titleElement = element.find('a > h3')
               const aElement = titleElement.closest('a')
               let bodyText = element.find('div.MUxGbd').text()
-              console.log(`titleElementSpec:`, titleElement)
-              console.log(`titleText:`, titleElement.text())
-              console.log(`bodyTextSpec:`, bodyText)
 
               if (!bodyText) {
                 const maybeBodyElement = element
@@ -164,57 +144,6 @@ const CrawlingResultsWithEngine = (
                 ?.text()
 
               const titleText = titleElement.text()
-              let imgSrc
-              const imgElement = element.find('a > div > img')
-              console.log(`imgElementSpec:`, imgElement)
-              if (imgElement.length > 0) {
-                const imgId = imgElement.attr('id')
-                const scriptEle = $('script[nonce]')
-                console.log(`_imgId:`, imgId)
-
-                console.log(`elementFirst:`, element)
-                console.log(`scriptEle:`, scriptEle)
-                let found = false
-                scriptEle.each((_, el) => {
-                  if (found) return false
-                  const scriptContent = $(el).html()
-                  // 定义正则表达式匹配 ii 和 s 的值 (第一种情况)
-                  const iiRegex = /ii\s*=\s*\[['"]([^'"]+)['"]\];/
-                  const sRegex = /s\s*=\s*['"]([^'"]+)['"];/
-                  // 提取并解析 ii 和 s 的值
-                  const iiMatch = scriptContent?.match(iiRegex)
-                  const sMatch = scriptContent?.match(sRegex)
-                  console.log(`sMatch:`, sMatch)
-                  console.log(`iiMatch:`, iiMatch)
-                  if (iiMatch && sMatch) {
-                    const iiValue = iiMatch[1]
-                    const sValue = sMatch[1]
-                    console.log(`iiValue:`, iiValue)
-                    console.log(`sValue:`, sValue)
-                    if (iiValue === imgId) {
-                      console.log(`imgRealSrc: ${sValue}`)
-                      const _imgSrc = convertUnicodeEncodingX(sValue)
-                      imgSrc = _imgSrc
-                      console.log(`_imgSrc: ${_imgSrc}`)
-                      found = true // 标记为已找到
-                      return false // 终止循环
-                    }
-                  }
-
-                  // 定义正则表达式匹配 id 的值 (第二种情况)
-                  const regex = new RegExp(`"${imgId}":\\s*"([^"]+)"`)
-                  const match = scriptContent?.match(regex)
-                  if (match && match[1]) {
-                    let url = match[1]
-                    url = convertUnicodeEncoding(url)
-                    console.log(`imgRealSrc第二种情况捕获: ${url}`)
-                    imgSrc = url
-                    found = true // 标记为已找到
-                    return false // 终止循环
-                  }
-                })
-                console.log(`imgSrcSpec:`, imgSrc)
-              }
 
               if (titleText) {
                 results.push({
@@ -224,7 +153,6 @@ const CrawlingResultsWithEngine = (
                   url,
                   from: from,
                   favicon: metaInfoEl?.find('img')?.attr('src'),
-                  image: imgSrc,
                 })
               }
             })
@@ -254,15 +182,10 @@ const CrawlingResultsWithEngine = (
             .filter((_, el) => !!$(el).find('a > h3').text())
             .each((_, el) => {
               const element = $(el)
-              console.log(`el:`, el)
-              console.log(`element1111:`, element)
 
               const titleElement = element.find('a > h3')
-              console.log(`titleElement:`, titleElement)
               const aElement = titleElement.closest('a')
-              console.log(`aElement:`, aElement)
               let bodyText = element.find('div.MUxGbd').text()
-              console.log(`bodyText:`, bodyText)
               if (!bodyText) {
                 // 带视频的 search item
                 bodyText = aElement
@@ -295,15 +218,11 @@ const CrawlingResultsWithEngine = (
                       ?.includes('-webkit-line-clamp')
                   })
                 bodyText = $(maybeBodyElement[0]).text().trim()
-                console.log(`maybeBodyElement:`, maybeBodyElement)
-                console.log(`bodyText:`, bodyText)
               }
 
               const titleText = titleElement.text()
-              console.log(`titleText:`, titleText)
 
               const metaInfoEl = titleElement.next()
-              console.log(`metaInfoEl:`, metaInfoEl)
 
               const url = extractRealUrl(aElement.attr('href') ?? '')
 
@@ -315,7 +234,6 @@ const CrawlingResultsWithEngine = (
                 ?.children()
                 ?.first()
                 ?.text()
-              console.log(`from:`, from)
 
               results.push({
                 title: titleText,
@@ -325,33 +243,6 @@ const CrawlingResultsWithEngine = (
                 from: from,
                 favicon: metaInfoEl?.find('img')?.attr('src'),
               })
-            })
-        }
-
-        const knowledgePanel = $('#rhs > div')
-        console.log(`knowledgePanel:`, knowledgePanel)
-        const test = knowledgePanel.find('g-img > img')
-        console.log(`test123213:`, test)
-
-        if (knowledgePanel.length > 0) {
-          knowledgePanel
-            .filter((_, el) => !!$(el).find('g-img > img').text())
-            .each((_, el) => {
-              const _res = {
-                panelImg: '',
-                title: '',
-                subTitle: '',
-                body: '',
-                url: '',
-              }
-              console.log(`knowledgePanelEl:`, el)
-              const element = $(el)
-              console.log(`knowledgePanelelement:`, element)
-              const panelImgElement = element.find('g-img > img')
-              console.log(`panelImgElement:`, panelImgElement)
-
-              const panelImg = panelImgElement[0]
-              console.log(`panelImg:`, panelImg)
             })
         }
 

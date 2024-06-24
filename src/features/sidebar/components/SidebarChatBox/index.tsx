@@ -125,10 +125,13 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     //   messages,
     // )
     return (
-      messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
+      !isLoadingChatMessages &&
+      messages.length <= 0 &&
+      !writingMessage &&
+      conversationType !== 'Summary'
     )
   }, [
-    // isLoadingChatMessages,
+    isLoadingChatMessages,
     // isFetchNextPage,
     messages,
     writingMessage,

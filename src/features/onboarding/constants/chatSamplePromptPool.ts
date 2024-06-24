@@ -1,7 +1,7 @@
 /**
  * 这些数据是 基于 /prompt/search_prompt api 能拿到的所有 prompt library 的数据
  */
-export const SAMPLE_PROMPT_POOL = [
+export const CHAT_SAMPLE_PROMPT_POOL = [
   {
     id: '093f99337ff362a46a39d3bec58667d1af95e8b1',
     title: 'SEO Optimized Article with 100% UniqueHuman Written Style',

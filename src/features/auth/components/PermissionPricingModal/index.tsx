@@ -5,15 +5,15 @@ import Link from '@mui/material/Link'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { usePermissionCard } from '@/features/auth'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { PricingModalState } from '@/features/auth/store'
+import { AuthUserInfoState, PricingModalState } from '@/features/auth/store'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import PlanFeatures from '@/features/pricing/components/PlanFeatures'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
@@ -30,9 +30,14 @@ const PermissionPricingModal: FC<IProps> = () => {
    * 因为目前Paywall modal放在全局弹窗的react节点下，这里先这么处理，否则底下的组件无法正确获取userInfo
    */
   useInitUserInfo(true)
+  const setUserInfo = useSetRecoilState(AuthUserInfoState)
   const { currentUserPlan } = useUserInfo()
 
   const { show, conversationId, permissionSceneType } = pricingModalState
+
+  const currentUserPlanRef = useRef(currentUserPlan)
+  currentUserPlanRef.current = currentUserPlan
+  const userPlanNameRef = useRef(currentUserPlan.name)
 
   useEffect(() => {
     const listener = (event: any) => {
@@ -45,10 +50,20 @@ const PermissionPricingModal: FC<IProps> = () => {
           paywallType: 'MODAL',
         })
         authEmitPricingHooksLog.flush()
+        userPlanNameRef.current = currentUserPlanRef.current.name
         setPricingModalState({
           show: true,
           ...data,
         })
+      }
+      if (event.data?.event === 'MAX_AI_SYNC_USER_INFO') {
+        const { data } = event.data
+        if (data.emial) {
+          setUserInfo((prev) => ({
+            ...prev,
+            user: data,
+          }))
+        }
       }
     }
     window.addEventListener('message', listener)
@@ -59,8 +74,11 @@ const PermissionPricingModal: FC<IProps> = () => {
 
   useEffect(() => {
     if (!show) return
-    // 升级到elite需要隐藏
-    if (currentUserPlan.name === 'elite') {
+    // 升级plan需要隐藏
+    if (
+      (currentUserPlan.name === 'elite' || currentUserPlan.name === 'pro') &&
+      currentUserPlan.name !== userPlanNameRef.current
+    ) {
       setPricingModalState({ show: false })
     }
   }, [show, currentUserPlan.name])

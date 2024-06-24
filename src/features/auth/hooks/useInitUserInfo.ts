@@ -97,6 +97,14 @@ const useInitUserInfo = (isInit = true) => {
         event: 'Client_getUseChatGPTUserInfo',
         data: { forceUpdate: true },
       })
+      // TODO 临时解决，在app等页面下会调用此方法同步用户数据，比如支付完会跳到app页面
+      // 这里避免调多次接口同步一次发送消息，广播给其他应用数据
+      if (result.success) {
+        window.postMessage({
+          event: 'MAX_AI_SYNC_USER_INFO',
+          data: result.data,
+        })
+      }
       if (result.success && result.data?.role?.name) {
         const newRole = result.data?.role
         setUserInfo((prevState) => {

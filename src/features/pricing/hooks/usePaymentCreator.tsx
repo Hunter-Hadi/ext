@@ -65,7 +65,11 @@ const usePaymentCreator = () => {
           )
 
       if (data && data.redirect_url) {
-        window.open(data.redirect_url)
+        if (location.origin === APP_USE_CHAT_GPT_HOST) {
+          window.location.href = data.redirect_url
+        } else {
+          window.open(data.redirect_url)
+        }
       } else {
         window.open(`${APP_USE_CHAT_GPT_HOST}/pricing`)
       }

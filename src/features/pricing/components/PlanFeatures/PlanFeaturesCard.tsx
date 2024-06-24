@@ -98,7 +98,7 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
         border: '1px solid',
         borderRadius: 2,
         borderColor: isPopular ? 'primary.main' : 'divider',
-        bgcolor: isPopular ? 'rgba(249, 245, 255, 1)' : null,
+        bgcolor: isPopular ? 'rgba(249, 245, 255, 1)' : 'rgba(255,255,255,1)',
         overflow: 'hidden',
         boxShadow: '0px 4px 6px -2px #10182808',
         mt: isPopular ? 0 : '40px !important',
@@ -153,7 +153,7 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
               px={1}
               alignItems='center'
               sx={{
-                borderRadius: '12px',
+                borderRadius: '14px',
                 bgcolor: isPopular ? '#FF8800' : 'rgba(249, 245, 255, 1)',
                 color: isPopular ? '#fff' : 'primary.main',
               }}

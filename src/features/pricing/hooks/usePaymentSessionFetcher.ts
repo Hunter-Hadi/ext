@@ -151,18 +151,17 @@ const usePaymentSessionFetcher = () => {
           price = roundToDecimal(price * discountValue)
         }
 
-        mixpanelTrack('change_plan_started', {
-          value: price,
-          currency: 'USD',
-          itemName: type,
-          coupon,
-        })
-
         const result = await post<{ redirect_url: string }>(
-          '/subscription/create_one_time_checkout_session',
+          '/subscription/create_portal_session',
           {},
         )
         if (result?.data) {
+          mixpanelTrack('change_plan_started', {
+            value: price,
+            currency: 'USD',
+            itemName: type,
+            coupon,
+          })
           return result.data
         }
         return null

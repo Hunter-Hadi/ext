@@ -36,7 +36,7 @@ const useArtTextToImage = () => {
   const { sidebarSettings, updateSidebarConversationType } =
     useSidebarSettings()
   const { isPayingUser } = useUserInfo()
-  const startTextToImage = async (text: string) => {
+  const startTextToImage = async (text: string, needTransform?: boolean) => {
     if (!isShowChatBox()) {
       showChatBox()
     }
@@ -63,8 +63,13 @@ const useArtTextToImage = () => {
     }
     const messageId = uuidV4()
     const modelConfig = await getAIProviderSettings('MAXAI_DALLE')
-    const isNeedTransform =
+    let isNeedTransform =
       sidebarSettings?.art?.isEnabledConversationalMode === true
+
+    if (typeof needTransform !== undefined) {
+      isNeedTransform = Boolean(needTransform)
+    }
+
     let actions: ISetActionsType = []
     // 需要智能生成
     if (isNeedTransform) {

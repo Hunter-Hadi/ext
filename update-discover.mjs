@@ -14,26 +14,25 @@ import open from 'open'
 
 async function updateDiscover() {
   /* crawling script */
-  const crawlingScript = `
-  (function crawlingPerplexityDiscover() {
-    const items = Array.from(document.querySelectorAll('div.mx-auto.h-full.w-full div.divide-y > div'))
-      const data = items.map(item => {
-          const title = item.querySelector('div[data-testid=thread-title]').innerText
-          return {
-              title
-          }
-      })
-    // console.log(JSON.stringify(data, {}, 2))
-    console.log('copy this:', data)
-  })()
-  `
+  const crawlingScript = `(function crawlingPerplexityDiscover() {
+  const items = Array.from(document.querySelectorAll('div.mx-auto.h-full.w-full div.divide-y > div'));
+  const data = items.map(item => {
+    const title = item.querySelector('div[data-testid=thread-title]').innerText;
+    return {
+      title,
+    };
+  })
+  // console.log(JSON.stringify(data, {}, 2));
+  console.log("copy this:", data);
+})()`
+
   // 将文本复制到剪贴板
   clipboardy.writeSync(crawlingScript)
 
   console.log(`The crawling script has been copied to your clipboard`)
 
+  open('src/features/onboarding/constants/discover.json')
   open('https://www.perplexity.ai/discover')
-  open('src/constants/discover.json')
 }
 
 updateDiscover()

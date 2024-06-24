@@ -14,6 +14,7 @@ const clientGetContentOfURL = async (
   url: string,
   timeout: number,
   abortTaskId?: string,
+  needMedia?: boolean, // copilot获取网页多媒体资源
 ): Promise<{
   title: string
   body: string
@@ -22,6 +23,8 @@ const clientGetContentOfURL = async (
   url: string
   status: number
   success: boolean
+  images: any[]
+  videos: any[]
 }> => {
   const result = {
     success: true,
@@ -31,7 +34,10 @@ const clientGetContentOfURL = async (
     body: '',
     html: '',
     readabilityText: '',
+    images: [] as any[],
+    videos: [] as any[],
   }
+  console.log(`urlclientGetContent`, url)
 
   try {
     const fetchHtml = async (targetUrl: string) => {
@@ -63,6 +69,8 @@ const clientGetContentOfURL = async (
           htmlContent = await promiseTimeout(fetchHtml(match[1]), timeout, '')
         }
       }
+      console.log(`htmlContent:`, htmlContent)
+
       return htmlContent
     }
 
@@ -74,11 +82,51 @@ const clientGetContentOfURL = async (
       result.title = reader?.title || ''
       result.body = reader?.content || ''
       result.readabilityText = reader?.textContent || ''
+      console.log(`url123`, url)
+      console.log(`doc111`, doc)
+      console.log(`reader`, reader)
+      console.log(`htmlContent`, htmlContent)
+      console.log(`reader?.content`, reader?.content)
+      if (needMedia && reader?.content) {
+        const tempDiv = document.createElement('div')
+        tempDiv.innerHTML = reader?.content
+        const images = tempDiv.querySelectorAll('img')
+        const videos = tempDiv.querySelectorAll('video')
+        console.log(`1images111`, images)
+        console.log(`videos111`, videos)
+        const imagesAll = doc.querySelectorAll('video')
+        console.log(`imagesAll`, imagesAll)
+
+        const _resImages = Array.from(images)
+          // .slice(0, 3)
+          .map((item) => {
+            console.log(`Image ${item.title}:`, item.src)
+
+            return {
+              src: item.src,
+              alt: item.alt,
+              title: item.title,
+            }
+          })
+        const _resVideos = Array.from(videos)
+          // .slice(0, 3)
+          .map((item) => {
+            console.log(`Image ${item.title}:`, item.src)
+
+            return {
+              src: item.src,
+              poster: item.poster,
+              // title: item.title,
+            }
+          })
+        result.images = _resImages
+        result.videos = _resVideos
+      }
     }
 
     handleReader(result.html)
   } catch (e) {
-    console.error(e)
+    console.error(e, 'result.html', result.html)
     result.success = false
   }
 

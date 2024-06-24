@@ -23,6 +23,8 @@ export class ActionRenderTemplate extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
+    console.log(`this.parametersRENDER_TEMPLATE:`, this.parameters)
+
     this.output = this.parameters?.compliedTemplate || ''
   }
 }

@@ -74,6 +74,10 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         JSON.parse(searchResultJson)
       let template = ``
       const addActions: ISetActionsType = []
+      const sourceMedia = {
+        images: [] as any[],
+        videos: [] as any[],
+      }
       if (summarizeType === 'NO_SUMMARIZE') {
         for (let i = 0; i < searchResults.length; i++) {
           const searchResult = searchResults[i]
@@ -117,6 +121,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 body: '',
                 title: '',
               }
+
               // 判断是不是youtube
               const youtubeVideoId = YoutubeTranscript.retrieveVideoId(
                 searchResult.url,
@@ -143,6 +148,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                   searchResult.url,
                   20 * 1000,
                   abortTaskId,
+                  true,
                 )
                 if (this.isTaskAbort(abortTaskId)) {
                   // 如果abort, 返回 fallbackData
@@ -151,7 +157,11 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 pageRawContent.success = result.success
                 pageRawContent.body = result.readabilityText
                 pageRawContent.title = result.title
+                sourceMedia.images = [...sourceMedia.images, ...result.images]
+                sourceMedia.videos = [...sourceMedia.videos, ...result.videos]
               }
+              console.log(`sourceMedia111:`, sourceMedia)
+
               // 2. 获取页面内容成功时，用页面内容替换 body、title
               if (pageRawContent.success) {
                 searchResult.body = pageRawContent.body || searchResult.body
@@ -216,19 +226,24 @@ export class ActionWebGPTSearchResultsExpand extends Action {
           }\nCONTENT: ${expandItem.body}\n\n`
         })
       }
-      addActions.push({
-        type: 'RENDER_TEMPLATE',
-        parameters: {
-          template,
-        },
-      })
-      if (engine.shortcutsEngine) {
-        engine.shortcutsEngine.pushActions(addActions, 'after')
-      } else {
-        this.error = 'no shortCutsEngine'
-        return
+      // addActions.push({
+      //   type: 'RENDER_TEMPLATE',
+      //   parameters: {
+      //     template,
+      //   },
+      // })
+      // if (engine.shortcutsEngine) {
+      //   engine.shortcutsEngine.pushActions(addActions, 'after')
+      // } else {
+      //   this.error = 'no shortCutsEngine'
+      //   return
+      // }
+      this.output = {
+        test: 111,
+        sourceMedia,
+        template: template,
       }
-      this.output = template
+      // this.output = template
     } catch (e) {
       this.error = (e as any).toString()
     } finally {

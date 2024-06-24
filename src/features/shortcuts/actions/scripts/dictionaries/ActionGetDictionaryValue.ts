@@ -49,12 +49,20 @@ export class ActionGetDictionaryValue extends Action {
       const dictionary = shortcutsEngine?.getVariable(
         MAXAI_BUILT_IN_ACTION_DICTIONARY_KEY,
       )
+      console.log(`dictionaryGet`, dictionary)
+      console.log(`getDictionaryValue`, getDictionaryValue)
+      console.log(`getDictionaryKey`, getDictionaryKey)
+
       if (!dictionary) {
         throw new Error('Dictionary is required')
       }
       const dictionaryValue = dictionary.value
       if (getDictionaryKey === 'value') {
         if (getDictionaryValue) {
+          console.log(
+            `lodashGet(dictionaryValue, getDictionaryValue, '')`,
+            lodashGet(dictionaryValue, getDictionaryValue, ''),
+          )
           this.output = lodashGet(dictionaryValue, getDictionaryValue, '')
         } else {
           this.output = dictionaryValue

@@ -4,7 +4,7 @@ import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -12,6 +12,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
+  IAIResponseOriginalMessageSourceMediaImages,
 } from '@/features/indexed_db/conversations/models/Message'
 import {
   CaptivePortalIcon,
@@ -19,6 +20,7 @@ import {
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
+import ImageWithDialog from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/ImageWithDialog'
 import SidebarAIMessageAIModel from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageAIModel'
 import SidebarAImessageBottomList from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList'
 import SidebarAIMessageContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent'
@@ -57,6 +59,64 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     [message],
   )
 
+  const [filteredImages, setFilteredImages] = useState<
+    IAIResponseOriginalMessageSourceMediaImages[]
+  >([])
+
+  const validateImage = (url: string) => {
+    // return new Promise((resolve) => {
+    //   const img = new Image()
+    //   img.src = url
+
+    //   img.onload = () => {
+    //     // 图片加载成功后进行过滤条件检查
+    //     // 尺寸小于 50 、 名字包含 'logo'等
+    //     if (
+    //       img.width >= 50 &&
+    //       img.height >= 50 &&
+    //       !url.includes('icon') &&
+    //       !url.includes('menu') &&
+    //       !url.includes('logo')
+    //     ) {
+    //       resolve(true)
+    //     } else {
+    //       resolve(false)
+    //     }
+    //   }
+    //   img.onerror = () => {
+    //     resolve(false) // 图片加载失败
+    //   }
+    // })
+    return new Promise((resolve) => {
+      url
+
+      // 图片加载成功后进行过滤条件检查
+      // 名字包含 'logo'等
+      if (
+        !url.includes('icon') &&
+        !url.includes('menu') &&
+        !url.includes('logo')
+      ) {
+        resolve(true)
+      } else {
+        resolve(false)
+      }
+    })
+  }
+
+  const filterImages = async (
+    imageItems: IAIResponseOriginalMessageSourceMediaImages,
+  ) => {
+    const validImages = []
+    for (const item of imageItems) {
+      const isValid = await validateImage(item.src)
+      if (isValid) {
+        validImages.push(item)
+      }
+    }
+    return validImages
+  }
+
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {
@@ -65,6 +125,8 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         sources: message.originalMessage?.metadata?.sources,
         sourcesLoading:
           message.originalMessage?.metadata?.sources?.status === 'loading',
+        imagesSources:
+          message.originalMessage?.metadata?.sources?.media?.images || [],
         sourcesHasContent: false,
         answer: message.text,
         content: message.originalMessage?.content,
@@ -85,6 +147,14 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
           }) || message.text
       }
       currentRenderData.answer = currentRenderData.answer.replace(/^\s+/, '')
+
+      console.log(
+        `message.originalMessage?.metadata:`,
+        message.originalMessage?.metadata,
+      )
+
+      console.log(`currentRenderData:`, currentRenderData)
+
       return currentRenderData
     } catch (e) {
       return {
@@ -129,6 +199,17 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const isWaitFirstAIResponseText = useMemo(() => {
     return !renderData.answer
   }, [renderData.answer])
+
+  // 图片过滤
+  useEffect(() => {
+    const fetchFilteredImages = async () => {
+      const imageItems =
+        message.originalMessage?.metadata?.sources?.media?.images || []
+      const validImages = await filterImages(imageItems)
+      setFilteredImages(validImages)
+    }
+    fetchFilteredImages()
+  }, [message])
 
   return (
     <Box component={'div'} className={'chat-message--AI'}>
@@ -259,6 +340,39 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                       </Typography>
                     </Stack>
                   )}
+
+                  {filteredImages && (
+                    <Stack
+                      className='media_sources'
+                      spacing={1}
+                      sx={{
+                        margin: '16px 0 8px',
+                        overflowX: 'scroll',
+                        '&::-webkit-scrollbar': {
+                          width: 0,
+                          background: 'transparent',
+                        },
+                      }}
+                    >
+                      <Stack
+                        spacing={1}
+                        direction={'row'}
+                        className='image_sources'
+                      >
+                        {/* {filteredImages.map((item, index) => (
+                          <Stack key={item.src}>
+                            <ImageWithDialog
+                              images={filteredImages}
+                            ></ImageWithDialog>
+                          </Stack>
+                        ))} */}
+                        <ImageWithDialog
+                          images={filteredImages}
+                        ></ImageWithDialog>
+                      </Stack>
+                    </Stack>
+                  )}
+
                   {isWaitFirstAIResponseText &&
                   !renderData.messageIsComplete ? (
                     <SidebarAIMessageSkeletonContent

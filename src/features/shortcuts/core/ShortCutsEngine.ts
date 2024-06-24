@@ -305,6 +305,8 @@ class ShortCutsEngine implements IShortcutEngine {
               this.emit('status', this)
               break
             }
+            console.log(`currentAction.output:`, currentAction.output)
+
             const output = currentAction.output || ''
             this.setVariable({
               key: 'LAST_ACTION_OUTPUT',
@@ -346,7 +348,7 @@ class ShortCutsEngine implements IShortcutEngine {
     this.status = 'idle'
   }
   setVariable(variable: IShortCutsParameter) {
-    // console.log('ShortCutEngine.setVariable', key, value, overwrite)
+    console.log('ShortCutEngine.setVariable', variable)
     if (this.variables.has(variable.key)) {
       if (variable.overwrite) {
         this.variables.set(variable.key, variable)

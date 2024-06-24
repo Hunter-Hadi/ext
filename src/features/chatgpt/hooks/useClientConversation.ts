@@ -148,6 +148,8 @@ const useClientConversation = () => {
     message: IChatMessage,
     conversationId?: string,
   ) => {
+    console.log(`message123213:`, message)
+
     if (
       (conversationId || currentConversationIdRef.current) &&
       message.messageId

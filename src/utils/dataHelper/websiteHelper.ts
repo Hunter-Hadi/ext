@@ -238,3 +238,29 @@ export const isChatGPTWebAppPage = () => {
     return false
   }
 }
+
+export const websiteGetSeoMetaData = () => {
+  const baseData = {
+    title: typeof document !== 'undefined' ? document.title : '',
+    url: typeof window !== 'undefined' ? window.location.href : '',
+    favicon:
+      document.querySelector('link[rel="icon"]')?.getAttribute('href') ||
+      document
+        .querySelector('link[rel="shortcut icon"]')
+        ?.getAttribute('href') ||
+      document
+        .querySelector('link[rel="apple-touch-icon"]')
+        ?.getAttribute('href') ||
+      document
+        .querySelector('link[rel="apple-touch-icon-precomposed"]')
+        ?.getAttribute('href') ||
+      document.querySelector('link[rel="mask-icon"]')?.getAttribute('href') ||
+      document.querySelector('link[rel="fluid-icon"]')?.getAttribute('href') ||
+      'https://www.google.com/s2/favicons?domain=' +
+        new URL(window.location.href).hostname,
+  }
+  if (isMaxAIImmersiveChatPage() || isMaxAIPDFPage()) {
+    baseData.favicon = domain2Favicon('www.maxai.me')
+  }
+  return baseData
+}

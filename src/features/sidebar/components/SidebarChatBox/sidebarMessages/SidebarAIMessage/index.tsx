@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
@@ -57,6 +58,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     [message],
   )
 
+  const { clientConversation } = useClientConversation()
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {
@@ -136,9 +138,15 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         <SidebarContextCleared message={message} />
       )}
       <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
-        <SidebarAIMessageAIModel
-          AIModel={message.originalMessage?.metadata?.AIModel}
-        />
+        {clientConversation?.id === message.conversationId &&
+          clientConversation?.type === 'Chat' && (
+            <SidebarAIMessageAIModel
+              AIModel={
+                message.originalMessage?.metadata?.AIModel ||
+                clientConversation?.meta.AIModel
+              }
+            />
+          )}
         {isSummaryMessage && (
           <SwitchSummaryActionNav message={message} loading={coverLoading} />
         )}

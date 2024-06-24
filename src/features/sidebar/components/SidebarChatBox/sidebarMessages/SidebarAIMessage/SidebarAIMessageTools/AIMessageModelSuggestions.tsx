@@ -335,8 +335,10 @@ const AIMessageSuggestionsModelSelector: FC<{
             },
           }}
         >
+          {t('client:sidebar__chat__suggestions__compare_to__title', {
+            AI_MODEL: firstSuggestion.AIModel,
+          })}
           <AIModelIcons size={18} aiModelValue={firstSuggestion.AIModel} />
-          {firstSuggestion.title}
         </Stack>
         <Stack
           component={'div'}

@@ -915,7 +915,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__title": "بلا حد کلوڈ-3.5-سونیٹ کے لئے اپگریڈ کریں",
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__free__description": "Anthropic کا کلوڈ-3.5-سونیٹ فرونٹیئر انٹیلیجنس کو دگنی رفتار کے ساتھ جوڑتا ہے ، تفکر ، علم اور کوڈنگ میں نئے معیار قائم کرتا ہے۔ نیوانس کی بہتر سمجھ ، بہترین وژن صلاحیتوں کے ساتھ اور 200k ٹوکن کی حد تک ، یہ مشکل تسکوں کے لئے بہترین کارکردگی کی طلب ہے۔",
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__paid__description": "ماہانہ تقریر کی حد سے تجاوز ہوگئی ہے۔ اب غیر محدود کوئیریز کے لئے اپگریڈ کریں ، یا ماہانہ کوئیریز ری سیٹ ہونے پر دوبارہ چیک کریں۔",
-    "sidebar__chat__suggestions__model__description__for_claude_3_5_sonnet": "Anthropic کی نئی ترین اور ترقی یافتہ ماڈل"
+    "sidebar__chat__suggestions__model__description__for_claude_3_5_sonnet": "Anthropic کی نئی ترین اور ترقی یافتہ ماڈل",
+    "sidebar__chat__suggestions__compare_to__title": "اپنے {{AI_MODEL}} کا استعمال کرنے کی کوشش کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

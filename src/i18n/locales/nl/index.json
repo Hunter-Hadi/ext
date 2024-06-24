@@ -915,7 +915,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__title": "Upgrade voor onbeperkte claude-3.5-sonnet met visie",
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__free__description": "Anthropic's claude-3.5-sonnet combineert grensverleggende intelligentie met verdubbelde snelheid, stelt nieuwe normen in redenering, kennis en programmeren. Met verbeterd begrip van nuance, verbeterde visuele mogelijkheden en een limiet van 200k tokens, is het ideaal voor complexe taken die hoge prestaties vereisen.",
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__paid__description": "Maandelijkse limiet voor geavanceerde tekstquery overschreden. Upgrade nu voor onbeperkte queries, of kom volgende maand terug wanneer de maandelijkse queries worden gereset.",
-    "sidebar__chat__suggestions__model__description__for_claude_3_5_sonnet": "Nieuwste en meest geavanceerde model van Anthropic"
+    "sidebar__chat__suggestions__model__description__for_claude_3_5_sonnet": "Nieuwste en meest geavanceerde model van Anthropic",
+    "sidebar__chat__suggestions__compare_to__title": "Probeer {{AI_MODEL}} te gebruiken"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

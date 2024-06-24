@@ -74,6 +74,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                   sourceWebpage: {
                     url: `{{CURRENT_WEBPAGE_URL}}`,
                     title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                    favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
                   },
                   shareType: 'summary',
                   title: {
@@ -326,6 +327,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                   sourceWebpage: {
                     url: `{{CURRENT_WEBPAGE_URL}}`,
                     title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                    favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
                   },
                   shareType: 'summary',
                   title: {
@@ -577,6 +579,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                   sourceWebpage: {
                     url: `{{CURRENT_WEBPAGE_URL}}`,
                     title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                    favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
                   },
                   shareType: 'summary',
                   title: {
@@ -832,6 +835,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                   sourceWebpage: {
                     url: `{{CURRENT_WEBPAGE_URL}}`,
                     title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                    favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
                   },
                   shareType: 'summary',
                   title: {

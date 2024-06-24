@@ -33,7 +33,10 @@ import {
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppLocalStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import {
+  getCurrentDomainHost,
+  websiteGetSeoMetaData,
+} from '@/utils/dataHelper/websiteHelper'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -193,6 +196,7 @@ const useSidebarSettings = () => {
           getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 4096,
         domain,
         path,
+        sourceWebpage: websiteGetSeoMetaData(),
       }
       // 如果是OPENAI_API，那么就加上systemPrompt
       if (AIProvider === 'OPENAI_API') {
@@ -258,6 +262,7 @@ const useSidebarSettings = () => {
               pageSummaryType,
               domain,
               path,
+              sourceWebpage: websiteGetSeoMetaData(),
               //               pageSummaryId: pageSummaryData.pageSummaryId,
               //               pageSummaryType: pageSummaryData.pageSummaryType,
               //               systemPrompt: `The following text delimited by triple backticks is the context text:
@@ -280,6 +285,7 @@ const useSidebarSettings = () => {
           getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 16384,
         domain,
         path,
+        sourceWebpage: websiteGetSeoMetaData(),
       }
       // 创建一个新的conversation
       const result = await port.postMessage({
@@ -315,6 +321,7 @@ const useSidebarSettings = () => {
               domain,
               path,
             }),
+            sourceWebpage: websiteGetSeoMetaData(),
           } as Partial<IConversation>,
         },
       })
@@ -336,6 +343,7 @@ const useSidebarSettings = () => {
           getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 4096,
         domain,
         path,
+        sourceWebpage: websiteGetSeoMetaData(),
       }
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',

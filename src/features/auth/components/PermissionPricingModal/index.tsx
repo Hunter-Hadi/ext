@@ -23,8 +23,9 @@ interface IProps {}
 const PermissionPricingModal: FC<IProps> = () => {
   const { t } = useTranslation()
 
-  const [pricingModalState, setPricingModalState] =
-    useRecoilState(PricingModalState)
+  const [pricingModalState, setPricingModalState] = useRecoilState(
+    PricingModalState,
+  )
 
   const { show, conversationId, permissionSceneType } = pricingModalState
 
@@ -242,7 +243,7 @@ const PermissionPricingModal: FC<IProps> = () => {
                     borderRadius: 2,
                   }}
                   sendLog={sendLog}
-                  prefetch
+                  // prefetch
                 >
                   {t('client:permission__pricing_modal__cta_button__title')}
                 </PlanButton>

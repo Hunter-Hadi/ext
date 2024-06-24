@@ -22,6 +22,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_ADVANCED_MODEL_GPT_4_TURBO',
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_OPUS',
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_SONNET',
+  'MAXAI_ADVANCED_MODEL_CLAUDE_3_5_SONNET',
   'MAXAI_ADVANCED_MODEL_GEMINI_1_5_PRO',
   'MAXAI_ADVANCED_MODEL_GPT_4',
   'MAXAI_IMAGE_GENERATE_MODEL_DALL_E_3',
@@ -363,6 +364,27 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           )
         : t(
             'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description',
+          )
+    },
+  },
+  MAXAI_ADVANCED_MODEL_CLAUDE_3_5_SONNET: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/claude-3-5-sonnet.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/claude-3-5-sonnet.png',
+    ),
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__title',
+      ),
+    description: (t, isFreeUser) => {
+      return isFreeUser
+        ? t(
+            'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__free__description',
+          )
+        : t(
+            'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__paid__description',
           )
     },
   },

@@ -5,7 +5,7 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { PROMOTION_CODE_MAP } from '@/features/pricing/constants'
-import usePaymentSessionFetcher from '@/features/pricing/hooks/usePaymentSessionFetcher'
+import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
 import usePrefetchStripeLinks from '@/features/pricing/hooks/usePrefetchStripeLinks'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 
@@ -26,7 +26,11 @@ const PlanButton: FC<IPlanButtonProps> = (props) => {
   const { getStripeLink, prefetchStripeLink, prefetching } =
     usePrefetchStripeLinks()
 
-  const { loading: fetching } = usePaymentSessionFetcher()
+  // const {
+  //   loading: fetching,
+  //   createCheckoutSession,
+  // } = usePaymentSessionFetcher()
+  const { loading: fetching, createPaymentSubscription } = usePaymentCreator()
 
   const promotionCode = useMemo(
     () => PROMOTION_CODE_MAP[renderType],
@@ -58,15 +62,19 @@ const PlanButton: FC<IPlanButtonProps> = (props) => {
         return
       }
 
-      const stripeLink = await getStripeLink(
-        renderType,
-        promotionCode ? promotionCode : undefined,
-      )
+      if (prefetch) {
+        const stripeLink = await getStripeLink(
+          renderType,
+          promotionCode ? promotionCode : undefined,
+        )
 
-      if (stripeLink) {
-        window.open(stripeLink)
+        if (stripeLink) {
+          window.open(stripeLink)
+        } else {
+          window.open(`${APP_USE_CHAT_GPT_HOST}/pricing`)
+        }
       } else {
-        window.open(`${APP_USE_CHAT_GPT_HOST}/pricing`)
+        await createPaymentSubscription('elite_yearly')
       }
 
       setIsClicked(false)

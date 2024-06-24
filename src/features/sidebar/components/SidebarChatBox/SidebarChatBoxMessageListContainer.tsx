@@ -165,7 +165,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       blurMessageIdRef.current = null
     }
   }, [paginationMessages])
-
+  const prevPaginationMessagesLengthRef = useRef(paginationMessages.length)
   useEffect(() => {
     const writingMessageId = writingMessage?.messageId || ''
     if (
@@ -173,11 +173,34 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       !paginationMessages.find((msg) => msg.messageId === writingMessageId)
     ) {
       lastMessageIdRef.current = writingMessageId
-      // console.log(`scroll to message [最新消息]`, lastMessageIdRef.current)
+      console.log(`scroll to message [最新消息]`, lastMessageIdRef.current)
       resetPreviousPageLastMessageId(writingMessageId)
     } else {
-      lastMessageIdRef.current = lastPaginationMessageIdRef.current
-      // console.log(`scroll to message [列表最后信息]`, lastMessageIdRef.current)
+      // 因为art/search板块的新消息没有writingMessage，所以需要在这里处理
+      if (
+        lastPaginationMessageIdRef.current &&
+        lastPaginationMessageIdRef.current ===
+          last(paginationMessages)?.messageId
+      ) {
+        // 因为手动上滑要清除lastMessageIdRef.current
+        // 通过分页数量的区别来判断新消息，并且只设置一次
+        if (
+          prevPaginationMessagesLengthRef.current !== paginationMessages.length
+        ) {
+          console.log(
+            `scroll to message [列表最后信息]`,
+            lastMessageIdRef.current,
+          )
+          lastMessageIdRef.current = lastPaginationMessageIdRef.current
+          resetPreviousPageLastMessageId(lastPaginationMessageIdRef.current)
+        }
+      } else {
+        console.log(
+          `scroll to message [列表最后信息]`,
+          lastMessageIdRef.current,
+        )
+      }
+      prevPaginationMessagesLengthRef.current = paginationMessages.length
     }
   }, [writingMessage?.messageId, paginationMessages])
 

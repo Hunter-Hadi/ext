@@ -148,11 +148,11 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     >
       <MenuList
         id={'maxai-ai-model-selector-menu'}
-        aria-labelledby="maxai-ai-model-selector-menu"
+        aria-labelledby='maxai-ai-model-selector-menu'
         sx={{
           overflowY: 'auto',
           overflowX: 'hidden',
-          width: 198,
+          width: 203,
           flexShrink: 0,
           borderRight: '1px solid',
           borderColor: '#ebebeb',

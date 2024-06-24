@@ -41,6 +41,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           [
             MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
             MAXAI_CHATGPT_MODEL_GPT_4O,
+            'claude-3-5-sonnet',
             'claude-3-sonnet',
             'claude-3-opus',
             'claude-3-haiku',
@@ -55,6 +56,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         [
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
           MAXAI_CHATGPT_MODEL_GPT_4O,
+          'claude-3-5-sonnet',
           'claude-3-sonnet',
           'claude-3-opus',
           'claude-3-haiku',
@@ -123,6 +125,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
             'claude-3-haiku',
             'gemini-pro',
             'gemini-1.5-pro',
+            'claude-3-5-sonnet',
           ].includes(conversation?.meta?.AIModel)
         ) {
           await createConversation(
@@ -159,9 +162,12 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       return true
     }
     if (currentAIProvider === 'MAXAI_CLAUDE') {
-      return ['claude-3-sonnet', 'claude-3-opus', 'claude-3-haiku'].includes(
-        currentAIProviderModel,
-      )
+      return [
+        'claude-3-sonnet',
+        'claude-3-opus',
+        'claude-3-haiku',
+        'claude-3-5-sonnet',
+      ].includes(currentAIProviderModel)
     }
     if (currentAIProvider === 'MAXAI_GEMINI') {
       return ['gemini-pro', 'gemini-1.5-pro'].includes(currentAIProviderModel)

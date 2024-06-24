@@ -8,3 +8,13 @@ export const AI_MODEL_SERVICE_TEXTS_MAP = {
   advancedText: 'GPT-4 & Claude-3-opus/sonnet & Gemini-1.5-pro',
   imageGenerate: 'DALL·E 3',
 }
+
+// 角色优先级值
+export const USER_ROLE_PRIORITY: Record<IUserRoleType, number> = {
+  new_user: 0,
+  pro_gift: 0,
+  free: 0,
+  basic: 1,
+  pro: 2,
+  elite: 3,
+}

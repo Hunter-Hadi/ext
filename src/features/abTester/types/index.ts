@@ -21,7 +21,7 @@ export type IUpdateVariantConfig = {
   ) => { title?: string; description: string }[]
 }
 
-export type IPaywallVariant = '2-1' | '2-2'
+export type IPaywallVariant = '3-1' | '3-2'
 
 export type IUserABTestInfo = {
   paywallVariant?: IPaywallVariant

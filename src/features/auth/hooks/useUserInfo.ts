@@ -54,6 +54,7 @@ const useUserInfo = () => {
     }
     return 0
   }, [userInfo])
+
   const currentUserPlan = useMemo<IUserCurrentPlan>(() => {
     let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
     const planName: IUserPlanNameType | undefined =
@@ -101,7 +102,31 @@ const useUserInfo = () => {
     [currentUserPlan],
   )
 
-  const isFreeUser = useMemo(() => !isPayingUser, [isPayingUser])
+  // 是否是免费用户
+  const isFreeUser = !isPayingUser
+
+  const subscriptionPlanName =
+    userInfo?.role?.subscription_plan_name || userInfo?.subscription_plan_name
+
+  // 根据接口返回的 userProfile?.subscription_plan_name 来判断用户的订阅类型
+  // 月付、年付、一次性付款、null
+  const subscriptionType = useMemo<
+    'monthly' | 'yearly' | 'oneTimePayment' | null
+  >(() => {
+    if (!subscriptionPlanName) {
+      return null
+    }
+
+    if (subscriptionPlanName.includes('_MONTHLY')) {
+      return 'monthly'
+    }
+
+    if (subscriptionPlanName.includes('_YEARLY')) {
+      return 'yearly'
+    }
+
+    return 'oneTimePayment'
+  }, [subscriptionPlanName])
 
   const isSubscriptionPaymentFailed = useMemo(() => {
     return checkIsSubscriptionPaymentFailed(
@@ -123,6 +148,7 @@ const useUserInfo = () => {
     isPayingUser,
     isFreeUser,
     isSubscriptionPaymentFailed,
+    subscriptionType,
 
     // 是否是 team plan 的用户
     isTeamPlanUser: !!userInfo?.group_id,

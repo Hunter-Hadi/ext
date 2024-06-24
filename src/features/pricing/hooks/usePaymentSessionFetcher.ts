@@ -1,21 +1,16 @@
 import { useCallback } from 'react'
 import { useRecoilState } from 'recoil'
-import {
-  DISCOUNT_VALUE,
-  PLAN_FAIL_NAMES,
-  PRICE_ID_MAP,
-  PROMOTION_CODE_MAP,
-} from 'src/features/pricing/constants'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
+import { PLAN_FAIL_NAMES } from '@/features/pricing/constants'
+import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { CreateSessionLoadingAtom } from '@/features/pricing/store'
 import {
   IPaymentSubscriptionMethod,
   RENDER_PLAN_TYPE,
 } from '@/features/pricing/type'
-import { calcPlanPrice } from '@/features/pricing/utils'
 import { roundToDecimal } from '@/utils/dataHelper/numberHelper'
 import Toast from '@/utils/globalSnackbar'
 import { post } from '@/utils/request'
@@ -63,6 +58,8 @@ function sendPaymentUrlMessage(paymentUrl: string, planType: RENDER_PLAN_TYPE) {
 const usePaymentSessionFetcher = () => {
   const [loading, setLoading] = useRecoilState(CreateSessionLoadingAtom)
 
+  const { planPricingInfo } = usePlanPricingInfo()
+
   const createCheckoutSession = useCallback(
     async (
       type: RENDER_PLAN_TYPE,
@@ -76,18 +73,21 @@ const usePaymentSessionFetcher = () => {
       try {
         setLoading(true)
 
-        const priceId = options?.coverPriceId ?? PRICE_ID_MAP[type]
+        const { price_id, promotion_code, discount_value } =
+          planPricingInfo[type] || {}
+
+        const priceId = options?.coverPriceId ?? price_id
         const paymentMethods = options?.paymentMethods
 
-        let price = calcPlanPrice(type)
+        let price = planPricingInfo[type].price
         const isValidCoupon = Boolean(
-          PROMOTION_CODE_MAP[type] && PROMOTION_CODE_MAP[type] === coupon,
+          promotion_code && promotion_code === coupon,
         )
 
         let discountValue = 1
 
         if (isValidCoupon) {
-          discountValue = DISCOUNT_VALUE[type]
+          discountValue = discount_value ?? 1
           price = roundToDecimal(price * discountValue)
         }
 
@@ -103,14 +103,12 @@ const usePaymentSessionFetcher = () => {
         if (result?.data) {
           // 防止和mixpanel防抖冲突
           if (!options?.noSendLog) {
-            setTimeout(() => {
-              mixpanelTrack('purchase_started', {
-                value: price,
-                currency: 'USD',
-                itemName: type,
-                coupon,
-              })
-            }, 1000)
+            mixpanelTrack('purchase_started', {
+              value: price,
+              currency: 'USD',
+              itemName: type,
+              coupon,
+            })
           }
           sendPaymentUrlMessage(result.data.redirect_url, type)
           return result.data
@@ -130,10 +128,61 @@ const usePaymentSessionFetcher = () => {
         setLoading(false)
       }
     },
-    [],
+    [planPricingInfo],
   )
 
-  return { loading, createCheckoutSession }
+  const createPortalSession = useCallback(
+    async (type: RENDER_PLAN_TYPE, coupon = '') => {
+      try {
+        setLoading(true)
+
+        const { promotion_code, discount_value } = planPricingInfo[type] || {}
+
+        let price = planPricingInfo[type].price
+
+        const isValidCoupon = Boolean(
+          promotion_code && promotion_code === coupon,
+        )
+
+        let discountValue = 1
+
+        if (isValidCoupon) {
+          discountValue = discount_value ?? 1
+          price = roundToDecimal(price * discountValue)
+        }
+
+        mixpanelTrack('change_plan_started', {
+          value: price,
+          currency: 'USD',
+          itemName: type,
+          coupon,
+        })
+
+        const result = await post<{ redirect_url: string }>(
+          '/subscription/create_one_time_checkout_session',
+          {},
+        )
+        if (result?.data) {
+          return result.data
+        }
+        return null
+      } catch (error: any) {
+        console.log(`createCheckoutSession error`, error)
+
+        if (error?.response?.data?.detail) {
+          const errorMsg = error?.response?.data?.detail
+          Toast.error(errorMsg)
+        }
+
+        return null
+      } finally {
+        setLoading(false)
+      }
+    },
+    [planPricingInfo],
+  )
+
+  return { loading, createCheckoutSession, createPortalSession }
 }
 
 export default usePaymentSessionFetcher

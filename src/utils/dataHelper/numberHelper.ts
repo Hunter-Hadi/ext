@@ -84,3 +84,15 @@ export function roundToDecimal(number: number, decimalPlaces = 0) {
   const multiplier = 10 ** decimalPlaces
   return Math.round(number * multiplier) / multiplier
 }
+
+/**
+ * 截断到小数位（不做四舍五入）
+ *
+ * @param num 目标数字
+ * @param decimalPlaces 小数位数
+ * @returns number
+ */
+export const truncateToDecimalPlaces = (num: number, decimalPlaces = 1) => {
+  const factor = Math.pow(10, decimalPlaces)
+  return Math.floor(num * factor) / factor
+}

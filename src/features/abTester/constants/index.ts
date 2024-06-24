@@ -333,7 +333,15 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
   },
 }
 
-export const PAYWALL_VARIANT: IPaywallVariant[] = ['2-1', '2-2']
+/**
+ * paywall A/B test值
+ */
+export const PAYWALL_VARIANT: IPaywallVariant[] = ['3-1', '3-2']
+
+/**
+ * 显示paywall modal对应的variant
+ */
+export const PAYWALL_MODAL_VARIANT = '3-2'
 
 /**
  * A/B Test专用的存储

@@ -20,9 +20,8 @@ const addPrefetchQueue = (taskId: string) => {
   MAXAI__PREFETCH_STRIPE_LINKS_QUEUE.push(taskId)
 }
 const removePrefetchQueue = (taskId: string) => {
-  MAXAI__PREFETCH_STRIPE_LINKS_QUEUE = MAXAI__PREFETCH_STRIPE_LINKS_QUEUE.filter(
-    (id) => id !== taskId,
-  )
+  MAXAI__PREFETCH_STRIPE_LINKS_QUEUE =
+    MAXAI__PREFETCH_STRIPE_LINKS_QUEUE.filter((id) => id !== taskId)
 }
 
 const usePrefetchStripeLinks = () => {

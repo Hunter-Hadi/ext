@@ -152,6 +152,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         {clientConversation?.id === message.conversationId &&
           clientConversation?.type === 'Chat' && (
             <SidebarAIMessageAIModel
+              AIProvider={clientConversation?.meta?.AIProvider}
               AIModel={
                 message.originalMessage?.metadata?.AIModel ||
                 clientConversation?.meta.AIModel

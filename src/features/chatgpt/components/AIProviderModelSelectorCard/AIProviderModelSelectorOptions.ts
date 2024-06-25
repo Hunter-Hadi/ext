@@ -208,6 +208,23 @@ export const ArtAIProviderModelSelectorOptions: AIProviderModelSelectorOption[] 
   ]
 
 /**
+ * 获取AIModel的显示名称
+ * @param AIModel
+ */
+export const getAIModelShowLabel = (AIModel: string) => {
+  return (
+    ChatAIProviderModelSelectorOptions.find((model) => model.value === AIModel)
+      ?.label ||
+    SearchAIProviderModelSelectorOptions.find(
+      (model) => model.value === AIModel,
+    )?.label ||
+    ArtAIProviderModelSelectorOptions.find((model) => model.value === AIModel)
+      ?.label ||
+    AIModel
+  )
+}
+
+/**
  * 基于不同的会话类型，获取AIProviderModelSelectorOptions
  * @param conversationType
  */

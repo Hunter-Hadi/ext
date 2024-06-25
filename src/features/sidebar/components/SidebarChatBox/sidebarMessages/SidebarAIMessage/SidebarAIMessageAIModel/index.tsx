@@ -1,13 +1,20 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 
+import { IAIProviderType } from '@/background/provider/chat'
+import { getAIModelShowLabel } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 
 const SidebarAIMessageAIModel: FC<{
+  AIProvider?: IAIProviderType
   AIModel?: string
 }> = (props) => {
-  const { AIModel } = props
+  const { AIModel, AIProvider } = props
+  const memoAIModelShowLabel = useMemo(() => {
+    return getAIModelShowLabel(AIModel || '')
+  }, [AIModel])
+
   if (!AIModel) {
     return null
   }
@@ -22,7 +29,7 @@ const SidebarAIMessageAIModel: FC<{
       alignItems={'center'}
       gap={'8px'}
     >
-      <AIModelIcons size={24} aiModelValue={AIModel} />
+      <AIModelIcons size={24} aiProvider={AIProvider} aiModelValue={AIModel} />
       <Typography
         sx={{
           fontSize: '16px',
@@ -34,7 +41,7 @@ const SidebarAIMessageAIModel: FC<{
           fontWeight: 500,
         }}
       >
-        {AIModel}
+        {memoAIModelShowLabel}
       </Typography>
     </Stack>
   )

@@ -112,6 +112,29 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       },
     }
   }, [])
+  /**
+   * 因为messages的消息来源有3个步骤
+   * 1. 切换conversationId
+   * 2. 基于conversationId过滤messages
+   * 3. react-query基于conversationId请求messages
+   * 所以下方的loading状态有3个步骤, 为了不让HomeView闪烁
+   */
+  const [messagesLoadingStep, setMessagesLoadingStep] = useState(0)
+  useEffect(() => {
+    setMessagesLoadingStep(1)
+  }, [conversationId])
+
+  useEffect(() => {
+    setMessagesLoadingStep((prevState) => {
+      if (prevState === 1) {
+        return 2
+      } else if (prevState === 2) {
+        return 3
+      } else {
+        return prevState
+      }
+    })
+  }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
     // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
@@ -124,16 +147,16 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     //   isFetchNextPage,
     //   messages,
     // )
+    if (messagesLoadingStep !== 3) {
+      return false
+    }
     return (
-      !isLoadingChatMessages &&
-      messages.length <= 0 &&
-      !writingMessage &&
-      conversationType !== 'Summary'
+      messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
     )
   }, [
+    messagesLoadingStep,
     isLoadingChatMessages,
     // isFetchNextPage,
-    messages,
     writingMessage,
     conversationType,
   ])

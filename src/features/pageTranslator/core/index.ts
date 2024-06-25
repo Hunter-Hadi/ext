@@ -176,7 +176,7 @@ class PageTranslator {
               previousElement.nodeName === 'BR' ||
               previousElement.nodeName === 'LI' ||
               ('tagName' in previousElement
-                ? isBlockElement(previousElement)
+                ? isBlockElement(previousElement as HTMLElement)
                 : false)
           }
 
@@ -314,6 +314,15 @@ class PageTranslator {
       ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT} {
         display: inline-block;
         margin: 4px 0;
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
+      }
+      ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT} {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
       }
 
       ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT}.retry,

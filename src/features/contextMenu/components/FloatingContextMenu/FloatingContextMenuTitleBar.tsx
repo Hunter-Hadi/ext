@@ -1,5 +1,6 @@
-import { PushPin, PushPinOutlined } from '@mui/icons-material'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import PushPin from '@mui/icons-material/PushPin'
+import PushPinOutlined from '@mui/icons-material/PushPinOutlined'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'

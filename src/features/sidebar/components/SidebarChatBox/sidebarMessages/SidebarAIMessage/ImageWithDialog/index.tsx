@@ -77,6 +77,12 @@ const ImageWithDialog = ({
     setSelectedImage(image)
   }
 
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>,
+  ) => {
+    e.currentTarget.style.display = 'none'
+  }
+
   return (
     <>
       {images.map((image, index) => (
@@ -85,6 +91,7 @@ const ImageWithDialog = ({
           src={image.src}
           alt={image.alt}
           onClick={() => handleClickOpen(image)}
+          onError={handleImageError}
         />
       ))}
       <Dialog
@@ -129,6 +136,7 @@ const ImageWithDialog = ({
                 }}
                 src={selectedImage.src}
                 alt={selectedImage.alt}
+                onError={handleImageError}
               />
             </Box>
             <Box
@@ -154,6 +162,12 @@ const ImageWithDialog = ({
                     onClick={(e) => {
                       e.stopPropagation()
                       handleThumbnailClick(image)
+                    }}
+                    onError={(e) => {
+                      if (e.currentTarget.parentElement) {
+                        e.currentTarget.parentElement.style.display = 'none'
+                      }
+                      e.currentTarget.style.display = 'none'
                     }}
                   />
                 </MemoizedThumbnailContainer>

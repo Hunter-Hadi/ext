@@ -1,10 +1,9 @@
 import { atom, atomFamily } from 'recoil'
 
+import { IPageSummaryNavType } from '@/features/chat-base/summary/types'
+import { getPageSummaryConversationId } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
-
-import { SummaryParamsPromptType } from '../utils/pageSummaryNavPrompt'
 
 export const ClientWritingMessageStateFamily = atomFamily<
   {
@@ -52,7 +51,7 @@ export const SidebarPageState = atom<{
  * @description - sidebar 让SwitchSummaryActionNav组件的nav 按钮可以 更新 usePageSummary 状态
  */
 export const SidebarPageSummaryNavKeyState = atom<{
-  [key in string]: SummaryParamsPromptType | undefined
+  [key in string]: IPageSummaryNavType | undefined
 }>({
   key: 'SidebarPageSummaryNavKeyState',
   default: {

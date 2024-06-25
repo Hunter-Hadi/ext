@@ -1,4 +1,5 @@
 import { NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID } from '@/constants'
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
@@ -10,7 +11,6 @@ import {
   calculateMaxHistoryQuestionResponseTokens,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 /**
@@ -68,31 +68,56 @@ export class ActionAnalyzeChatFile extends Action {
         })
       if (this.isStopAction) return
       // 如果触发了limit，就截取其中400k上传作为docId
-      if (isLimit) {
-        if (immediateUpdateConversation) {
-          const uploadData = await sliceTextByTokens(
-            text,
-            this.MAX_UPLOAD_TEXT_FILE_TOKENS,
-            {
-              thread: 4,
-              partOfTextLength: 20 * 1000,
+      // if (isLimit) {
+      if (immediateUpdateConversation) {
+        const uploadData = await sliceTextByTokens(
+          text,
+          this.MAX_UPLOAD_TEXT_FILE_TOKENS,
+          {
+            thread: 4,
+            partOfTextLength: 20 * 1000,
+          },
+        )
+        const docId = await stringConvertTxtUpload(uploadData.text, fileName)
+        await conversationEngine?.updateConversation(
+          {
+            meta: {
+              docId,
             },
-          )
-          const docId = await stringConvertTxtUpload(uploadData.text, fileName)
-          await conversationEngine?.updateConversation(
+          },
+          conversationId,
+          true,
+        )
+        if (this.isStopAction) return
+        // 异步通知LarkBot
+        clientSendMaxAINotification(
+          'SUMMARY',
+          `[Summary] tokens have reached maximum limit.`,
+          `${JSON.stringify(
             {
-              meta: {
-                docId,
-              },
+              summary_type: getPageSummaryType(),
+              url: window.location.href,
+              // convert number to k
+              total_tokens: `${Math.floor(uploadData.tokens / 1000)}k`,
             },
-            conversationId,
-            true,
-          )
-          if (this.isStopAction) return
+            null,
+            4,
+          )}`,
+          {
+            uuid: NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID,
+          },
+        )
+          .then()
+          .catch()
+      } else {
+        sliceTextByTokens(text, this.MAX_UPLOAD_TEXT_FILE_TOKENS, {
+          thread: 4,
+          partOfTextLength: 80 * 1000,
+        }).then((uploadData) => {
           // 异步通知LarkBot
           clientSendMaxAINotification(
             'SUMMARY',
-            `[Summary] tokens have reached maximum limit.`,
+            `[Summary] tokens has reached maximum limit.`,
             `${JSON.stringify(
               {
                 summary_type: getPageSummaryType(),
@@ -109,48 +134,23 @@ export class ActionAnalyzeChatFile extends Action {
           )
             .then()
             .catch()
-        } else {
-          sliceTextByTokens(text, this.MAX_UPLOAD_TEXT_FILE_TOKENS, {
-            thread: 4,
-            partOfTextLength: 80 * 1000,
-          }).then((uploadData) => {
-            // 异步通知LarkBot
-            clientSendMaxAINotification(
-              'SUMMARY',
-              `[Summary] tokens has reached maximum limit.`,
-              `${JSON.stringify(
+          if (this.isStopAction) return
+          stringConvertTxtUpload(uploadData.text, fileName).then(
+            async (docId) => {
+              await conversationEngine?.updateConversation(
                 {
-                  summary_type: getPageSummaryType(),
-                  url: window.location.href,
-                  // convert number to k
-                  total_tokens: `${Math.floor(uploadData.tokens / 1000)}k`,
-                },
-                null,
-                4,
-              )}`,
-              {
-                uuid: NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID,
-              },
-            )
-              .then()
-              .catch()
-            if (this.isStopAction) return
-            stringConvertTxtUpload(uploadData.text, fileName).then(
-              async (docId) => {
-                await conversationEngine?.updateConversation(
-                  {
-                    meta: {
-                      docId,
-                    },
+                  meta: {
+                    docId,
                   },
-                  conversationId,
-                  true,
-                )
-              },
-            )
-          })
-        }
+                },
+                conversationId,
+                true,
+              )
+            },
+          )
+        })
       }
+      // }
       if (this.isStopAction) return
       await conversationEngine?.updateConversation(
         {

@@ -22,6 +22,10 @@ export type IMaxAIChatGPTBackendAPIType =
   | 'get_claude_response'
   | 'get_image_generate_response'
   | 'use_prompt_action'
+  | 'summary/v2/webpage'
+  | 'summary/v2/pdf'
+  | 'summary/v2/videosite'
+  | 'summary/v2/email'
 
 export type IMaxAIChatMessageContentType = 'text' | 'image_url'
 
@@ -65,6 +69,10 @@ export interface IMaxAIResponseStreamMessage {
    * ai response内容
    */
   text?: string
+  /**
+   * doc id针对短文summary问答的时候会返回这个
+   */
+  doc_id?: string
   /**
    * 当前stream的状态，以key区分当前正在输出的内容
    */

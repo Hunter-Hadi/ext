@@ -5,10 +5,10 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import SidebarTabIcons from '@/features/sidebar/components/SidebarTabs/SidebarTabIcons'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { I18nextKeysType } from '@/i18next'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -116,14 +116,14 @@ const SidebarTabs: FC = () => {
         return (
           <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5} key={item.value}>
             <TextOnlyTooltip
-              placement="left"
+              placement='left'
               title={t(item.tooltip?.() as any)}
             >
               <Stack
                 data-testid={`maxai--sidebar--${item.value.toLowerCase()}_tab`}
                 spacing={0.5}
-                justifyContent="center"
-                alignItems="center"
+                justifyContent='center'
+                alignItems='center'
                 sx={{
                   width: '100%',
                   // [isInImmersiveChatPage

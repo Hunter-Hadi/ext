@@ -12,6 +12,7 @@ import {
   getFeatureNameByConversationAndContextMenu,
 } from '@/features/auth/utils/log'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
+import { PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP } from '@/features/chat-base/summary/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
@@ -31,7 +32,6 @@ import {
   getTextTokens,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
-import { SummaryContextMenuOverwriteMap } from '@/features/sidebar/utils/pageSummaryHelper'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -94,7 +94,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       // TODO 需要重构,临时记录call-api
       if (clientMessageChannelEngine) {
         const recordContextMenuData =
-          SummaryContextMenuOverwriteMap['YOUTUBE_VIDEO_SUMMARY']?.[
+          PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP['YOUTUBE_VIDEO_SUMMARY']?.[
             'timestamped'
           ]
         if (clientConversationEngine?.currentConversationId) {

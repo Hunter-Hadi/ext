@@ -1,3 +1,4 @@
+import { getIframeOrSpecialHostPageContent } from '@/features/chat-base/summary/utils/pageContentHelper'
 import {
   IShortcutEngineExternalEngine,
   pushOutputToChat,
@@ -9,7 +10,6 @@ import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/w
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 
 export class ActionGetReadabilityContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'

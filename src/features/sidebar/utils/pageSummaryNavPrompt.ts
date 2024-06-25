@@ -1,3 +1,6 @@
+/**
+ * @deprecated summary相关功能已移动到chat-base/summary下，防止冲突合并release后上线前删除
+ */
 export const getSummaryPagePrompt = (key: SummaryParamsPromptType = 'all') => {
   let defaultPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
 

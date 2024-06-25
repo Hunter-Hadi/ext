@@ -2,8 +2,6 @@
  * 初始化页面摘要
  * @since - 2023-08-15
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
- *
- * @deprecated summary相关功能已移动到chat-base/summary下，防止冲突合并release后上线前删除
  */
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
@@ -15,6 +13,12 @@ import {
 } from '@/background/utils'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import {
+  getPageSummaryConversationId,
+  getPageSummaryType,
+  getSummaryNavItemByType,
+} from '@/features/chat-base/summary/utils/pageSummaryHelper'
+import { getContextMenuByNavMetadataKey } from '@/features/chat-base/summary/utils/summaryActionHelper'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useContextMenuList } from '@/features/contextMenu'
@@ -28,12 +32,6 @@ import { IChatMessage } from '@/features/indexed_db/conversations/models/Message
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
-import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
-import {
-  allSummaryNavList,
-  getContextMenuByNavMetadataKey,
-  getPageSummaryType,
-} from '@/features/sidebar/utils/pageSummaryHelper'
 
 const usePageSummary = () => {
   const { updateSidebarSettings, updateSidebarSummaryConversationId } =
@@ -152,11 +150,10 @@ const usePageSummary = () => {
         ) {
           const summaryNavKey =
             aiMessage.originalMessage.metadata.navMetadata.key
-          const systemSummaryNavItem = allSummaryNavList[
-            currentPageSummaryType
-          ].find((item) => {
-            return item.key === summaryNavKey
-          })
+          const systemSummaryNavItem = getSummaryNavItemByType(
+            currentPageSummaryType,
+            summaryNavKey,
+          )
           if (!systemSummaryNavItem) {
             const summaryActionContextMenuItem = originContextMenuList.find(
               (menuItem) => {

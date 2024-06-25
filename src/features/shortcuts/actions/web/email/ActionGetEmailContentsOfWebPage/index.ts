@@ -1,3 +1,4 @@
+import { getIframeOrSpecialHostPageContent } from '@/features/chat-base/summary/utils/pageContentHelper'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
@@ -13,7 +14,6 @@ import {
   calculateMaxHistoryQuestionResponseTokens,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
-import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 export class ActionGetEmailContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   isStopAction = false

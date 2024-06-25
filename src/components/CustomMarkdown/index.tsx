@@ -18,12 +18,12 @@ import Browser from 'webextension-polyfill'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import CitationTag from '@/features/citation/components/CitationTag'
 import {
   IAIResponseOriginalMessage,
   IAIResponseSourceCitation,
 } from '@/features/indexed_db/conversations/models/Message'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
 import CopyTooltipIconButton from '../CopyTooltipIconButton'

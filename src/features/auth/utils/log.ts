@@ -10,6 +10,7 @@ import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensi
 import { PRESET_PROMPT_IDS } from '@/constants'
 import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
@@ -19,7 +20,6 @@ import { IConversation } from '@/features/indexed_db/conversations/models/Conver
 import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 

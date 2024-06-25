@@ -972,7 +972,17 @@
     "contact_us_modal__title": "آیا علاقه‌مند به ارتقای MaxAI {{PLAN}} هستید؟",
     "contact_us_modal__desc": "لطفا با ما تماس بگیرید در",
     "pricing__plan_features__save_with_yearly__title": "با طرح سالانه {{PRICE}} را صرفه‌جویی کنید",
-    "sidebar__chat__suggestions__compare_to__title": "از {{AI_MODEL}} استفاده کنید"
+    "sidebar__chat__suggestions__compare_to__title": "از {{AI_MODEL}} استفاده کنید",
+    "provider__gemini__model__gemini_1_5_flash__description": "جمینی 1.5 فلش مدل سبک وزن گوگل است که برای سرعت و کارآیی بهینه شده است و قابلیت استدلال چندحالته را دارد. پنجره متناسب با سرعت بهینه شده است.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "ارتقا برای جمینی-1.5-فلش نامحدود با دید",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "محدودیت روزانه درخواست رایگان تجاوز شده است. هم اکنون برای درخواست‌های نامحدود ارتقا دهید یا فردا صبر کنید تا محدودیت روزانه درخواست‌های رایگان بازنشانی شود.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "محدودیت ماهانه درخواست متن سریع تجاوز شده است. هم اکنون برای درخواست‌های نامحدود ارتقا دهید یا ماه آینده صبر کنید تا محدودیت ماهانه بازنشانی شود.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "مدل سبک وزن گوگل است که برای سرعت و کارآیی بهینه شده است و قابلیت استدلال چندحالته را دارد.",
+    "sidebar__ai_provider__model_selector__free_group__title": "رایگان",
+    "sidebar__ai_provider__model_selector__fast_group__title": "سریع",
+    "sidebar__ai_provider__model_selector__smart_group__title": "هوشمند",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "وراثتی",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "طرف سوم"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -126,13 +126,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   useEffect(() => {
     setMessagesLoadingStep((prevState) => {
-      if (prevState === 1) {
-        return 2
-      } else if (prevState === 2) {
-        return 3
-      } else {
-        return prevState
-      }
+      return prevState + 1
     })
   }, [messages])
 
@@ -147,7 +141,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     //   isFetchNextPage,
     //   messages,
     // )
-    if (messagesLoadingStep !== 3) {
+    if (messagesLoadingStep <= 3) {
       return false
     }
     return (

@@ -969,7 +969,17 @@
     "contact_us_modal__title": "Հետևանքով եք MaxAI {{PLAN}}-ին բարելավմանը?",
     "contact_us_modal__desc": "Խնդրում ենք կապ հաստատել մեզ հետ",
     "pricing__plan_features__save_with_yearly__title": "Գնացուցակի հետ {{PRICE}} խաղարկով պահպանեք",
-    "sidebar__chat__suggestions__compare_to__title": "Փորձեք {{AI_MODEL}}-ը օգտագործել"
+    "sidebar__chat__suggestions__compare_to__title": "Փորձեք {{AI_MODEL}}-ը օգտագործել",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash-ը Google-ի լայնությամբ մոդելն է, որը կազմակերպված է արագությամբ և արտահայտությամբ մշակման համար։ Կոնտեքստային պատուհանը կանգնեցված է արագությամբ արտահայտությամբ։",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Թարմացնել անսահմանափակ Gemini-1.5-Flash-ը տեսահոլովակով",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Անվճար հարցման սահմանաչափը արդեն գերազանցել է։ Թարմացնեք հիմա անսահմանափակ հարցումների համար, կամ վերադարձնեք վերջին ամիսը, երբ ամսվա հարցումները ստացվեն նորից։",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Ամսական արագ տեքստային հարցման սահմանաչափը արդեն գերազանցել է։ Թարմացնեք հիմա անսահմանափակ հարցումների համար, կամ վերադարձնեք հաջորդ ամիսը, երբ ամսվա հարցումները ստացվեն նորից։",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Google-ի լայնությամբ մոդելն է, որը կազմակերպված է արագությամբ և արտահայտությամբ մշակման համար։",
+    "sidebar__ai_provider__model_selector__free_group__title": "Անվճար",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Արագ",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Հիմա",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Հետագա",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Երրորդ կողմի"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

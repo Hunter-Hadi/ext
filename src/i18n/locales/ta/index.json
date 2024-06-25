@@ -972,7 +972,17 @@
     "contact_us_modal__title": "மேலும் மேச்சை {{PLAN}} க்கு மேம்படுத்த ஆர்வம் உள்ளதா?",
     "contact_us_modal__desc": "தயவுசெய்து எங்களுக்கு தொடர்பு கொள்ளவும்",
     "pricing__plan_features__save_with_yearly__title": "வாராந்திர திட்டத்துடன் {{PRICE}} சேமிக்கவும்",
-    "sidebar__chat__suggestions__compare_to__title": "முயற்சி செய்து {{AI_MODEL}} பயன்படுத்துங்கள்"
+    "sidebar__chat__suggestions__compare_to__title": "முயற்சி செய்து {{AI_MODEL}} பயன்படுத்துங்கள்",
+    "provider__gemini__model__gemini_1_5_flash__description": "ஜெமினி 1.5 ஃபிளாஷ் கூகுளின் குறுங்காவல் மாதிரி, அதிருமையுடன் செயல்படுத்தப்பட்டுள்ளது. பல்வடிவ நிர்ணயம் திருத்தப்பட்டு வேகத்திற்கு ஏற்றப்பட்டுள்ளது.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "கண்ணின் மூலம் வழங்கப்படும் ஜெமினி 1.5 ஃபிளாஷை எப்போதும் பயன்படுத்துக",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "இன்று இலவச வினா வரம்பு விடை மீறப்பட்டது. எப்போதும் குவியும் வினாக்களுக்கு அளிக்கப்படும் அளவுக்கு மேலான வினாக்களுக்கு மேம்படுத்தவும், அல்லது நாளை மீண்டும் சோதிக்கவும்.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "மாதாந்திர வினா வரம்பு மீறப்பட்டது. எப்போதும் குவியும் வினாக்களுக்கு அளிக்கப்படும் அளவுக்கு மேலான வினாக்களுக்கு மேம்படுத்தவும், அல்லது அடுத்த மாதத்தில் வினாக்களுக்கு மீண்டும் சோதிக்கவும்.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "ஜெமினி 1.5 ஃபிளாஷ் கூகுளின் குறுங்காவல் மாதிரி, அதிருமையுடன் செயல்படுத்தப்பட்டுள்ளது.",
+    "sidebar__ai_provider__model_selector__free_group__title": "இலவச",
+    "sidebar__ai_provider__model_selector__fast_group__title": "வேகமான",
+    "sidebar__ai_provider__model_selector__smart_group__title": "ஸ்மார்ட்",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "பழைய",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3-ஆம் நபர்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

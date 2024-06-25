@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Kiinnostunut päivittämään MaxAI {{PLAN}}:iin?",
     "contact_us_modal__desc": "Ota meihin yhteyttä osoitteessa",
     "pricing__plan_features__save_with_yearly__title": "Säästä {{PRICE}} vuosittaisella suunnitelmalla",
-    "sidebar__chat__suggestions__compare_to__title": "Kokeile {{AI_MODEL}}:n käyttöä"
+    "sidebar__chat__suggestions__compare_to__title": "Kokeile {{AI_MODEL}}:n käyttöä",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash on Googlen kevyt malli, joka on optimoitu nopeutta ja tehokkuutta varten monimodaalisen päättelyn kyvyillä. Kontekstiruutua on lyhennetty nopeuden optimoimiseksi.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Päivitä rajattomalle Gemini-1.5-Flashille näkökyvyn kanssa",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Ilmainen päivittäinen kyselyraja ylittyi. Päivitä nyt rajattomiin kyselyihin tai tarkista huomenna, kun päivittäiset ilmaiset kyselyt palautuvat.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Kuukausittainen nopean tekstin kyselyraja ylittyi. Päivitä nyt rajattomiin kyselyihin tai tarkista ensi kuussa, kun kuukausittaiset kyselyt palautuvat.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Googlen kevyt malli, joka on optimoitu nopeutta ja tehokkuutta varten monimodaalisen päättelyn kyvyillä.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Ilmainen",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Nopea",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Älykäs",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Perintö",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Kolmannen osapuolen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

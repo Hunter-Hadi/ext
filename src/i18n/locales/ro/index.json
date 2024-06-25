@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Interesat să faci upgrade la MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Te rugăm să ne contactezi la",
     "pricing__plan_features__save_with_yearly__title": "Economisește {{PRICE}} cu planul anual",
-    "sidebar__chat__suggestions__compare_to__title": "Încearcă să folosești {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "Încearcă să folosești {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash este modelul ușor al Google, optimizat pentru viteză și eficiență cu capacități de raționament multimodal. Fereastra de context a fost scurtată pentru a fi optimizată pentru viteză.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Upgrade pentru Gemini-1.5-Flash nelimitat cu vedere",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Limita zilnică gratuită de interogări a fost depășită. Upgrade acum pentru interogări nelimitate sau verificați mâine când interogările gratuite zilnice sunt resetate.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Limita lunară de interogări rapide de text a fost depășită. Upgrade acum pentru interogări nelimitate sau verificați luna viitoare când interogările lunare sunt resetate.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Modelul ușor al Google, optimizat pentru viteză și eficiență cu capacități de raționament multimodal.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Gratuit",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Rapid",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Inteligent",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Vechi",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Terță parte"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

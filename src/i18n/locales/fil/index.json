@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Gusto mo bang mag-upgrade sa MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Mangyaring makipag-ugnayan sa amin sa",
     "pricing__plan_features__save_with_yearly__title": "I-save ang {{PRICE}} sa taunang plano",
-    "sidebar__chat__suggestions__compare_to__title": "Subukan gamitin ang {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "Subukan gamitin ang {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Ang Gemini 1.5 Flash ay ang magaan na modelo ng Google, na optimized para sa bilis at kahusayan na may kakayahang mag-isip nang maramihang paraan. Ang window ng konteksto ay pinaikli upang ma-optimize ang bilis.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Mag-upgrade para sa walang limitasyong Gemini-1.5-Flash na may vision",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Lumampas na sa libreng limitasyon ng pang-araw-araw na mga query. Mag-upgrade ngayon para sa walang limitasyong mga query, o bumalik bukas kapag na-reset na ang mga libreng query sa araw-araw.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Lumampas na sa buwanang limitasyon ng mabilis na teksto na mga query. Mag-upgrade ngayon para sa walang limitasyong mga query, o bumalik sa susunod na buwan kapag na-reset na ang mga buwanang query.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Ang magaan na modelo ng Google, na optimized para sa bilis at kahusayan na may kakayahang mag-isip nang maramihang paraan.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Libre",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Mabilis",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Matalino",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Legacy",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3rd-party"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

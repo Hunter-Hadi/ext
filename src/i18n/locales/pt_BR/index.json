@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Interessado em fazer upgrade para MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Por favor, entre em contato conosco em",
     "pricing__plan_features__save_with_yearly__title": "Economize {{PRICE}} com plano anual",
-    "sidebar__chat__suggestions__compare_to__title": "Experimente usar {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "Experimente usar {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "O Gemini 1.5 Flash é o modelo leve do Google, otimizado para velocidade e eficiência com capacidades de raciocínio multimodal. A janela de contexto foi reduzida para otimizar a velocidade.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Atualize para Gemini-1.5-Flash ilimitado com visão",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Limite diário gratuito excedido. Atualize agora para consultas ilimitadas ou volte amanhã quando as consultas gratuitas diárias forem redefinidas.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Limite mensal de consultas de texto rápido excedido. Atualize agora para consultas ilimitadas ou volte no próximo mês quando as consultas mensais forem redefinidas.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "O modelo leve do Google, otimizado para velocidade e eficiência com capacidades de raciocínio multimodal.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Grátis",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Rápido",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Inteligente",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Legado",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3ª parte"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

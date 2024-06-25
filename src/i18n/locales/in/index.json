@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Tertarik untuk meningkatkan ke MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Silakan hubungi kami di",
     "pricing__plan_features__save_with_yearly__title": "Simpan {{PRICE}} dengan paket tahunan",
-    "sidebar__chat__suggestions__compare_to__title": "Coba gunakan {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "Coba gunakan {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash adalah model ringan dari Google, dioptimalkan untuk kecepatan dan efisiensi dengan kemampuan penalaran multimodal. Jendela konteks telah dipersingkat untuk optimalisasi kecepatan.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Tingkatkan untuk Gemini-1.5-Flash tanpa batas dengan visi",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Batas kueri harian gratis terlampaui. Tingkatkan sekarang untuk kueri tanpa batas, atau cek kembali besok ketika kueri gratis harian direset.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Batas kueri teks cepat bulanan terlampaui. Tingkatkan sekarang untuk kueri tanpa batas, atau cek kembali bulan depan ketika kueri bulanan direset.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Model ringan dari Google, dioptimalkan untuk kecepatan dan efisiensi dengan kemampuan penalaran multimodal.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Gratis",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Cepat",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Cerdas",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Warisan",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Pihak ketiga"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

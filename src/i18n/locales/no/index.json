@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Er du interessert i å oppgradere til MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Vennligst kontakt oss på",
     "pricing__plan_features__save_with_yearly__title": "Spar {{PRICE}} med årlig plan",
-    "sidebar__chat__suggestions__compare_to__title": "Prøv å bruke {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "Prøv å bruke {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash er Googles lette modell, optimalisert for hastighet og effektivitet med multimodal resonneringsevne. Kontekstvinduet er forkortet for å optimalisere hastigheten.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Oppgrader for ubegrenset Gemini-1.5-Flash med visjon",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Gratis daglig spørringsgrense overskredet. Oppgrader nå for ubegrensede spørringer, eller sjekk tilbake i morgen når de daglige gratis spørringene blir nullstilt.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Månedlig grense for rask tekstspørring overskredet. Oppgrader nå for ubegrensede spørringer, eller sjekk tilbake neste måned når de månedlige spørringene blir nullstilt.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Googles lette modell, optimalisert for hastighet og effektivitet med multimodal resonneringsevne.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Gratis",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Rask",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Smart",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Legacy",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Tredjepart"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

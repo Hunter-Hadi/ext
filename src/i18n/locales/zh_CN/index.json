@@ -972,7 +972,17 @@
     "contact_us_modal__title": "有兴趣升级到MaxAI {{PLAN}}吗？",
     "contact_us_modal__desc": "请联系我们",
     "pricing__plan_features__save_with_yearly__title": "年度计划可节省{{PRICE}}",
-    "sidebar__chat__suggestions__compare_to__title": "尝试使用{{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "尝试使用{{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash是Google的轻量级模型，经过优化以提高速度和效率，并具备多模态推理能力。上下文窗口已缩短以优化速度。",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "升级以获取无限的Gemini-1.5-Flash视觉功能",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "免费每日查询限额已超出。立即升级以获取无限查询，或在明天重置每日免费查询限额时再查看。",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "月度快速文本查询限额已超出。立即升级以获取无限查询，或在下个月重置月度查询限额时再查看。",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Google的轻量级模型，经过优化以提高速度和效率，并具备多模态推理能力。",
+    "sidebar__ai_provider__model_selector__free_group__title": "免费",
+    "sidebar__ai_provider__model_selector__fast_group__title": "快速",
+    "sidebar__ai_provider__model_selector__smart_group__title": "智能",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "传统",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "第三方"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

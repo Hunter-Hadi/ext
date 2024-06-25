@@ -972,7 +972,17 @@
     "contact_us_modal__title": "MaxAI {{PLAN}}へのアップグレードに興味がありますか？",
     "contact_us_modal__desc": "お問い合わせはこちらまで",
     "pricing__plan_features__save_with_yearly__title": "年間プランで{{PRICE}}を節約",
-    "sidebar__chat__suggestions__compare_to__title": "{{AI_MODEL}}を使用してみてください"
+    "sidebar__chat__suggestions__compare_to__title": "{{AI_MODEL}}を使用してみてください",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flashは、Googleの軽量モデルであり、高速性と効率性を最適化し、多モーダル推論能力を備えています。コンテキストウィンドウは高速化のために短縮されています。",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "ビジョン付きの無制限Gemini-1.5-Flashへのアップグレード",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "無料の毎日のクエリ制限を超えました。無制限のクエリにアップグレードするか、明日になって無料のクエリがリセットされるまでお待ちください。",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "月間の高速テキストクエリ制限を超えました。無制限のクエリにアップグレードするか、来月のクエリがリセットされるまでお待ちください。",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Googleの軽量モデルであり、高速性と効率性を最適化し、多モーダル推論能力を備えています。",
+    "sidebar__ai_provider__model_selector__free_group__title": "無料",
+    "sidebar__ai_provider__model_selector__fast_group__title": "高速",
+    "sidebar__ai_provider__model_selector__smart_group__title": "スマート",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "レガシー",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "サードパーティ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

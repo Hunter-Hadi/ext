@@ -972,7 +972,17 @@
     "contact_us_modal__title": "สนใจอัปเกรดเป็น MaxAI {{PLAN}} หรือไม่?",
     "contact_us_modal__desc": "โปรดติดต่อเราที่",
     "pricing__plan_features__save_with_yearly__title": "ประหยัด {{PRICE}} กับแผนรายปี",
-    "sidebar__chat__suggestions__compare_to__title": "ลองใช้ {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "ลองใช้ {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash เป็นโมเดลขนาดเล็กของ Google ที่ถูกปรับแต่งให้มีความเร็วและประสิทธิภาพสูงพร้อมกับความสามารถในการคิดอย่างมากมาย หน้าต่างของบริบทถูกย่อลงเพื่อเพิ่มความเร็ว",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "อัพเกรดเพื่อใช้ Gemini-1.5-Flash ไม่จำกัดพร้อมฟีเจอร์การมองเห็น",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "เกินขีดจำกัดการคิวรี่ฟรีรายวัน อัพเกรดเดี๋ยวนี้เพื่อใช้คิวรี่ไม่จำกัด หรือกลับมาใหม่พรุ่งนี้เมื่อคิวรี่ฟรีรายวันรีเซ็ต",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "เกินขีดจำกัดการคิวรี่ข้อความรายเดือน อัพเกรดเดี๋ยวนี้เพื่อใช้คิวรี่ไม่จำกัด หรือกลับมาใหม่เดือนหน้าเมื่อคิวรี่รายเดือนรีเซ็ต",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "โมเดลขนาดเล็กของ Google ที่ถูกปรับแต่งให้มีความเร็วและประสิทธิภาพสูงพร้อมกับความสามารถในการคิดอย่างมากมาย",
+    "sidebar__ai_provider__model_selector__free_group__title": "ฟรี",
+    "sidebar__ai_provider__model_selector__fast_group__title": "เร็ว",
+    "sidebar__ai_provider__model_selector__smart_group__title": "สมาร์ท",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "เก่า",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "บุคคลที่สาม"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

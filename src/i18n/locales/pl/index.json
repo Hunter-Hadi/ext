@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Zainteresowany/a aktualizacją do MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Prosimy o kontakt pod adresem",
     "pricing__plan_features__save_with_yearly__title": "Oszczędź {{PRICE}} z rocznym planem",
-    "sidebar__chat__suggestions__compare_to__title": "Spróbuj użyć {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "Spróbuj użyć {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash to lekki model Google'a, zoptymalizowany pod kątem szybkości i wydajności z możliwościami wielomodalnego rozumowania. Okno kontekstowe zostało skrócone w celu optymalizacji szybkości.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Uaktualnij, aby uzyskać nieograniczone zapytania Gemini-1.5-Flash z widzeniem",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Darmowy limit dziennych zapytań został przekroczony. Uaktualnij teraz, aby uzyskać nieograniczone zapytania lub sprawdź jutro, kiedy dzienne darmowe zapytania zostaną zresetowane.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Miesięczny limit zapytań tekstowych został przekroczony. Uaktualnij teraz, aby uzyskać nieograniczone zapytania lub sprawdź w przyszłym miesiącu, kiedy zapytania miesięczne zostaną zresetowane.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Lekki model Google'a, zoptymalizowany pod kątem szybkości i wydajności z możliwościami wielomodalnego rozumowania.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Darmowe",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Szybkie",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Inteligentne",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Starsze",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Zewnętrzne"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

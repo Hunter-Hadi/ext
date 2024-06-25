@@ -972,7 +972,17 @@
     "contact_us_modal__title": "MaxAI {{PLAN}} में अपग्रेड करने में रुचि है?",
     "contact_us_modal__desc": "कृपया हमसे संपर्क करें",
     "pricing__plan_features__save_with_yearly__title": "वार्षिक योजना के साथ {{PRICE}} बचाएं",
-    "sidebar__chat__suggestions__compare_to__title": "इस्तेमाल करने की कोशिश करें {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "इस्तेमाल करने की कोशिश करें {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "जेमिनी 1.5 फ्लैश गूगल का हल्का मॉडल है, जो गति और प्रभावशीलता के लिए अनुकूलित है और बहुमोदल तर्क क्षमताओं के साथ अनुकूलित है। स्पीड के लिए संकेत-खिड़की को कम कर दिया गया है।",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "विजन के साथ असीमित जेमिनी-1.5-फ्लैश के लिए अपग्रेड करें",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "मुफ्त दैनिक क्वेरी सीमा पार हो गई है। असीमित क्वेरी के लिए अभी अपग्रेड करें, या रोजाना मुफ्त क्वेरी रीसेट होने पर वापस आएं।",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "मासिक फास्ट टेक्स्ट क्वेरी सीमा पार हो गई है। असीमित क्वेरी के लिए अभी अपग्रेड करें, या मासिक क्वेरी रीसेट होने पर वापस आएं।",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "गूगल का हल्का मॉडल है, जो गति और प्रभावशीलता के लिए अनुकूलित है और बहुमोदल तर्क क्षमताओं के साथ अनुकूलित है।",
+    "sidebar__ai_provider__model_selector__free_group__title": "मुफ्त",
+    "sidebar__ai_provider__model_selector__fast_group__title": "तेज",
+    "sidebar__ai_provider__model_selector__smart_group__title": "स्मार्ट",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "पुराना",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "तृतीय-पक्ष"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

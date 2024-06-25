@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Geïnteresseerd in upgraden naar MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Neem contact met ons op via",
     "pricing__plan_features__save_with_yearly__title": "Bespaar {{PRICE}} met jaarplan",
-    "sidebar__chat__suggestions__compare_to__title": "Probeer {{AI_MODEL}} te gebruiken"
+    "sidebar__chat__suggestions__compare_to__title": "Probeer {{AI_MODEL}} te gebruiken",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash is Google's lichtgewicht model, geoptimaliseerd voor snelheid en efficiëntie met multimodale redeneermogelijkheden. Het contextvenster is verkort om de snelheid te optimaliseren.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Upgrade voor onbeperkte Gemini-1.5-Flash met visie",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Gratis dagelijkse querylimiet overschreden. Upgrade nu voor onbeperkte queries, of kom morgen terug wanneer de dagelijkse gratis queries worden gereset.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Maandelijkse limiet voor snelle tekstquery's overschreden. Upgrade nu voor onbeperkte queries, of kom volgende maand terug wanneer de maandelijkse queries worden gereset.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Google's lichtgewicht model, geoptimaliseerd voor snelheid en efficiëntie met multimodale redeneermogelijkheden.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Gratis",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Snel",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Slim",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Legacy",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3rd-party"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

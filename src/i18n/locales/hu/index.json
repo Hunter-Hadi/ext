@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Érdekel a MaxAI {{PLAN}} frissítése?",
     "contact_us_modal__desc": "Kérjük, lépjen kapcsolatba velünk itt:",
     "pricing__plan_features__save_with_yearly__title": "Mentse {{PRICE}}-t éves tervvel",
-    "sidebar__chat__suggestions__compare_to__title": "Próbáld ki a(z) {{AI_MODEL}} használatát"
+    "sidebar__chat__suggestions__compare_to__title": "Próbáld ki a(z) {{AI_MODEL}} használatát",
+    "provider__gemini__model__gemini_1_5_flash__description": "A Gemini 1.5 Flash a Google könnyű modellje, sebesség és hatékonyság optimalizálásával multimodális gondolkodási képességekkel. A kontextusablakot rövidítették a sebesség optimalizálása érdekében.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Frissítés korlátlan Gemini-1.5-Flash verzióhoz látással",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Ingyenes napi lekérdezési korlát túllépve. Frissítse most a korlátlan lekérdezésekhez, vagy térjen vissza holnap, amikor az ingyenes napi lekérdezések visszaállnak.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Havi gyors szöveg lekérdezési korlát túllépve. Frissítse most a korlátlan lekérdezésekhez, vagy térjen vissza jövő hónapban, amikor a havi lekérdezések visszaállnak.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "A Google könnyű modellje, sebesség és hatékonyság optimalizálásával multimodális gondolkodási képességekkel.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Ingyenes",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Gyors",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Okos",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Örökség",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3. fél"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

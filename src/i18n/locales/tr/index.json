@@ -972,7 +972,17 @@
     "contact_us_modal__title": "MaxAI {{PLAN}}'a yükseltme yapmaya ilgili misiniz?",
     "contact_us_modal__desc": "Lütfen bize şuradan ulaşın",
     "pricing__plan_features__save_with_yearly__title": "Yıllık planla {{PRICE}} tasarruf edin",
-    "sidebar__chat__suggestions__compare_to__title": "Denemek için {{AI_MODEL}} kullanın"
+    "sidebar__chat__suggestions__compare_to__title": "Denemek için {{AI_MODEL}} kullanın",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash, Google'ın hafif modelidir ve çoklu modal akıl yürütme yetenekleriyle hız ve verimlilik için optimize edilmiştir. Hız için bağlam penceresi kısaltılmıştır.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Görüş ile sınırsız Gemini-1.5-Flash için yükseltme",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Ücretsiz günlük sorgu limiti aşıldı. Sınırsız sorgular için şimdi yükseltin veya günlük ücretsiz sorgular sıfırlanana kadar yarın tekrar kontrol edin.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Aylık hızlı metin sorgu limiti aşıldı. Sınırsız sorgular için şimdi yükseltin veya aylık sorgular sıfırlanana kadar gelecek ay tekrar kontrol edin.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Google'ın hafif modelidir ve çoklu modal akıl yürütme yetenekleriyle hız ve verimlilik için optimize edilmiştir.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Ücretsiz",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Hızlı",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Akıllı",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Eski",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3. taraf"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

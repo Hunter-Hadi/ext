@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Zainteresirani za nadogradnju na MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Molimo kontaktirajte nas na",
     "pricing__plan_features__save_with_yearly__title": "Uštedite {{PRICE}} s godišnjim planom",
-    "sidebar__chat__suggestions__compare_to__title": "Isprobajte korištenje {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "Isprobajte korištenje {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash je Googleov lagani model, optimiziran za brzinu i učinkovitost s mogućnostima multimodalnog zaključivanja. Prozor konteksta je skraćen radi optimizacije brzine.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Nadogradite za neograničeni Gemini-1.5-Flash s vizijom",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Premašeno dnevno ograničenje upita. Nadogradite sada za neograničene upite ili provjerite sutra kada se dnevni besplatni upiti resetiraju.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Premašeno mjesečno ograničenje brzih tekstualnih upita. Nadogradite sada za neograničene upite ili provjerite sljedeći mjesec kada se mjesečni upiti resetiraju.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Googleov lagani model, optimiziran za brzinu i učinkovitost s mogućnostima multimodalnog zaključivanja.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Besplatno",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Brzo",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Pametno",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Stari modeli",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3. strana"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

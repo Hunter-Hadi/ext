@@ -972,7 +972,17 @@
     "contact_us_modal__title": "MaxAI {{PLAN}} میں اپ گریڈ کرنے میں دلچسپی ہے؟",
     "contact_us_modal__desc": "برائے مہربانی ہم سے رابطہ کریں",
     "pricing__plan_features__save_with_yearly__title": "سالانہ منصوبے کے ساتھ {{PRICE}} بچائیں",
-    "sidebar__chat__suggestions__compare_to__title": "اپنے {{AI_MODEL}} کا استعمال کرنے کی کوشش کریں"
+    "sidebar__chat__suggestions__compare_to__title": "اپنے {{AI_MODEL}} کا استعمال کرنے کی کوشش کریں",
+    "provider__gemini__model__gemini_1_5_flash__description": "جیمنی 1.5 فلیش گوگل کا ہلکا ماڈل ہے، جو رفتار اور کارآمدی کی تشدید کے لئے معیاری بنایا گیا ہے اور اس کے پاس بہت سے ذہنی استدلال کے صلاحیت ہیں۔ سرعت کو تیز کرنے کے لئے سیاقت ونڈو کو کم کر دیا گیا ہے۔",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "بے حد جیمنی-1.5-فلیش کے ساتھ اپ گریڈ کریں",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "روزانہ مفت کوئری کی حد سے تجاوز ہوگئی ہے۔ اب بے حد کوئریوں کے لئے اپ گریڈ کریں یا کل صبح کو جب روزانہ مفت کوئریاں دوبارہ شروع ہوں تو پھر چیک کریں۔",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "ماہانہ فاسٹ ٹیکسٹ کوئری کی حد سے تجاوز ہوگئی ہے۔ اب بے حد کوئریوں کے لئے اپ گریڈ کریں یا اگلے مہینے جب ماہانہ کوئریاں ری سیٹ ہوں تو پھر چیک کریں۔",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "گوگل کا ہلکا ماڈل ہے، جو رفتار اور کارآمدی کی تشدید کے لئے معیاری بنایا گیا ہے اور اس کے پاس بہت سے ذہنی استدلال کے صلاحیت ہیں۔",
+    "sidebar__ai_provider__model_selector__free_group__title": "مفت",
+    "sidebar__ai_provider__model_selector__fast_group__title": "تیز",
+    "sidebar__ai_provider__model_selector__smart_group__title": "ہوشیار",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "ورثہ",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "تیسری طرف کا"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

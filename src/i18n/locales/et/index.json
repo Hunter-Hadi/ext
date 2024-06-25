@@ -972,7 +972,17 @@
     "contact_us_modal__title": "Huvitatud MaxAI {{PLAN}} täiendamisest?",
     "contact_us_modal__desc": "Palun võtke meiega ühendust aadressil",
     "pricing__plan_features__save_with_yearly__title": "Säästa {{PRICE}} aastaplaaniga",
-    "sidebar__chat__suggestions__compare_to__title": "Proovi kasutada {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "Proovi kasutada {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash on Google'i kerge mudel, mis on optimeeritud kiiruse ja tõhususe ning multimodaalse mõtlemisvõimekuse jaoks. Kontekstakna pikkust on lühendatud kiiruse optimeerimiseks.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "Uuenda piiramatu Gemini-1.5-Flash koos nägemisega",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "Tasuta päringute limiit on ületatud. Uuenda nüüd piiramatu päringute jaoks või kontrolli homme uuesti, kui tasuta päringute limiit taastatakse.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "Kuu jooksul ületati kiire teksti päringute limiit. Uuenda nüüd piiramatu päringute jaoks või kontrolli järgmisel kuul, kui kuised päringud taastatakse.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Google'i kerge mudel, mis on optimeeritud kiiruse ja tõhususe ning multimodaalse mõtlemisvõimekuse jaoks.",
+    "sidebar__ai_provider__model_selector__free_group__title": "Tasuta",
+    "sidebar__ai_provider__model_selector__fast_group__title": "Kiire",
+    "sidebar__ai_provider__model_selector__smart_group__title": "Nutikas",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "Pärand",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Kolmanda osapoole"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

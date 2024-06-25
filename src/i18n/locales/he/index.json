@@ -972,7 +972,17 @@
     "contact_us_modal__title": "מעוניין לשדרג ל-MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "אנא צור קשר איתנו ב",
     "pricing__plan_features__save_with_yearly__title": "חסוך {{PRICE}} עם תוכנית שנתית",
-    "sidebar__chat__suggestions__compare_to__title": "נסה להשתמש ב-{{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "נסה להשתמש ב-{{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "Gemini 1.5 Flash הוא הדגם הקל של Google, מותאם למהירות ויעילות עם יכולות חשיבה מרובת-מצבים. חלון ההקשר נקטע כדי למקסם את המהירות.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "שדרגו ל-Gemini-1.5-Flash בלתי מוגבל עם ראייה",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "חרף את המגבלה היומית לשאילתות חינמיות. שדרגו עכשיו לשאילתות בלתי מוגבלות, או בדקו שוב מחר כשהשאילתות החינמיות היומיות יאופסו.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "חרף את המגבלה החודשית לשאילתות מהירות טקסט. שדרגו עכשיו לשאילתות בלתי מוגבלות, או בדקו שוב בחודש הבא כשהשאילתות החודשיות יאופסו.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "הדגם הקל של Google, מותאם למהירות ויעילות עם יכולות חשיבה מרובת-מצבים.",
+    "sidebar__ai_provider__model_selector__free_group__title": "חינם",
+    "sidebar__ai_provider__model_selector__fast_group__title": "מהיר",
+    "sidebar__ai_provider__model_selector__smart_group__title": "חכם",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "ירושה",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "צד שלישי"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

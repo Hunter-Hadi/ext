@@ -972,7 +972,17 @@
     "contact_us_modal__title": "ম্যাক্সএইআই {{PLAN}} আপগ্রেড করতে আগ্রহী?",
     "contact_us_modal__desc": "অনুগ্রহ করে আমাদের সাথে যোগাযোগ করুন",
     "pricing__plan_features__save_with_yearly__title": "বার্ষিক পরিকল্পনা দিয়ে {{PRICE}} সংরক্ষণ করুন",
-    "sidebar__chat__suggestions__compare_to__title": "চেষ্টা করুন {{AI_MODEL}} ব্যবহার করতে"
+    "sidebar__chat__suggestions__compare_to__title": "চেষ্টা করুন {{AI_MODEL}} ব্যবহার করতে",
+    "provider__gemini__model__gemini_1_5_flash__description": "জেমিনি 1.5 ফ্ল্যাশ হলো গুগলের হালকা মডেল, যা গতিসম্পন্নতা এবং দক্ষতা সঙ্গে অপটিমাইজড করা হয়েছে এবং বহুমোডাল বিচার ক্ষমতা সহজীকৃত করা হয়েছে। গতিসম্পন্নতার জন্য সংদর্শন উইন্ডোটি সংক্ষিপ্ত করা হয়েছে।",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "ভিশন সহ অসীম জেমিনি-1.5-ফ্ল্যাশের জন্য আপগ্রেড করুন",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "ফ্রি দৈনিক কুয়েরি সীমা অতিক্রম করা হয়েছে। অসীম কুয়েরির জন্য এখনই আপগ্রেড করুন, অথবা দৈনিক ফ্রি কুয়েরি রিসেট হওয়ার পরে আবার চেষ্টা করুন।",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "মাসিক ফাস্ট টেক্সট কুয়েরি সীমা অতিক্রম করা হয়েছে। অসীম কুয়েরির জন্য এখনই আপগ্রেড করুন, অথবা মাসিক কুয়েরি রিসেট হওয়ার পরে আবার চেষ্টা করুন।",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "গুগলের হালকা মডেল, যা গতিসম্পন্নতা এবং দক্ষতা সঙ্গে অপটিমাইজড করা হয়েছে এবং বহুমোডাল বিচার ক্ষমতা সহজীকৃত করা হয়েছে।",
+    "sidebar__ai_provider__model_selector__free_group__title": "ফ্রি",
+    "sidebar__ai_provider__model_selector__fast_group__title": "দ্রুত",
+    "sidebar__ai_provider__model_selector__smart_group__title": "স্মার্ট",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "ঐতিহাসিক",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "তৃতীয়-পক্ষ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

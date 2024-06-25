@@ -972,7 +972,17 @@
     "contact_us_modal__title": "MaxAI {{PLAN}} वर अपग्रेड करण्यासाठी आवडते आहात?",
     "contact_us_modal__desc": "कृपया आमच्याशी संपर्क साधा",
     "pricing__plan_features__save_with_yearly__title": "{{PRICE}} वर्षभराच्या योजनेने सेव करा",
-    "sidebar__chat__suggestions__compare_to__title": "प्रयत्न करा {{AI_MODEL}} वापरा"
+    "sidebar__chat__suggestions__compare_to__title": "प्रयत्न करा {{AI_MODEL}} वापरा",
+    "provider__gemini__model__gemini_1_5_flash__description": "जेमिनी 1.5 फ्लॅश हे Google चे लाइटवेट मॉडेल आहे, ज्ञानार्जन क्षमतेसह गती आणि प्रभावशीलतेसाठी अनुकूलित केलेले आहे. संदर्भ विंडो गतीसाठी संक्षिप्त केलेले आहे.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "विजनसह Gemini-1.5-Flash ची अमर्यादित अपग्रेड",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "वारंवारी विचार प्रतिमाहितीची मर्यादा ओताटली. अमर्यादित प्रश्नांसाठी आता अपग्रेड करा किंवा दररोजच्या विचार प्रतिमाहिती रीसेट होण्यापूर्वी परत बघा.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "मासिक फास्ट टेक्स्ट विचार मर्यादा ओताटली. अमर्यादित प्रश्नांसाठी आता अपग्रेड करा किंवा पुढील महिन्यात मासिक विचार रीसेट होण्यापूर्वी परत बघा.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "Google चे लाइटवेट मॉडेल आहे, ज्ञानार्जन क्षमतेसह गती आणि प्रभावशीलतेसाठी अनुकूलित केलेले आहे.",
+    "sidebar__ai_provider__model_selector__free_group__title": "मोफत",
+    "sidebar__ai_provider__model_selector__fast_group__title": "झटपट",
+    "sidebar__ai_provider__model_selector__smart_group__title": "स्मार्ट",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "विरासत",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "तिसरा पक्ष"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

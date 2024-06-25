@@ -972,7 +972,17 @@
     "contact_us_modal__title": "MaxAI {{PLAN}} ಗೆ ಮೇಲ್ಮೆಗ್ರೇಡ್ ಮಾಡಲು ಆಸಕ್ತಿಯಿದೆಯೇ?",
     "contact_us_modal__desc": "ದಯವಿಟ್ಟು ನಮ್ಮನ್ನು ಈ ವಿಳಾಸದಲ್ಲಿ ಸಂಪರ್ಕಿಸಿ",
     "pricing__plan_features__save_with_yearly__title": "ವಾರ್ಷಿಕ ಯೋಜನೆಯಿಂದ {{PRICE}} ಉಳಿಸಿ",
-    "sidebar__chat__suggestions__compare_to__title": "ಬಳಸುವುದು {{AI_MODEL}}"
+    "sidebar__chat__suggestions__compare_to__title": "ಬಳಸುವುದು {{AI_MODEL}}",
+    "provider__gemini__model__gemini_1_5_flash__description": "ಜೆಮಿನಿ 1.5 ಫ್ಲ್ಯಾಶ್ ಗೂಗಲ್ ಅದ್ಭುತ ಮಾದರಿ, ಬೇಗನೆ ಮತ್ತು ದಕ್ಷತೆಗಾಗಿ ಅನುಕೂಲವಾಗಿದೆ. ಬೇಗನೆ ಪರಿಧಿ ವಿಂಡೋ ಕಡಿಮೆಗೆ ಮಾಡಲಾಗಿದೆ.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title": "ವಿಜನ್ ಸಹಿತ ಅನಂತ ಜೆಮಿನಿ-1.5-ಫ್ಲ್ಯಾಶ್ ಗೆ ಮೆರುಗು",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1": "ಉಚಿತ ದೈನಂದಿನ ಪ್ರಶ್ನೆ ಮಿತಿಯನ್ನು ಮೀರಿದೆ. ಅನಂತ ಪ್ರಶ್ನೆಗಳಿಗಾಗಿ ಈಗ ಮೆರುಗು ಮಾಡಿ, ಅಥವಾ ದೈನಂದಿನ ಉಚಿತ ಪ್ರಶ್ನೆಗಳು ಮರುಹೊತ್ತಿಗೆ ಮುಂದಿನ ದಿನದಲ್ಲಿ ಪುನಃ ಹೊಸದಾಗಿ ಹೊಂದಿಕೆಯಾಗುತ್ತವೆ.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1": "ಮಾಸಿಕ ಫಾಸ್ಟ್ ಟೆಕ್ಸ್ಟ್ ಪ್ರಶ್ನೆ ಮಿತಿಯನ್ನು ಮೀರಿದೆ. ಅನಂತ ಪ್ರಶ್ನೆಗಳಿಗಾಗಿ ಈಗ ಮೆರುಗು ಮಾಡಿ, ಅಥವಾ ಮಾಸಿಕ ಪ್ರಶ್ನೆಗಳು ಮರುಹೊತ್ತಿಗೆ ಮುಂದಿನ ತಿಂಗಳಲ್ಲಿ ಪುನಃ ಹೊಸದಾಗಿ ಹೊಂದಿಕೆಯಾಗುತ್ತವೆ.",
+    "permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2": "ಜೆಮಿನಿ 1.5 ಫ್ಲ್ಯಾಶ್ ಗೂಗಲ್ ಅದ್ಭುತ ಮಾದರಿ, ಬೇಗನೆ ಮತ್ತು ದಕ್ಷತೆಗಾಗಿ ಅನುಕೂಲವಾಗಿದೆ.",
+    "sidebar__ai_provider__model_selector__free_group__title": "ಉಚಿತ",
+    "sidebar__ai_provider__model_selector__fast_group__title": "ಬೇಗನೆ",
+    "sidebar__ai_provider__model_selector__smart_group__title": "ಸ್ಮಾರ್ಟ್",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "ಪೂರ್ವಾಗ್ರಹ",
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3ನೇ ಪಕ್ಷ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

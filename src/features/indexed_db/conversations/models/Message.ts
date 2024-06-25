@@ -194,11 +194,9 @@ export interface IAIResponseOriginalMessage {
     sources?: {
       status: 'loading' | 'complete'
       links?: IAIResponseOriginalMessageSourceLink[]
-      media?: {
-        videos?: IAIResponseOriginalMessageSourceMediaImages[]
-        images?: IAIResponseOriginalMessageSourceMediaImages[]
-      }
-      knowledgePanel?: string
+      videos?: IAIResponseOriginalMessageSourceMediaImages[]
+      images?: IAIResponseOriginalMessageSourceMediaImages[]
+      // knowledgePanel?: string
     }
     copilot?: {
       title?: IAIResponseOriginalMessageMetadataTitle

@@ -68,8 +68,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         sources: message.originalMessage?.metadata?.sources,
         sourcesLoading:
           message.originalMessage?.metadata?.sources?.status === 'loading',
-        imagesSources:
-          message.originalMessage?.metadata?.sources?.media?.images || [],
+        imagesSources: message.originalMessage?.metadata?.sources?.images || [],
         sourcesHasContent: false,
         answer: message.text,
         content: message.originalMessage?.content,
@@ -90,14 +89,6 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
           }) || message.text
       }
       currentRenderData.answer = currentRenderData.answer.replace(/^\s+/, '')
-
-      console.log(
-        `message.originalMessage?.metadata:`,
-        message.originalMessage?.metadata,
-      )
-
-      console.log(`currentRenderData:`, currentRenderData)
-
       return currentRenderData
     } catch (e) {
       return {
@@ -303,13 +294,6 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                           direction={'row'}
                           className='image_sources'
                         >
-                          {/* {filteredImages.map((item, index) => (
-                          <Stack key={item.src}>
-                            <ImageWithDialog
-                              images={filteredImages}
-                            ></ImageWithDialog>
-                          </Stack>
-                        ))} */}
                           <ImageWithDialog
                             images={renderData?.imagesSources}
                           ></ImageWithDialog>

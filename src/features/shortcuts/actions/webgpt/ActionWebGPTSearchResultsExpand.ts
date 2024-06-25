@@ -239,7 +239,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       //   return
       // }
       this.output = {
-        sourceMedia,
+        SOURCE_IMAGE: sourceMedia.images,
         template: template,
       }
       // this.output = template

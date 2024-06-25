@@ -186,7 +186,7 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
               <Typography
                 fontSize={24}
                 fontWeight={700}
-                color='rgba(0, 0, 0, 0.38)'
+                color='rgb(154, 152, 158)'
                 sx={{
                   textDecoration: 'line-through',
                 }}

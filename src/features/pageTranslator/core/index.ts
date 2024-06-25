@@ -312,17 +312,20 @@ class PageTranslator {
         display: none !important;
       }
       ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT} {
-        display: inline-block;
+        display: inline;
         margin: 4px 0;
-        color: inherit;
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        text-decoration-thickness: 2px;
+        background-image: linear-gradient(to right, #94a3b8 30%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 5px 1px;
+        background-repeat: repeat-x;
+        padding-bottom: 3px;
       }
       ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT} {
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        text-decoration-thickness: 2px;
+        background-image: linear-gradient(to right, #94a3b8 30%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 5px 1px;
+        background-repeat: repeat-x;
+        padding-bottom: 3px;
       }
 
       ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT}.retry,

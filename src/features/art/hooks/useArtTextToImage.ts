@@ -40,6 +40,9 @@ const useArtTextToImage = () => {
     if (!isShowChatBox()) {
       showChatBox()
     }
+    if (text.trim() === '') {
+      return
+    }
     if (currentSidebarConversationType !== 'Art') {
       await updateSidebarConversationType('Art')
     }

@@ -70,6 +70,9 @@ const useSearchWithAI = () => {
     if (isFetchingRef.current) {
       return
     }
+    if (query.trim() === '') {
+      return
+    }
     if (!isShowChatBox()) {
       showChatBox()
     }

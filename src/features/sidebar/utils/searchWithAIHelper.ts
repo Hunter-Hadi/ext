@@ -371,9 +371,6 @@ export const generateSearchWithAIActions = async (
               sources: {
                 status: 'complete',
                 links: `{{SEARCH_SOURCES}}` as any,
-                videos: `{{IMAGE_ARY}}`,
-                images: `{{IMAGE_ARY}}`,
-                knowledgePanel: `{{SEARCH_KNOWLEDGE_PANEL}}`,
               },
             },
           },
@@ -429,13 +426,13 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
       type: 'SCRIPTS_GET_DICTIONARY_VALUE',
       parameters: {
         ActionGetDictionaryKey: 'value',
-        ActionGetDictionaryValue: 'sourceMedia',
+        ActionGetDictionaryValue: 'SOURCE_IMAGE',
       },
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'SOURCEMEDIA',
+        VariableName: 'SOURCE_IMAGE',
       },
     },
     {
@@ -467,8 +464,7 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
               sources: {
                 status: 'complete',
                 links: `{{SEARCH_SOURCES}}` as any,
-                media: `{{SOURCEMEDIA}}`,
-                images: `{{IMAGE_ARY}}`,
+                images: `{{SOURCE_IMAGE}}` as any,
               },
             },
           },

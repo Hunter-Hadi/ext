@@ -114,13 +114,7 @@ const ImageWithDialog = ({
           }}
           onClick={() => handleClose()}
         >
-          <Box
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            height='100%'
-            width='100%'
-          >
+          <Box display='flex' alignItems='center' height='100%' width='100%'>
             <Box
               flex={1}
               display='flex'

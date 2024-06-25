@@ -10,13 +10,14 @@ interface Image {
   title: string
 }
 
-const dirtywords = ['icon', 'menu', 'logo', 'load', 'search']
+const dirtyWords = ['icon', 'menu', 'logo', 'load', 'search']
 
 /**
  * 插件客户端获取网页内容
  * @param url
  * @param timeout
  * @param abortTaskId
+ * @param needMedia  updata: copilot获取网页多媒体资源
  */
 const clientGetContentOfURL = async (
   url: string,
@@ -42,7 +43,7 @@ const clientGetContentOfURL = async (
     body: '',
     html: '',
     readabilityText: '',
-    images: [] as any[],
+    images: [] as Image[],
     videos: [] as any[],
   }
 
@@ -91,18 +92,19 @@ const clientGetContentOfURL = async (
       result.body = reader?.content || ''
       result.readabilityText = reader?.textContent || ''
       if (needMedia && reader?.content) {
-        const tempDiv = document.createElement('div')
-        tempDiv.innerHTML = reader?.content
-        const images = tempDiv.querySelectorAll('img')
-        // const videos = tempDiv.querySelectorAll('video')
-        // console.log(`videos111`, videos)
+        // 创建一个临时容器来解析 HTML 内容
+        const parser = new DOMParser()
+        const parsedDoc = parser.parseFromString(reader.content, 'text/html')
 
-        const _resImages = Array.from(images)
+        // 获取所有 img 标签
+        const images = parsedDoc.querySelectorAll('img')
+
+        const filterImages = Array.from(images)
           .filter((item) => {
             // 检查是否有获取图片链接不合规的情况，并且进行属性检查
             const src = item.src.toLowerCase()
-            const forbiddenPatterns = /chrome-extension:|icon|menu|logo/
-            if (forbiddenPatterns.test(src)) {
+            const forbiddenPatterns = /chrome-extension:|icon|menu|logo|svg/
+            if (forbiddenPatterns.test(src) || src === '') {
               return false
             }
 
@@ -126,13 +128,12 @@ const clientGetContentOfURL = async (
               heightAttr &&
               parseInt(widthAttr) > 200 &&
               parseInt(heightAttr) > 200
-
             // alt 存在且不为空
             const altString = String(alt)
             const trimmedAlt = altString.trim()
             const vaildAlt =
               trimmedAlt !== '' &&
-              dirtywords.some((dirtyword) => trimmedAlt.includes(dirtyword))
+              !dirtyWords.some((dirtyword) => trimmedAlt.includes(dirtyword))
 
             // 过滤条件
             return isLarge || vaildAlt
@@ -152,7 +153,7 @@ const clientGetContentOfURL = async (
               title: item.title || '', // 如果没有 title 属性，返回空字符串
             }
           })
-        result.images = _resImages
+        result.images = filterImages
         // result.videos = _resVideos
       }
     }

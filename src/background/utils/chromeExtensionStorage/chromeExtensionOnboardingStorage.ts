@@ -35,6 +35,8 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK'
   // MaxAI 4.1.0版本
   | 'ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK'
+  // MaxAI 4.3.8版本更新弹窗
+  | 'ON_BOARDING_EXTENSION_VERSION_4_3_8_UPDATE_MODAL'
   // on boarding tooltip cache key
   | IOnBoardingTooltipOpenedCacheKey
   //  survey dialog 是否弹窗过的标记
@@ -68,6 +70,11 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
 
     // sidebar 中 survey dialog 是否弹窗过的标记
     ON_BOARDING_EXTENSION_SURVEY_DIALOG_ALERT: false,
+
+    // sidebar 中 update modal 是否弹窗过的标记
+    // 4.3.8需要对所有用户都显示update modal - @huangsong
+    // 如果用户没有看到4.3.8的update modal直接升级到4.3.9，还是需要让改用户看到一次4.3.8的update modal - @huangsong
+    ON_BOARDING_EXTENSION_VERSION_4_3_8_UPDATE_MODAL: false,
   }
   /**
    * InputAssistantButton onBoarding Keys

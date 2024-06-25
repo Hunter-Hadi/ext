@@ -8,6 +8,7 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 export const UPDATE_VARIANT: IUpdateVariant[] = [
   'gpt-4o',
   'claude-3-opus',
+  'claude-3.5-sonnet',
   'gemini-1.5-pro',
   'art',
   'summary',
@@ -92,6 +93,36 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
         ),
       },
     ],
+  },
+  'claude-3.5-sonnet': {
+    image: getChromeExtensionAssetsURL(
+      '/images/activity/promotion-dialog-claude-3.5-sonnet.png',
+    ),
+    title: (t) =>
+      t('client:sidebar__promotion_dialog__claude_3.5__content__title'),
+    descriptions: (t) => [
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__claude_3.5__content_item1__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__claude_3.5__content_item2__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__claude_3.5__content_item3__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__claude_3.5__content_item4__description',
+        ),
+      },
+    ],
+    learnMoreLink: 'https://www.maxai.me/docs/release-notes/claude-3-5-sonnet',
   },
   'gemini-1.5-pro': {
     image: getChromeExtensionAssetsURL(

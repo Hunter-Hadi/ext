@@ -15,7 +15,6 @@ import {
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import ThirdPartyAIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/ThirdPartyAIProviderModelSelectorDetail'
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
-import AIProviderMainPartIcon from '@/features/chatgpt/components/icons/AIProviderMainPartIcon'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import useAIProviderModels, {
   useAIProviderModelsMap,
@@ -239,7 +238,6 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                     {AIModelOption.label}
                   </Typography>
                   <Stack direction={'row'} alignItems={'center'} gap={0.5}>
-                    {AIModelOption.mainPart && <AIProviderMainPartIcon />}
                     {AIModelOption.tag && (
                       <AIProviderModelTagIcon tag={AIModelOption.tag} />
                     )}

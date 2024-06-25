@@ -1,5 +1,5 @@
 import { MAXAI_VISION_MODEL_UPLOAD_CONFIG } from '@/background/src/chat/constant'
-import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 
 export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
   {
@@ -29,7 +29,7 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
     value: 'gemini-1.5-pro',
     maxTokens: 1000 * 1000,
     tags: (currentConversationType) => {
-      const tags = ['Beta']
+      const tags = []
       if (currentConversationType !== 'Search') {
         tags.push('Vision')
       }

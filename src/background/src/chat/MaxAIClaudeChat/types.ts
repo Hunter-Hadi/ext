@@ -101,7 +101,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     value: 'claude-3-opus',
     maxTokens: 200000,
     tags: (currentConversationType) => {
-      const tags = ['Beta']
+      const tags = []
       if (currentConversationType !== 'Search') {
         tags.push('Vision')
       }

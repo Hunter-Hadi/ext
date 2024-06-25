@@ -60,11 +60,11 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       // tag: 'Vision',
     },
     {
-      tag: 'Beta',
       mainPart: true,
       label: 'gemini-1.5-pro',
       value: 'gemini-1.5-pro',
       AIProvider: 'MAXAI_GEMINI',
+      // tag: 'Beta',
     },
     {
       // tag: 'Beta',

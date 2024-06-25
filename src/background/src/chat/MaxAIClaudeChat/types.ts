@@ -2,12 +2,12 @@ import {
   MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   MAXAI_VISION_MODEL_UPLOAD_CONFIG,
 } from '@/background/src/chat/constant'
-import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
   {
-    title: 'claude-instant-100k',
+    title: 'Claude-Instant-100k',
     titleTag: '',
     value: 'claude-instant-v1',
     maxTokens: 100000,
@@ -24,7 +24,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
-    title: 'claude-2-100k',
+    title: 'Claude-2-100k',
     titleTag: '',
     value: 'claude-2',
     maxTokens: 100000,
@@ -39,7 +39,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
-    title: 'claude-2.1-200k',
+    title: 'Claude-2.1-200k',
     titleTag: '',
     value: 'claude-v2:1',
     maxTokens: 200000,
@@ -54,7 +54,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
-    title: 'claude-3-haiku',
+    title: 'Claude-3-Haiku',
     titleTag: '',
     value: 'claude-3-haiku',
     maxTokens: 200000,
@@ -75,7 +75,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
-    title: 'claude-3-sonnet',
+    title: 'Claude-3-Sonnet',
     titleTag: '',
     value: 'claude-3-sonnet',
     maxTokens: 200000,
@@ -96,9 +96,30 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
-    title: 'claude-3-opus',
+    title: 'Claude-3-Opus',
     titleTag: '',
     value: 'claude-3-opus',
+    maxTokens: 200000,
+    tags: (currentConversationType) => {
+      const tags = []
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
+    poweredBy: 'Anthropic',
+    description: (t) =>
+      t(`client:provider__claude__model__claude_3_opus__description`),
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
+    //   roles: ['elite'],
+    // },
+    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+  },
+  {
+    title: 'Claude-3.5-Sonnet',
+    titleTag: '',
+    value: 'claude-3-5-sonnet',
     maxTokens: 200000,
     tags: (currentConversationType) => {
       const tags = ['Beta']
@@ -109,7 +130,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     },
     poweredBy: 'Anthropic',
     description: (t) =>
-      t(`client:provider__claude__model__claude_3_opus__description`),
+      t(`client:provider__claude__model__claude_3_5_opus__description`),
     // permission: {
     //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
     //   roles: ['elite'],

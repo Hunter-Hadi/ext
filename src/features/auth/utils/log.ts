@@ -8,6 +8,8 @@ import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaul
 import { IAIProviderType } from '@/background/provider/chat'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PRESET_PROMPT_IDS } from '@/constants'
+import { PAYWALL_MODAL_VARIANT } from '@/features/abTester/constants'
+import { IPaywallVariant } from '@/features/abTester/types'
 import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
@@ -192,6 +194,8 @@ export const authEmitPricingHooksLog = debounce(
       AIProvider?: string
       inContextMenu?: boolean
       paywallType: 'TOPBAR' | 'MODAL' | 'PROACTIVE' | 'RESPONSE'
+      paywallVariant?: IPaywallVariant
+      buttonType?: 'stripe' | 'pricing'
     },
   ) => {
     try {
@@ -201,6 +205,8 @@ export const authEmitPricingHooksLog = debounce(
         AIModel: propAIModel,
         AIProvider: propAIProvider,
         paywallType,
+        buttonType,
+        paywallVariant,
       } = meta
 
       const logType = await permissionSceneTypeToLogType(
@@ -233,18 +239,32 @@ export const authEmitPricingHooksLog = debounce(
       }
 
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
-      const { paywallVariant } = await getChromeExtensionUserABTest()
+      let testVersion =
+        paywallVariant ||
+        (await getChromeExtensionUserABTest().then(
+          (abTestInfo) => abTestInfo.paywallVariant,
+        ))
+      if (paywallType === 'MODAL') {
+        // 目前modal只会在PAYWALL_MODAL_VARIANT的test version里显示
+        // 此处的写法是为了防止用户在网络环境等原因下一开始显示了modal后重新生成了testVersion导致记录了错误的值
+        testVersion = PAYWALL_MODAL_VARIANT
+      }
+      let paywallModel =
+        propConversationId &&
+        (await ClientConversationManager.getConversationPayWallModel(
+          propConversationId,
+        ))
+      if (!paywallModel) {
+        paywallModel = trackParams.aiModel
+      }
       mixpanelTrack(type, {
         logType,
         sceneType,
         paywallType,
         testFeature: 'extensionPaywall',
-        testVersion: paywallVariant,
-        paywallModel: propConversationId
-          ? await ClientConversationManager.getConversationPayWallModel(
-              propConversationId,
-            )
-          : trackParams.aiModel,
+        testVersion,
+        paywallModel,
+        buttonType,
         ...trackParams,
       })
       const port = new ContentScriptConnectionV2()

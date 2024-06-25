@@ -4,16 +4,26 @@ import { parseHTML } from 'linkedom'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
+interface Image {
+  src: string
+  alt: string
+  title: string
+}
+
+const dirtyWords = ['icon', 'menu', 'logo', 'load', 'search']
+
 /**
  * 插件客户端获取网页内容
  * @param url
  * @param timeout
  * @param abortTaskId
+ * @param needMedia  updata: copilot获取网页多媒体资源
  */
 const clientGetContentOfURL = async (
   url: string,
   timeout: number,
   abortTaskId?: string,
+  needMedia?: boolean, // copilot获取网页多媒体资源
 ): Promise<{
   title: string
   body: string
@@ -22,6 +32,8 @@ const clientGetContentOfURL = async (
   url: string
   status: number
   success: boolean
+  images: Image[]
+  videos: any[]
 }> => {
   const result = {
     success: true,
@@ -31,6 +43,8 @@ const clientGetContentOfURL = async (
     body: '',
     html: '',
     readabilityText: '',
+    images: [] as Image[],
+    videos: [] as any[],
   }
 
   try {
@@ -44,6 +58,10 @@ const clientGetContentOfURL = async (
         abortTaskId,
       )
       result.status = response.responseRaw?.status || 200
+      // 搜狗引擎的防爬机制响应是 200 需要手动鉴别
+      if (response?.responseRaw?.url.includes('www.sogou.com/antispider')) {
+        result.status = 301
+      }
       if (response.success && response.data) {
         return response.data
       }
@@ -54,7 +72,6 @@ const clientGetContentOfURL = async (
       initialUrl: string,
     ): Promise<string> => {
       let htmlContent = await promiseTimeout(fetchHtml(initialUrl), timeout, '')
-
       // 搜狗引擎部分页面会重定向，需要做二次请求抓取
       if (initialUrl.includes('https://www.sogou.com')) {
         const regex = /window\.location\.replace\("([^"]+)"\)/
@@ -74,6 +91,71 @@ const clientGetContentOfURL = async (
       result.title = reader?.title || ''
       result.body = reader?.content || ''
       result.readabilityText = reader?.textContent || ''
+      if (needMedia && reader?.content) {
+        // 创建一个临时容器来解析 HTML 内容
+        const parser = new DOMParser()
+        const parsedDoc = parser.parseFromString(reader.content, 'text/html')
+
+        // 获取所有 img 标签
+        const images = parsedDoc.querySelectorAll('img')
+
+        const filterImages = Array.from(images)
+          .filter((item) => {
+            // 检查是否有获取图片链接不合规的情况，并且进行属性检查
+            const src = item.src.toLowerCase()
+            const forbiddenPatterns = /chrome-extension:|icon|menu|logo|svg/
+            if (forbiddenPatterns.test(src) || src === '') {
+              return false
+            }
+
+            const attributes = item.attributes
+            let widthAttr = ''
+            let heightAttr = ''
+            for (let i = 0; i < attributes.length; i++) {
+              const attrName = attributes[i].name.toLowerCase()
+              if (attrName.includes('width')) {
+                widthAttr = attributes[i].value
+              }
+              if (attrName.includes('height')) {
+                heightAttr = attributes[i].value
+              }
+            }
+            const alt = item.getAttribute('alt')
+
+            // 尺寸有一个大于 200
+            const isLarge =
+              widthAttr &&
+              heightAttr &&
+              parseInt(widthAttr) > 200 &&
+              parseInt(heightAttr) > 200
+            // alt 存在且不为空
+            const altString = String(alt)
+            const trimmedAlt = altString.trim()
+            const vaildAlt =
+              trimmedAlt !== '' &&
+              !dirtyWords.some((dirtyword) => trimmedAlt.includes(dirtyword))
+
+            // 过滤条件
+            return isLarge || vaildAlt
+          })
+          .reduce<Image[]>((acc, current) => {
+            // 检查当前图片的 src 是否已经存在于去重后的数组中
+            if (!acc.some((item) => item.src === current.src)) {
+              acc.push(current)
+            }
+            return acc
+          }, [])
+          .slice(0, 8)
+          .map((item) => {
+            return {
+              src: item.src,
+              alt: item.alt || '', // 如果没有 alt 属性，返回空字符串
+              title: item.title || '', // 如果没有 title 属性，返回空字符串
+            }
+          })
+        result.images = filterImages
+        // result.videos = _resVideos
+      }
     }
 
     handleReader(result.html)

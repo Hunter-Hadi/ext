@@ -10,7 +10,6 @@ import {
   ChatAIProviderModelSelectorOptions,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
@@ -23,7 +22,6 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
   const setDialogState = useSetRecoilState(
     ThirdPartyAIProviderConfirmDialogState,
   )
-  const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
   const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
   const currentSidebarConversationTypeModels = useMemo(() => {
@@ -48,11 +46,11 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
   ) => {
     try {
       setLoading(true)
-      await updateAIProviderModel(
+      await createConversation(
+        'Chat',
         AIProviderModelSelectorOption.AIProvider,
         AIProviderModelSelectorOption.value,
       )
-      await createConversation('Chat')
       setDialogState({
         open: false,
       })
@@ -65,7 +63,7 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
 
   return (
     <>
-      <Stack direction={'row'} spacing={1} alignItems="center">
+      <Stack direction={'row'} spacing={1} alignItems='center'>
         <AIProviderMainPartIcon iconSize={24} />
         <Typography
           fontSize={16}
@@ -92,7 +90,7 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
       </Typography>
       <Stack
         direction={'row'}
-        alignItems="center"
+        alignItems='center'
         mt={'12px !important'}
         flexWrap={'wrap'}
         gap={1}
@@ -102,7 +100,7 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
             <LoadingButton
               disabled={AIProviderModelSelectorOption.disabled}
               loading={loading}
-              variant="outlined"
+              variant='outlined'
               key={AIProviderModelSelectorOption.value}
               startIcon={
                 <AIModelIcons

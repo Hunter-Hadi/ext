@@ -2,6 +2,7 @@ import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, useMemo, useRef } from 'react'
 import Highlight from 'react-highlight'
@@ -16,14 +17,17 @@ import supersub from 'remark-supersub'
 import Browser from 'webextension-polyfill'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import CitationTooltipContent from '@/components/CitationTooltipContent'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import CitationTag from '@/features/citation/components/CitationTag'
 import {
   IAIResponseOriginalMessage,
+  IAIResponseOriginalMessageSourceLink,
   IAIResponseSourceCitation,
 } from '@/features/indexed_db/conversations/models/Message'
+import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
@@ -49,6 +53,9 @@ const OverrideAnchor: FC<{
   children: React.ReactNode
   href?: string
   title?: string
+  citationsContent?:
+    | IAIResponseOriginalMessageSourceLink
+    | ICrawlingSearchResult
 }> = (props) => {
   const isYoutubeTimeUrl =
     props.href &&
@@ -109,6 +116,37 @@ const OverrideAnchor: FC<{
       >
         {props.children}
       </Link>
+    )
+  } else if (props?.citationsContent) {
+    // 引用（citation）hover 增强展示
+    return (
+      <Tooltip
+        PopperProps={{
+          className: 'certationTooltp',
+          sx: {
+            [`& > .use-chat-gpt-ai--MuiTooltip-tooltip`]: {
+              p: 0,
+              background: 'red',
+            },
+          },
+        }}
+        sx={{ p: 0 }}
+        title={
+          <CitationTooltipContent
+            source={props?.citationsContent}
+          ></CitationTooltipContent>
+        }
+        placement='top'
+      >
+        <Link
+          sx={{ cursor: 'pointer' }}
+          href={props.href}
+          target={'_blank'}
+          onClick={clickLinkUrl}
+        >
+          {props.children}
+        </Link>
+      </Tooltip>
     )
   } else {
     return (
@@ -246,8 +284,8 @@ const CustomMarkdown: FC<{
   children: string
 }> = (props) => {
   const { originalMessage, children } = props
-
   const { metadata } = originalMessage || {}
+  const citationsContent = metadata?.sources?.links
 
   const isComplete = originalMessage ? metadata?.isComplete : true
 
@@ -347,9 +385,21 @@ const CustomMarkdown: FC<{
                   />
                 )
               }
+              // citation引用做hover 展示
+              let linkSource
+              if (citationsContent) {
+                const _index = Number(props?.children[0])
+                if (!isNaN(_index)) {
+                  linkSource = citationsContent[_index - 1]
+                }
+              }
               return (
                 // eslint-disable-next-line react/prop-types
-                <OverrideAnchor href={props.href} title={props.title}>
+                <OverrideAnchor
+                  href={props.href}
+                  title={props.title}
+                  citationsContent={linkSource}
+                >
                   {props.children}
                 </OverrideAnchor>
               )

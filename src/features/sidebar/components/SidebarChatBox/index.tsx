@@ -21,6 +21,7 @@ import {
   IChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/indexed_db/conversations/models/Message'
+import SidebarSummarySuggestion from '@/features/onboarding/components/SidebarSummarySuggestion'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
@@ -30,6 +31,7 @@ import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/Si
 import SidebarHomeView from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import {
   clientRestartChromeExtension,
@@ -69,6 +71,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [isSettingVariables, setIsSettingVariables] = useState(false)
   const [isShowRegenerateButton, setIsShowRegenerateButton] = useState(true)
   const [isShowContinueButton, setIsShowContinueButton] = useState(false)
+  const { updateSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
@@ -109,8 +112,26 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       },
     }
   }, [])
+  /**
+   * 因为messages的消息来源有3个步骤
+   * 1. 切换conversationId
+   * 2. 基于conversationId过滤messages
+   * 3. react-query基于conversationId请求messages
+   * 所以下方的loading状态有3个步骤, 为了不让HomeView闪烁
+   */
+  const [messagesLoadingStep, setMessagesLoadingStep] = useState(0)
+  useEffect(() => {
+    setMessagesLoadingStep(1)
+  }, [conversationId])
+
+  useEffect(() => {
+    setMessagesLoadingStep((prevState) => {
+      return prevState + 1
+    })
+  }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
+    // console.log('isShowChatBoxHomeView', messagesLoadingStep)
     // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
     // 具体问题是因为，在第一次切换 conversationId 时，会有一个瞬间
     // isLoadingChatMessages 和 isFetchNextPage 等于 false，并且 messages.length 等于 0
@@ -121,17 +142,22 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     //   isFetchNextPage,
     //   messages,
     // )
+    if (messagesLoadingStep <= 2) {
+      return false
+    }
     return (
       messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
     )
   }, [
-    // isLoadingChatMessages,
+    messagesLoadingStep,
+    isLoadingChatMessages,
     // isFetchNextPage,
-    messages,
     writingMessage,
     conversationType,
   ])
-
+  const handleSwitchToSummary = () => {
+    updateSidebarConversationType('Summary')
+  }
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
       onSendMessage && onSendMessage(value, options)
@@ -203,6 +229,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           }}
         />
       ) : null}
+
+      <SidebarSummarySuggestion onClick={handleSwitchToSummary} />
 
       <Stack
         className={'use-chat-gpt-ai__chat-box__input-box'}

@@ -46,10 +46,10 @@ const EllipsisTextWithTooltip: FC<IProps> = ({
   }, [])
 
   useEffect(() => {
-    if (rendered) {
+    if (rendered && children) {
       updateTooltipStatus()
     }
-  }, [rendered, updateTooltipStatus])
+  }, [rendered, children, updateTooltipStatus])
 
   useEffect(() => {
     if (children && !rendered) {

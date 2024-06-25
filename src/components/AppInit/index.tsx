@@ -101,16 +101,20 @@ export const AppSettingsInit = () => {
  * 在访问my-plan等页面时，更新用户的订阅信息.
  * @constructor
  */
-const MaxAISubscriptionUpdate = () => {
+export const MaxAISubscriptionUpdate = () => {
   const { syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
   useEffectOnce(() => {
     syncUserInfo().then()
     if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
       const pathname = window.location.pathname
       if (
-        ['/my-plan', '/pricing', '/payment/error', '/payment/success', '/subscription/failed'].includes(
-          pathname,
-        )
+        [
+          '/my-plan',
+          '/pricing',
+          '/payment/error',
+          '/payment/success',
+          '/subscription/failed',
+        ].includes(pathname)
       ) {
         syncUserSubscriptionInfo().then()
       }
@@ -119,7 +123,7 @@ const MaxAISubscriptionUpdate = () => {
   return null
 }
 
-const ContextMenuInit = () => {
+export const ContextMenuInit = () => {
   useInitRangy()
   return <ContextMenuRoot />
 }

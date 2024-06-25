@@ -7,13 +7,14 @@
  */
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { AuthState } from '@/features/auth/store'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -40,7 +41,6 @@ const usePageSummary = () => {
     useSidebarSettings()
   const {
     clientWritingMessage,
-    updateClientConversationLoading,
     showConversationLoading,
     hideConversationLoading,
   } = useClientConversation()
@@ -48,6 +48,7 @@ const usePageSummary = () => {
     SidebarPageSummaryNavKeyState,
   )
   const { isPayingUser } = useUserInfo()
+  const { isLogin } = useRecoilValue(AuthState)
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, currentConversationId } =
@@ -74,8 +75,7 @@ const usePageSummary = () => {
     const currentPageSummaryType = getPageSummaryType()
     const writingLoading = clientWritingMessageRef.current.loading
 
-    updateClientConversationLoading(true)
-    showConversationLoading()
+    showConversationLoading(pageSummaryConversationId)
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
       let pageSummaryConversation =
@@ -137,8 +137,8 @@ const usePageSummary = () => {
             'earliest',
           )
         if (writingLoading) {
-          updateClientConversationLoading(false)
-          isGeneratingPageSummaryRef.current = false
+          hideConversationLoading(pageSummaryConversationId)
+          // isGeneratingPageSummaryRef.current = false
           return
         }
         let isValidAIMessage =
@@ -170,8 +170,8 @@ const usePageSummary = () => {
         }
 
         if (isValidAIMessage) {
-          updateClientConversationLoading(false)
           isGeneratingPageSummaryRef.current = false
+          hideConversationLoading(pageSummaryConversationId)
           return
         }
 
@@ -209,12 +209,15 @@ const usePageSummary = () => {
               ),
             )
             await pushPricingHookMessage('PAGE_SUMMARY')
-            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
-              conversationId: currentConversationId,
-              paywallType: 'RESPONSE',
-            })
+            // TODO 这里临时这样解决，因为现在没登录会显示登录的界面，但是其他逻辑有可能会触发这个mixpanel
+            if (isLogin) {
+              authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+                conversationId: currentConversationId,
+                paywallType: 'RESPONSE',
+              })
+            }
             isGeneratingPageSummaryRef.current = false
-            updateClientConversationLoading(false)
+            hideConversationLoading(pageSummaryConversationId)
             return
           }
         }
@@ -267,7 +270,7 @@ const usePageSummary = () => {
         console.log('创建Conversation失败', e)
         isGeneratingPageSummaryRef.current = false
       } finally {
-        hideConversationLoading()
+        hideConversationLoading(pageSummaryConversationId)
       }
     }
   }

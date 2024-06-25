@@ -29,7 +29,10 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
   const { t } = useTranslation(['onboarding'])
 
   const config = useMemo<IOnBoardingTooltipConfigType | null>(() => {
-    if (sceneType === 'CONTEXT_MENU_CTA_BUTTON') {
+    if (
+      sceneType === 'CONTEXT_MENU_CTA_BUTTON' ||
+      sceneType === 'CONTEXT_MENU_CTA_MINI_ICON_BUTTON'
+    ) {
       return {
         referenceElementSelector: `button#max_ai__floating_context_menu__cta_button`,
         tooltipProps: {

@@ -153,15 +153,19 @@ const SettingPromptsMenuItem = (props: {
             sx={{}}
           >
             {isGroup && isFirstDeep ? (
-              <Typography fontSize={12} color={'text.secondary'} sx={{
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                // display: '-webkit-box',
-                WebkitLineClamp: 1,
-                WebkitBoxOrient: 'vertical',
-                wordBreak: 'break-word',
-                whiteSpace: 'nowrap',
-              }}>
+              <Typography
+                fontSize={12}
+                color={'text.secondary'}
+                sx={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  // display: '-webkit-box',
+                  WebkitLineClamp: 1,
+                  WebkitBoxOrient: 'vertical',
+                  wordBreak: 'break-word',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 {nodeI18nText}
               </Typography>
             ) : (
@@ -210,6 +214,8 @@ const SettingPromptsMenuItem = (props: {
                   onEdit && onEdit(node)
                   event.stopPropagation()
                 }}
+                data-prompt-text={nodeI18nText}
+                data-action={node.data.editable ? 'edit' : 'lock'}
               >
                 {node.data.editable ? (
                   <ContextMenuIcon icon={'DefaultIcon'} sx={{ fontSize: 20 }} />

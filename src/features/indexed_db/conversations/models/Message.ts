@@ -114,6 +114,13 @@ export type IAIResponseOriginalMessageSourceLink = {
   favicon: string
   img: string
   from?: string
+  body?: string
+}
+export type IAIResponseOriginalMessageSourceMediaImages = {
+  [Symbol.iterator](): Iterator<any>
+  title?: string
+  src?: string
+  alt?: string
 }
 export type IAIResponseOriginalMessageMetadataTitle = {
   title: string
@@ -187,6 +194,9 @@ export interface IAIResponseOriginalMessage {
     sources?: {
       status: 'loading' | 'complete'
       links?: IAIResponseOriginalMessageSourceLink[]
+      videos?: IAIResponseOriginalMessageSourceMediaImages[]
+      images?: IAIResponseOriginalMessageSourceMediaImages[]
+      // knowledgePanel?: string
     }
     copilot?: {
       title?: IAIResponseOriginalMessageMetadataTitle

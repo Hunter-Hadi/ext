@@ -246,7 +246,7 @@ const useClientChat = () => {
     //   return
     // }
     // 3. Model - 付费卡点
-    const currentConversation = await getCurrentConversation()
+    const currentConversation = await getCurrentConversation(conversationId)
     // 如果 执行的 actions 中有 ASK_CHATGPT 的话，就判断是否有 付费卡点
     const hasAskChatGPT = actions.find(
       (action) => action.type === 'ASK_CHATGPT',
@@ -290,86 +290,86 @@ const useClientChat = () => {
     }
     await updateClientConversationLoading(false)
     // 5. 运行shortcuts
-    setShortCutsRef.current(actions)
-    await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
+    // setShortCutsRef.current(actions)
+    // await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
+    setShortCuts(actions)
+    await runShortCuts(isOpenSidebarChatBox, overwriteParameters)
   }
   /**
    * 重新生成最后一次运行的shortcuts
    */
   const regenerate = async () => {
+    const currentConversationId = currentConversationIdRef.current
+    if (!currentConversationId) return
     try {
-      showConversationLoading()
-      const currentConversationId = currentConversationIdRef.current
-      if (currentConversationId) {
-        const { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
-          await getLastRunShortcuts(currentConversationId)
-        if (lastRunActions.length > 0) {
-          console.log(needDeleteMessageIds)
+      showConversationLoading(currentConversationId)
+      const { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
+        await getLastRunShortcuts(currentConversationId)
+      if (lastRunActions.length > 0) {
+        console.log(needDeleteMessageIds)
+        await ClientConversationMessageManager.deleteMessages(
+          currentConversationId,
+          needDeleteMessageIds,
+        )
+        const waitRunActions = lastRunActions.map((action) => {
+          if (
+            action.type === 'ASK_CHATGPT' &&
+            action.parameters?.AskChatGPTActionQuestion?.meta
+          ) {
+            action.parameters.AskChatGPTActionQuestion.meta.regenerate = true
+          }
+          return action
+        })
+        await askAIWIthShortcuts(waitRunActions, {
+          overwriteParameters: lastRunActionsParams,
+          isSaveLastRunShortcuts: false,
+          isOpenSidebarChatBox: false,
+        })
+      } else {
+        // 理论上不会进来, 兼容旧代码用的
+        console.log('regenerate actions is empty')
+        const messageIds = await ClientConversationMessageManager.getMessageIds(
+          currentConversationId,
+        )
+        // 寻找最后一个user message
+        const needDeleteIds: string[] = []
+        let lastUserMessage: IUserChatMessage | null = null
+        for (let i = messageIds.length - 1; i >= 0; i--) {
+          needDeleteIds.push(messageIds[i])
+          const message =
+            await ClientConversationMessageManager.getMessageByMessageId(
+              messageIds[i],
+            )
+          if (message?.type === 'user') {
+            lastUserMessage = message as IUserChatMessage
+            break
+          }
+        }
+        if (lastUserMessage) {
           await ClientConversationMessageManager.deleteMessages(
             currentConversationId,
-            needDeleteMessageIds,
+            needDeleteIds,
           )
-          const waitRunActions = lastRunActions.map((action) => {
-            if (
-              action.type === 'ASK_CHATGPT' &&
-              action.parameters?.AskChatGPTActionQuestion?.meta
-            ) {
-              action.parameters.AskChatGPTActionQuestion.meta.regenerate = true
-            }
-            return action
-          })
-          await askAIWIthShortcuts(waitRunActions, {
-            overwriteParameters: lastRunActionsParams,
-            isSaveLastRunShortcuts: false,
-            isOpenSidebarChatBox: false,
-          })
-        } else {
-          // 理论上不会进来, 兼容旧代码用的
-          console.log('regenerate actions is empty')
-          const messageIds =
-            await ClientConversationMessageManager.getMessageIds(
-              currentConversationId,
-            )
-          // 寻找最后一个user message
-          const needDeleteIds: string[] = []
-          let lastUserMessage: IUserChatMessage | null = null
-          for (let i = messageIds.length - 1; i >= 0; i--) {
-            needDeleteIds.push(messageIds[i])
-            const message =
-              await ClientConversationMessageManager.getMessageByMessageId(
-                messageIds[i],
-              )
-            if (message?.type === 'user') {
-              lastUserMessage = message as IUserChatMessage
-              break
-            }
-          }
-          if (lastUserMessage) {
-            await ClientConversationMessageManager.deleteMessages(
-              currentConversationId,
-              needDeleteIds,
-            )
-            await askAIWIthShortcuts([
-              {
-                type: 'ASK_CHATGPT',
-                parameters: {
-                  AskChatGPTActionQuestion: {
-                    ...lastUserMessage,
-                    meta: {
-                      ...lastUserMessage.meta,
-                      regenerate: true,
-                    },
+          await askAIWIthShortcuts([
+            {
+              type: 'ASK_CHATGPT',
+              parameters: {
+                AskChatGPTActionQuestion: {
+                  ...lastUserMessage,
+                  meta: {
+                    ...lastUserMessage.meta,
+                    regenerate: true,
                   },
                 },
               },
-            ])
-          }
+            },
+          ])
         }
       }
     } catch (e) {
       console.log('regenerate error: \t', e)
     } finally {
-      hideConversationLoading()
+      hideConversationLoading(currentConversationId)
     }
   }
 

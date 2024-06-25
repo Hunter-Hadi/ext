@@ -127,14 +127,7 @@ const useShortCutsEngine = () => {
         })
       }
     },
-    [
-      shortCutsEngine,
-      clientConversationEngine,
-      clientMessageChannelEngine,
-      shortcutsMessageChannelEngine,
-      getParams,
-      isLogin,
-    ],
+    [shortCutsEngine, clientConversationEngine, getParams, isLogin],
   )
   const stopShortCuts = useCallback(async () => {
     if (!shortCutsEngine) {
@@ -151,12 +144,7 @@ const useShortCutsEngine = () => {
     setShortsCutsState({
       status: shortCutsEngine?.status || 'idle',
     })
-  }, [
-    shortCutsEngine,
-    clientConversationEngine,
-    clientMessageChannelEngine,
-    shortcutsMessageChannelEngine,
-  ])
+  }, [shortCutsEngine, clientConversationEngine])
 
   const resetShortCuts = useCallback(() => {
     if (!shortCutsEngine) {

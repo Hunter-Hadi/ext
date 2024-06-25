@@ -165,7 +165,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       blurMessageIdRef.current = null
     }
   }, [paginationMessages])
-
+  const prevPaginationMessagesLengthRef = useRef(paginationMessages.length)
   useEffect(() => {
     const writingMessageId = writingMessage?.messageId || ''
     if (
@@ -173,11 +173,34 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       !paginationMessages.find((msg) => msg.messageId === writingMessageId)
     ) {
       lastMessageIdRef.current = writingMessageId
-      // console.log(`scroll to message [最新消息]`, lastMessageIdRef.current)
+      console.log(`scroll to message [最新消息]`, lastMessageIdRef.current)
       resetPreviousPageLastMessageId(writingMessageId)
     } else {
-      lastMessageIdRef.current = lastPaginationMessageIdRef.current
-      // console.log(`scroll to message [列表最后信息]`, lastMessageIdRef.current)
+      // 因为art/search板块的新消息没有writingMessage，所以需要在这里处理
+      if (
+        lastPaginationMessageIdRef.current &&
+        lastPaginationMessageIdRef.current ===
+          last(paginationMessages)?.messageId
+      ) {
+        // 因为手动上滑要清除lastMessageIdRef.current
+        // 通过分页数量的区别来判断新消息，并且只设置一次
+        if (
+          prevPaginationMessagesLengthRef.current !== paginationMessages.length
+        ) {
+          console.log(
+            `scroll to message [列表最后信息]`,
+            lastMessageIdRef.current,
+          )
+          lastMessageIdRef.current = lastPaginationMessageIdRef.current
+          resetPreviousPageLastMessageId(lastPaginationMessageIdRef.current)
+        }
+      } else {
+        console.log(
+          `scroll to message [列表最后信息]`,
+          lastMessageIdRef.current,
+        )
+      }
+      prevPaginationMessagesLengthRef.current = paginationMessages.length
     }
   }, [writingMessage?.messageId, paginationMessages])
 
@@ -225,19 +248,20 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
           <CircularProgress size={16} sx={{ m: '0 auto' }} />
         </Stack>
       )}
-      <AppLoadingLayout loading={isLoading} />
-      {paginationMessages.map((message, index) => {
-        return (
-          <SidebarChatBoxMessageItem
-            key={message.messageId + '_sidebar_chat_message_' + String(index)}
-            className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-            message={message}
-            loading={isAIResponding}
-            order={index + 1}
-            onChangeHeight={messageHeightUpdate}
-          />
-        )
-      })}
+      <AppLoadingLayout loading={isLoading}>
+        {paginationMessages.map((message, index) => {
+          return (
+            <SidebarChatBoxMessageItem
+              key={message.messageId + '_sidebar_chat_message_' + String(index)}
+              className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
+              message={message}
+              loading={isAIResponding}
+              order={index + 1}
+              onChangeHeight={messageHeightUpdate}
+            />
+          )
+        })}
+      </AppLoadingLayout>
       {/* 如果 writingMessage.messageId 在 messages 中存在，则不渲染 */}
       {writingMessage &&
       !paginationMessages.find(

@@ -77,8 +77,9 @@ const AISearchContentCard: FC<IProps> = ({
           metadata: {
             shareType: 'search',
             sourceWebpage: {
-              url: window.location.href,
-              title: document.title,
+              url: `{{CURRENT_WEBPAGE_URL}}`,
+              title: `{{CURRENT_WEBPAGE_TITLE}}`,
+              favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
             },
             isComplete: true,
             copilot: {
@@ -121,7 +122,7 @@ const AISearchContentCard: FC<IProps> = ({
 
   return (
     <Paper
-      variant="outlined"
+      variant='outlined'
       sx={{
         mb: 2.5,
         bgcolor: 'transparent',
@@ -228,7 +229,7 @@ function AnswerLabelTitle({
 }) {
   if (loading) {
     return (
-      <Stack direction={'row'} alignItems="center" spacing={1} mb={1}>
+      <Stack direction={'row'} alignItems='center' spacing={1} mb={1}>
         <CircularProgress size={18} />
         <Typography
           sx={{
@@ -241,9 +242,9 @@ function AnswerLabelTitle({
         </Typography>
 
         <Button
-          startIcon={<StopOutlinedIcon fontSize="inherit" />}
-          color="inherit"
-          size="small"
+          startIcon={<StopOutlinedIcon fontSize='inherit' />}
+          color='inherit'
+          size='small'
           onClick={handleStopGenerate}
           sx={{
             ml: 'auto !important',
@@ -256,7 +257,7 @@ function AnswerLabelTitle({
   }
 
   return (
-    <Stack direction={'row'} alignItems="center" spacing={1} mb={1}>
+    <Stack direction={'row'} alignItems='center' spacing={1} mb={1}>
       <ReadIcon
         sx={{
           color: 'primary.main',

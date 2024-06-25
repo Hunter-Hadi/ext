@@ -5,19 +5,22 @@ import React, { FC } from 'react'
 
 import EllipsisTextWithTooltip from '@/features/common/components/EllipsisTextWithTooltip'
 
-interface ISamplePromptItemProps {
-  id: string
+type ISamplePromptDataType = {
   title: string
+  [key: string]: any
+}
+
+interface ISamplePromptItemProps {
+  promptData: ISamplePromptDataType
   disabled?: boolean
-  onClick?: (id: string) => void
+  onClick?: (data: ISamplePromptDataType) => void
   order?: number
   sx?: SxProps
   showLineClamp?: number
 }
 
 const SamplePromptItem: FC<ISamplePromptItemProps> = ({
-  id,
-  title,
+  promptData,
   disabled,
   onClick,
   order,
@@ -31,7 +34,9 @@ const SamplePromptItem: FC<ISamplePromptItemProps> = ({
       }}
     >
       <Paper
+        component={'button'}
         sx={{
+          width: '100%',
           px: 2,
           py: 1.5,
           bgcolor: disabled
@@ -52,11 +57,12 @@ const SamplePromptItem: FC<ISamplePromptItemProps> = ({
           if (disabled) {
             return
           }
-          onClick && onClick(id)
+          onClick && onClick(promptData)
         }}
       >
         <EllipsisTextWithTooltip
-          tip={title}
+          textAlign={'left'}
+          tip={promptData.title}
           resizeListener
           lineClamp={showLineClamp}
           sx={{
@@ -68,7 +74,7 @@ const SamplePromptItem: FC<ISamplePromptItemProps> = ({
             color: disabled ? 'text.disabled' : 'text.primary',
           }}
         >
-          {title}
+          {promptData.title}
         </EllipsisTextWithTooltip>
       </Paper>
     </Fade>

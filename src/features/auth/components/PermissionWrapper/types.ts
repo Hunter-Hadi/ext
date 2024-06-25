@@ -18,10 +18,12 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_FAST_TEXT_MODEL_GPT_3_5_TURBO',
   'MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU',
   'MAXAI_FAST_TEXT_MODEL_GEMINI_PRO',
+  'MAXAI_FAST_TEXT_MODEL_GEMINI_FLASH_1_5',
   'MAXAI_ADVANCED_MODEL_GPT_4O',
   'MAXAI_ADVANCED_MODEL_GPT_4_TURBO',
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_OPUS',
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_SONNET',
+  'MAXAI_ADVANCED_MODEL_CLAUDE_3_5_SONNET',
   'MAXAI_ADVANCED_MODEL_GEMINI_1_5_PRO',
   'MAXAI_ADVANCED_MODEL_GPT_4',
   'MAXAI_IMAGE_GENERATE_MODEL_DALL_E_3',
@@ -278,6 +280,32 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           )
     },
   },
+  MAXAI_FAST_TEXT_MODEL_GEMINI_FLASH_1_5: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gemini-1.5-flash.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gemini-1.5-flash.png',
+    ),
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title',
+      ),
+    description: (t, isFreeUser) => {
+      return isFreeUser
+        ? [
+            t(
+              'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1',
+            ),
+            t(
+              'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2',
+            ),
+          ].join('\n\n')
+        : t(
+            'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1',
+          )
+    },
+  },
   MAXAI_ADVANCED_MODEL_GPT_4O: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt-4o.png',
@@ -363,6 +391,27 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           )
         : t(
             'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description',
+          )
+    },
+  },
+  MAXAI_ADVANCED_MODEL_CLAUDE_3_5_SONNET: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/claude-3-5-sonnet.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/claude-3-5-sonnet.png',
+    ),
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__title',
+      ),
+    description: (t, isFreeUser) => {
+      return isFreeUser
+        ? t(
+            'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__free__description',
+          )
+        : t(
+            'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__paid__description',
           )
     },
   },

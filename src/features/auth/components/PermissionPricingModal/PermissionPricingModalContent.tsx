@@ -1,6 +1,5 @@
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
-import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
@@ -12,7 +11,7 @@ import { useTranslation } from 'react-i18next'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
+import PlanButton from '@/features/pricing/components/PlanButton'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 interface IProps {
@@ -25,15 +24,12 @@ const PermissionPricingModalContent: FC<IProps> = (props) => {
   const { t } = useTranslation()
   const { conversationId, permissionCard, sx } = props
 
-  const { loading, createPaymentSubscription } = usePaymentCreator()
-
-  const ctaButtonClick = () => {
-    if (!permissionCard?.sceneType || loading) return
+  const sendLog = () => {
+    if (!permissionCard?.sceneType) return
     authEmitPricingHooksLog('click', permissionCard.sceneType, {
       conversationId,
       paywallType: 'MODAL',
     })
-    createPaymentSubscription()
   }
 
   return (
@@ -121,8 +117,8 @@ const PermissionPricingModalContent: FC<IProps> = (props) => {
           </Stack>
 
           <Box position='relative'>
-            <LoadingButton
-              variant='contained'
+            <PlanButton
+              renderType='elite_yearly'
               fullWidth
               startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
               sx={{
@@ -131,11 +127,11 @@ const PermissionPricingModalContent: FC<IProps> = (props) => {
                 py: 1.5,
                 borderRadius: 2,
               }}
-              loading={loading}
-              onClick={ctaButtonClick}
+              sendLog={sendLog}
+              // prefetch
             >
               {t('client:permission__pricing_modal__cta_button__title')}
-            </LoadingButton>
+            </PlanButton>
             <Box
               sx={{
                 position: 'absolute',

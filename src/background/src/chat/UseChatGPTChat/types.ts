@@ -89,7 +89,7 @@ export const MAXAI_CHATGPT_MODEL_GPT_4O = 'gpt-4o'
 
 export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   {
-    title: 'gpt-3.5-turbo',
+    title: 'GPT-3.5-Turbo',
     titleTag: '',
     value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
     maxTokens: 16384,
@@ -114,7 +114,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   //   },
   // },
   {
-    title: 'gpt-3.5-turbo-16k',
+    title: 'GPT-3.5-Turbo-16k',
     titleTag: '',
     value: 'gpt-3.5-turbo-16k',
     maxTokens: 16384,
@@ -129,7 +129,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
-    title: 'gpt-4',
+    title: 'GPT-4',
     titleTag: '',
     value: 'gpt-4',
     tags: [],
@@ -144,7 +144,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
-    title: 'gpt-4-turbo',
+    title: 'GPT-4-Turbo',
     value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
     titleTag: 'Vision',
     tags: (currentConversationType) => {
@@ -200,7 +200,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   //   },
   // },
   {
-    title: 'gpt-4o',
+    title: 'GPT-4o',
     value: MAXAI_CHATGPT_MODEL_GPT_4O,
     titleTag: 'New',
     tags: ['New', 'Vision'],

@@ -51,7 +51,6 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
     BoxProps,
     TooltipProps,
     children,
-    paywallVariant,
   } = props
   const permissionCard = usePermissionCard(sceneType)!
   const [modifyPermissionCard, setModifyPermissionCard] = useState<
@@ -98,38 +97,6 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
 
   if (hasPermissionMemo) {
     return <>{children}</>
-  }
-
-  if (paywallVariant === '2-2') {
-    return (
-      <Box {...BoxProps}>
-        <Box>
-          {React.Children.map(children, (child) => {
-            // modify child props
-            if (React.isValidElement(child)) {
-              const newProps = {
-                ...child.props,
-                ...(child.props.onClick && {
-                  onClick: async (event: any) => {
-                    event?.stopPropagation?.()
-                    event?.preventDefault?.()
-                    window.postMessage({
-                      event: 'MAX_AI_PRICING_MODAL',
-                      type: 'show',
-                      data: {
-                        permissionSceneType: memoizedPermissionCard.sceneType,
-                      },
-                    })
-                  },
-                }),
-              }
-              return React.cloneElement(child, newProps)
-            }
-            return child
-          })}
-        </Box>
-      </Box>
-    )
   }
 
   return (

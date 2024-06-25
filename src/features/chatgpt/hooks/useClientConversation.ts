@@ -1,17 +1,13 @@
 import { useEffect, useRef } from 'react'
-import {
-  useRecoilCallback,
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from 'recoil'
+import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
+import { PAYWALL_MODAL_VARIANT } from '@/features/abTester/constants'
 import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
-import { PricingModalState } from '@/features/auth/store'
+import { AuthState } from '@/features/auth/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
   ClientConversationStateFamily,
@@ -96,7 +92,7 @@ const useClientConversation = () => {
   const [clientConversationMessages] = useRecoilState(
     PaginationConversationMessagesStateFamily(currentConversationId || ''),
   )
-  const setPricingModalState = useSetRecoilState(PricingModalState)
+  const { isLogin } = useRecoilValue(AuthState)
   const currentSidebarConversationType = clientConversation?.type || 'Chat'
   const currentConversationIdRef = useRef(currentConversationId)
   const currentConversationTypeRef = useRef(clientConversation?.type)
@@ -174,11 +170,11 @@ const useClientConversation = () => {
   }
   const showConversationLoading = useRecoilCallback(
     ({ set }) =>
-      () => {
+      (
+        conversationId: string | undefined = currentConversationIdRef.current,
+      ) => {
         set(
-          ClientWritingMessageStateFamily(
-            currentConversationIdRef.current || '',
-          ),
+          ClientWritingMessageStateFamily(conversationId || ''),
           (prevState) => {
             return {
               ...prevState,
@@ -191,11 +187,11 @@ const useClientConversation = () => {
   )
   const hideConversationLoading = useRecoilCallback(
     ({ set }) =>
-      () => {
+      (
+        conversationId: string | undefined = currentConversationIdRef.current,
+      ) => {
         set(
-          ClientWritingMessageStateFamily(
-            currentConversationIdRef.current || '',
-          ),
+          ClientWritingMessageStateFamily(conversationId || ''),
           (prevState) => {
             return {
               ...prevState,
@@ -211,20 +207,13 @@ const useClientConversation = () => {
   ) => {
     const addToConversationId = currentConversationIdRef.current
     if (currentSidebarConversationType !== 'ContextMenu') {
-      // 需要插入到Sidebar中
-      // const chatConversationId = (await getChromeExtensionLocalStorage())
-      //   .sidebarSettings?.chat?.conversationId
-      // if (chatConversationId) {
-      //   addToConversationId = chatConversationId
-      // }
-
       // 非context menu下应该show sidebar，防止sidebar被关闭
       showChatBox()
     }
     if (addToConversationId) {
       // 判断是否是paywall test version
       const { paywallVariant } = await getChromeExtensionUserABTest()
-      if (paywallVariant === '2-2') {
+      if (paywallVariant === PAYWALL_MODAL_VARIANT && isLogin) {
         window.postMessage({
           event: 'MAX_AI_PRICING_MODAL',
           type: 'show',
@@ -232,11 +221,6 @@ const useClientConversation = () => {
             conversationId: addToConversationId,
             permissionSceneType,
           },
-        })
-        setPricingModalState({
-          show: true,
-          conversationId: addToConversationId,
-          permissionSceneType,
         })
       }
       await ClientConversationMessageManager.addMessages(addToConversationId, [
@@ -280,11 +264,12 @@ const useClientConversation = () => {
    */
   const updateClientConversationLoading = useRecoilCallback(
     ({ set }) =>
-      (loading: boolean) => {
+      (
+        loading: boolean,
+        conversationId: string | undefined = currentConversationIdRef.current,
+      ) => {
         set(
-          ClientWritingMessageStateFamily(
-            currentConversationIdRef.current || '',
-          ),
+          ClientWritingMessageStateFamily(conversationId || ''),
           (prevState) => {
             return {
               ...prevState,
@@ -299,8 +284,9 @@ const useClientConversation = () => {
   /**
    * 获取当前conversation
    */
-  const getCurrentConversation = async () => {
-    const conversationId = currentConversationIdRef.current
+  const getCurrentConversation = async (
+    conversationId = currentConversationIdRef.current,
+  ) => {
     if (conversationId) {
       return (
         (await ClientConversationManager.getConversationById(conversationId)) ||

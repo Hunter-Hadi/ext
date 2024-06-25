@@ -14,14 +14,14 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { PAYWALL_MODAL_VARIANT } from '@/features/abTester/constants'
 import useUserABTestInfo from '@/features/abTester/hooks/useUserABTestInfo'
 import LoginLayout from '@/features/auth/components/LoginLayout'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
+import PlanFeatures from '@/features/pricing/components/PlanFeatures'
 import { getMaxAISidebarRootElement } from '@/utils'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { isFreeUser } = useUserInfo()
@@ -29,7 +29,6 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { currentConversationId, currentSidebarConversationType } =
     useClientConversation()
   const { abTestInfo } = useUserABTestInfo()
-  const { loading, createPaymentSubscription } = usePaymentCreator()
   const { paywallVariant } = abTestInfo
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
@@ -37,6 +36,8 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   const open = Boolean(anchorEl)
 
   const href = `${APP_USE_CHAT_GPT_HOST}/pricing`
+
+  const upgradeButtonLoading = false
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -51,164 +52,50 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
     setAnchorEl(null)
   }
 
-  const handleClick = async () => {
+  const onUpgradeClick = () => {
     authEmitPricingHooksLog('click', 'PROACTIVE_UPGRADE', {
       conversationId: currentConversationId,
       conversationType: currentSidebarConversationType,
       paywallType: 'PROACTIVE',
+      // 目前只有PAYWALL_MODAL_VARIANT才会显示upgrade按钮
+      // 这里记录死防止出现因为网络问题记录错误的值，因为authEmitPricingHooksLog有1s的防抖延迟
+      paywallVariant: PAYWALL_MODAL_VARIANT,
+      buttonType: 'stripe',
     })
-    if (paywallVariant === '2-2') {
-      createPaymentSubscription().finally(() => {
-        handlePopoverClose()
-      })
-    } else {
-      handlePopoverClose()
-      window.open(href)
-    }
+  }
+
+  const onPricingClick = () => {
+    authEmitPricingHooksLog('click', 'PROACTIVE_UPGRADE', {
+      conversationId: currentConversationId,
+      conversationType: currentSidebarConversationType,
+      paywallType: 'PROACTIVE',
+      buttonType: 'pricing',
+    })
+    handlePopoverClose()
+    window.open(href)
   }
 
   if (!isFreeUser) return null
 
   const content =
-    paywallVariant === '2-2' ? (
-      <Stack spacing={2}>
-        <Typography fontSize={18} fontWeight={600}>
+    paywallVariant === PAYWALL_MODAL_VARIANT ? (
+      <Stack>
+        <Typography fontSize={32} fontWeight={700} textAlign='center'>
           {t('client:permission__pricing_modal__title')}
         </Typography>
-        <Typography fontSize={16} mt={1}>
+        <Typography fontSize={16} textAlign='center' mt={1.5}>
           {t('client:permission__pricing_modal__description')}
         </Typography>
 
-        <Divider />
+        <PlanFeatures sx={{ mt: 3 }} onUpgradeClick={onUpgradeClick} />
 
-        <Stack direction='row' spacing={1} alignItems='center'>
-          <CheckCircleOutlineIcon
-            sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
-          />
-          <Typography fontSize={16}>
-            {t('client:permission__pricing_modal__item1__title')}
-          </Typography>
-        </Stack>
-        <Stack direction='row' spacing={1} alignItems='center'>
-          <CheckCircleOutlineIcon
-            sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
-          />
-          <Typography fontSize={16}>
-            {t('client:permission__pricing_modal__item2__title')}
-          </Typography>
-        </Stack>
-        <Stack direction='row' spacing={1} alignItems='center'>
-          <CheckCircleOutlineIcon
-            sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
-          />
-          <Typography fontSize={16}>
-            {t('client:permission__pricing_modal__item3__title')}
-          </Typography>
-        </Stack>
-        <Stack
-          spacing={1}
-          borderRadius={2}
-          sx={{
-            p: 2,
-            bgcolor: 'rgba(250, 243, 255, 1)',
-            color: 'rgba(0, 0, 0, 1)',
-          }}
-        >
-          <Typography fontSize={16} fontWeight={500}>
-            {t('client:permission__pricing_modal__price__title')}
-          </Typography>
-
-          <Stack direction='row' alignItems='center' spacing={1}>
-            <Typography
-              fontSize={20}
-              fontWeight={500}
-              color='rgba(0, 0, 0, 0.6)'
-              sx={{
-                textDecoration: 'line-through',
-              }}
-            >
-              $40
-            </Typography>
-            <Typography fontSize={32} fontWeight={700} color='rgb(0, 0, 0)'>
-              $19
-            </Typography>
-            <Typography fontSize={12} color='rgba(0, 0, 0, 0.6)'>
-              {t('client:permission__pricing_modal__price__desc1')}
-              <br />
-              {t('client:permission__pricing_modal__price__desc2')}
-            </Typography>
-          </Stack>
-
-          <Box position='relative'>
-            <LoadingButton
-              variant='contained'
-              fullWidth
-              startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
-              sx={{
-                fontSize: 16,
-                px: 2,
-                py: 1.5,
-                borderRadius: 2,
-              }}
-              loading={loading}
-              onClick={handleClick}
-            >
-              {t('client:permission__pricing_modal__cta_button__title')}
-            </LoadingButton>
-            <Box
-              sx={{
-                position: 'absolute',
-                right: 10,
-                top: 0,
-                transform: 'translateY(-50%)',
-                bgcolor: 'rgba(255, 126, 53, 1)',
-                color: '#fff',
-                borderRadius: 2,
-                px: 1,
-                py: 0.5,
-              }}
-            >
-              <Typography fontSize={16} fontWeight={500} lineHeight={1}>
-                {t('client:permission__pricing_modal__discount__title')}
-              </Typography>
-            </Box>
-          </Box>
-
-          <Stack direction='row' spacing={1} alignItems='center'>
-            <Stack direction='row' spacing='-6px'>
-              <img
-                src={getChromeExtensionAssetsURL(
-                  '/images/upgrade/avatars/1.png',
-                )}
-                width={20}
-                height={20}
-              />
-              <img
-                src={getChromeExtensionAssetsURL(
-                  '/images/upgrade/avatars/2.png',
-                )}
-                width={20}
-                height={20}
-              />
-              <img
-                src={getChromeExtensionAssetsURL(
-                  '/images/upgrade/avatars/3.png',
-                )}
-                width={20}
-                height={20}
-              />
-            </Stack>
-            <Typography fontSize={12}>
-              {t('client:permission__pricing_modal__cta_button__footer__title')}
-            </Typography>
-          </Stack>
-        </Stack>
-        <Box mt={1} textAlign='center'>
+        <Box mt={2} textAlign='center'>
           <Link
-            fontSize={14}
+            fontSize={16}
             color='text.secondary'
-            href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
             target='_blank'
+            onClick={onPricingClick}
+            sx={{ cursor: 'pointer' }}
           >
             {t('client:permission__pricing_modal__footer__title')}
           </Link>
@@ -251,7 +138,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           color='primary.main'
           target='_blank'
           underline='none'
-          onClick={handleClick}
+          onClick={onPricingClick}
           sx={{ cursor: 'pointer', fontSize: 16 }}
         >
           {t('client:sidebar__user_upgrade_card__learn_more__title')}
@@ -268,8 +155,8 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
               py: 1.5,
               borderRadius: 2,
             }}
-            loading={loading}
-            onClick={handleClick}
+            loading={upgradeButtonLoading}
+            onClick={onPricingClick}
           >
             {t('client:sidebar__top_bar__upgrade__title')}
           </LoadingButton>
@@ -320,8 +207,8 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           },
           ...sx,
         }}
-        loading={loading}
-        onClick={handleClick}
+        loading={upgradeButtonLoading}
+        onClick={onPricingClick}
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
       >
@@ -333,7 +220,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
           color='text.primary'
           sx={{
             userSelect: 'none',
-            opacity: loading ? 0 : 1,
+            opacity: upgradeButtonLoading ? 0 : 1,
           }}
         >
           {/*{t('client:sidebar__top_bar__upgrade__title')}*/}
@@ -362,8 +249,15 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
                   borderRadius: 2.5,
                   border: '1px solid #EBEBEB',
                   boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-                  minWidth: 300,
-                  maxWidth: 400,
+                  width:
+                    paywallVariant === PAYWALL_MODAL_VARIANT ? 700 : 'auto',
+                  minWidth:
+                    paywallVariant === PAYWALL_MODAL_VARIANT ? 700 : 300,
+                  maxWidth:
+                    paywallVariant === PAYWALL_MODAL_VARIANT ? '90vw' : 400,
+                  maxHeight:
+                    paywallVariant === PAYWALL_MODAL_VARIANT ? '70vh' : 'auto',
+                  overflow: 'auto',
                   p: 2,
                   mb: 1,
                 }}

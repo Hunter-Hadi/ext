@@ -3,7 +3,7 @@
  */
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
-export const isArticlePage = () => {
+export const checkWebpageIsArticlePage = () => {
   const websiteHost = getCurrentDomainHost()
   const websitePathname =
     typeof window !== 'undefined' ? window.location.pathname : ''

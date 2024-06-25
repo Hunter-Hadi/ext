@@ -27,6 +27,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                 sourceWebpage: {
                   url: `{{CURRENT_WEBPAGE_URL}}`,
                   title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                  favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
                 },
                 shareType: 'summary',
                 title: {
@@ -334,6 +335,7 @@ export const youTubeSummaryTranscriptChangeTool = async (
               sourceWebpage: {
                 url: `{{CURRENT_WEBPAGE_URL}}`,
                 title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
               },
               shareType: 'summary',
               title: {
@@ -608,6 +610,7 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
               sourceWebpage: {
                 url: `{{CURRENT_WEBPAGE_URL}}`,
                 title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
               },
               shareType: 'summary',
               title: {

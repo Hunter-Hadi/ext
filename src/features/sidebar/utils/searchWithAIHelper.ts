@@ -371,6 +371,9 @@ export const generateSearchWithAIActions = async (
               sources: {
                 status: 'complete',
                 links: `{{SEARCH_SOURCES}}` as any,
+                videos: `{{IMAGE_ARY}}`,
+                images: `{{IMAGE_ARY}}`,
+                knowledgePanel: `{{SEARCH_KNOWLEDGE_PANEL}}`,
               },
             },
           },
@@ -419,9 +422,76 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
       },
     },
     {
+      type: 'SCRIPTS_DICTIONARY',
+      parameters: {},
+    },
+    {
+      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+      parameters: {
+        ActionGetDictionaryKey: 'value',
+        ActionGetDictionaryValue: 'sourceMedia',
+      },
+    },
+    {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'PAGE_CONTENT',
+        VariableName: 'SOURCEMEDIA',
+      },
+    },
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'update',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+          text: '',
+          originalMessage: {
+            metadata: {
+              copilot: {
+                steps: [
+                  {
+                    title: 'Understanding question',
+                    status: 'complete',
+                    icon: 'CheckCircle',
+                  },
+                  {
+                    title: 'Searching web',
+                    status: 'complete',
+                    icon: 'Search',
+                    valueType: 'tags',
+                    value: '{{SMART_SEARCH_QUERY}}',
+                  },
+                ],
+              },
+              sources: {
+                status: 'complete',
+                links: `{{SEARCH_SOURCES}}` as any,
+                media: `{{SOURCEMEDIA}}`,
+                images: `{{IMAGE_ARY}}`,
+              },
+            },
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+      parameters: {
+        ActionGetDictionaryKey: 'value',
+        ActionGetDictionaryValue: 'template',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'TEMPLATE',
+      },
+    },
+    {
+      type: 'RENDER_TEMPLATE',
+      parameters: {
+        template: '{{TEMPLATE}}',
       },
     },
     {

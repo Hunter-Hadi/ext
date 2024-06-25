@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Haraka",
     "sidebar__ai_provider__model_selector__smart_group__title": "Mjanja",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Kurithi",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Wa tatu"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Wa tatu",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Pata ufikiaji wa Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Mfano mpya zaidi wa Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Bora kuliko uwezo wa Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Haraka kuliko kasi za Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Hasa mzuri katika kuandika nambari, sayansi ya data, usindikaji wa picha, na uandishi",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Pata ufikiaji wa Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Mfano mpya na wenye maendeleo zaidi wa Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Kasi haraka. Dirisha la muktadha lenye herufi milioni 1.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Modalities iliyoboreshwa. Usalama ulioimarishwa.",
+    "sidebar__promotion_dialog__learn_more": "Jifunze zaidi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

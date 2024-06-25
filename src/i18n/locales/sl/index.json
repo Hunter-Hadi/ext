@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Hitro",
     "sidebar__ai_provider__model_selector__smart_group__title": "Pametno",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Starejši",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3. oseba"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3. oseba",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Dostop do Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Najnovejši model podjetja Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Boljše od zmogljivosti modela Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Hitrejši od hitrosti modela Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Posebej dober pri kodiranju, znanosti o podatkih, vizualni obdelavi in pisanju",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Dostop do Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Najnovejši in najnaprednejši model podjetja Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Hitrejša hitrost. Okno konteksta s 1M žetoni.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Izboljšane modalnosti. Povečana varnost.",
+    "sidebar__promotion_dialog__learn_more": "Več informacij"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Γρήγορο",
     "sidebar__ai_provider__model_selector__smart_group__title": "Έξυπνο",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Παλαιότητα",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3ης Συμμετοχής"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3ης Συμμετοχής",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Πρόσβαση στο Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Το νεότερο μοντέλο της Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Καλύτερες δυνατότητες από το Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Ταχύτερες ταχύτητες από το Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Ιδιαίτερα καλό στον προγραμματισμό, την επιστήμη των δεδομένων, την οπτική επεξεργασία και τη συγγραφή",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Πρόσβαση στο Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Το νεότερο και πιο προηγμένο μοντέλο της Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Μεγαλύτερη ταχύτητα. Παράθυρο 1M λέξεων για το περιβάλλον συμφραζομένου.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Βελτιωμένες δυνατότητες. Ενισχυμένη ασφάλεια.",
+    "sidebar__promotion_dialog__learn_more": "Μάθετε περισσότερα"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

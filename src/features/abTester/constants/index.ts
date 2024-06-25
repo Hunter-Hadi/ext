@@ -99,26 +99,26 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
       '/images/activity/promotion-dialog-claude-3.5-sonnet.png',
     ),
     title: (t) =>
-      t('client:sidebar__promotion_dialog__claude_3.5__content__title'),
+      t('client:sidebar__promotion_dialog__claude_3_5__content__title'),
     descriptions: (t) => [
       {
         description: t(
-          'client:sidebar__promotion_dialog__claude_3.5__content_item1__description',
+          'client:sidebar__promotion_dialog__claude_3_5__content_item1__description',
         ),
       },
       {
         description: t(
-          'client:sidebar__promotion_dialog__claude_3.5__content_item2__description',
+          'client:sidebar__promotion_dialog__claude_3_5__content_item2__description',
         ),
       },
       {
         description: t(
-          'client:sidebar__promotion_dialog__claude_3.5__content_item3__description',
+          'client:sidebar__promotion_dialog__claude_3_5__content_item3__description',
         ),
       },
       {
         description: t(
-          'client:sidebar__promotion_dialog__claude_3.5__content_item4__description',
+          'client:sidebar__promotion_dialog__claude_3_5__content_item4__description',
         ),
       },
     ],
@@ -129,21 +129,21 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
       '/images/activity/promotion-dialog-gemini-1.5-pro.png',
     ),
     title: (t) =>
-      t('client:sidebar__promotion_dialog__gemini_1.5_pro__content__title'),
+      t('client:sidebar__promotion_dialog__gemini_1_5_pro__content__title'),
     descriptions: (t) => [
       {
         description: t(
-          'client:sidebar__promotion_dialog__gemini_1.5_pro__content_item1__description',
+          'client:sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description',
         ),
       },
       {
         description: t(
-          'client:sidebar__promotion_dialog__gemini_1.5_pro__content_item2__description',
+          'client:sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description',
         ),
       },
       {
         description: t(
-          'client:sidebar__promotion_dialog__gemini_1.5_pro__content_item3__description',
+          'client:sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description',
         ),
       },
     ],

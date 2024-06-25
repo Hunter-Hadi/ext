@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "빠른",
     "sidebar__ai_provider__model_selector__smart_group__title": "스마트",
     "sidebar__ai_provider__model_selector__legacy_group__title": "레거시",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3rd-party"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3rd-party",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "클로드-3.5-손네트에 액세스",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic의 최신 모델",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "클로드-3-오퍼스 기능보다 우수함",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "클로드-3-손네트 속도보다 빠름",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "코딩, 데이터 과학, 시각 처리 및 작성에 특히 뛰어남",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "젬니-1.5-프로에 액세스",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google의 최신 및 가장 고급 모델입니다.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "더 빠른 속도. 1M 토큰 컨텍스트 창.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "개선된 모달리티. 향상된 안전성.",
+    "sidebar__promotion_dialog__learn_more": "더 알아보기"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

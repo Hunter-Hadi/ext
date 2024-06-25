@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "ઝડપી",
     "sidebar__ai_provider__model_selector__smart_group__title": "સ્માર્ટ",
     "sidebar__ai_provider__model_selector__legacy_group__title": "વિરાસત",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3જી પક્ષ"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3જી પક્ષ",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "ક્લોડ-3.5-સોનેટ એક્સેસ કરો",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "એન્થ્રોપિકની નવીનતમ મોડેલ",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "ક્લોડ-3-ઓપસની ક્ષમતાઓથી સુધારેલું",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "ક્લોડ-3-સોનેટની સ્પીડથી ઝડપી",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "કોડિંગ, ડેટા સાયન્સ, વિઝ્યુઅલ પ્રોસેસિંગ અને લેખનમાં વિશેષતઃ સારું",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "જેમિની-1.5-પ્રો એક્સેસ કરો",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "ગૂગલની નવીનતમ અને સૌથી અગ્રગણ્ય મોડેલ.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "ઝડપી સ્પીડ. 1M ટોકન સંદર્ભ વિંડો.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "સુધારેલી મોડાલિટીઓ. વધારે સુરક્ષા.",
+    "sidebar__promotion_dialog__learn_more": "વધુ જાણો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

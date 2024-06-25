@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Rapid",
     "sidebar__ai_provider__model_selector__smart_group__title": "Inteligent",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Vechi",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Terță parte"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Terță parte",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Accesați Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Cel mai nou model al Anthropics",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Mai bun decât capacitățile lui Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Mai rapid decât vitezele lui Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Deosebit de bun la programare, știința datelor, procesarea vizuală și scriere",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Accesați Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Cel mai nou și avansat model Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Viteză mai mare. Fereastră de context cu 1M de tokeni.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Modalități îmbunătățite. Siguranță sporită.",
+    "sidebar__promotion_dialog__learn_more": "Aflați mai multe"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

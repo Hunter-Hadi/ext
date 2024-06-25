@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "سريع",
     "sidebar__ai_provider__model_selector__smart_group__title": "ذكي",
     "sidebar__ai_provider__model_selector__legacy_group__title": "تراثي",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "طرف ثالث"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "طرف ثالث",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "الوصول إلى Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "أحدث نموذج من Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "أفضل من قدرات Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "أسرع من سرعات Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "متخصص في البرمجة وعلوم البيانات ومعالجة الصور والكتابة",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "الوصول إلى Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "أحدث وأكثر النماذج تقدمًا من Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "سرعة أسرع. نافذة سياق بطول 1 مليون رمز.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "تحسين الأوضاع. سلامة محسّنة.",
+    "sidebar__promotion_dialog__learn_more": "معرفة المزيد"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

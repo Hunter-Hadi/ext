@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "झटपट",
     "sidebar__ai_provider__model_selector__smart_group__title": "स्मार्ट",
     "sidebar__ai_provider__model_selector__legacy_group__title": "विरासत",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "तिसरा पक्ष"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "तिसरा पक्ष",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "क्लोड-3.5-सोनेट उपलब्ध करा",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic चे नवीनतम मॉडेल",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "क्लोड-3-ओपस प्रभावक्षमतेपेक्षा चांगले",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "क्लोड-3-सोनेट स्पीडपेक्षा जलद",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "कोडिंग, डेटा विज्ञान, विज्ञान विचारणा आणि लेखनात विशेषत: चांगले",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "जेमिनी-1.5-प्रो उपलब्ध करा",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google चे नवीनतम आणि सर्वोच्च मॉडेल.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "जलदता वाढवा. 1M टोकन संदर्भ विंडो.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "सुधारित मोडालिटी. वाढवलेली सुरक्षा.",
+    "sidebar__promotion_dialog__learn_more": "अधिक जाणून घ्या"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

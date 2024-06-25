@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Cepat",
     "sidebar__ai_provider__model_selector__smart_group__title": "Cerdas",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Warisan",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Pihak ketiga"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Pihak ketiga",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Akses Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Model terbaru dari Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Lebih baik dari kemampuan Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Lebih cepat dari kecepatan Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Terutama bagus dalam pemrograman, ilmu data, pengolahan visual, dan menulis",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Akses Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Model terbaru dan paling canggih dari Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Kecepatan lebih tinggi. Jendela konteks 1 juta token.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Modalitas yang ditingkatkan. Keamanan yang lebih baik.",
+    "sidebar__promotion_dialog__learn_more": "Pelajari lebih lanjut"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

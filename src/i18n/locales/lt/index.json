@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Greitai",
     "sidebar__ai_provider__model_selector__smart_group__title": "Protingai",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Senas",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Trečiosios šalies"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Trečiosios šalies",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Pasiekti Claude-3.5-sonetą",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Naujausias Anthropic modelis",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Geresnės galimybės nei Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Greitesnis nei Claude-3-soneto greičiai",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Ypač geras programavime, duomenų moksle, vaizdų apdorojime ir rašyme",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Pasiekti Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google naujausias ir pažangiausias modelis.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Greitesnis greitis. 1M ženklų konteksto langas.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Patobulintos modalumai. Pakeista sauga.",
+    "sidebar__promotion_dialog__learn_more": "Sužinokite daugiau"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

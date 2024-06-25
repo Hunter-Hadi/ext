@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Ràpid",
     "sidebar__ai_provider__model_selector__smart_group__title": "Intel·ligent",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Antic",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "De tercers"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "De tercers",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Accedeix a Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "El model més nou d'Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Millor que les capacitats de Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Més ràpid que les velocitats de Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Particularment bo en programació, ciència de dades, processament visual i escriptura",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Accedeix a Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "El model més nou i avançat de Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Velocitat més ràpida. Finestra de context de 1M de tokens.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Modalitats millorades. Seguretat reforçada.",
+    "sidebar__promotion_dialog__learn_more": "Més informació"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

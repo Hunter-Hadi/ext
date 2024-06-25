@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Nhanh",
     "sidebar__ai_provider__model_selector__smart_group__title": "Thông minh",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Cũ",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Bên thứ ba"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Bên thứ ba",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Truy cập Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Mô hình mới nhất của Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Vượt trội hơn so với khả năng của Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Nhanh hơn tốc độ của Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Đặc biệt giỏi trong việc lập trình, khoa học dữ liệu, xử lý hình ảnh và viết lách",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Truy cập Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Mô hình mới nhất và tiên tiến nhất của Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Tốc độ nhanh hơn. Cửa sổ ngữ cảnh 1 triệu token.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Cải thiện các mô đun. Tăng cường an toàn.",
+    "sidebar__promotion_dialog__learn_more": "Tìm hiểu thêm"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "تیز",
     "sidebar__ai_provider__model_selector__smart_group__title": "ہوشیار",
     "sidebar__ai_provider__model_selector__legacy_group__title": "ورثہ",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "تیسری طرف کا"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "تیسری طرف کا",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "کلوڈ-3.5-سونیٹ تک رسائی حاصل کریں",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic کا تازہ ترین ماڈل",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "کلوڈ-3-اوپس کی صلاحیتوں سے بہتر",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "کلوڈ-3-سونیٹ کی رفتار سے تیز",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "کوڈنگ، ڈیٹا سائنس، ویجوال پروسیسنگ اور تحریر میں خاص طور پر اچھا",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "جمنی-1.5-پرو تک رسائی حاصل کریں",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل۔",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "تیز رفتار۔ 1M ٹوکن کنٹیکسٹ ونڈو۔",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "بہتر ماڈالیٹیز۔ بہتر حفاظت۔",
+    "sidebar__promotion_dialog__learn_more": "مزید جانیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

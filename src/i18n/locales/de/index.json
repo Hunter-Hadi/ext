@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Schnell",
     "sidebar__ai_provider__model_selector__smart_group__title": "Intelligent",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Alt",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Drittanbieter"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Drittanbieter",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Zugriff auf Claude-3.5-Sonett",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Das neueste Modell von Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Bessere Fähigkeiten als Claude-3-Opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Schneller als Claude-3-Sonett-Geschwindigkeiten",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Besonders gut in Codierung, Datenwissenschaft, visueller Verarbeitung und Schreiben",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Zugriff auf Gemini-1.5-Pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Googles neuestes und fortschrittlichstes Modell.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Schnellere Geschwindigkeit. 1M Token-Kontextfenster.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Verbesserte Modalitäten. Erhöhte Sicherheit.",
+    "sidebar__promotion_dialog__learn_more": "Erfahren Sie mehr"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

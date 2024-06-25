@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Rápido",
     "sidebar__ai_provider__model_selector__smart_group__title": "Inteligente",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Heredado",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Terceros"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Terceros",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Accede a Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "El modelo más nuevo de Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Mejor que las capacidades de Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Más rápido que las velocidades de Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Particularmente bueno en codificación, ciencia de datos, procesamiento visual y escritura",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Accede a Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "El modelo más nuevo y avanzado de Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Mayor velocidad. Ventana de contexto de 1 millón de tokens.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Modalidades mejoradas. Seguridad mejorada.",
+    "sidebar__promotion_dialog__learn_more": "Más información"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

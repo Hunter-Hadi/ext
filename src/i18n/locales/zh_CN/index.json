@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "快速",
     "sidebar__ai_provider__model_selector__smart_group__title": "智能",
     "sidebar__ai_provider__model_selector__legacy_group__title": "旧版本",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "第三方"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "第三方",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "访问Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic最新模型",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "优于Claude-3-opus的能力",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "比Claude-3-sonnet速度更快",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "特别擅长编码、数据科学、视觉处理和写作",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "访问Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google最新和最先进的模型。",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "更快的速度。1M令牌上下文窗口。",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "改进的模态。增强安全性。",
+    "sidebar__promotion_dialog__learn_more": "了解更多"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

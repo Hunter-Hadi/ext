@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "வேகமான",
     "sidebar__ai_provider__model_selector__smart_group__title": "ஸ்மார்ட்",
     "sidebar__ai_provider__model_selector__legacy_group__title": "பழைய",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3-ஆம் நபர்"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3-ஆம் நபர்",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "கிளோட்-3.5-சொன்னெட் அணுகல்",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic இன் புதியதாகும் மாதிரி",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "கிளோட்-3-ஓபஸ் திறன்களை மேம்படுத்துகின்றது",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "கிளோட்-3-சொன்னெட் வேகத்தில் விரைவாக",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "குறிப்பிட்ட குறியீட்டில் மிகுந்த முக்கியமானது: குறியீட்டு அறிவியல், தரவு அறிவியல், பட செயல்முறை, எழுத்து",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "ஜெமினி-1.5-ப்ரோ அணுகல்",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google இன் புதியதாகும் மிகுந்த மாதிரி.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "வேகம் வேகமாக. 1M டோக்கன் உள்ளடக்க சாளரம்.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "மேம்படுத்தப்பட்ட முறைகள். மேம்படுத்தப்பட்ட பாதுகாப்பு.",
+    "sidebar__promotion_dialog__learn_more": "மேலும் அறிக"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

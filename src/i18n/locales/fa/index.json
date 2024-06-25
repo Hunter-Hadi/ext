@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "سریع",
     "sidebar__ai_provider__model_selector__smart_group__title": "هوشمند",
     "sidebar__ai_provider__model_selector__legacy_group__title": "وراثتی",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "طرف سوم"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "طرف سوم",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "دسترسی به کلود-۳.۵-سونت",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "جدیدترین مدل آنتروپیک",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "بهتر از قابلیت‌های کلود-۳-اپوس",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "سرعت بالاتر از سرعت‌های کلود-۳-سونت",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "به خصوص در کدنویسی، علم داده، پردازش تصویر و نوشتار خوب است",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "دسترسی به جمینی-۱.۵-پرو",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "جدیدترین و پیشرفته‌ترین مدل گوگل",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "سرعت بالاتر. پنجره متنی با ۱ میلیون توکن",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "مدالیتهای بهبود یافته. ایمنی بهبود یافته",
+    "sidebar__promotion_dialog__learn_more": "بیشتر بدانید"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

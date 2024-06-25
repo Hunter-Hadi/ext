@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Gyors",
     "sidebar__ai_provider__model_selector__smart_group__title": "Okos",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Örökség",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3. fél"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3. fél",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Hozzáférés a Claude-3.5-sonnethez",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Az Anthropics legújabb modellje",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Jobb, mint a Claude-3-opus képességei",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Gyorsabb, mint a Claude-3-sonnet sebességek",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Különösen jó kódolásban, adattudományban, vizuális feldolgozásban és írásban",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Hozzáférés a Gemini-1.5-prohoz",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "A Google legújabb és legfejlettebb modellje.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Gyorsabb sebesség. 1M tokenes kontextusablak.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Fejlettebb modalitások. Fokozott biztonság.",
+    "sidebar__promotion_dialog__learn_more": "További információ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

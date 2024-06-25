@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "በጥቂት የሚጠቀሙ",
     "sidebar__ai_provider__model_selector__smart_group__title": "ስማርት",
     "sidebar__ai_provider__model_selector__legacy_group__title": "የታየበት",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3ኛ ግለሰቦች"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3ኛ ግለሰቦች",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "የ Claude-3.5-sonnet የተወሰነ ሞዴል",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic የቅርብ ሞዴል",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Claude-3-opus የተወሰነ አጠቃላይ እይታ",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Claude-3-sonnet የተወሰነ መቀመጫ ዝግጅት",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "በኮድንግ, የምስል ማስተላለፊያ, የአርስዎት እና የፍርድ ጥቆማ ከተጠቀሰ",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "የ Gemini-1.5-pro የተወሰነ ሞዴል",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google የቅርብ እና የተመሠረተ ሞዴል",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "በግጥም የተወሰነ የ 1M ቶክን ከንግግር የተወሰነ ድርጊት",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "የተወሰነ ሞዴልዎች. የተሻለ ባለቤት",
+    "sidebar__promotion_dialog__learn_more": "ተጨማሪ ያለው"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

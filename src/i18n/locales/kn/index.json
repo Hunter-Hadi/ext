@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "ಬೇಗನೆ",
     "sidebar__ai_provider__model_selector__smart_group__title": "ಸ್ಮಾರ್ಟ್",
     "sidebar__ai_provider__model_selector__legacy_group__title": "ಪೂರ್ವಾಗ್ರಹ",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3ನೇ ಪಕ್ಷ"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3ನೇ ಪಕ್ಷ",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "ಕ್ಲೋಡ್-3.5-ಸೊನ್ನೆಟ್ ಪ್ರವೇಶ",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "ಅಂಥ್ರೋಪಿಕ್ ಹೊಸ ಮಾದರಿ",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "ಕ್ಲೋಡ್-3-ಓಪಸ್ ಸಾಧನಗಳಿಗಿಂತ ಉತ್ತಮ",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "ಕ್ಲೋಡ್-3-ಸೊನ್ನೆಟ್ ಗತಿಯಿಂದ ಹೆಚ್ಚು ವೇಗವಾಗಿ",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "ಕೋಡಿಂಗ್, ಡೇಟಾ ವಿಜ್ಞಾನ, ವಿಜ್ಞಾನದ ಪ್ರಕ್ರಿಯೆ ಮತ್ತು ಬರವಣಿಗೆಯಲ್ಲಿ ವಿಶೇಷವಾಗಿ ಉತ್ತಮ",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "ಜೆಮಿನಿ-1.5-ಪ್ರೊ ಪ್ರವೇಶ",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "ಗೂಗಲ್ ಹೊಸತಾದ ಮತ್ತು ಅತ್ಯಂತ ಮುಂದುವರಿದ ಮಾದರಿ.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "ಹೆಚ್ಚು ವೇಗ. 1M ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋ.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "ಮೇಲ್ಮೆಗೆಗಳನ್ನು ಸುಧಾರಿಸಲಾಗಿದೆ. ಮೆಕ್ಕಿನ ಸುರಕ್ಷತೆ.",
+    "sidebar__promotion_dialog__learn_more": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

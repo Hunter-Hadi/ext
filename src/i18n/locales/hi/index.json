@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "तेज",
     "sidebar__ai_provider__model_selector__smart_group__title": "स्मार्ट",
     "sidebar__ai_provider__model_selector__legacy_group__title": "पुराना",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "तृतीय-पक्ष"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "तृतीय-पक्ष",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "क्लोड-3.5-सोनेट तक पहुंचें",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "एंथ्रोपिक का नवीनतम मॉडल",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "क्लोड-3-ओपस क्षमताओं से बेहतर",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "क्लोड-3-सोनेट स्पीड से तेज",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "कोडिंग, डेटा साइंस, विजुअल प्रोसेसिंग, और लेखन में विशेष रूप से अच्छा",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "जेमिनी-1.5-प्रो तक पहुंचें",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल।",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "तेज़ स्पीड। 1M टोकन संदर्भ विंडो।",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "सुधारित मोडालिटीज़। बढ़ी हुई सुरक्षा।",
+    "sidebar__promotion_dialog__learn_more": "और अधिक जानें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

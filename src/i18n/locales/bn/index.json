@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "দ্রুত",
     "sidebar__ai_provider__model_selector__smart_group__title": "স্মার্ট",
     "sidebar__ai_provider__model_selector__legacy_group__title": "ঐতিহাসিক",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "তৃতীয়-পক্ষ"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "তৃতীয়-পক্ষ",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "ক্লোড-৩.৫-সনেট এক্সেস করুন",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic এর নতুনতম মডেল",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "ক্লোড-৩-অপাস ক্ষমতা থেকে ভালো",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "ক্লোড-৩-সনেট গতি থেকে দ্রুত",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "কোডিং, ডেটা বিজ্ঞান, ভিজ্যুয়াল প্রসেসিং এবং লেখার জন্য বিশেষত ভালো",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "জেমিনি-১.৫-প্রো এক্সেস করুন",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "গুগলের নতুনতম এবং সর্বাধিক উন্নত মডেল।",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "দ্রুত গতি। ১মি টোকেন্স সংযোগ উইন্ডো।",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "উন্নত মোডালিটি। উন্নত নিরাপত্তা।",
+    "sidebar__promotion_dialog__learn_more": "আরও জানুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

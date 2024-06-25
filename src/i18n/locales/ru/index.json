@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Быстро",
     "sidebar__ai_provider__model_selector__smart_group__title": "Умно",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Устаревшее",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3-я сторона"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3-я сторона",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Доступ к Claude-3.5-сонет",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Новейшая модель Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Лучше возможностей Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Более быстрые скорости, чем у Claude-3-сонет",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Особенно хорош в программировании, науке о данных, визуальной обработке и написании",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Доступ к Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Самая новая и передовая модель Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Более быстрая скорость. Окно контекста из 1 млн токенов.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Улучшенные модальности. Улучшенная безопасность.",
+    "sidebar__promotion_dialog__learn_more": "Узнать больше"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

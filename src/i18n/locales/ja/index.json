@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "高速",
     "sidebar__ai_provider__model_selector__smart_group__title": "スマート",
     "sidebar__ai_provider__model_selector__legacy_group__title": "レガシー",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "サードパーティ"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "サードパーティ",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "クロード-3.5-ソネットにアクセス",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropicの最新モデル",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "クロード-3-オーパスの機能よりも優れています",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "クロード-3-ソネットの速度よりも速いです",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "コーディング、データサイエンス、ビジュアル処理、執筆に特に優れています",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "ジェミニ-1.5-プロにアクセス",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Googleの最新かつ最も高度なモデルです。",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "より高速。1Mトークンのコンテキストウィンドウ。",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "改良されたモダリティ。強化された安全性。",
+    "sidebar__promotion_dialog__learn_more": "詳細を見る"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

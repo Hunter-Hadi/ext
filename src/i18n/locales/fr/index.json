@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Rapide",
     "sidebar__ai_provider__model_selector__smart_group__title": "Intelligent",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Héritage",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Tiers"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Tiers",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Accéder à Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Le tout dernier modèle d'Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Meilleures capacités que Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Vitesse plus rapide que Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Particulièrement doué pour la programmation, la science des données, le traitement visuel et l'écriture",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Accéder à Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Le tout dernier modèle de Google, le plus avancé.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Vitesse plus rapide. Fenêtre contextuelle de 1 million de jetons.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Modalités améliorées. Sécurité renforcée.",
+    "sidebar__promotion_dialog__learn_more": "En savoir plus"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "เร็ว",
     "sidebar__ai_provider__model_selector__smart_group__title": "สมาร์ท",
     "sidebar__ai_provider__model_selector__legacy_group__title": "เก่า",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "บุคคลที่สาม"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "บุคคลที่สาม",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "เข้าถึง Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "โมเดลใหม่ล่าสุดของ Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "ดีกว่าความสามารถของ Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "เร็วกว่าความเร็วของ Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "เหมาะสำหรับการเขียนโปรแกรม, วิทยาการข้อมูล, การประมวลผลภาพ, และการเขียน",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "เข้าถึง Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "โมเดลล่าสุดและทันสมัยที่สุดของ Google",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "ความเร็วที่เร็วขึ้น หน้าต่างความสัมพันธ์ 1 ล้านโทเค็น",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "การปรับปรุงโมเดล ความปลอดภัยที่เพิ่มขึ้น",
+    "sidebar__promotion_dialog__learn_more": "เรียนรู้เพิ่มเติม"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

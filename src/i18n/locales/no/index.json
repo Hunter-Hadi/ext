@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Rask",
     "sidebar__ai_provider__model_selector__smart_group__title": "Smart",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Legacy",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Tredjepart"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Tredjepart",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Få tilgang til Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropics nyeste modell",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Bedre enn Claude-3-opus-funksjoner",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Raskere enn Claude-3-sonnet-hastigheter",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Spesielt god på koding, data science, visuell prosessering og skriving",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Få tilgang til Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Googles nyeste og mest avanserte modell.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Høyere hastighet. 1M tokens kontekstvindu.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Forbedrede modaliteter. Forbedret sikkerhet.",
+    "sidebar__promotion_dialog__learn_more": "Lær mer"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

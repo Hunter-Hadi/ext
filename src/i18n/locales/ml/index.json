@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "ഫാസ്റ്റ്",
     "sidebar__ai_provider__model_selector__smart_group__title": "സ്മാര്‍ട്ട്",
     "sidebar__ai_provider__model_selector__legacy_group__title": "പഴയത്",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3-ാം പാര്‍ട്ടി"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3-ാം പാര്‍ട്ടി",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "ക്ലോഡ്-3.5-സോണെറ്റ് ആക്സസ് ചെയ്യുക",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic-യുടെ പുതിയതായ മോഡൽ",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "ക്ലോഡ്-3-ഓപ്പസ് കഴിവുകളേയും മേലുള്ളവയേയും നല്ലതാക്കുന്നു",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "ക്ലോഡ്-3-സോണെറ്റ് സ്പീഡിനേയും വേഗതയിലേക്കും വരുന്നു",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "കോഡിംഗ്, ഡാറ്റാ സയൻസ്, വിസ്വല്‍ പ്രോസസിംഗ്, എഴുത്തുകളിലേക്കും പ്രധാനമായി നല്ല കഴിവുള്ളവയാണ്",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "ജെമിനി-1.5-പ്രോ ആക്സസ് ചെയ്യുക",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google-യുടെ പുതിയതായിരുന്നുവെങ്കിലും അടിസ്ഥാനപ്പെടുത്തിയ മോഡൽ.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "വേഗതയും 1M ടോക്കൺ കൺടെക്സ്റ്റ് വിന്യാസവും.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "മോഡാലിറ്റീസ് മേഖലകൾ മേലുള്ളതും. പെരുമാറ്റം ചെയ്യപ്പെട്ടതും.",
+    "sidebar__promotion_dialog__learn_more": "കൂടുതല്‍ അറിയുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Brzo",
     "sidebar__ai_provider__model_selector__smart_group__title": "Pametno",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Stari modeli",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "Treća strana"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "Treća strana",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Pristupite Claude-3.5-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Najnoviji model kompanije Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Bolje od mogućnosti Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Brži od brzine Claude-3-sonnet",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Posebno dobar za kodiranje, nauku o podacima, vizuelnu obradu i pisanje",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Pristupite Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Najnoviji i najnapredniji model kompanije Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Brža brzina. Prozor konteksta od 1M tokena.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Unapređene modalnosti. Poboljšana sigurnost.",
+    "sidebar__promotion_dialog__learn_more": "Saznajte više"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

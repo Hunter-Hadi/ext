@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "Hızlı",
     "sidebar__ai_provider__model_selector__smart_group__title": "Akıllı",
     "sidebar__ai_provider__model_selector__legacy_group__title": "Eski",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "3. taraf"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "3. taraf",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "Claude-3.5-sonnet'a erişim",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic'ın en yeni modeli",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Claude-3-opus yeteneklerinden daha iyi",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Claude-3-sonnet hızlarından daha hızlı",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Kodlama, veri bilimi, görsel işleme ve yazma konularında özellikle iyidir",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Gemini-1.5-pro'ya erişim",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google'ın en yeni ve en gelişmiş modeli.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Daha hızlı hız. 1M token bağlam penceresi.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Geliştirilmiş modaliteler. Geliştirilmiş güvenlik.",
+    "sidebar__promotion_dialog__learn_more": "Daha fazla bilgi edinin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

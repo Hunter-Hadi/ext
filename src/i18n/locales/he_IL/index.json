@@ -982,7 +982,17 @@
     "sidebar__ai_provider__model_selector__fast_group__title": "מהיר",
     "sidebar__ai_provider__model_selector__smart_group__title": "חכם",
     "sidebar__ai_provider__model_selector__legacy_group__title": "ירושה",
-    "sidebar__ai_provider__model_selector__third_party_group__title": "צד שלישי"
+    "sidebar__ai_provider__model_selector__third_party_group__title": "צד שלישי",
+    "sidebar__promotion_dialog__claude_3_5__content__title": "גישה ל-Claude-3.5-סונטה",
+    "sidebar__promotion_dialog__claude_3_5__content_item1__description": "הדגם החדש ביותר של Anthropic",
+    "sidebar__promotion_dialog__claude_3_5__content_item2__description": "טוב יותר מיכולות Claude-3-opus",
+    "sidebar__promotion_dialog__claude_3_5__content_item3__description": "מהיר יותר ממהירויות Claude-3-סונטה",
+    "sidebar__promotion_dialog__claude_3_5__content_item4__description": "מיוחד בתכנות, מדעי הנתונים, עיבוד ויזואלי וכתיבה",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "גישה ל-Gemini-1.5-pro",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "הדגם החדש והמתקדם ביותר של Google.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "מהירות מוגברת. חלון קונטקסט של 1M טוקנים.",
+    "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "מודלים משופרים. בטיחות משופרת.",
+    "sidebar__promotion_dialog__learn_more": "מידע נוסף"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

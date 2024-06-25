@@ -4,6 +4,14 @@ import { parseHTML } from 'linkedom'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
+interface Image {
+  src: string
+  alt: string
+  title: string
+}
+
+const dirtywords = ['icon', 'menu', 'logo', 'load', 'search']
+
 /**
  * 插件客户端获取网页内容
  * @param url
@@ -23,7 +31,7 @@ const clientGetContentOfURL = async (
   url: string
   status: number
   success: boolean
-  images: any[]
+  images: Image[]
   videos: any[]
 }> => {
   const result = {
@@ -78,41 +86,68 @@ const clientGetContentOfURL = async (
       result.title = reader?.title || ''
       result.body = reader?.content || ''
       result.readabilityText = reader?.textContent || ''
-      console.log(`url123`, url)
-      console.log(`doc111`, doc)
-      console.log(`reader`, reader)
-      console.log(`htmlContent`, htmlContent)
-      console.log(`reader?.content`, reader?.content)
       if (needMedia && reader?.content) {
         const tempDiv = document.createElement('div')
         tempDiv.innerHTML = reader?.content
         const images = tempDiv.querySelectorAll('img')
         // const videos = tempDiv.querySelectorAll('video')
-        console.log(`1images111`, images)
         // console.log(`videos111`, videos)
 
         const _resImages = Array.from(images)
-          // .slice(0, 3)
-          .map((item) => {
-            console.log(`Image ${item.title}:`, item.src)
+          .filter((item) => {
+            // 检查是否有获取图片链接不合规的情况，并且进行属性检查
+            const src = item.src.toLowerCase()
+            const forbiddenPatterns = /chrome-extension:|icon|menu|logo/
+            if (forbiddenPatterns.test(src)) {
+              return false
+            }
 
+            const attributes = item.attributes
+            let widthAttr = ''
+            let heightAttr = ''
+            for (let i = 0; i < attributes.length; i++) {
+              const attrName = attributes[i].name.toLowerCase()
+              if (attrName.includes('width')) {
+                widthAttr = attributes[i].value
+              }
+              if (attrName.includes('height')) {
+                heightAttr = attributes[i].value
+              }
+            }
+            const alt = item.getAttribute('alt')
+
+            // 尺寸有一个大于 200
+            const isLarge =
+              widthAttr &&
+              heightAttr &&
+              parseInt(widthAttr) > 200 &&
+              parseInt(heightAttr) > 200
+
+            // alt 存在且不为空
+            const altString = String(alt)
+            const trimmedAlt = altString.trim()
+            const vaildAlt =
+              trimmedAlt !== '' &&
+              dirtywords.some((dirtyword) => trimmedAlt.includes(dirtyword))
+
+            // 过滤条件
+            return isLarge || vaildAlt
+          })
+          .reduce<Image[]>((acc, current) => {
+            // 检查当前图片的 src 是否已经存在于去重后的数组中
+            if (!acc.some((item) => item.src === current.src)) {
+              acc.push(current)
+            }
+            return acc
+          }, [])
+          .slice(0, 8)
+          .map((item) => {
             return {
               src: item.src,
-              alt: item.alt,
-              title: item.title,
+              alt: item.alt || '', // 如果没有 alt 属性，返回空字符串
+              title: item.title || '', // 如果没有 title 属性，返回空字符串
             }
           })
-        // const _resVideos = Array.from(videos)
-        //   // .slice(0, 3)
-        //   .map((item) => {
-        //     console.log(`Image ${item.title}:`, item.src)
-
-        //     return {
-        //       src: item.src,
-        //       poster: item.poster,
-        //       // title: item.title,
-        //     }
-        //   })
         result.images = _resImages
         // result.videos = _resVideos
       }

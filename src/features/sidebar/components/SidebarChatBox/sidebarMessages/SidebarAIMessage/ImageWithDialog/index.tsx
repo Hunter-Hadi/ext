@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import { styled } from '@mui/material/styles'
-import React, { useEffect, useState } from 'react'
+import React, { memo, useState } from 'react'
 
 import { IAIResponseOriginalMessageSourceMediaImages } from '@/features/indexed_db/conversations/models/Message'
 
@@ -30,13 +30,13 @@ const ThumbnailContainer = styled('div')({
   marginBottom: 8,
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignSelf: 'start',
   '& img': {
-    width: '100%',
+    width: '128px',
     height: 'auto',
     borderRadius: 8,
     boxSizing: 'border-box',
-    padding: '2px', // 添加 padding 以避免 border 挤占位置
+    padding: '2px',
   },
 })
 
@@ -46,6 +46,9 @@ const Thumbnail = styled('img', {
   border: selected ? `2px solid ${theme.palette.primary.main}` : 'none',
   boxSizing: 'border-box',
 }))
+
+const MemoizedThumbnail = memo(Thumbnail)
+const MemoizedThumbnailContainer = memo(ThumbnailContainer)
 
 const ImageWithDialog = ({
   images,
@@ -74,11 +77,6 @@ const ImageWithDialog = ({
     setSelectedImage(image)
   }
 
-  useEffect(() => {
-    console.log('images:', images)
-    console.log('selectedImage:', selectedImage)
-  }, [images, selectedImage])
-
   return (
     <>
       {images.map((image, index) => (
@@ -102,10 +100,6 @@ const ImageWithDialog = ({
         slotProps={{
           backdrop: {
             style: { backgroundColor: 'rgba(0, 0, 0, 0.8)' },
-            onClick: () => {
-              console.log(111111)
-              handleClose()
-            },
           },
         }}
       >
@@ -145,18 +139,21 @@ const ImageWithDialog = ({
             </Box>
             <Box
               sx={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
+                display: 'flex',
+                flexDirection: 'row',
                 gap: 1,
+                flexWrap: 'wrap',
                 overflowY: 'auto',
                 height: 'calc(100% - 96px)',
-                mt: 12,
-                pr: 4,
+                marginRight: '32px', // 保持右侧固定间距
+                width: '284px', // 两栏布局，每栏128px
+                alignContent: 'flex-start',
+                justifyContent: 'flex-start',
               }}
             >
               {images.map((image, index) => (
-                <ThumbnailContainer key={index}>
-                  <Thumbnail
+                <MemoizedThumbnailContainer key={index}>
+                  <MemoizedThumbnail
                     src={image.src}
                     alt={image.alt}
                     selected={selectedImage.src === image.src}
@@ -165,7 +162,7 @@ const ImageWithDialog = ({
                       handleThumbnailClick(image)
                     }}
                   />
-                </ThumbnailContainer>
+                </MemoizedThumbnailContainer>
               ))}
             </Box>
           </Box>

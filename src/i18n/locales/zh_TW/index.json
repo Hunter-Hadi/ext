@@ -981,7 +981,7 @@
     "sidebar__ai_provider__model_selector__free_group__title": "免費",
     "sidebar__ai_provider__model_selector__fast_group__title": "快速",
     "sidebar__ai_provider__model_selector__smart_group__title": "智能",
-    "sidebar__ai_provider__model_selector__legacy_group__title": "傳統",
+    "sidebar__ai_provider__model_selector__legacy_group__title": "舊版本",
     "sidebar__ai_provider__model_selector__third_party_group__title": "第三方"
   },
   "prompt": {

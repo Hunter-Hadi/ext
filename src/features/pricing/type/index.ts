@@ -30,3 +30,14 @@ export type IPaymentSubscriptionMethod =
 export type IPaymentOnetimeMethod = 'affirm' | 'wechat_pay' | 'klarna'
 
 export type IPaymentMethod = IPaymentSubscriptionMethod | IPaymentOnetimeMethod
+
+// plan pricing信息
+export type IPlanPricingInfo = {
+  // 这个字段接口没有，前端的type目前是没有monthly，basic/pro/elite就代表的是monthly
+  type: RENDER_PLAN_TYPE
+  price_id: string
+  price: number
+  discount_title?: string | null
+  discount_value?: number | null
+  promotion_code?: string | null
+}

@@ -1,42 +1,69 @@
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import CloseIcon from '@mui/icons-material/Close'
-import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { usePermissionCard } from '@/features/auth'
-import { PricingModalState } from '@/features/auth/store'
+import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { AuthUserInfoState, PricingModalState } from '@/features/auth/store'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import PlanButton from '@/features/pricing/components/PlanButton'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
+import PlanFeatures from '@/features/pricing/components/PlanFeatures'
+import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 
 interface IProps {}
 
 const PermissionPricingModal: FC<IProps> = () => {
   const { t } = useTranslation()
 
-  const [pricingModalState, setPricingModalState] = useRecoilState(
-    PricingModalState,
-  )
+  const [pricingModalState, setPricingModalState] =
+    useRecoilState(PricingModalState)
+
+  /**
+   * 因为目前Paywall modal放在全局弹窗的react节点下，这里先这么处理，否则底下的组件无法正确获取userInfo
+   */
+  useInitUserInfo(true)
+  const setUserInfo = useSetRecoilState(AuthUserInfoState)
+  const { currentUserPlan } = useUserInfo()
 
   const { show, conversationId, permissionSceneType } = pricingModalState
+
+  const currentUserPlanRef = useRef(currentUserPlan)
+  currentUserPlanRef.current = currentUserPlan
+  const userPlanNameRef = useRef(currentUserPlan.name)
 
   useEffect(() => {
     const listener = (event: any) => {
       if (event.data?.event === 'MAX_AI_PRICING_MODAL') {
         const { data } = event.data
+        // 记录mixpanel防止和response pricing触发防抖冲突
+        authEmitPricingHooksLog.flush()
+        authEmitPricingHooksLog('show', data.permissionSceneType, {
+          conversationId: data.conversationId,
+          paywallType: 'MODAL',
+        })
+        authEmitPricingHooksLog.flush()
+        userPlanNameRef.current = currentUserPlanRef.current.name
         setPricingModalState({
           show: true,
           ...data,
         })
+      }
+      if (event.data?.event === 'MAX_AI_SYNC_USER_INFO') {
+        const { data } = event.data
+        if (data.emial) {
+          setUserInfo((prev) => ({
+            ...prev,
+            user: data,
+          }))
+        }
       }
     }
     window.addEventListener('message', listener)
@@ -46,17 +73,15 @@ const PermissionPricingModal: FC<IProps> = () => {
   }, [])
 
   useEffect(() => {
-    if (show && permissionSceneType) {
-      // 记录mixpanel防止和response pricing触发防抖冲突
-      // 目前只有paywallVariant为2-2会触发当前modal的显示
-      setTimeout(() => {
-        authEmitPricingHooksLog('show', permissionSceneType, {
-          conversationId,
-          paywallType: 'MODAL',
-        })
-      }, 1500)
+    if (!show) return
+    // 升级plan需要隐藏
+    if (
+      (currentUserPlan.name === 'elite' || currentUserPlan.name === 'pro') &&
+      currentUserPlan.name !== userPlanNameRef.current
+    ) {
+      setPricingModalState({ show: false })
     }
-  }, [show, permissionSceneType])
+  }, [show, currentUserPlan.name])
 
   const permissionCard = usePermissionCard(permissionSceneType || '')
 
@@ -65,11 +90,21 @@ const PermissionPricingModal: FC<IProps> = () => {
     setPricingModalState({ show: false })
   }
 
-  const sendLog = () => {
+  const onUpgradeClick = (plan: RENDER_PLAN_TYPE) => {
     if (!permissionSceneType) return
     authEmitPricingHooksLog('click', permissionSceneType, {
       conversationId,
       paywallType: 'MODAL',
+      buttonType: 'stripe',
+    })
+  }
+
+  const onPricingClick = () => {
+    if (!permissionSceneType) return
+    authEmitPricingHooksLog('click', permissionSceneType, {
+      conversationId,
+      paywallType: 'MODAL',
+      buttonType: 'pricing',
     })
   }
 
@@ -90,7 +125,8 @@ const PermissionPricingModal: FC<IProps> = () => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           borderRadius: '16px',
-          maxWidth: '880px',
+          maxWidth: '1200px',
+          maxHeight: '90vh',
           bgcolor: 'background.paper',
           width: '100%',
           display: 'flex',
@@ -114,10 +150,15 @@ const PermissionPricingModal: FC<IProps> = () => {
           <CloseIcon sx={{ fontSize: '24px' }} />
         </IconButton>
 
-        <Box width='50%' display='flex' flexDirection='column'>
+        <Box
+          width='33.3%'
+          maxWidth='400px'
+          display='flex'
+          flexDirection='column'
+        >
           <Box
             width='100%'
-            height='392px'
+            height='400px'
             sx={{
               backgroundImage: `url(${permissionCard?.modalImageUrl})`,
               backgroundSize: 'cover',
@@ -152,161 +193,35 @@ const PermissionPricingModal: FC<IProps> = () => {
 
         <Box
           flex={1}
-          pt='42px'
+          mt='42px'
           px='20px'
           pb='20px'
           sx={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            overflow: 'auto',
           }}
         >
-          <Box>
-            <Typography fontSize={24} fontWeight={700}>
-              {t('client:permission__pricing_modal__title')}
-            </Typography>
-            <Typography fontSize={16} mt={1.5}>
-              {t('client:permission__pricing_modal__description')}
-            </Typography>
+          <Typography fontSize={32} fontWeight={700} textAlign='center'>
+            {t('client:permission__pricing_modal__title')}
+          </Typography>
+          <Typography fontSize={16} textAlign='center' mt={1.5}>
+            {t('client:permission__pricing_modal__description')}
+          </Typography>
 
-            <Stack mt={2} spacing={1.5}>
-              <Stack direction='row' spacing={1} alignItems='center'>
-                <CheckCircleOutlineIcon
-                  sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 24 }}
-                />
-                <Typography fontSize={16}>
-                  {t('client:permission__pricing_modal__item1__title')}
-                </Typography>
-              </Stack>
-              <Stack direction='row' spacing={1} alignItems='center'>
-                <CheckCircleOutlineIcon
-                  sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 24 }}
-                />
-                <Typography fontSize={16}>
-                  {t('client:permission__pricing_modal__item2__title')}
-                </Typography>
-              </Stack>
-              <Stack direction='row' spacing={1} alignItems='center'>
-                <CheckCircleOutlineIcon
-                  sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 24 }}
-                />
-                <Typography fontSize={16}>
-                  {t('client:permission__pricing_modal__item3__title')}
-                </Typography>
-              </Stack>
-            </Stack>
-          </Box>
+          <PlanFeatures sx={{ mt: 3 }} onUpgradeClick={onUpgradeClick} />
 
-          <Box>
-            <Stack
-              spacing={1}
-              borderRadius={2}
-              sx={{
-                p: 2,
-                bgcolor: 'rgba(250, 243, 255, 1)',
-              }}
+          <Box mt={2} textAlign='center'>
+            <Link
+              fontSize={16}
+              color='text.secondary'
+              href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+              onClick={onPricingClick}
+              target='_blank'
             >
-              <Typography fontSize={16} fontWeight={500}>
-                {t('client:permission__pricing_modal__price__title')}
-              </Typography>
-
-              <Stack direction='row' alignItems='center' spacing={1}>
-                <Typography
-                  fontSize={20}
-                  fontWeight={500}
-                  color='rgba(0, 0, 0, 0.6)'
-                  sx={{
-                    textDecoration: 'line-through',
-                  }}
-                >
-                  $40
-                </Typography>
-                <Typography fontSize={32} fontWeight={700}>
-                  $19
-                </Typography>
-                <Typography fontSize={12} color='rgba(0, 0, 0, 0.6)'>
-                  {t('client:permission__pricing_modal__price__desc1')}
-                  <br />
-                  {t('client:permission__pricing_modal__price__desc2')}
-                </Typography>
-              </Stack>
-
-              <Box position='relative'>
-                <PlanButton
-                  renderType='elite_yearly'
-                  fullWidth
-                  startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
-                  sx={{
-                    fontSize: 16,
-                    px: 2,
-                    py: 1.5,
-                    borderRadius: 2,
-                  }}
-                  sendLog={sendLog}
-                  // prefetch
-                >
-                  {t('client:permission__pricing_modal__cta_button__title')}
-                </PlanButton>
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    right: 10,
-                    top: 0,
-                    transform: 'translateY(-50%)',
-                    bgcolor: 'rgba(255, 126, 53, 1)',
-                    color: '#fff',
-                    borderRadius: 2,
-                    px: 1,
-                    py: 0.5,
-                  }}
-                >
-                  <Typography fontSize={16} fontWeight={500} lineHeight={1}>
-                    {t('client:permission__pricing_modal__discount__title')}
-                  </Typography>
-                </Box>
-              </Box>
-
-              <Stack direction='row' spacing={1} alignItems='center'>
-                <Stack direction='row' spacing='-6px'>
-                  <img
-                    src={getChromeExtensionAssetsURL(
-                      '/images/upgrade/avatars/1.png',
-                    )}
-                    width={20}
-                    height={20}
-                  />
-                  <img
-                    src={getChromeExtensionAssetsURL(
-                      '/images/upgrade/avatars/2.png',
-                    )}
-                    width={20}
-                    height={20}
-                  />
-                  <img
-                    src={getChromeExtensionAssetsURL(
-                      '/images/upgrade/avatars/3.png',
-                    )}
-                    width={20}
-                    height={20}
-                  />
-                </Stack>
-                <Typography fontSize={12}>
-                  {t(
-                    'client:permission__pricing_modal__cta_button__footer__title',
-                  )}
-                </Typography>
-              </Stack>
-            </Stack>
-            <Box mt={1} textAlign='center'>
-              <Link
-                fontSize={14}
-                color='text.secondary'
-                href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
-                target='_blank'
-              >
-                {t('client:permission__pricing_modal__footer__title')}
-              </Link>
-            </Box>
+              {t('client:permission__pricing_modal__footer__title')}
+            </Link>
           </Box>
         </Box>
       </Box>

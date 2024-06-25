@@ -160,7 +160,6 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 sourceMedia.images = [...sourceMedia.images, ...result.images]
                 // sourceMedia.videos = [...sourceMedia.videos, ...result.videos]
               }
-              console.log(`sourceMedia111:`, sourceMedia)
 
               // 2. 获取页面内容成功时，用页面内容替换 body、title
               if (pageRawContent.success) {

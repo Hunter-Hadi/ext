@@ -88,18 +88,19 @@ const clientGetContentOfURL = async (
       result.body = reader?.content || ''
       result.readabilityText = reader?.textContent || ''
       if (needMedia && reader?.content) {
-        const tempDiv = document.createElement('div')
-        tempDiv.innerHTML = reader?.content
-        const images = tempDiv.querySelectorAll('img')
-        // const videos = tempDiv.querySelectorAll('video')
-        // console.log(`videos111`, videos)
+        // 创建一个临时容器来解析 HTML 内容
+        const parser = new DOMParser()
+        const parsedDoc = parser.parseFromString(reader.content, 'text/html')
+
+        // 获取所有 img 标签
+        const images = parsedDoc.querySelectorAll('img')
 
         const filterImages = Array.from(images)
           .filter((item) => {
             // 检查是否有获取图片链接不合规的情况，并且进行属性检查
             const src = item.src.toLowerCase()
-            const forbiddenPatterns = /chrome-extension:|icon|menu|logo/
-            if (forbiddenPatterns.test(src)) {
+            const forbiddenPatterns = /chrome-extension:|icon|menu|logo|svg/
+            if (forbiddenPatterns.test(src) || src === '') {
               return false
             }
 
@@ -128,7 +129,7 @@ const clientGetContentOfURL = async (
             const trimmedAlt = altString.trim()
             const vaildAlt =
               trimmedAlt !== '' &&
-              dirtyWords.some((dirtyword) => trimmedAlt.includes(dirtyword))
+              !dirtyWords.some((dirtyword) => trimmedAlt.includes(dirtyword))
 
             // 过滤条件
             return isLarge || vaildAlt

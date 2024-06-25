@@ -278,11 +278,12 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
                 <Stack
                   key={itemIndex}
                   direction='row'
+                  alignItems='center'
                   spacing={1}
                   visibility={item.title ? 'visible' : 'hidden'}
                 >
                   <CheckCircleOutlineIcon
-                    sx={{ color: 'rgba(0, 0, 0, 0.87)', fontSize: 17 }}
+                    sx={{ color: 'rgba(0, 0, 0, 0.87)', fontSize: 20 }}
                   />
                   <Typography fontSize={14} color='rgba(0, 0, 0, 0.87)'>
                     {item.title}
@@ -308,7 +309,7 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
                       placement='top'
                       arrow
                     >
-                      <Box>
+                      <Box height={20}>
                         <TooltipIcon />
                       </Box>
                     </BlackTooltip>

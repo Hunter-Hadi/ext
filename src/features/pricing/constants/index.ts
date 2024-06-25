@@ -91,7 +91,7 @@ export const PLAN_PRICING_MAP: Record<RENDER_PLAN_TYPE, IPlanPricingInfo> = {
     price: 300,
     discount_title: '53%',
     discount_value: 0.76,
-    promotion_code: 'ELITELIMITEDTIME',
+    promotion_code: 'ELITEYEARLYSPECIAL', // 'ELITELIMITEDTIME',
   },
   elite_one_year: {
     type: 'elite_one_year',

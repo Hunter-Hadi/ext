@@ -119,7 +119,7 @@ const PermissionPricingModal: FC<IProps> = () => {
           transform: 'translate(-50%, -50%)',
           borderRadius: '16px',
           maxWidth: '1200px',
-          maxHeight: '90vh',
+          maxHeight: '80vh',
           bgcolor: 'background.paper',
           width: '100%',
           display: 'flex',

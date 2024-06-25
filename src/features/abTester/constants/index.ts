@@ -122,7 +122,7 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
         ),
       },
     ],
-    learnMoreLink: 'https://www.maxai.me/docs/release-notes/claude-3-5-sonnet',
+    learnMoreLink: 'https://www.maxai.me/docs/release-notes/claude-3-5-sonnet/',
   },
   'gemini-1.5-pro': {
     image: getChromeExtensionAssetsURL(

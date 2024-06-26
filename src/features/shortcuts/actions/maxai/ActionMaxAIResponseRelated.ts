@@ -92,16 +92,6 @@ export class ActionMaxAIResponseRelated extends Action {
                   summaryContent += `### ${child.text}\n`
                 })
               })
-            // related questions用的model是gpt-3.5-turbo，所以这里的max_response_tokens是16384
-            // transcript目前没有处理内容，视频很长的情况下transcript会很大，这里需要做处理
-            // 预留1000 token给related questions response
-            const { isLimit, text } = await sliceTextByTokens(
-              summaryContent,
-              16384 - 1000,
-            )
-            if (isLimit) {
-              summaryContent = text
-            }
           }
         } catch (e) {
           console.error(e)
@@ -109,6 +99,16 @@ export class ActionMaxAIResponseRelated extends Action {
       }
     }
     if (summaryContent) {
+      // related questions用的model是gpt-3.5-turbo，所以这里的max_response_tokens是16384
+      // transcript目前没有处理内容，视频很长的情况下transcript会很大，这里需要做处理
+      // 预留1000 token给related questions response
+      const { isLimit, text } = await sliceTextByTokens(
+        summaryContent,
+        16384 - 1000,
+      )
+      if (isLimit) {
+        summaryContent = text
+      }
       const analyticsData = await generateQuestionAnalyticsData(
         {
           conversationId: clientConversationEngine?.currentConversationId,

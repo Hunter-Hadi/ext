@@ -481,18 +481,6 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'TEMPLATE',
-      },
-    },
-    {
-      type: 'RENDER_TEMPLATE',
-      parameters: {
-        template: '{{TEMPLATE}}',
-      },
-    },
-    {
-      type: 'SET_VARIABLE',
-      parameters: {
         VariableName: 'PAGE_CONTENT',
       },
     },

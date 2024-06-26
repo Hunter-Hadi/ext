@@ -260,6 +260,9 @@ const useSidebarSettings = () => {
             meta: merge({
               ...SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary,
               pageSummaryType,
+              pageSummary: {
+                type: pageSummaryType,
+              },
               domain,
               path,
               sourceWebpage: websiteGetSeoMetaData(),
@@ -269,7 +272,7 @@ const useSidebarSettings = () => {
               // \`\`\`
               // ${pageSummaryData.pageSummaryContent}
               // \`\`\``,
-            }),
+            } as IConversationMeta),
           } as Partial<IConversation>,
         },
       })

@@ -16,50 +16,51 @@ const SidebarAImessageRelatedQuestions: FC<{
   const { smoothConversationLoading } = useSmoothConversationLoading()
   return (
     <Stack>
-      {relatedQuestions.map((relatedQuestion, index) => {
-        return (
-          <MenuItem
-            disabled={smoothConversationLoading}
-            sx={{
-              p: 0,
-            }}
-            key={index}
-            onClick={async () => {
-              await askAIQuestion({
-                type: 'user',
-                text: relatedQuestion.title,
-                meta: {
-                  includeHistory: true,
-                },
-              })
-            }}
-          >
-            <Stack width={'100%'}>
-              <Divider />
-              <Stack
-                direction={'row'}
-                alignItems={'center'}
-                width={'100%'}
-                sx={{
-                  my: '14px',
-                  px: 1,
-                }}
-                gap={1}
-              >
-                <Typography
-                  fontSize={'16px'}
-                  width={0}
-                  flex={1}
-                  whiteSpace='normal'
-                  color={'text.primary'}
+      {Array.isArray(relatedQuestions) &&
+        relatedQuestions.map((relatedQuestion, index) => {
+          return (
+            <MenuItem
+              disabled={smoothConversationLoading}
+              sx={{
+                p: 0,
+              }}
+              key={index}
+              onClick={async () => {
+                await askAIQuestion({
+                  type: 'user',
+                  text: relatedQuestion.title,
+                  meta: {
+                    includeHistory: true,
+                  },
+                })
+              }}
+            >
+              <Stack width={'100%'}>
+                <Divider />
+                <Stack
+                  direction={'row'}
+                  alignItems={'center'}
+                  width={'100%'}
+                  sx={{
+                    my: '14px',
+                    px: 1,
+                  }}
+                  gap={1}
                 >
-                  {relatedQuestion.title}
-                </Typography>
+                  <Typography
+                    fontSize={'16px'}
+                    width={0}
+                    flex={1}
+                    whiteSpace='normal'
+                    color={'text.primary'}
+                  >
+                    {relatedQuestion.title}
+                  </Typography>
+                </Stack>
               </Stack>
-            </Stack>
-          </MenuItem>
-        )
-      })}
+            </MenuItem>
+          )
+        })}
     </Stack>
   )
 }

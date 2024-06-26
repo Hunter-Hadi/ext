@@ -6,6 +6,10 @@ import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/clien
 // export const MaxUploadTxtFileSize = 1024 * 1024 * 32 // 32MB
 export const MAX_UPLOAD_TEXT_FILE_TOKENS = 400 * 1000 // 400k
 
+export const createDocId = (text: string) => {
+  return md5TextEncrypt(text)
+}
+
 export const checkDocIdExist = async (accessToken: string, docId: string) => {
   return new Promise<boolean>((resolve) => {
     fetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/check_doc_exists`, {
@@ -39,10 +43,10 @@ export const stringConvertTxtUpload = async (
   const accessToken = await getAccessToken()
   // eslint-disable-next-line no-async-promise-executor
   return new Promise<string>(async (resolve) => {
-    const md5HashId = md5TextEncrypt(text)
+    const docId = createDocId(text)
     // 查看docId是否存在
-    if (await checkDocIdExist(accessToken, md5HashId)) {
-      resolve(md5HashId)
+    if (await checkDocIdExist(accessToken, docId)) {
+      resolve(docId)
       return
     }
     const file = new File([text], filename || 'file.txt', {
@@ -50,7 +54,7 @@ export const stringConvertTxtUpload = async (
     })
     const formData = new FormData()
     formData.append('file', file, file.name.replace(/\.pdf$/, '.txt'))
-    formData.append('doc_id', md5HashId)
+    formData.append('doc_id', docId)
     fetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/analyze_file`, {
       method: 'POST',
       headers: {

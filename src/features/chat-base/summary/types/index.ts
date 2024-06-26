@@ -1,3 +1,4 @@
+import { IContextMenuItem } from '@/features/contextMenu/types'
 import { I18nextKeysType } from '@/i18next'
 
 export type IPageSummaryType =
@@ -39,4 +40,6 @@ export type IPageSummaryNavItem = {
   }
   // tooltip内容
   tooltip: I18nextKeysType
+  // 运行的actions
+  actions?: () => IContextMenuItem
 }

@@ -61,7 +61,24 @@ export interface IConversationMeta {
   attachments?: IChatUploadFile[] // 附件
   domain?: string //创建的时候的域名
   path?: string // 创建的时候的路径
-  pageSummaryType?: IPageSummaryType // summary类型
+  /**
+   * summary类型，这个暂时保留，某些代码还是从这里取数据
+   */
+  pageSummaryType?: IPageSummaryType
+  /**
+   * 存储summary的信息，后端设计summary也需要携带一个docId
+   * @since 2024-06-26
+   */
+  pageSummary?: {
+    // summary时传的docId，并且后续聊天也要带上这个(长文还是用meta.docId)
+    docId?: string
+    // summary类型
+    type?: IPageSummaryType
+    // 先不存，没想好
+    html?: string
+    // summary网页内容，4.3.9开始不存储在systemPrompt里了
+    content?: string
+  }
   /**
    * @deprecated - 2024-05-14 - 3.0版本后废弃 - 因为不上传到后端
    * 最后运行的shortcuts

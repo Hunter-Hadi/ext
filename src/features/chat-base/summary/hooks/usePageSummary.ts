@@ -5,13 +5,14 @@
  */
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { AuthState } from '@/features/auth/store'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import {
   getPageSummaryConversationId,
@@ -46,6 +47,7 @@ const usePageSummary = () => {
     SidebarPageSummaryNavKeyState,
   )
   const { isPayingUser } = useUserInfo()
+  const { isLogin } = useRecoilValue(AuthState)
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, currentConversationId } =
@@ -206,10 +208,13 @@ const usePageSummary = () => {
               ),
             )
             await pushPricingHookMessage('PAGE_SUMMARY')
-            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
-              conversationId: currentConversationId,
-              paywallType: 'RESPONSE',
-            })
+            // TODO 这里临时这样解决，因为现在没登录会显示登录的界面，但是其他逻辑有可能会触发这个mixpanel
+            if (isLogin) {
+              authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+                conversationId: currentConversationId,
+                paywallType: 'RESPONSE',
+              })
+            }
             isGeneratingPageSummaryRef.current = false
             updateClientConversationLoading(false)
             return

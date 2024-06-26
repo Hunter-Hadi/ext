@@ -6,7 +6,10 @@ import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { stringConvertTxtUpload } from '@/features/shortcuts/utils/stringConvertTxtUpload'
+import {
+  createDocId,
+  stringConvertTxtUpload,
+} from '@/features/shortcuts/utils/stringConvertTxtUpload'
 import {
   calculateMaxHistoryQuestionResponseTokens,
   sliceTextByTokens,
@@ -61,63 +64,41 @@ export class ActionAnalyzeChatFile extends Action {
         calculateMaxHistoryQuestionResponseTokens(maxAIModelTokens)
       const text =
         this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT || ''
-      const { isLimit, text: pageSummarySystemPrompt } =
-        await sliceTextByTokens(text, systemPromptTokensLimit, {
+      const { isLimit, text: pageSummaryPrompt } = await sliceTextByTokens(
+        text,
+        systemPromptTokensLimit,
+        {
           thread: 4,
           partOfTextLength: 20 * 1000,
-        })
+        },
+      )
       if (this.isStopAction) return
       // 如果触发了limit，就截取其中400k上传作为docId
-      // if (isLimit) {
-      if (immediateUpdateConversation) {
-        const uploadData = await sliceTextByTokens(
-          text,
-          this.MAX_UPLOAD_TEXT_FILE_TOKENS,
-          {
-            thread: 4,
-            partOfTextLength: 20 * 1000,
-          },
-        )
-        const docId = await stringConvertTxtUpload(uploadData.text, fileName)
-        await conversationEngine?.updateConversation(
-          {
-            meta: {
-              docId,
-            },
-          },
-          conversationId,
-          true,
-        )
-        if (this.isStopAction) return
-        // 异步通知LarkBot
-        clientSendMaxAINotification(
-          'SUMMARY',
-          `[Summary] tokens have reached maximum limit.`,
-          `${JSON.stringify(
+      if (isLimit) {
+        if (immediateUpdateConversation) {
+          const uploadData = await sliceTextByTokens(
+            text,
+            this.MAX_UPLOAD_TEXT_FILE_TOKENS,
             {
-              summary_type: getPageSummaryType(),
-              url: window.location.href,
-              // convert number to k
-              total_tokens: `${Math.floor(uploadData.tokens / 1000)}k`,
+              thread: 4,
+              partOfTextLength: 20 * 1000,
             },
-            null,
-            4,
-          )}`,
-          {
-            uuid: NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID,
-          },
-        )
-          .then()
-          .catch()
-      } else {
-        sliceTextByTokens(text, this.MAX_UPLOAD_TEXT_FILE_TOKENS, {
-          thread: 4,
-          partOfTextLength: 80 * 1000,
-        }).then((uploadData) => {
+          )
+          const docId = await stringConvertTxtUpload(uploadData.text, fileName)
+          await conversationEngine?.updateConversation(
+            {
+              meta: {
+                docId,
+              },
+            },
+            conversationId,
+            true,
+          )
+          if (this.isStopAction) return
           // 异步通知LarkBot
           clientSendMaxAINotification(
             'SUMMARY',
-            `[Summary] tokens has reached maximum limit.`,
+            `[Summary] tokens have reached maximum limit.`,
             `${JSON.stringify(
               {
                 summary_type: getPageSummaryType(),
@@ -134,35 +115,75 @@ export class ActionAnalyzeChatFile extends Action {
           )
             .then()
             .catch()
-          if (this.isStopAction) return
-          stringConvertTxtUpload(uploadData.text, fileName).then(
-            async (docId) => {
-              await conversationEngine?.updateConversation(
+        } else {
+          sliceTextByTokens(text, this.MAX_UPLOAD_TEXT_FILE_TOKENS, {
+            thread: 4,
+            partOfTextLength: 80 * 1000,
+          }).then((uploadData) => {
+            // 异步通知LarkBot
+            clientSendMaxAINotification(
+              'SUMMARY',
+              `[Summary] tokens has reached maximum limit.`,
+              `${JSON.stringify(
                 {
-                  meta: {
-                    docId,
-                  },
+                  summary_type: getPageSummaryType(),
+                  url: window.location.href,
+                  // convert number to k
+                  total_tokens: `${Math.floor(uploadData.tokens / 1000)}k`,
                 },
-                conversationId,
-                true,
-              )
-            },
-          )
-        })
+                null,
+                4,
+              )}`,
+              {
+                uuid: NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID,
+              },
+            )
+              .then()
+              .catch()
+            if (this.isStopAction) return
+            stringConvertTxtUpload(uploadData.text, fileName).then(
+              async (docId) => {
+                await conversationEngine?.updateConversation(
+                  {
+                    meta: {
+                      docId,
+                    },
+                  },
+                  conversationId,
+                  true,
+                )
+              },
+            )
+          })
+        }
       }
-      // }
       if (this.isStopAction) return
+      // summary/v2里，短文需要传递docId，这里的docId是PAGE_CONTENT
+      const docId = createDocId(pageSummaryPrompt)
       await conversationEngine?.updateConversation(
         {
           meta: {
-            systemPrompt: `The following text delimited by triple backticks is the context text:\n\`\`\`\n${pageSummarySystemPrompt}\n\`\`\``,
+            pageSummary: {
+              docId,
+              content: pageSummaryPrompt,
+            },
           },
         },
         conversationId,
         true,
       )
+      // summary/v2版本不传递systemPrompt了，后端会去控制
+      // await conversationEngine?.updateConversation(
+      //   {
+      //     meta: {
+      //       systemPrompt: `The following text delimited by triple backticks is the context text:\n\`\`\`\n${pageSummarySystemPrompt}\n\`\`\``,
+      //     },
+      //   },
+      //   conversationId,
+      //   true,
+      // )
       if (this.isStopAction) return
-      this.output = pageSummarySystemPrompt
+      this.output = pageSummaryPrompt
     } catch (e) {
       this.error = (e as any).toString()
     }

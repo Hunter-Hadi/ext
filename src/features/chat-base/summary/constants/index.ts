@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
+import { VARIABLE_CURRENT_WEBPAGE_URL } from '@/background/defaultPromptsData/systemVariables'
 import {
   SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
   SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID,
@@ -29,9 +30,9 @@ import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/M
  */
 export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
   IPageSummaryType,
-  IContextMenuItem
+  () => IContextMenuItem
 > = {
-  PAGE_SUMMARY: {
+  PAGE_SUMMARY: () => ({
     id: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
     parent: 'root',
     droppable: false,
@@ -138,8 +139,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
           parameters: {
             // TODO 修改配置
             MaxAIPromptActionConfig: {
-              promptId: 'test',
-              promptName: 'test',
+              promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
+              promptName: `[Summary] Summarize page`,
               promptActionType: 'chat_complete',
               variables: [
                 {
@@ -150,6 +151,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
                   systemVariable: true,
                   hidden: true,
                 },
+                VARIABLE_CURRENT_WEBPAGE_URL,
               ],
               output: [
                 {
@@ -161,7 +163,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
               ],
             },
             AskChatGPTActionQuestion: {
-              // text: getSummaryPagePrompt('all'),
               text: '',
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
@@ -176,39 +177,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
             VariableName: 'SUMMARY_CONTENTS',
           },
         },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-              text: '',
-              originalMessage: {
-                metadata: {
-                  deepDive: {
-                    title: {
-                      title: ' ',
-                      titleIcon: 'Loading',
-                    },
-                  },
-                },
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'MAXAI_RESPONSE_RELATED',
-          parameters: {
-            template: `{{SUMMARY_CONTENTS}}`,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'RELATED_QUESTIONS',
-          },
-        },
+        // TODO 如果没有related questions
         {
           type: 'SCRIPTS_CONDITIONAL',
           parameters: {
@@ -245,44 +214,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
                 },
               },
             ],
-            WFConditionalIfFalseActions: [
-              {
-                type: 'RENDER_TEMPLATE',
-                parameters: {
-                  template: `{{RELATED_QUESTIONS}}`,
-                },
-              },
-              {
-                type: 'SCRIPTS_LIST',
-                parameters: {},
-              },
-              {
-                type: 'CHAT_MESSAGE',
-                parameters: {
-                  ActionChatMessageOperationType: 'update',
-                  ActionChatMessageConfig: {
-                    type: 'ai',
-                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                    text: '',
-                    originalMessage: {
-                      status: 'complete',
-                      metadata: {
-                        isComplete: true,
-                        deepDive: {
-                          title: {
-                            title: 'Related',
-                            titleIcon: 'Layers',
-                            titleIconSize: 20,
-                          },
-                          type: 'related',
-                          value: `{{LAST_ACTION_OUTPUT}}` as any,
-                        },
-                      },
-                    },
-                  } as IAIResponseMessage,
-                },
-              },
-            ],
+            WFConditionalIfFalseActions: [],
           },
         },
         // {
@@ -307,8 +239,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
         blacklist: [],
       },
     },
-  },
-  DEFAULT_EMAIL_SUMMARY: {
+  }),
+  DEFAULT_EMAIL_SUMMARY: () => ({
     id: SUMMARY__SUMMARIZE_EMAIL__PROMPT_ID,
     parent: 'root',
     droppable: false,
@@ -558,8 +490,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
         blacklist: [],
       },
     },
-  },
-  PDF_CRX_SUMMARY: {
+  }),
+  PDF_CRX_SUMMARY: () => ({
     id: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
     parent: 'root',
     droppable: false,
@@ -813,8 +745,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
         blacklist: [],
       },
     },
-  },
-  YOUTUBE_VIDEO_SUMMARY: {
+  }),
+  YOUTUBE_VIDEO_SUMMARY: () => ({
     id: SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
     parent: 'root',
     droppable: false,
@@ -1008,7 +940,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
         blacklist: [],
       },
     },
-  },
+  }),
 }
 
 /**

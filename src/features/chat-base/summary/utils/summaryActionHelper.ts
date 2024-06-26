@@ -36,8 +36,8 @@ export const getSummaryNavActions = async (params: {
 }): Promise<ISetActionsType> => {
   const { type, navItem, messageId } = params
   try {
-    const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[type])
-    let currentActions = cloneDeep(contextMenu.data.actions || [])
+    const contextMenu = PAGE_SUMMARY_CONTEXT_MENU_MAP[type]()
+    let currentActions = contextMenu.data.actions || []
     // 减少message的大小
     contextMenu.data.actions = []
 
@@ -212,7 +212,7 @@ export const getSummaryCustomPromptActions = async ({
   try {
     const currentCustomPromptActions = cloneDeep(customPromptActions)
 
-    const actions = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[type].data.actions!)
+    const actions = PAGE_SUMMARY_CONTEXT_MENU_MAP[type]().data.actions!
     const askActionIndex = actions.findIndex(
       (action) => action.type === 'ASK_CHATGPT',
     )
@@ -350,16 +350,15 @@ export const getContextMenuByNavMetadataKey = async (
           actions: summaryActionContextMenuItem.data.actions!,
           key: summaryActionContextMenuItem.id,
         })
-      }
-      // 有可能用户在用了 custom prompt 之后，回到 Settings 把这个 custom prompt 删了，所以这里要处理一下
-      else {
+      } else {
+        // 有可能用户在用了 custom prompt 之后，回到 Settings 把这个 custom prompt 删了，所以这里要处理一下
         const systemSummaryNavItem = getSummaryNavItemByType(
           pageSummaryType,
           'all',
         )
         actions = await getSummaryNavActions({
           type: pageSummaryType,
-          navItem: systemSummaryNavItem,
+          navItem: systemSummaryNavItem!,
         })
       }
     }

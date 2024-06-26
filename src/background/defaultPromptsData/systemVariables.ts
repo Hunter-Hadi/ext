@@ -83,6 +83,15 @@ export const VARIABLE_CURRENT_WEBSITE_DOMAIN: IActionSetVariable = {
   hidden: true,
 }
 
+export const VARIABLE_CURRENT_WEBPAGE_URL: IActionSetVariable = {
+  label: 'Current page url',
+  VariableName: 'CURRENT_WEBPAGE_URL',
+  defaultValue: '{{CURRENT_WEBPAGE_URL}}',
+  valueType: 'Text',
+  systemVariable: true,
+  hidden: true,
+}
+
 export const VARIABLE_AI_RESPONSE_LANGUAGE: IActionSetVariable = {
   label: 'AI Response language',
   VariableName: 'AI_RESPONSE_LANGUAGE',

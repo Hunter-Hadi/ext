@@ -14,11 +14,23 @@ const Img = styled('img')({
   objectFit: 'cover',
 })
 
-const DialogImg = styled('img')({
+const DialogImgContainer = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  maxWidth: '100%',
   maxHeight: '100%',
+  width: '100%',
+})
+
+const DialogImg = styled('img')({
   borderRadius: 8,
-  objectFit: 'contain',
-  maxWidth: 870,
+  width: 'auto',
+  height: 'auto',
+  objectFit: 'cover',
+  maxWidth: '100%',
+  maxHeight: '98vh',
+  minWidth: 100,
 })
 
 interface ThumbnailProps {
@@ -37,13 +49,14 @@ const ThumbnailContainer = styled('div')({
     borderRadius: 8,
     boxSizing: 'border-box',
     padding: '2px',
+    cursor: 'pointer',
   },
 })
 
 const Thumbnail = styled('img', {
   shouldForwardProp: (prop) => prop !== 'selected',
 })<ThumbnailProps>(({ theme, selected }) => ({
-  border: selected ? `2px solid ${theme.palette.primary.main}` : 'none',
+  outline: selected ? `2px solid ${theme.palette.primary.main}` : 'none',
   boxSizing: 'border-box',
 }))
 
@@ -123,24 +136,28 @@ const ImageWithDialog = ({
         >
           <Box display='flex' alignItems='center' height='100%' width='100%'>
             <Box
-              flex={1}
+              flexGrow={1}
+              flexShrink={1}
               display='flex'
               justifyContent='center'
               alignItems='center'
               pr={2}
               height='100%'
             >
-              <DialogImg
-                onClick={(e) => {
-                  e.stopPropagation()
-                }}
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                onError={handleImageError}
-              />
+              <DialogImgContainer>
+                <DialogImg
+                  onClick={(e) => {
+                    e.stopPropagation()
+                  }}
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  onError={handleImageError}
+                />
+              </DialogImgContainer>
             </Box>
             <Box
               sx={{
+                flexShrink: 0,
                 display: 'flex',
                 flexDirection: 'row',
                 gap: 1,
@@ -151,6 +168,7 @@ const ImageWithDialog = ({
                 width: '284px', // 两栏布局，每栏128px
                 alignContent: 'flex-start',
                 justifyContent: 'flex-start',
+                paddingLeft: '2px',
               }}
             >
               {images.map((image, index) => (

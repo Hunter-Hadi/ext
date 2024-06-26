@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
@@ -19,6 +20,7 @@ import {
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
+import ImageWithDialog from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/ImageWithDialog'
 import SidebarAIMessageAIModel from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageAIModel'
 import SidebarAImessageBottomList from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList'
 import SidebarAIMessageContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent'
@@ -57,6 +59,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     [message],
   )
 
+  const { clientConversation } = useClientConversation()
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {
@@ -65,6 +68,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         sources: message.originalMessage?.metadata?.sources,
         sourcesLoading:
           message.originalMessage?.metadata?.sources?.status === 'loading',
+        imagesSources: message.originalMessage?.metadata?.sources?.images || [],
         sourcesHasContent: false,
         answer: message.text,
         content: message.originalMessage?.content,
@@ -136,9 +140,16 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         <SidebarContextCleared message={message} />
       )}
       <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
-        <SidebarAIMessageAIModel
-          AIModel={message.originalMessage?.metadata?.AIModel}
-        />
+        {clientConversation?.id === message.conversationId &&
+          clientConversation?.type === 'Chat' && (
+            <SidebarAIMessageAIModel
+              AIProvider={clientConversation?.meta?.AIProvider}
+              AIModel={
+                message.originalMessage?.metadata?.AIModel ||
+                clientConversation?.meta.AIModel
+              }
+            />
+          )}
         {isSummaryMessage && (
           <SwitchSummaryActionNav message={message} loading={coverLoading} />
         )}
@@ -264,6 +275,33 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                       </Typography>
                     </Stack>
                   )}
+
+                  {renderData?.imagesSources &&
+                    renderData?.imagesSources.length > 0 && (
+                      <Stack
+                        className='media_sources'
+                        spacing={1}
+                        sx={{
+                          margin: '16px 0 8px',
+                          overflowX: 'scroll',
+                          '&::-webkit-scrollbar': {
+                            width: 0,
+                            background: 'transparent',
+                          },
+                        }}
+                      >
+                        <Stack
+                          spacing={1}
+                          direction={'row'}
+                          className='image_sources'
+                        >
+                          <ImageWithDialog
+                            images={renderData?.imagesSources}
+                          ></ImageWithDialog>
+                        </Stack>
+                      </Stack>
+                    )}
+
                   {isWaitFirstAIResponseText &&
                   !renderData.messageIsComplete ? (
                     <SidebarAIMessageSkeletonContent

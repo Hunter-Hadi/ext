@@ -9,24 +9,17 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
-import { APP_VERSION } from '@/constants'
+import { APP_USE_CHAT_GPT_HOST, APP_VERSION } from '@/constants'
 import useUpdateModalABTester from '@/features/abTester/hooks/useUpdateModalABTester'
-import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/features/activity/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import useSurveyFilledOutStatus from '@/features/survey/hooks/useSurveyFilledOutStatus'
 dayjs.extend(utc)
-
-const CTA_BUTTON_LINK = `https://app.maxai.me/pricing`
 
 const SidebarPromotionDialog = () => {
   const { t } = useTranslation(['client'])
@@ -38,18 +31,34 @@ const SidebarPromotionDialog = () => {
 
   const [open, setOpen] = useState(false)
 
-  const { updateVariant, updateVariantTemplate } = useUpdateModalABTester()
+  const {
+    getUpdateShow,
+    saveUpdateShow,
+    updateVariant,
+    updateVariantRef,
+    updateVariantTemplate,
+  } = useUpdateModalABTester()
 
-  const updateVariantRef = useRef(updateVariant)
-  updateVariantRef.current = updateVariant
-
-  const handleClick = () => {
+  const handlePricingClick = () => {
     mixpanelTrack('update_modal_clicked', {
       testFeature: 'extensionUpdateModal',
-      testVersion: `1-${updateVariant}`,
+      testVersion: `2-${updateVariant}`,
+      buttonType: 'pricing',
     })
     handleClose()
-    window.open(CTA_BUTTON_LINK)
+    window.open(`${APP_USE_CHAT_GPT_HOST}/pricing`)
+  }
+
+  const handleMoreClick = () => {
+    if (updateVariantTemplate.learnMoreLink) {
+      mixpanelTrack('update_modal_clicked', {
+        testFeature: 'extensionUpdateModal',
+        testVersion: `2-${updateVariant}`,
+        buttonType: 'learn_more',
+      })
+      handleClose()
+      window.open(updateVariantTemplate.learnMoreLink)
+    }
   }
 
   const handleClose = () => {
@@ -69,37 +78,38 @@ const SidebarPromotionDialog = () => {
       return
     }
 
-    // 不是免费用户不弹窗
-    if (isPayingUser) {
-      return
-    }
-
-    // 注册时间小于三天不弹窗
-    const timeLimit = new Date().getTime() - 3 * 24 * 60 * 60 * 1000
-    if (new Date(createAt).getTime() > timeLimit) {
-      return
-    }
-
-    // subscription_canceled_at 存在，并且没有填写过 survey_cancel_completed survey
-    if (userInfo.subscription_canceled_at && !surveyCancelCompletedFilledOut) {
-      const cancelledAt = dayjs.utc(userInfo.subscription_canceled_at)
-      const now = dayjs.utc()
-      if (now.diff(cancelledAt, 'day') < 30) {
-        // 不显示 SidebarPromotionDialog， 因为这时候需要显示 survey_cancel_completed survey dialog
-        return
-      }
-    }
-
-    getChromeExtensionOnBoardingData().then((onBoardingData) => {
+    getUpdateShow().then((showType) => {
       // 弹过了，不弹窗
-      if (
-        onBoardingData[
-          ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY
-        ]
-      ) {
+      if (!showType) {
         return
       }
+      // 针对免费用户的弹窗
+      if (showType === 'free') {
+        // 不是免费用户不弹窗
+        if (isPayingUser) {
+          return
+        }
 
+        // 注册时间小于三天不弹窗
+        const timeLimit = new Date().getTime() - 3 * 24 * 60 * 60 * 1000
+        if (new Date(createAt).getTime() > timeLimit) {
+          return
+        }
+
+        // subscription_canceled_at 存在，并且没有填写过 survey_cancel_completed survey
+        if (
+          userInfo.subscription_canceled_at &&
+          !surveyCancelCompletedFilledOut
+        ) {
+          const cancelledAt = dayjs.utc(userInfo.subscription_canceled_at)
+          const now = dayjs.utc()
+          if (now.diff(cancelledAt, 'day') < 30) {
+            // 不显示 SidebarPromotionDialog， 因为这时候需要显示 survey_cancel_completed survey dialog
+            return
+          }
+        }
+      }
+      // 针对所有用户的弹窗
       // if (!onBoardingData.ON_BOARDING_MAXAI_3_0) {
       //   // maxai 3.0 的 onboarding tour，还没有结束，不弹窗
       //   return
@@ -108,15 +118,12 @@ const SidebarPromotionDialog = () => {
       // 弹窗
       // 加个延迟让用户看到聊天框
       setTimeout(async () => {
-        await setChromeExtensionOnBoardingData(
-          ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY,
-          true,
-        )
+        await saveUpdateShow()
 
         setOpen(true)
         mixpanelTrack('update_modal_showed', {
           testFeature: 'extensionUpdateModal',
-          testVersion: `1-${updateVariantRef.current}`,
+          testVersion: `2-${updateVariantRef.current}`,
         })
       }, 1500)
     })
@@ -186,7 +193,7 @@ const SidebarPromotionDialog = () => {
             src={updateVariantTemplate.image}
             width={832}
             height={468}
-            onClick={handleClick}
+            onClick={isPayingUser ? handleMoreClick : handlePricingClick}
             sx={{
               cursor: 'pointer',
             }}
@@ -248,45 +255,67 @@ const SidebarPromotionDialog = () => {
         </Stack>
         {/* cta button */}
         <Box position='relative'>
-          <Button
-            variant='contained'
-            fullWidth
-            startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
-            sx={{
-              fontSize: 16,
-              px: 2,
-              py: 1.5,
-              borderRadius: 2,
-            }}
-            onClick={handleClick}
-          >
-            {t('sidebar__promotion_dialog__cta_button')}
-          </Button>
-          <Typography
-            fontSize={14}
-            mt={1}
-            color='text.secondary'
-            textAlign='center'
-          >
-            {t('sidebar__promotion_dialog__footer_tips')}
-          </Typography>
-          <Box
-            sx={{
-              position: 'absolute',
-              right: 10,
-              top: 0,
-              transform: 'translateY(-50%)',
-              bgcolor: 'rgba(255, 126, 53, 1)',
-              color: '#fff',
-              borderRadius: 2,
-              px: 1,
-              py: 0.5,
-            }}
-          >
-            <Typography fontSize={16} fontWeight={500} lineHeight={1}>
-              {t('client:sidebar__promotion_dialog__discount__title')}
+          {/* 免费用户才显示upgrade按钮 */}
+          {!isPayingUser && (
+            <>
+              <Button
+                variant='contained'
+                fullWidth
+                startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
+                sx={{
+                  fontSize: 16,
+                  px: 2,
+                  py: 1.5,
+                  borderRadius: 2,
+                }}
+                onClick={handlePricingClick}
+              >
+                {t('sidebar__promotion_dialog__cta_button')}
+              </Button>
+              <Box
+                sx={{
+                  position: 'absolute',
+                  right: 10,
+                  top: 0,
+                  transform: 'translateY(-50%)',
+                  bgcolor: 'rgba(255, 126, 53, 1)',
+                  color: '#fff',
+                  borderRadius: 2,
+                  px: 1,
+                  py: 0.5,
+                }}
+              >
+                <Typography fontSize={16} fontWeight={500} lineHeight={1}>
+                  {t('client:sidebar__promotion_dialog__discount__title')}
+                </Typography>
+              </Box>
+            </>
+          )}
+          {/* 如果有learnMoreLink就不显示底部的tips信息 */}
+          {updateVariantTemplate.learnMoreLink ? (
+            <Button
+              variant={isPayingUser ? 'contained' : 'text'}
+              fullWidth
+              sx={{
+                fontSize: 16,
+                px: 2,
+                py: 1.5,
+                borderRadius: 2,
+              }}
+              onClick={handleMoreClick}
+            >
+              {t('sidebar__promotion_dialog__learn_more')}
+            </Button>
+          ) : !isPayingUser ? (
+            <Typography
+              fontSize={14}
+              mt={1}
+              color='text.secondary'
+              textAlign='center'
+            >
+              {t('sidebar__promotion_dialog__footer_tips')}
             </Typography>
-          </Box>
+          ) : null}
         </Box>
       </Stack>
     </Dialog>

@@ -248,19 +248,20 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
           <CircularProgress size={16} sx={{ m: '0 auto' }} />
         </Stack>
       )}
-      <AppLoadingLayout loading={isLoading} />
-      {paginationMessages.map((message, index) => {
-        return (
-          <SidebarChatBoxMessageItem
-            key={message.messageId + '_sidebar_chat_message_' + String(index)}
-            className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-            message={message}
-            loading={isAIResponding}
-            order={index + 1}
-            onChangeHeight={messageHeightUpdate}
-          />
-        )
-      })}
+      <AppLoadingLayout loading={isLoading}>
+        {paginationMessages.map((message, index) => {
+          return (
+            <SidebarChatBoxMessageItem
+              key={message.messageId + '_sidebar_chat_message_' + String(index)}
+              className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
+              message={message}
+              loading={isAIResponding}
+              order={index + 1}
+              onChangeHeight={messageHeightUpdate}
+            />
+          )
+        })}
+      </AppLoadingLayout>
       {/* 如果 writingMessage.messageId 在 messages 中存在，则不渲染 */}
       {writingMessage &&
       !paginationMessages.find(

@@ -14,7 +14,10 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { checkWebpageIsArticlePage } from '@/minimum/utils'
-import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
+import {
+  isMaxAIPDFPage,
+  websiteGetSeoMetaData,
+} from '@/utils/dataHelper/websiteHelper'
 
 const SidebarSummarySuggestionState = atom<{
   isArticlePage: boolean
@@ -71,29 +74,7 @@ const SidebarSummarySuggestion: FC<{
         isArticlePage:
           checkWebpageIsArticlePage() ||
           getPageSummaryType() !== 'PAGE_SUMMARY',
-        articlePageInfo: {
-          title: document.title,
-          url: window.location.href,
-          favicon:
-            document.querySelector('link[rel="icon"]')?.getAttribute('href') ||
-            document
-              .querySelector('link[rel="shortcut icon"]')
-              ?.getAttribute('href') ||
-            document
-              .querySelector('link[rel="apple-touch-icon"]')
-              ?.getAttribute('href') ||
-            document
-              .querySelector('link[rel="apple-touch-icon-precomposed"]')
-              ?.getAttribute('href') ||
-            document
-              .querySelector('link[rel="mask-icon"]')
-              ?.getAttribute('href') ||
-            document
-              .querySelector('link[rel="fluid-icon"]')
-              ?.getAttribute('href') ||
-            'https://www.google.com/s2/favicons?domain=' +
-              new URL(window.location.href).hostname,
-        },
+        articlePageInfo: websiteGetSeoMetaData(),
       }
     })
   }

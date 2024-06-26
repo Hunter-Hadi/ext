@@ -11,11 +11,12 @@ export const generateRandomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-export const generateABTestInfo = (): IUserABTestInfo => {
-  return {
-    paywallVariant:
-      PAYWALL_VARIANT[generateRandomNumber(0, PAYWALL_VARIANT.length - 1)],
-  }
+/**
+ * 随机生成一个list里的数据，概率平均分配
+ * @param list
+ */
+export const generateABTestValue = <T extends any[]>(list: T): T[number] => {
+  return list[generateRandomNumber(0, list.length - 1)]
 }
 
 /**
@@ -65,7 +66,7 @@ export const getChromeExtensionUserABTest = async (
     !abTestInfo.paywallVariant ||
     !PAYWALL_VARIANT.includes(abTestInfo.paywallVariant)
   ) {
-    abTestInfo.paywallVariant = generateABTestInfo().paywallVariant
+    abTestInfo.paywallVariant = generateABTestValue(PAYWALL_VARIANT)
     await saveChromeExtensionUserABTest(userId, abTestInfo)
   }
 

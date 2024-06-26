@@ -1,5 +1,6 @@
 import { Readability } from '@mozilla/readability'
 import { parseHTML } from 'linkedom'
+import orderBy from 'lodash-es/orderBy'
 
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { promiseTimeout } from '@/utils/promiseUtils'
@@ -10,7 +11,41 @@ interface Image {
   title: string
 }
 
-const dirtyWords = ['icon', 'menu', 'logo', 'load', 'search']
+/**
+ * 获取具有最高分辨率图片的 src 和宽度。
+ * @param {HTMLElement} element - 需要提取 srcset 属性的 HTML 元素。
+ * @returns {{ src: string, size: number }} 包含最高分辨率图片的 src 和相应的大小。
+ */
+const getImageHighestResponsiveData = (
+  element: HTMLElement,
+): { src: string; size: number } => {
+  // 获取元素的 srcset 属性
+  const srcset = element.getAttribute('srcset')
+
+  // 如果 srcset 存在
+  if (srcset) {
+    // 分割 srcset 并通过 reduce 寻找具有最大宽度的图片
+    const highestResImg = srcset.split(',').reduce(
+      (acc, currentValue) => {
+        // 去除空格并分割当前项为 url 和宽度
+        const [url, widthStr] = currentValue.trim().split(' ')
+        // 将宽度转换为整数
+        const width = parseInt(widthStr)
+        // 如果宽度有效且大于当前记录的最大宽度，则更新
+        if (!isNaN(width) && width > acc.size) {
+          return { size: width, src: url }
+        }
+        return acc
+      },
+      { size: 0, src: '' }, // 初始化累加值为一个具有大小为0的对象
+    )
+    // 返回包含具有最大分辨率图片的 src 和大小的对象
+    return highestResImg
+  }
+
+  // 如果不存在 srcset，返回空字符串和大小为0的对象
+  return { src: '', size: 0 }
+}
 
 /**
  * 插件客户端获取网页内容
@@ -98,62 +133,70 @@ const clientGetContentOfURL = async (
 
         // 获取所有 img 标签
         const images = parsedDoc.querySelectorAll('img')
-
-        const filterImages = Array.from(images)
-          .filter((item) => {
-            // 检查是否有获取图片链接不合规的情况，并且进行属性检查
-            const src = item.src.toLowerCase()
-            const forbiddenPatterns = /chrome-extension:|icon|menu|logo|svg/
-            if (forbiddenPatterns.test(src) || src === '') {
-              return false
+        const validImages: Array<{
+          width: number
+          height: number
+          src: string
+          alt: string
+          title: string
+        }> = []
+        Array.from(images).forEach((imgElement) => {
+          // 检查是否有获取图片链接不合规的情况，并且进行属性检查
+          const src = imgElement.src.toLowerCase()
+          const forbiddenPatterns = /chrome-extension:|icon|menu|logo|svg/
+          if (forbiddenPatterns.test(src) || src === '') {
+            return false
+          }
+          const attributes = imgElement.attributes
+          let widthAttr = ''
+          let heightAttr = ''
+          for (let i = 0; i < attributes.length; i++) {
+            const attrName = attributes[i].name.toLowerCase()
+            if (attrName.includes('width')) {
+              widthAttr = attributes[i].value
             }
-
-            const attributes = item.attributes
-            let widthAttr = ''
-            let heightAttr = ''
-            for (let i = 0; i < attributes.length; i++) {
-              const attrName = attributes[i].name.toLowerCase()
-              if (attrName.includes('width')) {
-                widthAttr = attributes[i].value
-              }
-              if (attrName.includes('height')) {
-                heightAttr = attributes[i].value
-              }
+            if (attrName.includes('height')) {
+              heightAttr = attributes[i].value
             }
-            const alt = item.getAttribute('alt')
-
-            // 尺寸有一个大于 200
-            const isLarge =
-              widthAttr &&
-              heightAttr &&
-              parseInt(widthAttr) > 200 &&
-              parseInt(heightAttr) > 200
-            // alt 存在且不为空
-            const altString = String(alt)
-            const trimmedAlt = altString.trim()
-            const vaildAlt =
-              trimmedAlt !== '' &&
-              !dirtyWords.some((dirtyword) => trimmedAlt.includes(dirtyword))
-
-            // 过滤条件
-            return isLarge || vaildAlt
-          })
-          .reduce<Image[]>((acc, current) => {
-            // 检查当前图片的 src 是否已经存在于去重后的数组中
-            if (!acc.some((item) => item.src === current.src)) {
-              acc.push(current)
-            }
-            return acc
-          }, [])
+          }
+          const alt = imgElement.getAttribute('alt') || ''
+          if (
+            ['icon', 'menu', 'logo', 'load', 'search'].some((word) =>
+              alt.toLowerCase().includes(word),
+            )
+          ) {
+            return
+          }
+          const title = imgElement.getAttribute('title') || ''
+          const imageResponsiveData = getImageHighestResponsiveData(imgElement)
+          // 尺寸有一个大于 200
+          const isLarge =
+            !imageResponsiveData.src &&
+            ((widthAttr && parseInt(widthAttr) > 200) ||
+              (heightAttr && parseInt(heightAttr) > 200))
+          if (isLarge || imageResponsiveData.src || alt) {
+            validImages.push({
+              width: imageResponsiveData.size || parseInt(widthAttr) || 0,
+              height: imageResponsiveData.size || parseInt(heightAttr) || 0,
+              src: imageResponsiveData.src || src,
+              alt,
+              title,
+            })
+          }
+        })
+        result.images = orderBy(
+          validImages,
+          (item) => Math.max(item.width, item.height),
+          'desc',
+        )
           .slice(0, 8)
-          .map((item) => {
+          .map((imageItem) => {
             return {
-              src: item.src,
-              alt: item.alt || '', // 如果没有 alt 属性，返回空字符串
-              title: item.title || '', // 如果没有 title 属性，返回空字符串
+              src: imageItem.src,
+              alt: imageItem.alt,
+              title: imageItem.title,
             }
           })
-        result.images = filterImages
         // result.videos = _resVideos
       }
     }

@@ -39,6 +39,7 @@ interface LazyLoadImageProps {
   SkeletonSx?: SxProps
   imgStyle?: React.CSSProperties
   fileId?: string
+  onError?: () => void
 }
 
 const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
@@ -53,6 +54,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
     placement,
     imgStyle,
     fileId,
+    onError,
   } = props
   const [imageSrc, setImageSrc] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -78,19 +80,22 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
             })
             if (result) {
               if (
-                fileId &&
-                (result.responseRaw?.status === 403 ||
-                  result.responseRaw?.status === 404 ||
-                  result.responseRaw?.status === 401)
+                result.responseRaw?.status === 403 ||
+                result.responseRaw?.status === 404 ||
+                result.responseRaw?.status === 401
               ) {
-                // 403和404的图片不再重试
-                setImageSrc(
-                  getChromeExtensionAssetsURL(
-                    `/images/svg-icons/image-invalid.svg`,
-                  ),
-                )
                 setIsLoading(false)
-                resolve(true)
+                if (fileId) {
+                  // 403和404的图片不再重试
+                  setImageSrc(
+                    getChromeExtensionAssetsURL(
+                      `/images/svg-icons/image-invalid.svg`,
+                    ),
+                  )
+                  resolve(true)
+                } else {
+                  resolve(false)
+                }
                 return
               }
               setImageSrc(URL.createObjectURL(result.data))
@@ -105,15 +110,20 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
       // 因为有时候图片加载失败，所以需要重试
       for (let i = -1; i < maxRetryTimes; i++) {
         if (await loadOneTimesImage()) {
-          break
+          return true
         }
       }
+      return false
     }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          loadImage()
+          loadImage().then((success) => {
+            if (!success) {
+              onError && onError()
+            }
+          })
           observer.unobserve(entry.target)
         }
       })

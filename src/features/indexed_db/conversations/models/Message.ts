@@ -118,8 +118,8 @@ export type IAIResponseOriginalMessageSourceLink = {
 }
 export type IAIResponseOriginalMessageSourceMediaImages = {
   [Symbol.iterator](): Iterator<any>
+  src: string
   title?: string
-  src?: string
   alt?: string
 }
 export type IAIResponseOriginalMessageMetadataTitle = {

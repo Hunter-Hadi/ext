@@ -2,17 +2,10 @@ import Box from '@mui/material/Box'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import { styled } from '@mui/material/styles'
-import React, { memo, useState } from 'react'
+import React, { memo, useMemo, useState } from 'react'
 
+import LazyLoadImage from '@/components/LazyLoadImage'
 import { IAIResponseOriginalMessageSourceMediaImages } from '@/features/indexed_db/conversations/models/Message'
-
-const Img = styled('img')({
-  width: 64,
-  height: 64,
-  borderRadius: 8,
-  cursor: 'pointer',
-  objectFit: 'cover',
-})
 
 const DialogImgContainer = styled('div')({
   display: 'flex',
@@ -68,11 +61,15 @@ const ImageWithDialog = ({
 }: {
   images: IAIResponseOriginalMessageSourceMediaImages[]
 }) => {
+  const [errorImageSources, setErrorImageSources] = useState<string[]>([])
   const [open, setOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState(
     images[0] || { src: '', alt: '' },
   )
 
+  const memoValidImages = useMemo(() => {
+    return images.filter((image) => !errorImageSources.includes(image.src))
+  }, [errorImageSources, images])
   const handleClickOpen = (
     image: IAIResponseOriginalMessageSourceMediaImages,
   ) => {
@@ -98,14 +95,27 @@ const ImageWithDialog = ({
 
   return (
     <>
-      {images.map((image, index) => (
-        <Img
-          key={index}
-          src={image.src}
-          alt={image.alt}
+      {memoValidImages.map((image, index) => (
+        <Box
+          component={'div'}
+          key={image.src}
           onClick={() => handleClickOpen(image)}
-          onError={handleImageError}
-        />
+        >
+          <LazyLoadImage
+            width={64}
+            height={64}
+            imgStyle={{
+              borderRadius: '8px',
+              cursor: 'pointer',
+              objectFit: 'cover',
+            }}
+            src={image.src}
+            alt={image.alt || ''}
+            onError={() => {
+              setErrorImageSources((prev) => [...new Set([...prev, image.src])])
+            }}
+          />
+        </Box>
       ))}
       <Dialog
         open={open}
@@ -171,8 +181,8 @@ const ImageWithDialog = ({
                 paddingLeft: '2px',
               }}
             >
-              {images.map((image, index) => (
-                <MemoizedThumbnailContainer key={index}>
+              {memoValidImages.map((image, index) => (
+                <MemoizedThumbnailContainer key={image.src}>
                   <MemoizedThumbnail
                     src={image.src}
                     alt={image.alt}

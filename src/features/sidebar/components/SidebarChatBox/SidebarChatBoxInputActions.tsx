@@ -17,6 +17,7 @@ import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/m
 import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
 import SidebarChatHistoryButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatHistoryButton'
+import SidebarChatVoiceInputButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatVoiceInputButton'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
@@ -182,6 +183,17 @@ const SidebarChatBoxInputActions: FC<{
             },
           }}
           text={inputValue}
+        />
+
+        <SidebarChatVoiceInputButton
+          sx={{
+            ...actionsBtnColorSxMemo,
+            visibility: isUsePromptIconButtonShow ? 'visible' : 'hidden',
+            position: isUsePromptIconButtonShow ? 'relative' : 'absolute',
+            [`&.${buttonClasses.contained}`]: {
+              color: 'white',
+            },
+          }}
         />
 
         {/* send btn */}

@@ -28,7 +28,7 @@ const SearchWithAICopilotToggle: FC = () => {
               {'Pro'}
             </Typography>
             <Typography fontSize={'16px'} color={'#d9a7ff'} fontWeight={500}>
-              {'Search'}
+              {'search'}
             </Typography>
           </Stack>
           <Typography fontSize={'14px'} color={'rgba(255, 255, 255, .87)'}>
@@ -113,7 +113,7 @@ const SearchWithAICopilotToggle: FC = () => {
           <Switch
             checked={sidebarSettings?.search?.copilot}
             sx={{ width: 32, height: 16, padding: 0 }}
-            color="primary"
+            color='primary'
           />
         </Stack>
         <Typography

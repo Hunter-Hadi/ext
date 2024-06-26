@@ -491,6 +491,12 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
       },
     },
     {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'PAGE_CONTENT',
+      },
+    },
+    {
       type: 'ASK_CHATGPT',
       parameters: {
         AskChatGPTActionQuestion: {

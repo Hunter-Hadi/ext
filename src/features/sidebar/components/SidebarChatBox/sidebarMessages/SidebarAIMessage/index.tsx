@@ -222,7 +222,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             )}
             {renderData.content &&
               renderData.content.title?.title !== 'noneShowContent' && (
-                <Stack>
+                <Stack spacing={2}>
                   {!renderData.messageIsComplete ? (
                     <Stack direction={'row'} alignItems='center' spacing={1}>
                       <CircularProgress size={18} />
@@ -282,9 +282,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                         className='media_sources'
                         spacing={1}
                         sx={{
-                          margin: '16px 0 8px',
                           overflowX: 'scroll',
                           '&::-webkit-scrollbar': {
+                            display: 'none',
                             width: 0,
                             background: 'transparent',
                           },

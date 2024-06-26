@@ -18,7 +18,7 @@ const DialogImgContainer = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  maxWidth: '100%',
+  maxWidth: 870,
   maxHeight: '100%',
   width: '100%',
 })
@@ -142,6 +142,7 @@ const ImageWithDialog = ({
               justifyContent='center'
               alignItems='center'
               pr={2}
+              pl={2}
               height='100%'
             >
               <DialogImgContainer>
@@ -163,12 +164,13 @@ const ImageWithDialog = ({
                 gap: 1,
                 flexWrap: 'wrap',
                 overflowY: 'auto',
-                height: 'calc(100% - 96px)',
+                height: 'calc(100% - 94px)',
                 marginRight: '32px', // 保持右侧固定间距
                 width: '284px', // 两栏布局，每栏128px
                 alignContent: 'flex-start',
                 justifyContent: 'flex-start',
                 paddingLeft: '2px',
+                paddingTop: '2px',
               }}
             >
               {images.map((image, index) => (

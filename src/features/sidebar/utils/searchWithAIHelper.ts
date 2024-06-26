@@ -161,7 +161,7 @@ export const generateSearchWithAIActions = async (
               },
               copilot: {
                 title: {
-                  title: copilot ? 'Copilot' : 'Quick search',
+                  title: copilot ? 'Pro search' : 'Quick search',
                   titleIcon: copilot ? 'Awesome' : 'Bolt',
                   titleIconSize: 24,
                 },

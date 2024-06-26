@@ -1,3 +1,4 @@
+import uniqBy from 'lodash-es/uniqBy'
 import { v4 as uuidV4 } from 'uuid'
 
 import {
@@ -158,7 +159,10 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 pageRawContent.success = result.success
                 pageRawContent.body = result.readabilityText
                 pageRawContent.title = result.title
-                sourceMedia.images = [...sourceMedia.images, ...result.images]
+                sourceMedia.images = uniqBy(
+                  [...sourceMedia.images, ...result.images],
+                  'src',
+                )
                 // sourceMedia.videos = [...sourceMedia.videos, ...result.videos]
               }
               // 2. 获取页面内容成功时，用页面内容替换 body、title

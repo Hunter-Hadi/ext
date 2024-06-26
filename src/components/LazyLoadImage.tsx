@@ -2,6 +2,7 @@ import { Placement } from '@floating-ui/react'
 import Skeleton from '@mui/material/Skeleton'
 import { styled, SxProps } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
+import isNumber from 'lodash-es/isNumber'
 import React, { useEffect, useRef, useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
@@ -79,11 +80,8 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
               method: 'GET',
             })
             if (result) {
-              if (
-                result.responseRaw?.status === 403 ||
-                result.responseRaw?.status === 404 ||
-                result.responseRaw?.status === 401
-              ) {
+              const responseStatusCode = result.responseRaw?.status
+              if (isNumber(responseStatusCode) && responseStatusCode >= 400) {
                 setIsLoading(false)
                 if (fileId) {
                   // 403和404的图片不再重试

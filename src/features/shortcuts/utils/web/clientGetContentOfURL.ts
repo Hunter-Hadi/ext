@@ -28,7 +28,10 @@ const getImageHighestResponsiveData = (
     const highestResImg = srcset.split(',').reduce(
       (acc, currentValue) => {
         // 去除空格并分割当前项为 url 和宽度
-        const [url, widthStr] = currentValue.trim().split(' ')
+        const [url, widthStr] = currentValue.trim().split(' ') as [
+          string,
+          string,
+        ]
         // 将宽度转换为整数
         const width = parseInt(widthStr)
         // 如果宽度有效且大于当前记录的最大宽度，则更新
@@ -174,13 +177,22 @@ const clientGetContentOfURL = async (
             !imageResponsiveData.src &&
             ((widthAttr && parseInt(widthAttr) > 200) ||
               (heightAttr && parseInt(heightAttr) > 200))
+          let imgSrc = imageResponsiveData.src || imgElement.src
+          // 如果是相对路径，补全
+          if (imgSrc.startsWith('/')) {
+            try {
+              imgSrc = new URL(imgSrc, url).href
+            } catch (e) {
+              console.error(e)
+            }
+          }
           if (isLarge || imageResponsiveData.src || alt) {
             validImages.push({
               width: imageResponsiveData.size || parseInt(widthAttr) || 0,
               height: imageResponsiveData.size || parseInt(heightAttr) || 0,
-              src: imageResponsiveData.src || src,
-              alt,
-              title,
+              src: imgSrc,
+              alt: alt === 'undefined' ? '' : alt,
+              title: title === 'undefined' ? '' : title,
             })
           }
         })

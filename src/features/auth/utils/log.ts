@@ -48,11 +48,6 @@ const permissionSceneTypeToLogType = async (
 ): Promise<string> => {
   let name: string = sceneType
 
-  // search with ai free
-  if (sceneType === 'SEARCH_WITH_AI_HIGH_TRAFFIC') {
-    return `SEARCH_WITH_AI(${SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER['MAXAI_FREE']})`
-  }
-
   // search with ai maxai_claude
   if (sceneType === 'SEARCH_WITH_AI_CLAUDE') {
     return `SEARCH_WITH_AI(${SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER['MAXAI_CLAUDE']})`

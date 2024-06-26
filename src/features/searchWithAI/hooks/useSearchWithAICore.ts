@@ -218,11 +218,6 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     ) {
       loadingRef.current = false
       setStatus('error')
-      // 这里删除，重复发送mixpanel了
-      // mixpanelTrack('paywall_showed', {
-      //   logType: `SEARCH_WITH_AI_HIGH_TRAFFIC(Free)`,
-      //   sceneType: 'SEARCH_WITH_AI_HIGH_TRAFFIC',
-      // })
       const aiProvide = searchWithAISettings.aiProvider
       authEmitPricingHooksLog('show', 'SEARCH_WITH_AI_HIGH_TRAFFIC', {
         // card log 直接获取 当前 ai provider 默认的 model name

@@ -129,7 +129,7 @@ const SidebarSamplePrompt: FC<ISidebarSamplePromptPrompt> = ({
           {t('client:home_view__sample_prompt__explore_more')}
         </Typography>
       )}
-      <Stack>
+      <Stack data-button-clicked-name={'sample-prompt-clicked'}>
         <Grid container spacing={1.5}>
           {samplePromptList.map((samplePrompt, index) => (
             <Grid key={samplePrompt.id} item xs={samplePromptItemXs}>

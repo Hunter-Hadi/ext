@@ -293,6 +293,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                       <Button
                         id={`maxAIInputAssistantCtaButton${rootId}`}
                         data-testid={'maxai-input-assistant-cta-button'}
+                        data-button-key={buttonGroup[0].buttonKey}
                         disabled={smoothConversationLoading}
                         sx={memoButtonSx.ctaButtonSx}
                       >
@@ -408,6 +409,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                       <Button
                         id={`maxAIInputAssistantDropdownButton${rootId}`}
                         data-testid={'maxai-input-assistant-dropdown-button'}
+                        data-button-key={buttonGroup[1].buttonKey}
                         disabled={smoothConversationLoading}
                         sx={memoButtonSx.dropdownButtonSx}
                       >

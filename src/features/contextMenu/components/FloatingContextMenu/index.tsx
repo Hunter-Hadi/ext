@@ -56,6 +56,7 @@ import {
   getContextMenuRenderPosition,
   getFloatingContextMenuMiddleware,
 } from '@/features/contextMenu/utils'
+import useButtonClickedTracker from '@/features/mixpanel/hooks/useButtonClickedTracker'
 import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
@@ -70,6 +71,8 @@ const isProduction = String(process.env.NODE_ENV) === 'production'
 const FloatingContextMenu: FC<{
   root: any
 }> = (props) => {
+  useButtonClickedTracker('floatingMenu')
+
   const { root } = props
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()

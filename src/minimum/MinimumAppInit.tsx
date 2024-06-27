@@ -5,6 +5,7 @@ import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensi
 import { useAuthLogin } from '@/features/auth'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
+import useButtonClickedTracker from '@/features/mixpanel/hooks/useButtonClickedTracker'
 import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
@@ -43,6 +44,7 @@ const MinimumAppInit: FC = () => {
   useClientMessageListenerForBackground()
   useAuthLogin()
   useInitUserInfo()
+  useButtonClickedTracker('minimum')
   return (
     <>
       <AppSettingsInit />

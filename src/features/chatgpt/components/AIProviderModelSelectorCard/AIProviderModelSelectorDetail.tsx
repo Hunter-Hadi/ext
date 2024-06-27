@@ -15,7 +15,6 @@ const AIProviderModelSelectorDetail: FC<{
   AIProviderModel: string
   AIProvider: IAIProviderType
   hideAIProviderIcon?: boolean
-
 }> = (props) => {
   const { AIProviderModel, AIProvider, hideAIProviderIcon = false } = props
   const { t } = useTranslation(['common', 'client'])
@@ -27,7 +26,9 @@ const AIProviderModelSelectorDetail: FC<{
 
   const currentAIProviderModelTags = useMemo(() => {
     if (currentAIProviderModelDetail) {
-      return typeof currentAIProviderModelDetail.tags === 'function' ? currentAIProviderModelDetail.tags(currentSidebarConversationType) : currentAIProviderModelDetail.tags
+      return typeof currentAIProviderModelDetail.tags === 'function'
+        ? currentAIProviderModelDetail.tags(currentSidebarConversationType)
+        : currentAIProviderModelDetail.tags
     }
     return []
   }, [currentAIProviderModelDetail, currentSidebarConversationType])
@@ -111,7 +112,7 @@ const AIProviderModelSelectorDetail: FC<{
                 TooltipProps={{
                   placement: 'top',
                 }}
-                lineClamp={6}
+                lineClamp={10}
               >
                 {currentAIProviderModelDetail?.poweredBy &&
                   t(`client:provider__model__tooltip_card__label__powered_by`, {

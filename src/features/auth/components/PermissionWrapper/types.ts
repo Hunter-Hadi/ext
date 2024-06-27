@@ -18,6 +18,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_FAST_TEXT_MODEL_GPT_3_5_TURBO',
   'MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU',
   'MAXAI_FAST_TEXT_MODEL_GEMINI_PRO',
+  'MAXAI_FAST_TEXT_MODEL_GEMINI_FLASH_1_5',
   'MAXAI_ADVANCED_MODEL_GPT_4O',
   'MAXAI_ADVANCED_MODEL_GPT_4_TURBO',
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_OPUS',
@@ -276,6 +277,32 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           ].join('\n\n')
         : t(
             'client:permission__pricing_hook__fast_text_usage__gemini_pro__paid__description1',
+          )
+    },
+  },
+  MAXAI_FAST_TEXT_MODEL_GEMINI_FLASH_1_5: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gemini-1.5-flash.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gemini-1.5-flash.png',
+    ),
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title',
+      ),
+    description: (t, isFreeUser) => {
+      return isFreeUser
+        ? [
+            t(
+              'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1',
+            ),
+            t(
+              'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2',
+            ),
+          ].join('\n\n')
+        : t(
+            'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1',
           )
     },
   },

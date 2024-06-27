@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { IPaywallVariant } from '@/features/abTester/types'
 import { PricingHooksFeatureIcon } from '@/features/auth/components/PermissionPricingHookCard/icons'
-import PermissionPricingModalContent from '@/features/auth/components/PermissionPricingModal/PermissionPricingModalContent'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
@@ -31,7 +30,6 @@ interface IProps {
 const PermissionPricingHookCard: FC<IProps> = ({
   permissionSceneType,
   message,
-  paywallVariant,
 }) => {
   const { t } = useTranslation()
   const { currentConversationIdRef } = useClientConversation()
@@ -192,46 +190,35 @@ const PermissionPricingHookCard: FC<IProps> = ({
         )}
 
         {/* cta button */}
-        {paywallVariant === '2-2' ? (
-          <PermissionPricingModalContent
-            permissionCard={permissionCard}
+        <Stack spacing={1} mt={'16px !important'}>
+          <Button
+            fullWidth
             sx={{
-              pt: 0,
-              px: 0,
-              pb: 0,
+              height: 48,
+              fontSize: '16px',
+              fontWeight: 500,
             }}
-          />
-        ) : (
-          <Stack spacing={1} mt={'16px !important'}>
-            <Button
-              fullWidth
-              sx={{
-                height: 48,
-                fontSize: '16px',
-                fontWeight: 500,
-              }}
-              variant={'contained'}
-              color={'primary'}
-              target={'_blank'}
-              startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
-              href={ctaButtonLink}
-              onClick={ctaButtonClick}
-            >
-              {ctaButtonText}
-            </Button>
-            <Stack direction={'row'} spacing={0.5} alignItems='start'>
-              {/*<PricingHooksRocketIcon*/}
-              {/*  sx={{*/}
-              {/*    fontSize: 20,*/}
-              {/*    color: 'primary.main',*/}
-              {/*  }}*/}
-              {/*/>*/}
-              <Typography fontSize={14} color='rgba(255, 255, 255, 0.7)'>
-                {t('client:permission__pricing_hook__footer_tip')}
-              </Typography>
-            </Stack>
+            variant={'contained'}
+            color={'primary'}
+            target={'_blank'}
+            startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
+            href={ctaButtonLink}
+            onClick={ctaButtonClick}
+          >
+            {ctaButtonText}
+          </Button>
+          <Stack direction={'row'} spacing={0.5} alignItems='start'>
+            {/*<PricingHooksRocketIcon*/}
+            {/*  sx={{*/}
+            {/*    fontSize: 20,*/}
+            {/*    color: 'primary.main',*/}
+            {/*  }}*/}
+            {/*/>*/}
+            <Typography fontSize={14} color='rgba(255, 255, 255, 0.7)'>
+              {t('client:permission__pricing_hook__footer_tip')}
+            </Typography>
           </Stack>
-        )}
+        </Stack>
       </Stack>
     )
   }

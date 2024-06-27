@@ -75,6 +75,15 @@ export interface IConversationMeta {
    * 最后运行的shortcuts的messageID, 在regenerate/retry时用到
    */
   lastRunActionsMessageId?: string
+
+  // NOTE: 本来只有AI summary的时候才有这个字段，但是通达老师要求conversation也有这个字段
+  // SINCE: 2024-06-24
+  // 来源于哪个网站
+  sourceWebpage?: {
+    title?: string
+    url?: string
+    favicon?: string
+  }
   [key: string]: any
 }
 

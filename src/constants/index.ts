@@ -179,3 +179,6 @@ export const PRESET_PROMPT_IDS = [
 export const LOVED_BY_NUM = '1M+'
 
 export const STAR_RATINGS_NUM = '13K+'
+
+export const APP_EMAIL = 'hello@maxai.me'
+export const APP_EMAIL_LINK = `mailto:${APP_EMAIL}`

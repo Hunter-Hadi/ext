@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { IGetSummaryNavActionsParams } from '@/features/sidebar/utils/pageSummaryHelper'
 
@@ -24,6 +24,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                 sourceWebpage: {
                   url: `{{CURRENT_WEBPAGE_URL}}`,
                   title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                  favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
                 },
                 shareType: 'summary',
                 title: {
@@ -331,6 +332,7 @@ export const youTubeSummaryTranscriptChangeTool = async (
               sourceWebpage: {
                 url: `{{CURRENT_WEBPAGE_URL}}`,
                 title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
               },
               shareType: 'summary',
               title: {
@@ -605,6 +607,7 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
               sourceWebpage: {
                 url: `{{CURRENT_WEBPAGE_URL}}`,
                 title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                favicon: `{{CURRENT_WEBPAGE_FAVICON}}`,
               },
               shareType: 'summary',
               title: {
@@ -702,7 +705,7 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
               ActionChatMessageOperationType: 'update',
               ActionChatMessageConfig: {
                 type: 'ai',
-                messageId: params.messageId ||`{{AI_RESPONSE_MESSAGE_ID}}`,
+                messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
                 text: '',
                 originalMessage: {
                   metadata: {
@@ -712,9 +715,9 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
                           title: 'Analyzing video',
                           status: 'complete',
                           icon: 'SmartToy',
-                          value: '{{CURRENT_WEBPAGE_TITLE}}'
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
                         },
-                      ]
+                      ],
                     },
                     deepDive: [
                       {

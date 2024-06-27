@@ -27,7 +27,7 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
   const runTranslate = async (prompt, times) => {
     const agent = new HttpsProxyAgent('http://127.0.0.1:7890')
     const api = new ChatGPTAPI({
-      apiKey: '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',
+      apiKey: 'sk-proj-HS4ebd1XfJaNj4AhtXm9T3BlbkFJi35pdusCEP0CmKUK4t9z',
       completionParams: {
         model: 'gpt-3.5-turbo-16k',
         temperature: 0.2,
@@ -53,6 +53,9 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
     try {
       res = await api.sendMessage(prompt)
     } catch (e) {
+      if (e.statusCode === 401) {
+        console.error('❌ChatGPTAPI Error: 401 Unauthorized')
+      }
       debug && console.error(logPrefix + 'api.sendMessage error', e)
     }
     let data = null
@@ -476,9 +479,9 @@ const updateI18nJson = async (
   )
   console.log(`翻译失败的语言包: \t[${errorLanguages.join(',')}]`)
   errorLanguages.length > 0 &&
-    console.log('请手动处理翻译失败的语言包, 并重新执行脚本')
+  console.log('请手动处理翻译失败的语言包, 并重新执行脚本')
   errorLanguages.length > 0 &&
-    console.log('下次执行参数建议: \t', updateKeys, forceUpdate, errorLanguages)
+  console.log('下次执行参数建议: \t', updateKeys, forceUpdate, errorLanguages)
   console.log('==================================')
 }
 
@@ -626,7 +629,36 @@ async function fixManifestTooLongName() {
   })
 }
 
+
+async function getCurrentCountryCode() {
+  try {
+    // 获取用户的IP信息
+    const agent = new HttpsProxyAgent('http://127.0.0.1:7890')
+    const ipInfoRes = await nodeFetch('https://api64.ipify.org?format=json', {
+      agent,
+    })
+    const ipInfo = await ipInfoRes.json()
+    const ipAddress = ipInfo.ip;
+    // 使用IP地址获取地理位置信息
+    const geoResponse = await fetch(`https://ipapi.co/${ipAddress}/json/`);
+    const geoData = await geoResponse.json();
+    return geoData.country_code;
+  } catch (e) {
+    console.error('getCurrentCountry error', e)
+    return 'UNKNOWN'
+  }
+}
+
+
+
 async function main() {
+  // 美国、日本、韩国、新加坡
+  const allowedCountryCodes = ['US', 'JP', 'KR', 'SG']
+  const ipCountryCode = await getCurrentCountryCode()
+  if (!allowedCountryCodes.includes(ipCountryCode)) {
+    console.log(`❌当前IP[${ipCountryCode}]不在允许的国家范围内(美国、日本、韩国、新加坡)`)
+    return
+  }
   await updateDefaultJson(true)
   const keys = []
   const retryLanguageCodes = []

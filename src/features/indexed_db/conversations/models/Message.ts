@@ -116,6 +116,12 @@ export type IAIResponseOriginalMessageSourceLink = {
   from?: string
   body?: string
 }
+export type IAIResponseOriginalMessageSourceMediaImages = {
+  [Symbol.iterator](): Iterator<any>
+  src: string
+  title?: string
+  alt?: string
+}
 export type IAIResponseOriginalMessageMetadataTitle = {
   title: string
   titleIcon?: string
@@ -188,6 +194,9 @@ export interface IAIResponseOriginalMessage {
     sources?: {
       status: 'loading' | 'complete'
       links?: IAIResponseOriginalMessageSourceLink[]
+      videos?: IAIResponseOriginalMessageSourceMediaImages[]
+      images?: IAIResponseOriginalMessageSourceMediaImages[]
+      // knowledgePanel?: string
     }
     copilot?: {
       title?: IAIResponseOriginalMessageMetadataTitle

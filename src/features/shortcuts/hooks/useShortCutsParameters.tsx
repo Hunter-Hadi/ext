@@ -14,6 +14,7 @@ import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
 import { AppDBStorageState, AppState } from '@/store'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
+import { websiteGetSeoMetaData } from '@/utils/dataHelper/websiteHelper'
 
 export interface IShortCutsParameter {
   key: string
@@ -56,6 +57,7 @@ const useShortCutsParameters = () => {
     if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
       userSelectedLanguage = DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
     }
+    const webpageMetaData = websiteGetSeoMetaData()
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any
     } = {
@@ -76,10 +78,9 @@ const useShortCutsParameters = () => {
       AI_OUTPUT_LANGUAGE: userSelectedLanguage,
       CURRENT_WEBSITE_DOMAIN:
         typeof window !== 'undefined' ? window.location.hostname : '',
-      CURRENT_WEBPAGE_URL:
-        typeof window !== 'undefined' ? window.location.href : '',
-      CURRENT_WEBPAGE_TITLE:
-        typeof window !== 'undefined' ? document.title : '',
+      CURRENT_WEBPAGE_URL: webpageMetaData.url,
+      CURRENT_WEBPAGE_TITLE: webpageMetaData.title,
+      CURRENT_WEBPAGE_FAVICON: webpageMetaData.favicon,
       POPUP_DRAFT: currentFloatingContextMenuDraft || '',
     }
     const parameters: IShortCutsParameter[] = []

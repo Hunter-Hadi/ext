@@ -102,7 +102,7 @@ export const AppSettingsInit = () => {
  * 在访问my-plan等页面时，更新用户的订阅信息.
  * @constructor
  */
-const MaxAISubscriptionUpdate = () => {
+export const MaxAISubscriptionUpdate = () => {
   const { syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
   useEffectOnce(() => {
     syncUserInfo().then()
@@ -124,7 +124,7 @@ const MaxAISubscriptionUpdate = () => {
   return null
 }
 
-const ContextMenuInit = () => {
+export const ContextMenuInit = () => {
   useInitRangy()
   return <ContextMenuRoot />
 }

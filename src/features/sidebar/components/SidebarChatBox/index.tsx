@@ -4,7 +4,14 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AutoHeightTextarea, {
@@ -113,8 +120,38 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       },
     }
   }, [])
+  /**
+   * 因为messages的消息来源有3个步骤
+   * 1. 切换conversationId
+   * 2. 基于conversationId过滤messages
+   * 3. react-query基于conversationId请求messages
+   * * 所以下方的loading状态有3个步骤, 为了不让HomeView闪烁
+   */
+  // 切换conversation的时候，先切换了conversationType，又切换了id，所以要先给一个2
+  const switchConversationRef = useRef(false)
+  useEffect(() => {
+    switchConversationRef.current = true
+  }, [conversationType])
+  const [messagesLoadingStep, setMessagesLoadingStep] = useState(0)
+  useEffect(() => {
+    if (conversationId) {
+      if (switchConversationRef.current) {
+        switchConversationRef.current = false
+        setMessagesLoadingStep(2)
+      } else {
+        setMessagesLoadingStep(1)
+      }
+    }
+  }, [conversationId])
+
+  useEffect(() => {
+    setMessagesLoadingStep((prevState) => {
+      return prevState + 1
+    })
+  }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
+    // console.log('isShowChatBoxHomeView', messagesLoadingStep)
     // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
     // 具体问题是因为，在第一次切换 conversationId 时，会有一个瞬间
     // isLoadingChatMessages 和 isFetchNextPage 等于 false，并且 messages.length 等于 0
@@ -125,13 +162,16 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     //   isFetchNextPage,
     //   messages,
     // )
+    if (messagesLoadingStep <= 2) {
+      return false
+    }
     return (
       messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
     )
   }, [
-    // isLoadingChatMessages,
+    messagesLoadingStep,
+    isLoadingChatMessages,
     // isFetchNextPage,
-    messages,
     writingMessage,
     conversationType,
   ])

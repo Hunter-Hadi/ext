@@ -180,34 +180,39 @@ class UseChatGPTPlusChat extends BaseChat {
     )
     // 当前只有大文件聊天用到这个model
     if (backendAPI === 'chat_with_document') {
-      postBody.model_name = 'gpt-3.5-turbo-16k'
-      const messageContent = postBody.message_content.find(
-        (content) => content.type === 'text',
-      )
-      const messageContentText = messageContent?.text || ''
-      postBody.message_content = messageContentText as any
-      // 大文件聊天的接口不支持新的message结构，换成老的 - @xiang.xu - 2024-01-15
-      postBody.chat_history = postBody.chat_history.map((history) => {
-        // 老得结构
-        // {
-        //   type: 'human' | 'ai' | 'generic' | 'system' | 'function'
-        //   data: {
-        //     content: string
-        //     additional_kwargs: {
-        //       [key: string]: any
-        //     }
-        //   }
-        // }
-        return {
-          type: history.role,
-          data: {
-            content:
-              history.content.find((content) => content.type === 'text')
-                ?.text || '',
-            additional_kwargs: {},
-          },
-        } as any
-      })
+      // prompt action 不需要doc_id
+      if (options?.meta?.MaxAIPromptActionConfig) {
+        delete (postBody as any).doc_id
+      } else {
+        postBody.model_name = 'gpt-3.5-turbo-16k'
+        const messageContent = postBody.message_content.find(
+          (content) => content.type === 'text',
+        )
+        const messageContentText = messageContent?.text || ''
+        postBody.message_content = messageContentText as any
+        // 大文件聊天的接口不支持新的message结构，换成老的 - @xiang.xu - 2024-01-15
+        postBody.chat_history = postBody.chat_history.map((history) => {
+          // 老得结构
+          // {
+          //   type: 'human' | 'ai' | 'generic' | 'system' | 'function'
+          //   data: {
+          //     content: string
+          //     additional_kwargs: {
+          //       [key: string]: any
+          //     }
+          //   }
+          // }
+          return {
+            type: history.role,
+            data: {
+              content:
+                history.content.find((content) => content.type === 'text')
+                  ?.text || '',
+              additional_kwargs: {},
+            },
+          } as any
+        })
+      }
     }
     if (backendAPI === 'get_summarize_response') {
       // 后端会自动调整model

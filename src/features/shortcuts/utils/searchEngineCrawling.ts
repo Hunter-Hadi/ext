@@ -14,6 +14,7 @@ export interface ICrawlingSearchResult {
   from?: string // 内容来源
   favicon?: string // 内容来源的品牌图片地址
   searchQuery?: string // 搜索的关键词
+  // knowledgePanel?: string // 知识面板
 }
 
 const isFileUrl = (url: string) => {

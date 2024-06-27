@@ -201,6 +201,7 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
         />
       )
     case 'gemini-pro':
+    case 'gemini-flash-1.5':
       return (
         <SvgIcon
           sx={{

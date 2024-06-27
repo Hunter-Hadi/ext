@@ -1,81 +1,66 @@
+import CheckIcon from '@mui/icons-material/Check'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { ButtonProps } from '@mui/material/Button'
-import React, { FC, useEffect, useMemo } from 'react'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import React, { FC, useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { PROMOTION_CODE_MAP } from '@/features/pricing/constants'
+import ConcatUsModal from '@/features/pricing/components/ConcatUsModal'
+import SaveWithYearlyButton from '@/features/pricing/components/PlanButton/SaveWithYearlyButton'
 import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
-import usePrefetchStripeLinks from '@/features/pricing/hooks/usePrefetchStripeLinks'
+import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 
 interface IPlanButtonProps extends ButtonProps {
   renderType: RENDER_PLAN_TYPE
   sendLog?: () => void
-  prefetch?: boolean
+  moreContent?: boolean
 }
 
 const PlanButton: FC<IPlanButtonProps> = (props) => {
-  const { prefetch, renderType, sendLog, children, ...resetProps } = props
+  const {
+    renderType,
+    sendLog,
+    moreContent,
+    children,
+    disabled,
+    ...resetProps
+  } = props
 
-  const [isClicked, setIsClicked] = React.useState(false)
-  const isClickedRef = React.useRef(false)
+  const [isClicked, setIsClicked] = useState(false)
+  const isClickedRef = useRef(isClicked)
 
-  const { isFreeUser } = useUserInfo()
+  const { t } = useTranslation(['common', 'client'])
+  const { loading: pricingLoading } = usePlanPricingInfo()
+  const { loading: paymentLoading, createPaymentSubscription } =
+    usePaymentCreator()
 
-  const { getStripeLink, prefetchStripeLink, prefetching } =
-    usePrefetchStripeLinks()
+  const [open, setOpen] = useState(false)
+  const [planText, setPlanText] = useState('')
 
-  // const {
-  //   loading: fetching,
-  //   createCheckoutSession,
-  // } = usePaymentSessionFetcher()
-  const { loading: fetching, createPaymentSubscription } = usePaymentCreator()
+  const isYearly = renderType.includes('yearly')
 
-  const promotionCode = useMemo(
-    () => PROMOTION_CODE_MAP[renderType],
-    [renderType],
-  )
+  // 当点击了按钮后才去显示实际loading
+  // 目前把价格
+  const fetchLoading = pricingLoading || paymentLoading
+  const buttonLoading = isClicked ? fetchLoading : false
 
-  const buttonLoading = useMemo(() => {
-    if (prefetch && isFreeUser) {
-      // 当开启了 prefetch 时, button Loading 状态不跟着 fetch checkout loading 走
-      // 当点击了按钮后才跟着 fetch checkout loading 走
-      if (isClicked) {
-        return fetching || prefetching
-      } else {
-        return false
-      }
-    } else {
-      return fetching
-    }
-  }, [prefetch, isClicked, fetching, isFreeUser, prefetching])
-
-  const handleClick = async () => {
+  const handleClick = async (plan = renderType) => {
     try {
       setIsClicked(true)
-      sendLog && (await sendLog())
+      sendLog && sendLog()
 
-      // 如果当前是 prefetching 状态，那么不做任何操作
-      // 等 prefetching 结束后，再执行 handleClick
-      if (prefetching) {
+      // 如果当前是 fetching 状态，那么不做任何操作
+      // 等 fetching 结束后，再执行 handleClick
+      if (fetchLoading) {
         return
       }
 
-      if (prefetch) {
-        const stripeLink = await getStripeLink(
-          renderType,
-          promotionCode ? promotionCode : undefined,
-        )
-
-        if (stripeLink) {
-          window.open(stripeLink)
-        } else {
-          window.open(`${APP_USE_CHAT_GPT_HOST}/pricing`)
-        }
-      } else {
-        await createPaymentSubscription('elite_yearly')
-      }
+      await createPaymentSubscription(plan, (planText) => {
+        setOpen(true)
+        setPlanText(planText)
+      })
 
       setIsClicked(false)
     } catch (error) {
@@ -88,46 +73,67 @@ const PlanButton: FC<IPlanButtonProps> = (props) => {
   }, [isClicked])
 
   useEffect(() => {
-    // 只有 free user 才能预先获取 stripe link
-    if (!isFreeUser) {
-      return
-    }
-
-    let timer = -1
-    // 如果 prefetch 为 true，那么预先获取 stripe link
-    // 加个随机 1s～5s 的计时器，防止页面过多 link 同时请求
-    if (prefetch) {
-      const randomTime = Math.floor(Math.random() * 4000) + 1000
-      timer = window.setTimeout(() => {
-        if (renderType !== 'free') {
-          prefetchStripeLink(renderType, promotionCode ? promotionCode : '')
-        }
-      }, randomTime)
-    }
-
-    return () => {
-      timer && window.clearTimeout(timer)
-    }
-  }, [prefetch, promotionCode, isFreeUser, renderType, prefetchStripeLink])
-
-  useEffect(() => {
-    // 作用在，当组件还在 prefetching 时，用户点击了按钮
+    // 作用在，当组件还在 fetching 时，用户点击了按钮
     // 会把 isClickedRef.current 设置成 true，
-    // 等 prefetching 结束后，再执行 handleClick
-    if (prefetch && isClickedRef.current && prefetching === false) {
+    // 等 fetching 结束后，再执行 handleClick
+    if (isClickedRef.current && !pricingLoading) {
       setTimeout(handleClick, 0)
     }
-  }, [prefetch, prefetching])
+  }, [pricingLoading])
+
+  const renderMoreContent = () => {
+    if (!moreContent) return null
+
+    if (isYearly) {
+      return (
+        <Stack
+          mt={1}
+          direction='row'
+          justifyContent='center'
+          alignItems='center'
+          spacing={1}
+          height={20}
+        >
+          <CheckIcon sx={{ fontSize: 16, color: 'primary.main' }} />
+          <Typography fontSize={12} color='rgba(0, 0, 0, 0.6)'>
+            {t('common:cancel_anytime')}
+          </Typography>
+        </Stack>
+      )
+    }
+
+    return (
+      <Stack mt={1} direction='row' justifyContent='center' alignItems='center'>
+        <SaveWithYearlyButton
+          plan={renderType}
+          sx={{ height: 20 }}
+          loading={buttonLoading}
+          disabled={disabled}
+          onClick={(plan) => handleClick(plan)}
+        />
+      </Stack>
+    )
+  }
 
   return (
-    <LoadingButton
-      variant='contained'
-      {...resetProps}
-      loading={buttonLoading}
-      onClick={handleClick}
-    >
-      {children}
-    </LoadingButton>
+    <>
+      <LoadingButton
+        variant='contained'
+        {...resetProps}
+        disabled={disabled}
+        loading={buttonLoading}
+        onClick={() => handleClick()}
+      >
+        {children}
+      </LoadingButton>
+      {renderMoreContent()}
+
+      <ConcatUsModal
+        planName={planText}
+        open={open}
+        onClose={() => setOpen(false)}
+      />
+    </>
   )
 }
 

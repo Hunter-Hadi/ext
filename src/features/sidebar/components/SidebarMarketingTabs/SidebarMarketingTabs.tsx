@@ -50,7 +50,7 @@ const RewardsTabButton: FC = () => {
         PopperProps={{
           disablePortal: true,
         }}
-        placement="left"
+        placement='left'
         title={
           <Link
             underline={'none'}
@@ -173,7 +173,7 @@ const AffiliateTabButton: FC = () => {
         PopperProps={{
           disablePortal: true,
         }}
-        placement="left"
+        placement='left'
         title={
           <Link
             underline={'none'}
@@ -339,7 +339,7 @@ const SurveyTabButton: FC = () => {
         PopperProps={{
           disablePortal: true,
         }}
-        placement="left"
+        placement='left'
         title={
           <Stack
             sx={{

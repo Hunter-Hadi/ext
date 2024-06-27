@@ -25,7 +25,10 @@ const SidebarArtSamplePrompt: FC<IProps> = ({
   )
 
   return (
-    <Stack width={'100%'}>
+    <Stack
+      width={'100%'}
+      data-button-clicked-name={'art-sample-prompt-clicked'}
+    >
       <Grid container spacing={1.5}>
         {samplePromptList.map((samplePrompt, index) => (
           <Grid key={samplePrompt.title} item xs={promptItemXs}>

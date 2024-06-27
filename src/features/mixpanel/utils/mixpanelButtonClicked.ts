@@ -1,3 +1,5 @@
+import { buttonBaseClasses } from '@mui/material/ButtonBase'
+import { linkClasses } from '@mui/material/Link'
 import debounce from 'lodash-es/debounce'
 
 import { IButtonClickedTrackerSceneType } from '@/features/mixpanel/hooks/useButtonClickedTracker'
@@ -10,6 +12,16 @@ import {
 } from '@/utils'
 import { findParentEqualSelector } from '@/utils/dataHelper/elementHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+
+// 找到符合 button clicked 条件的元素
+export const findButtonClickedTrackElement = (targetElement: HTMLElement) => {
+  return (
+    findParentEqualSelector(`.${buttonBaseClasses.root}`, targetElement, 10) ||
+    findParentEqualSelector(`.${linkClasses.root}`, targetElement, 10) ||
+    // 如果 element 上定义了 data-button-clicked-name，代表是需要被 tacker 的元素， 并且把 data-button-clicked-name 作为 buttonName
+    findParentEqualSelector(`*[data-button-clicked-name]`, targetElement, 10)
+  )
+}
 
 // 根据 element 算出 buttonPosition
 export const getButtonPositionByElement = (element: HTMLElement) => {
@@ -44,8 +56,16 @@ export const getButtonPositionByElement = (element: HTMLElement) => {
 // 根据 element 和 cache 算出 featureName
 export const getFeatureNameByElement = (
   element: HTMLElement,
+  sceneType?: IButtonClickedTrackerSceneType,
   propConversationType?: ISidebarConversationType,
 ) => {
+  if (sceneType === 'minimum') {
+    return 'quick_access'
+  }
+
+  if (sceneType === 'floatingMenu') {
+    return 'context_menu'
+  }
   // 判断 是否在 contextMenu 容器中
   const contextMenuContainer = getMaxAIFloatingContextMenuRootElement()
   if (contextMenuContainer && contextMenuContainer.contains(element)) {
@@ -118,25 +138,19 @@ export const sendMixpanelButtonClickedEvent = debounce(
       params?.buttonPosition ?? getButtonPositionByElement(trackElement)
 
     // get featureName
-    let featureName = 'sidebar_chat'
-    if (params?.sceneType === 'floatingMenu') {
-      featureName = 'context_menu'
-    } else if (params?.sceneType === 'minimum') {
-      featureName = 'quick_access'
-    } else {
-      featureName = getFeatureNameByElement(
-        trackElement,
-        params?.conversationType,
-      )
-    }
-
-    console.log(
-      'sendMixpanelButtonClickedEvent',
+    const featureName = getFeatureNameByElement(
       trackElement,
-      buttonName,
-      buttonPosition,
-      featureName,
+      params?.sceneType,
+      params?.conversationType,
     )
+
+    // console.log(
+    //   'sendMixpanelButtonClickedEvent',
+    //   trackElement,
+    //   buttonName,
+    //   buttonPosition,
+    //   featureName,
+    // )
 
     mixpanelTrack('button_clicked', {
       productType: 'extension',

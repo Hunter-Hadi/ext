@@ -1,5 +1,3 @@
-import { buttonBaseClasses } from '@mui/material/ButtonBase'
-import { linkClasses } from '@mui/material/Link'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -7,13 +5,15 @@ import {
   MAXAI_CONTEXT_MENU_ID,
   MAXAI_CONTEXT_MENU_PORTAL_ID,
 } from '@/features/common/constants'
-import { sendMixpanelButtonClickedEvent } from '@/features/mixpanel/utils/mixpanelButtonClicked'
+import {
+  findButtonClickedTrackElement,
+  sendMixpanelButtonClickedEvent,
+} from '@/features/mixpanel/utils/mixpanelButtonClicked'
 import { getTargetI18nTextByInnerText } from '@/i18n/utils'
 import {
   getAppMinimizeContainerElement,
   getMaxAISidebarRootElement,
 } from '@/utils'
-import { findParentEqualSelector } from '@/utils/dataHelper/elementHelper'
 
 export type IButtonClickedTrackerSceneType = 'minimum' | 'floatingMenu'
 
@@ -60,19 +60,7 @@ const useButtonClickedTracker = (
 
       // 用户点击的事件才记录
       if (event.isTrusted) {
-        const muiTrackElement =
-          findParentEqualSelector(
-            `.${buttonBaseClasses.root}`,
-            targetElement,
-            10,
-          ) ||
-          findParentEqualSelector(`.${linkClasses.root}`, targetElement, 10) ||
-          // 如果 element 上定义了 data-button-clicked-name，代表是需要被 tacker 的元素， 并且把 data-button-clicked-name 作为 buttonName
-          findParentEqualSelector(
-            `*[data-button-clicked-name]`,
-            targetElement,
-            10,
-          )
+        const muiTrackElement = findButtonClickedTrackElement(targetElement)
 
         if (muiTrackElement) {
           // 需要记录的 buttonName

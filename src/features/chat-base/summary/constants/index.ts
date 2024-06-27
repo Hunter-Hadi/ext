@@ -1,6 +1,3 @@
-import { v4 as uuidV4 } from 'uuid'
-
-import { VARIABLE_CURRENT_WEBPAGE_URL } from '@/background/defaultPromptsData/systemVariables'
 import {
   SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
   SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID,
@@ -17,930 +14,28 @@ import {
   SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
   SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
 } from '@/constants'
+import { EMAIL_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/emailSummaryActions'
+import { PAGE_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/pageSummaryActions'
+import { PDF_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/pdfbeummaryActions'
+import { YOUTUBE_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/youtubeummaryActions'
 import {
   IPageSummaryNavItem,
   IPageSummaryNavType,
   IPageSummaryType,
 } from '@/features/chat-base/summary/types'
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 /**
- * summary actions配置，这里是默认的配置
+ * summary actions配置，这里是默认的配置，给用户自定义prompt执行
  */
-export const PAGE_SUMMARY_CONTEXT_MENU_MAP: Record<
+export const DEFAULT_SUMMARY_ACTIONS_MAP: Record<
   IPageSummaryType,
-  () => IContextMenuItem
+  (messageId?: string) => ISetActionsType
 > = {
-  PAGE_SUMMARY: () => ({
-    id: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
-    parent: 'root',
-    droppable: false,
-    text: '[Summary] Summarize page',
-    data: {
-      editable: false,
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'add',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: uuidV4(),
-              text: '',
-              originalMessage: {
-                metadata: {
-                  sourceWebpage: {
-                    url: `{{CURRENT_WEBPAGE_URL}}`,
-                    title: `{{CURRENT_WEBPAGE_TITLE}}`,
-                  },
-                  shareType: 'summary',
-                  title: {
-                    title: `Summarize page`,
-                  },
-                  copilot: {
-                    title: {
-                      title: 'Page insights',
-                      titleIcon: 'LaptopMac',
-                    },
-                    steps: [
-                      {
-                        title: 'Analyzing page',
-                        status: 'loading',
-                        icon: 'SmartToy',
-                      },
-                    ],
-                  },
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'AI_RESPONSE_MESSAGE_ID',
-          },
-        },
-        {
-          type: 'GET_READABILITY_CONTENTS_OF_WEBPAGE',
-          parameters: {},
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
-          },
-        },
-        {
-          type: 'ANALYZE_CHAT_FILE',
-          parameters: {
-            AnalyzeChatFileImmediateUpdateConversation: true,
-            AnalyzeChatFileName: 'PageSummaryContent.txt',
-          },
-        },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              text: '',
-              originalMessage: {
-                metadata: {
-                  copilot: {
-                    steps: [
-                      {
-                        title: 'Analyzing page',
-                        status: 'complete',
-                        icon: 'SmartToy',
-                        value: '{{CURRENT_WEBPAGE_TITLE}}',
-                      },
-                    ],
-                  },
-                },
-                content: {
-                  title: {
-                    title: 'Summary',
-                  },
-                  text: '',
-                  contentType: 'text',
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            // TODO 修改配置
-            MaxAIPromptActionConfig: {
-              promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
-              promptName: `[Summary] Summarize page`,
-              promptActionType: 'chat_complete',
-              variables: [
-                {
-                  VariableName: 'PAGE_CONTENT',
-                  label: 'PAGE_CONTENT',
-                  defaultValue: '{{READABILITY_CONTENTS}}',
-                  valueType: 'Text',
-                  systemVariable: true,
-                  hidden: true,
-                },
-                VARIABLE_CURRENT_WEBPAGE_URL,
-              ],
-              output: [
-                {
-                  label: 'Summary content',
-                  VariableName: 'SUMMARY_CONTENTS',
-                  valueType: 'Text',
-                  systemVariable: true,
-                },
-              ],
-            },
-            AskChatGPTActionQuestion: {
-              text: '',
-              meta: {
-                outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              },
-            },
-            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'SUMMARY_CONTENTS',
-          },
-        },
-        // TODO 如果没有related questions
-        {
-          type: 'SCRIPTS_CONDITIONAL',
-          parameters: {
-            WFFormValues: {
-              Value: '',
-              WFSerializationType: 'WFDictionaryFieldValue',
-            },
-            WFCondition: 'Equals',
-            WFConditionalIfTrueActions: [
-              // 说明没有拿到related questions
-              {
-                type: 'CHAT_MESSAGE',
-                parameters: {
-                  ActionChatMessageOperationType: 'update',
-                  ActionChatMessageConfig: {
-                    type: 'ai',
-                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                    text: '',
-                    originalMessage: {
-                      status: 'complete',
-                      metadata: {
-                        isComplete: true,
-                        deepDive: {
-                          title: {
-                            title: 'Deep dive',
-                            titleIcon: 'TipsAndUpdates',
-                            titleIconSize: 20,
-                          },
-                          value: 'Ask AI anything about the page...',
-                        },
-                      },
-                    },
-                  } as IAIResponseMessage,
-                },
-              },
-            ],
-            WFConditionalIfFalseActions: [],
-          },
-        },
-        // {
-        //   type: 'CREATE_WEBSITE_CONTEXT',
-        //   parameters: {
-        //     CreateWebsiteContextConfig: {
-        //       summary: '{{SUMMARY_CONTENTS}}',
-        //       meta: {
-        //         readability: '{{READABILITY_CONTENTS}}',
-        //       },
-        //     },
-        //   },
-        // },
-        // {
-        //   type: 'MAXAI_SUMMARY_LOG',
-        //   parameters: {},
-        // },
-      ],
-      visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
-      },
-    },
-  }),
-  DEFAULT_EMAIL_SUMMARY: () => ({
-    id: SUMMARY__SUMMARIZE_EMAIL__PROMPT_ID,
-    parent: 'root',
-    droppable: false,
-    text: '[Summary] Summarize email',
-    data: {
-      editable: false,
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'add',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: uuidV4(),
-              text: '',
-              originalMessage: {
-                metadata: {
-                  sourceWebpage: {
-                    url: `{{CURRENT_WEBPAGE_URL}}`,
-                    title: `{{CURRENT_WEBPAGE_TITLE}}`,
-                  },
-                  shareType: 'summary',
-                  title: {
-                    title: `Summarize email`,
-                  },
-                  copilot: {
-                    title: {
-                      title: 'Page insights',
-                      titleIcon: 'LaptopMac',
-                    },
-                    steps: [
-                      {
-                        title: 'Analyzing email',
-                        status: 'loading',
-                        icon: 'SmartToy',
-                      },
-                    ],
-                  },
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'AI_RESPONSE_MESSAGE_ID',
-          },
-        },
-        {
-          type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
-          },
-        },
-        {
-          type: 'ANALYZE_CHAT_FILE',
-          parameters: {
-            AnalyzeChatFileImmediateUpdateConversation: true,
-            AnalyzeChatFileName: 'EmailSummaryContent.txt',
-          },
-        },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              text: '',
-              originalMessage: {
-                metadata: {
-                  copilot: {
-                    steps: [
-                      {
-                        title: 'Analyzing email',
-                        status: 'complete',
-                        icon: 'SmartToy',
-                        value: '{{CURRENT_WEBPAGE_TITLE}}',
-                      },
-                    ],
-                  },
-                },
-                content: {
-                  title: {
-                    title: 'Summary',
-                  },
-                  text: '',
-                  contentType: 'text',
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            AskChatGPTActionQuestion: {
-              text: '',
-              meta: {
-                outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              },
-            },
-            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'SUMMARY_CONTENTS',
-          },
-        },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-              text: '',
-              originalMessage: {
-                metadata: {
-                  deepDive: {
-                    title: {
-                      title: ' ',
-                      titleIcon: 'Loading',
-                    },
-                  },
-                },
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'MAXAI_RESPONSE_RELATED',
-          parameters: {
-            template: `{{SUMMARY_CONTENTS}}`,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'RELATED_QUESTIONS',
-          },
-        },
-        {
-          type: 'SCRIPTS_CONDITIONAL',
-          parameters: {
-            WFFormValues: {
-              Value: '',
-              WFSerializationType: 'WFDictionaryFieldValue',
-            },
-            WFCondition: 'Equals',
-            WFConditionalIfTrueActions: [
-              // 说明没有拿到related questions
-              {
-                type: 'CHAT_MESSAGE',
-                parameters: {
-                  ActionChatMessageOperationType: 'update',
-                  ActionChatMessageConfig: {
-                    type: 'ai',
-                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                    text: '',
-                    originalMessage: {
-                      status: 'complete',
-                      metadata: {
-                        isComplete: true,
-                        deepDive: {
-                          title: {
-                            title: 'Deep dive',
-                            titleIcon: 'TipsAndUpdates',
-                          },
-                          value: 'Ask AI anything about the email...',
-                        },
-                      },
-                    },
-                  } as IAIResponseMessage,
-                },
-              },
-            ],
-            WFConditionalIfFalseActions: [
-              {
-                type: 'RENDER_TEMPLATE',
-                parameters: {
-                  template: `{{RELATED_QUESTIONS}}`,
-                },
-              },
-              {
-                type: 'SCRIPTS_LIST',
-                parameters: {},
-              },
-              {
-                type: 'CHAT_MESSAGE',
-                parameters: {
-                  ActionChatMessageOperationType: 'update',
-                  ActionChatMessageConfig: {
-                    type: 'ai',
-                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                    text: '',
-                    originalMessage: {
-                      status: 'complete',
-                      metadata: {
-                        isComplete: true,
-                        deepDive: {
-                          title: {
-                            title: 'Related',
-                            titleIcon: 'Layers',
-                            titleIconSize: 20,
-                          },
-                          type: 'related',
-                          value: `{{LAST_ACTION_OUTPUT}}` as any,
-                        },
-                      },
-                    },
-                  } as IAIResponseMessage,
-                },
-              },
-            ],
-          },
-        },
-        // {
-        //   type: 'CREATE_WEBSITE_CONTEXT',
-        //   parameters: {
-        //     CreateWebsiteContextConfig: {
-        //       summary: '{{SUMMARY_CONTENTS}}',
-        //       meta: {
-        //         readability: '{{READABILITY_CONTENTS}}',
-        //       },
-        //     },
-        //   },
-        // },
-        // {
-        //   type: 'MAXAI_SUMMARY_LOG',
-        //   parameters: {},
-        // },
-      ],
-      visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
-      },
-    },
-  }),
-  PDF_CRX_SUMMARY: () => ({
-    id: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
-    parent: 'root',
-    droppable: false,
-    text: '[Summary] Summarize PDF',
-    data: {
-      editable: false,
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'add',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: uuidV4(),
-              text: '',
-              originalMessage: {
-                metadata: {
-                  sourceWebpage: {
-                    url: `{{CURRENT_WEBPAGE_URL}}`,
-                    title: `{{CURRENT_WEBPAGE_TITLE}}`,
-                  },
-                  shareType: 'summary',
-                  title: {
-                    title: `Summarize PDF`,
-                  },
-                  copilot: {
-                    title: {
-                      title: 'Page insights',
-                      titleIcon: 'LaptopMac',
-                    },
-                    steps: [
-                      {
-                        title: 'Analyzing PDF',
-                        status: 'loading',
-                        icon: 'SmartToy',
-                      },
-                    ],
-                  },
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'AI_RESPONSE_MESSAGE_ID',
-          },
-        },
-        {
-          type: 'UPLOAD_PDF_OF_CRX',
-          parameters: {},
-        },
-        {
-          type: 'GET_PDF_CONTENTS_OF_CRX',
-          parameters: {},
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
-          },
-        },
-        {
-          type: 'ANALYZE_CHAT_FILE',
-          parameters: {
-            AnalyzeChatFileImmediateUpdateConversation: true,
-            AnalyzeChatFileName: 'PDFSummaryContent.txt',
-          },
-        },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              text: '',
-              originalMessage: {
-                metadata: {
-                  copilot: {
-                    steps: [
-                      {
-                        title: 'Analyzing PDF',
-                        status: 'complete',
-                        icon: 'SmartToy',
-                        value: '{{CURRENT_WEBPAGE_TITLE}}',
-                      },
-                    ],
-                  },
-                },
-                content: {
-                  title: {
-                    title: 'Summary',
-                  },
-                  text: '',
-                  contentType: 'text',
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            AskChatGPTActionQuestion: {
-              text: '',
-              meta: {
-                outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              },
-            },
-            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'SUMMARY_CONTENTS',
-          },
-        },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-              text: '',
-              originalMessage: {
-                metadata: {
-                  deepDive: {
-                    title: {
-                      title: ' ',
-                      titleIcon: 'Loading',
-                    },
-                  },
-                },
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'MAXAI_RESPONSE_RELATED',
-          parameters: {
-            template: `{{SUMMARY_CONTENTS}}`,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'RELATED_QUESTIONS',
-          },
-        },
-        {
-          type: 'SCRIPTS_CONDITIONAL',
-          parameters: {
-            WFFormValues: {
-              Value: '',
-              WFSerializationType: 'WFDictionaryFieldValue',
-            },
-            WFCondition: 'Equals',
-            WFConditionalIfTrueActions: [
-              // 说明没有拿到related questions
-              {
-                type: 'CHAT_MESSAGE',
-                parameters: {
-                  ActionChatMessageOperationType: 'update',
-                  ActionChatMessageConfig: {
-                    type: 'ai',
-                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                    text: '',
-                    originalMessage: {
-                      status: 'complete',
-                      metadata: {
-                        isComplete: true,
-                        deepDive: {
-                          title: {
-                            title: 'Deep dive',
-                            titleIcon: 'TipsAndUpdates',
-                          },
-                          value: 'Ask AI anything about the PDF...',
-                        },
-                      },
-                    },
-                  } as IAIResponseMessage,
-                },
-              },
-            ],
-            WFConditionalIfFalseActions: [
-              {
-                type: 'RENDER_TEMPLATE',
-                parameters: {
-                  template: `{{RELATED_QUESTIONS}}`,
-                },
-              },
-              {
-                type: 'SCRIPTS_LIST',
-                parameters: {},
-              },
-              {
-                type: 'CHAT_MESSAGE',
-                parameters: {
-                  ActionChatMessageOperationType: 'update',
-                  ActionChatMessageConfig: {
-                    type: 'ai',
-                    messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                    text: '',
-                    originalMessage: {
-                      status: 'complete',
-                      metadata: {
-                        isComplete: true,
-                        deepDive: {
-                          title: {
-                            title: 'Related',
-                            titleIcon: 'Layers',
-                            titleIconSize: 20,
-                          },
-                          type: 'related',
-                          value: `{{LAST_ACTION_OUTPUT}}` as any,
-                        },
-                      },
-                    },
-                  } as IAIResponseMessage,
-                },
-              },
-            ],
-          },
-        },
-        // {
-        //   type: 'CREATE_WEBSITE_CONTEXT',
-        //   parameters: {
-        //     CreateWebsiteContextConfig: {
-        //       summary: '{{SUMMARY_CONTENTS}}',
-        //       meta: {
-        //         readability: '{{READABILITY_CONTENTS}}',
-        //       },
-        //     },
-        //   },
-        // },
-        // {
-        //   type: 'MAXAI_SUMMARY_LOG',
-        //   parameters: {},
-        // },
-      ],
-      visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
-      },
-    },
-  }),
-  YOUTUBE_VIDEO_SUMMARY: () => ({
-    id: SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
-    parent: 'root',
-    droppable: false,
-    text: '[Summary] Summarize video',
-    data: {
-      editable: false,
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'add',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: uuidV4(),
-              text: '',
-              originalMessage: {
-                metadata: {
-                  sourceWebpage: {
-                    url: `{{CURRENT_WEBPAGE_URL}}`,
-                    title: `{{CURRENT_WEBPAGE_TITLE}}`,
-                  },
-                  shareType: 'summary',
-                  title: {
-                    title: `Summarize video`,
-                  },
-                  copilot: {
-                    title: {
-                      title: 'Page insights',
-                      titleIcon: 'LaptopMac',
-                    },
-                    steps: [
-                      {
-                        title: 'Analyzing video',
-                        status: 'loading',
-                        icon: 'SmartToy',
-                      },
-                    ],
-                  },
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'AI_RESPONSE_MESSAGE_ID',
-          },
-        },
-        {
-          type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {
-            OperationElementSelector: 'ytd-watch-metadata #title',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
-          },
-        },
-        {
-          type: 'ANALYZE_CHAT_FILE',
-          parameters: {
-            AnalyzeChatFileImmediateUpdateConversation: true,
-            AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
-          },
-        },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              text: '',
-              originalMessage: {
-                metadata: {
-                  copilot: {
-                    steps: [
-                      {
-                        title: 'Analyzing video',
-                        status: 'complete',
-                        icon: 'SmartToy',
-                        value: '{{CURRENT_WEBPAGE_TITLE}}',
-                      },
-                    ],
-                  },
-                },
-                content: {
-                  title: {
-                    title: 'Summary',
-                  },
-                  text: '',
-                  contentType: 'text',
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            AskChatGPTActionQuestion: {
-              text: '',
-              meta: {
-                outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              },
-            },
-            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'SUMMARY_CONTENTS',
-          },
-        },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              text: '',
-              originalMessage: {
-                metadata: {
-                  deepDive: [
-                    {
-                      title: {
-                        title: ' ',
-                        titleIcon: 'Loading',
-                      },
-                    },
-                  ],
-                },
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'CHAT_MESSAGE',
-          parameters: {
-            ActionChatMessageOperationType: 'update',
-            ActionChatMessageConfig: {
-              type: 'ai',
-              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-              text: '',
-              originalMessage: {
-                status: 'complete',
-                metadata: {
-                  isComplete: true,
-                  deepDive: [
-                    {
-                      title: {
-                        title: 'Deep dive',
-                        titleIcon: 'TipsAndUpdates',
-                      },
-                      value: 'Ask AI anything about the video...',
-                    },
-                  ],
-                },
-                includeHistory: false,
-              },
-            } as IAIResponseMessage,
-          },
-        },
-        // {
-        //   type: 'CREATE_WEBSITE_CONTEXT',
-        //   parameters: {
-        //     CreateWebsiteContextConfig: {
-        //       summary: '{{SUMMARY_CONTENTS}}',
-        //       meta: {
-        //         readability: '{{READABILITY_CONTENTS}}',
-        //       },
-        //     },
-        //   },
-        // },
-        {
-          type: 'MAXAI_SUMMARY_LOG',
-          parameters: {},
-        },
-      ],
-      visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
-      },
-    },
-  }),
+  PAGE_SUMMARY: PAGE_SUMMARY_ACTIONS_MAP.all,
+  DEFAULT_EMAIL_SUMMARY: EMAIL_SUMMARY_ACTIONS_MAP.all,
+  PDF_CRX_SUMMARY: PDF_SUMMARY_ACTIONS_MAP.all,
+  YOUTUBE_VIDEO_SUMMARY: YOUTUBE_SUMMARY_ACTIONS_MAP.all,
 }
 
 /**
@@ -956,12 +51,14 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       icon: 'Summarize',
       key: 'all',
       tooltip: 'client:sidebar__summary__nav__page_summary__tooltip__default',
+      actions: PAGE_SUMMARY_ACTIONS_MAP.all,
     },
     {
       title: 'Summarize page (TL;DR)',
       icon: 'AutoStoriesOutlined',
       key: 'summary',
       tooltip: 'client:sidebar__summary__nav__page_summary__tooltip__tldr',
+      actions: PAGE_SUMMARY_ACTIONS_MAP.summary,
     },
     {
       title: 'Summarize page (Key takeaways)',
@@ -969,6 +66,7 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       key: 'keyTakeaways',
       tooltip:
         'client:sidebar__summary__nav__page_summary__tooltip__key_takeaways',
+      actions: PAGE_SUMMARY_ACTIONS_MAP.keyTakeaways,
     },
   ],
   PDF_CRX_SUMMARY: [
@@ -978,12 +76,14 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       key: 'all',
       tooltip:
         'client:sidebar__summary__nav__pdf_crx_summary__tooltip__default',
+      actions: PDF_SUMMARY_ACTIONS_MAP.all,
     },
     {
       title: 'Summarize PDF (TL;DR)',
       icon: 'AutoStoriesOutlined',
       key: 'summary',
       tooltip: 'client:sidebar__summary__nav__pdf_crx_summary__tooltip__tldr',
+      actions: PDF_SUMMARY_ACTIONS_MAP.summary,
     },
     {
       title: 'Summarize PDF (Key takeaways)',
@@ -991,6 +91,7 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       key: 'keyTakeaways',
       tooltip:
         'client:sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways',
+      actions: PDF_SUMMARY_ACTIONS_MAP.keyTakeaways,
     },
   ],
   YOUTUBE_VIDEO_SUMMARY: [
@@ -1000,6 +101,7 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       key: 'all',
       tooltip:
         'client:sidebar__summary__nav__youtube_summary__tooltip__default',
+      actions: YOUTUBE_SUMMARY_ACTIONS_MAP.all,
     },
     {
       title: 'Timestamped summary',
@@ -1010,6 +112,7 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       },
       tooltip:
         'client:sidebar__summary__nav__youtube_summary__tooltip__timestamped',
+      actions: YOUTUBE_SUMMARY_ACTIONS_MAP.timestamped,
     },
     {
       title: 'Summarize comments',
@@ -1020,6 +123,7 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       },
       tooltip:
         'client:sidebar__summary__nav__youtube_summary__tooltip__comment',
+      actions: YOUTUBE_SUMMARY_ACTIONS_MAP.comment,
     },
     {
       title: 'Show transcript',
@@ -1030,6 +134,7 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       },
       tooltip:
         'client:sidebar__summary__nav__youtube_summary__tooltip__transcript',
+      actions: YOUTUBE_SUMMARY_ACTIONS_MAP.transcript,
     },
   ],
   DEFAULT_EMAIL_SUMMARY: [
@@ -1038,12 +143,14 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       icon: 'Summarize',
       key: 'all',
       tooltip: 'client:sidebar__summary__nav__email_summary__tooltip__default',
+      actions: EMAIL_SUMMARY_ACTIONS_MAP.all,
     },
     {
       title: 'Summarize email (TL;DR)',
       icon: 'AutoStoriesOutlined',
       key: 'summary',
       tooltip: 'client:sidebar__summary__nav__email_summary__tooltip__tldr',
+      actions: EMAIL_SUMMARY_ACTIONS_MAP.summary,
     },
     {
       title: 'Summarize email (Key takeaways)',
@@ -1051,6 +158,7 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       key: 'keyTakeaways',
       tooltip:
         'client:sidebar__summary__nav__email_summary__tooltip__key_takeaways',
+      actions: EMAIL_SUMMARY_ACTIONS_MAP.keyTakeaways,
     },
     {
       title: 'Summarize email (Action items)',
@@ -1058,6 +166,7 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
       key: 'actions',
       tooltip:
         'client:sidebar__summary__nav__email_summary__tooltip__action_items',
+      actions: EMAIL_SUMMARY_ACTIONS_MAP.actions,
     },
   ],
 }

@@ -129,10 +129,12 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     const actions = await getSummaryCustomPromptActions({
       type: summaryType,
       messageId: message.messageId,
-      title: menuItem.text,
-      icon: menuItem.data.icon as IContextMenuIconKey,
-      actions: menuItem.data.actions!,
-      key: menuItem.id,
+      navItem: {
+        key: menuItem.id,
+        title: menuItem.text,
+        icon: menuItem.data.icon as IContextMenuIconKey,
+        actions: () => menuItem.data.actions!,
+      },
     })
     await askAIWIthShortcuts(actions)
   }

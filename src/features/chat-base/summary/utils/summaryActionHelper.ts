@@ -1,11 +1,6 @@
-import cloneDeep from 'lodash-es/cloneDeep'
-
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
-import {
-  PAGE_SUMMARY_CONTEXT_MENU_MAP,
-  PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP,
-} from '@/features/chat-base/summary/constants'
+import { DEFAULT_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants'
 import {
   IPageSummaryNavItem,
   IPageSummaryNavType,
@@ -14,7 +9,7 @@ import {
 import { getSummaryNavItemByType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
-import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 export const getSummaryActionCopilotStepTitle = (type: IPageSummaryType) => {
   switch (type) {
@@ -36,138 +31,57 @@ export const getSummaryNavActions = async (params: {
 }): Promise<ISetActionsType> => {
   const { type, navItem, messageId } = params
   try {
-    const contextMenu = PAGE_SUMMARY_CONTEXT_MENU_MAP[type]()
-    let currentActions = contextMenu.data.actions || []
-    // 减少message的大小
-    contextMenu.data.actions = []
-
-    if (type === 'YOUTUBE_VIDEO_SUMMARY') {
-      // currentActions = await youTubeSummaryChangeTool(params, currentActions) //进行actions增改
-    }
+    const currentActions = navItem.actions(messageId)
 
     // 有messageId表示切换nav，需要去更新第一条消息而不是新增
     if (
       messageId &&
       currentActions[0].parameters?.ActionChatMessageOperationType === 'add'
     ) {
-      currentActions.splice(0, 1, {
-        type: 'CHAT_MESSAGE',
-        parameters: {
-          ActionChatMessageOperationType: 'update',
-          ActionChatMessageConfig: {
-            type: 'ai',
-            messageId: messageId || '',
-            text: '',
-            originalMessage: {
-              metadata: {
-                isComplete: false,
-                copilot: {
-                  steps: [
-                    {
-                      title: getSummaryActionCopilotStepTitle(type),
-                      status: 'loading',
-                      icon: 'SmartToy',
-                      value: '{{CURRENT_WEBPAGE_TITLE}}',
-                    },
-                  ],
-                },
-                title: {
-                  title: navItem.title || 'Summary',
-                },
-                deepDive:
-                  type === 'YOUTUBE_VIDEO_SUMMARY'
-                    ? []
-                    : {
-                        title: {
-                          title: '',
-                          titleIcon: '',
-                        },
-                        type: '',
-                        value: '',
+      // TODO 换成deepMerge
+      const originalMessageConfig =
+        currentActions[0].parameters.ActionChatMessageConfig
+      currentActions[0].parameters.ActionChatMessageOperationType = 'update'
+      currentActions[0].parameters.ActionChatMessageConfig = Object.assign(
+        originalMessageConfig || {},
+        {
+          type: 'ai',
+          messageId: messageId || '',
+          text: '',
+          originalMessage: {
+            ...originalMessageConfig?.originalMessage,
+            metadata: {
+              ...originalMessageConfig?.originalMessage?.metadata,
+              isComplete: false,
+              deepDive:
+                type === 'YOUTUBE_VIDEO_SUMMARY'
+                  ? []
+                  : {
+                      title: {
+                        title: '',
+                        titleIcon: '',
                       },
-                navMetadata: {
-                  key: navItem.key,
-                  title: navItem.title,
-                  icon: navItem.icon,
-                },
+                      type: '',
+                      value: '',
+                    },
+              navMetadata: {
+                key: navItem.key,
+                title: navItem.title,
+                icon: navItem.icon,
               },
-              content: {
-                title: {
-                  title: 'noneShowContent', // 隐藏之前的summary 因为content无法被undefined重制为空
-                },
-                text: '',
-                contentType: 'text',
-              },
-              includeHistory: false,
             },
-          } as IAIResponseMessage,
-        },
-      })
+            content: {
+              title: {
+                title: 'noneShowContent', // 隐藏之前的summary 因为content无法被undefined重制为空
+              },
+              text: '',
+              contentType: 'text',
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      )
     }
-
-    // 下面代码等youTubeSummaryChangeTool actions完善可以去除
-    currentActions = currentActions.map((action) => {
-      if (
-        action.parameters.ActionChatMessageOperationType === 'add' &&
-        navItem
-      ) {
-        const actionTitle = (
-          action.parameters?.ActionChatMessageConfig as IAIResponseMessage
-        )?.originalMessage?.metadata?.title
-        if (actionTitle) {
-          actionTitle.title = navItem.title
-        }
-      }
-      if (messageId && action?.parameters?.ActionChatMessageConfig?.messageId) {
-        action.parameters.ActionChatMessageConfig.messageId = messageId
-      }
-      if (
-        messageId &&
-        action?.parameters?.AskChatGPTActionQuestion?.meta?.outputMessageId
-      ) {
-        action.parameters.AskChatGPTActionQuestion.meta.outputMessageId =
-          messageId
-      }
-      // TODO 临时的处理，需要重构
-      const processAskChatGPTAction = (action: IAction) => {
-        if (
-          action.type === 'ASK_CHATGPT' &&
-          action.parameters.AskChatGPTActionQuestion
-        ) {
-          if (!action.parameters.AskChatGPTActionQuestion.meta) {
-            action.parameters.AskChatGPTActionQuestion.meta = {}
-          }
-
-          const contextMenuOverwriteData =
-            PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP?.[type]?.[navItem.key]
-          if (contextMenuOverwriteData) {
-            contextMenu.id = contextMenuOverwriteData.id
-            contextMenu.text = contextMenuOverwriteData.text
-          }
-          console.log(
-            `contextMenu show Text: [${contextMenu.text}]-[${contextMenu.id}]`,
-          )
-          action.parameters.AskChatGPTActionQuestion.meta.contextMenu =
-            contextMenu
-        }
-        return action
-      }
-      if (action.type === 'SCRIPTS_CONDITIONAL') {
-        if (action.parameters.WFConditionalIfTrueActions) {
-          action.parameters.WFConditionalIfTrueActions =
-            action.parameters.WFConditionalIfTrueActions.map((action) =>
-              processAskChatGPTAction(action as IAction),
-            )
-        }
-        if (action.parameters.WFConditionalIfFalseActions) {
-          action.parameters.WFConditionalIfFalseActions =
-            action.parameters.WFConditionalIfFalseActions.map((action) =>
-              processAskChatGPTAction(action as IAction),
-            )
-        }
-      }
-      return action
-    })
 
     if (
       (
@@ -196,23 +110,19 @@ export const getSummaryNavActions = async (params: {
 // get the actions of the custom prompt and mix with Summary actions, then return
 export const getSummaryCustomPromptActions = async ({
   type,
+  navItem,
   messageId = '',
-  title,
-  icon,
-  key,
-  actions: customPromptActions = [],
 }: {
   type: IPageSummaryType
+  // 历史版本把自定义prompt的id存储为navMetadata.key
+  navItem: Omit<IPageSummaryNavItem, 'key' | 'tooltip'> & { key: string }
   messageId?: string
-  title: string
-  key: string
-  icon?: IContextMenuIconKey
-  actions: ISetActionsType
 }) => {
   try {
-    const currentCustomPromptActions = cloneDeep(customPromptActions)
+    const { key, icon, title, actions: customPromptActions } = navItem
+    const currentCustomPromptActions = customPromptActions(messageId)
 
-    const actions = PAGE_SUMMARY_CONTEXT_MENU_MAP[type]().data.actions!
+    const actions = DEFAULT_SUMMARY_ACTIONS_MAP[type](messageId)
     const askActionIndex = actions.findIndex(
       (action) => action.type === 'ASK_CHATGPT',
     )
@@ -345,10 +255,17 @@ export const getContextMenuByNavMetadataKey = async (
       if (summaryActionContextMenuItem) {
         actions = await getSummaryCustomPromptActions({
           type: pageSummaryType,
-          title: summaryActionContextMenuItem.text,
-          icon: summaryActionContextMenuItem.data.icon as IContextMenuIconKey,
-          actions: summaryActionContextMenuItem.data.actions!,
-          key: summaryActionContextMenuItem.id,
+          navItem: {
+            // key: 'customize',
+            key: summaryActionContextMenuItem.id,
+            title: summaryActionContextMenuItem.text,
+            icon: summaryActionContextMenuItem.data.icon as IContextMenuIconKey,
+            actions: () => summaryActionContextMenuItem.data.actions!,
+          },
+          // title: summaryActionContextMenuItem.text,
+          // icon: summaryActionContextMenuItem.data.icon as IContextMenuIconKey,
+          // actions: summaryActionContextMenuItem.data.actions!,
+          // key: summaryActionContextMenuItem.id,
         })
       } else {
         // 有可能用户在用了 custom prompt 之后，回到 Settings 把这个 custom prompt 删了，所以这里要处理一下

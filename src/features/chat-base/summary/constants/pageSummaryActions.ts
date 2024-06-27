@@ -2,6 +2,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { VARIABLE_CURRENT_WEBPAGE_URL } from '@/background/defaultPromptsData/systemVariables'
 import {
+  SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
   SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
   SUMMARY__SUMMARIZE_PAGE__TL_DR__PROMPT_ID,
 } from '@/constants'
@@ -10,17 +11,17 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 export type PAGE_SUMMARY_NAV_TYPES = 'all' | 'summary' | 'keyTakeaways'
 
-export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
-  [key in PAGE_SUMMARY_NAV_TYPES]: () => ISetActionsType
+export const PAGE_SUMMARY_ACTIONS_MAP: {
+  [key in PAGE_SUMMARY_NAV_TYPES]: (messageId?: string) => ISetActionsType
 } = {
-  all: () => [
+  all: (messageId) => [
     {
       type: 'CHAT_MESSAGE',
       parameters: {
         ActionChatMessageOperationType: 'add',
         ActionChatMessageConfig: {
           type: 'ai',
-          messageId: uuidV4(),
+          messageId: messageId || uuidV4(),
           text: '',
           originalMessage: {
             metadata: {
@@ -98,6 +99,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
             content: {
               title: {
                 title: 'Summary',
+                titleIcon: 'Loading',
               },
               text: '',
               contentType: 'text',
@@ -110,7 +112,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     {
       type: 'ASK_CHATGPT',
       parameters: {
-        // TODO 修改配置
         MaxAIPromptActionConfig: {
           promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
           promptName: `[Summary] Summarize page`,
@@ -160,7 +161,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         VariableName: 'SUMMARY_CONTENTS',
       },
     },
-    // TODO 如果没有related questions
     {
       type: 'SCRIPTS_CONDITIONAL',
       parameters: {
@@ -170,7 +170,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         },
         WFCondition: 'Equals',
         WFConditionalIfTrueActions: [
-          // 说明没有拿到related questions
+          // 说明没有拿到ai response和related questions
           {
             type: 'CHAT_MESSAGE',
             parameters: {
@@ -187,47 +187,8 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                       title: {
                         title: 'Deep dive',
                         titleIcon: 'TipsAndUpdates',
-                        titleIconSize: 20,
                       },
                       value: 'Ask AI anything about the page...',
-                    },
-                  },
-                },
-              } as IAIResponseMessage,
-            },
-          },
-        ],
-        WFConditionalIfFalseActions: [
-          {
-            type: 'RENDER_TEMPLATE',
-            parameters: {
-              template: `{{RELATED_QUESTIONS}}`,
-            },
-          },
-          {
-            type: 'SCRIPTS_LIST',
-            parameters: {},
-          },
-          {
-            type: 'CHAT_MESSAGE',
-            parameters: {
-              ActionChatMessageOperationType: 'update',
-              ActionChatMessageConfig: {
-                type: 'ai',
-                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                text: '',
-                originalMessage: {
-                  status: 'complete',
-                  metadata: {
-                    isComplete: true,
-                    deepDive: {
-                      title: {
-                        title: 'Related',
-                        titleIcon: 'Layers',
-                        titleIconSize: 20,
-                      },
-                      type: 'related',
-                      value: `{{LAST_ACTION_OUTPUT}}` as any,
                     },
                   },
                 },
@@ -253,14 +214,14 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     //   parameters: {},
     // },
   ],
-  summary: () => [
+  summary: (messageId) => [
     {
       type: 'CHAT_MESSAGE',
       parameters: {
         ActionChatMessageOperationType: 'add',
         ActionChatMessageConfig: {
           type: 'ai',
-          messageId: uuidV4(),
+          messageId: messageId || uuidV4(),
           text: '',
           originalMessage: {
             metadata: {
@@ -338,6 +299,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
             content: {
               title: {
                 title: 'Summary',
+                titleIcon: 'Loading',
               },
               text: '',
               contentType: 'text',
@@ -350,7 +312,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     {
       type: 'ASK_CHATGPT',
       parameters: {
-        // TODO 修改配置
         MaxAIPromptActionConfig: {
           promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
           promptName: `[Summary] Summarize page`,
@@ -401,7 +362,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         VariableName: 'SUMMARY_CONTENTS',
       },
     },
-    // TODO 如果没有related questions
     {
       type: 'SCRIPTS_CONDITIONAL',
       parameters: {
@@ -411,7 +371,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         },
         WFCondition: 'Equals',
         WFConditionalIfTrueActions: [
-          // 说明没有拿到related questions
+          // 说明没有拿到ai response和related questions
           {
             type: 'CHAT_MESSAGE',
             parameters: {
@@ -428,7 +388,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                       title: {
                         title: 'Deep dive',
                         titleIcon: 'TipsAndUpdates',
-                        titleIconSize: 20,
                       },
                       value: 'Ask AI anything about the page...',
                     },
@@ -438,44 +397,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
             },
           },
         ],
-        WFConditionalIfFalseActions: [
-          {
-            type: 'RENDER_TEMPLATE',
-            parameters: {
-              template: `{{RELATED_QUESTIONS}}`,
-            },
-          },
-          {
-            type: 'SCRIPTS_LIST',
-            parameters: {},
-          },
-          {
-            type: 'CHAT_MESSAGE',
-            parameters: {
-              ActionChatMessageOperationType: 'update',
-              ActionChatMessageConfig: {
-                type: 'ai',
-                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                text: '',
-                originalMessage: {
-                  status: 'complete',
-                  metadata: {
-                    isComplete: true,
-                    deepDive: {
-                      title: {
-                        title: 'Related',
-                        titleIcon: 'Layers',
-                        titleIconSize: 20,
-                      },
-                      type: 'related',
-                      value: `{{LAST_ACTION_OUTPUT}}` as any,
-                    },
-                  },
-                },
-              } as IAIResponseMessage,
-            },
-          },
-        ],
+        WFConditionalIfFalseActions: [],
       },
     },
     // {
@@ -494,14 +416,14 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     //   parameters: {},
     // },
   ],
-  keyTakeaways: () => [
+  keyTakeaways: (messageId) => [
     {
       type: 'CHAT_MESSAGE',
       parameters: {
         ActionChatMessageOperationType: 'add',
         ActionChatMessageConfig: {
           type: 'ai',
-          messageId: uuidV4(),
+          messageId: messageId || uuidV4(),
           text: '',
           originalMessage: {
             metadata: {
@@ -511,7 +433,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
               },
               shareType: 'summary',
               title: {
-                title: `Summarize page`,
+                title: `Summarize page (Key takeaways)`,
               },
               copilot: {
                 title: {
@@ -579,6 +501,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
             content: {
               title: {
                 title: 'Summary',
+                titleIcon: 'Loading',
               },
               text: '',
               contentType: 'text',
@@ -591,10 +514,9 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     {
       type: 'ASK_CHATGPT',
       parameters: {
-        // TODO 修改配置
         MaxAIPromptActionConfig: {
-          promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
-          promptName: `[Summary] Summarize page`,
+          promptId: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
+          promptName: `[Summary] Summarize page (Key takeaways)`,
           promptActionType: 'chat_complete',
           variables: [
             {
@@ -621,7 +543,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           meta: {
             outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             contextMenu: {
-              id: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
+              id: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
               parent: 'root',
               droppable: false,
               text: '[Summary] Summarize page',
@@ -641,7 +563,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         VariableName: 'SUMMARY_CONTENTS',
       },
     },
-    // TODO 如果没有related questions
     {
       type: 'SCRIPTS_CONDITIONAL',
       parameters: {
@@ -651,7 +572,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         },
         WFCondition: 'Equals',
         WFConditionalIfTrueActions: [
-          // 说明没有拿到related questions
+          // 说明没有拿到ai response和related questions
           {
             type: 'CHAT_MESSAGE',
             parameters: {
@@ -668,7 +589,6 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                       title: {
                         title: 'Deep dive',
                         titleIcon: 'TipsAndUpdates',
-                        titleIconSize: 20,
                       },
                       value: 'Ask AI anything about the page...',
                     },
@@ -678,44 +598,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
             },
           },
         ],
-        WFConditionalIfFalseActions: [
-          {
-            type: 'RENDER_TEMPLATE',
-            parameters: {
-              template: `{{RELATED_QUESTIONS}}`,
-            },
-          },
-          {
-            type: 'SCRIPTS_LIST',
-            parameters: {},
-          },
-          {
-            type: 'CHAT_MESSAGE',
-            parameters: {
-              ActionChatMessageOperationType: 'update',
-              ActionChatMessageConfig: {
-                type: 'ai',
-                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
-                text: '',
-                originalMessage: {
-                  status: 'complete',
-                  metadata: {
-                    isComplete: true,
-                    deepDive: {
-                      title: {
-                        title: 'Related',
-                        titleIcon: 'Layers',
-                        titleIconSize: 20,
-                      },
-                      type: 'related',
-                      value: `{{LAST_ACTION_OUTPUT}}` as any,
-                    },
-                  },
-                },
-              } as IAIResponseMessage,
-            },
-          },
-        ],
+        WFConditionalIfFalseActions: [],
       },
     },
     // {

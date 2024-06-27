@@ -564,7 +564,7 @@ export class ActionAskChatGPT extends Action {
                   },
                 ]),
               }
-              // summary/v2新增，AI response里会返回docId，后续如需增加更改conversationMeta的字段会放进此对象里
+              // AI response里可能会返回docId，后续如需增加更改conversationMeta的字段会放进此对象里
               if (AIResponseMessage.conversationMeta) {
                 await ClientConversationManager.addOrUpdateConversation(
                   conversationId,

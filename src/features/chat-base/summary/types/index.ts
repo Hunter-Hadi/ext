@@ -1,4 +1,4 @@
-import { IContextMenuItem } from '@/features/contextMenu/types'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { I18nextKeysType } from '@/i18next'
 
 export type IPageSummaryType =
@@ -15,6 +15,7 @@ export type IPageSummaryNavType =
   | 'transcript'
   | 'actions'
   | 'timestamped'
+  | 'customize' // 自定义prompt
 
 // 这个字段用于匹配接口的summaryType
 // 后端提供的字段summaryType为不同类型的值
@@ -41,5 +42,9 @@ export type IPageSummaryNavItem = {
   // tooltip内容
   tooltip: I18nextKeysType
   // 运行的actions
-  actions?: () => IContextMenuItem
+  actions: (messageId?: string) => ISetActionsType
+}
+
+export type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
 }

@@ -91,6 +91,10 @@ export interface IMaxAIResponseStreamMessage {
    */
   related?: IAIResponseOriginalMessageMetaDeepRelatedData[]
   /**
+   * 目前应该是json模式返回的status，为ok代表成功
+   */
+  status?: string
+  /**
    * ai response内容
    */
   text?: string

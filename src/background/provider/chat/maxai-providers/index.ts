@@ -1,10 +1,19 @@
+import orderBy from 'lodash-es/orderBy'
 import Browser from 'webextension-polyfill'
 
 import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import {
   maxAIRequestBodyAnalysisGenerator,
+  maxAIRequestBodyDocChatGenerator,
   maxAIRequestBodyPromptActionGenerator,
+  maxAIRequestBodySummaryChatGenerator,
+  maxAIRequestBodySummaryGenerator,
 } from '@/background/api/maxAIRequestBodyGenerator'
+import {
+  IMaxAIResponseParserMessage,
+  maxAIRequestResponseJsonParser,
+  maxAIRequestResponseStreamParser,
+} from '@/background/api/maxAIRequestResponseParser'
 import { IAIProviderType } from '@/background/provider/chat/ChatAdapter'
 import {
   IMaxAIChatGPTBackendAPIType,
@@ -26,14 +35,11 @@ import {
 } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
-import { IPageSummaryNavType } from '@/features/chat-base/summary/types'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { backgroundConversationDB } from '@/features/indexed_db/conversations/background'
-import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import {
   IAIResponseMessage,
-  IAIResponseOriginalMessage,
   IChatUploadFile,
   IUserChatMessage,
 } from '@/features/indexed_db/conversations/models/Message'
@@ -53,11 +59,7 @@ export type IMaxAIAskQuestionFunctionType = (
       type: 'error' | 'message'
       done: boolean
       error: string
-      data: {
-        text: string
-        conversationId: string
-        originalMessage?: IAIResponseOriginalMessage
-      }
+      data: IMaxAIResponseParserMessage
     }) => void
     beforeSend?: () => Promise<void>
     setAbortController: (controller: AbortController) => void
@@ -216,7 +218,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   }
   // 是否是summary类型的conversation的第一条总结的message
   let summaryMessage: IAIResponseMessage | null = null
-  // chat_with_document的情况
+
   if (conversationDetail) {
     if (outputMessageId) {
       const outputMessage = await backgroundConversationDB.messages.get(
@@ -232,23 +234,39 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
     }
     if (summaryMessage) {
       // summary总结
-      const { backendAPI: summaryAPI, postBody: summaryBody } = maxAIAPISummary(
-        postBody,
-        conversationDetail,
-        summaryMessage,
-      )
+      const { backendAPI: summaryAPI, postBody: summaryBody } =
+        maxAIRequestBodySummaryGenerator(
+          postBody,
+          conversationDetail,
+          summaryMessage,
+        )
       backendAPI = summaryAPI
       postBody = summaryBody
-    } else if (conversationDetail.type === 'Summary') {
+    } else if (
+      conversationDetail.type === 'Summary' &&
+      !MaxAIPromptActionConfig
+    ) {
       // summary问答，需要找到第一条summary总结的消息，去判断nav类型
-      const firstSummaryMessage = await backgroundConversationDB.messages
+      const messages = await backgroundConversationDB.messages
         .where('conversationId')
         .equals(conversationId)
         .and((message) => message.type === 'ai')
-        .first()
+        .toArray((list) => {
+          return list.map((item) => ({
+            messageId: item.messageId,
+            created_at: item.created_at,
+          }))
+        })
+
+      const firstMessageId = orderBy(messages, ['created_at'], ['asc'])?.[0]
+        ?.messageId
+
+      const firstSummaryMessage = await backgroundConversationDB.messages.get(
+        firstMessageId,
+      )
 
       const { backendAPI: summaryAPI, postBody: summaryBody } =
-        maxAIAPISummaryChat(
+        maxAIRequestBodySummaryChatGenerator(
           postBody,
           conversationDetail,
           firstSummaryMessage as IAIResponseMessage,
@@ -279,7 +297,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
 
   // 如果有MaxAIPromptActionConfig，就需要用/use_prompt_action
   if (MaxAIPromptActionConfig) {
-    // summary总结接口目前支持传递prompt_input
+    // TODO summary总结接口目前支持传递prompt_input，后续此接口参数更改特殊化再单独拆出
     if (!summaryMessage) {
       backendAPI = 'use_prompt_action'
       delete postBody.doc_id
@@ -291,7 +309,8 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   }
   // 当前只有大文件聊天用到这个model
   if (backendAPI.startsWith('chat_with_document')) {
-    const { backendAPI: docAPI, postBody: docBody } = maxAIAPIDocChat(postBody)
+    const { backendAPI: docAPI, postBody: docBody } =
+      maxAIRequestBodyDocChatGenerator(postBody)
     backendAPI = docAPI
     postBody = docBody
   }
@@ -304,11 +323,12 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   const signal = controller.signal
   setAbortController(controller)
   console.log('streaming start', postBody)
-  // 后端会每段每段的给前端返回数据
-  let messageResult = ''
   let hasError = false
-  let originalMessage: IAIResponseOriginalMessage | undefined
   let isTokenExpired = false
+  let responseMessage: IMaxAIResponseParserMessage = {
+    text: '',
+    conversationId,
+  }
   if (backendAPI === 'get_image_generate_response') {
     try {
       const result = await fetch(
@@ -417,114 +437,21 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       body: JSON.stringify(postBody),
       onMessage: (message: string) => {
         try {
-          const messageData: IMaxAIResponseStreamMessage | null = JSON.parse(
+          const streamMessage: IMaxAIResponseStreamMessage | null = JSON.parse(
             message as string,
           )
-          // 增强数据
-          if (messageData?.streaming_status) {
-            if (messageData.text !== undefined) {
-              if (messageData.need_merge) {
-                messageResult += messageData.text
-              } else {
-                messageResult = messageData.text
-              }
-              originalMessage = {
-                ...originalMessage,
-                content: {
-                  contentType: 'text',
-                  text: messageResult,
-                },
-              }
-            }
-            if (messageData.citations !== undefined) {
-              switch (messageData.streaming_status) {
-                case 'start':
-                case 'in_progress':
-                  // loading状态
-                  originalMessage = {
-                    ...originalMessage,
-                    metadata: {
-                      ...originalMessage?.metadata,
-                      sourceCitations: messageData.citations,
-                    },
-                  }
-                  break
-                case 'complete':
-                  originalMessage = {
-                    ...originalMessage,
-                    metadata: {
-                      ...originalMessage?.metadata,
-                      sourceCitations: messageData.citations,
-                    },
-                  }
-                  break
-              }
-            }
-            if (messageData.related !== undefined) {
-              switch (messageData.streaming_status) {
-                case 'start':
-                case 'in_progress':
-                  // loading状态
-                  originalMessage = {
-                    ...originalMessage,
-                    metadata: {
-                      ...originalMessage?.metadata,
-                      deepDive: {
-                        title: {
-                          title: ' ',
-                          titleIcon: 'Loading',
-                        },
-                        value: '',
-                      },
-                    },
-                  }
-                  break
-                case 'complete':
-                  originalMessage = {
-                    ...originalMessage,
-                    metadata: {
-                      ...originalMessage?.metadata,
-                      deepDive: {
-                        title: {
-                          title: 'Related',
-                          titleIcon: 'Layers',
-                        },
-                        type: 'related',
-                        value: messageData.related,
-                      },
-                    },
-                  }
-                  break
-              }
-            }
-            onMessage &&
-              onMessage({
-                type: 'message',
-                done: false,
-                error: '',
-                data: {
-                  text: '',
-                  conversationId,
-                  originalMessage,
-                },
-              })
-          } else if (messageData?.text) {
-            if (messageData.text) {
-              messageResult += messageData.text
-            }
-            onMessage &&
-              onMessage({
-                type: 'message',
-                done: false,
-                error: '',
-                data: {
-                  text: messageResult,
-                  conversationId,
-                  originalMessage,
-                },
-              })
-          }
-          log.debug('streaming on message', messageResult)
+          responseMessage = maxAIRequestResponseStreamParser(
+            streamMessage,
+            responseMessage,
+          )
+          onMessage &&
+            onMessage({
+              type: 'message',
+              done: false,
+              error: '',
+              data: responseMessage,
+            })
+          log.debug('streaming on message', streamMessage)
         } catch (e) {
           log.error('parse message.data error: \t', e)
         }
@@ -610,8 +537,10 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
         },
       )
       const data = await response.json()
+
+      // TODO 目前多合一的接口目前没有status字段并且也不会以json mode方式调用
       if (data.status === 'OK' && data.text) {
-        messageResult = data.text
+        responseMessage = maxAIRequestResponseJsonParser(data, responseMessage)
       } else {
         hasError = true
         onMessage &&
@@ -656,7 +585,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
     }
   }
   if (hasError) {
-    if (messageResult === '') {
+    if (responseMessage.text === '') {
       // HACK: 后端现在偶尔会返回空字符串，这里做个fallback
       backgroundSendMaxAINotification(
         'MAXAI_API',
@@ -681,11 +610,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
         done: true,
         type: 'message',
         error: '',
-        data: {
-          text: messageResult,
-          conversationId,
-          originalMessage,
-        },
+        data: responseMessage,
       })
     await afterSend?.('success')
   }
@@ -694,149 +619,4 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
     await chromeExtensionLogout()
     await afterSend?.('token_expired')
   }
-}
-
-const getAPISummaryTypeByNavType = (navType?: IPageSummaryNavType | string) => {
-  switch (navType) {
-    case 'all':
-      return 'standard'
-    case 'summary':
-      return 'short'
-    case 'keyTakeaways':
-      return 'key_point'
-    case 'actions':
-      return 'actions'
-    case 'comment':
-      return 'actions'
-    case 'transcript':
-      return 'transcript'
-    case 'timestamped':
-      return 'timestamped'
-  }
-  return ''
-}
-
-/**
- * summary请求逻辑
- */
-const maxAIAPISummary = (
-  postBody: IMaxAIChatGPTBackendBodyType,
-  conversation: IConversation,
-  summaryMessage: IAIResponseMessage,
-) => {
-  let backendAPI: IMaxAIChatGPTBackendAPIType = 'summary/v2/webpage'
-  switch (conversation.meta.pageSummaryType) {
-    case 'PAGE_SUMMARY':
-      backendAPI = 'summary/v2/webpage'
-      break
-    case 'DEFAULT_EMAIL_SUMMARY':
-      backendAPI = 'summary/v2/email'
-      break
-    case 'YOUTUBE_VIDEO_SUMMARY':
-      backendAPI = 'summary/v2/videosite'
-      break
-    case 'PDF_CRX_SUMMARY':
-      backendAPI = 'summary/v2/pdf'
-      break
-  }
-  postBody.summary_type = getAPISummaryTypeByNavType(
-    summaryMessage.originalMessage?.metadata?.navMetadata?.key || 'all',
-  )
-  postBody.doc_id = conversation.meta.pageSummary?.docId
-  // 后端会自动调整model
-  delete (postBody as any).model_name
-  return { backendAPI, postBody }
-}
-
-/**
- * summary后续问答请求逻辑
- */
-const maxAIAPISummaryChat = (
-  postBody: IMaxAIChatGPTBackendBodyType,
-  conversation: IConversation,
-  summaryMessage?: IAIResponseMessage,
-) => {
-  // summary问答
-  let backendAPI: IMaxAIChatGPTBackendAPIType = 'summary/v2/qa'
-  if (conversation.meta.pageSummary) {
-    // 新版本数据
-    if (conversation.meta.docId) {
-      // 大文件走chat_with_document对话逻辑
-      backendAPI = 'chat_with_document/v2'
-    } else {
-      postBody.doc_id = conversation.meta.pageSummary.docId
-      if (
-        summaryMessage?.originalMessage?.metadata?.isComplete ||
-        summaryMessage?.originalMessage?.content?.text
-      ) {
-        // 完成或者有text内容说明请求成功了，后端成功拿到页面数据和summary的短文docId
-        postBody.need_create = false
-        postBody.summary_type = getAPISummaryTypeByNavType(
-          summaryMessage.originalMessage?.metadata?.navMetadata?.key,
-        )
-        // 目前不传递会报错
-        postBody.prompt_inputs = {}
-      } else {
-        // 这里代表第一条summary请求失败了，目前失败不影响后续对话，需要带上对应的PROMPT_INPUTS，后端需要此数据生成对应的systemPrompt
-        postBody.need_create = true
-        postBody.summary_type = getAPISummaryTypeByNavType(
-          summaryMessage?.originalMessage?.metadata?.navMetadata?.key || 'all',
-        )
-        // 拿到summaryMessage的variables拼接到prompt_inputs里
-        postBody.prompt_inputs = {
-          PAGE_CONTENT: conversation.meta.pageSummary.content || '',
-        }
-      }
-    }
-  } else {
-    // 对于旧版本数据走之前的逻辑
-    backendAPI = 'get_summarize_response'
-  }
-  // 后端会自动调整model
-  delete (postBody as any).model_name
-  return { backendAPI, postBody }
-}
-
-/**
- * 长文问答请求逻辑
- * @param postBody
- */
-const maxAIAPIDocChat = (postBody: IMaxAIChatGPTBackendBodyType) => {
-  const backendAPI: IMaxAIChatGPTBackendAPIType = 'chat_with_document/v2'
-  postBody.model_name = 'gpt-3.5-turbo-16k'
-  if (
-    postBody.prompt_id === postBody.prompt_name &&
-    postBody.prompt_id === 'chat'
-  ) {
-    postBody.prompt_id = 'summary_chat'
-    postBody.prompt_name = 'summary_chat'
-  }
-  const messageContent = postBody.message_content?.find(
-    (content) => content.type === 'text',
-  )
-  const messageContentText = messageContent?.text || ''
-  postBody.message_content = messageContentText as any
-  // 大文件聊天的接口不支持新的message结构，换成老的 - @xiang.xu - 2024-01-15
-  postBody.chat_history = postBody.chat_history?.map((history) => {
-    // 老得结构
-    // {
-    //   type: 'human' | 'ai' | 'generic' | 'system' | 'function'
-    //   data: {
-    //     content: string
-    //     additional_kwargs: {
-    //       [key: string]: any
-    //     }
-    //   }
-    // }
-    return {
-      type: history.role,
-      data: {
-        content:
-          history.content.find((content) => content.type === 'text')?.text ||
-          '',
-        additional_kwargs: {},
-      },
-    } as any
-  })
-  return { backendAPI, postBody }
 }

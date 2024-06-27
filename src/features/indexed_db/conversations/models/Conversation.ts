@@ -74,8 +74,6 @@ export interface IConversationMeta {
     docId?: string
     // summary类型
     type?: IPageSummaryType
-    // 先不存，没想好
-    html?: string
     // summary网页内容，4.3.9开始不存储在systemPrompt里了
     content?: string
   }

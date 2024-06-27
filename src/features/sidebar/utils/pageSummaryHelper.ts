@@ -267,7 +267,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                         isComplete: true,
                         deepDive: {
                           title: {
-                            title: 'Related',
+                            title: 'Keep exploring',
                             titleIcon: 'Layers',
                             titleIconSize: 20,
                           },
@@ -519,7 +519,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                         isComplete: true,
                         deepDive: {
                           title: {
-                            title: 'Related',
+                            title: 'Keep exploring',
                             titleIcon: 'Layers',
                             titleIconSize: 20,
                           },
@@ -775,7 +775,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                         isComplete: true,
                         deepDive: {
                           title: {
-                            title: 'Related',
+                            title: 'Keep exploring',
                             titleIcon: 'Layers',
                             titleIconSize: 20,
                           },
@@ -1035,7 +1035,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                         deepDive: [
                           {
                             title: {
-                              title: 'Related',
+                              title: 'Keep exploring',
                               titleIcon: 'Layers',
                               titleIconSize: 20,
                             },

@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Mô hình mới nhất và tiên tiến nhất của Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Tốc độ nhanh hơn. Cửa sổ ngữ cảnh 1 triệu token.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Cải thiện các mô đun. Tăng cường an toàn.",
-    "sidebar__promotion_dialog__learn_more": "Tìm hiểu thêm"
+    "sidebar__promotion_dialog__learn_more": "Tìm hiểu thêm",
+    "sidebar__chat__voice_input__idle__tooltip": "Sử dụng microphone",
+    "sidebar__chat__voice_input__recording__tooltip": "Đang ghi âm...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Đang chuyển văn bản...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Quyền sử dụng microphone đã bị từ chối.\nCập nhật cài đặt quyền trên trình duyệt và thử lại.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Không phát hiện giọng nói.\nVui lòng thử lại."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

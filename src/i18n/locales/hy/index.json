@@ -989,7 +989,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google-ի նորացված և առաջարկվող մոդելը։",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Արագացումը։ 1M նշանակալի պարագայում։",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Բարելավված մոդալիտետներ։ Բարելավված անվտանգություն։",
-    "sidebar__promotion_dialog__learn_more": "Իմացիր ավելին"
+    "sidebar__promotion_dialog__learn_more": "Իմացիր ավելին",
+    "sidebar__chat__voice_input__idle__tooltip": "Օգտագործեք միկրոֆոնը",
+    "sidebar__chat__voice_input__recording__tooltip": "Գրավորում...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Թարգմանում...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Միկրոֆոնի օգտագործման թույլատրույթը մերժվել է։\nԹարմացրեք ձեր բրաուզերի թույլատրույթները և փորձեք նորից։",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Բացակայում է խոսքը։\nԽնդրում ենք փորձել նորից։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

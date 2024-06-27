@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Het nieuwste en meest geavanceerde model van Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Snellere snelheid. 1M token context venster.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Verbeterde modaliteiten. Verbeterde veiligheid.",
-    "sidebar__promotion_dialog__learn_more": "Meer informatie"
+    "sidebar__promotion_dialog__learn_more": "Meer informatie",
+    "sidebar__chat__voice_input__idle__tooltip": "Gebruik microfoon",
+    "sidebar__chat__voice_input__recording__tooltip": "Opname...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transcriptie...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Toestemming om de microfoon te gebruiken is geweigerd.\nWijzig uw browserinstellingen voor toestemming en probeer het opnieuw.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Geen spraak gedetecteerd.\nProbeer het opnieuw."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "ಗೂಗಲ್ ಹೊಸತಾದ ಮತ್ತು ಅತ್ಯಂತ ಮುಂದುವರಿದ ಮಾದರಿ.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "ಹೆಚ್ಚು ವೇಗ. 1M ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋ.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "ಮೇಲ್ಮೆಗೆಗಳನ್ನು ಸುಧಾರಿಸಲಾಗಿದೆ. ಮೆಕ್ಕಿನ ಸುರಕ್ಷತೆ.",
-    "sidebar__promotion_dialog__learn_more": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"
+    "sidebar__promotion_dialog__learn_more": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
+    "sidebar__chat__voice_input__idle__tooltip": "ಮೈಕ್ರೊಫೋನ್ ಬಳಸಿ",
+    "sidebar__chat__voice_input__recording__tooltip": "ರೆಕಾರ್ಡಿಂಗ್...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "ಟ್ರಾನ್ಸ್ಕ್ರಿಪ್ಟಿಂಗ್...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "ಮೈಕ್ರೊಫೋನ್ ಬಳಸುವ ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ.\nನಿಮ್ಮ ಬ್ರೌಸರ್ ಅನುಮತಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನವೀಕರಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "ಮಾತು ಗ್ರಹಿಸಲು ಯಾವುದೇ ಮಾತು ಕಂಡುಬರಲಿಲ್ಲ.\nಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Najnoviji i najnapredniji model tvrtke Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Brža brzina. Prozor konteksta s 1M tokena.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Unaprijeđene modalnosti. Poboljšana sigurnost.",
-    "sidebar__promotion_dialog__learn_more": "Saznajte više"
+    "sidebar__promotion_dialog__learn_more": "Saznajte više",
+    "sidebar__chat__voice_input__idle__tooltip": "Koristite mikrofon",
+    "sidebar__chat__voice_input__recording__tooltip": "Snimanje...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkriptiranje...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Dozvola za korištenje mikrofona je odbijena.\nAžurirajte postavke dozvole u pregledniku i pokušajte ponovno.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Nije detektiran govor.\nPokušajte ponovno."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

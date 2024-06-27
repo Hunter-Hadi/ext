@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google-യുടെ പുതിയതായിരുന്നുവെങ്കിലും അടിസ്ഥാനപ്പെടുത്തിയ മോഡൽ.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "വേഗതയും 1M ടോക്കൺ കൺടെക്സ്റ്റ് വിന്യാസവും.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "മോഡാലിറ്റീസ് മേഖലകൾ മേലുള്ളതും. പെരുമാറ്റം ചെയ്യപ്പെട്ടതും.",
-    "sidebar__promotion_dialog__learn_more": "കൂടുതല്‍ അറിയുക"
+    "sidebar__promotion_dialog__learn_more": "കൂടുതല്‍ അറിയുക",
+    "sidebar__chat__voice_input__idle__tooltip": "മൈക്രോഫോൺ ഉപയോഗിക്കുക",
+    "sidebar__chat__voice_input__recording__tooltip": "റെക്കോർഡുചെയ്യുന്നു...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "ട്രാൻസ്ക്രിപ്റ്റിംഗ്...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "മൈക്രോഫോൺ ഉപയോഗിക്കാൻ അനുവദനീയത നിരസിച്ചു.\nനിങ്ങളുടെ ബ്രൗസർ അനുമതി ക്രമീകരണങ്ങൾ അപ്ഡേറ്റ് ചെയ്യുകയും ശ്രമിക്കുക.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "സ്പീച് കണ്ടെത്തിയില്ല.\nദയവായി വീണ്ടും ശ്രമിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

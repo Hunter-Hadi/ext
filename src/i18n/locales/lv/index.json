@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google jaunākais un vispārīgākais modelis.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Ātrāka ātrums. 1M simbolu konteksta logs.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Uzlabotas modalitātes. Paaugstināta drošība.",
-    "sidebar__promotion_dialog__learn_more": "Uzzināt vairāk"
+    "sidebar__promotion_dialog__learn_more": "Uzzināt vairāk",
+    "sidebar__chat__voice_input__idle__tooltip": "Izmantojiet mikrofonu",
+    "sidebar__chat__voice_input__recording__tooltip": "Notiek ierakstīšana...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Notiek transkripcija...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Atļauja izmantot mikrofonu tika noraidīta.\nAtjauniniet pārlūka atļauju iestatījumus un mēģiniet vēlreiz.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Nav konstatēta runa.\nLūdzu, mēģiniet vēlreiz."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

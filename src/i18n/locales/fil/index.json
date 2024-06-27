@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Pinakabagong at pinakasusi na modelo ng Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Mas mabilis na bilis. 1M token context window.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Pinalakas na modalities. Pinalawak na kaligtasan.",
-    "sidebar__promotion_dialog__learn_more": "Alamin pa"
+    "sidebar__promotion_dialog__learn_more": "Alamin pa",
+    "sidebar__chat__voice_input__idle__tooltip": "Gamitin ang mikropono",
+    "sidebar__chat__voice_input__recording__tooltip": "Nagre-record...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkripting...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Ang pahintulot na gamitin ang mikropono ay tinanggihan.\nI-update ang mga setting ng pahintulot sa iyong browser at subukan muli.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Walang natuklasang pagsasalita.\nSubukan muli."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

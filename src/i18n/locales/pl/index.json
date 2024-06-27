@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Najnowszy i najbardziej zaawansowany model Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Szybsza prędkość. Okno kontekstu 1M tokenów.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Ulepszone modalności. Wzmocnione bezpieczeństwo.",
-    "sidebar__promotion_dialog__learn_more": "Dowiedz się więcej"
+    "sidebar__promotion_dialog__learn_more": "Dowiedz się więcej",
+    "sidebar__chat__voice_input__idle__tooltip": "Użyj mikrofonu",
+    "sidebar__chat__voice_input__recording__tooltip": "Nagrywanie...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkrypcja...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Odmówiono dostępu do mikrofonu.\nZaktualizuj ustawienia uprawnień w przeglądarce i spróbuj ponownie.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Nie wykryto mowy.\nSpróbuj ponownie."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

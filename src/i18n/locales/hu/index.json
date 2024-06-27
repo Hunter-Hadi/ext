@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "A Google legújabb és legfejlettebb modellje.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Gyorsabb sebesség. 1M tokenes kontextusablak.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Fejlettebb modalitások. Fokozott biztonság.",
-    "sidebar__promotion_dialog__learn_more": "További információ"
+    "sidebar__promotion_dialog__learn_more": "További információ",
+    "sidebar__chat__voice_input__idle__tooltip": "Használja a mikrofont",
+    "sidebar__chat__voice_input__recording__tooltip": "Felvétel...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Trankriptálás...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "A mikrofon használatához engedély megtagadva.\nFrissítse a böngésző engedélybeállításait, majd próbálja újra.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Nem észlelhető beszéd.\nKérjük, próbálja újra."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Googles nyeste og mest avancerede model.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Hurtigere hastighed. 1M tokens kontekstvindue.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Forbedrede modaliteter. Forbedret sikkerhed.",
-    "sidebar__promotion_dialog__learn_more": "Lær mere"
+    "sidebar__promotion_dialog__learn_more": "Lær mere",
+    "sidebar__chat__voice_input__idle__tooltip": "Brug mikrofon",
+    "sidebar__chat__voice_input__recording__tooltip": "Optager...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkriberer...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Tilladelse til at bruge mikrofon blev nægtet.\nOpdater dine browser tilladelser og prøv igen.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Ingen tale registreret.\nPrøv venligst igen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

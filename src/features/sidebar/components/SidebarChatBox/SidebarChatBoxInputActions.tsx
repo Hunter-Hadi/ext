@@ -7,6 +7,7 @@ import { SxProps, Theme } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
 import TooltipButton from '@/components/TooltipButton'
 import UserUpgradeButton from '@/features/auth/components/UserUpgradeButton'
@@ -185,16 +186,18 @@ const SidebarChatBoxInputActions: FC<{
           text={inputValue}
         />
 
-        <SidebarChatVoiceInputButton
-          sx={{
-            ...actionsBtnColorSxMemo,
-            visibility: isUsePromptIconButtonShow ? 'visible' : 'hidden',
-            position: isUsePromptIconButtonShow ? 'relative' : 'absolute',
-            [`&.${buttonClasses.contained}`]: {
-              color: 'white',
-            },
-          }}
-        />
+        <MaxAIBetaFeatureWrapper betaFeatureName={'voice_input'}>
+          <SidebarChatVoiceInputButton
+            sx={{
+              ...actionsBtnColorSxMemo,
+              visibility: isUsePromptIconButtonShow ? 'visible' : 'hidden',
+              position: isUsePromptIconButtonShow ? 'relative' : 'absolute',
+              [`&.${buttonClasses.contained}`]: {
+                color: 'white',
+              },
+            }}
+          />
+        </MaxAIBetaFeatureWrapper>
 
         {/* send btn */}
         <TooltipButton

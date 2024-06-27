@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Най-новият и най-продвинат модел на Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "По-бърза скорост. Прозорец за контекст от 1M токена.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Подобрени модалности. Подобрена безопасност.",
-    "sidebar__promotion_dialog__learn_more": "Научете повече"
+    "sidebar__promotion_dialog__learn_more": "Научете повече",
+    "sidebar__chat__voice_input__idle__tooltip": "Използвайте микрофона",
+    "sidebar__chat__voice_input__recording__tooltip": "Запис...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Транскрипция...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Отказан достъп до микрофона.\nАктуализирайте настройките за разрешение в браузъра си и опитайте отново.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Не е засечена реч.\nМоля, опитайте отново."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

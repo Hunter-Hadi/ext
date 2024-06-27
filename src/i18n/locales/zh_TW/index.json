@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google最新且最先進的模型。",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "更快的速度。1M令牌上下文窗口。",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "改進的模態。增強的安全性。",
-    "sidebar__promotion_dialog__learn_more": "了解更多"
+    "sidebar__promotion_dialog__learn_more": "了解更多",
+    "sidebar__chat__voice_input__idle__tooltip": "使用麥克風",
+    "sidebar__chat__voice_input__recording__tooltip": "錄音中...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "轉錄中...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "拒絕使用麥克風的權限。\n請更新您的瀏覽器權限設定並重試。",
+    "sidebar__chat__voice_input__no_speech__tooltip": "未偵測到語音。\n請再試一次。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

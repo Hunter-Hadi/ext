@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Model terbaru dan paling canggih dari Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Kecepatan lebih tinggi. Jendela konteks 1 juta token.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Modalitas yang ditingkatkan. Keamanan yang lebih baik.",
-    "sidebar__promotion_dialog__learn_more": "Pelajari lebih lanjut"
+    "sidebar__promotion_dialog__learn_more": "Pelajari lebih lanjut",
+    "sidebar__chat__voice_input__idle__tooltip": "Gunakan mikrofon",
+    "sidebar__chat__voice_input__recording__tooltip": "Merekam...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkripsi...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Izin untuk menggunakan mikrofon ditolak.\nPerbarui pengaturan izin browser Anda dan coba lagi.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Tidak ada ucapan terdeteksi.\nSilakan coba lagi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

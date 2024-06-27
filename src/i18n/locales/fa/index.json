@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "جدیدترین و پیشرفته‌ترین مدل گوگل",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "سرعت بالاتر. پنجره متنی با ۱ میلیون توکن",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "مدالیتهای بهبود یافته. ایمنی بهبود یافته",
-    "sidebar__promotion_dialog__learn_more": "بیشتر بدانید"
+    "sidebar__promotion_dialog__learn_more": "بیشتر بدانید",
+    "sidebar__chat__voice_input__idle__tooltip": "استفاده از میکروفون",
+    "sidebar__chat__voice_input__recording__tooltip": "در حال ضبط...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "در حال تبدیل به متن...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "دسترسی به میکروفون رد شد.\nتنظیمات دسترسی مرورگر خود را به‌روز کنید و دوباره امتحان کنید.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "صدایی شناسایی نشد.\nلطفاً دوباره امتحان کنید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

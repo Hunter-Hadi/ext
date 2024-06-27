@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل۔",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "تیز رفتار۔ 1M ٹوکن کنٹیکسٹ ونڈو۔",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "بہتر ماڈالیٹیز۔ بہتر حفاظت۔",
-    "sidebar__promotion_dialog__learn_more": "مزید جانیں"
+    "sidebar__promotion_dialog__learn_more": "مزید جانیں",
+    "sidebar__chat__voice_input__idle__tooltip": "مائیکروفون استعمال کریں",
+    "sidebar__chat__voice_input__recording__tooltip": "ریکارڈنگ ہو رہی ہے...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "ٹرانسکرپشنگ ہو رہی ہے...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "مائیکروفون استعمال کرنے کی اجازت منسوخ کر دی گئی ہے۔\nبراؤزر کی اجازتیں ترتیب دیں اور دوبارہ کوشش کریں۔",
+    "sidebar__chat__voice_input__no_speech__tooltip": "کوئی بات نہیں سنی گئی۔\nبراہ کرم دوبارہ کوشش کریں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

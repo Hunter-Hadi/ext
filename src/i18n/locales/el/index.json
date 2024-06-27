@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Το νεότερο και πιο προηγμένο μοντέλο της Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Μεγαλύτερη ταχύτητα. Παράθυρο 1M λέξεων για το περιβάλλον συμφραζομένου.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Βελτιωμένες δυνατότητες. Ενισχυμένη ασφάλεια.",
-    "sidebar__promotion_dialog__learn_more": "Μάθετε περισσότερα"
+    "sidebar__promotion_dialog__learn_more": "Μάθετε περισσότερα",
+    "sidebar__chat__voice_input__idle__tooltip": "Χρησιμοποιήστε το μικρόφωνο",
+    "sidebar__chat__voice_input__recording__tooltip": "Ηχογράφηση...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Μεταγραφή...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Η άδεια χρήσης του μικροφώνου αρνήθηκε.\nΕνημερώστε τις ρυθμίσεις άδειας του προγράμματος περιήγησής σας και δοκιμάστε ξανά.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Δεν ανιχνεύθηκε ομιλία.\nΠαρακαλώ δοκιμάστε ξανά."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

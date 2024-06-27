@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "El model més nou i avançat de Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Velocitat més ràpida. Finestra de context de 1M de tokens.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Modalitats millorades. Seguretat reforçada.",
-    "sidebar__promotion_dialog__learn_more": "Més informació"
+    "sidebar__promotion_dialog__learn_more": "Més informació",
+    "sidebar__chat__voice_input__idle__tooltip": "Utilitza el micròfon",
+    "sidebar__chat__voice_input__recording__tooltip": "Enregistrament...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transcripció...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "S'ha denegat el permís per utilitzar el micròfon.\nActualitzeu la configuració de permisos del vostre navegador i torneu-ho a provar.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "No s'ha detectat cap discurs.\nSi us plau, torneu-ho a intentar."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

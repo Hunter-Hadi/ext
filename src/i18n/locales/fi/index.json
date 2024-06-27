@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Googlen uusin ja kehittynein malli.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Nopeampi nopeus. 1M tokenin kontekstiruutu.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Parannetut modaliteetit. Parannettu turvallisuus.",
-    "sidebar__promotion_dialog__learn_more": "Lisätietoja"
+    "sidebar__promotion_dialog__learn_more": "Lisätietoja",
+    "sidebar__chat__voice_input__idle__tooltip": "Käytä mikrofonia",
+    "sidebar__chat__voice_input__recording__tooltip": "Äänitys...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkriptoidaan...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofonin käyttölupa evättiin.\nPäivitä selaimen lupa-asetukset ja yritä uudelleen.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Puhe ei havaittu.\nYritä uudelleen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "הדגם החדש והמתקדם ביותר של Google.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "מהירות מוגברת. חלון קונטקסט של 1M טוקנים.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "מודליות משופרות. בטיחות משופרת.",
-    "sidebar__promotion_dialog__learn_more": "מידע נוסף"
+    "sidebar__promotion_dialog__learn_more": "מידע נוסף",
+    "sidebar__chat__voice_input__idle__tooltip": "השתמש במיקרופון",
+    "sidebar__chat__voice_input__recording__tooltip": "מקליט...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "מעתיק...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "הרשאה להשתמש במיקרופון נדחתה.\nעדכן את הגדרות ההרשאות של הדפדפן שלך ונסה שוב.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "לא זוהתה דיבור.\nנסה שוב."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

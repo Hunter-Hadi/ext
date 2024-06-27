@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google naujausias ir pažangiausias modelis.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Greitesnis greitis. 1M ženklų konteksto langas.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Patobulintos modalumai. Pakeista sauga.",
-    "sidebar__promotion_dialog__learn_more": "Sužinokite daugiau"
+    "sidebar__promotion_dialog__learn_more": "Sužinokite daugiau",
+    "sidebar__chat__voice_input__idle__tooltip": "Naudokite mikrofoną",
+    "sidebar__chat__voice_input__recording__tooltip": "Įrašoma...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkribuojama...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofono naudojimo leidimas buvo atmestas.\nAtnaujinkite naršyklės leidimų nustatymus ir bandykite dar kartą.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Neaptiktas joks kalbėjimas.\nPabandykite dar kartą."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

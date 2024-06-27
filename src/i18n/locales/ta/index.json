@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google இன் புதியதாகும் மிகுந்த மாதிரி.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "வேகம் வேகமாக. 1M டோக்கன் உள்ளடக்க சாளரம்.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "மேம்படுத்தப்பட்ட முறைகள். மேம்படுத்தப்பட்ட பாதுகாப்பு.",
-    "sidebar__promotion_dialog__learn_more": "மேலும் அறிக"
+    "sidebar__promotion_dialog__learn_more": "மேலும் அறிக",
+    "sidebar__chat__voice_input__idle__tooltip": "மைக்ரோஃபோனை பயன்படுத்துங்கள்",
+    "sidebar__chat__voice_input__recording__tooltip": "பதிவு செய்கிறது...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "மொழிபெயர்க்கப்படுகிறது...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "மைக்ரோஃபோனை பயன்படுத்த அனுமதி மறுக்கப்பட்டது.\nஉங்கள் உலாவியின் அனுமதி அமைப்புகளை புதுப்பிக்கவும் மீண்டும் முயற்சிக்கவும்.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "உரை கண்டறியப்படவில்லை.\nமீண்டும் முயற்சிக்கவும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

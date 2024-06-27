@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Googles neuestes und fortschrittlichstes Modell.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Schnellere Geschwindigkeit. 1M Token-Kontextfenster.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Verbesserte Modalitäten. Erhöhte Sicherheit.",
-    "sidebar__promotion_dialog__learn_more": "Erfahren Sie mehr"
+    "sidebar__promotion_dialog__learn_more": "Erfahren Sie mehr",
+    "sidebar__chat__voice_input__idle__tooltip": "Mikrofon verwenden",
+    "sidebar__chat__voice_input__recording__tooltip": "Aufnahme...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkribieren...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Die Berechtigung zur Verwendung des Mikrofons wurde verweigert.\nAktualisieren Sie Ihre Browser-Berechtigungseinstellungen und versuchen Sie es erneut.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Keine Sprache erkannt.\nBitte versuchen Sie es erneut."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Googleの最新かつ最も高度なモデルです。",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "より高速。1Mトークンのコンテキストウィンドウ。",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "改良されたモダリティ。強化された安全性。",
-    "sidebar__promotion_dialog__learn_more": "詳細を見る"
+    "sidebar__promotion_dialog__learn_more": "詳細を見る",
+    "sidebar__chat__voice_input__idle__tooltip": "マイクを使用する",
+    "sidebar__chat__voice_input__recording__tooltip": "録音中...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "文字起こし中...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "マイクの使用許可が拒否されました。\nブラウザの許可設定を更新して、もう一度お試しください。",
+    "sidebar__chat__voice_input__no_speech__tooltip": "音声が検出されませんでした。\nもう一度お試しください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

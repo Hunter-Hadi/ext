@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "ગૂગલની નવીનતમ અને સૌથી અગ્રગણ્ય મોડેલ.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "ઝડપી સ્પીડ. 1M ટોકન સંદર્ભ વિંડો.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "સુધારેલી મોડાલિટીઓ. વધારે સુરક્ષા.",
-    "sidebar__promotion_dialog__learn_more": "વધુ જાણો"
+    "sidebar__promotion_dialog__learn_more": "વધુ જાણો",
+    "sidebar__chat__voice_input__idle__tooltip": "માઇક્રોફોન વાપરો",
+    "sidebar__chat__voice_input__recording__tooltip": "રેકોર્ડ થાય છે...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "ટ્રાન્સક્રિપ્ટ થાય છે...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "માઇક્રોફોનનો ઉપયોગ કરવાની મંજૂરી આપવામાં આવી નથી.\nતમારા બ્રાઉઝરની મંજૂરી સેટિંગ્સ અપડેટ કરો અને ફરીથી પ્રયાસ કરો.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "કોઈ સ્પીચ શોધી નથી.\nમહેરબાની કરીને ફરીથી પ્રયાસ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google'i uusim ja kõige arenenum mudel.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Kiirem kiirus. 1M sõna kontekstiaken.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Täiustatud modaliteedid. Suurendatud turvalisus.",
-    "sidebar__promotion_dialog__learn_more": "Lisateave"
+    "sidebar__promotion_dialog__learn_more": "Lisateave",
+    "sidebar__chat__voice_input__idle__tooltip": "Kasuta mikrofoni",
+    "sidebar__chat__voice_input__recording__tooltip": "Salvestamine...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "Transkribeerimine...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofoni kasutamise luba on keelatud.\nUuenda oma brauseri lubade seadeid ja proovi uuesti.",
+    "sidebar__chat__voice_input__no_speech__tooltip": "Kõnet ei tuvastatud.\nPalun proovi uuesti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

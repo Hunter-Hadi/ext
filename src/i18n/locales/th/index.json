@@ -992,7 +992,12 @@
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "โมเดลล่าสุดและทันสมัยที่สุดของ Google",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "ความเร็วที่เร็วขึ้น หน้าต่างความสัมพันธ์ 1 ล้านโทเค็น",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "การปรับปรุงโมเดล ความปลอดภัยที่เพิ่มขึ้น",
-    "sidebar__promotion_dialog__learn_more": "เรียนรู้เพิ่มเติม"
+    "sidebar__promotion_dialog__learn_more": "เรียนรู้เพิ่มเติม",
+    "sidebar__chat__voice_input__idle__tooltip": "ใช้ไมโครโฟน",
+    "sidebar__chat__voice_input__recording__tooltip": "กำลังบันทึก...",
+    "sidebar__chat__voice_input__transcripting__tooltip": "กำลังแปลคำพูด...",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "การอนุญาตให้ใช้ไมโครโฟนถูกปฏิเสธ\nอัปเดตการตั้งค่าการอนุญาตของเบราว์เซอร์ของคุณและลองอีกครั้ง",
+    "sidebar__chat__voice_input__no_speech__tooltip": "ไม่พบเสียงพูด\nโปรดลองอีกครั้ง"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

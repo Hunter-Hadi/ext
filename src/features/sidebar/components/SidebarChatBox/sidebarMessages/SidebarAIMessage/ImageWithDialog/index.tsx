@@ -108,10 +108,13 @@ const ImageWithDialog = ({
               borderRadius: '8px',
               cursor: 'pointer',
               objectFit: 'cover',
+              display: 'block',
+              overflow: 'hidden',
             }}
             src={image.src}
             alt={image.alt || ''}
             onError={() => {
+              console.log('error', image.src, image.alt)
               setErrorImageSources((prev) => [...new Set([...prev, image.src])])
             }}
           />

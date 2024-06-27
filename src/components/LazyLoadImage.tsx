@@ -2,6 +2,7 @@ import { Placement } from '@floating-ui/react'
 import Skeleton from '@mui/material/Skeleton'
 import { styled, SxProps } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
+import isNumber from 'lodash-es/isNumber'
 import React, { useEffect, useRef, useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
@@ -36,6 +37,7 @@ interface LazyLoadImageProps {
   preview?: boolean
   placement?: Placement
   maxRetryTimes?: number
+  maxLoadingTime?: number
   SkeletonSx?: SxProps
   imgStyle?: React.CSSProperties
   fileId?: string
@@ -50,6 +52,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
     width = '100%',
     SkeletonSx,
     maxRetryTimes = 1,
+    maxLoadingTime = 10 * 1000,
     preview,
     placement,
     imgStyle,
@@ -65,25 +68,28 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
     const loadImage = async () => {
       const loadOneTimesImage = async () => {
         return new Promise((resolve) => {
+          const timer = setTimeout(() => {
+            setIsLoading(false)
+            resolve(false)
+          }, maxLoadingTime)
           const image = new Image()
           image.src = src
           image.onload = () => {
+            clearTimeout(timer)
             setImageSrc(src)
             setIsLoading(false)
             resolve(true)
           }
           image.onerror = async () => {
+            clearTimeout(timer)
             // 用background fetch一次
             const result = await clientFetchAPI(src, {
               parse: 'blob',
               method: 'GET',
             })
             if (result) {
-              if (
-                result.responseRaw?.status === 403 ||
-                result.responseRaw?.status === 404 ||
-                result.responseRaw?.status === 401
-              ) {
+              const responseStatusCode = result.responseRaw?.status
+              if (isNumber(responseStatusCode) && responseStatusCode >= 400) {
                 setIsLoading(false)
                 if (fileId) {
                   // 403和404的图片不再重试
@@ -98,9 +104,11 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
                 }
                 return
               }
-              setImageSrc(URL.createObjectURL(result.data))
+              if (result.success) {
+                setImageSrc(URL.createObjectURL(result.data))
+              }
               setIsLoading(false)
-              resolve(true)
+              resolve(result.success)
             } else {
               resolve(false)
             }

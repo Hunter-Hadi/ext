@@ -1,3 +1,4 @@
+import uniqBy from 'lodash-es/uniqBy'
 import { v4 as uuidV4 } from 'uuid'
 
 import {
@@ -17,7 +18,7 @@ import {
   pushOutputToChat,
   withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
+// import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
@@ -73,7 +74,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       const searchResults: ICrawlingSearchResult[] =
         JSON.parse(searchResultJson)
       let template = ``
-      const addActions: ISetActionsType = []
+      // const addActions: ISetActionsType = []
       const sourceMedia = {
         images: [] as any[],
         videos: [] as any[],
@@ -81,23 +82,24 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       if (summarizeType === 'NO_SUMMARIZE') {
         for (let i = 0; i < searchResults.length; i++) {
           const searchResult = searchResults[i]
-          // NOTE: 特殊处理 给webgppt用的
-          addActions.push({
-            type: 'RENDER_TEMPLATE',
-            parameters: {
-              template: searchResult.body,
-            },
-          })
-          addActions.push({
-            type: 'SET_VARIABLE',
-            parameters: {
-              VariableName: `SLICE_OF_TEXT_${i}`,
-            },
-          })
+          // // NOTE: 特殊处理 给webgppt用的
+          // addActions.push({
+          //   type: 'RENDER_TEMPLATE',
+          //   parameters: {
+          //     template: searchResult.body,
+          //   },
+          // })
+          // addActions.push({
+          //   type: 'SET_VARIABLE',
+          //   parameters: {
+          //     VariableName: `SLICE_OF_TEXT_${i}`,
+          //   },
+          // })
           // 需要遍历往 template 添加[搜索结果]
           template += `NUMBER:${i + 1}\nURL: ${searchResult.url}\nTITLE: ${
             searchResult.title
-          }\nCONTENT: {{SLICE_OF_TEXT_${i}}}\n\n`
+          }\nCONTENT: ${searchResult.body}\n\n`
+          // }\nCONTENT: {{SLICE_OF_TEXT_${i}}}\n\n`
         }
       } else if (summarizeType === 'MAP_REDUCE') {
         const expandResults = await Promise.all<ICrawlingSearchResult>(
@@ -157,7 +159,10 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 pageRawContent.success = result.success
                 pageRawContent.body = result.readabilityText
                 pageRawContent.title = result.title
-                sourceMedia.images = [...sourceMedia.images, ...result.images]
+                sourceMedia.images = uniqBy(
+                  [...sourceMedia.images, ...result.images],
+                  'src',
+                )
                 // sourceMedia.videos = [...sourceMedia.videos, ...result.videos]
               }
               // 2. 获取页面内容成功时，用页面内容替换 body、title

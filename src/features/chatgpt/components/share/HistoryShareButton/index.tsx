@@ -28,6 +28,7 @@ const HistoryTextDownloadButton: FC<{
   return (
     <TooltipIconButton
       title={t('client:sidebar__share__share_button__tooltip')}
+      data-testid='history-text-download-button'
       onClick={async () => {
         const conversation =
           await ClientConversationManager.getConversationById(

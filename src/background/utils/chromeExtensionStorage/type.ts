@@ -2,11 +2,11 @@ import { IAIProviderType } from '@/background/provider/chat'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { IArtTextToImageMetadata } from '@/features/art/types'
+import { IPageSummaryNavType } from '@/features/chat-base/summary/types'
 import { type IInputAssistantButtonKeyType } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { SummaryParamsPromptType } from '@/features/sidebar/utils/pageSummaryNavPrompt'
 import { ISurveyKeyType } from '@/features/survey/types'
 
 export type IChromeExtensionButtonSettingKey =
@@ -186,7 +186,7 @@ export interface IChromeExtensionLocalStorage {
     }
     summary?: {
       conversationId?: string
-      currentNavType?: { [key in string]: SummaryParamsPromptType }
+      currentNavType?: { [key in string]: IPageSummaryNavType }
     }
     search?: {
       conversationId?: string

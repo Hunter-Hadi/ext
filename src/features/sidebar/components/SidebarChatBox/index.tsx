@@ -4,7 +4,14 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AutoHeightTextarea, {
@@ -117,11 +124,23 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
    * 1. 切换conversationId
    * 2. 基于conversationId过滤messages
    * 3. react-query基于conversationId请求messages
-   * 所以下方的loading状态有3个步骤, 为了不让HomeView闪烁
+   * * 所以下方的loading状态有3个步骤, 为了不让HomeView闪烁
    */
+  // 切换conversation的时候，先切换了conversationType，又切换了id，所以要先给一个2
+  const switchConversationRef = useRef(false)
+  useEffect(() => {
+    switchConversationRef.current = true
+  }, [conversationType])
   const [messagesLoadingStep, setMessagesLoadingStep] = useState(0)
   useEffect(() => {
-    setMessagesLoadingStep(1)
+    if (conversationId) {
+      if (switchConversationRef.current) {
+        switchConversationRef.current = false
+        setMessagesLoadingStep(2)
+      } else {
+        setMessagesLoadingStep(1)
+      }
+    }
   }, [conversationId])
 
   useEffect(() => {

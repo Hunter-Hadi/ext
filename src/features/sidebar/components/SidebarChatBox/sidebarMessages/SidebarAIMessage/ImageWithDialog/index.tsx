@@ -2,23 +2,28 @@ import Box from '@mui/material/Box'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import { styled } from '@mui/material/styles'
-import React, { memo, useState } from 'react'
+import React, { memo, useMemo, useState } from 'react'
 
+import LazyLoadImage from '@/components/LazyLoadImage'
 import { IAIResponseOriginalMessageSourceMediaImages } from '@/features/indexed_db/conversations/models/Message'
 
-const Img = styled('img')({
-  width: 64,
-  height: 64,
-  borderRadius: 8,
-  cursor: 'pointer',
-  objectFit: 'cover',
+const DialogImgContainer = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  maxWidth: 870,
+  maxHeight: '100%',
+  width: '100%',
 })
 
 const DialogImg = styled('img')({
-  maxHeight: '100%',
   borderRadius: 8,
-  objectFit: 'contain',
-  maxWidth: 870,
+  width: 'auto',
+  height: 'auto',
+  objectFit: 'cover',
+  maxWidth: '100%',
+  maxHeight: '98vh',
+  minWidth: 100,
 })
 
 interface ThumbnailProps {
@@ -37,13 +42,14 @@ const ThumbnailContainer = styled('div')({
     borderRadius: 8,
     boxSizing: 'border-box',
     padding: '2px',
+    cursor: 'pointer',
   },
 })
 
 const Thumbnail = styled('img', {
   shouldForwardProp: (prop) => prop !== 'selected',
 })<ThumbnailProps>(({ theme, selected }) => ({
-  border: selected ? `2px solid ${theme.palette.primary.main}` : 'none',
+  outline: selected ? `2px solid ${theme.palette.primary.main}` : 'none',
   boxSizing: 'border-box',
 }))
 
@@ -55,11 +61,15 @@ const ImageWithDialog = ({
 }: {
   images: IAIResponseOriginalMessageSourceMediaImages[]
 }) => {
+  const [errorImageSources, setErrorImageSources] = useState<string[]>([])
   const [open, setOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState(
     images[0] || { src: '', alt: '' },
   )
 
+  const memoValidImages = useMemo(() => {
+    return images.filter((image) => !errorImageSources.includes(image.src))
+  }, [errorImageSources, images])
   const handleClickOpen = (
     image: IAIResponseOriginalMessageSourceMediaImages,
   ) => {
@@ -77,15 +87,38 @@ const ImageWithDialog = ({
     setSelectedImage(image)
   }
 
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>,
+  ) => {
+    e.currentTarget.style.display = 'none'
+  }
+
   return (
     <>
-      {images.map((image, index) => (
-        <Img
-          key={index}
-          src={image.src}
-          alt={image.alt}
+      {memoValidImages.map((image, index) => (
+        <Box
+          component={'div'}
+          key={image.src}
           onClick={() => handleClickOpen(image)}
-        />
+        >
+          <LazyLoadImage
+            width={64}
+            height={64}
+            imgStyle={{
+              borderRadius: '8px',
+              cursor: 'pointer',
+              objectFit: 'cover',
+              display: 'block',
+              overflow: 'hidden',
+            }}
+            src={image.src}
+            alt={image.alt || ''}
+            onError={() => {
+              console.log('error', image.src, image.alt)
+              setErrorImageSources((prev) => [...new Set([...prev, image.src])])
+            }}
+          />
+        </Box>
       ))}
       <Dialog
         open={open}
@@ -116,37 +149,45 @@ const ImageWithDialog = ({
         >
           <Box display='flex' alignItems='center' height='100%' width='100%'>
             <Box
-              flex={1}
+              flexGrow={1}
+              flexShrink={1}
               display='flex'
               justifyContent='center'
               alignItems='center'
               pr={2}
+              pl={2}
               height='100%'
             >
-              <DialogImg
-                onClick={(e) => {
-                  e.stopPropagation()
-                }}
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-              />
+              <DialogImgContainer>
+                <DialogImg
+                  onClick={(e) => {
+                    e.stopPropagation()
+                  }}
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  onError={handleImageError}
+                />
+              </DialogImgContainer>
             </Box>
             <Box
               sx={{
+                flexShrink: 0,
                 display: 'flex',
                 flexDirection: 'row',
                 gap: 1,
                 flexWrap: 'wrap',
                 overflowY: 'auto',
-                height: 'calc(100% - 96px)',
+                height: 'calc(100% - 94px)',
                 marginRight: '32px', // 保持右侧固定间距
                 width: '284px', // 两栏布局，每栏128px
                 alignContent: 'flex-start',
                 justifyContent: 'flex-start',
+                paddingLeft: '2px',
+                paddingTop: '2px',
               }}
             >
-              {images.map((image, index) => (
-                <MemoizedThumbnailContainer key={index}>
+              {memoValidImages.map((image, index) => (
+                <MemoizedThumbnailContainer key={image.src}>
                   <MemoizedThumbnail
                     src={image.src}
                     alt={image.alt}
@@ -154,6 +195,12 @@ const ImageWithDialog = ({
                     onClick={(e) => {
                       e.stopPropagation()
                       handleThumbnailClick(image)
+                    }}
+                    onError={(e) => {
+                      if (e.currentTarget.parentElement) {
+                        e.currentTarget.parentElement.style.display = 'none'
+                      }
+                      e.currentTarget.style.display = 'none'
                     }}
                   />
                 </MemoizedThumbnailContainer>

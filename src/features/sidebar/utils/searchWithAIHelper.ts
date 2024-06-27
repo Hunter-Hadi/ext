@@ -161,7 +161,7 @@ export const generateSearchWithAIActions = async (
               },
               copilot: {
                 title: {
-                  title: copilot ? 'Copilot' : 'Quick search',
+                  title: copilot ? 'Pro search' : 'Quick search',
                   titleIcon: copilot ? 'Awesome' : 'Bolt',
                   titleIconSize: 24,
                 },
@@ -481,13 +481,7 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'TEMPLATE',
-      },
-    },
-    {
-      type: 'RENDER_TEMPLATE',
-      parameters: {
-        template: '{{TEMPLATE}}',
+        VariableName: 'PAGE_CONTENT',
       },
     },
     {

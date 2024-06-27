@@ -59,7 +59,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
       }}
     >
       <SpeedDial
-        ariaLabel="SpeedDial controlled open"
+        ariaLabel='SpeedDial controlled open'
         sx={{
           position: 'absolute',
           left: 0,
@@ -100,7 +100,8 @@ const SidebarChatBoxChatSpeedDial: FC<{
             <TextOnlyTooltip
               placement={'left'}
               title={cleanBtnTooltipTitle}
-              data-testid="maxai_speed_dial__new_chat_button"
+              data-testid='maxai_speed_dial__new_chat_button'
+              data-button-clicked-name='maxai-speed-dial--new-chat-button'
             >
               <Stack
                 p={1}
@@ -135,7 +136,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
                 title={t(
                   'client:sidebar__speed_dial__restart_extension__button',
                 )}
-                data-testid="maxai_speed_dial__restart_extension_button"
+                data-testid='maxai_speed_dial__restart_extension_button'
               >
                 <Stack
                   p={1}
@@ -157,14 +158,14 @@ const SidebarChatBoxChatSpeedDial: FC<{
         onClose={() => {
           handleCloseRestartAppDialog()
         }}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
       >
-        <DialogTitle id="alert-dialog-title">
+        <DialogTitle id='alert-dialog-title'>
           {t('client:sidebar__speed_dial__restart_extension__tooltip__title')}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText id='alert-dialog-description'>
             {t(
               'client:sidebar__speed_dial__restart_extension__tooltip__description1',
             )}

@@ -16,10 +16,10 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 // 找到符合 button clicked 条件的元素
 export const findButtonClickedTrackElement = (targetElement: HTMLElement) => {
   return (
-    findParentEqualSelector(`.${buttonBaseClasses.root}`, targetElement, 10) ||
-    findParentEqualSelector(`.${linkClasses.root}`, targetElement, 10) ||
     // 如果 element 上定义了 data-button-clicked-name，代表是需要被 tacker 的元素， 并且把 data-button-clicked-name 作为 buttonName
-    findParentEqualSelector(`*[data-button-clicked-name]`, targetElement, 10)
+    findParentEqualSelector(`*[data-button-clicked-name]`, targetElement, 10) ||
+    findParentEqualSelector(`.${buttonBaseClasses.root}`, targetElement, 10) ||
+    findParentEqualSelector(`.${linkClasses.root}`, targetElement, 10)
   )
 }
 
@@ -144,13 +144,13 @@ export const sendMixpanelButtonClickedEvent = debounce(
       params?.conversationType,
     )
 
-    // console.log(
-    //   'sendMixpanelButtonClickedEvent',
-    //   trackElement,
-    //   buttonName,
-    //   buttonPosition,
-    //   featureName,
-    // )
+    console.log(
+      'sendMixpanelButtonClickedEvent',
+      trackElement,
+      buttonName,
+      buttonPosition,
+      featureName,
+    )
 
     mixpanelTrack('button_clicked', {
       productType: 'extension',

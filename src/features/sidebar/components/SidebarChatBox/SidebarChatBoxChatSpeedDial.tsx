@@ -137,6 +137,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
                   'client:sidebar__speed_dial__restart_extension__button',
                 )}
                 data-testid='maxai_speed_dial__restart_extension_button'
+                data-button-clicked-name='maxai-speed-dial--restart-extension-button'
               >
                 <Stack
                   p={1}

@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Gyors szerkesztés",
     "input_assistant_button__compose_reply__tooltip": "Azonnali válasz",
     "input_assistant_button__refine_draft__tooltip": "Szerkesztés vagy vázlat felülvizsgálata",
-    "permission__pricing_hook__search_with_ai_claude__title": "Frissítés a kereséshez Claude-dal",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic leggyorsabb modellje. Nincsenek országhatárok.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Frissítés a kereséshez ChatGPT-vel",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Olyan gyors, mint a ChatGPT Plus. Nincsenek országhatárok.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Használja saját OpenAI API kulcsát az „AI-val való keresés” működtetéséhez.",
     "sidebar__tabs__search__title": "Keresés",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Nem észlelhető beszéd.\nKérjük, próbálja újra.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Keresse azonnali válaszokat a kiválasztott szövegre",
     "quick_access__maxai_button__title": "Oldalsáv megnyitása",
-    "home_view_content_nav__chat_with_screenshot__title": "Csevegés képernyőképpel"
+    "home_view_content_nav__chat_with_screenshot__title": "Csevegés képernyőképpel",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Jelentkezzen be a Claude kereséséhez",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Frissítse a Claude kereséséhez",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Jelentkezzen be a ChatGPT kereséséhez",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Frissítse a ChatGPT kereséséhez"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -443,9 +443,7 @@
     "permission__pricing_hook__preferred_language__description": "Դիտեք բոլոր ինտերֆեյսի տեքստը ձեր ընտրած լեզվով:",
     "permission__pricing_hook__max_ai_temperature__title": "Թարմացնելու համար ջերմաստիճանը",
     "permission__pricing_hook__max_ai_temperature__description": "Վարեք AI պատասխանի պատասխանների պատասխանի պատասխանների պատասխանի պատասխանները: Ավելի քիչ ջերմաստիճանը դարձնում է AI պատասխանները անպայմանական, ավելացնում է դեպիստիկությունը և կրկնակի համապատասխանումը:",
-    "permission__pricing_hook__search_with_ai_claude__title": "Թարմացնելու համար որոնելու հետ Claude-ի միջոցով",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic-ի արագաբաժանումը: Առանց երկրաչափական սահմանականության:",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Թարմացնելու համար որոնելու հետ ChatGPT-ի միջոցով",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Ուշադրության համար ChatGPT Plus-ից արագ: Առանց երկրաչափական սահմանականության:",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Օգտագործեք ձեր սեփական OpenAI API բանալին 'Որոնել AI-ի միջոցով':",
     "prompt__group__suggested__title": "Խորհուրդներ",
@@ -995,7 +993,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Բացակայում է խոսքը։\nԽնդրում ենք փորձել նորից։",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Որոնեք անմիջապես պատասխաններ ընտրված տեքստի համար",
     "quick_access__maxai_button__title": "Բացեք կողմնակի վերաբացածը",
-    "home_view_content_nav__chat_with_screenshot__title": "Զրուցարանով խոսեք"
+    "home_view_content_nav__chat_with_screenshot__title": "Զրուցարանով խոսեք",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Մուտք գործեք Ուսանողական Ուժերով Որոնելու համար Claude-ի հետ",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Թարմացնելու Ուսանողական Ուժերով Որոնելու համար Claude-ի հետ",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Մուտք գործեք Ուսանողական Ուժերով Որոնելու համար ChatGPT-ի հետ",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Թարմացնելու Ուսանողական Ուժերով Որոնելու համար ChatGPT-ի հետ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

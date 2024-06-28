@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "クイック作成",
     "input_assistant_button__compose_reply__tooltip": "インスタント返信",
     "input_assistant_button__refine_draft__tooltip": "下書きの編集または確認",
-    "permission__pricing_hook__search_with_ai_claude__title": "クロードで検索するにはアップグレード",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropicの最速モデル。国の制限なし。",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPTで検索するにはアップグレード",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plusと同じくらい速いです。国の制限なし。",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'AIで検索'をパワーアップするために、独自のOpenAI APIキーを使用します。",
     "sidebar__tabs__search__title": "検索",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "音声が検出されませんでした。\nもう一度お試しください。",
     "floating_menu__mini_menu__ai_search__button__tooltip": "選択したテキストの即時回答を検索する",
     "quick_access__maxai_button__title": "サイドバーを開く",
-    "home_view_content_nav__chat_with_screenshot__title": "スクリーンショット付きでチャット"
+    "home_view_content_nav__chat_with_screenshot__title": "スクリーンショット付きでチャット",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "クロードで検索するにはサインインしてください",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "クロードで検索するにはアップグレードしてください",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPTで検索するにはサインインしてください",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPTで検索するにはアップグレードしてください"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

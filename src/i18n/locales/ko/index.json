@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "빠른 작성",
     "input_assistant_button__compose_reply__tooltip": "즉시 답장",
     "input_assistant_button__refine_draft__tooltip": "초안 편집 또는 검토",
-    "permission__pricing_hook__search_with_ai_claude__title": "클로드로 검색 업그레이드",
     "permission__pricing_hook__search_with_ai_claude__description": "앤트로픽의 가장 빠른 모델. 국가 제한 없음.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT로 검색 업그레이드",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus와 같은 속도. 국가 제한 없음.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'AI로 검색'을 구동하기 위해 자체 OpenAI API 키를 사용하세요.",
     "sidebar__tabs__search__title": "검색",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "음성 감지되지 않음.\n다시 시도하세요.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "선택한 텍스트에 대한 즉각적인 답변을 검색합니다",
     "quick_access__maxai_button__title": "사이드바 열기",
-    "home_view_content_nav__chat_with_screenshot__title": "스크린샷과 함께 채팅하기"
+    "home_view_content_nav__chat_with_screenshot__title": "스크린샷과 함께 채팅하기",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Claude로 검색하려면 로그인하세요",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Claude로 검색하려면 업그레이드하세요",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPT로 검색하려면 로그인하세요",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT로 검색하려면 업그레이드하세요"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

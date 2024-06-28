@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Nopea luonti",
     "input_assistant_button__compose_reply__tooltip": "Välitön vastaus",
     "input_assistant_button__refine_draft__tooltip": "Muokkaa tai tarkista luonnos",
-    "permission__pricing_hook__search_with_ai_claude__title": "Päivitä hakuun Clauden kanssa",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropicin nopein malli. Ei maakohtaisia rajoituksia.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Päivitä hakuun ChatGPT:n kanssa",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Yhtä nopea kuin ChatGPT Plus. Ei maakohtaisia rajoituksia.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Käytä omaa OpenAI API -avaintasi 'Hae tekoälyllä' toiminnon käyttämiseen.",
     "sidebar__tabs__search__title": "Haku",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Puhe ei havaittu.\nYritä uudelleen.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Etsi välittömiä vastauksia valittuun tekstiin",
     "quick_access__maxai_button__title": "Avaa sivupalkki",
-    "home_view_content_nav__chat_with_screenshot__title": "Keskustele kuvakaappauksen kanssa"
+    "home_view_content_nav__chat_with_screenshot__title": "Keskustele kuvakaappauksen kanssa",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Kirjaudu sisään hakeaksesi Claudella",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Päivitä käyttääksesi Clauden hakua",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Kirjaudu sisään hakeaksesi ChatGPT:llä",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Päivitä käyttääksesi ChatGPT:n hakua"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

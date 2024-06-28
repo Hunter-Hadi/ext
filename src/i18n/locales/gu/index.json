@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "ઝડપી સંપૂર્ણ કરો",
     "input_assistant_button__compose_reply__tooltip": "તાત્કાલિક જવાબ",
     "input_assistant_button__refine_draft__tooltip": "ડ્રાફ્ટ સંપૂર્ણ કરો અથવા સમીક્ષા કરો",
-    "permission__pricing_hook__search_with_ai_claude__title": "ક્લોડ સાથે શોધ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__search_with_ai_claude__description": "એન્થ્રોપિકની સર્વાધિક ઝડપીથી ચાલતી મોડેલ. કોઈ દેશની મરજિયાત નથી.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ચેટજીપીટી સાથે શોધ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ચેટજીપીટી પ્લસ જેવી ઝડપીથી ચાલતું. કોઈ દેશની મરજિયાત નથી.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "તમારી પોતાની OpenAI API કીનો ઉપયોગ કરો 'શોધ સાથે AI' ને ચાલીએ.",
     "sidebar__tabs__search__title": "શોધ",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "કોઈ સ્પીચ શોધી નથી.\nમહેરબાની કરીને ફરીથી પ્રયાસ કરો.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "પસંદ કરેલા ટેક્સટ માટે તકો શોધો",
     "quick_access__maxai_button__title": "સાઇડબાર ખોલો",
-    "home_view_content_nav__chat_with_screenshot__title": "સ્ક્રીનશોટ સાથે ચેટ"
+    "home_view_content_nav__chat_with_screenshot__title": "સ્ક્રીનશોટ સાથે ચેટ",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "ક્લોડ સાથે શોધ માટે સાઇન ઇન કરો",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "ક્લોડ સાથે શોધ માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ચેટજીપીટી સાથે શોધ માટે સાઇન ઇન કરો",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ચેટજીપીટી સાથે શોધ માટે અપગ્રેડ કરો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

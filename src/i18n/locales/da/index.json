@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Hurtig komponering",
     "input_assistant_button__compose_reply__tooltip": "Øjeblikkelig svar",
     "input_assistant_button__refine_draft__tooltip": "Rediger eller gennemse kladden",
-    "permission__pricing_hook__search_with_ai_claude__title": "Opgrader til søgning med Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropics hurtigste model. Ingen landebegrænsninger.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Opgrader til søgning med ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Lige så hurtig som ChatGPT Plus. Ingen landebegrænsninger.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Brug din egen OpenAI API-nøgle til at drive 'Søgning med AI'.",
     "sidebar__tabs__search__title": "Søg",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Ingen tale registreret.\nPrøv venligst igen.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Søg efter øjeblikkelige svar på den valgte tekst",
     "quick_access__maxai_button__title": "Åbn sidebjælken",
-    "home_view_content_nav__chat_with_screenshot__title": "Chat med skærmbillede"
+    "home_view_content_nav__chat_with_screenshot__title": "Chat med skærmbillede",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Log ind for at søge med Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Opgrader for at søge med Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Log ind for at søge med ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Opgrader for at søge med ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

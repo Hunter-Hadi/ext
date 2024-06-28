@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "ร่ายเร็ว",
     "input_assistant_button__compose_reply__tooltip": "ตอบกลับทันที",
     "input_assistant_button__refine_draft__tooltip": "แก้ไขหรือตรวจสอบร่าง",
-    "permission__pricing_hook__search_with_ai_claude__title": "อัปเกรดเพื่อค้นหาด้วย Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "โมเดลที่เร็วที่สุดของ Anthropic ไม่มีข้อจำกัดตามประเทศ",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "อัปเกรดเพื่อค้นหาด้วย ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "เร็วเท่ากับ ChatGPT Plus ไม่มีข้อจำกัดตามประเทศ",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "ใช้ OpenAI API key เองเพื่อให้พลังให้กับ 'ค้นหาด้วย AI'",
     "sidebar__tabs__search__title": "ค้นหา",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "ไม่พบเสียงพูด\nโปรดลองอีกครั้ง",
     "floating_menu__mini_menu__ai_search__button__tooltip": "ค้นหาคำตอบทันทีสำหรับข้อความที่เลือก",
     "quick_access__maxai_button__title": "เปิดแถบด้านข้าง",
-    "home_view_content_nav__chat_with_screenshot__title": "แชทพร้อมภาพหน้าจอ"
+    "home_view_content_nav__chat_with_screenshot__title": "แชทพร้อมภาพหน้าจอ",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "เข้าสู่ระบบเพื่อค้นหาด้วย Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "อัปเกรดเพื่อค้นหาด้วย Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "เข้าสู่ระบบเพื่อค้นหาด้วย ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "อัปเกรดเพื่อค้นหาด้วย ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

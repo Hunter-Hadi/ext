@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Mabilis na komposisyon",
     "input_assistant_button__compose_reply__tooltip": "Mabilis na tugon",
     "input_assistant_button__refine_draft__tooltip": "I-edit o suriin ang draft",
-    "permission__pricing_hook__search_with_ai_claude__title": "Mag-upgrade para sa paghahanap gamit ang Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Pinakamabilis na modelo ng Anthropic. Walang mga limitasyon sa bansa.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Mag-upgrade para sa paghahanap gamit ang ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Kasingbilis ng ChatGPT Plus. Walang mga limitasyon sa bansa.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gamitin ang iyong sariling OpenAI API key upang patakbuhin ang 'Search with AI'.",
     "sidebar__tabs__search__title": "Hanapin",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Walang natuklasang pagsasalita.\nSubukan muli.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Maghanap ng mga instant na sagot para sa napiling teksto",
     "quick_access__maxai_button__title": "Buksan ang sidebar",
-    "home_view_content_nav__chat_with_screenshot__title": "Chat na may screenshot"
+    "home_view_content_nav__chat_with_screenshot__title": "Chat na may screenshot",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Mag-sign in para maghanap gamit si Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Mag-upgrade para maghanap gamit si Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Mag-sign in para maghanap gamit si ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Mag-upgrade para maghanap gamit si ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "விரைவு மின்னஞ்சல்",
     "input_assistant_button__compose_reply__tooltip": "உடனடியாக பதில்",
     "input_assistant_button__refine_draft__tooltip": "வரைபடத்தை திருத்து அல்லது மதிப்பிடு",
-    "permission__pricing_hook__search_with_ai_claude__title": "கிளோடு மூலம் தேடுக",
     "permission__pricing_hook__search_with_ai_claude__description": "அந்த்ராபிக் அதிவேகமான மாதிரி. எந்த நாட்டின் வரைபடமும் இல்லை.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT மூலம் தேடுக",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus போன்ற வேகத்தில். எந்த நாட்டின் வரைபடமும் இல்லை.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'ஐயும் தேடு' செயல்பாட்டை செல்லுபடிக்க உங்கள் சொந்த OpenAI API விசையைப் பயன்படுத்துங்கள்.",
     "sidebar__tabs__search__title": "தேடு",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "உரை கண்டறியப்படவில்லை.\nமீண்டும் முயற்சிக்கவும்.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "தேர்ந்தெடுக்கப்பட்ட உரையைக் குறிப்பிட்டு தேடுக",
     "quick_access__maxai_button__title": "சைட்பார் திறக்க",
-    "home_view_content_nav__chat_with_screenshot__title": "ஸ்கிரீன்ஷாட் உள்ளிட்டு உரையுடன் உரைக்க"
+    "home_view_content_nav__chat_with_screenshot__title": "ஸ்கிரீன்ஷாட் உள்ளிட்டு உரையுடன் உரைக்க",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "கிளோடுடன் தேட உள்நுழைக",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "கிளோடுடன் தேட மேம்படுத்து",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPT டோடுடன் தேட உள்நுழைக",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT டோடுடன் தேட மேம்படுத்து"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

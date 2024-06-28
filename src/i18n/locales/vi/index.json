@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Soạn nhanh",
     "input_assistant_button__compose_reply__tooltip": "Trả lời tức thì",
     "input_assistant_button__refine_draft__tooltip": "Chỉnh sửa hoặc xem lại bản nháp",
-    "permission__pricing_hook__search_with_ai_claude__title": "Nâng cấp để tìm kiếm với Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Mô hình nhanh nhất của Anthropic. Không giới hạn quốc gia.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Nâng cấp để tìm kiếm với ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Bằng tốc độ ChatGPT Plus. Không giới hạn quốc gia.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Sử dụng khóa API OpenAI của riêng bạn để cung cấp sức mạnh cho 'Tìm kiếm với AI'.",
     "sidebar__tabs__search__title": "Tìm kiếm",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Không phát hiện giọng nói.\nVui lòng thử lại.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Tìm kiếm câu trả lời tức thì cho văn bản đã chọn",
     "quick_access__maxai_button__title": "Mở thanh bên",
-    "home_view_content_nav__chat_with_screenshot__title": "Trò chuyện với ảnh chụp màn hình"
+    "home_view_content_nav__chat_with_screenshot__title": "Trò chuyện với ảnh chụp màn hình",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Đăng nhập để tìm kiếm với Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Nâng cấp để tìm kiếm với Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Đăng nhập để tìm kiếm với ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Nâng cấp để tìm kiếm với ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "快速撰写",
     "input_assistant_button__compose_reply__tooltip": "即时回复",
     "input_assistant_button__refine_draft__tooltip": "编辑或审查草稿",
-    "permission__pricing_hook__search_with_ai_claude__title": "升级到使用Claude搜索",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic最快的模型。无国家限制。",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "升级到使用ChatGPT搜索",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "与ChatGPT Plus一样快。无国家限制。",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "使用您自己的OpenAI API密钥来提供“使用AI进行搜索”。",
     "sidebar__tabs__search__title": "搜索",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "未检测到语音。\n请再试一次。",
     "floating_menu__mini_menu__ai_search__button__tooltip": "搜索所选文本的即时答案",
     "quick_access__maxai_button__title": "打开侧边栏",
-    "home_view_content_nav__chat_with_screenshot__title": "带截图的聊天"
+    "home_view_content_nav__chat_with_screenshot__title": "带截图的聊天",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "登录以使用Claude搜索",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "升级以使用Claude搜索",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "登录以使用ChatGPT搜索",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "升级以使用ChatGPT搜索"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

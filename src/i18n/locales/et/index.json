@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Kiire koostamine",
     "input_assistant_button__compose_reply__tooltip": "Kohe vastus",
     "input_assistant_button__refine_draft__tooltip": "Redigeeri või vaata üle mustand",
-    "permission__pricing_hook__search_with_ai_claude__title": "Tõsta tasemele otsinguga Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropicu kiireim mudel. Pole riigipiiranguid.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Tõsta tasemele otsinguga ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Nii kiire kui ChatGPT Plus. Pole riigipiiranguid.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Kasuta oma OpenAI API võtit 'Otsi AI-ga' toitmiseks.",
     "sidebar__tabs__search__title": "Otsing",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Kõnet ei tuvastatud.\nPalun proovi uuesti.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Otsige valitud teksti jaoks kohest vastust",
     "quick_access__maxai_button__title": "Ava küljepaan",
-    "home_view_content_nav__chat_with_screenshot__title": "Vestlus ekraanipildiga"
+    "home_view_content_nav__chat_with_screenshot__title": "Vestlus ekraanipildiga",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Logi sisse Claude'iga otsimiseks",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Uuenda, et otsida Claude'iga",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Logi sisse ChatGPT-ga otsimiseks",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Uuenda, et otsida ChatGPT-ga"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

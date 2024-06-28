@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "വേഗത്തിൽ സൃഷ്ടിക്കുക",
     "input_assistant_button__compose_reply__tooltip": "തുടരുക",
     "input_assistant_button__refine_draft__tooltip": "ഡ്രാഫ്റ്റ് എഡിറ്റുചെയ്യുക അല്ലെങ്കിൽ പരിശോധിക്കുക",
-    "permission__pricing_hook__search_with_ai_claude__title": "ക്ലോഡ് ഉപയോഗിച്ച് തിരയുക",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic-യുടെ വേഗത്തിൽ ഏറ്റവും വേഗത്തിലുള്ള മോഡൽ. എന്തെങ്കിലും രാജ്യ പരിധികൾ ഇല്ല.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT ഉപയോഗിച്ച് തിരയുക",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus-നും പൂർണ്ണമായും വേഗത്തിൽ. എന്തെങ്കിലും രാജ്യ പരിധികൾ ഇല്ല.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "നിങ്ങളുടെ അടയാളപ്പെടുത്തലുകൾക്ക് 'Search with AI' പ്രവർത്തിപ്പിക്കാൻ നിങ്ങളുടെ സ്വന്തമായ OpenAI API കീ ഉപയോഗിക്കുക.",
     "sidebar__tabs__search__title": "തിരയൽ",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "സ്പീച് കണ്ടെത്തിയില്ല.\nദയവായി വീണ്ടും ശ്രമിക്കുക.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "തിരയുക തകരാറിന് പ്രത്യേക ഉത്തരങ്ങൾ",
     "quick_access__maxai_button__title": "സൈഡ്‌ബാർ തുറക്കുക",
-    "home_view_content_nav__chat_with_screenshot__title": "സ്ക്രീൻഷോട്ടുമായി ചാറ്റ്"
+    "home_view_content_nav__chat_with_screenshot__title": "സ്ക്രീൻഷോട്ടുമായി ചാറ്റ്",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "ക്ലോഡ് ഉപയോഗിച്ച് തിരയുകയായി സൈൻ ഇൻ ചെയ്യുക",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "ക്ലോഡ് ഉപയോഗിച്ച് തിരയുകയായി അപ്ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ചാറ്റ്‌ജിപിടി ഉപയോഗിച്ച് തിരയുകയായി സൈൻ ഇൻ ചെയ്യുക",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ചാറ്റ്‌ജിപിടി ഉപയോഗിച്ച് തിരയുകയായി അപ്ഗ്രേഡ് ചെയ്യുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

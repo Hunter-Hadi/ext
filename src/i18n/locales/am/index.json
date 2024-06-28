@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "በቀጥታ መስመር",
     "input_assistant_button__compose_reply__tooltip": "የትእዛዝ መልጎት",
     "input_assistant_button__refine_draft__tooltip": "ቃልዎን አስተካክል ወደግሩን ወደሚያስተካክል ይሰጣል",
-    "permission__pricing_hook__search_with_ai_claude__title": "ወደ Claude መግባት አድርግ",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic ብቻ ምርጫውን የተጠቀሰ ማሳወቂያ. ምድብ የሚያስችል የሆነ አጠቃላይ ምርጫ.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ወደ ChatGPT መግባት አድርግ",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus ብቻ ምርጫውን የተጠቀሰ ማሳወቂያ. ምድብ የሚያስችል የሆነ አጠቃላይ ምርጫ.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "የሚጠቀሙ 'Search with AI' እንዴት እንደሚሰጥ ኢንፎርሜሽን የሚጠቀሙ OpenAI API ኪዩ ይጠቀም.",
     "sidebar__tabs__search__title": "ፈልግ",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "የተነሳ ችሎት አልተገኘም።\nእባክዎ ይሞክሩ.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "የተሳሳተ ጥያቄዎን ለቃላት ፈጣን ይፈልጋል",
     "quick_access__maxai_button__title": "የማክስ ስልኮችን ክፈት ይጀምራል",
-    "home_view_content_nav__chat_with_screenshot__title": "በስክሬንስሮች መስጠት ይቻላል"
+    "home_view_content_nav__chat_with_screenshot__title": "በስክሬንስሮች መስጠት ይቻላል",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "ይግቡ እስከ Claude ይፈልጉ",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "ይግቡ እስከ Claude ይፈልጉ",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ይግቡ እስከ ChatGPT ይፈልጉ",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ይግቡ እስከ ChatGPT ይፈልጉ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

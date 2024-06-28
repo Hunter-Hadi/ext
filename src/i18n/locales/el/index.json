@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Γρήγορη σύνθεση",
     "input_assistant_button__compose_reply__tooltip": "Άμεση απάντηση",
     "input_assistant_button__refine_draft__tooltip": "Επεξεργασία ή αναθεώρηση προσχεδίου",
-    "permission__pricing_hook__search_with_ai_claude__title": "Αναβάθμιση για αναζήτηση με τον Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Ο γρηγορότερος μοντέλο της Anthropic. Χωρίς περιορισμούς χώρας.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Αναβάθμιση για αναζήτηση με το ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Τόσο γρήγορο όσο το ChatGPT Plus. Χωρίς περιορισμούς χώρας.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Χρησιμοποιήστε το δικό σας κλειδί OpenAI API για να ενεργοποιήσετε την 'Αναζήτηση με AI'.",
     "sidebar__tabs__search__title": "Αναζήτηση",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Δεν ανιχνεύθηκε ομιλία.\nΠαρακαλώ δοκιμάστε ξανά.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Αναζήτηση για άμεσες απαντήσεις για το επιλεγμένο κείμενο",
     "quick_access__maxai_button__title": "Άνοιγμα πλευρικής γραμμής",
-    "home_view_content_nav__chat_with_screenshot__title": "Συνομιλία με στιγμιότυπο οθόνης"
+    "home_view_content_nav__chat_with_screenshot__title": "Συνομιλία με στιγμιότυπο οθόνης",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Συνδεθείτε για αναζήτηση με τον Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Αναβαθμίστε για αναζήτηση με τον Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Συνδεθείτε για αναζήτηση με το ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Αναβαθμίστε για αναζήτηση με το ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

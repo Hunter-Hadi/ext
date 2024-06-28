@@ -133,14 +133,17 @@ export type PermissionWrapperI18nCardType = {
   title: (
     t: TFunction<['common', 'client']>,
     isFreeUser?: boolean,
+    isLogin?: boolean,
   ) => React.ReactNode
   description: (
     t: TFunction<['common', 'client']>,
     isFreeUser?: boolean,
+    isLogin?: boolean,
   ) => React.ReactNode
   modalDescription?: (
     t: TFunction<['common', 'client']>,
     isFreeUser?: boolean,
+    isLogin?: boolean,
   ) => React.ReactNode
   ctaButtonText?: (t: TFunction<['common', 'client']>) => React.ReactNode
   ctaButtonLink?: string
@@ -538,8 +541,14 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/modal/claude-3-haiku.png',
     ),
     videoUrl: `https://www.youtube.com/embed/kgO6OnurRpQ`,
-    title: (t) =>
-      t('client:permission__pricing_hook__search_with_ai_claude__title'),
+    title: (t, isFreeUser, isLogin) =>
+      isLogin
+        ? t(
+            'client:permission__pricing_hook__search_with_ai_claude__no_login_title',
+          )
+        : t(
+            'client:permission__pricing_hook__search_with_ai_claude__login_title',
+          ),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__description'),
     modalDescription: (t) =>
@@ -558,8 +567,14 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     modalImageUrl: getChromeExtensionAssetsURL(
       '/images/upgrade/modal/gpt-3.5-turbo.png',
     ),
-    title: (t) =>
-      t('client:permission__pricing_hook__search_with_ai_chatgpt__title'),
+    title: (t, isFreeUser, isLogin) =>
+      isLogin
+        ? t(
+            'client:permission__pricing_hook__search_with_ai_chatgpt__no_login_title',
+          )
+        : t(
+            'client:permission__pricing_hook__search_with_ai_chatgpt__login_title',
+          ),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__description'),
     modalDescription: (t) =>

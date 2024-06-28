@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Бързо създаване",
     "input_assistant_button__compose_reply__tooltip": "Мигновенен отговор",
     "input_assistant_button__refine_draft__tooltip": "Редактиране или преглед на чернова",
-    "permission__pricing_hook__search_with_ai_claude__title": "Надстройка за търсене с Клод",
     "permission__pricing_hook__search_with_ai_claude__description": "Най-бързият модел на Anthropic. Без ограничения за държави.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Надстройка за търсене с ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Толкова бърз, колкото ChatGPT Plus. Без ограничения за държави.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Използвайте собствения си ключ за OpenAI API, за да задействате 'Търсене с AI'.",
     "sidebar__tabs__search__title": "Търсене",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Не е засечена реч.\nМоля, опитайте отново.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Търсене на мигновени отговори за избрания текст",
     "quick_access__maxai_button__title": "Отвори страничната лента",
-    "home_view_content_nav__chat_with_screenshot__title": "Чат със снимка на екрана"
+    "home_view_content_nav__chat_with_screenshot__title": "Чат със снимка на екрана",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Влезте, за да търсите с Клод",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Надстройте, за да търсите с Клод",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Влезте, за да търсите с ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Надстройте, за да търсите с ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

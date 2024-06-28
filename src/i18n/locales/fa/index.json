@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "ترکیب سریع",
     "input_assistant_button__compose_reply__tooltip": "پاسخ فوری",
     "input_assistant_button__refine_draft__tooltip": "ویرایش یا بازبینی پیش‌نویس",
-    "permission__pricing_hook__search_with_ai_claude__title": "ارتقا به جستجو با کلود",
     "permission__pricing_hook__search_with_ai_claude__description": "سریعترین مدل آنتروپیک. بدون محدودیت کشوری.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ارتقا به جستجو با چت‌جی‌پی‌تی",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "همان سریعی چت‌جی‌پی‌تی پلاس. بدون محدودیت کشوری.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "از کلید API اوپن‌ای‌ای خود برای قدرت بخشیدن به 'جستجو با هوش مصنوعی' استفاده کنید.",
     "sidebar__tabs__search__title": "جستجو",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "صدایی شناسایی نشد.\nلطفاً دوباره امتحان کنید.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "جستجوی پاسخ‌های فوری برای متن انتخاب شده",
     "quick_access__maxai_button__title": "باز کردن نوار کناری",
-    "home_view_content_nav__chat_with_screenshot__title": "چت با تصویر صفحه"
+    "home_view_content_nav__chat_with_screenshot__title": "چت با تصویر صفحه",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "ورود کنید تا با کلود جستجو کنید",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "ارتقا دهید تا با کلود جستجو کنید",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ورود کنید تا با چت‌جی‌پی‌تی جستجو کنید",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ارتقا دهید تا با چت‌جی‌پی‌تی جستجو کنید"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

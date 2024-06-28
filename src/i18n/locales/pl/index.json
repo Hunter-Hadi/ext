@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Szybkie tworzenie",
     "input_assistant_button__compose_reply__tooltip": "Szybka odpowiedź",
     "input_assistant_button__refine_draft__tooltip": "Edytuj lub przeglądaj szkic",
-    "permission__pricing_hook__search_with_ai_claude__title": "Ulepsz do wyszukiwania z Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Najszybszy model od Anthropic. Bez ograniczeń geograficznych.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Ulepsz do wyszukiwania z ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Tak szybki jak ChatGPT Plus. Bez ograniczeń geograficznych.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Użyj własnego klucza OpenAI API do zasilania funkcji 'Wyszukaj z AI'.",
     "sidebar__tabs__search__title": "Szukaj",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Nie wykryto mowy.\nSpróbuj ponownie.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Wyszukaj natychmiastowe odpowiedzi dla wybranego tekstu",
     "quick_access__maxai_button__title": "Otwórz pasek boczny",
-    "home_view_content_nav__chat_with_screenshot__title": "Czat z zrzutem ekranu"
+    "home_view_content_nav__chat_with_screenshot__title": "Czat z zrzutem ekranu",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Zaloguj się, aby wyszukiwać z Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Uaktualnij, aby wyszukiwać z Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Zaloguj się, aby wyszukiwać z ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Uaktualnij, aby wyszukiwać z ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

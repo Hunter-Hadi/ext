@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Snel opstellen",
     "input_assistant_button__compose_reply__tooltip": "Direct antwoord",
     "input_assistant_button__refine_draft__tooltip": "Bewerk of bekijk concept",
-    "permission__pricing_hook__search_with_ai_claude__title": "Upgrade naar zoeken met Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Het snelste model van Anthropic. Geen landbeperkingen.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Upgrade naar zoeken met ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Net zo snel als ChatGPT Plus. Geen landbeperkingen.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gebruik je eigen OpenAI API-sleutel om 'Zoeken met AI' te activeren.",
     "sidebar__tabs__search__title": "Zoeken",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Geen spraak gedetecteerd.\nProbeer het opnieuw.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Zoek naar directe antwoorden voor de geselecteerde tekst",
     "quick_access__maxai_button__title": "Open zijbalk",
-    "home_view_content_nav__chat_with_screenshot__title": "Chat met schermafbeelding"
+    "home_view_content_nav__chat_with_screenshot__title": "Chat met schermafbeelding",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Meld je aan om te zoeken met Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Upgrade om te zoeken met Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Meld je aan om te zoeken met ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Upgrade om te zoeken met ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

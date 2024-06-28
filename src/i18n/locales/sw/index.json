@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Andika haraka",
     "input_assistant_button__compose_reply__tooltip": "Jibu la haraka",
     "input_assistant_button__refine_draft__tooltip": "Hariri au hakiki rasimu",
-    "permission__pricing_hook__search_with_ai_claude__title": "Sasisha ili kutafuta na Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Mfano wa haraka zaidi wa Anthropic. Hakuna vizuizi vya nchi.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Sasisha ili kutafuta na ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Haraka kama ChatGPT Plus. Hakuna vizuizi vya nchi.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Tumia ufunguo wako wa OpenAI API kuwezesha 'Tafuta na AI'.",
     "sidebar__tabs__search__title": "Tafuta",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Hakuna hotuba iliyogunduliwa.\nTafadhali jaribu tena.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Tafuta majibu ya papo hapo kwa maandishi yaliyochaguliwa",
     "quick_access__maxai_button__title": "Fungua upau wa pembeni",
-    "home_view_content_nav__chat_with_screenshot__title": "Ongea na picha ya skrini"
+    "home_view_content_nav__chat_with_screenshot__title": "Ongea na picha ya skrini",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Ingia ili kutafuta na Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Nenda ngazi ya juu ili kutafuta na Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Ingia ili kutafuta na ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Nenda ngazi ya juu ili kutafuta na ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "দ্রুত সংক্ষিপ্ত লেখা",
     "input_assistant_button__compose_reply__tooltip": "তাৎক্ষণিক উত্তর",
     "input_assistant_button__refine_draft__tooltip": "ড্রাফট সম্পাদনা বা পর্যালোচনা",
-    "permission__pricing_hook__search_with_ai_claude__title": "ক্লোড দিয়ে অনুসন্ধান আপগ্রেড করুন",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic এর সর্বাধিক দ্রুত মডেল। কোনও দেশের সীমাবদ্ধতা নেই।",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "চ্যাটজিপিটি দিয়ে অনুসন্ধান আপগ্রেড করুন",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus এর মতো দ্রুত। কোনও দেশের সীমাবদ্ধতা নেই।",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'অ্যাপিটি দিয়ে অনুসন্ধান' চালাতে আপনার নিজস্ব OpenAI API কী ব্যবহার করুন।",
     "sidebar__tabs__search__title": "অনুসন্ধান",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "কোন কথোপকথন খুঁজে পাওয়া যায়নি।\nআবার চেষ্টা করুন।",
     "floating_menu__mini_menu__ai_search__button__tooltip": "নির্বাচিত পাঠ্যের জন্য তাৎক্ষণিক উত্তর খুঁজুন",
     "quick_access__maxai_button__title": "সাইডবার খুলুন",
-    "home_view_content_nav__chat_with_screenshot__title": "স্ক্রিনশট সহ চ্যাট"
+    "home_view_content_nav__chat_with_screenshot__title": "স্ক্রিনশট সহ চ্যাট",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "ক্লোড দিয়ে অনুসন্ধান করতে সাইন ইন করুন",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "ক্লোড দিয়ে অনুসন্ধান করতে আপগ্রেড করুন",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "চ্যাটজিপিটি দিয়ে অনুসন্ধান করতে সাইন ইন করুন",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "চ্যাটজিপিটি দিয়ে অনুসন্ধান করতে আপগ্রেড করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

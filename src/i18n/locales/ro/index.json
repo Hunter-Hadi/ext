@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Compoziție rapidă",
     "input_assistant_button__compose_reply__tooltip": "Răspuns instant",
     "input_assistant_button__refine_draft__tooltip": "Editare sau revizuire a proiectului",
-    "permission__pricing_hook__search_with_ai_claude__title": "Upgradează pentru a căuta cu Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Cel mai rapid model al Anthropic. Fără restricții de țară.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Upgradează pentru a căuta cu ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "La fel de rapid ca și ChatGPT Plus. Fără restricții de țară.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Folosește propriul tău cheie OpenAI API pentru a alimenta 'Căutare cu AI'.",
     "sidebar__tabs__search__title": "Căutare",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Nu s-a detectat niciun discurs.\nVă rugăm să încercați din nou.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Căutați răspunsuri instantanee pentru textul selectat",
     "quick_access__maxai_button__title": "Deschideți bara laterală",
-    "home_view_content_nav__chat_with_screenshot__title": "Chat cu captură de ecran"
+    "home_view_content_nav__chat_with_screenshot__title": "Chat cu captură de ecran",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Conectați-vă pentru a căuta cu Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Upgrade pentru a căuta cu Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Conectați-vă pentru a căuta cu ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Upgrade pentru a căuta cu ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

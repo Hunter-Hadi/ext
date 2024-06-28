@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Ātra sastādīšana",
     "input_assistant_button__compose_reply__tooltip": "Tūlītēja atbilde",
     "input_assistant_button__refine_draft__tooltip": "Rediģēt vai pārskatīt melnrakstu",
-    "permission__pricing_hook__search_with_ai_claude__title": "Jaunināt, izmantojot Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic ātrākais modelis. Nav valstu ierobežojumu.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Jaunināt, izmantojot ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Tikpat ātrs kā ChatGPT Plus. Nav valstu ierobežojumu.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Izmantojiet savu OpenAI API atslēgu, lai darbinātu 'Meklēšanu ar AI'.",
     "sidebar__tabs__search__title": "Meklēt",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Nav konstatēta runa.\nLūdzu, mēģiniet vēlreiz.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Meklēt uzreiz atbildes izvēlētajam tekstam",
     "quick_access__maxai_button__title": "Atvērt sānjoslu",
-    "home_view_content_nav__chat_with_screenshot__title": "Čats ar ekrānuzņēmumu"
+    "home_view_content_nav__chat_with_screenshot__title": "Čats ar ekrānuzņēmumu",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Pierakstieties, lai meklētu ar Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Jauniniet, lai meklētu ar Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Pierakstieties, lai meklētu ar ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Jauniniet, lai meklētu ar ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

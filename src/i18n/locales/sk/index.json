@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Rýchle vytvorenie",
     "input_assistant_button__compose_reply__tooltip": "Okamžitá odpoveď",
     "input_assistant_button__refine_draft__tooltip": "Upraviť alebo skontrolovať koncept",
-    "permission__pricing_hook__search_with_ai_claude__title": "Vylepšite vyhľadávanie s Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Najrýchlejší model od Anthropic. Žiadne obmedzenia na krajiny.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Vylepšite vyhľadávanie s ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Rovnaká rýchlosť ako ChatGPT Plus. Žiadne obmedzenia na krajiny.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Použite vlastný OpenAI API kľúč pre napájanie 'Vyhľadávania s AI'.",
     "sidebar__tabs__search__title": "Vyhľadávanie",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Nebola zaznamenaná žiadna reč.\nSkúste to prosím znova.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Vyhľadajte okamžité odpovede na vybraný text",
     "quick_access__maxai_button__title": "Otvoriť bočný panel",
-    "home_view_content_nav__chat_with_screenshot__title": "Chat s screenshotom"
+    "home_view_content_nav__chat_with_screenshot__title": "Chat s screenshotom",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Prihláste sa pre vyhľadávanie s Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Vylepšite si účet pre vyhľadávanie s Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Prihláste sa pre vyhľadávanie s ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Vylepšite si účet pre vyhľadávanie s ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

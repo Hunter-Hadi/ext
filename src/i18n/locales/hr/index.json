@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Brzo sastavi",
     "input_assistant_button__compose_reply__tooltip": "Brzi odgovor",
     "input_assistant_button__refine_draft__tooltip": "Uredi ili pregledaj nacrt",
-    "permission__pricing_hook__search_with_ai_claude__title": "Nadogradite na pretragu s Claudeom",
     "permission__pricing_hook__search_with_ai_claude__description": "Najbrži model tvrtke Anthropic. Bez ograničenja zemlje.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Nadogradite na pretragu s ChatGPT-om",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Jednako brzo kao i ChatGPT Plus. Bez ograničenja zemlje.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Koristite vlastiti OpenAI API ključ za napajanje 'Pretrage s AI-om'.",
     "sidebar__tabs__search__title": "Pretraživanje",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Nije detektiran govor.\nPokušajte ponovno.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Pretražite trenutne odgovore za odabrani tekst",
     "quick_access__maxai_button__title": "Otvori bočnu traku",
-    "home_view_content_nav__chat_with_screenshot__title": "Razgovor s snimkom zaslona"
+    "home_view_content_nav__chat_with_screenshot__title": "Razgovor s snimkom zaslona",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Prijavite se za pretraživanje s Claudeom",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Nadogradite za pretraživanje s Claudeom",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Prijavite se za pretraživanje s ChatGPT-om",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Nadogradite za pretraživanje s ChatGPT-om"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

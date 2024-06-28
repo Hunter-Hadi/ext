@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Hızlı oluştur",
     "input_assistant_button__compose_reply__tooltip": "Anında yanıt",
     "input_assistant_button__refine_draft__tooltip": "Taslak düzenle veya gözden geçir",
-    "permission__pricing_hook__search_with_ai_claude__title": "Claude ile arama yapmaya yükseltin",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic'in en hızlı modeli. Ülke kısıtlaması yok.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT ile arama yapmaya yükseltin",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus kadar hızlı. Ülke kısıtlaması yok.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'AI ile Arama'yı güçlendirmek için kendi OpenAI API anahtarınızı kullanın.",
     "sidebar__tabs__search__title": "Arama",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Konuşma algılanmadı.\nLütfen tekrar deneyin.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Seçili metin için anlık cevapları arayın",
     "quick_access__maxai_button__title": "Kenar çubuğunu aç",
-    "home_view_content_nav__chat_with_screenshot__title": "Ekran görüntüsü ile sohbet"
+    "home_view_content_nav__chat_with_screenshot__title": "Ekran görüntüsü ile sohbet",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Claude ile arama yapmak için giriş yapın",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Claude ile arama yapmak için yükseltin",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPT ile arama yapmak için giriş yapın",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT ile arama yapmak için yükseltin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

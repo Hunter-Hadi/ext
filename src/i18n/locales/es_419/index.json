@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Composición rápida",
     "input_assistant_button__compose_reply__tooltip": "Respuesta instantánea",
     "input_assistant_button__refine_draft__tooltip": "Editar o revisar borrador",
-    "permission__pricing_hook__search_with_ai_claude__title": "Actualiza para buscar con Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "El modelo más rápido de Anthropic. Sin restricciones de país.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Actualiza para buscar con ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Tan rápido como ChatGPT Plus. Sin restricciones de país.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Utiliza tu propia clave de API de OpenAI para potenciar 'Buscar con IA'.",
     "sidebar__tabs__search__title": "Buscar",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "No se detectó ningún discurso.\nPor favor, inténtalo nuevamente.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Buscar respuestas instantáneas para el texto seleccionado",
     "quick_access__maxai_button__title": "Abrir barra lateral",
-    "home_view_content_nav__chat_with_screenshot__title": "Chat con captura de pantalla"
+    "home_view_content_nav__chat_with_screenshot__title": "Chat con captura de pantalla",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Inicia sesión para buscar con Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Actualiza para buscar con Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Inicia sesión para buscar con ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Actualiza para buscar con ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

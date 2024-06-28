@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Composició ràpida",
     "input_assistant_button__compose_reply__tooltip": "Resposta instantània",
     "input_assistant_button__refine_draft__tooltip": "Edita o revisa l'esborrany",
-    "permission__pricing_hook__search_with_ai_claude__title": "Millora a la cerca amb Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "El model més ràpid d'Anthropic. Sense restriccions de país.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Millora a la cerca amb ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Tan ràpid com ChatGPT Plus. Sense restriccions de país.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Utilitza la teva pròpia clau d'API d'OpenAI per alimentar 'Cerca amb IA'.",
     "sidebar__tabs__search__title": "Cerca",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "No s'ha detectat cap discurs.\nSi us plau, torneu-ho a intentar.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Cerca respostes instantànies per al text seleccionat",
     "quick_access__maxai_button__title": "Obre la barra lateral",
-    "home_view_content_nav__chat_with_screenshot__title": "Xateja amb captura de pantalla"
+    "home_view_content_nav__chat_with_screenshot__title": "Xateja amb captura de pantalla",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Inicia sessió per cercar amb Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Millora per cercar amb Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Inicia sessió per cercar amb ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Millora per cercar amb ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

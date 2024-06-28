@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Швидке створення",
     "input_assistant_button__compose_reply__tooltip": "Миттєва відповідь",
     "input_assistant_button__refine_draft__tooltip": "Редагувати або переглянути чернетку",
-    "permission__pricing_hook__search_with_ai_claude__title": "Оновити до пошуку з Клодом",
     "permission__pricing_hook__search_with_ai_claude__description": "Найшвидша модель від Anthropic. Без обмежень за країною.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Оновити до пошуку з ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Так само швидко, як ChatGPT Plus. Без обмежень за країною.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Використовуйте свій власний ключ OpenAI API для роботи з 'Пошуком з AI'.",
     "sidebar__tabs__search__title": "Пошук",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Не виявлено мовлення.\nБудь ласка, спробуйте ще раз.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Шукати миттєві відповіді на вибраний текст",
     "quick_access__maxai_button__title": "Відкрити бічну панель",
-    "home_view_content_nav__chat_with_screenshot__title": "Чат зі скріншотом"
+    "home_view_content_nav__chat_with_screenshot__title": "Чат зі скріншотом",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Увійдіть, щоб шукати з Клодом",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Оновіться, щоб шукати з Клодом",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Увійдіть, щоб шукати з ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Оновіться, щоб шукати з ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

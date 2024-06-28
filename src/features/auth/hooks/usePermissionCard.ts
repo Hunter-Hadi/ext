@@ -18,14 +18,18 @@ export const usePermissionCard = (
   sceneType: string,
 ): PermissionWrapperCardType | null => {
   const { t } = useTranslation(['common', 'client'])
-  const { isFreeUser } = useUserInfo()
+  const { isFreeUser, userInfo } = useUserInfo()
   return useMemo(() => {
     if (isPermissionCardSceneType(sceneType)) {
       const settings = getPermissionCardSettingsBySceneType(sceneType)
       const permissionCard: PermissionWrapperCardType = {
-        title: settings.title(t, isFreeUser),
-        description: settings.description(t, isFreeUser),
-        modalDescription: settings.modalDescription?.(t, isFreeUser),
+        title: settings.title(t, isFreeUser, userInfo === null),
+        description: settings.description(t, isFreeUser, userInfo === null),
+        modalDescription: settings.modalDescription?.(
+          t,
+          isFreeUser,
+          userInfo === null,
+        ),
         ctaButtonText: settings.ctaButtonText && settings.ctaButtonText(t),
         ctaButtonLink: settings.ctaButtonLink,
         ctaButtonOnClick: settings.ctaButtonOnClick,
@@ -44,14 +48,14 @@ export const usePermissionCardMap = (): {
   [key in PermissionWrapperCardSceneType]: PermissionWrapperCardType
 } => {
   const { t } = useTranslation(['common', 'client'])
-  const { isFreeUser } = useUserInfo()
+  const { isFreeUser, userInfo } = useUserInfo()
   return useMemo(() => {
     const permissionCardMap: any = {}
     PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST.forEach((sceneType) => {
       const settings = getPermissionCardSettingsBySceneType(sceneType)
       const permissionCard: PermissionWrapperCardType = {
-        title: settings.title(t, isFreeUser),
-        description: settings.description(t, isFreeUser),
+        title: settings.title(t, isFreeUser, userInfo === null),
+        description: settings.description(t, isFreeUser, userInfo === null),
         ctaButtonText: settings.ctaButtonText && settings.ctaButtonText(t),
         ctaButtonLink: settings.ctaButtonLink,
         ctaButtonOnClick: settings.ctaButtonOnClick,

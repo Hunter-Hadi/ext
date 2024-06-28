@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "快速撰寫",
     "input_assistant_button__compose_reply__tooltip": "即時回覆",
     "input_assistant_button__refine_draft__tooltip": "編輯或檢閱草稿",
-    "permission__pricing_hook__search_with_ai_claude__title": "升級至使用Claude進行搜索",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic最快的模型。無國家限制。",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "升級至使用ChatGPT進行搜索",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "與ChatGPT Plus一樣快速。無國家限制。",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "使用您自己的OpenAI API密鑰來提供“使用AI進行搜索”。",
     "sidebar__tabs__search__title": "搜尋",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "未偵測到語音。\n請再試一次。",
     "floating_menu__mini_menu__ai_search__button__tooltip": "搜尋所選文字的即時答案",
     "quick_access__maxai_button__title": "開啟側邊欄",
-    "home_view_content_nav__chat_with_screenshot__title": "聊天與截圖"
+    "home_view_content_nav__chat_with_screenshot__title": "聊天與截圖",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "登入以使用Claude搜尋",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "升級以使用Claude搜尋",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "登入以使用ChatGPT搜尋",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "升級以使用ChatGPT搜尋"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

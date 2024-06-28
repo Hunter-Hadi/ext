@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "Tulis cepat",
     "input_assistant_button__compose_reply__tooltip": "Balasan instan",
     "input_assistant_button__refine_draft__tooltip": "Edit atau tinjau draf",
-    "permission__pricing_hook__search_with_ai_claude__title": "Tingkatkan ke pencarian dengan Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Model tercepat dari Anthropic. Tanpa batasan negara.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "Tingkatkan ke pencarian dengan ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Secepat ChatGPT Plus. Tanpa batasan negara.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gunakan kunci API OpenAI Anda sendiri untuk mengaktifkan 'Pencarian dengan AI'.",
     "sidebar__tabs__search__title": "Cari",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "Tidak ada ucapan terdeteksi.\nSilakan coba lagi.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Cari jawaban instan untuk teks yang dipilih",
     "quick_access__maxai_button__title": "Buka sidebar",
-    "home_view_content_nav__chat_with_screenshot__title": "Chat dengan tangkapan layar"
+    "home_view_content_nav__chat_with_screenshot__title": "Chat dengan tangkapan layar",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Masuk untuk mencari dengan Claude",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Tingkatkan untuk mencari dengan Claude",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Masuk untuk mencari dengan ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Tingkatkan untuk mencari dengan ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

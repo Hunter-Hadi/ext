@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "जलद लिहा",
     "input_assistant_button__compose_reply__tooltip": "तात्पुरता उत्तर",
     "input_assistant_button__refine_draft__tooltip": "ड्राफ्ट संपादित करा किंवा पुनरावलोकन करा",
-    "permission__pricing_hook__search_with_ai_claude__title": "Claudeसह शोधाची अपग्रेड",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropicची सर्वात जलद मॉडेल. कोणत्याही देशांची प्रतिबंधितता नाही.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPTसह शोधाची अपग्रेड",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plusसारखे जलद. कोणत्याही देशांची प्रतिबंधितता नाही.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'Search with AI' साठी आपला स्वत: OpenAI API की वापरा.",
     "sidebar__tabs__search__title": "शोध",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "कोणताही भाषण ओळखले नाही.\nकृपया पुन्हा प्रयत्न करा.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "निवडलेल्या मजकूरांसाठी त्वरित उत्तरे शोधा",
     "quick_access__maxai_button__title": "साइडबार उघडा",
-    "home_view_content_nav__chat_with_screenshot__title": "स्क्रीनशॉटसह संभाषण करा"
+    "home_view_content_nav__chat_with_screenshot__title": "स्क्रीनशॉटसह संभाषण करा",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "Claude शोधण्यासाठी साइन इन करा",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "Claude शोधण्यासाठी अपग्रेड करा",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPT शोधण्यासाठी साइन इन करा",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT शोधण्यासाठी अपग्रेड करा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

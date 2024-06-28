@@ -460,9 +460,7 @@
     "input_assistant_button__compose_new__tooltip": "إنشاء سريع",
     "input_assistant_button__compose_reply__tooltip": "الرد الفوري",
     "input_assistant_button__refine_draft__tooltip": "تحرير أو مراجعة المسودة",
-    "permission__pricing_hook__search_with_ai_claude__title": "ترقية للبحث مع كلود",
     "permission__pricing_hook__search_with_ai_claude__description": "أسرع نموذج من أنثروبيك. بدون قيود جغرافية.",
-    "permission__pricing_hook__search_with_ai_chatgpt__title": "ترقية للبحث مع ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "بنفس سرعة ChatGPT Plus. بدون قيود جغرافية.",
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "استخدم مفتاح OpenAI الخاص بك لتشغيل 'البحث مع AI'.",
     "sidebar__tabs__search__title": "البحث",
@@ -998,7 +996,11 @@
     "sidebar__chat__voice_input__no_speech__tooltip": "لم يتم اكتشاف أي كلام.\nيرجى المحاولة مرة أخرى.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "البحث عن إجابات فورية للنص المحدد",
     "quick_access__maxai_button__title": "فتح الشريط الجانبي",
-    "home_view_content_nav__chat_with_screenshot__title": "الدردشة مع صورة للشاشة"
+    "home_view_content_nav__chat_with_screenshot__title": "الدردشة مع صورة للشاشة",
+    "permission__pricing_hook__search_with_ai_claude__no_login_title": "تسجيل الدخول للبحث باستخدام كلود",
+    "permission__pricing_hook__search_with_ai_claude__login_title": "الترقية للبحث باستخدام كلود",
+    "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "تسجيل الدخول للبحث باستخدام ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "الترقية للبحث باستخدام ChatGPT"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "مائیکروفون استعمال کریں",
     "sidebar__chat__voice_input__recording__tooltip": "ریکارڈنگ ہو رہی ہے...",
     "sidebar__chat__voice_input__transcripting__tooltip": "ٹرانسکرپشنگ ہو رہی ہے...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "مائیکروفون استعمال کرنے کی اجازت منسوخ کر دی گئی ہے۔\nبراؤزر کی اجازتیں ترتیب دیں اور دوبارہ کوشش کریں۔",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "مائیکروفون کا استعمال کرنے کی اجازت مسترد کر دی گئی۔\nاپنے براؤزر یا سسٹم کی اجازت کی ترتیبات کو اپ ڈیٹ کریں اور دوبارہ کوشش کریں۔",
     "sidebar__chat__voice_input__no_speech__tooltip": "کوئی بات نہیں سنی گئی۔\nبراہ کرم دوبارہ کوشش کریں۔",
     "floating_menu__mini_menu__ai_search__button__tooltip": "منتخب متن کے لئے فوری جوابات تلاش کریں",
     "quick_access__maxai_button__title": "سائڈبار کھولیں",

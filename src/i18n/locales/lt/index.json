@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Naudokite mikrofoną",
     "sidebar__chat__voice_input__recording__tooltip": "Įrašoma...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkribuojama...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofono naudojimo leidimas buvo atmestas.\nAtnaujinkite naršyklės leidimų nustatymus ir bandykite dar kartą.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofono naudojimo leidimas buvo atmestas.\nAtnaujinkite savo naršyklės ar sistemos leidimų nustatymus ir bandykite dar kartą.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Neaptiktas joks kalbėjimas.\nPabandykite dar kartą.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Ieškoti akimirksniu atsakymų pasirinktam tekstui",
     "quick_access__maxai_button__title": "Atidaryti šoninę juostą",

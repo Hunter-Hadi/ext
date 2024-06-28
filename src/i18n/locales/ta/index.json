@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "மைக்ரோஃபோனை பயன்படுத்துங்கள்",
     "sidebar__chat__voice_input__recording__tooltip": "பதிவு செய்கிறது...",
     "sidebar__chat__voice_input__transcripting__tooltip": "மொழிபெயர்க்கப்படுகிறது...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "மைக்ரோஃபோனை பயன்படுத்த அனுமதி மறுக்கப்பட்டது.\nஉங்கள் உலாவியின் அனுமதி அமைப்புகளை புதுப்பிக்கவும் மீண்டும் முயற்சிக்கவும்.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "மைக்ரோஃபோனை பயன்படுத்த அனுமதி மறுக்கப்பட்டது.\nஉங்கள் உலாவியை அபுடேட் செய்யவும் அல்லது முகவரி அனுமதி அமைப்புகளை மீண்டும் முயற்சிக்கவும்.",
     "sidebar__chat__voice_input__no_speech__tooltip": "உரை கண்டறியப்படவில்லை.\nமீண்டும் முயற்சிக்கவும்.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "தேர்ந்தெடுக்கப்பட்ட உரையைக் குறிப்பிட்டு தேடுக",
     "quick_access__maxai_button__title": "சைட்பார் திறக்க",

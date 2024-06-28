@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Utilitza el micròfon",
     "sidebar__chat__voice_input__recording__tooltip": "Enregistrament...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transcripció...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "S'ha denegat el permís per utilitzar el micròfon.\nActualitzeu la configuració de permisos del vostre navegador i torneu-ho a provar.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "S'ha denegat el permís per utilitzar el micròfon.\nActualitzeu el vostre navegador o la configuració de permisos del sistema i torneu-ho a provar.",
     "sidebar__chat__voice_input__no_speech__tooltip": "No s'ha detectat cap discurs.\nSi us plau, torneu-ho a intentar.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Cerca respostes instantànies per al text seleccionat",
     "quick_access__maxai_button__title": "Obre la barra lateral",

@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "استفاده از میکروفون",
     "sidebar__chat__voice_input__recording__tooltip": "در حال ضبط...",
     "sidebar__chat__voice_input__transcripting__tooltip": "در حال تبدیل به متن...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "دسترسی به میکروفون رد شد.\nتنظیمات دسترسی مرورگر خود را به‌روز کنید و دوباره امتحان کنید.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "دسترسی به استفاده از میکروفون رد شد.\nبروزرسانی تنظیمات مرورگر یا سیستم خود را انجام داده و دوباره امتحان کنید.",
     "sidebar__chat__voice_input__no_speech__tooltip": "صدایی شناسایی نشد.\nلطفاً دوباره امتحان کنید.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "جستجوی پاسخ‌های فوری برای متن انتخاب شده",
     "quick_access__maxai_button__title": "باز کردن نوار کناری",

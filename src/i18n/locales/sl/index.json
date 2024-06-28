@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Uporabi mikrofon",
     "sidebar__chat__voice_input__recording__tooltip": "Snemanje...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkripcija...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Dovoljenje za uporabo mikrofona je bilo zavrnjeno.\nPosodobite nastavitve dovoljenja v brskalniku in poskusite znova.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Dovoljenje za uporabo mikrofona je bilo zavrnjeno.\nPosodobite svoj brskalnik ali nastavitve dovoljenja sistema in poskusite znova.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Ni zaznanega govora.\nPoskusite znova.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Iskanje takojšnjih odgovorov za izbrano besedilo",
     "quick_access__maxai_button__title": "Odpri stransko vrstico",

@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Використовуйте мікрофон",
     "sidebar__chat__voice_input__recording__tooltip": "Запис...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Транскрипція...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Дозвіл на використання мікрофона був відхилений.\nОновіть налаштування дозволу вашого браузера та спробуйте знову.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Дозвіл на використання мікрофона було відхилено.\nОновіть налаштування вашого браузера або системи та спробуйте знову.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Не виявлено мовлення.\nБудь ласка, спробуйте ще раз.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Шукати миттєві відповіді на вибраний текст",
     "quick_access__maxai_button__title": "Відкрити бічну панель",

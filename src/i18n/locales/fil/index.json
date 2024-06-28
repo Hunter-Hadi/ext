@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Gamitin ang mikropono",
     "sidebar__chat__voice_input__recording__tooltip": "Nagre-record...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkripting...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Ang pahintulot na gamitin ang mikropono ay tinanggihan.\nI-update ang mga setting ng pahintulot sa iyong browser at subukan muli.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Ang pahintulot na gamitin ang mikropono ay tinanggihan.\nI-update ang iyong browser o mga setting ng pahintulot ng sistema at subukan muli.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Walang natuklasang pagsasalita.\nSubukan muli.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Maghanap ng mga instant na sagot para sa napiling teksto",
     "quick_access__maxai_button__title": "Buksan ang sidebar",

@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "মাইক্রোফোন ব্যবহার করুন",
     "sidebar__chat__voice_input__recording__tooltip": "রেকর্ডিং চলছে...",
     "sidebar__chat__voice_input__transcripting__tooltip": "ট্রান্সক্রিপ্টিং চলছে...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "মাইক্রোফোন ব্যবহারের অনুমতি প্রদান করা হয়নি।\nআপনার ব্রাউজারের অনুমতি সেটিংস আপডেট করে আবার চেষ্টা করুন।",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "মাইক্রোফোন ব্যবহারের অনুমতি প্রদান করা হয়নি।\nআপনার ব্রাউজার বা সিস্টেম অনুমতি সেটিংস আপডেট করুন এবং আবার চেষ্টা করুন।",
     "sidebar__chat__voice_input__no_speech__tooltip": "কোন কথোপকথন খুঁজে পাওয়া যায়নি।\nআবার চেষ্টা করুন।",
     "floating_menu__mini_menu__ai_search__button__tooltip": "নির্বাচিত পাঠ্যের জন্য তাৎক্ষণিক উত্তর খুঁজুন",
     "quick_access__maxai_button__title": "সাইডবার খুলুন",

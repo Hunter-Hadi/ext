@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Käytä mikrofonia",
     "sidebar__chat__voice_input__recording__tooltip": "Äänitys...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkriptoidaan...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofonin käyttölupa evättiin.\nPäivitä selaimen lupa-asetukset ja yritä uudelleen.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofonin käyttölupa evättiin.\nPäivitä selain tai järjestelmän käyttöoikeusasetukset ja yritä uudelleen.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Puhe ei havaittu.\nYritä uudelleen.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Etsi välittömiä vastauksia valittuun tekstiin",
     "quick_access__maxai_button__title": "Avaa sivupalkki",

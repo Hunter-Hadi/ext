@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Izmantojiet mikrofonu",
     "sidebar__chat__voice_input__recording__tooltip": "Notiek ierakstīšana...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Notiek transkripcija...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Atļauja izmantot mikrofonu tika noraidīta.\nAtjauniniet pārlūka atļauju iestatījumus un mēģiniet vēlreiz.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofona lietošanas atļauja tika noraidīta.\nAtjauniniet pārlūku vai sistēmas atļauju iestatījumus un mēģiniet vēlreiz.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Nav konstatēta runa.\nLūdzu, mēģiniet vēlreiz.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Meklēt uzreiz atbildes izvēlētajam tekstam",
     "quick_access__maxai_button__title": "Atvērt sānjoslu",

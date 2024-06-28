@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Mikrofon verwenden",
     "sidebar__chat__voice_input__recording__tooltip": "Aufnahme...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkribieren...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Die Berechtigung zur Verwendung des Mikrofons wurde verweigert.\nAktualisieren Sie Ihre Browser-Berechtigungseinstellungen und versuchen Sie es erneut.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Die Berechtigung zur Verwendung des Mikrofons wurde verweigert.\nAktualisieren Sie Ihren Browser oder die Systemberechtigungseinstellungen und versuchen Sie es erneut.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Keine Sprache erkannt.\nBitte versuchen Sie es erneut.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Suche nach sofortigen Antworten für den ausgewählten Text",
     "quick_access__maxai_button__title": "Seitenleiste öffnen",

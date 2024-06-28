@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Använd mikrofonen",
     "sidebar__chat__voice_input__recording__tooltip": "Spelar in...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkriberar...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Tillstånd att använda mikrofonen nekades.\nUppdatera dina webbläsarinställningar för tillstånd och försök igen.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Tillstånd att använda mikrofonen nekades.\nUppdatera din webbläsare eller systemets behörighetsinställningar och försök igen.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Inget tal upptäckt.\nFörsök igen.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Sök efter omedelbara svar för den valda texten",
     "quick_access__maxai_button__title": "Öppna sidofältet",

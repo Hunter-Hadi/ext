@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "마이크 사용",
     "sidebar__chat__voice_input__recording__tooltip": "녹음 중...",
     "sidebar__chat__voice_input__transcripting__tooltip": "전사 중...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "마이크 사용 권한이 거부되었습니다.\n브라우저 권한 설정을 업데이트하고 다시 시도하세요.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "마이크 사용 권한이 거부되었습니다.\n브라우저 또는 시스템 권한 설정을 업데이트하고 다시 시도하세요.",
     "sidebar__chat__voice_input__no_speech__tooltip": "음성 감지되지 않음.\n다시 시도하세요.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "선택한 텍스트에 대한 즉각적인 답변을 검색합니다",
     "quick_access__maxai_button__title": "사이드바 열기",

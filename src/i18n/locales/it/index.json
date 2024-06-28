@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Usa il microfono",
     "sidebar__chat__voice_input__recording__tooltip": "Registrazione...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Trascrizione...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Permesso di utilizzare il microfono negato.\nAggiorna le impostazioni di permesso del tuo browser e riprova.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Permesso di utilizzare il microfono negato.\nAggiorna le impostazioni del tuo browser o del sistema e riprova.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Nessun discorso rilevato.\nPer favore, riprova.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Cerca risposte istantanee per il testo selezionato",
     "quick_access__maxai_button__title": "Apri la barra laterale",

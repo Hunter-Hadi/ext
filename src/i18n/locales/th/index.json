@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "ใช้ไมโครโฟน",
     "sidebar__chat__voice_input__recording__tooltip": "กำลังบันทึก...",
     "sidebar__chat__voice_input__transcripting__tooltip": "กำลังแปลคำพูด...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "การอนุญาตให้ใช้ไมโครโฟนถูกปฏิเสธ\nอัปเดตการตั้งค่าการอนุญาตของเบราว์เซอร์ของคุณและลองอีกครั้ง",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "การอนุญาตใช้ไมโครโฟนถูกปฏิเสธ\nอัปเดตเบราว์เซอร์หรือตั้งค่าการอนุญาตของระบบแล้วลองอีกครั้ง",
     "sidebar__chat__voice_input__no_speech__tooltip": "ไม่พบเสียงพูด\nโปรดลองอีกครั้ง",
     "floating_menu__mini_menu__ai_search__button__tooltip": "ค้นหาคำตอบทันทีสำหรับข้อความที่เลือก",
     "quick_access__maxai_button__title": "เปิดแถบด้านข้าง",

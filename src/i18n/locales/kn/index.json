@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "ಮೈಕ್ರೊಫೋನ್ ಬಳಸಿ",
     "sidebar__chat__voice_input__recording__tooltip": "ರೆಕಾರ್ಡಿಂಗ್...",
     "sidebar__chat__voice_input__transcripting__tooltip": "ಟ್ರಾನ್ಸ್ಕ್ರಿಪ್ಟಿಂಗ್...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "ಮೈಕ್ರೊಫೋನ್ ಬಳಸುವ ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ.\nನಿಮ್ಮ ಬ್ರೌಸರ್ ಅನುಮತಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನವೀಕರಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "ಮೈಕ್ರೊಫೋನ್ ಬಳಸುವ ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ.\nನಿಮ್ಮ ಬ್ರೌಸರ್ ಅಥವಾ ಸಿಸ್ಟಂ ಅನುಮತಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನವೀಕರಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "sidebar__chat__voice_input__no_speech__tooltip": "ಮಾತು ಗ್ರಹಿಸಲು ಯಾವುದೇ ಮಾತು ಕಂಡುಬರಲಿಲ್ಲ.\nಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "ಆಯ್ ಸೂಚನೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯವನ್ನು ಹುಡುಕಲು",
     "quick_access__maxai_button__title": "ಸೈಡ್‌ಬಾರ್ ತೆರೆಯಿರಿ",

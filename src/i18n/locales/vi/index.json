@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Sử dụng microphone",
     "sidebar__chat__voice_input__recording__tooltip": "Đang ghi âm...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Đang chuyển văn bản...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Quyền sử dụng microphone đã bị từ chối.\nCập nhật cài đặt quyền trên trình duyệt và thử lại.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Quyền sử dụng microphone đã bị từ chối.\nHãy cập nhật trình duyệt hoặc cài đặt quyền hệ thống và thử lại.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Không phát hiện giọng nói.\nVui lòng thử lại.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Tìm kiếm câu trả lời tức thì cho văn bản đã chọn",
     "quick_access__maxai_button__title": "Mở thanh bên",

@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "マイクを使用する",
     "sidebar__chat__voice_input__recording__tooltip": "録音中...",
     "sidebar__chat__voice_input__transcripting__tooltip": "文字起こし中...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "マイクの使用許可が拒否されました。\nブラウザの許可設定を更新して、もう一度お試しください。",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "マイクの使用許可が拒否されました。\nブラウザまたはシステムの許可設定を更新して、もう一度お試しください。",
     "sidebar__chat__voice_input__no_speech__tooltip": "音声が検出されませんでした。\nもう一度お試しください。",
     "floating_menu__mini_menu__ai_search__button__tooltip": "選択したテキストの即時回答を検索する",
     "quick_access__maxai_button__title": "サイドバーを開く",

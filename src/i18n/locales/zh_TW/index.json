@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "使用麥克風",
     "sidebar__chat__voice_input__recording__tooltip": "錄音中...",
     "sidebar__chat__voice_input__transcripting__tooltip": "轉錄中...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "拒絕使用麥克風的權限。\n請更新您的瀏覽器權限設定並重試。",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "拒絕使用麥克風的權限。\n請更新您的瀏覽器或系統權限設定，然後重試。",
     "sidebar__chat__voice_input__no_speech__tooltip": "未偵測到語音。\n請再試一次。",
     "floating_menu__mini_menu__ai_search__button__tooltip": "搜尋所選文字的即時答案",
     "quick_access__maxai_button__title": "開啟側邊欄",

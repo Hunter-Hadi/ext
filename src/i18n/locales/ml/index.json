@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "മൈക്രോഫോൺ ഉപയോഗിക്കുക",
     "sidebar__chat__voice_input__recording__tooltip": "റെക്കോർഡുചെയ്യുന്നു...",
     "sidebar__chat__voice_input__transcripting__tooltip": "ട്രാൻസ്ക്രിപ്റ്റിംഗ്...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "മൈക്രോഫോൺ ഉപയോഗിക്കാൻ അനുവദനീയത നിരസിച്ചു.\nനിങ്ങളുടെ ബ്രൗസർ അനുമതി ക്രമീകരണങ്ങൾ അപ്ഡേറ്റ് ചെയ്യുകയും ശ്രമിക്കുക.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "മൈക്രോഫോൺ ഉപയോഗം നിഷേധിച്ചു.\nനിങ്ങളുടെ ബ്രൌസർ അപ്ഡേറ്റ് അല്ലെങ്കിൽ സിസ്റ്റം അനുമതി ക്രമീകരണങ്ങൾ അപ്ഡേറ്റ് ചെയ്യുകയും ശ്രമിക്കുക.",
     "sidebar__chat__voice_input__no_speech__tooltip": "സ്പീച് കണ്ടെത്തിയില്ല.\nദയവായി വീണ്ടും ശ്രമിക്കുക.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "തിരയുക തകരാറിന് പ്രത്യേക ഉത്തരങ്ങൾ",
     "quick_access__maxai_button__title": "സൈഡ്‌ബാർ തുറക്കുക",

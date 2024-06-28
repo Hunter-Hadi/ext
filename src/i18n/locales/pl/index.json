@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Użyj mikrofonu",
     "sidebar__chat__voice_input__recording__tooltip": "Nagrywanie...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkrypcja...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Odmówiono dostępu do mikrofonu.\nZaktualizuj ustawienia uprawnień w przeglądarce i spróbuj ponownie.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Odmówiono dostępu do mikrofonu.\nZaktualizuj przeglądarkę lub ustawienia uprawnień systemowych i spróbuj ponownie.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Nie wykryto mowy.\nSpróbuj ponownie.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Wyszukaj natychmiastowe odpowiedzi dla wybranego tekstu",
     "quick_access__maxai_button__title": "Otwórz pasek boczny",

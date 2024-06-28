@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Mikrofonu kullan",
     "sidebar__chat__voice_input__recording__tooltip": "Kaydediliyor...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkript ediliyor...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofon kullanma izni reddedildi.\nTarayıcı izin ayarlarınızı güncelleyin ve tekrar deneyin.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofon kullanma izni reddedildi.\nTarayıcınızı veya sistem izin ayarlarını güncelleyin ve tekrar deneyin.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Konuşma algılanmadı.\nLütfen tekrar deneyin.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Seçili metin için anlık cevapları arayın",
     "quick_access__maxai_button__title": "Kenar çubuğunu aç",

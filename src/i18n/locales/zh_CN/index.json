@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "使用麦克风",
     "sidebar__chat__voice_input__recording__tooltip": "录音中...",
     "sidebar__chat__voice_input__transcripting__tooltip": "转录中...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "麦克风使用权限被拒绝。\n请更新浏览器权限设置并重试。",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "麦克风使用权限被拒绝。\n请更新您的浏览器或系统权限设置，然后重试。",
     "sidebar__chat__voice_input__no_speech__tooltip": "未检测到语音。\n请再试一次。",
     "floating_menu__mini_menu__ai_search__button__tooltip": "搜索所选文本的即时答案",
     "quick_access__maxai_button__title": "打开侧边栏",

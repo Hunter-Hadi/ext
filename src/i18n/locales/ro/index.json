@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Utilizați microfonul",
     "sidebar__chat__voice_input__recording__tooltip": "Înregistrare...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transcriere...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Permisiunea de utilizare a microfonului a fost refuzată.\nActualizați setările de permisiune ale browserului și încercați din nou.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Permisiunea de utilizare a microfonului a fost refuzată.\nActualizați browserul sau setările de permisiune ale sistemului și încercați din nou.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Nu s-a detectat niciun discurs.\nVă rugăm să încercați din nou.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Căutați răspunsuri instantanee pentru textul selectat",
     "quick_access__maxai_button__title": "Deschideți bara laterală",

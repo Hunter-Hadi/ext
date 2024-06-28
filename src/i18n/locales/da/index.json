@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Brug mikrofon",
     "sidebar__chat__voice_input__recording__tooltip": "Optager...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkriberer...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Tilladelse til at bruge mikrofon blev nægtet.\nOpdater dine browser tilladelser og prøv igen.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Tilladelse til at bruge mikrofon blev nægtet.\nOpdater din browser eller systemtilladelser og prøv igen.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Ingen tale registreret.\nPrøv venligst igen.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Søg efter øjeblikkelige svar på den valgte tekst",
     "quick_access__maxai_button__title": "Åbn sidebjælken",

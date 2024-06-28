@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "मायक्रोफोन वापरा",
     "sidebar__chat__voice_input__recording__tooltip": "रेकॉर्ड करीत आहे...",
     "sidebar__chat__voice_input__transcripting__tooltip": "लिखाणार आहे...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "मायक्रोफोन वापरण्यासाठी परवानगी नाकारली गेली आहे.\nतुमच्या ब्राउझरची परवानगी सेटिंग्ज अद्यतनित करा आणि पुन्हा प्रयत्न करा.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "मायक्रोफोन वापरण्यासाठी परवानगी नाकारली गेली आहे.\nतुमच्या ब्राउझर किंवा सिस्टम परवानगी सेटिंग्ज अद्यतनित करा आणि पुन्हा प्रयत्न करा.",
     "sidebar__chat__voice_input__no_speech__tooltip": "कोणताही भाषण ओळखले नाही.\nकृपया पुन्हा प्रयत्न करा.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "निवडलेल्या मजकूरांसाठी त्वरित उत्तरे शोधा",
     "quick_access__maxai_button__title": "साइडबार उघडा",

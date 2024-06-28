@@ -968,7 +968,8 @@
     "contact_us_modal__title": "MaxAI {{PLAN}} కు నవీకరణం చేయాలా?",
     "contact_us_modal__desc": "దయచేసి మాకు సంప్రదించండి",
     "pricing__plan_features__save_with_yearly__title": "{{PRICE}} తో సాధారణ ప్రణాళికతో సేవ్ చేయండి",
-    "sidebar__chat__suggestions__compare_to__title": "{{AI_MODEL}} తో సరిపోలు"
+    "sidebar__chat__suggestions__compare_to__title": "{{AI_MODEL}} తో సరిపోలు",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "మైక్రోఫోన్ ఉపయోగం అనుమతి నిరాకరించబడింది.\nమీ బ్రౌజర్ లేదా వ్యవస్థ అనుమతి సెట్టింగ్స్‌ను నవీకరించి మరియు మళ్ళీ ప్రయత్నించండి."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

@@ -1009,7 +1009,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Use microphone",
     "sidebar__chat__voice_input__recording__tooltip": "Recording...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transcripting...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Permission to use microphone was denied.\nUpdate your browser permission settings and try again.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Permission to use microphone was denied.\nUpdate your browser or system permission settings and try again.",
     "sidebar__chat__voice_input__no_speech__tooltip": "No speech detected.\nPlease try again.",
     "sidebar__chat__voice_input__timeout__tooltip":"Transcription timed out.\nPlease try again.",
 

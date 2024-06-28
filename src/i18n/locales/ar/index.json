@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "استخدم الميكروفون",
     "sidebar__chat__voice_input__recording__tooltip": "جارٍ التسجيل...",
     "sidebar__chat__voice_input__transcripting__tooltip": "جارٍ كتابة النص...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "تم رفض إذن استخدام الميكروفون.\nقم بتحديث إعدادات إذن المتصفح وحاول مرة أخرى.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "تم رفض إذن استخدام الميكروفون.\nقم بتحديث متصفحك أو إعدادات إذن النظام وحاول مرة أخرى.",
     "sidebar__chat__voice_input__no_speech__tooltip": "لم يتم اكتشاف أي كلام.\nيرجى المحاولة مرة أخرى.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "البحث عن إجابات فورية للنص المحدد",
     "quick_access__maxai_button__title": "فتح الشريط الجانبي",

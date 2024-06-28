@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Použít mikrofon",
     "sidebar__chat__voice_input__recording__tooltip": "Nahrávání...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Přepisování...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Povolení k použití mikrofonu bylo odepřeno.\nAktualizujte nastavení povolení ve vašem prohlížeči a zkuste to znovu.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Povolení k použití mikrofonu bylo odepřeno.\nAktualizujte svůj prohlížeč nebo nastavení oprávnění systému a zkuste to znovu.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Nebyla zaznamenána žádná řeč.\nZkuste to prosím znovu.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Vyhledat okamžité odpovědi na vybraný text",
     "quick_access__maxai_button__title": "Otevřít postranní panel",

@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Kasuta mikrofoni",
     "sidebar__chat__voice_input__recording__tooltip": "Salvestamine...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transkribeerimine...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofoni kasutamise luba on keelatud.\nUuenda oma brauseri lubade seadeid ja proovi uuesti.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Mikrofoni kasutamise luba on keelatud.\nUuenda oma veebibrauseri või süsteemi loa seadeid ja proovi uuesti.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Kõnet ei tuvastatud.\nPalun proovi uuesti.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Otsige valitud teksti jaoks kohest vastust",
     "quick_access__maxai_button__title": "Ava küljepaan",

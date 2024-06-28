@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "माइक्रोफ़ोन का उपयोग करें",
     "sidebar__chat__voice_input__recording__tooltip": "रिकॉर्ड हो रहा है...",
     "sidebar__chat__voice_input__transcripting__tooltip": "ट्रांसक्रिप्ट हो रहा है...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "माइक्रोफ़ोन का उपयोग करने की अनुमति नहीं मिली।\nअपने ब्राउज़र अनुमति सेटिंग्स को अपडेट करें और पुनः प्रयास करें।",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "माइक्रोफ़ोन का उपयोग करने की अनुमति नहीं मिली।\nअपने ब्राउज़र या सिस्टम अनुमति सेटिंग्स को अपडेट करें और पुनः प्रयास करें।",
     "sidebar__chat__voice_input__no_speech__tooltip": "कोई भाषण पहचाना नहीं गया।\nकृपया पुनः प्रयास करें।",
     "floating_menu__mini_menu__ai_search__button__tooltip": "चयनित पाठ के लिए तत्वर उत्तर खोजें",
     "quick_access__maxai_button__title": "साइडबार खोलें",

@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Tumia kipaza sauti",
     "sidebar__chat__voice_input__recording__tooltip": "Inarekodi...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Inahariri...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Ruhusa ya kutumia kipaza sauti imekataliwa.\nSasisha mipangilio ya ruhusa ya kivinjari chako na jaribu tena.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Ruhusa ya kutumia kipaza sauti imekataliwa.\nSasisha kivinjari chako au mipangilio ya ruhusa ya mfumo na jaribu tena.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Hakuna hotuba iliyogunduliwa.\nTafadhali jaribu tena.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Tafuta majibu ya papo hapo kwa maandishi yaliyochaguliwa",
     "quick_access__maxai_button__title": "Fungua upau wa pembeni",

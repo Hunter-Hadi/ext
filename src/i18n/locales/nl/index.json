@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Gebruik microfoon",
     "sidebar__chat__voice_input__recording__tooltip": "Opname...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transcriptie...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Toestemming om de microfoon te gebruiken is geweigerd.\nWijzig uw browserinstellingen voor toestemming en probeer het opnieuw.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Toestemming om de microfoon te gebruiken is geweigerd.\nWerk uw browser- of systeemtoestemmingsinstellingen bij en probeer het opnieuw.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Geen spraak gedetecteerd.\nProbeer het opnieuw.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Zoek naar directe antwoorden voor de geselecteerde tekst",
     "quick_access__maxai_button__title": "Open zijbalk",

@@ -989,7 +989,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Օգտագործեք միկրոֆոնը",
     "sidebar__chat__voice_input__recording__tooltip": "Գրավորում...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Թարգմանում...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Միկրոֆոնի օգտագործման թույլատրույթը մերժվել է։\nԹարմացրեք ձեր բրաուզերի թույլատրույթները և փորձեք նորից։",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Թույլատրելիությունը խոսակցումից հրաժարվեց։\nԹարմացրեք ձեր զննարկիչը կամ համակարգչի թույլտվությունները և փորձեք նորից։",
     "sidebar__chat__voice_input__no_speech__tooltip": "Բացակայում է խոսքը։\nԽնդրում ենք փորձել նորից։",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Որոնեք անմիջապես պատասխաններ ընտրված տեքստի համար",
     "quick_access__maxai_button__title": "Բացեք կողմնակի վերաբացածը",

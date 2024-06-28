@@ -2,14 +2,12 @@ import MicIcon from '@mui/icons-material/Mic'
 import MicNoneOutlinedIcon from '@mui/icons-material/MicNoneOutlined'
 import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
-import Stack from '@mui/material/Stack'
 import { styled, SxProps } from '@mui/material/styles'
-import Tooltip from '@mui/material/Tooltip'
-import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useAudioRecorder } from 'react-audio-voice-recorder'
 import { useTranslation } from 'react-i18next'
 
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { maxAISpeechToText } from '@/features/sidebar/components/SidebarChatBox/SidebarChatVoiceInputButton/speechToText'
 import { getInputMediator } from '@/store/InputMediator'
@@ -100,9 +98,9 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
     isRecording,
     mediaRecorder,
   } = useAudioRecorder(undefined, (error) => {
-    if (error.message === 'Permission denied') {
-      setVoiceInputStatus(VoiceInputStatus.PERMISSION_DENIED)
-    }
+    // if (error.message === 'Permission denied'|| error.message === 'Permission denied by system') {
+    // }
+    setVoiceInputStatus(VoiceInputStatus.PERMISSION_DENIED)
   })
   // tooltip
   const memoizedTooltip = useMemo(() => {
@@ -283,15 +281,9 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
 
   return (
     <Box>
-      <Tooltip
+      <TextOnlyTooltip
         arrow
-        title={
-          <Stack>
-            <Typography fontSize={'14px'} color={'text.primary'}>
-              {memoizedTooltip}
-            </Typography>
-          </Stack>
-        }
+        title={memoizedTooltip}
         open={memoizedTooltipShow}
         onOpen={handleOpen}
         onClose={handleClose}
@@ -327,7 +319,7 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
             )}
           </ButtonWithPulse>
         </div>
-      </Tooltip>
+      </TextOnlyTooltip>
     </Box>
   )
 }

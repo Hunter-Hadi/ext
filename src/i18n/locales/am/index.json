@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "ማድረግ አድርጉ",
     "sidebar__chat__voice_input__recording__tooltip": "የመታወቂያ ማስተላለፍ...",
     "sidebar__chat__voice_input__transcripting__tooltip": "የመግለጽ ማስተላለፍ...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "የመታወቂያ ማስተላለፍ ፈቃድ ተቀብሎ ተተርጓል።\nየባህሪ ፕሮቴክቶችን የሚያደርጉ የፕሮቲስቶችን ሁኔታዎች ያድርጉ፣ እና በተጨማሪ ማስተላለፍ ይጠቀሙ።",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "የሚጠቀሙበት ማደርያ ከምታቀርብ በቀለም ተቀምጧል።\nየባንክ ወይም የሰሌዳ ማደርያ ስታደርጉት ወደጥቅም ይደርስልን።",
     "sidebar__chat__voice_input__no_speech__tooltip": "የተነሳ ችሎት አልተገኘም።\nእባክዎ ይሞክሩ.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "የተሳሳተ ጥያቄዎን ለቃላት ፈጣን ይፈልጋል",
     "quick_access__maxai_button__title": "የማክስ ስልኮችን ክፈት ይጀምራል",

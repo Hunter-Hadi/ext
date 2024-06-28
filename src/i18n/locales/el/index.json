@@ -992,7 +992,7 @@
     "sidebar__chat__voice_input__idle__tooltip": "Χρησιμοποιήστε το μικρόφωνο",
     "sidebar__chat__voice_input__recording__tooltip": "Ηχογράφηση...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Μεταγραφή...",
-    "sidebar__chat__voice_input__permission_denied__tooltip": "Η άδεια χρήσης του μικροφώνου αρνήθηκε.\nΕνημερώστε τις ρυθμίσεις άδειας του προγράμματος περιήγησής σας και δοκιμάστε ξανά.",
+    "sidebar__chat__voice_input__permission_denied__tooltip": "Η άδεια χρήσης του μικροφώνου αρνήθηκε.\nΕνημερώστε τις ρυθμίσεις άδειας του προγράμματος περιήγησής σας ή του συστήματός σας και δοκιμάστε ξανά.",
     "sidebar__chat__voice_input__no_speech__tooltip": "Δεν ανιχνεύθηκε ομιλία.\nΠαρακαλώ δοκιμάστε ξανά.",
     "floating_menu__mini_menu__ai_search__button__tooltip": "Αναζήτηση για άμεσες απαντήσεις για το επιλεγμένο κείμενο",
     "quick_access__maxai_button__title": "Άνοιγμα πλευρικής γραμμής",

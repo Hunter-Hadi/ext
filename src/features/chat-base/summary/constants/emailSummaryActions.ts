@@ -321,7 +321,6 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
     {
       type: 'ASK_CHATGPT',
       parameters: {
-        // TODO 修改配置
         MaxAIPromptActionConfig: {
           promptId: SUMMARY__SUMMARIZE_EMAIL__TL_DR__PROMPT_ID,
           promptName: '[Summary] Summarize email (TL:DR)',

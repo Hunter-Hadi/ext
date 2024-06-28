@@ -776,7 +776,7 @@
     "login_modal__title__part2": "GRATIS",
     "login_modal__title__part3": "AI-spørringer hver dag",
     "login_modal__email__placeholder": "Skriv inn din e-postadresse...",
-    "login_modal__footer_text__part1": "Ved å registrere deg, godtar du",
+    "login_modal__footer_text__part1": "Ved å logge inn, godtar du",
     "login_modal__footer_text__part2": "og",
     "login_modal__footer_text__tooltip": "Ditt personvern er vår høyeste prioritet. Vi samler bare inn ditt navn og e-postadresse for pålogging og synkronisering av innstillinger, og behandler det konfidensielt uten å dele det med andre.",
     "login_modal__login_with_email__title": "Fortsett med e-post",

@@ -1003,8 +1003,8 @@
     "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Newest and most advanced model by Anthropic",
     "sidebar__chat__suggestions__model__description__for_claude_3_5_sonnet": "Newest and most advanced model by Anthropic",
     "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Newest and most advanced model by OpenAI",
-    "sidebar__chat__suggestions__starts_new_chat__title": "New chat {{AI_MODEL}}",
-    "sidebar__chat__suggestions__compare_to__title": "Compare {{AI_MODEL}}",
+    "sidebar__chat__suggestions__starts_new_chat__title": "New chat",
+    "sidebar__chat__suggestions__compare_to__title": "Compare",
 
     "sidebar__chat__voice_input__idle__tooltip": "Use microphone",
     "sidebar__chat__voice_input__recording__tooltip": "Recording...",

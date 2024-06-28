@@ -15,6 +15,7 @@ export const maxAISpeechToText = async (
   data: {
     speechText: string
   }
+  error?: string
 }> => {
   try {
     // /gpt/speech_to_text
@@ -45,6 +46,7 @@ export const maxAISpeechToText = async (
             data: {
               speech_text: string
             }
+            detail?: string
           }
           if (data.status !== 'OK') {
             resolve({
@@ -52,6 +54,7 @@ export const maxAISpeechToText = async (
               data: {
                 speechText: '',
               },
+              error: data.detail || '',
             })
           }
           resolve({

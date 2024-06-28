@@ -65,6 +65,7 @@ enum VoiceInputStatus {
   PERMISSION_DENIED = 3,
   NO_SPEECH_DETECTED = 4,
   TIMEOUT = 5,
+  BAD_REQUEST = 6,
 }
 
 /**
@@ -75,7 +76,8 @@ const isErrorVoiceInputStatus = (voiceInputStatus: VoiceInputStatus) => {
   return (
     voiceInputStatus === VoiceInputStatus.PERMISSION_DENIED ||
     voiceInputStatus === VoiceInputStatus.NO_SPEECH_DETECTED ||
-    voiceInputStatus === VoiceInputStatus.TIMEOUT
+    voiceInputStatus === VoiceInputStatus.TIMEOUT ||
+    voiceInputStatus === VoiceInputStatus.BAD_REQUEST
   )
 }
 
@@ -86,6 +88,7 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
   const { sx } = props
   const testid = 'max-ai__actions__button--voice-input'
   const { smoothConversationLoading } = useSmoothConversationLoading()
+  const [backendAPIError, setBackendAPIError] = useState<string>('')
   const [open, setOpen] = useState(false)
   const [voiceInputStatus, setVoiceInputStatus] = useState<VoiceInputStatus>(
     VoiceInputStatus.IDLE,
@@ -128,8 +131,10 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
       [VoiceInputStatus.TIMEOUT]: t(
         'client:sidebar__chat__voice_input__timeout__tooltip',
       ),
+      // 服务器错误
+      [VoiceInputStatus.BAD_REQUEST]: backendAPIError,
     }[voiceInputStatus]
-  }, [voiceInputStatus, t])
+  }, [voiceInputStatus, t, backendAPIError])
 
   // 是否显示tooltip
   const memoizedTooltipShow = useMemo(() => {
@@ -168,13 +173,14 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
     setOpen(false)
   }
 
-  // 超时和权限被拒绝和未检测到语音的状态显示3秒后消失
   useEffect(() => {
+    voiceInputStatusRef.current = voiceInputStatus
+    // 超时和权限被拒绝和未检测到语音的状态显示3秒后消失
     if (isErrorVoiceInputStatus(voiceInputStatus)) {
       const timer = setTimeout(() => {
         setVoiceInputStatus((prevState) => {
           if (isErrorVoiceInputStatus(prevState)) {
-            return 0
+            return VoiceInputStatus.IDLE
           }
           return prevState
         })
@@ -182,6 +188,9 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
       return () => {
         clearTimeout(timer)
       }
+    }
+    if (voiceInputStatus !== VoiceInputStatus.BAD_REQUEST) {
+      setBackendAPIError('')
     }
   }, [voiceInputStatus])
 
@@ -225,9 +234,6 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
   }, [mediaRecorder, stopRecording, isRecording])
 
   useEffect(() => {
-    voiceInputStatusRef.current = voiceInputStatus
-  }, [voiceInputStatus])
-  useEffect(() => {
     if (
       recordingBlob &&
       voiceInputStatus === VoiceInputStatus.TRANSCRIPTING &&
@@ -260,7 +266,12 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
             console.error('Speech to text timeout.')
             setVoiceInputStatus(VoiceInputStatus.TIMEOUT)
           } else {
-            setVoiceInputStatus(VoiceInputStatus.IDLE)
+            if (result.error) {
+              setBackendAPIError(result.error)
+              setVoiceInputStatus(VoiceInputStatus.BAD_REQUEST)
+            } else {
+              setVoiceInputStatus(VoiceInputStatus.IDLE)
+            }
           }
         })
         .catch()

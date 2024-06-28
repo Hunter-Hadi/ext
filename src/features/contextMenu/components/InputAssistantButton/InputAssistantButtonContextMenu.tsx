@@ -34,6 +34,10 @@ import {
   type IInstantReplyWebsiteType,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { type IContextMenuItem } from '@/features/contextMenu/types'
+import {
+  findButtonClickedTrackElement,
+  sendMixpanelButtonClickedEvent,
+} from '@/features/mixpanel/utils/mixpanelButtonClicked'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { type IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
@@ -323,8 +327,17 @@ const InputAssistantButtonContextMenu: FC<
             setClickContextMenu(contextMenu)
           }
         }}
-        onClickReferenceElement={() => {
+        onClickReferenceElement={(e) => {
           // TODO
+
+          // send mixpanel button click event
+          const target = e.target as HTMLElement
+          const trackElement = findButtonClickedTrackElement(target)
+          if (trackElement) {
+            const buttonName =
+              trackElement.getAttribute('data-button-key') || ''
+            sendMixpanelButtonClickedEvent(buttonName, trackElement)
+          }
         }}
         hoverIcon={null}
         {...(disabled

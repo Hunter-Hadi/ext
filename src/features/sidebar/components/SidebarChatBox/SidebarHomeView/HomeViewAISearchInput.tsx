@@ -8,6 +8,7 @@ import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { sendMixpanelButtonClickedEvent } from '@/features/mixpanel/utils/mixpanelButtonClicked'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
@@ -44,6 +45,10 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
     if (!question) {
       return
     }
+
+    sendMixpanelButtonClickedEvent('sidebar-home-view-search-web', target, {
+      conversationType: currentSidebarConversationType,
+    })
 
     setLoading(true)
     await createConversation('Search')

@@ -25,7 +25,7 @@ const SidebarSearchSamplePrompt: FC<IProps> = ({
   )
 
   return (
-    <Stack>
+    <Stack data-button-clicked-name={'search-sample-prompt-clicked'}>
       <Grid container spacing={1.5}>
         {samplePromptList.map((samplePrompt, index) => (
           <Grid key={samplePrompt.title} item xs={promptItemXs}>

@@ -29,6 +29,7 @@ const HomeViewAIScreenshotButton: FC = () => {
       direction={'row'}
       alignItems='center'
       spacing={0.5}
+      data-button-clicked-name='home-view-ai-screenshot-button'
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
 

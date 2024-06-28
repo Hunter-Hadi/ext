@@ -78,7 +78,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [isSettingVariables, setIsSettingVariables] = useState(false)
   const [isShowRegenerateButton, setIsShowRegenerateButton] = useState(true)
   const [isShowContinueButton, setIsShowContinueButton] = useState(false)
-  const { updateSidebarConversationType } = useSidebarSettings()
+  const { updateSidebarConversationType, currentSidebarConversationType } =
+    useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
@@ -209,6 +210,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   return (
     <Stack
       id={'maxAISidebarChatBox'}
+      data-conversation-type={currentSidebarConversationType}
       position={'relative'}
       sx={{
         height: 0,

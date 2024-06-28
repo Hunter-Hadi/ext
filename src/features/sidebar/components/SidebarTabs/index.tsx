@@ -116,14 +116,15 @@ const SidebarTabs: FC = () => {
         return (
           <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5} key={item.value}>
             <TextOnlyTooltip
-              placement="left"
+              placement='left'
               title={t(item.tooltip?.() as any)}
             >
               <Stack
                 data-testid={`maxai--sidebar--${item.value.toLowerCase()}_tab`}
+                data-button-clicked-name={`maxai--sidebar--${item.value.toLowerCase()}_tab`}
                 spacing={0.5}
-                justifyContent="center"
-                alignItems="center"
+                justifyContent='center'
+                alignItems='center'
                 sx={{
                   width: '100%',
                   // [isInImmersiveChatPage

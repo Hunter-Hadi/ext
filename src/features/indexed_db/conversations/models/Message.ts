@@ -171,9 +171,6 @@ export interface IAIResponseOriginalMessage {
     title?: IAIResponseOriginalMessageMetadataTitle
     text: string
     language?: string
-    // 目前多个类型数据会在一个streaming内返回，这里需要标记content内容是否输出完成
-    // 先以title里的titleIcon显示loading
-    status?: 'loading' | 'complete'
   }
   metadata?: {
     AIModel?: string

@@ -125,14 +125,21 @@ const maxAIRequestBodySummaryType = (
  * @param originalPostBody
  * @param conversation
  * @param summaryMessage
+ * @param promptActionConfig
  */
-export const maxAIRequestBodySummaryGenerator = (
+export const maxAIRequestBodySummaryGenerator = async (
   originalPostBody: IMaxAIChatGPTBackendBodyType,
   conversation: IConversation,
   summaryMessage: IAIResponseMessage,
+  promptActionConfig?: MaxAIPromptActionConfig,
 ) => {
   let backendAPI: IMaxAIChatGPTBackendAPIType = 'summary/v2/webpage'
-  const postBody = cloneDeep(originalPostBody)
+  const postBody = promptActionConfig
+    ? await maxAIRequestBodyPromptActionGenerator(
+        originalPostBody,
+        promptActionConfig,
+      )
+    : cloneDeep(originalPostBody)
   switch (conversation.meta.pageSummaryType) {
     case 'PAGE_SUMMARY':
       backendAPI = 'summary/v2/webpage'
@@ -151,6 +158,18 @@ export const maxAIRequestBodySummaryGenerator = (
     summaryMessage.originalMessage?.metadata?.navMetadata?.key || 'all',
   )
   postBody.doc_id = conversation.meta.pageSummary?.docId
+
+  // TODO 对于custom prompt模板要替换<<SUMMARY_PAGE_CONTENT_REPRESENTATION>>为对应的变量名
+  // 这里和summaryActionHelper.ts内的变量对应，临时这么更改
+  if (postBody.prompt_inputs?.PROMPT_TEMPLATE) {
+    postBody.prompt_inputs.PROMPT_TEMPLATE =
+      postBody.prompt_inputs.PROMPT_TEMPLATE.replaceAll(
+        '<<SUMMARY_PAGE_CONTENT_REPRESENTATION>>',
+        postBody.prompt_inputs.DOC_MAIN_CONTEXT
+          ? '{{DOC_MAIN_CONTEXT}}'
+          : '{{PAGE_CONTENT}}',
+      )
+  }
   // 后端会自动调整model
   delete (postBody as any).model_name
   return { backendAPI, postBody }
@@ -162,7 +181,7 @@ export const maxAIRequestBodySummaryGenerator = (
  * @param conversation
  * @param summaryMessage
  */
-export const maxAIRequestBodySummaryChatGenerator = (
+export const maxAIRequestBodySummaryChatGenerator = async (
   originalPostBody: IMaxAIChatGPTBackendBodyType,
   conversation: IConversation,
   summaryMessage?: IAIResponseMessage,
@@ -195,8 +214,14 @@ export const maxAIRequestBodySummaryChatGenerator = (
           summaryMessage?.originalMessage?.metadata?.navMetadata?.key || 'all',
         )
         // 拿到summaryMessage的variables拼接到prompt_inputs里
-        postBody.prompt_inputs = {
-          PAGE_CONTENT: conversation.meta.pageSummary.content || '',
+        if (conversation.meta.pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY') {
+          postBody.prompt_inputs = {
+            DOC_MAIN_CONTEXT: conversation.meta.pageSummary.content || '',
+          }
+        } else {
+          postBody.prompt_inputs = {
+            PAGE_CONTENT: conversation.meta.pageSummary.content || '',
+          }
         }
       }
     }

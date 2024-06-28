@@ -16,8 +16,8 @@ import {
 } from '@/constants'
 import { EMAIL_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/emailSummaryActions'
 import { PAGE_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/pageSummaryActions'
-import { PDF_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/pdfbeummaryActions'
-import { YOUTUBE_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/youtubeummaryActions'
+import { PDF_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/pdfSummaryActions'
+import { YOUTUBE_SUMMARY_ACTIONS_MAP } from '@/features/chat-base/summary/constants/youtubeSummaryActions'
 import {
   IPageSummaryNavItem,
   IPageSummaryNavType,

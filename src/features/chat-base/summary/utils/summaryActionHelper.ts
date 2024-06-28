@@ -8,21 +8,11 @@ import {
 } from '@/features/chat-base/summary/types'
 import { getSummaryNavItemByType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { clientGetContextMenuRunActions } from '@/features/contextMenu/utils/clientButtonSettings'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
+import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-
-export const getSummaryActionCopilotStepTitle = (type: IPageSummaryType) => {
-  switch (type) {
-    case 'PAGE_SUMMARY':
-      return 'Summarize page'
-    case 'YOUTUBE_VIDEO_SUMMARY':
-      return 'Summarize video'
-    case 'PDF_CRX_SUMMARY':
-      return 'Summarize PDF'
-    case 'DEFAULT_EMAIL_SUMMARY':
-      return 'Summarize email'
-  }
-}
 
 export const getSummaryNavActions = async (params: {
   type: IPageSummaryType
@@ -119,18 +109,83 @@ export const getSummaryCustomPromptActions = async ({
   messageId?: string
 }) => {
   try {
-    const { key, icon, title, actions: customPromptActions } = navItem
-    const currentCustomPromptActions = customPromptActions(messageId)
+    const { key, icon, title } = navItem
+    let customPromptActions = navItem.actions(messageId)
 
+    // 默认actions
     const actions = DEFAULT_SUMMARY_ACTIONS_MAP[type](messageId)
     const askActionIndex = actions.findIndex(
       (action) => action.type === 'ASK_CHATGPT',
     )
+    const askAction = actions[askActionIndex]
+
+    // 获取actions
+    const fetchAction = customPromptActions.find(
+      (action) => action.type === 'FETCH_ACTIONS',
+    )
+    if (fetchAction) {
+      customPromptActions = await clientGetContextMenuRunActions(
+        fetchAction.parameters.template || '',
+      )
+    }
+
+    // 处理数据，对历史的custom prompt做一下兼容
+    customPromptActions = customPromptActions.map((action) => {
+      if (action.type === 'SET_VARIABLE') {
+        const Variable = action.parameters.Variable as IShortCutsParameter
+        if (
+          Variable?.key ===
+          PRESET_VARIABLE_MAP.SUMMARY_PAGE_CONTENT_REPRESENTATION.VariableName
+        ) {
+          // TODO 这里需要原样发送给后端，summary prompt后移由后端填入内容
+          // 实际上PAGE_CONTENT也由前端发送，后端去渲染只是为了减小发送的数据量，避免重复发送
+          // { PAGE_CONTENT: '...', PROMPT_TEMPLATE: 'summary on ...' } -> { PAGE_CONTENT: '...', PROMPT_TEMPLATE: 'summary on {{PAGE_CONTENT}}' }
+          // 后端的接口这里在youtube下要替换成{{DOC_MAIN_CONTEXT}}，其他页面是{{PAGE_CONTENT}}
+          // api相关内容的转换放在maxAIRequestBodyGenerator内，这里先不处理了
+          // 目前如果更改为{{}}会被模板渲染替换掉，暂时设置成这样
+          Variable.value = '<<SUMMARY_PAGE_CONTENT_REPRESENTATION>>'
+        }
+      }
+      if (action.type === 'ASK_CHATGPT') {
+        return {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            ...askAction.parameters,
+            MaxAIPromptActionConfig: {
+              ...askAction.parameters.MaxAIPromptActionConfig,
+              promptId:
+                action.parameters.AskChatGPTActionQuestion?.meta?.contextMenu
+                  ?.id ||
+                fetchAction?.parameters.template ||
+                '',
+              promptName:
+                action.parameters.AskChatGPTActionQuestion?.meta?.contextMenu
+                  ?.text || '',
+              variables: [
+                ...(askAction.parameters.MaxAIPromptActionConfig?.variables ||
+                  []),
+                {
+                  VariableName: 'PROMPT_TEMPLATE',
+                  label: 'PROMPT_TEMPLATE',
+                  defaultValue: action.parameters.template,
+                  valueType: 'Text',
+                },
+              ],
+            },
+            AskChatGPTActionQuestion: {
+              ...action.parameters.AskChatGPTActionQuestion,
+              text: '',
+            },
+          },
+        } as ISetActionsType[number]
+      }
+      return action
+    })
 
     if (askActionIndex !== -1) {
-      actions.splice(askActionIndex, 1, ...currentCustomPromptActions)
+      actions.splice(askActionIndex, 1, ...customPromptActions)
     } else {
-      actions.push(...currentCustomPromptActions)
+      actions.push(...customPromptActions)
     }
 
     if (actions[0].parameters?.ActionChatMessageOperationType === 'add') {

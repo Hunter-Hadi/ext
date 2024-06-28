@@ -13,7 +13,7 @@ import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import { SxProps } from '@mui/material/styles'
 import cloneDeep from 'lodash-es/cloneDeep'
-import React, { FC, useEffect, useMemo, useRef } from 'react'
+import React, { FC, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
@@ -46,8 +46,8 @@ const SidebarUsePromptButton: FC<{
   const testid = 'max-ai__actions__button--use-prompt'
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const { t } = useTranslation(['common', 'client'])
-  const [root, setRoot] = React.useState<HTMLElement | null>(null)
   const [open, setOpen] = React.useState<boolean>(false)
+  const root = useMemo(() => getMaxAISidebarRootElement() || document.body, [])
   const currentContext = useMemo(() => {
     return text || (message && formatChatMessageContent(message, false)) || ''
   }, [message, text])
@@ -91,9 +91,6 @@ const SidebarUsePromptButton: FC<{
       }
     }
   }
-  useEffect(() => {
-    setRoot(getMaxAISidebarRootElement() || document.body)
-  }, [])
   // floating ui
   const { context, placement, floatingStyles, refs } = useFloating({
     open,

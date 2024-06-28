@@ -85,7 +85,10 @@ export function templateParserDecorator() {
 /**
  * Action的parameters渲染的装饰器
  */
-export function parametersParserDecorator(filterPath?: string[]) {
+export function parametersParserDecorator(
+  filterPath?: string[],
+  filterValue?: string[],
+) {
   return function (
     target: Action,
     propertyKey: string,
@@ -100,6 +103,9 @@ export function parametersParserDecorator(filterPath?: string[]) {
           return
         }
         if (typeof value === 'string') {
+          if (filterValue?.includes(value)) {
+            return
+          }
           // console.log('parametersParserDecorator path', path, value)
           // 有且只有一个变量: {{LAST_ACTION_OUTPUT}}
           const renderValue = shortcutsRenderTemplate(value, parameters).data

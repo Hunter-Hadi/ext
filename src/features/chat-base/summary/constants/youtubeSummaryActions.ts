@@ -126,8 +126,8 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
           promptActionType: 'chat_complete',
           variables: [
             {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
+              VariableName: 'DOC_MAIN_CONTEXT',
+              label: 'DOC_MAIN_CONTEXT',
               defaultValue: '{{READABILITY_CONTENTS}}',
               valueType: 'Text',
               systemVariable: true,
@@ -652,13 +652,15 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
                 promptActionType: 'chat_complete',
                 variables: [
                   {
-                    VariableName: 'PAGE_CONTENT',
-                    label: 'PAGE_CONTENT',
+                    VariableName: 'DOC_MAIN_CONTEXT',
+                    label: 'DOC_MAIN_CONTEXT',
                     defaultValue: '{{READABILITY_CONTENTS}}',
                     valueType: 'Text',
                     systemVariable: true,
                     hidden: true,
                   },
+                  VARIABLE_CURRENT_WEBPAGE_URL,
+                  VARIABLE_CURRENT_WEBSITE_DOMAIN,
                 ],
                 output: [],
               },

@@ -327,14 +327,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
             },
             VARIABLE_CURRENT_WEBPAGE_URL,
           ],
-          output: [
-            {
-              label: 'Summary content',
-              VariableName: 'SUMMARY_CONTENTS',
-              valueType: 'Text',
-              systemVariable: true,
-            },
-          ],
+          output: [],
         },
         AskChatGPTActionQuestion: {
           text: '',
@@ -529,14 +522,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
             },
             VARIABLE_CURRENT_WEBPAGE_URL,
           ],
-          output: [
-            {
-              label: 'Summary content',
-              VariableName: 'SUMMARY_CONTENTS',
-              valueType: 'Text',
-              systemVariable: true,
-            },
-          ],
+          output: [],
         },
         AskChatGPTActionQuestion: {
           text: '',

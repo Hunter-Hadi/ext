@@ -40,6 +40,7 @@ import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { backgroundConversationDB } from '@/features/indexed_db/conversations/background'
 import {
   IAIResponseMessage,
+  IChatMessage,
   IChatUploadFile,
   IUserChatMessage,
 } from '@/features/indexed_db/conversations/models/Message'
@@ -218,12 +219,14 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   }
   // 是否是summary类型的conversation的第一条总结的message
   let summaryMessage: IAIResponseMessage | null = null
+  // 当前正在输出的message
+  let outputMessage: IChatMessage | null = null
 
   if (conversationDetail) {
     if (outputMessageId) {
-      const outputMessage = await backgroundConversationDB.messages.get(
-        outputMessageId,
-      )
+      outputMessage =
+        (await backgroundConversationDB.messages.get(outputMessageId)) || null
+
       if (
         outputMessage &&
         isAIMessage(outputMessage) &&
@@ -235,10 +238,11 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
     if (summaryMessage) {
       // summary总结
       const { backendAPI: summaryAPI, postBody: summaryBody } =
-        maxAIRequestBodySummaryGenerator(
+        await maxAIRequestBodySummaryGenerator(
           postBody,
           conversationDetail,
           summaryMessage,
+          MaxAIPromptActionConfig,
         )
       backendAPI = summaryAPI
       postBody = summaryBody
@@ -266,7 +270,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       )
 
       const { backendAPI: summaryAPI, postBody: summaryBody } =
-        maxAIRequestBodySummaryChatGenerator(
+        await maxAIRequestBodySummaryChatGenerator(
           postBody,
           conversationDetail,
           firstSummaryMessage as IAIResponseMessage,
@@ -296,12 +300,10 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   }
 
   // 如果有MaxAIPromptActionConfig，就需要用/use_prompt_action
-  if (MaxAIPromptActionConfig) {
-    // TODO summary总结接口目前支持传递prompt_input，后续此接口参数更改特殊化再单独拆出
-    if (!summaryMessage) {
-      backendAPI = 'use_prompt_action'
-      delete postBody.doc_id
-    }
+  // summary/v2接口支持传递prompt_input，目前在summary body里自行处理，后续此接口参数更改特殊化再单独拆出
+  if (MaxAIPromptActionConfig && !summaryMessage) {
+    backendAPI = 'use_prompt_action'
+    delete postBody.doc_id
     postBody = await maxAIRequestBodyPromptActionGenerator(
       postBody,
       MaxAIPromptActionConfig,
@@ -443,6 +445,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
           responseMessage = maxAIRequestResponseStreamParser(
             streamMessage,
             responseMessage,
+            conversationDetail,
           )
           onMessage &&
             onMessage({
@@ -540,7 +543,11 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
 
       // TODO 目前多合一的接口目前没有status字段并且也不会以json mode方式调用
       if (data.status === 'OK' && data.text) {
-        responseMessage = maxAIRequestResponseJsonParser(data, responseMessage)
+        responseMessage = maxAIRequestResponseJsonParser(
+          data,
+          responseMessage,
+          conversationDetail,
+        )
       } else {
         hasError = true
         onMessage &&

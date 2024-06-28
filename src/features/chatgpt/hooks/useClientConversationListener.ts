@@ -380,9 +380,9 @@ export const useClientConversationListener = () => {
     ({ set }) =>
       async (data: any) => {
         const { changeType, messageIds, conversationId } = data
-        if (conversationId !== currentConversationIdRef.current) {
-          return undefined
-        }
+        // if (conversationId !== currentConversationIdRef.current) {
+        //   return undefined
+        // }
         switch (changeType) {
           case 'add': {
             const messages =
@@ -466,7 +466,7 @@ export const useClientConversationListener = () => {
         }
         return true
       },
-    [currentConversationId],
+    [],
   )
 
   useEffect(() => {

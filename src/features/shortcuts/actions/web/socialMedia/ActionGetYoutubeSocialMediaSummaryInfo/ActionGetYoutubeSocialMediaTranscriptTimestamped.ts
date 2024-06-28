@@ -94,9 +94,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       // TODO 需要重构,临时记录call-api
       if (clientMessageChannelEngine) {
         const recordContextMenuData =
-          PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP['YOUTUBE_VIDEO_SUMMARY']?.[
-            'timestamped'
-          ]
+          PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP.YOUTUBE_VIDEO_SUMMARY.timestamped
         if (clientConversationEngine?.currentConversationId) {
           const conversation =
             await clientConversationEngine?.getCurrentConversation()

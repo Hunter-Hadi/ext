@@ -1,4 +1,9 @@
+/**
+ * 解析后端steaming返回的数据结构，并转换成parse message
+ * 解析后的message保持和IAIResponseMessage一样的结构，大部分业务逻辑处理的时候直接deepMerge
+ */
 import { IMaxAIResponseStreamMessage } from '@/background/src/chat/UseChatGPTChat/types'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IAIResponseOriginalMessage } from '@/features/indexed_db/conversations/models/Message'
 
 // export type IMaxAIResponseParserMessage = Pick<
@@ -20,6 +25,7 @@ export type IMaxAIResponseParserMessage = {
 export const maxAIRequestResponseStreamParser = (
   streamMessage: IMaxAIResponseStreamMessage | null,
   outputMessage: IMaxAIResponseParserMessage,
+  conversation?: IConversation,
 ) => {
   // 增强数据
   if (streamMessage?.streaming_status) {
@@ -85,6 +91,7 @@ export const maxAIRequestResponseStreamParser = (
       }
     }
     if (streamMessage.related !== undefined) {
+      const pageSummaryType = conversation?.meta.pageSummaryType
       switch (streamMessage.streaming_status) {
         case 'start':
         case 'in_progress':
@@ -103,22 +110,24 @@ export const maxAIRequestResponseStreamParser = (
             },
           }
           break
-        case 'complete':
+        case 'complete': {
           // TODO 对于summary message没有related question时需要区分显示Ask AI anything about the page/email/PDF/video
-          // 目前对于streaming返回的多种消息还没有一种机制能在shortcuts action里拿到
+          const relatedDive = {
+            title: {
+              title: 'Keep exploring',
+              titleIcon: 'Layers',
+            },
+            type: 'related',
+            value: streamMessage.related,
+          } as const
           outputMessage.originalMessage = {
             ...outputMessage.originalMessage,
             metadata: {
               ...outputMessage.originalMessage?.metadata,
               deepDive: streamMessage.related?.length
-                ? {
-                    title: {
-                      title: 'Keep exploring',
-                      titleIcon: 'Layers',
-                    },
-                    type: 'related',
-                    value: streamMessage.related,
-                  }
+                ? pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
+                  ? [relatedDive]
+                  : relatedDive
                 : {
                     title: {
                       title: 'Deep dive',
@@ -129,6 +138,7 @@ export const maxAIRequestResponseStreamParser = (
             },
           }
           break
+        }
       }
     }
   } else if (streamMessage?.text) {
@@ -146,6 +156,7 @@ export const maxAIRequestResponseStreamParser = (
 export const maxAIRequestResponseJsonParser = (
   responseData: IMaxAIResponseStreamMessage,
   outputMessage: IMaxAIResponseParserMessage,
+  conversation?: IConversation,
 ) => {
   return maxAIRequestResponseStreamParser(
     {
@@ -154,5 +165,6 @@ export const maxAIRequestResponseJsonParser = (
       streaming_status: 'complete',
     },
     outputMessage,
+    conversation,
   )
 }

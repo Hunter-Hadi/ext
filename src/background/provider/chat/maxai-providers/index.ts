@@ -10,7 +10,9 @@ import {
   maxAIRequestBodySummaryGenerator,
 } from '@/background/api/maxAIRequestBodyGenerator'
 import {
+  IMaxAIResponseOutputMessage,
   IMaxAIResponseParserMessage,
+  maxAIRequestResponseErrorParser,
   maxAIRequestResponseJsonParser,
   maxAIRequestResponseStreamParser,
 } from '@/background/api/maxAIRequestResponseParser'
@@ -34,9 +36,8 @@ import {
   APP_VERSION,
 } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
-import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { isSummaryMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { backgroundConversationDB } from '@/features/indexed_db/conversations/background'
 import {
   IAIResponseMessage,
@@ -56,12 +57,7 @@ export type IMaxAIAskQuestionFunctionType = (
     AIModel: string
     conversationId: string
     checkAuthStatus: () => Promise<boolean>
-    onMessage: (message: {
-      type: 'error' | 'message'
-      done: boolean
-      error: string
-      data: IMaxAIResponseParserMessage
-    }) => void
+    onMessage: (message: IMaxAIResponseParserMessage) => void
     beforeSend?: () => Promise<void>
     setAbortController: (controller: AbortController) => void
     afterSend?: (reason: 'token_expired' | 'success' | 'error') => Promise<void>
@@ -217,7 +213,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   } else {
     delete postBody.temperature
   }
-  // 是否是summary类型的conversation的第一条总结的message
+  // 是否是summary总结的message
   let summaryMessage: IAIResponseMessage | null = null
   // 当前正在输出的message
   let outputMessage: IChatMessage | null = null
@@ -226,12 +222,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
     if (outputMessageId) {
       outputMessage =
         (await backgroundConversationDB.messages.get(outputMessageId)) || null
-
-      if (
-        outputMessage &&
-        isAIMessage(outputMessage) &&
-        outputMessage.originalMessage?.metadata?.navMetadata?.key
-      ) {
+      if (outputMessage && isSummaryMessage(outputMessage)) {
         summaryMessage = outputMessage
       }
     }
@@ -255,25 +246,15 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
         .where('conversationId')
         .equals(conversationId)
         .and((message) => message.type === 'ai')
-        .toArray((list) => {
-          return list.map((item) => ({
-            messageId: item.messageId,
-            created_at: item.created_at,
-          }))
-        })
+        .toArray()
 
-      const firstMessageId = orderBy(messages, ['created_at'], ['asc'])?.[0]
-        ?.messageId
-
-      const firstSummaryMessage = await backgroundConversationDB.messages.get(
-        firstMessageId,
-      )
+      const firstMessage = orderBy(messages, ['created_at'], ['asc'])?.[0]
 
       const { backendAPI: summaryAPI, postBody: summaryBody } =
         await maxAIRequestBodySummaryChatGenerator(
           postBody,
           conversationDetail,
-          firstSummaryMessage as IAIResponseMessage,
+          firstMessage as IAIResponseMessage,
         )
       backendAPI = summaryAPI
       postBody = summaryBody
@@ -309,7 +290,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       MaxAIPromptActionConfig,
     )
   }
-  // 当前只有大文件聊天用到这个model
+  // 当前只有大文件聊天用到这个model，这里不判断docId是因为可能有docId了但是切换了第一条summary消息的nav
   if (backendAPI.startsWith('chat_with_document')) {
     const { backendAPI: docAPI, postBody: docBody } =
       maxAIRequestBodyDocChatGenerator(postBody)
@@ -324,10 +305,9 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   const controller = new AbortController()
   const signal = controller.signal
   setAbortController(controller)
-  console.log('streaming start', postBody)
   let hasError = false
   let isTokenExpired = false
-  let responseMessage: IMaxAIResponseParserMessage = {
+  let responseMessage: IMaxAIResponseOutputMessage = {
     text: '',
     conversationId,
   }
@@ -385,34 +365,15 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
         afterSend?.('success')
         return
       } else {
-        // 判断是不是用量卡点的报错
-        const apiResponseSceneType = combinedPermissionSceneType(
-          result?.msg,
-          result?.meta?.model_type,
+        const parserMessage = maxAIRequestResponseErrorParser(
+          result,
+          conversationId,
         )
-        if (apiResponseSceneType) {
-          onMessage &&
-            onMessage({
-              type: 'error',
-              error: apiResponseSceneType,
-              done: true,
-              data: { text: '', conversationId },
-            })
-          afterSend?.('error')
-          return
-        } else {
-          onMessage &&
-            onMessage({
-              done: true,
-              type: 'error',
-              error:
-                result?.detail ??
-                'Something went wrong, please try again. If this issue persists, contact us via email.',
-              data: { text: '', conversationId },
-            })
-          afterSend?.('error')
-          return
-        }
+        hasError = true
+        isTokenExpired = parserMessage.tokenExpired || false
+        onMessage && onMessage(parserMessage)
+        afterSend?.('error')
+        return
       }
     } catch (e) {
       onMessage &&
@@ -442,18 +403,13 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
           const streamMessage: IMaxAIResponseStreamMessage | null = JSON.parse(
             message as string,
           )
-          responseMessage = maxAIRequestResponseStreamParser(
+          const parserMessage = maxAIRequestResponseStreamParser(
             streamMessage,
             responseMessage,
             conversationDetail,
           )
-          onMessage &&
-            onMessage({
-              type: 'message',
-              done: false,
-              error: '',
-              data: responseMessage,
-            })
+          responseMessage = parserMessage.data
+          onMessage && onMessage(parserMessage)
           log.debug('streaming on message', streamMessage)
         } catch (e) {
           log.error('parse message.data error: \t', e)
@@ -462,66 +418,15 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
     })
       .then()
       .catch((err) => {
-        hasError = true
         log.info('streaming end error', err)
-        if (
-          err?.message === 'BodyStreamBuffer was aborted' ||
-          err?.message === 'The user aborted a request.'
-        ) {
-          onMessage &&
-            onMessage({
-              type: 'error',
-              error: 'manual aborted request.',
-              done: true,
-              data: { text: '', conversationId },
-            })
-          afterSend?.('error')
-          return
-        }
-        try {
-          const error = JSON.parse(err.message || err)
-          // 判断是不是用量卡点的报错
-          const apiResponseSceneType = combinedPermissionSceneType(
-            error?.msg,
-            error?.meta?.model_type,
-          )
-          if (apiResponseSceneType) {
-            onMessage &&
-              onMessage({
-                type: 'error',
-                error: apiResponseSceneType,
-                done: true,
-                data: { text: '', conversationId },
-              })
-            afterSend?.('error')
-            return
-          }
-          if (error?.code === 401) {
-            isTokenExpired = true
-          }
-          log.error('sse error', err)
-          onMessage &&
-            onMessage({
-              done: true,
-              type: 'error',
-              error:
-                error.message ||
-                error.detail ||
-                'Something went wrong, please try again. If this issue persists, contact us via email.',
-              data: { text: '', conversationId },
-            })
-          afterSend?.('error')
-        } catch (e) {
-          onMessage &&
-            onMessage({
-              done: true,
-              type: 'error',
-              error:
-                'Something went wrong, please try again. If this issue persists, contact us via email.',
-              data: { text: '', conversationId },
-            })
-          afterSend?.('error')
-        }
+        const parserMessage = maxAIRequestResponseErrorParser(
+          err,
+          conversationId,
+        )
+        hasError = true
+        isTokenExpired = parserMessage.tokenExpired || false
+        onMessage && onMessage(parserMessage)
+        afterSend?.('error')
       })
     log.info('streaming end success')
   } else {
@@ -541,52 +446,32 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       )
       const data = await response.json()
 
-      // TODO 目前多合一的接口目前没有status字段并且也不会以json mode方式调用
+      // TODO 目前多合一的接口目前没有status字段暂时也不会以json mode方式调用
       if (data.status === 'OK' && data.text) {
-        responseMessage = maxAIRequestResponseJsonParser(
+        const parserMessage = maxAIRequestResponseJsonParser(
           data,
           responseMessage,
           conversationDetail,
         )
+        responseMessage = parserMessage.data
       } else {
+        const parserMessage = maxAIRequestResponseErrorParser(
+          data,
+          conversationId,
+        )
         hasError = true
-        onMessage &&
-          onMessage({
-            done: true,
-            type: 'error',
-            error:
-              data?.message ||
-              data?.detail ||
-              'Something went wrong, please try again. If this issue persists, contact us via email.',
-            data: { text: '', conversationId },
-          })
+        isTokenExpired = parserMessage.tokenExpired || false
+        onMessage && onMessage(parserMessage)
         afterSend?.('error')
       }
     } catch (error: any) {
+      const parserMessage = maxAIRequestResponseErrorParser(
+        error,
+        conversationId,
+      )
       hasError = true
-      if (
-        error?.message === 'The user aborted a request.' ||
-        error?.message === 'BodyStreamBuffer was aborted'
-      ) {
-        onMessage &&
-          onMessage({
-            type: 'error',
-            error: 'manual aborted request.',
-            done: true,
-            data: { text: '', conversationId },
-          })
-        afterSend?.('error')
-        return
-      }
-      onMessage &&
-        onMessage({
-          done: true,
-          type: 'error',
-          error:
-            error?.message ||
-            'Something went wrong, please try again. If this issue persists, contact us via email.',
-          data: { text: '', conversationId },
-        })
+      isTokenExpired = parserMessage.tokenExpired || false
+      onMessage && onMessage(parserMessage)
       afterSend?.('error')
       log.error('jsonMode error', error)
     }

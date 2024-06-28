@@ -192,9 +192,11 @@ export const maxAIRequestBodySummaryChatGenerator = async (
   if (conversation.meta.pageSummary) {
     // 新版本数据
     if (conversation.meta.docId) {
-      // 大文件走chat_with_document对话逻辑
+      // 大文件走chat_with_document逻辑
       backendAPI = 'chat_with_document/v2'
+      postBody.doc_id = conversation.meta.docId
     } else {
+      // 短文chat逻辑
       postBody.doc_id = conversation.meta.pageSummary.docId
       if (
         summaryMessage?.originalMessage?.metadata?.isComplete ||
@@ -203,30 +205,33 @@ export const maxAIRequestBodySummaryChatGenerator = async (
         // 完成或者有text内容说明请求成功了，后端成功拿到页面数据和summary的短文docId
         postBody.need_create = false
         postBody.summary_type = maxAIRequestBodySummaryType(
-          summaryMessage.originalMessage?.metadata?.navMetadata?.key,
+          summaryMessage.originalMessage?.metadata?.navMetadata?.key || 'all',
         )
         // 目前不传递会报错
         postBody.prompt_inputs = {}
       } else {
-        // 这里代表第一条summary请求失败了，目前失败不影响后续对话，需要带上对应的PROMPT_INPUTS，后端需要此数据生成对应的systemPrompt
+        // 这里代表第一条summary请求失败了，目前失败不影响后续对话，需要带上对应的PROMPT_INPUTS，后端需要此数据生成对应的prompt
         postBody.need_create = true
         postBody.summary_type = maxAIRequestBodySummaryType(
           summaryMessage?.originalMessage?.metadata?.navMetadata?.key || 'all',
         )
-        // 拿到summaryMessage的variables拼接到prompt_inputs里
+        // 拿到summary message的variables拼接到prompt_inputs里
+        postBody.prompt_inputs = {
+          CURRENT_WEBPAGE_URL: conversation.meta.sourceWebpage?.url || '',
+          CURRENT_WEBSITE_DOMAIN: conversation.meta.sourceWebpage?.url || '',
+        }
+        // TODO 目前youtube下传递的是DOC_MAIN_CONTEXT，后续针对email/youtube这两个要专门优化结构
         if (conversation.meta.pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY') {
-          postBody.prompt_inputs = {
-            DOC_MAIN_CONTEXT: conversation.meta.pageSummary.content || '',
-          }
+          postBody.prompt_inputs.DOC_MAIN_CONTEXT =
+            conversation.meta.pageSummary.content || ''
         } else {
-          postBody.prompt_inputs = {
-            PAGE_CONTENT: conversation.meta.pageSummary.content || '',
-          }
+          postBody.prompt_inputs.PAGE_CONTENT =
+            conversation.meta.pageSummary.content || ''
         }
       }
     }
   } else {
-    // 对于旧版本数据走之前的逻辑
+    // 对于旧版本数据走之前的逻辑，旧版本没有存储pageSummary.content的信息
     backendAPI = 'get_summarize_response'
   }
   // 后端会自动调整model

@@ -70,3 +70,16 @@ export const isRichAIMessage = (
     !message.originalMessage.liteMode
   )
 }
+
+/**
+ * 消息是否是summary总结消息
+ * @param message
+ */
+export const isSummaryMessage = (
+  message: IChatMessage,
+): message is IAIResponseMessage => {
+  return (
+    isAIMessage(message) &&
+    Boolean(message.originalMessage?.metadata?.navMetadata?.key)
+  )
+}

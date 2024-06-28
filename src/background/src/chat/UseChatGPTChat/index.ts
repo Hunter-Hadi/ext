@@ -66,7 +66,7 @@ class UseChatGPTPlusChat extends BaseChat {
     }
     await this.updateClientConversationChatStatus()
   }
-  private async checkTokenAndUpdateStatus() {
+  async checkTokenAndUpdateStatus() {
     const prevStatus = this.status
     this.token = await this.getToken()
     this.status = this.token ? 'success' : 'needAuth'
@@ -179,12 +179,6 @@ class UseChatGPTPlusChat extends BaseChat {
       meta?.isEnabledJsonMode
         ? { response_in_json: true, streaming: false }
         : {},
-      this.conversation?.meta.pageSummaryType
-        ? {
-            // TODO 区分summary nav类型
-            summaryType: 'standard',
-          }
-        : {},
     )
     // 当前只有大文件聊天用到这个model
     if (backendAPI === 'chat_with_document') {
@@ -230,10 +224,7 @@ class UseChatGPTPlusChat extends BaseChat {
       delete (postBody as any).model_name
     }
     if (options?.meta?.MaxAIPromptActionConfig) {
-      // summary/v2接口支持prompt_inputs
-      if (!isSummaryAPI) {
-        backendAPI = 'use_prompt_action'
-      }
+      backendAPI = 'use_prompt_action'
       postBody = await maxAIRequestBodyPromptActionGenerator(
         postBody,
         options.meta.MaxAIPromptActionConfig,

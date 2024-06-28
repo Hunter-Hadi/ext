@@ -772,7 +772,7 @@
     "login_modal__title__part2": "GRATUIT",
     "login_modal__title__part3": "requêtes IA chaque jour",
     "login_modal__email__placeholder": "Entrez votre adresse email...",
-    "login_modal__footer_text__part1": "En vous inscrivant, vous acceptez les",
+    "login_modal__footer_text__part1": "En vous connectant, vous acceptez les",
     "login_modal__footer_text__part2": "et",
     "login_modal__footer_text__tooltip": "Votre vie privée est notre priorité. Nous ne collectons que votre nom et votre email pour la connexion et la synchronisation des paramètres, en le gardant confidentiel et sans le partager avec qui que ce soit.",
     "login_modal__login_with_email__title": "Continuer avec Email",

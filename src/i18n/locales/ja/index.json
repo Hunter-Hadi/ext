@@ -772,7 +772,7 @@
     "login_modal__title__part2": "無料",
     "login_modal__title__part3": "AIクエリを毎日受け取る",
     "login_modal__email__placeholder": "メールアドレスを入力してください...",
-    "login_modal__footer_text__part1": "登録することで、以下に同意します：",
+    "login_modal__footer_text__part1": "サインインすることで、同意します",
     "login_modal__footer_text__part2": "および",
     "login_modal__footer_text__tooltip": "あなたのプライバシーは最優先です。ログインと設定の同期のために、名前とメールアドレスのみを収集し、機密保持し、他の誰とも共有しません。",
     "login_modal__login_with_email__title": "メールで続行",

@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "ক্লোড দিয়ে অনুসন্ধান করতে সাইন ইন করুন",
     "permission__pricing_hook__search_with_ai_claude__login_title": "ক্লোড দিয়ে অনুসন্ধান করতে আপগ্রেড করুন",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "চ্যাটজিপিটি দিয়ে অনুসন্ধান করতে সাইন ইন করুন",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "চ্যাটজিপিটি দিয়ে অনুসন্ধান করতে আপগ্রেড করুন"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "চ্যাটজিপিটি দিয়ে অনুসন্ধান করতে আপগ্রেড করুন",
+    "sidebar__chat__voice_input__timeout__tooltip": "ট্রান্সক্রিপশন সময় শেষ হয়েছে।\nআবার চেষ্টা করুন।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

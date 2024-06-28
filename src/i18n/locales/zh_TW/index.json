@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "登入以使用Claude搜尋",
     "permission__pricing_hook__search_with_ai_claude__login_title": "升級以使用Claude搜尋",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "登入以使用ChatGPT搜尋",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "升級以使用ChatGPT搜尋"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "升級以使用ChatGPT搜尋",
+    "sidebar__chat__voice_input__timeout__tooltip": "轉錄逾時。\n請再試一次。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

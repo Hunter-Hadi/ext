@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "クロードで検索するにはサインインしてください",
     "permission__pricing_hook__search_with_ai_claude__login_title": "クロードで検索するにはアップグレードしてください",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPTで検索するにはサインインしてください",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPTで検索するにはアップグレードしてください"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPTで検索するにはアップグレードしてください",
+    "sidebar__chat__voice_input__timeout__tooltip": "音声認識がタイムアウトしました。\nもう一度お試しください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

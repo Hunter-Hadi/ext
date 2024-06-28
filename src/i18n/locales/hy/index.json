@@ -997,7 +997,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "Մուտք գործեք Ուսանողական Ուժերով Որոնելու համար Claude-ի հետ",
     "permission__pricing_hook__search_with_ai_claude__login_title": "Թարմացնելու Ուսանողական Ուժերով Որոնելու համար Claude-ի հետ",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Մուտք գործեք Ուսանողական Ուժերով Որոնելու համար ChatGPT-ի հետ",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Թարմացնելու Ուսանողական Ուժերով Որոնելու համար ChatGPT-ի հետ"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Թարմացնելու Ուսանողական Ուժերով Որոնելու համար ChatGPT-ի հետ",
+    "sidebar__chat__voice_input__timeout__tooltip": "Այստեղ ժամանակավորվել է թարգմանության ժամանակ։\nԽնդրում ենք փորձել նորից։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

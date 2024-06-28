@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "Masuk untuk mencari dengan Claude",
     "permission__pricing_hook__search_with_ai_claude__login_title": "Tingkatkan untuk mencari dengan Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Masuk untuk mencari dengan ChatGPT",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Tingkatkan untuk mencari dengan ChatGPT"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Tingkatkan untuk mencari dengan ChatGPT",
+    "sidebar__chat__voice_input__timeout__tooltip": "Waktu transkripsi habis.\nSilakan coba lagi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

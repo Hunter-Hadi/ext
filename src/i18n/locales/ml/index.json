@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "ക്ലോഡ് ഉപയോഗിച്ച് തിരയുകയായി സൈൻ ഇൻ ചെയ്യുക",
     "permission__pricing_hook__search_with_ai_claude__login_title": "ക്ലോഡ് ഉപയോഗിച്ച് തിരയുകയായി അപ്ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ചാറ്റ്‌ജിപിടി ഉപയോഗിച്ച് തിരയുകയായി സൈൻ ഇൻ ചെയ്യുക",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ചാറ്റ്‌ജിപിടി ഉപയോഗിച്ച് തിരയുകയായി അപ്ഗ്രേഡ് ചെയ്യുക"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ചാറ്റ്‌ജിപിടി ഉപയോഗിച്ച് തിരയുകയായി അപ്ഗ്രേഡ് ചെയ്യുക",
+    "sidebar__chat__voice_input__timeout__tooltip": "ട്രാൻസ്ക്രിപ്ഷൻ ടൈം അവധിക്ക് മുടിച്ചു.\nദയവായി വീണ്ടും ശ്രമിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "Đăng nhập để tìm kiếm với Claude",
     "permission__pricing_hook__search_with_ai_claude__login_title": "Nâng cấp để tìm kiếm với Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Đăng nhập để tìm kiếm với ChatGPT",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Nâng cấp để tìm kiếm với ChatGPT"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Nâng cấp để tìm kiếm với ChatGPT",
+    "sidebar__chat__voice_input__timeout__tooltip": "Quá trình chuyển văn bản thành giọng nói đã hết thời gian.\nVui lòng thử lại."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

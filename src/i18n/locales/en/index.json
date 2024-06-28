@@ -1011,6 +1011,7 @@
     "sidebar__chat__voice_input__transcripting__tooltip": "Transcripting...",
     "sidebar__chat__voice_input__permission_denied__tooltip": "Permission to use microphone was denied.\nUpdate your browser permission settings and try again.",
     "sidebar__chat__voice_input__no_speech__tooltip": "No speech detected.\nPlease try again.",
+    "sidebar__chat__voice_input__timeout__tooltip":"Transcription timed out.\nPlease try again.",
 
     "login_modal__title__part1": "Sign in to get",
     "login_modal__title__part2": "FREE",

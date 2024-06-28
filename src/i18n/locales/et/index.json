@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "Logi sisse Claude'iga otsimiseks",
     "permission__pricing_hook__search_with_ai_claude__login_title": "Uuenda, et otsida Claude'iga",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Logi sisse ChatGPT-ga otsimiseks",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Uuenda, et otsida ChatGPT-ga"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Uuenda, et otsida ChatGPT-ga",
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkriptsioon aegus.\nPalun proovige uuesti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

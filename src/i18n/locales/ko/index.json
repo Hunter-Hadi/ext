@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "Claude로 검색하려면 로그인하세요",
     "permission__pricing_hook__search_with_ai_claude__login_title": "Claude로 검색하려면 업그레이드하세요",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPT로 검색하려면 로그인하세요",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT로 검색하려면 업그레이드하세요"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT로 검색하려면 업그레이드하세요",
+    "sidebar__chat__voice_input__timeout__tooltip": "전사 시간이 초과되었습니다.\n다시 시도해주세요."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

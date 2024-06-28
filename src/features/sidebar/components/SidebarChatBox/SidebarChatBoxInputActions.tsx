@@ -174,29 +174,39 @@ const SidebarChatBoxInputActions: FC<{
 
         {/* use prompt btn */}
 
-        <SidebarUsePromptButton
+        <Box
           sx={{
-            ...actionsBtnColorSxMemo,
-            visibility: isUsePromptIconButtonShow ? 'visible' : 'hidden',
-            position: isUsePromptIconButtonShow ? 'relative' : 'absolute',
-            [`&.${buttonClasses.contained}`]: {
-              color: 'white',
-            },
+            display: isUsePromptIconButtonShow ? 'flex' : 'none',
           }}
-          text={inputValue}
-        />
-
-        <MaxAIBetaFeatureWrapper betaFeatureName={'voice_input'}>
-          <SidebarChatVoiceInputButton
+        >
+          <SidebarUsePromptButton
             sx={{
               ...actionsBtnColorSxMemo,
-              visibility: isUsePromptIconButtonShow ? 'visible' : 'hidden',
-              position: isUsePromptIconButtonShow ? 'relative' : 'absolute',
               [`&.${buttonClasses.contained}`]: {
                 color: 'white',
               },
             }}
+            text={inputValue}
           />
+        </Box>
+
+        {/* voice input btn */}
+
+        <MaxAIBetaFeatureWrapper betaFeatureName={'voice_input'}>
+          <Box
+            sx={{
+              display: isUsePromptIconButtonShow ? 'flex' : 'none',
+            }}
+          >
+            <SidebarChatVoiceInputButton
+              sx={{
+                ...actionsBtnColorSxMemo,
+                [`&.${buttonClasses.contained}`]: {
+                  color: 'white',
+                },
+              }}
+            />
+          </Box>
         </MaxAIBetaFeatureWrapper>
 
         {/* send btn */}

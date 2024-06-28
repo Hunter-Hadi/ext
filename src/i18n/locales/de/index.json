@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "Melden Sie sich an, um mit Claude zu suchen",
     "permission__pricing_hook__search_with_ai_claude__login_title": "Upgrade, um mit Claude zu suchen",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Melden Sie sich an, um mit ChatGPT zu suchen",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Upgrade, um mit ChatGPT zu suchen"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Upgrade, um mit ChatGPT zu suchen",
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkription abgelaufen.\nBitte versuchen Sie es erneut."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

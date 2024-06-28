@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "ક્લોડ સાથે શોધ માટે સાઇન ઇન કરો",
     "permission__pricing_hook__search_with_ai_claude__login_title": "ક્લોડ સાથે શોધ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ચેટજીપીટી સાથે શોધ માટે સાઇન ઇન કરો",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ચેટજીપીટી સાથે શોધ માટે અપગ્રેડ કરો"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ચેટજીપીટી સાથે શોધ માટે અપગ્રેડ કરો",
+    "sidebar__chat__voice_input__timeout__tooltip": "ટ્રાન્સક્રિપ્શન સમયમર્યાદા પૂરી થઈ ગઈ.\nફરીથી પ્રયાસ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

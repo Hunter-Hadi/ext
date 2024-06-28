@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "Claude शोधण्यासाठी साइन इन करा",
     "permission__pricing_hook__search_with_ai_claude__login_title": "Claude शोधण्यासाठी अपग्रेड करा",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPT शोधण्यासाठी साइन इन करा",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT शोधण्यासाठी अपग्रेड करा"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT शोधण्यासाठी अपग्रेड करा",
+    "sidebar__chat__voice_input__timeout__tooltip": "ट्रांसक्रिप्शन वेळ संपली.\nकृपया पुन्हा प्रयत्न करा."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

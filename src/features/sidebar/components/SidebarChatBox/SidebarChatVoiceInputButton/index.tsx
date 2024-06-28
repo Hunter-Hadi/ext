@@ -56,7 +56,7 @@ const ButtonWithPulse = styled(LoadingButton)({
 })
 
 // 最大录音时长
-const MAX_AI_CHAT_VOICE_INPUT_MAX_RECORDING_TIMES = 10 // 秒
+const MAX_AI_CHAT_VOICE_INPUT_MAX_RECORDING_TIMES = 60 // 秒
 
 enum VoiceInputStatus {
   IDLE = 0,
@@ -64,6 +64,19 @@ enum VoiceInputStatus {
   TRANSCRIPTING = 2,
   PERMISSION_DENIED = 3,
   NO_SPEECH_DETECTED = 4,
+  TIMEOUT = 5,
+}
+
+/**
+ * 是否是错误的语音输入状态
+ * @param voiceInputStatus
+ */
+const isErrorVoiceInputStatus = (voiceInputStatus: VoiceInputStatus) => {
+  return (
+    voiceInputStatus === VoiceInputStatus.PERMISSION_DENIED ||
+    voiceInputStatus === VoiceInputStatus.NO_SPEECH_DETECTED ||
+    voiceInputStatus === VoiceInputStatus.TIMEOUT
+  )
 }
 
 const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
@@ -88,7 +101,7 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
       setVoiceInputStatus(VoiceInputStatus.PERMISSION_DENIED)
     }
   })
-
+  // tooltip
   const memoizedTooltip = useMemo(() => {
     return {
       // 未使用
@@ -111,61 +124,18 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
       [VoiceInputStatus.NO_SPEECH_DETECTED]: t(
         'client:sidebar__chat__voice_input__no_speech__tooltip',
       ),
+      // 超时
+      [VoiceInputStatus.TIMEOUT]: t(
+        'client:sidebar__chat__voice_input__timeout__tooltip',
+      ),
     }[voiceInputStatus]
   }, [voiceInputStatus, t])
 
+  // 是否显示tooltip
   const memoizedTooltipShow = useMemo(() => {
-    if (voiceInputStatus === 3 || voiceInputStatus === 4) {
-      return true
-    }
-    return open
+    return isErrorVoiceInputStatus(voiceInputStatus) || open
   }, [voiceInputStatus, open])
-  // 超时和检测说话
-  useEffect(() => {
-    if (isRecording && mediaRecorder) {
-      let times = MAX_AI_CHAT_VOICE_INPUT_MAX_RECORDING_TIMES
-      const timeoutTimer = setInterval(() => {
-        times--
-        if (times <= 0 && isRecording) {
-          stopRecording()
-          setVoiceInputStatus((prevState) => {
-            if (prevState === VoiceInputStatus.RECORDING) {
-              return VoiceInputStatus.TRANSCRIPTING
-            }
-            return prevState
-          })
-        }
-      }, 1000)
-      const cancel = { canceled: false }
-      detectSpeechInDuration(mediaRecorder.stream, 5, cancel) // 检测5秒内是否有说话
-        .then((isSpeechDetected) => {
-          console.log(
-            isSpeechDetected ? 'Detected speech!' : 'No speech detected.',
-          )
-          if (!isSpeechDetected) {
-            setVoiceInputStatus((prevState) =>
-              prevState === 1 ? VoiceInputStatus.NO_SPEECH_DETECTED : prevState,
-            )
-            setTimeout(() => {
-              setVoiceInputStatus((prevState) => {
-                if (prevState === 3) {
-                  return 0
-                }
-                return prevState
-              })
-            }, 3000)
-            stopRecording()
-          }
-        })
-        .catch((error) => {
-          console.error('Error detecting speech:', error)
-        })
-      return () => {
-        cancel.canceled = true
-        clearTimeout(timeoutTimer)
-      }
-    }
-  }, [mediaRecorder, stopRecording, isRecording])
+
   const isTranscriptingRef = useRef(false)
   const voiceInputStatusRef = useRef(voiceInputStatus)
   const handleClick = () => {
@@ -197,6 +167,63 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
   const handleClose = () => {
     setOpen(false)
   }
+
+  // 超时和权限被拒绝和未检测到语音的状态显示3秒后消失
+  useEffect(() => {
+    if (isErrorVoiceInputStatus(voiceInputStatus)) {
+      const timer = setTimeout(() => {
+        setVoiceInputStatus((prevState) => {
+          if (isErrorVoiceInputStatus(prevState)) {
+            return 0
+          }
+          return prevState
+        })
+      }, 3000)
+      return () => {
+        clearTimeout(timer)
+      }
+    }
+  }, [voiceInputStatus])
+
+  // 超时和检测说话
+  useEffect(() => {
+    if (isRecording && mediaRecorder) {
+      let times = MAX_AI_CHAT_VOICE_INPUT_MAX_RECORDING_TIMES
+      const timeoutTimer = setInterval(() => {
+        times--
+        if (times <= 0 && isRecording) {
+          stopRecording()
+          setVoiceInputStatus((prevState) => {
+            if (prevState === VoiceInputStatus.RECORDING) {
+              return VoiceInputStatus.TRANSCRIPTING
+            }
+            return prevState
+          })
+        }
+      }, 1000)
+      const cancel = { canceled: false }
+      detectSpeechInDuration(mediaRecorder.stream, 5, cancel) // 检测5秒内是否有说话
+        .then((isSpeechDetected) => {
+          console.log(
+            isSpeechDetected ? 'Detected speech!' : 'No speech detected.',
+          )
+          if (!isSpeechDetected) {
+            setVoiceInputStatus((prevState) =>
+              prevState === 1 ? VoiceInputStatus.NO_SPEECH_DETECTED : prevState,
+            )
+            stopRecording()
+          }
+        })
+        .catch((error) => {
+          console.error('Error detecting speech:', error)
+        })
+      return () => {
+        cancel.canceled = true
+        clearTimeout(timeoutTimer)
+      }
+    }
+  }, [mediaRecorder, stopRecording, isRecording])
+
   useEffect(() => {
     voiceInputStatusRef.current = voiceInputStatus
   }, [voiceInputStatus])
@@ -218,17 +245,26 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
       )
       // webm
       maxAISpeechToText(file)
-        .then((text) => {
-          const previousInputValue = getInputMediator(
-            'chatBoxInputMediator',
-          ).getInputValue()
-          getInputMediator('chatBoxInputMediator').updateInputValue(
-            previousInputValue + ' ' + text,
-          )
+        .then((result) => {
+          if (result.status === 'success') {
+            const text = result.data.speechText
+            console.log('Speech to text:', text)
+            const previousInputValue = getInputMediator(
+              'chatBoxInputMediator',
+            ).getInputValue()
+            getInputMediator('chatBoxInputMediator').updateInputValue(
+              previousInputValue + ' ' + text,
+            )
+            setVoiceInputStatus(VoiceInputStatus.IDLE)
+          } else if (result.status === 'timeout') {
+            console.error('Speech to text timeout.')
+            setVoiceInputStatus(VoiceInputStatus.TIMEOUT)
+          } else {
+            setVoiceInputStatus(VoiceInputStatus.IDLE)
+          }
         })
         .catch()
         .finally(() => {
-          setVoiceInputStatus(VoiceInputStatus.IDLE)
           isTranscriptingRef.current = false
         })
     }
@@ -237,6 +273,7 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
   return (
     <Box>
       <Tooltip
+        arrow
         title={
           <Stack>
             <Typography fontSize={'14px'} color={'text.primary'}>

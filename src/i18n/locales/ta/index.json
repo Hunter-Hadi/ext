@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "கிளோடுடன் தேட உள்நுழைக",
     "permission__pricing_hook__search_with_ai_claude__login_title": "கிளோடுடன் தேட மேம்படுத்து",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPT டோடுடன் தேட உள்நுழைக",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT டோடுடன் தேட மேம்படுத்து"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT டோடுடன் தேட மேம்படுத்து",
+    "sidebar__chat__voice_input__timeout__tooltip": "மொழிபெயர்ப்பு நேரம் முடிவடைந்தது.\nமீண்டும் முயற்சிக்கவும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

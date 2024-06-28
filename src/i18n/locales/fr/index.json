@@ -1000,7 +1000,8 @@
     "permission__pricing_hook__search_with_ai_claude__no_login_title": "Connectez-vous pour rechercher avec Claude",
     "permission__pricing_hook__search_with_ai_claude__login_title": "Mettez à niveau pour rechercher avec Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Connectez-vous pour rechercher avec ChatGPT",
-    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Mettez à niveau pour rechercher avec ChatGPT"
+    "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Mettez à niveau pour rechercher avec ChatGPT",
+    "sidebar__chat__voice_input__timeout__tooltip": "La transcription a expiré.\nVeuillez réessayer."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

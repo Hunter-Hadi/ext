@@ -82,11 +82,11 @@ const getAIModels = (
       return [CLAUDE_3_5_SONNET]
     }
   } else if (userRoleType === 'pro') {
-    if (conversationAIModel !== CLAUDE_3_OPUS.AIModel) {
+    if (conversationAIModel !== CLAUDE_3_5_SONNET.AIModel) {
       return [CLAUDE_3_5_SONNET]
     }
   } else {
-    if (conversationAIModel !== GPT_4O.AIModel) {
+    if (conversationAIModel !== CLAUDE_3_5_SONNET.AIModel) {
       return [CLAUDE_3_5_SONNET]
     }
   }

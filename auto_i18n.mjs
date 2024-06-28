@@ -25,7 +25,7 @@ async function askQuestion(query) {
 async function compareJson(filePath) {
   try {
     // 获取上一个 commit 中的文件内容
-    const oldFileContent = execSync(`git show HEAD~1:${filePath}`, { encoding: 'utf8' })
+    const oldFileContent = execSync(`git show HEAD:${filePath}`, { encoding: 'utf8' })
 
     // 读取当前文件的内容
     const newFileContent = await fs.readFile(filePath, 'utf8')

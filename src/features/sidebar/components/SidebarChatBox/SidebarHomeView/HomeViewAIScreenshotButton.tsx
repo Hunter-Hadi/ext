@@ -9,7 +9,7 @@ import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
 
 const HomeViewAIScreenshotButton: FC = () => {
-  const { t } = useTranslation(['common'])
+  const { t } = useTranslation(['client'])
 
   const handleClick = () => {
     const timer = setInterval(() => {
@@ -60,7 +60,7 @@ const HomeViewAIScreenshotButton: FC = () => {
         lineHeight={1.5}
         color='inherit'
       >
-        {t('common:ai_screenshot')}
+        {t('client:home_view_content_nav__chat_with_screenshot__title')}
       </Typography>
     </Stack>
   )

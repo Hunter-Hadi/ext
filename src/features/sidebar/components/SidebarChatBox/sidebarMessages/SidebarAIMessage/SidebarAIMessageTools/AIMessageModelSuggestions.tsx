@@ -1,5 +1,3 @@
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -35,7 +33,7 @@ export interface IConversationSuggestAIModel {
   AIModel: string
 }
 export interface IAIMessageModelSuggestionAIModelButton {
-  title: I18nextKeysType
+  title: string
   tooltip?: I18nextKeysType
   AIProvider: IAIProviderType
   AIModel: string
@@ -52,22 +50,22 @@ const getAIModels = (
   conversationAIModel: string,
 ) => {
   const userRoleType = userPlan.name
-  const GPT_4O: IConversationSuggestAIModel = {
-    title: 'gpt-4o',
-    AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: 'gpt-4o',
-    description:
-      'client:sidebar__chat__suggestions__model__description__for_gpt_4_o',
-  }
-  const CLAUDE_3_OPUS: IConversationSuggestAIModel = {
-    title: 'claude-3-opus',
-    AIProvider: 'MAXAI_CLAUDE',
-    AIModel: 'claude-3-opus',
-    description:
-      'client:sidebar__chat__suggestions__model__description__for_claude_3_opus',
-  }
+  // const GPT_4O: IConversationSuggestAIModel = {
+  //   title: 'gpt-4o',
+  //   AIProvider: 'USE_CHAT_GPT_PLUS',
+  //   AIModel: 'gpt-4o',
+  //   description:
+  //     'client:sidebar__chat__suggestions__model__description__for_gpt_4_o',
+  // }
+  // const CLAUDE_3_OPUS: IConversationSuggestAIModel = {
+  //   title: 'claude-3-opus',
+  //   AIProvider: 'MAXAI_CLAUDE',
+  //   AIModel: 'claude-3-opus',
+  //   description:
+  //     'client:sidebar__chat__suggestions__model__description__for_claude_3_opus',
+  // }
   const CLAUDE_3_5_SONNET: IConversationSuggestAIModel = {
-    title: 'claude-3.5-sonnet',
+    title: 'Claude-3.5-Sonnet',
     AIProvider: 'MAXAI_CLAUDE',
     AIModel: 'claude-3-5-sonnet',
     description:
@@ -75,18 +73,21 @@ const getAIModels = (
   }
   if (userRoleType === 'elite') {
     if (
-      ['claude-3-opus', 'gpt-4', MAXAI_CHATGPT_MODEL_GPT_4_TURBO].includes(
-        conversationAIModel,
-      )
+      [
+        'claude-3-sonnet',
+        'claude-3-opus',
+        'gpt-4',
+        MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+      ].includes(conversationAIModel)
     ) {
       return [CLAUDE_3_5_SONNET]
     }
   } else if (userRoleType === 'pro') {
-    if (conversationAIModel !== CLAUDE_3_OPUS.AIModel) {
+    if (conversationAIModel !== CLAUDE_3_5_SONNET.AIModel) {
       return [CLAUDE_3_5_SONNET]
     }
   } else {
-    if (conversationAIModel !== GPT_4O.AIModel) {
+    if (conversationAIModel !== CLAUDE_3_5_SONNET.AIModel) {
       return [CLAUDE_3_5_SONNET]
     }
   }
@@ -123,7 +124,7 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
     const suggestions = models.filter(
       (model) => model.AIModel !== messageAIModel,
     )
-    let ctaButton: IAIMessageModelSuggestionAIModelButton | null = null
+    let newChatButton: IAIMessageModelSuggestionAIModelButton | null = null
     const ctaButtonAIModel = models.find(
       (model) => model.AIModel === messageAIModel,
     )
@@ -135,14 +136,14 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
       ctaButtonAIModel &&
       suggestions.length === 0
     ) {
-      ctaButton = {
-        title: 'client:sidebar__chat__suggestions__starts_new_chat__title',
+      newChatButton = {
+        title: ctaButtonAIModel.title,
         AIProvider: ctaButtonAIModel.AIProvider,
         AIModel: ctaButtonAIModel.AIModel,
       }
     }
     return {
-      ctaButton,
+      newChatButton,
       suggestions,
     }
   }, [
@@ -180,72 +181,13 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
           mx: 0.5,
         }}
       />
-      {memoConfig.ctaButton && (
+      {memoConfig.newChatButton && (
         <AIMessageSuggestionsAIModelNewChatButton
-          ctaButton={memoConfig.ctaButton}
+          newChatButtonConfig={memoConfig.newChatButton}
         />
       )}
       <AIMessageSuggestionsModelSelector suggestions={memoConfig.suggestions} />
     </Stack>
-  )
-}
-
-const AIMessageSuggestionsAIModelNewChatButton: FC<{
-  ctaButton: IAIMessageModelSuggestionAIModelButton
-}> = (props) => {
-  const { ctaButton } = props
-  const { t } = useTranslation(['client'])
-  const {
-    showConversationLoading,
-    hideConversationLoading,
-    createConversation,
-  } = useClientConversation()
-  const { smoothConversationLoading } = useSmoothConversationLoading()
-  const handleClick = async () => {
-    try {
-      if (!ctaButton.AIModel) {
-        return
-      }
-      showConversationLoading()
-      await createConversation('Chat', ctaButton.AIProvider, ctaButton.AIModel)
-    } catch (e) {
-      console.error(e)
-    } finally {
-      hideConversationLoading()
-    }
-  }
-  return (
-    <Button
-      onClick={handleClick}
-      disabled={smoothConversationLoading}
-      sx={{
-        padding: 0,
-        minWidth: 'unset',
-        bgcolor: (t) => (t.palette.mode === 'dark' ? '#282828' : '#EBEBEB'),
-        lineHeight: '20px',
-        fontSize: '14px',
-        color: 'primary.main',
-        borderRadius: '8px',
-      }}
-    >
-      <Stack
-        direction={'row'}
-        alignItems={'center'}
-        gap={'4px'}
-        sx={{
-          p: '1px 4px 1px 2px',
-          borderRadius: '8px',
-          '&:hover': {
-            bgcolor: (t) => (t.palette.mode === 'dark' ? '#282828' : '#D6D6D6'),
-          },
-        }}
-      >
-        <AIModelIcons size={18} aiModelValue={ctaButton.AIModel} />
-        {t(ctaButton.title as any, {
-          AI_MODEL: ctaButton.AIModel,
-        })}
-      </Stack>
-    </Button>
   )
 }
 
@@ -264,9 +206,10 @@ const AIMessageSuggestionsModelSelector: FC<{
   const firstSuggestion = suggestions[0]
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+  // TODO 目前没有推荐多个
+  // const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorEl(event.currentTarget)
+  // }
   const handleClose = () => {
     setAnchorEl(null)
   }
@@ -303,75 +246,16 @@ const AIMessageSuggestionsModelSelector: FC<{
   }
   return (
     <div>
-      <Button
+      <AIMessageModelSuggestionButton
+        type={'Compare'}
         disabled={smoothConversationLoading}
-        sx={{
-          padding: 0,
-          minWidth: 'unset',
-          bgcolor: (t) => (t.palette.mode === 'dark' ? '#282828' : '#EBEBEB'),
-          lineHeight: '20px',
-          fontSize: '14px',
-          color: 'primary.main',
-          borderRadius: '8px',
+        AIModel={firstSuggestion.AIModel}
+        AIProvider={firstSuggestion.AIProvider}
+        title={firstSuggestion.title}
+        onClick={async () => {
+          await handleRegenerateAIModel(firstSuggestion.AIModel)
         }}
-      >
-        <Stack
-          onClick={() => {
-            handleRegenerateAIModel(firstSuggestion.AIModel)
-          }}
-          direction={'row'}
-          alignItems={'center'}
-          gap={'4px'}
-          sx={{
-            p: '1px 4px 1px 2px',
-            borderRadius: '8px 0 0 8px',
-            '&:hover': {
-              bgcolor: (t) =>
-                t.palette.mode === 'dark' ? '#282828' : '#D6D6D6',
-              '& + div': {
-                bgcolor: (t) =>
-                  t.palette.mode === 'dark' ? '#282828' : '#D6D6D6',
-              },
-            },
-          }}
-        >
-          {t('client:sidebar__chat__suggestions__compare_to__title', {
-            AI_MODEL: firstSuggestion.AIModel,
-          })}
-          <AIModelIcons size={18} aiModelValue={firstSuggestion.AIModel} />
-        </Stack>
-        <Stack
-          component={'div'}
-          onClick={handleClick}
-          direction={'row'}
-          alignItems={'center'}
-          gap={'4px'}
-          sx={{
-            borderRadius: '0 8px 8px 0',
-            pr: '2px',
-            height: '22px',
-            '&:hover': {
-              bgcolor: (t) =>
-                t.palette.mode === 'dark' ? '#282828' : '#D6D6D6',
-            },
-          }}
-        >
-          <Divider
-            sx={{
-              height: '12px',
-              m: 'auto',
-            }}
-            orientation='vertical'
-            flexItem
-          />
-          <KeyboardArrowDownIcon
-            sx={{
-              fontSize: '16px',
-              color: '#858585',
-            }}
-          />
-        </Stack>
-      </Button>
+      />
       <Menu
         anchorEl={anchorEl}
         open={open}
@@ -441,6 +325,126 @@ const AIMessageSuggestionsModelSelector: FC<{
         ))}
       </Menu>
     </div>
+  )
+}
+
+const AIMessageSuggestionsAIModelNewChatButton: FC<{
+  newChatButtonConfig: IAIMessageModelSuggestionAIModelButton
+}> = (props) => {
+  const { newChatButtonConfig } = props
+  const {
+    showConversationLoading,
+    hideConversationLoading,
+    createConversation,
+  } = useClientConversation()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
+  const handleClick = async () => {
+    try {
+      if (!newChatButtonConfig.AIModel) {
+        return
+      }
+      showConversationLoading()
+      await createConversation(
+        'Chat',
+        newChatButtonConfig.AIProvider,
+        newChatButtonConfig.AIModel,
+      )
+    } catch (e) {
+      console.error(e)
+    } finally {
+      hideConversationLoading()
+    }
+  }
+  return (
+    <AIMessageModelSuggestionButton
+      type={'NewChat'}
+      onClick={handleClick}
+      disabled={smoothConversationLoading}
+      title={newChatButtonConfig.title}
+      AIModel={newChatButtonConfig.AIModel}
+      AIProvider={newChatButtonConfig.AIProvider}
+    />
+  )
+}
+
+const AIMessageModelSuggestionButton: FC<{
+  type: 'Compare' | 'NewChat'
+  title: string
+  AIModel: string
+  AIProvider?: IAIProviderType
+  onClick?: () => void
+  disabled?: boolean
+}> = (props) => {
+  const { t } = useTranslation(['client'])
+  const { onClick, type, disabled, AIModel, AIProvider, title } = props
+  return (
+    <Stack
+      component={'button'}
+      onClick={onClick}
+      disabled={disabled}
+      sx={{
+        fontSize: '14px',
+        padding: 0,
+        color: 'primary.main',
+        borderRadius: '8px',
+        border: '1px solid',
+        bgcolor: 'transparent',
+        borderColor: 'customColor.borderColor',
+        cursor: 'pointer',
+        overflow: 'hidden',
+        '&:hover': {
+          backgroundColor: (t) =>
+            t.palette.mode === 'dark'
+              ? 'rgba(255, 255, 255, 0.08)'
+              : 'rgba(0, 0, 0, 0.08)',
+        },
+      }}
+    >
+      <Stack direction={'row'} alignItems={'center'}>
+        <Stack
+          sx={{
+            p: '4px 8px',
+            borderRight: '1px solid',
+            borderColor: 'customColor.borderColor',
+            fontSize: '14px',
+            lineHeight: '20px',
+            fontWeight: 400,
+            color: 'text.secondary',
+            bgcolor: (t) =>
+              t.palette.mode === 'dark'
+                ? 'rgba(86,82,82,0.6)'
+                : 'rgba(0,0,0,0.08)',
+          }}
+        >
+          {type === 'Compare' &&
+            t('client:sidebar__chat__suggestions__compare_to__title')}
+          {type === 'NewChat' &&
+            t('client:sidebar__chat__suggestions__starts_new_chat__title')}
+        </Stack>
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          sx={{
+            gap: '4px',
+            p: '4px 8px',
+          }}
+        >
+          <AIModelIcons
+            size={18}
+            aiProvider={AIProvider}
+            aiModelValue={AIModel}
+          />
+          <Typography
+            fontSize={'14px'}
+            color={'text.primary'}
+            fontWeight={400}
+            lineHeight={'20px'}
+          >
+            {title}
+          </Typography>
+        </Stack>
+      </Stack>
+    </Stack>
   )
 }
 

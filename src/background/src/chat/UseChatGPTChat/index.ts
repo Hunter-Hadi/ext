@@ -344,7 +344,7 @@ class UseChatGPTPlusChat extends BaseChat {
                         ...originalMessage?.metadata,
                         deepDive: {
                           title: {
-                            title: 'Related',
+                            title: 'Keep exploring',
                             titleIcon: 'Layers',
                           },
                           type: 'related',

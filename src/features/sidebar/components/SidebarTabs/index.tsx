@@ -121,6 +121,7 @@ const SidebarTabs: FC = () => {
             >
               <Stack
                 data-testid={`maxai--sidebar--${item.value.toLowerCase()}_tab`}
+                data-button-clicked-name={`maxai--sidebar--${item.value.toLowerCase()}_tab`}
                 spacing={0.5}
                 justifyContent='center'
                 alignItems='center'

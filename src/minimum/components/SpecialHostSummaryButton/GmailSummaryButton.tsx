@@ -7,6 +7,7 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
+import { sendMixpanelButtonClickedEvent } from '@/features/mixpanel/utils/mixpanelButtonClicked'
 import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -67,9 +68,14 @@ const GmailSummaryButton: FC = () => {
                 }}
               />
             }
+            id='page-summary-button'
             data-testid='maxai-gmail-summary-button'
             variant={'contained'}
-            onClick={() => {
+            onClick={(e) => {
+              sendMixpanelButtonClickedEvent(
+                'maxai-gmail-summary-button',
+                e.currentTarget,
+              )
               showChatBox()
               const timer = setInterval(() => {
                 if (

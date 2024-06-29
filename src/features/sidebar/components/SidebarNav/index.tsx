@@ -48,8 +48,9 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
 
   return (
     <Stack
-      alignItems="center"
+      alignItems='center'
       spacing={2}
+      id='sidebar-nav'
       sx={{
         width: isInImmersiveChatPage ? 80 : 60,
         // [isInImmersiveChatPage ? 'borderRight' : 'borderLeft']: '1px solid',
@@ -100,7 +101,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
       {/* divider */}
       <Divider
         flexItem
-        variant="middle"
+        variant='middle'
         sx={{
           width: '80%',
           mx: 'auto !important',
@@ -110,7 +111,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
       {/* nav options */}
       <Stack
         spacing={1}
-        alignItems="center"
+        alignItems='center'
         sx={{
           color: 'text.secondary',
           '& > button, & > a': {
@@ -122,7 +123,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         {!isInImmersiveChatPage && (
           <TextOnlyTooltip
             title={t('client:sidebar__button__immersive_chat')}
-            placement="left"
+            placement='left'
           >
             <IconButton
               data-testid={`maxai--sidebar--immersive_chat--button`}
@@ -152,7 +153,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         )}
 
         {/* settings btn */}
-        <TextOnlyTooltip title={t('common:settings')} placement="left">
+        <TextOnlyTooltip title={t('common:settings')} placement='left'>
           <IconButton
             data-testid={`maxai--sidebar--settings--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
@@ -173,7 +174,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         <SidebarReleaseNotesButton />
 
         {/* help btn */}
-        <TextOnlyTooltip title={t('settings:left_menu__help')} placement="left">
+        <TextOnlyTooltip title={t('settings:left_menu__help')} placement='left'>
           <IconButton
             data-testid={`maxai--sidebar--help_center--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
@@ -188,7 +189,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         </TextOnlyTooltip>
 
         {/* email btn */}
-        <TextOnlyTooltip title={t('common:contact_us')} placement="left">
+        <TextOnlyTooltip title={t('common:contact_us')} placement='left'>
           <IconButton
             data-testid={`maxai--sidebar--contact_us--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
@@ -207,7 +208,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
       </Stack>
 
       <SidebarInfoCollectionModal
-        type="contact_us"
+        type='contact_us'
         open={open}
         onClose={openContactUs}
         onConfirm={openContactUs}

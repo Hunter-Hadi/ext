@@ -294,7 +294,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                       deepDive: [
                         {
                           title: {
-                            title: 'Related',
+                            title: 'Keep exploring',
                             titleIcon: 'Layers',
                             titleIconSize: 20,
                           },
@@ -573,7 +573,7 @@ export const youTubeSummaryTranscriptChangeTool = async (
                       },
                       {
                         title: {
-                          title: 'Related',
+                          title: 'Keep exploring',
                           titleIcon: 'Layers',
                         },
                         type: 'related',
@@ -850,7 +850,7 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
                       },
                       {
                         title: {
-                          title: 'Related',
+                          title: 'Keep exploring',
                           titleIcon: 'Layers',
                           titleIconSize: 20,
                         },

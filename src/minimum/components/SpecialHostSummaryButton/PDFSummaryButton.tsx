@@ -7,6 +7,7 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useFindElement from '@/features/common/hooks/useFindElement'
+import { sendMixpanelButtonClickedEvent } from '@/features/mixpanel/utils/mixpanelButtonClicked'
 import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -47,8 +48,13 @@ const PDFSummaryButton: FC = () => {
             borderRadius: '12px',
           }}
           variant={'contained'}
+          id='page-summary-button'
           data-testid='maxai-pdf-summary-button'
-          onClick={() => {
+          onClick={(e) => {
+            sendMixpanelButtonClickedEvent(
+              'maxai-pdf-summary-button',
+              e.currentTarget,
+            )
             showChatBox()
             const timer = setInterval(() => {
               if (

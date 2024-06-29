@@ -136,6 +136,7 @@ const SidebarSummarySuggestion: FC<{
     >
       <Paper
         component={'button'}
+        data-button-clicked-name={'sidebar-summary-suggestion-button'}
         sx={{
           width: '100%',
           bgcolor: 'background.paper',

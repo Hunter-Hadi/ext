@@ -322,6 +322,7 @@ export const generateSearchWithAIActions = async (
     {
       type: 'GET_CONTENTS_OF_SEARCH_ENGINE',
       parameters: {
+        isCopilot: copilot,
         URLSearchEngine: searchEngine,
         URLSearchEngineParams: {
           q: `{{SMART_SEARCH_QUERY}}`,
@@ -337,9 +338,33 @@ export const generateSearchWithAIActions = async (
       },
     },
     {
+      type: 'SCRIPTS_DICTIONARY',
+      parameters: {},
+    },
+    {
+      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+      parameters: {
+        ActionGetDictionaryKey: 'value',
+        ActionGetDictionaryValue: 'SEARCH_SOURCES',
+      },
+    },
+    {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'SEARCH_SOURCES',
+      },
+    },
+    {
+      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+      parameters: {
+        ActionGetDictionaryKey: 'value',
+        ActionGetDictionaryValue: 'VIDEO_SOURCES',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'VIDEO_SOURCES',
       },
     },
     {
@@ -465,6 +490,7 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
                 status: 'complete',
                 links: `{{SEARCH_SOURCES}}` as any,
                 images: `{{SOURCE_IMAGE}}` as any,
+                videos: `{{VIDEO_SOURCES}}` as any,
               },
             },
           },

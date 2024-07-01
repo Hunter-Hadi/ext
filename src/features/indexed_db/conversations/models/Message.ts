@@ -122,6 +122,12 @@ export type IAIResponseOriginalMessageSourceMediaImages = {
   title?: string
   alt?: string
 }
+export type IAIResponseOriginalMessageSourceMediaVideos = {
+  [Symbol.iterator](): Iterator<any>
+  src: string
+  originSrc: string
+  imgSrc: string
+}
 export type IAIResponseOriginalMessageMetadataTitle = {
   title: string
   titleIcon?: string
@@ -194,7 +200,7 @@ export interface IAIResponseOriginalMessage {
     sources?: {
       status: 'loading' | 'complete'
       links?: IAIResponseOriginalMessageSourceLink[]
-      videos?: IAIResponseOriginalMessageSourceMediaImages[]
+      videos?: IAIResponseOriginalMessageSourceMediaVideos[]
       images?: IAIResponseOriginalMessageSourceMediaImages[]
       // knowledgePanel?: string
     }

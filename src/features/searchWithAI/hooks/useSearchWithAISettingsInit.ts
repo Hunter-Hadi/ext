@@ -3,6 +3,7 @@ import { useSetRecoilState } from 'recoil'
 
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import useButtonClickedTracker from '@/features/mixpanel/hooks/useButtonClickedTracker'
 
 import {
   ISearchWithAIProviderType,
@@ -70,6 +71,8 @@ const useSearchWithAISettingsInit = () => {
       window.removeEventListener('focus', updateAppSettings)
     }
   }, [])
+
+  useButtonClickedTracker('pageSearchWithAI')
 
   return null
 }

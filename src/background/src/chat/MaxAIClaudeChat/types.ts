@@ -1,6 +1,6 @@
 import {
+  MAXAI_CLAUDE_VISION_MODEL_UPLOAD_CONFIG,
   MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
-  MAXAI_VISION_MODEL_UPLOAD_CONFIG,
 } from '@/background/src/chat/constant'
 import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
@@ -72,7 +72,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
     //   roles: ['elite'],
     // },
-    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+    uploadFileConfig: MAXAI_CLAUDE_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'Claude-3-Sonnet',
@@ -93,7 +93,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
     //   roles: ['elite'],
     // },
-    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+    uploadFileConfig: MAXAI_CLAUDE_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'Claude-3-Opus',
@@ -114,7 +114,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
     //   roles: ['elite'],
     // },
-    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+    uploadFileConfig: MAXAI_CLAUDE_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'Claude-3.5-Sonnet',
@@ -135,6 +135,6 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
     //   roles: ['elite'],
     // },
-    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+    uploadFileConfig: MAXAI_CLAUDE_VISION_MODEL_UPLOAD_CONFIG,
   },
 ]

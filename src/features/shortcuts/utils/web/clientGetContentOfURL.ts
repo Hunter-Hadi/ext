@@ -55,13 +55,15 @@ const getImageHighestResponsiveData = (
  * @param url
  * @param timeout
  * @param abortTaskId
- * @param needMedia  updata: copilot获取网页多媒体资源
+ * @param needImage  updata: copilot获取网页图片资源
+ * @param needVideo  updata: copilot获取网页视频资源
  */
 const clientGetContentOfURL = async (
   url: string,
   timeout: number,
   abortTaskId?: string,
-  needMedia?: boolean, // copilot获取网页多媒体资源
+  needImage?: boolean, // copilot获取网页图片资源
+  needVideo?: boolean, // copilot获取网页视频资源
 ): Promise<{
   title: string
   body: string
@@ -129,7 +131,58 @@ const clientGetContentOfURL = async (
       result.title = reader?.title || ''
       result.body = reader?.content || ''
       result.readabilityText = reader?.textContent || ''
-      if (needMedia && reader?.content) {
+
+      if (needVideo && reader?.content) {
+        // 创建一个临时容器来解析 HTML 内容
+        const parser = new DOMParser()
+        const parsedDoc = parser.parseFromString(reader.content, 'text/html')
+        let selectorAttr
+        // google跟其他浏览器的解析方式不一样，所以需要判断
+        if (url.includes('https://www.google.com')) {
+          selectorAttr = 'data-surl'
+        } else {
+          selectorAttr = 'href'
+        }
+        // 获取所有包含YouTube视频链接的元素
+        const watchElements = parsedDoc.querySelectorAll(
+          `[${selectorAttr}^="https://www.youtube.com/watch?v="]`,
+        )
+        const embedElements = parsedDoc.querySelectorAll(
+          `[${selectorAttr}^="https://www.youtube.com/embed/"]`,
+        )
+
+        // 合并两个 NodeList
+        const anchorTags = Array.from(watchElements).concat(
+          Array.from(embedElements),
+        )
+        const videos: Array<{
+          src: string
+          originSrc: string
+          imgSrc: string
+        }> = []
+
+        // 提取并打印视频ID
+        anchorTags.forEach((element) => {
+          const dataUrl = element.getAttribute(selectorAttr)
+          if (dataUrl) {
+            const url = new URL(dataUrl)
+            let videoId = url.searchParams.get('v')
+            if (!videoId && url.pathname.startsWith('/embed/')) {
+              videoId = url.pathname.split('/embed/')[1].split('/')[0]
+            }
+            if (videoId) {
+              videos.push({
+                src: `https://www.youtube.com/embed/${videoId}`,
+                originSrc: dataUrl,
+                imgSrc: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+              })
+            }
+          }
+        })
+        result.videos = videos
+      }
+
+      if (needImage && reader?.content) {
         // 创建一个临时容器来解析 HTML 内容
         const parser = new DOMParser()
         const parsedDoc = parser.parseFromString(reader.content, 'text/html')

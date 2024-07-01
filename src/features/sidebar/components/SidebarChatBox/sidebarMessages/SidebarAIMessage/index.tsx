@@ -1,3 +1,4 @@
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
 import Divider from '@mui/material/Divider'
@@ -9,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import LazyLoadImage from '@/components/LazyLoadImage'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   IAIResponseMessage,
@@ -30,6 +32,7 @@ import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarCh
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 import { SwitchSummaryActionNav } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SwitchSummaryActionNav'
 import SidebarContextCleared from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarContextCleared'
+import { openGlobalVideoPopup } from '@/features/video_popup/utils'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
@@ -69,6 +72,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         sourcesLoading:
           message.originalMessage?.metadata?.sources?.status === 'loading',
         imagesSources: message.originalMessage?.metadata?.sources?.images || [],
+        videosSources: message.originalMessage?.metadata?.sources?.videos || [],
         sourcesHasContent: false,
         answer: message.text,
         content: message.originalMessage?.content,
@@ -276,20 +280,21 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                     </Stack>
                   )}
 
-                  {renderData?.imagesSources &&
-                    renderData?.imagesSources.length > 0 && (
-                      <Stack
-                        className='media_sources'
-                        spacing={1}
-                        sx={{
-                          overflowX: 'scroll',
-                          '&::-webkit-scrollbar': {
-                            display: 'none',
-                            width: 0,
-                            background: 'transparent',
-                          },
-                        }}
-                      >
+                  {(renderData?.imagesSources.length > 0 ||
+                    renderData?.videosSources.length > 0) && (
+                    <Stack
+                      className='media_sources'
+                      spacing={1}
+                      sx={{
+                        overflowX: 'scroll',
+                        '&::-webkit-scrollbar': {
+                          display: 'none',
+                          width: 0,
+                          background: 'transparent',
+                        },
+                      }}
+                    >
+                      {renderData?.imagesSources.length > 0 && (
                         <Stack
                           spacing={1}
                           direction={'row'}
@@ -299,8 +304,71 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                             images={renderData?.imagesSources}
                           ></ImageWithDialog>
                         </Stack>
-                      </Stack>
-                    )}
+                      )}
+
+                      {renderData?.videosSources.length > 0 && (
+                        <Stack
+                          spacing={1}
+                          direction={'row'}
+                          className='image_sources'
+                        >
+                          {renderData?.videosSources.map((video) => (
+                            <Stack
+                              sx={{
+                                position: 'relative',
+                                cursor: 'pointer',
+                              }}
+                              className='videoItem'
+                              key={video.src}
+                              onClick={() => {
+                                openGlobalVideoPopup(video.src, true)
+                              }}
+                            >
+                              <LazyLoadImage
+                                width={114}
+                                height={64}
+                                imgStyle={{
+                                  borderRadius: '8px',
+                                  cursor: 'pointer',
+                                  objectFit: 'cover',
+                                  display: 'block',
+                                  overflow: 'hidden',
+                                }}
+                                src={video.imgSrc}
+                                alt={''}
+                              />
+                              <Box
+                                sx={{
+                                  position: 'absolute',
+                                  top: '50%',
+                                  left: '50%',
+                                  transform: 'translate(-50%, -50%)',
+                                  height: 16,
+                                  width: 16,
+                                  color: 'white',
+                                  p: 2,
+                                  borderRadius: '50%',
+                                  lineHeight: 0,
+                                  bgcolor: '#00000080',
+                                  backdropFilter: 'blur(4px)',
+                                }}
+                              >
+                                <PlayArrowIcon
+                                  sx={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    fontSize: 16,
+                                  }}
+                                />
+                              </Box>
+                            </Stack>
+                          ))}
+                        </Stack>
+                      )}
+                    </Stack>
+                  )}
 
                   {isWaitFirstAIResponseText &&
                   !renderData.messageIsComplete ? (

@@ -245,6 +245,7 @@ interface ActionParameters {
   // repeat with each concurrent limit - 最大并发数默认为1
   ActionRepeatWithEachConcurrentLimit?: number
   ActionRepeatCount?: number
+  isCopilot?: boolean
 }
 
 export default ActionParameters

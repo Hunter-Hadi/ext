@@ -7,6 +7,7 @@ import {
   completeLastAIMessageOnStop,
   IShortcutEngineExternalEngine,
 } from '@/features/shortcuts'
+import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import {
   parametersParserDecorator,
@@ -72,6 +73,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
         // remove head and tail space
         query = query.trim()
 
+        const isCopilot = this.parameters.isCopilot || false
         // remove head end quote
         if (query.startsWith('"') && query.endsWith('"')) {
           query = query.slice(1, -1)
@@ -87,6 +89,11 @@ export class ActionGetContentsOfSearchEngine extends Action {
           delete searchParams.splitWith
         }
         let isManualStop = false
+        let videosSource: Array<{
+          src: string
+          originSrc: string
+          imgSrc: string
+        }> = []
         const searchResultArr = await Promise.all(
           queryArr.map(async (itemQuery) => {
             // 0. 给每个searchResult设置一个abortTaskId
@@ -97,11 +104,15 @@ export class ActionGetContentsOfSearchEngine extends Action {
               searchParams,
               itemQuery.trim(),
             )
-            const { html, status } = await clientGetContentOfURL(
+            const { html, status, videos } = await clientGetContentOfURL(
               fullSearchURL,
               20 * 1000,
               abortTaskId,
+              false,
+              isCopilot,
             )
+
+            if (videos) videosSource = [...videosSource, ...videos]
             if (this.isTaskAbort(abortTaskId)) {
               isManualStop = true
               // 任务被中止
@@ -147,15 +158,50 @@ export class ActionGetContentsOfSearchEngine extends Action {
           'url',
         )
         const slicedSearchResult = mergedSearchResult.slice(0, limit)
+
+        let mergedVideosSource: Array<{
+          src: string
+          originSrc: string
+          imgSrc: string
+        }> = []
+        if (isCopilot) {
+          // sources如果是youtube视频，转化成视频增强资源
+          const sourcesVideo: any[] = []
+          slicedSearchResult.forEach((searchResult) => {
+            const youtubeVideoId = YoutubeTranscript.retrieveVideoId(
+              searchResult.url,
+            )
+            if (youtubeVideoId) {
+              sourcesVideo.push({
+                src: `https://www.youtube.com/embed/${youtubeVideoId}`,
+                originSrc: searchResult.url,
+                imgSrc: `https://i.ytimg.com/vi/${youtubeVideoId}/hqdefault.jpg`,
+              })
+            }
+          })
+          videosSource = [...videosSource, ...sourcesVideo]
+
+          // 视频资源去重
+          mergedVideosSource = uniqBy(videosSource, 'src')
+        }
+
         if (slicedSearchResult.length <= 0) {
           // 根据搜索结果爬取不到 内容
-          this.output = '[]'
+          this.output = {
+            SEARCH_SOURCES: '[]',
+            VIDEO_SOURCES: mergedVideosSource,
+          }
+          // this.output = '[]'
           this.error =
             'No search results found. Please try again with a different search engine or search query.'
         } else {
           this.error = ''
           // 正确获取到搜索结果，和爬取到的内容
-          this.output = JSON.stringify(slicedSearchResult, null, 2)
+          this.output = {
+            SEARCH_SOURCES: JSON.stringify(slicedSearchResult, null, 2),
+            VIDEO_SOURCES: mergedVideosSource,
+          }
+          // this.output = JSON.stringify(slicedSearchResult, null, 2)
         }
       }
     } catch (e) {

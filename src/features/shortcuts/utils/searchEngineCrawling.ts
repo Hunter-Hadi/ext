@@ -84,26 +84,53 @@ const CrawlingResultsWithEngine = (
   searchEngine: URLSearchEngine | string,
 ) => {
   try {
+    console.log(`html12`, html)
+
     const $ = cheerio.load(html)
     let results: ICrawlingSearchResult[] = []
+
     switch (searchEngine) {
       case 'google': {
         // 20230919 更新 不获取 rightPanel 的内容
-        // const rightPanel = $('#rhs')
-        // if (rightPanel && rightPanel.length) {
-        //   const rightPanelTitle = rightPanel
-        //     .find('h2[data-attrid="title"]')
-        //     .text()
-        //     .trim()
-        //   const rightPanelLink = rightPanel.find('.kno-rdesc a[href]')
-        //   const rightPanelInfo = rightPanel.find('div.wp-ms'))
+        const rightPanel = $('#rhs')
 
-        //   results.push({
-        //     title: rightPanelTitle,
-        //     body: rightPanelInfo,
-        //     url: extractRealUrl(rightPanelLink.attr('href') ?? ''),
-        //   })
-        // }
+        const knowledgePanel = rightPanel.find('.osrp-blk')
+        console.log(`rightPanel:`, rightPanel)
+        console.log(`knowledgePanel:`, knowledgePanel)
+        // .rVusze 每条可能有超链接的
+        // 图片可以抓 .hUqmeb g-img[data-lpage]
+
+        if (knowledgePanel && knowledgePanel.length) {
+          const knowledgePanelTitleContent = knowledgePanel.find('.KsRP6')
+          console.log(`knowledgePanelTitleContent:`, knowledgePanelTitleContent)
+
+          const knowledgePanelTitleImgSrc = knowledgePanelTitleContent
+            .find('.hUqmeb>g-img')
+            .attr('data-lpage')
+          console.log(`knowledgePanelTitleImgSrc:`, knowledgePanelTitleImgSrc)
+
+          const knowledgePanelTitle = knowledgePanelTitleContent
+            .find('[data-attrid^="title"]')
+            .text()
+
+          const knowledgePanelLink = knowledgePanel
+            .find('.kno-rdesc')
+            .text()
+            .trim()
+          // const knowledgePanelLink = knowledgePanel.find('.kno-rdesc a[href]')
+          const knowledgePanelInfo = knowledgePanel
+            .find('div.wp-ms')
+            .text()
+            .trim()
+
+          // results.push({
+          //   title: knowledgePanelTitle,
+          //   body: knowledgePanelInfo,
+          //   url: extractRealUrl(knowledgePanelLink.attr('href') ?? ''),
+          // })
+          console.log(`knowledgePanelInfo:`, knowledgePanelInfo)
+          console.log(`knowledgePanelLink:`, knowledgePanelLink)
+        }
 
         const searchItems = $('#search #rso > div')
         if (searchItems.length === 1) {

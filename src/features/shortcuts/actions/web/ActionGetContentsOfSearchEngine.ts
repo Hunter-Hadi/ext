@@ -105,7 +105,8 @@ export class ActionGetContentsOfSearchEngine extends Action {
               itemQuery.trim(),
             )
             const { html, status, videos } = await clientGetContentOfURL(
-              fullSearchURL,
+              // fullSearchURL,
+              'https://www.google.com/search?q=google&sca_esv=b389e0d7b0300bf8&sxsrf=ADLYWIJDlXQN9alz4GYCxCEa3uCCEJ4m0A%3A1719825095496&ei=x3KCZuH8He-sseMP-cat8Ak&ved=0ahUKEwih_JHfv4WHAxVvVmwGHXljC54Q4dUDCA8&uact=5&oq=google&gs_lp=Egxnd3Mtd2l6LXNlcnAiBmdvb2dsZTIKECMYgAQYJxiKBTIKECMYgAQYJxiKBTIKECMYgAQYJxiKBTIWEC4YgAQYsQMY0QMYQxiDARjHARiKBTILEAAYgAQYkQIYigUyEBAAGIAEGLEDGEMYgwEYigUyCxAAGIAEGJECGIoFMhAQABiABBixAxhDGIMBGIoFMhAQABiABBixAxhDGIMBGIoFMgoQABiABBhDGIoFSLXBmwVQ87qbBVixwJsFcAZ4AZABAJgBhwGgAdUFqgEDMC42uAEDyAEA-AEBmAIMoALyBcICBxAjGLADGCfCAgoQABiwAxjWBBhHwgILEAAYgAQYsQMYgwHCAhEQLhiABBixAxjRAxiDARjHAcICDhAAGIAEGLEDGIMBGIoFmAMAiAYBkAYKkgcDNi42oAfaQg&sclient=gws-wiz-serp',
               20 * 1000,
               abortTaskId,
               false,
@@ -131,6 +132,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
               )}.](${fullSearchURL}) Pass security checks and keep the tab open for stable web access.`
               return []
             }
+            console.log(`fullSearchURL:`, fullSearchURL)
 
             // response is success
             if (status === 200 && html) {

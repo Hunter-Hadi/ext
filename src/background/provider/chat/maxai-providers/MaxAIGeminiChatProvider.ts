@@ -50,7 +50,8 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
         this.maxAIGeminiChat.conversation?.meta.AIModel ||
         MAXAI_GENMINI_MODELS[0].value,
       checkAuthStatus: async () => {
-        await this.auth(sender.tab?.id || 0)
+        // await this.auth(sender.tab?.id || 0)
+        await this.maxAIGeminiChat.checkTokenAndUpdateStatus()
         return this.status === 'success'
       },
       beforeSend: async () => {

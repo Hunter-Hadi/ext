@@ -22,6 +22,7 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import CitationTag from '@/features/citation/components/CitationTag'
+import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import {
   IAIResponseOriginalMessage,
   IAIResponseOriginalMessageSourceLink,
@@ -280,6 +281,7 @@ const formatCitation = (citations: IAIResponseSourceCitation[]) => {
 }
 
 const CustomMarkdown: FC<{
+  conversation?: IConversation
   originalMessage?: IAIResponseOriginalMessage
   children: string
 }> = (props) => {
@@ -290,10 +292,14 @@ const CustomMarkdown: FC<{
   const isComplete = originalMessage ? metadata?.isComplete : true
 
   // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号，目前只针对PDF显示
-  // TODO 需要沟通，如果start_index <= -1的情况，是否在后端发送的时候就应该过滤掉
+  // TODO youtube/email的citation需要额外逻辑处理，这一版先过滤
   const citations = useMemo(() => {
-    if (getPageSummaryType() !== 'PDF_CRX_SUMMARY') {
-      return
+    const summaryType = getPageSummaryType()
+    if (
+      summaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
+      summaryType === 'DEFAULT_EMAIL_SUMMARY'
+    ) {
+      return []
     }
     return metadata?.sourceCitations?.filter((item) => {
       if (typeof item.start_index === 'number') {
@@ -305,16 +311,18 @@ const CustomMarkdown: FC<{
 
   /**
    * 针对有citation，但是ai response没有返回对应标记的情况，手动在最后插入[1][2][3]这样的标签
+   * 这一版开始不手动插入了，如果ai response没有返回说明内容和引文不相关
    */
   const contentHasCitationRef = useRef(true)
   const formatMarkdownText = useMemo(() => {
-    contentHasCitationRef.current = true
+    // contentHasCitationRef.current = false
     try {
       if (typeof children === 'string') {
         if (
           citations?.length &&
           isComplete &&
-          !children.match(/\[T(\d+)\]\(\{\}\)/)
+          !children.match(/\[T(\d+)\]\(\{\}\)/) &&
+          !contentHasCitationRef.current
         ) {
           contentHasCitationRef.current = false
           return preprocessLaTeX(children) + ' ' + formatCitation(citations)
@@ -381,7 +389,8 @@ const CustomMarkdown: FC<{
                   <CitationTag
                     citations={citations}
                     index={index}
-                    type={contentHasCitationRef.current ? 'icon' : 'number'}
+                    // type={contentHasCitationRef.current ? 'icon' : 'number'}
+                    type='icon'
                   />
                 )
               }

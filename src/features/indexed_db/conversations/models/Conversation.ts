@@ -75,6 +75,7 @@ export interface IConversationMeta {
     // summary类型
     type?: IPageSummaryType
     // summary网页内容，4.3.9开始不存储在systemPrompt里了
+    // 这里保留是因为先留给web pdf使用，以及summary报错后，后续的chat需要带上这个内容
     content?: string
   }
   /**

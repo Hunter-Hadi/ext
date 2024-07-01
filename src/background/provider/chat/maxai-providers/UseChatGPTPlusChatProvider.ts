@@ -63,7 +63,8 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         this.useChatGPTPlusChat.conversation?.meta.AIModel ||
         USE_CHAT_GPT_PLUS_MODELS[0].value,
       checkAuthStatus: async () => {
-        await this.auth(sender.tab?.id || 0)
+        // await this.auth(sender.tab?.id || 0)
+        await this.useChatGPTPlusChat.checkTokenAndUpdateStatus()
         return this.status === 'success'
       },
       beforeSend: async () => {

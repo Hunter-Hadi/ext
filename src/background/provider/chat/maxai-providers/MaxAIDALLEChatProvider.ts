@@ -50,7 +50,8 @@ class MaxAIDALLEChatProvider implements ChatAdapterInterface {
         this.maxAIDALLEChat.conversation?.meta.AIModel ||
         MAXAI_IMAGE_GENERATE_MODELS[0].value,
       checkAuthStatus: async () => {
-        await this.auth(sender.tab?.id || 0)
+        // await this.auth(sender.tab?.id || 0)
+        await this.maxAIDALLEChat.checkTokenAndUpdateStatus()
         return this.status === 'success'
       },
       beforeSend: async () => {

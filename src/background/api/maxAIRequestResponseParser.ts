@@ -85,15 +85,38 @@ export const maxAIRequestResponseStreamParser = (
             },
           }
           break
-        case 'complete':
+        case 'complete': {
+          // TODO mock一下citations的功能，下面功能不要提交
+          // const citations: IMaxAIResponseStreamMessage['citations'] = []
+          // const pageContent = conversation?.meta.pageSummary?.content || ''
+          // const totalLength = pageContent.length;
+          // const numberOfSubstrings = 10;
+          // for (let i = 0; i < numberOfSubstrings; i++) {
+          //   // 随机生成一个长度在20到100之间的值
+          //   const length = Math.floor(Math.random() * (100 - 20 + 1)) + 20;
+          //
+          //   // 随机生成一个起始索引，该索引加上截取长度不得超过字符串总长度
+          //   const startIndex = Math.floor(Math.random() * (totalLength - length));
+          //
+          //   // 截取字符串并添加到结果数组中
+          //   const substring = pageContent.substring(startIndex, startIndex + length);
+          //   citations.push({
+          //     snippet: '',
+          //     content: substring,
+          //     start_index: startIndex,
+          //     length: startIndex + length,
+          //   });
+          // }
           outputMessage.originalMessage = {
             ...outputMessage.originalMessage,
             metadata: {
               ...outputMessage.originalMessage?.metadata,
+              // sourceCitations: citations,
               sourceCitations: streamMessage.citations,
             },
           }
           break
+        }
       }
     }
     if (streamMessage.related !== undefined) {

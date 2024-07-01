@@ -1,4 +1,7 @@
-import { getIframeOrSpecialHostPageContent } from '@/features/chat-base/summary/utils/pageContentHelper'
+import {
+  getIframeOrSpecialHostPageContent,
+  getReadabilityPageContent,
+} from '@/features/chat-base/summary/utils/pageContentHelper'
 import {
   IShortcutEngineExternalEngine,
   pushOutputToChat,
@@ -6,7 +9,6 @@ import {
   withLoadingDecorators,
 } from '@/features/shortcuts'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
-import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -36,7 +38,7 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
       if (this.isStopAction) return
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
-        (await getPageContentWithMozillaReadability())
+        (await getReadabilityPageContent())
       this.originalInnerText = document.body.innerText
       if (result.length < 100 && typeof document !== 'undefined') {
         this.output = document.body.innerText

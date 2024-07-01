@@ -4,10 +4,12 @@ import debounce from 'lodash-es/debounce'
 import { v4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
+import { createClientMessageListener } from '@/background/utils'
 import {
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
   IRangyRect,
   IVirtualIframeSelectionElement,
@@ -26,11 +28,12 @@ import {
   getEditableElement,
   replaceMarkerContent,
 } from '@/features/contextMenu/utils/selectionHelper'
-import { iframePageContentHelper } from '@/pages/content_script_iframe/iframePageContentHelper'
 import Log from '@/utils/Log'
 dayjs.extend(utc)
 
 const iframeId = v4()
+
+const log = new Log('Iframe')
 
 const cloneRect = (rect: IRangyRect): IRangyRect => {
   return {
@@ -53,6 +56,7 @@ const isInIframe = () => {
     return true
   }
 }
+
 const isBlockUrlList = () => {
   if (window.frameElement?.classList.contains('docs-texteventtarget-iframe')) {
     // google doc的inputElement元素所在的iframe下禁止发送message
@@ -64,7 +68,6 @@ const isBlockUrlList = () => {
     'https://notebooks.githubusercontent.com/view',
   ].find((matchUrl) => window.location.href.startsWith(matchUrl))
 }
-const log = new Log('Iframe')
 
 const initIframe = async () => {
   if (!isInIframe()) {
@@ -75,7 +78,7 @@ const initIframe = async () => {
     return
   }
   log.info('Init iframe')
-  iframePageContentHelper()
+  listenerClientMessage()
   let mouseDownElement: null | HTMLInputElement | HTMLTextAreaElement = null
   let positions: number[] = []
   let isEmbedPage = false
@@ -385,6 +388,94 @@ const initIframe = async () => {
 }
 
 type IframeMessageType = (event: IVirtualIframeSelectionElement) => void
+
+export const listenerClientMessage = () => {
+  // TODO 获取iframe中的内容
+  const doc = document.documentElement
+  const iframeCurrentUrl =
+    typeof window !== 'undefined' ? window.location.href : ''
+  console.log('init iframePageContentHelper', iframeCurrentUrl)
+  if (!iframeCurrentUrl) {
+    return
+  }
+  createClientMessageListener(async (event, data, sender) => {
+    switch (event) {
+      case 'Iframe_ListenGetPageContent': {
+        const { taskId } = data
+        let pageContent = ''
+        // Microsoft office docs
+        // https://word-edit.officeapps.live.com/we/wordeditorframe.aspx
+        if (
+          iframeCurrentUrl.includes(
+            'word-edit.officeapps.live.com/we/wordeditorframe.aspx',
+          )
+        ) {
+          const editElement = doc.querySelector(
+            '#WACViewPanel_EditingElement_WrappingDiv',
+          ) as HTMLDivElement
+          const hiddenParagraph = doc.querySelector(
+            '#PagesContainer .HiddenParagraph',
+          ) as HTMLDivElement
+          const beforeDisplay = editElement?.style.display
+          if (editElement) {
+            editElement.style.display = 'none'
+          }
+          if (hiddenParagraph) {
+            hiddenParagraph.classList.remove('HiddenParagraph')
+          }
+          pageContent =
+            (doc.querySelector('#PageContentContainer') as HTMLDivElement)
+              ?.innerText || ''
+          if (editElement) {
+            editElement.style.display = beforeDisplay
+          }
+          if (hiddenParagraph) {
+            hiddenParagraph.classList.add('HiddenParagraph')
+          }
+        }
+        // iCloud mail
+        // https://www-mail.icloud-sandbox.com/applications/mail2-message/current/zh-cn/index.html
+        if (
+          iframeCurrentUrl.includes(
+            'icloud-sandbox.com/applications/mail2-message',
+          )
+        ) {
+          pageContent =
+            (doc.querySelector('.mail-message-defaults') as HTMLDivElement)
+              ?.innerText || ''
+        }
+        // mail.com
+        // https://3c-lxa.mail.com/mail/client/mailbody
+        if (iframeCurrentUrl.includes('mail.com/mail/client/mailbody')) {
+          pageContent = doc?.ownerDocument?.body?.innerText || ''
+        }
+        pageContent = pageContent.trim()
+        if (!pageContent) {
+          return {
+            success: false,
+            data: '',
+            message: 'no page content',
+          }
+        }
+        console.log(taskId, pageContent, 'iframeListenGetPageContent')
+        const port = new ContentScriptConnectionV2()
+        await port.postMessage({
+          event: 'Iframe_sendPageContent',
+          data: {
+            taskId,
+            pageContent,
+          },
+        })
+        return {
+          success: true,
+          data: '',
+          message: '',
+        }
+      }
+    }
+    return undefined
+  })
+}
 
 export const listenIframeMessage = (onMessage?: IframeMessageType) => {
   const listener = (event: MessageEvent) => {

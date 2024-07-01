@@ -227,6 +227,14 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       }
     }
     if (summaryMessage) {
+      // onMessage && onMessage({
+      //   type: 'error',
+      //   error: '测试一下summary报错后的chat',
+      //   done: true,
+      //   data: { text: '', conversationId }
+      // })
+      // afterSend?.('error')
+      // return
       // summary总结
       const { backendAPI: summaryAPI, postBody: summaryBody } =
         await maxAIRequestBodySummaryGenerator(

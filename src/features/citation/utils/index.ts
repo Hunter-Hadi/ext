@@ -1,6 +1,6 @@
 import { ICitationNode } from '@/features/citation/types'
 
-export const createNode = (
+export const createCitationNode = (
   parent: ICitationNode | null = null,
 ): ICitationNode => {
   if (parent) {
@@ -15,6 +15,6 @@ export const createNode = (
   return {
     parent,
     children: [],
-    index: 0
+    index: 0,
   }
 }

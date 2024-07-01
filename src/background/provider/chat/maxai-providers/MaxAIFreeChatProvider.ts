@@ -50,7 +50,8 @@ class MaxAIFreeChatProvider implements ChatAdapterInterface {
         this.maxAIFreeChat.conversation?.meta.AIModel ||
         MAXAI_FREE_MODELS[0].value,
       checkAuthStatus: async () => {
-        await this.auth(sender.tab?.id || 0)
+        // await this.auth(sender.tab?.id || 0)
+        await this.maxAIFreeChat.checkTokenAndUpdateStatus()
         return this.status === 'success'
       },
       beforeSend: async () => {

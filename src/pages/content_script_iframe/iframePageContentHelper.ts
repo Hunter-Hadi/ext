@@ -1,3 +1,6 @@
+/**
+ * @deprecated summary相关功能已移动到chat-base/summary下，防止冲突合并release后上线前删除
+ */
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
@@ -43,8 +46,12 @@ export const iframePageContentHelper = () => {
             'word-edit.officeapps.live.com/we/wordeditorframe.aspx',
           )
         ) {
-          const editElement = doc.querySelector('#WACViewPanel_EditingElement_WrappingDiv') as HTMLDivElement
-          const hiddenParagraph = doc.querySelector('#PagesContainer .HiddenParagraph') as HTMLDivElement
+          const editElement = doc.querySelector(
+            '#WACViewPanel_EditingElement_WrappingDiv',
+          ) as HTMLDivElement
+          const hiddenParagraph = doc.querySelector(
+            '#PagesContainer .HiddenParagraph',
+          ) as HTMLDivElement
           const beforeDisplay = editElement?.style.display
           if (editElement) {
             editElement.style.display = 'none'

@@ -15,7 +15,9 @@ export interface ICitationMatch {
   // 文字内容
   text: string
   // 节点容器
-  container: string | HTMLElement | (() => HTMLElement)
+  container: string | HTMLElement | null | (() => HTMLElement | null)
+  // 文字节点
+  textNode?: Node | null
   // 文字位置
   offset: number
 }

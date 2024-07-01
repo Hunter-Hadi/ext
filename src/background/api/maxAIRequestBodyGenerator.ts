@@ -6,7 +6,10 @@ import {
   IMaxAIChatMessageContent,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { CHAT__AI_MODEL__SUGGESTION__PROMPT_ID } from '@/constants'
-import { IPageSummaryNavType } from '@/features/chat-base/summary/types'
+import {
+  IPageSummaryNavType,
+  IPageSummaryType,
+} from '@/features/chat-base/summary/types'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import {
   IAIResponseMessage,
@@ -121,6 +124,23 @@ const maxAIRequestBodySummaryType = (
 }
 
 /**
+ * 根据summary type返回对应的接口和chat的doc type
+ */
+const maxAIRequestBodyDocType = (summaryType: IPageSummaryType) => {
+  switch (summaryType) {
+    case 'PAGE_SUMMARY':
+      return 'webpage'
+    case 'DEFAULT_EMAIL_SUMMARY':
+      return 'email'
+    case 'YOUTUBE_VIDEO_SUMMARY':
+      return 'videosite'
+    case 'PDF_CRX_SUMMARY':
+      return 'pdf'
+  }
+  return 'pdf'
+}
+
+/**
  * 针对summary总结的请求，返回不同的api和生成对应的body
  * @param originalPostBody
  * @param conversation
@@ -189,45 +209,48 @@ export const maxAIRequestBodySummaryChatGenerator = async (
   // summary问答
   let backendAPI: IMaxAIChatGPTBackendAPIType = 'summary/v2/qa'
   const postBody = cloneDeep(originalPostBody)
-  if (conversation.meta.pageSummary) {
-    // 新版本数据
-    if (conversation.meta.docId) {
-      // 大文件走chat_with_document逻辑
-      backendAPI = 'chat_with_document/v2'
-      postBody.doc_id = conversation.meta.docId
+  if (conversation.meta.docId) {
+    // 长文还是走chat_with_document逻辑
+    backendAPI = 'chat_with_document/v2'
+    postBody.doc_id = conversation.meta.docId
+  } else if (conversation.meta.pageSummary?.docId) {
+    // 短文chat逻辑，目前这个版本不传递docId或者服务端没找到docId会报错
+    backendAPI = 'summary/v2/qa'
+    postBody.doc_id = conversation.meta.pageSummary.docId
+    postBody.doc_type = maxAIRequestBodyDocType(
+      conversation.meta.pageSummaryType!,
+    )
+    if (summaryMessage?.originalMessage?.content?.text) {
+      // 有text内容说明请求成功了，后端成功拿到页面数据和短文docId
+      postBody.need_create = false
+      postBody.summary_type = maxAIRequestBodySummaryType(
+        summaryMessage.originalMessage?.metadata?.navMetadata?.key || 'all',
+      )
+      // 目前不传递会报错
+      postBody.prompt_inputs = {}
+      // 时间线对话需要传递pageUrl
+      if (conversation.meta.pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY') {
+        postBody.prompt_inputs.CURRENT_WEBPAGE_URL =
+          conversation.meta.sourceWebpage?.url || ''
+      }
     } else {
-      // 短文chat逻辑
-      postBody.doc_id = conversation.meta.pageSummary.docId
-      if (
-        summaryMessage?.originalMessage?.metadata?.isComplete ||
-        summaryMessage?.originalMessage?.content?.text
-      ) {
-        // 完成或者有text内容说明请求成功了，后端成功拿到页面数据和summary的短文docId
-        postBody.need_create = false
-        postBody.summary_type = maxAIRequestBodySummaryType(
-          summaryMessage.originalMessage?.metadata?.navMetadata?.key || 'all',
-        )
-        // 目前不传递会报错
-        postBody.prompt_inputs = {}
+      // 这里代表第一条summary请求失败了，目前失败不影响后续对话，需要带上对应的PROMPT_INPUTS，后端需要此数据生成对应的prompt
+      postBody.need_create = true
+      postBody.summary_type = maxAIRequestBodySummaryType(
+        summaryMessage?.originalMessage?.metadata?.navMetadata?.key || 'all',
+      )
+      // 拿到summary message的variables拼接到prompt_inputs里
+      postBody.prompt_inputs = {
+        CURRENT_WEBPAGE_URL: conversation.meta.sourceWebpage?.url || '',
+        CURRENT_WEBSITE_DOMAIN: conversation.meta.sourceWebpage?.url || '',
+      }
+      // TODO 目前youtube下传递的是DOC_MAIN_CONTEXT，后续针对email/youtube这两个要专门优化结构
+      if (conversation.meta.pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY') {
+        postBody.prompt_inputs.DOC_MAIN_CONTEXT =
+          conversation.meta.pageSummary.content || ''
       } else {
-        // 这里代表第一条summary请求失败了，目前失败不影响后续对话，需要带上对应的PROMPT_INPUTS，后端需要此数据生成对应的prompt
-        postBody.need_create = true
-        postBody.summary_type = maxAIRequestBodySummaryType(
-          summaryMessage?.originalMessage?.metadata?.navMetadata?.key || 'all',
-        )
-        // 拿到summary message的variables拼接到prompt_inputs里
-        postBody.prompt_inputs = {
-          CURRENT_WEBPAGE_URL: conversation.meta.sourceWebpage?.url || '',
-          CURRENT_WEBSITE_DOMAIN: conversation.meta.sourceWebpage?.url || '',
-        }
-        // TODO 目前youtube下传递的是DOC_MAIN_CONTEXT，后续针对email/youtube这两个要专门优化结构
-        if (conversation.meta.pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY') {
-          postBody.prompt_inputs.DOC_MAIN_CONTEXT =
-            conversation.meta.pageSummary.content || ''
-        } else {
-          postBody.prompt_inputs.PAGE_CONTENT =
-            conversation.meta.pageSummary.content || ''
-        }
+        postBody.prompt_inputs.PAGE_CONTENT =
+          conversation.meta.pageSummary.content || ''
       }
     }
   } else {

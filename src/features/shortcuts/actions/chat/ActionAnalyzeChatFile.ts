@@ -167,6 +167,7 @@ export class ActionAnalyzeChatFile extends Action {
               docId,
               content: pageSummaryPrompt,
             },
+            systemPrompt: '',
           },
         },
         conversationId,

@@ -50,7 +50,8 @@ class MaxAIClaudeChatProvider implements ChatAdapterInterface {
         this.maxAIClaudeChat.conversation?.meta.AIModel ||
         MAXAI_CLAUDE_MODELS[0].value,
       checkAuthStatus: async () => {
-        await this.auth(sender.tab?.id || 0)
+        // await this.auth(sender.tab?.id || 0)
+        await this.maxAIClaudeChat.checkTokenAndUpdateStatus()
         return this.status === 'success'
       },
       beforeSend: async () => {

@@ -89,6 +89,14 @@ const PermissionDailyLimitBar: FC = () => {
     }
   }, [isFreeUser])
 
+  const handleClick = () => {
+    authEmitPricingHooksLog('click', 'TOP_BAR_FAST_TEXT_MODEL', {
+      conversationId: currentConversationIdRef.current,
+      conversationType: clientConversation?.type,
+      paywallType: 'TOPBAR',
+    })
+  }
+
   /**
    * MIXPANEL事件监听
    */
@@ -148,6 +156,7 @@ const PermissionDailyLimitBar: FC = () => {
         title={t('client:sidebar__daily_limit__title')}
         content={t('client:sidebar__daily_limit__link__title')}
         href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+        onClick={handleClick}
         onClose={handleClose}
       />
     </Box>

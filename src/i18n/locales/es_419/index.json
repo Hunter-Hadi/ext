@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "¿Estás seguro de que quieres cancelar? Ten en cuenta que una vez cancelado, se perderán todos los cambios no guardados.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sí, cancelar",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Volver a editar",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Se requiere un título",
-    "feature_card__me__manage_my_plan": "Administrar mi plan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Se requiere un título"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",

@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Je, una uhakika unataka kufuta? Tafadhali kumbuka kuwa mara baada ya kufutwa, mabadiliko yoyote ambayo hayajasahihishwa yatapotea.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ndiyo, futa",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Rudi kwenye uhariri",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Jina linahitajika",
-    "feature_card__me__manage_my_plan": "Simamia mpango wangu"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Jina linahitajika"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",

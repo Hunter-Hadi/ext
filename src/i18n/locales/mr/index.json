@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "तुम्हाला खात्री आहे की तुम्ही रद्द करू इच्छिता? कृपया लक्षात घ्या की एकदा रद्द केल्यानंतर, कोणत्याही सेव्ह केलेल्या बदलांची कोणतीही बदल करण्याची संधी नसेल.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "होय, रद्द करा",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "संपादनाकडे परत जा",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "शीर्षक आवश्यक आहे",
-    "feature_card__me__manage_my_plan": "माझी योजना व्यवस्थापित करा"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "शीर्षक आवश्यक आहे"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",

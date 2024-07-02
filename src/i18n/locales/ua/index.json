@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Ви впевнені, що хочете скасувати? Зверніть увагу, що після скасування будуть втрачені всі незбережені зміни.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Так, скасувати",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Повернутися до редагування",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Потрібно вказати заголовок",
-    "feature_card__me__manage_my_plan": "Керувати моїм планом"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Потрібно вказати заголовок"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",

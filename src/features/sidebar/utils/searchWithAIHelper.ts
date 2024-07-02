@@ -368,6 +368,19 @@ export const generateSearchWithAIActions = async (
       },
     },
     {
+      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+      parameters: {
+        ActionGetDictionaryKey: 'value',
+        ActionGetDictionaryValue: 'KNOWLEDGE_SOURCES',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'KNOWLEDGE_SOURCES',
+      },
+    },
+    {
       type: 'CHAT_MESSAGE',
       parameters: {
         ActionChatMessageOperationType: 'update',
@@ -491,6 +504,7 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
                 links: `{{SEARCH_SOURCES}}` as any,
                 images: `{{SOURCE_IMAGE}}` as any,
                 videos: `{{VIDEO_SOURCES}}` as any,
+                knowledgePanel: `{{KNOWLEDGE_SOURCES}}` as any,
               },
             },
           },

@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Jste si jisti, že chcete zrušit? Vezměte prosím na vědomí, že po zrušení budou ztraceny všechny neuložené změny.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ano, zrušit",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Zpět k úpravám",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Název je povinný",
-    "feature_card__me__manage_my_plan": "Spravovat můj plán"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Název je povinný"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",

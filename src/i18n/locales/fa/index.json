@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "آیا مطمئن هستید که می‌خواهید لغو کنید؟ لطفا توجه داشته باشید که پس از لغو، هر تغییر ذخیره نشده‌ای از بین خواهد رفت.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "بله، لغو کن",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "بازگشت به ویرایش",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان الزامی است",
-    "feature_card__me__manage_my_plan": "مدیریت طرح من"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان الزامی است"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",

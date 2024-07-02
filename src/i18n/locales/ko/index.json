@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "취소하시겠습니까? 취소하면 저장되지 않은 변경 사항이 모두 삭제됩니다.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "예, 취소",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "편집으로 돌아가기",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "제목은 필수입니다",
-    "feature_card__me__manage_my_plan": "내 계획 관리"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "제목은 필수입니다"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",

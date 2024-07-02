@@ -166,9 +166,9 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
 
                   <Box textAlign='center' mt={0.5}>
                     <Link
-                      href={'/pricing'}
+                      href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
                       target={'_blank'}
-                      underline='always'
+                      underline='none'
                     >
                       <Typography
                         variant='custom'
@@ -190,7 +190,9 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
                       borderRadius: 2,
                       px: 1,
                       py: 0.5,
+                      cursor: 'pointer',
                     }}
+                    onClick={handleClickUpgrade}
                   >
                     <Typography
                       variant='custom'

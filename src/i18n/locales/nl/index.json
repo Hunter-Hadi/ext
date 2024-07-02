@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Weet je zeker dat je wilt annuleren? Houd er rekening mee dat alle niet-opgeslagen wijzigingen verloren gaan zodra je annuleert.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, annuleren",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Terug naar bewerken",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel is verplicht",
-    "feature_card__me__manage_my_plan": "Mijn plan beheren"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel is verplicht"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",

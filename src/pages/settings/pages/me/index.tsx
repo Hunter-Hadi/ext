@@ -1,6 +1,5 @@
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import CircularProgress from '@mui/material/CircularProgress'
 import List from '@mui/material/List'
 import ListItem, { listItemClasses } from '@mui/material/ListItem'
 import { listItemButtonClasses } from '@mui/material/ListItemButton'
@@ -14,7 +13,6 @@ import { useTranslation } from 'react-i18next'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import UserQuotaUsageQueriesCard from '@/features/auth/components/UserQuotaUsageQueriesCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import usePaymentSessionFetcher from '@/features/pricing/hooks/usePaymentSessionFetcher'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 const SettingsMePage: FC = () => {
   const { t } = useTranslation(['common', 'settings'])
@@ -100,18 +98,9 @@ const SettingsMePage: FC = () => {
 const StripeLinks = () => {
   const { t } = useTranslation()
   const { isFreeUser, isPaymentOneTimeUser, isTeamPlanUser } = useUserInfo()
-  const { createPortalSession, loading } = usePaymentSessionFetcher()
 
   const handleManageClick = async () => {
-    if (loading) return
-    try {
-      const data = await createPortalSession()
-      if (data && data.redirect_url) {
-        location.href = data.redirect_url
-      }
-    } catch (error) {
-      console.log(`CREATE_PORTAL_SESSION error`, error)
-    }
+    window.open(`${APP_USE_CHAT_GPT_HOST}/my-plan`, '_blank')
   }
 
   if (isTeamPlanUser) {
@@ -131,7 +120,8 @@ const StripeLinks = () => {
           sx={{
             width: 'max-content',
             gap: 1,
-            cursor: loading ? 'wait' : 'pointer',
+            cursor: 'pointer',
+            // cursor: loading ? 'wait' : 'pointer',
           }}
         >
           <Typography
@@ -144,9 +134,9 @@ const StripeLinks = () => {
             }}
             onClick={handleManageClick}
           >
-            {t('settings:feature_card__me__manage_my_plan')}
+            {t('common:manage_my_plan')}
           </Typography>
-          {loading && <CircularProgress size='sm' sx={{ width: 16 }} />}
+          {/* {loading && <CircularProgress size='sm' sx={{ width: 16 }} />} */}
         </Stack>
       )}
     </>

@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Ar tikrai norite atšaukti? Prašome prisiminti, kad atšaukus visi neišsaugoti pakeitimai bus prarasti.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Taip, atšaukti",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Grįžti prie redagavimo",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Pavadinimas yra privalomas",
-    "feature_card__me__manage_my_plan": "Valdyti mano planą"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Pavadinimas yra privalomas"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",

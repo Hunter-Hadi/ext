@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Сигурни ли сте, че искате да отмените? Моля, имайте предвид, че веднъж отменено, всички незапазени промени ще бъдат загубени.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Да, отмени",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Обратно към редактирането",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Заглавието е задължително",
-    "feature_card__me__manage_my_plan": "Управлявайте моят план"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Заглавието е задължително"
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",

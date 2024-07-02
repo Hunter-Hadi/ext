@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Είστε σίγουρος ότι θέλετε να ακυρώσετε; Παρακαλούμε σημειώστε ότι μόλις ακυρώσετε, οποιεσδήποτε μη αποθηκευμένες αλλαγές θα χαθούν.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ναι, ακύρωση",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Επιστροφή στην επεξεργασία",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Τίτλος απαιτείται",
-    "feature_card__me__manage_my_plan": "Διαχείριση του πλάνου μου"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Τίτλος απαιτείται"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",

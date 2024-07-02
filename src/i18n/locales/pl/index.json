@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Czy na pewno chcesz anulować? Proszę zauważyć, że po anulowaniu wszystkie niezapisane zmiany zostaną utracone.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Tak, anuluj",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Powrót do edycji",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tytuł jest wymagany",
-    "feature_card__me__manage_my_plan": "Zarządzaj moim planem"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tytuł jest wymagany"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",

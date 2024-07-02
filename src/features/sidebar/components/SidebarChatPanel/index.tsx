@@ -103,7 +103,12 @@ const SidebarChatPanel = () => {
           await regenerate()
         }}
         onStopGenerate={stopGenerate}
-        onReset={resetConversation}
+        onReset={async () => {
+          if (currentSidebarConversationType === 'Summary') {
+            await stopGenerate()
+          }
+          await resetConversation()
+        }}
       />
       <SidebarFilesDropBox />
     </>

@@ -149,12 +149,31 @@ const useSidebarSettings = () => {
         if (currentConversation) {
           if (currentConversation.type === 'Summary') {
             // Summary有点不一样，需要清除所有的message
+            // 同步云端删除完成后再创建，显示loading
+            set(
+              ClientWritingMessageStateFamily(currentConversation.id),
+              (prevState) => {
+                return {
+                  ...prevState,
+                  loading: true,
+                }
+              },
+            )
             await ClientConversationMessageManager.deleteMessages(
               currentConversation.id,
               await ClientConversationMessageManager.getMessageIds(
                 currentConversation.id,
               ),
               { waitSync: true },
+            )
+            set(
+              ClientWritingMessageStateFamily(currentConversation.id),
+              (prevState) => {
+                return {
+                  ...prevState,
+                  loading: false,
+                }
+              },
             )
             setSidebarSummaryConversationId('')
           }

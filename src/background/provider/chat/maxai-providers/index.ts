@@ -268,7 +268,11 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       postBody = summaryBody
     }
     // 没有docId并且不是summaryMessage的情况下，需要发送系统提示
-    if (!docId && !summaryMessage && conversationDetail.meta.systemPrompt) {
+    if (
+      !docId &&
+      !summaryMessage &&
+      conversationDetail.meta.systemPrompt?.trim()
+    ) {
       // 插入到chat history的第一条
       postBody.chat_history?.unshift({
         role: 'system',

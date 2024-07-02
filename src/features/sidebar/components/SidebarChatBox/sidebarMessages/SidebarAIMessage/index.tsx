@@ -166,14 +166,18 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         title = renderData.content.title?.title || 'Answer'
       }
     } else {
-      icon = renderData.content.title?.titleIcon || (
-        <ReadIcon
-          sx={{
-            color: 'primary.main',
-            fontSize: 20,
-          }}
-        />
-      )
+      icon =
+        renderData.content.title?.titleIcon &&
+        renderData.content.title?.titleIcon !== 'Loading' ? (
+          renderData.content.title?.titleIcon
+        ) : (
+          <ReadIcon
+            sx={{
+              color: 'primary.main',
+              fontSize: 20,
+            }}
+          />
+        )
       title = renderData.content.title?.title || 'Answer'
     }
 
@@ -181,7 +185,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       <MetadataTitleRender
         title={{
           title,
-          titleIcon: icon,
+          titleIcon: icon as any,
           titleIconSize: renderData.content.title?.titleIconSize || 18,
         }}
         fontSx={{ lineHeight: '20px' }}

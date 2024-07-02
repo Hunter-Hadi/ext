@@ -1,21 +1,24 @@
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 import List from '@mui/material/List'
 import ListItem, { listItemClasses } from '@mui/material/ListItem'
 import { listItemButtonClasses } from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import UserQuotaUsageQueriesCard from '@/features/auth/components/UserQuotaUsageQueriesCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import usePaymentSessionFetcher from '@/features/pricing/hooks/usePaymentSessionFetcher'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 const SettingsMePage: FC = () => {
   const { t } = useTranslation(['common', 'settings'])
-  const { userInfo } = useUserInfo()
+  const { userInfo, isPaymentOneTimeUser } = useUserInfo()
   return (
     <Stack>
       <SettingsFeatureCardLayout
@@ -31,7 +34,7 @@ const SettingsMePage: FC = () => {
                   ? 'rgb(32, 33, 36)'
                   : 'rgb(255,255,255)',
               p: '0 !important',
-              borderRadius: '4px',
+              borderRadius: '8px',
               border: (t) =>
                 t.palette.mode === 'dark'
                   ? '1px solid rgba(255, 255, 255, 0.12)'
@@ -86,9 +89,68 @@ const SettingsMePage: FC = () => {
           </List>
 
           <UserQuotaUsageQueriesCard />
+
+          <StripeLinks />
         </Stack>
       </SettingsFeatureCardLayout>
     </Stack>
   )
 }
+
+const StripeLinks = () => {
+  const { t } = useTranslation()
+  const { isFreeUser, isPaymentOneTimeUser, isTeamPlanUser } = useUserInfo()
+  const { createPortalSession, loading } = usePaymentSessionFetcher()
+
+  const handleManageClick = async () => {
+    if (loading) return
+    try {
+      const data = await createPortalSession()
+      if (data && data.redirect_url) {
+        location.href = data.redirect_url
+      }
+    } catch (error) {
+      console.log(`CREATE_PORTAL_SESSION error`, error)
+    }
+  }
+
+  if (isTeamPlanUser) {
+    return null
+  }
+
+  if (isFreeUser) {
+    return null
+  }
+
+  return (
+    <>
+      {isPaymentOneTimeUser ? null : (
+        <Stack
+          direction='row'
+          alignItems='center'
+          sx={{
+            width: 'max-content',
+            gap: 1,
+            cursor: loading ? 'wait' : 'pointer',
+          }}
+        >
+          <Typography
+            variant='custom'
+            sx={{
+              fontSize: 16,
+              lineHeight: 1.5,
+              textDecorationLine: 'underline',
+              color: 'black',
+            }}
+            onClick={handleManageClick}
+          >
+            {t('settings:feature_card__me__manage_my_plan')}
+          </Typography>
+          {loading && <CircularProgress size='sm' sx={{ width: 16 }} />}
+        </Stack>
+      )}
+    </>
+  )
+}
+
 export default SettingsMePage

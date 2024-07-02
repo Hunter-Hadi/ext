@@ -18,7 +18,7 @@ const SettingsFeatureCardLayout: FC<{
         ...sx,
       }}
     >
-      <Stack direction={'row'} alignItems="center">
+      <Stack direction={'row'} alignItems='center'>
         <Typography
           className={'maxai-settings--feature-card--title'}
           id={id}
@@ -36,7 +36,7 @@ const SettingsFeatureCardLayout: FC<{
         p={2}
         sx={{
           mb: '32px!important',
-          borderRadius: '4px',
+          borderRadius: '8px',
           bgcolor: (t) =>
             t.palette.mode === 'dark'
               ? 'rgba(18, 18, 18, 1)'

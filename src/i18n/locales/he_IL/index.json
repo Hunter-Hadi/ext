@@ -65,7 +65,9 @@
     "continue_with_email": "המשך עם דוא\"ל",
     "privacy_policy": "מדיניות פרטיות",
     "terms_of_service": "תנאי השימוש",
-    "shortcut": "קיצור"
+    "shortcut": "קיצור",
+    "yearly": "שנתי",
+    "monthly": "חודשי"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "האם אתה בטוח שברצונך לבטל? שים לב שכל השינויים שלא נשמרו יאבדו.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "כן, בטל",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "חזור לעריכה",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "נדרש כותרת"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "נדרש כותרת",
+    "feature_card__me__manage_my_plan": "ניהול התוכנית שלי"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "שדרג כדי לחפש עם Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "התחבר כדי לחפש עם ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "שדרג כדי לחפש עם ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "הזמן לתעודה פג.\nנסה שוב בבקשה."
+    "sidebar__chat__voice_input__timeout__tooltip": "הזמן לתעודה פג.\nנסה שוב בבקשה.",
+    "pricing__upgrade__popper_card__title": "שדרג ל-MaxAI Elite · שנתי",
+    "pricing__upgrade__popper_card__item1__title": "שימוש בבינה מלאכותית בלתי מוגבל",
+    "pricing__upgrade__popper_card__item2__title": "פתח את כל התכונות",
+    "pricing__upgrade__popper_card__item3__title": "חסוך שעות בכל יום"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "שאילתות בטקסט מתקדמות במהירות גבוהה: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "וודא לפחות 1,500 שאילתות בטקסט מתקדמות במהירות גבוהה בכל חודש. לאחר הגעת למגבלה, המהירות והאיכות של הדגם עשויות להיפחת.",
     "image_generate__secondary__content": "שאילתות בתמונות במהירות גבוהה: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "וודא לפחות 1,500 שאילתות בתמונות במהירות גבוהה בכל חודש. לאחר הגעת למגבלה, המהירות והאיכות של הדגם עשויות להיפחת."
+    "image_generate__secondary__content__tooltip": "וודא לפחות 1,500 שאילתות בתמונות במהירות גבוהה בכל חודש. לאחר הגעת למגבלה, המהירות והאיכות של הדגם עשויות להיפחת.",
+    "promotion_plan__text": "חסוך 53% בשדרוג ל-MaxAI Elite שנתי עכשיו. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "לחץ כדי לבקש מהאינטיליגנציה המלאכותית לכתוב מחדש, לתרגם, לסכם או להסביר את הטקסט שנבחר.",

@@ -65,7 +65,9 @@
     "continue_with_email": "Continuar con correo electrónico",
     "privacy_policy": "Política de privacidad",
     "terms_of_service": "Términos de servicio",
-    "shortcut": "Atajo"
+    "shortcut": "Atajo",
+    "yearly": "Anual",
+    "monthly": "Mensual"
   },
   "settings": {
     "left_menu__me": "Yo y MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "¿Estás seguro de que quieres cancelar? Ten en cuenta que una vez cancelado, se perderán todos los cambios no guardados.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sí, cancelar",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Volver a editar",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Se requiere un título"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Se requiere un título",
+    "feature_card__me__manage_my_plan": "Administrar mi plan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Actualiza para buscar con Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Inicia sesión para buscar con ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Actualiza para buscar con ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "La transcripción ha expirado.\nPor favor, inténtalo de nuevo."
+    "sidebar__chat__voice_input__timeout__tooltip": "La transcripción ha expirado.\nPor favor, inténtalo de nuevo.",
+    "pricing__upgrade__popper_card__title": "Actualizar a MaxAI Elite · Anual",
+    "pricing__upgrade__popper_card__item1__title": "Uso ilimitado de IA",
+    "pricing__upgrade__popper_card__item2__title": "Desbloquear todas las funciones",
+    "pricing__upgrade__popper_card__item3__title": "Ahorra horas todos los días"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Consultas avanzadas de texto de alta velocidad: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Asegúrate de tener al menos 1,500 consultas avanzadas de texto de alta velocidad cada mes. Después de alcanzar el límite, la velocidad y calidad del modelo pueden reducirse.",
     "image_generate__secondary__content": "Consultas de imágenes de alta velocidad: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Asegúrate de tener al menos 1,500 consultas de imágenes de alta velocidad cada mes. Después de alcanzar el límite, la velocidad y calidad del modelo pueden reducirse."
+    "image_generate__secondary__content__tooltip": "Asegúrate de tener al menos 1,500 consultas de imágenes de alta velocidad cada mes. Después de alcanzar el límite, la velocidad y calidad del modelo pueden reducirse.",
+    "promotion_plan__text": "Ahorra un 53% al actualizar a MaxAI Elite Anual ahora. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Haz clic para pedirle a la IA que reescriba, traduzca, resuma o explique el texto seleccionado.",

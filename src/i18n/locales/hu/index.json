@@ -65,7 +65,9 @@
     "continue_with_email": "Folytatás e-maillel",
     "privacy_policy": "Adatvédelmi irányelvek",
     "terms_of_service": "Szolgáltatási feltételek",
-    "shortcut": "Gyorsbillentyű"
+    "shortcut": "Gyorsbillentyű",
+    "yearly": "Éves",
+    "monthly": "Havi"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Biztosan megszakítja? Kérjük, vegye figyelembe, hogy a megszakítás után az összes mentetlen változtatás elveszik.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Igen, megszakítás",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Vissza a szerkesztéshez",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "A cím kötelező"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "A cím kötelező",
+    "feature_card__me__manage_my_plan": "Tervem kezelése"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Frissítse a Claude kereséséhez",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Jelentkezzen be a ChatGPT kereséséhez",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Frissítse a ChatGPT kereséséhez",
-    "sidebar__chat__voice_input__timeout__tooltip": "A tranzkripció időtúllépése.\nKérlek, próbáld újra."
+    "sidebar__chat__voice_input__timeout__tooltip": "A tranzkripció időtúllépése.\nKérlek, próbáld újra.",
+    "pricing__upgrade__popper_card__title": "Frissítés MaxAI Elite-re · Éves",
+    "pricing__upgrade__popper_card__item1__title": "Korlátlan AI használat",
+    "pricing__upgrade__popper_card__item2__title": "Minden funkció feloldása",
+    "pricing__upgrade__popper_card__item3__title": "Órákat spórolhatsz minden nap"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Magas sebességű előrehaladott szöveg lekérdezések: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű előrehaladott szöveg lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
     "image_generate__secondary__content": "Magas sebességű kép lekérdezések: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű kép lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet."
+    "image_generate__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű kép lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
+    "promotion_plan__text": "53%-ot spórolhatsz, ha most frissítesz MaxAI Elite Évesre. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kattintson az AI megkérdezéséhez, hogy újraírja, lefordítsa, összefoglalja vagy elmagyarázza a kiválasztott szöveget.",

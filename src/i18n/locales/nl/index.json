@@ -65,7 +65,9 @@
     "continue_with_email": "Doorgaan met e-mail",
     "privacy_policy": "Privacybeleid",
     "terms_of_service": "Gebruiksvoorwaarden",
-    "shortcut": "Snelkoppeling"
+    "shortcut": "Snelkoppeling",
+    "yearly": "Jaarlijks",
+    "monthly": "Maandelijks"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Weet je zeker dat je wilt annuleren? Houd er rekening mee dat alle niet-opgeslagen wijzigingen verloren gaan zodra je annuleert.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, annuleren",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Terug naar bewerken",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel is verplicht"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel is verplicht",
+    "feature_card__me__manage_my_plan": "Mijn plan beheren"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Upgrade om te zoeken met Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Meld je aan om te zoeken met ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Upgrade om te zoeken met ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transcriptie is verlopen.\nProbeer het opnieuw."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transcriptie is verlopen.\nProbeer het opnieuw.",
+    "pricing__upgrade__popper_card__title": "Upgrade naar MaxAI Elite · Jaarlijks",
+    "pricing__upgrade__popper_card__item1__title": "Onbeperkt gebruik van AI",
+    "pricing__upgrade__popper_card__item2__title": "Alle functies ontgrendelen",
+    "pricing__upgrade__popper_card__item3__title": "Bespaar elke dag uren"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Hoge snelheid geavanceerde tekstvragen: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid geavanceerde tekstvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
     "image_generate__secondary__content": "Hoge snelheid afbeeldingsvragen: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid afbeeldingsvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd."
+    "image_generate__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid afbeeldingsvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
+    "promotion_plan__text": "Bespaar nu 53% door te upgraden naar MaxAI Elite Jaarlijks. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik om AI te vragen om de geselecteerde tekst opnieuw te schrijven, te vertalen, samen te vatten of uit te leggen.",

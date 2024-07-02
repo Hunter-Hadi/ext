@@ -65,7 +65,9 @@
     "continue_with_email": "Continue with email",
     "privacy_policy": "Privacy Policy",
     "terms_of_service": "Terms of Service",
-    "shortcut": "Shortcut"
+    "shortcut": "Shortcut",
+    "yearly": "Yearly",
+    "monthly": "Monthly"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -95,6 +97,7 @@
     "sync__different_settings__keep_local_button__confirm": "Are you sure you want to replace your online account settings with your local browser settings (including your custom prompts if any)? Doing so will undo your online account settings permanently and cannot be undone.",
     "feature_card__me__title": "Me and MaxAI",
     "feature_card__me__my_plan": "My plan",
+    "feature_card__me__manage_my_plan": "Manage my plan",
     "feature_card__set_up__title": "How to set up",
     "feature_card__prompts__title": "My own prompts",
     "feature_card__prompts__place_my_own_prompts_switch": "Place my own prompts at the top",
@@ -648,7 +651,6 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Get long answers to complex questions",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Search with AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Display AI answers next to search results",
-
     "permission__pricing_modal__title": "Upgrade to unlimited",
     "permission__pricing_modal__description": "Research and write faster without limits by upgrading to MaxAI Elite",
     "permission__pricing_modal__item1__title": "Unlimited AI usage",
@@ -661,10 +663,8 @@
     "permission__pricing_modal__cta_button__footer__title": "Join 1M+ professionals boosting their productivity with MaxAI.",
     "permission__pricing_modal__discount__title": "Save 53%",
     "permission__pricing_modal__footer__title": "Compare plans",
-
     "contact_us_modal__title": "Interested in upgrading to MaxAI {{PLAN}}?",
     "contact_us_modal__desc": "Please contact us at",
-
     "pricing__payment_type_switch__yearly__title": "Yearly",
     "pricing__payment_type_switch__monthly__title": "Monthly",
     "pricing__payment_type_switch__title__tip": "Save up to {{RATIO}}",
@@ -677,7 +677,6 @@
     "pricing__plan_features__cta_button__title": "Upgrade to {{PLAN}}",
     "pricing__plan_features__current_plan__title": "Current plan",
     "pricing__plan_features__save_with_yearly__title": "Save {{PRICE}} with yearly plan",
-
     "pricing__plan_features__elite__description": "Best for elite professionals",
     "pricing__plan_features__elite__feature1__title": "Get unlimited AI usage",
     "pricing__plan_features__elite__feature1__item1__title": "Unlimited fast text queries/month",
@@ -700,7 +699,6 @@
     "pricing__plan_features__elite__feature3__item2__tooltip": "Speed up your email, social media, and message replies and drafts by 10 times with brief notes or a single click.",
     "pricing__plan_features__elite__feature3__item3__title": "Break language barriers with AI translation",
     "pricing__plan_features__elite__feature3__item3__tooltip": "Access information in any language. Get writing help across multiple languages, right where you need it.",
-
     "pricing__plan_features__pro__description": "Best for power users",
     "pricing__plan_features__pro__feature1__title": "Get more AI usage",
     "pricing__plan_features__pro__feature1__item1__title": "10,000 fast text queries/month",
@@ -721,7 +719,10 @@
     "pricing__plan_features__pro__feature3__item2__tooltip": "Speed up your email, social media, and message replies and drafts by 10 times with brief notes or a single click.",
     "pricing__plan_features__pro__feature3__item3__title": "Break language barriers with AI translation",
     "pricing__plan_features__pro__feature3__item3__tooltip": "Access information in any language. Get writing help across multiple languages, right where you need it.",
-
+    "pricing__upgrade__popper_card__title": "Upgrade to MaxAI Elite · Yearly",
+    "pricing__upgrade__popper_card__item1__title": "Unlimited AI usage",
+    "pricing__upgrade__popper_card__item2__title": "Unlock all features",
+    "pricing__upgrade__popper_card__item3__title": "Save hours every day",
     "prompt__group__suggested__title": "Suggested",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Hide Gmail assistant",
     "sidebar__top_bar__rewards__title": "Rewards",
@@ -881,7 +882,6 @@
     "sidebar__conversation_share__share_panel__copied_tip": "Link copied",
     "sidebar__conversation_share__share_panel__success_tip": "The shared conversation URL has been copied to the clipboard!",
     "sidebar__conversation_share__share_panel__error_tip": "Unable to share at the moment. Please check your network or try again later.",
-
     "sidebar__promotion_dialog__gpt_4o__content__title": "Access GPT-4o",
     "sidebar__promotion_dialog__gpt_4o__content_item1__title": "OpenAI's new flagship model",
     "sidebar__promotion_dialog__gpt_4o__content_item1__description": "Provides GPT-4-level intelligence and with more up-to-date responses.",
@@ -889,7 +889,6 @@
     "sidebar__promotion_dialog__gpt_4o__content_item2__description": "GPT-4o is 2x faster than GPT-4 Turbo.",
     "sidebar__promotion_dialog__gpt_4o__content_item3__title": "\"O\" for \"Omnimodel\"",
     "sidebar__promotion_dialog__gpt_4o__content_item3__description": "Can reason across audio, vision, and text in real time.",
-
     "sidebar__promotion_dialog__claude_3__content__title": "Access Claude-3",
     "sidebar__promotion_dialog__claude_3__content_item1__description": "Anthropic's next-generation AI models.",
     "sidebar__promotion_dialog__claude_3__content_item2__title": "Claude-3-Opus",
@@ -898,63 +897,52 @@
     "sidebar__promotion_dialog__claude_3__content_item3__description": "The most balanced choice.",
     "sidebar__promotion_dialog__claude_3__content_item4__title": "Claude-3-Haiku",
     "sidebar__promotion_dialog__claude_3__content_item4__description": "The fastest model.",
-
     "sidebar__promotion_dialog__claude_3_5__content__title": "Access Claude-3.5-sonnet",
     "sidebar__promotion_dialog__claude_3_5__content_item1__description": "Anthropic's newest model",
     "sidebar__promotion_dialog__claude_3_5__content_item2__description": "Better than Claude-3-opus capabilities",
     "sidebar__promotion_dialog__claude_3_5__content_item3__description": "Faster than Claude-3-sonnet speeds",
     "sidebar__promotion_dialog__claude_3_5__content_item4__description": "Particularly good at coding, data science, visual processing, and writing",
-
     "sidebar__promotion_dialog__gemini_1_5_pro__content__title": "Access Gemini-1.5-pro",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item1__description": "Google's newest and most advanced model.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item2__description": "Faster speed. 1M token context window.",
     "sidebar__promotion_dialog__gemini_1_5_pro__content_item3__description": "Improved modalities. Enhanced safety.",
-
     "sidebar__promotion_dialog__art__content__title": "Create AI art and images",
     "sidebar__promotion_dialog__art__content_item1__description": "10x your creativity and productivity with the most advanced AI art models.",
     "sidebar__promotion_dialog__art__content_item2__description": "Rapidly turn your visions into stunning images.",
     "sidebar__promotion_dialog__art__content_item3__description": "Simple, powerful, transformative.",
-
     "sidebar__promotion_dialog__summary__content__title": "Save time on long articles and videos",
     "sidebar__promotion_dialog__summary__content_item1__description": "Summarize PDFs, YouTube videos, reports, and webpages in seconds.",
     "sidebar__promotion_dialog__summary__content_item2__description": "Get key ideas instantly.",
     "sidebar__promotion_dialog__summary__content_item3__description": "Get instant answers by chatting with research papers, videos, and articles.",
     "sidebar__promotion_dialog__summary__content_item4__description": "Try it on any web app or site you use. No copying, no pasting, no context switching.",
-
     "sidebar__promotion_dialog__instant_reply__content__title": "Save time on email correspondence",
     "sidebar__promotion_dialog__instant_reply__content_item1__description": "Let AI draft personalized and professional replies, improve tone, check spelling and grammar for you.",
     "sidebar__promotion_dialog__instant_reply__content_item2__description": "Try it on email: Gmail, Outlook.",
     "sidebar__promotion_dialog__instant_reply__content_item3__description": "Try it on social media: LinkedIn, YouTube, Facebook, Twitter, Instagram, Reddit.",
     "sidebar__promotion_dialog__instant_reply__content_item4__description": "Try it on messages: WhatsApp, Discord, Telegram, Messenger, Slack.",
-
     "sidebar__promotion_dialog__search__content__title": "Research 10x faster with AI",
     "sidebar__promotion_dialog__search__content_item1__description": "Your go-to conversational answer engine with web access.",
     "sidebar__promotion_dialog__search__content_item2__description": "Get credible and up-to-date AI answers with real-time web access, knowledge, and citations.",
     "sidebar__promotion_dialog__search__content_item3__description": "Find reliable answers fast by chatting with all the best AI models in one place.",
-
     "sidebar__promotion_dialog__rewriter__content__title": "Write better in a few clicks",
     "sidebar__promotion_dialog__rewriter__content_item1__description": "Be perfectly professional, clear, and convincing in a few clicks, not a few hours.",
     "sidebar__promotion_dialog__rewriter__content_item2__description": "Improve and polish your writing with AI-powered grammar and style suggestions. ",
     "sidebar__promotion_dialog__rewriter__content_item3__description": "Try it on any web app or site you use. No copying, no pasting, no context switching.",
-
     "sidebar__promotion_dialog__prompts__content__title": "Your cheat code for AI",
     "sidebar__promotion_dialog__prompts__content_item1__description": "Access high quality AI prompt library crafted and reviewed by AI prompt experts.",
     "sidebar__promotion_dialog__prompts__content_item2__description": "Supports a wide range of industries and use cases.",
     "sidebar__promotion_dialog__prompts__content_item3__description": "Complete your daily tasks in minutes now with AI prompts, not hours anymore.",
     "sidebar__promotion_dialog__prompts__content_item4__description": "Create your own prompts and organize them for continuous use.",
-
     "sidebar__promotion_dialog__translator__content__title": "Break language barriers",
     "sidebar__promotion_dialog__translator__content_item1__description": "Translate between languages for articles and documents.",
     "sidebar__promotion_dialog__translator__content_item2__description": "Access information in any language.",
     "sidebar__promotion_dialog__translator__content_item3__description": "Get writing help with accurate and natural-sounding translations across multiple languages.",
     "sidebar__promotion_dialog__translator__content_item4__description": "Try it on any web app or site you use. No copying, no pasting, no context switching.",
-
     "sidebar__promotion_dialog__vision__content__title": "Unlock the power of AI vision",
     "sidebar__promotion_dialog__vision__content_item1__description": "Extract text from images effortlessly.",
     "sidebar__promotion_dialog__vision__content_item2__description": "Ask questions about any image and get instant answers.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Simply take a screenshot and ask any questions immediately.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Powered by the best AI models: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-
     "sidebar__promotion_dialog__title": "Discover time-saving features in {{VERSION}}",
     "sidebar__promotion_dialog__cta_button": "Upgrade",
     "sidebar__promotion_dialog__learn_more": "Learn more",
@@ -962,7 +950,6 @@
     "sidebar__promotion_dialog__discount__title": "Save 53% now",
     "sidebar__conversation__message__context_cleared": "Context cleared",
     "sidebar__conversation__message__context_triggered_content_review": "Context cleared to bypass moderation",
-
     "sidebar__survey_dialog__title": "Thank you for using MaxaI.me!",
     "sidebar__survey_dialog__description__item1__part1": "As one of our most active customers, could you please take 1 minute to",
     "sidebar__survey_dialog__description__item1__part2": "tell us about your experience",
@@ -970,7 +957,6 @@
     "sidebar__survey_dialog__thanks": "Thanks so much",
     "sidebar__survey_dialog__by_who": "MaxAI.me team",
     "sidebar__survey_dialog__cta_button_text": "Tell us about your experience",
-
     "translation_advanced__title": "Translation settings",
     "translation_advanced__source_lang_select__label": "Source language",
     "translation_advanced__target_lang_select__label": "Target language",
@@ -999,20 +985,17 @@
     "sidebar__nav__concat_us__checkbox_title": "Allow error information collection",
     "sidebar__context_clear__delete__title": "Delete \"Context cleared\" line",
     "sidebar__context_clear__delete__description": "Deleting this \"Context cleared\" line will include the previous chat history with the current conversation context. The AI will consider the combined chat history when responding to your messages.",
-
     "sidebar__chat__suggestions__model__description__for_claude_3_opus": "Newest and most advanced model by Anthropic",
     "sidebar__chat__suggestions__model__description__for_claude_3_5_sonnet": "Newest and most advanced model by Anthropic",
     "sidebar__chat__suggestions__model__description__for_gpt_4_o": "Newest and most advanced model by OpenAI",
     "sidebar__chat__suggestions__starts_new_chat__title": "New chat",
     "sidebar__chat__suggestions__compare_to__title": "Compare",
-
     "sidebar__chat__voice_input__idle__tooltip": "Use microphone",
     "sidebar__chat__voice_input__recording__tooltip": "Recording...",
     "sidebar__chat__voice_input__transcripting__tooltip": "Transcripting...",
     "sidebar__chat__voice_input__permission_denied__tooltip": "Permission to use microphone was denied.\nUpdate your browser or system permission settings and try again.",
     "sidebar__chat__voice_input__no_speech__tooltip": "No speech detected.\nPlease try again.",
-    "sidebar__chat__voice_input__timeout__tooltip":"Transcription timed out.\nPlease try again.",
-
+    "sidebar__chat__voice_input__timeout__tooltip": "Transcription timed out.\nPlease try again.",
     "login_modal__title__part1": "Sign in to get",
     "login_modal__title__part2": "FREE",
     "login_modal__title__part3": "AI queries every day",
@@ -1152,15 +1135,14 @@
     "advanced_text__secondary__content": "High-speed advanced text queries: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed advanced text queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
     "image_generate__secondary__content": "High-speed image queries: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Ensure at least 1,500 high-speed image queries each month. After reaching the limit, the speed and quality of the model may be reduced."
+    "image_generate__secondary__content__tooltip": "Ensure at least 1,500 high-speed image queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
+    "promotion_plan__text": "Save 53% by upgrading to MaxAI Elite Yearly now. 👇"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Thank you for sharing your experience with us. 🙏",
     "funnel_survey__submit_success__description": "We will carefully review your answer and deliver an even better experience for you!",
-
     "funnel_survey__cta_button__submit_text": "Submit my answer",
     "funnel_survey__cta_button__loading_text": "Submitting...",
-
     "funnel_survey__SURVEY_CANCEL_COMPLETED__title": "Tell us about your concerns",
     "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1": "What made you decide to cancel your MaxAI.me subscription?",
     "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Tell us what caused you to cancel..."

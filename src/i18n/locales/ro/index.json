@@ -65,7 +65,9 @@
     "continue_with_email": "Continuă cu email",
     "privacy_policy": "Politica de confidențialitate",
     "terms_of_service": "Termenii serviciului",
-    "shortcut": "Scurtătură"
+    "shortcut": "Scurtătură",
+    "yearly": "Anual",
+    "monthly": "Lunar"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Sigur dorești să anulezi? Te rugăm să reții că, odată anulată, orice modificări nesalvate vor fi pierdute.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, anulează",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Înapoi la editare",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titlul este obligatoriu"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titlul este obligatoriu",
+    "feature_card__me__manage_my_plan": "Gestionează planul meu"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Upgrade pentru a căuta cu Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Conectați-vă pentru a căuta cu ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Upgrade pentru a căuta cu ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transcrierea a expirat.\nVă rugăm să încercați din nou."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transcrierea a expirat.\nVă rugăm să încercați din nou.",
+    "pricing__upgrade__popper_card__title": "Upgrade la MaxAI Elite · Anual",
+    "pricing__upgrade__popper_card__item1__title": "Utilizare nelimitată a AI",
+    "pricing__upgrade__popper_card__item2__title": "Deblochează toate funcțiile",
+    "pricing__upgrade__popper_card__item3__title": "Economisește ore în fiecare zi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Interogări avansate de text de mare viteză: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Asigură cel puțin 1.500 de interogări avansate de text de mare viteză în fiecare lună. După atingerea limitei, viteza și calitatea modelului pot fi reduse.",
     "image_generate__secondary__content": "Interogări de imagini de mare viteză: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Asigură cel puțin 1.500 de interogări de imagini de mare viteză în fiecare lună. După atingerea limitei, viteza și calitatea modelului pot fi reduse."
+    "image_generate__secondary__content__tooltip": "Asigură cel puțin 1.500 de interogări de imagini de mare viteză în fiecare lună. După atingerea limitei, viteza și calitatea modelului pot fi reduse.",
+    "promotion_plan__text": "Economisește 53% prin upgrade la MaxAI Elite Anual acum. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Apăsați pentru a cere AI să rescrie, traducă, rezume sau explice textul selectat.",

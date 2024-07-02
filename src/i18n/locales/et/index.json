@@ -65,7 +65,9 @@
     "continue_with_email": "Jätka e-posti teel",
     "privacy_policy": "Privaatsuspoliitika",
     "terms_of_service": "Teenuse tingimused",
-    "shortcut": "Kiirklahv"
+    "shortcut": "Kiirklahv",
+    "yearly": "Aastas",
+    "monthly": "Kuus"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Kas olete kindel, et soovite tühistada? Pange tähele, et tühistamisel kaotate kõik salvestamata muudatused.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Jah, tühista",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tagasi redigeerimise juurde",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Pealkiri on kohustuslik"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Pealkiri on kohustuslik",
+    "feature_card__me__manage_my_plan": "Halda oma plaani"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Uuenda, et otsida Claude'iga",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Logi sisse ChatGPT-ga otsimiseks",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Uuenda, et otsida ChatGPT-ga",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkriptsioon aegus.\nPalun proovige uuesti."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkriptsioon aegus.\nPalun proovige uuesti.",
+    "pricing__upgrade__popper_card__title": "Uuenda MaxAI Elite'ile · Aastas",
+    "pricing__upgrade__popper_card__item1__title": "Piiramatu AI kasutamine",
+    "pricing__upgrade__popper_card__item2__title": "Avage kõik funktsioonid",
+    "pricing__upgrade__popper_card__item3__title": "Säästa tunde igapäevaselt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Kiired edasijõudnud tekstipäringud: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret edasijõudnud tekstipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
     "image_generate__secondary__content": "Kiired pildipäringud: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret pildipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda."
+    "image_generate__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret pildipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
+    "promotion_plan__text": "Säästa 53% uuendades nüüd MaxAI Elite'ile aastas. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klõpsake, et küsida AI-lt valitud teksti ümberkirjutamist, tõlkimist, kokkuvõtet või selgitust.",

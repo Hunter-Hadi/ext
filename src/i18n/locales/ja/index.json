@@ -65,7 +65,9 @@
     "continue_with_email": "メールで続行",
     "privacy_policy": "プライバシーポリシー",
     "terms_of_service": "利用規約",
-    "shortcut": "ショートカット"
+    "shortcut": "ショートカット",
+    "yearly": "毎年",
+    "monthly": "毎月"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "キャンセルしてもよろしいですか？キャンセルすると、保存されていない変更が失われます。",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "はい、キャンセル",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "編集に戻る",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "タイトルは必須です"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "タイトルは必須です",
+    "feature_card__me__manage_my_plan": "プランを管理する"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "クロードで検索するにはアップグレードしてください",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPTで検索するにはサインインしてください",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPTで検索するにはアップグレードしてください",
-    "sidebar__chat__voice_input__timeout__tooltip": "音声認識がタイムアウトしました。\nもう一度お試しください。"
+    "sidebar__chat__voice_input__timeout__tooltip": "音声認識がタイムアウトしました。\nもう一度お試しください。",
+    "pricing__upgrade__popper_card__title": "MaxAI Eliteにアップグレード · 毎年",
+    "pricing__upgrade__popper_card__item1__title": "無制限のAI利用",
+    "pricing__upgrade__popper_card__item2__title": "すべての機能を解除",
+    "pricing__upgrade__popper_card__item3__title": "毎日数時間節約"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "高速な高度なテキストクエリ：{{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "毎月少なくとも1,500の高速な高度なテキストクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
     "image_generate__secondary__content": "高速なイメージクエリ：{{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "毎月少なくとも1,500の高速なイメージクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。"
+    "image_generate__secondary__content__tooltip": "毎月少なくとも1,500の高速なイメージクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
+    "promotion_plan__text": "MaxAI Elite Yearlyにアップグレードして53%節約しましょう。 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "選択したテキストを書き換え、翻訳、要約、または説明するためにAIに質問するにはクリックしてください。",

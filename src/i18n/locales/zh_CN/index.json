@@ -65,7 +65,9 @@
     "continue_with_email": "使用电子邮件继续",
     "privacy_policy": "隐私政策",
     "terms_of_service": "服务条款",
-    "shortcut": "快捷方式"
+    "shortcut": "快捷方式",
+    "yearly": "每年",
+    "monthly": "每月"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "确定要取消吗？请注意，一旦取消，任何未保存的更改都将丢失。",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "是的，取消",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "返回编辑",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "标题是必需的"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "标题是必需的",
+    "feature_card__me__manage_my_plan": "管理我的计划"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "升级以使用Claude搜索",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "登录以使用ChatGPT搜索",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "升级以使用ChatGPT搜索",
-    "sidebar__chat__voice_input__timeout__tooltip": "转录超时。\n请重试。"
+    "sidebar__chat__voice_input__timeout__tooltip": "转录超时。\n请重试。",
+    "pricing__upgrade__popper_card__title": "升级至MaxAI Elite · 每年",
+    "pricing__upgrade__popper_card__item1__title": "无限使用AI",
+    "pricing__upgrade__popper_card__item2__title": "解锁所有功能",
+    "pricing__upgrade__popper_card__item3__title": "每天节省数小时"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "高速高级文本查询：{{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "确保每月至少1,500次高速高级文本查询。达到限制后，模型的速度和质量可能会降低。",
     "image_generate__secondary__content": "高速图像查询：{{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "确保每月至少1,500次高速图像查询。达到限制后，模型的速度和质量可能会降低。"
+    "image_generate__secondary__content__tooltip": "确保每月至少1,500次高速图像查询。达到限制后，模型的速度和质量可能会降低。",
+    "promotion_plan__text": "立即升级至MaxAI Elite每年，可节省53%。 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "点击以要求AI重写、翻译、概述或解释所选文本。",

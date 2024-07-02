@@ -65,7 +65,9 @@
     "continue_with_email": "Endelea na barua pepe",
     "privacy_policy": "Sera ya Faragha",
     "terms_of_service": "Masharti ya Huduma",
-    "shortcut": "Njia ya mkato"
+    "shortcut": "Njia ya mkato",
+    "yearly": "Kila mwaka",
+    "monthly": "Kila mwezi"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Je, una uhakika unataka kufuta? Tafadhali kumbuka kuwa mara baada ya kufutwa, mabadiliko yoyote ambayo hayajasahihishwa yatapotea.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ndiyo, futa",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Rudi kwenye uhariri",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Jina linahitajika"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Jina linahitajika",
+    "feature_card__me__manage_my_plan": "Simamia mpango wangu"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Nenda ngazi ya juu ili kutafuta na Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Ingia ili kutafuta na ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Nenda ngazi ya juu ili kutafuta na ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Uandikishaji umekwisha.\nTafadhali jaribu tena."
+    "sidebar__chat__voice_input__timeout__tooltip": "Uandikishaji umekwisha.\nTafadhali jaribu tena.",
+    "pricing__upgrade__popper_card__title": "Nenda kwa MaxAI Elite · Kila mwaka",
+    "pricing__upgrade__popper_card__item1__title": "Matumizi ya AI yasiyo na kikomo",
+    "pricing__upgrade__popper_card__item2__title": "Fungua vipengele vyote",
+    "pricing__upgrade__popper_card__item3__title": "Punguza masaa kila siku"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Maswali ya maandishi ya juu kwa kasi kubwa: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya maandishi ya juu kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
     "image_generate__secondary__content": "Maswali ya picha kwa kasi kubwa: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya picha kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa."
+    "image_generate__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya picha kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
+    "promotion_plan__text": "Punguza 53% kwa kuboresha kwenda MaxAI Elite Kila mwaka sasa. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Bonyeza kuuliza AI iandike upya, itafsiri, itafupishe, au ieleze maandishi yaliyochaguliwa.",

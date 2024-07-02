@@ -65,7 +65,9 @@
     "continue_with_email": "متابعة باستخدام البريد الإلكتروني",
     "privacy_policy": "سياسة الخصوصية",
     "terms_of_service": "شروط الخدمة",
-    "shortcut": "اختصار"
+    "shortcut": "اختصار",
+    "yearly": "سنوي",
+    "monthly": "شهري"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "هل أنت متأكد أنك تريد الإلغاء؟ يرجى ملاحظة أنه بمجرد الإلغاء، ستفقد أي تغييرات غير محفوظة.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "نعم، إلغاء",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "العودة للتحرير",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "العنوان مطلوب"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "العنوان مطلوب",
+    "feature_card__me__manage_my_plan": "إدارة خطتي"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "الترقية للبحث باستخدام كلود",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "تسجيل الدخول للبحث باستخدام ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "الترقية للبحث باستخدام ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "انتهت مهلة النسخ الصوتي.\nيرجى المحاولة مرة أخرى."
+    "sidebar__chat__voice_input__timeout__tooltip": "انتهت مهلة النسخ الصوتي.\nيرجى المحاولة مرة أخرى.",
+    "pricing__upgrade__popper_card__title": "الترقية إلى MaxAI Elite · سنويًا",
+    "pricing__upgrade__popper_card__item1__title": "استخدام غير محدود للذكاء الاصطناعي",
+    "pricing__upgrade__popper_card__item2__title": "فتح جميع الميزات",
+    "pricing__upgrade__popper_card__item3__title": "توفير ساعات كل يوم"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "استعلامات النص المتقدم عالية السرعة: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "تأكد من وجود ما لا يقل عن 1,500 استعلام نص متقدم عالي السرعة كل شهر. بعد الوصول إلى الحد، قد يتم تقليل سرعة وجودة النموذج.",
     "image_generate__secondary__content": "استعلامات الصور عالية السرعة: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "تأكد من وجود ما لا يقل عن 1,500 استعلام صورة عالية السرعة كل شهر. بعد الوصول إلى الحد، قد يتم تقليل سرعة وجودة النموذج."
+    "image_generate__secondary__content__tooltip": "تأكد من وجود ما لا يقل عن 1,500 استعلام صورة عالية السرعة كل شهر. بعد الوصول إلى الحد، قد يتم تقليل سرعة وجودة النموذج.",
+    "promotion_plan__text": "وفّر 53% عند الترقية إلى MaxAI Elite سنويًا الآن. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "انقر لطلب من الذكاء الاصطناعي إعادة صياغة أو ترجمة أو تلخيص أو شرح النص المحدد.",

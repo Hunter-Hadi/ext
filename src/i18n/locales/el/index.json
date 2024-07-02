@@ -65,7 +65,9 @@
     "continue_with_email": "Συνέχεια με email",
     "privacy_policy": "Πολιτική Απορρήτου",
     "terms_of_service": "Όροι Χρήσης",
-    "shortcut": "Συντόμευση"
+    "shortcut": "Συντόμευση",
+    "yearly": "Ετήσια",
+    "monthly": "Μηνιαία"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Είστε σίγουρος ότι θέλετε να ακυρώσετε; Παρακαλούμε σημειώστε ότι μόλις ακυρώσετε, οποιεσδήποτε μη αποθηκευμένες αλλαγές θα χαθούν.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ναι, ακύρωση",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Επιστροφή στην επεξεργασία",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Τίτλος απαιτείται"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Τίτλος απαιτείται",
+    "feature_card__me__manage_my_plan": "Διαχείριση του πλάνου μου"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Αναβαθμίστε για αναζήτηση με τον Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Συνδεθείτε για αναζήτηση με το ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Αναβαθμίστε για αναζήτηση με το ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Η μεταγραφή έληξε.\nΠαρακαλώ δοκιμάστε ξανά."
+    "sidebar__chat__voice_input__timeout__tooltip": "Η μεταγραφή έληξε.\nΠαρακαλώ δοκιμάστε ξανά.",
+    "pricing__upgrade__popper_card__title": "Αναβάθμιση σε MaxAI Elite · Ετήσια",
+    "pricing__upgrade__popper_card__item1__title": "Απεριόριστη χρήση AI",
+    "pricing__upgrade__popper_card__item2__title": "Ξεκλείδωμα όλων των χαρακτηριστικών",
+    "pricing__upgrade__popper_card__item3__title": "Εξοικονόμηση ωρών κάθε μέρα"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Ερωτήσεις προηγμένου κειμένου υψηλής ταχύτητας: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Βεβαιωθείτε ότι έχετε τουλάχιστον 1.500 ερωτήσεις προηγμένου κειμένου υψηλής ταχύτητας κάθε μήνα. Μετά την επίτευξη του ορίου, η ταχύτητα και η ποιότητα του μοντέλου μπορεί να μειωθούν.",
     "image_generate__secondary__content": "Ερωτήσεις εικόνας υψηλής ταχύτητας: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Βεβαιωθείτε ότι έχετε τουλάχιστον 1.500 ερωτήσεις εικόνας υψηλής ταχύτητας κάθε μήνα. Μετά την επίτευξη του ορίου, η ταχύτητα και η ποιότητα του μοντέλου μπορεί να μειωθούν."
+    "image_generate__secondary__content__tooltip": "Βεβαιωθείτε ότι έχετε τουλάχιστον 1.500 ερωτήσεις εικόνας υψηλής ταχύτητας κάθε μήνα. Μετά την επίτευξη του ορίου, η ταχύτητα και η ποιότητα του μοντέλου μπορεί να μειωθούν.",
+    "promotion_plan__text": "Εξοικονομήστε 53% αναβαθμίζοντας σε MaxAI Elite Ετήσια τώρα. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Κάντε κλικ για να ζητήσετε από το AI να αναδιατάξει, να μεταφράσει, να συνοψίσει ή να εξηγήσει το επιλεγμένο κείμενο.",

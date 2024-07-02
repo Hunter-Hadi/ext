@@ -65,7 +65,9 @@
     "continue_with_email": "Magpatuloy gamit ang email",
     "privacy_policy": "Patakaran sa Privacy",
     "terms_of_service": "Mga Tuntunin ng Serbisyo",
-    "shortcut": "Shortcut"
+    "shortcut": "Shortcut",
+    "yearly": "Taun-taon",
+    "monthly": "Buwanan"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Sigurado ka bang gusto mong kanselahin? Paki-tandaan na kapag kanselado, mawawala ang anumang hindi naisilid na mga pagbabago.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Oo, kanselahin",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Bumalik sa pag-e-edit",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Kinakailangan ang Pamagat"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Kinakailangan ang Pamagat",
+    "feature_card__me__manage_my_plan": "Pamahalaan ang aking plano"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Mag-upgrade para maghanap gamit si Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Mag-sign in para maghanap gamit si ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Mag-upgrade para maghanap gamit si ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Ang transkripsyon ay nag-time out.\nSubukan muli."
+    "sidebar__chat__voice_input__timeout__tooltip": "Ang transkripsyon ay nag-time out.\nSubukan muli.",
+    "pricing__upgrade__popper_card__title": "Mag-upgrade sa MaxAI Elite · Taun-taon",
+    "pricing__upgrade__popper_card__item1__title": "Unlimited paggamit ng AI",
+    "pricing__upgrade__popper_card__item2__title": "Buksan ang lahat ng mga tampok",
+    "pricing__upgrade__popper_card__item3__title": "I-save ang oras bawat araw"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Mga high-speed advanced text query: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Siguraduhing mayroong hindi bababa sa 1,500 high-speed advanced text query bawat buwan. Pagkatapos maabot ang limitasyon, maaaring bawasan ang bilis at kalidad ng modelo.",
     "image_generate__secondary__content": "Mga high-speed image query: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Siguraduhing mayroong hindi bababa sa 1,500 high-speed image query bawat buwan. Pagkatapos maabot ang limitasyon, maaaring bawasan ang bilis at kalidad ng modelo."
+    "image_generate__secondary__content__tooltip": "Siguraduhing mayroong hindi bababa sa 1,500 high-speed image query bawat buwan. Pagkatapos maabot ang limitasyon, maaaring bawasan ang bilis at kalidad ng modelo.",
+    "promotion_plan__text": "I-save ang 53% sa pamamagitan ng pag-upgrade sa MaxAI Elite Taun-taon ngayon. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "I-click para hilingin sa AI na magsulat muli, isalin, buodin, o ipaliwanag ang napiling teksto.",

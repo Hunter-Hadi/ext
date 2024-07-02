@@ -65,7 +65,9 @@
     "continue_with_email": "Mit E-Mail fortfahren",
     "privacy_policy": "Datenschutzrichtlinie",
     "terms_of_service": "Nutzungsbedingungen",
-    "shortcut": "Verknüpfung"
+    "shortcut": "Verknüpfung",
+    "yearly": "Jährlich",
+    "monthly": "Monatlich"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Sind Sie sicher, dass Sie abbrechen möchten? Bitte beachten Sie, dass nach dem Abbrechen alle nicht gespeicherten Änderungen verloren gehen.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, abbrechen",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Zurück zur Bearbeitung",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel ist erforderlich"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel ist erforderlich",
+    "feature_card__me__manage_my_plan": "Meinen Plan verwalten"
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Upgrade, um mit Claude zu suchen",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Melden Sie sich an, um mit ChatGPT zu suchen",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Upgrade, um mit ChatGPT zu suchen",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkription abgelaufen.\nBitte versuchen Sie es erneut."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkription abgelaufen.\nBitte versuchen Sie es erneut.",
+    "pricing__upgrade__popper_card__title": "Auf MaxAI Elite · Jährlich upgraden",
+    "pricing__upgrade__popper_card__item1__title": "Unbegrenzte KI-Nutzung",
+    "pricing__upgrade__popper_card__item2__title": "Alle Funktionen freischalten",
+    "pricing__upgrade__popper_card__item3__title": "Täglich Stunden sparen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Hochgeschwindigkeits fortgeschrittene Textabfragen: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits fortgeschrittene Textabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",
     "image_generate__secondary__content": "Hochgeschwindigkeits Bildabfragen: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits Bildabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden."
+    "image_generate__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits Bildabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",
+    "promotion_plan__text": "Sparen Sie jetzt 53%, indem Sie auf MaxAI Elite Jährlich upgraden. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klicken Sie hier, um die KI aufzufordern, den ausgewählten Text neu zu schreiben, zu übersetzen, zusammenzufassen oder zu erklären.",

@@ -134,6 +134,28 @@ const useUserInfo = () => {
     )
   }, [userInfo?.subscription_payment_failed_at])
 
+  // 是否是 顶级 plan 的用户
+  const isTopPlanUser = useMemo(() => {
+    if (isPayingUser) {
+      if (
+        currentUserPlan.planName === 'ELITE_YEARLY' ||
+        currentUserPlan.planName === 'ELITE_ONE_YEAR'
+      ) {
+        return true
+      }
+    }
+
+    return false
+  }, [isPayingUser, currentUserPlan.planName])
+
+  // 判断 是否是 一次性付款的用户
+  const isPaymentOneTimeUser = useMemo(
+    () =>
+      subscriptionType === 'oneTimePayment' ||
+      userInfo?.subscription_type === 'ONE_TIME',
+    [subscriptionType, userInfo?.subscription_type],
+  )
+
   return {
     currentUserPlan,
     quotaLeftText,
@@ -152,6 +174,8 @@ const useUserInfo = () => {
 
     // 是否是 team plan 的用户
     isTeamPlanUser: !!userInfo?.group_id,
+    isTopPlanUser,
+    isPaymentOneTimeUser,
   }
 }
 export { useUserInfo }

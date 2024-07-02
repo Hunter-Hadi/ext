@@ -65,7 +65,9 @@
     "continue_with_email": "Fortsett med e-post",
     "privacy_policy": "Personvernregler",
     "terms_of_service": "Vilkår for bruk",
-    "shortcut": "Snarvei"
+    "shortcut": "Snarvei",
+    "yearly": "Årlig",
+    "monthly": "Månedlig"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Er du sikker på at du vil avbryte? Vær oppmerksom på at eventuelle ulagrede endringer vil gå tapt.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, avbryt",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tilbake til redigering",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tittel er påkrevd"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tittel er påkrevd",
+    "feature_card__me__manage_my_plan": "Administrer planen min"
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Oppgrader for å søke med Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Logg inn for å søke med ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Oppgrader for å søke med ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkripsjonen ble avbrutt.\nVennligst prøv igjen."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkripsjonen ble avbrutt.\nVennligst prøv igjen.",
+    "pricing__upgrade__popper_card__title": "Oppgrader til MaxAI Elite · Årlig",
+    "pricing__upgrade__popper_card__item1__title": "Ubegrenset AI-bruk",
+    "pricing__upgrade__popper_card__item2__title": "Lås opp alle funksjoner",
+    "pricing__upgrade__popper_card__item3__title": "Spar timer hver dag"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Høyhastighets avanserte tekstspørringer: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets avanserte tekstspørringer hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres.",
     "image_generate__secondary__content": "Høyhastighets bildespørringer: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets bildespørringer hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres."
+    "image_generate__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets bildespørringer hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres.",
+    "promotion_plan__text": "Spar 53% ved å oppgradere til MaxAI Elite Årlig nå. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikk for å be AI om å omskrive, oversette, oppsummere eller forklare den valgte teksten.",

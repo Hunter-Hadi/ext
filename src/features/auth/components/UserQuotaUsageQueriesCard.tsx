@@ -1,3 +1,4 @@
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
 import OpenInNewOutlinedIcon from '@mui/icons-material/OpenInNewOutlined'
 import RefreshOutlinedIcon from '@mui/icons-material/RefreshOutlined'
 import Box from '@mui/material/Box'
@@ -20,6 +21,7 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { AI_MODEL_SERVICE_TEXTS_MAP } from '@/features/auth/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import PayingUserUpgradePopper from '@/features/pricing/components/PayingUserUpgradePopper'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 // 大于等于 100000 表示无限，前端不用显示具体的数; 这个值是后端定的
@@ -36,6 +38,9 @@ const UserQuotaUsageQueriesCard = () => {
     syncUserQuotaUsageInfo,
     syncUserInfo,
     isPayingUser,
+    isTopPlanUser,
+    isFreeUser,
+    subscriptionType,
   } = useUserInfo()
 
   // 只在第一次加载时, 同步用户的 quota 使用量信息
@@ -48,6 +53,24 @@ const UserQuotaUsageQueriesCard = () => {
     return userInfoLoading || userQuotaUsage.loading
   }, [userInfoLoading, userQuotaUsage.loading])
 
+  const shownPlanText = useMemo(() => {
+    let text = startCase(currentUserPlan.name)
+
+    if (subscriptionType) {
+      if (subscriptionType === 'oneTimePayment') {
+        // do nothing`;
+      } else {
+        text += ` · ${
+          subscriptionType === 'monthly'
+            ? t('common:monthly')
+            : t('common:yearly')
+        }`
+      }
+    }
+
+    return text
+  }, [currentUserPlan.name, subscriptionType, t])
+
   return (
     <Box>
       <List
@@ -57,7 +80,7 @@ const UserQuotaUsageQueriesCard = () => {
               ? 'rgb(32, 33, 36)'
               : 'rgb(255,255,255)',
           p: '0 !important',
-          borderRadius: '4px',
+          borderRadius: '8px',
           border: (t) =>
             t.palette.mode === 'dark'
               ? '1px solid rgba(255, 255, 255, 0.12)'
@@ -68,6 +91,31 @@ const UserQuotaUsageQueriesCard = () => {
           },
         }}
       >
+        {/* 不是顶级plan user 显示 upgrade promotion */}
+        {!isTopPlanUser && isPayingUser ? (
+          <Stack
+            direction={'row'}
+            justifyContent={'flex-end'}
+            sx={{
+              px: 3,
+              py: 1,
+              bgcolor: (t) =>
+                t.palette.mode === 'dark' ? '#090909' : '#FBF6FF',
+            }}
+          >
+            <Typography
+              fontSize={14}
+              lineHeight={1.5}
+              fontWeight={500}
+              sx={{
+                color: 'primary.main',
+              }}
+            >
+              {t('quota_usage_card:promotion_plan__text')}
+            </Typography>
+          </Stack>
+        ) : null}
+
         <ListItem
           sx={{
             py: '16px !important',
@@ -75,17 +123,17 @@ const UserQuotaUsageQueriesCard = () => {
         >
           <ListItemText
             primary={
-              <Stack direction={'row'} alignItems="center" spacing={1}>
+              <Stack direction={'row'} alignItems='center' spacing={1}>
                 <Typography fontSize={16} lineHeight={1.5}>
                   {t('quota_usage_card:role_label', {
-                    ROLE: startCase(currentUserPlan.name),
+                    ROLE: shownPlanText,
                   })}{' '}
                   {isTeamPlanUser ? `(${t('common:team_plan')})` : ''}
                 </Typography>
                 {isPayingUser ? (
                   // 暂时只有付费用户能看到刷新按钮
                   <IconButton
-                    size="small"
+                    size='small'
                     sx={{
                       p: '4px',
                       color: 'primary.main',
@@ -110,18 +158,83 @@ const UserQuotaUsageQueriesCard = () => {
               </Stack>
             }
           />
-          <Button
-            component={'a'}
-            target={'_blank'}
-            href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
-            variant={'contained'}
-            endIcon={<OpenInNewOutlinedIcon />}
-            sx={{
-              height: 44,
-            }}
-          >
-            {t(isPayingUser ? 'common:manage_my_plan' : 'common:upgrade')}
-          </Button>
+          {isFreeUser ? (
+            <Button
+              component={'a'}
+              target={'_blank'}
+              href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
+              variant={'contained'}
+              endIcon={<OpenInNewOutlinedIcon />}
+              sx={{
+                height: 44,
+              }}
+            >
+              {t('common:upgrade')}
+            </Button>
+          ) : null}
+          {isPayingUser && !isTopPlanUser ? (
+            <PayingUserUpgradePopper
+              renderPlan='elite_yearly'
+              sx={{
+                width: 'unset',
+                px: 0,
+              }}
+              placement='bottom-end'
+            >
+              <Button
+                variant='contained'
+                fullWidth
+                startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
+                sx={{
+                  fontSize: 16,
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 2,
+                  minWidth: 200,
+                }}
+              >
+                {t('common:upgrade')}
+              </Button>
+
+              <Stack
+                alignItems='center'
+                sx={{
+                  position: 'absolute',
+                  px: 1,
+                  py: '1.5px',
+                  top: -12,
+                  right: 8,
+                  bgcolor: 'promotionColor.backgroundMain',
+                  borderRadius: 1.5,
+                  color: 'white',
+                  userSelect: 'none',
+                  pointerEvents: 'none',
+                }}
+              >
+                <Typography
+                  variant='custom'
+                  fontSize={14}
+                  lineHeight={1.5}
+                  fontWeight={500}
+                >
+                  {t('client:sidebar__user_upgrade_card__discount__title')}
+                </Typography>
+              </Stack>
+            </PayingUserUpgradePopper>
+          ) : (
+            <Button
+              component={'a'}
+              target={'_blank'}
+              href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
+              variant={'contained'}
+              endIcon={<OpenInNewOutlinedIcon />}
+              sx={{
+                height: 44,
+              }}
+            >
+              {t('common:manage_my_plan')}
+            </Button>
+          )}
         </ListItem>
         {
           // 免费用户不需要显示下面的 quota 使用量
@@ -150,12 +263,12 @@ const UserQuotaUsageQueriesCard = () => {
                           .format('YYYY-MM-DD HH:mm:ss')}
                       >
                         <Stack
-                          direction="row"
-                          alignItems="center"
+                          direction='row'
+                          alignItems='center'
                           spacing={1}
-                          ml="auto"
+                          ml='auto'
                           justifyContent={'flex-end'}
-                          width="max-content"
+                          width='max-content'
                         >
                           {/* {loading ? <CircularProgress size={16} /> : null} */}
                           <Typography fontSize={14} lineHeight={1.5}>
@@ -163,7 +276,7 @@ const UserQuotaUsageQueriesCard = () => {
                               DATE: dayjs
                                 .utc(userQuotaUsage.nextRefreshTime)
                                 .local()
-                                .format('MMM D, YYYY'),
+                                .format('YYYY-MM-DD'),
                             })}
                           </Typography>
                         </Stack>
@@ -213,11 +326,11 @@ const UserQuotaUsageQueriesCard = () => {
                     currentUserPlan.name === 'elite' ? (
                       <Stack
                         direction={'row'}
-                        alignItems="center"
+                        alignItems='center'
                         justifyContent={'flex-end'}
                         spacing={0.5}
                       >
-                        <Typography fontSize={14} color="text.secondary">
+                        <Typography fontSize={14} color='text.secondary'>
                           {t(
                             'quota_usage_card:advanced_text__secondary__content',
                             {
@@ -230,14 +343,14 @@ const UserQuotaUsageQueriesCard = () => {
                         </Typography>
                         <TextOnlyTooltip
                           arrow
-                          placement="bottom"
+                          placement='bottom'
                           title={t(
                             'quota_usage_card:advanced_text__secondary__content__tooltip',
                           )}
                         >
                           <Stack
                             alignItems={'center'}
-                            justifyContent="center"
+                            justifyContent='center'
                             borderRadius={'50%'}
                             width={20}
                             height={20}
@@ -272,11 +385,11 @@ const UserQuotaUsageQueriesCard = () => {
                     currentUserPlan.name === 'elite' ? (
                       <Stack
                         direction={'row'}
-                        alignItems="center"
+                        alignItems='center'
                         justifyContent={'flex-end'}
                         spacing={0.5}
                       >
-                        <Typography fontSize={14} color="text.secondary">
+                        <Typography fontSize={14} color='text.secondary'>
                           {t(
                             'quota_usage_card:image_generate__secondary__content',
                             {
@@ -289,14 +402,14 @@ const UserQuotaUsageQueriesCard = () => {
                         </Typography>
                         <TextOnlyTooltip
                           arrow
-                          placement="bottom"
+                          placement='bottom'
                           title={t(
                             'quota_usage_card:image_generate__secondary__content__tooltip',
                           )}
                         >
                           <Stack
                             alignItems={'center'}
-                            justifyContent="center"
+                            justifyContent='center'
                             borderRadius={'50%'}
                             width={20}
                             height={20}
@@ -321,26 +434,26 @@ export default UserQuotaUsageQueriesCard
 
 const TooltipIcon = () => {
   return (
-    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clipPath="url(#clip0_10246_92877)">
+    <svg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+      <g clipPath='url(#clip0_10246_92877)'>
         <path
-          d="M16 8.5C16 4.08172 12.4183 0.5 8 0.5C3.58172 0.5 0 4.08172 0 8.5C0 12.9183 3.58172 16.5 8 16.5C12.4183 16.5 16 12.9183 16 8.5Z"
-          fill="currentColor"
-          fillOpacity="0.08"
+          d='M16 8.5C16 4.08172 12.4183 0.5 8 0.5C3.58172 0.5 0 4.08172 0 8.5C0 12.9183 3.58172 16.5 8 16.5C12.4183 16.5 16 12.9183 16 8.5Z'
+          fill='currentColor'
+          fillOpacity='0.08'
         />
         <path
-          d="M7.52978 12.5001V6.39101H8.4684V12.5001H7.52978ZM8.00703 5.37283C7.8241 5.37283 7.66633 5.31051 7.53375 5.18589C7.40383 5.06127 7.33887 4.91146 7.33887 4.73646C7.33887 4.56146 7.40383 4.41165 7.53375 4.28703C7.66633 4.16241 7.8241 4.1001 8.00703 4.1001C8.18999 4.1001 8.34647 4.16241 8.47639 4.28703C8.60895 4.41165 8.67519 4.56146 8.67519 4.73646C8.67519 4.91146 8.60895 5.06127 8.47639 5.18589C8.34647 5.31051 8.18999 5.37283 8.00703 5.37283Z"
-          fill="currentColor"
-          fillOpacity="0.6"
+          d='M7.52978 12.5001V6.39101H8.4684V12.5001H7.52978ZM8.00703 5.37283C7.8241 5.37283 7.66633 5.31051 7.53375 5.18589C7.40383 5.06127 7.33887 4.91146 7.33887 4.73646C7.33887 4.56146 7.40383 4.41165 7.53375 4.28703C7.66633 4.16241 7.8241 4.1001 8.00703 4.1001C8.18999 4.1001 8.34647 4.16241 8.47639 4.28703C8.60895 4.41165 8.67519 4.56146 8.67519 4.73646C8.67519 4.91146 8.60895 5.06127 8.47639 5.18589C8.34647 5.31051 8.18999 5.37283 8.00703 5.37283Z'
+          fill='currentColor'
+          fillOpacity='0.6'
         />
       </g>
       <defs>
-        <clipPath id="clip0_10246_92877">
+        <clipPath id='clip0_10246_92877'>
           <rect
-            width="16"
-            height="16"
-            fill="white"
-            transform="translate(0 0.5)"
+            width='16'
+            height='16'
+            fill='white'
+            transform='translate(0 0.5)'
           />
         </clipPath>
       </defs>

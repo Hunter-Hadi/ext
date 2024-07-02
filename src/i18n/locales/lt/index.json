@@ -65,7 +65,9 @@
     "continue_with_email": "Prisijungti su el. paštu",
     "privacy_policy": "Privatumo politika",
     "terms_of_service": "Paslaugų teikimo sąlygos",
-    "shortcut": "Trumpikas kelias"
+    "shortcut": "Trumpikas kelias",
+    "yearly": "Kasmetinis",
+    "monthly": "Mėnesinis"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Ar tikrai norite atšaukti? Prašome prisiminti, kad atšaukus visi neišsaugoti pakeitimai bus prarasti.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Taip, atšaukti",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Grįžti prie redagavimo",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Pavadinimas yra privalomas"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Pavadinimas yra privalomas",
+    "feature_card__me__manage_my_plan": "Valdyti mano planą"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Atnaujinkite, norėdami ieškoti su Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Prisijunkite, norėdami ieškoti su ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Atnaujinkite, norėdami ieškoti su ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija pasibaigė.\nPabandykite dar kartą."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija pasibaigė.\nPabandykite dar kartą.",
+    "pricing__upgrade__popper_card__title": "Pereiti prie MaxAI Elite · Kasmetinis",
+    "pricing__upgrade__popper_card__item1__title": "Neribotas dirbtinio intelekto naudojimas",
+    "pricing__upgrade__popper_card__item2__title": "Atrakinti visus funkcionalumus",
+    "pricing__upgrade__popper_card__item3__title": "Sutaupyti valandas kiekvieną dieną"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Greitos pažangios teksto užklausos: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų pažangių teksto užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
     "image_generate__secondary__content": "Greitos vaizdo užklausos: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų vaizdo užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti."
+    "image_generate__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų vaizdo užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
+    "promotion_plan__text": "Dabar sutaupykite 53% persikėlus į MaxAI Elite Kasmetinę planą. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Spustelėkite, norėdami paprašyti AI peržiūrėti, išversti, santraukoti ar paaiškinti pasirinktą tekstą.",

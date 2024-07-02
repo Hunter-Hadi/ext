@@ -132,36 +132,39 @@ const usePaymentSessionFetcher = () => {
   )
 
   const createPortalSession = useCallback(
-    async (type: RENDER_PLAN_TYPE, coupon = '') => {
+    async (type?: RENDER_PLAN_TYPE, coupon = '') => {
       try {
         setLoading(true)
-
-        const { promotion_code, discount_value } = planPricingInfo[type] || {}
-
-        let price = planPricingInfo[type].price
-
-        const isValidCoupon = Boolean(
-          promotion_code && promotion_code === coupon,
-        )
-
-        let discountValue = 1
-
-        if (isValidCoupon) {
-          discountValue = discount_value ?? 1
-          price = roundToDecimal(price * discountValue)
-        }
 
         const result = await post<{ redirect_url: string }>(
           '/subscription/create_portal_session',
           {},
         )
         if (result?.data) {
-          mixpanelTrack('change_plan_started', {
-            value: price,
-            currency: 'USD',
-            itemName: type,
-            coupon,
-          })
+          if (type) {
+            const { promotion_code, discount_value } =
+              planPricingInfo[type] || {}
+
+            let price = planPricingInfo[type].price
+
+            const isValidCoupon = Boolean(
+              promotion_code && promotion_code === coupon,
+            )
+
+            let discountValue = 1
+
+            if (isValidCoupon) {
+              discountValue = discount_value ?? 1
+              price = roundToDecimal(price * discountValue)
+            }
+            mixpanelTrack('change_plan_started', {
+              value: price,
+              currency: 'USD',
+              itemName: type,
+              coupon,
+            })
+          }
+
           return result.data
         }
         return null

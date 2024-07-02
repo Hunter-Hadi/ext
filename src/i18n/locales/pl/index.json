@@ -65,7 +65,9 @@
     "continue_with_email": "Kontynuuj z adresem e-mail",
     "privacy_policy": "Polityka prywatności",
     "terms_of_service": "Warunki korzystania",
-    "shortcut": "Skrót"
+    "shortcut": "Skrót",
+    "yearly": "Rocznie",
+    "monthly": "Miesięcznie"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Czy na pewno chcesz anulować? Proszę zauważyć, że po anulowaniu wszystkie niezapisane zmiany zostaną utracone.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Tak, anuluj",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Powrót do edycji",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tytuł jest wymagany"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tytuł jest wymagany",
+    "feature_card__me__manage_my_plan": "Zarządzaj moim planem"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Uaktualnij, aby wyszukiwać z Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Zaloguj się, aby wyszukiwać z ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Uaktualnij, aby wyszukiwać z ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkrypcja przekroczyła limit czasu.\nProszę spróbuj ponownie."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkrypcja przekroczyła limit czasu.\nProszę spróbuj ponownie.",
+    "pricing__upgrade__popper_card__title": "Uaktualnij do MaxAI Elite · Rocznie",
+    "pricing__upgrade__popper_card__item1__title": "Nieograniczone korzystanie z AI",
+    "pricing__upgrade__popper_card__item2__title": "Odblokuj wszystkie funkcje",
+    "pricing__upgrade__popper_card__item3__title": "Oszczędź godziny codziennie"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Zapytania zaawansowane tekstowe o dużej prędkości: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zapewnij co najmniej 1500 zapytań zaawansowanych tekstowych o dużej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
     "image_generate__secondary__content": "Zapytania obrazowe o dużej prędkości: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Zapewnij co najmniej 1500 zapytań obrazowych o dużej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone."
+    "image_generate__secondary__content__tooltip": "Zapewnij co najmniej 1500 zapytań obrazowych o dużej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
+    "promotion_plan__text": "Oszczędź 53% uaktualniając teraz do MaxAI Elite Rocznie. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknij, aby poprosić AI o przepisanie, tłumaczenie, streszczenie lub wyjaśnienie zaznaczonego tekstu.",

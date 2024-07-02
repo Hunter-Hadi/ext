@@ -65,7 +65,9 @@
     "continue_with_email": "Continua amb correu electrònic",
     "privacy_policy": "Política de privacitat",
     "terms_of_service": "Termes del servei",
-    "shortcut": "Drecera"
+    "shortcut": "Drecera",
+    "yearly": "Anual",
+    "monthly": "Mensual"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Esteu segur que voleu cancel·lar? Tingueu en compte que un cop cancel·lat, es perdran els canvis no desats.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sí, cancel·la",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Torna a l'edició",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Cal un títol"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Cal un títol",
+    "feature_card__me__manage_my_plan": "Gestionar el meu pla"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Millora per cercar amb Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Inicia sessió per cercar amb ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Millora per cercar amb ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "La transcripció ha expirat.\nSi us plau, torneu-ho a provar."
+    "sidebar__chat__voice_input__timeout__tooltip": "La transcripció ha expirat.\nSi us plau, torneu-ho a provar.",
+    "pricing__upgrade__popper_card__title": "Millora a MaxAI Elite · Anual",
+    "pricing__upgrade__popper_card__item1__title": "Ús il·limitat d'IA",
+    "pricing__upgrade__popper_card__item2__title": "Desbloqueja totes les funcionalitats",
+    "pricing__upgrade__popper_card__item3__title": "Estalvia hores cada dia"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Consultes avançades de text d'alta velocitat: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes avançades de text d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
     "image_generate__secondary__content": "Consultes d'imatges d'alta velocitat: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes d'imatges d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se."
+    "image_generate__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes d'imatges d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
+    "promotion_plan__text": "Estalvia un 53% millorant a MaxAI Elite Anual ara. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Feu clic per demanar a l'IA que reescriu, tradueixi, resumisca o expliqui el text seleccionat.",

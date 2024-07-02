@@ -65,7 +65,9 @@
     "continue_with_email": "E-posta ile Devam Et",
     "privacy_policy": "Gizlilik Politikası",
     "terms_of_service": "Hizmet Şartları",
-    "shortcut": "Kısayol"
+    "shortcut": "Kısayol",
+    "yearly": "Yıllık",
+    "monthly": "Aylık"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "İptal etmek istediğinizden emin misiniz? Lütfen unutmayın, iptal edildiğinde kaydedilmemiş değişiklikler kaybolacaktır.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Evet, iptal et",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Düzenlemeye geri dön",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Başlık gereklidir"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Başlık gereklidir",
+    "feature_card__me__manage_my_plan": "Planımı yönet"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Claude ile arama yapmak için yükseltin",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ChatGPT ile arama yapmak için giriş yapın",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ChatGPT ile arama yapmak için yükseltin",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkript süresi doldu.\nLütfen tekrar deneyin."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkript süresi doldu.\nLütfen tekrar deneyin.",
+    "pricing__upgrade__popper_card__title": "MaxAI Elite'e Yükselt · Yıllık",
+    "pricing__upgrade__popper_card__item1__title": "Sınırsız AI kullanımı",
+    "pricing__upgrade__popper_card__item2__title": "Tüm özellikleri aç",
+    "pricing__upgrade__popper_card__item3__title": "Her gün saatlerce zaman kazanın"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Yüksek hızlı gelişmiş metin sorguları: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı gelişmiş metin sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir.",
     "image_generate__secondary__content": "Yüksek hızlı görüntü sorguları: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı görüntü sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir."
+    "image_generate__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı görüntü sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir.",
+    "promotion_plan__text": "MaxAI Elite Yıllık'a yükselerek %53 tasarruf edin. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Seçili metni yeniden yazdırmak, çevirmek, özetlemek veya açıklamak için AI'ya sormak için tıklayın.",

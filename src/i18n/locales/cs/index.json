@@ -65,7 +65,9 @@
     "continue_with_email": "Pokračovat s emailem",
     "privacy_policy": "Zásady ochrany osobních údajů",
     "terms_of_service": "Podmínky služby",
-    "shortcut": "Zkratka"
+    "shortcut": "Zkratka",
+    "yearly": "Ročně",
+    "monthly": "Měsíčně"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Jste si jisti, že chcete zrušit? Vezměte prosím na vědomí, že po zrušení budou ztraceny všechny neuložené změny.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ano, zrušit",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Zpět k úpravám",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Název je povinný"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Název je povinný",
+    "feature_card__me__manage_my_plan": "Spravovat můj plán"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Upgradujte pro vyhledávání s Claudem",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Přihlaste se pro vyhledávání s ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Upgradujte pro vyhledávání s ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Přepis vypršel.\nZkuste to prosím znovu."
+    "sidebar__chat__voice_input__timeout__tooltip": "Přepis vypršel.\nZkuste to prosím znovu.",
+    "pricing__upgrade__popper_card__title": "Upgradujte na MaxAI Elite · Ročně",
+    "pricing__upgrade__popper_card__item1__title": "Neomezené použití AI",
+    "pricing__upgrade__popper_card__item2__title": "Odemknout všechny funkce",
+    "pricing__upgrade__popper_card__item3__title": "Ušetřete hodiny každý den"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Rychlé pokročilé textové dotazy: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých pokročilých textových dotazů každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu.",
     "image_generate__secondary__content": "Rychlé dotazy na obrázky: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých dotazů na obrázky každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu."
+    "image_generate__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých dotazů na obrázky každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu.",
+    "promotion_plan__text": "Ušetřete 53% při upgradu na MaxAI Elite Ročně nyní. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikněte pro požádání AI o přepsání, překlad, shrnutí nebo vysvětlení vybraného textu.",

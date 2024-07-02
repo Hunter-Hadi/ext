@@ -65,7 +65,9 @@
     "continue_with_email": "ادامه با ایمیل",
     "privacy_policy": "سیاست حفظ حریم خصوصی",
     "terms_of_service": "شرایط خدمات",
-    "shortcut": "میانبر"
+    "shortcut": "میانبر",
+    "yearly": "سالانه",
+    "monthly": "ماهانه"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "آیا مطمئن هستید که می‌خواهید لغو کنید؟ لطفا توجه داشته باشید که پس از لغو، هر تغییر ذخیره نشده‌ای از بین خواهد رفت.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "بله، لغو کن",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "بازگشت به ویرایش",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان الزامی است"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان الزامی است",
+    "feature_card__me__manage_my_plan": "مدیریت طرح من"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "ارتقا دهید تا با کلود جستجو کنید",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "ورود کنید تا با چت‌جی‌پی‌تی جستجو کنید",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "ارتقا دهید تا با چت‌جی‌پی‌تی جستجو کنید",
-    "sidebar__chat__voice_input__timeout__tooltip": "زمان تبدیل صوت به متن به پایان رسید.\nلطفاً دوباره امتحان کنید."
+    "sidebar__chat__voice_input__timeout__tooltip": "زمان تبدیل صوت به متن به پایان رسید.\nلطفاً دوباره امتحان کنید.",
+    "pricing__upgrade__popper_card__title": "ارتقا به MaxAI Elite · سالانه",
+    "pricing__upgrade__popper_card__item1__title": "استفاده نامحدود از هوش مصنوعی",
+    "pricing__upgrade__popper_card__item2__title": "باز کردن تمام ویژگی‌ها",
+    "pricing__upgrade__popper_card__item3__title": "صرفه جویی در ساعت‌ها هر روز"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "کوئری‌های پیشرفته متنی با سرعت بالا: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "حداقل 1,500 کوئری پیشرفته متنی با سرعت بالا را در هر ماه تضمین کنید. پس از رسیدن به حد، سرعت و کیفیت مدل ممکن است کاهش یابد.",
     "image_generate__secondary__content": "کوئری‌های تصویری با سرعت بالا: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "حداقل 1,500 کوئری تصویری با سرعت بالا را در هر ماه تضمین کنید. پس از رسیدن به حد، سرعت و کیفیت مدل ممکن است کاهش یابد."
+    "image_generate__secondary__content__tooltip": "حداقل 1,500 کوئری تصویری با سرعت بالا را در هر ماه تضمین کنید. پس از رسیدن به حد، سرعت و کیفیت مدل ممکن است کاهش یابد.",
+    "promotion_plan__text": "با ارتقا به MaxAI Elite سالانه، 53% صرفه جویی کنید. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "برای درخواست بازنویسی، ترجمه، خلاصه‌سازی یا توضیح متن انتخاب شده، کلیک کنید.",

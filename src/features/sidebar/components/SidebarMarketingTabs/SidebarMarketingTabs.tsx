@@ -1,4 +1,5 @@
 import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined'
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -15,6 +16,7 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
+import PayingUserUpgradePopper from '@/features/pricing/components/PayingUserUpgradePopper'
 import SidebarSurveyContent from '@/features/sidebar/components/SidebarChatBox/SidebarSurveyDialog/SidebarSurveyContent'
 import useFeedbackSurveyStatus from '@/features/survey/hooks/useFeedbackSurveyStatus'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -396,13 +398,54 @@ const SurveyTabButton: FC = () => {
   )
 }
 
+const UpgradePlanTabButton: FC = () => {
+  const { t } = useTranslation()
+  return (
+    <PayingUserUpgradePopper renderPlan='elite_yearly'>
+      <Button
+        data-testid={`maxai--sidebar--upgrade-plan`}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: 0.5,
+          minWidth: 'unset',
+          width: '100%',
+          color: 'text.secondary',
+          py: 0.5,
+          position: 'relative',
+          borderRadius: 2,
+          '&:hover': {
+            bgcolor: (t) =>
+              t.palette.mode === 'dark'
+                ? 'rgba(44, 44, 44, 1)'
+                : 'rgba(144, 101, 176, 0.16)',
+            color: 'primary.main',
+          },
+        }}
+      >
+        <ElectricBoltIcon />
+        <Typography
+          fontSize={12}
+          color={'inherit'}
+          data-testid={`max-ai__upgrade-plan`}
+          lineHeight={1}
+        >
+          {t('common:upgrade')}
+        </Typography>
+      </Button>
+    </PayingUserUpgradePopper>
+  )
+}
+
 /**
  * SidebarMarketingTabs - 营销标签页
  * @constructor
  */
 const SidebarMarketingTabs: FC = () => {
   const { isLogin, loaded } = useAuthLogin()
-  const { isFreeUser } = useUserInfo()
+  const { isFreeUser, isTopPlanUser } = useUserInfo()
   const { canShowSurvey } = useFeedbackSurveyStatus()
   if (!isLogin || !loaded) {
     return null
@@ -414,6 +457,7 @@ const SidebarMarketingTabs: FC = () => {
       width={'100%'}
       spacing={2}
     >
+      {!isTopPlanUser && <UpgradePlanTabButton />}
       {isFreeUser && <RewardsTabButton />}
       {!isFreeUser && <AffiliateTabButton />}
       {canShowSurvey && <SurveyTabButton />}

@@ -97,7 +97,6 @@
     "sync__different_settings__keep_local_button__confirm": "Are you sure you want to replace your online account settings with your local browser settings (including your custom prompts if any)? Doing so will undo your online account settings permanently and cannot be undone.",
     "feature_card__me__title": "Me and MaxAI",
     "feature_card__me__my_plan": "My plan",
-    "feature_card__me__manage_my_plan": "Manage my plan",
     "feature_card__set_up__title": "How to set up",
     "feature_card__prompts__title": "My own prompts",
     "feature_card__prompts__place_my_own_prompts_switch": "Place my own prompts at the top",

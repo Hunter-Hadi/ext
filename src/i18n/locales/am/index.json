@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "እርስዎ ተወዳጅነት ለመሰረዝ ነው? እባክዎ በዚህ ማስተላለፊያ ውስጥ ያለውን ሁሉንም ያስተዳድር ይችላል.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "አዎ, ሰርዝ",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "ወደ እንዲሁም ለማስተካከል",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "ርዕስ አስፈላጊ ነው",
-    "feature_card__me__manage_my_plan": "የእኔ ማህበራዊነትን አስተዳደር"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ርዕስ አስፈላጊ ነው"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",

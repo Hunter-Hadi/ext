@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Sigurado ka bang gusto mong kanselahin? Paki-tandaan na kapag kanselado, mawawala ang anumang hindi naisilid na mga pagbabago.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Oo, kanselahin",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Bumalik sa pag-e-edit",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Kinakailangan ang Pamagat",
-    "feature_card__me__manage_my_plan": "Pamahalaan ang aking plano"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Kinakailangan ang Pamagat"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",

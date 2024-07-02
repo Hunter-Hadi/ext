@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "هل أنت متأكد أنك تريد الإلغاء؟ يرجى ملاحظة أنه بمجرد الإلغاء، ستفقد أي تغييرات غير محفوظة.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "نعم، إلغاء",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "العودة للتحرير",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "العنوان مطلوب",
-    "feature_card__me__manage_my_plan": "إدارة خطتي"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "العنوان مطلوب"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",

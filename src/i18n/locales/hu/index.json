@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Biztosan megszakítja? Kérjük, vegye figyelembe, hogy a megszakítás után az összes mentetlen változtatás elveszik.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Igen, megszakítás",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Vissza a szerkesztéshez",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "A cím kötelező",
-    "feature_card__me__manage_my_plan": "Tervem kezelése"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "A cím kötelező"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",

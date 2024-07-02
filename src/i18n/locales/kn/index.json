@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "ಖಾತರಿಯಾಗಿ ರದ್ದು ಮಾಡಲು ನೀವು ಖಚಿತವಾಗಿದ್ದೀರಿಯೇ? ದಯವಿಟ್ಟು ಗಮನಿಸಿ, ರದ್ದು ಮಾಡಲು ನಿಮ್ಮಲ್ಲಿ ಯಾವುದೇ ಹೊಂದಿಕೆಗಳು ಉಳಿದಿರುವುದಿಲ್ಲ.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "ಹೌದು, ರದ್ದು ಮಾಡಿ",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "ಸಂಪಾದನೆಗೆ ಹಿಂತಿರುಗಿ",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "ಶೀರ್ಷಿಕೆ ಅಗತ್ಯವಿದೆ",
-    "feature_card__me__manage_my_plan": "ನನ್ನ ಯೋಜನೆಯನ್ನು ನಿರ್ವಹಿಸಿ"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ಶೀರ್ಷಿಕೆ ಅಗತ್ಯವಿದೆ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",

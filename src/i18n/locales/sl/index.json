@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Ali ste prepričani, da želite preklicati? Prosimo, upoštevajte, da bodo vsi neshranjeni podatki izgubljeni.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, prekliči",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Nazaj na urejanje",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obvezen",
-    "feature_card__me__manage_my_plan": "Upravljanje mojega načrta"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obvezen"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",

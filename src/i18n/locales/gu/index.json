@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "શું તમે ખાતરી છો કે તમે રદ કરવા માંગો છો? કૃપા કરીને ધ્યાન આપો કે એકવાર રદ કરેલ પછી, કોઈપણ સંગ્રહિત થયેલ ફેરફારો ગુમ થશે.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "હા, રદ કરો",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "સંપાદન પર પાછા જાઓ",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "શીર્ષક જરૂરી છે",
-    "feature_card__me__manage_my_plan": "મારી યોજના વ્યવસ્થાપન કરો"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "શીર્ષક જરૂરી છે"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",

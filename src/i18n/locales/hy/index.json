@@ -274,8 +274,7 @@
     "feature_card__prompts__confirm__cancel__description": "Դուք վստահ եք, որ ցանկանում եք չեղարկելը: Կարող է լինել, որ չպահպանված փոփոխություններ կկորչեն:",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Այո, չեղարկել",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Վերադառնալ խմբագրմանը",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Վերնագիրը պարտադիր է",
-    "feature_card__me__manage_my_plan": "Կառավարել իմ պլանը"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Վերնագիրը պարտադիր է"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",

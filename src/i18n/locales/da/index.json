@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Er du sikker på, at du vil annullere? Bemærk venligst, at eventuelle usavede ændringer vil gå tabt.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, annuller",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tilbage til redigering",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel er påkrævet",
-    "feature_card__me__manage_my_plan": "Administrer min plan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel er påkrævet"
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",

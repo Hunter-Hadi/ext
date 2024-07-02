@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Jeste li sigurni da želite otkazati? Imajte na umu da će se izgubiti sve nespremljene promjene.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, otkaži",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Natrag na uređivanje",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obavezan",
-    "feature_card__me__manage_my_plan": "Upravljaj mojim planom"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obavezan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",

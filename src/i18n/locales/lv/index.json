@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Vai tiešām vēlaties atcelt? Lūdzu, ņemiet vērā, ka pēc atcelšanas tiks zaudētas visas nesaglabātās izmaiņas.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Jā, atcelt",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Atpakaļ pie rediģēšanas",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Nepieciešams ievadīt virsrakstu",
-    "feature_card__me__manage_my_plan": "Pārvaldīt manu plānu"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Nepieciešams ievadīt virsrakstu"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",

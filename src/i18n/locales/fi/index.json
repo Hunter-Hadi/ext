@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Oletko varma, että haluat peruuttaa? Huomaa, että peruuttamisen jälkeen kaikki tallentamattomat muutokset menetetään.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Kyllä, peruuta",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Takaisin muokkaamiseen",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Otsikko vaaditaan",
-    "feature_card__me__manage_my_plan": "Hallitse suunnitelmaani"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Otsikko vaaditaan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",

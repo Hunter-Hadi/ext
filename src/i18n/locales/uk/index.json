@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "کیا آپ واقعی منسوخ کرنا چاہتے ہیں؟ براہ کرم نوٹ فرمائیں کہ ایک بار منسوخ کردیا جائے گا تو کوئی بھی غیر محفوظ تبدیلیاں ضائع ہوجائیں گی۔",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "جی ہاں، منسوخ کریں",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "ترمیم پر واپس جائیں",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان ضروری ہے",
-    "feature_card__me__manage_my_plan": "میری منصوبہ بندی کو انتظام کریں"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان ضروری ہے"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",

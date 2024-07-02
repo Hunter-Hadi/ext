@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Esteu segur que voleu cancel·lar? Tingueu en compte que un cop cancel·lat, es perdran els canvis no desats.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sí, cancel·la",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Torna a l'edició",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Cal un títol",
-    "feature_card__me__manage_my_plan": "Gestionar el meu pla"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Cal un títol"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",

@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Sigur dorești să anulezi? Te rugăm să reții că, odată anulată, orice modificări nesalvate vor fi pierdute.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, anulează",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Înapoi la editare",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titlul este obligatoriu",
-    "feature_card__me__manage_my_plan": "Gestionează planul meu"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titlul este obligatoriu"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",

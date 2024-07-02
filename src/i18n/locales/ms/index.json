@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Adakah anda pasti ingin membatalkan? Sila ambil perhatian bahawa sekiranya dibatalkan, sebarang perubahan yang belum disimpan akan hilang.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ya, batalkan",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Kembali ke penyuntingan",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tajuk diperlukan",
-    "feature_card__me__manage_my_plan": "Uruskan rancangan saya"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tajuk diperlukan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",

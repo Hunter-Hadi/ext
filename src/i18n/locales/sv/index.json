@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Är du säker på att du vill avbryta? Observera att alla osparade ändringar kommer att gå förlorade.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, avbryt",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tillbaka till redigering",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel krävs",
-    "feature_card__me__manage_my_plan": "Hantera mitt plan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel krävs"
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",

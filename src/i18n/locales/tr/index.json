@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "İptal etmek istediğinizden emin misiniz? Lütfen unutmayın, iptal edildiğinde kaydedilmemiş değişiklikler kaybolacaktır.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Evet, iptal et",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Düzenlemeye geri dön",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Başlık gereklidir",
-    "feature_card__me__manage_my_plan": "Planımı yönet"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Başlık gereklidir"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",

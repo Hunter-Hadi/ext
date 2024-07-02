@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Kas olete kindel, et soovite tühistada? Pange tähele, et tühistamisel kaotate kõik salvestamata muudatused.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Jah, tühista",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tagasi redigeerimise juurde",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Pealkiri on kohustuslik",
-    "feature_card__me__manage_my_plan": "Halda oma plaani"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Pealkiri on kohustuslik"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",

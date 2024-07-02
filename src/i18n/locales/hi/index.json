@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "क्या आप वाकई रद्द करना चाहते हैं? कृपया ध्यान दें कि एक बार रद्द कर दिया जाएगा, तो कोई भी असहेजित परिवर्तन खो जाएगा।",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "हाँ, रद्द करें",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "संपादन पर वापस जाएं",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "शीर्षक आवश्यक है",
-    "feature_card__me__manage_my_plan": "मेरी योजना प्रबंधित करें"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "शीर्षक आवश्यक है"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",

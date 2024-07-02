@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Sei sicuro di voler annullare? Nota che una volta annullato, tutte le modifiche non salvate andranno perse.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sì, annulla",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Torna alla modifica",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Il titolo è obbligatorio",
-    "feature_card__me__manage_my_plan": "Gestisci il mio piano"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Il titolo è obbligatorio"
   },
   "client": {
     "sidebar__button__close_sidebar": "Chiudi la barra laterale",

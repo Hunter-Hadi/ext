@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "നിങ്ങൾ താൽപ്പര്യപ്പെടുന്നുണ്ടോ എന്ന് ഉറപ്പാക്കാൻ താൽപ്പര്യപ്പെടുന്നുണ്ടോ? ദയവായി ശ്രമിക്കുന്നത് റദ്ദാക്കിയാൽ, ഏതെങ്കിലും സേവ് ചെയ്യാനാവാത്ത മാറ്റങ്ങൾ നഷ്ടപ്പെടും.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "അതെ, റദ്ദാക്കുക",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "എഡിറ്റിംഗിലേക്ക് മടങ്ങുക",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "ശീർഷകം ആവശ്യമാണ്",
-    "feature_card__me__manage_my_plan": "എന്റെ പ്ലാൻ നിര്‍വഹിക്കുക"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ശീർഷകം ആവശ്യമാണ്"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",

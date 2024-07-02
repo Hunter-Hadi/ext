@@ -1,10 +1,10 @@
+import PageCitation from '@/features/citation/core/PageCitation'
 import {
   ICitationMatch,
   ICitationNode,
   ICitationService,
 } from '@/features/citation/types'
 import { createCitationNode } from '@/features/citation/utils'
-import { wait } from '@/utils'
 
 // https://github.com/mozilla/pdf.js/issues/1875
 // pdf.js可以用这种方式去全文匹配，如果是换行必须要用空格去替换掉否则匹配不出来
@@ -19,7 +19,10 @@ export interface IPDFCitationMatch extends ICitationMatch {
   pageNum: number
 }
 
-export default class PDFCitation implements ICitationService {
+export default class PDFCitation
+  extends PageCitation
+  implements ICitationService
+{
   private PDFViewerApplication: any
   private pdfDocument: any
   private pdfViewer: any
@@ -28,12 +31,9 @@ export default class PDFCitation implements ICitationService {
   caches: Map<string, IPDFCitationMatch[]> = new Map()
   // 记录每页的字符数量
   pages: number[] = []
-  // 查询状态
-  loading = false
-  // 查询时间
-  searchTime = Date.now()
 
-  constructor() {
+  constructor(conversationId?: string) {
+    super(conversationId)
     this.init()
   }
 
@@ -43,6 +43,8 @@ export default class PDFCitation implements ICitationService {
     this.pdfViewer = this.PDFViewerApplication?.pdfViewer
     return this
   }
+
+  destroy() {}
 
   /**
    * 跳转到对应页面
@@ -178,20 +180,7 @@ export default class PDFCitation implements ICitationService {
         await this.scrollElement(
           selection.getRangeAt(0).getBoundingClientRect(),
         )
-        // 触发context menu
-        startMarked.dispatchEvent(
-          new MouseEvent('mousedown', {
-            cancelable: true,
-            bubbles: true,
-          }),
-        )
-        await wait(500)
-        startMarked.dispatchEvent(
-          new MouseEvent('mouseup', {
-            cancelable: true,
-            bubbles: true,
-          }),
-        )
+        await this.dispatchContextMenu(startMarked, 100)
       }
     }
   }
@@ -201,22 +190,24 @@ export default class PDFCitation implements ICitationService {
    */
   async findText(searchString: string, startIndex: number) {
     if (!searchString) {
-      return ''
+      return { title: '', matches: [] }
     }
     if (this.caches.get(searchString)) {
       const result = this.caches.get(searchString)!
       await this.selectMatches(result)
-      return `${result[0] ? result[0].pageNum : ''}`
+      return { title: `${result[0] ? result[0].pageNum : ''}`, matches: result }
     }
     if (this.loading) {
-      return ''
+      return { title: '', matches: [] }
     }
+
+    this.loading = true
+    this.searchTime = Date.now()
 
     const numPages = this.pdfDocument.numPages
     let matches: IPDFCitationMatch[] = []
     let currentContent = ''
     let totalPageTextLength = 0
-    this.loading = true
 
     try {
       /**
@@ -374,8 +365,6 @@ export default class PDFCitation implements ICitationService {
       let beforeStart = 1
       let afterStart = numPages
 
-      this.searchTime = Date.now()
-
       while (beforeStart < afterStart) {
         if (Date.now() - this.searchTime > 1000 * 20) {
           // 查询时间大于20s超时返回
@@ -420,6 +409,7 @@ export default class PDFCitation implements ICitationService {
     }
 
     this.loading = false
-    return `${matches[0] ? matches[0].pageNum : ''}`
+
+    return { title: `${matches[0] ? matches[0].pageNum : ''}`, matches }
   }
 }

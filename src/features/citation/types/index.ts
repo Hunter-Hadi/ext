@@ -3,8 +3,17 @@ import { IRangyRect } from '@/features/contextMenu/types'
 export interface ICitationService {
   loading: boolean
 
-  // findText(content: string): Promise<[] | [ICitationMatch, ICitationMatch]>
-  findText(content: string, startIndex: number): Promise<string>
+  init(): void
+
+  destroy(): void
+
+  findText(
+    content: string,
+    startIndex: number,
+  ): Promise<{
+    title: string
+    matches: ICitationMatch[]
+  }>
 }
 
 export interface ICitationMatch {

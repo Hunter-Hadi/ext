@@ -196,9 +196,12 @@ export const isInlineElement = (tagName: string) => {
 }
 
 /**
- * 获取可读网页内容
+ * 获取Readability.parse解析后的对象
+ * 移除对content的序列化
+ * @param replaceBody
+ * @param options
  */
-export const getReadabilityPageContent = async (
+export const getReadabilityArticle = (
   replaceBody?: HTMLElement,
   options?: any,
 ) => {
@@ -214,7 +217,22 @@ export const getReadabilityPageContent = async (
   const contentElement =
     readabilityArticle?.content as any as HTMLElement | null
 
-  if (readabilityArticle && contentElement) {
+  return { ...readabilityArticle, content: contentElement }
+}
+
+/**
+ * 获取可读网页内容
+ * 这里是通过readability.js库去读取网页内容
+ * @param replaceBody
+ * @param options
+ */
+export const getReadabilityPageContent = (
+  replaceBody?: HTMLElement,
+  options?: any,
+) => {
+  const readabilityArticle = getReadabilityArticle(replaceBody, options)
+
+  if (readabilityArticle?.content) {
     // 去掉每行前后的空格
     // 将两个或更多连续的换行符替换为单个换行符
     // 将两个或更多连续的空白字符（包括空格和制表符）替换为单个空格
@@ -223,14 +241,21 @@ export const getReadabilityPageContent = async (
     //   .replace(/\n{2,}/g, '\n')
     //   .replace(/[ \t]{2,}/g, ' ')
 
-    const result = `${readabilityArticle.title}\n\n${getFormattedTextFromNodes(
-      getVisibleTextNodes(contentElement),
+    return `${readabilityArticle.title}\n\n${getFormattedTextFromNodes(
+      getVisibleTextNodes(readabilityArticle.content),
     )}`
-    if (result.length > 100) {
-      return result
-    }
   }
-  const textNodes = getVisibleTextNodes(document.body)
+
+  return ''
+}
+
+/**
+ * 获取可见的网页内容
+ * 这里是手动从document.body里解析可见的文本
+ * @param element
+ */
+export const getVisibilityPageContent = (element = document.body) => {
+  const textNodes = getVisibleTextNodes(element)
   const allTextContent = getFormattedTextFromNodes(textNodes)
   return allTextContent || document.body.innerText
 }

@@ -1,6 +1,7 @@
 import {
   getIframeOrSpecialHostPageContent,
   getReadabilityPageContent,
+  getVisibilityPageContent,
 } from '@/features/chat-base/summary/utils/pageContentHelper'
 import {
   IShortcutEngineExternalEngine,
@@ -36,15 +37,14 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
   ) {
     try {
       if (this.isStopAction) return
-      const result =
+      let result =
         (await getIframeOrSpecialHostPageContent()) ||
         (await getReadabilityPageContent())
-      this.originalInnerText = document.body.innerText
       if (result.length < 100 && typeof document !== 'undefined') {
-        this.output = document.body.innerText
-      } else {
-        this.output = result
+        result = await getVisibilityPageContent()
       }
+      this.originalInnerText = document.body.innerText
+      this.output = result
     } catch (e) {
       this.error = (e as any).toString()
     }

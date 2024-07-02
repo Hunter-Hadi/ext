@@ -1,11 +1,11 @@
-import { Readability } from '@mozilla/readability'
-
 import {
   formattedTextContent,
-  getFormattedTextFromNodes,
+  getReadabilityArticle,
   getVisibleTextNodes,
 } from '@/features/chat-base/summary/utils/pageContentHelper'
 import { ICitationMatch, ICitationService } from '@/features/citation/types'
+import { scrollToRange } from '@/features/citation/utils'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { wait } from '@/utils'
 
 export default class PageCitation implements ICitationService {
@@ -15,8 +15,12 @@ export default class PageCitation implements ICitationService {
   loading = false
   // 查询时间
   searchTime = Date.now()
+  // 先给所有textNode加上唯一标记
+  elementMap: Record<string, Element> | null = null
+  // 缓存一下readabilityArticle
+  readabilityArticle: ReturnType<typeof getReadabilityArticle> | null = null
 
-  constructor() {
+  constructor(public conversationId?: string) {
     this.init()
   }
 
@@ -24,35 +28,29 @@ export default class PageCitation implements ICitationService {
     return this
   }
 
+  destroy() {
+    this.elementMap = null
+    this.readabilityArticle = null
+  }
+
   /**
-   * 滚动到元素位置
+   * 触发context menu
    * @param element
    */
-  async scrollElement(element: Element | DOMRect) {
-    const container = document.body
-    if (!container || !element) return
-
-    const containerRect = container.getBoundingClientRect()
-    const elementRect =
-      element instanceof Element ? element.getBoundingClientRect() : element
-    // 计算目标元素相对于容器的位置
-    const elementOffsetTop =
-      elementRect.top - containerRect.top + container.scrollTop
-    let scrollTop = elementOffsetTop
-    // 判断元素高度是否小于可视区域高度
-    if (elementRect.height < window.innerHeight) {
-      // 计算滚动位置，使元素位于正中间
-      scrollTop =
-        elementOffsetTop - window.innerHeight / 2 + elementRect.height / 2
-    } else {
-      // 元素高度大于容器高度，滚动到元素顶部
-      scrollTop = elementOffsetTop
-    }
-
-    document.documentElement.scrollTo({
-      top: scrollTop,
-      behavior: 'smooth',
-    })
+  async dispatchContextMenu(element: Element, delay = 500) {
+    element.dispatchEvent(
+      new MouseEvent('mousedown', {
+        cancelable: true,
+        bubbles: true,
+      }),
+    )
+    await wait(delay)
+    element.dispatchEvent(
+      new MouseEvent('mouseup', {
+        cancelable: true,
+        bubbles: true,
+      }),
+    )
   }
 
   /**
@@ -94,84 +92,85 @@ export default class PageCitation implements ICitationService {
       if (selection) {
         selection.removeAllRanges()
         selection.addRange(range)
-        await this.scrollElement(
-          selection.getRangeAt(0).getBoundingClientRect(),
-        )
-        // 触发context menu
-        startMarked.dispatchEvent(
-          new MouseEvent('mousedown', {
-            cancelable: true,
-            bubbles: true,
-          }),
-        )
-        await wait(500)
-        startMarked.dispatchEvent(
-          new MouseEvent('mouseup', {
-            cancelable: true,
-            bubbles: true,
-          }),
-        )
+        scrollToRange(selection.getRangeAt(0))
+        await this.dispatchContextMenu(startMarked)
       }
     }
   }
 
+  getElementMap = () => {
+    if (this.elementMap) return this.elementMap
+    this.elementMap = {}
+    let id = 0
+    document.body.querySelectorAll('*').forEach((item) => {
+      const readabilityId = ++id
+      item.setAttribute('maxai-readability-id', `${readabilityId}`)
+      this.elementMap![readabilityId] = item
+    })
+    return this.elementMap
+  }
+
+  getReadabilityArticle = () => {
+    if (this.readabilityArticle) return this.readabilityArticle
+    this.readabilityArticle = getReadabilityArticle()
+    return this.readabilityArticle
+  }
+
   /**
    * 查找文本
-   * 1. 获取页面上所有可见textNodes
-   * 2. 去除\n和空格进行匹配
+   * TODO 针对特殊网站的查询逻辑
    */
   async findText(searchString: string, startIndex: number) {
     // searchString = searchString.replaceAll('\n', '')
     // searchString = searchString.replace(/\s+/g, '')
     if (!searchString) {
-      return ''
+      return { title: '', matches: [] }
     }
     if (this.caches.get(searchString)) {
       const result = this.caches.get(searchString)!
       await this.selectMatches(result)
-      return ''
+      return { title: '', matches: result }
     }
     if (this.loading) {
-      return ''
+      return { title: '', matches: [] }
     }
 
     this.loading = true
+    this.searchTime = Date.now()
 
-    // 先给所有textNode加上唯一标记
-    const elementMap: Record<string, Element> = {}
-    let id = 0
-    document.body.querySelectorAll('*').forEach((item) => {
-      const readabilityId = ++id
-      item.classList.add(`maxai-readability-id-${readabilityId}`)
-      item.setAttribute('maxai-readability-id', `${readabilityId}`)
-      elementMap[readabilityId] = item
-    })
+    let elementMap = this.elementMap || {}
+    let readabilityArticle = this.readabilityArticle
 
-    // Readability去查找页面内容
-    const clonedDocument = document.cloneNode(true) as Document
-    const reader = new Readability(clonedDocument as any, {
-      serializer: (el) => el,
-    })
-    const readabilityArticle = reader.parse()
-    const contentElement =
-      readabilityArticle?.content as any as HTMLElement | null
-    const readabilityText = contentElement
-      ? `${readabilityArticle?.title}\n\n${getFormattedTextFromNodes(
-          getVisibleTextNodes(contentElement),
-        )}`
-      : ''
-    // 字数过少的内容应该是去读取document.body的内容了
-    const hasReadability = readabilityText.length > 100
-    if (hasReadability) {
-      searchString = searchString.replace(
-        `${readabilityArticle?.title}\n\n`,
-        '',
+    if (this.conversationId) {
+      const conversation = await ClientConversationManager.getConversationById(
+        this.conversationId,
       )
+      // 这里的临界点在GET_READABILITY_CONTENTS_OF_WEBPAGE里定义的，后续配置一下
+      if (
+        conversation?.meta.pageSummary?.content?.length &&
+        conversation.meta.pageSummary.content.length > 100
+      ) {
+        // Readability逻辑
+        elementMap = this.getElementMap()
+        // Readability去查找页面内容
+        readabilityArticle = this.getReadabilityArticle()
+        // 先移除掉标题，标题目前还没去标识具体的节点位置
+        if (readabilityArticle) {
+          if (searchString.startsWith(`${readabilityArticle.title}\n\n`)) {
+            searchString = searchString.replace(
+              `${readabilityArticle?.title}\n\n`,
+              '',
+            )
+          }
+        }
+      } else {
+        // Visible逻辑
+      }
     }
 
     // 根据标记查找真实的dom节点
     const getDomTextNode = (node: Node): Node => {
-      if (!hasReadability) return node
+      if (!readabilityArticle?.content) return node
       const parentElement = node.parentElement
       const readabilityId = parentElement?.getAttribute('maxai-readability-id')
       if (readabilityId && elementMap[readabilityId]) {
@@ -191,15 +190,21 @@ export default class PageCitation implements ICitationService {
       return node
     }
 
+    let matches: ICitationMatch[] = []
+    let currentContent = ''
+
     try {
       // 1. 先找到页面上所有textNodes
       const textNodes = getVisibleTextNodes(
-        hasReadability && contentElement ? contentElement : document.body,
+        readabilityArticle?.content || document.body,
       )
       // 2. 匹配文字节点，去除\n匹配
-      let matches: ICitationMatch[] = []
-      let currentContent = ''
       textNodes.some((item, index) => {
+        if (Date.now() - this.searchTime > 1000 * 20) {
+          // 查询时间大于20s超时返回
+          throw new Error('Page citation timeout')
+        }
+
         let startOffset = 0
         let endOffset = 0
         let isFirstMatch = false
@@ -271,6 +276,7 @@ export default class PageCitation implements ICitationService {
     }
 
     this.loading = false
-    return ''
+
+    return { title: '', matches }
   }
 }

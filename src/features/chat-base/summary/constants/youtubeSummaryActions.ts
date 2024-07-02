@@ -215,10 +215,6 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
     //     },
     //   },
     // },
-    {
-      type: 'MAXAI_SUMMARY_LOG',
-      parameters: {},
-    },
   ],
   // TODO 这个比较特殊，需要循环去分析字幕然后合成一次次的chuck发送askgpt
   timestamped: (messageId) => [
@@ -740,10 +736,6 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
         ],
         WFConditionalIfFalseActions: [],
       },
-    },
-    {
-      type: 'MAXAI_SUMMARY_LOG',
-      parameters: {},
     },
   ],
   transcript: (messageId) => [

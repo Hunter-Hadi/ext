@@ -22,8 +22,8 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import CitationTag from '@/features/citation/components/CitationTag'
-import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import {
+  IAIResponseMessage,
   IAIResponseOriginalMessage,
   IAIResponseOriginalMessageSourceLink,
   IAIResponseSourceCitation,
@@ -281,12 +281,15 @@ const formatCitation = (citations: IAIResponseSourceCitation[]) => {
 }
 
 const CustomMarkdown: FC<{
-  conversation?: IConversation
+  message?: IAIResponseMessage
   originalMessage?: IAIResponseOriginalMessage
   children: string
 }> = (props) => {
-  const { originalMessage, children } = props
-  const { metadata } = originalMessage || {}
+  const { message, children } = props
+  const conversationId = message?.conversationId
+  const originalMessage =
+    props.originalMessage || message?.originalMessage || {}
+  const { metadata } = originalMessage
   const citationsContent = metadata?.sources?.links
 
   const isComplete = originalMessage ? metadata?.isComplete : true
@@ -387,6 +390,7 @@ const CustomMarkdown: FC<{
                 }
                 return (
                   <CitationTag
+                    conversationId={conversationId}
                     citations={citations}
                     index={index}
                     // type={contentHasCitationRef.current ? 'icon' : 'number'}

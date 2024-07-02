@@ -247,9 +247,6 @@ const usePaginationConversationMessages = (conversationId: string) => {
       'ConversationMessagesUpdate',
       async (data) => {
         const { changeType, messageIds } = data
-        if (conversationId !== data.conversationId) {
-          return
-        }
         switch (changeType) {
           case 'update': {
             const messages =
@@ -282,6 +279,9 @@ const usePaginationConversationMessages = (conversationId: string) => {
             return true
           }
           case 'add': {
+            if (conversationId !== data.conversationId) {
+              return
+            }
             const messages =
               await ClientConversationMessageManager.getMessagesByMessageIds(
                 messageIds,

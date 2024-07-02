@@ -22,6 +22,7 @@ import {
 import { getContextMenuByNavMetadataKey } from '@/features/chat-base/summary/utils/summaryActionHelper'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import CitationFactory from '@/features/citation/core/CitationFactory'
 import { useContextMenuList } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
@@ -67,6 +68,10 @@ const usePageSummary = () => {
     isGeneratingPageSummaryRef.current = true
     console.log('新版Conversation 创建pageSummary')
     console.log('simply createPageSummary')
+
+    // 每次重新创建前清理citation缓存
+    CitationFactory.destroyCitationService()
+
     const pageSummaryConversationId = getPageSummaryConversationId()
     updateSidebarSummaryConversationId(pageSummaryConversationId)
 

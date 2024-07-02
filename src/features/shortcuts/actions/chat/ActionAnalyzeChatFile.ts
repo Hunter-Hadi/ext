@@ -167,7 +167,8 @@ export class ActionAnalyzeChatFile extends Action {
               docId,
               content: pageSummaryPrompt,
             },
-            systemPrompt: '',
+            // TODO 后端限制了必须传递一个字符以上，先传递个空字符串
+            systemPrompt: ' ',
           },
         },
         conversationId,

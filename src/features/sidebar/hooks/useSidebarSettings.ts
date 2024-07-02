@@ -154,6 +154,7 @@ const useSidebarSettings = () => {
               await ClientConversationMessageManager.getMessageIds(
                 currentConversation.id,
               ),
+              { waitSync: true },
             )
             setSidebarSummaryConversationId('')
           }

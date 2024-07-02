@@ -20,8 +20,9 @@ export const createCitationNode = (
 }
 
 export const isScrollableElement = (element: Element) => {
-  const overflowY = window.getComputedStyle(element).overflowY
-  const overflowX = window.getComputedStyle(element).overflowX
+  const styles = window.getComputedStyle(element)
+  const overflowY = styles.overflowY
+  const overflowX = styles.overflowX
   return (
     overflowY === 'auto' ||
     overflowY === 'scroll' ||
@@ -43,6 +44,9 @@ export const scrollToRange = (range: Range) => {
       scrollToElement(node as HTMLElement, rangeRect, 'smooth')
     }
     node = node.parentNode
+  }
+  if (document.body.clientHeight > window.innerHeight) {
+    scrollToElement(document.body, rangeRect, 'smooth')
   }
 }
 

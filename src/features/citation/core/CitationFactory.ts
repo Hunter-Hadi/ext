@@ -29,4 +29,11 @@ export default class CitationFactory {
         ))
     }
   }
+
+  static destroyCitationService() {
+    Object.values(CitationFactory.maps).forEach((service) => {
+      service?.destroy()
+    })
+    this.maps = {}
+  }
 }

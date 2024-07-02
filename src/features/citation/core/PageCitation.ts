@@ -29,6 +29,8 @@ export default class PageCitation implements ICitationService {
   }
 
   destroy() {
+    this.caches.clear()
+    this.loading = false
     this.elementMap = null
     this.readabilityArticle = null
   }
@@ -37,7 +39,7 @@ export default class PageCitation implements ICitationService {
    * 触发context menu
    * @param element
    */
-  async dispatchContextMenu(element: Element, delay = 500) {
+  async dispatchContextMenu(element: Element, delay = 250) {
     element.dispatchEvent(
       new MouseEvent('mousedown', {
         cancelable: true,

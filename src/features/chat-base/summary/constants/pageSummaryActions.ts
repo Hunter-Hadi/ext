@@ -63,16 +63,16 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'READABILITY_CONTENTS',
-      },
-    },
-    {
       type: 'ANALYZE_CHAT_FILE',
       parameters: {
         AnalyzeChatFileImmediateUpdateConversation: false,
         AnalyzeChatFileName: 'PageSummaryContent.txt',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'READABILITY_CONTENTS',
       },
     },
     {
@@ -263,16 +263,16 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'READABILITY_CONTENTS',
-      },
-    },
-    {
       type: 'ANALYZE_CHAT_FILE',
       parameters: {
         AnalyzeChatFileImmediateUpdateConversation: false,
         AnalyzeChatFileName: 'PageSummaryContent.txt',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'READABILITY_CONTENTS',
       },
     },
     {
@@ -458,16 +458,16 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'READABILITY_CONTENTS',
-      },
-    },
-    {
       type: 'ANALYZE_CHAT_FILE',
       parameters: {
         AnalyzeChatFileImmediateUpdateConversation: false,
         AnalyzeChatFileName: 'PageSummaryContent.txt',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'READABILITY_CONTENTS',
       },
     },
     {

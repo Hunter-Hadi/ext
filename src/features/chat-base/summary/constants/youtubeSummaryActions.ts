@@ -71,16 +71,16 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'READABILITY_CONTENTS',
-      },
-    },
-    {
       type: 'ANALYZE_CHAT_FILE',
       parameters: {
         AnalyzeChatFileImmediateUpdateConversation: false,
         AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'READABILITY_CONTENTS',
       },
     },
     {
@@ -273,6 +273,12 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       parameters: {
         AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
         AnalyzeChatFileImmediateUpdateConversation: false,
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'READABILITY_CONTENTS',
       },
     },
     {
@@ -541,16 +547,16 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'READABILITY_CONTENTS',
-      },
-    },
-    {
       type: 'ANALYZE_CHAT_FILE',
       parameters: {
         AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
         AnalyzeChatFileImmediateUpdateConversation: false,
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'READABILITY_CONTENTS',
       },
     },
     {
@@ -794,6 +800,12 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       parameters: {
         AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
         AnalyzeChatFileImmediateUpdateConversation: false,
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'READABILITY_CONTENTS',
       },
     },
     {

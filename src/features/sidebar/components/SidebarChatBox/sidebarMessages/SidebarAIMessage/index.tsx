@@ -23,6 +23,7 @@ import {
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import ImageWithDialog from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/ImageWithDialog'
+import KnowledgePanelContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/KnowledgePanelContent'
 import SidebarAIMessageAIModel from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageAIModel'
 import SidebarAImessageBottomList from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList'
 import SidebarAIMessageContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent'
@@ -73,6 +74,8 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
           message.originalMessage?.metadata?.sources?.status === 'loading',
         imagesSources: message.originalMessage?.metadata?.sources?.images || [],
         videosSources: message.originalMessage?.metadata?.sources?.videos || [],
+        knowledgeSources:
+          message.originalMessage?.metadata?.sources?.knowledgePanel || null,
         sourcesHasContent: false,
         answer: message.text,
         content: message.originalMessage?.content,
@@ -280,6 +283,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                     </Stack>
                   )}
 
+                  {/* 图片、视频增强 */}
                   {(renderData?.imagesSources.length > 0 ||
                     renderData?.videosSources.length > 0) && (
                     <Stack
@@ -368,6 +372,13 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                         </Stack>
                       )}
                     </Stack>
+                  )}
+
+                  {/* knowledge资源增强 */}
+                  {renderData?.knowledgeSources && (
+                    <KnowledgePanelContent
+                      knowledgeSources={renderData?.knowledgeSources}
+                    ></KnowledgePanelContent>
                   )}
 
                   {isWaitFirstAIResponseText &&

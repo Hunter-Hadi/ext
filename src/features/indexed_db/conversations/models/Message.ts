@@ -7,6 +7,7 @@ import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
+import { ICrawlingKnowledge } from '@/features/shortcuts/utils/searchEngineCrawling'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export type IChatMessagePublishStatus = 'unpublished' | 'success' | 'error'
@@ -116,6 +117,12 @@ export type IAIResponseOriginalMessageSourceLink = {
   from?: string
   body?: string
 }
+export type IAIResponseOriginalMessageSourceKnowledegePanel = {
+  [Symbol.iterator](): Iterator<any>
+  src: string
+  title?: string
+  alt?: string
+}
 export type IAIResponseOriginalMessageSourceMediaImages = {
   [Symbol.iterator](): Iterator<any>
   src: string
@@ -202,7 +209,7 @@ export interface IAIResponseOriginalMessage {
       links?: IAIResponseOriginalMessageSourceLink[]
       videos?: IAIResponseOriginalMessageSourceMediaVideos[]
       images?: IAIResponseOriginalMessageSourceMediaImages[]
-      // knowledgePanel?: string
+      knowledgePanel?: ICrawlingKnowledge
     }
     copilot?: {
       title?: IAIResponseOriginalMessageMetadataTitle

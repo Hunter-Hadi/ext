@@ -13,6 +13,7 @@ import {
 } from '@/background/utils'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { AuthState } from '@/features/auth/store'
+import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import {
   getPageSummaryConversationId,
@@ -72,7 +73,8 @@ const usePageSummary = () => {
     // 每次重新创建前清理citation缓存
     CitationFactory.destroyCitationService()
 
-    const pageSummaryConversationId = getPageSummaryConversationId()
+    const userId = await getMaxAIChromeExtensionUserId()
+    const pageSummaryConversationId = getPageSummaryConversationId({ userId })
     updateSidebarSummaryConversationId(pageSummaryConversationId)
 
     const currentPageSummaryType = getPageSummaryType()

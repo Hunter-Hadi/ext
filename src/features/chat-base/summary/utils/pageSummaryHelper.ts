@@ -59,14 +59,18 @@ const PAGE_SUMMARY_CONVERSATION_ID_MAP: {
 
 /**
  * 获取当前页面conversationId
- * @param url
+ * @param options
  */
-export const getPageSummaryConversationId = (url?: string) => {
+export const getPageSummaryConversationId = (options?: {
+  url?: string
+  userId?: string
+}) => {
+  const { url, userId } = options || {}
   const pageUrl =
     url || (typeof window !== 'undefined' ? window.location.href : '')
   if (!PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]) {
     PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(
-      pageUrl + MaxAIExtensionIdManager.MaxAIExtensionId,
+      pageUrl + (userId || MaxAIExtensionIdManager.MaxAIExtensionId),
     )
   }
   return PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]

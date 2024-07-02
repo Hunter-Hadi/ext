@@ -9,6 +9,7 @@ import {
   setChromeExtensionLocalStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
+import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { IPageSummaryType } from '@/features/chat-base/summary/types'
 import {
   getPageSummaryConversationId,
@@ -244,7 +245,8 @@ const useSidebarSettings = () => {
         }
       }
     } else if (conversationType === 'Summary') {
-      conversationId = getPageSummaryConversationId()
+      const userId = await getMaxAIChromeExtensionUserId()
+      conversationId = getPageSummaryConversationId({ userId })
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (
         conversationId &&
@@ -385,7 +387,15 @@ const useSidebarSettings = () => {
     return conversationId
   }
   const updateSidebarSummaryConversationId = (id?: string) => {
-    setSidebarSummaryConversationId(id || getPageSummaryConversationId())
+    if (id) {
+      setSidebarSummaryConversationId(id)
+    } else {
+      getMaxAIChromeExtensionUserId().then((userId) => {
+        setSidebarSummaryConversationId(
+          getPageSummaryConversationId({ userId }),
+        )
+      })
+    }
   }
   const continueConversationInSidebar = async (
     ...args: Parameters<

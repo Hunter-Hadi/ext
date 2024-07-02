@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
+import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import usePageSummary from '@/features/chat-base/summary/hooks/usePageSummary'
 import {
   getPageSummaryConversationId,
@@ -190,13 +191,15 @@ const useInitWebPageSidebar = () => {
         return
       } else if (pageConversationTypeRef.current === 'Summary') {
         // 页面变化切换至Chat并停止当前对话
-        if (
-          pageSummaryConversationIdRef.current !==
-          getPageSummaryConversationId()
-        ) {
-          updateSidebarConversationType('Chat')
-          stopGenerate()
-        }
+        getMaxAIChromeExtensionUserId().then((userId) => {
+          if (
+            pageSummaryConversationIdRef.current !==
+            getPageSummaryConversationId({ userId })
+          ) {
+            updateSidebarConversationType('Chat')
+            stopGenerate()
+          }
+        })
       }
     }
   }, [pageUrl])

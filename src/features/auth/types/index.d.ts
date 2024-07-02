@@ -51,6 +51,7 @@ export type IUseChatGPTUserInfo = {
   subscription_canceled_at?: string | null
 
   client_user_id?: string | null
+  user_id?: string | null
 }
 
 export type IUserQuotaUsageInfo = {

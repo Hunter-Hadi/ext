@@ -30,7 +30,6 @@ const KnowledgePanelContent = React.memo(
           width: '100%',
           overflow: 'hidden',
           position: 'relative',
-          // paddingBottom: '40px', // 给底部按钮留出空间
         }}
       >
         <Box display='flex' alignItems='center' mb={2}>

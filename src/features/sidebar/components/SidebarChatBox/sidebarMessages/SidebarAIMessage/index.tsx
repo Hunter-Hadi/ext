@@ -290,23 +290,20 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                   {/* 图片、视频增强 */}
                   {(renderData?.imagesSources.length > 0 ||
                     renderData?.videosSources.length > 0) && (
-                    <Stack
-                      className='media_sources'
-                      spacing={1}
-                      sx={{
-                        overflowX: 'scroll',
-                        '&::-webkit-scrollbar': {
-                          display: 'none',
-                          width: 0,
-                          background: 'transparent',
-                        },
-                      }}
-                    >
+                    <Stack className='media_sources' spacing={1}>
                       {renderData?.imagesSources.length > 0 && (
                         <Stack
                           spacing={1}
                           direction={'row'}
                           className='image_sources'
+                          sx={{
+                            overflowX: 'scroll',
+                            '&::-webkit-scrollbar': {
+                              display: 'none',
+                              width: 0,
+                              background: 'transparent',
+                            },
+                          }}
                         >
                           <ImageWithDialog
                             images={renderData?.imagesSources}
@@ -319,6 +316,14 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                           spacing={1}
                           direction={'row'}
                           className='image_sources'
+                          sx={{
+                            overflowX: 'scroll',
+                            '&::-webkit-scrollbar': {
+                              display: 'none',
+                              width: 0,
+                              background: 'transparent',
+                            },
+                          }}
                         >
                           {renderData?.videosSources.map((video) => (
                             <Stack

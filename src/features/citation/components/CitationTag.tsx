@@ -1,7 +1,7 @@
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
+import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
-import Link from '@mui/material/Link'
 import React, { FC, useState } from 'react'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -12,11 +12,12 @@ interface IProps {
   conversationId?: string
   citations: IAIResponseSourceCitation[]
   index: number
+  number?: number
   type?: 'number' | 'icon'
 }
 
 const CitationTag: FC<IProps> = (props) => {
-  const { conversationId, citations, index, type = 'icon' } = props
+  const { conversationId, citations, index, number, type = 'icon' } = props
 
   const [loading, setLoading] = useState(false)
   const [title, setTitle] = useState('')
@@ -81,47 +82,66 @@ const CitationTag: FC<IProps> = (props) => {
     )
   }
 
+  const content = typeof number === 'number' ? `${number}` : `[${index + 1}]`
+
   return (
-    <>
-      <TextOnlyTooltip placement='top' title={`Scroll to page ${title}`}>
-        <div
-          style={{ minWidth: 22, display: 'inline-block', textAlign: 'center' }}
-          onClick={handleClick}
-        >
-          {loading ? (
-            <CircularProgress
-              size={16}
-              sx={{
-                m: '0 auto',
-                color: 'primary.main',
-                verticalAlign: 'middle',
-              }}
-            />
-          ) : (
-            <Link sx={{ cursor: 'pointer' }}>[{index + 1}]</Link>
-          )}
-        </div>
-      </TextOnlyTooltip>
-      {/*{show &&*/}
-      {/*  containerGroups.map((group, index) => (*/}
-      {/*    <Portal container={group.container} key={index}>*/}
-      {/*      {group.matches.map((match, j) => (*/}
-      {/*        <div*/}
-      {/*          style={{*/}
-      {/*            position: 'absolute',*/}
-      {/*            top: match.layout.top,*/}
-      {/*            left: match.layout.left,*/}
-      {/*            width: match.layout.width,*/}
-      {/*            height: match.layout.height,*/}
-      {/*            background: 'rgba(0,0,0,0.2)',*/}
-      {/*          }}*/}
-      {/*        >*/}
-      {/*        </div>*/}
-      {/*      ))}*/}
-      {/*    </Portal>*/}
-      {/*  ))}*/}
-    </>
+    <Button
+      variant='contained'
+      size='small'
+      sx={{
+        minWidth: 'auto',
+        width: 24,
+        height: 18,
+        fontSize: '14px!important',
+        top: -1,
+        bgcolor: 'primary.main',
+        marginLeft: '2px!important',
+        marginRight: '2px!important',
+        borderRadius: '14px',
+        '&:hover': {
+          opacity: 0.6,
+          bgcolor: 'primary.main',
+        },
+      }}
+      onClick={handleClick}
+    >
+      {loading ? (
+        <CircularProgress
+          size={14}
+          sx={{
+            m: '0 auto',
+            color: '#fff',
+          }}
+        />
+      ) : (
+        content
+      )}
+    </Button>
   )
+
+  // return (
+  //   <>
+  //     <TextOnlyTooltip placement='top' title={`Scroll to page ${title}`}>
+  //       <div
+  //         style={{ minWidth: 22, display: 'inline-block', textAlign: 'center' }}
+  //         onClick={handleClick}
+  //       >
+  //         {loading ? (
+  //           <CircularProgress
+  //             size={16}
+  //             sx={{
+  //               m: '0 auto',
+  //               color: 'primary.main',
+  //               verticalAlign: 'middle',
+  //             }}
+  //           />
+  //         ) : (
+  //           <Link sx={{ cursor: 'pointer' }}>{content}</Link>
+  //         )}
+  //       </div>
+  //     </TextOnlyTooltip>
+  //   </>
+  // )
 }
 
 export default CitationTag

@@ -400,8 +400,25 @@ const SurveyTabButton: FC = () => {
 
 const UpgradePlanTabButton: FC = () => {
   const { t } = useTranslation()
+  const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
+
   return (
-    <PayingUserUpgradePopper renderPlan='elite_yearly'>
+    <PayingUserUpgradePopper
+      renderPlan='elite_yearly'
+      sx={{
+        px: isInImmersiveChatPage ? 1 : 0.5,
+        width: '100%',
+      }}
+      popperPaperSx={
+        isInImmersiveChatPage
+          ? {
+              ml: '14px',
+            }
+          : {
+              mr: '14px',
+            }
+      }
+    >
       <Button
         data-testid={`maxai--sidebar--upgrade-plan`}
         sx={{

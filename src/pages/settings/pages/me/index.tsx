@@ -140,7 +140,7 @@ const StripeLinks = () => {
               fontSize: 16,
               lineHeight: 1.5,
               textDecorationLine: 'underline',
-              color: 'black',
+              color: 'text.primary',
             }}
             onClick={handleManageClick}
           >

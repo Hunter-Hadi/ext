@@ -22,6 +22,7 @@ interface IPayingUserUpgradePopperProps {
   renderPlan: RENDER_PLAN_TYPE
   childrenBoxSx?: SxProps
   sx?: SxProps
+  popperPaperSx?: SxProps
   children: React.ReactNode
   placement?: PopperPlacementType
 }
@@ -30,6 +31,7 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
   renderPlan,
   sx,
   childrenBoxSx,
+  popperPaperSx,
   children,
   placement: propPlacement,
 }) => {
@@ -73,12 +75,7 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
   }
 
   return (
-    <Box
-      position={'relative'}
-      width={1}
-      px={isInImmersiveChatPage ? 1 : 0.5}
-      sx={sx}
-    >
+    <Box position={'relative'} sx={sx}>
       <Box
         ref={anchorElRef}
         onClick={handleClickUpgrade}
@@ -108,24 +105,16 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
             }}
           >
             <Paper
-              sx={[
-                {
-                  borderRadius: 2,
-                  border: '1px solid #EBEBEB',
-                  boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-                  width: 300,
-                  p: 2,
+              sx={{
+                borderRadius: 2,
+                border: '1px solid #EBEBEB',
+                boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
+                width: 300,
+                p: 2,
 
-                  boxSizing: 'border-box',
-                },
-                isInImmersiveChatPage
-                  ? {
-                      ml: '14px',
-                    }
-                  : {
-                      mr: '14px',
-                    },
-              ]}
+                boxSizing: 'border-box',
+                ...popperPaperSx,
+              }}
             >
               <Stack spacing={2}>
                 <Typography variant='custom' fontSize={18} fontWeight={600}>

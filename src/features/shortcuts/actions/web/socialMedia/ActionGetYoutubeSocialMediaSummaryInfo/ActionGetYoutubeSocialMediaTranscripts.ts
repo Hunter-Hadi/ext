@@ -1,4 +1,5 @@
 import { getFeatureNameByConversationAndContextMenu } from '@/features/auth/utils/log'
+import { PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP } from '@/features/chat-base/summary/constants'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import {
   TranscriptResponse,
@@ -8,7 +9,6 @@ import Action from '@/features/shortcuts/core/Action'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { SummaryContextMenuOverwriteMap } from '@/features/sidebar/utils/pageSummaryHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 /**
@@ -36,7 +36,7 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
       // TODO 需要重构,临时记录call-api
       if (clientMessageChannelEngine) {
         const recordContextMenuData =
-          SummaryContextMenuOverwriteMap['YOUTUBE_VIDEO_SUMMARY']?.[
+          PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP['YOUTUBE_VIDEO_SUMMARY']?.[
             'transcript'
           ]
         if (clientConversationEngine?.currentConversationId) {

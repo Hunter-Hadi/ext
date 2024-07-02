@@ -5,9 +5,9 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
+import { maxAIAPISendQuestion } from '@/background/provider/chat/maxai-providers/index'
 import { MaxAIGeminiChat } from '@/background/src/chat'
-import { IMaxAIRequestHistoryMessage } from '@/background/src/chat/UseChatGPTChat/types'
-import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
+import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
@@ -42,48 +42,31 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
     sender,
     question,
   ) => {
-    const messageId = uuidV4()
-    const chat_history: IMaxAIRequestHistoryMessage[] = []
-    if (this.maxAIGeminiChat.conversation) {
-      if (this.maxAIGeminiChat.conversation.meta.systemPrompt) {
-        chat_history.push({
-          role: 'system',
-          content: [
-            {
-              type: 'text',
-              text: this.maxAIGeminiChat.conversation.meta.systemPrompt,
-            },
-          ],
-        })
-      }
-      if (question.meta) {
-        question.meta.historyMessages?.forEach((message) => {
-          chat_history.push(chatMessageToMaxAIRequestMessage(message, true))
-        })
-        question.meta.includeHistory = false
-        question.meta.maxHistoryMessageCnt = 0
-      }
-    }
-    // NOTE: gemini的理解能力不行，需要把Human的回答过滤掉掉连续的
-    if (chat_history.length > 0) {
-      // 从后往前过滤连续的human
-      for (let i = chat_history.length - 1; i >= 0; i--) {
-        if (chat_history[i].role === 'human') {
-          if (chat_history[i - 1]?.role === 'human') {
-            chat_history.splice(i, 1)
-          }
-        }
-      }
-    }
-    const questionMessage = chatMessageToMaxAIRequestMessage(question)
-    await this.maxAIGeminiChat.askChatGPT(
-      questionMessage.content,
-      {
-        taskId: question.messageId,
-        chat_history,
-        meta: question.meta,
+    await maxAIAPISendQuestion(taskId, sender, question, {
+      conversationId:
+        question.conversationId || this.maxAIGeminiChat.conversation?.id || '',
+      AIProvider: 'MAXAI_GEMINI',
+      AIModel:
+        this.maxAIGeminiChat.conversation?.meta.AIModel ||
+        MAXAI_GENMINI_MODELS[0].value,
+      checkAuthStatus: async () => {
+        // await this.auth(sender.tab?.id || 0)
+        await this.maxAIGeminiChat.checkTokenAndUpdateStatus()
+        return this.status === 'success'
       },
-      async ({ type, done, error, data }) => {
+      beforeSend: async () => {
+        this.clearFiles()
+      },
+      setAbortController: (abortController) => {
+        this.maxAIGeminiChat.taskList[taskId] = () => abortController.abort()
+      },
+      afterSend: async (reason) => {
+        if (reason === 'token_expired') {
+          this.maxAIGeminiChat.status = 'needAuth'
+          await this.maxAIGeminiChat.updateClientConversationChatStatus()
+        }
+      },
+      onMessage: async ({ data, done, error, type }) => {
         if (sender.tab?.id) {
           await this.sendResponseToClient(sender.tab.id, {
             taskId,
@@ -91,14 +74,15 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              messageId,
+              originalMessage: data.originalMessage,
+              messageId: uuidV4(),
             },
             error,
             done,
           })
         }
       },
-    )
+    })
   }
   async abortAskQuestion(messageId: string) {
     return await this.maxAIGeminiChat.abortTask(messageId)

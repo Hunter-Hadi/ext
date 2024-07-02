@@ -20,6 +20,7 @@ import AutoHeightTextarea, {
 } from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import { getLastRunShortcuts } from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
@@ -39,7 +40,6 @@ import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import {
   clientRestartChromeExtension,
   getMaxAISidebarRootElement,

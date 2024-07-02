@@ -9,13 +9,14 @@ import CitationFactory from '@/features/citation/core/CitationFactory'
 import { IAIResponseSourceCitation } from '@/features/indexed_db/conversations/models/Message'
 
 interface IProps {
+  conversationId?: string
   citations: IAIResponseSourceCitation[]
   index: number
   type?: 'number' | 'icon'
 }
 
 const CitationTag: FC<IProps> = (props) => {
-  const { citations, index, type = 'icon' } = props
+  const { conversationId, citations, index, type = 'icon' } = props
 
   const [loading, setLoading] = useState(false)
   const [title, setTitle] = useState('')
@@ -24,16 +25,16 @@ const CitationTag: FC<IProps> = (props) => {
     if (loading) return
     if (!title) setLoading(true)
     const { content, start_index } = citations[index]
-    const citationService = CitationFactory.getCitationService()
+    const citationService = CitationFactory.getCitationService(conversationId)
     if (citationService?.loading) {
       setLoading(false)
       return
     }
     if (citationService) {
-      const title = await citationService
+      const search = await citationService
         .findText(content, start_index!)
         .catch(console.error)
-      setTitle(title || '')
+      setTitle(search?.title || '')
     }
     setLoading(false)
   }

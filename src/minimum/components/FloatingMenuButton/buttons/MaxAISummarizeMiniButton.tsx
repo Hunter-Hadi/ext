@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAISidebarRootElement } from '@/utils'
 

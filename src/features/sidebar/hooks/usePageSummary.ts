@@ -2,6 +2,8 @@
  * 初始化页面摘要
  * @since - 2023-08-15
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
+ *
+ * @deprecated summary相关功能已移动到chat-base/summary下，防止冲突合并release后上线前删除
  */
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'

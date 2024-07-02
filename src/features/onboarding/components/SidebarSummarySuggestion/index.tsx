@@ -10,9 +10,9 @@ import { useTranslation } from 'react-i18next'
 import { atom, useRecoilState } from 'recoil'
 
 import { useCreateClientMessageListener } from '@/background/utils'
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { checkWebpageIsArticlePage } from '@/minimum/utils'
 import {
   isMaxAIPDFPage,

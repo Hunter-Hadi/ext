@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="content">
+  <div data-test="iii">
+    foo
+    <br>
+      123
+    </br>
+    bar
+    <br>
+    <br>
+    <br>
+    abc
+  </div>
+
+  <div id="start" style="pointer-events: none; user-select: none">
+    开始
+  </div>
+  <div id="end">
+    结束
+  </div>
+  <div>
+    <code>
+      <span style="white-space: break-spaces">    <span>123</span></span>
+    </code>
+  </div>
+  <font>阿斯顿阿斯顿</font>
+  <div>This is <span>some</span> text!</div>
+  <div>This is <span>some</span> text!</div>
+  <div>
+    <div>
+      <p>
+        123 123 4
+        <span style="display: block">123</span>
+        123
+      </p>
+    </div>
+    <p>This is <span>some</span>    te   xt!
+    </p>
+    <p>This is <span style="display: none">some</span> text!</p>
+  </div>
+  <div>This is <span>some</span> text!</div>
+  <div>This is  text!</div>
+</div>
+</body>
+
+<script>
+setTimeout(() => {
+  const start = document.querySelector('#start')
+  const end = document.querySelector('#end')
+
+  const selection = window.getSelection()
+  const range = document.createRange()
+
+  range.setStart(start.firstChild, 0)
+  range.setEnd(end.lastChild, end.lastChild.length)
+  selection.removeAllRanges()
+  selection.addRange(range)
+}, 1000)
+</script>
+</html>

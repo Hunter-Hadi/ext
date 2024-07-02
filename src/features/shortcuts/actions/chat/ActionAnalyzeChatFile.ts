@@ -1,16 +1,19 @@
 import { NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID } from '@/constants'
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { stringConvertTxtUpload } from '@/features/shortcuts/utils/stringConvertTxtUpload'
+import {
+  createDocId,
+  stringConvertTxtUpload,
+} from '@/features/shortcuts/utils/stringConvertTxtUpload'
 import {
   calculateMaxHistoryQuestionResponseTokens,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 /**
@@ -61,11 +64,14 @@ export class ActionAnalyzeChatFile extends Action {
         calculateMaxHistoryQuestionResponseTokens(maxAIModelTokens)
       const text =
         this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT || ''
-      const { isLimit, text: pageSummarySystemPrompt } =
-        await sliceTextByTokens(text, systemPromptTokensLimit, {
+      const { isLimit, text: pageSummaryPrompt } = await sliceTextByTokens(
+        text,
+        systemPromptTokensLimit,
+        {
           thread: 4,
           partOfTextLength: 20 * 1000,
-        })
+        },
+      )
       if (this.isStopAction) return
       // 如果触发了limit，就截取其中400k上传作为docId
       if (isLimit) {
@@ -152,17 +158,34 @@ export class ActionAnalyzeChatFile extends Action {
         }
       }
       if (this.isStopAction) return
+      // summary/v2里，短文需要传递docId，这里的docId是PAGE_CONTENT
+      const docId = createDocId(pageSummaryPrompt)
       await conversationEngine?.updateConversation(
         {
           meta: {
-            systemPrompt: `The following text delimited by triple backticks is the context text:\n\`\`\`\n${pageSummarySystemPrompt}\n\`\`\``,
+            pageSummary: {
+              docId,
+              content: pageSummaryPrompt,
+            },
+            // TODO 后端限制了必须传递一个字符以上，先传递个空字符串
+            systemPrompt: ' ',
           },
         },
         conversationId,
         true,
       )
+      // summary/v2版本不传递systemPrompt了，后端会去控制
+      // await conversationEngine?.updateConversation(
+      //   {
+      //     meta: {
+      //       systemPrompt: `The following text delimited by triple backticks is the context text:\n\`\`\`\n${pageSummarySystemPrompt}\n\`\`\``,
+      //     },
+      //   },
+      //   conversationId,
+      //   true,
+      // )
       if (this.isStopAction) return
-      this.output = pageSummarySystemPrompt
+      this.output = pageSummaryPrompt
     } catch (e) {
       this.error = (e as any).toString()
     }

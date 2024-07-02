@@ -138,6 +138,57 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     return !renderData.answer
   }, [renderData.answer])
 
+  const renderMessageContentTitle = () => {
+    if (!renderData.content) return null
+
+    let icon: React.ReactNode = <CircularProgress size={18} />
+    let title = ''
+
+    if (!renderData.messageIsComplete) {
+      if (renderData.content.contentType === 'text') {
+        title = 'Writing'
+      } else if (renderData.content.contentType === 'image') {
+        title = 'Creating image'
+      }
+      // 目前summary下可能content.text内容已经输出完了，deepDive正在输出，这时候content.titleIcon应该是已完成状态
+      if (
+        isSummaryMessage &&
+        renderData.content?.title?.titleIcon !== 'Loading'
+      ) {
+        icon = renderData.content.title?.titleIcon || (
+          <ReadIcon
+            sx={{
+              color: 'primary.main',
+              fontSize: 20,
+            }}
+          />
+        )
+        title = renderData.content.title?.title || 'Answer'
+      }
+    } else {
+      icon = renderData.content.title?.titleIcon || (
+        <ReadIcon
+          sx={{
+            color: 'primary.main',
+            fontSize: 20,
+          }}
+        />
+      )
+      title = renderData.content.title?.title || 'Answer'
+    }
+
+    return (
+      <MetadataTitleRender
+        title={{
+          title,
+          titleIcon: icon,
+          titleIconSize: renderData.content.title?.titleIconSize || 18,
+        }}
+        fontSx={{ lineHeight: '20px' }}
+      />
+    )
+  }
+
   return (
     <Box component={'div'} className={'chat-message--AI'}>
       {isContextCleared && !isTriggeredContentReview && props.order !== 1 && (
@@ -227,58 +278,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             {renderData.content &&
               renderData.content.title?.title !== 'noneShowContent' && (
                 <Stack spacing={2}>
-                  {!renderData.messageIsComplete ? (
-                    <Stack direction={'row'} alignItems='center' spacing={1}>
-                      <CircularProgress size={18} />
-                      <Typography
-                        sx={{
-                          color: 'primary.main',
-                          fontSize: 18,
-                          lineHeight: '20px',
-                        }}
-                      >
-                        {renderData.content.contentType === 'text' && 'Writing'}
-                        {renderData.content.contentType === 'image' &&
-                          'Creating image'}
-                      </Typography>
-                    </Stack>
-                  ) : (
-                    <Stack direction={'row'} alignItems='center' spacing={1}>
-                      {renderData.content.title?.titleIcon ? (
-                        <Stack
-                          alignItems={'center'}
-                          justifyContent={'center'}
-                          width={16}
-                          height={16}
-                        >
-                          <ContextMenuIcon
-                            sx={{
-                              color: 'primary.main',
-                              fontSize:
-                                renderData.content.title?.titleIconSize || 18,
-                            }}
-                            icon={renderData.content.title?.titleIcon}
-                          />
-                        </Stack>
-                      ) : (
-                        <ReadIcon
-                          sx={{
-                            color: 'primary.main',
-                            fontSize: 20,
-                          }}
-                        />
-                      )}
-                      <Typography
-                        sx={{
-                          color: 'primary.main',
-                          fontSize: 18,
-                          lineHeight: '20px',
-                        }}
-                      >
-                        {renderData.content.title?.title || 'Answer'}
-                      </Typography>
-                    </Stack>
-                  )}
+                  {renderMessageContentTitle()}
 
                   {(renderData?.imagesSources.length > 0 ||
                     renderData?.videosSources.length > 0) && (
@@ -396,7 +396,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               }`}
             >
               <AppSuspenseLoadingLayout>
-                <CustomMarkdown originalMessage={message.originalMessage}>
+                <CustomMarkdown message={message}>
                   {renderData.answer}
                 </CustomMarkdown>
               </AppSuspenseLoadingLayout>
@@ -432,7 +432,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   )
 }
 export const MetadataTitleRender: FC<{
-  title: IAIResponseOriginalMessageMetadataTitle
+  title: IAIResponseOriginalMessageMetadataTitle & {
+    titleIcon?: React.ReactNode
+  }
   fontSx?: SxProps
 }> = (props) => {
   const { fontSx } = props
@@ -440,7 +442,7 @@ export const MetadataTitleRender: FC<{
   const currentTitleIconSize = titleIconSize || 20
   return (
     <Stack direction={'row'} alignItems='center' spacing={1}>
-      {titleIcon && (
+      {typeof titleIcon === 'string' && titleIcon ? (
         <Stack
           alignItems={'center'}
           justifyContent={'center'}
@@ -455,6 +457,8 @@ export const MetadataTitleRender: FC<{
             icon={titleIcon}
           />
         </Stack>
+      ) : (
+        titleIcon
       )}
       <Typography
         sx={{

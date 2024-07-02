@@ -26,6 +26,7 @@ import {
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
+import { IConversationMeta } from '@/features/indexed_db/conversations/models/Conversation'
 import {
   IAIResponseOriginalMessage,
   IUserMessageMetaType,
@@ -65,7 +66,7 @@ class UseChatGPTPlusChat extends BaseChat {
     }
     await this.updateClientConversationChatStatus()
   }
-  private async checkTokenAndUpdateStatus() {
+  async checkTokenAndUpdateStatus() {
     const prevStatus = this.status
     this.token = await this.getToken()
     this.status = this.token ? 'success' : 'needAuth'
@@ -105,6 +106,7 @@ class UseChatGPTPlusChat extends BaseChat {
       data: {
         text: string
         conversationId: string
+        conversationMeta?: IConversationMeta
         originalMessage?: IAIResponseOriginalMessage
       }
     }) => void,
@@ -214,11 +216,13 @@ class UseChatGPTPlusChat extends BaseChat {
         })
       }
     }
-    if (backendAPI === 'get_summarize_response') {
+    const isSummaryAPI =
+      backendAPI === 'get_summarize_response' ||
+      backendAPI.startsWith('summary/v2')
+    if (isSummaryAPI) {
       // 后端会自动调整model
       delete (postBody as any).model_name
     }
-    // 如果有meta.MaxAIPromptActionConfig，就需要用/use_prompt_action
     if (options?.meta?.MaxAIPromptActionConfig) {
       backendAPI = 'use_prompt_action'
       postBody = await maxAIRequestBodyPromptActionGenerator(
@@ -246,6 +250,7 @@ class UseChatGPTPlusChat extends BaseChat {
     let messageResult = ''
     let hasError = false
     let conversationId = this.conversation?.id || ''
+    let conversationMeta: IConversationMeta | undefined
     let originalMessage: IAIResponseOriginalMessage | undefined
     let isTokenExpired = false
     if (postBody.streaming) {
@@ -269,6 +274,12 @@ class UseChatGPTPlusChat extends BaseChat {
             }
             // 增强数据
             if (messageData?.streaming_status) {
+              if (messageData.doc_id !== undefined) {
+                conversationMeta = {
+                  ...conversationMeta,
+                  docId: messageData.doc_id,
+                }
+              }
               if (messageData.text !== undefined) {
                 if (messageData.need_merge) {
                   messageResult += messageData.text
@@ -352,6 +363,7 @@ class UseChatGPTPlusChat extends BaseChat {
                   data: {
                     text: '',
                     conversationId,
+                    conversationMeta,
                     originalMessage,
                   },
                 })

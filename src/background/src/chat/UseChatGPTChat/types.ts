@@ -13,15 +13,44 @@ import {
 // import dayjs from 'dayjs'
 
 export type IMaxAIChatGPTBackendAPIType =
+  // @deprecated 使用新的v2接口
   | 'chat_with_document'
   | 'chat_with_document/v2'
-  | 'get_chatgpt_response'
   | 'get_summarize_response'
+  | 'get_chatgpt_response'
   | 'get_gemini_response'
   | 'get_freeai_chat_response'
   | 'get_claude_response'
   | 'get_image_generate_response'
   | 'use_prompt_action'
+  | 'summary/v2/webpage'
+  | 'summary/v2/pdf'
+  | 'summary/v2/videosite'
+  | 'summary/v2/email'
+  | 'summary/v2/qa'
+
+export type IMaxAIChatGPTBackendBodyType = {
+  message_content?: IMaxAIChatMessageContent[]
+  chat_history?: IMaxAIRequestHistoryMessage[]
+  chrome_extension_version: string
+  model_name: string
+  prompt_id: string
+  prompt_name: string
+  prompt_inputs?: Record<string, string>
+  streaming: boolean
+  temperature?: number
+  doc_id?: string
+  response_in_json?: boolean
+  // text to image
+  prompt?: string
+  style?: string
+  size?: string
+  n?: number
+  // summary/v2接口
+  doc_type?: string
+  summary_type?: string
+  need_create?: boolean
+}
 
 export type IMaxAIChatMessageContentType = 'text' | 'image_url'
 
@@ -62,9 +91,17 @@ export interface IMaxAIResponseStreamMessage {
    */
   related?: IAIResponseOriginalMessageMetaDeepRelatedData[]
   /**
+   * 目前应该是json模式返回的status，为ok代表成功
+   */
+  status?: string
+  /**
    * ai response内容
    */
   text?: string
+  /**
+   * doc id针对短文summary问答的时候会返回这个
+   */
+  doc_id?: string
   /**
    * 当前stream的状态，以key区分当前正在输出的内容
    */

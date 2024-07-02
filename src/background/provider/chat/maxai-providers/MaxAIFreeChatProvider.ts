@@ -5,12 +5,12 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
+import { maxAIAPISendQuestion } from '@/background/provider/chat/maxai-providers/index'
 import { MaxAIFreeChat } from '@/background/src/chat'
-import { IMaxAIRequestHistoryMessage } from '@/background/src/chat/UseChatGPTChat/types'
-import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
+import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 class MaxAIFreeChatProvider implements ChatAdapterInterface {
   private maxAIFreeChat: MaxAIFreeChat
@@ -42,37 +42,31 @@ class MaxAIFreeChatProvider implements ChatAdapterInterface {
     sender,
     question,
   ) => {
-    const messageId = uuidV4()
-    const chat_history: IMaxAIRequestHistoryMessage[] = []
-    if (this.maxAIFreeChat.conversation) {
-      if (this.maxAIFreeChat.conversation.meta.systemPrompt) {
-        chat_history.push({
-          role: 'system',
-          content: [
-            {
-              type: 'text',
-              text: this.maxAIFreeChat.conversation.meta.systemPrompt,
-            },
-          ],
-        })
-      }
-      if (question.meta) {
-        question.meta.historyMessages?.forEach((message) => {
-          chat_history.push(chatMessageToMaxAIRequestMessage(message, true))
-        })
-        question.meta.includeHistory = false
-        question.meta.maxHistoryMessageCnt = 0
-      }
-    }
-    const questionMessage = chatMessageToMaxAIRequestMessage(question)
-    await this.maxAIFreeChat.askChatGPT(
-      questionMessage.content,
-      {
-        taskId: question.messageId,
-        chat_history,
-        meta: question.meta,
+    await maxAIAPISendQuestion(taskId, sender, question, {
+      conversationId:
+        question.conversationId || this.maxAIFreeChat.conversation?.id || '',
+      AIProvider: 'MAXAI_FREE',
+      AIModel:
+        this.maxAIFreeChat.conversation?.meta.AIModel ||
+        MAXAI_FREE_MODELS[0].value,
+      checkAuthStatus: async () => {
+        // await this.auth(sender.tab?.id || 0)
+        await this.maxAIFreeChat.checkTokenAndUpdateStatus()
+        return this.status === 'success'
       },
-      async ({ type, done, error, data }) => {
+      beforeSend: async () => {
+        this.clearFiles()
+      },
+      setAbortController: (abortController) => {
+        this.maxAIFreeChat.taskList[taskId] = () => abortController.abort()
+      },
+      afterSend: async (reason) => {
+        if (reason === 'token_expired') {
+          this.maxAIFreeChat.status = 'needAuth'
+          await this.maxAIFreeChat.updateClientConversationChatStatus()
+        }
+      },
+      onMessage: async ({ data, done, error, type }) => {
         if (sender.tab?.id) {
           await this.sendResponseToClient(sender.tab.id, {
             taskId,
@@ -80,14 +74,15 @@ class MaxAIFreeChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              messageId,
+              originalMessage: data.originalMessage,
+              messageId: uuidV4(),
             },
             error,
             done,
           })
         }
       },
-    )
+    })
   }
   async abortAskQuestion(messageId: string) {
     return await this.maxAIFreeChat.abortTask(messageId)

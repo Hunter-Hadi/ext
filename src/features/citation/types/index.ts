@@ -3,8 +3,17 @@ import { IRangyRect } from '@/features/contextMenu/types'
 export interface ICitationService {
   loading: boolean
 
-  // findText(content: string): Promise<[] | [ICitationMatch, ICitationMatch]>
-  findText(content: string, startIndex: number): Promise<string>
+  init(): void
+
+  destroy(): void
+
+  findText(
+    content: string,
+    startIndex: number,
+  ): Promise<{
+    title: string
+    matches: ICitationMatch[]
+  }>
 }
 
 export interface ICitationMatch {
@@ -15,7 +24,9 @@ export interface ICitationMatch {
   // 文字内容
   text: string
   // 节点容器
-  container: string | HTMLElement | (() => HTMLElement)
+  container: string | HTMLElement | null | (() => HTMLElement | null)
+  // 文字节点
+  textNode?: Node | null
   // 文字位置
   offset: number
 }

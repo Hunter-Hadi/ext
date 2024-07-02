@@ -9,6 +9,11 @@ import {
   setChromeExtensionLocalStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
+import { IPageSummaryType } from '@/features/chat-base/summary/types'
+import {
+  getPageSummaryConversationId,
+  getPageSummaryType,
+} from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
@@ -25,11 +30,6 @@ import {
   SidebarSummaryConversationIdState,
 } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryConversationId } from '@/features/sidebar/utils/getPageSummaryConversationId'
-import {
-  getPageSummaryType,
-  IPageSummaryType,
-} from '@/features/sidebar/utils/pageSummaryHelper'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppLocalStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -154,6 +154,7 @@ const useSidebarSettings = () => {
               await ClientConversationMessageManager.getMessageIds(
                 currentConversation.id,
               ),
+              { waitSync: true },
             )
             setSidebarSummaryConversationId('')
           }
@@ -260,6 +261,9 @@ const useSidebarSettings = () => {
             meta: merge({
               ...SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary,
               pageSummaryType,
+              pageSummary: {
+                type: pageSummaryType,
+              },
               domain,
               path,
               sourceWebpage: websiteGetSeoMetaData(),
@@ -269,7 +273,7 @@ const useSidebarSettings = () => {
               // \`\`\`
               // ${pageSummaryData.pageSummaryContent}
               // \`\`\``,
-            }),
+            } as IConversationMeta),
           } as Partial<IConversation>,
         },
       })

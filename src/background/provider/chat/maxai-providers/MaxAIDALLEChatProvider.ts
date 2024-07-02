@@ -5,12 +5,12 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
+import { maxAIAPISendQuestion } from '@/background/provider/chat/maxai-providers/index'
 import { MaxAIDALLEChat } from '@/background/src/chat'
-import { IMaxAIRequestHistoryMessage } from '@/background/src/chat/UseChatGPTChat/types'
-import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 class MaxAIDALLEChatProvider implements ChatAdapterInterface {
   private maxAIDALLEChat: MaxAIDALLEChat
@@ -42,37 +42,31 @@ class MaxAIDALLEChatProvider implements ChatAdapterInterface {
     sender,
     question,
   ) => {
-    const messageId = uuidV4()
-    const chat_history: IMaxAIRequestHistoryMessage[] = []
-    if (this.maxAIDALLEChat.conversation) {
-      if (this.maxAIDALLEChat.conversation.meta.systemPrompt) {
-        chat_history.push({
-          role: 'system',
-          content: [
-            {
-              type: 'text',
-              text: this.maxAIDALLEChat.conversation.meta.systemPrompt,
-            },
-          ],
-        })
-      }
-      if (question.meta) {
-        question.meta.historyMessages?.forEach((message) => {
-          chat_history.push(chatMessageToMaxAIRequestMessage(message, true))
-        })
-        question.meta.includeHistory = false
-        question.meta.maxHistoryMessageCnt = 0
-      }
-    }
-    const questionMessage = chatMessageToMaxAIRequestMessage(question)
-    await this.maxAIDALLEChat.askChatGPT(
-      questionMessage.content,
-      {
-        taskId: question.messageId,
-        chat_history,
-        meta: question.meta,
+    await maxAIAPISendQuestion(taskId, sender, question, {
+      conversationId:
+        question.conversationId || this.maxAIDALLEChat.conversation?.id || '',
+      AIProvider: 'MAXAI_DALLE',
+      AIModel:
+        this.maxAIDALLEChat.conversation?.meta.AIModel ||
+        MAXAI_IMAGE_GENERATE_MODELS[0].value,
+      checkAuthStatus: async () => {
+        // await this.auth(sender.tab?.id || 0)
+        await this.maxAIDALLEChat.checkTokenAndUpdateStatus()
+        return this.status === 'success'
       },
-      async ({ type, done, error, data }) => {
+      beforeSend: async () => {
+        this.clearFiles()
+      },
+      setAbortController: (abortController) => {
+        this.maxAIDALLEChat.taskList[taskId] = () => abortController.abort()
+      },
+      afterSend: async (reason) => {
+        if (reason === 'token_expired') {
+          this.maxAIDALLEChat.status = 'needAuth'
+          await this.maxAIDALLEChat.updateClientConversationChatStatus()
+        }
+      },
+      onMessage: async ({ data, done, error, type }) => {
         if (sender.tab?.id) {
           await this.sendResponseToClient(sender.tab.id, {
             taskId,
@@ -80,14 +74,15 @@ class MaxAIDALLEChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              messageId,
+              originalMessage: data.originalMessage,
+              messageId: uuidV4(),
             },
             error,
             done,
           })
         }
       },
-    )
+    })
   }
   async abortAskQuestion(messageId: string) {
     return await this.maxAIDALLEChat.abortTask(messageId)

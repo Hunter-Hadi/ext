@@ -184,7 +184,9 @@ export interface IAIResponseOriginalMessage {
     attachments?: IChatUploadFile[]
     // 是否触发了内容审核
     isTriggeredContentReview?: boolean
+    // 是否包含之前消息历史
     includeHistory?: boolean
+    // 消息是否全部完成
     isComplete?: boolean
     finish?: {
       type: string

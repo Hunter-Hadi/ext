@@ -21,6 +21,7 @@ import { isPermissionCardSceneType } from '@/features/auth/utils/permissionHelpe
 import { getAIProviderChatFiles } from '@/features/chatgpt'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
   IAIResponseMessage,
@@ -562,6 +563,16 @@ export class ActionAskChatGPT extends Action {
                     },
                   },
                 ]),
+              }
+              // AI response里可能会返回docId，后续如需增加更改conversationMeta的字段会放进此对象里
+              if (AIResponseMessage.conversationMeta) {
+                await ClientConversationManager.addOrUpdateConversation(
+                  conversationId,
+                  { meta: AIResponseMessage.conversationMeta },
+                  {
+                    syncConversationToDB: false,
+                  },
+                )
               }
               if (this.answer.conversationId) {
                 AIConversationId = this.answer.conversationId

@@ -33,7 +33,10 @@ import {
   backgroundConversationDB,
   backgroundConversationDBGetMessageIds,
 } from '@/features/indexed_db/conversations/background'
-import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import {
+  IConversation,
+  IConversationMeta,
+} from '@/features/indexed_db/conversations/models/Conversation'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessage,
@@ -163,6 +166,7 @@ export const clientAskAIQuestion = async (
       parentMessageId: string
       conversationId: string
       text: string
+      conversationMeta?: IConversationMeta
       originalMessage?: IAIResponseOriginalMessage
     }) => Promise<void>
     onError?: (error: string) => Promise<void>

@@ -1,15 +1,18 @@
 import {
+  getIframeOrSpecialHostPageContent,
+  getReadabilityPageContent,
+  getVisibilityPageContent,
+} from '@/features/chat-base/summary/utils/pageContentHelper'
+import {
   IShortcutEngineExternalEngine,
   pushOutputToChat,
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
-import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 
 export class ActionGetReadabilityContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
@@ -34,15 +37,14 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
   ) {
     try {
       if (this.isStopAction) return
-      const result =
+      let result =
         (await getIframeOrSpecialHostPageContent()) ||
-        (await getPageContentWithMozillaReadability())
-      this.originalInnerText = document.body.innerText
+        (await getReadabilityPageContent())
       if (result.length < 100 && typeof document !== 'undefined') {
-        this.output = document.body.innerText
-      } else {
-        this.output = result
+        result = await getVisibilityPageContent()
       }
+      this.originalInnerText = document.body.innerText
+      this.output = result
     } catch (e) {
       this.error = (e as any).toString()
     }

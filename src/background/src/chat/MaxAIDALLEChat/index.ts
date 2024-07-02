@@ -61,7 +61,7 @@ class MaxAIDALLEChat extends BaseChat {
     }
     await this.updateClientConversationChatStatus()
   }
-  private async checkTokenAndUpdateStatus() {
+  async checkTokenAndUpdateStatus() {
     const prevStatus = this.status
     this.token = await this.getToken()
     this.status = this.token ? 'success' : 'needAuth'

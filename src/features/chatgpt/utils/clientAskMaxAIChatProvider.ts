@@ -17,10 +17,14 @@ const clientAskMaxAIChatProvider = async (
     prompt_name: string
     prompt_id: string
     prompt_type: string
+    prompt_inputs?: Record<string, string>
     feature_name: string
     chat_history?: IMaxAIRequestHistoryMessage[]
     temperature?: number
     doc_id?: string
+    // TODO youtube summary时间线总结新增，后续重构删掉
+    api?: string
+    summary_type?: string
   },
   taskId: string,
 ) => {
@@ -30,9 +34,12 @@ const clientAskMaxAIChatProvider = async (
     prompt_id,
     prompt_name,
     prompt_type,
+    prompt_inputs,
     feature_name,
     temperature = 1,
     doc_id,
+    api = '',
+    summary_type,
   } = data
   const host = getCurrentDomainHost()
   const port = new ContentScriptConnectionV2({
@@ -63,8 +70,11 @@ const clientAskMaxAIChatProvider = async (
     model_name: model,
     prompt_id,
     prompt_name,
+    prompt_type,
+    prompt_inputs,
     temperature: Math.min(temperature, 1.2),
     ...(doc_id ? { doc_id } : {}),
+    ...(summary_type ? { summary_type } : {}),
   }
   if (aiProvider === 'MAXAI_CLAUDE') {
     maxAIApi = '/gpt/get_claude_response'
@@ -74,6 +84,9 @@ const clientAskMaxAIChatProvider = async (
     bodyObject.model_name = undefined
   } else if (aiProvider === 'OPENAI_API') {
     maxAIApi = '/gpt/get_chatgpt_response'
+  }
+  if (api) {
+    maxAIApi = api
   }
   if (!maxAIApi) {
     return {
@@ -113,4 +126,5 @@ const clientAskMaxAIChatProvider = async (
     data: returnData,
   }
 }
+
 export default clientAskMaxAIChatProvider

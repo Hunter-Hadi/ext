@@ -1,3 +1,6 @@
+/**
+ * @deprecated summary相关功能已移动到chat-base/summary下，防止冲突合并release后上线前删除
+ */
 import cloneDeep from 'lodash-es/cloneDeep'
 import { v4 as uuidV4 } from 'uuid'
 

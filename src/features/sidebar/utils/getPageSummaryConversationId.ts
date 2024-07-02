@@ -1,3 +1,6 @@
+/**
+ * @deprecated summary相关功能已移动到chat-base/summary下，防止冲突合并release后上线前删除
+ */
 import { MaxAIExtensionIdManager } from '@/background/utils/extensionId'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 

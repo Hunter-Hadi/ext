@@ -8,7 +8,7 @@ import {
 } from '@/background/defaultPromptsData/systemVariables'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
-export default [
+const contextWindowPrompts = [
   {
     id: 'c769f823-a073-408a-ac44-00e5bfc333a7',
     parent: 'b83cb482-710d-4e48-9b22-43b8e8ea3a02',
@@ -2694,3 +2694,4 @@ export default [
     },
   },
 ] as IContextMenuItem[]
+export default contextWindowPrompts

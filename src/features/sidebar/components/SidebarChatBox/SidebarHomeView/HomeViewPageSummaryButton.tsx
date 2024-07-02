@@ -3,8 +3,8 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
@@ -41,7 +41,7 @@ const HomeViewPageSummaryButton = () => {
   return (
     <Stack
       direction={'row'}
-      alignItems="center"
+      alignItems='center'
       spacing={0.5}
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
@@ -68,7 +68,7 @@ const HomeViewPageSummaryButton = () => {
         fontSize={14}
         fontWeight={400}
         lineHeight={1.5}
-        color="inherit"
+        color='inherit'
       >
         {t(textWithPageSummaryType() as any)}
       </Typography>

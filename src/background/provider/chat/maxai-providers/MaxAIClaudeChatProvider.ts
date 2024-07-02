@@ -5,12 +5,12 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
+import { maxAIAPISendQuestion } from '@/background/provider/chat/maxai-providers/index'
 import { MaxAIClaudeChat } from '@/background/src/chat'
-import { IMaxAIRequestHistoryMessage } from '@/background/src/chat/UseChatGPTChat/types'
-import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
+import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 class MaxAIClaudeChatProvider implements ChatAdapterInterface {
   private maxAIClaudeChat: MaxAIClaudeChat
@@ -42,38 +42,31 @@ class MaxAIClaudeChatProvider implements ChatAdapterInterface {
     sender,
     question,
   ) => {
-    const messageId = uuidV4()
-    const chat_history: IMaxAIRequestHistoryMessage[] = []
-    if (this.maxAIClaudeChat.conversation) {
-      if (this.maxAIClaudeChat.conversation.meta.systemPrompt) {
-        chat_history.push({
-          role: 'system',
-          content: [
-            {
-              type: 'text',
-              text: this.maxAIClaudeChat.conversation.meta.systemPrompt,
-            },
-          ],
-        })
-      }
-      if (question.meta) {
-        question.meta.historyMessages?.forEach((message) => {
-          chat_history.push(chatMessageToMaxAIRequestMessage(message, true))
-        })
-        question.meta.includeHistory = false
-        question.meta.maxHistoryMessageCnt = 0
-      }
-    }
-    const questionMessage = chatMessageToMaxAIRequestMessage(question)
-    await this.maxAIClaudeChat.askChatGPT(
-      questionMessage.content,
-      {
-        taskId: question.messageId,
-        regenerate: question?.meta?.regenerate,
-        chat_history,
-        meta: question.meta,
+    await maxAIAPISendQuestion(taskId, sender, question, {
+      conversationId:
+        question.conversationId || this.maxAIClaudeChat.conversation?.id || '',
+      AIProvider: 'MAXAI_CLAUDE',
+      AIModel:
+        this.maxAIClaudeChat.conversation?.meta.AIModel ||
+        MAXAI_CLAUDE_MODELS[0].value,
+      checkAuthStatus: async () => {
+        // await this.auth(sender.tab?.id || 0)
+        await this.maxAIClaudeChat.checkTokenAndUpdateStatus()
+        return this.status === 'success'
       },
-      async ({ type, done, error, data }) => {
+      beforeSend: async () => {
+        this.clearFiles()
+      },
+      setAbortController: (abortController) => {
+        this.maxAIClaudeChat.taskList[taskId] = () => abortController.abort()
+      },
+      afterSend: async (reason) => {
+        if (reason === 'token_expired') {
+          this.maxAIClaudeChat.status = 'needAuth'
+          await this.maxAIClaudeChat.updateClientConversationChatStatus()
+        }
+      },
+      onMessage: async ({ data, done, error, type }) => {
         if (sender.tab?.id) {
           await this.sendResponseToClient(sender.tab.id, {
             taskId,
@@ -81,14 +74,15 @@ class MaxAIClaudeChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              messageId,
+              originalMessage: data.originalMessage,
+              messageId: uuidV4(),
             },
             error,
             done,
           })
         }
       },
-    )
+    })
   }
   async abortAskQuestion(messageId: string) {
     return await this.maxAIClaudeChat.abortTask(messageId)

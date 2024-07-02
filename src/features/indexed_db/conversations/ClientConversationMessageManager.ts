@@ -345,8 +345,15 @@ export class ClientConversationMessageManager {
    * 删除消息
    * @param conversationId
    * @param messageIds
+   * @param options
+   * @param options.waitSync - 是否等待同步
    */
-  static async deleteMessages(conversationId: string, messageIds: string[]) {
+  static async deleteMessages(
+    conversationId: string,
+    messageIds: string[],
+    options?: { waitSync?: boolean },
+  ) {
+    const { waitSync = false } = options || {}
     try {
       if (messageIds.length === 0) {
         return true
@@ -356,7 +363,13 @@ export class ClientConversationMessageManager {
         messageIds,
       })
       this.notifyConversationMessageChange('delete', conversationId, messageIds)
-      clientDeleteMessagesToRemote(conversationId, messageIds).then().catch()
+      if (waitSync) {
+        await clientDeleteMessagesToRemote(conversationId, messageIds)
+          .then()
+          .catch()
+      } else {
+        clientDeleteMessagesToRemote(conversationId, messageIds).then().catch()
+      }
       await this.asyncUploadConversationLastMessageId(conversationId)
         .then()
         .catch()

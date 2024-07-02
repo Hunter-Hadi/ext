@@ -65,7 +65,9 @@
     "continue_with_email": "Jatka sähköpostilla",
     "privacy_policy": "Tietosuojakäytäntö",
     "terms_of_service": "Käyttöehdot",
-    "shortcut": "Pikanäppäin"
+    "shortcut": "Pikanäppäin",
+    "yearly": "Vuotuinen",
+    "monthly": "Kuukausittainen"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Oletko varma, että haluat peruuttaa? Huomaa, että peruuttamisen jälkeen kaikki tallentamattomat muutokset menetetään.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Kyllä, peruuta",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Takaisin muokkaamiseen",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Otsikko vaaditaan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Otsikko vaaditaan",
+    "feature_card__me__manage_my_plan": "Hallitse suunnitelmaani"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Päivitä käyttääksesi Clauden hakua",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Kirjaudu sisään hakeaksesi ChatGPT:llä",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Päivitä käyttääksesi ChatGPT:n hakua",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkriptio aikakatkaistiin.\nYritä uudelleen."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkriptio aikakatkaistiin.\nYritä uudelleen.",
+    "pricing__upgrade__popper_card__title": "Päivitä MaxAI Eliteen · Vuotuinen",
+    "pricing__upgrade__popper_card__item1__title": "Rajaton tekoälyn käyttö",
+    "pricing__upgrade__popper_card__item2__title": "Avaa kaikki ominaisuudet",
+    "pricing__upgrade__popper_card__item3__title": "Säästä tunteja joka päivä"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Nopeat edistyneet tekstikyselyt: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa edistynyttä tekstikyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
     "image_generate__secondary__content": "Nopeat kuvakyselyt: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa kuvakyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä."
+    "image_generate__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa kuvakyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
+    "promotion_plan__text": "Säästä 53% päivittämällä MaxAI Eliteen vuosittain nyt. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikkaa pyytääksesi AI:ta kirjoittamaan, kääntämään, tiivistämään tai selittämään valitun tekstin.",

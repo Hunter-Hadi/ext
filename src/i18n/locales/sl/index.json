@@ -65,7 +65,9 @@
     "continue_with_email": "Nadaljujte z e-pošto",
     "privacy_policy": "Politika zasebnosti",
     "terms_of_service": "Pogoji storitve",
-    "shortcut": "Bližnjica"
+    "shortcut": "Bližnjica",
+    "yearly": "Letno",
+    "monthly": "Mesečno"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Ali ste prepričani, da želite preklicati? Prosimo, upoštevajte, da bodo vsi neshranjeni podatki izgubljeni.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, prekliči",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Nazaj na urejanje",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obvezen"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obvezen",
+    "feature_card__me__manage_my_plan": "Upravljanje mojega načrta"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Nadgradite za iskanje s Claudeom",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Prijavite se za iskanje s ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Nadgradite za iskanje s ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija je potekla.\nProsimo, poskusite znova."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija je potekla.\nProsimo, poskusite znova.",
+    "pricing__upgrade__popper_card__title": "Nadgradite na MaxAI Elite · Letno",
+    "pricing__upgrade__popper_card__item1__title": "Neomejena uporaba AI",
+    "pricing__upgrade__popper_card__item2__title": "Odklenite vse funkcije",
+    "pricing__upgrade__popper_card__item3__title": "Prihranite ure vsak dan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Visokohitrostna napredna besedilna povpraševanja: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zagotovite vsaj 1.500 visokohitrostnih naprednih besedilnih povpraševanj vsak mesec. Po dosegi omejitve se lahko hitrost in kakovost modela zmanjšata.",
     "image_generate__secondary__content": "Visokohitrostna slikovna povpraševanja: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Zagotovite vsaj 1.500 visokohitrostnih slikovnih povpraševanj vsak mesec. Po dosegi omejitve se lahko hitrost in kakovost modela zmanjšata."
+    "image_generate__secondary__content__tooltip": "Zagotovite vsaj 1.500 visokohitrostnih slikovnih povpraševanj vsak mesec. Po dosegi omejitve se lahko hitrost in kakovost modela zmanjšata.",
+    "promotion_plan__text": "Prihranite 53% z nadgradnjo na MaxAI Elite Letno zdaj. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite, da vprašate AI, da prepiše, prevede, povzame ali razloži izbrano besedilo.",

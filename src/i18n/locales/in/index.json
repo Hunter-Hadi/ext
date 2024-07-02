@@ -65,7 +65,9 @@
     "continue_with_email": "Lanjutkan dengan email",
     "privacy_policy": "Kebijakan Privasi",
     "terms_of_service": "Syarat Layanan",
-    "shortcut": "Pintasan"
+    "shortcut": "Pintasan",
+    "yearly": "Tahunan",
+    "monthly": "Bulanan"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Apakah Anda yakin ingin membatalkan? Harap dicatat bahwa setelah dibatalkan, semua perubahan yang belum disimpan akan hilang.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ya, batalkan",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Kembali ke pengeditan",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Judul diperlukan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Judul diperlukan",
+    "feature_card__me__manage_my_plan": "Kelola rencana saya"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Tingkatkan untuk mencari dengan Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Masuk untuk mencari dengan ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Tingkatkan untuk mencari dengan ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Waktu transkripsi habis.\nSilakan coba lagi."
+    "sidebar__chat__voice_input__timeout__tooltip": "Waktu transkripsi habis.\nSilakan coba lagi.",
+    "pricing__upgrade__popper_card__title": "Upgrade ke MaxAI Elite · Tahunan",
+    "pricing__upgrade__popper_card__item1__title": "Penggunaan AI tanpa batas",
+    "pricing__upgrade__popper_card__item2__title": "Buka semua fitur",
+    "pricing__upgrade__popper_card__item3__title": "Simpan jam setiap hari"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Kueri teks lanjutan kecepatan tinggi: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri teks lanjutan kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",
     "image_generate__secondary__content": "Kueri gambar kecepatan tinggi: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri gambar kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang."
+    "image_generate__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri gambar kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",
+    "promotion_plan__text": "Simpan 53% dengan meng-upgrade ke MaxAI Elite Tahunan sekarang. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik untuk meminta AI menulis ulang, menerjemahkan, merangkum, atau menjelaskan teks yang dipilih.",

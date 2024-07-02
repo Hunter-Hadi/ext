@@ -65,7 +65,9 @@
     "continue_with_email": "Tiếp tục với email",
     "privacy_policy": "Chính sách bảo mật",
     "terms_of_service": "Điều khoản dịch vụ",
-    "shortcut": "Phím tắt"
+    "shortcut": "Phím tắt",
+    "yearly": "Hàng năm",
+    "monthly": "Hàng tháng"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Bạn có chắc chắn muốn hủy? Lưu ý rằng sau khi hủy, mọi thay đổi chưa được lưu sẽ bị mất.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Có, hủy",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Quay lại chỉnh sửa",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tiêu đề là bắt buộc"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tiêu đề là bắt buộc",
+    "feature_card__me__manage_my_plan": "Quản lý kế hoạch của tôi"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Nâng cấp để tìm kiếm với Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Đăng nhập để tìm kiếm với ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Nâng cấp để tìm kiếm với ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Quá trình chuyển văn bản thành giọng nói đã hết thời gian.\nVui lòng thử lại."
+    "sidebar__chat__voice_input__timeout__tooltip": "Quá trình chuyển văn bản thành giọng nói đã hết thời gian.\nVui lòng thử lại.",
+    "pricing__upgrade__popper_card__title": "Nâng cấp lên MaxAI Elite · Hàng năm",
+    "pricing__upgrade__popper_card__item1__title": "Sử dụng AI không giới hạn",
+    "pricing__upgrade__popper_card__item2__title": "Mở khóa tất cả các tính năng",
+    "pricing__upgrade__popper_card__item3__title": "Tiết kiệm hàng giờ mỗi ngày"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Truy vấn văn bản nâng cao tốc độ cao: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn văn bản nâng cao tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
     "image_generate__secondary__content": "Truy vấn hình ảnh tốc độ cao: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn hình ảnh tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm."
+    "image_generate__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn hình ảnh tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
+    "promotion_plan__text": "Tiết kiệm 53% bằng cách nâng cấp lên MaxAI Elite Hàng năm ngay bây giờ. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Nhấp để yêu cầu AI viết lại, dịch, tóm tắt hoặc giải thích đoạn văn bản đã chọn.",

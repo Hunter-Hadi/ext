@@ -65,7 +65,9 @@
     "continue_with_email": "Turpināt ar e-pastu",
     "privacy_policy": "Privātuma politika",
     "terms_of_service": "Pakalpojuma noteikumi",
-    "shortcut": "Saīsne"
+    "shortcut": "Saīsne",
+    "yearly": "Katru gadu",
+    "monthly": "Katru mēnesi"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Vai tiešām vēlaties atcelt? Lūdzu, ņemiet vērā, ka pēc atcelšanas tiks zaudētas visas nesaglabātās izmaiņas.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Jā, atcelt",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Atpakaļ pie rediģēšanas",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Nepieciešams ievadīt virsrakstu"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Nepieciešams ievadīt virsrakstu",
+    "feature_card__me__manage_my_plan": "Pārvaldīt manu plānu"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Jauniniet, lai meklētu ar Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Pierakstieties, lai meklētu ar ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Jauniniet, lai meklētu ar ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija beidzās laika gaitā.\nLūdzu, mēģiniet vēlreiz."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija beidzās laika gaitā.\nLūdzu, mēģiniet vēlreiz.",
+    "pricing__upgrade__popper_card__title": "Jaunināt uz MaxAI Elite · Katru gadu",
+    "pricing__upgrade__popper_card__item1__title": "Neierobežota AI izmantošana",
+    "pricing__upgrade__popper_card__item2__title": "Atbloķēt visas funkcijas",
+    "pricing__upgrade__popper_card__item3__title": "Ietaupiet stundas katru dienu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Augsta ātruma papildināti teksta vaicājumi: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma papildinātus teksta vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
     "image_generate__secondary__content": "Augsta ātruma attēlu vaicājumi: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma attēlu vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta."
+    "image_generate__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma attēlu vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
+    "promotion_plan__text": "Ietaupiet 53%, ja tagad jaunināsiet uz MaxAI Elite Katru gadu. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Noklikšķiniet, lai lūgtu AI pārrakstīt, tulkojot, apkopot vai skaidrot izvēlēto tekstu.",

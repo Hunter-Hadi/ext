@@ -65,7 +65,9 @@
     "continue_with_email": "Fortsæt med e-mail",
     "privacy_policy": "Fortrolighedspolitik",
     "terms_of_service": "Servicevilkår",
-    "shortcut": "Genvej"
+    "shortcut": "Genvej",
+    "yearly": "Årligt",
+    "monthly": "Månedligt"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "Er du sikker på, at du vil annullere? Bemærk venligst, at eventuelle usavede ændringer vil gå tabt.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, annuller",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tilbage til redigering",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel er påkrævet"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel er påkrævet",
+    "feature_card__me__manage_my_plan": "Administrer min plan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "Opgrader for at søge med Claude",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "Log ind for at søge med ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "Opgrader for at søge med ChatGPT",
-    "sidebar__chat__voice_input__timeout__tooltip": "Transkriptionen er udløbet.\nPrøv venligst igen."
+    "sidebar__chat__voice_input__timeout__tooltip": "Transkriptionen er udløbet.\nPrøv venligst igen.",
+    "pricing__upgrade__popper_card__title": "Opgrader til MaxAI Elite · Årligt",
+    "pricing__upgrade__popper_card__item1__title": "Ubegrænset AI-brug",
+    "pricing__upgrade__popper_card__item2__title": "Lås op for alle funktioner",
+    "pricing__upgrade__popper_card__item3__title": "Spar timer hver dag"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "Hurtige avancerede tekstforespørgsler: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige avancerede tekstforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",
     "image_generate__secondary__content": "Hurtige billedforespørgsler: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige billedforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret."
+    "image_generate__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige billedforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",
+    "promotion_plan__text": "Spar 53% ved at opgradere til MaxAI Elite Årligt nu. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik for at bede AI om at omskrive, oversætte, opsummere eller forklare den valgte tekst.",

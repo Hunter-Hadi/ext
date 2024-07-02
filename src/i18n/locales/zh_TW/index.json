@@ -65,7 +65,9 @@
     "continue_with_email": "使用電子郵件登入",
     "privacy_policy": "隱私政策",
     "terms_of_service": "服務條款",
-    "shortcut": "快捷方式"
+    "shortcut": "快捷方式",
+    "yearly": "每年",
+    "monthly": "每月"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "您確定要取消嗎？請注意，一旦取消，任何未保存的更改將丟失。",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "是的，取消",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "返回編輯",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "需要標題"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "需要標題",
+    "feature_card__me__manage_my_plan": "管理我的計劃"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "升級以使用Claude搜尋",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "登入以使用ChatGPT搜尋",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "升級以使用ChatGPT搜尋",
-    "sidebar__chat__voice_input__timeout__tooltip": "轉錄逾時。\n請再試一次。"
+    "sidebar__chat__voice_input__timeout__tooltip": "轉錄逾時。\n請再試一次。",
+    "pricing__upgrade__popper_card__title": "升級至 MaxAI Elite · 每年",
+    "pricing__upgrade__popper_card__item1__title": "無限使用 AI",
+    "pricing__upgrade__popper_card__item2__title": "解鎖所有功能",
+    "pricing__upgrade__popper_card__item3__title": "每天節省數小時"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "高速高級文本查詢：{{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "每月至少確保1,500次高速高級文本查詢。達到限制後，模型的速度和質量可能會降低。",
     "image_generate__secondary__content": "高速圖像查詢：{{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "每月至少確保1,500次高速圖像查詢。達到限制後，模型的速度和質量可能會降低。"
+    "image_generate__secondary__content__tooltip": "每月至少確保1,500次高速圖像查詢。達到限制後，模型的速度和質量可能會降低。",
+    "promotion_plan__text": "立即升級至 MaxAI Elite 每年，享受53%的折扣。 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "點擊以要求AI重新撰寫、翻譯、摘要或解釋所選文字。",

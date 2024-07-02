@@ -65,7 +65,9 @@
     "continue_with_email": "ای میل کے ساتھ جاری رکھیں",
     "privacy_policy": "رازداری کی پالیسی",
     "terms_of_service": "خدمات کی شرائط",
-    "shortcut": "شارٹ کٹ"
+    "shortcut": "شارٹ کٹ",
+    "yearly": "سالانہ",
+    "monthly": "ماہانہ"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -275,7 +277,8 @@
     "feature_card__prompts__confirm__cancel__description": "کیا آپ واقعی منسوخ کرنا چاہتے ہیں؟ براہ کرم نوٹ فرمائیں کہ ایک بار منسوخ کردیا جائے گا تو کوئی بھی غیر محفوظ تبدیلیاں ضائع ہوجائیں گی۔",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "جی ہاں، منسوخ کریں",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "ترمیم پر واپس جائیں",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان ضروری ہے"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان ضروری ہے",
+    "feature_card__me__manage_my_plan": "میری منصوبہ بندی کو انتظام کریں"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -1001,7 +1004,11 @@
     "permission__pricing_hook__search_with_ai_claude__login_title": "کلوڈ کے ساتھ تلاش کرنے کے لئے اپ گریڈ کریں",
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "چیٹ جی پی ٹی کے ساتھ تلاش کرنے کے لئے سائن ان کریں",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "چیٹ جی پی ٹی کے ساتھ تلاش کرنے کے لئے اپ گریڈ کریں",
-    "sidebar__chat__voice_input__timeout__tooltip": "ٹرانسکرپشن کا وقت ختم ہوگیا ہے۔\nبراہ کرم دوبارہ کوشش کریں۔"
+    "sidebar__chat__voice_input__timeout__tooltip": "ٹرانسکرپشن کا وقت ختم ہوگیا ہے۔\nبراہ کرم دوبارہ کوشش کریں۔",
+    "pricing__upgrade__popper_card__title": "MaxAI Elite کو اپ گریڈ کریں · سالانہ",
+    "pricing__upgrade__popper_card__item1__title": "لامحدود AI استعمال",
+    "pricing__upgrade__popper_card__item2__title": "تمام خصوصیات کو آزاد کریں",
+    "pricing__upgrade__popper_card__item3__title": "روزانہ گھنٹوں بچائیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",
@@ -1335,7 +1342,8 @@
     "advanced_text__secondary__content": "اعلی رفتار پیش رفتہ متن سوالات: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "ماہانہ کم از کم 1,500 اعلی رفتار پیش رفتہ متن سوالات کی یقینی فراہمی کریں۔ حد تک پہنچنے کے بعد، ماڈل کی رفتار اور کوالٹی میں کمی ہوسکتی ہے۔",
     "image_generate__secondary__content": "اعلی رفتار تصویری سوالات: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "ماہانہ کم از کم 1,500 اعلی رفتار تصویری سوالات کی یقینی فراہمی کریں۔ حد تک پہنچنے کے بعد، ماڈل کی رفتار اور کوالٹی میں کمی ہوسکتی ہے۔"
+    "image_generate__secondary__content__tooltip": "ماہانہ کم از کم 1,500 اعلی رفتار تصویری سوالات کی یقینی فراہمی کریں۔ حد تک پہنچنے کے بعد، ماڈل کی رفتار اور کوالٹی میں کمی ہوسکتی ہے۔",
+    "promotion_plan__text": "اب MaxAI Elite سالانہ اپ گریڈ کرکے 53٪ بچائیں. 👇"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "منتخب کردہ متن کو دوبارہ لکھنے، ترجمہ کرنے، خلاصہ کرنے یا وضاحت کرنے کے لئے AI سے پوچھنے کے لئے کلک کریں۔",

@@ -95,6 +95,7 @@ const CitationTag: FC<IProps> = (props) => {
         fontSize: '14px!important',
         top: -1,
         bgcolor: 'primary.main',
+        color: '#fff!important',
         marginLeft: '2px!important',
         marginRight: '2px!important',
         borderRadius: '14px',

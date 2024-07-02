@@ -907,7 +907,7 @@
     "sidebar__chat__suggestions__model__description__for_claude_3_opus": "הדגם החדש ביותר והמתקדם ביותר מאת Anthropic",
     "sidebar__chat__suggestions__model__description__for_gpt_4_o": "הדגם החדש ביותר והמתקדם ביותר מאת OpenAI",
     "sidebar__chat__suggestions__starts_new_chat__title": "צ'אט חדש",
-    "provider__claude__model__claude_3_5_opus__description": "התקדמות מרשימה של Anthropic בתחום הבינה המלאכותית, מספקת אינטיליגנציה חדשנית במהירות פי שניים מ- Claude 3 Opus. Claude 3.5 Sonnet מציב סטנדרטים חדשים בתעשייה להבנה ברמת גרסאות מתקדמות, ידע ברמת תואר ראשון ויכולת קידוד. הוא מצליח להבין פרטים קטנים, הומור והוראות מורכבות תוך יצירת תוכן באיכות גבוהה עם טון טבעי. עם יכולות מתקדמות מאוד, Claude 3.5 Sonnet מחדש את האפשרויות של AI למשימות מורכבות וזרימות עבודה מרובות שלבים.",
+    "provider__claude__model__claude_3_5_opus__description": "התקדמות אחרונה של Anthropic בתחום המודעות המלכותיות, מספקת אינטליגנציה קדמית שהיא טובה יותר מיכולות Claude-3-opus, ומהירה יותר ממהירויות Claude-3-sonnet. טובה במיוחד במשימות מורכבות, קידוד, מדעי הנתונים, עיבוד חזותי, וכתיבה.",
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__title": "שדרוג ל-Claude-3.5-Sonnet בלתי מוגבל עם ראייה",
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__free__description": "ה-Claude-3.5-Sonnet של Anthropic משלב אינטיליגנציה חדשנית עם מהירות מכפלה, ומקבע סטנדרטים חדשים בתחומי ההיגיון, הידע והקידוד. עם הבנה משופרת של פרטים קטנים, יכולות ראייה משופרות ומגבלת 200,000 טוקנים, הוא אידיאלי למשימות מורכבות הדורשות ביצועים גבוהים.",
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__paid__description": "חריגה ממגבלת השאילתות החכמות החודשית. שדרג עכשיו לשאילתות בלתי מוגבלות, או בדוק שוב בחודש הבא כשהשאילתות החודשיות מתאפסות.",

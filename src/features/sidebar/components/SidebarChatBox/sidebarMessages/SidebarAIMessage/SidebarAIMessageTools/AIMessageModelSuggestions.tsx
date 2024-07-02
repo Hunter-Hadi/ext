@@ -77,6 +77,7 @@ const getAIModels = (
         'claude-3-sonnet',
         'claude-3-opus',
         'gpt-4',
+        'gemini-pro',
         MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
       ].includes(conversationAIModel)
     ) {
@@ -183,7 +184,7 @@ const AIMessageModelSuggestions: FC<IAIMessageModelSuggestionsProps> = (
       />
       {memoConfig.newChatButton && (
         <AIMessageSuggestionsAIModelNewChatButton
-          newChatButtonConfig={memoConfig.newChatButton}
+          newChatButton={memoConfig.newChatButton}
         />
       )}
       <AIMessageSuggestionsModelSelector suggestions={memoConfig.suggestions} />
@@ -329,9 +330,9 @@ const AIMessageSuggestionsModelSelector: FC<{
 }
 
 const AIMessageSuggestionsAIModelNewChatButton: FC<{
-  newChatButtonConfig: IAIMessageModelSuggestionAIModelButton
+  newChatButton: IAIMessageModelSuggestionAIModelButton
 }> = (props) => {
-  const { newChatButtonConfig } = props
+  const { newChatButton } = props
   const {
     showConversationLoading,
     hideConversationLoading,
@@ -340,14 +341,14 @@ const AIMessageSuggestionsAIModelNewChatButton: FC<{
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const handleClick = async () => {
     try {
-      if (!newChatButtonConfig.AIModel) {
+      if (!newChatButton.AIModel) {
         return
       }
       showConversationLoading()
       await createConversation(
         'Chat',
-        newChatButtonConfig.AIProvider,
-        newChatButtonConfig.AIModel,
+        newChatButton.AIProvider,
+        newChatButton.AIModel,
       )
     } catch (e) {
       console.error(e)
@@ -360,9 +361,9 @@ const AIMessageSuggestionsAIModelNewChatButton: FC<{
       type={'NewChat'}
       onClick={handleClick}
       disabled={smoothConversationLoading}
-      title={newChatButtonConfig.title}
-      AIModel={newChatButtonConfig.AIModel}
-      AIProvider={newChatButtonConfig.AIProvider}
+      title={newChatButton.title}
+      AIModel={newChatButton.AIModel}
+      AIProvider={newChatButton.AIProvider}
     />
   )
 }

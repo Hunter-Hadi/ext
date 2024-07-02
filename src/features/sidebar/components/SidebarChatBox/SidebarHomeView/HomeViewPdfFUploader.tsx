@@ -13,7 +13,7 @@ const HomeViewPdfFUploader = () => {
 
   return (
     <Stack
-      alignItems="center"
+      alignItems='center'
       justifyContent={'center'}
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
@@ -31,8 +31,9 @@ const HomeViewPdfFUploader = () => {
     >
       <Stack
         direction={'row'}
-        alignItems="center"
+        alignItems='center'
         spacing={0.5}
+        data-button-clicked-name='home-view-pdf-uploader'
         sx={(t) => {
           const isDark = t.palette.mode === 'dark'
           return {
@@ -71,7 +72,7 @@ const HomeViewPdfFUploader = () => {
           fontSize={14}
           fontWeight={500}
           lineHeight={1.5}
-          color="inherit"
+          color='inherit'
         >
           {t('client:home_view_content_nav__pdf_uploader__chat_with_pdf')}
         </Typography>
@@ -81,7 +82,7 @@ const HomeViewPdfFUploader = () => {
         fontSize={14}
         fontWeight={400}
         lineHeight={1.5}
-        color="text.secondary"
+        color='text.secondary'
         mt={'2px'}
       >
         {t('client:home_view_content_nav__pdf_uploader__drop_pdf_here')}

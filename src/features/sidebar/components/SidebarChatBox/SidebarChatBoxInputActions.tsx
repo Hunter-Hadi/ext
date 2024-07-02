@@ -7,6 +7,7 @@ import { SxProps, Theme } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
 import TooltipButton from '@/components/TooltipButton'
 import UserUpgradeButton from '@/features/auth/components/UserUpgradeButton'
@@ -17,6 +18,7 @@ import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/m
 import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
 import SidebarChatHistoryButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatHistoryButton'
+import SidebarChatVoiceInputButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatVoiceInputButton'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
@@ -172,17 +174,40 @@ const SidebarChatBoxInputActions: FC<{
 
         {/* use prompt btn */}
 
-        <SidebarUsePromptButton
+        <Box
           sx={{
-            ...actionsBtnColorSxMemo,
-            visibility: isUsePromptIconButtonShow ? 'visible' : 'hidden',
-            position: isUsePromptIconButtonShow ? 'relative' : 'absolute',
-            [`&.${buttonClasses.contained}`]: {
-              color: 'white',
-            },
+            display: isUsePromptIconButtonShow ? 'flex' : 'none',
           }}
-          text={inputValue}
-        />
+        >
+          <SidebarUsePromptButton
+            sx={{
+              ...actionsBtnColorSxMemo,
+              [`&.${buttonClasses.contained}`]: {
+                color: 'white',
+              },
+            }}
+            text={inputValue}
+          />
+        </Box>
+
+        {/* voice input btn */}
+
+        <MaxAIBetaFeatureWrapper betaFeatureName={'voice_input'}>
+          <Box
+            sx={{
+              display: isUsePromptIconButtonShow ? 'flex' : 'none',
+            }}
+          >
+            <SidebarChatVoiceInputButton
+              sx={{
+                ...actionsBtnColorSxMemo,
+                [`&.${buttonClasses.contained}`]: {
+                  color: 'white',
+                },
+              }}
+            />
+          </Box>
+        </MaxAIBetaFeatureWrapper>
 
         {/* send btn */}
         <TooltipButton

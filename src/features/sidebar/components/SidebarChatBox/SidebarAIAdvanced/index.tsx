@@ -36,6 +36,7 @@ const SidebarAIAdvanced: FC<{
   return (
     <Box
       id={'MaxAIAIAdvanced'}
+      data-button-clicked-name={'maxai-advanced-button'}
       sx={{
         width: '40px',
         height: '40px',
@@ -52,7 +53,7 @@ const SidebarAIAdvanced: FC<{
         ...sx,
       }}
       aria-owns={open ? 'mouse-over-popover' : undefined}
-      aria-haspopup="true"
+      aria-haspopup='true'
       onClick={handlePopoverOpen}
     >
       <ContextMenuIcon
@@ -65,7 +66,7 @@ const SidebarAIAdvanced: FC<{
       <Popover
         open={open}
         anchorEl={anchorEl}
-        id="mouse-over-popover"
+        id='mouse-over-popover'
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right',

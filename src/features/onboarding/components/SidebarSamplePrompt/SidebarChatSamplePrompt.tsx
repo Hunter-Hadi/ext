@@ -91,11 +91,12 @@ const SidebarChatSamplePrompt: FC<IProps> = ({
             color: isFetching ? 'text.disabled' : 'text.primary',
           }}
           onClick={handleExploreMore}
+          data-button-clicked-name={'chat-sample-prompt-explore-more'}
         >
           {t('client:home_view__sample_prompt__explore_more')}
         </Typography>
       )}
-      <Stack>
+      <Stack data-button-clicked-name={'chat-sample-prompt-clicked'}>
         <Grid container spacing={1.5}>
           {samplePromptList.map((samplePrompt, index) => (
             <Grid key={samplePrompt.id} item xs={promptItemXs}>

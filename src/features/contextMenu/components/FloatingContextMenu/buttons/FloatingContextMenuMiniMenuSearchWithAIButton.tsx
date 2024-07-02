@@ -45,7 +45,7 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
           placement: placement || 'bottom',
           ...TooltipProps,
         }}
-        title={t('client:sidebar__tabs__search__tooltip')}
+        title={t('client:floating_menu__mini_menu__ai_search__button__tooltip')}
         sx={{
           minWidth: 'unset',
           p: '8px!important',

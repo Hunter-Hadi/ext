@@ -15,7 +15,7 @@ import open from 'open'
 async function updateDiscover() {
   /* crawling script */
   const crawlingScript = `(function crawlingPerplexityDiscover() {
-  const items = Array.from(document.querySelectorAll('div.mx-auto.h-full.w-full div.divide-y > div'));
+  const items = Array.from(document.querySelectorAll('div.mx-auto.h-full.w-full div.w-full.col-span-12 > div > div'));
   const data = items.map(item => {
     const title = item.querySelector('div[data-testid=thread-title]').innerText;
     return {

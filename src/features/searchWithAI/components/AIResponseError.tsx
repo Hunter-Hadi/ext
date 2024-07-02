@@ -14,6 +14,7 @@ import { APP_USE_CHAT_GPT_HOST, CHATGPT_WEBAPP_HOST } from '@/constants'
 import useUserABTestInfo from '@/features/abTester/hooks/useUserABTestInfo'
 import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
+import { isThirdPartyAIProvider } from '@/features/chatgpt'
 import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
 
 import {
@@ -136,7 +137,7 @@ const AIResponseError: FC<IProps> = ({
       errorStatus === 'UNAUTHORIZED' &&
       provider === SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE
     ) {
-      return `Please log into [app.maxai.me](${APP_USE_CHAT_GPT_HOST}) and try again.`
+      return `Please sign in to [app.maxai.me](${APP_USE_CHAT_GPT_HOST}) and try again.`
     }
     // 如果不是inHouse的错误，提示用户切换到其他AI
     if (
@@ -200,7 +201,9 @@ const AIResponseError: FC<IProps> = ({
             }}
           >
             <Button variant='normalOutlined'>
-              Log into {providerOption.label}
+              {isThirdPartyAIProvider(provider)
+                ? `Log into ${providerOption.label}`
+                : `Sign in to MaxAI.me`}
             </Button>
           </Link>
           <Button

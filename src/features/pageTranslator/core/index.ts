@@ -176,7 +176,7 @@ class PageTranslator {
               previousElement.nodeName === 'BR' ||
               previousElement.nodeName === 'LI' ||
               ('tagName' in previousElement
-                ? isBlockElement(previousElement)
+                ? isBlockElement(previousElement as HTMLElement)
                 : false)
           }
 
@@ -312,8 +312,20 @@ class PageTranslator {
         display: none !important;
       }
       ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT} {
-        display: inline-block;
+        display: inline;
         margin: 4px 0;
+        background-image: linear-gradient(to right, #94a3b8 30%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 5px 1px;
+        background-repeat: repeat-x;
+        padding-bottom: 3px;
+      }
+      ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT} {
+        background-image: linear-gradient(to right, #94a3b8 30%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 5px 1px;
+        background-repeat: repeat-x;
+        padding-bottom: 3px;
       }
 
       ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT}.retry,

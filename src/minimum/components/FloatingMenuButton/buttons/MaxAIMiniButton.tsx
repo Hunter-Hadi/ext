@@ -2,6 +2,7 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import React, { FC, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -21,6 +22,7 @@ const MaxAIMiniButton: FC<{
   underNode?: React.ReactNode
 }> = (props) => {
   const { isDragging, onClick, aboveNode, underNode } = props
+  const { t } = useTranslation(['client'])
   const { chatBoxShortCutKey } = useCommands()
   const [buttonHover, setButtonHover] = useState(false)
   const [delayHoverTooltip, setDelayHoverTooltip] = useState(false)
@@ -52,11 +54,12 @@ const MaxAIMiniButton: FC<{
         open={delayHoverTooltip && !isDragging}
         arrow
         minimumTooltip
-        title={chatBoxShortCutKey}
+        title={t('client:quick_access__maxai_button__title')}
+        description={chatBoxShortCutKey}
         placement={'left'}
       >
         <Button
-          data-testid="quick-access-maxai-mini-button"
+          data-testid='quick-access-maxai-mini-button'
           sx={{
             width: 42,
             height: 32,

@@ -189,7 +189,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                   }}
                   disabled
                 >
-                  {t(AIModelOption.group as any)}
+                  {t(AIModelOption.group as any) + ' AI'}
                 </MenuItem>
               )}
               <MenuItem
@@ -268,7 +268,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
             >
               {t(
                 'client:sidebar__ai_provider__model_selector__third_party_group__title',
-              )}
+              ) + ' AI'}
             </MenuItem>
             <MenuItem
               data-testid={`maxai--ai-model-selector--menu-item--third-ai-provider`}

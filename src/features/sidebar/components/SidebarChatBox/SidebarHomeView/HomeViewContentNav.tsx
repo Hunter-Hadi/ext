@@ -130,11 +130,17 @@ const HomeViewDefaultNavItem: FC<{
     return null
   }
 
+  const buttonClickedName = `home-view-${navItem.value.replace(
+    /_/g,
+    '-',
+  )}-button`
+
   return (
     <Stack
       direction={'row'}
       alignItems='center'
       spacing={0.5}
+      data-button-clicked-name={buttonClickedName}
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
 

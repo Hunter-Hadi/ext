@@ -136,20 +136,39 @@ const clientGetContentOfURL = async (
         // 创建一个临时容器来解析 HTML 内容
         const parser = new DOMParser()
         const parsedDoc = parser.parseFromString(reader.content, 'text/html')
-        let selectorAttr
+
         // google跟其他浏览器的解析方式不一样，所以需要判断
+        let selectorAttr
         if (url.includes('https://www.google.com')) {
           selectorAttr = 'data-surl'
         } else {
           selectorAttr = 'href'
         }
-        // 获取所有包含YouTube视频链接的元素
-        const watchElements = parsedDoc.querySelectorAll(
-          `[${selectorAttr}^="https://www.youtube.com/watch?v="]`,
+
+        // 先获取所有具有href或data-surl属性的元素
+        const potentialElements = parsedDoc.querySelectorAll(
+          `[${selectorAttr}]`,
         )
-        const embedElements = parsedDoc.querySelectorAll(
-          `[${selectorAttr}^="https://www.youtube.com/embed/"]`,
-        )
+
+        const watchElements: Element[] = []
+        const embedElements: Element[] = []
+
+        // 分别检查这些元素，依据URL确定它们属于哪种类型
+        potentialElements.forEach((element) => {
+          const attrValue = element.getAttribute(selectorAttr)
+
+          if (
+            attrValue &&
+            attrValue.startsWith('https://www.youtube.com/watch?v=')
+          ) {
+            watchElements.push(element)
+          } else if (
+            attrValue &&
+            attrValue.startsWith('https://www.youtube.com/embed/')
+          ) {
+            embedElements.push(element)
+          }
+        })
 
         // 合并两个 NodeList
         const anchorTags = Array.from(watchElements).concat(

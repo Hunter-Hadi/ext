@@ -47,7 +47,8 @@ const ChatBoxHeader: FC<{
       alignItems={'center'}
       px={1}
       borderBottom={'1px solid'}
-      borderColor="customColor.borderColor"
+      borderColor='customColor.borderColor'
+      id='sidebar-header'
     >
       <Stack
         sx={{
@@ -83,8 +84,8 @@ const ChatBoxHeader: FC<{
             )}
             <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
               <Typography
-                color="text.primary"
-                component="h1"
+                color='text.primary'
+                component='h1'
                 fontSize={20}
                 fontWeight={800}
               >

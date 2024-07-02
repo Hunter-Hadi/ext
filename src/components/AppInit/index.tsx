@@ -18,6 +18,7 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
+import useButtonClickedTracker from '@/features/mixpanel/hooks/useButtonClickedTracker'
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
@@ -151,12 +152,15 @@ const AppInit = () => {
   useInitSyncConversation()
 
   useInitSurveyState()
+  useButtonClickedTracker()
+
+  const isInMaxAIImmersiveChatPage = isMaxAIImmersiveChatPage()
   return (
     <>
       <MaxAISubscriptionUpdate />
       <MAXAIPDFAIViewerErrorAlert />
       <MaxAIPDFAIViewerTopBarButtonGroup />
-      {!isMaxAIImmersiveChatPage() && <ContextMenuInit />}
+      {!isInMaxAIImmersiveChatPage && <ContextMenuInit />}
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />
     </>

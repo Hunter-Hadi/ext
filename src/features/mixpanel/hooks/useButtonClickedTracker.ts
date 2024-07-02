@@ -9,13 +9,17 @@ import {
   findButtonClickedTrackElement,
   sendMixpanelButtonClickedEvent,
 } from '@/features/mixpanel/utils/mixpanelButtonClicked'
+import { getSearchWithAIRootElement } from '@/features/searchWithAI/utils'
 import { getTargetI18nTextByInnerText } from '@/i18n/utils'
 import {
   getAppMinimizeContainerElement,
   getMaxAISidebarRootElement,
 } from '@/utils'
 
-export type IButtonClickedTrackerSceneType = 'minimum' | 'floatingMenu'
+export type IButtonClickedTrackerSceneType =
+  | 'minimum'
+  | 'floatingMenu'
+  | 'pageSearchWithAI'
 
 /**
  *
@@ -44,6 +48,8 @@ const useButtonClickedTracker = (
           .querySelector(`#${MAXAI_CONTEXT_MENU_ID}`)
           ?.shadowRoot?.querySelector(`#${MAXAI_CONTEXT_MENU_PORTAL_ID}`) ??
         null
+    } else if (sceneType === 'pageSearchWithAI') {
+      container = getSearchWithAIRootElement()
     } else {
       container = getMaxAISidebarRootElement()
     }

@@ -6,7 +6,7 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
     title: 'Gemini-1.5-Flash',
     titleTag: '',
     value: 'gemini-flash-1.5',
-    maxTokens: 100 * 1000,
+    maxTokens: 1000 * 1000,
     tags: (currentConversationType) => {
       const tags = ['Beta']
       if (currentConversationType !== 'Search') {

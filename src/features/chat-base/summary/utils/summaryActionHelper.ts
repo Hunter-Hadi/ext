@@ -140,7 +140,6 @@ export const getSummaryCustomPromptActions = async ({
           // TODO 这里需要原样发送给后端，summary prompt后移由后端填入内容
           // 实际上PAGE_CONTENT也由前端发送，后端去渲染只是为了减小发送的数据量，避免重复发送
           // { PAGE_CONTENT: '...', PROMPT_TEMPLATE: 'summary on ...' } -> { PAGE_CONTENT: '...', PROMPT_TEMPLATE: 'summary on {{PAGE_CONTENT}}' }
-          // 后端的接口这里在youtube下要替换成{{DOC_MAIN_CONTEXT}}，其他页面是{{PAGE_CONTENT}}
           // api相关内容的转换放在maxAIRequestBodyGenerator内，这里先不处理了
           // 目前如果更改为{{}}会被模板渲染替换掉，暂时设置成这样
           Variable.value = '<<SUMMARY_PAGE_CONTENT_REPRESENTATION>>'

@@ -397,7 +397,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
               CURRENT_WEBPAGE_URL: params.CURRENT_WEBPAGE_URL,
               CURRENT_WEBSITE_DOMAIN: params.CURRENT_WEBSITE_DOMAIN,
               QUESTION_COUNT: 0,
-              DOC_MAIN_CONTEXT: conversation.meta.pageSummary?.content || '',
+              PAGE_CONTENT: conversation.meta.pageSummary?.content || '',
               DOC_SUBTITLE_CONTEXT: chapterTextList.text,
             } as any,
             feature_name: 'sidebar_summary',

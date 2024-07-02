@@ -185,9 +185,7 @@ export const maxAIRequestBodySummaryGenerator = async (
     postBody.prompt_inputs.PROMPT_TEMPLATE =
       postBody.prompt_inputs.PROMPT_TEMPLATE.replaceAll(
         '<<SUMMARY_PAGE_CONTENT_REPRESENTATION>>',
-        postBody.prompt_inputs.DOC_MAIN_CONTEXT
-          ? '{{DOC_MAIN_CONTEXT}}'
-          : '{{PAGE_CONTENT}}',
+        '{{PAGE_CONTENT}}',
       )
   }
   // 后端会自动调整model
@@ -244,14 +242,8 @@ export const maxAIRequestBodySummaryChatGenerator = async (
         CURRENT_WEBPAGE_URL: conversation.meta.sourceWebpage?.url || '',
         CURRENT_WEBSITE_DOMAIN: conversation.meta.sourceWebpage?.url || '',
       }
-      // TODO 目前youtube下传递的是DOC_MAIN_CONTEXT，后续针对email/youtube这两个要专门优化结构
-      if (conversation.meta.pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY') {
-        postBody.prompt_inputs.DOC_MAIN_CONTEXT =
-          conversation.meta.pageSummary.content || ''
-      } else {
-        postBody.prompt_inputs.PAGE_CONTENT =
-          conversation.meta.pageSummary.content || ''
-      }
+      postBody.prompt_inputs.PAGE_CONTENT =
+        conversation.meta.pageSummary.content || ''
     }
   } else {
     // 对于旧版本数据走之前的逻辑，旧版本没有存储pageSummary.content的信息

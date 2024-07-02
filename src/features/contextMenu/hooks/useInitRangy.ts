@@ -466,12 +466,6 @@ const useInitRangy = () => {
       const mouseTarget = event.target as HTMLElement
       const { isEditableElement, editableElement } =
         getEditableElement(mouseTarget)
-      console.log(
-        'TEST mousedown',
-        mouseTarget,
-        isEditableElement,
-        editableElement,
-      )
       if (isEditableElement && editableElement) {
         if (targetElementRef.current?.isSameNode(editableElement)) {
           return

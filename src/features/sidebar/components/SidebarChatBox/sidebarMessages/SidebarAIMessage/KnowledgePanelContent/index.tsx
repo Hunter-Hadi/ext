@@ -86,9 +86,9 @@ const KnowledgePanelContent = React.memo(
                 {item.content &&
                   item.content.map((contentItem, index) => (
                     <React.Fragment key={index}>
-                      &nbsp;
                       {contentItem.type === 'a' ? (
                         <Link
+                          target={'_blank'}
                           href={contentItem.href}
                           sx={{
                             color: 'text.primary',

@@ -7,6 +7,25 @@ import {
   string2DomainFaviconUrl,
 } from '@/utils/dataHelper/stringHelper'
 
+interface IKnowledgePandelListContent {
+  type: 'a' | 'text'
+  text: string
+  href?: string
+}
+interface IKnowledgePandelList {
+  title: string
+  content: IKnowledgePandelListContent[]
+}
+export interface ICrawlingKnowledge {
+  titleImgSrc: string | undefined
+  title: string
+  titleDescription: string
+  sourceSrc: string | undefined
+  sourceImg: string | undefined
+  sourceName: string
+  knowledgePandelList: IKnowledgePandelList[]
+}
+
 export interface ICrawlingSearchResult {
   title: string // 标题
   body: string // 内容
@@ -14,7 +33,7 @@ export interface ICrawlingSearchResult {
   from?: string // 内容来源
   favicon?: string // 内容来源的品牌图片地址
   searchQuery?: string // 搜索的关键词
-  // knowledgePanel?: string // 知识面板
+  knowledgePanel?: ICrawlingKnowledge | undefined // 知识面板
 }
 
 const isFileUrl = (url: string) => {
@@ -35,15 +54,18 @@ export function crawlingSearchResults({
   html,
   searchEngine,
   searchQuery,
+  needKnowledge = false,
 }: {
   html: string
   searchEngine: URLSearchEngine | string
   searchQuery: string
+  needKnowledge?: boolean
 }) {
   try {
     const results: ICrawlingSearchResult[] = CrawlingResultsWithEngine(
       html,
       searchEngine,
+      needKnowledge,
     ).map((result) => {
       if (!result.searchQuery) {
         result.searchQuery = searchQuery
@@ -82,28 +104,104 @@ function extractRealUrl(url: string) {
 const CrawlingResultsWithEngine = (
   html: string,
   searchEngine: URLSearchEngine | string,
+  needKnowledge: boolean,
 ) => {
   try {
     const $ = cheerio.load(html)
     let results: ICrawlingSearchResult[] = []
+
     switch (searchEngine) {
       case 'google': {
-        // 20230919 更新 不获取 rightPanel 的内容
-        // const rightPanel = $('#rhs')
-        // if (rightPanel && rightPanel.length) {
-        //   const rightPanelTitle = rightPanel
-        //     .find('h2[data-attrid="title"]')
-        //     .text()
-        //     .trim()
-        //   const rightPanelLink = rightPanel.find('.kno-rdesc a[href]')
-        //   const rightPanelInfo = rightPanel.find('div.wp-ms'))
+        // 获取knowledgePanel， 只做google的兼容
+        let knowledgePanelResult: undefined | ICrawlingKnowledge = undefined
+        if (needKnowledge) {
+          const rightPanel = $('#rhs')
+          const knowledgePanel = rightPanel.find('.osrp-blk')
 
-        //   results.push({
-        //     title: rightPanelTitle,
-        //     body: rightPanelInfo,
-        //     url: extractRealUrl(rightPanelLink.attr('href') ?? ''),
-        //   })
-        // }
+          if (knowledgePanel && knowledgePanel.length) {
+            // title
+            const knowledgePanelTitleContent = knowledgePanel.find('.KsRP6')
+            const knowledgePanelTitleImgSrc = knowledgePanelTitleContent
+              .find('.hUqmeb>g-img')
+              .attr('data-lpage')
+            // console.log(`knowledgePanelTitleImgSrc:`, knowledgePanelTitleImgSrc)
+            const knowledgePanelTitle = knowledgePanelTitleContent
+              .find('div[data-attrid^="title"]')
+              .text()
+            // console.log(`knowledgePanelTitle:`, knowledgePanelTitle)
+            const knowledgePanelTitleDescription = knowledgePanelTitleContent
+              .find('div[data-attrid^="subtitle"]')
+              .text()
+
+            // body
+            const knowledgePanelBodyContent = knowledgePanel.find('.wp-ms')
+            console.log(`knowledgePanelBodyContent:`, knowledgePanelBodyContent)
+            // body-source
+            const knowledgePanelSource =
+              knowledgePanelBodyContent.find('a[class*="ellip"]')
+            // console.log(`knowledgePanelSource:`, knowledgePanelSource)
+            const knowledgePanelSourceSrc = knowledgePanelSource.attr('href')
+            // console.log(`knowledgePanelSourceSrc:`, knowledgePanelSourceSrc)
+            const knowledgePanelSourceImg = knowledgePanelSource
+              .find('svg')
+              .attr('xmlns')
+            // console.log(`knowledgePanelSourceImg:`, knowledgePanelSourceImg)
+            const knowledgePanelSourceName = knowledgePanelSource
+              .find('span[class="ellip"]')
+              .text()
+            // console.log(`knowledgePanelSourceName:`, knowledgePanelSourceName)
+
+            // body-content
+            const knowledgePandelList = knowledgePanelBodyContent
+              .find('.w8qArf')
+              .map((i, element) => {
+                const title = $(element).text().trim()
+                const content: IKnowledgePandelListContent[] = []
+                const sibling = $(element).next('span')
+                console.log(`sibling:`, sibling)
+                // 遍历所有子节点对a标签和其他标签做处理
+                sibling
+                  .contents()
+                  .contents()
+                  .each((j, child) => {
+                    const $child = $(child)
+
+                    if ($child.is('a')) {
+                      content.push({
+                        type: 'a',
+                        text: $child.text().trim(),
+                        href: 'https://www.google.com' + $child.attr('href'),
+                      })
+                    } else {
+                      content.push({
+                        type: 'text',
+                        text: $child.text().trim(),
+                      })
+                    }
+                  })
+
+                return { title, content }
+              })
+              .get()
+
+            if (
+              knowledgePanelTitleImgSrc &&
+              knowledgePanelTitle &&
+              knowledgePanelTitleDescription &&
+              knowledgePandelList
+            ) {
+              knowledgePanelResult = {
+                titleImgSrc: knowledgePanelTitleImgSrc,
+                title: knowledgePanelTitle,
+                titleDescription: knowledgePanelTitleDescription,
+                sourceSrc: knowledgePanelSourceSrc,
+                sourceImg: knowledgePanelSourceImg,
+                sourceName: knowledgePanelSourceName,
+                knowledgePandelList,
+              }
+            }
+          }
+        }
 
         const searchItems = $('#search #rso > div')
         if (searchItems.length === 1) {
@@ -150,6 +248,7 @@ const CrawlingResultsWithEngine = (
                   url,
                   from: from,
                   favicon: metaInfoEl?.find('img')?.attr('src'),
+                  knowledgePanel: knowledgePanelResult,
                 })
               }
             })
@@ -172,6 +271,7 @@ const CrawlingResultsWithEngine = (
                 url: url,
                 from: metaInfoEl.text(),
                 favicon: metaInfoEl.find('img')?.attr('src'),
+                knowledgePanel: knowledgePanelResult,
               })
             })
         } else {
@@ -239,6 +339,7 @@ const CrawlingResultsWithEngine = (
                 url,
                 from: from,
                 favicon: metaInfoEl?.find('img')?.attr('src'),
+                knowledgePanel: knowledgePanelResult,
               })
             })
         }

@@ -7,7 +7,7 @@ import open from 'open'
  *
  * 1. 命令行跑 node update-discover.mjs，会自动打开 discover 页面和 discover.json 文件
  * 2. crawlingScript 会自动复制到粘贴板，直接粘贴到 console 里面运行
- * 3. 复制 console 里面的结果，粘贴到 src/features/onboarding/constants/discover.json 文件里面
+ * 3. 复制 console 里面的结果，粘贴到 刚刚打开的 discover.json 文件 (src/features/onboarding/constants/discover.json) 里面
  * 4. 保存文件，然后 commit 到 git 仓库
  *
  */

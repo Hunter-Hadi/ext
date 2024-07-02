@@ -1,4 +1,4 @@
-import { ChatGPTAPI } from 'chatgpt'
+import OpenAI from 'openai';
 import fs from 'fs'
 import pkg from 'gpt-3-encoder'
 import { HttpsProxyAgent } from 'https-proxy-agent'
@@ -26,32 +26,40 @@ const getTextTokens = (text) => {
 const translateValue = async (translateJson, from, to, logPrefix) => {
   const runTranslate = async (prompt, times) => {
     const agent = new HttpsProxyAgent('http://127.0.0.1:7890')
-    const api = new ChatGPTAPI({
+    const openai = new OpenAI({
       apiKey: 'sk-proj-HS4ebd1XfJaNj4AhtXm9T3BlbkFJi35pdusCEP0CmKUK4t9z',
-      completionParams: {
-        model: 'gpt-3.5-turbo-16k',
-        temperature: 0.2,
-        top_p: 0.1,
-      },
-      timeoutMs: 2 * 60 * 1000,
-      systemMessage: 'You are a helpful assistant.',
-      maxResponseTokens,
-      maxModelTokens,
-      fetch: (url, options = {}) => {
-        const defaultOptions = {
-          agent,
-        }
-        const mergedOptions = {
-          ...defaultOptions,
-          ...options,
-        }
-        return nodeFetch(url, mergedOptions)
-      },
-    })
+      httpAgent: agent,
+    });
+
     debug && console.log(logPrefix + prompt)
     let res = null
     try {
-      res = await api.sendMessage(prompt)
+      const chatCompletion = await openai.chat.completions.create({
+        model: 'gpt-3.5-turbo',
+        temperature: 0.2,
+        top_p: 0.1,
+        response_format: {
+          type: 'json_object'
+        },
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a helpful assistant designed to output JSON.',
+          },
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+      });
+      if (chatCompletion.choices[0].finish_reason) {
+        if (chatCompletion.choices[0].finish_reason === 'length') {
+          console.error('❌ChatGPTAPI Error: 413 Payload Too Large', `[${to}]`, chatCompletion)
+        }
+        res = {
+          text: chatCompletion.choices[0].message.content
+        }
+      }
     } catch (e) {
       if (e.statusCode === 401) {
         console.error('❌ChatGPTAPI Error: 401 Unauthorized')
@@ -59,7 +67,7 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
       debug && console.error(logPrefix + 'api.sendMessage error', e)
     }
     let data = null
-    if (res && res.text && res.detail) {
+    if (res && res.text) {
       const jsonText = res.text
       try {
         try {
@@ -634,10 +642,11 @@ async function getCurrentCountryCode() {
   try {
     // 获取用户的IP信息
     const agent = new HttpsProxyAgent('http://127.0.0.1:7890')
-    const ipInfoRes = await nodeFetch('https://api64.ipify.org?format=json', {
+    const ipInfoRes = await nodeFetch('https://ifconfig.co/json', {
       agent,
     })
     const ipInfo = await ipInfoRes.json()
+    console.log('ipInfo', ipInfo)
     const ipAddress = ipInfo.ip;
     // 使用IP地址获取地理位置信息
     const geoResponse = await fetch(`https://ipapi.co/${ipAddress}/json/`);

@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Bạn có chắc chắn muốn hủy? Lưu ý rằng sau khi hủy, mọi thay đổi chưa được lưu sẽ bị mất.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Có, hủy",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Quay lại chỉnh sửa",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tiêu đề là bắt buộc",
-    "feature_card__me__manage_my_plan": "Quản lý kế hoạch của tôi"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tiêu đề là bắt buộc"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",

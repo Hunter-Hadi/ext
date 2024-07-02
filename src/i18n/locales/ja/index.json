@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "キャンセルしてもよろしいですか？キャンセルすると、保存されていない変更が失われます。",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "はい、キャンセル",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "編集に戻る",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "タイトルは必須です",
-    "feature_card__me__manage_my_plan": "プランを管理する"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "タイトルは必須です"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",

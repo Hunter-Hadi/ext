@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิก? โปรดทราบว่าหากยกเลิกแล้ว การเปลี่ยนแปลงที่ยังไม่ได้บันทึกจะหายไป",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "ใช่ ยกเลิก",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "กลับไปแก้ไข",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "ต้องระบุชื่อ",
-    "feature_card__me__manage_my_plan": "จัดการแผนของฉัน"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ต้องระบุชื่อ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",

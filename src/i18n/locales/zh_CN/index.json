@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "确定要取消吗？请注意，一旦取消，任何未保存的更改都将丢失。",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "是的，取消",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "返回编辑",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "标题是必需的",
-    "feature_card__me__manage_my_plan": "管理我的计划"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "标题是必需的"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",

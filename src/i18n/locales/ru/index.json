@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Вы уверены, что хотите отменить? Обратите внимание, что после отмены все несохраненные изменения будут потеряны.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Да, отменить",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Вернуться к редактированию",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Требуется заголовок",
-    "feature_card__me__manage_my_plan": "Управление моим планом"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Требуется заголовок"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",

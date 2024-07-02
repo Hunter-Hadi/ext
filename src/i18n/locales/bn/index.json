@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "আপনি কি নিশ্চিত যে আপনি বাতিল করতে চান? দয়া করে মনে রাখবেন, একবার বাতিল করা হলে সংরক্ষিত না করা পর্যন্ত কোনও পরিবর্তন হারায়।",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "হ্যাঁ, বাতিল করুন",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "সম্পাদনা করা ফিরে যান",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "শিরোনাম প্রয়োজন",
-    "feature_card__me__manage_my_plan": "আমার পরিকল্পনা পরিচালনা করুন"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "শিরোনাম প্রয়োজন"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",

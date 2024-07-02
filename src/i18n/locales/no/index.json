@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "Er du sikker på at du vil avbryte? Vær oppmerksom på at eventuelle ulagrede endringer vil gå tapt.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, avbryt",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tilbake til redigering",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tittel er påkrevd",
-    "feature_card__me__manage_my_plan": "Administrer planen min"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tittel er påkrevd"
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",

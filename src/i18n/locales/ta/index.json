@@ -277,8 +277,7 @@
     "feature_card__prompts__confirm__cancel__description": "நீங்கள் நிச்சயமாக ரத்து செய்ய விரும்புகிறீர்களா? தயவுசெய்து மனப்படுத்தப்படாத மாற்றங்கள் இருந்தால், அதை ரத்து செய்யப்பட்டுவிடப்படும்.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "ஆமாம், ரத்து செய்யுங்கள்",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "திரும்பி திருத்துக",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "தலைப்பு தேவை",
-    "feature_card__me__manage_my_plan": "எனது திட்டத்தை நிர்வகிக்கவும்"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "தலைப்பு தேவை"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",

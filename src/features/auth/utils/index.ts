@@ -416,7 +416,7 @@ export const getCurrentUserLogInfo = async () => {
   // 所以这里需要处理，currentPlan === 'GUEST' && currentRole === 'free' 的情况
   if (
     currentPlan === 'GUEST' &&
-    (currentRole === 'free' ||
+    (currentRole?.startsWith('free') ||
       currentRole === 'new_user' ||
       currentRole === 'pro_gift')
   ) {

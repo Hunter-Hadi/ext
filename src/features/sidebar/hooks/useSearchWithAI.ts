@@ -31,7 +31,7 @@ const useSearchWithAI = () => {
     clientConversationMessages,
     clientConversation,
   } = useClientConversation()
-  const { isPayingUser } = useUserInfo()
+  const { isPayingUser, userInfo } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
     useClientConversation()
@@ -101,7 +101,7 @@ const useSearchWithAI = () => {
             (await getChromeExtensionOnBoardingData())
               .ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES,
           ) || 0
-        if (searchLifetimesQuota > 0) {
+        if (userInfo?.role?.name === 'free_trial' && searchLifetimesQuota > 0) {
           // 如果没有用完，那么就减一
           await setChromeExtensionOnBoardingData(
             'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES',

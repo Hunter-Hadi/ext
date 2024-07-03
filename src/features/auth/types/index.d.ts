@@ -4,6 +4,7 @@
  */
 export type IUserRoleType =
   | 'free'
+  | 'free_trial'
   | 'new_user'
   | 'pro_gift'
   | 'basic'

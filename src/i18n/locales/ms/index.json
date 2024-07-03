@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Jimat 53% dengan menaik taraf ke MaxAI Elite Tahunan sekarang. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik untuk meminta AI menulis semula, menterjemah, merangkum, atau menjelaskan teks yang dipilih.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik untuk meminta AI untuk memperbaiki, mengesahkan, menterjemah, merangkum, atau menjelaskan teks yang dipilih.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Anda boleh taip \"{{KEY_TEXT}}\" untuk mencari pilihan ini dengan cepat.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Anda juga boleh meminta AI melakukan sebarang tindakan pada teks yang dipilih.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Tekan",

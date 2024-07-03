@@ -1306,7 +1306,7 @@
     "image_generate__secondary__content__tooltip": "మాసంలో కనీసం 1,500 హై-స్పీడ్ ఇమేజ్ క్వెరీలను ఖచ్చితంగా నమోదు చేయండి. పరిమితిని చేర్చిన తరువాత, మోడల్ యొక్క వేగం మరియు గుర్తింపు క్వాలిటీ తగ్గించబడవచ్చు."
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "ఎంచుకోబడిన వచనాన్ని మళ్ళీ రాయండి, అనువాదించండి, సంగ్రహించండి లేదా వివరించండి కోసం AI కో అడ్డు చేయండి.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "ఎంపిక చేసిన వచనాన్ని మెరుగుపరచడానికి AI కోసం క్లిక్ చేయండి, ప్రూఫ్రీడ్, అనువాదించడానికి, సారాంశం చేయడానికి లేదా వివరించడానికి క్లిక్ చేయండి.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "ఈ ఎంపికను త్వరగా కనుగొనడానికి \"{{KEY_TEXT}}\" టైప్ చేయగలరు.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "మీరు కూడా AI ని ఎంతో పని చేయడానికి ఎంచుకోవచ్చు.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "దాటి",

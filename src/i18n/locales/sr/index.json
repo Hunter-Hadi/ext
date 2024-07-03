@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Uštedite 53% nadogradnjom na MaxAI Elite Godišnje sada. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite da biste pitali AI da prepiše, prevede, sumira ili objasni izabrani tekst.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite da biste zamolili AI da poboljša, proveri, prevede, sumira ili objasni izabrani tekst.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Možete otkucati \"{{KEY_TEXT}}\" da biste brzo pronašli ovu opciju.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Takođe možete pitati AI da izvrši bilo koju radnju nad izabranim tekstom.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Pritisnite",

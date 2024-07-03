@@ -1147,7 +1147,7 @@
     "funnel_survey__SURVEY_CANCEL_COMPLETED__question1__options1__placeholder": "Tell us what caused you to cancel..."
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Click to ask AI to rewrite, translate, summarize, or explain the selected text.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Click to ask AI to improve, proofread, translate, summarize, or explain the selected text.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "You can type \"{{KEY_TEXT}}\" to quickly find this option.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "You can also ask AI to perform any action on the selected text.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Hit",

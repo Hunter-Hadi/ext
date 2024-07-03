@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Estalvia un 53% millorant a MaxAI Elite Anual ara. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Feu clic per demanar a l'IA que reescriu, tradueixi, resumisca o expliqui el text seleccionat.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Feu clic per demanar a l'IA que millori, corregeixi, tradueixi, resumisca o expliqui el text seleccionat.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Podeu escriure \"{{KEY_TEXT}}\" per trobar ràpidament aquesta opció.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "També podeu demanar a l'IA que realitzi qualsevol acció sobre el text seleccionat.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Prem",

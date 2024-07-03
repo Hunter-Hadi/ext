@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Tiết kiệm 53% bằng cách nâng cấp lên MaxAI Elite Hàng năm ngay bây giờ. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Nhấp để yêu cầu AI viết lại, dịch, tóm tắt hoặc giải thích đoạn văn bản đã chọn.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Nhấn để yêu cầu AI cải thiện, kiểm tra lỗi chính tả, dịch, tóm tắt hoặc giải thích văn bản đã chọn.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Bạn có thể gõ \"{{KEY_TEXT}}\" để nhanh chóng tìm tùy chọn này.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Bạn cũng có thể yêu cầu AI thực hiện bất kỳ hành động nào trên đoạn văn bản đã chọn.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Nhấn",

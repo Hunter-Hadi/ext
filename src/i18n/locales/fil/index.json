@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "I-save ang 53% sa pamamagitan ng pag-upgrade sa MaxAI Elite Taun-taon ngayon. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "I-click para hilingin sa AI na magsulat muli, isalin, buodin, o ipaliwanag ang napiling teksto.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "I-click para humiling sa AI na mapabuti, mapatama, isalin, maikli, o ipaliwanag ang napiling teksto.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Maaari mong i-type ang \"{{KEY_TEXT}}\" upang madaling makita ang opsiyong ito.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Maaari ka ring magtanong sa AI na gawin ang anumang aksyon sa napiling teksto.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Pindutin",

@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Simpan 53% dengan meng-upgrade ke MaxAI Elite Tahunan sekarang. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik untuk meminta AI menulis ulang, menerjemahkan, merangkum, atau menjelaskan teks yang dipilih.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik untuk meminta AI untuk meningkatkan, memeriksa, menerjemahkan, merangkum, atau menjelaskan teks yang dipilih.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Anda dapat mengetik \"{{KEY_TEXT}}\" untuk dengan cepat menemukan opsi ini.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Anda juga dapat meminta AI melakukan tindakan apa pun pada teks yang dipilih.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Tekan",

@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Ušetřete 53% při upgradu na MaxAI Elite Ročně nyní. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikněte pro požádání AI o přepsání, překlad, shrnutí nebo vysvětlení vybraného textu.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknutím požádejte AI o vylepšení, korekturu, překlad, shrnutí nebo vysvětlení vybraného textu.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Můžete napsat \"{{KEY_TEXT}}\" pro rychlé nalezení této možnosti.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Můžete také požádat AI o provedení jakékoli akce na vybraném textu.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Stiskněte",

@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "በዓመት ወደ MaxAI Elite የተመለከት 53% በመቀጠል ማስተላለፍ ይችላሉ. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "የተመለሰውን ጽሁፍና ትርጉም ወደ AI ጠይቀው ይጠይቃል።",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "የተለያዩ ጽሁፎችን ለማስተላለፍ፣ ለማስታወሻ፣ ለማስተርጉም፣ ለማስተናገድ ወይም ለማስብለጥ እስከዚህ የAI ይላኩ።",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "ይህንን አማራጭ ይፈልጋሉ \"{{KEY_TEXT}}\".",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "ሌሎች ምልክቶችን ለማግኘት AI ይጠይቃል።",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "ይጠቅማል",

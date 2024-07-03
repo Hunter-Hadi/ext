@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Spar 53% ved å oppgradere til MaxAI Elite Årlig nå. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikk for å be AI om å omskrive, oversette, oppsummere eller forklare den valgte teksten.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikk for å be AI om å forbedre, korrekturlese, oversette, oppsummere eller forklare den valgte teksten.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Du kan skrive \"{{KEY_TEXT}}\" for å raskt finne dette alternativet.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Du kan også be AI om å utføre en hvilken som helst handling på den valgte teksten.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Trykk",

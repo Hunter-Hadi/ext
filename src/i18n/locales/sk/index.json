@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Ušetrite 53% pri vylepšení na MaxAI Elite Ročne teraz. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite pre požiadanie AI o prepísanie, preklad, zhrnutie alebo vysvetlenie vybraného textu.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite pre vylepšenie, korektúru, preklad, zhrnutie alebo vysvetlenie vybraného textu od AI.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Môžete napísať \"{{KEY_TEXT}}\" pre rýchle nájdenie tejto možnosti.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Môžete tiež požiadať AI o vykonanie akcie na vybranom texte.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Stlačte",

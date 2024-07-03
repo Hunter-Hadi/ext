@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Säästa 53% uuendades nüüd MaxAI Elite'ile aastas. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klõpsake, et küsida AI-lt valitud teksti ümberkirjutamist, tõlkimist, kokkuvõtet või selgitust.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klõpsake AI-lt küsimiseks, et parandada, toimetada, tõlkida, kokku võtta või selgitada valitud teksti.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Saate kiiresti leida selle valiku, tippides \"{{KEY_TEXT}}\".",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Samuti saate paluda AI-l teha valitud tekstiga mis tahes toimingut.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Vajutage",

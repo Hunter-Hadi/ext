@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Säästä 53% päivittämällä MaxAI Eliteen vuosittain nyt. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klikkaa pyytääksesi AI:ta kirjoittamaan, kääntämään, tiivistämään tai selittämään valitun tekstin.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Napsauta pyytääksesi tekoälyä parantamaan, oikolukemaan, kääntämään, tiivistämään tai selittämään valittu teksti.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Voit kirjoittaa \"{{KEY_TEXT}}\" löytääksesi tämän vaihtoehdon nopeasti.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Voit myös pyytää AI:ta suorittamaan minkä tahansa toiminnon valitulle tekstille.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Paina",

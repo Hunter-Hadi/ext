@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Économisez 53% en passant à MaxAI Elite Annuel maintenant. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Cliquez pour demander à l'IA de réécrire, traduire, résumer ou expliquer le texte sélectionné.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Cliquez pour demander à l'IA d'améliorer, de relire, de traduire, de résumer ou d'expliquer le texte sélectionné.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Vous pouvez taper \"{{KEY_TEXT}}\" pour trouver rapidement cette option.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Vous pouvez également demander à l'IA d'effectuer n'importe quelle action sur le texte sélectionné.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Appuyez sur",

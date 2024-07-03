@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Sparen Sie jetzt 53%, indem Sie auf MaxAI Elite Jährlich upgraden. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klicken Sie hier, um die KI aufzufordern, den ausgewählten Text neu zu schreiben, zu übersetzen, zusammenzufassen oder zu erklären.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klicken Sie, um die KI aufzufordern, den ausgewählten Text zu verbessern, zu korrigieren, zu übersetzen, zusammenzufassen oder zu erklären.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Sie können \"{{KEY_TEXT}}\" eingeben, um diese Option schnell zu finden.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Sie können die KI auch bitten, eine beliebige Aktion auf den ausgewählten Text auszuführen.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Drücken Sie",

@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "53%-ot spórolhatsz, ha most frissítesz MaxAI Elite Évesre. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kattintson az AI megkérdezéséhez, hogy újraírja, lefordítsa, összefoglalja vagy elmagyarázza a kiválasztott szöveget.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kattintson az AI kéréséhez az előre, lektorálásra, fordításra, összefoglalásra vagy kiválasztott szöveg magyarázatára.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Beírhatja a \"{{KEY_TEXT}}\" szöveget, hogy gyorsan megtalálja ezt az opciót.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Az AI-t is kérheti, hogy hajtson végre bármilyen műveletet a kiválasztott szövegen.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Nyomja meg a",

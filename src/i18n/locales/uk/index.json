@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "اب MaxAI Elite سالانہ اپ گریڈ کرکے 53٪ بچائیں. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "منتخب کردہ متن کو دوبارہ لکھنے، ترجمہ کرنے، خلاصہ کرنے یا وضاحت کرنے کے لئے AI سے پوچھنے کے لئے کلک کریں۔",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "منتخب متن کو بہتر بنانے، ثبوت دینے، ترجمہ کرنے، خلاصہ کرنے یا وضاحت کرنے کے لئے AI سے پوچھنے کے لئے کلک کریں۔",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "آپ \"{{KEY_TEXT}}\" ٹائپ کرسکتے ہیں تاکہ آپ جلدی سے اس اختیار کو تلاش کرسکیں۔",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "آپ AI سے منتخب شدہ متن پر کوئی بھی کارروائی کروانے کے لئے بھی پوچھ سکتے ہیں۔",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "نیچے جانے کے لئے",

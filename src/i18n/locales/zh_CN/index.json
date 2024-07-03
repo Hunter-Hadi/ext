@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "立即升级至MaxAI Elite每年，可节省53%。 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "点击以要求AI重写、翻译、概述或解释所选文本。",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "点击以要求AI改进、校对、翻译、总结或解释所选文本。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "您可以输入\"{{KEY_TEXT}}\"来快速找到此选项。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "您还可以要求AI对所选文本执行任何操作。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "按",

@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "وفّر 53% عند الترقية إلى MaxAI Elite سنويًا الآن. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "انقر لطلب من الذكاء الاصطناعي إعادة صياغة أو ترجمة أو تلخيص أو شرح النص المحدد.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "انقر لطلب من الذكاء الاصطناعي تحسين، تدقيق، ترجمة، تلخيص، أو شرح النص المحدد.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "يمكنك كتابة \"{{KEY_TEXT}}\" للعثور بسرعة على هذا الخيار.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "يمكنك أيضًا طلب من الذكاء الاصطناعي تنفيذ أي إجراء على النص المحدد.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "اضغط",

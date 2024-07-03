@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "MaxAI Elite Yıllık'a yükselerek %53 tasarruf edin. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Seçili metni yeniden yazdırmak, çevirmek, özetlemek veya açıklamak için AI'ya sormak için tıklayın.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Seçili metni geliştirmek, düzeltmek, çevirmek, özetlemek veya açıklamak için AI'ı sormak için tıklayın.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Bu seçeneği hızlıca bulmak için \"{{KEY_TEXT}}\" yazabilirsiniz.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Ayrıca AI'ya seçili metinde herhangi bir işlem yapmasını da isteyebilirsiniz.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Aşağı gitmek için",

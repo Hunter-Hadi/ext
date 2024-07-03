@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "MaxAI Elite Yearlyにアップグレードして53%節約しましょう。 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "選択したテキストを書き換え、翻訳、要約、または説明するためにAIに質問するにはクリックしてください。",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "選択したテキストを改善、校正、翻訳、要約、または説明するためにAIに依頼するにはクリックしてください。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "このオプションをすばやく見つけるために「{{KEY_TEXT}}」と入力できます。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "また、選択したテキストに対してAIに任意のアクションを実行するように依頼することもできます。",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "下に移動するには",

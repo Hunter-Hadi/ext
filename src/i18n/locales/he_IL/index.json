@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "חסוך 53% בשדרוג ל-MaxAI Elite שנתי עכשיו. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "לחץ כדי לבקש מהאינטיליגנציה המלאכותית לכתוב מחדש, לתרגם, לסכם או להסביר את הטקסט שנבחר.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "לחץ כדי לבקש מהמודע לשפר, לערוך, לתרגם, לסכם, או להסביר את הטקסט שנבחר.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "ניתן להקליד \"{{KEY_TEXT}}\" כדי למצוא את האפשרות הזו במהירות.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "ניתן גם לבקש מהאינטיליגנציה המלאכותית לבצע כל פעולה על הטקסט שנבחר.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "לחץ",

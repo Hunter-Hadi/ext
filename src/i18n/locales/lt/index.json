@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Dabar sutaupykite 53% persikėlus į MaxAI Elite Kasmetinę planą. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Spustelėkite, norėdami paprašyti AI peržiūrėti, išversti, santraukoti ar paaiškinti pasirinktą tekstą.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Spustelėkite, kad paprašytumėte dirbtinio intelekto pagerinti, ištaisyti, išversti, suvesti įvairias ištraukas ar paaiškinti pasirinktą tekstą.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Galite įvesti „{{KEY_TEXT}}“, kad greitai rastumėte šią parinktį.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Taip pat galite paprašyti AI atlikti bet kokį veiksmą su pasirinktu tekstu.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Paspauskite",

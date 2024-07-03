@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Punguza 53% kwa kuboresha kwenda MaxAI Elite Kila mwaka sasa. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Bonyeza kuuliza AI iandike upya, itafsiri, itafupishe, au ieleze maandishi yaliyochaguliwa.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Bonyeza ili kuomba AI kuboresha, kuhariri, kutafsiri, kufupisha, au kufafanua maandishi yaliyochaguliwa.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Unaweza kuingiza \"{{KEY_TEXT}}\" ili kupata chaguo hili haraka.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Pia unaweza kuuliza AI ifanye hatua yoyote kwenye maandishi yaliyochaguliwa.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Bonyeza",

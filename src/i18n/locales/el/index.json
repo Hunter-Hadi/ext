@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Εξοικονομήστε 53% αναβαθμίζοντας σε MaxAI Elite Ετήσια τώρα. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Κάντε κλικ για να ζητήσετε από το AI να αναδιατάξει, να μεταφράσει, να συνοψίσει ή να εξηγήσει το επιλεγμένο κείμενο.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Κάντε κλικ για να ζητήσετε από την τεχνητή νοημοσύνη να βελτιώσει, να διορθώσει, να μεταφράσει, να συνοψίσει ή να εξηγήσει το επιλεγμένο κείμενο.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Μπορείτε να πληκτρολογήσετε \"{{KEY_TEXT}}\" για να βρείτε γρήγορα αυτήν την επιλογή.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Μπορείτε επίσης να ζητήσετε από το AI να εκτελέσει οποιαδήποτε ενέργεια στο επιλεγμένο κείμενο.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Πατήστε",

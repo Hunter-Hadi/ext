@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Poupe 53% ao atualizar para MaxAI Elite Anual agora. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Clique para pedir à IA para reescrever, traduzir, resumir ou explicar o texto selecionado.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Clique para pedir à IA para melhorar, corrigir, traduzir, resumir ou explicar o texto selecionado.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Pode digitar \"{{KEY_TEXT}}\" para encontrar rapidamente esta opção.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Também pode pedir à IA para executar qualquer ação no texto selecionado.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Pressione",

@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Economisește 53% prin upgrade la MaxAI Elite Anual acum. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Apăsați pentru a cere AI să rescrie, traducă, rezume sau explice textul selectat.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Faceți clic pentru a solicita AI să îmbunătățească, corecteze, traducă, rezume sau explice textul selectat.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Puteți tasta \"{{KEY_TEXT}}\" pentru a găsi rapid această opțiune.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Puteți de asemenea cere AI să efectueze orice acțiune asupra textului selectat.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Apăsați",

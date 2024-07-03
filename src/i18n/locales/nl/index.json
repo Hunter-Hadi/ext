@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Bespaar nu 53% door te upgraden naar MaxAI Elite Jaarlijks. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik om AI te vragen om de geselecteerde tekst opnieuw te schrijven, te vertalen, samen te vatten of uit te leggen.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik om AI te vragen de geselecteerde tekst te verbeteren, controleren, vertalen, samenvatten of uit te leggen.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Je kunt \"{{KEY_TEXT}}\" typen om deze optie snel te vinden.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Je kunt AI ook vragen om elke actie uit te voeren op de geselecteerde tekst.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Druk op",

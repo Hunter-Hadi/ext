@@ -1345,7 +1345,7 @@
     "promotion_plan__text": "Ietaupiet 53%, ja tagad jaunināsiet uz MaxAI Elite Katru gadu. 👇"
   },
   "onboarding": {
-    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Noklikšķiniet, lai lūgtu AI pārrakstīt, tulkojot, apkopot vai skaidrot izvēlēto tekstu.",
+    "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Noklikšķiniet, lai lūgtu AI uzlabot, pārbaudīt pareizību, tulkojumu, apkopot vai izskaidrot izvēlēto tekstu.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text1": "Jūs varat ierakstīt \"{{KEY_TEXT}}\", lai ātri atrastu šo opciju.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX__text2": "Jūs arī varat lūgt AI veikt jebkādu darbību ar izvēlēto tekstu.",
     "onboarding_tooltip__FLOATING_CONTEXT_MENU_LIST_BOX__text1__part1": "Nospiediet",

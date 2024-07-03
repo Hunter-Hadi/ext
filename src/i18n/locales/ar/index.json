@@ -880,7 +880,7 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "أحدث وأكثر نموذج متقدم من Google. يوفر سرعة أعلى، نافذة سياقية تصل إلى 1 مليون رمز، سلامة محسّنة، وإمكانيات متقدمة في مجال معالجة النص والشفرة والصور والصوت والفيديو.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "تم تجاوز الحد الشهري للاستعلام النصي الذكي. قم بالترقية الآن للاستعلامات غير المحدودة، أو تحقق مرة أخرى الشهر المقبل عند إعادة تعيين الاستعلامات الشهرية.",
     "permission__pricing_modal__title": "الترقية إلى غير محدود",
-    "permission__pricing_modal__description": "ابحث واكتب بشكل أسرع دون قيود عن طريق الترقية إلى MaxAI Elite",
+    "permission__pricing_modal__description": "قراءة وكتابة والبحث بشكل أسرع دون حدود من خلال الترقية إلى MaxAI Elite",
     "permission__pricing_modal__item1__title": "استخدام غير محدود للذكاء الاصطناعي",
     "permission__pricing_modal__item2__title": "فتح جميع الميزات",
     "permission__pricing_modal__item3__title": "وفّر ساعات كل يوم",

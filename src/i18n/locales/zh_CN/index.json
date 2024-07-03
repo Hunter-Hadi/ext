@@ -880,7 +880,7 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Google最新、最先进的模型。它提供更快的速度、突破性的100万标记上下文窗口、增强的安全性以及在文本、代码、图像、音频和视频处理方面的高级功能。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "每月智能文本查询限制已超过。立即升级以获取无限查询，或在下个月重置每月查询时再查看。",
     "permission__pricing_modal__title": "升级到无限制",
-    "permission__pricing_modal__description": "通过升级到MaxAI Elite，更快地进行研究和写作，没有任何限制",
+    "permission__pricing_modal__description": "升级到MaxAI Elite，更快速地阅读、写作和搜索，无限制。",
     "permission__pricing_modal__item1__title": "无限AI使用",
     "permission__pricing_modal__item2__title": "解锁所有功能",
     "permission__pricing_modal__item3__title": "每天节省数小时",

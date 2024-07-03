@@ -880,7 +880,7 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "โมเดลล่าสุดและที่สุดของ Google มีความเร็วที่เร็วขึ้น หน้าต่างบริบทของโทเค็น 1M ที่เป็นการเปลี่ยนแปลง ความปลอดภัยที่ถูกพัฒนาและความสามารถขั้นสูงที่เกี่ยวข้องกับการประมวลผลข้อความ รหัส ภาพ เสียง และวิดีโอ",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "เกินขีดจำกัดการสอบถามข้อความอัจฉริยะรายเดือนแล้ว อัปเกรดตอนนี้เพื่อสอบถามได้ไม่จำกัด หรือกลับมาตรวจสอบใหม่ในเดือนหน้าเมื่อข้อความรายเดือนถูกรีเซ็ต",
     "permission__pricing_modal__title": "อัปเกรดเป็นไม่จำกัด",
-    "permission__pricing_modal__description": "วิจัยและเขียนได้อย่างรวดเร็วโดยไม่มีข้อจำกัดโดยการอัปเกรดเป็น MaxAI Elite",
+    "permission__pricing_modal__description": "อ่าน เขียน และค้นหาได้เร็วขึ้นโดยไม่มีข้อจำกัดโดยการอัพเกรดเป็น MaxAI Elite",
     "permission__pricing_modal__item1__title": "การใช้ AI ไม่จำกัด",
     "permission__pricing_modal__item2__title": "ปลดล็อกคุณสมบัติทั้งหมด",
     "permission__pricing_modal__item3__title": "ประหยัดเวลาทุกวัน",

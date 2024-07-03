@@ -62,6 +62,7 @@ export interface IConversationMeta {
   domain?: string //创建的时候的域名
   path?: string // 创建的时候的路径
   /**
+   * TODO: 4.0版本再删除
    * summary类型，这个暂时保留，某些代码还是从这里取数据
    */
   pageSummaryType?: IPageSummaryType

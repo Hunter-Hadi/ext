@@ -194,6 +194,8 @@ interface ActionParameters {
   SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
   AskChatGPTActionQuestion?: IAskChatGPTActionQuestionType
+  // 设置AskChatGPTAction输出的内容，输出ai response还是整个message对象
+  AskChatGPTActionOutput?: 'text' | 'message'
   // 是否受到用户设置的AI response language的影响
   isEnabledDetectAIResponseLanguage?: boolean
   // Operation Element

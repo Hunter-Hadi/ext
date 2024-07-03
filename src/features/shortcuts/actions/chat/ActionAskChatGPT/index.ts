@@ -94,6 +94,8 @@ export class ActionAskChatGPT extends Action {
       } = engine
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
+      // 输出类型，text还是整条message
+      const askChatGPTOutput = this.parameters.AskChatGPTActionOutput
       // 是否启用了Response指定语言语言
       let isEnableAIResponseLanguage =
         this.parameters.isEnabledDetectAIResponseLanguage !== false
@@ -564,7 +566,7 @@ export class ActionAskChatGPT extends Action {
                   },
                 ]),
               }
-              // AI response里可能会返回docId，后续如需增加更改conversationMeta的字段会放进此对象里
+              // AI response里未来可能会返回docId，后续如需增加更改conversationMeta的字段会放进此对象里
               if (AIResponseMessage.conversationMeta) {
                 await ClientConversationManager.addOrUpdateConversation(
                   conversationId,
@@ -591,7 +593,11 @@ export class ActionAskChatGPT extends Action {
                 ).length
                 this.answer.originalMessage.liteMode = validMetadataCount === 0
               }
-              this.output = outputMessageText
+              if (askChatGPTOutput === 'message') {
+                this.output = this.answer
+              } else {
+                this.output = outputMessageText
+              }
               // 如果有指定的output的消息Id，则需要把AI response添加到指定的Message
               if (outputMessage && this.status === 'running') {
                 // 如果是AI message，则更新originalMessage.content.text

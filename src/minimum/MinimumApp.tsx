@@ -52,7 +52,7 @@ const MinimumApp: FC = () => {
       <OnboardingTooltipPortal
         sceneType='QUICK_ACCESS_CTA_BUTTON'
         // showStateTrigger={appDBStorage.userSettings?.quickAccess?.enabled}
-        showStateTrigger={showMiniCtaButton && isLogin}
+        showStateTrigger={showMiniCtaButton}
       />
     </AppSuspenseLoadingLayout>
   )

@@ -43,7 +43,7 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
 
   const [popperOpen, setPopperOpen] = React.useState(false)
 
-  const { isTopPlanUser, isFreeUser } = useUserInfo()
+  const { isTopPlanUser } = useUserInfo()
 
   const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
 
@@ -70,7 +70,7 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
     )
   }
 
-  if (isTopPlanUser || isFreeUser) {
+  if (isTopPlanUser) {
     return null
   }
 

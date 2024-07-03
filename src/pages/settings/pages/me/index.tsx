@@ -103,43 +103,35 @@ const StripeLinks = () => {
     window.open(`${APP_USE_CHAT_GPT_HOST}/my-plan`, '_blank')
   }
 
-  if (isTeamPlanUser) {
-    return null
-  }
-
-  if (isFreeUser) {
+  if (isTeamPlanUser || isPaymentOneTimeUser || isFreeUser) {
     return null
   }
 
   return (
-    <>
-      {isPaymentOneTimeUser ? null : (
-        <Stack
-          direction='row'
-          alignItems='center'
-          sx={{
-            width: 'max-content',
-            gap: 1,
-            cursor: 'pointer',
-            // cursor: loading ? 'wait' : 'pointer',
-          }}
-        >
-          <Typography
-            variant='custom'
-            sx={{
-              fontSize: 16,
-              lineHeight: 1.5,
-              textDecorationLine: 'underline',
-              color: 'text.primary',
-            }}
-            onClick={handleManageClick}
-          >
-            {t('common:manage_my_plan')}
-          </Typography>
-          {/* {loading && <CircularProgress size='sm' sx={{ width: 16 }} />} */}
-        </Stack>
-      )}
-    </>
+    <Stack
+      direction='row'
+      alignItems='center'
+      sx={{
+        width: 'max-content',
+        gap: 1,
+        cursor: 'pointer',
+        // cursor: loading ? 'wait' : 'pointer',
+      }}
+    >
+      <Typography
+        variant='custom'
+        sx={{
+          fontSize: 16,
+          lineHeight: 1.5,
+          textDecorationLine: 'underline',
+          color: 'text.primary',
+        }}
+        onClick={handleManageClick}
+      >
+        {t('common:manage_my_plan')}
+      </Typography>
+      {/* {loading && <CircularProgress size='sm' sx={{ width: 16 }} />} */}
+    </Stack>
   )
 }
 

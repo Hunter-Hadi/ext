@@ -99,6 +99,7 @@ const UserQuotaUsageQueriesCard = () => {
             sx={{
               px: 3,
               py: 1,
+              borderRadius: '8px',
               bgcolor: (t) =>
                 t.palette.mode === 'dark' ? '#090909' : '#FBF6FF',
             }}
@@ -158,21 +159,7 @@ const UserQuotaUsageQueriesCard = () => {
               </Stack>
             }
           />
-          {isFreeUser ? (
-            <Button
-              component={'a'}
-              target={'_blank'}
-              href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
-              variant={'contained'}
-              endIcon={<OpenInNewOutlinedIcon />}
-              sx={{
-                height: 44,
-              }}
-            >
-              {t('common:upgrade')}
-            </Button>
-          ) : null}
-          {isPayingUser && !isTopPlanUser ? (
+          {!isTopPlanUser ? (
             <PayingUserUpgradePopper
               renderPlan='elite_yearly'
               sx={{

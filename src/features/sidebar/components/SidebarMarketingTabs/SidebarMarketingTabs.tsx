@@ -401,6 +401,11 @@ const SurveyTabButton: FC = () => {
 const UpgradePlanTabButton: FC = () => {
   const { t } = useTranslation()
   const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
+  const { isFreeUser } = useUserInfo()
+
+  if (isFreeUser) {
+    return null
+  }
 
   return (
     <PayingUserUpgradePopper

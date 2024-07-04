@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10.000 kueri teks cepat/bulan",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Bicaralah dengan GPT-3.5, Claude-3-haiku, Gemini-pro, dan lainnya — semuanya dalam satu tempat.",
     "pricing__plan_features__pro__feature1__item2__title": "300 kueri teks pintar/bulan",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Bicaralah dengan GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, dan lainnya — semuanya dalam satu tempat.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Bicara dengan GPT-4o. Untuk membuka semua model AI lainnya, tingkatkan ke paket MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Penelitian 10 kali lebih cepat",
     "pricing__plan_features__pro__feature2__item1__title": "Ringkasan halaman/PDF/video/dokumen apa pun",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Hemat 90% waktu membaca dan menonton dengan mendapatkan ringkasan dan gagasan kunci secara instan.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Upgrade ke MaxAI Elite · Tahunan",
     "pricing__upgrade__popper_card__item1__title": "Penggunaan AI tanpa batas",
     "pricing__upgrade__popper_card__item2__title": "Buka semua fitur",
-    "pricing__upgrade__popper_card__item3__title": "Simpan jam setiap hari"
+    "pricing__upgrade__popper_card__item3__title": "Simpan jam setiap hari",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Hanya GPT-4o. Untuk membuka semua model AI lainnya, tingkatkan ke paket MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

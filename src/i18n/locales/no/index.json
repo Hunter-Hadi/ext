@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10 000 raske tekstspørringer/måned",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Snakk med GPT-3.5, Claude-3-haiku, Gemini-pro og mer - alt på ett sted.",
     "pricing__plan_features__pro__feature1__item2__title": "300 smarte tekstspørringer/måned",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Snakk med GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro og mer - alt på ett sted.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Snakk med GPT-4o. For å låse opp alle andre AI-modeller, oppgrader til MaxAI Elite-planen.",
     "pricing__plan_features__pro__feature2__title": "Forskning 10 ganger raskere",
     "pricing__plan_features__pro__feature2__item1__title": "Oppsummer hvilken som helst side/PDF/video/doc",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Spar 90% av lese- og seetiden din ved å få sammendrag og nøkkelideer umiddelbart.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Oppgrader til MaxAI Elite · Årlig",
     "pricing__upgrade__popper_card__item1__title": "Ubegrenset AI-bruk",
     "pricing__upgrade__popper_card__item2__title": "Lås opp alle funksjoner",
-    "pricing__upgrade__popper_card__item3__title": "Spar timer hver dag"
+    "pricing__upgrade__popper_card__item3__title": "Spar timer hver dag",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Kun GPT-4o. For å låse opp alle andre AI-modeller, oppgrader til MaxAI Elite-planen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10 000 kiiret tekstipäringut/kuu",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Rääkige GPT-3.5, Claude-3-haiku, Gemini-pro ja paljude teistega - kõik ühes kohas.",
     "pricing__plan_features__pro__feature1__item2__title": "300 nutikat tekstipäringut/kuu",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Rääkige GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro ja paljude teistega - kõik ühes kohas.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Räägi GPT-4o-ga. Kõigi teiste AI mudelite avamiseks uuenda MaxAI Elite plaani.",
     "pricing__plan_features__pro__feature2__title": "Uurige 10 korda kiiremini",
     "pricing__plan_features__pro__feature2__item1__title": "Kokkuvõte mis tahes lehest/PDF-ist/videost/dokumendist",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Säästke 90% oma lugemis- ja vaatamisajast, saades kokkuvõtteid ja põhieideid kohe.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Uuenda MaxAI Elite'ile · Aastas",
     "pricing__upgrade__popper_card__item1__title": "Piiramatu AI kasutamine",
     "pricing__upgrade__popper_card__item2__title": "Avage kõik funktsioonid",
-    "pricing__upgrade__popper_card__item3__title": "Säästa tunde igapäevaselt"
+    "pricing__upgrade__popper_card__item3__title": "Säästa tunde igapäevaselt",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Ainult GPT-4o. Kõigi teiste AI mudelite avamiseks uuenda MaxAI Elite plaani."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

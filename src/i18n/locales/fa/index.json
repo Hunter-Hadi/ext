@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10,000 پرس و جوی متنی سریع در ماه",
     "pricing__plan_features__pro__feature1__item1__tooltip": "با GPT-3.5، Claude-3-haiku، Gemini-pro و بیشتر صحبت کنید - همه در یک مکان.",
     "pricing__plan_features__pro__feature1__item2__title": "300 پرس و جوی هوشمند متنی در ماه",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "با GPT-4o، Claude-3.5-sonnet، Claude-3-opus، Gemini-1.5-pro و بیشتر صحبت کنید - همه در یک مکان.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "با GPT-4o صحبت کنید. برای باز کردن تمام مدل‌های هوش مصنوعی دیگر، به طرح MaxAI Elite ارتقا دهید.",
     "pricing__plan_features__pro__feature2__title": "تحقیقات 10 برابر سریع‌تر",
     "pricing__plan_features__pro__feature2__item1__title": "خلاصه‌بندی هر صفحه/پی‌دی‌اف/ویدئو/سند",
     "pricing__plan_features__pro__feature2__item1__tooltip": "با دریافت خلاصه‌ها و ایده‌های کلیدی فوری، 90% از زمان خواندن و تماشا کردن خود را صرفه جویی کنید.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "ارتقا به MaxAI Elite · سالانه",
     "pricing__upgrade__popper_card__item1__title": "استفاده نامحدود از هوش مصنوعی",
     "pricing__upgrade__popper_card__item2__title": "باز کردن تمام ویژگی‌ها",
-    "pricing__upgrade__popper_card__item3__title": "صرفه جویی در ساعت‌ها هر روز"
+    "pricing__upgrade__popper_card__item3__title": "صرفه جویی در ساعت‌ها هر روز",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. برای باز کردن تمام مدل‌های هوش مصنوعی دیگر، به طرح MaxAI Elite ارتقا دهید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

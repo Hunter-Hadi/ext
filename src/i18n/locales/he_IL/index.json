@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10,000 שאילתות טקסט מהירות לחודש",
     "pricing__plan_features__pro__feature1__item1__tooltip": "דבר עם GPT-3.5, Claude-3-haiku, Gemini-pro, ועוד — הכל במקום אחד.",
     "pricing__plan_features__pro__feature1__item2__title": "300 שאילתות טקסט חכמות לחודש",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "דבר עם GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, ועוד — הכל במקום אחד.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "דבר עם GPT-4o. כדי לפתוח את כל הדגמי AI האחרים, שדרג לתוכנית MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "מחקר 10 פעמים יותר מהיר",
     "pricing__plan_features__pro__feature2__item1__title": "סיכום כל עמוד/קובץ PDF/סרטון/מסמך",
     "pricing__plan_features__pro__feature2__item1__tooltip": "חסוך 90% מהזמן שלך בקריאה וצפייה על ידי קבלת סיכומים ורעיונות מרכזיים באופן מיידי.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "שדרג ל-MaxAI Elite · שנתי",
     "pricing__upgrade__popper_card__item1__title": "שימוש בבינה מלאכותית בלתי מוגבל",
     "pricing__upgrade__popper_card__item2__title": "פתח את כל התכונות",
-    "pricing__upgrade__popper_card__item3__title": "חסוך שעות בכל יום"
+    "pricing__upgrade__popper_card__item3__title": "חסוך שעות בכל יום",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "רק GPT-4o. כדי לפתוח את כל הדגמי AI האחרים, שדרגו לתוכנית MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

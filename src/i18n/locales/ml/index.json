@@ -951,7 +951,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10,000 വേഗത്തിൽ ടെക്സ്റ്റ് ചോദ്യങ്ങൾ/മാസികങ്ങൾ",
     "pricing__plan_features__pro__feature1__item1__tooltip": "ഒരു സ്ഥലത്ത് GPT-3.5, Claude-3-haiku, Gemini-pro, എന്നിവരെയും സംസാരിക്കുക.",
     "pricing__plan_features__pro__feature1__item2__title": "300 സ്മാർട്ട് ടെക്സ്റ്റ് ചോദ്യങ്ങൾ/മാസികങ്ങൾ",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "ഒരു സ്ഥലത്ത് GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, എന്നിവരെയും സംസാരിക്കുക.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o സംസാരിക്കുക. മറ്റ് എല്ലാ AI മോഡലുകളും അൺലോക്ക് ചെയ്യാൻ MaxAI Elite പ്ലാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക.",
     "pricing__plan_features__pro__feature2__title": "10 സമയം വേഗത്തിൽ പഠിക്കുക",
     "pricing__plan_features__pro__feature2__item1__title": "ഏതെങ്കിലും പേജ്/PDF/വീഡിയോ/ഡോക്യുമെന്റ് സംഗ്രഹിക്കുക",
     "pricing__plan_features__pro__feature2__item1__tooltip": "സംഗ്രഹങ്ങളും പ്രധാന ആശയങ്ങളും ലഭിക്കുന്നതിന് 90% നിങ്ങളുടെ വായനാകാലം സംഭാവന ചേർക്കുക.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "മാക്സ്‌എയ്‌ഐ എലൈറ്റിലേക്ക് അപ്‌ഗ്രേഡ് · വാർഷികം",
     "pricing__upgrade__popper_card__item1__title": "അനവധി AI ഉപയോഗം",
     "pricing__upgrade__popper_card__item2__title": "എല്ലാ ഫീച്ചറുകളും അൺലോക്ക് ചെയ്യുക",
-    "pricing__upgrade__popper_card__item3__title": "ദിവസവും അന്തരിച്ചു സമയം സംരക്ഷിക്കുക"
+    "pricing__upgrade__popper_card__item3__title": "ദിവസവും അന്തരിച്ചു സമയം സംരക്ഷിക്കുക",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "കേവലം GPT-4o. മറ്റ് എല്ലാ AI മോഡലുകളും അൺലോക്ക് ചെയ്യാൻ, MaxAI എൽയ്റ്റ് പ്ലാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

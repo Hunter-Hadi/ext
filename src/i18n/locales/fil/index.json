@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10,000 na mabilis na mga katanungan sa teksto kada buwan",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Magsalita sa GPT-3.5, Claude-3-haiku, Gemini-pro, at iba pa — lahat sa iisang lugar.",
     "pricing__plan_features__pro__feature1__item2__title": "300 na mga katanungan sa matalinong teksto kada buwan",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Magsalita sa GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, at iba pa — lahat sa iisang lugar.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Magsalita sa GPT-4o. Upang i-unlock ang lahat ng iba pang AI models, mag-upgrade sa MaxAI Elite plan.",
     "pricing__plan_features__pro__feature2__title": "Magreserba nang 10 beses na mas mabilis",
     "pricing__plan_features__pro__feature2__item1__title": "Buodin ang anumang pahina/PDF/video/doc",
     "pricing__plan_features__pro__feature2__item1__tooltip": "I-save ang 90% ng iyong oras sa pagbabasa at panonood sa pamamagitan ng pagkuha ng mga buod at pangunahing ideya nang agad.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Mag-upgrade sa MaxAI Elite · Taun-taon",
     "pricing__upgrade__popper_card__item1__title": "Unlimited paggamit ng AI",
     "pricing__upgrade__popper_card__item2__title": "Buksan ang lahat ng mga tampok",
-    "pricing__upgrade__popper_card__item3__title": "I-save ang oras bawat araw"
+    "pricing__upgrade__popper_card__item3__title": "I-save ang oras bawat araw",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o lamang. Upang i-unlock ang lahat ng iba pang mga AI model, mag-upgrade sa MaxAI Elite plan."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

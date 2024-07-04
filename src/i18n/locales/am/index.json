@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10,000 በቀላሉ የፊደል ጥያቄዎች/ወደ ወደብ ጥያቄዎች",
     "pricing__plan_features__pro__feature1__item1__tooltip": "በአንድ ቦታ በ GPT-3.5, Claude-3-haiku, Gemini-pro, እና ተጨባጭ በማንኛውም ቦታ በቀላሉ የተሰናዳን ጥያቄዎች እና ተጨባጭ የሚሆኑ ጥያቄዎችን ይጠቀሙ.",
     "pricing__plan_features__pro__feature1__item2__title": "300 በቀላሉ የማስተላለፍ ጥያቄዎች/ወደ ወደብ ጥያቄዎች",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "በአንድ ቦታ በ GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, እና ተጨባጭ በማንኛውም ቦታ በቀላሉ የተሰናዳን ጥያቄዎች እና ተጨባጭ የሚሆኑ ጥያቄዎችን ይጠቀሙ.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "ለGPT-4o ለእንግሊዝ ሞዴሎች ለመከታተል ወደ እድሜያችን እንዲለው ይጠቀሙ።",
     "pricing__plan_features__pro__feature2__title": "10x ታሪክ በማስተላለፍ",
     "pricing__plan_features__pro__feature2__item1__title": "የሚጠቀሙ የጽሑፍ/PDF/ቪዲዮ/ስፖርት ጥቅልል",
     "pricing__plan_features__pro__feature2__item1__tooltip": "90% የሚገኘውን የሚከተለውን ጽሑፍና የመረጃ አጠቃቀምዎትን በቀላሉ ይቀላቀሉ.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "ወደ MaxAI Elite · ዓመትን ይግዙ",
     "pricing__upgrade__popper_card__item1__title": "የሚሰራጩ AI ጠቋሚዎች",
     "pricing__upgrade__popper_card__item2__title": "ሁሉንም አጠቃላይ ማስተላለፍያዎችን ያክሉ",
-    "pricing__upgrade__popper_card__item3__title": "ሰዓት በዓመት በቀን ይታዩ"
+    "pricing__upgrade__popper_card__item3__title": "ሰዓት በዓመት በቀን ይታዩ",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "ጂዲ-4o ብቻ. ሌላ አይነት AI ሞዴሎችን ለመከታተል, የሚከተለውን MaxAI Elite አደጋ ይዘትን ይዘምሩ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

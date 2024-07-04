@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10,000 ಫಾಸ್ಟ್ ಪಠ್ಯ ಪ್ರಶ್ನೆಗಳು/ತಿಂಗಳು",
     "pricing__plan_features__pro__feature1__item1__tooltip": "ಒಂದೇ ಸ್ಥಳದಲ್ಲಿ GPT-3.5, Claude-3-haiku, Gemini-pro ಹಾಗೂ ಇನ್ನಷ್ಟು ಮಾತನಾಡಿ — ಎಲ್ಲವೂ ಒಂದೇ ಸ್ಥಳದಲ್ಲಿ.",
     "pricing__plan_features__pro__feature1__item2__title": "300 ಸ್ಮಾರ್ಟ್ ಪಠ್ಯ ಪ್ರಶ್ನೆಗಳು/ತಿಂಗಳು",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "ಒಂದೇ ಸ್ಥಳದಲ್ಲಿ GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro ಹಾಗೂ ಇನ್ನಷ್ಟು ಮಾತನಾಡಿ — ಎಲ್ಲವೂ ಒಂದೇ ಸ್ಥಳದಲ್ಲಿ.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o ಗಾಯನ ಮಾಡಿ. ಇತರ ಎಲ್ಲಾ AI ಮಾದರುಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಲು ಮ್ಯಾಕ್ಸ್ಐ ಎಲೈಟ್ ಪ್ಲಾನ್ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ.",
     "pricing__plan_features__pro__feature2__title": "10 ಪಟಗಳಷ್ಟು ಹೆಚ್ಚು ವಿಜ್ಞಾನ ಸಂಶೋಧನೆ",
     "pricing__plan_features__pro__feature2__item1__title": "ಯಾವುದೇ ಪುಟ/ಪಿಡಿಎಫ್/ವಿಡಿಯೊ/ಡಾಕ್ ಸಂಗ್ರಹವನ್ನು ಸಂಗ್ರಹಿಸಿ",
     "pricing__plan_features__pro__feature2__item1__tooltip": "ಸಂಗ್ರಹಿಸಿದ ಓದುವ ಮತ್ತು ನೋಡುವ ಸಮಯದ 90% ಉಳಿಸಿ ಸಂಗ್ರಹಿಸಿದ ಸಾರಾಂಶ ಮತ್ತು ಮುಖ್ಯ ವಿಚಾರಗಳನ್ನು ಪಡೆಯಿರಿ.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "ಮ್ಯಾಕ್ಸ್‌ಐ ಎಲಿಟ್‌ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ · ವಾರ್ಷಿಕ",
     "pricing__upgrade__popper_card__item1__title": "ಅನಂತ ಎಯ್‌ಐ ಬಳಕೆ",
     "pricing__upgrade__popper_card__item2__title": "ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
-    "pricing__upgrade__popper_card__item3__title": "ಪ್ರತಿ ದಿನ ಕೊಡುಗೆಗಳನ್ನು ಉಳಿಸಿ"
+    "pricing__upgrade__popper_card__item3__title": "ಪ್ರತಿ ದಿನ ಕೊಡುಗೆಗಳನ್ನು ಉಳಿಸಿ",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o ಮಾತ್ರ. ಇತರ ಎಲ್ಲಾ AI ಮಾದರಿಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಲು ಮ್ಯಾಕ್ಸ್ಐ ಎಲೈಟ್ ಪ್ಲಾನ್ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

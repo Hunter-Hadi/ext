@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10.000 consultes de text ràpides al mes",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Parla amb GPT-3.5, Claude-3-haiku, Gemini-pro i més - tot en un sol lloc.",
     "pricing__plan_features__pro__feature1__item2__title": "300 consultes de text intel·ligents al mes",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Parla amb GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro i més - tot en un sol lloc.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Parla amb GPT-4o. Per desbloquejar tots els altres models d'IA, actualitza al pla MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Investiga 10 vegades més ràpid",
     "pricing__plan_features__pro__feature2__item1__title": "Resumeix qualsevol pàgina/PDF/vídeo/document",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Estalvia el 90% del temps de lectura i visualització obtenint resums i idees clau al moment.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Millora a MaxAI Elite · Anual",
     "pricing__upgrade__popper_card__item1__title": "Ús il·limitat d'IA",
     "pricing__upgrade__popper_card__item2__title": "Desbloqueja totes les funcionalitats",
-    "pricing__upgrade__popper_card__item3__title": "Estalvia hores cada dia"
+    "pricing__upgrade__popper_card__item3__title": "Estalvia hores cada dia",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Només GPT-4o. Per desbloquejar tots els altres models d'IA, actualitza al pla MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

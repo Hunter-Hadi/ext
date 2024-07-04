@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10 000 szybkich zapytań tekstowych/miesiąc",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Rozmawiaj z GPT-3.5, Claude-3-haiku, Gemini-pro i innymi - wszystko w jednym miejscu.",
     "pricing__plan_features__pro__feature1__item2__title": "300 inteligentnych zapytań tekstowych/miesiąc",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Rozmawiaj z GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro i innymi - wszystko w jednym miejscu.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Porozmawiaj z GPT-4o. Aby odblokować wszystkie inne modele AI, przejdź na plan MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Badaj 10 razy szybciej",
     "pricing__plan_features__pro__feature2__item1__title": "Podsumuj dowolną stronę/PDF/wideo/dokument",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Oszczędź 90% czasu na czytaniu i oglądaniu, otrzymując podsumowania i kluczowe pomysły natychmiastowo.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Uaktualnij do MaxAI Elite · Rocznie",
     "pricing__upgrade__popper_card__item1__title": "Nieograniczone korzystanie z AI",
     "pricing__upgrade__popper_card__item2__title": "Odblokuj wszystkie funkcje",
-    "pricing__upgrade__popper_card__item3__title": "Oszczędź godziny codziennie"
+    "pricing__upgrade__popper_card__item3__title": "Oszczędź godziny codziennie",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Tylko GPT-4o. Aby odblokować wszystkie inne modele AI, przejdź na plan MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

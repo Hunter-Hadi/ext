@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "毎月10,000回の高速テキストクエリ",
     "pricing__plan_features__pro__feature1__item1__tooltip": "GPT-3.5、Claude-3-haiku、Gemini-proなど、すべての機能を1つの場所で利用できます。",
     "pricing__plan_features__pro__feature1__item2__title": "毎月300回のスマートテキストクエリ",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o、Claude-3.5-sonnet、Claude-3-opus、Gemini-1.5-proなど、すべての機能を1つの場所で利用できます。",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4oと話す。他のすべてのAIモデルをアンロックするには、MaxAI Eliteプランにアップグレードしてください。",
     "pricing__plan_features__pro__feature2__title": "10倍速の研究",
     "pricing__plan_features__pro__feature2__item1__title": "任意のページ/PDF/ビデオ/ドキュメントを要約",
     "pricing__plan_features__pro__feature2__item1__tooltip": "要約とキーアイデアを瞬時に取得することで、読書と視聴時間の90%を節約します。",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "MaxAI Eliteにアップグレード · 毎年",
     "pricing__upgrade__popper_card__item1__title": "無制限のAI利用",
     "pricing__upgrade__popper_card__item2__title": "すべての機能を解除",
-    "pricing__upgrade__popper_card__item3__title": "毎日数時間節約"
+    "pricing__upgrade__popper_card__item3__title": "毎日数時間節約",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4oのみ。他のすべてのAIモデルをアンロックするには、MaxAI Eliteプランにアップグレードしてください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

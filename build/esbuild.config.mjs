@@ -71,14 +71,15 @@ async function esbuildConfig() {
       'src/content_style.ts',
       'src/background.ts',
       'src/check_status.ts',
-      'src/iframeDocumentStart.ts',
       'src/iframeDocumentEnd.ts',
       'src/pages/settings/index.tsx',
       'src/pages/popup/index.tsx',
       'src/pages/chatgpt/fileUploadServer.ts',
       'src/pages/googleDoc/index.ts',
-      'src/pages/googleDoc/enableCanvasAnnotations.ts',
       'src/searchWithAI.ts',
+      'src/apps/content-scripts/injectDocumentStart.ts',
+      'src/apps/content-scripts/website/googleDoc.ts',
+      'src/apps/content-scripts/website/youtubeStudio.ts',
     ],
     format: 'esm',
     drop: isProduction ? ['console', 'debugger'] : [],
@@ -217,13 +218,14 @@ async function updateManifest() {
   manifest.content_scripts.map((contentScript) => {
     const contentScriptPath = contentScript.js[0]
     addWebAccessibleResources.push(contentScriptPath)
-    contentScript.js[0] = `import_${contentScriptPath}`
+    const importPath = `import_${contentScriptPath.split('/').join('_')}`
+    contentScript.js[0] = importPath
     // write a new js file
     const jsContent = `(function() {
     const importPath = /*@__PURE__*/ JSON.parse('"${contentScriptPath}"');
     import(chrome.runtime.getURL(importPath));
 })();`
-    fs.writeFileSync(`${buildDir}/import_${contentScriptPath}`, jsContent)
+    fs.writeFileSync(`${buildDir}/${importPath}`, jsContent)
     if (contentScriptPath === 'check_status.js' && buildEnv.api_env === 'production' && isProduction) {
       // prod env check_status script matches
       contentScript.matches = ['https://app.maxai.me/*']

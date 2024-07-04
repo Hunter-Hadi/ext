@@ -1,13 +1,9 @@
 import Browser from 'webextension-polyfill'
 
-const initGoogleDoc = () => {
+const injectScripts = (path: string) => {
   const script = document.createElement('script')
-  script.src = Browser.runtime.getURL(
-    'pages/googleDoc/enableCanvasAnnotations.js',
-  )
+  script.src = Browser.runtime.getURL(path)
   // script.setAttribute('data-ext-id', Browser.runtime.id);
-  // 未申请白名单，此处伪造Wordtune的id
-  script.setAttribute('data-ext-id', 'nllcnknpjnininklegdoijpljgdjkijc')
   document.head.appendChild(script)
 }
 
@@ -19,10 +15,20 @@ const checkDocument = (task: () => void) => {
       task()
     }, 0)
   } else {
-    task() 
+    task()
   }
 }
 
+// 注入google doc
 if (window.location.href.startsWith('https://docs.google.com/document')) {
-  checkDocument(initGoogleDoc)
+  checkDocument(() =>
+    injectScripts('apps/content-scripts/website/googleDoc.js'),
+  )
+}
+
+// 注入youtube studio
+if (window.location.host === 'studio.youtube.com') {
+  checkDocument(() =>
+    injectScripts('apps/content-scripts/website/youtubeStudio.js'),
+  )
 }

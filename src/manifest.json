@@ -51,7 +51,7 @@
     {
       "matches": ["<all_urls>"],
       "all_frames": false,
-      "js": ["iframeDocumentStart.js"],
+      "js": ["apps/content-scripts/injectDocumentStart.js"],
       "run_at": "document_start"
     }
   ],
@@ -127,7 +127,8 @@
         "assets/*",
         "pages/chatgpt/fileUploadServer.js",
         "pages/chatgpt/arkose_inject.js",
-        "pages/*"
+        "pages/*",
+        "apps/*"
       ],
       "matches": ["<all_urls>"]
     }

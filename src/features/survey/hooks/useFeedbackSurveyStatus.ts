@@ -44,11 +44,6 @@ const useFeedbackSurveyStatus = () => {
       return false
     }
 
-    // 如果用户取消了 订阅 就不弹窗，（因为这个需要显示 SURVEY_CANCEL_COMPLETED popup）
-    if (userInfo.subscription_canceled_at) {
-      return false
-    }
-
     // 注册时间
     const createAt = userInfo?.created_at
     // 第一次付费时间

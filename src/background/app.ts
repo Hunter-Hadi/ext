@@ -56,7 +56,6 @@ import { devResetAllOnboardingTooltipOpenedCache } from '@/features/onboarding/u
 import paymentManager from '@/features/payment/background/PaymentManager'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
-import { resetFunnelSurveyOpenedStorageFlag } from '@/features/survey/utils/storageWithSceneType'
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
@@ -402,9 +401,6 @@ const initChromeExtensionUpdated = async () => {
   if (!isProduction) {
     await devResetAllOnboardingTooltipOpenedCache()
   }
-
-  // SURVEY_CANCEL_COMPLETED survey 每次插件更新的时候弹出来就行
-  await resetFunnelSurveyOpenedStorageFlag('SURVEY_CANCEL_COMPLETED')
 
   // 每次升级都检测一遍是否是续费失败了
   setTimeout(

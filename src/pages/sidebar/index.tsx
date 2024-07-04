@@ -14,7 +14,6 @@ import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useInitWebPageSidebar from '@/features/sidebar/hooks/useInitWebPageSidebar'
 import useSidebarDropEvent from '@/features/sidebar/hooks/useSidebarDropEvent'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import FunnelSurveyDialog from '@/features/survey/components/FunnelSurveyDialog'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -106,7 +105,8 @@ const SidebarPage: FC<{
           <SidebarTour />
           <SidebarPromotionDialog />
           <SidebarSurveyDialog />
-          <FunnelSurveyDialog sceneType='SURVEY_CANCEL_COMPLETED' />
+          {/* 已经要求用户先填写cancel survey再cancel了，因为无需cancel事后再次询问用户cancel survey了 - @huangsong */}
+          {/* <FunnelSurveyDialog sceneType='SURVEY_CANCEL_COMPLETED' /> */}
           <SidebarDragWrapper>
             {!isImmersiveChatRef.current && <ChatBoxHeader />}
             <AppSuspenseLoadingLayout>

@@ -265,6 +265,23 @@ const preprocessLaTeX = (content: string) => {
 }
 
 /**
+ * 处理link标签
+ * 比如输出[1](https://的时候转换成[1](xxx)，提前加上闭合标签避免输出的时候渲染一长串url之后再闪烁成[1]的格式
+ * @param content
+ */
+export const preprocessLink = (content: string) => {
+  // 使用正则表达式检查是否以未闭合的链接标签结尾
+  const regex = /\[([^\]]*)\]\(([^)]+)$/
+
+  // 如果匹配到未闭合的链接标签，添加闭合标签`)`
+  if (regex.test(content)) {
+    content += ')'
+  }
+
+  return content
+}
+
+/**
  * 处理citation序号，按顺序标记
  * @param content
  */

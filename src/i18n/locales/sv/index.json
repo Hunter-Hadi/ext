@@ -880,7 +880,7 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Googles nyaste och mest avancerade modell. Den erbjuder snabbare hastighet, ett genombrott på 1 miljon tokens kontextfönster, förbättrad säkerhet och avancerade funktioner inom text, kod, bild, ljud och videobehandling.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "Månadlig gräns för smarta textförfrågningar överskriden. Uppgradera nu för obegränsade förfrågningar, eller kom tillbaka nästa månad när de månatliga förfrågningarna återställs.",
     "permission__pricing_modal__title": "Uppgradera till obegränsad",
-    "permission__pricing_modal__description": "Forska och skriv snabbare utan begränsningar genom att uppgradera till MaxAI Elite",
+    "permission__pricing_modal__description": "Läs, skriv och sök snabbare utan begränsningar genom att uppgradera till MaxAI Elite",
     "permission__pricing_modal__item1__title": "Obegränsad AI-användning",
     "permission__pricing_modal__item2__title": "Lås upp alla funktioner",
     "permission__pricing_modal__item3__title": "Spara timmar varje dag",

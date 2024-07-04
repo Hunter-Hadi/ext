@@ -25,9 +25,10 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_1ST_ANNIVERSARY_2024_OPEN_LINK'
   | 'ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG'
   | `ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_${typeof APP_VERSION}`
-  // summary 和 search 和  input assistant button free trial times
+  // summary / search / instant reply / input assistant button free trial times
   | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
   | 'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES'
+  | 'ON_BOARDING_RECORD_INSTANT_REPLY_FREE_TRIAL_TIMES'
   | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${WritingAssistantButtonGroupConfigHostType}_TIMES`
   // MaxAI 3.0版本OnBoarding
   | 'ON_BOARDING_MAXAI_3_0'
@@ -62,10 +63,14 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK: false,
     // 记录用户剩余的summary free trial times - 2次 - 2023-10-12 - @tdzhang
     // 关闭free trail - 2023-10-17 - @HuangSong
-    ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 0,
+    // 根据后端返回的role是否为free_trail判断是否开启，5次 - 2024-07-03 - @HuangSong
+    ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 5,
     // 记录用户剩余的search free trial times - 2次 - 2023-10-12 - @tdzhang
     // 关闭free trail - 2023-10-17 - @HuangSong
-    ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES: 0,
+    // 根据后端返回的role是否为free_trail判断是否开启，5次 - 2024-07-03 - @HuangSong
+    ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES: 5,
+    // 根据后端返回的role是否为free_trail判断是否开启，5次 - 2024-07-03 - @HuangSong
+    ON_BOARDING_RECORD_INSTANT_REPLY_FREE_TRIAL_TIMES: 5,
     ON_BOARDING_MAXAI_3_0: false,
 
     // sidebar 中 survey dialog 是否弹窗过的标记

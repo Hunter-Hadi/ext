@@ -14,6 +14,7 @@ export const USER_ROLE_PRIORITY: Record<IUserRoleType, number> = {
   new_user: 0,
   pro_gift: 0,
   free: 0,
+  free_trial: 0,
   basic: 1,
   pro: 2,
   elite: 3,

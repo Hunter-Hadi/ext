@@ -880,7 +880,7 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description": "Googleの最新かつ最も高度なモデルです。より高速な処理、画期的な100万トークンのコンテキストウィンドウ、強化された安全性、テキスト、コード、画像、オーディオ、ビデオ処理の高度な機能を提供します。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description": "毎月のスマートテキストクエリ制限を超えました。無制限のクエリにアップグレードするか、次の月になってから月間クエリがリセットされるまでお待ちください。",
     "permission__pricing_modal__title": "無制限にアップグレード",
-    "permission__pricing_modal__description": "MaxAI Eliteにアップグレードして、制限なくより速く調査・執筆できます",
+    "permission__pricing_modal__description": "MaxAI Elite にアップグレードして、制限なしで高速に読み書き、検索できます",
     "permission__pricing_modal__item1__title": "無制限のAI利用",
     "permission__pricing_modal__item2__title": "すべての機能を解除",
     "permission__pricing_modal__item3__title": "毎日数時間を節約",

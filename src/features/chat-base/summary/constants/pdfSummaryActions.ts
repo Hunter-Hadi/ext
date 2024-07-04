@@ -79,81 +79,11 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'CHAT_MESSAGE',
+      type: 'TEXT_HANDLER',
       parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: '',
-          originalMessage: {
-            metadata: {
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing PDF',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
-                  },
-                ],
-              },
-            },
-            content: {
-              title: {
-                title: 'Summary',
-                titleIcon: 'Loading',
-              },
-              text: '',
-              contentType: 'text',
-            },
-            includeHistory: false,
-          },
-        } as IAIResponseMessage,
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-      parameters: {
-        MaxAIPromptActionConfig: {
-          promptId: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
-          promptName: '[Summary] Summarize PDF',
-          promptActionType: 'chat_complete',
-          variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
-          ],
-          output: [],
+        ActionTextHandleParameters: {
+          trim: true,
         },
-        AskChatGPTActionQuestion: {
-          text: '',
-          meta: {
-            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-            contextMenu: {
-              id: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
-              parent: 'root',
-              droppable: false,
-              text: '[Summary] Summarize PDF',
-              data: {
-                editable: false,
-                type: 'shortcuts',
-              },
-            },
-          },
-        },
-        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-      },
-    },
-    {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'SUMMARY_CONTENTS',
       },
     },
     {
@@ -165,7 +95,144 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         },
         WFCondition: 'Equals',
         WFConditionalIfTrueActions: [
-          // 说明没有拿到ai response和related questions
+          // 无PDF内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  metadata: {
+                    isComplete: true,
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing PDF',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                    deepDive: {
+                      title: {
+                        title: 'Oops! We Can’t Read Your PDF',
+                        titleIcon: 'TipsAndUpdates',
+                      },
+                      value:
+                        'It looks like the PDF you uploaded is either a picture or in a format we can’t read right now. We’re not able to get text from images or certain types of PDFs yet. Please try uploading a different PDF, or reach out to our support team for help.',
+                    },
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有PDF内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing PDF',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                  },
+                  content: {
+                    title: {
+                      title: 'Summary',
+                      titleIcon: 'Loading',
+                    },
+                    text: '',
+                    contentType: 'text',
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'ASK_CHATGPT',
+            parameters: {
+              MaxAIPromptActionConfig: {
+                promptId: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
+                promptName: '[Summary] Summarize PDF',
+                promptActionType: 'chat_complete',
+                variables: [
+                  {
+                    VariableName: 'PAGE_CONTENT',
+                    label: 'PAGE_CONTENT',
+                    defaultValue: '{{READABILITY_CONTENTS}}',
+                    valueType: 'Text',
+                    systemVariable: true,
+                    hidden: true,
+                  },
+                ],
+                output: [],
+              },
+              AskChatGPTActionQuestion: {
+                text: '',
+                meta: {
+                  outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  contextMenu: {
+                    id: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
+                    parent: 'root',
+                    droppable: false,
+                    text: '[Summary] Summarize PDF',
+                    data: {
+                      editable: false,
+                      type: 'shortcuts',
+                    },
+                  },
+                },
+              },
+              AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              AskChatGPTActionOutput: 'message',
+            },
+          },
+          {
+            type: 'SCRIPTS_DICTIONARY',
+            parameters: {},
+          },
+          {
+            type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+            parameters: {
+              ActionGetDictionaryKey: 'value',
+              ActionGetDictionaryValue:
+                'originalMessage.metadata.deepDive.value',
+            },
+          },
+        ],
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFCondition: 'Equals',
+        WFConditionalIfTrueActions: [
+          // 说明没有拿到related questions
           {
             type: 'CHAT_MESSAGE',
             parameters: {
@@ -276,81 +343,11 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'CHAT_MESSAGE',
+      type: 'TEXT_HANDLER',
       parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: '',
-          originalMessage: {
-            metadata: {
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing PDF',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
-                  },
-                ],
-              },
-            },
-            content: {
-              title: {
-                title: 'Summary',
-                titleIcon: 'Loading',
-              },
-              text: '',
-              contentType: 'text',
-            },
-            includeHistory: false,
-          },
-        } as IAIResponseMessage,
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-      parameters: {
-        MaxAIPromptActionConfig: {
-          promptId: SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
-          promptName: '[Summary] Summarize PDF (TL:DR)',
-          promptActionType: 'chat_complete',
-          variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
-          ],
-          output: [],
+        ActionTextHandleParameters: {
+          trim: true,
         },
-        AskChatGPTActionQuestion: {
-          text: '',
-          meta: {
-            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-            contextMenu: {
-              id: SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
-              parent: 'root',
-              droppable: false,
-              text: '[Summary] Summarize PDF (TL:DR)',
-              data: {
-                editable: false,
-                type: 'shortcuts',
-              },
-            },
-          },
-        },
-        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-      },
-    },
-    {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'SUMMARY_CONTENTS',
       },
     },
     {
@@ -362,7 +359,144 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         },
         WFCondition: 'Equals',
         WFConditionalIfTrueActions: [
-          // 说明没有拿到ai response和related questions
+          // 无PDF内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  metadata: {
+                    isComplete: true,
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing PDF',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                    deepDive: {
+                      title: {
+                        title: 'Oops! We Can’t Read Your PDF',
+                        titleIcon: 'TipsAndUpdates',
+                      },
+                      value:
+                        'It looks like the PDF you uploaded is either a picture or in a format we can’t read right now. We’re not able to get text from images or certain types of PDFs yet. Please try uploading a different PDF, or reach out to our support team for help.',
+                    },
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有PDF内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing PDF',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                  },
+                  content: {
+                    title: {
+                      title: 'Summary',
+                      titleIcon: 'Loading',
+                    },
+                    text: '',
+                    contentType: 'text',
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'ASK_CHATGPT',
+            parameters: {
+              MaxAIPromptActionConfig: {
+                promptId: SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
+                promptName: '[Summary] Summarize PDF (TL:DR)',
+                promptActionType: 'chat_complete',
+                variables: [
+                  {
+                    VariableName: 'PAGE_CONTENT',
+                    label: 'PAGE_CONTENT',
+                    defaultValue: '{{READABILITY_CONTENTS}}',
+                    valueType: 'Text',
+                    systemVariable: true,
+                    hidden: true,
+                  },
+                ],
+                output: [],
+              },
+              AskChatGPTActionQuestion: {
+                text: '',
+                meta: {
+                  outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  contextMenu: {
+                    id: SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
+                    parent: 'root',
+                    droppable: false,
+                    text: '[Summary] Summarize PDF (TL:DR)',
+                    data: {
+                      editable: false,
+                      type: 'shortcuts',
+                    },
+                  },
+                },
+              },
+              AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              AskChatGPTActionOutput: 'message',
+            },
+          },
+          {
+            type: 'SCRIPTS_DICTIONARY',
+            parameters: {},
+          },
+          {
+            type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+            parameters: {
+              ActionGetDictionaryKey: 'value',
+              ActionGetDictionaryValue:
+                'originalMessage.metadata.deepDive.value',
+            },
+          },
+        ],
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFCondition: 'Equals',
+        WFConditionalIfTrueActions: [
+          // 说明没有拿到related questions
           {
             type: 'CHAT_MESSAGE',
             parameters: {
@@ -473,81 +607,11 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'CHAT_MESSAGE',
+      type: 'TEXT_HANDLER',
       parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: '',
-          originalMessage: {
-            metadata: {
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing PDF',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
-                  },
-                ],
-              },
-            },
-            content: {
-              title: {
-                title: 'Summary',
-                titleIcon: 'Loading',
-              },
-              text: '',
-              contentType: 'text',
-            },
-            includeHistory: false,
-          },
-        } as IAIResponseMessage,
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-      parameters: {
-        MaxAIPromptActionConfig: {
-          promptId: SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
-          promptName: '[Summary] Summarize PDF (Key takeaways)',
-          promptActionType: 'chat_complete',
-          variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
-          ],
-          output: [],
+        ActionTextHandleParameters: {
+          trim: true,
         },
-        AskChatGPTActionQuestion: {
-          text: '',
-          meta: {
-            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-            contextMenu: {
-              id: SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
-              parent: 'root',
-              droppable: false,
-              text: '[Summary] Summarize PDF (Key takeaways)',
-              data: {
-                editable: false,
-                type: 'shortcuts',
-              },
-            },
-          },
-        },
-        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-      },
-    },
-    {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'SUMMARY_CONTENTS',
       },
     },
     {
@@ -559,7 +623,144 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         },
         WFCondition: 'Equals',
         WFConditionalIfTrueActions: [
-          // 说明没有拿到ai response和related questions
+          // 无PDF内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  metadata: {
+                    isComplete: true,
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing PDF',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                    deepDive: {
+                      title: {
+                        title: 'Oops! We Can’t Read Your PDF',
+                        titleIcon: 'TipsAndUpdates',
+                      },
+                      value:
+                        'It looks like the PDF you uploaded is either a picture or in a format we can’t read right now. We’re not able to get text from images or certain types of PDFs yet. Please try uploading a different PDF, or reach out to our support team for help.',
+                    },
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有PDF内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing PDF',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                  },
+                  content: {
+                    title: {
+                      title: 'Summary',
+                      titleIcon: 'Loading',
+                    },
+                    text: '',
+                    contentType: 'text',
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'ASK_CHATGPT',
+            parameters: {
+              MaxAIPromptActionConfig: {
+                promptId: SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
+                promptName: '[Summary] Summarize PDF (Key takeaways)',
+                promptActionType: 'chat_complete',
+                variables: [
+                  {
+                    VariableName: 'PAGE_CONTENT',
+                    label: 'PAGE_CONTENT',
+                    defaultValue: '{{READABILITY_CONTENTS}}',
+                    valueType: 'Text',
+                    systemVariable: true,
+                    hidden: true,
+                  },
+                ],
+                output: [],
+              },
+              AskChatGPTActionQuestion: {
+                text: '',
+                meta: {
+                  outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  contextMenu: {
+                    id: SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
+                    parent: 'root',
+                    droppable: false,
+                    text: '[Summary] Summarize PDF (Key takeaways)',
+                    data: {
+                      editable: false,
+                      type: 'shortcuts',
+                    },
+                  },
+                },
+              },
+              AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              AskChatGPTActionOutput: 'message',
+            },
+          },
+          {
+            type: 'SCRIPTS_DICTIONARY',
+            parameters: {},
+          },
+          {
+            type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+            parameters: {
+              ActionGetDictionaryKey: 'value',
+              ActionGetDictionaryValue:
+                'originalMessage.metadata.deepDive.value',
+            },
+          },
+        ],
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFCondition: 'Equals',
+        WFConditionalIfTrueActions: [
+          // 说明没有拿到related questions
           {
             type: 'CHAT_MESSAGE',
             parameters: {

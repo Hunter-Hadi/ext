@@ -47,7 +47,7 @@ const usePageSummary = () => {
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
-  const { isPayingUser } = useUserInfo()
+  const { isPayingUser, userInfo } = useUserInfo()
   const { isLogin } = useRecoilValue(AuthState)
 
   const { askAIWIthShortcuts } = useClientChat()
@@ -199,7 +199,10 @@ const usePageSummary = () => {
               (await getChromeExtensionOnBoardingData())
                 .ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES,
             ) || 0
-          if (summaryLifetimesQuota > 0) {
+          if (
+            userInfo?.role?.name === 'free_trial' &&
+            summaryLifetimesQuota > 0
+          ) {
             // 如果没有用完，那么就减一
             await setChromeExtensionOnBoardingData(
               'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES',

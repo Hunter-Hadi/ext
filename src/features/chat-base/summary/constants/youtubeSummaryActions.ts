@@ -155,12 +155,18 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
           },
         },
         AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+        AskChatGPTActionOutput: 'message',
       },
     },
     {
-      type: 'SET_VARIABLE',
+      type: 'SCRIPTS_DICTIONARY',
+      parameters: {},
+    },
+    {
+      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
       parameters: {
-        VariableName: 'SUMMARY_CONTENTS',
+        ActionGetDictionaryKey: 'value',
+        ActionGetDictionaryValue: 'originalMessage.metadata.deepDive[0]',
       },
     },
     {
@@ -172,7 +178,7 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
         },
         WFCondition: 'Equals',
         WFConditionalIfTrueActions: [
-          // 说明没有拿到ai response和related questions
+          // 说明没有拿到related questions
           {
             type: 'CHAT_MESSAGE',
             parameters: {

@@ -6,7 +6,7 @@ import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import first from 'lodash-es/first'
 import last from 'lodash-es/last'
 import orderBy from 'lodash-es/orderBy'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { useAuthLogin } from '@/features/auth'
 import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
@@ -26,6 +26,8 @@ const usePaginationConversationMessages = (conversationId: string) => {
     [],
   )
   const queryClient = useQueryClient()
+  const maxAIBetaFeaturesRef = useRef(maxAIBetaFeatures)
+  maxAIBetaFeaturesRef.current = maxAIBetaFeatures
   const remoteConversationMessagesStateRef = useRef<{
     conversationId: string
     totalPage: number
@@ -106,6 +108,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
         }][${paginationMessages.length}]耗时[${
           new Date().getTime() - time - diffTimeUsage
         }]ms`,
+        paginationMessages,
       )
       // await new Promise((resolve) => setTimeout(resolve, 3000))
       return paginationMessages
@@ -242,11 +245,28 @@ const usePaginationConversationMessages = (conversationId: string) => {
     }
   }, [data?.pages, conversationId])
 
+  const setCacheData = useCallback(
+    (updater: (data: any) => any) => {
+      queryClient.setQueryData(
+        [
+          PAGINATION_CONVERSATION_MESSAGES_QUERY_KEY,
+          conversationId,
+          maxAIBetaFeaturesRef.current.chat_sync,
+        ],
+        updater,
+      )
+    },
+    [conversationId, queryClient],
+  )
+
   useEffect(() => {
     const unsubscribe = OneShotCommunicator.receive(
       'ConversationMessagesUpdate',
       async (data) => {
         const { changeType, messageIds } = data
+        if (conversationId !== data.conversationId) {
+          return
+        }
         switch (changeType) {
           case 'update': {
             const messages =
@@ -262,6 +282,18 @@ const usePaginationConversationMessages = (conversationId: string) => {
               messages.forEach((message) => {
                 newMessagesMap.set(message.messageId, message)
               })
+              // 修改缓存
+              setCacheData((data) => {
+                return {
+                  ...data,
+                  pages: data?.pages?.map((messages: IChatMessage[]) =>
+                    messages.map(
+                      (message) =>
+                        newMessagesMap.get(message.messageId) || message,
+                    ),
+                  ),
+                }
+              })
               setPaginationMessages((previousMessages) => {
                 return previousMessages.map((message) => {
                   return newMessagesMap.get(message.messageId) || message
@@ -271,17 +303,31 @@ const usePaginationConversationMessages = (conversationId: string) => {
             return true
           }
           case 'delete': {
-            setPaginationMessages((previousMessages) => {
-              return previousMessages.filter(
-                (message) => !messageIds.includes(message.messageId),
-              )
-            })
+            console.log(
+              `ConversationDB[V3][对话消息列表] conversationId [delete]`,
+              messageIds,
+            )
+            if (messageIds.length) {
+              // 删除缓存
+              setCacheData((data) => {
+                return {
+                  ...data,
+                  pages: data?.pages?.map((messages: IChatMessage[]) =>
+                    messages.filter(
+                      (message) => !messageIds.includes(message.messageId),
+                    ),
+                  ),
+                }
+              })
+              setPaginationMessages((previousMessages) => {
+                return previousMessages.filter(
+                  (message) => !messageIds.includes(message.messageId),
+                )
+              })
+            }
             return true
           }
           case 'add': {
-            if (conversationId !== data.conversationId) {
-              return
-            }
             const messages =
               await ClientConversationMessageManager.getMessagesByMessageIds(
                 messageIds,
@@ -293,7 +339,11 @@ const usePaginationConversationMessages = (conversationId: string) => {
             if (messages.length) {
               setPaginationMessages((previousMessages) => {
                 return orderBy(
-                  previousMessages.concat(messages),
+                  previousMessages
+                    .filter(
+                      (message) => !messageIds.includes(message.messageId),
+                    )
+                    .concat(messages),
                   ['created_at'],
                   ['asc'],
                 )
@@ -307,7 +357,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
     )
 
     return () => unsubscribe()
-  }, [refetch, conversationId, setPaginationMessages])
+  }, [refetch, conversationId, setPaginationMessages, setCacheData])
 
   const isRefetching = useRef(false)
   /**

@@ -100,7 +100,7 @@ const InputAssistantButtonContextMenu: FC<
     useState<IContextMenuItem | null>(null)
   const { currentSidebarConversationType, currentConversationId } =
     useClientConversation()
-  const { currentUserPlan } = useUserInfo()
+  const { currentUserPlan, userInfo } = useUserInfo()
   const { shortCutsEngine } = useShortCutsEngine()
   const { pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
@@ -133,9 +133,16 @@ const InputAssistantButtonContextMenu: FC<
       if (!smoothConversationLoading && contextMenu.data.actions) {
         // 每个网站5次免费InputAssistantButton的机会
         const onBoardingData = await getChromeExtensionOnBoardingData()
-        const key =
+        let key =
           `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${getCurrentDomainHost()}_TIMES` as OnBoardingKeyType
+
+        // free trail用户判断instant reply使用次数
+        if (userInfo?.role?.name === 'free_trial') {
+          key = 'ON_BOARDING_RECORD_INSTANT_REPLY_FREE_TRIAL_TIMES'
+        }
+
         const currentHostFreeTrialTimes = Number(onBoardingData[key] || 0)
+
         // 如果没有权限, 显示付费卡片
         if (!hasPermission && permissionWrapperCardSceneType) {
           if (currentHostFreeTrialTimes > 0) {

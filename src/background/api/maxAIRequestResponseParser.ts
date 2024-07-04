@@ -123,47 +123,49 @@ export const maxAIRequestResponseStreamParser = (
       const pageSummaryType = conversation?.meta.pageSummaryType
       switch (streamMessage.streaming_status) {
         case 'start':
-        case 'in_progress':
+        case 'in_progress': {
           // loading状态
-          outputMessage.originalMessage = {
-            ...outputMessage.originalMessage,
-            metadata: {
-              ...outputMessage.originalMessage?.metadata,
-              deepDive: {
-                title: {
-                  title: ' ',
-                  titleIcon: 'Loading',
-                },
-                value: '',
-              },
-            },
-          }
-          break
-        case 'complete': {
-          // TODO 对于summary message没有related question时需要区分显示Ask AI anything about the page/email/PDF/video
           const relatedDive = {
             title: {
-              title: 'Keep exploring',
-              titleIcon: 'Layers',
+              title: ' ',
+              titleIcon: 'Loading',
             },
-            type: 'related',
-            value: streamMessage.related,
+            value: '',
           } as const
           outputMessage.originalMessage = {
             ...outputMessage.originalMessage,
             metadata: {
               ...outputMessage.originalMessage?.metadata,
-              deepDive: streamMessage.related?.length
-                ? pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
+              deepDive:
+                pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
                   ? [relatedDive]
-                  : relatedDive
-                : {
-                    title: {
-                      title: 'Deep dive',
-                      titleIcon: 'TipsAndUpdates',
-                    },
-                    value: 'Ask AI anything about the page...',
-                  },
+                  : relatedDive,
+            },
+          }
+          break
+        }
+        case 'complete': {
+          const relatedDive = streamMessage.related?.length
+            ? {
+                title: {
+                  title: 'Keep exploring',
+                  titleIcon: 'Layers',
+                },
+                type: 'related',
+                value: streamMessage.related,
+              }
+            : {
+                title: { title: '', titleIcon: '' },
+                value: '',
+              }
+          outputMessage.originalMessage = {
+            ...outputMessage.originalMessage,
+            metadata: {
+              ...outputMessage.originalMessage?.metadata,
+              deepDive:
+                pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
+                  ? ([relatedDive].filter(Boolean) as any)
+                  : relatedDive,
             },
           }
           break

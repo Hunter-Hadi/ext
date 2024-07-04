@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10.000 hitrih besedilnih povpraševanj/mesec",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Pogovarjajte se z GPT-3.5, Claude-3-haiku, Gemini-pro in drugimi - vse na enem mestu.",
     "pricing__plan_features__pro__feature1__item2__title": "300 pametnih besedilnih povpraševanj/mesec",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Pogovarjajte se z GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro in drugimi - vse na enem mestu.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Pogovorite se z GPT-4o. Za odklep vseh drugih modelov AI nadgradite na načrt MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Raziskujte 10-krat hitreje",
     "pricing__plan_features__pro__feature2__item1__title": "Povzemite katero koli stran/PDF/video/dokument",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Prihranite 90% časa za branje in gledanje s povzetki in ključnimi idejami.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Nadgradite na MaxAI Elite · Letno",
     "pricing__upgrade__popper_card__item1__title": "Neomejena uporaba AI",
     "pricing__upgrade__popper_card__item2__title": "Odklenite vse funkcije",
-    "pricing__upgrade__popper_card__item3__title": "Prihranite ure vsak dan"
+    "pricing__upgrade__popper_card__item3__title": "Prihranite ure vsak dan",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Za odklep vseh drugih modelov AI nadgradite na načrt MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10.000 truy vấn văn bản nhanh/tháng",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Nói chuyện với GPT-3.5, Claude-3-haiku, Gemini-pro và nhiều hơn nữa - tất cả trong một nơi.",
     "pricing__plan_features__pro__feature1__item2__title": "300 truy vấn văn bản thông minh/tháng",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Nói chuyện với GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro và nhiều hơn nữa - tất cả trong một nơi.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Nói chuyện với GPT-4o. Để mở khóa tất cả các mô hình AI khác, nâng cấp lên gói MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Nghiên cứu nhanh gấp 10 lần",
     "pricing__plan_features__pro__feature2__item1__title": "Tóm tắt bất kỳ trang/PDF/video/tài liệu nào",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Tiết kiệm 90% thời gian đọc và xem bằng cách nhận được tóm tắt và ý tưởng chính ngay lập tức.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Nâng cấp lên MaxAI Elite · Hàng năm",
     "pricing__upgrade__popper_card__item1__title": "Sử dụng AI không giới hạn",
     "pricing__upgrade__popper_card__item2__title": "Mở khóa tất cả các tính năng",
-    "pricing__upgrade__popper_card__item3__title": "Tiết kiệm hàng giờ mỗi ngày"
+    "pricing__upgrade__popper_card__item3__title": "Tiết kiệm hàng giờ mỗi ngày",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Chỉ GPT-4o. Để mở khóa tất cả các mô hình AI khác, nâng cấp lên gói MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

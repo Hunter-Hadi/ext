@@ -168,6 +168,7 @@ export const PLAN_FEATURES_MAP: Partial<
         title: React.ReactNode
         items: {
           title: React.ReactNode
+          subtitle?: React.ReactNode
           tooltip: React.ReactNode
         }[]
       }[]
@@ -284,6 +285,9 @@ export const PLAN_FEATURES_MAP: Partial<
             title: t(
               'client:pricing__plan_features__pro__feature1__item2__title',
             ),
+            subtitle: t(
+              'client:pricing__plan_features__pro__feature1__item2__subtitle',
+            ),
             tooltip: t(
               'client:pricing__plan_features__pro__feature1__item2__tooltip',
             ),
@@ -291,6 +295,7 @@ export const PLAN_FEATURES_MAP: Partial<
           {
             title: '',
             tooltip: '',
+            subtitle: '',
           },
         ],
       },

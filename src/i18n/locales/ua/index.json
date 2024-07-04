@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10 000 швидких текстових запитів/місяць",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Розмовляйте з GPT-3.5, Claude-3-haiku, Gemini-pro та іншими - все в одному місці.",
     "pricing__plan_features__pro__feature1__item2__title": "300 розумних текстових запитів/місяць",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Розмовляйте з GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro та іншими - все в одному місці.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Розмовляйте з GPT-4o. Щоб розблокувати всі інші моделі ШІ, оновіться до плану MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Досліджуйте в 10 разів швидше",
     "pricing__plan_features__pro__feature2__item1__title": "Узагальнюйте будь-яку сторінку/PDF/відео/документ",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Збережіть 90% свого часу на читання та перегляд, отримуючи миттєві узагальнення та ключові ідеї.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Оновити до MaxAI Elite · Щорічно",
     "pricing__upgrade__popper_card__item1__title": "Необмежене використання штучного інтелекту",
     "pricing__upgrade__popper_card__item2__title": "Розблокувати всі функції",
-    "pricing__upgrade__popper_card__item3__title": "Зекономте години щодня"
+    "pricing__upgrade__popper_card__item3__title": "Зекономте години щодня",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Лише GPT-4o. Щоб розблокувати всі інші моделі штучного інтелекту, оновіться до плану MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

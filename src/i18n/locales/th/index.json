@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "คำถามข้อเร็ว 10,000 คำต่อเดือน",
     "pricing__plan_features__pro__feature1__item1__tooltip": "พูดคุยกับ GPT-3.5, Claude-3-haiku, Gemini-pro และอื่น ๆ - ทั้งหมดในที่เดียว",
     "pricing__plan_features__pro__feature1__item2__title": "คำถามข้อเร็วอัจฉริยะ 300 คำต่อเดือน",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "พูดคุยกับ GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro และอื่น ๆ - ทั้งหมดในที่เดียว",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "พูดคุยกับ GPT-4o ในการปลดล็อค AI รุ่นอื่น ๆ ทั้งหมด อัปเกรดเป็นแผน MaxAI Elite",
     "pricing__plan_features__pro__feature2__title": "วิจัยเร็ว 10 เท่า",
     "pricing__plan_features__pro__feature2__item1__title": "สรุปหน้า / PDF / วิดีโอ / เอกสารใด ๆ",
     "pricing__plan_features__pro__feature2__item1__tooltip": "ประหยัดเวลาในการอ่านและการดูโดยบันทึกสรุปและความคิดสำคัญทันที",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "อัพเกรดเป็น MaxAI Elite · รายปี",
     "pricing__upgrade__popper_card__item1__title": "การใช้งาน AI ไม่จำกัด",
     "pricing__upgrade__popper_card__item2__title": "ปลดล็อกคุณสมบัติทั้งหมด",
-    "pricing__upgrade__popper_card__item3__title": "ประหยัดเวลาหลายชั่วโมงต่อวัน"
+    "pricing__upgrade__popper_card__item3__title": "ประหยัดเวลาหลายชั่วโมงต่อวัน",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "เฉพาะ GPT-4o เท่านั้น หากต้องการปลดล็อก AI models ทั้งหมด อัพเกรดเป็น MaxAI Elite plan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

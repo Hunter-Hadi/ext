@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10,000 hızlı metin sorgusu/ay",
     "pricing__plan_features__pro__feature1__item1__tooltip": "GPT-3.5, Claude-3-haiku, Gemini-pro ve daha fazlasıyla tek bir yerde konuşun.",
     "pricing__plan_features__pro__feature1__item2__title": "300 akıllı metin sorgusu/ay",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro ve daha fazlasıyla tek bir yerde konuşun.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o ile konuşun. Diğer tüm yapay zeka modellerini açmak için MaxAI Elite planına yükseltme yapın.",
     "pricing__plan_features__pro__feature2__title": "10 kat daha hızlı araştırma yapın",
     "pricing__plan_features__pro__feature2__item1__title": "Herhangi bir sayfayı/PDF'yi/videoyu/dosyayı özetleyin",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Özetler ve temel fikirleri anında alarak okuma ve izleme sürenizin %90'ını tasarruf edin.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "MaxAI Elite'e Yükselt · Yıllık",
     "pricing__upgrade__popper_card__item1__title": "Sınırsız AI kullanımı",
     "pricing__upgrade__popper_card__item2__title": "Tüm özellikleri aç",
-    "pricing__upgrade__popper_card__item3__title": "Her gün saatlerce zaman kazanın"
+    "pricing__upgrade__popper_card__item3__title": "Her gün saatlerce zaman kazanın",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Yalnızca GPT-4o. Diğer tüm AI modellerini açmak için MaxAI Elite planına yükseltin."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

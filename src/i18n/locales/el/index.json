@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10.000 γρήγορες αναζητήσεις κειμένου/μήνα",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Μιλήστε με το GPT-3.5, Claude-3-haiku, Gemini-pro, και πολλά άλλα - όλα σε ένα μέρος.",
     "pricing__plan_features__pro__feature1__item2__title": "300 έξυπνες αναζητήσεις κειμένου/μήνα",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Μιλήστε με το GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, και πολλά άλλα - όλα σε ένα μέρος.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Μιλήστε με το GPT-4o. Για να ξεκλειδώσετε όλα τα άλλα μοντέλα AI, αναβαθμίστε στο σχέδιο MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Έρευνα 10 φορές πιο γρήγορα",
     "pricing__plan_features__pro__feature2__item1__title": "Περίληψη οποιασδήποτε σελίδας/PDF/βίντεο/εγγράφου",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Εξοικονομήστε το 90% του χρόνου ανάγνωσης και παρακολούθησης λαμβάνοντας αμέσως περιλήψεις και βασικές ιδέες.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Αναβάθμιση σε MaxAI Elite · Ετήσια",
     "pricing__upgrade__popper_card__item1__title": "Απεριόριστη χρήση AI",
     "pricing__upgrade__popper_card__item2__title": "Ξεκλείδωμα όλων των χαρακτηριστικών",
-    "pricing__upgrade__popper_card__item3__title": "Εξοικονόμηση ωρών κάθε μέρα"
+    "pricing__upgrade__popper_card__item3__title": "Εξοικονόμηση ωρών κάθε μέρα",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Μόνο GPT-4o. Για να ξεκλειδώσετε όλα τα άλλα μοντέλα AI, αναβαθμίστε στο σχέδιο MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

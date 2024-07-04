@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "每月10,000个快速文本查询",
     "pricing__plan_features__pro__feature1__item1__tooltip": "在一个地方与GPT-3.5、Claude-3-haiku、Gemini-pro等进行对话。",
     "pricing__plan_features__pro__feature1__item2__title": "每月300个智能文本查询",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "在一个地方与GPT-4o、Claude-3.5-sonnet、Claude-3-opus、Gemini-1.5-pro等进行对话。",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "与 GPT-4o 对话。要解锁所有其他 AI 模型，请升级到 MaxAI Elite 计划。",
     "pricing__plan_features__pro__feature2__title": "10倍加快研究速度",
     "pricing__plan_features__pro__feature2__item1__title": "摘要任何页面/PDF/视频/文档",
     "pricing__plan_features__pro__feature2__item1__tooltip": "通过即时获取摘要和关键思想，节省90%的阅读和观看时间。",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "升级至MaxAI Elite · 每年",
     "pricing__upgrade__popper_card__item1__title": "无限使用AI",
     "pricing__upgrade__popper_card__item2__title": "解锁所有功能",
-    "pricing__upgrade__popper_card__item3__title": "每天节省数小时"
+    "pricing__upgrade__popper_card__item3__title": "每天节省数小时",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "仅限GPT-4o。要解锁所有其他AI模型，请升级到MaxAI Elite计划。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

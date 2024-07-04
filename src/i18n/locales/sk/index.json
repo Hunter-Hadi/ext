@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10 000 rýchlych textových dotazov/mesiac",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Hovorte s GPT-3.5, Claude-3-haiku, Gemini-pro a ďalšími - všetko na jednom mieste.",
     "pricing__plan_features__pro__feature1__item2__title": "300 inteligentných textových dotazov/mesiac",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Hovorte s GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro a ďalšími - všetko na jednom mieste.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Hovorte s GPT-4o. Pre odomknutie všetkých ďalších modelov AI, aktualizujte na plán MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Výskum 10-krát rýchlejší",
     "pricing__plan_features__pro__feature2__item1__title": "Zhrňte akúkoľvek stránku/PDF/video/doc",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Ušetrite 90% času na čítanie a sledovanie získaním súhrnov a kľúčových myšlienok okamžite.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Vylepšiť na MaxAI Elite · Ročne",
     "pricing__upgrade__popper_card__item1__title": "Neobmedzené používanie AI",
     "pricing__upgrade__popper_card__item2__title": "Odomknúť všetky funkcie",
-    "pricing__upgrade__popper_card__item3__title": "Ušetriť hodiny každý deň"
+    "pricing__upgrade__popper_card__item3__title": "Ušetriť hodiny každý deň",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Len GPT-4o. Pre odomknutie všetkých ďalších modelov umelej inteligencie, aktualizujte na plán MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

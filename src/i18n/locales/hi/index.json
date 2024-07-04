@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "प्रति माह 10,000 तेज़ पाठ प्रश्न",
     "pricing__plan_features__pro__feature1__item1__tooltip": "एक ही स्थान पर GPT-3.5, Claude-3-haiku, Gemini-pro, और बहुत कुछ के साथ बातचीत करें।",
     "pricing__plan_features__pro__feature1__item2__title": "प्रति माह 300 स्मार्ट पाठ प्रश्न",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "एक ही स्थान पर GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, और बहुत कुछ के साथ बातचीत करें।",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o से बात करें। सभी अन्य AI मॉडल्स को अनलॉक करने के लिए MaxAI Elite प्लान पर अपग्रेड करें।",
     "pricing__plan_features__pro__feature2__title": "10 गुना तेज़ी से अनुसंधान करें",
     "pricing__plan_features__pro__feature2__item1__title": "किसी भी पृष्ठ/PDF/वीडियो/दस्तावेज़ का संक्षेपण करें",
     "pricing__plan_features__pro__feature2__item1__tooltip": "संक्षेपण और मुख्य विचारों को तुरंत प्राप्त करके अपने पठन और देखने के समय की 90% बचाएं।",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "MaxAI Elite में अपग्रेड करें · वार्षिक",
     "pricing__upgrade__popper_card__item1__title": "असीमित AI उपयोग",
     "pricing__upgrade__popper_card__item2__title": "सभी सुविधाओं को खोलें",
-    "pricing__upgrade__popper_card__item3__title": "हर दिन कुछ घंटे बचाएं"
+    "pricing__upgrade__popper_card__item3__title": "हर दिन कुछ घंटे बचाएं",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "केवल GPT-4o। सभी अन्य AI मॉडल्स को अनलॉक करने के लिए MaxAI इलाइट प्लान पर अपग्रेड करें।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

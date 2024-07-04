@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "प्रति महिना 10,000 वेगवान मजकूर प्रश्न",
     "pricing__plan_features__pro__feature1__item1__tooltip": "एका ठिकाणी GPT-3.5, Claude-3-haiku, Gemini-pro, आणि अधिक — सर्व एकाच ठिकाणी बोला.",
     "pricing__plan_features__pro__feature1__item2__title": "प्रति महिना 300 स्मार्ट मजकूर प्रश्न",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "एका ठिकाणी GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, आणि अधिक — सर्व एकाच ठिकाणी बोला.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o बोलण्यासाठी. सर्व इतर AI मॉडेल्स सोडवण्यासाठी, MaxAI Elite योजनेवर अपग्रेड करा.",
     "pricing__plan_features__pro__feature2__title": "10 वेळा वेगवान शोध",
     "pricing__plan_features__pro__feature2__item1__title": "कोणत्याही पृष्ठ/पीडीएफ/व्हिडिओ/दस्तऐवज संक्षेपित करा",
     "pricing__plan_features__pro__feature2__item1__tooltip": "संक्षेपणे आणि मुख्य विचारे तात्पुरत्या मिळवून, आपल्या वाचन आणि पाहण्याचा वेळा 90% बचवा.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "MaxAI Elite वर अपग्रेड करा · वार्षिक",
     "pricing__upgrade__popper_card__item1__title": "अमर्यादित AI वापर",
     "pricing__upgrade__popper_card__item2__title": "सर्व सुविधा अनलॉक करा",
-    "pricing__upgrade__popper_card__item3__title": "प्रतिदिन तास बचवा"
+    "pricing__upgrade__popper_card__item3__title": "प्रतिदिन तास बचवा",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "केवळ GPT-4o. सर्व इतर AI मॉडेल्स सोडवण्यासाठी, MaxAI Elite योजनेवर अपग्रेड करा."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

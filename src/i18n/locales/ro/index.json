@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10.000 de interogări rapide de text/lună",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Vorbește cu GPT-3.5, Claude-3-haiku, Gemini-pro și altele — toate într-un singur loc.",
     "pricing__plan_features__pro__feature1__item2__title": "300 de interogări de text inteligent/lună",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Vorbește cu GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro și altele — toate într-un singur loc.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Discutați cu GPT-4o. Pentru a debloca toate celelalte modele AI, faceți upgrade la planul MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Cercetează de 10 ori mai rapid",
     "pricing__plan_features__pro__feature2__item1__title": "Rezumă orice pagină/PDF/video/doc",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Economisește 90% din timpul petrecut citind și urmărind prin obținerea instantanee a rezumatelor și ideilor cheie.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Upgrade la MaxAI Elite · Anual",
     "pricing__upgrade__popper_card__item1__title": "Utilizare nelimitată a AI",
     "pricing__upgrade__popper_card__item2__title": "Deblochează toate funcțiile",
-    "pricing__upgrade__popper_card__item3__title": "Economisește ore în fiecare zi"
+    "pricing__upgrade__popper_card__item3__title": "Economisește ore în fiecare zi",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Doar GPT-4o. Pentru a debloca toate celelalte modele de AI, faceți upgrade la planul MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "월별 10,000개의 빠른 텍스트 쿼리",
     "pricing__plan_features__pro__feature1__item1__tooltip": "GPT-3.5, Claude-3-haiku, Gemini-pro 등과 대화하고 한 곳에서 모두 사용하세요.",
     "pricing__plan_features__pro__feature1__item2__title": "월별 300개의 스마트 텍스트 쿼리",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro 등과 대화하고 한 곳에서 모두 사용하세요.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o와 대화하세요. 다른 모든 AI 모델을 잠금 해제하려면 MaxAI Elite 요금제로 업그레이드하세요.",
     "pricing__plan_features__pro__feature2__title": "10배 빠른 연구",
     "pricing__plan_features__pro__feature2__item1__title": "모든 페이지/PDF/비디오/문서 요약",
     "pricing__plan_features__pro__feature2__item1__tooltip": "요약과 주요 아이디어를 즉시 얻어 읽기와 시청 시간을 90% 절약하세요.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "MaxAI Elite로 업그레이드 · 매년",
     "pricing__upgrade__popper_card__item1__title": "무제한 AI 사용",
     "pricing__upgrade__popper_card__item2__title": "모든 기능 잠금 해제",
-    "pricing__upgrade__popper_card__item3__title": "매일 시간 절약"
+    "pricing__upgrade__popper_card__item3__title": "매일 시간 절약",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o 만 가능. 다른 모든 AI 모델을 잠금 해제하려면 MaxAI 엘리트 플랜으로 업그레이드하세요."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

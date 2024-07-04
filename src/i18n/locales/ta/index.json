@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "10,000 விரைவு உரை வினாக்கள்/மாதாந்திரம்",
     "pricing__plan_features__pro__feature1__item1__tooltip": "ஒரே இடத்தில் GPT-3.5, Claude-3-haiku, Gemini-pro முதன்மைகளையும் மேலும் பேசுங்கள்.",
     "pricing__plan_features__pro__feature1__item2__title": "300 புதியான உரை வினாக்கள்/மாதாந்திரம்",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "ஒரே இடத்தில் GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro முதன்மைகளையும் மேலும் பேசுங்கள்.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "GPT-4o உடன் பேசவும். மற்ற அனைத்து AI மாதிரிகளையும் விரைவில் மேம்படுத்த, MaxAI Elite திட்டத்தில் மேம்படுத்தவும்.",
     "pricing__plan_features__pro__feature2__title": "10 மடங்கு விஞ்ஞானத்தை வெளியேற்றுங்கள்",
     "pricing__plan_features__pro__feature2__item1__title": "எந்த பக்கம்/PDF/வீடியோ/ஆவணத்தையும் சுருக்கமாக்குங்கள்",
     "pricing__plan_features__pro__feature2__item1__tooltip": "சுருக்கங்களையும் முக்கிய கருத்துக்களையும் உடனடியாக பெறுங்கள் - வாசிப்பும் பார்க்கும் நேரத்தை 90% சேமிக்கலாம்.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "மேம்படுத்தலுக்கு MaxAI Elite-க்கு மேலும் வருக · வாருங்கள்",
     "pricing__upgrade__popper_card__item1__title": "முழுமையான AI பயன்பாடு",
     "pricing__upgrade__popper_card__item2__title": "அனைத்து அம்சங்களையும் விடுவிக்கவும்",
-    "pricing__upgrade__popper_card__item3__title": "ஒவ்வொரு நாளும் மணி மணிக்கும் நேரத்தைச் சேமிக்கவும்"
+    "pricing__upgrade__popper_card__item3__title": "ஒவ்வொரு நாளும் மணி மணிக்கும் நேரத்தைச் சேமிக்கவும்",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o மட்டும். மற்ற அனைத்து AI மாதிரிகளையும் திறந்துவிட மேலும் மேக்ஸ்ஐ எலைட் திட்டத்தில் மேம்படுத்தவும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

@@ -952,7 +952,7 @@
     "pricing__plan_features__pro__feature1__item1__title": "Maswali ya maandishi haraka 10,000/mwezi",
     "pricing__plan_features__pro__feature1__item1__tooltip": "Ongea na GPT-3.5, Claude-3-haiku, Gemini-pro, na zaidi - yote mahali pamoja.",
     "pricing__plan_features__pro__feature1__item2__title": "Maswali ya maandishi yenye akili 300/mwezi",
-    "pricing__plan_features__pro__feature1__item2__tooltip": "Ongea na GPT-4o, Claude-3.5-sonnet, Claude-3-opus, Gemini-1.5-pro, na zaidi - yote mahali pamoja.",
+    "pricing__plan_features__pro__feature1__item2__tooltip": "Ongea na GPT-4o. Ili kufungua mifano mingine yote ya AI, nenda kwenye mpango wa MaxAI Elite.",
     "pricing__plan_features__pro__feature2__title": "Fanya utafiti kwa kasi mara 10",
     "pricing__plan_features__pro__feature2__item1__title": "Weka muhtasari wowote wa ukurasa/PDF/video/doc",
     "pricing__plan_features__pro__feature2__item1__tooltip": "Hifadhi 90% ya wakati wako wa kusoma na kutazama kwa kupata muhtasari na mawazo muhimu mara moja.",
@@ -1007,7 +1007,8 @@
     "pricing__upgrade__popper_card__title": "Nenda kwa MaxAI Elite · Kila mwaka",
     "pricing__upgrade__popper_card__item1__title": "Matumizi ya AI yasiyo na kikomo",
     "pricing__upgrade__popper_card__item2__title": "Fungua vipengele vyote",
-    "pricing__upgrade__popper_card__item3__title": "Punguza masaa kila siku"
+    "pricing__upgrade__popper_card__item3__title": "Punguza masaa kila siku",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o pekee. Ili kufungua mifano mingine yote ya AI, nenda kwenye mpango wa MaxAI Elite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

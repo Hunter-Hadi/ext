@@ -624,6 +624,7 @@ export class ActionAskChatGPT extends Action {
                 this.status === 'running'
               ) {
                 // 更新客户端的writing message
+                console.log(`test222:`, this.answer)
                 clientConversationEngine.updateClientWritingMessage(this.answer)
               }
             },

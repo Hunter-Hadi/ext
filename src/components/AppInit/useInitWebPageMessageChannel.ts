@@ -4,6 +4,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_POST_MESSAGE_WITH_WEB_PAGE_ID } from '@/features/common/constants'
 import { MaxAIPostMessageWithWebPageType } from '@/features/common/utils/postMessageToCRX'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import clientGetContentOfURL from '@/features/shortcuts/utils/web/clientGetContentOfURL'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
   hideChatBox,
@@ -154,6 +155,30 @@ const useInitWebPageMessageChannel = () => {
               closeModalButton.click()
             }
             hideChatBox()
+            return
+          }
+          // 网页perplexity
+          case 'CLIENT_GET_CONTENT_OF_URL': {
+            const { url, timeout, abortTaskId, needImage, needVideo } = data
+            const { html, status, videos } = await clientGetContentOfURL(
+              url,
+              timeout,
+              abortTaskId,
+              needImage,
+              needVideo,
+            )
+            responseDataToPage(taskId, event.origin, {
+              success: true,
+              message: 'ok',
+              data: {
+                html,
+                status,
+                videos,
+              },
+            })
+            return
+          }
+          case 'Client_proxyFetchAPI': {
             return
           }
           case 'OPEN_SIDEBAR': {

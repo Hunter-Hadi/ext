@@ -38,7 +38,13 @@ export const RangyState = atom<{
 
 // ai input dropdown menu
 export const FloatingDropdownMenuState = atom<{
+  /**
+   * content menu是否显示
+   */
   open: boolean
+  /**
+   * selection的rect
+   */
   rootRect: IRangyRect | null
   showModelSelector: boolean
 }>({

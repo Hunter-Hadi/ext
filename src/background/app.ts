@@ -48,10 +48,7 @@ import {
   getChromeExtensionUserInfo,
   getMaxAIChromeExtensionUserId,
 } from '@/features/auth/utils'
-import {
-  MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
-  MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
-} from '@/features/common/constants'
+import { MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL } from '@/features/common/constants'
 import { devResetAllOnboardingTooltipOpenedCache } from '@/features/onboarding/utils'
 import paymentManager from '@/features/payment/background/PaymentManager'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
@@ -450,7 +447,7 @@ const initChromeExtensionMessage = () => {
  */
 const initChromeExtensionUninstalled = () => {
   Browser.runtime.setUninstallURL(
-    `${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
+    `${MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
   )
 }
 

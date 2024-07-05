@@ -774,14 +774,14 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
                 titleIcon: 'SummaryInfo',
               },
               value: transcriptData,
-            },
-            {
-              title: {
-                title: 'Deep dive',
-                titleIcon: 'TipsAndUpdates',
-              },
-              value: 'Ask AI anything about the video...',
-            },
+            } as any,
+            // {
+            //   title: {
+            //     title: 'Deep dive',
+            //     titleIcon: 'TipsAndUpdates',
+            //   },
+            //   value: 'Ask AI anything about the video...',
+            // },
           ],
         },
       },

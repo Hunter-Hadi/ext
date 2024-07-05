@@ -78,7 +78,7 @@ export const mixpanelIdentify = (
   }
 }
 
-export const getBasicInfoForMixpanel = () => {
+export const getBasicInfoForMixpanel = async () => {
   try {
     return {
       browser: getBrowserAgent(),
@@ -88,6 +88,7 @@ export const getBasicInfoForMixpanel = () => {
       screenHeight: window.screen.height,
       screenWidth: window.screen.width,
       isDesktop: window.screen.width > window.screen.height,
+      ...(await getCurrentUserLogInfo()),
       // TODO: more info
     }
   } catch (error) {

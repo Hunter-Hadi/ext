@@ -154,10 +154,10 @@ const useInitWebPageSidebar = () => {
   // Summary的特殊逻辑
   // - 切换url的时候为了省下token，直接切换到chat
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
-  const pageUrlIsUsedRef = useRef(false)
+  const pageUrlRef = useRef('')
   const documentTitleRef = useRef('')
   useEffect(() => {
-    if (pageUrl) {
+    if (pageUrl && pageUrlRef.current !== pageUrl) {
       const pageSummaryType = getPageSummaryType()
       if (
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
@@ -167,19 +167,12 @@ const useInitWebPageSidebar = () => {
         if (documentTitleRef.current === documentTitle) {
           return
         }
-        documentTitleRef.current = documentTitle
       }
       // 页面变化重置page summary和summary conversation id
+      pageUrlRef.current = pageUrl
+      documentTitleRef.current = documentTitle
       resetPageSummary()
       updateSidebarSummaryConversationId()
-      pageUrlIsUsedRef.current = false
-    }
-  }, [pageUrl, documentTitle])
-  useEffect(() => {
-    if (!pageUrlIsUsedRef.current && pageUrl) {
-      const pageSummaryType = getPageSummaryType()
-      pageUrlIsUsedRef.current = true
-      console.log('special pageSummaryType', pageSummaryType, pageUrl)
       if (
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
         pageSummaryType === 'PDF_CRX_SUMMARY'
@@ -189,11 +182,13 @@ const useInitWebPageSidebar = () => {
         }
         createConversation('Summary')
         return
-      } else if (pageConversationTypeRef.current === 'Summary') {
+      }
+      if (pageConversationTypeRef.current === 'Summary') {
         // 页面变化切换至Chat并停止当前对话
+        const pageSummaryConversationId = pageSummaryConversationIdRef.current
         getMaxAIChromeExtensionUserId().then((userId) => {
           if (
-            pageSummaryConversationIdRef.current !==
+            pageSummaryConversationId !==
             getPageSummaryConversationId({ userId })
           ) {
             updateSidebarConversationType('Chat')
@@ -202,7 +197,7 @@ const useInitWebPageSidebar = () => {
         })
       }
     }
-  }, [pageUrl])
+  }, [pageUrl, documentTitle])
   // 监听搜索引擎的continue search with ai
   useEffect(() => {
     const listener = (event: any) => {

@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack'
 import debounce from 'lodash-es/debounce'
 import throttle from 'lodash-es/throttle'
-import React, { FC, useCallback, useEffect, useRef } from 'react'
+import React, { FC, RefObject, useCallback, useEffect, useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
@@ -18,9 +18,11 @@ import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
+  markdownBodyRef: RefObject<HTMLDivElement>
+  markdownMaxHeight: number
 }> = (props) => {
   const theme = useCustomTheme()
-  const { onChange } = props
+  const { onChange, markdownBodyRef, markdownMaxHeight } = props
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     ContextWindowDraftContextMenuState,
@@ -44,7 +46,7 @@ const WritingMessageBox: FC<{
     onChange?.(currentFloatingContextMenuDraft)
   }, [currentFloatingContextMenuDraft, floatingDropdownMenu.open])
   const containerRef = useRef<HTMLDivElement>(null)
-  const boxRef = React.useRef<HTMLDivElement>(null)
+  const boxRef = markdownBodyRef
   const throttleUpdateHeight = useCallback(
     throttle(() => {
       const container = containerRef.current
@@ -163,13 +165,15 @@ const WritingMessageBox: FC<{
           }}
         />
       )}
+
       <div
         tabIndex={-1}
-        ref={boxRef}
+        // ref={boxRef}
         style={{
           textAlign: 'left',
-          height: 'unset',
+          maxHeight: `${markdownMaxHeight}px`,
         }}
+        ref={markdownBodyRef}
         className={`markdown-body ${
           theme.isDarkMode ? 'markdown-body-dark' : ''
         }`}

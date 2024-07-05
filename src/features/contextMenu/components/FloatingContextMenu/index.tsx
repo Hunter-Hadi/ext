@@ -15,14 +15,7 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, {
-  CSSProperties,
-  FC,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { CSSProperties, FC, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
@@ -76,7 +69,7 @@ import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import ResizeAnchor from './ResizeAnchor'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
-const defaultContextMenuHeight = 400
+const defaultMarkdownHeight = 320
 
 const FloatingContextMenu: FC<{
   root: any
@@ -86,7 +79,6 @@ const FloatingContextMenu: FC<{
   const { root } = props
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
-  const [resizeHeight, setResizeHeight] = useState<'auto' | number>('auto')
   const {
     loading,
     askAIWithContextWindow,
@@ -139,7 +131,7 @@ const FloatingContextMenu: FC<{
       const position = getContextMenuRenderPosition(
         floatingDropdownMenu.rootRect,
         currentWidth,
-        resizeHeight === 'auto' ? defaultContextMenuHeight : resizeHeight,
+        400,
       )
       // console.log(
       //   '[ContextMenu Module]: [safePlacement]',
@@ -171,7 +163,7 @@ const FloatingContextMenu: FC<{
       inputPlacement,
       contextMenuPlacement,
     }
-  }, [floatingDropdownMenu.rootRect, currentWidth, resizeHeight])
+  }, [floatingDropdownMenu.rootRect, currentWidth])
 
   const referenceElementRef = useRef<HTMLDivElement>(null)
   const referenceElementDragOffsetRef = useRef({
@@ -294,8 +286,6 @@ const FloatingContextMenu: FC<{
         prevX: 0,
         prevY: 0,
       }
-
-      setResizeHeight('auto')
     }
   }, [floatingDropdownMenu.open])
 
@@ -390,50 +380,50 @@ const FloatingContextMenu: FC<{
       : t('client:floating_menu__input__placeholder')
   }, [t, floatingDropdownMenu.open, activeAIResponseMessage])
 
+  const markdownBodyRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (refs.floating.current) {
       refs.floating.current.style.width = `${currentWidth}px`
     }
   }, [currentWidth])
 
-  // floating隐藏时恢复默认设置
+  // floating隐藏时恢复默认设置默认markdownBody最大高度
   useEffect(() => {
-    if (!floatingDropdownMenu.open && referenceElementRef.current) {
-      referenceElementRef.current.style.height = 'auto'
-      referenceElementRef.current.style.maxHeight = `${defaultContextMenuHeight}px`
+    if (!markdownBodyRef.current) return
+
+    if (!floatingDropdownMenu.open) {
+      markdownBodyRef.current.style.height = 'auto'
+      markdownBodyRef.current.style.maxHeight = `${defaultMarkdownHeight}px`
     }
   }, [floatingDropdownMenu.open])
 
   /**
-   * rootmenu使用了100%继承父元素floating的宽度，所以这里修改宽度直接作用在floating上即可
-   * 当markdown-body可滚动且向下拉放大的时候修改reference的高度和最高高度
+   * markdownBody使用了100%继承父元素floating的宽度，所以这里修改宽度直接作用在floating上即可
+   * 当markdownBody可滚动且向下拉放大的时候修改markdownBody的高度和最高高度
    */
   const handleResize = (dx: number, dy: number) => {
-    if (!refs.floating.current || !referenceElementRef.current) return
+    if (!refs.floating.current || !markdownBodyRef.current) return
 
     const floating = refs.floating.current
-    const reference = referenceElementRef.current
-    const markdownBody = reference.querySelector('.markdown-body')
+    const markdownBody = markdownBodyRef.current
 
-    if (!markdownBody) return
     const markdownOverflow =
       markdownBody.clientHeight !== markdownBody.scrollHeight
 
     if (markdownOverflow) {
-      const targetWidth = reference.clientWidth + dx
+      const targetWidth = floating.clientWidth + dx
       floating.style.width = `${targetWidth}px`
     }
 
     // 当markdown中出现滚动条或reference的大小超过了默认的400高度时候，可以调节大小
     if (
-      markdownBody &&
-      ((dy < 0 && reference.clientHeight > defaultContextMenuHeight) ||
-        (dy > 0 && markdownOverflow))
+      (dy < 0 && markdownBody.clientHeight > defaultMarkdownHeight) ||
+      (dy > 0 && markdownOverflow)
     ) {
-      const h = reference.clientHeight + dy
-      const targetHeight = `${h}px`
-      reference.style.height = targetHeight
-      reference.style.maxHeight = targetHeight
+      const targetHeight = `${markdownBody.clientHeight + dy}px`
+      markdownBody.style.height = targetHeight
+      markdownBody.style.maxHeight = targetHeight
     }
   }
 
@@ -486,8 +476,6 @@ const FloatingContextMenu: FC<{
                 flexDirection: 'column',
                 width: '100%',
                 padding: '8px 12px',
-                height: resizeHeight,
-                maxHeight: `${defaultContextMenuHeight}px`,
               }}
               onKeyDown={(event) => {
                 event.stopPropagation()
@@ -530,7 +518,10 @@ const FloatingContextMenu: FC<{
                 </DevContent>
               </Box>
               <FloatingContextMenuTitleBar />
-              <WritingMessageBox />
+              <WritingMessageBox
+                markdownMaxHeight={defaultMarkdownHeight}
+                markdownBodyRef={markdownBodyRef}
+              />
               {floatingDropdownMenu.open && (
                 <DevContent>
                   <DevConsole />

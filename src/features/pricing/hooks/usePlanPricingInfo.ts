@@ -1,5 +1,5 @@
 import isNumber from 'lodash-es/isNumber'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { PlanPricingInfoAtom } from '@/features/pricing/store'
@@ -32,9 +32,22 @@ const isBetterDiscount = (
 // 先简单记录一下防止快速显示关闭重复调用请求
 let fetchTime = 0
 
+// 目前pricing modal和upgrade不在同一个provider下
+// 这里先简单存储一下
+let fetchData: Record<string, any> = {}
+
 const usePlanPricingInfo = () => {
   const [planPricingInfo, setPlanPricingInfo] =
     useRecoilState(PlanPricingInfoAtom)
+
+  useEffect(() => {
+    setPlanPricingInfo((prev) => {
+      return {
+        ...prev,
+        data: mergeWithObject([prev.data, fetchData]),
+      }
+    })
+  }, [])
 
   // 注意接口里的elite_monthly要转换为elite，前端目前monthly的类型没有后缀
   const fetchPlanPricing = useCallback(async () => {
@@ -54,6 +67,7 @@ const usePlanPricingInfo = () => {
             delete data[key]
           }
         })
+        fetchData = data
         setPlanPricingInfo((prev) => {
           return {
             ...prev,

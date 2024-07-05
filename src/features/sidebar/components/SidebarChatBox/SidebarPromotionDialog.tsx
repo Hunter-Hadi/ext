@@ -79,19 +79,23 @@ const SidebarPromotionDialog = () => {
       if (!showType) {
         return
       }
+
+      // 免费用户注册时间小于三天不弹窗
+      if (!isPayingUser) {
+        const timeLimit = new Date().getTime() - 3 * 24 * 60 * 60 * 1000
+        if (new Date(createAt).getTime() > timeLimit) {
+          return
+        }
+      }
+
       // 针对免费用户的弹窗
       if (showType === 'free') {
         // 不是免费用户不弹窗
         if (isPayingUser) {
           return
         }
-
-        // 注册时间小于三天不弹窗
-        const timeLimit = new Date().getTime() - 3 * 24 * 60 * 60 * 1000
-        if (new Date(createAt).getTime() > timeLimit) {
-          return
-        }
       }
+
       // 针对所有用户的弹窗
       // if (!onBoardingData.ON_BOARDING_MAXAI_3_0) {
       //   // maxai 3.0 的 onboarding tour，还没有结束，不弹窗
@@ -106,7 +110,7 @@ const SidebarPromotionDialog = () => {
         setOpen(true)
         mixpanelTrack('update_modal_showed', {
           testFeature: 'extensionUpdateModal',
-          testVersion: `2-${updateVariantRef.current}`,
+          testVersion: `3-${updateVariantRef.current}`,
         })
       }, 1500)
     })

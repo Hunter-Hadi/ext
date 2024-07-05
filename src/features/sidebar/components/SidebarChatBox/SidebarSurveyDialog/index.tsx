@@ -42,7 +42,7 @@ const SidebarSurveyDialog = () => {
 
     // 某些版本会对所有用户强制显示弹窗，这时候不需要显示
     getUpdateShow().then((showType) => {
-      // 需要弹窗
+      // TODO 这一版对于免费用户才会弹update modal，后续要更改一下如果需要弹update modal的话这里不弹窗
       if (showType === 'all') {
         return
       }

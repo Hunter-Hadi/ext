@@ -15,7 +15,15 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo, useRef } from 'react'
+import { Resizable } from 're-resizable'
+import React, {
+  CSSProperties,
+  FC,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
@@ -67,6 +75,7 @@ import {
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
+const defaultContextMenuHeight = 400
 
 const FloatingContextMenu: FC<{
   root: any
@@ -76,6 +85,7 @@ const FloatingContextMenu: FC<{
   const { root } = props
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
+  const [resizeHeight, setResizeHeight] = useState<'auto' | number>('auto')
   const {
     loading,
     askAIWithContextWindow,
@@ -98,6 +108,10 @@ const FloatingContextMenu: FC<{
   const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
     FloatingContextWindowChangesState,
   )
+
+  /**
+   * 浮动窗口的宽度，有最小和最大限制
+   */
   const currentWidth = useMemo(() => {
     if (floatingDropdownMenu.rootRect) {
       const minWidth = Math.max(
@@ -111,26 +125,29 @@ const FloatingContextMenu: FC<{
     }
     return CHROME_EXTENSION_FLOATING_CONTEXT_MENU_MIN_WIDTH - 32
   }, [floatingDropdownMenu.rootRect])
+
+  /**
+   * 为了防止input+contextMenu出现遮挡了原本选中的字体，所以这里的方向其实要算input+contextMenu的高度
+   * 1. 基于高亮块矩形计算出实际渲染input矩形的初始点xy位置
+   * 2. 基于高亮块和input的y值判断input的渲染方向和contextMenu的渲染方向
+   */
   const safePlacement = useMemo(() => {
-    // 为了防止input+contextMenu出现遮挡了原本选中的字体，所以这里的方向其实要算input+contextMenu的高度
-    // 1. 基于高亮块矩形计算出实际渲染input矩形的初始点xy位置
-    // 2. 基于高亮块和input的y值判断input的渲染方向和contextMenu的渲染方向
     let inputPlacement: Placement = 'bottom-start'
     let contextMenuPlacement: Placement = 'bottom-start'
     if (floatingDropdownMenu.rootRect && currentWidth) {
       const position = getContextMenuRenderPosition(
         floatingDropdownMenu.rootRect,
         currentWidth,
-        400,
+        resizeHeight === 'auto' ? defaultContextMenuHeight : resizeHeight,
       )
-      console.log(
-        '[ContextMenu Module]: [safePlacement]',
-        position.x,
-        floatingDropdownMenu.rootRect.left,
-        '\n',
-        position.y,
-        floatingDropdownMenu.rootRect.y,
-      )
+      // console.log(
+      //   '[ContextMenu Module]: [safePlacement]',
+      //   position.x,
+      //   floatingDropdownMenu.rootRect.left,
+      //   '\n',
+      //   position.y,
+      //   floatingDropdownMenu.rootRect.y,
+      // )
       // 先看渲染在上方还是下方
       if (position.y > floatingDropdownMenu.rootRect.top) {
         // 说明渲染在下方
@@ -153,7 +170,8 @@ const FloatingContextMenu: FC<{
       inputPlacement,
       contextMenuPlacement,
     }
-  }, [floatingDropdownMenu.rootRect, currentWidth])
+  }, [floatingDropdownMenu.rootRect, currentWidth, resizeHeight])
+
   const referenceElementRef = useRef<HTMLDivElement>(null)
   const referenceElementDragOffsetRef = useRef({
     prevX: 0,
@@ -266,6 +284,7 @@ const FloatingContextMenu: FC<{
       y: event.clientY,
     }
   }
+
   useEffect(() => {
     if (!floatingDropdownMenu.open) {
       referenceElementDragOffsetRef.current = {
@@ -274,8 +293,11 @@ const FloatingContextMenu: FC<{
         prevX: 0,
         prevY: 0,
       }
+
+      setResizeHeight('auto')
     }
   }, [floatingDropdownMenu.open])
+
   useEffect(() => {
     const handleDragEnd = (event: MouseEvent) => {
       if (isDragRef.current) {
@@ -338,16 +360,19 @@ const FloatingContextMenu: FC<{
         document.querySelector('#rangeBorderBox')?.remove()
         const div = document.createElement('div')
         div.id = 'rangeBorderBox'
-        div.style.position = 'absolute'
-        div.style.left = rect.left + 'px'
-        div.style.top = rect.top + window.scrollY + 'px'
-        div.style.width = rect.width + 'px'
-        div.style.height = rect.height + 'px'
-        div.style.border = '1px solid green'
-        div.style.zIndex = '9999'
-        div.style.pointerEvents = 'none'
+        Object.assign(div.style, {
+          position: 'absolute',
+          left: rect.left + 'px',
+          top: rect.top + window.scrollY + 'px',
+          width: rect.width + 'px',
+          height: rect.height + 'px',
+          border: '1px solid green',
+          zIndex: '9999',
+          pointerEvents: 'none',
+        } as CSSProperties)
         document.body.appendChild(div)
       }
+
       refs.setPositionReference({
         getBoundingClientRect() {
           return rect
@@ -357,21 +382,41 @@ const FloatingContextMenu: FC<{
   }, [floatingDropdownMenu.rootRect])
 
   const textareaPlaceholder = useMemo(() => {
-    if (floatingDropdownMenu.open) {
-      if (activeAIResponseMessage) {
-        return t('client:floating_menu__input__placeholder__after_ai_response')
-      } else {
-        return t('client:floating_menu__input__placeholder')
-      }
-    }
-    return ''
+    if (!floatingDropdownMenu.open) return ''
+
+    return activeAIResponseMessage
+      ? t('client:floating_menu__input__placeholder__after_ai_response')
+      : t('client:floating_menu__input__placeholder')
   }, [t, floatingDropdownMenu.open, activeAIResponseMessage])
 
   return (
     <FloatingPortal root={root}>
-      <div
-        ref={refs.setFloating}
-        {...getFloatingProps()}
+      <Resizable
+        defaultSize={{
+          width: currentWidth,
+          height: 'auto',
+        }}
+        maxWidth='90vw'
+        minWidth={currentWidth}
+        minHeight={'100px'}
+        onResize={(_, _dir, element) => {
+          setResizeHeight(element.clientHeight)
+        }}
+        ref={(e) => {
+          const ref = e?.resizable
+          if (ref) {
+            refs.setFloating(ref)
+            ref.id = MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID
+            ref.onkeyup = (event) => {
+              event.stopPropagation()
+            }
+            ref.onkeydown = (event) => {
+              if (event.key !== 'Escape') {
+                event.stopPropagation()
+              }
+            }
+          }
+        }}
         style={{
           position: strategy,
           zIndex: floatingDropdownMenu.open ? 2147483601 : -1,
@@ -379,18 +424,9 @@ const FloatingContextMenu: FC<{
           top: y ?? 0,
           left: x ?? 0,
           width: currentWidth,
-          maxWidth: '90vw',
         }}
-        onKeyUp={(event) => {
-          event.stopPropagation()
-        }}
-        onKeyDown={(event) => {
-          if (event.key !== 'Escape') {
-            event.stopPropagation()
-          }
-        }}
-        id={MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
+        {...getFloatingProps()}
       >
         <FloatingContextMenuList
           customOpen
@@ -417,8 +453,13 @@ const FloatingContextMenu: FC<{
                 flexDirection: 'column',
                 width: '100%',
                 padding: '8px 12px',
+                height: resizeHeight,
+                maxHeight:
+                  resizeHeight === 'auto'
+                    ? `${defaultContextMenuHeight}px`
+                    : 'auto',
               }}
-              onKeyPress={(event) => {
+              onKeyDown={(event) => {
                 event.stopPropagation()
               }}
             >
@@ -693,7 +734,7 @@ const FloatingContextMenu: FC<{
           }
           root={root}
         />
-      </div>
+      </Resizable>
       <DiscardChangesModal
         type={
           contextWindowChanges.contextWindowMode === 'AI_RESPONSE'

@@ -228,9 +228,10 @@ const FloatingContextMenuList: FC<
         )
       }
     })
-    // console.log('RenderMenuList', menuList, nodeList)
     return nodeList
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuList, t])
+
   // console.log('FloatingContextMenuList', defaultPlacement)
   return (
     <DropdownMenu

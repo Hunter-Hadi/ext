@@ -103,6 +103,13 @@ const checkCollision = (rect1: Rect, rect2: Rect, boundary: Rect): boolean => {
 //   248.65625
 // width
 //   789.484375
+/**
+ * 计算获取contextMenu渲染的位置，尽量将context menu做到不遮挡rect且不超出页面范围的位置
+ * @param highlightedRect 选择高亮的区域（selection）
+ * @param contextMenuWidth context menu的渲染长度
+ * @param contextMenuHeight context menu的高度
+ * @returns 返回{x: number, y: number}的一个起始点位置
+ */
 export const getContextMenuRenderPosition = (
   highlightedRect: Rect,
   contextMenuWidth = 220,

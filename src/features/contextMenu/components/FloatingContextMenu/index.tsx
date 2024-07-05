@@ -15,7 +15,6 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import { Resizable } from 're-resizable'
 import React, {
   CSSProperties,
   FC,
@@ -73,6 +72,8 @@ import {
   isGlobalVideoPopupOpen,
 } from '@/features/video_popup/utils'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
+
+import ResizeAnchor from './ResizeAnchor'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 const defaultContextMenuHeight = 400
@@ -182,7 +183,7 @@ const FloatingContextMenu: FC<{
   const { x, y, strategy, refs, context, update } = useFloating({
     open: floatingDropdownMenu.open,
     strategy: 'fixed',
-    onOpenChange: (open, event, reason) => {
+    onOpenChange: (open, _, reason) => {
       // TOOD 临时逻辑
       if (
         document
@@ -389,33 +390,61 @@ const FloatingContextMenu: FC<{
       : t('client:floating_menu__input__placeholder')
   }, [t, floatingDropdownMenu.open, activeAIResponseMessage])
 
+  useEffect(() => {
+    if (refs.floating.current) {
+      refs.floating.current.style.width = `${currentWidth}px`
+    }
+  }, [currentWidth])
+
+  // floating隐藏时恢复默认设置
+  useEffect(() => {
+    if (!floatingDropdownMenu.open && referenceElementRef.current) {
+      referenceElementRef.current.style.height = 'auto'
+      referenceElementRef.current.style.maxHeight = `${defaultContextMenuHeight}px`
+    }
+  }, [floatingDropdownMenu.open])
+
+  /**
+   * rootmenu使用了100%继承父元素floating的宽度，所以这里修改宽度直接作用在floating上即可
+   * 当markdown-body可滚动且向下拉放大的时候修改reference的高度和最高高度
+   */
+  const handleResize = (dx: number, dy: number) => {
+    if (!refs.floating.current || !referenceElementRef.current) return
+
+    const floating = refs.floating.current
+    const reference = referenceElementRef.current
+    const markdownBody = reference.querySelector('.markdown-body')
+
+    if (!markdownBody) return
+    const markdownOverflow =
+      markdownBody.clientHeight !== markdownBody.scrollHeight
+
+    if (markdownOverflow) {
+      const targetWidth = reference.clientWidth + dx
+      floating.style.width = `${targetWidth}px`
+    }
+
+    // 当markdown中出现滚动条或reference的大小超过了默认的400高度时候，可以调节大小
+    if (
+      markdownBody &&
+      ((dy < 0 && reference.clientHeight > defaultContextMenuHeight) ||
+        (dy > 0 && markdownOverflow))
+    ) {
+      const h = reference.clientHeight + dy
+      const targetHeight = `${h}px`
+      reference.style.height = targetHeight
+      reference.style.maxHeight = targetHeight
+    }
+  }
+
   return (
     <FloatingPortal root={root}>
-      <Resizable
-        defaultSize={{
-          width: currentWidth,
-          height: 'auto',
-        }}
-        maxWidth='90vw'
-        minWidth={currentWidth}
-        minHeight={'100px'}
-        onResize={(_, _dir, element) => {
-          setResizeHeight(element.clientHeight)
-        }}
-        ref={(e) => {
-          const ref = e?.resizable
-          if (ref) {
-            refs.setFloating(ref)
-            ref.id = MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID
-            ref.onkeyup = (event) => {
-              event.stopPropagation()
-            }
-            ref.onkeydown = (event) => {
-              if (event.key !== 'Escape') {
-                event.stopPropagation()
-              }
-            }
-          }
+      <div
+        ref={refs.setFloating}
+        id={MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}
+        onKeyUp={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          if (e.key !== 'Escape') e.stopPropagation()
         }}
         style={{
           position: strategy,
@@ -423,11 +452,15 @@ const FloatingContextMenu: FC<{
           opacity: floatingDropdownMenu.open ? 1 : 0,
           top: y ?? 0,
           left: x ?? 0,
+          minWidth: currentWidth,
+          maxWidth: '90vw',
           width: currentWidth,
         }}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
         {...getFloatingProps()}
       >
+        <ResizeAnchor onResize={handleResize} />
+
         <FloatingContextMenuList
           customOpen
           defaultPlacement={safePlacement.contextMenuPlacement}
@@ -454,10 +487,7 @@ const FloatingContextMenu: FC<{
                 width: '100%',
                 padding: '8px 12px',
                 height: resizeHeight,
-                maxHeight:
-                  resizeHeight === 'auto'
-                    ? `${defaultContextMenuHeight}px`
-                    : 'auto',
+                maxHeight: `${defaultContextMenuHeight}px`,
               }}
               onKeyDown={(event) => {
                 event.stopPropagation()
@@ -543,7 +573,7 @@ const FloatingContextMenu: FC<{
                       hideFloatingContextMenu()
                     }
                   }}
-                  onChange={(data, reason) => {
+                  onChange={(_, reason) => {
                     if (reason === 'runPromptStart') {
                       setIsInputCustomVariables(true)
                     } else if (reason === 'runPromptEnd') {
@@ -734,7 +764,7 @@ const FloatingContextMenu: FC<{
           }
           root={root}
         />
-      </Resizable>
+      </div>
       <DiscardChangesModal
         type={
           contextWindowChanges.contextWindowMode === 'AI_RESPONSE'

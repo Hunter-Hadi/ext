@@ -113,11 +113,13 @@ const WritingMessageBox: FC<{
       sx={{
         wordBreak: 'break-word',
         borderBottomLeftRadius: 0,
+        flex: 1,
+        overflowY: 'auto',
         color: (t) =>
           t.palette.mode === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
         '& .markdown-body': {
           userSelect: 'text',
-          maxHeight: 'min(40vh, 320px)',
+          // maxHeight: 'min(40vh, 320px)',
           overflowY: 'auto',
           '*': {
             fontFamily: '"Roboto","Helvetica","Arial",sans-serif!important',
@@ -166,6 +168,7 @@ const WritingMessageBox: FC<{
         ref={boxRef}
         style={{
           textAlign: 'left',
+          height: 'unset',
         }}
         className={`markdown-body ${
           theme.isDarkMode ? 'markdown-body-dark' : ''

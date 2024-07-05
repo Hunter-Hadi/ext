@@ -289,9 +289,13 @@ export const preprocessCitation = (content: string) => {
   let count = 0
   // 目前这里有概率会出现[T1](xxx)，不是{}的内容，先做任意内容匹配
   // /\[T(\d+)\]\(\{\}\)/
+  const tags: Record<string, number> = {}
   return content.replace(/\[T(\d+)\]\((.*?)\)/g, (match, p1) => {
-    count += 1
-    return `[T${p1}](${count})`
+    if (!tags[p1]) {
+      count += 1
+      tags[p1] = count
+    }
+    return `[T${p1}](${tags[p1]})`
   })
 }
 

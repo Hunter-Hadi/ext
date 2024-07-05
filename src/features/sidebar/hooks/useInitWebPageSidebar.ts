@@ -172,7 +172,6 @@ const useInitWebPageSidebar = () => {
       pageUrlRef.current = pageUrl
       documentTitleRef.current = documentTitle
       resetPageSummary()
-      updateSidebarSummaryConversationId()
       if (
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
         pageSummaryType === 'PDF_CRX_SUMMARY'
@@ -180,6 +179,7 @@ const useInitWebPageSidebar = () => {
         if (pageConversationTypeRef.current !== 'Summary') {
           updateSidebarConversationType('Summary')
         }
+        updateSidebarSummaryConversationId()
         createConversation('Summary')
         return
       }
@@ -193,8 +193,12 @@ const useInitWebPageSidebar = () => {
           ) {
             updateSidebarConversationType('Chat')
             stopGenerate()
+          } else {
+            updateSidebarSummaryConversationId()
           }
         })
+      } else {
+        updateSidebarSummaryConversationId()
       }
     }
   }, [pageUrl, documentTitle])

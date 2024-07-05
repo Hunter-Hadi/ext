@@ -84,23 +84,39 @@ const CitationTag: FC<IProps> = (props) => {
 
   const content = typeof number === 'number' ? `${number}` : `[${index + 1}]`
 
+  const bgcolor = loading
+    ? 'primary.main'
+    : (theme: any) =>
+        theme.palette.mode === 'dark'
+          ? 'rgba(255, 255, 255, 0.16)'
+          : // : 'rgb(235, 235, 235)'
+            'rgba(0, 0, 0, 0.1)'
+
+  const color = loading
+    ? '#fff!important'
+    : (theme: any) =>
+        theme.palette.mode === 'dark'
+          ? 'rgba(255, 255, 255, 0.87)'
+          : 'rgba(0, 0, 0, 0.6)'
+
   return (
     <Button
       variant='contained'
       size='small'
       sx={{
         minWidth: 'auto',
-        width: 24,
-        height: 18,
-        fontSize: '14px!important',
+        width: 20,
+        height: 20,
+        fontSize: '13px!important',
         top: -1,
-        bgcolor: 'primary.main',
-        color: '#fff!important',
-        marginLeft: '2px!important',
-        marginRight: '2px!important',
+        pt: '1px!important',
+        bgcolor,
+        color,
+        // marginLeft: '2px!important',
+        // marginRight: '2px!important',
         borderRadius: '14px',
         '&:hover': {
-          opacity: 0.6,
+          color: '#fff!important',
           bgcolor: 'primary.main',
         },
       }}

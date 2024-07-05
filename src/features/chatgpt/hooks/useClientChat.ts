@@ -311,10 +311,18 @@ const useClientChat = () => {
       const { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
         await getLastRunShortcuts(currentConversationId)
 
-      // 如果重试的是summary message，需要判断用量
       if (clientConversation?.type === 'Summary') {
+        // 如果重试的是summary message，需要判断用量
+        const isSummaryActions = lastRunActions?.find((item) => {
+          return (
+            item.type === 'CHAT_MESSAGE' &&
+            item.parameters.ActionChatMessageConfig?.originalMessage?.metadata
+              ?.shareType === 'summary'
+          )
+        })
         if (
-          !(await checkSummaryQuota(clientConversation.meta.pageSummaryType))
+          isSummaryActions &&
+          !(await checkSummaryQuota(clientConversation.meta.pageSummaryType!))
         ) {
           await pushPricingHookMessage('PAGE_SUMMARY')
           authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {

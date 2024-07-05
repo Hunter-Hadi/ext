@@ -38,8 +38,6 @@ const useSummaryQuota = () => {
     // 判断lifetimes free trial是否已经用完
     const surplusQuota = await getSummaryQuota(summaryType)
 
-    console.log('TEST summary quota', surplusQuota)
-
     if (surplusQuota > 0) {
       // 如果没有用完，那么就减一
       await setChromeExtensionOnBoardingData(

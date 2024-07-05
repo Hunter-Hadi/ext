@@ -10,19 +10,15 @@ import React, {
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
 
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import {
   ContextMenuIcon,
   type IContextMenuIconKey,
 } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { PAGE_SUMMARY_NAV_LIST_MAP } from '@/features/chat-base/summary/constants'
+import useSummaryQuota from '@/features/chat-base/summary/hooks/useSummaryQuota'
 import {
   IPageSummaryNavItem,
   IPageSummaryNavType,
@@ -59,8 +55,8 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     message.originalMessage?.metadata?.navMetadata,
   )
   const { askAIWIthShortcuts } = useClientChat()
-  const { isPayingUser, userInfo } = useUserInfo()
   const { clientConversation, pushPricingHookMessage } = useClientConversation()
+  const { checkSummaryQuota } = useSummaryQuota()
   const summaryType = useMemo(() => getPageSummaryType(), [])
   const summaryNavList = useMemo(
     () => PAGE_SUMMARY_NAV_LIST_MAP[summaryType],
@@ -81,38 +77,15 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     [],
   )
 
-  const checkSummaryQuota = async () => {
-    // summary下要判断用量，后续类似的逻辑拆分出来
-    if (!isPayingUser) {
-      // 判断lifetimes free trial是否已经用完
-      const summaryLifetimesQuota =
-        Number(
-          (await getChromeExtensionOnBoardingData())
-            .ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES,
-        ) || 0
-      if (userInfo?.role?.name === 'free_trial' && summaryLifetimesQuota > 0) {
-        // 如果没有用完，那么就减一
-        await setChromeExtensionOnBoardingData(
-          'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES',
-          summaryLifetimesQuota - 1,
-        )
-        return true
-      } else {
-        await pushPricingHookMessage('PAGE_SUMMARY')
-        authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
-          conversationId: clientConversation?.id,
-          paywallType: 'RESPONSE',
-        })
-        return false
-      }
-    }
-    return true
-  }
-
   const clickNavTriggerActionChange = async (navItem: IPageSummaryNavItem) => {
     if (loading || speedChangeKey === navItem.key) return //防止多次触发
 
     if (!(await checkSummaryQuota())) {
+      await pushPricingHookMessage('PAGE_SUMMARY')
+      authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+        conversationId: clientConversation?.id,
+        paywallType: 'RESPONSE',
+      })
       return
     }
 
@@ -150,6 +123,11 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     if (loading || speedChangeKey === menuItem.id) return //防止多次触发
 
     if (!(await checkSummaryQuota())) {
+      await pushPricingHookMessage('PAGE_SUMMARY')
+      authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+        conversationId: clientConversation?.id,
+        paywallType: 'RESPONSE',
+      })
       return
     }
 

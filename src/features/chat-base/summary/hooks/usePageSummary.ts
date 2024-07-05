@@ -7,14 +7,10 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { AuthState } from '@/features/auth/store'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import useSummaryQuota from '@/features/chat-base/summary/hooks/useSummaryQuota'
 import {
   getPageSummaryConversationId,
   getPageSummaryType,
@@ -47,7 +43,6 @@ const usePageSummary = () => {
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
-  const { isPayingUser, userInfo } = useUserInfo()
   const { isLogin } = useRecoilValue(AuthState)
 
   const { askAIWIthShortcuts } = useClientChat()
@@ -58,6 +53,7 @@ const usePageSummary = () => {
     '',
     false,
   )
+  const { checkSummaryQuota } = useSummaryQuota()
   const isGeneratingPageSummaryRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const clientWritingMessageRef = useRef(clientWritingMessage)
@@ -149,7 +145,8 @@ const usePageSummary = () => {
         let isValidAIMessage =
           aiMessage &&
           aiMessage?.originalMessage &&
-          aiMessage?.originalMessage.metadata?.isComplete
+          aiMessage?.originalMessage.metadata?.isComplete &&
+          aiMessage?.originalMessage.content?.text
         if (
           aiMessage &&
           aiMessage?.originalMessage &&
@@ -191,42 +188,25 @@ const usePageSummary = () => {
         console.log('新版Conversation pageSummary开始创建')
         // 进入loading
         await createConversation('Summary')
-        // 如果是免费用户
-        if (!isPayingUser) {
-          // 判断lifetimes free trial是否已经用完
-          const summaryLifetimesQuota =
-            Number(
-              (await getChromeExtensionOnBoardingData())
-                .ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES,
-            ) || 0
-          if (
-            userInfo?.role?.name === 'free_trial' &&
-            summaryLifetimesQuota > 0
-          ) {
-            // 如果没有用完，那么就减一
-            await setChromeExtensionOnBoardingData(
-              'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES',
-              summaryLifetimesQuota - 1,
-            )
-          } else {
-            await ClientConversationMessageManager.deleteMessages(
+        // 检测当前用量是否超出
+        if (!(await checkSummaryQuota(currentPageSummaryType))) {
+          await ClientConversationMessageManager.deleteMessages(
+            pageSummaryConversationId,
+            await ClientConversationMessageManager.getMessageIds(
               pageSummaryConversationId,
-              await ClientConversationMessageManager.getMessageIds(
-                pageSummaryConversationId,
-              ),
-            )
-            await pushPricingHookMessage('PAGE_SUMMARY')
-            // TODO 这里临时这样解决，因为现在没登录会显示登录的界面，但是其他逻辑有可能会触发这个mixpanel
-            if (isLogin) {
-              authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
-                conversationId: currentConversationId,
-                paywallType: 'RESPONSE',
-              })
-            }
-            isGeneratingPageSummaryRef.current = false
-            hideConversationLoading(pageSummaryConversationId)
-            return
+            ),
+          )
+          await pushPricingHookMessage('PAGE_SUMMARY')
+          // TODO 这里临时这样解决，因为现在没登录会显示登录的界面，但是其他逻辑有可能会触发这个mixpanel
+          if (isLogin) {
+            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+              conversationId: currentConversationId,
+              paywallType: 'RESPONSE',
+            })
           }
+          isGeneratingPageSummaryRef.current = false
+          hideConversationLoading(pageSummaryConversationId)
+          return
         }
 
         const summaryNavMetadataKey = cloneDeep(currentPageSummaryKey)[

@@ -678,7 +678,7 @@ export class ActionAskChatGPT extends Action {
           if (
             outputMessage &&
             isAIMessage(outputMessage) &&
-            this.answer?.originalMessage
+            (outputMessage.originalMessage || this.answer?.originalMessage)
           ) {
             await ClientConversationMessageManager.updateMessagesWithChanges(
               conversationId,

@@ -4,6 +4,7 @@ import {
   APP_VERSION,
   CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY,
 } from '@/constants'
+import { IPageSummaryType } from '@/features/chat-base/summary/types'
 import {
   InputAssistantButtonGroupConfigHostKeys,
   WritingAssistantButtonGroupConfigHostType,
@@ -27,6 +28,7 @@ export type OnBoardingKeyType =
   | `ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_${typeof APP_VERSION}`
   // summary / search / instant reply / input assistant button free trial times
   | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
+  | `ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_${IPageSummaryType}_TIMES`
   | 'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES'
   | 'ON_BOARDING_RECORD_INSTANT_REPLY_FREE_TRIAL_TIMES'
   | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${WritingAssistantButtonGroupConfigHostType}_TIMES`
@@ -64,7 +66,12 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     // 记录用户剩余的summary free trial times - 2次 - 2023-10-12 - @tdzhang
     // 关闭free trail - 2023-10-17 - @HuangSong
     // 根据后端返回的role是否为free_trail判断是否开启，5次 - 2024-07-03 - @HuangSong
+    // free_trail对PDF/Youtube/其他类型各有5次免费使用机会 - 2024-07-04 - @HuangSong
     ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 5,
+    // 根据后端返回的role是否为free_trail判断是否开启，5次 - 2024-07-04 - @HuangSong
+    ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_PAGE_SUMMARY_TIMES: 5,
+    ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_PDF_CRX_SUMMARY_TIMES: 5,
+    ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_YOUTUBE_VIDEO_SUMMARY_TIMES: 5,
     // 记录用户剩余的search free trial times - 2次 - 2023-10-12 - @tdzhang
     // 关闭free trail - 2023-10-17 - @HuangSong
     // 根据后端返回的role是否为free_trail判断是否开启，5次 - 2024-07-03 - @HuangSong

@@ -121,7 +121,7 @@ const WritingMessageBox: FC<{
           t.palette.mode === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
         '& .markdown-body': {
           userSelect: 'text',
-          // maxHeight: 'min(40vh, 320px)',
+          maxHeight: 'min(40vh, 320px)',
           overflowY: 'auto',
           '*': {
             fontFamily: '"Roboto","Helvetica","Arial",sans-serif!important',
@@ -171,7 +171,7 @@ const WritingMessageBox: FC<{
         // ref={boxRef}
         style={{
           textAlign: 'left',
-          maxHeight: `${markdownMaxHeight}px`,
+          // maxHeight: `${markdownMaxHeight}px`,
         }}
         ref={markdownBodyRef}
         className={`markdown-body ${

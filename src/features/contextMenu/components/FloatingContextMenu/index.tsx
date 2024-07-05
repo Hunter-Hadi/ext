@@ -66,7 +66,6 @@ import {
 } from '@/features/video_popup/utils'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
-import ResizeAnchor from './ResizeAnchor'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 const defaultMarkdownHeight = 320
@@ -382,21 +381,21 @@ const FloatingContextMenu: FC<{
 
   const markdownBodyRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (refs.floating.current) {
-      refs.floating.current.style.width = `${currentWidth}px`
-    }
-  }, [currentWidth])
+  // useEffect(() => {
+  //   if (refs.floating.current) {
+  //     refs.floating.current.style.width = `${currentWidth}px`
+  //   }
+  // }, [currentWidth])
 
   // floating隐藏时恢复默认设置默认markdownBody最大高度
-  useEffect(() => {
-    if (!markdownBodyRef.current) return
+  // useEffect(() => {
+  //   if (!markdownBodyRef.current) return
 
-    if (!floatingDropdownMenu.open) {
-      markdownBodyRef.current.style.height = 'auto'
-      markdownBodyRef.current.style.maxHeight = `${defaultMarkdownHeight}px`
-    }
-  }, [floatingDropdownMenu.open])
+  //   if (!floatingDropdownMenu.open) {
+  //     markdownBodyRef.current.style.height = 'auto'
+  //     markdownBodyRef.current.style.maxHeight = `${defaultMarkdownHeight}px`
+  //   }
+  // }, [floatingDropdownMenu.open])
 
   /**
    * markdownBody使用了100%继承父元素floating的宽度，所以这里修改宽度直接作用在floating上即可
@@ -449,7 +448,7 @@ const FloatingContextMenu: FC<{
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
         {...getFloatingProps()}
       >
-        <ResizeAnchor onResize={handleResize} />
+        {/* <ResizeAnchor onResize={handleResize} /> */}
 
         <FloatingContextMenuList
           customOpen

@@ -10,6 +10,7 @@ import FloatingMenuButton from '@/minimum/components/FloatingMenuButton'
 import SpecialHostSummaryButton from '@/minimum/components/SpecialHostSummaryButton'
 import MinimumAppInit from '@/minimum/MinimumAppInit'
 import { AppDBStorageState } from '@/store'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const MinimumApp: FC = () => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
@@ -44,16 +45,33 @@ const MinimumApp: FC = () => {
     return appDBStorage.userSettings?.quickAccess?.enabled && !sidebarOpen
   }, [appDBStorage.userSettings?.quickAccess?.enabled, sidebarOpen])
 
+  const ctaButtonOnboardingTooltipTrigger = React.useMemo(() => {
+    if (showMiniCtaButton) {
+      const currentDomain = getCurrentDomainHost()
+      if (
+        currentDomain === 'app.maxai.me' ||
+        (currentDomain === 'accounts.google.com' &&
+          location.pathname.startsWith('/o/oauth2'))
+      ) {
+        return isLogin
+      } else {
+        return true
+      }
+    }
+  }, [isLogin, showMiniCtaButton])
+
   return (
     <AppSuspenseLoadingLayout>
       <MinimumAppInit />
       {showMiniCtaButton && <FloatingMenuButton />}
       <SpecialHostSummaryButton />
-      <OnboardingTooltipPortal
-        sceneType='QUICK_ACCESS_CTA_BUTTON'
-        // showStateTrigger={appDBStorage.userSettings?.quickAccess?.enabled}
-        showStateTrigger={showMiniCtaButton}
-      />
+      {!sidebarOpen && (
+        <OnboardingTooltipPortal
+          sceneType='QUICK_ACCESS_CTA_BUTTON'
+          // showStateTrigger={appDBStorage.userSettings?.quickAccess?.enabled}
+          showStateTrigger={ctaButtonOnboardingTooltipTrigger}
+        />
+      )}
     </AppSuspenseLoadingLayout>
   )
 }

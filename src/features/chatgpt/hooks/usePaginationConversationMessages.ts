@@ -253,7 +253,12 @@ const usePaginationConversationMessages = (conversationId: string) => {
           conversationId,
           maxAIBetaFeaturesRef.current.chat_sync,
         ],
-        updater,
+        (data: any) =>
+          updater({
+            ...data,
+            pages: data.pages || [],
+            pageParams: data.pageParams || [],
+          }),
       )
     },
     [conversationId, queryClient],

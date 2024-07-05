@@ -4,7 +4,12 @@ import { useTranslation } from 'react-i18next'
 import { v4 as uuidV4 } from 'uuid'
 
 import { MAXAI_VISION_MODEL_UPLOAD_CONFIG } from '@/background/src/chat/constant'
+import {
+  getChromeExtensionOnBoardingData,
+  setChromeExtensionOnBoardingData,
+} from '@/background/utils'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -35,7 +40,7 @@ export interface IAskAIQuestion
 
 const useClientChat = () => {
   const { t } = useTranslation(['client'])
-  const { currentUserPlan } = useUserInfo()
+  const { currentUserPlan, isPayingUser, userInfo } = useUserInfo()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const {
     shortCutsEngine,
@@ -50,6 +55,7 @@ const useClientChat = () => {
   const setShortCutsRef = useRef(setShortCuts)
   const {
     currentConversationIdRef,
+    clientConversation,
     pushPricingHookMessage,
     hideConversationLoading,
     showConversationLoading,
@@ -303,6 +309,34 @@ const useClientChat = () => {
     if (!currentConversationId) return
     try {
       showConversationLoading(currentConversationId)
+
+      // summary下要判断用量，后续类似的逻辑拆分出来
+      if (clientConversation?.type === 'Summary' && !isPayingUser) {
+        // 判断lifetimes free trial是否已经用完
+        const summaryLifetimesQuota =
+          Number(
+            (await getChromeExtensionOnBoardingData())
+              .ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES,
+          ) || 0
+        if (
+          userInfo?.role?.name === 'free_trial' &&
+          summaryLifetimesQuota > 0
+        ) {
+          // 如果没有用完，那么就减一
+          await setChromeExtensionOnBoardingData(
+            'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES',
+            summaryLifetimesQuota - 1,
+          )
+        } else {
+          await pushPricingHookMessage('PAGE_SUMMARY')
+          authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+            conversationId: currentConversationId,
+            paywallType: 'RESPONSE',
+          })
+          return
+        }
+      }
+
       const { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
         await getLastRunShortcuts(currentConversationId)
       if (lastRunActions.length > 0) {

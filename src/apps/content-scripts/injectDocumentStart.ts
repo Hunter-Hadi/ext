@@ -20,7 +20,8 @@ const checkDocument = (task: () => void) => {
 }
 
 // 注入google doc
-if (window.location.href.startsWith('https://docs.google.com/document')) {
+// if (window.location.href.startsWith('https://docs.google.com/document')) {
+if (window.location.host === 'docs.google.com') {
   checkDocument(() =>
     injectScripts('apps/content-scripts/website/googleDoc.js'),
   )

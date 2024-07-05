@@ -312,32 +312,31 @@ export const getIframePageContent = async () => {
 export const getGoogleDocPageContent = async () => {
   return new Promise<string>((resolve) => {
     const eventId = uuidV4()
-    const script = document.createElement('script')
-    script.type = 'module'
-    script.src = Browser.runtime.getURL('pages/googleDoc/index.js')
-    script.setAttribute('data-event-id', eventId)
-    script.id = 'MAXAI_GOOGLE_DOC_CONTENT_SCRIPT'
-    document.body.appendChild(script)
-    let isResolved = false
-    window.addEventListener(
-      `${eventId}res`,
-      (e) => {
-        if (isResolved) {
-          return
-        }
-        isResolved = true
-        resolve((e as any).detail)
-      },
-      { once: true },
-    )
-    // 10s后如果没有获取到内容，就直接返回
-    setTimeout(() => {
-      if (isResolved) {
-        return
-      }
-      isResolved = true
+    // const script = document.createElement('script')
+    // script.type = 'module'
+    // // 浏览器对于相同url的js文件只会执行一次，这里加个时间戳
+    // script.src = Browser.runtime.getURL(
+    //   `pages/googleDoc/index.js?time=${Date.now()}`,
+    // )
+    // script.setAttribute('data-event-id', eventId)
+    // script.id = 'MAXAI_GOOGLE_DOC_CONTENT_SCRIPT'
+    // document.body.appendChild(script)
+    const timer = setTimeout(() => {
       resolve('')
+      window.removeEventListener(`${eventId}-res`, listener)
     }, 10000)
+    const listener = (event: any) => {
+      resolve(event.detail)
+      clearTimeout(timer)
+    }
+    window.addEventListener(`${eventId}-res`, listener, { once: true })
+    window.dispatchEvent(
+      new CustomEvent('MAXAI_LOAD_GOOGLE_DOC_CONTENT', {
+        detail: {
+          id: eventId,
+        },
+      }),
+    )
   })
 }
 

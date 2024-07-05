@@ -103,12 +103,18 @@ export class ActionAskChatGPT extends Action {
         this.parameters.AskChatGPTActionQuestion?.conversationId ||
         clientConversationEngine?.currentConversationId ||
         ''
-      const text = String(
+      let text =
         this.parameters.AskChatGPTActionQuestion?.text ||
-          this.parameters.compliedTemplate ||
-          params.LAST_ACTION_OUTPUT ||
-          '',
-      )
+        this.parameters.compliedTemplate ||
+        params.LAST_ACTION_OUTPUT ||
+        ''
+      try {
+        if (typeof text === 'object') {
+          text = JSON.stringify(text)
+        }
+      } catch (e) {
+        text = String(text)
+      }
       const messageId =
         this.parameters.AskChatGPTActionQuestion?.messageId || uuidV4()
       // 设置请求的Prompt action

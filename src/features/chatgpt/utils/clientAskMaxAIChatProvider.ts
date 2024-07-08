@@ -6,7 +6,7 @@ import {
 import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const clientAskMaxAIChatProvider = async (
@@ -96,7 +96,7 @@ const clientAskMaxAIChatProvider = async (
     }
   }
 
-  const result = await clientFetchAPI(
+  const result = await clientProxyFetchAPI(
     `${APP_USE_CHAT_GPT_API_HOST}${maxAIApi}`,
     {
       method: 'POST',

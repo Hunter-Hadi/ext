@@ -1,6 +1,6 @@
 import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
+import { md5TextEncrypt } from '@/features/security'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 // export const MaxUploadTxtFileSize = 1024 * 1024 * 32 // 32MB

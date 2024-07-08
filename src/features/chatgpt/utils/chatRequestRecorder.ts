@@ -10,7 +10,7 @@ import {
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
-import { aesJsonEncrypt } from '@/utils/encryptionHelper'
+import { aesJsonEncrypt } from '@/features/security'
 import { getFingerPrint } from '@/utils/fingerPrint'
 import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 

@@ -1,4 +1,3 @@
-import AES from 'crypto-js/aes'
 import { UAParser } from 'ua-parser-js'
 import Browser from 'webextension-polyfill'
 
@@ -7,7 +6,8 @@ import {
   getMaxAIChromeExtensionEmail,
   getMaxAIChromeExtensionUserId,
 } from '@/features/auth/utils'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { aesJsonEncrypt } from '@/features/security'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import {
   botUuid,
   SendNotificationType,
@@ -42,8 +42,8 @@ export const clientSendMaxAINotification = async (
     platform_version: os.version,
     languages: navigator.languages,
   }
-  const text = AES.encrypt(JSON.stringify(dataObject), 'MaxAI').toString()
-  return clientFetchAPI(
+  const text = aesJsonEncrypt(dataObject)
+  return clientProxyFetchAPI(
     'https://api.extensions-hub.com/extensionhub/send_notification',
     {
       method: 'POST',

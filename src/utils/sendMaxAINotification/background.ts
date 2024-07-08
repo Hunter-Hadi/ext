@@ -1,4 +1,3 @@
-import AES from 'crypto-js/aes'
 import Browser from 'webextension-polyfill'
 
 import { APP_VERSION, isProduction } from '@/constants'
@@ -6,6 +5,7 @@ import {
   getMaxAIChromeExtensionEmail,
   getMaxAIChromeExtensionUserId,
 } from '@/features/auth/utils'
+import { aesJsonEncrypt } from '@/features/security'
 import {
   botUuid,
   SendNotificationType,
@@ -23,27 +23,24 @@ export const backgroundSendMaxAINotification = async (
   // const { getBrowser, getOS } = new UAParser()
   // const browser = getBrowser()
   // const os = getOS()
-  const text = AES.encrypt(
-    JSON.stringify({
-      env: isProduction ? 'prod' : 'dev',
-      type: type,
-      app: 'MAXAI',
-      data: {
-        title,
-        message,
-        ...attr,
-      },
-      user_id: userId,
-      email: userEmail,
-      app_version: APP_VERSION,
-      browser: browser.name,
-      browser_version: browser.version,
-      platform: os.name,
-      platform_version: os.version,
-      languages: navigator.languages,
-    }),
-    'MaxAI',
-  ).toString()
+  const text = aesJsonEncrypt({
+    env: isProduction ? 'prod' : 'dev',
+    type: type,
+    app: 'MAXAI',
+    data: {
+      title,
+      message,
+      ...attr,
+    },
+    user_id: userId,
+    email: userEmail,
+    app_version: APP_VERSION,
+    browser: browser.name,
+    browser_version: browser.version,
+    platform: os.name,
+    platform_version: os.version,
+    languages: navigator.languages,
+  })
   return fetch(
     'https://api.extensions-hub.com/extensionhub/send_notification',
     {

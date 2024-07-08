@@ -1,4 +1,3 @@
-import AES from 'crypto-js/aes'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
@@ -19,6 +18,7 @@ import {
   contextMenuIsFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { aesJsonEncrypt } from '@/features/security'
 import { LANGUAGE_CODE_MAP } from '@/i18n/types'
 import { getFingerPrint } from '@/utils/fingerPrint'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
@@ -117,7 +117,7 @@ export const logAndConfirmDailyUsageLimit = async (
       console.log('[CALL_API] logApiAndConfirmIsLimited', info_object)
       const accessToken = await getMaxAIChromeExtensionAccessToken()
       const fingerprint = await getFingerPrint()
-      const text = AES.encrypt(JSON.stringify(info_object), 'MaxAI').toString()
+      const text = aesJsonEncrypt(info_object).toString()
       if (!accessToken) {
         return false
       }

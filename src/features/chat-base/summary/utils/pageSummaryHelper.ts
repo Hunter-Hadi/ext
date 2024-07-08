@@ -3,10 +3,10 @@ import Browser from 'webextension-polyfill'
 import { MaxAIExtensionIdManager } from '@/background/utils/extensionId'
 import { PAGE_SUMMARY_NAV_LIST_MAP } from '@/features/chat-base/summary/constants'
 import { IPageSummaryType } from '@/features/chat-base/summary/types'
+import { md5TextEncrypt } from '@/features/security'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
 /**
  * 获取summary nav item

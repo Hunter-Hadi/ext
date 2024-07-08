@@ -2,7 +2,7 @@
  * @deprecated summary相关功能已移动到chat-base/summary下，防止冲突合并release后上线前删除
  */
 import { MaxAIExtensionIdManager } from '@/background/utils/extensionId'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
+import { md5TextEncrypt } from '@/features/security'
 
 const PAGE_SUMMARY_CONVERSATION_ID_MAP: {
   [key in string]: string

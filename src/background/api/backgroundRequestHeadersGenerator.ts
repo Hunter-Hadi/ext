@@ -6,7 +6,11 @@ import { sm3 } from 'sm-crypto'
 import Browser, { Runtime } from 'webextension-polyfill'
 
 import { APP_VERSION } from '@/constants'
-import { aesJsonEncrypt } from '@/utils/encryptionHelper'
+import {
+  aesJsonEncrypt,
+  APP_AES_ENCRYPTION_KEY,
+  APP_SM3_HASH_KEY,
+} from '@/features/security'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
 
 export const backgroundGetCurrentDomainHost = (fromUrl: string) => {
@@ -136,20 +140,20 @@ class BackgroundRequestHeadersGenerator {
       }
     }
   }
-  getTaskIdHeaders(taskId?: string, body?: BodyInit) {
+  getTaskIdHeaders(taskId?: string, initBody?: BodyInit) {
     const headers = new Headers(
       taskId ? this.taskIdHeadersMap.get(taskId)?.headers : {},
     )
     if (headers.has(convertHexToString(`54`))) {
-      const keyA = 'ad6e9bb5-b486-4a36-a5b1-4a952701d0c4'
-      const keyB = 'eda11778-75b1-49be-8b06-206cd14d3a4c'
+      const body = initBody || ''
       // sm3(hmac_sha1(payload, secret_key)secret_key)
       const payloadHash = sm3(
         hmac_sha1(
           typeof body === 'string' ? body : JSON.stringify(body),
-          keyB,
-        ).toString() + keyB,
+          APP_SM3_HASH_KEY,
+        ).toString() + APP_SM3_HASH_KEY,
       )
+      // X-Authorization
       headers.set(
         convertHexToString(`582d417574686f72697a6174696f6e`),
         aesJsonEncrypt(
@@ -167,7 +171,7 @@ class BackgroundRequestHeadersGenerator {
             // P
             [convertHexToString(`50`)]: payloadHash,
           },
-          keyA,
+          APP_AES_ENCRYPTION_KEY,
         ),
       )
       // 移除不需要的header
@@ -178,7 +182,12 @@ class BackgroundRequestHeadersGenerator {
       // X-Client-Path
       headers.delete(convertHexToString(`582d436c69656e742d50617468`))
     }
-    return headers
+    // to object
+    const headersObject: Record<string, string> = {}
+    headers.forEach((value, key) => {
+      headersObject[key] = value
+    })
+    return headersObject
   }
 }
 

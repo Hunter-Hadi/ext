@@ -26,9 +26,9 @@ const maxAIBackgroundSafeFetch = async (
       init.body,
     )
     // merge加密的token到headers中
-    encryptedHeaders.forEach((value, key) => {
+    for (const [key, value] of Object.entries(encryptedHeaders)) {
       headers.set(key, value)
-    })
+    }
   }
 
   // 创建一个新的RequestInit对象，并深拷贝init中的属性

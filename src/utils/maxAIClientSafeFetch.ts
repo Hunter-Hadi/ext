@@ -6,10 +6,14 @@ import { sm3 } from 'sm-crypto'
 import Browser from 'webextension-polyfill'
 
 import { convertHexToString } from '@/background/api/backgroundRequestHeadersGenerator'
-import { APP_VERSION } from '@/constants'
+import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import {
+  aesJsonEncrypt,
+  APP_AES_ENCRYPTION_KEY,
+  APP_SM3_HASH_KEY,
+} from '@/features/security'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { aesJsonEncrypt } from '@/utils/encryptionHelper'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
 
 /**
@@ -30,8 +34,12 @@ const maxAIClientFetch = async (
     Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
     ...init?.headers,
   })
-  if (init?.body) {
+  if (
+    typeof input === 'string' &&
+    input.startsWith(APP_USE_CHAT_GPT_API_HOST!)
+  ) {
     try {
+      const body = init?.body || ''
       const uaInfo = await backgroundGetBrowserUAInfo()
       const senderUrl =
         formUrl ||
@@ -63,17 +71,14 @@ const maxAIClientFetch = async (
         convertHexToString(`582d4170702d456e76`),
         convertHexToString(`4d617841492d42726f777365722d457874656e73696f6e`),
       )
-      const keyA = 'ad6e9bb5-b486-4a36-a5b1-4a952701d0c4'
-      const keyB = 'eda11778-75b1-49be-8b06-206cd14d3a4c'
       // sm3(hmac_sha1(payload, secret_key)secret_key)
       const payloadHash = sm3(
         hmac_sha1(
-          typeof init?.body === 'string'
-            ? init?.body
-            : JSON.stringify(init?.body),
-          keyB,
-        ).toString() + keyB,
+          body === 'string' ? body : JSON.stringify(body),
+          APP_SM3_HASH_KEY,
+        ).toString() + APP_SM3_HASH_KEY,
       )
+      // X-Authorization
       headers.set(
         convertHexToString(`582d417574686f72697a6174696f6e`),
         aesJsonEncrypt(
@@ -87,7 +92,7 @@ const maxAIClientFetch = async (
             // P
             [convertHexToString(`50`)]: payloadHash,
           },
-          keyA,
+          APP_AES_ENCRYPTION_KEY,
         ),
       )
     } catch (e) {

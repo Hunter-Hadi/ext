@@ -141,7 +141,7 @@ type ClientFetchAPIResponse<T> = {
   message: string
   error: string
 }
-export const clientFetchAPI = async <T = any>(
+export const clientProxyFetchAPI = async <T = any>(
   url: string,
   options: any,
   abortTaskId?: string,

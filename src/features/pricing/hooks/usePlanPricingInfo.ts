@@ -4,8 +4,8 @@ import { useRecoilState } from 'recoil'
 
 import { PlanPricingInfoAtom } from '@/features/pricing/store'
 import { IPlanPricingInfo } from '@/features/pricing/type'
+import { aesJsonDecrypt } from '@/features/security'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { aesJsonDecrypt } from '@/utils/encryptionHelper'
 import { clientMaxAIGet } from '@/utils/request'
 
 const isBetterDiscount = (

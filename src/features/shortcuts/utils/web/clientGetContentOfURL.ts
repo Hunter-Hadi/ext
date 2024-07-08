@@ -2,7 +2,7 @@ import { Readability } from '@mozilla/readability'
 import { parseHTML } from 'linkedom'
 import orderBy from 'lodash-es/orderBy'
 
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
 interface Image {
@@ -89,7 +89,7 @@ const clientGetContentOfURL = async (
 
   try {
     const fetchHtml = async (targetUrl: string) => {
-      const response = await clientFetchAPI(
+      const response = await clientProxyFetchAPI(
         targetUrl,
         {
           method: 'GET',

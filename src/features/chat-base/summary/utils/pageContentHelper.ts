@@ -7,7 +7,7 @@ import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const inlineTagNames = new Set([
@@ -384,7 +384,7 @@ export const getGithubPageContent = async () => {
       'a[data-testid="raw-button"]',
     ) as HTMLAnchorElement
     if (rawLink) {
-      const response = await clientFetchAPI(rawLink.href, {
+      const response = await clientProxyFetchAPI(rawLink.href, {
         method: 'GET',
         parse: 'text',
       })
@@ -456,7 +456,7 @@ export const getGithubPageContent = async () => {
       const otherCommentsUrl = new URL(window.location.href)
       otherCommentsUrl.pathname =
         otherCommentsUrl.pathname + `/partials/load_more`
-      const result = await clientFetchAPI(otherCommentsUrl.href, {
+      const result = await clientProxyFetchAPI(otherCommentsUrl.href, {
         method: 'GET',
         parse: 'text',
       })

@@ -143,4 +143,8 @@ use-chat-gpt-ai-content-menu {
   outline: none;
 }
 
+/* citation */
+.maxai-reading-highlight {
+  background-color: rgba(2, 118, 255, 0.2) !important;
+}
 /*gmail end*/

@@ -226,7 +226,7 @@ async function updateManifest() {
 })();`
     fs.writeFileSync(`${buildDir}/${importPath}`, jsContent)
     if (
-      contentScriptPath === 'checkMaxAIStatus.js' &&
+      contentScriptPath.includes('checkMaxAIStatus.js') &&
       buildEnv.api_env === 'production' &&
       isProduction
     ) {

@@ -169,7 +169,7 @@ export default class PageCitation implements ICitationService {
     }
     if (this.caches.get(searchString)) {
       const result = this.caches.get(searchString)!
-      await this.selectMatches(result)
+      await this.highlightMatches(result)
       return { title: '', matches: result }
     }
     if (this.loading) {
@@ -242,7 +242,6 @@ export default class PageCitation implements ICitationService {
       this.caches.set(searchString, matches)
 
       if (matches.length) {
-        // await this.selectMatches(matches)
         await this.highlightMatches(matches)
       }
     } catch (e) {

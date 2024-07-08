@@ -144,6 +144,9 @@ use-chat-gpt-ai-content-menu {
 }
 
 /* citation */
+.maxai-reading-hidden {
+  visibility: hidden;
+}
 .maxai-reading-highlight {
   background-color: rgba(2, 118, 255, 0.2) !important;
 }

@@ -60,6 +60,8 @@ export const formatAIMessageContent = (
             }
             formatText =
               formatTimestampedSummaryAIMessageContent(message) || formatText //transcripts 数据 转为text
+            // 移除citation tag
+            formatText = formatText.replace(/\[T(\d+)\]\((.*?)\)/g, '')
             // 添加标题
             if (
               originalMessage.metadata?.sourceWebpage?.title &&

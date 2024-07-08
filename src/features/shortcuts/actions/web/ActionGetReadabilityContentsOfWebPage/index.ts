@@ -40,9 +40,17 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
       // if (result.length < 100 && typeof document !== 'undefined') {
       //   result = await getVisibilityPageContent()
       // }
-      const result =
-        (await getIframeOrSpecialHostPageContent()) || document.body.innerText
-      this.originalInnerText = document.body.innerText
+      let result = await getIframeOrSpecialHostPageContent()
+      if (!result) {
+        const header = document.querySelector('header')
+        const footer = document.querySelector('footer')
+        header?.classList.add('maxai-reading-hidden')
+        footer?.classList.add('maxai-reading-hidden')
+        result = document.body.innerText
+        this.originalInnerText = result
+        header?.classList.remove('maxai-reading-hidden')
+        footer?.classList.remove('maxai-reading-hidden')
+      }
       this.output = result
     } catch (e) {
       this.error = (e as any).toString()

@@ -1,5 +1,5 @@
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
@@ -40,7 +40,7 @@ export const stringConvertTxtUpload = async (
   text: string,
   filename?: string,
 ) => {
-  const accessToken = await getAccessToken()
+  const accessToken = await getMaxAIChromeExtensionAccessToken()
   // eslint-disable-next-line no-async-promise-executor
   return new Promise<string>(async (resolve) => {
     const docId = createDocId(text)

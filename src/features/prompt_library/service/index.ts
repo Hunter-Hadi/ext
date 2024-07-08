@@ -9,7 +9,7 @@ import {
   IPromptLibraryListParametersState,
 } from '@/features/prompt_library/types'
 import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
-import { get, post } from '@/utils/request'
+import { clientMaxAIGet, clientMaxAIPost } from '@/utils/request'
 
 export const PROMPT_LIBRARY_API = {
   GET_FAVOURITE_PROMPTS: '/prompt/get_favourite_prompts',
@@ -41,7 +41,7 @@ export default class PromptLibraryService {
    * 获取分类列表
    */
   static async getCategoryOptions(): Promise<IPromptCategoryApiData[]> {
-    const response = await get<IPromptCategoryApiData[]>(
+    const response = await clientMaxAIGet<IPromptCategoryApiData[]>(
       PROMPT_LIBRARY_API.PROMPT_CATEGORY,
     )
     if (response.status === 'OK' && response.data?.length) {
@@ -70,7 +70,7 @@ export default class PromptLibraryService {
    * @param params
    */
   static async getPublicPrompts(params: IPromptLibraryListParametersState) {
-    const response = await post(
+    const response = await clientMaxAIPost(
       PROMPT_LIBRARY_API.SEARCH_PROMPT,
       objectFilterEmpty({
         page: params.page,
@@ -90,7 +90,7 @@ export default class PromptLibraryService {
    * 获取Favorite prompt列表
    */
   static async getFavouritePrompts() {
-    const res = await post<IFavoritePromptListResponse>(
+    const res = await clientMaxAIPost<IFavoritePromptListResponse>(
       PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS,
       {},
     )
@@ -102,7 +102,7 @@ export default class PromptLibraryService {
    * @param id
    */
   static async addFavoritePrompt(id: string) {
-    const response = await post<{ id: string }>(
+    const response = await clientMaxAIPost<{ id: string }>(
       PROMPT_LIBRARY_API.ADD_FAVOURITE_PROMPT,
       {
         id,
@@ -116,7 +116,7 @@ export default class PromptLibraryService {
    * @param id
    */
   static async removeFavoritePrompt(id: string) {
-    const res = await post<{ id: string }>(
+    const res = await clientMaxAIPost<{ id: string }>(
       PROMPT_LIBRARY_API.REMOVE_FAVOURITE_PROMPT,
       {
         id,
@@ -129,7 +129,7 @@ export default class PromptLibraryService {
    * 获取自定义的prompt列表
    */
   static async getOwnPrompts() {
-    const res = await post<IOwnPromptListResponse>(
+    const res = await clientMaxAIPost<IOwnPromptListResponse>(
       PROMPT_LIBRARY_API.GET_OWN_PROMPTS,
       {},
     )
@@ -141,7 +141,7 @@ export default class PromptLibraryService {
    * @param id
    */
   static async getPublicPromptDetail(id: string) {
-    const result = await post<IPromptLibraryCardDetailData>(
+    const result = await clientMaxAIPost<IPromptLibraryCardDetailData>(
       PROMPT_LIBRARY_API.GET_PROMPT_DETAIL,
       {
         id,
@@ -155,7 +155,7 @@ export default class PromptLibraryService {
    * @param id
    */
   static async getPrivatePromptDetail(id: string) {
-    const result = await post<IPromptLibraryCardDetailData>(
+    const result = await clientMaxAIPost<IPromptLibraryCardDetailData>(
       PROMPT_LIBRARY_API.GET_PRIVATE_PROMPT_DETAIL,
       {
         id,
@@ -168,11 +168,14 @@ export default class PromptLibraryService {
    * @param promptData
    */
   static async addPrivatePrompt(promptData: IPromptLibraryCardDetailData) {
-    const result = await post<{ id: string }>(PROMPT_LIBRARY_API.ADD_PROMPT, {
-      ...promptData,
-      prompt_hint: '_',
-      id: '',
-    })
+    const result = await clientMaxAIPost<{ id: string }>(
+      PROMPT_LIBRARY_API.ADD_PROMPT,
+      {
+        ...promptData,
+        prompt_hint: '_',
+        id: '',
+      },
+    )
     return result.data
   }
   /**
@@ -180,7 +183,7 @@ export default class PromptLibraryService {
    * @param promptData
    */
   static async editPrivatePrompt(promptData: IPromptLibraryCardDetailData) {
-    const result = await post<{ id: string }>(
+    const result = await clientMaxAIPost<{ id: string }>(
       PROMPT_LIBRARY_API.EDIT_OWN_PROMPT,
       {
         ...promptData,
@@ -195,7 +198,7 @@ export default class PromptLibraryService {
    * @param id
    */
   static async deletePrivatePrompt(id: string) {
-    const result = await post<{ id: string }>(
+    const result = await clientMaxAIPost<{ id: string }>(
       PROMPT_LIBRARY_API.DELETE_PROMPT,
       {
         id,

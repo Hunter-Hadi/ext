@@ -6,7 +6,7 @@ import { PlanPricingInfoAtom } from '@/features/pricing/store'
 import { IPlanPricingInfo } from '@/features/pricing/type'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { aesJsonDecrypt } from '@/utils/encryptionHelper'
-import { get } from '@/utils/request'
+import { clientMaxAIGet } from '@/utils/request'
 
 const isBetterDiscount = (
   prev: IPlanPricingInfo | null,
@@ -58,7 +58,9 @@ const usePlanPricingInfo = () => {
       loading: true,
     }))
     try {
-      const result = await get<string>('/app/get_subscription_pricing')
+      const result = await clientMaxAIGet<string>(
+        '/app/get_subscription_pricing',
+      )
       if (result?.data) {
         const data = aesJsonDecrypt(result.data)
         Object.keys(data).forEach((key) => {

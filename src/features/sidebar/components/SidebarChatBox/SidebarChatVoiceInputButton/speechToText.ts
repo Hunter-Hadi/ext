@@ -1,6 +1,5 @@
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import { clientRequestHeaderGenerator } from '@/utils/clientRequestHeaderGenerator'
-import { getAccessToken } from '@/utils/request'
+import maxAIClientFetch from '@/utils/maxAIClientSafeFetch'
 
 const TRANSCRIPTION_TIMEOUT = 30 * 1000
 
@@ -19,24 +18,20 @@ export const maxAISpeechToText = async (
 }> => {
   try {
     // /gpt/speech_to_text
-    const accessToken = await getAccessToken()
     const formData = new FormData()
     // webm
     formData.append('audio_file', audioFile)
     const controller = new AbortController()
     const signal = controller.signal
-    const headers = await clientRequestHeaderGenerator({
-      Authorization: `Bearer ${accessToken}`,
-    })
+
     return new Promise((resolve) => {
       // 30s 超时
       const timer = setTimeout(() => {
         controller.abort()
       }, TRANSCRIPTION_TIMEOUT)
-      fetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/speech_to_text`, {
+      maxAIClientFetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/speech_to_text`, {
         signal,
         method: 'POST',
-        headers,
         body: formData,
       })
         .then(async (result) => {

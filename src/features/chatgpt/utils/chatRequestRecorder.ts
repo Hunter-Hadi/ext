@@ -3,15 +3,16 @@ import debounce from 'lodash-es/debounce'
 import omit from 'lodash-es/omit'
 import Browser from 'webextension-polyfill'
 
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { aesJsonEncrypt } from '@/utils/encryptionHelper'
 import { getFingerPrint } from '@/utils/fingerPrint'
+import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 
 interface IChatRequestCountRecordType {
   // 记录用户发送chat的次数情况
@@ -170,10 +171,10 @@ const fetchChatGPTErrorRecord = async () => {
     if (dayCount === 0 || totalCount === 0) {
       return
     }
-    const accessToken = await getAccessToken()
+    const accessToken = await getMaxAIChromeExtensionAccessToken()
     if (startRecordTime && info && accessToken) {
       const text = aesJsonEncrypt(info)
-      fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/log`, {
+      maxAIClientSafeFetch(`${APP_USE_CHAT_GPT_API_HOST}/user/log`, {
         method: 'POST',
         body: JSON.stringify({
           start_timestamp: dayjs(startRecordTime).unix(),
@@ -181,8 +182,6 @@ const fetchChatGPTErrorRecord = async () => {
           info_object: text,
         }),
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
           fp: `${fingerprint}`,
         },
       }).then(async (res) => {

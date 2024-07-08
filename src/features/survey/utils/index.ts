@@ -1,6 +1,6 @@
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { getBasicInfoForMixpanel } from '@/features/mixpanel/utils'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
@@ -53,7 +53,7 @@ export const submitFunnelSurvey = async (payload: {
     const { surveyKey, funnelSurveySceneType, surveyContent, clientUserId } =
       payload
 
-    const accessToken = await getAccessToken()
+    const accessToken = await getMaxAIChromeExtensionAccessToken()
     if (accessToken) {
       const fixedSurveyContent =
         transformRecordKeyNameToLowerCase(surveyContent)

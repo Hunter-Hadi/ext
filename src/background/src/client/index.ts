@@ -2,7 +2,6 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import BackgroundAbortFetch from '@/background/api/BackgroundAbortFetch'
-import { backgroundPost } from '@/background/api/backgroundFetch'
 import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
@@ -47,6 +46,7 @@ import WebsiteContextManager, {
 } from '@/features/websiteContext/background'
 import { convertBlobToBase64 } from '@/utils/dataHelper/fileHelper'
 import Log from '@/utils/Log'
+import { clientMaxAIPost } from '@/utils/request'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 const log = new Log('Background/Client')
@@ -435,7 +435,7 @@ export const ClientMessageInit = () => {
             if (userInfo?.role?.name) {
               data.role = userInfo.role.name
             }
-            await backgroundPost(`/user/cardlog`, data)
+            await clientMaxAIPost(`/user/cardlog`, data)
           }
           return {
             success: true,
@@ -492,10 +492,13 @@ export const ClientMessageInit = () => {
               url,
               {
                 ...parseOptions,
-                headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(
-                  requestId,
-                  parseOptions.headers,
-                ),
+                headers: {
+                  ...parseOptions.headers,
+                  ...backgroundRequestHeadersGenerator.getTaskIdHeaders(
+                    requestId,
+                    parseOptions.body,
+                  ),
+                },
               },
               abortTaskId,
             )

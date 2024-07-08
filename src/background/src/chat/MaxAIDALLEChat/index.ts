@@ -1,6 +1,6 @@
 import Browser from 'webextension-polyfill'
 
-import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
+import maxAIBackgroundSafeFetch from '@/background/api/maxAIBackgroundSafeFetch'
 import {
   maxAIRequestBodyAnalysisGenerator,
   maxAIRequestBodyPromptActionGenerator,
@@ -149,20 +149,14 @@ class MaxAIDALLEChat extends BaseChat {
           )
         }
         // 说明需要转换自然语言为prompt
-        const result = await fetch(
+        const result = await maxAIBackgroundSafeFetch(
           `${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`,
           {
             method: 'POST',
             signal,
-            headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(
-              taskId,
-              {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.token}`,
-              },
-            ),
             body: JSON.stringify(postBody),
           },
+          taskId,
         ).then((res) => res.json())
         if (result.status === 'OK') {
           onMessage?.({
@@ -207,20 +201,14 @@ class MaxAIDALLEChat extends BaseChat {
             options.meta.analytics,
           )
         }
-        const result = await fetch(
+        const result = await maxAIBackgroundSafeFetch(
           `${APP_USE_CHAT_GPT_API_HOST}/gpt/get_image_generate_response`,
           {
             method: 'POST',
             signal,
-            headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(
-              taskId,
-              {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.token}`,
-              },
-            ),
             body: JSON.stringify(postBody),
           },
+          taskId,
         ).then((res) => res.json())
         if (result.status === 'OK' && result.data?.length) {
           const resultJson = JSON.stringify(

@@ -1,4 +1,8 @@
-import merge from 'lodash-es/merge'
+import hmac_sha1 from 'crypto-js/hmac-sha1'
+import dayjs from 'dayjs'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { sm3 } from 'sm-crypto'
 import Browser, { Runtime } from 'webextension-polyfill'
 
 import { APP_VERSION } from '@/constants'
@@ -109,13 +113,13 @@ class BackgroundRequestHeadersGenerator {
       [convertHexToString(`582d4170702d456e76`)]: convertHexToString(
         `4d617841492d42726f777365722d457874656e73696f6e`,
       ),
-      // X-Authorization
-      [convertHexToString(`582d417574686f72697a6174696f6e`)]: aesJsonEncrypt({
-        // X-Client-Domain
-        [convertHexToString(`582d436c69656e742d446f6d61696e`)]: domain,
-        // X-Client-Path
-        [convertHexToString(`582d436c69656e742d50617468`)]: path,
-      }),
+      // 下方的字段在获取的时候都要合并到 // X-Authorization
+      // X-Client-Domain
+      [convertHexToString(`582d436c69656e742d446f6d61696e`)]: domain,
+      // X-Client-Path
+      [convertHexToString(`582d436c69656e742d50617468`)]: path,
+      // T
+      [convertHexToString(`54`)]: dayjs(new Date().getTime()).unix(),
     }
     this.taskIdHeadersMap.set(taskId, {
       headers: hexHeaders,
@@ -132,11 +136,49 @@ class BackgroundRequestHeadersGenerator {
       }
     }
   }
-  getTaskIdHeaders(taskId?: string, headers?: HeadersInit) {
-    return merge(
-      taskId ? this.taskIdHeadersMap.get(taskId)?.headers : undefined,
-      headers,
+  getTaskIdHeaders(taskId?: string, body?: BodyInit) {
+    const headers = new Headers(
+      taskId ? this.taskIdHeadersMap.get(taskId)?.headers : {},
     )
+    if (headers.has(convertHexToString(`54`))) {
+      const keyA = 'ad6e9bb5-b486-4a36-a5b1-4a952701d0c4'
+      const keyB = 'eda11778-75b1-49be-8b06-206cd14d3a4c'
+      // sm3(hmac_sha1(payload, secret_key)secret_key)
+      const payloadHash = sm3(
+        hmac_sha1(
+          typeof body === 'string' ? body : JSON.stringify(body),
+          keyB,
+        ).toString() + keyB,
+      )
+      headers.set(
+        convertHexToString(`582d417574686f72697a6174696f6e`),
+        aesJsonEncrypt(
+          {
+            // X-Client-Domain
+            [convertHexToString(`582d436c69656e742d446f6d61696e`)]: headers.get(
+              convertHexToString(`582d436c69656e742d446f6d61696e`),
+            ),
+            // X-Client-Path
+            [convertHexToString(`582d436c69656e742d50617468`)]: headers.get(
+              convertHexToString(`582d436c69656e742d50617468`),
+            ),
+            // T
+            [convertHexToString(`54`)]: headers.get(convertHexToString(`54`)),
+            // P
+            [convertHexToString(`50`)]: payloadHash,
+          },
+          keyA,
+        ),
+      )
+      // 移除不需要的header
+      // T
+      headers.delete(convertHexToString(`54`))
+      // X-Client-Domain
+      headers.delete(convertHexToString(`582d436c69656e742d446f6d61696e`))
+      // X-Client-Path
+      headers.delete(convertHexToString(`582d436c69656e742d50617468`))
+    }
+    return headers
   }
 }
 

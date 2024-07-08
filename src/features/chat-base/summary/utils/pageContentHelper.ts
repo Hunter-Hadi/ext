@@ -142,6 +142,16 @@ export const getVisibleTextNodes = (
   return textNodes
 }
 
+export const isNodeVisible = (node: Node) => {
+  return (
+    (!node.style || node.style.display != 'none') &&
+    !node.hasAttribute('hidden') &&
+    //check for "fallback-image" so that wikimedia math images are displayed
+    (!node.hasAttribute('aria-hidden') ||
+      node.getAttribute('aria-hidden') != 'true')
+  )
+}
+
 export const formattedTextContent = (node: Node & { hasEOL?: boolean }) => {
   const textContent = node.textContent?.replace(/\s+/g, ' ') || ''
   if (node.hasEOL) {
@@ -277,7 +287,10 @@ export const getIframePageContent = async () => {
     if (!result.success) {
       resolve('')
     }
-    let isResolve = false
+    const timer = setTimeout(() => {
+      resolve('')
+      Browser.runtime.onMessage.removeListener(listener)
+    }, 10000)
     const listener = (msg: any) => {
       if (
         msg.id === MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID &&
@@ -285,24 +298,12 @@ export const getIframePageContent = async () => {
           ('Client_ListenGetIframePageContentResponse' as IChromeExtensionClientListenEvent) &&
         msg.data.taskId === taskId
       ) {
-        if (isResolve) {
-          return
-        }
-        isResolve = true
         resolve(msg.data.pageContent)
         Browser.runtime.onMessage.removeListener(listener)
+        clearTimeout(timer)
       }
     }
     Browser.runtime.onMessage.addListener(listener)
-    // 10s超时
-    setTimeout(() => {
-      if (isResolve) {
-        return
-      }
-      isResolve = true
-      resolve('')
-      Browser.runtime.onMessage.removeListener(listener)
-    }, 10000)
   })
 }
 
@@ -312,15 +313,6 @@ export const getIframePageContent = async () => {
 export const getGoogleDocPageContent = async () => {
   return new Promise<string>((resolve) => {
     const eventId = uuidV4()
-    // const script = document.createElement('script')
-    // script.type = 'module'
-    // // 浏览器对于相同url的js文件只会执行一次，这里加个时间戳
-    // script.src = Browser.runtime.getURL(
-    //   `pages/googleDoc/index.js?time=${Date.now()}`,
-    // )
-    // script.setAttribute('data-event-id', eventId)
-    // script.id = 'MAXAI_GOOGLE_DOC_CONTENT_SCRIPT'
-    // document.body.appendChild(script)
     const timer = setTimeout(() => {
       resolve('')
       window.removeEventListener(`${eventId}-res`, listener)

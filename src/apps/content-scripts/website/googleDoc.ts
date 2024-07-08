@@ -46,6 +46,7 @@ const loadPageContent = () => {
   }
   return pageContent.trim() || ''
 }
+
 window.addEventListener('MAXAI_LOAD_GOOGLE_DOC_CONTENT', (event: any) => {
   const id = event.detail?.id
   if (!id) return

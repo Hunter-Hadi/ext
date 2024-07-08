@@ -1,3 +1,6 @@
+/**
+ * 主要用于MaxAI网站通信
+ */
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { mixpanelIdentify } from '@/features/mixpanel/utils'
 import { ISurveyKeyType } from '@/features/survey/types'

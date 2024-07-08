@@ -1,5 +1,4 @@
 import {
-  autoUpdate,
   FloatingPortal,
   Placement,
   useClick,
@@ -66,9 +65,9 @@ import {
 } from '@/features/video_popup/utils'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
+import ResizeAnchor from './ResizeAnchor'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
-const defaultMarkdownHeight = 320
 
 const FloatingContextMenu: FC<{
   root: any
@@ -171,6 +170,16 @@ const FloatingContextMenu: FC<{
     x: 0,
     y: 0,
   })
+
+  const floatingSizeOffsetRef = useRef({
+    dx: 0,
+    dy: 0,
+    minWidth: 0,
+    minHeight: 300,
+  })
+
+  floatingSizeOffsetRef.current.minWidth = currentWidth
+
   const { x, y, strategy, refs, context, update } = useFloating({
     open: floatingDropdownMenu.open,
     strategy: 'fixed',
@@ -248,8 +257,12 @@ const FloatingContextMenu: FC<{
       })
     },
     placement: safePlacement.inputPlacement,
-    middleware: getFloatingContextMenuMiddleware(referenceElementDragOffsetRef),
-    whileElementsMounted: autoUpdate,
+    middleware: getFloatingContextMenuMiddleware(
+      referenceElementDragOffsetRef,
+      referenceElementRef,
+      floatingSizeOffsetRef,
+    ),
+    // whileElementsMounted: autoUpdate,
   })
   const click = useClick(context)
   const dismiss = useDismiss(context, {
@@ -285,6 +298,10 @@ const FloatingContextMenu: FC<{
         prevX: 0,
         prevY: 0,
       }
+      floatingSizeOffsetRef.current.dx = 0
+      floatingSizeOffsetRef.current.dy = 0
+
+      update()
     }
   }, [floatingDropdownMenu.open])
 
@@ -381,49 +398,17 @@ const FloatingContextMenu: FC<{
 
   const markdownBodyRef = useRef<HTMLDivElement>(null)
 
-  // useEffect(() => {
-  //   if (refs.floating.current) {
-  //     refs.floating.current.style.width = `${currentWidth}px`
-  //   }
-  // }, [currentWidth])
+  useEffect(() => {
+    if (refs.floating.current) {
+      refs.floating.current.style.width = `${currentWidth}px`
+    }
+  }, [currentWidth])
 
-  // floating隐藏时恢复默认设置默认markdownBody最大高度
-  // useEffect(() => {
-  //   if (!markdownBodyRef.current) return
-
-  //   if (!floatingDropdownMenu.open) {
-  //     markdownBodyRef.current.style.height = 'auto'
-  //     markdownBodyRef.current.style.maxHeight = `${defaultMarkdownHeight}px`
-  //   }
-  // }, [floatingDropdownMenu.open])
-
-  /**
-   * markdownBody使用了100%继承父元素floating的宽度，所以这里修改宽度直接作用在floating上即可
-   * 当markdownBody可滚动且向下拉放大的时候修改markdownBody的高度和最高高度
-   */
   const handleResize = (dx: number, dy: number) => {
-    if (!refs.floating.current || !markdownBodyRef.current) return
+    floatingSizeOffsetRef.current.dx += dx
+    floatingSizeOffsetRef.current.dy += dy
 
-    const floating = refs.floating.current
-    const markdownBody = markdownBodyRef.current
-
-    const markdownOverflow =
-      markdownBody.clientHeight !== markdownBody.scrollHeight
-
-    if (markdownOverflow) {
-      const targetWidth = floating.clientWidth + dx
-      floating.style.width = `${targetWidth}px`
-    }
-
-    // 当markdown中出现滚动条或reference的大小超过了默认的400高度时候，可以调节大小
-    if (
-      (dy < 0 && markdownBody.clientHeight > defaultMarkdownHeight) ||
-      (dy > 0 && markdownOverflow)
-    ) {
-      const targetHeight = `${markdownBody.clientHeight + dy}px`
-      markdownBody.style.height = targetHeight
-      markdownBody.style.maxHeight = targetHeight
-    }
+    update()
   }
 
   return (
@@ -441,14 +426,12 @@ const FloatingContextMenu: FC<{
           opacity: floatingDropdownMenu.open ? 1 : 0,
           top: y ?? 0,
           left: x ?? 0,
-          minWidth: currentWidth,
-          maxWidth: '90vw',
           width: currentWidth,
         }}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
         {...getFloatingProps()}
       >
-        {/* <ResizeAnchor onResize={handleResize} /> */}
+        <ResizeAnchor onResize={handleResize} />
 
         <FloatingContextMenuList
           customOpen
@@ -517,10 +500,7 @@ const FloatingContextMenu: FC<{
                 </DevContent>
               </Box>
               <FloatingContextMenuTitleBar />
-              <WritingMessageBox
-                markdownMaxHeight={defaultMarkdownHeight}
-                markdownBodyRef={markdownBodyRef}
-              />
+              <WritingMessageBox markdownBodyRef={markdownBodyRef} />
               {floatingDropdownMenu.open && (
                 <DevContent>
                   <DevConsole />

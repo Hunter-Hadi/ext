@@ -175,6 +175,7 @@ export class ActionAskChatGPT extends Action {
       if (contextMenu?.id && this.question.meta.includeHistory === undefined) {
         this.question.meta.includeHistory = false
       }
+
       if (!contexts) {
         let questionPrompt = this.question.text
         if (

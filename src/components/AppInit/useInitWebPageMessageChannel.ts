@@ -160,16 +160,19 @@ const useInitWebPageMessageChannel = () => {
           // 网页perplexity
           case 'CLIENT_GET_CONTENT_OF_URL': {
             const { url, timeout, abortTaskId, needImage, needVideo } = data
-            const { html, status, videos } = await clientGetContentOfURL(
-              url,
-              timeout,
-              abortTaskId,
-              needImage,
-              needVideo,
-            )
+
+            const { html, status, videos, success } =
+              await clientGetContentOfURL(
+                url,
+                timeout,
+                abortTaskId,
+                needImage,
+                needVideo,
+              )
+
             responseDataToPage(taskId, event.origin, {
-              success: true,
-              message: 'ok',
+              success: success,
+              message: success ? 'success' : 'error',
               data: {
                 html,
                 status,

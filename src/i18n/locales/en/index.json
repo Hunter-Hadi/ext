@@ -1137,7 +1137,6 @@
     "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed advanced text queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
     "image_generate__secondary__content": "High-speed image AI queries: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Ensure at least 1,500 high-speed image queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
-    "promotion_plan__text": "Save 53% by upgrading to MaxAI Elite Yearly now. 👇",
     "upgrade_to_go_unlimited": "Upgrade to MaxAI Elite to go unlimited"
   },
   "survey": {

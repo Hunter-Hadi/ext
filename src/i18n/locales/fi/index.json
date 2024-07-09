@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkriptio aikakatkaistiin.\nYritä uudelleen.",
     "pricing__upgrade__popper_card__title": "Päivitä MaxAI Eliteen · Vuotuinen",
     "pricing__upgrade__popper_card__item1__title": "Rajaton tekoälyn käyttö",
-    "pricing__upgrade__popper_card__item2__title": "Avaa kaikki ominaisuudet",
-    "pricing__upgrade__popper_card__item3__title": "Säästä tunteja joka päivä",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Vain GPT-4o. Päivitä MaxAI Elite -suunnitelmaan avataksesi kaikki muut tekoälymallit."
+    "pricing__upgrade__popper_card__item2__title": "Avaa kaikki tekoälymallit",
+    "pricing__upgrade__popper_card__item3__title": "Avaa kaikki ominaisuudet",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Vain GPT-4o. Päivitä MaxAI Elite -suunnitelmaan avataksesi kaikki muut tekoälymallit.",
+    "pricing__upgrade__popper_card__item4__title": "Paras arvo rahallesi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Käytä vihjettä"
   },
   "quota_usage_card": {
-    "category__fast_text": "Nopea teksti",
-    "category__advanced_text": "Kehittynyt teksti",
-    "category__image_generate": "Kuva",
+    "category__fast_text": "Nopea tekoäly",
+    "category__advanced_text": "Älykäs tekoäly",
+    "category__image_generate": "Kuva tekoäly",
     "role_label": "Nykyinen suunnitelma: {{ROLE}}",
-    "queries": "Kyselyt",
+    "queries": "Jäljellä olevat kyselyt",
     "reset_on_date": "Nollaa päivämäärään {{DATE}}",
-    "advanced_text__secondary__content": "Nopeat edistyneet tekstikyselyt: {{QUERIES}}",
+    "advanced_text__secondary__content": "Korkeanopeuksiset älykkäät tekoälykyselyt: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa edistynyttä tekstikyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
-    "image_generate__secondary__content": "Nopeat kuvakyselyt: {{QUERIES}}",
+    "image_generate__secondary__content": "Korkeanopeuksiset kuvatekoälykyselyt: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa kuvakyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
-    "promotion_plan__text": "Säästä 53% päivittämällä MaxAI Eliteen vuosittain nyt. 👇"
+    "upgrade_to_go_unlimited": "Päivitä MaxAI Eliteen ja mene rajattomasti"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Napsauta pyytääksesi tekoälyä parantamaan, oikolukemaan, kääntämään, tiivistämään tai selittämään valittu teksti.",

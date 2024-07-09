@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija beidzās laika gaitā.\nLūdzu, mēģiniet vēlreiz.",
     "pricing__upgrade__popper_card__title": "Jaunināt uz MaxAI Elite · Katru gadu",
     "pricing__upgrade__popper_card__item1__title": "Neierobežota AI izmantošana",
-    "pricing__upgrade__popper_card__item2__title": "Atbloķēt visas funkcijas",
-    "pricing__upgrade__popper_card__item3__title": "Ietaupiet stundas katru dienu",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Tikai GPT-4o. Lai atbloķētu visus citus AI modeļus, jauniniet uz MaxAI Elite plānu."
+    "pricing__upgrade__popper_card__item2__title": "Atbloķēt visas AI modeļus",
+    "pricing__upgrade__popper_card__item3__title": "Atbloķēt visas funkcijas",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Tikai GPT-4o. Lai atbloķētu visus citus AI modeļus, jauniniet uz MaxAI Elite plānu.",
+    "pricing__upgrade__popper_card__item4__title": "Labākā vērtība jūsu naudai"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Izmantojiet norādi"
   },
   "quota_usage_card": {
-    "category__fast_text": "Ātrs teksts",
-    "category__advanced_text": "Uzlabots teksts",
-    "category__image_generate": "Attēls",
+    "category__fast_text": "Ātrais AI",
+    "category__advanced_text": "Viedais AI",
+    "category__image_generate": "Attēla AI",
     "role_label": "Pašreizējais plāns: {{ROLE}}",
-    "queries": "Pieprasījumi",
+    "queries": "Atlikušie vaicājumi",
     "reset_on_date": "Atiestatīt {{DATE}}",
-    "advanced_text__secondary__content": "Augsta ātruma papildināti teksta vaicājumi: {{QUERIES}}",
+    "advanced_text__secondary__content": "Augstās ātruma viedie AI vaicājumi: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma papildinātus teksta vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
-    "image_generate__secondary__content": "Augsta ātruma attēlu vaicājumi: {{QUERIES}}",
+    "image_generate__secondary__content": "Augstās ātruma attēla AI vaicājumi: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma attēlu vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
-    "promotion_plan__text": "Ietaupiet 53%, ja tagad jaunināsiet uz MaxAI Elite Katru gadu. 👇"
+    "upgrade_to_go_unlimited": "Uzlabojiet uz MaxAI Elite, lai iet neierobežoti"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Noklikšķiniet, lai lūgtu AI uzlabot, pārbaudīt pareizību, tulkojumu, apkopot vai izskaidrot izvēlēto tekstu.",

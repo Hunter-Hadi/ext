@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "زمان تبدیل صوت به متن به پایان رسید.\nلطفاً دوباره امتحان کنید.",
     "pricing__upgrade__popper_card__title": "ارتقا به MaxAI Elite · سالانه",
     "pricing__upgrade__popper_card__item1__title": "استفاده نامحدود از هوش مصنوعی",
-    "pricing__upgrade__popper_card__item2__title": "باز کردن تمام ویژگی‌ها",
-    "pricing__upgrade__popper_card__item3__title": "صرفه جویی در ساعت‌ها هر روز",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. برای باز کردن تمام مدل‌های هوش مصنوعی دیگر، به طرح MaxAI Elite ارتقا دهید."
+    "pricing__upgrade__popper_card__item2__title": "باز کردن تمام مدل‌های هوش مصنوعی",
+    "pricing__upgrade__popper_card__item3__title": "باز کردن تمام ویژگی‌ها",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. برای باز کردن تمام مدل‌های هوش مصنوعی دیگر، به طرح MaxAI Elite ارتقا دهید.",
+    "pricing__upgrade__popper_card__item4__title": "بهترین ارزش برای پول شما"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "استفاده از پیشنهاد"
   },
   "quota_usage_card": {
-    "category__fast_text": "متن سریع",
-    "category__advanced_text": "متن پیشرفته",
-    "category__image_generate": "تصویر",
+    "category__fast_text": "هوش مصنوعی سریع",
+    "category__advanced_text": "هوش مصنوعی هوشمند",
+    "category__image_generate": "هوش مصنوعی تصویر",
     "role_label": "طرح فعلی: {{ROLE}}",
-    "queries": "پرس و جوها",
+    "queries": "مابقی پرس‌وجوها",
     "reset_on_date": "بازنشانی در {{DATE}}",
-    "advanced_text__secondary__content": "کوئری‌های پیشرفته متنی با سرعت بالا: {{QUERIES}}",
+    "advanced_text__secondary__content": "پرس‌وجوهای هوش مصنوعی هوشمند با سرعت بالا: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "حداقل 1,500 کوئری پیشرفته متنی با سرعت بالا را در هر ماه تضمین کنید. پس از رسیدن به حد، سرعت و کیفیت مدل ممکن است کاهش یابد.",
-    "image_generate__secondary__content": "کوئری‌های تصویری با سرعت بالا: {{QUERIES}}",
+    "image_generate__secondary__content": "پرس‌وجوهای هوش مصنوعی تصویر با سرعت بالا: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "حداقل 1,500 کوئری تصویری با سرعت بالا را در هر ماه تضمین کنید. پس از رسیدن به حد، سرعت و کیفیت مدل ممکن است کاهش یابد.",
-    "promotion_plan__text": "با ارتقا به MaxAI Elite سالانه، 53% صرفه جویی کنید. 👇"
+    "upgrade_to_go_unlimited": "ارتقا به MaxAI Elite برای رفتن به حالت نامحدود"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "برای درخواست به هوش مصنوعی برای بهبود، تصحیح، ترجمه، خلاصه یا توضیح متن انتخاب شده کلیک کنید.",

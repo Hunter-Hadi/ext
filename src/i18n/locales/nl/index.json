@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transcriptie is verlopen.\nProbeer het opnieuw.",
     "pricing__upgrade__popper_card__title": "Upgrade naar MaxAI Elite · Jaarlijks",
     "pricing__upgrade__popper_card__item1__title": "Onbeperkt gebruik van AI",
-    "pricing__upgrade__popper_card__item2__title": "Alle functies ontgrendelen",
-    "pricing__upgrade__popper_card__item3__title": "Bespaar elke dag uren",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Alleen GPT-4o. Upgrade naar het MaxAI Elite plan om alle andere AI-modellen te ontgrendelen."
+    "pricing__upgrade__popper_card__item2__title": "Ontgrendel alle AI-modellen",
+    "pricing__upgrade__popper_card__item3__title": "Ontgrendel alle functies",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Alleen GPT-4o. Upgrade naar het MaxAI Elite plan om alle andere AI-modellen te ontgrendelen.",
+    "pricing__upgrade__popper_card__item4__title": "Beste waarde voor uw geld"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Gebruik prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Snelle tekst",
-    "category__advanced_text": "Geavanceerde tekst",
-    "category__image_generate": "Afbeelding",
+    "category__fast_text": "Snelle AI",
+    "category__advanced_text": "Slimme AI",
+    "category__image_generate": "Afbeelding AI",
     "role_label": "Huidig plan: {{ROLE}}",
-    "queries": "Vragen",
+    "queries": "Overgebleven vragen",
     "reset_on_date": "Reset op {{DATE}}",
-    "advanced_text__secondary__content": "Hoge snelheid geavanceerde tekstvragen: {{QUERIES}}",
+    "advanced_text__secondary__content": "Hoge-snelheid slimme AI-vragen: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid geavanceerde tekstvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
-    "image_generate__secondary__content": "Hoge snelheid afbeeldingsvragen: {{QUERIES}}",
+    "image_generate__secondary__content": "Hoge-snelheid afbeelding AI-vragen: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid afbeeldingsvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
-    "promotion_plan__text": "Bespaar nu 53% door te upgraden naar MaxAI Elite Jaarlijks. 👇"
+    "upgrade_to_go_unlimited": "Upgrade naar MaxAI Elite om onbeperkt te gaan"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik om AI te vragen de geselecteerde tekst te verbeteren, controleren, vertalen, samenvatten of uit te leggen.",

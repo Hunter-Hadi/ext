@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "A tranzkripció időtúllépése.\nKérlek, próbáld újra.",
     "pricing__upgrade__popper_card__title": "Frissítés MaxAI Elite-re · Éves",
     "pricing__upgrade__popper_card__item1__title": "Korlátlan AI használat",
-    "pricing__upgrade__popper_card__item2__title": "Minden funkció feloldása",
-    "pricing__upgrade__popper_card__item3__title": "Órákat spórolhatsz minden nap",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Csak GPT-4o. Az összes többi AI modell feloldásához frissítse a MaxAI Elite tervre."
+    "pricing__upgrade__popper_card__item2__title": "Minden AI modell feloldása",
+    "pricing__upgrade__popper_card__item3__title": "Minden funkció feloldása",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Csak GPT-4o. Az összes többi AI modell feloldásához frissítse a MaxAI Elite tervre.",
+    "pricing__upgrade__popper_card__item4__title": "Legjobb érték pénzéért"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Használjon promptot"
   },
   "quota_usage_card": {
-    "category__fast_text": "Gyors szöveg",
-    "category__advanced_text": "Előrehaladott szöveg",
-    "category__image_generate": "Kép",
+    "category__fast_text": "Gyors AI",
+    "category__advanced_text": "Okos AI",
+    "category__image_generate": "Kép AI",
     "role_label": "Jelenlegi terv: {{ROLE}}",
-    "queries": "Lekérdezések",
+    "queries": "Hátralévő lekérdezések",
     "reset_on_date": "Visszaállítás ekkor: {{DATE}}",
-    "advanced_text__secondary__content": "Magas sebességű előrehaladott szöveg lekérdezések: {{QUERIES}}",
+    "advanced_text__secondary__content": "Magas sebességű okos AI lekérdezések: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű előrehaladott szöveg lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
-    "image_generate__secondary__content": "Magas sebességű kép lekérdezések: {{QUERIES}}",
+    "image_generate__secondary__content": "Magas sebességű kép AI lekérdezések: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű kép lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
-    "promotion_plan__text": "53%-ot spórolhatsz, ha most frissítesz MaxAI Elite Évesre. 👇"
+    "upgrade_to_go_unlimited": "Frissítés a MaxAI Elite-re, hogy korlátlan legyen"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kattintson az AI kéréséhez az előre, lektorálásra, fordításra, összefoglalásra vagy kiválasztott szöveg magyarázatára.",

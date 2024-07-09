@@ -6,6 +6,7 @@ import { sm3 } from 'sm-crypto'
 import Browser from 'webextension-polyfill'
 
 import { convertHexToString } from '@/background/api/backgroundRequestHeadersGenerator'
+import { getMaxAIChromeExtensionInstalledDeviceId } from '@/background/utils/getMaxAIChromeExtensionInstalledDeviceId'
 import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import {
@@ -91,6 +92,9 @@ const maxAIClientFetch = async (
             [convertHexToString(`54`)]: dayjs(new Date().getTime()).unix(),
             // P
             [convertHexToString(`50`)]: payloadHash,
+            // D
+            [convertHexToString(`44`)]:
+              getMaxAIChromeExtensionInstalledDeviceId(),
           },
           APP_AES_ENCRYPTION_KEY,
         ),

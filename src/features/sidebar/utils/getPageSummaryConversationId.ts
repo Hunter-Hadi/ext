@@ -1,7 +1,7 @@
 /**
  * @deprecated summary相关功能已移动到chat-base/summary下，防止冲突合并release后上线前删除
  */
-import { MaxAIExtensionIdManager } from '@/background/utils/extensionId'
+import { MaxAIInstalledDeviceIdManager } from '@/background/utils/getMaxAIChromeExtensionInstalledDeviceId'
 import { md5TextEncrypt } from '@/features/security'
 
 const PAGE_SUMMARY_CONVERSATION_ID_MAP: {
@@ -13,7 +13,7 @@ export const getPageSummaryConversationId = (url?: string) => {
     url || (typeof window !== 'undefined' ? window.location.href : '')
   if (!PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]) {
     PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(
-      pageUrl + MaxAIExtensionIdManager.MaxAIExtensionId,
+      pageUrl + MaxAIInstalledDeviceIdManager.MaxAIExtensionId,
     )
   }
   return PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]

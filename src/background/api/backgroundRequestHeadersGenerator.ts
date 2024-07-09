@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import { sm3 } from 'sm-crypto'
 import Browser, { Runtime } from 'webextension-polyfill'
 
+import { getMaxAIChromeExtensionInstalledDeviceId } from '@/background/utils/getMaxAIChromeExtensionInstalledDeviceId'
 import { APP_VERSION } from '@/constants'
 import {
   aesJsonEncrypt,
@@ -124,6 +125,8 @@ class BackgroundRequestHeadersGenerator {
       [convertHexToString(`582d436c69656e742d50617468`)]: path,
       // T
       [convertHexToString(`54`)]: dayjs(new Date().getTime()).unix(),
+      // D
+      [convertHexToString(`44`)]: getMaxAIChromeExtensionInstalledDeviceId(),
     }
     this.taskIdHeadersMap.set(taskId, {
       headers: hexHeaders,
@@ -170,17 +173,21 @@ class BackgroundRequestHeadersGenerator {
             [convertHexToString(`54`)]: headers.get(convertHexToString(`54`)),
             // P
             [convertHexToString(`50`)]: payloadHash,
+            // D
+            [convertHexToString(`44`)]: headers.get(convertHexToString(`44`)),
           },
           APP_AES_ENCRYPTION_KEY,
         ),
       )
       // 移除不需要的header
-      // T
-      headers.delete(convertHexToString(`54`))
       // X-Client-Domain
       headers.delete(convertHexToString(`582d436c69656e742d446f6d61696e`))
       // X-Client-Path
       headers.delete(convertHexToString(`582d436c69656e742d50617468`))
+      // T
+      headers.delete(convertHexToString(`54`))
+      // D
+      headers.delete(convertHexToString(`44`))
     }
     // to object
     const headersObject: Record<string, string> = {}

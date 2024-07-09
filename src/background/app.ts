@@ -29,7 +29,7 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
-import { getMaxAIExtensionId } from '@/background/utils/extensionId'
+import { getMaxAIChromeExtensionInstalledDeviceId } from '@/background/utils/getMaxAIChromeExtensionInstalledDeviceId'
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
@@ -96,7 +96,7 @@ export const startChromeExtensionBackground = () => {
 const initChromeExtensionInstalled = () => {
   // 插件安装初始化
   Browser.runtime.onInstalled.addListener(async (object) => {
-    await getMaxAIExtensionId() // 生成插件ID
+    await getMaxAIChromeExtensionInstalledDeviceId() // 生成插件ID
     if (object.reason === (Browser as any).runtime.OnInstalledReason.INSTALL) {
       // 重置插件引导数据
       await resetChromeExtensionOnBoardingData()

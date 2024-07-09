@@ -9,13 +9,11 @@ import React, { useState } from 'react'
 
 import { ICrawlingKnowledge } from '@/features/shortcuts/utils/searchEngineCrawling'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const KnowledgePanelContent = React.memo(
   ({ knowledgeSources }: { knowledgeSources: ICrawlingKnowledge }) => {
     const { isDarkMode } = useCustomTheme()
     const [expanded, setExpanded] = useState(false)
-
     const handleToggle = () => {
       setExpanded(!expanded)
     }
@@ -35,11 +33,13 @@ const KnowledgePanelContent = React.memo(
         <Box display='flex' alignItems='center' mb={2}>
           <img
             src={
-              knowledgeSources.titleImgSrc?.includes('File')
-                ? getChromeExtensionAssetsURL(
-                    '/images/common/knowledgeImg-empty.png',
-                  )
-                : knowledgeSources.titleImgSrc
+              // 用这个链接防止爬取的图片失效
+              `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://${knowledgeSources.title}.com&size=64`
+              // knowledgeSources.titleImgSrc?.includes('File')
+              //   ? getChromeExtensionAssetsURL(
+              //       '/images/common/knowledgeImg-empty.png',
+              //     )
+              //   : knowledgeSources.titleImgSrc
             }
             alt='Logo'
             style={{

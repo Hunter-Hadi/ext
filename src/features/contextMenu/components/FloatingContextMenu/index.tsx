@@ -175,7 +175,7 @@ const FloatingContextMenu: FC<{
     dx: 0,
     dy: 0,
     minWidth: 0,
-    minHeight: 300,
+    defaultMaxHeight: 400,
   })
 
   floatingSizeOffsetRef.current.minWidth = currentWidth

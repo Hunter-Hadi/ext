@@ -1,10 +1,13 @@
 import {
+  Elements,
   flip,
+  FlipOptions,
   Middleware,
   offset,
+  Placement,
   shift,
-  size,
 } from '@floating-ui/react'
+import { get } from 'lodash-es'
 import cloneDeep from 'lodash-es/cloneDeep'
 import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
@@ -489,44 +492,123 @@ export const findFirstTierMenuHeight = (menuList: IContextMenuItem[] = []) => {
 //   }
 // }
 // const floatingUIMiddlewareCache = new FloatingUIMiddlewareCache()
+//
+type IDragOffsetRef = MutableRefObject<{
+  x: number
+  y: number
+  prevX: number
+  prevY: number
+}>
+
+type IFloatingSizeOffsetRef = MutableRefObject<{
+  dx: number
+  dy: number
+  minWidth: number
+  /**
+   * 默认不resize的最大大高度
+   */
+  defaultMaxHeight: number
+}>
+
+/**
+ * 模拟floating ui的size中间件，
+ * 因为此处使用计算方法和floating ui的计算方法不太一致，
+ * 而且在sizeMiddleware之前还会有flip的存在需要重新计算位置，
+ * 遂重写
+ * WARNING: 只处理了bottom-start, top-start, right和left四种情况
+ */
+const sizeMiddleware = ({
+  apply,
+}: {
+  apply: (args: {
+    availableWidth: number
+    availableHeight: number
+    elements: Elements
+  }) => void
+}): Middleware => {
+  return {
+    name: 'sizeMiddleware',
+    fn(state) {
+      const { x, y, elements, placement } = state
+      let availableWidth = 0
+      let availableHeight = 0
+      if (placement.startsWith('bottom') || placement.startsWith('right')) {
+        availableWidth = document.documentElement.clientWidth - x
+        availableHeight = document.documentElement.clientHeight - y
+      } else if (placement.startsWith('top')) {
+        availableWidth = document.documentElement.clientWidth - x
+        availableHeight = y
+      } else {
+        // left
+        availableWidth = x
+        availableHeight = document.documentElement.clientHeight - y
+      }
+
+      // -20 是因为有使用offset中间件的存在
+      apply({
+        availableHeight: availableHeight - 20,
+        availableWidth: availableWidth - 20,
+        elements,
+      })
+
+      return {}
+    },
+  }
+}
+
+/**
+ * 模拟了floating ui的flip中间件，但在产生拖动之后不变化位置placement
+ */
+function filpMiddleware(
+  options: {
+    dragOffsetRef: IDragOffsetRef
+    defaultPlacement?: Placement
+  } & FlipOptions,
+): Middleware {
+  let lastPlacement = options.defaultPlacement ?? 'bottom-start'
+  const dragOffsetRef = options.dragOffsetRef
+  const middleware = flip(options)
+
+  return {
+    name: 'myFilp',
+    async fn(state) {
+      if (
+        dragOffsetRef.current.prevX === 0 &&
+        dragOffsetRef.current.prevY === 0 &&
+        dragOffsetRef.current.x === 0 &&
+        dragOffsetRef.current.y === 0
+      ) {
+        const result = await middleware.fn(state)
+
+        // 记录最后一次位置
+        lastPlacement = get(result, 'reset.placement', lastPlacement)
+
+        return result
+      }
+      return {
+        reset: {
+          placement: lastPlacement,
+        },
+      }
+    },
+  }
+}
 
 /**
  * @description: floating ui的middleware
  */
 export const getFloatingContextMenuMiddleware = (
-  dragOffsetRef: MutableRefObject<{
-    x: number
-    y: number
-    prevX: number
-    prevY: number
-  }>,
+  dragOffsetRef: IDragOffsetRef,
   referenceElementRef: RefObject<HTMLDivElement>,
-  floatingSizeOffsetRef: MutableRefObject<{
-    dx: number
-    dy: number
-    minWidth: number
-    minHeight: number
-  }>,
+  floatingSizeOffsetRef: IFloatingSizeOffsetRef,
 ): Middleware[] => {
   const dragMiddleware: Middleware = {
     name: 'dragMiddleware',
     fn: (state) => {
-      // const minX = state.middlewareData.offset?.x || 8
-      // const minY = state.middlewareData.offset?.y || 8
-      // const maxX =
-      //   document.documentElement.clientWidth -
-      //   state.elements.floating.offsetWidth -
-      //   minX
-      // const maxY =
-      //   document.documentElement.clientHeight -
-      //   state.elements.floating.offsetHeight -
-      //   minY
       const dragX = dragOffsetRef.current.x + dragOffsetRef.current.prevX
       const dragY = dragOffsetRef.current.y + dragOffsetRef.current.prevY
       const currentX = state.x + dragX
       const currentY = state.y + dragY
-      // const x = Math.min(Math.max(currentX, minX), maxX)
-      // const y = Math.min(Math.max(currentY, minY), maxY)
       return {
         x: currentX,
         y: currentY,
@@ -534,47 +616,52 @@ export const getFloatingContextMenuMiddleware = (
           rects: true,
         },
       }
-      // return {
-      //   x,
-      //   y,
-      //   reset: {
-      //     rects: true,
-      //   },
-      // }
     },
   }
 
+  let incrementHeight = 0
+
   return [
-    dragMiddleware,
-    flip({
+    filpMiddleware({
+      dragOffsetRef,
       fallbackPlacements: ['top-start', 'right', 'left'],
+      defaultPlacement: 'bottom-start',
     }),
+    dragMiddleware,
     shift({
       crossAxis: true,
       padding: 16,
     }),
     offset(8),
-    size({
-      apply({ availableWidth, availableHeight, elements }) {
+
+    sizeMiddleware({
+      apply: ({ availableWidth, availableHeight, elements }) => {
         if (!referenceElementRef.current) return
 
-        const dragX = dragOffsetRef.current.x + dragOffsetRef.current.prevX
-        const dragY = dragOffsetRef.current.y + dragOffsetRef.current.prevY
         const { dx, dy } = floatingSizeOffsetRef.current
+
+        // 当未调整大小时，使用默认增长大小
+        if (dx === 0 && dy === 0) {
+          elements.floating.style.maxHeight = 'auto'
+          referenceElementRef.current.style.maxHeight = 'auto'
+          elements.floating.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
+          referenceElementRef.current.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
+          return
+        }
+
         const minWidth = Math.min(
           floatingSizeOffsetRef.current.minWidth,
           availableWidth,
         )
         const minHeight = Math.min(
-          floatingSizeOffsetRef.current.minHeight,
+          incrementHeight,
+          // floatingSizeOffsetRef.current.minHeight,
           availableHeight,
         )
 
-        if (!referenceElementRef.current) return
-
         let width = minWidth
         if (dx > 0) {
-          if (dx + minWidth <= availableWidth - dragX) {
+          if (dx + minWidth <= availableWidth) {
             width = dx + minWidth
           } else {
             width = availableWidth
@@ -584,21 +671,43 @@ export const getFloatingContextMenuMiddleware = (
           floatingSizeOffsetRef.current.dx = 0
         }
 
+        // 这里处理高度的方法和宽度的稍显不同，因为高度会一开始就限制一个minWidth，
+        // 而在刚开始回答时高度不会有minWidth，因为content的内容需要动态增长到maxHeight
         let height = minHeight
+        const currentHeight = elements.floating.clientHeight
 
-        if (dy > 0) {
-          if (dy + minHeight <= availableHeight - dragY) {
-            height = dy + minHeight
-          } else {
-            height = availableHeight - dragY
-            floatingSizeOffsetRef.current.dy = height - minHeight
+        if (currentHeight <= floatingSizeOffsetRef.current.defaultMaxHeight) {
+          // 当未增长到maxHeight的情况下，只需要处理变大的
+          incrementHeight = currentHeight
+          if (dy > 0) {
+            height = incrementHeight + dy
+          }
+
+          floatingSizeOffsetRef.current.dy = 0
+
+          if (height > availableWidth) {
+            height = availableHeight
           }
         } else {
-          floatingSizeOffsetRef.current.dy = 0
+          // 当增长到maxHeight的时候，按正常处理
+          const baseHeight = floatingSizeOffsetRef.current.defaultMaxHeight
+
+          if (dy > 0) {
+            height = baseHeight + dy
+          } else {
+            floatingSizeOffsetRef.current.dy = 0
+          }
+
+          if (height > availableHeight) {
+            height = availableHeight
+            floatingSizeOffsetRef.current.dy = availableHeight - baseHeight
+          }
         }
 
         referenceElementRef.current.style.height = `${height}px`
+        referenceElementRef.current.style.maxHeight = `${height}px`
         elements.floating.style.height = `${height}px`
+        elements.floating.style.maxHeight = `${height}px`
 
         elements.floating.style.width = `${width}px`
       },

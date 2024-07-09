@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-const isProduction = String(process.env.NODE_ENV) === 'production'
+const isProduction = String(process.env.NODE_ENV) === 'production' || true
 
 const DevContent: FC<{
   children?: React.ReactNode

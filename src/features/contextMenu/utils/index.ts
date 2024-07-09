@@ -1,9 +1,18 @@
-import { flip, Middleware, offset, shift, size } from '@floating-ui/react'
+import {
+  Elements,
+  flip,
+  FlipOptions,
+  Middleware,
+  offset,
+  Placement,
+  shift,
+} from '@floating-ui/react'
+import { get } from 'lodash-es'
 import cloneDeep from 'lodash-es/cloneDeep'
 import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
 import uniqBy from 'lodash-es/uniqBy'
-import { MutableRefObject } from 'react'
+import { MutableRefObject, RefObject } from 'react'
 
 import {
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
@@ -483,180 +492,256 @@ export const findFirstTierMenuHeight = (menuList: IContextMenuItem[] = []) => {
 //   }
 // }
 // const floatingUIMiddlewareCache = new FloatingUIMiddlewareCache()
+//
+type IDragOffsetRef = MutableRefObject<{
+  x: number
+  y: number
+  dragged: boolean
+}>
+
+type IFloatingSizeOffsetRef = MutableRefObject<{
+  dx: number
+  dy: number
+  minWidth: number
+  defaultMinHeight: number
+  /**
+   * 默认不resize的最大大高度
+   */
+  defaultMaxHeight: number
+  resized: boolean
+}>
+
+/**
+ * 模拟floating ui的size中间件，
+ * 因为此处使用计算方法和floating ui的计算方法不太一致，
+ * 而且在sizeMiddleware之前还会有flip的存在需要重新计算位置，
+ * 遂重写
+ * WARNING: 只处理了bottom-start, top-start, right和left四种情况
+ */
+const sizeMiddleware = ({
+  dragOffsetRef,
+  apply,
+}: {
+  dragOffsetRef: IDragOffsetRef
+  apply: (args: {
+    availableWidth: number
+    availableHeight: number
+    elements: Elements
+  }) => void
+}): Middleware => {
+  return {
+    name: 'sizeMiddleware',
+    fn(state) {
+      const { x, y, elements, placement } = state
+      let availableWidth = 0
+      let availableHeight = 0
+      const rect = elements.reference.getBoundingClientRect()
+      if (placement.startsWith('bottom') || placement.startsWith('right')) {
+        availableWidth = document.documentElement.clientWidth - x
+        availableHeight = document.documentElement.clientHeight - y
+      } else if (placement.startsWith('top')) {
+        const dragY = dragOffsetRef.current.y
+        availableWidth = document.documentElement.clientWidth - x
+        // availableHeight = rect.top
+        availableHeight = rect.top + dragY
+      } else {
+        const dragX = dragOffsetRef.current.x
+        availableWidth = rect.left + dragX
+        availableHeight = document.documentElement.clientHeight - y
+      }
+
+      // -8 是因为有使用offset中间件的存在
+      apply({
+        availableHeight: availableHeight - 8,
+        availableWidth: availableWidth - 8,
+        elements,
+      })
+
+      return {}
+    },
+  }
+}
+
+/**
+ * 模拟了floating ui的flip中间件，但在产生拖动之后不变化位置placement
+ */
+function filpMiddleware(
+  options: {
+    dragOffsetRef: IDragOffsetRef
+    defaultPlacement?: Placement
+  } & FlipOptions,
+): Middleware {
+  let lastPlacement = options.defaultPlacement ?? 'bottom-start'
+  const dragOffsetRef = options.dragOffsetRef
+  const middleware = flip(options)
+
+  return {
+    name: 'flipMiddleware',
+    async fn(state) {
+      if (!dragOffsetRef.current.dragged) {
+        const result = await middleware.fn(state)
+
+        // 记录最后一次位置
+        lastPlacement = get(result, 'reset.placement', lastPlacement)
+
+        return result
+      }
+      return {
+        reset: {
+          placement: lastPlacement,
+        },
+      }
+    },
+  }
+}
+
+/**
+ * 拖拽位置
+ */
+function dragMiddleware({
+  dragOffsetRef,
+}: {
+  dragOffsetRef: IDragOffsetRef
+}): Middleware {
+  return {
+    name: 'dragMiddleware',
+    fn: (state) => {
+      let currentX = state.x + dragOffsetRef.current.x
+      let currentY = state.y + dragOffsetRef.current.y
+
+      // 这里是为了去除padding
+      const minX = 8
+      const minY = 8
+      const maxX =
+        document.documentElement.clientWidth -
+        state.elements.floating.clientWidth -
+        minX
+      const maxY =
+        document.documentElement.clientHeight -
+        state.elements.floating.clientHeight -
+        minY
+
+      if (currentX > maxX) {
+        currentX = maxX
+        dragOffsetRef.current.x = currentX - state.x
+      } else if (currentX < minX) {
+        currentX = minX
+        dragOffsetRef.current.x = currentX - state.x
+      }
+
+      if (currentY > maxY) {
+        currentY = maxY
+        dragOffsetRef.current.y = currentY - state.y
+      } else if (currentY < minY) {
+        currentY = minY
+        dragOffsetRef.current.y = currentY - state.y
+      }
+
+      return {
+        x: currentX,
+        y: currentY,
+        // reset: {
+        //   rects: true,
+        // },
+      }
+    },
+  }
+}
 
 /**
  * @description: floating ui的middleware
  */
 export const getFloatingContextMenuMiddleware = (
-  referenceElementDragOffsetRef: MutableRefObject<{
-    x: number
-    y: number
-    prevX: number
-    prevY: number
-  }>,
-) => {
-  const customMiddleware = (): Middleware => {
-    return {
-      name: 'customMiddleware',
-      fn: (state) => {
-        const offsetX = state.middlewareData.offset?.x || 8
-        const offsetY = state.middlewareData.offset?.y || 8
-        const minX = offsetX
-        const minY = offsetY
-        const maxX =
-          document.documentElement.clientWidth -
-          state.elements.floating.offsetWidth -
-          offsetX
-        const maxY =
-          document.documentElement.clientHeight -
-          state.elements.floating.offsetHeight -
-          offsetY
-        const dragX =
-          referenceElementDragOffsetRef.current.x +
-          referenceElementDragOffsetRef.current.prevX
-        const dragY =
-          referenceElementDragOffsetRef.current.y +
-          referenceElementDragOffsetRef.current.prevY
-        const currentX = state.x + dragX
-        const currentY = state.y + dragY
-        const x = Math.min(Math.max(currentX, minX), maxX)
-        const y = Math.min(Math.max(currentY, minY), maxY)
-        return {
-          x,
-          y,
-          reset: {
-            rects: true,
-          },
-        }
-        // absolute 定位用的
-        //   const cachePosition = floatingUIMiddlewareCache.get(
-        //     'statePosition',
-        //   ) || { x: 0, y: 0 }
-        //   // 因为state.x和state.y是基于滚动位置计算的，所以这里要计算真实的scrollTop和scrollLeft
-        //   const floatingElementRect =
-        //     state.elements.floating.getBoundingClientRect()
-        //   if (cachePosition.x !== state.x || cachePosition.y !== state.y) {
-        //     if (
-        //       floatingElementRect.width + floatingElementRect.height > 0 &&
-        //       floatingElementRect.left !== 0 &&
-        //       floatingElementRect.top !== 0
-        //     ) {
-        //       // 更新缓存
-        //       floatingUIMiddlewareCache.set('statePosition', {
-        //         x: state.x,
-        //         y: state.y,
-        //         scrollTop: state.y - floatingElementRect.top,
-        //         scrollLeft: state.x - floatingElementRect.left,
-        //       })
-        //     }
-        //   }
-        //   if (!floatingUIMiddlewareCache.get('statePosition')) {
-        //     return state
-        //   }
-        //   const currentPosition = floatingUIMiddlewareCache.get('statePosition')
-        //   const scrollTop = currentPosition.scrollTop || 0
-        //   const scrollLeft = currentPosition.scrollLeft || 0
-        //   const dragX =
-        //     referenceElementDragOffsetRef.current.x +
-        //     referenceElementDragOffsetRef.current.prevX
-        //   const dragY =
-        //     referenceElementDragOffsetRef.current.y +
-        //     referenceElementDragOffsetRef.current.prevY
-        //   const minX = offsetX
-        //   const minY = offsetY
-        //   // 最大Y值 = 页面高度 + 滚动高度 - 拖拽Y值 - 当前Y值 - 浮动框高度
-        //   const maxY =
-        //     document.documentElement.clientHeight +
-        //     scrollTop -
-        //     state.elements.floating.offsetHeight -
-        //     offsetY
-        //   // 最大X值 = 页面宽度 + 滚动宽度 - 拖拽X值 - 当前X值 - 浮动框宽度
-        //   const maxX =
-        //     document.documentElement.clientWidth +
-        //     scrollLeft -
-        //     state.elements.floating.offsetWidth -
-        //     offsetX
-        //   const currentX = state.x + dragX
-        //   const currentY = state.y + dragY
-        //   const x = Math.min(Math.max(currentX, minX), maxX)
-        //   const y = Math.min(Math.max(currentY, minY), maxY)
-        //   console.log(
-        //     `[ContextWindow] customMiddleware offset [${offsetX}, ${offsetY}]`,
-        //     '\n',
-        //     `currentPosition: [${currentPosition.x}, ${currentPosition.y}, ${currentPosition.scrollLeft}, ${currentPosition.scrollTop}]`,
-        //     '\n',
-        //     `floatingElementRect: ${floatingElementRect.left}, ${floatingElementRect.top}`,
-        //     '\n',
-        //     `scroll: ${scrollLeft}, ${scrollTop}`,
-        //     '\n',
-        //     `client: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}`,
-        //     '\n',
-        //     `state: ${state.x}, ${state.y}`,
-        //     '\n',
-        //     `drag: ${dragX}, ${dragY}`,
-        //     '\n',
-        //     `min: ${minX}, ${minY}`,
-        //     '\n',
-        //     `max: ${maxX}, ${maxY}`,
-        //     '\n',
-        //     `result: ${x}, ${y}`,
-        //   )
-        //   return {
-        //     x,
-        //     y,
-        //     reset: {
-        //       rects: true,
-        //     },
-        //   }
-        // },
-      },
-    }
-  }
+  dragOffsetRef: IDragOffsetRef,
+  referenceElementRef: RefObject<HTMLDivElement>,
+  floatingSizeOffsetRef: IFloatingSizeOffsetRef,
+): Middleware[] => {
   return [
-    flip({
+    filpMiddleware({
+      dragOffsetRef,
       fallbackPlacements: ['top-start', 'right', 'left'],
+      defaultPlacement: 'bottom-start',
     }),
-    size(),
     shift({
       crossAxis: true,
-      padding: 16,
     }),
-    offset((params) => {
-      if (params.placement.indexOf('bottom') > -1) {
-        const boundary = {
-          left: 0,
-          right: window.innerWidth,
-          top: 0,
-          bottom: window.innerHeight + window.scrollY,
+    offset(8),
+    dragMiddleware({ dragOffsetRef }),
+
+    sizeMiddleware({
+      dragOffsetRef,
+      apply: ({ availableWidth, availableHeight, elements }) => {
+        if (!referenceElementRef.current) return
+
+        const { dx, dy, resized } = floatingSizeOffsetRef.current
+        const markdown = elements.floating.querySelector(
+          '.markdown-body',
+        ) as HTMLElement
+
+        // 当未调整大小时，使用默认增长大小
+        if (!resized) {
+          markdown.style.maxHeight = '320px'
+          elements.floating.style.height = 'auto'
+          referenceElementRef.current.style.height = 'auto'
+          elements.floating.style.width = `${floatingSizeOffsetRef.current.minWidth}px`
+          elements.floating.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
+          referenceElementRef.current.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
+          return
         }
-        if (
-          isRectangleCollidingWithBoundary(
-            {
-              top: params.y,
-              left: params.x,
-              bottom: params.y + params.rects.floating.height + 50,
-              right: params.rects.floating.width + params.x,
-            },
-            boundary,
+
+        const minWidth = Math.min(
+          floatingSizeOffsetRef.current.minWidth,
+          availableWidth,
+        )
+        const currentWidth = elements.floating.clientWidth
+
+        const width = Math.min(
+          availableWidth,
+          Math.max(currentWidth + dx, minWidth),
+        )
+
+        floatingSizeOffsetRef.current.dx = 0
+        // 这里处理高度的方法和宽度的稍显不同，因为高度会一开始就限制一个minWidth，
+        // 而在刚开始回答时高度不会有minWidth，因为content的内容需要动态增长到maxHeight
+        let height = 0
+        let maxHeight = 0
+        const currentHeight = elements.floating.clientHeight
+
+        if (currentHeight < floatingSizeOffsetRef.current.defaultMinHeight) {
+          // 当未增长到minHeight的情况下，只需要处理变大的
+          height = Math.min(
+            dy > 0 ? currentHeight + dy : currentHeight,
+            availableHeight,
           )
-        ) {
-          const offset =
-            params.rects.reference.y -
-            params.y -
-            params.rects.floating.height -
-            8
-          if (params.y + offset < 0) {
-            // 超出屏幕
-            return -params.y + 8
-          }
-          return offset
+
+          maxHeight = height
+        } else {
+          // 当增长到minHeight的时候，按正常处理
+
+          height = Math.min(
+            Math.max(
+              dy + currentHeight,
+              floatingSizeOffsetRef.current.defaultMinHeight,
+            ),
+            availableHeight,
+          )
+
+          maxHeight = height
         }
-        return 8
-      } else {
-        return 8
-      }
+
+        floatingSizeOffsetRef.current.dy = 0
+
+        referenceElementRef.current.style.height = `${height}px`
+        referenceElementRef.current.style.maxHeight = `${maxHeight}px`
+        elements.floating.style.height = `${height}px`
+        elements.floating.style.maxHeight = `${maxHeight}px`
+
+        elements.floating.style.width = `${width}px`
+
+        // 需要放在获取floating.clientHeight之后，不然会影响clientHeight的获取
+        markdown.style.maxHeight = 'unset'
+      },
     }),
-    customMiddleware(),
   ]
 }
 /**

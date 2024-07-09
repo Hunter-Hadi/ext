@@ -94,7 +94,7 @@ const maxAIClientFetch = async (
             [convertHexToString(`50`)]: payloadHash,
             // D
             [convertHexToString(`44`)]:
-              getMaxAIChromeExtensionInstalledDeviceId(),
+              await getMaxAIChromeExtensionInstalledDeviceId(),
           },
           APP_AES_ENCRYPTION_KEY,
         ),

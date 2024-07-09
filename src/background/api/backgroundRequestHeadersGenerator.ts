@@ -126,7 +126,8 @@ class BackgroundRequestHeadersGenerator {
       // T
       [convertHexToString(`54`)]: dayjs(new Date().getTime()).unix(),
       // D
-      [convertHexToString(`44`)]: getMaxAIChromeExtensionInstalledDeviceId(),
+      [convertHexToString(`44`)]:
+        await getMaxAIChromeExtensionInstalledDeviceId(),
     }
     this.taskIdHeadersMap.set(taskId, {
       headers: hexHeaders,

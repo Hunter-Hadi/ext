@@ -148,7 +148,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
       key={message.messageId}
     >
       <DevContent>
-        <Typography color={'text.primary'}>
+        <Typography color={'text.primary'} fontSize={16}>
           !!!!!!{order}-
           {dayjs(message.created_at).format('YYYY-MM-DD HH:mm:ss')}
         </Typography>

@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Použiť podnet"
   },
   "quota_usage_card": {
-    "category__fast_text": "Rýchly text",
-    "category__advanced_text": "Pokročilý text",
-    "category__image_generate": "Obrázok",
+    "category__fast_text": "Rýchle textové dotazy",
+    "category__advanced_text": "Inteligentné textové dotazy",
+    "category__image_generate": "Obrázkové dotazy",
     "role_label": "Súčasný plán: {{ROLE}}",
-    "queries": "Dopyty",
+    "queries": "Zostávajúce AI dotazy",
     "reset_on_date": "Resetovať dňa {{DATE}}",
-    "advanced_text__secondary__content": "Rýchle pokročilé textové dotazy: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych pokročilých textových dotazov každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu.",
-    "image_generate__secondary__content": "Rýchle dotazy na obrázky: {{QUERIES}}",
+    "advanced_text__secondary__content": "Vysoká rýchlosť: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Zabezpečte si aspoň 1 500 vysokorýchlostných inteligentných textových dotazov každý mesiac. Po dosiahnutí limitu sa môže rýchlosť a kvalita modelu znížiť.",
+    "image_generate__secondary__content": "Vysoká rýchlosť: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych dotazov na obrázky každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu.",
     "promotion_plan__text": "Ušetrite 53% pri vylepšení na MaxAI Elite Ročne teraz. 👇"
   },

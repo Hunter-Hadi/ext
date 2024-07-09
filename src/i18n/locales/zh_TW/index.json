@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "使用提示"
   },
   "quota_usage_card": {
-    "category__fast_text": "快速文本",
-    "category__advanced_text": "高級文本",
-    "category__image_generate": "圖像",
+    "category__fast_text": "快速文字查詢",
+    "category__advanced_text": "智能文字查詢",
+    "category__image_generate": "圖像查詢",
     "role_label": "當前計劃：{{ROLE}}",
-    "queries": "查詢",
+    "queries": "剩餘 AI 查詢",
     "reset_on_date": "重置於{{DATE}}",
-    "advanced_text__secondary__content": "高速高級文本查詢：{{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "每月至少確保1,500次高速高級文本查詢。達到限制後，模型的速度和質量可能會降低。",
-    "image_generate__secondary__content": "高速圖像查詢：{{QUERIES}}",
+    "advanced_text__secondary__content": "高速：{{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "每月至少確保 1,500 次高速智能文字查詢。達到限制後，模型的速度和品質可能會降低。",
+    "image_generate__secondary__content": "高速：{{QUERIES}}",
     "image_generate__secondary__content__tooltip": "每月至少確保1,500次高速圖像查詢。達到限制後，模型的速度和質量可能會降低。",
     "promotion_plan__text": "立即升級至 MaxAI Elite 每年，享受53%的折扣。 👇"
   },

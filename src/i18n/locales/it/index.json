@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Utilizza il prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Testo veloce",
-    "category__advanced_text": "Testo avanzato",
-    "category__image_generate": "Immagine",
+    "category__fast_text": "Query di testo veloce",
+    "category__advanced_text": "Query di testo intelligente",
+    "category__image_generate": "Query di immagine",
     "role_label": "Piano attuale: {{ROLE}}",
-    "queries": "Richieste",
+    "queries": "Query AI rimanenti",
     "reset_on_date": "Reset il {{DATE}}",
-    "advanced_text__secondary__content": "Query avanzate di testo ad alta velocità: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Assicurati almeno 1.500 query avanzate di testo ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",
-    "image_generate__secondary__content": "Query di immagini ad alta velocità: {{QUERIES}}",
+    "advanced_text__secondary__content": "Alta velocità: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Assicurati almeno 1.500 query di testo intelligente ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",
+    "image_generate__secondary__content": "Alta velocità: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Assicurati almeno 1.500 query di immagini ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",
     "promotion_plan__text": "Risparmia il 53% passando a MaxAI Elite Annuale ora. 👇"
   },

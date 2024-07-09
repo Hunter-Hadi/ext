@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Bruk forslag"
   },
   "quota_usage_card": {
-    "category__fast_text": "Rask tekst",
-    "category__advanced_text": "Avansert tekst",
-    "category__image_generate": "Bilde",
+    "category__fast_text": "Raske tekstforespørsler",
+    "category__advanced_text": "Smarte tekstforespørsler",
+    "category__image_generate": "Bildeforespørsler",
     "role_label": "Nåværende plan: {{ROLE}}",
-    "queries": "Forespørsler",
+    "queries": "Gjenstående AI-forespørsler",
     "reset_on_date": "Tilbakestilles den {{DATE}}",
-    "advanced_text__secondary__content": "Høyhastighets avanserte tekstspørringer: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets avanserte tekstspørringer hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres.",
-    "image_generate__secondary__content": "Høyhastighets bildespørringer: {{QUERIES}}",
+    "advanced_text__secondary__content": "Høy hastighet: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Sørg for minst 1 500 smarte tekstforespørsler med høy hastighet hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres.",
+    "image_generate__secondary__content": "Høy hastighet: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets bildespørringer hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres.",
     "promotion_plan__text": "Spar 53% ved å oppgradere til MaxAI Elite Årlig nå. 👇"
   },

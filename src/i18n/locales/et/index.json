@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Kasuta vihjet"
   },
   "quota_usage_card": {
-    "category__fast_text": "Kiire tekst",
-    "category__advanced_text": "Edasijõudnud tekst",
-    "category__image_generate": "Pilt",
+    "category__fast_text": "Kiired tekstipäringud",
+    "category__advanced_text": "Nutikad tekstipäringud",
+    "category__image_generate": "Pildipäringud",
     "role_label": "Praegune plaan: {{ROLE}}",
-    "queries": "Päringud",
+    "queries": "Jäänud AI-päringud",
     "reset_on_date": "Lähtestamine kuupäeval {{DATE}}",
-    "advanced_text__secondary__content": "Kiired edasijõudnud tekstipäringud: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret edasijõudnud tekstipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
-    "image_generate__secondary__content": "Kiired pildipäringud: {{QUERIES}}",
+    "advanced_text__secondary__content": "Kõrge kiirus: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Tagage igakuiselt vähemalt 1,500 kõrge kiirusega nutikat tekstipäringut. Piirini jõudmisel võib mudeli kiirus ja kvaliteet väheneda.",
+    "image_generate__secondary__content": "Kõrge kiirus: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret pildipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
     "promotion_plan__text": "Säästa 53% uuendades nüüd MaxAI Elite'ile aastas. 👇"
   },

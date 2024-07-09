@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Verwenden Sie die Anregung"
   },
   "quota_usage_card": {
-    "category__fast_text": "Schneller Text",
-    "category__advanced_text": "Fortgeschrittener Text",
-    "category__image_generate": "Bild",
+    "category__fast_text": "Schnelle Textabfragen",
+    "category__advanced_text": "Intelligente Textabfragen",
+    "category__image_generate": "Bildabfragen",
     "role_label": "Aktueller Plan: {{ROLE}}",
-    "queries": "Abfragen",
+    "queries": "Verbleibende KI-Abfragen",
     "reset_on_date": "Zurücksetzen am {{DATE}}",
-    "advanced_text__secondary__content": "Hochgeschwindigkeits fortgeschrittene Textabfragen: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits fortgeschrittene Textabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",
-    "image_generate__secondary__content": "Hochgeschwindigkeits Bildabfragen: {{QUERIES}}",
+    "advanced_text__secondary__content": "Hohe Geschwindigkeit: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Stellen Sie sicher, dass jeden Monat mindestens 1.500 intelligente Textabfragen mit hoher Geschwindigkeit durchgeführt werden. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",
+    "image_generate__secondary__content": "Hohe Geschwindigkeit: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits Bildabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",
     "promotion_plan__text": "Sparen Sie jetzt 53%, indem Sie auf MaxAI Elite Jährlich upgraden. 👇"
   },

@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "プロンプトの使用"
   },
   "quota_usage_card": {
-    "category__fast_text": "高速テキスト",
-    "category__advanced_text": "高度なテキスト",
-    "category__image_generate": "画像",
+    "category__fast_text": "高速テキストクエリ",
+    "category__advanced_text": "スマートテキストクエリ",
+    "category__image_generate": "画像クエリ",
     "role_label": "現在のプラン：{{ROLE}}",
-    "queries": "クエリ",
+    "queries": "残りのAIクエリ",
     "reset_on_date": "{{DATE}}にリセット",
-    "advanced_text__secondary__content": "高速な高度なテキストクエリ：{{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "毎月少なくとも1,500の高速な高度なテキストクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
-    "image_generate__secondary__content": "高速なイメージクエリ：{{QUERIES}}",
+    "advanced_text__secondary__content": "高速: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "毎月少なくとも1,500件の高速スマートテキストクエリを確保してください。限界に達すると、モデルの速度と品質が低下する可能性があります。",
+    "image_generate__secondary__content": "高速: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "毎月少なくとも1,500の高速なイメージクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
     "promotion_plan__text": "MaxAI Elite Yearlyにアップグレードして53%節約しましょう。 👇"
   },

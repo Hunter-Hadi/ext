@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Izmantojiet norādi"
   },
   "quota_usage_card": {
-    "category__fast_text": "Ātrs teksts",
-    "category__advanced_text": "Uzlabots teksts",
-    "category__image_generate": "Attēls",
+    "category__fast_text": "Ātrās teksta vaicājumi",
+    "category__advanced_text": "Viedie teksta vaicājumi",
+    "category__image_generate": "Attēlu vaicājumi",
     "role_label": "Pašreizējais plāns: {{ROLE}}",
-    "queries": "Pieprasījumi",
+    "queries": "Atlikušie AI vaicājumi",
     "reset_on_date": "Atiestatīt {{DATE}}",
-    "advanced_text__secondary__content": "Augsta ātruma papildināti teksta vaicājumi: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma papildinātus teksta vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
-    "image_generate__secondary__content": "Augsta ātruma attēlu vaicājumi: {{QUERIES}}",
+    "advanced_text__secondary__content": "Augstā ātrumā: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augstā ātruma viedos teksta vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
+    "image_generate__secondary__content": "Augstā ātrumā: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma attēlu vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
     "promotion_plan__text": "Ietaupiet 53%, ja tagad jaunināsiet uz MaxAI Elite Katru gadu. 👇"
   },

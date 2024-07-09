@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Utilitza el suggeriment"
   },
   "quota_usage_card": {
-    "category__fast_text": "Text ràpid",
-    "category__advanced_text": "Text avançat",
-    "category__image_generate": "Imatge",
+    "category__fast_text": "Consultes de text ràpides",
+    "category__advanced_text": "Consultes de text intel·ligents",
+    "category__image_generate": "Consultes d'imatges",
     "role_label": "Pla actual: {{ROLE}}",
-    "queries": "Consultes",
+    "queries": "Consultes d'IA restants",
     "reset_on_date": "Reinicia el {{DATE}}",
-    "advanced_text__secondary__content": "Consultes avançades de text d'alta velocitat: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes avançades de text d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
-    "image_generate__secondary__content": "Consultes d'imatges d'alta velocitat: {{QUERIES}}",
+    "advanced_text__secondary__content": "Alta velocitat: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes de text intel·ligents d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
+    "image_generate__secondary__content": "Alta velocitat: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes d'imatges d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
     "promotion_plan__text": "Estalvia un 53% millorant a MaxAI Elite Anual ara. 👇"
   },

@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Koristite uputu"
   },
   "quota_usage_card": {
-    "category__fast_text": "Brzi tekst",
-    "category__advanced_text": "Napredni tekst",
-    "category__image_generate": "Slika",
+    "category__fast_text": "Brzi tekstualni upiti",
+    "category__advanced_text": "Pametni tekstualni upiti",
+    "category__image_generate": "Upiti za slike",
     "role_label": "Trenutni plan: {{ROLE}}",
-    "queries": "Upiti",
+    "queries": "Preostali AI upiti",
     "reset_on_date": "Resetiranje {{DATE}}",
-    "advanced_text__secondary__content": "Visokoučinkoviti napredni tekstualni upiti: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Osigurajte najmanje 1,500 visokoučinkovitih naprednih tekstualnih upita svaki mjesec. Nakon dostizanja limita, brzina i kvaliteta modela mogu biti smanjeni.",
-    "image_generate__secondary__content": "Visokoučinkoviti upiti slika: {{QUERIES}}",
+    "advanced_text__secondary__content": "Visoka brzina: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Osigurajte barem 1,500 pametnih tekstualnih upita visoke brzine svaki mjesec. Nakon dostizanja limita, brzina i kvaliteta modela mogu biti smanjeni.",
+    "image_generate__secondary__content": "Visoka brzina: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Osigurajte najmanje 1,500 visokoučinkovitih upita slika svaki mjesec. Nakon dostizanja limita, brzina i kvaliteta modela mogu biti smanjeni.",
     "promotion_plan__text": "Uštedite 53% nadogradnjom na MaxAI Elite Godišnje sada. 👇"
   },

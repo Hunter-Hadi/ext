@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Použít podnět"
   },
   "quota_usage_card": {
-    "category__fast_text": "Rychlý text",
-    "category__advanced_text": "Pokročilý text",
-    "category__image_generate": "Obrázek",
+    "category__fast_text": "Rychlé textové dotazy",
+    "category__advanced_text": "Chytré textové dotazy",
+    "category__image_generate": "Obrázkové dotazy",
     "role_label": "Aktuální plán: {{ROLE}}",
-    "queries": "Dotazy",
+    "queries": "Zbývající dotazy AI",
     "reset_on_date": "Resetovat dne: {{DATE}}",
-    "advanced_text__secondary__content": "Rychlé pokročilé textové dotazy: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých pokročilých textových dotazů každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu.",
-    "image_generate__secondary__content": "Rychlé dotazy na obrázky: {{QUERIES}}",
+    "advanced_text__secondary__content": "Vysoká rychlost: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Zajistěte si alespoň 1 500 chytrých textových dotazů s vysokou rychlostí každý měsíc. Po dosažení limitu může být rychlost a kvalita modelu snížena.",
+    "image_generate__secondary__content": "Vysoká rychlost: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých dotazů na obrázky každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu.",
     "promotion_plan__text": "Ušetřete 53% při upgradu na MaxAI Elite Ročně nyní. 👇"
   },

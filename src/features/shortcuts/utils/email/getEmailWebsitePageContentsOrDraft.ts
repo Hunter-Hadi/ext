@@ -712,7 +712,12 @@ export const getEmailWebsitePageContentsOrDraft = async (
         '#ReadingPaneContainerId div[id] > div[role="textbox"]',
       )
 
-      if (rootElement && rootElement.contains(inputAssistantButtonElement)) {
+      if (
+        rootElement &&
+        (inputAssistantButtonElement
+          ? rootElement.contains(inputAssistantButtonElement)
+          : true)
+      ) {
         const messageItems: Element[] = []
         const totalMessageItems = Array.from(
           rootElement.querySelectorAll('& > div > div:has(div[tabindex])'),
@@ -720,8 +725,10 @@ export const getEmailWebsitePageContentsOrDraft = async (
         // 因为outlook可以修改邮件顺序，所以要先拿到邮件的date
         const replyMessageDate =
           totalMessageItems
-            .find((messageItem) =>
-              messageItem.contains(inputAssistantButtonElement),
+            .find(
+              (messageItem) =>
+                inputAssistantButtonElement &&
+                messageItem.contains(inputAssistantButtonElement),
             )
             ?.querySelector('div[data-testid="SentReceivedSavedTime"]')
             ?.textContent || ''
@@ -731,10 +738,15 @@ export const getEmailWebsitePageContentsOrDraft = async (
             messageItem.querySelector(
               'div[data-testid="SentReceivedSavedTime"]',
             )?.textContent || ''
-          if (
-            new Date(messageDate).getTime() <=
-            new Date(replyMessageDate).getTime()
-          ) {
+          // 这么写是暂时不去影响instant reply
+          if (inputAssistantButtonElement) {
+            if (
+              new Date(messageDate).getTime() <=
+              new Date(replyMessageDate).getTime()
+            ) {
+              messageItems.push(messageItem)
+            }
+          } else {
             messageItems.push(messageItem)
           }
           const expandMessages = messageItem.querySelectorAll('& > div > div')
@@ -877,7 +889,12 @@ export const getEmailWebsitePageContentsOrDraft = async (
           document.querySelectorAll('div[role="dialog"]'),
         ) as HTMLDivElement[]
       ).find((modalElement) => modalElement.contains(modalEmailContextElement))
-      if (modalElement && modalElement.contains(inputAssistantButtonElement)) {
+      if (
+        modalElement &&
+        (inputAssistantButtonElement
+          ? modalElement.contains(inputAssistantButtonElement)
+          : true)
+      ) {
         const emailContext = outlookGetSingleEmailText(modalEmailContextElement)
         if (emailContext) {
           instantReplyDataHelper.setAttribute(
@@ -897,7 +914,12 @@ export const getEmailWebsitePageContentsOrDraft = async (
       const detailEmailRootElement = document.querySelector(
         '#ReadingPaneContainerId',
       ) as HTMLDivElement
-      if (detailEmailRootElement?.contains(inputAssistantButtonElement)) {
+      if (
+        detailEmailRootElement &&
+        (inputAssistantButtonElement
+          ? detailEmailRootElement.contains(inputAssistantButtonElement)
+          : true)
+      ) {
         const emailContext = outlookGetSingleEmailText(
           detailEmailContextElement,
         )

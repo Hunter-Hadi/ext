@@ -57,6 +57,23 @@ export const maxAIRequestResponseStreamParser = (
           }
           break
         case 'complete':
+          // 目前短文summary的时候会把整个上下文切片完返回
+          // 完成的时候把没有用到的citation都过滤掉，不存储
+          if (
+            outputMessage.originalMessage?.metadata?.sourceCitations?.length
+          ) {
+            const pattern = /\[T(\d+)\]\(.*?\)/g
+            const matches = [...outputMessage.text.matchAll(pattern)].map(
+              (match) => match[1],
+            )
+            outputMessage.originalMessage.metadata.sourceCitations =
+              outputMessage.originalMessage.metadata.sourceCitations.filter(
+                (item) => {
+                  return matches.includes(`${item.search_result_index}`)
+                },
+              )
+          }
+
           // TODO 这里设置空后续需要注意一下，对于不同类型的消息会显示不同的icon
           // 这样写会直接覆盖掉，目前没问题因为是只有summary的时候用到
           outputMessage.originalMessage = {

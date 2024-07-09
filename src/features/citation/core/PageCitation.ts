@@ -67,7 +67,9 @@ export default class PageCitation implements ICitationService {
     ]
       .filter((item) => {
         // 过滤掉header，不去选中大部分网页的头部
-        return item && !isParentElement(item, 'header')
+        return (
+          item && !isParentElement(item, 'header') && item?.tagName !== 'BUTTON'
+        )
       })
       .map((item) => {
         const element = item as HTMLElement

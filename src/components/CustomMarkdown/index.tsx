@@ -407,7 +407,10 @@ const CustomMarkdown: FC<{
               const match = props.children[0].match(/T(\d+)/)
               if (match) {
                 const index = match ? Number(match[1]) : -1
-                if (!citations[index]) {
+                const sourceCitation = citations.find(
+                  (item) => item.search_result_index === index,
+                )
+                if (!sourceCitation) {
                   // 查不到citations
                   return null
                 }
@@ -415,7 +418,7 @@ const CustomMarkdown: FC<{
                 return (
                   <CitationTag
                     conversationId={conversationId}
-                    citations={citations}
+                    citation={sourceCitation}
                     index={index}
                     number={isNaN(number) ? undefined : number}
                     type={isNaN(number) ? 'icon' : 'number'}

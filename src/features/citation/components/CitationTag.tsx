@@ -10,14 +10,14 @@ import { IAIResponseSourceCitation } from '@/features/indexed_db/conversations/m
 
 interface IProps {
   conversationId?: string
-  citations: IAIResponseSourceCitation[]
+  citation: IAIResponseSourceCitation
   index: number
   number?: number
   type?: 'number' | 'icon'
 }
 
 const CitationTag: FC<IProps> = (props) => {
-  const { conversationId, citations, index, number, type = 'icon' } = props
+  const { conversationId, citation, index, number, type = 'icon' } = props
 
   const [loading, setLoading] = useState(false)
   const [title, setTitle] = useState('')
@@ -25,7 +25,7 @@ const CitationTag: FC<IProps> = (props) => {
   const handleClick = async () => {
     if (loading) return
     if (!title) setLoading(true)
-    const { content, start_index } = citations[index]
+    const { content, start_index } = citation
     const citationService = CitationFactory.getCitationService(conversationId)
     if (citationService?.loading) {
       setLoading(false)

@@ -1126,15 +1126,15 @@
     "sidebar_tour__step__5__feature_6__title": "Use prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Fast text",
-    "category__advanced_text": "Advanced text",
-    "category__image_generate": "Image",
+    "category__fast_text": "Fast text queries",
+    "category__advanced_text": "Smart text queries",
+    "category__image_generate": "Image queries",
     "role_label": "Current plan: {{ROLE}}",
-    "queries": "Queries",
+    "queries": "Remaining AI queries",
     "reset_on_date": "Reset on {{DATE}}",
-    "advanced_text__secondary__content": "High-speed advanced text queries: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed advanced text queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
-    "image_generate__secondary__content": "High-speed image queries: {{QUERIES}}",
+    "advanced_text__secondary__content": "High-speed: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed smart text queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
+    "image_generate__secondary__content": "High-speed: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Ensure at least 1,500 high-speed image queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
     "promotion_plan__text": "Save 53% by upgrading to MaxAI Elite Yearly now. 👇"
   },

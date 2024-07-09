@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Gebruik prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Snelle tekst",
-    "category__advanced_text": "Geavanceerde tekst",
-    "category__image_generate": "Afbeelding",
+    "category__fast_text": "Snelle tekstvragen",
+    "category__advanced_text": "Slimme tekstvragen",
+    "category__image_generate": "Afbeeldingsvragen",
     "role_label": "Huidig plan: {{ROLE}}",
-    "queries": "Vragen",
+    "queries": "Overgebleven AI-vragen",
     "reset_on_date": "Reset op {{DATE}}",
-    "advanced_text__secondary__content": "Hoge snelheid geavanceerde tekstvragen: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid geavanceerde tekstvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
-    "image_generate__secondary__content": "Hoge snelheid afbeeldingsvragen: {{QUERIES}}",
+    "advanced_text__secondary__content": "Hoge snelheid: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Zorg voor minimaal 1.500 slimme tekstvragen met hoge snelheid per maand. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
+    "image_generate__secondary__content": "Hoge snelheid: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid afbeeldingsvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
     "promotion_plan__text": "Bespaar nu 53% door te upgraden naar MaxAI Elite Jaarlijks. 👇"
   },

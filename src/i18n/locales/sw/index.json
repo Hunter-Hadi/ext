@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Tumia onyo"
   },
   "quota_usage_card": {
-    "category__fast_text": "Maandishi ya haraka",
-    "category__advanced_text": "Maandishi ya juu",
-    "category__image_generate": "Picha",
+    "category__fast_text": "Utafutaji wa haraka wa maandishi",
+    "category__advanced_text": "Utafutaji mjanja wa maandishi",
+    "category__image_generate": "Utafutaji wa picha",
     "role_label": "Mpango wa sasa: {{ROLE}}",
-    "queries": "Maswali",
+    "queries": "Utafutaji wa AI uliobaki",
     "reset_on_date": "Weka upya tarehe {{DATE}}",
-    "advanced_text__secondary__content": "Maswali ya maandishi ya juu kwa kasi kubwa: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya maandishi ya juu kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
-    "image_generate__secondary__content": "Maswali ya picha kwa kasi kubwa: {{QUERIES}}",
+    "advanced_text__secondary__content": "Kasi kubwa: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Hakikisha angalau 1,500 ya utafutaji mjanja wa maandishi kwa kasi kubwa kila mwezi. Baada ya kufikia kikomo, kasi na ubora wa mfano unaweza kupunguzwa.",
+    "image_generate__secondary__content": "Kasi kubwa: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya picha kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
     "promotion_plan__text": "Punguza 53% kwa kuboresha kwenda MaxAI Elite Kila mwaka sasa. 👇"
   },

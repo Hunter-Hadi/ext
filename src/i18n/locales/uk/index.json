@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "پرومپٹ استعمال کریں"
   },
   "quota_usage_card": {
-    "category__fast_text": "تیز متن",
-    "category__advanced_text": "اعلی متن",
-    "category__image_generate": "تصویر",
+    "category__fast_text": "تیز متن کوئیریز",
+    "category__advanced_text": "ہوشیار متن کوئیریز",
+    "category__image_generate": "تصویر کوئیریز",
     "role_label": "موجودہ پلان: {{ROLE}}",
-    "queries": "سوالات",
+    "queries": "باقی AI کوئیریز",
     "reset_on_date": "{{DATE}} کو ری سیٹ ہوگا",
-    "advanced_text__secondary__content": "اعلی رفتار پیش رفتہ متن سوالات: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "ماہانہ کم از کم 1,500 اعلی رفتار پیش رفتہ متن سوالات کی یقینی فراہمی کریں۔ حد تک پہنچنے کے بعد، ماڈل کی رفتار اور کوالٹی میں کمی ہوسکتی ہے۔",
-    "image_generate__secondary__content": "اعلی رفتار تصویری سوالات: {{QUERIES}}",
+    "advanced_text__secondary__content": "ہائی سپیڈ: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "ہر مہینے کم از کم 1,500 ہائی سپیڈ ہوشیار متن کوئیریز کی یقینی بنائیں۔ حد تک پہنچنے کے بعد، ماڈل کی رفتار اور معیار میں کمی آ سکتی ہے۔",
+    "image_generate__secondary__content": "ہائی سپیڈ: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "ماہانہ کم از کم 1,500 اعلی رفتار تصویری سوالات کی یقینی فراہمی کریں۔ حد تک پہنچنے کے بعد، ماڈل کی رفتار اور کوالٹی میں کمی ہوسکتی ہے۔",
     "promotion_plan__text": "اب MaxAI Elite سالانہ اپ گریڈ کرکے 53٪ بچائیں. 👇"
   },

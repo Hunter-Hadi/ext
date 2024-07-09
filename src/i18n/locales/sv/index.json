@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Använd prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Snabb text",
-    "category__advanced_text": "Avancerad text",
-    "category__image_generate": "Bild",
+    "category__fast_text": "Snabba textförfrågningar",
+    "category__advanced_text": "Smart textförfrågningar",
+    "category__image_generate": "Bildförfrågningar",
     "role_label": "Nuvarande plan: {{ROLE}}",
-    "queries": "Förfrågningar",
+    "queries": "Återstående AI-förfrågningar",
     "reset_on_date": "Återställs den {{DATE}}",
-    "advanced_text__secondary__content": "Hög hastighet för avancerade textfrågor: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Se till att du har minst 1 500 höghastighetsavancerade textfrågor varje månad. Efter att gränsen har nåtts kan modellens hastighet och kvalitet minskas.",
-    "image_generate__secondary__content": "Hög hastighet för bildfrågor: {{QUERIES}}",
+    "advanced_text__secondary__content": "Hög hastighet: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Se till att ha minst 1 500 smarta textförfrågningar med hög hastighet varje månad. Efter att gränsen nåtts kan modellens hastighet och kvalitet minskas.",
+    "image_generate__secondary__content": "Hög hastighet: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Se till att du har minst 1 500 höghastighetsbildfrågor varje månad. Efter att gränsen har nåtts kan modellens hastighet och kvalitet minskas.",
     "promotion_plan__text": "Spara 53% genom att uppgradera till MaxAI Elite Årligen nu. 👇"
   },

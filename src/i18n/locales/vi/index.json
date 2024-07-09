@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Sử dụng gợi ý"
   },
   "quota_usage_card": {
-    "category__fast_text": "Văn bản nhanh",
-    "category__advanced_text": "Văn bản tiên tiến",
-    "category__image_generate": "Hình ảnh",
+    "category__fast_text": "Truy vấn văn bản nhanh",
+    "category__advanced_text": "Truy vấn văn bản thông minh",
+    "category__image_generate": "Truy vấn hình ảnh",
     "role_label": "Gói hiện tại: {{ROLE}}",
-    "queries": "Truy vấn",
+    "queries": "Số lượt truy vấn AI còn lại",
     "reset_on_date": "Đặt lại vào ngày {{DATE}}",
-    "advanced_text__secondary__content": "Truy vấn văn bản nâng cao tốc độ cao: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn văn bản nâng cao tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
-    "image_generate__secondary__content": "Truy vấn hình ảnh tốc độ cao: {{QUERIES}}",
+    "advanced_text__secondary__content": "Tốc độ cao: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 lượt truy vấn văn bản thông minh tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
+    "image_generate__secondary__content": "Tốc độ cao: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn hình ảnh tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
     "promotion_plan__text": "Tiết kiệm 53% bằng cách nâng cấp lên MaxAI Elite Hàng năm ngay bây giờ. 👇"
   },

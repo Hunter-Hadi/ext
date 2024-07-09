@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Használjon promptot"
   },
   "quota_usage_card": {
-    "category__fast_text": "Gyors szöveg",
-    "category__advanced_text": "Előrehaladott szöveg",
-    "category__image_generate": "Kép",
+    "category__fast_text": "Gyors szöveg lekérdezések",
+    "category__advanced_text": "Okos szöveg lekérdezések",
+    "category__image_generate": "Kép lekérdezések",
     "role_label": "Jelenlegi terv: {{ROLE}}",
-    "queries": "Lekérdezések",
+    "queries": "Hátralévő AI lekérdezések",
     "reset_on_date": "Visszaállítás ekkor: {{DATE}}",
-    "advanced_text__secondary__content": "Magas sebességű előrehaladott szöveg lekérdezések: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű előrehaladott szöveg lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
-    "image_generate__secondary__content": "Magas sebességű kép lekérdezések: {{QUERIES}}",
+    "advanced_text__secondary__content": "Magas sebesség: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű okos szöveg lekérdezést havonta. A limit elérését követően a modell sebessége és minősége csökkenthető.",
+    "image_generate__secondary__content": "Magas sebesség: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű kép lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
     "promotion_plan__text": "53%-ot spórolhatsz, ha most frissítesz MaxAI Elite Évesre. 👇"
   },

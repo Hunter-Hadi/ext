@@ -1,11 +1,6 @@
-import {
-  formattedTextContent,
-  getReadabilityArticle,
-  getVisibleTextNodes,
-} from '@/features/chat-base/summary/utils/pageContentHelper'
+import { getVisibleTextNodes } from '@/features/chat-base/summary/utils/pageContentHelper'
 import { ICitationMatch, ICitationService } from '@/features/citation/types'
-import { scrollToRange } from '@/features/citation/utils'
-import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
+import { isParentElement, scrollToRange } from '@/features/citation/utils'
 import { wait } from '@/utils'
 
 export default class PageCitation implements ICitationService {
@@ -17,8 +12,6 @@ export default class PageCitation implements ICitationService {
   searchTime = Date.now()
   // 先给所有textNode加上唯一标记
   elementMap: Record<string, Element> | null = null
-  // 缓存一下readabilityArticle
-  readabilityArticle: ReturnType<typeof getReadabilityArticle> | null = null
 
   constructor(public conversationId?: string) {
     this.init()
@@ -32,7 +25,6 @@ export default class PageCitation implements ICitationService {
     this.caches.clear()
     this.loading = false
     this.elementMap = null
-    this.readabilityArticle = null
   }
 
   /**
@@ -53,6 +45,81 @@ export default class PageCitation implements ICitationService {
         bubbles: true,
       }),
     )
+  }
+
+  /**
+   * 高亮匹配项
+   * @param matches
+   */
+  async highlightMatches(matches: ICitationMatch[]) {
+    if (!matches) return
+    const getMarkedElement = (match: ICitationMatch) => {
+      if (typeof match.container === 'string') {
+        return document.querySelector(match.container)
+      }
+      if (typeof match.container === 'function') {
+        return match.container()
+      }
+      return match.container
+    }
+    const containers = [
+      ...new Set(matches.map((item) => getMarkedElement(item))),
+    ]
+      .filter((item) => {
+        // 过滤掉header，不去选中大部分网页的头部
+        return (
+          item && !isParentElement(item, 'header') && item?.tagName !== 'BUTTON'
+        )
+      })
+      .map((item) => {
+        const element = item as HTMLElement
+        const listener = (event: Event) => {
+          event.stopPropagation()
+          event.preventDefault()
+          const range = document.createRange()
+          range.setStart(element.firstChild!, 0)
+          range.setEnd(
+            element.lastChild!,
+            element.lastChild?.nodeValue?.length || 0,
+          )
+          const selection = window.getSelection()
+          if (selection) {
+            selection.removeAllRanges()
+            selection.addRange(range)
+            this.dispatchContextMenu(element)
+          }
+        }
+        element.classList.add('maxai-reading-highlight')
+        element.addEventListener('click', listener)
+        return { element, listener }
+      })
+    const range = document.createRange()
+    const start = containers[0]?.element
+    const end = containers[containers.length - 1]?.element
+    range.setStart(start.firstChild!, 0)
+    range.setEnd(end.lastChild!, end.lastChild?.nodeValue?.length || 0)
+    // const selection = window.getSelection()
+    // if (selection) {
+    //   selection.removeAllRanges()
+    //   selection.addRange(range)
+    //   scrollToRange(selection.getRangeAt(0))
+    //   await this.dispatchContextMenu(start)
+    // }
+    scrollToRange(range)
+    const mouseDownListener = (event: Event) => {
+      if (
+        event.target &&
+        containers.find((item) => item.element === event.target)
+      ) {
+        return
+      }
+      containers.forEach(({ element, listener }) => {
+        element.classList.remove('maxai-reading-highlight')
+        element.removeEventListener('click', listener)
+      })
+      document.body.removeEventListener('mousedown', mouseDownListener)
+    }
+    document.body.addEventListener('mousedown', mouseDownListener)
   }
 
   /**
@@ -100,37 +167,30 @@ export default class PageCitation implements ICitationService {
     }
   }
 
-  getElementMap = () => {
-    if (this.elementMap) return this.elementMap
-    this.elementMap = {}
-    let id = 0
-    document.body.querySelectorAll('*').forEach((item) => {
-      const readabilityId = ++id
-      item.setAttribute('maxai-readability-id', `${readabilityId}`)
-      this.elementMap![readabilityId] = item
-    })
-    return this.elementMap
-  }
-
-  getReadabilityArticle = () => {
-    if (this.readabilityArticle) return this.readabilityArticle
-    this.readabilityArticle = getReadabilityArticle()
-    return this.readabilityArticle
-  }
-
   /**
    * 查找文本
    * TODO 针对特殊网站的查询逻辑
+   * 1. 获取页面上所有有内容的textNodes
+   * 2. 匹配文本节点，去除换行符和空格进行查找
+   * 3. 查找到的文本节点，选中文本
+   *    3.1 给父元素加上highlight的样式
+   *    3.2 用window.selection选中
    */
   async findText(searchString: string, startIndex: number) {
-    // searchString = searchString.replaceAll('\n', '')
-    // searchString = searchString.replace(/\s+/g, '')
+    // 这里主要是兼容旧数据，因为旧数据通过${readabilityArticle.title}\n\n作为开头，这里简单匹配去掉
+    if (searchString.startsWith(`${document.title}\n\n`)) {
+      searchString = searchString.replace(`${document.title}\n\n`, '')
+    }
+
+    // 去除所有空格换行符匹配
+    searchString = searchString.replace(/\s+/g, '')
+
     if (!searchString) {
       return { title: '', matches: [] }
     }
     if (this.caches.get(searchString)) {
       const result = this.caches.get(searchString)!
-      await this.selectMatches(result)
+      await this.highlightMatches(result)
       return { title: '', matches: result }
     }
     if (this.loading) {
@@ -140,67 +200,11 @@ export default class PageCitation implements ICitationService {
     this.loading = true
     this.searchTime = Date.now()
 
-    let elementMap = this.elementMap || {}
-    let readabilityArticle = this.readabilityArticle
-
-    if (this.conversationId) {
-      const conversation = await ClientConversationManager.getConversationById(
-        this.conversationId,
-      )
-      // 这里的临界点在GET_READABILITY_CONTENTS_OF_WEBPAGE里定义的，后续配置一下
-      if (
-        conversation?.meta.pageSummary?.content?.length &&
-        conversation.meta.pageSummary.content.length > 100
-      ) {
-        // Readability逻辑
-        elementMap = this.getElementMap()
-        // Readability去查找页面内容
-        readabilityArticle = this.getReadabilityArticle()
-        // 先移除掉标题，标题目前还没去标识具体的节点位置
-        if (readabilityArticle) {
-          if (searchString.startsWith(`${readabilityArticle.title}\n\n`)) {
-            searchString = searchString.replace(
-              `${readabilityArticle?.title}\n\n`,
-              '',
-            )
-          }
-        }
-      } else {
-        // Visible逻辑
-      }
-    }
-
-    // 根据标记查找真实的dom节点
-    const getDomTextNode = (node: Node): Node => {
-      if (!readabilityArticle?.content) return node
-      const parentElement = node.parentElement
-      const readabilityId = parentElement?.getAttribute('maxai-readability-id')
-      if (readabilityId && elementMap[readabilityId]) {
-        const childNodes = Array.from(elementMap[readabilityId].childNodes)
-        let fallbackNode = null
-        const domNode = childNodes.find((childNode) => {
-          if (childNode.nodeType === node.nodeType) {
-            fallbackNode = childNode
-          }
-          return (
-            childNode.nodeType === node.nodeType &&
-            formattedTextContent(childNode) === formattedTextContent(node)
-          )
-        })
-        return domNode || fallbackNode || node
-      }
-      return node
-    }
-
     let matches: ICitationMatch[] = []
     let currentContent = ''
 
     try {
-      // 1. 先找到页面上所有textNodes
-      const textNodes = getVisibleTextNodes(
-        readabilityArticle?.content || document.body,
-      )
-      // 2. 匹配文字节点，去除\n匹配
+      const textNodes = getVisibleTextNodes(document.body)
       textNodes.some((item, index) => {
         if (Date.now() - this.searchTime > 1000 * 20) {
           // 查询时间大于20s超时返回
@@ -210,7 +214,8 @@ export default class PageCitation implements ICitationService {
         let startOffset = 0
         let endOffset = 0
         let isFirstMatch = false
-        const str = formattedTextContent(item)
+        const str = item.textContent?.replace(/\s+/g, '') || ''
+        // const str = formattedTextContent(item)
 
         for (let i = 0; i < str.length; i++) {
           if (str[i] === searchString[currentContent.length]) {
@@ -230,7 +235,7 @@ export default class PageCitation implements ICitationService {
             // 未匹配中
             if (currentContent) {
               if (isFirstMatch) {
-                i = startOffset + 1
+                i = startOffset
               } else {
                 i--
               }
@@ -241,27 +246,14 @@ export default class PageCitation implements ICitationService {
           }
         }
         if (currentContent.length) {
-          // 这里textNode要去elementMap里寻找页面里实际的dom
-          const textNode = getDomTextNode(item)
+          const textNode = item
           const container = textNode.parentElement
-          if (!matches.length) {
-            // 匹配项就处于当前text内，所以先插入一个起始的匹配
-            matches.push({
-              text: str,
-              container,
-              textNode,
-              offset: startOffset,
-            })
-          }
-          if (currentContent.length === searchString.length) {
-            // 结尾项
-            matches.push({
-              text: str,
-              container,
-              textNode,
-              offset: endOffset,
-            })
-          }
+          matches.push({
+            text: str,
+            container,
+            textNode,
+            offset: !matches.length ? startOffset : endOffset,
+          })
         }
         if (currentContent.length === searchString.length) {
           return true
@@ -271,7 +263,7 @@ export default class PageCitation implements ICitationService {
       this.caches.set(searchString, matches)
 
       if (matches.length) {
-        await this.selectMatches(matches)
+        await this.highlightMatches(matches)
       }
     } catch (e) {
       console.error(e)

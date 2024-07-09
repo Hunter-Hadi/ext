@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Usar prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Texto rápido",
-    "category__advanced_text": "Texto avanzado",
-    "category__image_generate": "Imagen",
+    "category__fast_text": "Consultas de texto rápido",
+    "category__advanced_text": "Consultas de texto inteligente",
+    "category__image_generate": "Consultas de imagen",
     "role_label": "Plan actual: {{ROLE}}",
-    "queries": "Consultas",
+    "queries": "Consultas de IA restantes",
     "reset_on_date": "Restablecer el {{DATE}}",
-    "advanced_text__secondary__content": "Consultas avanzadas de texto de alta velocidad: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Asegúrate de tener al menos 1,500 consultas avanzadas de texto de alta velocidad cada mes. Después de alcanzar el límite, la velocidad y calidad del modelo pueden reducirse.",
-    "image_generate__secondary__content": "Consultas de imágenes de alta velocidad: {{QUERIES}}",
+    "advanced_text__secondary__content": "Alta velocidad: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Asegúrese de tener al menos 1,500 consultas de texto inteligente de alta velocidad cada mes. Después de alcanzar el límite, la velocidad y calidad del modelo pueden reducirse.",
+    "image_generate__secondary__content": "Alta velocidad: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Asegúrate de tener al menos 1,500 consultas de imágenes de alta velocidad cada mes. Después de alcanzar el límite, la velocidad y calidad del modelo pueden reducirse.",
     "promotion_plan__text": "Ahorra un 53% al actualizar a MaxAI Elite Anual ahora. 👇"
   },

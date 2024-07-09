@@ -64,12 +64,15 @@ export const isNeedGetSpecialHostPageContent = () => {
   const host = getCurrentDomainHost()
   return [
     'docs.google.com',
-    'cnbc.com',
     'github.com',
-    'timesofindia.indiatimes.com',
+    // 'cnbc.com',
+    // 'timesofindia.indiatimes.com',
   ].find((item) => item === host)
 }
 
+/**
+ * 从特殊网站获取内容
+ */
 export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
   let pageContent = ''
   if (isNeedGetIframePageContent()) {
@@ -80,24 +83,29 @@ export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
     const host = getCurrentDomainHost()
     if (host === 'docs.google.com') {
       pageContent = await getGoogleDocPageContent()
-    } else if (host === 'cnbc.com') {
-      pageContent = await getCnbcPageContent()
     } else if (host === 'github.com') {
       pageContent = await getGithubPageContent()
-    } else if (host === 'timesofindia.indiatimes.com') {
-      const contentContainer = document.querySelector(
-        '#app .nonAppView > .contentwrapper',
-      ) as HTMLDivElement
-      if (contentContainer) {
-        pageContent = getFormattedTextFromNodes(
-          getVisibleTextNodes(contentContainer),
-        )
-        // pageContent = contentContainer.innerText
-      }
     }
+    // else if (host === 'cnbc.com') {
+    //   pageContent = await getCnbcPageContent()
+    // }
+    // else if (host === 'timesofindia.indiatimes.com') {
+    //   const contentContainer = document.querySelector(
+    //     '#app .nonAppView > .contentwrapper',
+    //   ) as HTMLDivElement
+    //   if (contentContainer) {
+    //     pageContent = getFormattedTextFromNodes(
+    //       getVisibleTextNodes(contentContainer),
+    //     )
+    //     // pageContent = contentContainer.innerText
+    //   }
+    // }
   }
   return pageContent.trim()
 }
+
+const isElement = (node: Node): node is HTMLElement =>
+  node.nodeType === Node.ELEMENT_NODE
 
 /**
  * 获取可见文本节点
@@ -112,7 +120,7 @@ export const getVisibleTextNodes = (
   const { selectable } = options
 
   function traverseNodes(node: Node) {
-    if (node.nodeType === Node.TEXT_NODE && node.textContent !== '') {
+    if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim() !== '') {
       // 检查文本节点是否可见
       // const parent = node.parentNode;
       // const style = window.getComputedStyle(parent);
@@ -120,15 +128,19 @@ export const getVisibleTextNodes = (
       //   textNodes.push(node);
       // }
       textNodes.push(node)
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      const style = window.getComputedStyle(node as HTMLElement)
-      const isVisible =
-        style.display !== 'none' && style.visibility !== 'hidden'
+    } else if (isElement(node)) {
+      if (
+        ['script', 'style', 'noscript'].includes(node.tagName.toLowerCase())
+      ) {
+        return
+      }
+      const style = window.getComputedStyle(node)
+      const isVisible = isElementVisible(node, style)
       const isSelectable = isVisible && style.userSelect !== 'none' // && style.pointerEvents !== 'none'
       const flag = selectable ? isSelectable : isVisible
       if (flag) {
         if (
-          !isInlineElement((node as HTMLElement).tagName || '') &&
+          !isInlineElement(node.tagName || '') &&
           textNodes[textNodes.length - 1]
         ) {
           textNodes[textNodes.length - 1].hasEOL = true
@@ -142,6 +154,35 @@ export const getVisibleTextNodes = (
   return textNodes
 }
 
+/**
+ * 判断元素是否可见
+ * @param element
+ * @param style
+ */
+export const isElementVisible = (
+  element: Element,
+  style?: CSSStyleDeclaration,
+) => {
+  if (!style) style = window.getComputedStyle(element)
+  return (
+    // 样式可见
+    style.display !== 'none' &&
+    // style.visibility !== 'hidden' &&
+    // 无隐藏属性
+    !element.hasAttribute('hidden') &&
+    (!element.hasAttribute('aria-hidden') ||
+      element.getAttribute('aria-hidden') != 'true' ||
+      // check for "fallback-image" so that wikimedia math images are displayed
+      (element.className &&
+        element.className.includes &&
+        element.className.includes('fallback-image')))
+  )
+}
+
+/**
+ * 格式化节点文本
+ * @param node
+ */
 export const formattedTextContent = (node: Node & { hasEOL?: boolean }) => {
   const textContent = node.textContent?.replace(/\s+/g, ' ') || ''
   if (node.hasEOL) {
@@ -198,17 +239,11 @@ export const isInlineElement = (tagName: string) => {
 /**
  * 获取Readability.parse解析后的对象
  * 移除对content的序列化
- * @param replaceBody
+ * @param doc
  * @param options
  */
-export const getReadabilityArticle = (
-  replaceBody?: HTMLElement,
-  options?: any,
-) => {
-  const clonedDocument = document.cloneNode(true) as Document
-  if (clonedDocument && replaceBody) {
-    clonedDocument.body.innerHTML = replaceBody.innerHTML
-  }
+export const getReadabilityArticle = (doc?: Document, options?: any) => {
+  const clonedDocument = doc || (document.cloneNode(true) as Document)
   const reader = new Readability(clonedDocument as any, {
     serializer: (el) => el,
     ...options,
@@ -230,7 +265,14 @@ export const getReadabilityPageContent = (
   replaceBody?: HTMLElement,
   options?: any,
 ) => {
-  const readabilityArticle = getReadabilityArticle(replaceBody, options)
+  const clonedDocument = document.cloneNode(true) as Document
+  if (clonedDocument && replaceBody) {
+    clonedDocument.body.innerHTML = replaceBody.innerHTML
+  }
+  // if (!isProbablyReaderable(clonedDocument)) {
+  //   return ''
+  // }
+  const readabilityArticle = getReadabilityArticle(clonedDocument, options)
 
   if (readabilityArticle?.content) {
     // 去掉每行前后的空格
@@ -277,7 +319,10 @@ export const getIframePageContent = async () => {
     if (!result.success) {
       resolve('')
     }
-    let isResolve = false
+    const timer = setTimeout(() => {
+      resolve('')
+      Browser.runtime.onMessage.removeListener(listener)
+    }, 10000)
     const listener = (msg: any) => {
       if (
         msg.id === MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID &&
@@ -285,24 +330,12 @@ export const getIframePageContent = async () => {
           ('Client_ListenGetIframePageContentResponse' as IChromeExtensionClientListenEvent) &&
         msg.data.taskId === taskId
       ) {
-        if (isResolve) {
-          return
-        }
-        isResolve = true
         resolve(msg.data.pageContent)
         Browser.runtime.onMessage.removeListener(listener)
+        clearTimeout(timer)
       }
     }
     Browser.runtime.onMessage.addListener(listener)
-    // 10s超时
-    setTimeout(() => {
-      if (isResolve) {
-        return
-      }
-      isResolve = true
-      resolve('')
-      Browser.runtime.onMessage.removeListener(listener)
-    }, 10000)
   })
 }
 
@@ -312,15 +345,6 @@ export const getIframePageContent = async () => {
 export const getGoogleDocPageContent = async () => {
   return new Promise<string>((resolve) => {
     const eventId = uuidV4()
-    // const script = document.createElement('script')
-    // script.type = 'module'
-    // // 浏览器对于相同url的js文件只会执行一次，这里加个时间戳
-    // script.src = Browser.runtime.getURL(
-    //   `pages/googleDoc/index.js?time=${Date.now()}`,
-    // )
-    // script.setAttribute('data-event-id', eventId)
-    // script.id = 'MAXAI_GOOGLE_DOC_CONTENT_SCRIPT'
-    // document.body.appendChild(script)
     const timer = setTimeout(() => {
       resolve('')
       window.removeEventListener(`${eventId}-res`, listener)

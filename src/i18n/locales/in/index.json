@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Gunakan promp"
   },
   "quota_usage_card": {
-    "category__fast_text": "Teks Cepat",
-    "category__advanced_text": "Teks Lanjutan",
-    "category__image_generate": "Gambar",
+    "category__fast_text": "Pertanyaan teks cepat",
+    "category__advanced_text": "Pertanyaan teks pintar",
+    "category__image_generate": "Pertanyaan gambar",
     "role_label": "Paket saat ini: {{ROLE}}",
-    "queries": "Permintaan",
+    "queries": "Sisa pertanyaan AI",
     "reset_on_date": "Reset pada {{DATE}}",
-    "advanced_text__secondary__content": "Kueri teks lanjutan kecepatan tinggi: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri teks lanjutan kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",
-    "image_generate__secondary__content": "Kueri gambar kecepatan tinggi: {{QUERIES}}",
+    "advanced_text__secondary__content": "Kecepatan tinggi: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Pastikan setidaknya 1.500 pertanyaan teks pintar berkecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",
+    "image_generate__secondary__content": "Kecepatan tinggi: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri gambar kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",
     "promotion_plan__text": "Simpan 53% dengan meng-upgrade ke MaxAI Elite Tahunan sekarang. 👇"
   },

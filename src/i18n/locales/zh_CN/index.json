@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "使用提示"
   },
   "quota_usage_card": {
-    "category__fast_text": "快速文本",
-    "category__advanced_text": "高级文本",
-    "category__image_generate": "图像",
+    "category__fast_text": "快速文本查询",
+    "category__advanced_text": "智能文本查询",
+    "category__image_generate": "图像查询",
     "role_label": "当前计划：{{ROLE}}",
-    "queries": "查询",
+    "queries": "剩余AI查询",
     "reset_on_date": "重置日期：{{DATE}}",
-    "advanced_text__secondary__content": "高速高级文本查询：{{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "确保每月至少1,500次高速高级文本查询。达到限制后，模型的速度和质量可能会降低。",
-    "image_generate__secondary__content": "高速图像查询：{{QUERIES}}",
+    "advanced_text__secondary__content": "高速：{{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "确保每月至少1,500次高速智能文本查询。达到限制后，模型的速度和质量可能会降低。",
+    "image_generate__secondary__content": "高速：{{QUERIES}}",
     "image_generate__secondary__content__tooltip": "确保每月至少1,500次高速图像查询。达到限制后，模型的速度和质量可能会降低。",
     "promotion_plan__text": "立即升级至MaxAI Elite每年，可节省53%。 👇"
   },

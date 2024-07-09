@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Usar prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Texto rápido",
-    "category__advanced_text": "Texto avançado",
-    "category__image_generate": "Imagem",
+    "category__fast_text": "Consultas de texto rápido",
+    "category__advanced_text": "Consultas de texto inteligente",
+    "category__image_generate": "Consultas de imagem",
     "role_label": "Plano atual: {{ROLE}}",
-    "queries": "Consultas",
+    "queries": "Consultas de IA restantes",
     "reset_on_date": "Redefinir em {{DATE}}",
-    "advanced_text__secondary__content": "Consultas avançadas de texto em alta velocidade: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas avançadas de texto em alta velocidade por mês. Após atingir o limite, a velocidade e a qualidade do modelo podem ser reduzidas.",
-    "image_generate__secondary__content": "Consultas de imagem em alta velocidade: {{QUERIES}}",
+    "advanced_text__secondary__content": "Alta velocidade: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas de texto inteligente de alta velocidade por mês. Após atingir o limite, a velocidade e qualidade do modelo podem ser reduzidas.",
+    "image_generate__secondary__content": "Alta velocidade: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas de imagem em alta velocidade por mês. Após atingir o limite, a velocidade e a qualidade do modelo podem ser reduzidas.",
     "promotion_plan__text": "Economize 53% ao atualizar para MaxAI Elite Anual agora. 👇"
   },

@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Χρήση προτροπής"
   },
   "quota_usage_card": {
-    "category__fast_text": "Γρήγορο κείμενο",
-    "category__advanced_text": "Προηγμένο κείμενο",
-    "category__image_generate": "Εικόνα",
+    "category__fast_text": "Γρήγορες κείμενο ερωτήσεις",
+    "category__advanced_text": "Έξυπνες κείμενο ερωτήσεις",
+    "category__image_generate": "Εικόνα ερωτήσεις",
     "role_label": "Τρέχον πλάνο: {{ROLE}}",
-    "queries": "Ερωτήματα",
+    "queries": "Υπόλοιπες ερωτήσεις AI",
     "reset_on_date": "Επαναφορά στις {{DATE}}",
-    "advanced_text__secondary__content": "Ερωτήσεις προηγμένου κειμένου υψηλής ταχύτητας: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Βεβαιωθείτε ότι έχετε τουλάχιστον 1.500 ερωτήσεις προηγμένου κειμένου υψηλής ταχύτητας κάθε μήνα. Μετά την επίτευξη του ορίου, η ταχύτητα και η ποιότητα του μοντέλου μπορεί να μειωθούν.",
-    "image_generate__secondary__content": "Ερωτήσεις εικόνας υψηλής ταχύτητας: {{QUERIES}}",
+    "advanced_text__secondary__content": "Υψηλή ταχύτητα: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Βεβαιωθείτε ότι έχετε τουλάχιστον 1.500 έξυπνες κείμενο ερωτήσεις υψηλής ταχύτητας κάθε μήνα. Αφού φτάσετε το όριο, η ταχύτητα και η ποιότητα του μοντέλου μπορεί να μειωθεί.",
+    "image_generate__secondary__content": "Υψηλή ταχύτητα: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Βεβαιωθείτε ότι έχετε τουλάχιστον 1.500 ερωτήσεις εικόνας υψηλής ταχύτητας κάθε μήνα. Μετά την επίτευξη του ορίου, η ταχύτητα και η ποιότητα του μοντέλου μπορεί να μειωθούν.",
     "promotion_plan__text": "Εξοικονομήστε 53% αναβαθμίζοντας σε MaxAI Elite Ετήσια τώρα. 👇"
   },

@@ -1333,15 +1333,15 @@
     "sidebar_tour__step__5__feature_6__title": "Brug prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Hurtig tekst",
-    "category__advanced_text": "Avanceret tekst",
-    "category__image_generate": "Billede",
+    "category__fast_text": "Hurtige tekstforespørgsler",
+    "category__advanced_text": "Intelligente tekstforespørgsler",
+    "category__image_generate": "Billedforespørgsler",
     "role_label": "Nuværende plan: {{ROLE}}",
-    "queries": "Forespørgsler",
+    "queries": "Resterende AI-forespørgsler",
     "reset_on_date": "Nulstil den {{DATE}}",
-    "advanced_text__secondary__content": "Hurtige avancerede tekstforespørgsler: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige avancerede tekstforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",
-    "image_generate__secondary__content": "Hurtige billedforespørgsler: {{QUERIES}}",
+    "advanced_text__secondary__content": "Høj hastighed: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Sørg for mindst 1.500 intelligente tekstforespørgsler med høj hastighed hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",
+    "image_generate__secondary__content": "Høj hastighed: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige billedforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",
     "promotion_plan__text": "Spar 53% ved at opgradere til MaxAI Elite Årligt nu. 👇"
   },

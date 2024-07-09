@@ -1,4 +1,5 @@
 import {
+  autoUpdate,
   FloatingPortal,
   Placement,
   useClick,
@@ -87,8 +88,11 @@ const FloatingContextMenu: FC<{
     setIsInputCustomVariables,
   } = useInitContextWindow()
 
-  const { currentFloatingContextMenuDraft, activeAIResponseMessage } =
-    useFloatingContextMenuDraft()
+  const {
+    currentFloatingContextMenuDraft,
+    activeAIResponseMessage,
+    historyMessages,
+  } = useFloatingContextMenuDraft()
 
   const {
     hideFloatingContextMenu,
@@ -129,7 +133,7 @@ const FloatingContextMenu: FC<{
       const position = getContextMenuRenderPosition(
         floatingDropdownMenu.rootRect,
         currentWidth,
-        400,
+        250,
       )
       // console.log(
       //   '[ContextMenu Module]: [safePlacement]',
@@ -175,7 +179,8 @@ const FloatingContextMenu: FC<{
     dx: 0,
     dy: 0,
     minWidth: 0,
-    defaultMaxHeight: 400,
+    defaultMaxHeight: 230,
+    resized: true,
   })
 
   floatingSizeOffsetRef.current.minWidth = currentWidth
@@ -262,7 +267,7 @@ const FloatingContextMenu: FC<{
       referenceElementRef,
       floatingSizeOffsetRef,
     ),
-    // whileElementsMounted: autoUpdate,
+    whileElementsMounted: autoUpdate,
   })
   const click = useClick(context)
   const dismiss = useDismiss(context, {
@@ -300,6 +305,7 @@ const FloatingContextMenu: FC<{
       }
       floatingSizeOffsetRef.current.dx = 0
       floatingSizeOffsetRef.current.dy = 0
+      floatingSizeOffsetRef.current.resized = false
 
       update()
     }
@@ -407,6 +413,7 @@ const FloatingContextMenu: FC<{
   const handleResize = (dx: number, dy: number) => {
     floatingSizeOffsetRef.current.dx += dx
     floatingSizeOffsetRef.current.dy += dy
+    floatingSizeOffsetRef.current.resized = true
 
     update()
   }
@@ -431,7 +438,10 @@ const FloatingContextMenu: FC<{
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
         {...getFloatingProps()}
       >
-        <ResizeAnchor onResize={handleResize} />
+        {/* 当开始回答或有回答历史的时候一个调整大小 */}
+        {(historyMessages.length !== 0 || loading) && (
+          <ResizeAnchor onResize={handleResize} />
+        )}
 
         <FloatingContextMenuList
           customOpen

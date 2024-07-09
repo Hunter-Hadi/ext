@@ -508,6 +508,7 @@ type IFloatingSizeOffsetRef = MutableRefObject<{
    * 默认不resize的最大大高度
    */
   defaultMaxHeight: number
+  resized: boolean
 }>
 
 /**
@@ -518,8 +519,10 @@ type IFloatingSizeOffsetRef = MutableRefObject<{
  * WARNING: 只处理了bottom-start, top-start, right和left四种情况
  */
 const sizeMiddleware = ({
+  dragOffsetRef,
   apply,
 }: {
+  dragOffsetRef: IDragOffsetRef
   apply: (args: {
     availableWidth: number
     availableHeight: number
@@ -532,15 +535,18 @@ const sizeMiddleware = ({
       const { x, y, elements, placement } = state
       let availableWidth = 0
       let availableHeight = 0
+      const rect = elements.reference.getBoundingClientRect()
       if (placement.startsWith('bottom') || placement.startsWith('right')) {
         availableWidth = document.documentElement.clientWidth - x
         availableHeight = document.documentElement.clientHeight - y
       } else if (placement.startsWith('top')) {
+        const dragY = dragOffsetRef.current.y + dragOffsetRef.current.prevY
         availableWidth = document.documentElement.clientWidth - x
-        availableHeight = y
+        // availableHeight = rect.top
+        availableHeight = rect.top + dragY
       } else {
-        // left
-        availableWidth = x
+        const dragX = dragOffsetRef.current.x + dragOffsetRef.current.prevX
+        availableWidth = rect.left + dragX
         availableHeight = document.documentElement.clientHeight - y
       }
 
@@ -570,7 +576,7 @@ function filpMiddleware(
   const middleware = flip(options)
 
   return {
-    name: 'myFilp',
+    name: 'flipMiddleware',
     async fn(state) {
       if (
         dragOffsetRef.current.prevX === 0 &&
@@ -612,14 +618,9 @@ export const getFloatingContextMenuMiddleware = (
       return {
         x: currentX,
         y: currentY,
-        reset: {
-          rects: true,
-        },
       }
     },
   }
-
-  let incrementHeight = 0
 
   return [
     filpMiddleware({
@@ -635,15 +636,17 @@ export const getFloatingContextMenuMiddleware = (
     offset(8),
 
     sizeMiddleware({
+      dragOffsetRef,
       apply: ({ availableWidth, availableHeight, elements }) => {
         if (!referenceElementRef.current) return
 
-        const { dx, dy } = floatingSizeOffsetRef.current
+        const { dx, dy, resized } = floatingSizeOffsetRef.current
 
         // 当未调整大小时，使用默认增长大小
-        if (dx === 0 && dy === 0) {
-          elements.floating.style.maxHeight = 'auto'
-          referenceElementRef.current.style.maxHeight = 'auto'
+        if (dx === 0 && dy === 0 && !resized) {
+          elements.floating.style.height = 'auto'
+          referenceElementRef.current.style.height = 'auto'
+          elements.floating.style.width = `${floatingSizeOffsetRef.current.minWidth}px`
           elements.floating.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
           referenceElementRef.current.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
           return
@@ -652,11 +655,6 @@ export const getFloatingContextMenuMiddleware = (
         const minWidth = Math.min(
           floatingSizeOffsetRef.current.minWidth,
           availableWidth,
-        )
-        const minHeight = Math.min(
-          incrementHeight,
-          // floatingSizeOffsetRef.current.minHeight,
-          availableHeight,
         )
 
         let width = minWidth
@@ -673,29 +671,34 @@ export const getFloatingContextMenuMiddleware = (
 
         // 这里处理高度的方法和宽度的稍显不同，因为高度会一开始就限制一个minWidth，
         // 而在刚开始回答时高度不会有minWidth，因为content的内容需要动态增长到maxHeight
-        let height = minHeight
+        let height = 0
+        let maxHeight = 0
         const currentHeight = elements.floating.clientHeight
 
         if (currentHeight <= floatingSizeOffsetRef.current.defaultMaxHeight) {
           // 当未增长到maxHeight的情况下，只需要处理变大的
-          incrementHeight = currentHeight
-          if (dy > 0) {
-            height = incrementHeight + dy
-          }
+          height = dy > 0 ? currentHeight + dy : currentHeight
 
           floatingSizeOffsetRef.current.dy = 0
 
           if (height > availableWidth) {
             height = availableHeight
           }
+
+          maxHeight = height
         } else {
           // 当增长到maxHeight的时候，按正常处理
           const baseHeight = floatingSizeOffsetRef.current.defaultMaxHeight
 
           if (dy > 0) {
             height = baseHeight + dy
+            maxHeight = height
           } else {
+            height = baseHeight
+            maxHeight = height
             floatingSizeOffsetRef.current.dy = 0
+            // height = height + dy
+            // maxHeight = baseHeight
           }
 
           if (height > availableHeight) {
@@ -705,9 +708,9 @@ export const getFloatingContextMenuMiddleware = (
         }
 
         referenceElementRef.current.style.height = `${height}px`
-        referenceElementRef.current.style.maxHeight = `${height}px`
+        referenceElementRef.current.style.maxHeight = `${maxHeight}px`
         elements.floating.style.height = `${height}px`
-        elements.floating.style.maxHeight = `${height}px`
+        elements.floating.style.maxHeight = `${maxHeight}px`
 
         elements.floating.style.width = `${width}px`
       },

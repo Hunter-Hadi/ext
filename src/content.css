@@ -148,6 +148,10 @@ use-chat-gpt-ai-content-menu {
   visibility: hidden;
 }
 .maxai-reading-highlight {
-  background-color: rgba(2, 118, 255, 0.2) !important;
+  background-color: rgba(2, 118, 255, 0.2);
+}
+.maxai-reading-highlight:hover {
+  background-color: rgba(2, 118, 255, 0.6);
+  cursor: pointer;
 }
 /*gmail end*/

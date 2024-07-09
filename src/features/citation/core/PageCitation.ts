@@ -71,34 +71,53 @@ export default class PageCitation implements ICitationService {
       })
       .map((item) => {
         const element = item as HTMLElement
-        // TODO 更改高亮颜色
-        // element.classList.add('maxai-reading-highlight')
-        return element
+        const listener = (event: Event) => {
+          event.stopPropagation()
+          event.preventDefault()
+          const range = document.createRange()
+          range.setStart(element.firstChild!, 0)
+          range.setEnd(
+            element.lastChild!,
+            element.lastChild?.nodeValue?.length || 0,
+          )
+          const selection = window.getSelection()
+          if (selection) {
+            selection.removeAllRanges()
+            selection.addRange(range)
+            this.dispatchContextMenu(element)
+          }
+        }
+        element.classList.add('maxai-reading-highlight')
+        element.addEventListener('click', listener)
+        return { element, listener }
       })
     const range = document.createRange()
-    const start = containers[0]
-    const end = containers[containers.length - 1]
+    const start = containers[0]?.element
+    const end = containers[containers.length - 1]?.element
     range.setStart(start.firstChild!, 0)
     range.setEnd(end.lastChild!, end.lastChild?.nodeValue?.length || 0)
-    const selection = window.getSelection()
-    if (selection) {
-      selection.removeAllRanges()
-      selection.addRange(range)
-      scrollToRange(selection.getRangeAt(0))
-      await this.dispatchContextMenu(start)
+    // const selection = window.getSelection()
+    // if (selection) {
+    //   selection.removeAllRanges()
+    //   selection.addRange(range)
+    //   scrollToRange(selection.getRangeAt(0))
+    //   await this.dispatchContextMenu(start)
+    // }
+    scrollToRange(range)
+    const mouseDownListener = (event: Event) => {
+      if (
+        event.target &&
+        containers.find((item) => item.element === event.target)
+      ) {
+        return
+      }
+      containers.forEach(({ element, listener }) => {
+        element.classList.remove('maxai-reading-highlight')
+        element.removeEventListener('click', listener)
+      })
+      document.body.removeEventListener('mousedown', mouseDownListener)
     }
-    // scrollToRange(range.cloneRange())
-    // setTimeout(() => {
-    //   document.body.addEventListener(
-    //     'click',
-    //     () => {
-    //       containers.forEach((element) => {
-    //         element.classList.remove('maxai-reading-highlight')
-    //       })
-    //     },
-    //     { once: true },
-    //   )
-    // }, 100)
+    document.body.addEventListener('mousedown', mouseDownListener)
   }
 
   /**

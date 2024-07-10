@@ -163,7 +163,9 @@ const useClientChat = () => {
   ) => {
     const { beforeActions = [], afterActions = [] } = options || {}
     if (!question.meta?.attachments) {
-      const attachments = await getAttachments(question.conversationId)
+      const attachments = (
+        await getAttachments(question.conversationId)
+      ).filter((item) => item.uploadStatus === 'success')
       if (attachments.length > 0) {
         await updateClientConversationLoading(true)
         if (!(await checkAttachments(attachments))) {

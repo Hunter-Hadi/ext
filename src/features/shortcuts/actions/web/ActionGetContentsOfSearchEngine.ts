@@ -110,10 +110,12 @@ export class ActionGetContentsOfSearchEngine extends Action {
             )
             const { html, status, videos } = await clientGetContentOfURL(
               fullSearchURL,
-              20 * 1000,
-              abortTaskId,
-              false,
-              isCopilot,
+              {
+                timeout: 20 * 1000,
+                abortTaskId,
+                needImage: false,
+                needVideo: isCopilot,
+              },
             )
 
             if (videos) videosSource = [...videosSource, ...videos]

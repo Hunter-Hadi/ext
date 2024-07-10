@@ -73,11 +73,10 @@ export class ActionGetContentsOfURL extends Action {
             return
           }
         }
-        const response = await clientGetContentOfURL(
-          currentUrl,
-          10000,
-          this.taskId,
-        )
+        const response = await clientGetContentOfURL(currentUrl, {
+          timeout: 10000,
+          abortTaskId: this.taskId,
+        })
         // NOTE: webgpt的代码是错误和成功都会返回data，所以这里也要这样写
         if (response.success) {
           if (response.readabilityText.trim() === '') {

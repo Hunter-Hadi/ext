@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_POST_MESSAGE_WITH_WEB_PAGE_ID } from '@/features/common/constants'
 import { MaxAIPostMessageWithWebPageType } from '@/features/common/utils/postMessageToCRX'
+import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import clientGetContentOfURL from '@/features/shortcuts/utils/web/clientGetContentOfURL'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -161,27 +162,38 @@ const useInitWebPageMessageChannel = () => {
           case 'CLIENT_GET_CONTENT_OF_URL': {
             const { url, timeout, abortTaskId, needImage, needVideo } = data
 
-            const { html, status, videos, success } =
-              await clientGetContentOfURL(
-                url,
-                timeout,
-                abortTaskId,
-                needImage,
-                needVideo,
-              )
+            const res = await clientGetContentOfURL(
+              url,
+              timeout,
+              abortTaskId,
+              needImage,
+              needVideo,
+            )
 
             responseDataToPage(taskId, event.origin, {
-              success: success,
-              message: success ? 'success' : 'error',
+              success: res?.success,
+              message: res?.success ? 'success' : 'error',
               data: {
-                html,
-                status,
-                videos,
+                ...res,
               },
             })
             return
           }
-          case 'Client_proxyFetchAPI': {
+          case 'CLIENT_GET_YOUTUBE_DOCUMENT': {
+            const { youtubeVideoId, abortTaskId } = data
+
+            const postContextData =
+              await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
+                youtubeVideoId,
+                abortTaskId,
+              )
+            responseDataToPage(taskId, event.origin, {
+              success: true,
+              message: 'success',
+              data: {
+                postContextData,
+              },
+            })
             return
           }
           case 'OPEN_SIDEBAR': {

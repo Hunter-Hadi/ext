@@ -77,7 +77,6 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       // const addActions: ISetActionsType = []
       const sourceMedia = {
         images: [] as any[],
-        videos: [] as any[],
       }
       if (summarizeType === 'NO_SUMMARIZE') {
         for (let i = 0; i < searchResults.length; i++) {
@@ -163,7 +162,6 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                   [...sourceMedia.images, ...result.images],
                   'src',
                 )
-                // sourceMedia.videos = [...sourceMedia.videos, ...result.videos]
               }
               // 2. 获取页面内容成功时，用页面内容替换 body、title
               if (pageRawContent.success) {

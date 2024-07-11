@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Tark AI",
     "category__image_generate": "Pildi AI",
     "role_label": "Praegune plaan: {{ROLE}}",
-    "queries": "Päringud jäänud",
+    "queries": "Jäänud AI päringud",
     "reset_on_date": "Lähtestamine kuupäeval {{DATE}}",
     "advanced_text__secondary__content": "Kõrge kiirusega tark AI päringud: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret edasijõudnud tekstipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",

@@ -1338,7 +1338,7 @@
     "category__advanced_text": "IA Intelligente",
     "category__image_generate": "IA d'Image",
     "role_label": "Plan actuel : {{ROLE}}",
-    "queries": "Requêtes restantes",
+    "queries": "Requêtes IA restantes",
     "reset_on_date": "Réinitialisation le {{DATE}}",
     "advanced_text__secondary__content": "Requêtes IA intelligente à haute vitesse: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes de texte avancé à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites.",

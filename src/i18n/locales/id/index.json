@@ -1338,7 +1338,7 @@
     "category__advanced_text": "AI Cerdas",
     "category__image_generate": "AI Gambar",
     "role_label": "Paket saat ini: {{ROLE}}",
-    "queries": "Sisa Kueri",
+    "queries": "Sisa kueri AI",
     "reset_on_date": "Reset pada {{DATE}}",
     "advanced_text__secondary__content": "Kueri AI cerdas berkecepatan tinggi: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri teks lanjutan kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",

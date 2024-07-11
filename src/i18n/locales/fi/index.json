@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Älykäs tekoäly",
     "category__image_generate": "Kuva tekoäly",
     "role_label": "Nykyinen suunnitelma: {{ROLE}}",
-    "queries": "Jäljellä olevat kyselyt",
+    "queries": "Jäljellä olevat AI-kyselyt",
     "reset_on_date": "Nollaa päivämäärään {{DATE}}",
     "advanced_text__secondary__content": "Korkeanopeuksiset älykkäät tekoälykyselyt: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa edistynyttä tekstikyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",

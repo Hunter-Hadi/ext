@@ -1338,7 +1338,7 @@
     "category__advanced_text": "স্মার্ট AI",
     "category__image_generate": "চিত্র AI",
     "role_label": "বর্তমান পরিকল্পনা: {{ROLE}}",
-    "queries": "অনুসন্ধান বাকি",
+    "queries": "অবশিষ্ট এআই জিজ্ঞাসা",
     "reset_on_date": "{{DATE}} তারিখে রিসেট হবে",
     "advanced_text__secondary__content": "উচ্চ গতির স্মার্ট AI অনুসন্ধানগুলি: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "মাসিক কমপক্ষে 1,500 উচ্চ গতির এডভান্সড টেক্সট ক্যুয়েরি নিশ্চিত করুন। সীমা অর্জন করার পরে মডেলের গতি এবং মান হ্রাস হতে পারে।",

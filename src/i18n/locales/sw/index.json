@@ -1338,7 +1338,7 @@
     "category__advanced_text": "AI Mjanja",
     "category__image_generate": "Picha ya AI",
     "role_label": "Mpango wa sasa: {{ROLE}}",
-    "queries": "Majibu yaliyobaki",
+    "queries": "Ombi la AI lililobaki",
     "reset_on_date": "Weka upya tarehe {{DATE}}",
     "advanced_text__secondary__content": "Majibu ya AI mjanja ya kasi kubwa: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya maandishi ya juu kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",

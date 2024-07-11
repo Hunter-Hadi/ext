@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Viedais AI",
     "category__image_generate": "Attēla AI",
     "role_label": "Pašreizējais plāns: {{ROLE}}",
-    "queries": "Atlikušie vaicājumi",
+    "queries": "Atlikušie AI vaicājumi",
     "reset_on_date": "Atiestatīt {{DATE}}",
     "advanced_text__secondary__content": "Augstās ātruma viedie AI vaicājumi: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma papildinātus teksta vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",

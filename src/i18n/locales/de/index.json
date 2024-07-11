@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Intelligente KI",
     "category__image_generate": "Bild-KI",
     "role_label": "Aktueller Plan: {{ROLE}}",
-    "queries": "Verbleibende Abfragen",
+    "queries": "Verbleibende KI-Abfragen",
     "reset_on_date": "Zurücksetzen am {{DATE}}",
     "advanced_text__secondary__content": "Hochgeschwindigkeitsintelligente KI-Abfragen: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits fortgeschrittene Textabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",

@@ -1338,7 +1338,7 @@
     "category__advanced_text": "AI חכם",
     "category__image_generate": "AI ליצירת תמונות",
     "role_label": "תוכנית נוכחית: {{ROLE}}",
-    "queries": "שאילתות שנותרו",
+    "queries": "שאילתות AI הנותרות",
     "reset_on_date": "איפוס בתאריך {{DATE}}",
     "advanced_text__secondary__content": "שאילתות AI חכמות במהירות גבוהה: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "וודא לפחות 1,500 שאילתות בטקסט מתקדמות במהירות גבוהה בכל חודש. לאחר הגעת למגבלה, המהירות והאיכות של הדגם עשויות להיפחת.",

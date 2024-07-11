@@ -1338,7 +1338,7 @@
     "category__advanced_text": "هوش مصنوعی هوشمند",
     "category__image_generate": "هوش مصنوعی تصویر",
     "role_label": "طرح فعلی: {{ROLE}}",
-    "queries": "مابقی پرس‌وجوها",
+    "queries": "درخواست‌های باقیمانده هوش مصنوعی",
     "reset_on_date": "بازنشانی در {{DATE}}",
     "advanced_text__secondary__content": "پرس‌وجوهای هوش مصنوعی هوشمند با سرعت بالا: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "حداقل 1,500 کوئری پیشرفته متنی با سرعت بالا را در هر ماه تضمین کنید. پس از رسیدن به حد، سرعت و کیفیت مدل ممکن است کاهش یابد.",

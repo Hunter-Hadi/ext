@@ -1338,7 +1338,7 @@
     "category__advanced_text": "AI Intelligente",
     "category__image_generate": "AI per Immagini",
     "role_label": "Piano attuale: {{ROLE}}",
-    "queries": "Query rimanenti",
+    "queries": "Query AI rimanenti",
     "reset_on_date": "Reset il {{DATE}}",
     "advanced_text__secondary__content": "Query AI intelligente ad alta velocità: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Assicurati almeno 1.500 query avanzate di testo ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",

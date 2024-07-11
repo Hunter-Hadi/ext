@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Smart AI",
     "category__image_generate": "Bild AI",
     "role_label": "Nuvarande plan: {{ROLE}}",
-    "queries": "Återstående frågor",
+    "queries": "Återstående AI-förfrågningar",
     "reset_on_date": "Återställs den {{DATE}}",
     "advanced_text__secondary__content": "Hög hastighet smarta AI-frågor: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Se till att du har minst 1 500 höghastighetsavancerade textfrågor varje månad. Efter att gränsen har nåtts kan modellens hastighet och kvalitet minskas.",

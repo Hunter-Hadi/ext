@@ -1338,7 +1338,7 @@
     "category__advanced_text": "AI inteligent",
     "category__image_generate": "AI pentru imagini",
     "role_label": "Plan curent: {{ROLE}}",
-    "queries": "Interogări rămase",
+    "queries": "Interogări AI rămase",
     "reset_on_date": "Resetare la data de {{DATE}}",
     "advanced_text__secondary__content": "Interogări AI inteligente de mare viteză: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Asigură cel puțin 1.500 de interogări avansate de text de mare viteză în fiecare lună. După atingerea limitei, viteza și calitatea modelului pot fi reduse.",

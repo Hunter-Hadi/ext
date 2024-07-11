@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Inteligentné AI",
     "category__image_generate": "Obrazové AI",
     "role_label": "Súčasný plán: {{ROLE}}",
-    "queries": "Zostávajúce otázky",
+    "queries": "Zostávajúce AI dotazy",
     "reset_on_date": "Resetovať dňa {{DATE}}",
     "advanced_text__secondary__content": "Vysokorýchlostné inteligentné AI otázky: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych pokročilých textových dotazov každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu.",

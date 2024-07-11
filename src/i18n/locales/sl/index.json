@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Pametni AI",
     "category__image_generate": "Slikovni AI",
     "role_label": "Trenutni načrt: {{ROLE}}",
-    "queries": "Preostali poizvedbi",
+    "queries": "Preostali AI poizvedbi",
     "reset_on_date": "Ponastavi se na {{DATE}}",
     "advanced_text__secondary__content": "Hitre pametne AI poizvedbe: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zagotovite vsaj 1.500 visokohitrostnih naprednih besedilnih povpraševanj vsak mesec. Po dosegi omejitve se lahko hitrost in kakovost modela zmanjšata.",

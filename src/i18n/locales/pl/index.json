@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Inteligentne AI",
     "category__image_generate": "AI do generowania obrazów",
     "role_label": "Obecny plan: {{ROLE}}",
-    "queries": "Pozostałe zapytania",
+    "queries": "Pozostałe zapytania AI",
     "reset_on_date": "Resetuje się {{DATE}}",
     "advanced_text__secondary__content": "Szybkie zapytania inteligentnego AI: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zapewnij co najmniej 1500 zapytań zaawansowanych tekstowych o dużej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",

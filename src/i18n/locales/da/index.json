@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Intelligent AI",
     "category__image_generate": "Billede AI",
     "role_label": "Nuværende plan: {{ROLE}}",
-    "queries": "Resterende forespørgsler",
+    "queries": "Resterende AI-forespørgsler",
     "reset_on_date": "Nulstil den {{DATE}}",
     "advanced_text__secondary__content": "Hurtige intelligente AI-forespørgsler: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige avancerede tekstforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",

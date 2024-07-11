@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Smart AI",
     "category__image_generate": "Bilde AI",
     "role_label": "Nåværende plan: {{ROLE}}",
-    "queries": "Spørringer igjen",
+    "queries": "Gjenstående AI-forespørsler",
     "reset_on_date": "Tilbakestilles den {{DATE}}",
     "advanced_text__secondary__content": "Hurtige smarte AI-spørringer: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets avanserte tekstspørringer hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres.",

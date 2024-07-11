@@ -1338,7 +1338,7 @@
     "category__advanced_text": "સ્માર્ટ AI",
     "category__image_generate": "ચિત્ર AI",
     "role_label": "વર્તમાન પ્લાન: {{ROLE}}",
-    "queries": "વિચારો બાકી છે",
+    "queries": "બાકી AI પૂછતાં",
     "reset_on_date": "{{DATE}} પર રીસેટ થશે",
     "advanced_text__secondary__content": "ઉચ્ચ ગતિવાળી સ્માર્ટ AI વિચારો: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "મહિનેની કમાલ કમાલ એડવાન્સ ટેક્સ્ટ પ્રશ્નો ખોલવા માટે 1,500 કમાલ કમાલ પ્રશ્નો આપો. મર્યાદા પૂરી થઈ જતી પછી, મોડેલની ગતિ અને ગુણવત્તા ઘટી શકે છે.",

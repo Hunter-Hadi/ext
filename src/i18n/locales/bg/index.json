@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Умно AI",
     "category__image_generate": "Изображение AI",
     "role_label": "Текущ план: {{ROLE}}",
-    "queries": "Оставащи заявки",
+    "queries": "Оставащи AI заявки",
     "reset_on_date": "Нулиране на {{DATE}}",
     "advanced_text__secondary__content": "Бързи умни AI заявки: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Уверете се, че имате поне 1,500 бързи напреднали текстови заявки всеки месец. След достигане на лимита, скоростта и качеството на модела могат да бъдат намалени.",

@@ -1338,7 +1338,7 @@
     "category__advanced_text": "ذكاء اصطناعي ذكي",
     "category__image_generate": "صورة الذكاء الاصطناعي",
     "role_label": "الخطة الحالية: {{ROLE}}",
-    "queries": "الاستعلامات المتبقية",
+    "queries": "الاستعلامات المتبقية للذكاء الاصطناعي",
     "reset_on_date": "إعادة التعيين في {{DATE}}",
     "advanced_text__secondary__content": "استعلامات ذكاء اصطناعي ذكي بسرعة عالية: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "تأكد من وجود ما لا يقل عن 1,500 استعلام نص متقدم عالي السرعة كل شهر. بعد الوصول إلى الحد، قد يتم تقليل سرعة وجودة النموذج.",

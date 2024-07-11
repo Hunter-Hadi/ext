@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Умный ИИ",
     "category__image_generate": "Изображение ИИ",
     "role_label": "Текущий план: {{ROLE}}",
-    "queries": "Оставшиеся запросы",
+    "queries": "Оставшиеся запросы ИИ",
     "reset_on_date": "Сбросить на {{DATE}}",
     "advanced_text__secondary__content": "Быстрые умные запросы ИИ: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Убедитесь, что каждый месяц у вас есть не менее 1 500 быстрых запросов расширенного текста. После достижения лимита скорость и качество модели могут быть снижены.",

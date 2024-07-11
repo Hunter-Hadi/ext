@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Розумний ШІ",
     "category__image_generate": "ШІ для зображень",
     "role_label": "Поточний план: {{ROLE}}",
-    "queries": "Запити залишилося",
+    "queries": "Залишилося запитів ШІ",
     "reset_on_date": "Скидається {{DATE}}",
     "advanced_text__secondary__content": "Швидкі розумні запити ШІ: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Забезпечте щонайменше 1 500 швидких розширених текстових запитів щомісяця. Після досягнення ліміту швидкість та якість моделі можуть бути знижені.",

@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Okos AI",
     "category__image_generate": "Kép AI",
     "role_label": "Jelenlegi terv: {{ROLE}}",
-    "queries": "Hátralévő lekérdezések",
+    "queries": "Hátralévő AI lekérdezések",
     "reset_on_date": "Visszaállítás ekkor: {{DATE}}",
     "advanced_text__secondary__content": "Magas sebességű okos AI lekérdezések: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű előrehaladott szöveg lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",

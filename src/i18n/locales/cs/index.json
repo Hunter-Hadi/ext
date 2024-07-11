@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Chytré AI",
     "category__image_generate": "Obrázkové AI",
     "role_label": "Aktuální plán: {{ROLE}}",
-    "queries": "Zbývající dotazy",
+    "queries": "Zbývající dotazy AI",
     "reset_on_date": "Resetovat dne: {{DATE}}",
     "advanced_text__secondary__content": "Rychlé chytré AI dotazy: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých pokročilých textových dotazů každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu.",

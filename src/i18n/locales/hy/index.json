@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Մտերասահ AI",
     "category__image_generate": "Պատկեր AI",
     "role_label": "Ընթացիկ պլան՝ {{ROLE}}",
-    "queries": "Հարցումներ մնացել են",
+    "queries": "Մնացորդ AI հարցեր",
     "reset_on_date": "Վերականգնել {{DATE}}-ին",
     "advanced_text__secondary__content": "Արագ մտերասահ AI հարցումներ: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Հավասարականացրեք առավելագույնը 1,500 արագ առաջադրանք ամիսը: Առավելագույնը սահմանին հասանելի չէ, ապա մոդելի արագությունը և որակը կարող են լուծարվել:",

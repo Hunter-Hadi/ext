@@ -1338,7 +1338,7 @@
     "category__advanced_text": "IA Inteligente",
     "category__image_generate": "IA de Imagem",
     "role_label": "Plano atual: {{ROLE}}",
-    "queries": "Consultas restantes",
+    "queries": "Consultas de IA restantes",
     "reset_on_date": "Redefinir em {{DATE}}",
     "advanced_text__secondary__content": "Consultas de IA inteligente de alta velocidade: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas avançadas de texto em alta velocidade por mês. Após atingir o limite, a velocidade e a qualidade do modelo podem ser reduzidas.",

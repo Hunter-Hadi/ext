@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Pametna AI",
     "category__image_generate": "Generisanje slika AI",
     "role_label": "Trenutni plan: {{ROLE}}",
-    "queries": "Preostali upiti",
+    "queries": "Preostali AI upiti",
     "reset_on_date": "Resetovanje {{DATE}}",
     "advanced_text__secondary__content": "Brzi pametni AI upiti: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Obezbedite najmanje 1.500 brzih naprednih tekstualnih upita svakog meseca. Nakon dostizanja limita, brzina i kvalitet modela mogu biti smanjeni.",

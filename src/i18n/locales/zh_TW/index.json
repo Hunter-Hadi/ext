@@ -1338,7 +1338,7 @@
     "category__advanced_text": "智能AI",
     "category__image_generate": "圖像AI",
     "role_label": "當前計劃：{{ROLE}}",
-    "queries": "剩餘查詢",
+    "queries": "剩餘AI查詢",
     "reset_on_date": "重置於{{DATE}}",
     "advanced_text__secondary__content": "高速智能AI查詢：{{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "每月至少確保1,500次高速高級文本查詢。達到限制後，模型的速度和質量可能會降低。",

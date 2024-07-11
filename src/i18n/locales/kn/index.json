@@ -1338,7 +1338,7 @@
     "category__advanced_text": "ಸ್ಮಾರ್ಟ್ AI",
     "category__image_generate": "ಇಮೇಜ್ AI",
     "role_label": "ಪ್ರಸ್ತುತ ಯೋಜನೆ: {{ROLE}}",
-    "queries": "ವಿಚಾರಣೆಗಳು ಉಳಿದಿವೆ",
+    "queries": "ಉಳಿದ AI ಪ್ರಶ್ನೆಗಳು",
     "reset_on_date": "{{DATE}} ನೇರಕ್ಕೆ ಮರುಹೊಂದಿಸಲಾಗುವುದು",
     "advanced_text__secondary__content": "ಹೈ-ಸ್ಪೀಡ್ ಸ್ಮಾರ್ಟ್ AI ವಿಚಾರಣೆಗಳು: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "ಕಡಿಮೆಯಾಗಿಲ್ಲದೆ ಪ್ರತಿ ತಿಂಗಳು 1,500 ಹೆಚ್ಚು ವೇಗದ ಪ್ರಾಧಾನ್ಯತಾಪೂರ್ಣ ಪಠ್ಯ ಪ್ರಶ್ನೆಗಳನ್ನು ಖಚಿತಪಡಿಸಿ. ಮಿತಿಯನ್ನು ತಲುಪಿದ ನಂತರ, ಮಾದರಿಯ ವೇಗ ಮತ್ತು ಗುಣಮಟ್ಟ ಕಡಿಮೆಯಾಗಬಹುದು.",

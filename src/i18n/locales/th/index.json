@@ -1338,7 +1338,7 @@
     "category__advanced_text": "AI อย่างฉลาด",
     "category__image_generate": "AI สร้างรูปภาพ",
     "role_label": "แผนปัจจุบัน: {{ROLE}}",
-    "queries": "คิวรี่ที่เหลือ",
+    "queries": "คิวรี่ AI ที่เหลือ",
     "reset_on_date": "รีเซ็ตเมื่อ {{DATE}}",
     "advanced_text__secondary__content": "คิวรี่ AI อย่างฉลาดที่เร็ว: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "ให้แน่ใจว่ามีคำถามข้อความขั้นสูงความเร็วสูงอย่างน้อย 1,500 คำถามต่อเดือน หลังจากถึงขีดจำกัด ความเร็วและคุณภาพของโมเดลอาจลดลง",

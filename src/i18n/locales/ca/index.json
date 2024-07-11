@@ -1338,7 +1338,7 @@
     "category__advanced_text": "IA Intel·ligent",
     "category__image_generate": "IA d'Imatge",
     "role_label": "Pla actual: {{ROLE}}",
-    "queries": "Consultes restants",
+    "queries": "Consultes d'IA restants",
     "reset_on_date": "Reinicia el {{DATE}}",
     "advanced_text__secondary__content": "Consultes d'IA intel·ligent d'alta velocitat: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes avançades de text d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",

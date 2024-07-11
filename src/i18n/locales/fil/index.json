@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Matalinong AI",
     "category__image_generate": "AI ng Larawan",
     "role_label": "Kasalukuyang plano: {{ROLE}}",
-    "queries": "Mga natitirang queries",
+    "queries": "Natitirang AI queries",
     "reset_on_date": "I-reset sa {{DATE}}",
     "advanced_text__secondary__content": "Mataas na bilis ng matalinong AI queries: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Siguraduhing mayroong hindi bababa sa 1,500 high-speed advanced text query bawat buwan. Pagkatapos maabot ang limitasyon, maaaring bawasan ang bilis at kalidad ng modelo.",

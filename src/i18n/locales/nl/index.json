@@ -1338,7 +1338,7 @@
     "category__advanced_text": "Slimme AI",
     "category__image_generate": "Afbeelding AI",
     "role_label": "Huidig plan: {{ROLE}}",
-    "queries": "Overgebleven vragen",
+    "queries": "Resterende AI queries",
     "reset_on_date": "Reset op {{DATE}}",
     "advanced_text__secondary__content": "Hoge-snelheid slimme AI-vragen: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid geavanceerde tekstvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",

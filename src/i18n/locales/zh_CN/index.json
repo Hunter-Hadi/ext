@@ -1338,7 +1338,7 @@
     "category__advanced_text": "智能AI",
     "category__image_generate": "图像AI",
     "role_label": "当前计划：{{ROLE}}",
-    "queries": "剩余查询",
+    "queries": "剩余AI查询",
     "reset_on_date": "重置日期：{{DATE}}",
     "advanced_text__secondary__content": "高速智能AI查询：{{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "确保每月至少1,500次高速高级文本查询。达到限制后，模型的速度和质量可能会降低。",

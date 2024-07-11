@@ -1,5 +1,4 @@
 import hmac_sha1 from 'crypto-js/hmac-sha1'
-import dayjs from 'dayjs'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import { sm3 } from 'sm-crypto'
@@ -7,10 +6,13 @@ import Browser, { Runtime } from 'webextension-polyfill'
 
 import { getMaxAIChromeExtensionInstalledDeviceId } from '@/background/utils/getMaxAIChromeExtensionInstalledDeviceId'
 import { APP_VERSION } from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import {
   aesJsonEncrypt,
   APP_AES_ENCRYPTION_KEY,
   APP_SM3_HASH_KEY,
+  convertHexToString,
+  getMaxAIAPIFetchTimestamp,
 } from '@/features/security'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
 
@@ -58,32 +60,6 @@ export const backgroundGetCurrentDomainHost = (fromUrl: string) => {
 }
 
 /**
- * 将字符串转换为16进制表示
- * @param inputString - 需要转换的字符串
- * @returns 16进制表示的字符串
- */
-export const convertStringToHex = (inputString: string): string => {
-  let hexRepresentation = ''
-  for (let i = 0; i < inputString.length; i++) {
-    hexRepresentation += inputString.charCodeAt(i).toString(16)
-  }
-  return hexRepresentation
-}
-
-/**
- * 将16进制转换为字符串
- * @param hexString - 需要转换的16进制字符串
- * @returns 解码后的字符串
- */
-export const convertHexToString = (hexString: string): string => {
-  let decodedString = ''
-  for (let i = 0; i < hexString.length; i += 2) {
-    decodedString += String.fromCharCode(parseInt(hexString.substr(i, 2), 16))
-  }
-  return decodedString
-}
-
-/**
  * 用于所有的请求添加一些 header
  */
 class BackgroundRequestHeadersGenerator {
@@ -95,6 +71,7 @@ class BackgroundRequestHeadersGenerator {
       sender: Runtime.MessageSender
     }
   > = new Map()
+
   async addTaskIdHeaders(taskId: string, sender: Runtime.MessageSender) {
     // "{\"browser\":{\"name\":\"Chrome\",\"version\":\"125.0.0.0\",\"major\":\"125\"},\"os\":{\"name\":\"Mac OS\",\"version\":\"10.15.7\"}}"
     const uaInfo = await backgroundGetBrowserUAInfo()
@@ -123,9 +100,9 @@ class BackgroundRequestHeadersGenerator {
       [convertHexToString(`582d436c69656e742d446f6d61696e`)]: domain,
       // X-Client-Path
       [convertHexToString(`582d436c69656e742d50617468`)]: path,
-      // T
-      [convertHexToString(`54`)]: dayjs(new Date().getTime()).unix(),
-      // D
+      // t
+      [convertHexToString(`74`)]: await getMaxAIAPIFetchTimestamp(),
+      // d
       [convertHexToString(`44`)]:
         await getMaxAIChromeExtensionInstalledDeviceId(),
     }
@@ -136,6 +113,7 @@ class BackgroundRequestHeadersGenerator {
     })
     this.removeUnusedTaskIdHeaders()
   }
+
   removeUnusedTaskIdHeaders() {
     const now = Date.now()
     for (const [taskId, { createdTime }] of this.taskIdHeadersMap) {
@@ -144,19 +122,82 @@ class BackgroundRequestHeadersGenerator {
       }
     }
   }
-  getTaskIdHeaders(taskId?: string, initBody?: BodyInit) {
+
+  async getTaskIdHeaders(taskId: string, input: string, initBody?: BodyInit) {
     const headers = new Headers(
       taskId ? this.taskIdHeadersMap.get(taskId)?.headers : {},
     )
-    if (headers.has(convertHexToString(`54`))) {
+
+    if (headers.has(convertHexToString(`74`))) {
       const body = initBody || ''
       // sm3(hmac_sha1(payload, secret_key)secret_key)
-      const payloadHash = sm3(
-        hmac_sha1(
-          typeof body === 'string' ? body : JSON.stringify(body),
-          APP_SM3_HASH_KEY,
-        ).toString() + APP_SM3_HASH_KEY,
+      // api_full_path: 请求的完全路径，包含查询参数，不携带fragment ，注意需要对 URL 做解码
+      //             - 例: `http://127.0.0.1:8001/tt?a=b&a=c&a=d&b=%E8%A7%A3#htest` => `/tt?a=b&a=c&a=d&b=解`
+      //             -  `/tt?` 问号后面没有查询参数需要删除问号 -> `/tt`
+      const apiURL = new URL(input)
+      let api_full_path = apiURL.pathname + apiURL.search
+      if (api_full_path.endsWith('?')) {
+        api_full_path = api_full_path.slice(0, -1)
+      }
+      // req_json: 请求的 json 体，如果为空则当`{}`处理
+      //          - 例: `{"a":1,"b":2}` => `{"a":1,"b":2}`
+      //          - 例: `""` => `{}`
+      //          - 例: `null` => `{}`
+      //          - 例: `undefined` => `{}`
+      let req_json = '{}'
+      if (typeof body === 'string') {
+        try {
+          req_json = JSON.stringify(JSON.parse(body))
+        } catch (e) {
+          req_json = '{}'
+        }
+      }
+      // req_data: 请求的 form 表单，如果为空则当`{}`处理
+      //          - 例: `{"a":1,"b":2}` => `{"a":1,"b":2}`
+      //          - 例: `""` => `{}`
+      //          - 例: `null` => `{}`
+      //          - 例: `undefined` => `{}`
+      let req_data = '{}'
+      if (body instanceof FormData) {
+        const jsonData: Record<string, any> = {}
+        body.forEach((value, key) => {
+          if (!(value instanceof File)) {
+            jsonData[key] = String(value)
+          }
+        })
+        req_data = JSON.stringify(jsonData)
+      }
+      // req_time: 请求的时间，精确到千分之秒
+      //          - 例: `1634021280000` => `1634021280000`
+      const req_time = Number(headers.get(convertHexToString(`74`)))
+      const app_version = APP_VERSION
+      const user_agent = navigator.userAgent
+      const user_token = await getMaxAIChromeExtensionAccessToken()
+      const sign_str = `${app_version}:${req_time}:${api_full_path}:${user_agent}:${req_json}:${req_data}:${user_token}`
+      const sha1_secret_key = `${req_time}:${APP_SM3_HASH_KEY}`
+      const sha1_hash = hmac_sha1(sign_str, sha1_secret_key).toString()
+      const sm3_sign = sm3(`${req_time}:${sha1_hash}:${APP_SM3_HASH_KEY}`)
+      console.log(
+        `
+MAXAI_API_FETCH_LOG:\n
+body:\n,
+`,
+        typeof body === 'string' ? body : body,
+        `
+\napi_full_path: ${api_full_path}\n
+req_json: ${req_json}\n
+req_data: ${req_data}\n
+req_time: ${req_time}\n
+app_version: ${app_version}\n
+user_agent: ${user_agent}\n
+user_token: ${user_token}\n
+sign_str: ${sign_str}\n
+sha1_secret_key: ${sha1_secret_key}\n
+sha1_hash: ${sha1_hash}\n
+sm3_sign: ${sm3_sign}\n
+      `,
       )
+      const payloadHash = sm3_sign
       // X-Authorization
       headers.set(
         convertHexToString(`582d417574686f72697a6174696f6e`),
@@ -170,12 +211,12 @@ class BackgroundRequestHeadersGenerator {
             [convertHexToString(`582d436c69656e742d50617468`)]: headers.get(
               convertHexToString(`582d436c69656e742d50617468`),
             ),
-            // T
-            [convertHexToString(`54`)]: headers.get(convertHexToString(`54`)),
-            // P
-            [convertHexToString(`50`)]: payloadHash,
-            // D
-            [convertHexToString(`44`)]: headers.get(convertHexToString(`44`)),
+            // t
+            [convertHexToString(`74`)]: Number(req_time),
+            // p
+            [convertHexToString(`70`)]: payloadHash,
+            // d
+            [convertHexToString(`64`)]: headers.get(convertHexToString(`64`)),
           },
           APP_AES_ENCRYPTION_KEY,
         ),
@@ -185,9 +226,9 @@ class BackgroundRequestHeadersGenerator {
       headers.delete(convertHexToString(`582d436c69656e742d446f6d61696e`))
       // X-Client-Path
       headers.delete(convertHexToString(`582d436c69656e742d50617468`))
-      // T
-      headers.delete(convertHexToString(`54`))
-      // D
+      // t
+      headers.delete(convertHexToString(`74`))
+      // d
       headers.delete(convertHexToString(`44`))
     }
     // to object

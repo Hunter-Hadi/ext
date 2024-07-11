@@ -494,10 +494,11 @@ export const ClientMessageInit = () => {
                 ...parseOptions,
                 headers: {
                   ...parseOptions.headers,
-                  ...backgroundRequestHeadersGenerator.getTaskIdHeaders(
+                  ...(await backgroundRequestHeadersGenerator.getTaskIdHeaders(
                     requestId,
+                    url,
                     parseOptions.body,
-                  ),
+                  )),
                 },
               },
               abortTaskId,

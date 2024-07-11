@@ -14,12 +14,15 @@ import path from 'path'
 
 import * as buildEnv from './env.mjs'
 import localesCreator from './i18n.mjs'
+import updateProjectAPISecurityKey from './api_key_gen.mjs'
 
 const replaceEnv = buildEnv.getReplaceEnv()
 const isProduction = buildEnv.isProduction
 const sourceDir = path.resolve('src')
 const buildDir = path.resolve('dist')
 const releasesDir = path.resolve('releases')
+const manifest = await fs.readJson(`${sourceDir}/manifest.json`)
+const extensionVersion = manifest.version
 
 async function cleanBuildDir() {
   try {
@@ -255,9 +258,7 @@ async function buildFiles() {
 }
 
 async function release() {
-  const manifest = await fs.readJson(`${buildDir}/manifest.json`)
-  const version = manifest.version
-  let archiveName = `releases/MaxAI[${buildEnv.api_env}]-${version}-${dayjs().format(
+  let archiveName = `releases/MaxAI[${buildEnv.api_env}]-${extensionVersion}-${dayjs().format(
     'YYYY-MM-DD-HH-mm',
   )}.zip`
   const archive = archiver('zip', { zlib: { level: 9 } })
@@ -315,6 +316,7 @@ async function main() {
   if (!existsSync(releasesDir)) {
     mkdirSync(releasesDir)
   }
+  await updateProjectAPISecurityKey(extensionVersion, 'src/features/security/constant/index.ts')
   if (!isProduction) {
     await hotReload()
     await reactDevtools()

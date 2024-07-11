@@ -1,5 +1,6 @@
 import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import { securityHandleFetchErrorResponse } from '@/features/security'
 
 /**
  * 封装的安全的fetch函数，可以在此处添加一些全局的安全处理
@@ -19,12 +20,14 @@ const maxAIBackgroundSafeFetch = async (
     Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
     ...init?.headers,
   })
-  if (requestHeadersTaskId && init?.body) {
+  if (requestHeadersTaskId && typeof input === 'string' && init?.body) {
     // 获取加密的token
-    const encryptedHeaders = backgroundRequestHeadersGenerator.getTaskIdHeaders(
-      requestHeadersTaskId,
-      init.body,
-    )
+    const encryptedHeaders =
+      await backgroundRequestHeadersGenerator.getTaskIdHeaders(
+        requestHeadersTaskId,
+        input,
+        init.body,
+      )
     // merge加密的token到headers中
     for (const [key, value] of Object.entries(encryptedHeaders)) {
       headers.set(key, value)
@@ -37,8 +40,8 @@ const maxAIBackgroundSafeFetch = async (
     headers, // 使用修改后的headers
   }
 
-  // 调用原生fetch，并传入修改后的RequestInfo和RequestInit
-  return fetch(input, modifiedInit)
+  // 拦截特定的状态码的response
+  return fetch(input, modifiedInit).then(securityHandleFetchErrorResponse)
 }
 
 export default maxAIBackgroundSafeFetch

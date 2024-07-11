@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "전사 시간이 초과되었습니다.\n다시 시도해주세요.",
     "pricing__upgrade__popper_card__title": "MaxAI Elite로 업그레이드 · 매년",
     "pricing__upgrade__popper_card__item1__title": "무제한 AI 사용",
-    "pricing__upgrade__popper_card__item2__title": "모든 기능 잠금 해제",
-    "pricing__upgrade__popper_card__item3__title": "매일 시간 절약",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o 만 가능. 다른 모든 AI 모델을 잠금 해제하려면 MaxAI 엘리트 플랜으로 업그레이드하세요."
+    "pricing__upgrade__popper_card__item2__title": "모든 AI 모델 잠금 해제",
+    "pricing__upgrade__popper_card__item3__title": "모든 기능 잠금 해제",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o 만 가능. 다른 모든 AI 모델을 잠금 해제하려면 MaxAI 엘리트 플랜으로 업그레이드하세요.",
+    "pricing__upgrade__popper_card__item4__title": "귀하의 돈 가치 최상의 선택"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "프롬프트 사용"
   },
   "quota_usage_card": {
-    "category__fast_text": "빠른 텍스트 쿼리",
-    "category__advanced_text": "스마트 텍스트 쿼리",
-    "category__image_generate": "이미지 쿼리",
+    "category__fast_text": "빠른 AI",
+    "category__advanced_text": "스마트 AI",
+    "category__image_generate": "이미지 AI",
     "role_label": "현재 요금제: {{ROLE}}",
-    "queries": "남은 AI 쿼리",
+    "queries": "남은 쿼리",
     "reset_on_date": "{{DATE}}에 초기화",
-    "advanced_text__secondary__content": "고속: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "매월 최소 1,500개의 고속 스마트 텍스트 쿼리를 보장하십시오. 한도에 도달하면 모델의 속도와 품질이 감소할 수 있습니다.",
-    "image_generate__secondary__content": "고속: {{QUERIES}}",
+    "advanced_text__secondary__content": "고속 스마트 AI 쿼리: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "매월 최소 1,500개의 고속 고급 텍스트 쿼리를 보장하세요. 한도에 도달한 후 모델의 속도와 품질이 감소될 수 있습니다.",
+    "image_generate__secondary__content": "고속 이미지 AI 쿼리: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "매월 최소 1,500개의 고속 이미지 쿼리를 보장하세요. 한도에 도달한 후 모델의 속도와 품질이 감소될 수 있습니다.",
-    "promotion_plan__text": "MaxAI Elite Yearly로 업그레이드하면 53%를 절약하세요. 👇"
+    "upgrade_to_go_unlimited": "무제한 이용하려면 MaxAI Elite로 업그레이드"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "선택한 텍스트를 개선, 교정, 번역, 요약 또는 설명하도록 AI에게 요청하려면 클릭하세요.",

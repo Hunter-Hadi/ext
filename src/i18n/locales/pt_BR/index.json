@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "A transcrição expirou.\nPor favor, tente novamente.",
     "pricing__upgrade__popper_card__title": "Atualize para MaxAI Elite · Anual",
     "pricing__upgrade__popper_card__item1__title": "Uso ilimitado de IA",
-    "pricing__upgrade__popper_card__item2__title": "Desbloquear todos os recursos",
-    "pricing__upgrade__popper_card__item3__title": "Economize horas todos os dias",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Apenas GPT-4o. Para desbloquear todos os outros modelos de IA, faça upgrade para o plano MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "Desbloquear todos os modelos de IA",
+    "pricing__upgrade__popper_card__item3__title": "Desbloquear todos os recursos",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Apenas GPT-4o. Para desbloquear todos os outros modelos de IA, faça upgrade para o plano MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "Melhor valor para o seu dinheiro"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Usar prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Consultas de texto rápido",
-    "category__advanced_text": "Consultas de texto inteligente",
-    "category__image_generate": "Consultas de imagem",
+    "category__fast_text": "IA Rápida",
+    "category__advanced_text": "IA Inteligente",
+    "category__image_generate": "IA de Imagem",
     "role_label": "Plano atual: {{ROLE}}",
-    "queries": "Consultas de IA restantes",
+    "queries": "Consultas restantes",
     "reset_on_date": "Redefinir em {{DATE}}",
-    "advanced_text__secondary__content": "Alta velocidade: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas de texto inteligente de alta velocidade por mês. Após atingir o limite, a velocidade e qualidade do modelo podem ser reduzidas.",
-    "image_generate__secondary__content": "Alta velocidade: {{QUERIES}}",
+    "advanced_text__secondary__content": "Consultas de IA inteligente de alta velocidade: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas avançadas de texto em alta velocidade por mês. Após atingir o limite, a velocidade e a qualidade do modelo podem ser reduzidas.",
+    "image_generate__secondary__content": "Consultas de IA de imagem de alta velocidade: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas de imagem em alta velocidade por mês. Após atingir o limite, a velocidade e a qualidade do modelo podem ser reduzidas.",
-    "promotion_plan__text": "Economize 53% ao atualizar para MaxAI Elite Anual agora. 👇"
+    "upgrade_to_go_unlimited": "Atualize para MaxAI Elite para ir ilimitado"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Clique para pedir à IA para melhorar, corrigir, traduzir, resumir ou explicar o texto selecionado.",

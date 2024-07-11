@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkriberingstiden löpte ut.\nFörsök igen.",
     "pricing__upgrade__popper_card__title": "Uppgradera till MaxAI Elite · Årligen",
     "pricing__upgrade__popper_card__item1__title": "Obegränsad AI-användning",
-    "pricing__upgrade__popper_card__item2__title": "Lås upp alla funktioner",
-    "pricing__upgrade__popper_card__item3__title": "Spara timmar varje dag",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Endast GPT-4o. För att låsa upp alla andra AI-modeller, uppgradera till MaxAI Elite-planen."
+    "pricing__upgrade__popper_card__item2__title": "Lås upp alla AI-modeller",
+    "pricing__upgrade__popper_card__item3__title": "Lås upp alla funktioner",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Endast GPT-4o. För att låsa upp alla andra AI-modeller, uppgradera till MaxAI Elite-planen.",
+    "pricing__upgrade__popper_card__item4__title": "Bästa värdet för dina pengar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Använd prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Snabba textförfrågningar",
-    "category__advanced_text": "Smart textförfrågningar",
-    "category__image_generate": "Bildförfrågningar",
+    "category__fast_text": "Snabb AI",
+    "category__advanced_text": "Smart AI",
+    "category__image_generate": "Bild AI",
     "role_label": "Nuvarande plan: {{ROLE}}",
-    "queries": "Återstående AI-förfrågningar",
+    "queries": "Återstående frågor",
     "reset_on_date": "Återställs den {{DATE}}",
-    "advanced_text__secondary__content": "Hög hastighet: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Se till att ha minst 1 500 smarta textförfrågningar med hög hastighet varje månad. Efter att gränsen nåtts kan modellens hastighet och kvalitet minskas.",
-    "image_generate__secondary__content": "Hög hastighet: {{QUERIES}}",
+    "advanced_text__secondary__content": "Hög hastighet smarta AI-frågor: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Se till att du har minst 1 500 höghastighetsavancerade textfrågor varje månad. Efter att gränsen har nåtts kan modellens hastighet och kvalitet minskas.",
+    "image_generate__secondary__content": "Hög hastighet bild AI-frågor: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Se till att du har minst 1 500 höghastighetsbildfrågor varje månad. Efter att gränsen har nåtts kan modellens hastighet och kvalitet minskas.",
-    "promotion_plan__text": "Spara 53% genom att uppgradera till MaxAI Elite Årligen nu. 👇"
+    "upgrade_to_go_unlimited": "Uppgradera till MaxAI Elite för att gå obegränsat"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klicka för att be AI att förbättra, korrekturläsa, översätta, sammanfatta eller förklara den valda texten.",

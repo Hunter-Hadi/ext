@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Uandikishaji umekwisha.\nTafadhali jaribu tena.",
     "pricing__upgrade__popper_card__title": "Nenda kwa MaxAI Elite · Kila mwaka",
     "pricing__upgrade__popper_card__item1__title": "Matumizi ya AI yasiyo na kikomo",
-    "pricing__upgrade__popper_card__item2__title": "Fungua vipengele vyote",
-    "pricing__upgrade__popper_card__item3__title": "Punguza masaa kila siku",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o pekee. Ili kufungua mifano mingine yote ya AI, nenda kwenye mpango wa MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "Fungua mifano yote ya AI",
+    "pricing__upgrade__popper_card__item3__title": "Fungua vipengele vyote",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o pekee. Ili kufungua mifano mingine yote ya AI, nenda kwenye mpango wa MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "Thamani bora kwa pesa yako"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Tumia onyo"
   },
   "quota_usage_card": {
-    "category__fast_text": "Utafutaji wa haraka wa maandishi",
-    "category__advanced_text": "Utafutaji mjanja wa maandishi",
-    "category__image_generate": "Utafutaji wa picha",
+    "category__fast_text": "AI ya Haraka",
+    "category__advanced_text": "AI Mjanja",
+    "category__image_generate": "Picha ya AI",
     "role_label": "Mpango wa sasa: {{ROLE}}",
-    "queries": "Utafutaji wa AI uliobaki",
+    "queries": "Majibu yaliyobaki",
     "reset_on_date": "Weka upya tarehe {{DATE}}",
-    "advanced_text__secondary__content": "Kasi kubwa: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Hakikisha angalau 1,500 ya utafutaji mjanja wa maandishi kwa kasi kubwa kila mwezi. Baada ya kufikia kikomo, kasi na ubora wa mfano unaweza kupunguzwa.",
-    "image_generate__secondary__content": "Kasi kubwa: {{QUERIES}}",
+    "advanced_text__secondary__content": "Majibu ya AI mjanja ya kasi kubwa: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya maandishi ya juu kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
+    "image_generate__secondary__content": "Majibu ya picha ya AI ya kasi kubwa: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya picha kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
-    "promotion_plan__text": "Punguza 53% kwa kuboresha kwenda MaxAI Elite Kila mwaka sasa. 👇"
+    "upgrade_to_go_unlimited": "Boresha kwenda MaxAI Elite ili kwenda bila kikomo"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Bonyeza ili kuomba AI kuboresha, kuhariri, kutafsiri, kufupisha, au kufafanua maandishi yaliyochaguliwa.",

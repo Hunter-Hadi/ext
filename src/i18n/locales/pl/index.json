@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkrypcja przekroczyła limit czasu.\nProszę spróbuj ponownie.",
     "pricing__upgrade__popper_card__title": "Uaktualnij do MaxAI Elite · Rocznie",
     "pricing__upgrade__popper_card__item1__title": "Nieograniczone korzystanie z AI",
-    "pricing__upgrade__popper_card__item2__title": "Odblokuj wszystkie funkcje",
-    "pricing__upgrade__popper_card__item3__title": "Oszczędź godziny codziennie",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Tylko GPT-4o. Aby odblokować wszystkie inne modele AI, przejdź na plan MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "Odblokuj wszystkie modele AI",
+    "pricing__upgrade__popper_card__item3__title": "Odblokuj wszystkie funkcje",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Tylko GPT-4o. Aby odblokować wszystkie inne modele AI, przejdź na plan MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "Najlepsza wartość za Twoje pieniądze"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Użyj podpowiedzi"
   },
   "quota_usage_card": {
-    "category__fast_text": "Szybkie zapytania tekstowe",
-    "category__advanced_text": "Inteligentne zapytania tekstowe",
-    "category__image_generate": "Zapytania obrazowe",
+    "category__fast_text": "Szybkie AI",
+    "category__advanced_text": "Inteligentne AI",
+    "category__image_generate": "AI do generowania obrazów",
     "role_label": "Obecny plan: {{ROLE}}",
-    "queries": "Pozostałe zapytania AI",
+    "queries": "Pozostałe zapytania",
     "reset_on_date": "Resetuje się {{DATE}}",
-    "advanced_text__secondary__content": "Wysoka prędkość: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Zapewnij co najmniej 1,500 inteligentnych zapytań tekstowych wysokiej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą ulec zmniejszeniu.",
-    "image_generate__secondary__content": "Wysoka prędkość: {{QUERIES}}",
+    "advanced_text__secondary__content": "Szybkie zapytania inteligentnego AI: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Zapewnij co najmniej 1500 zapytań zaawansowanych tekstowych o dużej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
+    "image_generate__secondary__content": "Szybkie zapytania AI do generowania obrazów: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zapewnij co najmniej 1500 zapytań obrazowych o dużej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
-    "promotion_plan__text": "Oszczędź 53% uaktualniając teraz do MaxAI Elite Rocznie. 👇"
+    "upgrade_to_go_unlimited": "Zaktualizuj do MaxAI Elite, aby uzyskać nieograniczone możliwości"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknij, aby poprosić SI o poprawę, korektę, tłumaczenie, streszczenie lub wyjaśnienie zaznaczonego tekstu.",

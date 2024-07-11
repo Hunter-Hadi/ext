@@ -34,7 +34,7 @@ const isProduction = node_env === 'production'
 const HostConfig = {
   development: {
     wwwProjectHost: 'https://main.d35dysdwr52gaf.amplifyapp.com',
-    appProjectHost: 'https://main.d3bohqvl407i44.amplifyapp.com',
+    appProjectHost: 'https://main.d3kf9o74pc4m0c.amplifyapp.com',
     appProjectAPIHost: 'https://dev.maxai.me',
   },
   test: {

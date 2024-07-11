@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "הזמן לתעודה פג.\nנסה שוב בבקשה.",
     "pricing__upgrade__popper_card__title": "שדרג ל-MaxAI Elite · שנתי",
     "pricing__upgrade__popper_card__item1__title": "שימוש בבינה מלאכותית בלתי מוגבל",
-    "pricing__upgrade__popper_card__item2__title": "פתח את כל התכונות",
-    "pricing__upgrade__popper_card__item3__title": "חסוך שעות בכל יום",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "רק GPT-4o. כדי לפתוח את כל הדגמי AI האחרים, שדרגו לתוכנית MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "פתח את כל דגמי המודלים של AI",
+    "pricing__upgrade__popper_card__item3__title": "פתח את כל התכונות",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "רק GPT-4o. כדי לפתוח את כל הדגמי AI האחרים, שדרגו לתוכנית MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "ערך מיטבי עבור הכסף שלך"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "השתמש בפרומט"
   },
   "quota_usage_card": {
-    "category__fast_text": "שאילתות טקסט מהירות",
-    "category__advanced_text": "שאילתות חכמות לטקסט",
-    "category__image_generate": "שאילתות לתמונות",
+    "category__fast_text": "AI מהיר",
+    "category__advanced_text": "AI חכם",
+    "category__image_generate": "AI ליצירת תמונות",
     "role_label": "תוכנית נוכחית: {{ROLE}}",
-    "queries": "שאילות AI נותרות",
+    "queries": "שאילתות שנותרו",
     "reset_on_date": "איפוס בתאריך {{DATE}}",
-    "advanced_text__secondary__content": "מהירות גבוהה: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "ודא שיש לך לפחות 1,500 שאילות חכמות לטקסט במהירות גבוהה בכל חודש. לאחר הגעה למגבלה, המהירות ואיכות המודל עשויים להיפחת.",
-    "image_generate__secondary__content": "מהירות גבוהה: {{QUERIES}}",
+    "advanced_text__secondary__content": "שאילתות AI חכמות במהירות גבוהה: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "וודא לפחות 1,500 שאילתות בטקסט מתקדמות במהירות גבוהה בכל חודש. לאחר הגעת למגבלה, המהירות והאיכות של הדגם עשויות להיפחת.",
+    "image_generate__secondary__content": "שאילתות AI ליצירת תמונות במהירות גבוהה: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "וודא לפחות 1,500 שאילתות בתמונות במהירות גבוהה בכל חודש. לאחר הגעת למגבלה, המהירות והאיכות של הדגם עשויות להיפחת.",
-    "promotion_plan__text": "חסוך 53% בשדרוג ל-MaxAI Elite שנתי עכשיו. 👇"
+    "upgrade_to_go_unlimited": "שדרג ל-MaxAI Elite כדי להישאר בלתי מוגבל"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "לחץ כדי לבקש מהמודע לשפר, לערוך, לתרגם, לסכם, או להסביר את הטקסט שנבחר.",

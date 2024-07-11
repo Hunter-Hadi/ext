@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkript süresi doldu.\nLütfen tekrar deneyin.",
     "pricing__upgrade__popper_card__title": "MaxAI Elite'e Yükselt · Yıllık",
     "pricing__upgrade__popper_card__item1__title": "Sınırsız AI kullanımı",
-    "pricing__upgrade__popper_card__item2__title": "Tüm özellikleri aç",
-    "pricing__upgrade__popper_card__item3__title": "Her gün saatlerce zaman kazanın",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Yalnızca GPT-4o. Diğer tüm AI modellerini açmak için MaxAI Elite planına yükseltin."
+    "pricing__upgrade__popper_card__item2__title": "Tüm AI modellerini aç",
+    "pricing__upgrade__popper_card__item3__title": "Tüm özellikleri aç",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Yalnızca GPT-4o. Diğer tüm AI modellerini açmak için MaxAI Elite planına yükseltin.",
+    "pricing__upgrade__popper_card__item4__title": "Paranızın en iyi değeri"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "İpucu kullan"
   },
   "quota_usage_card": {
-    "category__fast_text": "Hızlı metin sorguları",
-    "category__advanced_text": "Akıllı metin sorguları",
-    "category__image_generate": "Görüntü sorguları",
+    "category__fast_text": "Hızlı AI",
+    "category__advanced_text": "Akıllı AI",
+    "category__image_generate": "Görüntü AI",
     "role_label": "Geçerli plan: {{ROLE}}",
-    "queries": "Kalan AI sorguları",
+    "queries": "Kalan sorgular",
     "reset_on_date": "{{DATE}} tarihinde sıfırlanacak",
-    "advanced_text__secondary__content": "Yüksek hız: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı akıllı metin sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi azalabilir.",
-    "image_generate__secondary__content": "Yüksek hız: {{QUERIES}}",
+    "advanced_text__secondary__content": "Yüksek hızlı akıllı AI sorguları: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı gelişmiş metin sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir.",
+    "image_generate__secondary__content": "Yüksek hızlı görüntü AI sorguları: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı görüntü sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir.",
-    "promotion_plan__text": "MaxAI Elite Yıllık'a yükselerek %53 tasarruf edin. 👇"
+    "upgrade_to_go_unlimited": "Sınırsız gitmek için MaxAI Elite'e yükseltin"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Seçili metni geliştirmek, düzeltmek, çevirmek, özetlemek veya açıklamak için AI'ı sormak için tıklayın.",

@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija je istekla.\nMolimo pokušajte ponovo.",
     "pricing__upgrade__popper_card__title": "Nadogradi na MaxAI Elite · Godišnje",
     "pricing__upgrade__popper_card__item1__title": "Neograničeno korišćenje veštačke inteligencije",
-    "pricing__upgrade__popper_card__item2__title": "Otključaj sve funkcije",
-    "pricing__upgrade__popper_card__item3__title": "Uštedi sate svakog dana",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Da biste otključali sve ostale AI modele, nadogradite se na MaxAI Elite plan."
+    "pricing__upgrade__popper_card__item2__title": "Otključaj sve AI modele",
+    "pricing__upgrade__popper_card__item3__title": "Otključaj sve funkcije",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Da biste otključali sve ostale AI modele, nadogradite se na MaxAI Elite plan.",
+    "pricing__upgrade__popper_card__item4__title": "Najbolja vrednost za vaš novac"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Koristite podsticaj"
   },
   "quota_usage_card": {
-    "category__fast_text": "Brzi tekstualni upiti",
-    "category__advanced_text": "Pametni tekstualni upiti",
-    "category__image_generate": "Upiti za slike",
+    "category__fast_text": "Brza AI",
+    "category__advanced_text": "Pametna AI",
+    "category__image_generate": "Generisanje slika AI",
     "role_label": "Trenutni plan: {{ROLE}}",
-    "queries": "Preostali AI upiti",
+    "queries": "Preostali upiti",
     "reset_on_date": "Resetovanje {{DATE}}",
-    "advanced_text__secondary__content": "Visoka brzina: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Obezbedite najmanje 1.500 pametnih tekstualnih upita visoke brzine svakog meseca. Nakon dostizanja limita, brzina i kvalitet modela mogu biti smanjeni.",
-    "image_generate__secondary__content": "Visoka brzina: {{QUERIES}}",
+    "advanced_text__secondary__content": "Brzi pametni AI upiti: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Obezbedite najmanje 1.500 brzih naprednih tekstualnih upita svakog meseca. Nakon dostizanja limita, brzina i kvalitet modela mogu biti smanjeni.",
+    "image_generate__secondary__content": "Brzi upiti za generisanje slika AI: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Obezbedite najmanje 1.500 brzih upita za slike svakog meseca. Nakon dostizanja limita, brzina i kvalitet modela mogu biti smanjeni.",
-    "promotion_plan__text": "Uštedite 53% nadogradnjom na MaxAI Elite Godišnje sada. 👇"
+    "upgrade_to_go_unlimited": "Nadogradite na MaxAI Elite da biste postali neograničeni"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite da biste zamolili AI da poboljša, proveri, prevede, sumira ili objasni izabrani tekst.",

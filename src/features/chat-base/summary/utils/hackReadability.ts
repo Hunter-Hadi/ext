@@ -3,6 +3,7 @@
 // @ts-nocheck
 /**
  * 这个文件hack Readability的方法，为了能让解析后找到网页里对应的DOM节点，更改位置为NOTE：开头的注释
+ * @deprecated 废弃，Readability对当前clone的document某些样式计算不准确，所以现在page summary时会去抓取用户可见的内容进行summary(参考monica)
  */
 import { Readability } from '@mozilla/readability'
 

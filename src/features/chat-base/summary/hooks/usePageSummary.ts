@@ -36,7 +36,7 @@ const usePageSummary = () => {
   const { updateSidebarSettings, updateSidebarSummaryConversationId } =
     useSidebarSettings()
   const {
-    clientWritingMessage,
+    getWritingMessageState,
     showConversationLoading,
     hideConversationLoading,
   } = useClientConversation()
@@ -55,9 +55,6 @@ const usePageSummary = () => {
   )
   const { checkSummaryQuota } = useSummaryQuota()
   const isGeneratingPageSummaryRef = useRef(false)
-  const lastMessageIdRef = useRef('')
-  const clientWritingMessageRef = useRef(clientWritingMessage)
-  clientWritingMessageRef.current = clientWritingMessage
   const createPageSummary = async () => {
     if (isGeneratingPageSummaryRef.current) {
       return
@@ -71,10 +68,20 @@ const usePageSummary = () => {
 
     const userId = await getMaxAIChromeExtensionUserId()
     const pageSummaryConversationId = getPageSummaryConversationId({ userId })
+    const clientWritingMessage = await getWritingMessageState(
+      pageSummaryConversationId,
+    )
+
     updateSidebarSummaryConversationId(pageSummaryConversationId)
 
     const currentPageSummaryType = getPageSummaryType()
-    const writingLoading = clientWritingMessageRef.current.loading
+    const writingLoading = clientWritingMessage.loading
+
+    // 当前conversation正在loading
+    if (writingLoading) {
+      isGeneratingPageSummaryRef.current = false
+      return
+    }
 
     showConversationLoading(pageSummaryConversationId)
     if (pageSummaryConversationId) {
@@ -83,6 +90,7 @@ const usePageSummary = () => {
         await ClientConversationManager.getConversationById(
           pageSummaryConversationId,
         )
+
       //如果没有，那么去remote看看有没有
       const localMessages = pageSummaryConversation
         ? await ClientConversationMessageManager.getMessageIds(
@@ -137,11 +145,6 @@ const usePageSummary = () => {
             'ai',
             'earliest',
           )
-        if (writingLoading) {
-          hideConversationLoading(pageSummaryConversationId)
-          // isGeneratingPageSummaryRef.current = false
-          return
-        }
         let isValidAIMessage =
           aiMessage &&
           aiMessage?.originalMessage &&
@@ -204,8 +207,8 @@ const usePageSummary = () => {
               paywallType: 'RESPONSE',
             })
           }
-          isGeneratingPageSummaryRef.current = false
           hideConversationLoading(pageSummaryConversationId)
+          isGeneratingPageSummaryRef.current = false
           return
         }
 
@@ -226,7 +229,6 @@ const usePageSummary = () => {
               [currentPageSummaryType]: contextMenu.summaryNavKey,
             }
           })
-          lastMessageIdRef.current = contextMenu.messageId
           await askAIWIthShortcuts(contextMenu.actions)
             .then()
             .finally(() => {
@@ -265,7 +267,8 @@ const usePageSummary = () => {
   const resetPageSummary = () => {
     isGeneratingPageSummaryRef.current = false
   }
-  return { resetPageSummary, createPageSummary, isGeneratingPageSummaryRef }
+
+  return { resetPageSummary, createPageSummary }
 }
 
 export default usePageSummary

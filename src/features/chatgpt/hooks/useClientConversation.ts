@@ -168,6 +168,14 @@ const useClientConversation = () => {
       )
     }
   }
+  const getWritingMessageState = useRecoilCallback(
+    ({ snapshot }) =>
+      (conversationId: string) => {
+        return snapshot.getPromise(
+          ClientWritingMessageStateFamily(conversationId),
+        )
+      },
+  )
   const showConversationLoading = useRecoilCallback(
     ({ set }) =>
       (
@@ -333,6 +341,7 @@ const useClientConversation = () => {
     updateClientConversationLoading,
     getConversation: ClientConversationManager.getConversationById,
     getCurrentConversation,
+    getWritingMessageState,
   }
 }
 

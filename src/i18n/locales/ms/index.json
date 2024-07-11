@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkripsi tamat.\nSila cuba lagi.",
     "pricing__upgrade__popper_card__title": "Naik taraf ke MaxAI Elite · Tahunan",
     "pricing__upgrade__popper_card__item1__title": "Penggunaan AI tanpa had",
-    "pricing__upgrade__popper_card__item2__title": "Buka semua ciri",
-    "pricing__upgrade__popper_card__item3__title": "Jimat masa setiap hari",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Hanya GPT-4o. Untuk membuka semua model AI lain, naik taraf ke pelan MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "Buka semua model AI",
+    "pricing__upgrade__popper_card__item3__title": "Buka semua ciri",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Hanya GPT-4o. Untuk membuka semua model AI lain, naik taraf ke pelan MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "Nilai terbaik untuk wang anda"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Gunakan panduan"
   },
   "quota_usage_card": {
-    "category__fast_text": "Pertanyaan teks pantas",
-    "category__advanced_text": "Pertanyaan teks pintar",
-    "category__image_generate": "Pertanyaan imej",
+    "category__fast_text": "AI Pantas",
+    "category__advanced_text": "AI Bijak",
+    "category__image_generate": "AI Imej",
     "role_label": "Pelan semasa: {{ROLE}}",
-    "queries": "Pertanyaan AI yang tinggal",
+    "queries": "Pertanyaan KI yang tinggal",
     "reset_on_date": "Set semula pada {{DATE}}",
-    "advanced_text__secondary__content": "Pantas: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Pastikan sekurang-kurangnya 1,500 pertanyaan teks pintar pantas setiap bulan. Selepas mencapai had, kelajuan dan kualiti model mungkin berkurang.",
-    "image_generate__secondary__content": "Pantas: {{QUERIES}}",
+    "advanced_text__secondary__content": "Pertanyaan AI bijak kelajuan tinggi: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Pastikan sekurang-kurangnya 1,500 pertanyaan teks lanjutan kelajuan tinggi setiap bulan. Selepas mencapai had, kelajuan dan kualiti model mungkin dikurangkan.",
+    "image_generate__secondary__content": "Pertanyaan AI imej kelajuan tinggi: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Pastikan sekurang-kurangnya 1,500 pertanyaan imej kelajuan tinggi setiap bulan. Selepas mencapai had, kelajuan dan kualiti model mungkin dikurangkan.",
-    "promotion_plan__text": "Jimat 53% dengan menaik taraf ke MaxAI Elite Tahunan sekarang. 👇"
+    "upgrade_to_go_unlimited": "Naik taraf ke MaxAI Elite untuk pergi tanpa had"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klik untuk meminta AI untuk memperbaiki, mengesahkan, menterjemah, merangkum, atau menjelaskan teks yang dipilih.",

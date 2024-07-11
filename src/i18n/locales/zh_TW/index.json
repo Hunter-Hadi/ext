@@ -1004,11 +1004,12 @@
     "permission__pricing_hook__search_with_ai_chatgpt__no_login_title": "登入以使用ChatGPT搜尋",
     "permission__pricing_hook__search_with_ai_chatgpt__login_title": "升級以使用ChatGPT搜尋",
     "sidebar__chat__voice_input__timeout__tooltip": "轉錄逾時。\n請再試一次。",
-    "pricing__upgrade__popper_card__title": "升級至 MaxAI Elite · 每年",
+    "pricing__upgrade__popper_card__title": "升級至 MaxAI Elite · 年度",
     "pricing__upgrade__popper_card__item1__title": "無限使用 AI",
-    "pricing__upgrade__popper_card__item2__title": "解鎖所有功能",
-    "pricing__upgrade__popper_card__item3__title": "每天節省數小時",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "僅限 GPT-4o。要解鎖所有其他 AI 模型，請升級至 MaxAI Elite 計劃。"
+    "pricing__upgrade__popper_card__item2__title": "解鎖所有AI模型",
+    "pricing__upgrade__popper_card__item3__title": "解鎖所有功能",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "僅限 GPT-4o。要解鎖所有其他 AI 模型，請升級至 MaxAI Elite 計劃。",
+    "pricing__upgrade__popper_card__item4__title": "物超所值"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "使用提示"
   },
   "quota_usage_card": {
-    "category__fast_text": "快速文字查詢",
-    "category__advanced_text": "智能文字查詢",
-    "category__image_generate": "圖像查詢",
+    "category__fast_text": "快速AI",
+    "category__advanced_text": "智能AI",
+    "category__image_generate": "圖像AI",
     "role_label": "當前計劃：{{ROLE}}",
-    "queries": "剩餘 AI 查詢",
+    "queries": "剩餘AI查詢",
     "reset_on_date": "重置於{{DATE}}",
-    "advanced_text__secondary__content": "高速：{{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "每月至少確保 1,500 次高速智能文字查詢。達到限制後，模型的速度和品質可能會降低。",
-    "image_generate__secondary__content": "高速：{{QUERIES}}",
+    "advanced_text__secondary__content": "高速智能AI查詢：{{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "每月至少確保1,500次高速高級文本查詢。達到限制後，模型的速度和質量可能會降低。",
+    "image_generate__secondary__content": "高速圖像AI查詢：{{QUERIES}}",
     "image_generate__secondary__content__tooltip": "每月至少確保1,500次高速圖像查詢。達到限制後，模型的速度和質量可能會降低。",
-    "promotion_plan__text": "立即升級至 MaxAI Elite 每年，享受53%的折扣。 👇"
+    "upgrade_to_go_unlimited": "升級至 MaxAI 精英版，無限制使用"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "點擊以要求 AI 改進、校對、翻譯、摘要或解釋所選取的文字。",

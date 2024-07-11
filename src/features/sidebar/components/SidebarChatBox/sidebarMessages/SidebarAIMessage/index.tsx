@@ -1,17 +1,19 @@
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import CustomModal from '@/features/common/components/CustomModal'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
@@ -448,7 +450,128 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             </Typography>
           </Divider>
         )}
+      <HTMLSandBox />
     </Box>
+  )
+}
+const HTMLSandBox: FC = () => {
+  const [open, setOpen] = React.useState(false)
+  const [code, setCode] = React.useState('')
+  const [tabIndex, setTabIndex] = React.useState(0)
+  const renderRef = useRef<HTMLDivElement | null>(null)
+  const handleExecuteCode = () => {
+    let copyText = ''
+    const textarea = document.createElement('textarea')
+    textarea.style.position = 'fixed'
+    textarea.style.top = '0'
+    textarea.style.left = '0'
+    textarea.style.width = '2em'
+    textarea.style.height = '2em'
+    textarea.style.padding = '0'
+    textarea.style.border = 'none'
+    textarea.style.outline = 'none'
+    textarea.style.boxShadow = 'none'
+    textarea.style.background = 'transparent'
+    document.body.appendChild(textarea)
+    // execCommand
+    textarea.focus()
+    textarea.select()
+    // pasted
+    document.execCommand('paste', false, '')
+    // copy
+    copyText = textarea.value
+    document.body.removeChild(textarea)
+    setCode(copyText)
+    setOpen(true)
+  }
+  const renderCode = useCallback(() => {
+    if (code && renderRef.current) {
+      renderRef.current?.querySelector('iframe')?.remove()
+      const iframe = document.createElement('iframe')
+      iframe.style.width = '100%'
+      iframe.style.height = '100%'
+      iframe.style.border = 'none'
+      iframe.src = 'http://localhost:3838/?code=' + Math.random()
+      iframe.onload = () => {
+        iframe?.contentWindow?.postMessage(code, '*')
+      }
+      renderRef.current.appendChild(iframe)
+    }
+  }, [code])
+  useEffect(() => {
+    if (open)
+      if (tabIndex === 0) {
+        renderCode()
+      } else {
+        renderRef.current?.querySelector('iframe')?.remove()
+      }
+  }, [renderCode, open, tabIndex])
+  return (
+    <>
+      <Button onClick={handleExecuteCode}>Code box</Button>
+      <CustomModal
+        show={open}
+        title={'Code'}
+        onClose={() => {
+          setOpen(false)
+          setCode('')
+        }}
+      >
+        <Stack width={'80vw'} height={'80vh'}>
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            gap={'8px'}
+            sx={{
+              flexShrink: 0,
+            }}
+          >
+            <Button
+              variant={tabIndex === 0 ? 'contained' : 'outlined'}
+              onClick={(event) => {
+                event.preventDefault()
+                event.stopPropagation()
+                setTabIndex(0)
+              }}
+            >
+              Preview
+            </Button>
+            <Button
+              variant={tabIndex === 1 ? 'contained' : 'outlined'}
+              onClick={(event) => {
+                event.preventDefault()
+                event.stopPropagation()
+                setTabIndex(1)
+              }}
+            >
+              Code
+            </Button>
+          </Stack>
+          <Stack
+            component={'div'}
+            id={'xxxxxxx'}
+            height={0}
+            flex={1}
+            width={'100%'}
+            position={'relative'}
+            ref={renderRef}
+          >
+            {tabIndex === 1 && (
+              <pre
+                style={{
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word',
+                  overflow: 'auto',
+                  height: '100%',
+                }}
+              >
+                {code}
+              </pre>
+            )}
+          </Stack>
+        </Stack>
+      </CustomModal>
+    </>
   )
 }
 export const MetadataTitleRender: FC<{

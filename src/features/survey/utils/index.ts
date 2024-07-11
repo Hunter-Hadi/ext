@@ -77,7 +77,7 @@ export const submitFunnelSurvey = async (payload: {
         event_key: FUNNEL_SURVEY_MIXPANEL_EVENTNAME[funnelSurveySceneType],
         client_user_id: clientUserId,
         data: {
-          ...getBasicInfoForMixpanel(),
+          ...(await getBasicInfoForMixpanel()),
           ...fixedSurveyContent,
         },
       }

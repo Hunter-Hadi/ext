@@ -2,7 +2,6 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import debounce from 'lodash-es/debounce'
 import { v4 } from 'uuid'
-import Browser from 'webextension-polyfill'
 
 import { createClientMessageListener } from '@/background/utils'
 import {
@@ -86,9 +85,9 @@ const initIframe = async () => {
   const handleClickOrKeyUp = (event: MouseEvent | KeyboardEvent, times = 0) => {
     try {
       const target = mouseDownElement || (event.target as HTMLElement)
+      const { isEditableElement, editableElement } = getEditableElement(target)
       let selectionText = computedSelectionString()
       let editableElementSelectionString = ''
-      const { isEditableElement, editableElement } = getEditableElement(target)
       let startMarkerId = ''
       let endMarkerId = ''
       let caretOffset = 0
@@ -369,39 +368,84 @@ const initIframe = async () => {
       }, 200),
     )
   }
-  Browser.runtime.onMessage.addListener((message, sender) => {
-    if (sender.id === Browser.runtime.id) {
-      if (message.event === 'Client_listenUpdateIframeInput') {
-        const data = message.data
-        console.log(iframeId, 'Client_listenUpdateIframeInput', data)
-        if (data.startMarkerId && data.endMarkerId) {
-          replaceMarkerContent(
-            data.startMarkerId,
-            data.endMarkerId,
-            data.value,
-            data.type,
-          )
-        }
-      }
-    }
-  })
 }
 
-type IframeMessageType = (event: IVirtualIframeSelectionElement) => void
+/**
+ * 读取Microsoft office docs下的内容
+ */
+const loadOfficeWordContent = () => {
+  let pageContent = ''
+  const doc = document.documentElement
+  const editElement = doc.querySelector(
+    '#WACViewPanel_EditingElement_WrappingDiv',
+  ) as HTMLDivElement
+  const hiddenParagraph = doc.querySelector(
+    '#PagesContainer .HiddenParagraph',
+  ) as HTMLDivElement
+  const beforeDisplay = editElement?.style.display
+  if (editElement) {
+    editElement.style.display = 'none'
+  }
+  if (hiddenParagraph) {
+    hiddenParagraph.classList.remove('HiddenParagraph')
+  }
+  pageContent =
+    (doc.querySelector('#PageContentContainer') as HTMLDivElement)?.innerText ||
+    ''
+  if (editElement) {
+    editElement.style.display = beforeDisplay
+  }
+  if (hiddenParagraph) {
+    hiddenParagraph.classList.add('HiddenParagraph')
+  }
+  return pageContent
+}
 
+/**
+ * 读取iCloud mail下的内容
+ */
+const loadICloudMailContent = () => {
+  return (
+    (
+      document.documentElement?.querySelector(
+        '.mail-message-defaults',
+      ) as HTMLDivElement
+    )?.innerText || ''
+  )
+}
+
+/**
+ * 读取mail.com下的内容
+ */
+const loadMailComContent = () => {
+  return document.documentElement?.ownerDocument?.body?.innerText || ''
+}
+
+/**
+ * 监听client消息
+ * 1. context-menu 修改特定网页iframe下输入框内容
+ * 2. page-summary 读取特定网页iframe下的页面内容
+ */
 export const listenerClientMessage = () => {
   // TODO 获取iframe中的内容
-  const doc = document.documentElement
   const iframeCurrentUrl =
     typeof window !== 'undefined' ? window.location.href : ''
-  console.log('init iframePageContentHelper', iframeCurrentUrl)
-  if (!iframeCurrentUrl) {
-    return
-  }
-  createClientMessageListener(async (event, data, sender) => {
+  return createClientMessageListener(async (event, data, sender) => {
     switch (event) {
+      case 'Client_listenUpdateIframeInput': {
+        const { startMarkerId, endMarkerId, value, type } = data
+        if (startMarkerId && endMarkerId) {
+          await replaceMarkerContent(startMarkerId, endMarkerId, value, type)
+        }
+        return {
+          success: true,
+          data: {},
+          message: '',
+        }
+      }
       case 'Iframe_ListenGetPageContent': {
         const { taskId } = data
+        if (!iframeCurrentUrl) return
         let pageContent = ''
         // Microsoft office docs
         // https://word-edit.officeapps.live.com/we/wordeditorframe.aspx
@@ -410,28 +454,7 @@ export const listenerClientMessage = () => {
             'word-edit.officeapps.live.com/we/wordeditorframe.aspx',
           )
         ) {
-          const editElement = doc.querySelector(
-            '#WACViewPanel_EditingElement_WrappingDiv',
-          ) as HTMLDivElement
-          const hiddenParagraph = doc.querySelector(
-            '#PagesContainer .HiddenParagraph',
-          ) as HTMLDivElement
-          const beforeDisplay = editElement?.style.display
-          if (editElement) {
-            editElement.style.display = 'none'
-          }
-          if (hiddenParagraph) {
-            hiddenParagraph.classList.remove('HiddenParagraph')
-          }
-          pageContent =
-            (doc.querySelector('#PageContentContainer') as HTMLDivElement)
-              ?.innerText || ''
-          if (editElement) {
-            editElement.style.display = beforeDisplay
-          }
-          if (hiddenParagraph) {
-            hiddenParagraph.classList.add('HiddenParagraph')
-          }
+          pageContent = loadOfficeWordContent()
         }
         // iCloud mail
         // https://www-mail.icloud-sandbox.com/applications/mail2-message/current/zh-cn/index.html
@@ -440,14 +463,12 @@ export const listenerClientMessage = () => {
             'icloud-sandbox.com/applications/mail2-message',
           )
         ) {
-          pageContent =
-            (doc.querySelector('.mail-message-defaults') as HTMLDivElement)
-              ?.innerText || ''
+          pageContent = loadICloudMailContent()
         }
         // mail.com
         // https://3c-lxa.mail.com/mail/client/mailbody
         if (iframeCurrentUrl.includes('mail.com/mail/client/mailbody')) {
-          pageContent = doc?.ownerDocument?.body?.innerText || ''
+          pageContent = loadMailComContent()
         }
         pageContent = pageContent.trim()
         if (!pageContent) {
@@ -477,6 +498,13 @@ export const listenerClientMessage = () => {
   })
 }
 
+type IframeMessageType = (event: IVirtualIframeSelectionElement) => void
+
+/**
+ * 监听iframe的消息
+ * TODO 这个方法应该拆分出去，理论上content-scripts下的脚本不应该被import
+ * @param onMessage
+ */
 export const listenIframeMessage = (onMessage?: IframeMessageType) => {
   const listener = (event: MessageEvent) => {
     const { id, type, data } = event.data

@@ -48,15 +48,11 @@ import {
   getChromeExtensionUserInfo,
   getMaxAIChromeExtensionUserId,
 } from '@/features/auth/utils'
-import {
-  MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
-  MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
-} from '@/features/common/constants'
+import { MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL } from '@/features/common/constants'
 import { devResetAllOnboardingTooltipOpenedCache } from '@/features/onboarding/utils'
 import paymentManager from '@/features/payment/background/PaymentManager'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
-import { resetFunnelSurveyOpenedStorageFlag } from '@/features/survey/utils/storageWithSceneType'
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
@@ -403,9 +399,6 @@ const initChromeExtensionUpdated = async () => {
     await devResetAllOnboardingTooltipOpenedCache()
   }
 
-  // SURVEY_CANCEL_COMPLETED survey 每次插件更新的时候弹出来就行
-  await resetFunnelSurveyOpenedStorageFlag('SURVEY_CANCEL_COMPLETED')
-
   // 每次升级都检测一遍是否是续费失败了
   setTimeout(
     () => executeUpdatedCheckSubscription(),
@@ -454,7 +447,7 @@ const initChromeExtensionMessage = () => {
  */
 const initChromeExtensionUninstalled = () => {
   Browser.runtime.setUninstallURL(
-    `${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
+    `${MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
   )
 }
 

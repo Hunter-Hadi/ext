@@ -114,7 +114,7 @@ export const LiteDropdownMenuItem = React.forwardRef<
       }}
       ref={ref}
       component={'div'}
-      role="menuitem"
+      role='menuitem'
       onClick={(event: any) => {
         onClick?.(event)
         floatingUiProps?.onClick?.(event)
@@ -241,7 +241,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         }}
         ref={ref}
         component={'div'}
-        role="menuitem"
+        role='menuitem'
         onKeyDown={(event: any) => {
           floatingUiProps?.onKeyDown?.(event)
           if (event.code === 'Enter') {
@@ -312,7 +312,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
             hoverIcon
           ) : (
             <KeyboardReturnIcon
-              className="floating-context-menu-item__footer-hover-icon"
+              className='floating-context-menu-item__footer-hover-icon'
               sx={{
                 color: (t) =>
                   t.palette.mode === 'dark'
@@ -349,7 +349,6 @@ export interface MenuProps {
   hoverIcon?: React.ReactNode
 }
 
-// eslint-disable-next-line react/display-name
 export const MenuComponent = React.forwardRef<
   any,
   MenuProps & React.HTMLProps<any>
@@ -761,7 +760,11 @@ export const MenuComponent = React.forwardRef<
         destroy = true
       }
     }, [floatingDropdownMenuSelectedItem.lastHoverContextMenuId, children])
-    const referenceRef = useMergeRefs([refs.setReference, forwardedRef, referenceElementRef])
+    const referenceRef = useMergeRefs([
+      refs.setReference,
+      forwardedRef,
+      referenceElementRef,
+    ])
     const handleExecuteActions = useCallback(() => {
       const lastHoverId =
         floatingDropdownMenuSelectedItem.lastHoverContextMenuId
@@ -1202,7 +1205,11 @@ export const MenuComponent = React.forwardRef<
   },
 )
 
-// eslint-disable-next-line react/display-name
+MenuComponent.displayName = 'MenuComponent'
+
+/**
+ * 包含了两个浮动的menu，一个是dropdown的dropdownMenu和context menu
+ */
 export const DropdownMenu = React.forwardRef<
   any,
   MenuProps & React.HTMLProps<any>
@@ -1217,6 +1224,8 @@ export const DropdownMenu = React.forwardRef<
   }
   return <MenuComponent {...props} ref={ref} />
 })
+
+DropdownMenu.displayName = 'DropdownMenu'
 
 type FloatingUIDropdownItemDetail = {
   id: string

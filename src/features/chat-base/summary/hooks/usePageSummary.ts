@@ -7,14 +7,10 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { AuthState } from '@/features/auth/store'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import useSummaryQuota from '@/features/chat-base/summary/hooks/useSummaryQuota'
 import {
   getPageSummaryConversationId,
   getPageSummaryType,
@@ -40,14 +36,13 @@ const usePageSummary = () => {
   const { updateSidebarSettings, updateSidebarSummaryConversationId } =
     useSidebarSettings()
   const {
-    clientWritingMessage,
+    getWritingMessageState,
     showConversationLoading,
     hideConversationLoading,
   } = useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
-  const { isPayingUser } = useUserInfo()
   const { isLogin } = useRecoilValue(AuthState)
 
   const { askAIWIthShortcuts } = useClientChat()
@@ -58,10 +53,8 @@ const usePageSummary = () => {
     '',
     false,
   )
+  const { checkSummaryQuota } = useSummaryQuota()
   const isGeneratingPageSummaryRef = useRef(false)
-  const lastMessageIdRef = useRef('')
-  const clientWritingMessageRef = useRef(clientWritingMessage)
-  clientWritingMessageRef.current = clientWritingMessage
   const createPageSummary = async () => {
     if (isGeneratingPageSummaryRef.current) {
       return
@@ -75,10 +68,20 @@ const usePageSummary = () => {
 
     const userId = await getMaxAIChromeExtensionUserId()
     const pageSummaryConversationId = getPageSummaryConversationId({ userId })
+    const clientWritingMessage = await getWritingMessageState(
+      pageSummaryConversationId,
+    )
+
     updateSidebarSummaryConversationId(pageSummaryConversationId)
 
     const currentPageSummaryType = getPageSummaryType()
-    const writingLoading = clientWritingMessageRef.current.loading
+    const writingLoading = clientWritingMessage.loading
+
+    // 当前conversation正在loading
+    if (writingLoading) {
+      isGeneratingPageSummaryRef.current = false
+      return
+    }
 
     showConversationLoading(pageSummaryConversationId)
     if (pageSummaryConversationId) {
@@ -87,6 +90,7 @@ const usePageSummary = () => {
         await ClientConversationManager.getConversationById(
           pageSummaryConversationId,
         )
+
       //如果没有，那么去remote看看有没有
       const localMessages = pageSummaryConversation
         ? await ClientConversationMessageManager.getMessageIds(
@@ -141,15 +145,11 @@ const usePageSummary = () => {
             'ai',
             'earliest',
           )
-        if (writingLoading) {
-          hideConversationLoading(pageSummaryConversationId)
-          // isGeneratingPageSummaryRef.current = false
-          return
-        }
         let isValidAIMessage =
           aiMessage &&
           aiMessage?.originalMessage &&
-          aiMessage?.originalMessage.metadata?.isComplete
+          aiMessage?.originalMessage.metadata?.isComplete &&
+          aiMessage?.originalMessage.content?.text
         if (
           aiMessage &&
           aiMessage?.originalMessage &&
@@ -191,39 +191,25 @@ const usePageSummary = () => {
         console.log('新版Conversation pageSummary开始创建')
         // 进入loading
         await createConversation('Summary')
-        // 如果是免费用户
-        if (!isPayingUser) {
-          // 判断lifetimes free trial是否已经用完
-          const summaryLifetimesQuota =
-            Number(
-              (await getChromeExtensionOnBoardingData())
-                .ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES,
-            ) || 0
-          if (summaryLifetimesQuota > 0) {
-            // 如果没有用完，那么就减一
-            await setChromeExtensionOnBoardingData(
-              'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES',
-              summaryLifetimesQuota - 1,
-            )
-          } else {
-            await ClientConversationMessageManager.deleteMessages(
+        // 检测当前用量是否超出
+        if (!(await checkSummaryQuota(currentPageSummaryType))) {
+          await ClientConversationMessageManager.deleteMessages(
+            pageSummaryConversationId,
+            await ClientConversationMessageManager.getMessageIds(
               pageSummaryConversationId,
-              await ClientConversationMessageManager.getMessageIds(
-                pageSummaryConversationId,
-              ),
-            )
-            await pushPricingHookMessage('PAGE_SUMMARY')
-            // TODO 这里临时这样解决，因为现在没登录会显示登录的界面，但是其他逻辑有可能会触发这个mixpanel
-            if (isLogin) {
-              authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
-                conversationId: currentConversationId,
-                paywallType: 'RESPONSE',
-              })
-            }
-            isGeneratingPageSummaryRef.current = false
-            hideConversationLoading(pageSummaryConversationId)
-            return
+            ),
+          )
+          await pushPricingHookMessage('PAGE_SUMMARY')
+          // TODO 这里临时这样解决，因为现在没登录会显示登录的界面，但是其他逻辑有可能会触发这个mixpanel
+          if (isLogin) {
+            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+              conversationId: currentConversationId,
+              paywallType: 'RESPONSE',
+            })
           }
+          hideConversationLoading(pageSummaryConversationId)
+          isGeneratingPageSummaryRef.current = false
+          return
         }
 
         const summaryNavMetadataKey = cloneDeep(currentPageSummaryKey)[
@@ -243,7 +229,6 @@ const usePageSummary = () => {
               [currentPageSummaryType]: contextMenu.summaryNavKey,
             }
           })
-          lastMessageIdRef.current = contextMenu.messageId
           await askAIWIthShortcuts(contextMenu.actions)
             .then()
             .finally(() => {
@@ -282,7 +267,8 @@ const usePageSummary = () => {
   const resetPageSummary = () => {
     isGeneratingPageSummaryRef.current = false
   }
-  return { resetPageSummary, createPageSummary, isGeneratingPageSummaryRef }
+
+  return { resetPageSummary, createPageSummary }
 }
 
 export default usePageSummary

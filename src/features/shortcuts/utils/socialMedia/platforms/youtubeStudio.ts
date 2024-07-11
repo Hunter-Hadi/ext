@@ -105,11 +105,18 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction =
           'ytcp-comment-thread',
           ytcpCommentBox,
         )
+        // const sourceVideoLink = commentBoxRoot?.querySelector(
+        //   'ytcp-comment-button > a[href]',
+        // ) as HTMLAnchorElement
+        // const sourceVideoHref = sourceVideoLink?.href
+        // youtube studio更改了link存储的方式
         const sourceVideoLink = commentBoxRoot?.querySelector(
-          'ytcp-comment-button > a[href]',
-        ) as HTMLAnchorElement
+          'ytcp-comment-button#view-comment-button',
+        ) as HTMLElement
+        const sourceVideoHref =
+          sourceVideoLink.getAttribute('data-ytb-url') || ''
         const youTubeVideoId = YoutubeTranscript.retrieveVideoId(
-          sourceVideoLink?.href || '',
+          sourceVideoHref || '',
         )
         if (youTubeVideoId) {
           let title = '',

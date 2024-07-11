@@ -51,11 +51,14 @@ export const PLAN_PRICING_MAP: Record<RENDER_PLAN_TYPE, IPlanPricingInfo> = {
   },
   pro_yearly: {
     type: 'pro_yearly',
+    // price_id: isProduction
+    //   ? 'price_1PEDMjCdtAdZoE6daVcPIdWf'
+    //   : 'price_1PEDMRCdtAdZoE6dkT9UbTjk',
     price_id: isProduction
-      ? 'price_1PEDMjCdtAdZoE6daVcPIdWf'
-      : 'price_1PEDMRCdtAdZoE6dkT9UbTjk',
-    price: 192,
-    discount_title: '20%',
+      ? 'price_1PXXDxCdtAdZoE6d7ggGHqP5'
+      : 'price_1PXXFLCdtAdZoE6dSRhYwiJQ',
+    price: 100,
+    discount_title: '88%',
     discount_value: null, // 0.75, // 插件不对pro做额外折扣
     promotion_code: null, // 'PROLIMITEDTIME',
   },
@@ -165,6 +168,7 @@ export const PLAN_FEATURES_MAP: Partial<
         title: React.ReactNode
         items: {
           title: React.ReactNode
+          subtitle?: React.ReactNode
           tooltip: React.ReactNode
         }[]
       }[]
@@ -281,6 +285,9 @@ export const PLAN_FEATURES_MAP: Partial<
             title: t(
               'client:pricing__plan_features__pro__feature1__item2__title',
             ),
+            subtitle: t(
+              'client:pricing__plan_features__pro__feature1__item2__subtitle',
+            ),
             tooltip: t(
               'client:pricing__plan_features__pro__feature1__item2__tooltip',
             ),
@@ -288,6 +295,7 @@ export const PLAN_FEATURES_MAP: Partial<
           {
             title: '',
             tooltip: '',
+            subtitle: '',
           },
         ],
       },

@@ -34,7 +34,7 @@ const Test = () => {
 }
 
 const SidebarChatPanel = () => {
-  const { isFreeUser } = useUserInfo()
+  const { userInfo, isFreeUser } = useUserInfo()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
@@ -75,8 +75,10 @@ const SidebarChatPanel = () => {
             await startTextToImage(question)
           } else if (
             currentSidebarConversationType === 'Summary' &&
-            isFreeUser
+            isFreeUser &&
+            userInfo?.role?.name !== 'free_trial'
           ) {
+            // free_trial用户summary chat的时候不卡
             await pushPricingHookMessage('PAGE_SUMMARY')
             authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
               conversationId: currentConversationId,

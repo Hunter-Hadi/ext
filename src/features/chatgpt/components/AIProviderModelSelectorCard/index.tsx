@@ -4,7 +4,7 @@ import MenuItem, { menuItemClasses } from '@mui/material/MenuItem'
 import MenuList from '@mui/material/MenuList'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import Typography, { TypographyProps } from '@mui/material/Typography'
+import Typography from '@mui/material/Typography'
 import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -13,6 +13,7 @@ import {
   AIProviderModelSelectorOption,
   getModelOptionsForConversationType,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
+import AIProviderModelTagIcon from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelTagIcon'
 import ThirdPartyAIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/ThirdPartyAIProviderModelSelectorDetail'
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
@@ -23,41 +24,6 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-export const AIProviderModelTagIcon: FC<
-  {
-    tag: string
-  } & TypographyProps
-> = (props) => {
-  const { tag, ...rest } = props
-  return (
-    <Typography
-      component={'span'}
-      fontSize={'8px'}
-      fontWeight={500}
-      textAlign={'left'}
-      letterSpacing={'-0.16px'}
-      px={0.25}
-      borderRadius={1}
-      lineHeight={1.4}
-      ml={'4px !important'}
-      bgcolor={(t) =>
-        t.palette.mode === 'dark'
-          ? 'rgba(255, 255, 255, 0.08)'
-          : 'rgba(0, 0, 0, 0.08)'
-      }
-      whiteSpace={'nowrap'}
-      sx={{
-        borderRadius: '4px',
-        border: '1px solid',
-        borderColor: 'primary.main',
-        color: 'primary.main',
-      }}
-      {...rest}
-    >
-      {tag}
-    </Typography>
-  )
-}
 
 interface AIModelSelectorCardProps {
   sidebarConversationType: ISidebarConversationType
@@ -128,15 +94,18 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
       id={'MaxAIProviderSelectorCard'}
       component={'div'}
       sx={{
-        borderRadius: '4px',
-        border: '1px solid #EBEBEB',
+        borderRadius: '8px',
+        border: '1px solid',
+        borderColor: 'customColor.borderColor',
         boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
         width: 432,
         display: 'flex',
         alignItems: 'stretch',
         justifyContent: 'center',
         flexDirection: 'row',
-        bgcolor: 'background.paper',
+        // bgcolor: 'background.paper',
+        bgcolor: (t) =>
+          t.palette.mode === 'dark' ? 'rgba(61, 61, 61, 1)' : '#fff',
         ...sx,
       }}
       onMouseLeave={() => {
@@ -153,7 +122,8 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
           width: 216,
           flexShrink: 0,
           borderRight: '1px solid',
-          borderColor: '#ebebeb',
+          // borderColor: '#ebebeb',
+          borderColor: 'customColor.borderColor',
           py: 0,
           maxHeight: 290,
           [`.${menuItemClasses.root}`]: {
@@ -167,122 +137,66 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
           },
         }}
       >
-        {currentSidebarConversationTypeModels.map((AIModelOption) => {
+        {currentSidebarConversationTypeModels.flatMap((AIModelOption) => {
           const providerModelDetail = getAIProviderModelDetail(
             AIModelOption.AIProvider,
             AIModelOption.value,
           )
-          return (
-            <React.Fragment key={AIModelOption.value}>
-              {AIModelOption.group && (
-                <MenuItem
-                  sx={{
-                    fontSize: '12px',
-                    lineHeight: '18px',
-                    fontWeight: 500,
-                    p: '2px 8px',
-                    color: (t: any) =>
-                      t.palette.mode === 'dark'
-                        ? 'rgba(255, 255, 255, 0.38)'
-                        : 'rgba(0, 0, 0, 0.38)',
-                    opacity: '1!important',
-                  }}
-                  disabled
-                >
-                  {t(AIModelOption.group as any) + ' AI'}
-                </MenuItem>
-              )}
+          return [
+            AIModelOption.group && (
               <MenuItem
-                data-testid={`maxai--ai-model-selector--menu-item--${AIModelOption.value}`}
-                data-model-max-tokens={providerModelDetail?.maxTokens || 0}
-                disabled={AIModelOption.disabled}
-                onMouseEnter={() => {
-                  setIsHoverThirdPartyModel(false)
-                  setHoverModel(AIModelOption)
+                key={`${AIModelOption.value}-group`}
+                sx={{
+                  fontSize: '12px',
+                  lineHeight: '18px',
+                  fontWeight: 500,
+                  p: '2px 8px',
+                  color: (t: any) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgba(255, 255, 255, 0.38)'
+                      : 'rgba(0, 0, 0, 0.38)',
+                  opacity: '1!important',
                 }}
-                selected={
-                  !isSelectedThirdAIProvider &&
-                  AIModelOption.value === currentModelDetail?.value
-                }
-                onClick={async () => {
-                  if (
-                    isHoverThirdPartyModel ||
-                    (AIModelOption.AIProvider ===
-                      currentModelDetail?.AIProvider &&
-                      AIModelOption.value === currentModelDetail?.value)
-                  ) {
-                    return
-                  }
-                  await updateAIProviderModel(
-                    AIModelOption.AIProvider,
-                    AIModelOption.value,
-                  )
-                  await createConversation(
-                    sidebarConversationType,
-                    AIModelOption.AIProvider,
-                    AIModelOption.value,
-                  )
-                }}
+                disabled
               >
-                <Stack alignItems={'center'} direction={'row'}>
-                  <AIModelIcons aiModelValue={AIModelOption.value} />
-                  <Typography
-                    fontSize={'14px'}
-                    lineHeight={'20px'}
-                    color={'text.primary'}
-                    sx={{
-                      ml: 1,
-                      mr: 0.5,
-                    }}
-                  >
-                    {AIModelOption.label}
-                  </Typography>
-                  <Stack direction={'row'} alignItems={'center'} gap={0.5}>
-                    {AIModelOption.tag && (
-                      <AIProviderModelTagIcon tag={AIModelOption.tag} />
-                    )}
-                  </Stack>
-                </Stack>
+                {t(AIModelOption.group as any) + ' AI'}
               </MenuItem>
-            </React.Fragment>
-          )
-        })}
-        {/*// 占位*/}
-        <Box height={'4px'} width={'100%'}></Box>
-        {/* NOTE: 只有Chat板块有第三方的*/}
-        {sidebarConversationType === 'Chat' && (
-          <>
+            ),
             <MenuItem
-              sx={{
-                fontSize: '12px',
-                lineHeight: '18px',
-                fontWeight: 500,
-                p: '2px 8px',
-                color: (t: any) =>
-                  t.palette.mode === 'dark'
-                    ? 'rgba(255, 255, 255, 0.38)'
-                    : 'rgba(0, 0, 0, 0.38)',
-                opacity: '1!important',
-              }}
-              disabled
-            >
-              {t(
-                'client:sidebar__ai_provider__model_selector__third_party_group__title',
-              ) + ' AI'}
-            </MenuItem>
-            <MenuItem
-              data-testid={`maxai--ai-model-selector--menu-item--third-ai-provider`}
+              key={AIModelOption.value}
+              data-testid={`maxai--ai-model-selector--menu-item--${AIModelOption.value}`}
+              data-model-max-tokens={providerModelDetail?.maxTokens || 0}
+              disabled={AIModelOption.disabled}
               onMouseEnter={() => {
-                setHoverModel(null)
-                setIsHoverThirdPartyModel(true)
+                setIsHoverThirdPartyModel(false)
+                setHoverModel(AIModelOption)
               }}
-              selected={isSelectedThirdAIProvider}
-              onClick={() => {
-                showThirdPartyAIProviderConfirmDialog()
+              selected={
+                !isSelectedThirdAIProvider &&
+                AIModelOption.value === currentModelDetail?.value
+              }
+              onClick={async () => {
+                if (
+                  isHoverThirdPartyModel ||
+                  (AIModelOption.AIProvider ===
+                    currentModelDetail?.AIProvider &&
+                    AIModelOption.value === currentModelDetail?.value)
+                ) {
+                  return
+                }
+                await updateAIProviderModel(
+                  AIModelOption.AIProvider,
+                  AIModelOption.value,
+                )
+                await createConversation(
+                  sidebarConversationType,
+                  AIModelOption.AIProvider,
+                  AIModelOption.value,
+                )
               }}
             >
               <Stack alignItems={'center'} direction={'row'}>
-                <ThirdPartyAIProviderIcon sx={{ fontSize: '20px' }} />
+                <AIModelIcons aiModelValue={AIModelOption.value} />
                 <Typography
                   fontSize={'14px'}
                   lineHeight={'20px'}
@@ -292,20 +206,76 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                     mr: 0.5,
                   }}
                 >
-                  {t(
-                    'client:sidebar__ai_provider__model_selector__third_party_ai_provider__title',
-                  )}
+                  {AIModelOption.label}
                 </Typography>
-                <KeyboardArrowRightOutlinedIcon
-                  sx={{
-                    fontSize: '20px',
-                    color: (t) =>
-                      t.palette.mode === 'dark' ? '#FFF' : 'inherit',
-                  }}
-                />
+                <Stack direction={'row'} alignItems={'center'} gap={0.5}>
+                  {AIModelOption.tag && (
+                    <AIProviderModelTagIcon tag={AIModelOption.tag} />
+                  )}
+                </Stack>
               </Stack>
-            </MenuItem>
-          </>
+            </MenuItem>,
+          ]
+        })}
+        {/*// 占位*/}
+        <Box height={'4px'} width={'100%'}></Box>
+        {/* NOTE: 只有Chat板块有第三方的*/}
+        {sidebarConversationType === 'Chat' && (
+          <MenuItem
+            sx={{
+              fontSize: '12px',
+              lineHeight: '18px',
+              fontWeight: 500,
+              p: '2px 8px',
+              color: (t: any) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.38)'
+                  : 'rgba(0, 0, 0, 0.38)',
+              opacity: '1!important',
+            }}
+            disabled
+          >
+            {t(
+              'client:sidebar__ai_provider__model_selector__third_party_group__title',
+            ) + ' AI'}
+          </MenuItem>
+        )}
+        {sidebarConversationType === 'Chat' && (
+          <MenuItem
+            data-testid={`maxai--ai-model-selector--menu-item--third-ai-provider`}
+            onMouseEnter={() => {
+              setHoverModel(null)
+              setIsHoverThirdPartyModel(true)
+            }}
+            selected={isSelectedThirdAIProvider}
+            onClick={() => {
+              showThirdPartyAIProviderConfirmDialog()
+            }}
+          >
+            <Stack alignItems={'center'} direction={'row'}>
+              <ThirdPartyAIProviderIcon sx={{ fontSize: '20px' }} />
+              <Typography
+                fontSize={'14px'}
+                lineHeight={'20px'}
+                color={'text.primary'}
+                sx={{
+                  ml: 1,
+                  mr: 0.5,
+                }}
+              >
+                {t(
+                  'client:sidebar__ai_provider__model_selector__third_party_ai_provider__title',
+                )}
+              </Typography>
+              <KeyboardArrowRightOutlinedIcon
+                sx={{
+                  fontSize: '20px',
+                  color: (t) =>
+                    t.palette.mode === 'dark' ? '#FFF' : 'inherit',
+                }}
+              />
+            </Stack>
+          </MenuItem>
         )}
       </MenuList>
       <Stack width={0} flex={1}>

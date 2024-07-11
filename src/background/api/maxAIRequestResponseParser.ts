@@ -57,6 +57,23 @@ export const maxAIRequestResponseStreamParser = (
           }
           break
         case 'complete':
+          // 目前短文summary的时候会把整个上下文切片完返回
+          // 完成的时候把没有用到的citation都过滤掉，不存储
+          if (
+            outputMessage.originalMessage?.metadata?.sourceCitations?.length
+          ) {
+            const pattern = /\[T(\d+)\]\(.*?\)/g
+            const matches = [...outputMessage.text.matchAll(pattern)].map(
+              (match) => match[1],
+            )
+            outputMessage.originalMessage.metadata.sourceCitations =
+              outputMessage.originalMessage.metadata.sourceCitations.filter(
+                (item) => {
+                  return matches.includes(`${item.search_result_index}`)
+                },
+              )
+          }
+
           // TODO 这里设置空后续需要注意一下，对于不同类型的消息会显示不同的icon
           // 这样写会直接覆盖掉，目前没问题因为是只有summary的时候用到
           outputMessage.originalMessage = {
@@ -123,47 +140,49 @@ export const maxAIRequestResponseStreamParser = (
       const pageSummaryType = conversation?.meta.pageSummaryType
       switch (streamMessage.streaming_status) {
         case 'start':
-        case 'in_progress':
+        case 'in_progress': {
           // loading状态
-          outputMessage.originalMessage = {
-            ...outputMessage.originalMessage,
-            metadata: {
-              ...outputMessage.originalMessage?.metadata,
-              deepDive: {
-                title: {
-                  title: ' ',
-                  titleIcon: 'Loading',
-                },
-                value: '',
-              },
-            },
-          }
-          break
-        case 'complete': {
-          // TODO 对于summary message没有related question时需要区分显示Ask AI anything about the page/email/PDF/video
           const relatedDive = {
             title: {
-              title: 'Keep exploring',
-              titleIcon: 'Layers',
+              title: ' ',
+              titleIcon: 'Loading',
             },
-            type: 'related',
-            value: streamMessage.related,
+            value: '',
           } as const
           outputMessage.originalMessage = {
             ...outputMessage.originalMessage,
             metadata: {
               ...outputMessage.originalMessage?.metadata,
-              deepDive: streamMessage.related?.length
-                ? pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
+              deepDive:
+                pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
                   ? [relatedDive]
-                  : relatedDive
-                : {
-                    title: {
-                      title: 'Deep dive',
-                      titleIcon: 'TipsAndUpdates',
-                    },
-                    value: 'Ask AI anything about the page...',
-                  },
+                  : relatedDive,
+            },
+          }
+          break
+        }
+        case 'complete': {
+          const relatedDive = streamMessage.related?.length
+            ? {
+                title: {
+                  title: 'Keep exploring',
+                  titleIcon: 'Layers',
+                },
+                type: 'related',
+                value: streamMessage.related,
+              }
+            : {
+                title: { title: '', titleIcon: '' },
+                value: '',
+              }
+          outputMessage.originalMessage = {
+            ...outputMessage.originalMessage,
+            metadata: {
+              ...outputMessage.originalMessage?.metadata,
+              deepDive:
+                pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
+                  ? ([relatedDive].filter(Boolean) as any)
+                  : relatedDive,
             },
           }
           break

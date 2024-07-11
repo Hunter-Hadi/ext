@@ -4,6 +4,7 @@ import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
+import AIProviderModelTagIcon from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelTagIcon'
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
@@ -76,29 +77,11 @@ const AIProviderModelSelectorDetail: FC<{
               <Stack direction={'row'} flexWrap={'wrap'} gap={'4px'}>
                 {currentAIProviderModelTags.map((tag) => {
                   return (
-                    <Typography
+                    <AIProviderModelTagIcon
                       key={tag}
-                      component={'span'}
-                      fontSize={'12px'}
-                      fontWeight={500}
-                      textAlign={'left'}
-                      px={0.5}
-                      borderRadius={1}
-                      bgcolor={(t) =>
-                        t.palette.mode === 'dark'
-                          ? 'rgba(255, 255, 255, 0.08)'
-                          : 'rgba(0, 0, 0, 0.08)'
-                      }
-                      whiteSpace={'nowrap'}
-                      sx={{
-                        borderRadius: '4px',
-                        border: '1px solid',
-                        borderColor: 'primary.main',
-                        color: 'primary.main',
-                      }}
-                    >
-                      {tag}
-                    </Typography>
+                      tag={tag}
+                      fontSize={'10px'}
+                    />
                   )
                 })}
               </Stack>

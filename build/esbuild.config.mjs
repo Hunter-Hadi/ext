@@ -64,21 +64,21 @@ async function esbuildConfig() {
   const result = await esbuild.build({
     platform: 'browser',
     entryPoints: [
-      'src/contentArkoseTokenIframe.ts',
       'src/assets/openai/windowArkoseTokenIframe.ts',
       'src/content.tsx',
       'src/minimum.tsx',
       'src/content_style.ts',
       'src/background.ts',
-      'src/check_status.ts',
-      'src/iframeDocumentStart.ts',
-      'src/iframeDocumentEnd.ts',
       'src/pages/settings/index.tsx',
       'src/pages/popup/index.tsx',
       'src/pages/chatgpt/fileUploadServer.ts',
-      'src/pages/googleDoc/index.ts',
-      'src/pages/googleDoc/enableCanvasAnnotations.ts',
       'src/searchWithAI.ts',
+      'src/apps/content-scripts/checkMaxAIStatus',
+      'src/apps/content-scripts/contentArkoseTokenIframe.ts',
+      'src/apps/content-scripts/injectDocumentStart.ts',
+      'src/apps/content-scripts/iframeDocumentEnd.ts',
+      'src/apps/content-scripts/website/googleDoc.ts',
+      'src/apps/content-scripts/website/youtubeStudio.ts',
     ],
     format: 'esm',
     drop: isProduction ? ['console', 'debugger'] : [],
@@ -164,17 +164,17 @@ async function esbuildConfig() {
       isProduction
         ? []
         : [
-          copyStaticFilesPlugin({
-            source: ['build/hot_reload/hot_reload.content.js'],
-            target: `${buildDir}`,
-            copyWithFolder: false,
-          }),
-          copyStaticFilesPlugin({
-            source: ['src/lib/react-devtools.js'],
-            target: `${buildDir}`,
-            copyWithFolder: false,
-          }),
-        ],
+            copyStaticFilesPlugin({
+              source: ['build/hot_reload/hot_reload.content.js'],
+              target: `${buildDir}`,
+              copyWithFolder: false,
+            }),
+            copyStaticFilesPlugin({
+              source: ['src/lib/react-devtools.js'],
+              target: `${buildDir}`,
+              copyWithFolder: false,
+            }),
+          ],
     ),
     outdir: buildDir,
   })
@@ -217,15 +217,20 @@ async function updateManifest() {
   manifest.content_scripts.map((contentScript) => {
     const contentScriptPath = contentScript.js[0]
     addWebAccessibleResources.push(contentScriptPath)
-    contentScript.js[0] = `import_${contentScriptPath}`
+    const importPath = `import_${contentScriptPath.split('/').join('_')}`
+    contentScript.js[0] = importPath
     // write a new js file
     const jsContent = `(function() {
     const importPath = /*@__PURE__*/ JSON.parse('"${contentScriptPath}"');
     import(chrome.runtime.getURL(importPath));
 })();`
-    fs.writeFileSync(`${buildDir}/import_${contentScriptPath}`, jsContent)
-    if (contentScriptPath === 'check_status.js' && buildEnv.api_env === 'production' && isProduction) {
-      // prod env check_status script matches
+    fs.writeFileSync(`${buildDir}/${importPath}`, jsContent)
+    if (
+      contentScriptPath.includes('checkMaxAIStatus.js') &&
+      buildEnv.api_env === 'production' &&
+      isProduction
+    ) {
+      // prod env checkMaxAIStatus script matches
       contentScript.matches = ['https://app.maxai.me/*']
     }
   })
@@ -256,9 +261,9 @@ async function buildFiles() {
 async function release() {
   const manifest = await fs.readJson(`${buildDir}/manifest.json`)
   const version = manifest.version
-  let archiveName = `releases/MaxAI[${buildEnv.api_env}]-${version}-${dayjs().format(
-    'YYYY-MM-DD-HH-mm',
-  )}.zip`
+  let archiveName = `releases/MaxAI[${
+    buildEnv.api_env
+  }]-${version}-${dayjs().format('YYYY-MM-DD-HH-mm')}.zip`
   const archive = archiver('zip', { zlib: { level: 9 } })
   const stream = fs.createWriteStream(archiveName)
   archive.pipe(stream)

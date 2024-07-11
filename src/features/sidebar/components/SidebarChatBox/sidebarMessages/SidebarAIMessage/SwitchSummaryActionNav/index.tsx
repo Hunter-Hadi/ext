@@ -16,7 +16,9 @@ import {
   type IContextMenuIconKey,
 } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { PAGE_SUMMARY_NAV_LIST_MAP } from '@/features/chat-base/summary/constants'
+import useSummaryQuota from '@/features/chat-base/summary/hooks/useSummaryQuota'
 import {
   IPageSummaryNavItem,
   IPageSummaryNavType,
@@ -30,6 +32,7 @@ import {
   getSummaryNavActions,
 } from '@/features/chat-base/summary/utils/summaryActionHelper'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 import {
   IAIResponseMessage,
@@ -52,6 +55,8 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     message.originalMessage?.metadata?.navMetadata,
   )
   const { askAIWIthShortcuts } = useClientChat()
+  const { clientConversation, pushPricingHookMessage } = useClientConversation()
+  const { checkSummaryQuota } = useSummaryQuota()
   const summaryType = useMemo(() => getPageSummaryType(), [])
   const summaryNavList = useMemo(
     () => PAGE_SUMMARY_NAV_LIST_MAP[summaryType],
@@ -74,6 +79,16 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
 
   const clickNavTriggerActionChange = async (navItem: IPageSummaryNavItem) => {
     if (loading || speedChangeKey === navItem.key) return //防止多次触发
+
+    if (!(await checkSummaryQuota())) {
+      await pushPricingHookMessage('PAGE_SUMMARY')
+      authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+        conversationId: clientConversation?.id,
+        paywallType: 'RESPONSE',
+      })
+      return
+    }
+
     changeSummaryAction({
       key: navItem.key,
       title: navItem.title,
@@ -106,6 +121,16 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     menuItem: IContextMenuItemWithChildren,
   ) => {
     if (loading || speedChangeKey === menuItem.id) return //防止多次触发
+
+    if (!(await checkSummaryQuota())) {
+      await pushPricingHookMessage('PAGE_SUMMARY')
+      authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+        conversationId: clientConversation?.id,
+        paywallType: 'RESPONSE',
+      })
+      return
+    }
+
     changeSummaryAction({
       key: menuItem.id,
       title: menuItem.text,

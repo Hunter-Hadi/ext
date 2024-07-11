@@ -265,6 +265,23 @@ const preprocessLaTeX = (content: string) => {
 }
 
 /**
+ * 处理link标签
+ * 比如输出[1](https://的时候转换成[1](xxx)，提前加上闭合标签避免输出的时候渲染一长串url之后再闪烁成[1]的格式
+ * @param content
+ */
+export const preprocessLink = (content: string) => {
+  // 使用正则表达式检查是否以未闭合的链接标签结尾
+  const regex = /\[([^\]]*)\]\(([^)]+)$/
+
+  // 如果匹配到未闭合的链接标签，添加闭合标签`)`
+  if (regex.test(content)) {
+    content += ')'
+  }
+
+  return content
+}
+
+/**
  * 处理citation序号，按顺序标记
  * @param content
  */
@@ -272,9 +289,13 @@ export const preprocessCitation = (content: string) => {
   let count = 0
   // 目前这里有概率会出现[T1](xxx)，不是{}的内容，先做任意内容匹配
   // /\[T(\d+)\]\(\{\}\)/
+  const tags: Record<string, number> = {}
   return content.replace(/\[T(\d+)\]\((.*?)\)/g, (match, p1) => {
-    count += 1
-    return `[T${p1}](${count})`
+    if (!tags[p1]) {
+      count += 1
+      tags[p1] = count
+    }
+    return `[T${p1}](${tags[p1]})`
   })
 }
 
@@ -384,21 +405,26 @@ const CustomMarkdown: FC<{
           a: ({ node, ...props }) => {
             if (citations && typeof props.children?.[0] === 'string') {
               const match = props.children[0].match(/T(\d+)/)
-              const index = match ? Number(match[1]) : -1
-              if (!citations[index]) {
-                // 查不到citations
-                return null
+              if (match) {
+                const index = match ? Number(match[1]) : -1
+                const sourceCitation = citations.find(
+                  (item) => item.search_result_index === index,
+                )
+                if (!sourceCitation) {
+                  // 查不到citations
+                  return null
+                }
+                const number = Number(props.href)
+                return (
+                  <CitationTag
+                    conversationId={conversationId}
+                    citation={sourceCitation}
+                    index={index}
+                    number={isNaN(number) ? undefined : number}
+                    type={isNaN(number) ? 'icon' : 'number'}
+                  />
+                )
               }
-              const number = Number(props.href)
-              return (
-                <CitationTag
-                  conversationId={conversationId}
-                  citations={citations}
-                  index={index}
-                  number={isNaN(number) ? undefined : number}
-                  type={isNaN(number) ? 'icon' : 'number'}
-                />
-              )
             }
             // citation引用做hover 展示
             let linkSource

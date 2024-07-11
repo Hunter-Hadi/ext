@@ -18,16 +18,12 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
-import useSurveyFilledOutStatus from '@/features/survey/hooks/useSurveyFilledOutStatus'
 dayjs.extend(utc)
 
 const SidebarPromotionDialog = () => {
   const { t } = useTranslation(['client'])
   const { browserAgent } = useBrowserAgent()
   const { userInfo, isPayingUser } = useUserInfo()
-
-  const { alreadyFilledOutSurvey: surveyCancelCompletedFilledOut } =
-    useSurveyFilledOutStatus('funnel_survey__survey_cancel_completed')
 
   const [open, setOpen] = useState(false)
 
@@ -83,32 +79,23 @@ const SidebarPromotionDialog = () => {
       if (!showType) {
         return
       }
+
+      // 免费用户注册时间小于三天不弹窗
+      if (!isPayingUser) {
+        const timeLimit = new Date().getTime() - 3 * 24 * 60 * 60 * 1000
+        if (new Date(createAt).getTime() > timeLimit) {
+          return
+        }
+      }
+
       // 针对免费用户的弹窗
       if (showType === 'free') {
         // 不是免费用户不弹窗
         if (isPayingUser) {
           return
         }
-
-        // 注册时间小于三天不弹窗
-        const timeLimit = new Date().getTime() - 3 * 24 * 60 * 60 * 1000
-        if (new Date(createAt).getTime() > timeLimit) {
-          return
-        }
-
-        // subscription_canceled_at 存在，并且没有填写过 survey_cancel_completed survey
-        if (
-          userInfo.subscription_canceled_at &&
-          !surveyCancelCompletedFilledOut
-        ) {
-          const cancelledAt = dayjs.utc(userInfo.subscription_canceled_at)
-          const now = dayjs.utc()
-          if (now.diff(cancelledAt, 'day') < 30) {
-            // 不显示 SidebarPromotionDialog， 因为这时候需要显示 survey_cancel_completed survey dialog
-            return
-          }
-        }
       }
+
       // 针对所有用户的弹窗
       // if (!onBoardingData.ON_BOARDING_MAXAI_3_0) {
       //   // maxai 3.0 的 onboarding tour，还没有结束，不弹窗
@@ -123,7 +110,7 @@ const SidebarPromotionDialog = () => {
         setOpen(true)
         mixpanelTrack('update_modal_showed', {
           testFeature: 'extensionUpdateModal',
-          testVersion: `2-${updateVariantRef.current}`,
+          testVersion: `3-${updateVariantRef.current}`,
         })
       }, 1500)
     })

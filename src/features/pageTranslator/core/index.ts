@@ -362,6 +362,15 @@ class PageTranslator {
         height: auto;
       }
       `
+    } else if (host === 'larksuite.com') {
+      style.innerHTML += `
+      body.maxai-trans-show .catalogue-container .catalogue__list-item {
+        height: auto!important;
+      }
+      body.maxai-trans-show .catalogue-container .catalogue__list-item ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT} {
+        margin-left: 16px;
+      }
+      `
     }
 
     document.head.appendChild(style)

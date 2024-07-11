@@ -25,3 +25,8 @@
 - pricing
   - payment
 - prompt-library
+- website-integrations 存放所有特殊website的逻辑
+  - google-doc
+  - office-word
+  - youtube
+  - youtube-studio

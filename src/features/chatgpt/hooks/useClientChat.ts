@@ -5,6 +5,8 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { MAXAI_VISION_MODEL_UPLOAD_CONFIG } from '@/background/src/chat/constant'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import useSummaryQuota from '@/features/chat-base/summary/hooks/useSummaryQuota'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -50,12 +52,14 @@ const useClientChat = () => {
   const setShortCutsRef = useRef(setShortCuts)
   const {
     currentConversationIdRef,
+    clientConversation,
     pushPricingHookMessage,
     hideConversationLoading,
     showConversationLoading,
     getCurrentConversation,
     updateClientConversationLoading,
   } = useClientConversation()
+  const { checkSummaryQuota } = useSummaryQuota()
   useEffect(() => {
     runShortCutsRef.current = runShortCuts
   }, [runShortCuts])
@@ -303,8 +307,32 @@ const useClientChat = () => {
     if (!currentConversationId) return
     try {
       showConversationLoading(currentConversationId)
+
       const { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
         await getLastRunShortcuts(currentConversationId)
+
+      if (clientConversation?.type === 'Summary') {
+        // 如果重试的是summary message，需要判断用量
+        const isSummaryActions = lastRunActions?.find((item) => {
+          return (
+            item.type === 'CHAT_MESSAGE' &&
+            item.parameters.ActionChatMessageConfig?.originalMessage?.metadata
+              ?.shareType === 'summary'
+          )
+        })
+        if (
+          isSummaryActions &&
+          !(await checkSummaryQuota(clientConversation.meta.pageSummaryType!))
+        ) {
+          await pushPricingHookMessage('PAGE_SUMMARY')
+          authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+            conversationId: currentConversationId,
+            paywallType: 'RESPONSE',
+          })
+          return
+        }
+      }
+
       if (lastRunActions.length > 0) {
         console.log(needDeleteMessageIds)
         await ClientConversationMessageManager.deleteMessages(

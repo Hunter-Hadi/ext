@@ -235,10 +235,11 @@ export interface IAIResponseOriginalMessage {
 }
 
 export interface IAIResponseSourceCitation {
-  snippet: string
   content: string
-  start_index?: number
+  search_result_index: number
   length?: number
+  snippet?: string
+  start_index?: number
 }
 
 // AI返回的消息

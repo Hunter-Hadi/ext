@@ -4,7 +4,241 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-importers:
+dependencies:
+  '@emotion/cache':
+    specifier: ^11.10.5
+    version: 11.11.0
+  '@emotion/react':
+    specifier: ^11.10.6
+    version: 11.11.4(@types/react@18.2.72)(react@18.2.0)
+  '@emotion/styled':
+    specifier: ^11.10.6
+    version: 11.11.0(@emotion/react@11.11.4)(@types/react@18.2.72)(react@18.2.0)
+  '@fingerprintjs/fingerprintjs':
+    specifier: ^3.4.1
+    version: 3.4.2
+  '@floating-ui/react':
+    specifier: ^0.26.13
+    version: 0.26.13(react-dom@18.2.0)(react@18.2.0)
+  '@minoru/react-dnd-treeview':
+    specifier: ^3.4.1
+    version: 3.4.4(react-dnd@16.0.1)(react-dom@18.2.0)(react@18.2.0)
+  '@mozilla/readability':
+    specifier: ^0.5.0
+    version: 0.5.0
+  '@mui/icons-material':
+    specifier: ^5.11.9
+    version: 5.15.14(@mui/material@5.15.14)(@types/react@18.2.72)(react@18.2.0)
+  '@mui/lab':
+    specifier: 5.0.0-alpha.153
+    version: 5.0.0-alpha.153(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@mui/material@5.15.14)(@types/react@18.2.72)(react-dom@18.2.0)(react@18.2.0)
+  '@mui/material':
+    specifier: ^5.11.9
+    version: 5.15.14(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.72)(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-query':
+    specifier: ^5.8.4
+    version: 5.28.9(react@18.2.0)
+  '@types/mixpanel-browser':
+    specifier: ^2.49.0
+    version: 2.49.0
+  '@types/react-window-infinite-loader':
+    specifier: ^1.0.9
+    version: 1.0.9
+  ace-builds:
+    specifier: ^1.15.3
+    version: 1.32.8
+  browser-image-compression:
+    specifier: ^2.0.2
+    version: 2.0.2
+  cheerio:
+    specifier: 1.0.0-rc.12
+    version: 1.0.0-rc.12
+  clipboardy:
+    specifier: ^4.0.0
+    version: 4.0.0
+  crypto-js:
+    specifier: ^4.1.1
+    version: 4.2.0
+  dayjs:
+    specifier: ^1.11.7
+    version: 1.11.10
+  dexie:
+    specifier: ^4.0.4
+    version: 4.0.4
+  dexie-react-hooks:
+    specifier: ^1.1.7
+    version: 1.1.7(@types/react@18.2.72)(dexie@4.0.4)(react@18.2.0)
+  email-validator:
+    specifier: ^2.0.4
+    version: 2.0.4
+  eventsource-parser:
+    specifier: ^0.1.0
+    version: 0.1.0
+  expiry-map:
+    specifier: ^2.0.0
+    version: 2.0.0
+  file-saver:
+    specifier: ^2.0.5
+    version: 2.0.5
+  franc:
+    specifier: ^6.1.0
+    version: 6.2.0
+  gpt-tokenizer:
+    specifier: ^2.1.2
+    version: 2.1.2
+  i18next:
+    specifier: ^23.3.0
+    version: 23.10.1
+  iso-639-3:
+    specifier: ^3.0.1
+    version: 3.0.1
+  js-sha3:
+    specifier: ^0.9.3
+    version: 0.9.3
+  json5:
+    specifier: ^2.2.3
+    version: 2.2.3
+  jszip:
+    specifier: ^3.10.1
+    version: 3.10.1
+  katex:
+    specifier: ^0.16.8
+    version: 0.16.10
+  langchain:
+    specifier: ^0.0.82
+    version: 0.0.82(cheerio@1.0.0-rc.12)
+  linkedom:
+    specifier: ^0.14.26
+    version: 0.14.26
+  lodash-es:
+    specifier: ^4.17.21
+    version: 4.17.21
+  markdown-to-jsx:
+    specifier: ^7.2.0
+    version: 7.4.5(react@18.2.0)
+  md5:
+    specifier: ^2.3.0
+    version: 2.3.0
+  memoize-one:
+    specifier: ^6.0.0
+    version: 6.0.0
+  mixpanel-browser:
+    specifier: ^2.49.0
+    version: 2.49.0
+  mkdirp:
+    specifier: ^3.0.0
+    version: 3.0.1
+  notistack:
+    specifier: ^3.0.1
+    version: 3.0.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
+  ofetch:
+    specifier: ^1.0.1
+    version: 1.3.4
+  open:
+    specifier: ^10.1.0
+    version: 10.1.0
+  openai:
+    specifier: ^4.52.2
+    version: 4.52.2
+  rangy:
+    specifier: ^1.3.1
+    version: 1.3.1
+  re-resizable:
+    specifier: ^6.9.9
+    version: 6.9.11(react-dom@18.2.0)(react@18.2.0)
+  react:
+    specifier: ^18.2.0
+    version: 18.2.0
+  react-ace:
+    specifier: ^10.1.0
+    version: 10.1.0(react-dom@18.2.0)(react@18.2.0)
+  react-audio-voice-recorder:
+    specifier: ^2.2.0
+    version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
+  react-contenteditable:
+    specifier: ^3.3.7
+    version: 3.3.7(react@18.2.0)
+  react-copy-to-clipboard:
+    specifier: ^5.1.0
+    version: 5.1.0(react@18.2.0)
+  react-devtools:
+    specifier: ^5.0.0
+    version: 5.0.2
+  react-dnd:
+    specifier: ^16.0.1
+    version: 16.0.1(@types/react@18.2.72)(react@18.2.0)
+  react-dom:
+    specifier: ^18.2.0
+    version: 18.2.0(react@18.2.0)
+  react-draggable:
+    specifier: ^4.4.5
+    version: 4.4.6(react-dom@18.2.0)(react@18.2.0)
+  react-highlight:
+    specifier: ^0.15.0
+    version: 0.15.0
+  react-hook-form:
+    specifier: ^7.48.2
+    version: 7.51.2(react@18.2.0)
+  react-i18next:
+    specifier: ^13.0.2
+    version: 13.5.0(i18next@23.10.1)(react-dom@18.2.0)(react@18.2.0)
+  react-markdown:
+    specifier: ^8.0.7
+    version: 8.0.7(@types/react@18.2.72)(react@18.2.0)
+  react-node-to-string:
+    specifier: ^0.1.1
+    version: 0.1.2(react@18.2.0)
+  react-scroll:
+    specifier: ^1.8.9
+    version: 1.9.0(react-dom@18.2.0)(react@18.2.0)
+  react-virtualized-auto-sizer:
+    specifier: ^1.0.24
+    version: 1.0.24(react-dom@18.2.0)(react@18.2.0)
+  react-window:
+    specifier: ^1.8.10
+    version: 1.8.10(react-dom@18.2.0)(react@18.2.0)
+  react-window-infinite-loader:
+    specifier: ^1.0.9
+    version: 1.0.9(react-dom@18.2.0)(react@18.2.0)
+  recoil:
+    specifier: ^0.7.6
+    version: 0.7.7(react-dom@18.2.0)(react@18.2.0)
+  rehype-highlight:
+    specifier: ^6.0.0
+    version: 6.0.0
+  rehype-katex:
+    specifier: ^6.0.3
+    version: 6.0.3
+  remark-breaks:
+    specifier: ^3.0.3
+    version: 3.0.3
+  remark-gfm:
+    specifier: ^3.0.1
+    version: 3.0.1
+  remark-math:
+    specifier: ^5.1.1
+    version: 5.1.1
+  remark-supersub:
+    specifier: ^1.0.0
+    version: 1.0.0
+  sanitize-html:
+    specifier: ^2.11.0
+    version: 2.13.0
+  sift:
+    specifier: ^17.1.3
+    version: 17.1.3
+  turndown:
+    specifier: ^7.1.2
+    version: 7.1.3
+  ua-parser-js:
+    specifier: ^1.0.35
+    version: 1.0.37
+  uuid:
+    specifier: ^9.0.0
+    version: 9.0.1
+  websocket-as-promised:
+    specifier: ^2.0.1
+    version: 2.0.1
 
   .:
     dependencies:
@@ -1397,8 +1631,8 @@ packages:
   '@motionone/utils@10.17.0':
     resolution: {integrity: sha512-bGwrki4896apMWIj9yp5rAS2m0xyhxblg6gTB/leWDPt+pb410W8lYWsxyurX+DH+gO1zsQsfx2su/c1/LtTpg==}
 
-  '@mozilla/readability@0.4.4':
-    resolution: {integrity: sha512-MCgZyANpJ6msfvVMi6+A0UAsvZj//4OHREYUB9f2087uXHVoU+H+SWhuihvb1beKpM323bReQPRio0WNk2+V6g==}
+  /@mozilla/readability@0.5.0:
+    resolution: {integrity: sha512-Z+CZ3QaosfFaTqvhQsIktyGrjFjSC0Fa4EMph4mqKnWhmyoGICsV/8QK+8HpXut6zV7zwfWwqDmEjtk1Qf6EgQ==}
     engines: {node: '>=14.0.0'}
 
   '@mui/base@5.0.0-beta.24':

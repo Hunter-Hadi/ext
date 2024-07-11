@@ -16,7 +16,7 @@ import ConversationManager from '@/background/src/chatConversations'
 import { backgroundSendAllClientMessage } from '@/background/utils'
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { APP_VERSION } from '@/constants'
-import { MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL } from '@/features/common/constants'
+import { MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL } from '@/features/common/constants'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 import Log from '@/utils/Log'
@@ -66,7 +66,7 @@ class ChatSystem implements ChatSystemInterface {
     await this.preAuth()
     try {
       Browser.runtime.setUninstallURL(
-        `${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}&provider=${provider}`,
+        `${MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}&provider=${provider}`,
       )
     } catch (e) {
       log.error('switchAdapter', 'setUninstallURL', e)

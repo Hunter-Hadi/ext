@@ -1,6 +1,6 @@
 {
   "name": "MaxAI",
-  "version": "4.3.11",
+  "version": "4.3.13",
   "description": "..",
   "author": "",
   "scripts": {
@@ -21,7 +21,7 @@
     "@fingerprintjs/fingerprintjs": "^3.4.1",
     "@floating-ui/react": "^0.26.13",
     "@minoru/react-dnd-treeview": "^3.4.1",
-    "@mozilla/readability": "^0.4.4",
+    "@mozilla/readability": "^0.5.0",
     "@mui/icons-material": "^5.11.9",
     "@mui/lab": "5.0.0-alpha.153",
     "@mui/material": "^5.11.9",

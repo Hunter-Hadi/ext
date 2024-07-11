@@ -280,14 +280,28 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
                   direction='row'
                   alignItems='center'
                   spacing={1}
-                  visibility={item.title ? 'visible' : 'hidden'}
+                  visibility={
+                    item.title || item.subtitle ? 'visible' : 'hidden'
+                  }
                 >
                   <CheckCircleOutlineIcon
                     sx={{ color: 'rgba(0, 0, 0, 0.87)', fontSize: 20 }}
                   />
-                  <Typography fontSize={14} color='rgba(0, 0, 0, 0.87)'>
-                    {item.title}
-                  </Typography>
+                  <Box>
+                    <Typography fontSize={14} color='rgba(0, 0, 0, 0.87)'>
+                      {item.title}
+                    </Typography>
+                    {item.subtitle && (
+                      <Typography
+                        position='absolute'
+                        mt={0.5}
+                        fontSize={12}
+                        color='rgba(0, 0, 0, 0.5)'
+                      >
+                        {item.subtitle}
+                      </Typography>
+                    )}
+                  </Box>
                   {item.tooltip && (
                     <BlackTooltip
                       PopperProps={{

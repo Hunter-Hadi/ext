@@ -34,6 +34,7 @@ const useFeedbackSurveyStatus = () => {
     if (!loaded || !firstFetchSurveyStatusLoaded) {
       return false
     }
+
     if (filledOutSurveyState[surveyKey]) {
       // 如果已经填写过了当前 survey，不再显示 survey
       return false

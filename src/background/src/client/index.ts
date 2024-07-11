@@ -783,6 +783,19 @@ export const ClientMessageInit = () => {
             data.surveyKeys,
             requestId,
           )
+          // 通知当前活跃 tab 更新 survey 信息
+          const currentTab = await Browser.tabs.query({
+            active: true,
+            currentWindow: true,
+          })
+          const tabId = currentTab && currentTab[0] && currentTab[0].id
+          if (tabId) {
+            backgroundSendClientMessage(
+              tabId,
+              'Client_listenSurveyStatusUpdated',
+              result,
+            )
+          }
           return {
             success: true,
             data: result,

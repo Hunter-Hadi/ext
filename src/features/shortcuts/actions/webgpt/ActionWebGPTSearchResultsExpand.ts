@@ -156,7 +156,10 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                   return fallbackData
                 }
                 pageRawContent.success = result.success
-                pageRawContent.body = result.readabilityText
+                pageRawContent.body =
+                  result.readabilityText.length > searchResult.body.length
+                    ? result.readabilityText
+                    : searchResult.body
                 pageRawContent.title = result.title
                 sourceMedia.images = uniqBy(
                   [...sourceMedia.images, ...result.images],

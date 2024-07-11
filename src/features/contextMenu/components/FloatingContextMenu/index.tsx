@@ -66,9 +66,9 @@ import {
 } from '@/features/video_popup/utils'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
+import ResizeAnchor from './ResizeAnchor'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
-const defaultMarkdownHeight = 320
 
 const FloatingContextMenu: FC<{
   root: any
@@ -88,8 +88,11 @@ const FloatingContextMenu: FC<{
     setIsInputCustomVariables,
   } = useInitContextWindow()
 
-  const { currentFloatingContextMenuDraft, activeAIResponseMessage } =
-    useFloatingContextMenuDraft()
+  const {
+    currentFloatingContextMenuDraft,
+    activeAIResponseMessage,
+    historyMessages,
+  } = useFloatingContextMenuDraft()
 
   const {
     hideFloatingContextMenu,
@@ -166,11 +169,22 @@ const FloatingContextMenu: FC<{
 
   const referenceElementRef = useRef<HTMLDivElement>(null)
   const referenceElementDragOffsetRef = useRef({
-    prevX: 0,
-    prevY: 0,
     x: 0,
     y: 0,
+    dragged: false,
   })
+
+  const floatingSizeOffsetRef = useRef({
+    dx: 0,
+    dy: 0,
+    minWidth: 0,
+    defaultMinHeight: 230,
+    defaultMaxHeight: 620,
+    resized: false,
+  })
+
+  floatingSizeOffsetRef.current.minWidth = currentWidth
+
   const { x, y, strategy, refs, context, update } = useFloating({
     open: floatingDropdownMenu.open,
     strategy: 'fixed',
@@ -248,7 +262,11 @@ const FloatingContextMenu: FC<{
       })
     },
     placement: safePlacement.inputPlacement,
-    middleware: getFloatingContextMenuMiddleware(referenceElementDragOffsetRef),
+    middleware: getFloatingContextMenuMiddleware(
+      referenceElementDragOffsetRef,
+      referenceElementRef,
+      floatingSizeOffsetRef,
+    ),
     whileElementsMounted: autoUpdate,
   })
   const click = useClick(context)
@@ -263,15 +281,18 @@ const FloatingContextMenu: FC<{
    * 拖拽移动实现
    */
   const isDragRef = React.useRef(false)
-  const mouseStartRectRef = React.useRef<{
+  const lastMousePostionRef = React.useRef<{
     x: number
     y: number
-  } | null>(null)
+  }>({
+    x: 0,
+    y: 0,
+  })
   // const dragStartRef = React.useRef(false)
   const handleDragStart = (event: React.MouseEvent) => {
     event.preventDefault()
     isDragRef.current = true
-    mouseStartRectRef.current = {
+    lastMousePostionRef.current = {
       x: event.clientX,
       y: event.clientY,
     }
@@ -282,9 +303,13 @@ const FloatingContextMenu: FC<{
       referenceElementDragOffsetRef.current = {
         x: 0,
         y: 0,
-        prevX: 0,
-        prevY: 0,
+        dragged: false,
       }
+      floatingSizeOffsetRef.current.dx = 0
+      floatingSizeOffsetRef.current.dy = 0
+      floatingSizeOffsetRef.current.resized = false
+
+      update()
     }
   }, [floatingDropdownMenu.open])
 
@@ -293,28 +318,26 @@ const FloatingContextMenu: FC<{
       if (isDragRef.current) {
         event.preventDefault()
         isDragRef.current = false
-        referenceElementDragOffsetRef.current = {
-          x: 0,
-          y: 0,
-          prevX:
-            referenceElementDragOffsetRef.current.x +
-            referenceElementDragOffsetRef.current.prevX,
-          prevY:
-            referenceElementDragOffsetRef.current.y +
-            referenceElementDragOffsetRef.current.prevY,
-        }
+        // referenceElementDragOffsetRef.current = {
+        //   x: referenceElementDragOffsetRef.current.x,
+        //   y: referenceElementDragOffsetRef.current.y,
+        //   dragged: true,
+        // }
       }
     }
+
     const handleDragMove = (event: MouseEvent) => {
       if (isDragRef.current) {
         event.preventDefault()
-        const diffX = event.clientX - mouseStartRectRef.current!.x
-        const diffY = event.clientY - mouseStartRectRef.current!.y
+        const dx = event.clientX - lastMousePostionRef.current.x
+        const dy = event.clientY - lastMousePostionRef.current.y
+        lastMousePostionRef.current.x = event.clientX
+        lastMousePostionRef.current.y = event.clientY
+
         referenceElementDragOffsetRef.current = {
-          x: diffX,
-          y: diffY,
-          prevX: referenceElementDragOffsetRef.current.prevX,
-          prevY: referenceElementDragOffsetRef.current.prevY,
+          x: referenceElementDragOffsetRef.current.x + dx,
+          y: referenceElementDragOffsetRef.current.y + dy,
+          dragged: true,
         }
         /**
          * FloatingContextMenuList里的MenuList绑定的是referenceElement的DOM元素位置关系
@@ -337,7 +360,7 @@ const FloatingContextMenu: FC<{
       document.removeEventListener('mousemove', handleDragMove)
       document.removeEventListener('mouseup', handleDragEnd)
     }
-  }, [update])
+  }, [update, floatingDropdownMenu.open])
   useClientConversationListener()
   useFloatingContextMenuDraftHistoryChange()
   // 选中区域高亮
@@ -381,49 +404,18 @@ const FloatingContextMenu: FC<{
 
   const markdownBodyRef = useRef<HTMLDivElement>(null)
 
-  // useEffect(() => {
-  //   if (refs.floating.current) {
-  //     refs.floating.current.style.width = `${currentWidth}px`
-  //   }
-  // }, [currentWidth])
+  useEffect(() => {
+    if (refs.floating.current) {
+      refs.floating.current.style.width = `${currentWidth}px`
+    }
+  }, [currentWidth])
 
-  // floating隐藏时恢复默认设置默认markdownBody最大高度
-  // useEffect(() => {
-  //   if (!markdownBodyRef.current) return
-
-  //   if (!floatingDropdownMenu.open) {
-  //     markdownBodyRef.current.style.height = 'auto'
-  //     markdownBodyRef.current.style.maxHeight = `${defaultMarkdownHeight}px`
-  //   }
-  // }, [floatingDropdownMenu.open])
-
-  /**
-   * markdownBody使用了100%继承父元素floating的宽度，所以这里修改宽度直接作用在floating上即可
-   * 当markdownBody可滚动且向下拉放大的时候修改markdownBody的高度和最高高度
-   */
   const handleResize = (dx: number, dy: number) => {
-    if (!refs.floating.current || !markdownBodyRef.current) return
+    floatingSizeOffsetRef.current.dx += dx
+    floatingSizeOffsetRef.current.dy += dy
+    floatingSizeOffsetRef.current.resized = true
 
-    const floating = refs.floating.current
-    const markdownBody = markdownBodyRef.current
-
-    const markdownOverflow =
-      markdownBody.clientHeight !== markdownBody.scrollHeight
-
-    if (markdownOverflow) {
-      const targetWidth = floating.clientWidth + dx
-      floating.style.width = `${targetWidth}px`
-    }
-
-    // 当markdown中出现滚动条或reference的大小超过了默认的400高度时候，可以调节大小
-    if (
-      (dy < 0 && markdownBody.clientHeight > defaultMarkdownHeight) ||
-      (dy > 0 && markdownOverflow)
-    ) {
-      const targetHeight = `${markdownBody.clientHeight + dy}px`
-      markdownBody.style.height = targetHeight
-      markdownBody.style.maxHeight = targetHeight
-    }
+    update()
   }
 
   return (
@@ -441,14 +433,15 @@ const FloatingContextMenu: FC<{
           opacity: floatingDropdownMenu.open ? 1 : 0,
           top: y ?? 0,
           left: x ?? 0,
-          minWidth: currentWidth,
-          maxWidth: '90vw',
           width: currentWidth,
         }}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
         {...getFloatingProps()}
       >
-        {/* <ResizeAnchor onResize={handleResize} /> */}
+        {/* 当开始回答或有回答历史的时候一个调整大小 */}
+        {(historyMessages.length !== 0 || loading) && (
+          <ResizeAnchor onResize={handleResize} />
+        )}
 
         <FloatingContextMenuList
           customOpen
@@ -517,10 +510,7 @@ const FloatingContextMenu: FC<{
                 </DevContent>
               </Box>
               <FloatingContextMenuTitleBar />
-              <WritingMessageBox
-                markdownMaxHeight={defaultMarkdownHeight}
-                markdownBodyRef={markdownBodyRef}
-              />
+              <WritingMessageBox markdownBodyRef={markdownBodyRef} />
               {floatingDropdownMenu.open && (
                 <DevContent>
                   <DevConsole />

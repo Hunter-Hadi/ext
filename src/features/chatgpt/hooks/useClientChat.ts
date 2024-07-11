@@ -29,6 +29,7 @@ import {
 } from '@/features/shortcuts/utils/tokenizer'
 import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+
 export interface IAskAIQuestion
   extends Omit<IUserChatMessage, 'messageId' | 'conversationId'> {
   conversationId?: string
@@ -198,7 +199,8 @@ const useClientChat = () => {
       question.meta.includeHistory = false
     }
     await updateClientConversationLoading(true)
-    await askAIWIthShortcuts([
+    console.log('beforeActions: ', beforeActions)
+    const runActions: ISetActionsType = [
       ...beforeActions,
       {
         type: 'ASK_CHATGPT',
@@ -208,7 +210,8 @@ const useClientChat = () => {
         },
       },
       ...afterActions,
-    ])
+    ]
+    await askAIWIthShortcuts(runActions)
   }
 
   /**

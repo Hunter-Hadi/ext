@@ -118,8 +118,10 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
-  const [isHideInOtherConversationType, setIsHideInOtherConversationType] =
-    useState(false)
+  const isHideInOtherConversationType = useMemo(
+    () => currentSidebarConversationType !== 'Chat' && !show,
+    [currentSidebarConversationType, show],
+  )
   const currentBreakpoint = useCurrentBreakpoint()
   const [config, setConfig] = useState<ActionSetVariablesModalConfig | null>(
     null,
@@ -164,10 +166,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   }
   const validateForm = async () => {
     const success = await trigger()
-    if (!success) {
-      if (!show) {
-        setShow(true)
-      }
+    if (!success && !show) {
+      setShow(true)
     }
     return success
   }
@@ -197,11 +197,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       await validateFormAndRunActions(false)
     }
   }
+
   /**
    * 校验表单并运行actions
    * @param autoExecute
    */
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const validateFormAndRunActions = async (autoExecute: boolean) => {
     const isHaveEmptyValue =
       Object.values(getValues()).filter(
@@ -389,7 +389,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
 
   const currentModalConfig = useMemo(() => {
     const reactHookFormRegisterMap: {
-      [key in string]: ReturnType<typeof register>
+      [key: string]: ReturnType<typeof register>
     } = {}
     const currentVariables = variables || config?.variables || []
     const currentSystemVariables =
@@ -433,6 +433,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               variable.VariableName,
             )
           ) {
+            // 数据回填
             setValue(variable.VariableName, registerValue)
           }
         }
@@ -515,12 +516,15 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       minTextareaMaxRows: 2,
     }
   }, [variables, title, systemVariables, modelKey, config])
+
+  // 可能需要清理？
   useEffectOnce(() => {
     OneShotCommunicator.receive('SetVariablesModal', (data: any) => {
       return new Promise((resolve, reject) => {
         if (data.task === 'open' && data.config?.modelKey === modelKey) {
           setShow(false)
           setTimeout(() => {
+            console.log('data.config', data.config)
             setConfig(data.config)
             if (data.config.waitForUserAction) {
               setPendingPromises([
@@ -546,6 +550,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     validateFormAndRunActionsRef.current = validateFormAndRunActions
   }, [validateFormAndRunActions])
   useEffect(() => {
+    if (!shortCutsEngine) return
     const shortcutsEngineListener: IShortcutEngineListenerType = (
       event,
       shortcutEngine,
@@ -562,20 +567,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         }
       }
     }
-    if (shortCutsEngine) {
-      shortCutsEngine.addListener(shortcutsEngineListener)
-      return () => {
-        shortCutsEngine.removeListener(shortcutsEngineListener)
-      }
+    shortCutsEngine.addListener(shortcutsEngineListener)
+    return () => {
+      shortCutsEngine.removeListener(shortcutsEngineListener)
     }
   }, [shortCutsEngine])
-  useEffect(() => {
-    if (currentSidebarConversationType === 'Chat') {
-      setIsHideInOtherConversationType(false)
-    } else {
-      setIsHideInOtherConversationType(true)
-    }
-  }, [currentSidebarConversationType])
   useEffect(() => {
     if (show) {
       if (isHideInOtherConversationType) {
@@ -607,31 +603,20 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         }, 100)
         onShow?.()
       }
-    } else {
-      setIsHideInOtherConversationType(false)
     }
   }, [show, isHideInOtherConversationType])
   if (
     !props.show &&
     (!show || isHideInOtherConversationType || Object.keys(form).length === 0)
   ) {
-    // console.log(
-    //   'ActionSetVariablesModal not show or hide or form is empty',
-    //   show,
-    //   isHideInOtherConversationType,
-    //   form,
-    // )
     return null
   }
   return (
     <Stack
       className={'max-ai__action__set_variables_modal'}
-      borderRadius={'8px'}
-      border={`1px solid`}
-      borderColor={'customColor.borderColor'}
       sx={{
         width: '100%',
-        p: 1,
+        py: 1,
         gap: 1,
         boxSizing: 'border-box',
         ...sx,
@@ -679,7 +664,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             height={30}
             lineHeight='30px'
             sx={{
-              borderRadius: '4px',
+              borderRadius: '8px',
               p: '0 8px',
               bgcolor: 'rgba(0, 0, 0, 0.87)',
               width: modelKey !== 'PromptPreview' ? '100%' : 'auto',
@@ -719,7 +704,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         {currentModalConfig.selectTypeVariables.map((systemVariable, index) => {
           const width = getChildrenWidth(
             index,
-            currentModalConfig.currentSelectTotalCount,
+            // currentModalConfig.currentSelectTotalCount,
+            // WARNING: maybe wrong
+            currentModalConfig.selectTypeVariables.length,
           )
           if (systemVariable.systemVariable) {
             return (
@@ -862,11 +849,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           disabled={loading || disabled}
           onClick={async () => await confirmModal()}
           variant={'contained'}
-          // color={'primary.main'}
           sx={{
             width: '32px',
             height: '32px',
             minWidth: 'unset',
+            borderRadius: '8px',
             // p: 1,
           }}
         >
@@ -893,6 +880,10 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
 
 const getChildrenWidth = (index: number, count: number) => {
   const remainder = count % 3
+  // 当为不满足三个的时候
+  if (remainder === count) {
+    return `calc(${(100 / count).toFixed(2)}% - 8px)`
+  }
   const fullRows = (count - remainder) / 3
 
   if (index < fullRows * 3) {

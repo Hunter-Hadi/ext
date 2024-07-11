@@ -56,6 +56,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
     createSidebarConversation,
     updateImmersiveSettings,
     immersiveSettings: localSettings,
+    updateSidebarSettings,
   } = useSidebarSettings()
 
   const [conversationStatus, setConversationStatus] =
@@ -159,6 +160,18 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         const currentConversation = conversationId
           ? await ClientConversationManager.getConversationById(conversationId)
           : null
+
+        // TODO: immersive chat 情况补全
+        // 当为rewrite时，清空
+        // if (sidebarConversationTypeRef.current === 'ContextMenu') {
+        //   updateSidebarSettings({
+        //     contextMenu: {
+        //       conversationId: '',
+        //     },
+        //   })
+        //   return
+        // }
+
         if (currentConversation) {
           await createConversation(
             currentConversation.type,

@@ -46,6 +46,7 @@ import {
 } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
+
 interface IGmailChatBoxProps {
   sx?: SxProps
   onReGenerate?: () => void
@@ -151,6 +152,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
+    if (conversationType === 'ContextMenu') {
+      return !conversationId
+    }
     // console.log('isShowChatBoxHomeView', messagesLoadingStep)
     // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
     // 具体问题是因为，在第一次切换 conversationId 时，会有一个瞬间
@@ -180,7 +184,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   }
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
-      onSendMessage && onSendMessage(value, options)
+      onSendMessage?.(value, options)
     },
     [onSendMessage],
   )
@@ -251,150 +255,155 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         />
       ) : null}
 
-      <SidebarSummarySuggestion onClick={handleSwitchToSummary} />
+      {!(conversationType === 'ContextMenu' && !conversationId) && (
+        <>
+          <SidebarSummarySuggestion onClick={handleSwitchToSummary} />
 
-      <Stack
-        className={'use-chat-gpt-ai__chat-box__input-box'}
-        position={'relative'}
-        mt={'auto'}
-        justifyContent={'end'}
-        alignItems={'center'}
-        minHeight={192}
-        spacing={1}
-        flexShrink={0}
-        // bgcolor={'#fff'}
-      >
-        <Stack
-          maxWidth={isInImmersiveChat ? '768px' : 'initial'}
-          p={1}
-          width={'100%'}
-          alignItems={'center'}
-          justifyContent={'center'}
-        >
-          <Box
-            sx={{ width: '100%' }}
-            component={'div'}
-            display={'flex'}
-            width={0}
-            flex={1}
-            alignItems={'center'}
-            justifyContent={'center'}
-            gap={1}
-            mb={1}
+          <Stack
+            className={'use-chat-gpt-ai__chat-box__input-box'}
             position={'relative'}
-            minHeight={40}
+            mt={'auto'}
+            justifyContent={'end'}
+            alignItems={'center'}
+            minHeight={192}
+            spacing={1}
+            flexShrink={0}
+            // bgcolor={'#fff'}
           >
-            <SidebarChatBoxChatSpeedDial
-              disabledMainButton={loading}
-              onClick={async (type) => {
-                if (type === 'focus') {
-                  const chatInput = getMaxAISidebarRootElement()?.querySelector(
-                    `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
-                  ) as HTMLTextAreaElement
-                  chatInput && chatInput.focus()
-                } else if (type === 'new') {
-                  onReset && onReset()
-                } else if (type === 'restart') {
-                  await clientRestartChromeExtension()
-                }
-              }}
-            />
-
-            <SidebarAIAdvanced
-              sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-              }}
-            />
-
-            {!loading && isShowRegenerateButton && (
-              <Button
-                disableElevation
-                startIcon={<CachedIcon />}
-                variant={'normalOutlined'}
-                disabled={loading}
-                onClick={() => {
-                  onReGenerate?.()
-                }}
-                sx={shortcutsActionBtnSxMemo}
-                data-testid='sidebar_actions__regenerate'
+            <Stack
+              maxWidth={isInImmersiveChat ? '768px' : 'initial'}
+              p={1}
+              width={'100%'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              <Box
+                sx={{ width: '100%' }}
+                component={'div'}
+                display={'flex'}
+                width={0}
+                flex={1}
+                alignItems={'center'}
+                justifyContent={'center'}
+                gap={1}
+                mb={1}
+                position={'relative'}
+                minHeight={40}
               >
-                {t('client:sidebar__button__regenerate')}
-              </Button>
-            )}
-            {!loading &&
-              conversationType !== 'Search' &&
-              conversationType !== 'Art' &&
-              isShowContinueButton && (
-                <Button
-                  disableElevation
-                  startIcon={<ContextMenuIcon icon={'FastForward'} />}
-                  variant={'normalOutlined'}
-                  disabled={loading}
-                  onClick={() => {
-                    handleSendMessage &&
-                      handleSendMessage('Continue', {
-                        includeHistory: true,
-                        regenerate: false,
-                      })
+                <SidebarChatBoxChatSpeedDial
+                  disabledMainButton={loading}
+                  onClick={async (type) => {
+                    if (type === 'focus') {
+                      const chatInput =
+                        getMaxAISidebarRootElement()?.querySelector(
+                          `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
+                        ) as HTMLTextAreaElement
+                      chatInput && chatInput.focus()
+                    } else if (type === 'new') {
+                      onReset?.()
+                    } else if (type === 'restart') {
+                      await clientRestartChromeExtension()
+                    }
                   }}
-                  sx={shortcutsActionBtnSxMemo}
-                  data-testid='sidebar_actions__continue'
-                >
-                  {t('client:sidebar__button__continue')}
-                </Button>
-              )}
-            {loading && (
-              <Button
-                sx={shortcutsActionBtnSxMemo}
-                disableElevation
-                variant={'normalOutlined'}
-                startIcon={<StopOutlinedIcon />}
-                onClick={() => {
-                  onStopGenerate?.()
+                />
+
+                <SidebarAIAdvanced
+                  sx={{
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                  }}
+                />
+
+                {!loading && isShowRegenerateButton && (
+                  <Button
+                    disableElevation
+                    startIcon={<CachedIcon />}
+                    variant={'normalOutlined'}
+                    disabled={loading}
+                    onClick={() => {
+                      onReGenerate?.()
+                    }}
+                    sx={shortcutsActionBtnSxMemo}
+                    data-testid='sidebar_actions__regenerate'
+                  >
+                    {t('client:sidebar__button__regenerate')}
+                  </Button>
+                )}
+                {!loading &&
+                  conversationType !== 'Search' &&
+                  conversationType !== 'Art' &&
+                  isShowContinueButton && (
+                    <Button
+                      disableElevation
+                      startIcon={<ContextMenuIcon icon={'FastForward'} />}
+                      variant={'normalOutlined'}
+                      disabled={loading}
+                      onClick={() => {
+                        handleSendMessage &&
+                          handleSendMessage('Continue', {
+                            includeHistory: true,
+                            regenerate: false,
+                          })
+                      }}
+                      sx={shortcutsActionBtnSxMemo}
+                      data-testid='sidebar_actions__continue'
+                    >
+                      {t('client:sidebar__button__continue')}
+                    </Button>
+                  )}
+                {loading && (
+                  <Button
+                    sx={shortcutsActionBtnSxMemo}
+                    disableElevation
+                    variant={'normalOutlined'}
+                    startIcon={<StopOutlinedIcon />}
+                    onClick={() => {
+                      onStopGenerate?.()
+                    }}
+                    data-testid='sidebar_actions__stop_generating'
+                  >
+                    {t('client:sidebar__button__stop_generating')}
+                  </Button>
+                )}
+              </Box>
+              <ActionSetVariablesModal
+                showModelSelector
+                onChange={(data, reason) => {
+                  if (reason === 'runPromptStart') {
+                    setIsSettingVariables(false)
+                  }
                 }}
-                data-testid='sidebar_actions__stop_generating'
+                onClose={() => setIsSettingVariables(false)}
+                onShow={() => setIsSettingVariables(true)}
+                modelKey={'Sidebar'}
+              />
+              <AutoHeightTextarea
+                placeholder={textareaPlaceholder}
+                minLine={3}
+                sx={{
+                  minHeight: isSettingVariables
+                    ? 0
+                    : LINE_HEIGHT * 3 + TEXTAREA_PADDING_Y * 2 + 40, // AutoHeightTextarea 最小高度 = 一行的高度 * 最小行数 + 上下的 padding + SidebarChatBoxInputActions 的高度（40）
+                  height: isSettingVariables ? '0!important' : 'unset',
+                  visibility: isSettingVariables ? 'hidden' : 'visible',
+                }}
+                stopPropagation
+                loading={loading}
+                expandNode={
+                  conversationType === 'Chat' ? (
+                    <ChatIconFileUpload direction={'column'} size={'small'} />
+                  ) : null
+                }
+                onEnter={handleSendMessage}
               >
-                {t('client:sidebar__button__stop_generating')}
-              </Button>
-            )}
-          </Box>
-          <ActionSetVariablesModal
-            showModelSelector
-            onChange={(data, reason) => {
-              if (reason === 'runPromptStart') {
-                setIsSettingVariables(false)
-              }
-            }}
-            onClose={() => setIsSettingVariables(false)}
-            onShow={() => setIsSettingVariables(true)}
-            modelKey={'Sidebar'}
-          />
-          <AutoHeightTextarea
-            placeholder={textareaPlaceholder}
-            minLine={3}
-            sx={{
-              minHeight: isSettingVariables
-                ? 0
-                : LINE_HEIGHT * 3 + TEXTAREA_PADDING_Y * 2 + 40, // AutoHeightTextarea 最小高度 = 一行的高度 * 最小行数 + 上下的 padding + SidebarChatBoxInputActions 的高度（40）
-              height: isSettingVariables ? '0!important' : 'unset',
-              visibility: isSettingVariables ? 'hidden' : 'visible',
-            }}
-            stopPropagation
-            loading={loading}
-            expandNode={
-              conversationType === 'Chat' ? (
-                <ChatIconFileUpload direction={'column'} size={'small'} />
-              ) : null
-            }
-            onEnter={handleSendMessage}
-          >
-            <SidebarChatBoxInputActions onSendMessage={handleSendMessage} />
-          </AutoHeightTextarea>
-        </Stack>
-        <SidebarChatBoxFooter />
-      </Stack>
+                <SidebarChatBoxInputActions onSendMessage={handleSendMessage} />
+              </AutoHeightTextarea>
+            </Stack>
+            <SidebarChatBoxFooter />
+          </Stack>
+        </>
+      )}
     </Stack>
   )
 }

@@ -1,3 +1,5 @@
+import { FilterNone } from '@mui/icons-material'
+import { Divider } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -6,6 +8,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
+import { useAlwaysContinueInSidebar } from '@/features/contextMenu/hooks/useAlwaysContinueInSidebar'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
@@ -18,6 +21,8 @@ const SidebarAIMessageTools: FC<{
 }> = (props) => {
   const { message } = props
   const { currentSidebarConversationType } = useClientConversation()
+  const [alwaysContinueInSidebar, setAlwaysContinueInSidebar] =
+    useAlwaysContinueInSidebar()
   const { t } = useTranslation(['common'])
   const [isCoping, setIsCoping] = useState(false)
   const messageContentType =
@@ -116,6 +121,25 @@ const SidebarAIMessageTools: FC<{
           />
         )}
       <AIMessageModelSuggestions AIMessage={message} />
+
+      {currentSidebarConversationType === 'ContextMenu' &&
+        alwaysContinueInSidebar && (
+          <>
+            <Divider orientation='vertical'></Divider>
+            <TooltipIconButton
+              title={t('common:continue_in_contextmenu')}
+              onClick={() => {
+                setAlwaysContinueInSidebar(false)
+              }}
+            >
+              <FilterNone
+                sx={{
+                  fontSize: '20px',
+                }}
+              ></FilterNone>
+            </TooltipIconButton>
+          </>
+        )}
     </Stack>
   )
 }

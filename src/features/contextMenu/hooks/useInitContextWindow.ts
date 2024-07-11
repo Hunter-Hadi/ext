@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
@@ -38,7 +38,7 @@ import {
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
-import { AppDBStorageState } from '@/store'
+import { AlwaysContinueInSidebarSelector, AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
@@ -155,6 +155,12 @@ const useInitContextWindow = () => {
   const [, setContextWindowDraftContextMenu] = useRecoilState(
     ContextWindowDraftContextMenuState,
   )
+
+  const { continueConversationInSidebar, updateSidebarSettings } =
+    useSidebarSettings()
+  const alwaysContinueInSidebar = useRecoilValue(
+    AlwaysContinueInSidebarSelector,
+  )
   const {
     createConversation,
     getConversation,
@@ -168,7 +174,6 @@ const useInitContextWindow = () => {
     currentFloatingContextMenuDraft,
     floatingContextMenuDraftMessageIdRef,
   } = useFloatingContextMenuDraft()
-  const { continueConversationInSidebar } = useSidebarSettings()
   const draftContextMenuList = useDraftContextMenuList()
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
@@ -273,6 +278,29 @@ const useInitContextWindow = () => {
     currentFloatingContextMenuDraft,
     loading,
   ])
+
+  /**
+   * 当设置了永远在sidebar中进行时，关闭跳转
+   */
+  const handleBeforeRunActions = useRef(async () => {})
+  handleBeforeRunActions.current = async () => {
+    if (!currentConversationId) return
+
+    if (alwaysContinueInSidebar) {
+      await continueConversationInSidebar(
+        currentConversationId,
+        {},
+        { syncConversationToDB: true, waitSync: true },
+        false,
+      )
+    } else {
+      await updateSidebarSettings({
+        contextMenu: {
+          conversationId: currentConversationId,
+        },
+      })
+    }
+  }
   /**
    * ✅
    * 通过context window的输入框来询问AI
@@ -316,6 +344,11 @@ const useInitContextWindow = () => {
       if (currentDraft) {
         template += `:\n"""\n${currentDraft}\n"""`
       }
+
+      if (alwaysContinueInSidebar) {
+        await handleBeforeRunActions.current()
+      }
+
       await askAIQuestion(
         {
           type: 'user',
@@ -392,8 +425,10 @@ const useInitContextWindow = () => {
     regenerateRef.current = regenerate
     stopGenerateRef.current = stopGenerate
   }, [regenerate, stopGenerate])
+
   useEffect(() => {
     /**
+     * DropdownMenu的快捷指令处理函数
      * @description - 运行快捷指令
      * 1. 必须有选中的id
      * 2. 必须有菜单列表
@@ -410,10 +445,6 @@ const useInitContextWindow = () => {
         floatingDropdownMenuSelectedItem.selectedContextMenuId
       // 是否为[推荐]菜单的动作
       let isSuggestedContextMenu = false
-      // 判断是否可以运行
-      let needOpenChatBox = false
-      // 是否为[草稿]菜单的动作
-      let isDraftContextMenu = false
       // 当前选中的contextMenu
       let currentContextMenu: IContextMenuItem | null = null
       // 如果是[推荐]菜单的动作，则需要去掉前缀
@@ -426,13 +457,11 @@ const useInitContextWindow = () => {
       }
       // 如果没登录，或者chatGPTClient没有成功初始化，则需要打开chatbox
       if (!isLogin || conversationStatus !== 'success') {
-        needOpenChatBox = true
-      }
-      if (needOpenChatBox) {
         hideFloatingContextMenu()
         showChatBox()
       }
-      isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
+      // 是否为[草稿]菜单的动作
+      const isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
       // 先从[草稿]菜单中查找
       if (isDraftContextMenu) {
         const draftContextMenu = findDraftContextMenuById(currentSelectedId)
@@ -463,6 +492,7 @@ const useInitContextWindow = () => {
           currentContextMenu =
             contextMenuToFavoriteContextMenu(currentContextMenu)
         }
+
         const currentContextMenuId = currentContextMenu.id
         const runActions: ISetActionsType = cloneDeep(
           currentContextMenu.data.actions || [],
@@ -533,19 +563,21 @@ const useInitContextWindow = () => {
     loading,
     conversationStatus,
     isLogin,
+    alwaysContinueInSidebar,
   ])
   const isRunningActionsRef = useRef(false)
   useEffect(() => {
-    if (isRunningActionsRef.current) {
+    if (
+      isRunningActionsRef.current ||
+      !currentConversationId ||
+      actions.length <= 0
+    ) {
       return
     }
-    if (!currentConversationId) {
-      return
-    }
+
+    handleBeforeRunActions.current()
     const runActions = cloneDeep(actions)
-    if (actions.length <= 0) {
-      return
-    }
+
     isRunningActionsRef.current = true
     setActions([])
     setInputValue('')
@@ -675,11 +707,23 @@ const useInitContextWindow = () => {
           isCreatingConversationRef.current = false
         })
     }
-    if (!isAIRespondingRef.current && !floatingDropdownMenu.open) {
+
+    // 当pintosidebar之后，每次关闭都会重建conversation
+    if (
+      (!isAIRespondingRef.current || alwaysContinueInSidebar) &&
+      !floatingDropdownMenu.open
+    ) {
       createContextMenuConversation().catch()
     }
     console.log('AIInput remove', floatingDropdownMenu.open)
   }, [floatingDropdownMenu.open])
+
+  const aiResponeLanguageRef = useRef('English')
+
+  const setAiResponseLanguage = (lang: string) => {
+    aiResponeLanguageRef.current = lang
+  }
+
   return {
     loading,
     isFloatingMenuVisible,
@@ -691,6 +735,8 @@ const useInitContextWindow = () => {
     isSettingCustomVariables: isSettingCustomVariablesMemo,
     askAIWithContextWindow,
     isHaveContextWindowContext,
+    aiResponeLanguage: aiResponeLanguageRef.current,
+    setAiResponseLanguage,
   }
 }
 export default useInitContextWindow

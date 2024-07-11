@@ -20,6 +20,12 @@ export const sidebarTabsData: Array<{
   tooltip?: () => I18nextKeysType
 }> = [
   {
+    label: 'client:sidebar__tabs__rewrite__title',
+    tooltip: () => 'client:sidebar__tabs__rewrite__tooltip',
+    icon: 'Rewrite',
+    value: 'ContextMenu',
+  },
+  {
     label: 'client:sidebar__tabs__chat__title',
     tooltip: () => 'client:sidebar__tabs__chat__tooltip',
     icon: 'Chat',
@@ -83,14 +89,13 @@ const SidebarTabs: FC = () => {
   })
   const memoSidebarTabsData = useMemo(() => {
     return sidebarTabsData.filter((tab) => {
-      if (tab.value === 'Summary') {
-        if (isInImmersiveChatPage) {
-          return false
-        }
+      if (tab.value === 'Summary' && isInImmersiveChatPage) {
+        return false
       }
       return true
     })
   }, [])
+
   return (
     <Stack
       data-testid={'maxAISidebarTabsContainer'}

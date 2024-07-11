@@ -12,6 +12,8 @@ import HomeViewContentNav from '@/features/sidebar/components/SidebarChatBox/Sid
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
+import SidebarContextMenu from '../SidebarContextMenu'
+
 interface ISidebarHomeViewProps {
   isSettingVariables?: boolean
   sx?: SxProps
@@ -51,6 +53,62 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
         ...sx,
       }}
     >
+      {currentSidebarConversationType === 'ContextMenu' && (
+        <Stack
+          direction={'column'}
+          sx={{
+            width: '100%',
+            padding: '32px 10px',
+          }}
+        >
+          <Stack
+            direction={'column'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            sx={{
+              height: '175px',
+            }}
+          >
+            <ContextMenuIcon
+              icon='Rewrite'
+              sx={{
+                fontSize: '40px',
+                marginBottom: '12px',
+              }}
+            />
+
+            <Typography
+              marginBottom={'8px'}
+              lineHeight={'140%'}
+              fontWeight={700}
+              fontSize={20}
+              textAlign={'center'}
+              color={(t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.87)'
+                  : 'rgba(0, 0, 0, 0.87)'
+              }
+            >
+              {t('client:home_view__rewrite__title')}
+            </Typography>
+
+            <Typography
+              lineHeight={'150%'}
+              fontSize={14}
+              textAlign={'center'}
+              color={(t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.87)'
+                  : 'rgba(0, 0, 0, 0.60)'
+              }
+            >
+              {t('client:home_view__rewrite__description')}
+            </Typography>
+          </Stack>
+          <SidebarContextMenu />
+        </Stack>
+      )}
+
       <Stack
         px={2}
         width='100%'

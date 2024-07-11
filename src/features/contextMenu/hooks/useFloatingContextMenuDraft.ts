@@ -76,6 +76,7 @@ const useFloatingContextMenuDraftHistoryChange = () => {
         return null
       })
       .filter(Boolean) as HistoryMessage[]
+
     setHistoryState((prev) => {
       // 找得到messageId的更新，找不到的添加
       const oldHistory = prev.historyMessages.map((message) => {

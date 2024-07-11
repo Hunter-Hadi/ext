@@ -23,7 +23,10 @@ const SidebarTabIcons: FC<{ icon: string }> = ({ icon }) => {
     return <SearchOutlinedIcon sx={memoSx} />
   }
   if (icon === 'Art') {
-    return <ContextMenuIcon icon="Art" sx={memoSx} />
+    return <ContextMenuIcon icon='Art' sx={memoSx} />
+  }
+  if (icon === 'Rewrite') {
+    return <ContextMenuIcon icon='Rewrite' sx={memoSx} />
   }
 
   return null

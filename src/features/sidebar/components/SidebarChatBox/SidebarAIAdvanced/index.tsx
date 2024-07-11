@@ -15,6 +15,8 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAISettingsPage } from '@/utils/dataHelper/websiteHelper'
 
+import RewriteAdvanced from './RewriteAdvanced'
+
 /**
  * AI设置
  * @constructor
@@ -124,6 +126,9 @@ const SidebarAIAdvanced: FC<{
             }}
           >
             <Stack spacing={1} p={1} width={'100%'}>
+              {currentSidebarConversationType === 'ContextMenu' && (
+                <RewriteAdvanced />
+              )}
               {currentSidebarConversationType === 'Search' && (
                 <SearchAdvanced />
               )}

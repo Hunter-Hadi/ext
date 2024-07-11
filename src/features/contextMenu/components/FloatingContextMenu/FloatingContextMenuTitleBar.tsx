@@ -1,99 +1,39 @@
+import { ViewSidebarOutlined } from '@mui/icons-material'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import PushPin from '@mui/icons-material/PushPin'
 import PushPinOutlined from '@mui/icons-material/PushPinOutlined'
+import { Divider } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import isEmpty from 'lodash-es/isEmpty'
-import React, { FC, useMemo } from 'react'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   FloatingContextWindowChangesState,
   useFloatingContextMenu,
-  useRangy,
 } from '@/features/contextMenu'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useFloatingContextMenuPin from '@/features/contextMenu/hooks/useFloatingContextMenuPin'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
-const ContextText: FC = () => {
-  const { t } = useTranslation(['client'])
-  const { currentSelection } = useRangy()
+import { useAlwaysContinueInSidebar } from '../../hooks/useAlwaysContinueInSidebar'
+import { FloatingContextMenuPopupSettingButton } from './buttons'
+import FloatingContextMenuChatHistoryButton from './buttons/FloatingContextMenuChatHistoryButton'
+import LanguageSelector from './LanguageSelector'
 
-  const splitCenterText = useMemo(() => {
-    if (
-      currentSelection?.selectionElement?.editableElementSelectionText ||
-      currentSelection?.selectionElement?.selectionText
-    ) {
-      const context =
-        currentSelection?.selectionElement?.editableElementSelectionText ||
-        currentSelection?.selectionElement?.selectionText
-          .trim()
-          .replace(/\u200B/g, '')
-      const truncateString = (string: string, count: number) => {
-        if (string.length <= count) {
-          return {
-            start: string,
-            end: '',
-          }
-        }
-        const end = string.substring(string.length - count)
-        const start = string.substring(0, string.length - count)
-        return {
-          start,
-          end,
-        }
-      }
-      return truncateString(context, 15)
-    }
-    return {
-      start: '',
-      end: '',
-    }
-  }, [currentSelection])
-
-  if (!splitCenterText.start && !splitCenterText.end) {
-    return null
-  }
-
-  return (
-    <Typography
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-      }}
-      flex={1}
-      fontSize='12px'
-      fontWeight={400}
-      color='text.secondary'
-      whiteSpace='pre-wrap'
-      overflow='hidden'
-    >
-      <span style={{ flexShrink: 0 }}>
-        {t('client:floating_menu__draft_card__context__title')}:{' '}
-      </span>
-      <span
-        style={{
-          display: 'inline-block',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-          maxWidth: '100%',
-        }}
-      >
-        {splitCenterText.start}
-      </span>
-      <span style={{ flexShrink: 0, whiteSpace: 'nowrap' }}>
-        {splitCenterText.end}
-      </span>
-    </Typography>
-  )
-}
-
-const FloatingContextMenuTitleBar: FC = () => {
+const FloatingContextMenuTitleBar: FC<{
+  showModelSelector: boolean
+}> = ({ showModelSelector }) => {
   const { t } = useTranslation(['common', 'client'])
+  const { continueConversationInSidebar } = useSidebarSettings()
+  const { clientConversation } = useClientConversation()
 
   const { hideFloatingContextMenu } = useFloatingContextMenu()
   const { currentFloatingContextMenuDraft, selectedDraftUserMessage } =
@@ -103,6 +43,23 @@ const FloatingContextMenuTitleBar: FC = () => {
   const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
     FloatingContextWindowChangesState,
   )
+  const [, setAlwaysContinueInSidebar] = useAlwaysContinueInSidebar()
+
+  const { userSettings, setUserSettings } = useUserSettings()
+
+  const alwaysContinueInSidebar = () => {
+    if (clientConversation) {
+      setAlwaysContinueInSidebar(true)
+      continueConversationInSidebar(
+        clientConversation.id,
+        {},
+        {
+          syncConversationToDB: true,
+          waitSync: true,
+        },
+      )
+    }
+  }
 
   const onPin = () => {
     setFloatingDropdownMenuPin(!floatingDropdownMenuPin)
@@ -145,26 +102,85 @@ const FloatingContextMenuTitleBar: FC = () => {
   return (
     <Stack
       direction='row'
-      justifyContent='end'
+      justifyContent='space-between'
       sx={{
         wordBreak: 'break-word',
         color: (t) =>
           t.palette.mode === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
+        padding: '4px 0',
       }}
       component={'div'}
     >
-      {isEmpty(currentFloatingContextMenuDraft) && !selectedDraftUserMessage ? (
-        <ContextText />
-      ) : null}
+      <Stack direction={'row'} gap={'4px'}>
+        {showModelSelector && (
+          <AIProviderModelSelectorButton
+            disabled={!showModelSelector}
+            sidebarConversationType={'ContextMenu'}
+            size={'small'}
+          />
+        )}
 
-      <Stack direction='row' justifyContent='end'>
+        <LanguageSelector
+          defaultValue={
+            userSettings?.language === DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+              ? 'English'
+              : userSettings?.language
+          }
+          onChangeLanguage={(lang) => {
+            setUserSettings({
+              language: lang,
+            })
+          }}
+        />
+      </Stack>
+      <Stack
+        direction='row'
+        justifyContent='end'
+        alignItems='center'
+        sx={{
+          gap: 1,
+        }}
+      >
+        <FloatingContextMenuChatHistoryButton
+          TooltipProps={{
+            placement: 'top',
+            floatingMenuTooltip: true,
+          }}
+        />
+        <FloatingContextMenuPopupSettingButton />
+
+        <Divider orientation='vertical' variant='middle' flexItem />
+
+        {!isEmpty(currentFloatingContextMenuDraft) &&
+          selectedDraftUserMessage && (
+            <TextOnlyTooltip
+              title={t('client:floating_menu__always_continue_sidebar_title')}
+              placement='top'
+              floatingMenuTooltip
+              sx={{
+                width: 'auto',
+                height: 20,
+                color: 'inherit',
+                padding: '0 3px',
+              }}
+            >
+              <IconButton onClick={alwaysContinueInSidebar}>
+                <ViewSidebarOutlined
+                  sx={{
+                    fontSize: 16,
+                  }}
+                />
+              </IconButton>
+            </TextOnlyTooltip>
+          )}
+
         <TextOnlyTooltip
           title={t(
             floatingDropdownMenuPin
               ? 'client:floating_menu__pin_button__pinned__title'
               : 'client:floating_menu__pin_button__unpinned__title',
           )}
-          placement='bottom'
+          placement='top'
           floatingMenuTooltip
         >
           <IconButton
@@ -197,7 +213,7 @@ const FloatingContextMenuTitleBar: FC = () => {
         </TextOnlyTooltip>
         <TextOnlyTooltip
           title={t('client:floating_menu__close_button__title')}
-          placement='bottom'
+          placement='top'
           floatingMenuTooltip
         >
           <IconButton

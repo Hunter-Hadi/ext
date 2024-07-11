@@ -56,6 +56,8 @@ const useSidebarSettings = () => {
     sidebarPageState.sidebarConversationType
   const currentSidebarAIProvider =
     appLocalStorage.sidebarSettings?.common?.currentAIProvider
+  const sidebarContextMenuConversationId =
+    appLocalStorage.sidebarSettings?.contextMenu?.conversationId
   const sidebarChatConversationId =
     appLocalStorage.sidebarSettings?.chat?.conversationId
   const currentSearchConversationId =
@@ -65,6 +67,8 @@ const useSidebarSettings = () => {
   // 当前sidebar conversation type对应的conversation id
   const currentSidebarConversationId = useMemo(() => {
     switch (currentSidebarConversationType) {
+      case 'ContextMenu':
+        return sidebarContextMenuConversationId
       case 'Chat':
         return sidebarChatConversationId
       case 'Search':
@@ -82,6 +86,7 @@ const useSidebarSettings = () => {
     currentSearchConversationId,
     sidebarSummaryConversationId,
     currentArtConversationId,
+    sidebarContextMenuConversationId,
   ])
 
   const updateSidebarSettings = async (
@@ -147,6 +152,16 @@ const useSidebarSettings = () => {
               currentSidebarConversationId,
             )
           : null
+
+        if (currentSidebarConversationType === 'ContextMenu') {
+          updateSidebarSettings({
+            contextMenu: {
+              conversationId: '',
+            },
+          })
+          return
+        }
+
         if (currentConversation) {
           if (currentConversation.type === 'Summary') {
             // Summary有点不一样，需要清除所有的message
@@ -187,7 +202,7 @@ const useSidebarSettings = () => {
           await createSidebarConversation(currentSidebarConversationType)
         }
       },
-    [currentSidebarConversationId],
+    [currentSidebarConversationId, currentSidebarConversationType],
   )
 
   const createSidebarConversation = async (
@@ -397,19 +412,24 @@ const useSidebarSettings = () => {
       })
     }
   }
+
+  /**
+   * @param sync 控制是否await同步执行
+   */
   const continueConversationInSidebar = async (
-    ...args: Parameters<
-      typeof ClientConversationManager.addOrUpdateConversation
-    >
+    conversationId: string,
+    updateConversationData: Partial<IConversation>,
+    options?: {
+      syncConversationToDB?: boolean
+      waitSync?: boolean
+    },
+    sync = true,
   ) => {
     if (isContinueInChatProgressRef.current) {
       return
     }
     isContinueInChatProgressRef.current = true
-    const [conversationId, updateConversationData, options] =
-      args as Parameters<
-        typeof ClientConversationManager.addOrUpdateConversation
-      >
+    // const [conversationId, updateConversationData, options] = args
     // 需要复制当前的conversation
     const newConversation =
       await ClientConversationManager.addOrUpdateConversation(
@@ -421,17 +441,28 @@ const useSidebarSettings = () => {
           waitSync: true,
         },
       )
-    if (newConversation) {
-      if (['Chat', 'Search', 'Summary', 'Art'].includes(newConversation.type)) {
-        await updateSidebarSettings({
-          [newConversation.type.toLowerCase()]: {
-            conversationId: newConversation.id,
-          },
-        })
-        updateSidebarConversationType(
-          newConversation.type as ISidebarConversationType,
-        )
-      }
+    if (
+      newConversation &&
+      ['ContextMenu', 'Chat', 'Search', 'Summary', 'Art'].includes(
+        newConversation.type,
+      )
+    ) {
+      // ContextMenu的sidebar设置属性不是全小写
+      const scope =
+        newConversation.type === 'ContextMenu'
+          ? 'contextMenu'
+          : newConversation.type.toLowerCase()
+
+      const promise = updateSidebarSettings({
+        [scope]: {
+          conversationId: newConversation.id,
+        },
+      })
+      if (sync) await promise
+
+      updateSidebarConversationType(
+        newConversation.type as ISidebarConversationType,
+      )
     }
     showChatBox()
     hideFloatingContextMenu(true)

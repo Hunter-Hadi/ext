@@ -1,4 +1,4 @@
-import { getVisibleTextNodes } from '@/features/chat-base/summary/utils/pageContentHelper'
+import { getVisibleTextNodes } from '@/features/chat-base/summary/utils/elementHelper'
 import { ICitationMatch, ICitationService } from '@/features/citation/types'
 import { isParentElement, scrollToRange } from '@/features/citation/utils'
 import { wait } from '@/utils'

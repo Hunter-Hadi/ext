@@ -1,3 +1,4 @@
+import { parseReadabilityDocument } from '@/features/chat-base/summary/utils/documentContentHelper'
 import { getIframeOrSpecialHostPageContent } from '@/features/chat-base/summary/utils/pageContentHelper'
 import {
   IShortcutEngineExternalEngine,
@@ -42,14 +43,9 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
       // }
       let result = await getIframeOrSpecialHostPageContent()
       if (!result) {
-        const header = document.querySelector('header')
-        const footer = document.querySelector('footer')
-        header?.classList.add('maxai-reading-hidden')
-        footer?.classList.add('maxai-reading-hidden')
-        result = document.body.innerText
-        this.originalInnerText = result
-        header?.classList.remove('maxai-reading-hidden')
-        footer?.classList.remove('maxai-reading-hidden')
+        const clear = parseReadabilityDocument(document, false)
+        this.originalInnerText = result = document.body.innerText
+        clear()
       }
       this.output = result
     } catch (e) {

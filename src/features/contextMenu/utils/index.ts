@@ -5,7 +5,6 @@ import {
   Middleware,
   offset,
   Placement,
-  shift,
 } from '@floating-ui/react'
 import { get } from 'lodash-es'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -533,22 +532,25 @@ const sizeMiddleware = ({
     name: 'sizeMiddleware',
     fn(state) {
       const { x, y, elements, placement } = state
-      let availableWidth = 0
-      let availableHeight = 0
-      const rect = elements.reference.getBoundingClientRect()
-      if (placement.startsWith('bottom') || placement.startsWith('right')) {
-        availableWidth = document.documentElement.clientWidth - x
-        availableHeight = document.documentElement.clientHeight - y
-      } else if (placement.startsWith('top')) {
-        const dragY = dragOffsetRef.current.y
-        availableWidth = document.documentElement.clientWidth - x
-        // availableHeight = rect.top
-        availableHeight = rect.top + dragY
-      } else {
-        const dragX = dragOffsetRef.current.x
-        availableWidth = rect.left + dragX
-        availableHeight = document.documentElement.clientHeight - y
-      }
+      const availableWidth = document.documentElement.clientWidth - x
+      const availableHeight = document.documentElement.clientHeight - y
+      // let availableWidth = 0
+      // let availableHeight = 0
+      // const rect = elements.reference.getBoundingClientRect()
+      // elements.reference.getBoundingClientRect()
+      // if (placement.startsWith('bottom') || placement.startsWith('right')) {
+      //   availableWidth = document.documentElement.clientWidth - x
+      //   availableHeight = document.documentElement.clientHeight - y
+      // } else if (placement.startsWith('top')) {
+      //   const dragY = dragOffsetRef.current.y
+      //   availableWidth = document.documentElement.clientWidth - x
+      //   // availableHeight = rect.top
+      //   availableHeight = rect.top + dragY
+      // } else {
+      //   const dragX = dragOffsetRef.current.x
+      //   availableWidth = rect.left + dragX
+      //   availableHeight = document.documentElement.clientHeight - y
+      // }
 
       // -8 是因为有使用offset中间件的存在
       apply({
@@ -567,29 +569,38 @@ const sizeMiddleware = ({
  */
 function filpMiddleware(
   options: {
+    sizeOffsetRef: IFloatingSizeOffsetRef
     dragOffsetRef: IDragOffsetRef
     defaultPlacement?: Placement
   } & FlipOptions,
 ): Middleware {
   let lastPlacement = options.defaultPlacement ?? 'bottom-start'
   const dragOffsetRef = options.dragOffsetRef
+  const sizeOffsetRef = options.sizeOffsetRef
   const middleware = flip(options)
+  let lastXy: { x: number; y: number } | null = null
 
   return {
     name: 'flipMiddleware',
     async fn(state) {
-      if (!dragOffsetRef.current.dragged) {
+      if (!dragOffsetRef.current.dragged && !sizeOffsetRef.current.resized) {
         const result = await middleware.fn(state)
 
         // 记录最后一次位置
         lastPlacement = get(result, 'reset.placement', lastPlacement)
 
+        lastXy = null
         return result
       }
+      if (!lastXy) {
+        lastXy = {
+          x: state.elements.floating.offsetLeft,
+          y: state.elements.floating.offsetTop,
+        }
+      }
       return {
-        reset: {
-          placement: lastPlacement,
-        },
+        x: lastXy.x,
+        y: lastXy.y,
       }
     },
   }
@@ -658,13 +669,14 @@ export const getFloatingContextMenuMiddleware = (
 ): Middleware[] => {
   return [
     filpMiddleware({
+      sizeOffsetRef: floatingSizeOffsetRef,
       dragOffsetRef,
       fallbackPlacements: ['top-start', 'right', 'left'],
       defaultPlacement: 'bottom-start',
     }),
-    shift({
-      crossAxis: true,
-    }),
+    // shift({
+    //   crossAxis: true,
+    // }),
     offset(8),
     dragMiddleware({ dragOffsetRef }),
 

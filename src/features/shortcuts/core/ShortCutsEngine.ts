@@ -23,7 +23,9 @@ import {
   ActionGetEmailDraftOfWebPage,
   ActionGetItemFromList,
   ActionGetPDFContentsOfCRX,
+  ActionGetPDFFileOfCRX,
   ActionGetReadabilityContentsOfWebPage,
+  ActionGetReadabilityMarkdownOfWebPage,
   ActionGetSocialMediaPostContentOfWebPage,
   ActionGetSocialMediaPostDraftOfWebPage,
   ActionGetYoutubeTranscriptOfURL,
@@ -31,6 +33,7 @@ import {
   ActionList,
   ActionMaxAIProcessBuiltInParameters,
   ActionMaxAIResponseRelated,
+  ActionMaxAIUploadDocument,
   ActionOpenURLs,
   ActionOperationElement,
   ActionRenderChatGPTPrompt,
@@ -99,11 +102,14 @@ const ActionClassMap = {
   [ActionFetchActions.type]: ActionFetchActions,
   [ActionGetYoutubeTranscriptOfURL.type]: ActionGetYoutubeTranscriptOfURL,
   [ActionGetPDFContentsOfCRX.type]: ActionGetPDFContentsOfCRX,
+  [ActionGetPDFFileOfCRX.type]: ActionGetPDFFileOfCRX,
   [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
   [ActionGetReadabilityContentsOfWebPage.type]:
     ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityMarkdownOfWebPage.type]:
+    ActionGetReadabilityMarkdownOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
   [ActionGetSocialMediaPostDraftOfWebPage.type]:
@@ -130,6 +136,7 @@ const ActionClassMap = {
   [ActionMaxAIProcessBuiltInParameters.type]:
     ActionMaxAIProcessBuiltInParameters,
   [ActionMaxAIResponseRelated.type]: ActionMaxAIResponseRelated,
+  [ActionMaxAIUploadDocument.type]: ActionMaxAIUploadDocument,
 }
 
 class ShortCutsEngine implements IShortcutEngine {

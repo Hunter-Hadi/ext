@@ -153,7 +153,7 @@ export const maxAIRequestBodySummaryGenerator = async (
   summaryMessage: IAIResponseMessage,
   promptActionConfig?: MaxAIPromptActionConfig,
 ) => {
-  let backendAPI: IMaxAIChatGPTBackendAPIType = 'summary/v2/webpage'
+  let backendAPI: IMaxAIChatGPTBackendAPIType = 'summary/v3/webpage'
   const postBody = promptActionConfig
     ? await maxAIRequestBodyPromptActionGenerator(
         originalPostBody,
@@ -162,16 +162,16 @@ export const maxAIRequestBodySummaryGenerator = async (
     : cloneDeep(originalPostBody)
   switch (conversation.meta.pageSummaryType) {
     case 'PAGE_SUMMARY':
-      backendAPI = 'summary/v2/webpage'
+      backendAPI = 'summary/v3/webpage'
       break
     case 'DEFAULT_EMAIL_SUMMARY':
-      backendAPI = 'summary/v2/email'
+      backendAPI = 'summary/v3/email'
       break
     case 'YOUTUBE_VIDEO_SUMMARY':
-      backendAPI = 'summary/v2/videosite'
+      backendAPI = 'summary/v3/videosite'
       break
     case 'PDF_CRX_SUMMARY':
-      backendAPI = 'summary/v2/pdf'
+      backendAPI = 'summary/v3/pdf'
       break
   }
   postBody.summary_type = maxAIRequestBodySummaryType(
@@ -195,6 +195,10 @@ export const maxAIRequestBodySummaryGenerator = async (
 
 /**
  * 针对summary对话的请求，返回不同的api和生成对应的body
+ * 理论上打开summary chat的时候可以强制走新的逻辑，之后处理，在这里先做个兼容，目前会有以下情况
+ * 1. conversation.meta.docId，长文逻辑
+ * 2. conversation.meta.pageSummary.docId，pageSummary.content有内容 v2接口逻辑，需要传递PAGE_CONTENT
+ * 3. conversation.meta.pageSummary.docId，pageSummary.content无内容 v3接口逻辑，不需要传递PAGE_CONTENT
  * @param originalPostBody
  * @param conversation
  * @param summaryMessage
@@ -212,17 +216,26 @@ export const maxAIRequestBodySummaryChatGenerator = async (
     backendAPI = 'chat_with_document/v2'
     postBody.doc_id = conversation.meta.docId
   } else if (conversation.meta.pageSummary?.docId) {
-    // 短文chat逻辑，目前这个版本不传递docId或者服务端没找到docId会报错
-    backendAPI = 'summary/v2/qa'
+    // chat逻辑，不传递docId或者服务端没找到docId会报错
+    if (conversation.meta.pageSummary.content) {
+      // 走v2逻辑
+      backendAPI = 'summary/v2/qa'
+    } else {
+      // 走v3逻辑
+      backendAPI = 'summary/v3/qa'
+    }
     postBody.doc_id = conversation.meta.pageSummary.docId
     postBody.doc_type = maxAIRequestBodyDocType(
       conversation.meta.pageSummaryType!,
     )
-    if (summaryMessage?.originalMessage?.content?.text) {
+    if (
+      summaryMessage?.originalMessage?.content?.text ||
+      !conversation.meta.pageSummary.content
+    ) {
       // 有text内容说明请求成功了，后端成功拿到页面数据和短文docId
       postBody.need_create = false
       postBody.summary_type = maxAIRequestBodySummaryType(
-        summaryMessage.originalMessage?.metadata?.navMetadata?.key || 'all',
+        summaryMessage?.originalMessage?.metadata?.navMetadata?.key || 'all',
       )
       // 目前不传递会报错
       postBody.prompt_inputs = {}

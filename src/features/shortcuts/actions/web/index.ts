@@ -13,3 +13,4 @@ export { ActionGetEmailContentsOfWebPage } from './email/ActionGetEmailContentsO
 export { ActionGetEmailDraftOfWebPage } from './email/ActionGetEmailDraftOfWebPage'
 export { ActionGetSocialMediaPostContentOfWebPage } from './socialMedia/ActionGetSocialMediaPostContentOfWebPage'
 export { ActionGetSocialMediaPostDraftOfWebPage } from './socialMedia/ActionGetSocialMediaPostDraftOfWebPage'
+export { ActionGetReadabilityMarkdownOfWebPage } from './webpage/ActionGetReadabilityMarkdownOfWebPage'

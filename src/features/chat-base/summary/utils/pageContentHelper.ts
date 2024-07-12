@@ -4,6 +4,7 @@
  * 和documentContentHelper不同，这里的页面是当前访问的网页
  */
 import { Readability } from '@mozilla/readability'
+import TurndownService from 'turndown'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
@@ -38,12 +39,7 @@ export const isNeedGetIframePageContent = () => {
  */
 export const isNeedGetSpecialHostPageContent = () => {
   const host = getCurrentDomainHost()
-  return [
-    'docs.google.com',
-    'github.com',
-    // 'cnbc.com',
-    // 'timesofindia.indiatimes.com',
-  ].find((item) => item === host)
+  return ['docs.google.com', 'github.com'].find((item) => item === host)
 }
 
 /**
@@ -68,7 +64,7 @@ export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
 
 /**
  * 获取可读网页内容
- * 这里是通过readability.js库去读取网页内容
+ * 这里是通过readability.js库去读取网页内容，如果抓到会返回空
  * @param replaceBody
  * @param options
  */
@@ -76,35 +72,70 @@ export const getReadabilityPageContent = (
   replaceBody?: HTMLElement,
   options?: any,
 ) => {
-  const clonedDocument = document.cloneNode(true) as Document
-  if (clonedDocument && replaceBody) {
-    clonedDocument.body.innerHTML = replaceBody.innerHTML
+  try {
+    const clonedDocument = document.cloneNode(true) as Document
+    if (clonedDocument && replaceBody) {
+      clonedDocument.body.innerHTML = replaceBody.innerHTML
+    }
+    const reader = new Readability(clonedDocument, {
+      ...options,
+      serializer: (el) => el,
+    })
+    const article = reader.parse()
+    const contentElement = article?.content as any as HTMLElement | null
+
+    if (article && contentElement) {
+      // 去掉每行前后的空格
+      // 将两个或更多连续的换行符替换为单个换行符
+      // 将两个或更多连续的空白字符（包括空格和制表符）替换为单个空格
+      // const innerText = contentElement.innerText
+      //   .replace(/^\s+|\s+$/gm, '')
+      //   .replace(/\n{2,}/g, '\n')
+      //   .replace(/[ \t]{2,}/g, ' ')
+
+      return `${article.title}\n\n${getFormattedTextFromNodes(
+        getVisibleTextNodes(contentElement),
+      )}`
+    }
+  } catch (e) {
+    console.error(e)
   }
-  // if (!isProbablyReaderable(clonedDocument)) {
-  //   return ''
-  // }
-  const reader = new Readability(clonedDocument, {
-    ...options,
-    serializer: (el) => el,
-  })
-  const article = reader.parse()
-  const contentElement = article?.content as any as HTMLElement | null
-
-  if (article && contentElement) {
-    // 去掉每行前后的空格
-    // 将两个或更多连续的换行符替换为单个换行符
-    // 将两个或更多连续的空白字符（包括空格和制表符）替换为单个空格
-    // const innerText = contentElement.innerText
-    //   .replace(/^\s+|\s+$/gm, '')
-    //   .replace(/\n{2,}/g, '\n')
-    //   .replace(/[ \t]{2,}/g, ' ')
-
-    return `${article.title}\n\n${getFormattedTextFromNodes(
-      getVisibleTextNodes(contentElement),
-    )}`
-  }
-
   return ''
+}
+
+/**
+ * 获取网页可读markdown
+ * 这里是通过readability.js库去读取网页内容并转成markdown，如果没抓到会返回空
+ * @param replaceBody
+ * @param options
+ */
+export const getReadabilityPageMarkdown = (
+  replaceBody?: HTMLElement,
+  options?: any,
+) => {
+  try {
+    const clonedDocument = document.cloneNode(true) as Document
+    if (clonedDocument && replaceBody) {
+      clonedDocument.body.innerHTML = replaceBody.innerHTML
+    }
+    const reader = new Readability(clonedDocument, {
+      ...options,
+      serializer: (el) => el,
+    })
+    const article = reader.parse()
+    const contentElement = article?.content as any as HTMLElement | null
+
+    if (article && contentElement) {
+      const turndownService = new TurndownService()
+      const readabilityMarkdown = turndownService.turndown(contentElement)
+      return `# ${article?.title}\n\n${readabilityMarkdown}`
+    }
+
+    return ''
+  } catch (e) {
+    console.error(e)
+    return ''
+  }
 }
 
 /**

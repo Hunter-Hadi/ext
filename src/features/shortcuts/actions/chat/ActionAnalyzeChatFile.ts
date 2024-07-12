@@ -23,7 +23,7 @@ import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/clien
  * @description 当用户聊天的内容超过12k的时候生成md5上传成docId, 并且切割12k给聊天的summary
  * @update 2023-11-30 当用户聊天的内容超过120k的时候生成md5上传成docId, 并且切割120k给聊天的summary
  * @update 2024-03-22 maxSystemPromptTokens = modelMaxTokens - 8000((historyTokens + questionPromptTokens + responseTokens)
- * @update 2024-07-10 新的upload_document接口，需要传递
+ * @deprecated 2024-07-10 此action不再使用，之后会统一用新的upload_document接口，前端无需区分长短文
  */
 export class ActionAnalyzeChatFile extends Action {
   static type: ActionIdentifier = 'ANALYZE_CHAT_FILE'
@@ -170,8 +170,7 @@ export class ActionAnalyzeChatFile extends Action {
               docId,
               content: pageSummaryPrompt,
             },
-            // TODO 后端限制了必须传递一个字符以上，先传递个空字符串
-            systemPrompt: ' ',
+            systemPrompt: '',
           },
         },
         conversationId,

@@ -7,6 +7,20 @@ import { clientRequestHeaderGenerator } from '@/utils/clientRequestHeaderGenerat
 import { sha1FileEncrypt } from '@/utils/encryptionHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
+export type IUploadDocumentType =
+  | 'webpage'
+  | 'pdf'
+  | 'email'
+  | 'youtube'
+  | 'image'
+  | 'chat_file'
+
+export type IUploadDocumentEvent =
+  | 'document_create'
+  | 'upload_to_s3'
+  | 'embedding_done'
+  | 'upload_done'
+
 /**
  * 上传document参数
  */
@@ -15,7 +29,7 @@ export type IUploadDocumentPayload = {
   pure_text?: string
   tokens?: number
   doc_id?: string
-  doc_type?: 'webpage' | 'pdf' | 'email' | 'youtube' | 'image' | 'chat_file'
+  doc_type?: IUploadDocumentType
   project_content_type?: 'page_content'
   file: File
 }
@@ -24,7 +38,7 @@ export type IUploadDocumentPayload = {
  * 上传document响应消息
  */
 export type IUploadDocumentMessage = {
-  event: 'document_create' | 'upload_to_s3' | 'embedding_done' | 'upload_done'
+  event: IUploadDocumentEvent
   data: { doc_url?: string; expires?: number }
 }
 
@@ -46,6 +60,9 @@ export type IUploadDocumentResponse = {
   expires?: number
 }
 
+/**
+ * 上传document事件监听
+ */
 export type IUploadDocumentListener = (message: IUploadDocumentMessage) => void
 
 /**
@@ -54,24 +71,14 @@ export type IUploadDocumentListener = (message: IUploadDocumentMessage) => void
  * @param docId
  */
 export const checkDocIdExist = async (accessToken: string, docId: string) => {
-  return fetch(`${APP_USE_CHAT_GPT_API_HOST}/app/check_document_by_id`, {
-    method: 'POST',
-    headers: await clientRequestHeaderGenerator({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    }),
-    body: JSON.stringify({
-      doc_id: docId,
-    }),
+  const result = await clientFetchMaxAIAPI<{
+    msg: string
+    status: string
+    data?: { exists: boolean }
+  }>(`${APP_USE_CHAT_GPT_API_HOST}/app/check_document_by_id`, {
+    doc_id: docId,
   })
-    .then((response) => response.json())
-    .then((result) => {
-      return Boolean(result?.data?.exists)
-    })
-    .catch((err) => {
-      console.error('MaxAIDocument check error', err)
-      return false
-    })
+  return Boolean(result.data?.data?.exists)
 }
 
 /**
@@ -98,12 +105,10 @@ export const uploadMaxAIDocument = async (
   }
   if (await checkDocIdExist(accessToken, docId)) {
     const result = await getMaxAIDocument(docId)
-    if (result?.s3.doc_url) {
-      uploadResponse.doc_url = result.s3.doc_url
-      uploadResponse.expires = result.s3.expires
-      uploadResponse.success = true
-      return uploadResponse
-    }
+    uploadResponse.doc_url = result?.s3?.doc_url || ''
+    uploadResponse.expires = result?.s3?.expires
+    uploadResponse.success = true
+    return uploadResponse
   }
   const formData = new FormData()
   if (!body.doc_type) {

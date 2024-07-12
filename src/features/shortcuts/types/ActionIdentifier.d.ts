@@ -46,8 +46,12 @@ type ActionIdentifier =
   | 'GET_PDF_PATH_OF_CRX'
   // 从插件上传PDF的内容
   | 'UPLOAD_PDF_OF_CRX'
-  // 从@mozilla/readability获取网页内容
+  // 从插件获取PDF文件
+  | 'GET_PDF_FILE_OF_CRX'
+  // 从@mozilla/readability获取网页纯文本内容
   | 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
+  // 从@mozilla/readability获取网页markdown内容
+  | 'GET_READABILITY_MARKDOWN_OF_WEBPAGE'
   // 从各大邮件网站获取内容
   | 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   // 从各大邮件网站获取草稿

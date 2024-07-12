@@ -1,3 +1,6 @@
+/**
+ * @deprecated 已废弃，统一走uploadMaxAIDocument方法上传
+ */
 import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'

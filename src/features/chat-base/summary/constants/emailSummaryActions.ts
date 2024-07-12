@@ -71,18 +71,44 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'EmailSummaryContent.txt',
-      },
-    },
-    {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIUploadDocumentConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'email',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_CONTENTS}}',
+          },
+        },
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'DOC_ID',
+      },
+    },
+    // {
+    //   type: 'ANALYZE_CHAT_FILE',
+    //   parameters: {
+    //     AnalyzeChatFileImmediateUpdateConversation: false,
+    //     AnalyzeChatFileName: 'EmailSummaryContent.txt',
+    //   },
+    // },
+    // {
+    //   type: 'SET_VARIABLE',
+    //   parameters: {
+    //     VariableName: 'READABILITY_CONTENTS',
+    //   },
+    // },
     {
       type: 'CHAT_MESSAGE',
       parameters: {
@@ -125,14 +151,14 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize email',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
+            // {
+            //   VariableName: 'PAGE_CONTENT',
+            //   label: 'PAGE_CONTENT',
+            //   defaultValue: '{{READABILITY_CONTENTS}}',
+            //   valueType: 'Text',
+            //   systemVariable: true,
+            //   hidden: true,
+            // },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
           ],
@@ -272,18 +298,44 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'EmailSummaryContent.txt',
-      },
-    },
-    {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIUploadDocumentConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'email',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_CONTENTS}}',
+          },
+        },
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'DOC_ID',
+      },
+    },
+    // {
+    //   type: 'ANALYZE_CHAT_FILE',
+    //   parameters: {
+    //     AnalyzeChatFileImmediateUpdateConversation: false,
+    //     AnalyzeChatFileName: 'EmailSummaryContent.txt',
+    //   },
+    // },
+    // {
+    //   type: 'SET_VARIABLE',
+    //   parameters: {
+    //     VariableName: 'READABILITY_CONTENTS',
+    //   },
+    // },
     {
       type: 'CHAT_MESSAGE',
       parameters: {
@@ -326,14 +378,14 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize email (TL:DR)',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
+            // {
+            //   VariableName: 'PAGE_CONTENT',
+            //   label: 'PAGE_CONTENT',
+            //   defaultValue: '{{READABILITY_CONTENTS}}',
+            //   valueType: 'Text',
+            //   systemVariable: true,
+            //   hidden: true,
+            // },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
           ],
@@ -473,18 +525,44 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'EmailSummaryContent.txt',
-      },
-    },
-    {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIUploadDocumentConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'email',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_CONTENTS}}',
+          },
+        },
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'DOC_ID',
+      },
+    },
+    // {
+    //   type: 'ANALYZE_CHAT_FILE',
+    //   parameters: {
+    //     AnalyzeChatFileImmediateUpdateConversation: false,
+    //     AnalyzeChatFileName: 'EmailSummaryContent.txt',
+    //   },
+    // },
+    // {
+    //   type: 'SET_VARIABLE',
+    //   parameters: {
+    //     VariableName: 'READABILITY_CONTENTS',
+    //   },
+    // },
     {
       type: 'CHAT_MESSAGE',
       parameters: {
@@ -527,14 +605,14 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize email (Key takeaways)',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
+            // {
+            //   VariableName: 'PAGE_CONTENT',
+            //   label: 'PAGE_CONTENT',
+            //   defaultValue: '{{READABILITY_CONTENTS}}',
+            //   valueType: 'Text',
+            //   systemVariable: true,
+            //   hidden: true,
+            // },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
           ],
@@ -674,18 +752,44 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'EmailSummaryContent.txt',
-      },
-    },
-    {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIUploadDocumentConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'email',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_CONTENTS}}',
+          },
+        },
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'DOC_ID',
+      },
+    },
+    // {
+    //   type: 'ANALYZE_CHAT_FILE',
+    //   parameters: {
+    //     AnalyzeChatFileImmediateUpdateConversation: false,
+    //     AnalyzeChatFileName: 'EmailSummaryContent.txt',
+    //   },
+    // },
+    // {
+    //   type: 'SET_VARIABLE',
+    //   parameters: {
+    //     VariableName: 'READABILITY_CONTENTS',
+    //   },
+    // },
     {
       type: 'CHAT_MESSAGE',
       parameters: {
@@ -728,14 +832,14 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize email (Action items)',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
+            // {
+            //   VariableName: 'PAGE_CONTENT',
+            //   label: 'PAGE_CONTENT',
+            //   defaultValue: '{{READABILITY_CONTENTS}}',
+            //   valueType: 'Text',
+            //   systemVariable: true,
+            //   hidden: true,
+            // },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
           ],

@@ -18,7 +18,6 @@ import {
   ActionGetChatMessagesContentOfWebPage,
   ActionGetContentsOfSearchEngine,
   ActionGetContentsOfURL,
-  ActionGetContentsOfWebPage,
   ActionGetDictionaryValue,
   ActionGetEmailContentsOfWebPage,
   ActionGetEmailDraftOfWebPage,
@@ -95,7 +94,6 @@ const ActionClassMap = {
   [ActionGetItemFromList.type]: ActionGetItemFromList,
   // web
   [ActionURL.type]: ActionURL,
-  [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
   [ActionGetContentsOfURL.type]: ActionGetContentsOfURL,
   [ActionGetContentsOfSearchEngine.type]: ActionGetContentsOfSearchEngine,
   [ActionFetchActions.type]: ActionFetchActions,

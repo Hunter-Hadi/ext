@@ -16,8 +16,6 @@ type ActionIdentifier =
   | 'ASK_CHATGPT'
   // 插入用户输入框
   | 'INSERT_USER_INPUT'
-  // 获取网页内容
-  | 'GET_CONTENTS_OF_WEBPAGE'
   // 设置变量
   | 'SET_VARIABLE'
   // 设置变量映射
@@ -84,6 +82,8 @@ type ActionIdentifier =
   | 'MAXAI_GET_CHAT_MESSAGES'
   // 获取AI Response后的消息
   | 'MAXAI_RESPONSE_RELATED'
+  // MaxAI 上传document
+  | 'MAXAI_UPLOAD_DOCUMENT'
   // 分配 System Prompt 应获取 (Email | Social Media | Chat App website) 页面上下文变量
   | 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIABLE'
   // =========[Scripts]=========

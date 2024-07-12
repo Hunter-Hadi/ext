@@ -120,7 +120,7 @@ const SmartAIUsageQueriesItem: FC<ISmartAIUsageQueriesItemProps> = ({
                     lineHeight={1.5}
                   >
                     <ProLink
-                      href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+                      href={`${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=elite_yearly`}
                       underline='always'
                       sx={{
                         color: 'inherit',
@@ -200,7 +200,7 @@ const SmartAIUsageQueriesItem: FC<ISmartAIUsageQueriesItemProps> = ({
                       lineHeight={1.5}
                     >
                       <ProLink
-                        href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+                        href={`${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=elite_yearly`}
                         underline='always'
                         sx={{
                           color: 'inherit',

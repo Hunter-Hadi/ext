@@ -29,39 +29,20 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
 
-import {
-  ContextMenuIcon,
-  IContextMenuIconKey,
-} from '@/components/ContextMenuIcon'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import { MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID } from '@/features/common/constants'
 import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import {
-  FloatingDropdownMenuItemsSelector,
-  FloatingDropdownMenuSelectedItemState,
-  FloatingDropdownMenuState,
-} from '@/features/contextMenu/store'
 import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
-import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
-
-interface LiteDropdownMenuItemProps {
-  label?: string
-  icon?: IContextMenuIconKey | string
-  CustomRenderNode?: React.ReactNode
-  isGroup?: boolean
-  onClick?: (event: React.MouseEvent) => void
-}
 
 interface MenuItemProps {
   label: string
@@ -70,98 +51,28 @@ interface MenuItemProps {
   hoverIcon?: React.ReactNode
 }
 
-export const LiteDropdownMenuItem = React.forwardRef<
-  any,
-  LiteDropdownMenuItemProps
->(({ label, icon, CustomRenderNode, onClick, isGroup, ...props }, ref) => {
-  const floatingUiProps: any = props
-  return (
-    <Box
-      {...props}
-      sx={{
-        boxSizing: 'border-box',
-        borderRadius: '3px',
-        height: '28px',
-        fontSize: '14px',
-        width: '100%',
-        cursor: 'pointer',
-        '&.floating-context-menu-item--active': {
-          bgcolor: (t) =>
-            t.palette.mode === 'dark'
-              ? 'rgba(255, 255, 255, 0.08)'
-              : 'rgba(55, 53, 47, 0.08)',
-          '& .floating-context-menu-item__footer-icon': {
-            display: 'flex',
-          },
-        },
-        '& .floating-context-menu-item__footer-icon': {
-          display: 'none',
-          flexShrink: 0,
-        },
-        '& .floating-context-menu-item__footer-icon--active': {
-          display: 'flex',
-        },
-        '&:hover': {
-          bgcolor: (t) =>
-            t.palette.mode === 'dark'
-              ? 'rgba(255, 255, 255, 0.08)'
-              : 'rgba(55, 53, 47, 0.08)',
-          '& .floating-context-menu-item__footer-icon': {
-            display: 'flex',
-          },
-        },
-      }}
-      ref={ref}
-      component={'div'}
-      role='menuitem'
-      onClick={(event: any) => {
-        onClick?.(event)
-        floatingUiProps?.onClick?.(event)
-      }}
-    >
-      <Box>
-        {CustomRenderNode || (
-          <Stack direction={'row'} spacing={1} px={1} alignItems={'center'}>
-            {icon && (
-              <ContextMenuIcon
-                size={16}
-                icon={icon || 'Empty'}
-                sx={{ color: 'primary.main', flexShrink: 0 }}
-              />
-            )}
-            <Typography
-              fontSize={14}
-              textAlign={'left'}
-              color={'text.primary'}
-              width={0}
-              noWrap
-              flex={1}
-              lineHeight={'28px'}
-            >
-              {label}
-            </Typography>
-            {isGroup && (
-              <KeyboardArrowRightIcon
-                sx={{
-                  ml: 'auto',
-                  mr: 0,
-                  flexShrink: 0,
-                  color: (t) =>
-                    t.palette.mode === 'dark'
-                      ? '#ffffff85'
-                      : 'rgba(55, 53, 47, 0.45)',
-                  fontSize: 16,
-                }}
-              />
-            )}
-          </Stack>
-        )}
-      </Box>
-    </Box>
-  )
+export const DropdownMenuSelectedItemState = atom<{
+  hoverContextMenuIdMap: {
+    [key: string]: string
+  }
+  lastHoverContextMenuId: string | null
+  selectedContextMenuId: string | null
+}>({
+  key: 'DropdownMenuSelectedItemState',
+  default: {
+    hoverContextMenuIdMap: {},
+    selectedContextMenuId: null,
+    lastHoverContextMenuId: null,
+  },
 })
 
-LiteDropdownMenuItem.displayName = 'LiteDropdownMenuItem'
+const DropdownMenuIHovertemsSelector = selector<string[]>({
+  key: 'DropdownMenuItemsSelector',
+  get: ({ get }) => {
+    const hoverIdMap = get(DropdownMenuSelectedItemState).hoverContextMenuIdMap
+    return Object.values(hoverIdMap).filter((id) => id)
+  },
+})
 
 /**
  *  列表项渲染
@@ -170,11 +81,11 @@ export const DropdownMenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
   ({ label, disabled, menuItem, hoverIcon, ...props }, ref) => {
     const floatingUiProps: any = props
     const { t } = useTranslation(['prompt'])
-    const hoverIds = useRecoilValue(FloatingDropdownMenuItemsSelector)
+    const hoverIds = useRecoilValue(DropdownMenuIHovertemsSelector)
     const [
       floatingDropdownMenuSelectedItem,
       setFloatingDropdownMenuSelectItem,
-    ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
+    ] = useRecoilState(DropdownMenuSelectedItemState)
     const menuLabel = useMemo(() => {
       const id = menuItem.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
       const key: any = `prompt:${id}`
@@ -250,13 +161,13 @@ export const DropdownMenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
           floatingUiProps?.onKeyDown?.(event)
           if (event.code === 'Enter') {
             // 是否在重命名状态
-            const renameInput =
-              getMaxAIFloatingContextMenuRootElement()?.querySelector(
-                'div[data-testid="maxai--conversation--rename-chat--input"] input',
-              ) as HTMLInputElement
-            if (renameInput) {
-              return
-            }
+            // const renameInput =
+            //   getMaxAIFloatingContextMenuRootElement()?.querySelector(
+            //     'div[data-testid="maxai--conversation--rename-chat--input"] input',
+            //   ) as HTMLInputElement
+            // if (renameInput) {
+            //   return
+            // }
             setFloatingDropdownMenuSelectItem((prevState) => {
               return {
                 ...prevState,
@@ -353,6 +264,7 @@ export interface MenuProps {
   onClickReferenceElement?: (event: React.MouseEvent<any, MouseEvent>) => void
   menuWidth?: number
   hoverIcon?: React.ReactNode
+  onTextareaFocus?: VoidFunction
 }
 
 export const MenuComponent = React.forwardRef<
@@ -377,6 +289,7 @@ export const MenuComponent = React.forwardRef<
       onClickContextMenu,
       onClickReferenceElement,
       menuWidth = 400,
+      onTextareaFocus,
       ...props
     },
     forwardedRef,
@@ -385,10 +298,8 @@ export const MenuComponent = React.forwardRef<
     const nodeId = useFloatingNodeId()
     const parentId = useFloatingParentNodeId()
     const isFirstDeep = !parentId && zIndex === 2147483601
-    const [
-      floatingDropdownMenuSelectedItem,
-      setFloatingDropdownMenuSelectedItem,
-    ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
+    const [dropdownMenuSelectedItem, setDropdownMenuSelectedItem] =
+      useRecoilState(DropdownMenuSelectedItemState)
     const isNested = parentId != null
     const [isOpen, setIsOpen] = React.useState(
       customOpen ? referenceElementOpen : false,
@@ -402,7 +313,6 @@ export const MenuComponent = React.forwardRef<
     const [activeIndex, setActiveIndex] = React.useState<number | null>(
       isFirstDeep ? 1 : null,
     )
-    const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
     const [allowHover, setAllowHover] = React.useState(false)
     const lastParentDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
     const lastHoverDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
@@ -432,10 +342,6 @@ export const MenuComponent = React.forwardRef<
       lastHoverDropdownMenuItemRef.current = null
       lastParentDropdownMenuItemRef.current = null
     }
-    const floatingDropdownMenuOpenRef = useRef(floatingDropdownMenu.open)
-    useEffect(() => {
-      floatingDropdownMenuOpenRef.current = floatingDropdownMenu.open
-    }, [floatingDropdownMenu.open])
     const { x, y, strategy, refs, context } = useFloating<any>({
       nodeId,
       open: isOpen,
@@ -482,19 +388,9 @@ export const MenuComponent = React.forwardRef<
       listRef: listItemsRef,
       activeIndex,
       nested: isNested,
-      onNavigate(index) {
-        const focusTextarea = () => {
-          if (!floatingDropdownMenuOpenRef.current) {
-            return
-          }
-          const textareaEl =
-            getMaxAIFloatingContextMenuRootElement()?.querySelector(
-              `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-            ) as HTMLTextAreaElement
-          if (textareaEl) {
-            textareaEl?.focus()
-          }
-        }
+      onNavigate() {
+        const focusTextarea = () => onTextareaFocus?.()
+
         const isRootText = !parentId ? '[根级]' : `[子级]`
         const keydownKey = lastKeydownEvent.current?.key
         if (keydownKey) {
@@ -507,9 +403,7 @@ export const MenuComponent = React.forwardRef<
               lastHoverDropdownMenuItemRef.current,
             )
           }
-          console.log(
-            `${isRootText}[${nodeId}]onNavigate---[keydownKey]: ${keydownKey}`,
-          )
+
           // 过滤不是contextMenu的选项
           const contextMenuIdList: Array<{
             floatingUIId?: string
@@ -527,7 +421,7 @@ export const MenuComponent = React.forwardRef<
               contextMenuIndex: index,
             })
           })
-          setFloatingDropdownMenuSelectedItem((prev) => {
+          setDropdownMenuSelectedItem((prev) => {
             let lastHoverContextMenuId =
               prev.hoverContextMenuIdMap[nodeId] ||
               prev.lastHoverContextMenuId ||
@@ -732,10 +626,7 @@ export const MenuComponent = React.forwardRef<
 
     useEffect(() => {
       let destroy = false
-      if (
-        isFirstDeep &&
-        floatingDropdownMenuSelectedItem.lastHoverContextMenuId
-      ) {
+      if (isFirstDeep && dropdownMenuSelectedItem.lastHoverContextMenuId) {
         if (children) {
           setTimeout(() => {
             if (destroy) {
@@ -745,7 +636,7 @@ export const MenuComponent = React.forwardRef<
               const lastHoverIndex = (children as any).findIndex(
                 (child: any) =>
                   child?.key ===
-                  floatingDropdownMenuSelectedItem.lastHoverContextMenuId,
+                  dropdownMenuSelectedItem.lastHoverContextMenuId,
               )
               if (lastHoverIndex !== -1 && prevState === null) {
                 console.log(
@@ -765,45 +656,32 @@ export const MenuComponent = React.forwardRef<
       return () => {
         destroy = true
       }
-    }, [floatingDropdownMenuSelectedItem.lastHoverContextMenuId, children])
+    }, [dropdownMenuSelectedItem.lastHoverContextMenuId, children])
     const referenceRef = useMergeRefs([
       refs.setReference,
       forwardedRef,
       referenceElementRef,
     ])
     const handleExecuteActions = useCallback(() => {
-      const lastHoverId =
-        floatingDropdownMenuSelectedItem.lastHoverContextMenuId
-      if (lastHoverId) {
-        const menuItem =
-          getMaxAIFloatingContextMenuRootElement()?.querySelector(
-            `[data-id="${lastHoverId}"]`,
-          ) as HTMLDivElement
-        if (menuItem) {
-          menuItem.dispatchEvent(
-            new KeyboardEvent('keydown', {
-              key: 'Enter',
-              bubbles: true,
-              cancelable: true,
-              code: 'Enter',
-              keyCode: 13,
-            }),
-          )
-        }
-      }
-    }, [floatingDropdownMenuSelectedItem])
-    useEffect(() => {
-      if (!floatingDropdownMenu.open) {
-        resetActiveIndex()
-        setFloatingDropdownMenuSelectedItem((prevState) => {
-          return {
-            ...prevState,
-            hoverContextMenuIdMap: {},
-            lastHoverContextMenuId: null,
-          }
-        })
-      }
-    }, [floatingDropdownMenu.open])
+      // const lastHoverId = dropdownMenuSelectedItem.lastHoverContextMenuId
+      // if (lastHoverId) {
+      //   const menuItem =
+      //     getMaxAIFloatingContextMenuRootElement()?.querySelector(
+      //       `[data-id="${lastHoverId}"]`,
+      //     ) as HTMLDivElement
+      //   if (menuItem) {
+      //     menuItem.dispatchEvent(
+      //       new KeyboardEvent('keydown', {
+      //         key: 'Enter',
+      //         bubbles: true,
+      //         cancelable: true,
+      //         code: 'Enter',
+      //         keyCode: 13,
+      //       }),
+      //     )
+      //   }
+      // }
+    }, [dropdownMenuSelectedItem])
 
     return (
       <FloatingNode id={nodeId}>
@@ -891,32 +769,33 @@ export const MenuComponent = React.forwardRef<
                     !parentId &&
                     activeIndex !== null
                   ) {
-                    let el = listItemsRef.current[activeIndex]
+                    const el = listItemsRef.current[activeIndex]
                     // 如果已经有lastDropdownMenuRef.current, 说明触发的第三级、第四级菜单等
                     if (lastParentDropdownMenuItemRef.current) {
+                      // TODO: fix here
                       // aria-controls=":r2m:" aria-activedescendant=":r2v:"
                       // 寻找二级菜单控制的第三集菜单的根节点
-                      const lastDropdownMenuId =
-                        lastParentDropdownMenuItemRef.current
-                          ?.getAttribute('aria-controls')
-                          ?.replace(/:/g, '\\:')
+                      // const lastDropdownMenuId =
+                      //   lastParentDropdownMenuItemRef.current
+                      //     ?.getAttribute('aria-controls')
+                      //     ?.replace(/:/g, '\\:')
                       // 第三级菜单的容器
-                      const lastDropdownMenu =
-                        getMaxAIFloatingContextMenuRootElement()?.querySelector(
-                          `#${lastDropdownMenuId}`,
-                        ) as HTMLDivElement
-                      if (lastDropdownMenu) {
-                        // 第三级菜单的选中项
-                        const itemId = lastDropdownMenu
-                          .getAttribute('aria-activedescendant')
-                          ?.replace(/:/g, '\\:')
-                        const item = lastDropdownMenu.querySelector(
-                          `#${itemId}`,
-                        ) as HTMLDivElement
-                        if (item.id && item.getAttribute('aria-haspopup')) {
-                          el = item
-                        }
-                      }
+                      // const lastDropdownMenu =
+                      //   getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                      //     `#${lastDropdownMenuId}`,
+                      //   ) as HTMLDivElement
+                      // if (lastDropdownMenu) {
+                      //   // 第三级菜单的选中项
+                      //   const itemId = lastDropdownMenu
+                      //     .getAttribute('aria-activedescendant')
+                      //     ?.replace(/:/g, '\\:')
+                      //   const item = lastDropdownMenu.querySelector(
+                      //     `#${itemId}`,
+                      //   ) as HTMLDivElement
+                      //   if (item.id && item.getAttribute('aria-haspopup')) {
+                      //     el = item
+                      //   }
+                      // }
                     }
                     if (el && el.getAttribute('aria-haspopup') === 'menu') {
                       // focus 自身
@@ -944,18 +823,7 @@ export const MenuComponent = React.forwardRef<
                     )
                     return
                   }
-                  const textareaEl =
-                    getMaxAIFloatingContextMenuRootElement()?.querySelector(
-                      `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-                    ) as HTMLTextAreaElement
-                  textareaEl?.focus()
-                  // console.log(
-                  //   `${
-                  //     !parentId ? `[根级]` : `[子级]`
-                  //   }[${nodeId}]onNavigate---[按键触发结束][${event.key}]\n`,
-                  //   lastParentDropdownMenuItemRef.current,
-                  //   activeIndex,
-                  // )
+                  onTextareaFocus?.()
                   lastKeydownEvent.current = event
                 }
               },
@@ -1056,7 +924,7 @@ export const MenuComponent = React.forwardRef<
                         ref(node: any) {
                           listItemsRef.current[index] = node
                         },
-                        onMouseDown(event) {
+                        onMouseDown() {
                           if (onClickContextMenu) {
                             tree?.events.emit('click')
                             if (
@@ -1242,61 +1110,63 @@ type FloatingUIDropdownItemDetail = {
   expandedSiblingMenuItem: HTMLDivElement | null
 }
 
+// TODO: fix here
 // 下面的方法都是为了找floating ui的层级关系
 const getFloatingUIDropdownItemDetail = (
   node: HTMLDivElement,
 ): FloatingUIDropdownItemDetail | null => {
-  const root = getMaxAIFloatingContextMenuRootElement() as HTMLDivElement
-  if (!node || !root) {
-    return null
-  }
-  const id = node.getAttribute('id')?.replace(/:/g, '\\:') || ''
-  const contextMenuId = node.getAttribute('data-id') || ''
-  const isMenu = node.getAttribute('aria-haspopup') === 'menu'
-  const parentDropdownSelectedItem = root.querySelector(
-    `div[aria-haspopup="menu"][aria-activedescendant="${id}"]`,
-  ) as HTMLDivElement
-  const parentDropdownId = parentDropdownSelectedItem
-    ?.getAttribute('aria-controls')
-    ?.replace(/:/g, '\\:')
-  const parentDropdown = parentDropdownId
-    ? (root.querySelector(`#${parentDropdownId}`) as HTMLDivElement)
-    : null
-  const dropdownId = node.getAttribute('aria-controls')?.replace(/:/g, '\\:')
-  const dropdownMenu = dropdownId
-    ? (root.querySelector(`#${dropdownId}`) as HTMLDivElement)
-    : null
-  // NOTE: 这里不是用户选择的，是因为menu无法触发关闭
-  // const dropdownSelectedId = node
-  //   .getAttribute('aria-activedescendant')
+  return null
+  // const root = getMaxAIFloatingContextMenuRootElement() as HTMLDivElement
+  // if (!node || !root) {
+  //   return null
+  // }
+  // const id = node.getAttribute('id')?.replace(/:/g, '\\:') || ''
+  // const contextMenuId = node.getAttribute('data-id') || ''
+  // const isMenu = node.getAttribute('aria-haspopup') === 'menu'
+  // const parentDropdownSelectedItem = root.querySelector(
+  //   `div[aria-haspopup="menu"][aria-activedescendant="${id}"]`,
+  // ) as HTMLDivElement
+  // const parentDropdownId = parentDropdownSelectedItem
+  //   ?.getAttribute('aria-controls')
   //   ?.replace(/:/g, '\\:')
-  let dropdownSelectedItem = null
-  if (dropdownMenu && !dropdownSelectedItem) {
-    // 说明子级选择的不是menu而是menuitem
-    dropdownSelectedItem = dropdownMenu.querySelector(
-      '.floating-context-menu-item--active:not([aria-haspopup="menu"])',
-    ) as HTMLDivElement
-    if (!dropdownSelectedItem) {
-      dropdownSelectedItem = dropdownMenu.querySelector(
-        '.floating-context-menu-item:not([aria-haspopup="menu"])',
-      ) as HTMLDivElement
-    }
-  }
-  const keydownEmitElement = node.parentElement?.querySelector(
-    `.floating-context-menu-item:not([aria-haspopup="menu"])`,
-  ) as HTMLDivElement
-  const expandedSiblingMenuItem = node.parentElement?.querySelector(
-    `.floating-context-menu-item[aria-expanded="true"]`,
-  ) as HTMLDivElement
-  return {
-    id,
-    contextMenuId,
-    isMenu,
-    parentDropdownSelectedItem,
-    parentDropdown,
-    dropdownMenu,
-    dropdownSelectedItem,
-    keydownEmitElement,
-    expandedSiblingMenuItem,
-  }
+  // const parentDropdown = parentDropdownId
+  //   ? (root.querySelector(`#${parentDropdownId}`) as HTMLDivElement)
+  //   : null
+  // const dropdownId = node.getAttribute('aria-controls')?.replace(/:/g, '\\:')
+  // const dropdownMenu = dropdownId
+  //   ? (root.querySelector(`#${dropdownId}`) as HTMLDivElement)
+  //   : null
+  // // NOTE: 这里不是用户选择的，是因为menu无法触发关闭
+  // // const dropdownSelectedId = node
+  // //   .getAttribute('aria-activedescendant')
+  // //   ?.replace(/:/g, '\\:')
+  // let dropdownSelectedItem = null
+  // if (dropdownMenu && !dropdownSelectedItem) {
+  //   // 说明子级选择的不是menu而是menuitem
+  //   dropdownSelectedItem = dropdownMenu.querySelector(
+  //     '.floating-context-menu-item--active:not([aria-haspopup="menu"])',
+  //   ) as HTMLDivElement
+  //   if (!dropdownSelectedItem) {
+  //     dropdownSelectedItem = dropdownMenu.querySelector(
+  //       '.floating-context-menu-item:not([aria-haspopup="menu"])',
+  //     ) as HTMLDivElement
+  //   }
+  // }
+  // const keydownEmitElement = node.parentElement?.querySelector(
+  //   `.floating-context-menu-item:not([aria-haspopup="menu"])`,
+  // ) as HTMLDivElement
+  // const expandedSiblingMenuItem = node.parentElement?.querySelector(
+  //   `.floating-context-menu-item[aria-expanded="true"]`,
+  // ) as HTMLDivElement
+  // return {
+  //   id,
+  //   contextMenuId,
+  //   isMenu,
+  //   parentDropdownSelectedItem,
+  //   parentDropdown,
+  //   dropdownMenu,
+  //   dropdownSelectedItem,
+  //   keydownEmitElement,
+  //   expandedSiblingMenuItem,
+  // }
 }

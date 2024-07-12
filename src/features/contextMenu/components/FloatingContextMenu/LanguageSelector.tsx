@@ -20,17 +20,21 @@ import React, {
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { LANGUAGES_OPTIONS } from '@/features/shortcuts/components/SystemVariableSelect/SystemVariableLanguageSelect'
-import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
-import { isMaxAISettingsPage } from '@/utils/dataHelper/websiteHelper'
+import {
+  getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
+} from '@/utils'
 
 const LanguageSelector: FC<{
   defaultValue?: string
   placement?: Placement
   onChangeLanguage?: (lang: string) => void
+  inSidebar?: boolean
 }> = ({
   defaultValue = 'English',
   placement = 'top-start',
   onChangeLanguage,
+  inSidebar,
 }) => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState(() => {
@@ -53,7 +57,13 @@ const LanguageSelector: FC<{
       LANGUAGES_OPTIONS[0].label,
     [value],
   )
-  const container = useMemo(() => getMaxAIFloatingContextMenuRootElement(), [])
+  const container = useMemo(
+    () =>
+      inSidebar
+        ? getMaxAISidebarRootElement()
+        : getMaxAIFloatingContextMenuRootElement(),
+    [inSidebar],
+  )
 
   const onSelect = (selectedValue: string) => {
     if (value === selectedValue) return
@@ -80,18 +90,14 @@ const LanguageSelector: FC<{
   }
 
   useEffect(() => {
+    if (!open) return
+
     const mouseEventHandler = (event: MouseEvent) => {
-      let aiProviderCard =
-        getMaxAIFloatingContextMenuRootElement()?.querySelector(
-          '#MaxLanguageProviderSelectorCard',
-        ) as HTMLElement
-      if (!aiProviderCard && isMaxAISettingsPage()) {
-        aiProviderCard = document.querySelector(
-          '#MaxLanguageProviderSelectorCard',
-        ) as HTMLElement
-      }
-      if (aiProviderCard) {
-        const rect = aiProviderCard.getBoundingClientRect()
+      const languagesCard = container?.querySelector(
+        '.MaxLanguageProviderSelectorCard',
+      ) as HTMLElement
+      if (languagesCard) {
+        const rect = languagesCard.getBoundingClientRect()
         const x = (event as MouseEvent).clientX
         const y = (event as MouseEvent).clientY
         if (
@@ -111,7 +117,7 @@ const LanguageSelector: FC<{
     return () => {
       document.removeEventListener('mousedown', mouseEventHandler)
     }
-  }, [open])
+  }, [open, container])
 
   return (
     <Box>
@@ -160,6 +166,9 @@ const LanguageSelector: FC<{
         anchorEl={anchorRef.current}
         placement={placement}
         transition
+        sx={{
+          zIndex: 10000,
+        }}
         modifiers={[
           {
             name: 'RTLSupport',
@@ -202,7 +211,7 @@ const LanguageSelector: FC<{
                   event.stopPropagation()
                   // onClose?.(event)
                 }}
-                id={'MaxLanguageProviderSelectorCard'}
+                className={'MaxLanguageProviderSelectorCard'}
                 component={'div'}
                 sx={{
                   borderRadius: '8px',
@@ -213,7 +222,6 @@ const LanguageSelector: FC<{
                   alignItems: 'stretch',
                   justifyContent: 'center',
                   flexDirection: 'row',
-                  // bgcolor: 'background.paper',
                   bgcolor: (t) =>
                     t.palette.mode === 'dark' ? 'rgba(61, 61, 61, 1)' : '#fff',
                   // ...sx,
@@ -237,6 +245,9 @@ const LanguageSelector: FC<{
                       key={op.language_code}
                       selected={value === op.value}
                       onClick={() => onSelect(op.value)}
+                      sx={{
+                        color: 'text.primary',
+                      }}
                     >
                       {op.label}
                     </MenuItem>

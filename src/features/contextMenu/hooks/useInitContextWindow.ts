@@ -426,15 +426,15 @@ const useInitContextWindow = () => {
     stopGenerateRef.current = stopGenerate
   }, [regenerate, stopGenerate])
 
+  /**
+   * DropdownMenu的快捷指令处理函数，相当于onClick
+   * @description - 运行快捷指令
+   * 1. 必须有选中的id
+   * 2. 必须有菜单列表
+   * 3. contextMenu必须是打开状态
+   * 4. 必须不是loading
+   */
   useEffect(() => {
-    /**
-     * DropdownMenu的快捷指令处理函数
-     * @description - 运行快捷指令
-     * 1. 必须有选中的id
-     * 2. 必须有菜单列表
-     * 3. contextMenu必须是打开状态
-     * 4. 必须不是loading
-     */
     if (
       floatingDropdownMenuSelectedItem.selectedContextMenuId &&
       contextWindowList.length > 0 &&
@@ -566,6 +566,10 @@ const useInitContextWindow = () => {
     alwaysContinueInSidebar,
   ])
   const isRunningActionsRef = useRef(false)
+
+  /**
+   * 监听actions变化执行
+   */
   useEffect(() => {
     if (
       isRunningActionsRef.current ||

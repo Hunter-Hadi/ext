@@ -47,12 +47,7 @@ const BaseSidebarUserMessage: FC<{
     <Box component={'div'} className={'chat-message--user'}>
       {showDivider && <SidebarContextCleared message={message} />}
       <SidebarUserMessageContexts message={message} container={container} />
-      <Stack
-        className={'chat-message--text'}
-        sx={{
-          ...memoSx,
-        }}
-      >
+      <Stack className={'chat-message--text'} sx={memoSx}>
         {formatChatMessageContent(message, false)}
         <SidebarChatBoxUserTools message={message} />
       </Stack>

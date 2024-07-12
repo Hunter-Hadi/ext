@@ -1,11 +1,11 @@
 import { Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import React, { FC, useEffect, useMemo, useRef } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import usePaginationConversationMessages from '@/features/chatgpt/hooks/usePaginationConversationMessages'
 import {
   isSystemMessage,
   isUserMessage,
@@ -18,20 +18,30 @@ import {
 import { SidebarSystemMessage } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages'
 import { formatUserMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
+
+import MessageContexts from './MessageContext'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
 }> = ({ onChange }) => {
   const theme = useCustomTheme()
+  const { t } = useTranslation(['client'])
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     ContextWindowDraftContextMenuState,
   )
 
-  const { clientConversation } = useClientConversation()
+  const { clientConversation, clientConversationMessages } =
+    useClientConversation()
 
-  const { currentFloatingContextMenuDraft, activeAIResponseMessage } =
-    useFloatingContextMenuDraft()
+  const { clientWritingMessage } = useClientConversation()
+  const {
+    currentFloatingContextMenuDraft,
+    activeAIResponseMessage,
+    historyMessages,
+    activeMessageIndex,
+  } = useFloatingContextMenuDraft()
 
   const message = useMemo(
     () => currentFloatingContextMenuDraft.replace(/^\s+/, ''),
@@ -79,13 +89,39 @@ const WritingMessageBox: FC<{
     boxRef.current?.addEventListener('keydown', keydownHandler, true)
   }, [])
 
-  const { paginationMessages } = usePaginationConversationMessages(
-    clientConversation?.id || '',
+  // const { paginationMessages } = usePaginationConversationMessages(
+  //   clientConversation?.id || '',
+  // )
+
+  const lastUserMessage = useMemo(() => {
+    return clientWritingMessage.loading
+      ? clientConversationMessages.findLast((msg) => isUserMessage(msg))
+      : historyMessages[activeMessageIndex]?.selectedDraftMessage
+  }, [
+    clientWritingMessage,
+    historyMessages,
+    activeMessageIndex,
+    clientConversationMessages,
+  ])
+
+  const lastContent = useMemo(
+    () => lastUserMessage?.meta?.contexts?.[0]?.value?.trim() || '',
+    [lastUserMessage],
   )
 
-  const lastUserMessage = useMemo(
-    () => paginationMessages.findLast((message) => isUserMessage(message)),
-    [paginationMessages],
+  const title = useMemo(() => {
+    if (!lastUserMessage) return ''
+
+    const text = formatUserMessageContent(lastUserMessage)
+    // 去除草稿部分
+    const draftIndex = text.indexOf(':\n"""\n')
+    return draftIndex === -1 ? text : text.slice(0, draftIndex)
+  }, [lastUserMessage])
+
+  const [open, setOpen] = useState(false)
+  const tooltipContainer = useMemo(
+    () => getMaxAIFloatingContextMenuRootElement() || document.body,
+    [],
   )
 
   return (
@@ -114,21 +150,111 @@ const WritingMessageBox: FC<{
       }}
       component={'div'}
     >
-      <Stack>
-        {!!lastUserMessage && (
+      {!!lastUserMessage && (
+        <Stack
+          direction={'row'}
+          gap={'8px'}
+          alignItems={'center'}
+          height={'auto'}
+        >
           <Typography
-            color={(t) =>
-              t.palette.mode === 'dark' ? 'white' : 'rgba(0, 0, 0, 0.87)'
-            }
+            color={'text.primary'}
             padding={'10px 0'}
             fontSize={'18px'}
             fontWeight={600}
             lineHeight={'150%'}
           >
-            {formatUserMessageContent(lastUserMessage)}
+            {title}
           </Typography>
-        )}
-      </Stack>
+
+          <Typography
+            overflow={'hidden'}
+            textOverflow={'ellipsis'}
+            color={'text.secondary'}
+            flex={1}
+            fontSize={'14px'}
+            sx={{
+              whiteSpace: 'nowrap',
+              userSelect: 'none',
+              cursor: 'default',
+            }}
+          >
+            {lastContent}
+          </Typography>
+
+          <MessageContexts
+            message={lastUserMessage}
+            container={tooltipContainer}
+            sx={{
+              mt: 1,
+              mb: 2,
+              '& > div': {
+                maxWidth: '100%',
+                width: '100%',
+                '& > div': {
+                  width: '100%',
+                },
+                '& p[data-testid="user-message-short-contexts"]': {
+                  width: '100%',
+                },
+              },
+            }}
+          />
+
+          {/* <Tooltip */}
+          {/*   title={lastContent} */}
+          {/*   open={open} */}
+          {/*   placement='top' */}
+          {/*   PopperProps={{ */}
+          {/*     container: getMaxAIFloatingContextMenuRootElement(), */}
+          {/*     style: { */}
+          {/*       zIndex: 2147483647, */}
+          {/*     }, */}
+          {/*   }} */}
+          {/*   sx={{ */}
+          {/*     bgcolor: (t) => */}
+          {/*       t.palette.mode === 'dark' ? '#393743' : '#ffffff', */}
+          {/*     // borderLeft: '4px solid #9065B0', */}
+          {/*     color: 'rgba(0, 0, 0, 0.87)', */}
+          {/*     fontSize: 12, */}
+          {/*     boxShadow: `0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);`, */}
+          {/*     maxWidth: 'none', */}
+          {/*     mt: 1, */}
+          {/*     mb: 2, */}
+          {/*   }} */}
+          {/* > */}
+          {/*   <Box */}
+          {/*     sx={{ */}
+          {/*       display: 'flex', */}
+          {/*       gap: '4px', */}
+          {/*       borderRadius: '8px', */}
+          {/*       border: '1px solid rgba(0, 0, 0, 0.12)', */}
+          {/*       padding: '2px 6px', */}
+          {/*       alignItems: 'center', */}
+          {/*       userSelect: 'none', */}
+          {/*       cursor: 'pointer', */}
+          {/*     }} */}
+          {/*     onClick={() => { */}
+          {/*       setOpen(!open) */}
+          {/*     }} */}
+          {/*   > */}
+          {/*     <Box color='text.primary' fontSize={'14px'}> */}
+          {/*       {t('floating_menu__button__show_detail')} */}
+          {/*     </Box> */}
+          {/**/}
+          {/*     <KeyboardArrowDown */}
+          {/*       sx={{ */}
+          {/*         color: '#D9D9D9', */}
+          {/*         height: '16px', */}
+          {/*         width: '16px', */}
+          {/*         transition: 'all 0.2s', */}
+          {/*         transform: `rotate(${open ? 0.5 : 0}turn)`, */}
+          {/*       }} */}
+          {/*     /> */}
+          {/*   </Box> */}
+          {/* </Tooltip> */}
+        </Stack>
+      )}
 
       {activeAIResponseMessage && isSystemMessage(activeAIResponseMessage) && (
         <SidebarSystemMessage

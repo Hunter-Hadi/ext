@@ -46,7 +46,6 @@ import {
 } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-
 interface IGmailChatBoxProps {
   sx?: SxProps
   onReGenerate?: () => void
@@ -152,9 +151,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
-    if (conversationType === 'ContextMenu') {
-      return !conversationId
-    }
     // console.log('isShowChatBoxHomeView', messagesLoadingStep)
     // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
     // 具体问题是因为，在第一次切换 conversationId 时，会有一个瞬间
@@ -232,6 +228,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
       <SidebarHomeView
         isSettingVariables={isSettingVariables}
+        isShowChatBoxHomeView={isShowChatBoxHomeView}
         sx={
           // 这么做条件渲染是为了，让 内部组件的 useEffect 可以完整的执行，不会被卸载
           !isShowChatBoxHomeView
@@ -255,7 +252,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         />
       ) : null}
 
-      {!(conversationType === 'ContextMenu' && !conversationId) && (
+      {!(conversationType === 'ContextMenu' && isShowChatBoxHomeView) && (
         <>
           <SidebarSummarySuggestion onClick={handleSwitchToSummary} />
 

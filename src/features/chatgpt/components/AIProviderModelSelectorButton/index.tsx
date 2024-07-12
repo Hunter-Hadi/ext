@@ -285,15 +285,17 @@ const AIProviderModelSelectorButton: FC<{
       <Popper
         open={open}
         anchorEl={anchorRef.current}
-        role={undefined}
         placement={placement || 'top-start'}
         transition
-        modifiers={AIModelPopperModifiers}
+        // modifiers={AIModelPopperModifiers}
         container={
           size === 'small'
             ? getMaxAIFloatingContextMenuRootElement()
             : getMaxAISidebarRootElement()
         }
+        sx={{
+          zIndex: 10000,
+        }}
       >
         {({ TransitionProps, placement }) => (
           <Grow

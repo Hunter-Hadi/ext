@@ -3,11 +3,9 @@ import { Box } from '@mui/material'
 import React from 'react'
 import { FC, useMemo } from 'react'
 
-// import { useTranslation } from 'react-i18next'
 import { useRangy } from '../../hooks'
 
 const ContextText: FC = () => {
-  // const { t } = useTranslation(['client'])
   const { currentSelection } = useRangy()
 
   const text = useMemo(

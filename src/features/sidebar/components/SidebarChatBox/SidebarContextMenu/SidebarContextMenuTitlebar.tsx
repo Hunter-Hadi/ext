@@ -1,6 +1,5 @@
 import { Stack } from '@mui/material'
 import React, { FC } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
@@ -10,7 +9,6 @@ import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 import SidebarContextMenuHistoryButton from './SidebarContextMenuHistoryButton'
 
 const SidebarContextMenuTitlebar: FC = () => {
-  const { t } = useTranslation(['common', 'client'])
   const { userSettings, setUserSettings } = useUserSettings()
 
   const showModelSelector = true
@@ -32,7 +30,7 @@ const SidebarContextMenuTitlebar: FC = () => {
           <AIProviderModelSelectorButton
             disabled={!showModelSelector}
             sidebarConversationType={'ContextMenu'}
-            size={'small'}
+            placement='bottom-start'
           />
         )}
 
@@ -47,6 +45,8 @@ const SidebarContextMenuTitlebar: FC = () => {
               language: lang,
             })
           }}
+          placement='bottom-start'
+          inSidebar
         />
       </Stack>
 

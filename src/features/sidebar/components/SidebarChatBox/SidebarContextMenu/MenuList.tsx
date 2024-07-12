@@ -1,18 +1,34 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import React, { FC, forwardRef, useCallback, useMemo } from 'react'
+import { cloneDeep } from 'lodash-es'
+import React, { FC, forwardRef, useCallback, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState, useResetRecoilState } from 'recoil'
+
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { SPECIAL_NEED_DIVIDER_KEYS } from '@/features/contextMenu/constants'
+import {
+  contextMenuIsFavoriteContextMenu,
+  FAVORITE_CONTEXT_MENU_GROUP_ID,
+} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+} from '@/features/contextMenu/types'
+import {
+  checkIsDraftContextMenuId,
+  findDraftContextMenuById,
+} from '@/features/contextMenu/utils'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 import {
   DropdownMenu,
   DropdownMenuItem,
+  DropdownMenuSelectedItemState,
   MenuProps,
-} from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
-import { SPECIAL_NEED_DIVIDER_KEYS } from '@/features/contextMenu/constants'
-import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+} from './DropdownMenu'
 
-const RenderDropdownItem = forwardRef<
+const DropdownItemWrapper = forwardRef<
   any,
   { menuItem: IContextMenuItemWithChildren; rootMenu?: boolean } & Omit<
     MenuProps,
@@ -59,7 +75,7 @@ const RenderDropdownItem = forwardRef<
       >
         {menuItem.children.map((childMenuItem) => {
           return (
-            <RenderDropdownItem
+            <DropdownItemWrapper
               {...rest}
               root={root}
               key={childMenuItem.id}
@@ -80,9 +96,9 @@ const RenderDropdownItem = forwardRef<
   )
 })
 
-RenderDropdownItem.displayName = 'RenderDropdownItem'
+DropdownItemWrapper.displayName = 'DropdownItemWrapper'
 
-const createDivider = (id: string) => {
+const divider = (id: string) => {
   return (
     <Box
       data-testid={`max-ai-context-menu-divider`}
@@ -103,29 +119,10 @@ const createDivider = (id: string) => {
   )
 }
 
-const ContextMenuDivider: FC = () => {
-  return (
-    <Box
-      data-testid={`max-ai-context-menu-divider`}
-      aria-disabled={true}
-      onClick={(event: any) => {
-        event.stopPropagation()
-        event.preventDefault()
-      }}
-      component={'div'}
-      sx={{
-        pointerEvents: 'none',
-        borderTop: '1px solid',
-        borderColor: 'customColor.borderColor',
-        my: 1,
-      }}
-    />
-  )
-}
-
-const FloatingContextMenuList: FC<
+const ContextMenuList: FC<
   Omit<MenuProps, 'label'> & {
     menuList: IContextMenuItemWithChildren[]
+    onRunActions: (actions: ISetActionsType) => Promise<void>
   }
 > = (props) => {
   const {
@@ -143,9 +140,126 @@ const FloatingContextMenuList: FC<
     onClickReferenceElement,
     hoverOpen,
     hoverIcon,
+    onRunActions,
     ...rest
   } = props
   const { t } = useTranslation(['prompt'])
+  const [menuSelectedItemState, setMenuSelectedItemState] = useRecoilState(
+    DropdownMenuSelectedItemState,
+  )
+  const resetDropdownState = useResetRecoilState(DropdownMenuSelectedItemState)
+  const { checkAttachments, shortCutsEngine } = useClientChat()
+
+  useEffect(() => {
+    if (menuSelectedItemState.selectedContextMenuId && menuList.length > 0) {
+      let currentSelectedId = menuSelectedItemState.selectedContextMenuId
+      // 是否为[推荐]菜单的动作
+      let isSuggestedContextMenu = false
+      // 当前选中的contextMenu
+      let currentContextMenu: IContextMenuItem | null = null
+      // 如果是[推荐]菜单的动作，则需要去掉前缀
+      if (contextMenuIsFavoriteContextMenu(currentSelectedId)) {
+        currentSelectedId = currentSelectedId.replace(
+          FAVORITE_CONTEXT_MENU_GROUP_ID,
+          '',
+        )
+        isSuggestedContextMenu = true
+      }
+
+      // 是否为[草稿]菜单的动作
+      const isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
+      // 先从[草稿]菜单中查找
+      if (isDraftContextMenu) {
+        const draftContextMenu = findDraftContextMenuById(currentSelectedId)
+        if (draftContextMenu) {
+          currentContextMenu = draftContextMenu
+        }
+      } else {
+        // 如果不是[草稿]菜单的动作，则从原始菜单中查找
+        // currentContextMenu =
+        //   originContextMenuList.find(
+        //     (contextMenu) => contextMenu.id === currentSelectedId,
+        //   ) || null
+        currentContextMenu =
+          menuList.find((item) => item.id === currentSelectedId) || null
+      }
+
+      if (!currentContextMenu || !currentContextMenu.id) return
+
+      const runActions: ISetActionsType = cloneDeep(
+        currentContextMenu.data.actions || [],
+      )
+      // 如果是[草稿-续写]菜单的动作, 需要加上当前focus的messageId, 配合CONTINUE_WRITING的Actions
+      // if (currentContextMenu.id === CONTEXT_MENU_DRAFT_TYPES.CONTINUE_WRITING) {
+      // runActions.unshift({
+      //   type: 'RENDER_TEMPLATE',
+      //   parameters: {
+      //     template: floatingContextMenuDraftMessageIdRef.current || '',
+      //   },
+      // })
+      // }
+      resetDropdownState()
+
+      if (runActions.length > 0) {
+        checkAttachments().then((status) => {
+          if (!status) return
+
+          onRunActions(runActions)
+            .then(() => {
+              const error = shortCutsEngine?.getNextAction()?.error || ''
+              if (error) {
+                console.log('[ContextMenu Module] error', error)
+              }
+            })
+            .catch(() => {
+              // TODO: 错误处理
+            })
+
+          // return askAIWIthShortcuts(
+          //   // getDetectHasContextWindowDraftActions().concat(runActions),
+          //   {
+          //     overwriteParameters: selectionElement?.selectionText
+          //       ? [
+          //           {
+          //             key: 'SELECTED_TEXT',
+          //             value: selectionElement.selectionText,
+          //             label: 'Selected text',
+          //             isBuiltIn: true,
+          //             overwrite: true,
+          //           },
+          //         ]
+          //       : [],
+          //   },
+          // )
+        })
+
+        // setActions(runActions)
+      } else {
+        // if (isDraftContextMenu) {
+        //   if (
+        //     getDraftContextMenuTypeById(currentContextMenuId) === 'TRY_AGAIN'
+        //   ) {
+        //     setContextWindowDraftContextMenu((prev) => {
+        //       return {
+        //         ...prev,
+        //         selectedDraftContextMenuId: null,
+        //       }
+        //     })
+        //     stopGenerateRef.current().then(() => {
+        //       regenerateRef.current()
+        //     })
+        //   } else {
+        //     setContextWindowDraftContextMenu((prev) => {
+        //       return {
+        //         ...prev,
+        //         selectedDraftContextMenuId: currentContextMenu?.id || null,
+        //       }
+        //     })
+        //   }
+        // }
+      }
+    }
+  }, [menuSelectedItemState])
   const RenderMenuList = useMemo(() => {
     const nodeList: React.ReactNode[] = []
     // console.log('Context Menu List Render', menuList)
@@ -156,7 +270,7 @@ const FloatingContextMenuList: FC<
           : menuItem.text
       if (menuItem.data.type === 'group') {
         if (index > 0) {
-          nodeList.push(createDivider(menuItem.id))
+          nodeList.push(divider(menuItem.id))
         }
         // 组按钮的标签
         nodeList.push(
@@ -197,10 +311,10 @@ const FloatingContextMenuList: FC<
         )
         menuItem.children.forEach((childMenuItem, _) => {
           if (SPECIAL_NEED_DIVIDER_KEYS.includes(childMenuItem.id)) {
-            nodeList.push(createDivider(menuItem.id))
+            nodeList.push(divider(menuItem.id))
           }
           nodeList.push(
-            <RenderDropdownItem
+            <DropdownItemWrapper
               menuWidth={menuWidth}
               hoverIcon={hoverIcon}
               onClickContextMenu={onClickContextMenu}
@@ -217,14 +331,14 @@ const FloatingContextMenuList: FC<
           menuItem.id === FAVORITE_CONTEXT_MENU_GROUP_ID &&
           menuList[index + 1].data.type === 'shortcuts'
         ) {
-          nodeList.push(createDivider(menuItem.id))
+          nodeList.push(divider(menuItem.id))
         }
       } else {
         if (SPECIAL_NEED_DIVIDER_KEYS.includes(menuItem.id)) {
-          nodeList.push(createDivider(menuItem.id))
+          nodeList.push(divider(menuItem.id))
         }
         nodeList.push(
-          <RenderDropdownItem
+          <DropdownItemWrapper
             menuWidth={menuWidth}
             hoverIcon={hoverIcon}
             onClickContextMenu={onClickContextMenu}
@@ -238,6 +352,13 @@ const FloatingContextMenuList: FC<
     return nodeList
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuList, t])
+
+  useEffect(
+    () => () => {
+      resetDropdownState()
+    },
+    [],
+  )
 
   return (
     <DropdownMenu
@@ -262,4 +383,4 @@ const FloatingContextMenuList: FC<
   )
 }
 
-export default FloatingContextMenuList
+export default ContextMenuList

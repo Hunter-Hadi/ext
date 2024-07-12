@@ -12,7 +12,7 @@ import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
-import { useTheme } from '@mui/material/styles'
+import { SxProps, Theme, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { CSSProperties, FC, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -20,6 +20,7 @@ import { useRecoilState } from 'recoil'
 
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import DevContent from '@/components/DevContent'
+import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { CHROME_EXTENSION_FLOATING_CONTEXT_MENU_MIN_WIDTH } from '@/constants'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
@@ -52,7 +53,7 @@ import {
 import useButtonClickedTracker from '@/features/mixpanel/hooks/useButtonClickedTracker'
 import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
-import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
+import SidebarChatVoiceInputButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatVoiceInputButton'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import {
   closeGlobalVideoPopup,
@@ -89,8 +90,8 @@ const FloatingContextMenu: FC<{
     activeMessageIndex,
     historyMessages,
   } = useFloatingContextMenuDraft()
-  const { shortCutsEngine } = useShortCutsEngine()
-  console.log('historyMessages', historyMessages, shortCutsEngine?.actions)
+  // const { shortCutsEngine } = useShortCutsEngine()
+  // console.log('historyMessages', historyMessages, shortCutsEngine?.actions)
 
   const {
     hideFloatingContextMenu,
@@ -414,6 +415,21 @@ const FloatingContextMenu: FC<{
     update()
   }
 
+  const actionsBtnColorSxMemo = useMemo<SxProps<Theme>>(() => {
+    return {
+      color: 'text.secondary',
+      borderColor: (t) => {
+        return t.palette.mode === 'dark'
+          ? 'rgba(255, 255, 255, 0.08)'
+          : 'rgba(0, 0, 0, 0.16)'
+      },
+      '&:hover': {
+        color: 'primary.main',
+        borderColor: 'primary.main',
+      },
+    }
+  }, [])
+
   return (
     <FloatingPortal root={root}>
       <div
@@ -659,6 +675,17 @@ const FloatingContextMenu: FC<{
 
                     {!loading && (
                       <>
+                        <MaxAIBetaFeatureWrapper
+                          betaFeatureName={'voice_input'}
+                        >
+                          <Box>
+                            <SidebarChatVoiceInputButton
+                              sx={actionsBtnColorSxMemo}
+                              inputMediator='floatingMenuInputMediator'
+                            />
+                          </Box>
+                        </MaxAIBetaFeatureWrapper>
+
                         <TextOnlyTooltip
                           floatingMenuTooltip
                           title={t('client:floating_menu__button__send_to_ai')}

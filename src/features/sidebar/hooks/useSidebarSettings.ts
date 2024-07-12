@@ -153,15 +153,7 @@ const useSidebarSettings = () => {
             )
           : null
 
-        if (currentSidebarConversationType === 'ContextMenu') {
-          updateSidebarSettings({
-            contextMenu: {
-              conversationId: '',
-            },
-          })
-          return
-        }
-
+        let newConversationId: string
         if (currentConversation) {
           if (currentConversation.type === 'Summary') {
             // Summary有点不一样，需要清除所有的message
@@ -193,13 +185,27 @@ const useSidebarSettings = () => {
             )
             setSidebarSummaryConversationId('')
           }
-          await createSidebarConversation(
+          newConversationId = await createSidebarConversation(
             currentConversation.type,
             currentConversation.meta.AIProvider!,
             currentConversation.meta.AIModel!,
           )
         } else {
-          await createSidebarConversation(currentSidebarConversationType)
+          newConversationId = await createSidebarConversation(
+            currentSidebarConversationType,
+          )
+        }
+
+        if (
+          (!currentConversation &&
+            currentSidebarConversationType === 'ContextMenu') ||
+          currentConversation?.type === 'ContextMenu'
+        ) {
+          updateSidebarSettings({
+            contextMenu: {
+              conversationId: newConversationId,
+            },
+          })
         }
       },
     [currentSidebarConversationId, currentSidebarConversationType],
@@ -397,6 +403,15 @@ const useSidebarSettings = () => {
       })
       if (result.success) {
         conversationId = result.data.conversationId
+        // NOTE: contextmenu feature中创建conversationId的逻辑也是从这里来的，使用了createSidebarConversation创建id，
+        // 所以这里可能需要隔离开conversationId的保存逻辑
+        // if (updateSetting) {
+        //   await updateSidebarSettings({
+        //     contextMenu: {
+        //       conversationId,
+        //     },
+        //   })
+        // }
       }
     }
     return conversationId

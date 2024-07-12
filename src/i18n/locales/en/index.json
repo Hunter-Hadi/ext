@@ -329,6 +329,7 @@
     "floating_menu__button__hide_menu__all_sites__tooltip__confirm": "Hide menu always",
     "floating_menu__button__menu_settings": "Menu settings",
     "floating_menu__button__manage_my_own_prompt": "Manage my own prompts",
+    "floating_menu__button__show_detail": "Show details",
     "floating_menu__button__send_to_ai": "Send to AI",
     "floating_menu__button__clear_suggested": "Clear suggested",
     "floating_menu__button__clear_suggested__this_site": "Clear suggested prompts for this site",

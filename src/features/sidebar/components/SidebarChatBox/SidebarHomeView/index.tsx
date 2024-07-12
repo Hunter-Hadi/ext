@@ -17,11 +17,13 @@ import SidebarContextMenu from '../SidebarContextMenu'
 interface ISidebarHomeViewProps {
   isSettingVariables?: boolean
   sx?: SxProps
+  isShowChatBoxHomeView: boolean
 }
 
 const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
   sx,
   isSettingVariables,
+  isShowChatBoxHomeView,
 }) => {
   const { t } = useTranslation(['client'])
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -105,7 +107,7 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
               {t('client:home_view__rewrite__description')}
             </Typography>
           </Stack>
-          <SidebarContextMenu />
+          {isShowChatBoxHomeView && <SidebarContextMenu />}
         </Stack>
       )}
 

@@ -301,6 +301,7 @@ const SidebarAppProvider: FC<{ children: React.ReactNode }> = (props) => {
           Summary: 'summary',
           Search: 'search',
           Art: 'art',
+          ContextMenu: 'contextMenu',
         }
         if (map[sidebarConversationTypeRef.current]) {
           return updateSidebarSettings({

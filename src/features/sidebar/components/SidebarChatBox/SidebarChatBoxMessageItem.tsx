@@ -10,9 +10,7 @@ import {
   isSystemMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
-import {
-  IChatMessage,
-} from '@/features/indexed_db/conversations/models/Message'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/DevMessageSourceData'
 import {
   SidebarAIMessage,
@@ -85,6 +83,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
       }
     }
   }, [onChangeHeight])
+  console.log('SidebarChatBoxMessageItem message', message)
   return (
     <Stack
       data-message-id={message.messageId}

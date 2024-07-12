@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -38,6 +39,9 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
   const { t } = useTranslation()
 
   // const navigate = useNavigate();
+
+  const { planPricingInfo } = usePlanPricingInfo()
+  const planPricing = planPricingInfo[renderPlan]
 
   const anchorElRef = React.useRef<HTMLButtonElement>(null)
 
@@ -109,7 +113,7 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
                 borderRadius: 2,
                 border: '1px solid #EBEBEB',
                 boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-                width: 300,
+                width: 360,
                 p: 2,
 
                 boxSizing: 'border-box',
@@ -120,12 +124,50 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
                 <Typography variant='custom' fontSize={18} fontWeight={600}>
                   {t('client:pricing__upgrade__popper_card__title')}
                 </Typography>
+                <Stack
+                  direction={'row'}
+                  alignItems='center'
+                  justifyContent='space-between'
+                  spacing={0.5}
+                  sx={{
+                    width: 'max-content',
+                    borderRadius: 2,
+                    px: 1,
+                    py: 0.4,
+                    bgcolor: (t) =>
+                      t.palette.mode === 'dark' ? '#021108' : '#E7FDF1',
+                    color: `#007852`,
+                    boxSizing: 'border-box',
+                    mt: '8px !important',
+                  }}
+                >
+                  <ElectricBoltIcon
+                    sx={{
+                      fontSize: 24,
+                      color: '#FFCB45',
+                    }}
+                  />
+                  <Typography
+                    variant='custom'
+                    fontSize={16}
+                    lineHeight={1.5}
+                    fontWeight={600}
+                    color={'#007852'}
+                  >
+                    {t(
+                      'client:pricing__plan_features__popular_discount__title',
+                      {
+                        RATIO: planPricing.discount_title,
+                      },
+                    )}
+                  </Typography>
+                </Stack>
 
                 <Divider />
 
                 <Stack direction='row' spacing={1} alignItems='center'>
                   <CheckCircleOutlineIcon
-                    sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
+                    sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 24 }}
                   />
                   <Typography fontSize={16} variant='custom'>
                     {t('client:pricing__upgrade__popper_card__item1__title')}
@@ -133,7 +175,7 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
                 </Stack>
                 <Stack direction='row' spacing={1} alignItems='center'>
                   <CheckCircleOutlineIcon
-                    sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
+                    sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 24 }}
                   />
                   <Typography fontSize={16} variant='custom'>
                     {t('client:pricing__upgrade__popper_card__item2__title')}
@@ -141,10 +183,18 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
                 </Stack>
                 <Stack direction='row' spacing={1} alignItems='center'>
                   <CheckCircleOutlineIcon
-                    sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 20 }}
+                    sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 24 }}
                   />
                   <Typography fontSize={16} variant='custom'>
                     {t('client:pricing__upgrade__popper_card__item3__title')}
+                  </Typography>
+                </Stack>
+                <Stack direction='row' spacing={1} alignItems='center'>
+                  <CheckCircleOutlineIcon
+                    sx={{ color: 'rgba(0, 170, 61, 1)', fontSize: 24 }}
+                  />
+                  <Typography fontSize={16} variant='custom'>
+                    {t('client:pricing__upgrade__popper_card__item4__title')}
                   </Typography>
                 </Stack>
 
@@ -161,7 +211,7 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
                     }}
                     onClick={handleClickUpgrade}
                   >
-                    {t('common:upgrade')}
+                    {t('client:permission__pricing_hook__button__upgrade_now')}
                   </Button>
 
                   <Box textAlign='center' mt={0.5}>
@@ -178,30 +228,6 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
                         {t('client:permission__pricing_modal__footer__title')}
                       </Typography>
                     </Link>
-                  </Box>
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      right: 10,
-                      top: 0,
-                      transform: 'translateY(-50%)',
-                      bgcolor: 'rgba(255, 126, 53, 1)',
-                      color: '#fff',
-                      borderRadius: 2,
-                      px: 1,
-                      py: 0.5,
-                      cursor: 'pointer',
-                    }}
-                    onClick={handleClickUpgrade}
-                  >
-                    <Typography
-                      variant='custom'
-                      fontSize={16}
-                      fontWeight={500}
-                      lineHeight={1}
-                    >
-                      {t('client:sidebar__user_upgrade_card__discount__title')}
-                    </Typography>
                   </Box>
                 </Box>
               </Stack>

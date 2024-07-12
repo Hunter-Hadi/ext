@@ -43,13 +43,13 @@ const UnableAutoSubscriptionBar = () => {
     if (show) {
       trackSubscriptionFailedReminderRef.current('showed')
     }
-  }, [show]);
+  }, [show])
 
   if (!show) return null
 
   return (
     <Box
-      id="maxai-unable-subscription-bar"
+      id='maxai-unable-subscription-bar'
       ref={(ref: any) => {
         if (ref && barHeight !== ref.offsetHeight) {
           setUnableSubscriptionState((prev) => ({
@@ -62,7 +62,7 @@ const UnableAutoSubscriptionBar = () => {
       <WarningBar
         title={t('client:sidebar__unable_subscription__title')}
         content={t('client:sidebar__unable_subscription__link__title')}
-        href={`${APP_USE_CHAT_GPT_HOST}/subscription/failed`}
+        href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
         onClick={() => trackSubscriptionFailedReminder('clicked')}
         onClose={() =>
           setUnableSubscriptionState((prev) => ({

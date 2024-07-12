@@ -552,6 +552,11 @@ export class ActionAskChatGPT extends Action {
                 text: '',
                 type: 'ai' as const,
                 originalMessage: mergeWithObject([
+                  {
+                    metadata: {
+                      isComplete: false,
+                    },
+                  },
                   // 大部分情况下没有，只有指定了outputMessageId并且outputMessage是type: ai才有
                   outputMessage?.originalMessage || {},
                   // 大部分情况下也没有，只有返回了sources citation/related questions等额外需要展示的信息才有

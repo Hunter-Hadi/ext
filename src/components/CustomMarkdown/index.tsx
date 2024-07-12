@@ -18,10 +18,11 @@ import Browser from 'webextension-polyfill'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CitationTooltipContent from '@/components/CitationTooltipContent'
+import MaxAICustomMarkdownComponent from '@/components/CustomMarkdown/MaxAICustomMarkdownComponent'
+import rehypeMaxAICustomMarkdownComponentPlugin from '@/components/CustomMarkdown/MaxAICustomMarkdownComponent/rehypeMaxAICustomMarkdownComponentPlugin'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
-import CitationTag from '@/features/citation/components/CitationTag'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessage,
@@ -314,6 +315,161 @@ export const preprocessCitation = (content: string) => {
 //   return content
 // }
 
+const components = {
+  // eslint-disable-next-line react/display-name
+  h1: (props: any) => {
+    return <OverrideHeading {...props} heading={'h1'} />
+  },
+  // eslint-disable-next-line react/display-name
+  h2: (props: any) => {
+    return <OverrideHeading {...props} heading={'h2'} />
+  },
+  // eslint-disable-next-line react/display-name
+  h3: (props: any) => {
+    return <OverrideHeading {...props} heading={'h3'} />
+  },
+  // eslint-disable-next-line react/display-name
+  h4: (props: any) => {
+    return <OverrideHeading {...props} heading={'h4'} />
+  },
+  // eslint-disable-next-line react/display-name
+  h5: (props: any) => {
+    return <OverrideHeading {...props} heading={'h5'} />
+  },
+  // eslint-disable-next-line react/display-name
+  h6: (props: any) => {
+    return <OverrideHeading {...props} heading={'h6'} />
+  },
+  // eslint-disable-next-line react/display-name
+  // a: ({ node, ...props }) => {
+  //   if (citations && typeof props.children?.[0] === 'string') {
+  //     const match = props.children[0].match(/T(\d+)/)
+  //     const index = match ? Number(match[1]) : -1
+  //     if (!citations[index]) {
+  //       // 查不到citations
+  //       return null
+  //     }
+  //     const number = Number(props.href)
+  //     return (
+  //       <CitationTag
+  //         conversationId={conversationId}
+  //         citations={citations}
+  //         index={index}
+  //         number={isNaN(number) ? undefined : number}
+  //         type={isNaN(number) ? 'icon' : 'number'}
+  //       />
+  //     )
+  //   }
+  //   // citation引用做hover 展示
+  //   let linkSource
+  //   if (citationsContent) {
+  //     const _index = Number(props?.children[0])
+  //     if (!isNaN(_index)) {
+  //       linkSource = citationsContent[_index - 1]
+  //     }
+  //   }
+  //   return (
+  //     // eslint-disable-next-line react/prop-types
+  //     <OverrideAnchor
+  //       href={props.href}
+  //       title={props.title}
+  //       citationsContent={linkSource}
+  //     >
+  //       {props.children}
+  //     </OverrideAnchor>
+  //   )
+  // },
+  // eslint-disable-next-line react/display-name
+  code: (props: any) => {
+    const { node, inline, className, children, ...rest } = props
+    if (rest.isMaxAICustomMarkdownComponent) {
+      return (
+        <MaxAICustomMarkdownComponent
+          maxAICustomMarkdownComponentName={
+            rest.maxAICustomMarkdownComponentName
+          }
+          isLastNode={rest.isLastNode}
+          content={children}
+        />
+      )
+    }
+    if (inline) {
+      return (
+        <Chip
+          component={'span'}
+          className={className}
+          label={children as string}
+          sx={{
+            padding: '.2em .4em',
+            fontSize: '85%',
+            lineHeight: '1.5',
+            borderRadius: '.25em',
+            whiteSpace: 'break-spaces',
+            height: 'auto',
+            '& > span': {
+              p: 0,
+            },
+          }}
+        />
+      )
+    }
+    return <OverrideCode className={className}>{children}</OverrideCode>
+  },
+  // eslint-disable-next-line react/display-name
+  img: ({ node, src, alt, title, ...props }) => {
+    let data: any = {}
+    try {
+      // 传输Markdown自定义数据
+      data = JSON.parse(alt || '')
+    } catch (e) {
+      // nothing
+    }
+    if (src) {
+      // check is YouTube embed url
+      if (src.startsWith('https://www.youtube.com/embed')) {
+        return (
+          <YoutubePlayerBox
+            youtubeLink={src}
+            borderRadius={4}
+            cover={data?.cover}
+          />
+        )
+      }
+    }
+    // 付费卡片图片
+    // chrome-extension://ifpoijjcjepjemmhjankdocecgkpffde/assets/USE_CHAT_GPT_AI/images/upgrade/unlimited-ai-requests.png
+    if (
+      src?.includes(
+        `${Browser.runtime.id}/assets/USE_CHAT_GPT_AI/images/upgrade`,
+      )
+    ) {
+      return (
+        <LazyLoadImage src={src} alt={data?.alt || alt || ''} height={208} />
+      )
+    }
+    return (
+      <LazyLoadImage
+        height={387}
+        {...{ src: src || '', alt: data?.alt || alt || '', title }}
+      />
+    )
+  },
+}
+
+export const MarkdownContext = React.createContext(false)
+const remarkPlugins = [
+  supersub,
+  remarkBreaks,
+  remarkGfm,
+  [
+    remarkMath,
+    {
+      singleDollarTextMath: false,
+    },
+  ],
+]
+const rehypePlugins = [rehypeMaxAICustomMarkdownComponentPlugin, rehypeKatex]
+
 const CustomMarkdown: FC<{
   message?: IAIResponseMessage
   originalMessage?: IAIResponseOriginalMessage
@@ -323,10 +479,15 @@ const CustomMarkdown: FC<{
   const conversationId = message?.conversationId
   const originalMessage =
     props.originalMessage || message?.originalMessage || {}
-  const { metadata } = originalMessage
+  const { metadata = {} } = originalMessage
   const citationsContent = metadata?.sources?.links
 
-  const isComplete = originalMessage ? metadata?.isComplete : true
+  const isComplete = Object.prototype.hasOwnProperty.call(
+    metadata,
+    'isComplete',
+  )
+    ? (metadata.isComplete as boolean)
+    : true
 
   // 这里先处理一下，后端有可能返回的数据里在原文内匹配不上，缺少一些符号，目前只针对PDF显示
   // TODO youtube/email的citation需要额外逻辑处理，这一版先过滤
@@ -360,159 +521,17 @@ const CustomMarkdown: FC<{
     }
   }, [citations, isComplete, children])
 
-  return useMemo(
-    () => (
+  return (
+    <MarkdownContext.Provider value={isComplete}>
       <ReactMarkdown
-        remarkPlugins={[
-          supersub,
-          remarkBreaks,
-          remarkGfm,
-          [
-            remarkMath,
-            {
-              singleDollarTextMath: false,
-            },
-          ],
-        ]}
-        rehypePlugins={[rehypeKatex]}
+        remarkPlugins={remarkPlugins}
+        rehypePlugins={rehypePlugins}
         // disallowedElements={['br']}
-        components={{
-          // eslint-disable-next-line react/display-name
-          h1: (props: any) => {
-            return <OverrideHeading {...props} heading={'h1'} />
-          },
-          // eslint-disable-next-line react/display-name
-          h2: (props: any) => {
-            return <OverrideHeading {...props} heading={'h2'} />
-          },
-          // eslint-disable-next-line react/display-name
-          h3: (props: any) => {
-            return <OverrideHeading {...props} heading={'h3'} />
-          },
-          // eslint-disable-next-line react/display-name
-          h4: (props: any) => {
-            return <OverrideHeading {...props} heading={'h4'} />
-          },
-          // eslint-disable-next-line react/display-name
-          h5: (props: any) => {
-            return <OverrideHeading {...props} heading={'h5'} />
-          },
-          // eslint-disable-next-line react/display-name
-          h6: (props: any) => {
-            return <OverrideHeading {...props} heading={'h6'} />
-          },
-          // eslint-disable-next-line react/display-name
-          a: ({ node, ...props }) => {
-            if (citations && typeof props.children?.[0] === 'string') {
-              const match = props.children[0].match(/T(\d+)/)
-              const index = match ? Number(match[1]) : -1
-              if (!citations[index]) {
-                // 查不到citations
-                return null
-              }
-              const number = Number(props.href)
-              return (
-                <CitationTag
-                  conversationId={conversationId}
-                  citations={citations}
-                  index={index}
-                  number={isNaN(number) ? undefined : number}
-                  type={isNaN(number) ? 'icon' : 'number'}
-                />
-              )
-            }
-            // citation引用做hover 展示
-            let linkSource
-            if (citationsContent) {
-              const _index = Number(props?.children[0])
-              if (!isNaN(_index)) {
-                linkSource = citationsContent[_index - 1]
-              }
-            }
-            return (
-              // eslint-disable-next-line react/prop-types
-              <OverrideAnchor
-                href={props.href}
-                title={props.title}
-                citationsContent={linkSource}
-              >
-                {props.children}
-              </OverrideAnchor>
-            )
-          },
-          // eslint-disable-next-line react/display-name
-          code: ({ node, inline, className, children, ...props }) => {
-            if (inline) {
-              return (
-                <Chip
-                  component={'span'}
-                  className={className}
-                  label={children as string}
-                  sx={{
-                    padding: '.2em .4em',
-                    fontSize: '85%',
-                    lineHeight: '1.5',
-                    borderRadius: '.25em',
-                    whiteSpace: 'break-spaces',
-                    height: 'auto',
-                    '& > span': {
-                      p: 0,
-                    },
-                  }}
-                />
-              )
-            }
-            return <OverrideCode className={className}>{children}</OverrideCode>
-          },
-          // eslint-disable-next-line react/display-name
-          img: ({ node, src, alt, title, ...props }) => {
-            let data: any = {}
-            try {
-              // 传输Markdown自定义数据
-              data = JSON.parse(alt || '')
-            } catch (e) {
-              // nothing
-            }
-            if (src) {
-              // check is YouTube embed url
-              if (src.startsWith('https://www.youtube.com/embed')) {
-                return (
-                  <YoutubePlayerBox
-                    youtubeLink={src}
-                    borderRadius={4}
-                    cover={data?.cover}
-                  />
-                )
-              }
-            }
-            // 付费卡片图片
-            // chrome-extension://ifpoijjcjepjemmhjankdocecgkpffde/assets/USE_CHAT_GPT_AI/images/upgrade/unlimited-ai-requests.png
-            if (
-              src?.includes(
-                `${Browser.runtime.id}/assets/USE_CHAT_GPT_AI/images/upgrade`,
-              )
-            ) {
-              return (
-                <LazyLoadImage
-                  src={src}
-                  alt={data?.alt || alt || ''}
-                  height={208}
-                />
-              )
-            }
-            return (
-              <LazyLoadImage
-                height={387}
-                {...{ src: src || '', alt: data?.alt || alt || '', title }}
-              />
-            )
-          },
-        }}
+        components={components}
       >
         {formatMarkdownText}
       </ReactMarkdown>
-    ),
-    [citations, formatMarkdownText],
+    </MarkdownContext.Provider>
   )
 }
 export default CustomMarkdown

@@ -6,6 +6,7 @@ import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt'
+import { ArtifactsRoot } from '@/features/chatgpt/components/artifacts'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useClientConversationListener } from '@/features/chatgpt/hooks/useClientConversationListener'
@@ -112,6 +113,7 @@ const SidebarChatPanel = () => {
           await resetConversation()
         }}
       />
+      <ArtifactsRoot />
       <SidebarFilesDropBox />
     </>
   )

@@ -56,7 +56,6 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
     createSidebarConversation,
     updateImmersiveSettings,
     immersiveSettings: localSettings,
-    updateSidebarSettings,
   } = useSidebarSettings()
 
   const [conversationStatus, setConversationStatus] =
@@ -73,6 +72,8 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
   const immersiveConversationId = useMemo(() => {
     switch (currentSidebarConversationType) {
+      case 'ContextMenu':
+        return immersiveSettings?.contextMenu?.conversationId
       case 'Chat':
         return immersiveSettings?.chat?.conversationId
       case 'Search':
@@ -101,6 +102,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
       conversationType?: ISidebarConversationType,
     ) => {
       const map: Record<string, ImmersiveSettingsKey> = {
+        ContextMenu: 'contextMenu',
         Chat: 'chat',
         Search: 'search',
         Art: 'art',
@@ -125,8 +127,12 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
      */
     const createConversation: ChatPanelContextValue['createConversation'] =
       async (conversationType, AIProvider, AIModel) => {
+        const sidebarConversationType = sidebarConversationTypeRef.current
         const settingsType =
-          sidebarConversationTypeRef.current.toLowerCase() as ImmersiveSettingsKey
+          sidebarConversationType === 'ContextMenu'
+            ? 'contextMenu'
+            : (sidebarConversationType.toLowerCase() as ImmersiveSettingsKey)
+
         const conversationTypeConfig =
           immersiveSettingsRef.current?.[settingsType]
         if ((!AIProvider || !AIModel) && conversationTypeConfig) {
@@ -161,17 +167,6 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
           ? await ClientConversationManager.getConversationById(conversationId)
           : null
 
-        // TODO: immersive chat 情况补全
-        // 当为rewrite时，清空
-        // if (sidebarConversationTypeRef.current === 'ContextMenu') {
-        //   updateSidebarSettings({
-        //     contextMenu: {
-        //       conversationId: '',
-        //     },
-        //   })
-        //   return
-        // }
-
         if (currentConversation) {
           await createConversation(
             currentConversation.type,
@@ -185,9 +180,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
     return {
       conversationStatus,
-      updateConversationStatus: (newStatus: ConversationStatusType) => {
-        setConversationStatus(newStatus)
-      },
+      updateConversationStatus: setConversationStatus,
       conversationId,
       updateConversationId,
       createConversation,

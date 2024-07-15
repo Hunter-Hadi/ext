@@ -51,6 +51,12 @@ const SidebarContextMenu: FC = () => {
           includeHistory: true,
         },
       })
+        .then((result) => {
+          console.log('handleEnter:', result)
+        })
+        .catch((err) => {
+          console.log('handleEnter error: ', err)
+        })
     }
   }
 

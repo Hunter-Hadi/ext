@@ -221,6 +221,11 @@ export interface IChromeExtensionLocalStorage {
     }
   }
   immersiveSettings?: {
+    contextMenu?: {
+      conversationId?: string
+      AIProvider?: IAIProviderType
+      AIModel?: string
+    }
     chat?: {
       conversationId?: string
       AIProvider?: IAIProviderType

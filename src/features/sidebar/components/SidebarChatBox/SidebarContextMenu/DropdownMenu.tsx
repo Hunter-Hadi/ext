@@ -491,7 +491,7 @@ export const DropdownMenuInternal = React.forwardRef<
                       }),
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
-                      focus: focusItem === child.props?.menuItem,
+                      focus: focusItem === child?.props?.menuItem,
                     }),
                 )}
               </Box>

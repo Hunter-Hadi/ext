@@ -171,9 +171,11 @@ const useClientChat = () => {
         updateClientConversationLoading(true)
         if (!(await checkAttachments(attachments))) {
           updateClientConversationLoading(false)
+          console.log('handleEnter break in checkAttachments')
           return
         }
       } else if (question.text.trim() === '') {
+        console.log('handleEnter break in checkAttachments and text empty')
         // 如果没有文本 && 没有附件
         updateClientConversationLoading(false)
         return

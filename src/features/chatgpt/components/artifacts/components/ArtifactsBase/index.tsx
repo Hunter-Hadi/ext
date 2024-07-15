@@ -1,3 +1,4 @@
+import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
@@ -91,6 +92,9 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
             alignItems: 'center',
           }}
         >
+          <Button>
+            <Typography fontSize={'14px'}>Preview</Typography>
+          </Button>
           <ToggleButtonGroup
             size={'small'}
             color='primary'

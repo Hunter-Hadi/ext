@@ -162,13 +162,12 @@ const useInitWebPageMessageChannel = () => {
           case 'CLIENT_GET_CONTENT_OF_URL': {
             const { url, timeout, abortTaskId, needImage, needVideo } = data
 
-            const res = await clientGetContentOfURL(
-              url,
+            const res = await clientGetContentOfURL(url, {
               timeout,
               abortTaskId,
               needImage,
               needVideo,
-            )
+            })
 
             responseDataToPage(taskId, event.origin, {
               success: res?.success,

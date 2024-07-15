@@ -160,13 +160,78 @@ export class ActionMaxAICreateDocument extends Action {
                 },
               },
             },
-            // TODO 无内容不上传
+            {
+              type: 'SCRIPTS_CONDITIONAL',
+              parameters: {
+                WFFormValues: {
+                  Value: '',
+                  WFSerializationType: 'WFDictionaryFieldValue',
+                },
+                WFCondition: 'Equals',
+                WFConditionalIfTrueActions: [
+                  // 无PDF内容
+                ],
+                WFConditionalIfFalseActions: [
+                  // 有PDF内容
+                  {
+                    type: 'MAXAI_UPLOAD_DOCUMENT',
+                    parameters: {
+                      MaxAIDocumentActionConfig: {
+                        pureText: '{{READABILITY_CONTENTS}}',
+                        docType: 'pdf',
+                        doneType: 'document_create',
+                        file: '{{PDF_FILE}}' as any,
+                      },
+                    },
+                  },
+                ],
+              },
+            },
           ],
           'after',
         )
         break
       case 'youtube':
-        // TODO youtube summary actions
+        shortcutsEngine?.pushActions(
+          [
+            {
+              type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+              parameters: {
+                OperationElementSelector: 'ytd-watch-metadata #title',
+              },
+            },
+            {
+              type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
+              parameters: {},
+            },
+            {
+              type: 'SET_VARIABLE',
+              parameters: {
+                VariableName: 'YOUTUBE_TRANSCRIPTS',
+              },
+            },
+            {
+              type: 'MAXAI_UPLOAD_DOCUMENT',
+              parameters: {
+                MaxAIDocumentActionConfig: {
+                  link: '{{CURRENT_WEBPAGE_URL}}',
+                  pureText: '',
+                  docType: 'youtube',
+                  doneType: 'document_create',
+                  file: {
+                    description: '{{SOCIAL_MEDIA_POST_CONTENT}}',
+                    author: '{{SOCIAL_MEDIA_POST_AUTHOR}}',
+                    date: '{{SOCIAL_MEDIA_POST_DATE}}',
+                    title: '{{SOCIAL_MEDIA_POST_TITLE}}',
+                    comments: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS}}',
+                    transcripts: '{{YOUTUBE_TRANSCRIPTS}}',
+                  },
+                },
+              },
+            },
+          ],
+          'after',
+        )
         break
     }
 

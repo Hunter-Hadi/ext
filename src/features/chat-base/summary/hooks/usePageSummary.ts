@@ -20,6 +20,7 @@ import { getContextMenuByNavMetadataKey } from '@/features/chat-base/summary/uti
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import CitationFactory from '@/features/citation/core/CitationFactory'
+import { useFocus } from '@/features/common/hooks/useFocus'
 import { useContextMenuList } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
@@ -29,13 +30,23 @@ import {
 } from '@/features/indexed_db/conversations/clientService'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import { checkDocIdExist } from '@/features/shortcuts/utils/maxAIDocument'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
+import { AppState } from '@/store'
+
+let checkDocTime = 0
 
 const usePageSummary = () => {
-  const { updateSidebarSettings, updateSidebarSummaryConversationId } =
-    useSidebarSettings()
+  const appState = useRecoilValue(AppState)
   const {
+    sidebarSummaryConversationId,
+    currentSidebarConversationType,
+    updateSidebarSettings,
+    updateSidebarSummaryConversationId,
+  } = useSidebarSettings()
+  const {
+    getConversation,
     getWritingMessageState,
     showConversationLoading,
     hideConversationLoading,
@@ -54,6 +65,41 @@ const usePageSummary = () => {
     false,
   )
   const { checkSummaryQuota } = useSummaryQuota()
+
+  useFocus(async () => {
+    if (
+      !appState.open ||
+      currentSidebarConversationType !== 'Summary' ||
+      !sidebarSummaryConversationId
+    ) {
+      return
+    }
+    // 每15分钟检测一次doc是否存在
+    if (Date.now() - checkDocTime < 1000 * 60 * 15) {
+      return
+    }
+    checkDocTime = Date.now()
+    const conversation = await getConversation(sidebarSummaryConversationId)
+    if (!conversation || !conversation.meta.pageSummary?.docId) return
+    if (!(await checkDocIdExist(conversation.meta.pageSummary.docId))) {
+      // 重新上传doc
+      showConversationLoading(sidebarSummaryConversationId)
+      await askAIWIthShortcuts([
+        {
+          type: 'MAXAI_CREATE_DOCUMENT',
+          parameters: {
+            MaxAIDocumentActionConfig: {
+              docType: 'summary',
+              doneType: 'document_create',
+            },
+          },
+        },
+      ]).finally(() => {
+        hideConversationLoading(sidebarSummaryConversationId)
+      })
+    }
+  })
+
   const isGeneratingPageSummaryRef = useRef(false)
   const createPageSummary = async () => {
     if (isGeneratingPageSummaryRef.current) {
@@ -174,6 +220,31 @@ const usePageSummary = () => {
         }
 
         if (isValidAIMessage) {
+          // 检测docId是否过期，过期需要重新上传
+          if (pageSummaryConversation.meta.pageSummary?.docId) {
+            if (
+              !(await checkDocIdExist(
+                pageSummaryConversation.meta.pageSummary.docId,
+              ))
+            ) {
+              await askAIWIthShortcuts([
+                {
+                  type: 'MAXAI_CREATE_DOCUMENT',
+                  parameters: {
+                    MaxAIDocumentActionConfig: {
+                      docType: 'summary',
+                      doneType: 'document_create',
+                    },
+                  },
+                },
+              ])
+                .then()
+                .finally(() => {
+                  isGeneratingPageSummaryRef.current = false
+                })
+              return
+            }
+          }
           hideConversationLoading(pageSummaryConversationId)
           isGeneratingPageSummaryRef.current = false
           return

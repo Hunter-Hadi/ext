@@ -137,7 +137,7 @@ const maxAIRequestBodyDocType = (summaryType: IPageSummaryType) => {
     case 'PDF_CRX_SUMMARY':
       return 'pdf'
   }
-  return 'pdf'
+  return 'webpage'
 }
 
 /**
@@ -216,18 +216,17 @@ export const maxAIRequestBodySummaryChatGenerator = async (
     backendAPI = 'chat_with_document/v2'
     postBody.doc_id = conversation.meta.docId
   } else if (conversation.meta.pageSummary?.docId) {
+    const docType = maxAIRequestBodyDocType(conversation.meta.pageSummaryType!)
+    postBody.doc_id = conversation.meta.pageSummary.docId
+    postBody.doc_type = docType
     // chat逻辑，不传递docId或者服务端没找到docId会报错
     if (conversation.meta.pageSummary.content) {
       // 走v2逻辑
       backendAPI = 'summary/v2/qa'
     } else {
       // 走v3逻辑
-      backendAPI = 'summary/v3/qa'
+      backendAPI = `summary/v3/qa/${docType}`
     }
-    postBody.doc_id = conversation.meta.pageSummary.docId
-    postBody.doc_type = maxAIRequestBodyDocType(
-      conversation.meta.pageSummaryType!,
-    )
     if (
       summaryMessage?.originalMessage?.content?.text ||
       !conversation.meta.pageSummary.content

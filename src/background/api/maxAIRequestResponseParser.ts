@@ -2,10 +2,15 @@
  * 解析后端steaming返回的数据结构，并转换成parse message
  * 解析后的outputMessage保持和IAIResponseMessage一样的结构，大部分业务逻辑处理的时候直接deepMerge
  */
+import { v4 as uuidV4 } from 'uuid'
+
 import { IMaxAIResponseStreamMessage } from '@/background/src/chat/UseChatGPTChat/types'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import { IAIResponseOriginalMessage } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIResponseOriginalMessage,
+  IAIResponseOriginalMessageMetaDeep,
+} from '@/features/indexed_db/conversations/models/Message'
 
 export type IMaxAIResponseParserMessage = {
   type: 'error' | 'message'
@@ -136,33 +141,110 @@ export const maxAIRequestResponseStreamParser = (
         }
       }
     }
+    if (streamMessage.timestamped !== undefined) {
+      switch (streamMessage.streaming_status) {
+        case 'start':
+        case 'in_progress': {
+          // loading状态
+          const timestampedDive: IAIResponseOriginalMessageMetaDeep = {
+            type: 'timestampedSummary',
+            title: {
+              title: 'Summary',
+              titleIcon: 'SummaryInfo',
+            },
+            value: [
+              {
+                id: uuidV4(),
+                start: '',
+                duration: '',
+                text: '',
+                status: 'loading',
+                children: [],
+              },
+            ],
+          }
+          outputMessage.originalMessage = {
+            ...outputMessage.originalMessage,
+            metadata: {
+              ...outputMessage.originalMessage?.metadata,
+              deepDive: ([] as IAIResponseOriginalMessageMetaDeep[])
+                .concat(outputMessage.originalMessage?.metadata?.deepDive || [])
+                .filter((item) => item && item.type !== timestampedDive.type)
+                .concat(timestampedDive),
+            },
+          }
+          break
+        }
+        case 'complete': {
+          const timestampedDive: IAIResponseOriginalMessageMetaDeep = {
+            type: 'timestampedSummary',
+            title: {
+              title: 'Summary',
+              titleIcon: 'SummaryInfo',
+            },
+            value: streamMessage.timestamped.map((item) => ({
+              id: uuidV4(),
+              start: item.start,
+              duration: '',
+              text: item.title,
+              status: 'complete',
+              children: item.sub_summarites?.map((child) => ({
+                id: uuidV4(),
+                start: child.start,
+                duration: '',
+                text: child.text,
+                status: 'complete',
+              })),
+            })),
+          }
+          outputMessage.originalMessage = {
+            ...outputMessage.originalMessage,
+            metadata: {
+              ...outputMessage.originalMessage?.metadata,
+              deepDive: ([] as IAIResponseOriginalMessageMetaDeep[])
+                .concat(outputMessage.originalMessage?.metadata?.deepDive || [])
+                .filter((item) => item && item.type !== timestampedDive.type)
+                .concat(timestampedDive),
+            },
+          }
+          break
+        }
+      }
+    }
     if (streamMessage.related !== undefined) {
       const pageSummaryType = conversation?.meta.pageSummaryType
       switch (streamMessage.streaming_status) {
         case 'start':
         case 'in_progress': {
           // loading状态
-          const relatedDive = {
+          const relatedDive: IAIResponseOriginalMessageMetaDeep = {
+            type: 'related',
             title: {
-              title: ' ',
+              title: '',
               titleIcon: 'Loading',
             },
-            value: '',
-          } as const
+            value: [],
+          }
           outputMessage.originalMessage = {
             ...outputMessage.originalMessage,
             metadata: {
               ...outputMessage.originalMessage?.metadata,
               deepDive:
                 pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
-                  ? [relatedDive]
+                  ? ([] as IAIResponseOriginalMessageMetaDeep[])
+                      .concat(
+                        outputMessage.originalMessage?.metadata?.deepDive || [],
+                      )
+                      .filter((item) => item && item.type !== relatedDive.type)
+                      .concat(relatedDive)
                   : relatedDive,
             },
           }
           break
         }
         case 'complete': {
-          const relatedDive = streamMessage.related?.length
+          const relatedDive: IAIResponseOriginalMessageMetaDeep = streamMessage
+            .related?.length
             ? {
                 title: {
                   title: 'Keep exploring',
@@ -181,8 +263,16 @@ export const maxAIRequestResponseStreamParser = (
               ...outputMessage.originalMessage?.metadata,
               deepDive:
                 pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
-                  ? ([relatedDive].filter(Boolean) as any)
+                  ? ([] as IAIResponseOriginalMessageMetaDeep[])
+                      .concat(
+                        outputMessage.originalMessage?.metadata?.deepDive || [],
+                      )
+                      .filter((item) => item && item.type !== relatedDive.type)
+                      .concat(relatedDive)
                   : relatedDive,
+              // pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
+              //   ? ([relatedDive].filter(Boolean) as any)
+              //   : relatedDive,
             },
           }
           break

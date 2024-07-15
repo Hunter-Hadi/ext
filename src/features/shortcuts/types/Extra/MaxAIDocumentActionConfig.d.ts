@@ -1,6 +1,6 @@
 import { IUploadDocumentPayload } from '@/features/shortcuts/utils/maxAIDocument'
 
-export interface MaxAIDocumentActionConfig extends Partial<MaxAIDocument> {
+export interface MaxAIDocumentActionConfig {
   // 网页链接
   link?: string
   // 纯文本内容

@@ -43,6 +43,7 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
         currentUrl === youtubeLinkURL &&
         (window as any).ytInitialPlayerResponse
       ) {
+        // 当前url可以直接从window.ytInitialPlayerResponse获取
         const captionTracks =
           (window as any).ytInitialPlayerResponse.captions
             ?.playerCaptionsTracklistRenderer?.captionTracks || []

@@ -33,7 +33,10 @@ export type IMaxAIChatGPTBackendAPIType =
   | 'summary/v3/pdf'
   | 'summary/v3/videosite'
   | 'summary/v3/email'
-  | 'summary/v3/qa'
+  | 'summary/v3/qa/webpage'
+  | 'summary/v3/qa/pdf'
+  | 'summary/v3/qa/videosite'
+  | 'summary/v3/qa/email'
 
 export type IMaxAIChatGPTBackendBodyType = {
   message_content?: IMaxAIChatMessageContent[]
@@ -96,6 +99,14 @@ export interface IMaxAIResponseStreamMessage {
    * related相关信息
    */
   related?: IAIResponseOriginalMessageMetaDeepRelatedData[]
+  /**
+   * youtube时间戳总结信息
+   */
+  timestamped?: {
+    start: string
+    title: string
+    sub_summarites: { start: string; text: string }[]
+  }[]
   /**
    * 目前应该是json模式返回的status，为ok代表成功
    */

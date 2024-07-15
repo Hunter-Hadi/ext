@@ -93,26 +93,6 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'DOC_ID',
-      },
-    },
-    // {
-    //   type: 'ANALYZE_CHAT_FILE',
-    //   parameters: {
-    //     template: '{{READABILITY_CONTENTS}}',
-    //     AnalyzeChatFileImmediateUpdateConversation: false,
-    //     AnalyzeChatFileName: 'PageSummaryContent.txt',
-    //   },
-    // },
-    // {
-    //   type: 'SET_VARIABLE',
-    //   parameters: {
-    //     VariableName: 'READABILITY_CONTENTS',
-    //   },
-    // },
-    {
       type: 'CHAT_MESSAGE',
       parameters: {
         ActionChatMessageOperationType: 'update',
@@ -153,17 +133,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
           promptName: `[Summary] Summarize page`,
           promptActionType: 'chat_complete',
-          variables: [
-            // {
-            //   VariableName: 'PAGE_CONTENT',
-            //   label: 'PAGE_CONTENT',
-            //   defaultValue: '{{READABILITY_CONTENTS}}',
-            //   valueType: 'Text',
-            //   systemVariable: true,
-            //   hidden: true,
-            // },
-            VARIABLE_CURRENT_WEBPAGE_URL,
-          ],
+          variables: [VARIABLE_CURRENT_WEBPAGE_URL],
           output: [
             {
               label: 'Summary content',
@@ -336,25 +306,6 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'DOC_ID',
-      },
-    },
-    // {
-    //   type: 'ANALYZE_CHAT_FILE',
-    //   parameters: {
-    //     AnalyzeChatFileImmediateUpdateConversation: false,
-    //     AnalyzeChatFileName: 'PageSummaryContent.txt',
-    //   },
-    // },
-    // {
-    //   type: 'SET_VARIABLE',
-    //   parameters: {
-    //     VariableName: 'READABILITY_CONTENTS',
-    //   },
-    // },
-    {
       type: 'CHAT_MESSAGE',
       parameters: {
         ActionChatMessageOperationType: 'update',
@@ -395,17 +346,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
           promptName: `[Summary] Summarize page`,
           promptActionType: 'chat_complete',
-          variables: [
-            // {
-            //   VariableName: 'PAGE_CONTENT',
-            //   label: 'PAGE_CONTENT',
-            //   defaultValue: '{{READABILITY_CONTENTS}}',
-            //   valueType: 'Text',
-            //   systemVariable: true,
-            //   hidden: true,
-            // },
-            VARIABLE_CURRENT_WEBPAGE_URL,
-          ],
+          variables: [VARIABLE_CURRENT_WEBPAGE_URL],
           output: [],
         },
         AskChatGPTActionQuestion: {
@@ -573,25 +514,6 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'SET_VARIABLE',
-      parameters: {
-        VariableName: 'DOC_ID',
-      },
-    },
-    // {
-    //   type: 'ANALYZE_CHAT_FILE',
-    //   parameters: {
-    //     AnalyzeChatFileImmediateUpdateConversation: false,
-    //     AnalyzeChatFileName: 'PageSummaryContent.txt',
-    //   },
-    // },
-    // {
-    //   type: 'SET_VARIABLE',
-    //   parameters: {
-    //     VariableName: 'READABILITY_CONTENTS',
-    //   },
-    // },
-    {
       type: 'CHAT_MESSAGE',
       parameters: {
         ActionChatMessageOperationType: 'update',
@@ -632,17 +554,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptId: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
           promptName: `[Summary] Summarize page (Key takeaways)`,
           promptActionType: 'chat_complete',
-          variables: [
-            // {
-            //   VariableName: 'PAGE_CONTENT',
-            //   label: 'PAGE_CONTENT',
-            //   defaultValue: '{{READABILITY_CONTENTS}}',
-            //   valueType: 'Text',
-            //   systemVariable: true,
-            //   hidden: true,
-            // },
-            VARIABLE_CURRENT_WEBPAGE_URL,
-          ],
+          variables: [VARIABLE_CURRENT_WEBPAGE_URL],
           output: [],
         },
         AskChatGPTActionQuestion: {

@@ -44,9 +44,10 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
       if (this.isStopAction) return
       let result = await getSocialMediaPostContent(OperationElementSelector)
       if (this.isStopAction) return
+      const conversation =
+        await engine.clientConversationEngine?.getCurrentConversation()
       if (
-        engine?.clientConversationEngine?.currentSidebarConversationType ===
-          'Summary' &&
+        conversation?.type === 'Summary' &&
         params.CURRENT_WEBSITE_DOMAIN === 'www.youtube.com'
       ) {
         //为youtube添加评论prompt数据

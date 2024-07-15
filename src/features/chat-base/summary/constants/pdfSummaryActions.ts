@@ -77,27 +77,6 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
-    // {
-    //   type: 'UPLOAD_PDF_OF_CRX',
-    //   parameters: {},
-    // },
-    // {
-    //   type: 'GET_PDF_CONTENTS_OF_CRX',
-    //   parameters: {},
-    // },
-    // {
-    //   type: 'ANALYZE_CHAT_FILE',
-    //   parameters: {
-    //     AnalyzeChatFileImmediateUpdateConversation: false,
-    //     AnalyzeChatFileName: 'PDFSummaryContent.txt',
-    //   },
-    // },
-    // {
-    //   type: 'SET_VARIABLE',
-    //   parameters: {
-    //     VariableName: 'READABILITY_CONTENTS',
-    //   },
-    // },
     {
       type: 'TEXT_HANDLER',
       parameters: {
@@ -207,16 +186,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF',
                 promptActionType: 'chat_complete',
-                variables: [
-                  // {
-                  //   VariableName: 'PAGE_CONTENT',
-                  //   label: 'PAGE_CONTENT',
-                  //   defaultValue: '{{READABILITY_CONTENTS}}',
-                  //   valueType: 'Text',
-                  //   systemVariable: true,
-                  //   hidden: true,
-                  // },
-                ],
+                variables: [],
                 output: [],
               },
               AskChatGPTActionQuestion: {
@@ -372,27 +342,6 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
-    // {
-    //   type: 'UPLOAD_PDF_OF_CRX',
-    //   parameters: {},
-    // },
-    // {
-    //   type: 'GET_PDF_CONTENTS_OF_CRX',
-    //   parameters: {},
-    // },
-    // {
-    //   type: 'ANALYZE_CHAT_FILE',
-    //   parameters: {
-    //     AnalyzeChatFileImmediateUpdateConversation: false,
-    //     AnalyzeChatFileName: 'PDFSummaryContent.txt',
-    //   },
-    // },
-    // {
-    //   type: 'SET_VARIABLE',
-    //   parameters: {
-    //     VariableName: 'READABILITY_CONTENTS',
-    //   },
-    // },
     {
       type: 'TEXT_HANDLER',
       parameters: {
@@ -502,16 +451,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF (TL:DR)',
                 promptActionType: 'chat_complete',
-                variables: [
-                  // {
-                  //   VariableName: 'PAGE_CONTENT',
-                  //   label: 'PAGE_CONTENT',
-                  //   defaultValue: '{{READABILITY_CONTENTS}}',
-                  //   valueType: 'Text',
-                  //   systemVariable: true,
-                  //   hidden: true,
-                  // },
-                ],
+                variables: [],
                 output: [],
               },
               AskChatGPTActionQuestion: {
@@ -667,27 +607,6 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
-    // {
-    //   type: 'UPLOAD_PDF_OF_CRX',
-    //   parameters: {},
-    // },
-    // {
-    //   type: 'GET_PDF_CONTENTS_OF_CRX',
-    //   parameters: {},
-    // },
-    // {
-    //   type: 'ANALYZE_CHAT_FILE',
-    //   parameters: {
-    //     AnalyzeChatFileImmediateUpdateConversation: false,
-    //     AnalyzeChatFileName: 'PDFSummaryContent.txt',
-    //   },
-    // },
-    // {
-    //   type: 'SET_VARIABLE',
-    //   parameters: {
-    //     VariableName: 'READABILITY_CONTENTS',
-    //   },
-    // },
     {
       type: 'TEXT_HANDLER',
       parameters: {
@@ -797,16 +716,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF (Key takeaways)',
                 promptActionType: 'chat_complete',
-                variables: [
-                  // {
-                  //   VariableName: 'PAGE_CONTENT',
-                  //   label: 'PAGE_CONTENT',
-                  //   defaultValue: '{{READABILITY_CONTENTS}}',
-                  //   valueType: 'Text',
-                  //   systemVariable: true,
-                  //   hidden: true,
-                  // },
-                ],
+                variables: [],
                 output: [],
               },
               AskChatGPTActionQuestion: {

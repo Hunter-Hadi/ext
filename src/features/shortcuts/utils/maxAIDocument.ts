@@ -67,10 +67,13 @@ export type IUploadDocumentListener = (message: IUploadDocumentMessage) => void
 
 /**
  * 判断当前docId是否存在
- * @param accessToken
  * @param docId
+ * @param accessToken
  */
-export const checkDocIdExist = async (accessToken: string, docId: string) => {
+export const checkDocIdExist = async (docId: string, accessToken?: string) => {
+  if (!accessToken) {
+    accessToken = await getAccessToken()
+  }
   const result = await clientFetchMaxAIAPI<{
     msg: string
     status: string
@@ -103,7 +106,7 @@ export const uploadMaxAIDocument = async (
     uploadResponse.error = 'Please login to continue.'
     return uploadResponse
   }
-  if (await checkDocIdExist(accessToken, docId)) {
+  if (await checkDocIdExist(docId, accessToken)) {
     const result = await getMaxAIDocument(docId)
     uploadResponse.doc_url = result?.s3?.doc_url || ''
     uploadResponse.expires = result?.s3?.expires

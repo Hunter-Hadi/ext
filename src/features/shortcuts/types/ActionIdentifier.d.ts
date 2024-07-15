@@ -86,6 +86,8 @@ type ActionIdentifier =
   | 'MAXAI_GET_CHAT_MESSAGES'
   // 获取AI Response后的消息
   | 'MAXAI_RESPONSE_RELATED'
+  // MaxAI 创建document
+  | 'MAXAI_CREATE_DOCUMENT'
   // MaxAI 上传document
   | 'MAXAI_UPLOAD_DOCUMENT'
   // 分配 System Prompt 应获取 (Email | Social Media | Chat App website) 页面上下文变量

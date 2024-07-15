@@ -1,3 +1,5 @@
+import { isPlainObject } from 'lodash-es'
+
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 import {
   IShortcutEngineExternalEngine,
@@ -41,28 +43,24 @@ export class ActionMaxAIUploadDocument extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
-    const uploadConfig =
-      this.parameters.MaxAIUploadDocumentConfig ||
-      params.MaxAIUploadDocumentConfig
+    const documentConfig =
+      this.parameters.MaxAIDocumentActionConfig ||
+      params.MaxAIDocumentActionConfig
 
     const conversationEngine = engine.clientConversationEngine
     const conversationId = conversationEngine?.currentConversationId || ''
 
-    if (!uploadConfig) return
+    if (!documentConfig) return
     if (this.isStopAction) return
 
     const conversation = await conversationEngine?.getCurrentConversation()
 
     if (this.isStopAction) return
 
-    const { link, pureText, docType } = uploadConfig
-    let file = uploadConfig.file
+    const { link, pureText, docType } = documentConfig
+    let file = documentConfig.file
 
-    const text =
-      uploadConfig.pureText ||
-      this.parameters.compliedTemplate ||
-      params.LAST_ACTION_OUTPUT ||
-      ''
+    const text = pureText || this.parameters.compliedTemplate || ''
 
     const { text: sliceText, tokens } = await sliceTextByTokens(
       text,
@@ -77,9 +75,9 @@ export class ActionMaxAIUploadDocument extends Action {
 
     if (docType === 'webpage' || docType === 'email') {
       // webpage的file里存储内容为{ pureTextMD5, readabilityMarkdown }
-      const pureTextMD5 = md5TextEncrypt(pureText)
+      const pureTextMD5 = md5TextEncrypt(sliceText)
       const readabilityMarkdown =
-        (file as any)?.readabilityMarkdown || pureText || ''
+        (file as any)?.readabilityMarkdown || sliceText || ''
       const jsonData = { pureTextMD5, readabilityMarkdown }
       const jsonBlob = new Blob([JSON.stringify(jsonData)], {
         type: 'application/json',
@@ -90,7 +88,7 @@ export class ActionMaxAIUploadDocument extends Action {
       if (file instanceof File) {
         if (file.size >= 32 * 1024 * 1024) {
           // 文件大于32mb，会上传失败，不影响后续chat这里file裁剪成json
-          const pureTextMD5 = md5TextEncrypt(pureText)
+          const pureTextMD5 = md5TextEncrypt(sliceText)
           const jsonData = { pureTextMD5 }
           const jsonBlob = new Blob([JSON.stringify(jsonData)], {
             type: 'application/json',
@@ -100,6 +98,16 @@ export class ActionMaxAIUploadDocument extends Action {
       }
     } else if (docType === 'youtube') {
       // youtube的file里格式化存储内容
+      const comments = (file as any).comments || []
+      const transcripts = (file as any).transcripts || []
+      const jsonData = { ...file, comments, transcripts }
+      const jsonBlob = new Blob([JSON.stringify(jsonData)], {
+        type: 'application/json',
+      })
+      file = new File([jsonBlob], 'data.json', { type: 'application/json' })
+    }
+
+    if (isPlainObject(file)) {
       const jsonData = { ...file }
       const jsonBlob = new Blob([JSON.stringify(jsonData)], {
         type: 'application/json',
@@ -113,7 +121,7 @@ export class ActionMaxAIUploadDocument extends Action {
       return
     }
 
-    const docId = uploadConfig.docId || (await sha1FileEncrypt(file))
+    const docId = documentConfig.docId || (await sha1FileEncrypt(file))
 
     if (this.isStopAction) return
 
@@ -124,18 +132,18 @@ export class ActionMaxAIUploadDocument extends Action {
           pure_text: sliceText,
           tokens,
           doc_id: docId,
-          doc_type: docType,
+          doc_type: docType as any,
           file: file as File,
         },
         (message) => {
           if (
-            uploadConfig.doneType === 'document_create' &&
+            documentConfig.doneType === 'document_create' &&
             message.event === 'document_create'
           ) {
             resolve(docId)
           }
           if (
-            uploadConfig.doneType === 'upload_done' &&
+            documentConfig.doneType === 'upload_done' &&
             message.event === 'upload_done'
           ) {
             resolve(docId)
@@ -144,12 +152,16 @@ export class ActionMaxAIUploadDocument extends Action {
       )
         .then(async (result) => {
           if (result.success && result.doc_url) {
-            // image/chat_file/pdf需要更新attachments
-            if (docType === 'pdf' && (file as File).type.includes('pdf')) {
+            // 有doc_url说明需要更新attachments
+            // 大于32mb的pdf不需要存储，因为上方已经拆分成纯json文件
+            if (
+              docType !== 'pdf' ||
+              (docType === 'pdf' && (file as File).type.includes('pdf'))
+            ) {
               const uploadedFile: IChatUploadFile = {
                 id: result.doc_id,
                 fileName: (file as File).name,
-                fileType: 'application/pdf',
+                fileType: (file as File).type,
                 fileSize: (file as File).size,
                 uploadedFileId: result.doc_id,
                 uploadProgress: 100,

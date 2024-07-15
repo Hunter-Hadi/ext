@@ -1,3 +1,4 @@
+export { ActionMaxAICreateDocument } from './ActionMaxAICreateDocument'
 export { ActionMaxAIProcessBuiltInParameters } from './ActionMaxAIProcessBuiltInParameters'
 export { ActionMaxAIResponseRelated } from './ActionMaxAIResponseRelated'
 export { ActionMaxAIUploadDocument } from './ActionMaxAIUploadDocument'

@@ -10,9 +10,9 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 /**
- * 上传插件PDF viewer的文件到服务器
- * @since - 2024-01-24
- * @description - 考虑到速度和第一个版本，直接异步上传就行了
+ * 从PDF viewer获取文件
+ * @since - 2024-07-12
+ * @description - 此actions读取pdf data转成file对象
  */
 export class ActionGetPDFFileOfCRX extends Action {
   static type: ActionIdentifier = 'GET_PDF_FILE_OF_CRX'

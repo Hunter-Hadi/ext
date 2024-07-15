@@ -11,6 +11,9 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
+/**
+ * 抓取当前网页可读内容，此actions只会抓取纯文本不会抓取图片等内容
+ */
 export class ActionGetReadabilityContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
   originalInnerText: string = ''

@@ -71,18 +71,47 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
-      },
+      type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
+      parameters: {},
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'READABILITY_CONTENTS',
+        VariableName: 'YOUTUBE_TRANSCRIPTS',
       },
     },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'youtube',
+          doneType: 'document_create',
+          file: {
+            description: '{{SOCIAL_MEDIA_POST_CONTENT}}',
+            author: '{{SOCIAL_MEDIA_POST_AUTHOR}}',
+            date: '{{SOCIAL_MEDIA_POST_DATE}}',
+            title: '{{SOCIAL_MEDIA_POST_TITLE}}',
+            comments: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS}}',
+            transcripts: '{{YOUTUBE_TRANSCRIPTS}}',
+          },
+        },
+      },
+    },
+    // {
+    //   type: 'ANALYZE_CHAT_FILE',
+    //   parameters: {
+    //     AnalyzeChatFileImmediateUpdateConversation: false,
+    //     AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+    //   },
+    // },
+    // {
+    //   type: 'SET_VARIABLE',
+    //   parameters: {
+    //     VariableName: 'READABILITY_CONTENTS',
+    //   },
+    // },
     {
       type: 'CHAT_MESSAGE',
       parameters: {
@@ -125,14 +154,14 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize video',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
+            // {
+            //   VariableName: 'PAGE_CONTENT',
+            //   label: 'PAGE_CONTENT',
+            //   defaultValue: '{{READABILITY_CONTENTS}}',
+            //   valueType: 'Text',
+            //   systemVariable: true,
+            //   hidden: true,
+            // },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
           ],

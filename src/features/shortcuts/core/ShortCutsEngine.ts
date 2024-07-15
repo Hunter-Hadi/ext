@@ -31,6 +31,7 @@ import {
   ActionGetYoutubeTranscriptOfURL,
   ActionInsertUserInput,
   ActionList,
+  ActionMaxAICreateDocument,
   ActionMaxAIProcessBuiltInParameters,
   ActionMaxAIResponseRelated,
   ActionMaxAIUploadDocument,
@@ -136,6 +137,7 @@ const ActionClassMap = {
   [ActionMaxAIProcessBuiltInParameters.type]:
     ActionMaxAIProcessBuiltInParameters,
   [ActionMaxAIResponseRelated.type]: ActionMaxAIResponseRelated,
+  [ActionMaxAICreateDocument.type]: ActionMaxAICreateDocument,
   [ActionMaxAIUploadDocument.type]: ActionMaxAIUploadDocument,
 }
 

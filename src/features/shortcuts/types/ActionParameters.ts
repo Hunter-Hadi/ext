@@ -6,9 +6,8 @@ import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/A
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
-import { MaxAICreateDocumentConfig } from '@/features/shortcuts/types/Extra/MaxAICreateDocumentConfig'
+import { MaxAIDocumentActionConfig } from '@/features/shortcuts/types/Extra/MaxAIDocumentActionConfig'
 import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
-import { MaxAIUploadDocumentConfig } from '@/features/shortcuts/types/Extra/MaxAIUploadDocumentConfig'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
@@ -224,10 +223,8 @@ interface ActionParameters {
   SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS?: ICommentData[] | undefined
   // 后端调用Action需要的参数
   MaxAIPromptActionConfig?: MaxAIPromptActionConfig
-  // 创建document需要的参数
-  MaxAICreateDocumentConfig?: MaxAICreateDocumentConfig
-  // 上传document需要的参数
-  MaxAIUploadDocumentConfig?: MaxAIUploadDocumentConfig
+  // 创建上传document需要的参数
+  MaxAIDocumentActionConfig?: MaxAIDocumentActionConfig
   // dictionary
   ActionDictionary?: Record<string, any>
   ActionGetDictionaryKey?: 'value' | 'allKeys' | 'allValues'

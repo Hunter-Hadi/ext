@@ -81,7 +81,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
     {
       type: 'MAXAI_UPLOAD_DOCUMENT',
       parameters: {
-        MaxAIUploadDocumentConfig: {
+        MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
           docType: 'webpage',
@@ -324,7 +324,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
     {
       type: 'MAXAI_UPLOAD_DOCUMENT',
       parameters: {
-        MaxAIUploadDocumentConfig: {
+        MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
           docType: 'webpage',
@@ -561,7 +561,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
     {
       type: 'MAXAI_UPLOAD_DOCUMENT',
       parameters: {
-        MaxAIUploadDocumentConfig: {
+        MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
           docType: 'webpage',

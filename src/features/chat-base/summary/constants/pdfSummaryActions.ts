@@ -158,7 +158,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
           {
             type: 'MAXAI_UPLOAD_DOCUMENT',
             parameters: {
-              MaxAIUploadDocumentConfig: {
+              MaxAIDocumentActionConfig: {
                 pureText: '{{READABILITY_CONTENTS}}',
                 docType: 'pdf',
                 doneType: 'document_create',
@@ -353,19 +353,18 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'UPLOAD_PDF_OF_CRX',
+      type: 'GET_PDF_FILE_OF_CRX',
       parameters: {},
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'PDF_FILE',
+      },
     },
     {
       type: 'GET_PDF_CONTENTS_OF_CRX',
       parameters: {},
-    },
-    {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'PDFSummaryContent.txt',
-      },
     },
     {
       type: 'SET_VARIABLE',
@@ -373,6 +372,27 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
+    // {
+    //   type: 'UPLOAD_PDF_OF_CRX',
+    //   parameters: {},
+    // },
+    // {
+    //   type: 'GET_PDF_CONTENTS_OF_CRX',
+    //   parameters: {},
+    // },
+    // {
+    //   type: 'ANALYZE_CHAT_FILE',
+    //   parameters: {
+    //     AnalyzeChatFileImmediateUpdateConversation: false,
+    //     AnalyzeChatFileName: 'PDFSummaryContent.txt',
+    //   },
+    // },
+    // {
+    //   type: 'SET_VARIABLE',
+    //   parameters: {
+    //     VariableName: 'READABILITY_CONTENTS',
+    //   },
+    // },
     {
       type: 'TEXT_HANDLER',
       parameters: {
@@ -431,6 +451,17 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         WFConditionalIfFalseActions: [
           // 有PDF内容
           {
+            type: 'MAXAI_UPLOAD_DOCUMENT',
+            parameters: {
+              MaxAIDocumentActionConfig: {
+                pureText: '{{READABILITY_CONTENTS}}',
+                docType: 'pdf',
+                doneType: 'document_create',
+                file: '{{PDF_FILE}}' as any,
+              },
+            },
+          },
+          {
             type: 'CHAT_MESSAGE',
             parameters: {
               ActionChatMessageOperationType: 'update',
@@ -472,14 +503,14 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptName: '[Summary] Summarize PDF (TL:DR)',
                 promptActionType: 'chat_complete',
                 variables: [
-                  {
-                    VariableName: 'PAGE_CONTENT',
-                    label: 'PAGE_CONTENT',
-                    defaultValue: '{{READABILITY_CONTENTS}}',
-                    valueType: 'Text',
-                    systemVariable: true,
-                    hidden: true,
-                  },
+                  // {
+                  //   VariableName: 'PAGE_CONTENT',
+                  //   label: 'PAGE_CONTENT',
+                  //   defaultValue: '{{READABILITY_CONTENTS}}',
+                  //   valueType: 'Text',
+                  //   systemVariable: true,
+                  //   hidden: true,
+                  // },
                 ],
                 output: [],
               },
@@ -617,19 +648,18 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'UPLOAD_PDF_OF_CRX',
+      type: 'GET_PDF_FILE_OF_CRX',
       parameters: {},
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'PDF_FILE',
+      },
     },
     {
       type: 'GET_PDF_CONTENTS_OF_CRX',
       parameters: {},
-    },
-    {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'PDFSummaryContent.txt',
-      },
     },
     {
       type: 'SET_VARIABLE',
@@ -637,6 +667,27 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         VariableName: 'READABILITY_CONTENTS',
       },
     },
+    // {
+    //   type: 'UPLOAD_PDF_OF_CRX',
+    //   parameters: {},
+    // },
+    // {
+    //   type: 'GET_PDF_CONTENTS_OF_CRX',
+    //   parameters: {},
+    // },
+    // {
+    //   type: 'ANALYZE_CHAT_FILE',
+    //   parameters: {
+    //     AnalyzeChatFileImmediateUpdateConversation: false,
+    //     AnalyzeChatFileName: 'PDFSummaryContent.txt',
+    //   },
+    // },
+    // {
+    //   type: 'SET_VARIABLE',
+    //   parameters: {
+    //     VariableName: 'READABILITY_CONTENTS',
+    //   },
+    // },
     {
       type: 'TEXT_HANDLER',
       parameters: {
@@ -695,6 +746,17 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         WFConditionalIfFalseActions: [
           // 有PDF内容
           {
+            type: 'MAXAI_UPLOAD_DOCUMENT',
+            parameters: {
+              MaxAIDocumentActionConfig: {
+                pureText: '{{READABILITY_CONTENTS}}',
+                docType: 'pdf',
+                doneType: 'document_create',
+                file: '{{PDF_FILE}}' as any,
+              },
+            },
+          },
+          {
             type: 'CHAT_MESSAGE',
             parameters: {
               ActionChatMessageOperationType: 'update',
@@ -736,14 +798,14 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptName: '[Summary] Summarize PDF (Key takeaways)',
                 promptActionType: 'chat_complete',
                 variables: [
-                  {
-                    VariableName: 'PAGE_CONTENT',
-                    label: 'PAGE_CONTENT',
-                    defaultValue: '{{READABILITY_CONTENTS}}',
-                    valueType: 'Text',
-                    systemVariable: true,
-                    hidden: true,
-                  },
+                  // {
+                  //   VariableName: 'PAGE_CONTENT',
+                  //   label: 'PAGE_CONTENT',
+                  //   defaultValue: '{{READABILITY_CONTENTS}}',
+                  //   valueType: 'Text',
+                  //   systemVariable: true,
+                  //   hidden: true,
+                  // },
                 ],
                 output: [],
               },

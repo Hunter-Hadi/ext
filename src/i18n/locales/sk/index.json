@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkripcia vypršala.\nSkúste to prosím znova.",
     "pricing__upgrade__popper_card__title": "Vylepšiť na MaxAI Elite · Ročne",
     "pricing__upgrade__popper_card__item1__title": "Neobmedzené používanie AI",
-    "pricing__upgrade__popper_card__item2__title": "Odomknúť všetky funkcie",
-    "pricing__upgrade__popper_card__item3__title": "Ušetriť hodiny každý deň",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Len GPT-4o. Pre odomknutie všetkých ďalších modelov umelej inteligencie, aktualizujte na plán MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "Odomknúť všetky modely AI",
+    "pricing__upgrade__popper_card__item3__title": "Odomknúť všetky funkcie",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Len GPT-4o. Pre odomknutie všetkých ďalších modelov umelej inteligencie, aktualizujte na plán MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "Najlepšia hodnota za vaše peniaze"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Použiť podnet"
   },
   "quota_usage_card": {
-    "category__fast_text": "Rýchly text",
-    "category__advanced_text": "Pokročilý text",
-    "category__image_generate": "Obrázok",
+    "category__fast_text": "Rýchle AI",
+    "category__advanced_text": "Inteligentné AI",
+    "category__image_generate": "Obrazové AI",
     "role_label": "Súčasný plán: {{ROLE}}",
-    "queries": "Dopyty",
+    "queries": "Zostávajúce AI dotazy",
     "reset_on_date": "Resetovať dňa {{DATE}}",
-    "advanced_text__secondary__content": "Rýchle pokročilé textové dotazy: {{QUERIES}}",
+    "advanced_text__secondary__content": "Vysokorýchlostné inteligentné AI otázky: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych pokročilých textových dotazov každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu.",
-    "image_generate__secondary__content": "Rýchle dotazy na obrázky: {{QUERIES}}",
+    "image_generate__secondary__content": "Vysokorýchlostné obrazové AI otázky: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych dotazov na obrázky každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu.",
-    "promotion_plan__text": "Ušetrite 53% pri vylepšení na MaxAI Elite Ročne teraz. 👇"
+    "upgrade_to_go_unlimited": "Aktualizujte na MaxAI Elite a choďte neobmedzene"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite pre vylepšenie, korektúru, preklad, zhrnutie alebo vysvetlenie vybraného textu od AI.",

@@ -49,7 +49,10 @@ const SidebarUsePromptButton: FC<{
   const [open, setOpen] = React.useState<boolean>(false)
   const root = useMemo(() => getMaxAISidebarRootElement() || document.body, [])
   const currentContext = useMemo(() => {
-    return text || (message && formatChatMessageContent(message, false)) || ''
+    const context =
+      text || (message && formatChatMessageContent(message, false)) || ''
+    // 过滤掉citation tag
+    return context.replace(/\[T(\d+)\]\((.*?)\)/g, '')
   }, [message, text])
   const isRunningRef = useRef(false)
   const handleRunActions = async (actions: ISetActionsType) => {

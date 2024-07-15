@@ -13,10 +13,12 @@ import { useTranslation } from 'react-i18next'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import UserQuotaUsageQueriesCard from '@/features/auth/components/UserQuotaUsageQueriesCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import UpgradePlanSalesCard from '@/features/pricing/components/UpgradePlanSalesCard'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 const SettingsMePage: FC = () => {
   const { t } = useTranslation(['common', 'settings'])
-  const { userInfo, isPaymentOneTimeUser } = useUserInfo()
+  const { userInfo, isPayingUser, isPaymentOneTimeUser, isTopPlanUser } =
+    useUserInfo()
   return (
     <Stack>
       <SettingsFeatureCardLayout
@@ -28,15 +30,11 @@ const SettingsMePage: FC = () => {
             component={'nav'}
             sx={{
               bgcolor: (theme) =>
-                theme.palette.mode === 'dark'
-                  ? 'rgb(32, 33, 36)'
-                  : 'rgb(255,255,255)',
+                theme.palette.mode === 'dark' ? '#2C2C2C' : '#FFFFFF',
               p: '0 !important',
               borderRadius: '8px',
-              border: (t) =>
-                t.palette.mode === 'dark'
-                  ? '1px solid rgba(255, 255, 255, 0.12)'
-                  : '1px solid rgba(0, 0, 0, 0.12)',
+              border: '1px solid',
+              borderColor: 'customColor.borderColor',
               '& > * + .MuiListItem-root': {
                 borderTop: '1px solid',
                 borderColor: 'customColor.borderColor',
@@ -86,14 +84,22 @@ const SettingsMePage: FC = () => {
             </ListItemButton> */}
           </List>
 
+          {isPayingUser && !isPaymentOneTimeUser && !isTopPlanUser ? (
+            <UpgradePlanSalesCard renderPlan='elite_yearly' />
+          ) : null}
+        </Stack>
+      </SettingsFeatureCardLayout>
+      <SettingsFeatureCardLayout title={null} id='user-usage-queries'>
+        <Stack spacing={2}>
           <UserQuotaUsageQueriesCard />
-
           <StripeLinks />
         </Stack>
       </SettingsFeatureCardLayout>
     </Stack>
   )
 }
+
+export default SettingsMePage
 
 const StripeLinks = () => {
   const { t } = useTranslation()
@@ -134,5 +140,3 @@ const StripeLinks = () => {
     </Stack>
   )
 }
-
-export default SettingsMePage

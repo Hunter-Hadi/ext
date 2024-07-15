@@ -146,7 +146,7 @@ const RewardsTabButton: FC = () => {
             },
           }}
         >
-          <GiftIcon />
+          <GiftIcon sx={{ fontSize: 24 }} />
           <Typography
             fontSize={12}
             color={'inherit'}
@@ -317,7 +317,7 @@ const AffiliateTabButton: FC = () => {
             },
           }}
         >
-          <GiftIcon />
+          <GiftIcon sx={{ fontSize: 24 }} />
           <Typography
             fontSize={12}
             color={'inherit'}
@@ -383,7 +383,7 @@ const SurveyTabButton: FC = () => {
             },
           }}
         >
-          <FavoriteIcon />
+          <FavoriteIcon sx={{ fontSize: 24 }} />
           <Typography
             fontSize={12}
             color={'inherit'}
@@ -447,7 +447,7 @@ const UpgradePlanTabButton: FC = () => {
           },
         }}
       >
-        <ElectricBoltIcon />
+        <ElectricBoltIcon sx={{ fontSize: 24 }} />
         <Typography
           fontSize={12}
           color={'inherit'}

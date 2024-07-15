@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija je potekla.\nProsimo, poskusite znova.",
     "pricing__upgrade__popper_card__title": "Nadgradite na MaxAI Elite · Letno",
     "pricing__upgrade__popper_card__item1__title": "Neomejena uporaba AI",
-    "pricing__upgrade__popper_card__item2__title": "Odklenite vse funkcije",
-    "pricing__upgrade__popper_card__item3__title": "Prihranite ure vsak dan",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Za odklep vseh drugih modelov AI nadgradite na načrt MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "Odkleni vse AI modele",
+    "pricing__upgrade__popper_card__item3__title": "Odkleni vse funkcije",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Za odklep vseh drugih modelov AI nadgradite na načrt MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "Najboljša vrednost za vaš denar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Uporabite namig"
   },
   "quota_usage_card": {
-    "category__fast_text": "Hitro besedilo",
-    "category__advanced_text": "Napredno besedilo",
-    "category__image_generate": "Slika",
+    "category__fast_text": "Hitri AI",
+    "category__advanced_text": "Pametni AI",
+    "category__image_generate": "Slikovni AI",
     "role_label": "Trenutni načrt: {{ROLE}}",
-    "queries": "Poizvedbe",
+    "queries": "Preostali AI poizvedbi",
     "reset_on_date": "Ponastavi se na {{DATE}}",
-    "advanced_text__secondary__content": "Visokohitrostna napredna besedilna povpraševanja: {{QUERIES}}",
+    "advanced_text__secondary__content": "Hitre pametne AI poizvedbe: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Zagotovite vsaj 1.500 visokohitrostnih naprednih besedilnih povpraševanj vsak mesec. Po dosegi omejitve se lahko hitrost in kakovost modela zmanjšata.",
-    "image_generate__secondary__content": "Visokohitrostna slikovna povpraševanja: {{QUERIES}}",
+    "image_generate__secondary__content": "Hitre slikovne AI poizvedbe: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Zagotovite vsaj 1.500 visokohitrostnih slikovnih povpraševanj vsak mesec. Po dosegi omejitve se lahko hitrost in kakovost modela zmanjšata.",
-    "promotion_plan__text": "Prihranite 53% z nadgradnjo na MaxAI Elite Letno zdaj. 👇"
+    "upgrade_to_go_unlimited": "Nadgradite na MaxAI Elite, da postanete neomejeni"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Kliknite, da zaprosite AI za izboljšanje, lekturo, prevajanje, povzetek ali pojasnitev izbranega besedila.",

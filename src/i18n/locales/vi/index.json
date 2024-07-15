@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Quá trình chuyển văn bản thành giọng nói đã hết thời gian.\nVui lòng thử lại.",
     "pricing__upgrade__popper_card__title": "Nâng cấp lên MaxAI Elite · Hàng năm",
     "pricing__upgrade__popper_card__item1__title": "Sử dụng AI không giới hạn",
-    "pricing__upgrade__popper_card__item2__title": "Mở khóa tất cả các tính năng",
-    "pricing__upgrade__popper_card__item3__title": "Tiết kiệm hàng giờ mỗi ngày",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Chỉ GPT-4o. Để mở khóa tất cả các mô hình AI khác, nâng cấp lên gói MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "Mở khóa tất cả các mô hình AI",
+    "pricing__upgrade__popper_card__item3__title": "Mở khóa tất cả các tính năng",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Chỉ GPT-4o. Để mở khóa tất cả các mô hình AI khác, nâng cấp lên gói MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "Giá trị tốt nhất cho tiền của bạn"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Sử dụng gợi ý"
   },
   "quota_usage_card": {
-    "category__fast_text": "Văn bản nhanh",
-    "category__advanced_text": "Văn bản tiên tiến",
-    "category__image_generate": "Hình ảnh",
+    "category__fast_text": "AI Nhanh",
+    "category__advanced_text": "AI Thông Minh",
+    "category__image_generate": "AI Hình Ảnh",
     "role_label": "Gói hiện tại: {{ROLE}}",
-    "queries": "Truy vấn",
+    "queries": "Các truy vấn AI còn lại",
     "reset_on_date": "Đặt lại vào ngày {{DATE}}",
-    "advanced_text__secondary__content": "Truy vấn văn bản nâng cao tốc độ cao: {{QUERIES}}",
+    "advanced_text__secondary__content": "Câu truy vấn AI thông minh tốc độ cao: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn văn bản nâng cao tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
-    "image_generate__secondary__content": "Truy vấn hình ảnh tốc độ cao: {{QUERIES}}",
+    "image_generate__secondary__content": "Câu truy vấn AI hình ảnh tốc độ cao: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn hình ảnh tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
-    "promotion_plan__text": "Tiết kiệm 53% bằng cách nâng cấp lên MaxAI Elite Hàng năm ngay bây giờ. 👇"
+    "upgrade_to_go_unlimited": "Nâng cấp lên MaxAI Elite để không giới hạn"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Nhấn để yêu cầu AI cải thiện, kiểm tra lỗi chính tả, dịch, tóm tắt hoặc giải thích văn bản đã chọn.",

@@ -168,8 +168,14 @@ export class ActionAskChatGPT extends Action {
       }
       // 设置attachments
       this.question.meta.attachments = this.question.meta.attachments?.length
-        ? this.question.meta.attachments
+        ? this.question.meta.attachments.filter(
+            (item) => item.uploadStatus === 'success',
+          )
         : await getAIProviderChatFiles(this.question.conversationId)
+      // TODO regenerate不应该带上当前的文件，以及background里不应该clearFiles
+      // if (this.question.meta.attachments?.length) {
+      //   this.question.meta.attachments.filter(item => item.uploadStatus === 'success')
+      // }
       // Question的Meta信息
       const {
         // contextMenu的信息

@@ -143,4 +143,27 @@ use-chat-gpt-ai-content-menu {
   outline: none;
 }
 
+/* citation */
+.maxai-reading-hidden {
+  visibility: hidden;
+}
+.maxai-reading-highlight {
+  background: linear-gradient(
+      0deg,
+      rgba(215, 164, 253, 0.4),
+      rgba(215, 164, 253, 0.4)
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+}
+.maxai-reading-highlight:hover {
+  background: linear-gradient(
+      0deg,
+      rgba(215, 164, 253, 0.4),
+      rgba(215, 164, 253, 0.4)
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+    linear-gradient(0deg, rgba(215, 164, 253, 0.4), rgba(215, 164, 253, 0.4));
+  cursor: pointer;
+}
 /*gmail end*/

@@ -146,18 +146,20 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                   }
                 }
               } else {
-                const result = await clientGetContentOfURL(
-                  searchResult.url,
-                  20 * 1000,
+                const result = await clientGetContentOfURL(searchResult.url, {
+                  timeout: 20 * 1000,
                   abortTaskId,
-                  true,
-                )
+                  needImage: true,
+                })
                 if (this.isTaskAbort(abortTaskId)) {
                   // 如果abort, 返回 fallbackData
                   return fallbackData
                 }
                 pageRawContent.success = result.success
-                pageRawContent.body = result.readabilityText
+                pageRawContent.body =
+                  result.readabilityText.length > searchResult.body.length
+                    ? result.readabilityText
+                    : searchResult.body
                 pageRawContent.title = result.title
                 sourceMedia.images = uniqBy(
                   [...sourceMedia.images, ...result.images],
@@ -290,7 +292,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
     }
     return await clientAskMaxAIChatProvider(
       'USE_CHAT_GPT_PLUS',
-      'gpt-4',
+      'gpt-3.5-turbo',
       {
         message_content: [
           {

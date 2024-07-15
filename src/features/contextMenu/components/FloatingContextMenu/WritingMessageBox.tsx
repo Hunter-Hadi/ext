@@ -1,7 +1,5 @@
 import Stack from '@mui/material/Stack'
-import debounce from 'lodash-es/debounce'
-import throttle from 'lodash-es/throttle'
-import React, { FC, RefObject, useCallback, useEffect, useRef } from 'react'
+import React, { FC, RefObject, useEffect, useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import CustomMarkdown from 'src/components/MaxAIMarkdown'
 
@@ -19,10 +17,9 @@ import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
   markdownBodyRef: RefObject<HTMLDivElement>
-  markdownMaxHeight: number
 }> = (props) => {
   const theme = useCustomTheme()
-  const { onChange, markdownBodyRef, markdownMaxHeight } = props
+  const { onChange, markdownBodyRef } = props
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     ContextWindowDraftContextMenuState,
@@ -47,42 +44,42 @@ const WritingMessageBox: FC<{
   }, [currentFloatingContextMenuDraft, floatingDropdownMenu.open])
   const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = markdownBodyRef
-  const throttleUpdateHeight = useCallback(
-    throttle(() => {
-      const container = containerRef.current
-      if (!container) return
-      console.log(
-        '检测到高度更新:\t',
-        boxRef.current?.offsetHeight,
-        boxRef.current?.getBoundingClientRect().height,
-      )
-      container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
-    }, 100),
-    [],
-  )
-  const debounceUpdateHeight = useCallback(
-    debounce(() => {
-      const container = containerRef.current
-      if (!container) return
-      console.log(
-        '检测到高度更新:\t',
-        boxRef.current?.offsetHeight,
-        boxRef.current?.getBoundingClientRect().height,
-      )
-      container.style.minHeight = `${
-        (boxRef.current?.offsetHeight || 0) + 0.01
-      }px`
-    }, 100),
-    [],
-  )
+  // const throttleUpdateHeight = useCallback(
+  //   throttle(() => {
+  //     const container = containerRef.current
+  //     if (!container) return
+  //     console.log(
+  //       '检测到高度更新:\t',
+  //       boxRef.current?.offsetHeight,
+  //       boxRef.current?.getBoundingClientRect().height,
+  //     )
+  //     container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
+  //   }, 100),
+  //   [],
+  // )
+  // const debounceUpdateHeight = useCallback(
+  //   debounce(() => {
+  //     const container = containerRef.current
+  //     if (!container) return
+  //     console.log(
+  //       '检测到高度更新:\t',
+  //       boxRef.current?.offsetHeight,
+  //       boxRef.current?.getBoundingClientRect().height,
+  //     )
+  //     container.style.minHeight = `${
+  //       (boxRef.current?.offsetHeight || 0) + 0.01
+  //     }px`
+  //   }, 100),
+  //   [],
+  // )
   useEffect(() => {
     // scroll to bottom
     setTimeout(() => {
       boxRef.current?.scrollTo({
         top: boxRef.current.scrollHeight,
       })
-      throttleUpdateHeight()
-      debounceUpdateHeight()
+      // throttleUpdateHeight()
+      // debounceUpdateHeight()
     }, 0)
   }, [currentFloatingContextMenuDraft])
   useEffect(() => {
@@ -121,7 +118,6 @@ const WritingMessageBox: FC<{
           t.palette.mode === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
         '& .markdown-body': {
           userSelect: 'text',
-          maxHeight: 'min(40vh, 320px)',
           overflowY: 'auto',
           '*': {
             fontFamily: '"Roboto","Helvetica","Arial",sans-serif!important',

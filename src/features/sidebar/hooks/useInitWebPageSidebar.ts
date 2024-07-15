@@ -187,12 +187,13 @@ const useInitWebPageSidebar = () => {
         // 页面变化切换至Chat并停止当前对话
         const pageSummaryConversationId = pageSummaryConversationIdRef.current
         getMaxAIChromeExtensionUserId().then((userId) => {
-          if (
-            pageSummaryConversationId !==
-            getPageSummaryConversationId({ userId })
-          ) {
-            updateSidebarConversationType('Chat')
+          const newSummaryConversationId = getPageSummaryConversationId({
+            userId,
+          })
+          if (pageSummaryConversationId !== newSummaryConversationId) {
             stopGenerate()
+            updateSidebarConversationType('Chat')
+            updateSidebarSummaryConversationId(newSummaryConversationId)
           } else {
             updateSidebarSummaryConversationId()
           }

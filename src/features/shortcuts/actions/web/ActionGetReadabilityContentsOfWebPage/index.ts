@@ -1,8 +1,5 @@
-import {
-  getIframeOrSpecialHostPageContent,
-  getReadabilityPageContent,
-  getVisibilityPageContent,
-} from '@/features/chat-base/summary/utils/pageContentHelper'
+import { parseReadabilityDocument } from '@/features/chat-base/summary/utils/documentContentHelper'
+import { getIframeOrSpecialHostPageContent } from '@/features/chat-base/summary/utils/pageContentHelper'
 import {
   IShortcutEngineExternalEngine,
   pushOutputToChat,
@@ -37,13 +34,19 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
   ) {
     try {
       if (this.isStopAction) return
-      let result =
-        (await getIframeOrSpecialHostPageContent()) ||
-        (await getReadabilityPageContent())
-      if (result.length < 100 && typeof document !== 'undefined') {
-        result = await getVisibilityPageContent()
+      // TODO 目前ReadabilityPageContent是从document.cloneNode(true)读取出来的内容对于样式判断不准确
+      // let result =
+      //   (await getIframeOrSpecialHostPageContent()) ||
+      //   (await getReadabilityPageContent())
+      // if (result.length < 100 && typeof document !== 'undefined') {
+      //   result = await getVisibilityPageContent()
+      // }
+      let result = await getIframeOrSpecialHostPageContent()
+      if (!result) {
+        const clear = parseReadabilityDocument(document, false)
+        this.originalInnerText = result = document.body.innerText
+        clear()
       }
-      this.originalInnerText = document.body.innerText
       this.output = result
     } catch (e) {
       this.error = (e as any).toString()

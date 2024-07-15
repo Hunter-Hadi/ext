@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "4.3.12",
+  "version": "4.3.14",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",
@@ -21,38 +21,38 @@
       "run_at": "document_end"
     },
     {
-      "matches": [
-        "http://localhost:3000/*",
-        "https://main.d3bohqvl407i44.amplifyapp.com/*",
-        "https://test.d3kf9o74pc4m0c.amplifyapp.com/*"
-      ],
-      "js": ["check_status.js"],
+      "matches": ["<all_urls>"],
+      "js": ["searchWithAI.js"],
       "run_at": "document_end"
     },
     {
-      "matches": ["<all_urls>"],
-      "match_about_blank": true,
-      "all_frames": true,
-      "js": ["iframeDocumentEnd.js"],
+      "matches": [
+        "http://localhost:3000/*",
+        "https://main.d3kf9o74pc4m0c.amplifyapp.com/*",
+        "https://test.d3kf9o74pc4m0c.amplifyapp.com/*"
+      ],
+      "js": ["apps/content-scripts/checkMaxAIStatus.js"],
       "run_at": "document_end"
     },
     {
       "matches": ["https://chatgpt.com/robots.txt"],
       "match_about_blank": true,
       "all_frames": true,
-      "js": ["contentArkoseTokenIframe.js"],
+      "js": ["apps/content-scripts/contentArkoseTokenIframe.js"],
       "run_at": "document_start"
-    },
-    {
-      "matches": ["<all_urls>"],
-      "js": ["searchWithAI.js"],
-      "run_at": "document_end"
     },
     {
       "matches": ["<all_urls>"],
       "all_frames": false,
       "js": ["apps/content-scripts/injectDocumentStart.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "match_about_blank": true,
+      "all_frames": true,
+      "js": ["apps/content-scripts/iframeDocumentEnd.js"],
+      "run_at": "document_end"
     }
   ],
   "host_permissions": ["<all_urls>"],

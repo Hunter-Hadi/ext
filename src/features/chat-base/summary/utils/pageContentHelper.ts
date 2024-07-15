@@ -1,45 +1,21 @@
-import './hackReadability'
-
+/**
+ * 获取页面里的内容
+ *
+ * 和documentContentHelper不同，这里的页面是当前访问的网页
+ */
 import { Readability } from '@mozilla/readability'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import {
+  getFormattedTextFromNodes,
+  getVisibleTextNodes,
+} from '@/features/chat-base/summary/utils/elementHelper'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-
-const inlineTagNames = new Set([
-  'a',
-  'abbr',
-  'b',
-  'bdi',
-  'bdo',
-  // 'br',
-  'cite',
-  'code',
-  'dfn',
-  'em',
-  'i',
-  'img',
-  'input',
-  'kbd',
-  'label',
-  'mark',
-  'q',
-  's',
-  'samp',
-  'small',
-  'span',
-  'strong',
-  'sub',
-  'sup',
-  'time',
-  'tt',
-  'u',
-  'var',
-])
 
 /**
  * 判断是否需要获取iframe中的内容，在特殊的网站中，iframe中的内容才是我们需要的，例如：
@@ -64,12 +40,15 @@ export const isNeedGetSpecialHostPageContent = () => {
   const host = getCurrentDomainHost()
   return [
     'docs.google.com',
-    'cnbc.com',
     'github.com',
-    'timesofindia.indiatimes.com',
+    // 'cnbc.com',
+    // 'timesofindia.indiatimes.com',
   ].find((item) => item === host)
 }
 
+/**
+ * 从特殊网站获取内容
+ */
 export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
   let pageContent = ''
   if (isNeedGetIframePageContent()) {
@@ -80,144 +59,11 @@ export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
     const host = getCurrentDomainHost()
     if (host === 'docs.google.com') {
       pageContent = await getGoogleDocPageContent()
-    } else if (host === 'cnbc.com') {
-      pageContent = await getCnbcPageContent()
     } else if (host === 'github.com') {
       pageContent = await getGithubPageContent()
-    } else if (host === 'timesofindia.indiatimes.com') {
-      const contentContainer = document.querySelector(
-        '#app .nonAppView > .contentwrapper',
-      ) as HTMLDivElement
-      if (contentContainer) {
-        pageContent = getFormattedTextFromNodes(
-          getVisibleTextNodes(contentContainer),
-        )
-        // pageContent = contentContainer.innerText
-      }
     }
   }
   return pageContent.trim()
-}
-
-/**
- * 获取可见文本节点
- * @param element
- * @param selectable 为true代表过滤掉无法选择的节点
- */
-export const getVisibleTextNodes = (
-  element: HTMLElement,
-  options: { selectable: boolean } = { selectable: false },
-) => {
-  const textNodes: (Node & { hasEOL?: boolean })[] = []
-  const { selectable } = options
-
-  function traverseNodes(node: Node) {
-    if (node.nodeType === Node.TEXT_NODE && node.textContent !== '') {
-      // 检查文本节点是否可见
-      // const parent = node.parentNode;
-      // const style = window.getComputedStyle(parent);
-      // if (style && style.display !== 'none' && style.visibility !== 'hidden') {
-      //   textNodes.push(node);
-      // }
-      textNodes.push(node)
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      const style = window.getComputedStyle(node as HTMLElement)
-      const isVisible =
-        style.display !== 'none' && style.visibility !== 'hidden'
-      const isSelectable = isVisible && style.userSelect !== 'none' // && style.pointerEvents !== 'none'
-      const flag = selectable ? isSelectable : isVisible
-      if (flag) {
-        if (
-          !isInlineElement((node as HTMLElement).tagName || '') &&
-          textNodes[textNodes.length - 1]
-        ) {
-          textNodes[textNodes.length - 1].hasEOL = true
-        }
-        node.childNodes.forEach((child) => traverseNodes(child))
-      }
-    }
-  }
-  traverseNodes(element)
-
-  return textNodes
-}
-
-export const formattedTextContent = (node: Node & { hasEOL?: boolean }) => {
-  const textContent = node.textContent?.replace(/\s+/g, ' ') || ''
-  if (node.hasEOL) {
-    return `${textContent}\n`
-  }
-  return textContent
-}
-
-/**
- * 获取节点下的所有文本字符串
- * 格式化处理，类似innerText处理多余的空格换行符
- * @param nodes
- */
-export const getFormattedTextFromNodes = (nodes: Node[]) => {
-  let textContent = ''
-
-  nodes.forEach((node, index) => {
-    // const parent = node.parentNode;
-    // const nextNode = nodes[index + 1]
-    // const nextParent = nextNode ? nextNode.parentNode : null;
-
-    // 文本节点连续换行和空格都转为单个空格
-    textContent += formattedTextContent(node)
-
-    // 判断是否需要换行
-    // if (nextNode) {
-    //   const parentTagName = getClosestBlockElement(parent);
-    //   const nextParentTagName = getClosestBlockElement(nextParent);
-    //
-    //   // 如果父元素是块级元素，并且下一个文本节点的父元素不同，则换行
-    //   if (parent !== nextParent && parentTagName !== nextParentTagName) {
-    //     textContent += '\n';
-    //   } else if (isBlockElement(parentTagName) && isBlockElement(nextParentTagName)) {
-    //     // 如果当前和下一个文本节点的父元素都是块级元素，则换行
-    //     textContent += '\n';
-    //   } else if (parentTagName === 'br') {
-    //     // 如果父元素是 <br> 标签，则换行
-    //     textContent += '\n';
-    //   }
-    // }
-  })
-
-  return textContent
-}
-
-/**
- * 判断是否是内联标签
- * @param tagName
- */
-export const isInlineElement = (tagName: string) => {
-  return inlineTagNames.has(tagName.toLowerCase())
-}
-
-/**
- * 获取Readability.parse解析后的对象
- * 移除对content的序列化
- * @param replaceBody
- * @param options
- */
-export const getReadabilityArticle = (
-  replaceBody?: HTMLElement,
-  options?: any,
-) => {
-  const clonedDocument = document.cloneNode(true) as Document
-  if (clonedDocument && replaceBody) {
-    clonedDocument.body.innerHTML = replaceBody.innerHTML
-  }
-  const reader = new Readability(clonedDocument as any, {
-    serializer: (el) => el,
-    ...options,
-  })
-  const readabilityArticle = reader.parse()
-  const contentElement =
-    readabilityArticle?.content as any as HTMLElement | null
-
-  return { ...readabilityArticle, content: contentElement }
 }
 
 /**
@@ -230,9 +76,21 @@ export const getReadabilityPageContent = (
   replaceBody?: HTMLElement,
   options?: any,
 ) => {
-  const readabilityArticle = getReadabilityArticle(replaceBody, options)
+  const clonedDocument = document.cloneNode(true) as Document
+  if (clonedDocument && replaceBody) {
+    clonedDocument.body.innerHTML = replaceBody.innerHTML
+  }
+  // if (!isProbablyReaderable(clonedDocument)) {
+  //   return ''
+  // }
+  const reader = new Readability(clonedDocument, {
+    ...options,
+    serializer: (el) => el,
+  })
+  const article = reader.parse()
+  const contentElement = article?.content as any as HTMLElement | null
 
-  if (readabilityArticle?.content) {
+  if (article && contentElement) {
     // 去掉每行前后的空格
     // 将两个或更多连续的换行符替换为单个换行符
     // 将两个或更多连续的空白字符（包括空格和制表符）替换为单个空格
@@ -241,8 +99,8 @@ export const getReadabilityPageContent = (
     //   .replace(/\n{2,}/g, '\n')
     //   .replace(/[ \t]{2,}/g, ' ')
 
-    return `${readabilityArticle.title}\n\n${getFormattedTextFromNodes(
-      getVisibleTextNodes(readabilityArticle.content),
+    return `${article.title}\n\n${getFormattedTextFromNodes(
+      getVisibleTextNodes(contentElement),
     )}`
   }
 
@@ -257,7 +115,7 @@ export const getReadabilityPageContent = (
 export const getVisibilityPageContent = (element = document.body) => {
   const textNodes = getVisibleTextNodes(element)
   const allTextContent = getFormattedTextFromNodes(textNodes)
-  return allTextContent || document.body.innerText
+  return allTextContent.trim()
 }
 
 /**
@@ -277,7 +135,10 @@ export const getIframePageContent = async () => {
     if (!result.success) {
       resolve('')
     }
-    let isResolve = false
+    const timer = setTimeout(() => {
+      resolve('')
+      Browser.runtime.onMessage.removeListener(listener)
+    }, 10000)
     const listener = (msg: any) => {
       if (
         msg.id === MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID &&
@@ -285,24 +146,12 @@ export const getIframePageContent = async () => {
           ('Client_ListenGetIframePageContentResponse' as IChromeExtensionClientListenEvent) &&
         msg.data.taskId === taskId
       ) {
-        if (isResolve) {
-          return
-        }
-        isResolve = true
         resolve(msg.data.pageContent)
         Browser.runtime.onMessage.removeListener(listener)
+        clearTimeout(timer)
       }
     }
     Browser.runtime.onMessage.addListener(listener)
-    // 10s超时
-    setTimeout(() => {
-      if (isResolve) {
-        return
-      }
-      isResolve = true
-      resolve('')
-      Browser.runtime.onMessage.removeListener(listener)
-    }, 10000)
   })
 }
 
@@ -312,15 +161,6 @@ export const getIframePageContent = async () => {
 export const getGoogleDocPageContent = async () => {
   return new Promise<string>((resolve) => {
     const eventId = uuidV4()
-    // const script = document.createElement('script')
-    // script.type = 'module'
-    // // 浏览器对于相同url的js文件只会执行一次，这里加个时间戳
-    // script.src = Browser.runtime.getURL(
-    //   `pages/googleDoc/index.js?time=${Date.now()}`,
-    // )
-    // script.setAttribute('data-event-id', eventId)
-    // script.id = 'MAXAI_GOOGLE_DOC_CONTENT_SCRIPT'
-    // document.body.appendChild(script)
     const timer = setTimeout(() => {
       resolve('')
       window.removeEventListener(`${eventId}-res`, listener)
@@ -338,19 +178,6 @@ export const getGoogleDocPageContent = async () => {
       }),
     )
   })
-}
-
-/**
- * 获取cnbc网页内容
- */
-export const getCnbcPageContent = async () => {
-  const mainContainer = document.querySelector(
-    '#MainContentContainer',
-  ) as HTMLDivElement
-  if (mainContainer) {
-    return getReadabilityPageContent(mainContainer)
-  }
-  return ''
 }
 
 /**

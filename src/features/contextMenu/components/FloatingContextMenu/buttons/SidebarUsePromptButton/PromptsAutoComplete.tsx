@@ -333,7 +333,7 @@ const PromptsAutoComplete: FC<{
   )
 }
 
-const NestedPromptList: FC<{
+export const NestedPromptList: FC<{
   root: HTMLElement
   promptList: IContextMenuItemWithChildren[]
   onSelectPromptId: (promptId: string) => void

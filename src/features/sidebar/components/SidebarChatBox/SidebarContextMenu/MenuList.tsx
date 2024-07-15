@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useRecoilState, useResetRecoilState } from 'recoil'
 
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { SPECIAL_NEED_DIVIDER_KEYS } from '@/features/contextMenu/constants'
 import {
   contextMenuIsFavoriteContextMenu,
@@ -19,6 +20,7 @@ import {
   checkIsDraftContextMenuId,
   findDraftContextMenuById,
 } from '@/features/contextMenu/utils'
+import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 import {
@@ -149,8 +151,16 @@ const ContextMenuList: FC<
   )
   const resetDropdownState = useResetRecoilState(DropdownMenuSelectedItemState)
   const { checkAttachments, shortCutsEngine } = useClientChat()
+  const { currentConversationId } = useClientConversation()
 
   useEffect(() => {
+    console.log(
+      'onRunActions selectedDraftContextMenuId effect',
+      menuSelectedItemState,
+      currentConversationId
+        ? ClientConversationManager.getConversationById(currentConversationId)
+        : '',
+    )
     if (menuSelectedItemState.selectedContextMenuId && menuList.length > 0) {
       let currentSelectedId = menuSelectedItemState.selectedContextMenuId
       // 是否为[推荐]菜单的动作
@@ -189,15 +199,7 @@ const ContextMenuList: FC<
       const runActions: ISetActionsType = cloneDeep(
         currentContextMenu.data.actions || [],
       )
-      // 如果是[草稿-续写]菜单的动作, 需要加上当前focus的messageId, 配合CONTINUE_WRITING的Actions
-      // if (currentContextMenu.id === CONTEXT_MENU_DRAFT_TYPES.CONTINUE_WRITING) {
-      // runActions.unshift({
-      //   type: 'RENDER_TEMPLATE',
-      //   parameters: {
-      //     template: floatingContextMenuDraftMessageIdRef.current || '',
-      //   },
-      // })
-      // }
+      console.log('onRunActions prepare', runActions)
       resetDropdownState()
 
       if (runActions.length > 0) {
@@ -211,8 +213,9 @@ const ContextMenuList: FC<
                 console.log('[ContextMenu Module] error', error)
               }
             })
-            .catch(() => {
+            .catch((err) => {
               // TODO: 错误处理
+              console.error('onRunActions catch error', err)
             })
 
           // return askAIWIthShortcuts(
@@ -260,6 +263,7 @@ const ContextMenuList: FC<
       }
     }
   }, [menuSelectedItemState])
+
   const RenderMenuList = useMemo(() => {
     const nodeList: React.ReactNode[] = []
     // console.log('Context Menu List Render', menuList)
@@ -293,13 +297,6 @@ const ContextMenuList: FC<
               event.preventDefault()
             }}
           >
-            {/*{menuItem?.data?.icon && (*/}
-            {/*  <ContextMenuIcon*/}
-            {/*    size={16}*/}
-            {/*    icon={menuItem.data.icon}*/}
-            {/*    sx={{ color: 'primary.main', mr: 1 }}*/}
-            {/*  />*/}
-            {/*)}*/}
             <Typography
               textAlign={'left'}
               fontSize={12}

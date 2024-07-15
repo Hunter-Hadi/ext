@@ -45,6 +45,7 @@ const SidebarChatPanel = () => {
     clientConversationMessages,
     resetConversation,
     pushPricingHookMessage,
+    clientConversation,
   } = useClientConversation()
 
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
@@ -118,6 +119,10 @@ const SidebarChatPanel = () => {
           }
           await resetConversation()
         }}
+        switching={
+          (clientConversation || false) &&
+          clientConversation.type !== currentSidebarConversationType
+        }
       />
       <SidebarFilesDropBox />
     </>

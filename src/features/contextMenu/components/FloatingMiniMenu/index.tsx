@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
@@ -144,7 +144,7 @@ const FloatingMiniMenu: FC<{
     floatingDropdownMenu.open,
     tempSelection,
   ])
-  const handleCloseClickContextMenuButton = useCallback(() => {
+  const handleCloseClickContextMenuButton = () => {
     if (refs.floating.current) {
       if (getComputedStyle(refs.floating.current).opacity === '0') {
         return
@@ -152,7 +152,7 @@ const FloatingMiniMenu: FC<{
       hideRangy()
       removeAllRange()
     }
-  }, [])
+  }
   useEffect(() => {
     // listen doc esc
     const handleEsc = (event: KeyboardEvent) => {

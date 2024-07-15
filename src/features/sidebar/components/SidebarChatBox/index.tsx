@@ -4,14 +4,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
-import React, {
-  FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AutoHeightTextarea, {
@@ -58,6 +51,12 @@ interface IGmailChatBoxProps {
   onSendMessage?: (text: string, options: IUserChatMessageExtraType) => void
   onRetry?: (messageId: string) => void
   loading?: boolean
+  /**
+   * 表示是否在切换过程中，因为conversationType和conversationId并不是同步切换的，
+   * conversationType会比conversationId切换得更快，
+   * 所以使用clientConversation.type(来自useClientConversation) !== currentConversationType(来自useSidebarSettings)来判断是否在切换的过程中
+   */
+  switching?: boolean
 }
 
 const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
@@ -72,9 +71,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     messages,
     onReset,
     loading,
+    switching = false,
   } = props
-  const [isLoadingChatMessages, setIsLoadingChatMessages] = useState(false)
-  const [isFetchNextPage, setIsFetchNextPage] = useState(false)
+  // const [isLoadingChatMessages, setIsLoadingChatMessages] = useState(false)
+  // const [isFetchNextPage, setIsFetchNextPage] = useState(false)
   const [isSettingVariables, setIsSettingVariables] = useState(false)
   const [isShowRegenerateButton, setIsShowRegenerateButton] = useState(true)
   const [isShowContinueButton, setIsShowContinueButton] = useState(false)
@@ -107,7 +107,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     }
     return t('client:sidebar__input__chat__placeholder')
   }, [conversationType, t])
-  const shortcutsActionBtnSxMemo = useMemo(() => {
+
+  const shortcutsActionBtnSxMemo = useMemo<SxProps<Theme>>(() => {
     return {
       borderRadius: 2,
       borderColor: 'primary.main',
@@ -128,33 +129,34 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
    * * 所以下方的loading状态有3个步骤, 为了不让HomeView闪烁
    */
   // 切换conversation的时候，先切换了conversationType，又切换了id，所以要先给一个2
-  const switchConversationRef = useRef(false)
-  useEffect(() => {
-    switchConversationRef.current = true
-  }, [conversationType])
-  const [messagesLoadingStep, setMessagesLoadingStep] = useState(0)
-  useEffect(() => {
-    if (conversationId) {
-      if (switchConversationRef.current) {
-        switchConversationRef.current = false
-        setMessagesLoadingStep(2)
-      } else {
-        setMessagesLoadingStep(1)
-      }
-    }
-  }, [conversationId])
-
-  useEffect(() => {
-    setMessagesLoadingStep((prevState) => {
-      return prevState + 1
-    })
-  }, [messages])
+  // const switchConversationRef = useRef(false)
+  // useEffect(() => {
+  //   switchConversationRef.current = true
+  // }, [conversationType])
+  // const [messagesLoadingStep, setMessagesLoadingStep] = useState(0)
+  // useEffect(() => {
+  //   if (conversationId) {
+  //     if (switchConversationRef.current) {
+  //       switchConversationRef.current = false
+  //       setMessagesLoadingStep(2)
+  //     } else {
+  //       setMessagesLoadingStep(1)
+  //     }
+  //   }
+  // }, [conversationId])
+  //
+  // useEffect(() => {
+  //   setMessagesLoadingStep((prevState) => {
+  //     return prevState + 1
+  //   })
+  // }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
     // console.log('isShowChatBoxHomeView', messagesLoadingStep)
     // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
     // 具体问题是因为，在第一次切换 conversationId 时，会有一个瞬间
     // isLoadingChatMessages 和 isFetchNextPage 等于 false，并且 messages.length 等于 0
+    // messages[0].conversationId === conversationId
 
     // console.log(
     //   'isShowChatBoxHomeView',
@@ -162,22 +164,21 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     //   isFetchNextPage,
     //   messages,
     // )
-    if (messagesLoadingStep <= 2) {
+    // if (messagesLoadingStep <= 2) {
+    //   return false
+    // }
+    if (loading || switching) {
       return false
     }
     return (
       messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
     )
-  }, [
-    messagesLoadingStep,
-    isLoadingChatMessages,
-    // isFetchNextPage,
-    writingMessage,
-    conversationType,
-  ])
+  }, [loading, switching, messages.length, writingMessage, conversationType])
+
   const handleSwitchToSummary = () => {
     updateSidebarConversationType('Summary')
   }
+
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
       onSendMessage?.(value, options)
@@ -241,8 +242,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
       {conversationId ? (
         <SidebarChatBoxMessageListContainer
-          onLoadingChatMessages={setIsLoadingChatMessages}
-          onFetchingNextPage={setIsFetchNextPage}
+          // onLoadingChatMessages={setIsLoadingChatMessages}
+          // onFetchingNextPage={setIsFetchNextPage}
           conversationId={conversationId}
           isAIResponding={loading}
           writingMessage={writingMessage}
@@ -252,7 +253,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         />
       ) : null}
 
-      {!(conversationType === 'ContextMenu' && isShowChatBoxHomeView) && (
+      {(conversationType !== 'ContextMenu' || !isShowChatBoxHomeView) && (
         <>
           <SidebarSummarySuggestion onClick={handleSwitchToSummary} />
 
@@ -312,7 +313,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   }}
                 />
 
-                {!loading && isShowRegenerateButton && (
+                {!loading && writingMessage && isShowRegenerateButton && (
                   <Button
                     disableElevation
                     startIcon={<CachedIcon />}
@@ -349,7 +350,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                       {t('client:sidebar__button__continue')}
                     </Button>
                   )}
-                {loading && (
+                {loading && writingMessage && (
                   <Button
                     sx={shortcutsActionBtnSxMemo}
                     disableElevation
@@ -366,7 +367,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
               </Box>
               <ActionSetVariablesModal
                 showModelSelector
-                onChange={(data, reason) => {
+                onChange={(_, reason) => {
                   if (reason === 'runPromptStart') {
                     setIsSettingVariables(false)
                   }

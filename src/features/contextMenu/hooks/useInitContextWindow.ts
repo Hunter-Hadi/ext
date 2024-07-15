@@ -294,11 +294,11 @@ const useInitContextWindow = () => {
         false,
       )
     } else {
-      await updateSidebarSettings({
-        contextMenu: {
-          conversationId: currentConversationId,
-        },
-      })
+      // await updateSidebarSettings({
+      //   contextMenu: {
+      //     conversationId: currentConversationId,
+      //   },
+      // })
     }
   }
   /**

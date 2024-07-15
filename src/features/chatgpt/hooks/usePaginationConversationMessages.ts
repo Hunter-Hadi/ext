@@ -114,7 +114,7 @@ const usePaginationConversationMessages = (conversationId: string) => {
       return paginationMessages
     },
     initialPageParam: 0,
-    getNextPageParam: (lastPage, allPages, lastPageParam) => {
+    getNextPageParam: (lastPage, _, lastPageParam) => {
       // 说明本地和远程都没有数据
       if (lastPage.length === 0) {
         // console.log(

@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import last from 'lodash-es/last'
 import throttle from 'lodash-es/throttle'
-import React, { FC, useCallback, useEffect, useRef } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 
 import usePaginationConversationMessages from '@/features/chatgpt/hooks/usePaginationConversationMessages'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
@@ -28,8 +28,8 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     writingMessage,
     isAIResponding,
     sx,
-    onLoadingChatMessages,
-    onFetchingNextPage,
+    // onLoadingChatMessages,
+    // onFetchingNextPage,
     conversationId,
   } = props
 
@@ -38,7 +38,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   // 新增的消息不是通过分页加载到messages里的，是直接插入的
   const lastMessageIdRef = useRef<string | null>(null)
   const {
-    paginationMessages,
+    paginationMessages: queryPaginationMessages,
     isFetchingNextPage,
     isLoading,
     hasNextPage,
@@ -47,6 +47,15 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     resetPreviousPageLastMessageId,
     lastPaginationMessageIdRef,
   } = usePaginationConversationMessages(conversationId || '')
+
+  const paginationMessages = useMemo(() => {
+    if (
+      queryPaginationMessages.length === 0 ||
+      queryPaginationMessages[0].conversationId === conversationId
+    )
+      return queryPaginationMessages
+    return []
+  }, [queryPaginationMessages, conversationId])
 
   const loadMore = useCallback(() => {
     if (isFetchingNextPage || !hasNextPage) {
@@ -204,12 +213,12 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     }
   }, [writingMessage?.messageId, paginationMessages])
 
-  useEffect(() => {
-    onLoadingChatMessages?.(isLoading)
-  }, [isLoading])
-  useEffect(() => {
-    onFetchingNextPage?.(isFetchingNextPage)
-  }, [isFetchingNextPage])
+  // useEffect(() => {
+  //   onLoadingChatMessages?.(isLoading)
+  // }, [isLoading])
+  // useEffect(() => {
+  //   onFetchingNextPage?.(isFetchingNextPage)
+  // }, [isFetchingNextPage])
   // return (
   //   <>
   //     <Typography color={'text.primary'}>

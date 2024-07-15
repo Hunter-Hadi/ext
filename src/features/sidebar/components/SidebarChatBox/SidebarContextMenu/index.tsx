@@ -28,28 +28,18 @@ const SidebarContextMenu: FC = () => {
     'textSelectPopupButton',
     inputValue,
   )
-  const { askAIWIthShortcuts } = useClientChat()
+  const { askAIWIthShortcuts, askAIQuestion } = useClientChat()
 
-  /**
-   * ✅
-   * 通过context window的输入框来询问AI
-   */
-  const askAIQuestion = async () => {
-    if (inputValue.trim()) {
-      // const template = `${inputValue}:\n"""\n${content}\n"""`
-      // const conversationId = await createConversation('ContextMenu')
-      // if (!conversationId) {
-      //   throw Error('not conversationId')
-      // }
-      // const runActions: ISetActionsType = [
-      //   {
-      //     type: 'ASK_CHATGPT',
-      //     parameters: {
-      //       AskChatGPTActionQuestion: question as IUserChatMessage,
-      //       isEnabledDetectAIResponseLanguage: false,
-      //     },
-      //   },
-      // ]
+  const handleEnter = async () => {
+    if (inputValue.trim() && content) {
+      const template = `${inputValue}:\n"""\n${content}\n"""`
+      await askAIQuestion({
+        type: 'user',
+        text: template,
+        meta: {
+          includeHistory: true,
+        },
+      })
     }
   }
 
@@ -68,13 +58,12 @@ const SidebarContextMenu: FC = () => {
   return (
     <>
       <Box
-        ref={refs.setReference}
         width={'100%'}
-        maxWidth={'40vw'}
         padding={'10px'}
         paddingBottom={0}
         display={'flex'}
-        justifyContent={'center'}
+        flexDirection={'column'}
+        alignItems={'center'}
         sx={{
           boxSizing: 'border-box',
         }}
@@ -94,6 +83,7 @@ const SidebarContextMenu: FC = () => {
             flexDirection: 'column',
             width: '100%',
             padding: '8px 12px',
+            maxWidth: '768px',
           }}
           onKeyDown={(event) => {
             event.stopPropagation()
@@ -159,6 +149,7 @@ const SidebarContextMenu: FC = () => {
                 // autoFocus
                 onKeydownCapture={(event) => {
                   if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+                    // 传递事件给referenceElement以响应快捷指令
                     referenceElementRef.current?.dispatchEvent(
                       new KeyboardEvent('keydown', {
                         code: event.code,
@@ -190,7 +181,7 @@ const SidebarContextMenu: FC = () => {
                   borderRadius: 0,
                   minHeight: '24px',
                 }}
-                onEnter={askAIQuestion}
+                onEnter={handleEnter}
               />
             </Stack>
 
@@ -210,21 +201,30 @@ const SidebarContextMenu: FC = () => {
                   alignItems: 'center',
                   p: 0,
                   m: 0,
-                  cursor: inputValue ? 'pointer' : 'default',
+                  cursor: inputValue && content ? 'pointer' : 'default',
                   bgcolor: (t) =>
-                    inputValue
+                    inputValue && content
                       ? 'primary.main'
                       : t.palette.mode === 'dark'
                       ? 'rgba(255, 255, 255, 0.2)'
                       : 'rgb(219,219,217)',
                 }}
-                onClick={askAIQuestion}
+                onClick={handleEnter}
               >
                 <SendIcon sx={{ color: '#fff', fontSize: 16 }} />
               </IconButton>
             </TextOnlyTooltip>
           </Stack>
         </Box>
+        <Box
+          sx={{
+            maxWidth: '768px',
+            width: '100%',
+            padding: '0 10px',
+            boxSizing: 'border-box',
+          }}
+          ref={refs.setReference}
+        ></Box>
       </Box>
       <FloatingPortal root={root}>
         <Box
@@ -235,7 +235,6 @@ const SidebarContextMenu: FC = () => {
             zIndex: 10000,
             top: y ?? 0,
             left: x ?? 0,
-            padding: '0 10px',
           }}
         >
           <ContextMenuList

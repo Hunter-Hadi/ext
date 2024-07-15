@@ -546,9 +546,14 @@ export class ActionAskChatGPT extends Action {
                 : AIResponseMessageText
               // 从2024-06-14起，AI response的消息会在originalMessage里
               this.answer = {
-                messageId: (AIResponseMessage.messageId as string) || uuidV4(),
+                messageId:
+                  this.answer?.messageId ||
+                  (AIResponseMessage.messageId as string) ||
+                  uuidV4(),
                 parentMessageId:
-                  (AIResponseMessage.parentMessageId as string) || uuidV4(),
+                  this.answer?.parentMessageId ||
+                  (AIResponseMessage.parentMessageId as string) ||
+                  uuidV4(),
                 text: '',
                 type: 'ai' as const,
                 originalMessage: mergeWithObject([
@@ -595,7 +600,7 @@ export class ActionAskChatGPT extends Action {
                 // TODO 后续会去掉liteMode，渲染的时候以有无对应属性去显示组件
                 const liteModeKeys: Array<
                   keyof Required<IAIResponseOriginalMessage>['metadata']
-                > = ['deepDive', 'sourceCitations', 'AIModel']
+                > = ['deepDive', 'sourceCitations', 'AIModel', 'isComplete']
                 // 有效的metadata数量
                 const validMetadataCount = Object.keys(
                   this.answer.originalMessage.metadata || {},

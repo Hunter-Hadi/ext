@@ -1,7 +1,7 @@
 import isArray from 'lodash-es/isArray'
 import { visit } from 'unist-util-visit'
 
-const rehypeMaxAICustomMarkdownComponentPlugin = () => {
+const rehypeMaxAIMarkdownCodeRendererPlugin = () => {
   return (tree: any) => {
     visit(tree, 'element', (node) => {
       const { tagName, properties } = node
@@ -35,4 +35,4 @@ const rehypeMaxAICustomMarkdownComponentPlugin = () => {
     })
   }
 }
-export default rehypeMaxAICustomMarkdownComponentPlugin
+export default rehypeMaxAIMarkdownCodeRendererPlugin

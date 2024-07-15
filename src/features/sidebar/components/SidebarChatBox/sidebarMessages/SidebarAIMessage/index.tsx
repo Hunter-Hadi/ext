@@ -35,7 +35,7 @@ import { SwitchSummaryActionNav } from '@/features/sidebar/components/SidebarCha
 import SidebarContextCleared from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarContextCleared'
 import { openGlobalVideoPopup } from '@/features/video_popup/utils'
 
-const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
+const CustomMarkdown = React.lazy(() => import('src/components/MaxAIMarkdown'))
 
 interface IProps {
   message: IAIResponseMessage

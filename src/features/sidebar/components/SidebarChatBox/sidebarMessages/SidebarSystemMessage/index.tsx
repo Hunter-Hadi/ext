@@ -14,7 +14,7 @@ import SidebarChatBoxSystemTools from '@/features/sidebar/components/SidebarChat
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
-const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
+const CustomMarkdown = React.lazy(() => import('src/components/MaxAIMarkdown'))
 
 /**
  * 转换permissionWrapper的Card信息为markdown
@@ -143,7 +143,7 @@ const BaseSidebarSystemMessage: FC<{
             <Box>
               <Stack
                 direction={'row'}
-                alignItems="flex-start"
+                alignItems='flex-start'
                 spacing={1.5}
                 mb={2}
               >

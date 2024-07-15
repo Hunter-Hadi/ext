@@ -3,8 +3,8 @@ import debounce from 'lodash-es/debounce'
 import throttle from 'lodash-es/throttle'
 import React, { FC, RefObject, useCallback, useEffect, useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
+import CustomMarkdown from 'src/components/MaxAIMarkdown'
 
-import CustomMarkdown from '@/components/CustomMarkdown'
 import { isSystemMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {

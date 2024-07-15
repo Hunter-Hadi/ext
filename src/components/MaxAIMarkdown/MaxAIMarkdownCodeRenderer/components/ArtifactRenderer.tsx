@@ -2,13 +2,13 @@ import jsYaml from 'js-yaml'
 import isArray from 'lodash-es/isArray'
 import React, { FC, useMemo } from 'react'
 
-import { IMaxAICustomMarkdownComponentProps } from '@/components/CustomMarkdown/MaxAICustomMarkdownComponent/types'
+import { IMaxAIMarkdownCodeRendererProps } from '@/components/MaxAIMarkdown/MaxAIMarkdownCodeRenderer/types'
 import {
   ArtifactsButton,
   IArtifacts,
 } from '@/features/chatgpt/components/artifacts'
 
-const ArtifactRender: FC<IMaxAICustomMarkdownComponentProps> = (props) => {
+const ArtifactRenderer: FC<IMaxAIMarkdownCodeRendererProps> = (props) => {
   const { content, messageIsComplete, isLastNode } = props
   const isArtifactResponding = useMemo(() => {
     console.log(
@@ -54,4 +54,4 @@ const ArtifactRender: FC<IMaxAICustomMarkdownComponentProps> = (props) => {
   )
 }
 
-export default ArtifactRender
+export default ArtifactRenderer

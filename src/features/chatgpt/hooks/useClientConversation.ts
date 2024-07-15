@@ -247,6 +247,7 @@ const useClientConversation = () => {
       | null
       | ((prevMessage: IChatMessage | null) => IChatMessage | null),
   ) => {
+    console.log(`MemoizedMarkdown8 updateClientWritingMessage`, message)
     setClientWritingMessage((prevState) => {
       const newMessage =
         typeof message === 'function'

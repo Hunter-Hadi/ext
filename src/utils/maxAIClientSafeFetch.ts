@@ -60,8 +60,8 @@ const maxAIClientSafeFetch = async (
       //          - 例: `undefined` => `{}`
       let req_json = '{}'
       if (
-        headers.has('Accept') &&
-        headers.get('Accept') === 'application/json'
+        headers.has('Content-Type') &&
+        headers.get('Content-Type') === 'application/json'
       ) {
         if (typeof body === 'string') {
           try {

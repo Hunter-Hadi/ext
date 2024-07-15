@@ -4,6 +4,7 @@ import debounce from 'lodash-es/debounce'
 import { useCallback, useEffect, useRef } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
+import { listenIframeMessage } from '@/apps/content-scripts/iframeDocumentEnd'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
@@ -41,7 +42,6 @@ import {
   useBindRichTextEditorLineTextPlaceholder,
 } from '@/features/contextMenu/utils/selectionHelper'
 import useCommands from '@/hooks/useCommands'
-import { listenIframeMessage } from '@/iframeDocumentEnd'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import rangyLib from '@/lib/rangy/rangy-core'

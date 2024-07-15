@@ -31,6 +31,19 @@ export const isScrollableElement = (element: Element) => {
   )
 }
 
+export const isParentElement = (
+  element: Element,
+  parentTagName: string,
+): boolean => {
+  if (element.tagName.toLowerCase() === parentTagName) {
+    return true
+  }
+  if (element.parentElement) {
+    return isParentElement(element.parentElement, parentTagName)
+  }
+  return false
+}
+
 export const scrollToRange = (range: Range) => {
   const textNode = range.startContainer
   const rangeRect = range.getBoundingClientRect()

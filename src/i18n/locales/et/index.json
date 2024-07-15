@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkriptsioon aegus.\nPalun proovige uuesti.",
     "pricing__upgrade__popper_card__title": "Uuenda MaxAI Elite'ile · Aastas",
     "pricing__upgrade__popper_card__item1__title": "Piiramatu AI kasutamine",
-    "pricing__upgrade__popper_card__item2__title": "Avage kõik funktsioonid",
-    "pricing__upgrade__popper_card__item3__title": "Säästa tunde igapäevaselt",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Ainult GPT-4o. Kõigi teiste AI mudelite avamiseks uuenda MaxAI Elite plaani."
+    "pricing__upgrade__popper_card__item2__title": "Avage kõik AI mudelid",
+    "pricing__upgrade__popper_card__item3__title": "Avage kõik funktsioonid",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Ainult GPT-4o. Kõigi teiste AI mudelite avamiseks uuenda MaxAI Elite plaani.",
+    "pricing__upgrade__popper_card__item4__title": "Parim väärtus teie raha eest"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Kasuta vihjet"
   },
   "quota_usage_card": {
-    "category__fast_text": "Kiire tekst",
-    "category__advanced_text": "Edasijõudnud tekst",
-    "category__image_generate": "Pilt",
+    "category__fast_text": "Kiire AI",
+    "category__advanced_text": "Tark AI",
+    "category__image_generate": "Pildi AI",
     "role_label": "Praegune plaan: {{ROLE}}",
-    "queries": "Päringud",
+    "queries": "Jäänud AI päringud",
     "reset_on_date": "Lähtestamine kuupäeval {{DATE}}",
-    "advanced_text__secondary__content": "Kiired edasijõudnud tekstipäringud: {{QUERIES}}",
+    "advanced_text__secondary__content": "Kõrge kiirusega tark AI päringud: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret edasijõudnud tekstipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
-    "image_generate__secondary__content": "Kiired pildipäringud: {{QUERIES}}",
+    "image_generate__secondary__content": "Kõrge kiirusega pildi AI päringud: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret pildipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
-    "promotion_plan__text": "Säästa 53% uuendades nüüd MaxAI Elite'ile aastas. 👇"
+    "upgrade_to_go_unlimited": "Uuendage MaxAI Elite'iks, et minna piiranguteta"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Klõpsake AI-lt küsimiseks, et parandada, toimetada, tõlkida, kokku võtta või selgitada valitud teksti.",

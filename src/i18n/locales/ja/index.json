@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "音声認識がタイムアウトしました。\nもう一度お試しください。",
     "pricing__upgrade__popper_card__title": "MaxAI Eliteにアップグレード · 毎年",
     "pricing__upgrade__popper_card__item1__title": "無制限のAI利用",
-    "pricing__upgrade__popper_card__item2__title": "すべての機能を解除",
-    "pricing__upgrade__popper_card__item3__title": "毎日数時間節約",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4oのみ。他のすべてのAIモデルをアンロックするには、MaxAI Eliteプランにアップグレードしてください。"
+    "pricing__upgrade__popper_card__item2__title": "すべてのAIモデルをアンロック",
+    "pricing__upgrade__popper_card__item3__title": "すべての機能をアンロック",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4oのみ。他のすべてのAIモデルをアンロックするには、MaxAI Eliteプランにアップグレードしてください。",
+    "pricing__upgrade__popper_card__item4__title": "あなたのお金に最適な価値"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "プロンプトの使用"
   },
   "quota_usage_card": {
-    "category__fast_text": "高速テキスト",
-    "category__advanced_text": "高度なテキスト",
-    "category__image_generate": "画像",
+    "category__fast_text": "高速AI",
+    "category__advanced_text": "スマートAI",
+    "category__image_generate": "画像AI",
     "role_label": "現在のプラン：{{ROLE}}",
-    "queries": "クエリ",
+    "queries": "残りのAIクエリ",
     "reset_on_date": "{{DATE}}にリセット",
-    "advanced_text__secondary__content": "高速な高度なテキストクエリ：{{QUERIES}}",
+    "advanced_text__secondary__content": "高速スマートAIクエリ：{{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "毎月少なくとも1,500の高速な高度なテキストクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
-    "image_generate__secondary__content": "高速なイメージクエリ：{{QUERIES}}",
+    "image_generate__secondary__content": "高速画像AIクエリ：{{QUERIES}}",
     "image_generate__secondary__content__tooltip": "毎月少なくとも1,500の高速なイメージクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
-    "promotion_plan__text": "MaxAI Elite Yearlyにアップグレードして53%節約しましょう。 👇"
+    "upgrade_to_go_unlimited": "無制限に行くためにMaxAI Eliteにアップグレード"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "選択したテキストを改善、校正、翻訳、要約、または説明するためにAIに依頼するにはクリックしてください。",

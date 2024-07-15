@@ -721,8 +721,9 @@
     "pricing__plan_features__pro__feature3__item3__tooltip": "Access information in any language. Get writing help across multiple languages, right where you need it.",
     "pricing__upgrade__popper_card__title": "Upgrade to MaxAI Elite · Yearly",
     "pricing__upgrade__popper_card__item1__title": "Unlimited AI usage",
-    "pricing__upgrade__popper_card__item2__title": "Unlock all features",
-    "pricing__upgrade__popper_card__item3__title": "Save hours every day",
+    "pricing__upgrade__popper_card__item2__title": "Unlock all AI models",
+    "pricing__upgrade__popper_card__item3__title": "Unlock all features",
+    "pricing__upgrade__popper_card__item4__title": "Best value for your money",
     "prompt__group__suggested__title": "Suggested",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Hide Gmail assistant",
     "sidebar__top_bar__rewards__title": "Rewards",
@@ -1126,17 +1127,17 @@
     "sidebar_tour__step__5__feature_6__title": "Use prompt"
   },
   "quota_usage_card": {
-    "category__fast_text": "Fast text",
-    "category__advanced_text": "Advanced text",
-    "category__image_generate": "Image",
+    "category__fast_text": "Fast AI",
+    "category__advanced_text": "Smart AI",
+    "category__image_generate": "Image AI",
     "role_label": "Current plan: {{ROLE}}",
-    "queries": "Queries",
+    "queries": "Remaining AI queries",
     "reset_on_date": "Reset on {{DATE}}",
-    "advanced_text__secondary__content": "High-speed advanced text queries: {{QUERIES}}",
+    "advanced_text__secondary__content": "High-speed smart AI queries: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed advanced text queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
-    "image_generate__secondary__content": "High-speed image queries: {{QUERIES}}",
+    "image_generate__secondary__content": "High-speed image AI queries: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Ensure at least 1,500 high-speed image queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
-    "promotion_plan__text": "Save 53% by upgrading to MaxAI Elite Yearly now. 👇"
+    "upgrade_to_go_unlimited": "Upgrade to MaxAI Elite to go unlimited"
   },
   "survey": {
     "funnel_survey__submit_success__title": "Thank you for sharing your experience with us. 🙏",

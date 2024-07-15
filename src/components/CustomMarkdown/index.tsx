@@ -405,21 +405,26 @@ const CustomMarkdown: FC<{
           a: ({ node, ...props }) => {
             if (citations && typeof props.children?.[0] === 'string') {
               const match = props.children[0].match(/T(\d+)/)
-              const index = match ? Number(match[1]) : -1
-              if (!citations[index]) {
-                // 查不到citations
-                return null
+              if (match) {
+                const index = match ? Number(match[1]) : -1
+                const sourceCitation = citations.find(
+                  (item) => item.search_result_index === index,
+                )
+                if (!sourceCitation) {
+                  // 查不到citations
+                  return null
+                }
+                const number = Number(props.href)
+                return (
+                  <CitationTag
+                    conversationId={conversationId}
+                    citation={sourceCitation}
+                    index={index}
+                    number={isNaN(number) ? undefined : number}
+                    type={isNaN(number) ? 'icon' : 'number'}
+                  />
+                )
               }
-              const number = Number(props.href)
-              return (
-                <CitationTag
-                  conversationId={conversationId}
-                  citations={citations}
-                  index={index}
-                  number={isNaN(number) ? undefined : number}
-                  type={isNaN(number) ? 'icon' : 'number'}
-                />
-              )
             }
             // citation引用做hover 展示
             let linkSource

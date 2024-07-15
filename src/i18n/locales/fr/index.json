@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "La transcription a expiré.\nVeuillez réessayer.",
     "pricing__upgrade__popper_card__title": "Passer à MaxAI Elite · Annuel",
     "pricing__upgrade__popper_card__item1__title": "Utilisation illimitée de l'IA",
-    "pricing__upgrade__popper_card__item2__title": "Débloquer toutes les fonctionnalités",
-    "pricing__upgrade__popper_card__item3__title": "Économisez des heures chaque jour",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Uniquement GPT-4o. Pour débloquer tous les autres modèles d'IA, passez au plan MaxAI Elite."
+    "pricing__upgrade__popper_card__item2__title": "Débloquer tous les modèles d'IA",
+    "pricing__upgrade__popper_card__item3__title": "Débloquer toutes les fonctionnalités",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Uniquement GPT-4o. Pour débloquer tous les autres modèles d'IA, passez au plan MaxAI Elite.",
+    "pricing__upgrade__popper_card__item4__title": "Meilleur rapport qualité-prix"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Utiliser une suggestion"
   },
   "quota_usage_card": {
-    "category__fast_text": "Texte rapide",
-    "category__advanced_text": "Texte avancé",
-    "category__image_generate": "Image",
+    "category__fast_text": "IA Rapide",
+    "category__advanced_text": "IA Intelligente",
+    "category__image_generate": "IA d'Image",
     "role_label": "Plan actuel : {{ROLE}}",
-    "queries": "Requêtes",
+    "queries": "Requêtes IA restantes",
     "reset_on_date": "Réinitialisation le {{DATE}}",
-    "advanced_text__secondary__content": "Requêtes de texte avancé à grande vitesse : {{QUERIES}}",
+    "advanced_text__secondary__content": "Requêtes IA intelligente à haute vitesse: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes de texte avancé à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites.",
-    "image_generate__secondary__content": "Requêtes d'image à grande vitesse : {{QUERIES}}",
+    "image_generate__secondary__content": "Requêtes IA d'image à haute vitesse: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes d'image à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites.",
-    "promotion_plan__text": "Économisez 53% en passant à MaxAI Elite Annuel maintenant. 👇"
+    "upgrade_to_go_unlimited": "Mettez à niveau vers MaxAI Elite pour aller illimité"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Cliquez pour demander à l'IA d'améliorer, de relire, de traduire, de résumer ou d'expliquer le texte sélectionné.",

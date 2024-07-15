@@ -1006,9 +1006,10 @@
     "sidebar__chat__voice_input__timeout__tooltip": "Transkripcija pasibaigė.\nPabandykite dar kartą.",
     "pricing__upgrade__popper_card__title": "Pereiti prie MaxAI Elite · Kasmetinis",
     "pricing__upgrade__popper_card__item1__title": "Neribotas dirbtinio intelekto naudojimas",
-    "pricing__upgrade__popper_card__item2__title": "Atrakinti visus funkcionalumus",
-    "pricing__upgrade__popper_card__item3__title": "Sutaupyti valandas kiekvieną dieną",
-    "pricing__plan_features__pro__feature1__item2__subtitle": "Tik GPT-4o. Norėdami atrakinti visus kitus dirbtinio intelekto modelius, atnaujinkite iki MaxAI Elite plano."
+    "pricing__upgrade__popper_card__item2__title": "Atrakinti visus AI modelius",
+    "pricing__upgrade__popper_card__item3__title": "Atrakinti visus funkcionalumus",
+    "pricing__plan_features__pro__feature1__item2__subtitle": "Tik GPT-4o. Norėdami atrakinti visus kitus dirbtinio intelekto modelius, atnaujinkite iki MaxAI Elite plano.",
+    "pricing__upgrade__popper_card__item4__title": "Geriausia vertė už jūsų pinigus"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -1333,17 +1334,17 @@
     "sidebar_tour__step__5__feature_6__title": "Naudoti užduotį"
   },
   "quota_usage_card": {
-    "category__fast_text": "Greitas tekstas",
-    "category__advanced_text": "Pažangus tekstas",
-    "category__image_generate": "Paveikslas",
+    "category__fast_text": "Greitas AI",
+    "category__advanced_text": "Protingas AI",
+    "category__image_generate": "Vaizdo AI",
     "role_label": "Dabartinis planas: {{ROLE}}",
-    "queries": "Užklausos",
+    "queries": "Liko AI užklausų",
     "reset_on_date": "Atstatyti {{DATE}}",
-    "advanced_text__secondary__content": "Greitos pažangios teksto užklausos: {{QUERIES}}",
+    "advanced_text__secondary__content": "Greito protingo AI užklausos: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų pažangių teksto užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
-    "image_generate__secondary__content": "Greitos vaizdo užklausos: {{QUERIES}}",
+    "image_generate__secondary__content": "Greito vaizdo AI užklausos: {{QUERIES}}",
     "image_generate__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų vaizdo užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
-    "promotion_plan__text": "Dabar sutaupykite 53% persikėlus į MaxAI Elite Kasmetinę planą. 👇"
+    "upgrade_to_go_unlimited": "Atnaujinkite iki MaxAI Elite, kad taptumėte neribotu"
   },
   "onboarding": {
     "onboarding_tooltip__CONTEXT_MENU_CTA_BUTTON__text": "Spustelėkite, kad paprašytumėte dirbtinio intelekto pagerinti, ištaisyti, išversti, suvesti įvairias ištraukas ar paaiškinti pasirinktą tekstą.",

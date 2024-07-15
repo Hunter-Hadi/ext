@@ -330,11 +330,11 @@ const initChromeExtensionUpdated = async () => {
   }
   /**
    * @since 2024-05-31
-   * @description 4.2.13版本插件升级的时候对满足显示续费失败提醒条件的用户弹出/subscription/failed页面
+   * @description 4.2.13版本插件升级的时候对满足显示续费失败提醒条件的用户弹出/my-plan 页面
    */
   const executeUpdatedCheckSubscription = async () => {
     const result = await getChromeExtensionUserInfo(true)
-    const url = `${APP_USE_CHAT_GPT_HOST}/subscription/failed`
+    const url = `${APP_USE_CHAT_GPT_HOST}/my-plan`
     if (
       result &&
       checkIsSubscriptionPaymentFailed(result.subscription_payment_failed_at)

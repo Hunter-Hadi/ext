@@ -1,7 +1,12 @@
-import { Readability } from '@mozilla/readability'
+import { isProbablyReaderable, Readability } from '@mozilla/readability'
 import { parseHTML } from 'linkedom'
 import orderBy from 'lodash-es/orderBy'
 
+import { parseReadabilityDocument } from '@/features/chat-base/summary/utils/documentContentHelper'
+import {
+  getFormattedTextFromNodes,
+  getVisibleTextNodes,
+} from '@/features/chat-base/summary/utils/elementHelper'
 import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
@@ -53,17 +58,21 @@ const getImageHighestResponsiveData = (
 /**
  * 插件客户端获取网页内容
  * @param url
- * @param timeout
- * @param abortTaskId
- * @param needImage  updata: copilot获取网页图片资源
- * @param needVideo  updata: copilot获取网页视频资源
+ * @param options
+ * @param options.timeout
+ * @param options.abortTaskId
+ * @param options.searchResult
+ * @param options.needImage  updata: copilot获取网页图片资源
+ * @param options.needVideo  updata: copilot获取网页视频资源
  */
 const clientGetContentOfURL = async (
   url: string,
-  timeout: number,
-  abortTaskId?: string,
-  needImage?: boolean, // copilot获取网页图片资源
-  needVideo?: boolean, // copilot获取网页视频资源
+  options: {
+    timeout: number
+    abortTaskId?: string
+    needImage?: boolean // copilot获取网页图片资源
+    needVideo?: boolean // copilot获取网页视频资源
+  },
 ): Promise<{
   title: string
   body: string
@@ -75,6 +84,7 @@ const clientGetContentOfURL = async (
   images: Image[]
   videos: any[]
 }> => {
+  const { timeout, abortTaskId, needImage, needVideo } = options
   const result = {
     success: true,
     status: 200,
@@ -127,10 +137,21 @@ const clientGetContentOfURL = async (
 
     const handleReader = (htmlContent: string) => {
       const doc = parseHTML(htmlContent).document
+      // 清洗掉document里无用的内容
+      parseReadabilityDocument(doc, true)
+      // 这里内容需要增强处理，网页无正文内容需要自定义抓取内容
+      if (!isProbablyReaderable(doc)) {
+        const textNodes = getVisibleTextNodes(doc.body)
+        result.readabilityText = getFormattedTextFromNodes(textNodes)
+      }
+      // 抓取阅读正文内容
       const reader = new Readability(doc as any).parse()
+      const textContent = reader?.textContent || ''
       result.title = reader?.title || ''
       result.body = reader?.content || ''
-      result.readabilityText = reader?.textContent || ''
+      if (!result.readabilityText || textContent.length > 1000) {
+        result.readabilityText = textContent
+      }
 
       if (needVideo && reader?.content) {
         // 创建一个临时容器来解析 HTML 内容
@@ -138,7 +159,7 @@ const clientGetContentOfURL = async (
         const parsedDoc = parser.parseFromString(reader.content, 'text/html')
 
         // google跟其他浏览器的解析方式不一样，所以需要判断
-        let selectorAttr
+        let selectorAttr = ''
         if (url.includes('https://www.google.com')) {
           selectorAttr = 'data-surl'
         } else {

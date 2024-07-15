@@ -1,5 +1,5 @@
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import maxAIClientFetch from '@/utils/maxAIClientSafeFetch'
+import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 
 const TRANSCRIPTION_TIMEOUT = 30 * 1000
 
@@ -29,7 +29,7 @@ export const maxAISpeechToText = async (
       const timer = setTimeout(() => {
         controller.abort()
       }, TRANSCRIPTION_TIMEOUT)
-      maxAIClientFetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/speech_to_text`, {
+      maxAIClientSafeFetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/speech_to_text`, {
         signal,
         method: 'POST',
         body: formData,

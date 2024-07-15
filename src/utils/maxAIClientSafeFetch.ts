@@ -25,7 +25,7 @@ import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/backgr
  * @param formUrl 请求的来源URL
  * @returns 返回一个Promise，解析为Response对象
  */
-const maxAIClientFetch = async (
+const maxAIClientSafeFetch = async (
   input: RequestInfo,
   init?: RequestInit,
   formUrl?: string,
@@ -186,4 +186,4 @@ sm3_sign: ${sm3_sign}\n
   return fetch(input, modifiedInit).then(securityHandleFetchErrorResponse)
 }
 
-export default maxAIClientFetch
+export default maxAIClientSafeFetch

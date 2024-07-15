@@ -16,7 +16,6 @@ import {
   IUserRole,
   IUserRoleType,
 } from '@/features/auth/types'
-import maxAIClientFetch from '@/utils/maxAIClientSafeFetch'
 import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
@@ -193,7 +192,7 @@ export const fetchUserSubscriptionInfo = async (): Promise<
     if (!token) {
       return undefined
     }
-    const response = await maxAIClientFetch(
+    const response = await maxAIClientSafeFetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_subscription_info`,
       {},
       await getCurrentFocusTabUrl(),

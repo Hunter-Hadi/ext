@@ -2,8 +2,6 @@ import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useRef } from 'react'
 
@@ -11,6 +9,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useArtifacts } from '@/features/chatgpt/components/artifacts'
 import { ArtifactsCodeBlock } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/components'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export interface IArtifactsBaseProps {
   sx?: SxProps
@@ -20,15 +19,13 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
   const { sx } = props
   const { artifacts, mode, setMode, hideArtifacts } = useArtifacts()
   const renderRef = useRef<HTMLDivElement | null>(null)
-  const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
-    newMode: 'preview' | 'code',
-  ) => {
+  const isImmseriveChatRef = useRef(isMaxAIImmersiveChatPage())
+  const handleChange = (newMode: 'preview' | 'code') => {
     if (newMode) {
       setMode(newMode)
     }
   }
-  useEffect(() => {
+  const loadPreviewContent = () => {
     if (!renderRef.current) {
       return
     }
@@ -45,6 +42,9 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
       }
       renderRef.current.appendChild(iframe)
     }
+  }
+  useEffect(() => {
+    loadPreviewContent()
   }, [mode])
   useEffect(() => {
     setMode(artifacts.complete ? 'preview' : 'code')
@@ -87,30 +87,70 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
         <Stack
           sx={{
             flexShrink: 0,
-            gap: '8px',
             flexDirection: 'row',
             alignItems: 'center',
+            '& > span > button': {
+              width: '32px',
+              height: '32px',
+              padding: '6px',
+            },
           }}
         >
-          <Button>
-            <Typography fontSize={'14px'}>Preview</Typography>
-          </Button>
-          <ToggleButtonGroup
-            size={'small'}
-            color='primary'
-            value={mode}
-            exclusive
-            onChange={handleChange}
-            aria-label='Platform'
+          {mode === 'preview' && (
+            <TooltipIconButton
+              title={'Reload'}
+              onClick={() => {
+                loadPreviewContent()
+              }}
+            >
+              <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Restart'} />
+            </TooltipIconButton>
+          )}
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              margin: '0 8px',
+            }}
           >
-            <ToggleButton value='preview'>Preview</ToggleButton>
-            <ToggleButton value='code'>Code</ToggleButton>
-          </ToggleButtonGroup>
-          <TooltipIconButton title={'Fullscreen'} onClick={() => {}}>
-            <ContextMenuIcon sx={{ fontSize: '20px' }} icon={'Fullscreen'} />
-          </TooltipIconButton>
+            <Button
+              onClick={() => {
+                handleChange('preview')
+              }}
+              variant={mode === 'preview' ? 'contained' : 'outlined'}
+              sx={{
+                minWidth: 'unset',
+                height: '40px',
+                boxSizing: 'border-box',
+                borderRadius: '8px 0 0 8px',
+                padding: '8px 16px',
+              }}
+            >
+              <Typography fontSize={'14px'}>Preview</Typography>
+            </Button>
+            <Button
+              onClick={() => {
+                handleChange('code')
+              }}
+              variant={mode === 'code' ? 'contained' : 'outlined'}
+              sx={{
+                minWidth: 'unset',
+                height: '40px',
+                boxSizing: 'border-box',
+                borderRadius: '0 8px 8px 0',
+                padding: '8px 16px',
+              }}
+            >
+              <Typography fontSize={'14px'}>Code</Typography>
+            </Button>
+          </Stack>
+          {!isImmseriveChatRef.current && (
+            <TooltipIconButton title={'Fullscreen'} onClick={() => {}}>
+              <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Fullscreen'} />
+            </TooltipIconButton>
+          )}
           <TooltipIconButton title={'Download'} onClick={() => {}}>
-            <ContextMenuIcon sx={{ fontSize: '20px' }} icon={'FileDownload'} />
+            <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'FileDownload'} />
           </TooltipIconButton>
           <TooltipIconButton title={'Copy'} onClick={() => {}}>
             <ContextMenuIcon sx={{ fontSize: '20px' }} icon={'Copy'} />
@@ -121,7 +161,7 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
               hideArtifacts()
             }}
           >
-            <ContextMenuIcon sx={{ fontSize: '20px' }} icon={'Close'} />
+            <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Close'} />
           </TooltipIconButton>
         </Stack>
       </Stack>

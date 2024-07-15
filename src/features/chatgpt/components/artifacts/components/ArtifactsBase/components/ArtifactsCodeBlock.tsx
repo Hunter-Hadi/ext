@@ -17,7 +17,6 @@ const ArtifactsCodeBlock: FC<IArtifactsCodeBlockProps> = (props) => {
       className={'chat-message--text'}
       sx={{
         bgcolor: '#282c34',
-        borderRadius: '6px',
         height: '100%',
         overflowY: 'auto',
         color: '#fff',

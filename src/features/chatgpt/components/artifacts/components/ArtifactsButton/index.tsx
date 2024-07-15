@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { useArtifacts } from '@/features/chatgpt/components/artifacts'
@@ -56,11 +56,30 @@ const ArtifactsButton: FC<{
   artifacts: IArtifacts
 }> = (props) => {
   const { artifacts, loading } = props
-  const { updateArtifacts, showArtifacts } = useArtifacts()
+  const { updateArtifacts, showArtifacts, isOpen } = useArtifacts()
+
   const handleClick = () => {
     updateArtifacts(artifacts)
-    showArtifacts()
+    showArtifacts(artifacts.complete ? 'preview' : 'code')
   }
+  const isOpenRef = React.useRef(isOpen)
+  // 标记自动打开，自动打开的结束后需要切换到preview
+  const isAutoOpenRef = React.useRef(false)
+  useEffect(() => {
+    isOpenRef.current = isOpen
+  }, [isOpen])
+  useEffect(() => {
+    if (!artifacts.complete) {
+      isAutoOpenRef.current = true
+      updateArtifacts(artifacts)
+      isOpenRef.current ? showArtifacts() : showArtifacts('code')
+    } else {
+      if (isOpenRef.current && isAutoOpenRef.current) {
+        showArtifacts('preview')
+        isAutoOpenRef.current = false
+      }
+    }
+  }, [artifacts.complete, artifacts.content])
   return (
     <Stack
       sx={{
@@ -90,7 +109,7 @@ const ArtifactsButton: FC<{
         >
           <ContextMenuIcon
             sx={{
-              fontSize: '32px',
+              fontSize: '20px',
             }}
             icon={loading ? 'Loading' : 'InsertDriveFile'}
           />
@@ -105,15 +124,17 @@ const ArtifactsButton: FC<{
           >
             {artifacts.title}
           </Typography>
-          <Typography
-            noWrap
-            fontSize={'12px'}
-            fontWeight={400}
-            lineHeight={1.5}
-            color={'text.secondary'}
-          >
-            {artifacts.type}
-          </Typography>
+          {artifacts.type && (
+            <Typography
+              noWrap
+              fontSize={'12px'}
+              fontWeight={400}
+              lineHeight={1.5}
+              color={'text.secondary'}
+            >
+              {artifacts.type}
+            </Typography>
+          )}
         </Stack>
       </Stack>
     </Stack>

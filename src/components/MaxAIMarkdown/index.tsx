@@ -9,11 +9,11 @@ import remarkMath from 'remark-math'
 import supersub from 'remark-supersub'
 
 import MaxAIMarkdownComponents from '@/components/MaxAIMarkdown/components'
-import rehypeMaxAIMarkdownCodeRendererPlugin from '@/components/MaxAIMarkdown/MaxAIMarkdownCodeRenderer/rehypeMaxAIMarkdownCodeRendererPlugin'
 import {
   IMaxAIMarkdownContext,
   MaxAIMarkdownContext,
-} from '@/components/MaxAIMarkdown/store'
+} from '@/components/MaxAIMarkdown/context'
+import rehypeMaxAIMarkdownCodeRendererPlugin from '@/components/MaxAIMarkdown/MaxAIMarkdownCodeRenderer/rehypeMaxAIMarkdownCodeRendererPlugin'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 
 /**

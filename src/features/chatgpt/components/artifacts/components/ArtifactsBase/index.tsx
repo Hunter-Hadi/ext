@@ -1,18 +1,24 @@
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useArtifacts } from '@/features/chatgpt/components/artifacts'
+import { ArtifactsCodeBlock } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/components'
 
-const ArtifactsBase: FC = () => {
-  const [mode, setMode] = useState<'preview' | 'code'>('code')
+export interface IArtifactsBaseProps {
+  sx?: SxProps
+}
+
+const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
+  const { sx } = props
+  const { artifacts, mode, setMode, hideArtifacts } = useArtifacts()
   const renderRef = useRef<HTMLDivElement | null>(null)
-  const { artifacts, hideArtifacts } = useArtifacts()
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newMode: 'preview' | 'code',
@@ -32,7 +38,7 @@ const ArtifactsBase: FC = () => {
       iframe.style.width = '100%'
       iframe.style.height = '100%'
       iframe.style.border = 'none'
-      iframe.src = 'http://localhost:3838/?code=' + Math.random()
+      iframe.src = 'https://www.maxai.space/?code=' + Math.random()
       iframe.onload = () => {
         iframe?.contentWindow?.postMessage(artifacts.content, '*')
       }
@@ -51,6 +57,7 @@ const ArtifactsBase: FC = () => {
         width: '100%',
         height: '100%',
         borderRadius: '16px',
+        ...sx,
       }}
     >
       <Stack
@@ -122,7 +129,9 @@ const ArtifactsBase: FC = () => {
           height: 0,
         }}
       >
-        {mode === 'code' && <pre>{artifacts.content}</pre>}
+        {mode === 'code' && (
+          <ArtifactsCodeBlock lang={'html'} code={artifacts.content} />
+        )}
       </Stack>
     </Paper>
   )

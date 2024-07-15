@@ -1,14 +1,16 @@
 import { useRecoilState } from 'recoil'
 
 import {
-  ArtifactsOpenState,
+  ArtifactsFloatingWindowState,
   ArtifactsState,
   IArtifacts,
 } from '@/features/chatgpt/components/artifacts/store/ArtifactsState'
 
 export const useArtifacts = () => {
   const [artifacts, setArtifacts] = useRecoilState(ArtifactsState)
-  const [isOpen, setIsOpen] = useRecoilState(ArtifactsOpenState)
+  const [floatingWindow, setFloatingWindow] = useRecoilState(
+    ArtifactsFloatingWindowState,
+  )
   const updateArtifacts = (newArtifacts: Partial<IArtifacts>) => {
     console.log('updateArtifacts', newArtifacts)
     setArtifacts((prev) => ({
@@ -17,18 +19,38 @@ export const useArtifacts = () => {
     }))
   }
 
-  const showArtifacts = () => {
-    setIsOpen(true)
+  const showArtifacts = (mode?: 'preview' | 'code') => {
+    setFloatingWindow((prev) => {
+      return {
+        open: true,
+        mode: mode || prev.mode,
+      }
+    })
   }
   const hideArtifacts = () => {
-    setIsOpen(false)
+    setFloatingWindow((prev) => {
+      return {
+        open: false,
+        mode: prev.mode,
+      }
+    })
+  }
+  const setMode = (mode: 'preview' | 'code') => {
+    setFloatingWindow((prev) => {
+      return {
+        open: prev.open,
+        mode,
+      }
+    })
   }
 
   return {
-    isOpen,
+    isOpen: floatingWindow.open,
+    mode: floatingWindow.mode,
     artifacts,
     updateArtifacts,
     showArtifacts,
     hideArtifacts,
+    setMode,
   }
 }

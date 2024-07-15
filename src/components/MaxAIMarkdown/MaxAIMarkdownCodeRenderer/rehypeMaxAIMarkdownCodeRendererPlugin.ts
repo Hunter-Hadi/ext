@@ -8,10 +8,10 @@ const rehypeMaxAIMarkdownCodeRendererPlugin = () => {
       if (tagName === 'code') {
         const classNames: string[] = isArray(properties.className)
           ? properties.className
-          : [properties.className]
+          : [properties.className || '']
         const maxAICustomMarkdownComponentName = (
           (tagName === 'code' &&
-            classNames.find((name) => name.startsWith('language-maxai'))) ||
+            classNames.find((name) => name?.startsWith('language-maxai'))) ||
           ''
         ).replace('language-maxai__', '')
         const isMaxAICustomMarkdownComponent =

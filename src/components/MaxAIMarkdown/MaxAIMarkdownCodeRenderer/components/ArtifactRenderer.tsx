@@ -19,7 +19,7 @@ const ArtifactRenderer: FC<IMaxAIMarkdownCodeRendererProps> = (props) => {
     }
     return isLastNode
   }, [messageIsComplete, isLastNode])
-  const artifacts = useMemo<IArtifacts | null>(() => {
+  const artifacts = useMemo<IArtifacts>(() => {
     console.log(content, isArtifactResponding)
     /**
      * yaml
@@ -37,18 +37,20 @@ const ArtifactRenderer: FC<IMaxAIMarkdownCodeRendererProps> = (props) => {
       if (parsed.identifier && parsed.type && parsed.title && parsed.content) {
         return {
           ...parsed,
-          complete: isArtifactResponding,
+          complete: !isArtifactResponding,
         } as IArtifacts
       }
-      return null
     } catch (e) {
-      console.error(e)
-      return null
+      // console.error(e)
+    }
+    return {
+      identifier: '',
+      content: '',
+      type: '',
+      title: 'Generating...',
+      complete: !isArtifactResponding,
     }
   }, [isArtifactResponding, content])
-  if (!artifacts) {
-    return null
-  }
   return (
     <ArtifactsButton loading={isArtifactResponding} artifacts={artifacts} />
   )

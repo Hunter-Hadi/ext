@@ -1,6 +1,7 @@
 import Stack from '@mui/material/Stack'
 import React, { FC, useEffect, useRef } from 'react'
 
+import ImmersiveChatPortalWrapper from '@/apps/immersive-chat/components/ImmersiveChatPortal'
 import { useArtifacts } from '@/features/chatgpt/components/artifacts'
 import { ArtifactsBase } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase'
 import { ArtifactsFloatingWindow } from '@/features/chatgpt/components/artifacts/components/ArtifactsFloatingWindow/ArtifactsFloatingWindow'
@@ -27,7 +28,15 @@ const ArtifactsRoot: FC = () => {
           <ArtifactsBase />
         </ArtifactsFloatingWindow>
       ) : (
-        <ArtifactsBase />
+        <ImmersiveChatPortalWrapper>
+          <ArtifactsBase
+            sx={{
+              width: 'calc(100% - 24px)',
+              height: 'calc(100% - 32px)',
+              margin: '16px 0 0 8px',
+            }}
+          />
+        </ImmersiveChatPortalWrapper>
       )}
     </Stack>
   )

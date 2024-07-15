@@ -14,11 +14,17 @@ export const ArtifactsState = atom<IArtifacts>({
     identifier: '',
     type: '',
     title: '',
-    complete: false,
     content: '',
+    complete: false,
   },
 })
-export const ArtifactsOpenState = atom<boolean>({
-  key: 'ArtifactsOpenState',
-  default: false,
+export const ArtifactsFloatingWindowState = atom<{
+  mode: 'preview' | 'code'
+  open: boolean
+}>({
+  key: 'ArtifactsFloatingWindowState',
+  default: {
+    mode: 'code',
+    open: false,
+  },
 })

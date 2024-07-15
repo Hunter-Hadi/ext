@@ -130,8 +130,12 @@ const MaxAIMarkdownComponents: Components = {
   },
   // eslint-disable-next-line react/display-name
   a: (props) => {
-    const { node } = props
-    return <MaxAIMarkdownAnchor />
+    const { children, href, title } = props
+    return (
+      <MaxAIMarkdownAnchor title={title} href={href}>
+        {children}
+      </MaxAIMarkdownAnchor>
+    )
   },
   // eslint-disable-next-line react/display-name
   code: (props: any) => {

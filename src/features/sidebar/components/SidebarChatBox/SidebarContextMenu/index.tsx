@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
+import { cloneDeep } from 'lodash-es'
 import React, { FC, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -11,6 +12,15 @@ import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useContextMenuList } from '@/features/contextMenu'
+import {
+  contextMenuIsFavoriteContextMenu,
+  FAVORITE_CONTEXT_MENU_GROUP_ID,
+} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import {
+  checkIsDraftContextMenuId,
+  findDraftContextMenuById,
+} from '@/features/contextMenu/utils'
 import { getMaxAISidebarRootElement } from '@/utils'
 
 import ContextMenuList from './MenuList'
@@ -29,6 +39,7 @@ const SidebarContextMenu: FC = () => {
     inputValue,
   )
   const { askAIWIthShortcuts, askAIQuestion } = useClientChat()
+  const { checkAttachments } = useClientChat()
 
   const handleEnter = async () => {
     if (inputValue.trim() && content) {
@@ -53,7 +64,45 @@ const SidebarContextMenu: FC = () => {
   })
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const root = useMemo(() => getMaxAISidebarRootElement(), [])
+  const handleContextMenuClick = (menuItem: IContextMenuItem) => {
+    let id = menuItem.id
+    if (contextMenuIsFavoriteContextMenu(id)) {
+      id = id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
+    }
+
+    if (checkIsDraftContextMenuId(id)) {
+      menuItem = findDraftContextMenuById(id) || menuItem
+    }
+
+    if (!menuItem || !menuItem.id) return
+
+    const runActions = cloneDeep(menuItem.data.actions || [])
+
+    if (runActions.length > 0) {
+      checkAttachments()
+        .then((status) => {
+          if (!status) return
+
+          return askAIWIthShortcuts(runActions, {
+            overwriteParameters: [
+              {
+                key: 'SELECTED_TEXT',
+                value: contentRef.current,
+                label: 'Selected text',
+                isBuiltIn: true,
+                overwrite: true,
+              },
+            ],
+          })
+        })
+        .then(() => {
+          // TODO:
+        })
+        .catch(() => {})
+    }
+  }
+
+  const root = useMemo(() => getMaxAISidebarRootElement() || document.body, [])
 
   return (
     <>
@@ -229,8 +278,8 @@ const SidebarContextMenu: FC = () => {
       <FloatingPortal root={root}>
         <Box
           ref={refs.setFloating}
-          width={'100%'}
           sx={{
+            width: '100%',
             position: strategy,
             zIndex: 10000,
             top: y ?? 0,
@@ -238,29 +287,27 @@ const SidebarContextMenu: FC = () => {
           }}
         >
           <ContextMenuList
-            customOpen
+            inputValue={inputValue}
+            open
             defaultPlacement={'bottom-start'}
             needAutoUpdate
-            hoverOpen={false}
+            root={root}
             menuList={contextWindowList}
-            referenceElementOpen
             referenceElementRef={referenceElementRef}
-            onTextareaFocus={() => {
-              textareaRef.current?.focus()
-            }}
-            onRunActions={(actions) => {
-              return askAIWIthShortcuts(actions, {
-                overwriteParameters: [
-                  {
-                    key: 'SELECTED_TEXT',
-                    value: contentRef.current,
-                    label: 'Selected text',
-                    isBuiltIn: true,
-                    overwrite: true,
-                  },
-                ],
-              })
-            }}
+            onClickContextMenu={handleContextMenuClick}
+            // onRunActions={(actions) => {
+            //   return askAIWIthShortcuts(actions, {
+            //     overwriteParameters: [
+            //       {
+            //         key: 'SELECTED_TEXT',
+            //         value: contentRef.current,
+            //         label: 'Selected text',
+            //         isBuiltIn: true,
+            //         overwrite: true,
+            //       },
+            //     ],
+            //   })
+            // }}
             referenceElement={<Box ref={referenceElementRef} />}
           />
         </Box>

@@ -156,8 +156,7 @@ const useInitContextWindow = () => {
     ContextWindowDraftContextMenuState,
   )
 
-  const { continueConversationInSidebar, updateSidebarSettings } =
-    useSidebarSettings()
+  const { continueConversationInSidebar } = useSidebarSettings()
   const alwaysContinueInSidebar = useRecoilValue(
     AlwaysContinueInSidebarSelector,
   )

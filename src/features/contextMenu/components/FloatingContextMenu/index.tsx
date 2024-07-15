@@ -112,6 +112,7 @@ const FloatingContextMenu: FC<{
         floatingDropdownMenu.rootRect?.width || 0,
         CHROME_EXTENSION_FLOATING_CONTEXT_MENU_MIN_WIDTH - 32,
       )
+
       if (minWidth > 1280) {
         return 1280
       }

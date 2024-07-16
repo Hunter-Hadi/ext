@@ -64,6 +64,9 @@ const usePaginationConversationMessages = (conversationId: string) => {
       }
       const { totalPage } = remoteConversationMessagesStateRef.current
       if (maxAIBetaFeatures.chat_sync && totalPage >= data.pageParam) {
+        // 临时解决，主要是防止拉取消息的时候的正在deleteMessages，会导致消息删除后，消息又同步回来了
+        const deleteMessageIds =
+          ClientConversationMessageManager.deleteMessageIds
         const result = await clientFetchMaxAIAPI<{
           current_page: number
           current_page_size: number
@@ -83,7 +86,9 @@ const usePaginationConversationMessages = (conversationId: string) => {
           )
         }
         if (result?.data?.data) {
-          remoteMessages = result.data.data
+          remoteMessages = result.data.data.filter(
+            (message) => !deleteMessageIds.includes(message.messageId),
+          )
           await ClientConversationMessageManager.diffRemoteConversationMessagesData(
             conversationId,
             remoteMessages,

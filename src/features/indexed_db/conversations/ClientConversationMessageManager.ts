@@ -342,6 +342,13 @@ export class ClientConversationMessageManager {
   }
 
   /**
+   * TODO 这里是临时的做法，删除messages是记录当前正在删除的消息
+   * 主要是防止正在拉取messages时，网速等其他原因返回较慢，这时候删除了messages
+   * 会导致删除后消息又同步回来的问题
+   */
+  static deleteMessageIds: string[] = []
+
+  /**
    * 删除消息
    * @param conversationId
    * @param messageIds
@@ -358,6 +365,7 @@ export class ClientConversationMessageManager {
       if (messageIds.length === 0) {
         return true
       }
+      this.deleteMessageIds = [...this.deleteMessageIds, ...messageIds]
       const result = await clientUseIndexedDB('ConversationDBDeleteMessages', {
         conversationId,
         messageIds,
@@ -367,8 +375,20 @@ export class ClientConversationMessageManager {
         await clientDeleteMessagesToRemote(conversationId, messageIds)
           .then()
           .catch()
+          .finally(() => {
+            this.deleteMessageIds = this.deleteMessageIds.filter(
+              (messageId) => !messageIds.includes(messageId),
+            )
+          })
       } else {
-        clientDeleteMessagesToRemote(conversationId, messageIds).then().catch()
+        clientDeleteMessagesToRemote(conversationId, messageIds)
+          .then()
+          .catch()
+          .finally(() => {
+            this.deleteMessageIds = this.deleteMessageIds.filter(
+              (messageId) => !messageIds.includes(messageId),
+            )
+          })
       }
       await this.asyncUploadConversationLastMessageId(conversationId)
         .then()
@@ -495,10 +515,13 @@ export class ClientConversationMessageManager {
     conversationId: string,
     remoteMessages: IChatMessage[],
   ) {
+    const deleteMessageIds = this.deleteMessageIds
     const localMessageIds = await this.getMessageIds(conversationId)
     // 本地不存在的消息
     const notExistLocalMessages = remoteMessages.filter(
-      (remoteMessage) => !localMessageIds.includes(remoteMessage.messageId),
+      (remoteMessage) =>
+        !localMessageIds.includes(remoteMessage.messageId) &&
+        !deleteMessageIds.includes(remoteMessage.messageId),
     )
     if (notExistLocalMessages.length > 0) {
       // 写入本地

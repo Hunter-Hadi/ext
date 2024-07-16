@@ -7,8 +7,12 @@ import React, { FC, useEffect, useRef } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
-import { useArtifacts } from '@/features/chatgpt/components/artifacts'
-import { ArtifactsCodeBlock } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/components'
+import {
+  IArtifactsPreviewRef,
+  useArtifacts,
+} from '@/features/chatgpt/components/artifacts'
+import ArtifactsCodeBlock from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsCodeBlock'
+import ArtifactsPreview from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsPreview'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export interface IArtifactsBaseProps {
@@ -17,35 +21,22 @@ export interface IArtifactsBaseProps {
 
 const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
   const { sx } = props
-  const { artifacts, mode, setMode, hideArtifacts } = useArtifacts()
+  const {
+    artifacts,
+    mode,
+    setMode,
+    hideArtifacts,
+    isAbleToReload,
+    reloadArtifactsPreview,
+  } = useArtifacts()
   const renderRef = useRef<HTMLDivElement | null>(null)
-  const isImmseriveChatRef = useRef(isMaxAIImmersiveChatPage())
+  const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
+  const previewActionRef = useRef<IArtifactsPreviewRef>(null)
   const handleChange = (newMode: 'preview' | 'code') => {
     if (newMode) {
       setMode(newMode)
     }
   }
-  const loadPreviewContent = () => {
-    if (!renderRef.current) {
-      return
-    }
-    renderRef.current?.querySelector('iframe')?.remove()
-    if (mode === 'preview') {
-      renderRef.current?.querySelector('iframe')?.remove()
-      const iframe = document.createElement('iframe')
-      iframe.style.width = '100%'
-      iframe.style.height = '100%'
-      iframe.style.border = 'none'
-      iframe.src = 'https://www.maxai.space/?code=' + Math.random()
-      iframe.onload = () => {
-        iframe?.contentWindow?.postMessage(artifacts.content, '*')
-      }
-      renderRef.current.appendChild(iframe)
-    }
-  }
-  useEffect(() => {
-    loadPreviewContent()
-  }, [mode])
   useEffect(() => {
     setMode(artifacts.complete ? 'preview' : 'code')
   }, [artifacts.complete, artifacts.identifier])
@@ -96,12 +87,10 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
             },
           }}
         >
-          {mode === 'preview' && (
+          {isAbleToReload && (
             <TooltipIconButton
               title={'Reload'}
-              onClick={() => {
-                loadPreviewContent()
-              }}
+              onClick={reloadArtifactsPreview}
             >
               <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Restart'} />
             </TooltipIconButton>
@@ -144,7 +133,7 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
               <Typography fontSize={'14px'}>Code</Typography>
             </Button>
           </Stack>
-          {!isImmseriveChatRef.current && (
+          {!isImmersiveChatRef.current && (
             <TooltipIconButton title={'Fullscreen'} onClick={() => {}}>
               <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Fullscreen'} />
             </TooltipIconButton>
@@ -173,6 +162,13 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
           height: 0,
         }}
       >
+        {mode === 'preview' && (
+          <ArtifactsPreview
+            ref={previewActionRef}
+            sx={{ flex: 1 }}
+            artifacts={artifacts}
+          />
+        )}
         {mode === 'code' && (
           <ArtifactsCodeBlock lang={'html'} code={artifacts.content} />
         )}

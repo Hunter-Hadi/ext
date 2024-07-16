@@ -32,4 +32,4 @@ const ArtifactsCodeBlock: FC<IArtifactsCodeBlockProps> = (props) => {
     </Stack>
   )
 }
-export { ArtifactsCodeBlock }
+export default ArtifactsCodeBlock

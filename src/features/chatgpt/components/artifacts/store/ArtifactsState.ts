@@ -1,12 +1,6 @@
 import { atom } from 'recoil'
 
-export interface IArtifacts {
-  identifier: string
-  type: string
-  title: string
-  content: string
-  complete: boolean
-}
+import { IArtifacts } from '../types'
 
 export const ArtifactsState = atom<IArtifacts>({
   key: 'ArtifactsState',

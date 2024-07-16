@@ -1341,9 +1341,9 @@
     "queries": "残りのAIクエリ",
     "reset_on_date": "{{DATE}}にリセット",
     "advanced_text__secondary__content": "高速スマートAIクエリ：{{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "毎月少なくとも1,500の高速な高度なテキストクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
+    "advanced_text__secondary__content__tooltip": "1ヶ月に1,500回以上の高速スマートAIクエリを確保してください。この制限を超えた使用や高頻度の使用は、速度と品質の低下をもたらす可能性があります。クエリの頻度、コンテンツの長さ、総使用パターンに基づいて公正な使用ポリシーが適用されます。",
     "image_generate__secondary__content": "高速画像AIクエリ：{{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "毎月少なくとも1,500の高速なイメージクエリを確保してください。制限に達した後、モデルの速度と品質が低下する可能性があります。",
+    "image_generate__secondary__content__tooltip": "1ヶ月に600回以上の高速画像AIクエリを確保してください。この制限を超えた使用や高頻度の使用は、速度と品質の低下をもたらす可能性があります。クエリの頻度、画像サイズ、総使用パターンに基づいて公正な使用ポリシーが適用されます。",
     "upgrade_to_go_unlimited": "無制限に行くためにMaxAI Eliteにアップグレード"
   },
   "onboarding": {

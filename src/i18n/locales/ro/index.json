@@ -1341,9 +1341,9 @@
     "queries": "Interogări AI rămase",
     "reset_on_date": "Resetare la data de {{DATE}}",
     "advanced_text__secondary__content": "Interogări AI inteligente de mare viteză: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Asigură cel puțin 1.500 de interogări avansate de text de mare viteză în fiecare lună. După atingerea limitei, viteza și calitatea modelului pot fi reduse.",
+    "advanced_text__secondary__content__tooltip": "Asigurați-vă cel puțin 1.500 de interogări AI inteligente de mare viteză în fiecare lună. Utilizarea dincolo de această limită sau la frecvențe mari poate duce la reducerea vitezei și calității. Politicile de utilizare corectă se aplică în funcție de frecvența interogării, lungimea conținutului și modelele generale de utilizare.",
     "image_generate__secondary__content": "Interogări AI pentru imagini de mare viteză: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Asigură cel puțin 1.500 de interogări de imagini de mare viteză în fiecare lună. După atingerea limitei, viteza și calitatea modelului pot fi reduse.",
+    "image_generate__secondary__content__tooltip": "Asigurați-vă cel puțin 600 de interogări AI de imagine de mare viteză în fiecare lună. Utilizarea dincolo de această limită sau la frecvențe mari poate duce la reducerea vitezei și calității. Politicile de utilizare corectă se aplică în funcție de frecvența interogării, dimensiunea imaginii și modelele generale de utilizare.",
     "upgrade_to_go_unlimited": "Upgrade la MaxAI Elite pentru a merge nelimitat"
   },
   "onboarding": {

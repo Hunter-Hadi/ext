@@ -1341,9 +1341,9 @@
     "queries": "Återstående AI-förfrågningar",
     "reset_on_date": "Återställs den {{DATE}}",
     "advanced_text__secondary__content": "Hög hastighet smarta AI-frågor: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Se till att du har minst 1 500 höghastighetsavancerade textfrågor varje månad. Efter att gränsen har nåtts kan modellens hastighet och kvalitet minskas.",
+    "advanced_text__secondary__content__tooltip": "Se till att ha minst 1 500 höghastighets-smarta AI-förfrågningar varje månad. Användning utöver denna gräns eller vid höga frekvenser kan resultera i minskad hastighet och kvalitet. Rättvis användning tillämpas baserat på förfrågningsfrekvens, innehållslängd och övergripande användningsmönster.",
     "image_generate__secondary__content": "Hög hastighet bild AI-frågor: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Se till att du har minst 1 500 höghastighetsbildfrågor varje månad. Efter att gränsen har nåtts kan modellens hastighet och kvalitet minskas.",
+    "image_generate__secondary__content__tooltip": "Se till att ha minst 600 höghastighetsbild-AI-förfrågningar varje månad. Användning utöver denna gräns eller vid höga frekvenser kan resultera i minskad hastighet och kvalitet. Rättvis användning tillämpas baserat på förfrågningsfrekvens, bildstorlek och övergripande användningsmönster.",
     "upgrade_to_go_unlimited": "Uppgradera till MaxAI Elite för att gå obegränsat"
   },
   "onboarding": {

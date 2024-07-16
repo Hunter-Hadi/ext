@@ -1341,9 +1341,9 @@
     "queries": "Sisa kueri AI",
     "reset_on_date": "Reset pada {{DATE}}",
     "advanced_text__secondary__content": "Kueri AI cerdas berkecepatan tinggi: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri teks lanjutan kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",
+    "advanced_text__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri AI pintar berkecepatan tinggi setiap bulan. Penggunaan melebihi batas ini atau pada frekuensi tinggi dapat mengakibatkan penurunan kecepatan dan kualitas. Kebijakan penggunaan wajar berlaku berdasarkan frekuensi kueri, panjang konten, dan pola penggunaan secara keseluruhan.",
     "image_generate__secondary__content": "Kueri AI gambar berkecepatan tinggi: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Pastikan setidaknya 1.500 kueri gambar kecepatan tinggi setiap bulan. Setelah mencapai batas, kecepatan dan kualitas model dapat berkurang.",
+    "image_generate__secondary__content__tooltip": "Pastikan setidaknya 600 kueri AI gambar berkecepatan tinggi setiap bulan. Penggunaan melebihi batas ini atau pada frekuensi tinggi dapat mengakibatkan penurunan kecepatan dan kualitas. Kebijakan penggunaan wajar berlaku berdasarkan frekuensi kueri, ukuran gambar, dan pola penggunaan secara keseluruhan.",
     "upgrade_to_go_unlimited": "Upgrade ke MaxAI Elite untuk unlimited"
   },
   "onboarding": {

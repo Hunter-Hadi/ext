@@ -1341,9 +1341,9 @@
     "queries": "Consultes d'IA restants",
     "reset_on_date": "Reinicia el {{DATE}}",
     "advanced_text__secondary__content": "Consultes d'IA intel·ligent d'alta velocitat: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes avançades de text d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
+    "advanced_text__secondary__content__tooltip": "Assegureu-vos d'un mínim de 1.500 consultes d'AI intel·ligents d'alta velocitat cada mes. L'ús més enllà d'aquest límit o a altes freqüències pot resultar en una velocitat i qualitat reduïdes. S'apliquen polítiques d'ús just basades en la freqüència de consulta, la longitud del contingut i els patrons d'ús globals.",
     "image_generate__secondary__content": "Consultes d'IA d'imatge d'alta velocitat: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes d'imatges d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
+    "image_generate__secondary__content__tooltip": "Assegureu-vos d'un mínim de 600 consultes d'AI d'imatge d'alta velocitat cada mes. L'ús més enllà d'aquest límit o a altes freqüències pot resultar en una velocitat i qualitat reduïdes. S'apliquen polítiques d'ús just basades en la freqüència de consulta, la mida de la imatge i els patrons d'ús globals.",
     "upgrade_to_go_unlimited": "Millora a MaxAI Elite per anar il·limitat"
   },
   "onboarding": {

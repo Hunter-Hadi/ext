@@ -1341,9 +1341,9 @@
     "queries": "Consultas de IA restantes",
     "reset_on_date": "Restablecer el {{DATE}}",
     "advanced_text__secondary__content": "Consultas de IA inteligente de alta velocidad: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Asegúrate de tener al menos 1,500 consultas avanzadas de texto de alta velocidad cada mes. Después de alcanzar el límite, la velocidad y calidad del modelo pueden reducirse.",
+    "advanced_text__secondary__content__tooltip": "Asegúrate de al menos 1,500 consultas inteligentes de IA de alta velocidad cada mes. El uso más allá de este límite o a altas frecuencias puede resultar en velocidad y calidad reducidas. Se aplican políticas de uso justo basadas en la frecuencia de consulta, la longitud del contenido y los patrones de uso en general.",
     "image_generate__secondary__content": "Consultas de IA de imagen de alta velocidad: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Asegúrate de tener al menos 1,500 consultas de imágenes de alta velocidad cada mes. Después de alcanzar el límite, la velocidad y calidad del modelo pueden reducirse.",
+    "image_generate__secondary__content__tooltip": "Asegúrate de al menos 600 consultas de IA de imagen de alta velocidad cada mes. El uso más allá de este límite o a altas frecuencias puede resultar en velocidad y calidad reducidas. Se aplican políticas de uso justo basadas en la frecuencia de consulta, el tamaño de la imagen y los patrones de uso en general.",
     "upgrade_to_go_unlimited": "Actualiza a MaxAI Elite para ir ilimitado"
   },
   "onboarding": {

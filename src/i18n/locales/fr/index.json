@@ -1341,9 +1341,9 @@
     "queries": "Requêtes IA restantes",
     "reset_on_date": "Réinitialisation le {{DATE}}",
     "advanced_text__secondary__content": "Requêtes IA intelligente à haute vitesse: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes de texte avancé à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites.",
+    "advanced_text__secondary__content__tooltip": "Assurez-vous d'au moins 1 500 requêtes AI intelligentes à haute vitesse chaque mois. L'utilisation au-delà de cette limite ou à des fréquences élevées peut entraîner une vitesse et une qualité réduites. Les politiques d'utilisation équitable s'appliquent en fonction de la fréquence des requêtes, de la longueur du contenu et des modèles d'utilisation globaux.",
     "image_generate__secondary__content": "Requêtes IA d'image à haute vitesse: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes d'image à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites.",
+    "image_generate__secondary__content__tooltip": "Assurez-vous d'au moins 600 requêtes AI d'image à haute vitesse chaque mois. L'utilisation au-delà de cette limite ou à des fréquences élevées peut entraîner une vitesse et une qualité réduites. Les politiques d'utilisation équitable s'appliquent en fonction de la fréquence des requêtes, de la taille de l'image et des modèles d'utilisation globaux.",
     "upgrade_to_go_unlimited": "Mettez à niveau vers MaxAI Elite pour aller illimité"
   },
   "onboarding": {

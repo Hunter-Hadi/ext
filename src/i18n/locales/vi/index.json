@@ -1341,9 +1341,9 @@
     "queries": "Các truy vấn AI còn lại",
     "reset_on_date": "Đặt lại vào ngày {{DATE}}",
     "advanced_text__secondary__content": "Câu truy vấn AI thông minh tốc độ cao: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn văn bản nâng cao tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
+    "advanced_text__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn trí tuệ AI thông minh tốc độ cao mỗi tháng. Sử dụng vượt quá giới hạn này hoặc ở tần suất cao có thể dẫn đến giảm tốc độ và chất lượng. Chính sách sử dụng công bằng áp dụng dựa trên tần suất truy vấn, độ dài nội dung và mẫu hình sử dụng tổng thể.",
     "image_generate__secondary__content": "Câu truy vấn AI hình ảnh tốc độ cao: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Đảm bảo ít nhất 1.500 truy vấn hình ảnh tốc độ cao mỗi tháng. Sau khi đạt đến giới hạn, tốc độ và chất lượng của mô hình có thể bị giảm.",
+    "image_generate__secondary__content__tooltip": "Đảm bảo ít nhất 600 truy vấn hình ảnh AI tốc độ cao mỗi tháng. Sử dụng vượt quá giới hạn này hoặc ở tần suất cao có thể dẫn đến giảm tốc độ và chất lượng. Chính sách sử dụng công bằng áp dụng dựa trên tần suất truy vấn, kích thước hình ảnh và mẫu hình sử dụng tổng thể.",
     "upgrade_to_go_unlimited": "Nâng cấp lên MaxAI Elite để không giới hạn"
   },
   "onboarding": {

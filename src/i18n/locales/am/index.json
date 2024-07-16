@@ -1343,7 +1343,7 @@
     "advanced_text__secondary__content": "ስህተት በትንሽ ፈፅሞ AI ጥያቄዎች: {{QUERIES}}",
     "advanced_text__secondary__content__tooltip": "ማሳወቂያ ጥሩ ጥሩ ጥያቄዎች ከሆነ በስፋት 1,500 የተሳሳተ ጥሩ ጥሩ ጥያቄዎች እንዲሁም በማሳወቂያው የሚያስቀምጡ ስፋቶች የሚያስተካክሉትን የተሳሳተ ጥሩ ጥሩ ጥያቄዎች ይመልከቱ።",
     "image_generate__secondary__content": "ስህተት በትንሽ ምስል AI ጥያቄዎች: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "ማሳወቂያ ጥሩ ጥሩ ጥያቄዎች ከሆነ በስፋት 1,500 የተሳሳተ ምስል ጥሩ ጥሩ ጥያቄዎች እንዲሁም በማሳወቂያው የሚያስቀምጡ ስፋቶች የሚያስተካክሉትን የተሳሳተ ምስል ጥሩ ጥሩ ጥያቄዎች ይመልከቱ።",
+    "image_generate__secondary__content__tooltip": "ማሳወቂያ ጥሩ ጥሩ ጥያቄዎች ከሆነ በስፋት 600 የተሳሳተ ምስል ጥሩ ጥሩ ጥያቄዎች እንዲሁም በማሳወቂያው የሚያስቀምጡ ስፋቶች የሚያስተካክሉትን የተሳሳተ ምስል ጥሩ ጥሩ ጥያቄዎች ይመልከቱ።",
     "upgrade_to_go_unlimited": "የማክሰኞ አይሊት ለመሆን ወደ MaxAI Elite አገልግሎት እየሰጡ"
   },
   "onboarding": {

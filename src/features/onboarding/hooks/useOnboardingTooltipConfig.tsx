@@ -10,6 +10,7 @@ import {
 } from '@/features/onboarding/utils'
 import useCommands from '@/hooks/useCommands'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
+import { sleep } from '@/utils/promiseUtils'
 export type IOnBoardingTooltipConfigType = {
   // 选择器支持字符串数组
   referenceElementSelector: string | string[]
@@ -118,6 +119,12 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `div[role=menu].dropdown-menu`,
         tooltipProps: {
+          beforeTooltipShow: async () => {
+            // 为了等 MENU_LIST_BOX 内容渲染完
+            // 延迟 0.5s 显示
+            await sleep(500)
+            return true
+          },
           floatingMenuTooltip: true,
           placement: 'left',
           sx: {

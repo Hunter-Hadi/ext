@@ -104,8 +104,8 @@ export interface IMaxAIResponseStreamMessage {
    */
   timestamped?: {
     start: string
-    title: string
-    sub_summarites: { start: string; text: string }[]
+    text: string
+    children: { start: string; text: string }[]
   }[]
   /**
    * 目前应该是json模式返回的status，为ok代表成功

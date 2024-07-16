@@ -419,6 +419,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
             streamMessage,
             responseMessage,
             conversationDetail,
+            postBody,
           )
           responseMessage = parserMessage.data
           onMessage && onMessage(parserMessage)
@@ -464,6 +465,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
           data,
           responseMessage,
           conversationDetail,
+          postBody,
         )
         responseMessage = parserMessage.data
       } else {

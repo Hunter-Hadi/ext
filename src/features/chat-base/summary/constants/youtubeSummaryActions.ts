@@ -241,6 +241,13 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
           messageId: messageId || uuidV4(),
           text: '',
           originalMessage: {
+            content: {
+              title: {
+                title: 'noneShowContent',
+              },
+              text: '',
+              contentType: 'text',
+            },
             metadata: {
               sourceWebpage: {
                 url: `{{CURRENT_WEBPAGE_URL}}`,
@@ -341,6 +348,7 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
                 text: '',
                 originalMessage: {
                   metadata: {
+                    isComplete: true,
                     copilot: {
                       steps: [
                         {
@@ -351,21 +359,86 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
                         },
                       ],
                     },
+                    deepDive: [
+                      // {
+                      //   title: {
+                      //     title: 'Oops！We Can‘t Read the video',
+                      //     titleIcon: 'TipsAndUpdates',
+                      //   },
+                      //   value:
+                      //     'Unfortunately, subtitles are unavailable for 12% of the videos. We are unable to create summaries for them at this time. Please, try another video instead 😌',
+                      // },
+                      // 组件里会去显示无内容信息
+                      {
+                        type: 'timestampedSummary',
+                        title: {
+                          title: 'Summary',
+                          titleIcon: 'SummaryInfo',
+                        },
+                        value: [],
+                      },
+                    ],
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+              AskChatGPTActionOutput: 'message',
+            },
+          },
+          {
+            type: 'RENDER_TEMPLATE',
+            parameters: {
+              template: 'YOUTUBE_TRANSCRIPTS_NONE',
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有YOUTUBE_TRANSCRIPTS
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing video',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                    deepDive: [
+                      {
+                        type: 'timestampedSummary',
+                        title: {
+                          title: 'Summary',
+                          titleIcon: 'SummaryInfo',
+                        },
+                        value: [
+                          {
+                            id: uuidV4(),
+                            start: '',
+                            duration: '',
+                            text: '',
+                            status: 'loading',
+                            children: [],
+                          },
+                        ],
+                      },
+                    ],
                   },
                   includeHistory: false,
                 },
               } as IAIResponseMessage,
             },
           },
-          {
-            type: 'RENDER_TEMPLATE',
-            parameters: {
-              template: '',
-            },
-          },
-        ],
-        WFConditionalIfFalseActions: [
-          // 有YOUTUBE_TRANSCRIPTS
           {
             type: 'ASK_CHATGPT',
             parameters: {
@@ -423,7 +496,7 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
           WFSerializationType: 'WFDictionaryFieldValue',
         },
         WFConditionalIfTrueActions: [
-          // 没有related question
+          // 没有related question但是有TRANSCRIPT_TIMESTAMPED
           {
             type: 'SCRIPTS_GET_DICTIONARY_VALUE',
             parameters: {
@@ -751,6 +824,13 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
           messageId: messageId || uuidV4(),
           text: '',
           originalMessage: {
+            content: {
+              title: {
+                title: 'noneShowContent',
+              },
+              text: '',
+              contentType: 'text',
+            },
             metadata: {
               sourceWebpage: {
                 url: `{{CURRENT_WEBPAGE_URL}}`,

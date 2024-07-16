@@ -19,6 +19,7 @@ import {
 import { getContextMenuByNavMetadataKey } from '@/features/chat-base/summary/utils/summaryActionHelper'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { isSummaryMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import CitationFactory from '@/features/citation/core/CitationFactory'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import { useContextMenuList } from '@/features/contextMenu'
@@ -28,7 +29,10 @@ import {
   checkRemoteConversationIsExist,
   clientDownloadConversationToLocal,
 } from '@/features/indexed_db/conversations/clientService'
-import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIResponseOriginalMessageMetaDeep,
+  IChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import { checkDocIdExist } from '@/features/shortcuts/utils/maxAIDocument'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -36,6 +40,25 @@ import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import { AppState } from '@/store'
 
 let checkDocTime = 0
+
+const isValidSummaryAIMessage = (message?: IChatMessage | null) => {
+  if (!message || !isSummaryMessage(message)) return false
+  if (!message.originalMessage?.metadata?.isComplete) return false
+  if (message.originalMessage.content?.text) return true
+  // 如果是youtube时间戳总结，content.text是没有内容，会在deepDive里有结构化的信息
+  // 如果已经有输出成功的内容，判断为有效的消息，比如输出到一半用户stop了
+  const deepDive = ([] as IAIResponseOriginalMessageMetaDeep[]).concat(
+    message.originalMessage.metadata.deepDive || [],
+  )
+  return deepDive.some((item) => {
+    if (item.type === 'timestampedSummary' || item.type === 'transcript') {
+      if (item.value?.find((transcript) => transcript.status === 'complete')) {
+        return true
+      }
+    }
+    return false
+  })
+}
 
 const usePageSummary = () => {
   const appState = useRecoilValue(AppState)
@@ -191,11 +214,7 @@ const usePageSummary = () => {
             'ai',
             'earliest',
           )
-        let isValidAIMessage =
-          aiMessage &&
-          aiMessage?.originalMessage &&
-          aiMessage?.originalMessage.metadata?.isComplete &&
-          aiMessage?.originalMessage.content?.text
+        let isValidAIMessage = isValidSummaryAIMessage(aiMessage)
         if (
           aiMessage &&
           aiMessage?.originalMessage &&

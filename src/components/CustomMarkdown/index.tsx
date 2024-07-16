@@ -22,6 +22,7 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import CitationTag from '@/features/citation/components/CitationTag'
+import YoutubeTimeButton from '@/features/citation/components/YoutubeTimeButton'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessage,
@@ -314,6 +315,39 @@ export const preprocessCitation = (content: string) => {
 //   return content
 // }
 
+const OverrideText: FC<{ children: React.ReactNode }> = ({ children }) => {
+  // 使用正则表达式匹配时间格式 [hh:mm:ss] 或 [hh:mm]
+  // const regex = /\[(\d{2}:\d{2}(?::\d{2})?)\]/g
+  const regex = /\[(\d+:\d+(?::\d+)?)\]/g
+
+  if (typeof children === 'string' && regex.test(children)) {
+    const parts = children.split(regex)
+    return (
+      <span>
+        {parts.map((part, index) =>
+          regex.test(`[${part}]`) ? (
+            <YoutubeTimeButton key={index} time={part} />
+          ) : (
+            part
+          ),
+        )}
+      </span>
+    )
+  }
+
+  if (Array.isArray(children)) {
+    return (
+      <>
+        {children.map((child, index) => (
+          <OverrideText key={index}>{child}</OverrideText>
+        ))}
+      </>
+    )
+  }
+
+  return <>{children}</>
+}
+
 const CustomMarkdown: FC<{
   message?: IAIResponseMessage
   originalMessage?: IAIResponseOriginalMessage
@@ -400,6 +434,29 @@ const CustomMarkdown: FC<{
           // eslint-disable-next-line react/display-name
           h6: (props: any) => {
             return <OverrideHeading {...props} heading={'h6'} />
+          },
+          // TODO 下面2个新增的merge代码后拆分出来
+          p: ({ node, ...props }) => {
+            return (
+              <p>
+                {isComplete ? (
+                  <OverrideText>{props.children}</OverrideText>
+                ) : (
+                  props.children
+                )}
+              </p>
+            )
+          },
+          li: ({ node, ...props }) => {
+            return (
+              <li>
+                {isComplete ? (
+                  <OverrideText>{props.children}</OverrideText>
+                ) : (
+                  props.children
+                )}
+              </li>
+            )
           },
           // eslint-disable-next-line react/display-name
           a: ({ node, ...props }) => {
@@ -517,7 +574,7 @@ const CustomMarkdown: FC<{
         {formatMarkdownText}
       </ReactMarkdown>
     ),
-    [citations, formatMarkdownText],
+    [citations, isComplete, formatMarkdownText],
   )
 }
 export default CustomMarkdown

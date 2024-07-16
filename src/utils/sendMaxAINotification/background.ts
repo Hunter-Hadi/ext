@@ -23,24 +23,27 @@ export const backgroundSendMaxAINotification = async (
   // const { getBrowser, getOS } = new UAParser()
   // const browser = getBrowser()
   // const os = getOS()
-  const text = aesJsonEncrypt({
-    env: isProduction ? 'prod' : 'dev',
-    type: type,
-    app: 'MAXAI',
-    data: {
-      title,
-      message,
-      ...attr,
+  const text = aesJsonEncrypt(
+    {
+      env: isProduction ? 'prod' : 'dev',
+      type: type,
+      app: 'MAXAI',
+      data: {
+        title,
+        message,
+        ...attr,
+      },
+      user_id: userId,
+      email: userEmail,
+      app_version: APP_VERSION,
+      browser: browser.name,
+      browser_version: browser.version,
+      platform: os.name,
+      platform_version: os.version,
+      languages: navigator.languages,
     },
-    user_id: userId,
-    email: userEmail,
-    app_version: APP_VERSION,
-    browser: browser.name,
-    browser_version: browser.version,
-    platform: os.name,
-    platform_version: os.version,
-    languages: navigator.languages,
-  })
+    'MaxAI',
+  )
   return fetch(
     'https://api.extensions-hub.com/extensionhub/send_notification',
     {

@@ -42,7 +42,7 @@ export const clientSendMaxAINotification = async (
     platform_version: os.version,
     languages: navigator.languages,
   }
-  const text = aesJsonEncrypt(dataObject)
+  const text = aesJsonEncrypt(dataObject, 'MaxAI')
   return clientProxyFetchAPI(
     'https://api.extensions-hub.com/extensionhub/send_notification',
     {

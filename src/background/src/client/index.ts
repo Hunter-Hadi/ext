@@ -14,6 +14,7 @@ import backgroundCommandHandler from '@/background/src/client/backgroundCommandH
 import { openPDFViewer } from '@/background/src/pdf'
 import {
   backgroundRestartChromeExtension,
+  backgroundSendClientMessage,
   chromeExtensionLogout,
   chromeExtensionOpenImmersiveChat,
   createBackgroundMessageListener,

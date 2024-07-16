@@ -23,11 +23,14 @@ export const APP_SM3_HASH_KEY = '${sign_key}'
 `
       fs.writeFileSync(filePath, fileContent, 'utf8')
       console.log(`V[${appVersion}] API security key updated: \n`, fileContent)
+      return true
     } else {
       console.error(`V[${appVersion}] API security key update failed`)
     }
+    return false
   } catch (e) {
     console.error(`V[${appVersion}] API security key update failed`, e)
+    return false
   }
 }
 export default updateProjectAPISecurityKey

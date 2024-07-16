@@ -322,7 +322,12 @@ async function main() {
   if (!existsSync(releasesDir)) {
     mkdirSync(releasesDir)
   }
-  await updateProjectAPISecurityKey(extensionVersion, 'src/features/security/constant/index.ts')
+  if (
+    !await updateProjectAPISecurityKey(extensionVersion, 'src/features/security/constant/index.ts')
+  ) {
+    throw('updateProjectAPISecurityKey failed')
+    return
+  }
   if (!isProduction) {
     await hotReload()
     await reactDevtools()

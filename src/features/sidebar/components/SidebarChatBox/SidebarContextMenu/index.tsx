@@ -1,15 +1,16 @@
-import { autoUpdate, FloatingPortal, useFloating } from '@floating-ui/react'
 import SendIcon from '@mui/icons-material/Send'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
-import { useTheme } from '@mui/material/styles'
+import { SxProps, Theme, useTheme } from '@mui/material/styles'
 import { cloneDeep } from 'lodash-es'
 import React, { FC, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
+import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useContextMenuList } from '@/features/contextMenu'
 import {
@@ -21,8 +22,10 @@ import {
   checkIsDraftContextMenuId,
   findDraftContextMenuById,
 } from '@/features/contextMenu/utils'
+import TreeNavigatorMatcher from '@/features/sidebar/utils/treeNavigatorMatcher'
 import { getMaxAISidebarRootElement } from '@/utils'
 
+import SidebarChatVoiceInputButton from '../SidebarChatVoiceInputButton'
 import ContextMenuList from './MenuList'
 import SidebarContextMenuTitlebar from './SidebarContextMenuTitlebar'
 
@@ -34,14 +37,37 @@ const SidebarContextMenu: FC = () => {
   const contentRef = useRef('')
   contentRef.current = content
   const [inputValue, setInputValue] = useState('')
+  const update = useUpdate()
+  const matcher = useMemo(() => new TreeNavigatorMatcher(), [])
+  matcher.onUpdate = update
+
   const { contextMenuList: contextWindowList } = useContextMenuList(
     'textSelectPopupButton',
     inputValue,
   )
+
+  // 这里第一层需要flat一下才能得到
+  const topLevelMenuList = useMemo(
+    () =>
+      contextWindowList
+        .map((item) => {
+          if (item.data.type === 'group') return item.children
+          return item
+        })
+        .flat(),
+    [contextWindowList],
+  )
+
+  matcher.menuList = topLevelMenuList
+
   const { askAIWIthShortcuts, askAIQuestion } = useClientChat()
   const { checkAttachments } = useClientChat()
 
   const handleEnter = async () => {
+    if (matcher.path.length && content) {
+      const menuItem = matcher.path[matcher.path.length - 1].item
+      handleContextMenuClick(menuItem)
+    }
     if (inputValue.trim() && content) {
       const template = `${inputValue}:\n"""\n${content}\n"""`
       await askAIQuestion({
@@ -62,12 +88,6 @@ const SidebarContextMenu: FC = () => {
 
   const referenceElementRef = useRef<HTMLDivElement>(null)
 
-  const { x, y, refs, strategy } = useFloating({
-    strategy: 'absolute',
-    open: true,
-    placement: 'bottom-start',
-    whileElementsMounted: autoUpdate,
-  })
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleContextMenuClick = (menuItem: IContextMenuItem) => {
@@ -101,12 +121,27 @@ const SidebarContextMenu: FC = () => {
             ],
           })
         })
-        .then(() => {
-          // TODO:
+        .catch((err) => {
+          console.error('askAIWIthShortcuts cause some error', err)
         })
-        .catch(() => {})
     }
   }
+
+  const actionsBtnColorSxMemo = useMemo<SxProps<Theme>>(() => {
+    return {
+      color: 'text.secondary',
+      borderColor: (t) => {
+        return t.palette.mode === 'dark'
+          ? 'rgba(255, 255, 255, 0.08)'
+          : 'rgba(0, 0, 0, 0.16)'
+      },
+      '&:hover': {
+        color: 'primary.main',
+        borderColor: 'primary.main',
+      },
+    }
+  }, [])
+  const boxRef = useRef<HTMLDivElement>(null)
 
   const root = useMemo(() => getMaxAISidebarRootElement() || document.body, [])
 
@@ -200,19 +235,17 @@ const SidebarContextMenu: FC = () => {
             >
               <AutoHeightTextarea
                 minLine={1}
+                InputId=''
                 stopPropagation
-                // autoFocus
+                autoFocus
                 onKeydownCapture={(event) => {
-                  if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-                    // 传递事件给referenceElement以响应快捷指令
-                    referenceElementRef.current?.dispatchEvent(
-                      new KeyboardEvent('keydown', {
-                        code: event.code,
-                        key: event.key,
-                        bubbles: true,
-                        cancelable: true,
-                      }),
-                    )
+                  if (
+                    event.key === 'ArrowUp' ||
+                    event.key === 'ArrowDown' ||
+                    event.key === 'ArrowLeft' ||
+                    event.key === 'ArrowRight'
+                  ) {
+                    matcher.onNavigate(event.key.slice(5) as any)
                     event.stopPropagation()
                     return true
                   }
@@ -221,6 +254,25 @@ const SidebarContextMenu: FC = () => {
                 onChange={(value) => {
                   setInputValue(value)
                 }}
+                expandNode={
+                  <ChatIconFileUpload
+                    TooltipProps={{
+                      placement: 'bottom',
+                      floatingMenuTooltip: false,
+                    }}
+                    direction={'column'}
+                    size={'tiny'}
+                    onUploaded={() => {
+                      // TODO:
+                      if (!referenceElementRef.current) return
+
+                      referenceElementRef.current.style.marginLeft =
+                        referenceElementRef.current.style.marginLeft
+                          ? ''
+                          : '1px'
+                    }}
+                  />
+                }
                 placeholder={t('client:floating_menu__input__placeholder')}
                 sx={{
                   border: 'none',
@@ -240,8 +292,19 @@ const SidebarContextMenu: FC = () => {
               />
             </Stack>
 
+            <MaxAIBetaFeatureWrapper betaFeatureName={'voice_input'}>
+              <Box>
+                <SidebarChatVoiceInputButton
+                  sx={actionsBtnColorSxMemo}
+                  onSpeechToText={(text) => {
+                    setInputValue((prev) => prev + text)
+                  }}
+                />
+              </Box>
+            </MaxAIBetaFeatureWrapper>
+
             <TextOnlyTooltip
-              floatingMenuTooltip
+              floatingMenuTooltip={false}
               title={t('client:floating_menu__button__send_to_ai')}
               description={'⏎'}
               placement={'bottom-end'}
@@ -277,49 +340,47 @@ const SidebarContextMenu: FC = () => {
             width: '100%',
             padding: '0 10px',
             boxSizing: 'border-box',
+            height: '1px',
           }}
-          ref={refs.setReference}
+          id='SidebarContextMenu-reference-container'
+          component={'div'}
+          ref={boxRef}
         ></Box>
       </Box>
-      <FloatingPortal root={root}>
-        <Box
-          ref={refs.setFloating}
-          sx={{
-            width: '100%',
-            position: strategy,
-            zIndex: 10000,
-            top: y ?? 0,
-            left: x ?? 0,
-          }}
-        >
-          <ContextMenuList
-            inputValue={inputValue}
-            open
-            defaultPlacement={'bottom-start'}
-            needAutoUpdate
-            root={root}
-            menuList={contextWindowList}
-            referenceElementRef={referenceElementRef}
-            onClickContextMenu={handleContextMenuClick}
-            // onRunActions={(actions) => {
-            //   return askAIWIthShortcuts(actions, {
-            //     overwriteParameters: [
-            //       {
-            //         key: 'SELECTED_TEXT',
-            //         value: contentRef.current,
-            //         label: 'Selected text',
-            //         isBuiltIn: true,
-            //         overwrite: true,
-            //       },
-            //     ],
-            //   })
-            // }}
-            referenceElement={<Box ref={referenceElementRef} />}
-          />
-        </Box>
-      </FloatingPortal>
+      <Box
+        sx={{
+          padding: '0 10px',
+        }}
+      >
+        <ContextMenuList
+          inputValue={inputValue}
+          open
+          defaultPlacement={'bottom-start'}
+          needAutoUpdate
+          root={root}
+          menuList={contextWindowList}
+          referenceElementRef={referenceElementRef}
+          onClickContextMenu={handleContextMenuClick}
+          referenceElement={
+            <Box
+              component={'div'}
+              ref={referenceElementRef}
+              data-test-id={'ContextMenuList-referenceElementRef'}
+            />
+          }
+          matcher={matcher}
+        />
+      </Box>
     </>
   )
+}
+
+const useUpdate = () => {
+  const [, update] = useState([])
+
+  return () => {
+    update([])
+  }
 }
 
 export default SidebarContextMenu

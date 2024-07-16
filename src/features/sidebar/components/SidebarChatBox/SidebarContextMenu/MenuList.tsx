@@ -1,19 +1,13 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import React, { FC, forwardRef, useCallback, useEffect, useMemo } from 'react'
+import React, { FC, forwardRef, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useResetRecoilState } from 'recoil'
 
 import { SPECIAL_NEED_DIVIDER_KEYS } from '@/features/contextMenu/constants'
 import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 
-import {
-  DropdownItem,
-  DropdownMenu,
-  DropdownMenuSelectedItemState,
-  MenuProps,
-} from './DropdownMenu'
+import { DropdownItem, DropdownMenu, MenuProps } from './DropdownMenu'
 
 const DropdownItemWrapper = forwardRef<
   HTMLElement,
@@ -45,7 +39,8 @@ const DropdownItemWrapper = forwardRef<
         menuWidth={menuWidth}
         onClickContextMenu={onClickContextMenu}
         referenceElement={<DropdownItem {...rest} menuItem={menuItem} />}
-        matchString={rest.matchString}
+        matcher={rest.matcher}
+        open={rest.matcher?.matchOpenGroup(menuItem)}
       >
         {menuItem.children.map((childMenuItem) => {
           return (
@@ -104,15 +99,12 @@ const ContextMenuList: FC<
     onClickContextMenu,
     menuWidth,
     hoverIcon,
-    inputValue = '',
     ...rest
   } = props
   const { t } = useTranslation(['prompt'])
-  const resetDropdownState = useResetRecoilState(DropdownMenuSelectedItemState)
 
   const RenderMenuList = useMemo(() => {
     const nodeList: React.ReactNode[] = []
-    // console.log('Context Menu List Render', menuList)
     menuList.forEach((menuItem, index) => {
       const menuLabel =
         t(`prompt:${menuItem.id}` as any) !== menuItem.id
@@ -188,6 +180,7 @@ const ContextMenuList: FC<
             key={menuItem.id}
             menuItem={menuItem}
             root={root}
+            matcher={rest.matcher}
           />,
         )
       }
@@ -195,14 +188,6 @@ const ContextMenuList: FC<
     return nodeList
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuList, t])
-
-  // 卸载组件的时候请求状态
-  useEffect(
-    () => () => {
-      resetDropdownState()
-    },
-    [],
-  )
 
   return (
     <DropdownMenu
@@ -218,7 +203,7 @@ const ContextMenuList: FC<
       onClickContextMenu={onClickContextMenu}
       menuWidth={menuWidth}
       hoverIcon={hoverIcon}
-      matchString={inputValue}
+      matcher={rest.matcher}
     >
       {RenderMenuList}
     </DropdownMenu>

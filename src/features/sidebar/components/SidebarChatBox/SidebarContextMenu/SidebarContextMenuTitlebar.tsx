@@ -1,17 +1,24 @@
 import { Stack } from '@mui/material'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import LanguageSelector from '@/features/contextMenu/components/FloatingContextMenu/LanguageSelector'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
+import { getMaxAISidebarRootElement } from '@/utils'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import SidebarContextMenuHistoryButton from './SidebarContextMenuHistoryButton'
 
 const SidebarContextMenuTitlebar: FC = () => {
   const { userSettings, setUserSettings } = useUserSettings()
 
+  const isImmersivePage = useMemo(() => isMaxAIImmersiveChatPage(), [])
   const showModelSelector = true
+  const container = useMemo(
+    () => getMaxAISidebarRootElement() || document.body,
+    [],
+  )
 
   return (
     <Stack
@@ -50,13 +57,16 @@ const SidebarContextMenuTitlebar: FC = () => {
         />
       </Stack>
 
-      <SidebarContextMenuHistoryButton
-        container={document.body}
-        TooltipProps={{
-          placement: 'top',
-          floatingMenuTooltip: true,
-        }}
-      />
+      {/* immersive chat 中就不显示了 */}
+      {!isImmersivePage && (
+        <SidebarContextMenuHistoryButton
+          container={container}
+          TooltipProps={{
+            placement: 'top',
+            floatingMenuTooltip: true,
+          }}
+        />
+      )}
     </Stack>
   )
 }

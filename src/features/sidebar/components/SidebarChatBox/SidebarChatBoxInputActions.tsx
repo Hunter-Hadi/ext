@@ -199,6 +199,7 @@ const SidebarChatBoxInputActions: FC<{
             }}
           >
             <SidebarChatVoiceInputButton
+              inputMediator='chatBoxInputMediator'
               sx={{
                 ...actionsBtnColorSxMemo,
                 [`&.${buttonClasses.contained}`]: {

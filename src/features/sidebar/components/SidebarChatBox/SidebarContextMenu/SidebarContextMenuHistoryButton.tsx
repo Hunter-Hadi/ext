@@ -30,9 +30,8 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 const HistoryMessageList: FC<{
   conversationId?: string
   onDuplicateConversation?: (conversationId: string) => void
-  container?: HTMLElement
-}> = (props) => {
-  const { conversationId, onDuplicateConversation } = props
+  container: HTMLElement
+}> = ({ conversationId, onDuplicateConversation, container }) => {
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
   if (!conversationId) {
@@ -83,8 +82,7 @@ const SidebarContextMenuHistoryButton: FC<{
   const [isClickOpenOnce, setIsClickOpenOnce] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
-  const paperRef = useRef<HTMLDivElement>(null)
-  const boxRef = useRef<HTMLDivElement>(null)
+  const paperRef = useRef<HTMLDivElement>()
   const [selectedConversationId, setSelectedConversationId] =
     useState<string>('')
   const handleOpenModal = () => {
@@ -152,7 +150,7 @@ const SidebarContextMenuHistoryButton: FC<{
 
   return (
     <>
-      <Box ref={boxRef}>
+      <Box>
         <TextOnlyTooltip
           title={t('client:context_window__chat_history__button__title')}
           placement={'bottom'}
@@ -182,8 +180,9 @@ const SidebarContextMenuHistoryButton: FC<{
         </TextOnlyTooltip>
       </Box>
 
+      {/* mask */}
       {modalOpen &&
-        boxRef.current &&
+        container &&
         createPortal(
           <Box
             onClick={() => {
@@ -199,10 +198,10 @@ const SidebarContextMenuHistoryButton: FC<{
               bgcolor: 'rgba(0,0,0,0.5)',
             }}
           />,
-          boxRef.current,
+          container,
         )}
       <Popper
-        container={boxRef.current}
+        container={container}
         open={modalOpen}
         anchorEl={anchorEl}
         placement={placement}

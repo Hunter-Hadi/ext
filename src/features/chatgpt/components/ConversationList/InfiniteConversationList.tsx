@@ -29,7 +29,7 @@ import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Mes
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-export interface IInfiniteConversationListProps<T> {
+export interface IInfiniteConversationListProps {
   hasNextPage: boolean
   isNextPageLoading: boolean
   loadNextPage: () => void
@@ -186,11 +186,10 @@ const Row = memo(function RowItem({
     [],
   )
   const handleSelectConversation = useCallback(async () => {
-    console.log(`handleSelectConversation 11`, conversation.id)
     if (smoothConversationLoading) {
       return
     }
-    console.log(`handleSelectConversation 22`, conversation.id)
+
     if (conversation.id) {
       // 因为现在有Auto archive功能，所以点击的时候需要更新时间
       ClientConversationManager.addOrUpdateConversation(
@@ -203,19 +202,31 @@ const Row = memo(function RowItem({
         },
       )
     }
-    console.log(`handleSelectConversation 33`, conversation.id)
-    if (conversation.type === 'Summary') {
-      // do nothing
-    } else if (conversation.type === 'Chat') {
-      await updateConversationId(conversation.id)
-      updateSidebarConversationType(conversation.type)
-    } else if (conversation.type === 'Search') {
-      await updateConversationId(conversation.id)
-      updateSidebarConversationType(conversation.type)
-    } else if (conversation.type === 'Art') {
-      await updateConversationId(conversation.id)
-      updateSidebarConversationType(conversation.type)
+
+    switch (conversation.type) {
+      case 'ContextMenu':
+      case 'Chat':
+      case 'Search':
+      case 'Art':
+        await updateConversationId(conversation.id)
+        updateSidebarConversationType(conversation.type)
+        break
     }
+    //   if (conversation.type === 'Summary') {
+    //     // do nothing
+    // } else if (conversation.type === 'ContextMenu') {
+    //     await updateConversationId(conversation.id)
+    //     updateSidebarConversationType(conversation.type)
+    //   } else if (conversation.type === 'Chat') {
+    //     await updateConversationId(conversation.id)
+    //     updateSidebarConversationType(conversation.type)
+    //   } else if (conversation.type === 'Search') {
+    //     await updateConversationId(conversation.id)
+    //     updateSidebarConversationType(conversation.type)
+    //   } else if (conversation.type === 'Art') {
+    //     await updateConversationId(conversation.id)
+    //     updateSidebarConversationType(conversation.type)
+    //   }
     // 异步释放Background Conversation
     disposeBackgroundChatSystem(conversation.id).then().catch()
     console.log(`handleSelectConversation 44`, conversation.id)

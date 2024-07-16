@@ -15,6 +15,7 @@ import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
 export interface ISidebarChatVoiceInputButtonProps {
   sx?: SxProps<Theme>
   inputMediator?: InputMediatorName
+  onSpeechToText?: (text: string) => void
 }
 
 const ButtonWithPulse = styled(LoadingButton)({
@@ -82,7 +83,8 @@ const isErrorVoiceInputStatus = (voiceInputStatus: VoiceInputStatus) => {
 
 const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = ({
   sx,
-  inputMediator = 'chatBoxInputMediator',
+  inputMediator,
+  onSpeechToText,
 }) => {
   const { t } = useTranslation(['client'])
   const testid = 'max-ai__actions__button--voice-input'
@@ -254,11 +256,14 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = ({
           if (result.status === 'success') {
             const text = result.data.speechText
             console.log('Speech to text:', text)
-            const previousInputValue =
-              getInputMediator(inputMediator).getInputValue()
-            getInputMediator(inputMediator).updateInputValue(
-              previousInputValue + ' ' + text,
-            )
+            if (inputMediator) {
+              const previousInputValue =
+                getInputMediator(inputMediator).getInputValue()
+              getInputMediator(inputMediator).updateInputValue(
+                previousInputValue + ' ' + text,
+              )
+            }
+            onSpeechToText?.(text)
             setVoiceInputStatus(VoiceInputStatus.IDLE)
           } else if (result.status === 'timeout') {
             console.error('Speech to text timeout.')

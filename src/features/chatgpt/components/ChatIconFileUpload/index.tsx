@@ -13,16 +13,14 @@ import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIMod
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
-  onUpload?: (files: IChatUploadFile[]) => void
-  onDone?: (files: IChatUploadFile[]) => void
+  onChange?: () => void
 }
 
 const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
-  const { disabled = false, TooltipProps, onUpload, onDone, ...rest } = props
+  const { disabled = false, TooltipProps, onChange, ...rest } = props
   const { t } = useTranslation(['common', 'client'])
   const {
     files,
@@ -65,6 +63,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       const newUploadFiles = await formatClientUploadFiles(canUploadFiles)
       await aiProviderUploadFiles(newUploadFiles)
     }
+    onChange?.()
     // clear input
     if (inputRef.current) {
       inputRef.current.value = ''
@@ -89,6 +88,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       loadingTooltipTitle={aiProviderUploadingTooltip}
       onRemove={async (file) => {
         await aiProviderRemoveFiles([file])
+        onChange?.()
       }}
       TooltipProps={TooltipProps}
       {...rest}

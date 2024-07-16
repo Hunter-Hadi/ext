@@ -59,7 +59,7 @@ import {
   closeGlobalVideoPopup,
   isGlobalVideoPopupOpen,
 } from '@/features/video_popup/utils'
-import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
+import { getBrowserZoom, getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 import ContextText from './ContextText'
 import ResizeAnchor from './ResizeAnchor'
@@ -90,8 +90,6 @@ const FloatingContextMenu: FC<{
     activeMessageIndex,
     historyMessages,
   } = useFloatingContextMenuDraft()
-  // const { shortCutsEngine } = useShortCutsEngine()
-  // console.log('historyMessages', historyMessages, shortCutsEngine?.actions)
 
   const {
     hideFloatingContextMenu,
@@ -281,21 +279,19 @@ const FloatingContextMenu: FC<{
    * 拖拽移动实现
    */
   const isDragRef = React.useRef(false)
-  const lastMousePostionRef = React.useRef<{
-    x: number
-    y: number
-  }>({
-    x: 0,
-    y: 0,
-  })
+  const zoomRef = useRef(1)
+  // const lastMousePostionRef = React.useRef<{
+  //   x: number
+  //   y: number
+  // }>({
+  //   x: 0,
+  //   y: 0,
+  // })
   // const dragStartRef = React.useRef(false)
   const handleDragStart = (event: React.MouseEvent) => {
     event.preventDefault()
     isDragRef.current = true
-    lastMousePostionRef.current = {
-      x: event.clientX,
-      y: event.clientY,
-    }
+    zoomRef.current = getBrowserZoom()
   }
 
   useEffect(() => {
@@ -308,7 +304,6 @@ const FloatingContextMenu: FC<{
       floatingSizeOffsetRef.current.dx = 0
       floatingSizeOffsetRef.current.dy = 0
       floatingSizeOffsetRef.current.resized = false
-
       update()
     }
   }, [floatingDropdownMenu.open])
@@ -318,41 +313,34 @@ const FloatingContextMenu: FC<{
       if (isDragRef.current) {
         event.preventDefault()
         isDragRef.current = false
-        // referenceElementDragOffsetRef.current = {
-        //   x: referenceElementDragOffsetRef.current.x,
-        //   y: referenceElementDragOffsetRef.current.y,
-        //   dragged: true,
-        // }
       }
     }
 
     const handleDragMove = (event: MouseEvent) => {
-      if (isDragRef.current) {
-        event.preventDefault()
-        const dx = event.clientX - lastMousePostionRef.current.x
-        const dy = event.clientY - lastMousePostionRef.current.y
-        lastMousePostionRef.current.x = event.clientX
-        lastMousePostionRef.current.y = event.clientY
+      if (!isDragRef.current) return
 
-        referenceElementDragOffsetRef.current = {
-          x: referenceElementDragOffsetRef.current.x + dx,
-          y: referenceElementDragOffsetRef.current.y + dy,
-          dragged: true,
-        }
-        /**
-         * FloatingContextMenuList里的MenuList绑定的是referenceElement的DOM元素位置关系
-         * 当前这里每次拖动的时候修改的是MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID这个DOM
-         * 所以拖拽的时候MenuList没有变化，这里简单的做法是触发一次DropdownMenu的更新修改referenceElement元素
-         */
-        if (referenceElementRef.current) {
-          if (referenceElementRef.current.style.marginLeft) {
-            referenceElementRef.current.style.marginLeft = ''
-          } else {
-            referenceElementRef.current.style.marginLeft = '0.5px'
-          }
-        }
-        update()
+      const dx = event.movementX / zoomRef.current
+      const dy = event.movementY / zoomRef.current
+
+      referenceElementDragOffsetRef.current = {
+        x: referenceElementDragOffsetRef.current.x + dx,
+        y: referenceElementDragOffsetRef.current.y + dy,
+        dragged: true,
       }
+      /**
+       * FloatingContextMenuList里的MenuList绑定的是referenceElement的DOM元素位置关系
+       * 当前这里每次拖动的时候修改的是MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID这个DOM
+       * 所以拖拽的时候MenuList没有变化，这里简单的做法是触发一次DropdownMenu的更新修改referenceElement元素
+       */
+      if (referenceElementRef.current) {
+        if (referenceElementRef.current.style.marginLeft) {
+          referenceElementRef.current.style.marginLeft = ''
+        } else {
+          referenceElementRef.current.style.marginLeft = '0.5px'
+        }
+      }
+      update()
+      event.preventDefault()
     }
     document.addEventListener('mousemove', handleDragMove)
     document.addEventListener('mouseup', handleDragEnd)

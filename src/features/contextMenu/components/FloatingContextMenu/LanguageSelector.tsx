@@ -19,11 +19,11 @@ import React, {
 } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { LANGUAGES_OPTIONS } from '@/features/shortcuts/components/SystemVariableSelect/SystemVariableLanguageSelect'
 import {
   getMaxAIFloatingContextMenuRootElement,
   getMaxAISidebarRootElement,
 } from '@/utils'
+import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 
 const LanguageSelector: FC<{
   defaultValue?: string
@@ -31,7 +31,7 @@ const LanguageSelector: FC<{
   onChangeLanguage?: (lang: string) => void
   inSidebar?: boolean
 }> = ({
-  defaultValue = 'English',
+  defaultValue = '',
   placement = 'top-start',
   onChangeLanguage,
   inSidebar,
@@ -59,9 +59,9 @@ const LanguageSelector: FC<{
   )
   const container = useMemo(
     () =>
-      inSidebar
+      (inSidebar
         ? getMaxAISidebarRootElement()
-        : getMaxAIFloatingContextMenuRootElement(),
+        : getMaxAIFloatingContextMenuRootElement()) || document.body,
     [inSidebar],
   )
 
@@ -88,30 +88,25 @@ const LanguageSelector: FC<{
     }
     setOpen(false)
   }
+  const boxRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!open) return
 
     const mouseEventHandler = (event: MouseEvent) => {
-      const languagesCard = container?.querySelector(
-        '.MaxLanguageProviderSelectorCard',
-      ) as HTMLElement
-      if (languagesCard) {
-        const rect = languagesCard.getBoundingClientRect()
-        const x = (event as MouseEvent).clientX
-        const y = (event as MouseEvent).clientY
-        if (
-          x > rect.left &&
-          x < rect.right &&
-          y > rect.top &&
-          y < rect.bottom
-        ) {
-          // 点击在卡片内部
-          return
-        }
-        handleClose(event)
-        event.stopPropagation()
+      if (!boxRef.current) return
+
+      const languagesCard = boxRef.current
+
+      const rect = languagesCard.getBoundingClientRect()
+      const x = (event as MouseEvent).clientX
+      const y = (event as MouseEvent).clientY
+      if (x > rect.left && x < rect.right && y > rect.top && y < rect.bottom) {
+        // 点击在卡片内部
+        return
       }
+      handleClose(event)
+      event.stopPropagation()
     }
     document.addEventListener('mousedown', mouseEventHandler)
     return () => {
@@ -166,9 +161,6 @@ const LanguageSelector: FC<{
         anchorEl={anchorRef.current}
         placement={placement}
         transition
-        sx={{
-          zIndex: 10000,
-        }}
         modifiers={[
           {
             name: 'RTLSupport',
@@ -196,8 +188,6 @@ const LanguageSelector: FC<{
         container={container}
       >
         {({ TransitionProps }) => {
-          console.log(TransitionProps)
-
           return (
             <Grow
               {...TransitionProps}
@@ -207,11 +197,7 @@ const LanguageSelector: FC<{
               }}
             >
               <Box
-                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-                  event.stopPropagation()
-                  // onClose?.(event)
-                }}
-                className={'MaxLanguageProviderSelectorCard'}
+                ref={boxRef}
                 component={'div'}
                 sx={{
                   borderRadius: '8px',
@@ -224,12 +210,11 @@ const LanguageSelector: FC<{
                   flexDirection: 'row',
                   bgcolor: (t) =>
                     t.palette.mode === 'dark' ? 'rgba(61, 61, 61, 1)' : '#fff',
-                  // ...sx,
                 }}
               >
                 <MenuList
-                  id={'maxai-language-selector-menu'}
-                  aria-labelledby='maxai-language-selector-menu'
+                  // id={'maxai-language-selector-menu'}
+                  // aria-labelledby='maxai-language-selector-menu'
                   sx={{
                     overflowY: 'auto',
                     overflowX: 'hidden',
@@ -242,11 +227,12 @@ const LanguageSelector: FC<{
                 >
                   {LANGUAGES_OPTIONS.map((op) => (
                     <MenuItem
-                      key={op.language_code}
+                      key={op.value}
                       selected={value === op.value}
                       onClick={() => onSelect(op.value)}
                       sx={{
                         color: 'text.primary',
+                        fontSize: '16px',
                       }}
                     >
                       {op.label}

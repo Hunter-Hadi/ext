@@ -482,7 +482,7 @@ export const MenuComponent = React.forwardRef<
       listRef: listItemsRef,
       activeIndex,
       nested: isNested,
-      onNavigate(index) {
+      onNavigate() {
         const focusTextarea = () => {
           if (!floatingDropdownMenuOpenRef.current) {
             return

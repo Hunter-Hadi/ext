@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, memo, useMemo, useState } from 'react'
 
 import { ConversationStatusType } from '@/background/provider/chat'
 import {
@@ -20,11 +20,11 @@ import InputAssistantButtonPortal from '@/features/contextMenu/components/InputA
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ContextMenuRoot: FC = () => {
-  const { updateSidebarSettings } = useSidebarSettings()
+  const { updateSidebarSettings, createSidebarConversation } =
+    useSidebarSettings()
   const [conversationId, setConversationId] = useState<string>('')
   const [conversationStatus, updateConversationStatus] =
     useState<ConversationStatusType>('success')
-  const { createSidebarConversation } = useSidebarSettings()
   const ChatPanelContextValue = useMemo<ChatPanelContextValue>(() => {
     const createConversation: ChatPanelContextValue['createConversation'] =
       async (conversationType, AIProvider, AIModel) => {
@@ -81,6 +81,7 @@ const ContextMenuRoot: FC = () => {
       setConversationId,
     }
   }, [conversationId])
+
   return (
     <ChatPanelContext.Provider value={ChatPanelContextValue}>
       <CustomPortal containerId={MAXAI_CONTEXT_MENU_ID}>
@@ -102,4 +103,4 @@ const ContextMenuRoot: FC = () => {
   )
 }
 
-export default ContextMenuRoot
+export default memo(ContextMenuRoot)

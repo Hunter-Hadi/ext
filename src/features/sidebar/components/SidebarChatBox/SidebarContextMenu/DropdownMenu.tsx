@@ -27,7 +27,6 @@ import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { UseChatGptIcon } from '@/components/CustomIcon'
@@ -36,48 +35,21 @@ import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
+import TreeNavigatorMatcher from '@/features/sidebar/utils/treeNavigatorMatcher'
 
 interface DropdownItemProps {
   menuItem: IContextMenuItemWithChildren
-  focus?: boolean
   disabled?: boolean
   hoverIcon?: React.ReactNode
+  matcher?: TreeNavigatorMatcher
 }
-
-export const DropdownMenuSelectedItemState = atom<{
-  hoverContextMenuIdMap: {
-    [key: string]: string
-  }
-  lastHoverContextMenuId: string | null
-  selectedContextMenuId: string | null
-}>({
-  key: 'DropdownMenuSelectedItemState',
-  default: {
-    hoverContextMenuIdMap: {},
-    selectedContextMenuId: null,
-    lastHoverContextMenuId: null,
-  },
-})
-
-const DropdownMenuIHovertemsSelector = selector<string[]>({
-  key: 'DropdownMenuItemsSelector',
-  get: ({ get }) => {
-    const hoverIdMap = get(DropdownMenuSelectedItemState).hoverContextMenuIdMap
-    return Object.values(hoverIdMap).filter((id) => id)
-  },
-})
 
 /**
  *  列表项渲染
  */
 export const DropdownItem = React.forwardRef<HTMLElement, DropdownItemProps>(
-  ({ disabled, menuItem, hoverIcon, focus, ...props }, ref) => {
+  ({ disabled, menuItem, matcher, ...props }, ref) => {
     const { t } = useTranslation(['prompt'])
-    const hoverIds = useRecoilValue(DropdownMenuIHovertemsSelector)
-    const [
-      floatingDropdownMenuSelectedItem,
-      setFloatingDropdownMenuSelectItem,
-    ] = useRecoilState(DropdownMenuSelectedItemState)
     const menuLabel = useMemo(() => {
       const id = menuItem.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
       const key: any = `prompt:${id}`
@@ -87,20 +59,34 @@ export const DropdownItem = React.forwardRef<HTMLElement, DropdownItemProps>(
       return menuItem.text
     }, [menuItem.text, t])
 
-    const isHover = useMemo(() => {
-      return hoverIds.includes(menuItem.id) || focus
-    }, [
-      hoverIds,
-      floatingDropdownMenuSelectedItem.lastHoverContextMenuId,
-      focus,
-    ])
+    const isHover = useMemo(() => matcher?.match(menuItem), [matcher?.path])
 
-    const isLastHover = useMemo(() => {
-      return (
-        floatingDropdownMenuSelectedItem.lastHoverContextMenuId ===
-          menuItem.id && isHover
-      )
-    }, [isHover, floatingDropdownMenuSelectedItem.lastHoverContextMenuId])
+    const boxRef = React.useRef<HTMLDivElement>()
+
+    React.useEffect(() => {
+      if (isHover && boxRef.current && boxRef.current.parentElement) {
+        const parentElement = boxRef.current.parentElement
+        const itemHeight = 45
+
+        if (
+          boxRef.current.offsetTop + itemHeight >
+          parentElement.clientHeight + parentElement.scrollTop
+        ) {
+          parentElement.scrollTo({
+            left: parentElement.scrollLeft,
+            top: parentElement.scrollTop + itemHeight,
+          })
+        } else if (
+          boxRef.current.offsetTop <
+          parentElement.scrollTop + itemHeight
+        ) {
+          parentElement.scrollTo({
+            left: parentElement.scrollLeft,
+            top: parentElement.scrollTop - itemHeight,
+          })
+        }
+      }
+    }, [isHover])
 
     return (
       <Box
@@ -149,17 +135,20 @@ export const DropdownItem = React.forwardRef<HTMLElement, DropdownItemProps>(
             },
           },
         }}
-        ref={ref}
+        onMouseEnter={() => {
+          matcher?.setHoverItem(menuItem)
+        }}
+        ref={(dom: HTMLDivElement) => {
+          if (!dom) return
+          if (ref) {
+            if (typeof ref === 'function') ref(dom)
+            else ref.current = dom
+
+            boxRef.current = dom
+          }
+        }}
         component={'div'}
         role='menuitem'
-        onClick={() => {
-          setFloatingDropdownMenuSelectItem((prevState) => {
-            return {
-              ...prevState,
-              selectedContextMenuId: menuItem.id,
-            }
-          })
-        }}
       >
         {menuItem?.data?.icon && (
           <ContextMenuIcon
@@ -197,8 +186,6 @@ export const DropdownItem = React.forwardRef<HTMLElement, DropdownItemProps>(
                 fontSize: 16,
               }}
             />
-          ) : isLastHover && hoverIcon ? (
-            hoverIcon
           ) : (
             <KeyboardReturnIcon
               className='floating-context-menu-item__footer-hover-icon'
@@ -235,10 +222,7 @@ export interface MenuProps {
   onClickContextMenu?: (contextMenu: IContextMenuItem) => void
   menuWidth?: number
   hoverIcon?: React.ReactNode
-  /**
-   * 匹配字符串，用来替代useTypeahead
-   */
-  matchString?: string
+  matcher?: TreeNavigatorMatcher
 
   onNavigate?: (
     arrow: 'ArrowUp' | 'ArrowLeft' | 'ArrowDown' | 'ArrowRight',
@@ -268,7 +252,6 @@ export const DropdownMenuInternal = React.forwardRef<
       defaultFallbackPlacements,
       onClickContextMenu,
       menuWidth = 400,
-      matchString,
       ...props
     },
     forwardedRef,
@@ -280,52 +263,13 @@ export const DropdownMenuInternal = React.forwardRef<
      */
     const isFirstLevelDropdown = !parentId && zIndex === 2147483601
 
-    const [focusItem, setFocusItem] = React.useState<IContextMenuItem | null>(
-      null,
-    )
     const isNested = parentId != null
     const [_isOpen, setIsOpen] = React.useState(openProp ?? false)
     /**
      * 修正open，当props传递的时候永远优先使用props
      */
-    const isOpen = useMemo(
-      () => (openProp === undefined ? _isOpen : openProp),
-      [openProp, _isOpen],
-    )
+    const isOpen = useMemo(() => _isOpen || openProp, [openProp, _isOpen])
     const listItemsRef = React.useRef<Array<any | null>>([])
-
-    /**
-     * 只根据matchString变化的时候去更新hoveringItem
-     */
-    React.useEffect(() => {
-      // 空字符串时不匹配
-      if (!matchString || !isFirstLevelDropdown || !isOpen) return
-      const menuItems = React.Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? {
-              label: child.props.label as string,
-              item: child.props?.menuItem as IContextMenuItem | null,
-            }
-          : null,
-      )
-      if (!menuItems) return
-      // 最匹配标签的开始匹配位置
-      let extraMatchIndex = Infinity
-      // 最匹配标签的位置
-      let extraMatchItemIndex = 0
-      for (let i = 0; i < menuItems.length; i++) {
-        const item = menuItems[i]
-        if (!item || !item.label || !item.item) continue
-
-        const index = item.label.indexOf(matchString)
-        if (index < extraMatchIndex) {
-          extraMatchIndex = index
-          extraMatchItemIndex = i
-        }
-      }
-
-      setFocusItem(menuItems[extraMatchItemIndex]?.item)
-    }, [matchString])
 
     const currentPlacement =
       defaultPlacement ||
@@ -472,11 +416,11 @@ export const DropdownMenuInternal = React.forwardRef<
                     React.isValidElement(child) &&
                     React.cloneElement(child, {
                       ...getItemProps({
-                        tabIndex: focusItem === child.props?.menuItem ? 0 : -1,
+                        // tabIndex: focusItem === child.props?.menuItem ? 0 : -1,
                         ref(node) {
                           listItemsRef.current[index] = node
                         },
-                        onMouseDown() {
+                        onClick() {
                           if (
                             onClickContextMenu &&
                             child.props?.menuItem?.data?.type === 'shortcuts'
@@ -485,13 +429,11 @@ export const DropdownMenuInternal = React.forwardRef<
                           }
                         },
                         onMouseEnter(event) {
-                          setFocusItem(child.props?.menuItem)
+                          // setFocusItem(child.props?.menuItem)
+                          // TODO:
                           event.stopPropagation()
                         },
                       }),
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      focus: focusItem === child?.props?.menuItem,
                     }),
                 )}
               </Box>

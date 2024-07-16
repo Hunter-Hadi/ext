@@ -96,6 +96,17 @@ export const getSummaryNavActions = async (params: {
   return []
 }
 
+const findAskAction = (actions: ISetActionsType) => {
+  const askActionIndex = actions.findIndex(
+    (action) => action.type === 'ASK_CHATGPT',
+  )
+  return {
+    askActionIndex,
+    askActionParent: actions,
+    askAction: actions[askActionIndex],
+  }
+}
+
 // 24.04.29: support custom prompt feature for Summary
 // get the actions of the custom prompt and mix with Summary actions, then return
 export const getSummaryCustomPromptActions = async ({
@@ -114,10 +125,28 @@ export const getSummaryCustomPromptActions = async ({
 
     // 默认actions
     const actions = DEFAULT_SUMMARY_ACTIONS_MAP[type](messageId)
-    const askActionIndex = actions.findIndex(
-      (action) => action.type === 'ASK_CHATGPT',
-    )
-    const askAction = actions[askActionIndex]
+    let { askActionParent, askActionIndex, askAction } = findAskAction(actions)
+    if (!askAction) {
+      // 从SCRIPTS_CONDITIONAL去获取ASK_CHAT_GPT行为
+      actions.find((action) => {
+        if (action.type === 'SCRIPTS_CONDITIONAL') {
+          let result = findAskAction(
+            action.parameters.WFConditionalIfTrueActions || [],
+          )
+          if (!result.askAction) {
+            result = findAskAction(
+              action.parameters.WFConditionalIfFalseActions || [],
+            )
+          }
+          askActionParent = result.askActionParent
+          askActionIndex = result.askActionIndex
+          askAction = result.askAction
+        }
+        if (askAction) {
+          return true
+        }
+      })
+    }
 
     // 获取actions
     const fetchAction = customPromptActions.find(
@@ -149,9 +178,9 @@ export const getSummaryCustomPromptActions = async ({
         return {
           type: 'ASK_CHATGPT',
           parameters: {
-            ...askAction.parameters,
+            ...askAction?.parameters,
             MaxAIPromptActionConfig: {
-              ...askAction.parameters.MaxAIPromptActionConfig,
+              ...askAction?.parameters.MaxAIPromptActionConfig,
               promptId:
                 action.parameters.AskChatGPTActionQuestion?.meta?.contextMenu
                   ?.id ||
@@ -161,7 +190,7 @@ export const getSummaryCustomPromptActions = async ({
                 action.parameters.AskChatGPTActionQuestion?.meta?.contextMenu
                   ?.text || '',
               variables: [
-                ...(askAction.parameters.MaxAIPromptActionConfig?.variables ||
+                ...(askAction?.parameters.MaxAIPromptActionConfig?.variables ||
                   []),
                 {
                   VariableName: 'PROMPT_TEMPLATE',
@@ -182,7 +211,7 @@ export const getSummaryCustomPromptActions = async ({
     })
 
     if (askActionIndex !== -1) {
-      actions.splice(askActionIndex, 1, ...customPromptActions)
+      askActionParent.splice(askActionIndex, 1, ...customPromptActions)
     } else {
       actions.push(...customPromptActions)
     }

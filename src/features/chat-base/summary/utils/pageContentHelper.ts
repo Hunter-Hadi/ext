@@ -38,12 +38,7 @@ export const isNeedGetIframePageContent = () => {
  */
 export const isNeedGetSpecialHostPageContent = () => {
   const host = getCurrentDomainHost()
-  return [
-    'docs.google.com',
-    'github.com',
-    // 'cnbc.com',
-    // 'timesofindia.indiatimes.com',
-  ].find((item) => item === host)
+  return ['docs.google.com', 'github.com'].find((item) => item === host)
 }
 
 /**

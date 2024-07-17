@@ -56,6 +56,7 @@ const RenderDropdownItem = forwardRef<
         referenceElement={
           <DropdownMenuItem {...rest} label={menuLabel} menuItem={menuItem} />
         }
+        needAutoUpdate={rest.needAutoUpdate}
       >
         {menuItem.children.map((childMenuItem) => {
           return (
@@ -88,26 +89,6 @@ const createDivider = (id: string) => {
       data-testid={`max-ai-context-menu-divider`}
       aria-disabled={true}
       key={`${id}_group_spector`}
-      onClick={(event: any) => {
-        event.stopPropagation()
-        event.preventDefault()
-      }}
-      component={'div'}
-      sx={{
-        pointerEvents: 'none',
-        borderTop: '1px solid',
-        borderColor: 'customColor.borderColor',
-        my: 1,
-      }}
-    />
-  )
-}
-
-const ContextMenuDivider: FC = () => {
-  return (
-    <Box
-      data-testid={`max-ai-context-menu-divider`}
-      aria-disabled={true}
       onClick={(event: any) => {
         event.stopPropagation()
         event.preventDefault()
@@ -179,13 +160,6 @@ const FloatingContextMenuList: FC<
               event.preventDefault()
             }}
           >
-            {/*{menuItem?.data?.icon && (*/}
-            {/*  <ContextMenuIcon*/}
-            {/*    size={16}*/}
-            {/*    icon={menuItem.data.icon}*/}
-            {/*    sx={{ color: 'primary.main', mr: 1 }}*/}
-            {/*  />*/}
-            {/*)}*/}
             <Typography
               textAlign={'left'}
               fontSize={12}
@@ -205,6 +179,7 @@ const FloatingContextMenuList: FC<
               hoverIcon={hoverIcon}
               onClickContextMenu={onClickContextMenu}
               zIndex={2147483602}
+              needAutoUpdate={needAutoUpdate}
               {...rest}
               key={childMenuItem.id}
               menuItem={childMenuItem}
@@ -228,6 +203,7 @@ const FloatingContextMenuList: FC<
             menuWidth={menuWidth}
             hoverIcon={hoverIcon}
             onClickContextMenu={onClickContextMenu}
+            needAutoUpdate={needAutoUpdate}
             key={menuItem.id}
             menuItem={menuItem}
             root={root}

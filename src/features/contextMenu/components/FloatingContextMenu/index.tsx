@@ -1,7 +1,9 @@
 import {
   autoUpdate,
+  FloatingElement,
   FloatingPortal,
   Placement,
+  ReferenceElement,
   useClick,
   useDismiss,
   useFloating,
@@ -14,7 +16,14 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { CSSProperties, FC, useEffect, useMemo, useRef } from 'react'
+import React, {
+  CSSProperties,
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
@@ -182,6 +191,17 @@ const FloatingContextMenu: FC<{
   })
 
   floatingSizeOffsetRef.current.minWidth = currentWidth
+  const mountedAutoUpdate = useCallback(
+    (
+      reference: ReferenceElement,
+      floating: FloatingElement,
+      update: () => void,
+    ) =>
+      autoUpdate(reference, floating, update, {
+        animationFrame: true,
+      }),
+    [],
+  )
 
   const { x, y, strategy, refs, context, update } = useFloating({
     open: floatingDropdownMenu.open,
@@ -265,7 +285,7 @@ const FloatingContextMenu: FC<{
       referenceElementRef,
       floatingSizeOffsetRef,
     ),
-    whileElementsMounted: autoUpdate,
+    whileElementsMounted: mountedAutoUpdate,
   })
   const click = useClick(context)
   const dismiss = useDismiss(context, {
@@ -331,6 +351,11 @@ const FloatingContextMenu: FC<{
        * FloatingContextMenuList里的MenuList绑定的是referenceElement的DOM元素位置关系
        * 当前这里每次拖动的时候修改的是MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID这个DOM
        * 所以拖拽的时候MenuList没有变化，这里简单的做法是触发一次DropdownMenu的更新修改referenceElement元素
+       *
+       * floating-ui源码中只监听了resize、scroll以及这里要用到的IntersectionObserver，
+       * 若想要更新后代元素，只能采用触发IntersectionObserver的margin change行为了
+       * https://github.com/floating-ui/floating-ui/blob/81a7da464c713e3432d1015cafb7566675a22282/packages/dom/src/autoUpdate.ts#L139
+       * IntersectionObserver MDN: https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver
        */
       if (referenceElementRef.current) {
         if (referenceElementRef.current.style.marginLeft) {
@@ -339,7 +364,9 @@ const FloatingContextMenu: FC<{
           referenceElementRef.current.style.marginLeft = '0.5px'
         }
       }
-      update()
+      setTimeout(() => {
+        update()
+      }, 10)
       event.preventDefault()
     }
     document.addEventListener('mousemove', handleDragMove)

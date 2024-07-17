@@ -4,12 +4,14 @@
 import {
   autoUpdate,
   flip,
+  FloatingElement,
   FloatingFocusManager,
   FloatingNode,
   FloatingPortal,
   FloatingTree,
   offset,
   Placement,
+  ReferenceElement,
   safePolygon,
   shift,
   useClick,
@@ -69,6 +71,15 @@ interface MenuItemProps {
   disabled?: boolean
   hoverIcon?: React.ReactNode
 }
+
+const mountedAutoUpdate = (
+  reference: ReferenceElement,
+  floating: FloatingElement,
+  update: () => void,
+) =>
+  autoUpdate(reference, floating, update, {
+    animationFrame: true,
+  })
 
 export const LiteDropdownMenuItem = React.forwardRef<
   any,
@@ -460,7 +471,7 @@ export const MenuComponent = React.forwardRef<
         }),
         shift(),
       ],
-      whileElementsMounted: needAutoUpdate ? autoUpdate : undefined,
+      whileElementsMounted: needAutoUpdate ? mountedAutoUpdate : undefined,
     })
     const hover = useHover(context, {
       enabled: hoverOpen && allowHover,

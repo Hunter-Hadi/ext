@@ -1,8 +1,3 @@
-type WFInputType = (
-  'Text'
-  | 'Number'
-  | 'URL'
-  | 'Date'
-);
+type WFInputType = 'Text' | 'Number' | 'URL' | 'Date'
 
-export default WFInputType;
+export default WFInputType

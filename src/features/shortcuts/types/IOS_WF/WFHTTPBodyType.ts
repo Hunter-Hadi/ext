@@ -1,7 +1,3 @@
-type WFHTTPBodyType = (
-  'JSON'
-  | 'Form'
-  | 'File'
-);
+type WFHTTPBodyType = 'JSON' | 'Form' | 'File'
 
-export default WFHTTPBodyType;
+export default WFHTTPBodyType

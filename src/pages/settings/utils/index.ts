@@ -51,16 +51,15 @@ export const updateContextMenuSearchTextStore = async (
           i18n.t(`prompt:${item.id}` as any) !== item.id
         ) {
           currentLanguageItemText = i18n.t(`prompt:${item.id}` as any)
-          currentLanguageSearchText = `${currentLanguagePrefix} ${currentLanguageItemText} ${enSearchText}`.trimStart()
+          currentLanguageSearchText =
+            `${currentLanguagePrefix} ${currentLanguageItemText} ${enSearchText}`.trimStart()
         }
         searchTextPrefixMap.en[item.id] = enItemText.toLowerCase()
-        searchTextPrefixMap[language][
-          item.id
-        ] = currentLanguageItemText.toLowerCase()
+        searchTextPrefixMap[language][item.id] =
+          currentLanguageItemText.toLowerCase()
         saveSearchTextData.en[item.id] = enSearchText.toLowerCase()
-        saveSearchTextData[language][
-          item.id
-        ] = currentLanguageSearchText.toLowerCase()
+        saveSearchTextData[language][item.id] =
+          currentLanguageSearchText.toLowerCase()
         findSearchText(item.id)
       })
     }

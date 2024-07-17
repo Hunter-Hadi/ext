@@ -175,7 +175,7 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
             <Box />
           </TextOnlyTooltip>
           <Stack
-            direction="row"
+            direction='row'
             spacing={0.5}
             alignItems={'center'}
             justifyContent={'center'}

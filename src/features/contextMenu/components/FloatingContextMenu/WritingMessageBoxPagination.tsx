@@ -31,7 +31,7 @@ const WritingMessageBoxPagination: FC = () => {
       alignItems={'center'}
     >
       <Divider
-        orientation="vertical"
+        orientation='vertical'
         flexItem
         sx={{
           m: 0.5,

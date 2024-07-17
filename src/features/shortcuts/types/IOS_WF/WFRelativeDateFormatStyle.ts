@@ -1,7 +1,3 @@
-type WFRelativeDateFormatStyle = (
-  'Short'
-  | 'Medium'
-  | 'Long'
-);
+type WFRelativeDateFormatStyle = 'Short' | 'Medium' | 'Long'
 
-export default WFRelativeDateFormatStyle;
+export default WFRelativeDateFormatStyle

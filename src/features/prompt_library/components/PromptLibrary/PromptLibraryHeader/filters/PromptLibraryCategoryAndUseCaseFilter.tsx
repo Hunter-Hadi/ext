@@ -12,10 +12,8 @@ import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromp
 
 const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
   const { t } = useTranslation(['prompt_library'])
-  const {
-    promptLibraryListParameters,
-    updatePromptLibraryListParameters,
-  } = usePromptLibraryParameters()
+  const { promptLibraryListParameters, updatePromptLibraryListParameters } =
+    usePromptLibraryParameters()
   const { categoryOptions, useCaseOptions, loading } = usePromptLibraryCategory(
     promptLibraryListParameters.category,
   )

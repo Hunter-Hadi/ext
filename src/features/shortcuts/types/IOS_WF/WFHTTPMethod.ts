@@ -1,9 +1,3 @@
-type WFHTTPMethod = (
-  'GET'
-  | 'POST'
-  | 'PUT'
-  | 'DELETE'
-  | 'PATCH'
-);
+type WFHTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
-export default WFHTTPMethod;
+export default WFHTTPMethod

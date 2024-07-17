@@ -31,7 +31,7 @@ const SidebarChatBoxReleaseLog: FC = () => {
           fontSize={'inherit'}
           color={'inherit'}
           href={RELEASE_LOG_URL}
-          target="_blank"
+          target='_blank'
           sx={{
             textDecoration: 'underline!important',
           }}

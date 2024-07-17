@@ -60,7 +60,7 @@ const PresetVariablesTable: FC<{
                   'prompt_editor:preset_variables__tooltip__table__column_name__placeholder__title',
                 )}
               </TableCell>
-              <TableCell align="left">
+              <TableCell align='left'>
                 {t(
                   'prompt_editor:preset_variables__tooltip__table__column_name__description__title',
                 )}
@@ -79,13 +79,13 @@ const PresetVariablesTable: FC<{
                     '&:last-child td, &:last-child th': { border: 0 },
                   }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell component='th' scope='row'>
                     {`{{${variable.label}}}`}
                     {required && (
                       <span style={{ marginLeft: '2px', color: 'red' }}>*</span>
                     )}
                   </TableCell>
-                  <TableCell align="left">{t(description as any)}</TableCell>
+                  <TableCell align='left'>{t(description as any)}</TableCell>
                 </TableRow>
               )
             })}
@@ -117,7 +117,7 @@ const PresetVariablesTooltip: FC<{ sx?: SxProps }> = ({ sx }) => {
   return (
     <>
       <IconButton aria-describedby={PopperId} onClick={handleClick} sx={sx}>
-        <HelpOutlineIcon fontSize="small" />
+        <HelpOutlineIcon fontSize='small' />
       </IconButton>
       <Popover
         id={id}
@@ -129,9 +129,9 @@ const PresetVariablesTooltip: FC<{ sx?: SxProps }> = ({ sx }) => {
           horizontal: 'left',
         }}
       >
-        <Box maxWidth={'60vw'} maxHeight={420} overflow="auto" p={1}>
+        <Box maxWidth={'60vw'} maxHeight={420} overflow='auto' p={1}>
           <Typography
-            variant="body2"
+            variant='body2'
             sx={{
               whiteSpace: 'pre-line',
             }}
@@ -153,7 +153,7 @@ const PresetVariablesTooltip: FC<{ sx?: SxProps }> = ({ sx }) => {
               )
               return (
                 <Stack key={groupKey} spacing={2} mt={3}>
-                  <Typography variant="body2">
+                  <Typography variant='body2'>
                     {`${t(
                       'prompt_editor:preset_variables__tooltip__variable_name_prefix',
                     )} "${t(groupKey as any)}"`}

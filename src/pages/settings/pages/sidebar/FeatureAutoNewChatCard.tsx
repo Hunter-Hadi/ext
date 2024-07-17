@@ -48,14 +48,14 @@ const FeatureAutoNewChatCard: FC = () => {
                 </Typography>
                 <TextOnlyTooltip
                   arrow
-                  placement="bottom"
+                  placement='bottom'
                   title={t(
                     'settings:feature_card__sidebar__field__auto_archive__button__tooltip',
                   )}
                 >
                   <Stack
                     alignItems={'center'}
-                    justifyContent="center"
+                    justifyContent='center'
                     borderRadius={'50%'}
                     width={20}
                     height={20}

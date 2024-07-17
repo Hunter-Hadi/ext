@@ -99,9 +99,9 @@ const ChatGPTApiSettings: FC = () => {
             InputProps={{
               sx: { pl: 0, input: { fontSize: '14px' }, height: 40 },
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                   <IconButton
-                    aria-label="toggle password visibility"
+                    aria-label='toggle password visibility'
                     onClick={handleClickShowPassword}
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}

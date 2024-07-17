@@ -3,26 +3,26 @@ import Browser from 'webextension-polyfill'
 export type IBackgroundRunCommandKey = keyof typeof Browser
 
 export type IBackgroundRunCommandFunctionKey<
-  T extends IBackgroundRunCommandKey
-> = keyof typeof Browser[T]
+  T extends IBackgroundRunCommandKey,
+> = keyof (typeof Browser)[T]
 
 export type IBackgroundRunCommandFunctionParams<
   T extends IBackgroundRunCommandKey,
-  K extends IBackgroundRunCommandFunctionKey<T>
-> = typeof Browser[T][K] extends (...args: infer Args) => Promise<any>
+  K extends IBackgroundRunCommandFunctionKey<T>,
+> = (typeof Browser)[T][K] extends (...args: infer Args) => Promise<any>
   ? Args
   : never
 
 export type IBackgroundRunCommandFunctionReturn<
   T extends IBackgroundRunCommandKey,
-  K extends IBackgroundRunCommandFunctionKey<T>
-> = typeof Browser[T][K] extends (...args: any) => Promise<infer Result>
+  K extends IBackgroundRunCommandFunctionKey<T>,
+> = (typeof Browser)[T][K] extends (...args: any) => Promise<infer Result>
   ? Result
   : never
 
 const backgroundCommandHandler = async <
   T extends IBackgroundRunCommandKey,
-  K extends IBackgroundRunCommandFunctionKey<T>
+  K extends IBackgroundRunCommandFunctionKey<T>,
 >(
   command: T,
   commandFunctionName: K,

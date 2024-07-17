@@ -36,7 +36,7 @@ const HowToFindSettings: FC<{
             </Typography>
             <img
               src={`https://www.maxai.me/assets/chrome-extension/settings-entry-small.png`}
-              alt="settings-entry"
+              alt='settings-entry'
               width={200}
               height={80}
             />
@@ -59,7 +59,7 @@ const HowToFindSettings: FC<{
             </Typography>
             <img
               src={`https://www.maxai.me/assets/chrome-extension/settings-entry.png`}
-              alt="settings-entry"
+              alt='settings-entry'
               width={466}
               height={121}
             />

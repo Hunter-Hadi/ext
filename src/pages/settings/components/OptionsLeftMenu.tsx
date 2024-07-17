@@ -19,7 +19,7 @@ const OptionsLeftMenu: FC<{
   const { route, setRoute } = useContext(SettingsPageRouteContext)
   const { sx } = props
   return (
-    <List component="nav" sx={{ py: 2, ...sx }}>
+    <List component='nav' sx={{ py: 2, ...sx }}>
       {settingsPageRouterList.map((menuItem) => {
         if (menuItem.devOnly && isProduction) {
           return null

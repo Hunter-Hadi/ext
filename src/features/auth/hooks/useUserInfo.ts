@@ -20,8 +20,12 @@ export type IUserCurrentPlan = {
 const useUserInfo = () => {
   const { user: userInfo, loading } = useRecoilValue(AuthUserInfoState)
   const userQuotaUsage = useRecoilValue(UserQuotaUsageState)
-  const { syncUserInfo, syncUserSubscriptionInfo, syncUserQuotaUsageInfo } =
-    useInitUserInfo(false)
+  const {
+    syncUserInfo,
+    syncUserSubscriptionInfo,
+    syncUserQuotaUsageInfo,
+    syncUserFeatureQuotaInfo,
+  } = useInitUserInfo(false)
   const quotaLeftText = useMemo(() => {
     if (userInfo?.chatgpt_expires_at) {
       const expiresAt = new Date(userInfo.chatgpt_expires_at)
@@ -166,6 +170,7 @@ const useUserInfo = () => {
 
     userQuotaUsage,
     syncUserQuotaUsageInfo,
+    syncUserFeatureQuotaInfo,
 
     isPayingUser,
     isFreeUser,

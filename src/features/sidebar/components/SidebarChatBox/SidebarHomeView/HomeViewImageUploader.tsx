@@ -40,7 +40,7 @@ const HomeViewImageUploader = () => {
 
   return (
     <Stack
-      alignItems="center"
+      alignItems='center'
       justifyContent={'center'}
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
@@ -60,8 +60,8 @@ const HomeViewImageUploader = () => {
       <Stack spacing={0.5}>
         <UploadButton
           startIcon={<ImageOutlinedIcon />}
-          accept=".jpg,.jpeg,.png,.webp,.gif"
-          variant="secondary"
+          accept='.jpg,.jpeg,.png,.webp,.gif'
+          variant='secondary'
           sx={{
             color: 'text.secondary',
             px: 1.5,
@@ -91,7 +91,7 @@ const HomeViewImageUploader = () => {
         fontSize={14}
         fontWeight={400}
         lineHeight={1.5}
-        color="text.secondary"
+        color='text.secondary'
         mt={'2px'}
       >
         {t('client:home_view_content_nav__image_uploader__drop_image_here')}

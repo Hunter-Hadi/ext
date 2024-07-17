@@ -1,6 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message';
+import { ISystemChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'

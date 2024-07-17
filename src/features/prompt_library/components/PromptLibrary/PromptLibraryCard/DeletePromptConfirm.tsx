@@ -44,7 +44,7 @@ const DeletePromptConfirm: FC<IProps> = ({
       >
         <Stack spacing={2}>
           <Typography>{t('prompt_library:delete_prompt__title')}</Typography>
-          <Stack direction="row" spacing={1} justifyContent="flex-end">
+          <Stack direction='row' spacing={1} justifyContent='flex-end'>
             <LoadingButton
               loading={loading}
               onClick={(event) => {
@@ -56,8 +56,8 @@ const DeletePromptConfirm: FC<IProps> = ({
               {t('prompt_library:delete_prompt__action__confirm__title')}
             </LoadingButton>
             <Button
-              variant="contained"
-              type="submit"
+              variant='contained'
+              type='submit'
               onClick={(event) => {
                 event.stopPropagation()
                 event.preventDefault()

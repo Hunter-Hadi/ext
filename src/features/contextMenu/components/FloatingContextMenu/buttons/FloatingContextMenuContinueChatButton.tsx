@@ -34,7 +34,7 @@ const FloatingContextMenuContinueChatButton: FC = () => {
         paddingX: '8px',
         borderColor: 'customColor.borderColor',
       }}
-      variant="outlined"
+      variant='outlined'
     >
       {t('client:context_window__chat_history__continue_in_chat__title')}
     </Button>

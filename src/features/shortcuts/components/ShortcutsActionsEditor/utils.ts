@@ -323,9 +323,7 @@ export function hexChangeLightnessAndSaturation(
   const gAdjusted = Math.round(hueToRgb(p, q, h) * 255)
   const bAdjusted = Math.round(hueToRgb(p, q, h - 1 / 3) * 255)
 
-  const adjustedHex = `#${rAdjusted
-    .toString(16)
-    .padStart(2, '0')}${gAdjusted
+  const adjustedHex = `#${rAdjusted.toString(16).padStart(2, '0')}${gAdjusted
     .toString(16)
     .padStart(2, '0')}${bAdjusted.toString(16).padStart(2, '0')}`
 

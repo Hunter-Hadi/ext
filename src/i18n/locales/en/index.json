@@ -650,6 +650,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Get long answers to complex questions",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Search with AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Display AI answers next to search results",
+    "permission__pricing_hook__context_menu__title": "Upgrade to unlock unlimited AI rewriter",
+    "permission__pricing_hook__context_menu__description": "With MaxAI's AI rewriter, you can save time on proofreading and perfecting your words across the web, from email to social media and beyond.",
     "permission__pricing_modal__title": "Upgrade to unlimited",
     "permission__pricing_modal__description": "Read, write, and search faster without limits by upgrading to MaxAI Elite",
     "permission__pricing_modal__item1__title": "Unlimited AI usage",

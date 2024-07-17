@@ -3,4 +3,5 @@ export type IShortCutsSendEvent =
   | 'ShortCuts_OperationPageElement'
   | 'ShortCuts_OperationPageElementResponse'
 
-export type IShortCutsClientListenEvent = 'ShortCuts_ClientExecuteOperationPageElement'
+export type IShortCutsClientListenEvent =
+  'ShortCuts_ClientExecuteOperationPageElement'

@@ -1,5 +1,3 @@
-type WFItemType = (
-  0 | 1 | 2 | 3 | 4
-);
+type WFItemType = 0 | 1 | 2 | 3 | 4
 
-export default WFItemType;
+export default WFItemType

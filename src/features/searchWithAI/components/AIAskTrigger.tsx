@@ -55,7 +55,7 @@ const AIAskTrigger: FC<IProps> = ({
     return (
       <Button
         fullWidth
-        variant="normalOutlined"
+        variant='normalOutlined'
         startIcon={<SearchOutlinedIcon />}
         onClick={handleAsk}
       >
@@ -72,7 +72,7 @@ const AIAskTrigger: FC<IProps> = ({
     return (
       <Button
         fullWidth
-        variant="normalOutlined"
+        variant='normalOutlined'
         startIcon={<SearchOutlinedIcon />}
         onClick={() => {
           // 兼容 开始是 manual，随后配置改成了 always 的情况
@@ -92,14 +92,14 @@ const AIAskTrigger: FC<IProps> = ({
       <Stack spacing={2}>
         <Button
           fullWidth
-          variant="normalOutlined"
+          variant='normalOutlined'
           startIcon={<SearchOutlinedIcon />}
           onClick={handleAsk}
         >
           Ask AI for this query
         </Button>
         <Divider> OR </Divider>
-        <Typography variant="body2" fontSize={14}>
+        <Typography variant='body2' fontSize={14}>
           End your search with a question mark to get an AI response
           automatically.
         </Typography>

@@ -6,7 +6,7 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 import { OpenAIChat } from '../chat/OpenAiChat'
 

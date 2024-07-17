@@ -112,7 +112,7 @@ const ArtConversationalModeToggle: FC = () => {
             data-testid={'MaxAIArtConversationalModeToggle'}
             checked={!sidebarSettings?.art?.isEnabledConversationalMode}
             sx={{ width: 32, height: 16, padding: 0 }}
-            color="primary"
+            color='primary'
           />
         </Stack>
         <Typography fontSize={'14px'} color={'text.primary'}>

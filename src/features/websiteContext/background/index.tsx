@@ -289,9 +289,8 @@ export default class WebsiteContextManager {
       websiteContext,
     ])
     if (websiteContext.id) {
-      const findWebsiteContext = await this.websiteContextDB.getWebsiteContextById(
-        websiteContext.id,
-      )
+      const findWebsiteContext =
+        await this.websiteContextDB.getWebsiteContextById(websiteContext.id)
       if (findWebsiteContext) {
         baseWebsiteContext = mergeWithObject([
           baseWebsiteContext,
@@ -317,9 +316,8 @@ export default class WebsiteContextManager {
     websiteId: string,
     websiteContext: Partial<IWebsiteContext>,
   ): Promise<IWebsiteContext | null> {
-    const findWebsiteContext = await this.websiteContextDB.getWebsiteContextById(
-      websiteId,
-    )
+    const findWebsiteContext =
+      await this.websiteContextDB.getWebsiteContextById(websiteId)
     if (!findWebsiteContext) {
       return null
     }
@@ -347,16 +345,18 @@ export default class WebsiteContextManager {
   }
   static async computeWebsiteContextStorageSize() {
     // 预估每条数据1MB
-    const allWebsiteContexts = await this.websiteContextDB.getAllWebsiteContext()
+    const allWebsiteContexts =
+      await this.websiteContextDB.getAllWebsiteContext()
     return allWebsiteContexts.length * 1 // MB
   }
   static async analyzeWebsiteContextMetaData(websiteId: string, html?: string) {
     if (!websiteId) {
       return
     }
-    const currentWebsiteContext = await WebsiteContextManager.websiteContextDB.getWebsiteContextById(
-      websiteId,
-    )
+    const currentWebsiteContext =
+      await WebsiteContextManager.websiteContextDB.getWebsiteContextById(
+        websiteId,
+      )
     if (!currentWebsiteContext) {
       return
     }

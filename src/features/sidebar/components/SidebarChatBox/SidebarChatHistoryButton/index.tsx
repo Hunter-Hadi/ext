@@ -201,14 +201,14 @@ const SidebarChatHistoryButton: FC<{
                 {isClickOpenOnce && (
                   <Stack height={'100%'}>
                     <Stack
-                      direction="row"
+                      direction='row'
                       spacing={1}
-                      alignItems="center"
+                      alignItems='center'
                       px={2}
                       py={2}
-                      position="relative"
+                      position='relative'
                     >
-                      <IconButton onClick={handleCloseModal} size="small">
+                      <IconButton onClick={handleCloseModal} size='small'>
                         <CloseIcon
                           sx={{
                             fontSize: '24px',
@@ -225,7 +225,7 @@ const SidebarChatHistoryButton: FC<{
                         {currentI18nTitle}
                       </Typography>
                       <ClearAllChatButton
-                        variant="icon"
+                        variant='icon'
                         sx={{
                           p: '5px',
                         }}
@@ -248,7 +248,7 @@ const SidebarChatHistoryButton: FC<{
                       />
                     </Stack>
                     <Divider />
-                    <Box height={0} flex={1} overflow="auto">
+                    <Box height={0} flex={1} overflow='auto'>
                       <ConversationList
                         conversationType={currentSidebarConversationType}
                         hideClearAllButton
@@ -265,9 +265,9 @@ const SidebarChatHistoryButton: FC<{
                         }}
                         emptyFeedback={
                           <Stack
-                            alignItems="center"
-                            justifyContent="center"
-                            height="100%"
+                            alignItems='center'
+                            justifyContent='center'
+                            height='100%'
                           >
                             <LazyLoadImage
                               height={160}

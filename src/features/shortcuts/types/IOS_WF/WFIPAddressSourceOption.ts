@@ -1,6 +1,3 @@
-type WFIPAddressSourceOption = (
-  'External'
-  | 'Local'
-);
+type WFIPAddressSourceOption = 'External' | 'Local'
 
-export default WFIPAddressSourceOption;
+export default WFIPAddressSourceOption

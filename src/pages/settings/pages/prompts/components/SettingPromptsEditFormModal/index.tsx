@@ -42,7 +42,7 @@ const SettingPromptsEditFormModal: FC<{
         maxWidth: 'auto',
         borderRadius: 2,
         bgcolor: 'background.paper',
-        backgroundImage: 'none'
+        backgroundImage: 'none',
       }}
     >
       <SettingPromptsEditContextProvider
@@ -55,8 +55,8 @@ const SettingPromptsEditFormModal: FC<{
           tabIndex={tabIndex}
           changeTabIndex={setTabIndex}
         />
-        <Stack direction="row" flex={1} overflow="hidden">
-          <Stack flex={1} overflow="auto" p={2}>
+        <Stack direction='row' flex={1} overflow='hidden'>
+          <Stack flex={1} overflow='auto' p={2}>
             {node.data.type === 'shortcuts' && (
               <SettingPromptsEditTabBar
                 value={tabIndex}
@@ -73,8 +73,8 @@ const SettingPromptsEditFormModal: FC<{
           </Stack>
           {node.data.type === 'shortcuts' && (
             <>
-              <Divider orientation="vertical" sx={{ my: 0 }} />
-              <Stack flex={1} overflow="auto">
+              <Divider orientation='vertical' sx={{ my: 0 }} />
+              <Stack flex={1} overflow='auto'>
                 <SettingPromptsChatContextProvider>
                   <SettingPromptsEditPreviewPanel />
                 </SettingPromptsChatContextProvider>

@@ -42,6 +42,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
   'SEARCH_WITH_AI_HIGH_TRAFFIC',
+  'CONTEXT_MENU',
 
   // 特殊付费卡点
   'PROACTIVE_UPGRADE',
@@ -531,6 +532,18 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     title: (t) => t('client:permission__pricing_hook__ai_summary__title'),
     description: (t) =>
       t('client:permission__pricing_hook__ai_summary__description'),
+  },
+  // context menu
+  CONTEXT_MENU: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/context-menu.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/context-menu.png',
+    ),
+    title: (t) => t('client:permission__pricing_hook__context_menu__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__context_menu__description'),
   },
   // Search with AI - Claude
   SEARCH_WITH_AI_CLAUDE: {

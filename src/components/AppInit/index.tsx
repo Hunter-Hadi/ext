@@ -103,7 +103,8 @@ export const AppSettingsInit = () => {
  * @constructor
  */
 export const MaxAISubscriptionUpdate = () => {
-  const { syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
+  const { syncUserInfo, syncUserSubscriptionInfo, syncUserFeatureQuotaInfo } =
+    useUserInfo()
   useEffectOnce(() => {
     syncUserInfo().then()
     if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
@@ -118,6 +119,7 @@ export const MaxAISubscriptionUpdate = () => {
         ].includes(pathname)
       ) {
         syncUserSubscriptionInfo().then()
+        syncUserFeatureQuotaInfo(true).then()
       }
     }
   })

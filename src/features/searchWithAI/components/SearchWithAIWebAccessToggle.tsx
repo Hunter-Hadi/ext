@@ -12,10 +12,8 @@ interface IProps {
 }
 
 const SearchWithAIWebAccessToggle: FC<IProps> = ({ sx, onChange }) => {
-  const {
-    searchWithAISettings,
-    setSearchWithAISettings,
-  } = useSearchWithAISettings()
+  const { searchWithAISettings, setSearchWithAISettings } =
+    useSearchWithAISettings()
 
   const webAccessPrompt = searchWithAISettings.webAccessPrompt
 
@@ -33,13 +31,13 @@ const SearchWithAIWebAccessToggle: FC<IProps> = ({ sx, onChange }) => {
         })
         onChange && onChange(checked)
       }}
-      control={<Switch color="primary" size="small" sx={{ mr: 0.5 }} />}
+      control={<Switch color='primary' size='small' sx={{ mr: 0.5 }} />}
       label={
         <Typography fontSize={14} lineHeight={'20px'}>
           Web access
         </Typography>
       }
-      labelPlacement="end"
+      labelPlacement='end'
     />
   )
 }

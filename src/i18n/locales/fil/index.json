@@ -67,7 +67,8 @@
     "terms_of_service": "Mga Tuntunin ng Serbisyo",
     "shortcut": "Shortcut",
     "yearly": "Taun-taon",
-    "monthly": "Buwanan"
+    "monthly": "Buwanan",
+    "continue_in_contextmenu": "Laging magpatuloy sa menu ng konteksto"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Buksan lahat ng AI models",
     "pricing__upgrade__popper_card__item3__title": "Buksan lahat ng mga tampok",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o lamang. Upang i-unlock ang lahat ng iba pang mga AI model, mag-upgrade sa MaxAI Elite plan.",
-    "pricing__upgrade__popper_card__item4__title": "Pinakamahusay na halaga para sa iyong pera"
+    "pricing__upgrade__popper_card__item4__title": "Pinakamahusay na halaga para sa iyong pera",
+    "floating_menu__button__show_detail": "Ipakita ang mga detalye",
+    "floating_menu__textarea__placeholder": "Mag-type o mag-paste ng iyong teksto dito at tanungin ang AI para sa pagpapabuti, pagsusuri, pagsasalin, pagbuod, at higit pa.",
+    "floating_menu__always_pin_sidebar_title": "Laging i-pin sa sidebar",
+    "floating_menu__always_continue_sidebar_title": "Laging magpatuloy sa sidebar",
+    "sidebar__tabs__rewrite__title": "Ibalik",
+    "sidebar__tabs__rewrite__tooltip": "Ibalik sa AI",
+    "home_view__rewrite__title": "AI tagasulat",
+    "home_view__rewrite__description": "Makatipid ng oras sa pagsusuri at pagpapakinis ng iyong mga salita.",
+    "context_window__chat_history__continue_in_rewrite__title": "Magpatuloy sa pagsusulat muli"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

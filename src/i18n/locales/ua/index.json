@@ -67,7 +67,8 @@
     "terms_of_service": "Умови надання послуг",
     "shortcut": "Скорочення",
     "yearly": "Щорічно",
-    "monthly": "Щомісячно"
+    "monthly": "Щомісячно",
+    "continue_in_contextmenu": "Завжди продовжуйте у контекстному меню"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Розблокувати всі моделі ШІ",
     "pricing__upgrade__popper_card__item3__title": "Розблокувати всі функції",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Лише GPT-4o. Щоб розблокувати всі інші моделі штучного інтелекту, оновіться до плану MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Найкраща вартість за ваші гроші"
+    "pricing__upgrade__popper_card__item4__title": "Найкраща вартість за ваші гроші",
+    "floating_menu__button__show_detail": "Показати деталі",
+    "floating_menu__textarea__placeholder": "Введіть або вставте свій текст тут та попросіть штучний інтелект покращити, виправити, перекласти, підсумувати та інше.",
+    "floating_menu__always_pin_sidebar_title": "Завжди прикріплюйте до бічної панелі",
+    "floating_menu__always_continue_sidebar_title": "Завжди продовжуйте у бічній панелі",
+    "sidebar__tabs__rewrite__title": "Переписати",
+    "sidebar__tabs__rewrite__tooltip": "Переписати за допомогою штучного інтелекту",
+    "home_view__rewrite__title": "Переписувач AI",
+    "home_view__rewrite__description": "Зекономте час на виправленні та вдосконаленні своїх слів.",
+    "context_window__chat_history__continue_in_rewrite__title": "Продовжуйте у переписуванні"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -67,7 +67,8 @@
     "terms_of_service": "Terma Perkhidmatan",
     "shortcut": "Pintasan",
     "yearly": "Tahunan",
-    "monthly": "Bulanan"
+    "monthly": "Bulanan",
+    "continue_in_contextmenu": "Sentiasa terus dalam menu konteks"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Buka semua model AI",
     "pricing__upgrade__popper_card__item3__title": "Buka semua ciri",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Hanya GPT-4o. Untuk membuka semua model AI lain, naik taraf ke pelan MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Nilai terbaik untuk wang anda"
+    "pricing__upgrade__popper_card__item4__title": "Nilai terbaik untuk wang anda",
+    "floating_menu__button__show_detail": "Papar butiran",
+    "floating_menu__textarea__placeholder": "Taip atau tampal teks anda di sini dan minta AI untuk memperbaiki, menyemak ejaan, menterjemahkan, merangkum, dan lain-lain.",
+    "floating_menu__always_pin_sidebar_title": "Sentiasa melekat pada bar sisi",
+    "floating_menu__always_continue_sidebar_title": "Sentiasa terus dalam bar sisi",
+    "sidebar__tabs__rewrite__title": "Menulis semula",
+    "sidebar__tabs__rewrite__tooltip": "Menulis semula dalam AI",
+    "home_view__rewrite__title": "Penulis semula AI",
+    "home_view__rewrite__description": "Jimat masa dalam menyemak ejaan dan menyempurnakan kata-kata anda.",
+    "context_window__chat_history__continue_in_rewrite__title": "Teruskan dalam penulisan semula"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

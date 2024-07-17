@@ -67,7 +67,8 @@
     "terms_of_service": "شرایط خدمات",
     "shortcut": "میانبر",
     "yearly": "سالانه",
-    "monthly": "ماهانه"
+    "monthly": "ماهانه",
+    "continue_in_contextmenu": "همیشه در منوی متنی ادامه دهید"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "باز کردن تمام مدل‌های هوش مصنوعی",
     "pricing__upgrade__popper_card__item3__title": "باز کردن تمام ویژگی‌ها",
     "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. برای باز کردن تمام مدل‌های هوش مصنوعی دیگر، به طرح MaxAI Elite ارتقا دهید.",
-    "pricing__upgrade__popper_card__item4__title": "بهترین ارزش برای پول شما"
+    "pricing__upgrade__popper_card__item4__title": "بهترین ارزش برای پول شما",
+    "floating_menu__button__show_detail": "نمایش جزئیات",
+    "floating_menu__textarea__placeholder": "متن خود را اینجا تایپ یا وارد کرده و از هوش مصنوعی برای بهبود، تصحیح، ترجمه، خلاصه‌سازی و ... استفاده کنید.",
+    "floating_menu__always_pin_sidebar_title": "همیشه به نوار کناری مهر کنید",
+    "floating_menu__always_continue_sidebar_title": "همیشه در نوار کناری ادامه دهید",
+    "sidebar__tabs__rewrite__title": "بازنویسی",
+    "sidebar__tabs__rewrite__tooltip": "بازنویسی با هوش مصنوعی",
+    "home_view__rewrite__title": "بازنویسی توسط هوش مصنوعی",
+    "home_view__rewrite__description": "زمان خود را برای تصحیح و بهبود کلمات خود صرفه‌جویی کنید.",
+    "context_window__chat_history__continue_in_rewrite__title": "ادامه در بازنویسی"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

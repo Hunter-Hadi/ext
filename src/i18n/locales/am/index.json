@@ -67,7 +67,8 @@
     "terms_of_service": "የአገልግሎት ውሂብ",
     "shortcut": "ተጨማሪ",
     "yearly": "ዓመትን",
-    "monthly": "ወርሃዊ"
+    "monthly": "ወርሃዊ",
+    "continue_in_contextmenu": "በማስተካከል በተጨማሪ በሽታ ተጨማሪ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "ሁሉንም AI ሞዴሎች አክል",
     "pricing__upgrade__popper_card__item3__title": "ሁሉንም አጠቃላይነት አክል",
     "pricing__plan_features__pro__feature1__item2__subtitle": "ጂዲ-4o ብቻ. ሌላ አይነት AI ሞዴሎችን ለመከታተል, የሚከተለውን MaxAI Elite አደጋ ይዘትን ይዘምሩ።",
-    "pricing__upgrade__popper_card__item4__title": "የገና እርስዎ ላይ ያለው እጅ"
+    "pricing__upgrade__popper_card__item4__title": "የገና እርስዎ ላይ ያለው እጅ",
+    "floating_menu__button__show_detail": "ምርጫውን እንደገና አሳይ",
+    "floating_menu__textarea__placeholder": "ያለፈው ጽሁፍዎን ወደእናት እና ወደአንድ እንዲጠቀሙ ይጠቀሙ።",
+    "floating_menu__always_pin_sidebar_title": "በስትኦት ውስጥ ይቀንሱ",
+    "floating_menu__always_continue_sidebar_title": "በስትኦት ውስጥ ተጨማሪ",
+    "sidebar__tabs__rewrite__title": "አስተያየት",
+    "sidebar__tabs__rewrite__tooltip": "በአንድ እናት አስተያየት",
+    "home_view__rewrite__title": "AI አስተያየት",
+    "home_view__rewrite__description": "የግል ጥቅም በማስተካከል እና በማስተካከል በሽታዎት እንደሚቀይሩ።",
+    "context_window__chat_history__continue_in_rewrite__title": "በአስተያየት ተጨማሪ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

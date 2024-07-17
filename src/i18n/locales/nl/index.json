@@ -67,7 +67,8 @@
     "terms_of_service": "Gebruiksvoorwaarden",
     "shortcut": "Snelkoppeling",
     "yearly": "Jaarlijks",
-    "monthly": "Maandelijks"
+    "monthly": "Maandelijks",
+    "continue_in_contextmenu": "Altijd doorgaan in contextmenu"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Ontgrendel alle AI-modellen",
     "pricing__upgrade__popper_card__item3__title": "Ontgrendel alle functies",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Alleen GPT-4o. Upgrade naar het MaxAI Elite plan om alle andere AI-modellen te ontgrendelen.",
-    "pricing__upgrade__popper_card__item4__title": "Beste waarde voor uw geld"
+    "pricing__upgrade__popper_card__item4__title": "Beste waarde voor uw geld",
+    "floating_menu__button__show_detail": "Toon details",
+    "floating_menu__textarea__placeholder": "Typ of plak hier uw tekst en vraag AI om te verbeteren, controleren, vertalen, samenvatten en meer.",
+    "floating_menu__always_pin_sidebar_title": "Altijd vastzetten aan de zijbalk",
+    "floating_menu__always_continue_sidebar_title": "Altijd doorgaan in zijbalk",
+    "sidebar__tabs__rewrite__title": "Herschrijven",
+    "sidebar__tabs__rewrite__tooltip": "Herschrijven in AI",
+    "home_view__rewrite__title": "AI herschrijver",
+    "home_view__rewrite__description": "Bespaar tijd bij het controleren en perfectioneren van uw woorden.",
+    "context_window__chat_history__continue_in_rewrite__title": "Doorgaan in herschrijven"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

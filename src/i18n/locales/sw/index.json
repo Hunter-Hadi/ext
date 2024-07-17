@@ -67,7 +67,8 @@
     "terms_of_service": "Masharti ya Huduma",
     "shortcut": "Njia ya mkato",
     "yearly": "Kila mwaka",
-    "monthly": "Kila mwezi"
+    "monthly": "Kila mwezi",
+    "continue_in_contextmenu": "Daima endelea kwenye menyu ya muktadha"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Fungua mifano yote ya AI",
     "pricing__upgrade__popper_card__item3__title": "Fungua vipengele vyote",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o pekee. Ili kufungua mifano mingine yote ya AI, nenda kwenye mpango wa MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Thamani bora kwa pesa yako"
+    "pricing__upgrade__popper_card__item4__title": "Thamani bora kwa pesa yako",
+    "floating_menu__button__show_detail": "Onyesha maelezo",
+    "floating_menu__textarea__placeholder": "Andika au bandika maandishi yako hapa na omba AI kuboresha, kuhariri, kutafsiri, kufupisha, na zaidi.",
+    "floating_menu__always_pin_sidebar_title": "Daima piga kwa upande",
+    "floating_menu__always_continue_sidebar_title": "Daima endelea kwa upande",
+    "sidebar__tabs__rewrite__title": "Geuza",
+    "sidebar__tabs__rewrite__tooltip": "Geuza kwa AI",
+    "home_view__rewrite__title": "Mgeuzaji wa AI",
+    "home_view__rewrite__description": "Hifadhi muda kwa kuhariri na kuboresha maneno yako.",
+    "context_window__chat_history__continue_in_rewrite__title": "Endelea katika kugeuza"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

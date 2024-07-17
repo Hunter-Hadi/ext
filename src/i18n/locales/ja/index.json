@@ -67,7 +67,8 @@
     "terms_of_service": "利用規約",
     "shortcut": "ショートカット",
     "yearly": "毎年",
-    "monthly": "毎月"
+    "monthly": "毎月",
+    "continue_in_contextmenu": "常にコンテキストメニューで続行"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "すべてのAIモデルをアンロック",
     "pricing__upgrade__popper_card__item3__title": "すべての機能をアンロック",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4oのみ。他のすべてのAIモデルをアンロックするには、MaxAI Eliteプランにアップグレードしてください。",
-    "pricing__upgrade__popper_card__item4__title": "あなたのお金に最適な価値"
+    "pricing__upgrade__popper_card__item4__title": "あなたのお金に最適な価値",
+    "floating_menu__button__show_detail": "詳細を表示",
+    "floating_menu__textarea__placeholder": "ここにテキストを入力または貼り付けて、AIに改善、校正、翻訳、要約などを依頼してください。",
+    "floating_menu__always_pin_sidebar_title": "常にサイドバーに固定",
+    "floating_menu__always_continue_sidebar_title": "常にサイドバーで続行",
+    "sidebar__tabs__rewrite__title": "書き換え",
+    "sidebar__tabs__rewrite__tooltip": "AIで書き換え",
+    "home_view__rewrite__title": "AIリライター",
+    "home_view__rewrite__description": "校正や言葉を完璧にするのに時間を節約します。",
+    "context_window__chat_history__continue_in_rewrite__title": "書き換えで続行"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

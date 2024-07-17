@@ -67,7 +67,8 @@
     "terms_of_service": "సేవల నిబంధనలు",
     "shortcut": "షార్ట్కట్",
     "yearly": "వారుగా",
-    "monthly": "ప్రతినిత్య"
+    "monthly": "ప్రతినిత్య",
+    "continue_in_contextmenu": "ఎప్పుడైనా కంటెక్స్ట్ మెనూలో కొనసాగండి"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -1009,7 +1010,16 @@
     "sidebar__chat__voice_input__transcripting__tooltip": "ట్రాన్స్క్రిప్టింగ్...",
     "sidebar__chat__voice_input__no_speech__tooltip": "ఎవరైనా మాట్లాడలేదు.\nదయచేసి మళ్ళీ ప్రయత్నించండి.",
     "sidebar__chat__voice_input__timeout__tooltip": "ట్రాన్స్క్రిప్షన్ టైమ్ ఔట్ అయింది.\nదయచేసి మళ్ళీ ప్రయత్నించండి.",
-    "pricing__upgrade__popper_card__item4__title": "మీ డబ్బుకోసం ఉత్తమ విలువ"
+    "pricing__upgrade__popper_card__item4__title": "మీ డబ్బుకోసం ఉత్తమ విలువ",
+    "floating_menu__button__show_detail": "వివరాలను చూపించు",
+    "floating_menu__textarea__placeholder": "మీ టెక్స్ట్ను ఇక్కడ టైప్ చేయండి లేదా పేస్ట్ చేయండి మరియు AI ను మెరుగుపరచండి, ప్రూఫ్రీడ్, అనువాదించండి, సంగ్రహించండి.",
+    "floating_menu__always_pin_sidebar_title": "ఎప్పుడైనా సైడ్బార్లో పిన్ చేయండి",
+    "floating_menu__always_continue_sidebar_title": "ఎప్పుడైనా సైడ్బార్లో కొనసాగండి",
+    "sidebar__tabs__rewrite__title": "రీవ్రైట్",
+    "sidebar__tabs__rewrite__tooltip": "AI లో రీవ్రైట్",
+    "home_view__rewrite__title": "AI రీవ్రైటర్",
+    "home_view__rewrite__description": "మీ పదాలను ప్రూఫ్రీడింగ్ మరియు పూర్తి చేస్తూ సమయం సేవ్ చేయండి.",
+    "context_window__chat_history__continue_in_rewrite__title": "రీవ్రైట్లో కొనసాగండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

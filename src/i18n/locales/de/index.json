@@ -67,7 +67,8 @@
     "terms_of_service": "Nutzungsbedingungen",
     "shortcut": "Verknüpfung",
     "yearly": "Jährlich",
-    "monthly": "Monatlich"
+    "monthly": "Monatlich",
+    "continue_in_contextmenu": "Immer im Kontextmenü fortfahren"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Alle KI-Modelle freischalten",
     "pricing__upgrade__popper_card__item3__title": "Alle Funktionen freischalten",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Nur GPT-4o. Um alle anderen KI-Modelle freizuschalten, wechseln Sie zum MaxAI Elite-Plan.",
-    "pricing__upgrade__popper_card__item4__title": "Bestes Preis-Leistungs-Verhältnis"
+    "pricing__upgrade__popper_card__item4__title": "Bestes Preis-Leistungs-Verhältnis",
+    "floating_menu__button__show_detail": "Details anzeigen",
+    "floating_menu__textarea__placeholder": "Geben Sie hier Ihren Text ein oder fügen Sie ihn ein und bitten Sie die KI, ihn zu verbessern, zu korrigieren, zu übersetzen, zusammenzufassen und mehr.",
+    "floating_menu__always_pin_sidebar_title": "Immer an der Seitenleiste anheften",
+    "floating_menu__always_continue_sidebar_title": "Immer in der Seitenleiste fortfahren",
+    "sidebar__tabs__rewrite__title": "Umschreiben",
+    "sidebar__tabs__rewrite__tooltip": "Umschreiben in KI",
+    "home_view__rewrite__title": "KI-Umschreiber",
+    "home_view__rewrite__description": "Sparen Sie Zeit beim Korrekturlesen und Perfektionieren Ihrer Worte.",
+    "context_window__chat_history__continue_in_rewrite__title": "Im Umschreiben fortsetzen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

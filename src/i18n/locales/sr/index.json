@@ -67,7 +67,8 @@
     "terms_of_service": "Uslovi korišćenja",
     "shortcut": "Prečica",
     "yearly": "Godišnje",
-    "monthly": "Mesečno"
+    "monthly": "Mesečno",
+    "continue_in_contextmenu": "Uvek nastavite u meniju konteksta"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Otključaj sve AI modele",
     "pricing__upgrade__popper_card__item3__title": "Otključaj sve funkcije",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Da biste otključali sve ostale AI modele, nadogradite se na MaxAI Elite plan.",
-    "pricing__upgrade__popper_card__item4__title": "Najbolja vrednost za vaš novac"
+    "pricing__upgrade__popper_card__item4__title": "Najbolja vrednost za vaš novac",
+    "floating_menu__button__show_detail": "Prikaži detalje",
+    "floating_menu__textarea__placeholder": "Ovde unesite ili nalepite tekst i pitajte veštačku inteligenciju da ga poboljša, ispravi, prevede, sumira i još mnogo toga.",
+    "floating_menu__always_pin_sidebar_title": "Uvek prikači na bočnu traku",
+    "floating_menu__always_continue_sidebar_title": "Uvek nastavite u bočnoj traci",
+    "sidebar__tabs__rewrite__title": "Prepiši",
+    "sidebar__tabs__rewrite__tooltip": "Prepiši uz pomoć veštačke inteligencije",
+    "home_view__rewrite__title": "Veštački prepravljač",
+    "home_view__rewrite__description": "Uštedite vreme na ispravljanju i usavršavanju svojih reči.",
+    "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepravljanju"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

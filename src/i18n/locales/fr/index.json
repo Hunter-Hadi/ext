@@ -67,7 +67,8 @@
     "terms_of_service": "Conditions d'utilisation",
     "shortcut": "Raccourci",
     "yearly": "Annuel",
-    "monthly": "Mensuel"
+    "monthly": "Mensuel",
+    "continue_in_contextmenu": "Toujours continuer dans le menu contextuel"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Débloquer tous les modèles d'IA",
     "pricing__upgrade__popper_card__item3__title": "Débloquer toutes les fonctionnalités",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Uniquement GPT-4o. Pour débloquer tous les autres modèles d'IA, passez au plan MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Meilleur rapport qualité-prix"
+    "pricing__upgrade__popper_card__item4__title": "Meilleur rapport qualité-prix",
+    "floating_menu__button__show_detail": "Afficher les détails",
+    "floating_menu__textarea__placeholder": "Tapez ou collez votre texte ici et demandez à l'IA d'améliorer, de relire, de traduire, de résumer, et plus encore.",
+    "floating_menu__always_pin_sidebar_title": "Épingler toujours à la barre latérale",
+    "floating_menu__always_continue_sidebar_title": "Continuer toujours dans la barre latérale",
+    "sidebar__tabs__rewrite__title": "Réécrire",
+    "sidebar__tabs__rewrite__tooltip": "Réécrire en IA",
+    "home_view__rewrite__title": "Réécrivain IA",
+    "home_view__rewrite__description": "Gagnez du temps sur la relecture et la perfection de vos mots.",
+    "context_window__chat_history__continue_in_rewrite__title": "Continuer dans la réécriture"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

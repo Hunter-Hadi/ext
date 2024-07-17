@@ -67,7 +67,8 @@
     "terms_of_service": "Vilkår for bruk",
     "shortcut": "Snarvei",
     "yearly": "Årlig",
-    "monthly": "Månedlig"
+    "monthly": "Månedlig",
+    "continue_in_contextmenu": "Alltid fortsett i kontekstmeny"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Lås opp alle AI-modeller",
     "pricing__upgrade__popper_card__item3__title": "Lås opp alle funksjoner",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Kun GPT-4o. For å låse opp alle andre AI-modeller, oppgrader til MaxAI Elite-planen.",
-    "pricing__upgrade__popper_card__item4__title": "Best verdi for pengene dine"
+    "pricing__upgrade__popper_card__item4__title": "Best verdi for pengene dine",
+    "floating_menu__button__show_detail": "Vis detaljer",
+    "floating_menu__textarea__placeholder": "Skriv eller lim inn teksten din her og be AI om å forbedre, korrekturlese, oversette, oppsummere og mer.",
+    "floating_menu__always_pin_sidebar_title": "Alltid fest til sidepanelet",
+    "floating_menu__always_continue_sidebar_title": "Alltid fortsett i sidepanelet",
+    "sidebar__tabs__rewrite__title": "Omskriv",
+    "sidebar__tabs__rewrite__tooltip": "Omskriv i AI",
+    "home_view__rewrite__title": "AI omskriver",
+    "home_view__rewrite__description": "Spar tid på korrekturlesing og perfeksjonering av ordene dine.",
+    "context_window__chat_history__continue_in_rewrite__title": "Fortsett i omskriving"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

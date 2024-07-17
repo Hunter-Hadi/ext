@@ -67,7 +67,8 @@
     "terms_of_service": "Szolgáltatási feltételek",
     "shortcut": "Gyorsbillentyű",
     "yearly": "Éves",
-    "monthly": "Havi"
+    "monthly": "Havi",
+    "continue_in_contextmenu": "Mindig folytassa a kontextusmenüben"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Minden AI modell feloldása",
     "pricing__upgrade__popper_card__item3__title": "Minden funkció feloldása",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Csak GPT-4o. Az összes többi AI modell feloldásához frissítse a MaxAI Elite tervre.",
-    "pricing__upgrade__popper_card__item4__title": "Legjobb érték pénzéért"
+    "pricing__upgrade__popper_card__item4__title": "Legjobb érték pénzéért",
+    "floating_menu__button__show_detail": "Részletek megjelenítése",
+    "floating_menu__textarea__placeholder": "Írja be vagy illessze be a szöveget ide, majd kérje az AI-t, hogy javítsa, lektorálja, fordítsa, összefoglalja, és még sok mást.",
+    "floating_menu__always_pin_sidebar_title": "Mindig rögzítse az oldalsávhoz",
+    "floating_menu__always_continue_sidebar_title": "Mindig folytassa az oldalsávban",
+    "sidebar__tabs__rewrite__title": "Átírás",
+    "sidebar__tabs__rewrite__tooltip": "Átírás AI segítségével",
+    "home_view__rewrite__title": "AI átíró",
+    "home_view__rewrite__description": "Takarítson meg időt a lektorálással és a szavai tökéletesítésével.",
+    "context_window__chat_history__continue_in_rewrite__title": "Folytatás az átírásban"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

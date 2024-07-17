@@ -67,7 +67,8 @@
     "terms_of_service": "Käyttöehdot",
     "shortcut": "Pikanäppäin",
     "yearly": "Vuotuinen",
-    "monthly": "Kuukausittainen"
+    "monthly": "Kuukausittainen",
+    "continue_in_contextmenu": "Jatka aina kontekstivalikossa"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Avaa kaikki tekoälymallit",
     "pricing__upgrade__popper_card__item3__title": "Avaa kaikki ominaisuudet",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Vain GPT-4o. Päivitä MaxAI Elite -suunnitelmaan avataksesi kaikki muut tekoälymallit.",
-    "pricing__upgrade__popper_card__item4__title": "Paras arvo rahallesi"
+    "pricing__upgrade__popper_card__item4__title": "Paras arvo rahallesi",
+    "floating_menu__button__show_detail": "Näytä yksityiskohdat",
+    "floating_menu__textarea__placeholder": "Kirjoita tai liitä tekstisi tähän ja pyydä tekoälyä parantamaan, oikolukemaan, kääntämään, tiivistämään ja muuta.",
+    "floating_menu__always_pin_sidebar_title": "Kiinnitä aina sivupalkkiin",
+    "floating_menu__always_continue_sidebar_title": "Jatka aina sivupalkissa",
+    "sidebar__tabs__rewrite__title": "Uudelleenkirjoitus",
+    "sidebar__tabs__rewrite__tooltip": "Uudelleenkirjoitus tekoälyllä",
+    "home_view__rewrite__title": "Teoäly uudelleenkirjoittaja",
+    "home_view__rewrite__description": "Säästä aikaa tekstisi oikolukemisessa ja hiomisessa.",
+    "context_window__chat_history__continue_in_rewrite__title": "Jatka uudelleenkirjoituksessa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

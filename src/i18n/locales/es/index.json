@@ -67,7 +67,8 @@
     "terms_of_service": "Términos de servicio",
     "shortcut": "Atajo",
     "yearly": "Anual",
-    "monthly": "Mensual"
+    "monthly": "Mensual",
+    "continue_in_contextmenu": "Siempre continuar en menú contextual"
   },
   "settings": {
     "left_menu__me": "Yo y MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Desbloquear todos los modelos de IA",
     "pricing__upgrade__popper_card__item3__title": "Desbloquear todas las funciones",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Solo GPT-4o. Para desbloquear todos los demás modelos de IA, actualice al plan MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Mejor valor por tu dinero"
+    "pricing__upgrade__popper_card__item4__title": "Mejor valor por tu dinero",
+    "floating_menu__button__show_detail": "Mostrar detalles",
+    "floating_menu__textarea__placeholder": "Escribe o pega tu texto aquí y pide a la IA que lo mejore, corrija, traduzca, resuma y más.",
+    "floating_menu__always_pin_sidebar_title": "Siempre fijar en la barra lateral",
+    "floating_menu__always_continue_sidebar_title": "Siempre continuar en la barra lateral",
+    "sidebar__tabs__rewrite__title": "Reescribir",
+    "sidebar__tabs__rewrite__tooltip": "Reescribir en IA",
+    "home_view__rewrite__title": "Reescritor de IA",
+    "home_view__rewrite__description": "Ahorra tiempo en la corrección y perfección de tus palabras.",
+    "context_window__chat_history__continue_in_rewrite__title": "Continuar en reescritura"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

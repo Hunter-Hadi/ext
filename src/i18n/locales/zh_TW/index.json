@@ -67,7 +67,8 @@
     "terms_of_service": "服務條款",
     "shortcut": "快捷方式",
     "yearly": "年度",
-    "monthly": "每月"
+    "monthly": "每月",
+    "continue_in_contextmenu": "始終在上下文選單中繼續"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "解鎖所有AI模型",
     "pricing__upgrade__popper_card__item3__title": "解鎖所有功能",
     "pricing__plan_features__pro__feature1__item2__subtitle": "僅限 GPT-4o。要解鎖所有其他 AI 模型，請升級至 MaxAI Elite 計劃。",
-    "pricing__upgrade__popper_card__item4__title": "物超所值"
+    "pricing__upgrade__popper_card__item4__title": "物超所值",
+    "floating_menu__button__show_detail": "顯示詳細資訊",
+    "floating_menu__textarea__placeholder": "在此處輸入或貼上您的文字，並請 AI 進行改進、校對、翻譯、摘要等。",
+    "floating_menu__always_pin_sidebar_title": "始終固定在側邊欄",
+    "floating_menu__always_continue_sidebar_title": "始終在側邊欄中繼續",
+    "sidebar__tabs__rewrite__title": "重寫",
+    "sidebar__tabs__rewrite__tooltip": "在 AI 中重寫",
+    "home_view__rewrite__title": "AI 重寫工具",
+    "home_view__rewrite__description": "節省校對和完善文字的時間。",
+    "context_window__chat_history__continue_in_rewrite__title": "在重寫中繼續"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

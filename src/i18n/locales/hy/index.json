@@ -64,7 +64,8 @@
     "terms_of_service": "Ծառայության պայմաններ",
     "shortcut": "Շորտկատ",
     "yearly": "Տարեկան",
-    "monthly": "Ամսական"
+    "monthly": "Ամսական",
+    "continue_in_contextmenu": "Միշտ շարունակեք կոնտեքստային ընտրացանկում"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -1006,7 +1007,16 @@
     "pricing__upgrade__popper_card__item2__title": "Բացեք բոլոր AI մոդելները",
     "pricing__upgrade__popper_card__item3__title": "Բացեք բոլոր հատկությունները",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o միայն: Բոլոր այլ AI մոդելները բացելու համար, արժեքավորեք MaxAI Elite պլանը։",
-    "pricing__upgrade__popper_card__item4__title": "Լավագույն արժեքը ձեր գումարի համար"
+    "pricing__upgrade__popper_card__item4__title": "Լավագույն արժեքը ձեր գումարի համար",
+    "floating_menu__button__show_detail": "Ցուցադրել մանրամասնությունները",
+    "floating_menu__textarea__placeholder": "Մուտքագրեք ձեր տեքստը այստեղ և հարցեք AI-ին ազդեցնել, ստուգել, թարգմանել, ամրագրել և ավելին:",
+    "floating_menu__always_pin_sidebar_title": "Միշտ կպտեք կողակին",
+    "floating_menu__always_continue_sidebar_title": "Միշտ շարունակեք կողակին",
+    "sidebar__tabs__rewrite__title": "Վերգրադարձ",
+    "sidebar__tabs__rewrite__tooltip": "Վերգրադարձեք AI-ում",
+    "home_view__rewrite__title": "AI-ի վերգրադարձիչ",
+    "home_view__rewrite__description": "Ժամանակ պահպանեք ստուգումների վերականգնում և ձեր բառերը համբուրելու վրա:",
+    "context_window__chat_history__continue_in_rewrite__title": "Շարունակեք վերգրադարձում"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

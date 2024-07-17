@@ -67,7 +67,8 @@
     "terms_of_service": "Điều khoản dịch vụ",
     "shortcut": "Phím tắt",
     "yearly": "Hàng năm",
-    "monthly": "Hàng tháng"
+    "monthly": "Hàng tháng",
+    "continue_in_contextmenu": "Luôn tiếp tục trong menu ngữ cảnh"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Mở khóa tất cả các mô hình AI",
     "pricing__upgrade__popper_card__item3__title": "Mở khóa tất cả các tính năng",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Chỉ GPT-4o. Để mở khóa tất cả các mô hình AI khác, nâng cấp lên gói MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Giá trị tốt nhất cho tiền của bạn"
+    "pricing__upgrade__popper_card__item4__title": "Giá trị tốt nhất cho tiền của bạn",
+    "floating_menu__button__show_detail": "Hiển thị chi tiết",
+    "floating_menu__textarea__placeholder": "Nhập hoặc dán văn bản của bạn vào đây và yêu cầu AI cải thiện, kiểm tra lỗi chính tả, dịch, tóm tắt và nhiều hơn nữa.",
+    "floating_menu__always_pin_sidebar_title": "Luôn ghim vào thanh bên",
+    "floating_menu__always_continue_sidebar_title": "Luôn tiếp tục trong thanh bên",
+    "sidebar__tabs__rewrite__title": "Viết lại",
+    "sidebar__tabs__rewrite__tooltip": "Viết lại bằng AI",
+    "home_view__rewrite__title": "Máy viết lại AI",
+    "home_view__rewrite__description": "Tiết kiệm thời gian trong việc kiểm tra lỗi và hoàn thiện từ của bạn.",
+    "context_window__chat_history__continue_in_rewrite__title": "Tiếp tục trong viết lại"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

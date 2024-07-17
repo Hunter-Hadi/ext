@@ -67,7 +67,8 @@
     "terms_of_service": "Podmínky služby",
     "shortcut": "Zkratka",
     "yearly": "Ročně",
-    "monthly": "Měsíčně"
+    "monthly": "Měsíčně",
+    "continue_in_contextmenu": "Vždy pokračujte v kontextovém menu"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Odemknout všechny modely AI",
     "pricing__upgrade__popper_card__item3__title": "Odemknout všechny funkce",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Pouze GPT-4o. Pro odemknutí všech ostatních modelů AI, upgradujte na plán MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Nejlepší hodnota za vaše peníze"
+    "pricing__upgrade__popper_card__item4__title": "Nejlepší hodnota za vaše peníze",
+    "floating_menu__button__show_detail": "Zobrazit detaily",
+    "floating_menu__textarea__placeholder": "Napište nebo vložte svůj text zde a požádejte AI o vylepšení, korekturu, překlad, shrnutí a další.",
+    "floating_menu__always_pin_sidebar_title": "Vždy připnout na postranní panel",
+    "floating_menu__always_continue_sidebar_title": "Vždy pokračovat na postranním panelu",
+    "sidebar__tabs__rewrite__title": "Přepsat",
+    "sidebar__tabs__rewrite__tooltip": "Přepsat v AI",
+    "home_view__rewrite__title": "Přepisovač AI",
+    "home_view__rewrite__description": "Ušetřete čas při korektuře a zdokonalování svých slov.",
+    "context_window__chat_history__continue_in_rewrite__title": "Pokračovat v přepisu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

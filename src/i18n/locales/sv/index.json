@@ -67,7 +67,8 @@
     "terms_of_service": "Användarvillkor",
     "shortcut": "Genväg",
     "yearly": "Årligen",
-    "monthly": "Månadsvis"
+    "monthly": "Månadsvis",
+    "continue_in_contextmenu": "Alltid fortsätt i kontextmeny"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Lås upp alla AI-modeller",
     "pricing__upgrade__popper_card__item3__title": "Lås upp alla funktioner",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Endast GPT-4o. För att låsa upp alla andra AI-modeller, uppgradera till MaxAI Elite-planen.",
-    "pricing__upgrade__popper_card__item4__title": "Bästa värdet för dina pengar"
+    "pricing__upgrade__popper_card__item4__title": "Bästa värdet för dina pengar",
+    "floating_menu__button__show_detail": "Visa detaljer",
+    "floating_menu__textarea__placeholder": "Skriv eller klistra in din text här och be AI förbättra, korrekturläsa, översätta, sammanfatta och mer.",
+    "floating_menu__always_pin_sidebar_title": "Alltid fäst vid sidofältet",
+    "floating_menu__always_continue_sidebar_title": "Alltid fortsätt i sidofältet",
+    "sidebar__tabs__rewrite__title": "Omskriv",
+    "sidebar__tabs__rewrite__tooltip": "Omskriv med AI",
+    "home_view__rewrite__title": "AI-omskrivare",
+    "home_view__rewrite__description": "Spara tid på korrekturläsning och förbättring av dina ord.",
+    "context_window__chat_history__continue_in_rewrite__title": "Fortsätt i omskrivning"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

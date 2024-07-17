@@ -67,7 +67,8 @@
     "terms_of_service": "תנאי השימוש",
     "shortcut": "קיצור",
     "yearly": "שנתי",
-    "monthly": "חודשי"
+    "monthly": "חודשי",
+    "continue_in_contextmenu": "תמיד המשך בתפריט ההקשר"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "פתח את כל דגמי המודלים של AI",
     "pricing__upgrade__popper_card__item3__title": "פתח את כל התכונות",
     "pricing__plan_features__pro__feature1__item2__subtitle": "רק GPT-4o. כדי לפתוח את כל שאר הדגמי AI, שדרגו לתוכנית MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "ערך מיטבי עבור הכסף שלך"
+    "pricing__upgrade__popper_card__item4__title": "ערך מיטבי עבור הכסף שלך",
+    "floating_menu__button__show_detail": "הצג פרטים",
+    "floating_menu__textarea__placeholder": "הקלד או הדבק טקסט כאן ובקש מהמודע המלאכותי לשפר, לערוך, לתרגם, לסכם ועוד.",
+    "floating_menu__always_pin_sidebar_title": "תמיד הצמד לסרגל הצד",
+    "floating_menu__always_continue_sidebar_title": "תמיד המשך בסרגל הצד",
+    "sidebar__tabs__rewrite__title": "כתוב מחדש",
+    "sidebar__tabs__rewrite__tooltip": "כתוב מחדש במודע",
+    "home_view__rewrite__title": "מחדש מודע",
+    "home_view__rewrite__description": "חסוך זמן בעריכה ובשיפור המילים שלך.",
+    "context_window__chat_history__continue_in_rewrite__title": "המשך במחדש"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

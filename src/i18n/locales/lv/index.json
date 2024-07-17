@@ -67,7 +67,8 @@
     "terms_of_service": "Pakalpojuma noteikumi",
     "shortcut": "Saīsne",
     "yearly": "Katru gadu",
-    "monthly": "Katru mēnesi"
+    "monthly": "Katru mēnesi",
+    "continue_in_contextmenu": "Vienmēr turpiniet konteksta izvēlnē"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Atbloķēt visas AI modeļus",
     "pricing__upgrade__popper_card__item3__title": "Atbloķēt visas funkcijas",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tikai GPT-4o. Lai atbloķētu visus citus AI modeļus, jauniniet uz MaxAI Elite plānu.",
-    "pricing__upgrade__popper_card__item4__title": "Labākā vērtība jūsu naudai"
+    "pricing__upgrade__popper_card__item4__title": "Labākā vērtība jūsu naudai",
+    "floating_menu__button__show_detail": "Rādīt detaļas",
+    "floating_menu__textarea__placeholder": "Ierakstiet vai ielīmējiet tekstu šeit un lūdziet AI uzlabot, pārbaudīt, tulko, apkopot un citus darbus.",
+    "floating_menu__always_pin_sidebar_title": "Vienmēr pielīmējiet sānjoslu",
+    "floating_menu__always_continue_sidebar_title": "Vienmēr turpiniet sānjoslā",
+    "sidebar__tabs__rewrite__title": "Pārrakstīt",
+    "sidebar__tabs__rewrite__tooltip": "Pārrakstīt ar AI",
+    "home_view__rewrite__title": "AI pārrakstītājs",
+    "home_view__rewrite__description": "Ietaupiet laiku, pārbaudot un pilnveidojot savus vārdus.",
+    "context_window__chat_history__continue_in_rewrite__title": "Turpiniet pārrakstīt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

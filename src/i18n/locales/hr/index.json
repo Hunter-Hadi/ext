@@ -67,7 +67,8 @@
     "terms_of_service": "Uvjeti korištenja",
     "shortcut": "Prečica",
     "yearly": "Godišnje",
-    "monthly": "Mjesečno"
+    "monthly": "Mjesečno",
+    "continue_in_contextmenu": "Uvijek nastavite u kontekstnom izborniku"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Otključajte sve AI modele",
     "pricing__upgrade__popper_card__item3__title": "Otključajte sve značajke",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Za otključavanje svih ostalih AI modela, nadogradite se na MaxAI Elite plan.",
-    "pricing__upgrade__popper_card__item4__title": "Najbolja vrijednost za vaš novac"
+    "pricing__upgrade__popper_card__item4__title": "Najbolja vrijednost za vaš novac",
+    "floating_menu__button__show_detail": "Prikaži detalje",
+    "floating_menu__textarea__placeholder": "Upišite ili zalijepite svoj tekst ovdje i zatražite od AI-a da poboljša, provjeri, prevede, sažme i još više.",
+    "floating_menu__always_pin_sidebar_title": "Uvijek prikači na bočnu traku",
+    "floating_menu__always_continue_sidebar_title": "Uvijek nastavite u bočnoj traci",
+    "sidebar__tabs__rewrite__title": "Prepisati",
+    "sidebar__tabs__rewrite__tooltip": "Prepisati u AI-u",
+    "home_view__rewrite__title": "AI prepisivač",
+    "home_view__rewrite__description": "Uštedite vrijeme na provjeri i usavršavanju svojih riječi.",
+    "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepisivanju"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

@@ -67,7 +67,8 @@
     "terms_of_service": "Pogoji storitve",
     "shortcut": "Bližnjica",
     "yearly": "Letno",
-    "monthly": "Mesečno"
+    "monthly": "Mesečno",
+    "continue_in_contextmenu": "Vedno nadaljujte v kontekstnem meniju"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Odkleni vse AI modele",
     "pricing__upgrade__popper_card__item3__title": "Odkleni vse funkcije",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Za odklep vseh drugih modelov AI nadgradite na načrt MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Najboljša vrednost za vaš denar"
+    "pricing__upgrade__popper_card__item4__title": "Najboljša vrednost za vaš denar",
+    "floating_menu__button__show_detail": "Pokaži podrobnosti",
+    "floating_menu__textarea__placeholder": "Vnesite ali prilepite besedilo tukaj in prosite AI za izboljšanje, lekturo, prevod, povzetek in več.",
+    "floating_menu__always_pin_sidebar_title": "Vedno pripni na stransko vrstico",
+    "floating_menu__always_continue_sidebar_title": "Vedno nadaljujte v stranski vrstici",
+    "sidebar__tabs__rewrite__title": "Prepis",
+    "sidebar__tabs__rewrite__tooltip": "Prepis v AI",
+    "home_view__rewrite__title": "AI prepisovalec",
+    "home_view__rewrite__description": "Prihranite čas pri lektoriranju in popolnjevanju svojih besed.",
+    "context_window__chat_history__continue_in_rewrite__title": "Nadaljujte v prepisu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

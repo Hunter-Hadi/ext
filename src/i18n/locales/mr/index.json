@@ -67,7 +67,8 @@
     "terms_of_service": "सेवा अटी",
     "shortcut": "शॉर्टकट",
     "yearly": "वार्षिक",
-    "monthly": "मासिक"
+    "monthly": "मासिक",
+    "continue_in_contextmenu": "नेहमी कॉंटेक्स्ट मेनूमध्ये सुरू ठेवा"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "सर्व AI मॉडेल्स अनलॉक करा",
     "pricing__upgrade__popper_card__item3__title": "सर्व सुविधांची अनलॉक करा",
     "pricing__plan_features__pro__feature1__item2__subtitle": "केवळ GPT-4o. सर्व इतर AI मॉडेल्स सोडवण्यासाठी, MaxAI Elite योजनेवर अपग्रेड करा.",
-    "pricing__upgrade__popper_card__item4__title": "आपल्या पैसांसाठी सर्वोत्तम मूल्य"
+    "pricing__upgrade__popper_card__item4__title": "आपल्या पैसांसाठी सर्वोत्तम मूल्य",
+    "floating_menu__button__show_detail": "विवरण दाखवा",
+    "floating_menu__textarea__placeholder": "येथे आपला मजकूर टाइप किव्हा पेस्ट करा आणि AI वर मदतीसाठी, तपासा, भाषांतर करा, सारांश करा आणि अधिक करा.",
+    "floating_menu__always_pin_sidebar_title": "नेहमी साइडबारवर पिन करा",
+    "floating_menu__always_continue_sidebar_title": "नेहमी साइडबारमध्ये सुरू ठेवा",
+    "sidebar__tabs__rewrite__title": "पुनर्लेखन",
+    "sidebar__tabs__rewrite__tooltip": "AI मध्ये पुनर्लेखन करा",
+    "home_view__rewrite__title": "AI पुनरलेखक",
+    "home_view__rewrite__description": "आपल्या शब्दांचा तपासा करण्यात व सुधारण्यात वेळ वाचवा.",
+    "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखनमध्ये सुरू ठेवा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

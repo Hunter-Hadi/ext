@@ -67,7 +67,8 @@
     "terms_of_service": "சேவை விதிமுறைகள்",
     "shortcut": "குறுக்கீடு",
     "yearly": "வாருங்கள்",
-    "monthly": "மாதியாக"
+    "monthly": "மாதியாக",
+    "continue_in_contextmenu": "எப்போதும் உள்ளடக்கத்தில் தொடருங்கள்"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "அனைத்து AI மாதிரிகளையும் விரிவாக்கவும்",
     "pricing__upgrade__popper_card__item3__title": "அனைத்து அம்சங்களையும் விரிவாக்கவும்",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o மட்டும். மற்ற அனைத்து AI மாதிரிகளையும் திறந்துவிட மேலும் மேக்ஸ்ஐ எலைட் திட்டத்தில் மேம்படுத்தவும்.",
-    "pricing__upgrade__popper_card__item4__title": "உங்கள் பணத்திற்கு சிறந்த மதிப்பு"
+    "pricing__upgrade__popper_card__item4__title": "உங்கள் பணத்திற்கு சிறந்த மதிப்பு",
+    "floating_menu__button__show_detail": "விவரங்களைக் காட்டு",
+    "floating_menu__textarea__placeholder": "உங்கள் உரையை இங்கே தட்டச்சு செய்யவும் அல்லது ஒருவர் ஐஐயை மேம்படுத்த, சரிசெய்ய, மொழிபெயர்க்க, சுருக்கமாக்க, மற்றும் அதேபோலவே கேட்கவும்.",
+    "floating_menu__always_pin_sidebar_title": "எப்போதும் பின்வரும் பக்கத்தில் கொண்டுவர",
+    "floating_menu__always_continue_sidebar_title": "எப்போதும் பக்கத்தில் தொடருங்கள்",
+    "sidebar__tabs__rewrite__title": "மீளமை",
+    "sidebar__tabs__rewrite__tooltip": "ஐஐயில் மீளமை",
+    "home_view__rewrite__title": "ஐஐ மீளமையாளர்",
+    "home_view__rewrite__description": "உங்கள் வார்த்தைகளை சரிசெய்யும் மற்றும் அவற்றை முழுமையாக செய்யும் நேரம் சேமிக்கவும்.",
+    "context_window__chat_history__continue_in_rewrite__title": "மீளமையில் தொடருங்கள்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

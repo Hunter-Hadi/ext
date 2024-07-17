@@ -67,7 +67,8 @@
     "terms_of_service": "خدمات کی شرائط",
     "shortcut": "شارٹ کٹ",
     "yearly": "سالانہ",
-    "monthly": "ماہانہ"
+    "monthly": "ماہانہ",
+    "continue_in_contextmenu": "ہمیشہ کنٹیکسٹ مینو میں جاری رکھیں"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "تمام AI ماڈلز کھولیں",
     "pricing__upgrade__popper_card__item3__title": "تمام خصوصیات کھولیں",
     "pricing__plan_features__pro__feature1__item2__subtitle": "صرف GPT-4o۔ تمام دیگر AI ماڈلز کو آن لاک کرنے کے لئے MaxAI ایلیٹ منصوبہ اپ گریڈ کریں۔",
-    "pricing__upgrade__popper_card__item4__title": "آپ کے پیسے کی بہترین قیمت"
+    "pricing__upgrade__popper_card__item4__title": "آپ کے پیسے کی بہترین قیمت",
+    "floating_menu__button__show_detail": "تفصیل دکھائیں",
+    "floating_menu__textarea__placeholder": "یہاں اپنا متن ٹائپ یا پیسٹ کریں اور AI سے بہتر بنانے، ثبوت دینے، ترجمہ کرنے، خلاصہ کرنے اور مزید کام کرنے کے لئے کہیں۔",
+    "floating_menu__always_pin_sidebar_title": "ہمیشہ سائڈبار میں پن کریں",
+    "floating_menu__always_continue_sidebar_title": "ہمیشہ سائڈبار میں جاری رکھیں",
+    "sidebar__tabs__rewrite__title": "دوبارہ لکھیں",
+    "sidebar__tabs__rewrite__tooltip": "AI میں دوبارہ لکھیں",
+    "home_view__rewrite__title": "AI دوبارہ لکھنے والا",
+    "home_view__rewrite__description": "پروف ریڈنگ اور اپنے الفاظ کو مکمل کرنے میں وقت بچائیں۔",
+    "context_window__chat_history__continue_in_rewrite__title": "دوبارہ لکھنے میں جاری رکھیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

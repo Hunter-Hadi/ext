@@ -67,7 +67,8 @@
     "terms_of_service": "서비스 약관",
     "shortcut": "바로 가기",
     "yearly": "매년",
-    "monthly": "매월"
+    "monthly": "매월",
+    "continue_in_contextmenu": "항상 컨텍스트 메뉴에서 계속"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "모든 AI 모델 잠금 해제",
     "pricing__upgrade__popper_card__item3__title": "모든 기능 잠금 해제",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o 만 가능. 다른 모든 AI 모델을 잠금 해제하려면 MaxAI 엘리트 플랜으로 업그레이드하세요.",
-    "pricing__upgrade__popper_card__item4__title": "귀하의 돈 가치 최상의 선택"
+    "pricing__upgrade__popper_card__item4__title": "귀하의 돈 가치 최상의 선택",
+    "floating_menu__button__show_detail": "세부 정보 표시",
+    "floating_menu__textarea__placeholder": "여기에 텍스트를 입력하거나 붙여넣고 AI에게 개선, 교정, 번역, 요약 등을 요청하세요.",
+    "floating_menu__always_pin_sidebar_title": "항상 사이드바에 고정",
+    "floating_menu__always_continue_sidebar_title": "항상 사이드바에서 계속",
+    "sidebar__tabs__rewrite__title": "다시 쓰기",
+    "sidebar__tabs__rewrite__tooltip": "AI로 다시 쓰기",
+    "home_view__rewrite__title": "AI 리라이터",
+    "home_view__rewrite__description": "글의 교정과 완벽화에 시간을 절약하세요.",
+    "context_window__chat_history__continue_in_rewrite__title": "다시 쓰기에서 계속"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

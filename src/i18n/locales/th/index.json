@@ -67,7 +67,8 @@
     "terms_of_service": "เงื่อนไขการให้บริการ",
     "shortcut": "ทางลัด",
     "yearly": "รายปี",
-    "monthly": "รายเดือน"
+    "monthly": "รายเดือน",
+    "continue_in_contextmenu": "เริ่มต้นในเมนูบริบทเสมอ"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "ปลดล็อคโมเดล AI ทั้งหมด",
     "pricing__upgrade__popper_card__item3__title": "ปลดล็อคคุณสมบัติทั้งหมด",
     "pricing__plan_features__pro__feature1__item2__subtitle": "เฉพาะ GPT-4o เท่านั้น หากต้องการปลดล็อก AI models ทั้งหมด อัพเกรดเป็น MaxAI Elite plan",
-    "pricing__upgrade__popper_card__item4__title": "มีค่าที่สุดสำหรับเงินของคุณ"
+    "pricing__upgrade__popper_card__item4__title": "มีค่าที่สุดสำหรับเงินของคุณ",
+    "floating_menu__button__show_detail": "แสดงรายละเอียด",
+    "floating_menu__textarea__placeholder": "พิมพ์หรือวางข้อความของคุณที่นี่และขอ AI ช่วยปรับปรุง ตรวจสอบ แปลเพิ่มเติม",
+    "floating_menu__always_pin_sidebar_title": "ติดตลาดไว้ในแถบด้านข้างเสมอ",
+    "floating_menu__always_continue_sidebar_title": "เริ่มต้นในแถบด้านข้างเสมอ",
+    "sidebar__tabs__rewrite__title": "เขียนใหม่",
+    "sidebar__tabs__rewrite__tooltip": "เขียนใหม่ด้วย AI",
+    "home_view__rewrite__title": "AI เขียนใหม่",
+    "home_view__rewrite__description": "ประหยัดเวลาในการตรวจสอบและปรับปรุงคำของคุณ",
+    "context_window__chat_history__continue_in_rewrite__title": "เริ่มต้นในการเขียนใหม่"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

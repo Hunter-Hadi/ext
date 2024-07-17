@@ -67,7 +67,8 @@
     "terms_of_service": "Termes del servei",
     "shortcut": "Drecera",
     "yearly": "Anual",
-    "monthly": "Mensual"
+    "monthly": "Mensual",
+    "continue_in_contextmenu": "Continua sempre al menú contextual"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Desbloqueja tots els models d'IA",
     "pricing__upgrade__popper_card__item3__title": "Desbloqueja totes les funcionalitats",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Només GPT-4o. Per desbloquejar tots els altres models d'IA, actualitza al pla MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Millor valor pel teu diner"
+    "pricing__upgrade__popper_card__item4__title": "Millor valor pel teu diner",
+    "floating_menu__button__show_detail": "Mostra detalls",
+    "floating_menu__textarea__placeholder": "Escriu o enganxa el teu text aquí i demana a l'IA que millori, corregeixi, tradueixi, resumisca i més.",
+    "floating_menu__always_pin_sidebar_title": "Sempre fixa a la barra lateral",
+    "floating_menu__always_continue_sidebar_title": "Continua sempre a la barra lateral",
+    "sidebar__tabs__rewrite__title": "Reescriu",
+    "sidebar__tabs__rewrite__tooltip": "Reescriu amb IA",
+    "home_view__rewrite__title": "Reescriptor d'IA",
+    "home_view__rewrite__description": "Estalvia temps en correccions i perfeccionament de les teves paraules.",
+    "context_window__chat_history__continue_in_rewrite__title": "Continua a la reescriptura"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

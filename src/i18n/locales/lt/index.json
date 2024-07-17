@@ -67,7 +67,8 @@
     "terms_of_service": "Paslaugų teikimo sąlygos",
     "shortcut": "Trumpikas kelias",
     "yearly": "Kasmetinis",
-    "monthly": "Mėnesinis"
+    "monthly": "Mėnesinis",
+    "continue_in_contextmenu": "Visada tęsti kontekstinėje sąsajoje"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Atrakinti visus AI modelius",
     "pricing__upgrade__popper_card__item3__title": "Atrakinti visus funkcionalumus",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tik GPT-4o. Norėdami atrakinti visus kitus dirbtinio intelekto modelius, atnaujinkite iki MaxAI Elite plano.",
-    "pricing__upgrade__popper_card__item4__title": "Geriausia vertė už jūsų pinigus"
+    "pricing__upgrade__popper_card__item4__title": "Geriausia vertė už jūsų pinigus",
+    "floating_menu__button__show_detail": "Rodyti detalę",
+    "floating_menu__textarea__placeholder": "Įveskite ar įklijuokite savo tekstą čia ir paprašykite, kad dirbtinis intelektas jį pagerintų, ištaisytų, išverstų, suvestų įvairias išvadas ir kt.",
+    "floating_menu__always_pin_sidebar_title": "Visada prisegti prie šoninės juostos",
+    "floating_menu__always_continue_sidebar_title": "Visada tęsti šoninėje juostoje",
+    "sidebar__tabs__rewrite__title": "Perkurti",
+    "sidebar__tabs__rewrite__tooltip": "Perkurti naudojant dirbtinį intelektą",
+    "home_view__rewrite__title": "AI perkūrėjas",
+    "home_view__rewrite__description": "Sutaupykite laiko redaguodami ir tobulindami savo žodžius.",
+    "context_window__chat_history__continue_in_rewrite__title": "Tęsti perkūrime"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

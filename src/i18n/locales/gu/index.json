@@ -67,7 +67,8 @@
     "terms_of_service": "સેવાઓની શરતો",
     "shortcut": "શોર્ટકટ",
     "yearly": "વાર્ષિક",
-    "monthly": "માસિક"
+    "monthly": "માસિક",
+    "continue_in_contextmenu": "હંમેશા સંદર્ભ મેનૂમાં ચાલુ રાખો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "બધા AI મોડલ્સ ખોલો",
     "pricing__upgrade__popper_card__item3__title": "બધા વ્યાવસાયિકતા ખોલો",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o માત્ર. બાકી બધા AI મોડેલ્સ અનલૉક કરવા માટે, મેક્સએઆઈ એલાઇટ પ્લાન પર અપગ્રેડ કરો.",
-    "pricing__upgrade__popper_card__item4__title": "તમારા પૈસાનું શ્રેષ્ઠ મૂલ્ય"
+    "pricing__upgrade__popper_card__item4__title": "તમારા પૈસાનું શ્રેષ્ઠ મૂલ્ય",
+    "floating_menu__button__show_detail": "વિગતો બતાવો",
+    "floating_menu__textarea__placeholder": "તમારો લખાણ અથવા પેસ્ટ કરો અને AIને સુધારવા, પ્રૂફરીડ, અનુવાદ કરવા, સારાંશ કરવા માટે અહીં ટાઈપ કરો.",
+    "floating_menu__always_pin_sidebar_title": "હંમેશા સાઇડબારમાં પિન કરો",
+    "floating_menu__always_continue_sidebar_title": "હંમેશા સાઇડબારમાં ચાલુ રાખો",
+    "sidebar__tabs__rewrite__title": "રિવ્રાઇટ",
+    "sidebar__tabs__rewrite__tooltip": "AIમાં રિવ્રાઇટ કરો",
+    "home_view__rewrite__title": "AI રિવ્રાઇટર",
+    "home_view__rewrite__description": "તમારા શબ્દોને પ્રૂફરીડ અને પરફેક્ટ કરવામાં સમય બચાવો.",
+    "context_window__chat_history__continue_in_rewrite__title": "રિવ્રાઇટમાં ચાલુ રાખો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

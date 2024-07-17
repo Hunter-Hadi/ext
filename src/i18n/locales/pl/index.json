@@ -67,7 +67,8 @@
     "terms_of_service": "Warunki korzystania",
     "shortcut": "Skrót",
     "yearly": "Rocznie",
-    "monthly": "Miesięcznie"
+    "monthly": "Miesięcznie",
+    "continue_in_contextmenu": "Zawsze kontynuuj w menu kontekstowym"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Odblokuj wszystkie modele AI",
     "pricing__upgrade__popper_card__item3__title": "Odblokuj wszystkie funkcje",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tylko GPT-4o. Aby odblokować wszystkie inne modele AI, przejdź na plan MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Najlepsza wartość za Twoje pieniądze"
+    "pricing__upgrade__popper_card__item4__title": "Najlepsza wartość za Twoje pieniądze",
+    "floating_menu__button__show_detail": "Pokaż szczegóły",
+    "floating_menu__textarea__placeholder": "Wpisz lub wklej tutaj swój tekst i poproś AI o poprawę, korektę, tłumaczenie, streszczenie i więcej.",
+    "floating_menu__always_pin_sidebar_title": "Zawsze przypnij do paska bocznego",
+    "floating_menu__always_continue_sidebar_title": "Zawsze kontynuuj w pasku bocznym",
+    "sidebar__tabs__rewrite__title": "Przepisz",
+    "sidebar__tabs__rewrite__tooltip": "Przepisz w AI",
+    "home_view__rewrite__title": "Przepisywacz AI",
+    "home_view__rewrite__description": "Oszczędź czas na korekcie i doskonaleniu swoich słów.",
+    "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisywaniu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

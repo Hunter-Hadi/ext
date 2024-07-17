@@ -67,7 +67,8 @@
     "terms_of_service": "सेवा की शर्तें",
     "shortcut": "शॉर्टकट",
     "yearly": "वार्षिक",
-    "monthly": "मासिक"
+    "monthly": "मासिक",
+    "continue_in_contextmenu": "हमेशा संदर्भ मेनू में जारी रखें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "सभी एआई मॉडल अनलॉक करें",
     "pricing__upgrade__popper_card__item3__title": "सभी विशेषताएँ अनलॉक करें",
     "pricing__plan_features__pro__feature1__item2__subtitle": "केवल GPT-4o। सभी अन्य AI मॉडल्स को अनलॉक करने के लिए MaxAI इलाइट प्लान पर अपग्रेड करें।",
-    "pricing__upgrade__popper_card__item4__title": "आपके पैसे के लिए सर्वोत्तम मूल्य"
+    "pricing__upgrade__popper_card__item4__title": "आपके पैसे के लिए सर्वोत्तम मूल्य",
+    "floating_menu__button__show_detail": "विवरण दिखाएं",
+    "floating_menu__textarea__placeholder": "यहाँ अपना पाठ लिखें या पेस्ट करें और AI से सुधार, प्रूफरीड, अनुवाद, सारांश और अधिक के लिए पूछें।",
+    "floating_menu__always_pin_sidebar_title": "साइडबार में हमेशा पिन करें",
+    "floating_menu__always_continue_sidebar_title": "साइडबार में हमेशा जारी रखें",
+    "sidebar__tabs__rewrite__title": "पुनर्लेखन",
+    "sidebar__tabs__rewrite__tooltip": "AI में पुनर्लेखन",
+    "home_view__rewrite__title": "AI पुनरलेखक",
+    "home_view__rewrite__description": "प्रूफरीडिंग और अपने शब्दों को सही करने में समय बचाएं।",
+    "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखन में जारी रखें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

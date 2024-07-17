@@ -67,7 +67,8 @@
     "terms_of_service": "Условия использования",
     "shortcut": "Ярлык",
     "yearly": "Ежегодно",
-    "monthly": "Ежемесячно"
+    "monthly": "Ежемесячно",
+    "continue_in_contextmenu": "Всегда продолжать в контекстном меню"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -1009,7 +1010,16 @@
     "pricing__upgrade__popper_card__item2__title": "Разблокировать все модели ИИ",
     "pricing__upgrade__popper_card__item3__title": "Разблокировать все функции",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Только GPT-4o. Чтобы разблокировать все другие модели искусственного интеллекта, перейдите на план MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Лучшее предложение за ваши деньги"
+    "pricing__upgrade__popper_card__item4__title": "Лучшее предложение за ваши деньги",
+    "floating_menu__button__show_detail": "Показать детали",
+    "floating_menu__textarea__placeholder": "Введите или вставьте свой текст здесь и попросите ИИ улучшить, проверить правильность, перевести, суммировать и многое другое.",
+    "floating_menu__always_pin_sidebar_title": "Всегда закреплять на боковой панели",
+    "floating_menu__always_continue_sidebar_title": "Всегда продолжать на боковой панели",
+    "sidebar__tabs__rewrite__title": "Переписать",
+    "sidebar__tabs__rewrite__tooltip": "Переписать в ИИ",
+    "home_view__rewrite__title": "Переписыватель ИИ",
+    "home_view__rewrite__description": "Экономьте время на проверке и совершенствовании своих слов.",
+    "context_window__chat_history__continue_in_rewrite__title": "Продолжить в переписывании"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

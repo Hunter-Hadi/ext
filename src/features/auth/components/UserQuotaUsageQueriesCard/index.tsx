@@ -98,31 +98,28 @@ const UserQuotaUsageQueriesCard = () => {
                   })}{' '}
                   {isTeamPlanUser ? `(${t('common:team_plan')})` : ''}
                 </Typography>
-                {isPayingUser ? (
-                  // 暂时只有付费用户能看到刷新按钮
-                  <IconButton
-                    size='small'
-                    sx={{
-                      p: '4px',
-                      color: 'primary.main',
-                    }}
-                    onClick={() => {
-                      syncUserInfo(true)
-                      syncUserQuotaUsageInfo()
-                    }}
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <CircularProgress size={20} />
-                    ) : (
-                      <RefreshOutlinedIcon
-                        sx={{
-                          fontSize: 20,
-                        }}
-                      />
-                    )}
-                  </IconButton>
-                ) : null}
+                <IconButton
+                  size='small'
+                  sx={{
+                    p: '4px',
+                    color: 'primary.main',
+                  }}
+                  onClick={() => {
+                    syncUserInfo(true)
+                    syncUserQuotaUsageInfo()
+                  }}
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <CircularProgress size={20} />
+                  ) : (
+                    <RefreshOutlinedIcon
+                      sx={{
+                        fontSize: 20,
+                      }}
+                    />
+                  )}
+                </IconButton>
               </Stack>
             }
           />

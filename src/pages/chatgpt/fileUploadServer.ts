@@ -1,6 +1,6 @@
 // 保存原始的 fetch 方法的引用
 import { CHATGPT_WEBAPP_HOST } from '@/constants'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 const MAX_AI_CHAT_GPT_MESSAGE_KEY = 'MAX_AI_CHAT_GPT_MESSAGE_KEY'
 let maxAIChatGPTBlockNextRequest = false

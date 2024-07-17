@@ -59,7 +59,7 @@ const BingConversationStyleSelector: FC = () => {
   })
   return (
     <FormControl
-      size="small"
+      size='small'
       sx={{
         height: 40,
       }}

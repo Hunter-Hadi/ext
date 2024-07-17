@@ -106,7 +106,7 @@ const PageTranslateAdvancedButton: FC<IPageTranslateAdvancedButtonProps> = ({
       <Popover
         open={open}
         anchorEl={anchorEl}
-        id="mouse-over-popover"
+        id='mouse-over-popover'
         anchorOrigin={{
           vertical: 'center',
           horizontal: 'left',
@@ -124,11 +124,13 @@ const PageTranslateAdvancedButton: FC<IPageTranslateAdvancedButtonProps> = ({
       >
         <ClickAwayListener
           onClickAway={(event) => {
-            const MaxAIAIPageTranslateAdvancedCard = getAppMinimizeContainerElement()?.querySelector(
-              '#MaxAIAIPageTranslateAdvancedCard',
-            ) as HTMLElement
+            const MaxAIAIPageTranslateAdvancedCard =
+              getAppMinimizeContainerElement()?.querySelector(
+                '#MaxAIAIPageTranslateAdvancedCard',
+              ) as HTMLElement
             if (MaxAIAIPageTranslateAdvancedCard) {
-              const rect = MaxAIAIPageTranslateAdvancedCard.getBoundingClientRect()
+              const rect =
+                MaxAIAIPageTranslateAdvancedCard.getBoundingClientRect()
               const x = (event as MouseEvent).clientX
               const y = (event as MouseEvent).clientY
               if (
@@ -163,10 +165,10 @@ const PageTranslateAdvancedButton: FC<IPageTranslateAdvancedButtonProps> = ({
                 </Typography>
                 <Stack
                   direction={'row'}
-                  alignItems="center"
-                  justifyContent="space-between"
+                  alignItems='center'
+                  justifyContent='space-between'
                 >
-                  <Typography fontSize={14} color="text.secondary">
+                  <Typography fontSize={14} color='text.secondary'>
                     {t(
                       'client:translation_advanced__source_lang_select__label',
                     )}
@@ -208,10 +210,10 @@ const PageTranslateAdvancedButton: FC<IPageTranslateAdvancedButtonProps> = ({
                 </Stack>
                 <Stack
                   direction={'row'}
-                  alignItems="center"
-                  justifyContent="space-between"
+                  alignItems='center'
+                  justifyContent='space-between'
                 >
-                  <Typography fontSize={14} color="text.secondary">
+                  <Typography fontSize={14} color='text.secondary'>
                     {t(
                       'client:translation_advanced__target_lang_select__label',
                     )}

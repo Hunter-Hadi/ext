@@ -17,7 +17,7 @@ const ThirdPartyAIProviderErrorSolution = () => {
   return (
     <Stack spacing={2}>
       <Divider />
-      <Stack direction={'row'} spacing={1} alignItems="center">
+      <Stack direction={'row'} spacing={1} alignItems='center'>
         <WarningAmberOutlinedIcon
           sx={{
             color: 'rgba(219, 68, 55, 1)',

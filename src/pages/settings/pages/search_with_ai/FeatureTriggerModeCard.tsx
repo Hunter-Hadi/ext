@@ -13,10 +13,8 @@ import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCa
 
 const FeatureTriggerModeCard: FC = () => {
   const { t } = useTranslation('settings')
-  const {
-    searchWithAISettings,
-    setSearchWithAISettings,
-  } = useSearchWithAISettings()
+  const { searchWithAISettings, setSearchWithAISettings } =
+    useSearchWithAISettings()
 
   return (
     <SettingsFeatureCardLayout
@@ -24,7 +22,7 @@ const FeatureTriggerModeCard: FC = () => {
       id={'trigger-mode'}
     >
       <RadioGroup
-        aria-labelledby="demo-radio-buttons-group-label"
+        aria-labelledby='demo-radio-buttons-group-label'
         value={searchWithAISettings.triggerMode}
         onChange={(event) => {
           const value = event.target
@@ -46,13 +44,13 @@ const FeatureTriggerModeCard: FC = () => {
               label={
                 <Stack>
                   <Typography
-                    variant="body1"
-                    color="text.primary"
+                    variant='body1'
+                    color='text.primary'
                     fontWeight={600}
                   >
                     {t(option.name)}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant='body2' color='text.secondary'>
                     {t(option.desc)}
                   </Typography>
                 </Stack>

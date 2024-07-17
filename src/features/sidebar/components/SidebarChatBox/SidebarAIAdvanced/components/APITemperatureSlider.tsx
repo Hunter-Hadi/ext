@@ -54,7 +54,7 @@ const APITemperatureSlider: FC<{
         },
       }}
     >
-      <InputLabel id="max-ai__ai-provider-temperature-select-label">
+      <InputLabel id='max-ai__ai-provider-temperature-select-label'>
         {`${t('client:provider__temperature__label')}: ${
           currentThirdProviderSettings.temperature
         }`}
@@ -70,7 +70,7 @@ const APITemperatureSlider: FC<{
           },
         }}
         open={false}
-        id="max-ai__ai-provider-temperature-select-label"
+        id='max-ai__ai-provider-temperature-select-label'
         value={temperature}
         label={`${t('client:provider__temperature__label')}: ${temperature}`}
         renderValue={(value) => {

@@ -131,14 +131,12 @@ const SystemVariableLanguageSelect: FC<SystemVariableSelectProps> = (props) => {
     placeholder,
     sx,
   } = props
-  const [value, setValue] = useState<{ label: string; value: string }>(
-    () => {
-      return (
-        LANGUAGES_OPTIONS.find((option) => option.value === defaultValue) ||
-        LANGUAGES_OPTIONS[0]
-      )
-    },
-  )
+  const [value, setValue] = useState<{ label: string; value: string }>(() => {
+    return (
+      LANGUAGES_OPTIONS.find((option) => option.value === defaultValue) ||
+      LANGUAGES_OPTIONS[0]
+    )
+  })
 
   return (
     <Autocomplete
@@ -161,13 +159,13 @@ const SystemVariableLanguageSelect: FC<SystemVariableSelectProps> = (props) => {
         },
         [`.${inputBaseClasses.root}`]: {
           fontSize: 16,
-          paddingRight: '28px!important'
+          paddingRight: '28px!important',
         },
         [`.${inputBaseClasses.root} fieldset > legend`]: {
           fontSize: 14,
         },
         [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]: {
-          fontSize: 24
+          fontSize: 24,
         },
         ...sx,
       }}
@@ -176,7 +174,7 @@ const SystemVariableLanguageSelect: FC<SystemVariableSelectProps> = (props) => {
           sx: {
             fontSize: 16,
           },
-        }
+        },
       }}
       autoHighlight
       getOptionLabel={(option) => option.label}

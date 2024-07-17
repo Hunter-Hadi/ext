@@ -3,7 +3,11 @@ import { useEffect, useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
-import { AuthUserInfoState, UserQuotaUsageState } from '@/features/auth/store'
+import {
+  AuthUserInfoState,
+  UserFeatureQuotaState,
+  UserQuotaUsageState,
+} from '@/features/auth/store'
 import { IUserQuotaUsageInfo } from '@/features/auth/types'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
@@ -19,10 +23,12 @@ const log = new Log('Features/Auth/UseChatGPTPlusChat')
 const useInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
   const setUserQuotaUsageInfo = useSetRecoilState(UserQuotaUsageState)
+  const setUserFeatureQuotaInfo = useSetRecoilState(UserFeatureQuotaState)
   const { clientConversationMessages, currentConversationIdRef } =
     useClientConversation()
   const needPushUpgradeMessage = useRef(false)
   const upgradeTextRef = useRef('')
+
   const syncUserInfo = async (forceUpdate = false) => {
     let hasError = false
     try {
@@ -64,6 +70,7 @@ const useInitUserInfo = (isInit = true) => {
       })
     }
   }
+
   const syncUserSubscriptionInfo = async () => {
     try {
       setUserInfo((prevState) => {
@@ -213,6 +220,47 @@ const useInitUserInfo = (isInit = true) => {
     }
   }
 
+  const syncUserFeatureQuotaInfo = async (forceUpdate?: boolean) => {
+    try {
+      setUserFeatureQuotaInfo((prevState) => {
+        return {
+          ...prevState,
+          loading: true,
+        }
+      })
+      const result = await port.postMessage({
+        event: 'Client_getUserFeatureQuotaInfo',
+        data: {
+          forceUpdate,
+        },
+      })
+      if (result && result.data) {
+        setUserFeatureQuotaInfo({
+          loading: false,
+          ...result.data,
+        })
+        return true
+      } else {
+        setUserFeatureQuotaInfo((prevState) => {
+          return {
+            ...prevState,
+            loading: false,
+          }
+        })
+        return false
+      }
+    } catch (e) {
+      log.error(e)
+      setUserFeatureQuotaInfo((prevState) => {
+        return {
+          ...prevState,
+          loading: false,
+        }
+      })
+      return false
+    }
+  }
+
   const isPushUpgradeMessageRef = useRef(false)
   useEffect(() => {
     if (
@@ -253,11 +301,13 @@ const useInitUserInfo = (isInit = true) => {
   useEffectOnce(() => {
     if (isInit) {
       syncUserInfo()
+      syncUserFeatureQuotaInfo()
     }
   })
   useFocus(() => {
     if (isInit) {
       syncUserInfo()
+      syncUserFeatureQuotaInfo()
     }
   })
   return {
@@ -265,6 +315,7 @@ const useInitUserInfo = (isInit = true) => {
     syncUserInfo,
     syncUserSubscriptionInfo,
     syncUserQuotaUsageInfo,
+    syncUserFeatureQuotaInfo,
   }
 }
 export default useInitUserInfo

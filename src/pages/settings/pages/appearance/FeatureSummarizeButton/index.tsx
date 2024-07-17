@@ -41,7 +41,8 @@ const FeatureSummarizeButton: FC = () => {
         {userSettings?.summarizeButton &&
           Object.keys(userSettings.summarizeButton).map(
             (summarizeButtonKey) => {
-              const currentKey = summarizeButtonKey as keyof typeof userSettings.summarizeButton
+              const currentKey =
+                summarizeButtonKey as keyof typeof userSettings.summarizeButton
               return (
                 <Stack spacing={1} key={summarizeButtonKey}>
                   <Typography

@@ -93,7 +93,7 @@ const SyncSettingCheckerWrapper: FC<{
             mx: 'auto!important',
           }}
         >
-          <Alert severity="error">
+          <Alert severity='error'>
             Something went wrong when syncing your online account settings.
             Please try again by refreshing the page.
           </Alert>
@@ -118,7 +118,7 @@ const SyncSettingCheckerWrapper: FC<{
             mx: 'auto!important',
           }}
         >
-          <Alert severity="error">
+          <Alert severity='error'>
             {t('settings:sync__different_settings__description')}
           </Alert>
           <Stack alignItems={'center'} spacing={2}>
@@ -174,10 +174,10 @@ const SyncSettingCheckerWrapper: FC<{
         open={isChecking}
       >
         <Stack alignItems={'center'} spacing={2}>
-          <CircularProgress size={16} color="inherit" />
+          <CircularProgress size={16} color='inherit' />
           <Typography
             mt={1.5}
-            variant="body2"
+            variant='body2'
             fontWeight={400}
             fontSize={16}
             lineHeight={1.25}

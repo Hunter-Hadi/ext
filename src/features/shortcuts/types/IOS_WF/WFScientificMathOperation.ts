@@ -1,5 +1,5 @@
-type WFScientificMathOperation = (
-  'Modulus'
+type WFScientificMathOperation =
+  | 'Modulus'
   | 'x^2'
   | 'x^3'
   | 'x^y'
@@ -14,6 +14,5 @@ type WFScientificMathOperation = (
   | 'cos(x)'
   | 'tan(x)'
   | 'abs(x)'
-);
 
-export default WFScientificMathOperation;
+export default WFScientificMathOperation

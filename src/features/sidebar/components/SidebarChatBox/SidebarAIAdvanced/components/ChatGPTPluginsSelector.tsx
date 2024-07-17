@@ -73,7 +73,7 @@ const ChatGPTPluginsSelector: FC = () => {
   return (
     <>
       {plugins.length > 0 ? (
-        <FormControl size="small" sx={{ height: 40, maxWidth: 400 }} fullWidth>
+        <FormControl size='small' sx={{ height: 40, maxWidth: 400 }} fullWidth>
           <InputLabel
             sx={{ fontSize: '16px' }}
             id={'ChatGPTPluginsSelectorLabel'}

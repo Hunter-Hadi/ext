@@ -280,7 +280,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
             }}
           >
             <UploadButton
-              accept=".pdf"
+              accept='.pdf'
               onChange={handleUploadFile}
               variant={'contained'}
               sx={{
@@ -385,7 +385,7 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
           position: 'relative',
           zIndex: 1301,
         }}
-        aria-haspopup="true"
+        aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         disableElevation
         startIcon={<ContextMenuIcon icon={'PDF'} />}
@@ -520,7 +520,7 @@ const MaxAIPDFAIViewerShareButton: FC = () => {
             height: 20,
             backgroundColor: 'rgba(0, 0, 0, 0.3)',
           }}
-          component="div"
+          component='div'
         />
       </DynamicComponent>
       <DynamicComponent
@@ -555,7 +555,7 @@ const MaxAIPDFAIViewerShareButton: FC = () => {
               },
             } as any
           }
-          size="small"
+          size='small'
         />
       </DynamicComponent>
     </>

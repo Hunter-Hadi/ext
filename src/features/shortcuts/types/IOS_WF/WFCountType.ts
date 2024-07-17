@@ -1,9 +1,3 @@
-type WFCountType = (
-  'Items'
-  | 'Characters'
-  | 'Words'
-  | 'Sentences'
-  | 'Lines'
-);
+type WFCountType = 'Items' | 'Characters' | 'Words' | 'Sentences' | 'Lines'
 
-export default WFCountType;
+export default WFCountType

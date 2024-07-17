@@ -19,9 +19,8 @@ const FavoriteContextMenuGroup: FC<{
 }> = (props) => {
   const { buttonSettingKey, placement, onClick } = props
   const { t } = useTranslation(['common', 'client', 'prompt'])
-  const { favoriteContextMenuList } = useFavoriteContextMenuList(
-    buttonSettingKey,
-  )
+  const { favoriteContextMenuList } =
+    useFavoriteContextMenuList(buttonSettingKey)
   return (
     <Stack
       direction={'row'}

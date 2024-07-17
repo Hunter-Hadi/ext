@@ -51,6 +51,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_getUseChatGPTUserInfo'
   | 'Client_getUseChatGPTUserSubscriptionInfo'
   | 'Client_getMaxAIUserQuotaUsageInfo'
+  | 'Client_getUserFeatureQuotaInfo'
   | 'Client_createAsyncTask'
   | 'Client_updateTabVisible'
   | 'Client_updateIframeInput'

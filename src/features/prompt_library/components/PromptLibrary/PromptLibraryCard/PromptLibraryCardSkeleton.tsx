@@ -38,7 +38,7 @@ const PromptLibraryCardSkeleton: FC<{
         }
       }}
     >
-      <Stack direction="row" spacing={1.5} justifyContent="space-between">
+      <Stack direction='row' spacing={1.5} justifyContent='space-between'>
         <Skeleton
           variant={'rectangular'}
           width={0}
@@ -48,7 +48,7 @@ const PromptLibraryCardSkeleton: FC<{
             flex: 1,
           }}
         />
-        <Stack direction="row" fontSize={16} height="max-content" spacing={0.5}>
+        <Stack direction='row' fontSize={16} height='max-content' spacing={0.5}>
           {actionKeys.map((action) => {
             return (
               <Skeleton

@@ -1,6 +1,3 @@
-type WFEncodeMode = (
-  'Encode'
-  | 'Decode'
-);
+type WFEncodeMode = 'Encode' | 'Decode'
 
-export default WFEncodeMode;
+export default WFEncodeMode

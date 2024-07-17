@@ -21,7 +21,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
-import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
 
 const ThirdPartyAIProvidersOptions = list2Options(
@@ -119,7 +119,7 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
         ...sx,
       }}
     >
-      <Stack direction={'row'} spacing={1} alignItems="center">
+      <Stack direction={'row'} spacing={1} alignItems='center'>
         <AIChipIcon
           sx={{
             color: '#0FA47F',

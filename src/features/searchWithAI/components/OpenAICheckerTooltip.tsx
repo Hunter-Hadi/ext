@@ -14,9 +14,9 @@ const OpenAICheckerTooltip = () => {
 
   return (
     <Stack spacing={1} py={0.5}>
-      <Stack direction="row" spacing={1} alignItems="center">
+      <Stack direction='row' spacing={1} alignItems='center'>
         <SearchWIthAIProviderIcon
-          aiProviderType="OPENAI_API"
+          aiProviderType='OPENAI_API'
           isActive
           size={20}
           sx={{
@@ -49,7 +49,7 @@ const OpenAICheckerTooltip = () => {
         )}
       </Typography>
       <Button
-        variant="contained"
+        variant='contained'
         sx={{
           fontSize: '14px',
           fontWeight: 400,

@@ -303,7 +303,7 @@ const SettingPromptsContextMenuCard: FC = () => {
       <Stack
         height={0}
         flex={1}
-      // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
       >
         <Stack height={'100%'}>
           <DevContent>

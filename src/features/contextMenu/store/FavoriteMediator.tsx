@@ -53,11 +53,9 @@ export const setFavoriteContextMenuCapacity = async (capacity: number) => {
 /**
  * 获取全部网站的收藏菜单
  */
-export const getFavoriteContextMenuFromLocalStorage = async (): Promise<
-  {
-    [key in string]: [IContextMenuItem, number[]][]
-  }
-> => {
+export const getFavoriteContextMenuFromLocalStorage = async (): Promise<{
+  [key in string]: [IContextMenuItem, number[]][]
+}> => {
   try {
     const localStorageData = await Browser.storage.local.get(
       FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY,
@@ -76,11 +74,9 @@ export const getFavoriteContextMenuFromLocalStorage = async (): Promise<
  * 设置全部网站的收藏菜单
  * @param cache
  */
-export const setFavoriteContextMenuToLocalStorage = async (
-  cache: {
-    [key in string]: [IContextMenuItem, number[]][]
-  },
-) => {
+export const setFavoriteContextMenuToLocalStorage = async (cache: {
+  [key in string]: [IContextMenuItem, number[]][]
+}) => {
   try {
     await Browser.storage.local.set({
       [FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY]: JSON.stringify(cache),
@@ -308,20 +304,18 @@ class FavoriteMediatorFactory {
     IChromeExtensionButtonSettingKey,
     FavoriteMediator
   > = {
-      textSelectPopupButton: new FavoriteMediator('textSelectPopupButton'),
-      inputAssistantComposeNewButton: new FavoriteMediator(
-        'inputAssistantComposeNewButton',
-      ),
-      inputAssistantComposeReplyButton: new FavoriteMediator(
-        'inputAssistantComposeReplyButton',
-      ),
-      inputAssistantRefineDraftButton: new FavoriteMediator(
-        'inputAssistantRefineDraftButton',
-      ),
-      sidebarSummaryButton: new FavoriteMediator(
-        'sidebarSummaryButton',
-      ),
-    }
+    textSelectPopupButton: new FavoriteMediator('textSelectPopupButton'),
+    inputAssistantComposeNewButton: new FavoriteMediator(
+      'inputAssistantComposeNewButton',
+    ),
+    inputAssistantComposeReplyButton: new FavoriteMediator(
+      'inputAssistantComposeReplyButton',
+    ),
+    inputAssistantRefineDraftButton: new FavoriteMediator(
+      'inputAssistantRefineDraftButton',
+    ),
+    sidebarSummaryButton: new FavoriteMediator('sidebarSummaryButton'),
+  }
   public static getMediator(
     mediatorName: IChromeExtensionButtonSettingKey,
   ): FavoriteMediator {

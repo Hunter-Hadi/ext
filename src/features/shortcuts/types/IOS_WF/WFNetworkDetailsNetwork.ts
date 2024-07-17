@@ -1,6 +1,3 @@
-type WFNetworkDetailsNetwork = (
-  'Wi-Fi'
-  | 'Cellular'
-);
+type WFNetworkDetailsNetwork = 'Wi-Fi' | 'Cellular'
 
-export default WFNetworkDetailsNetwork;
+export default WFNetworkDetailsNetwork

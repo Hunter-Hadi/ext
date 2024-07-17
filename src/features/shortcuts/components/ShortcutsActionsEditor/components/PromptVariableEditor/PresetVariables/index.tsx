@@ -48,33 +48,33 @@ const PresetVariables: FC<{
             return (
               <Stack
                 key={presetVariableGroupKey}
-                direction="row"
+                direction='row'
                 borderBottom={
                   index < Object.keys(PRESET_VARIABLES_GROUP_MAP).length - 1
                     ? '1px solid'
                     : 'none'
                 }
-                borderColor="inherit"
-                alignItems="center"
+                borderColor='inherit'
+                alignItems='center'
               >
                 <Stack
                   p={1}
-                  flexBasis="15%"
+                  flexBasis='15%'
                   flexDirection={'row'}
-                  alignItems="center"
+                  alignItems='center'
                 >
-                  <Typography variant="body2">
+                  <Typography variant='body2'>
                     {presetVariableGroupName}
                   </Typography>
                 </Stack>
                 <Stack
-                  direction="row"
+                  direction='row'
                   p={1}
                   gap={1}
-                  flexWrap="wrap"
-                  alignItems="center"
-                  borderLeft="1px solid"
-                  borderColor="inherit"
+                  flexWrap='wrap'
+                  alignItems='center'
+                  borderLeft='1px solid'
+                  borderColor='inherit'
                 >
                   {presetVariables.map(({ variable, permissionKeys = [] }) => {
                     if (

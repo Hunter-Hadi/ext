@@ -1,12 +1,14 @@
 # ShortCuts
 
 ## 参考
+
 - https://zachary7829.github.io/blog/shortcuts/fileformat.html
 - https://github.com/sebj/iOS-Shortcuts-Reference/blob/main/README.md
 - https://support.apple.com/it-it/guide/shortcuts/welcome/ios
 - https://github.com/joshfarrant/shortcuts-js
 
 ## Action ios 示例
+
 ```
 <dict>
     <key>WFWorkflowActionIdentifier</key>
@@ -36,7 +38,9 @@
     </dict>
 </dict>
 ```
+
 ### 计算器
+
 ```json
 {
   "WFWorkflowClientVersion": "724",
@@ -46,10 +50,7 @@
     "WFWorkflowIconGlyphNumber": 59446
   },
   "WFWorkflowImportQuestions": [],
-  "WFWorkflowTypes": [
-    "WatchKit",
-    "NCWidget"
-  ],
+  "WFWorkflowTypes": ["WatchKit", "NCWidget"],
   "WFWorkflowInputContentItemClasses": [
     "WFAppStoreAppContentItem",
     "WFArticleContentItem",
@@ -109,7 +110,6 @@
     }
   ]
 }
-
 ```
 
 ### 电池电量检测器，条件动作
@@ -123,10 +123,7 @@
     "WFWorkflowIconGlyphNumber": 59446
   },
   "WFWorkflowImportQuestions": [],
-  "WFWorkflowTypes": [
-    "WatchKit",
-    "NCWidget"
-  ],
+  "WFWorkflowTypes": ["WatchKit", "NCWidget"],
   "WFWorkflowInputContentItemClasses": [
     "WFAppStoreAppContentItem",
     "WFArticleContentItem",
@@ -218,5 +215,4 @@
     }
   ]
 }
-
 ```

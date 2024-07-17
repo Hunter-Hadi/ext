@@ -72,12 +72,12 @@ const PromptLibraryCard: FC<{
   const actionBtnList = () => {
     const btnList: React.ReactNode[] = []
     if (actionButton.includes('see')) {
-      btnList.push(<SeeIconButton key="see" detailLink={detailLink} />)
+      btnList.push(<SeeIconButton key='see' detailLink={detailLink} />)
     }
     if (actionButton.includes('delete')) {
       btnList.push(
         <DeleteIconButton
-          key="delete"
+          key='delete'
           promptId={prompt.id}
           promptTitle={prompt.prompt_title}
         />,
@@ -86,7 +86,7 @@ const PromptLibraryCard: FC<{
     if (actionButton.includes('edit')) {
       btnList.push(
         <EditIconButton
-          key="edit"
+          key='edit'
           onClick={() => {
             openPromptLibraryEditForm(prompt.id)
           }}
@@ -94,7 +94,7 @@ const PromptLibraryCard: FC<{
       )
     }
     if (actionButton.includes('favorite')) {
-      btnList.push(<FavoriteIconButton key="favorite" promptId={prompt.id} />)
+      btnList.push(<FavoriteIconButton key='favorite' promptId={prompt.id} />)
     }
 
     return btnList
@@ -152,7 +152,7 @@ const PromptLibraryCard: FC<{
         }
       }}
     >
-      <Stack direction="row" spacing={1.5} justifyContent="space-between">
+      <Stack direction='row' spacing={1.5} justifyContent='space-between'>
         <EllipsisTextWithTooltip
           resizeListener
           tip={prompt.prompt_title}
@@ -169,7 +169,7 @@ const PromptLibraryCard: FC<{
           {prompt.prompt_title}
         </EllipsisTextWithTooltip>
         <Typography variant={'body1'} sx={{}}></Typography>
-        <Stack direction="row" fontSize={'16px'} height="max-content">
+        <Stack direction='row' fontSize={'16px'} height='max-content'>
           {actionBtnList()}
         </Stack>
       </Stack>
@@ -193,16 +193,16 @@ const PromptLibraryCard: FC<{
         }}
       >
         {prompt?.type === 'private' ? (
-          <LockOutlinedIcon fontSize="inherit" />
+          <LockOutlinedIcon fontSize='inherit' />
         ) : (
-          <LanguageOutlinedIcon fontSize="inherit" />
+          <LanguageOutlinedIcon fontSize='inherit' />
         )}
-        <Typography variant="caption" fontSize={'12px'}>
+        <Typography variant='caption' fontSize={'12px'}>
           ·
         </Typography>
         <ProLink
           href={authorLink}
-          underline="always"
+          underline='always'
           sx={{
             color: 'inherit',
           }}
@@ -214,10 +214,10 @@ const PromptLibraryCard: FC<{
         </ProLink>
         {prompt.update_time && (
           <span>
-            <Typography variant="caption" fontSize={'12px'}>
+            <Typography variant='caption' fontSize={'12px'}>
               ·
             </Typography>
-            <Typography variant="caption" fontSize={'12px'}>
+            <Typography variant='caption' fontSize={'12px'}>
               {dayjs.utc(prompt.update_time).fromNow()}
             </Typography>
           </span>

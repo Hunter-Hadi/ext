@@ -32,6 +32,15 @@ export const clientUploadMessagesToRemote = async (
     conversation_id: conversationId,
     messages,
   })
+  if (result.responseRaw?.status === 404) {
+    // 会话不存在，需要先上传会话
+    if (conversationId) {
+      await ClientConversationManager.addOrUpdateConversation(
+        conversationId,
+        {},
+      )
+    }
+  }
   // 重试2次
   if (result.data?.status !== 'OK') {
     result = await clientFetchMaxAIAPI<{

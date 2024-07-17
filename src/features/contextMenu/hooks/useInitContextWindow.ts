@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
@@ -38,10 +38,12 @@ import {
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
-import { AlwaysContinueInSidebarSelector, AppDBStorageState } from '@/store'
+import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+
+import { useAlwaysContinueInSidebar } from './useAlwaysContinueInSidebar'
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 
 /**
@@ -156,10 +158,9 @@ const useInitContextWindow = () => {
     ContextWindowDraftContextMenuState,
   )
 
-  const { continueConversationInSidebar } = useSidebarSettings()
-  const alwaysContinueInSidebar = useRecoilValue(
-    AlwaysContinueInSidebarSelector,
-  )
+  const { continueConversationInSidebar, updateSidebarSettings } =
+    useSidebarSettings()
+  const [alwaysContinueInSidebar] = useAlwaysContinueInSidebar()
   const {
     createConversation,
     getConversation,
@@ -293,11 +294,12 @@ const useInitContextWindow = () => {
         false,
       )
     } else {
-      // await updateSidebarSettings({
-      //   contextMenu: {
-      //     conversationId: currentConversationId,
-      //   },
-      // })
+      // 同步conversationId到侧边栏
+      await updateSidebarSettings({
+        contextMenu: {
+          conversationId: currentConversationId,
+        },
+      })
     }
   }
   /**
@@ -685,9 +687,8 @@ const useInitContextWindow = () => {
       }
     }
     const createContextMenuConversation = async () => {
+      isCreatingConversationRef.current = true
       if (currentConversationIdRef.current) {
-        isCreatingConversationRef.current = true
-
         const conversation = await getConversation(
           currentConversationIdRef.current,
         )
@@ -714,18 +715,11 @@ const useInitContextWindow = () => {
     // 当pintosidebar之后，每次关闭都会重建conversation
     if (
       (!isAIRespondingRef.current || alwaysContinueInSidebar) &&
-      !floatingDropdownMenu.open
+      floatingDropdownMenu.open === false
     ) {
       createContextMenuConversation().catch()
     }
-    console.log('AIInput remove', floatingDropdownMenu.open)
   }, [floatingDropdownMenu.open])
-
-  const aiResponeLanguageRef = useRef('English')
-
-  const setAiResponseLanguage = (lang: string) => {
-    aiResponeLanguageRef.current = lang
-  }
 
   return {
     loading,
@@ -738,8 +732,6 @@ const useInitContextWindow = () => {
     isSettingCustomVariables: isSettingCustomVariablesMemo,
     askAIWithContextWindow,
     isHaveContextWindowContext,
-    aiResponeLanguage: aiResponeLanguageRef.current,
-    setAiResponseLanguage,
   }
 }
 export default useInitContextWindow

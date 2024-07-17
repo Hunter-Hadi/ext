@@ -1,4 +1,5 @@
 import React, { FC, memo, useMemo, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 import { ConversationStatusType } from '@/background/provider/chat'
 import {
@@ -19,12 +20,26 @@ import GoogleDocInject from '@/features/contextMenu/components/GoogleDocInject'
 import InputAssistantButtonPortal from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonPortal'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
+import { ContextMenuConversationState } from '../store'
+
 const ContextMenuRoot: FC = () => {
   const { updateSidebarSettings, createSidebarConversation } =
     useSidebarSettings()
-  const [conversationId, setConversationId] = useState<string>('')
-  const [conversationStatus, updateConversationStatus] =
+  const [contextMenuConversation, setContextMenuConversation] = useRecoilState(
+    ContextMenuConversationState,
+  )
+  const conversationId = contextMenuConversation.conversationId
+
+  const setConversationId = (id: string) => {
+    setContextMenuConversation((prev) => ({
+      ...prev,
+      conversationId: id,
+    }))
+  }
+
+  const [conversationStatus, setConversationStauts] =
     useState<ConversationStatusType>('success')
+
   const ChatPanelContextValue = useMemo<ChatPanelContextValue>(() => {
     const createConversation: ChatPanelContextValue['createConversation'] =
       async (conversationType, AIProvider, AIModel) => {
@@ -52,13 +67,7 @@ const ContextMenuRoot: FC = () => {
           AIProvider,
           AIModel,
         )
-        console.log(
-          '新版ContextWindow 创建Conversation',
-          newConversationId,
-          conversationType,
-          AIProvider,
-          AIModel,
-        )
+
         setConversationId(newConversationId)
         await updateSidebarSettings({
           contextMenu: {
@@ -69,7 +78,7 @@ const ContextMenuRoot: FC = () => {
       }
     return {
       conversationStatus: conversationStatus,
-      updateConversationStatus: updateConversationStatus,
+      updateConversationStatus: setConversationStauts,
       updateConversationId: async () => {
         setConversationId('')
       },

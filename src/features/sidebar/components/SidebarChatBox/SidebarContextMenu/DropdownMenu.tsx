@@ -277,7 +277,7 @@ export const DropdownMenuInternal = React.forwardRef<
     const currentFallbackPlacements =
       defaultFallbackPlacements ||
       (isFirstLevelDropdown
-        ? ['bottom-start', 'top-start', 'right']
+        ? ['bottom-start', 'left', 'top-start', 'right']
         : [
             'right',
             'right-start',
@@ -287,7 +287,7 @@ export const DropdownMenuInternal = React.forwardRef<
             'left-end',
           ])
 
-    const { x, y, strategy, refs, context } = useFloating<any>({
+    const { x, y, strategy, refs, context } = useFloating({
       nodeId,
       open: isOpen,
       onOpenChange: (show) => {

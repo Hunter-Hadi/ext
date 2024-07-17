@@ -49,8 +49,8 @@ const createConversationListData = memoize(
   }),
 )
 
-const InfiniteConversationList: <T>(
-  props: IInfiniteConversationListProps<T>,
+const InfiniteConversationList: (
+  props: IInfiniteConversationListProps,
 ) => JSX.Element = (props) => {
   const {
     hasNextPage,
@@ -212,24 +212,8 @@ const Row = memo(function RowItem({
         updateSidebarConversationType(conversation.type)
         break
     }
-    //   if (conversation.type === 'Summary') {
-    //     // do nothing
-    // } else if (conversation.type === 'ContextMenu') {
-    //     await updateConversationId(conversation.id)
-    //     updateSidebarConversationType(conversation.type)
-    //   } else if (conversation.type === 'Chat') {
-    //     await updateConversationId(conversation.id)
-    //     updateSidebarConversationType(conversation.type)
-    //   } else if (conversation.type === 'Search') {
-    //     await updateConversationId(conversation.id)
-    //     updateSidebarConversationType(conversation.type)
-    //   } else if (conversation.type === 'Art') {
-    //     await updateConversationId(conversation.id)
-    //     updateSidebarConversationType(conversation.type)
-    //   }
     // 异步释放Background Conversation
     disposeBackgroundChatSystem(conversation.id).then().catch()
-    console.log(`handleSelectConversation 44`, conversation.id)
     onSelectItem?.(conversation)
   }, [conversation, onSelectItem, smoothConversationLoading])
   useEffect(() => {

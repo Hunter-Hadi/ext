@@ -1,8 +1,7 @@
 import { Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -26,16 +25,14 @@ const WritingMessageBox: FC<{
   onChange?: (value: string) => void
 }> = ({ onChange }) => {
   const theme = useCustomTheme()
-  const { t } = useTranslation(['client'])
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
-  const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
+  const setFloatingDropdownMenuSystemItems = useSetRecoilState(
     ContextWindowDraftContextMenuState,
   )
 
-  const { clientConversation, clientConversationMessages } =
+  const { clientWritingMessage, clientConversationMessages } =
     useClientConversation()
 
-  const { clientWritingMessage } = useClientConversation()
   const {
     currentFloatingContextMenuDraft,
     activeAIResponseMessage,
@@ -89,14 +86,14 @@ const WritingMessageBox: FC<{
     boxRef.current?.addEventListener('keydown', keydownHandler, true)
   }, [])
 
-  // const { paginationMessages } = usePaginationConversationMessages(
-  //   clientConversation?.id || '',
-  // )
-
   const lastUserMessage = useMemo(() => {
-    return clientWritingMessage.loading
-      ? clientConversationMessages.findLast((msg) => isUserMessage(msg))
-      : historyMessages[activeMessageIndex]?.selectedDraftMessage
+    // NOTE: selectedDraft或许可以去掉，后续再研究
+    const selectedDraft =
+      historyMessages[activeMessageIndex]?.selectedDraftMessage
+    if (clientWritingMessage.loading || !selectedDraft) {
+      return clientConversationMessages.findLast((msg) => isUserMessage(msg))
+    }
+    return selectedDraft
   }, [
     clientWritingMessage,
     historyMessages,
@@ -118,7 +115,6 @@ const WritingMessageBox: FC<{
     return draftIndex === -1 ? text : text.slice(0, draftIndex)
   }, [lastUserMessage])
 
-  const [open, setOpen] = useState(false)
   const tooltipContainer = useMemo(
     () => getMaxAIFloatingContextMenuRootElement() || document.body,
     [],
@@ -200,59 +196,6 @@ const WritingMessageBox: FC<{
               },
             }}
           />
-
-          {/* <Tooltip */}
-          {/*   title={lastContent} */}
-          {/*   open={open} */}
-          {/*   placement='top' */}
-          {/*   PopperProps={{ */}
-          {/*     container: getMaxAIFloatingContextMenuRootElement(), */}
-          {/*     style: { */}
-          {/*       zIndex: 2147483647, */}
-          {/*     }, */}
-          {/*   }} */}
-          {/*   sx={{ */}
-          {/*     bgcolor: (t) => */}
-          {/*       t.palette.mode === 'dark' ? '#393743' : '#ffffff', */}
-          {/*     // borderLeft: '4px solid #9065B0', */}
-          {/*     color: 'rgba(0, 0, 0, 0.87)', */}
-          {/*     fontSize: 12, */}
-          {/*     boxShadow: `0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);`, */}
-          {/*     maxWidth: 'none', */}
-          {/*     mt: 1, */}
-          {/*     mb: 2, */}
-          {/*   }} */}
-          {/* > */}
-          {/*   <Box */}
-          {/*     sx={{ */}
-          {/*       display: 'flex', */}
-          {/*       gap: '4px', */}
-          {/*       borderRadius: '8px', */}
-          {/*       border: '1px solid rgba(0, 0, 0, 0.12)', */}
-          {/*       padding: '2px 6px', */}
-          {/*       alignItems: 'center', */}
-          {/*       userSelect: 'none', */}
-          {/*       cursor: 'pointer', */}
-          {/*     }} */}
-          {/*     onClick={() => { */}
-          {/*       setOpen(!open) */}
-          {/*     }} */}
-          {/*   > */}
-          {/*     <Box color='text.primary' fontSize={'14px'}> */}
-          {/*       {t('floating_menu__button__show_detail')} */}
-          {/*     </Box> */}
-          {/**/}
-          {/*     <KeyboardArrowDown */}
-          {/*       sx={{ */}
-          {/*         color: '#D9D9D9', */}
-          {/*         height: '16px', */}
-          {/*         width: '16px', */}
-          {/*         transition: 'all 0.2s', */}
-          {/*         transform: `rotate(${open ? 0.5 : 0}turn)`, */}
-          {/*       }} */}
-          {/*     /> */}
-          {/*   </Box> */}
-          {/* </Tooltip> */}
         </Stack>
       )}
 

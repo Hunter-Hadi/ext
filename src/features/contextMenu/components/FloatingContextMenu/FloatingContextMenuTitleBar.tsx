@@ -35,7 +35,8 @@ const FloatingContextMenuTitleBar: FC<{
   const { continueConversationInSidebar } = useSidebarSettings()
   const { clientConversation } = useClientConversation()
 
-  const { hideFloatingContextMenu } = useFloatingContextMenu()
+  const { hideFloatingContextMenu, floatingDropdownMenu } =
+    useFloatingContextMenu()
   const { currentFloatingContextMenuDraft, selectedDraftUserMessage } =
     useFloatingContextMenuDraft()
   const { floatingDropdownMenuPin, setFloatingDropdownMenuPin } =
@@ -147,7 +148,7 @@ const FloatingContextMenuTitleBar: FC<{
             floatingMenuTooltip: true,
           }}
         />
-        <FloatingContextMenuPopupSettingButton />
+        {floatingDropdownMenu.open && <FloatingContextMenuPopupSettingButton />}
 
         <Divider orientation='vertical' variant='middle' flexItem />
 

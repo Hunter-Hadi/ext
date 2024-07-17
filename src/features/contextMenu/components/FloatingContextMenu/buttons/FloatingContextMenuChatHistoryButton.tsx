@@ -37,11 +37,13 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   const { conversationId, onDuplicateConversation } = props
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
+
   if (!conversationId) {
     return null
   }
+
   return (
-    <>
+    <Stack direction={'column'} justifyContent={'flex-end'} flex={1}>
       <SidebarChatBoxMessageListContainer
         conversationId={conversationId}
         isAIResponding={false}
@@ -60,16 +62,21 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
           variant={'contained'}
           color={'primary'}
           onClick={async () => {
-            await continueConversationInSidebar(conversationId, {
-              type: 'Chat',
-            })
+            await continueConversationInSidebar(
+              conversationId,
+              {},
+              {
+                syncConversationToDB: true,
+                waitSync: true,
+              },
+            )
             onDuplicateConversation?.(conversationId)
           }}
         >
-          {t('client:context_window__chat_history__continue_in_chat__title')}
+          {t('client:context_window__chat_history__continue_in_rewrite__title')}
         </Button>
       </Stack>
-    </>
+    </Stack>
   )
 }
 

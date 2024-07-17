@@ -3,12 +3,17 @@ import { Divider } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilCallback } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
 import { useAlwaysContinueInSidebar } from '@/features/contextMenu/hooks/useAlwaysContinueInSidebar'
+import {
+  ContextMenuConversationState,
+  FloatingDropdownMenuState,
+} from '@/features/contextMenu/store'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
@@ -20,14 +25,44 @@ const SidebarAIMessageTools: FC<{
   message: IAIResponseMessage
 }> = (props) => {
   const { message } = props
-  const { currentSidebarConversationType } = useClientConversation()
+  const { currentSidebarConversationType, currentConversationId } =
+    useClientConversation()
   const [alwaysContinueInSidebar, setAlwaysContinueInSidebar] =
     useAlwaysContinueInSidebar()
+
   const { t } = useTranslation(['common'])
   const [isCoping, setIsCoping] = useState(false)
   const messageContentType =
     message.originalMessage?.content?.contentType || 'text'
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
+
+  const handleContinueInContextMenu = useRecoilCallback(
+    ({ snapshot, set }) => {
+      return async () => {
+        const floatingDropdownMenu = await snapshot.getPromise(
+          FloatingDropdownMenuState,
+        )
+
+        // 还存在选区的情况下设置conversationId
+        if (
+          !floatingDropdownMenu.open &&
+          floatingDropdownMenu.rootRect &&
+          currentConversationId
+        ) {
+          set(ContextMenuConversationState, (prev) => ({
+            ...prev,
+            conversationId: currentConversationId,
+          }))
+
+          set(FloatingDropdownMenuState, (prev) => ({ ...prev, open: true }))
+        }
+
+        setAlwaysContinueInSidebar(false)
+      }
+    },
+    [currentConversationId],
+  )
+
   return (
     <Stack
       direction={'row'}
@@ -128,9 +163,7 @@ const SidebarAIMessageTools: FC<{
             <Divider orientation='vertical'></Divider>
             <TooltipIconButton
               title={t('common:continue_in_contextmenu')}
-              onClick={() => {
-                setAlwaysContinueInSidebar(false)
-              }}
+              onClick={handleContinueInContextMenu}
             >
               <FilterNone
                 sx={{

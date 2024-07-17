@@ -18,7 +18,10 @@ import {
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
-import { useFloatingContextMenu } from '@/features/contextMenu'
+import {
+  FloatingDropdownMenuState,
+  useFloatingContextMenu,
+} from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
 import {
@@ -428,6 +431,15 @@ const useSidebarSettings = () => {
     }
   }
 
+  const hideContextWindowWithoutClose = useRecoilCallback(({ set }) => {
+    return () => {
+      set(FloatingDropdownMenuState, (prev) => ({
+        ...prev,
+        open: false,
+      }))
+    }
+  })
+
   /**
    * @param sync 控制是否await同步执行
    */
@@ -480,7 +492,8 @@ const useSidebarSettings = () => {
       )
     }
     showChatBox()
-    hideFloatingContextMenu(true)
+    hideContextWindowWithoutClose()
+    // hideFloatingContextMenu(true)
     isContinueInChatProgressRef.current = false
   }
   return {

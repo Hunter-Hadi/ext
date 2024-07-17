@@ -56,6 +56,17 @@ export const FloatingDropdownMenuState = atom<{
   },
 })
 
+// TODO: 将ContextMenu的通用逻辑移到此
+// 考虑和FloatingDropdownMenuState合并
+export const ContextMenuConversationState = atom<{
+  conversationId: string
+}>({
+  key: 'ContextMenuConversationState',
+  default: {
+    conversationId: '',
+  },
+})
+
 export const FloatingDropdownMenuLastFocusRangeState = atom<{
   range: Range | null
   selectionText: string | null

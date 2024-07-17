@@ -1,5 +1,6 @@
 import SendIcon from '@mui/icons-material/Send'
 import Box from '@mui/material/Box'
+import { red } from '@mui/material/colors'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme, useTheme } from '@mui/material/styles'
@@ -37,6 +38,7 @@ const SidebarContextMenu: FC = () => {
   const contentRef = useRef('')
   contentRef.current = content
   const [inputValue, setInputValue] = useState('')
+  const [isContentEmptyError, setIsContentEmptyError] = useState(false)
   const update = useUpdate()
   const matcher = useMemo(() => new TreeNavigatorMatcher(), [])
   matcher.onUpdate = update
@@ -64,11 +66,15 @@ const SidebarContextMenu: FC = () => {
   const { checkAttachments } = useClientChat()
 
   const handleEnter = async () => {
-    if (matcher.path.length && content) {
+    if (!content) {
+      setIsContentEmptyError(true)
+      return
+    }
+
+    if (matcher.path.length) {
       const menuItem = matcher.path[matcher.path.length - 1].item
       handleContextMenuClick(menuItem)
-    }
-    if (inputValue.trim() && content) {
+    } else if (inputValue.trim()) {
       const template = `${inputValue}:\n"""\n${content}\n"""`
       await askAIQuestion({
         type: 'user',
@@ -76,13 +82,9 @@ const SidebarContextMenu: FC = () => {
         meta: {
           includeHistory: true,
         },
+      }).catch((err) => {
+        console.log('handleEnter error: ', err)
       })
-        .then((result) => {
-          console.log('handleEnter:', result)
-        })
-        .catch((err) => {
-          console.log('handleEnter error: ', err)
-        })
     }
   }
 
@@ -91,6 +93,11 @@ const SidebarContextMenu: FC = () => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleContextMenuClick = (menuItem: IContextMenuItem) => {
+    if (!content) {
+      setIsContentEmptyError(true)
+      return
+    }
+
     let id = menuItem.id
     if (contextMenuIsFavoriteContextMenu(id)) {
       id = id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
@@ -196,6 +203,9 @@ const SidebarContextMenu: FC = () => {
                 boxShadow: '0px 1px 2px rgba(16, 24, 40, 0.05)',
                 borderRadius: '8px',
                 boxSizing: 'border-box',
+                borderWidth: '1px',
+                borderColor: isContentEmptyError ? red[800] : 'transparent',
+                borderStyle: 'solid',
 
                 '& > textarea': {
                   border: 'none',
@@ -218,7 +228,10 @@ const SidebarContextMenu: FC = () => {
                   event.stopPropagation()
                 }}
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={(e) => {
+                  setIsContentEmptyError(false)
+                  setContent(e.target.value)
+                }}
                 placeholder={t('client:floating_menu__textarea__placeholder')}
                 autoFocus
               />
@@ -262,14 +275,14 @@ const SidebarContextMenu: FC = () => {
                     }}
                     direction={'column'}
                     size={'tiny'}
-                    onUploaded={() => {
+                    onChange={() => {
                       // TODO:
-                      if (!referenceElementRef.current) return
-
-                      referenceElementRef.current.style.marginLeft =
-                        referenceElementRef.current.style.marginLeft
-                          ? ''
-                          : '1px'
+                      // if (!referenceElementRef.current) return
+                      //
+                      // referenceElementRef.current.style.marginLeft =
+                      //   referenceElementRef.current.style.marginLeft
+                      //     ? ''
+                      //     : '1px'
                     }}
                   />
                 }

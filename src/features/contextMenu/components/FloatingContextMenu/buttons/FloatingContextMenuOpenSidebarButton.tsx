@@ -2,7 +2,7 @@ import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 
 import { SidePanelIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip, {
@@ -27,7 +27,7 @@ const FloatingContextMenuOpenSidebarButton: FC<{
 }> = (props) => {
   const { t } = useTranslation(['common', 'client'])
   const { hideRangy } = useRangy()
-  const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
+  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   const { chatBoxShortCutKey } = useCommands()
   return (
     <TextOnlyTooltip
@@ -47,7 +47,7 @@ const FloatingContextMenuOpenSidebarButton: FC<{
           borderColor: 'customColor.borderColor',
         }}
         className={'max-ai__actions__button--toggle-sidebar'}
-        variant="text"
+        variant='text'
         onClick={() => {
           // 2023-07-10 @huangsong
           // - 点击button（或者按⌘J）的效果是从当前popup转移到sidebar里

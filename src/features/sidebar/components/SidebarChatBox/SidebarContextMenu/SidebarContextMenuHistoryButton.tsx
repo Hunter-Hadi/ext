@@ -31,7 +31,7 @@ const HistoryMessageList: FC<{
   conversationId?: string
   onDuplicateConversation?: (conversationId: string) => void
   container: HTMLElement
-}> = ({ conversationId, onDuplicateConversation, container }) => {
+}> = ({ conversationId, onDuplicateConversation }) => {
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
   if (!conversationId) {
@@ -79,7 +79,6 @@ const SidebarContextMenuHistoryButton: FC<{
   const { t } = useTranslation(['client'])
   const [modalOpen, setModalOpen] = React.useState(false)
   // 因为有keepMounted，所以需要这个来控制点击一次才能渲染
-  const [isClickOpenOnce, setIsClickOpenOnce] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
   const paperRef = useRef<HTMLDivElement>()
@@ -99,33 +98,30 @@ const SidebarContextMenuHistoryButton: FC<{
     setAnchorEl(null)
   }
 
-  const handleClick =
-    (newPlacement: PopperPlacementType) =>
-    (_: React.MouseEvent<HTMLButtonElement>) => {
-      setAnchorEl({
-        getBoundingClientRect: () => {
-          const left = window.innerWidth / 2
-          const top = 140 / 2
-          const virtualRect = {
-            top,
-            left,
-            right: left,
-            bottom: top,
-            width: 0,
-            height: 0,
-            x: left,
-            y: top,
-          } as DOMRect
-          return virtualRect
-        },
-      } as any)
-      setTimeout(() => {
-        paperRef.current?.focus()
-      }, 100)
-      setIsClickOpenOnce(true)
-      handleOpenModal()
-      setPlacement(newPlacement)
-    }
+  const handleIconClick = (_: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl({
+      getBoundingClientRect: () => {
+        const left = window.innerWidth / 2
+        const top = 140 / 2
+        const virtualRect = {
+          top,
+          left,
+          right: left,
+          bottom: top,
+          width: 0,
+          height: 0,
+          x: left,
+          y: top,
+        } as DOMRect
+        return virtualRect
+      },
+    } as any)
+    setTimeout(() => {
+      paperRef.current?.focus()
+    }, 100)
+    handleOpenModal()
+    setPlacement('top')
+  }
 
   useEffect(() => {
     if (modalOpen) {
@@ -157,7 +153,7 @@ const SidebarContextMenuHistoryButton: FC<{
           {...TooltipProps}
         >
           <IconButton
-            onClick={handleClick('top')}
+            onClick={handleIconClick}
             data-testid={'maxai-context-window-history-button'}
             sx={{
               width: '28px',
@@ -257,118 +253,112 @@ const SidebarContextMenuHistoryButton: FC<{
                   minWidth: 402,
                 }}
               >
-                {isClickOpenOnce && (
-                  <Stack height={'100%'}>
-                    <Stack
-                      direction='row'
-                      spacing={1}
-                      alignItems='center'
-                      px={2}
-                      py={2}
-                      position='relative'
-                    >
-                      <IconButton onClick={handleCloseModal} size='small'>
-                        {selectedConversationId ? (
-                          <ArrowBackIcon
-                            sx={{
-                              fontSize: '24px',
-                            }}
-                          />
-                        ) : (
-                          <CloseIcon
-                            sx={{
-                              fontSize: '24px',
-                            }}
-                          />
-                        )}
-                      </IconButton>
-                      <Typography
-                        fontSize={16}
-                        fontWeight={500}
-                        lineHeight={2}
-                        flex={1}
-                        textAlign={'center'}
-                      >
-                        {t(
-                          'client:context_window__chat_history__button__title',
-                        )}
-                      </Typography>
-                      <ClearAllChatButton
-                        variant='icon'
-                        sx={{
-                          p: '5px',
-                          pointerEvents: selectedConversationId
-                            ? 'none'
-                            : 'auto',
-                          opacity: selectedConversationId ? 0 : 1,
-                        }}
-                        conversationType='ContextMenu'
-                        onDelete={async () => {
-                          await createConversation('ContextMenu')
-                          handleCloseModal()
-                        }}
-                      />
-                    </Stack>
-                    <Divider />
-                    <HistoryMessageList
-                      conversationId={selectedConversationId}
-                      onDuplicateConversation={handleCloseModal}
-                      container={container}
-                    />
-                    <Box
-                      height={0}
+                <Stack height={'100%'}>
+                  <Stack
+                    direction='row'
+                    spacing={1}
+                    alignItems='center'
+                    px={2}
+                    py={2}
+                    position='relative'
+                  >
+                    <IconButton onClick={handleCloseModal} size='small'>
+                      {selectedConversationId ? (
+                        <ArrowBackIcon
+                          sx={{
+                            fontSize: '24px',
+                          }}
+                        />
+                      ) : (
+                        <CloseIcon
+                          sx={{
+                            fontSize: '24px',
+                          }}
+                        />
+                      )}
+                    </IconButton>
+                    <Typography
+                      fontSize={16}
+                      fontWeight={500}
+                      lineHeight={2}
                       flex={1}
-                      overflow='auto'
-                      sx={{
-                        display: selectedConversationId ? 'none' : 'flex',
-                      }}
+                      textAlign={'center'}
                     >
-                      <ConversationList
-                        conversationType={'ContextMenu'}
-                        hideClearAllButton
-                        divider
-                        onSelectConversation={(conversation) => {
-                          setSelectedConversationId(conversation.id)
-                        }}
-                        sx={{
-                          width: '100%',
-                          p: 0,
-                          '.conversation-list': {
-                            px: 2,
-                            py: 1,
-                          },
-                        }}
-                        emptyFeedback={
-                          <Stack
-                            alignItems='center'
-                            justifyContent='center'
-                            height='100%'
-                          >
-                            <LazyLoadImage
-                              height={160}
-                              src={`${getChromeExtensionAssetsURL(
-                                '/images/common/data-empty.png',
-                              )}`}
-                              imgStyle={{
-                                objectFit: 'contain',
-                              }}
-                              alt={'no_conversation'}
-                            />
-                            <Typography
-                              fontSize={14}
-                              lineHeight={1.5}
-                              textAlign={'center'}
-                            >
-                              {t(
-                                'client:context_window__chat_history__empty__title',
-                              )}
-                            </Typography>
-                          </Stack>
-                        }
-                      />
-                    </Box>
+                      {t('client:context_window__chat_history__button__title')}
+                    </Typography>
+                    <ClearAllChatButton
+                      variant='icon'
+                      sx={{
+                        p: '5px',
+                        pointerEvents: selectedConversationId ? 'none' : 'auto',
+                        opacity: selectedConversationId ? 0 : 1,
+                      }}
+                      conversationType='ContextMenu'
+                      onDelete={async () => {
+                        await createConversation('ContextMenu')
+                        handleCloseModal()
+                      }}
+                    />
                   </Stack>
-                )}
+                  <Divider />
+                  {/* <HistoryMessageList */}
+                  {/*   conversationId={selectedConversationId} */}
+                  {/*   onDuplicateConversation={handleCloseModal} */}
+                  {/*   container={container} */}
+                  {/* /> */}
+                  <Box
+                    height={0}
+                    flex={1}
+                    overflow='auto'
+                    sx={{
+                      display: selectedConversationId ? 'none' : 'flex',
+                    }}
+                  >
+                    <ConversationList
+                      conversationType={'ContextMenu'}
+                      hideClearAllButton
+                      divider
+                      // onSelectConversation={(conversation) => {
+                      //   setSelectedConversationId(conversation.id)
+                      // }}
+                      sx={{
+                        width: '100%',
+                        p: 0,
+                        '.conversation-list': {
+                          px: 2,
+                          py: 1,
+                        },
+                      }}
+                      emptyFeedback={
+                        <Stack
+                          alignItems='center'
+                          justifyContent='center'
+                          height='100%'
+                        >
+                          <LazyLoadImage
+                            height={160}
+                            src={`${getChromeExtensionAssetsURL(
+                              '/images/common/data-empty.png',
+                            )}`}
+                            imgStyle={{
+                              objectFit: 'contain',
+                            }}
+                            alt={'no_conversation'}
+                          />
+                          <Typography
+                            fontSize={14}
+                            lineHeight={1.5}
+                            textAlign={'center'}
+                          >
+                            {t(
+                              'client:context_window__chat_history__empty__title',
+                            )}
+                          </Typography>
+                        </Stack>
+                      }
+                    />
+                  </Box>
+                </Stack>
               </Paper>
             </div>
           </Fade>

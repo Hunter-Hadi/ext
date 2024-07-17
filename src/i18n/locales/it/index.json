@@ -1341,9 +1341,9 @@
     "queries": "Query AI rimanenti",
     "reset_on_date": "Reset il {{DATE}}",
     "advanced_text__secondary__content": "Query AI intelligente ad alta velocità: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Assicurati almeno 1.500 query avanzate di testo ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",
+    "advanced_text__secondary__content__tooltip": "Assicurati almeno 1.500 query AI smart ad alta velocità ogni mese. L'uso oltre questo limite o a frequenze elevate potrebbe comportare una velocità e qualità ridotte. Si applicano politiche di utilizzo equo basate sulla frequenza delle query, sulla lunghezza del contenuto e sui modelli di utilizzo complessivo.",
     "image_generate__secondary__content": "Query AI per immagini ad alta velocità: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Assicurati almeno 1.500 query di immagini ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",
+    "image_generate__secondary__content__tooltip": "Assicurati almeno 600 query AI per immagini ad alta velocità ogni mese. L'uso oltre questo limite o a frequenze elevate potrebbe comportare una velocità e qualità ridotte. Si applicano politiche di utilizzo equo basate sulla frequenza delle query, sulla dimensione dell'immagine e sui modelli di utilizzo complessivo.",
     "upgrade_to_go_unlimited": "Passa a MaxAI Elite per andare illimitato"
   },
   "onboarding": {

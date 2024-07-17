@@ -1341,9 +1341,9 @@
     "queries": "剩余AI查询",
     "reset_on_date": "重置日期：{{DATE}}",
     "advanced_text__secondary__content": "高速智能AI查询：{{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "确保每月至少1,500次高速高级文本查询。达到限制后，模型的速度和质量可能会降低。",
+    "advanced_text__secondary__content__tooltip": "每月确保至少 1,500 次高速智能 AI 查询。超出此限制或高频使用可能导致速度和质量降低。公平使用政策基于查询频率、内容长度和整体使用模式。",
     "image_generate__secondary__content": "高速图像AI查询：{{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "确保每月至少1,500次高速图像查询。达到限制后，模型的速度和质量可能会降低。",
+    "image_generate__secondary__content__tooltip": "每月确保至少 600 次高速图像 AI 查询。超出此限制或高频使用可能导致速度和质量降低。公平使用政策基于查询频率、图像大小和整体使用模式。",
     "upgrade_to_go_unlimited": "升级至MaxAI精英版，畅享无限"
   },
   "onboarding": {

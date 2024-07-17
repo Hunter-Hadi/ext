@@ -78,7 +78,38 @@ const SmartAIUsageQueriesItem: FC<ISmartAIUsageQueriesItemProps> = ({
               textAlign: 'right',
             }}
             primary={
-              isUnlimited ? t('common:unlimited') : numberWithCommas(usage, 0)
+              <Stack
+                direction={'row'}
+                alignItems='center'
+                justifyContent={'flex-end'}
+                spacing={0.5}
+              >
+                <Typography fontSize={16} lineHeight={1.5}>
+                  {isUnlimited
+                    ? t('common:unlimited')
+                    : numberWithCommas(usage, 0)}
+                </Typography>
+
+                {isUnlimited ? (
+                  <TextOnlyTooltip
+                    arrow
+                    placement='bottom'
+                    title={t(
+                      'quota_usage_card:advanced_text__secondary__content__tooltip',
+                    )}
+                  >
+                    <Stack
+                      alignItems={'center'}
+                      justifyContent='center'
+                      borderRadius={'50%'}
+                      width={20}
+                      height={24}
+                    >
+                      <TooltipIcon />
+                    </Stack>
+                  </TextOnlyTooltip>
+                ) : null}
+              </Stack>
             }
             secondary={
               <>
@@ -94,23 +125,6 @@ const SmartAIUsageQueriesItem: FC<ISmartAIUsageQueriesItemProps> = ({
                         QUERIES: numberWithCommas(usage, 0),
                       })}
                     </Typography>
-                    <TextOnlyTooltip
-                      arrow
-                      placement='bottom'
-                      title={t(
-                        'quota_usage_card:advanced_text__secondary__content__tooltip',
-                      )}
-                    >
-                      <Stack
-                        alignItems={'center'}
-                        justifyContent='center'
-                        borderRadius={'50%'}
-                        width={20}
-                        height={20}
-                      >
-                        <TooltipIcon />
-                      </Stack>
-                    </TextOnlyTooltip>
                   </Stack>
                 ) : null}
                 {showUpgradeLink ? (

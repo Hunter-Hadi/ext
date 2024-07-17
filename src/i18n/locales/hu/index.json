@@ -1341,9 +1341,9 @@
     "queries": "Hátralévő AI lekérdezések",
     "reset_on_date": "Visszaállítás ekkor: {{DATE}}",
     "advanced_text__secondary__content": "Magas sebességű okos AI lekérdezések: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű előrehaladott szöveg lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
+    "advanced_text__secondary__content__tooltip": "Győződjön meg róla, hogy legalább 1,500 magas sebességű okos AI lekérdezést végezzen minden hónapban. A limit túllépése vagy a gyakori használat lassabb sebességet és minőségcsökkenést eredményezhet. Az igazságos használati szabályok a lekérdezés gyakoriságától, a tartalom hosszától és az általános használati mintáktól függnek.",
     "image_generate__secondary__content": "Magas sebességű kép AI lekérdezések: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Biztosíts legalább 1,500 magas sebességű kép lekérdezést havonta. A limit elérése után a modell sebessége és minősége csökkenhet.",
+    "image_generate__secondary__content__tooltip": "Győződjön meg róla, hogy legalább 600 magas sebességű kép AI lekérdezést végezzen minden hónapban. A limit túllépése vagy a gyakori használat lassabb sebességet és minőségcsökkenést eredményezhet. Az igazságos használati szabályok a lekérdezés gyakoriságától, a kép méretétől és az általános használati mintáktól függnek.",
     "upgrade_to_go_unlimited": "Frissítés a MaxAI Elite-re, hogy korlátlan legyen"
   },
   "onboarding": {

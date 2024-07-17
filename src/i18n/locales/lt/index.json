@@ -1341,9 +1341,9 @@
     "queries": "Liko AI užklausų",
     "reset_on_date": "Atstatyti {{DATE}}",
     "advanced_text__secondary__content": "Greito protingo AI užklausos: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų pažangių teksto užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
+    "advanced_text__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitųjų išmanaus AI užklausų kiekvieną mėnesį. Naudota virš šio limito arba didelės dažnio gali lemti sumažėjusį greitį ir kokybę. Teisingos naudojimo taisyklės taikomos pagal užklausos dažnį, turinio ilgį ir bendrą naudojimo modelį.",
     "image_generate__secondary__content": "Greito vaizdo AI užklausos: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų vaizdo užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
+    "image_generate__secondary__content__tooltip": "Užtikrinkite bent 600 greitųjų vaizdo AI užklausų kiekvieną mėnesį. Naudota virš šio limito arba didelės dažnio gali lemti sumažėjusį greitį ir kokybę. Teisingos naudojimo taisyklės taikomos pagal užklausos dažnį, vaizdo dydį ir bendrą naudojimo modelį.",
     "upgrade_to_go_unlimited": "Atnaujinkite iki MaxAI Elite, kad taptumėte neribotu"
   },
   "onboarding": {

@@ -1341,9 +1341,9 @@
     "queries": "Pertanyaan KI yang tinggal",
     "reset_on_date": "Set semula pada {{DATE}}",
     "advanced_text__secondary__content": "Pertanyaan AI bijak kelajuan tinggi: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Pastikan sekurang-kurangnya 1,500 pertanyaan teks lanjutan kelajuan tinggi setiap bulan. Selepas mencapai had, kelajuan dan kualiti model mungkin dikurangkan.",
+    "advanced_text__secondary__content__tooltip": "Pastikan sekurang-kurangnya 1,500 pertanyaan AI pintar berkelajuan tinggi setiap bulan. Penggunaan melebihi had ini atau pada frekuensi tinggi mungkin mengakibatkan kelajuan dan kualiti yang berkurang. Dasar penggunaan saksama dikenakan berdasarkan frekuensi pertanyaan, panjang kandungan, dan corak penggunaan keseluruhan.",
     "image_generate__secondary__content": "Pertanyaan AI imej kelajuan tinggi: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Pastikan sekurang-kurangnya 1,500 pertanyaan imej kelajuan tinggi setiap bulan. Selepas mencapai had, kelajuan dan kualiti model mungkin dikurangkan.",
+    "image_generate__secondary__content__tooltip": "Pastikan sekurang-kurangnya 600 pertanyaan AI imej berkelajuan tinggi setiap bulan. Penggunaan melebihi had ini atau pada frekuensi tinggi mungkin mengakibatkan kelajuan dan kualiti yang berkurang. Dasar penggunaan saksama dikenakan berdasarkan frekuensi pertanyaan, saiz imej, dan corak penggunaan keseluruhan.",
     "upgrade_to_go_unlimited": "Naik taraf ke MaxAI Elite untuk pergi tanpa had"
   },
   "onboarding": {

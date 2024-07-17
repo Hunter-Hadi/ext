@@ -147,7 +147,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         )
         await updateConversationId(conversationId, conversationType)
         if (AIProvider || AIModel) {
-          updateImmersiveSettings({
+          await updateImmersiveSettings({
             [settingsType]: { AIProvider, AIModel },
           })
         }
@@ -304,7 +304,23 @@ const SidebarAppProvider: FC<{ children: React.ReactNode }> = (props) => {
           })
         }
       },
-      createConversation: createSidebarConversation,
+      createConversation: async (conversationType, aiProvider, aiModel) => {
+        const id = await createSidebarConversation(
+          conversationType,
+          aiProvider,
+          aiModel,
+        )
+
+        if (conversationType === 'ContextMenu') {
+          updateSidebarSettings({
+            contextMenu: {
+              conversationId: id,
+              currentAIModel: aiModel,
+            },
+          })
+        }
+        return id
+      },
       resetConversation: resetSidebarConversation,
     }
   }, [currentSidebarConversationId, conversationStatus])

@@ -137,12 +137,12 @@ export default class TreeNavigatorMatcher {
   /**
    * 查找当前是否在路径上
    */
-  match(item: IContextMenuItem, level?: number): boolean {
-    if (level !== undefined) {
-      return item === this._path[level - 1].item
+  match(item: IContextMenuItem, level?: number): IPathItem | undefined {
+    if (level !== undefined && item === this._path[level - 1].item) {
+      return this._path[level - 1]
     }
 
-    return !!this._path.find((record) => record.item === item)
+    return this._path.find((record) => record.item === item)
   }
 
   matchOpenGroup(item: IContextMenuItem) {

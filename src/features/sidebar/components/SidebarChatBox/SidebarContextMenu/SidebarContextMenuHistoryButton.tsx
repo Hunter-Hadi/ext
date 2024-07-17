@@ -307,7 +307,6 @@ const SidebarContextMenuHistoryButton: FC<{
                   {/*   container={container} */}
                   {/* /> */}
                   <Box
-                    height={0}
                     flex={1}
                     overflow='auto'
                     sx={{

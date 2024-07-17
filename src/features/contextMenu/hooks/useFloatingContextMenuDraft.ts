@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { useEffect, useMemo, useRef } from 'react'
 import { atomFamily, useRecoilState, useSetRecoilState } from 'recoil'
 
@@ -54,11 +55,19 @@ const useFloatingContextMenuDraftHistoryChange = () => {
   )
   useEffect(() => {
     const newMessagesMap: Record<string, HistoryMessage> = {}
-    const newMessages = clientConversationMessages
+    const now = Date.now()
+    const conversationMessage = [...clientConversationMessages]
+    const newMessages = conversationMessage
+      // 可能需要排序，因为查询回来的结果可能是init状态desc顺序
+      .sort(
+        (a, b) =>
+          dayjs(a.created_at || now).valueOf() -
+          dayjs(b.created_at || now).valueOf(),
+      )
       .map((message, index) => {
         // 目前context window里只显示ai/付费卡点/错误消息
         if (isAIMessage(message)) {
-          const prevMessage = clientConversationMessages[index - 1]
+          const prevMessage = conversationMessage[index - 1]
           const selectedDraftMessage =
             prevMessage && isUserMessage(prevMessage) ? prevMessage : null
           return (newMessagesMap[message.messageId] = {

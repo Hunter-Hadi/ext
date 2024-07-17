@@ -208,6 +208,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     }
   }, [messages, conversationId])
 
+  console.log('', writingMessage)
+
   return (
     <Stack
       id={'maxAISidebarChatBox'}
@@ -313,7 +315,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   }}
                 />
 
-                {!loading && writingMessage && isShowRegenerateButton && (
+                {!loading && isShowRegenerateButton && (
                   <Button
                     disableElevation
                     startIcon={<CachedIcon />}

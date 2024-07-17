@@ -106,6 +106,7 @@ const useSidebarSettings = () => {
       }
     })
   }
+
   const updateImmersiveSettings = async (
     newImmersiveSettings: IChromeExtensionLocalStorage['immersiveSettings'],
   ) => {
@@ -406,15 +407,6 @@ const useSidebarSettings = () => {
       })
       if (result.success) {
         conversationId = result.data.conversationId
-        // NOTE: contextmenu feature中创建conversationId的逻辑也是从这里来的，使用了createSidebarConversation创建id，
-        // 所以这里可能需要隔离开conversationId的保存逻辑
-        // if (updateSetting) {
-        //   await updateSidebarSettings({
-        //     contextMenu: {
-        //       conversationId,
-        //     },
-        //   })
-        // }
       }
     }
     return conversationId

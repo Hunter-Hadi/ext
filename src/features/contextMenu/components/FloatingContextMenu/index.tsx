@@ -76,7 +76,7 @@ import ResizeAnchor from './ResizeAnchor'
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const FloatingContextMenu: FC<{
-  root: any
+  root?: HTMLElement
 }> = (props) => {
   useButtonClickedTracker('floatingMenu')
 

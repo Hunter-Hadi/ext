@@ -109,7 +109,6 @@ export const useClientConversationListener = () => {
             `ConversationDB[V3] 更新会话[${updateConversationId}]`,
             conversation,
           )
-          console.log(`ConversationMessagesUpdate!!! 更新会话`, conversation)
           set(ClientConversationStateFamily(updateConversationId), conversation)
         }
       },
@@ -121,10 +120,6 @@ export const useClientConversationListener = () => {
       return
     }
     const updateConversationListener = () => {
-      console.log(
-        `ConversationMessagesUpdate!!! 更新会话1111`,
-        currentConversationId,
-      )
       updateConversation(currentConversationId).then().catch()
     }
     window.addEventListener('focus', updateConversationListener)
@@ -453,6 +448,7 @@ export const useClientConversationListener = () => {
               await ClientConversationMessageManager.getMessageIds(
                 conversationId,
               )
+            // NOTE: 这里可能存在误区，这里查询的结果未时间倒序的数组结果
             const messages =
               await ClientConversationMessageManager.getMessagesByMessageIds(
                 messagesIds,

@@ -43,20 +43,21 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   }
 
   return (
-    <Stack direction={'column'} justifyContent={'flex-end'} flex={1}>
+    <Stack direction={'column'} flex={1} overflow={'auto'}>
       <SidebarChatBoxMessageListContainer
         conversationId={conversationId}
         isAIResponding={false}
         writingMessage={null}
         sx={{
           textAlign: 'left',
+          height: 'auto',
         }}
       />
       <Stack
         direction={'row'}
         justifyContent={'center'}
         alignItems={'center'}
-        mb={2}
+        my={2}
       >
         <Button
           variant={'contained'}
@@ -285,7 +286,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                 }}
               >
                 {isClickOpenOnce && (
-                  <Stack height={'100%'}>
+                  <Stack height={'100%'} display={'flex'} direction={'column'}>
                     <Stack
                       direction='row'
                       spacing={1}

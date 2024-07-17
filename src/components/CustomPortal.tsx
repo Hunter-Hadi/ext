@@ -12,7 +12,7 @@ import {
 // @ts-ignore
 
 export interface CustomPortalRenderProps {
-  rootContainer: HTMLElement | null
+  rootContainer?: HTMLElement
 }
 
 type CustomPortalRender = (

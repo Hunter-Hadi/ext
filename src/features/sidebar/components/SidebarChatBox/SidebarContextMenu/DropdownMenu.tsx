@@ -59,12 +59,17 @@ export const DropdownItem = React.forwardRef<HTMLElement, DropdownItemProps>(
       return menuItem.text
     }, [menuItem.text, t])
 
-    const isHover = useMemo(() => matcher?.match(menuItem), [matcher?.path])
+    const hoverItem = useMemo(() => matcher?.match(menuItem), [matcher?.path])
 
     const boxRef = React.useRef<HTMLDivElement>()
 
     React.useEffect(() => {
-      if (isHover && boxRef.current && boxRef.current.parentElement) {
+      if (
+        hoverItem &&
+        !hoverItem.triggerByHover &&
+        boxRef.current &&
+        boxRef.current.parentElement
+      ) {
         const parentElement = boxRef.current.parentElement
         const itemHeight = 45
 
@@ -86,7 +91,7 @@ export const DropdownItem = React.forwardRef<HTMLElement, DropdownItemProps>(
           })
         }
       }
-    }, [isHover])
+    }, [hoverItem])
 
     return (
       <Box
@@ -94,9 +99,9 @@ export const DropdownItem = React.forwardRef<HTMLElement, DropdownItemProps>(
         data-id={menuItem.id}
         aria-disabled={disabled}
         className={`floating-context-menu-item ${
-          isHover ? 'floating-context-menu-item--active' : ''
+          hoverItem ? 'floating-context-menu-item--active' : ''
         }`}
-        tabIndex={isHover ? 0 : -1}
+        tabIndex={hoverItem ? 0 : -1}
         sx={{
           display: 'flex',
           alignItems: 'center',

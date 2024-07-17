@@ -37,8 +37,11 @@ const FloatingContextMenuTitleBar: FC<{
 
   const { hideFloatingContextMenu, floatingDropdownMenu } =
     useFloatingContextMenu()
-  const { currentFloatingContextMenuDraft, selectedDraftUserMessage } =
-    useFloatingContextMenuDraft()
+  const {
+    currentFloatingContextMenuDraft,
+    selectedDraftUserMessage,
+    historyMessages,
+  } = useFloatingContextMenuDraft()
   const { floatingDropdownMenuPin, setFloatingDropdownMenuPin } =
     useFloatingContextMenuPin()
   const [contextWindowChanges, setContextWindowChanges] = useRecoilState(

@@ -29,7 +29,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import debounce from 'lodash-es/debounce'
 import isEqual from 'lodash-es/isEqual'
 import { default as lodashSet } from 'lodash-es/set'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
@@ -67,8 +67,8 @@ export const useChromeExtensionButtonSettings = () => {
     })
   }, [appDBStorage.buttonSettings])
   const { syncLocalToServer } = useSyncSettingsChecker()
-  const debounceSyncLocalToServer = useCallback(
-    debounce(syncLocalToServer, 1000),
+  const debounceSyncLocalToServer = useMemo(
+    () => debounce(syncLocalToServer, 1000),
     [syncLocalToServer],
   )
   const updateButtonSettings = async (

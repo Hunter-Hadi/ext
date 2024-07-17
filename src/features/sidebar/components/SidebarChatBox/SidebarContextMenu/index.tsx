@@ -66,6 +66,7 @@ const SidebarContextMenu: FC = () => {
   const { checkAttachments } = useClientChat()
 
   const handleEnter = async () => {
+    const content = contentRef.current
     if (!content) {
       setIsContentEmptyError(true)
       return
@@ -93,6 +94,7 @@ const SidebarContextMenu: FC = () => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleContextMenuClick = (menuItem: IContextMenuItem) => {
+    const content = contentRef.current
     if (!content) {
       setIsContentEmptyError(true)
       return
@@ -359,30 +361,31 @@ const SidebarContextMenu: FC = () => {
           component={'div'}
           ref={boxRef}
         ></Box>
-      </Box>
-      <Box
-        sx={{
-          padding: '0 10px',
-        }}
-      >
-        <ContextMenuList
-          inputValue={inputValue}
-          open
-          defaultPlacement={'bottom-start'}
-          needAutoUpdate
-          root={root}
-          menuList={contextWindowList}
-          referenceElementRef={referenceElementRef}
-          onClickContextMenu={handleContextMenuClick}
-          referenceElement={
-            <Box
-              component={'div'}
-              ref={referenceElementRef}
-              data-test-id={'ContextMenuList-referenceElementRef'}
-            />
-          }
-          matcher={matcher}
-        />
+        <Box
+          sx={{
+            maxWidth: '768px',
+            width: '100%',
+          }}
+        >
+          <ContextMenuList
+            inputValue={inputValue}
+            open
+            defaultPlacement={'bottom-start'}
+            needAutoUpdate
+            root={root}
+            menuList={contextWindowList}
+            referenceElementRef={referenceElementRef}
+            onClickContextMenu={handleContextMenuClick}
+            referenceElement={
+              <Box
+                component={'div'}
+                ref={referenceElementRef}
+                data-test-id={'ContextMenuList-referenceElementRef'}
+              />
+            }
+            matcher={matcher}
+          />
+        </Box>
       </Box>
     </>
   )

@@ -22,18 +22,17 @@ const OptionsToolbarLogo: FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const theme = useCustomTheme()
   const isDownMd = useMediaQuery(theme.customTheme.breakpoints.down('md'))
-  const toggleDrawer = (open: boolean) => (
-    event: React.KeyboardEvent | React.MouseEvent,
-  ) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return
+      }
+      setDrawerOpen(open)
     }
-    setDrawerOpen(open)
-  }
   return (
     <React.Fragment>
       <Stack direction={'row'} alignItems={'center'} spacing={0.5}>

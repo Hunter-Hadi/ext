@@ -10,7 +10,10 @@ import {
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
-import { getLocationHashRoute, setLocationHashRoute } from '@/pages/settings/context'
+import {
+  getLocationHashRoute,
+  setLocationHashRoute,
+} from '@/pages/settings/context'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import SettingPromptsRestorer from '@/pages/settings/pages/prompts/components/SettingPromptsRestorer'
 
@@ -37,28 +40,37 @@ const SettingsPromptPageCardLayout = styled(({ ...props }: StackProps) => (
 
 const tabToState = (tab: string | null) => {
   switch (tab) {
-    case 'instant-reply': return 'INSTANT_REPLY'
-    case 'summary': return 'SUMMARY'
-    case 'search': return 'SEARCH'
+    case 'instant-reply':
+      return 'INSTANT_REPLY'
+    case 'summary':
+      return 'SUMMARY'
+    case 'search':
+      return 'SEARCH'
     case 'context-menu':
-    default: return 'CONTEXT_MENU'
+    default:
+      return 'CONTEXT_MENU'
   }
 }
 
 const stateToTab = (state: SettingPromptsPageHeaderTabKey | null) => {
   switch (state) {
-    case 'INSTANT_REPLY': return 'instant-reply'
-    case 'SUMMARY': return 'summary'
-    case 'SEARCH': return 'search'
+    case 'INSTANT_REPLY':
+      return 'instant-reply'
+    case 'SUMMARY':
+      return 'summary'
+    case 'SEARCH':
+      return 'search'
     case 'CONTEXT_MENU':
-    default: return 'context-menu'
+    default:
+      return 'context-menu'
   }
 }
 
 const SettingsPromptsPage: FC = () => {
   const { t } = useTranslation(['settings'])
-  const [activeTab, setActiveTab] =
-    useState<SettingPromptsPageHeaderTabKey>(tabToState(new URLSearchParams(getLocationHashRoute()[1]).get('tab')))
+  const [activeTab, setActiveTab] = useState<SettingPromptsPageHeaderTabKey>(
+    tabToState(new URLSearchParams(getLocationHashRoute()[1]).get('tab')),
+  )
 
   useEffect(() => {
     const [route] = getLocationHashRoute()
@@ -114,9 +126,7 @@ const SettingsPromptsPage: FC = () => {
         {activeTab === 'INSTANT_REPLY' && (
           <SettingPromptsWritingAssistantCard />
         )}
-        {activeTab === 'SUMMARY' && (
-          <SettingPromptsSummaryCard />
-        )}
+        {activeTab === 'SUMMARY' && <SettingPromptsSummaryCard />}
       </SettingsPromptPageCardLayout>
     </SettingsFeatureCardLayout>
   )

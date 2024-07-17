@@ -1,6 +1,3 @@
-type WFIPAddressTypeOption = (
-  'IPv4'
-  | 'IPv6'
-);
+type WFIPAddressTypeOption = 'IPv4' | 'IPv6'
 
-export default WFIPAddressTypeOption;
+export default WFIPAddressTypeOption

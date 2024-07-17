@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Sblocca tutti i modelli AI",
     "pricing__upgrade__popper_card__item3__title": "Sblocca tutte le funzionalità",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Solo GPT-4o. Per sbloccare tutti gli altri modelli AI, passa al piano MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Miglior rapporto qualità-prezzo"
+    "pricing__upgrade__popper_card__item4__title": "Miglior rapporto qualità-prezzo",
+    "permission__pricing_hook__context_menu__title": "Aggiorna per sbloccare l'AI riscrittore illimitato",
+    "permission__pricing_hook__context_menu__description": "Con l'AI riscrittore di MaxAI, puoi risparmiare tempo nella correzione e perfezionamento delle tue parole in tutto il web, dall'email ai social media e oltre."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

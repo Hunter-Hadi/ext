@@ -15,4 +15,5 @@ export const ContextMenuNamePrefixRegex = new RegExp(
     .replace(/\]/g, '\\]')
     .replace(/\s/g, '\\s'),
 )
-export type ContextMenuNamePrefixType = typeof ContextMenuNamePrefixList[number]
+export type ContextMenuNamePrefixType =
+  (typeof ContextMenuNamePrefixList)[number]

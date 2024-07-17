@@ -194,7 +194,7 @@ const PromptLibraryCardEditForm: FC = () => {
     >
       <Paper
         tabIndex={-1}
-        id="prompt-form-modal"
+        id='prompt-form-modal'
         sx={{
           textAlign: 'left',
           height: '74vh',
@@ -212,7 +212,7 @@ const PromptLibraryCardEditForm: FC = () => {
       >
         <AppLoadingLayout loading={isFetching}>
           <Typography
-            variant="body1"
+            variant='body1'
             fontWeight={500}
             sx={{
               flexShrink: 0,
@@ -230,9 +230,9 @@ const PromptLibraryCardEditForm: FC = () => {
             }}
           >
             <Grid item xs={12}>
-              <FormControl size="small" variant="standard" fullWidth>
+              <FormControl size='small' variant='standard' fullWidth>
                 <FormLabel>
-                  <Typography variant="body1">
+                  <Typography variant='body1'>
                     {t(
                       'prompt_library:edit_prompt_modal__field__template__label',
                     )}
@@ -257,15 +257,15 @@ const PromptLibraryCardEditForm: FC = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <FormControl size="small" variant="standard" fullWidth>
+              <FormControl size='small' variant='standard' fullWidth>
                 <FormLabel>
-                  <Typography variant="body1">
+                  <Typography variant='body1'>
                     {t('prompt_library:edit_prompt_modal__field__title__label')}
                     <FormLabelRequiredFlag />
                   </Typography>
                 </FormLabel>
                 <TextField
-                  size="small"
+                  size='small'
                   InputProps={inputProps}
                   disabled={formDisabled}
                   {...register('prompt_title', { required: true })}
@@ -279,9 +279,9 @@ const PromptLibraryCardEditForm: FC = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <FormControl size="small" variant="standard" fullWidth>
+              <FormControl size='small' variant='standard' fullWidth>
                 <FormLabel>
-                  <Typography variant="body1">
+                  <Typography variant='body1'>
                     {t(
                       'prompt_library:edit_prompt_modal__field__description__label',
                     )}
@@ -289,7 +289,7 @@ const PromptLibraryCardEditForm: FC = () => {
                   </Typography>
                 </FormLabel>
                 <TextField
-                  size="small"
+                  size='small'
                   InputProps={inputProps}
                   disabled={formDisabled}
                   multiline
@@ -350,16 +350,16 @@ const PromptLibraryCardEditForm: FC = () => {
               />
             </Grid>
             <Grid item xs={itemWidth}>
-              <FormControl size="small" variant="standard" fullWidth>
+              <FormControl size='small' variant='standard' fullWidth>
                 <FormLabel>
-                  <Typography variant="body1">
+                  <Typography variant='body1'>
                     {t(
                       'prompt_library:edit_prompt_modal__field__author_name__label',
                     )}
                   </Typography>
                 </FormLabel>
                 <TextField
-                  size="small"
+                  size='small'
                   InputProps={inputProps}
                   disabled={formDisabled}
                   {...register('author')}
@@ -370,16 +370,16 @@ const PromptLibraryCardEditForm: FC = () => {
               </FormControl>
             </Grid>
             <Grid item xs={itemWidth}>
-              <FormControl size="small" variant="standard" fullWidth>
+              <FormControl size='small' variant='standard' fullWidth>
                 <FormLabel>
-                  <Typography variant="body1">
+                  <Typography variant='body1'>
                     {t(
                       'prompt_library:edit_prompt_modal__field__author_url__label',
                     )}
                   </Typography>
                 </FormLabel>
                 <TextField
-                  size="small"
+                  size='small'
                   InputProps={inputProps}
                   disabled={formDisabled}
                   {...register('author_url', {
@@ -415,14 +415,14 @@ const PromptLibraryCardEditForm: FC = () => {
             </Grid>
           </Grid>
           <Stack
-            direction="row"
-            justifyContent="flex-end"
+            direction='row'
+            justifyContent='flex-end'
             spacing={1}
             pt={1}
             flexShrink={0}
           >
             <Button
-              variant="secondary"
+              variant='secondary'
               onClick={() => {
                 closePromptLibraryEditForm()
               }}
@@ -431,7 +431,7 @@ const PromptLibraryCardEditForm: FC = () => {
             </Button>
             {!isAddNewPrompt && (
               <LoadingButton
-                variant="outlined"
+                variant='outlined'
                 loading={loading}
                 onClick={handleClone}
               >
@@ -439,7 +439,7 @@ const PromptLibraryCardEditForm: FC = () => {
               </LoadingButton>
             )}
             <LoadingButton
-              variant="contained"
+              variant='contained'
               onClick={handleSubmit}
               loading={loading}
             >
@@ -459,8 +459,8 @@ const PromptLibraryCardEditForm: FC = () => {
             setCancelConfirmShow(false)
             closePromptLibraryEditForm()
           }}
-          cancelButtonText="No, take me back!"
-          confirmButtonText="Close anyway"
+          cancelButtonText='No, take me back!'
+          confirmButtonText='Close anyway'
         />
       </Paper>
     </CustomModal>

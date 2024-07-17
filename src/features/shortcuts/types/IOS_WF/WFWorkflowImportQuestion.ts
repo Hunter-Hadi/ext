@@ -1,4 +1,3 @@
-interface WFWorkflowImportQuestion {
-}
+interface WFWorkflowImportQuestion {}
 
-export default WFWorkflowImportQuestion;
+export default WFWorkflowImportQuestion

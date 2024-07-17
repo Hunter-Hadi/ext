@@ -8,18 +8,18 @@ const Announcement = () => {
   return null
   return (
     <Stack
-      direction="row"
-      bgcolor="#DDB1FF"
-      color="rgba(0,0,0,0.87)"
+      direction='row'
+      bgcolor='#DDB1FF'
+      color='rgba(0,0,0,0.87)'
       p={1}
-      alignItems="center"
+      alignItems='center'
     >
       <Stack
-        direction="row"
+        direction='row'
         flex={1}
         fontSize={16}
-        alignItems="center"
-        justifyContent="center"
+        alignItems='center'
+        justifyContent='center'
         maxWidth={395}
         mx={'auto'}
       ></Stack>

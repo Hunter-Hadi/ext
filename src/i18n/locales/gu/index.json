@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "બધા AI મોડલ્સ ખોલો",
     "pricing__upgrade__popper_card__item3__title": "બધા વ્યાવસાયિકતા ખોલો",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o માત્ર. બાકી બધા AI મોડેલ્સ અનલૉક કરવા માટે, મેક્સએઆઈ એલાઇટ પ્લાન પર અપગ્રેડ કરો.",
-    "pricing__upgrade__popper_card__item4__title": "તમારા પૈસાનું શ્રેષ્ઠ મૂલ્ય"
+    "pricing__upgrade__popper_card__item4__title": "તમારા પૈસાનું શ્રેષ્ઠ મૂલ્ય",
+    "permission__pricing_hook__context_menu__title": "અનલોક કરવા માટે અપગ્રેડ કરો અનલિમિટેડ AI રીવ્રાઇટર",
+    "permission__pricing_hook__context_menu__description": "MaxAIના એઆઈ રીવ્રાઇટર સાથે, તમે વેબ પર તમારા શબ્દોને પ્રુફરીડિંગ અને પરફેક્ટ કરવામાં સમય બચાવી શકો છો, ઇમેઇલથી સોશિયલ મીડિયા અને અન્ય સ્થળો સુધી."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

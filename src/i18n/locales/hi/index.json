@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "सभी एआई मॉडल अनलॉक करें",
     "pricing__upgrade__popper_card__item3__title": "सभी विशेषताएँ अनलॉक करें",
     "pricing__plan_features__pro__feature1__item2__subtitle": "केवल GPT-4o। सभी अन्य AI मॉडल्स को अनलॉक करने के लिए MaxAI इलाइट प्लान पर अपग्रेड करें।",
-    "pricing__upgrade__popper_card__item4__title": "आपके पैसे के लिए सर्वोत्तम मूल्य"
+    "pricing__upgrade__popper_card__item4__title": "आपके पैसे के लिए सर्वोत्तम मूल्य",
+    "permission__pricing_hook__context_menu__title": "अनलॉक करें असीमित एआई रीव्राइटर को",
+    "permission__pricing_hook__context_menu__description": "मैक्सएआई के एआई रीव्राइटर के साथ, आप समय बचा सकते हैं प्रूफरीडिंग और अपने शब्दों को परफेक्ट करने में वेब पर, ईमेल से सोशल मीडिया तक और आगे।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

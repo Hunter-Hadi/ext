@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Buka semua model AI",
     "pricing__upgrade__popper_card__item3__title": "Buka semua ciri",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Hanya GPT-4o. Untuk membuka semua model AI lain, naik taraf ke pelan MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Nilai terbaik untuk wang anda"
+    "pricing__upgrade__popper_card__item4__title": "Nilai terbaik untuk wang anda",
+    "permission__pricing_hook__context_menu__title": "Naik taraf untuk membuka penulis semula AI tanpa had",
+    "permission__pricing_hook__context_menu__description": "Dengan penulis semula AI MaxAI, anda boleh menjimatkan masa dalam menyemak dan menyempurnakan perkataan anda di seluruh web, dari emel ke media sosial dan seterusnya."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

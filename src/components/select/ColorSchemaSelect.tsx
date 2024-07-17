@@ -16,8 +16,8 @@ const ColorSchemaSelect: FC<IProps> = ({ defaultValue, onChange }) => {
   }
 
   return (
-    <FormControl size="small">
-      <Stack direction="row" spacing={1} alignItems="center">
+    <FormControl size='small'>
+      <Stack direction='row' spacing={1} alignItems='center'>
         <Typography>Light</Typography>
         <Switch
           checked={defaultValue === 'dark'}

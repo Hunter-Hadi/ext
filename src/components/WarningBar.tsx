@@ -33,7 +33,7 @@ const WarningBar: FC<IProps> = (props) => {
 
   return (
     <Stack
-      direction="row"
+      direction='row'
       spacing={1}
       p={1.5}
       sx={{
@@ -83,7 +83,7 @@ const WarningBar: FC<IProps> = (props) => {
         onClick={onClose}
       >
         <ContextMenuIcon
-          icon="Close"
+          icon='Close'
           sx={{
             color: 'rgba(0, 0, 0, 0.6)',
             fontSize: '24px',

@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Avaa kaikki tekoälymallit",
     "pricing__upgrade__popper_card__item3__title": "Avaa kaikki ominaisuudet",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Vain GPT-4o. Päivitä MaxAI Elite -suunnitelmaan avataksesi kaikki muut tekoälymallit.",
-    "pricing__upgrade__popper_card__item4__title": "Paras arvo rahallesi"
+    "pricing__upgrade__popper_card__item4__title": "Paras arvo rahallesi",
+    "permission__pricing_hook__context_menu__title": "Päivitä avataksesi rajattoman tekoälyuudelleenkirjoittajan",
+    "permission__pricing_hook__context_menu__description": "MaxAI:n tekoälyuudelleenkirjoittajalla voit säästää aikaa tekstien tarkistamisessa ja hiomisessa verkossa, sähköpostista sosiaaliseen mediaan ja pidemmälle."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

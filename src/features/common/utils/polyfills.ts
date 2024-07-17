@@ -12,7 +12,7 @@ export const requestIdleCallbackPolyfill = (
         },
       })
     }, 1)
-    return (timer as unknown) as number
+    return timer as unknown as number
   }
   try {
     if (typeof window !== undefined && window.requestIdleCallback) {

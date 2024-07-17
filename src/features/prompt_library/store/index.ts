@@ -15,8 +15,8 @@ export const PromptLibraryState = atom<IPromptLibraryState>({
   },
 })
 
-export const PromptLibraryListParametersState = atom<IPromptLibraryListParametersState>(
-  {
+export const PromptLibraryListParametersState =
+  atom<IPromptLibraryListParametersState>({
     key: 'PromptLibraryListParametersState',
     default: {
       enabled: false,
@@ -28,8 +28,7 @@ export const PromptLibraryListParametersState = atom<IPromptLibraryListParameter
       page_size: 12,
       total: 0,
     },
-  },
-)
+  })
 export type PromptLibraryRuntimeType = 'CRXPage' | 'CRXSidebar' | 'WebPage'
 
 export type PromptLibraryRuntimeContextType = {

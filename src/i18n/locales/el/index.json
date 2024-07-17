@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Ξεκλειδώστε όλα τα μοντέλα AI",
     "pricing__upgrade__popper_card__item3__title": "Ξεκλειδώστε όλες τις λειτουργίες",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Μόνο GPT-4o. Για να ξεκλειδώσετε όλα τα άλλα μοντέλα AI, αναβαθμίστε στο σχέδιο MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Η καλύτερη αξία για τα χρήματά σας"
+    "pricing__upgrade__popper_card__item4__title": "Η καλύτερη αξία για τα χρήματά σας",
+    "permission__pricing_hook__context_menu__title": "Αναβαθμίστε για ξεκλείδωμα απεριόριστου αναδιατάκτη AI",
+    "permission__pricing_hook__context_menu__description": "Με τον αναδιατάκτη AI του MaxAI, μπορείτε να εξοικονομήσετε χρόνο στον έλεγχο και την τελειοποίηση των λέξεών σας σε όλο τον ιστό, από email έως κοινωνικά μέσα και πέρα."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

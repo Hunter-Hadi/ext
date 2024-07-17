@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Alle KI-Modelle freischalten",
     "pricing__upgrade__popper_card__item3__title": "Alle Funktionen freischalten",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Nur GPT-4o. Um alle anderen KI-Modelle freizuschalten, wechseln Sie zum MaxAI Elite-Plan.",
-    "pricing__upgrade__popper_card__item4__title": "Bestes Preis-Leistungs-Verhältnis"
+    "pricing__upgrade__popper_card__item4__title": "Bestes Preis-Leistungs-Verhältnis",
+    "permission__pricing_hook__context_menu__title": "Upgrade für unbegrenzten KI-Umschreiber freischalten",
+    "permission__pricing_hook__context_menu__description": "Mit MaxAI's KI-Umschreiber können Sie Zeit beim Korrekturlesen und Perfektionieren Ihrer Worte im Web sparen, von E-Mails über soziale Medien und mehr."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -46,8 +46,8 @@ const GoogleLoginButton: FC<IProps> = ({
   return (
     <Button
       href={`${APP_USE_CHAT_GPT_HOST}/login?auto=true`}
-      component="a"
-      target="_target"
+      component='a'
+      target='_target'
       startIcon={
         <Stack
           sx={{

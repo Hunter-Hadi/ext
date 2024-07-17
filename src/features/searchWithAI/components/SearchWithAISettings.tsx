@@ -18,10 +18,8 @@ import { TRIGGER_MODE_OPTIONS } from '../constants'
 const SearchWithAISettings = () => {
   const { t } = useTranslation(['settings', 'common'])
 
-  const {
-    searchWithAISettings,
-    setSearchWithAISettings,
-  } = useSearchWithAISettings()
+  const { searchWithAISettings, setSearchWithAISettings } =
+    useSearchWithAISettings()
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
 
@@ -45,21 +43,21 @@ const SearchWithAISettings = () => {
   return (
     <>
       <Tooltip
-        placement="top"
+        placement='top'
         PopperProps={{
           disablePortal: true,
         }}
         title={<Typography fontSize={12}>{t('common:settings')}</Typography>}
       >
         <IconButton
-          color="inherit"
-          size="small"
+          color='inherit'
+          size='small'
           onClick={handleClick}
           sx={{
             fontSize: 18,
           }}
         >
-          <SettingsOutlinedIcon fontSize="inherit" />
+          <SettingsOutlinedIcon fontSize='inherit' />
         </IconButton>
       </Tooltip>
       <Popover
@@ -102,20 +100,20 @@ const SearchWithAISettings = () => {
                   })
                 }}
               >
-                <Typography fontSize={14} color="text.primary" fontWeight={500}>
+                <Typography fontSize={14} color='text.primary' fontWeight={500}>
                   {t(option.name)}
                 </Typography>
-                <Typography fontSize={14} color="text.secondary">
+                <Typography fontSize={14} color='text.secondary'>
                   {t(option.desc)}
                 </Typography>
               </Stack>
             )
           })}
 
-          <Divider flexItem variant="middle" />
+          <Divider flexItem variant='middle' />
 
           <Button
-            variant="text"
+            variant='text'
             onClick={openOptionsPage}
             endIcon={<OpenInNewOutlinedIcon />}
             sx={{

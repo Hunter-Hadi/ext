@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "تمام AI ماڈلز کھولیں",
     "pricing__upgrade__popper_card__item3__title": "تمام خصوصیات کھولیں",
     "pricing__plan_features__pro__feature1__item2__subtitle": "صرف GPT-4o۔ تمام دیگر AI ماڈلز کو آن لاک کرنے کے لئے MaxAI ایلیٹ منصوبہ اپ گریڈ کریں۔",
-    "pricing__upgrade__popper_card__item4__title": "آپ کے پیسے کی بہترین قیمت"
+    "pricing__upgrade__popper_card__item4__title": "آپ کے پیسے کی بہترین قیمت",
+    "permission__pricing_hook__context_menu__title": "غیر محدود AI ری ورائٹر کھولنے کے لیے اپ گریڈ کریں",
+    "permission__pricing_hook__context_menu__description": "میکس اے آئی کے AI ری ورائٹر کے ساتھ، آپ وقت بچا سکتے ہیں جبکہ پروف ریڈنگ اور اپنے الفاظ کو پوری ویب پر بہتر بنا سکتے ہیں، ای میل سے لے کر سوشل میڈیا اور اس سے آگے۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

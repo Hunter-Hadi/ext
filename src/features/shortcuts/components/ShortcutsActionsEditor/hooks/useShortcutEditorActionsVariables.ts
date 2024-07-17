@@ -98,8 +98,7 @@ export const PRESET_VARIABLE_MAP: {
   SELECTED_TEXT: {
     VariableName: 'SELECTED_TEXT',
     label: 'SELECTED_TEXT',
-    placeholder:
-      'The text you selected on the current page',
+    placeholder: 'The text you selected on the current page',
     defaultValue: '{{SELECTED_TEXT}}',
     valueType: 'Text',
     systemVariable: true,
@@ -211,7 +210,7 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       examples: [],
       permissionKeys: ['inputAssistantComposeReplyButton'],
       showInPreviewEditor: true,
-      previewEditorDefaultValue: 'Full context'
+      previewEditorDefaultValue: 'Full context',
     },
     {
       variable: PRESET_VARIABLE_MAP.TARGET_CONTEXT,

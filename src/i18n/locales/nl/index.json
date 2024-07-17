@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Ontgrendel alle AI-modellen",
     "pricing__upgrade__popper_card__item3__title": "Ontgrendel alle functies",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Alleen GPT-4o. Upgrade naar het MaxAI Elite plan om alle andere AI-modellen te ontgrendelen.",
-    "pricing__upgrade__popper_card__item4__title": "Beste waarde voor uw geld"
+    "pricing__upgrade__popper_card__item4__title": "Beste waarde voor uw geld",
+    "permission__pricing_hook__context_menu__title": "Upgrade om onbeperkte AI-herformuleringsfunctie te ontgrendelen",
+    "permission__pricing_hook__context_menu__description": "Met MaxAI's AI-herformuleringsfunctie kunt u tijd besparen bij het proeflezen en perfectioneren van uw woorden op het web, van e-mail tot sociale media en verder."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

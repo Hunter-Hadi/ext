@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Minden AI modell feloldása",
     "pricing__upgrade__popper_card__item3__title": "Minden funkció feloldása",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Csak GPT-4o. Az összes többi AI modell feloldásához frissítse a MaxAI Elite tervre.",
-    "pricing__upgrade__popper_card__item4__title": "Legjobb érték pénzéért"
+    "pricing__upgrade__popper_card__item4__title": "Legjobb érték pénzéért",
+    "permission__pricing_hook__context_menu__title": "Frissítés az korlátlan AI átíró feloldásához",
+    "permission__pricing_hook__context_menu__description": "A MaxAI AI átírójával időt takaríthat meg a weben átívelő szövegek ellenőrzésére és tökéletesítésére az e-mailtől a közösségi médiáig és még tovább."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

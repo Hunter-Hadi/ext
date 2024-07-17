@@ -1,7 +1,3 @@
-type WFWorkflowType = (
-  'ActionExtension'
-  | 'NCWidget'
-  | 'WatchKit'
-);
+type WFWorkflowType = 'ActionExtension' | 'NCWidget' | 'WatchKit'
 
-export default WFWorkflowType;
+export default WFWorkflowType

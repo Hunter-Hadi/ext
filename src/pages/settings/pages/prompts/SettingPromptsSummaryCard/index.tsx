@@ -18,9 +18,7 @@ import {
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import DevContent from '@/components/DevContent'
-import {
-  type IContextMenuItem,
-} from '@/features/contextMenu/types'
+import { type IContextMenuItem } from '@/features/contextMenu/types'
 import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
 import SettingPromptsActionConfirmModal, {
   type IConfirmActionType,
@@ -231,7 +229,7 @@ const SettingPrompsSummaryCard: FC = () => {
       <Stack
         height={0}
         flex={1}
-      // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
       >
         <Stack height={'100%'}>
           <DevContent>

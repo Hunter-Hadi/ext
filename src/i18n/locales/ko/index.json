@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "모든 AI 모델 잠금 해제",
     "pricing__upgrade__popper_card__item3__title": "모든 기능 잠금 해제",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o 만 가능. 다른 모든 AI 모델을 잠금 해제하려면 MaxAI 엘리트 플랜으로 업그레이드하세요.",
-    "pricing__upgrade__popper_card__item4__title": "귀하의 돈 가치 최상의 선택"
+    "pricing__upgrade__popper_card__item4__title": "귀하의 돈 가치 최상의 선택",
+    "permission__pricing_hook__context_menu__title": "무제한 AI 리라이터 잠금 해제",
+    "permission__pricing_hook__context_menu__description": "MaxAI의 AI 리라이터로 웹 전체에서 이메일부터 소셜 미디어까지 단어를 검토하고 완벽하게 하는 데 시간을 절약할 수 있습니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

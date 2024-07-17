@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Отключете всички AI модели",
     "pricing__upgrade__popper_card__item3__title": "Отключете всички функции",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Само GPT-4o. За отключване на всички други модели на изкуствен интелект, ъпгрейднете до MaxAI Elite плана.",
-    "pricing__upgrade__popper_card__item4__title": "Най-добра стойност за вашите пари"
+    "pricing__upgrade__popper_card__item4__title": "Най-добра стойност за вашите пари",
+    "permission__pricing_hook__context_menu__title": "Подобрете, за да отключите неограничен AI пренаписвач",
+    "permission__pricing_hook__context_menu__description": "С AI пренаписвача на MaxAI можете да спестите време за коригиране и усъвършенстване на думите си по целия интернет, от имейли до социални мрежи и още."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

@@ -6,7 +6,7 @@ import { FC } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message';
+import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER,
@@ -25,10 +25,10 @@ const SearchWithAIFooter: FC<IProps> = ({
 }) => {
   const { t } = useTranslation(['client', 'common'])
   return (
-    <Stack p={2} spacing={1} alignItems="flex-start">
+    <Stack p={2} spacing={1} alignItems='flex-start'>
       {aiMessage && (
         <Button
-          variant="normalOutlined"
+          variant='normalOutlined'
           endIcon={<OpenInNewOutlined />}
           onClick={async () => {
             window.dispatchEvent(

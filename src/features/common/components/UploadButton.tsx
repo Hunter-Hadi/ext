@@ -1,6 +1,6 @@
 import Button, { ButtonProps } from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
-import React, { type ChangeEvent,type FC } from 'react'
+import React, { type ChangeEvent, type FC } from 'react'
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -28,9 +28,9 @@ const UploadButton: FC<IUploadButtonProps> = (props) => {
     ...restProps
   } = props
   return (
-    <Button component="label" variant={variant} {...(restProps as any)}>
+    <Button component='label' variant={variant} {...(restProps as any)}>
       {children}
-      <VisuallyHiddenInput type="file" accept={accept} onChange={onChange} />
+      <VisuallyHiddenInput type='file' accept={accept} onChange={onChange} />
     </Button>
   )
 }

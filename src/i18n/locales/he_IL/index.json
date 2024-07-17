@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "פתח את כל דגמי המודלים של AI",
     "pricing__upgrade__popper_card__item3__title": "פתח את כל התכונות",
     "pricing__plan_features__pro__feature1__item2__subtitle": "רק GPT-4o. כדי לפתוח את כל הדגמי AI האחרים, שדרגו לתוכנית MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "ערך מיטבי עבור הכסף שלך"
+    "pricing__upgrade__popper_card__item4__title": "ערך מיטבי עבור הכסף שלך",
+    "permission__pricing_hook__context_menu__title": "שדרג כדי לפתוח את מחדל הכתיבה האוטומטית הבלתי מוגבלת",
+    "permission__pricing_hook__context_menu__description": "עם מחדל הכתיבה האוטומטית של MaxAI, תוכל לחסוך זמן בבדיקת התקינות והשלמת המילים שלך ברחבי הרשת, מדואר אלקטרוני ועד לרשתות חברתיות ומעבר."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

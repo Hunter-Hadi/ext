@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Buksan lahat ng AI models",
     "pricing__upgrade__popper_card__item3__title": "Buksan lahat ng mga tampok",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o lamang. Upang i-unlock ang lahat ng iba pang mga AI model, mag-upgrade sa MaxAI Elite plan.",
-    "pricing__upgrade__popper_card__item4__title": "Pinakamahusay na halaga para sa iyong pera"
+    "pricing__upgrade__popper_card__item4__title": "Pinakamahusay na halaga para sa iyong pera",
+    "permission__pricing_hook__context_menu__title": "Mag-upgrade para mabuksan ang walang hanggang AI rewriter",
+    "permission__pricing_hook__context_menu__description": "Sa AI rewriter ng MaxAI, maaari mong makatipid ng oras sa pagsusuri at pagpapakinis ng iyong mga salita sa buong web, mula sa email hanggang sa social media at higit pa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

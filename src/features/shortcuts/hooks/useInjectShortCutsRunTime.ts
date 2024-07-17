@@ -8,10 +8,8 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
  * @deprecated - 被useInitWebPageMessageChannel代替
  */
 const useInjectShortCutsRunTime = () => {
-  const {
-    updateSidebarConversationType,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { updateSidebarConversationType, currentSidebarConversationType } =
+    useSidebarSettings()
   const [waitRunActionsConfig, setWaitRunActionsConfig] = useState<{
     taskId: string
     actions: ISetActionsType

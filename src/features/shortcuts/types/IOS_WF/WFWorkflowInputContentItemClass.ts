@@ -1,5 +1,5 @@
-type WFWorkflowInputContentItemClass = (
-  'WFAppStoreAppContentItem'
+type WFWorkflowInputContentItemClass =
+  | 'WFAppStoreAppContentItem'
   | 'WFArticleContentItem'
   | 'WFContactContentItem'
   | 'WFDateContentItem'
@@ -16,6 +16,5 @@ type WFWorkflowInputContentItemClass = (
   | 'WFSafariWebPageContentItem'
   | 'WFStringContentItem'
   | 'WFURLContentItem'
-);
 
-export default WFWorkflowInputContentItemClass;
+export default WFWorkflowInputContentItemClass

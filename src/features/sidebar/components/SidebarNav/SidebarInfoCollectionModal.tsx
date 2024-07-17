@@ -71,13 +71,15 @@ const SidebarInfoCollectionModal: FC<IProps> = (props) => {
             value={content}
             onChange={(event) => setContent(event.target.value)}
           />
-          <Stack direction="row" alignItems="center">
+          <Stack direction='row' alignItems='center'>
             <Checkbox
               sx={{ flexShrink: 0 }}
               checked={checked}
               onChange={(_, newChecked) => setChecked(newChecked)}
             />
-            <Typography color="text.secondary">{t('client:sidebar__nav__concat_us__checkbox_title')}</Typography>
+            <Typography color='text.secondary'>
+              {t('client:sidebar__nav__concat_us__checkbox_title')}
+            </Typography>
           </Stack>
           <Stack direction={'row'} spacing={1} justifyContent={'end'}>
             <Button variant={'outlined'} onClick={handleCancel}>

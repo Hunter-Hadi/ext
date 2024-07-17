@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "सर्व AI मॉडेल्स अनलॉक करा",
     "pricing__upgrade__popper_card__item3__title": "सर्व सुविधांची अनलॉक करा",
     "pricing__plan_features__pro__feature1__item2__subtitle": "केवळ GPT-4o. सर्व इतर AI मॉडेल्स सोडवण्यासाठी, MaxAI Elite योजनेवर अपग्रेड करा.",
-    "pricing__upgrade__popper_card__item4__title": "आपल्या पैसांसाठी सर्वोत्तम मूल्य"
+    "pricing__upgrade__popper_card__item4__title": "आपल्या पैसांसाठी सर्वोत्तम मूल्य",
+    "permission__pricing_hook__context_menu__title": "अमर्यादित AI पुनरलेखन सोडवा",
+    "permission__pricing_hook__context_menu__description": "MaxAIच्या AI पुनरलेखकासह, आपण वेबवरील आपले शब्द प्रमाणित करण्यासाठी वेळ काढू आणि पूर्ण करण्यासाठी समय वाचवू शकता, ईमेलपासून सोशल मीडियापर्यंत."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

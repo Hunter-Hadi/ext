@@ -36,7 +36,7 @@ const AppLoadingLayout: FC<{
           {loadingTextMemo && (
             <Typography
               mt={1.5}
-              variant="body2"
+              variant='body2'
               fontWeight={400}
               fontSize={'16px'}
               lineHeight={1.25}

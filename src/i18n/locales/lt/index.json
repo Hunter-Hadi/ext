@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Atrakinti visus AI modelius",
     "pricing__upgrade__popper_card__item3__title": "Atrakinti visus funkcionalumus",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tik GPT-4o. Norėdami atrakinti visus kitus dirbtinio intelekto modelius, atnaujinkite iki MaxAI Elite plano.",
-    "pricing__upgrade__popper_card__item4__title": "Geriausia vertė už jūsų pinigus"
+    "pricing__upgrade__popper_card__item4__title": "Geriausia vertė už jūsų pinigus",
+    "permission__pricing_hook__context_menu__title": "Atnaujinkite, kad atrakintumėte neribotą AI persirašytoją",
+    "permission__pricing_hook__context_menu__description": "Su MaxAI AI persirašytoju galite sutaupyti laiko, kai redaguojate ir tobulinate savo žodžius visame tinkle, nuo el. pašto iki socialinių tinklų ir dar toliau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

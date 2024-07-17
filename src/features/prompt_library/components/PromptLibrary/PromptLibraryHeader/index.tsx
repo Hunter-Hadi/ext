@@ -18,10 +18,8 @@ export interface IPromptLibraryHeaderProps {
 const PromptLibraryHeader: FC<IPromptLibraryHeaderProps> = (props) => {
   const { sx } = props
   const { t } = useTranslation(['prompt_library'])
-  const {
-    activeTab,
-    promptLibraryListParameters,
-  } = usePromptLibraryParameters()
+  const { activeTab, promptLibraryListParameters } =
+    usePromptLibraryParameters()
   return (
     <Stack
       width={'100%'}

@@ -63,9 +63,9 @@ const FunnelSurveyDialog: FC<IFunnelSurveyDialogProps> = ({
     >
       <Box id={`funnel_survey__${sceneType}`}>
         <IconButton
-          data-testid="maxai-custom-modal-close-btn"
+          data-testid='maxai-custom-modal-close-btn'
           onClick={handleClose}
-          size="small"
+          size='small'
           sx={{
             position: 'absolute',
             top: 8,

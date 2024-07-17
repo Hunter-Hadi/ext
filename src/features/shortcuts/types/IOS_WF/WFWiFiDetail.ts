@@ -1,6 +1,3 @@
-type WFWiFiDetail = (
-  'Network Name'
-  | 'BSSID'
-);
+type WFWiFiDetail = 'Network Name' | 'BSSID'
 
-export default WFWiFiDetail;
+export default WFWiFiDetail

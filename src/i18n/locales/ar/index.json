@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "فتح جميع نماذج الذكاء الاصطناعي",
     "pricing__upgrade__popper_card__item3__title": "فتح جميع الميزات",
     "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. لفتح جميع النماذج الأخرى للذكاء الاصطناعي، قم بالترقية إلى خطة MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "أفضل قيمة لأموالك"
+    "pricing__upgrade__popper_card__item4__title": "أفضل قيمة لأموالك",
+    "permission__pricing_hook__context_menu__title": "الترقية لفتح محرر الذكاء الاصطناعي غير المحدود",
+    "permission__pricing_hook__context_menu__description": "مع محرر الذكاء الاصطناعي لـ MaxAI، يمكنك توفير الوقت في التدقيق وتحسين كلماتك عبر الويب، من البريد الإلكتروني إلى وسائل التواصل الاجتماعي وأكثر من ذلك."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

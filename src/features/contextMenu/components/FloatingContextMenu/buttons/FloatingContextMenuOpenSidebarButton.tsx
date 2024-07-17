@@ -47,7 +47,7 @@ const FloatingContextMenuOpenSidebarButton: FC<{
           borderColor: 'customColor.borderColor',
         }}
         className={'max-ai__actions__button--toggle-sidebar'}
-        variant="text"
+        variant='text'
         onClick={() => {
           // 2023-07-10 @huangsong
           // - 点击button（或者按⌘J）的效果是从当前popup转移到sidebar里

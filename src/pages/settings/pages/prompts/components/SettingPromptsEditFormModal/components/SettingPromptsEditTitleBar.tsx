@@ -59,8 +59,8 @@ const DropDownMenuItem: FC<{
           },
         },
       }}
-      component="div"
-      role="menuitem"
+      component='div'
+      role='menuitem'
       onClick={onClick}
     >
       <Stack direction={'row'} spacing={1} px={1} alignItems={'center'}>
@@ -235,26 +235,28 @@ const TitleBar: FC<{
 
   return (
     <Stack
-      direction="row"
-      alignItems="center"
-      borderBottom="1px solid"
-      borderColor="customColor.borderColor"
+      direction='row'
+      alignItems='center'
+      borderBottom='1px solid'
+      borderColor='customColor.borderColor'
       spacing={1}
       py={1}
       px={2}
     >
-      <Stack direction="row" alignItems="center" spacing={1} overflow="hidden">
+      <Stack direction='row' alignItems='center' spacing={1} overflow='hidden'>
         {node.data?.icon && (
           <ContextMenuIcon
             icon={node.data.icon}
             sx={{ fontSize: 24, color: 'primary.main' }}
           />
         )}
-        <Typography variant="h6" noWrap>{modalTitle}</Typography>
+        <Typography variant='h6' noWrap>
+          {modalTitle}
+        </Typography>
       </Stack>
 
       <DropdownMenu
-        defaultPlacement="bottom-end"
+        defaultPlacement='bottom-end'
         zIndex={2147483630}
         hoverOpen
         menuSx={{
@@ -262,7 +264,7 @@ const TitleBar: FC<{
         }}
         referenceElement={
           <Button
-            variant="text"
+            variant='text'
             sx={{
               width: '36px',
               height: '36px',
@@ -280,20 +282,20 @@ const TitleBar: FC<{
             />
           </Button>
         }
-        label=""
+        label=''
       >
         <DropDownMenuItem label={t('common:cancel')} onClick={onCancel} />
         {editNode.id && (
           <DropDownMenuItem
             label={t('common:delete')}
-            color="error"
+            color='error'
             onClick={() => onDelete?.(editNode.id)}
           />
         )}
       </DropdownMenu>
 
       <Button
-        variant="contained"
+        variant='contained'
         disabled={isDisabledSave}
         sx={{ borderRadius: '8px' }}
         onClick={handleSave}

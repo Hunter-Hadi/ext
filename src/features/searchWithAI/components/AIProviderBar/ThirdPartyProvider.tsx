@@ -124,7 +124,7 @@ const ThirdPartyProvider: FC<IProps> = ({ onProviderChange, disabled }) => {
           handleChangeProvider(thirdPartyProvider.value)
         }}
       >
-        <Stack direction={'row'} spacing={1} alignItems="center">
+        <Stack direction={'row'} spacing={1} alignItems='center'>
           <SearchWIthAIProviderIcon
             aiProviderType={thirdPartyProvider.value}
             isActive={true}
@@ -166,11 +166,11 @@ const ThirdPartyProvider: FC<IProps> = ({ onProviderChange, disabled }) => {
               : ''}
           </Typography>
         }
-        placement="top"
+        placement='top'
       >
         <span>
           <IconButton
-            className="search-with-ai-provider-button search-with-ai-third-party-provider-button"
+            className='search-with-ai-provider-button search-with-ai-third-party-provider-button'
             sx={{
               p: 1,
               borderRadius: 0,
@@ -227,7 +227,7 @@ const ThirdPartyProvider: FC<IProps> = ({ onProviderChange, disabled }) => {
         </span>
       </Tooltip>
 
-      <Popper anchorEl={anchorEl} open={open} placement="bottom-end">
+      <Popper anchorEl={anchorEl} open={open} placement='bottom-end'>
         <Paper
           sx={{
             mt: '1px',

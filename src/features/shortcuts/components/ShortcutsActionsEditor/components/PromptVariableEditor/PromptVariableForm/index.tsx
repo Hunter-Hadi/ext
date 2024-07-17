@@ -126,9 +126,9 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
     <Grid container spacing={2}>
       <Grid item xs={12} container spacing={2}>
         <Grid item xs={12}>
-          <FormControl size="small" variant="standard" fullWidth>
+          <FormControl size='small' variant='standard' fullWidth>
             <FormLabel>
-              <Typography variant="body2">
+              <Typography variant='body2'>
                 {t('prompt_editor:add_variable__variable_name__title')}
                 <FormLabelRequiredFlag />
               </Typography>
@@ -136,7 +136,7 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
             <TextField
               disabled={type === 'view'}
               {...labelRegisterForm}
-              size="small"
+              size='small'
               InputProps={inputProps}
               onKeyPress={(event) => handleVariableKeyPress(event)}
               placeholder={t(
@@ -154,16 +154,16 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <FormControl size="small" variant="standard" fullWidth>
+          <FormControl size='small' variant='standard' fullWidth>
             <FormLabel>
-              <Typography variant="body2">
+              <Typography variant='body2'>
                 {t('prompt_editor:add_variable__variable_placeholder__title')}
               </Typography>
             </FormLabel>
             <TextField
               disabled={type === 'view'}
               {...placeholderRegisterForm}
-              size="small"
+              size='small'
               InputProps={inputProps}
               inputRef={(ref) => (inputRefs.current[1] = ref)}
               placeholder={t(
@@ -173,11 +173,11 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <Stack direction="row" justifyContent="flex-end" spacing={1} pt={1}>
-            <Button variant="secondary" onClick={onCancel}>
+          <Stack direction='row' justifyContent='flex-end' spacing={1} pt={1}>
+            <Button variant='secondary' onClick={onCancel}>
               {t('prompt_editor:add_variable__cancel_button__title')}
             </Button>
-            <Button variant="contained" onClick={handleSubmit}>
+            <Button variant='contained' onClick={handleSubmit}>
               {type === 'add'
                 ? t('prompt_editor:add_variable__add_button__title')
                 : t('prompt_editor:add_variable__save_button__title')}

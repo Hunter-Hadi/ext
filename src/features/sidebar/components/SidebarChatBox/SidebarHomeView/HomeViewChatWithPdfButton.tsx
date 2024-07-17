@@ -20,7 +20,7 @@ const HomeViewChatWithPdfButton = () => {
   return (
     <Stack
       direction={'row'}
-      alignItems="center"
+      alignItems='center'
       spacing={0.5}
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'
@@ -47,7 +47,7 @@ const HomeViewChatWithPdfButton = () => {
         fontSize={14}
         fontWeight={400}
         lineHeight={1.5}
-        color="inherit"
+        color='inherit'
       >
         {t('client:home_view_content_nav__chat_with_pdf_title')}
       </Typography>

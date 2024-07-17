@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Lås upp alla AI-modeller",
     "pricing__upgrade__popper_card__item3__title": "Lås upp alla funktioner",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Endast GPT-4o. För att låsa upp alla andra AI-modeller, uppgradera till MaxAI Elite-planen.",
-    "pricing__upgrade__popper_card__item4__title": "Bästa värdet för dina pengar"
+    "pricing__upgrade__popper_card__item4__title": "Bästa värdet för dina pengar",
+    "permission__pricing_hook__context_menu__title": "Uppgradera för att låsa upp obegränsad AI-omskrivare",
+    "permission__pricing_hook__context_menu__description": "Med MaxAI:s AI-omskrivare kan du spara tid på korrekturläsning och perfektionera dina ord över webben, från e-post till sociala medier och mer."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

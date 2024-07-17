@@ -1,4 +1,3 @@
-
 export type IPaymentParams = {
   paymentUrl: string
   planType: string

@@ -11,12 +11,8 @@ import React, {
 } from 'react'
 import { useRecoilState } from 'recoil'
 
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
-import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
@@ -41,7 +37,6 @@ import {
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { type IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
@@ -100,12 +95,13 @@ const InputAssistantButtonContextMenu: FC<
     useState<IContextMenuItem | null>(null)
   const { currentSidebarConversationType, currentConversationId } =
     useClientConversation()
-  const { currentUserPlan, userInfo } = useUserInfo()
+  const { currentUserPlan } = useUserInfo()
   const { shortCutsEngine } = useShortCutsEngine()
   const { pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { askAIWIthShortcuts } = useClientChat()
+  const { checkFeatureQuota } = useUserFeatureQuota()
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const hasPermission = useMemo(() => {
     if (permissionWrapperCardSceneType && currentUserPlan.name === 'free') {
@@ -132,27 +128,20 @@ const InputAssistantButtonContextMenu: FC<
     async (contextMenu: IContextMenuItem) => {
       if (!smoothConversationLoading && contextMenu.data.actions) {
         // 每个网站5次免费InputAssistantButton的机会
-        const onBoardingData = await getChromeExtensionOnBoardingData()
-        let key =
-          `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${getCurrentDomainHost()}_TIMES` as OnBoardingKeyType
+        // const onBoardingData = await getChromeExtensionOnBoardingData()
+        // let key =
+        //   `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${getCurrentDomainHost()}_TIMES` as OnBoardingKeyType
 
         // free trail用户判断instant reply使用次数
-        if (userInfo?.role?.name === 'free_trial') {
-          key = 'ON_BOARDING_RECORD_INSTANT_REPLY_FREE_TRIAL_TIMES'
-        }
+        // if (userInfo?.role?.name === 'free_trial') {
+        //   key = 'ON_BOARDING_RECORD_INSTANT_REPLY_FREE_TRIAL_TIMES'
+        // }
 
-        const currentHostFreeTrialTimes = Number(onBoardingData[key] || 0)
+        // const currentHostFreeTrialTimes = Number(onBoardingData[key] || 0)
 
         // 如果没有权限, 显示付费卡片
         if (!hasPermission && permissionWrapperCardSceneType) {
-          if (currentHostFreeTrialTimes > 0) {
-            // 如果有免费试用次数, 则减少一次
-            await setChromeExtensionOnBoardingData(
-              key,
-              currentHostFreeTrialTimes - 1,
-            )
-          } else {
-            // 2024-04-30 付费卡点在当前context window里显示
+          if (!(await checkFeatureQuota('instant_reply'))) {
             // 如果没有免费试用次数, 则显示付费卡片
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType, {
               conversationId: currentConversationId,

@@ -59,7 +59,7 @@ const DiscardChangesModal: FC<IDiscardChangesModal> = (props) => {
         tabIndex={-1}
         width={'100%'}
         height={'100%'}
-        justifyContent="center"
+        justifyContent='center'
         sx={{
           height: 'auto',
           outline: 'none',

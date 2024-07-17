@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Fungua mifano yote ya AI",
     "pricing__upgrade__popper_card__item3__title": "Fungua vipengele vyote",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o pekee. Ili kufungua mifano mingine yote ya AI, nenda kwenye mpango wa MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Thamani bora kwa pesa yako"
+    "pricing__upgrade__popper_card__item4__title": "Thamani bora kwa pesa yako",
+    "permission__pricing_hook__context_menu__title": "Boresha ili kufungua mzunguko usio na kikomo wa AI mpya",
+    "permission__pricing_hook__context_menu__description": "Na AI mpya ya MaxAI, unaweza kuokoa muda kwenye kuhariri na kuboresha maneno yako kote kwenye wavuti, kutoka barua pepe hadi mitandao ya kijamii na zaidi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

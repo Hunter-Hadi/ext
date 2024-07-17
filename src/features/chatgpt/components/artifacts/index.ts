@@ -1,5 +1,6 @@
 export { ArtifactsButton } from './components/ArtifactsButton'
 export { ArtifactsRoot } from './components/ArtifactsRoot'
+export { ArtifactsToggleButton } from './components/ArtifactsToggleButton'
 export { useArtifacts } from './hooks/useArtifacts'
 export { ArtifactsState } from './store/ArtifactsState'
 export * from './types.d'

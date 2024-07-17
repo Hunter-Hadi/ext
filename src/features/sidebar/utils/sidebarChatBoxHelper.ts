@@ -74,6 +74,9 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
     if (host === 'gatesnotes.com') {
       htmlElement.style.height = '100%'
     }
+    if (host === 'pangu.huaweicloud.com') {
+      htmlElement.style.height = '100%'
+    }
 
     // google map
     if (host === 'google.com' && location.pathname.startsWith('/maps')) {
@@ -212,6 +215,10 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
     }
 
     if (host === 'gatesnotes.com') {
+      htmlElement.style.height = ''
+    }
+
+    if (host === 'pangu.huaweicloud.com') {
       htmlElement.style.height = ''
     }
 

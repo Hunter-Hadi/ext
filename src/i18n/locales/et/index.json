@@ -1341,9 +1341,9 @@
     "queries": "Jäänud AI päringud",
     "reset_on_date": "Lähtestamine kuupäeval {{DATE}}",
     "advanced_text__secondary__content": "Kõrge kiirusega tark AI päringud: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret edasijõudnud tekstipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
+    "advanced_text__secondary__content__tooltip": "Tagage vähemalt 1,500 kõrge kiirusega nutikat AI päringut iga kuu. Kasutamine selle piiri ületamisel või suurtes sagedustes võib kaasa tuua kiiruse ja kvaliteedi vähenemise. Õiglase kasutamise eeskirjad kehtivad päringu sageduse, sisu pikkuse ja üldise kasutamismustri alusel.",
     "image_generate__secondary__content": "Kõrge kiirusega pildi AI päringud: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Veendu, et sul on igakuiselt vähemalt 1500 kiiret pildipäringut. Pärast limiidi saavutamist võib mudeli kiirus ja kvaliteet väheneda.",
+    "image_generate__secondary__content__tooltip": "Tagage vähemalt 600 kõrge kiirusega pildi AI päringut iga kuu. Kasutamine selle piiri ületamisel või suurtes sagedustes võib kaasa tuua kiiruse ja kvaliteedi vähenemise. Õiglase kasutamise eeskirjad kehtivad päringu sageduse, pildi suuruse ja üldise kasutamismustri alusel.",
     "upgrade_to_go_unlimited": "Uuendage MaxAI Elite'iks, et minna piiranguteta"
   },
   "onboarding": {

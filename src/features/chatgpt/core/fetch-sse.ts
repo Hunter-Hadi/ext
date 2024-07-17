@@ -1,7 +1,7 @@
 import { createParser } from 'eventsource-parser'
 import isEmpty from 'lodash-es/isEmpty'
 
-import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
+import maxAIBackgroundSafeFetch from '@/background/api/maxAIBackgroundSafeFetch'
 import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP, CHATGPT_WEBAPP_HOST } from '@/constants'
 
@@ -16,14 +16,11 @@ export const fetchSSE = async (
   },
 ) => {
   const { onMessage, ...fetchOptions } = options
-  if (fetchOptions.taskId) {
-    fetchOptions.headers = backgroundRequestHeadersGenerator.getTaskIdHeaders(
-      fetchOptions.taskId,
-      fetchOptions.headers,
-    )
-    delete fetchOptions.taskId
-  }
-  const resp = await fetch(resource, fetchOptions)
+  const resp = await maxAIBackgroundSafeFetch(
+    resource,
+    fetchOptions,
+    fetchOptions.taskId,
+  )
   console.log(resp, 'straming resp')
   if (!resp.ok) {
     const error = await resp.json().catch(() => ({}))

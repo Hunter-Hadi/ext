@@ -351,6 +351,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (
               sx={{
                 width: '270px',
                 maxHeight: '320px',
+                overflow: 'auto',
                 filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                 p: '4px',
                 mt: '3px',

@@ -27,6 +27,7 @@ import {
   getEditableElement,
   replaceMarkerContent,
 } from '@/features/contextMenu/utils/selectionHelper'
+import iframeInitPageTranslator from '@/features/pageTranslator/browser-extension/iframeInitPageTranslator'
 import Log from '@/utils/Log'
 dayjs.extend(utc)
 
@@ -76,6 +77,7 @@ const initIframe = async () => {
     log.info('block list', window.location.href)
     return
   }
+  iframeInitPageTranslator()
   log.info('Init iframe')
   listenerClientMessage()
   let mouseDownElement: null | HTMLInputElement | HTMLTextAreaElement = null

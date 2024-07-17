@@ -1341,9 +1341,9 @@
     "queries": "Resterende AI queries",
     "reset_on_date": "Reset op {{DATE}}",
     "advanced_text__secondary__content": "Hoge-snelheid slimme AI-vragen: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid geavanceerde tekstvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
+    "advanced_text__secondary__content__tooltip": "Zorg voor minimaal 1.500 slimme AI-zoekopdrachten met hoge snelheid per maand. Gebruik boven deze limiet of bij hoge frequenties kan leiden tot verminderde snelheid en kwaliteit. Eerlijk gebruik beleid is van toepassing op basis van zoekfrequentie, inhoudslengte en algemene gebruikspatronen.",
     "image_generate__secondary__content": "Hoge-snelheid afbeelding AI-vragen: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Zorg ervoor dat je elke maand minimaal 1.500 hoge snelheid afbeeldingsvragen hebt. Na het bereiken van de limiet kan de snelheid en kwaliteit van het model worden verminderd.",
+    "image_generate__secondary__content__tooltip": "Zorg voor minimaal 600 snelle beeld AI-zoekopdrachten per maand. Gebruik boven deze limiet of bij hoge frequenties kan leiden tot verminderde snelheid en kwaliteit. Eerlijk gebruik beleid is van toepassing op basis van zoekfrequentie, beeldformaat en algemene gebruikspatronen.",
     "upgrade_to_go_unlimited": "Upgrade naar MaxAI Elite om onbeperkt te gaan"
   },
   "onboarding": {

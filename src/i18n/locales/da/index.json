@@ -1341,9 +1341,9 @@
     "queries": "Resterende AI-forespørgsler",
     "reset_on_date": "Nulstil den {{DATE}}",
     "advanced_text__secondary__content": "Hurtige intelligente AI-forespørgsler: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige avancerede tekstforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",
+    "advanced_text__secondary__content__tooltip": "Sørg for mindst 1.500 højhastigheds smarte AI-forespørgsler hver måned. Brug ud over denne grænse eller ved høje frekvenser kan resultere i nedsat hastighed og kvalitet. Fair brugspolitikker gælder baseret på forespørgselsfrekvens, indholdslængde og generelle brugsmønstre.",
     "image_generate__secondary__content": "Hurtige billede AI-forespørgsler: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Sørg for mindst 1.500 hurtige billedforespørgsler hver måned. Efter at have nået grænsen kan hastigheden og kvaliteten af modellen blive reduceret.",
+    "image_generate__secondary__content__tooltip": "Sørg for mindst 600 højhastigheds billed-AI-forespørgsler hver måned. Brug ud over denne grænse eller ved høje frekvenser kan resultere i nedsat hastighed og kvalitet. Fair brugspolitikker gælder baseret på forespørgselsfrekvens, billedstørrelse og generelle brugsmønstre.",
     "upgrade_to_go_unlimited": "Opgrader til MaxAI Elite for at gå ubegrænset"
   },
   "onboarding": {

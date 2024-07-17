@@ -1144,9 +1144,9 @@
     "queries": "Remaining AI queries",
     "reset_on_date": "Reset on {{DATE}}",
     "advanced_text__secondary__content": "High-speed smart AI queries: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed advanced text queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
+    "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed smart AI queries each month. Usage beyond this limit or at high frequencies may result in reduced speed and quality. Fair usage policies apply based on query frequency, content length, and overall usage patterns.",
     "image_generate__secondary__content": "High-speed image AI queries: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Ensure at least 1,500 high-speed image queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
+    "image_generate__secondary__content__tooltip": "Ensure at least 600 high-speed image AI queries each month. Usage beyond this limit or at high frequencies may result in reduced speed and quality. Fair usage policies apply based on query frequency, image size, and overall usage patterns.",
     "upgrade_to_go_unlimited": "Upgrade to MaxAI Elite to go unlimited"
   },
   "survey": {

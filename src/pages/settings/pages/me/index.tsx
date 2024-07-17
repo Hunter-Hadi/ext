@@ -13,12 +13,21 @@ import { useTranslation } from 'react-i18next'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import UserQuotaUsageQueriesCard from '@/features/auth/components/UserQuotaUsageQueriesCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import UpgradePlanSalesCard from '@/features/pricing/components/UpgradePlanSalesCard'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 const SettingsMePage: FC = () => {
   const { t } = useTranslation(['common', 'settings'])
-  const { userInfo, isPayingUser, isPaymentOneTimeUser, isTopPlanUser } =
-    useUserInfo()
+  const {
+    syncUserSubscriptionInfo,
+    userInfo,
+    isPayingUser,
+    isPaymentOneTimeUser,
+    isTopPlanUser,
+  } = useUserInfo()
+  useEffectOnce(() => {
+    syncUserSubscriptionInfo().then().catch()
+  })
   return (
     <Stack>
       <SettingsFeatureCardLayout

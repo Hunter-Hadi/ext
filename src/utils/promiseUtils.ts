@@ -23,3 +23,11 @@ export const promiseTimeout = <T>(
     })
   })
 }
+
+/**
+ * sleep - 用来暂停执行
+ * @param ms
+ * @returns
+ */
+export const sleep = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms))

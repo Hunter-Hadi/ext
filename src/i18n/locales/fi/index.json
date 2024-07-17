@@ -1341,9 +1341,9 @@
     "queries": "Jäljellä olevat AI-kyselyt",
     "reset_on_date": "Nollaa päivämäärään {{DATE}}",
     "advanced_text__secondary__content": "Korkeanopeuksiset älykkäät tekoälykyselyt: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa edistynyttä tekstikyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
+    "advanced_text__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa älykästä AI-kyselyä kuukaudessa. Käyttö tämän rajan yli tai suurilla taajuuksilla voi johtaa nopeuden ja laadun heikkenemiseen. Reilun käytön politiikka koskee kyselytaajuutta, sisällön pituutta ja yleistä käyttökuvioita.",
     "image_generate__secondary__content": "Korkeanopeuksiset kuvatekoälykyselyt: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa kuvakyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
+    "image_generate__secondary__content__tooltip": "Varmista vähintään 600 nopeaa kuvan AI-kyselyä kuukaudessa. Käyttö tämän rajan yli tai suurilla taajuuksilla voi johtaa nopeuden ja laadun heikkenemiseen. Reilun käytön politiikka koskee kyselytaajuutta, kuvan kokoa ja yleistä käyttökuvioita.",
     "upgrade_to_go_unlimited": "Päivitä MaxAI Eliteen ja mene rajattomasti"
   },
   "onboarding": {

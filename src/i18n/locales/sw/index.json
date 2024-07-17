@@ -1341,9 +1341,9 @@
     "queries": "Ombi la AI lililobaki",
     "reset_on_date": "Weka upya tarehe {{DATE}}",
     "advanced_text__secondary__content": "Majibu ya AI mjanja ya kasi kubwa: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya maandishi ya juu kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
+    "advanced_text__secondary__content__tooltip": "Hakikisha angalau 1,500 ya maswali ya AI yenye kasi kubwa kila mwezi. Matumizi zaidi ya kikomo hiki au kwa mara nyingi kunaweza kusababisha kupungua kwa kasi na ubora. Sera ya matumizi ya haki inatumika kulingana na mara ya kuuliza, urefu wa maudhui, na mifumo ya matumizi kwa ujumla.",
     "image_generate__secondary__content": "Majibu ya picha ya AI ya kasi kubwa: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Hakikisha angalau maswali 1,500 ya picha kwa kasi kubwa kila mwezi. Baada ya kufikia kiwango, kasi na ubora wa mfano unaweza kupunguzwa.",
+    "image_generate__secondary__content__tooltip": "Hakikisha angalau 600 ya maswali ya AI ya picha yenye kasi kubwa kila mwezi. Matumizi zaidi ya kikomo hiki au kwa mara nyingi kunaweza kusababisha kupungua kwa kasi na ubora. Sera ya matumizi ya haki inatumika kulingana na mara ya kuuliza, ukubwa wa picha, na mifumo ya matumizi kwa ujumla.",
     "upgrade_to_go_unlimited": "Boresha kwenda MaxAI Elite ili kwenda bila kikomo"
   },
   "onboarding": {

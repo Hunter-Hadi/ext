@@ -469,6 +469,7 @@ const SidebarMarketingTabs: FC = () => {
   const { isLogin, loaded } = useAuthLogin()
   const { isFreeUser, isTopPlanUser } = useUserInfo()
   const { canShowSurvey } = useFeedbackSurveyStatus()
+
   if (!isLogin || !loaded) {
     // 占位符
     return <Box></Box>

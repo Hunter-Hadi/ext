@@ -163,7 +163,11 @@ const UpgradePlanSalesCard: FC<IUpgradePlanSalesCardProps> = ({
                 {t('client:permission__pricing_hook__button__upgrade_now')}
               </Button>
               <Box textAlign='center' mt={0.5}>
-                <Link href={'/pricing'} underline='none'>
+                <Link
+                  href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+                  underline='none'
+                  target={'_blank'}
+                >
                   <Typography
                     variant='custom'
                     fontSize={12}

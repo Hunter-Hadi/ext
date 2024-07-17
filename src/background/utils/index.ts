@@ -16,7 +16,6 @@ import {
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import { wait } from '@/utils'
 
@@ -300,48 +299,6 @@ export const chromeExtensionLogout = async () => {
   await removeMaxAIBetaFeatureSettings()
 }
 
-/**
- * 获取网页内容
- * @param url
- * @param maxWaitTime
- */
-export const backgroundGetUrlContent = async (
-  url: string,
-  maxWaitTime = 15 * 1000,
-): Promise<{
-  success: boolean
-  data: {
-    success: boolean
-    title?: string
-    body?: string
-    url?: string
-  }
-  message?: string
-}> => {
-  const backgroundConversation = new ContentScriptConnectionV2({
-    runtime: 'shortcut',
-  })
-  const fallback = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          success: false,
-          message: 'timeout',
-          data: undefined,
-        })
-      }, maxWaitTime)
-    })
-  }
-  const response = backgroundConversation.postMessage({
-    event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
-    data: {
-      URL: url,
-    },
-  }) as any
-  return Promise.race([response, fallback()]).then((result) => {
-    return result
-  })
-}
 /**
  * 重启插件
  */

@@ -1,7 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
-import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
@@ -9,17 +8,9 @@ import {
 import { maxAIAPISendQuestion } from '@/background/provider/chat/maxai-providers/index'
 import { UseChatGPTPlusChat } from '@/background/src/chat'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
-import {
-  APP_USE_CHAT_GPT_API_HOST,
-  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-  SUMMARY__CITATION__PROMPT_ID,
-} from '@/constants'
-import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import {
-  IAIResponseSourceCitation,
-  IChatUploadFile,
-} from '@/features/indexed_db/conversations/models/Message'
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -96,76 +87,6 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         }
       },
     })
-  }
-  async tempGetCitation(
-    taskId: string,
-    question: string,
-    AIResponse: string,
-    systemPrompt: string,
-  ): Promise<IAIResponseSourceCitation[] | undefined> {
-    try {
-      const headers = backgroundRequestHeadersGenerator.getTaskIdHeaders(
-        taskId,
-        {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
-        },
-      )
-      const result = await fetch(
-        `${APP_USE_CHAT_GPT_API_HOST}/gpt/chat_small_document_citation`,
-        {
-          method: 'POST',
-          headers,
-          body: JSON.stringify({
-            chat_history: [
-              {
-                role: 'system',
-                content: [
-                  {
-                    type: 'text',
-                    text: systemPrompt,
-                  },
-                ],
-              },
-              {
-                role: 'ai',
-                content: [
-                  {
-                    type: 'text',
-                    text: AIResponse,
-                  },
-                ],
-              },
-            ],
-            streaming: false,
-            temperature: 0.2,
-            message_content: [
-              {
-                type: 'text',
-                text: question,
-              },
-            ],
-            prompt_name: 'summary_citation',
-            prompt_id: SUMMARY__CITATION__PROMPT_ID,
-            prompt_action_type: 'chat_complete',
-            prompt_type: 'preset',
-          }),
-        },
-      )
-      const data: {
-        status: string
-        sources: Array<{
-          content: string
-          snippet: string
-        }>
-      } = await result.json()
-      if (data.status === 'OK') {
-        return data.sources
-      }
-      return []
-    } catch (e) {
-      return undefined
-    }
   }
   async abortAskQuestion(messageId: string) {
     return await this.useChatGPTPlusChat.abortTask(messageId)

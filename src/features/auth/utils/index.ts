@@ -16,7 +16,7 @@ import {
   IUserRole,
   IUserRoleType,
 } from '@/features/auth/types'
-import { clientRequestHeaderGenerator } from '@/utils/clientRequestHeaderGenerator'
+import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 export const getMaxAIChromeExtensionAccessToken = async (): Promise<string> => {
@@ -192,16 +192,10 @@ export const fetchUserSubscriptionInfo = async (): Promise<
     if (!token) {
       return undefined
     }
-    const response = await fetch(
+    const response = await maxAIClientSafeFetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_subscription_info`,
-      {
-        headers: await clientRequestHeaderGenerator(
-          {
-            Authorization: `Bearer ${token}`,
-          },
-          await getCurrentFocusTabUrl(),
-        ),
-      },
+      {},
+      await getCurrentFocusTabUrl(),
     )
     if (response.ok) {
       const result = await response.json()
@@ -337,16 +331,10 @@ export const fetchUserInfo = async (): Promise<
     if (!token) {
       return undefined
     }
-    const response = await fetch(
+    const response = await maxAIClientSafeFetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_info`,
-      {
-        headers: await clientRequestHeaderGenerator(
-          {
-            Authorization: `Bearer ${token}`,
-          },
-          await getCurrentFocusTabUrl(),
-        ),
-      },
+      {},
+      await getCurrentFocusTabUrl(),
     )
     if (response.ok) {
       const result = await response.json()
@@ -373,13 +361,9 @@ export const fetchUserQuotaUsageInfo = async (): Promise<
     if (!token) {
       return undefined
     }
-    const response = await fetch(
+    const response = await maxAIClientSafeFetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_quota_usage`,
-      {
-        headers: await clientRequestHeaderGenerator({
-          Authorization: `Bearer ${token}`,
-        }),
-      },
+      {},
     )
     if (response.ok) {
       const result = await response.json()

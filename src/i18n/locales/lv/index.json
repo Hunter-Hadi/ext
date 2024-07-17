@@ -1341,9 +1341,9 @@
     "queries": "Atlikušie AI vaicājumi",
     "reset_on_date": "Atiestatīt {{DATE}}",
     "advanced_text__secondary__content": "Augstās ātruma viedie AI vaicājumi: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma papildinātus teksta vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
+    "advanced_text__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 ātrus gudrus AI vaicājumus katru mēnesi. Lietošana pāri šim ierobežojumam vai augstos biežumos var rezultēt samazinātu ātrumu un kvalitāti. Taisnīgas lietošanas politikas tiek piemērotas, pamatojoties uz vaicājumu biežumu, satura garumu un kopējiem lietošanas paraugiem.",
     "image_generate__secondary__content": "Augstās ātruma attēla AI vaicājumi: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Nodrošiniet vismaz 1,500 augsta ātruma attēlu vaicājumus katru mēnesi. Sasniedzot limitu, modeļa ātrums un kvalitāte var tikt samazināta.",
+    "image_generate__secondary__content__tooltip": "Nodrošiniet vismaz 600 ātrus attēlu AI vaicājumus katru mēnesi. Lietošana pāri šim ierobežojumam vai augstos biežumos var rezultēt samazinātu ātrumu un kvalitāti. Taisnīgas lietošanas politikas tiek piemērotas, pamatojoties uz vaicājumu biežumu, attēla lielumu un kopējiem lietošanas paraugiem.",
     "upgrade_to_go_unlimited": "Uzlabojiet uz MaxAI Elite, lai iet neierobežoti"
   },
   "onboarding": {

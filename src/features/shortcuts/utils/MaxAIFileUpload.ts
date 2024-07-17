@@ -1,6 +1,6 @@
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import { clientRequestHeaderGenerator } from '@/utils/clientRequestHeaderGenerator'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 // 上传的文件用途
 export type MaxAIFileUploadUseCase =
@@ -30,7 +30,7 @@ export const maxAIFileUpload = async (
   },
 ) => {
   const { useCase, filename = file.name } = options
-  const accessToken = await getAccessToken()
+  const accessToken = await getMaxAIChromeExtensionAccessToken()
   // eslint-disable-next-line no-async-promise-executor
   return new Promise<MaxAIFileUploadResponse>(async (resolve) => {
     if (!accessToken) {
@@ -46,11 +46,8 @@ export const maxAIFileUpload = async (
     formData.append('file', file)
     formData.append('file_name', filename)
     formData.append('use_case', useCase)
-    fetch(`${APP_USE_CHAT_GPT_API_HOST}/app/upload_file`, {
+    maxAIClientSafeFetch(`${APP_USE_CHAT_GPT_API_HOST}/app/upload_file`, {
       method: 'POST',
-      headers: await clientRequestHeaderGenerator({
-        Authorization: `Bearer ${accessToken}`,
-      }),
       body: formData,
     })
       .then((response) => response.json())

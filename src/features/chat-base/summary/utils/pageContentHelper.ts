@@ -14,7 +14,7 @@ import {
   getVisibleTextNodes,
 } from '@/features/chat-base/summary/utils/elementHelper'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 /**
@@ -206,7 +206,7 @@ export const getGithubPageContent = async () => {
       'a[data-testid="raw-button"]',
     ) as HTMLAnchorElement
     if (rawLink) {
-      const response = await clientFetchAPI(rawLink.href, {
+      const response = await clientProxyFetchAPI(rawLink.href, {
         method: 'GET',
         parse: 'text',
       })
@@ -278,7 +278,7 @@ export const getGithubPageContent = async () => {
       const otherCommentsUrl = new URL(window.location.href)
       otherCommentsUrl.pathname =
         otherCommentsUrl.pathname + `/partials/load_more`
-      const result = await clientFetchAPI(otherCommentsUrl.href, {
+      const result = await clientProxyFetchAPI(otherCommentsUrl.href, {
         method: 'GET',
         parse: 'text',
       })

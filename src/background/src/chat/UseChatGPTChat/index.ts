@@ -1,7 +1,7 @@
 import isNumber from 'lodash-es/isNumber'
 import Browser from 'webextension-polyfill'
 
-import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
+import maxAIBackgroundSafeFetch from '@/background/api/maxAIBackgroundSafeFetch'
 import {
   maxAIRequestBodyAnalysisGenerator,
   maxAIRequestBodyPromptActionGenerator,
@@ -461,20 +461,14 @@ class UseChatGPTPlusChat extends BaseChat {
     } else {
       // 目前来说，能进到这里的一定是jsonMode
       try {
-        const response = await fetch(
+        const response = await maxAIBackgroundSafeFetch(
           `${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`,
           {
             method: 'POST',
             signal,
-            headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(
-              taskId,
-              {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.token}`,
-              },
-            ),
             body: JSON.stringify(postBody),
           },
+          taskId,
         )
         const data = await response.json()
         if (data.status === 'OK' && data.text) {

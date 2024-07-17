@@ -190,7 +190,7 @@ export default UserQuotaUsageQueriesCard
 
 export const TooltipIcon = () => {
   return (
-    <svg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <g clipPath='url(#clip0_10246_92877)'>
         <path
           d='M16 8.5C16 4.08172 12.4183 0.5 8 0.5C3.58172 0.5 0 4.08172 0 8.5C0 12.9183 3.58172 16.5 8 16.5C12.4183 16.5 16 12.9183 16 8.5Z'

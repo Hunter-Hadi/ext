@@ -3,7 +3,7 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useState } from 'react'
 
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 
 interface YoutubePlayerBoxProps {
   youtubeLink: string
@@ -34,7 +34,7 @@ const YoutubePlayerBox: FC<YoutubePlayerBoxProps> = (props) => {
   }, [youtubeLink, autoplay])
 
   useEffectOnce(() => {
-    clientFetchAPI('https://www.youtube.com/t/terms', {
+    clientProxyFetchAPI('https://www.youtube.com/t/terms', {
       parse: 'text',
       method: 'GET',
     })

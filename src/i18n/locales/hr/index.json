@@ -1341,9 +1341,9 @@
     "queries": "Preostali AI upiti",
     "reset_on_date": "Resetiranje {{DATE}}",
     "advanced_text__secondary__content": "Brzi pametni AI upiti: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Osigurajte najmanje 1,500 visokoučinkovitih naprednih tekstualnih upita svaki mjesec. Nakon dostizanja limita, brzina i kvaliteta modela mogu biti smanjeni.",
+    "advanced_text__secondary__content__tooltip": "Osigurajte najmanje 1.500 pametnih AI upita visoke brzine svaki mjesec. Korištenje iznad ovog limita ili na visokim frekvencijama može rezultirati smanjenom brzinom i kvalitetom. Pravedne politike korištenja primjenjuju se na temelju frekvencije upita, duljine sadržaja i općih uzoraka korištenja.",
     "image_generate__secondary__content": "Brzi upiti slike AI: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Osigurajte najmanje 1,500 visokoučinkovitih upita slika svaki mjesec. Nakon dostizanja limita, brzina i kvaliteta modela mogu biti smanjeni.",
+    "image_generate__secondary__content__tooltip": "Osigurajte najmanje 600 upita visoke brzine za generiranje slika AI svaki mjesec. Korištenje iznad ovog limita ili na visokim frekvencijama može rezultirati smanjenom brzinom i kvalitetom. Pravedne politike korištenja primjenjuju se na temelju frekvencije upita, veličine slike i općih uzoraka korištenja.",
     "upgrade_to_go_unlimited": "Nadogradite na MaxAI Elite da biste postali neograničeni"
   },
   "onboarding": {

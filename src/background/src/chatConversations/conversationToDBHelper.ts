@@ -1,9 +1,9 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
-import { backgroundPost } from '@/background/api/backgroundFetch'
 import { backgroundGetBetaFeatureSettings } from '@/background/utils/maxAIBetaFeatureSettings/background'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
+import { clientMaxAIPost } from '@/utils/request'
 
 /**
  * 是否开启同步对话的feature
@@ -31,5 +31,5 @@ export const backgroundAddOrUpdateDBConversation = async (
     // 不需要保存messages
     delete uploadConversation.messages
   }
-  await backgroundPost('/conversation/upsert_conversation', uploadConversation)
+  await clientMaxAIPost('/conversation/upsert_conversation', uploadConversation)
 }

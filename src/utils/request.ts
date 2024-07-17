@@ -1,22 +1,7 @@
-import Browser from 'webextension-polyfill'
-
 import { chromeExtensionLogout } from '@/background/utils'
-import {
-  APP_USE_CHAT_GPT_API_HOST,
-  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-} from '@/constants'
-
-export const getAccessToken = async () => {
-  const cache = await Browser.storage.local.get(
-    CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-  )
-  if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
-    // 应该用accessToken
-    return cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
-      ?.refreshToken as string
-  }
-  return ''
-}
+import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 
 interface IResponse<T> {
   status: 'OK' | 'ERROR'
@@ -24,19 +9,19 @@ interface IResponse<T> {
   msg?: string
 }
 
-export const post = <T>(
+export const clientMaxAIPost = <T>(
   pathname: string,
   data: any,
   options?: RequestInit,
 ): Promise<IResponse<T>> => {
   return new Promise((resolve, reject) => {
-    getAccessToken().then((accessToken) => {
+    getMaxAIChromeExtensionAccessToken().then((accessToken) => {
       if (!accessToken) {
         reject(new Error('no accessToken'))
         chromeExtensionLogout()
         return
       }
-      fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
+      maxAIClientSafeFetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,19 +50,19 @@ export const post = <T>(
   })
 }
 
-export const get = <T>(
+export const clientMaxAIGet = <T>(
   pathname: string,
   options?: RequestInit,
 ): Promise<IResponse<T>> => {
   return new Promise((resolve, reject) => {
     try {
-      getAccessToken().then((accessToken) => {
+      getMaxAIChromeExtensionAccessToken().then((accessToken) => {
         if (!accessToken) {
           reject(new Error('no accessToken'))
           chromeExtensionLogout()
           return
         }
-        fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
+        maxAIClientSafeFetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${accessToken}`,

@@ -1,7 +1,7 @@
 import orderBy from 'lodash-es/orderBy'
 import Browser from 'webextension-polyfill'
 
-import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
+import maxAIBackgroundSafeFetch from '@/background/api/maxAIBackgroundSafeFetch'
 import {
   maxAIRequestBodyAnalysisGenerator,
   maxAIRequestBodyDocChatGenerator,
@@ -325,17 +325,14 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   }
   if (backendAPI === 'get_image_generate_response') {
     try {
-      const result = await fetch(
+      const result = await maxAIBackgroundSafeFetch(
         `${APP_USE_CHAT_GPT_API_HOST}/gpt/get_image_generate_response`,
         {
           method: 'POST',
           signal,
-          headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(taskId, {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
-          }),
           body: JSON.stringify(postBody),
         },
+        taskId,
       ).then((res) => res.json())
       const userConfig = await getAIProviderSettings(AIProvider)
       if (result.status === 'OK' && result.data?.length) {
@@ -444,17 +441,14 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   } else {
     // 目前来说，能进到这里的一定是jsonMode
     try {
-      const response = await fetch(
+      const response = await maxAIBackgroundSafeFetch(
         `${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`,
         {
           method: 'POST',
           signal,
-          headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(taskId, {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
-          }),
           body: JSON.stringify(postBody),
         },
+        taskId,
       )
       const data = await response.json()
 

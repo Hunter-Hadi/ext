@@ -1341,9 +1341,9 @@
     "queries": "남은 AI 쿼리",
     "reset_on_date": "{{DATE}}에 초기화",
     "advanced_text__secondary__content": "고속 스마트 AI 쿼리: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "매월 최소 1,500개의 고속 고급 텍스트 쿼리를 보장하세요. 한도에 도달한 후 모델의 속도와 품질이 감소될 수 있습니다.",
+    "advanced_text__secondary__content__tooltip": "매달 최소 1,500회의 고속 스마트 AI 쿼리를 보장합니다. 이 한도를 초과하거나 높은 빈도로 사용하는 경우 속도와 품질이 저하될 수 있습니다. 공정한 사용 정책은 쿼리 빈도, 콘텐츠 길이 및 전체 사용 패턴에 따라 적용됩니다.",
     "image_generate__secondary__content": "고속 이미지 AI 쿼리: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "매월 최소 1,500개의 고속 이미지 쿼리를 보장하세요. 한도에 도달한 후 모델의 속도와 품질이 감소될 수 있습니다.",
+    "image_generate__secondary__content__tooltip": "매달 최소 600회의 고속 이미지 AI 쿼리를 보장합니다. 이 한도를 초과하거나 높은 빈도로 사용하는 경우 속도와 품질이 저하될 수 있습니다. 공정한 사용 정책은 쿼리 빈도, 이미지 크기 및 전체 사용 패턴에 따라 적용됩니다.",
     "upgrade_to_go_unlimited": "무제한 이용하려면 MaxAI Elite로 업그레이드"
   },
   "onboarding": {

@@ -1341,9 +1341,9 @@
     "queries": "Kalan AI sorguları",
     "reset_on_date": "{{DATE}} tarihinde sıfırlanacak",
     "advanced_text__secondary__content": "Yüksek hızlı akıllı AI sorguları: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı gelişmiş metin sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir.",
+    "advanced_text__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı akıllı AI sorgusunu sağlayın. Bu limitin üzerinde veya yüksek frekansta kullanım hız ve kalitede azalmaya neden olabilir. Adil kullanım politikaları sorgu frekansına, içerik uzunluğuna ve genel kullanım kalıplarına göre uygulanır.",
     "image_generate__secondary__content": "Yüksek hızlı görüntü AI sorguları: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı görüntü sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir.",
+    "image_generate__secondary__content__tooltip": "Her ay en az 600 yüksek hızlı görüntü AI sorgusunu sağlayın. Bu limitin üzerinde veya yüksek frekansta kullanım hız ve kalitede azalmaya neden olabilir. Adil kullanım politikaları sorgu frekansına, görüntü boyutuna ve genel kullanım kalıplarına göre uygulanır.",
     "upgrade_to_go_unlimited": "Sınırsız gitmek için MaxAI Elite'e yükseltin"
   },
   "onboarding": {

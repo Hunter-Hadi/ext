@@ -206,12 +206,6 @@ const FloatingContextMenuList: FC<
           nodeList.push(<ContextMenuDivider contextMenuId={menuItem.id} />)
         }
       } else {
-        console.log(
-          `SPECIAL_NEED_DIVIDER_KEYS`,
-          SPECIAL_NEED_DIVIDER_KEYS,
-          menuItem.id,
-          menuItem.text,
-        )
         if (SPECIAL_NEED_DIVIDER_KEYS.includes(menuItem.id)) {
           nodeList.push(<ContextMenuDivider contextMenuId={menuItem.id} />)
         }

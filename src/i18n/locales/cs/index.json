@@ -1341,9 +1341,9 @@
     "queries": "Zbývající dotazy AI",
     "reset_on_date": "Resetovat dne: {{DATE}}",
     "advanced_text__secondary__content": "Rychlé chytré AI dotazy: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých pokročilých textových dotazů každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu.",
+    "advanced_text__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých dotazů na chytrou AI každý měsíc. Použití nad tuto hranici nebo při vysokých frekvencích může vést ke snížení rychlosti a kvality. Platí pravidla spravedlivého využití na základě frekvence dotazů, délky obsahu a celkových vzorů využití.",
     "image_generate__secondary__content": "Obrázkové AI dotazy: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Zajistěte alespoň 1 500 rychlých dotazů na obrázky každý měsíc. Po dosažení limitu se může snížit rychlost a kvalita modelu.",
+    "image_generate__secondary__content__tooltip": "Zajistěte alespoň 600 rychlých dotazů na obrázky AI každý měsíc. Použití nad tuto hranici nebo při vysokých frekvencích může vést ke snížení rychlosti a kvality. Platí pravidla spravedlivého využití na základě frekvence dotazů, velikosti obrázku a celkových vzorů využití.",
     "upgrade_to_go_unlimited": "Upgradujte na MaxAI Elite a jděte do nekonečna"
   },
   "onboarding": {

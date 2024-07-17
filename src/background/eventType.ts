@@ -28,6 +28,7 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_listenSwitchVideoPopup'
   // background 通知 client 更新 survey 状态
   | 'Client_listenSurveyStatusUpdated'
+  | 'Client_listenPageTranslationEvent'
 
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =

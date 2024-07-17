@@ -1,4 +1,5 @@
 // emit Decorators
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { clientRunBackgroundFunction } from '@/utils'
 
 const checkIsIframe = () => {
@@ -30,9 +31,12 @@ const emitIframeTranslatorDecorator = (
           clientRunBackgroundFunction('tabs', 'sendMessage', [
             tabId,
             {
-              eventType: 'MAXAI_PageTranslatorEvent_doTranslate',
-              fn: key,
-              args,
+              id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+              event: 'Client_listenPageTranslationEvent',
+              data: {
+                fn: key,
+                args,
+              },
             },
           ])
             .then()

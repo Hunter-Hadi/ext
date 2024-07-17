@@ -1,5 +1,5 @@
-import Browser from 'webextension-polyfill'
-
+import { IChromeExtensionClientListenEvent } from '@/background/eventType'
+import { createClientMessageListener } from '@/background/utils'
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import PageTranslator from '@/features/pageTranslator/core'
 
@@ -18,16 +18,29 @@ const iframeInitPageTranslator = () => {
         )
       }
     })
-    Browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
-      if (message?.eventType === 'MAXAI_PageTranslatorEvent_doTranslate') {
-        const { fn, args } = message as any
-        if (fn && (PageTranslator as any)[fn]) {
-          console.log(`PageTranslator message`, window.location.href, fn, args)
-          ;(PageTranslator as any)[fn](...args)
+    createClientMessageListener(async (event, data) => {
+      switch (event as IChromeExtensionClientListenEvent) {
+        case 'Client_listenPageTranslationEvent': {
+          const { fn, args } = data
+          if (fn && (PageTranslator as any)[fn]) {
+            console.log(
+              `PageTranslator message`,
+              window.location.href,
+              fn,
+              args,
+            )
+            ;(PageTranslator as any)[fn](...args)
+          }
+          return {
+            success: true,
+            data: true,
+            message: 'ok',
+          }
         }
-        sendResponse()
+        default:
+          break
       }
-      return true
+      return undefined
     })
   }
 }

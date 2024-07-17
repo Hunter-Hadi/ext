@@ -3,8 +3,6 @@ import React, { useEffect } from 'react'
 
 import DevContent from '@/components/DevContent'
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
-import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -42,11 +40,9 @@ const SidebarChatPanel = () => {
     clientWritingMessage,
     clientConversationMessages,
     resetConversation,
-    pushPricingHookMessage,
   } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { startTextToImage } = useArtTextToImage()
-  const { checkFeatureQuota } = useUserFeatureQuota()
 
   useEffect(() => {
     return OneShotCommunicator.receive(
@@ -73,15 +69,6 @@ const SidebarChatPanel = () => {
             await createSearchWithAI(question, true)
           } else if (currentSidebarConversationType === 'Art') {
             await startTextToImage(question)
-          } else if (
-            currentSidebarConversationType === 'Summary' &&
-            !(await checkFeatureQuota('summary'))
-          ) {
-            await pushPricingHookMessage('PAGE_SUMMARY')
-            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
-              conversationId: currentConversationId,
-              paywallType: 'RESPONSE',
-            })
           } else {
             await askAIQuestion({
               type: 'user',

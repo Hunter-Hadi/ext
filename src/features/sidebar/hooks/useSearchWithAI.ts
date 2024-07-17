@@ -197,16 +197,6 @@ const useSearchWithAI = () => {
   ) => {
     try {
       if (currentConversationId) {
-        // 用量卡点
-        if (!(await checkFeatureQuota('search'))) {
-          await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
-          authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
-            conversationId: currentConversationId,
-            paywallType: 'RESPONSE',
-          })
-          return
-        }
-
         const lastAIResponse: IAIResponseMessage | null =
           (await ClientConversationMessageManager.getMessageByMessageType(
             currentConversationId,

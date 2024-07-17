@@ -52,7 +52,9 @@ const useClientChat = () => {
   const setShortCutsRef = useRef(setShortCuts)
   const {
     currentConversationIdRef,
+    currentConversationId,
     clientConversation,
+    currentSidebarConversationType,
     pushPricingHookMessage,
     hideConversationLoading,
     showConversationLoading,
@@ -162,6 +164,19 @@ const useClientChat = () => {
     },
   ) => {
     const { beforeActions = [], afterActions = [] } = options || {}
+
+    if (currentSidebarConversationType === 'Summary') {
+      // summary下chat需要检测用量
+      if (!(await checkFeatureQuota('summary'))) {
+        await pushPricingHookMessage('PAGE_SUMMARY')
+        authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+          conversationId: currentConversationId,
+          paywallType: 'RESPONSE',
+        })
+        return
+      }
+    }
+
     if (!question.meta?.attachments) {
       const attachments = (
         await getAttachments(question.conversationId)

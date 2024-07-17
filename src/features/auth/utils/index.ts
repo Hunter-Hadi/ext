@@ -252,6 +252,10 @@ export const getMaxAIChromeExtensionUserFeatureQuota = async (
               searchUsage: 0,
               instantReplyUsage: 0,
             })
+            await Browser.storage.local.set({
+              [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]:
+                userFeatureQuotaInfo,
+            })
           }
           resolve(userFeatureQuotaInfo)
         },

@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Odkleni vse AI modele",
     "pricing__upgrade__popper_card__item3__title": "Odkleni vse funkcije",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Za odklep vseh drugih modelov AI nadgradite na načrt MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Najboljša vrednost za vaš denar"
+    "pricing__upgrade__popper_card__item4__title": "Najboljša vrednost za vaš denar",
+    "permission__pricing_hook__context_menu__title": "Nadgradite za odklep neomejenega preoblikovalnika AI",
+    "permission__pricing_hook__context_menu__description": "Z MaxAI-jem lahko prihranite čas pri pregledovanju in popravljanju svojih besedil po spletu, od e-pošte do družbenih omrežij in še dlje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

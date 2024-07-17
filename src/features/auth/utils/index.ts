@@ -518,13 +518,9 @@ export const fetchUserFeatureQuotaInfo = async (): Promise<
     if (!token) {
       return undefined
     }
-    const response = await fetch(
+    const response = await maxAIClientSafeFetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_feature_quota`,
-      {
-        headers: await clientRequestHeaderGenerator({
-          Authorization: `Bearer ${token}`,
-        }),
-      },
+      {},
     )
     if (response.ok) {
       const result = await response.json()

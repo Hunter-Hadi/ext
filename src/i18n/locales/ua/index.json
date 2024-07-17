@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Розблокувати всі моделі ШІ",
     "pricing__upgrade__popper_card__item3__title": "Розблокувати всі функції",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Лише GPT-4o. Щоб розблокувати всі інші моделі штучного інтелекту, оновіться до плану MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Найкраща вартість за ваші гроші"
+    "pricing__upgrade__popper_card__item4__title": "Найкраща вартість за ваші гроші",
+    "permission__pricing_hook__context_menu__title": "Оновіться, щоб розблокувати необмежений переписувач штучного інтелекту",
+    "permission__pricing_hook__context_menu__description": "З переписувачем штучного інтелекту MaxAI ви можете заощадити час на перевірці та вдосконаленні своїх слів в Інтернеті, від електронної пошти до соціальних мереж та далі."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "ปลดล็อคโมเดล AI ทั้งหมด",
     "pricing__upgrade__popper_card__item3__title": "ปลดล็อคคุณสมบัติทั้งหมด",
     "pricing__plan_features__pro__feature1__item2__subtitle": "เฉพาะ GPT-4o เท่านั้น หากต้องการปลดล็อก AI models ทั้งหมด อัพเกรดเป็น MaxAI Elite plan",
-    "pricing__upgrade__popper_card__item4__title": "มีค่าที่สุดสำหรับเงินของคุณ"
+    "pricing__upgrade__popper_card__item4__title": "มีค่าที่สุดสำหรับเงินของคุณ",
+    "permission__pricing_hook__context_menu__title": "อัปเกรดเพื่อปลดล็อค AI rewriter ไร้ขีดจำกัด",
+    "permission__pricing_hook__context_menu__description": "ด้วย AI rewriter จาก MaxAI คุณสามารถประหยัดเวลาในการตรวจอ่านและปรับปรุงคำของคุณบนเว็บได้อย่างสมบูรณ์ ตั้งแต่อีเมลถึงโซเชียลมีเดียและอื่นๆ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

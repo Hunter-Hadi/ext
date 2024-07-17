@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Otključajte sve AI modele",
     "pricing__upgrade__popper_card__item3__title": "Otključajte sve značajke",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Za otključavanje svih ostalih AI modela, nadogradite se na MaxAI Elite plan.",
-    "pricing__upgrade__popper_card__item4__title": "Najbolja vrijednost za vaš novac"
+    "pricing__upgrade__popper_card__item4__title": "Najbolja vrijednost za vaš novac",
+    "permission__pricing_hook__context_menu__title": "Nadogradite za otključavanje neograničenog AI preuređivača",
+    "permission__pricing_hook__context_menu__description": "S MaxAI-jem AI preuređivačem možete uštedjeti vrijeme na lekturi i usavršavanju svojih riječi diljem weba, od e-pošte do društvenih medija i dalje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

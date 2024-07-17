@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "解锁所有AI模型",
     "pricing__upgrade__popper_card__item3__title": "解锁所有功能",
     "pricing__plan_features__pro__feature1__item2__subtitle": "仅限GPT-4o。要解锁所有其他AI模型，请升级到MaxAI Elite计划。",
-    "pricing__upgrade__popper_card__item4__title": "物超所值"
+    "pricing__upgrade__popper_card__item4__title": "物超所值",
+    "permission__pricing_hook__context_menu__title": "升级以解锁无限AI重写",
+    "permission__pricing_hook__context_menu__description": "使用MaxAI的AI重写器，您可以节省校对和完善您的文字的时间，涵盖从电子邮件到社交媒体等网络内容。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

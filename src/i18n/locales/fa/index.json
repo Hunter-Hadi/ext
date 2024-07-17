@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "باز کردن تمام مدل‌های هوش مصنوعی",
     "pricing__upgrade__popper_card__item3__title": "باز کردن تمام ویژگی‌ها",
     "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. برای باز کردن تمام مدل‌های هوش مصنوعی دیگر، به طرح MaxAI Elite ارتقا دهید.",
-    "pricing__upgrade__popper_card__item4__title": "بهترین ارزش برای پول شما"
+    "pricing__upgrade__popper_card__item4__title": "بهترین ارزش برای پول شما",
+    "permission__pricing_hook__context_menu__title": "ارتقا برای باز کردن قفل بازنویسی نامحدود هوش مصنوعی",
+    "permission__pricing_hook__context_menu__description": "با بازنویس هوش مصنوعی MaxAI ، می توانید زمان خود را برای تصحیح و بهبود کلمات خود در سراسر وب ، از ایمیل تا رسانه های اجتماعی و فراتر از آن ، صرفه جویی کنید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

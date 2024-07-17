@@ -1006,7 +1006,9 @@
     "pricing__upgrade__popper_card__item2__title": "Բացեք բոլոր AI մոդելները",
     "pricing__upgrade__popper_card__item3__title": "Բացեք բոլոր հատկությունները",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o միայն: Բոլոր այլ AI մոդելները բացելու համար, արժեքավորեք MaxAI Elite պլանը։",
-    "pricing__upgrade__popper_card__item4__title": "Լավագույն արժեքը ձեր գումարի համար"
+    "pricing__upgrade__popper_card__item4__title": "Լավագույն արժեքը ձեր գումարի համար",
+    "permission__pricing_hook__context_menu__title": "Թարմացնել ՝ բացահայտել անսահման AI վերագրողը",
+    "permission__pricing_hook__context_menu__description": "MaxAI-ի AI վերագրողի հետ, դուք կարող եք պահպանել ժամանակ վերագրելու և ձեռքով համեղ բառերը կայքում, սկսած էլ. փոստից սոցիալ մեդիային մինչև:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

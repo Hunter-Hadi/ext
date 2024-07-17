@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Atbloķēt visas AI modeļus",
     "pricing__upgrade__popper_card__item3__title": "Atbloķēt visas funkcijas",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tikai GPT-4o. Lai atbloķētu visus citus AI modeļus, jauniniet uz MaxAI Elite plānu.",
-    "pricing__upgrade__popper_card__item4__title": "Labākā vērtība jūsu naudai"
+    "pricing__upgrade__popper_card__item4__title": "Labākā vērtība jūsu naudai",
+    "permission__pricing_hook__context_menu__title": "Uzlabojiet, lai atbloķētu neierobežotu AI pārrakstītāju",
+    "permission__pricing_hook__context_menu__description": "Ar MaxAI AI pārrakstītāju jūs varat ietaupīt laiku, pārbaudot un pilnveidojot savus vārdus visā tīmeklī, no e-pasta līdz sociālajiem tīkliem un tālāk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

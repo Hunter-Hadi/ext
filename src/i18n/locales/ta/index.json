@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "அனைத்து AI மாதிரிகளையும் விரிவாக்கவும்",
     "pricing__upgrade__popper_card__item3__title": "அனைத்து அம்சங்களையும் விரிவாக்கவும்",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o மட்டும். மற்ற அனைத்து AI மாதிரிகளையும் திறந்துவிட மேலும் மேக்ஸ்ஐ எலைட் திட்டத்தில் மேம்படுத்தவும்.",
-    "pricing__upgrade__popper_card__item4__title": "உங்கள் பணத்திற்கு சிறந்த மதிப்பு"
+    "pricing__upgrade__popper_card__item4__title": "உங்கள் பணத்திற்கு சிறந்த மதிப்பு",
+    "permission__pricing_hook__context_menu__title": "அப்க்ரேட் செய்ய உச்சநிலை AI மறுஎழுத்தாளரை விரிவாக்கவும்",
+    "permission__pricing_hook__context_menu__description": "மேக்ஸ்AI இன் AI மறுஎழுத்தாளர் உடன், நீங்கள் மின்னஞ்சல் முகவரி முதல் சமீபத்திய சோசியல் மீடியாவரையும் உங்கள் வார்த்தைகளை முழுமையாக மேம்படுத்த, நேரம் சேமிக்க முடியும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Odblokuj wszystkie modele AI",
     "pricing__upgrade__popper_card__item3__title": "Odblokuj wszystkie funkcje",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tylko GPT-4o. Aby odblokować wszystkie inne modele AI, przejdź na plan MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Najlepsza wartość za Twoje pieniądze"
+    "pricing__upgrade__popper_card__item4__title": "Najlepsza wartość za Twoje pieniądze",
+    "permission__pricing_hook__context_menu__title": "Ulepsz, aby odblokować nieograniczone przepisywanie AI",
+    "permission__pricing_hook__context_menu__description": "Dzięki przepisywarce AI MaxAI możesz zaoszczędzić czas na korekcie i doskonaleniu swoich słów w sieci, od e-maili po media społecznościowe i nie tylko."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

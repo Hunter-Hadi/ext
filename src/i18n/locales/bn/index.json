@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "সমস্ত AI মডেল আনলক করুন",
     "pricing__upgrade__popper_card__item3__title": "সমস্ত বৈশিষ্ট্য আনলক করুন",
     "pricing__plan_features__pro__feature1__item2__subtitle": "শুধুমাত্র GPT-4o। সমস্ত অন্যান্য AI মডেল আনলক করতে, MaxAI Elite পরিকল্পনায় আপগ্রেড করুন।",
-    "pricing__upgrade__popper_card__item4__title": "আপনার টাকার জন্য সেরা মান"
+    "pricing__upgrade__popper_card__item4__title": "আপনার টাকার জন্য সেরা মান",
+    "permission__pricing_hook__context_menu__title": "সীমাহীন AI পুনর্রচনা আনলক করতে আপগ্রেড করুন",
+    "permission__pricing_hook__context_menu__description": "ম্যাক্সএআইর AI পুনর্রচনা দিয়ে, আপনি প্রুফরিডিং এবং ওয়ার্ড পারফেক্ট করার জন্য সময় সংরক্ষণ করতে পারেন ওয়েবের সাথে, ইমেল থেকে সোশ্যাল মিডিয়া এবং অতিরিক্ত।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

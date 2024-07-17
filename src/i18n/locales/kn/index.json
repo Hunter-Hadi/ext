@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "ಎಲ್ಲಾ AI ಮಾದರಿಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
     "pricing__upgrade__popper_card__item3__title": "ಎಲ್ಲಾ ವಿಶೇಷಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o ಮಾತ್ರ. ಇತರ ಎಲ್ಲಾ AI ಮಾದರಿಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಲು ಮ್ಯಾಕ್ಸ್ಐ ಎಲೈಟ್ ಪ್ಲಾನ್ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ.",
-    "pricing__upgrade__popper_card__item4__title": "ನಿಮ್ಮ ಹಣಕ್ಕಾಗಿ ಉತ್ತಮ ಮೌಲ್ಯ"
+    "pricing__upgrade__popper_card__item4__title": "ನಿಮ್ಮ ಹಣಕ್ಕಾಗಿ ಉತ್ತಮ ಮೌಲ್ಯ",
+    "permission__pricing_hook__context_menu__title": "ಅನಿಮಿತ ಎಯಿ ರಿವ್ರೈಟರ್ ಅನ್ಲಾಕ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__context_menu__description": "ಮ್ಯಾಕ್ಸ್ಎಯಿ ಎಯಿ ರಿವ್ರೈಟರ್ ನೊಂದಿಗೆ, ಇಮೇಲ್ ನುಂಡಿ ಸೋಷಿಯಲ್ ಮೀಡಿಯಾ ವರೆಗೆ ನಿಮ್ಮ ಪದಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸುವುದರಲ್ಲಿ ಸಮಯ ಉಳಿಸಬಹುದು ಮತ್ತು ಸವಿಯನ್ನು ಸರಿಪಡಿಸುವುದಲ್ಲಿ ಸಹಾಯ ಮಾಡಬಹುದು."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

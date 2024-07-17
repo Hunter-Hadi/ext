@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Desbloquear todos os modelos de IA",
     "pricing__upgrade__popper_card__item3__title": "Desbloquear todas as funcionalidades",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Apenas GPT-4o. Para desbloquear todos os outros modelos de IA, atualize para o plano MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Melhor valor para o seu dinheiro"
+    "pricing__upgrade__popper_card__item4__title": "Melhor valor para o seu dinheiro",
+    "permission__pricing_hook__context_menu__title": "Atualize para desbloquear o reescritor de IA ilimitado",
+    "permission__pricing_hook__context_menu__description": "Com o reescritor de IA da MaxAI, pode poupar tempo a rever e a aperfeiçoar as suas palavras na web, desde o email às redes sociais e muito mais."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Mở khóa tất cả các mô hình AI",
     "pricing__upgrade__popper_card__item3__title": "Mở khóa tất cả các tính năng",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Chỉ GPT-4o. Để mở khóa tất cả các mô hình AI khác, nâng cấp lên gói MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Giá trị tốt nhất cho tiền của bạn"
+    "pricing__upgrade__popper_card__item4__title": "Giá trị tốt nhất cho tiền của bạn",
+    "permission__pricing_hook__context_menu__title": "Nâng cấp để mở khóa trình viết lại AI không giới hạn",
+    "permission__pricing_hook__context_menu__description": "Với trình viết lại AI của MaxAI, bạn có thể tiết kiệm thời gian trong việc kiểm tra và hoàn thiện từ ngữ của mình trên web, từ email đến mạng xã hội và hơn thế nữa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

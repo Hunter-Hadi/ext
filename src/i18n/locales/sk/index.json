@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Odomknúť všetky modely AI",
     "pricing__upgrade__popper_card__item3__title": "Odomknúť všetky funkcie",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Len GPT-4o. Pre odomknutie všetkých ďalších modelov umelej inteligencie, aktualizujte na plán MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Najlepšia hodnota za vaše peniaze"
+    "pricing__upgrade__popper_card__item4__title": "Najlepšia hodnota za vaše peniaze",
+    "permission__pricing_hook__context_menu__title": "Aktualizujte pre odomknutie neobmedzeného AI prepracovávača",
+    "permission__pricing_hook__context_menu__description": "S AI prepracovávačom MaxAI môžete ušetriť čas pri korektúre a zdokonalovaní vašich slov na webe, od e-mailov po sociálne médiá a ďalej."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

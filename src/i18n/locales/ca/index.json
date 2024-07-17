@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Desbloqueja tots els models d'IA",
     "pricing__upgrade__popper_card__item3__title": "Desbloqueja totes les funcionalitats",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Només GPT-4o. Per desbloquejar tots els altres models d'IA, actualitza al pla MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Millor valor pel teu diner"
+    "pricing__upgrade__popper_card__item4__title": "Millor valor pel teu diner",
+    "permission__pricing_hook__context_menu__title": "Millora per desbloquejar l'AI reescriptor il·limitat",
+    "permission__pricing_hook__context_menu__description": "Amb l'AI reescriptor de MaxAI, pots estalviar temps en correccions i perfeccionar les teves paraules a través de la web, des de correus electrònics a xarxes socials i més enllà."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

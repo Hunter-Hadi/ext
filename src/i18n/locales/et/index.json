@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Avage kõik AI mudelid",
     "pricing__upgrade__popper_card__item3__title": "Avage kõik funktsioonid",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Ainult GPT-4o. Kõigi teiste AI mudelite avamiseks uuenda MaxAI Elite plaani.",
-    "pricing__upgrade__popper_card__item4__title": "Parim väärtus teie raha eest"
+    "pricing__upgrade__popper_card__item4__title": "Parim väärtus teie raha eest",
+    "permission__pricing_hook__context_menu__title": "Tõsta esile, et avada piiramatu AI ümberkirjutaja",
+    "permission__pricing_hook__context_menu__description": "MaxAI AI ümberkirjutajaga saate aega säästa tekstide toimetamisel ja täiustamisel veebis, alates e-kirjadest sotsiaalmeediani ja veel kaugemale."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

@@ -164,6 +164,7 @@ const useInitContextWindow = () => {
     conversationStatus,
     currentConversationIdRef,
     clientWritingMessage,
+    updateClientConversationLoading,
     pushPricingHookMessage,
   } = useClientConversation()
   const {
@@ -519,6 +520,7 @@ const useInitContextWindow = () => {
           if (!historyMessages.length) {
             checkFeatureQuota('context_menu').then((status) => {
               if (!status) {
+                updateClientConversationLoading(false)
                 pushPricingHookMessage('CONTEXT_MENU')
                 authEmitPricingHooksLog('show', 'CONTEXT_MENU', {
                   conversationId: currentConversationId,

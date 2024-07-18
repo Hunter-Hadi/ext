@@ -1,7 +1,7 @@
 import { IArtifacts } from '@/features/chatgpt/components/artifacts'
 
-export const MAXAI_ARTIFACTS_SANDBOX_HOST = 'http://127.0.0.1:3838'
-// export const MAXAI_ARTIFACTS_SANDBOX_HOST = 'https://www.maxai.space'
+// export const MAXAI_ARTIFACTS_SANDBOX_HOST = 'http://127.0.0.1:3838'
+export const MAXAI_ARTIFACTS_SANDBOX_HOST = 'https://www.maxai.space'
 //
 export const startSandBoxRender = (
   rootContainer: HTMLDivElement,

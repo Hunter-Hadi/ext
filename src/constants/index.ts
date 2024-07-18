@@ -1,10 +1,13 @@
 // s3
+import * as process from 'node:process'
+
 import { MAXAI_CHROME_EXTENSION_ID } from '@/features/common/constants'
 
 export const RESOURCES_URL = 'https://resources.usechatgpt.ai'
 // env
 export const APP_VERSION = String(process.env.APP_VERSION)
 export const isProduction = String(process.env.NODE_ENV) === 'production'
+export const isProdAPI = String(process.env.API_ENV) === 'production'
 
 // chrome extension
 export const MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID = `CHROME_EXTENSION_${MAXAI_CHROME_EXTENSION_ID}_ID`

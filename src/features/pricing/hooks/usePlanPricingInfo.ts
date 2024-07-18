@@ -2,6 +2,7 @@ import isNumber from 'lodash-es/isNumber'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
+import { isProdAPI } from '@/constants'
 import { PlanPricingInfoAtom } from '@/features/pricing/store'
 import { IPlanPricingInfo } from '@/features/pricing/type'
 import { aesJsonDecrypt } from '@/features/security'
@@ -48,6 +49,14 @@ const usePlanPricingInfo = () => {
       }
     })
   }, [])
+
+  useEffect(() => {
+    Object.values(planPricingInfo.data).forEach((info) => {
+      if (!isProdAPI) {
+        info.price_id = info.dev_price_id
+      }
+    })
+  }, [planPricingInfo.data])
 
   // 注意接口里的elite_monthly要转换为elite，前端目前monthly的类型没有后缀
   const fetchPlanPricing = useCallback(async () => {

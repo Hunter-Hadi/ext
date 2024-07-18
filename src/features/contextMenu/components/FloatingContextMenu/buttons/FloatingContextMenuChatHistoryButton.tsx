@@ -34,7 +34,7 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   onDuplicateConversation?: (conversationId: string) => void
   container?: HTMLElement
 }> = (props) => {
-  const { conversationId, onDuplicateConversation } = props
+  const { conversationId, onDuplicateConversation, container } = props
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
 
@@ -48,6 +48,7 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
         conversationId={conversationId}
         isAIResponding={false}
         writingMessage={null}
+        tooltipContainer={container}
         sx={{
           textAlign: 'left',
           height: 'auto',

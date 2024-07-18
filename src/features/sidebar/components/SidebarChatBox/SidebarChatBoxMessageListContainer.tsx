@@ -21,6 +21,7 @@ interface IProps {
   sx?: SxProps
   onLoadingChatMessages?: (isLoading: boolean) => void
   onFetchingNextPage?: (isFetchingNextPage: boolean) => void
+  tooltipContainer?: HTMLElement
 }
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
@@ -31,6 +32,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     // onLoadingChatMessages,
     // onFetchingNextPage,
     conversationId,
+    tooltipContainer: container,
   } = props
 
   const scrollContainerRef = useRef<HTMLElement | null>(null)
@@ -267,6 +269,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
               loading={isAIResponding}
               order={index + 1}
               onChangeHeight={messageHeightUpdate}
+              container={container}
             />
           )
         })}

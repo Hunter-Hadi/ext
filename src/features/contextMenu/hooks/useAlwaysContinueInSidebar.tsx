@@ -40,18 +40,6 @@ export function useAlwaysContinueInSidebar(): [
           sidebarSettings: savedAppLocalStorage.sidebarSettings,
         }
       })
-
-      // 在存在selection当时并不开启的时候跳回开启状态
-      setFloatingDropdownMenu((prev) => {
-        if (prev.open === false && prev.rootRect !== null) {
-          return {
-            ...prev,
-            open: true,
-          }
-        }
-
-        return prev
-      })
     },
   ]
 }

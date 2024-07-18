@@ -23,6 +23,7 @@ import TextOnlyTooltip, {
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { MAXAI_APP_ROOT_ID } from '@/features/common/constants'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
@@ -88,6 +89,17 @@ const SidebarContextMenuHistoryButton: FC<{
     setModalOpen(true)
   }
 
+  // 确保清楚在contextmenu之上z-index设置
+  useEffect(() => {
+    return () => {
+      document
+        .querySelector(MAXAI_APP_ROOT_ID)
+        ?.classList.remove('OVERLAY_CONTEXT_MENU')
+    }
+  }, [])
+
+  // document.querySelector('USE_CHAT_GPT_AI_ROOT')?.
+
   const handleCloseModal = () => {
     if (selectedConversationId) {
       // 只需要返回到列表
@@ -96,6 +108,8 @@ const SidebarContextMenuHistoryButton: FC<{
     }
     setModalOpen(false)
     setAnchorEl(null)
+    const ele = document.querySelector(`#${MAXAI_APP_ROOT_ID}`)
+    ele?.classList.remove('OVERLAY_CONTEXT_MENU')
   }
 
   const handleIconClick = (_: React.MouseEvent<HTMLButtonElement>) => {
@@ -121,6 +135,8 @@ const SidebarContextMenuHistoryButton: FC<{
     }, 100)
     handleOpenModal()
     setPlacement('top')
+    const ele = document.querySelector(`#${MAXAI_APP_ROOT_ID}`)
+    ele?.classList.add('OVERLAY_CONTEXT_MENU')
   }
 
   useEffect(() => {

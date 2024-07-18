@@ -15,30 +15,45 @@ const PLAN_PRICING_INFO = {
     price_id: 'price_1P3tyMCdtAdZoE6dUL4RdqA0',
     dev_price_id: 'price_1P3tnJCdtAdZoE6ddvub4IPn',
     price: 9.99,
+    discount_title: null,
+    discount_value: null,
+    promotion_code: null,
   },
   basic_yearly: {
     type: 'basic_yearly',
     price_id: 'price_1P3tyMCdtAdZoE6dBncJ8YDN',
     dev_price_id: 'price_1P3tnJCdtAdZoE6dc9NBVcf1',
     price: 99.99,
+    discount_title: null,
+    discount_value: null,
+    promotion_code: null,
   },
   basic_one_year: {
     type: 'basic_one_year',
     price_id: 'price_1P3u0MCdtAdZoE6dU6TiOOuy',
     dev_price_id: 'price_1P3u0DCdtAdZoE6dWXxoPxZx',
     price: 99.99,
+    discount_title: null,
+    discount_value: null,
+    promotion_code: null,
   },
   basic_team: {
     type: 'basic_team',
     price_id: 'price_1P4v0wCdtAdZoE6dFAS1hMA7',
     dev_price_id: 'price_1P4v0jCdtAdZoE6d47buLU0y',
     price: 9.99,
+    discount_title: null,
+    discount_value: null,
+    promotion_code: null,
   },
   pro: {
     type: 'pro',
     price_id: 'price_1NXOaXCdtAdZoE6djhTrjSS3',
     dev_price_id: 'price_1NXOeNCdtAdZoE6d8rNJB4Np',
     price: 20,
+    discount_title: null,
+    discount_value: null,
+    promotion_code: null,
   },
   pro_yearly: {
     type: 'pro_yearly',
@@ -63,12 +78,18 @@ const PLAN_PRICING_INFO = {
     price_id: 'price_1P4v2pCdtAdZoE6dNfeKBltI',
     dev_price_id: 'price_1P4v3OCdtAdZoE6dcYxK3zP5',
     price: 19.99,
+    discount_title: null,
+    discount_value: null,
+    promotion_code: null,
   },
   elite: {
     type: 'elite',
     price_id: 'price_1PE1iiCdtAdZoE6dGAhidDoE',
     dev_price_id: 'price_1PE1hZCdtAdZoE6du9cawaOU',
     price: 40,
+    discount_title: null,
+    discount_value: null,
+    promotion_code: null,
   },
   elite_yearly: {
     type: 'elite_yearly',
@@ -93,6 +114,9 @@ const PLAN_PRICING_INFO = {
     price_id: 'price_1PE1efCdtAdZoE6dah7v6LDL',
     dev_price_id: 'price_1PE1dmCdtAdZoE6dXVzi0X0O',
     price: 40,
+    discount_title: null,
+    discount_value: null,
+    promotion_code: null,
   },
 }
 
@@ -141,13 +165,13 @@ const AB_TEST_LIST = [
       },
       pro_yearly: {
         ...PLAN_PRICING_INFO.pro_yearly,
-        ...pro_yearly_19
+        ...pro_yearly_19,
       },
       pro_one_year: {
         ...PLAN_PRICING_INFO.pro_one_year,
-        ...pro_yearly_19
-      }
-    }
+        ...pro_yearly_19,
+      },
+    },
   },
   {
     name: '6-2',
@@ -162,87 +186,101 @@ const AB_TEST_LIST = [
       },
       pro_yearly: {
         ...PLAN_PRICING_INFO.pro_yearly,
-        ...pro_yearly_18
+        ...pro_yearly_18,
       },
       pro_one_year: {
         ...PLAN_PRICING_INFO.pro_one_year,
-        ...pro_yearly_18
-      }
-    }
+        ...pro_yearly_18,
+      },
+    },
   },
   {
     name: '6-3',
     info: {
       elite_yearly: {
         ...PLAN_PRICING_INFO.elite_yearly,
-        ...elite_yearly_18
+        ...elite_yearly_18,
       },
       elite_one_year: {
         ...PLAN_PRICING_INFO.elite_one_year,
-        ...elite_yearly_18
+        ...elite_yearly_18,
       },
       pro_yearly: {
         ...PLAN_PRICING_INFO.pro_yearly,
-        ...pro_yearly_18
+        ...pro_yearly_18,
       },
       pro_one_year: {
         ...PLAN_PRICING_INFO.pro_one_year,
-        ...pro_yearly_18
-      }
-    }
+        ...pro_yearly_18,
+      },
+    },
   },
   {
     name: '6-4',
     info: {
       elite_yearly: {
         ...PLAN_PRICING_INFO.elite_yearly,
-        ...elite_yearly_18
+        ...elite_yearly_18,
       },
       elite_one_year: {
         ...PLAN_PRICING_INFO.elite_one_year,
-        ...elite_yearly_18
+        ...elite_yearly_18,
       },
       pro_yearly: {
         ...PLAN_PRICING_INFO.pro_yearly,
-        ...pro_yearly_17
+        ...pro_yearly_17,
       },
       pro_one_year: {
         ...PLAN_PRICING_INFO.pro_one_year,
-        ...pro_yearly_17
-      }
-    }
+        ...pro_yearly_17,
+      },
+    },
   },
   {
     name: '6-5',
     info: {
       elite_yearly: {
         ...PLAN_PRICING_INFO.elite_yearly,
-        ...elite_yearly_18
+        ...elite_yearly_18,
       },
       elite_one_year: {
         ...PLAN_PRICING_INFO.elite_one_year,
-        ...elite_yearly_18
+        ...elite_yearly_18,
       },
       pro_yearly: {
         ...PLAN_PRICING_INFO.pro_yearly,
-        ...pro_yearly_19
+        ...pro_yearly_19,
       },
       pro_one_year: {
         ...PLAN_PRICING_INFO.pro_one_year,
-        ...pro_yearly_19
-      }
-    }
-  }
+        ...pro_yearly_19,
+      },
+    },
+  },
 ]
 
-AB_TEST_LIST.forEach(item => {
+AB_TEST_LIST.forEach((item) => {
   const abTestInfo = { ...PLAN_PRICING_INFO, ...item.info }
   abTestInfo.basic_monthly = abTestInfo.basic
   abTestInfo.pro_monthly = abTestInfo.pro
   abTestInfo.elite_monthly = abTestInfo.elite
-  delete abTestInfo.free
-  delete abTestInfo.basic
-  delete abTestInfo.pro
-  delete abTestInfo.elite
-  fs.writeFileSync(`${item.name}.json`, JSON.stringify(abTestInfo, null, 2))
+  // 调整一下顺序
+  const writeInfo = [
+    'basic_monthly',
+    'basic_yearly',
+    'basic_one_year',
+    'basic_team',
+    'pro_monthly',
+    'pro_yearly',
+    'pro_one_year',
+    'pro_team',
+    'elite_monthly',
+    'elite_yearly',
+    'elite_one_year',
+    'elite_team',
+  ].reduce((acc, key) => {
+    acc[key] = abTestInfo[key]
+    return acc
+  }, {})
+  fs.writeFileSync(`${item.name}.json`, JSON.stringify(writeInfo, null, 2))
 })

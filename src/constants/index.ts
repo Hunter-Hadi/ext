@@ -1,6 +1,4 @@
 // s3
-import * as process from 'node:process'
-
 import { MAXAI_CHROME_EXTENSION_ID } from '@/features/common/constants'
 
 export const RESOURCES_URL = 'https://resources.usechatgpt.ai'

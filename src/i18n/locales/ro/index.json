@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Deblocare toate modelele AI",
     "pricing__upgrade__popper_card__item3__title": "Deblocare toate caracteristicile",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Doar GPT-4o. Pentru a debloca toate celelalte modele de AI, faceți upgrade la planul MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Cel mai bun raport calitate-preț"
+    "pricing__upgrade__popper_card__item4__title": "Cel mai bun raport calitate-preț",
+    "permission__pricing_hook__context_menu__title": "Upgrade pentru a debloca rescrierea AI nelimitată",
+    "permission__pricing_hook__context_menu__description": "Cu rewriterul AI MaxAI, puteți economisi timp la corectarea și perfecționarea cuvintelor dvs. pe web, de la e-mail la social media și dincolo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",
@@ -1341,9 +1343,9 @@
     "queries": "Interogări AI rămase",
     "reset_on_date": "Resetare la data de {{DATE}}",
     "advanced_text__secondary__content": "Interogări AI inteligente de mare viteză: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Asigură cel puțin 1.500 de interogări avansate de text de mare viteză în fiecare lună. După atingerea limitei, viteza și calitatea modelului pot fi reduse.",
+    "advanced_text__secondary__content__tooltip": "Asigurați-vă cel puțin 1.500 de interogări AI inteligente de mare viteză în fiecare lună. Utilizarea dincolo de această limită sau la frecvențe mari poate duce la reducerea vitezei și calității. Politicile de utilizare corectă se aplică în funcție de frecvența interogării, lungimea conținutului și modelele generale de utilizare.",
     "image_generate__secondary__content": "Interogări AI pentru imagini de mare viteză: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Asigură cel puțin 1.500 de interogări de imagini de mare viteză în fiecare lună. După atingerea limitei, viteza și calitatea modelului pot fi reduse.",
+    "image_generate__secondary__content__tooltip": "Asigurați-vă cel puțin 600 de interogări AI de imagine de mare viteză în fiecare lună. Utilizarea dincolo de această limită sau la frecvențe mari poate duce la reducerea vitezei și calității. Politicile de utilizare corectă se aplică în funcție de frecvența interogării, dimensiunea imaginii și modelele generale de utilizare.",
     "upgrade_to_go_unlimited": "Upgrade la MaxAI Elite pentru a merge nelimitat"
   },
   "onboarding": {

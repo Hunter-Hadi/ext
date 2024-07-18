@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Sblocca tutti i modelli AI",
     "pricing__upgrade__popper_card__item3__title": "Sblocca tutte le funzionalità",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Solo GPT-4o. Per sbloccare tutti gli altri modelli AI, passa al piano MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Miglior rapporto qualità-prezzo"
+    "pricing__upgrade__popper_card__item4__title": "Miglior rapporto qualità-prezzo",
+    "permission__pricing_hook__context_menu__title": "Aggiorna per sbloccare l'AI riscrittore illimitato",
+    "permission__pricing_hook__context_menu__description": "Con l'AI riscrittore di MaxAI, puoi risparmiare tempo nella correzione e perfezionamento delle tue parole in tutto il web, dall'email ai social media e oltre."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",
@@ -1341,9 +1343,9 @@
     "queries": "Query AI rimanenti",
     "reset_on_date": "Reset il {{DATE}}",
     "advanced_text__secondary__content": "Query AI intelligente ad alta velocità: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Assicurati almeno 1.500 query avanzate di testo ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",
+    "advanced_text__secondary__content__tooltip": "Assicurati almeno 1.500 query AI smart ad alta velocità ogni mese. L'uso oltre questo limite o a frequenze elevate potrebbe comportare una velocità e qualità ridotte. Si applicano politiche di utilizzo equo basate sulla frequenza delle query, sulla lunghezza del contenuto e sui modelli di utilizzo complessivo.",
     "image_generate__secondary__content": "Query AI per immagini ad alta velocità: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Assicurati almeno 1.500 query di immagini ad alta velocità ogni mese. Dopo aver raggiunto il limite, la velocità e la qualità del modello potrebbero essere ridotte.",
+    "image_generate__secondary__content__tooltip": "Assicurati almeno 600 query AI per immagini ad alta velocità ogni mese. L'uso oltre questo limite o a frequenze elevate potrebbe comportare una velocità e qualità ridotte. Si applicano politiche di utilizzo equo basate sulla frequenza delle query, sulla dimensione dell'immagine e sui modelli di utilizzo complessivo.",
     "upgrade_to_go_unlimited": "Passa a MaxAI Elite per andare illimitato"
   },
   "onboarding": {

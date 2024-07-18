@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
 
-import { useAuthLogin } from '@/features/auth/hooks/useAuthLogin'
+import { useCreateClientMessageListener } from '@/background/utils'
+import { useAuthLogin } from '@/features/auth'
 import {
   FirstFetchSurveyStatusLoadedAtom,
   HaveFilledOutSurveyAtom,
@@ -17,8 +18,7 @@ const useInitSurveyState = () => {
     FirstFetchSurveyStatusLoadedAtom,
   )
   const { isLogin } = useAuthLogin()
-  const syncOnce = useRef(false)
-
+  const initSyncOnce = useRef(false)
   const syncSurveyStatus = async (force = false) => {
     const responseFilledOutSurveyKeys = await clientUpdateSurveyStatus(force)
     if (
@@ -33,7 +33,7 @@ const useInitSurveyState = () => {
   }
 
   useEffect(() => {
-    if (syncOnce.current) {
+    if (initSyncOnce.current) {
       return
     }
     if (isLogin) {
@@ -41,11 +41,31 @@ const useInitSurveyState = () => {
         // 如果缓存里是空的，就强行请求 api 更新一次
         syncSurveyStatus(!surveyStatus).then(() => {
           setFirstFetchSurveyStatusLoaded(true)
-          syncOnce.current = true
+          initSyncOnce.current = true
         })
       })
     }
   }, [isLogin])
+
+  useCreateClientMessageListener(async (event, data) => {
+    // 初始化完成后，才开始监听
+    if (!initSyncOnce.current) {
+      return undefined
+    }
+    if (event === 'Client_listenSurveyStatusUpdated') {
+      const responseFilledOutSurveyKeys = data
+      setFilledOutSurvey((preState) => ({
+        ...preState,
+        ...responseFilledOutSurveyKeys,
+      }))
+      return {
+        success: true,
+        message: 'ok',
+        data: {},
+      }
+    }
+    return undefined
+  })
 
   return null
 }

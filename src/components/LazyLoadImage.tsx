@@ -7,7 +7,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
 import { getSearchWithAIRootElement } from '@/features/searchWithAI/utils'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import {
   getMaxAIFloatingContextMenuRootElement,
   getMaxAISidebarRootElement,
@@ -83,7 +83,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
           image.onerror = async () => {
             clearTimeout(timer)
             // 用background fetch一次
-            const result = await clientFetchAPI(src, {
+            const result = await clientProxyFetchAPI(src, {
               parse: 'blob',
               method: 'GET',
             })

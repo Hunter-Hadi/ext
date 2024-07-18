@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Alle KI-Modelle freischalten",
     "pricing__upgrade__popper_card__item3__title": "Alle Funktionen freischalten",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Nur GPT-4o. Um alle anderen KI-Modelle freizuschalten, wechseln Sie zum MaxAI Elite-Plan.",
-    "pricing__upgrade__popper_card__item4__title": "Bestes Preis-Leistungs-Verhältnis"
+    "pricing__upgrade__popper_card__item4__title": "Bestes Preis-Leistungs-Verhältnis",
+    "permission__pricing_hook__context_menu__title": "Upgrade für unbegrenzten KI-Umschreiber freischalten",
+    "permission__pricing_hook__context_menu__description": "Mit MaxAI's KI-Umschreiber können Sie Zeit beim Korrekturlesen und Perfektionieren Ihrer Worte im Web sparen, von E-Mails über soziale Medien und mehr."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1341,9 +1343,9 @@
     "queries": "Verbleibende KI-Abfragen",
     "reset_on_date": "Zurücksetzen am {{DATE}}",
     "advanced_text__secondary__content": "Hochgeschwindigkeitsintelligente KI-Abfragen: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits fortgeschrittene Textabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",
+    "advanced_text__secondary__content__tooltip": "Stellen Sie sicher, dass jeden Monat mindestens 1.500 High-Speed-Smart-AI-Abfragen durchgeführt werden. Die Nutzung über dieses Limit hinaus oder bei hohen Frequenzen kann zu reduzierter Geschwindigkeit und Qualität führen. Fair-Use-Richtlinien gelten basierend auf der Abfragehäufigkeit, der Inhaltslänge und den allgemeinen Nutzungsmustern.",
     "image_generate__secondary__content": "Hochgeschwindigkeitsbild-KI-Abfragen: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Stelle sicher, dass du jeden Monat mindestens 1.500 hochgeschwindigkeits Bildabfragen hast. Nach Erreichen des Limits kann die Geschwindigkeit und Qualität des Modells reduziert werden.",
+    "image_generate__secondary__content__tooltip": "Stellen Sie sicher, dass jeden Monat mindestens 600 High-Speed-Bild-AI-Abfragen durchgeführt werden. Die Nutzung über dieses Limit hinaus oder bei hohen Frequenzen kann zu reduzierter Geschwindigkeit und Qualität führen. Fair-Use-Richtlinien gelten basierend auf der Abfragehäufigkeit, der Bildgröße und den allgemeinen Nutzungsmustern.",
     "upgrade_to_go_unlimited": "Upgrade auf MaxAI Elite, um unbegrenzt zu gehen"
   },
   "onboarding": {

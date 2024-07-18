@@ -77,8 +77,9 @@ const runEmbedShortCuts = () => {
     }
     try {
       // set selection
-      const shadowRoot = document.getElementById(MAXAI_CONTEXT_MENU_ID)
-        ?.shadowRoot
+      const shadowRoot = document.getElementById(
+        MAXAI_CONTEXT_MENU_ID,
+      )?.shadowRoot
       // find contextMenu click button in 2000ms
       if (shadowRoot) {
         const contextMenuButton = await intervalFindAllHtmlElement(

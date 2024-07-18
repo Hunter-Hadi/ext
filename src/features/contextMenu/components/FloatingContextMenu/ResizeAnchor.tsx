@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import React, { FC, useEffect,useRef } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 
 const ResizeAnchor: FC<{
   anchorSize?: string

@@ -13,21 +13,22 @@ export interface ContextMenuSearchTextStore {
   [key: string]: ContextMenuSearchTextStoreI18nStore
 }
 
-export const getContextMenuSearchTextStore = async (): Promise<ContextMenuSearchTextStore> => {
-  try {
-    const cache = await Browser.storage.local.get(
-      CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY,
-    )
-    if (cache[CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY]) {
-      return JSON.parse(
-        cache[CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY] || '{}',
-      ) as ContextMenuSearchTextStore
+export const getContextMenuSearchTextStore =
+  async (): Promise<ContextMenuSearchTextStore> => {
+    try {
+      const cache = await Browser.storage.local.get(
+        CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY,
+      )
+      if (cache[CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY]) {
+        return JSON.parse(
+          cache[CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY] || '{}',
+        ) as ContextMenuSearchTextStore
+      }
+      return {}
+    } catch (e) {
+      return {}
     }
-    return {}
-  } catch (e) {
-    return {}
   }
-}
 
 export const setContextMenuSearchTextStore = async (
   lang: string,

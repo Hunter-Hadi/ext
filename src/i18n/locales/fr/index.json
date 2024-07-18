@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Débloquer tous les modèles d'IA",
     "pricing__upgrade__popper_card__item3__title": "Débloquer toutes les fonctionnalités",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Uniquement GPT-4o. Pour débloquer tous les autres modèles d'IA, passez au plan MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Meilleur rapport qualité-prix"
+    "pricing__upgrade__popper_card__item4__title": "Meilleur rapport qualité-prix",
+    "permission__pricing_hook__context_menu__title": "Mise à niveau pour débloquer le réécriveur AI illimité",
+    "permission__pricing_hook__context_menu__description": "Avec le réécriveur AI de MaxAI, vous pouvez gagner du temps sur la relecture et la perfection de vos mots sur le web, des e-mails aux médias sociaux et au-delà."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -1341,9 +1343,9 @@
     "queries": "Requêtes IA restantes",
     "reset_on_date": "Réinitialisation le {{DATE}}",
     "advanced_text__secondary__content": "Requêtes IA intelligente à haute vitesse: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes de texte avancé à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites.",
+    "advanced_text__secondary__content__tooltip": "Assurez-vous d'au moins 1 500 requêtes AI intelligentes à haute vitesse chaque mois. L'utilisation au-delà de cette limite ou à des fréquences élevées peut entraîner une vitesse et une qualité réduites. Les politiques d'utilisation équitable s'appliquent en fonction de la fréquence des requêtes, de la longueur du contenu et des modèles d'utilisation globaux.",
     "image_generate__secondary__content": "Requêtes IA d'image à haute vitesse: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Assurez-vous d'avoir au moins 1 500 requêtes d'image à grande vitesse chaque mois. Après avoir atteint la limite, la vitesse et la qualité du modèle peuvent être réduites.",
+    "image_generate__secondary__content__tooltip": "Assurez-vous d'au moins 600 requêtes AI d'image à haute vitesse chaque mois. L'utilisation au-delà de cette limite ou à des fréquences élevées peut entraîner une vitesse et une qualité réduites. Les politiques d'utilisation équitable s'appliquent en fonction de la fréquence des requêtes, de la taille de l'image et des modèles d'utilisation globaux.",
     "upgrade_to_go_unlimited": "Mettez à niveau vers MaxAI Elite pour aller illimité"
   },
   "onboarding": {

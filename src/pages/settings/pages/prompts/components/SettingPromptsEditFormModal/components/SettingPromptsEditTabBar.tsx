@@ -54,7 +54,7 @@ const TabBar: FC<TabsProps> = (props) => {
   const { editNode, setErrors } = useSettingPromptsEditContext()
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center">
+    <Box display='flex' justifyContent='center' alignItems='center'>
       <CustomTabs
         {...props}
         onChange={(event, value) => {

@@ -51,15 +51,12 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
     placeholder,
     sx,
   } = props
-  const [value, setValue] = useState<{ label: string; value: string }>(
-    () => {
-      return (
-        WRITING_STYLES_OPTIONS.find(
-          (option) => option.value === defaultValue,
-        ) || WRITING_STYLES_OPTIONS[0]
-      )
-    },
-  )
+  const [value, setValue] = useState<{ label: string; value: string }>(() => {
+    return (
+      WRITING_STYLES_OPTIONS.find((option) => option.value === defaultValue) ||
+      WRITING_STYLES_OPTIONS[0]
+    )
+  })
   return (
     <Autocomplete
       disablePortal
@@ -81,15 +78,15 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
         },
         [`.${inputBaseClasses.root}`]: {
           fontSize: 16,
-          paddingRight: '28px!important'
+          paddingRight: '28px!important',
         },
         [`.${inputBaseClasses.root} fieldset > legend`]: {
           fontSize: 14,
         },
         [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]: {
-          fontSize: 24
+          fontSize: 24,
         },
-        ...sx
+        ...sx,
       }}
       slotProps={{
         paper: {

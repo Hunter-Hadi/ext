@@ -38,8 +38,8 @@ const ChatGPTRefreshPageTips: FC = () => {
               }}
             />
             <Typography
-              color="text.primary"
-              component="h1"
+              color='text.primary'
+              component='h1'
               fontSize={20}
               fontWeight={800}
             >

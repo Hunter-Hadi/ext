@@ -76,13 +76,13 @@ const DropdownIconButton: React.FC<DropdownIconButtonProps> = (props) => {
           onClick={handleClick}
           aria-label={tooltipTitle}
           aria-controls={anchorEl ? 'dropdown-menu' : undefined}
-          aria-haspopup="true"
+          aria-haspopup='true'
         >
           {icon}
         </IconButton>
       </TextOnlyTooltip>
       <Menu
-        id="dropdown-menu"
+        id='dropdown-menu'
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}

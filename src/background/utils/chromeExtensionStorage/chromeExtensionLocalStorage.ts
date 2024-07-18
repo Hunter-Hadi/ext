@@ -122,7 +122,7 @@ export const defaultChromeExtensionLocalStorage =
         },
         art: {
           conversationId: '',
-        }
+        },
       },
       thirdProviderSettings: {
         [AI_PROVIDER_MAP.BING]: {

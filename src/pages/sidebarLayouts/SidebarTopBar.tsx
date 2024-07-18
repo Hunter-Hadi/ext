@@ -10,7 +10,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import PermissionDailyLimitBar from '@/features/auth/components/PermissionDailyLimitBar'
 import useActivity from '@/features/auth/hooks/useActivity'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import UnableAutoSubscriptionBar from "@/features/subscription/components/UnableAutoSubscriptionBar";
+import UnableAutoSubscriptionBar from '@/features/subscription/components/UnableAutoSubscriptionBar'
 
 const SidebarTopBar: FC = () => {
   const { t } = useTranslation(['client'])

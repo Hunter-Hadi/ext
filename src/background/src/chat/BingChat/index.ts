@@ -4,7 +4,7 @@ import BaseChat from '@/background/src/chat/BaseChat'
 import { BingWebBot } from '@/background/src/chat/BingChat/bing'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
 import { requestHostPermission } from '@/background/utils'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 class BingChat extends BaseChat {
   private bingLib: BingWebBot

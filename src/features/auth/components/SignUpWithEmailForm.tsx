@@ -37,7 +37,7 @@ const SignUpWithEmailForm = () => {
   return (
     <Stack
       spacing={2}
-      component="form"
+      component='form'
       onSubmit={(event: FormEvent) => {
         event.preventDefault()
         handleSubmit(onSubmit)()
@@ -59,7 +59,7 @@ const SignUpWithEmailForm = () => {
             <TextField
               error={errMsg ? true : false}
               value={value || ''}
-              type="text"
+              type='text'
               name={'email'}
               onChange={({ target: { value } }) =>
                 onChange(value.trim().toString().toLowerCase())
@@ -86,7 +86,7 @@ const SignUpWithEmailForm = () => {
         <Box sx={{ maxWidth: '100%', mt: 1 }}>
           <Grow in={errorData ? true : false} mountOnEnter unmountOnExit>
             <Alert
-              severity="error"
+              severity='error'
               icon={false}
               sx={{ wordWrap: 'break-word', maxWidth: '100%' }}
             >
@@ -98,11 +98,11 @@ const SignUpWithEmailForm = () => {
       <Stack spacing={3}>
         <LoadingButton
           disabled={!isValid}
-          variant="contained"
+          variant='contained'
           disableElevation
-          size="large"
+          size='large'
           fullWidth
-          type="submit"
+          type='submit'
           sx={{ height: 56, fontSize: 16, fontWeight: 700, borderRadius: 2 }}
         >
           <span>{t('common:continue_with_email')}</span>

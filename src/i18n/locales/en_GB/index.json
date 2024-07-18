@@ -650,6 +650,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Get long answers to complex questions",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Search with AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Display AI answers next to search results",
+    "permission__pricing_hook__context_menu__title": "Upgrade to unlock unlimited AI rewriter",
+    "permission__pricing_hook__context_menu__description": "With MaxAI's AI rewriter, you can save time on proofreading and perfecting your words across the web, from email to social media and beyond.",
     "permission__pricing_modal__title": "Upgrade to unlimited",
     "permission__pricing_modal__description": "Read, write, and search faster without limits by upgrading to MaxAI Elite",
     "permission__pricing_modal__item1__title": "Unlimited AI usage",
@@ -1134,9 +1136,9 @@
     "queries": "Remaining AI queries",
     "reset_on_date": "Reset on {{DATE}}",
     "advanced_text__secondary__content": "High-speed smart AI queries: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed advanced text queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
+    "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed smart AI queries each month. Usage beyond this limit or at high frequencies may result in reduced speed and quality. Fair usage policies apply based on query frequency, content length, and overall usage patterns.",
     "image_generate__secondary__content": "High-speed image AI queries: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Ensure at least 1,500 high-speed image queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
+    "image_generate__secondary__content__tooltip": "Ensure at least 600 high-speed image AI queries each month. Usage beyond this limit or at high frequencies may result in reduced speed and quality. Fair usage policies apply based on query frequency, image size, and overall usage patterns.",
     "upgrade_to_go_unlimited": "Upgrade to MaxAI Elite to go unlimited"
   },
   "survey": {

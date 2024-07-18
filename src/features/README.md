@@ -1,6 +1,7 @@
-# 基于产品功能划分feature
+# 基于产品功能划分 feature
 
 ## 目录
+
 - chat-base
   - chat
   - summary
@@ -25,7 +26,7 @@
 - pricing
   - payment
 - prompt-library
-- website-integrations 存放所有特殊website的逻辑
+- website-integrations 存放所有特殊 website 的逻辑
   - google-doc
   - office-word
   - youtube

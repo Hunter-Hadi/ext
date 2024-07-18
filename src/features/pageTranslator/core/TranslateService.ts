@@ -2,7 +2,7 @@ import Browser from 'webextension-polyfill'
 
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import { languageCodeToApiSupportCode } from '@/features/pageTranslator/utils'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
 const TRANSLATOR_ACCESS_TOKEN_CACHE_KEY = 'TRANSLATOR_ACCESS_TOKEN_CACHE_KEY'
@@ -56,7 +56,7 @@ class TranslateService {
         return
       }
       this.authFetching = true
-      const authResponse = await clientFetchAPI(
+      const authResponse = await clientProxyFetchAPI(
         'https://edge.microsoft.com/translate/auth',
         {
           method: 'GET',
@@ -125,7 +125,7 @@ class TranslateService {
       const fixedFromCode = languageCodeToApiSupportCode(from)
 
       const fetchTranslatorResponse = await promiseTimeout(
-        clientFetchAPI<ITranslationResponse[]>(
+        clientProxyFetchAPI<ITranslationResponse[]>(
           `https://api-edge.cognitive.microsofttranslator.com/translate?from=${fixedFromCode}&to=${fixedToCode}&api-version=3.0&includeSentenceLength=true`,
           {
             parse: 'json',

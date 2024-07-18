@@ -1,12 +1,12 @@
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { getBasicInfoForMixpanel } from '@/features/mixpanel/utils'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { aesJsonEncrypt } from '@/features/security'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import { VALID_SURVEY_KEYS } from '@/features/survey/constants'
 import { IFunnelSurveySceneType, ISurveyKeyType } from '@/features/survey/types'
-import { aesJsonEncrypt } from '@/utils/encryptionHelper'
 
 import { FUNNEL_SURVEY_MIXPANEL_EVENTNAME } from '../constants/funnel_survey'
 
@@ -53,12 +53,12 @@ export const submitFunnelSurvey = async (payload: {
     const { surveyKey, funnelSurveySceneType, surveyContent, clientUserId } =
       payload
 
-    const accessToken = await getAccessToken()
+    const accessToken = await getMaxAIChromeExtensionAccessToken()
     if (accessToken) {
       const fixedSurveyContent =
         transformRecordKeyNameToLowerCase(surveyContent)
       // save survey status
-      await clientFetchAPI(
+      await clientProxyFetchAPI(
         `${APP_USE_CHAT_GPT_API_HOST}/user/save_user_survey_key`,
         {
           method: 'POST',
@@ -89,7 +89,7 @@ export const submitFunnelSurvey = async (payload: {
       )
 
       // call backend to send mixpanel event
-      await clientFetchAPI(
+      await clientProxyFetchAPI(
         `${APP_USE_CHAT_GPT_API_HOST}/app/send_mixpanel_log`,
         {
           method: 'POST',

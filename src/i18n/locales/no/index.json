@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Lås opp alle AI-modeller",
     "pricing__upgrade__popper_card__item3__title": "Lås opp alle funksjoner",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Kun GPT-4o. For å låse opp alle andre AI-modeller, oppgrader til MaxAI Elite-planen.",
-    "pricing__upgrade__popper_card__item4__title": "Best verdi for pengene dine"
+    "pricing__upgrade__popper_card__item4__title": "Best verdi for pengene dine",
+    "permission__pricing_hook__context_menu__title": "Oppgrader for å låse opp ubegrenset AI-omskriver",
+    "permission__pricing_hook__context_menu__description": "Med MaxAI's AI-omskriver kan du spare tid på korrekturlesing og perfeksjonere ordene dine på nettet, fra e-post til sosiale medier og videre."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -1341,9 +1343,9 @@
     "queries": "Gjenstående AI-forespørsler",
     "reset_on_date": "Tilbakestilles den {{DATE}}",
     "advanced_text__secondary__content": "Hurtige smarte AI-spørringer: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets avanserte tekstspørringer hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres.",
+    "advanced_text__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets smarte AI-forespørsler hver måned. Bruk utover denne grensen eller ved høye frekvenser kan føre til redusert hastighet og kvalitet. Retningslinjer for rettferdig bruk gjelder basert på forespørselsfrekvens, innholdslengde og generelle bruksmønstre.",
     "image_generate__secondary__content": "Hurtige bilde AI-spørringer: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Sørg for minst 1 500 høyhastighets bildespørringer hver måned. Etter å ha nådd grensen, kan hastigheten og kvaliteten på modellen reduseres.",
+    "image_generate__secondary__content__tooltip": "Sørg for minst 600 høyhastighets bilde AI-forespørsler hver måned. Bruk utover denne grensen eller ved høye frekvenser kan føre til redusert hastighet og kvalitet. Retningslinjer for rettferdig bruk gjelder basert på forespørselsfrekvens, bildestørrelse og generelle bruksmønstre.",
     "upgrade_to_go_unlimited": "Oppgrader til MaxAI Elite for å gå ubegrenset"
   },
   "onboarding": {

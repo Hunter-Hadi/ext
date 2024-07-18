@@ -6,7 +6,7 @@ import React, { FC, useMemo } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { IAIResponseOriginalMessageCopilotStep } from '@/features/indexed_db/conversations/models/Message';
+import { IAIResponseOriginalMessageCopilotStep } from '@/features/indexed_db/conversations/models/Message'
 
 const SidebarAIMessageCopilotStep: FC<{
   messageIsComplete?: boolean
@@ -19,7 +19,7 @@ const SidebarAIMessageCopilotStep: FC<{
     switch (valueType) {
       case 'text': {
         return (
-          <Card variant="outlined" sx={{ px: 1 }}>
+          <Card variant='outlined' sx={{ px: 1 }}>
             <TextOnlyTooltip title={String(value)}>
               <Typography
                 fontSize={14}
@@ -48,7 +48,7 @@ const SidebarAIMessageCopilotStep: FC<{
             flexWrap={'wrap'}
           >
             {tags.map((tag, index) => (
-              <Card key={tag + index} variant="outlined" sx={{ px: 1 }}>
+              <Card key={tag + index} variant='outlined' sx={{ px: 1 }}>
                 <TextOnlyTooltip title={tag}>
                   <Typography
                     noWrap
@@ -91,7 +91,7 @@ const SidebarAIMessageCopilotStep: FC<{
         </Stack>
         <Typography
           fontSize={16}
-          color="text.primary"
+          color='text.primary'
           noWrap
           sx={{
             p: 0,

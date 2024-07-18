@@ -1,4 +1,4 @@
-import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 
 export enum PoeModel {
   ClaudeInstant = 'a2',

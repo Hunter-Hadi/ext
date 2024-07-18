@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "פתח את כל דגמי המודלים של AI",
     "pricing__upgrade__popper_card__item3__title": "פתח את כל התכונות",
     "pricing__plan_features__pro__feature1__item2__subtitle": "רק GPT-4o. כדי לפתוח את כל שאר הדגמי AI, שדרגו לתוכנית MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "ערך מיטבי עבור הכסף שלך"
+    "pricing__upgrade__popper_card__item4__title": "ערך מיטבי עבור הכסף שלך",
+    "permission__pricing_hook__context_menu__title": "שדרג כדי לפתוח את מחדל הכתיבה האוטומטית הבלתי מוגבלת",
+    "permission__pricing_hook__context_menu__description": "עם מחדל הכתיבה האוטומטית של MaxAI, תוכל לחסוך זמן בבדיקת התקינות והשלמת המילים שלך ברחבי הרשת, מדואר אלקטרוני ועד לרשתות חברתיות ומעבר."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -1341,9 +1343,9 @@
     "queries": "שאילתות AI הנותרות",
     "reset_on_date": "איפוס בתאריך {{DATE}}",
     "advanced_text__secondary__content": "שאילתות AI חכמות במהירות גבוהה: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "וודא לפחות 1,500 שאילתות בטקסט מתקדמות במהירות גבוהה בכל חודש. לאחר הגעת למגבלה, המהירות והאיכות של הדגם עשויות להיפחת.",
+    "advanced_text__secondary__content__tooltip": "הבטיחו לפחות 1,500 שאילתות AI חכמות במהירות גבוהה בכל חודש. שימוש מעבר למגבלה זו או בתדרים גבוהים עשוי לגרום להפחתת מהירות ואיכות. מדיניות שימוש הוגן חלה בהתבסס על תדר השאילתות, אורך התוכן והתבניות הכלליות של השימוש.",
     "image_generate__secondary__content": "שאילתות AI ליצירת תמונות במהירות גבוהה: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "וודא לפחות 1,500 שאילתות בתמונות במהירות גבוהה בכל חודש. לאחר הגעת למגבלה, המהירות והאיכות של הדגם עשויות להיפחת.",
+    "image_generate__secondary__content__tooltip": "הבטיחו לפחות 600 שאילתות AI לתמונה במהירות גבוהה בכל חודש. שימוש מעבר למגבלה זו או בתדרים גבוהים עשוי לגרום להפחתת מהירות ואיכות. מדיניות שימוש הוגן חלה בהתבסס על תדר השאילתות, גודל התמונה והתבניות הכלליות של השימוש.",
     "upgrade_to_go_unlimited": "שדרג ל-MaxAI Elite כדי להישאר בלתי מוגבל"
   },
   "onboarding": {

@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "解鎖所有AI模型",
     "pricing__upgrade__popper_card__item3__title": "解鎖所有功能",
     "pricing__plan_features__pro__feature1__item2__subtitle": "僅限 GPT-4o。要解鎖所有其他 AI 模型，請升級至 MaxAI Elite 計劃。",
-    "pricing__upgrade__popper_card__item4__title": "物超所值"
+    "pricing__upgrade__popper_card__item4__title": "物超所值",
+    "permission__pricing_hook__context_menu__title": "升級以解鎖無限人工智慧重寫",
+    "permission__pricing_hook__context_menu__description": "使用 MaxAI 的人工智慧重寫器，您可以節省校對和完善您在網絡上的文字的時間，從電子郵件到社交媒體等等。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1341,9 +1343,9 @@
     "queries": "剩餘AI查詢",
     "reset_on_date": "重置於{{DATE}}",
     "advanced_text__secondary__content": "高速智能AI查詢：{{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "每月至少確保1,500次高速高級文本查詢。達到限制後，模型的速度和質量可能會降低。",
+    "advanced_text__secondary__content__tooltip": "每月至少確保 1,500 次高速智慧 AI 查詢。超出此限制或高頻使用可能導致速度和品質降低。公平使用政策根據查詢頻率、內容長度和整體使用模式進行。",
     "image_generate__secondary__content": "高速圖像AI查詢：{{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "每月至少確保1,500次高速圖像查詢。達到限制後，模型的速度和質量可能會降低。",
+    "image_generate__secondary__content__tooltip": "每月至少確保 600 次高速圖像 AI 查詢。超出此限制或高頻使用可能導致速度和品質降低。公平使用政策根據查詢頻率、圖像大小和整體使用模式進行。",
     "upgrade_to_go_unlimited": "升級至 MaxAI 精英版，無限制使用"
   },
   "onboarding": {

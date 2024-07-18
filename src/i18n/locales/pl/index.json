@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Odblokuj wszystkie modele AI",
     "pricing__upgrade__popper_card__item3__title": "Odblokuj wszystkie funkcje",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tylko GPT-4o. Aby odblokować wszystkie inne modele AI, przejdź na plan MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Najlepsza wartość za Twoje pieniądze"
+    "pricing__upgrade__popper_card__item4__title": "Najlepsza wartość za Twoje pieniądze",
+    "permission__pricing_hook__context_menu__title": "Ulepsz, aby odblokować nieograniczone przepisywanie AI",
+    "permission__pricing_hook__context_menu__description": "Dzięki przepisywarce AI MaxAI możesz zaoszczędzić czas na korekcie i doskonaleniu swoich słów w sieci, od e-maili po media społecznościowe i nie tylko."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -1341,9 +1343,9 @@
     "queries": "Pozostałe zapytania AI",
     "reset_on_date": "Resetuje się {{DATE}}",
     "advanced_text__secondary__content": "Szybkie zapytania inteligentnego AI: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Zapewnij co najmniej 1500 zapytań zaawansowanych tekstowych o dużej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
+    "advanced_text__secondary__content__tooltip": "Zapewnij co najmniej 1 500 inteligentnych zapytań AI wysokiej prędkości każdego miesiąca. Korzystanie poza tym limitem lub przy wysokich częstotliwościach może skutkować zmniejszeniem prędkości i jakości. Zasady uczciwego użytkowania stosują się w oparciu o częstotliwość zapytań, długość treści i ogólne wzorce użytkowania.",
     "image_generate__secondary__content": "Szybkie zapytania AI do generowania obrazów: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Zapewnij co najmniej 1500 zapytań obrazowych o dużej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
+    "image_generate__secondary__content__tooltip": "Zapewnij co najmniej 600 zapytań AI dotyczących obrazów wysokiej prędkości każdego miesiąca. Korzystanie poza tym limitem lub przy wysokich częstotliwościach może skutkować zmniejszeniem prędkości i jakości. Zasady uczciwego użytkowania stosują się w oparciu o częstotliwość zapytań, rozmiar obrazu i ogólne wzorce użytkowania.",
     "upgrade_to_go_unlimited": "Zaktualizuj do MaxAI Elite, aby uzyskać nieograniczone możliwości"
   },
   "onboarding": {

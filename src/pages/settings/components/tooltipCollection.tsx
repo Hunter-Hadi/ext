@@ -39,10 +39,10 @@ const PDFTooltip = () => {
           spacing={2}
           maxWidth={'600px'}
           maxHeight={420}
-          overflow="auto"
+          overflow='auto'
           p={1}
         >
-          <Typography variant="body2">
+          <Typography variant='body2'>
             <b>
               {t(
                 'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__title',
@@ -50,28 +50,28 @@ const PDFTooltip = () => {
             </b>
           </Typography>
           <Stack>
-            <Typography variant="body2">
+            <Typography variant='body2'>
               {t(
                 'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item1',
               )}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant='body2'>
               {t(
                 'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item2',
               )}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant='body2'>
               {t(
                 'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item3',
               )}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant='body2'>
               {t(
                 'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item4',
               )}
             </Typography>
           </Stack>
-          <Typography variant="body2">
+          <Typography variant='body2'>
             {t(
               'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item5',
             )}

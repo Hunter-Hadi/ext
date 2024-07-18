@@ -1,6 +1,3 @@
-type FaceTimeType = (
-    'Audio'
-    | 'Video'
-  );
+type FaceTimeType = 'Audio' | 'Video'
 
-export default FaceTimeType;
+export default FaceTimeType

@@ -66,7 +66,7 @@ const Step2Content: FC = () => {
           <Stack
             key={sidebarTab.value}
             direction={'row'}
-            alignItems="center"
+            alignItems='center'
             gap={1}
             sx={{
               width: '100%',

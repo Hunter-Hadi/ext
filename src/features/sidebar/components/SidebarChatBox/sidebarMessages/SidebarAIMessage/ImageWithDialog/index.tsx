@@ -170,6 +170,7 @@ const ImageWithDialog = ({
               </DialogImgContainer>
             </Box>
             <Box
+              onClick={(e) => e.stopPropagation()}
               sx={{
                 flexShrink: 0,
                 display: 'flex',

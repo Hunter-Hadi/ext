@@ -17,8 +17,7 @@ export const DEFAULT_PROMPT_VARIABLE: any[] = [
   },
   {
     name: 'Live Crawling Crawled Text',
-    hint:
-      'This variable will be automatically updated with text extracted from the target URL',
+    hint: 'This variable will be automatically updated with text extracted from the target URL',
     type: 'livecrawling',
     isSystemVariable: true,
   },

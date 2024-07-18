@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Odomknúť všetky modely AI",
     "pricing__upgrade__popper_card__item3__title": "Odomknúť všetky funkcie",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Len GPT-4o. Pre odomknutie všetkých ďalších modelov umelej inteligencie, aktualizujte na plán MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Najlepšia hodnota za vaše peniaze"
+    "pricing__upgrade__popper_card__item4__title": "Najlepšia hodnota za vaše peniaze",
+    "permission__pricing_hook__context_menu__title": "Aktualizujte pre odomknutie neobmedzeného AI prepracovávača",
+    "permission__pricing_hook__context_menu__description": "S AI prepracovávačom MaxAI môžete ušetriť čas pri korektúre a zdokonalovaní vašich slov na webe, od e-mailov po sociálne médiá a ďalej."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1341,9 +1343,9 @@
     "queries": "Zostávajúce AI dotazy",
     "reset_on_date": "Resetovať dňa {{DATE}}",
     "advanced_text__secondary__content": "Vysokorýchlostné inteligentné AI otázky: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych pokročilých textových dotazov každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu.",
+    "advanced_text__secondary__content__tooltip": "Zabezpečte si aspoň 1 500 vysokorýchlostných inteligentných dotazov AI každý mesiac. Použitie nad túto hranicu alebo pri vysokých frekvenciách môže viesť k zníženej rýchlosti a kvalite. Platia spravodlivé používateľské politiky na základe frekvencie dotazov, dĺžky obsahu a celkových používateľských vzorov.",
     "image_generate__secondary__content": "Vysokorýchlostné obrazové AI otázky: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Zabezpečte aspoň 1 500 rýchlych dotazov na obrázky každý mesiac. Po dosiahnutí limitu sa môže znížiť rýchlosť a kvalita modelu.",
+    "image_generate__secondary__content__tooltip": "Zabezpečte si aspoň 600 vysokorýchlostných dotazov AI na obrázky každý mesiac. Použitie nad túto hranicu alebo pri vysokých frekvenciách môže viesť k zníženej rýchlosti a kvalite. Platia spravodlivé používateľské politiky na základe frekvencie dotazov, veľkosti obrázka a celkových používateľských vzorov.",
     "upgrade_to_go_unlimited": "Aktualizujte na MaxAI Elite a choďte neobmedzene"
   },
   "onboarding": {

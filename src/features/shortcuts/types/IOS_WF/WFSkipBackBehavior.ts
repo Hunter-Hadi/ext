@@ -1,6 +1,3 @@
-type WFSkipBackBehavior = (
-  'Beginning'
-  | 'Previous Song'
-);
+type WFSkipBackBehavior = 'Beginning' | 'Previous Song'
 
-export default WFSkipBackBehavior;
+export default WFSkipBackBehavior

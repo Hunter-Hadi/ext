@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Desbloqueja tots els models d'IA",
     "pricing__upgrade__popper_card__item3__title": "Desbloqueja totes les funcionalitats",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Només GPT-4o. Per desbloquejar tots els altres models d'IA, actualitza al pla MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Millor valor pel teu diner"
+    "pricing__upgrade__popper_card__item4__title": "Millor valor pel teu diner",
+    "permission__pricing_hook__context_menu__title": "Millora per desbloquejar l'AI reescriptor il·limitat",
+    "permission__pricing_hook__context_menu__description": "Amb l'AI reescriptor de MaxAI, pots estalviar temps en correccions i perfeccionar les teves paraules a través de la web, des de correus electrònics a xarxes socials i més enllà."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1341,9 +1343,9 @@
     "queries": "Consultes d'IA restants",
     "reset_on_date": "Reinicia el {{DATE}}",
     "advanced_text__secondary__content": "Consultes d'IA intel·ligent d'alta velocitat: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes avançades de text d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
+    "advanced_text__secondary__content__tooltip": "Assegureu-vos d'un mínim de 1.500 consultes d'AI intel·ligents d'alta velocitat cada mes. L'ús més enllà d'aquest límit o a altes freqüències pot resultar en una velocitat i qualitat reduïdes. S'apliquen polítiques d'ús just basades en la freqüència de consulta, la longitud del contingut i els patrons d'ús globals.",
     "image_generate__secondary__content": "Consultes d'IA d'imatge d'alta velocitat: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Assegura't d'un mínim de 1.500 consultes d'imatges d'alta velocitat cada mes. Després d'arribar al límit, la velocitat i la qualitat del model poden reduir-se.",
+    "image_generate__secondary__content__tooltip": "Assegureu-vos d'un mínim de 600 consultes d'AI d'imatge d'alta velocitat cada mes. L'ús més enllà d'aquest límit o a altes freqüències pot resultar en una velocitat i qualitat reduïdes. S'apliquen polítiques d'ús just basades en la freqüència de consulta, la mida de la imatge i els patrons d'ús globals.",
     "upgrade_to_go_unlimited": "Millora a MaxAI Elite per anar il·limitat"
   },
   "onboarding": {

@@ -24,16 +24,18 @@ export const getOfficeWordEditElement = () =>
  * 获取当前以选中的元素
  */
 export const getOfficeWordSelectedElements = () =>
-  Array.from(document.querySelectorAll(
-    [
-      // 普通文本选择
-      '#PagesContainer .Selected:not(.OnlyImageSelected)',
-      // 表格行选择
-      '#PagesContainer .TableRowSelectedThemed',
-      // 表格单元格选择
-      '#PagesContainer .TableCellSelectedThemed',
-    ].join(', ')
-  ))
+  Array.from(
+    document.querySelectorAll(
+      [
+        // 普通文本选择
+        '#PagesContainer .Selected:not(.OnlyImageSelected)',
+        // 表格行选择
+        '#PagesContainer .TableRowSelectedThemed',
+        // 表格单元格选择
+        '#PagesContainer .TableCellSelectedThemed',
+      ].join(', '),
+    ),
+  )
 
 /**
  * 获取当前选中元素的rect
@@ -41,7 +43,9 @@ export const getOfficeWordSelectedElements = () =>
 export const getOfficeWordSelectionRect = () => {
   const selectedElements = getOfficeWordSelectedElements()
   if (selectedElements.length) {
-    return mergeRects(selectedElements.map(item => item.getBoundingClientRect().toJSON()))
+    return mergeRects(
+      selectedElements.map((item) => item.getBoundingClientRect().toJSON()),
+    )
   }
   return null
 }

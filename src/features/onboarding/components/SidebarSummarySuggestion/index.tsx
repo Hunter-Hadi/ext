@@ -91,8 +91,10 @@ const SidebarSummarySuggestion: FC<{
     return undefined
   })
   useEffect(() => {
-    handleUpdateArticlePageInfo()
-  }, [])
+    if (currentSidebarConversationType === 'Chat') {
+      handleUpdateArticlePageInfo()
+    }
+  }, [currentSidebarConversationType])
   // 当用户开始聊天之后，隐藏这个提示
   const prevMessageIdRef = useRef('')
   useEffect(() => {

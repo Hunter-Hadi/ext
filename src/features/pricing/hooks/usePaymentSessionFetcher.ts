@@ -13,7 +13,7 @@ import {
 } from '@/features/pricing/type'
 import { roundToDecimal } from '@/utils/dataHelper/numberHelper'
 import Toast from '@/utils/globalSnackbar'
-import { post } from '@/utils/request'
+import { clientMaxAIPost } from '@/utils/request'
 
 /**
  * 网页触发支付的时候发送事件给插件
@@ -91,7 +91,7 @@ const usePaymentSessionFetcher = () => {
           price = roundToDecimal(price * discountValue)
         }
 
-        const result = await post<{ redirect_url: string }>(
+        const result = await clientMaxAIPost<{ redirect_url: string }>(
           '/subscription/create_checkout_session',
           {
             price_id: priceId,
@@ -136,7 +136,7 @@ const usePaymentSessionFetcher = () => {
       try {
         setLoading(true)
 
-        const result = await post<{ redirect_url: string }>(
+        const result = await clientMaxAIPost<{ redirect_url: string }>(
           '/subscription/create_portal_session',
           {},
         )

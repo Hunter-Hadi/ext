@@ -131,7 +131,7 @@ const FloatingContextMenuShortcutButtonGroup: FC<{
         sx={{
           height: '24px',
         }}
-        variant="text"
+        variant='text'
         onClick={async () => {
           await handleShortCut('r')
         }}
@@ -147,7 +147,7 @@ const FloatingContextMenuShortcutButtonGroup: FC<{
         sx={{
           height: '24px',
         }}
-        variant="text"
+        variant='text'
         onClick={async () => {
           await handleShortCut('s')
         }}

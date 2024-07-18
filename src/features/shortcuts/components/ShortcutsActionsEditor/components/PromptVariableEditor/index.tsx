@@ -58,15 +58,10 @@ const PromptVariableEditor = React.forwardRef<
   const { t } = useTranslation(['prompt_editor'])
   const { isDarkMode } = useCustomTheme()
   const [inputValue, setInputValue] = useState('')
-  const {
-    filterVariables,
-    addVariable,
-    updateVariable,
-  } = useShortcutEditorActionVariables(inputValue)
-  const [
-    editingVariable,
-    setEditingVariable,
-  ] = useState<IActionSetVariable | null>(null)
+  const { filterVariables, addVariable, updateVariable } =
+    useShortcutEditorActionVariables(inputValue)
+  const [editingVariable, setEditingVariable] =
+    useState<IActionSetVariable | null>(null)
   const [editorType, setEditorType] = useState<
     'add' | 'edit' | 'search' | 'view'
   >('search')
@@ -185,7 +180,7 @@ const PromptVariableEditor = React.forwardRef<
         >
           <TextField
             inputRef={inputRef}
-            size="small"
+            size='small'
             value={inputValue}
             onChange={(e) => {
               // 移除非法字符
@@ -209,10 +204,10 @@ const PromptVariableEditor = React.forwardRef<
                 fontSize: '16px !important',
               },
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                   <IconButton
-                    aria-label="toggle password visibility"
-                    edge="end"
+                    aria-label='toggle password visibility'
+                    edge='end'
                   >
                     <SearchIcon />
                   </IconButton>
@@ -287,7 +282,7 @@ const PromptVariableEditor = React.forwardRef<
                   </Typography>
                   <Typography
                     fontSize={14}
-                    color="#808082"
+                    color='#808082'
                     sx={{
                       flex: 1,
                       overflow: 'hidden',
@@ -308,7 +303,7 @@ const PromptVariableEditor = React.forwardRef<
                       },
                     }}
                     label={variable.valueType}
-                    size="small"
+                    size='small'
                   />
                   <Chip
                     sx={{
@@ -321,10 +316,10 @@ const PromptVariableEditor = React.forwardRef<
                       },
                     }}
                     label={variable.systemVariable ? 'Preset' : 'Custom'}
-                    size="small"
+                    size='small'
                   />
                   <IconButton
-                    size="small"
+                    size='small'
                     sx={{
                       visibility: 'hidden',
                       ml: 'auto !important',
@@ -340,11 +335,11 @@ const PromptVariableEditor = React.forwardRef<
                   >
                     {variable.systemVariable ? (
                       <RemoveRedEyeOutlinedIcon
-                        fontSize="inherit"
-                        color="primary"
+                        fontSize='inherit'
+                        color='primary'
                       />
                     ) : (
-                      <EditOutlinedIcon fontSize="inherit" color="primary" />
+                      <EditOutlinedIcon fontSize='inherit' color='primary' />
                     )}
                   </IconButton>
                 </MenuItem>
@@ -355,7 +350,7 @@ const PromptVariableEditor = React.forwardRef<
                 <Stack mt={1} width={'100%'}>
                   <Button
                     fullWidth
-                    variant="text"
+                    variant='text'
                     disableFocusRipple
                     sx={(t) => {
                       const isDark = t.palette.mode === 'dark'
@@ -390,8 +385,8 @@ const PromptVariableEditor = React.forwardRef<
                       }
                     }}
                   >
-                    <AddIcon fontSize="inherit" />
-                    <Typography variant="body2" fontWeight={500}>
+                    <AddIcon fontSize='inherit' />
+                    <Typography variant='body2' fontWeight={500}>
                       {t('prompt_editor:add_variable__add_button__title')}
                     </Typography>
                   </Button>

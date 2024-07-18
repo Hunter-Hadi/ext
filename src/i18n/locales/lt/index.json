@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Atrakinti visus AI modelius",
     "pricing__upgrade__popper_card__item3__title": "Atrakinti visus funkcionalumus",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tik GPT-4o. Norėdami atrakinti visus kitus dirbtinio intelekto modelius, atnaujinkite iki MaxAI Elite plano.",
-    "pricing__upgrade__popper_card__item4__title": "Geriausia vertė už jūsų pinigus"
+    "pricing__upgrade__popper_card__item4__title": "Geriausia vertė už jūsų pinigus",
+    "permission__pricing_hook__context_menu__title": "Atnaujinkite, kad atrakintumėte neribotą AI persirašytoją",
+    "permission__pricing_hook__context_menu__description": "Su MaxAI AI persirašytoju galite sutaupyti laiko, kai redaguojate ir tobulinate savo žodžius visame tinkle, nuo el. pašto iki socialinių tinklų ir dar toliau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -1341,9 +1343,9 @@
     "queries": "Liko AI užklausų",
     "reset_on_date": "Atstatyti {{DATE}}",
     "advanced_text__secondary__content": "Greito protingo AI užklausos: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų pažangių teksto užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
+    "advanced_text__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitųjų išmanaus AI užklausų kiekvieną mėnesį. Naudota virš šio limito arba didelės dažnio gali lemti sumažėjusį greitį ir kokybę. Teisingos naudojimo taisyklės taikomos pagal užklausos dažnį, turinio ilgį ir bendrą naudojimo modelį.",
     "image_generate__secondary__content": "Greito vaizdo AI užklausos: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Užtikrinkite bent 1,500 greitų vaizdo užklausų kiekvieną mėnesį. Pasiekus limitą, modelio greitis ir kokybė gali būti sumažinti.",
+    "image_generate__secondary__content__tooltip": "Užtikrinkite bent 600 greitųjų vaizdo AI užklausų kiekvieną mėnesį. Naudota virš šio limito arba didelės dažnio gali lemti sumažėjusį greitį ir kokybę. Teisingos naudojimo taisyklės taikomos pagal užklausos dažnį, vaizdo dydį ir bendrą naudojimo modelį.",
     "upgrade_to_go_unlimited": "Atnaujinkite iki MaxAI Elite, kad taptumėte neribotu"
   },
   "onboarding": {

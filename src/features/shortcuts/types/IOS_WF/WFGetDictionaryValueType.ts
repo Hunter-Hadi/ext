@@ -1,7 +1,3 @@
-type WFGetDictionaryValueType = (
-  'Value'
-  | 'All Keys'
-  | 'All Values'
-);
+type WFGetDictionaryValueType = 'Value' | 'All Keys' | 'All Values'
 
-export default WFGetDictionaryValueType;
+export default WFGetDictionaryValueType

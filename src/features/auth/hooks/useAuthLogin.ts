@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import { AuthState } from '@/features/auth/store'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import { AppState } from '@/store'
@@ -14,7 +14,7 @@ export const useAuthLogin = () => {
   const [authLogin, setAuthLogin] = useRecoilState(AuthState)
   useEffectOnce(() => {
     setLoading(true)
-    getAccessToken()
+    getMaxAIChromeExtensionAccessToken()
       .then((accessToken) => {
         if (accessToken) {
           setAuthLogin((prev) => ({
@@ -31,7 +31,7 @@ export const useAuthLogin = () => {
       })
   })
   useFocus(() => {
-    getAccessToken().then((accessToken) => {
+    getMaxAIChromeExtensionAccessToken().then((accessToken) => {
       if (accessToken) {
         setAuthLogin((prev) => ({
           ...prev,
@@ -47,7 +47,7 @@ export const useAuthLogin = () => {
   })
   useEffect(() => {
     if (appState.open) {
-      getAccessToken().then((accessToken) => {
+      getMaxAIChromeExtensionAccessToken().then((accessToken) => {
         if (accessToken) {
           setAuthLogin((prev) => ({
             ...prev,

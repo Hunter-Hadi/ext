@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "모든 AI 모델 잠금 해제",
     "pricing__upgrade__popper_card__item3__title": "모든 기능 잠금 해제",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o 만 가능. 다른 모든 AI 모델을 잠금 해제하려면 MaxAI 엘리트 플랜으로 업그레이드하세요.",
-    "pricing__upgrade__popper_card__item4__title": "귀하의 돈 가치 최상의 선택"
+    "pricing__upgrade__popper_card__item4__title": "귀하의 돈 가치 최상의 선택",
+    "permission__pricing_hook__context_menu__title": "무제한 AI 리라이터 잠금 해제",
+    "permission__pricing_hook__context_menu__description": "MaxAI의 AI 리라이터로 웹 전체에서 이메일부터 소셜 미디어까지 단어를 검토하고 완벽하게 하는 데 시간을 절약할 수 있습니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",
@@ -1341,9 +1343,9 @@
     "queries": "남은 AI 쿼리",
     "reset_on_date": "{{DATE}}에 초기화",
     "advanced_text__secondary__content": "고속 스마트 AI 쿼리: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "매월 최소 1,500개의 고속 고급 텍스트 쿼리를 보장하세요. 한도에 도달한 후 모델의 속도와 품질이 감소될 수 있습니다.",
+    "advanced_text__secondary__content__tooltip": "매달 최소 1,500회의 고속 스마트 AI 쿼리를 보장합니다. 이 한도를 초과하거나 높은 빈도로 사용하는 경우 속도와 품질이 저하될 수 있습니다. 공정한 사용 정책은 쿼리 빈도, 콘텐츠 길이 및 전체 사용 패턴에 따라 적용됩니다.",
     "image_generate__secondary__content": "고속 이미지 AI 쿼리: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "매월 최소 1,500개의 고속 이미지 쿼리를 보장하세요. 한도에 도달한 후 모델의 속도와 품질이 감소될 수 있습니다.",
+    "image_generate__secondary__content__tooltip": "매달 최소 600회의 고속 이미지 AI 쿼리를 보장합니다. 이 한도를 초과하거나 높은 빈도로 사용하는 경우 속도와 품질이 저하될 수 있습니다. 공정한 사용 정책은 쿼리 빈도, 이미지 크기 및 전체 사용 패턴에 따라 적용됩니다.",
     "upgrade_to_go_unlimited": "무제한 이용하려면 MaxAI Elite로 업그레이드"
   },
   "onboarding": {

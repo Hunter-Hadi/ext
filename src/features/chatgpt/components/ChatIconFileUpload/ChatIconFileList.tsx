@@ -11,7 +11,7 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
-import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message';
+import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
 
 export interface ChatIconFileListProps {
   files: IChatUploadFile[]
@@ -201,7 +201,7 @@ const ChatIconFileList: FC<ChatIconFileListProps> = (props) => {
                       color: 'primary.main',
                     }}
                     thickness={4}
-                    variant="determinate"
+                    variant='determinate'
                     value={file.uploadProgress}
                     size={16}
                   />

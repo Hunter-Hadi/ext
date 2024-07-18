@@ -53,7 +53,9 @@ export const getVisibleTextNodes = (
       textNodes.push(node)
     } else if (isElement(node)) {
       if (
-        ['script', 'style', 'noscript'].includes(node.tagName.toLowerCase())
+        ['script', 'style', 'noscript', 'header', 'footer', 'video'].includes(
+          node.tagName.toLowerCase(),
+        )
       ) {
         return
       }

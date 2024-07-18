@@ -1,8 +1,7 @@
-type AggrandizementType = (
-  'WFCoercionVariableAggrandizement'
+type AggrandizementType =
+  | 'WFCoercionVariableAggrandizement'
   | 'WFDateFormatVariableAggrandizement'
   | 'WFDictionaryValueVariableAggrandizement'
   | 'WFPropertyVariableAggrandizement'
-);
 
-export default AggrandizementType;
+export default AggrandizementType

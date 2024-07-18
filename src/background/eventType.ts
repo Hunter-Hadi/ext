@@ -26,6 +26,9 @@ export type IChromeExtensionClientListenEvent =
   | 'Iframe_ListenGetPageContent'
   // global video popup
   | 'Client_listenSwitchVideoPopup'
+  // background 通知 client 更新 survey 状态
+  | 'Client_listenSurveyStatusUpdated'
+  | 'Client_listenPageTranslationEvent'
 
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
@@ -49,6 +52,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_getUseChatGPTUserInfo'
   | 'Client_getUseChatGPTUserSubscriptionInfo'
   | 'Client_getMaxAIUserQuotaUsageInfo'
+  | 'Client_getUserFeatureQuotaInfo'
   | 'Client_createAsyncTask'
   | 'Client_updateTabVisible'
   | 'Client_updateIframeInput'

@@ -4,9 +4,9 @@ import { useRecoilState } from 'recoil'
 
 import { PlanPricingInfoAtom } from '@/features/pricing/store'
 import { IPlanPricingInfo } from '@/features/pricing/type'
+import { aesJsonDecrypt } from '@/features/security'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { aesJsonDecrypt } from '@/utils/encryptionHelper'
-import { get } from '@/utils/request'
+import { clientMaxAIGet } from '@/utils/request'
 
 const isBetterDiscount = (
   prev: IPlanPricingInfo | null,
@@ -51,16 +51,18 @@ const usePlanPricingInfo = () => {
 
   // 注意接口里的elite_monthly要转换为elite，前端目前monthly的类型没有后缀
   const fetchPlanPricing = useCallback(async () => {
-    if (Date.now() - fetchTime < 10000) return
+    if (Date.now() - fetchTime < 15000) return
     fetchTime = Date.now()
     setPlanPricingInfo((prev) => ({
       ...prev,
       loading: true,
     }))
     try {
-      const result = await get<string>('/app/get_subscription_pricing')
+      const result = await clientMaxAIGet<string>(
+        '/app/get_subscription_pricing',
+      )
       if (result?.data) {
-        const data = aesJsonDecrypt(result.data)
+        const data = aesJsonDecrypt(result.data, 'MaxAI')
         Object.keys(data).forEach((key) => {
           if (key.includes('monthly')) {
             data[`${key.replace('_monthly', '')}`] = data[key]

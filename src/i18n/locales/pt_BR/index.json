@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Desbloquear todos os modelos de IA",
     "pricing__upgrade__popper_card__item3__title": "Desbloquear todos os recursos",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Apenas GPT-4o. Para desbloquear todos os outros modelos de IA, faça upgrade para o plano MaxAI Elite.",
-    "pricing__upgrade__popper_card__item4__title": "Melhor valor para o seu dinheiro"
+    "pricing__upgrade__popper_card__item4__title": "Melhor valor para o seu dinheiro",
+    "permission__pricing_hook__context_menu__title": "Atualize para desbloquear o reescritor de IA ilimitado",
+    "permission__pricing_hook__context_menu__description": "Com o reescritor de IA da MaxAI, você pode economizar tempo na revisão e aperfeiçoamento de suas palavras na web, do e-mail às redes sociais e além."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1341,9 +1343,9 @@
     "queries": "Consultas de IA restantes",
     "reset_on_date": "Redefinir em {{DATE}}",
     "advanced_text__secondary__content": "Consultas de IA inteligente de alta velocidade: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas avançadas de texto em alta velocidade por mês. Após atingir o limite, a velocidade e a qualidade do modelo podem ser reduzidas.",
+    "advanced_text__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas inteligentes de IA de alta velocidade por mês. O uso além desse limite ou em altas frequências pode resultar em velocidade e qualidade reduzidas. Políticas de uso justo se aplicam com base na frequência da consulta, no comprimento do conteúdo e nos padrões gerais de uso.",
     "image_generate__secondary__content": "Consultas de IA de imagem de alta velocidade: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Garanta pelo menos 1.500 consultas de imagem em alta velocidade por mês. Após atingir o limite, a velocidade e a qualidade do modelo podem ser reduzidas.",
+    "image_generate__secondary__content__tooltip": "Garanta pelo menos 600 consultas de IA de imagem de alta velocidade por mês. O uso além desse limite ou em altas frequências pode resultar em velocidade e qualidade reduzidas. Políticas de uso justo se aplicam com base na frequência da consulta, no tamanho da imagem e nos padrões gerais de uso.",
     "upgrade_to_go_unlimited": "Atualize para MaxAI Elite para ir ilimitado"
   },
   "onboarding": {

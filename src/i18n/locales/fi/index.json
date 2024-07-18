@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Avaa kaikki tekoälymallit",
     "pricing__upgrade__popper_card__item3__title": "Avaa kaikki ominaisuudet",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Vain GPT-4o. Päivitä MaxAI Elite -suunnitelmaan avataksesi kaikki muut tekoälymallit.",
-    "pricing__upgrade__popper_card__item4__title": "Paras arvo rahallesi"
+    "pricing__upgrade__popper_card__item4__title": "Paras arvo rahallesi",
+    "permission__pricing_hook__context_menu__title": "Päivitä avataksesi rajattoman tekoälyuudelleenkirjoittajan",
+    "permission__pricing_hook__context_menu__description": "MaxAI:n tekoälyuudelleenkirjoittajalla voit säästää aikaa tekstien tarkistamisessa ja hiomisessa verkossa, sähköpostista sosiaaliseen mediaan ja pidemmälle."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -1341,9 +1343,9 @@
     "queries": "Jäljellä olevat AI-kyselyt",
     "reset_on_date": "Nollaa päivämäärään {{DATE}}",
     "advanced_text__secondary__content": "Korkeanopeuksiset älykkäät tekoälykyselyt: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa edistynyttä tekstikyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
+    "advanced_text__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa älykästä AI-kyselyä kuukaudessa. Käyttö tämän rajan yli tai suurilla taajuuksilla voi johtaa nopeuden ja laadun heikkenemiseen. Reilun käytön politiikka koskee kyselytaajuutta, sisällön pituutta ja yleistä käyttökuvioita.",
     "image_generate__secondary__content": "Korkeanopeuksiset kuvatekoälykyselyt: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Varmista vähintään 1 500 nopeaa kuvakyselyä kuukaudessa. Saavutettuasi rajan, mallin nopeus ja laatu voivat heikentyä.",
+    "image_generate__secondary__content__tooltip": "Varmista vähintään 600 nopeaa kuvan AI-kyselyä kuukaudessa. Käyttö tämän rajan yli tai suurilla taajuuksilla voi johtaa nopeuden ja laadun heikkenemiseen. Reilun käytön politiikka koskee kyselytaajuutta, kuvan kokoa ja yleistä käyttökuvioita.",
     "upgrade_to_go_unlimited": "Päivitä MaxAI Eliteen ja mene rajattomasti"
   },
   "onboarding": {

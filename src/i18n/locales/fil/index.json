@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Buksan lahat ng AI models",
     "pricing__upgrade__popper_card__item3__title": "Buksan lahat ng mga tampok",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o lamang. Upang i-unlock ang lahat ng iba pang mga AI model, mag-upgrade sa MaxAI Elite plan.",
-    "pricing__upgrade__popper_card__item4__title": "Pinakamahusay na halaga para sa iyong pera"
+    "pricing__upgrade__popper_card__item4__title": "Pinakamahusay na halaga para sa iyong pera",
+    "permission__pricing_hook__context_menu__title": "Mag-upgrade para mabuksan ang walang hanggang AI rewriter",
+    "permission__pricing_hook__context_menu__description": "Sa AI rewriter ng MaxAI, maaari mong makatipid ng oras sa pagsusuri at pagpapakinis ng iyong mga salita sa buong web, mula sa email hanggang sa social media at higit pa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -1341,9 +1343,9 @@
     "queries": "Natitirang AI queries",
     "reset_on_date": "I-reset sa {{DATE}}",
     "advanced_text__secondary__content": "Mataas na bilis ng matalinong AI queries: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Siguraduhing mayroong hindi bababa sa 1,500 high-speed advanced text query bawat buwan. Pagkatapos maabot ang limitasyon, maaaring bawasan ang bilis at kalidad ng modelo.",
+    "advanced_text__secondary__content__tooltip": "Siguruhing mayroong hindi bababa sa 1,500 na mabilis na smart AI queries bawat buwan. Ang paggamit higit sa limitasyong ito o sa mataas na pagsasagawa ay maaaring magresulta sa pagbawas ng bilis at kalidad. Ang patakaran sa patas na paggamit ay batay sa kadalasang pagtatanong, haba ng nilalaman, at kabuuang paggamit na mga istilo.",
     "image_generate__secondary__content": "Mataas na bilis ng AI ng larawan queries: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Siguraduhing mayroong hindi bababa sa 1,500 high-speed image query bawat buwan. Pagkatapos maabot ang limitasyon, maaaring bawasan ang bilis at kalidad ng modelo.",
+    "image_generate__secondary__content__tooltip": "Siguruhing mayroong hindi bababa sa 600 na mabilis na image AI queries bawat buwan. Ang paggamit higit sa limitasyong ito o sa mataas na pagsasagawa ay maaaring magresulta sa pagbawas ng bilis at kalidad. Ang patakaran sa patas na paggamit ay batay sa kadalasang pagtatanong, sukat ng imahe, at kabuuang paggamit na mga istilo.",
     "upgrade_to_go_unlimited": "Mag-upgrade sa MaxAI Elite upang maging walang limitasyon"
   },
   "onboarding": {

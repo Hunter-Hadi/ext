@@ -1,3 +1,4 @@
+import { securityHandleFetchErrorResponse } from '@/features/security'
 import Log from '@/utils/Log'
 
 const log = new Log('BackgroundAbortFetch')
@@ -35,11 +36,13 @@ class BackgroundAbortFetch {
       // 因为 GET 和 HEAD 请求不能有 body，所以需要删除 body
       delete options.body
     }
-    return fetch(url, options).finally(() => {
-      if (taskId) {
-        this.fetchMap.delete(taskId)
-      }
-    })
+    return fetch(url, options)
+      .then(securityHandleFetchErrorResponse)
+      .finally(() => {
+        if (taskId) {
+          this.fetchMap.delete(taskId)
+        }
+      })
   }
 
   abort(taskId: string): boolean {

@@ -1,4 +1,4 @@
-import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
+import maxAIBackgroundSafeFetch from '@/background/api/maxAIBackgroundSafeFetch'
 import {
   getChromeExtensionLocalStorage,
   setChromeExtensionLocalStorage,
@@ -23,18 +23,15 @@ export const updateSurveyStatusInBackground = async (
     if (!token) {
       return null
     }
-    const result = await fetch(
+    const result = await maxAIBackgroundSafeFetch(
       `${APP_USE_CHAT_GPT_API_HOST}/user/find_user_survey_key`,
       {
         method: 'POST',
-        headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(requestId, {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        }),
         body: JSON.stringify({
           survey_keys: surveyKeys,
         }),
       },
+      requestId,
     )
     const resultJson = await result.json()
     if (resultJson.msg === 'success' && resultJson.status === 'OK') {

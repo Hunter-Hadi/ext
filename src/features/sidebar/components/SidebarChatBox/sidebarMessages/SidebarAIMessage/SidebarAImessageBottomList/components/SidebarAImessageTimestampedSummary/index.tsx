@@ -98,9 +98,9 @@ const SidebarAImessageTimestampedSummary: FC<
           return (
             <Stack key={transcriptItem.start}>
               <Stack
-                direction="row"
-                justifyContent="flex-start"
-                alignItems="flex-start"
+                direction='row'
+                justifyContent='flex-start'
+                alignItems='flex-start'
                 spacing={1}
                 key={index}
                 sx={{ marginTop: '15px' }}
@@ -110,8 +110,8 @@ const SidebarAImessageTimestampedSummary: FC<
                     padding: '0 5px!important',
                     minWidth: '30px',
                   }}
-                  variant="contained"
-                  size="small"
+                  variant='contained'
+                  size='small'
                   onClick={() =>
                     clickYoutubeJumpTimestamp(transcriptItem.start)
                   }
@@ -126,13 +126,13 @@ const SidebarAImessageTimestampedSummary: FC<
                       transcriptItem.id && onSetOpenIdsList(transcriptItem.id)
                     }
                   >
-                    <Typography fontSize={16} color="text.primary">
+                    <Typography fontSize={16} color='text.primary'>
                       {decodeHtmlEntity(transcriptItem.text || '')}
                     </Typography>
                     {transcriptItem?.children &&
                       transcriptItem?.children.length > 0 && (
-                        <Stack direction="row" alignItems="center">
-                          <Typography fontSize={15} color="text.secondary">
+                        <Stack direction='row' alignItems='center'>
+                          <Typography fontSize={15} color='text.secondary'>
                             {openIdsList[transcriptItem.id || '']
                               ? 'Collapse'
                               : 'Expand'}
@@ -144,7 +144,7 @@ const SidebarAImessageTimestampedSummary: FC<
                                 color: 'rgba(0, 0, 0, 0.6)',
                               }}
                               size={25}
-                              icon="KeyboardArrowDown"
+                              icon='KeyboardArrowDown'
                             />
                           ) : (
                             <ContextMenuIcon
@@ -152,7 +152,7 @@ const SidebarAImessageTimestampedSummary: FC<
                                 color: 'rgba(0, 0, 0, 0.6)',
                               }}
                               size={25}
-                              icon="KeyboardArrowDown"
+                              icon='KeyboardArrowDown'
                             />
                           )}
                         </Stack>
@@ -162,7 +162,7 @@ const SidebarAImessageTimestampedSummary: FC<
                 {transcriptItem.status === 'error' && (
                   <Typography
                     fontSize={16}
-                    color="error"
+                    color='error'
                     sx={{
                       p: 0,
                       flex: 1,
@@ -178,9 +178,9 @@ const SidebarAImessageTimestampedSummary: FC<
                 openIdsList[transcriptItem.id || ''] &&
                 transcriptItem?.children?.map((transcriptChildren) => (
                   <Stack
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="flex-start"
+                    direction='row'
+                    justifyContent='flex-start'
+                    alignItems='flex-start'
                     spacing={1}
                     key={transcriptChildren.id}
                     sx={{ marginTop: '5px', marginLeft: '10px' }}
@@ -190,7 +190,7 @@ const SidebarAImessageTimestampedSummary: FC<
                         padding: '0px!important',
                         minWidth: '30px',
                       }}
-                      size="small"
+                      size='small'
                       onClick={() =>
                         clickYoutubeJumpTimestamp(transcriptChildren.start)
                       }
@@ -199,7 +199,7 @@ const SidebarAImessageTimestampedSummary: FC<
                     </Button>
                     <Typography
                       fontSize={15}
-                      color="text.secondary"
+                      color='text.secondary'
                       onClick={() =>
                         transcriptItem.id && onSetOpenIdsList(transcriptItem.id)
                       }
@@ -230,7 +230,7 @@ const SidebarAImessageTimestampedSummary: FC<
         (transcriptList.length === 0 && (
           <Typography
             fontSize={16}
-            color="text.primary"
+            color='text.primary'
             sx={{
               p: 0,
               flex: 1,
@@ -252,8 +252,8 @@ const SidebarAImessageTimestampedSummary: FC<
           (_, index) => (
             <Skeleton
               key={index}
-              variant="rounded"
-              width="100%"
+              variant='rounded'
+              width='100%'
               height={15}
               sx={{ marginTop: '5px' }}
             />
@@ -263,7 +263,7 @@ const SidebarAImessageTimestampedSummary: FC<
       {!transcriptList && (
         <Typography
           fontSize={16}
-          color="error"
+          color='error'
           sx={{
             p: 0,
             flex: 1,

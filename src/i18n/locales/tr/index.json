@@ -1009,7 +1009,9 @@
     "pricing__upgrade__popper_card__item2__title": "Tüm AI modellerini aç",
     "pricing__upgrade__popper_card__item3__title": "Tüm özellikleri aç",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Yalnızca GPT-4o. Diğer tüm AI modellerini açmak için MaxAI Elite planına yükseltin.",
-    "pricing__upgrade__popper_card__item4__title": "Paranızın en iyi değeri"
+    "pricing__upgrade__popper_card__item4__title": "Paranızın en iyi değeri",
+    "permission__pricing_hook__context_menu__title": "Sınırsız AI yeniden yazıcıyı açmak için yükselt",
+    "permission__pricing_hook__context_menu__description": "MaxAI'nin AI yeniden yazıcısı ile e-postadan sosyal medyaya ve ötesine kadar web üzerindeki kelimelerinizi düzeltme ve mükemmelleştirme konusunda zaman kazanabilirsiniz."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -1341,9 +1343,9 @@
     "queries": "Kalan AI sorguları",
     "reset_on_date": "{{DATE}} tarihinde sıfırlanacak",
     "advanced_text__secondary__content": "Yüksek hızlı akıllı AI sorguları: {{QUERIES}}",
-    "advanced_text__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı gelişmiş metin sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir.",
+    "advanced_text__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı akıllı AI sorgusunu sağlayın. Bu limitin üzerinde veya yüksek frekansta kullanım hız ve kalitede azalmaya neden olabilir. Adil kullanım politikaları sorgu frekansına, içerik uzunluğuna ve genel kullanım kalıplarına göre uygulanır.",
     "image_generate__secondary__content": "Yüksek hızlı görüntü AI sorguları: {{QUERIES}}",
-    "image_generate__secondary__content__tooltip": "Her ay en az 1.500 yüksek hızlı görüntü sorgusu sağlayın. Limiti aştıktan sonra modelin hızı ve kalitesi düşebilir.",
+    "image_generate__secondary__content__tooltip": "Her ay en az 600 yüksek hızlı görüntü AI sorgusunu sağlayın. Bu limitin üzerinde veya yüksek frekansta kullanım hız ve kalitede azalmaya neden olabilir. Adil kullanım politikaları sorgu frekansına, görüntü boyutuna ve genel kullanım kalıplarına göre uygulanır.",
     "upgrade_to_go_unlimited": "Sınırsız gitmek için MaxAI Elite'e yükseltin"
   },
   "onboarding": {

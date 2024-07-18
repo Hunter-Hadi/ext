@@ -57,7 +57,7 @@ const SearchWithAIHeader: FC<IProps> = ({
       {
         name: 'close',
         label: '',
-        icon: <CloseIcon fontSize="inherit" />,
+        icon: <CloseIcon fontSize='inherit' />,
         tooltip: '',
         onClick: handleClose,
       },
@@ -95,9 +95,9 @@ const SearchWithAIHeader: FC<IProps> = ({
 
   return (
     <Stack
-      direction="row"
+      direction='row'
       px={2}
-      alignItems="center"
+      alignItems='center'
       sx={{
         fontSize: 20,
       }}
@@ -105,7 +105,7 @@ const SearchWithAIHeader: FC<IProps> = ({
     >
       <SearchWithAILogo />
       <Box sx={{ flexGrow: 1 }} />
-      <Stack direction="row" alignItems="center">
+      <Stack direction='row' alignItems='center'>
         {showWebAccess && (
           <SearchWithAIWebAccessToggle
             sx={{
@@ -118,7 +118,7 @@ const SearchWithAIHeader: FC<IProps> = ({
         {actionsBtn.map((action) => {
           return (
             <Tooltip
-              placement="top"
+              placement='top'
               PopperProps={{
                 disablePortal: true,
               }}
@@ -134,16 +134,16 @@ const SearchWithAIHeader: FC<IProps> = ({
               {action.label ? (
                 <Button
                   startIcon={action.icon}
-                  color="inherit"
-                  size="small"
+                  color='inherit'
+                  size='small'
                   onClick={action.onClick}
                 >
                   {action.label}
                 </Button>
               ) : (
                 <IconButton
-                  color="inherit"
-                  size="small"
+                  color='inherit'
+                  size='small'
                   onClick={action.onClick}
                   sx={{
                     fontSize: 18,

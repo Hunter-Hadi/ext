@@ -73,8 +73,8 @@ const AIProviderOptions: AIProviderOptionType[] = [
         {t(`client:provider__openai_api__short_description1`)}{' '}
         <Link
           target={'_blank'}
-          href="https://platform.openai.com/playground?mode=chat"
-          rel="noreferrer noopener nofollow"
+          href='https://platform.openai.com/playground?mode=chat'
+          rel='noreferrer noopener nofollow'
           sx={{
             color: 'inherit',
             display: 'inline-flex',

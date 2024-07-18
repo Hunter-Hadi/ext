@@ -1,5 +1,5 @@
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { convertBase64ToBlob } from '@/utils/dataHelper/fileHelper'
 import { getFingerPrint } from '@/utils/fingerPrint'
@@ -69,6 +69,7 @@ export const templateWordToExamples = (
       }
   }
 }
+
 export const limitedPromiseAll = <T>(
   promises: Promise<T>[],
   limit: number,
@@ -140,7 +141,7 @@ type ClientFetchAPIResponse<T> = {
   message: string
   error: string
 }
-export const clientFetchAPI = async <T = any>(
+export const clientProxyFetchAPI = async <T = any>(
   url: string,
   options: any,
   abortTaskId?: string,
@@ -231,7 +232,7 @@ export const clientFetchMaxAIAPI = async <T = any>(
   try {
     const port = new ContentScriptConnectionV2()
     const fingerprint = await getFingerPrint()
-    const accessToken = await getAccessToken()
+    const accessToken = await getMaxAIChromeExtensionAccessToken()
     options.body = JSON.stringify(body)
     if (!options.headers) {
       options.headers = {

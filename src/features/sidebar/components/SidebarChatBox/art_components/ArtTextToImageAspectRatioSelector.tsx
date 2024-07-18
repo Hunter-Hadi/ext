@@ -15,10 +15,8 @@ import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { useSingleThirdProviderSettings } from '@/features/chatgpt/hooks/useThirdProviderSettings'
 
 const ArtTextToImageAspectRatioSelector: FC = () => {
-  const [
-    maxAIArtProviderSettings,
-    updateMaxAIArtProviderSettings,
-  ] = useSingleThirdProviderSettings('MAXAI_DALLE')
+  const [maxAIArtProviderSettings, updateMaxAIArtProviderSettings] =
+    useSingleThirdProviderSettings('MAXAI_DALLE')
   const { t } = useTranslation(['common', 'client'])
   const currentOptions = useMemo(() => {
     const currentModel = maxAIArtProviderSettings?.model

@@ -1,6 +1,7 @@
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import { md5TextEncrypt } from '@/features/security'
+import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 // export const MaxUploadTxtFileSize = 1024 * 1024 * 32 // 32MB
@@ -12,12 +13,8 @@ export const createDocId = (text: string) => {
 
 export const checkDocIdExist = async (accessToken: string, docId: string) => {
   return new Promise<boolean>((resolve) => {
-    fetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/check_doc_exists`, {
+    maxAIClientSafeFetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/check_doc_exists`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
       body: JSON.stringify({
         doc_id: docId,
       }),
@@ -40,7 +37,7 @@ export const stringConvertTxtUpload = async (
   text: string,
   filename?: string,
 ) => {
-  const accessToken = await getAccessToken()
+  const accessToken = await getMaxAIChromeExtensionAccessToken()
   // eslint-disable-next-line no-async-promise-executor
   return new Promise<string>(async (resolve) => {
     const docId = createDocId(text)
@@ -55,11 +52,8 @@ export const stringConvertTxtUpload = async (
     const formData = new FormData()
     formData.append('file', file, file.name.replace(/\.pdf$/, '.txt'))
     formData.append('doc_id', docId)
-    fetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/analyze_file`, {
+    maxAIClientSafeFetch(`${APP_USE_CHAT_GPT_API_HOST}/gpt/analyze_file`, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
       body: formData,
     })
       .then((response) => response.json())

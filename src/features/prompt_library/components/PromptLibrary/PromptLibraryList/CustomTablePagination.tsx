@@ -77,7 +77,7 @@ const CustomTablePagination: FC<ICustomTablePaginationProps> = ({
     <div>
       {numTotal > numPageSize ? (
         <Stack
-          direction="row"
+          direction='row'
           sx={{ justifyContent: 'center', px: 2, pt: 4, ...sx }}
         >
           <TablePagination

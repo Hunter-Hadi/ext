@@ -2,7 +2,6 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import BackgroundAbortFetch from '@/background/api/BackgroundAbortFetch'
-import { backgroundPost } from '@/background/api/backgroundFetch'
 import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
@@ -14,6 +13,7 @@ import backgroundCommandHandler from '@/background/src/client/backgroundCommandH
 import { openPDFViewer } from '@/background/src/pdf'
 import {
   backgroundRestartChromeExtension,
+  backgroundSendClientMessage,
   chromeExtensionLogout,
   chromeExtensionOpenImmersiveChat,
   createBackgroundMessageListener,
@@ -35,6 +35,7 @@ import {
   fetchUserSubscriptionInfo,
   getChromeExtensionUserInfo,
   getMaxAIChromeExtensionAccessToken,
+  getMaxAIChromeExtensionUserFeatureQuota,
   getMaxAIChromeExtensionUserQuotaUsage,
 } from '@/features/auth/utils'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
@@ -47,6 +48,7 @@ import WebsiteContextManager, {
 } from '@/features/websiteContext/background'
 import { convertBlobToBase64 } from '@/utils/dataHelper/fileHelper'
 import Log from '@/utils/Log'
+import { clientMaxAIPost } from '@/utils/request'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 const log = new Log('Background/Client')
@@ -424,6 +426,18 @@ export const ClientMessageInit = () => {
             }
           }
           break
+        case 'Client_getUserFeatureQuotaInfo':
+          {
+            console.log(1111)
+            const featureQuotaInfo =
+              await getMaxAIChromeExtensionUserFeatureQuota(data.forceUpdate)
+            return {
+              success: true,
+              data: featureQuotaInfo,
+              message: 'ok',
+            }
+          }
+          break
         case 'Client_emitPricingHooks': {
           const { action, name } = data
           const userInfo = await getChromeExtensionUserInfo(false)
@@ -435,7 +449,7 @@ export const ClientMessageInit = () => {
             if (userInfo?.role?.name) {
               data.role = userInfo.role.name
             }
-            await backgroundPost(`/user/cardlog`, data)
+            await clientMaxAIPost(`/user/cardlog`, data)
           }
           return {
             success: true,
@@ -492,10 +506,14 @@ export const ClientMessageInit = () => {
               url,
               {
                 ...parseOptions,
-                headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(
-                  requestId,
-                  parseOptions.headers,
-                ),
+                headers: {
+                  ...parseOptions.headers,
+                  ...(await backgroundRequestHeadersGenerator.getTaskIdHeaders(
+                    requestId,
+                    url,
+                    parseOptions.body,
+                  )),
+                },
               },
               abortTaskId,
             )
@@ -783,6 +801,19 @@ export const ClientMessageInit = () => {
             data.surveyKeys,
             requestId,
           )
+          // 通知当前活跃 tab 更新 survey 信息
+          const currentTab = await Browser.tabs.query({
+            active: true,
+            currentWindow: true,
+          })
+          const tabId = currentTab && currentTab[0] && currentTab[0].id
+          if (tabId) {
+            backgroundSendClientMessage(
+              tabId,
+              'Client_listenSurveyStatusUpdated',
+              result,
+            )
+          }
           return {
             success: true,
             data: result,

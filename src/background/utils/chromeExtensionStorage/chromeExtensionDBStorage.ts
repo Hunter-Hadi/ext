@@ -111,7 +111,6 @@ export const defaultChromeExtensionDBStorage =
           contextMenuPosition: 'start',
         },
       },
-      alwaysContinueInSidebar: false,
     }
   }
 export const getChromeExtensionDBStorage =

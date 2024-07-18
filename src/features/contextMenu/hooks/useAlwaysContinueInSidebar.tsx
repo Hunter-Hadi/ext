@@ -1,8 +1,11 @@
 import { useMemo } from 'react'
-import { useRecoilCallback, useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
-import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
-import { AlwaysContinueInSidebarSelector, AppDBStorageState } from '@/store'
+import {
+  getChromeExtensionLocalStorage,
+  setChromeExtensionLocalStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { AlwaysContinueInSidebarSelector, AppLocalStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import { FloatingDropdownMenuState } from '../store'
@@ -14,25 +17,32 @@ export function useAlwaysContinueInSidebar(): [
   const alwaysContinueInSidebar = useRecoilValue(
     AlwaysContinueInSidebarSelector,
   )
+  const setAppLocalStorage = useSetRecoilState(AppLocalStorageState)
+  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
 
   const isImmersiveChat = useMemo(() => isMaxAIImmersiveChatPage(), [])
 
   return [
     // alwaysContinueInSidebar,
     !isImmersiveChat ? alwaysContinueInSidebar : false,
-    useRecoilCallback(({ set }) => async (newValue: boolean) => {
-      await setChromeExtensionDBStorage((oldSettings) => {
-        oldSettings.alwaysContinueInSidebar = newValue
-        return oldSettings
+    async (newValue: boolean) => {
+      await setChromeExtensionLocalStorage({
+        sidebarSettings: {
+          contextMenu: {
+            alwaysContinueInSidebar: newValue,
+          },
+        },
+      })
+      const savedAppLocalStorage = await getChromeExtensionLocalStorage()
+      setAppLocalStorage((prev) => {
+        return {
+          ...prev,
+          sidebarSettings: savedAppLocalStorage.sidebarSettings,
+        }
       })
 
-      set(AppDBStorageState, (prev) => ({
-        ...prev,
-        alwaysContinueInSidebar: newValue,
-      }))
-
       // 在存在selection当时并不开启的时候跳回开启状态
-      set(FloatingDropdownMenuState, (prev) => {
+      setFloatingDropdownMenu((prev) => {
         if (prev.open === false && prev.rootRect !== null) {
           return {
             ...prev,
@@ -42,6 +52,6 @@ export function useAlwaysContinueInSidebar(): [
 
         return prev
       })
-    }),
+    },
   ]
 }

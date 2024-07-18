@@ -57,7 +57,7 @@ const SidebarAIMessageTools: FC<{
           set(FloatingDropdownMenuState, (prev) => ({ ...prev, open: true }))
         }
 
-        setAlwaysContinueInSidebar(false)
+        await setAlwaysContinueInSidebar(false)
       }
     },
     [currentConversationId],

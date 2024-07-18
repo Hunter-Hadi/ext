@@ -124,7 +124,6 @@ export interface IChromeExtensionDBStorage {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting
   }
   lastModified?: number
-  alwaysContinueInSidebar?: boolean
 }
 
 export type IChromeExtensionDBStorageUpdateFunction = (
@@ -209,6 +208,7 @@ export interface IChromeExtensionLocalStorage {
       currentAIModel?: string
       isPinned?: boolean
       conversationId?: string
+      alwaysContinueInSidebar?: boolean
     }
     common?: {
       currentAIProvider?: IAIProviderType

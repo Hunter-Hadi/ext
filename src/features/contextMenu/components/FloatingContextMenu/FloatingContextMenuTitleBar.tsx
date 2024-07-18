@@ -37,11 +37,8 @@ const FloatingContextMenuTitleBar: FC<{
 
   const { hideFloatingContextMenu, floatingDropdownMenu } =
     useFloatingContextMenu()
-  const {
-    currentFloatingContextMenuDraft,
-    selectedDraftUserMessage,
-    historyMessages,
-  } = useFloatingContextMenuDraft()
+  const { currentFloatingContextMenuDraft, selectedDraftUserMessage } =
+    useFloatingContextMenuDraft()
   const { floatingDropdownMenuPin, setFloatingDropdownMenuPin } =
     useFloatingContextMenuPin()
   const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
@@ -51,10 +48,10 @@ const FloatingContextMenuTitleBar: FC<{
 
   const { userSettings, setUserSettings } = useUserSettings()
 
-  const alwaysContinueInSidebar = () => {
+  const alwaysContinueInSidebar = async () => {
     if (clientConversation) {
-      setAlwaysContinueInSidebar(true)
-      continueConversationInSidebar(
+      await setAlwaysContinueInSidebar(true)
+      await continueConversationInSidebar(
         clientConversation.id,
         {},
         {

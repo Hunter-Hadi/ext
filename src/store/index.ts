@@ -43,6 +43,9 @@ export const AppLanguageState = atom<{
 export const AlwaysContinueInSidebarSelector = selector<boolean>({
   key: 'AlwaysContinueInSidebarSelector',
   get: ({ get }) => {
-    return get(AppDBStorageState).alwaysContinueInSidebar || false
+    return (
+      get(AppLocalStorageState).sidebarSettings?.contextMenu
+        ?.alwaysContinueInSidebar || false
+    )
   },
 })

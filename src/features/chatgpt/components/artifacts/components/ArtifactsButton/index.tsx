@@ -9,10 +9,9 @@ import {
 } from '@/features/chatgpt/components/artifacts'
 
 const ArtifactsButton: FC<{
-  loading?: boolean
   artifacts: IArtifacts
 }> = (props) => {
-  const { artifacts, loading } = props
+  const { artifacts } = props
   const { updateArtifacts, showArtifacts, isOpen } = useArtifacts()
 
   const handleClick = () => {
@@ -53,6 +52,7 @@ const ArtifactsButton: FC<{
       }}
       onClick={handleClick}
     >
+      {/*{JSON.stringify(artifacts)}*/}
       <Stack alignItems={'center'} direction={'row'} gap={'12px'}>
         <Stack
           sx={{
@@ -68,7 +68,7 @@ const ArtifactsButton: FC<{
             sx={{
               fontSize: '20px',
             }}
-            icon={loading ? 'Loading' : 'InsertDriveFile'}
+            icon={!artifacts.complete ? 'Loading' : 'InsertDriveFile'}
           />
         </Stack>
         <Stack width={0} flex={1}>

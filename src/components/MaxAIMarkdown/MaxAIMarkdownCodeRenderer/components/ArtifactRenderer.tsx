@@ -5,6 +5,7 @@ import React, { FC, useMemo } from 'react'
 import { IMaxAIMarkdownCodeRendererProps } from '@/components/MaxAIMarkdown/MaxAIMarkdownCodeRenderer/types'
 import {
   ArtifactsButton,
+  ArtifactsType,
   IArtifacts,
 } from '@/features/chatgpt/components/artifacts'
 
@@ -46,14 +47,12 @@ const ArtifactRenderer: FC<IMaxAIMarkdownCodeRendererProps> = (props) => {
     return {
       identifier: '',
       content: '',
-      type: '',
-      title: 'Generating...',
+      type: ArtifactsType.TEXT,
+      title: isArtifactResponding ? 'Generating...' : 'Failed to load artifact',
       complete: !isArtifactResponding,
     }
   }, [isArtifactResponding, content])
-  return (
-    <ArtifactsButton loading={isArtifactResponding} artifacts={artifacts} />
-  )
+  return <ArtifactsButton artifacts={artifacts} />
 }
 
 export default ArtifactRenderer

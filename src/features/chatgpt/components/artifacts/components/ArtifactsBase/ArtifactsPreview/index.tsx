@@ -1,29 +1,31 @@
-import React, { forwardRef, useImperativeHandle } from 'react'
+import Stack from '@mui/material/Stack'
+import React, { FC, useCallback, useEffect, useRef } from 'react'
 
-import {
-  ArtifactsType,
-  IArtifactsPreviewProps,
-  IArtifactsPreviewRef,
-} from '@/features/chatgpt/components/artifacts'
-import { reloadArtifactsPreview } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsPreview/components/useReloadArtifactsPreview'
+import { IArtifactsPreviewProps } from '@/features/chatgpt/components/artifacts'
+import { useReloadArtifactsPreview } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsPreview/useReloadArtifactsPreview'
+import { startSandBoxRender } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsPreview/utils'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 
-import { ArtifactsPreviewHtml } from './components'
-
-const ArtifactsPreview = forwardRef<
-  IArtifactsPreviewRef,
-  IArtifactsPreviewProps
->(function ArtifactsPreviewRef(props, ref) {
-  const type = props.artifacts.type
-  useImperativeHandle(ref, () => ({
-    reload: () => {
-      reloadArtifactsPreview()
-    },
-  }))
+const ArtifactsPreview: FC<IArtifactsPreviewProps> = (props) => {
+  const { artifacts, sx } = props
+  const boxRef = useRef<HTMLDivElement | null>(null)
+  const rerenderHTML = useCallback(() => {
+    if (!boxRef.current) {
+      return
+    }
+    startSandBoxRender(boxRef.current, artifacts)
+  }, [artifacts.content])
+  useEffect(() => {
+    if (artifacts.complete) {
+      rerenderHTML()
+    }
+  }, [rerenderHTML, artifacts.content])
+  useReloadArtifactsPreview(rerenderHTML)
   return (
-    <>
-      {type === ArtifactsType.HTML && <ArtifactsPreviewHtml {...props} />}
-      {type === ArtifactsType.SVG && <ArtifactsPreviewHtml {...props} />}
-    </>
+    <Stack ref={boxRef} sx={{ ...sx }} component={'div'}>
+      <AppLoadingLayout loading={!artifacts.complete} size={16} />
+    </Stack>
   )
-})
+}
+
 export default ArtifactsPreview

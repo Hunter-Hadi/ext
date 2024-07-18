@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import Highlight from 'react-highlight'
 
 import { IArtifacts } from '@/features/chatgpt/components/artifacts'
@@ -21,23 +21,25 @@ const ArtifactsCodeBlock: FC<IArtifactsCodeBlockProps> = (props) => {
       content,
     }
   }, [artifacts])
+  const memoSx = useMemo(() => {
+    return {
+      bgcolor: '#282c34',
+      height: '100%',
+      overflowY: 'auto',
+      color: '#fff',
+      textAlign: 'left',
+      userSelect: 'auto',
+      '& > pre': {
+        margin: 0,
+        whiteSpace: 'pre-wrap',
+        wordBreak: 'break-word',
+      },
+      ...sx,
+    } as SxProps
+  }, [sx])
   return (
-    <Stack
-      className={'chat-message--text'}
-      sx={{
-        bgcolor: '#282c34',
-        height: '100%',
-        overflowY: 'auto',
-        color: '#fff',
-        textAlign: 'left',
-        userSelect: 'auto',
-        '& > pre': {
-          margin: 0,
-        },
-        ...sx,
-      }}
-    >
-      <Highlight className={memoizedCode.lang + ' ' + className}>
+    <Stack className={'chat-message--text'} sx={memoSx}>
+      <Highlight className={`${memoizedCode.lang} ${className || ''}`}>
         {memoizedCode.content}
       </Highlight>
     </Stack>

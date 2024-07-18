@@ -5,7 +5,7 @@ import {
   ArtifactsType,
   IArtifacts,
 } from '@/features/chatgpt/components/artifacts'
-import { reloadArtifactsPreview } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsPreview/components/useReloadArtifactsPreview'
+import { reloadArtifactsPreview } from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsPreview/useReloadArtifactsPreview'
 import {
   ArtifactsFloatingWindowState,
   ArtifactsState,

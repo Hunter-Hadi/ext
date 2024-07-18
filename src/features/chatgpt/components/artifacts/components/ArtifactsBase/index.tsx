@@ -7,10 +7,7 @@ import React, { FC, useEffect, useRef } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
-import {
-  IArtifactsPreviewRef,
-  useArtifacts,
-} from '@/features/chatgpt/components/artifacts'
+import { useArtifacts } from '@/features/chatgpt/components/artifacts'
 import ArtifactsCodeBlock from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsCodeBlock'
 import ArtifactsPreview from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsPreview'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -31,7 +28,6 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
   } = useArtifacts()
   const renderRef = useRef<HTMLDivElement | null>(null)
   const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
-  const previewActionRef = useRef<IArtifactsPreviewRef>(null)
   const handleChange = (newMode: 'preview' | 'code') => {
     if (newMode) {
       setMode(newMode)
@@ -161,14 +157,12 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
         sx={{
           flex: 1,
           height: 0,
+          // borderRadius: '0 0 16px',
+          // overflow: 'hidden',
         }}
       >
         {mode === 'preview' && (
-          <ArtifactsPreview
-            ref={previewActionRef}
-            sx={{ flex: 1 }}
-            artifacts={artifacts}
-          />
+          <ArtifactsPreview sx={{ flex: 1 }} artifacts={artifacts} />
         )}
         {mode === 'code' && <ArtifactsCodeBlock artifacts={artifacts} />}
       </Stack>

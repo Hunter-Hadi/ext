@@ -3,7 +3,6 @@ import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
-import Highlight from 'react-highlight'
 import { Components } from 'react-markdown/lib/ast-to-react'
 import reactNodeToString from 'react-node-to-string'
 import Browser from 'webextension-polyfill'
@@ -96,7 +95,8 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
       </Stack>
       <Box fontSize={14} bgcolor='#000' color={'#fff'}>
         <AppSuspenseLoadingLayout>
-          <Highlight className={lang + ' ' + className}>{children}</Highlight>
+          {children}
+          {/*<Highlight className={lang + ' ' + className}>{children}</Highlight>*/}
         </AppSuspenseLoadingLayout>
       </Box>
     </Stack>

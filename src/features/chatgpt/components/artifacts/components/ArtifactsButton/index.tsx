@@ -25,9 +25,9 @@ const ArtifactsButton: FC<{
     isOpenRef.current = isOpen
   }, [isOpen])
   useEffect(() => {
+    updateArtifacts(artifacts)
     if (!artifacts.complete) {
       isAutoOpenRef.current = true
-      updateArtifacts(artifacts)
       isOpenRef.current ? showArtifacts() : showArtifacts('code')
     } else {
       if (isOpenRef.current && isAutoOpenRef.current) {

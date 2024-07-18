@@ -12,16 +12,12 @@ import {
 const ArtifactRenderer: FC<IMaxAIMarkdownCodeRendererProps> = (props) => {
   const { content, messageIsComplete, isLastNode } = props
   const isArtifactResponding = useMemo(() => {
-    console.log(
-      `maxaiartifact ArtifactRender: ${messageIsComplete}, isLastNode: ${isLastNode}`,
-    )
     if (messageIsComplete) {
       return false
     }
     return isLastNode
   }, [messageIsComplete, isLastNode])
   const artifacts = useMemo<IArtifacts>(() => {
-    console.log(content, isArtifactResponding)
     /**
      * yaml
      * identifier: 'number-guessing-game-1to10'
@@ -36,6 +32,11 @@ const ArtifactRenderer: FC<IMaxAIMarkdownCodeRendererProps> = (props) => {
         : content.toString()
       const parsed: any = jsYaml.load(needParseText)
       if (parsed.identifier && parsed.type && parsed.title && parsed.content) {
+        console.log(
+          `maxaiartifact ArtifactRender`,
+          parsed,
+          isArtifactResponding,
+        )
         return {
           ...parsed,
           complete: !isArtifactResponding,

@@ -20,7 +20,10 @@ const ArtifactsPreview = forwardRef<
     },
   }))
   return (
-    <>{type === ArtifactsType.HTML && <ArtifactsPreviewHtml {...props} />}</>
+    <>
+      {type === ArtifactsType.HTML && <ArtifactsPreviewHtml {...props} />}
+      {type === ArtifactsType.SVG && <ArtifactsPreviewHtml {...props} />}
+    </>
   )
 })
 export default ArtifactsPreview

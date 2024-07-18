@@ -48,6 +48,7 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
         flexDirection: 'column',
         width: '100%',
         height: '100%',
+        overflow: 'hidden',
         borderRadius: '16px',
         ...sx,
       }}

@@ -8,10 +8,8 @@ import { IPromptListType } from '@/features/prompt_library/types'
  * @since 2023-11-21
  */
 const usePromptLibraryParameters = () => {
-  const [
-    promptLibraryListParameters,
-    setPromptLibraryListParameters,
-  ] = useRecoilState(PromptLibraryListParametersState)
+  const [promptLibraryListParameters, setPromptLibraryListParameters] =
+    useRecoilState(PromptLibraryListParametersState)
   /**
    * 更新PromptLibrary列表的搜索条件
    * @param newParameters

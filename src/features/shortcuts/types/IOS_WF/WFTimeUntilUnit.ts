@@ -1,5 +1,5 @@
-type WFTimeUntilUnit = (
-  'Total Time'
+type WFTimeUntilUnit =
+  | 'Total Time'
   | 'Seconds'
   | 'Minutes'
   | 'Hours'
@@ -7,6 +7,5 @@ type WFTimeUntilUnit = (
   | 'Weeks'
   | 'Months'
   | 'Years'
-);
 
-export default WFTimeUntilUnit;
+export default WFTimeUntilUnit

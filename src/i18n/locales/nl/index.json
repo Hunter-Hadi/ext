@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Herschrijven in AI",
     "home_view__rewrite__title": "AI herschrijver",
     "home_view__rewrite__description": "Bespaar tijd bij het controleren en perfectioneren van uw woorden.",
-    "context_window__chat_history__continue_in_rewrite__title": "Doorgaan in herschrijven"
+    "context_window__chat_history__continue_in_rewrite__title": "Doorgaan in herschrijven",
+    "permission__pricing_hook__context_menu__title": "Upgrade om onbeperkte AI-herformuleringsfunctie te ontgrendelen",
+    "permission__pricing_hook__context_menu__description": "Met MaxAI's AI-herformuleringsfunctie kunt u tijd besparen bij het proeflezen en perfectioneren van uw woorden op het web, van e-mail tot sociale media en verder."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

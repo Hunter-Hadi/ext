@@ -1,11 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
@@ -31,10 +28,11 @@ const useSearchWithAI = () => {
     clientConversationMessages,
     clientConversation,
   } = useClientConversation()
-  const { isPayingUser, userInfo } = useUserInfo()
+  const { isPayingUser } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
     useClientConversation()
+  const { checkFeatureQuota } = useUserFeatureQuota()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const [waitRunActions, setWaitRunActions] = useState<ISetActionsType>([])
@@ -92,19 +90,8 @@ const useSearchWithAI = () => {
       console.log('新版Conversation search with AI 开始创建')
       // 如果是免费用户
       if (!isPayingUser) {
-        // 判断lifetimes free trial是否已经用完
-        const searchLifetimesQuota =
-          Number(
-            (await getChromeExtensionOnBoardingData())
-              .ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES,
-          ) || 0
-        if (userInfo?.role?.name === 'free_trial' && searchLifetimesQuota > 0) {
-          // 如果没有用完，那么就减一
-          await setChromeExtensionOnBoardingData(
-            'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES',
-            searchLifetimesQuota - 1,
-          )
-        } else {
+        // 检测search用量
+        if (!(await checkFeatureQuota('search'))) {
           await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
           authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
             conversationId: currentConversationId,
@@ -113,6 +100,27 @@ const useSearchWithAI = () => {
           updateClientConversationLoading(false)
           return
         }
+        // // 判断lifetimes free trial是否已经用完
+        // const searchLifetimesQuota =
+        //   Number(
+        //     (await getChromeExtensionOnBoardingData())
+        //       .ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES,
+        //   ) || 0
+        // if (userInfo?.role?.name === 'free_trial' && searchLifetimesQuota > 0) {
+        //   // 如果没有用完，那么就减一
+        //   await setChromeExtensionOnBoardingData(
+        //     'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES',
+        //     searchLifetimesQuota - 1,
+        //   )
+        // } else {
+        //   await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
+        //   authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
+        //     conversationId: currentConversationId,
+        //     paywallType: 'RESPONSE',
+        //   })
+        //   updateClientConversationLoading(false)
+        //   return
+        // }
       }
       const { messageId, actions } = await generateSearchWithAIActions(
         query,

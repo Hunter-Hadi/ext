@@ -31,7 +31,7 @@ const ChatGPTExpandList: React.FC<TextListProps> = ({ title, children }) => {
       </Stack>
       <Collapse
         in={expanded}
-        timeout="auto"
+        timeout='auto'
         unmountOnExit
         sx={{
           textAlign: 'left',

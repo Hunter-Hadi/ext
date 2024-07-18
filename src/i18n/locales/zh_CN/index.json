@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "在AI中重写",
     "home_view__rewrite__title": "AI重写器",
     "home_view__rewrite__description": "节省校对和完善文字的时间。",
-    "context_window__chat_history__continue_in_rewrite__title": "在重写中继续"
+    "context_window__chat_history__continue_in_rewrite__title": "在重写中继续",
+    "permission__pricing_hook__context_menu__title": "升级以解锁无限AI重写",
+    "permission__pricing_hook__context_menu__description": "使用MaxAI的AI重写器，您可以节省校对和完善您在网络上的文字的时间，从电子邮件到社交媒体等等。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

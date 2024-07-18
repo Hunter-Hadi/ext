@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "เขียนใหม่ด้วย AI",
     "home_view__rewrite__title": "AI เขียนใหม่",
     "home_view__rewrite__description": "ประหยัดเวลาในการตรวจสอบและปรับปรุงคำของคุณ",
-    "context_window__chat_history__continue_in_rewrite__title": "เริ่มต้นในการเขียนใหม่"
+    "context_window__chat_history__continue_in_rewrite__title": "เริ่มต้นในการเขียนใหม่",
+    "permission__pricing_hook__context_menu__title": "อัปเกรดเพื่อปลดล็อค AI rewriter ไร้ขีดจำกัด",
+    "permission__pricing_hook__context_menu__description": "ด้วย AI rewriter จาก MaxAI คุณสามารถประหยัดเวลาในการตรวจอ่านและปรับแต่งคำของคุณบนเว็บได้อย่างสมบูรณ์ ตั้งแต่อีเมลถึงโซเชียลมีเดียและอื่นๆ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

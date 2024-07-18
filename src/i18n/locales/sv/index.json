@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Omskriv med AI",
     "home_view__rewrite__title": "AI-omskrivare",
     "home_view__rewrite__description": "Spara tid på korrekturläsning och förbättring av dina ord.",
-    "context_window__chat_history__continue_in_rewrite__title": "Fortsätt i omskrivning"
+    "context_window__chat_history__continue_in_rewrite__title": "Fortsätt i omskrivning",
+    "permission__pricing_hook__context_menu__title": "Uppgradera för att låsa upp obegränsad AI-omskrivare",
+    "permission__pricing_hook__context_menu__description": "Med MaxAI:s AI-omskrivare kan du spara tid på korrekturläsning och perfektionera dina ord över webben, från e-post till sociala medier och mer."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

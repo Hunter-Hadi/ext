@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Przepisz w AI",
     "home_view__rewrite__title": "Przepisywacz AI",
     "home_view__rewrite__description": "Oszczędź czas na korekcie i doskonaleniu swoich słów.",
-    "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisywaniu"
+    "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisywaniu",
+    "permission__pricing_hook__context_menu__title": "Odblokuj nieograniczone przepisywanie AI",
+    "permission__pricing_hook__context_menu__description": "Dzięki przepisywarce AI MaxAI możesz zaoszczędzić czas na korekcie i doskonaleniu swoich słów w sieci, od e-maili po media społecznościowe i nie tylko."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

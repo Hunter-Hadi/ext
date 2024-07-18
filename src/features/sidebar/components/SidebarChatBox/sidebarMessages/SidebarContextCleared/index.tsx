@@ -77,12 +77,12 @@ const SidebarContextCleared: FC<{
 
   return (
     <Divider sx={{ mb: 2 }}>
-      <Stack direction="row" alignItems="center">
+      <Stack direction='row' alignItems='center'>
         <Typography color={'text.secondary'} fontSize={'12px'}>
           {t('client:sidebar__conversation__message__context_cleared')}
         </Typography>
         <Button
-          variant="text"
+          variant='text'
           sx={{
             width: '30px',
             height: '30px',
@@ -126,7 +126,7 @@ const SidebarContextCleared: FC<{
             color: '#f44336',
           }}
         >
-          <ContextMenuIcon icon="Delete" size={16} sx={{ mr: 1 }} />
+          <ContextMenuIcon icon='Delete' size={16} sx={{ mr: 1 }} />
           {t('common:delete')}
         </MenuItem>
       </Menu>
@@ -179,8 +179,8 @@ const SidebarContextCleared: FC<{
                 {t('common:cancel')}
               </Button>
               <Button
-                variant="contained"
-                color="error"
+                variant='contained'
+                color='error'
                 onClick={() => {
                   handleModalClose()
                   handleDelete()

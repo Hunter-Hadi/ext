@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Prepisati u AI-u",
     "home_view__rewrite__title": "AI prepisivač",
     "home_view__rewrite__description": "Uštedite vrijeme na provjeri i usavršavanju svojih riječi.",
-    "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepisivanju"
+    "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepisivanju",
+    "permission__pricing_hook__context_menu__title": "Nadogradite za otključavanje neograničenog AI preuređivača",
+    "permission__pricing_hook__context_menu__description": "S MaxAI-jem AI preuređivača možete uštedjeti vrijeme na lekturi i usavršavanju svojih riječi diljem weba, od e-pošte do društvenih medija i dalje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

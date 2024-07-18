@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Переписати за допомогою штучного інтелекту",
     "home_view__rewrite__title": "Переписувач AI",
     "home_view__rewrite__description": "Зекономте час на виправленні та вдосконаленні своїх слів.",
-    "context_window__chat_history__continue_in_rewrite__title": "Продовжуйте у переписуванні"
+    "context_window__chat_history__continue_in_rewrite__title": "Продовжуйте у переписуванні",
+    "permission__pricing_hook__context_menu__title": "Оновіться, щоб розблокувати необмежений переписувач штучного інтелекту",
+    "permission__pricing_hook__context_menu__description": "З переписувачем штучного інтелекту MaxAI ви можете заощадити час на перевірці та вдосконаленні своїх слів в Інтернеті, від електронної пошти до соціальних мереж та далі."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

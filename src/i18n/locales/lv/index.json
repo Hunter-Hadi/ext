@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Pārrakstīt ar AI",
     "home_view__rewrite__title": "AI pārrakstītājs",
     "home_view__rewrite__description": "Ietaupiet laiku, pārbaudot un pilnveidojot savus vārdus.",
-    "context_window__chat_history__continue_in_rewrite__title": "Turpiniet pārrakstīt"
+    "context_window__chat_history__continue_in_rewrite__title": "Turpiniet pārrakstīt",
+    "permission__pricing_hook__context_menu__title": "Uzlabojiet, lai atbloķētu neierobežotu AI pārrakstītāju",
+    "permission__pricing_hook__context_menu__description": "Ar MaxAI AI pārrakstītāju jūs varat ietaupīt laiku, pārbaudot un pilnveidojot savus vārdus visā tīmeklī, no e-pasta līdz sociālajiem tīkliem un tālāk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

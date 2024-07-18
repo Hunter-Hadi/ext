@@ -16,9 +16,9 @@ import {
   type IContextMenuIconKey,
 } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { PAGE_SUMMARY_NAV_LIST_MAP } from '@/features/chat-base/summary/constants'
-import useSummaryQuota from '@/features/chat-base/summary/hooks/useSummaryQuota'
 import {
   IPageSummaryNavItem,
   IPageSummaryNavType,
@@ -56,7 +56,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   )
   const { askAIWIthShortcuts } = useClientChat()
   const { clientConversation, pushPricingHookMessage } = useClientConversation()
-  const { checkSummaryQuota } = useSummaryQuota()
+  const { checkFeatureQuota } = useUserFeatureQuota()
   const summaryType = useMemo(() => getPageSummaryType(), [])
   const summaryNavList = useMemo(
     () => PAGE_SUMMARY_NAV_LIST_MAP[summaryType],
@@ -80,7 +80,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   const clickNavTriggerActionChange = async (navItem: IPageSummaryNavItem) => {
     if (loading || speedChangeKey === navItem.key) return //防止多次触发
 
-    if (!(await checkSummaryQuota())) {
+    if (!(await checkFeatureQuota('summary'))) {
       await pushPricingHookMessage('PAGE_SUMMARY')
       authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
         conversationId: clientConversation?.id,
@@ -122,7 +122,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   ) => {
     if (loading || speedChangeKey === menuItem.id) return //防止多次触发
 
-    if (!(await checkSummaryQuota())) {
+    if (!(await checkFeatureQuota('summary'))) {
       await pushPricingHookMessage('PAGE_SUMMARY')
       authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
         conversationId: clientConversation?.id,

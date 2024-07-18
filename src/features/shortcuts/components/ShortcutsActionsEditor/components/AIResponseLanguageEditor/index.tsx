@@ -24,7 +24,7 @@ const AIResponseLanguageEditor: FC<{
 
   return (
     <Stack spacing={1}>
-      <Stack direction={'row'} alignItems="center">
+      <Stack direction={'row'} alignItems='center'>
         <Typography variant={'body1'}>
           {t('prompt_editor:ai_response_language__title')}
         </Typography>
@@ -40,7 +40,7 @@ const AIResponseLanguageEditor: FC<{
         }}
         control={<Switch checked={checked} />}
         label={
-          <Stack direction={'row'} alignItems="center" gap={1}>
+          <Stack direction={'row'} alignItems='center' gap={1}>
             <Typography variant={'body1'}>
               {t('prompt_editor:ai_response_language__settings__label_1')}
             </Typography>

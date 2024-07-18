@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Rescrieți cu AI",
     "home_view__rewrite__title": "Rescriitor AI",
     "home_view__rewrite__description": "Economisiți timp la corectarea și perfecționarea cuvintelor dvs.",
-    "context_window__chat_history__continue_in_rewrite__title": "Continuați în rescriere"
+    "context_window__chat_history__continue_in_rewrite__title": "Continuați în rescriere",
+    "permission__pricing_hook__context_menu__title": "Upgrade pentru a debloca rescrierea AI nelimitată",
+    "permission__pricing_hook__context_menu__description": "Cu rewriter-ul AI MaxAI, puteți economisi timp la corectarea și perfecționarea cuvintelor dvs. pe web, de la e-mail la social media și dincolo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

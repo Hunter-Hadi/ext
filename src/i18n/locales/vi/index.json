@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Viết lại bằng AI",
     "home_view__rewrite__title": "Máy viết lại AI",
     "home_view__rewrite__description": "Tiết kiệm thời gian trong việc kiểm tra lỗi và hoàn thiện từ của bạn.",
-    "context_window__chat_history__continue_in_rewrite__title": "Tiếp tục trong viết lại"
+    "context_window__chat_history__continue_in_rewrite__title": "Tiếp tục trong viết lại",
+    "permission__pricing_hook__context_menu__title": "Nâng cấp để mở khóa trình viết lại AI không giới hạn",
+    "permission__pricing_hook__context_menu__description": "Với trình viết lại AI của MaxAI, bạn có thể tiết kiệm thời gian trong việc kiểm tra và hoàn thiện từ ngữ của mình trên web, từ email đến mạng xã hội và hơn thế nữa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

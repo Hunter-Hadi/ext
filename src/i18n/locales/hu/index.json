@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Átírás AI segítségével",
     "home_view__rewrite__title": "AI átíró",
     "home_view__rewrite__description": "Takarítson meg időt a lektorálással és a szavai tökéletesítésével.",
-    "context_window__chat_history__continue_in_rewrite__title": "Folytatás az átírásban"
+    "context_window__chat_history__continue_in_rewrite__title": "Folytatás az átírásban",
+    "permission__pricing_hook__context_menu__title": "Frissítés az korlátlan AI átíró feloldásához",
+    "permission__pricing_hook__context_menu__description": "A MaxAI AI átírójával időt takaríthat meg a weben átívelő szövegek ellenőrzésére és tökéletesítésére az e-mailtől a közösségi médiáig és még tovább."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

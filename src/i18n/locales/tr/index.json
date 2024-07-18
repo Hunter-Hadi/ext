@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "AI ile yeniden yazın",
     "home_view__rewrite__title": "AI yeniden yazıcı",
     "home_view__rewrite__description": "Kelimelerinizi düzeltme ve mükemmelleştirme konusunda zaman kazanın.",
-    "context_window__chat_history__continue_in_rewrite__title": "Yeniden yazmaya devam et"
+    "context_window__chat_history__continue_in_rewrite__title": "Yeniden yazmaya devam et",
+    "permission__pricing_hook__context_menu__title": "Sınırsız AI yeniden yazıcıyı açmak için yükselt",
+    "permission__pricing_hook__context_menu__description": "MaxAI'nin AI yeniden yazıcısı ile e-postadan sosyal medyaya ve ötesine kadar web üzerindeki kelimelerinizi düzeltme ve mükemmelleştirme konusunda zaman kazanabilirsiniz."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

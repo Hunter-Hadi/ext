@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Reescrever na IA",
     "home_view__rewrite__title": "Reescritor de IA",
     "home_view__rewrite__description": "Poupe tempo na revisão e aperfeiçoamento das suas palavras.",
-    "context_window__chat_history__continue_in_rewrite__title": "Continuar na reescrita"
+    "context_window__chat_history__continue_in_rewrite__title": "Continuar na reescrita",
+    "permission__pricing_hook__context_menu__title": "Atualize para desbloquear o reescritor de IA ilimitado",
+    "permission__pricing_hook__context_menu__description": "Com o reescritor de IA da MaxAI, pode poupar tempo a rever e a aperfeiçoar as suas palavras na web, desde o email às redes sociais e muito mais."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Переписать в ИИ",
     "home_view__rewrite__title": "Переписыватель ИИ",
     "home_view__rewrite__description": "Экономьте время на проверке и совершенствовании своих слов.",
-    "context_window__chat_history__continue_in_rewrite__title": "Продолжить в переписывании"
+    "context_window__chat_history__continue_in_rewrite__title": "Продолжить в переписывании",
+    "permission__pricing_hook__context_menu__title": "Повысьте уровень, чтобы разблокировать неограниченный переопределитель ИИ",
+    "permission__pricing_hook__context_menu__description": "С помощью переопределителя ИИ MaxAI вы можете экономить время на корректировке и совершенствовании ваших слов в Интернете, от электронной почты до социальных сетей и далее."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "AI में पुनर्लेखन",
     "home_view__rewrite__title": "AI पुनरलेखक",
     "home_view__rewrite__description": "प्रूफरीडिंग और अपने शब्दों को सही करने में समय बचाएं।",
-    "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखन में जारी रखें"
+    "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखन में जारी रखें",
+    "permission__pricing_hook__context_menu__title": "अनलॉक करें अनलिमिटेड एआई रीव्राइटर",
+    "permission__pricing_hook__context_menu__description": "मैक्सएआई के एआई रीव्राइटर के साथ, आप समय बचा सकते हैं प्रूफरीडिंग और अपने शब्दों को परफेक्ट करने में वेब पर, ईमेल से सोशल मीडिया तक और आगे।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

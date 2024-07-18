@@ -43,7 +43,7 @@ const AddOwnPromptCard: FC = () => {
         }
       }}
     >
-      <Stack direction="row" alignItems="center" spacing={1} color="inherit">
+      <Stack direction='row' alignItems='center' spacing={1} color='inherit'>
         <AddOutlinedIcon
           sx={{
             fontSize: 20,

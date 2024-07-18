@@ -1,5 +1,5 @@
-type WFWorkflowActionIdentifier = (
-  'com.apple.facetime.facetime'
+type WFWorkflowActionIdentifier =
+  | 'com.apple.facetime.facetime'
   | 'com.apple.iBooks.openin'
   | 'com.apple.mobilephone.call'
   | 'com.apple.mobilenotes.SharingExtension'
@@ -128,6 +128,5 @@ type WFWorkflowActionIdentifier = (
   | 'is.workflow.actions.waittoreturn'
   | 'is.workflow.actions.wifi.set'
   | 'is.workflow.actions.wordpress.post'
-);
 
-export default WFWorkflowActionIdentifier;
+export default WFWorkflowActionIdentifier

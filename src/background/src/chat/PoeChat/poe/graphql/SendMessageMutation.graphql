@@ -5,7 +5,13 @@ mutation chatHelpers_sendMessageMutation_Mutation(
   $source: MessageSource
   $withChatBreak: Boolean!
 ) {
-  messageEdgeCreate(chatId: $chatId, bot: $bot, query: $query, source: $source, withChatBreak: $withChatBreak) {
+  messageEdgeCreate(
+    chatId: $chatId
+    bot: $bot
+    query: $query
+    source: $source
+    withChatBreak: $withChatBreak
+  ) {
     chatBreak {
       cursor
       node {

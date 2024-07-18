@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Ibalik sa AI",
     "home_view__rewrite__title": "AI tagasulat",
     "home_view__rewrite__description": "Makatipid ng oras sa pagsusuri at pagpapakinis ng iyong mga salita.",
-    "context_window__chat_history__continue_in_rewrite__title": "Magpatuloy sa pagsusulat muli"
+    "context_window__chat_history__continue_in_rewrite__title": "Magpatuloy sa pagsusulat muli",
+    "permission__pricing_hook__context_menu__title": "Mag-upgrade para mabuksan ang walang hanggang AI rewriter",
+    "permission__pricing_hook__context_menu__description": "Sa AI rewriter ng MaxAI, maaari kang makatipid ng oras sa pagsusuri at pagpapakinis ng iyong mga salita sa buong web, mula sa email hanggang sa social media at higit pa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

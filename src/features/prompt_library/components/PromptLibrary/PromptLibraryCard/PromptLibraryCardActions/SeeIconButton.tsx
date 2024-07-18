@@ -10,7 +10,7 @@ export const SeeIconButton: FC<{ detailLink: string }> = ({ detailLink }) => {
   return (
     <PromptLibraryTooltip title={t('prompt_library:view_details__tooltip')}>
       <IconButton
-        size="small"
+        size='small'
         onClick={(event) => {
           event.stopPropagation()
           window.open(detailLink)

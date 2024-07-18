@@ -1,8 +1,7 @@
-type WFCellularDetail = (
-  'Carrier Name'
+type WFCellularDetail =
+  | 'Carrier Name'
   | 'Radio Technology'
   | 'Country Code'
   | 'WFTextTokenAttachment'
-);
 
-export default WFCellularDetail;
+export default WFCellularDetail

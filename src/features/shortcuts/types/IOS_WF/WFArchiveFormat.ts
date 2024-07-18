@@ -1,5 +1,5 @@
-type WFArchiveFormat = (
-  'zip'
+type WFArchiveFormat =
+  | 'zip'
   | 'tar.gz'
   | 'tar.bz2'
   | 'tar.xz'
@@ -7,6 +7,5 @@ type WFArchiveFormat = (
   | 'gz'
   | 'cpio'
   | 'iso'
-);
 
-export default WFArchiveFormat;
+export default WFArchiveFormat

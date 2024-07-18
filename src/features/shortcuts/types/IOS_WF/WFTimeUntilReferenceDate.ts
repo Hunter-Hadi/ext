@@ -1,6 +1,3 @@
-type WFTimeUntilReferenceDate = (
-  'Right Now'
-  | 'Other'
-);
+type WFTimeUntilReferenceDate = 'Right Now' | 'Other'
 
-export default WFTimeUntilReferenceDate;
+export default WFTimeUntilReferenceDate

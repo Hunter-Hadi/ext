@@ -67,12 +67,12 @@ const LinearProgressWithLabel: FC<
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ minWidth: 64 }}>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant='body2' color='text.secondary'>
           {props.label || `${Math.round(props.value)}%`}
         </Typography>
       </Box>
       <Box sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
+        <LinearProgress variant='determinate' {...props} />
       </Box>
     </Box>
   )
@@ -334,7 +334,7 @@ const MinutesSlider: FC<{
         setValue(newValue as number)
         onChange && onChange(newValue as number)
       }}
-      valueLabelDisplay="auto"
+      valueLabelDisplay='auto'
       step={30}
       marks={marks}
       min={30}

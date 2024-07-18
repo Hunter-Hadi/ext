@@ -61,14 +61,14 @@ const SidebarSurveyContent: FC<IProps> = ({
       <Stack
         direction={'row'}
         spacing={1}
-        alignItems="center"
+        alignItems='center'
         flexShrink={0}
         py={2.5}
         px={2}
       >
         <Typography
           fontSize={20}
-          color="text.primary"
+          color='text.primary'
           flex={1}
           fontWeight={700}
         >
@@ -105,7 +105,7 @@ const SidebarSurveyContent: FC<IProps> = ({
             {t('client:sidebar__survey_dialog__description__item1__part1')}{' '}
             <ProLink
               href={CTA_BUTTON_LINK}
-              underline="always"
+              underline='always'
               onClick={() => {
                 mixpanelTrack('survey_card_clicked', {
                   surveyType: surveyKey,
@@ -136,7 +136,7 @@ const SidebarSurveyContent: FC<IProps> = ({
       {/* cta button */}
       <Stack flexShrink={0} spacing={1} p={2}>
         <Button
-          variant="contained"
+          variant='contained'
           fullWidth
           href={CTA_BUTTON_LINK}
           target={'_blank'}

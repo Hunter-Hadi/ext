@@ -149,7 +149,7 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
           fontSize: 14,
         },
         [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]: {
-          fontSize: 24
+          fontSize: 24,
         },
         ...sx,
       }}

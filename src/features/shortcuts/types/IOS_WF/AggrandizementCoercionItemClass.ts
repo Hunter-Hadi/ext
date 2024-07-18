@@ -1,5 +1,5 @@
-type AggrandizementCoercionItemClass = (
-  'WFEmailAddressContentItem'
+type AggrandizementCoercionItemClass =
+  | 'WFEmailAddressContentItem'
   | 'WFAppStoreAppContentItem'
   | 'WFArticleContentItem'
   | 'WFAVAssetContentItem'
@@ -24,6 +24,5 @@ type AggrandizementCoercionItemClass = (
   | 'WFStringContentItem'
   | 'WFURLContentItem'
   | 'WFVCardContentItem'
-);
 
-export default AggrandizementCoercionItemClass;
+export default AggrandizementCoercionItemClass

@@ -69,7 +69,7 @@ const useArtTextToImage = () => {
     let isNeedTransform =
       sidebarSettings?.art?.isEnabledConversationalMode === true
 
-    if (typeof needTransform !== undefined) {
+    if (typeof needTransform !== 'undefined') {
       isNeedTransform = Boolean(needTransform)
     }
 

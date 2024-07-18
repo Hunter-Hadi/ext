@@ -17,10 +17,8 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const SettingsMiniMenuPage: FC = () => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
-  const {
-    toggleButtonSettings,
-    updateButtonSettings,
-  } = useChromeExtensionButtonSettings()
+  const { toggleButtonSettings, updateButtonSettings } =
+    useChromeExtensionButtonSettings()
   const [reRender, setReRender] = useState(true)
   const visible = useMemo(() => {
     return (
@@ -87,9 +85,10 @@ const SettingsMiniMenuPage: FC = () => {
                   if (newVisibility.isWhitelistMode) {
                     newVisibility.whitelist = []
                   }
-                  const latestButtonSettings = await getChromeExtensionButtonSettings(
-                    'textSelectPopupButton',
-                  )
+                  const latestButtonSettings =
+                    await getChromeExtensionButtonSettings(
+                      'textSelectPopupButton',
+                    )
                   if (latestButtonSettings) {
                     console.log('mini menu', latestButtonSettings?.contextMenu)
                     await updateButtonSettings('textSelectPopupButton', {

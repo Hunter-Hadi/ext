@@ -1,12 +1,12 @@
-import Aggrandizement from './Aggrandizement';
-import Type from './Type';
+import Aggrandizement from './Aggrandizement'
+import Type from './Type'
 
 interface Attachment {
-  Aggrandizements?: Aggrandizement[];
-  OutputName?: string;
-  OutputUUID?: string;
-  Type: Type;
-  VariableName?: string;
+  Aggrandizements?: Aggrandizement[]
+  OutputName?: string
+  OutputUUID?: string
+  Type: Type
+  VariableName?: string
 }
 
-export default Attachment;
+export default Attachment

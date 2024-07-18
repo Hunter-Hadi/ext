@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "ஐஐயில் மீளமை",
     "home_view__rewrite__title": "ஐஐ மீளமையாளர்",
     "home_view__rewrite__description": "உங்கள் வார்த்தைகளை சரிசெய்யும் மற்றும் அவற்றை முழுமையாக செய்யும் நேரம் சேமிக்கவும்.",
-    "context_window__chat_history__continue_in_rewrite__title": "மீளமையில் தொடருங்கள்"
+    "context_window__chat_history__continue_in_rewrite__title": "மீளமையில் தொடருங்கள்",
+    "permission__pricing_hook__context_menu__title": "அப்கிரேட் செய்து வெற்றிகரமாக பயன்படுத்த என்லாக் ஐ மீதான வெற்றிகரமான மருவியர் அணியை அணுக்கவும்",
+    "permission__pricing_hook__context_menu__description": "மேக்ஸ் ஐஐயின் ஐ மீதான மருவியர் உங்கள் வார்த்தைகளை பராமரிக்கும் மற்றும் மேலும் செயல்படுத்தும் நேரம் சேமிக்க முடியும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

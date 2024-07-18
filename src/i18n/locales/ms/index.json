@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Menulis semula dalam AI",
     "home_view__rewrite__title": "Penulis semula AI",
     "home_view__rewrite__description": "Jimat masa dalam menyemak ejaan dan menyempurnakan kata-kata anda.",
-    "context_window__chat_history__continue_in_rewrite__title": "Teruskan dalam penulisan semula"
+    "context_window__chat_history__continue_in_rewrite__title": "Teruskan dalam penulisan semula",
+    "permission__pricing_hook__context_menu__title": "Naik taraf untuk membuka penulis semula AI tanpa had",
+    "permission__pricing_hook__context_menu__description": "Dengan penulis semula AI MaxAI, anda boleh menjimatkan masa dalam menyemak dan menyempurnakan perkataan anda di seluruh web, dari emel ke media sosial dan seterusnya."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

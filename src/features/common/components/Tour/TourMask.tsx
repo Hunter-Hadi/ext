@@ -70,7 +70,7 @@ const TourMask = (props: TourMaskProps) => {
         >
           <defs>
             <mask id={maskId}>
-              <rect x="0" y="0" {...maskRectSize} fill="white" />
+              <rect x='0' y='0' {...maskRectSize} fill='white' />
               {pos && (
                 <rect
                   x={pos.left}
@@ -78,7 +78,7 @@ const TourMask = (props: TourMaskProps) => {
                   rx={pos.radius}
                   width={pos.width}
                   height={pos.height}
-                  fill="black"
+                  fill='black'
                   style={{
                     transition: animation
                       ? `all ${animationDuration}ms`
@@ -89,10 +89,10 @@ const TourMask = (props: TourMaskProps) => {
             </mask>
           </defs>
           <rect
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
+            x='0'
+            y='0'
+            width='100%'
+            height='100%'
             fill={fill}
             mask={`url(#${maskId})`}
           />
@@ -102,31 +102,31 @@ const TourMask = (props: TourMaskProps) => {
             <>
               <rect
                 {...COVER_PROPS}
-                x="0"
-                y="0"
-                width="100%"
+                x='0'
+                y='0'
+                width='100%'
                 height={pos.top}
               />
               <rect
                 {...COVER_PROPS}
-                x="0"
-                y="0"
+                x='0'
+                y='0'
                 width={pos.left}
-                height="100%"
+                height='100%'
               />
               <rect
                 {...COVER_PROPS}
-                x="0"
+                x='0'
                 y={pos.top + pos.height}
-                width="100%"
+                width='100%'
                 height={`calc(100vh - ${pos.top + pos.height}px)`}
               />
               <rect
                 {...COVER_PROPS}
                 x={pos.left + pos.width}
-                y="0"
+                y='0'
                 width={`calc(100vw - ${pos.left + pos.width}px)`}
-                height="100%"
+                height='100%'
               />
             </>
           )}

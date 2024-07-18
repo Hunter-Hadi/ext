@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "AI로 다시 쓰기",
     "home_view__rewrite__title": "AI 리라이터",
     "home_view__rewrite__description": "글의 교정과 완벽화에 시간을 절약하세요.",
-    "context_window__chat_history__continue_in_rewrite__title": "다시 쓰기에서 계속"
+    "context_window__chat_history__continue_in_rewrite__title": "다시 쓰기에서 계속",
+    "permission__pricing_hook__context_menu__title": "무제한 AI 리라이터 잠금 해제",
+    "permission__pricing_hook__context_menu__description": "MaxAI의 AI 리라이터로 웹 전체에서 이메일부터 소셜 미디어까지 단어를 교정하고 완벽하게 하는 데 시간을 절약할 수 있습니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

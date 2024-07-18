@@ -135,7 +135,7 @@ const ThirdPartAIProviderConfirmDialog: FC<
           overflowY: 'auto',
         }}
       >
-        <Stack direction={'row'} spacing={1} alignItems="center">
+        <Stack direction={'row'} spacing={1} alignItems='center'>
           <NotificationImportantOutlinedIcon
             sx={{
               color: 'rgba(219, 68, 55, 1)',
@@ -168,7 +168,7 @@ const ThirdPartAIProviderConfirmDialog: FC<
 
         <ThirdPartyAIProviderRecommendations />
 
-        <Stack direction={'row'} spacing={1} alignItems="center">
+        <Stack direction={'row'} spacing={1} alignItems='center'>
           <ChatOutlinedIcon
             sx={{
               color: 'rgba(66, 133, 244, 1)',

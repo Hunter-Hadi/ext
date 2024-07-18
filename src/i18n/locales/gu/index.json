@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "AIમાં રિવ્રાઇટ કરો",
     "home_view__rewrite__title": "AI રિવ્રાઇટર",
     "home_view__rewrite__description": "તમારા શબ્દોને પ્રૂફરીડ અને પરફેક્ટ કરવામાં સમય બચાવો.",
-    "context_window__chat_history__continue_in_rewrite__title": "રિવ્રાઇટમાં ચાલુ રાખો"
+    "context_window__chat_history__continue_in_rewrite__title": "રિવ્રાઇટમાં ચાલુ રાખો",
+    "permission__pricing_hook__context_menu__title": "અનલોક કરવા માટે અપગ્રેડ કરો અમર્યાદિત AI રીવ્રાઇટર",
+    "permission__pricing_hook__context_menu__description": "MaxAIના AI રીવ્રાઇટર સાથે, તમે સમય બચાવી શકો છો અને તમારા શબ્દોને પ્રુફરીડિંગ અને પરફેક્ટ કરવામાં સમય બચાવી શકો છો, જેને ઈમેઇલથી સોશિયલ મીડિયા અને અન્યા વેબ પર પ્રયોગ કરી શકો છો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

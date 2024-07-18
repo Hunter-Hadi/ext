@@ -1016,7 +1016,9 @@
     "sidebar__tabs__rewrite__tooltip": "Վերգրադարձեք AI-ում",
     "home_view__rewrite__title": "AI-ի վերգրադարձիչ",
     "home_view__rewrite__description": "Ժամանակ պահպանեք ստուգումների վերականգնում և ձեր բառերը համբուրելու վրա:",
-    "context_window__chat_history__continue_in_rewrite__title": "Շարունակեք վերգրադարձում"
+    "context_window__chat_history__continue_in_rewrite__title": "Շարունակեք վերգրադարձում",
+    "permission__pricing_hook__context_menu__title": "Բարեւ, բարեւազգին՝ արտահայտելու անսահմանափակ AI վերագրողը",
+    "permission__pricing_hook__context_menu__description": "MaxAI-ի AI վերագրողի հետ, դուք կարող եք պահպանել ժամանակ վերագրելու և ձեռքբերելու ձևաչափը ձեր բառերի վրա առանց սխալների, սկսած էլ. փոստից սոցիալ մեդիային ցանցին մինչև:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

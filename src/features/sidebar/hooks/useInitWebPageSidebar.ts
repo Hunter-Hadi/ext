@@ -17,6 +17,7 @@ import { ClientConversationManager } from '@/features/indexed_db/conversations/C
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import useWindowFocus from '@/hooks/useWindowFocus'
 import { AppState } from '@/store'
 
 /**
@@ -178,8 +179,14 @@ const useInitWebPageSidebar = () => {
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
   const pageUrlRef = useRef('')
   const documentTitleRef = useRef('')
+  const windowFocus = useWindowFocus()
+  const isWindowFocusRef = useRef(windowFocus)
+  useEffect(() => {
+    isWindowFocusRef.current = windowFocus
+  }, [windowFocus])
   useEffect(() => {
     if (pageUrl && pageUrlRef.current !== pageUrl) {
+      console.log(`isWindowFocusRef`, isWindowFocusRef.current)
       const pageSummaryType = getPageSummaryType()
       if (
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
@@ -195,8 +202,10 @@ const useInitWebPageSidebar = () => {
       documentTitleRef.current = documentTitle
       resetPageSummary()
       if (
-        pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
-        pageSummaryType === 'PDF_CRX_SUMMARY'
+        (isWindowFocusRef.current =
+          windowFocus &&
+          (pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
+            pageSummaryType === 'PDF_CRX_SUMMARY'))
       ) {
         if (pageConversationTypeRef.current !== 'Summary') {
           updateSidebarConversationType('Summary')

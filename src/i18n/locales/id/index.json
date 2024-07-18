@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Rewrite di AI",
     "home_view__rewrite__title": "Pengubah AI",
     "home_view__rewrite__description": "hemat waktu dalam memeriksa dan menyempurnakan kata-kata Anda.",
-    "context_window__chat_history__continue_in_rewrite__title": "Lanjutkan dalam rewrite"
+    "context_window__chat_history__continue_in_rewrite__title": "Lanjutkan dalam rewrite",
+    "permission__pricing_hook__context_menu__title": "Tingkatkan untuk membuka pengubah AI tanpa batas",
+    "permission__pricing_hook__context_menu__description": "Dengan pengubah AI MaxAI, Anda dapat menghemat waktu dalam memeriksa ulang dan menyempurnakan kata-kata Anda di seluruh web, dari email hingga media sosial dan sebagainya."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

@@ -4,7 +4,8 @@ import countBy from 'lodash-es/countBy'
 import maxBy from 'lodash-es/maxBy'
 
 function removeMarkdownImageAndLinks(markdownText: string): string {
-  const regex = /(?=\[(!\[.+?\]\(.+?\)|.+?)]\(((https?:\/\/|data:image)[^)]+)\))/gi
+  const regex =
+    /(?=\[(!\[.+?\]\(.+?\)|.+?)]\(((https?:\/\/|data:image)[^)]+)\))/gi
   const links = [...markdownText.matchAll(regex)].map((m) => ({
     text: m[1],
     link: m[2],

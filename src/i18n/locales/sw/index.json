@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Geuza kwa AI",
     "home_view__rewrite__title": "Mgeuzaji wa AI",
     "home_view__rewrite__description": "Hifadhi muda kwa kuhariri na kuboresha maneno yako.",
-    "context_window__chat_history__continue_in_rewrite__title": "Endelea katika kugeuza"
+    "context_window__chat_history__continue_in_rewrite__title": "Endelea katika kugeuza",
+    "permission__pricing_hook__context_menu__title": "Boresha ili kufungua mzunguko usio na kikomo wa AI mpya",
+    "permission__pricing_hook__context_menu__description": "Na AI mpya ya MaxAI, unaweza kuokoa muda kwenye kuhariri na kuboresha maneno yako kote kwenye wavuti, kutoka barua pepe hadi mitandao ya kijamii na zaidi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

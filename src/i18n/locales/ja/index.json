@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "AIで書き換え",
     "home_view__rewrite__title": "AIリライター",
     "home_view__rewrite__description": "校正や言葉を完璧にするのに時間を節約します。",
-    "context_window__chat_history__continue_in_rewrite__title": "書き換えで続行"
+    "context_window__chat_history__continue_in_rewrite__title": "書き換えで続行",
+    "permission__pricing_hook__context_menu__title": "無制限のAIリライターをアンロックするにはアップグレードしてください",
+    "permission__pricing_hook__context_menu__description": "MaxAIのAIリライターを使用すると、電子メールからソーシャルメディアまで、ウェブ全体で単語を校正し、完璧にする時間を節約できます。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

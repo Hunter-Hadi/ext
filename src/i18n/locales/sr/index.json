@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Prepiši uz pomoć veštačke inteligencije",
     "home_view__rewrite__title": "Veštački prepravljač",
     "home_view__rewrite__description": "Uštedite vreme na ispravljanju i usavršavanju svojih reči.",
-    "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepravljanju"
+    "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepravljanju",
+    "permission__pricing_hook__context_menu__title": "Nadogradite da otključate neograničeni AI prepravljač",
+    "permission__pricing_hook__context_menu__description": "Sa MaxAI AI prepravljačem, možete uštedeti vreme na proveri i usavršavanju vaših reči širom weba, od e-pošte do društvenih medija i dalje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

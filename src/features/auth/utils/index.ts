@@ -6,11 +6,13 @@ import Browser from 'webextension-polyfill'
 import {
   APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY,
   CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY,
 } from '@/constants'
 import { PAYING_USER_ROLE_NAME } from '@/features/auth/constants'
 import {
   IUseChatGPTUserInfo,
+  IUserFeatureQuotaInfo,
   IUserPlanNameType,
   IUserQuotaUsageInfo,
   IUserRole,
@@ -158,6 +160,132 @@ export const getMaxAIChromeExtensionUserQuotaUsage = async (
   } catch (error) {
     return undefined
   }
+}
+
+// 这么写主要是为了防止重复请求，因为现在多个app focus会调用此方法，此方法会重复请求
+let fetchUserFeatureQuotaPromise: Promise<IUserFeatureQuotaInfo> | null = null
+/**
+ * 获取用户 feature quota 使用量以及每日上限
+ * @param forceUpdate
+ */
+export const getMaxAIChromeExtensionUserFeatureQuota = async (
+  forceUpdate?: boolean,
+): Promise<IUserFeatureQuotaInfo> => {
+  return new Promise((resolve) => {
+    if (!fetchUserFeatureQuotaPromise) {
+      fetchUserFeatureQuotaPromise = new Promise<IUserFeatureQuotaInfo>(
+        // eslint-disable-next-line no-async-promise-executor
+        async (resolve) => {
+          const userFeatureQuotaInfo: IUserFeatureQuotaInfo = {
+            summarizePageMaxCnt: 0,
+            summarizePDFMaxCnt: 0,
+            summarizeYoutubeMaxCnt: 0,
+            contextMenuMaxCnt: 100,
+            searchMaxCnt: 0,
+            instantReplyMaxCnt: 0,
+            checkTime: '',
+            refreshTime: '',
+            summarizePageUsage: 0,
+            summarizePDFUsage: 0,
+            summarizeYoutubeUsage: 0,
+            contextMenuUsage: 0,
+            searchUsage: 0,
+            instantReplyUsage: 0,
+          }
+          try {
+            const cache = await Browser.storage.local.get(
+              CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY,
+            )
+            if (
+              cache[CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]
+            ) {
+              Object.assign(
+                userFeatureQuotaInfo,
+                cache[
+                  CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY
+                ],
+              )
+              let isUpdated = false
+              if (
+                forceUpdate ||
+                !userFeatureQuotaInfo.checkTime ||
+                !dayjs().isSame(dayjs(userFeatureQuotaInfo.checkTime), 'day')
+              ) {
+                const responseData = await fetchUserFeatureQuotaInfo()
+                Object.assign(userFeatureQuotaInfo, responseData)
+                isUpdated = !!responseData
+              }
+              if (isUpdated) {
+                await Browser.storage.local.set({
+                  [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]:
+                    {
+                      ...cache[
+                        CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY
+                      ],
+                      ...userFeatureQuotaInfo,
+                    },
+                })
+              }
+            } else {
+              // 如果没有缓存数据，直接fetch
+              const responseData = await fetchUserFeatureQuotaInfo()
+              Object.assign(userFeatureQuotaInfo, responseData)
+              await Browser.storage.local.set({
+                [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]:
+                  userFeatureQuotaInfo,
+              })
+            }
+          } catch (error) {
+            console.error(error)
+          }
+          // 每日刷新用量
+          if (
+            !userFeatureQuotaInfo.refreshTime ||
+            !dayjs().isSame(dayjs(userFeatureQuotaInfo.refreshTime), 'day')
+          ) {
+            Object.assign(userFeatureQuotaInfo, {
+              refreshTime: new Date().toISOString(),
+              summarizePageUsage: 0,
+              summarizePDFUsage: 0,
+              summarizeYoutubeUsage: 0,
+              contextMenuUsage: 0,
+              searchUsage: 0,
+              instantReplyUsage: 0,
+            })
+            await Browser.storage.local.set({
+              [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]:
+                userFeatureQuotaInfo,
+            })
+          }
+          resolve(userFeatureQuotaInfo)
+        },
+      ).finally(() => {
+        fetchUserFeatureQuotaPromise = null
+      })
+    }
+    fetchUserFeatureQuotaPromise.then((result) => {
+      resolve(result)
+      return result
+    })
+  })
+}
+
+/**
+ * 修改用户 feature quota 每日用量
+ * @param key
+ * @param value
+ */
+export const setMaxAIChromeExtensionUserFeatureUsage = async (
+  key: keyof IUserFeatureQuotaInfo,
+  value: number | string,
+) => {
+  const data = await getMaxAIChromeExtensionUserFeatureQuota(false)
+  await Browser.storage.local.set({
+    [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]: {
+      ...data,
+      [key]: value,
+    },
+  })
 }
 
 /**
@@ -383,6 +511,42 @@ export const fetchUserQuotaUsageInfo = async (): Promise<
   }
 }
 
+/**
+ * 获取用户 各个功能的每日quota使用上限
+ */
+export const fetchUserFeatureQuotaInfo = async (): Promise<
+  Partial<IUserFeatureQuotaInfo> | undefined
+> => {
+  try {
+    const token = await getMaxAIChromeExtensionAccessToken()
+    if (!token) {
+      return undefined
+    }
+    const response = await maxAIClientSafeFetch(
+      `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_feature_quota`,
+      {},
+    )
+    if (response.ok) {
+      const result = await response.json()
+      if (result.status === 'OK' && result?.msg === 'success') {
+        const data = result.data
+        return {
+          summarizePageMaxCnt: data.SUMMARIZE_PAGE_REQUEST_MAX_CNT,
+          summarizePDFMaxCnt: data.SUMMARIZE_PDF_REQUEST_MAX_CNT,
+          summarizeYoutubeMaxCnt: data.SUMMARIZE_YOUTUBE_VIDEO_REQUEST_MAX_CNT,
+          contextMenuMaxCnt: data.CONTEXT_MENU_REQUEST_MAX_CNT,
+          searchMaxCnt: data.SEARCH_REQUEST_MAX_CNT,
+          instantReplyMaxCnt: data.INSTANT_REPLY_REQUEST_MAX_CNT,
+          checkTime: new Date().toISOString(),
+        }
+      }
+    }
+    return undefined
+  } catch (e) {
+    return undefined
+  }
+}
+
 export const checkIsPayingUser = (
   userRoleName: IUserRoleType | null | undefined,
 ): boolean => {
@@ -395,6 +559,7 @@ export const getCurrentUserLogInfo = async () => {
   // guest 代表未登录的用户
   const currentRole = userInfo?.role?.name ?? 'guest'
   let currentPlan = userInfo?.role?.subscription_plan_name ?? 'GUEST' // 由于后端返回的值都是大写的，这里统一大写
+  const freeTrialVersion = userInfo?.user_status?.register_version ?? ''
 
   // 但是当用户为 free 时，后端返回的 subscription_plan_name 为 null
   // 所以这里需要处理，currentPlan === 'GUEST' && currentRole === 'free' 的情况
@@ -410,6 +575,7 @@ export const getCurrentUserLogInfo = async () => {
   return {
     currentPlan,
     currentRole,
+    freeTrialVersion,
   }
 }
 

@@ -1,9 +1,3 @@
-type WFMathOperation = (
-  '+'
-  | '-'
-  | '×'
-  | '÷'
-  | '…'
-);
+type WFMathOperation = '+' | '-' | '×' | '÷' | '…'
 
-export default WFMathOperation;
+export default WFMathOperation

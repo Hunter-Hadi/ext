@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "എയി ഉപയോഗിച്ച് പുനരരചിക്കുക",
     "home_view__rewrite__title": "എയി പുനരരചകന്‍",
     "home_view__rewrite__description": "നിങ്ങളുടെ വാക്കുകളെ പ്രൂഫ്റീഡ് ചെയ്യാനും പെര്‍ഫെക്ട് ചെയ്യാനും സമയം സേവ് ചെയ്യുക.",
-    "context_window__chat_history__continue_in_rewrite__title": "പുനരരചിക്കില്‍ തുടരുക"
+    "context_window__chat_history__continue_in_rewrite__title": "പുനരരചിക്കില്‍ തുടരുക",
+    "permission__pricing_hook__context_menu__title": "അപ്‌ഗ്രേഡ് ചെയ്യുക, അപരിമിതമായ AI റീവ്രൈറുകൾ അൺ‌ലോക്ക് ചെയ്യാൻ",
+    "permission__pricing_hook__context_menu__description": "മാക്‌സ്‌എയിയുടെ AI റീവ്രൈറ്റെന്ന്, നിങ്ങളുടെ വാക്കുകൾ പ്രൂഫ്രീഡിംഗ് ചെയ്യാൻ സമയം സേവ് ചെയ്യാൻ കഴിയും, ഇമെയിൽ മുതലായവയിൽ നിന്നും സോഷ്യൽ മീഡിയയിലേക്കും നിന്നും നിങ്ങളുടെ വാക്കുകൾ പെർഫെക്ട് ചെയ്യാൻ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

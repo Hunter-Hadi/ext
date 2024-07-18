@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "Prepísať v AI",
     "home_view__rewrite__title": "AI prepisovač",
     "home_view__rewrite__description": "Ušetrite čas pri korektúre a zdokonaľovaní vašich slov.",
-    "context_window__chat_history__continue_in_rewrite__title": "Pokračovať v prepise"
+    "context_window__chat_history__continue_in_rewrite__title": "Pokračovať v prepise",
+    "permission__pricing_hook__context_menu__title": "Aktualizujte pre odomknutie neobmedzeného AI prepracovávača",
+    "permission__pricing_hook__context_menu__description": "S AI prepracovávačom MaxAI môžete ušetriť čas pri korektúre a dokonalosti vašich slov na webe, od e-mailu po sociálne médiá a ďalej."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

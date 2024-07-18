@@ -329,6 +329,8 @@ const generateTrackParams = async (
       paywallName = 'SUMMARY'
     } else if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
       paywallName = 'SEARCH'
+    } else if (sceneType === 'CONTEXT_MENU') {
+      paywallName = 'CONTEXT_MENU'
     } else if (sceneType.startsWith('SEARCH_WITH_AI_')) {
       paywallName = 'SEARCH_WITH_AI'
     } else if (sceneType.includes('PROACTIVE_UPGRADE')) {
@@ -372,6 +374,8 @@ const generateTrackParams = async (
         suffix = `summary`
       } else if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
         suffix = `search`
+      } else if (sceneType === 'CONTEXT_MENU') {
+        suffix = `context_menu`
       } else if (sceneType.includes('IMAGE_GENERATE_MODEL')) {
         suffix = `art`
       } else if (propConversationType) {

@@ -4,7 +4,7 @@ import { AlertProps } from '@mui/material/Alert/Alert'
 import Collapse from '@mui/material/Collapse'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
-import React, { FC, PropsWithChildren,useEffect, useState } from 'react'
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react'
 
 const CloseAlert: FC<PropsWithChildren<AlertProps>> = (props) => {
   const { sx, ...rest } = props
@@ -31,21 +31,21 @@ const CloseAlert: FC<PropsWithChildren<AlertProps>> = (props) => {
       >
         <Alert
           sx={sx}
-          severity="info"
+          severity='info'
           {...rest}
           action={
             props.action ? (
               props.action
             ) : (
               <IconButton
-                aria-label="close"
-                color="inherit"
-                size="small"
+                aria-label='close'
+                color='inherit'
+                size='small'
                 onClick={() => {
                   setOpen(false)
                 }}
               >
-                <CloseIcon fontSize="inherit" />
+                <CloseIcon fontSize='inherit' />
               </IconButton>
             )
           }

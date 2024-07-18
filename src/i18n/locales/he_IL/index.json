@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "כתוב מחדש באמצעות המודע",
     "home_view__rewrite__title": "מחדש מודע",
     "home_view__rewrite__description": "חסוך זמן בעריכה ובשיפור המילים שלך.",
-    "context_window__chat_history__continue_in_rewrite__title": "המשך במחדש"
+    "context_window__chat_history__continue_in_rewrite__title": "המשך במחדש",
+    "permission__pricing_hook__context_menu__title": "שדרג כדי לפתוח את מחדל הכתיבה האוטומטית הבלתי מוגבלת",
+    "permission__pricing_hook__context_menu__description": "עם מחדל הכתיבה האוטומטית של MaxAI, תוכל לחסוך זמן בבדיקת התקינות והשלמת המילים שלך ברחבי הרשת, מדואר אלקטרוני ועד לרשתות חברתיות ומעבר."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

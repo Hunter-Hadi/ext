@@ -1011,14 +1011,16 @@
     "pricing__upgrade__popper_card__item3__title": "فتح جميع الميزات",
     "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. لفتح جميع النماذج الأخرى للذكاء الاصطناعي، قم بالترقية إلى خطة MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "أفضل قيمة لأموالك",
+    "permission__pricing_hook__context_menu__title": "الترقية لفتح محرر الذكاء الاصطناعي غير المحدود",
+    "permission__pricing_hook__context_menu__description": "مع محرر الذكاء الاصطناعي لـ MaxAI، يمكنك توفير الوقت في التدقيق وتحسين كلماتك عبر الويب، من البريد الإلكتروني إلى وسائل التواصل الاجتماعي وأكثر من ذلك.",
     "floating_menu__button__show_detail": "عرض التفاصيل",
-    "floating_menu__textarea__placeholder": "اكتب أو الصق نصك هنا واسأل الذكاء الاصطناعي لتحسينه، والتدقيق اللغوي، والترجمة، والتلخيص، والمزيد.",
+    "floating_menu__textarea__placeholder": "اكتب أو الصق نصك هنا واسأل الذكاء الاصطناعي لتحسينه، تدقيقه، ترجمته، تلخيصه، والمزيد.",
     "floating_menu__always_pin_sidebar_title": "تثبيت دائمًا في الشريط الجانبي",
     "floating_menu__always_continue_sidebar_title": "الاستمرار دائمًا في الشريط الجانبي",
     "sidebar__tabs__rewrite__title": "إعادة صياغة",
     "sidebar__tabs__rewrite__tooltip": "إعادة صياغة بواسطة الذكاء الاصطناعي",
     "home_view__rewrite__title": "معاد صياغة الذكاء الاصطناعي",
-    "home_view__rewrite__description": "وفر الوقت في التدقيق اللغوي وتحسين كلماتك.",
+    "home_view__rewrite__description": "وفر الوقت في التدقيق وتحسين كلماتك.",
     "context_window__chat_history__continue_in_rewrite__title": "الاستمرار في إعادة الصياغة"
   },
   "prompt": {

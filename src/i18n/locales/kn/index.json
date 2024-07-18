@@ -1019,7 +1019,9 @@
     "sidebar__tabs__rewrite__tooltip": "AI ನಲ್ಲಿ ಮರುವರ್ಣನೆ",
     "home_view__rewrite__title": "AI ಮರುವರ್ಣಕಾರ",
     "home_view__rewrite__description": "ನಿಮ್ಮ ಪದಗಳನ್ನು ಪ್ರೂಫ್ರೀಡ್ ಮಾಡುವುದು ಮತ್ತು ಸರಿಪಡಿಸುವುದರಲ್ಲಿ ಸಮಯ ಉಳಿಸಿ.",
-    "context_window__chat_history__continue_in_rewrite__title": "ಮರುವರ್ಣನೆಯಲ್ಲಿ ಮುಂದುವರಿಯಿರಿ"
+    "context_window__chat_history__continue_in_rewrite__title": "ಮರುವರ್ಣನೆಯಲ್ಲಿ ಮುಂದುವರಿಯಿರಿ",
+    "permission__pricing_hook__context_menu__title": "ಅನಿಮಿತ ಎಯಿ ರಿವ್ರೈಟರ್ ಅನ್ಲಾಕ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__context_menu__description": "ಮ್ಯಾಕ್ಸ್ಎಯಿ ಎಯಿ ರಿವ್ರೈಟರ್ ನೊಂದಿಗೆ, ನೀವು ಇಮೇಲ್ ನುಂಡಿ ಸೋಷಿಯಲ್ ಮೀಡಿಯಾ ವರೆಗೆ ನಿಮ್ಮ ಪದಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸುವುದರಲ್ಲಿ ಸಮಯವನ್ನು ಉಳಿಸಬಹುದು ಮತ್ತು ಸವರಿಸುವುದಲ್ಲಿ ಸಹಾಯ ಮಾಡಬಹುದು."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

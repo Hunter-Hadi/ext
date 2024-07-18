@@ -122,25 +122,25 @@ const VariableFormModel: FC<IProps> = (props) => {
         }}
       >
         <Stack spacing={2}>
-          <Typography fontSize="20px" fontWeight={600} color="text.primary">
+          <Typography fontSize='20px' fontWeight={600} color='text.primary'>
             {type === 'add'
               ? t('prompt_editor:add_variable__title')
               : t('prompt_editor:add_variable__update__title')}
           </Typography>
 
-          <FormControl size="small" variant="standard" fullWidth>
+          <FormControl size='small' variant='standard' fullWidth>
             <Stack spacing={1}>
               <FormLabel>
                 <Typography variant={'body1'}>
                   {t('prompt_editor:add_variable__variable_name__title')}
-                  <span style={{ color: 'red' }}>{' '}*</span>
+                  <span style={{ color: 'red' }}> *</span>
                 </Typography>
               </FormLabel>
 
               <TextField
                 {...labelRegisterForm}
                 autoFocus
-                size="small"
+                size='small'
                 onKeyPress={handleVariableKeyPress}
                 placeholder={t(
                   'prompt_editor:add_variable__variable_name__placeholder',
@@ -157,7 +157,7 @@ const VariableFormModel: FC<IProps> = (props) => {
             </Stack>
           </FormControl>
 
-          <FormControl size="small" variant="standard" fullWidth>
+          <FormControl size='small' variant='standard' fullWidth>
             <Stack spacing={1}>
               <FormLabel>
                 <Typography variant={'body1'}>
@@ -167,7 +167,7 @@ const VariableFormModel: FC<IProps> = (props) => {
 
               <TextField
                 {...placeholderRegisterForm}
-                size="small"
+                size='small'
                 onKeyPress={handleVariableKeyPress}
                 placeholder={t(
                   'prompt_editor:add_variable__variable_placeholder__placeholder',
@@ -177,11 +177,11 @@ const VariableFormModel: FC<IProps> = (props) => {
             </Stack>
           </FormControl>
 
-          <Stack direction="row" spacing={1} justifyContent="end">
-            <Button variant="outlined" onClick={onClose}>
+          <Stack direction='row' spacing={1} justifyContent='end'>
+            <Button variant='outlined' onClick={onClose}>
               {t('prompt_editor:add_variable__cancel_button__title')}
             </Button>
-            <Button variant="contained" onClick={handleSubmit}>
+            <Button variant='contained' onClick={handleSubmit}>
               {type === 'add'
                 ? t('prompt_editor:add_variable__add_button__title')
                 : t('prompt_editor:add_variable__update_button__title')}

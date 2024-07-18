@@ -12,9 +12,8 @@ const PromptLibraryHandlerState = atom<{
     authHandler: () => Promise.resolve(),
     maxAIChromeExtensionInstallHandler: () => {
       // 检测逻辑
-      const chromeExtensionInstalled = document.getElementById(
-        MAXAI_APP_ROOT_ID,
-      )
+      const chromeExtensionInstalled =
+        document.getElementById(MAXAI_APP_ROOT_ID)
       if (chromeExtensionInstalled) {
         return Promise.resolve(true)
       }
@@ -27,10 +26,8 @@ const PromptLibraryHandlerState = atom<{
  * @description: 用于处理 prompt library 的鉴权
  */
 const usePromptLibraryAuth = () => {
-  const [
-    promptLibraryAuthHandler,
-    setPromptLibraryAuthHandler,
-  ] = useRecoilState(PromptLibraryHandlerState)
+  const [promptLibraryAuthHandler, setPromptLibraryAuthHandler] =
+    useRecoilState(PromptLibraryHandlerState)
   const authState = useAuthLogin()
   const isLogin = authState.isLogin
   const checkAuthAsync = async () => {

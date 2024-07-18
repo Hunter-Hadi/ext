@@ -51,7 +51,7 @@ const usePlanPricingInfo = () => {
 
   // 注意接口里的elite_monthly要转换为elite，前端目前monthly的类型没有后缀
   const fetchPlanPricing = useCallback(async () => {
-    if (Date.now() - fetchTime < 10000) return
+    if (Date.now() - fetchTime < 15000) return
     fetchTime = Date.now()
     setPlanPricingInfo((prev) => ({
       ...prev,

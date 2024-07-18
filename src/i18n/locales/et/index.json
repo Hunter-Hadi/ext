@@ -1011,15 +1011,17 @@
     "pricing__upgrade__popper_card__item3__title": "Avage kõik funktsioonid",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Ainult GPT-4o. Kõigi teiste AI mudelite avamiseks uuenda MaxAI Elite plaani.",
     "pricing__upgrade__popper_card__item4__title": "Parim väärtus teie raha eest",
+    "permission__pricing_hook__context_menu__title": "Tõsta esile, et avada piiramatu AI ümberkirjutaja",
+    "permission__pricing_hook__context_menu__description": "MaxAI AI ümberkirjutajaga saate aega säästa tekstide toimetamisel ja täiustamisel veebis, alates e-kirjadest sotsiaalmeediani ja veel kaugemale.",
     "floating_menu__button__show_detail": "Kuva detailid",
-    "floating_menu__textarea__placeholder": "Tippige või kleepige siia oma tekst ja küsige AI-lt parendamiseks, toimetamiseks, tõlkimiseks, kokkuvõtteks ja muuks.",
-    "floating_menu__always_pin_sidebar_title": "Alati kinnita küljeribale",
-    "floating_menu__always_continue_sidebar_title": "Alati jätkake küljeribal",
-    "sidebar__tabs__rewrite__title": "Ümberkirjutamine",
-    "sidebar__tabs__rewrite__tooltip": "Ümberkirjutamine AI-s",
+    "floating_menu__textarea__placeholder": "Tippige või kleepige siia oma tekst ja paluge AI-l seda parandada, toimetada, tõlkida, kokku võtta ja muud.",
+    "floating_menu__always_pin_sidebar_title": "Alati kinnita küljeriba külge",
+    "floating_menu__always_continue_sidebar_title": "Jätka alati küljeribas",
+    "sidebar__tabs__rewrite__title": "Ümberkirjutus",
+    "sidebar__tabs__rewrite__tooltip": "Ümberkirjutus AI-s",
     "home_view__rewrite__title": "AI ümberkirjutaja",
     "home_view__rewrite__description": "Säästke aega tekstide toimetamisel ja täiustamisel.",
-    "context_window__chat_history__continue_in_rewrite__title": "Jätkake ümberkirjutamises"
+    "context_window__chat_history__continue_in_rewrite__title": "Jätka ümberkirjutuses"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

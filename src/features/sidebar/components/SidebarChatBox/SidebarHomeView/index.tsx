@@ -74,6 +74,7 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
             <ContextMenuIcon
               icon='Rewrite'
               sx={{
+                color: 'rgb(144, 101, 176)',
                 fontSize: '40px',
                 marginBottom: '12px',
               }}

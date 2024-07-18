@@ -82,7 +82,7 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
-import { SxProps } from '@mui/material/styles'
+import { SxProps, Theme } from '@mui/material/styles'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 import React, { FC, useMemo } from 'react'
 
@@ -188,7 +188,7 @@ export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
   icon: IContextMenuIconKey | string
   size?: number
-  sx?: SxProps
+  sx?: SxProps<Theme>
 }> = (props) => {
   const { icon, size = 16, sx } = props
   const sxMemo = useMemo(

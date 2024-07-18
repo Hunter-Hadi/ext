@@ -17,7 +17,6 @@ export const defaultChromeExtensionDBStorage =
   (): IChromeExtensionDBStorage => {
     return {
       userSettings: {
-        preferredLanguage: 'en',
         chatGPTStableModeDuration: 30,
         colorSchema: 'auto',
         language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
@@ -112,6 +111,7 @@ export const defaultChromeExtensionDBStorage =
           contextMenuPosition: 'start',
         },
       },
+      alwaysContinueInSidebar: false,
     }
   }
 export const getChromeExtensionDBStorage =

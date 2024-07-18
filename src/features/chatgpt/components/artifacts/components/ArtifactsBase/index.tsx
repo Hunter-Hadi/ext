@@ -169,9 +169,7 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
             artifacts={artifacts}
           />
         )}
-        {mode === 'code' && (
-          <ArtifactsCodeBlock lang={'html'} code={artifacts.content} />
-        )}
+        {mode === 'code' && <ArtifactsCodeBlock artifacts={artifacts} />}
       </Stack>
     </Paper>
   )

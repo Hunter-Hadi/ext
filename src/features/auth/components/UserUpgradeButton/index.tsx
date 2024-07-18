@@ -21,6 +21,7 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import PlanFeatures from '@/features/pricing/components/PlanFeatures'
+import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { getMaxAISidebarRootElement } from '@/utils'
 
 const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
@@ -29,6 +30,7 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
   const { currentConversationId, currentSidebarConversationType } =
     useClientConversation()
   const { abTestInfo } = useUserABTestInfo()
+  const { planPricingInfo } = usePlanPricingInfo()
   const { paywallVariant } = abTestInfo
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
@@ -182,7 +184,9 @@ const UserUpgradeButton: FC<{ sx?: SxProps }> = ({ sx }) => {
             }}
           >
             <Typography fontSize={16} fontWeight={500} lineHeight={1}>
-              {t('client:sidebar__user_upgrade_card__discount__title')}
+              {t('client:sidebar__user_upgrade_card__discount__title', {
+                DISCOUNT: planPricingInfo.elite_yearly.discount_title,
+              })}
             </Typography>
           </Box>
         </Box>

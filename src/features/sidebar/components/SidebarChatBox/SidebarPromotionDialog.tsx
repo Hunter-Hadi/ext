@@ -18,12 +18,14 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
 import { mixpanelTrack } from '@/features/mixpanel/utils'
+import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 dayjs.extend(utc)
 
 const SidebarPromotionDialog = () => {
   const { t } = useTranslation(['client'])
   const { browserAgent } = useBrowserAgent()
   const { userInfo, isPayingUser } = useUserInfo()
+  const { planPricingInfo } = usePlanPricingInfo()
 
   const [open, setOpen] = useState(false)
 
@@ -273,7 +275,9 @@ const SidebarPromotionDialog = () => {
                 }}
               >
                 <Typography fontSize={16} fontWeight={500} lineHeight={1}>
-                  {t('client:sidebar__promotion_dialog__discount__title')}
+                  {t('client:sidebar__promotion_dialog__discount__title', {
+                    DISCOUNT: planPricingInfo.elite_yearly.discount_title,
+                  })}
                 </Typography>
               </Box>
             </>

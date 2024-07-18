@@ -1,5 +1,5 @@
 import isNumber from 'lodash-es/isNumber'
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { isProdAPI } from '@/constants'
@@ -40,15 +40,6 @@ let fetchData: Record<string, any> = {}
 const usePlanPricingInfo = () => {
   const [planPricingInfo, setPlanPricingInfo] =
     useRecoilState(PlanPricingInfoAtom)
-
-  useEffect(() => {
-    setPlanPricingInfo((prev) => {
-      return {
-        ...prev,
-        data: mergeWithObject([prev.data, fetchData]),
-      }
-    })
-  }, [])
 
   // 注意接口里的elite_monthly要转换为elite，前端目前monthly的类型没有后缀
   const fetchPlanPricing = useCallback(async () => {
@@ -125,18 +116,16 @@ const usePlanPricingInfo = () => {
   }, [planPricingInfo.data])
 
   const pricingInfoData = useMemo(() => {
-    return (Object.keys(planPricingInfo.data) as RENDER_PLAN_TYPE[]).reduce(
-      (acc, key) => {
-        acc[key] = {
-          ...planPricingInfo.data[key],
-          price_id: isProdAPI
-            ? planPricingInfo.data[key].price_id
-            : planPricingInfo.data[key].dev_price_id,
-        }
-        return acc
-      },
-      {} as typeof planPricingInfo.data,
-    )
+    const mergeInfo = mergeWithObject([planPricingInfo.data, fetchData])
+    return (Object.keys(mergeInfo) as RENDER_PLAN_TYPE[]).reduce((acc, key) => {
+      acc[key] = {
+        ...mergeInfo[key],
+        price_id: isProdAPI
+          ? mergeInfo[key].price_id
+          : mergeInfo[key].dev_price_id,
+      }
+      return acc
+    }, {} as typeof planPricingInfo.data)
   }, [planPricingInfo.data])
 
   console.log(pricingInfoData)

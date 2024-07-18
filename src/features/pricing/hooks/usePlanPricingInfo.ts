@@ -62,7 +62,7 @@ const usePlanPricingInfo = () => {
         '/app/get_subscription_pricing',
       )
       if (result?.data) {
-        const data = aesJsonDecrypt(result.data, 'MaxAI')
+        const data = aesJsonDecrypt(result.data)
         Object.keys(data).forEach((key) => {
           if (key.includes('monthly')) {
             data[`${key.replace('_monthly', '')}`] = data[key]

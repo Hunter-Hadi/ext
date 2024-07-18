@@ -282,7 +282,7 @@ export const DropdownMenuInternal = React.forwardRef<
     const currentFallbackPlacements =
       defaultFallbackPlacements ||
       (isFirstLevelDropdown
-        ? ['bottom-start', 'left', 'top-start', 'right']
+        ? ['bottom-start', 'left', 'left-end', 'top-start', 'right']
         : [
             'right',
             'right-start',

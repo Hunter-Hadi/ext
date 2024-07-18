@@ -76,14 +76,37 @@ const SidebarContextMenu: FC = () => {
       const menuItem = matcher.path[matcher.path.length - 1].item
       handleContextMenuClick(menuItem)
     } else if (inputValue.trim()) {
-      const template = `${inputValue}:\n"""\n${content}\n"""`
-      await askAIQuestion({
-        type: 'user',
-        text: template,
-        meta: {
-          includeHistory: true,
+      const template = `${inputValue}:\n"""\n{{SELECTED_TEXT}}\n"""`
+
+      await askAIQuestion(
+        {
+          type: 'user',
+          text: template,
+          meta: {
+            includeHistory: true,
+          },
         },
-      }).catch((err) => {
+        {
+          beforeActions: [
+            {
+              type: 'RENDER_TEMPLATE',
+              parameters: {
+                template: '{{POPUP_DRAFT}}',
+              },
+            },
+            {
+              type: 'SET_VARIABLE',
+              parameters: {
+                Variable: {
+                  key: 'SELECTED_TEXT',
+                  overwrite: true,
+                  value: content,
+                },
+              },
+            },
+          ],
+        },
+      ).catch((err) => {
         console.log('handleEnter error: ', err)
       })
     }
@@ -279,12 +302,12 @@ const SidebarContextMenu: FC = () => {
                     size={'tiny'}
                     onChange={() => {
                       // TODO:
-                      // if (!referenceElementRef.current) return
-                      //
-                      // referenceElementRef.current.style.marginLeft =
-                      //   referenceElementRef.current.style.marginLeft
-                      //     ? ''
-                      //     : '1px'
+                      if (!referenceElementRef.current) return
+
+                      referenceElementRef.current.style.marginLeft =
+                        referenceElementRef.current.style.marginLeft
+                          ? ''
+                          : '1px'
                     }}
                   />
                 }

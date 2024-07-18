@@ -16,10 +16,14 @@ export type IUploadDocumentType =
   | 'chat_file'
 
 export type IUploadDocumentEvent =
-  | 'document_create'
+  | 'document_create' // 这个事件必定会发生，数据库里创建记录
   | 'upload_to_s3'
   | 'embedding_done'
-  | 'upload_done'
+  | 'upload_to_es'
+  | 'upload_done' // 这事件必定会发生，上传流程结束
+  | 'upload_to_s3_failed'
+  | 'embedding_failed'
+  | 'upload_to_es_failed'
 
 /**
  * 上传document参数

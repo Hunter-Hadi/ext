@@ -61,6 +61,7 @@ export type TranscriptTimestampedParamType = {
 /**
  * @since 2024-03-17
  * @description youtube拿取时间文本TRANSCRIPT数据进行TIMESTAMPED
+ * @deprecated summary prompt后移，目前没有地方用到此action，可以删除
  */
 export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'

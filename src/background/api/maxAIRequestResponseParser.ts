@@ -4,6 +4,7 @@
  */
 
 import {
+  IMaxAIChatGPTBackendAPIType,
   IMaxAIChatGPTBackendBodyType,
   IMaxAIResponseStreamMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
@@ -86,8 +87,12 @@ export const maxAIRequestResponseStreamParser = (
   streamMessage: IMaxAIResponseStreamMessage | null,
   outputMessage: IMaxAIResponseOutputMessage,
   conversation?: IConversation,
-  postBody?: IMaxAIChatGPTBackendBodyType,
+  requestInfo?: {
+    backendAPI?: IMaxAIChatGPTBackendAPIType
+    postBody?: IMaxAIChatGPTBackendBodyType
+  },
 ): IMaxAIResponseParserMessage => {
+  const { backendAPI, postBody } = requestInfo || {}
   // if (streamMessage?.conversation_id) {}
   // 增强数据
   if (streamMessage?.streaming_status) {
@@ -107,16 +112,26 @@ export const maxAIRequestResponseStreamParser = (
         )
       }
       // youtube时间线总结，转成结构化数据，后端不方便转，前端先自行转换成timestamped结构化的内容
-      if (postBody?.summary_type === 'timestamped') {
+      if (
+        backendAPI === 'summary/v3/videosite' &&
+        postBody?.summary_type === 'timestamped'
+      ) {
         streamMessage.timestamped = formatTimestampedMarkdown(
           streamMessage.text,
         )
+        // if (streamMessage.streaming_status === 'in_progress' && streamMessage.timestamped.length) {
+        //   // 如果正在loading，删除最后一行，确保完整的一行输出完再展示
+        //   const last = streamMessage.timestamped[streamMessage.timestamped.length - 1]
+        //   if (!last.children.pop()) {
+        //     streamMessage.timestamped.pop()
+        //   }
+        // }
         delete streamMessage.text
         return maxAIRequestResponseStreamParser(
           streamMessage,
           outputMessage,
           conversation,
-          postBody,
+          requestInfo,
         )
       }
       if (streamMessage.need_merge) {
@@ -381,7 +396,10 @@ export const maxAIRequestResponseJsonParser = (
   responseData: IMaxAIResponseStreamMessage,
   outputMessage: IMaxAIResponseOutputMessage,
   conversation?: IConversation,
-  postBody?: IMaxAIChatGPTBackendBodyType,
+  requestInfo?: {
+    backendAPI?: IMaxAIChatGPTBackendAPIType
+    postBody?: IMaxAIChatGPTBackendBodyType
+  },
 ): IMaxAIResponseParserMessage => {
   return {
     type: 'message',
@@ -395,7 +413,7 @@ export const maxAIRequestResponseJsonParser = (
       },
       outputMessage,
       conversation,
-      postBody,
+      requestInfo,
     ).data,
   }
 }

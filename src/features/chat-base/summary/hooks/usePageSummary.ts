@@ -89,11 +89,14 @@ const usePageSummary = () => {
   )
   const { checkSummaryQuota } = useSummaryQuota()
 
+  const isGeneratingPageSummaryRef = useRef(false)
+
   useFocus(async () => {
     if (
       !appState.open ||
       currentSidebarConversationType !== 'Summary' ||
-      !sidebarSummaryConversationId
+      !sidebarSummaryConversationId ||
+      isGeneratingPageSummaryRef.current
     ) {
       return
     }
@@ -101,9 +104,17 @@ const usePageSummary = () => {
     if (Date.now() - checkDocTime < 1000 * 60 * 15) {
       return
     }
-    checkDocTime = Date.now()
+    const clientWritingMessage = await getWritingMessageState(
+      sidebarSummaryConversationId,
+    )
+    if (clientWritingMessage.loading) {
+      return
+    }
     const conversation = await getConversation(sidebarSummaryConversationId)
-    if (!conversation || !conversation.meta.pageSummary?.docId) return
+    if (!conversation?.meta?.pageSummary?.docId) {
+      return
+    }
+    checkDocTime = Date.now()
     if (!(await checkDocIdExist(conversation.meta.pageSummary.docId))) {
       // 重新上传doc
       showConversationLoading(sidebarSummaryConversationId)
@@ -123,7 +134,6 @@ const usePageSummary = () => {
     }
   })
 
-  const isGeneratingPageSummaryRef = useRef(false)
   const createPageSummary = async () => {
     if (isGeneratingPageSummaryRef.current) {
       return

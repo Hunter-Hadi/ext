@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "എല്ലാ സവിശേഷതകളും അൺലോക്ക് ചെയ്യുക",
     "sidebar__user_upgrade_card__item3__title": "പ്രതിദിനം മൂന്ന് മണിക്കൂറുകൾ സംരക്ഷിക്കുക",
     "sidebar__user_upgrade_card__learn_more__title": "കൂടുതൽ അറിയുക",
-    "sidebar__user_upgrade_card__discount__title": "ഇപ്പോൾ 53% സംരക്ഷിക്കുക",
+    "sidebar__user_upgrade_card__discount__title": "ഇപ്പോൾ {{DISCOUNT}} സേവ് ചെയ്യുക",
     "sidebar__user_upgrade_card__footer__title": "അടുത്ത പേജിലേക്ക് നിങ്ങൾക്ക് ചാർജ് ചെയ്യപ്പെടുന്നില്ല.",
     "sidebar__daily_limit__title": "നിങ്ങൾക്ക് ദിവസ എയ്‌ഐ ചോദ്യ പരിമിതി എത്തി. കൂടുതൽ സൗജന്യ എയ്‌ഐ ചോദ്യങ്ങൾ നാളെ ലഭ്യമാകും.",
     "sidebar__daily_limit__link__title": "ഇപ്പോൾ പെരുവഴിയാക്കാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ഏതെങ്കിലും ചിത്രത്തിലേക്ക് ചോദ്യം ചെയ്യുക, പ്രത്യുത്തരം എന്നിവയും ലഭിക്കുക.",
     "sidebar__promotion_dialog__vision__content_item3__description": "സ്ക്രീൻഷോട്ട് എടുക്കുകയും ഏതെങ്കിലും ചോദ്യങ്ങൾ താഴെ പറയുന്നത് ചോദിക്കുക.",
     "sidebar__promotion_dialog__vision__content_item4__description": "ഏറ്റവും മികച്ച എ.ഐ. മോഡലുകൾ പ്രവർത്തിപ്പിക്കുന്നു: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "ഇപ്പോൾ 53% സഞ്ചയം",
+    "sidebar__promotion_dialog__discount__title": "ഇപ്പോൾ {{DISCOUNT}} സേവ് ചെയ്യുക",
     "provider__chatgpt__upload_file_error__total_too_large__text": "അപ്‌ലോഡ് ചെയ്ത ഫയലുകൾ വളരെ പെട്ടന്നതാണ്. ദയവായി ഒരു പ്രമേയം ജനറേറ്റർ ഉപയോഗിച്ച് പുതിയ ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യുക.",
     "chat__user_message__contexts__file__preview__tips": "ഫോർമാറ്റിംഗ് ഉറപ്പാക്കാൻ ഉള്ള സ്രോതസ്സിൽ അനുസരിച്ച് അനന്യമായിരിക്കാം.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "ഏറ്റവും അടിസ്ഥാന എ.ഐ. ആർട്ട് മോഡലുകളുടെ സഹായത്തോടെ നിങ്ങളുടെ സൃഷ്ടികളെ 10 പരിമിതിക്കിടയിൽ വളരെ വേഗത്തിൽ അദ്വൈതമായ ചിത്രങ്ങളാക്കാൻ കഴിയും. സൃഷ്ടികളെ ഭാവനയിലേക്ക് വേഗത്തിൽ മാറ്റാൻ സാധിക്കുന്നത്. ലളിതം, ശക്തം, മാറ്റക്കാര്യകളുടെ പ്രവർത്തനം.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "കേവലം GPT-4o. മറ്റ് എല്ലാ AI മോഡലുകളും അൺലോക്ക് ചെയ്യാൻ, MaxAI എൽയ്റ്റ് പ്ലാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക.",
     "pricing__upgrade__popper_card__item4__title": "നിങ്ങളുടെ പണത്തിന് മികച്ച മൂല്യം",
     "permission__pricing_hook__context_menu__title": "അപ്‌ഗ്രേഡ് ചെയ്യുക, അപരിമിതമായ AI റീവ്രൈറുകൾ അൽലാക്ക് ചെയ്യാൻ",
-    "permission__pricing_hook__context_menu__description": "മാക്സ്‌എയിയുടെ AI റീവ്രൈറുംപിന്നെ, ഇമെയിൽ മുതലായ സോഷ്യൽ മീഡിയയിൽ നിന്നും വെബിൽ നിന്നും നിങ്ങളുടെ വാക്കുകൾ പരിപൂർണ്ണമാക്കാൻ നിങ്ങൾക്ക് സമയം സേവ് ചെയ്യാം."
+    "permission__pricing_hook__context_menu__description": "മാക്സ്‌എയിയുടെ AI റീവ്രൈറുംപിന്നെ, ഇമെയിൽ മുതലായ സോഷ്യൽ മീഡിയയിൽ നിന്നും വെബിൽ നിന്നും നിങ്ങളുടെ വാക്കുകൾ പരിപൂർണ്ണമാക്കാൻ നിങ്ങൾക്ക് സമയം സേവ് ചെയ്യാം.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini ഉപയോഗിക്കുക",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAIയുടെ പുതിയ മോഡൽ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo-കുറച്ചു തീവ്രമായി",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-ടൂർബോ പുരോഗതിയുള്ളത്",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "ടെക്സ്റ്റും വിസ്യന്‍ കഴിയാത്തത് പിന്തുണ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "പെരുവഴിയിലെ ബഹുഭാഷാ പരിജ്ഞാനം"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

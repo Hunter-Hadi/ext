@@ -40,7 +40,7 @@ const SidebarPromotionDialog = () => {
   const handlePricingClick = () => {
     mixpanelTrack('update_modal_clicked', {
       testFeature: 'extensionUpdateModal',
-      testVersion: `2-${updateVariant}`,
+      testVersion: `4-${updateVariant}`,
       buttonType: 'pricing',
     })
     handleClose()
@@ -51,7 +51,7 @@ const SidebarPromotionDialog = () => {
     if (updateVariantTemplate.learnMoreLink) {
       mixpanelTrack('update_modal_clicked', {
         testFeature: 'extensionUpdateModal',
-        testVersion: `2-${updateVariant}`,
+        testVersion: `4-${updateVariant}`,
         buttonType: 'learn_more',
       })
       handleClose()
@@ -112,7 +112,7 @@ const SidebarPromotionDialog = () => {
         setOpen(true)
         mixpanelTrack('update_modal_showed', {
           testFeature: 'extensionUpdateModal',
-          testVersion: `3-${updateVariantRef.current}`,
+          testVersion: `4-${updateVariantRef.current}`,
         })
       }, 1500)
     })

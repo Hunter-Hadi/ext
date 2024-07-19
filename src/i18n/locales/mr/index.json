@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "सर्व सुविधा अनलॉक करा",
     "sidebar__user_upgrade_card__item3__title": "प्रतिदिन तास बचावा",
     "sidebar__user_upgrade_card__learn_more__title": "अधिक माहिती",
-    "sidebar__user_upgrade_card__discount__title": "आत्तापर्यंत 53% बचत करा",
+    "sidebar__user_upgrade_card__discount__title": "आता {{DISCOUNT}} वाचवा",
     "sidebar__user_upgrade_card__footer__title": "पुढील पृष्ठावर तुम्हाला कोणतेही शुल्क आकारण्यात येणार नाही.",
     "sidebar__daily_limit__title": "तुम्ही आज आपल्या दैनंदिन AI क्वेरी सीमा पोहोचलात. आज विनामूल्य AI क्वेरी उद्या उपलब्ध होईल.",
     "sidebar__daily_limit__link__title": "तात्कालिक अमर्यादित AI क्वेरीसाठी आत्ताच अपग्रेड करा.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "कोणत्याही छायांमध्ये प्रश्न विचारा आणि तत्परपणे उत्तरे मिळवा.",
     "sidebar__promotion_dialog__vision__content_item3__description": "सोप्या प्रकारे स्क्रीनशॉट घेऊन तत्परपणे कोणत्याही प्रश्न विचारा.",
     "sidebar__promotion_dialog__vision__content_item4__description": "सर्वोत्तम AI मॉडेलांद्वारे संचालित: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "आता 53% बचत करा",
+    "sidebar__promotion_dialog__discount__title": "आता {{DISCOUNT}} वाचवा",
     "provider__chatgpt__upload_file_error__total_too_large__text": "अपलोड केलेल्या फाइलं खूप मोठी आहेत. कृपया एक AI मॉडेल वापरा ज्याचा प्रमाण विंडो जास्त मोठी आहे किंवा लहान फाइल अपलोड करा.",
     "chat__user_message__contexts__file__preview__tips": "स्त्रोतातून स्वरुपण असंगठित असू शकतो.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "तुमच्या कल्पनांना आणि उत्पादकतेला 10 वेळा वाढवा आणि सर्वाधिक उन्नत AI कला मॉडेलसह. तुमच्या दृष्टींचे अद्यावत छायाचित्रे झटपट अद्ययावत करा. सोपे, शक्तिशाली, परिवर्तक.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "केवळ GPT-4o. सर्व इतर AI मॉडेल्स सोडवण्यासाठी, MaxAI Elite योजनेवर अपग्रेड करा.",
     "pricing__upgrade__popper_card__item4__title": "आपल्या पैसांसाठी सर्वोत्तम मूल्य",
     "permission__pricing_hook__context_menu__title": "अमर्यादित AI पुनरलेखन सोडवा",
-    "permission__pricing_hook__context_menu__description": "MaxAIच्या AI पुनरलेखकासह, आपण वेबवरील आपले शब्द प्रमाणित करण्यासाठी वेळ काढू आणि पूर्ण करण्यासाठी समय वाचवू शकता, ईमेलपासून सोशल मीडियापर्यंत."
+    "permission__pricing_hook__context_menu__description": "MaxAIच्या AI पुनरलेखकासह, आपण वेबवरील आपले शब्द प्रमाणित करण्यासाठी वेळ काढू आणि पूर्ण करण्यासाठी समय वाचवू शकता, ईमेलपासून सोशल मीडियापर्यंत.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini उपलब्ध करा",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI चा नवीनतम मॉडेल",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo पेक्षा अधिक बुद्धिमत्ता",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-टर्बोसारख्या वेगाने",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "मदत करते मजकूर आणि दृश्य क्षमतें",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "वाढलेले बहुभाषी समज"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

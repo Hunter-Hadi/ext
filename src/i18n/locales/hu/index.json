@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Minden funkció feloldása",
     "sidebar__user_upgrade_card__item3__title": "Mentse órákat minden nap",
     "sidebar__user_upgrade_card__learn_more__title": "További információ",
-    "sidebar__user_upgrade_card__discount__title": "Most 53% kedvezményt kap",
+    "sidebar__user_upgrade_card__discount__title": "Mentse meg most {{DISCOUNT}}",
     "sidebar__user_upgrade_card__footer__title": "Nem lesz felszámolva díj a következő oldalig.",
     "sidebar__daily_limit__title": "Elérte a napi AI lekérdezési limitjét. Holnap újabb ingyenes AI lekérdezések lesznek elérhetőek.",
     "sidebar__daily_limit__link__title": "Frissítse most azonnali korlátlan AI lekérdezésekért.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Kérdezz bármilyen képről és kapj azonnali válaszokat.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Csak készíts egy képernyőképet és tegyél fel bármilyen kérdést azonnal.",
     "sidebar__promotion_dialog__vision__content_item4__description": "A legjobb AI modellek által támogatott: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Most 53% kedvezmény",
+    "sidebar__promotion_dialog__discount__title": "Mentse meg most {{DISCOUNT}}",
     "provider__chatgpt__upload_file_error__total_too_large__text": "A feltöltött fájlok túl nagyok. Kérlek használj egy AI modellt, amelynek nagyobb a kontextus ablaka, vagy tölts fel kisebb fájlokat.",
     "chat__user_message__contexts__file__preview__tips": "A formázás lehet eltérő a forrástól.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Növeld a kreativitásodat és termelékenységedet 10-szeresen a legfejlettebb mesterséges intelligencia művészeti modellekkel. Gyorsan alakítsd át elképzeléseidet lenyűgöző képekké. Egyszerű, erőteljes, átalakító.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Csak GPT-4o. Az összes többi AI modell feloldásához frissítse a MaxAI Elite tervre.",
     "pricing__upgrade__popper_card__item4__title": "Legjobb érték pénzéért",
     "permission__pricing_hook__context_menu__title": "Frissítés az korlátlan AI átíró feloldásához",
-    "permission__pricing_hook__context_menu__description": "A MaxAI AI átírójával időt takaríthat meg a weben átívelő szövegek ellenőrzésére és tökéletesítésére az e-mailtől a közösségi médiáig és még tovább."
+    "permission__pricing_hook__context_menu__description": "A MaxAI AI átírójával időt takaríthat meg a weben átívelő szövegek ellenőrzésére és tökéletesítésére az e-mailtől a közösségi médiáig és még tovább.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Hozzáférés GPT-4o-mini-hoz",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI legújabb modellje",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Jelentősen okosabb, mint a GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Olyan gyors, mint a GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Támogatja a szöveg- és látási képességeket",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Fejlett többnyelvű megértés"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

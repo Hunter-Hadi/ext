@@ -2,6 +2,7 @@ import { type TFunction } from 'i18next'
 
 export type IUpdateVariant =
   | 'gpt-4o'
+  | 'gpt-4o-mini'
   | 'claude-3-opus'
   | 'claude-3.5-sonnet'
   | 'gemini-1.5-pro'

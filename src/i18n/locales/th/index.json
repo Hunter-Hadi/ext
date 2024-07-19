@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "ปลดล็อคคุณสมบัติทั้งหมด",
     "sidebar__user_upgrade_card__item3__title": "ประหยัดเวลาหลายชั่วโมงทุกวัน",
     "sidebar__user_upgrade_card__learn_more__title": "เรียนรู้เพิ่มเติม",
-    "sidebar__user_upgrade_card__discount__title": "ประหยัด 53% ตอนนี้",
+    "sidebar__user_upgrade_card__discount__title": "บันทึก {{DISCOUNT}} ตอนนี้",
     "sidebar__user_upgrade_card__footer__title": "คุณจะไม่ถูกเรียกเก็บเงินจนกว่าจะไปหน้าถัดไป",
     "sidebar__daily_limit__title": "คุณได้ถึงขีดจำกัดการสอบถาม AI รายวันของคุณแล้ว การสอบถาม AI เพิ่มเติมจะสามารถใช้ได้พรุ่งนี้",
     "sidebar__daily_limit__link__title": "อัพเกรดเดี๋ยวนี้เพื่อการสอบถาม AI ไม่จำกัด",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ถามคำถามเกี่ยวกับรูปภาพใดก็ได้และรับคำตอบทันที",
     "sidebar__promotion_dialog__vision__content_item3__description": "เพียงแค่ถ่ายภาพหน้าจอและถามคำถามใดก็ได้ทันที",
     "sidebar__promotion_dialog__vision__content_item4__description": "ขับเคลื่อนด้วยโมเดล AI ที่ดีที่สุด: GPT-4o, Claude-3-opus, Gemini-1.5-pro",
-    "sidebar__promotion_dialog__discount__title": "ประหยัด 53% ตอนนี้",
+    "sidebar__promotion_dialog__discount__title": "บันทึก {{DISCOUNT}} ตอนนี้",
     "provider__chatgpt__upload_file_error__total_too_large__text": "ไฟล์ที่อัปโหลดใหญ่เกินไป โปรดใช้โมเดล AI ที่มีหน้าต่างความสัมพันธ์ของบริบทใหญ่กว่าหรืออัปโหลดไฟล์ที่เล็กกว่า",
     "chat__user_message__contexts__file__preview__tips": "การจัดรูปแบบอาจไม่สอดคล้องกับแหล่งที่มา",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "เพิ่มความสร้างสรรค์และผลิตภัณฑ์ของคุณ 10 เท่าด้วยโมเดลศิลปะ AI ที่ทันสมัยที่สุด แปลงความคิดของคุณให้กลายเป็นภาพที่น่าตื่นตาตื่นใจอย่างรวดเร็ว ง่าย แรง และเปลี่ยนแปลงได้อย่างมีประสิทธิภาพ",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "เฉพาะ GPT-4o เท่านั้น หากต้องการปลดล็อก AI models ทั้งหมด อัพเกรดเป็น MaxAI Elite plan",
     "pricing__upgrade__popper_card__item4__title": "มีค่าที่สุดสำหรับเงินของคุณ",
     "permission__pricing_hook__context_menu__title": "อัปเกรดเพื่อปลดล็อค AI rewriter ไร้ขีดจำกัด",
-    "permission__pricing_hook__context_menu__description": "ด้วย AI rewriter จาก MaxAI คุณสามารถประหยัดเวลาในการตรวจอ่านและปรับปรุงคำของคุณบนเว็บได้อย่างสมบูรณ์ ตั้งแต่อีเมลถึงโซเชียลมีเดียและอื่นๆ"
+    "permission__pricing_hook__context_menu__description": "ด้วย AI rewriter จาก MaxAI คุณสามารถประหยัดเวลาในการตรวจอ่านและปรับปรุงคำของคุณบนเว็บได้อย่างสมบูรณ์ ตั้งแต่อีเมลถึงโซเชียลมีเดียและอื่นๆ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "เข้าถึง GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "โมเดลล่าสุดของ OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "ฉลาดมากกว่า GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "เร็วเท่ากับ GPT-3.5-ทั๊บโบ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "รองรับความสามารถในการจัดการข้อความและภาพ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "เข้าใจหลายภาษาได้ดียิ่งขึ้น"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

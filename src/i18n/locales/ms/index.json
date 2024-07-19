@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Buka semua ciri",
     "sidebar__user_upgrade_card__item3__title": "Jimat berjam-jam setiap hari",
     "sidebar__user_upgrade_card__learn_more__title": "Ketahui lebih lanjut",
-    "sidebar__user_upgrade_card__discount__title": "Jimat 53% sekarang",
+    "sidebar__user_upgrade_card__discount__title": "Jimat {{DISCOUNT}} sekarang",
     "sidebar__user_upgrade_card__footer__title": "Anda tidak akan dikenakan bayaran sehingga halaman seterusnya.",
     "sidebar__daily_limit__title": "Anda telah mencapai had pertanyaan AI harian anda. Lebih banyak pertanyaan AI percuma akan tersedia esok.",
     "sidebar__daily_limit__link__title": "Naik taraf sekarang untuk pertanyaan AI tanpa had secara segera.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Ajukan pertanyaan tentang gambar apa pun dan dapatkan jawaban instan.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Cukup ambil tangkapan layar dan ajukan pertanyaan segera.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Didukung oleh model AI terbaik: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Hemat 53% sekarang",
+    "sidebar__promotion_dialog__discount__title": "Jimat {{DISCOUNT}} sekarang",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Fail muat naik fail terlalu besar. Sila gunakan model AI dengan tetingkap konteks yang lebih besar atau muat naik fail yang lebih kecil.",
     "chat__user_message__contexts__file__preview__tips": "Pemformatan mungkin tidak konsisten dari sumber.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Tingkatkan kreativiti dan produktiviti anda dengan model seni AI yang paling canggih. Ubah visi anda menjadi imej yang menakjubkan dengan cepat. Mudah, berkuasa, transformasi.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Hanya GPT-4o. Untuk membuka semua model AI lain, naik taraf ke pelan MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Nilai terbaik untuk wang anda",
     "permission__pricing_hook__context_menu__title": "Naik taraf untuk membuka penulis semula AI tanpa had",
-    "permission__pricing_hook__context_menu__description": "Dengan penulis semula AI MaxAI, anda boleh menjimatkan masa dalam menyemak dan menyempurnakan perkataan anda di seluruh web, dari emel ke media sosial dan seterusnya."
+    "permission__pricing_hook__context_menu__description": "Dengan penulis semula AI MaxAI, anda boleh menjimatkan masa dalam menyemak dan menyempurnakan perkataan anda di seluruh web, dari emel ke media sosial dan seterusnya.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Akses GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Model terbaru OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Lebih bijak daripada GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Segera seperti GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Mendukung kemampuan teks dan penglihatan",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pemahaman multibahasa yang ditingkatkan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

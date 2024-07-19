@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Avage kõik funktsioonid",
     "sidebar__user_upgrade_card__item3__title": "Säästa tunde igapäevaselt",
     "sidebar__user_upgrade_card__learn_more__title": "Lisateave",
-    "sidebar__user_upgrade_card__discount__title": "Säästa nüüd 53%",
+    "sidebar__user_upgrade_card__discount__title": "Salvesta nüüd {{DISCOUNT}}",
     "sidebar__user_upgrade_card__footer__title": "Teid ei arvestata enne järgmist lehte.",
     "sidebar__daily_limit__title": "Olete jõudnud oma igapäevase AI päringulimiidini. Rohkem tasuta AI päringuid on saadaval homme.",
     "sidebar__daily_limit__link__title": "Uuendage kohe piiramatute AI päringute saamiseks.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Küsi küsimusi mis tahes pildi kohta ja saa kohe vastused.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Lihtsalt tee ekraanipilt ja küsi kohe küsimusi.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Toetatud parimate AI mudelitega: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Säästa nüüd 53%",
+    "sidebar__promotion_dialog__discount__title": "Salvesta nüüd {{DISCOUNT}}",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Üles laaditud failid on liiga suured. Palun kasutage AI mudelit, millel on suurem kontekstaken või laadige üles väiksemad failid.",
     "chat__user_message__contexts__file__preview__tips": "Vormindamine võib olla allikast ebaühtlane.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Suurenda oma loovust ja tootlikkust 10 korda kõige arenenumate AI kunstimudelitega. Muuda oma visioonid kiiresti hämmastavateks piltideks. Lihtne, võimas, muutustele alluv.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Ainult GPT-4o. Kõigi teiste AI mudelite avamiseks uuenda MaxAI Elite plaani.",
     "pricing__upgrade__popper_card__item4__title": "Parim väärtus teie raha eest",
     "permission__pricing_hook__context_menu__title": "Tõsta esile, et avada piiramatu AI ümberkirjutaja",
-    "permission__pricing_hook__context_menu__description": "MaxAI AI ümberkirjutajaga saate aega säästa tekstide toimetamisel ja täiustamisel veebis, alates e-kirjadest sotsiaalmeediani ja veel kaugemale."
+    "permission__pricing_hook__context_menu__description": "MaxAI AI ümberkirjutajaga saate aega säästa tekstide toimetamisel ja täiustamisel veebis, alates e-kirjadest sotsiaalmeediani ja veel kaugemale.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Ava GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI uusim mudel",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Märkimisväärselt targem kui GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Nii kiire kui GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Toetab teksti- ja nägemisvõimeid",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parandatud mitmekeelne arusaamine"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

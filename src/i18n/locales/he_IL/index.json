@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "פתח את כל התכונות",
     "sidebar__user_upgrade_card__item3__title": "חסוך שעות בכל יום",
     "sidebar__user_upgrade_card__learn_more__title": "מידע נוסף",
-    "sidebar__user_upgrade_card__discount__title": "חסוך 53% כעת",
+    "sidebar__user_upgrade_card__discount__title": "שמור {{DISCOUNT}} עכשיו",
     "sidebar__user_upgrade_card__footer__title": "לא יחויבו אותך עד הדף הבא.",
     "sidebar__daily_limit__title": "הגעת למגבלת השאילתות היומית שלך. שאילתות AI נוספות יהיו זמינות מחר.",
     "sidebar__daily_limit__link__title": "שדרג עכשיו לשאילתות AI בלתי מוגבלות מיידית.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "שאלו שאלות על כל תמונה וקבלו תשובות מיידיות.",
     "sidebar__promotion_dialog__vision__content_item3__description": "פשוט צלמו צילום מסך ושאלו שאלות מיידיות.",
     "sidebar__promotion_dialog__vision__content_item4__description": "מופעל על ידי הדגמים הטובים ביותר: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "חסכו 53% עכשיו",
+    "sidebar__promotion_dialog__discount__title": "שמור {{DISCOUNT}} עכשיו",
     "provider__chatgpt__upload_file_error__total_too_large__text": "הקבצים שהועלו גדולים מדי. אנא השתמש בדגם AI עם חלון קשר גדול יותר או העלה קבצים קטנים יותר.",
     "chat__user_message__contexts__file__preview__tips": "העיצוב עשוי להיות לא עקבי מהמקור.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "הכפילו את יצירתיותכם ופרודוקטיביותכם בעשרה פעמים עם הדגמים האמנותיים המתקדמים ביותר של AI. הפיכת חזונותיכם לתמונות מהממות במהירות. פשוט, עוצמתי, מהפכני.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "רק GPT-4o. כדי לפתוח את כל הדגמי AI האחרים, שדרגו לתוכנית MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "ערך מיטבי עבור הכסף שלך",
     "permission__pricing_hook__context_menu__title": "שדרג כדי לפתוח את מחדל הכתיבה האוטומטית הבלתי מוגבלת",
-    "permission__pricing_hook__context_menu__description": "עם מחדל הכתיבה האוטומטית של MaxAI, תוכל לחסוך זמן בבדיקת התקינות והשלמת המילים שלך ברחבי הרשת, מדואר אלקטרוני ועד לרשתות חברתיות ומעבר."
+    "permission__pricing_hook__context_menu__description": "עם מחדל הכתיבה האוטומטית של MaxAI, תוכל לחסוך זמן בבדיקת התקינות והשלמת המילים שלך ברחבי הרשת, מדואר אלקטרוני ועד לרשתות חברתיות ומעבר.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "גישה ל-GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "הדגם החדש ביותר של OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "חכם באופן משמעותי מ-GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "כמהיר כמו GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "תומך ביכולות טקסט וראייה",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "שיפור בהבנה רב-לשונית"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

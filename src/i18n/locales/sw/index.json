@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Fungua vipengele vyote",
     "sidebar__user_upgrade_card__item3__title": "Hifadhi masaa kila siku",
     "sidebar__user_upgrade_card__learn_more__title": "Jifunze zaidi",
-    "sidebar__user_upgrade_card__discount__title": "Hifadhi 53% sasa",
+    "sidebar__user_upgrade_card__discount__title": "Hifadhi {{DISCOUNT}} sasa",
     "sidebar__user_upgrade_card__footer__title": "Hutarudishiwa malipo mpaka ukurasa ujao.",
     "sidebar__daily_limit__title": "Umefikia kikomo cha maswali ya AI ya kila siku. Maswali zaidi ya bure ya AI yatakuwa yanapatikana kesho.",
     "sidebar__daily_limit__link__title": "Boresha sasa kwa maswali ya AI yasiyo na kikomo mara moja.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Uliza maswali kuhusu picha yoyote na upate majibu papo hapo.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Chukua skrini tu na ulize maswali yoyote mara moja.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Inayo nguvu kutokana na mifano bora ya AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Punguza 53% sasa",
+    "sidebar__promotion_dialog__discount__title": "Hifadhi {{DISCOUNT}} sasa",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Faili zilizopakiwa ni kubwa sana. Tafadhali tumia mfano wa AI wenye dirisha kubwa la muktadha au pakia faili ndogo.",
     "chat__user_message__contexts__file__preview__tips": "Umbizo linaweza kuwa lisilo thabiti kutoka chanzo.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Ongeza ubunifu na ufanisi wako mara 10 na mifano ya sanaa ya AI ya hali ya juu zaidi. Haraka geuza maono yako kuwa picha za kushangaza. Rahisi, yenye nguvu, inayobadilisha.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o pekee. Ili kufungua mifano mingine yote ya AI, nenda kwenye mpango wa MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Thamani bora kwa pesa yako",
     "permission__pricing_hook__context_menu__title": "Boresha ili kufungua mzunguko usio na kikomo wa AI mpya",
-    "permission__pricing_hook__context_menu__description": "Na AI mpya ya MaxAI, unaweza kuokoa muda kwenye kuhariri na kuboresha maneno yako kote kwenye wavuti, kutoka barua pepe hadi mitandao ya kijamii na zaidi."
+    "permission__pricing_hook__context_menu__description": "Na AI mpya ya MaxAI, unaweza kuokoa muda kwenye kuhariri na kuboresha maneno yako kote kwenye wavuti, kutoka barua pepe hadi mitandao ya kijamii na zaidi.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Fikia GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Mfano mpya wa OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Mjanja sana kuliko GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Haraka kama GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Inasaidia uwezo wa maandishi na maono",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Uelewa bora wa lugha nyingi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Ξεκλείδωμα όλων των λειτουργιών",
     "sidebar__user_upgrade_card__item3__title": "Εξοικονομήστε ώρες κάθε μέρα",
     "sidebar__user_upgrade_card__learn_more__title": "Μάθετε περισσότερα",
-    "sidebar__user_upgrade_card__discount__title": "Εξοικονομήστε 53% τώρα",
+    "sidebar__user_upgrade_card__discount__title": "Αποθηκεύστε {{DISCOUNT}} τώρα",
     "sidebar__user_upgrade_card__footer__title": "Δεν θα γίνει χρέωση μέχρι την επόμενη σελίδα.",
     "sidebar__daily_limit__title": "Έχετε φτάσει το ημερήσιο όριο ερωτήσεων AI. Περισσότερες δωρεάν ερωτήσεις AI θα είναι διαθέσιμες αύριο.",
     "sidebar__daily_limit__link__title": "Αναβαθμίστε τώρα για άμεση απεριόριστη πρόσβαση σε ερωτήσεις AI.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Κάντε ερωτήσεις για οποιαδήποτε εικόνα και λάβετε άμεσες απαντήσεις.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Απλά τραβήξτε μια στιγμιότυπη εικόνα και κάντε ερωτήσεις αμέσως.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Με την υποστήριξη των καλύτερων μοντέλων τεχνητής νοημοσύνης: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Εξοικονομήστε 53% τώρα",
+    "sidebar__promotion_dialog__discount__title": "Αποθηκεύστε {{DISCOUNT}} τώρα",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Τα ανεβασμένα αρχεία είναι πολύ μεγάλα. Χρησιμοποιήστε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή ανεβάστε μικρότερα αρχεία.",
     "chat__user_message__contexts__file__preview__tips": "Η μορφοποίηση μπορεί να είναι ανεπαρκής από την πηγή.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Αυξήστε τη δημιουργικότητά σας και την παραγωγικότητά σας κατά 10 φορές με τα πιο προηγμένα μοντέλα τέχνης AI. Μετατρέψτε γρήγορα τις εικόνες σας σε εκπληκτικά αποτελέσματα. Απλό, ισχυρό, μετασχηματιστικό.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Μόνο GPT-4o. Για να ξεκλειδώσετε όλα τα άλλα μοντέλα AI, αναβαθμίστε στο σχέδιο MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Η καλύτερη αξία για τα χρήματά σας",
     "permission__pricing_hook__context_menu__title": "Αναβαθμίστε για ξεκλείδωμα απεριόριστου αναδιατάκτη AI",
-    "permission__pricing_hook__context_menu__description": "Με τον αναδιατάκτη AI του MaxAI, μπορείτε να εξοικονομήσετε χρόνο στον έλεγχο και την τελειοποίηση των λέξεών σας σε όλο τον ιστό, από email έως κοινωνικά μέσα και πέρα."
+    "permission__pricing_hook__context_menu__description": "Με τον αναδιατάκτη AI του MaxAI, μπορείτε να εξοικονομήσετε χρόνο στον έλεγχο και την τελειοποίηση των λέξεών σας σε όλο τον ιστό, από email έως κοινωνικά μέσα και πέρα.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Πρόσβαση στο GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Το νεότερο μοντέλο της OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Σημαντικά πιο έξυπνο από το GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Τόσο γρήγορο όσο το GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Υποστηρίζει κείμενο και ικανότητες όρασης",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Βελτιωμένη πολύγλωσση κατανόηση"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

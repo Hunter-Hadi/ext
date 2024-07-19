@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Odemkněte všechny funkce",
     "sidebar__user_upgrade_card__item3__title": "Ušetřete hodiny každý den",
     "sidebar__user_upgrade_card__learn_more__title": "Zjistit více",
-    "sidebar__user_upgrade_card__discount__title": "Ušetřete nyní 53%",
+    "sidebar__user_upgrade_card__discount__title": "Ušetřete {{DISCOUNT}} nyní",
     "sidebar__user_upgrade_card__footer__title": "Nezaplatíte, dokud nepřejdete na další stránku.",
     "sidebar__daily_limit__title": "Dosáhli jste svého denního limitu dotazů na AI. Další volné dotazy na AI budou k dispozici zítra.",
     "sidebar__daily_limit__link__title": "Okamžitě upgradujte pro neomezené dotazy na AI.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Kladejte otázky k libovolnému obrázku a okamžitě získávejte odpovědi.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Jednoduše udělejte snímek obrazovky a okamžitě položte otázky.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Poháněno nejlepšími AI modely: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ušetřete 53% nyní",
+    "sidebar__promotion_dialog__discount__title": "Ušetřete {{DISCOUNT}} nyní",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Nahrané soubory jsou příliš velké. Použijte prosím model AI s větším oknem kontextu nebo nahrajte menší soubory.",
     "chat__user_message__contexts__file__preview__tips": "Formátování může být nekonzistentní oproti zdroji.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Zvýšte svoju kreativitu a produktivitu o 10x s najpokročilejšími modelmi AI umenia. Rýchlo premeníte svoje predstavy na úžasné obrázky. Jednoduché, výkonné, transformačné.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Pouze GPT-4o. Pro odemknutí všech ostatních modelů AI, upgradujte na plán MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Nejlepší hodnota za vaše peníze",
     "permission__pricing_hook__context_menu__title": "Upgrade pro odemčení neomezeného přepisovače AI",
-    "permission__pricing_hook__context_menu__description": "S přepisovačem AI od MaxAI můžete ušetřit čas při korektuře a zdokonalování svých slov na webu, od e-mailu po sociální média a dál."
+    "permission__pricing_hook__context_menu__description": "S přepisovačem AI od MaxAI můžete ušetřit čas při korektuře a zdokonalování svých slov na webu, od e-mailu po sociální média a dál.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Přístup k GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Nejnovější model od OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Výrazně chytřejší než GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tak rychlé jako GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Podporuje textové a vizuální schopnosti",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Vylepšené multijazyčné porozumění"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

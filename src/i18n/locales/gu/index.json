@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "બધા વ્યાપારો ખોલો",
     "sidebar__user_upgrade_card__item3__title": "દિવસભરની ઘણી સમય બચાવો",
     "sidebar__user_upgrade_card__learn_more__title": "વધુ જાણો",
-    "sidebar__user_upgrade_card__discount__title": "હમણાં 53% બચાવો",
+    "sidebar__user_upgrade_card__discount__title": "હમણા {{DISCOUNT}} બચાવો",
     "sidebar__user_upgrade_card__footer__title": "આગામી પૃષ્ઠ સુધી તમને કોઈ ચાર્જ થશે નહીં.",
     "sidebar__daily_limit__title": "તમે તમારી દૈનિક AI પૂછપરછ મર્યાદા પહોંચ્યા છે. આજે વધુ મફત AI પૂછપરછ કાલે ઉપલબ્ધ થશે.",
     "sidebar__daily_limit__link__title": "તકો હવે તક મફત AI પૂછપરછ મળશે.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "કોઈપણ છબી વિશે પ્રશ્નો કરો અને તકનીકી જવાબો મેળવો.",
     "sidebar__promotion_dialog__vision__content_item3__description": "સરળતાથી સ્ક્રીનશોટ લેવું અને તકનીકી પ્રશ્નો કરો.",
     "sidebar__promotion_dialog__vision__content_item4__description": "શ્રેષ્ઠ એઆઈ મોડેલ્સદ્વારા પ્રાધિક્યતા: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "હમણાં 53% બચાવો",
+    "sidebar__promotion_dialog__discount__title": "હમણા {{DISCOUNT}} બચાવો",
     "provider__chatgpt__upload_file_error__total_too_large__text": "અપલોડ કરેલા ફાઇલો ખૂબ મોટી છે. કૃપા કરીને વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરો અથવા લઘુ ફાઇલો અપલોડ કરો.",
     "chat__user_message__contexts__file__preview__tips": "સ્રોતમાંથી ફોર્મેટિંગ અસંગત હોઈ શકે છે.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "સૌથી અગ્રણી AI આર્ટ મોડેલોનો ઉપયોગ કરીને તમારી રચનાઓ ને સુંદર છબીઓમાં બદલો. સરળ, શક્તિશાળી, પરિવર્તનાત્મક.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o માત્ર. બાકી બધા AI મોડેલ્સ અનલૉક કરવા માટે, મેક્સએઆઈ એલાઇટ પ્લાન પર અપગ્રેડ કરો.",
     "pricing__upgrade__popper_card__item4__title": "તમારા પૈસાનું શ્રેષ્ઠ મૂલ્ય",
     "permission__pricing_hook__context_menu__title": "અનલોક કરવા માટે અપગ્રેડ કરો અનલિમિટેડ AI રીવ્રાઇટર",
-    "permission__pricing_hook__context_menu__description": "MaxAIના એઆઈ રીવ્રાઇટર સાથે, તમે વેબ પર તમારા શબ્દોને પ્રુફરીડિંગ અને પરફેક્ટ કરવામાં સમય બચાવી શકો છો, ઇમેઇલથી સોશિયલ મીડિયા અને અન્ય સ્થળો સુધી."
+    "permission__pricing_hook__context_menu__description": "MaxAIના એઆઈ રીવ્રાઇટર સાથે, તમે વેબ પર તમારા શબ્દોને પ્રુફરીડિંગ અને પરફેક્ટ કરવામાં સમય બચાવી શકો છો, ઇમેઇલથી સોશિયલ મીડિયા અને અન્ય સ્થળો સુધી.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "જીપીટી-4o-મિની ઍક્સેસ કરો",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "ઓપનએઆઈનું નવું મોડલ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "જીપીટી-3.5-ટર્બોથી સારી રીતે મેહ્નત કરે છે",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-ટર્બો જેવું ઝડપી છે",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "ટેક્સ્ટ અને વિઝન સામર્થ્યોનું સમર્થન કરે છે",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "સુધારેલું બહુભાષી સમજણ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "باز کردن تمام ویژگی‌ها",
     "sidebar__user_upgrade_card__item3__title": "صرفه جویی در ساعت‌ها هر روز",
     "sidebar__user_upgrade_card__learn_more__title": "بیشتر بدانید",
-    "sidebar__user_upgrade_card__discount__title": "همین الان 53% صرفه‌جویی کنید",
+    "sidebar__user_upgrade_card__discount__title": "هم اکنون {{DISCOUNT}} ذخیره کنید",
     "sidebar__user_upgrade_card__footer__title": "شما تا صفحه بعدی متوجه هزینه نخواهید شد.",
     "sidebar__daily_limit__title": "شما به حداکثر تعداد پرس و جوی هوش مصنوعی روزانه خود رسیده‌اید. فردا پرس و جوهای بیشتری از هوش مصنوعی رایگان در دسترس خواهد بود.",
     "sidebar__daily_limit__link__title": "هم‌اکنون ارتقا دهید تا فوراً به تعداد نامحدودی پرس و جوی هوش مصنوعی دسترسی داشته باشید.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "سوالاتی در مورد هر تصویر بپرسید و پاسخ‌های فوری دریافت کنید.",
     "sidebar__promotion_dialog__vision__content_item3__description": "فقط یک عکس از صفحه بگیرید و هر سوالی را فوراً بپرسید.",
     "sidebar__promotion_dialog__vision__content_item4__description": "با بهترین مدل‌های هوش مصنوعی: GPT-4o، Claude-3-opus، Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "هم‌اکنون 53% صرفه‌جویی کنید",
+    "sidebar__promotion_dialog__discount__title": "هم اکنون {{DISCOUNT}} ذخیره کنید",
     "provider__chatgpt__upload_file_error__total_too_large__text": "فایل‌های آپلود شده بیش از حد بزرگ هستند. لطفاً از یک مدل هوش مصنوعی با پنجره متناسب بزرگتر استفاده کنید یا فایل‌های کوچکتری را آپلود کنید.",
     "chat__user_message__contexts__file__preview__tips": "قالب‌بندی ممکن است ناهمسان باشد.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "با مدل‌های هنری هوش مصنوعی پیشرفته، خلاقیت و بهره‌وری خود را ۱۰ برابر کنید. تصاویر شگفت‌انگیز خود را به سرعت به واقعیت تبدیل کنید. ساده، قدرتمند، تحول‌آفرین.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. برای باز کردن تمام مدل‌های هوش مصنوعی دیگر، به طرح MaxAI Elite ارتقا دهید.",
     "pricing__upgrade__popper_card__item4__title": "بهترین ارزش برای پول شما",
     "permission__pricing_hook__context_menu__title": "ارتقا برای باز کردن قفل بازنویسی نامحدود هوش مصنوعی",
-    "permission__pricing_hook__context_menu__description": "با بازنویس هوش مصنوعی MaxAI ، می توانید زمان خود را برای تصحیح و بهبود کلمات خود در سراسر وب ، از ایمیل تا رسانه های اجتماعی و فراتر از آن ، صرفه جویی کنید."
+    "permission__pricing_hook__context_menu__description": "با بازنویس هوش مصنوعی MaxAI ، می توانید زمان خود را برای تصحیح و بهبود کلمات خود در سراسر وب ، از ایمیل تا رسانه های اجتماعی و فراتر از آن ، صرفه جویی کنید.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "دسترسی به GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "جدیدترین مدل OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "به طور قابل توجهی هوشمندتر از GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "تاچندی از GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "قابلیت‌های متن و دیداری را پشتیبانی می‌کند",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "درک چندزبانه بهبود یافته"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

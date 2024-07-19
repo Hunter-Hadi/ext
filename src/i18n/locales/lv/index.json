@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Atbloķēt visas funkcijas",
     "sidebar__user_upgrade_card__item3__title": "Ietaupiet stundas katru dienu",
     "sidebar__user_upgrade_card__learn_more__title": "Uzziniet vairāk",
-    "sidebar__user_upgrade_card__discount__title": "Ietaupiet 53% tagad",
+    "sidebar__user_upgrade_card__discount__title": "Saglabāt {{DISCOUNT}} tagad",
     "sidebar__user_upgrade_card__footer__title": "Jums nebūs jāmaksā līdz nākamajai lapai.",
     "sidebar__daily_limit__title": "Jūs esat sasniedzis savu dienas AI vaicājumu limitu. Vairāk bezmaksas AI vaicājumu būs pieejami rīt.",
     "sidebar__daily_limit__link__title": "Uzlabojiet tagad, lai nekavējoties iegūtu neierobežotus AI vaicājumus.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Uzdodiet jautājumus par jebkuru attēlu un saņemiet nekavējoties atbildes.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Vienkārši uzņemiet ekrānuzņēmumu un uzdodiet jautājumus nekavējoties.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Darbojas ar labākajiem AI modeļiem: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ietaupiet 53% tagad",
+    "sidebar__promotion_dialog__discount__title": "Saglabāt {{DISCOUNT}} tagad",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Augšupielādētie faili ir pārāk lieli. Lūdzu, izmantojiet AI modeli ar lielāku konteksta logu vai augšupielādējiet mazākus failus.",
     "chat__user_message__contexts__file__preview__tips": "Formatēšana var būt nesaskaņota no avota.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Palieliniet savu radošumu un produktivitāti par 10 reizēm ar vismodernākajiem AI mākslas modeļiem. Ātri pārvēršiet savas vizijas par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tikai GPT-4o. Lai atbloķētu visus citus AI modeļus, jauniniet uz MaxAI Elite plānu.",
     "pricing__upgrade__popper_card__item4__title": "Labākā vērtība jūsu naudai",
     "permission__pricing_hook__context_menu__title": "Uzlabojiet, lai atbloķētu neierobežotu AI pārrakstītāju",
-    "permission__pricing_hook__context_menu__description": "Ar MaxAI AI pārrakstītāju jūs varat ietaupīt laiku, pārbaudot un pilnveidojot savus vārdus visā tīmeklī, no e-pasta līdz sociālajiem tīkliem un tālāk."
+    "permission__pricing_hook__context_menu__description": "Ar MaxAI AI pārrakstītāju jūs varat ietaupīt laiku, pārbaudot un pilnveidojot savus vārdus visā tīmeklī, no e-pasta līdz sociālajiem tīkliem un tālāk.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Piekļūt GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Jaunākais OpenAI modelis",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Ievērojami gudrāks par GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tāds ātrs kā GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Atbalsta teksta un redzes spējas",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Uzlabota daudzvalodu saprašana"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

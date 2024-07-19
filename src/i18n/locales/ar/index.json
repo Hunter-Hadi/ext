@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "فتح جميع الميزات",
     "sidebar__user_upgrade_card__item3__title": "توفير ساعات كل يوم",
     "sidebar__user_upgrade_card__learn_more__title": "تعرف على المزيد",
-    "sidebar__user_upgrade_card__discount__title": "وفر 53% الآن",
+    "sidebar__user_upgrade_card__discount__title": "احفظ {{DISCOUNT}} الآن",
     "sidebar__user_upgrade_card__footer__title": "لن يتم خصم أي رسوم حتى الصفحة التالية.",
     "sidebar__daily_limit__title": "لقد وصلت إلى الحد اليومي للاستعلام عن الذكاء الاصطناعي. ستتوفر المزيد من الاستعلامات المجانية عن الذكاء الاصطناعي غدًا.",
     "sidebar__daily_limit__link__title": "قم بالترقية الآن للاستعلامات غير المحدودة عن الذكاء الاصطناعي على الفور.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "اسأل أسئلة حول أي صورة واحصل على إجابات فورية.",
     "sidebar__promotion_dialog__vision__content_item3__description": "ما عليك سوى التقاط لقطة شاشة وطرح أي أسئلة فورًا.",
     "sidebar__promotion_dialog__vision__content_item4__description": "مدعوم بأفضل نماذج AI: GPT-4o، Claude-3-opus، Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "وفر 53% الآن",
+    "sidebar__promotion_dialog__discount__title": "احفظ {{DISCOUNT}} الآن",
     "provider__chatgpt__upload_file_error__total_too_large__text": "الملفات المرفوعة كبيرة جدًا. يُرجى استخدام نموذج AI بنافذة سياق أكبر أو تحميل ملفات أصغر.",
     "chat__user_message__contexts__file__preview__tips": "قد يكون التنسيق غير متسق من المصدر.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "قم بتضاعف إبداعك وإنتاجيتك بموديلات الذكاء الاصطناعي المتقدمة للفن. حوّل رؤيتك إلى صور مذهلة بسرعة. بسيطة، قوية، محولة.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "فقط GPT-4o. لفتح جميع النماذج الأخرى للذكاء الاصطناعي، قم بالترقية إلى خطة MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "أفضل قيمة لأموالك",
     "permission__pricing_hook__context_menu__title": "الترقية لفتح محرر الذكاء الاصطناعي غير المحدود",
-    "permission__pricing_hook__context_menu__description": "مع محرر الذكاء الاصطناعي لـ MaxAI، يمكنك توفير الوقت في التدقيق وتحسين كلماتك عبر الويب، من البريد الإلكتروني إلى وسائل التواصل الاجتماعي وأكثر من ذلك."
+    "permission__pricing_hook__context_menu__description": "مع محرر الذكاء الاصطناعي لـ MaxAI، يمكنك توفير الوقت في التدقيق وتحسين كلماتك عبر الويب، من البريد الإلكتروني إلى وسائل التواصل الاجتماعي وأكثر من ذلك.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "الوصول إلى GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "أحدث نموذج من OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "أذكى بشكل كبير من GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "بسرعة GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "يدعم قدرات النصوص والرؤية",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "فهم متعدد اللغات المحسّن"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

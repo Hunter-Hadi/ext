@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Alle functies ontgrendelen",
     "sidebar__user_upgrade_card__item3__title": "Bespaar elke dag uren",
     "sidebar__user_upgrade_card__learn_more__title": "Meer informatie",
-    "sidebar__user_upgrade_card__discount__title": "Bespaar nu 53%",
+    "sidebar__user_upgrade_card__discount__title": "Bespaar nu {{DISCOUNT}}",
     "sidebar__user_upgrade_card__footer__title": "U wordt pas in rekening gebracht op de volgende pagina.",
     "sidebar__daily_limit__title": "U heeft uw dagelijkse AI-querylimiet bereikt. Meer gratis AI-query's zijn morgen beschikbaar.",
     "sidebar__daily_limit__link__title": "Upgrade nu voor direct onbeperkte AI-query's.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Stel vragen over elke afbeelding en krijg direct antwoorden.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Maak eenvoudig een schermafbeelding en stel onmiddellijk vragen.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Aangedreven door de beste AI-modellen: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Bespaar nu 53%",
+    "sidebar__promotion_dialog__discount__title": "Bespaar nu {{DISCOUNT}}",
     "provider__chatgpt__upload_file_error__total_too_large__text": "De geüploade bestanden zijn te groot. Gebruik alstublieft een AI-model met een groter contextvenster of upload kleinere bestanden.",
     "chat__user_message__contexts__file__preview__tips": "De opmaak kan inconsistent zijn vanuit de bron.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Verhoog je creativiteit en productiviteit met de meest geavanceerde AI-kunstmodellen. Zet je visies snel om in verbluffende afbeeldingen. Eenvoudig, krachtig, transformerend.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Alleen GPT-4o. Upgrade naar het MaxAI Elite plan om alle andere AI-modellen te ontgrendelen.",
     "pricing__upgrade__popper_card__item4__title": "Beste waarde voor uw geld",
     "permission__pricing_hook__context_menu__title": "Upgrade om onbeperkte AI-herformuleringsfunctie te ontgrendelen",
-    "permission__pricing_hook__context_menu__description": "Met MaxAI's AI-herformuleringsfunctie kunt u tijd besparen bij het proeflezen en perfectioneren van uw woorden op het web, van e-mail tot sociale media en verder."
+    "permission__pricing_hook__context_menu__description": "Met MaxAI's AI-herformuleringsfunctie kunt u tijd besparen bij het proeflezen en perfectioneren van uw woorden op het web, van e-mail tot sociale media en verder.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Toegang tot GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Nieuwste model van OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Aanzienlijk slimmer dan GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Zo snel als GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Ondersteunt tekst- en visiemogelijkheden",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Verbeterd begrip van meerdere talen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

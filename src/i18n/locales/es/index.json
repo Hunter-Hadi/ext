@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Desbloquea todas las funciones",
     "sidebar__user_upgrade_card__item3__title": "Ahorra horas todos los días",
     "sidebar__user_upgrade_card__learn_more__title": "Más información",
-    "sidebar__user_upgrade_card__discount__title": "Ahorra un 53% ahora",
+    "sidebar__user_upgrade_card__discount__title": "Ahorra {{DISCOUNT}} ahora",
     "sidebar__user_upgrade_card__footer__title": "No se te cobrará hasta la siguiente página.",
     "sidebar__daily_limit__title": "Has alcanzado tu límite diario de consultas de IA. Mañana tendrás más consultas de IA gratuitas disponibles.",
     "sidebar__daily_limit__link__title": "Actualiza ahora para obtener consultas de IA ilimitadas al instante.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Haz preguntas sobre cualquier imagen y obtén respuestas instantáneas.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Simplemente toma una captura de pantalla y haz preguntas de inmediato.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Impulsado por los mejores modelos de IA: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Ahorra un 53% ahora",
+    "sidebar__promotion_dialog__discount__title": "Ahorra {{DISCOUNT}} ahora",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Los archivos cargados son demasiado grandes. Utilice un modelo de IA con una ventana de contexto más grande o cargue archivos más pequeños.",
     "chat__user_message__contexts__file__preview__tips": "La formatación puede ser inconsistente desde la fuente.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Aumenta tu creatividad y productividad 10 veces con los modelos de arte de IA más avanzados. Convierte rápidamente tus visiones en imágenes impresionantes. Simple, poderoso, transformador.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Solo GPT-4o. Para desbloquear todos los demás modelos de IA, actualice al plan MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Mejor valor por tu dinero",
     "permission__pricing_hook__context_menu__title": "Actualiza para desbloquear reescritor de IA ilimitado",
-    "permission__pricing_hook__context_menu__description": "Con el reescritor de IA de MaxAI, puedes ahorrar tiempo en la corrección y perfección de tus palabras en la web, desde correos electrónicos hasta redes sociales y más allá."
+    "permission__pricing_hook__context_menu__description": "Con el reescritor de IA de MaxAI, puedes ahorrar tiempo en la corrección y perfección de tus palabras en la web, desde correos electrónicos hasta redes sociales y más allá.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Accede a GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "El modelo más nuevo de OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Significativamente más inteligente que GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tan rápido como GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Admite capacidades de texto y visión",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Mejora en comprensión multilingüe"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Débloquer toutes les fonctionnalités",
     "sidebar__user_upgrade_card__item3__title": "Gagnez des heures chaque jour",
     "sidebar__user_upgrade_card__learn_more__title": "En savoir plus",
-    "sidebar__user_upgrade_card__discount__title": "Économisez 53% maintenant",
+    "sidebar__user_upgrade_card__discount__title": "Économisez {{DISCOUNT}} maintenant",
     "sidebar__user_upgrade_card__footer__title": "Vous ne serez pas facturé avant la page suivante.",
     "sidebar__daily_limit__title": "Vous avez atteint votre limite quotidienne de requêtes AI. Plus de requêtes AI gratuites seront disponibles demain.",
     "sidebar__daily_limit__link__title": "Mettez à niveau maintenant pour des requêtes AI illimitées instantanément.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Posez des questions sur n'importe quelle image et obtenez des réponses instantanées.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Prenez simplement une capture d'écran et posez immédiatement des questions.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Alimenté par les meilleurs modèles d'IA : GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Économisez 53% maintenant",
+    "sidebar__promotion_dialog__discount__title": "Économisez {{DISCOUNT}} maintenant",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Les fichiers téléchargés sont trop volumineux. Veuillez utiliser un modèle d'IA avec une fenêtre contextuelle plus grande ou télécharger des fichiers plus petits.",
     "chat__user_message__contexts__file__preview__tips": "La mise en forme peut être incohérente par rapport à la source.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Multipliez par 10 votre créativité et votre productivité avec les modèles d'art IA les plus avancés. Transformez rapidement vos visions en images époustouflantes. Simple, puissant, transformateur.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Uniquement GPT-4o. Pour débloquer tous les autres modèles d'IA, passez au plan MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Meilleur rapport qualité-prix",
     "permission__pricing_hook__context_menu__title": "Mise à niveau pour débloquer le réécriveur AI illimité",
-    "permission__pricing_hook__context_menu__description": "Avec le réécriveur AI de MaxAI, vous pouvez gagner du temps sur la relecture et la perfection de vos mots sur le web, des e-mails aux médias sociaux et au-delà."
+    "permission__pricing_hook__context_menu__description": "Avec le réécriveur AI de MaxAI, vous pouvez gagner du temps sur la relecture et la perfection de vos mots sur le web, des e-mails aux médias sociaux et au-delà.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Accéder à GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Le tout dernier modèle d'OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Nettement plus intelligent que GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Aussi rapide que GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Prise en charge des capacités de texte et de vision",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Compréhension multilingue améliorée"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "அனைத்து அம்சங்களையும் விடுவித்தல்",
     "sidebar__user_upgrade_card__item3__title": "ஒவ்வொரு நாளும் மணி நேரம் சேமிக்கலாம்",
     "sidebar__user_upgrade_card__learn_more__title": "மேலும் அறிய",
-    "sidebar__user_upgrade_card__discount__title": "இப்போது 53% சேமிக்கவும்",
+    "sidebar__user_upgrade_card__discount__title": "இப்போது {{DISCOUNT}} சேமிக்கவும்",
     "sidebar__user_upgrade_card__footer__title": "அடுத்த பக்கத்தில் விண்ணப்பிக்கப்படும் வரை உங்களுக்கு கட்டணம் விதிக்கப்படாது.",
     "sidebar__daily_limit__title": "உங்கள் டெய்லி AI கேவல் வரம்பை உடைத்துவிட்டீர்கள். இன்று மேலும் இலவச AI கேவல்கள் கிடைக்கும்.",
     "sidebar__daily_limit__link__title": "உடனடியாக எல்லாத்துவமான AI கேவல்களுக்கான மேம்படுத்தலை இப்போது மேம்படுத்தவும்.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "எந்த படத்திற்கும் கேள்விகளை கேட்கவும் முடியும்.",
     "sidebar__promotion_dialog__vision__content_item3__description": "எளிதாக ஒரு ஸ்கிரீன்ஷாட் எடுக்கி எந்த கேள்வியையும் உங்களுக்கு செல்லும்.",
     "sidebar__promotion_dialog__vision__content_item4__description": "சிறந்த AI மாதிரிகள்: GPT-4o, Claude-3-opus, Gemini-1.5-pro ஆல் இயங்குகின்றன.",
-    "sidebar__promotion_dialog__discount__title": "இப்போது 53% சேமிக்கவும்",
+    "sidebar__promotion_dialog__discount__title": "இப்போது {{DISCOUNT}} சேமிக்கவும்",
     "provider__chatgpt__upload_file_error__total_too_large__text": "பதிவேற்றப்பட்ட கோப்புகள் மிகப் பெரியவையாக உள்ளன. மிகுந்த உள்ளடக்க சாளர சாப்பிடுகை அல்லது சிறிய கோப்புகளை பதிவேற்றுக.",
     "chat__user_message__contexts__file__preview__tips": "மூலம் வருமானத்தில் வடிவமைப்பு அட்டவணை ஒழுங்கு இருக்கலாம்.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "மிகுந்த மூன்று அடிப்படை கலை மாதிரிகளுடன் உங்கள் செயல்முறையை மற்றும் உணர்வை 10 மடங்கு அதிகரிக்கவும். உங்கள் காட்சிகளை அழகாக மாற்றுவதை வேகமாக செய்யும். எளிதான, வல்லுனர்களுக்கு மாற்றாகும்.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o மட்டும். மற்ற அனைத்து AI மாதிரிகளையும் திறந்துவிட மேலும் மேக்ஸ்ஐ எலைட் திட்டத்தில் மேம்படுத்தவும்.",
     "pricing__upgrade__popper_card__item4__title": "உங்கள் பணத்திற்கு சிறந்த மதிப்பு",
     "permission__pricing_hook__context_menu__title": "அப்க்ரேட் செய்ய உச்சநிலை AI மறுஎழுத்தாளரை விரிவாக்கவும்",
-    "permission__pricing_hook__context_menu__description": "மேக்ஸ்AI இன் AI மறுஎழுத்தாளர் உடன், நீங்கள் மின்னஞ்சல் முகவரி முதல் சமீபத்திய சோசியல் மீடியாவரையும் உங்கள் வார்த்தைகளை முழுமையாக மேம்படுத்த, நேரம் சேமிக்க முடியும்."
+    "permission__pricing_hook__context_menu__description": "மேக்ஸ்AI இன் AI மறுஎழுத்தாளர் உடன், நீங்கள் மின்னஞ்சல் முகவரி முதல் சமீபத்திய சோசியல் மீடியாவரையும் உங்கள் வார்த்தைகளை முழுமையாக மேம்படுத்த, நேரம் சேமிக்க முடியும்.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "ஜிபிடி-4o-மினி அணுகுக",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "ஓபன்ஏஐஸ் புதிய மாதிரி",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-டர்போவினுடன் மிகவும் புதுப்பிக்கப்பட்டது",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-டர்போ போன்றது",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "உரை மற்றும் பார்வை திறன்களை ஆதரிக்கின்றது",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "மேம்படுத்தப்பட்ட பல மொழி புரிதல்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

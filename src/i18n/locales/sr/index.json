@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Otključaj sve funkcije",
     "sidebar__user_upgrade_card__item3__title": "Uštedi sate svakog dana",
     "sidebar__user_upgrade_card__learn_more__title": "Saznajte više",
-    "sidebar__user_upgrade_card__discount__title": "Uštedite 53% sada",
+    "sidebar__user_upgrade_card__discount__title": "Uštedite sada {{DISCOUNT}}",
     "sidebar__user_upgrade_card__footer__title": "Neće vam biti naplaćeno do sledeće stranice.",
     "sidebar__daily_limit__title": "Dosegli ste svoj dnevni limit upita za AI. Više besplatnih AI upita biće dostupno sutra.",
     "sidebar__daily_limit__link__title": "Nadogradite odmah za neograničene AI upite.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Postavljajte pitanja o bilo kojoj slici i dobijajte trenutne odgovore.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Jednostavno napravite snimak ekrana i postavite pitanja odmah.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Pokreće najbolje AI modele: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Uštedite 53% sada",
+    "sidebar__promotion_dialog__discount__title": "Uštedite sada {{DISCOUNT}}",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Postavljeni fajlovi su preveliki. Molimo koristite AI model sa većim prozorom konteksta ili postavite manje fajlove.",
     "chat__user_message__contexts__file__preview__tips": "Formatiranje može biti neskladno sa izvorom.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Povećajte svoju kreativnost i produktivnost za 10 puta uz najnaprednije AI modele umetnosti. Brzo pretvorite svoje vizije u zadivljujuće slike. Jednostavno, moćno, transformišuće.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Samo GPT-4o. Da biste otključali sve ostale AI modele, nadogradite se na MaxAI Elite plan.",
     "pricing__upgrade__popper_card__item4__title": "Najbolja vrednost za vaš novac",
     "permission__pricing_hook__context_menu__title": "Nadogradite da otključate neograničen AI prepravljač",
-    "permission__pricing_hook__context_menu__description": "Sa MaxAI AI prepravljačem, možete uštedeti vreme na proveri i usavršavanju vaših reči širom weba, od e-pošte do društvenih medija i dalje."
+    "permission__pricing_hook__context_menu__description": "Sa MaxAI AI prepravljačem, možete uštedeti vreme na proveri i usavršavanju vaših reči širom weba, od e-pošte do društvenih medija i dalje.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Pristupite GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Najnoviji model kompanije OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Značajno pametniji od GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Brzo kao GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Podržava tekstualne i vizuelne mogućnosti",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Unapređeno višejezično razumevanje"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

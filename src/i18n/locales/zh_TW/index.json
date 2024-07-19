@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "解鎖所有功能",
     "sidebar__user_upgrade_card__item3__title": "每天節省數小時",
     "sidebar__user_upgrade_card__learn_more__title": "了解更多",
-    "sidebar__user_upgrade_card__discount__title": "立即節省53%",
+    "sidebar__user_upgrade_card__discount__title": "立即節省{{DISCOUNT}}",
     "sidebar__user_upgrade_card__footer__title": "在进入下一页之前您不会被收费。",
     "sidebar__daily_limit__title": "您已達到每日AI查詢限制。明天將提供更多免費AI查詢。",
     "sidebar__daily_limit__link__title": "立即升級，即可無限制使用AI查詢。",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "對任何圖像提出問題並立即獲得答案。",
     "sidebar__promotion_dialog__vision__content_item3__description": "只需截圖，立即提出任何問題。",
     "sidebar__promotion_dialog__vision__content_item4__description": "由最佳 AI 模型驅動：GPT-4o、Claude-3-opus、Gemini-1.5-pro。",
-    "sidebar__promotion_dialog__discount__title": "現在節省 53%",
+    "sidebar__promotion_dialog__discount__title": "立即節省{{DISCOUNT}}",
     "provider__chatgpt__upload_file_error__total_too_large__text": "上傳的檔案太大。請使用具有更大內容視窗的AI模型，或上傳較小的檔案。",
     "chat__user_message__contexts__file__preview__tips": "格式可能與來源不一致。",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "以最先進的AI藝術模型將您的創造力和生產力提升10倍。快速將您的想像轉化為令人驚艷的圖像。簡單、強大、具有轉化力。",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "僅限 GPT-4o。要解鎖所有其他 AI 模型，請升級至 MaxAI Elite 計劃。",
     "pricing__upgrade__popper_card__item4__title": "物超所值",
     "permission__pricing_hook__context_menu__title": "升級以解鎖無限人工智慧重寫",
-    "permission__pricing_hook__context_menu__description": "使用 MaxAI 的人工智慧重寫器，您可以節省校對和完善您在網絡上的文字的時間，從電子郵件到社交媒體等等。"
+    "permission__pricing_hook__context_menu__description": "使用 MaxAI 的人工智慧重寫器，您可以節省校對和完善您在網絡上的文字的時間，從電子郵件到社交媒體等等。",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "訪問 GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI 最新模型",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "比 GPT-3.5-Turbo 聰明得多",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "如GPT-3.5-Turbo般快速",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "支援文字和視覺功能",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "提升多語言理解能力"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

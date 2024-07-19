@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "すべての機能を解除",
     "sidebar__user_upgrade_card__item3__title": "毎日数時間を節約",
     "sidebar__user_upgrade_card__learn_more__title": "詳細を見る",
-    "sidebar__user_upgrade_card__discount__title": "今すぐ53%オフで購入",
+    "sidebar__user_upgrade_card__discount__title": "今{{DISCOUNT}}を保存",
     "sidebar__user_upgrade_card__footer__title": "次のページまで請求はされません。",
     "sidebar__daily_limit__title": "1日のAIクエリ制限に達しました。明日はもっと無料のAIクエリが利用可能です。",
     "sidebar__daily_limit__link__title": "今すぐアップグレードして即座に無制限のAIクエリを利用できます。",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "どんな画像に対しても質問し、即座に回答を得ます。",
     "sidebar__promotion_dialog__vision__content_item3__description": "スクリーンショットを撮ってすぐに質問できます。",
     "sidebar__promotion_dialog__vision__content_item4__description": "最高のAIモデル（GPT-4o、Claude-3-opus、Gemini-1.5-pro）によって強化されています。",
-    "sidebar__promotion_dialog__discount__title": "今すぐ53%割引",
+    "sidebar__promotion_dialog__discount__title": "今{{DISCOUNT}}を保存",
     "provider__chatgpt__upload_file_error__total_too_large__text": "アップロードされたファイルが大きすぎます。より大きなコンテキストウィンドウを持つAIモデルを使用するか、より小さいファイルをアップロードしてください。",
     "chat__user_message__contexts__file__preview__tips": "ソースからの書式設定が一貫していない場合があります。",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "最先端のAIアートモデルで創造性と生産性を10倍に。ビジョンを素晴らしいイメージに素早く変換します。シンプルでパワフル、変革的。",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4oのみ。他のすべてのAIモデルをアンロックするには、MaxAI Eliteプランにアップグレードしてください。",
     "pricing__upgrade__popper_card__item4__title": "あなたのお金に最適な価値",
     "permission__pricing_hook__context_menu__title": "無制限のAIリライターをアンロックするにはアップグレードしてください",
-    "permission__pricing_hook__context_menu__description": "MaxAIのAIリライターを使用すると、電子メールからソーシャルメディアまで、ウェブ全体で単語を校正し、完璧にする時間を節約できます。"
+    "permission__pricing_hook__context_menu__description": "MaxAIのAIリライターを使用すると、電子メールからソーシャルメディアまで、ウェブ全体で単語を校正し、完璧にする時間を節約できます。",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-miniにアクセス",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAIの最新モデル",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turboよりもかなりスマート",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-Turboと同じくらい速い",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "テキストとビジョン機能をサポート",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "多言語理解が向上しました"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -797,7 +797,7 @@
     "sidebar__user_upgrade_card__item2__title": "সমস্ত বৈশিষ্ট্য আনলক করুন",
     "sidebar__user_upgrade_card__item3__title": "প্রতিদিন ঘন্টা সংরক্ষণ করুন",
     "sidebar__user_upgrade_card__learn_more__title": "আরও জানুন",
-    "sidebar__user_upgrade_card__discount__title": "এখন ৫৩% ছাড় পান",
+    "sidebar__user_upgrade_card__discount__title": "এখন {{DISCOUNT}} সংরক্ষণ করুন",
     "sidebar__user_upgrade_card__footer__title": "পরবর্তী পৃষ্ঠায় আপনাকে চার্জ করা হবে না।",
     "sidebar__daily_limit__title": "আপনি আপনার দৈনিক AI জিঞাসা সীমা পৌছে গেছেন। আরও বিনামূল্যে AI জিঞাসা আগামীকাল উপলব্ধ হবে।",
     "sidebar__daily_limit__link__title": "এখনই আপগ্রেড করুন যাতে তাৎক্ষণিকভাবে সীমাহীন AI জিঞাসা পান।",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "যেকোনো ছবি সম্পর্কে প্রশ্ন করুন এবং তাৎপর্যপূর্ণ উত্তর পেতে পারুন।",
     "sidebar__promotion_dialog__vision__content_item3__description": "সহজেই একটি স্ক্রিনশট নিন এবং সামগ্রিক প্রশ্ন করুন।",
     "sidebar__promotion_dialog__vision__content_item4__description": "সেরা এআই মডেলদ্বয়ের কাছ থেকে প্রচুর শক্তি: জিপিটি-৪০, ক্লোড-৩-অপুস, জেমিনি-১.৫-প্রো।",
-    "sidebar__promotion_dialog__discount__title": "এখন ৫৩% বাঁচুন",
+    "sidebar__promotion_dialog__discount__title": "এখন {{DISCOUNT}} সংরক্ষণ করুন",
     "provider__chatgpt__upload_file_error__total_too_large__text": "আপলোড করা ফাইলগুলি অনেক বড়। দয়া করে একটি এইচআই মডেল ব্যবহার করুন যার সংশ্লেষণ উইন্ডো বড় আছে বা ছোট ফাইলগুলি আপলোড করুন।",
     "chat__user_message__contexts__file__preview__tips": "সোর্স থেকে ফরম্যাটিং অস্থির হতে পারে।",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "সর্বাধিক উন্নত এআই আর্ট মডেলগুলির সাহায্যে আপনার সৃজনশীলতা এবং উৎপাদনশীলতা 10 গুণ বাড়িয়ে নিন। আপনার ভাবনাগুলি দ্রুত অসাধারণ ছবি তৈরি করুন। সহজ, শক্তিশালী, পরিবর্তনশীল।",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "শুধুমাত্র GPT-4o। সমস্ত অন্যান্য AI মডেল আনলক করতে, MaxAI Elite পরিকল্পনায় আপগ্রেড করুন।",
     "pricing__upgrade__popper_card__item4__title": "আপনার টাকার জন্য সেরা মান",
     "permission__pricing_hook__context_menu__title": "সীমাহীন AI পুনর্রচনা আনলক করতে আপগ্রেড করুন",
-    "permission__pricing_hook__context_menu__description": "ম্যাক্সএআইর AI পুনর্রচনা দিয়ে, আপনি প্রুফরিডিং এবং ওয়ার্ড পারফেক্ট করার জন্য সময় সংরক্ষণ করতে পারেন ওয়েবের সাথে, ইমেল থেকে সোশ্যাল মিডিয়া এবং অতিরিক্ত।"
+    "permission__pricing_hook__context_menu__description": "ম্যাক্সএআইর AI পুনর্রচনা দিয়ে, আপনি প্রুফরিডিং এবং ওয়ার্ড পারফেক্ট করার জন্য সময় সংরক্ষণ করতে পারেন ওয়েবের সাথে, ইমেল থেকে সোশ্যাল মিডিয়া এবং অতিরিক্ত।",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini অ্যাক্সেস করুন",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI-র নতুনতম মডেল",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo থেকে অনেক পুরাতন",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-টার্বোর মত দ্রুত",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "টেক্সট এবং দৃশ্য সুবিধা সমর্থন",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "উন্নত বহুভাষিক বোঝাই"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

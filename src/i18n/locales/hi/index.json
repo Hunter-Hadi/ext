@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "सभी सुविधाओं को खोलें",
     "sidebar__user_upgrade_card__item3__title": "हर दिन घंटों का समय बचाएं",
     "sidebar__user_upgrade_card__learn_more__title": "और अधिक जानें",
-    "sidebar__user_upgrade_card__discount__title": "अभी 53% बचाएं",
+    "sidebar__user_upgrade_card__discount__title": "अब {{DISCOUNT}} बचाएं",
     "sidebar__user_upgrade_card__footer__title": "आपका चार्ज तब तक नहीं होगा जब तक आप अगले पेज पर नहीं जाते।",
     "sidebar__daily_limit__title": "आपने अपनी दैनिक एआई क्वेरी सीमा तक पहुंच गई है। कल अधिक मुफ्त एआई क्वेरी उपलब्ध होंगी।",
     "sidebar__daily_limit__link__title": "तुरंत असीमित एआई क्वेरी के लिए अपग्रेड करें।",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "किसी भी छवि के बारे में सवाल पूछें और तत्काल उत्तर प्राप्त करें।",
     "sidebar__promotion_dialog__vision__content_item3__description": "बस एक स्क्रीनशॉट लें और तुरंत किसी भी सवाल का उत्तर पूछें।",
     "sidebar__promotion_dialog__vision__content_item4__description": "सर्वश्रेष्ठ AI मॉडलों (GPT-4o, Claude-3-opus, Gemini-1.5-pro) द्वारा संचालित।",
-    "sidebar__promotion_dialog__discount__title": "अब 53% बचाएं",
+    "sidebar__promotion_dialog__discount__title": "अब {{DISCOUNT}} बचाएं",
     "provider__chatgpt__upload_file_error__total_too_large__text": "अपलोड की गई फ़ाइलें बहुत बड़ी हैं। कृपया एक AI मॉडल का उपयोग करें जिसमें एक बड़ी संदर्भ विंडो हो या छोटी फ़ाइलें अपलोड करें।",
     "chat__user_message__contexts__file__preview__tips": "स्रोत से स्वरूपण अस्थिर हो सकता है।",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "अपनी रचनात्मकता और उत्पादकता को सबसे उन्नत AI कला मॉडल के साथ 10 गुना बढ़ाएं। अपने विचारों को शानदार छवियों में तेजी से बदलें। सरल, शक्तिशाली, परिवर्तनकारी।",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "केवल GPT-4o। सभी अन्य AI मॉडल्स को अनलॉक करने के लिए MaxAI इलाइट प्लान पर अपग्रेड करें।",
     "pricing__upgrade__popper_card__item4__title": "आपके पैसे के लिए सर्वोत्तम मूल्य",
     "permission__pricing_hook__context_menu__title": "अनलॉक करें असीमित एआई रीव्राइटर को",
-    "permission__pricing_hook__context_menu__description": "मैक्सएआई के एआई रीव्राइटर के साथ, आप समय बचा सकते हैं प्रूफरीडिंग और अपने शब्दों को परफेक्ट करने में वेब पर, ईमेल से सोशल मीडिया तक और आगे।"
+    "permission__pricing_hook__context_menu__description": "मैक्सएआई के एआई रीव्राइटर के साथ, आप समय बचा सकते हैं प्रूफरीडिंग और अपने शब्दों को परफेक्ट करने में वेब पर, ईमेल से सोशल मीडिया तक और आगे।",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini तक पहुंचें",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI का नवीनतम मॉडल",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo से काफी अधिक बुद्धिमान",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-Turbo के रूप में तेज",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "टेक्स्ट और दृश्य क्षमताओं का समर्थन",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "बेहतरिन बहुभाषी समझ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
     "sidebar__user_upgrade_card__item3__title": "ಪ್ರತಿ ದಿನವೂ ಹೊರತುಪಡಿಸಿಕೊಳ್ಳಿ",
     "sidebar__user_upgrade_card__learn_more__title": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
-    "sidebar__user_upgrade_card__discount__title": "ಈಗ 53% ಉಳಿಸಿ",
+    "sidebar__user_upgrade_card__discount__title": "ಈಗ {{DISCOUNT}} ಉಳಿಸಿ",
     "sidebar__user_upgrade_card__footer__title": "ಮುಂದಿನ ಪುಟಕ್ಕೆ ನೀವು ಹೆಚ್ಚು ಹಣ ಪಾವತಿಸಲ್ಪಡುವುದಿಲ್ಲ.",
     "sidebar__daily_limit__title": "ನೀವು ದೈನಂದಿನ AI ಪ್ರಶ್ನೆ ಮಿತಿಯನ್ನು ತಲುಪಿದ್ದೀರಿ. ಹೆಚ್ಚು ಉಚಿತ AI ಪ್ರಶ್ನೆಗಳು ನಾಳೆ ಲಭ್ಯವಾಗುತ್ತವೆ.",
     "sidebar__daily_limit__link__title": "ಇಪ್ಪಟಿಗೆ ಅಮಿತ ಎಯ್ ಐ ಪ್ರಶ್ನೆಗಳಿಗಾಗಿ ನವೀಕರಿಸಿ.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ಯಾವುದೇ ಚಿತ್ರದ ಬಗ್ಗೆ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಿ ತಕ್ಷಣವೇ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
     "sidebar__promotion_dialog__vision__content_item3__description": "ಸರಳವಾಗಿ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ತೆಗೆದು ಯಾವುದೇ ಪ್ರಶ್ನೆಯನ್ನು ಕೇಳಿ ತಕ್ಷಣವೇ.",
     "sidebar__promotion_dialog__vision__content_item4__description": "ಅತ್ಯುತ್ತಮ AI ಮಾದರಿಗಳಿಂದ ಪ್ರಾಮುಖ್ಯತೆಯನ್ನು ಪಡೆದಿರುವುದು: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "ಈಗ 53% ಉಳಿಸಿ",
+    "sidebar__promotion_dialog__discount__title": "ಈಗ {{DISCOUNT}} ಉಳಿಸಿ",
     "provider__chatgpt__upload_file_error__total_too_large__text": "ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾದ ಕಡತಗಳು ತುಂಬ ದೊಡ್ಡವು. ದಯವಿಟ್ಟು ಒಂದು ಹೆಚ್ಚು ಸಂದರ್ಭ ವಿಂಡೋವ್ ಅಥವಾ ಕಡಿಮೆ ಕಡತಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.",
     "chat__user_message__contexts__file__preview__tips": "ಬಂಡಿಗಳು ಮೂಲದಿಂದ ಅನಿಯಮಿತವಾಗಿರಬಹುದು.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "ಮುಂದುವರೆಸಿ ನಿಮ್ಮ ಕಲೆ ಮತ್ತು ಉತ್ಪಾದನಶೀಲತೆಯನ್ನು ಅತ್ಯಂತ ಮುಂದುವರೆಸಿದ AI ಕಲಾ ಮಾದರಿಗಳೊಂದಿಗೆ 10 ಸಲ ಹೆಚ್ಚಿಸಿ. ನಿಮ್ಮ ಭಾವನೆಗಳನ್ನು ತುಂಬಿದ ಚಿತ್ರಗಳನ್ನು ತ್ವರಿತವಾಗಿ ರೂಪಿಸಿ. ಸರಳ, ಶಕ್ತಿಶಾಲಿ, ಬದಲಾವಣೆಯನ್ನುಂಟುಮಾಡುವ.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o ಮಾತ್ರ. ಇತರ ಎಲ್ಲಾ AI ಮಾದರಿಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಲು ಮ್ಯಾಕ್ಸ್ಐ ಎಲೈಟ್ ಪ್ಲಾನ್ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ.",
     "pricing__upgrade__popper_card__item4__title": "ನಿಮ್ಮ ಹಣಕ್ಕಾಗಿ ಉತ್ತಮ ಮೌಲ್ಯ",
     "permission__pricing_hook__context_menu__title": "ಅನಿಮಿತ ಎಯಿ ರಿವ್ರೈಟರ್ ಅನ್ಲಾಕ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__context_menu__description": "ಮ್ಯಾಕ್ಸ್ಎಯಿ ಎಯಿ ರಿವ್ರೈಟರ್ ನೊಂದಿಗೆ, ಇಮೇಲ್ ನುಂಡಿ ಸೋಷಿಯಲ್ ಮೀಡಿಯಾ ವರೆಗೆ ನಿಮ್ಮ ಪದಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸುವುದರಲ್ಲಿ ಸಮಯ ಉಳಿಸಬಹುದು ಮತ್ತು ಸವಿಯನ್ನು ಸರಿಪಡಿಸುವುದಲ್ಲಿ ಸಹಾಯ ಮಾಡಬಹುದು."
+    "permission__pricing_hook__context_menu__description": "ಮ್ಯಾಕ್ಸ್ಎಯಿ ಎಯಿ ರಿವ್ರೈಟರ್ ನೊಂದಿಗೆ, ಇಮೇಲ್ ನುಂಡಿ ಸೋಷಿಯಲ್ ಮೀಡಿಯಾ ವರೆಗೆ ನಿಮ್ಮ ಪದಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸುವುದರಲ್ಲಿ ಸಮಯ ಉಳಿಸಬಹುದು ಮತ್ತು ಸವಿಯನ್ನು ಸರಿಪಡಿಸುವುದಲ್ಲಿ ಸಹಾಯ ಮಾಡಬಹುದು.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini ಅನ್ನು ಪ್ರವೇಶಿಸಿ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI ನವತರದ ಮಾದರಿ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo ಗಿಂತ ಗಟ್ಟಿಮತ್ತವಾಗಿದೆ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-ಟರ್ಬೋ ಹೆಚ್ಚು ಬೇಗ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "ಪಠ್ಯ ಮತ್ತು ದೃಶ್ಯ ಸಾಮರ್ಥ್ಯಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "ಮೆಕ್ಸಿಕನ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವ ಸುಧಾರಿತ ಬುದ್ಧಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

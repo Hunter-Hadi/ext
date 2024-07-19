@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Lås upp alla funktioner",
     "sidebar__user_upgrade_card__item3__title": "Spara timmar varje dag",
     "sidebar__user_upgrade_card__learn_more__title": "Läs mer",
-    "sidebar__user_upgrade_card__discount__title": "Spara 53% nu",
+    "sidebar__user_upgrade_card__discount__title": "Spara {{DISCOUNT}} nu",
     "sidebar__user_upgrade_card__footer__title": "Du kommer inte att debiteras förrän nästa sida.",
     "sidebar__daily_limit__title": "Du har nått din dagliga AI-frågebegränsning. Fler gratis AI-frågor kommer att vara tillgängliga imorgon.",
     "sidebar__daily_limit__link__title": "Uppgradera nu för obegränsade AI-frågor omedelbart.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Ställ frågor om vilken bild som helst och få omedelbara svar.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Ta enkelt en skärmdump och ställ omedelbart vilka frågor som helst.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Drivs av de bästa AI-modellerna: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Spara 53% nu",
+    "sidebar__promotion_dialog__discount__title": "Spara {{DISCOUNT}} nu",
     "provider__chatgpt__upload_file_error__total_too_large__text": "De uppladdade filerna är för stora. Använd en AI-modell med ett större sammanhangsfönster eller ladda upp mindre filer.",
     "chat__user_message__contexts__file__preview__tips": "Formateringen kan vara inkonsekvent från källan.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "10x din kreativitet och produktivitet med de mest avancerade AI-konstmodellerna. Omvandla snabbt dina visioner till fantastiska bilder. Enkelt, kraftfullt, transformerande.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Endast GPT-4o. För att låsa upp alla andra AI-modeller, uppgradera till MaxAI Elite-planen.",
     "pricing__upgrade__popper_card__item4__title": "Bästa värdet för dina pengar",
     "permission__pricing_hook__context_menu__title": "Uppgradera för att låsa upp obegränsad AI-omskrivare",
-    "permission__pricing_hook__context_menu__description": "Med MaxAI:s AI-omskrivare kan du spara tid på korrekturläsning och perfektionera dina ord över webben, från e-post till sociala medier och mer."
+    "permission__pricing_hook__context_menu__description": "Med MaxAI:s AI-omskrivare kan du spara tid på korrekturläsning och perfektionera dina ord över webben, från e-post till sociala medier och mer.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Tillgång till GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAIs nyaste modell",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Betydligt smartare än GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Så snabb som GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Stödjer text- och visionsförmågor",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Förbättrad flerspråkig förståelse"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

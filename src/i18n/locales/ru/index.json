@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Разблокируйте все функции",
     "sidebar__user_upgrade_card__item3__title": "Экономьте часы каждый день",
     "sidebar__user_upgrade_card__learn_more__title": "Узнать больше",
-    "sidebar__user_upgrade_card__discount__title": "Сэкономьте 53% сейчас",
+    "sidebar__user_upgrade_card__discount__title": "Сэкономьте {{DISCOUNT}} сейчас",
     "sidebar__user_upgrade_card__footer__title": "Вам не будет начислено платежей до следующей страницы.",
     "sidebar__daily_limit__title": "Вы достигли своего ежедневного лимита запросов к искусственному интеллекту. Больше бесплатных запросов к искусственному интеллекту будет доступно завтра.",
     "sidebar__daily_limit__link__title": "Улучшите сейчас для мгновенного получения неограниченных запросов к искусственному интеллекту.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Задавайте вопросы о любом изображении и получайте мгновенные ответы.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Просто сделайте скриншот и сразу задавайте вопросы.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Работает на лучших моделях ИИ: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Сэкономьте 53% сейчас",
+    "sidebar__promotion_dialog__discount__title": "Сэкономьте {{DISCOUNT}} сейчас",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Загруженные файлы слишком большие. Пожалуйста, используйте модель искусственного интеллекта с более широким окном контекста или загрузите меньшие файлы.",
     "chat__user_message__contexts__file__preview__tips": "Форматирование может быть несогласованным с источником.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Увеличьте свою креативность и продуктивность в 10 раз с помощью самых передовых моделей искусственного интеллекта. Быстро превращайте свои видения в потрясающие изображения. Просто, мощно, трансформационно.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Только GPT-4o. Чтобы разблокировать все другие модели искусственного интеллекта, перейдите на план MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Лучшее предложение за ваши деньги",
     "permission__pricing_hook__context_menu__title": "Повысьте уровень, чтобы разблокировать неограниченный переопределитель ИИ",
-    "permission__pricing_hook__context_menu__description": "С помощью переопределителя ИИ MaxAI вы можете экономить время на корректировке и совершенствовании ваших слов в Интернете, от электронной почты до социальных сетей и далее."
+    "permission__pricing_hook__context_menu__description": "С помощью переопределителя ИИ MaxAI вы можете экономить время на корректировке и совершенствовании ваших слов в Интернете, от электронной почты до социальных сетей и далее.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Доступ к GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Новейшая модель от OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Значительно умнее GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Так же быстро, как GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Поддерживает текстовые и видео возможности",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Улучшенное многоязычное понимание"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

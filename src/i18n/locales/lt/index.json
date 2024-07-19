@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Atrakinti visus funkcionalumus",
     "sidebar__user_upgrade_card__item3__title": "Sutaupyti valandas kiekvieną dieną",
     "sidebar__user_upgrade_card__learn_more__title": "Sužinokite daugiau",
-    "sidebar__user_upgrade_card__discount__title": "Dabar sutaupykite 53%",
+    "sidebar__user_upgrade_card__discount__title": "Išsaugokite {{DISCOUNT}} dabar",
     "sidebar__user_upgrade_card__footer__title": "Jums nebus taikoma jokių mokesčių iki kitos puslapio.",
     "sidebar__daily_limit__title": "Pasiekėte savo dieninį dirbtinio intelekto užklausų limitą. Daugiau nemokamų dirbtinio intelekto užklausų bus prieinama rytoj.",
     "sidebar__daily_limit__link__title": "Dabar atnaujinkite, kad iš karto gautumėte neribotą dirbtinio intelekto užklausų kiekį.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Užduokite klausimus apie bet kokį vaizdą ir gaukite momentinius atsakymus.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Paprastai padarykite ekrano nuotrauką ir nedelsiant užduokite klausimus.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Veikia su geriausiais dirbtinio intelekto modeliais: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Dabar sutaupykite 53%",
+    "sidebar__promotion_dialog__discount__title": "Išsaugokite {{DISCOUNT}} dabar",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Įkelti failai yra per dideli. Prašome naudoti AI modelį su didesniu konteksto langeliu arba įkelti mažesnius failus.",
     "chat__user_message__contexts__file__preview__tips": "Formatavimas gali būti nenuoseklus iš šaltinio.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Padidinkite savo kūrybiškumą ir produktyvumą 10 kartų su pažangiausiais meninės intelekto modeliais. Greitai paverčia savo vizijas į nuostabius vaizdus. Paprasta, galinga, transformuojanti.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tik GPT-4o. Norėdami atrakinti visus kitus dirbtinio intelekto modelius, atnaujinkite iki MaxAI Elite plano.",
     "pricing__upgrade__popper_card__item4__title": "Geriausia vertė už jūsų pinigus",
     "permission__pricing_hook__context_menu__title": "Atnaujinkite, kad atrakintumėte neribotą AI persirašytoją",
-    "permission__pricing_hook__context_menu__description": "Su MaxAI AI persirašytoju galite sutaupyti laiko, kai redaguojate ir tobulinate savo žodžius visame tinkle, nuo el. pašto iki socialinių tinklų ir dar toliau."
+    "permission__pricing_hook__context_menu__description": "Su MaxAI AI persirašytoju galite sutaupyti laiko, kai redaguojate ir tobulinate savo žodžius visame tinkle, nuo el. pašto iki socialinių tinklų ir dar toliau.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Pasiekite GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Naujausias „OpenAI“ modelis",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Reikšmingai protingesnis nei GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Toks greitas kaip GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Palaiko teksto ir regėjimo galimybes",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pagerinta daugiakalbė supratimas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

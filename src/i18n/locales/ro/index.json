@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Deblocare toate funcțiile",
     "sidebar__user_upgrade_card__item3__title": "Economisiți ore în fiecare zi",
     "sidebar__user_upgrade_card__learn_more__title": "Aflați mai multe",
-    "sidebar__user_upgrade_card__discount__title": "Economisiți 53% acum",
+    "sidebar__user_upgrade_card__discount__title": "Economisiți {{DISCOUNT}} acum",
     "sidebar__user_upgrade_card__footer__title": "Nu veți fi taxat până la pagina următoare.",
     "sidebar__daily_limit__title": "Ai atins limita zilnică de interogări AI. Mai multe interogări AI gratuite vor fi disponibile mâine.",
     "sidebar__daily_limit__link__title": "Upgradează acum pentru interogări AI nelimitate instant.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Pune întrebări despre orice imagine și primește răspunsuri instantanee.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Fă rapid o captură de ecran și pune orice întrebări imediat.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Cu cele mai bune modele AI: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Economisește 53% acum",
+    "sidebar__promotion_dialog__discount__title": "Economisiți {{DISCOUNT}} acum",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Fișierele încărcate sunt prea mari. Vă rugăm să utilizați un model AI cu o fereastră de context mai mare sau să încărcați fișiere mai mici.",
     "chat__user_message__contexts__file__preview__tips": "Formatarea poate fi inconsistentă față de sursă.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Multiplică-ți creativitatea și productivitatea cu cele mai avansate modele de artă AI. Transformă rapid viziunile tale în imagini uimitoare. Simplu, puternic, transformativ.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Doar GPT-4o. Pentru a debloca toate celelalte modele de AI, faceți upgrade la planul MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Cel mai bun raport calitate-preț",
     "permission__pricing_hook__context_menu__title": "Upgrade pentru a debloca rescrierea AI nelimitată",
-    "permission__pricing_hook__context_menu__description": "Cu rewriterul AI MaxAI, puteți economisi timp la corectarea și perfecționarea cuvintelor dvs. pe web, de la e-mail la social media și dincolo."
+    "permission__pricing_hook__context_menu__description": "Cu rewriterul AI MaxAI, puteți economisi timp la corectarea și perfecționarea cuvintelor dvs. pe web, de la e-mail la social media și dincolo.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Accesați GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Cel mai nou model OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Semnificativ mai inteligent decât GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "La fel de rapid ca GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Suportă capacități de text și viziune",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Îmbunătățirea înțelegerii multilingve"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

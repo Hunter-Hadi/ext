@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "అన్లాక్ అన్నీ లక్షణాలు",
     "sidebar__user_upgrade_card__item3__title": "రోజువారీ గంటలను సేవ్ చేయండి",
     "sidebar__user_upgrade_card__learn_more__title": "మరిన్ని తెలుసుకోండి",
-    "sidebar__user_upgrade_card__discount__title": "ఇప్పుడు 53% సేవ్ చేయండి",
+    "sidebar__user_upgrade_card__discount__title": "ఇప్పుడు {{DISCOUNT}} సేవ్ చేయండి",
     "sidebar__user_upgrade_card__footer__title": "మీరు తదుపరి పేజీ కనిపించవచ్చు వరకు చార్జ్ చేయబడదు.",
     "sidebar__daily_limit__title": "మీరు మీ డేలీ AI ప్రశ్న పరిమితిని చేరుకున్నారు. మరొక ఉచిత AI ప్రశ్నలు రేపు అందుబాటులో ఉంటాయి.",
     "sidebar__daily_limit__link__title": "ఇప్పుడు అనంతమైన AI ప్రశ్నలకోసం అప్గ్రేడ్ చేయండి.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ఏ చిత్రం గురించి ప్రశ్నలు అడగండి మరియు త్వరగా సమాధానాలను పొందండి.",
     "sidebar__promotion_dialog__vision__content_item3__description": "స్క్రీన్‌షాట్ తీసుకోండి మరియు ఏ ప్రశ్నను చేయండి.",
     "sidebar__promotion_dialog__vision__content_item4__description": "ఉత్తమ AI మోడల్స్: GPT-4o, Claude-3-opus, Gemini-1.5-pro ద్వారా పవర్ చేయబడింది.",
-    "sidebar__promotion_dialog__discount__title": "ఇప్పుడు 53% సేవ్ చేయండి",
+    "sidebar__promotion_dialog__discount__title": "ఇప్పుడు {{DISCOUNT}} సేవ్ చేయండి",
     "provider__chatgpt__upload_file_error__total_too_large__text": "అప్లోడ్ చేసిన ఫైళ్ళు చాలా పెద్దవిగా ఉన్నాయి. దయచేసి ఒక పెద్ద కంటెక్స్ట్ విండోతో AI మోడల్ ఉపయోగించండి లేదా తక్కువ సైజులో ఫైళ్ళు అప్లోడ్ చేయండి.",
     "chat__user_message__contexts__file__preview__tips": "మూలం నుండి ఫార్మాటింగ్ అసమంజసం ఉంటది.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "అత్యాధునిక ఎయి ఆర్ట్ మోడల్స్‌తో మీ సృజనాత్మకత మరియు ఉత్పత్తిశీలతను 10x పెంచుకోండి. మీ దృష్టిని అద్భుతమైన చిత్రాలకు మార్చండి. సరళమైన, శక్తివంతమైన, మార్పులు చేసేందుకు.",
@@ -1011,7 +1011,13 @@
     "sidebar__chat__voice_input__timeout__tooltip": "ట్రాన్స్క్రిప్షన్ టైమ్ ఔట్ అయింది.\nదయచేసి మళ్ళీ ప్రయత్నించండి.",
     "pricing__upgrade__popper_card__item4__title": "మీ డబ్బుకోసం ఉత్తమ విలువ",
     "permission__pricing_hook__context_menu__title": "అన్లిమిటెడ్ ఎయి రీవ్రైటర్ అన్లాక్ చేయడానికి అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__context_menu__description": "మాక్స్ఎయి యొక్క ఎయి రీవ్రైటర్ తో, మీరు ఇమెయిలు నుండి సోషల్ మీడియా వరకు వెబ్లో మీ పదాలను ప్రూఫ్రీడింగ్ మరియు పూర్తి చేస్తున్నారు."
+    "permission__pricing_hook__context_menu__description": "మాక్స్ఎయి యొక్క ఎయి రీవ్రైటర్ తో, మీరు ఇమెయిలు నుండి సోషల్ మీడియా వరకు వెబ్లో మీ పదాలను ప్రూఫ్రీడింగ్ మరియు పూర్తి చేస్తున్నారు.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "జిపిటి-4o-మిని యాక్సెస్ చేయండి",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "ఓపెన్ఐ కొత్త మోడల్",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-టర్బో కంటే మరిన్ని బుద్ధిమంతుడు",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-టర్బో కంటెంట్",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "టెక్స్ట్ మరియు విజన్ సామర్థ్యాలను మద్దతు చేస్తుంది",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "మెరుగుపరచిన బహుభాషా అర్థం"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

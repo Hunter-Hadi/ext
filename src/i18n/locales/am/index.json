@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "ሁሉንም አጠቃቀም አሳይ",
     "sidebar__user_upgrade_card__item3__title": "በየቀኑ ሰውነት ሳይቀርብ",
     "sidebar__user_upgrade_card__learn_more__title": "ተጨማሪ ይፈልጋል",
-    "sidebar__user_upgrade_card__discount__title": "አገልግሎት 53% ይችላል",
+    "sidebar__user_upgrade_card__discount__title": "እንዴት እንደሚችል {{DISCOUNT}} አስቀምጥ",
     "sidebar__user_upgrade_card__footer__title": "ከመጨረሻ በፊት አይገኝም.",
     "sidebar__daily_limit__title": "በዚህም ቀን የሚያስተካክል የAI ጥያቄዎችዎን ተመልከቱ። በቅርብ የAI ጥያቄዎች በጠነበቱ ይጠቀሙ።",
     "sidebar__daily_limit__link__title": "ካልሆነ አሁን ለየት የAI ጥያቄዎች እንደገና አዘጋጅተዋል።",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "ጥያቄዎችን ለመጻፍ ጥያቄ የሚገኙ የምግብ መስሪያዎችን ጥያቄ መልእክት.",
     "sidebar__promotion_dialog__vision__content_item3__description": "በቀላሉ ሱማሌን የጥያቄዎችን ጥያቄ ለመጻፍ ጥያቄ የሚገኙ.",
     "sidebar__promotion_dialog__vision__content_item4__description": "በሩቅ በማስተላለፍ የሚገኙ የብሔራዊና የፍቃድ መስሪያዎች: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "ከምስል 53% ይቀርባል",
+    "sidebar__promotion_dialog__discount__title": "እንዴት እንደሚችል {{DISCOUNT}} አስቀምጥ",
     "provider__chatgpt__upload_file_error__total_too_large__text": "የማታውቂያ ፋይሎች በጣም እየተጠቀሙ ነው። እባክዎ የትርጉም መልኩን ያስቀምጡ ወይም ፋይሎችን በጣም እንዴት እንደሚጠቀሙ AI ሞዴል ይጠቀሙ።",
     "chat__user_message__contexts__file__preview__tips": "በመረጃ ላይ የተሰናዳን ማስተካከያ ይሻላል።",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "የትምህርት እና ስራዎችን በቀላሉ የሚጠቀሙበት የተለመደው AI ማስታወቂያዎችን 10 አመት የሚያስተምሩበት የሚገኙበት የትምህርት ስራዎችን በቀላሉ የሚጠቀሙበት የተለመደው AI ማስታወቂያዎችን 10 አመት የሚያስተምሩበት የትምህርት ስራዎችን በቀላሉ የሚጠቀሙበት የተለመደው AI ማስታወቂያዎችን 10 አመት የሚያስተምሩበት የትምህርት ስራዎችን በቀላሉ የሚጠቀሙበት የተለመደው AI ማስታወቂያዎችን 10 አመት የሚያስተምሩበት የትምህርት ስራዎችን በቀላሉ የሚጠቀሙበት የተለመደው AI ማስታወቂያዎችን 10 አመት የሚያስተምሩበት የትምህርት ስራዎችን 10 አመት የሚያስተምሩበት",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "ጂዲ-4o ብቻ. ሌላ አይነት AI ሞዴሎችን ለመከታተል, የሚከተለውን MaxAI Elite አደጋ ይዘትን ይዘምሩ።",
     "pricing__upgrade__popper_card__item4__title": "የገና እርስዎ ላይ ያለው እጅ",
     "permission__pricing_hook__context_menu__title": "ከእንስሳት ጋር እዚህ የሚታይ የAI አስተያየት አገልግሎት አድርገህ ይጠቀሙ",
-    "permission__pricing_hook__context_menu__description": "በMaxAI የAI አስተያየት አስተያየት ለመቀነስ ከሚገኝ እና ከሌሎች ድረ-ገጽ በኢሜል እና በሶሪያል ሚድያ ውስጥ የሚሰራውን ክፍል ለማስተካከል ይችላሉ።"
+    "permission__pricing_hook__context_menu__description": "በMaxAI የAI አስተያየት አስተያየት ለመቀነስ ከሚገኝ እና ከሌሎች ድረ-ገጽ በኢሜል እና በሶሪያል ሚድያ ውስጥ የሚሰራውን ክፍል ለማስተካከል ይችላሉ።",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "የ GPT-4o-mini ይዘት",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "ኦፕንአይ በቅርብ ማዕከል",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "በ GPT-3.5-Turbo እንደተሞከረ ነው",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "በ GPT-3.5-Turbo እንደተሞከረ ነው",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "ጽሁፍ እና እንደማህበረሰብ እንቅስቃሴ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "በተለያዩ ቋንቋዎች ያለው አገልግሎት"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

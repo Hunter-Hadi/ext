@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Desbloqueja totes les funcionalitats",
     "sidebar__user_upgrade_card__item3__title": "Estalvia hores cada dia",
     "sidebar__user_upgrade_card__learn_more__title": "Més informació",
-    "sidebar__user_upgrade_card__discount__title": "Estalvia un 53% ara",
+    "sidebar__user_upgrade_card__discount__title": "Estalvia {{DISCOUNT}} ara",
     "sidebar__user_upgrade_card__footer__title": "No se't cobrarà fins a la següent pàgina.",
     "sidebar__daily_limit__title": "Has arribat al límit diari de consultes d'IA. Més consultes d'IA gratuïtes estaran disponibles demà.",
     "sidebar__daily_limit__link__title": "Millora ara per tenir consultes d'IA il·limitades al moment.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Fes preguntes sobre qualsevol imatge i obtén respostes immediates.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Fes una captura de pantalla i fes preguntes immediatament.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Amb els millors models d'IA: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Estalvia un 53% ara",
+    "sidebar__promotion_dialog__discount__title": "Estalvia {{DISCOUNT}} ara",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Els fitxers carregats són massa grans. Si us plau, utilitzeu un model d'IA amb una finestra de context més gran o carregueu fitxers més petits.",
     "chat__user_message__contexts__file__preview__tips": "El format pot ser inconsistent amb la font.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Augmenta la teva creativitat i productivitat amb els models d'artificial intelligence més avançats. Transforma ràpidament les teves visions en imatges impressionants. Senzill, potent, transformador.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Només GPT-4o. Per desbloquejar tots els altres models d'IA, actualitza al pla MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Millor valor pel teu diner",
     "permission__pricing_hook__context_menu__title": "Millora per desbloquejar l'AI reescriptor il·limitat",
-    "permission__pricing_hook__context_menu__description": "Amb l'AI reescriptor de MaxAI, pots estalviar temps en correccions i perfeccionar les teves paraules a través de la web, des de correus electrònics a xarxes socials i més enllà."
+    "permission__pricing_hook__context_menu__description": "Amb l'AI reescriptor de MaxAI, pots estalviar temps en correccions i perfeccionar les teves paraules a través de la web, des de correus electrònics a xarxes socials i més enllà.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Accedeix a GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "El model més nou d'OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Significativament més intel·ligent que GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tan ràpid com GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Compatibilitza amb text i visió",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Millora en comprensió multilingüe"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

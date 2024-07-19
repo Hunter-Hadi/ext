@@ -796,7 +796,7 @@
     "sidebar__user_upgrade_card__item2__title": "Բացահայտեք բոլոր հատկանիշները",
     "sidebar__user_upgrade_card__item3__title": "Գործարկեք ժամանակը ամենօրյա",
     "sidebar__user_upgrade_card__learn_more__title": "Իմացեք ավելին",
-    "sidebar__user_upgrade_card__discount__title": "Գնածառնակալեք 53% հիմա",
+    "sidebar__user_upgrade_card__discount__title": "Գնել {{DISCOUNT}} այժմ",
     "sidebar__user_upgrade_card__footer__title": "Դուք չեք վճարվի, մինչև հաջորդ էջին:",
     "sidebar__daily_limit__title": "Դուք հասել եք ձեր օրվա առավոտյան AI հարցումների սահմանը: Ավելի շատ անվճար AI հարցումներ կլինեն համապատասխան վերահասանելի կլինի վերաբերյալ:",
     "sidebar__daily_limit__link__title": "Գնացեք հիմա անսահման AI հարցումների համար:",
@@ -863,7 +863,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Հարցեր կատարեք ցանկացած պատկերի մասին և ստացեք անմիջապես պատասխաններ:",
     "sidebar__promotion_dialog__vision__content_item3__description": "Սպասեք պատասխաններին հարցնելով պատկեր սկրինշոթից և ստացեք հարցերի անմիջապես պատասխաններ:",
     "sidebar__promotion_dialog__vision__content_item4__description": "Գործածելով լավագույն AI մոդելները՝ GPT-4o, Claude-3-opus, Gemini-1.5-pro:",
-    "sidebar__promotion_dialog__discount__title": "Պահպանեք 53% հիմա",
+    "sidebar__promotion_dialog__discount__title": "Գնել {{DISCOUNT}} այժմ",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Վերբեռնված ֆայլերը չեն կարող լինել շատ մեծ։ Խնդրում եմ օգտագործեք AI մոդել, որը ունի ավելի մեծ պատուհանակաշրջանառություն՝ կամ վերբեռնեք փոքր ֆայլեր։",
     "chat__user_message__contexts__file__preview__tips": "Ձևանմուշային ձևաչափը կարող է տարբերվել աղյուսակից։",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Բարձրացրեք ձեր ստեղծագործականությունը 10 անգամ ավելի արագ և արդյունավետ AI արվեստի մոդելներով։ Արագությամբ վերադարձնեք ձեր հասարակությունները հզոր, համեմատական՝ արագությամբ։",
@@ -1008,7 +1008,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o միայն: Բոլոր այլ AI մոդելները բացելու համար, արժեքավորեք MaxAI Elite պլանը։",
     "pricing__upgrade__popper_card__item4__title": "Լավագույն արժեքը ձեր գումարի համար",
     "permission__pricing_hook__context_menu__title": "Թարմացնել ՝ բացահայտել անսահման AI վերագրողը",
-    "permission__pricing_hook__context_menu__description": "MaxAI-ի AI վերագրողի հետ, դուք կարող եք պահպանել ժամանակ վերագրելու և ձեռքով համեղ բառերը կայքում, սկսած էլ. փոստից սոցիալ մեդիային մինչև:"
+    "permission__pricing_hook__context_menu__description": "MaxAI-ի AI վերագրողի հետ, դուք կարող եք պահպանել ժամանակ վերագրելու և ձեռքով համեղ բառերը կայքում, սկսած էլ. փոստից սոցիալ մեդիային մինչև:",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Դիտել GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI-ի նոր մոդելը",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Ավելի խորհրդական, քան GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Արագ ինչպես GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Աջակցում է տեքստի և տեսության հնարավորություններ",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Բարելավված առեւտրային հասկանակություն"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "Розблокуйте всі функції",
     "sidebar__user_upgrade_card__item3__title": "Зекономте години кожен день",
     "sidebar__user_upgrade_card__learn_more__title": "Дізнатися більше",
-    "sidebar__user_upgrade_card__discount__title": "Зекономте 53% зараз",
+    "sidebar__user_upgrade_card__discount__title": "Збережіть {{DISCOUNT}} зараз",
     "sidebar__user_upgrade_card__footer__title": "Вам не буде стягнено плату до наступної сторінки.",
     "sidebar__daily_limit__title": "Ви досягли щоденного обмеження запитів до штучного інтелекту. Більше безкоштовних запитів буде доступно завтра.",
     "sidebar__daily_limit__link__title": "Оновіть зараз для миттєвого доступу до необмежених запитів до штучного інтелекту.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "Задавайте питання про будь-яке зображення та отримуйте миттєві відповіді.",
     "sidebar__promotion_dialog__vision__content_item3__description": "Просто зробіть знімок екрана та задайте будь-які питання негайно.",
     "sidebar__promotion_dialog__vision__content_item4__description": "Працює на найкращих AI-моделях: GPT-4o, Claude-3-opus, Gemini-1.5-pro.",
-    "sidebar__promotion_dialog__discount__title": "Зекономте 53% зараз",
+    "sidebar__promotion_dialog__discount__title": "Збережіть {{DISCOUNT}} зараз",
     "provider__chatgpt__upload_file_error__total_too_large__text": "Завантажені файли занадто великі. Будь ласка, використовуйте модель штучного інтелекту з більшим вікном контексту або завантажуйте менші файли.",
     "chat__user_message__contexts__file__preview__tips": "Форматування може бути неоднаковим у вихідному джерелі.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Збільшуйте свою креативність та продуктивність в 10 разів за допомогою найпродвинутіших моделей штучного інтелекту для мистецтва. Швидко перетворюйте свої візії на захоплюючі зображення. Просто, потужно, трансформуюче.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "Лише GPT-4o. Щоб розблокувати всі інші моделі штучного інтелекту, оновіться до плану MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Найкраща вартість за ваші гроші",
     "permission__pricing_hook__context_menu__title": "Оновіться, щоб розблокувати необмежений переписувач штучного інтелекту",
-    "permission__pricing_hook__context_menu__description": "З переписувачем штучного інтелекту MaxAI ви можете заощадити час на перевірці та вдосконаленні своїх слів в Інтернеті, від електронної пошти до соціальних мереж та далі."
+    "permission__pricing_hook__context_menu__description": "З переписувачем штучного інтелекту MaxAI ви можете заощадити час на перевірці та вдосконаленні своїх слів в Інтернеті, від електронної пошти до соціальних мереж та далі.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Доступ до GPT-4o-mini",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Найновіша модель від OpenAI",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Значно розумніший, ніж GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Так само швидко, як GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Підтримує текстові та візуальні можливості",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Покращене розуміння багатьох мов"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

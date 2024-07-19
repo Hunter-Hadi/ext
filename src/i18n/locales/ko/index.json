@@ -799,7 +799,7 @@
     "sidebar__user_upgrade_card__item2__title": "모든 기능 잠금 해제",
     "sidebar__user_upgrade_card__item3__title": "매일 시간을 절약하세요",
     "sidebar__user_upgrade_card__learn_more__title": "더 알아보기",
-    "sidebar__user_upgrade_card__discount__title": "지금 53% 할인 받기",
+    "sidebar__user_upgrade_card__discount__title": "지금 {{DISCOUNT}} 저장",
     "sidebar__user_upgrade_card__footer__title": "다음 페이지까지 요금이 청구되지 않습니다.",
     "sidebar__daily_limit__title": "하루에 사용 가능한 AI 쿼리 한도에 도달했습니다. 내일 더 많은 무료 AI 쿼리를 이용할 수 있습니다.",
     "sidebar__daily_limit__link__title": "즉시 무제한 AI 쿼리를 위해 지금 업그레이드하세요.",
@@ -866,7 +866,7 @@
     "sidebar__promotion_dialog__vision__content_item2__description": "어떤 이미지에 대한 질문을 하고 즉시 답변을 받으세요.",
     "sidebar__promotion_dialog__vision__content_item3__description": "스크린샷을 찍고 즉시 질문하세요.",
     "sidebar__promotion_dialog__vision__content_item4__description": "GPT-4o, Claude-3-opus, Gemini-1.5-pro와 같은 최고의 AI 모델로 구동됩니다.",
-    "sidebar__promotion_dialog__discount__title": "지금 53% 할인",
+    "sidebar__promotion_dialog__discount__title": "지금 {{DISCOUNT}} 저장",
     "provider__chatgpt__upload_file_error__total_too_large__text": "업로드한 파일이 너무 큽니다. 더 큰 컨텍스트 창을 가진 AI 모델을 사용하거나 더 작은 파일을 업로드해주세요.",
     "chat__user_message__contexts__file__preview__tips": "소스로부터의 포맷팅이 일관되지 않을 수 있습니다.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "가장 고급스러운 AI 예술 모델로 창의력과 생산성을 10배 높여보세요. 비전을 빠르게 멋진 이미지로 변환하세요. 간단하고 강력하며 혁신적입니다.",
@@ -1011,7 +1011,13 @@
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4o 만 가능. 다른 모든 AI 모델을 잠금 해제하려면 MaxAI 엘리트 플랜으로 업그레이드하세요.",
     "pricing__upgrade__popper_card__item4__title": "귀하의 돈 가치 최상의 선택",
     "permission__pricing_hook__context_menu__title": "무제한 AI 리라이터 잠금 해제",
-    "permission__pricing_hook__context_menu__description": "MaxAI의 AI 리라이터로 웹 전체에서 이메일부터 소셜 미디어까지 단어를 검토하고 완벽하게 하는 데 시간을 절약할 수 있습니다."
+    "permission__pricing_hook__context_menu__description": "MaxAI의 AI 리라이터로 웹 전체에서 이메일부터 소셜 미디어까지 단어를 검토하고 완벽하게 하는 데 시간을 절약할 수 있습니다.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini에 액세스",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI의 최신 모델",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo보다 현저히 똑똑함",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-Turbo만큼 빠름",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "텍스트 및 비전 기능 지원",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "향상된 다국어 이해"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

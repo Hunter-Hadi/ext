@@ -64,14 +64,33 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
   const isYearly = plan.includes('yearly')
 
   const isCurrentPlan = useMemo(() => {
-    if (currentUserPlan?.name.includes('elite')) {
-      return true
+    currentUserPlan.planName
+    switch (plan) {
+      case 'pro':
+        return currentUserPlan?.name === 'pro'
+      case 'pro_yearly':
+        return currentUserPlan?.planName === 'PRO_YEARLY'
+      case 'elite':
+        return currentUserPlan?.name === 'elite'
+      case 'elite_yearly':
+        return currentUserPlan?.planName === 'ELITE_YEARLY'
+      default:
+        return false
     }
-    if (currentUserPlan?.name.includes('pro') && plan.includes('pro')) {
-      return true
+  }, [currentUserPlan, plan])
+
+  const planButtonVisible = useMemo(() => {
+    if (currentUserPlan.isOneTimePayUser) {
+      // 一次性付费用户
+      if (currentUserPlan?.name === 'pro' && plan === 'pro') {
+        return false
+      }
+      if (currentUserPlan?.name === 'elite' && plan === 'elite') {
+        return false
+      }
     }
-    return false
-  }, [currentUserPlan?.name, plan])
+    return true
+  }, [currentUserPlan, plan])
 
   const priceText = useMemo(() => {
     const price = getTargetPlanDiscountedPrice(planPricing)
@@ -235,7 +254,7 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
         <Stack
           spacing={1}
           mt={2}
-          visibility={isCurrentPlan ? 'hidden' : 'visible'}
+          visibility={planButtonVisible ? 'visible' : 'hidden'}
         >
           <PlanButton
             renderType={plan}

@@ -63,6 +63,7 @@ const ConversationList: FC<IProps> = (props) => {
       type: conversationType,
     })
   }, [conversationType])
+
   return (
     <Stack height={'100%'} spacing={1} p={1} sx={sx}>
       <Stack
@@ -100,7 +101,10 @@ const ConversationList: FC<IProps> = (props) => {
           <ClearAllChatButton
             onDelete={() => {
               const needCleanConversationType =
-                currentSidebarConversationType.toLowerCase()
+                currentSidebarConversationType === 'ContextMenu'
+                  ? 'contextMenu'
+                  : currentSidebarConversationType.toLowerCase()
+
               updateSidebarSettings({
                 [needCleanConversationType]: {
                   conversationId: '',

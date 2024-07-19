@@ -22,6 +22,7 @@ type ImmersiveSettingsKey = keyof Exclude<
 >
 
 const conversationTypeRouteMap: Record<string, ISidebarConversationType> = {
+  contextmenu: 'ContextMenu',
   chat: 'Chat',
   search: 'Search',
   art: 'Art',

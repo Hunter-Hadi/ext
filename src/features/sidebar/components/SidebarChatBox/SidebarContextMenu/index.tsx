@@ -13,6 +13,7 @@ import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID } from '@/features/common/constants'
 import { useContextMenuList } from '@/features/contextMenu'
 import {
   contextMenuIsFavoriteContextMenu,
@@ -257,6 +258,18 @@ const SidebarContextMenu: FC = () => {
                   setIsContentEmptyError(false)
                   setContent(e.target.value)
                 }}
+                onKeyDown={(event) => {
+                  // 直接跳转到AutoHeightTextarea而不是uploadFile
+                  if (event.key.toLowerCase() === 'tab') {
+                    const element = getMaxAISidebarRootElement()?.querySelector(
+                      `#${MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID}`,
+                    ) as HTMLTextAreaElement | undefined
+
+                    element?.focus()
+                    event.preventDefault()
+                    event.stopPropagation()
+                  }
+                }}
                 placeholder={t('client:floating_menu__textarea__placeholder')}
                 autoFocus
               />
@@ -273,7 +286,7 @@ const SidebarContextMenu: FC = () => {
             >
               <AutoHeightTextarea
                 minLine={1}
-                InputId=''
+                InputId={MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID}
                 stopPropagation
                 autoFocus
                 onKeydownCapture={(event) => {
@@ -284,8 +297,16 @@ const SidebarContextMenu: FC = () => {
                     event.key === 'ArrowRight'
                   ) {
                     matcher.onNavigate(event.key.slice(5) as any)
+                    event.preventDefault()
                     event.stopPropagation()
                     return true
+                  } else if (
+                    event.shiftKey &&
+                    event.key.toLowerCase() === 'tab'
+                  ) {
+                    textareaRef.current?.focus()
+                    event.preventDefault()
+                    event.stopPropagation()
                   }
                   return false
                 }}

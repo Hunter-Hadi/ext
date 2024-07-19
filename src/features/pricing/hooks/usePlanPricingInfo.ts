@@ -97,6 +97,7 @@ const usePlanPricingInfo = (init?: boolean) => {
     if (isBetterDiscount(maxDiscount, planPricingInfo.data.elite_yearly)) {
       maxDiscount = planPricingInfo.data.elite_yearly
     }
+
     // 下面不这么写推导出得类型全是null?
     return { maxDiscount, maxYearlyDiscount, maxMonthlyDiscount } as {
       maxDiscount: IPlanPricingInfo | null

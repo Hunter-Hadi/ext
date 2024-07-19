@@ -3,6 +3,7 @@ import React, { FC, useState } from 'react'
 
 import PaymentTypeSwitch from '@/features/pricing/components/PaymentTypeSwitch'
 import PlanFeaturesCard from '@/features/pricing/components/PlanFeatures/PlanFeaturesCard'
+import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { IPaymentType, RENDER_PLAN_TYPE } from '@/features/pricing/type'
 
 export interface PlanFeaturesProps {
@@ -13,6 +14,8 @@ export interface PlanFeaturesProps {
 const PlanFeatures: FC<PlanFeaturesProps> = (props) => {
   const { onUpgradeClick, sx } = props
   const [paymentType, setPaymentType] = useState<IPaymentType>('yearly')
+
+  usePlanPricingInfo(true)
 
   return (
     <Stack sx={sx} spacing={3} minWidth={700}>

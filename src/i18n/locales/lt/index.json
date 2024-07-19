@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Reikšmingai protingesnis nei GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Toks greitas kaip GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Palaiko teksto ir regėjimo galimybes",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pagerinta daugiakalbė supratimas"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pagerinta daugiakalbė supratimas",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini yra OpenAI pažangiausias mažo masto modelis, siūlantis daugiamodalines galimybes. Šis kompaktiškas galingumas teikia teksto rezultatus su intelektu, pralenkiančiu GPT-3.5-Turbo, išlaikant palyginamą greitį. Idealu mažesniems uždaviniams, įskaitant vizijos susijusias taikymus.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Atnaujinkite, kad gautumėte neribotą GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Patirkite OpenAI pažangiausią mažo masto modelį iki šiol. GPT-4o-mini siūlo virškinamą našumą palyginti su GPT-3.5-turbo, su daugiamodalėmis galimybėmis ir greitais atsakymais."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

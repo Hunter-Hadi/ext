@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Mjanja sana kuliko GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Haraka kama GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Inasaidia uwezo wa maandishi na maono",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Uelewa bora wa lugha nyingi"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Uelewa bora wa lugha nyingi",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini ni mfano mdogo wa hali ya juu wa OpenAI, unatoa uwezo wa multimodal. Hii ni kifaa imara kinachotoa matokeo ya maandishi yenye akili zaidi kuliko GPT-3.5-Turbo huku ikibaki na kasi inayolinganishwa. Ideal kwa kazi ndogo, ikiwa ni pamoja na matumizi yanayohusiana na maono.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Boresha kwa GPT-4o-mini isiyo na kikomo",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Pata uzoefu wa mfano mdogo wenye akili zaidi wa OpenAI hadi sasa. GPT-4o-mini inatoa utendaji bora kuliko GPT-3.5-turbo, na uwezo wa multimodal na majibu ya haraka sana."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

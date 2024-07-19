@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Jelentősen okosabb, mint a GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Olyan gyors, mint a GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Támogatja a szöveg- és látási képességeket",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Fejlett többnyelvű megértés"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Fejlett többnyelvű megértés",
+    "provider__chatgpt__model__gpt_4o_mini__description": "A GPT-4o-mini az OpenAI legfejlettebb kis méretű modellje, többmódszeres képességeket kínál. Ez a kompakt erőmű intelligenciával szolgáló szövegkimeneteket nyújt, amelyek meghaladják a GPT-3.5-Turbo szintűt, miközben összehasonlítható sebességet tart fenn. Ideális kisebb feladatokhoz, ideértve a látással kapcsolatos alkalmazásokat is.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Frissítés korlátlan GPT-4o-mini használathoz",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Tapasztald meg az OpenAI legintelligensebb kis méretű modelljét, a GPT-4o-mini-t. A GPT-4o-mini kiváló teljesítményt nyújt a GPT-3.5-turbo felett, többmódszeres képességekkel és villámgyors válaszokkal."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

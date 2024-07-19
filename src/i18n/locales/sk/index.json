@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Výrazne inteligentnejší ako GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tak rýchlo ako GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Podporuje textové a vizuálne schopnosti",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Vylepšené viacjazyčné porozumenie"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Vylepšené viacjazyčné porozumenie",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini je najvyspelejší malý model od OpenAI, ponúka multimodálne schopnosti. Tento kompaktný powerhorse poskytuje textové výstupy s inteligenciou prevyšujúcou GPT-3.5-Turbo a zároveň udržiava porovnateľnú rýchlosť. Ideálny pre menšie úlohy, vrátane aplikácií súvisiacich s videním.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Aktualizujte pre neobmedzený GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Vyskúšajte najinteligentnejší malý model od OpenAI doteraz. GPT-4o-mini ponúka vynikajúce výkony oproti GPT-3.5-turbo, s multimodálnymi schopnosťami a bleskurýchlymi odpoveďami."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

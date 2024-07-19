@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Lebih bijak daripada GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Segera seperti GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Mendukung kemampuan teks dan penglihatan",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pemahaman multibahasa yang ditingkatkan"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pemahaman multibahasa yang ditingkatkan",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini adalah model berskala kecil yang paling canggih dari OpenAI, menawarkan kemampuan multimodal. Powerhouse padat ini memberikan output teks dengan kecerdasan yang melampaui GPT-3.5-Turbo sambil mempertahankan kecepatan yang sebanding. Ideal untuk tugas-tugas kecil, termasuk aplikasi terkait visi.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Naik taraf untuk GPT-4o-mini tanpa had",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Alami model berskala kecil yang paling bijak dari OpenAI. GPT-4o-mini menawarkan prestasi yang lebih unggul daripada GPT-3.5-turbo, dengan kemampuan multimodal dan respon yang cepat."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

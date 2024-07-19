@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Betydelig smartere enn GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Så rask som GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Støtter tekst- og visjonsevner",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Forbedret flerspråklig forståelse"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Forbedret flerspråklig forståelse",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini er OpenAI's mest avanserte småskala modell, som tilbyr multimodale evner. Denne kompakte kraftpakken leverer tekstresultater med intelligens som overgår GPT-3.5-Turbo samtidig som den opprettholder sammenlignbar hastighet. Ideell for mindre oppgaver, inkludert visjonsrelaterte applikasjoner.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Oppgrader for ubegrenset GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Opplev OpenAI's mest intelligente småskala modell så langt. GPT-4o-mini tilbyr overlegen ytelse over GPT-3.5-turbo, med multimodale evner og lynraske svar."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

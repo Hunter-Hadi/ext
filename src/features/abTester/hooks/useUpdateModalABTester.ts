@@ -7,6 +7,7 @@ import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
+import { APP_VERSION } from '@/constants'
 import {
   UPDATE_VARIANT,
   UPDATE_VARIANT_TEMPLATES,
@@ -40,6 +41,9 @@ const useUpdateModalABTester = () => {
     if (!onBoardingData['ON_BOARDING_EXTENSION_VERSION_4_6_1_UPDATE_MODAL']) {
       setCurrentUpdateVariant('gpt-4o-mini')
       return 'all'
+    }
+    if (APP_VERSION === '4.6.1') {
+      return false
     }
     // 弹过了，不弹窗
     if (

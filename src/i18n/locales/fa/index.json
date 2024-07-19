@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "به طور قابل توجهی هوشمندتر از GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "تاچندی از GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "قابلیت‌های متن و دیداری را پشتیبانی می‌کند",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "درک چندزبانه بهبود یافته"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "درک چندزبانه بهبود یافته",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini مدل کوچک پیشرفته OpenAI است که قابلیت‌های چندرسانه‌ای ارائه می‌دهد. این قدرت کوچک تولیدات متنی با هوشی فراتر از GPT-3.5-Turbo را ارائه می‌دهد در حالی که سرعت قابل مقایسه‌ای حفظ می‌کند. ایده‌آل برای وظایف کوچک‌تر، از جمله برنامه‌های مرتبط با دید.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "ارتقا برای GPT-4o-mini نامحدود",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "تجربه مدل کوچک پیشرفته‌ترین OpenAI تا کنون. GPT-4o-mini عملکرد برتری نسبت به GPT-3.5-turbo دارد، با قابلیت‌های چندرسانه‌ای و پاسخ‌های بسیار سریع."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

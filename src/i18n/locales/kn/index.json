@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo ಗಿಂತ ಗಟ್ಟಿಮತ್ತವಾಗಿದೆ",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-ಟರ್ಬೋ ಹೆಚ್ಚು ಬೇಗ",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "ಪಠ್ಯ ಮತ್ತು ದೃಶ್ಯ ಸಾಮರ್ಥ್ಯಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "ಮೆಕ್ಸಿಕನ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವ ಸುಧಾರಿತ ಬುದ್ಧಿ"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "ಮೆಕ್ಸಿಕನ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವ ಸುಧಾರಿತ ಬುದ್ಧಿ",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini ಹೊಸದು, ಬಹುಮೂಲಕ ಸಾಕ್ಷಾತ್ಕಾರಗಳನ್ನು ಒದಾಗಿಸುವ ಓಪನ್‌ಎಯ್‌ಐ ಸಾಮರ್ಥ್ಯದ ಸಣ್ಣ ಅಭಿಕಲ್ಪನಾ ಮಾದರಿ. ಈ ಸಂಕ್ಷಿಪ್ತ ಶಕ್ತಿಶಾಲಿ ಗ್ಪಟಿ-3.5-ಟರ್ಬೋವನ್ನು ಮೀರಿಸುವ ಬುದ್ಧಿಮತ್ತೆಯ ಪಠ್ಯ ಆಉಟ್‌ಪುಟ್‌ಗಳನ್ನು ಒದಾಗಿಸುತ್ತದೆ. ಹೆಚ್ಚಿನ ವೇಗದ ಹೊತ್ತಿರುವ ಹೊಸದು ಹೊಂದಿದೆ. ವಿಜನ್‌ಸಂಬಂಧಿತ ಅನುಷ್ಠಾನಗಳನ್ನು ಸೇರಿಸಿಕೊಳ್ಳುವುದಕ್ಕಾಗಿ ಸರಿಯಾದ ಆದರ್ಶ.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "ಅಮಿತವಾದ GPT-4o-mini ಅಪ್ಗ್ರೇಡ್",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "ಓಪನ್‌ಎಯ್‌ಐ ಅತ್ಯುತ್ತಮ ಸಣ್ಣ ಅಭಿಕಲ್ಪನಾ ಮಾದರಿ. GPT-4o-mini ಗ್ಪಟಿ-3.5-ಟರ್ಬೋಗಿಗಿಂತ ಉತ್ತಮ ಕಾರ್ಯನಿರ್ವಹಣೆಯನ್ನು ಒದಾಗಿಸುತ್ತದೆ, ಬಹುಮೂಲಕ ಸಾಕ್ಷಾತ್ಕಾರಗಳು ಮತ್ತು ಬೆಳಕಿನ ವೇಗದ ಪ್ರತಿಕ್ರಿಯೆಗಳೊಂದಿಗೆ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

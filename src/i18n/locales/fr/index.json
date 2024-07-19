@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Nettement plus intelligent que GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Aussi rapide que GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Prise en charge des capacités de texte et de vision",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Compréhension multilingue améliorée"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Compréhension multilingue améliorée",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini est le modèle à petite échelle le plus avancé d'OpenAI, offrant des capacités multimodales. Cette puissance compacte fournit des sorties de texte avec une intelligence dépassant GPT-3.5-Turbo tout en maintenant une vitesse comparable. Idéal pour les tâches plus petites, y compris les applications liées à la vision.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Mise à niveau pour un GPT-4o-mini illimité",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Découvrez le modèle à petite échelle le plus intelligent d'OpenAI à ce jour. GPT-4o-mini offre des performances supérieures à GPT-3.5-turbo, avec des capacités multimodales et des réponses ultra-rapides."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

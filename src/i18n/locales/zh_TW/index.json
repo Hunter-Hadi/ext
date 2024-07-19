@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "比 GPT-3.5-Turbo 聰明得多",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "如GPT-3.5-Turbo般快速",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "支援文字和視覺功能",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "提升多語言理解能力"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "提升多語言理解能力",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini 是 OpenAI 最先進的小型模型，提供多模式功能。這個緊湊的強大工具提供比 GPT-3.5-Turbo 更智能的文本輸出。適用於視覺相關應用等小型任務。",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "升級以獲得無限制的 GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "體驗 OpenAI 最智能的小型模型。GPT-4o-mini 提供比 GPT-3.5-turbo 更優越的性能，具有多模式功能和快速回應。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo'dan önemli ölçüde daha akıllı",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-Turbo kadar hızlı",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Metin ve görüntü yeteneklerini destekler",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Geliştirilmiş çok dilli anlayış"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Geliştirilmiş çok dilli anlayış",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini, OpenAI'nin en gelişmiş küçük ölçekli modelidir. Çoklu mod kapasitesi sunar. Bu kompakt güçlü model, GPT-3.5-Turbo'yu aşan bir zeka ile metin çıktıları sunar. GPT-3.5-Turbo'ya kıyasla benzer hızı korur. Görüntü ile ilgili uygulamalar da dahil olmak üzere küçük görevler için idealdir.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Sınırsız GPT-4o-mini için Yükseltme",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI'ın en zeki küçük ölçekli modeli olan GPT-4o-mini'yi deneyimleyin. GPT-3.5-turbo'ya göre üstün performans sunan GPT-4o-mini, çoklu mod kapasiteleri ve hızlı yanıtlar sunar."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

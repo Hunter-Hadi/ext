@@ -16,6 +16,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
 
   // 不同 model 的用量卡点
   'MAXAI_FAST_TEXT_MODEL_GPT_3_5_TURBO',
+  'MAXAI_FAST_TEXT_MODEL_GPT_4O_MINI',
   'MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU',
   'MAXAI_FAST_TEXT_MODEL_GEMINI_PRO',
   'MAXAI_FAST_TEXT_MODEL_GEMINI_FLASH_1_5',
@@ -234,6 +235,25 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           )
     },
   },
+
+  MAXAI_FAST_TEXT_MODEL_GPT_4O_MINI: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gpt-4o-mini.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/gpt-4o-mini.png',
+    ),
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title',
+      ),
+    description: (t) => {
+      return t(
+        'client:permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description',
+      )
+    },
+  },
+
   MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-3-haiku.png',

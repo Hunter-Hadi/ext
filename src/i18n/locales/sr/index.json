@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Značajno pametniji od GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Brzo kao GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Podržava tekstualne i vizuelne mogućnosti",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Unapređeno višejezično razumevanje"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Unapređeno višejezično razumevanje",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini je najnapredniji model malih razmera kompanije OpenAI, koji nudi multimodalne mogućnosti. Ovaj kompaktni moćnik pruža tekstualne izlaze sa inteligencijom koja prevazilazi GPT-3.5-Turbo, zadržavajući pri tom uporedivu brzinu. Idealan za manje zadatke, uključujući aplikacije povezane sa vizijom.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Nadogradite za neograničeni GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Iskusite najinteligentniji model malih razmera kompanije OpenAI do sada. GPT-4o-mini nudi superiornu performansu u odnosu na GPT-3.5-turbo, sa multimodalnim mogućnostima i munjevitim odgovorima."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

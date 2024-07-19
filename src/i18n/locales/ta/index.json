@@ -1017,7 +1017,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-டர்போவினுடன் மிகவும் புதுப்பிக்கப்பட்டது",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-டர்போ போன்றது",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "உரை மற்றும் பார்வை திறன்களை ஆதரிக்கின்றது",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "மேம்படுத்தப்பட்ட பல மொழி புரிதல்"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "மேம்படுத்தப்பட்ட பல மொழி புரிதல்",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini என்பது OpenAI-ன் முடிவடைந்த சிறிய அளவில் மாதிரி, பல முறையான அம்சங்களை வழங்குகிறது. இந்த சிறிய சக்தியான உற்பத்தி, GPT-3.5-டர்போவை மீறும் ஞானம் உள்ளது. பருவமாக வைத்துக்கொள்ள வேண்டிய படைப்புகளுக்கு உதவும்.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "வரம்பாக GPT-4o-mini-ஐ மேம்படுத்தவும்",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI-ன் முடிவடைந்த சிறிய அளவில் உலகின் மிகச் சூப்பரான உற்பத்தி, GPT-3.5-டர்போவை மீறும் GPT-4o-mini என்பது பல முறையான அம்சங்களை வழங்குகிறது மற்றும் விசானங்களின் விரைவான பதில்களை வழங்குகிறது."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

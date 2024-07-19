@@ -1014,7 +1014,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Ավելի խորհրդական, քան GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Արագ ինչպես GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Աջակցում է տեքստի և տեսության հնարավորություններ",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Բարելավված առեւտրային հասկանակություն"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Բարելավված առեւտրային հասկանակություն",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini-ը է OpenAI-ի ամենաառաջարկված փոքր չափանի մոդելը, որը առաջարկում է մուլտիմոդալ համակարգումներ: Այս կոմպակտ արմատը առաջարկում է տեքստային արդյունավետություն, որը գերազանցում է GPT-3.5-Turbo-ի բարդությունը, իսկ մնացած արագությունը համեմատում է: Իդեալական փոքր առաջադրանքների համար, ներկայացումների համար:",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Թարմացնել անսահման GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Առաջարկվում է OpenAI-ի ամենախելակետ փոքր չափանի մոդելը: GPT-4o-mini-ը առաջարկում է ավելի բարդ արդյունավետություն GPT-3.5-turbo-ի հետ, մուլտիմոդալ համակարգումներով և արագ պատասխաններով:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

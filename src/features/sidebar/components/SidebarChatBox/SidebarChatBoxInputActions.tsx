@@ -111,9 +111,9 @@ const SidebarChatBoxInputActions: FC<{
       spacing={1}
       width={'100%'}
     >
-      {(currentSidebarConversationType === 'Chat' ||
-        currentSidebarConversationType === 'Search' ||
-        currentSidebarConversationType === 'Art') && (
+      {['Chat', 'ContextMenu', 'Search', 'Art'].includes(
+        currentSidebarConversationType,
+      ) && (
         <AIProviderModelSelectorButton
           sidebarConversationType={currentSidebarConversationType}
         />

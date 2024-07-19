@@ -200,21 +200,21 @@ export const useChromeExtensionButtonSettingsWithVisibility = (
         buttonVisible: boolean
         host: string
       }
-      console.log(
-        'computedButtonSettings',
-        `[key=${buttonKey}]`,
-        `[host=${host}]`,
-        `[originPromptLength=${originalButtonSettings.contextMenu.length}]`,
-        `[promptLength=${computedButtonSettings.contextMenu.length}]`,
-        computedButtonSettings.contextMenu,
-      )
-      console.log(
-        'computedButtonSettings',
-        `[key=${buttonKey}]`,
-        `[host=${host}]`,
-        `[buttonVisible=${computedButtonSettings.buttonVisible}]`,
-        computedButtonSettings.visibility,
-      )
+      // console.log(
+      //   'computedButtonSettings',
+      //   `[key=${buttonKey}]`,
+      //   `[host=${host}]`,
+      //   `[originPromptLength=${originalButtonSettings.contextMenu.length}]`,
+      //   `[promptLength=${computedButtonSettings.contextMenu.length}]`,
+      //   computedButtonSettings.contextMenu,
+      // )
+      // console.log(
+      //   'computedButtonSettings',
+      //   `[key=${buttonKey}]`,
+      //   `[host=${host}]`,
+      //   `[buttonVisible=${computedButtonSettings.buttonVisible}]`,
+      //   computedButtonSettings.visibility,
+      // )
       return computedButtonSettings
     }
     return undefined

@@ -1,6 +1,10 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import {
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
+} from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
@@ -14,6 +18,7 @@ import {
   FloatingContextWindowChangesState,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
+  PinToSidebarState,
   useContextMenuList,
   useDraftContextMenuList,
   useFloatingContextMenu,
@@ -45,7 +50,6 @@ import { getInputMediator } from '@/store/InputMediator'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 
-import { useAlwaysContinueInSidebar } from './useAlwaysContinueInSidebar'
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 
 /**
@@ -160,9 +164,9 @@ const useInitContextWindow = () => {
     ContextWindowDraftContextMenuState,
   )
 
-  const { continueConversationInSidebar, updateSidebarSettings } =
-    useSidebarSettings()
-  const [alwaysContinueInSidebar] = useAlwaysContinueInSidebar()
+  const pinToSidebar = useRecoilValue(PinToSidebarState)
+
+  const { continueConversationInSidebar } = useSidebarSettings()
   const {
     createConversation,
     getConversation,
@@ -283,30 +287,6 @@ const useInitContextWindow = () => {
     currentFloatingContextMenuDraft,
     loading,
   ])
-
-  /**
-   * 当设置了永远在sidebar中进行时，关闭跳转
-   */
-  const handleBeforeRunActions = useRef(async () => {})
-  handleBeforeRunActions.current = async () => {
-    if (!currentConversationId) return
-
-    if (alwaysContinueInSidebar) {
-      await continueConversationInSidebar(
-        currentConversationId,
-        {},
-        { syncConversationToDB: true, waitSync: true },
-        false,
-      )
-    } else {
-      // 同步conversationId到侧边栏
-      await updateSidebarSettings({
-        contextMenu: {
-          conversationId: currentConversationId,
-        },
-      })
-    }
-  }
   /**
    * ✅
    * 通过context window的输入框来询问AI
@@ -361,10 +341,6 @@ const useInitContextWindow = () => {
       let template = `${inputValue}`
       if (currentDraft) {
         template += `:\n"""\n${currentDraft}\n"""`
-      }
-
-      if (alwaysContinueInSidebar) {
-        await handleBeforeRunActions.current()
       }
 
       await askAIQuestion(
@@ -596,7 +572,6 @@ const useInitContextWindow = () => {
     loading,
     conversationStatus,
     isLogin,
-    alwaysContinueInSidebar,
   ])
   const isRunningActionsRef = useRef(false)
 
@@ -612,7 +587,6 @@ const useInitContextWindow = () => {
       return
     }
 
-    handleBeforeRunActions.current()
     const runActions = cloneDeep(actions)
 
     isRunningActionsRef.current = true
@@ -748,7 +722,9 @@ const useInitContextWindow = () => {
 
     // 当pintosidebar之后，每次关闭都会重建conversation
     if (
-      (!isAIRespondingRef.current || alwaysContinueInSidebar) &&
+      (!isAIRespondingRef.current ||
+        pinToSidebar.once ||
+        pinToSidebar.always) &&
       floatingDropdownMenu.open === false
     ) {
       createContextMenuConversation().catch()

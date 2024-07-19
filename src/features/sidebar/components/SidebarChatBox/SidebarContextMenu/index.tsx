@@ -12,6 +12,7 @@ import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
+import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIModelUploadFile'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID } from '@/features/common/constants'
 import { useContextMenuList } from '@/features/contextMenu'
@@ -48,6 +49,9 @@ const SidebarContextMenu: FC = () => {
     'textSelectPopupButton',
     inputValue,
   )
+
+  const { uploadFilesToMaxAIModel, isContainMaxAIModelUploadFile } =
+    useMaxAIModelUploadFile()
 
   // 这里第一层需要flat一下才能得到
   const topLevelMenuList = useMemo(
@@ -270,6 +274,25 @@ const SidebarContextMenu: FC = () => {
                     event.stopPropagation()
                   }
                 }}
+                onPaste={async (ev) => {
+                  ev.stopPropagation()
+                  const clipboardFiles = Array.from(
+                    ev.clipboardData?.items || [],
+                  )
+                    .map((dataItem) => dataItem.getAsFile?.())
+                    .filter((file): file is File => file !== null)
+
+                  if (isContainMaxAIModelUploadFile(clipboardFiles)) {
+                    // 移除剪贴板的文本
+                    ev.preventDefault()
+                    // 粘贴处理
+                    await uploadFilesToMaxAIModel(clipboardFiles).catch(
+                      (err) => {
+                        console.log('onPaste upload error', err)
+                      },
+                    )
+                  }
+                }}
                 placeholder={t('client:floating_menu__textarea__placeholder')}
                 autoFocus
               />
@@ -322,13 +345,14 @@ const SidebarContextMenu: FC = () => {
                     direction={'column'}
                     size={'tiny'}
                     onChange={() => {
-                      // TODO:
-                      if (!referenceElementRef.current) return
+                      setTimeout(() => {
+                        if (!referenceElementRef.current) return
 
-                      referenceElementRef.current.style.marginLeft =
-                        referenceElementRef.current.style.marginLeft
-                          ? ''
-                          : '1px'
+                        referenceElementRef.current.style.marginLeft =
+                          referenceElementRef.current.style.marginLeft
+                            ? ''
+                            : '1px'
+                      }, 100)
                     }}
                   />
                 }

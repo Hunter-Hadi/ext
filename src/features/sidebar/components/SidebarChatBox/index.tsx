@@ -208,8 +208,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     }
   }, [messages, conversationId])
 
-  console.log('', writingMessage)
-
   return (
     <Stack
       id={'maxAISidebarChatBox'}
@@ -391,7 +389,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 stopPropagation
                 loading={loading}
                 expandNode={
-                  conversationType === 'Chat' ? (
+                  conversationType === 'Chat' ||
+                  conversationType === 'ContextMenu' ? (
                     <ChatIconFileUpload direction={'column'} size={'small'} />
                   ) : null
                 }

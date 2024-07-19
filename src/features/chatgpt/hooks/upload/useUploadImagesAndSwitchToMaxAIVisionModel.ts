@@ -116,7 +116,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
             currentConversationIdRef.current,
           )
         : undefined
-      if (conversation && conversation.type === 'Chat') {
+      if (conversation && ['Chat', 'ContextMenu'].includes(conversation.type)) {
         if (
           !conversation?.meta?.AIModel ||
           ![

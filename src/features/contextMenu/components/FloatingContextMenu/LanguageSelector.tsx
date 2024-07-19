@@ -1,22 +1,18 @@
 import { Placement } from '@floating-ui/react'
 import {
+  Autocomplete,
   Box,
   Button,
-  Grow,
-  MenuItem,
-  MenuList,
   Popper,
+  TextField,
   Typography,
 } from '@mui/material'
-import React, {
-  FC,
-  SyntheticEvent,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import { autocompleteClasses } from '@mui/material/Autocomplete'
+import { inputBaseClasses } from '@mui/material/InputBase'
+import { inputLabelClasses } from '@mui/material/InputLabel'
+import { svgIconClasses } from '@mui/material/SvgIcon'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
@@ -24,6 +20,15 @@ import {
   getMaxAISidebarRootElement,
 } from '@/utils'
 import { LANGUAGES_OPTIONS } from '@/utils/staticData'
+
+function filterOptions(options: any[], { inputValue }: any) {
+  return options.filter((option) => {
+    const label = option.label.toLowerCase()
+    const value = option.value.toLowerCase()
+    const input = inputValue.toLowerCase()
+    return label.includes(input) || value.includes(input)
+  })
+}
 
 const LanguageSelector: FC<{
   defaultValue?: string
@@ -33,30 +38,26 @@ const LanguageSelector: FC<{
 }> = ({
   defaultValue = '',
   placement = 'top-start',
-  onChangeLanguage,
   inSidebar,
+  onChangeLanguage,
 }) => {
+  const { t } = useTranslation(['common', 'settings'])
   const [open, setOpen] = useState(false)
-  const [value, setValue] = useState(() => {
+  const [currentLanguage, setCurrentLanguage] = useState(() => {
     return (
-      LANGUAGES_OPTIONS.find((op) => op.value === defaultValue)?.value ||
-      LANGUAGES_OPTIONS[0].value
+      LANGUAGES_OPTIONS.find((op) => op.value === defaultValue) ||
+      LANGUAGES_OPTIONS[0]
     )
   })
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
-  useLayoutEffect(() => {
-    if (defaultValue) {
-      setValue(defaultValue)
+  useEffect(() => {
+    const lang = LANGUAGES_OPTIONS.find((op) => op.value === defaultValue)
+    if (lang && lang !== currentLanguage) {
+      setCurrentLanguage(lang)
     }
-  }, [defaultValue])
+  }, [])
 
-  const anchorRef = useRef<HTMLButtonElement>(null)
-  const label = useMemo(
-    () =>
-      LANGUAGES_OPTIONS.find((op) => op.value === value)?.label ||
-      LANGUAGES_OPTIONS[0].label,
-    [value],
-  )
   const container = useMemo(
     () =>
       (inSidebar
@@ -64,61 +65,36 @@ const LanguageSelector: FC<{
         : getMaxAIFloatingContextMenuRootElement()) || document.body,
     [inSidebar],
   )
+  // const handleClose = (event: Event | SyntheticEvent) => {
+  //   if (event.target && anchorEl?.contains(event.target as HTMLElement)) {
+  //     return
+  //   }
+  //   setOpen(false)
+  //   setPopperOpen(false)
+  // }
 
-  const onSelect = (selectedValue: string) => {
-    if (value === selectedValue) return
-
-    const option = LANGUAGES_OPTIONS.find((op) => op.value === selectedValue)
-    if (!option) {
-      return
-    }
-
-    onChangeLanguage?.(option.value)
-
-    setValue(option.value)
-    setOpen(false)
-  }
-
-  const handleClose = (event: Event | SyntheticEvent) => {
-    if (
-      event.target &&
-      anchorRef.current?.contains(event.target as HTMLElement)
-    ) {
-      return
-    }
-    setOpen(false)
-  }
   const boxRef = useRef<HTMLDivElement>(null)
 
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+    setOpen(true)
+  }
+
+  const handleChange = (newValue: { label: string; value: string }) => {
+    setCurrentLanguage(newValue)
+    onChangeLanguage?.(newValue.value)
+  }
+
+  const [popperOpen, setPopperOpen] = useState(false)
+
   useEffect(() => {
-    if (!open) return
-
-    const mouseEventHandler = (event: MouseEvent) => {
-      if (!boxRef.current) return
-
-      const languagesCard = boxRef.current
-
-      const rect = languagesCard.getBoundingClientRect()
-      const x = (event as MouseEvent).clientX
-      const y = (event as MouseEvent).clientY
-      if (x > rect.left && x < rect.right && y > rect.top && y < rect.bottom) {
-        // 点击在卡片内部
-        return
-      }
-      handleClose(event)
-      event.stopPropagation()
-    }
-    document.addEventListener('mousedown', mouseEventHandler)
-    return () => {
-      document.removeEventListener('mousedown', mouseEventHandler)
-    }
-  }, [open, container])
+    setPopperOpen(true)
+  }, [open])
 
   return (
     <Box>
       <Button
-        ref={anchorRef}
-        onClick={() => setOpen(!open)}
+        onClick={handleOpen}
         sx={{
           padding: '4px',
           borderRadius: '4px',
@@ -143,7 +119,7 @@ const LanguageSelector: FC<{
             userSelect: 'none',
           }}
         >
-          {label}
+          {currentLanguage.label}
         </Typography>
 
         <ContextMenuIcon
@@ -158,9 +134,9 @@ const LanguageSelector: FC<{
       <Popper
         id='popper-language-selector'
         open={open}
-        anchorEl={anchorRef.current}
+        anchorEl={anchorEl}
         placement={placement}
-        transition
+        container={container}
         modifiers={[
           {
             name: 'RTLSupport',
@@ -185,64 +161,104 @@ const LanguageSelector: FC<{
             },
           },
         ]}
-        container={container}
       >
-        {({ TransitionProps }) => {
-          return (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === 'bottom-start' ? 'left top' : 'left bottom',
+        <Box
+          ref={boxRef}
+          component={'div'}
+          sx={{
+            borderRadius: '8px',
+            border: '1px solid',
+            borderColor: 'customColor.borderColor',
+            boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
+            display: 'flex',
+            alignItems: 'stretch',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            bgcolor: (t) =>
+              t.palette.mode === 'dark' ? 'rgba(61, 61, 61, 1)' : '#fff',
+          }}
+        >
+          {open && (
+            <Autocomplete
+              open
+              onClose={() => {
+                setOpen(false)
+                setPopperOpen(false)
               }}
-            >
-              <Box
-                ref={boxRef}
-                component={'div'}
-                sx={{
-                  borderRadius: '8px',
-                  border: '1px solid',
-                  borderColor: 'customColor.borderColor',
-                  boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-                  display: 'flex',
-                  alignItems: 'stretch',
-                  justifyContent: 'center',
-                  flexDirection: 'row',
-                  bgcolor: (t) =>
-                    t.palette.mode === 'dark' ? 'rgba(61, 61, 61, 1)' : '#fff',
-                }}
-              >
-                <MenuList
-                  // id={'maxai-language-selector-menu'}
-                  // aria-labelledby='maxai-language-selector-menu'
-                  sx={{
-                    overflowY: 'auto',
-                    overflowX: 'hidden',
-                    flexShrink: 0,
-                    borderRight: '1px solid',
-                    borderColor: 'customColor.borderColor',
-                    py: 0,
-                    maxHeight: 290,
+              noOptionsText={t('common:no_options')}
+              disableClearable
+              value={currentLanguage}
+              size={'small'}
+              onKeyDownCapture={(event) => {
+                if (
+                  [
+                    'ArrowUp',
+                    'ArrowDown',
+                    'ArrowLeft',
+                    'ArrowRight',
+                    'Enter',
+                  ].includes(event.key)
+                ) {
+                  console.log('stopPropagation')
+                  event.stopPropagation()
+                }
+              }}
+              sx={{
+                width: 160,
+                [`.${inputLabelClasses.root}`]: {
+                  fontSize: 16,
+                },
+                [`.${inputBaseClasses.root}`]: {
+                  fontSize: 16,
+                },
+                [`.${inputBaseClasses.root} fieldset > legend`]: {
+                  fontSize: 14,
+                },
+                [`.${autocompleteClasses.popupIndicator} .${svgIconClasses.root}`]:
+                  {
+                    fontSize: 24,
+                  },
+              }}
+              slotProps={{
+                popper: {
+                  open: popperOpen,
+                  disablePortal: true,
+                },
+                paper: {
+                  sx: {
+                    fontSize: 16,
+                    '& ul': {
+                      maxHeight: '260px',
+                    },
+                  },
+                },
+              }}
+              autoHighlight
+              getOptionLabel={(option) => option.label}
+              options={LANGUAGES_OPTIONS}
+              onChange={(_, newValue) => {
+                handleChange(newValue)
+              }}
+              onKeyDown={(event) => {
+                event.stopPropagation()
+              }}
+              filterOptions={filterOptions}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label={t(
+                    'settings:feature_card__ai_response_language__field_ai_response_language__label',
+                  )}
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: 'new-password', // disable autocomplete and autofill
+                    autoFocus: true,
                   }}
-                >
-                  {LANGUAGES_OPTIONS.map((op) => (
-                    <MenuItem
-                      key={op.value}
-                      selected={value === op.value}
-                      onClick={() => onSelect(op.value)}
-                      sx={{
-                        color: 'text.primary',
-                        fontSize: '16px',
-                      }}
-                    >
-                      {op.label}
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              </Box>
-            </Grow>
-          )
-        }}
+                />
+              )}
+            />
+          )}
+        </Box>
       </Popper>
     </Box>
   )

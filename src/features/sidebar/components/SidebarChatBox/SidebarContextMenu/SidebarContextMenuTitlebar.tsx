@@ -1,13 +1,10 @@
 import { Stack } from '@mui/material'
 import React, { FC, useMemo } from 'react'
 
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import LanguageSelector from '@/features/contextMenu/components/FloatingContextMenu/LanguageSelector'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
-import {
-  getMaxAISidebarRootElement,
-} from '@/utils'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import SidebarContextMenuHistoryButton from './SidebarContextMenuHistoryButton'
@@ -47,13 +44,10 @@ const SidebarContextMenuTitlebar: FC = () => {
         )}
 
         <LanguageSelector
-          defaultValue={
-            userSettings?.language === DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
-              ? 'English'
-              : userSettings?.language
-          }
+          defaultValue={userSettings?.language}
           onChangeLanguage={(lang) => {
             setUserSettings({
+              ...userSettings,
               language: lang,
             })
           }}

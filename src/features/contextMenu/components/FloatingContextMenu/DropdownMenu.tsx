@@ -32,7 +32,7 @@ import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import { SxProps } from '@mui/material/styles'
+import { SxProps, Theme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
@@ -63,6 +63,7 @@ interface LiteDropdownMenuItemProps {
   CustomRenderNode?: React.ReactNode
   isGroup?: boolean
   onClick?: (event: React.MouseEvent) => void
+  sx?: SxProps<Theme>
 }
 
 interface MenuItemProps {
@@ -82,10 +83,11 @@ const mountedAutoUpdate = (
   })
 
 export const LiteDropdownMenuItem = React.forwardRef<
-  any,
+  HTMLDivElement,
   LiteDropdownMenuItemProps
->(({ label, icon, CustomRenderNode, onClick, isGroup, ...props }, ref) => {
+>(({ label, icon, CustomRenderNode, onClick, isGroup, sx, ...props }, ref) => {
   const floatingUiProps: any = props
+
   return (
     <Box
       {...props}
@@ -121,6 +123,7 @@ export const LiteDropdownMenuItem = React.forwardRef<
             display: 'flex',
           },
         },
+        ...sx,
       }}
       ref={ref}
       component={'div'}

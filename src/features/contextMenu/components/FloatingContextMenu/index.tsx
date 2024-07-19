@@ -48,6 +48,7 @@ import FloatingContextMenuList from '@/features/contextMenu/components/FloatingC
 import FloatingContextMenuTitleBar from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuTitleBar'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
+import useContinueInSidebarListener from '@/features/contextMenu/hooks/useContinueInSidebarListener'
 import useFloatingContextMenuDraft, {
   useFloatingContextMenuDraftHistoryChange,
 } from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
@@ -445,6 +446,8 @@ const FloatingContextMenu: FC<{
       },
     }
   }, [])
+
+  useContinueInSidebarListener()
 
   return (
     <FloatingPortal root={root}>

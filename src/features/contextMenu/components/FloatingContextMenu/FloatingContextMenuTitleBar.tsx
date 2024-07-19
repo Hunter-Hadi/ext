@@ -1,30 +1,24 @@
-import { ViewSidebarOutlined } from '@mui/icons-material'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import PushPin from '@mui/icons-material/PushPin'
 import PushPinOutlined from '@mui/icons-material/PushPinOutlined'
 import { Divider } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
-import isEmpty from 'lodash-es/isEmpty'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   FloatingContextWindowChangesState,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
-import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useFloatingContextMenuPin from '@/features/contextMenu/hooks/useFloatingContextMenuPin'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
-import { useAlwaysContinueInSidebar } from '../../hooks/useAlwaysContinueInSidebar'
 import { FloatingContextMenuPopupSettingButton } from './buttons'
+import ContextMenuPinToSidebarButton from './buttons/ContextMenuPinToSidebarButton'
 import FloatingContextMenuChatHistoryButton from './buttons/FloatingContextMenuChatHistoryButton'
 import LanguageSelector from './LanguageSelector'
 
@@ -32,35 +26,16 @@ const FloatingContextMenuTitleBar: FC<{
   showModelSelector: boolean
 }> = ({ showModelSelector }) => {
   const { t } = useTranslation(['common', 'client'])
-  const { continueConversationInSidebar } = useSidebarSettings()
-  const { clientConversation } = useClientConversation()
 
   const { hideFloatingContextMenu, floatingDropdownMenu } =
     useFloatingContextMenu()
-  const { currentFloatingContextMenuDraft, selectedDraftUserMessage } =
-    useFloatingContextMenuDraft()
   const { floatingDropdownMenuPin, setFloatingDropdownMenuPin } =
     useFloatingContextMenuPin()
   const [contextWindowChanges, setContextWindowChanges] = useRecoilState(
     FloatingContextWindowChangesState,
   )
-  const [, setAlwaysContinueInSidebar] = useAlwaysContinueInSidebar()
 
   const { userSettings, setUserSettings } = useUserSettings()
-
-  const alwaysContinueInSidebar = async () => {
-    if (clientConversation) {
-      await setAlwaysContinueInSidebar(true)
-      await continueConversationInSidebar(
-        clientConversation.id,
-        {},
-        {
-          syncConversationToDB: true,
-          waitSync: true,
-        },
-      )
-    }
-  }
 
   const onPin = () => {
     setFloatingDropdownMenuPin(!floatingDropdownMenuPin)
@@ -122,13 +97,11 @@ const FloatingContextMenuTitleBar: FC<{
         )}
 
         <LanguageSelector
-          defaultValue={
-            userSettings?.language === DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
-              ? 'English'
-              : userSettings?.language
-          }
+          defaultValue={userSettings?.language}
+          placement='bottom-start'
           onChangeLanguage={(lang) => {
             setUserSettings({
+              ...userSettings,
               language: lang,
             })
           }}
@@ -152,28 +125,7 @@ const FloatingContextMenuTitleBar: FC<{
 
         <Divider orientation='vertical' variant='middle' flexItem />
 
-        {!isEmpty(currentFloatingContextMenuDraft) &&
-          selectedDraftUserMessage && (
-            <TextOnlyTooltip
-              title={t('client:floating_menu__always_continue_sidebar_title')}
-              placement='top'
-              floatingMenuTooltip
-              sx={{
-                width: 'auto',
-                height: 20,
-                color: 'inherit',
-                padding: '0 3px',
-              }}
-            >
-              <IconButton onClick={alwaysContinueInSidebar}>
-                <ViewSidebarOutlined
-                  sx={{
-                    fontSize: 16,
-                  }}
-                />
-              </IconButton>
-            </TextOnlyTooltip>
-          )}
+        {floatingDropdownMenu.open && <ContextMenuPinToSidebarButton />}
 
         <TextOnlyTooltip
           title={t(

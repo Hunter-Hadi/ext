@@ -3,17 +3,18 @@ import { Divider } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilCallback } from 'recoil'
+import { useRecoilCallback, useRecoilState } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
-import { useAlwaysContinueInSidebar } from '@/features/contextMenu/hooks/useAlwaysContinueInSidebar'
 import {
   ContextMenuConversationState,
+  ContextMenuPinedToSidebarState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
+import { PinToSidebarState } from '@/features/contextMenu/store'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
@@ -27,11 +28,13 @@ const SidebarAIMessageTools: FC<{
   const { message } = props
   const { currentSidebarConversationType, currentConversationId } =
     useClientConversation()
-  const [alwaysContinueInSidebar, setAlwaysContinueInSidebar] =
-    useAlwaysContinueInSidebar()
+  const [contextMenuPinedToSidebar, setContextMenuPinedToSidebar] =
+    useRecoilState(ContextMenuPinedToSidebarState)
+  const [pinToSidebar, setPinToSidebar] = useRecoilState(PinToSidebarState)
 
   const { t } = useTranslation(['common'])
   const [isCoping, setIsCoping] = useState(false)
+
   const messageContentType =
     message.originalMessage?.content?.contentType || 'text'
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
@@ -57,7 +60,12 @@ const SidebarAIMessageTools: FC<{
           set(FloatingDropdownMenuState, (prev) => ({ ...prev, open: true }))
         }
 
-        await setAlwaysContinueInSidebar(false)
+        setContextMenuPinedToSidebar(false)
+
+        setPinToSidebar({
+          always: false,
+          once: false,
+        })
       }
     },
     [currentConversationId],
@@ -158,7 +166,8 @@ const SidebarAIMessageTools: FC<{
       <AIMessageModelSuggestions AIMessage={message} />
 
       {currentSidebarConversationType === 'ContextMenu' &&
-        alwaysContinueInSidebar && (
+        pinToSidebar.always &&
+        contextMenuPinedToSidebar && (
           <>
             <Divider orientation='vertical'></Divider>
             <TooltipIconButton

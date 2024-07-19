@@ -7,6 +7,7 @@ import {
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4O,
+  MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import {
   ChatGPT4Icon,
@@ -51,6 +52,7 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
         />
       )
     case MAXAI_CHATGPT_MODEL_GPT_4O:
+    case MAXAI_CHATGPT_MODEL_GPT_4O_MINI:
       return (
         <ChatGPT4OIcon
           sx={{

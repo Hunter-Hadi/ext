@@ -424,6 +424,7 @@
     "provider__chatgpt__model__gpt_4__description": "OpenAI's most capable model, great for tasks that require creativity and advanced reasoning.",
     "provider__chatgpt__model__gpt_4_vision__description": "Also known as GPT-4 with Vision, or GPT-4V, represents OpenAI's most advanced iteration yet, combining robust image processing capabilities with the latest GPT-4 Turbo model, enabling it to interpret and respond to visual inputs in tandem with text.",
     "provider__chatgpt__model__gpt_4o__description": "OpenAI's newest and fastest multimodal flagship model. Seamlessly combining text, audio, and image inputs and outputs, GPT-4o delivers near-human response times and exceptional performance across languages, vision, and audio understanding, setting a new standard for AI versatility and natural interaction.",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini is OpenAI's most advanced small-scale model, offering multimodal capabilities. This compact powerhouse delivers text outputs with intelligence surpassing GPT-3.5-Turbo while maintaining comparable speed. Ideal for smaller tasks, including vision-related applications.",
     "provider__chatgpt__upload__accept_tooltip": "Upload file .jpg, .jpeg, .png, .webp, .gif",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Upload docs or images to MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Upload docs to MaxAI",

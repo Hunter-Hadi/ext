@@ -118,8 +118,6 @@ const usePlanPricingInfo = (init?: boolean) => {
     }, {} as typeof planPricingInfo.data)
   }, [planPricingInfo.data])
 
-  console.log(pricingInfoData)
-
   return {
     loading: planPricingInfo.loading,
     planPricingInfo: pricingInfoData,

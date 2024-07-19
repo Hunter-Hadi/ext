@@ -26,8 +26,9 @@ const UpgradePlanSalesCard: FC<IUpgradePlanSalesCardProps> = ({
   const planPricing = planPricingInfo[renderPlan]
 
   const handleClickUpgrade = () => {
+    const paymentType = renderPlan.includes('yearly') ? 'yearly' : 'monthly'
     window.open(
-      `${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=${renderPlan}`,
+      `${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=${renderPlan}&paymentType=${paymentType}`,
       '_blank',
     )
   }

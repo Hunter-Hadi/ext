@@ -4,7 +4,6 @@
 import { useCallback, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 
-import { PAYWALL_MODAL_VARIANT } from '@/features/abTester/constants'
 import { UserABTestInfoState } from '@/features/abTester/store'
 import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
@@ -31,10 +30,7 @@ const useUserABTestInfo = () => {
   useFocus(handleInit)
 
   return {
-    abTestInfo: {
-      ...abTestInfo,
-      paywallVariant: PAYWALL_MODAL_VARIANT, // 全部以paywall modal展示
-    },
+    abTestInfo,
   }
 }
 

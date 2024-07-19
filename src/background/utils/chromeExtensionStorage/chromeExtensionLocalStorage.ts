@@ -14,6 +14,7 @@ import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import {
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+  MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
   USE_CHAT_GPT_PLUS_MODELS,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import {
@@ -40,11 +41,11 @@ export const MAXAI_DEFAULT_AI_PROVIDER_CONFIG: {
 } = {
   Chat: {
     AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
   },
   Search: {
     AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
   },
   Summary: {
     AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
@@ -56,15 +57,15 @@ export const MAXAI_DEFAULT_AI_PROVIDER_CONFIG: {
   },
   FAQ: {
     AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
   },
   Memo: {
     AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
   },
   ContextMenu: {
     AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
   },
 }
 

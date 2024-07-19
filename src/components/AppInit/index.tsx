@@ -115,6 +115,7 @@ export const MaxAISubscriptionUpdate = () => {
         [
           '/my-plan',
           '/pricing',
+          '/get-started',
           '/payment/error',
           '/payment/success',
           '/subscription/failed',

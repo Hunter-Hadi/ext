@@ -205,26 +205,26 @@ export const getMaxAIChromeExtensionUserFeatureQuota = async (
                   CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY
                 ],
               )
-              let isUpdated = false
-              if (
-                forceUpdate ||
-                !userFeatureQuotaInfo.checkTime ||
-                !dayjs().isSame(dayjs(userFeatureQuotaInfo.checkTime), 'day')
-              ) {
-                const responseData = await fetchUserFeatureQuotaInfo()
-                Object.assign(userFeatureQuotaInfo, responseData)
-                isUpdated = !!responseData
-              }
-              if (isUpdated) {
-                await Browser.storage.local.set({
-                  [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]:
-                    {
-                      ...cache[
-                        CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY
-                      ],
-                      ...userFeatureQuotaInfo,
-                    },
-                })
+              if (forceUpdate !== false) {
+                if (
+                  forceUpdate ||
+                  !userFeatureQuotaInfo.checkTime ||
+                  !dayjs().isSame(dayjs(userFeatureQuotaInfo.checkTime), 'day')
+                ) {
+                  const responseData = await fetchUserFeatureQuotaInfo()
+                  if (responseData) {
+                    Object.assign(userFeatureQuotaInfo, responseData)
+                    await Browser.storage.local.set({
+                      [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]:
+                        {
+                          ...cache[
+                            CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY
+                          ],
+                          ...userFeatureQuotaInfo,
+                        },
+                    })
+                  }
+                }
               }
             } else {
               // 如果没有缓存数据，直接fetch
@@ -284,6 +284,19 @@ export const setMaxAIChromeExtensionUserFeatureUsage = async (
     [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]: {
       ...data,
       [key]: value,
+    },
+  })
+}
+
+/**
+ * 重置用户 feature quota，主要退出登录后重置checkTime
+ */
+export const resetMaxAIChromeExtensionUserFeatureUsage = async () => {
+  const data = await getMaxAIChromeExtensionUserFeatureQuota(false)
+  await Browser.storage.local.set({
+    [CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY]: {
+      ...data,
+      checkTime: '',
     },
   })
 }

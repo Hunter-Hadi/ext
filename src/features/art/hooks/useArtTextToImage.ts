@@ -35,7 +35,7 @@ const useArtTextToImage = () => {
   } = useClientConversation()
   const { sidebarSettings, updateSidebarConversationType } =
     useSidebarSettings()
-  const { isPayingUser } = useUserInfo()
+  const { isPayingUser, userInfo } = useUserInfo()
   const startTextToImage = async (text: string, needTransform?: boolean) => {
     if (!isShowChatBox()) {
       showChatBox()
@@ -56,7 +56,7 @@ const useArtTextToImage = () => {
       await createConversation('Art')
     }
     // 只要是付费用户就不卡
-    if (!isPayingUser) {
+    if (!isPayingUser && userInfo?.user_status?.register_version === '2-1') {
       await pushPricingHookMessage('MAXAI_IMAGE_GENERATE_MODEL')
       authEmitPricingHooksLog('show', `MAXAI_IMAGE_GENERATE_MODEL`, {
         conversationId: currentConversationId,

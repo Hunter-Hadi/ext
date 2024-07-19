@@ -7,7 +7,6 @@ import {
 } from '@/constants'
 import { ART_NATURAL_LANGUAGE_TO_DALL_E_3_PROMPT } from '@/features/art/constant'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
@@ -26,7 +25,6 @@ import {
 const useArtTextToImage = () => {
   const { askAIWIthShortcuts } = useClientChat()
   const {
-    pushPricingHookMessage,
     currentSidebarConversationType,
     currentConversationId,
     createConversation,
@@ -57,12 +55,12 @@ const useArtTextToImage = () => {
     }
     // 只要是付费用户就不卡
     if (!isPayingUser && userInfo?.user_status?.register_version === '2-1') {
-      await pushPricingHookMessage('MAXAI_IMAGE_GENERATE_MODEL')
-      authEmitPricingHooksLog('show', `MAXAI_IMAGE_GENERATE_MODEL`, {
-        conversationId: currentConversationId,
-        paywallType: 'RESPONSE',
-      })
-      return
+      // await pushPricingHookMessage('MAXAI_IMAGE_GENERATE_MODEL')
+      // authEmitPricingHooksLog('show', `MAXAI_IMAGE_GENERATE_MODEL`, {
+      //   conversationId: currentConversationId,
+      //   paywallType: 'RESPONSE',
+      // })
+      // return
     }
     const messageId = uuidV4()
     const modelConfig = await getAIProviderSettings('MAXAI_DALLE')

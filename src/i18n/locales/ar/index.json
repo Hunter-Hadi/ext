@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "فهم متعدد اللغات المحسّن",
     "provider__chatgpt__model__gpt_4o_mini__description": "يعد GPT-4o-mini هو النموذج الصغير الأكثر تقدمًا من OpenAI، والذي يقدم قدرات متعددة الوسائط. يوفر هذا القوة الصغيرة النصوص بذكاء يفوق GPT-3.5-Turbo مع الحفاظ على سرعة مقارنة. مثالي للمهام الصغيرة، بما في ذلك التطبيقات ذات الصلة بالرؤية.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "الترقية للحصول على GPT-4o-mini غير محدود",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "استمتع بأذكى نموذج صغير من OpenAI حتى الآن. يقدم GPT-4o-mini أداءً متفوقًا على GPT-3.5-turbo، مع قدرات متعددة الوسائط وردود سريعة جدًا."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "استمتع بأذكى نموذج صغير من OpenAI حتى الآن. يقدم GPT-4o-mini أداءً متفوقًا على GPT-3.5-turbo، مع قدرات متعددة الوسائط وردود سريعة جدًا.",
+    "chat__artifacts__button__description__empty": "انقر للفتح",
+    "chat__artifacts__button__description__code": "انقر لفتح الكود",
+    "chat__artifacts__button__description__image": "انقر لفتح الصورة",
+    "chat__artifacts__button__description__html": "انقر لفتح الموقع",
+    "chat__artifacts__button__description__diagram": "انقر لفتح الرسم البياني",
+    "chat__artifacts__button__description__document": "انقر لفتح المستند",
+    "chat__artifacts__preview__tools__code_button__title": "الكود",
+    "chat__artifacts__preview__tools__preview_button__title": "معاينة",
+    "chat__artifacts__preview__tools__refresh_button__title": "تحديث",
+    "chat__artifacts__preview__tools__download_button__title": "تنزيل",
+    "chat__artifacts__preview__tools__copy_button__title": "نسخ",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "ملء الشاشة",
+    "chat__artifacts__preview__tools__close_button__title": "إغلاق"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parannettu monikielinen ymmärrys",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini on OpenAI:n kehittynein pienikokoinen malli, joka tarjoaa multimodaalisia ominaisuuksia. Tämä kompakti voimanpesä tuottaa älykkäitä tekstilähtöjä, jotka ylittävät GPT-3.5-Turbon älykkyyden säilyttäen vertailukelpoisen nopeuden. Ihanteellinen pienempiin tehtäviin, mukaan lukien näköön liittyvät sovellukset.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Päivitä rajattomaan GPT-4o-miniin",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Koe OpenAI:n älykkäin pienikokoinen malli tähän mennessä. GPT-4o-mini tarjoaa ylivertaista suorituskykyä verrattuna GPT-3.5-turboon, multimodaalisilla ominaisuuksilla ja salamannopeilla vastauksilla."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Koe OpenAI:n älykkäin pienikokoinen malli tähän mennessä. GPT-4o-mini tarjoaa ylivertaista suorituskykyä verrattuna GPT-3.5-turboon, multimodaalisilla ominaisuuksilla ja salamannopeilla vastauksilla.",
+    "chat__artifacts__button__description__empty": "Avaa napsauttamalla",
+    "chat__artifacts__button__description__code": "Avaa koodi napsauttamalla",
+    "chat__artifacts__button__description__image": "Avaa kuva napsauttamalla",
+    "chat__artifacts__button__description__html": "Avaa verkkosivu napsauttamalla",
+    "chat__artifacts__button__description__diagram": "Avaa kaavio napsauttamalla",
+    "chat__artifacts__button__description__document": "Avaa asiakirja napsauttamalla",
+    "chat__artifacts__preview__tools__code_button__title": "Koodi",
+    "chat__artifacts__preview__tools__preview_button__title": "Esikatselu",
+    "chat__artifacts__preview__tools__refresh_button__title": "Päivitä",
+    "chat__artifacts__preview__tools__download_button__title": "Lataa",
+    "chat__artifacts__preview__tools__copy_button__title": "Kopioi",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Koko näyttö",
+    "chat__artifacts__preview__tools__close_button__title": "Sulje"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Βελτιωμένη πολύγλωσση κατανόηση",
     "provider__chatgpt__model__gpt_4o_mini__description": "Το GPT-4o-mini είναι το πιο προηγμένο μικρο-κλίμακα μοντέλο της OpenAI, προσφέροντας πολυτροπικές δυνατότητες. Αυτό το συμπαγές εργαλείο παρέχει κείμενα με νοημοσύνη που υπερβαίνει το GPT-3.5-Turbo διατηρώντας συγκρίσιμη ταχύτητα. Ιδανικό για μικρότερες εργασίες, συμπεριλαμβανομένων εφαρμογών σχετικών με την όραση.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Αναβάθμιση για απεριόριστο GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Ζήστε το πιο έξυπνο μικρο-κλίμακα μοντέλο της OpenAI μέχρι σήμερα. Το GPT-4o-mini προσφέρει υπερσυντονισμένη απόδοση σε σχέση με το GPT-3.5-turbo, με πολυτροπικές δυνατότητες και ανταποκρίσεις σε λαμπρή ταχύτητα."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Ζήστε το πιο έξυπνο μικρο-κλίμακα μοντέλο της OpenAI μέχρι σήμερα. Το GPT-4o-mini προσφέρει υπερσυντονισμένη απόδοση σε σχέση με το GPT-3.5-turbo, με πολυτροπικές δυνατότητες και ανταποκρίσεις σε λαμπρή ταχύτητα.",
+    "chat__artifacts__button__description__empty": "Κάντε κλικ για να ανοίξετε",
+    "chat__artifacts__button__description__code": "Κάντε κλικ για να ανοίξετε τον κώδικα",
+    "chat__artifacts__button__description__image": "Κάντε κλικ για να ανοίξετε την εικόνα",
+    "chat__artifacts__button__description__html": "Κάντε κλικ για να ανοίξετε την ιστοσελίδα",
+    "chat__artifacts__button__description__diagram": "Κάντε κλικ για να ανοίξετε το διάγραμμα",
+    "chat__artifacts__button__description__document": "Κάντε κλικ για να ανοίξετε το έγγραφο",
+    "chat__artifacts__preview__tools__code_button__title": "Κώδικας",
+    "chat__artifacts__preview__tools__preview_button__title": "Προεπισκόπηση",
+    "chat__artifacts__preview__tools__refresh_button__title": "Ανανέωση",
+    "chat__artifacts__preview__tools__download_button__title": "Λήψη",
+    "chat__artifacts__preview__tools__copy_button__title": "Αντιγραφή",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Πλήρης οθόνη",
+    "chat__artifacts__preview__tools__close_button__title": "Κλείσιμο"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

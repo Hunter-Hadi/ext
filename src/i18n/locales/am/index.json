@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "በተለያዩ ቋንቋዎች ያለው አገልግሎት",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini ከኦፕንአይ እንደሚቆጣጠል የተሻሻለት በመሆን የተለያዩ ሞዴሎችን እናትም ማህበረሰብ እንዲሆን የሚገኝ ነው። የተሻሻለት አንድ አስተያየት ከ GPT-3.5-Turbo በታች እናትም ማህበረሰብ እንዲሆን የሚገኝ ነው። ስለሆነ በትክክለኛ ስልኩ የሚሆን እና እንደገና በትክክለኛ ፍላጎት የሚሆን ነው።",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "ከ GPT-4o-mini ለማረጋገጥ እዚህ ይጠቀሙ",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "ከኦፕንአይ የተሻሻለት አንድ አስተያየት ከ GPT-3.5-turbo በታች እናትም ማህበረሰብ እንዲሆን የሚገኝ ነው። የተሻሻለት አንድ አስተያየት እና በትክክለኛ ፍላጎት የሚሆን እና በትክክለኛ በማህበረሰብ የሚሆን ነው።"
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "ከኦፕንአይ የተሻሻለት አንድ አስተያየት ከ GPT-3.5-turbo በታች እናትም ማህበረሰብ እንዲሆን የሚገኝ ነው። የተሻሻለት አንድ አስተያየት እና በትክክለኛ ፍላጎት የሚሆን እና በትክክለኛ በማህበረሰብ የሚሆን ነው።",
+    "chat__artifacts__button__description__empty": "እዚህ ክፈት",
+    "chat__artifacts__button__description__code": "እዚህ ኮድ ክፈት",
+    "chat__artifacts__button__description__image": "እዚህ ምስል ክፈት",
+    "chat__artifacts__button__description__html": "እዚህ ድርጅት ክፈት",
+    "chat__artifacts__button__description__diagram": "እዚህ ድያማ ክፈት",
+    "chat__artifacts__button__description__document": "እዚህ ስታይምንት ክፈት",
+    "chat__artifacts__preview__tools__code_button__title": "ኮድ",
+    "chat__artifacts__preview__tools__preview_button__title": "አስተካክል",
+    "chat__artifacts__preview__tools__refresh_button__title": "አጽዳ",
+    "chat__artifacts__preview__tools__download_button__title": "አስተካክል",
+    "chat__artifacts__preview__tools__copy_button__title": "ኮፒ",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "ሙሉ ማስታወሻ",
+    "chat__artifacts__preview__tools__close_button__title": "ዝጋ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

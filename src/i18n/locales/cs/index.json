@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Vylepšené multijazyčné porozumění",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini je nejvyspělejší malý model od OpenAI, nabízející multimodální schopnosti. Tento kompaktní výkon poskytuje textové výstupy s inteligencí překračující GPT-3.5-Turbo a zachovává srovnatelnou rychlost. Ideální pro menší úkoly, včetně aplikací souvisejících s vizí.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Upgrade pro neomezený GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Zažijte nejinteligentnější malý model od OpenAI dosud. GPT-4o-mini nabízí vynikající výkon před GPT-3.5-turbo, s multimodálními schopnostmi a bleskovými odpověďmi."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Zažijte nejinteligentnější malý model od OpenAI dosud. GPT-4o-mini nabízí vynikající výkon před GPT-3.5-turbo, s multimodálními schopnostmi a bleskovými odpověďmi.",
+    "chat__artifacts__button__description__empty": "Klikněte pro otevření",
+    "chat__artifacts__button__description__code": "Klikněte pro otevření kódu",
+    "chat__artifacts__button__description__image": "Klikněte pro otevření obrázku",
+    "chat__artifacts__button__description__html": "Klikněte pro otevření webové stránky",
+    "chat__artifacts__button__description__diagram": "Klikněte pro otevření diagramu",
+    "chat__artifacts__button__description__document": "Klikněte pro otevření dokumentu",
+    "chat__artifacts__preview__tools__code_button__title": "Kód",
+    "chat__artifacts__preview__tools__preview_button__title": "Náhled",
+    "chat__artifacts__preview__tools__refresh_button__title": "Obnovit",
+    "chat__artifacts__preview__tools__download_button__title": "Stáhnout",
+    "chat__artifacts__preview__tools__copy_button__title": "Kopírovat",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Celá obrazovka",
+    "chat__artifacts__preview__tools__close_button__title": "Zavřít"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

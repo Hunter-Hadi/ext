@@ -5,6 +5,7 @@ import { SvgIcon } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import {
   ArtifactsType,
@@ -139,6 +140,7 @@ const ArtifactsButton: FC<{
   artifacts: IArtifacts
 }> = (props) => {
   const { artifacts } = props
+  const { t } = useTranslation(['client'])
   const { updateArtifacts, showArtifacts, isOpen } = useArtifacts()
 
   const handleClick = () => {
@@ -153,20 +155,20 @@ const ArtifactsButton: FC<{
     if (!artifacts?.type) return ''
     switch (artifacts.type) {
       case ArtifactsType.CODE:
-        return 'Click to open code'
+        return t('client:chat__artifacts__button__description__code')
       case ArtifactsType.MARKDOWN:
       case ArtifactsType.TEXT:
-        return 'Click to open document'
+        return t('client:chat__artifacts__button__description__document')
       case ArtifactsType.MERMAID:
-        return 'Click to open diagram'
+        return t('client:chat__artifacts__button__description__diagram')
       case ArtifactsType.HTML:
-        return 'Click to open website'
+        return t('client:chat__artifacts__button__description__html')
       case ArtifactsType.SVG:
-        return 'Click to open image'
+        return t('client:chat__artifacts__button__description__image')
       default:
-        return 'Click to open'
+        return t('client:chat__artifacts__button__description__empty')
     }
-  }, [artifacts.type])
+  }, [artifacts.type, t])
   useEffect(() => {
     isOpenRef.current = isOpen
   }, [isOpen])

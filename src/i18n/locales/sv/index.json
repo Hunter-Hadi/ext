@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Förbättrad flerspråkig förståelse",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini är OpenAI:s mest avancerade småskaliga modell, erbjuder multimodala funktioner. Denna kompakta kraftpaket levererar textutdata med intelligens som överträffar GPT-3.5-Turbo samtidigt som den bibehåller jämförbar hastighet. Perfekt för mindre uppgifter, inklusive visionrelaterade applikationer.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Uppgradera för obegränsad GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Upplev OpenAI:s mest intelligenta småskaliga modell hittills. GPT-4o-mini erbjuder överlägsen prestanda jämfört med GPT-3.5-turbo, med multimodala funktioner och blixtsnabba svar."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Upplev OpenAI:s mest intelligenta småskaliga modell hittills. GPT-4o-mini erbjuder överlägsen prestanda jämfört med GPT-3.5-turbo, med multimodala funktioner och blixtsnabba svar.",
+    "chat__artifacts__button__description__empty": "Klicka för att öppna",
+    "chat__artifacts__button__description__code": "Klicka för att öppna kod",
+    "chat__artifacts__button__description__image": "Klicka för att öppna bild",
+    "chat__artifacts__button__description__html": "Klicka för att öppna webbplats",
+    "chat__artifacts__button__description__diagram": "Klicka för att öppna diagram",
+    "chat__artifacts__button__description__document": "Klicka för att öppna dokument",
+    "chat__artifacts__preview__tools__code_button__title": "Kod",
+    "chat__artifacts__preview__tools__preview_button__title": "Förhandsvisning",
+    "chat__artifacts__preview__tools__refresh_button__title": "Uppdatera",
+    "chat__artifacts__preview__tools__download_button__title": "Ladda ner",
+    "chat__artifacts__preview__tools__copy_button__title": "Kopiera",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Helskärm",
+    "chat__artifacts__preview__tools__close_button__title": "Stäng"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

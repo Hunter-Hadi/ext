@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "बेहतरिन बहुभाषी समझ",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini ओपनएआई का सबसे उन्नत छोटे पैमाने का मॉडल है, जो बहुमूल्य क्षमताओं की पेशकश करता है। यह संक्षेपण शक्तिशाली उत्पाद GPT-3.5 को पार करने वाले बुद्धिमत्ता के साथ पाठ आउटपुट प्रदान करता है। तेजी को तुलनात्मक रखते हुए। छोटे कार्यों के लिए आदर्श, जिसमें दृश्य संबंधित अनुप्रयोग शामिल हैं।",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "अनलिमिटेड GPT-4o-mini के लिए अपग्रेड करें",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "ओपनएआई का सबसे बुद्धिमान छोटे पैमाने का मॉडल अभी तक का अनुभव करें। GPT-4o-mini GPT-3.5-टर्बो के मुकाबले उत्कृष्ट प्रदर्शन प्रदान करता है, जिसमें बहुमूल्य क्षमताएं और चमकदार प्रतिक्रियाएँ शामिल हैं।"
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "ओपनएआई का सबसे बुद्धिमान छोटे पैमाने का मॉडल अभी तक का अनुभव करें। GPT-4o-mini GPT-3.5-टर्बो के मुकाबले उत्कृष्ट प्रदर्शन प्रदान करता है, जिसमें बहुमूल्य क्षमताएं और चमकदार प्रतिक्रियाएँ शामिल हैं।",
+    "chat__artifacts__button__description__empty": "खोलने के लिए क्लिक करें",
+    "chat__artifacts__button__description__code": "कोड खोलने के लिए क्लिक करें",
+    "chat__artifacts__button__description__image": "छवि खोलने के लिए क्लिक करें",
+    "chat__artifacts__button__description__html": "वेबसाइट खोलने के लिए क्लिक करें",
+    "chat__artifacts__button__description__diagram": "डायग्राम खोलने के लिए क्लिक करें",
+    "chat__artifacts__button__description__document": "दस्तावेज़ खोलने के लिए क्लिक करें",
+    "chat__artifacts__preview__tools__code_button__title": "कोड",
+    "chat__artifacts__preview__tools__preview_button__title": "पूर्वावलोकन",
+    "chat__artifacts__preview__tools__refresh_button__title": "ताज़ा करें",
+    "chat__artifacts__preview__tools__download_button__title": "डाउनलोड",
+    "chat__artifacts__preview__tools__copy_button__title": "कॉपी",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "पूर्णस्क्रीन",
+    "chat__artifacts__preview__tools__close_button__title": "बंद करें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Forbedret flersproget forståelse",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini er OpenAI's mest avancerede lille-skala model, der tilbyder multimodale evner. Denne kompakte kraftcenter leverer tekstoutput med intelligens, der overgår GPT-3.5-Turbo, samtidig med at den opretholder en sammenlignelig hastighed. Ideel til mindre opgaver, herunder vision-relaterede applikationer.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Opgrader for ubegrænset GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Oplev OpenAI's mest intelligente lille-skala model endnu. GPT-4o-mini tilbyder overlegen ydeevne i forhold til GPT-3.5-turbo, med multimodale evner og lynhurtige svar."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Oplev OpenAI's mest intelligente lille-skala model endnu. GPT-4o-mini tilbyder overlegen ydeevne i forhold til GPT-3.5-turbo, med multimodale evner og lynhurtige svar.",
+    "chat__artifacts__button__description__empty": "Klik for at åbne",
+    "chat__artifacts__button__description__code": "Klik for at åbne kode",
+    "chat__artifacts__button__description__image": "Klik for at åbne billede",
+    "chat__artifacts__button__description__html": "Klik for at åbne hjemmeside",
+    "chat__artifacts__button__description__diagram": "Klik for at åbne diagram",
+    "chat__artifacts__button__description__document": "Klik for at åbne dokument",
+    "chat__artifacts__preview__tools__code_button__title": "Kode",
+    "chat__artifacts__preview__tools__preview_button__title": "Forhåndsvisning",
+    "chat__artifacts__preview__tools__refresh_button__title": "Opdater",
+    "chat__artifacts__preview__tools__download_button__title": "Download",
+    "chat__artifacts__preview__tools__copy_button__title": "Kopiér",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Fuldskærm",
+    "chat__artifacts__preview__tools__close_button__title": "Luk"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

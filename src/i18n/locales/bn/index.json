@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "উন্নত বহুভাষিক বোঝাই",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini হল OpenAI-র সবচেয়ে উন্নত ছোট স্কেল মডেল, যা বহুমোডাল সুবিধা সরবরাহ করে। এই সংকোচিত পাওয়ারহাউস GPT-3.5 টার্বোয়ের চেয়ে বুদ্ধিমত্তার টেক্সট আউটপুট প্রদান করে। ছোট কাজের জন্য আদর্শ, ভিশন-সম্পর্কিত অ্যাপ্লিকেশনগুলি সহ।",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "সীমাহীন GPT-4o-mini এড়িয়ে যান",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI-র সবচেয়ে বুদ্ধিমান ছোট স্কেল মডেলটি অভিজ্ঞতা করুন। GPT-4o-mini উচ্চ কর্মক্ষমতা প্রদান করে GPT-3.5-টার্বোর উপর, বহুমোডাল সুবিধা এবং প্রচণ্ড দ্রুত প্রতিক্রিয়া।"
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI-র সবচেয়ে বুদ্ধিমান ছোট স্কেল মডেলটি অভিজ্ঞতা করুন। GPT-4o-mini উচ্চ কর্মক্ষমতা প্রদান করে GPT-3.5-টার্বোর উপর, বহুমোডাল সুবিধা এবং প্রচণ্ড দ্রুত প্রতিক্রিয়া।",
+    "chat__artifacts__button__description__empty": "খোলার জন্য ক্লিক করুন",
+    "chat__artifacts__button__description__code": "কোড খোলার জন্য ক্লিক করুন",
+    "chat__artifacts__button__description__image": "চিত্র খোলার জন্য ক্লিক করুন",
+    "chat__artifacts__button__description__html": "ওয়েবসাইট খোলার জন্য ক্লিক করুন",
+    "chat__artifacts__button__description__diagram": "ডায়াগ্রাম খোলার জন্য ক্লিক করুন",
+    "chat__artifacts__button__description__document": "ডকুমেন্ট খোলার জন্য ক্লিক করুন",
+    "chat__artifacts__preview__tools__code_button__title": "কোড",
+    "chat__artifacts__preview__tools__preview_button__title": "পূর্বরূপ",
+    "chat__artifacts__preview__tools__refresh_button__title": "রিফ্রেশ",
+    "chat__artifacts__preview__tools__download_button__title": "ডাউনলোড",
+    "chat__artifacts__preview__tools__copy_button__title": "কপি",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "পূর্ণ পর্দা",
+    "chat__artifacts__preview__tools__close_button__title": "বন্ধ করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "향상된 다국어 이해",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini는 OpenAI의 가장 고급 소규모 모델로, 다중 모달 기능을 제공합니다. 이 소형 강력한 모델은 GPT-3.5-Turbo를 능가하는 지능을 가진 텍스트 출력물을 제공합니다. 시간을 유지하면서 비교 가능한 속도를 유지합니다. 시각 관련 응용 프로그램을 포함한 작은 작업에 이상적입니다.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "무제한 GPT-4o-mini로 업그레이드",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI의 가장 지능적인 소규모 모델인 GPT-4o-mini를 경험해보세요. GPT-4o-mini는 다중 모달 기능과 빠른 응답 속도를 제공하며 GPT-3.5-turbo보다 우수한 성능을 제공합니다."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI의 가장 지능적인 소규모 모델인 GPT-4o-mini를 경험해보세요. GPT-4o-mini는 다중 모달 기능과 빠른 응답 속도를 제공하며 GPT-3.5-turbo보다 우수한 성능을 제공합니다.",
+    "chat__artifacts__button__description__empty": "열기",
+    "chat__artifacts__button__description__code": "코드 열기",
+    "chat__artifacts__button__description__image": "이미지 열기",
+    "chat__artifacts__button__description__html": "웹사이트 열기",
+    "chat__artifacts__button__description__diagram": "다이어그램 열기",
+    "chat__artifacts__button__description__document": "문서 열기",
+    "chat__artifacts__preview__tools__code_button__title": "코드",
+    "chat__artifacts__preview__tools__preview_button__title": "미리보기",
+    "chat__artifacts__preview__tools__refresh_button__title": "새로고침",
+    "chat__artifacts__preview__tools__download_button__title": "다운로드",
+    "chat__artifacts__preview__tools__copy_button__title": "복사",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "전체화면",
+    "chat__artifacts__preview__tools__close_button__title": "닫기"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

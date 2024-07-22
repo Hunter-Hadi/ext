@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "เข้าใจหลายภาษาได้ดียิ่งขึ้น",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini เป็นโมเดลขนาดเล็กที่ทันสมัยที่สุดของ OpenAI ที่มีความสามารถในการใช้หลายโหมด พลังงานมากขนาดเล็กนี้สร้างผลลัพธ์ข้อความที่ฉลาดเกินกว่า GPT-3.5-Turbo ในขณะที่รักษาความเร็วที่เปรียบเทียบได้ เหมาะสำหรับงานขนาดเล็ก รวมถึงการใช้งานที่เกี่ยวกับการมองเห็น",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "อัพเกรดเพื่อ GPT-4o-mini ไม่จำกัด",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "สัมผัสกับโมเดลขนาดเล็กที่ฉลาดที่สุดของ OpenAI ตอนนี้ GPT-4o-mini มีประสิทธิภาพที่ดีกว่า GPT-3.5-turbo ด้วยความสามารถในการใช้หลายโหมดและการตอบสนองอย่างรวดเร็ว"
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "สัมผัสกับโมเดลขนาดเล็กที่ฉลาดที่สุดของ OpenAI ตอนนี้ GPT-4o-mini มีประสิทธิภาพที่ดีกว่า GPT-3.5-turbo ด้วยความสามารถในการใช้หลายโหมดและการตอบสนองอย่างรวดเร็ว",
+    "chat__artifacts__button__description__empty": "คลิกเพื่อเปิด",
+    "chat__artifacts__button__description__code": "คลิกเพื่อเปิดโค้ด",
+    "chat__artifacts__button__description__image": "คลิกเพื่อเปิดรูป",
+    "chat__artifacts__button__description__html": "คลิกเพื่อเปิดเว็บไซต์",
+    "chat__artifacts__button__description__diagram": "คลิกเพื่อเปิดแผนภาพ",
+    "chat__artifacts__button__description__document": "คลิกเพื่อเปิดเอกสาร",
+    "chat__artifacts__preview__tools__code_button__title": "โค้ด",
+    "chat__artifacts__preview__tools__preview_button__title": "ดูตัวอย่าง",
+    "chat__artifacts__preview__tools__refresh_button__title": "รีเฟรช",
+    "chat__artifacts__preview__tools__download_button__title": "ดาวน์โหลด",
+    "chat__artifacts__preview__tools__copy_button__title": "คัดลอก",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "เต็มหน้าจอ",
+    "chat__artifacts__preview__tools__close_button__title": "ปิด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

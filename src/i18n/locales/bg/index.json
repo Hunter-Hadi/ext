@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Подобрено многоезично разбиране",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini е най-новият мощен модел на OpenAI, който предлага мултимодални възможности. Този компактен гигант доставя текстови изходи с интелигентност, надхвърляща GPT-3.5-Turbo, запазвайки сравнима скорост. Идеален за по-малки задачи, включително приложения, свързани със зрението.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Надстройка за неограничено използване на GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Изживейте най-интелигентния малък модел на OpenAI досега. GPT-4o-mini предлага изключителна производителност спрямо GPT-3.5-turbo, с мултимодални възможности и бързи отговори."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Изживейте най-интелигентния малък модел на OpenAI досега. GPT-4o-mini предлага изключителна производителност спрямо GPT-3.5-turbo, с мултимодални възможности и бързи отговори.",
+    "chat__artifacts__button__description__empty": "Кликнете, за да отворите",
+    "chat__artifacts__button__description__code": "Кликнете, за да отворите кода",
+    "chat__artifacts__button__description__image": "Кликнете, за да отворите изображението",
+    "chat__artifacts__button__description__html": "Кликнете, за да отворите уебсайта",
+    "chat__artifacts__button__description__diagram": "Кликнете, за да отворите диаграмата",
+    "chat__artifacts__button__description__document": "Кликнете, за да отворите документа",
+    "chat__artifacts__preview__tools__code_button__title": "Код",
+    "chat__artifacts__preview__tools__preview_button__title": "Преглед",
+    "chat__artifacts__preview__tools__refresh_button__title": "Опресни",
+    "chat__artifacts__preview__tools__download_button__title": "Изтегли",
+    "chat__artifacts__preview__tools__copy_button__title": "Копирай",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Цял екран",
+    "chat__artifacts__preview__tools__close_button__title": "Затвори"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

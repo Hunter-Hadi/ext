@@ -1017,7 +1017,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Բարելավված առեւտրային հասկանակություն",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini-ը է OpenAI-ի ամենաառաջարկված փոքր չափանի մոդելը, որը առաջարկում է մուլտիմոդալ համակարգումներ: Այս կոմպակտ արմատը առաջարկում է տեքստային արդյունավետություն, որը գերազանցում է GPT-3.5-Turbo-ի բարդությունը, իսկ մնացած արագությունը համեմատում է: Իդեալական փոքր առաջադրանքների համար, ներկայացումների համար:",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Թարմացնել անսահման GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Առաջարկվում է OpenAI-ի ամենախելակետ փոքր չափանի մոդելը: GPT-4o-mini-ը առաջարկում է ավելի բարդ արդյունավետություն GPT-3.5-turbo-ի հետ, մուլտիմոդալ համակարգումներով և արագ պատասխաններով:"
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Առաջարկվում է OpenAI-ի ամենախելակետ փոքր չափանի մոդելը: GPT-4o-mini-ը առաջարկում է ավելի բարդ արդյունավետություն GPT-3.5-turbo-ի հետ, մուլտիմոդալ համակարգումներով և արագ պատասխաններով:",
+    "chat__artifacts__button__description__empty": "Կտտացրեք բացելու համար",
+    "chat__artifacts__button__description__code": "Կտտացրեք բացելու կոդը",
+    "chat__artifacts__button__description__image": "Կտտացրեք բացելու պատկերը",
+    "chat__artifacts__button__description__html": "Կտտացրեք բացելու կայքը",
+    "chat__artifacts__button__description__diagram": "Կտտացրեք բացելու դիագրամը",
+    "chat__artifacts__button__description__document": "Կտտացրեք բացելու փաստաթուղթը",
+    "chat__artifacts__preview__tools__code_button__title": "Կոդ",
+    "chat__artifacts__preview__tools__preview_button__title": "Դիտել",
+    "chat__artifacts__preview__tools__refresh_button__title": "Թարմացնել",
+    "chat__artifacts__preview__tools__download_button__title": "Ներբեռնել",
+    "chat__artifacts__preview__tools__copy_button__title": "Պատճենել",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Լիարժեք էկրան",
+    "chat__artifacts__preview__tools__close_button__title": "Փակել"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

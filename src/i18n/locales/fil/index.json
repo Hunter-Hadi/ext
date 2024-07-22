@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pinabuting pang-unawa sa maraming wika",
     "provider__chatgpt__model__gpt_4o_mini__description": "Ang GPT-4o-mini ay ang pinakamahusay na maliit na modelo ng OpenAI, nag-aalok ng mga kakayahan sa maramihang modal. Ang compact powerhouse na ito ay nagbibigay ng mga output ng teksto na may katalinuhan na lampas sa GPT-3.5-Turbo habang pinanatili ang kahalintulad na bilis. Angkop para sa mas maliit na mga gawain, kabilang ang mga aplikasyon na may kaugnayan sa pangitain.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Mag-upgrade para sa walang limitasyong GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Masdan ang pinakamatalinong maliit na modelo ng OpenAI hanggang ngayon. Nag-aalok ang GPT-4o-mini ng superior na performance kaysa sa GPT-3.5-turbo, na may mga kakayahan sa maramihang modal at mabilisang mga tugon."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Masdan ang pinakamatalinong maliit na modelo ng OpenAI hanggang ngayon. Nag-aalok ang GPT-4o-mini ng superior na performance kaysa sa GPT-3.5-turbo, na may mga kakayahan sa maramihang modal at mabilisang mga tugon.",
+    "chat__artifacts__button__description__empty": "I-click para buksan",
+    "chat__artifacts__button__description__code": "I-click para buksan ang code",
+    "chat__artifacts__button__description__image": "I-click para buksan ang larawan",
+    "chat__artifacts__button__description__html": "I-click para buksan ang website",
+    "chat__artifacts__button__description__diagram": "I-click para buksan ang diagram",
+    "chat__artifacts__button__description__document": "I-click para buksan ang dokumento",
+    "chat__artifacts__preview__tools__code_button__title": "Code",
+    "chat__artifacts__preview__tools__preview_button__title": "Preview",
+    "chat__artifacts__preview__tools__refresh_button__title": "I-refresh",
+    "chat__artifacts__preview__tools__download_button__title": "I-download",
+    "chat__artifacts__preview__tools__copy_button__title": "Kopyahin",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Buong screen",
+    "chat__artifacts__preview__tools__close_button__title": "Isara"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

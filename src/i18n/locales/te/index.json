@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "మెరుగుపరచిన బహుభాషా అర్థం",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini ఒక ఉత్తమ చిన్న పరిమాణ మోడల్, బహుమూర్తి సామర్థ్యాలను అందిస్తుంది. ఈ సంక్షిప్త పవర్‌హౌస్ GPT-3.5-Turbo ను మీరు మీరుపరిప్రేక్షించిన బుద్ధిమత్తాన్ని అందిస్తుంది. విజన్-సంబంధిత అప్లికేషన్‌లకు సరైనది.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "అనివార్యముగా GPT-4o-mini కోసం అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "అనుభవించండి OpenAI యొక్క అత్యంత బుద్ధిమత్తమైన చిన్న పరిమాణ మోడల్. GPT-4o-mini మీకు GPT-3.5-turbo కంటే మేలుకుందని సామర్థ్యాలను అందిస్తుంది, బహుమూర్తి సామర్థ్యలు మరియు బెజవారి స్పీడ్ తో."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "అనుభవించండి OpenAI యొక్క అత్యంత బుద్ధిమత్తమైన చిన్న పరిమాణ మోడల్. GPT-4o-mini మీకు GPT-3.5-turbo కంటే మేలుకుందని సామర్థ్యాలను అందిస్తుంది, బహుమూర్తి సామర్థ్యలు మరియు బెజవారి స్పీడ్ తో.",
+    "chat__artifacts__button__description__empty": "ఓపెన్ చేయడానికి క్లిక్ చేయండి",
+    "chat__artifacts__button__description__code": "కోడ్ ఓపెన్ చేయడానికి క్లిక్ చేయండి",
+    "chat__artifacts__button__description__image": "చిత్రాన్ని ఓపెన్ చేయండి",
+    "chat__artifacts__button__description__html": "వెబ్సైట్ ఓపెన్ చేయండి",
+    "chat__artifacts__button__description__diagram": "డైగ్రామ్ ఓపెన్ చేయండి",
+    "chat__artifacts__button__description__document": "పత్రం ఓపెన్ చేయండి",
+    "chat__artifacts__preview__tools__code_button__title": "కోడ్",
+    "chat__artifacts__preview__tools__preview_button__title": "ప్రివ్యూ",
+    "chat__artifacts__preview__tools__refresh_button__title": "రిఫ్రెష్",
+    "chat__artifacts__preview__tools__download_button__title": "డౌన్లోడ్",
+    "chat__artifacts__preview__tools__copy_button__title": "కాపీ",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "పూర్తి స్క్రీన్",
+    "chat__artifacts__preview__tools__close_button__title": "మూసివేయి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

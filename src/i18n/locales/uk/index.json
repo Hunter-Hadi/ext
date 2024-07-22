@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "بہترین بہوجزہ فہم",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini اوپن اےآئی کا سب سے ترقی یافتہ چھوٹے پیمانے کا ماڈل ہے، جو متعدد وسائل کی صلاحیت فراہم کرتا ہے۔ یہ مختصر پاور ہاؤس ٹیکسٹ خروجات فراہم کرتا ہے جو GPT-3.5-Turbo کو پیچھے چھوڑتا ہے۔ چھوٹے کاموں کے لیے مثالی ہے، جن میں وژن سے متعلق ایپلیکیشن شامل ہیں۔",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "GPT-4o-mini کے لامحدود اپ گریڈ",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "اوپن اےآئی کا سب سے ذہین چھوٹے پیمانے کا ماڈل تجربہ کریں۔ GPT-4o-mini GPT-3.5-turbo کے مقابلے میں بہتر کارکردگی فراہم کرتا ہے، متعدد وسائل کی صلاحیتوں اور روشنی کی رفتار سے جوابات۔"
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "اوپن اےآئی کا سب سے ذہین چھوٹے پیمانے کا ماڈل تجربہ کریں۔ GPT-4o-mini GPT-3.5-turbo کے مقابلے میں بہتر کارکردگی فراہم کرتا ہے، متعدد وسائل کی صلاحیتوں اور روشنی کی رفتار سے جوابات۔",
+    "chat__artifacts__button__description__empty": "کھولنے کے لئے کلک کریں",
+    "chat__artifacts__button__description__code": "کوڈ کھولنے کے لئے کلک کریں",
+    "chat__artifacts__button__description__image": "تصویر کھولنے کے لئے کلک کریں",
+    "chat__artifacts__button__description__html": "ویب سائٹ کھولنے کے لئے کلک کریں",
+    "chat__artifacts__button__description__diagram": "ڈائیاگرام کھولنے کے لئے کلک کریں",
+    "chat__artifacts__button__description__document": "دستاویز کھولنے کے لئے کلک کریں",
+    "chat__artifacts__preview__tools__code_button__title": "کوڈ",
+    "chat__artifacts__preview__tools__preview_button__title": "پیشنظر",
+    "chat__artifacts__preview__tools__refresh_button__title": "تازہ کریں",
+    "chat__artifacts__preview__tools__download_button__title": "ڈاؤن لوڈ",
+    "chat__artifacts__preview__tools__copy_button__title": "کاپی",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "پوری اسکرین",
+    "chat__artifacts__preview__tools__close_button__title": "بند کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

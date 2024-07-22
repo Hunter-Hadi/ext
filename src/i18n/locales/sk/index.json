@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Vylepšené viacjazyčné porozumenie",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini je najvyspelejší malý model od OpenAI, ponúka multimodálne schopnosti. Tento kompaktný powerhorse poskytuje textové výstupy s inteligenciou prevyšujúcou GPT-3.5-Turbo a zároveň udržiava porovnateľnú rýchlosť. Ideálny pre menšie úlohy, vrátane aplikácií súvisiacich s videním.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Aktualizujte pre neobmedzený GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Vyskúšajte najinteligentnejší malý model od OpenAI doteraz. GPT-4o-mini ponúka vynikajúce výkony oproti GPT-3.5-turbo, s multimodálnymi schopnosťami a bleskurýchlymi odpoveďami."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Vyskúšajte najinteligentnejší malý model od OpenAI doteraz. GPT-4o-mini ponúka vynikajúce výkony oproti GPT-3.5-turbo, s multimodálnymi schopnosťami a bleskurýchlymi odpoveďami.",
+    "chat__artifacts__button__description__empty": "Kliknite pre otvorenie",
+    "chat__artifacts__button__description__code": "Kliknite pre otvorenie kódu",
+    "chat__artifacts__button__description__image": "Kliknite pre otvorenie obrázka",
+    "chat__artifacts__button__description__html": "Kliknite pre otvorenie webovej stránky",
+    "chat__artifacts__button__description__diagram": "Kliknite pre otvorenie diagramu",
+    "chat__artifacts__button__description__document": "Kliknite pre otvorenie dokumentu",
+    "chat__artifacts__preview__tools__code_button__title": "Kód",
+    "chat__artifacts__preview__tools__preview_button__title": "Náhľad",
+    "chat__artifacts__preview__tools__refresh_button__title": "Obnoviť",
+    "chat__artifacts__preview__tools__download_button__title": "Stiahnuť",
+    "chat__artifacts__preview__tools__copy_button__title": "Kopírovať",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Celá obrazovka",
+    "chat__artifacts__preview__tools__close_button__title": "Zavrieť"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

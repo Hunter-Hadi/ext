@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pemahaman multibahasa yang ditingkatkan",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini adalah model berskala kecil yang paling canggih dari OpenAI, menawarkan kemampuan multimodal. Powerhouse padat ini memberikan output teks dengan kecerdasan yang melampaui GPT-3.5-Turbo sambil mempertahankan kecepatan yang sebanding. Ideal untuk tugas-tugas kecil, termasuk aplikasi terkait visi.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Naik taraf untuk GPT-4o-mini tanpa had",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Alami model berskala kecil yang paling bijak dari OpenAI. GPT-4o-mini menawarkan prestasi yang lebih unggul daripada GPT-3.5-turbo, dengan kemampuan multimodal dan respon yang cepat."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Alami model berskala kecil yang paling bijak dari OpenAI. GPT-4o-mini menawarkan prestasi yang lebih unggul daripada GPT-3.5-turbo, dengan kemampuan multimodal dan respon yang cepat.",
+    "chat__artifacts__button__description__empty": "Klik untuk membuka",
+    "chat__artifacts__button__description__code": "Klik untuk membuka kod",
+    "chat__artifacts__button__description__image": "Klik untuk membuka imej",
+    "chat__artifacts__button__description__html": "Klik untuk membuka laman web",
+    "chat__artifacts__button__description__diagram": "Klik untuk membuka gambar rajah",
+    "chat__artifacts__button__description__document": "Klik untuk membuka dokumen",
+    "chat__artifacts__preview__tools__code_button__title": "Kod",
+    "chat__artifacts__preview__tools__preview_button__title": "Pratonton",
+    "chat__artifacts__preview__tools__refresh_button__title": "Segar semula",
+    "chat__artifacts__preview__tools__download_button__title": "Muat turun",
+    "chat__artifacts__preview__tools__copy_button__title": "Salin",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Penuh skrin",
+    "chat__artifacts__preview__tools__close_button__title": "Tutup"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Melhor compreensão multilingue",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini é o modelo de pequena escala mais avançado da OpenAI, oferecendo capacidades multimodais. Esta potência compacta fornece saídas de texto com inteligência que ultrapassa o GPT-3.5-Turbo, mantendo uma velocidade comparável. Ideal para tarefas menores, incluindo aplicações relacionadas à visão.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Atualize para GPT-4o-mini ilimitado",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Experimente o modelo de pequena escala mais inteligente da OpenAI até agora. O GPT-4o-mini oferece desempenho superior ao GPT-3.5-turbo, com capacidades multimodais e respostas ultra-rápidas."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Experimente o modelo de pequena escala mais inteligente da OpenAI até agora. O GPT-4o-mini oferece desempenho superior ao GPT-3.5-turbo, com capacidades multimodais e respostas ultra-rápidas.",
+    "chat__artifacts__button__description__empty": "Clique para abrir",
+    "chat__artifacts__button__description__code": "Clique para abrir código",
+    "chat__artifacts__button__description__image": "Clique para abrir imagem",
+    "chat__artifacts__button__description__html": "Clique para abrir website",
+    "chat__artifacts__button__description__diagram": "Clique para abrir diagrama",
+    "chat__artifacts__button__description__document": "Clique para abrir documento",
+    "chat__artifacts__preview__tools__code_button__title": "Código",
+    "chat__artifacts__preview__tools__preview_button__title": "Pré-visualização",
+    "chat__artifacts__preview__tools__refresh_button__title": "Atualizar",
+    "chat__artifacts__preview__tools__download_button__title": "Transferir",
+    "chat__artifacts__preview__tools__copy_button__title": "Copiar",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Ecrã inteiro",
+    "chat__artifacts__preview__tools__close_button__title": "Fechar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

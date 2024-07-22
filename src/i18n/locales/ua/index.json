@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Покращене розуміння багатьох мов",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini - найбільш розумна модель від OpenAI у малому масштабі, що пропонує багатомодальні можливості. Цей компактний гігант надає текстові відповіді з інтелектом, що перевершує GPT-3.5-Turbo, зберігаючи при цьому порівняльну швидкість. Ідеально підходить для менших завдань, включаючи застосування, пов'язані з баченням.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Оновлення для необмеженого GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Випробуйте найрозумнішу модель у малому масштабі від OpenAI. GPT-4o-mini пропонує вищу продуктивність порівняно з GPT-3.5-turbo, з багатомодальними можливостями та миттєвими відповідями."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Випробуйте найрозумнішу модель у малому масштабі від OpenAI. GPT-4o-mini пропонує вищу продуктивність порівняно з GPT-3.5-turbo, з багатомодальними можливостями та миттєвими відповідями.",
+    "chat__artifacts__button__description__empty": "Клацніть, щоб відкрити",
+    "chat__artifacts__button__description__code": "Клацніть, щоб відкрити код",
+    "chat__artifacts__button__description__image": "Клацніть, щоб відкрити зображення",
+    "chat__artifacts__button__description__html": "Клацніть, щоб відкрити веб-сайт",
+    "chat__artifacts__button__description__diagram": "Клацніть, щоб відкрити діаграму",
+    "chat__artifacts__button__description__document": "Клацніть, щоб відкрити документ",
+    "chat__artifacts__preview__tools__code_button__title": "Код",
+    "chat__artifacts__preview__tools__preview_button__title": "Попередній перегляд",
+    "chat__artifacts__preview__tools__refresh_button__title": "Оновити",
+    "chat__artifacts__preview__tools__download_button__title": "Завантажити",
+    "chat__artifacts__preview__tools__copy_button__title": "Копіювати",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Повноекранний режим",
+    "chat__artifacts__preview__tools__close_button__title": "Закрити"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

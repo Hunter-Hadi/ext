@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Verbeterd begrip van meerdere talen",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini is OpenAI's meest geavanceerde kleinschalige model, met multimodale mogelijkheden. Deze compacte krachtpatser levert tekstuitvoer met intelligentie die GPT-3.5-Turbo overtreft, terwijl hij een vergelijkbare snelheid behoudt. Ideaal voor kleinere taken, inclusief op visie gerelateerde toepassingen.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Upgrade voor onbeperkte GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Ervaar OpenAI's meest intelligente kleinschalige model tot nu toe. GPT-4o-mini biedt superieure prestaties ten opzichte van GPT-3.5-turbo, met multimodale mogelijkheden en bliksemsnelle reacties."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Ervaar OpenAI's meest intelligente kleinschalige model tot nu toe. GPT-4o-mini biedt superieure prestaties ten opzichte van GPT-3.5-turbo, met multimodale mogelijkheden en bliksemsnelle reacties.",
+    "chat__artifacts__button__description__empty": "Klik om te openen",
+    "chat__artifacts__button__description__code": "Klik om code te openen",
+    "chat__artifacts__button__description__image": "Klik om afbeelding te openen",
+    "chat__artifacts__button__description__html": "Klik om website te openen",
+    "chat__artifacts__button__description__diagram": "Klik om diagram te openen",
+    "chat__artifacts__button__description__document": "Klik om document te openen",
+    "chat__artifacts__preview__tools__code_button__title": "Code",
+    "chat__artifacts__preview__tools__preview_button__title": "Voorbeeld",
+    "chat__artifacts__preview__tools__refresh_button__title": "Vernieuwen",
+    "chat__artifacts__preview__tools__download_button__title": "Downloaden",
+    "chat__artifacts__preview__tools__copy_button__title": "Kopiëren",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Volledig scherm",
+    "chat__artifacts__preview__tools__close_button__title": "Sluiten"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

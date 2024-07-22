@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Uzlabota daudzvalodu saprašana",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini ir OpenAI vismodernākais mazā mēroga modelis, kas piedāvā daudzveidīgas iespējas. Šis kompaktais spēkdarbs nodrošina teksta izvades ar inteliģenci, kas pārsniedz GPT-3.5-Turbo, vienlaicīgi saglabājot salīdzināmu ātrumu. Ideāli piemērots mazākiem uzdevumiem, ieskaitot redzes saistītās lietojumprogrammas.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Uzlabojiet, lai iegūtu neierobežotu GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Izpētiet OpenAI visinteliģentāko mazā mēroga modeli līdz šim. GPT-4o-mini piedāvā izcilu veiktspēju salīdzinājumā ar GPT-3.5-turbo, ar daudzveidīgām iespējām un ātrām atbildēm."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Izpētiet OpenAI visinteliģentāko mazā mēroga modeli līdz šim. GPT-4o-mini piedāvā izcilu veiktspēju salīdzinājumā ar GPT-3.5-turbo, ar daudzveidīgām iespējām un ātrām atbildēm.",
+    "chat__artifacts__button__description__empty": "Noklikšķiniet, lai atvērtu",
+    "chat__artifacts__button__description__code": "Noklikšķiniet, lai atvērtu kodu",
+    "chat__artifacts__button__description__image": "Noklikšķiniet, lai atvērtu attēlu",
+    "chat__artifacts__button__description__html": "Noklikšķiniet, lai atvērtu tīmekļa vietni",
+    "chat__artifacts__button__description__diagram": "Noklikšķiniet, lai atvērtu diagrammu",
+    "chat__artifacts__button__description__document": "Noklikšķiniet, lai atvērtu dokumentu",
+    "chat__artifacts__preview__tools__code_button__title": "Kods",
+    "chat__artifacts__preview__tools__preview_button__title": "Priekšskatījums",
+    "chat__artifacts__preview__tools__refresh_button__title": "Atsvaidzināt",
+    "chat__artifacts__preview__tools__download_button__title": "Lejupielādēt",
+    "chat__artifacts__preview__tools__copy_button__title": "Kopēt",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Pilnekrāna režīms",
+    "chat__artifacts__preview__tools__close_button__title": "Aizvērt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

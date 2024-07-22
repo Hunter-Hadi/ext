@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "שיפור בהבנה רב-לשונית",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini הוא הדגם בגודל קטן המתקדם ביותר של OpenAI, המציע יכולות מרובות. מנוע ההפקה הקומפקטי הזה מספק פלט טקסט עם חוכמה שעולה על GPT-3.5-Turbo תוך ששומר על מהירות ניתנת להשוואה. אידיאלי למשימות קטנות יותר, כולל יישומים הקשורים לראייה.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "שדרוג ל-GPT-4o-mini בלתי מוגבל",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "חווי את הדגם בגודל קטן המוכשר ביותר של OpenAI עד כה. GPT-4o-mini מציע ביצועים יותר טובים מ-GPT-3.5-turbo, עם יכולות מרובות ותגובות מהירות כמו ברק."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "חווי את הדגם בגודל קטן המוכשר ביותר של OpenAI עד כה. GPT-4o-mini מציע ביצועים יותר טובים מ-GPT-3.5-turbo, עם יכולות מרובות ותגובות מהירות כמו ברק.",
+    "chat__artifacts__button__description__empty": "לחץ כדי לפתוח",
+    "chat__artifacts__button__description__code": "לחץ כדי לפתוח קוד",
+    "chat__artifacts__button__description__image": "לחץ כדי לפתוח תמונה",
+    "chat__artifacts__button__description__html": "לחץ כדי לפתוח אתר",
+    "chat__artifacts__button__description__diagram": "לחץ כדי לפתוח תרשים",
+    "chat__artifacts__button__description__document": "לחץ כדי לפתוח מסמך",
+    "chat__artifacts__preview__tools__code_button__title": "קוד",
+    "chat__artifacts__preview__tools__preview_button__title": "תצוגה מקדימה",
+    "chat__artifacts__preview__tools__refresh_button__title": "רענן",
+    "chat__artifacts__preview__tools__download_button__title": "הורד",
+    "chat__artifacts__preview__tools__copy_button__title": "העתק",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "מסך מלא",
+    "chat__artifacts__preview__tools__close_button__title": "סגור"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

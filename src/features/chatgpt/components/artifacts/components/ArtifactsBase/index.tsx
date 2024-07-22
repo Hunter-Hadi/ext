@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
@@ -18,6 +19,7 @@ export interface IArtifactsBaseProps {
 
 const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
   const { sx } = props
+  const { t } = useTranslation(['client'])
   const {
     artifacts,
     mode,
@@ -84,14 +86,14 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
             },
           }}
         >
-          {isAbleToReload && (
-            <TooltipIconButton
-              title={'Reload'}
-              onClick={reloadArtifactsPreview}
-            >
-              <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Restart'} />
-            </TooltipIconButton>
-          )}
+          <TooltipIconButton
+            title={t(
+              'client:chat__artifacts__preview__tools__refresh_button__title',
+            )}
+            onClick={reloadArtifactsPreview}
+          >
+            <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Restart'} />
+          </TooltipIconButton>
           <Stack
             sx={{
               flexDirection: 'row',
@@ -112,7 +114,11 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
                 padding: '8px 16px',
               }}
             >
-              <Typography fontSize={'14px'}>Preview</Typography>
+              <Typography fontSize={'14px'}>
+                {t(
+                  'client:chat__artifacts__preview__tools__preview_button__title',
+                )}
+              </Typography>
             </Button>
             <Button
               onClick={() => {
@@ -127,22 +133,43 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
                 padding: '8px 16px',
               }}
             >
-              <Typography fontSize={'14px'}>Code</Typography>
+              <Typography fontSize={'14px'}>
+                {t(
+                  'client:chat__artifacts__preview__tools__code_button__title',
+                )}
+              </Typography>
             </Button>
           </Stack>
           {!isImmersiveChatRef.current && (
-            <TooltipIconButton title={'Fullscreen'} onClick={() => {}}>
+            <TooltipIconButton
+              title={t(
+                'client:chat__artifacts__preview__tools__fullscreen_button__title',
+              )}
+              onClick={() => {}}
+            >
               <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Fullscreen'} />
             </TooltipIconButton>
           )}
-          <TooltipIconButton title={'Download'} onClick={() => {}}>
+          <TooltipIconButton
+            title={t(
+              'client:chat__artifacts__preview__tools__download_button__title',
+            )}
+            onClick={() => {}}
+          >
             <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'FileDownload'} />
           </TooltipIconButton>
-          <TooltipIconButton title={'Copy'} onClick={() => {}}>
+          <TooltipIconButton
+            title={t(
+              'client:chat__artifacts__preview__tools__copy_button__title',
+            )}
+            onClick={() => {}}
+          >
             <ContextMenuIcon sx={{ fontSize: '20px' }} icon={'Copy'} />
           </TooltipIconButton>
           <TooltipIconButton
-            title={'Close'}
+            title={t(
+              'client:chat__artifacts__preview__tools__close_button__title',
+            )}
             onClick={() => {
               hideArtifacts()
             }}

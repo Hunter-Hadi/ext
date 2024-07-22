@@ -1020,7 +1020,20 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Îmbunătățirea înțelegerii multilingve",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini este cel mai avansat model de dimensiuni mici al OpenAI, oferind capacități multimodale. Acest powerhouse compact oferă rezultate textuale cu inteligență care depășește GPT-3.5-Turbo menținând în același timp o viteză comparabilă. Ideal pentru sarcini mai mici, inclusiv aplicații legate de viziune.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Upgrade pentru GPT-4o-mini nelimitat",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Experimentați cel mai inteligent model de dimensiuni mici al OpenAI până acum. GPT-4o-mini oferă performanțe superioare față de GPT-3.5-turbo, cu capacități multimodale și răspunsuri extrem de rapide."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Experimentați cel mai inteligent model de dimensiuni mici al OpenAI până acum. GPT-4o-mini oferă performanțe superioare față de GPT-3.5-turbo, cu capacități multimodale și răspunsuri extrem de rapide.",
+    "chat__artifacts__button__description__empty": "Apasă pentru a deschide",
+    "chat__artifacts__button__description__code": "Apasă pentru a deschide codul",
+    "chat__artifacts__button__description__image": "Apasă pentru a deschide imaginea",
+    "chat__artifacts__button__description__html": "Apasă pentru a deschide site-ul",
+    "chat__artifacts__button__description__diagram": "Apasă pentru a deschide diagrama",
+    "chat__artifacts__button__description__document": "Apasă pentru a deschide documentul",
+    "chat__artifacts__preview__tools__code_button__title": "Cod",
+    "chat__artifacts__preview__tools__preview_button__title": "Previzualizare",
+    "chat__artifacts__preview__tools__refresh_button__title": "Reîmprospătare",
+    "chat__artifacts__preview__tools__download_button__title": "Descărcare",
+    "chat__artifacts__preview__tools__copy_button__title": "Copiere",
+    "chat__artifacts__preview__tools__fullscreen_button__title": "Ecran complet",
+    "chat__artifacts__preview__tools__close_button__title": "Închide"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

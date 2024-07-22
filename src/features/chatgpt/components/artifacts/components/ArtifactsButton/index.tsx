@@ -215,17 +215,39 @@ const ArtifactsButton: FC<{
     isOpenRef.current = isOpen
   }, [isOpen])
   useEffect(() => {
-    updateArtifacts(artifacts)
     if (!artifacts.complete) {
+      updateArtifacts(artifacts)
       isAutoOpenRef.current = true
       isOpenRef.current ? showArtifacts() : showArtifacts('code')
     } else {
       if (isOpenRef.current && isAutoOpenRef.current) {
+        updateArtifacts(artifacts)
         showArtifacts('preview')
         isAutoOpenRef.current = false
       }
     }
-  }, [artifacts.complete])
+  }, [artifacts.complete, artifacts.content])
+  useEffect(() => {
+    try {
+      const searchArtifacts = new URLSearchParams(window.location.search).get(
+        'artifacts',
+      )
+      if (
+        searchArtifacts &&
+        artifacts.complete &&
+        artifacts.identifier === searchArtifacts
+      ) {
+        // remove search
+        const url = new URL(window.location.href)
+        url.searchParams.delete('artifacts')
+        window.history.replaceState({}, '', url.toString())
+        updateArtifacts(artifacts)
+        showArtifacts('preview')
+      }
+    } catch (e) {
+      // ignore
+    }
+  }, [artifacts])
   return (
     <Stack
       component={'div'}

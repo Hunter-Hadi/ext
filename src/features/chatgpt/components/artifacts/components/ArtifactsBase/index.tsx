@@ -5,6 +5,7 @@ import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import Browser from 'webextension-polyfill'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
@@ -12,6 +13,8 @@ import TooltipIconButton from '@/components/TooltipIconButton'
 import { useArtifacts } from '@/features/chatgpt/components/artifacts'
 import ArtifactsCodeBlock from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsCodeBlock'
 import ArtifactsPreview from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsPreview'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export interface IArtifactsBaseProps {
@@ -29,6 +32,7 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
     reloadArtifactsPreview,
     downloadArtifacts,
   } = useArtifacts()
+  const { currentConversationId } = useClientConversation()
   const renderRef = useRef<HTMLDivElement | null>(null)
   const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
   const handleChange = (newMode: 'preview' | 'code') => {
@@ -146,7 +150,12 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
               title={t(
                 'client:chat__artifacts__preview__tools__fullscreen_button__title',
               )}
-              onClick={() => {}}
+              onClick={() => {
+                chromeExtensionClientOpenPage({
+                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                  query: `?artifacts=${artifacts.identifier}#/chat/${currentConversationId}`,
+                })
+              }}
             >
               <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Fullscreen'} />
             </TooltipIconButton>

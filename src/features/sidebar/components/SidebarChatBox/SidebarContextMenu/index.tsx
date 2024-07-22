@@ -9,7 +9,6 @@ import { cloneDeep } from 'lodash-es'
 import React, { FC, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { getChromeExtensionDBStorageButtonContextMenu } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -151,28 +150,19 @@ const SidebarContextMenu: FC = () => {
     if (!menuItem || !menuItem.id) return
 
     const runActions = cloneDeep(menuItem.data.actions || [])
-    const customActions = await getChromeExtensionDBStorageButtonContextMenu(
-      'textSelectPopupButton',
-    )
 
-    if (
-      menuItem.data.actions?.some((action) =>
-        customActions.some(
-          (customAction) => customAction.id === action.parameters.template,
-        ),
-      )
-    ) {
-      runActions.unshift({
-        type: 'SET_VARIABLE',
-        parameters: {
-          Variable: {
-            key: 'VariableModalKey',
-            value: 'SidebarRewrite',
-            overwrite: true,
-          },
+    runActions.unshift({
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'VariableModalKey',
+          value: 'SidebarRewrite',
+          overwrite: true,
+          isBuiltIn: true,
         },
-      })
-    }
+      },
+    })
+    // }
 
     if (runActions.length > 0) {
       checkAttachments()

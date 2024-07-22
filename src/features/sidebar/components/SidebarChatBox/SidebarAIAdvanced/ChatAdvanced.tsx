@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import {
   MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4O,
+  MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import LanguageSelect from '@/components/select/LanguageSelect'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -44,7 +45,8 @@ const ChatAdvanced = () => {
         )}
         {currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
           currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO &&
-          currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4O && (
+          currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4O &&
+          currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4O_MINI && (
             <APITemperatureSlider provider={'USE_CHAT_GPT_PLUS'} />
           )}
         {currentAIProvider === 'OPENAI_API' && (

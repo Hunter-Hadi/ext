@@ -15,8 +15,9 @@ import {
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
-import { setMaxAIChromeExtensionUserFeatureUsage } from '@/features/auth/utils'
+import { resetMaxAIChromeExtensionUserFeatureUsage } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { resetChromeExtensionPlanPricingInfo } from '@/features/pricing/utils/planPricingHelper'
 import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import { wait } from '@/utils'
 
@@ -299,7 +300,9 @@ export const chromeExtensionLogout = async () => {
   // 清空beta feature settings
   await removeMaxAIBetaFeatureSettings()
   // 清空feature quota检测时间
-  await setMaxAIChromeExtensionUserFeatureUsage('checkTime', '')
+  await resetMaxAIChromeExtensionUserFeatureUsage()
+  // 清空plan pricing的获取时间
+  await resetChromeExtensionPlanPricingInfo()
 }
 
 /**

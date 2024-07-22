@@ -1,5 +1,5 @@
 import { Stack, SxProps } from '@mui/material'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 
 import PaymentTypeSwitch from '@/features/pricing/components/PaymentTypeSwitch'
 import PlanFeaturesCard from '@/features/pricing/components/PlanFeatures/PlanFeaturesCard'
@@ -15,11 +15,7 @@ const PlanFeatures: FC<PlanFeaturesProps> = (props) => {
   const { onUpgradeClick, sx } = props
   const [paymentType, setPaymentType] = useState<IPaymentType>('yearly')
 
-  const { fetchPlanPricing } = usePlanPricingInfo()
-
-  useEffect(() => {
-    fetchPlanPricing()
-  }, [fetchPlanPricing])
+  usePlanPricingInfo(true)
 
   return (
     <Stack sx={sx} spacing={3} minWidth={700}>

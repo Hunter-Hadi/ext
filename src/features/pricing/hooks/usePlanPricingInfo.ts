@@ -2,11 +2,12 @@ import isNumber from 'lodash-es/isNumber'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
+import { isProdAPI } from '@/constants'
+import { useFocus } from '@/features/common/hooks/useFocus'
 import { PlanPricingInfoAtom } from '@/features/pricing/store'
-import { IPlanPricingInfo } from '@/features/pricing/type'
-import { aesJsonDecrypt } from '@/features/security'
+import { IPlanPricingInfo, RENDER_PLAN_TYPE } from '@/features/pricing/type'
+import { getChromeExtensionPlanPricingInfo } from '@/features/pricing/utils/planPricingHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { clientMaxAIGet } from '@/utils/request'
 
 const isBetterDiscount = (
   prev: IPlanPricingInfo | null,
@@ -28,69 +29,50 @@ const isBetterDiscount = (
   return false
 }
 
-// pricing页面会在upgrade hover卡片里调用
-// 先简单记录一下防止快速显示关闭重复调用请求
-let fetchTime = 0
-
 // 目前pricing modal和upgrade不在同一个provider下
 // 这里先简单存储一下
-let fetchData: Record<string, any> = {}
+let cacheData: Record<string, any> = {}
 
-const usePlanPricingInfo = () => {
+const usePlanPricingInfo = (init?: boolean) => {
   const [planPricingInfo, setPlanPricingInfo] =
     useRecoilState(PlanPricingInfoAtom)
 
-  useEffect(() => {
-    setPlanPricingInfo((prev) => {
-      return {
-        ...prev,
-        data: mergeWithObject([prev.data, fetchData]),
-      }
-    })
-  }, [])
-
   // 注意接口里的elite_monthly要转换为elite，前端目前monthly的类型没有后缀
-  const fetchPlanPricing = useCallback(async () => {
-    if (Date.now() - fetchTime < 15000) return
-    fetchTime = Date.now()
+  const fetchPlanPricing = useCallback(async (forceUpdate?: boolean) => {
     setPlanPricingInfo((prev) => ({
       ...prev,
       loading: true,
     }))
     try {
-      const result = await clientMaxAIGet<string>(
-        '/app/get_subscription_pricing',
-      )
-      if (result?.data) {
-        const data = aesJsonDecrypt(result.data, 'MaxAI')
-        Object.keys(data).forEach((key) => {
-          if (key.includes('monthly')) {
-            data[`${key.replace('_monthly', '')}`] = data[key]
-            delete data[key]
-          }
-        })
-        fetchData = data
-        setPlanPricingInfo((prev) => {
-          return {
-            ...prev,
-            loading: false,
-            data: mergeWithObject([prev.data, data]),
-          }
-        })
-      } else {
-        setPlanPricingInfo((prev) => ({
+      const data = await getChromeExtensionPlanPricingInfo(forceUpdate)
+      cacheData = data
+      setPlanPricingInfo((prev) => {
+        return {
           ...prev,
           loading: false,
-        }))
-      }
-    } catch (e) {
-      console.error(e)
+          data,
+        }
+      })
+    } catch (err) {
+      console.error(err)
       setPlanPricingInfo((prev) => ({
         ...prev,
         loading: false,
       }))
     }
   }, [])
+
+  useEffect(() => {
+    if (init) {
+      fetchPlanPricing()
+    }
+  }, [])
+
+  useFocus(() => {
+    if (init) {
+      fetchPlanPricing()
+    }
+  })
 
   // 最高折扣
   const maxDiscountInfo = useMemo(() => {
@@ -115,6 +97,7 @@ const usePlanPricingInfo = () => {
     if (isBetterDiscount(maxDiscount, planPricingInfo.data.elite_yearly)) {
       maxDiscount = planPricingInfo.data.elite_yearly
     }
+
     // 下面不这么写推导出得类型全是null?
     return { maxDiscount, maxYearlyDiscount, maxMonthlyDiscount } as {
       maxDiscount: IPlanPricingInfo | null
@@ -123,9 +106,22 @@ const usePlanPricingInfo = () => {
     }
   }, [planPricingInfo.data])
 
+  const pricingInfoData = useMemo(() => {
+    const mergeInfo = mergeWithObject([planPricingInfo.data, cacheData])
+    return (Object.keys(mergeInfo) as RENDER_PLAN_TYPE[]).reduce((acc, key) => {
+      acc[key] = {
+        ...mergeInfo[key],
+        price_id: isProdAPI
+          ? mergeInfo[key].price_id
+          : mergeInfo[key].dev_price_id,
+      }
+      return acc
+    }, {} as typeof planPricingInfo.data)
+  }, [planPricingInfo.data])
+
   return {
     loading: planPricingInfo.loading,
-    planPricingInfo: planPricingInfo.data,
+    planPricingInfo: pricingInfoData,
     fetchPlanPricing,
     ...maxDiscountInfo,
   }

@@ -15,6 +15,7 @@ import UserQuotaUsageQueriesCard from '@/features/auth/components/UserQuotaUsage
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import UpgradePlanSalesCard from '@/features/pricing/components/UpgradePlanSalesCard'
+import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 const SettingsMePage: FC = () => {
   const { t } = useTranslation(['common', 'settings'])
@@ -28,6 +29,7 @@ const SettingsMePage: FC = () => {
   useEffectOnce(() => {
     syncUserSubscriptionInfo().then().catch()
   })
+  usePlanPricingInfo(true)
   return (
     <Stack>
       <SettingsFeatureCardLayout
@@ -93,7 +95,7 @@ const SettingsMePage: FC = () => {
             </ListItemButton> */}
           </List>
 
-          {isPayingUser && !isPaymentOneTimeUser && !isTopPlanUser ? (
+          {!isPaymentOneTimeUser && !isTopPlanUser ? (
             <UpgradePlanSalesCard renderPlan='elite_yearly' />
           ) : null}
         </Stack>

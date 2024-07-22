@@ -48,7 +48,7 @@ export const UserQuotaUsageState = atom<
 export const UserFeatureQuotaState = atom<
   IUserFeatureQuotaInfo & { loading: boolean }
 >({
-  key: 'UserQuotaUsageState',
+  key: 'UserFeatureQuotaState',
   default: {
     loading: false,
     // 每日用量上限

@@ -32,7 +32,7 @@ const FastAIUsageQueriesItem: FC<IFastAIUsageQueriesItemProps> = ({
   usage,
   sx,
 }) => {
-  const fastAIModelText = 'GPT-3.5 & Claude-3-Haiku & Gemini-1.5-Flash'
+  const fastAIModelText = 'GPT-4o-mini & Claude-3-Haiku & Gemini-1.5-Flash'
 
   const { t } = useTranslation()
   const {
@@ -77,7 +77,7 @@ const FastAIUsageQueriesItem: FC<IFastAIUsageQueriesItemProps> = ({
               {showUpgradeLink ? (
                 <Typography color='text.primary' fontSize={14} lineHeight={1.5}>
                   <ProLink
-                    href={`${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=elite_yearly`}
+                    href={`${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=elite_yearly&paymentType=yearly`}
                     underline='always'
                     sx={{
                       color: 'inherit',

@@ -1,3 +1,6 @@
+/**
+ * @deprecated 已废弃，统一走uploadMaxAIDocument方法上传
+ */
 import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { md5TextEncrypt } from '@/features/security'

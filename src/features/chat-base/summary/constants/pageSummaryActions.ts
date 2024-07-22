@@ -1,6 +1,9 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { VARIABLE_CURRENT_WEBPAGE_URL } from '@/background/defaultPromptsData/systemVariables'
+import {
+  VARIABLE_AI_RESPONSE_LANGUAGE,
+  VARIABLE_CURRENT_WEBPAGE_URL,
+} from '@/background/defaultPromptsData/systemVariables'
 import {
   SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
   SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
@@ -63,16 +66,33 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
+      type: 'SET_VARIABLE',
       parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'PageSummaryContent.txt',
+        VariableName: 'READABILITY_CONTENTS',
       },
+    },
+    {
+      type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
+      parameters: {},
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'READABILITY_CONTENTS',
+        VariableName: 'READABILITY_MARKDOWN',
+      },
+    },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'webpage',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
+          },
+        },
       },
     },
     {
@@ -117,15 +137,8 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptName: `[Summary] Summarize page`,
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
             VARIABLE_CURRENT_WEBPAGE_URL,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [
             {
@@ -269,16 +282,33 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
+      type: 'SET_VARIABLE',
       parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'PageSummaryContent.txt',
+        VariableName: 'READABILITY_CONTENTS',
       },
+    },
+    {
+      type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
+      parameters: {},
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'READABILITY_CONTENTS',
+        VariableName: 'READABILITY_MARKDOWN',
+      },
+    },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'webpage',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
+          },
+        },
       },
     },
     {
@@ -323,15 +353,8 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptName: `[Summary] Summarize page`,
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
             VARIABLE_CURRENT_WEBPAGE_URL,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },
@@ -470,16 +493,33 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
+      type: 'SET_VARIABLE',
       parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'PageSummaryContent.txt',
+        VariableName: 'READABILITY_CONTENTS',
       },
+    },
+    {
+      type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
+      parameters: {},
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'READABILITY_CONTENTS',
+        VariableName: 'READABILITY_MARKDOWN',
+      },
+    },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'webpage',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
+          },
+        },
       },
     },
     {
@@ -524,15 +564,8 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptName: `[Summary] Summarize page (Key takeaways)`,
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
             VARIABLE_CURRENT_WEBPAGE_URL,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },

@@ -330,7 +330,8 @@ const useClientChat = () => {
     try {
       showConversationLoading(currentConversationId)
 
-      const { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
+      // eslint-disable-next-line prefer-const
+      let { lastRunActionsParams, lastRunActions, needDeleteMessageIds } =
         await getLastRunShortcuts(currentConversationId)
 
       if (clientConversation?.type === 'Summary') {
@@ -343,6 +344,26 @@ const useClientChat = () => {
         ) {
           await pushPricingHookMessage('PAGE_SUMMARY')
           authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+            conversationId: currentConversationId,
+            paywallType: 'RESPONSE',
+          })
+          return
+        }
+        // summary下重试的时候使用最新选择的语言
+        if (lastRunActionsParams) {
+          lastRunActionsParams = lastRunActionsParams.filter((item) => {
+            return (
+              item.key !== 'AI_RESPONSE_LANGUAGE' &&
+              item.key !== 'AI_OUTPUT_LANGUAGE'
+            )
+          })
+        }
+      }
+      if (clientConversation?.type === 'Search') {
+        // 如果重试的是search，需要判断用量
+        if (!(await checkFeatureQuota('search'))) {
+          await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
+          authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
             conversationId: currentConversationId,
             paywallType: 'RESPONSE',
           })

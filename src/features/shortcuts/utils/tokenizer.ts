@@ -79,7 +79,6 @@ const mergeArrays = <T>(...arrays: T[][]): T[] => {
   return result
 }
 
-// TODO getTextTokens最好放在worker线程里执行，大文件耗时堵塞明显
 export const getTextTokens = (text: string) => {
   try {
     const tokens = cl100k_base.encode(text, {

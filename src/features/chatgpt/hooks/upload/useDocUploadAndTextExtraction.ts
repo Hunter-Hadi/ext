@@ -7,7 +7,7 @@ import useAIProviderUpload, {
 } from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
-import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
+import { uploadMaxAIDocument } from '@/features/shortcuts/utils/maxAIDocument'
 import FileExtractor from '@/features/sidebar/utils/FileExtractor'
 import globalSnackbar from '@/utils/globalSnackbar'
 
@@ -88,16 +88,16 @@ const useDocUploadAndTextExtraction = () => {
           fileIds.map(async (fileId) => {
             const file = uploadFileMap[fileId]
             if (file) {
-              const uploadResult = await maxAIFileUpload(file, {
-                useCase: 'extracted_doc',
-                filename: file.name,
+              const uploadResult = await uploadMaxAIDocument({
+                file,
+                doc_type: 'chat_file',
               })
               if (uploadResult.success) {
                 uploadResultMap[fileId] = {
                   uploadStatus: 'success',
                   uploadProgress: 100,
-                  uploadedFileId: uploadResult.file_id,
-                  uploadedUrl: uploadResult.file_url,
+                  uploadedFileId: uploadResult.doc_id,
+                  uploadedUrl: uploadResult.doc_url,
                 }
               } else {
                 uploadResultMap[fileId] = {

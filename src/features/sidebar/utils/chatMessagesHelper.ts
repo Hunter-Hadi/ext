@@ -19,7 +19,9 @@ import {
 } from '@/features/indexed_db/conversations/models/Message'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { getOriginalFileURL } from '@/utils/dataHelper/websiteHelper'
+
 export const formatSecondsAsTimestamp = (seconds: string) => {
+  if (seconds.includes(':')) return seconds
   // 将字符串转换为浮点数并取整
   const totalSeconds = Math.round(parseFloat(seconds))
   const hours = Math.floor(totalSeconds / 3600)
@@ -36,6 +38,26 @@ export const formatSecondsAsTimestamp = (seconds: string) => {
     return `${minutesString}:${secondsString}`
   }
 }
+
+/**
+ * 转换hh:mm:ss或mm:ss为秒数
+ * @param timestamp
+ */
+export const formatTimestampToSeconds = (timestamp: string) => {
+  const parts = timestamp.split(':').map((part) => parseInt(part))
+
+  if (parts.length === 3) {
+    // hh:mm:ss 格式
+    const [hours, minutes, seconds] = parts
+    return hours * 3600 + minutes * 60 + seconds
+  } else if (parts.length === 2) {
+    // mm:ss 格式
+    const [minutes, seconds] = parts
+    return minutes * 60 + seconds
+  }
+  return 0
+}
+
 /**
  * 格式化AI消息的内容
  * @param message

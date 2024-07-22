@@ -1,5 +1,7 @@
-import { parseReadabilityDocument } from '@/features/chat-base/summary/utils/documentContentHelper'
-import { getIframeOrSpecialHostPageContent } from '@/features/chat-base/summary/utils/pageContentHelper'
+import {
+  getIframeOrSpecialHostPageContent,
+  getReadabilityPageMarkdown,
+} from '@/features/chat-base/summary/utils/pageContentHelper'
 import {
   IShortcutEngineExternalEngine,
   pushOutputToChat,
@@ -12,10 +14,10 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 /**
- * 抓取当前网页可读内容，此actions只会抓取纯文本不会抓取图片等内容
+ * 抓取当前网页可读内容并转换为markdown，此action会保留图片视频等信息
  */
-export class ActionGetReadabilityContentsOfWebPage extends Action {
-  static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
+export class ActionGetReadabilityMarkdownOfWebPage extends Action {
+  static type: ActionIdentifier = 'GET_READABILITY_MARKDOWN_OF_WEBPAGE'
   originalInnerText: string = ''
   isStopAction = false
   constructor(
@@ -37,19 +39,11 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
   ) {
     try {
       if (this.isStopAction) return
-      // TODO 目前ReadabilityPageContent是从document.cloneNode(true)读取出来的内容对于样式判断不准确
-      // let result =
-      //   (await getIframeOrSpecialHostPageContent()) ||
-      //   (await getReadabilityPageContent())
-      // if (result.length < 100 && typeof document !== 'undefined') {
-      //   result = await getVisibilityPageContent()
-      // }
-      let result = await getIframeOrSpecialHostPageContent()
-      if (!result) {
-        const clear = parseReadabilityDocument(document, false)
-        this.originalInnerText = result = document.body.innerText
-        clear()
-      }
+      // TODO 如果readability没有抓取到内容需要fallback自定义抓取逻辑
+      const result =
+        (await getIframeOrSpecialHostPageContent()) ||
+        getReadabilityPageMarkdown() ||
+        ''
       this.output = result
     } catch (e) {
       this.error = (e as any).toString()

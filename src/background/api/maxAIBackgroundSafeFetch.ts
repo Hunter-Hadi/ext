@@ -20,6 +20,9 @@ const maxAIBackgroundSafeFetch = async (
     Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
     ...init?.headers,
   })
+  if (init?.body && init.body instanceof FormData) {
+    headers.delete('Content-Type')
+  }
   if (requestHeadersTaskId && typeof input === 'string' && init?.body) {
     // 获取加密的token
     const encryptedHeaders =

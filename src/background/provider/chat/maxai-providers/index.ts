@@ -118,7 +118,9 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       return chatMessageToMaxAIRequestMessage(message, true)
     }) || []
   const maxAIRequestMessage = chatMessageToMaxAIRequestMessage(question)
-  const docId = conversationDetail?.meta?.docId
+  const docId =
+    conversationDetail?.meta?.docId ||
+    conversationDetail?.meta.pageSummary?.docId
   let postBody: IMaxAIChatGPTBackendBodyType = Object.assign(
     {
       chat_history,
@@ -416,6 +418,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
             streamMessage,
             responseMessage,
             conversationDetail,
+            { backendAPI, postBody },
           )
           responseMessage = parserMessage.data
           onMessage && onMessage(parserMessage)
@@ -458,6 +461,7 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
           data,
           responseMessage,
           conversationDetail,
+          { backendAPI, postBody },
         )
         responseMessage = parserMessage.data
       } else {

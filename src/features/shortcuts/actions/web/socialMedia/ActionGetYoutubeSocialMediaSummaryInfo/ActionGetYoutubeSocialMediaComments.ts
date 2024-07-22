@@ -7,6 +7,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 /**
  * @since 2024-03-15
  * @description youtube拿取评论数据,需要根据这个class判断走if逻辑, 该class是否可优化掉
+ * @deprecated 目前已经没有地方用到此action，可以删除
  */
 export class ActionGetYoutubeSocialMediaComments extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_COMMENTS'

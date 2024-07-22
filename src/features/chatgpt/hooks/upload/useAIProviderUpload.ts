@@ -12,7 +12,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { ClientUploadedFilesState } from '@/features/chatgpt/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
-import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
+import { uploadMaxAIDocument } from '@/features/shortcuts/utils/maxAIDocument'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import globalSnackbar from '@/utils/globalSnackbar'
@@ -241,11 +241,12 @@ const useAIProviderUpload = () => {
                 if (!chatUploadFile.file) {
                   return undefined
                 }
-                const result = await maxAIFileUpload(chatUploadFile.file, {
-                  useCase: 'multimodal',
+                // 上传文件
+                const result = await uploadMaxAIDocument({
+                  file: chatUploadFile.file,
                 })
-                chatUploadFile.uploadedFileId = result.file_id
-                chatUploadFile.uploadedUrl = result.file_url
+                chatUploadFile.uploadedFileId = result.doc_id
+                chatUploadFile.uploadedUrl = result.doc_url
                 chatUploadFile.uploadStatus = result.success
                   ? 'success'
                   : 'error'

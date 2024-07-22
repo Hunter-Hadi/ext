@@ -1,6 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import {
+  VARIABLE_AI_RESPONSE_LANGUAGE,
   VARIABLE_CURRENT_WEBPAGE_URL,
   VARIABLE_CURRENT_WEBSITE_DOMAIN,
 } from '@/background/defaultPromptsData/systemVariables'
@@ -71,16 +72,29 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
+      type: 'SET_VARIABLE',
       parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'EmailSummaryContent.txt',
+        VariableName: 'READABILITY_CONTENTS',
+      },
+    },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'email',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_CONTENTS}}',
+          },
+        },
       },
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'READABILITY_CONTENTS',
+        VariableName: 'DOC_ID',
       },
     },
     {
@@ -125,16 +139,9 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize email',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },
@@ -272,16 +279,29 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
+      type: 'SET_VARIABLE',
       parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'EmailSummaryContent.txt',
+        VariableName: 'READABILITY_CONTENTS',
+      },
+    },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'email',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_CONTENTS}}',
+          },
+        },
       },
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'READABILITY_CONTENTS',
+        VariableName: 'DOC_ID',
       },
     },
     {
@@ -326,16 +346,9 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize email (TL:DR)',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },
@@ -473,16 +486,29 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
+      type: 'SET_VARIABLE',
       parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'EmailSummaryContent.txt',
+        VariableName: 'READABILITY_CONTENTS',
+      },
+    },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'email',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_CONTENTS}}',
+          },
+        },
       },
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'READABILITY_CONTENTS',
+        VariableName: 'DOC_ID',
       },
     },
     {
@@ -527,16 +553,9 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize email (Key takeaways)',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },
@@ -674,16 +693,29 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       parameters: {},
     },
     {
-      type: 'ANALYZE_CHAT_FILE',
+      type: 'SET_VARIABLE',
       parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'EmailSummaryContent.txt',
+        VariableName: 'READABILITY_CONTENTS',
+      },
+    },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '{{READABILITY_CONTENTS}}',
+          docType: 'email',
+          doneType: 'document_create',
+          file: {
+            readabilityMarkdown: '{{READABILITY_CONTENTS}}',
+          },
+        },
       },
     },
     {
       type: 'SET_VARIABLE',
       parameters: {
-        VariableName: 'READABILITY_CONTENTS',
+        VariableName: 'DOC_ID',
       },
     },
     {
@@ -728,16 +760,9 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           promptName: '[Summary] Summarize email (Action items)',
           promptActionType: 'chat_complete',
           variables: [
-            {
-              VariableName: 'PAGE_CONTENT',
-              label: 'PAGE_CONTENT',
-              defaultValue: '{{READABILITY_CONTENTS}}',
-              valueType: 'Text',
-              systemVariable: true,
-              hidden: true,
-            },
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },

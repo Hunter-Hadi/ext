@@ -2,10 +2,18 @@
  * 解析后端steaming返回的数据结构，并转换成parse message
  * 解析后的outputMessage保持和IAIResponseMessage一样的结构，大部分业务逻辑处理的时候直接deepMerge
  */
-import { IMaxAIResponseStreamMessage } from '@/background/src/chat/UseChatGPTChat/types'
+
+import {
+  IMaxAIChatGPTBackendAPIType,
+  IMaxAIChatGPTBackendBodyType,
+  IMaxAIResponseStreamMessage,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import { combinedPermissionSceneType } from '@/features/auth/utils/permissionHelper'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import { IAIResponseOriginalMessage } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIResponseOriginalMessage,
+  IAIResponseOriginalMessageMetaDeep,
+} from '@/features/indexed_db/conversations/models/Message'
 
 export type IMaxAIResponseParserMessage = {
   type: 'error' | 'message'
@@ -22,6 +30,54 @@ export type IMaxAIResponseOutputMessage = {
 }
 
 /**
+ * 将streaming输出的时间戳文本转成格式化的结构
+ * # [3:33] 大标题1
+ * ## [2:22] 小标题11
+ * ## [2:22] 小标题12
+ *
+ * # [3:33] 大标题2
+ * ## [2:22] 小标题21
+ * ## [2:22] 小标题22
+ * 转换成
+ * [{ text: '大标题1', start: '3:33', children: [ { text: '小标题11', start: '2:22' }, ... ] }, ...]
+ * @param text
+ */
+const formatTimestampedMarkdown = (text: string) => {
+  const result: IMaxAIResponseStreamMessage['timestamped'] = []
+
+  // 按照两个换行符分组
+  const groups = text.split('\n\n')
+
+  groups.forEach((group) => {
+    const lines = group.split('\n')
+    let parent: Required<IMaxAIResponseStreamMessage>['timestamped'][number] = {
+      start: '',
+      text: '',
+      children: [],
+    }
+
+    lines.forEach((line) => {
+      const match = line.match(/^(#+) \[(.+?)\] (.+)/)
+
+      if (match) {
+        const level = match[1].length === 1 ? 'parent' : 'child'
+        const start = match[2]
+        const text = match[3]
+
+        if (level === 'parent') {
+          parent = { text, start, children: [] }
+          result.push(parent)
+        } else if (level === 'child' && parent) {
+          parent.children.push({ text, start })
+        }
+      }
+    })
+  })
+
+  return result
+}
+
+/**
  * 解析stream请求结果，目前某些接口会对多个接口进行整合，返回的数据以key区分不同数据
  * @param streamMessage
  * @param outputMessage
@@ -31,11 +87,53 @@ export const maxAIRequestResponseStreamParser = (
   streamMessage: IMaxAIResponseStreamMessage | null,
   outputMessage: IMaxAIResponseOutputMessage,
   conversation?: IConversation,
+  requestInfo?: {
+    backendAPI?: IMaxAIChatGPTBackendAPIType
+    postBody?: IMaxAIChatGPTBackendBodyType
+  },
 ): IMaxAIResponseParserMessage => {
+  const { backendAPI, postBody } = requestInfo || {}
   // if (streamMessage?.conversation_id) {}
   // 增强数据
   if (streamMessage?.streaming_status) {
     if (streamMessage.text !== undefined) {
+      // summary下很大概率会返回```\n...\n```包裹的内容，markdown会渲染成code
+      // 前端先针对此文本做下过滤
+      if (postBody?.summary_type && streamMessage.text.startsWith('```\n')) {
+        streamMessage.text = streamMessage.text.replace(/^```\n|\n```$/g, '')
+      }
+      if (
+        postBody?.summary_type &&
+        streamMessage.text.startsWith('```markdown\n')
+      ) {
+        streamMessage.text = streamMessage.text.replace(
+          /^```markdown\n|\nmarkdown```$/g,
+          '',
+        )
+      }
+      // youtube时间线总结，转成结构化数据，后端不方便转，前端先自行转换成timestamped结构化的内容
+      if (
+        backendAPI === 'summary/v3/videosite' &&
+        postBody?.summary_type === 'timestamped'
+      ) {
+        streamMessage.timestamped = formatTimestampedMarkdown(
+          streamMessage.text,
+        )
+        // if (streamMessage.streaming_status === 'in_progress' && streamMessage.timestamped.length) {
+        //   // 如果正在loading，删除最后一行，确保完整的一行输出完再展示
+        //   const last = streamMessage.timestamped[streamMessage.timestamped.length - 1]
+        //   if (!last.children.pop()) {
+        //     streamMessage.timestamped.pop()
+        //   }
+        // }
+        delete streamMessage.text
+        return maxAIRequestResponseStreamParser(
+          streamMessage,
+          outputMessage,
+          conversation,
+          requestInfo,
+        )
+      }
       if (streamMessage.need_merge) {
         outputMessage.text += streamMessage.text
       } else {
@@ -136,33 +234,112 @@ export const maxAIRequestResponseStreamParser = (
         }
       }
     }
+    if (streamMessage.timestamped !== undefined) {
+      const value = streamMessage.timestamped.map((item, index) => ({
+        id: `${index}`,
+        start: item.start,
+        duration: '',
+        text: item.text,
+        status: 'complete',
+        children: item.children?.map((child, cIndex) => ({
+          id: `${index}-${cIndex}`,
+          start: child.start,
+          duration: '',
+          text: child.text,
+          status: 'complete',
+        })),
+      }))
+      switch (streamMessage.streaming_status) {
+        case 'start':
+        case 'in_progress': {
+          // loading状态
+          const timestampedDive: IAIResponseOriginalMessageMetaDeep = {
+            type: 'timestampedSummary',
+            title: {
+              title: 'Summary',
+              titleIcon: 'SummaryInfo',
+            },
+            value: [
+              ...value,
+              {
+                id: `${value.length}`,
+                start: '',
+                duration: '',
+                text: '',
+                status: 'loading',
+                children: [],
+              },
+            ],
+          }
+          outputMessage.originalMessage = {
+            ...outputMessage.originalMessage,
+            metadata: {
+              ...outputMessage.originalMessage?.metadata,
+              deepDive: ([] as IAIResponseOriginalMessageMetaDeep[])
+                .concat(outputMessage.originalMessage?.metadata?.deepDive || [])
+                .filter((item) => item && item.type !== timestampedDive.type)
+                .concat(timestampedDive),
+            },
+          }
+          break
+        }
+        case 'complete': {
+          const timestampedDive: IAIResponseOriginalMessageMetaDeep = {
+            type: 'timestampedSummary',
+            title: {
+              title: 'Summary',
+              titleIcon: 'SummaryInfo',
+            },
+            value,
+          }
+          outputMessage.originalMessage = {
+            ...outputMessage.originalMessage,
+            metadata: {
+              ...outputMessage.originalMessage?.metadata,
+              deepDive: ([] as IAIResponseOriginalMessageMetaDeep[])
+                .concat(outputMessage.originalMessage?.metadata?.deepDive || [])
+                .filter((item) => item && item.type !== timestampedDive.type)
+                .concat(timestampedDive),
+            },
+          }
+          break
+        }
+      }
+    }
     if (streamMessage.related !== undefined) {
       const pageSummaryType = conversation?.meta.pageSummaryType
       switch (streamMessage.streaming_status) {
         case 'start':
         case 'in_progress': {
           // loading状态
-          const relatedDive = {
+          const relatedDive: IAIResponseOriginalMessageMetaDeep = {
+            type: 'related',
             title: {
-              title: ' ',
+              title: '',
               titleIcon: 'Loading',
             },
-            value: '',
-          } as const
+            value: [],
+          }
           outputMessage.originalMessage = {
             ...outputMessage.originalMessage,
             metadata: {
               ...outputMessage.originalMessage?.metadata,
               deepDive:
                 pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
-                  ? [relatedDive]
+                  ? ([] as IAIResponseOriginalMessageMetaDeep[])
+                      .concat(
+                        outputMessage.originalMessage?.metadata?.deepDive || [],
+                      )
+                      .filter((item) => item && item.type !== relatedDive.type)
+                      .concat(relatedDive)
                   : relatedDive,
             },
           }
           break
         }
         case 'complete': {
-          const relatedDive = streamMessage.related?.length
+          const relatedDive: IAIResponseOriginalMessageMetaDeep = streamMessage
+            .related?.length
             ? {
                 title: {
                   title: 'Keep exploring',
@@ -181,8 +358,16 @@ export const maxAIRequestResponseStreamParser = (
               ...outputMessage.originalMessage?.metadata,
               deepDive:
                 pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
-                  ? ([relatedDive].filter(Boolean) as any)
+                  ? ([] as IAIResponseOriginalMessageMetaDeep[])
+                      .concat(
+                        outputMessage.originalMessage?.metadata?.deepDive || [],
+                      )
+                      .filter((item) => item && item.type !== relatedDive.type)
+                      .concat(relatedDive)
                   : relatedDive,
+              // pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY'
+              //   ? ([relatedDive].filter(Boolean) as any)
+              //   : relatedDive,
             },
           }
           break
@@ -211,6 +396,10 @@ export const maxAIRequestResponseJsonParser = (
   responseData: IMaxAIResponseStreamMessage,
   outputMessage: IMaxAIResponseOutputMessage,
   conversation?: IConversation,
+  requestInfo?: {
+    backendAPI?: IMaxAIChatGPTBackendAPIType
+    postBody?: IMaxAIChatGPTBackendBodyType
+  },
 ): IMaxAIResponseParserMessage => {
   return {
     type: 'message',
@@ -224,6 +413,7 @@ export const maxAIRequestResponseJsonParser = (
       },
       outputMessage,
       conversation,
+      requestInfo,
     ).data,
   }
 }

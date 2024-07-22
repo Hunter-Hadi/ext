@@ -42,7 +42,12 @@ export type IUploadDocumentPayload = {
  */
 export type IUploadDocumentMessage = {
   event: IUploadDocumentEvent
-  data: { doc_url?: string; expires?: number }
+  data: {
+    s3?: {
+      doc_url?: string
+      expires?: number
+    }
+  }
 }
 
 /**
@@ -155,8 +160,8 @@ export const uploadMaxAIDocument = async (
           listener?.(uploadMessage)
         }
         if (uploadMessage.event === 'upload_done') {
-          uploadResponse.doc_url = uploadMessage.data.doc_url || ''
-          uploadResponse.expires = uploadMessage.data.expires
+          uploadResponse.doc_url = uploadMessage.data.s3?.doc_url || ''
+          uploadResponse.expires = uploadMessage.data.s3?.expires
           uploadResponse.success = true
         }
       } catch (e) {

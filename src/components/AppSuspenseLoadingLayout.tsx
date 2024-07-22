@@ -36,7 +36,7 @@ const AppSuspenseLoadingLayout: FC<IProps> = ({
           <CircularProgress size={size} sx={{ m: '0 auto' }} />
           <Typography
             mt={1.5}
-            variant="body2"
+            variant='body2'
             fontWeight={400}
             fontSize={'16px'}
             lineHeight={1.25}

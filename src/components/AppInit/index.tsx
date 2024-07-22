@@ -19,6 +19,7 @@ import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
 import useButtonClickedTracker from '@/features/mixpanel/hooks/useButtonClickedTracker'
+import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
@@ -103,7 +104,9 @@ export const AppSettingsInit = () => {
  * @constructor
  */
 export const MaxAISubscriptionUpdate = () => {
-  const { syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
+  const { syncUserInfo, syncUserSubscriptionInfo, syncUserFeatureQuotaInfo } =
+    useUserInfo()
+  const { fetchPlanPricing } = usePlanPricingInfo(true)
   useEffectOnce(() => {
     syncUserInfo().then()
     if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
@@ -112,12 +115,19 @@ export const MaxAISubscriptionUpdate = () => {
         [
           '/my-plan',
           '/pricing',
+          '/get-started',
           '/payment/error',
           '/payment/success',
           '/subscription/failed',
         ].includes(pathname)
       ) {
         syncUserSubscriptionInfo().then()
+        syncUserFeatureQuotaInfo(true).then()
+      }
+      if (['/my-plan', '/pricing'].includes(pathname)) {
+        setTimeout(() => {
+          fetchPlanPricing(true).then()
+        }, 500)
       }
     }
   })

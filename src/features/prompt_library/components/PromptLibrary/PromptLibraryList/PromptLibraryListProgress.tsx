@@ -53,7 +53,7 @@ const PromptLibraryListProgress: FC<{
               backgroundColor: 'transparent',
             },
           }}
-          variant="determinate"
+          variant='determinate'
           value={progress}
         />
       )}

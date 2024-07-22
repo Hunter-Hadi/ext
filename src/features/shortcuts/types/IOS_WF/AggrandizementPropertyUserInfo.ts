@@ -1,5 +1,5 @@
-type AggrandizementPropertyUserInfo = (
-  '18446744073709550615'
+type AggrandizementPropertyUserInfo =
+  | '18446744073709550615'
   | '18446744073709550616'
   | 'albumArtist'
   | 'albumName'
@@ -52,6 +52,5 @@ type AggrandizementPropertyUserInfo = (
   | 20
   | 21
   | 22
-);
 
-export default AggrandizementPropertyUserInfo;
+export default AggrandizementPropertyUserInfo

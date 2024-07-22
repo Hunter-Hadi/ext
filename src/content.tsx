@@ -8,9 +8,9 @@ import { RecoilRoot } from 'recoil'
 import Browser from 'webextension-polyfill'
 
 import {
-  getMaxAIExtensionId,
-  MaxAIExtensionIdManager,
-} from '@/background/utils/extensionId'
+  getMaxAIChromeExtensionInstalledDeviceId,
+  MaxAIInstalledDeviceIdManager,
+} from '@/background/utils/getMaxAIChromeExtensionInstalledDeviceId'
 import AppThemeProvider from '@/components/AppTheme'
 import { APP_VERSION, CHATGPT_WEBAPP_HOST } from '@/constants'
 import {
@@ -203,8 +203,8 @@ a.chatgpt-ad {
   }
 }
 const initClientExtensionId = async () => {
-  const extensionId = await getMaxAIExtensionId()
-  MaxAIExtensionIdManager.setExtensionId(extensionId)
+  const extensionId = await getMaxAIChromeExtensionInstalledDeviceId()
+  MaxAIInstalledDeviceIdManager.setExtensionId(extensionId)
   return extensionId
 }
 

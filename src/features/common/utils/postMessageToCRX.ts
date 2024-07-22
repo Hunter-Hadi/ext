@@ -8,6 +8,8 @@ export type MaxAIPostMessageWithWebPageType =
   | 'OPEN_URL'
   | 'OPEN_SIDEBAR'
   | 'CLOSE_SIDEBAR'
+  | 'CLIENT_GET_CONTENT_OF_URL'
+  | 'CLIENT_GET_YOUTUBE_DOCUMENT'
 
 const postMessageToCRX = async <T>(
   win: Window,

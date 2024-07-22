@@ -190,7 +190,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
     <FormControl>
       {label && (
         <InputLabel
-          id="demo-simple-select-label"
+          id='demo-simple-select-label'
           sx={{ fontSize: '14px', color: 'text.primary', ...labelSx }}
         >
           {label}

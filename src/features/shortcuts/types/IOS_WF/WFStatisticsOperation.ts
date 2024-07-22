@@ -1,5 +1,5 @@
-type WFStatisticsOperation = (
-  'Average'
+type WFStatisticsOperation =
+  | 'Average'
   | 'Minimum'
   | 'Maximum'
   | 'Sum'
@@ -7,6 +7,5 @@ type WFStatisticsOperation = (
   | 'Mode'
   | 'Range'
   | 'Standard Deviation'
-);
 
-export default WFStatisticsOperation;
+export default WFStatisticsOperation

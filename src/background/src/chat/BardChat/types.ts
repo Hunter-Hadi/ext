@@ -3,8 +3,7 @@
  * @since - 2023-07-18
  */
 
-
-import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message';
+import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
 // import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 export const BARD_MODELS: IAIProviderModel[] = [

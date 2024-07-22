@@ -1,9 +1,7 @@
-import AES from 'crypto-js/aes'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
-import { getAccessToken } from '@/background/api/backgroundFetch'
-import { backgroundRequestHeadersGenerator } from '@/background/api/backgroundRequestHeadersGenerator'
+import maxAIBackgroundSafeFetch from '@/background/api/maxAIBackgroundSafeFetch'
 import { IAIProviderType } from '@/background/provider/chat'
 import ConversationManager from '@/background/src/chatConversations'
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
@@ -12,11 +10,15 @@ import {
   APP_VERSION,
   DEFAULT_AI_OUTPUT_LANGUAGE_ID,
 } from '@/constants'
-import { getCurrentUserLogInfo } from '@/features/auth/utils'
+import {
+  getCurrentUserLogInfo,
+  getMaxAIChromeExtensionAccessToken,
+} from '@/features/auth/utils'
 import {
   contextMenuIsFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { aesJsonEncrypt } from '@/features/security'
 import { LANGUAGE_CODE_MAP } from '@/i18n/types'
 import { getFingerPrint } from '@/utils/fingerPrint'
 import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
@@ -113,23 +115,25 @@ export const logAndConfirmDailyUsageLimit = async (
         info_object.prompt_name = `[Suggested] ${info_object.prompt_name}`
       }
       console.log('[CALL_API] logApiAndConfirmIsLimited', info_object)
-      const accessToken = await getAccessToken()
+      const accessToken = await getMaxAIChromeExtensionAccessToken()
       const fingerprint = await getFingerPrint()
-      const text = AES.encrypt(JSON.stringify(info_object), 'MaxAI').toString()
+      const text = aesJsonEncrypt(info_object).toString()
       if (!accessToken) {
         return false
       }
-      const result = await fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/call_api`, {
-        method: 'POST',
-        body: JSON.stringify({
-          info_object: text,
-        }),
-        headers: backgroundRequestHeadersGenerator.getTaskIdHeaders(requestId, {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-          fp: `${fingerprint}`,
-        }),
-      })
+      const result = await maxAIBackgroundSafeFetch(
+        `${APP_USE_CHAT_GPT_API_HOST}/user/call_api`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            info_object: text,
+          }),
+          headers: {
+            fp: `${fingerprint}`,
+          },
+        },
+        requestId,
+      )
       const body = await result.json()
       // has_reached_limit:false
       // next_reset_timestamp:1688515200

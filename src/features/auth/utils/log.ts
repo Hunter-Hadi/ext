@@ -8,10 +8,9 @@ import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaul
 import { IAIProviderType } from '@/background/provider/chat'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PRESET_PROMPT_IDS } from '@/constants'
-import { PAYWALL_MODAL_VARIANT } from '@/features/abTester/constants'
 import { IPaywallVariant } from '@/features/abTester/types'
-import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { getChromeExtensionUserInfo } from '@/features/auth/utils/index'
 import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
@@ -206,7 +205,6 @@ export const authEmitPricingHooksLog = debounce(
         AIProvider: propAIProvider,
         paywallType,
         buttonType,
-        paywallVariant,
       } = meta
 
       const logType = await permissionSceneTypeToLogType(
@@ -239,16 +237,9 @@ export const authEmitPricingHooksLog = debounce(
       }
 
       const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
-      let testVersion =
-        paywallVariant ||
-        (await getChromeExtensionUserABTest().then(
-          (abTestInfo) => abTestInfo.paywallVariant,
-        ))
-      if (paywallType === 'MODAL') {
-        // 目前modal只会在PAYWALL_MODAL_VARIANT的test version里显示
-        // 此处的写法是为了防止用户在网络环境等原因下一开始显示了modal后重新生成了testVersion导致记录了错误的值
-        testVersion = PAYWALL_MODAL_VARIANT
-      }
+      const testVersion =
+        (await getChromeExtensionUserInfo(false))?.user_status?.price_version ??
+        ''
       let paywallModel =
         propConversationId &&
         (await ClientConversationManager.getConversationPayWallModel(
@@ -329,6 +320,8 @@ const generateTrackParams = async (
       paywallName = 'SUMMARY'
     } else if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
       paywallName = 'SEARCH'
+    } else if (sceneType === 'CONTEXT_MENU') {
+      paywallName = 'CONTEXT_MENU'
     } else if (sceneType.startsWith('SEARCH_WITH_AI_')) {
       paywallName = 'SEARCH_WITH_AI'
     } else if (sceneType.includes('PROACTIVE_UPGRADE')) {
@@ -372,6 +365,8 @@ const generateTrackParams = async (
         suffix = `summary`
       } else if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
         suffix = `search`
+      } else if (sceneType === 'CONTEXT_MENU') {
+        suffix = `context_menu`
       } else if (sceneType.includes('IMAGE_GENERATE_MODEL')) {
         suffix = `art`
       } else if (propConversationType) {

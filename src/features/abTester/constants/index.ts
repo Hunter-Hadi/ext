@@ -7,6 +7,7 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const UPDATE_VARIANT: IUpdateVariant[] = [
   'gpt-4o',
+  'gpt-4o-mini',
   'claude-3-opus',
   'claude-3.5-sonnet',
   'gemini-1.5-pro',
@@ -55,6 +56,41 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
         ),
       },
     ],
+  },
+  'gpt-4o-mini': {
+    image: getChromeExtensionAssetsURL(
+      '/images/activity/promotion-dialog-gpt-4o-mini.png',
+    ),
+    title: (t) =>
+      t('client:sidebar__promotion_dialog__gpt_4o_mini__content__title'),
+    descriptions: (t) => [
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__gpt_4o_mini__content_item1__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__gpt_4o_mini__content_item2__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__gpt_4o_mini__content_item3__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__gpt_4o_mini__content_item4__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__gpt_4o_mini__content_item5__description',
+        ),
+      },
+    ],
+    learnMoreLink: 'https://www.maxai.me/docs/release-notes/gpt-4o-mini/',
   },
   'claude-3-opus': {
     image: getChromeExtensionAssetsURL(

@@ -2,6 +2,7 @@ import debounce from 'lodash-es/debounce'
 import throttle from 'lodash-es/throttle'
 
 import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
+import emitIframeTranslatorDecorator from '@/features/pageTranslator/browser-extension/emitIframeTranslatorDecorator'
 import {
   MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT,
   MAXAI_TRANSLATE_CUSTOM_ELEMENT,
@@ -67,11 +68,34 @@ class PageTranslator {
     this.onFetchingChange = onFetchingChange
   }
 
+  @emitIframeTranslatorDecorator
   updateFromCode(newFromCode: string) {
     this.fromCode = newFromCode
   }
+  @emitIframeTranslatorDecorator
   updateToCode(newToCode: string) {
     this.toCode = newToCode
+  }
+
+  @emitIframeTranslatorDecorator
+  toggle(enable: boolean) {
+    if (enable) {
+      this.startPageTranslator()
+    } else {
+      this.hideTranslateElements()
+    }
+  }
+
+  @emitIframeTranslatorDecorator
+  retranslate() {
+    // remove all translateItems
+    this.translateItemsSet.forEach((translateItem) => {
+      translateItem.translateContainerElement?.remove()
+    })
+
+    this.translateItemsSet.clear()
+    this.textNodesSet.clear()
+    this.startPageTranslator()
   }
 
   findSameTranslateItem(element: HTMLElement) {
@@ -85,7 +109,7 @@ class PageTranslator {
     return null
   }
 
-  startPageTranslator() {
+  private startPageTranslator() {
     this.injectStyle()
     this.showTranslateElements()
 
@@ -201,7 +225,10 @@ class PageTranslator {
     loopTreeWorker()
   }
 
-  newPageTranslateItem(textNodes: Node[], containerElement: HTMLElement) {
+  private newPageTranslateItem(
+    textNodes: Node[],
+    containerElement: HTMLElement,
+  ) {
     textNodes.forEach((textNode) => {
       this.textNodesSet.add(textNode)
     })
@@ -223,7 +250,7 @@ class PageTranslator {
     this.translateItemsSet.add(translateItem)
   }
 
-  async doTranslate(retryTranslateItem: TranslateTextItem[] = []) {
+  private async doTranslate(retryTranslateItem: TranslateTextItem[] = []) {
     if (this.fetching) {
       return
     }
@@ -250,7 +277,7 @@ class PageTranslator {
     }
   }
 
-  async retryTranslate() {
+  private async retryTranslate() {
     const needTranslateItems: TranslateTextItem[] = []
 
     this.translateItemsSet.forEach((translateItem) => {
@@ -266,7 +293,7 @@ class PageTranslator {
     this.doTranslate(needTranslateItems)
   }
 
-  startEventListener() {
+  private startEventListener() {
     const doTranslateDebounce = debounce(this.doTranslate, 500).bind(this)
     const retryTranslateDebounce = debounce(this.retryTranslate, 500).bind(this)
 
@@ -299,7 +326,7 @@ class PageTranslator {
     })
   }
 
-  injectStyle() {
+  private injectStyle() {
     const styleId = 'maxai-translate-style'
     if (document.getElementById(styleId)) return
     const style = document.createElement('style')
@@ -376,7 +403,7 @@ class PageTranslator {
     document.head.appendChild(style)
   }
 
-  hideTranslateElements() {
+  private hideTranslateElements() {
     this.isEnable = false
 
     document.body.classList.remove('maxai-trans-show')
@@ -388,7 +415,7 @@ class PageTranslator {
     this.closeMutationsObserver()
   }
 
-  showTranslateElements() {
+  private showTranslateElements() {
     this.isEnable = true
 
     document.body.classList.add('maxai-trans-show')
@@ -402,14 +429,14 @@ class PageTranslator {
     this.startMutationsObserver()
   }
 
-  closeMutationsObserver() {
+  private closeMutationsObserver() {
     if (this.mutationsObserver) {
       this.mutationsObserver.disconnect()
       this.mutationsObserver = null
     }
   }
 
-  startMutationsObserver() {
+  private startMutationsObserver() {
     if (this.mutationsObserver) {
       return
     }
@@ -422,25 +449,6 @@ class PageTranslator {
       characterData: true,
       subtree: true,
     })
-  }
-
-  toggle(enable: boolean) {
-    if (enable) {
-      this.startPageTranslator()
-    } else {
-      this.hideTranslateElements()
-    }
-  }
-
-  retranslate() {
-    // remove all translateItems
-    this.translateItemsSet.forEach((translateItem) => {
-      translateItem.translateContainerElement?.remove()
-    })
-
-    this.translateItemsSet.clear()
-    this.textNodesSet.clear()
-    this.startPageTranslator()
   }
 }
 

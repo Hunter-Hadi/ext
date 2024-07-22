@@ -41,7 +41,7 @@ const ReactHookFormSelect = <T,>(props: ReactHookFormSelectProps<T>) => {
   return (
     <FormControl {...FormControlProps}>
       <FormLabel id={labelId}>
-        <Typography variant="body1">{label}</Typography>
+        <Typography variant='body1'>{label}</Typography>
       </FormLabel>
       <Controller
         name={name}

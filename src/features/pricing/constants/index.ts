@@ -1,7 +1,6 @@
 import { TFunction } from 'i18next'
 import React from 'react'
 
-import { isProduction } from '@/constants'
 import { IPlanPricingInfo, RENDER_PLAN_TYPE } from '@/features/pricing/type'
 
 /**
@@ -12,95 +11,82 @@ export const PLAN_PRICING_MAP: Record<RENDER_PLAN_TYPE, IPlanPricingInfo> = {
   free: {
     type: 'free',
     price_id: '',
+    dev_price_id: '',
     price: 0,
   },
   basic: {
     type: 'basic',
-    price_id: isProduction
-      ? 'price_1P3tyMCdtAdZoE6dUL4RdqA0'
-      : 'price_1P3tnJCdtAdZoE6ddvub4IPn',
+    price_id: 'price_1P3tyMCdtAdZoE6dUL4RdqA0',
+    dev_price_id: 'price_1P3tnJCdtAdZoE6ddvub4IPn',
     price: 9.99,
   },
   basic_yearly: {
     type: 'basic_yearly',
-    price_id: isProduction
-      ? 'price_1P3tyMCdtAdZoE6dBncJ8YDN'
-      : 'price_1P3tnJCdtAdZoE6dc9NBVcf1',
+    price_id: 'price_1P3tyMCdtAdZoE6dBncJ8YDN',
+    dev_price_id: 'price_1P3tnJCdtAdZoE6dc9NBVcf1',
     price: 99.99,
   },
   basic_one_year: {
     type: 'basic_one_year',
-    price_id: isProduction
-      ? 'price_1P3u0MCdtAdZoE6dU6TiOOuy'
-      : 'price_1P3u0DCdtAdZoE6dWXxoPxZx',
+    price_id: 'price_1P3u0MCdtAdZoE6dU6TiOOuy',
+    dev_price_id: 'price_1P3u0DCdtAdZoE6dWXxoPxZx',
     price: 99.99,
   },
   basic_team: {
     type: 'basic_team',
-    price_id: isProduction
-      ? 'price_1P4v0wCdtAdZoE6dFAS1hMA7'
-      : 'price_1P4v0jCdtAdZoE6d47buLU0y',
+    price_id: 'price_1P4v0wCdtAdZoE6dFAS1hMA7',
+    dev_price_id: 'price_1P4v0jCdtAdZoE6d47buLU0y',
     price: 9.99,
   },
   pro: {
     type: 'pro',
-    price_id: isProduction
-      ? 'price_1NXOaXCdtAdZoE6djhTrjSS3'
-      : 'price_1NXOeNCdtAdZoE6d8rNJB4Np',
+    price_id: 'price_1NXOaXCdtAdZoE6djhTrjSS3',
+    dev_price_id: 'price_1NXOeNCdtAdZoE6d8rNJB4Np',
     price: 20,
   },
   pro_yearly: {
     type: 'pro_yearly',
-    // price_id: isProduction
-    //   ? 'price_1PEDMjCdtAdZoE6daVcPIdWf'
-    //   : 'price_1PEDMRCdtAdZoE6dkT9UbTjk',
-    price_id: isProduction
-      ? 'price_1PXXDxCdtAdZoE6d7ggGHqP5'
-      : 'price_1PXXFLCdtAdZoE6dSRhYwiJQ',
-    price: 100,
-    discount_title: '88%',
-    discount_value: null, // 0.75, // 插件不对pro做额外折扣
-    promotion_code: null, // 'PROLIMITEDTIME',
+    price_id: 'price_1PXXDxCdtAdZoE6d7ggGHqP5',
+    dev_price_id: 'price_1PXXFLCdtAdZoE6dSRhYwiJQ',
+    price: 228,
+    discount_title: '5%',
+    discount_value: null,
+    promotion_code: null,
   },
   pro_one_year: {
     type: 'pro_one_year',
-    price_id: isProduction
-      ? 'price_1PEDKMCdtAdZoE6dj6f71An0'
-      : 'price_1PEDLYCdtAdZoE6dEcVWy66l',
-    price: 192,
-    discount_title: '20%',
-    discount_value: null, // 0.75, // 插件不对pro做额外折扣
-    promotion_code: null, // 'PROLIMITEDTIME',
+    price_id: 'price_1PYtMFCdtAdZoE6dchoauGTm',
+    dev_price_id: 'price_1PYtNGCdtAdZoE6dxYud6bSS',
+    price: 228,
+    discount_title: '5%',
+    discount_value: null,
+    promotion_code: null,
   },
   pro_team: {
     type: 'pro_team',
-    price_id: isProduction
-      ? 'price_1P4v2pCdtAdZoE6dNfeKBltI'
-      : 'price_1P4v3OCdtAdZoE6dcYxK3zP5',
+    price_id: 'price_1P4v2pCdtAdZoE6dNfeKBltI',
+    dev_price_id: 'price_1P4v3OCdtAdZoE6dcYxK3zP5',
     price: 19.99,
   },
   elite: {
     type: 'elite',
-    price_id: isProduction
-      ? 'price_1PE1iiCdtAdZoE6dGAhidDoE'
-      : 'price_1PE1hZCdtAdZoE6du9cawaOU',
+    price_id: 'price_1PE1iiCdtAdZoE6dGAhidDoE',
+    dev_price_id: 'price_1PE1hZCdtAdZoE6du9cawaOU',
     price: 40,
   },
   elite_yearly: {
     type: 'elite_yearly',
-    price_id: isProduction
-      ? 'price_1O9hEGCdtAdZoE6dFJGfwniM'
-      : 'price_1O9hAJCdtAdZoE6dC9DUaE4k',
+    price_id: 'price_1O9hEGCdtAdZoE6dFJGfwniM',
+    dev_price_id: 'price_1O9hAJCdtAdZoE6dC9DUaE4k',
     price: 300,
     discount_title: '53%',
     discount_value: 0.76,
-    promotion_code: 'ELITEYEARLYSPECIAL', // 'ELITELIMITEDTIME',
+    promotion_code: 'ELITEYEARLYSPECIAL',
   },
   elite_one_year: {
     type: 'elite_one_year',
-    price_id: isProduction
-      ? 'price_1OPYrTCdtAdZoE6dKV3zlC5j'
-      : 'price_1OPYppCdtAdZoE6d6g2tinUS',
+    price_id: 'price_1OPYrTCdtAdZoE6dKV3zlC5j',
+    dev_price_id: 'price_1OPYppCdtAdZoE6d6g2tinUS',
     price: 300,
     discount_title: '53%',
     discount_value: 0.76,
@@ -108,9 +94,8 @@ export const PLAN_PRICING_MAP: Record<RENDER_PLAN_TYPE, IPlanPricingInfo> = {
   },
   elite_team: {
     type: 'elite_team',
-    price_id: isProduction
-      ? 'price_1PE1efCdtAdZoE6dah7v6LDL'
-      : 'price_1PE1dmCdtAdZoE6dXVzi0X0O',
+    price_id: 'price_1PE1efCdtAdZoE6dah7v6LDL',
+    dev_price_id: 'price_1PE1dmCdtAdZoE6dXVzi0X0O',
     price: 40,
   },
 }

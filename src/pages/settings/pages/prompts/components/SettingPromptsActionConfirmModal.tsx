@@ -92,11 +92,11 @@ const SettingPromptsActionConfirmModal: FC<{
       >
         <Typography>{confirmText}</Typography>
         <Stack direction={'row-reverse'} gap={1} mt={2}>
-          <Button variant="contained" onClick={onClose}>
+          <Button variant='contained' onClick={onClose}>
             {cancelText}
           </Button>
           <Button
-            variant="contained"
+            variant='contained'
             sx={{
               bgcolor: (t) =>
                 t.palette.mode === 'dark' ? '#4f4f4f' : '#f5f5f5',

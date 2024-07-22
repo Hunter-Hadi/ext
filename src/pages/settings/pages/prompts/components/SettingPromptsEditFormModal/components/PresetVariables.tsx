@@ -31,8 +31,8 @@ const PresetVariables: FC<{
 
   return (
     <Stack spacing={1}>
-      <Stack direction="row" alignItems="center" spacing={0.5}>
-        <Typography fontSize="14px">
+      <Stack direction='row' alignItems='center' spacing={0.5}>
+        <Typography fontSize='14px'>
           {t('prompt_editor:preset_variables__title')}
         </Typography>
         <PresetVariablesTooltip sx={{ p: 0 }} />
@@ -56,36 +56,36 @@ const PresetVariables: FC<{
             return (
               <Stack
                 key={presetVariableGroupKey}
-                direction="row"
+                direction='row'
                 borderBottom={
                   index < Object.keys(PRESET_VARIABLES_GROUP_MAP).length - 1
                     ? '1px solid'
                     : 'none'
                 }
-                borderColor="inherit"
-                alignItems="center"
+                borderColor='inherit'
+                alignItems='center'
               >
                 <Stack
                   p={1}
-                  flexBasis="15%"
-                  flexDirection="row"
-                  alignItems="center"
-                  bgcolor="rgba(0, 0, 0, 0.08)"
-                  height="100%"
+                  flexBasis='15%'
+                  flexDirection='row'
+                  alignItems='center'
+                  bgcolor='rgba(0, 0, 0, 0.08)'
+                  height='100%'
                 >
-                  <Typography variant="body2">
+                  <Typography variant='body2'>
                     {presetVariableGroupName}
                   </Typography>
                 </Stack>
 
                 <Stack
-                  direction="row"
+                  direction='row'
                   flex={1}
                   p={1}
                   gap={1}
-                  flexWrap="wrap"
-                  alignItems="center"
-                  borderLeft="1px solid"
+                  flexWrap='wrap'
+                  alignItems='center'
+                  borderLeft='1px solid'
                   borderColor={borderColor}
                 >
                   {presetVariables.map(

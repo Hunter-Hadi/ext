@@ -49,8 +49,8 @@ const CustomVariable = React.forwardRef<
 
   return (
     <Stack spacing={1}>
-      <Stack direction="row" alignItems="center">
-        <Typography fontSize="14px">
+      <Stack direction='row' alignItems='center'>
+        <Typography fontSize='14px'>
           {t('prompt_editor:add_variable__title')}
         </Typography>
       </Stack>
@@ -64,28 +64,28 @@ const CustomVariable = React.forwardRef<
           overflow: 'hidden',
         }}
       >
-        <Stack direction="row" borderColor="inherit" alignItems="center">
+        <Stack direction='row' borderColor='inherit' alignItems='center'>
           <Stack
             p={1}
-            flexBasis="15%"
-            flexDirection="row"
-            alignItems="center"
-            bgcolor="rgba(0, 0, 0, 0.08)"
-            height="100%"
+            flexBasis='15%'
+            flexDirection='row'
+            alignItems='center'
+            bgcolor='rgba(0, 0, 0, 0.08)'
+            height='100%'
           >
-            <Typography variant="body2">
+            <Typography variant='body2'>
               {t('prompt_editor:add_variable__custom__title')}
             </Typography>
           </Stack>
 
           <Stack
-            direction="row"
+            direction='row'
             flex={1}
             p={1}
             gap={1}
-            flexWrap="wrap"
-            alignItems="center"
-            borderLeft="1px solid"
+            flexWrap='wrap'
+            alignItems='center'
+            borderLeft='1px solid'
             borderColor={borderColor}
           >
             {!variables.length && (
@@ -108,10 +108,10 @@ const CustomVariable = React.forwardRef<
                   }}
                 >
                   {`{{${variable.label}}}`}
-                  <Box display="inline">
+                  <Box display='inline'>
                     <Divider
-                      orientation="vertical"
-                      variant="middle"
+                      orientation='vertical'
+                      variant='middle'
                       sx={{
                         display: 'inline-block',
                         height: '12px',
@@ -123,7 +123,7 @@ const CustomVariable = React.forwardRef<
                       }}
                     />
                     <IconButton
-                      color="inherit"
+                      color='inherit'
                       sx={{
                         p: 0,
                         ml: '2px',
@@ -147,7 +147,7 @@ const CustomVariable = React.forwardRef<
           </Stack>
 
           <Button
-            variant="text"
+            variant='text'
             startIcon={<AddIcon />}
             sx={{
               borderLeft: '1px solid',

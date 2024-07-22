@@ -39,7 +39,7 @@ const SidebarReleaseNotesButton = () => {
   return (
     <>
       {/* release btn */}
-      <TextOnlyTooltip title={t('common:release_notes')} placement="left">
+      <TextOnlyTooltip title={t('common:release_notes')} placement='left'>
         <IconButton
           data-testid={`maxai--sidebar--release_notes--button`}
           sx={{ flexShrink: 0, width: 'max-content' }}
@@ -81,16 +81,16 @@ const SidebarReleaseNotesButton = () => {
         }}
       >
         <Stack
-          direction="row"
+          direction='row'
           spacing={1}
-          alignItems="center"
+          alignItems='center'
           px={2}
           py={2.5}
-          position="relative"
+          position='relative'
         >
           <IconButton
             onClick={handleReleaseModalClose}
-            size="small"
+            size='small'
             sx={{
               position: 'absolute',
             }}

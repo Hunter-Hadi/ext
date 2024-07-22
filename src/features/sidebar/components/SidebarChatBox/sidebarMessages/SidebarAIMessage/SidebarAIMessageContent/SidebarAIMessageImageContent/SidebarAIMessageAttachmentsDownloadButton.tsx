@@ -8,7 +8,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import {
   clientGetMaxAIFileUrlWithFileId,
   getChatMessageAttachments,
@@ -49,7 +49,7 @@ const SidebarAIMessageAttachmentsDownloadButton: FC<{
         }
         try {
           const result = await promiseTimeout(
-            clientFetchAPI(downloadUrl, {
+            clientProxyFetchAPI(downloadUrl, {
               method: 'GET',
               parse: 'blob',
               contentType: 'image/png',

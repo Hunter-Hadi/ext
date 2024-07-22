@@ -47,7 +47,7 @@ const SidebarAIMessageSkeletonContent: FC<{
             width={64}
             height={64}
             src={getChromeExtensionAssetsURL('/images/art/creating-image.gif')}
-            alt="Creating image"
+            alt='Creating image'
           />
         </Stack>
       </Stack>
@@ -55,12 +55,12 @@ const SidebarAIMessageSkeletonContent: FC<{
   }
   return (
     <Stack mt={1}>
-      <Skeleton animation="wave" height={10} />
-      <Skeleton animation="wave" height={10} />
-      <Skeleton animation="wave" height={10} />
-      <Skeleton animation="wave" height={10} />
-      <Skeleton animation="wave" height={10} />
-      <Skeleton animation="wave" height={10} />
+      <Skeleton animation='wave' height={10} />
+      <Skeleton animation='wave' height={10} />
+      <Skeleton animation='wave' height={10} />
+      <Skeleton animation='wave' height={10} />
+      <Skeleton animation='wave' height={10} />
+      <Skeleton animation='wave' height={10} />
     </Stack>
   )
 }

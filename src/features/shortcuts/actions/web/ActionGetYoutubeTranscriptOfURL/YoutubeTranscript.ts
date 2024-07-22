@@ -1,4 +1,4 @@
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import SocialMediaPostContext, {
   ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
@@ -31,7 +31,7 @@ export class YoutubeTranscript {
    * @param url
    */
   public static async fetchTranscriptByCaptionUrl(url: string) {
-    const xmlResult = await clientFetchAPI(url, {
+    const xmlResult = await clientProxyFetchAPI(url, {
       method: 'GET',
       parse: 'text',
     })
@@ -94,7 +94,7 @@ export class YoutubeTranscript {
         if (!identifier) {
           return []
         }
-        const pageHTMLResult = await clientFetchAPI(
+        const pageHTMLResult = await clientProxyFetchAPI(
           'https://www.youtube.com/watch?v=' + identifier,
           {
             method: 'GET',
@@ -129,7 +129,7 @@ export class YoutubeTranscript {
     abortTaskId?: string,
   ) {
     let youTubeVideoInfo = null
-    const pageContent = await clientFetchAPI(
+    const pageContent = await clientProxyFetchAPI(
       'https://www.youtube.com/watch?v=' + videoId,
       {
         method: 'GET',

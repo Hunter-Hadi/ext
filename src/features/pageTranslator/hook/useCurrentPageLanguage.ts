@@ -62,9 +62,8 @@ const useCurrentPageLanguage = () => {
       return false
     }
 
-    const targetLanguagePrefix = userSettings.pageTranslation.targetLanguage?.split(
-      '_',
-    )[0]
+    const targetLanguagePrefix =
+      userSettings.pageTranslation.targetLanguage?.split('_')[0]
     const currentPageLanguagePrefix = currentPageLanguage?.split('-')[0]
 
     // 只需要对比 lang prefix
@@ -87,7 +86,8 @@ const useCurrentPageLanguage = () => {
         return
       }
 
-      const backgroundScriptLanguage = await detectedLanguageWithBackgroundScript()
+      const backgroundScriptLanguage =
+        await detectedLanguageWithBackgroundScript()
       if (backgroundScriptLanguage) {
         setCurrentPageLanguage(backgroundScriptLanguage)
         setLoading(false)

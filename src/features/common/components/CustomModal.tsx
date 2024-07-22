@@ -41,7 +41,7 @@ const CustomModal: FC<IProps> = ({
         {' '}
         <Box sx={{ position: 'fixed', top: 16, left: 16 }}>
           <IconButton
-            data-testid="maxai-custom-modal-close-btn"
+            data-testid='maxai-custom-modal-close-btn'
             onClick={() => {
               onClose && onClose('closeBtn')
             }}
@@ -59,7 +59,7 @@ const CustomModal: FC<IProps> = ({
         </Box>
         <Fade in={show}>
           <Paper
-            id="mui-modal"
+            id='mui-modal'
             sx={[
               {
                 width: width ?? '90vw',

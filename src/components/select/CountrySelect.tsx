@@ -14,7 +14,7 @@ const CountrySelect: FC<CountrySelectProps> = (props) => {
   const [value, setValue] = useState<string>('')
   const options = useRef(countryOptions())
   return (
-    <FormControl size="small">
+    <FormControl size='small'>
       <Select
         value={value}
         onChange={(value) => {

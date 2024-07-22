@@ -1,6 +1,7 @@
 import { isPlainObject } from 'lodash-es'
 
 import { IChatUploadFile } from '@/features/indexed_db/conversations/models/Message'
+import { md5TextEncrypt } from '@/features/security'
 import {
   IShortcutEngineExternalEngine,
   parametersParserDecorator,
@@ -13,7 +14,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { uploadMaxAIDocument } from '@/features/shortcuts/utils/maxAIDocument'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
-import { md5TextEncrypt, sha1FileEncrypt } from '@/utils/encryptionHelper'
+import { sha1FileEncrypt } from '@/utils/encryptionHelper'
 
 /**
  * @since 2024-07-12

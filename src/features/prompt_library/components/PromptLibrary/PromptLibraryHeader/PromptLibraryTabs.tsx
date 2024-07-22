@@ -56,7 +56,7 @@ const PromptLibraryTabs: FC = () => {
     <Box flex={1} flexBasis={'100%'}>
       <CustomTabs
         value={activeTab}
-        variant="fullWidth"
+        variant='fullWidth'
         onChange={async (event, newValue) => {
           if (newValue !== 'Public' && promptLibraryRuntime === 'WebPage') {
             if (await checkMaxAIChromeExtensionInstall()) {
@@ -78,7 +78,7 @@ const PromptLibraryTabs: FC = () => {
               }}
             />
           }
-          iconPosition="start"
+          iconPosition='start'
           value={'Favorites'}
           label={t('prompt_library:tab__favorites__title')}
         />

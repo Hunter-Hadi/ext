@@ -271,7 +271,7 @@ const SettingPromptsUpdateFormModal: FC<{
             )}
             {editNode.data.type === 'shortcuts' && (
               <Stack spacing={1} pb={1}>
-                <Stack direction={'row'} alignItems="center">
+                <Stack direction={'row'} alignItems='center'>
                   <Typography variant={'body1'}>
                     {`${t(
                       'settings:feature_card__prompts__edit_prompt__field_template__title',
@@ -288,7 +288,7 @@ const SettingPromptsUpdateFormModal: FC<{
               </Stack>
             )}
             <Stack>
-              <Stack direction={'row'} alignItems="center">
+              <Stack direction={'row'} alignItems='center'>
                 <Typography variant={'body1'}>
                   {t(
                     'settings:feature_card__prompts__edit_prompt__field_visibility__title',

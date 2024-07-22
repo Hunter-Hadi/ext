@@ -1,9 +1,8 @@
-import { getAccessToken } from '@/background/api/backgroundFetch'
 import { checkFileTypeIsImage } from '@/background/utils/uplpadFileProcessHelper'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils/index'
-import { clientRequestHeaderGenerator } from '@/utils/clientRequestHeaderGenerator'
 import { sha1FileEncrypt } from '@/utils/encryptionHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
@@ -76,7 +75,7 @@ export type IUploadDocumentListener = (message: IUploadDocumentMessage) => void
  */
 export const checkDocIdExist = async (docId: string, accessToken?: string) => {
   if (!accessToken) {
-    accessToken = await getAccessToken()
+    accessToken = await getMaxAIChromeExtensionAccessToken()
   }
   const result = await clientFetchMaxAIAPI<{
     msg: string
@@ -97,7 +96,7 @@ export const uploadMaxAIDocument = async (
   body: IUploadDocumentPayload,
   listener?: IUploadDocumentListener,
 ) => {
-  const accessToken = await getAccessToken()
+  const accessToken = await getMaxAIChromeExtensionAccessToken()
   const docId = body.doc_id || (await sha1FileEncrypt(body.file))
   const uploadResponse: IUploadDocumentResponse = {
     doc_id: docId,
@@ -140,9 +139,9 @@ export const uploadMaxAIDocument = async (
   // TODO fetch-sse有冗余，后续要拆出通用方法，chatgpt/core/fetch-sse searchWithAI/chatCore/chatgpt/core/fetch-sse
   await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/app/upload_document`, {
     method: 'POST',
-    headers: await clientRequestHeaderGenerator({
+    headers: {
       Authorization: `Bearer ${accessToken}`,
-    }),
+    },
     body: formData,
     onMessage: (message) => {
       console.log('TEST upload document message', message)

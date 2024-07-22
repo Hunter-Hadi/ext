@@ -3,6 +3,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
+import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { isSystemMessageByType } from '@/features/chatgpt/utils/chatMessageUtils'
@@ -162,11 +164,14 @@ const useInitContextWindow = () => {
     conversationStatus,
     currentConversationIdRef,
     clientWritingMessage,
+    updateClientConversationLoading,
+    pushPricingHookMessage,
   } = useClientConversation()
   const {
     activeAIResponseMessage,
     currentFloatingContextMenuDraft,
     floatingContextMenuDraftMessageIdRef,
+    historyMessages,
   } = useFloatingContextMenuDraft()
   const { continueConversationInSidebar } = useSidebarSettings()
   const draftContextMenuList = useDraftContextMenuList()
@@ -174,6 +179,7 @@ const useInitContextWindow = () => {
     'textSelectPopupButton',
     inputValue,
   )
+  const { checkFeatureQuota } = useUserFeatureQuota()
   const [
     floatingDropdownMenuSelectedItem,
     updateFloatingDropdownMenuSelectedItem,
@@ -278,6 +284,18 @@ const useInitContextWindow = () => {
    * 通过context window的输入框来询问AI
    */
   const askAIWithContextWindow = async () => {
+    if (!historyMessages.length) {
+      // context menu用量卡点
+      if (!(await checkFeatureQuota('context_menu'))) {
+        await pushPricingHookMessage('CONTEXT_MENU')
+        authEmitPricingHooksLog('show', 'CONTEXT_MENU', {
+          conversationId: currentConversationId,
+          paywallType: 'RESPONSE',
+        })
+        return
+      }
+    }
+    // 付费卡点检测
     if (inputValue.trim()) {
       const draft = currentFloatingContextMenuDraft
       let currentDraft = ''
@@ -499,7 +517,22 @@ const useInitContextWindow = () => {
         }
 
         if (runActions.length > 0) {
-          setActions(runActions)
+          if (!historyMessages.length) {
+            checkFeatureQuota('context_menu').then((status) => {
+              if (!status) {
+                updateClientConversationLoading(false)
+                pushPricingHookMessage('CONTEXT_MENU')
+                authEmitPricingHooksLog('show', 'CONTEXT_MENU', {
+                  conversationId: currentConversationId,
+                  paywallType: 'RESPONSE',
+                })
+              } else {
+                setActions(runActions)
+              }
+            })
+          } else {
+            setActions(runActions)
+          }
         } else {
           if (isDraftContextMenu) {
             if (
@@ -529,6 +562,7 @@ const useInitContextWindow = () => {
   }, [
     floatingDropdownMenuSelectedItem.selectedContextMenuId,
     contextWindowList,
+    historyMessages.length,
     floatingDropdownMenu.open,
     loading,
     conversationStatus,
@@ -550,12 +584,14 @@ const useInitContextWindow = () => {
     setActions([])
     setInputValue('')
     const selectionElement = currentSelectionRef.current?.selectionElement
+
     // 运行前需要检测文件
     checkAttachments()
       .then((status) => {
         if (!status) {
           return
         }
+
         return askAIWIthShortcuts(
           getDetectHasContextWindowDraftActions().concat(runActions),
           {

@@ -93,13 +93,13 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
             <Typography
               fontSize={'14px'}
               textAlign={'left'}
-              color="inherit"
+              color='inherit'
               component={'div'}
             >
               {title}
             </Typography>
             {description && (
-              <Typography fontSize={'12px'} textAlign={'left'} color="inherit">
+              <Typography fontSize={'12px'} textAlign={'left'} color='inherit'>
                 {description}
               </Typography>
             )}

@@ -47,11 +47,11 @@ const SettingPromptsMenuItemPreviewTooltip: FC<{
       blacklist: [],
     }
     if (settings) {
-      const domains = (settings.isWhitelistMode
-        ? settings.whitelist
-        : settings.blacklist
+      const domains = (
+        settings.isWhitelistMode ? settings.whitelist : settings.blacklist
       ).map((domain) => {
-        const isPDFViewer = domain === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
+        const isPDFViewer =
+          domain === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
         return {
           domain: isPDFViewer ? 'MaxAI PDF Viewer' : domain,
           icon: domain2Favicon(isPDFViewer ? 'maxai.me' : domain),

@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { v4 as uuidV4 } from 'uuid'
 
 import { MAXAI_VISION_MODEL_UPLOAD_CONFIG } from '@/background/src/chat/constant'
+import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import useSummaryQuota from '@/features/chat-base/summary/hooks/useSummaryQuota'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -52,14 +52,16 @@ const useClientChat = () => {
   const setShortCutsRef = useRef(setShortCuts)
   const {
     currentConversationIdRef,
+    currentConversationId,
     clientConversation,
+    currentSidebarConversationType,
     pushPricingHookMessage,
     hideConversationLoading,
     showConversationLoading,
     getCurrentConversation,
     updateClientConversationLoading,
   } = useClientConversation()
-  const { checkSummaryQuota } = useSummaryQuota()
+  const { checkFeatureQuota } = useUserFeatureQuota()
   useEffect(() => {
     runShortCutsRef.current = runShortCuts
   }, [runShortCuts])
@@ -162,6 +164,19 @@ const useClientChat = () => {
     },
   ) => {
     const { beforeActions = [], afterActions = [] } = options || {}
+
+    if (currentSidebarConversationType === 'Summary') {
+      // summary下chat需要检测用量
+      if (!(await checkFeatureQuota('summary'))) {
+        await pushPricingHookMessage('PAGE_SUMMARY')
+        authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+          conversationId: currentConversationId,
+          paywallType: 'RESPONSE',
+        })
+        return
+      }
+    }
+
     if (!question.meta?.attachments) {
       const attachments = (
         await getAttachments(question.conversationId)
@@ -315,19 +330,25 @@ const useClientChat = () => {
 
       if (clientConversation?.type === 'Summary') {
         // 如果重试的是summary message，需要判断用量
-        const isSummaryActions = lastRunActions?.find((item) => {
-          return (
-            item.type === 'CHAT_MESSAGE' &&
-            item.parameters.ActionChatMessageConfig?.originalMessage?.metadata
-              ?.shareType === 'summary'
-          )
-        })
         if (
-          isSummaryActions &&
-          !(await checkSummaryQuota(clientConversation.meta.pageSummaryType!))
+          !(await checkFeatureQuota(
+            'summary',
+            clientConversation.meta.pageSummaryType!,
+          ))
         ) {
           await pushPricingHookMessage('PAGE_SUMMARY')
           authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
+            conversationId: currentConversationId,
+            paywallType: 'RESPONSE',
+          })
+          return
+        }
+      }
+      if (clientConversation?.type === 'Search') {
+        // 如果重试的是search，需要判断用量
+        if (!(await checkFeatureQuota('search'))) {
+          await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
+          authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
             conversationId: currentConversationId,
             paywallType: 'RESPONSE',
           })

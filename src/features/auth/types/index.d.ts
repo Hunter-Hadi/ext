@@ -53,6 +53,10 @@ export type IUseChatGPTUserInfo = {
 
   client_user_id?: string | null
   user_id?: string | null
+  user_status?: {
+    register_version?: string
+    price_version?: string
+  }
 }
 
 export type IUserQuotaUsageInfo = {
@@ -61,4 +65,25 @@ export type IUserQuotaUsageInfo = {
   imageGenerate: number
 
   nextRefreshTime?: string // 用量刷新的时间 (utc)
+}
+
+export type IUserFeatureQuotaInfo = {
+  // 每日用量上限
+  summarizePageMaxCnt: number
+  summarizePDFMaxCnt: number
+  summarizeYoutubeMaxCnt: number
+  contextMenuMaxCnt: number
+  searchMaxCnt: number
+  instantReplyMaxCnt: number
+  // 用量检测时间
+  checkTime: string
+  // 用量刷新时间
+  refreshTime: string
+  // 当日用量，每日重置
+  summarizePageUsage: number
+  summarizePDFUsage: number
+  summarizeYoutubeUsage: number
+  contextMenuUsage: number
+  searchUsage: number
+  instantReplyUsage: number
 }

@@ -131,20 +131,20 @@ const FunnelSurveyContentRenderer: FC<IFunnelSurveyContentRendererProps> = ({
         {submitSuccess ? (
           <>
             <Typography
-              variant="custom"
+              variant='custom'
               fontSize={24}
               lineHeight={1.4}
               fontWeight={700}
-              textAlign="center"
+              textAlign='center'
             >
               {t('survey:funnel_survey__submit_success__title')}
             </Typography>
             <Typography
-              variant="custom"
+              variant='custom'
               fontSize={14}
               lineHeight={1.5}
               mt={1}
-              textAlign="center"
+              textAlign='center'
             >
               {t('survey:funnel_survey__submit_success__description')}
             </Typography>
@@ -152,11 +152,11 @@ const FunnelSurveyContentRenderer: FC<IFunnelSurveyContentRendererProps> = ({
         ) : (
           <>
             <Typography
-              variant="custom"
+              variant='custom'
               fontSize={24}
               lineHeight={1.4}
               fontWeight={700}
-              textAlign="center"
+              textAlign='center'
             >
               {t(currentSurveyConfig.popupTitle)}
             </Typography>
@@ -168,7 +168,7 @@ const FunnelSurveyContentRenderer: FC<IFunnelSurveyContentRendererProps> = ({
             {currentSurveyConfig.questionSetting.map((questionItem) => (
               <Stack key={questionItem.name} spacing={1} mt={1.5}>
                 <Typography
-                  variant="custom"
+                  variant='custom'
                   fontSize={16}
                   lineHeight={1.5}
                   fontWeight={500}
@@ -177,7 +177,7 @@ const FunnelSurveyContentRenderer: FC<IFunnelSurveyContentRendererProps> = ({
                   {t(questionItem.label)}
                 </Typography>
                 <TextField
-                  size="small"
+                  size='small'
                   multiline
                   inputRef={inputRef}
                   rows={2}
@@ -213,13 +213,13 @@ const FunnelSurveyContentRenderer: FC<IFunnelSurveyContentRendererProps> = ({
             ))}
 
             <LoadingButton
-              variant="contained"
+              variant='contained'
               loading={loading}
               loadingIndicator={
                 <Stack
-                  direction="row"
+                  direction='row'
                   spacing={1}
-                  alignItems="center"
+                  alignItems='center'
                   sx={{
                     color: 'primary.main',
                     width: 'max-content',
@@ -227,10 +227,10 @@ const FunnelSurveyContentRenderer: FC<IFunnelSurveyContentRendererProps> = ({
                 >
                   <CircularProgress size={18} />
                   <Typography
-                    variant="custom"
+                    variant='custom'
                     fontSize={16}
                     lineHeight={1.5}
-                    textAlign="left"
+                    textAlign='left'
                   >
                     {t('survey:funnel_survey__cta_button__loading_text')}
                   </Typography>

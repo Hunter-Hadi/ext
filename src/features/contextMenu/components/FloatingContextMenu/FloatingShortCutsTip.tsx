@@ -12,14 +12,10 @@ import { ContextMenuSettingsState } from '@/features/contextMenu/store'
 import useCommands from '@/hooks/useCommands'
 const FloatingShortCutsTip: FC = () => {
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
-  const {
-    haveSelection,
-    showFloatingContextMenu,
-    floatingDropdownMenuOpen,
-  } = useFloatingContextMenu()
-  const textSelectPopupButtonSettings = useChromeExtensionButtonSettingsWithVisibility(
-    'textSelectPopupButton',
-  )
+  const { haveSelection, showFloatingContextMenu, floatingDropdownMenuOpen } =
+    useFloatingContextMenu()
+  const textSelectPopupButtonSettings =
+    useChromeExtensionButtonSettingsWithVisibility('textSelectPopupButton')
   const [chatBoxWidth, setChatBoxWidth] = useState(16)
   const [buttonShow, setButtonShow] = useState(3)
   const { chatBoxShortCutKey } = useCommands()

@@ -1,5 +1,5 @@
-type AggrandizementPropertyName = (
-  '# of Ratings (This Version)'
+type AggrandizementPropertyName =
+  | '# of Ratings (This Version)'
   | '# of Ratings'
   | 'Album Artist'
   | 'Album Artwork'
@@ -105,6 +105,5 @@ type AggrandizementPropertyName = (
   | 'Version'
   | 'Width'
   | 'ZIP Code'
-);
 
-export default AggrandizementPropertyName;
+export default AggrandizementPropertyName

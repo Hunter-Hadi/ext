@@ -3,6 +3,7 @@ import {
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4O,
+  MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { I18nextKeysType } from '@/i18next'
@@ -32,9 +33,10 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     // fast-start
     {
       mainPart: true,
-      label: 'GPT-3.5-Turbo',
-      value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+      label: 'GPT-4o-mini',
+      value: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
       AIProvider: 'USE_CHAT_GPT_PLUS',
+      tag: 'New',
       group: 'client:sidebar__ai_provider__model_selector__fast_group__title',
     },
     {
@@ -77,10 +79,16 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     // legacy-start
     {
       mainPart: true,
+      label: 'GPT-3.5-Turbo',
+      value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+      AIProvider: 'USE_CHAT_GPT_PLUS',
+      group: 'client:sidebar__ai_provider__model_selector__legacy_group__title',
+    },
+    {
+      mainPart: true,
       label: 'Claude-3-Opus',
       value: 'claude-3-opus',
       AIProvider: 'MAXAI_CLAUDE',
-      group: 'client:sidebar__ai_provider__model_selector__legacy_group__title',
     },
     {
       mainPart: true,
@@ -145,14 +153,16 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       value: 'mistral-7b-instruct',
       AIProvider: 'MAXAI_FREE',
       tag: 'Free',
+      group: 'client:sidebar__ai_provider__model_selector__free_group__title',
     },
     // free-end
     // fast-start
     {
       mainPart: true,
-      label: 'GPT-3.5-Turbo',
-      value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+      label: 'GPT-4o-mini',
+      value: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
       AIProvider: 'USE_CHAT_GPT_PLUS',
+      tag: 'New',
       group: 'client:sidebar__ai_provider__model_selector__fast_group__title',
     },
     {
@@ -195,10 +205,16 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
     // legacy-start
     {
       mainPart: true,
+      label: 'GPT-3.5-Turbo',
+      value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+      AIProvider: 'USE_CHAT_GPT_PLUS',
+      group: 'client:sidebar__ai_provider__model_selector__legacy_group__title',
+    },
+    {
+      mainPart: true,
       label: 'Claude-3-Opus',
       value: 'claude-3-opus',
       AIProvider: 'MAXAI_CLAUDE',
-      group: 'client:sidebar__ai_provider__model_selector__legacy_group__title',
     },
     {
       mainPart: true,

@@ -10,10 +10,8 @@ import {
  * 获取在https://www.phtracker.com/crx/info/provider/v2的json配置
  */
 const useRemoteAIProviderConfig = () => {
-  const [
-    remoteAIProviderConfig,
-    setRemoteAIProviderConfig,
-  ] = useState<IRemoteAIProviderConfig>(DEFAULT_REMOTE_AI_PROVIDER_CONFIG)
+  const [remoteAIProviderConfig, setRemoteAIProviderConfig] =
+    useState<IRemoteAIProviderConfig>(DEFAULT_REMOTE_AI_PROVIDER_CONFIG)
   useEffect(() => {
     getRemoteAIProviderConfigCache().then(setRemoteAIProviderConfig)
   }, [])

@@ -2,7 +2,10 @@ import Browser from 'webextension-polyfill'
 
 import { AI_PROVIDER_MAP } from '@/constants'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
-import { IChatUploadFile, IUserChatMessage } from '@/features/indexed_db/conversations/models/Message';
+import {
+  IChatUploadFile,
+  IUserChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 
 /**
  * needAuth: 需要授权

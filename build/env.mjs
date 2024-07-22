@@ -68,9 +68,11 @@ const APP_USE_CHAT_GPT_API_HOST = HostConfig[api_env].appProjectAPIHost
 
 const APP_NAME = 'MaxAI.me'
 const NODE_ENV = isProduction ? 'production' : 'development'
+const API_ENV = api_env
 
 const env = {
   NODE_ENV,
+  API_ENV,
   WWW_PROJECT_HOST,
   APP_USE_CHAT_GPT_HOST,
   APP_USE_CHAT_GPT_API_HOST,

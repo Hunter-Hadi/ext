@@ -143,7 +143,7 @@ const BaseSidebarSystemMessage: FC<{
             <Box>
               <Stack
                 direction={'row'}
-                alignItems="flex-start"
+                alignItems='flex-start'
                 spacing={1.5}
                 mb={2}
               >

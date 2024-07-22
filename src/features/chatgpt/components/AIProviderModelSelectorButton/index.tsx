@@ -228,7 +228,7 @@ const AIProviderModelSelectorButton: FC<{
         }}
         aria-controls={open ? 'composition-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
-        aria-haspopup="true"
+        aria-haspopup='true'
         onClick={handleToggle}
       >
         <TextOnlyTooltip
@@ -262,7 +262,7 @@ const AIProviderModelSelectorButton: FC<{
                 mx={0.5}
                 fontSize={14}
                 lineHeight={1.4}
-                color="text.secondary"
+                color='text.secondary'
                 sx={{
                   userSelect: 'none',
                 }}

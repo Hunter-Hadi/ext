@@ -1,7 +1,3 @@
-type WFMapsApps = (
-  'Maps'
-  | 'Google Maps'
-  | 'Waze'
-);
+type WFMapsApps = 'Maps' | 'Google Maps' | 'Waze'
 
-export default WFMapsApps;
+export default WFMapsApps

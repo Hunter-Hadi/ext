@@ -24,7 +24,7 @@ import {
 import { IAIForSearchStatus } from '@/features/searchWithAI/types'
 import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import {
   crawlingSearchResults,
   ICrawlingSearchResult,
@@ -334,7 +334,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       })
     }
     if (searchWithAISettings.aiProvider === 'OPENAI') {
-      const result = await clientFetchAPI(
+      const result = await clientProxyFetchAPI(
         `https://${CHATGPT_WEBAPP_HOST}/api/auth/session`,
         {
           method: 'GET',
@@ -342,7 +342,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       )
       if (result?.data?.accessToken) {
         // 先调用chatRequirements
-        const chatRequirementsResult = await clientFetchAPI(
+        const chatRequirementsResult = await clientProxyFetchAPI(
           `https://${CHATGPT_WEBAPP_HOST}/backend-api/sentinel/chat-requirements`,
           {
             method: 'POST',

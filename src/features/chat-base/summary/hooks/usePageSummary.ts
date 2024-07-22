@@ -7,10 +7,10 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
+import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
 import { AuthState } from '@/features/auth/store'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import useSummaryQuota from '@/features/chat-base/summary/hooks/useSummaryQuota'
 import {
   getPageSummaryConversationId,
   getPageSummaryType,
@@ -87,8 +87,8 @@ const usePageSummary = () => {
     '',
     false,
   )
-  const { checkSummaryQuota } = useSummaryQuota()
 
+  const { checkFeatureQuota } = useUserFeatureQuota()
   const isGeneratingPageSummaryRef = useRef(false)
 
   useFocus(async () => {
@@ -292,7 +292,7 @@ const usePageSummary = () => {
         // 进入loading
         await createConversation('Summary')
         // 检测当前用量是否超出
-        if (!(await checkSummaryQuota(currentPageSummaryType))) {
+        if (!(await checkFeatureQuota('summary', currentPageSummaryType))) {
           await ClientConversationMessageManager.deleteMessages(
             pageSummaryConversationId,
             await ClientConversationMessageManager.getMessageIds(

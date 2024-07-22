@@ -14,23 +14,19 @@ import usePromptLibraryAuth from '@/features/prompt_library/hooks/usePromptLibra
 export const FavoriteIconButton: FC<{
   promptId: string
 }> = ({ promptId }) => {
-  const {
-    addFavoritePromptMutation,
-    removeFavoritePromptMutation,
-  } = usePromptActions()
+  const { addFavoritePromptMutation, removeFavoritePromptMutation } =
+    usePromptActions()
   const { t } = useTranslation(['prompt_library'])
-  const {
-    checkMaxAIChromeExtensionInstall,
-    checkAuthSync,
-  } = usePromptLibraryAuth()
+  const { checkMaxAIChromeExtensionInstall, checkAuthSync } =
+    usePromptLibraryAuth()
   const { data } = useFavoritePrompts()
   const favouritePromptIds = useMemo(() => {
     return (data || []).map((prompt) => prompt.id)
   }, [data])
-  const isFavorite = useMemo(() => favouritePromptIds.includes(promptId), [
-    favouritePromptIds,
-    promptId,
-  ])
+  const isFavorite = useMemo(
+    () => favouritePromptIds.includes(promptId),
+    [favouritePromptIds, promptId],
+  )
 
   const iconSx = useMemo(
     () => ({
@@ -59,7 +55,7 @@ export const FavoriteIconButton: FC<{
 
   const buttonCom = (
     <IconButton
-      size="small"
+      size='small'
       onClick={async (event) => {
         event.stopPropagation()
         if (await checkMaxAIChromeExtensionInstall()) {

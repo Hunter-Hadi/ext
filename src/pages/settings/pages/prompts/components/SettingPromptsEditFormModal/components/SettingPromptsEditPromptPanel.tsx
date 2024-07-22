@@ -116,7 +116,7 @@ const PromptPanel = () => {
 
   return (
     <Stack flex={1} spacing={2}>
-      <Stack direction="row" alignItems="center">
+      <Stack direction='row' alignItems='center'>
         <Typography variant={'body1'}>
           {`${t(
             'settings:feature_card__prompts__edit_prompt__field_template__title',
@@ -127,7 +127,7 @@ const PromptPanel = () => {
 
       <Stack
         bgcolor={theme.isDarkMode ? 'rgba(0, 0, 0, 0.2)' : '#F4F4F4'}
-        borderRadius="8px"
+        borderRadius='8px'
         spacing={1}
         p={1}
       >

@@ -45,6 +45,17 @@ const usePaymentCreator = () => {
       // Team plan 的用户不支持用户通过 portal 来管理升级/取消plan
       // individual plan 的用户不支持升级到 team plan
 
+      // 如果当前是订阅付费用户直接跳转到pricing页面
+      if (isUpgradePlan) {
+        const paymentType = subscriptionPaymentPlan.includes('yearly')
+          ? 'yearly'
+          : 'monthly'
+        window.open(
+          `${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=${subscriptionPaymentPlan}&paymentType=${paymentType}`,
+        )
+        return
+      }
+
       const targetPaymentPlanHasPromotion =
         checkTargetPlanTypeHasPromotion(planPricing)
 

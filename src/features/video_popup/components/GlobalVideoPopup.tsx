@@ -80,7 +80,7 @@ const GlobalVideoPopup: FC<IVideoPopupProps> = (props) => {
       >
         <Stack
           height={'100%'}
-          justifyContent="center"
+          justifyContent='center'
           sx={{
             height: 'auto',
           }}

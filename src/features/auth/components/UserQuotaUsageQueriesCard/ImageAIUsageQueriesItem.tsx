@@ -74,10 +74,38 @@ const ImageAIUsageQueriesItem: FC<IImageAIUsageQueriesItemProps> = ({
             textAlign: 'right',
           }}
           primary={
-            // isUnlimited ? t('common:unlimited') : numberWithCommas(usage, 0)
-            //  这里默认写死, 并且默认0 - @huangsong
-            isUnlimited ? t('common:unlimited') : 0
-            // isUnlimited ? t('common:unlimited') : numberWithCommas(usage, 0)
+            <Stack
+              direction={'row'}
+              alignItems='center'
+              justifyContent={'flex-end'}
+              spacing={0.5}
+            >
+              {/* 这里默认写死, 并且默认0 - @huangsong */}
+              <Typography fontSize={16} lineHeight={1.5}>
+                {isUnlimited ? t('common:unlimited') : 0}
+                {/* {isUnlimited ? t('common:unlimited') : numberWithCommas(usage, 0)} */}
+              </Typography>
+
+              {isUnlimited ? (
+                <TextOnlyTooltip
+                  arrow
+                  placement='bottom'
+                  title={t(
+                    'quota_usage_card:image_generate__secondary__content__tooltip',
+                  )}
+                >
+                  <Stack
+                    alignItems={'center'}
+                    justifyContent='center'
+                    borderRadius={'50%'}
+                    width={20}
+                    height={24}
+                  >
+                    <TooltipIcon />
+                  </Stack>
+                </TextOnlyTooltip>
+              ) : null}
+            </Stack>
           }
           secondary={
             <>
@@ -93,29 +121,12 @@ const ImageAIUsageQueriesItem: FC<IImageAIUsageQueriesItemProps> = ({
                       QUERIES: numberWithCommas(usage, 0),
                     })}
                   </Typography>
-                  <TextOnlyTooltip
-                    arrow
-                    placement='bottom'
-                    title={t(
-                      'quota_usage_card:image_generate__secondary__content__tooltip',
-                    )}
-                  >
-                    <Stack
-                      alignItems={'center'}
-                      justifyContent='center'
-                      borderRadius={'50%'}
-                      width={20}
-                      height={20}
-                    >
-                      <TooltipIcon />
-                    </Stack>
-                  </TextOnlyTooltip>
                 </Stack>
               ) : null}
               {!isUnlimited ? (
                 <Typography color='text.primary' fontSize={14} lineHeight={1.5}>
                   <ProLink
-                    href={`${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=elite_yearly`}
+                    href={`${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=elite_yearly&paymentType=yearly`}
                     underline='always'
                     sx={{
                       color: 'inherit',

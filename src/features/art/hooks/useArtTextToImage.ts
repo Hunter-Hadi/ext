@@ -7,7 +7,6 @@ import {
 } from '@/constants'
 import { ART_NATURAL_LANGUAGE_TO_DALL_E_3_PROMPT } from '@/features/art/constant'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
@@ -26,7 +25,6 @@ import {
 const useArtTextToImage = () => {
   const { askAIWIthShortcuts } = useClientChat()
   const {
-    pushPricingHookMessage,
     currentSidebarConversationType,
     currentConversationId,
     createConversation,
@@ -35,7 +33,7 @@ const useArtTextToImage = () => {
   } = useClientConversation()
   const { sidebarSettings, updateSidebarConversationType } =
     useSidebarSettings()
-  const { isPayingUser } = useUserInfo()
+  const { isPayingUser, userInfo } = useUserInfo()
   const startTextToImage = async (text: string, needTransform?: boolean) => {
     if (!isShowChatBox()) {
       showChatBox()
@@ -56,20 +54,20 @@ const useArtTextToImage = () => {
       await createConversation('Art')
     }
     // 只要是付费用户就不卡
-    if (!isPayingUser) {
-      await pushPricingHookMessage('MAXAI_IMAGE_GENERATE_MODEL')
-      authEmitPricingHooksLog('show', `MAXAI_IMAGE_GENERATE_MODEL`, {
-        conversationId: currentConversationId,
-        paywallType: 'RESPONSE',
-      })
-      return
+    if (!isPayingUser && userInfo?.user_status?.register_version === '2-1') {
+      // await pushPricingHookMessage('MAXAI_IMAGE_GENERATE_MODEL')
+      // authEmitPricingHooksLog('show', `MAXAI_IMAGE_GENERATE_MODEL`, {
+      //   conversationId: currentConversationId,
+      //   paywallType: 'RESPONSE',
+      // })
+      // return
     }
     const messageId = uuidV4()
     const modelConfig = await getAIProviderSettings('MAXAI_DALLE')
     let isNeedTransform =
       sidebarSettings?.art?.isEnabledConversationalMode === true
 
-    if (typeof needTransform !== undefined) {
+    if (typeof needTransform !== 'undefined') {
       isNeedTransform = Boolean(needTransform)
     }
 

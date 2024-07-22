@@ -101,6 +101,7 @@ const CitationTag: FC<IProps> = (props) => {
 
   return (
     <Button
+      className='maxai-summary-citation'
       variant='contained'
       size='small'
       sx={{

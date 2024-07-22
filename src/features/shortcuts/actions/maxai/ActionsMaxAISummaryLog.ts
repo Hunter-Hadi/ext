@@ -1,13 +1,13 @@
 import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
+import { aesJsonEncrypt } from '@/features/security'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { ActionGetSocialMediaPostContentOfWebPage } from '@/features/shortcuts/actions/web'
 import Action from '@/features/shortcuts/core/Action'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
-import { aesJsonEncrypt } from '@/utils/encryptionHelper'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 
 interface ISummaryRecordData {
   ai_model: string
@@ -50,7 +50,8 @@ export class ActionsMaxAISummaryLog extends Action {
       const aiResponseLanguage =
         shortcutsEngine?.getVariable('AI_RESPONSE_LANGUAGE')?.value || ''
 
-      const conversation = await clientConversationEngine?.getCurrentConversation()
+      const conversation =
+        await clientConversationEngine?.getCurrentConversation()
 
       if (conversation && summaryOutput) {
         const summaryType = conversation?.meta.pageSummaryType
@@ -128,7 +129,7 @@ export class ActionsMaxAISummaryLog extends Action {
         const encryptedData = aesJsonEncrypt(recordData)
         const token = await getMaxAIChromeExtensionAccessToken()
         console.log(`recordData`, recordData)
-        clientFetchAPI(`${APP_USE_CHAT_GPT_API_HOST}/app/post_pseo`, {
+        clientProxyFetchAPI(`${APP_USE_CHAT_GPT_API_HOST}/app/post_pseo`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

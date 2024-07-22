@@ -27,7 +27,7 @@ const SettingPromptsViewSource: FC<{
       </Button>
       <Collapse
         in={expanded}
-        timeout="auto"
+        timeout='auto'
         unmountOnExit
         sx={{
           textAlign: 'left',

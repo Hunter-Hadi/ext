@@ -104,7 +104,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   }, [options, selectValue, renderDom])
   return (
     <FormControl>
-      {label && <InputLabel id="demo-simple-select-label">{label}</InputLabel>}
+      {label && <InputLabel id='demo-simple-select-label'>{label}</InputLabel>}
       <Select
         label={label}
         sx={{

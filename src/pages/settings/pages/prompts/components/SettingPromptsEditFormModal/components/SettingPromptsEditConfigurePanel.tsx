@@ -65,7 +65,7 @@ const ConfigurePanel: FC<{
           <span style={{ color: 'red' }}>*</span>
         </Typography>
         <TextField
-          size="small"
+          size='small'
           autoFocus
           value={editNode.text}
           placeholder={t(
@@ -83,8 +83,8 @@ const ConfigurePanel: FC<{
           helperText={
             errors?.promptTitle
               ? t(
-                'settings:feature_card__prompts__edit_prompt__field_name__error__title',
-              )
+                  'settings:feature_card__prompts__edit_prompt__field_name__error__title',
+                )
               : ''
           }
         />
@@ -131,7 +131,10 @@ const ConfigurePanel: FC<{
                       })
                     }}
                   >
-                    <ContextMenuIcon icon={icon} sx={{ fontSize: 20, minWidth: '20px' }} />
+                    <ContextMenuIcon
+                      icon={icon}
+                      sx={{ fontSize: 20, minWidth: '20px' }}
+                    />
                   </Button>
                 )
               },
@@ -148,7 +151,7 @@ const ConfigurePanel: FC<{
       )}
 
       <Stack spacing={1}>
-        <Stack direction={'row'} alignItems="center">
+        <Stack direction={'row'} alignItems='center'>
           <Typography variant={'body1'}>
             {t(
               'settings:feature_card__prompts__edit_prompt__field_visibility__title',
@@ -179,7 +182,7 @@ const ConfigurePanel: FC<{
       </Stack>
       {editNode.data.type === 'shortcuts' && (
         <Box mt={2}>
-          <Button variant="contained" onClick={handleNext}>
+          <Button variant='contained' onClick={handleNext}>
             {t('prompt_editor:config_panel__next_button__title')}
           </Button>
         </Box>

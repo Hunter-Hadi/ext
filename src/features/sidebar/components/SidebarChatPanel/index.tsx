@@ -3,8 +3,6 @@ import React, { useEffect } from 'react'
 
 import DevContent from '@/components/DevContent'
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -34,7 +32,6 @@ const Test = () => {
 }
 
 const SidebarChatPanel = () => {
-  const { userInfo, isFreeUser } = useUserInfo()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
@@ -43,7 +40,6 @@ const SidebarChatPanel = () => {
     clientWritingMessage,
     clientConversationMessages,
     resetConversation,
-    pushPricingHookMessage,
   } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { startTextToImage } = useArtTextToImage()
@@ -73,17 +69,6 @@ const SidebarChatPanel = () => {
             await createSearchWithAI(question, true)
           } else if (currentSidebarConversationType === 'Art') {
             await startTextToImage(question)
-          } else if (
-            currentSidebarConversationType === 'Summary' &&
-            isFreeUser &&
-            userInfo?.role?.name !== 'free_trial'
-          ) {
-            // free_trial用户summary chat的时候不卡
-            await pushPricingHookMessage('PAGE_SUMMARY')
-            authEmitPricingHooksLog('show', 'PAGE_SUMMARY', {
-              conversationId: currentConversationId,
-              paywallType: 'RESPONSE',
-            })
           } else {
             await askAIQuestion({
               type: 'user',

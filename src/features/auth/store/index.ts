@@ -2,7 +2,11 @@ import { atom } from 'recoil'
 
 import { IMaxAIBetaFeatures } from '@/background/utils/maxAIBetaFeatureSettings/constant'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
-import { IUseChatGPTUserInfo, IUserQuotaUsageInfo } from '@/features/auth/types'
+import {
+  IUseChatGPTUserInfo,
+  IUserFeatureQuotaInfo,
+  IUserQuotaUsageInfo,
+} from '@/features/auth/types'
 
 export const AuthState = atom<{
   isLogin: boolean
@@ -38,6 +42,33 @@ export const UserQuotaUsageState = atom<
     imageGenerate: 0,
     loading: false,
     // nextRefreshTime: '',
+  },
+})
+
+export const UserFeatureQuotaState = atom<
+  IUserFeatureQuotaInfo & { loading: boolean }
+>({
+  key: 'UserFeatureQuotaState',
+  default: {
+    loading: false,
+    // 每日用量上限
+    summarizePageMaxCnt: 0,
+    summarizePDFMaxCnt: 0,
+    summarizeYoutubeMaxCnt: 0,
+    contextMenuMaxCnt: 100,
+    searchMaxCnt: 0,
+    instantReplyMaxCnt: 0,
+    // 用量检测时间
+    checkTime: '',
+    // 用量刷新时间
+    refreshTime: '',
+    // 当日用量，每日重置
+    summarizePageUsage: 0,
+    summarizePDFUsage: 0,
+    summarizeYoutubeUsage: 0,
+    contextMenuUsage: 0,
+    searchUsage: 0,
+    instantReplyUsage: 0,
   },
 })
 

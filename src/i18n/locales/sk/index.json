@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Stiahnuť",
     "chat__artifacts__preview__tools__copy_button__title": "Kopírovať",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Celá obrazovka",
-    "chat__artifacts__preview__tools__close_button__title": "Zavrieť"
+    "chat__artifacts__preview__tools__close_button__title": "Zavrieť",
+    "chat__artifacts__feature_button__title": "MaxAI Artefakty",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakty",
+    "chat__artifacts__feature_button__tooltip__description": "Premieňte svoje nápady na hmatateľný obsah. Keď je povolené, MaxAI vygeneruje vizuálne artefakty ako kód, dokumenty a dizajny v paneli s náhľadom v reálnom čase počas rozhovoru."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

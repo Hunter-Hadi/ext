@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Изтегли",
     "chat__artifacts__preview__tools__copy_button__title": "Копирай",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Цял екран",
-    "chat__artifacts__preview__tools__close_button__title": "Затвори"
+    "chat__artifacts__preview__tools__close_button__title": "Затвори",
+    "chat__artifacts__feature_button__title": "MaxAI Артефакти",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Артефакти",
+    "chat__artifacts__feature_button__tooltip__description": "Преобразувайте вашите идеи в конкретно съдържание. Когато е активиран, MaxAI ще генерира визуални артефакти като код, документи и дизайни в панел за преглед на живо, докато чатирате."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

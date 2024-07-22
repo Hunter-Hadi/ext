@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Preuzmi",
     "chat__artifacts__preview__tools__copy_button__title": "Kopiraj",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Puni zaslon",
-    "chat__artifacts__preview__tools__close_button__title": "Zatvori"
+    "chat__artifacts__preview__tools__close_button__title": "Zatvori",
+    "chat__artifacts__feature_button__title": "MaxAI Artefakti",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakti",
+    "chat__artifacts__feature_button__tooltip__description": "Pretvorite svoje ideje u opipljiv sadržaj. Kada je omogućeno, MaxAI će generirati vizualne artefakte poput koda, dokumenata i dizajna u panelu s prikazom uživo dok razgovarate."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

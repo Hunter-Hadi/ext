@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Lejupielādēt",
     "chat__artifacts__preview__tools__copy_button__title": "Kopēt",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Pilnekrāna režīms",
-    "chat__artifacts__preview__tools__close_button__title": "Aizvērt"
+    "chat__artifacts__preview__tools__close_button__title": "Aizvērt",
+    "chat__artifacts__feature_button__title": "MaxAI Artefakti",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakti",
+    "chat__artifacts__feature_button__tooltip__description": "Pārvērtiet savas idejas par konkrētu saturu. Ja iespējots, MaxAI radīs vizuālos artefaktus, piemēram, kodu, dokumentus un dizainus tiešsaistes priekšskatījuma panelī, kad jūs čatojat."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

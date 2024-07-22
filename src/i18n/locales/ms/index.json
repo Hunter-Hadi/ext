@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Muat turun",
     "chat__artifacts__preview__tools__copy_button__title": "Salin",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Penuh skrin",
-    "chat__artifacts__preview__tools__close_button__title": "Tutup"
+    "chat__artifacts__preview__tools__close_button__title": "Tutup",
+    "chat__artifacts__feature_button__title": "Artifak MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Artifak MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "Ubah idea anda kepada kandungan yang boleh dirasai. Apabila diaktifkan, MaxAI akan menjana artifak visual seperti kod, dokumen, dan reka bentuk dalam panel pratonton langsung semasa bersembang."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

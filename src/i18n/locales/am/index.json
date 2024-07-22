@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "አስተካክል",
     "chat__artifacts__preview__tools__copy_button__title": "ኮፒ",
     "chat__artifacts__preview__tools__fullscreen_button__title": "ሙሉ ማስታወሻ",
-    "chat__artifacts__preview__tools__close_button__title": "ዝጋ"
+    "chat__artifacts__preview__tools__close_button__title": "ዝጋ",
+    "chat__artifacts__feature_button__title": "የማክሰኞ አርቲፎንስ",
+    "chat__artifacts__feature_button__tooltip__title": "የማክሰኞ አርቲፎንስ",
+    "chat__artifacts__feature_button__tooltip__description": "እንዴት እንደሚሰራው አርቲፎንስ የተለያዩ አገልግሎቶችዎን በማስተካከል እናትናን፣ ፍጥነትና አስተያየቶች እንዲሆኑ ማክሰኞ አርቲፎንስ በሊቫ መልኩ እንዲሰጡ ይችላሉ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

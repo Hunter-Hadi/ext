@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Downloaden",
     "chat__artifacts__preview__tools__copy_button__title": "Kopiëren",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Volledig scherm",
-    "chat__artifacts__preview__tools__close_button__title": "Sluiten"
+    "chat__artifacts__preview__tools__close_button__title": "Sluiten",
+    "chat__artifacts__feature_button__title": "MaxAI Artefacten",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefacten",
+    "chat__artifacts__feature_button__tooltip__description": "Transformeer je ideeën naar tastbare inhoud. Wanneer ingeschakeld, zal MaxAI visuele artefacten genereren zoals code, documenten en ontwerpen in een live voorbeeldvenster terwijl je chat."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

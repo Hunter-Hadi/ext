@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Download",
     "chat__artifacts__preview__tools__copy_button__title": "Kopiér",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Fuldskærm",
-    "chat__artifacts__preview__tools__close_button__title": "Luk"
+    "chat__artifacts__preview__tools__close_button__title": "Luk",
+    "chat__artifacts__feature_button__title": "MaxAI Artefakter",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakter",
+    "chat__artifacts__feature_button__tooltip__description": "Omdan dine ideer til håndgribeligt indhold. Når det er aktiveret, vil MaxAI generere visuelle artefakter som kode, dokumenter og design i en live forhåndsvisningspanel, mens du chatter."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

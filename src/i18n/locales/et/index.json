@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Laadi alla",
     "chat__artifacts__preview__tools__copy_button__title": "Kopeeri",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Täisekraan",
-    "chat__artifacts__preview__tools__close_button__title": "Sulge"
+    "chat__artifacts__preview__tools__close_button__title": "Sulge",
+    "chat__artifacts__feature_button__title": "MaxAI Kunstiteosed",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Kunstiteosed",
+    "chat__artifacts__feature_button__tooltip__description": "Muuda oma ideed käegakatsutavaks sisuks. Kui see on lubatud, genereerib MaxAI visuaalseid artefakte nagu kood, dokumendid ja disainid otseülekande paneelil, kui sa vestled."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

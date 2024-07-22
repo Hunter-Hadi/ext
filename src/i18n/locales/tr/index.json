@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "İndir",
     "chat__artifacts__preview__tools__copy_button__title": "Kopyala",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Tam Ekran",
-    "chat__artifacts__preview__tools__close_button__title": "Kapat"
+    "chat__artifacts__preview__tools__close_button__title": "Kapat",
+    "chat__artifacts__feature_button__title": "MaxAI Sanat Eserleri",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Sanat Eserleri",
+    "chat__artifacts__feature_button__tooltip__description": "Fikirlerinizi somut içeriklere dönüştürün. Etkinleştirildiğinde, MaxAI sohbet ederken kod, belge ve tasarımlar gibi görsel eserleri canlı bir önizleme panelinde oluşturacaktır."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

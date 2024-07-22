@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Tải xuống",
     "chat__artifacts__preview__tools__copy_button__title": "Sao chép",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Toàn màn hình",
-    "chat__artifacts__preview__tools__close_button__title": "Đóng"
+    "chat__artifacts__preview__tools__close_button__title": "Đóng",
+    "chat__artifacts__feature_button__title": "Tính năng MaxAI Artifacts",
+    "chat__artifacts__feature_button__tooltip__title": "Tính năng MaxAI Artifacts",
+    "chat__artifacts__feature_button__tooltip__description": "Biến ý tưởng của bạn thành nội dung cụ thể. Khi được kích hoạt, MaxAI sẽ tạo ra các hiện vật hình ảnh như mã nguồn, tài liệu và thiết kế trong một bảng xem trước trực tiếp khi bạn trò chuyện."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

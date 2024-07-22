@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Pakua",
     "chat__artifacts__preview__tools__copy_button__title": "Nakili",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Skrini nzima",
-    "chat__artifacts__preview__tools__close_button__title": "Funga"
+    "chat__artifacts__preview__tools__close_button__title": "Funga",
+    "chat__artifacts__feature_button__title": "Vitu vya MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Vitu vya MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "Geuza mawazo yako kuwa maudhui yanayoweza kuonekana. Ukiwezesha, MaxAI itazalisha vitu vya maono kama nambari, nyaraka, na miundo katika kielelezo cha moja kwa moja unapochat."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Transferir",
     "chat__artifacts__preview__tools__copy_button__title": "Copiar",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Ecrã inteiro",
-    "chat__artifacts__preview__tools__close_button__title": "Fechar"
+    "chat__artifacts__preview__tools__close_button__title": "Fechar",
+    "chat__artifacts__feature_button__title": "Artefactos MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Artefactos MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "Transforme as suas ideias em conteúdo tangível. Quando ativado, o MaxAI irá gerar artefactos visuais como código, documentos e designs num painel de visualização em tempo real enquanto conversa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

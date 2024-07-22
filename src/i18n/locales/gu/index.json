@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "ડાઉનલોડ",
     "chat__artifacts__preview__tools__copy_button__title": "કૉપી",
     "chat__artifacts__preview__tools__fullscreen_button__title": "પૂર્ણ સ્ક્રીન",
-    "chat__artifacts__preview__tools__close_button__title": "બંધ કરો"
+    "chat__artifacts__preview__tools__close_button__title": "બંધ કરો",
+    "chat__artifacts__feature_button__title": "મેક્સએઆઈ આર્ટિફેક્ટ્સ",
+    "chat__artifacts__feature_button__tooltip__title": "મેક્સએઆઈ આર્ટિફેક્ટ્સ",
+    "chat__artifacts__feature_button__tooltip__description": "તમારા વિચારોને વાસ્તવિક કન્ટેન્ટમાં રૂપાંતરિત કરો. જ્યારે સક્રિય કર્યું હોય, ત્યારે ચેટ કરતા સમયે મેક્સએઆઈ કોડ, દસ્તાવેજ અને ડિઝાઇન જેવી દ્રશ્યમાન આર્ટિફેક્ટ્સ ઉત્પન્ન કરશે."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

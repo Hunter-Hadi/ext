@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "பதிவிறக்கம்",
     "chat__artifacts__preview__tools__copy_button__title": "நகலெடு",
     "chat__artifacts__preview__tools__fullscreen_button__title": "முழுத்தளம்",
-    "chat__artifacts__preview__tools__close_button__title": "மூடு"
+    "chat__artifacts__preview__tools__close_button__title": "மூடு",
+    "chat__artifacts__feature_button__title": "மேக்ஸ்AI உருவங்கள்",
+    "chat__artifacts__feature_button__tooltip__title": "மேக்ஸ்AI உருவங்கள்",
+    "chat__artifacts__feature_button__tooltip__description": "உங்கள் கருவிகளை உண்மையான உள்ளடக்கமாக மாற்றுங்கள். செயலிக்குச் சேர்க்கப்பட்டபோது, உங்கள் உரையுடன் உரையாடும்போது மேக்ஸ்AI குறிப்பிட்ட குறிப்புகளை உருவாக்கும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

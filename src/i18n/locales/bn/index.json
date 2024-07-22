@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "ডাউনলোড",
     "chat__artifacts__preview__tools__copy_button__title": "কপি",
     "chat__artifacts__preview__tools__fullscreen_button__title": "পূর্ণ পর্দা",
-    "chat__artifacts__preview__tools__close_button__title": "বন্ধ করুন"
+    "chat__artifacts__preview__tools__close_button__title": "বন্ধ করুন",
+    "chat__artifacts__feature_button__title": "ম্যাক্সএআই আর্টিফ্যাক্টস",
+    "chat__artifacts__feature_button__tooltip__title": "ম্যাক্সএআই আর্টিফ্যাক্টস",
+    "chat__artifacts__feature_button__tooltip__description": "আপনার ধারণাগুলি প্রাকৃতিক কন্টেন্টে পরিণত করুন। যখন সক্রিয় করা হয়, ম্যাক্সএআই চ্যাট করার সময় একটি লাইভ প্রিভিউ প্যানেলে কোড, ডকুমেন্ট, এবং ডিজাইন সহ ভিজ্যুয়াল আর্টিফ্যাক্ট তৈরি করবে।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

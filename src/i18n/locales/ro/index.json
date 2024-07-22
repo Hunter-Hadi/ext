@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Descărcare",
     "chat__artifacts__preview__tools__copy_button__title": "Copiere",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Ecran complet",
-    "chat__artifacts__preview__tools__close_button__title": "Închide"
+    "chat__artifacts__preview__tools__close_button__title": "Închide",
+    "chat__artifacts__feature_button__title": "Artifacții MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Artifacții MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "Transformați-vă ideile în conținut tangibil. Când este activat, MaxAI va genera artefacte vizuale precum cod, documente și designuri într-un panou de previzualizare live pe măsură ce discutați."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

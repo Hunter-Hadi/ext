@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Descarregar",
     "chat__artifacts__preview__tools__copy_button__title": "Copiar",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Pantalla completa",
-    "chat__artifacts__preview__tools__close_button__title": "Tancar"
+    "chat__artifacts__preview__tools__close_button__title": "Tancar",
+    "chat__artifacts__feature_button__title": "Artifacts MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Artifacts MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "Transforma les teves idees en contingut tangible. Quan està habilitat, MaxAI generarà artefactes visuals com codi, documents i dissenys en un panell de visualització en directe mentre xerres."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

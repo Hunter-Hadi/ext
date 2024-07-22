@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Lataa",
     "chat__artifacts__preview__tools__copy_button__title": "Kopioi",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Koko näyttö",
-    "chat__artifacts__preview__tools__close_button__title": "Sulje"
+    "chat__artifacts__preview__tools__close_button__title": "Sulje",
+    "chat__artifacts__feature_button__title": "MaxAI Artefaktit",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefaktit",
+    "chat__artifacts__feature_button__tooltip__description": "Muunna ideasi konkreettiseksi sisällöksi. Kun otettu käyttöön, MaxAI generoi visuaalisia artefakteja kuten koodia, dokumentteja ja suunnitelmia reaaliaikaisessa esikatselupaneelissa keskustelun aikana."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

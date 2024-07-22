@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Λήψη",
     "chat__artifacts__preview__tools__copy_button__title": "Αντιγραφή",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Πλήρης οθόνη",
-    "chat__artifacts__preview__tools__close_button__title": "Κλείσιμο"
+    "chat__artifacts__preview__tools__close_button__title": "Κλείσιμο",
+    "chat__artifacts__feature_button__title": "MaxAI Τεχνούργημα",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Τεχνούργημα",
+    "chat__artifacts__feature_button__tooltip__description": "Μετατρέψτε τις ιδέες σας σε υλικό περιεχομένου. Όταν ενεργοποιηθεί, το MaxAI θα δημιουργήσει οπτικά τεχνούργημα όπως κώδικας, έγγραφα και σχέδια σε ένα πάνελ προεπισκόπησης σε πραγματικό χρόνο καθώς συνομιλείτε."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

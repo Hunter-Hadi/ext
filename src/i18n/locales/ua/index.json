@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Завантажити",
     "chat__artifacts__preview__tools__copy_button__title": "Копіювати",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Повноекранний режим",
-    "chat__artifacts__preview__tools__close_button__title": "Закрити"
+    "chat__artifacts__preview__tools__close_button__title": "Закрити",
+    "chat__artifacts__feature_button__title": "Артефакти MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Артефакти MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "Перетворіть свої ідеї на матеріальний вміст. При увімкненні MaxAI буде генерувати візуальні артефакти, такі як код, документи та дизайни, у панелі живого попереднього перегляду під час чату."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

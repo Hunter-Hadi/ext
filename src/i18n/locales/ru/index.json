@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Скачать",
     "chat__artifacts__preview__tools__copy_button__title": "Копировать",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Полноэкранный режим",
-    "chat__artifacts__preview__tools__close_button__title": "Закрыть"
+    "chat__artifacts__preview__tools__close_button__title": "Закрыть",
+    "chat__artifacts__feature_button__title": "Артефакты MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Артефакты MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "Преобразуйте свои идеи в материальный контент. При включении MaxAI будет создавать визуальные артефакты, такие как код, документы и дизайны, в панели превью в реальном времени во время чата."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

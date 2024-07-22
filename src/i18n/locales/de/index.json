@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Herunterladen",
     "chat__artifacts__preview__tools__copy_button__title": "Kopieren",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Vollbild",
-    "chat__artifacts__preview__tools__close_button__title": "Schließen"
+    "chat__artifacts__preview__tools__close_button__title": "Schließen",
+    "chat__artifacts__feature_button__title": "MaxAI Artefakte",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakte",
+    "chat__artifacts__feature_button__tooltip__description": "Verwandeln Sie Ihre Ideen in greifbare Inhalte. Wenn aktiviert, generiert MaxAI visuelle Artefakte wie Code, Dokumente und Designs in einem Live-Vorschau-Panel, während Sie chatten."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

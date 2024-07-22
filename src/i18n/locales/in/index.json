@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Unduh",
     "chat__artifacts__preview__tools__copy_button__title": "Salin",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Layar Penuh",
-    "chat__artifacts__preview__tools__close_button__title": "Tutup"
+    "chat__artifacts__preview__tools__close_button__title": "Tutup",
+    "chat__artifacts__feature_button__title": "Artifak MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Artifak MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "Ubah ide-ide Anda menjadi konten yang nyata. Saat diaktifkan, MaxAI akan menghasilkan artifak visual seperti kode, dokumen, dan desain dalam panel pratinjau langsung saat Anda chatting."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

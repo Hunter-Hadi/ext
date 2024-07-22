@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "ڈاؤن لوڈ",
     "chat__artifacts__preview__tools__copy_button__title": "کاپی",
     "chat__artifacts__preview__tools__fullscreen_button__title": "پوری اسکرین",
-    "chat__artifacts__preview__tools__close_button__title": "بند کریں"
+    "chat__artifacts__preview__tools__close_button__title": "بند کریں",
+    "chat__artifacts__feature_button__title": "MaxAI آرٹیفیکٹس",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI آرٹیفیکٹس",
+    "chat__artifacts__feature_button__tooltip__description": "اپنے خیالات کو محسوس مواد میں تبدیل کریں۔ جب فعال ہوتا ہے، تو جیسے ہی چیٹ کرتے ہیں، MaxAI کوڈ، دستاویزات، اور ڈیزائنز جیسی تصاویری آرٹیفیکٹس پیدا کرے گا۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

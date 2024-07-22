@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Télécharger",
     "chat__artifacts__preview__tools__copy_button__title": "Copier",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Plein écran",
-    "chat__artifacts__preview__tools__close_button__title": "Fermer"
+    "chat__artifacts__preview__tools__close_button__title": "Fermer",
+    "chat__artifacts__feature_button__title": "Artéfacts MaxIA",
+    "chat__artifacts__feature_button__tooltip__title": "Artéfacts MaxIA",
+    "chat__artifacts__feature_button__tooltip__description": "Transformez vos idées en contenu tangible. Lorsqu'activé, MaxIA générera des artéfacts visuels tels que du code, des documents et des designs dans un panneau d'aperçu en direct pendant que vous discutez."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

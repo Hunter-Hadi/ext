@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "ダウンロード",
     "chat__artifacts__preview__tools__copy_button__title": "コピー",
     "chat__artifacts__preview__tools__fullscreen_button__title": "全画面表示",
-    "chat__artifacts__preview__tools__close_button__title": "閉じる"
+    "chat__artifacts__preview__tools__close_button__title": "閉じる",
+    "chat__artifacts__feature_button__title": "MaxAI アーティファクト",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI アーティファクト",
+    "chat__artifacts__feature_button__tooltip__description": "アイデアを具体的なコンテンツに変換します。有効にすると、MaxAI がチャット中にコード、ドキュメント、デザインなどのビジュアルアーティファクトをライブプレビューパネルに生成します。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

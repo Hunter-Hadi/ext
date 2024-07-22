@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "Letöltés",
     "chat__artifacts__preview__tools__copy_button__title": "Másolás",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Teljes képernyő",
-    "chat__artifacts__preview__tools__close_button__title": "Bezárás"
+    "chat__artifacts__preview__tools__close_button__title": "Bezárás",
+    "chat__artifacts__feature_button__title": "MaxAI Műalkotások",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI Műalkotások",
+    "chat__artifacts__feature_button__tooltip__description": "Alakítsd át az ötleteidet kézzelfogható tartalomdá. Amikor engedélyezve van, a MaxAI vizuális műalkotásokat generál, mint kódok, dokumentumok és tervek egy élő előnézeti panelen, miközben chatelsz."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

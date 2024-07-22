@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "ดาวน์โหลด",
     "chat__artifacts__preview__tools__copy_button__title": "คัดลอก",
     "chat__artifacts__preview__tools__fullscreen_button__title": "เต็มหน้าจอ",
-    "chat__artifacts__preview__tools__close_button__title": "ปิด"
+    "chat__artifacts__preview__tools__close_button__title": "ปิด",
+    "chat__artifacts__feature_button__title": "สร้างสรรค์ MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "สร้างสรรค์ MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "เปลี่ยนไอเดียของคุณเป็นเนื้อหาที่เป็นจริง  เมื่อเปิดใช้งาน MaxAI จะสร้างสรรค์ผลงานทางด้านภาพเช่น โค้ด เอกสาร และการออกแบบในพาเนลตัวอย่างสดๆ ขณะคุยกับคุณ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

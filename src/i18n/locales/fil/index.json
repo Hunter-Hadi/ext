@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "I-download",
     "chat__artifacts__preview__tools__copy_button__title": "Kopyahin",
     "chat__artifacts__preview__tools__fullscreen_button__title": "Buong screen",
-    "chat__artifacts__preview__tools__close_button__title": "Isara"
+    "chat__artifacts__preview__tools__close_button__title": "Isara",
+    "chat__artifacts__feature_button__title": "Mga Artifact ng MaxAI",
+    "chat__artifacts__feature_button__tooltip__title": "Mga Artifact ng MaxAI",
+    "chat__artifacts__feature_button__tooltip__description": "I-convert ang iyong mga ideya sa kongkretong nilalaman. Kapag pinagana, si MaxAI ay mag-gegenerate ng visual na mga artifact tulad ng code, dokumento, at disenyo sa isang live preview panel habang nagcha-chat ka."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

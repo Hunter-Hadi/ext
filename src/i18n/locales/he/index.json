@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "הורד",
     "chat__artifacts__preview__tools__copy_button__title": "העתק",
     "chat__artifacts__preview__tools__fullscreen_button__title": "מסך מלא",
-    "chat__artifacts__preview__tools__close_button__title": "סגור"
+    "chat__artifacts__preview__tools__close_button__title": "סגור",
+    "chat__artifacts__feature_button__title": "MaxAI ארטיפקטים",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI ארטיפקטים",
+    "chat__artifacts__feature_button__tooltip__description": "המרת הרעיונות שלך לתוכן מוחשי. כאשר מופעל, MaxAI יצור ארטיפקטים ויזואליים כמו קוד, מסמכים ועיצובים בפאנל תצוגה חיה במהלך השיחה שלך."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

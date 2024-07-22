@@ -1033,7 +1033,10 @@
     "chat__artifacts__preview__tools__download_button__title": "下载",
     "chat__artifacts__preview__tools__copy_button__title": "复制",
     "chat__artifacts__preview__tools__fullscreen_button__title": "全屏",
-    "chat__artifacts__preview__tools__close_button__title": "关闭"
+    "chat__artifacts__preview__tools__close_button__title": "关闭",
+    "chat__artifacts__feature_button__title": "MaxAI工件",
+    "chat__artifacts__feature_button__tooltip__title": "MaxAI工件",
+    "chat__artifacts__feature_button__tooltip__description": "将您的想法转化为有形内容。启用后，MaxAI将在您聊天时在实时预览面板中生成视觉工件，如代码、文档和设计。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

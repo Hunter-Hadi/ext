@@ -123,6 +123,7 @@ export class ActionMaxAIUploadDocument extends Action {
     }
 
     const docId = documentConfig.docId || (await sha1FileEncrypt(file))
+    const onlyCheck = ['webpage', 'email', 'youtube'].includes(docType || '')
 
     if (this.isStopAction) return
 
@@ -150,6 +151,7 @@ export class ActionMaxAIUploadDocument extends Action {
             resolve(docId)
           }
         },
+        onlyCheck,
       )
         .then(async (result) => {
           if (result.success && result.doc_url) {

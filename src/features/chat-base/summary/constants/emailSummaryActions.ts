@@ -1,6 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import {
+  VARIABLE_AI_RESPONSE_LANGUAGE,
   VARIABLE_CURRENT_WEBPAGE_URL,
   VARIABLE_CURRENT_WEBSITE_DOMAIN,
 } from '@/background/defaultPromptsData/systemVariables'
@@ -140,6 +141,7 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           variables: [
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },
@@ -346,6 +348,7 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           variables: [
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },
@@ -552,6 +555,7 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           variables: [
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },
@@ -758,6 +762,7 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
           variables: [
             VARIABLE_CURRENT_WEBPAGE_URL,
             VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
           ],
           output: [],
         },

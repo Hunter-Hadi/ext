@@ -57,6 +57,7 @@ const YoutubeTimeButton: FC<IYoutubeTimeButton> = ({ time }) => {
         '#container video',
       ) as HTMLVideoElement
       if (video) {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         if (typeof seconds === 'number') {
           video.play()
           setTimeout(() => {

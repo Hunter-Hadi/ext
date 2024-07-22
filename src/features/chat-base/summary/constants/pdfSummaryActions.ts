@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
+import { VARIABLE_AI_RESPONSE_LANGUAGE } from '@/background/defaultPromptsData/systemVariables'
 import {
   SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
   SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
@@ -186,7 +187,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF',
                 promptActionType: 'chat_complete',
-                variables: [],
+                variables: [VARIABLE_AI_RESPONSE_LANGUAGE],
                 output: [],
               },
               AskChatGPTActionQuestion: {
@@ -451,7 +452,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF (TL:DR)',
                 promptActionType: 'chat_complete',
-                variables: [],
+                variables: [VARIABLE_AI_RESPONSE_LANGUAGE],
                 output: [],
               },
               AskChatGPTActionQuestion: {
@@ -716,7 +717,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF (Key takeaways)',
                 promptActionType: 'chat_complete',
-                variables: [],
+                variables: [VARIABLE_AI_RESPONSE_LANGUAGE],
                 output: [],
               },
               AskChatGPTActionQuestion: {

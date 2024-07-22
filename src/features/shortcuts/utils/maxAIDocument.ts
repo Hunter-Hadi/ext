@@ -91,10 +91,12 @@ export const checkDocIdExist = async (docId: string, accessToken?: string) => {
  * 上传document
  * @param body
  * @param listener
+ * @param onlyCheck 仅checkDocument是否存在不调用getDocument
  */
 export const uploadMaxAIDocument = async (
   body: IUploadDocumentPayload,
   listener?: IUploadDocumentListener,
+  onlyCheck?: boolean,
 ) => {
   const accessToken = await getMaxAIChromeExtensionAccessToken()
   const docId = body.doc_id || (await sha1FileEncrypt(body.file))
@@ -110,9 +112,11 @@ export const uploadMaxAIDocument = async (
     return uploadResponse
   }
   if (await checkDocIdExist(docId, accessToken)) {
-    const result = await getMaxAIDocument(docId)
-    uploadResponse.doc_url = result?.s3?.doc_url || ''
-    uploadResponse.expires = result?.s3?.expires
+    if (!onlyCheck) {
+      const result = await getMaxAIDocument(docId)
+      uploadResponse.doc_url = result?.s3?.doc_url || ''
+      uploadResponse.expires = result?.s3?.expires
+    }
     uploadResponse.success = true
     return uploadResponse
   }

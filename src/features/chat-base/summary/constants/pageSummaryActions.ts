@@ -1,6 +1,9 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { VARIABLE_CURRENT_WEBPAGE_URL } from '@/background/defaultPromptsData/systemVariables'
+import {
+  VARIABLE_AI_RESPONSE_LANGUAGE,
+  VARIABLE_CURRENT_WEBPAGE_URL,
+} from '@/background/defaultPromptsData/systemVariables'
 import {
   SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
   SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
@@ -133,7 +136,10 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
           promptName: `[Summary] Summarize page`,
           promptActionType: 'chat_complete',
-          variables: [VARIABLE_CURRENT_WEBPAGE_URL],
+          variables: [
+            VARIABLE_CURRENT_WEBPAGE_URL,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
+          ],
           output: [
             {
               label: 'Summary content',
@@ -346,7 +352,10 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
           promptName: `[Summary] Summarize page`,
           promptActionType: 'chat_complete',
-          variables: [VARIABLE_CURRENT_WEBPAGE_URL],
+          variables: [
+            VARIABLE_CURRENT_WEBPAGE_URL,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
+          ],
           output: [],
         },
         AskChatGPTActionQuestion: {
@@ -554,7 +563,10 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
           promptId: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
           promptName: `[Summary] Summarize page (Key takeaways)`,
           promptActionType: 'chat_complete',
-          variables: [VARIABLE_CURRENT_WEBPAGE_URL],
+          variables: [
+            VARIABLE_CURRENT_WEBPAGE_URL,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
+          ],
           output: [],
         },
         AskChatGPTActionQuestion: {

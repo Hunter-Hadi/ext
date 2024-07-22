@@ -439,22 +439,14 @@ const CustomMarkdown: FC<{
           p: ({ node, ...props }) => {
             return (
               <p>
-                {isComplete ? (
-                  <OverrideText>{props.children}</OverrideText>
-                ) : (
-                  props.children
-                )}
+                <OverrideText>{props.children}</OverrideText>
               </p>
             )
           },
           li: ({ node, ...props }) => {
             return (
               <li>
-                {isComplete ? (
-                  <OverrideText>{props.children}</OverrideText>
-                ) : (
-                  props.children
-                )}
+                <OverrideText>{props.children}</OverrideText>
               </li>
             )
           },
@@ -574,7 +566,7 @@ const CustomMarkdown: FC<{
         {formatMarkdownText}
       </ReactMarkdown>
     ),
-    [citations, isComplete, formatMarkdownText],
+    [citations, formatMarkdownText],
   )
 }
 export default CustomMarkdown

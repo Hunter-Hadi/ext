@@ -180,10 +180,9 @@ const useInitWebPageSidebar = () => {
       documentTitleRef.current = documentTitle
       resetPageSummary()
       if (
-        (isWindowFocusRef.current =
-          windowFocus &&
-          (pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
-            pageSummaryType === 'PDF_CRX_SUMMARY'))
+        isWindowFocusRef.current &&
+        (pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
+          pageSummaryType === 'PDF_CRX_SUMMARY')
       ) {
         if (pageConversationTypeRef.current !== 'Summary') {
           updateSidebarConversationType('Summary')

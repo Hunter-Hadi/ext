@@ -194,6 +194,7 @@ export const useFetchPaginationConversations = (
     cache: {},
     localIndex: 0,
   })
+
   const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQuery({
       queryKey: [
@@ -350,6 +351,13 @@ export const useFetchPaginationConversations = (
   useEffect(() => {
     filterTypeRef.current = filter.type
   }, [filter.type])
+
+  // 清除数据
+  useEffect(() => {
+    if (userInfo?.user_id && paginationConversations.length > 0) {
+      setPaginationConversations([])
+    }
+  }, [userInfo?.user_id])
 
   const handleUpdatePaginationConversations = useCallback(
     async (

@@ -32,27 +32,38 @@ const useSidebarDropEvent = () => {
     event.preventDefault()
   }, [])
 
-  const handleDragLeave = useCallback((event: any) => {
+  const handleDragLeave = (event: React.DragEvent<HTMLDivElement>) => {
     // 获取事件的相关目标
     const relatedTarget = event.relatedTarget
 
-    const relatedTargetOffsetParent = relatedTarget?.offsetParent
+    if (!relatedTarget || !(relatedTarget instanceof HTMLElement)) {
+      setIsSidebarDragOver(false)
+      return
+    }
+
+    const relatedTargetOffsetParent = relatedTarget.offsetParent
 
     // 检查相关目标是否还在外层div内
     if (
-      (relatedTarget &&
-        !(
-          relatedTargetOffsetParent &&
-          relatedTargetOffsetParent?.id === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID
-        ) &&
-        !event.currentTarget.contains(relatedTarget)) ||
-      !relatedTarget
-    ) {
-      // 设置你的状态为false
-      console.log('handleDragLeave leave')
-      setIsSidebarDragOver(false)
+      relatedTargetOffsetParent?.id === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID ||
+      event.currentTarget.contains(relatedTarget)
+    )
+      return
+
+    const root = relatedTarget.getRootNode()
+
+    // 屏蔽处理不含id的textarea，因为这里shadow dom会触发一次leave事件，
+    // 直接用contains在shadow dom的情况下会查询不到，
+    // 用于处理rewrite页面的添加context的textarea
+    if (root instanceof ShadowRoot) {
+      const host = root.host
+      if (host instanceof HTMLTextAreaElement && !host.id) {
+        return
+      }
     }
-  }, [])
+
+    setIsSidebarDragOver(false)
+  }
 
   const handleDrop = async (event: DragEvent) => {
     setIsSidebarDragOver(false)

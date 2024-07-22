@@ -56,7 +56,7 @@ const LanguageSelector: FC<{
     if (lang && lang !== currentLanguage) {
       setCurrentLanguage(lang)
     }
-  }, [])
+  }, [defaultValue])
 
   const container = useMemo(
     () =>

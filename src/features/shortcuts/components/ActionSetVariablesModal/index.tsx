@@ -39,7 +39,11 @@ import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export interface ActionSetVariablesModalConfig {
-  modelKey?: 'Sidebar' | 'FloatingContextMenu' | 'PromptPreview'
+  modelKey?:
+    | 'Sidebar'
+    | 'FloatingContextMenu'
+    | 'PromptPreview'
+    | 'SidebarRewrite'
   variables: IActionSetVariable[]
   systemVariables: IActionSetVariable[]
   title: string
@@ -72,7 +76,11 @@ export interface ActionSetVariablesConfirmData {
 }
 interface ActionSetVariablesModalProps
   extends Partial<ActionSetVariablesModalConfig> {
-  modelKey: 'Sidebar' | 'FloatingContextMenu' | 'PromptPreview'
+  modelKey:
+    | 'Sidebar'
+    | 'FloatingContextMenu'
+    | 'PromptPreview'
+    | 'SidebarRewrite'
   show?: boolean
   showModelSelector?: boolean
   showCloseButton?: boolean
@@ -524,6 +532,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         if (data.task === 'open' && data.config?.modelKey === modelKey) {
           setShow(false)
           setTimeout(() => {
+            console.log('SetVariablesModal', data)
             setConfig(data.config)
             if (data.config.waitForUserAction) {
               setPendingPromises([
@@ -604,6 +613,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       }
     }
   }, [show, isHideInOtherConversationType])
+
   if (
     !props.show &&
     (!show || isHideInOtherConversationType || Object.keys(form).length === 0)

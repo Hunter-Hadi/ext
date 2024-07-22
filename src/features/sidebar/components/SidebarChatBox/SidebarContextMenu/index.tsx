@@ -1,11 +1,12 @@
 import SendIcon from '@mui/icons-material/Send'
+import { CircularProgress,Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import { red } from '@mui/material/colors'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme, useTheme } from '@mui/material/styles'
 import { cloneDeep } from 'lodash-es'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { getChromeExtensionDBStorageButtonContextMenu } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
@@ -27,6 +28,7 @@ import {
   checkIsDraftContextMenuId,
   findDraftContextMenuById,
 } from '@/features/contextMenu/utils'
+import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import TreeNavigatorMatcher from '@/features/sidebar/utils/treeNavigatorMatcher'
 import { getMaxAISidebarRootElement } from '@/utils'
 
@@ -37,39 +39,27 @@ import SidebarContextMenuTitlebar from './SidebarContextMenuTitlebar'
 const SidebarContextMenu: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
+  const [loading, setLoading] = useState(false)
 
   const [content, setContent] = useState('')
   const contentRef = useRef('')
   contentRef.current = content
   const [inputValue, setInputValue] = useState('')
   const [isContentEmptyError, setIsContentEmptyError] = useState(false)
-  const [userPrompts, setUserPrompts] = useState<IContextMenuItem[]>([])
   const update = useUpdate()
   const matcher = useMemo(() => new TreeNavigatorMatcher(), [])
   matcher.onUpdate = update
+  const [isSettingCustomVariables, setIsSettingCustomVariables] =
+    useState(false)
 
   const { contextMenuList } = useContextMenuList(
     'textSelectPopupButton',
     inputValue,
   )
-
-  /**
-   * 去除用户自定义的prompt
-   */
-  const contextWindowList = useMemo(() => {
-    return contextMenuList.filter(
-      (item) => !userPrompts.some((prompt) => prompt.id === item.id),
-      [],
-    )
-  }, [contextMenuList, userPrompts])
-
-  useEffect(() => {
-    getChromeExtensionDBStorageButtonContextMenu('textSelectPopupButton').then(
-      (res) => {
-        setUserPrompts(res)
-      },
-    )
-  }, [])
+  const contextWindowList = useMemo(
+    () => (isSettingCustomVariables ? [] : contextMenuList),
+    [contextMenuList, isSettingCustomVariables],
+  )
 
   const { uploadFilesToMaxAIModel, isContainMaxAIModelUploadFile } =
     useMaxAIModelUploadFile()
@@ -142,7 +132,7 @@ const SidebarContextMenu: FC = () => {
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const handleContextMenuClick = (menuItem: IContextMenuItem) => {
+  const handleContextMenuClick = async (menuItem: IContextMenuItem) => {
     const content = contentRef.current
     if (!content) {
       setIsContentEmptyError(true)
@@ -161,6 +151,32 @@ const SidebarContextMenu: FC = () => {
     if (!menuItem || !menuItem.id) return
 
     const runActions = cloneDeep(menuItem.data.actions || [])
+    const customActions = await getChromeExtensionDBStorageButtonContextMenu(
+      'textSelectPopupButton',
+    )
+    console.log(
+      'handleContextMenuClick: ',
+      menuItem.data.actions,
+      customActions,
+    )
+    if (
+      menuItem.data.actions?.some((action) =>
+        customActions.some(
+          (customAction) => customAction.id === action.parameters.template,
+        ),
+      )
+    ) {
+      runActions.unshift({
+        type: 'SET_VARIABLE',
+        parameters: {
+          Variable: {
+            key: 'VariableModalKey',
+            value: 'SidebarRewrite',
+            overwrite: true,
+          },
+        },
+      })
+    }
 
     if (runActions.length > 0) {
       checkAttachments()
@@ -199,7 +215,6 @@ const SidebarContextMenu: FC = () => {
       },
     }
   }, [])
-  const boxRef = useRef<HTMLDivElement>(null)
 
   const root = useMemo(() => getMaxAISidebarRootElement() || document.body, [])
 
@@ -319,137 +334,154 @@ const SidebarContextMenu: FC = () => {
               />
             </Box>
           </Box>
-          <Stack direction={'row'} alignItems={'end'} gap={1}>
-            <Stack
-              direction={'row'}
-              width={0}
-              flex={1}
-              alignItems={'center'}
-              spacing={1}
-              justifyContent={'left'}
-            >
-              <AutoHeightTextarea
-                minLine={1}
-                InputId={MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID}
-                stopPropagation
-                autoFocus
-                onKeydownCapture={(event) => {
-                  if (
-                    event.key === 'ArrowUp' ||
-                    event.key === 'ArrowDown' ||
-                    event.key === 'ArrowLeft' ||
-                    event.key === 'ArrowRight'
-                  ) {
-                    matcher.onNavigate(event.key.slice(5) as any)
-                    event.preventDefault()
-                    event.stopPropagation()
-                    return true
-                  } else if (
-                    event.shiftKey &&
-                    event.key.toLowerCase() === 'tab'
-                  ) {
-                    textareaRef.current?.focus()
-                    event.preventDefault()
-                    event.stopPropagation()
-                  }
-                  return false
-                }}
-                onChange={(value) => {
-                  setInputValue(value)
-                }}
-                expandNode={
-                  <ChatIconFileUpload
-                    TooltipProps={{
-                      placement: 'bottom',
-                      floatingMenuTooltip: false,
-                    }}
-                    direction={'column'}
-                    size={'tiny'}
-                    onFilesChange={() => {
-                      setTimeout(() => {
-                        if (!referenceElementRef.current) return
 
-                        referenceElementRef.current.style.marginLeft =
-                          referenceElementRef.current.style.marginLeft
-                            ? ''
-                            : '1px'
-                      }, 100)
-                    }}
-                  />
-                }
-                placeholder={t('client:floating_menu__input__placeholder')}
-                sx={{
-                  border: 'none',
-                  '& > div': {
-                    '& > div': { p: 0 },
-                    '& > textarea': { p: 0 },
-                    '& > .max-ai-user-input__expand': {
-                      '&:has(> div)': {
-                        pr: 1,
+          <ActionSetVariablesModal
+            showCloseButton={false}
+            showDiscardButton={false}
+            onChange={() => {
+              setLoading(true)
+              // setIsSettingCustomVariables(false)
+              // setIsSettingCustomVariables(false)
+              // if (reason === 'runPromptStart') {
+              //   setIsInputCustomVariables(true)
+              // } else if (reason === 'runPromptEnd') {
+              //   setIsInputCustomVariables(false)
+              // }
+            }}
+            onShow={() => {
+              setIsSettingCustomVariables(true)
+            }}
+            modelKey={'SidebarRewrite'}
+          />
+          {!isSettingCustomVariables && (
+            <Stack direction={'row'} alignItems={'end'} gap={1}>
+              <Stack
+                direction={'row'}
+                width={0}
+                flex={1}
+                alignItems={'center'}
+                spacing={1}
+                justifyContent={'left'}
+              >
+                <AutoHeightTextarea
+                  minLine={1}
+                  InputId={MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID}
+                  stopPropagation
+                  autoFocus
+                  onKeydownCapture={(event) => {
+                    if (
+                      event.key === 'ArrowUp' ||
+                      event.key === 'ArrowDown' ||
+                      event.key === 'ArrowLeft' ||
+                      event.key === 'ArrowRight'
+                    ) {
+                      matcher.onNavigate(event.key.slice(5) as any)
+                      event.preventDefault()
+                      event.stopPropagation()
+                      return true
+                    } else if (
+                      event.shiftKey &&
+                      event.key.toLowerCase() === 'tab'
+                    ) {
+                      textareaRef.current?.focus()
+                      event.preventDefault()
+                      event.stopPropagation()
+                    }
+                    return false
+                  }}
+                  onChange={(value) => {
+                    setInputValue(value)
+                  }}
+                  expandNode={
+                    <ChatIconFileUpload
+                      TooltipProps={{
+                        placement: 'bottom',
+                        floatingMenuTooltip: false,
+                      }}
+                      direction={'column'}
+                      size={'tiny'}
+                      onFilesChange={() => {
+                        setTimeout(() => {
+                          if (!referenceElementRef.current) return
+
+                          referenceElementRef.current.style.marginLeft =
+                            referenceElementRef.current.style.marginLeft
+                              ? ''
+                              : '1px'
+                        }, 100)
+                      }}
+                    />
+                  }
+                  placeholder={t('client:floating_menu__input__placeholder')}
+                  sx={{
+                    border: 'none',
+                    '& > div': {
+                      '& > div': { p: 0 },
+                      '& > textarea': { p: 0 },
+                      '& > .max-ai-user-input__expand': {
+                        '&:has(> div)': {
+                          pr: 1,
+                        },
                       },
                     },
-                  },
-                  borderRadius: 0,
-                  minHeight: '24px',
-                }}
-                onEnter={handleEnter}
-              />
-            </Stack>
-
-            <MaxAIBetaFeatureWrapper betaFeatureName={'voice_input'}>
-              <Box>
-                <SidebarChatVoiceInputButton
-                  sx={actionsBtnColorSxMemo}
-                  onSpeechToText={(text) => {
-                    setInputValue((prev) => prev + text)
+                    borderRadius: 0,
+                    minHeight: '24px',
                   }}
+                  onEnter={handleEnter}
                 />
-              </Box>
-            </MaxAIBetaFeatureWrapper>
+              </Stack>
 
-            <TextOnlyTooltip
-              floatingMenuTooltip={false}
-              title={t('client:floating_menu__button__send_to_ai')}
-              description={'⏎'}
-              placement={'bottom-end'}
-            >
-              <IconButton
-                sx={{
-                  height: '28px',
-                  width: '28px',
-                  borderRadius: '8px',
-                  flexShrink: 0,
-                  alignSelf: 'end',
-                  alignItems: 'center',
-                  p: 0,
-                  m: 0,
-                  cursor: inputValue && content ? 'pointer' : 'default',
-                  bgcolor: (t) =>
-                    inputValue && content
-                      ? 'primary.main'
-                      : t.palette.mode === 'dark'
-                      ? 'rgba(255, 255, 255, 0.2)'
-                      : 'rgb(219,219,217)',
-                }}
-                onClick={handleEnter}
+              <MaxAIBetaFeatureWrapper betaFeatureName={'voice_input'}>
+                <Box>
+                  <SidebarChatVoiceInputButton
+                    sx={actionsBtnColorSxMemo}
+                    onSpeechToText={(text) => {
+                      setInputValue((prev) => prev + text)
+                    }}
+                  />
+                </Box>
+              </MaxAIBetaFeatureWrapper>
+
+              <TextOnlyTooltip
+                floatingMenuTooltip={false}
+                title={t('client:floating_menu__button__send_to_ai')}
+                description={'⏎'}
+                placement={'bottom-end'}
               >
-                <SendIcon sx={{ color: '#fff', fontSize: 16 }} />
-              </IconButton>
-            </TextOnlyTooltip>
-          </Stack>
+                <IconButton
+                  sx={{
+                    height: '28px',
+                    width: '28px',
+                    borderRadius: '8px',
+                    flexShrink: 0,
+                    alignSelf: 'end',
+                    alignItems: 'center',
+                    p: 0,
+                    m: 0,
+                    cursor: inputValue && content ? 'pointer' : 'default',
+                    bgcolor: (t) =>
+                      inputValue && content
+                        ? 'primary.main'
+                        : t.palette.mode === 'dark'
+                        ? 'rgba(255, 255, 255, 0.2)'
+                        : 'rgb(219,219,217)',
+                  }}
+                  onClick={handleEnter}
+                >
+                  <SendIcon sx={{ color: '#fff', fontSize: 16 }} />
+                </IconButton>
+              </TextOnlyTooltip>
+            </Stack>
+          )}
+          {loading && (
+            <>
+              <Typography fontSize={'16px'} color={'primary.main'}>
+                {t('client:floating_menu__input__running_placeholder')}
+              </Typography>
+              <CircularProgress size={'16px'} />
+            </>
+          )}
         </Box>
-        <Box
-          sx={{
-            maxWidth: '768px',
-            width: '100%',
-            padding: '0 10px',
-            boxSizing: 'border-box',
-            height: '1px',
-          }}
-          id='SidebarContextMenu-reference-container'
-          component={'div'}
-          ref={boxRef}
-        ></Box>
         <Box
           sx={{
             maxWidth: '768px',

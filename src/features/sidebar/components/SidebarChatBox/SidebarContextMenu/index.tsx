@@ -5,9 +5,10 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme, useTheme } from '@mui/material/styles'
 import { cloneDeep } from 'lodash-es'
-import React, { FC, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { getChromeExtensionDBStorageButtonContextMenu } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -42,14 +43,33 @@ const SidebarContextMenu: FC = () => {
   contentRef.current = content
   const [inputValue, setInputValue] = useState('')
   const [isContentEmptyError, setIsContentEmptyError] = useState(false)
+  const [userPrompts, setUserPrompts] = useState<IContextMenuItem[]>([])
   const update = useUpdate()
   const matcher = useMemo(() => new TreeNavigatorMatcher(), [])
   matcher.onUpdate = update
 
-  const { contextMenuList: contextWindowList } = useContextMenuList(
+  const { contextMenuList } = useContextMenuList(
     'textSelectPopupButton',
     inputValue,
   )
+
+  /**
+   * 去除用户自定义的prompt
+   */
+  const contextWindowList = useMemo(() => {
+    return contextMenuList.filter(
+      (item) => !userPrompts.some((prompt) => prompt.id === item.id),
+      [],
+    )
+  }, [contextMenuList, userPrompts])
+
+  useEffect(() => {
+    getChromeExtensionDBStorageButtonContextMenu('textSelectPopupButton').then(
+      (res) => {
+        setUserPrompts(res)
+      },
+    )
+  }, [])
 
   const { uploadFilesToMaxAIModel, isContainMaxAIModelUploadFile } =
     useMaxAIModelUploadFile()

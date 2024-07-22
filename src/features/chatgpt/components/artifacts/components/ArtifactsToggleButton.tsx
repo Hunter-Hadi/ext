@@ -28,16 +28,11 @@ const ArtifactsToggleButton: FC<IAIArtifactsProps> = (props) => {
               color={'rgba(255, 255, 255, .87)'}
               fontWeight={500}
             >
-              {'Artifacts'}
+              {t('client:chat__artifacts__feature_button__tooltip__title')}
             </Typography>
-            {/*<Typography fontSize={'16px'} color={'#d9a7ff'} fontWeight={500}>*/}
-            {/*  {'search'}*/}
-            {/*</Typography>*/}
           </Stack>
           <Typography fontSize={'14px'} color={'rgba(255, 255, 255, .87)'}>
-            {t(
-              'client:sidebar__search_with_ai__advanced__copilot__description',
-            )}
+            {t('client:chat__artifacts__feature_button__tooltip__description')}
           </Typography>
         </Stack>
       }
@@ -111,7 +106,7 @@ const ArtifactsToggleButton: FC<IAIArtifactsProps> = (props) => {
           fontSize={'14px'}
           color={checked ? 'primary.main' : 'text.primary'}
         >
-          {'Artifacts'}
+          {t('client:chat__artifacts__feature_button__title')}
         </Typography>
       </Stack>
     </TextOnlyTooltip>

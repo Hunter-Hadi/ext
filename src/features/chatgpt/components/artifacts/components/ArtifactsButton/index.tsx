@@ -278,12 +278,6 @@ const ArtifactsButton: FC<{
           alignItems={'center'}
         >
           <ArtifactsFileIcon artifacts={artifacts} />
-          {/*<ContextMenuIcon*/}
-          {/*  sx={{*/}
-          {/*    fontSize: '20px',*/}
-          {/*  }}*/}
-          {/*  icon={!artifacts.complete ? 'Loading' : 'InsertDriveFile'}*/}
-          {/*/>*/}
         </Stack>
         <Stack width={0} flex={1}>
           <Typography

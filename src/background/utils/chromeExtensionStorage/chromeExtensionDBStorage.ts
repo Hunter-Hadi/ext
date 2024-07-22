@@ -61,7 +61,7 @@ export const defaultChromeExtensionDBStorage =
         },
         features: {
           artifacts: {
-            enabled: true,
+            enabled: false,
             autoOpenPopup: true,
           },
         },

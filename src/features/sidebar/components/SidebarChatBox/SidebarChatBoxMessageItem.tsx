@@ -83,7 +83,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
       }
     }
   }, [onChangeHeight])
-  console.log('SidebarChatBoxMessageItem message', message)
+
   return (
     <Stack
       data-message-id={message.messageId}

@@ -155,14 +155,13 @@ const SidebarAIMessageTools: FC<{
         <SidebarAIMessageAttachmentsDownloadButton message={message} />
       )}
       {messageContentType === 'text' && <SidebarCopyButton message={message} />}
-      {messageContentType === 'text' &&
-        currentSidebarConversationType !== 'ContextMenu' && (
-          <SidebarUsePromptButton
-            iconButton
-            message={message}
-            className={'max-ai__actions__button--use-max-ai'}
-          />
-        )}
+      {messageContentType === 'text' && (
+        <SidebarUsePromptButton
+          iconButton
+          message={message}
+          className={'max-ai__actions__button--use-max-ai'}
+        />
+      )}
       <AIMessageModelSuggestions AIMessage={message} />
 
       {currentSidebarConversationType === 'ContextMenu' &&

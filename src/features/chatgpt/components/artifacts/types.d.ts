@@ -25,6 +25,7 @@ export interface IArtifacts {
   title: string
   content: string
   complete: boolean
+  language?: string
 }
 
 export interface IArtifactsPreviewRef {

@@ -15,6 +15,7 @@ import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload
 import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIModelUploadFile'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID } from '@/features/common/constants'
+import useUpdate from '@/features/common/hooks/useUpdate'
 import { useContextMenuList } from '@/features/contextMenu'
 import {
   contextMenuIsFavoriteContextMenu,
@@ -344,7 +345,7 @@ const SidebarContextMenu: FC = () => {
                     }}
                     direction={'column'}
                     size={'tiny'}
-                    onChange={() => {
+                    onFilesChange={() => {
                       setTimeout(() => {
                         if (!referenceElementRef.current) return
 
@@ -457,14 +458,6 @@ const SidebarContextMenu: FC = () => {
       </Box>
     </>
   )
-}
-
-const useUpdate = () => {
-  const [, update] = useState([])
-
-  return () => {
-    update([])
-  }
 }
 
 export default SidebarContextMenu

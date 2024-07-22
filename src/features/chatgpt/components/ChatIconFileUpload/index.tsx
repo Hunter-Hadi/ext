@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button'
-import React, { FC, useMemo, useRef } from 'react'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -16,11 +16,11 @@ import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFi
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
-  onChange?: () => void
+  onFilesChange?: () => void
 }
 
 const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
-  const { disabled = false, TooltipProps, onChange, ...rest } = props
+  const { disabled = false, TooltipProps, onFilesChange, ...rest } = props
   const { t } = useTranslation(['common', 'client'])
   const {
     files,
@@ -63,12 +63,18 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       const newUploadFiles = await formatClientUploadFiles(canUploadFiles)
       await aiProviderUploadFiles(newUploadFiles)
     }
-    onChange?.()
     // clear input
     if (inputRef.current) {
       inputRef.current.value = ''
     }
   }
+
+  useEffect(() => {
+    if (files.length !== 0) {
+      onFilesChange?.()
+    }
+  }, [files])
+
   if (
     !AIProviderConfig ||
     conversationStatus !== 'success' ||
@@ -82,13 +88,14 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     // )
     return <></>
   }
+
   return (
     <ChatIconFileList
       files={files}
       loadingTooltipTitle={aiProviderUploadingTooltip}
       onRemove={async (file) => {
         await aiProviderRemoveFiles([file])
-        onChange?.()
+        onFilesChange?.()
       }}
       TooltipProps={TooltipProps}
       {...rest}

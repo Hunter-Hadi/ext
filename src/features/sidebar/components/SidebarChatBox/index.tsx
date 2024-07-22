@@ -152,21 +152,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   // }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
-    // console.log('isShowChatBoxHomeView', messagesLoadingStep)
-    // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
-    // 具体问题是因为，在第一次切换 conversationId 时，会有一个瞬间
-    // isLoadingChatMessages 和 isFetchNextPage 等于 false，并且 messages.length 等于 0
-    // messages[0].conversationId === conversationId
-
-    // console.log(
-    //   'isShowChatBoxHomeView',
-    //   isLoadingChatMessages,
-    //   isFetchNextPage,
-    //   messages,
-    // )
-    // if (messagesLoadingStep <= 2) {
-    //   return false
-    // }
+    if (conversationType === 'ContextMenu' && messages.length === 0) {
+      return true
+    }
     if (loading || switching) {
       return false
     }
@@ -374,7 +362,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 }}
                 onClose={() => setIsSettingVariables(false)}
                 onShow={() => setIsSettingVariables(true)}
-                modelKey={'Sidebar'}
+                modelKey='Sidebar'
               />
               <AutoHeightTextarea
                 placeholder={textareaPlaceholder}

@@ -26,7 +26,8 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
   isShowChatBoxHomeView,
 }) => {
   const { t } = useTranslation(['client'])
-  const { currentSidebarConversationType } = useSidebarSettings()
+  const { currentSidebarConversationType, currentSidebarConversationId } =
+    useSidebarSettings()
   const homeViewRef = useRef<HTMLDivElement | null>(null)
   const isInMaxAIImmersiveChat = isMaxAIImmersiveChatPage()
 
@@ -108,7 +109,10 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
               {t('client:home_view__rewrite__description')}
             </Typography>
           </Stack>
-          {isShowChatBoxHomeView && <SidebarContextMenu />}
+          {isShowChatBoxHomeView && (
+            // 每次消失直接销毁组件了
+            <SidebarContextMenu key={currentSidebarConversationId} />
+          )}
         </Stack>
       )}
 

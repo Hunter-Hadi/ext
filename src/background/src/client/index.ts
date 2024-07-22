@@ -428,7 +428,6 @@ export const ClientMessageInit = () => {
           break
         case 'Client_getUserFeatureQuotaInfo':
           {
-            console.log(1111)
             const featureQuotaInfo =
               await getMaxAIChromeExtensionUserFeatureQuota(data.forceUpdate)
             return {

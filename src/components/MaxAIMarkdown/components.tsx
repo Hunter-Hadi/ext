@@ -2,12 +2,12 @@ import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useMemo, useRef } from 'react'
+import Highlight from 'react-highlight'
 import { Components } from 'react-markdown/lib/ast-to-react'
 import reactNodeToString from 'react-node-to-string'
 import Browser from 'webextension-polyfill'
 
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIMarkdownAnchor from '@/components/MaxAIMarkdown/MaxAIMarkdownAnchor'
@@ -50,14 +50,21 @@ const OverrideHeading: FC<HTMLHeadingElement & { heading: IHeadingType }> = (
   )
 }
 
+const MemoHighlight: FC<{ content: string; lang: string }> = (props) => {
+  const { content, lang } = props
+  const rerenderCountRef = useRef(0)
+  return useMemo(() => {
+    rerenderCountRef.current = rerenderCountRef.current + 1
+    console.log(`MemoHighlight`, rerenderCountRef.current, content, lang)
+    return <Highlight className={lang}>{content}</Highlight>
+  }, [content, lang])
+}
+
 const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
   props,
 ) => {
   const { children, className } = props
-  const code = useMemo(
-    () => reactNodeToString(props.children),
-    [props.children],
-  )
+  const code = useMemo(() => reactNodeToString(props.children), [children])
   const lang = props.className?.match(/language-(\w+)/)?.[1] || 'code'
   return (
     <Stack
@@ -93,11 +100,8 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
           <span style={{ marginLeft: '4px', fontSize: '12px' }}>Copy code</span>
         </CopyTooltipIconButton>
       </Stack>
-      <Box fontSize={14} bgcolor='#000' color={'#fff'}>
-        <AppSuspenseLoadingLayout>
-          {children}
-          {/*<Highlight className={lang + ' ' + className}>{children}</Highlight>*/}
-        </AppSuspenseLoadingLayout>
+      <Box fontSize={14} bgcolor='#000' color={'#fff'} className={className}>
+        <MemoHighlight lang={lang} content={code} />
       </Box>
     </Stack>
   )

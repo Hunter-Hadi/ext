@@ -579,7 +579,7 @@
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Due to high traffic, please try again later, or upgrade now to enjoy stable access to all premium AI models.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgrade to create AI art and images",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "10x your creativity and productivity with the most advanced AI art models. Rapidly turn your visions into stunning images. Simple, powerful, transformative.",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "Monthly image query limit exceeded. Upgrade now for unlimited queries, or check back next month when the monthly queries are reset.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "10x your creativity and productivity with the most advanced AI art models. Rapidly turn your visions into stunning images. Simple, powerful, transformative.",
     "permission__pricing_hook__premium_features": "All premium features",
     "permission__pricing_hook__3rd_party_usage__title": "Upgrade for unlimited queries",
     "permission__pricing_hook__3rd_party_usage__description": "Free daily query limit exceeded. Upgrade now for unlimited queries, or check back tomorrow when the daily free queries are reset.",

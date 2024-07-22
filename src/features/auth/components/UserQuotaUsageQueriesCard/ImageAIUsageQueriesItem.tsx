@@ -85,26 +85,6 @@ const ImageAIUsageQueriesItem: FC<IImageAIUsageQueriesItemProps> = ({
                 {isUnlimited ? t('common:unlimited') : 0}
                 {/* {isUnlimited ? t('common:unlimited') : numberWithCommas(usage, 0)} */}
               </Typography>
-
-              {isUnlimited ? (
-                <TextOnlyTooltip
-                  arrow
-                  placement='bottom'
-                  title={t(
-                    'quota_usage_card:image_generate__secondary__content__tooltip',
-                  )}
-                >
-                  <Stack
-                    alignItems={'center'}
-                    justifyContent='center'
-                    borderRadius={'50%'}
-                    width={20}
-                    height={24}
-                  >
-                    <TooltipIcon />
-                  </Stack>
-                </TextOnlyTooltip>
-              ) : null}
             </Stack>
           }
           secondary={
@@ -121,6 +101,25 @@ const ImageAIUsageQueriesItem: FC<IImageAIUsageQueriesItemProps> = ({
                       QUERIES: numberWithCommas(usage, 0),
                     })}
                   </Typography>
+
+                  <TextOnlyTooltip
+                    arrow
+                    placement='bottom'
+                    title={t(
+                      'quota_usage_card:image_generate__secondary__content__tooltip',
+                    )}
+                  >
+                    <Stack
+                      alignItems={'center'}
+                      justifyContent='center'
+                      borderRadius={'50%'}
+                      color={'text.primary'}
+                      width={20}
+                      height={24}
+                    >
+                      <TooltipIcon />
+                    </Stack>
+                  </TextOnlyTooltip>
                 </Stack>
               ) : null}
               {!isUnlimited ? (

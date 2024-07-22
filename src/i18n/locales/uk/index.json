@@ -871,7 +871,7 @@
     "provider__chatgpt__upload_file_error__total_too_large__text": "آپلوڈ کردہ فائلیں بہت بڑی ہیں۔ براہ کرم ایک AI ماڈل استعمال کریں جس کے پاس زیادہ کنٹیکسٹ ونڈو ہو یا چھوٹی فائلیں اپ لوڈ کریں۔",
     "chat__user_message__contexts__file__preview__tips": "فارمیٹنگ ممکن ہے کہ سورس سے متفق نہ ہو۔",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "آپ کی تخلیقیت اور پیداواری کو سب سے زیادہ ترقی دینے والے AI آرٹ ماڈلز کے ساتھ 10 گنا تیزی سے اپنی تصاویر کو شاندار بنائیں۔ آسان، طاقتور، تحولیہ۔",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "ماہانہ تصویری سوال کی حد سے تجاوز ہوگئی ہے۔ بلا محدود سوالات کے لئے ابھی اپ گریڈ کریں یا اگلے مہینے جب ماہانہ سوالات دوبارہ شروع ہوں تو دیکھیں۔",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "آپ کی تخلیقیت اور پیداوار کو 10 گنا بڑھائیں سب سے ترقی یافتہ AI آرٹ ماڈلز کے ساتھ۔ اپنی تصاویر کو فوراً شاندار تصاویر میں تبدیل کریں۔ آسان، طاقتور، تبدیل کن۔",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__free__description": "OpenAI کا نیا فلیگ شپ ماڈل GPT-4 سطح کی ذہانت فراہم کرتا ہے، جس میں تازہ ترین جوابات، 2 گنا تیزی سے کام کرتا ہے، اور آڈیو، وژن، اور متن پر حقیقی وقت میں تفکر کرسکتا ہے۔",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__paid__description": "ماہانہ ذہین متن کوئری حد سے تجاوز ہوگئی ہے۔ بلا محدود کوئریوں کے لئے اب اپگریڈ کریں، یا ماہانہ کوئریوں کو دوبارہ ری سیٹ ہونے پر دیکھیں۔",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__free__description": "Anthropic کا سب سے ذہین ماڈل، جس کی قابلیت 200k ٹوکن ہے۔ بہت پیچیدہ ٹاسکس، کھلے سوالات، اور نظر نہیں آنے والے مناظر کے ساتھ عمدگی اور انسانی طرح کی سمجھ کے ساتھ مارکیٹ میں بہترین پرفارمنس تجربہ کریں۔",

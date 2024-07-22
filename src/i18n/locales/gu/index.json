@@ -871,7 +871,7 @@
     "provider__chatgpt__upload_file_error__total_too_large__text": "અપલોડ કરેલા ફાઇલો ખૂબ મોટી છે. કૃપા કરીને વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરો અથવા લઘુ ફાઇલો અપલોડ કરો.",
     "chat__user_message__contexts__file__preview__tips": "સ્રોતમાંથી ફોર્મેટિંગ અસંગત હોઈ શકે છે.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "સૌથી અગ્રણી AI આર્ટ મોડેલોનો ઉપયોગ કરીને તમારી રચનાઓ ને સુંદર છબીઓમાં બદલો. સરળ, શક્તિશાળી, પરિવર્તનાત્મક.",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "માસિક છબી પ્રશ્ન મર્યાદા પાર થઈ ગઈ. અમરીકામાં માસિક પ્રશ્નો રીસેટ થાય ત્યારે અમરીકા માટે અમરીકા કરો.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "સૌથી અગ્રણી AI આર્ટ મોડેલ્સ સાથે તમારી રચનાત્મકતા અને ઉત્પાદકતાને 10x વધારો. તમારી વિચારોને તેજીથી આકર્ષક છબીઓમાં રૂપાંતરિત કરો. સરળ, શક્તિશાળી, પરિવર્તનાત્મક.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__free__description": "OpenAIનું નવું મુખ્ય મોડેલ GPT-4 સમાન બુદ્ધિશક્તિ પૂરી કરે છે, જેમાં અપડેટેડ જવાબો હોય છે, 2x ફાસ્ટર હોય છે અને સત્યને આધારે ઓડિયો, વિઝન, અને ટેક્સ્ટ પર કારણે માન્ય થઈ શકે છે.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__paid__description": "માસિક સ્માર્ટ ટેક્સ્ટ પ્રશ્ન મર્યાદા પાર થઈ ગઈ. અમરીકામાં અમરીકા પ્રશ્નો મર્યાદા વધારો અથવા માસિક પ્રશ્નો રીસેટ થાય ત્યારે અપગ્રેડ કરો.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__free__description": "Anthropicનું સૌથી બેહતરીન મોડેલ, 200k-ટોકન ક્ષમતાવાળું. ખૂબ જ જટિલ કાર્યો, ખોલી પ્રોમ્પ્ટ્સ, અને દૃષ્ટિરહિત સ્થિતિઓ પર બધી પ્રદર્શનશીલતા અને માનવજૈસી સમજ સાથે અનુભવો.",

@@ -1,12 +1,15 @@
 import { atom } from 'recoil'
 
-import { IArtifacts } from '../types'
+import {
+  ArtifactsType,
+  IArtifacts,
+} from '@/features/chatgpt/components/artifacts'
 
 export const ArtifactsState = atom<IArtifacts>({
   key: 'ArtifactsState',
   default: {
     identifier: '',
-    type: '',
+    type: ArtifactsType.TEXT,
     title: '',
     content: '',
     complete: false,

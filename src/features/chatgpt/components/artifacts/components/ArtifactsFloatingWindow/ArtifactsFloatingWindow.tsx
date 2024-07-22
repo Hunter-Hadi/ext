@@ -36,14 +36,10 @@ const ArtifactsFloatingWindow: FC<IArtifactsFloatingWindowProps> = (props) => {
     if (!reference.current) {
       return
     }
-    const referenceResizeListener = throttle(() => {
+    const handleResize = throttle(() => {
       handleComputeContainerWidth()
     }, 0)
-    const handleResize = () =>
-      throttle(() => {
-        handleComputeContainerWidth()
-      }, 0)
-    const resizeObserver = new ResizeObserver(referenceResizeListener)
+    const resizeObserver = new ResizeObserver(handleResize)
     resizeObserver.observe(reference.current)
     window.addEventListener('resize', handleResize)
     return () => {

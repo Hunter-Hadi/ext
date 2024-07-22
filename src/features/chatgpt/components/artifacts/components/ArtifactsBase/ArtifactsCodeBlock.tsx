@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
 import Highlight from 'react-highlight'
 
 import { IArtifacts } from '@/features/chatgpt/components/artifacts'
@@ -12,15 +12,8 @@ export interface IArtifactsCodeBlockProps {
 }
 
 const ArtifactsCodeBlock: FC<IArtifactsCodeBlockProps> = (props) => {
+  const boxRef = useRef<HTMLDivElement | null>(null)
   const { artifacts, className, sx } = props
-  const memoizedCode = React.useMemo(() => {
-    const lang = 'html'
-    const content = artifacts.content
-    return {
-      lang,
-      content,
-    }
-  }, [artifacts])
   const memoSx = useMemo(() => {
     return {
       bgcolor: '#282c34',
@@ -28,7 +21,7 @@ const ArtifactsCodeBlock: FC<IArtifactsCodeBlockProps> = (props) => {
       overflowY: 'auto',
       color: '#fff',
       textAlign: 'left',
-      userSelect: 'auto',
+      userSelect: 'text!important',
       '& > pre': {
         margin: 0,
         whiteSpace: 'pre-wrap',
@@ -37,12 +30,34 @@ const ArtifactsCodeBlock: FC<IArtifactsCodeBlockProps> = (props) => {
       ...sx,
     } as SxProps
   }, [sx])
+  useEffect(() => {
+    setTimeout(() => {
+      if (boxRef.current) {
+        boxRef.current.scrollTop = boxRef.current.scrollHeight
+      }
+    }, 0)
+  }, [artifacts.content])
   return (
-    <Stack className={'chat-message--text'} sx={memoSx}>
-      <Highlight className={`${memoizedCode.lang} ${className || ''}`}>
-        {memoizedCode.content}
-      </Highlight>
+    <Stack
+      component={'div'}
+      ref={boxRef}
+      className={'chat-message--text ' + className}
+      sx={memoSx}
+    >
+      <MemoHighlight
+        lang={artifacts.language || ''}
+        content={artifacts.content}
+      />
     </Stack>
   )
+}
+const MemoHighlight: FC<{ content: string; lang: string }> = (props) => {
+  const { content, lang } = props
+  const rerenderCountRef = useRef(0)
+  return useMemo(() => {
+    rerenderCountRef.current = rerenderCountRef.current + 1
+    console.log(`MemoHighlight`, rerenderCountRef.current, content, lang)
+    return <Highlight className={lang}>{content}</Highlight>
+  }, [content, lang])
 }
 export default ArtifactsCodeBlock

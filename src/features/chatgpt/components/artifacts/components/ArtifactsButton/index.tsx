@@ -2,6 +2,7 @@ import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined'
 import CodeOffOutlinedIcon from '@mui/icons-material/CodeOffOutlined'
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
 import { SvgIcon } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo } from 'react'
@@ -19,10 +20,25 @@ const ArtifactsFileIcon: FC<{
   const { artifacts } = props
   const RenderIcon = useMemo(() => {
     const artifactsType = artifacts.type
+    if (!artifacts.complete) {
+      return (
+        <CircularProgress
+          size={16}
+          sx={{
+            fontSize: '20px',
+            color: '#fff',
+            position: 'absolute',
+            bottom: '8px',
+            left: '12px',
+            zIndex: 2,
+          }}
+        />
+      )
+    }
     switch (artifactsType) {
       case ArtifactsType.SVG:
         return (
-          <ArticleOutlinedIcon
+          <SvgIcon
             sx={{
               fontSize: '20px',
               color: '#fff',
@@ -31,7 +47,34 @@ const ArtifactsFileIcon: FC<{
               left: '10px',
               zIndex: 2,
             }}
-          />
+          >
+            <svg
+              width='24'
+              height='24'
+              viewBox='0 0 24 24'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                fillRule='evenodd'
+                clipRule='evenodd'
+                d='M9.93421 7.967C9.93421 5.31313 12.0856 3.16174 14.7395 3.16174C17.3933 3.16174 19.5447 5.31313 19.5447 7.967C19.5447 10.6209 17.3933 12.7723 14.7395 12.7723C12.0856 12.7723 9.93421 10.6209 9.93421 7.967ZM14.7395 5.07314C13.1412 5.07314 11.8456 6.36876 11.8456 7.967C11.8456 9.56524 13.1412 10.8609 14.7395 10.8609C16.3377 10.8609 17.6333 9.56524 17.6333 7.967C17.6333 6.36876 16.3377 5.07314 14.7395 5.07314Z'
+                fill='currentColor'
+              />
+              <path
+                fillRule='evenodd'
+                clipRule='evenodd'
+                d='M5.35907 7.18053C5.67707 6.21894 7.03728 6.21893 7.35528 7.18053L10.6604 17.1748C10.8854 17.855 10.3788 18.5561 9.66228 18.5561H3.05206C2.33555 18.5561 1.82899 17.855 2.05396 17.1748L5.35907 7.18053ZM6.35717 10.2501L4.24245 16.6447H8.4719L6.35717 10.2501Z'
+                fill='currentColor'
+              />
+              <path
+                fillRule='evenodd'
+                clipRule='evenodd'
+                d='M12.9094 13.8565C12.3288 13.8565 11.8581 14.3272 11.8581 14.9078V19.787C11.8581 20.3676 12.3288 20.8383 12.9094 20.8383H20.9487C21.5293 20.8383 22 20.3676 22 19.787V14.9078C22 14.3272 21.5293 13.8565 20.9487 13.8565H12.9094ZM13.7695 18.9269V15.7679H20.0886V18.9269H13.7695Z'
+                fill='currentColor'
+              />
+            </svg>
+          </SvgIcon>
         )
       case ArtifactsType.HTML:
         return (
@@ -93,7 +136,7 @@ const ArtifactsFileIcon: FC<{
           </Typography>
         )
     }
-  }, [artifacts.type])
+  }, [artifacts.type, artifacts.complete])
   return (
     <Stack
       sx={{
@@ -142,7 +185,6 @@ const ArtifactsButton: FC<{
   const { artifacts } = props
   const { t } = useTranslation(['client'])
   const { updateArtifacts, showArtifacts, isOpen } = useArtifacts()
-
   const handleClick = () => {
     updateArtifacts(artifacts)
     showArtifacts(artifacts.complete ? 'preview' : 'code')
@@ -183,9 +225,10 @@ const ArtifactsButton: FC<{
         isAutoOpenRef.current = false
       }
     }
-  }, [artifacts.complete, artifacts.content])
+  }, [artifacts.complete])
   return (
     <Stack
+      component={'div'}
       sx={{
         width: '280px',
         padding: '10px',

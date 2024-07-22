@@ -7,6 +7,7 @@ import React, { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useArtifacts } from '@/features/chatgpt/components/artifacts'
 import ArtifactsCodeBlock from '@/features/chatgpt/components/artifacts/components/ArtifactsBase/ArtifactsCodeBlock'
@@ -25,8 +26,8 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
     mode,
     setMode,
     hideArtifacts,
-    isAbleToReload,
     reloadArtifactsPreview,
+    downloadArtifacts,
   } = useArtifacts()
   const renderRef = useRef<HTMLDivElement | null>(null)
   const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
@@ -154,18 +155,16 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
             title={t(
               'client:chat__artifacts__preview__tools__download_button__title',
             )}
-            onClick={() => {}}
+            onClick={downloadArtifacts}
           >
             <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'FileDownload'} />
           </TooltipIconButton>
-          <TooltipIconButton
+          <CopyTooltipIconButton
+            copyText={artifacts.content}
             title={t(
               'client:chat__artifacts__preview__tools__copy_button__title',
             )}
-            onClick={() => {}}
-          >
-            <ContextMenuIcon sx={{ fontSize: '20px' }} icon={'Copy'} />
-          </TooltipIconButton>
+          />
           <TooltipIconButton
             title={t(
               'client:chat__artifacts__preview__tools__close_button__title',

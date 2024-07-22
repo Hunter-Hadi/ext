@@ -3,7 +3,10 @@ import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
+import {
+  MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+  MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import { PAYWALL_MODAL_VARIANT } from '@/features/abTester/constants'
 import { getChromeExtensionUserABTest } from '@/features/abTester/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
@@ -36,7 +39,7 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
 } = {
   Chat: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
     maxTokens: 16384,
   },
   Summary: {
@@ -46,7 +49,7 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
   },
   Search: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
     maxTokens: 16384,
   },
   Art: {
@@ -56,19 +59,19 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
   },
   Memo: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
     maxTokens: 4096,
     hidden: true,
   },
   FAQ: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
     maxTokens: 16384,
     hidden: true,
   },
   ContextMenu: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
     maxTokens: 16384,
     hidden: true,
   },

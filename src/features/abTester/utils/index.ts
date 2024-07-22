@@ -2,6 +2,7 @@ import Browser from 'webextension-polyfill'
 
 import {
   CHROME_EXTENSION_USER_ABTEST_SAVE_KEY,
+  PAYWALL_MODAL_VARIANT,
   PAYWALL_VARIANT,
 } from '@/features/abTester/constants'
 import { IUserABTestInfo } from '@/features/abTester/types'
@@ -70,6 +71,8 @@ export const getChromeExtensionUserABTest = async (
     await saveChromeExtensionUserABTest(userId, abTestInfo)
   }
 
+  // 全部以paywall modal展示
+  abTestInfo.paywallVariant = PAYWALL_MODAL_VARIANT
   return abTestInfo
 }
 

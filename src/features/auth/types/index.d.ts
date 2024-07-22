@@ -54,7 +54,8 @@ export type IUseChatGPTUserInfo = {
   client_user_id?: string | null
   user_id?: string | null
   user_status?: {
-    register_version: string
+    register_version?: string
+    price_version?: string
   }
 }
 

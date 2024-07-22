@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import {
   MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4O,
+  MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -41,6 +42,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           [
             MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
             MAXAI_CHATGPT_MODEL_GPT_4O,
+            MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
             'claude-3-5-sonnet',
             'claude-3-sonnet',
             'claude-3-opus',
@@ -57,6 +59,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         [
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
           MAXAI_CHATGPT_MODEL_GPT_4O,
+          MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
           'claude-3-5-sonnet',
           'claude-3-sonnet',
           'claude-3-opus',
@@ -122,6 +125,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           ![
             MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
             MAXAI_CHATGPT_MODEL_GPT_4O,
+            MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
             'claude-3-sonnet',
             'claude-3-opus',
             'claude-3-haiku',
@@ -160,7 +164,8 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     if (
       currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
       (currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO ||
-        currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4O)
+        currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4O ||
+        currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4O_MINI)
     ) {
       return true
     }

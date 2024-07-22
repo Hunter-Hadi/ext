@@ -1,10 +1,6 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import {
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
@@ -174,6 +170,7 @@ const useInitContextWindow = () => {
     conversationStatus,
     currentConversationIdRef,
     clientWritingMessage,
+    updateClientConversationLoading,
     pushPricingHookMessage,
   } = useClientConversation()
   const {
@@ -526,6 +523,7 @@ const useInitContextWindow = () => {
           if (!historyMessages.length) {
             checkFeatureQuota('context_menu').then((status) => {
               if (!status) {
+                updateClientConversationLoading(false)
                 pushPricingHookMessage('CONTEXT_MENU')
                 authEmitPricingHooksLog('show', 'CONTEXT_MENU', {
                   conversationId: currentConversationId,

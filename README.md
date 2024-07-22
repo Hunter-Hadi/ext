@@ -96,5 +96,8 @@ pnpm run release
 ## 注意事项
 
 1. 需要添加插件新的权限时要确认该权限是否是敏感权限
+   > 如果为敏感权限需要调研有无其他可替代的方案
    > https://developer.chrome.com/docs/extensions/reference/permissions-list
-2. 如果为敏感权限需要调研有无其他可替代的方案
+2. 确保每次content_scripts运行脚本运行时不要频繁请求maxai api
+   > 如需必要，可以缓存某些接口数据，设置一个缓存时间。
+   > 避免安装插件的用户每次打开新的tab请求maxai api造成服务端压力

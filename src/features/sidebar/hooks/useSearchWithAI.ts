@@ -100,27 +100,6 @@ const useSearchWithAI = () => {
           updateClientConversationLoading(false)
           return
         }
-        // // 判断lifetimes free trial是否已经用完
-        // const searchLifetimesQuota =
-        //   Number(
-        //     (await getChromeExtensionOnBoardingData())
-        //       .ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES,
-        //   ) || 0
-        // if (userInfo?.role?.name === 'free_trial' && searchLifetimesQuota > 0) {
-        //   // 如果没有用完，那么就减一
-        //   await setChromeExtensionOnBoardingData(
-        //     'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES',
-        //     searchLifetimesQuota - 1,
-        //   )
-        // } else {
-        //   await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
-        //   authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI', {
-        //     conversationId: currentConversationId,
-        //     paywallType: 'RESPONSE',
-        //   })
-        //   updateClientConversationLoading(false)
-        //   return
-        // }
       }
       const { messageId, actions } = await generateSearchWithAIActions(
         query,

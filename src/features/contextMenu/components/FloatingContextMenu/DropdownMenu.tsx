@@ -25,7 +25,6 @@ import {
   useListNavigation,
   useMergeRefs,
   useRole,
-  useTypeahead,
 } from '@floating-ui/react'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
@@ -421,11 +420,11 @@ export const MenuComponent = React.forwardRef<
     const lastParentDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
     const lastHoverDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
     const listItemsRef = React.useRef<Array<any | null>>([])
-    const listContentRef = React.useRef(
-      React.Children.map(children, (child) =>
-        React.isValidElement(child) ? child.props.label : null,
-      ) as Array<string | null>,
-    )
+    // const listContentRef = React.useRef(
+    //   React.Children.map(children, (child) =>
+    //     React.isValidElement(child) ? child.props.label : null,
+    //   ) as Array<string | null>,
+    // )
     const currentPlacement =
       defaultPlacement || (isFirstDeep ? 'bottom-start' : 'right-start')
     const currentFallbackPlacements =
@@ -450,7 +449,7 @@ export const MenuComponent = React.forwardRef<
     useEffect(() => {
       floatingDropdownMenuOpenRef.current = floatingDropdownMenu.open
     }, [floatingDropdownMenu.open])
-    const { x, y, strategy, refs, context } = useFloating<any>({
+    const { x, y, strategy, refs, context } = useFloating({
       nodeId,
       open: isOpen,
       onOpenChange: (show) => {
@@ -672,12 +671,14 @@ export const MenuComponent = React.forwardRef<
       loop: true,
       virtual: true,
     })
-    const typeahead = useTypeahead(context, {
-      enabled: isOpen,
-      listRef: listContentRef,
-      onMatch: isOpen ? setActiveIndex : undefined,
-      activeIndex,
-    })
+    // NOTE: 不使用typeahead的原因是因为typeahead会拦截root节点的onKeyDown，
+    // 而且在有fuzzy match之后typeahead并没有起到实际的作用
+    // const typeahead = useTypeahead(context, {
+    //   enabled: isOpen,
+    //   listRef: listContentRef,
+    //   onMatch: isOpen ? setActiveIndex : undefined,
+    //   activeIndex,
+    // })
     const { getReferenceProps, getFloatingProps, getItemProps } =
       useInteractions([
         hover,
@@ -690,7 +691,7 @@ export const MenuComponent = React.forwardRef<
          * 目前先更改AutoHeightTextarea组件的onKeyDown，MenuList是隐藏状态下就禁止方向键的冒泡
          */
         listNavigation,
-        typeahead,
+        // typeahead,
       ])
     // Event emitter allows you to communicate across tree components.
     // This effect closes all menus when an item gets clicked anywhere
@@ -832,6 +833,10 @@ export const MenuComponent = React.forwardRef<
                 onClickReferenceElement?.(event)
               },
               onKeyDownCapture(event) {
+                // NOTE: 这里是为了区分不让keydown去拦截input的event，
+                // 只拦截textarea的事件以免和LanguageSelector的autocomplete冲突
+                if (!(event.target instanceof HTMLTextAreaElement)) return false
+
                 // 如果是enter非shiftKey并且是根节点
                 if (event.key === 'Enter' && !event.shiftKey && !parentId) {
                   handleExecuteActions()
@@ -1070,7 +1075,7 @@ export const MenuComponent = React.forwardRef<
                         ref(node: any) {
                           listItemsRef.current[index] = node
                         },
-                        onMouseDown(event) {
+                        onMouseDown() {
                           if (onClickContextMenu) {
                             tree?.events.emit('click')
                             if (

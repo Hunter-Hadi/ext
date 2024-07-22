@@ -483,9 +483,10 @@ const FloatingContextMenu: FC<{
           referenceElementOpen={floatingDropdownMenu.open}
           referenceElementRef={referenceElementRef}
           referenceElement={
-            <div
+            <Box
               ref={referenceElementRef}
-              style={{
+              component='div'
+              sx={{
                 boxSizing: 'border-box',
                 border: '1px solid',
                 borderColor: palette.customColor.borderColor,
@@ -741,7 +742,7 @@ const FloatingContextMenu: FC<{
                   </Stack>
                 </Stack>
               )}
-            </div>
+            </Box>
           }
           root={root}
         />

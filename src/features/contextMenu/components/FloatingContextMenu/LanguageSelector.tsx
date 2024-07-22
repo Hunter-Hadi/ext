@@ -65,13 +65,6 @@ const LanguageSelector: FC<{
         : getMaxAIFloatingContextMenuRootElement()) || document.body,
     [inSidebar],
   )
-  // const handleClose = (event: Event | SyntheticEvent) => {
-  //   if (event.target && anchorEl?.contains(event.target as HTMLElement)) {
-  //     return
-  //   }
-  //   setOpen(false)
-  //   setPopperOpen(false)
-  // }
 
   const boxRef = useRef<HTMLDivElement>(null)
 
@@ -84,12 +77,6 @@ const LanguageSelector: FC<{
     setCurrentLanguage(newValue)
     onChangeLanguage?.(newValue.value)
   }
-
-  const [popperOpen, setPopperOpen] = useState(false)
-
-  useEffect(() => {
-    setPopperOpen(true)
-  }, [open])
 
   return (
     <Box>
@@ -183,26 +170,11 @@ const LanguageSelector: FC<{
               open
               onClose={() => {
                 setOpen(false)
-                setPopperOpen(false)
               }}
               noOptionsText={t('common:no_options')}
               disableClearable
               value={currentLanguage}
               size={'small'}
-              onKeyDownCapture={(event) => {
-                if (
-                  [
-                    'ArrowUp',
-                    'ArrowDown',
-                    'ArrowLeft',
-                    'ArrowRight',
-                    'Enter',
-                  ].includes(event.key)
-                ) {
-                  console.log('stopPropagation')
-                  event.stopPropagation()
-                }
-              }}
               sx={{
                 width: 160,
                 [`.${inputLabelClasses.root}`]: {
@@ -221,7 +193,6 @@ const LanguageSelector: FC<{
               }}
               slotProps={{
                 popper: {
-                  open: popperOpen,
                   disablePortal: true,
                 },
                 paper: {
@@ -238,9 +209,6 @@ const LanguageSelector: FC<{
               options={LANGUAGES_OPTIONS}
               onChange={(_, newValue) => {
                 handleChange(newValue)
-              }}
-              onKeyDown={(event) => {
-                event.stopPropagation()
               }}
               filterOptions={filterOptions}
               renderInput={(params) => (

@@ -1,11 +1,20 @@
+import { FilterNone } from '@mui/icons-material'
+import { Divider } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilCallback, useRecoilState } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
+import {
+  ContextMenuConversationState,
+  ContextMenuPinedToSidebarState,
+  FloatingDropdownMenuState,
+} from '@/features/contextMenu/store'
+import { PinToSidebarState } from '@/features/contextMenu/store'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
@@ -17,12 +26,51 @@ const SidebarAIMessageTools: FC<{
   message: IAIResponseMessage
 }> = (props) => {
   const { message } = props
-  const { currentSidebarConversationType } = useClientConversation()
+  const { currentSidebarConversationType, currentConversationId } =
+    useClientConversation()
+  const [contextMenuPinedToSidebar, setContextMenuPinedToSidebar] =
+    useRecoilState(ContextMenuPinedToSidebarState)
+  const [pinToSidebar, setPinToSidebar] = useRecoilState(PinToSidebarState)
+
   const { t } = useTranslation(['common'])
   const [isCoping, setIsCoping] = useState(false)
+
   const messageContentType =
     message.originalMessage?.content?.contentType || 'text'
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
+
+  const handleContinueInContextMenu = useRecoilCallback(
+    ({ snapshot, set }) => {
+      return async () => {
+        const floatingDropdownMenu = await snapshot.getPromise(
+          FloatingDropdownMenuState,
+        )
+
+        // 还存在选区的情况下设置conversationId
+        if (
+          !floatingDropdownMenu.open &&
+          floatingDropdownMenu.rootRect &&
+          currentConversationId
+        ) {
+          set(ContextMenuConversationState, (prev) => ({
+            ...prev,
+            conversationId: currentConversationId,
+          }))
+
+          set(FloatingDropdownMenuState, (prev) => ({ ...prev, open: true }))
+        }
+
+        setContextMenuPinedToSidebar(false)
+
+        setPinToSidebar({
+          always: false,
+          once: false,
+        })
+      }
+    },
+    [currentConversationId],
+  )
+
   return (
     <Stack
       direction={'row'}
@@ -116,6 +164,24 @@ const SidebarAIMessageTools: FC<{
           />
         )}
       <AIMessageModelSuggestions AIMessage={message} />
+
+      {currentSidebarConversationType === 'ContextMenu' &&
+        pinToSidebar.always &&
+        contextMenuPinedToSidebar && (
+          <>
+            <Divider orientation='vertical'></Divider>
+            <TooltipIconButton
+              title={t('common:continue_in_contextmenu')}
+              onClick={handleContinueInContextMenu}
+            >
+              <FilterNone
+                sx={{
+                  fontSize: '20px',
+                }}
+              ></FilterNone>
+            </TooltipIconButton>
+          </>
+        )}
     </Stack>
   )
 }

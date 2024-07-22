@@ -196,6 +196,11 @@ export const getChromeExtensionLocalStorage =
       return defaultConfig
     }
   }
+
+/**
+ * 当传入函数时候会强制覆盖写入
+ * 当传入对象时候会进行mergeWithObject[new, old]后写入
+ */
 export const setChromeExtensionLocalStorage = async (
   settingsOrUpdateFunction:
     | IChromeExtensionLocalStorage

@@ -67,7 +67,8 @@
     "terms_of_service": "সেবা প্রদানের শর্তাবলী",
     "shortcut": "শর্টকাট",
     "yearly": "বার্ষিক",
-    "monthly": "মাসিক"
+    "monthly": "মাসিক",
+    "continue_in_contextmenu": "সবসময় কনটেক্সট মেনুতে চালিয়ে যান"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -1012,15 +1013,25 @@
     "pricing__upgrade__popper_card__item4__title": "আপনার টাকার জন্য সেরা মান",
     "permission__pricing_hook__context_menu__title": "সীমাহীন AI পুনর্রচনা আনলক করতে আপগ্রেড করুন",
     "permission__pricing_hook__context_menu__description": "ম্যাক্সএআইর AI পুনর্রচনা দিয়ে, আপনি প্রুফরিডিং এবং ওয়ার্ড পারফেক্ট করার জন্য সময় সংরক্ষণ করতে পারেন ওয়েবের সাথে, ইমেল থেকে সোশ্যাল মিডিয়া এবং অতিরিক্ত।",
-    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini অ্যাক্সেস করুন",
+    "floating_menu__button__show_detail": "বিস্তারিত দেখুন",
+    "floating_menu__textarea__placeholder": "এখানে আপনার পাঠ্য টাইপ করুন অথবা পেস্ট করুন এবং AI এর সাহায্যে উন্নত করতে, প্রুফরিড, অনুবাদ, সারংশ এবং আরও কিছু করুন।",
+    "floating_menu__always_pin_sidebar_title": "সাইডবারে সবসময় পিন করুন",
+    "sidebar__tabs__rewrite__title": "পুনর্লেখা",
+    "sidebar__tabs__rewrite__tooltip": "AI তে পুনর্লেখা",
+    "home_view__rewrite__title": "AI পুনর্লেখক",
+    "home_view__rewrite__description": "প্রুফরিডিং এবং আপনার শব্দগুলি পারফেক্ট করার জন্য সময় সংরক্ষণ করুন।",
+    "context_window__chat_history__continue_in_rewrite__title": "পুনর্লেখায় চালিয়ে যান",
+    "floating_menu__always_pin_to_sidebar": "সর্বদা উত্তর সাইডবারে প্রদর্শন করুন",
+    "floating_menu__pint_once_to_sidebar": "একবারে উত্তর সাইডবারে প্রদর্শন করুন",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini হল OpenAI-র সবচেয়ে উন্নত ছোট স্কেল মডেল, যা বহুমোডাল সুবিধা সরবরাহ করে। এই সংকোচক পাওয়ারহাউস টেক্সট আউটপুট সরবরাহ করে যা GPT-3.5-Turbo-কে ছাড়িয়ে বুদ্ধিমানতা সরবরাহ করে। তুলনামূলক গতিতে ধর্মীয়। ভালো ছোট কাজের জন্য, ভিশন-সম্পর্কিত অ্যাপ্লিকেশনগুলি সহ।",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "সীমাহীন GPT-4o-mini এড়ান",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "অভিজ্ঞতা করুন OpenAI-র সবচেয়ে বুদ্ধিমান ছোট স্কেল মডেল। GPT-4o-mini গ্রাহক GPT-3.5-turbo-র উপর উন্নত কর্মক্ষমতা সরবরাহ করে, বহুমোডাল সুবিধা এবং আলোকবর্ষণের দ্রুত প্রতিক্রিয়া।",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "প্রবেশ পান GPT-4o-mini",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI-র নতুনতম মডেল",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo থেকে অনেক পুরাতন",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-টার্বোর মত দ্রুত",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "টেক্সট এবং দৃশ্য সুবিধা সমর্থন",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "উন্নত বহুভাষিক বোঝাই",
-    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini হল OpenAI-র সবচেয়ে উন্নত ছোট স্কেল মডেল, যা বহুমোডাল সুবিধা সরবরাহ করে। এই সংকোচিত পাওয়ারহাউস GPT-3.5 টার্বোয়ের চেয়ে বুদ্ধিমত্তার টেক্সট আউটপুট প্রদান করে। ছোট কাজের জন্য আদর্শ, ভিশন-সম্পর্কিত অ্যাপ্লিকেশনগুলি সহ।",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "সীমাহীন GPT-4o-mini এড়িয়ে যান",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI-র সবচেয়ে বুদ্ধিমান ছোট স্কেল মডেলটি অভিজ্ঞতা করুন। GPT-4o-mini উচ্চ কর্মক্ষমতা প্রদান করে GPT-3.5-টার্বোর উপর, বহুমোডাল সুবিধা এবং প্রচণ্ড দ্রুত প্রতিক্রিয়া।"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo-র চেয়ে অনেক বুদ্ধিমান",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-Turbo-র মত দ্রুত",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "টেক্সট এবং ভিশন সুবিধা সমর্থন করে",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "উন্নত বহুভাষিক বোঝাই"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

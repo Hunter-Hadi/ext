@@ -67,7 +67,8 @@
     "terms_of_service": "Käyttöehdot",
     "shortcut": "Pikanäppäin",
     "yearly": "Vuotuinen",
-    "monthly": "Kuukausittainen"
+    "monthly": "Kuukausittainen",
+    "continue_in_contextmenu": "Jatka aina kontekstivalikossa"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -1012,15 +1013,25 @@
     "pricing__upgrade__popper_card__item4__title": "Paras arvo rahallesi",
     "permission__pricing_hook__context_menu__title": "Päivitä avataksesi rajattoman tekoälyuudelleenkirjoittajan",
     "permission__pricing_hook__context_menu__description": "MaxAI:n tekoälyuudelleenkirjoittajalla voit säästää aikaa tekstien tarkistamisessa ja hiomisessa verkossa, sähköpostista sosiaaliseen mediaan ja pidemmälle.",
+    "floating_menu__button__show_detail": "Näytä tiedot",
+    "floating_menu__textarea__placeholder": "Kirjoita tai liitä tekstisi tähän ja pyydä tekoälyä parantamaan, oikolukemaan, kääntämään, tiivistämään ja enemmän.",
+    "floating_menu__always_pin_sidebar_title": "Kiinnitä aina sivupalkkiin",
+    "sidebar__tabs__rewrite__title": "Uudelleenkirjoitus",
+    "sidebar__tabs__rewrite__tooltip": "Uudelleenkirjoitus tekoälyllä",
+    "home_view__rewrite__title": "Tekoälyn uudelleenkirjoitus",
+    "home_view__rewrite__description": "Säästä aikaa tekstisi oikolukemisessa ja hiomisessa.",
+    "context_window__chat_history__continue_in_rewrite__title": "Jatka uudelleenkirjoituksessa",
+    "floating_menu__always_pin_to_sidebar": "Näytä vastaukset aina sivupalkissa",
+    "floating_menu__pint_once_to_sidebar": "Näytä vastaus sivupalkissa kerran",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini on OpenAI:n kehittynein pienikokoinen malli, joka tarjoaa multimodaalisia ominaisuuksia. Tämä kompakti voimanpesä tuottaa älykkäitä tekstilähtöjä, jotka ylittävät GPT-3.5-Turbon älykkyyden säilyttäen samalla vertailukelpoisen nopeuden. Ihanteellinen pienempiin tehtäviin, mukaan lukien näköön liittyvät sovellukset.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Päivitä rajattomasti GPT-4o-miniin",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Koe OpenAI:n älykkäin pienikokoinen malli tähän mennessä. GPT-4o-mini tarjoaa paremman suorituskyvyn kuin GPT-3.5-turbo, multimodaaliset ominaisuudet ja salamannopeat vastaukset.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Pääsy GPT-4o-miniin",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI:n uusin malli",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Merkittävästi älykkäämpi kuin GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Yhtä nopea kuin GPT-3.5-Turbo",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Tukee teksti- ja näkökyvyn ominaisuuksia",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parannettu monikielinen ymmärrys",
-    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini on OpenAI:n kehittynein pienikokoinen malli, joka tarjoaa multimodaalisia ominaisuuksia. Tämä kompakti voimanpesä tuottaa älykkäitä tekstilähtöjä, jotka ylittävät GPT-3.5-Turbon älykkyyden säilyttäen vertailukelpoisen nopeuden. Ihanteellinen pienempiin tehtäviin, mukaan lukien näköön liittyvät sovellukset.",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Päivitä rajattomaan GPT-4o-miniin",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Koe OpenAI:n älykkäin pienikokoinen malli tähän mennessä. GPT-4o-mini tarjoaa ylivertaista suorituskykyä verrattuna GPT-3.5-turboon, multimodaalisilla ominaisuuksilla ja salamannopeilla vastauksilla."
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Tukee teksti- ja näköominaisuuksia",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parannettu monikielinen ymmärrys"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

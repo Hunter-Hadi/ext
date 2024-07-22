@@ -67,7 +67,8 @@
     "terms_of_service": "Pakalpojuma noteikumi",
     "shortcut": "Saīsne",
     "yearly": "Katru gadu",
-    "monthly": "Katru mēnesi"
+    "monthly": "Katru mēnesi",
+    "continue_in_contextmenu": "Vienmēr turpiniet konteksta izvēlnē"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "Atbloķēt visas funkcijas",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tikai GPT-4o. Lai atbloķētu visus citus AI modeļus, jauniniet uz MaxAI Elite plānu.",
     "pricing__upgrade__popper_card__item4__title": "Labākā vērtība jūsu naudai",
+    "floating_menu__button__show_detail": "Rādīt detaļas",
+    "floating_menu__textarea__placeholder": "Ierakstiet vai ielīmējiet tekstu šeit un lūdziet AI uzlabot, pārbaudīt, tulko, apkopot un citus darbus.",
+    "floating_menu__always_pin_sidebar_title": "Vienmēr pielīmējiet sānjoslu",
+    "sidebar__tabs__rewrite__title": "Pārrakstīt",
+    "sidebar__tabs__rewrite__tooltip": "Pārrakstīt ar AI",
+    "home_view__rewrite__title": "AI pārrakstītājs",
+    "home_view__rewrite__description": "Ietaupiet laiku, pārbaudot un pilnveidojot savus vārdus.",
+    "context_window__chat_history__continue_in_rewrite__title": "Turpiniet pārrakstīt",
     "permission__pricing_hook__context_menu__title": "Uzlabojiet, lai atbloķētu neierobežotu AI pārrakstītāju",
     "permission__pricing_hook__context_menu__description": "Ar MaxAI AI pārrakstītāju jūs varat ietaupīt laiku, pārbaudot un pilnveidojot savus vārdus visā tīmeklī, no e-pasta līdz sociālajiem tīkliem un tālāk.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Piekļūt GPT-4o-mini",
@@ -1020,7 +1029,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Uzlabota daudzvalodu saprašana",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini ir OpenAI vismodernākais mazā mēroga modelis, kas piedāvā daudzveidīgas iespējas. Šis kompaktais spēkdarbs nodrošina teksta izvades ar inteliģenci, kas pārsniedz GPT-3.5-Turbo, vienlaicīgi saglabājot salīdzināmu ātrumu. Ideāli piemērots mazākiem uzdevumiem, ieskaitot redzes saistītās lietojumprogrammas.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Uzlabojiet, lai iegūtu neierobežotu GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Izpētiet OpenAI visinteliģentāko mazā mēroga modeli līdz šim. GPT-4o-mini piedāvā izcilu veiktspēju salīdzinājumā ar GPT-3.5-turbo, ar daudzveidīgām iespējām un ātrām atbildēm."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Izpētiet OpenAI visinteliģentāko mazā mēroga modeli līdz šim. GPT-4o-mini piedāvā izcilu veiktspēju salīdzinājumā ar GPT-3.5-turbo, ar daudzveidīgām iespējām un ātrām atbildēm.",
+    "floating_menu__always_pin_to_sidebar": "Vienmēr rādīt atbildes sānjoslā",
+    "floating_menu__pint_once_to_sidebar": "Rādīt atbildi sānjoslā vienreiz"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

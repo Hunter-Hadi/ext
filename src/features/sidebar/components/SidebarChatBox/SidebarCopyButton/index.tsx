@@ -13,7 +13,6 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import {
   formatAIMessageContent,
@@ -36,15 +35,14 @@ const SidebarCopyButton: FC<{
   const [isHover, setIsHover] = useState(false)
   const [delayIsHover, setDelayIsHover] = useState(false)
   const [copyButtonKey, setCopyButtonKey] = useState('')
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
-  const { currentSidebarConversationType } = useClientConversation()
-  const [anchorPosition, setAnchorPosition] = useState<
-    | {
-        top: number
-        left: number
-      }
-    | undefined
-  >(undefined)
+  // const { currentSidebarConversationType } = useClientConversation()
+  // const [anchorPosition, setAnchorPosition] = useState<
+  //   | {
+  //       top: number
+  //       left: number
+  //     }
+  //   | undefined
+  // >(undefined)
   // 防止误触
   const mouseHoverTimer = useRef<ReturnType<typeof setTimeout>>()
   // 复制文本
@@ -99,19 +97,18 @@ const SidebarCopyButton: FC<{
           p: '5px',
           color: 'text.secondary',
         }}
-        onMouseEnter={(event) => {
-          setAnchorEl(event.currentTarget)
-          if (
-            event.currentTarget &&
-            currentSidebarConversationType === 'ContextMenu'
-          ) {
-            // NOTE:这个计算比较复杂，也许有更好的方法
-            setAnchorPosition({
-              // 80是popover的高度，26是button的高度
-              top: event.currentTarget.getBoundingClientRect().top - (80 - 34),
-              left: 8, // 8是popover的padding
-            })
-          }
+        onMouseEnter={() => {
+          // if (
+          //   event.currentTarget &&
+          //   currentSidebarConversationType === 'ContextMenu'
+          // ) {
+          //   // NOTE:这个计算比较复杂，也许有更好的方法
+          //   setAnchorPosition({
+          //     // 80是popover的高度，26是button的高度
+          //     top: event.currentTarget.getBoundingClientRect().top - (80 - 34),
+          //     left: 8, // 8是popover的padding
+          //   })
+          // }
           mouseHoverTimer.current = setTimeout(() => {
             setIsHover(true)
           }, 100)
@@ -135,8 +132,9 @@ const SidebarCopyButton: FC<{
       <Popover
         disablePortal
         disableScrollLock
-        anchorReference={anchorPosition ? 'anchorPosition' : 'anchorEl'}
-        anchorPosition={anchorPosition}
+        // anchorReference={anchorPosition ? 'anchorPosition' : 'anchorEl'}
+        anchorReference='anchorEl'
+        // anchorPosition={anchorPosition}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
@@ -148,7 +146,7 @@ const SidebarCopyButton: FC<{
         className='popper'
         // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
         open={isHover}
-        anchorEl={anchorEl}
+        anchorEl={copyButtonRef.current}
         sx={{
           zIndex: 1200,
         }}
@@ -166,6 +164,10 @@ const SidebarCopyButton: FC<{
           <ListItem
             disablePadding
             sx={{
+              '& > span[data-mui-internal-clone-element="true"]': {
+                display: 'block',
+                width: '100%',
+              },
               '& > div': {
                 width: '100%',
               },

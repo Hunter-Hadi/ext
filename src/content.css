@@ -21,6 +21,9 @@
   opacity: 1;
   z-index: 2147483501;
 }
+#USE_CHAT_GPT_AI_ROOT.OVERLAY_CONTEXT_MENU {
+  z-index: 2147483620;
+}
 #USE_CHAT_GPT_AI_ROOT.close {
   opacity: 0;
   display: none;

@@ -67,7 +67,8 @@
     "terms_of_service": "Условия использования",
     "shortcut": "Ярлык",
     "yearly": "Ежегодно",
-    "monthly": "Ежемесячно"
+    "monthly": "Ежемесячно",
+    "continue_in_contextmenu": "Всегда продолжать в контекстном меню"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "Разблокировать все функции",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Только GPT-4o. Чтобы разблокировать все другие модели искусственного интеллекта, перейдите на план MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Лучшее предложение за ваши деньги",
+    "floating_menu__button__show_detail": "Показать детали",
+    "floating_menu__textarea__placeholder": "Введите или вставьте свой текст здесь и попросите ИИ улучшить, проверить правильность, перевести, суммировать и многое другое.",
+    "floating_menu__always_pin_sidebar_title": "Всегда закреплять на боковой панели",
+    "sidebar__tabs__rewrite__title": "Переписать",
+    "sidebar__tabs__rewrite__tooltip": "Переписать в ИИ",
+    "home_view__rewrite__title": "Переписыватель ИИ",
+    "home_view__rewrite__description": "Экономьте время на проверке и совершенствовании своих слов.",
+    "context_window__chat_history__continue_in_rewrite__title": "Продолжить в переписывании",
     "permission__pricing_hook__context_menu__title": "Повысьте уровень, чтобы разблокировать неограниченный переопределитель ИИ",
     "permission__pricing_hook__context_menu__description": "С помощью переопределителя ИИ MaxAI вы можете экономить время на корректировке и совершенствовании ваших слов в Интернете, от электронной почты до социальных сетей и далее.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Доступ к GPT-4o-mini",
@@ -1020,7 +1029,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Улучшенное многоязычное понимание",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini - самая передовая небольшая модель от OpenAI, предлагающая мультимодальные возможности. Этот компактный мощный инструмент создает текстовые выводы с интеллектом, превосходящим GPT-3.5-Turbo, сохраняя при этом сравнимую скорость. Идеально подходит для небольших задач, включая приложения, связанные с зрением.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Повышение для неограниченного GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Познакомьтесь с самой интеллектуальной небольшой моделью от OpenAI. GPT-4o-mini предлагает превосходную производительность по сравнению с GPT-3.5-turbo, с мультимодальными возможностями и мгновенными ответами."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Познакомьтесь с самой интеллектуальной небольшой моделью от OpenAI. GPT-4o-mini предлагает превосходную производительность по сравнению с GPT-3.5-turbo, с мультимодальными возможностями и мгновенными ответами.",
+    "floating_menu__always_pin_to_sidebar": "Всегда показывать ответы в боковой панели",
+    "floating_menu__pint_once_to_sidebar": "Показать ответ в боковой панели один раз"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

@@ -125,6 +125,11 @@ export class ClientConversationManager {
     }
     const cacheConversation =
       await ClientConversationManager.getConversationById(conversationId, true)
+    console.log(
+      'onRunActions addOrUpdateConversation',
+      conversationId,
+      cacheConversation,
+    )
     let updated_at = cacheConversation?.updated_at
     // 如果要同步到远程，就更新updated_at
     if (syncConversationToDB) {

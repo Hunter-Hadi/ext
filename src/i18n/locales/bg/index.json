@@ -67,7 +67,8 @@
     "terms_of_service": "Условия за ползване",
     "shortcut": "Бърз път",
     "yearly": "Годишно",
-    "monthly": "Месечно"
+    "monthly": "Месечно",
+    "continue_in_contextmenu": "Винаги продължавайте в контекстното меню"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -1012,15 +1013,25 @@
     "pricing__upgrade__popper_card__item4__title": "Най-добра стойност за вашите пари",
     "permission__pricing_hook__context_menu__title": "Подобрете, за да отключите неограничен AI пренаписвач",
     "permission__pricing_hook__context_menu__description": "С AI пренаписвача на MaxAI можете да спестите време за коригиране и усъвършенстване на думите си по целия интернет, от имейли до социални мрежи и още.",
+    "floating_menu__button__show_detail": "Покажи детайлите",
+    "floating_menu__textarea__placeholder": "Въведете или поставете текст тук и попитайте AI за подобрения, корекции, превод, резюме и други.",
+    "floating_menu__always_pin_sidebar_title": "Винаги закачено на страничната лента",
+    "floating_menu__always_pin_to_sidebar": "Винаги показвайте отговорите в страничната лента",
+    "floating_menu__pint_once_to_sidebar": "Покажете отговора в страничната лента веднъж",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini е най-новият мощен малък модел на OpenAI, който предлага мултимодални възможности. Този компактен гигант доставя текстови изходи с интелигентност, надхвърляща GPT-3.5-Turbo, запазвайки сравнима скорост. Идеален за по-малки задачи, включително приложения, свързани със зрението.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Надстройка за неограничен GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Изживейте най-интелигентния малък модел на OpenAI досега. GPT-4o-mini предлага изключителна производителност спрямо GPT-3.5-turbo, с мултимодални възможности и бързи отговори.",
+    "sidebar__tabs__rewrite__title": "Пренапиши",
+    "sidebar__tabs__rewrite__tooltip": "Пренапиши с AI",
+    "home_view__rewrite__title": "AI пренаписвач",
+    "home_view__rewrite__description": "Изберете време за корекции и усъвършенстване на думите си.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Достъп до GPT-4o-mini",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Най-новият модел на OpenAI",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Значително по-умен от GPT-3.5-Turbo",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Толкова бързо колкото GPT-3.5-Turbo",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Поддържа текстови и визуални възможности",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Значително по-интелигентен от GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Толкова бърз, колкото GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Поддържа текстови и зрителни възможности",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Подобрено многоезично разбиране",
-    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini е най-новият мощен модел на OpenAI, който предлага мултимодални възможности. Този компактен гигант доставя текстови изходи с интелигентност, надхвърляща GPT-3.5-Turbo, запазвайки сравнима скорост. Идеален за по-малки задачи, включително приложения, свързани със зрението.",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Надстройка за неограничено използване на GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Изживейте най-интелигентния малък модел на OpenAI досега. GPT-4o-mini предлага изключителна производителност спрямо GPT-3.5-turbo, с мултимодални възможности и бързи отговори."
+    "context_window__chat_history__continue_in_rewrite__title": "Продължете в пренаписването"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

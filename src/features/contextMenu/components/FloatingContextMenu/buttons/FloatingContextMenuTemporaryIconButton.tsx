@@ -3,7 +3,7 @@ import { SxProps } from '@mui/material/styles'
 import { TooltipProps } from '@mui/material/Tooltip'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -21,7 +21,7 @@ const FloatingContextMenuTemporaryIconButton: FC<{
 }> = (props) => {
   const { t } = useTranslation(['common', 'client'])
   const { sx, placement, ButtonProps, iconSize = 16, icon = 'Close' } = props
-  const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
+  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
   return (
     <TextOnlyTooltip

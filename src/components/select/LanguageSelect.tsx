@@ -111,7 +111,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
         autoHighlight
         getOptionLabel={(option) => option.label}
         options={LANGUAGES_OPTIONS}
-        onChange={(event: any, newValue) => {
+        onChange={(_, newValue) => {
           setValue(newValue)
           onChange(newValue.value)
         }}

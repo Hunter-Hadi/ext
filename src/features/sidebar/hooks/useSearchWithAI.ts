@@ -65,10 +65,7 @@ const useSearchWithAI = () => {
     includeHistory: boolean,
     runActionsImmediately: boolean = false,
   ) => {
-    if (isFetchingRef.current) {
-      return
-    }
-    if (query.trim() === '') {
+    if (isFetchingRef.current || query.trim() === '') {
       return
     }
     if (!isShowChatBox()) {
@@ -143,9 +140,7 @@ const useSearchWithAI = () => {
 
   // 因为在regenerate的时候消息更更新不及时，所以需要一个ref确保历史记录是最新的
   const createSearchWithAIRef = useRef(createSearchWithAI)
-  useEffect(() => {
-    createSearchWithAIRef.current = createSearchWithAI
-  }, [createSearchWithAI])
+  createSearchWithAIRef.current = createSearchWithAI
 
   const getSearchWithAIConversationId = async () => {
     return (

@@ -57,6 +57,7 @@ const ImmersiveChatPageSidebarInit: FC = () => {
   }, [currentSidebarConversationType])
   return <></>
 }
+
 const SidebarPageInit: FC = () => {
   useInitMixPanel()
   useInitWebPageMessageChannel()

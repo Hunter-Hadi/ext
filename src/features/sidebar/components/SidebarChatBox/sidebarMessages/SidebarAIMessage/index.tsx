@@ -492,4 +492,5 @@ export const MetadataTitleRender: FC<{
     </Stack>
   )
 }
+
 export const SidebarAIMessage = messageWithErrorBoundary(BaseSidebarAIMessage)

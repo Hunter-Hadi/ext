@@ -67,7 +67,8 @@
     "terms_of_service": "شروط الخدمة",
     "shortcut": "اختصار",
     "yearly": "سنوي",
-    "monthly": "شهري"
+    "monthly": "شهري",
+    "continue_in_contextmenu": "الاستمرار دائمًا في القائمة المنسدلة"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -1012,6 +1013,14 @@
     "pricing__upgrade__popper_card__item4__title": "أفضل قيمة لأموالك",
     "permission__pricing_hook__context_menu__title": "الترقية لفتح محرر الذكاء الاصطناعي غير المحدود",
     "permission__pricing_hook__context_menu__description": "مع محرر الذكاء الاصطناعي لـ MaxAI، يمكنك توفير الوقت في التدقيق وتحسين كلماتك عبر الويب، من البريد الإلكتروني إلى وسائل التواصل الاجتماعي وأكثر من ذلك.",
+    "floating_menu__button__show_detail": "عرض التفاصيل",
+    "floating_menu__textarea__placeholder": "اكتب أو الصق نصك هنا واسأل الذكاء الاصطناعي لتحسينه، تدقيقه، ترجمته، تلخيصه، والمزيد.",
+    "floating_menu__always_pin_sidebar_title": "تثبيت دائمًا في الشريط الجانبي",
+    "sidebar__tabs__rewrite__title": "إعادة صياغة",
+    "sidebar__tabs__rewrite__tooltip": "إعادة صياغة بواسطة الذكاء الاصطناعي",
+    "home_view__rewrite__title": "معاد صياغة الذكاء الاصطناعي",
+    "home_view__rewrite__description": "وفر الوقت في التدقيق وتحسين كلماتك.",
+    "context_window__chat_history__continue_in_rewrite__title": "الاستمرار في إعادة الصياغة",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "الوصول إلى GPT-4o-mini",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "أحدث نموذج من OpenAI",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "أذكى بشكل كبير من GPT-3.5-Turbo",
@@ -1020,7 +1029,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "فهم متعدد اللغات المحسّن",
     "provider__chatgpt__model__gpt_4o_mini__description": "يعد GPT-4o-mini هو النموذج الصغير الأكثر تقدمًا من OpenAI، والذي يقدم قدرات متعددة الوسائط. يوفر هذا القوة الصغيرة النصوص بذكاء يفوق GPT-3.5-Turbo مع الحفاظ على سرعة مقارنة. مثالي للمهام الصغيرة، بما في ذلك التطبيقات ذات الصلة بالرؤية.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "الترقية للحصول على GPT-4o-mini غير محدود",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "استمتع بأذكى نموذج صغير من OpenAI حتى الآن. يقدم GPT-4o-mini أداءً متفوقًا على GPT-3.5-turbo، مع قدرات متعددة الوسائط وردود سريعة جدًا."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "استمتع بأذكى نموذج صغير من OpenAI حتى الآن. يقدم GPT-4o-mini أداءً متفوقًا على GPT-3.5-turbo، مع قدرات متعددة الوسائط وردود سريعة جدًا.",
+    "floating_menu__always_pin_to_sidebar": "عرض الردود دائمًا في الشريط الجانبي",
+    "floating_menu__pint_once_to_sidebar": "عرض الرد في الشريط الجانبي مرة واحدة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

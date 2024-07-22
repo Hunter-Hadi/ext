@@ -67,7 +67,8 @@
     "terms_of_service": "Terma Perkhidmatan",
     "shortcut": "Pintasan",
     "yearly": "Tahunan",
-    "monthly": "Bulanan"
+    "monthly": "Bulanan",
+    "continue_in_contextmenu": "Sentiasa terus dalam menu konteks"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "Buka semua ciri",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Hanya GPT-4o. Untuk membuka semua model AI lain, naik taraf ke pelan MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Nilai terbaik untuk wang anda",
+    "floating_menu__button__show_detail": "Papar butiran",
+    "floating_menu__textarea__placeholder": "Taip atau tampal teks anda di sini dan minta AI untuk memperbaiki, menyemak ejaan, menterjemahkan, merangkum, dan lain-lain.",
+    "floating_menu__always_pin_sidebar_title": "Sentiasa melekat pada bar sisi",
+    "sidebar__tabs__rewrite__title": "Menulis semula",
+    "sidebar__tabs__rewrite__tooltip": "Menulis semula dalam AI",
+    "home_view__rewrite__title": "Penulis semula AI",
+    "home_view__rewrite__description": "Jimat masa dalam menyemak ejaan dan menyempurnakan kata-kata anda.",
+    "context_window__chat_history__continue_in_rewrite__title": "Teruskan dalam penulisan semula",
     "permission__pricing_hook__context_menu__title": "Naik taraf untuk membuka penulis semula AI tanpa had",
     "permission__pricing_hook__context_menu__description": "Dengan penulis semula AI MaxAI, anda boleh menjimatkan masa dalam menyemak dan menyempurnakan perkataan anda di seluruh web, dari emel ke media sosial dan seterusnya.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Akses GPT-4o-mini",
@@ -1020,7 +1029,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pemahaman multibahasa yang ditingkatkan",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini adalah model berskala kecil yang paling canggih dari OpenAI, menawarkan kemampuan multimodal. Powerhouse padat ini memberikan output teks dengan kecerdasan yang melampaui GPT-3.5-Turbo sambil mempertahankan kecepatan yang sebanding. Ideal untuk tugas-tugas kecil, termasuk aplikasi terkait visi.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Naik taraf untuk GPT-4o-mini tanpa had",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Alami model berskala kecil yang paling bijak dari OpenAI. GPT-4o-mini menawarkan prestasi yang lebih unggul daripada GPT-3.5-turbo, dengan kemampuan multimodal dan respon yang cepat."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Alami model berskala kecil yang paling bijak dari OpenAI. GPT-4o-mini menawarkan prestasi yang lebih unggul daripada GPT-3.5-turbo, dengan kemampuan multimodal dan respon yang cepat.",
+    "floating_menu__always_pin_to_sidebar": "Sentiasa paparkan respons di sidebar",
+    "floating_menu__pint_once_to_sidebar": "Paparkan respons di sidebar sekali"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

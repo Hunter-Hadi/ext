@@ -1,39 +1,51 @@
+import { Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import React, { FC, RefObject, useEffect, useRef } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
-import { isSystemMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import {
+  isSystemMessage,
+  isUserMessage,
+} from '@/features/chatgpt/utils/chatMessageUtils'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {
   ContextWindowDraftContextMenuState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
 import { SidebarSystemMessage } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages'
-import SidebarUserMessageContexts from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts'
+import { formatUserMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
+import MessageContexts from './MessageContext'
+
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
-  markdownBodyRef: RefObject<HTMLDivElement>
-}> = (props) => {
+}> = ({ onChange }) => {
   const theme = useCustomTheme()
-  const { onChange, markdownBodyRef } = props
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
-  const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
+  const setFloatingDropdownMenuSystemItems = useSetRecoilState(
     ContextWindowDraftContextMenuState,
   )
+
+  const { clientWritingMessage, clientConversationMessages } =
+    useClientConversation()
+
   const {
     currentFloatingContextMenuDraft,
-    selectedDraftUserMessage,
     activeAIResponseMessage,
+    historyMessages,
+    activeMessageIndex,
   } = useFloatingContextMenuDraft()
+
+  const message = useMemo(
+    () => currentFloatingContextMenuDraft.replace(/^\s+/, ''),
+    [currentFloatingContextMenuDraft],
+  )
+
   useEffect(() => {
-    console.log(
-      'AIInput currentFloatingContextMenuDraft: ',
-      currentFloatingContextMenuDraft,
-    )
     setFloatingDropdownMenuSystemItems((prev) => {
       return {
         ...prev,
@@ -43,45 +55,16 @@ const WritingMessageBox: FC<{
     onChange?.(currentFloatingContextMenuDraft)
   }, [currentFloatingContextMenuDraft, floatingDropdownMenu.open])
   const containerRef = useRef<HTMLDivElement>(null)
-  const boxRef = markdownBodyRef
-  // const throttleUpdateHeight = useCallback(
-  //   throttle(() => {
-  //     const container = containerRef.current
-  //     if (!container) return
-  //     console.log(
-  //       '检测到高度更新:\t',
-  //       boxRef.current?.offsetHeight,
-  //       boxRef.current?.getBoundingClientRect().height,
-  //     )
-  //     container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
-  //   }, 100),
-  //   [],
-  // )
-  // const debounceUpdateHeight = useCallback(
-  //   debounce(() => {
-  //     const container = containerRef.current
-  //     if (!container) return
-  //     console.log(
-  //       '检测到高度更新:\t',
-  //       boxRef.current?.offsetHeight,
-  //       boxRef.current?.getBoundingClientRect().height,
-  //     )
-  //     container.style.minHeight = `${
-  //       (boxRef.current?.offsetHeight || 0) + 0.01
-  //     }px`
-  //   }, 100),
-  //   [],
-  // )
+  const boxRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     // scroll to bottom
     setTimeout(() => {
       boxRef.current?.scrollTo({
         top: boxRef.current.scrollHeight,
       })
-      // throttleUpdateHeight()
-      // debounceUpdateHeight()
     }, 0)
   }, [currentFloatingContextMenuDraft])
+
   useEffect(() => {
     const keydownHandler = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey) {
@@ -102,6 +85,40 @@ const WritingMessageBox: FC<{
     }
     boxRef.current?.addEventListener('keydown', keydownHandler, true)
   }, [])
+
+  const lastUserMessage = useMemo(() => {
+    // NOTE: selectedDraft或许可以去掉，后续再研究
+    const selectedDraft =
+      historyMessages[activeMessageIndex]?.selectedDraftMessage
+    if (clientWritingMessage.loading || !selectedDraft) {
+      return clientConversationMessages.findLast((msg) => isUserMessage(msg))
+    }
+    return selectedDraft
+  }, [
+    clientWritingMessage,
+    historyMessages,
+    activeMessageIndex,
+    clientConversationMessages,
+  ])
+
+  const lastContent = useMemo(
+    () => lastUserMessage?.meta?.contexts?.[0]?.value?.trim() || '',
+    [lastUserMessage],
+  )
+
+  const title = useMemo(() => {
+    if (!lastUserMessage) return ''
+
+    const text = formatUserMessageContent(lastUserMessage)
+    // 去除草稿部分
+    const draftIndex = text.indexOf(':\n"""\n')
+    return draftIndex === -1 ? text : text.slice(0, draftIndex)
+  }, [lastUserMessage])
+
+  const tooltipContainer = useMemo(
+    () => getMaxAIFloatingContextMenuRootElement() || document.body,
+    [],
+  )
 
   return (
     <Stack
@@ -129,28 +146,59 @@ const WritingMessageBox: FC<{
       }}
       component={'div'}
     >
-      {selectedDraftUserMessage && (
-        <SidebarUserMessageContexts
-          container={
-            getMaxAIFloatingContextMenuRootElement() || document.documentElement
-          }
-          sx={{
-            mt: 1,
-            mb: 2,
-            '& > div': {
-              maxWidth: '100%',
-              width: '100%',
+      {!!lastUserMessage && (
+        <Stack
+          direction={'row'}
+          gap={'8px'}
+          alignItems={'center'}
+          height={'auto'}
+        >
+          <Typography
+            color={'text.primary'}
+            padding={'10px 0'}
+            fontSize={'18px'}
+            fontWeight={600}
+            lineHeight={'150%'}
+          >
+            {title}
+          </Typography>
+
+          <Typography
+            overflow={'hidden'}
+            textOverflow={'ellipsis'}
+            color={'text.secondary'}
+            flex={1}
+            fontSize={'14px'}
+            sx={{
+              whiteSpace: 'nowrap',
+              userSelect: 'none',
+              cursor: 'default',
+            }}
+          >
+            {lastContent}
+          </Typography>
+
+          <MessageContexts
+            message={lastUserMessage}
+            container={tooltipContainer}
+            sx={{
+              mt: 1,
+              mb: 2,
               '& > div': {
+                maxWidth: '100%',
                 width: '100%',
+                '& > div': {
+                  width: '100%',
+                },
+                '& p[data-testid="user-message-short-contexts"]': {
+                  width: '100%',
+                },
               },
-              '& p[data-testid="user-message-short-contexts"]': {
-                width: '100%',
-              },
-            },
-          }}
-          message={selectedDraftUserMessage}
-        />
+            }}
+          />
+        </Stack>
       )}
+
       {activeAIResponseMessage && isSystemMessage(activeAIResponseMessage) && (
         <SidebarSystemMessage
           message={activeAIResponseMessage}
@@ -169,14 +217,12 @@ const WritingMessageBox: FC<{
           textAlign: 'left',
           // maxHeight: `${markdownMaxHeight}px`,
         }}
-        ref={markdownBodyRef}
+        ref={boxRef}
         className={`markdown-body ${
           theme.isDarkMode ? 'markdown-body-dark' : ''
         }`}
       >
-        <CustomMarkdown>
-          {currentFloatingContextMenuDraft.replace(/^\s+/, '')}
-        </CustomMarkdown>
+        {!!message && <CustomMarkdown>{message}</CustomMarkdown>}
       </div>
     </Stack>
   )

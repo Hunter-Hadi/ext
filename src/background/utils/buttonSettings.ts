@@ -29,7 +29,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import debounce from 'lodash-es/debounce'
 import isEqual from 'lodash-es/isEqual'
 import { default as lodashSet } from 'lodash-es/set'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
@@ -67,8 +67,8 @@ export const useChromeExtensionButtonSettings = () => {
     })
   }, [appDBStorage.buttonSettings])
   const { syncLocalToServer } = useSyncSettingsChecker()
-  const debounceSyncLocalToServer = useCallback(
-    debounce(syncLocalToServer, 1000),
+  const debounceSyncLocalToServer = useMemo(
+    () => debounce(syncLocalToServer, 1000),
     [syncLocalToServer],
   )
   const updateButtonSettings = async (
@@ -200,21 +200,21 @@ export const useChromeExtensionButtonSettingsWithVisibility = (
         buttonVisible: boolean
         host: string
       }
-      console.log(
-        'computedButtonSettings',
-        `[key=${buttonKey}]`,
-        `[host=${host}]`,
-        `[originPromptLength=${originalButtonSettings.contextMenu.length}]`,
-        `[promptLength=${computedButtonSettings.contextMenu.length}]`,
-        computedButtonSettings.contextMenu,
-      )
-      console.log(
-        'computedButtonSettings',
-        `[key=${buttonKey}]`,
-        `[host=${host}]`,
-        `[buttonVisible=${computedButtonSettings.buttonVisible}]`,
-        computedButtonSettings.visibility,
-      )
+      // console.log(
+      //   'computedButtonSettings',
+      //   `[key=${buttonKey}]`,
+      //   `[host=${host}]`,
+      //   `[originPromptLength=${originalButtonSettings.contextMenu.length}]`,
+      //   `[promptLength=${computedButtonSettings.contextMenu.length}]`,
+      //   computedButtonSettings.contextMenu,
+      // )
+      // console.log(
+      //   'computedButtonSettings',
+      //   `[key=${buttonKey}]`,
+      //   `[host=${host}]`,
+      //   `[buttonVisible=${computedButtonSettings.buttonVisible}]`,
+      //   computedButtonSettings.visibility,
+      // )
       return computedButtonSettings
     }
     return undefined

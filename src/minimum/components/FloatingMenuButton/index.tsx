@@ -136,14 +136,14 @@ const FloatingMenuButton: FC = () => {
         axis='y'
         scale={1}
         onStart={() => {}}
-        onStop={(e, data) => {
+        onStop={(_, data) => {
           if (isDragging) {
             setDragAxisY(data.y)
             setIsHover(false)
             setIsDragging(false)
           }
         }}
-        onDrag={(e, data) => {
+        onDrag={(_, data) => {
           console.log('MaxAIMiniButton drag', isHoverButton)
           currentDragAxisYRef.current = data.y
           setIsDragging(true)
@@ -160,7 +160,7 @@ const FloatingMenuButton: FC = () => {
           }}
         >
           <ClickAwayListener
-            onClickAway={(event) => {
+            onClickAway={() => {
               setIsHover(false)
               setIsDragging(false)
             }}

@@ -67,7 +67,8 @@
     "terms_of_service": "利用規約",
     "shortcut": "ショートカット",
     "yearly": "毎年",
-    "monthly": "毎月"
+    "monthly": "毎月",
+    "continue_in_contextmenu": "常にコンテキストメニューで続行"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "すべての機能をアンロック",
     "pricing__plan_features__pro__feature1__item2__subtitle": "GPT-4oのみ。他のすべてのAIモデルをアンロックするには、MaxAI Eliteプランにアップグレードしてください。",
     "pricing__upgrade__popper_card__item4__title": "あなたのお金に最適な価値",
+    "floating_menu__button__show_detail": "詳細を表示",
+    "floating_menu__textarea__placeholder": "ここにテキストを入力または貼り付けて、AIに改善、校正、翻訳、要約などを依頼してください。",
+    "floating_menu__always_pin_sidebar_title": "常にサイドバーに固定",
+    "sidebar__tabs__rewrite__title": "書き換え",
+    "sidebar__tabs__rewrite__tooltip": "AIで書き換え",
+    "home_view__rewrite__title": "AIリライター",
+    "home_view__rewrite__description": "校正や言葉を完璧にするのに時間を節約します。",
+    "context_window__chat_history__continue_in_rewrite__title": "書き換えで続行",
     "permission__pricing_hook__context_menu__title": "無制限のAIリライターをアンロックするにはアップグレードしてください",
     "permission__pricing_hook__context_menu__description": "MaxAIのAIリライターを使用すると、電子メールからソーシャルメディアまで、ウェブ全体で単語を校正し、完璧にする時間を節約できます。",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-miniにアクセス",
@@ -1020,7 +1029,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "多言語理解が向上しました",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-miniはOpenAIの最も先進的な小規模モデルで、多様な機能を提供します。このコンパクトなパワーハウスは、GPT-3.5-Turboを凌駕する知能を持つテキスト出力を提供します。ビジョン関連のアプリケーションを含む小規模なタスクに最適です。",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "無制限のGPT-4o-miniにアップグレード",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAIの最も知的な小規模モデル、GPT-4o-miniを体験してください。GPT-3.5-turboよりも優れたパフォーマンスを提供し、多様な機能と高速な応答を実現します。"
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAIの最も知的な小規模モデル、GPT-4o-miniを体験してください。GPT-3.5-turboよりも優れたパフォーマンスを提供し、多様な機能と高速な応答を実現します。",
+    "floating_menu__always_pin_to_sidebar": "サイドバーに常に応答を表示",
+    "floating_menu__pint_once_to_sidebar": "サイドバーに一度だけ応答を表示"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

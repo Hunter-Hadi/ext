@@ -67,7 +67,8 @@
     "terms_of_service": "Warunki korzystania",
     "shortcut": "Skrót",
     "yearly": "Rocznie",
-    "monthly": "Miesięcznie"
+    "monthly": "Miesięcznie",
+    "continue_in_contextmenu": "Zawsze kontynuuj w menu kontekstowym"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -1010,17 +1011,27 @@
     "pricing__upgrade__popper_card__item3__title": "Odblokuj wszystkie funkcje",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Tylko GPT-4o. Aby odblokować wszystkie inne modele AI, przejdź na plan MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Najlepsza wartość za Twoje pieniądze",
-    "permission__pricing_hook__context_menu__title": "Ulepsz, aby odblokować nieograniczone przepisywanie AI",
+    "floating_menu__button__show_detail": "Pokaż szczegóły",
+    "floating_menu__textarea__placeholder": "Wpisz lub wklej tutaj swój tekst i poproś AI o poprawę, korektę, tłumaczenie, streszczenie i więcej.",
+    "floating_menu__always_pin_sidebar_title": "Zawsze przypnij do paska bocznego",
+    "sidebar__tabs__rewrite__title": "Przepisz",
+    "sidebar__tabs__rewrite__tooltip": "Przepisz w AI",
+    "home_view__rewrite__title": "Przepisywacz AI",
+    "home_view__rewrite__description": "Oszczędź czas na korekcie i doskonaleniu swoich słów.",
+    "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisywaniu",
+    "permission__pricing_hook__context_menu__title": "Odblokuj nieograniczone przepisywanie AI",
     "permission__pricing_hook__context_menu__description": "Dzięki przepisywarce AI MaxAI możesz zaoszczędzić czas na korekcie i doskonaleniu swoich słów w sieci, od e-maili po media społecznościowe i nie tylko.",
+    "floating_menu__always_pin_to_sidebar": "Zawsze wyświetlaj odpowiedzi w pasku bocznym",
+    "floating_menu__pint_once_to_sidebar": "Wyświetl odpowiedź w pasku bocznym raz",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini to najbardziej zaawansowany model małej skali OpenAI, oferujący możliwości multimodalne. Ten kompaktowy potężny model dostarcza wyniki tekstowe o inteligencji przewyższającej GPT-3.5-Turbo, zachowując przy tym porównywalną prędkość. Idealny do mniejszych zadań, w tym aplikacji związanych z wizją.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Zaktualizuj dla nieograniczonego GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Doświadcz najinteligentniejszego modelu małej skali OpenAI. GPT-4o-mini oferuje wydajność przewyższającą GPT-3.5-turbo, z możliwościami multimodalnymi i błyskawicznymi odpowiedziami.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Dostęp do GPT-4o-mini",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "Najnowszy model OpenAI",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Znacznie mądrzejszy niż GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tak szybki jak GPT-3.5-Turbo",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Obsługuje możliwości tekstu i wizji",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Ulepszone wielojęzyczne zrozumienie",
-    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini to najbardziej zaawansowany model małej skali OpenAI, oferujący możliwości multimodalne. Ten kompaktowy potężny model dostarcza wyniki tekstowe o inteligencji przewyższającej GPT-3.5-Turbo, zachowując porównywalną prędkość. Idealny do mniejszych zadań, w tym aplikacji związanych z widzeniem.",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Aktualizacja na nieograniczony GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Doświadcz najinteligentniejszego modelu małej skali OpenAI. GPT-4o-mini oferuje wydajność przewyższającą GPT-3.5-turbo, z możliwościami multimodalnymi i błyskawicznymi odpowiedziami."
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Obsługuje możliwości tekstowe i wizyjne",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Udoskonalone zrozumienie wielojęzyczne"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

@@ -67,7 +67,8 @@
     "terms_of_service": "सेवा अटी",
     "shortcut": "शॉर्टकट",
     "yearly": "वार्षिक",
-    "monthly": "मासिक"
+    "monthly": "मासिक",
+    "continue_in_contextmenu": "नेहमी कॉंटेक्स्ट मेनूमध्ये सुरू ठेवा"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "सर्व सुविधांची अनलॉक करा",
     "pricing__plan_features__pro__feature1__item2__subtitle": "केवळ GPT-4o. सर्व इतर AI मॉडेल्स सोडवण्यासाठी, MaxAI Elite योजनेवर अपग्रेड करा.",
     "pricing__upgrade__popper_card__item4__title": "आपल्या पैसांसाठी सर्वोत्तम मूल्य",
+    "floating_menu__button__show_detail": "विवरण दाखवा",
+    "floating_menu__textarea__placeholder": "येथे आपला मजकूर टाइप किव्हा पेस्ट करा आणि AI वर मदतीसाठी, तपासा, भाषांतर करा, सारांश करा आणि अधिक करा.",
+    "floating_menu__always_pin_sidebar_title": "नेहमी साइडबारवर पिन करा",
+    "sidebar__tabs__rewrite__title": "पुनर्लेखन",
+    "sidebar__tabs__rewrite__tooltip": "AI मध्ये पुनर्लेखन करा",
+    "home_view__rewrite__title": "AI पुनरलेखक",
+    "home_view__rewrite__description": "आपल्या शब्दांचा तपासा करण्यात व सुधारण्यात वेळ वाचवा.",
+    "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखनमध्ये सुरू ठेवा",
     "permission__pricing_hook__context_menu__title": "अमर्यादित AI पुनरलेखन सोडवा",
     "permission__pricing_hook__context_menu__description": "MaxAIच्या AI पुनरलेखकासह, आपण वेबवरील आपले शब्द प्रमाणित करण्यासाठी वेळ काढू आणि पूर्ण करण्यासाठी समय वाचवू शकता, ईमेलपासून सोशल मीडियापर्यंत.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini उपलब्ध करा",
@@ -1020,7 +1029,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "वाढलेले बहुभाषी समज",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini हे OpenAI चे सर्वाधिक उन्नत लहान-पैमान्य मॉडेल आहे, बहुसांविक शक्तियांची पेशकश करणार. हा संक्षिप्त पॉवरहाउस GPT-3.5-Turbo पेक्षा बुद्धिमत्तेच्या आउटपुटसह सापडतो. विचारांसह सामान्य तेजीच्या दराने ठेवताना उत्तम. दृश्य-संबंधित अनुप्रयोग समाविष्ट करून, लहान कामांसाठी आदर्श.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "अनलिमिटेड GPT-4o-mini साठी अपग्रेड करा",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI चे सर्वाधिक बुद्धिमत्ता लहान-पैमान्य मॉडेल अनुभवा. GPT-4o-mini गेल्याच्या GPT-3.5-turbo पेक्षा उत्कृष्ट प्रदर्शन पुरवतो, बहुसांविक क्षमतेसह आणि प्रकाशीन दिलेल्या प्रतिसादांसह."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI चे सर्वाधिक बुद्धिमत्ता लहान-पैमान्य मॉडेल अनुभवा. GPT-4o-mini गेल्याच्या GPT-3.5-turbo पेक्षा उत्कृष्ट प्रदर्शन पुरवतो, बहुसांविक क्षमतेसह आणि प्रकाशीन दिलेल्या प्रतिसादांसह.",
+    "floating_menu__always_pin_to_sidebar": "सदैव प्रतिसादे साइडबारमध्ये दाखवा",
+    "floating_menu__pint_once_to_sidebar": "एकदा साइडबारमध्ये प्रतिसाद दाखवा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

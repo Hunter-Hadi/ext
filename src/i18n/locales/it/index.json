@@ -67,7 +67,8 @@
     "terms_of_service": "Termini di servizio",
     "shortcut": "Scorciatoia",
     "yearly": "Annuale",
-    "monthly": "Mensile"
+    "monthly": "Mensile",
+    "continue_in_contextmenu": "Continua sempre nel menu contestuale"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "Sblocca tutte le funzionalità",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Solo GPT-4o. Per sbloccare tutti gli altri modelli AI, passa al piano MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Miglior rapporto qualità-prezzo",
+    "floating_menu__button__show_detail": "Mostra dettagli",
+    "floating_menu__textarea__placeholder": "Digita o incolla qui il tuo testo e chiedi all'IA di migliorarlo, correggerlo, tradurlo, riassumerlo e altro ancora.",
+    "floating_menu__always_pin_sidebar_title": "Sempre fissato alla barra laterale",
+    "sidebar__tabs__rewrite__title": "Riscrivi",
+    "sidebar__tabs__rewrite__tooltip": "Riscrivi con l'IA",
+    "home_view__rewrite__title": "Riscrittore IA",
+    "home_view__rewrite__description": "Risparmia tempo nella correzione e perfezionamento delle tue parole.",
+    "context_window__chat_history__continue_in_rewrite__title": "Continua nella riscrittura",
     "permission__pricing_hook__context_menu__title": "Aggiorna per sbloccare l'AI riscrittore illimitato",
     "permission__pricing_hook__context_menu__description": "Con l'AI riscrittore di MaxAI, puoi risparmiare tempo nella correzione e perfezionamento delle tue parole in tutto il web, dall'email ai social media e oltre.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Accedi a GPT-4o-mini",
@@ -1020,7 +1029,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Migliorata comprensione multilingue",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini è il modello su piccola scala più avanzato di OpenAI, che offre capacità multimodali. Questo compatto prodigio fornisce output di testo con intelligenza superiore a GPT-3.5-Turbo mantenendo una velocità comparabile. Ideale per compiti più piccoli, inclusi le applicazioni legate alla visione.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Aggiornamento per GPT-4o-mini illimitato",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Prova il modello su piccola scala più intelligente di OpenAI fino ad ora. GPT-4o-mini offre prestazioni superiori rispetto a GPT-3.5-turbo, con capacità multimodali e risposte ultraveloci."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Prova il modello su piccola scala più intelligente di OpenAI fino ad ora. GPT-4o-mini offre prestazioni superiori rispetto a GPT-3.5-turbo, con capacità multimodali e risposte ultraveloci.",
+    "floating_menu__always_pin_to_sidebar": "Mostra sempre le risposte nella barra laterale",
+    "floating_menu__pint_once_to_sidebar": "Mostra la risposta nella barra laterale una volta"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

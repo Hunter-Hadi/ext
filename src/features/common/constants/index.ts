@@ -5,6 +5,7 @@ export const MAXAI_SIDEBAR_ID = `${MAXAI_APP_ROOT_ID}`
 export const MAXAI_SIDEBAR_WRAPPER_ID = `${MAXAI_APP_ROOT_ID}_Wrapper`
 export const MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID = `${MAXAI_APP_ROOT_ID}_DaemonProcess`
 export const MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID = `${MAXAI_APP_ROOT_ID}_ChatBox_Input`
+export const MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID = `${MAXAI_APP_ROOT_ID}_Sidebar_ContextMenu_Input`
 export const MAXAI_CLIPBOARD_ID = `${MAXAI_APP_ROOT_ID}_Clipboard`
 export const MAXAI_MINIMIZE_CONTAINER_ID = `${MAXAI_APP_ROOT_ID}_Minimize_Container`
 // MaxAI context menu

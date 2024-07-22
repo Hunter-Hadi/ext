@@ -67,7 +67,8 @@
     "terms_of_service": "Teenuse tingimused",
     "shortcut": "Kiirklahv",
     "yearly": "Aastas",
-    "monthly": "Kuus"
+    "monthly": "Kuus",
+    "continue_in_contextmenu": "Alati jätkake kontekstimenüüs"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -1012,15 +1013,25 @@
     "pricing__upgrade__popper_card__item4__title": "Parim väärtus teie raha eest",
     "permission__pricing_hook__context_menu__title": "Tõsta esile, et avada piiramatu AI ümberkirjutaja",
     "permission__pricing_hook__context_menu__description": "MaxAI AI ümberkirjutajaga saate aega säästa tekstide toimetamisel ja täiustamisel veebis, alates e-kirjadest sotsiaalmeediani ja veel kaugemale.",
-    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Ava GPT-4o-mini",
+    "floating_menu__button__show_detail": "Kuva detailid",
+    "floating_menu__textarea__placeholder": "Tippige või kleepige siia oma tekst ja paluge AI-l seda parandada, toimetada, tõlkida, kokku võtta ja muud.",
+    "floating_menu__always_pin_sidebar_title": "Alati kinnita küljeriba külge",
+    "sidebar__tabs__rewrite__title": "Ümberkirjutus",
+    "sidebar__tabs__rewrite__tooltip": "Ümberkirjutus AI-s",
+    "home_view__rewrite__title": "AI ümberkirjutaja",
+    "home_view__rewrite__description": "Säästke aega tekstide toimetamisel ja täiustamisel.",
+    "context_window__chat_history__continue_in_rewrite__title": "Jätka ümberkirjutuses",
+    "floating_menu__always_pin_to_sidebar": "Kuva alati vastused küljeribal",
+    "floating_menu__pint_once_to_sidebar": "Kuva vastus küljeribal üks kord",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini on OpenAI kõige arenenum väikese mastaabiga mudel, pakkudes multimodaalseid võimeid. See kompaktne võimsus pakub tekstiväljundeid, mille intelligentsus ületab GPT-3.5-Turbo, säilitades samal ajal võrreldava kiiruse. Ideaalne väiksemateks ülesanneteks, sealhulgas nägemisega seotud rakendused.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Uuenda piiramatuks GPT-4o-mini kasutamiseks",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Koge OpenAI kõige intelligentsemat väikese mastaabiga mudelit seni. GPT-4o-mini pakub ületamatut jõudlust võrreldes GPT-3.5-turbo'ga, omades multimodaalseid võimeid ja kiireid vastuseid.",
+    "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Pääs GPT-4o-mini juurde",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI uusim mudel",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Märkimisväärselt targem kui GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Nii kiire kui GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Toetab teksti- ja nägemisvõimeid",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parandatud mitmekeelne arusaamine",
-    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini on OpenAI kõige arenenum väikese mastaabiga mudel, pakkudes multimodaalseid võimeid. See kompaktne võimsus pakub tekstiväljundeid, mille intelligentsus ületab GPT-3.5-Turbo, säilitades samal ajal võrreldava kiiruse. Ideaalne väiksemateks ülesanneteks, sealhulgas nägemisega seotud rakendused.",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Uuenda piiramatule GPT-4o-mini-le",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Koge OpenAI kõige intelligentsemat väikese mastaabiga mudelit seni. GPT-4o-mini pakub ületamatut jõudlust GPT-3.5-turbo ees, multimodaalsete võimetega ja välgukiirete vastustega."
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parandatud mitmekeelne arusaamine"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

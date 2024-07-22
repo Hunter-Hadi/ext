@@ -29,6 +29,7 @@ import {
 } from '@/features/shortcuts/utils/tokenizer'
 import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+
 export interface IAskAIQuestion
   extends Omit<IUserChatMessage, 'messageId' | 'conversationId'> {
   conversationId?: string
@@ -182,14 +183,16 @@ const useClientChat = () => {
         await getAttachments(question.conversationId)
       ).filter((item) => item.uploadStatus === 'success')
       if (attachments.length > 0) {
-        await updateClientConversationLoading(true)
+        updateClientConversationLoading(true)
         if (!(await checkAttachments(attachments))) {
-          await updateClientConversationLoading(false)
+          updateClientConversationLoading(false)
+          console.log('handleEnter break in checkAttachments')
           return
         }
       } else if (question.text.trim() === '') {
+        console.log('handleEnter break in checkAttachments and text empty')
         // 如果没有文本 && 没有附件
-        await updateClientConversationLoading(false)
+        updateClientConversationLoading(false)
         return
       }
       const attachmentExtractedContents: Record<string, string> = {}
@@ -214,8 +217,9 @@ const useClientChat = () => {
     if (question?.meta?.attachments?.length) {
       question.meta.includeHistory = false
     }
-    await updateClientConversationLoading(true)
-    await askAIWIthShortcuts([
+    updateClientConversationLoading(true)
+
+    const runActions: ISetActionsType = [
       ...beforeActions,
       {
         type: 'ASK_CHATGPT',
@@ -225,7 +229,8 @@ const useClientChat = () => {
         },
       },
       ...afterActions,
-    ])
+    ]
+    await askAIWIthShortcuts(runActions)
   }
 
   /**
@@ -288,7 +293,7 @@ const useClientChat = () => {
           // 如果当前AIModel有权限限制
           // 则提示用户付费
           await pushPricingHookMessage(currentModelDetail.permission.sceneType)
-          await updateClientConversationLoading(false)
+          updateClientConversationLoading(false)
           return
         }
       }
@@ -309,7 +314,7 @@ const useClientChat = () => {
           : getParams().shortCutsParameters,
       )
     }
-    await updateClientConversationLoading(false)
+    updateClientConversationLoading(false)
     // 5. 运行shortcuts
     // setShortCutsRef.current(actions)
     // await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
@@ -357,7 +362,6 @@ const useClientChat = () => {
       }
 
       if (lastRunActions.length > 0) {
-        console.log(needDeleteMessageIds)
         await ClientConversationMessageManager.deleteMessages(
           currentConversationId,
           needDeleteMessageIds,

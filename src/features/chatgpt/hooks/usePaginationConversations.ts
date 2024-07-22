@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { useAuthLogin } from '@/features/auth'
 import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
@@ -168,6 +169,7 @@ export const useFetchPaginationConversations = (
   controlEnable = false,
 ) => {
   const { isLogin } = useAuthLogin()
+  const { userInfo } = useUserInfo()
   const [enabled, setEnabled] = useState(false)
   const [filter, setFilter] = useState<PaginationConversationsFilterType>({
     type: 'Chat',
@@ -200,6 +202,7 @@ export const useFetchPaginationConversations = (
         filter.type,
         filter.isDelete,
         filter.page_size,
+        userInfo?.user_id,
       ],
       queryFn: async (data) => {
         // 更新filter

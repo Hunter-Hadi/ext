@@ -67,7 +67,8 @@
     "terms_of_service": "Điều khoản dịch vụ",
     "shortcut": "Phím tắt",
     "yearly": "Hàng năm",
-    "monthly": "Hàng tháng"
+    "monthly": "Hàng tháng",
+    "continue_in_contextmenu": "Luôn tiếp tục trong menu ngữ cảnh"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "Mở khóa tất cả các tính năng",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Chỉ GPT-4o. Để mở khóa tất cả các mô hình AI khác, nâng cấp lên gói MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Giá trị tốt nhất cho tiền của bạn",
+    "floating_menu__button__show_detail": "Hiển thị chi tiết",
+    "floating_menu__textarea__placeholder": "Nhập hoặc dán văn bản của bạn vào đây và yêu cầu AI cải thiện, kiểm tra lỗi chính tả, dịch, tóm tắt và nhiều hơn nữa.",
+    "floating_menu__always_pin_sidebar_title": "Luôn ghim vào thanh bên",
+    "sidebar__tabs__rewrite__title": "Viết lại",
+    "sidebar__tabs__rewrite__tooltip": "Viết lại bằng AI",
+    "home_view__rewrite__title": "Máy viết lại AI",
+    "home_view__rewrite__description": "Tiết kiệm thời gian trong việc kiểm tra lỗi và hoàn thiện từ của bạn.",
+    "context_window__chat_history__continue_in_rewrite__title": "Tiếp tục trong viết lại",
     "permission__pricing_hook__context_menu__title": "Nâng cấp để mở khóa trình viết lại AI không giới hạn",
     "permission__pricing_hook__context_menu__description": "Với trình viết lại AI của MaxAI, bạn có thể tiết kiệm thời gian trong việc kiểm tra và hoàn thiện từ ngữ của mình trên web, từ email đến mạng xã hội và hơn thế nữa.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Truy cập GPT-4o-mini",
@@ -1020,7 +1029,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Hiểu nhiều ngôn ngữ tốt hơn",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini là mô hình quy mô nhỏ tiên tiến nhất của OpenAI, cung cấp khả năng đa phương tiện. Máy tính nhỏ gọn này cung cấp đầu ra văn bản với thông minh vượt trội so với GPT-3.5-Turbo trong khi vẫn duy trì tốc độ tương đương. Lý tưởng cho các nhiệm vụ nhỏ hơn, bao gồm các ứng dụng liên quan đến tầm nhìn.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Nâng cấp để sử dụng GPT-4o-mini không giới hạn",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Trải nghiệm mô hình quy mô nhỏ thông minh nhất của OpenAI. GPT-4o-mini cung cấp hiệu suất vượt trội so với GPT-3.5-turbo, với khả năng đa phương tiện và phản hồi nhanh chóng."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Trải nghiệm mô hình quy mô nhỏ thông minh nhất của OpenAI. GPT-4o-mini cung cấp hiệu suất vượt trội so với GPT-3.5-turbo, với khả năng đa phương tiện và phản hồi nhanh chóng.",
+    "floating_menu__always_pin_to_sidebar": "Luôn hiển thị phản hồi trong thanh bên",
+    "floating_menu__pint_once_to_sidebar": "Hiển thị phản hồi trong thanh bên một lần"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

@@ -56,6 +56,30 @@ export const FloatingDropdownMenuState = atom<{
   },
 })
 
+export const ContextMenuOpenSelector = selector<boolean>({
+  key: 'ContextMenuOpenSelector',
+  get(opts) {
+    return opts.get(FloatingDropdownMenuState).open
+  },
+})
+
+/**
+ * 记录会话是否已经接管到Sidebar了，目前只对always处理
+ */
+export const ContextMenuPinedToSidebarState = atom({
+  key: 'ContextMenuPinedToSidebarState',
+  default: false,
+})
+
+export const ContextMenuConversationState = atom<{
+  conversationId: string
+}>({
+  key: 'ContextMenuConversationState',
+  default: {
+    conversationId: '',
+  },
+})
+
 export const FloatingDropdownMenuLastFocusRangeState = atom<{
   range: Range | null
   selectionText: string | null
@@ -94,6 +118,14 @@ export const FloatingDropdownMenuSelectedItemState = atom<{
     hoverContextMenuIdMap: {},
     selectedContextMenuId: null,
     lastHoverContextMenuId: null,
+  },
+})
+
+export const PinToSidebarState = atom({
+  key: 'PinToSiderbarState',
+  default: {
+    once: false,
+    always: false,
   },
 })
 export const FloatingDropdownMenuItemsSelector = selector<string[]>({

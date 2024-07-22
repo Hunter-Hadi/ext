@@ -67,7 +67,8 @@
     "terms_of_service": "Servicevilkår",
     "shortcut": "Genvej",
     "yearly": "Årligt",
-    "monthly": "Månedligt"
+    "monthly": "Månedligt",
+    "continue_in_contextmenu": "Fortsæt altid i genvejsmenu"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -1012,15 +1013,25 @@
     "pricing__upgrade__popper_card__item4__title": "Bedste værdi for dine penge",
     "permission__pricing_hook__context_menu__title": "Opgrader for at låse op for ubegrænset AI-omskriver",
     "permission__pricing_hook__context_menu__description": "Med MaxAI's AI-omskriver kan du spare tid på korrekturlæsning og perfektionere dine ord på tværs af nettet, fra e-mail til sociale medier og mere.",
+    "floating_menu__button__show_detail": "Vis detaljer",
+    "floating_menu__textarea__placeholder": "Skriv eller indsæt din tekst her og bed AI om at forbedre, korrekturlæse, oversætte, opsummere og mere.",
+    "floating_menu__always_pin_sidebar_title": "Altid fastgør til sidebjælken",
+    "sidebar__tabs__rewrite__title": "Omskriv",
+    "sidebar__tabs__rewrite__tooltip": "Omskriv i AI",
+    "home_view__rewrite__title": "AI omskriver",
+    "home_view__rewrite__description": "Spar tid på korrekturlæsning og perfektionering af dine ord.",
+    "context_window__chat_history__continue_in_rewrite__title": "Fortsæt i omskrivning",
+    "floating_menu__always_pin_to_sidebar": "Vis altid svar i sidepanelet",
+    "floating_menu__pint_once_to_sidebar": "Vis svar i sidepanelet én gang",
+    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini er OpenAI's mest avancerede lille model, der tilbyder multimodale evner. Denne kompakte kraftcenter leverer tekstoutput med intelligens, der overgår GPT-3.5-Turbo, samtidig med at den opretholder en sammenlignelig hastighed. Ideel til mindre opgaver, herunder visionrelaterede applikationer.",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Opgrader for ubegrænset GPT-4o-mini",
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Oplev OpenAI's mest intelligente lille model endnu. GPT-4o-mini tilbyder overlegen præstation over GPT-3.5-turbo, med multimodale evner og lynhurtige svar.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Få adgang til GPT-4o-mini",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item1__description": "OpenAI's nyeste model",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Betydeligt klogere end GPT-3.5-Turbo",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Så hurtig som GPT-3.5-Turbo",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Understøtter tekst- og synsfunktioner",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Forbedret flersproget forståelse",
-    "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini er OpenAI's mest avancerede lille-skala model, der tilbyder multimodale evner. Denne kompakte kraftcenter leverer tekstoutput med intelligens, der overgår GPT-3.5-Turbo, samtidig med at den opretholder en sammenlignelig hastighed. Ideel til mindre opgaver, herunder vision-relaterede applikationer.",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Opgrader for ubegrænset GPT-4o-mini",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Oplev OpenAI's mest intelligente lille-skala model endnu. GPT-4o-mini tilbyder overlegen ydeevne i forhold til GPT-3.5-turbo, med multimodale evner og lynhurtige svar."
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Væsentligt klogere end GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Lige så hurtig som GPT-3.5-Turbo",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Understøtter tekst- og visionsevner",
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Forbedret flersproget forståelse"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

@@ -152,10 +152,6 @@ export const autoFocusWithAllWebsite = (
   focusTextareaAndAutoSize(textareaElement, childrenHeight, minHeight)
 }
 
-const afterAutoFocusWithAllWebsite = (textareaElement: HTMLTextAreaElement) => {
-  console.log('afterRemoveModalEvent')
-}
-
 const AutoHeightTextarea: FC<{
   loading?: boolean
   error?: boolean
@@ -257,8 +253,7 @@ const AutoHeightTextarea: FC<{
       return () => {
         getInputMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
       }
-    }
-    if (InputId === MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID) {
+    } else if (InputId === MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID) {
       const handleInputUpdate = (newInputValue: string) => {
         if (newInputValue.startsWith('``NO_HISTORY_&#``\n')) {
           newInputValue = newInputValue.replace('``NO_HISTORY_&#``\n', '')
@@ -272,9 +267,6 @@ const AutoHeightTextarea: FC<{
           handleInputUpdate,
         )
       }
-    }
-    return () => {
-      // do nothing
     }
   }, [InputId])
   useEffect(() => {
@@ -625,7 +617,6 @@ const AutoHeightTextarea: FC<{
               event.currentTarget,
               ...computedChildrenHeight('blur'),
             )
-            afterAutoFocusWithAllWebsite(event.currentTarget)
           }}
           autoFocus={autoFocus}
         />

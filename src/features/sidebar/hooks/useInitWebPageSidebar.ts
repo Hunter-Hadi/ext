@@ -39,6 +39,7 @@ const useInitWebPageSidebar = () => {
     currentSidebarConversationType,
     updateSidebarConversationType,
     updateSidebarSummaryConversationId,
+    updateSidebarSettings,
   } = useSidebarSettings()
   const { createConversation } = useClientConversation()
   const { stopGenerate } = useClientChat()
@@ -119,6 +120,27 @@ const useInitWebPageSidebar = () => {
               }
             }
             break
+          case 'ContextMenu': {
+            {
+              if (sidebarSettingsRef.current?.contextMenu?.conversationId) {
+                // 切换回cache中的conversation
+                await switchSidebarConversation(
+                  sidebarSettingsRef.current?.contextMenu?.conversationId,
+                )
+              } else {
+                // 需要手动保存id到sidebarSettings中
+                const conversationId = await createConversation(
+                  currentSidebarConversationType,
+                )
+                updateSidebarSettings({
+                  contextMenu: {
+                    conversationId,
+                  },
+                })
+              }
+            }
+            break
+          }
         }
       }
       isUpdatingConversationRef.current = true

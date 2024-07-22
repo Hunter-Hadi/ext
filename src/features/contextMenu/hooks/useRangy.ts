@@ -33,6 +33,7 @@ const useRangy = () => {
       }
     })
   }
+
   const saveTempSelection = (selection: ISelection) => {
     setRangy((prevState) => {
       return {

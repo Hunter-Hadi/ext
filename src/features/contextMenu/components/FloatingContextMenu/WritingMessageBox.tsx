@@ -14,6 +14,7 @@ import {
   ContextWindowDraftContextMenuState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
+import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { SidebarSystemMessage } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages'
 import { formatUserMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
@@ -39,6 +40,8 @@ const WritingMessageBox: FC<{
     historyMessages,
     activeMessageIndex,
   } = useFloatingContextMenuDraft()
+
+  const { shortCutsEngine } = useShortCutsEngine()
 
   const message = useMemo(
     () => currentFloatingContextMenuDraft.replace(/^\s+/, ''),
@@ -146,7 +149,7 @@ const WritingMessageBox: FC<{
       }}
       component={'div'}
     >
-      {!!lastUserMessage && (
+      {lastUserMessage && title && (
         <Stack
           direction={'row'}
           gap={'8px'}

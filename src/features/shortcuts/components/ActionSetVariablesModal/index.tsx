@@ -532,7 +532,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         if (data.task === 'open' && data.config?.modelKey === modelKey) {
           setShow(false)
           setTimeout(() => {
-            console.log('SetVariablesModal', data)
             setConfig(data.config)
             if (data.config.waitForUserAction) {
               setPendingPromises([

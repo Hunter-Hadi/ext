@@ -469,7 +469,7 @@ const FloatingContextMenu: FC<{
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
         {...getFloatingProps()}
       >
-        {/* 当开始回答或有回答历史的时候一个调整大小 */}
+        {/* 当开始回答或有回答历史的时候可以调整大小 */}
         {(historyMessages.length !== 0 || loading) && (
           <ResizeAnchor onResize={handleResize} />
         )}
@@ -558,7 +558,8 @@ const FloatingContextMenu: FC<{
               {floatingDropdownMenu.open && (
                 <ActionSetVariablesModal
                   showCloseButton={false}
-                  showDiscardButton={false}
+                  showDiscardButton
+                  // showDiscardButton={false}
                   onInputCustomVariable={({ data, variables }) => {
                     // 判断是否有输入内容的输入框，过滤系统参数
                     const isInput = variables?.some((variable) =>

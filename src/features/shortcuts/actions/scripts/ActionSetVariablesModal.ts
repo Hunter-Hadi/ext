@@ -145,7 +145,6 @@ export class ActionSetVariablesModal extends Action {
       cloneConfig.template =
         cloneConfig.template || this.parameters?.compliedTemplate || ''
 
-      console.warn(new Error().stack, cloneConfig, params.isSidebar)
       const result: ActionSetVariablesConfirmData =
         await OneShotCommunicator.send(
           'SetVariablesModal',

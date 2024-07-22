@@ -1,5 +1,5 @@
 import SendIcon from '@mui/icons-material/Send'
-import { CircularProgress,Typography } from '@mui/material'
+import { CircularProgress, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import { red } from '@mui/material/colors'
 import IconButton from '@mui/material/IconButton'
@@ -154,11 +154,7 @@ const SidebarContextMenu: FC = () => {
     const customActions = await getChromeExtensionDBStorageButtonContextMenu(
       'textSelectPopupButton',
     )
-    console.log(
-      'handleContextMenuClick: ',
-      menuItem.data.actions,
-      customActions,
-    )
+
     if (
       menuItem.data.actions?.some((action) =>
         customActions.some(
@@ -254,90 +250,93 @@ const SidebarContextMenu: FC = () => {
         >
           <SidebarContextMenuTitlebar />
 
-          <Box
-            sx={{
-              width: '100%',
-              padding: '10px 0',
-            }}
-          >
+          {!isSettingCustomVariables && (
             <Box
               sx={{
                 width: '100%',
-                padding: '8px',
-                bgcolor: (t) =>
-                  t.palette.mode === 'dark' ? '#3B3D3E' : '#F4F4F4',
-                boxShadow: '0px 1px 2px rgba(16, 24, 40, 0.05)',
-                borderRadius: '8px',
-                boxSizing: 'border-box',
-                borderWidth: '1px',
-                borderColor: isContentEmptyError ? red[800] : 'transparent',
-                borderStyle: 'solid',
-
-                '& > textarea': {
-                  border: 'none',
-                  outline: 'none',
-                  background: 'transparent',
-                  width: '100%',
-                  height: '100%',
-                  resize: 'none',
-                  color: 'text.primary',
-                  lineHeight: '24px',
-                  fontFamily: 'Roboto',
-                  fontSize: '16px',
-                },
+                padding: '10px 0',
               }}
             >
-              <textarea
-                ref={textareaRef}
-                rows={10}
-                onClick={(event) => {
-                  event.stopPropagation()
-                }}
-                value={content}
-                onChange={(e) => {
-                  setIsContentEmptyError(false)
-                  setContent(e.target.value)
-                }}
-                onKeyDown={(event) => {
-                  // 直接跳转到AutoHeightTextarea而不是uploadFile
-                  if (event.key.toLowerCase() === 'tab') {
-                    const element = getMaxAISidebarRootElement()?.querySelector(
-                      `#${MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID}`,
-                    ) as HTMLTextAreaElement | undefined
+              <Box
+                sx={{
+                  width: '100%',
+                  padding: '8px',
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark' ? '#3B3D3E' : '#F4F4F4',
+                  boxShadow: '0px 1px 2px rgba(16, 24, 40, 0.05)',
+                  borderRadius: '8px',
+                  boxSizing: 'border-box',
+                  borderWidth: '1px',
+                  borderColor: isContentEmptyError ? red[800] : 'transparent',
+                  borderStyle: 'solid',
 
-                    element?.focus()
-                    event.preventDefault()
+                  '& > textarea': {
+                    border: 'none',
+                    outline: 'none',
+                    background: 'transparent',
+                    width: '100%',
+                    height: '100%',
+                    resize: 'none',
+                    color: 'text.primary',
+                    lineHeight: '24px',
+                    fontFamily: 'Roboto',
+                    fontSize: '16px',
+                  },
+                }}
+              >
+                <textarea
+                  ref={textareaRef}
+                  rows={10}
+                  onClick={(event) => {
                     event.stopPropagation()
-                  }
-                }}
-                onPaste={async (ev) => {
-                  ev.stopPropagation()
-                  const clipboardFiles = Array.from(
-                    ev.clipboardData?.items || [],
-                  )
-                    .map((dataItem) => dataItem.getAsFile?.())
-                    .filter((file): file is File => file !== null)
+                  }}
+                  value={content}
+                  onChange={(e) => {
+                    setIsContentEmptyError(false)
+                    setContent(e.target.value)
+                  }}
+                  onKeyDown={(event) => {
+                    // 直接跳转到AutoHeightTextarea而不是uploadFile
+                    if (event.key.toLowerCase() === 'tab') {
+                      const element =
+                        getMaxAISidebarRootElement()?.querySelector(
+                          `#${MAXAI_SIDEBAR_CONTEXTMENU_INPUT_ID}`,
+                        ) as HTMLTextAreaElement | undefined
 
-                  if (isContainMaxAIModelUploadFile(clipboardFiles)) {
-                    // 移除剪贴板的文本
-                    ev.preventDefault()
-                    // 粘贴处理
-                    await uploadFilesToMaxAIModel(clipboardFiles).catch(
-                      (err) => {
-                        console.log('onPaste upload error', err)
-                      },
+                      element?.focus()
+                      event.preventDefault()
+                      event.stopPropagation()
+                    }
+                  }}
+                  onPaste={async (ev) => {
+                    ev.stopPropagation()
+                    const clipboardFiles = Array.from(
+                      ev.clipboardData?.items || [],
                     )
-                  }
-                }}
-                placeholder={t('client:floating_menu__textarea__placeholder')}
-                autoFocus
-              />
+                      .map((dataItem) => dataItem.getAsFile?.())
+                      .filter((file): file is File => file !== null)
+
+                    if (isContainMaxAIModelUploadFile(clipboardFiles)) {
+                      // 移除剪贴板的文本
+                      ev.preventDefault()
+                      // 粘贴处理
+                      await uploadFilesToMaxAIModel(clipboardFiles).catch(
+                        (err) => {
+                          console.log('onPaste upload error', err)
+                        },
+                      )
+                    }
+                  }}
+                  placeholder={t('client:floating_menu__textarea__placeholder')}
+                  autoFocus
+                />
+              </Box>
             </Box>
-          </Box>
+          )}
 
           <ActionSetVariablesModal
             showCloseButton={false}
-            showDiscardButton={false}
+            showDiscardButton
             onChange={() => {
               setLoading(true)
               // setIsSettingCustomVariables(false)
@@ -347,6 +346,9 @@ const SidebarContextMenu: FC = () => {
               // } else if (reason === 'runPromptEnd') {
               //   setIsInputCustomVariables(false)
               // }
+            }}
+            onClose={() => {
+              setIsSettingCustomVariables(false)
             }}
             onShow={() => {
               setIsSettingCustomVariables(true)

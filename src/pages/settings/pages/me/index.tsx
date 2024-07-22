@@ -95,7 +95,7 @@ const SettingsMePage: FC = () => {
             </ListItemButton> */}
           </List>
 
-          {isPayingUser && !isPaymentOneTimeUser && !isTopPlanUser ? (
+          {!isPaymentOneTimeUser && !isTopPlanUser ? (
             <UpgradePlanSalesCard renderPlan='elite_yearly' />
           ) : null}
         </Stack>

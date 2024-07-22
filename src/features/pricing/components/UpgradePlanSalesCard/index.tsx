@@ -1,7 +1,7 @@
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
+import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
@@ -10,6 +10,8 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
 import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 
@@ -25,12 +27,21 @@ const UpgradePlanSalesCard: FC<IUpgradePlanSalesCardProps> = ({
   const { planPricingInfo } = usePlanPricingInfo()
   const planPricing = planPricingInfo[renderPlan]
 
-  const handleClickUpgrade = () => {
-    const paymentType = renderPlan.includes('yearly') ? 'yearly' : 'monthly'
-    window.open(
-      `${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=${renderPlan}&paymentType=${paymentType}`,
-      '_blank',
-    )
+  const { loading: userInfoLoading } = useUserInfo()
+
+  const { loading: paymentLoading, createPaymentSubscription } =
+    usePaymentCreator()
+
+  const handleClickUpgrade = async () => {
+    try {
+      await createPaymentSubscription(renderPlan)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  if (userInfoLoading) {
+    return null
   }
 
   return (
@@ -148,7 +159,8 @@ const UpgradePlanSalesCard: FC<IUpgradePlanSalesCardProps> = ({
           </Grid>
           <Grid item xs={12} sm={5} md={4}>
             <Stack>
-              <Button
+              <LoadingButton
+                loading={paymentLoading}
                 variant='contained'
                 fullWidth
                 startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
@@ -162,7 +174,7 @@ const UpgradePlanSalesCard: FC<IUpgradePlanSalesCardProps> = ({
                 onClick={handleClickUpgrade}
               >
                 {t('client:permission__pricing_hook__button__upgrade_now')}
-              </Button>
+              </LoadingButton>
               <Box textAlign='center' mt={0.5}>
                 <Link
                   href={`${APP_USE_CHAT_GPT_HOST}/pricing`}

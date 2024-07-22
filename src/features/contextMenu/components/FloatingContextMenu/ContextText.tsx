@@ -20,6 +20,8 @@ const ContextText: FC = () => {
     [currentSelection],
   )
 
+  if (!text) return null
+
   return (
     <Box
       sx={{

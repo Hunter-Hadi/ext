@@ -149,7 +149,7 @@ const WritingMessageBox: FC<{
       }}
       component={'div'}
     >
-      {lastUserMessage && title && (
+      {!!lastUserMessage && (
         <Stack
           direction={'row'}
           gap={'8px'}

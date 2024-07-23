@@ -263,7 +263,7 @@ export const formatAIMessageContentForClipboard = (
           }
           // 添加结尾
           const poweredByElement = doc.createElement('p')
-          poweredByElement.innerText = 'Powered by MaxAI.me'
+          poweredByElement.innerText = '\nPowered by MaxAI.me'
           doc.body.appendChild(poweredByElement)
         }
         break

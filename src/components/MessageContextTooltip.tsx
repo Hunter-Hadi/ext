@@ -76,11 +76,11 @@ const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
     return (message.meta?.attachments || []).filter(
       (attachment) => attachment.uploadStatus === 'success',
     )
-  }, [message.meta?.attachments])
+  }, [message, message.meta?.attachments])
 
   const context = useMemo(
     () => last(message.meta?.contexts ?? []),
-    [message.meta?.contexts],
+    [message, message.meta?.contexts],
   )
 
   const shortContext = useMemo(

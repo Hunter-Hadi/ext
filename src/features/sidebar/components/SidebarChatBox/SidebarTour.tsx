@@ -61,6 +61,8 @@ const Step2Content: FC = () => {
           label = t('maxai_tour:sidebar_tour__step__2__description_3')
         } else if (sidebarTab.value === 'Art') {
           label = t('maxai_tour:sidebar_tour__step__2__description_4')
+        } else if (sidebarTab.value === 'ContextMenu') {
+          label = t('maxai_tour:sidebar_tour__step__2__description_5')
         }
         return (
           <Stack

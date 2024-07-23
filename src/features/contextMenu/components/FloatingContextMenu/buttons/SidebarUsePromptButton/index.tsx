@@ -94,6 +94,7 @@ const SidebarUsePromptButton: FC<{
                 key: 'VariableModalKey',
                 value: 'Sidebar',
                 overwrite: true,
+                isBuiltIn: true,
               },
             },
           },

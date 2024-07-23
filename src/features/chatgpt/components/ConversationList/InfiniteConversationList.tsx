@@ -35,6 +35,7 @@ export interface IInfiniteConversationListProps {
   loadNextPage: () => void
   conversations: IPaginationConversation[]
   onSelectItem?: (conversation: IPaginationConversation) => void
+  disableModalPortal?: boolean
 }
 
 const createConversationListData = memoize(
@@ -367,7 +368,15 @@ const Row = memo(function RowItem({
                   }}
                   data-testid={'maxai--conversation--rename-chat--input'}
                   size={'small'}
-                  autoFocus
+                  ref={(element) => {
+                    // NOTE: 替代TextField的autoFocus，autoFocus在这里不生效，
+                    // 原因暂且不清楚
+                    if (element) {
+                      setTimeout(() => {
+                        element.querySelector('input')?.focus()
+                      }, 0)
+                    }
+                  }}
                   defaultValue={conversation.name}
                   onChange={(event) => {
                     event.stopPropagation()

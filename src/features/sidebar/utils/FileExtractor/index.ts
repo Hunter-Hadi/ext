@@ -78,7 +78,9 @@ class FileExtractor {
     }
     const result =
       this.supportedFileTypes.includes('.' + fileName.split('/').pop()) ||
-      this.supportedFileTypes.includes('.' + fileName.split('.').pop()) ||
+      this.supportedFileTypes.includes(
+        '.' + fileName.split('.').pop()?.toLowerCase(),
+      ) ||
       this.supportedFileTypes.includes('.' + fileName) ||
       this.supportedFileTypes.includes(fileName)
     if (!result && !checkFileNameIsImage(fileName)) {

@@ -1,4 +1,7 @@
-import { parseReadabilityDocument } from '@/features/chat-base/summary/utils/documentContentHelper'
+import {
+  getFormattedTextFromNodes,
+  getVisibleTextNodes,
+} from '@/features/chat-base/summary/utils/elementHelper'
 import { getIframeOrSpecialHostPageContent } from '@/features/chat-base/summary/utils/pageContentHelper'
 import {
   IShortcutEngineExternalEngine,
@@ -46,9 +49,12 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
       // }
       let result = await getIframeOrSpecialHostPageContent()
       if (!result) {
-        const clear = parseReadabilityDocument(document, false)
-        this.originalInnerText = result = document.body.innerText
-        clear()
+        this.originalInnerText = result = getFormattedTextFromNodes(
+          getVisibleTextNodes(document.body),
+        )
+        // const clear = parseReadabilityDocument(document, false)
+        // this.originalInnerText = result = document.body.innerText
+        // clear()
       }
       this.output = result
     } catch (e) {

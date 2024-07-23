@@ -833,9 +833,14 @@ export const MenuComponent = React.forwardRef<
                 onClickReferenceElement?.(event)
               },
               onKeyDownCapture(event) {
-                // NOTE: 这里是为了区分不让keydown去拦截input的event，
-                // 只拦截textarea的事件以免和LanguageSelector的autocomplete冲突
-                if (!(event.target instanceof HTMLTextAreaElement)) return false
+                // NOTE: 这里是为了区分不让keydown去拦截LanguageSelector的event，
+                if (
+                  getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                    '.LANGUAGE_SELECTOR_AUTOCOMPLETE',
+                  )
+                ) {
+                  return false
+                }
 
                 // 如果是enter非shiftKey并且是根节点
                 if (event.key === 'Enter' && !event.shiftKey && !parentId) {

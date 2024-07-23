@@ -1353,7 +1353,8 @@
     "sidebar_tour__step__5__feature_3__title": "聊天歷史",
     "sidebar_tour__step__5__feature_4__title": "使用截圖聊天",
     "sidebar_tour__step__5__feature_5__title": "一鍵提示",
-    "sidebar_tour__step__5__feature_6__title": "使用提示"
+    "sidebar_tour__step__5__feature_6__title": "使用提示",
+    "sidebar_tour__step__2__description_5": "重寫"
   },
   "quota_usage_card": {
     "category__fast_text": "快速AI",

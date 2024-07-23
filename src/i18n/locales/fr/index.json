@@ -1353,7 +1353,8 @@
     "sidebar_tour__step__5__feature_3__title": "Historique du chat",
     "sidebar_tour__step__5__feature_4__title": "Discussion avec capture d'écran",
     "sidebar_tour__step__5__feature_5__title": "Suggestions en 1 clic",
-    "sidebar_tour__step__5__feature_6__title": "Utiliser une suggestion"
+    "sidebar_tour__step__5__feature_6__title": "Utiliser une suggestion",
+    "sidebar_tour__step__2__description_5": "Réécrire"
   },
   "quota_usage_card": {
     "category__fast_text": "IA Rapide",

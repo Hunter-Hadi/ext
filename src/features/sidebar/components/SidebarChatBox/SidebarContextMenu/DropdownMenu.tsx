@@ -228,10 +228,7 @@ export interface MenuProps {
   menuWidth?: number
   hoverIcon?: React.ReactNode
   matcher?: TreeNavigatorMatcher
-
-  onNavigate?: (
-    arrow: 'ArrowUp' | 'ArrowLeft' | 'ArrowDown' | 'ArrowRight',
-  ) => void
+  menuItem?: IContextMenuItem
 }
 
 /**
@@ -257,6 +254,8 @@ export const DropdownMenuInternal = React.forwardRef<
       defaultFallbackPlacements,
       onClickContextMenu,
       menuWidth = 400,
+      matcher,
+      menuItem,
       ...props
     },
     forwardedRef,
@@ -292,11 +291,16 @@ export const DropdownMenuInternal = React.forwardRef<
             'left-end',
           ])
 
+    React.useEffect(() => {
+      if (!_isOpen && menuItem) {
+        matcher?.hoverLeave()
+      }
+    }, [isFirstLevelDropdown, _isOpen])
+
     const { x, y, strategy, refs, context } = useFloating({
       nodeId,
       open: isOpen,
       onOpenChange: (show) => {
-        if (openProp !== undefined) return
         setIsOpen(show)
       },
       placement: currentPlacement,
@@ -318,7 +322,7 @@ export const DropdownMenuInternal = React.forwardRef<
     const hover = useHover(context, {
       delay: { open: 100, close: 100 },
       handleClose: safePolygon({
-        blockPointerEvents: false,
+        blockPointerEvents: true,
       }),
     })
 

@@ -191,7 +191,7 @@ const Row = memo(function RowItem({
     },
     [],
   )
-  const handleSelectConversation = useCallback(async () => {
+  const handleSelectConversation = async () => {
     if (smoothConversationLoading) {
       return
     }
@@ -209,19 +209,10 @@ const Row = memo(function RowItem({
       )
     }
 
-    switch (conversation.type) {
-      case 'ContextMenu':
-      case 'Chat':
-      case 'Search':
-      case 'Art':
-        await updateConversationId(conversation.id)
-        updateSidebarConversationType(conversation.type)
-        break
-    }
     // 异步释放Background Conversation
     disposeBackgroundChatSystem(conversation.id).then().catch()
     onSelectItem?.(conversation)
-  }, [conversation, onSelectItem, smoothConversationLoading])
+  }
   useEffect(() => {
     if (!conversation && !isNextPageLoading) {
       // 说明是loading

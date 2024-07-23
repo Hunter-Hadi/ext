@@ -119,7 +119,6 @@ const LanguageSelector: FC<{
       </Button>
 
       <Popper
-        id='popper-language-selector'
         open={open}
         anchorEl={anchorEl}
         placement={placement}
@@ -171,6 +170,7 @@ const LanguageSelector: FC<{
               onClose={() => {
                 setOpen(false)
               }}
+              className='LANGUAGE_SELECTOR_AUTOCOMPLETE'
               noOptionsText={t('common:no_options')}
               disableClearable
               value={currentLanguage}

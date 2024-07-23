@@ -1,3 +1,4 @@
+
 import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
@@ -149,5 +150,13 @@ export default class TreeNavigatorMatcher {
     const index = this._path.findIndex((record) => record.item === item)
     if (index === -1) return false
     return index !== this._path.length - 1 || this.path[index].triggerByHover
+  }
+
+  hoverLeave() {
+    this.updatePath(
+      this.path
+        .slice(0, 1)
+        .map((pathItem) => ({ ...pathItem, triggerByHover: false })),
+    )
   }
 }

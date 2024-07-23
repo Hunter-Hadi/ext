@@ -195,136 +195,142 @@ export const useFetchPaginationConversations = (
     localIndex: 0,
   })
 
-  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
-    useInfiniteQuery({
-      queryKey: [
-        PAGINATION_CONVERSATION_QUERY_KEY,
-        maxAIBetaFeatures.chat_sync,
-        filter.type,
-        filter.isDelete,
-        filter.page_size,
-        userInfo?.user_id,
-      ],
-      queryFn: async (data) => {
-        // 更新filter
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isLoading,
+    isFetchingNextPage,
+    refetch,
+  } = useInfiniteQuery({
+    queryKey: [
+      PAGINATION_CONVERSATION_QUERY_KEY,
+      maxAIBetaFeatures.chat_sync,
+      filter.type,
+      filter.isDelete,
+      filter.page_size,
+      userInfo?.user_id,
+    ],
+    queryFn: async (data) => {
+      // 更新filter
+      setFilter((prev) => {
+        return {
+          ...prev,
+          page: data.pageParam,
+        }
+      })
+      if (remoteConversationStateRef.current.type !== filter.type) {
+        remoteConversationStateRef.current = {
+          type: filter.type,
+          totalPage: 0,
+          cache: {},
+          localIndex: 0,
+        }
+      }
+      if (data.pageParam === 0) {
+        remoteConversationStateRef.current.localIndex = 0
+      }
+      const { totalPage, localIndex, cache } =
+        remoteConversationStateRef.current
+      // 从远程获取filter.page_size个对话
+      const time = new Date().getTime()
+      let diffTimeUsage = 0
+      let remoteConversations: IConversation[] = []
+      console.debug(
+        `ConversationDB[V3] 获取会话列表:`,
+        `\nAPI最大页数:`,
+        totalPage,
+        `\n当前页数:`,
+        data.pageParam,
+        `\n是否远程加载:`,
+        cache[data.pageParam],
+        `\n localIndex:`,
+        localIndex,
+      )
+      if (
+        maxAIBetaFeatures.chat_sync &&
+        totalPage >= data.pageParam &&
+        (!cache[data.pageParam] || data.pageParam === 0)
+      ) {
+        const result = await clientFetchMaxAIAPI<{
+          current_page: number
+          current_page_size: number
+          data: []
+          msg: string
+          status: string
+          total_page: number
+        }>(`/conversation/get_conversation_list`, {
+          ...filter,
+          page: data.pageParam,
+        })
+        if (result?.data?.status === 'OK') {
+          remoteConversationStateRef.current.cache[data.pageParam] = true
+          remoteConversationStateRef.current.totalPage = Math.max(
+            result.data?.total_page || 0,
+            0,
+          )
+        }
         setFilter((prev) => {
           return {
             ...prev,
-            page: data.pageParam,
+            total_page: totalPage,
           }
         })
-        if (remoteConversationStateRef.current.type !== filter.type) {
-          remoteConversationStateRef.current = {
-            type: filter.type,
-            totalPage: 0,
-            cache: {},
-            localIndex: 0,
-          }
-        }
-        if (data.pageParam === 0) {
-          remoteConversationStateRef.current.localIndex = 0
-        }
-        const { totalPage, localIndex, cache } =
-          remoteConversationStateRef.current
-        // 从远程获取filter.page_size个对话
-        const time = new Date().getTime()
-        let diffTimeUsage = 0
-        let remoteConversations: IConversation[] = []
-        console.debug(
-          `ConversationDB[V3] 获取会话列表:`,
-          `\nAPI最大页数:`,
-          totalPage,
-          `\n当前页数:`,
-          data.pageParam,
-          `\n是否远程加载:`,
-          cache[data.pageParam],
-          `\n localIndex:`,
-          localIndex,
-        )
-        if (
-          maxAIBetaFeatures.chat_sync &&
-          totalPage >= data.pageParam &&
-          (!cache[data.pageParam] || data.pageParam === 0)
-        ) {
-          const result = await clientFetchMaxAIAPI<{
-            current_page: number
-            current_page_size: number
-            data: []
-            msg: string
-            status: string
-            total_page: number
-          }>(`/conversation/get_conversation_list`, {
-            ...filter,
-            page: data.pageParam,
-          })
-          if (result?.data?.status === 'OK') {
-            remoteConversationStateRef.current.cache[data.pageParam] = true
-            remoteConversationStateRef.current.totalPage = Math.max(
-              result.data?.total_page || 0,
-              0,
-            )
-          }
-          setFilter((prev) => {
-            return {
-              ...prev,
-              total_page: totalPage,
-            }
-          })
-          if (result?.data?.data) {
-            remoteConversations = result.data.data
-            await ClientConversationManager.diffRemoteConversationData(
-              remoteConversations,
-            )
-            diffTimeUsage = new Date().getTime() - time
-          }
-        }
-        const authorId = await getMaxAIChromeExtensionUserId()
-        // 从本地获取filter.page_size个对话
-        const conversations = await createIndexedDBQuery('conversations')
-          .conversations.orderBy('updated_at')
-          .filter(
-            dbSift({
-              lastMessageId: { $exists: true },
-              type: { $eq: filter.type },
-              isDelete: { $eq: filter.isDelete },
-              authorId: { $eq: authorId },
-            }),
+        if (result?.data?.data) {
+          remoteConversations = result.data.data
+          await ClientConversationManager.diffRemoteConversationData(
+            remoteConversations,
           )
-          .reverse()
-          .offset(localIndex || data.pageParam * filter.page_size)
-          .limit(filter.page_size)
-          .toArray()
-          .then()
-        const paginationConversations =
-          await conversationsToPaginationConversations(conversations)
-        remoteConversationStateRef.current.localIndex +=
-          paginationConversations.length
-        console.debug(
-          `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
-            conversations.length
-          }]耗时: Diff[${diffTimeUsage}]ms, LocalQuery[${
-            new Date().getTime() - time - diffTimeUsage
-          }】index[${remoteConversationStateRef.current.localIndex}]`,
-          filter,
-        )
-        return paginationConversations as Array<
-          IPaginationConversation & { order: number }
-        >
-      },
-      initialPageParam: 0,
-      getNextPageParam: (lastPage, allPages, lastPageParam) => {
-        // 说明本地和远程都没有数据
-        if (
-          lastPage.length === 0 &&
-          lastPageParam >= remoteConversationStateRef.current.totalPage
-        ) {
-          return undefined
+          diffTimeUsage = new Date().getTime() - time
         }
-        return lastPageParam + 1
-      },
-      enabled: controlEnable && maxAIBetaFeaturesLoaded && enabled && isLogin,
-      refetchOnWindowFocus: false,
-    })
+      }
+      const authorId = await getMaxAIChromeExtensionUserId()
+      // 从本地获取filter.page_size个对话
+      const conversations = await createIndexedDBQuery('conversations')
+        .conversations.orderBy('updated_at')
+        .filter(
+          dbSift({
+            lastMessageId: { $exists: true },
+            type: { $eq: filter.type },
+            isDelete: { $eq: filter.isDelete },
+            authorId: { $eq: authorId },
+          }),
+        )
+        .reverse()
+        .offset(localIndex || data.pageParam * filter.page_size)
+        .limit(filter.page_size)
+        .toArray()
+        .then()
+      const paginationConversations =
+        await conversationsToPaginationConversations(conversations)
+      remoteConversationStateRef.current.localIndex +=
+        paginationConversations.length
+      console.debug(
+        `ConversationDB[V3][对话列表] 获取列表[${data.pageParam}][${
+          conversations.length
+        }]耗时: Diff[${diffTimeUsage}]ms, LocalQuery[${
+          new Date().getTime() - time - diffTimeUsage
+        }】index[${remoteConversationStateRef.current.localIndex}]`,
+        filter,
+      )
+      return paginationConversations as Array<
+        IPaginationConversation & { order: number }
+      >
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages, lastPageParam) => {
+      // 说明本地和远程都没有数据
+      if (
+        lastPage.length === 0 &&
+        lastPageParam >= remoteConversationStateRef.current.totalPage
+      ) {
+        return undefined
+      }
+      return lastPageParam + 1
+    },
+    enabled: controlEnable && maxAIBetaFeaturesLoaded && enabled && isLogin,
+    refetchOnWindowFocus: false,
+  })
 
   const updatePaginationFilter = (
     filter: Partial<PaginationConversationsFilterType>,

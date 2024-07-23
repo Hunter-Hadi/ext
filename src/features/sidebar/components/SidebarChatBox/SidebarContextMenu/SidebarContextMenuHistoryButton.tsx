@@ -1,7 +1,6 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import CloseIcon from '@mui/icons-material/Close'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Fade from '@mui/material/Fade'
 import IconButton from '@mui/material/IconButton'
@@ -24,59 +23,14 @@ import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { MAXAI_APP_ROOT_ID } from '@/features/common/constants'
-import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
-
-const HistoryMessageList: FC<{
-  conversationId?: string
-  onDuplicateConversation?: (conversationId: string) => void
-  container: HTMLElement
-}> = ({ conversationId, onDuplicateConversation }) => {
-  const { t } = useTranslation(['client'])
-  const { continueConversationInSidebar } = useSidebarSettings()
-  if (!conversationId) {
-    return null
-  }
-  return (
-    <>
-      <SidebarChatBoxMessageListContainer
-        conversationId={conversationId}
-        isAIResponding={false}
-        writingMessage={null}
-        sx={{
-          textAlign: 'left',
-        }}
-      />
-      <Stack
-        direction={'row'}
-        justifyContent={'center'}
-        alignItems={'center'}
-        mb={2}
-      >
-        <Button
-          variant={'contained'}
-          color={'primary'}
-          onClick={async () => {
-            await continueConversationInSidebar(conversationId, {
-              type: 'Chat',
-            })
-            onDuplicateConversation?.(conversationId)
-          }}
-        >
-          {t('client:context_window__chat_history__continue_in_chat__title')}
-        </Button>
-      </Stack>
-    </>
-  )
-}
 
 const SidebarContextMenuHistoryButton: FC<{
   sx?: SxProps
   TooltipProps?: Omit<TextOnlyTooltipProps, 'title' | 'children'>
   container: HTMLElement
 }> = ({ sx, TooltipProps, container }) => {
-  const { createConversation } = useClientConversation()
+  const { createConversation, updateConversationId } = useClientConversation()
   const { t } = useTranslation(['client'])
   const [modalOpen, setModalOpen] = React.useState(false)
   // 因为有keepMounted，所以需要这个来控制点击一次才能渲染
@@ -317,25 +271,15 @@ const SidebarContextMenuHistoryButton: FC<{
                     />
                   </Stack>
                   <Divider />
-                  {/* <HistoryMessageList */}
-                  {/*   conversationId={selectedConversationId} */}
-                  {/*   onDuplicateConversation={handleCloseModal} */}
-                  {/*   container={container} */}
-                  {/* /> */}
-                  <Box
-                    flex={1}
-                    overflow='auto'
-                    sx={{
-                      display: selectedConversationId ? 'none' : 'flex',
-                    }}
-                  >
+                  <Box flex={1} overflow='auto'>
                     <ConversationList
                       conversationType={'ContextMenu'}
                       hideClearAllButton
                       divider
-                      // onSelectConversation={(conversation) => {
-                      //   setSelectedConversationId(conversation.id)
-                      // }}
+                      onSelectConversation={(conversation) => {
+                        updateConversationId(conversation.id)
+                        handleCloseModal()
+                      }}
                       sx={{
                         width: '100%',
                         p: 0,

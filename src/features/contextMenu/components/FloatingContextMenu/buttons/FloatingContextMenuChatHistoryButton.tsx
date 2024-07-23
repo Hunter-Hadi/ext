@@ -99,9 +99,6 @@ const FloatingContextMenuChatHistoryButton: FC<{
   const paperRef = useRef<HTMLDivElement>()
   const [selectedConversationId, setSelectedConversationId] =
     useState<string>('')
-  const handleOpenModal = () => {
-    setModalOpen(true)
-  }
 
   const handleCloseModal = () => {
     if (selectedConversationId) {
@@ -137,7 +134,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
         paperRef.current?.focus()
       }, 100)
       setIsClickOpenOnce(true)
-      handleOpenModal()
+      setModalOpen(true)
       setPlacement(newPlacement)
     }
 

@@ -41,6 +41,7 @@ const DropdownItemWrapper = forwardRef<
         referenceElement={<DropdownItem {...rest} menuItem={menuItem} />}
         matcher={rest.matcher}
         open={rest.matcher?.matchOpenGroup(menuItem)}
+        menuItem={menuItem}
       >
         {menuItem.children.map((childMenuItem) => {
           return (

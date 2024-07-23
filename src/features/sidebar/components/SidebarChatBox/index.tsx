@@ -338,7 +338,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                       {t('client:sidebar__button__continue')}
                     </Button>
                   )}
-                {loading && writingMessage && (
+                {loading && (
                   <Button
                     sx={shortcutsActionBtnSxMemo}
                     disableElevation

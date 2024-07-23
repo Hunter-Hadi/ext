@@ -153,6 +153,16 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       } else if (renderData.content.contentType === 'image') {
         title = 'Creating image'
       }
+      if (renderData.content.title?.title) {
+        title = renderData.content.title.title
+      }
+      if (
+        renderData.content.title?.titleIcon &&
+        renderData.content.title?.titleIcon !== 'Loading'
+      ) {
+        icon = renderData.content.title?.titleIcon
+      }
+      // TODO 这里需要整理
       // 目前summary下可能content.text内容已经输出完了，deepDive正在输出，这时候content.titleIcon应该是已完成状态
       if (
         isSummaryMessage &&

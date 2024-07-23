@@ -549,6 +549,150 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
         AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
       },
     },
+    // TODO 下面是添加related questions逻辑
+    // 1. 如果有answer调用related questions显示deep loading
+    // 2. 如果related questions有输出取消deep loading渲染对应组件
+    // 3. 这里加一个related question内容长，后续应该放在某个action里实现
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'SEARCH_ANSWER',
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFCondition: 'Equals',
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFConditionalIfTrueActions: [],
+        WFConditionalIfFalseActions: [
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  content: {
+                    title: {
+                      title: 'Answer',
+                      titleIcon: 'SummaryInfo',
+                    },
+                  },
+                  metadata: {
+                    isComplete: false,
+                    deepDive: {
+                      title: {
+                        title: ' ',
+                        titleIcon: 'Loading',
+                      },
+                      value: '',
+                    },
+                  },
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'MAXAI_RESPONSE_RELATED',
+            parameters: {
+              template: `{{SEARCH_ANSWER}}`,
+            },
+          },
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              VariableName: 'RELATED_QUESTIONS',
+            },
+          },
+        ],
+      },
+    },
+    {
+      type: 'RENDER_TEMPLATE',
+      parameters: {
+        template: '{{RELATED_QUESTIONS}}',
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFCondition: 'Equals',
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFConditionalIfTrueActions: [
+          // 没有related question
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    isComplete: true,
+                    deepDive: {
+                      title: {
+                        title: '',
+                        titleIcon: '',
+                      },
+                      type: '' as any,
+                      value: '',
+                    },
+                  },
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有related question
+          {
+            type: 'RENDER_TEMPLATE',
+            parameters: {
+              template: `{{RELATED_QUESTIONS}}`,
+            },
+          },
+          {
+            type: 'SCRIPTS_LIST',
+            parameters: {},
+          },
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    isComplete: true,
+                    deepDive: {
+                      title: {
+                        title: 'Related',
+                        titleIcon: 'Layers',
+                      },
+                      type: 'related',
+                      value: '{{LAST_ACTION_OUTPUT}}' as any,
+                    },
+                  },
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+      },
+    },
   ]
   return {
     actions,

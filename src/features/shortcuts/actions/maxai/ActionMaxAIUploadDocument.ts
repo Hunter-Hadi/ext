@@ -87,8 +87,10 @@ export class ActionMaxAIUploadDocument extends Action {
     } else if (docType === 'pdf') {
       // pdf需要针对处理，如果文件大于32MB，后端会报错，前端按照json上传不影响用户summary和chat
       if (file instanceof File) {
-        if (file.size >= 32 * 1024 * 1024) {
+        if (file.size >= 30 * 1024 * 1024) {
           // 文件大于32mb，会上传失败，不影响后续chat这里file裁剪成json
+          // 这里修改成30mb，目前后端nginx是设置整个请求体不大于32mb，pureText按照800K裁剪，这里减去大概的2mb预留给pureText
+          // 下个版本后端调整nginx大小后，这里可以调整会32mb
           const pureTextMD5 = md5TextEncrypt(sliceText)
           const jsonData = { pureTextMD5 }
           const jsonBlob = new Blob([JSON.stringify(jsonData)], {

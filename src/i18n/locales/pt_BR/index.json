@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Digite ou cole seu texto aqui e peça para o AI melhorar, revisar, traduzir, resumir e mais.",
     "floating_menu__always_pin_sidebar_title": "Sempre fixar na barra lateral",
     "sidebar__tabs__rewrite__title": "Reescrever",
-    "sidebar__tabs__rewrite__tooltip": "Reescrever no AI",
+    "sidebar__tabs__rewrite__tooltip": "Reescritor de IA",
     "home_view__rewrite__title": "Reescritor de AI",
     "home_view__rewrite__description": "Economize tempo revisando e aprimorando suas palavras.",
     "context_window__chat_history__continue_in_rewrite__title": "Continuar na reescrita",

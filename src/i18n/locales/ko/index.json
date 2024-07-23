@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "여기에 텍스트를 입력하거나 붙여넣고 AI에게 개선, 교정, 번역, 요약 등을 요청하세요.",
     "floating_menu__always_pin_sidebar_title": "항상 사이드바에 고정",
     "sidebar__tabs__rewrite__title": "다시 쓰기",
-    "sidebar__tabs__rewrite__tooltip": "AI로 다시 쓰기",
+    "sidebar__tabs__rewrite__tooltip": "AI 재작성 도구",
     "home_view__rewrite__title": "AI 리라이터",
     "home_view__rewrite__description": "글의 교정과 완벽화에 시간을 절약하세요.",
     "context_window__chat_history__continue_in_rewrite__title": "다시 쓰기에서 계속",

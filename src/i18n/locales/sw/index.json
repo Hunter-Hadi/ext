@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Andika au bandika maandishi yako hapa na omba AI kuboresha, kuhariri, kutafsiri, kufupisha, na zaidi.",
     "floating_menu__always_pin_sidebar_title": "Daima piga kwa upande",
     "sidebar__tabs__rewrite__title": "Geuza",
-    "sidebar__tabs__rewrite__tooltip": "Geuza kwa AI",
+    "sidebar__tabs__rewrite__tooltip": "Mbadala wa AI",
     "home_view__rewrite__title": "Mgeuzaji wa AI",
     "home_view__rewrite__description": "Hifadhi muda kwa kuhariri na kuboresha maneno yako.",
     "context_window__chat_history__continue_in_rewrite__title": "Endelea katika kugeuza",

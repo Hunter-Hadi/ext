@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "यहाँ अपना पाठ लिखें या पेस्ट करें और AI से सुधार, प्रूफरीड, अनुवाद, सारांश और अधिक के लिए पूछें।",
     "floating_menu__always_pin_sidebar_title": "साइडबार में हमेशा पिन करें",
     "sidebar__tabs__rewrite__title": "पुनर्लेखन",
-    "sidebar__tabs__rewrite__tooltip": "AI में पुनर्लेखन",
+    "sidebar__tabs__rewrite__tooltip": "एआई रीव्राइटर",
     "home_view__rewrite__title": "AI पुनरलेखक",
     "home_view__rewrite__description": "प्रूफरीडिंग और अपने शब्दों को सही करने में समय बचाएं।",
     "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखन में जारी रखें",

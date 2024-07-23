@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "ここにテキストを入力または貼り付けて、AIに改善、校正、翻訳、要約などを依頼してください。",
     "floating_menu__always_pin_sidebar_title": "常にサイドバーに固定",
     "sidebar__tabs__rewrite__title": "書き換え",
-    "sidebar__tabs__rewrite__tooltip": "AIで書き換え",
+    "sidebar__tabs__rewrite__tooltip": "AIのリライター",
     "home_view__rewrite__title": "AIリライター",
     "home_view__rewrite__description": "校正や言葉を完璧にするのに時間を節約します。",
     "context_window__chat_history__continue_in_rewrite__title": "書き換えで続行",

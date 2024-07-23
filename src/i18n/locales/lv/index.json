@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Ierakstiet vai ielīmējiet tekstu šeit un lūdziet AI uzlabot, pārbaudīt, tulko, apkopot un citus darbus.",
     "floating_menu__always_pin_sidebar_title": "Vienmēr pielīmējiet sānjoslu",
     "sidebar__tabs__rewrite__title": "Pārrakstīt",
-    "sidebar__tabs__rewrite__tooltip": "Pārrakstīt ar AI",
+    "sidebar__tabs__rewrite__tooltip": "AI pārrakstītājs",
     "home_view__rewrite__title": "AI pārrakstītājs",
     "home_view__rewrite__description": "Ietaupiet laiku, pārbaudot un pilnveidojot savus vārdus.",
     "context_window__chat_history__continue_in_rewrite__title": "Turpiniet pārrakstīt",

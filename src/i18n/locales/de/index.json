@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "Geben Sie hier Ihren Text ein und bitten Sie KI um Verbesserung, Korrektur, Übersetzung, Zusammenfassung und mehr.",
     "floating_menu__always_pin_sidebar_title": "Immer an der Seitenleiste anheften",
     "sidebar__tabs__rewrite__title": "Umschreiben",
-    "sidebar__tabs__rewrite__tooltip": "Umschreiben in KI",
+    "sidebar__tabs__rewrite__tooltip": "KI-Umschreiber",
     "home_view__rewrite__title": "KI-Umschreiber",
     "home_view__rewrite__description": "Sparen Sie Zeit beim Korrekturlesen und Perfektionieren Ihrer Worte.",
     "context_window__chat_history__continue_in_rewrite__title": "In Umschreiben fortsetzen",

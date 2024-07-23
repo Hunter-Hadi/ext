@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Upišite ili zalijepite svoj tekst ovdje i zatražite od AI-a da poboljša, provjeri, prevede, sažme i još više.",
     "floating_menu__always_pin_sidebar_title": "Uvijek prikači na bočnu traku",
     "sidebar__tabs__rewrite__title": "Prepisati",
-    "sidebar__tabs__rewrite__tooltip": "Prepisati u AI-u",
+    "sidebar__tabs__rewrite__tooltip": "AI prepravitelj",
     "home_view__rewrite__title": "AI prepisivač",
     "home_view__rewrite__description": "Uštedite vrijeme na provjeri i usavršavanju svojih riječi.",
     "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepisivanju",

@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "તમારો લખાણ અથવા પેસ્ટ કરો અને AIને સુધારવા, પ્રૂફરીડ, અનુવાદ કરવા, સારાંશ કરવા માટે અહીં ટાઈપ કરો.",
     "floating_menu__always_pin_sidebar_title": "હંમેશા સાઇડબારમાં પિન કરો",
     "sidebar__tabs__rewrite__title": "રિવ્રાઇટ",
-    "sidebar__tabs__rewrite__tooltip": "AIમાં રિવ્રાઇટ કરો",
+    "sidebar__tabs__rewrite__tooltip": "એઆઈ રીવ્રાઇટર",
     "home_view__rewrite__title": "AI રિવ્રાઇટર",
     "home_view__rewrite__description": "તમારા શબ્દોને પ્રૂફરીડ અને પરફેક્ટ કરવામાં સમય બચાવો.",
     "context_window__chat_history__continue_in_rewrite__title": "રિવ્રાઇટમાં ચાલુ રાખો",

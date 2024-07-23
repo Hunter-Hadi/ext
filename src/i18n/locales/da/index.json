@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "Skriv eller indsæt din tekst her og bed AI om at forbedre, korrekturlæse, oversætte, opsummere og mere.",
     "floating_menu__always_pin_sidebar_title": "Altid fastgør til sidebjælken",
     "sidebar__tabs__rewrite__title": "Omskriv",
-    "sidebar__tabs__rewrite__tooltip": "Omskriv i AI",
+    "sidebar__tabs__rewrite__tooltip": "AI omskriver",
     "home_view__rewrite__title": "AI omskriver",
     "home_view__rewrite__description": "Spar tid på korrekturlæsning og perfektionering af dine ord.",
     "context_window__chat_history__continue_in_rewrite__title": "Fortsæt i omskrivning",

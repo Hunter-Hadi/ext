@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Įveskite ar įklijuokite savo tekstą čia ir paprašykite, kad dirbtinis intelektas jį pagerintų, ištaisytų, išverstų, suvestų įvairias išvadas ir kt.",
     "floating_menu__always_pin_sidebar_title": "Visada prisegti prie šoninės juostos",
     "sidebar__tabs__rewrite__title": "Perkurti",
-    "sidebar__tabs__rewrite__tooltip": "Perkurti naudojant dirbtinį intelektą",
+    "sidebar__tabs__rewrite__tooltip": "AI persirašytojas",
     "home_view__rewrite__title": "AI perkūrėjas",
     "home_view__rewrite__description": "Sutaupykite laiko redaguodami ir tobulindami savo žodžius.",
     "context_window__chat_history__continue_in_rewrite__title": "Tęsti perkūrime",

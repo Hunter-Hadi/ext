@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Digita o incolla qui il tuo testo e chiedi all'IA di migliorarlo, correggerlo, tradurlo, riassumerlo e altro ancora.",
     "floating_menu__always_pin_sidebar_title": "Sempre fissato alla barra laterale",
     "sidebar__tabs__rewrite__title": "Riscrivi",
-    "sidebar__tabs__rewrite__tooltip": "Riscrivi con l'IA",
+    "sidebar__tabs__rewrite__tooltip": "Riscrittura IA",
     "home_view__rewrite__title": "Riscrittore IA",
     "home_view__rewrite__description": "Risparmia tempo nella correzione e perfezionamento delle tue parole.",
     "context_window__chat_history__continue_in_rewrite__title": "Continua nella riscrittura",

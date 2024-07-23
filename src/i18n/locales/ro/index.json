@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Tastați sau lipiți textul aici și cereți AI să-l îmbunătățească, să-l corecteze, să-l traducă, să-l rezume și altele.",
     "floating_menu__always_pin_sidebar_title": "Pinați întotdeauna în bara laterală",
     "sidebar__tabs__rewrite__title": "Rescrieți",
-    "sidebar__tabs__rewrite__tooltip": "Rescrieți cu AI",
+    "sidebar__tabs__rewrite__tooltip": "Reformulare AI",
     "home_view__rewrite__title": "Rescriitor AI",
     "home_view__rewrite__description": "Economisiți timp la corectarea și perfecționarea cuvintelor dvs.",
     "context_window__chat_history__continue_in_rewrite__title": "Continuați în rescriere",

@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "येथे आपला मजकूर टाइप किव्हा पेस्ट करा आणि AI वर मदतीसाठी, तपासा, भाषांतर करा, सारांश करा आणि अधिक करा.",
     "floating_menu__always_pin_sidebar_title": "नेहमी साइडबारवर पिन करा",
     "sidebar__tabs__rewrite__title": "पुनर्लेखन",
-    "sidebar__tabs__rewrite__tooltip": "AI मध्ये पुनर्लेखन करा",
+    "sidebar__tabs__rewrite__tooltip": "AI पुनरलेखक",
     "home_view__rewrite__title": "AI पुनरलेखक",
     "home_view__rewrite__description": "आपल्या शब्दांचा तपासा करण्यात व सुधारण्यात वेळ वाचवा.",
     "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखनमध्ये सुरू ठेवा",

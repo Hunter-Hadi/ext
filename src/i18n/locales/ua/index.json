@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Введіть або вставте свій текст тут та попросіть штучний інтелект покращити, виправити, перекласти, підсумувати та інше.",
     "floating_menu__always_pin_sidebar_title": "Завжди прикріплюйте до бічної панелі",
     "sidebar__tabs__rewrite__title": "Переписати",
-    "sidebar__tabs__rewrite__tooltip": "Переписати за допомогою штучного інтелекту",
+    "sidebar__tabs__rewrite__tooltip": "AI переписувач",
     "home_view__rewrite__title": "Переписувач AI",
     "home_view__rewrite__description": "Зекономте час на виправленні та вдосконаленні своїх слів.",
     "context_window__chat_history__continue_in_rewrite__title": "Продовжуйте у переписуванні",

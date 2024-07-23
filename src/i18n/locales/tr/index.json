@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Metninizi buraya yazın veya yapıştırın ve AI'dan geliştirmesini, düzeltmesini, çevirisini, özetlemesini ve daha fazlasını isteyin.",
     "floating_menu__always_pin_sidebar_title": "Her zaman kenar çubuğuna sabitle",
     "sidebar__tabs__rewrite__title": "Yeniden yaz",
-    "sidebar__tabs__rewrite__tooltip": "AI ile yeniden yazın",
+    "sidebar__tabs__rewrite__tooltip": "AI yeniden yazıcı",
     "home_view__rewrite__title": "AI yeniden yazıcı",
     "home_view__rewrite__description": "Kelimelerinizi düzeltme ve mükemmelleştirme konusunda zaman kazanın.",
     "context_window__chat_history__continue_in_rewrite__title": "Yeniden yazmaya devam et",

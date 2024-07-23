@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "متن خود را اینجا تایپ یا وارد کنید و از هوش مصنوعی برای بهبود، تصحیح، ترجمه، خلاصه‌سازی و ... استفاده کنید.",
     "floating_menu__always_pin_sidebar_title": "همیشه به نوار کناری مهر کنید",
     "sidebar__tabs__rewrite__title": "بازنویسی",
-    "sidebar__tabs__rewrite__tooltip": "بازنویسی با هوش مصنوعی",
+    "sidebar__tabs__rewrite__tooltip": "بازنویسی هوشمند",
     "home_view__rewrite__title": "بازنویسی توسط هوش مصنوعی",
     "home_view__rewrite__description": "زمان خود را برای تصحیح و بهبود کلمات خود صرفه‌جویی کنید.",
     "context_window__chat_history__continue_in_rewrite__title": "ادامه در بازنویسی",

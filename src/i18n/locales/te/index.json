@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "మీ టెక్స్ట్ను ఇక్కడ టైప్ చేయండి లేదా పేస్ట్ చేయండి మరియు AI ను మెరుగుపరచండి, ప్రూఫ్రీడ్, అనువాదించండి, సంగ్రహించండి.",
     "floating_menu__always_pin_sidebar_title": "ఎప్పుడైనా సైడ్బార్లో పిన్ చేయండి",
     "sidebar__tabs__rewrite__title": "రీవ్రైట్",
-    "sidebar__tabs__rewrite__tooltip": "AI లో రీవ్రైట్",
+    "sidebar__tabs__rewrite__tooltip": "AI రీవ్రైటర్",
     "home_view__rewrite__title": "AI రీవ్రైటర్",
     "home_view__rewrite__description": "మీ పదాలను ప్రూఫ్రీడింగ్ మరియు పూర్తి చేస్తూ సమయం సేవ్ చేయండి.",
     "context_window__chat_history__continue_in_rewrite__title": "రీవ్రైట్లో కొనసాగండి",

@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Nhập hoặc dán văn bản của bạn vào đây và yêu cầu AI cải thiện, kiểm tra lỗi chính tả, dịch, tóm tắt và nhiều hơn nữa.",
     "floating_menu__always_pin_sidebar_title": "Luôn ghim vào thanh bên",
     "sidebar__tabs__rewrite__title": "Viết lại",
-    "sidebar__tabs__rewrite__tooltip": "Viết lại bằng AI",
+    "sidebar__tabs__rewrite__tooltip": "Trình tái viết AI",
     "home_view__rewrite__title": "Máy viết lại AI",
     "home_view__rewrite__description": "Tiết kiệm thời gian trong việc kiểm tra lỗi và hoàn thiện từ của bạn.",
     "context_window__chat_history__continue_in_rewrite__title": "Tiếp tục trong viết lại",

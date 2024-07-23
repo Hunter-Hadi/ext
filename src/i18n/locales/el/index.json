@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "Πληκτρολογήστε ή επικολλήστε το κείμενό σας εδώ και ζητήστε από την AI να το βελτιώσει, να το διορθώσει, να το μεταφράσει, να το συνοψίσει και άλλα.",
     "floating_menu__always_pin_sidebar_title": "Πάντα καρφίτσωση στην πλευρική μπάρα",
     "sidebar__tabs__rewrite__title": "Αναδημιουργία",
-    "sidebar__tabs__rewrite__tooltip": "Αναδημιουργία με την AI",
+    "sidebar__tabs__rewrite__tooltip": "Αναδιατύπωση AI",
     "home_view__rewrite__title": "Αναδημιουργητής AI",
     "home_view__rewrite__description": "Εξοικονομήστε χρόνο στη διόρθωση και την τελειοποίηση των λέξεών σας.",
     "context_window__chat_history__continue_in_rewrite__title": "Συνέχεια στην αναδημιουργία",

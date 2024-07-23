@@ -740,7 +740,7 @@
     "sidebar__top_bar__rewards__title": "Rewards",
     "sidebar__top_bar__upgrade__title": "Upgrade",
     "sidebar__tabs__rewrite__title": "Rewrite",
-    "sidebar__tabs__rewrite__tooltip": "Rewrite in AI",
+    "sidebar__tabs__rewrite__tooltip": "AI rewriter",
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__chat__tooltip": "Ask AI anything",
     "sidebar__tabs__chat__action_btn__title": "New chat",

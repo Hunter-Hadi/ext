@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "Escriu o enganxa el teu text aquí i demana a l'IA que el millori, corregeixi, tradueixi, resumisca i més.",
     "floating_menu__always_pin_sidebar_title": "Fixa sempre a la barra lateral",
     "sidebar__tabs__rewrite__title": "Reescriu",
-    "sidebar__tabs__rewrite__tooltip": "Reescriu amb IA",
+    "sidebar__tabs__rewrite__tooltip": "Reescriptor d'IA",
     "home_view__rewrite__title": "Reescriptor d'IA",
     "home_view__rewrite__description": "Estalvia temps en correccions i perfeccionament de les teves paraules.",
     "context_window__chat_history__continue_in_rewrite__title": "Continua en reescriptura",

@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "Napište nebo vložte svůj text zde a požádejte AI o zlepšení, korekturu, překlad, shrnutí a další.",
     "floating_menu__always_pin_sidebar_title": "Vždy připnout na postranní panel",
     "sidebar__tabs__rewrite__title": "Přepsat",
-    "sidebar__tabs__rewrite__tooltip": "Přepsat v AI",
+    "sidebar__tabs__rewrite__tooltip": "AI přepisovač",
     "home_view__rewrite__title": "Přepisovač AI",
     "home_view__rewrite__description": "Ušetřete čas při korektuře a zdokonalování svých slov.",
     "context_window__chat_history__continue_in_rewrite__title": "Pokračovat v přepisu",

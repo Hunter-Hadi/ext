@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Typ of plak hier uw tekst en vraag AI om te verbeteren, controleren, vertalen, samenvatten en meer.",
     "floating_menu__always_pin_sidebar_title": "Altijd vastzetten aan de zijbalk",
     "sidebar__tabs__rewrite__title": "Herschrijven",
-    "sidebar__tabs__rewrite__tooltip": "Herschrijven in AI",
+    "sidebar__tabs__rewrite__tooltip": "AI herschrijver",
     "home_view__rewrite__title": "AI herschrijver",
     "home_view__rewrite__description": "Bespaar tijd bij het controleren en perfectioneren van uw woorden.",
     "context_window__chat_history__continue_in_rewrite__title": "Doorgaan in herschrijven",

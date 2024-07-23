@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "הקלד או הדבק טקסט כאן ובקש מהמודע המלאכותי לשפר, לערוך, לתרגם, לסכם ועוד.",
     "floating_menu__always_pin_sidebar_title": "תמיד הצמד לסרגל הצד",
     "sidebar__tabs__rewrite__title": "כתוב מחדש",
-    "sidebar__tabs__rewrite__tooltip": "כתוב מחדש במודע",
+    "sidebar__tabs__rewrite__tooltip": "כתיבת AI",
     "home_view__rewrite__title": "מחדש מודע",
     "home_view__rewrite__description": "חסוך זמן בעריכה ובשיפור המילים שלך.",
     "context_window__chat_history__continue_in_rewrite__title": "המשך במחדש",

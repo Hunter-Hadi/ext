@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "在此处键入或粘贴您的文本，并要求AI改进、校对、翻译、总结等。",
     "floating_menu__always_pin_sidebar_title": "始终固定到侧边栏",
     "sidebar__tabs__rewrite__title": "重写",
-    "sidebar__tabs__rewrite__tooltip": "在AI中重写",
+    "sidebar__tabs__rewrite__tooltip": "AI 重写器",
     "home_view__rewrite__title": "AI重写器",
     "home_view__rewrite__description": "节省校对和完善文字的时间。",
     "context_window__chat_history__continue_in_rewrite__title": "在重写中继续",

@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Tapez ou collez votre texte ici et demandez à l'IA d'améliorer, de relire, de traduire, de résumer, et plus encore.",
     "floating_menu__always_pin_sidebar_title": "Épingler toujours à la barre latérale",
     "sidebar__tabs__rewrite__title": "Réécrire",
-    "sidebar__tabs__rewrite__tooltip": "Réécrire en IA",
+    "sidebar__tabs__rewrite__tooltip": "Réécriture IA",
     "home_view__rewrite__title": "Réécrivain IA",
     "home_view__rewrite__description": "Gagnez du temps sur la relecture et la perfection de vos mots.",
     "context_window__chat_history__continue_in_rewrite__title": "Continuer dans la réécriture",

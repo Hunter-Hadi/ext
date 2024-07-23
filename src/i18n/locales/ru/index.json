@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Введите или вставьте свой текст здесь и попросите ИИ улучшить, проверить правильность, перевести, суммировать и многое другое.",
     "floating_menu__always_pin_sidebar_title": "Всегда закреплять на боковой панели",
     "sidebar__tabs__rewrite__title": "Переписать",
-    "sidebar__tabs__rewrite__tooltip": "Переписать в ИИ",
+    "sidebar__tabs__rewrite__tooltip": "Искусственный интеллект для переписывания",
     "home_view__rewrite__title": "Переписыватель ИИ",
     "home_view__rewrite__description": "Экономьте время на проверке и совершенствовании своих слов.",
     "context_window__chat_history__continue_in_rewrite__title": "Продолжить в переписывании",

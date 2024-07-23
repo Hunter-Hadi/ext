@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Ovde unesite ili nalepite tekst i pitajte veštačku inteligenciju da ga poboljša, ispravi, prevede, sumira i još mnogo toga.",
     "floating_menu__always_pin_sidebar_title": "Uvek prikači na bočnu traku",
     "sidebar__tabs__rewrite__title": "Prepiši",
-    "sidebar__tabs__rewrite__tooltip": "Prepiši uz pomoć veštačke inteligencije",
+    "sidebar__tabs__rewrite__tooltip": "AI prepravka",
     "home_view__rewrite__title": "Veštački prepravljač",
     "home_view__rewrite__description": "Uštedite vreme na ispravljanju i usavršavanju svojih reči.",
     "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepravljanju",

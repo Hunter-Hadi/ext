@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "এখানে আপনার পাঠ্য টাইপ করুন অথবা পেস্ট করুন এবং AI এর সাহায্যে উন্নত করতে, প্রুফরিড, অনুবাদ, সারংশ এবং আরও কিছু করুন।",
     "floating_menu__always_pin_sidebar_title": "সাইডবারে সবসময় পিন করুন",
     "sidebar__tabs__rewrite__title": "পুনর্লেখা",
-    "sidebar__tabs__rewrite__tooltip": "AI তে পুনর্লেখা",
+    "sidebar__tabs__rewrite__tooltip": "এআই রিওয়্রাইটার",
     "home_view__rewrite__title": "AI পুনর্লেখক",
     "home_view__rewrite__description": "প্রুফরিডিং এবং আপনার শব্দগুলি পারফেক্ট করার জন্য সময় সংরক্ষণ করুন।",
     "context_window__chat_history__continue_in_rewrite__title": "পুনর্লেখায় চালিয়ে যান",

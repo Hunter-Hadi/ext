@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "พิมพ์หรือวางข้อความของคุณที่นี่และขอ AI ช่วยปรับปรุง ตรวจสอบ แปลเพิ่มเติม",
     "floating_menu__always_pin_sidebar_title": "ติดตลาดไว้ในแถบด้านข้างเสมอ",
     "sidebar__tabs__rewrite__title": "เขียนใหม่",
-    "sidebar__tabs__rewrite__tooltip": "เขียนใหม่ด้วย AI",
+    "sidebar__tabs__rewrite__tooltip": "โปรแกรมเขียน AI",
     "home_view__rewrite__title": "AI เขียนใหม่",
     "home_view__rewrite__description": "ประหยัดเวลาในการตรวจสอบและปรับปรุงคำของคุณ",
     "context_window__chat_history__continue_in_rewrite__title": "เริ่มต้นในการเขียนใหม่",

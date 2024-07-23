@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "Kirjoita tai liitä tekstisi tähän ja pyydä tekoälyä parantamaan, oikolukemaan, kääntämään, tiivistämään ja enemmän.",
     "floating_menu__always_pin_sidebar_title": "Kiinnitä aina sivupalkkiin",
     "sidebar__tabs__rewrite__title": "Uudelleenkirjoitus",
-    "sidebar__tabs__rewrite__tooltip": "Uudelleenkirjoitus tekoälyllä",
+    "sidebar__tabs__rewrite__tooltip": "Tekoäly uudelleenkirjoittaja",
     "home_view__rewrite__title": "Tekoälyn uudelleenkirjoitus",
     "home_view__rewrite__description": "Säästä aikaa tekstisi oikolukemisessa ja hiomisessa.",
     "context_window__chat_history__continue_in_rewrite__title": "Jatka uudelleenkirjoituksessa",

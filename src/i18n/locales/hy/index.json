@@ -1012,7 +1012,7 @@
     "floating_menu__textarea__placeholder": "Մուտքագրեք ձեր տեքստը այստեղ և հարցեք AI-ին ազդեցնել, ստուգել, թարգմանել, ամրագրել և ավելին:",
     "floating_menu__always_pin_sidebar_title": "Միշտ կպտեք կողակին",
     "sidebar__tabs__rewrite__title": "Վերգրադարձ",
-    "sidebar__tabs__rewrite__tooltip": "Վերգրադարձեք AI-ում",
+    "sidebar__tabs__rewrite__tooltip": "ԱԻ վերագրող",
     "home_view__rewrite__title": "AI-ի վերգրադարձիչ",
     "home_view__rewrite__description": "Ժամանակ պահպանեք ստուգումների վերականգնում և ձեր բառերը համբուրելու վրա:",
     "context_window__chat_history__continue_in_rewrite__title": "Շարունակեք վերգրադարձում",

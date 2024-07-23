@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Mag-type o mag-paste ng iyong teksto dito at tanungin ang AI para sa pagpapabuti, pagsusuri, pagsasalin, pagbuod, at higit pa.",
     "floating_menu__always_pin_sidebar_title": "Laging i-pin sa sidebar",
     "sidebar__tabs__rewrite__title": "Ibalik",
-    "sidebar__tabs__rewrite__tooltip": "Ibalik sa AI",
+    "sidebar__tabs__rewrite__tooltip": "AI muling sumulat",
     "home_view__rewrite__title": "AI tagasulat",
     "home_view__rewrite__description": "Makatipid ng oras sa pagsusuri at pagpapakinis ng iyong mga salita.",
     "context_window__chat_history__continue_in_rewrite__title": "Magpatuloy sa pagsusulat muli",

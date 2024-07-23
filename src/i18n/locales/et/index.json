@@ -1017,7 +1017,7 @@
     "floating_menu__textarea__placeholder": "Tippige või kleepige siia oma tekst ja paluge AI-l seda parandada, toimetada, tõlkida, kokku võtta ja muud.",
     "floating_menu__always_pin_sidebar_title": "Alati kinnita küljeriba külge",
     "sidebar__tabs__rewrite__title": "Ümberkirjutus",
-    "sidebar__tabs__rewrite__tooltip": "Ümberkirjutus AI-s",
+    "sidebar__tabs__rewrite__tooltip": "AI ümberkirjutaja",
     "home_view__rewrite__title": "AI ümberkirjutaja",
     "home_view__rewrite__description": "Säästke aega tekstide toimetamisel ja täiustamisel.",
     "context_window__chat_history__continue_in_rewrite__title": "Jätka ümberkirjutuses",

@@ -1015,7 +1015,7 @@
     "floating_menu__textarea__placeholder": "Wpisz lub wklej tutaj swój tekst i poproś AI o poprawę, korektę, tłumaczenie, streszczenie i więcej.",
     "floating_menu__always_pin_sidebar_title": "Zawsze przypnij do paska bocznego",
     "sidebar__tabs__rewrite__title": "Przepisz",
-    "sidebar__tabs__rewrite__tooltip": "Przepisz w AI",
+    "sidebar__tabs__rewrite__tooltip": "Przekształcanie AI",
     "home_view__rewrite__title": "Przepisywacz AI",
     "home_view__rewrite__description": "Oszczędź czas na korekcie i doskonaleniu swoich słów.",
     "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisywaniu",

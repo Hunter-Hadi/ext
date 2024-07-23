@@ -221,6 +221,7 @@ export default class PageCitation implements ICitationService {
 
     try {
       const textNodes = getVisibleTextNodes(document.body)
+      // const txt = getFormattedTextFromNodes(textNodes)
       textNodes.some((item, index) => {
         if (Date.now() - this.searchTime > 1000 * 20) {
           // 查询时间大于20s超时返回

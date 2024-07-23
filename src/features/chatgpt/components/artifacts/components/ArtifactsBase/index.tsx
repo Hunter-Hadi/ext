@@ -91,14 +91,16 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
             },
           }}
         >
-          <TooltipIconButton
-            title={t(
-              'client:chat__artifacts__preview__tools__refresh_button__title',
-            )}
-            onClick={reloadArtifactsPreview}
-          >
-            <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Restart'} />
-          </TooltipIconButton>
+          {mode === 'preview' && (
+            <TooltipIconButton
+              title={t(
+                'client:chat__artifacts__preview__tools__refresh_button__title',
+              )}
+              onClick={reloadArtifactsPreview}
+            >
+              <ContextMenuIcon sx={{ fontSize: '24px' }} icon={'Restart'} />
+            </TooltipIconButton>
+          )}
           <Stack
             sx={{
               flexDirection: 'row',
@@ -145,7 +147,7 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
               </Typography>
             </Button>
           </Stack>
-          {!isImmersiveChatRef.current && mode === 'preview' && (
+          {!isImmersiveChatRef.current && (
             <TooltipIconButton
               title={t(
                 'client:chat__artifacts__preview__tools__fullscreen_button__title',

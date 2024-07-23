@@ -21,6 +21,7 @@ interface IProps {
   onSelectConversation?: (conversation: IPaginationConversation) => void
   emptyFeedback?: React.ReactNode
   sx?: SxProps
+  disableModalPortal?: boolean
 }
 
 const ConversationList: FC<IProps> = (props) => {
@@ -30,6 +31,7 @@ const ConversationList: FC<IProps> = (props) => {
     emptyFeedback,
     conversationType,
     onSelectConversation,
+    disableModalPortal,
   } = props
   const { resetConversation, currentSidebarConversationType } =
     useClientConversation()
@@ -82,6 +84,7 @@ const ConversationList: FC<IProps> = (props) => {
             hasNextPage={hasNextPage}
             isNextPageLoading={isFetching}
             onSelectItem={onSelectConversation}
+            disableModalPortal={disableModalPortal}
           />
         </AppLoadingLayout>
         {!loading && paginationConversations.length === 0

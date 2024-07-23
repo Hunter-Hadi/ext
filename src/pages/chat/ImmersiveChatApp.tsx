@@ -91,6 +91,7 @@ const App: FC = () => {
                 >
                   <SidebarNav />
                   <ConversationList
+                    disableModalPortal={false}
                     conversationType={currentSidebarConversationType}
                     sx={{
                       flex: 1,

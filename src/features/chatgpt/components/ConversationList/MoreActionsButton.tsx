@@ -29,6 +29,7 @@ const MoreActionsButton: FC<{
   conversationType: ISidebarConversationType
   onRename?: () => void
   onDelete?: () => void
+  disableModalPortal?: boolean
 }> = (props) => {
   const {
     conversationDisplaysText,
@@ -36,6 +37,7 @@ const MoreActionsButton: FC<{
     conversationId,
     onRename,
     onDelete,
+    disableModalPortal,
   } = props
   const {
     resetConversation,
@@ -193,7 +195,7 @@ const MoreActionsButton: FC<{
       </MaxAIMenu>
 
       <Modal
-        disablePortal={isContextWindow}
+        disablePortal={disableModalPortal ?? isContextWindow}
         open={deleteModalOpen}
         onClose={(e: MouseEvent) => {
           e.stopPropagation()

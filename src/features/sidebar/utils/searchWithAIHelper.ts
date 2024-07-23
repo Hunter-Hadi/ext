@@ -679,7 +679,7 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
                     isComplete: true,
                     deepDive: {
                       title: {
-                        title: 'Related',
+                        title: 'Keep exploring',
                         titleIcon: 'Layers',
                       },
                       type: 'related',

@@ -1353,7 +1353,8 @@
     "sidebar_tour__step__5__feature_3__title": "চ্যাট ইতিহাস",
     "sidebar_tour__step__5__feature_4__title": "স্ক্রিনশট সহ চ্যাট",
     "sidebar_tour__step__5__feature_5__title": "1-ক্লিক প্রম্পট",
-    "sidebar_tour__step__5__feature_6__title": "প্রম্পট ব্যবহার করুন"
+    "sidebar_tour__step__5__feature_6__title": "প্রম্পট ব্যবহার করুন",
+    "sidebar_tour__step__2__description_5": "পুনর্লেখন"
   },
   "quota_usage_card": {
     "category__fast_text": "দ্রুত AI",

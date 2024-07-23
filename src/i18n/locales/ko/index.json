@@ -1353,7 +1353,8 @@
     "sidebar_tour__step__5__feature_3__title": "채팅 기록",
     "sidebar_tour__step__5__feature_4__title": "스크린샷으로 채팅",
     "sidebar_tour__step__5__feature_5__title": "1-클릭 프롬프트",
-    "sidebar_tour__step__5__feature_6__title": "프롬프트 사용"
+    "sidebar_tour__step__5__feature_6__title": "프롬프트 사용",
+    "sidebar_tour__step__2__description_5": "다시 작성"
   },
   "quota_usage_card": {
     "category__fast_text": "빠른 AI",

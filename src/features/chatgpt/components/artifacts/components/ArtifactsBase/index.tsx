@@ -145,7 +145,7 @@ const ArtifactsBase: FC<IArtifactsBaseProps> = (props) => {
               </Typography>
             </Button>
           </Stack>
-          {!isImmersiveChatRef.current && (
+          {!isImmersiveChatRef.current && mode === 'preview' && (
             <TooltipIconButton
               title={t(
                 'client:chat__artifacts__preview__tools__fullscreen_button__title',

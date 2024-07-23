@@ -1036,7 +1036,8 @@
     "chat__artifacts__preview__tools__close_button__title": "Uždaryti",
     "chat__artifacts__feature_button__title": "MaxAI Artefaktai",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefaktai",
-    "chat__artifacts__feature_button__tooltip__description": "Paverčia savo idėjas į apčiuopiamą turinį. Įjungus, MaxAI generuos vizualinius artefaktus, tokius kaip kodą, dokumentus ir dizainus, tiesioginėje peržiūros juostoje, kai bendraujate."
+    "chat__artifacts__feature_button__tooltip__description": "Paverčia savo idėjas į apčiuopiamą turinį. Įjungus, MaxAI generuos vizualinius artefaktus, tokius kaip kodą, dokumentus ir dizainus, tiesioginėje peržiūros juostoje, kai bendraujate.",
+    "chat__artifacts__button__description__component": "Spustelėkite, kad atidarytumėte komponentą"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

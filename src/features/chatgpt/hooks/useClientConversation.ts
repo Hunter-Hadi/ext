@@ -99,6 +99,7 @@ const useClientConversation = () => {
   const currentSidebarConversationType = clientConversation?.type || 'Chat'
   const currentConversationIdRef = useRef(currentConversationId)
   const currentConversationTypeRef = useRef(clientConversation?.type)
+  const currentConversationAIModel = clientConversation?.meta.AIModel
   useEffect(() => {
     currentConversationIdRef.current = currentConversationId
   }, [currentConversationId])
@@ -332,6 +333,7 @@ const useClientConversation = () => {
     currentConversationId,
     updateConversationId,
     clientConversation,
+    currentConversationAIModel,
     currentConversationIdRef,
     currentSidebarConversationType,
     currentConversationTypeRef,

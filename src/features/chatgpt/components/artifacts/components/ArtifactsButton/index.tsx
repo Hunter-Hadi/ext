@@ -90,6 +90,7 @@ const ArtifactsFileIcon: FC<{
           />
         )
       case ArtifactsType.MERMAID:
+      case ArtifactsType.REACT:
       case ArtifactsType.CODE:
         return (
           <CodeOffOutlinedIcon
@@ -132,7 +133,7 @@ const ArtifactsFileIcon: FC<{
               zIndex: 2,
             }}
           >
-            {artifactsType?.toUpperCase()}
+            {String(artifactsType || '').toUpperCase()}
           </Typography>
         )
     }
@@ -198,6 +199,8 @@ const ArtifactsButton: FC<{
     switch (artifacts.type) {
       case ArtifactsType.CODE:
         return t('client:chat__artifacts__button__description__code')
+      case ArtifactsType.REACT:
+        return t('client:chat__artifacts__button__description__component')
       case ArtifactsType.MARKDOWN:
       case ArtifactsType.TEXT:
         return t('client:chat__artifacts__button__description__document')
@@ -220,8 +223,8 @@ const ArtifactsButton: FC<{
       isAutoOpenRef.current = true
       isOpenRef.current ? showArtifacts() : showArtifacts('code')
     } else {
+      updateArtifacts(artifacts)
       if (isOpenRef.current && isAutoOpenRef.current) {
-        updateArtifacts(artifacts)
         showArtifacts('preview')
         isAutoOpenRef.current = false
       }

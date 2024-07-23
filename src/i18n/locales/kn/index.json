@@ -1036,7 +1036,8 @@
     "chat__artifacts__preview__tools__close_button__title": "ಮುಚ್ಚು",
     "chat__artifacts__feature_button__title": "ಮ್ಯಾಕ್ಸ್ಏಐ ಕಲ್ಪನೆಗಳು",
     "chat__artifacts__feature_button__tooltip__title": "ಮ್ಯಾಕ್ಸ್ಏಐ ಕಲ್ಪನೆಗಳು",
-    "chat__artifacts__feature_button__tooltip__description": "ನಿಮ್ಮ ಕಲ್ಪನೆಗಳನ್ನು ವಾಸ್ತವವಾಗಿಯೂ ರೂಪಿಸಿ. ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಮ್ಯಾಕ್ಸ್ಏಐ ಚಾಟ್ ಮಾಧ್ಯಮದಲ್ಲಿ ನೀವು ಚಾಟ್ ಮಾಡುತ್ತಿರುವಾಗ ಕೋಡ್, ದಸ್ತಾವೇಜುಗಳು ಮತ್ತು ಡಿಜೈನ್‌ಗಳನ್ನು ಲೈವ್ ಪ್ರಿವ್ಯೂ ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ಉತ್ಪಾದಿಸುತ್ತದೆ."
+    "chat__artifacts__feature_button__tooltip__description": "ನಿಮ್ಮ ಕಲ್ಪನೆಗಳನ್ನು ವಾಸ್ತವವಾಗಿಯೂ ರೂಪಿಸಿ. ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಮ್ಯಾಕ್ಸ್ಏಐ ಚಾಟ್ ಮಾಧ್ಯಮದಲ್ಲಿ ನೀವು ಚಾಟ್ ಮಾಡುತ್ತಿರುವಾಗ ಕೋಡ್, ದಸ್ತಾವೇಜುಗಳು ಮತ್ತು ಡಿಜೈನ್‌ಗಳನ್ನು ಲೈವ್ ಪ್ರಿವ್ಯೂ ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ಉತ್ಪಾದಿಸುತ್ತದೆ.",
+    "chat__artifacts__button__description__component": "ಘಟಕವನ್ನು ತೆರೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -1036,7 +1036,8 @@
     "chat__artifacts__preview__tools__close_button__title": "Aizvērt",
     "chat__artifacts__feature_button__title": "MaxAI Artefakti",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakti",
-    "chat__artifacts__feature_button__tooltip__description": "Pārvērtiet savas idejas par konkrētu saturu. Ja iespējots, MaxAI radīs vizuālos artefaktus, piemēram, kodu, dokumentus un dizainus tiešsaistes priekšskatījuma panelī, kad jūs čatojat."
+    "chat__artifacts__feature_button__tooltip__description": "Pārvērtiet savas idejas par konkrētu saturu. Ja iespējots, MaxAI radīs vizuālos artefaktus, piemēram, kodu, dokumentus un dizainus tiešsaistes priekšskatījuma panelī, kad jūs čatojat.",
+    "chat__artifacts__button__description__component": "Noklikšķiniet, lai atvērtu komponentu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

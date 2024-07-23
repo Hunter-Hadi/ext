@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import supersub from 'remark-supersub'
 
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import MaxAIMarkdownComponents from '@/components/MaxAIMarkdown/components'
 import {
   IMaxAIMarkdownContext,
@@ -89,13 +90,15 @@ const MaxAIMarkdown: FC<{
 
   return (
     <MaxAIMarkdownContext.Provider value={providerValue}>
-      <ReactMarkdown
-        remarkPlugins={remarkPlugins}
-        rehypePlugins={rehypePlugins}
-        components={MaxAIMarkdownComponents}
-      >
-        {formatMarkdownText}
-      </ReactMarkdown>
+      <AppSuspenseLoadingLayout>
+        <ReactMarkdown
+          remarkPlugins={remarkPlugins}
+          rehypePlugins={rehypePlugins}
+          components={MaxAIMarkdownComponents}
+        >
+          {formatMarkdownText}
+        </ReactMarkdown>
+      </AppSuspenseLoadingLayout>
     </MaxAIMarkdownContext.Provider>
   )
 }

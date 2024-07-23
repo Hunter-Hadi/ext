@@ -1036,7 +1036,8 @@
     "chat__artifacts__preview__tools__close_button__title": "닫기",
     "chat__artifacts__feature_button__title": "MaxAI 아티팩트",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI 아티팩트",
-    "chat__artifacts__feature_button__tooltip__description": "아이디어를 구체적인 콘텐츠로 변환하세요. 활성화되면 MaxAI가 채팅하는 동안 코드, 문서 및 디자인과 같은 시각적 아티팩트를 실시간 미리보기 패널에 생성합니다."
+    "chat__artifacts__feature_button__tooltip__description": "아이디어를 구체적인 콘텐츠로 변환하세요. 활성화되면 MaxAI가 채팅하는 동안 코드, 문서 및 디자인과 같은 시각적 아티팩트를 실시간 미리보기 패널에 생성합니다.",
+    "chat__artifacts__button__description__component": "구성요소 열기를 클릭하세요"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

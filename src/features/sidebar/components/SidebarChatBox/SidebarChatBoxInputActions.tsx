@@ -14,6 +14,7 @@ import UserUpgradeButton from '@/features/auth/components/UserUpgradeButton'
 import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import { ArtifactsToggleButton } from '@/features/chatgpt/components/artifacts'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
 import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message'
@@ -31,6 +32,7 @@ const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
 }> = (props) => {
   const { onSendMessage } = props
+  const { currentConversationAIModel } = useClientConversation()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [inputValue, setInputValue] = useState('')
@@ -138,6 +140,7 @@ const SidebarChatBoxInputActions: FC<{
         {/* chat artifacts btn */}
         {currentSidebarConversationType === 'Chat' &&
           maxAIBetaFeatures.enabled_artifacts &&
+          currentConversationAIModel === 'claude-3-5-sonnet' &&
           !smoothConversationLoading && (
             <ArtifactsToggleButton
               onChange={async (enabled) => {
@@ -152,10 +155,9 @@ const SidebarChatBoxInputActions: FC<{
                   },
                 })
               }}
-              checked={userSettings?.features?.artifacts?.enabled}
+              checked={userSettings?.features?.artifacts?.enabled || false}
             />
           )}
-
         {/* search copilot btn */}
         {currentSidebarConversationType === 'Search' &&
           !smoothConversationLoading && <SearchWithAICopilotToggle />}

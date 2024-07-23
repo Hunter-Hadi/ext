@@ -1025,6 +1025,7 @@
     "chat__artifacts__feature_button__tooltip__description": "Transform your ideas into tangible content. When enabled, MaxAI will generate visual artifacts like code, documents, and designs in a live preview panel as you chat.",
     "chat__artifacts__button__description__empty": "Click to open",
     "chat__artifacts__button__description__code": "Click to open code",
+    "chat__artifacts__button__description__component": "Click to open component",
     "chat__artifacts__button__description__image": "Click to open image",
     "chat__artifacts__button__description__html": "Click to open website",
     "chat__artifacts__button__description__diagram": "Click to open diagram",

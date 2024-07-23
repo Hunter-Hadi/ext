@@ -1036,7 +1036,8 @@
     "chat__artifacts__preview__tools__close_button__title": "बंद करें",
     "chat__artifacts__feature_button__title": "मैक्सएआई आर्टिफैक्ट्स",
     "chat__artifacts__feature_button__tooltip__title": "मैक्सएआई आर्टिफैक्ट्स",
-    "chat__artifacts__feature_button__tooltip__description": "अपने विचारों को वास्तविक सामग्री में परिवर्तित करें। सक्षम किया जाए, तो MaxAI चैट करते समय एक लाइव पूर्वावलोकन पैनल में कोड, दस्तावेज़ और डिज़ाइन जैसी दृश्यात्मक आर्टिफैक्ट्स उत्पन्न करेगा।"
+    "chat__artifacts__feature_button__tooltip__description": "अपने विचारों को वास्तविक सामग्री में परिवर्तित करें। सक्षम किया जाए, तो MaxAI चैट करते समय एक लाइव पूर्वावलोकन पैनल में कोड, दस्तावेज़ और डिज़ाइन जैसी दृश्यात्मक आर्टिफैक्ट्स उत्पन्न करेगा।",
+    "chat__artifacts__button__description__component": "क्लिक करें ताकि कॉम्पोनेंट खुले"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -82,6 +82,7 @@ const MessageContexts: FC<{
       }
     }
   }, [open])
+
   if (!attachments.length && !contexts?.length) {
     return null
   }
@@ -246,6 +247,7 @@ const MessageContexts: FC<{
                           />
                           <CopyTooltipIconButton
                             PopperProps={{
+                              placement: 'bottom',
                               disablePortal: true,
                             }}
                             copyText={context.value?.trim() ?? ''}

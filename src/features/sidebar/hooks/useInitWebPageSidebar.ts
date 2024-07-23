@@ -181,9 +181,7 @@ const useInitWebPageSidebar = () => {
   const documentTitleRef = useRef('')
   const windowFocus = useWindowFocus()
   const isWindowFocusRef = useRef(windowFocus)
-  useEffect(() => {
-    isWindowFocusRef.current = windowFocus
-  }, [windowFocus])
+  isWindowFocusRef.current = windowFocus
   useEffect(() => {
     if (pageUrl && pageUrlRef.current !== pageUrl) {
       console.log(`isWindowFocusRef`, isWindowFocusRef.current)
@@ -206,11 +204,16 @@ const useInitWebPageSidebar = () => {
         (pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
           pageSummaryType === 'PDF_CRX_SUMMARY')
       ) {
-        if (pageConversationTypeRef.current !== 'Summary') {
-          updateSidebarConversationType('Summary')
-        }
-        updateSidebarSummaryConversationId()
         createConversation('Summary')
+        getMaxAIChromeExtensionUserId().then((userId) => {
+          const newSummaryConversationId = getPageSummaryConversationId({
+            userId,
+          })
+          updateSidebarSummaryConversationId(newSummaryConversationId)
+          if (pageConversationTypeRef.current !== 'Summary') {
+            updateSidebarConversationType('Summary')
+          }
+        })
         return
       }
       if (pageConversationTypeRef.current === 'Summary') {
@@ -225,7 +228,7 @@ const useInitWebPageSidebar = () => {
             updateSidebarConversationType('Chat')
             updateSidebarSummaryConversationId(newSummaryConversationId)
           } else {
-            updateSidebarSummaryConversationId()
+            updateSidebarSummaryConversationId(newSummaryConversationId)
           }
         })
       } else {

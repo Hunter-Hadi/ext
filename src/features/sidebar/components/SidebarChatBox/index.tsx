@@ -41,7 +41,7 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface IGmailChatBoxProps {
   sx?: SxProps
-  onReGenerate?: () => void
+  onReGenerate?: () => Promise<void>
   onStopGenerate?: () => void
   onReset?: () => void
   conversationId?: string
@@ -82,6 +82,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
+  const [regenerating, setRegenerating] = useState(false)
 
   const textareaPlaceholder = useMemo(() => {
     if (conversationType === 'Summary') {
@@ -152,6 +153,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   // }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
+    if (regenerating) return false
+
     if (conversationType === 'ContextMenu' && messages.length === 0) {
       return true
     }
@@ -307,8 +310,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                     startIcon={<CachedIcon />}
                     variant={'normalOutlined'}
                     disabled={loading}
-                    onClick={() => {
-                      onReGenerate?.()
+                    onClick={async () => {
+                      setRegenerating(true)
+                      await onReGenerate?.().catch(console.error)
+                      setRegenerating(false)
                     }}
                     sx={shortcutsActionBtnSxMemo}
                     data-testid='sidebar_actions__regenerate'

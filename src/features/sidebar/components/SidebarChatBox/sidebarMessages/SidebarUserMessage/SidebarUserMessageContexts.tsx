@@ -7,6 +7,7 @@ import Stack from '@mui/material/Stack'
 import { styled, SxProps } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
+import { last } from 'lodash-es'
 import React, { FC, Fragment, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -40,6 +41,7 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
 /**
  * 用于展示用户消息的上下文
  * @since 2024-02-28
+ * @deprecated 2024-07-23 使用componets/MessageContextTooltip代替了
  */
 const SidebarUserMessageContexts: FC<{
   message: IUserChatMessage
@@ -54,10 +56,14 @@ const SidebarUserMessageContexts: FC<{
       (attachment) => attachment.uploadStatus === 'success',
     )
   }, [message.meta?.attachments])
-  const contexts = message.meta?.contexts
-  const renderShortContent = useMemo(() => {
-    return contexts?.[0]?.value?.slice(0, 500).trim() || ''
-  }, [contexts])
+  const context = useMemo(
+    () => last(message.meta?.contexts ?? []),
+    [message.meta?.contexts],
+  )
+  const renderShortContent = useMemo(
+    () => context?.value.slice(0, 500).trim() || '',
+    [context],
+  )
 
   const extractedContentAttachments = attachments.filter((attachment) =>
     getMessageAttachmentExtractedContent(attachment, message),
@@ -89,7 +95,7 @@ const SidebarUserMessageContexts: FC<{
       }
     }
   }, [open])
-  if (!attachments.length && !contexts?.length) {
+  if (!attachments.length && !context) {
     return null
   }
 
@@ -132,13 +138,15 @@ const SidebarUserMessageContexts: FC<{
               >
                 <Stack gap={1}>
                   {attachments.map((attachment, index) => {
-                    let showDivider = false
-                    if (
-                      index !== attachments.length - 1 ||
-                      (contexts && contexts?.length > 0)
-                    ) {
-                      showDivider = true
-                    }
+                    const showDivider =
+                      index !== attachments.length - 1 || !!context
+                    // let showDivider = false
+                    // if (
+                    //   index !== attachments.length - 1 ||
+                    //   (contexts && contexts?.length > 0)
+                    // ) {
+                    //   showDivider = true
+                    // }
                     const attachmentExtractedContent =
                       getMessageAttachmentExtractedContent(attachment, message)
                     if (attachmentExtractedContent) {
@@ -211,9 +219,7 @@ const SidebarUserMessageContexts: FC<{
                     if (!attachment.uploadedUrl) {
                       return null
                     }
-                    {
-                      /*// 图片展示*/
-                    }
+                    // 图片展示
                     return (
                       <Fragment key={attachment.uploadedUrl}>
                         <LazyLoadImage
@@ -233,51 +239,42 @@ const SidebarUserMessageContexts: FC<{
                       </Fragment>
                     )
                   })}
-                  {contexts?.map((context, index) => {
-                    return (
-                      <Fragment key={index}>
-                        <Stack direction={'row'} gap={1} alignItems={'center'}>
-                          <Chip
-                            variant={'outlined'}
-                            label={context.key}
-                            color={'primary'}
-                            size='small'
-                            sx={{
-                              fontSize: '14px',
-                              width: 'max-content',
-                              bgcolor: (t) =>
-                                t.palette.mode === 'dark'
-                                  ? 'rgba(249,244,255)'
-                                  : 'rgba(249,244,255)',
-                            }}
-                          />
-                          <CopyTooltipIconButton
-                            PopperProps={{
-                              disablePortal: true,
-                            }}
-                            copyText={context.value?.trim() ?? ''}
-                          />
-                        </Stack>
-                        <Typography
-                          width={384}
-                          whiteSpace={'pre-wrap'}
-                          key={index}
-                          color={'text.primary'}
-                          textAlign={'left'}
-                          lineHeight={'24px'}
-                          fontSize={'16px'}
-                        >
-                          {context.value?.trim() ?? ''}
-                        </Typography>
-                        {
-                          // 最后一个不需要分割线
-                          index !== contexts.length - 1 && (
-                            <Divider sx={{ my: 0.5 }} />
-                          )
-                        }
-                      </Fragment>
-                    )
-                  })}
+                  {context && (
+                    <Fragment>
+                      <Stack direction={'row'} gap={1} alignItems={'center'}>
+                        <Chip
+                          variant={'outlined'}
+                          label={'Context'}
+                          color={'primary'}
+                          size='small'
+                          sx={{
+                            fontSize: '14px',
+                            width: 'max-content',
+                            bgcolor: (t) =>
+                              t.palette.mode === 'dark'
+                                ? 'rgba(249,244,255)'
+                                : 'rgba(249,244,255)',
+                          }}
+                        />
+                        <CopyTooltipIconButton
+                          PopperProps={{
+                            disablePortal: true,
+                          }}
+                          copyText={context.value?.trim() ?? ''}
+                        />
+                      </Stack>
+                      <Typography
+                        width={384}
+                        whiteSpace={'pre-wrap'}
+                        color={'text.primary'}
+                        textAlign={'left'}
+                        lineHeight={'24px'}
+                        fontSize={'16px'}
+                      >
+                        {context.value?.trim() ?? ''}
+                      </Typography>
+                    </Fragment>
+                  )}
                 </Stack>
               </Stack>
             }
@@ -289,7 +286,7 @@ const SidebarUserMessageContexts: FC<{
             onClose={() => setOpen(false)}
           >
             <Stack
-              onClick={(event) => {
+              onClick={() => {
                 setOpen(!open)
               }}
               gap={1}
@@ -320,7 +317,7 @@ const SidebarUserMessageContexts: FC<{
                     width={'100%'}
                     gap={0.5}
                   >
-                    {attachments.map((attachment, index) => {
+                    {attachments.map((attachment) => {
                       if (attachment.fileType.startsWith('image')) {
                         if (!attachment.uploadedUrl) {
                           return null

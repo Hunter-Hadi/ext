@@ -1,9 +1,12 @@
-import { Typography } from '@mui/material'
+import { KeyboardArrowDown } from '@mui/icons-material'
+import { Box, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import React, { FC, useEffect, useMemo, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
+import MessageContextTooltip from '@/components/MessageContextTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   isSystemMessage,
@@ -14,13 +17,10 @@ import {
   ContextWindowDraftContextMenuState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { SidebarSystemMessage } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages'
 import { formatUserMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
-
-import MessageContexts from './MessageContext'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -30,6 +30,7 @@ const WritingMessageBox: FC<{
   const setFloatingDropdownMenuSystemItems = useSetRecoilState(
     ContextWindowDraftContextMenuState,
   )
+  const { t } = useTranslation(['client'])
 
   const { clientWritingMessage, clientConversationMessages } =
     useClientConversation()
@@ -40,8 +41,6 @@ const WritingMessageBox: FC<{
     historyMessages,
     activeMessageIndex,
   } = useFloatingContextMenuDraft()
-
-  const { shortCutsEngine } = useShortCutsEngine()
 
   const message = useMemo(
     () => currentFloatingContextMenuDraft.replace(/^\s+/, ''),
@@ -181,7 +180,7 @@ const WritingMessageBox: FC<{
             {lastContent}
           </Typography>
 
-          <MessageContexts
+          <MessageContextTooltip
             message={lastUserMessage}
             container={tooltipContainer}
             sx={{
@@ -198,7 +197,40 @@ const WritingMessageBox: FC<{
                 },
               },
             }}
-          />
+            renderInContextMenu
+          >
+            {({ open, toggle }) => (
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: '4px',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(0, 0, 0, 0.12)',
+                  padding: '2px 6px',
+                  alignItems: 'center',
+                  userSelect: 'none',
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  toggle()
+                }}
+              >
+                <Box color='text.primary' fontSize={'14px'}>
+                  {t('floating_menu__button__show_detail')}
+                </Box>
+
+                <KeyboardArrowDown
+                  sx={{
+                    color: '#D9D9D9',
+                    height: '16px',
+                    width: '16px',
+                    transition: 'all 0.2s',
+                    transform: `rotate(${open ? 0.5 : 0}turn)`,
+                  }}
+                />
+              </Box>
+            )}
+          </MessageContextTooltip>
         </Stack>
       )}
 

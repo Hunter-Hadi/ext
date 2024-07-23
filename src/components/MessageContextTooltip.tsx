@@ -1,5 +1,4 @@
-import { KeyboardArrowDown } from '@mui/icons-material'
-import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
+import { ErrorOutlineOutlined } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
@@ -8,7 +7,14 @@ import { styled, SxProps } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import { last } from 'lodash-es'
-import React, { FC, Fragment, useEffect, useMemo, useState } from 'react'
+import React, {
+  FC,
+  Fragment,
+  ReactElement,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { getMessageAttachmentExtractedContent } from '@/background/src/chat/util'
@@ -18,7 +24,11 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
 import { MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID } from '@/features/common/constants'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import { IUserChatMessage } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IChatUploadFile,
+  IUserChatMessage,
+  IUserMessageMetaContextDataType,
+} from '@/features/indexed_db/conversations/models/Message'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -37,17 +47,30 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }))
 
-/**
- * fork from src/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts.tsx
- * 需要修改样式
- */
-const MessageContexts: FC<{
+interface IMessageContextTooltipChildrenProps {
+  open: boolean
+  context?: IUserMessageMetaContextDataType
+  attachments: IChatUploadFile[]
+  shortContext: string
+  toggle: VoidFunction
+}
+
+interface IMessageContextTooltipProps {
   message: IUserChatMessage
   sx?: SxProps
   container?: HTMLElement
-}> = (props) => {
+  renderInContextMenu?: boolean
+  children: (props: IMessageContextTooltipChildrenProps) => ReactElement
+}
+
+const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
+  message,
+  sx,
+  container,
+  renderInContextMenu,
+  children,
+}) => {
   const { t } = useTranslation(['client'])
-  const { message, sx, container } = props
   const [open, setOpen] = useState(false)
   const attachments = useMemo(() => {
     return (message.meta?.attachments || []).filter(
@@ -60,8 +83,13 @@ const MessageContexts: FC<{
     [message.meta?.contexts],
   )
 
+  const shortContext = useMemo(
+    () => context?.value.slice(0, 500).trim() || '',
+    [context],
+  )
+
   useEffect(() => {
-    if (open) {
+    if (open && renderInContextMenu) {
       const contextWindowRoot = getMaxAIFloatingContextMenuRootElement()
       if (isFloatingContextMenuVisible() && contextWindowRoot) {
         const clickEvent = new MouseEvent('click', {
@@ -86,9 +114,9 @@ const MessageContexts: FC<{
         }
       }
     }
-  }, [open])
+  }, [open, renderInContextMenu])
 
-  if (!attachments.length && !context) {
+  if (attachments.length === 0 && !context) {
     return null
   }
 
@@ -131,10 +159,9 @@ const MessageContexts: FC<{
               >
                 <Stack gap={1}>
                   {attachments.map((attachment, index) => {
-                    let showDivider = false
-                    if (index !== attachments.length - 1 || context) {
-                      showDivider = true
-                    }
+                    const showDivider =
+                      index !== attachments.length - 1 || context
+
                     const attachmentExtractedContent =
                       getMessageAttachmentExtractedContent(attachment, message)
                     if (attachmentExtractedContent) {
@@ -180,7 +207,7 @@ const MessageContexts: FC<{
                             alignItems={'center'}
                             gap={1}
                           >
-                            <ErrorOutlineOutlinedIcon
+                            <ErrorOutlineOutlined
                               sx={{ fontSize: '12px', color: 'inherit' }}
                             />
                             {t(
@@ -276,35 +303,13 @@ const MessageContexts: FC<{
             disableTouchListener
             onClose={() => setOpen(false)}
           >
-            <Box
-              sx={{
-                display: 'flex',
-                gap: '4px',
-                borderRadius: '8px',
-                border: '1px solid rgba(0, 0, 0, 0.12)',
-                padding: '2px 6px',
-                alignItems: 'center',
-                userSelect: 'none',
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                setOpen(!open)
-              }}
-            >
-              <Box color='text.primary' fontSize={'14px'}>
-                {t('floating_menu__button__show_detail')}
-              </Box>
-
-              <KeyboardArrowDown
-                sx={{
-                  color: '#D9D9D9',
-                  height: '16px',
-                  width: '16px',
-                  transition: 'all 0.2s',
-                  transform: `rotate(${open ? 0.5 : 0}turn)`,
-                }}
-              />
-            </Box>
+            {children({
+              open,
+              context,
+              attachments,
+              shortContext,
+              toggle: () => setOpen((prev) => !prev),
+            })}
           </LightTooltip>
         </Box>
       </MaxAIClickAwayListener>
@@ -312,4 +317,4 @@ const MessageContexts: FC<{
   )
 }
 
-export default MessageContexts
+export default MessageContextTooltip

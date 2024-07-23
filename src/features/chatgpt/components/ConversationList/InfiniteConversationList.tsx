@@ -59,6 +59,7 @@ const InfiniteConversationList: (
     loadNextPage,
     conversations,
     onSelectItem,
+    disableModalPortal,
   } = props
   const itemCount = hasNextPage
     ? conversations.length + 1
@@ -111,7 +112,9 @@ const InfiniteConversationList: (
               className={'maxai--conversation-list'}
               {...props}
             >
-              {Row}
+              {(rowProps) => (
+                <Row {...rowProps} disableModalPortal={disableModalPortal} />
+              )}
             </FixedSizeList>
           )}
         </AutoSizer>
@@ -124,6 +127,7 @@ const Row = memo(function RowItem({
   data,
   index,
   style,
+  disableModalPortal,
 }: {
   data: {
     items: IPaginationConversation[]
@@ -132,6 +136,7 @@ const Row = memo(function RowItem({
   }
   index: number
   style: React.CSSProperties
+  disableModalPortal?: boolean
 }) {
   // Data passed to List as "itemData" is available as props.data
   const { items, onSelectItem, isNextPageLoading } = data
@@ -425,6 +430,7 @@ const Row = memo(function RowItem({
                 gap={0.5}
               >
                 <MoreActionsButton
+                  disableModalPortal={disableModalPortal}
                   conversationAIProvider={conversation?.AIProvider}
                   conversationAIModel={conversation?.AIModel}
                   onRename={() => {

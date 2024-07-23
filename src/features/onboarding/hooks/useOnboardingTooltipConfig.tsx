@@ -141,6 +141,18 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `div[data-id="${CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION}"].floating-context-menu-item`,
         tooltipProps: {
+          beforeTooltipShow: async () => {
+            // FLOATING_CONTEXT_MENU_LIST_BOX 没打开过，不展示
+            const contextMenuListBoxTooltipOpened =
+              await getAlreadyOpenedCacheBySceneType(
+                'FLOATING_CONTEXT_MENU_LIST_BOX',
+              )
+            if (!contextMenuListBoxTooltipOpened) {
+              return false
+            }
+
+            return true
+          },
           title: t(
             'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1',
           ),
@@ -179,25 +191,32 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
             'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1',
           ),
           beforeTooltipShow: async () => {
-            return new Promise((resolve) => {
-              // 因为 FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE tooltip 可能比 FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM tooltip 先执行渲染判断，
-              // 所以 需要延迟一点再判断是否展示
-              setTimeout(() => {
-                const root = getMaxAIFloatingContextMenuRootElement()
-                // 不能和 FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM tooltip 同时显示
-                if (
-                  findOnboardingTooltipElement(
-                    'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM',
-                    root,
-                  )
-                ) {
-                  // 阻止 Tooltip 打开
-                  resolve(false)
-                } else {
-                  resolve(true)
-                }
-              }, 500)
-            })
+            await sleep(500)
+
+            const contextMenuRoot = getMaxAIFloatingContextMenuRootElement()
+            // 不能和 FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM tooltip 同时显示
+            if (
+              findOnboardingTooltipElement(
+                'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM',
+                contextMenuRoot,
+              )
+            ) {
+              // 阻止 Tooltip 打开
+              return false
+            }
+
+            // 不能和 FLOATING_CONTEXT_MENU_LIST_BOX tooltip 同时显示
+            if (
+              findOnboardingTooltipElement(
+                'FLOATING_CONTEXT_MENU_LIST_BOX',
+                contextMenuRoot,
+              )
+            ) {
+              // 阻止 Tooltip 打开
+              return false
+            }
+
+            return true
           },
           floatingMenuTooltip: true,
           placement: 'left',

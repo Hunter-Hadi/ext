@@ -379,6 +379,13 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
                         },
                         value: [],
                       },
+                      {
+                        title: {
+                          title: 'Deep dive',
+                          titleIcon: 'TipsAndUpdates',
+                        },
+                        value: 'Ask AI anything about the video...',
+                      },
                     ],
                   },
                   includeHistory: false,

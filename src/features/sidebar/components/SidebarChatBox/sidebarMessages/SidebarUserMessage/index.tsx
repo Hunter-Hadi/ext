@@ -65,7 +65,8 @@ const BaseSidebarUserMessage: FC<{
               gap={1}
               sx={{
                 borderRadius: '8px',
-                width: 'max-content',
+                maxWidth: '100%',
+                // width: 'max-content',
                 bgcolor: (t) =>
                   t.palette.mode === 'dark' ? '#393743' : '#F6F2F9',
                 borderLeft: '4px solid #9065B0',

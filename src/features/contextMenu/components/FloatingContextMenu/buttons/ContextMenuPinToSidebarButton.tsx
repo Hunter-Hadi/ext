@@ -54,8 +54,8 @@ const ContextMenuPinToSidebarButton: FC = () => {
     <TextOnlyTooltip
       title={
         pinToSidebar.always
-          ? t('floating_menu__always_pin_to_sidebar')
-          : t('floating_menu__always_unpin_to_sidebar')
+          ? t('floating_menu__always_unpin_to_sidebar')
+          : t('floating_menu__always_pin_to_sidebar')
       }
       onClick={() => {
         handleAlwaysPinToSidebar(!pinToSidebar.always)

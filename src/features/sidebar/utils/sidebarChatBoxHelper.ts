@@ -143,7 +143,7 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
     }
 
     // twitter下html添加relative导致context window的Popper位置错误
-    if (host === 'twitter.com') {
+    if (host === 'twitter.com' || host === 'npmjs.com') {
       document.body.style.position = 'relative'
     }
   }

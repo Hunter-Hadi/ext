@@ -23,6 +23,7 @@ import { formatUserMessageContent } from '@/features/sidebar/utils/chatMessagesH
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
+
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
 }> = ({ onChange }) => {
@@ -183,6 +184,25 @@ const WritingMessageBox: FC<{
           >
             {lastContent}
           </Typography>
+
+          {/* <MessageContexts */}
+          {/*   message={lastUserMessage} */}
+          {/*   container={tooltipContainer} */}
+          {/*   sx={{ */}
+          {/*     mt: 1, */}
+          {/*     mb: 2, */}
+          {/*     '& > div': { */}
+          {/*       maxWidth: '100%', */}
+          {/*       width: '100%', */}
+          {/*       '& > div': { */}
+          {/*         width: '100%', */}
+          {/*       }, */}
+          {/*       '& p[data-testid="user-message-short-contexts"]': { */}
+          {/*         width: '100%', */}
+          {/*       }, */}
+          {/*     }, */}
+          {/*   }} */}
+          {/* /> */}
 
           <MessageContextTooltip
             message={lastUserMessage}

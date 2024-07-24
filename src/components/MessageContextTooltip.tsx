@@ -95,12 +95,12 @@ const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
     if (open && renderInContextMenu) {
       const contextWindowRoot = getMaxAIFloatingContextMenuRootElement()
       if (isFloatingContextMenuVisible() && contextWindowRoot) {
-        const clickEvent = new MouseEvent('click', {
-          view: window,
-          bubbles: true,
-          cancelable: true,
-        })
-        contextWindowRoot.dispatchEvent(clickEvent)
+        // const clickEvent = new MouseEvent('click', {
+        //   view: window,
+        //   bubbles: true,
+        //   cancelable: true,
+        // })
+        // contextWindowRoot.dispatchEvent(clickEvent)
 
         // 临时解决在context window下click away失效
         // 因为ClickAwayListener绑定在了最外层的dom，点击context window阻止了冒泡
@@ -164,6 +164,7 @@ const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
               style: {
                 zIndex: 2147483647,
               },
+              transition: true,
             }}
             title={
               <Stack
@@ -311,12 +312,12 @@ const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
                 </Stack>
               </Stack>
             }
+            // placement={'bottom-start'}
             placement={'top'}
             arrow
             disableFocusListener
             disableHoverListener
             disableTouchListener
-            onClose={() => setOpen(false)}
           >
             <Box ref={childrenContainerRef}>
               {children({
@@ -324,7 +325,9 @@ const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
                 context,
                 attachments,
                 shortContext,
-                toggle: () => setOpen((prev) => !prev),
+                toggle: () => {
+                  setOpen((prev) => !prev)
+                },
               })}
             </Box>
           </LightTooltip>

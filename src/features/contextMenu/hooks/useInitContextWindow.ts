@@ -669,6 +669,7 @@ const useInitContextWindow = () => {
   useEffect(() => {
     isAIRespondingRef.current = clientWritingMessage.loading
   }, [clientWritingMessage.loading])
+
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       getInputMediator('floatingMenuInputMediator').updateInputValue('')
@@ -692,6 +693,9 @@ const useInitContextWindow = () => {
         )
       }
     }
+  }, [floatingDropdownMenu.open])
+
+  useEffect(() => {
     const createContextMenuConversation = async () => {
       isCreatingConversationRef.current = true
       if (currentConversationIdRef.current) {
@@ -728,7 +732,7 @@ const useInitContextWindow = () => {
       createContextMenuConversation().catch()
       isAIRespondingRef.current = false
     }
-  }, [floatingDropdownMenu.open])
+  }, [floatingDropdownMenu.open, pinToSidebar])
 
   return {
     loading,

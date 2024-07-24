@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Märkimisväärselt targem kui GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Nii kiire kui GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Toetab teksti- ja nägemisvõimeid",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parandatud mitmekeelne arusaamine"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parandatud mitmekeelne arusaamine",
+    "floating_menu__always_unpin_to_sidebar": "Kuva vastused alati kontekstimenüüs",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Kokkuvõte põhipunktidest",
+    "context_window__chat_history__continue_in_sidebar__title": "Jätka küljeribal"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

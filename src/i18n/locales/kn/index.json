@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-ಟರ್ಬೋವಿಗಿಂತ ಹೆಚ್ಚು ಬುದ್ಧಿವಂತ",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-ಟರ್ಬೋವಿನಂತೆ ವೇಗವಾಗಿ",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "ಟೆಕ್ಸ್ಟ್ ಮತ್ತು ವಿಶ್ವದ ಸಾಮರ್ಥ್ಯಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "ಮೆಕ್ಕಮೆಕ್ಕ ಬಲುಪಾದರಿಯ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವ ಸ್ಥಿತಿ"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "ಮೆಕ್ಕಮೆಕ್ಕ ಬಲುಪಾದರಿಯ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವ ಸ್ಥಿತಿ",
+    "floating_menu__always_unpin_to_sidebar": "ಎಲ್ಲಾ ಉತ್ತರಗಳನ್ನು ಸಂದರ್ಭ ಮೆನೂವಿನಲ್ಲಿ ಎಲ್ಲಾ ಸಮಯವೂ ಪಿನ್ ಮಾಡಿಕೊಳ್ಳಿ",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ",
+    "context_window__chat_history__continue_in_sidebar__title": "ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ಮುಂದುವರಿಸಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "比 GPT-3.5-Turbo 聰明得多",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "與 GPT-3.5-Turbo 一樣快",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "支持文本和視覺功能",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "改進的多語理解"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "改進的多語理解",
+    "floating_menu__always_unpin_to_sidebar": "始終在上下文菜單中顯示回應",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "總結要點",
+    "context_window__chat_history__continue_in_sidebar__title": "在側邊欄中繼續"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

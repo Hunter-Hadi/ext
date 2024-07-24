@@ -1031,7 +1031,10 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Uppgradera för obegränsad GPT-4o-mini",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Upplev OpenAI:s mest intelligenta småskaliga modell hittills. GPT-4o-mini erbjuder överlägsen prestanda jämfört med GPT-3.5-turbo, med multimodala funktioner och blixtsnabba svar.",
     "floating_menu__always_pin_to_sidebar": "Visa alltid svar i sidofältet",
-    "floating_menu__pint_once_to_sidebar": "Visa svar i sidofältet en gång"
+    "floating_menu__pint_once_to_sidebar": "Visa svar i sidofältet en gång",
+    "floating_menu__always_unpin_to_sidebar": "Visa alltid svar i kontextmenyn",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sammanfatta nyckelpunkter",
+    "context_window__chat_history__continue_in_sidebar__title": "Fortsätt i sidofältet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

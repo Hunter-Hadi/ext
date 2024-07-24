@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Væsentligt klogere end GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Lige så hurtig som GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Understøtter tekst- og visionsevner",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Forbedret flersproget forståelse"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Forbedret flersproget forståelse",
+    "floating_menu__always_unpin_to_sidebar": "Vis altid svar i kontekstmenu",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Opsummer nøglepunkter",
+    "context_window__chat_history__continue_in_sidebar__title": "Fortsæt i sidepanelet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

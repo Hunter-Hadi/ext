@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-टर्बो से काफी बुद्धिमान",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-टर्बो के तरह तेज",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "पाठ और दृश्य क्षमताओं का समर्थन करता है",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "सुधारी गई बहुभाषी समझ"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "सुधारी गई बहुभाषी समझ",
+    "floating_menu__always_unpin_to_sidebar": "सदैव संदेशों को संदर्भ मेनू में प्रदर्शित करें",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "मुख्य बिंदु सारांशित करें",
+    "context_window__chat_history__continue_in_sidebar__title": "साइडबार में जारी रखें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

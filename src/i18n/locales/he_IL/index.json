@@ -1031,7 +1031,10 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "שדרג ל-GPT-4o-mini בלתי מוגבל",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "חווי את הדגם בגודל קטן המוכשר ביותר של OpenAI עד כה. GPT-4o-mini מציע ביצועים יותר טובים מ-GPT-3.5-turbo, עם יכולות מרובות ותגובות מהירות כמו ברק.",
     "floating_menu__always_pin_to_sidebar": "תמיד הצג תגובות בסרגל הצד",
-    "floating_menu__pint_once_to_sidebar": "הצג תגובה בסרגל הצד פעם אחת"
+    "floating_menu__pint_once_to_sidebar": "הצג תגובה בסרגל הצד פעם אחת",
+    "floating_menu__always_unpin_to_sidebar": "תמיד הצג תגובות בתפריט ההקשר",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "סכם נקודות מרכזיות",
+    "context_window__chat_history__continue_in_sidebar__title": "המשך בסרגל הצד"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

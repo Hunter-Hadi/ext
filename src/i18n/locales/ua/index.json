@@ -1031,7 +1031,10 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Оновлення для необмеженого GPT-4o-mini",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Випробуйте найрозумнішу модель у малому масштабі від OpenAI. GPT-4o-mini пропонує вищу продуктивність порівняно з GPT-3.5-turbo, з багатомодальними можливостями та миттєвими відповідями.",
     "floating_menu__always_pin_to_sidebar": "Завжди відображати відповіді в бічній панелі",
-    "floating_menu__pint_once_to_sidebar": "Відображати відповідь в бічній панелі один раз"
+    "floating_menu__pint_once_to_sidebar": "Відображати відповідь в бічній панелі один раз",
+    "floating_menu__always_unpin_to_sidebar": "Завжди відображати відповіді в контекстному меню",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Узагальнити ключові моменти",
+    "context_window__chat_history__continue_in_sidebar__title": "Продовжити в бічній панелі"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

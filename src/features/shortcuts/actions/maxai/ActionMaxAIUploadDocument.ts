@@ -202,6 +202,8 @@ export class ActionMaxAIUploadDocument extends Action {
               // 新版本替换掉conversation里的content内容，减小大小
               content: '',
             },
+            // 新版本替换掉原先存储在meta里的docId
+            docId: '',
             // 新版本替换掉原先前端存储的prompt，减小大小
             systemPrompt: '',
           },

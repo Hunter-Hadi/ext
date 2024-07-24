@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-టర్బోకు కనిపించినది చాలా బుద్ధిమత్తమైనది",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-టర్బోకు వంటి త్వరగా",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "టెక్స్ట్ మరియు విజన్ సామర్థ్యాలను మద్దతు చేస్తుంది",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "మెరుగుపరచిన బహుభాషా అర్థం"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "మెరుగుపరచిన బహుభాషా అర్థం",
+    "floating_menu__always_unpin_to_sidebar": "యాప్ మెనూను ఎప్పటికప్పుడు సైడ్‌బార్‌లో పించండి",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "ముఖ్య పాయింట్‌లను సంగ్రహించు",
+    "context_window__chat_history__continue_in_sidebar__title": "సైడ్‌బార్‌లో కొనసాగండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

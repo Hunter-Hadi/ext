@@ -1031,7 +1031,10 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Frissítés korlátlan GPT-4o-mini használathoz",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Tapasztald meg az OpenAI legintelligensebb kis méretű modelljét, a GPT-4o-mini-t. A GPT-4o-mini kiváló teljesítményt nyújt a GPT-3.5-turbo felett, többmódszeres képességekkel és villámgyors válaszokkal.",
     "floating_menu__always_pin_to_sidebar": "Mindig jelenjen meg a válaszok az oldalsávban",
-    "floating_menu__pint_once_to_sidebar": "Egyszer jelenjen meg a válasz az oldalsávban"
+    "floating_menu__pint_once_to_sidebar": "Egyszer jelenjen meg a válasz az oldalsávban",
+    "floating_menu__always_unpin_to_sidebar": "Mindig jelenjen meg a válaszok a kontextusmenüben",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Összefoglalja a kulcsfontosságú pontokat",
+    "context_window__chat_history__continue_in_sidebar__title": "Folytatás az oldalsávban"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -1000,6 +1000,7 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Timestamped summary",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Unable to generate video without subtitles.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oops! Something unexpected happened. Please try again later.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Summarize key points",
     "sidebar__summary__nav__summary__my_own_prompts__tooltip__default": "My own prompts",
     "sidebar__summary__nav__summary__my_own_prompts__add_button_title___default": "Add my own prompt",
     "context_window__chat_history__button__title": "Context menu history",

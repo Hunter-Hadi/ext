@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Labis na mas matalino kaysa sa GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Kasing bilis ng GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Suporta sa mga kakayahan sa teksto at pangitain",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pinalakas na pang-unawa sa maraming wika"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pinalakas na pang-unawa sa maraming wika",
+    "floating_menu__always_unpin_to_sidebar": "Laging ipakita ang mga tugon sa menu ng konteksto",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Buod ng mga mahahalagang punto",
+    "context_window__chat_history__continue_in_sidebar__title": "Magpatuloy sa sidebar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

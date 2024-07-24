@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Merkittävästi älykkäämpi kuin GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Yhtä nopea kuin GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Tukee teksti- ja näköominaisuuksia",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parannettu monikielinen ymmärrys"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parannettu monikielinen ymmärrys",
+    "floating_menu__always_unpin_to_sidebar": "Näytä vastaukset aina kontekstivalikossa",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Tiivistä tärkeät kohdat",
+    "context_window__chat_history__continue_in_sidebar__title": "Jatka sivupalkissa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

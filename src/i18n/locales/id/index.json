@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Jauh lebih cerdas dari GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Secepat GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Mendukung kemampuan teks dan visi",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pemahaman multibahasa yang ditingkatkan"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pemahaman multibahasa yang ditingkatkan",
+    "floating_menu__always_unpin_to_sidebar": "Selalu tampilkan respon dalam menu konteks",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ringkasan poin kunci",
+    "context_window__chat_history__continue_in_sidebar__title": "Lanjutkan di sidebar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

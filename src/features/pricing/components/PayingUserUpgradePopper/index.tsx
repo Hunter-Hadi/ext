@@ -219,7 +219,7 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
                     <Link
                       href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
                       target={'_blank'}
-                      underline='none'
+                      underline='hover'
                     >
                       <Typography
                         variant='custom'

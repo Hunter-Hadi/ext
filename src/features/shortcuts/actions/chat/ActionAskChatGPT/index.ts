@@ -763,6 +763,16 @@ export class ActionAskChatGPT extends Action {
                 event: 'Client_updateUserSubscriptionInfo',
                 data: {},
               })
+
+              // art下触发的卡点把消息删除
+              if (sceneType === 'MAXAI_IMAGE_GENERATE_MODEL_DALL_E_3') {
+                if (outputMessageId) {
+                  await clientConversationEngine.deleteMessage([
+                    outputMessageId,
+                  ])
+                }
+              }
+
               this.error = sceneType
               return
             } else {

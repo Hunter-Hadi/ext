@@ -178,7 +178,7 @@ const UpgradePlanSalesCard: FC<IUpgradePlanSalesCardProps> = ({
               <Box textAlign='center' mt={0.5}>
                 <Link
                   href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
-                  underline='none'
+                  underline='hover'
                   target={'_blank'}
                 >
                   <Typography

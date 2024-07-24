@@ -119,10 +119,25 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `div[role=menu].dropdown-menu`,
         tooltipProps: {
-          beforeTooltipShow: async () => {
+          beforeTooltipShow: async (container?: HTMLElement | null) => {
             // 为了等 MENU_LIST_BOX 内容渲染完
             // 延迟 0.5s 显示
             await sleep(500)
+
+            if (container && container.isConnected) {
+              const improveWritingItem = container.querySelector(
+                `div.floating-context-menu-item[data-id="4e54395c-5e8b-4bbd-a309-b6057a4737d3"]`,
+              )
+              console.log(`zztest 2`, improveWritingItem)
+              if (improveWritingItem) {
+                return true
+              } else {
+                return false
+              }
+            } else {
+              return false
+            }
+
             return true
           },
           floatingMenuTooltip: true,
@@ -179,25 +194,32 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
             'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE__text1',
           ),
           beforeTooltipShow: async () => {
-            return new Promise((resolve) => {
-              // 因为 FLOATING_CONTEXT_MENU_INPUT_BOX_AFTER_AI_RESPONSE tooltip 可能比 FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM tooltip 先执行渲染判断，
-              // 所以 需要延迟一点再判断是否展示
-              setTimeout(() => {
-                const root = getMaxAIFloatingContextMenuRootElement()
-                // 不能和 FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM tooltip 同时显示
-                if (
-                  findOnboardingTooltipElement(
-                    'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM',
-                    root,
-                  )
-                ) {
-                  // 阻止 Tooltip 打开
-                  resolve(false)
-                } else {
-                  resolve(true)
-                }
-              }, 500)
-            })
+            await sleep(500)
+
+            const contextMenuRoot = getMaxAIFloatingContextMenuRootElement()
+            // 不能和 FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM tooltip 同时显示
+            if (
+              findOnboardingTooltipElement(
+                'FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM',
+                contextMenuRoot,
+              )
+            ) {
+              // 阻止 Tooltip 打开
+              return false
+            }
+
+            // 不能和 FLOATING_CONTEXT_MENU_LIST_BOX tooltip 同时显示
+            if (
+              findOnboardingTooltipElement(
+                'FLOATING_CONTEXT_MENU_LIST_BOX',
+                contextMenuRoot,
+              )
+            ) {
+              // 阻止 Tooltip 打开
+              return false
+            }
+
+            return true
           },
           floatingMenuTooltip: true,
           placement: 'left',

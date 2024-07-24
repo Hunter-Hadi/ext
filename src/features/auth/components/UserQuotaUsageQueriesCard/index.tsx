@@ -1,7 +1,5 @@
-import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
 import RefreshOutlinedIcon from '@mui/icons-material/RefreshOutlined'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
@@ -18,7 +16,6 @@ import { useTranslation } from 'react-i18next'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import PayingUserUpgradePopper from '@/features/pricing/components/PayingUserUpgradePopper'
 
 import FastAIUsageQueriesItem from './FastAIUsageQueriesItem'
 import ImageAIUsageQueriesItem from './ImageAIUsageQueriesItem'
@@ -127,31 +124,6 @@ const UserQuotaUsageQueriesCard = () => {
               </Stack>
             }
           />
-          {isFreeUser ? (
-            <PayingUserUpgradePopper
-              renderPlan='elite_yearly'
-              sx={{
-                width: 'unset',
-                px: 0,
-              }}
-              placement='bottom-end'
-            >
-              <Button
-                variant='contained'
-                fullWidth
-                startIcon={<ElectricBoltIcon sx={{ color: '#FFCB45' }} />}
-                sx={{
-                  fontSize: 16,
-                  px: 3,
-                  py: 1.5,
-                  borderRadius: 2,
-                  minWidth: 200,
-                }}
-              >
-                {t('client:permission__pricing_hook__button__upgrade_now')}
-              </Button>
-            </PayingUserUpgradePopper>
-          ) : null}
         </ListItem>
         {
           // 免费用户不需要显示下面的 quota 使用量

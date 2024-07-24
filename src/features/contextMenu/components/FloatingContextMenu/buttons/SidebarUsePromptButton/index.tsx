@@ -91,7 +91,7 @@ const SidebarUsePromptButton: FC<{
             type: 'SET_VARIABLE',
             parameters: {
               Variable: {
-                key: 'VariableModalKey',
+                key: 'VARIABLE_MODAL_KEY',
                 value: 'Sidebar',
                 overwrite: true,
                 isBuiltIn: true,

@@ -251,7 +251,7 @@ interface ActionParameters {
   ActionRepeatWithEachConcurrentLimit?: number
   ActionRepeatCount?: number
   isCopilot?: boolean
-  VariableModalKey?: 'Sidebar' | 'SidebarRewrite'
+  VARIABLE_MODAL_KEY?: 'Sidebar' | 'SidebarRewrite'
 }
 
 export default ActionParameters

@@ -159,7 +159,7 @@ const SidebarContextMenu: FC<{
       type: 'SET_VARIABLE',
       parameters: {
         Variable: {
-          key: 'VariableModalKey',
+          key: 'VARIABLE_MODAL_KEY',
           value: 'SidebarRewrite',
           overwrite: true,
           isBuiltIn: true,

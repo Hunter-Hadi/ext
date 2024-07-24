@@ -49,8 +49,8 @@ export class ActionSetVariablesModal extends Action {
       const conversation = engine.clientConversationEngine?.clientConversation
 
       // 若有通过SET_VARIABLE传进来的变量，直接使用它
-      if (params.VariableModalKey) {
-        cloneConfig.modelKey = params.VariableModalKey
+      if (params.VARIABLE_MODAL_KEY) {
+        cloneConfig.modelKey = params.VARIABLE_MODAL_KEY
       } else if (conversation) {
         // 基于type更新config的modelKey
         if (conversation.type === 'Chat') {

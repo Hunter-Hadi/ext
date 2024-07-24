@@ -90,7 +90,7 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '',
-          docType: 'youtube',
+          docType: 'page_content__youtube',
           doneType: 'document_create',
           file: {
             description: '{{SOCIAL_MEDIA_POST_CONTENT}}',
@@ -309,7 +309,7 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '',
-          docType: 'youtube',
+          docType: 'page_content__youtube',
           doneType: 'document_create',
           file: {
             description: '{{SOCIAL_MEDIA_POST_CONTENT}}',
@@ -633,7 +633,7 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '',
-          docType: 'youtube',
+          docType: 'page_content__youtube',
           doneType: 'document_create',
           file: {
             description: '{{SOCIAL_MEDIA_POST_CONTENT}}',
@@ -901,7 +901,7 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '',
-          docType: 'youtube',
+          docType: 'page_content__youtube',
           doneType: 'document_create',
           file: {
             description: '{{SOCIAL_MEDIA_POST_CONTENT}}',
@@ -1191,7 +1191,7 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '',
-          docType: 'youtube',
+          docType: 'page_content__youtube',
           doneType: 'document_create',
           file: {
             description: '{{SOCIAL_MEDIA_POST_CONTENT}}',

@@ -57,7 +57,7 @@ export class ActionMaxAICreateDocument extends Action {
         : documentConfig.docType
 
     switch (docType) {
-      case 'webpage':
+      case 'page_content__webpage':
         shortcutsEngine?.pushActions(
           [
             {
@@ -86,7 +86,7 @@ export class ActionMaxAICreateDocument extends Action {
                 MaxAIDocumentActionConfig: {
                   link: '{{CURRENT_WEBPAGE_URL}}',
                   pureText: '{{READABILITY_CONTENTS}}',
-                  docType: 'webpage',
+                  docType: 'page_content__webpage',
                   doneType: 'document_create',
                   file: {
                     readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
@@ -98,7 +98,7 @@ export class ActionMaxAICreateDocument extends Action {
           'after',
         )
         break
-      case 'email':
+      case 'page_content__email':
         shortcutsEngine?.pushActions(
           [
             {
@@ -117,7 +117,7 @@ export class ActionMaxAICreateDocument extends Action {
                 MaxAIDocumentActionConfig: {
                   link: '{{CURRENT_WEBPAGE_URL}}',
                   pureText: '{{READABILITY_CONTENTS}}',
-                  docType: 'email',
+                  docType: 'page_content__email',
                   doneType: 'document_create',
                   file: {
                     readabilityMarkdown: '{{READABILITY_CONTENTS}}',
@@ -129,7 +129,7 @@ export class ActionMaxAICreateDocument extends Action {
           'after',
         )
         break
-      case 'pdf':
+      case 'page_content__pdf':
         shortcutsEngine?.pushActions(
           [
             {
@@ -178,7 +178,7 @@ export class ActionMaxAICreateDocument extends Action {
                     parameters: {
                       MaxAIDocumentActionConfig: {
                         pureText: '{{READABILITY_CONTENTS}}',
-                        docType: 'pdf',
+                        docType: 'page_content__pdf',
                         doneType: 'document_create',
                         file: '{{PDF_FILE}}' as any,
                       },
@@ -191,7 +191,7 @@ export class ActionMaxAICreateDocument extends Action {
           'after',
         )
         break
-      case 'youtube':
+      case 'page_content__youtube':
         shortcutsEngine?.pushActions(
           [
             {
@@ -216,7 +216,7 @@ export class ActionMaxAICreateDocument extends Action {
                 MaxAIDocumentActionConfig: {
                   link: '{{CURRENT_WEBPAGE_URL}}',
                   pureText: '',
-                  docType: 'youtube',
+                  docType: 'page_content__youtube',
                   doneType: 'document_create',
                   file: {
                     description: '{{SOCIAL_MEDIA_POST_CONTENT}}',
@@ -242,14 +242,14 @@ export class ActionMaxAICreateDocument extends Action {
     const summaryType = getPageSummaryType()
     switch (summaryType) {
       case 'DEFAULT_EMAIL_SUMMARY':
-        return 'email'
+        return 'page_content__email'
       case 'PDF_CRX_SUMMARY':
-        return 'pdf'
+        return 'page_content__pdf'
       case 'YOUTUBE_VIDEO_SUMMARY':
-        return 'youtube'
+        return 'page_content__youtube'
       case 'PAGE_SUMMARY':
       default:
-        return 'webpage'
+        return 'page_content__webpage'
     }
   }
 

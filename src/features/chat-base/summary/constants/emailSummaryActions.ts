@@ -83,7 +83,7 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'email',
+          docType: 'page_content__email',
           doneType: 'document_create',
           file: {
             readabilityMarkdown: '{{READABILITY_CONTENTS}}',
@@ -290,7 +290,7 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'email',
+          docType: 'page_content__email',
           doneType: 'document_create',
           file: {
             readabilityMarkdown: '{{READABILITY_CONTENTS}}',
@@ -497,7 +497,7 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'email',
+          docType: 'page_content__email',
           doneType: 'document_create',
           file: {
             readabilityMarkdown: '{{READABILITY_CONTENTS}}',
@@ -704,7 +704,7 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'email',
+          docType: 'page_content__email',
           doneType: 'document_create',
           file: {
             readabilityMarkdown: '{{READABILITY_CONTENTS}}',

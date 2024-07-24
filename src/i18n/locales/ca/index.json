@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Significativament més intel·ligent que el GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tan ràpid com el GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Compatibilitat amb text i visió",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Millora en la comprensió multilingüe"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Millora en la comprensió multilingüe",
+    "floating_menu__always_unpin_to_sidebar": "Mostra sempre les respostes al menú contextual",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Resumir punts clau",
+    "context_window__chat_history__continue_in_sidebar__title": "Continua al panell lateral"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Výrazne inteligentnejší než GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Rovnako rýchly ako GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Podporuje textové a vizuálne schopnosti",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Vylepšené multijazyčné porozumenie"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Vylepšené multijazyčné porozumenie",
+    "floating_menu__always_unpin_to_sidebar": "Vždy zobrazovať odpovede v kontextovom menu",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Zhrnúť kľúčové body",
+    "context_window__chat_history__continue_in_sidebar__title": "Pokračovať v bočnom paneli"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

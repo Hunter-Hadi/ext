@@ -1031,7 +1031,10 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Sınırsız GPT-4o-mini için Yükseltme",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI'ın en zeki küçük ölçekli modeli olan GPT-4o-mini'yi deneyimleyin. GPT-3.5-turbo'ya göre üstün performans sunan GPT-4o-mini, çoklu mod kapasiteleri ve hızlı yanıtlar sunar.",
     "floating_menu__always_pin_to_sidebar": "Yanıtları her zaman kenar çubuğunda göster",
-    "floating_menu__pint_once_to_sidebar": "Yanıtı bir kez kenar çubuğunda göster"
+    "floating_menu__pint_once_to_sidebar": "Yanıtı bir kez kenar çubuğunda göster",
+    "floating_menu__always_unpin_to_sidebar": "Yanıtları her zaman içerik menüsünde göster",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ana noktaları özetle",
+    "context_window__chat_history__continue_in_sidebar__title": "Kenar çubuğunda devam et"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Značajno pametniji od GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Brz kao GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Podržava tekstualne i vizualne mogućnosti",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Poboljšano višejezično razumijevanje"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Poboljšano višejezično razumijevanje",
+    "floating_menu__always_unpin_to_sidebar": "Uvijek prikaži odgovore u kontekstnom izborniku",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sažmi ključne točke",
+    "context_window__chat_history__continue_in_sidebar__title": "Nastavi u bočnoj traci"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "ฉลาดมากกว่า GPT-3.5-Turbo อย่างมีนัย",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "เร็วเท่ากับ GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "รองรับความสามารถในการมองเห็นและข้อความ",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "เข้าใจหลายภาษาได้ดีขึ้น"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "เข้าใจหลายภาษาได้ดีขึ้น",
+    "floating_menu__always_unpin_to_sidebar": "แสดงคำตอบเสมอในเมนูบริเวณข้าง",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "สรุปจุดสำคัญ",
+    "context_window__chat_history__continue_in_sidebar__title": "ดำเนินการต่อในบริเวณข้าง"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

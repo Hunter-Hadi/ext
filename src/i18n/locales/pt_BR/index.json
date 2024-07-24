@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Significativamente mais inteligente que o GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tão rápido quanto o GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Suporta capacidades de texto e visão",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Melhor compreensão multilíngue"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Melhor compreensão multilíngue",
+    "floating_menu__always_unpin_to_sidebar": "Sempre exibir respostas no menu de contexto",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Resumir pontos-chave",
+    "context_window__chat_history__continue_in_sidebar__title": "Continuar na barra lateral"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

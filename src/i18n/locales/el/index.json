@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Σημαντικά πιο έξυπνο από το GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Τόσο γρήγορο όσο το GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Υποστηρίζει δυνατότητες κειμένου και όρασης",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Βελτιωμένη κατανόηση πολυγλωσσίας"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Βελτιωμένη κατανόηση πολυγλωσσίας",
+    "floating_menu__always_unpin_to_sidebar": "Πάντα εμφάνιση απαντήσεων στο μενού πλευρικής στήλης",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Συνοψίστε τα κύρια σημεία",
+    "context_window__chat_history__continue_in_sidebar__title": "Συνέχεια στην πλευρική στήλη"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

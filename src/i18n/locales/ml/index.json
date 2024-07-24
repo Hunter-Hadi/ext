@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-ടർബോയുടെതിനേക്കാള്‍ വലിയതായി ബുദ്ധിമുട്ടുള്ളത്",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-ടർബോയുടെതിനേക്കാള്‍ വേഗത്തിൽ",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "ടെക്സ്റ്റ് മറ്റുള്ളവരുടെ സാധ്യതകൾ പിന്തുണയ്ക്കുന്നു",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "മികച്ച ബഹുഭാഷാ പരിജ്ഞാനം"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "മികച്ച ബഹുഭാഷാ പരിജ്ഞാനം",
+    "floating_menu__always_unpin_to_sidebar": "എപ്പോഴും പ്രതികളെ സന്ദർഭ മെനുവിൽ പ്രദർശിപ്പിക്കുക",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "പ്രധാന പോയിന്റുകൾ സംഗ്രഹിക്കുക",
+    "context_window__chat_history__continue_in_sidebar__title": "സൈഡ്‌ബാർലേക്ക് തുടരുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

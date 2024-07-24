@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Толкова бърз, колкото GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Поддържа текстови и зрителни възможности",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Подобрено многоезично разбиране",
-    "context_window__chat_history__continue_in_rewrite__title": "Продължете в пренаписването"
+    "context_window__chat_history__continue_in_rewrite__title": "Продължете в пренаписването",
+    "floating_menu__always_unpin_to_sidebar": "Винаги показвайте отговорите в контекстното меню",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Резюмирайте ключовите точки",
+    "context_window__chat_history__continue_in_sidebar__title": "Продължете в страничната лента"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

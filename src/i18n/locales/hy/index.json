@@ -1028,7 +1028,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Ավելի զարգացված, քան GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Արատագործությունը նման է GPT-3.5-Turbo-ին",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Աջակցում է տեքստային և նկարագրության համարություններ",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Լարերի ավելի լավ հասկանում"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Լարերի ավելի լավ հասկանում",
+    "floating_menu__always_unpin_to_sidebar": "Անվերջ ցուցադրել պատասխանները կապի ընկերակցության մեջ",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ընդամենը ամրապնդել հիմնական կետերը",
+    "context_window__chat_history__continue_in_sidebar__title": "Շարունակել կողմանիշում"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -11,6 +11,7 @@ import {
   SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
   SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
   SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
+  SUMMARY__SUMMARIZE_VIDEO__KEY_TAKEAWAYS__PROMPT_ID,
   SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
   SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
 } from '@/constants'
@@ -136,6 +137,17 @@ export const PAGE_SUMMARY_NAV_LIST_MAP: Record<
         'client:sidebar__summary__nav__youtube_summary__tooltip__transcript',
       actions: YOUTUBE_SUMMARY_ACTIONS_MAP.transcript,
     },
+    {
+      title: 'Summarize key points',
+      icon: 'LongText',
+      key: 'keyTakeaways',
+      config: {
+        isAutoScroll: false,
+      },
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__key_takeaways',
+      actions: YOUTUBE_SUMMARY_ACTIONS_MAP.keyTakeaways,
+    },
   ],
   DEFAULT_EMAIL_SUMMARY: [
     {
@@ -242,6 +254,10 @@ export const PAGE_SUMMARY_NAV_CONTEXT_MENU_MAP: Record<
     transcript: {
       id: SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
       text: `[Summary] Show transcript`,
+    },
+    keyTakeaways: {
+      id: SUMMARY__SUMMARIZE_VIDEO__KEY_TAKEAWAYS__PROMPT_ID,
+      text: `[Summary] Summarize video (Key points)`,
     },
   },
 }

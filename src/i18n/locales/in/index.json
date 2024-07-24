@@ -1031,7 +1031,10 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Upgrade untuk GPT-4o-mini tanpa batas",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Rasakan model skala kecil paling cerdas dari OpenAI. GPT-4o-mini menawarkan kinerja superior dibanding GPT-3.5-turbo, dengan kemampuan multimodal dan respon yang cepat.",
     "floating_menu__always_pin_to_sidebar": "Selalu tampilkan respons di sidebar",
-    "floating_menu__pint_once_to_sidebar": "Tampilkan respons di sidebar sekali"
+    "floating_menu__pint_once_to_sidebar": "Tampilkan respons di sidebar sekali",
+    "floating_menu__always_unpin_to_sidebar": "Selalu tampilkan respon dalam menu konteks",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ringkasan poin kunci",
+    "context_window__chat_history__continue_in_sidebar__title": "Lanjutkan di sidebar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

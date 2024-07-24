@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Znacznie mądrzejszy niż GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Tak szybki jak GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Obsługuje możliwości tekstowe i wizyjne",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Udoskonalone zrozumienie wielojęzyczne"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Udoskonalone zrozumienie wielojęzyczne",
+    "floating_menu__always_unpin_to_sidebar": "Zawsze wyświetlaj odpowiedzi w menu kontekstowym",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Podsumuj kluczowe punkty",
+    "context_window__chat_history__continue_in_sidebar__title": "Kontynuuj w pasku bocznym"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

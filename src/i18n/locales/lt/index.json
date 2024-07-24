@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "Reikšmingai protingesnis nei GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "Toks greitas kaip GPT-3.5-Turbo",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "Palaiko teksto ir vizijos galimybes",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pagerinta daugiakalbė supratimas"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pagerinta daugiakalbė supratimas",
+    "floating_menu__always_unpin_to_sidebar": "Visada rodyti atsakymus kontekstinėje juostoje",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Suvesti pagrindinius taškus",
+    "context_window__chat_history__continue_in_sidebar__title": "Tęsti juostoje"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

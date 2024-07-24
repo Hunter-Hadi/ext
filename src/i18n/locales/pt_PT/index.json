@@ -1031,7 +1031,10 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Atualize para GPT-4o-mini ilimitado",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Experimente o modelo de pequena escala mais inteligente da OpenAI até agora. O GPT-4o-mini oferece desempenho superior ao GPT-3.5-turbo, com capacidades multimodais e respostas ultra-rápidas.",
     "floating_menu__always_pin_to_sidebar": "Mostrar sempre respostas na barra lateral",
-    "floating_menu__pint_once_to_sidebar": "Mostrar resposta na barra lateral uma vez"
+    "floating_menu__pint_once_to_sidebar": "Mostrar resposta na barra lateral uma vez",
+    "floating_menu__always_unpin_to_sidebar": "Sempre mostrar respostas no menu de contexto",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Resumir pontos-chave",
+    "context_window__chat_history__continue_in_sidebar__title": "Continuar na barra lateral"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

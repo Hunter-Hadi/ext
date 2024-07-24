@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-Turbo કરતા સારાં બુદ્ધિમત્ત છે",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-Turbo જેવું ઝડપી છે",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "ટેક્સ્ટ અને વિઝન સામર્થ્યોનું આધાર",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "સુધારેલ બહુભાષી સમજણ"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "સુધારેલ બહુભાષી સમજણ",
+    "floating_menu__always_unpin_to_sidebar": "હંગામી મેનૂમાં પ્રત્યુત્તરો હંગામી દરેક વખત દર્શાવો",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "મુખ્ય બિંદુઓનું સારાંશ કરો",
+    "context_window__chat_history__continue_in_sidebar__title": "સાઇડબારમાં ચાલુ રાખો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

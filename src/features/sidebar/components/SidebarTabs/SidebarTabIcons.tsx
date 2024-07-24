@@ -28,6 +28,9 @@ const SidebarTabIcons: FC<{ icon: string }> = ({ icon }) => {
   if (icon === 'Rewrite') {
     return <ContextMenuIcon icon='Rewrite' sx={memoSx} />
   }
+  if (icon === 'More') {
+    return <ContextMenuIcon icon='More' sx={memoSx} />
+  }
 
   return null
 }

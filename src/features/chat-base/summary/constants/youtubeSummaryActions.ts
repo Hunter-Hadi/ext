@@ -7,6 +7,7 @@ import {
 } from '@/background/defaultPromptsData/systemVariables'
 import {
   SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID,
+  SUMMARY__SUMMARIZE_VIDEO__KEY_TAKEAWAYS__PROMPT_ID,
   SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
   SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
 } from '@/constants'
@@ -18,6 +19,7 @@ export type YOUTUBE_SUMMARY_NAV_TYPES =
   | 'timestamped'
   | 'comment'
   | 'transcript'
+  | 'keyTakeaways'
 
 export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
   [key in YOUTUBE_SUMMARY_NAV_TYPES]: (messageId?: string) => ISetActionsType
@@ -1122,5 +1124,216 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
         ],
       },
     },
+  ],
+  keyTakeaways: (messageId) => [
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'add',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: messageId || uuidV4(),
+          text: '',
+          originalMessage: {
+            metadata: {
+              sourceWebpage: {
+                url: `{{CURRENT_WEBPAGE_URL}}`,
+                title: `{{CURRENT_WEBPAGE_TITLE}}`,
+              },
+              shareType: 'summary',
+              title: {
+                title: `Summarize key points`,
+              },
+              copilot: {
+                title: {
+                  title: 'Page insights',
+                  titleIcon: 'LaptopMac',
+                },
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'loading',
+                    icon: 'SmartToy',
+                  },
+                ],
+              },
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+      parameters: {
+        OperationElementSelector: 'ytd-watch-metadata #title',
+      },
+    },
+    {
+      type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
+      parameters: {},
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'YOUTUBE_TRANSCRIPTS',
+      },
+    },
+    {
+      type: 'MAXAI_UPLOAD_DOCUMENT',
+      parameters: {
+        MaxAIDocumentActionConfig: {
+          link: '{{CURRENT_WEBPAGE_URL}}',
+          pureText: '',
+          docType: 'youtube',
+          doneType: 'document_create',
+          file: {
+            description: '{{SOCIAL_MEDIA_POST_CONTENT}}',
+            author: '{{SOCIAL_MEDIA_POST_AUTHOR}}',
+            date: '{{SOCIAL_MEDIA_POST_DATE}}',
+            title: '{{SOCIAL_MEDIA_POST_TITLE}}',
+            comments: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS}}',
+            transcripts: '{{YOUTUBE_TRANSCRIPTS}}',
+          },
+        },
+      },
+    },
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'update',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+          text: '',
+          originalMessage: {
+            metadata: {
+              copilot: {
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'complete',
+                    icon: 'SmartToy',
+                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+                  },
+                ],
+              },
+            },
+            content: {
+              title: {
+                title: 'Summary',
+                titleIcon: 'Loading',
+              },
+              text: '',
+              contentType: 'text',
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'ASK_CHATGPT',
+      parameters: {
+        MaxAIPromptActionConfig: {
+          promptId: SUMMARY__SUMMARIZE_VIDEO__KEY_TAKEAWAYS__PROMPT_ID,
+          promptName: '[Summary] Summarize video (Key points)',
+          promptActionType: 'chat_complete',
+          variables: [
+            VARIABLE_CURRENT_WEBPAGE_URL,
+            VARIABLE_CURRENT_WEBSITE_DOMAIN,
+            VARIABLE_AI_RESPONSE_LANGUAGE,
+          ],
+          output: [],
+        },
+        AskChatGPTActionQuestion: {
+          text: '',
+          meta: {
+            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            contextMenu: {
+              id: SUMMARY__SUMMARIZE_VIDEO__KEY_TAKEAWAYS__PROMPT_ID,
+              parent: 'root',
+              droppable: false,
+              text: '[Summary] Summarize video (Key points)',
+              data: {
+                editable: false,
+                type: 'shortcuts',
+              },
+            },
+          },
+        },
+        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+        AskChatGPTActionOutput: 'message',
+      },
+    },
+    {
+      type: 'SCRIPTS_DICTIONARY',
+      parameters: {},
+    },
+    {
+      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+      parameters: {
+        ActionGetDictionaryKey: 'value',
+        ActionGetDictionaryValue: 'originalMessage.metadata.deepDive[0]',
+      },
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFCondition: 'Equals',
+        WFConditionalIfTrueActions: [
+          // 说明没有拿到related questions
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  metadata: {
+                    isComplete: true,
+                    deepDive: [
+                      {
+                        title: {
+                          title: 'Deep dive',
+                          titleIcon: 'TipsAndUpdates',
+                        },
+                        value: 'Ask AI anything about the video...',
+                      },
+                    ],
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [],
+      },
+    },
+    // {
+    //   type: 'CREATE_WEBSITE_CONTEXT',
+    //   parameters: {
+    //     CreateWebsiteContextConfig: {
+    //       summary: '{{SUMMARY_CONTENTS}}',
+    //       meta: {
+    //         readability: '{{READABILITY_CONTENTS}}',
+    //       },
+    //     },
+    //   },
+    // },
   ],
 }

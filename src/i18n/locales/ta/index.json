@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-டர்போவை மிகுந்த ஞானம் உள்ளது",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-டர்போவுடன் ஒருவரையும் வேகமாக பதில்களை வழங்குகிறது",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "உரை மற்றும் கண்ணோட்ட திறன்களை ஆதரிக்கிறது",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "மேம்படுத்தப்பட்ட பல மொழிகளை புரிந்துகொள்ளும்"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "மேம்படுத்தப்பட்ட பல மொழிகளை புரிந்துகொள்ளும்",
+    "floating_menu__always_unpin_to_sidebar": "எப்போதும் பதில்களை உள்ளடக்கும் பட்டியலில் கட்டுப்படுத்து",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "முக்கிய புரிகிகைகளை சுருக்கமாக சுருக்கு",
+    "context_window__chat_history__continue_in_sidebar__title": "பட்டியலில் தொடருங்கள்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

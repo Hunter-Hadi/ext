@@ -1031,7 +1031,10 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item2__description": "GPT-3.5-ٹربو سے کافی زیادہ ذہین",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item3__description": "GPT-3.5-ٹربو کی طرح تیز",
     "sidebar__promotion_dialog__gpt_4o_mini__content_item4__description": "متن اور وژن کی صلاحیتوں کی حمایت",
-    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "بہترین بہوجوبانی کی سمجھ"
+    "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "بہترین بہوجوبانی کی سمجھ",
+    "floating_menu__always_unpin_to_sidebar": "ہمیشہ سیاق و سباق مینو میں جوابات کو دکھائیں",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "اہم نکات کا خلاصہ",
+    "context_window__chat_history__continue_in_sidebar__title": "سائیڈبار میں جاری رکھیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

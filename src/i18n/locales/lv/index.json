@@ -1031,7 +1031,10 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Uzlabojiet, lai iegūtu neierobežotu GPT-4o-mini",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Izpētiet OpenAI visinteliģentāko mazā mēroga modeli līdz šim. GPT-4o-mini piedāvā izcilu veiktspēju salīdzinājumā ar GPT-3.5-turbo, ar daudzveidīgām iespējām un ātrām atbildēm.",
     "floating_menu__always_pin_to_sidebar": "Vienmēr rādīt atbildes sānjoslā",
-    "floating_menu__pint_once_to_sidebar": "Rādīt atbildi sānjoslā vienreiz"
+    "floating_menu__pint_once_to_sidebar": "Rādīt atbildi sānjoslā vienreiz",
+    "floating_menu__always_unpin_to_sidebar": "Vienmēr rādīt atbildes kontekstā",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Kopsavilkuma galvenie punkti",
+    "context_window__chat_history__continue_in_sidebar__title": "Turpināt sānjoslā"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

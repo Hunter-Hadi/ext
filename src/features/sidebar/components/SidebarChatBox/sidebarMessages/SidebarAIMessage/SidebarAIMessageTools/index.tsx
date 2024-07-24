@@ -1,4 +1,3 @@
-import { FilterNone } from '@mui/icons-material'
 import { Divider } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import React, { FC, useState } from 'react'
@@ -19,6 +18,7 @@ import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/M
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 import AIMessageModelSuggestions from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools/AIMessageModelSuggestions'
+import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 const SidebarAIMessageTools: FC<{
@@ -32,7 +32,7 @@ const SidebarAIMessageTools: FC<{
     useRecoilState(ContextMenuPinedToSidebarState)
   const [pinToSidebar, setPinToSidebar] = useRecoilState(PinToSidebarState)
 
-  const { t } = useTranslation(['common'])
+  const { t } = useTranslation(['common', 'client'])
   const [isCoping, setIsCoping] = useState(false)
 
   const messageContentType =
@@ -66,10 +66,20 @@ const SidebarAIMessageTools: FC<{
           always: false,
           once: false,
         })
+        setTimeout(() => {
+          hideChatBox()
+        }, 0)
       }
     },
     [currentConversationId],
   )
+
+  const handleContinueInSidebar = () => {
+    setPinToSidebar({
+      always: true,
+      once: false,
+    })
+  }
 
   return (
     <Stack
@@ -165,19 +175,22 @@ const SidebarAIMessageTools: FC<{
       <AIMessageModelSuggestions AIMessage={message} />
 
       {currentSidebarConversationType === 'ContextMenu' &&
-        pinToSidebar.always &&
-        contextMenuPinedToSidebar && (
+        contextMenuPinedToSidebar &&
+        pinToSidebar.always && (
           <>
             <Divider orientation='vertical'></Divider>
             <TooltipIconButton
-              title={t('common:continue_in_contextmenu')}
+              title={t('client:floating_menu__always_unpin_to_sidebar')}
               onClick={handleContinueInContextMenu}
             >
-              <FilterNone
+              <ContextMenuIcon
+                icon='PopupWindow'
+                fill='primary'
                 sx={{
                   fontSize: '20px',
+                  color: 'text.primary',
                 }}
-              ></FilterNone>
+              ></ContextMenuIcon>
             </TooltipIconButton>
           </>
         )}

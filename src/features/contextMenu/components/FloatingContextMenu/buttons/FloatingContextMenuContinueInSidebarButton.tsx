@@ -2,20 +2,33 @@ import Button from '@mui/material/Button'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
+// import { useSetRecoilState } from 'recoil'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+// import { PinToSidebarState } from '@/features/contextMenu/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
-const FloatingContextMenuContinueChatButton: FC = () => {
+const FloatingContextMenuContinueInSidebarButton: FC = () => {
   const { t } = useTranslation(['client'])
   const { currentConversationId, clientConversationMessages } =
     useClientConversation()
   const { continueConversationInSidebar } = useSidebarSettings()
+  // const setPinToSidebar = useSetRecoilState(PinToSidebarState)
 
   const handleClick = () => {
     if (!currentConversationId) return
-    continueConversationInSidebar(currentConversationId, { type: 'Chat' })
-      .then()
-      .catch()
+
+    // setPinToSidebar({
+    //   once: true,
+    //   always: false,
+    // })
+    continueConversationInSidebar(
+      currentConversationId,
+      {},
+      {
+        syncConversationToDB: true,
+        waitSync: true,
+      },
+    ).catch()
   }
 
   if (!clientConversationMessages.length) {
@@ -36,9 +49,9 @@ const FloatingContextMenuContinueChatButton: FC = () => {
       }}
       variant='outlined'
     >
-      {t('client:context_window__chat_history__continue_in_chat__title')}
+      {t('context_window__chat_history__continue_in_sidebar__title')}
     </Button>
   )
 }
 
-export default FloatingContextMenuContinueChatButton
+export default FloatingContextMenuContinueInSidebarButton

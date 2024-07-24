@@ -183,14 +183,16 @@ export const CONTEXT_MENU_ICONS = [
   'Loading',
   'SummaryInfo',
   'Rewrite',
+  'PopupWindow',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
   icon: IContextMenuIconKey | string
   size?: number
   sx?: SxProps<Theme>
+  fill?: string
 }> = (props) => {
-  const { icon, size = 16, sx } = props
+  const { icon, size = 16, sx, fill } = props
   const sxMemo = useMemo(
     () => ({
       fontSize: size,
@@ -529,6 +531,8 @@ const ContextMenuIcon: FC<{
       )
     case 'SummaryInfo':
       return <ReadIcon sx={sxMemo} />
+    case 'PopupWindow':
+      return <PopupWindowIcon fill={fill} sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (
@@ -723,6 +727,42 @@ const Rewrite: FC<SvgIconProps> = (props) => {
           <path
             d='M19.25 22L18.2344 19.7656L16 18.75L18.2344 17.7344L19.25 15.5L20.2656 17.7344L22.5 18.75L20.2656 19.7656L19.25 22Z'
             fill='currentColor'
+          />
+        </g>
+      </svg>
+    </SvgIcon>
+  )
+}
+
+const PopupWindowIcon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='20'
+        height='20'
+        viewBox='0 0 20 20'
+        fill={'none'}
+      >
+        <mask
+          id='mask0_3991_18868'
+          // style='mask-type:alpha'
+          style={{
+            maskType: 'alpha',
+          }}
+          maskUnits='userSpaceOnUse'
+          x='0'
+          y='0'
+          width='20'
+          height='20'
+        >
+          <rect width='20' height='20' fill='currentColor' />
+        </mask>
+        <g mask='url(#mask0_3991_18868)'>
+          <path
+            d='M6.66675 13.3333H16.6667V4.99996H6.66675V13.3333ZM6.66675 15C6.20841 15 5.81605 14.8368 5.48966 14.5104C5.16328 14.184 5.00008 13.7916 5.00008 13.3333V3.33329C5.00008 2.87496 5.16328 2.4826 5.48966 2.15621C5.81605 1.82982 6.20841 1.66663 6.66675 1.66663H16.6667C17.1251 1.66663 17.5174 1.82982 17.8438 2.15621C18.1702 2.4826 18.3334 2.87496 18.3334 3.33329V13.3333C18.3334 13.7916 18.1702 14.184 17.8438 14.5104C17.5174 14.8368 17.1251 15 16.6667 15H6.66675ZM3.33341 18.3333C2.87508 18.3333 2.48272 18.1701 2.15633 17.8437C1.82994 17.5173 1.66675 17.125 1.66675 16.6666V4.99996H3.33341V16.6666H15.0001V18.3333H3.33341Z'
+            fill='currentColor'
+            fillOpacity='0.6'
           />
         </g>
       </svg>

@@ -1,6 +1,7 @@
 import { KeyboardArrowDown } from '@mui/icons-material'
 import { Box, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
+import { last } from 'lodash-es'
 import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
@@ -103,8 +104,11 @@ const WritingMessageBox: FC<{
     clientConversationMessages,
   ])
 
+  /**
+   * 使用最后的context数据，和MessageContextTooltip保持一致
+   */
   const lastContent = useMemo(
-    () => lastUserMessage?.meta?.contexts?.[0]?.value?.trim() || '',
+    () => last(lastUserMessage?.meta?.contexts ?? [])?.value?.trim() || '',
     [lastUserMessage],
   )
 

@@ -726,6 +726,7 @@ const useInitContextWindow = () => {
       floatingDropdownMenu.open === false
     ) {
       createContextMenuConversation().catch()
+      isAIRespondingRef.current = false
     }
   }, [floatingDropdownMenu.open])
 

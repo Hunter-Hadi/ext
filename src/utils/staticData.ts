@@ -610,10 +610,10 @@ export const LANGUAGES_OPTIONS = [
     label: '粵語',
     value: 'Cantonese',
   },
-  {
-    label: '0|\\\\/|G |-|4xx0|2 !!!!111',
-    value: 'Leet Speak',
-  },
+  // {
+  //   label: '0|\\\\/|G |-|4xx0|2 !!!!111',
+  //   value: 'Leet Speak',
+  // },
 ]
 
 export const COUNTRIES_MAP: Map<string, string> = new Map(

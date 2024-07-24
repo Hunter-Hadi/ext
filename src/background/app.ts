@@ -38,6 +38,7 @@ import {
   APP_USE_CHAT_GPT_HOST,
   APP_VERSION,
   CHATGPT_WEBAPP_HOST,
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
@@ -134,6 +135,21 @@ const initChromeExtensionUpdated = async () => {
   Browser.action.setBadgeTextColor({
     color: '#FFFFFF',
   })
+
+  // 2024-07-24 ph
+  // WARNING: 去除本地的Leet Speak语言设置，
+  // 会触发后续的云同步修改
+  const localSettings = await getChromeExtensionDBStorage()
+  if (localSettings.userSettings?.language === 'Leet Speak') {
+    await setChromeExtensionDBStorage({
+      ...localSettings,
+      userSettings: {
+        ...localSettings.userSettings,
+        language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+      },
+    })
+  }
+
   // 保存本地快照
   await setChromeExtensionDBStorageSnapshot()
   // 更新插件
@@ -711,6 +727,11 @@ import {
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { IConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+
+import {
+  getChromeExtensionDBStorage,
+  setChromeExtensionDBStorage,
+} from './utils/chromeExtensionStorage/chromeExtensionDBStorage'
 
 const devMockConversation = async () => {
   const isProduction = String(process.env.NODE_ENV) === 'production'

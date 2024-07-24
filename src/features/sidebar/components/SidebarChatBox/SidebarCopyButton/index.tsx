@@ -13,12 +13,14 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import {
   formatAIMessageContent,
   formatAIMessageContentForClipboard,
 } from '@/features/sidebar/utils/chatMessagesHelper'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 const AFTER_COPIED_CLOSE_HOSTS = ['www.linkedin.com']
 
@@ -35,14 +37,14 @@ const SidebarCopyButton: FC<{
   const [isHover, setIsHover] = useState(false)
   const [delayIsHover, setDelayIsHover] = useState(false)
   const [copyButtonKey, setCopyButtonKey] = useState('')
-  // const { currentSidebarConversationType } = useClientConversation()
-  // const [anchorPosition, setAnchorPosition] = useState<
-  //   | {
-  //       top: number
-  //       left: number
-  //     }
-  //   | undefined
-  // >(undefined)
+  const { currentSidebarConversationType } = useClientConversation()
+  const [anchorPosition, setAnchorPosition] = useState<
+    | {
+        top: number
+        left: number
+      }
+    | undefined
+  >(undefined)
   // 防止误触
   const mouseHoverTimer = useRef<ReturnType<typeof setTimeout>>()
   // 复制文本
@@ -87,6 +89,17 @@ const SidebarCopyButton: FC<{
       return () => {}
     }
   }, [isHover])
+
+  /**
+   * TODO: 目前以dom查询的方法先简单修复popover在sidebar中显示偏位的问题，
+   * 后续有时间再寻找更好的解法
+   */
+  const innerChatBox = useMemo(() => {
+    return !!getMaxAISidebarRootElement()
+      ?.querySelector('#maxAISidebarChatBox')
+      ?.contains(copyButtonRef.current)
+  }, [copyButtonRef.current])
+
   return (
     <>
       <Button
@@ -97,18 +110,18 @@ const SidebarCopyButton: FC<{
           p: '5px',
           color: 'text.secondary',
         }}
-        onMouseEnter={() => {
-          // if (
-          //   event.currentTarget &&
-          //   currentSidebarConversationType === 'ContextMenu'
-          // ) {
-          //   // NOTE:这个计算比较复杂，也许有更好的方法
-          //   setAnchorPosition({
-          //     // 80是popover的高度，26是button的高度
-          //     top: event.currentTarget.getBoundingClientRect().top - (80 - 34),
-          //     left: 8, // 8是popover的padding
-          //   })
-          // }
+        onMouseEnter={(event) => {
+          if (
+            event.currentTarget &&
+            currentSidebarConversationType === 'ContextMenu'
+          ) {
+            // NOTE:这个计算比较复杂，也许有更好的方法
+            setAnchorPosition({
+              // 80是popover的高度，26是button的高度
+              top: event.currentTarget.getBoundingClientRect().top - (80 - 34),
+              left: 8, // 8是popover的padding
+            })
+          }
           mouseHoverTimer.current = setTimeout(() => {
             setIsHover(true)
           }, 100)
@@ -132,9 +145,15 @@ const SidebarCopyButton: FC<{
       <Popover
         disablePortal
         disableScrollLock
-        // anchorReference={anchorPosition ? 'anchorPosition' : 'anchorEl'}
-        anchorReference='anchorEl'
-        // anchorPosition={anchorPosition}
+        anchorReference={
+          innerChatBox
+            ? 'anchorEl'
+            : anchorPosition
+            ? 'anchorPosition'
+            : 'anchorEl'
+        }
+        // anchorReference='anchorEl'
+        anchorPosition={anchorPosition}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',

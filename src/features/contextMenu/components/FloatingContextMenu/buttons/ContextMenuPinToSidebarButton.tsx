@@ -40,6 +40,8 @@ const ContextMenuPinToSidebarButton: FC = () => {
           )
 
           setContextMenuPinedToSidebar(true)
+        } else if (!always) {
+          setContextMenuPinedToSidebar(false)
         }
 
         setPinToSidebar({

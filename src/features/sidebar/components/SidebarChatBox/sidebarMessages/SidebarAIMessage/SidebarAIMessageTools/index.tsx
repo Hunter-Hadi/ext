@@ -48,7 +48,7 @@ const SidebarAIMessageTools: FC<{
 
         // 还存在选区的情况下设置conversationId
         if (
-          !floatingDropdownMenu.open &&
+          // !floatingDropdownMenu.open &&
           floatingDropdownMenu.rootRect &&
           currentConversationId
         ) {

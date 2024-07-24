@@ -205,6 +205,7 @@ const ContextMenuList: FC<
       menuWidth={menuWidth}
       hoverIcon={hoverIcon}
       matcher={rest.matcher}
+      maxHeight={rest.maxHeight}
     >
       {RenderMenuList}
     </DropdownMenu>

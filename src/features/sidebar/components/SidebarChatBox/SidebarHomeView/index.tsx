@@ -50,7 +50,7 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
     <Stack
       component={'div'}
       ref={homeViewRef}
-      flex={1}
+      flexGrow={1}
       sx={{
         overflowY: 'auto',
         ...sx,
@@ -63,6 +63,7 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({
             width: '100%',
             padding: '32px 10px',
           }}
+          flexGrow={1}
         >
           <Stack
             direction={'column'}

@@ -229,6 +229,7 @@ export interface MenuProps {
   hoverIcon?: React.ReactNode
   matcher?: TreeNavigatorMatcher
   menuItem?: IContextMenuItem
+  maxHeight?: string
 }
 
 /**
@@ -256,6 +257,7 @@ export const DropdownMenuInternal = React.forwardRef<
       menuWidth = 400,
       matcher,
       menuItem,
+      maxHeight,
       ...props
     },
     forwardedRef,
@@ -392,7 +394,7 @@ export const DropdownMenuInternal = React.forwardRef<
                   p: 0.5,
                   outline: 'none!important',
                   width: menuWidth,
-                  maxHeight: 327,
+                  maxHeight: maxHeight || 327,
                   boxSizing: 'border-box',
                   overflowY: 'auto',
                   border: '1px solid',

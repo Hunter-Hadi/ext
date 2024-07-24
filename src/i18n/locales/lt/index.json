@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Pasirinkite pageidaujamą sąsajos kalbą",
     "sidebar_tour__step__2__title": "Padidinkite savo produktyvumą 10 kartų su dirbtine intelekta",
     "sidebar_tour__step__2__description_1": "Užduokite bet kokiems dirbtinio intelekto klausimams",
-    "sidebar_tour__step__2__description_2": "Apibendrinkite ir paklauskite apie puslapį",
+    "sidebar_tour__step__2__description_2": "Suvesti ir paklausti apie šį puslapį",
     "sidebar_tour__step__2__description_3": "AI paieška",
     "sidebar_tour__step__2__description_4": "AI menas",
     "sidebar_tour__step__3__title": "Perjungti dirbtinio intelekto modelį",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Pokalbis su ekrano nuotrauka",
     "sidebar_tour__step__5__feature_5__title": "Vieno paspaudimo užduotys",
     "sidebar_tour__step__5__feature_6__title": "Naudoti užduotį",
-    "sidebar_tour__step__2__description_5": "Peržiūrėti iš naujo"
+    "sidebar_tour__step__2__description_5": "AI perstruktūrizuotas"
   },
   "quota_usage_card": {
     "category__fast_text": "Greitas AI",

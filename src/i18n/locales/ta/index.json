@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "உங்கள் விருப்பமான பயன்பாட்டு மொழியைத் தேர்ந்தெடுக்கவும்",
     "sidebar_tour__step__2__title": "ஐயும் உங்கள் செயலின் மதிப்பை 10 மடங்கு அதிகரிக்கவும்",
     "sidebar_tour__step__2__description_1": "ஏதேனும் கேள்வியாக AI-ஐ கேட்கவும்",
-    "sidebar_tour__step__2__description_2": "பக்கத்தை சுருக்கி விடுங்கள் & கேள்விகள் கேட்க",
+    "sidebar_tour__step__2__description_2": "இந்த பக்கத்தை சுருக்கமாக சொல்லுக & கேளுங்கள்",
     "sidebar_tour__step__2__description_3": "AI தேடல்",
     "sidebar_tour__step__2__description_4": "AI கலை",
     "sidebar_tour__step__3__title": "ஐய் மாதிரி மாதிரி மாற்றுங்கள்",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "ஸ்கிரீன்ஷாடு உடைய அரட்டையைப் பயன்படுத்துங்கள்",
     "sidebar_tour__step__5__feature_5__title": "1-கிளிக் உதவிகள்",
     "sidebar_tour__step__5__feature_6__title": "உதவி பயன்படுத்து",
-    "sidebar_tour__step__2__description_5": "மீள்மொழி"
+    "sidebar_tour__step__2__description_5": "AI மீள்வரைப்பாளர்"
   },
   "quota_usage_card": {
     "category__fast_text": "வேகமான AI",

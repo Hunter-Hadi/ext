@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "अपनी पसंदीदा इंटरफेस भाषा चुनें",
     "sidebar_tour__step__2__title": "एआई के साथ अपनी प्रोडक्टिविटी को 10 गुना बढ़ाएं",
     "sidebar_tour__step__2__description_1": "AI से कुछ भी पूछें",
-    "sidebar_tour__step__2__description_2": "पृष्ठ का सारांश बनाएं और पूछें",
+    "sidebar_tour__step__2__description_2": "इस पृष्ठ का सारांश दें और इसके बारे में पूछें",
     "sidebar_tour__step__2__description_3": "AI खोज",
     "sidebar_tour__step__2__description_4": "AI कला",
     "sidebar_tour__step__3__title": "एआई मॉडल बदलें",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "स्क्रीनशॉट के साथ चैट",
     "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
     "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट का उपयोग करें",
-    "sidebar_tour__step__2__description_5": "पुनरलेखन"
+    "sidebar_tour__step__2__description_5": "एआई पुनरलेखक"
   },
   "quota_usage_card": {
     "category__fast_text": "तेज एआई",

@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "お好みのインターフェース言語を選択してください",
     "sidebar_tour__step__2__title": "AIで生産性を10倍に",
     "sidebar_tour__step__2__description_1": "AIに何でも聞いてください",
-    "sidebar_tour__step__2__description_2": "ページの要約と質問",
+    "sidebar_tour__step__2__description_2": "このページを要約して質問する",
     "sidebar_tour__step__2__description_3": "AI検索",
     "sidebar_tour__step__2__description_4": "AIアート",
     "sidebar_tour__step__3__title": "AIモデルを切り替える",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "スクリーンショット付きのチャット",
     "sidebar_tour__step__5__feature_5__title": "1クリックプロンプト",
     "sidebar_tour__step__5__feature_6__title": "プロンプトの使用",
-    "sidebar_tour__step__2__description_5": "書き直す"
+    "sidebar_tour__step__2__description_5": "AIリライター"
   },
   "quota_usage_card": {
     "category__fast_text": "高速AI",

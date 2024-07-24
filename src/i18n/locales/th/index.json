@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "เลือกภาษาที่คุณต้องการใช้งาน",
     "sidebar_tour__step__2__title": "เพิ่มผลิตภาพของคุณ 10 เท่าด้วย AI",
     "sidebar_tour__step__2__description_1": "ถาม AI อะไรก็ได้",
-    "sidebar_tour__step__2__description_2": "สรุปและถามเกี่ยวกับหน้า",
+    "sidebar_tour__step__2__description_2": "สรุป & ถามเกี่ยวกับหน้านี้",
     "sidebar_tour__step__2__description_3": "ค้นหาด้วย AI",
     "sidebar_tour__step__2__description_4": "ศิลปะด้วย AI",
     "sidebar_tour__step__3__title": "สลับโมเดล AI",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "แชทพร้อมภาพหน้าจอ",
     "sidebar_tour__step__5__feature_5__title": "คำใบ้ด้วยคลิกเดียว",
     "sidebar_tour__step__5__feature_6__title": "ใช้คำใบ้",
-    "sidebar_tour__step__2__description_5": "เขียนใหม่"
+    "sidebar_tour__step__2__description_5": "AI โปรแกรมเขียนใหม่"
   },
   "quota_usage_card": {
     "category__fast_text": "AI อย่างเร็ว",

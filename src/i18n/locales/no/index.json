@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Velg ditt foretrukne grensespråk",
     "sidebar_tour__step__2__title": "Øk produktiviteten din med AI",
     "sidebar_tour__step__2__description_1": "Spør AI om hva som helst",
-    "sidebar_tour__step__2__description_2": "Oppsummer og spør om side",
+    "sidebar_tour__step__2__description_2": "Oppsummer og spør om denne siden",
     "sidebar_tour__step__2__description_3": "AI-søk",
     "sidebar_tour__step__2__description_4": "AI-kunst",
     "sidebar_tour__step__3__title": "Bytt AI-modell",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Chat med skjermbilde",
     "sidebar_tour__step__5__feature_5__title": "1-klikks forslag",
     "sidebar_tour__step__5__feature_6__title": "Bruk forslag",
-    "sidebar_tour__step__2__description_5": "Omskriv"
+    "sidebar_tour__step__2__description_5": "AI-omskriver"
   },
   "quota_usage_card": {
     "category__fast_text": "Rask AI",

@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "选择您喜欢的界面语言",
     "sidebar_tour__step__2__title": "AI提升10倍生产力",
     "sidebar_tour__step__2__description_1": "向AI提问",
-    "sidebar_tour__step__2__description_2": "总结并询问页面",
+    "sidebar_tour__step__2__description_2": "总结并询问此页面",
     "sidebar_tour__step__2__description_3": "AI搜索",
     "sidebar_tour__step__2__description_4": "AI艺术",
     "sidebar_tour__step__3__title": "切换AI模型",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "带截图的聊天",
     "sidebar_tour__step__5__feature_5__title": "1键提示",
     "sidebar_tour__step__5__feature_6__title": "使用提示",
-    "sidebar_tour__step__2__description_5": "重写"
+    "sidebar_tour__step__2__description_5": "AI 重写器"
   },
   "quota_usage_card": {
     "category__fast_text": "快速AI",

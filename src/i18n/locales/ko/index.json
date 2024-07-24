@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "원하는 인터페이스 언어 선택",
     "sidebar_tour__step__2__title": "인공지능으로 생산성을 10배 높이세요",
     "sidebar_tour__step__2__description_1": "AI에게 아무거나 물어보세요",
-    "sidebar_tour__step__2__description_2": "페이지 요약 및 질문하기",
+    "sidebar_tour__step__2__description_2": "이 페이지를 요약하고 질문하기",
     "sidebar_tour__step__2__description_3": "AI 검색",
     "sidebar_tour__step__2__description_4": "AI 예술",
     "sidebar_tour__step__3__title": "인공지능 모델 전환",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "스크린샷으로 채팅",
     "sidebar_tour__step__5__feature_5__title": "1-클릭 프롬프트",
     "sidebar_tour__step__5__feature_6__title": "프롬프트 사용",
-    "sidebar_tour__step__2__description_5": "다시 작성"
+    "sidebar_tour__step__2__description_5": "AI 리라이터"
   },
   "quota_usage_card": {
     "category__fast_text": "빠른 AI",

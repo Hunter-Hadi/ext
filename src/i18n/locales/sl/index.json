@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Izberite želeni jezik vmesnika",
     "sidebar_tour__step__2__title": "Povečajte svojo produktivnost za 10-krat z umetno inteligenco",
     "sidebar_tour__step__2__description_1": "Vprašajte AI karkoli",
-    "sidebar_tour__step__2__description_2": "Povzetek in vprašanje o strani",
+    "sidebar_tour__step__2__description_2": "Povzemi in vprašaj o tej strani",
     "sidebar_tour__step__2__description_3": "Iskanje AI",
     "sidebar_tour__step__2__description_4": "Umetnost AI",
     "sidebar_tour__step__3__title": "Preklopite AI model",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Klepetajte s posnetkom zaslona",
     "sidebar_tour__step__5__feature_5__title": "1-klikni namigi",
     "sidebar_tour__step__5__feature_6__title": "Uporabite namig",
-    "sidebar_tour__step__2__description_5": "Prepis"
+    "sidebar_tour__step__2__description_5": "Ponovno zapisovanje z umetno inteligenco"
   },
   "quota_usage_card": {
     "category__fast_text": "Hitri AI",

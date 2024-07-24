@@ -2,20 +2,22 @@ import { ViewSidebar, ViewSidebarOutlined } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilCallback, useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilCallback, useRecoilValue, useSetRecoilState } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { PaginationConversationMessagesStateFamily } from '@/features/chatgpt/store'
 import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
 import {
+  AlwaysPinToSidebarSelector,
   ContextMenuPinedToSidebarState,
-  PinToSidebarState,
 } from '@/features/contextMenu/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
 const ContextMenuPinToSidebarButton: FC = () => {
   const { t } = useTranslation(['client'])
-  const [pinToSidebar, setPinToSidebar] = useRecoilState(PinToSidebarState)
+  const { setUserSettings, userSettings } = useUserSettings()
+  const pinToSidebar = useRecoilValue(AlwaysPinToSidebarSelector)
   const { conversationId = '' } = useChatPanelContext()
   const { continueConversationInSidebar } = useSidebarSettings()
   const setContextMenuPinedToSidebar = useSetRecoilState(
@@ -44,23 +46,23 @@ const ContextMenuPinToSidebarButton: FC = () => {
           setContextMenuPinedToSidebar(false)
         }
 
-        setPinToSidebar({
-          once: false,
-          always,
+        setUserSettings({
+          ...userSettings,
+          alwaysContinueInSidebar: true,
         })
       },
-    [conversationId, pinToSidebar],
+    [conversationId, pinToSidebar, userSettings],
   )
 
   return (
     <TextOnlyTooltip
       title={
-        pinToSidebar.always
+        pinToSidebar
           ? t('floating_menu__always_unpin_to_sidebar')
           : t('floating_menu__always_pin_to_sidebar')
       }
       onClick={() => {
-        handleAlwaysPinToSidebar(!pinToSidebar.always)
+        handleAlwaysPinToSidebar(!pinToSidebar)
       }}
       floatingMenuTooltip
       placement='top'
@@ -74,7 +76,7 @@ const ContextMenuPinToSidebarButton: FC = () => {
           padding: '0 3px',
         }}
       >
-        {pinToSidebar.always ? (
+        {pinToSidebar ? (
           <ViewSidebar
             sx={{
               fontSize: 16,

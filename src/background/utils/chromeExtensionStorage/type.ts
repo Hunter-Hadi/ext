@@ -78,6 +78,7 @@ export interface IChromeExtensionDBStorage {
     language?: string
     preferredLanguage?: string
     chatGPTStableModeDuration?: number
+    alwaysContinueInSidebar?: boolean
     pdf?: {
       enabled?: boolean
     }

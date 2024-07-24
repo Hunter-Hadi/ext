@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { PaginationConversationMessagesStateFamily } from '@/features/chatgpt/store'
 import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
 import {
+  AlwaysPinToSidebarSelector,
   ContextMenuOpenSelector,
   ContextMenuPinedToSidebarState,
-  PinToSidebarState,
 } from '@/features/contextMenu/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
@@ -25,7 +25,7 @@ export default function useContinueInSidebarListener() {
   const setContextMenuPinedToSidebar = useSetRecoilState(
     ContextMenuPinedToSidebarState,
   )
-  const [pinToSidebar, setPinToSidebar] = useRecoilState(PinToSidebarState)
+  const pinToSidebar = useRecoilValue(AlwaysPinToSidebarSelector)
   const floatingOpen = useRecoilValue(ContextMenuOpenSelector)
 
   const callingRef = useRef(false)
@@ -50,7 +50,7 @@ export default function useContinueInSidebarListener() {
         return
       }
 
-      if (pinToSidebar.once || pinToSidebar.always) {
+      if (pinToSidebar) {
         await continueConversationInSidebar(
           conversationId,
           {},
@@ -59,14 +59,7 @@ export default function useContinueInSidebarListener() {
         )
 
         // 清除once
-        if (pinToSidebar.always) {
-          setContextMenuPinedToSidebar(true)
-        } else {
-          setPinToSidebar({
-            always: false,
-            once: false,
-          })
-        }
+        setContextMenuPinedToSidebar(true)
 
         callingRef.current = false
 

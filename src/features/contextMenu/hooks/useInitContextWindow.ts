@@ -10,11 +10,11 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { isSystemMessageByType } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID } from '@/features/common/constants'
 import {
+  AlwaysPinToSidebarSelector,
   ContextWindowDraftContextMenuState,
   FloatingContextWindowChangesState,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
-  PinToSidebarState,
   useContextMenuList,
   useDraftContextMenuList,
   useFloatingContextMenu,
@@ -160,7 +160,7 @@ const useInitContextWindow = () => {
     ContextWindowDraftContextMenuState,
   )
 
-  const pinToSidebar = useRecoilValue(PinToSidebarState)
+  const pinToSidebar = useRecoilValue(AlwaysPinToSidebarSelector)
 
   const { continueConversationInSidebar } = useSidebarSettings()
   const {
@@ -724,9 +724,7 @@ const useInitContextWindow = () => {
 
     // 当pintosidebar之后，每次关闭都会重建conversation
     if (
-      (!isAIRespondingRef.current ||
-        pinToSidebar.once ||
-        pinToSidebar.always) &&
+      // (!isAIRespondingRef.current || pinToSidebar) &&
       floatingDropdownMenu.open === false
     ) {
       createContextMenuConversation().catch()

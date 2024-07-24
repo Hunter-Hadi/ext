@@ -1,25 +1,27 @@
 import { Divider } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilCallback, useRecoilState } from 'recoil'
+import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
 import {
+  AlwaysPinToSidebarSelector,
   ContextMenuConversationState,
   ContextMenuPinedToSidebarState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import { PinToSidebarState } from '@/features/contextMenu/store'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 import AIMessageModelSuggestions from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools/AIMessageModelSuggestions'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarAIMessageTools: FC<{
   useChatGPTAble?: boolean
@@ -30,7 +32,8 @@ const SidebarAIMessageTools: FC<{
     useClientConversation()
   const [contextMenuPinedToSidebar, setContextMenuPinedToSidebar] =
     useRecoilState(ContextMenuPinedToSidebarState)
-  const [pinToSidebar, setPinToSidebar] = useRecoilState(PinToSidebarState)
+  const pinToSidebar = useRecoilValue(AlwaysPinToSidebarSelector)
+  const { setUserSettings, userSettings } = useUserSettings()
 
   const { t } = useTranslation(['common', 'client'])
   const [isCoping, setIsCoping] = useState(false)
@@ -52,34 +55,27 @@ const SidebarAIMessageTools: FC<{
           floatingDropdownMenu.rootRect &&
           currentConversationId
         ) {
-          set(ContextMenuConversationState, (prev) => ({
-            ...prev,
-            conversationId: currentConversationId,
-          }))
+          setContextMenuPinedToSidebar(false)
+          hideChatBox()
+          setTimeout(() => {
+            set(ContextMenuConversationState, (prev) => ({
+              ...prev,
+              conversationId: currentConversationId,
+            }))
 
-          set(FloatingDropdownMenuState, (prev) => ({ ...prev, open: true }))
+            set(FloatingDropdownMenuState, (prev) => ({ ...prev, open: true }))
+          }, 0)
         }
 
-        setContextMenuPinedToSidebar(false)
-
-        setPinToSidebar({
-          always: false,
-          once: false,
+        setUserSettings({
+          ...userSettings,
+          alwaysContinueInSidebar: false,
         })
-        setTimeout(() => {
-          hideChatBox()
-        }, 0)
       }
     },
     [currentConversationId],
   )
-
-  const handleContinueInSidebar = () => {
-    setPinToSidebar({
-      always: true,
-      once: false,
-    })
-  }
+  const isImmersivePage = useMemo(() => isMaxAIImmersiveChatPage(), [])
 
   return (
     <Stack
@@ -174,9 +170,10 @@ const SidebarAIMessageTools: FC<{
       )}
       <AIMessageModelSuggestions AIMessage={message} />
 
-      {currentSidebarConversationType === 'ContextMenu' &&
+      {!isImmersivePage &&
+        currentSidebarConversationType === 'ContextMenu' &&
         contextMenuPinedToSidebar &&
-        pinToSidebar.always && (
+        pinToSidebar && (
           <>
             <Divider orientation='vertical'></Divider>
             <TooltipIconButton

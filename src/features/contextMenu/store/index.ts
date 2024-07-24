@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil'
 
 import { IRangyRect, ISelection } from '@/features/contextMenu/types'
+import { AppDBStorageState } from '@/store'
 
 export const ContextMenuSettingsState = atom<{
   closeBeforeRefresh: boolean
@@ -128,6 +129,14 @@ export const PinToSidebarState = atom({
     always: false,
   },
 })
+
+export const AlwaysPinToSidebarSelector = selector<boolean>({
+  key: 'AlwaysPinToSidebarSelector',
+  get({ get }) {
+    return get(AppDBStorageState).userSettings?.alwaysContinueInSidebar || false
+  },
+})
+
 export const FloatingDropdownMenuItemsSelector = selector<string[]>({
   key: 'FloatingDropdownMenuItemsSelector',
   get: ({ get }) => {

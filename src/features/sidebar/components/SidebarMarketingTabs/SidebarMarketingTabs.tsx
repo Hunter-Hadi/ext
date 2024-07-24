@@ -331,6 +331,7 @@ const AffiliateTabButton: FC = () => {
     </Box>
   )
 }
+
 const SurveyTabButton: FC = () => {
   const { t } = useTranslation(['common', 'client'])
 

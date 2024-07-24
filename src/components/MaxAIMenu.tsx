@@ -1,12 +1,7 @@
 import Menu, { MenuProps } from '@mui/material/Menu'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 
-import {
-  isShowChatBox,
-  showChatBox,
-} from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 type rootContainer = HTMLElement | (() => HTMLElement | undefined)
 const MaxAIMenu: FC<
@@ -87,19 +82,19 @@ const MaxAIMenu: FC<
     container,
   ])
   // 因为html的 width会影响到mui modal的显示，所以这里需要设置为100%
-  const [currentOpen, setCurrentOpen] = useState(false)
-  useEffect(() => {
-    if (open) {
-      document.documentElement.style.width = '100%'
-    }
-    setCurrentOpen(open)
-    return () => {
-      isShowChatBox() && showChatBox()
-    }
-  }, [open])
+  // const [currentOpen, setCurrentOpen] = useState(false)
+  // useEffect(() => {
+  //   if (open) {
+  //     document.documentElement.style.width = '100%'
+  //   }
+  //   return () => {
+  //     isShowChatBox() && showChatBox()
+  //   }
+  // }, [open])
   return (
     <Menu
-      open={isMaxAIImmersiveChatPage() ? open : currentOpen}
+      // open={isMaxAIImmersiveChatPage() ? open : currentOpen}
+      open={open}
       {...memoMenuProps}
       {...rest}
       component={'div'}

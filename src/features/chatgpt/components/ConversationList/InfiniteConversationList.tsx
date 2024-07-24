@@ -26,8 +26,6 @@ import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConv
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { IPaginationConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export interface IInfiniteConversationListProps {
   hasNextPage: boolean
@@ -68,7 +66,7 @@ const InfiniteConversationList: (
     if (isNextPageLoading) {
       return
     }
-    await loadNextPage()
+    loadNextPage()
   }
   const isItemLoaded = (index: number) => {
     return !hasNextPage || index < conversations.length
@@ -140,18 +138,10 @@ const Row = memo(function RowItem({
 }) {
   // Data passed to List as "itemData" is available as props.data
   const { items, onSelectItem, isNextPageLoading } = data
-  const [isHover, setIsHover] = useState(false)
   const [editingConversationId, setEditingConversationId] = useState('')
-  const {
-    createConversation,
-    currentSidebarConversationType,
-    currentConversationId,
-    disposeBackgroundChatSystem,
-    updateConversationId,
-  } = useClientConversation()
+  const { currentConversationId, disposeBackgroundChatSystem } =
+    useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
-  const { updateSidebarConversationType, updateSidebarSettings } =
-    useSidebarSettings()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const modelLabelMap = useMemo(() => {
     const map: {
@@ -213,6 +203,7 @@ const Row = memo(function RowItem({
     disposeBackgroundChatSystem(conversation.id).then().catch()
     onSelectItem?.(conversation)
   }
+
   useEffect(() => {
     if (!conversation && !isNextPageLoading) {
       // 说明是loading
@@ -225,6 +216,7 @@ const Row = memo(function RowItem({
       }
     }
   }, [conversation, onSelectItem, isNextPageLoading])
+
   if (!conversation) {
     return (
       <Stack
@@ -240,6 +232,7 @@ const Row = memo(function RowItem({
       </Stack>
     )
   }
+
   return (
     <Stack
       key={conversation.id}
@@ -253,12 +246,6 @@ const Row = memo(function RowItem({
         px={2}
         py={1.5}
         onClick={handleSelectConversation}
-        onMouseOver={() => {
-          setIsHover(true)
-        }}
-        onMouseOut={() => {
-          setIsHover(false)
-        }}
         sx={{
           cursor: 'pointer',
           backgroundColor: 'background.paper',
@@ -278,6 +265,10 @@ const Row = memo(function RowItem({
                       : 'rgba(144, 101, 176, 0.06)',
                 },
               }),
+
+          '&:hover .conversation-list-row-more-action-button': {
+            visibility: 'visible !important',
+          },
         }}
         spacing={2}
       >
@@ -412,40 +403,42 @@ const Row = memo(function RowItem({
                 {conversation.conversationDisplaysText}
               </Typography>
             )}
-            {(isSelected || isHover) && (
-              <Stack
-                direction={'row'}
-                alignItems={'center'}
-                flexShrink={0}
-                height={20}
-                gap={0.5}
-              >
-                <MoreActionsButton
-                  disableModalPortal={disableModalPortal}
-                  conversationAIProvider={conversation?.AIProvider}
-                  conversationAIModel={conversation?.AIModel}
-                  onRename={() => {
-                    setEditingConversationId(conversation.id)
-                  }}
-                  onDelete={async () => {
-                    if (conversation.type === 'ContextMenu') {
-                      await createConversation('ContextMenu')
-                    } else if (!isMaxAIImmersiveChatPage()) {
-                      await updateSidebarSettings({
-                        [currentSidebarConversationType.toLowerCase()]: {
-                          conversationId: '',
-                        },
-                      })
-                    }
-                  }}
-                  conversationType={conversation.type}
-                  conversationId={conversation.id}
-                  conversationDisplaysText={
-                    conversation.conversationDisplaysText
-                  }
-                />
-              </Stack>
-            )}
+            <Stack
+              direction={'row'}
+              alignItems={'center'}
+              flexShrink={0}
+              height={20}
+              gap={0.5}
+              className='conversation-list-row-more-action-button'
+              sx={{
+                visibility: isSelected ? 'visible' : 'hidden',
+                // display: isSelected ? 'block' : 'none',
+              }}
+            >
+              <MoreActionsButton
+                disableModalPortal={disableModalPortal}
+                conversationAIProvider={conversation?.AIProvider}
+                conversationAIModel={conversation?.AIModel}
+                onRename={() => {
+                  setEditingConversationId(conversation.id)
+                }}
+                onDelete={async () => {
+                  // const isImmersiveChatPage = isMaxAIImmersiveChatPage()
+                  // if (conversation.type === 'ContextMenu') {
+                  // await createConversation('ContextMenu')
+                  // } else if (!isImmersiveChatPage) {
+                  // await updateSidebarSettings({
+                  //   [currentSidebarConversationType.toLowerCase()]: {
+                  //     conversationId: '',
+                  //   },
+                  // })
+                  // }
+                }}
+                conversationType={conversation.type}
+                conversationId={conversation.id}
+                conversationDisplaysText={conversation.conversationDisplaysText}
+              />
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

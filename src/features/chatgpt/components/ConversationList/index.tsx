@@ -52,6 +52,7 @@ const ConversationList: FC<IProps> = (props) => {
     },
     done,
   )
+
   const renderEmptyFeedback = useCallback(() => {
     if (emptyFeedback) {
       return emptyFeedback
@@ -113,7 +114,15 @@ const ConversationList: FC<IProps> = (props) => {
                   conversationId: '',
                 },
               }).then(() => {
-                updateSidebarConversationType('Chat')
+                switch (needCleanConversationType) {
+                  case 'contextMenu': {
+                    updateSidebarConversationType('ContextMenu')
+                    return
+                  }
+                  default: {
+                    updateSidebarConversationType('Chat')
+                  }
+                }
               })
               resetConversation()
             }}

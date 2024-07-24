@@ -134,16 +134,6 @@ const GiftIcon = (props: SvgIconProps) => {
         xmlns='http://www.w3.org/2000/svg'
       >
         <g clipPath='url(#clip0_7189_70803)'>
-          <mask
-            id='mask0_7189_70803'
-            maskUnits='userSpaceOnUse'
-            x='0'
-            y='0'
-            width='24'
-            height='24'
-          >
-            <path d='M24 0H0V24H24V0Z' fill='#D9D9D9' />
-          </mask>
           <g mask='url(#mask0_7189_70803)'>
             <path
               fillRule='evenodd'
@@ -161,11 +151,6 @@ const GiftIcon = (props: SvgIconProps) => {
             />
           </g>
         </g>
-        <defs>
-          <clipPath id='clip0_7189_70803'>
-            <rect width='24' height='24' fill='white' />
-          </clipPath>
-        </defs>
       </svg>
     </SvgIcon>
   )

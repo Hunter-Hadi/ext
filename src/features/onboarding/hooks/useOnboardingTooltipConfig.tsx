@@ -119,10 +119,26 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `div[role=menu].dropdown-menu`,
         tooltipProps: {
-          beforeTooltipShow: async () => {
+          beforeTooltipShow: async (container?: HTMLElement) => {
             // 为了等 MENU_LIST_BOX 内容渲染完
             // 延迟 0.5s 显示
             await sleep(500)
+
+            console.log(`zztest 1`, container, container?.isConnected)
+            if (container && container.isConnected) {
+              const improveWritingItem = container.querySelector(
+                `div.floating-context-menu-item[data-id="4e54395c-5e8b-4bbd-a309-b6057a4737d3"]`,
+              )
+              console.log(`zztest 2`, improveWritingItem)
+              if (improveWritingItem) {
+                return true
+              } else {
+                return false
+              }
+            } else {
+              return false
+            }
+
             return true
           },
           floatingMenuTooltip: true,
@@ -141,18 +157,6 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `div[data-id="${CONTEXT_MENU_DRAFT_TYPES.REPLACE_SELECTION}"].floating-context-menu-item`,
         tooltipProps: {
-          beforeTooltipShow: async () => {
-            // FLOATING_CONTEXT_MENU_LIST_BOX 没打开过，不展示
-            const contextMenuListBoxTooltipOpened =
-              await getAlreadyOpenedCacheBySceneType(
-                'FLOATING_CONTEXT_MENU_LIST_BOX',
-              )
-            if (!contextMenuListBoxTooltipOpened) {
-              return false
-            }
-
-            return true
-          },
           title: t(
             'onboarding:onboarding_tooltip__FLOATING_CONTEXT_MENU_REPLACE_SELECTION_MENUITEM__text1',
           ),

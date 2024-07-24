@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Wählen Sie Ihre bevorzugte Benutzeroberflächensprache",
     "sidebar_tour__step__2__title": "Steigern Sie Ihre Produktivität um das 10-fache mit KI",
     "sidebar_tour__step__2__description_1": "Fragen Sie KI alles",
-    "sidebar_tour__step__2__description_2": "Seite zusammenfassen und Fragen stellen",
+    "sidebar_tour__step__2__description_2": "Zusammenfassen & Fragen zu dieser Seite",
     "sidebar_tour__step__2__description_3": "KI-Suche",
     "sidebar_tour__step__2__description_4": "KI-Kunst",
     "sidebar_tour__step__3__title": "KI-Modell wechseln",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Chat mit Screenshot",
     "sidebar_tour__step__5__feature_5__title": "1-Klick-Anregungen",
     "sidebar_tour__step__5__feature_6__title": "Verwenden Sie die Anregung",
-    "sidebar_tour__step__2__description_5": "Umschreiben"
+    "sidebar_tour__step__2__description_5": "KI-Umschreiber"
   },
   "quota_usage_card": {
     "category__fast_text": "Schnelle KI",

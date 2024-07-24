@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "選擇您偏好的界面語言",
     "sidebar_tour__step__2__title": "AI 增加您的生產力10倍",
     "sidebar_tour__step__2__description_1": "向AI提問",
-    "sidebar_tour__step__2__description_2": "總結和詢問頁面",
+    "sidebar_tour__step__2__description_2": "總結並詢問此頁面",
     "sidebar_tour__step__2__description_3": "AI 搜尋",
     "sidebar_tour__step__2__description_4": "AI 藝術",
     "sidebar_tour__step__3__title": "切換 AI 模型",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "使用截圖聊天",
     "sidebar_tour__step__5__feature_5__title": "一鍵提示",
     "sidebar_tour__step__5__feature_6__title": "使用提示",
-    "sidebar_tour__step__2__description_5": "重寫"
+    "sidebar_tour__step__2__description_5": "AI 重寫"
   },
   "quota_usage_card": {
     "category__fast_text": "快速AI",

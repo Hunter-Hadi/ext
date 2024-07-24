@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Elige tu idioma de interfaz preferido",
     "sidebar_tour__step__2__title": "Aumenta tu productividad 10 veces con IA",
     "sidebar_tour__step__2__description_1": "Pregunta cualquier cosa a la IA",
-    "sidebar_tour__step__2__description_2": "Resumir y preguntar sobre la página",
+    "sidebar_tour__step__2__description_2": "Resumir y preguntar sobre esta página",
     "sidebar_tour__step__2__description_3": "Búsqueda de IA",
     "sidebar_tour__step__2__description_4": "Arte de IA",
     "sidebar_tour__step__3__title": "Cambiar modelo de IA",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Chat con captura de pantalla",
     "sidebar_tour__step__5__feature_5__title": "Prompts de 1 clic",
     "sidebar_tour__step__5__feature_6__title": "Usar prompt",
-    "sidebar_tour__step__2__description_5": "Reescribir"
+    "sidebar_tour__step__2__description_5": "Reescritor de IA"
   },
   "quota_usage_card": {
     "category__fast_text": "IA Rápida",

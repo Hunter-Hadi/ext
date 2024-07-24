@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Vyberte si preferovaný jazyk rozhraní",
     "sidebar_tour__step__2__title": "Zvýšte svoju produktivitu o 10X s pomocou AI",
     "sidebar_tour__step__2__description_1": "Zeptejte se AI na cokoli",
-    "sidebar_tour__step__2__description_2": "Shrnutí a dotaz k stránce",
+    "sidebar_tour__step__2__description_2": "Shrnutí a dotazování na tuto stránku",
     "sidebar_tour__step__2__description_3": "AI vyhledávání",
     "sidebar_tour__step__2__description_4": "AI umění",
     "sidebar_tour__step__3__title": "Prepnite AI model",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Chat s obrázkem",
     "sidebar_tour__step__5__feature_5__title": "1-kliknutí podněty",
     "sidebar_tour__step__5__feature_6__title": "Použít podnět",
-    "sidebar_tour__step__2__description_5": "Přepsat"
+    "sidebar_tour__step__2__description_5": "AI přepisovač"
   },
   "quota_usage_card": {
     "category__fast_text": "Rychlé AI",

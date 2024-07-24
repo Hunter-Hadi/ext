@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Kies uw voorkeurstaal van de interface",
     "sidebar_tour__step__2__title": "Verhoog je productiviteit met AI",
     "sidebar_tour__step__2__description_1": "Vraag AI om alles",
-    "sidebar_tour__step__2__description_2": "Samenvatten en vragen over pagina",
+    "sidebar_tour__step__2__description_2": "Samenvatten en vraag over deze pagina",
     "sidebar_tour__step__2__description_3": "AI-zoekopdracht",
     "sidebar_tour__step__2__description_4": "AI-kunst",
     "sidebar_tour__step__3__title": "Wissel van AI-model",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Chatten met schermafbeelding",
     "sidebar_tour__step__5__feature_5__title": "1-klik prompts",
     "sidebar_tour__step__5__feature_6__title": "Gebruik prompt",
-    "sidebar_tour__step__2__description_5": "Herschrijven"
+    "sidebar_tour__step__2__description_5": "AI herschrijver"
   },
   "quota_usage_card": {
     "category__fast_text": "Snelle AI",

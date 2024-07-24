@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Valitse haluamasi käyttöliittymän kieli",
     "sidebar_tour__step__2__title": "Kasvata tuottavuuttasi 10-kertaiseksi tekoälyn avulla",
     "sidebar_tour__step__2__description_1": "Kysy tekoälyltä mitä tahansa",
-    "sidebar_tour__step__2__description_2": "Tiivistä ja kysy sivusta",
+    "sidebar_tour__step__2__description_2": "Tiivistä ja kysy tästä sivusta",
     "sidebar_tour__step__2__description_3": "AI-haku",
     "sidebar_tour__step__2__description_4": "AI-taide",
     "sidebar_tour__step__3__title": "Vaihda tekoälymallia",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Keskustele kuvakaappauksen kanssa",
     "sidebar_tour__step__5__feature_5__title": "1-klikkausvihjeet",
     "sidebar_tour__step__5__feature_6__title": "Käytä vihjettä",
-    "sidebar_tour__step__2__description_5": "Uudelleenkirjoitus"
+    "sidebar_tour__step__2__description_5": "AI-uudelleenkirjoittaja"
   },
   "quota_usage_card": {
     "category__fast_text": "Nopea tekoäly",

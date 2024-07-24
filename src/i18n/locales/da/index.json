@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Vælg dit foretrukne interface sprog",
     "sidebar_tour__step__2__title": "10X din produktivitet med AI",
     "sidebar_tour__step__2__description_1": "Spørg AI om alt",
-    "sidebar_tour__step__2__description_2": "Resumér og spørg om side",
+    "sidebar_tour__step__2__description_2": "Opsummer & spørg om denne side",
     "sidebar_tour__step__2__description_3": "AI-søgning",
     "sidebar_tour__step__2__description_4": "AI-kunst",
     "sidebar_tour__step__3__title": "Skift AI-model",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Chat med skærmbillede",
     "sidebar_tour__step__5__feature_5__title": "1-klik prompts",
     "sidebar_tour__step__5__feature_6__title": "Brug prompt",
-    "sidebar_tour__step__2__description_5": "Omskriv"
+    "sidebar_tour__step__2__description_5": "AI omskriver"
   },
   "quota_usage_card": {
     "category__fast_text": "Hurtig AI",

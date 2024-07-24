@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Выберите предпочитаемый язык интерфейса",
     "sidebar_tour__step__2__title": "Увеличьте свою продуктивность в 10 раз с помощью искусственного интеллекта",
     "sidebar_tour__step__2__description_1": "Задайте любые вопросы ИИ",
-    "sidebar_tour__step__2__description_2": "Суммировать и задать вопрос о странице",
+    "sidebar_tour__step__2__description_2": "Кратко опишите и спросите об этой странице",
     "sidebar_tour__step__2__description_3": "Искусственный интеллект поиска",
     "sidebar_tour__step__2__description_4": "Искусственный интеллект искусства",
     "sidebar_tour__step__3__title": "Переключение модели искусственного интеллекта",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Чат с снимком экрана",
     "sidebar_tour__step__5__feature_5__title": "1-клик подсказки",
     "sidebar_tour__step__5__feature_6__title": "Использование подсказки",
-    "sidebar_tour__step__2__description_5": "Переписать"
+    "sidebar_tour__step__2__description_5": "AI переформулировщик"
   },
   "quota_usage_card": {
     "category__fast_text": "Быстрый ИИ",

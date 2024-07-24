@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Valige eelistatud kasutajaliidese keel",
     "sidebar_tour__step__2__title": "Suurenda oma tootlikkust 10 korda tehisintellektiga",
     "sidebar_tour__step__2__description_1": "Küsi AI-lt midagi",
-    "sidebar_tour__step__2__description_2": "Kokkuvõte ja küsi lehe kohta",
+    "sidebar_tour__step__2__description_2": "Kokkuvõte ja küsi selle lehe kohta",
     "sidebar_tour__step__2__description_3": "AI otsing",
     "sidebar_tour__step__2__description_4": "AI kunst",
     "sidebar_tour__step__3__title": "Vaheta tehisintellekti mudelit",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Vestlus ekraanipildiga",
     "sidebar_tour__step__5__feature_5__title": "1-kliki vihjed",
     "sidebar_tour__step__5__feature_6__title": "Kasuta vihjet",
-    "sidebar_tour__step__2__description_5": "Ümberkirjutus"
+    "sidebar_tour__step__2__description_5": "AI ümberkirjutaja"
   },
   "quota_usage_card": {
     "category__fast_text": "Kiire AI",

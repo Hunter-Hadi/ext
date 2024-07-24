@@ -277,6 +277,7 @@ const SidebarAppProvider: FC<{ children: React.ReactNode }> = (props) => {
     useState<ConversationStatusType>('success')
 
   const sidebarConversationTypeRef = useRef(currentSidebarConversationType)
+
   sidebarConversationTypeRef.current = currentSidebarConversationType
 
   const sidebarContextValue = useMemo<ChatPanelContextValue>(() => {

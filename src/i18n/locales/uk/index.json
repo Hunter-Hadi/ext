@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "اپنی ترجیح دی گئی انٹرفیس زبان منتخب کریں",
     "sidebar_tour__step__2__title": "AI کے ساتھ اپنی پیداواریت کو 10 گنا بڑھائیں",
     "sidebar_tour__step__2__description_1": "AI سے کچھ بھی پوچھیں",
-    "sidebar_tour__step__2__description_2": "صفحہ کا خلاصہ اور سوال",
+    "sidebar_tour__step__2__description_2": "اس صفحے کا خلاصہ دیں اور اس کے بارے میں سوال کریں",
     "sidebar_tour__step__2__description_3": "AI تلاش",
     "sidebar_tour__step__2__description_4": "AI آرٹ",
     "sidebar_tour__step__3__title": "AI ماڈل تبدیل کریں",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "تصویر کے ساتھ چیٹ",
     "sidebar_tour__step__5__feature_5__title": "1-کلک پرومپٹس",
     "sidebar_tour__step__5__feature_6__title": "پرومپٹ استعمال کریں",
-    "sidebar_tour__step__2__description_5": "دوبارہ لکھیں"
+    "sidebar_tour__step__2__description_5": "AI دوبارہ لکھنے والا"
   },
   "quota_usage_card": {
     "category__fast_text": "تیز AI",

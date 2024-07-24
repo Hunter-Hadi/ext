@@ -18,7 +18,7 @@ import LazyLoadImage from '@/components/LazyLoadImage'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
@@ -30,88 +30,80 @@ const SidebarChatHistoryButton: FC<{
   const { t } = useTranslation(['client'])
   const [modalOpen, setModalOpen] = React.useState(false)
   // 因为有keepMounted，所以需要这个来控制点击一次才能渲染
-  const [isClickOpenOnce, setIsClickOpenOnce] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
   const isImmersiveChatPage = isMaxAIImmersiveChatPage()
   const paperRef = useRef<HTMLDivElement>()
 
-  const {
-    currentSidebarConversationType,
-    updateSidebarSettings,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
+  const { clientConversation, currentConversationId, updateConversationId } =
+    useClientConversation()
+  const currentConversationType = clientConversation?.type
 
   const currentI18nTitle = useMemo(() => {
-    if (currentSidebarConversationType === 'Search') {
+    if (currentConversationType === 'Search') {
       return t('client:sidebar__speed_dial__search_history__button')
     }
-    if (currentSidebarConversationType === 'Summary') {
+    if (currentConversationType === 'Summary') {
       return t('client:sidebar__speed_dial__summary_history__button')
     }
-    if (currentSidebarConversationType === 'Art') {
+    if (currentConversationType === 'Art') {
       return t('client:sidebar__speed_dial__art_history__button')
     }
     return t('client:sidebar__speed_dial__chat_history__button')
-  }, [t, currentSidebarConversationType])
+  }, [t, currentConversationType])
 
   const currentI18nEmptyContent = useMemo(() => {
-    if (currentSidebarConversationType === 'Search') {
+    if (currentConversationType === 'Search') {
       return t('client:immersive_chat__search_no_conversation__title')
     }
-    if (currentSidebarConversationType === 'Summary') {
+    if (currentConversationType === 'Summary') {
       return t('client:immersive_chat__summary_no_conversation__title')
     }
-    if (currentSidebarConversationType === 'Art') {
+    if (currentConversationType === 'Art') {
       return t('client:immersive_chat__art_no_conversation__title')
     }
     return t('client:immersive_chat__chat_no_conversation__title')
-  }, [t, currentSidebarConversationType])
-  const handleOpenModal = () => {
-    setModalOpen(true)
-  }
+  }, [t, currentConversationType])
 
   const handleCloseModal = () => {
     setModalOpen(false)
     setAnchorEl(null)
   }
 
-  const handleClick =
-    (newPlacement: PopperPlacementType) =>
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      const containerElement = (getMaxAISidebarRootElement()?.querySelector(
-        '#maxAISidebarChatBox',
-      ) || document.body) as HTMLDivElement
-      const targetElement = event.currentTarget as HTMLButtonElement
-      // 高度取决于targetElement的高度
-      // 宽度取决于containerElement的中心
-      const rect = targetElement.getBoundingClientRect()
-      const containerRect = containerElement.getBoundingClientRect()
-      setAnchorEl({
-        getBoundingClientRect: () => {
-          const left = isImmersiveChatPage
-            ? document.body.offsetWidth / 2 + 8
-            : containerRect.x + containerRect.width / 2
-          const virtualRect = {
-            x: left,
-            y: rect.y - 8,
-            width: isImmersiveChatPage ? 1 : 58,
-            height: 1,
-            top: rect.top - 8,
-            left: left,
-            bottom: rect.top + 1,
-            right: left + 1,
-          } as DOMRect
-          return virtualRect
-        },
-      } as any)
-      setTimeout(() => {
-        paperRef.current?.focus()
-      }, 100)
-      setIsClickOpenOnce(true)
-      handleOpenModal()
-      setPlacement(newPlacement)
-    }
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const containerElement = (getMaxAISidebarRootElement()?.querySelector(
+      '#maxAISidebarChatBox',
+    ) || document.body) as HTMLDivElement
+    const targetElement = event.currentTarget as HTMLButtonElement
+    // 高度取决于targetElement的高度
+    // 宽度取决于containerElement的中心
+    const rect = targetElement.getBoundingClientRect()
+    const containerRect = containerElement.getBoundingClientRect()
+    setAnchorEl({
+      getBoundingClientRect: () => {
+        const left = isImmersiveChatPage
+          ? document.body.offsetWidth / 2 + 8
+          : containerRect.x + containerRect.width / 2
+        const virtualRect = {
+          x: left,
+          y: rect.y - 8,
+          width: isImmersiveChatPage ? 1 : 58,
+          height: 1,
+          top: rect.top - 8,
+          left: left,
+          bottom: rect.top + 1,
+          right: left + 1,
+        } as DOMRect
+        return virtualRect
+      },
+    } as any)
+    setTimeout(() => {
+      paperRef.current?.focus()
+    }, 100)
+    // setIsClickOpenOnce(true)
+    setPlacement('top')
+    setModalOpen(true)
+  }
 
   useEffect(() => {
     if (modalOpen) {
@@ -121,11 +113,14 @@ const SidebarChatHistoryButton: FC<{
       }, 100)
     }
   }, [modalOpen])
+
+  if (!currentConversationType) return null
+
   return (
     <>
       <TextOnlyTooltip placement={'top'} title={currentI18nTitle}>
         <Button
-          onClick={handleClick('top')}
+          onClick={handleClick}
           data-testid={'maxai-chat-history-button'}
           sx={{
             p: '5px',
@@ -169,6 +164,7 @@ const SidebarChatHistoryButton: FC<{
           width: '100%',
           zIndex: 2147483620,
         }}
+
         // keepMounted
       >
         {({ TransitionProps }) => (
@@ -198,7 +194,7 @@ const SidebarChatHistoryButton: FC<{
                   ml: isImmersiveChatPage ? 0 : 2,
                 }}
               >
-                {isClickOpenOnce && (
+                {modalOpen && (
                   <Stack height={'100%'}>
                     <Stack
                       direction='row'
@@ -230,31 +226,37 @@ const SidebarChatHistoryButton: FC<{
                           p: '5px',
                         }}
                         onDelete={() => {
-                          fetchPaginationConversations().then(
-                            (conversations) => {
-                              setPaginationConversations(conversations)
-                              const needCleanConversationType =
-                                currentSidebarConversationType.toLowerCase()
-                              updateSidebarSettings({
-                                [needCleanConversationType]: {
-                                  conversationId: '',
-                                },
-                              }).then(() => {
-                                updateSidebarConversationType('Chat')
-                              })
-                            },
-                          )
+                          // fetchPaginationConversations().then(
+                          //   (conversations) => {
+                          //     setPaginationConversations(conversations)
+                          //     const needCleanConversationType =
+                          //       currentSidebarConversationType.toLowerCase()
+                          //     updateSidebarSettings({
+                          //       [needCleanConversationType]: {
+                          //         conversationId: '',
+                          //       },
+                          //     }).then(() => {
+                          //       updateSidebarConversationType('Chat')
+                          //     })
+                          //   },
+                          // )
                         }}
                       />
                     </Stack>
                     <Divider />
                     <Box height={0} flex={1} overflow='auto'>
                       <ConversationList
-                        conversationType={currentSidebarConversationType}
+                        conversationType={currentConversationType}
                         hideClearAllButton
                         divider
-                        onSelectConversation={() => {
-                          handleCloseModal()
+                        onSelectConversation={(conversation) => {
+                          if (
+                            conversation &&
+                            conversation.id !== currentConversationId
+                          ) {
+                            updateConversationId(conversation.id)
+                            handleCloseModal()
+                          }
                         }}
                         sx={{
                           p: 0,

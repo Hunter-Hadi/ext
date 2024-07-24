@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Изберете предпочитаният си език на интерфейса",
     "sidebar_tour__step__2__title": "Увеличете продуктивността си с изкуствен интелект",
     "sidebar_tour__step__2__description_1": "Задайте въпрос на ИИ",
-    "sidebar_tour__step__2__description_2": "Резюмирайте и задайте въпрос за страницата",
+    "sidebar_tour__step__2__description_2": "Обобщете и попитайте за тази страница",
     "sidebar_tour__step__2__description_3": "Търсене с изкуствен интелект",
     "sidebar_tour__step__2__description_4": "Изкуствена интелигентност за изкуство",
     "sidebar_tour__step__3__title": "Превключете модела на изкуствения интелект",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Чат със снимка",
     "sidebar_tour__step__5__feature_5__title": "1-клик подсказки",
     "sidebar_tour__step__5__feature_6__title": "Използване на подсказка",
-    "sidebar_tour__step__2__description_5": "Препиши"
+    "sidebar_tour__step__2__description_5": "Пренаписване от изкуствен интелект"
   },
   "quota_usage_card": {
     "category__fast_text": "Бърз AI",

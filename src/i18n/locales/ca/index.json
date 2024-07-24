@@ -1340,7 +1340,7 @@
     "sidebar_tour__step__1__title": "Trieu el vostre idioma d'interfície preferit",
     "sidebar_tour__step__2__title": "Augmenta la teva productivitat amb IA",
     "sidebar_tour__step__2__description_1": "Pregunta-ho tot a l'IA",
-    "sidebar_tour__step__2__description_2": "Resum & preguntar sobre la pàgina",
+    "sidebar_tour__step__2__description_2": "Resumir i preguntar sobre aquesta pàgina",
     "sidebar_tour__step__2__description_3": "Cerca d'IA",
     "sidebar_tour__step__2__description_4": "Art d'IA",
     "sidebar_tour__step__3__title": "Canvia el model d'IA",
@@ -1354,7 +1354,7 @@
     "sidebar_tour__step__5__feature_4__title": "Xat amb captura de pantalla",
     "sidebar_tour__step__5__feature_5__title": "Suggeriments amb 1 clic",
     "sidebar_tour__step__5__feature_6__title": "Utilitza el suggeriment",
-    "sidebar_tour__step__2__description_5": "Reescriu"
+    "sidebar_tour__step__2__description_5": "Reescriptor d'IA"
   },
   "quota_usage_card": {
     "category__fast_text": "IA Ràpida",

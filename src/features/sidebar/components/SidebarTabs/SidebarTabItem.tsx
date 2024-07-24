@@ -108,7 +108,15 @@ const SidebarTabItem: React.FC<ISidebarTabItemProps> = (props) => {
   // 组件tooltip
   return (
     // <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5}>
-    <LightTooltip placement={placement} title={tooltip}>
+    <LightTooltip
+      placement={placement}
+      title={tooltip}
+      PopperProps={{
+        sx: {
+          zIndex: 2147483620,
+        },
+      }}
+    >
       {content}
     </LightTooltip>
     // </Box>

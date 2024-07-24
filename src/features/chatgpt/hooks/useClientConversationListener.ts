@@ -45,7 +45,7 @@ const port = new ContentScriptConnectionV2({
  * - 监听客户端聊天状态更新事件
  * - 自动归档 - v4.2.0 - 2024-04
  */
-export const useClientConversationListener = () => {
+export const useClientConversationListener = (isContextWindow?: boolean) => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
   const { currentAIProvider } = useAIProviderModels()
@@ -296,7 +296,11 @@ export const useClientConversationListener = () => {
       return
     }
     const autoArchiveTime =
-      appDBStorage.userSettings?.sidebar?.autoArchive?.[clientConversation.type]
+      appDBStorage.userSettings?.sidebar?.autoArchive?.[
+        clientConversation.type === 'ContextMenu' && !isContextWindow
+          ? 'Chat'
+          : clientConversation.type
+      ]
     if (autoArchiveTime && isNumber(autoArchiveTime)) {
       const messageUpdatedAt =
         clientConversationMessages[clientConversationMessages.length - 1]

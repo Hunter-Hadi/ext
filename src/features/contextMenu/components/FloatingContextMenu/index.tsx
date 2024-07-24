@@ -378,7 +378,7 @@ const FloatingContextMenu: FC<{
       document.removeEventListener('mouseup', handleDragEnd)
     }
   }, [update, floatingDropdownMenu.open])
-  useClientConversationListener()
+  useClientConversationListener(true)
   useFloatingContextMenuDraftHistoryChange()
   // 选中区域高亮
   useEffect(() => {

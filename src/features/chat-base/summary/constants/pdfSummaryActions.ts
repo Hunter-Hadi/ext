@@ -140,7 +140,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
             parameters: {
               MaxAIDocumentActionConfig: {
                 pureText: '{{READABILITY_CONTENTS}}',
-                docType: 'pdf',
+                docType: 'page_content__pdf',
                 doneType: 'document_create',
                 file: '{{PDF_FILE}}' as any,
               },
@@ -405,7 +405,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
             parameters: {
               MaxAIDocumentActionConfig: {
                 pureText: '{{READABILITY_CONTENTS}}',
-                docType: 'pdf',
+                docType: 'page_content__pdf',
                 doneType: 'document_create',
                 file: '{{PDF_FILE}}' as any,
               },
@@ -670,7 +670,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
             parameters: {
               MaxAIDocumentActionConfig: {
                 pureText: '{{READABILITY_CONTENTS}}',
-                docType: 'pdf',
+                docType: 'page_content__pdf',
                 doneType: 'document_create',
                 file: '{{PDF_FILE}}' as any,
               },

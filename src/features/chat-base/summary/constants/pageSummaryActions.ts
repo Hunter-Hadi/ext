@@ -87,7 +87,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'webpage',
+          docType: 'page_content__webpage',
           doneType: 'document_create',
           file: {
             readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
@@ -303,7 +303,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'webpage',
+          docType: 'page_content__webpage',
           doneType: 'document_create',
           file: {
             readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
@@ -514,7 +514,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
         MaxAIDocumentActionConfig: {
           link: '{{CURRENT_WEBPAGE_URL}}',
           pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'webpage',
+          docType: 'page_content__webpage',
           doneType: 'document_create',
           file: {
             readabilityMarkdown: '{{READABILITY_MARKDOWN}}',

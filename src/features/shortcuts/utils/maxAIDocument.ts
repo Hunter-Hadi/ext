@@ -7,10 +7,10 @@ import { sha1FileEncrypt } from '@/utils/encryptionHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 export type IUploadDocumentType =
-  | 'webpage'
-  | 'pdf'
-  | 'email'
-  | 'youtube'
+  | 'page_content__webpage'
+  | 'page_content__pdf'
+  | 'page_content__email'
+  | 'page_content__youtube'
   | 'image'
   | 'chat_file'
 

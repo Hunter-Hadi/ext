@@ -13,6 +13,7 @@ import React, {
   ReactElement,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -88,6 +89,8 @@ const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
     [context],
   )
 
+  const childrenContainerRef = useRef<HTMLElement>()
+
   useEffect(() => {
     if (open && renderInContextMenu) {
       const contextWindowRoot = getMaxAIFloatingContextMenuRootElement()
@@ -103,9 +106,21 @@ const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
         // 因为ClickAwayListener绑定在了最外层的dom，点击context window阻止了冒泡
         const contextWindowReference = contextWindowRoot.querySelector(
           `#${MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}`,
-        )
+        ) as HTMLElement
         if (contextWindowReference) {
-          const clickListener = () => {
+          const clickListener = (event: MouseEvent) => {
+            // 当点击事件发生在children里面的时候，不生效
+            if (
+              childrenContainerRef.current &&
+              event.target instanceof HTMLElement
+            ) {
+              if (
+                event.target === childrenContainerRef.current ||
+                childrenContainerRef.current.contains(event.target)
+              ) {
+                return
+              }
+            }
             setOpen(false)
           }
           contextWindowReference.addEventListener('click', clickListener)
@@ -303,13 +318,15 @@ const MessageContextTooltip: FC<IMessageContextTooltipProps> = ({
             disableTouchListener
             onClose={() => setOpen(false)}
           >
-            {children({
-              open,
-              context,
-              attachments,
-              shortContext,
-              toggle: () => setOpen((prev) => !prev),
-            })}
+            <Box ref={childrenContainerRef}>
+              {children({
+                open,
+                context,
+                attachments,
+                shortContext,
+                toggle: () => setOpen((prev) => !prev),
+              })}
+            </Box>
           </LightTooltip>
         </Box>
       </MaxAIClickAwayListener>

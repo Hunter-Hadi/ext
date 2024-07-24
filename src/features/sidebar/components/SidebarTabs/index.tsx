@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { GiftIcon } from '@/components/CustomIcon'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { getPageSummaryType } from '@/features/chat-base/summary/utils/pageSummaryHelper'
@@ -59,8 +60,14 @@ export const SIDEBAR_MARKETING_TABS_DATA: ISidebarTabData[] = [
   {
     label: 'common:upgrade',
     icon: <ElectricBoltIcon sx={{ fontSize: 24 }} />,
-    tooltip: <UpgradePlanTooltip />,
+    tooltip: <UpgradePlanTooltip renderPlan='elite_yearly' />,
     isShow: ({ isTopPlanUser }) => !isTopPlanUser,
+    onClick: () => {
+      window.open(
+        `${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=elite_yearly&paymentType=yearly`,
+        '_blank',
+      )
+    },
     buttonTestId: 'maxai--sidebar--upgrade-plan',
     labelTestId: 'max-ai__upgrade-plan',
   },
@@ -123,7 +130,9 @@ export const SIDEBAR_NAV_TABS_DATA: (ISidebarTabData & {
   {
     label: 'client:sidebar__tabs__rewrite__title',
     tooltip: () => 'client:sidebar__tabs__rewrite__tooltip',
-    icon: <ContextMenuIcon icon='Rewrite' sx={{ fontSize: 24 }} />,
+    icon: (
+      <ContextMenuIcon icon='Rewrite' sx={{ fontSize: 24, color: 'red' }} />
+    ),
     value: 'ContextMenu',
   },
   {
@@ -215,25 +224,38 @@ const SidebarTabs: FC = () => {
   })
 
   const sidebarMarketingTabs = useMemo(() => {
+    if (!isLogin || !loaded) return []
     return SIDEBAR_MARKETING_TABS_DATA.filter((tab) => {
       if (tab.isShow && !tab.isShow({ ...userInfo, ...surveyStatus })) {
         return false
       }
       return true
     })
-  }, [])
+  }, [userInfo, surveyStatus, isLogin, loaded])
 
   const sidebarNavTabs = useMemo(() => {
     return SIDEBAR_NAV_TABS_DATA.filter((tab) => {
-      if (tab.isShow && !tab.isShow({ ...userInfo, ...surveyStatus })) {
-        return false
-      }
       if (tab.value === 'Summary' && isInImmersiveChatPage) {
         return false
       }
       return true
     })
   }, [])
+
+  useEffect(() => {
+    if (
+      !containerRef.current ||
+      !marketingContainerRef.current ||
+      !navContainerRef.current
+    ) {
+      return
+    }
+    const containerHeight = containerRef.current?.clientHeight
+    const marketingHeight = marketingContainerRef.current?.clientHeight
+    const navHeight = navContainerRef.current?.clientHeight
+    setIsMoreMarketing(containerHeight < marketingHeight + navHeight)
+    setIsMoreNav(containerHeight < navHeight)
+  }, [sidebarMarketingTabs.length, sidebarNavTabs.length])
 
   const moreButton =
     isMoreMarketing || isMoreNav ? (
@@ -342,29 +364,27 @@ const SidebarTabs: FC = () => {
             : { top: 0 }),
         }}
       >
-        {isLogin &&
-          loaded &&
-          sidebarMarketingTabs.map((item, index) => {
-            return (
-              <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5} key={index}>
-                <SidebarTabItem
-                  label={t(item.label)}
-                  icon={item.icon}
-                  tooltip={
-                    typeof item.tooltip === 'function'
-                      ? t(item.tooltip())
-                      : item.tooltip
-                  }
-                  target={item.href ? '_blank' : undefined}
-                  href={item.href}
-                  placement={isInImmersiveChatPage ? 'right' : 'left'}
-                  onClick={item.onClick}
-                  buttonTestId={item.buttonTestId}
-                  labelTestId={item.labelTestId}
-                />
-              </Box>
-            )
-          })}
+        {sidebarMarketingTabs.map((item, index) => {
+          return (
+            <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5} key={index}>
+              <SidebarTabItem
+                label={t(item.label)}
+                icon={item.icon}
+                tooltip={
+                  typeof item.tooltip === 'function'
+                    ? t(item.tooltip())
+                    : item.tooltip
+                }
+                target={item.href ? '_blank' : undefined}
+                href={item.href}
+                placement={isInImmersiveChatPage ? 'right' : 'left'}
+                onClick={item.onClick}
+                buttonTestId={item.buttonTestId}
+                labelTestId={item.labelTestId}
+              />
+            </Box>
+          )
+        })}
       </Stack>
 
       <Stack

@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 import { mixpanelTrack } from '@/features/mixpanel/utils'
 import PayingUserUpgradeCard from '@/features/pricing/components/PayingUserUpgradeCard'
+import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 import SidebarSurveyContent from '@/features/sidebar/components/SidebarChatBox/SidebarSurveyDialog/SidebarSurveyContent'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
@@ -197,6 +198,8 @@ export const SurveyTabTooltip = () => {
   )
 }
 
-export const UpgradePlanTooltip = () => {
-  return <PayingUserUpgradeCard renderPlan='elite_yearly' />
+export const UpgradePlanTooltip = (props: { renderPlan: RENDER_PLAN_TYPE }) => {
+  return (
+    <PayingUserUpgradeCard renderPlan={props.renderPlan || 'elite_yearly'} />
+  )
 }

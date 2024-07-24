@@ -123,11 +123,8 @@ export const OnboardingTooltip: FC<
   }, [sceneType, beforeTooltipShow, container, referenceElement])
 
   const closeTooltip = useCallback(() => {
-    if (sceneType === 'FLOATING_CONTEXT_MENU_LIST_BOX') {
-      return
-    }
     setOpen(false)
-  }, [sceneType])
+  }, [])
 
   useEffect(() => {
     if (showStateTrigger === undefined) {

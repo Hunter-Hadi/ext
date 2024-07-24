@@ -130,9 +130,7 @@ export const SIDEBAR_NAV_TABS_DATA: (ISidebarTabData & {
   {
     label: 'client:sidebar__tabs__rewrite__title',
     tooltip: () => 'client:sidebar__tabs__rewrite__tooltip',
-    icon: (
-      <ContextMenuIcon icon='Rewrite' sx={{ fontSize: 24, color: 'red' }} />
-    ),
+    icon: <ContextMenuIcon icon='Rewrite' sx={{ fontSize: 24 }} />,
     value: 'ContextMenu',
   },
   {

@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Shrnutí klíčových bodů",
     "context_window__chat_history__continue_in_sidebar__title": "Pokračovat v postranní liště",
     "sidebar__speed_dial__rewrite_history__button": "Přepsat historii",
-    "sidebar__tabs__rewrite__action_btn__title": "Nový přepis"
+    "sidebar__tabs__rewrite__action_btn__title": "Nový přepis",
+    "context_window__chat_history__continue_in_rewrite__title": "Pokračovat v přepisu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

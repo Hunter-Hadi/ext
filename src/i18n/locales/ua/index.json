@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Узагальнити ключові моменти",
     "context_window__chat_history__continue_in_sidebar__title": "Продовжити в бічній панелі",
     "sidebar__speed_dial__rewrite_history__button": "Переписати історію",
-    "sidebar__tabs__rewrite__action_btn__title": "Нове переписання"
+    "sidebar__tabs__rewrite__action_btn__title": "Нове переписання",
+    "context_window__chat_history__continue_in_rewrite__title": "Продовжуйте у переписці"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

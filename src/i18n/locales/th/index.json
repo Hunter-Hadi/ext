@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "สรุปจุดสำคัญ",
     "context_window__chat_history__continue_in_sidebar__title": "ดำเนินการต่อในบริเวณข้าง",
     "sidebar__speed_dial__rewrite_history__button": "เขียนประวัติใหม่",
-    "sidebar__tabs__rewrite__action_btn__title": "เขียนใหม่"
+    "sidebar__tabs__rewrite__action_btn__title": "เขียนใหม่",
+    "context_window__chat_history__continue_in_rewrite__title": "ดำเนินการในการเขียนใหม่"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

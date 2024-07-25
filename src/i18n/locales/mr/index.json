@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "मुख्य बिंदू सारांशित करा",
     "context_window__chat_history__continue_in_sidebar__title": "साइडबारमध्ये सुरू ठेवा",
     "sidebar__speed_dial__rewrite_history__button": "इतिहास पुनर्लेखन",
-    "sidebar__tabs__rewrite__action_btn__title": "नवीन पुनर्लेखन"
+    "sidebar__tabs__rewrite__action_btn__title": "नवीन पुनर्लेखन",
+    "context_window__chat_history__continue_in_rewrite__title": "पुन्हा लिहा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

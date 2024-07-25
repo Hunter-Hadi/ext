@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sumiraj ključne tačke",
     "context_window__chat_history__continue_in_sidebar__title": "Nastavi u bočnoj traci",
     "sidebar__speed_dial__rewrite_history__button": "Prepiši istoriju",
-    "sidebar__tabs__rewrite__action_btn__title": "Nova izmena"
+    "sidebar__tabs__rewrite__action_btn__title": "Nova izmena",
+    "context_window__chat_history__continue_in_rewrite__title": "Nastavi u prepravci"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

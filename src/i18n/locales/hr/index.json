@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sažmi ključne točke",
     "context_window__chat_history__continue_in_sidebar__title": "Nastavi u bočnoj traci",
     "sidebar__speed_dial__rewrite_history__button": "Prepiši povijest",
-    "sidebar__tabs__rewrite__action_btn__title": "Nova izmjena"
+    "sidebar__tabs__rewrite__action_btn__title": "Nova izmjena",
+    "context_window__chat_history__continue_in_rewrite__title": "Nastavi u prepravku"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

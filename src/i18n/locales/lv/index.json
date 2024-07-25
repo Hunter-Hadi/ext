@@ -1043,13 +1043,17 @@
     "floating_menu__textarea__placeholder": "Ierakstiet vai ielīmējiet tekstu šeit un lūdziet AI uzlabot, pārbaudīt, tulkojiet, apkopot un citus darbus.",
     "floating_menu__always_pin_sidebar_title": "Vienmēr pielīmējiet sānjoslu",
     "floating_menu__always_pin_to_sidebar": "Vienmēr rādīt atbildes sānjoslā",
-    "floating_menu__always_unpin_to_sidebar": "Vienmēr rādīt atbildes konteksta izvēlnē",
-    "floating_menu__pint_once_to_sidebar": "Rādīt atbildi sānjoslā vienreiz",
     "floating_menu__always_unpin_to_sidebar": "Vienmēr rādīt atbildes kontekstā",
+    "floating_menu__pint_once_to_sidebar": "Rādīt atbildi sānjoslā vienreiz",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Kopsavilkuma galvenie punkti",
     "context_window__chat_history__continue_in_sidebar__title": "Turpināt sānjoslā",
     "sidebar__speed_dial__rewrite_history__button": "Pārrakstīt vēsturi",
-    "sidebar__tabs__rewrite__action_btn__title": "Jauns pārraksts"
+    "sidebar__tabs__rewrite__action_btn__title": "Jauns pārraksts",
+    "sidebar__tabs__rewrite__title": "Pārrakstīt",
+    "sidebar__tabs__rewrite__tooltip": "AI pārrakstītājs",
+    "home_view__rewrite__title": "AI pārrakstītājs",
+    "home_view__rewrite__description": "Ietaupiet laiku, pārbaudot un pilnveidojot savus vārdus.",
+    "context_window__chat_history__continue_in_rewrite__title": "Turpināt pārrakstīšanu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

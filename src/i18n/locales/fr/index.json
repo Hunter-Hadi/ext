@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Résumer les points clés",
     "context_window__chat_history__continue_in_sidebar__title": "Continuer dans la barre latérale",
     "sidebar__speed_dial__rewrite_history__button": "Réécrire l'historique",
-    "sidebar__tabs__rewrite__action_btn__title": "Nouvelle réécriture"
+    "sidebar__tabs__rewrite__action_btn__title": "Nouvelle réécriture",
+    "context_window__chat_history__continue_in_rewrite__title": "Continuer dans la réécriture"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

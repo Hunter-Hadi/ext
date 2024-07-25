@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "주요 포인트 요약",
     "context_window__chat_history__continue_in_sidebar__title": "사이드바에서 계속",
     "sidebar__speed_dial__rewrite_history__button": "히스토리 다시 쓰기",
-    "sidebar__tabs__rewrite__action_btn__title": "새로운 다시 쓰기"
+    "sidebar__tabs__rewrite__action_btn__title": "새로운 다시 쓰기",
+    "context_window__chat_history__continue_in_rewrite__title": "다시 작성으로 계속"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

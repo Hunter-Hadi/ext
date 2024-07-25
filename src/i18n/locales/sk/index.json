@@ -1047,7 +1047,13 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Zhrnúť kľúčové body",
     "context_window__chat_history__continue_in_sidebar__title": "Pokračovať v bočnom paneli",
     "sidebar__speed_dial__rewrite_history__button": "Prepísať históriu",
-    "sidebar__tabs__rewrite__action_btn__title": "Nový prepis"
+    "sidebar__tabs__rewrite__action_btn__title": "Nový prepis",
+    "floating_menu__pint_once_to_sidebar": "Zobraziť odpoveď v bočnom paneli raz",
+    "sidebar__tabs__rewrite__title": "Prepísať",
+    "sidebar__tabs__rewrite__tooltip": "AI prepisovač",
+    "home_view__rewrite__title": "AI prepisovač",
+    "home_view__rewrite__description": "Ušetrite čas pri korektúre a zdokonalovaní vašich slov.",
+    "context_window__chat_history__continue_in_rewrite__title": "Pokračovať v prepise"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "סכם נקודות מרכזיות",
     "context_window__chat_history__continue_in_sidebar__title": "המשך בסרגל הצד",
     "sidebar__speed_dial__rewrite_history__button": "כתוב מחדש",
-    "sidebar__tabs__rewrite__action_btn__title": "כתוב מחדש חדש"
+    "sidebar__tabs__rewrite__action_btn__title": "כתוב מחדש חדש",
+    "context_window__chat_history__continue_in_rewrite__title": "המשך בכתיבה מחדש"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

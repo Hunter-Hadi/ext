@@ -1047,7 +1047,13 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Kokkuvõte põhipunktidest",
     "context_window__chat_history__continue_in_sidebar__title": "Jätka küljeribal",
     "sidebar__speed_dial__rewrite_history__button": "Ümberkirjutamise ajalugu",
-    "sidebar__tabs__rewrite__action_btn__title": "Uus ümberkirjutamine"
+    "sidebar__tabs__rewrite__action_btn__title": "Uus ümberkirjutamine",
+    "floating_menu__pint_once_to_sidebar": "Kuva vastus kõrvalriba",
+    "sidebar__tabs__rewrite__title": "Ümberkirjutus",
+    "sidebar__tabs__rewrite__tooltip": "AI ümberkirjutaja",
+    "home_view__rewrite__title": "AI ümberkirjutaja",
+    "home_view__rewrite__description": "Säästa aega tekstide toimetamisel ja täiustamisel.",
+    "context_window__chat_history__continue_in_rewrite__title": "Jätka ümberkirjutuses"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

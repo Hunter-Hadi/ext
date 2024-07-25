@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Povzemi ključne točke",
     "context_window__chat_history__continue_in_sidebar__title": "Nadaljuj v stranskem meniju",
     "sidebar__speed_dial__rewrite_history__button": "Prepiši zgodovino",
-    "sidebar__tabs__rewrite__action_btn__title": "Nova preusmeritev"
+    "sidebar__tabs__rewrite__action_btn__title": "Nova preusmeritev",
+    "context_window__chat_history__continue_in_rewrite__title": "Nadaljuj v preoblikovanju"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

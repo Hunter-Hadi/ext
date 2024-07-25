@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "تلخيص النقاط الرئيسية",
     "context_window__chat_history__continue_in_sidebar__title": "الاستمرار في الشريط الجانبي",
     "sidebar__speed_dial__rewrite_history__button": "إعادة كتابة التاريخ",
-    "sidebar__tabs__rewrite__action_btn__title": "إعادة كتابة جديدة"
+    "sidebar__tabs__rewrite__action_btn__title": "إعادة كتابة جديدة",
+    "context_window__chat_history__continue_in_rewrite__title": "الاستمرار في إعادة الكتابة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

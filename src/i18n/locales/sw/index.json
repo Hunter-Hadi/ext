@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Fupisha pointi muhimu",
     "context_window__chat_history__continue_in_sidebar__title": "Endelea kwenye upau wa pembeni",
     "sidebar__speed_dial__rewrite_history__button": "Andika upya historia",
-    "sidebar__tabs__rewrite__action_btn__title": "Andika upya mpya"
+    "sidebar__tabs__rewrite__action_btn__title": "Andika upya mpya",
+    "context_window__chat_history__continue_in_rewrite__title": "Endelea katika kuandika upya"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

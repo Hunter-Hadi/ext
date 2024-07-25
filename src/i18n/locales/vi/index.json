@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Tóm tắt điểm chính",
     "context_window__chat_history__continue_in_sidebar__title": "Tiếp tục trong thanh bên",
     "sidebar__speed_dial__rewrite_history__button": "Viết lại lịch sử",
-    "sidebar__tabs__rewrite__action_btn__title": "Viết mới"
+    "sidebar__tabs__rewrite__action_btn__title": "Viết mới",
+    "context_window__chat_history__continue_in_rewrite__title": "Tiếp tục trong việc viết lại"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

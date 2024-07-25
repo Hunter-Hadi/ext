@@ -1047,7 +1047,13 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Tiivistä tärkeät kohdat",
     "context_window__chat_history__continue_in_sidebar__title": "Jatka sivupalkissa",
     "sidebar__speed_dial__rewrite_history__button": "Kirjoita historia uudelleen",
-    "sidebar__tabs__rewrite__action_btn__title": "Uusi kirjoitus"
+    "sidebar__tabs__rewrite__action_btn__title": "Uusi kirjoitus",
+    "floating_menu__pint_once_to_sidebar": "Näytä vastaus sivupalkissa kerran",
+    "sidebar__tabs__rewrite__title": "Uudelleenkirjoita",
+    "sidebar__tabs__rewrite__tooltip": "AI-uudelleenkirjoittaja",
+    "home_view__rewrite__title": "AI-uudelleenkirjoittaja",
+    "home_view__rewrite__description": "Säästä aikaa oikolukemalla ja hiomalla sanojasi.",
+    "context_window__chat_history__continue_in_rewrite__title": "Jatka uudelleenkirjoituksessa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

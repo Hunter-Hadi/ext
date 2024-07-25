@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "പ്രധാന പോയിന്റുകൾ സംഗ്രഹിക്കുക",
     "context_window__chat_history__continue_in_sidebar__title": "സൈഡ്‌ബാർലേക്ക് തുടരുക",
     "sidebar__speed_dial__rewrite_history__button": "ചരിത്രം പുനരരചിക്കുക",
-    "sidebar__tabs__rewrite__action_btn__title": "പുതിയ പുനരരചിക്കുക"
+    "sidebar__tabs__rewrite__action_btn__title": "പുതിയ പുനരരചിക്കുക",
+    "context_window__chat_history__continue_in_rewrite__title": "പുനഃഎഴുതിയിടുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

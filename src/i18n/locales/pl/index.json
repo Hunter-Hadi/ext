@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Podsumuj kluczowe punkty",
     "context_window__chat_history__continue_in_sidebar__title": "Kontynuuj w pasku bocznym",
     "sidebar__speed_dial__rewrite_history__button": "Przepisz historię",
-    "sidebar__tabs__rewrite__action_btn__title": "Nowe przepisanie"
+    "sidebar__tabs__rewrite__action_btn__title": "Nowe przepisanie",
+    "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisie"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

@@ -1052,7 +1052,8 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Opsummer nøglepunkter",
     "context_window__chat_history__continue_in_sidebar__title": "Fortsæt i sidepanelet",
     "sidebar__speed_dial__rewrite_history__button": "Omskriv historie",
-    "sidebar__tabs__rewrite__action_btn__title": "Ny omskrivning"
+    "sidebar__tabs__rewrite__action_btn__title": "Ny omskrivning",
+    "context_window__chat_history__continue_in_rewrite__title": "Fortsæt i omskrivning"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

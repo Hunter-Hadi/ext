@@ -1047,7 +1047,13 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "总结要点",
     "context_window__chat_history__continue_in_sidebar__title": "在侧边栏中继续",
     "sidebar__speed_dial__rewrite_history__button": "重写历史",
-    "sidebar__tabs__rewrite__action_btn__title": "新重写"
+    "sidebar__tabs__rewrite__action_btn__title": "新重写",
+    "floating_menu__pint_once_to_sidebar": "在侧边栏中显示响应一次",
+    "sidebar__tabs__rewrite__title": "重写",
+    "sidebar__tabs__rewrite__tooltip": "AI 重写工具",
+    "home_view__rewrite__title": "AI 重写工具",
+    "home_view__rewrite__description": "节省校对和完善文字的时间。",
+    "context_window__chat_history__continue_in_rewrite__title": "在重写中继续"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

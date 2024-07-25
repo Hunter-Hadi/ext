@@ -1047,7 +1047,13 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Buod ng mga mahahalagang punto",
     "context_window__chat_history__continue_in_sidebar__title": "Magpatuloy sa sidebar",
     "sidebar__speed_dial__rewrite_history__button": "Baguhin ang kasaysayan",
-    "sidebar__tabs__rewrite__action_btn__title": "Bagong baguhin"
+    "sidebar__tabs__rewrite__action_btn__title": "Bagong baguhin",
+    "floating_menu__pint_once_to_sidebar": "Ipakita ang tugon sa sidebar isang beses",
+    "sidebar__tabs__rewrite__title": "Ibalik",
+    "sidebar__tabs__rewrite__tooltip": "AI rewriter",
+    "home_view__rewrite__title": "AI rewriter",
+    "home_view__rewrite__description": "Makatipid ng oras sa pagsusuri at pagpapakinis ng iyong mga salita.",
+    "context_window__chat_history__continue_in_rewrite__title": "Magpatuloy sa pagsusulat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

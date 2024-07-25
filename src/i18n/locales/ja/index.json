@@ -1043,13 +1043,17 @@
     "floating_menu__textarea__placeholder": "ここにテキストを入力または貼り付けて、AIに改善、校正、翻訳、要約などを依頼してください。",
     "floating_menu__always_pin_sidebar_title": "常にサイドバーに固定",
     "floating_menu__always_pin_to_sidebar": "常にサイドバーに応答を表示",
-    "floating_menu__always_unpin_to_sidebar": "常にコンテキストメニューで応答を表示",
-    "floating_menu__pint_once_to_sidebar": "サイドバーに一度だけ応答を表示",
     "floating_menu__always_unpin_to_sidebar": "常にコンテキストメニューに応答を表示",
+    "floating_menu__pint_once_to_sidebar": "サイドバーに一度だけ応答を表示",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "キーポイントを要約",
     "context_window__chat_history__continue_in_sidebar__title": "サイドバーで続行",
     "sidebar__speed_dial__rewrite_history__button": "履歴を書き換える",
-    "sidebar__tabs__rewrite__action_btn__title": "新しい書き換え"
+    "sidebar__tabs__rewrite__action_btn__title": "新しい書き換え",
+    "sidebar__tabs__rewrite__title": "書き直す",
+    "sidebar__tabs__rewrite__tooltip": "AIリライター",
+    "home_view__rewrite__title": "AIリライター",
+    "home_view__rewrite__description": "校正や言葉を完璧にするのに時間を節約します。",
+    "context_window__chat_history__continue_in_rewrite__title": "書き直しで続行"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

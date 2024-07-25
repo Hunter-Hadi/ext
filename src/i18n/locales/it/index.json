@@ -1047,7 +1047,13 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sintesi punti chiave",
     "context_window__chat_history__continue_in_sidebar__title": "Continua nella barra laterale",
     "sidebar__speed_dial__rewrite_history__button": "Riscrivi la storia",
-    "sidebar__tabs__rewrite__action_btn__title": "Nuova riscrittura"
+    "sidebar__tabs__rewrite__action_btn__title": "Nuova riscrittura",
+    "floating_menu__pint_once_to_sidebar": "Mostra risposta nella barra laterale una volta",
+    "sidebar__tabs__rewrite__title": "Riscrivi",
+    "sidebar__tabs__rewrite__tooltip": "Riscrittore AI",
+    "home_view__rewrite__title": "Riscrittore AI",
+    "home_view__rewrite__description": "Risparmia tempo nella correzione e perfezionamento delle tue parole.",
+    "context_window__chat_history__continue_in_rewrite__title": "Continua nella riscrittura"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

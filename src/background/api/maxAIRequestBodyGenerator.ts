@@ -89,6 +89,12 @@ export const maxAIRequestBodyAnalysisGenerator = async (
 ) => {
   try {
     const clonePostBody: any = cloneDeep(originalPostBody)
+    if (analysisData?.promptId) {
+      clonePostBody.prompt_id = analysisData.promptId
+    }
+    if (analysisData?.promptName) {
+      clonePostBody.prompt_name = analysisData.promptName
+    }
     clonePostBody.prompt_type = analysisData?.promptType || ''
     clonePostBody.feature_name = analysisData?.featureName || ''
     return clonePostBody

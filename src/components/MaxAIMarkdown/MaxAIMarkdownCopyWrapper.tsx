@@ -1,12 +1,17 @@
+import Box, { BoxProps } from '@mui/material/Box'
 import React, { FC } from 'react'
 
-const MaxAIMarkdownCopyWrapper: FC<{
-  children: React.ReactNode
+export interface IMaxAIMarkdownCopyWrapperProps extends BoxProps {
   copyText: string
-}> = (props) => {
-  const { children, copyText } = props
+}
+
+const MaxAIMarkdownCopyWrapper: FC<IMaxAIMarkdownCopyWrapperProps> = (
+  props,
+) => {
+  const { children, copyText, ...rest } = props
+
   return (
-    <div data-maxai-markdown-custom-component={'true'}>
+    <Box {...rest} data-maxai-markdown-custom-component={'true'}>
       {children}
       <span
         data-maxai-markdown-copy-element={'true'}
@@ -18,7 +23,7 @@ const MaxAIMarkdownCopyWrapper: FC<{
       >
         {copyText}
       </span>
-    </div>
+    </Box>
   )
 }
 export default MaxAIMarkdownCopyWrapper

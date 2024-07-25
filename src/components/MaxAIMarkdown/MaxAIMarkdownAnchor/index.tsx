@@ -3,6 +3,7 @@ import Tooltip from '@mui/material/Tooltip'
 import React, { FC } from 'react'
 
 import CitationTooltipContent from '@/components/CitationTooltipContent'
+import MaxAIMarkdownCopyWrapper from '@/components/MaxAIMarkdown/MaxAIMarkdownCopyWrapper'
 import { useMaxAIMarkdownExtraData } from '@/components/MaxAIMarkdown/useMaxAIMarkdownExtraData'
 import CitationTag from '@/features/citation/components/CitationTag'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
@@ -70,13 +71,15 @@ const MaxAIMarkdownAnchor: FC<IMaxAIMarkdownAnchorProps> = (props) => {
       }
       const number = Number(href)
       return (
-        <CitationTag
-          conversationId={conversationId}
-          citation={sourceCitation}
-          index={index}
-          number={isNaN(number) ? undefined : number}
-          type={isNaN(number) ? 'icon' : 'number'}
-        />
+        <MaxAIMarkdownCopyWrapper component='span' copyText=''>
+          <CitationTag
+            conversationId={conversationId}
+            citation={sourceCitation}
+            index={index}
+            number={isNaN(number) ? undefined : number}
+            type={isNaN(number) ? 'icon' : 'number'}
+          />
+        </MaxAIMarkdownCopyWrapper>
       )
     }
   }

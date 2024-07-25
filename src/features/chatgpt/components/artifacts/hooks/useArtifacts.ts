@@ -259,7 +259,9 @@ export const useArtifacts = () => {
         downloadFile(
           artifacts.content,
           `${artifacts.title}.${
-            artifacts.language === 'typescript' ? 'tsx' : 'jsx'
+            artifacts.language === 'typescript' || artifacts.language === 'tsx'
+              ? 'tsx'
+              : 'jsx'
           }`,
           'application/vnd.ant.react',
         )

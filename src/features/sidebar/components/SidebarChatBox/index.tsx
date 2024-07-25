@@ -360,6 +360,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
               </Box>
               <ActionSetVariablesModal
                 showModelSelector
+                showDiscardButton={false}
                 onChange={(_, reason) => {
                   if (reason === 'runPromptStart') {
                     setIsSettingVariables(false)

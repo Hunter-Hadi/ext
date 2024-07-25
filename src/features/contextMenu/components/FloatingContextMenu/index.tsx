@@ -559,8 +559,7 @@ const FloatingContextMenu: FC<{
               {floatingDropdownMenu.open && (
                 <ActionSetVariablesModal
                   showCloseButton={false}
-                  showDiscardButton
-                  // showDiscardButton={false}
+                  showDiscardButton={false}
                   onInputCustomVariable={({ data, variables }) => {
                     // 判断是否有输入内容的输入框，过滤系统参数
                     const isInput = variables?.some((variable) =>

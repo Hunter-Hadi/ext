@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Jauninājums neierobežotai piekļuvei Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Bezmaksas ikdienas vaicājumu limits pārsniegts. Jauniniet tagad, lai iegūtu neierobežotus vaicājumus, vai pārbaudiet atpakaļ rīt, kad ikdienas bezmaksas vaicājumi tiek atiestatīti.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Mēneša vaicājumu limits Llama 3.1 405B pārsniegts. Jauniniet tagad, lai iegūtu neierobežotu piekļuvi, vai pārbaudiet atpakaļ nākamajā mēnesī, kad tiek atiestatīti jūsu mēneša vaicājumi.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Izbaudiet pasaules lielāko atvērto avota AI modeli, kas piedāvā nevienlīdzīgas iespējas zināšanās, loģikas un daudzvalodu atbalstā. Atbloķējiet 405 miljardu parametru jaudu savām vissarežģītākajām projektam."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Izbaudiet pasaules lielāko atvērto avota AI modeli, kas piedāvā nevienlīdzīgas iespējas zināšanās, loģikas un daudzvalodu atbalstā. Atbloķējiet 405 miljardu parametru jaudu savām vissarežģītākajām projektam.",
+    "provider__llama__model__llama_3_1_405b__description": "Pasaules lielākais publiski pieejamais pamatmodeļis, konkurējot ar labākajiem slēgtā koda AI vispārējās zināšanās, vadāmības un matemātikas jomā. Atbalsta 8 valodas un iespējošas funkcijas, piemēram, sintētisko datu ģenerēšanu un modeļa destilāciju. Ideāli piemērots garu tekstu kopsavilkumiem, daudzvalodu sarunu aģentiem un programmēšanas palīgiem.",
+    "provider__llama__model__llama_3_1_470b__description": "Spēcīgs daudzvalodu modelis ar ievērojami paplašinātu konteksta garumu un uzlabotām secināšanas spējām. Atbalsta sarežģītus lietojumus, piemēram, garu tekstu kopsavilkumi, daudzvalodu sarunu aģenti un programmēšanas palīdzība.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Pasaules lielākais publiski pieejamais pamatmodeļis ar līmeņa spējām",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Paplašināts konteksta garums 128K žetoniem sarežģītiem lietojumiem",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Augstas veiktspējas vispārējās zināšanās, vadāmības un matemātikas jomā",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Daudzvalodu atbalsts astoņās valodās"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

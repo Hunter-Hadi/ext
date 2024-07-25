@@ -36,13 +36,13 @@ const useUpdateModalABTester = () => {
     IUpdateVariantShowType | false
   > => {
     const onBoardingData = await getChromeExtensionOnBoardingData()
-    // 未显示过4.6.1的弹窗，4.6.1固定显示gpt-4o-mini的modal
+    // 未显示过4.8.0的弹窗，4.8.0固定显示llama-3.1-405B的modal
     // 之后会在某个版本删除这个逻辑
-    if (!onBoardingData['ON_BOARDING_EXTENSION_VERSION_4_6_1_UPDATE_MODAL']) {
-      setCurrentUpdateVariant('gpt-4o-mini')
+    if (!onBoardingData['ON_BOARDING_EXTENSION_VERSION_4_8_0_UPDATE_MODAL']) {
+      setCurrentUpdateVariant('llama-3.1-405b')
       return 'all'
     }
-    if (APP_VERSION === '4.6.1') {
+    if (APP_VERSION === '4.8.0') {
       return false
     }
     // 弹过了，不弹窗
@@ -55,9 +55,9 @@ const useUpdateModalABTester = () => {
   }, [])
 
   const saveUpdateShow = useCallback(async () => {
-    // 如果显示过弹窗，代表肯定已经显示过4.6.1的弹窗了，直接改为true
+    // 如果显示过弹窗，代表肯定已经显示过4.8.0的弹窗了，直接改为true
     await setChromeExtensionOnBoardingData(
-      'ON_BOARDING_EXTENSION_VERSION_4_6_1_UPDATE_MODAL',
+      'ON_BOARDING_EXTENSION_VERSION_4_8_0_UPDATE_MODAL',
       true,
     )
     // 保存默认弹窗的标识

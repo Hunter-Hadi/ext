@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Aktualizujte pre neobmedzený prístup k Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Prekročený bezplatný denný limit dotazov. Aktualizujte teraz pre neobmedzené dotazy alebo sa vráťte zajtra, keď sa bezplatné denné dotazy obnovia.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Prekročený mesačný limit dotazov pre Llama 3.1 405B. Aktualizujte teraz pre neobmedzený prístup alebo sa vráťte budúci mesiac, keď sa obnovia vaše mesačné dotazy.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Zažite najväčší otvorený model umelej inteligencie na svete, ponúkajúci neprekonateľné schopnosti v oblasti znalostí, úvah a viacjazyčnú podporu. Odomknite silu 405 miliárd parametrov pre vaše najambicióznejšie projekty."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Zažite najväčší otvorený model umelej inteligencie na svete, ponúkajúci neprekonateľné schopnosti v oblasti znalostí, úvah a viacjazyčnú podporu. Odomknite silu 405 miliárd parametrov pre vaše najambicióznejšie projekty.",
+    "provider__llama__model__llama_3_1_405b__description": "Najväčší verejne dostupný základný model na svete, súperi s najlepšími uzavretými modelmi AI všeobecnými znalosťami, ovládateľnosťou a matematikou. Podporuje 8 jazykov a umožňuje pokročilé schopnosti ako generovanie syntetických údajov a destilácia modelu. Ideálny pre sumarizáciu dlhých foriem, viacjazyčné konverzačné agentov a asistentov pri programovaní.",
+    "provider__llama__model__llama_3_1_470b__description": "Výkonný viacjazyčný model s výrazne rozšírenou dĺžkou kontextu a vylepšenými schopnosťami uvažovania. Podporuje pokročilé používateľské prípady ako sumarizácia dlhých textových foriem, viacjazyčné konverzačné agenti a pomoc pri programovaní.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Najväčší verejne dostupný základný model s úrovňou na hranici",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Rozšírená dĺžka kontextu 128K tokenov pre pokročilé používateľské prípady",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Výkonnosť na úrovni špičkových vedomostí, ovládateľnosti a matematiky",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Viacjazyčná podpora v osem jazykoch"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

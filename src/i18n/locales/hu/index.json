@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Frissítés korlátlan hozzáféréshez a Llama 3.1 405B-hoz",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Ingyenes napi lekérdezési limit túllépve. Frissítse most korlátlan lekérdezésekért, vagy nézzen vissza holnap, amikor a napi ingyenes lekérdezések visszaállnak.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Havi lekérdezési limit a Llama 3.1 405B esetében túllépve. Frissítse most korlátlan hozzáférésért, vagy nézzen vissza jövő hónapban, amikor a havi lekérdezések visszaállnak.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Tapasztalja meg a világ legnagyobb nyílt forráskódú AI modelljét, amely páratlan képességeket kínál a tudásban, az érvelésben és a többnyelvű támogatásban. Oldja fel a 405 milliárd paraméter erejét a legambiciózusabb projektekhez."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Tapasztalja meg a világ legnagyobb nyílt forráskódú AI modelljét, amely páratlan képességeket kínál a tudásban, az érvelésben és a többnyelvű támogatásban. Oldja fel a 405 milliárd paraméter erejét a legambiciózusabb projektekhez.",
+    "provider__llama__model__llama_3_1_405b__description": "A világ legnagyobb nyilvánosan elérhető alapmodellje, versenyezve a legjobb zárt forráskódú AI-kkel általános tudásban, irányíthatóságban és matematikában. Támogat 8 nyelvet és lehetővé teszi a szintetikus adatok generálását és a modell összefoglalását. Ideális hosszú szövegek összefoglalásához, többnyelvű beszélgetési ügynökökhöz és kódsegítőkhöz.",
+    "provider__llama__model__llama_3_1_470b__description": "Egy erőteljes többnyelvű modell jelentősen kibővített kontextushosszal és fejlett gondolkodási képességekkel. Támogatja a hosszú szövegek összefoglalásának, többnyelvű beszélgetési ügynököknek és kódsegítőknek szánt fejlett felhasználási eseteket.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "A világ legnagyobb nyilvánosan elérhető alapmodellje a határértékű képességekkel",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Kibővített kontextushossz 128K token a fejlett felhasználási esetekhez",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Állapot-of-the-art teljesítmény általános tudásban, irányíthatóságban és matematikában",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Többnyelvű támogatás nyolc nyelven"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

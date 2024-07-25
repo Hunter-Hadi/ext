@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Llama 3.1 405B에 무제한 액세스 업그레이드",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "무료 일일 쿼리 한도 초과. 무제한 쿼리로 업그레이드하거나 내일 데일리 무료 쿼리가 재설정될 때까지 기다리세요.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Llama 3.1 405B의 월간 쿼리 한도 초과. 무제한 액세스로 업그레이드하거나 다음 달에 월간 쿼리가 재설정될 때까지 기다리세요.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "세계 최대의 오픈소스 AI 모델을 경험해보세요. 지식, 추론 및 다국어 지원에서 탁월한 능력을 제공합니다. 가장 야 ambtious 프로젝트를 위해 405 억 개의 파라미터의 파워를 해제하세요."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "세계 최대의 오픈소스 AI 모델을 경험해보세요. 지식, 추론 및 다국어 지원에서 탁월한 능력을 제공합니다. 가장 야 ambtious 프로젝트를 위해 405 억 개의 파라미터의 파워를 해제하세요.",
+    "provider__llama__model__llama_3_1_405b__description": "일반 지식, 조종성 및 수학에서 최고 수준의 평판을 가진 세계 최대 규모의 공개 기반 모델. 8개 언어 지원 및 합성 데이터 생성 및 모델 증류와 같은 고급 기능을 지원합니다. 장문 요약, 다국어 대화형 에이전트 및 코딩 어시스턴트에 이상적입니다.",
+    "provider__llama__model__llama_3_1_470b__description": "매우 확장된 컨텍스트 길이와 향상된 추론 능력을 갖춘 강력한 다국어 모델. 장문 텍스트 요약, 다국어 대화형 에이전트 및 코딩 지원과 같은 고급 사용 사례를 지원합니다.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "전선 수준 능력을 갖춘 세계 최대 규모의 공개 기반 모델",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "고급 사용 사례를 위한 128K 토큰의 확장된 컨텍스트 길이",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "일반 지식, 조종성 및 수학에서 최첨단 성능",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "8개 언어로 다국어 지원"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

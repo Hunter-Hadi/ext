@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Aktualizacja dla nieograniczonego dostępu do Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Darmowy dzienny limit zapytań przekroczony. Zaktualizuj teraz dla nieograniczonych zapytań, lub sprawdź ponownie jutro, gdy dzienna liczba darmowych zapytań zostanie zresetowana.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Miesięczny limit zapytań dla Llama 3.1 405B przekroczony. Zaktualizuj teraz dla nieograniczonego dostępu, lub sprawdź ponownie w przyszłym miesiącu, gdy zostaną zresetowane miesięczne zapytania.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Doświadcz największego na świecie modelu sztucznej inteligencji typu open-source, oferującego niezrównane możliwości w zakresie wiedzy, wnioskowania oraz wsparcia wielojęzycznego. Odblokuj moc 405 miliardów parametrów dla swoich najbardziej ambitnych projektów."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Doświadcz największego na świecie modelu sztucznej inteligencji typu open-source, oferującego niezrównane możliwości w zakresie wiedzy, wnioskowania oraz wsparcia wielojęzycznego. Odblokuj moc 405 miliardów parametrów dla swoich najbardziej ambitnych projektów.",
+    "provider__llama__model__llama_3_1_405b__description": "Największy na świecie otwarty model podstawowy, dorównujący najlepszym zamkniętym systemom AI pod względem wiedzy ogólnej, sterowności i matematyki. Obsługuje 8 języków i umożliwia zaawansowane funkcje, takie jak generowanie danych syntetycznych i destylacja modelu. Idealny do podsumowań długich form, wielojęzycznych agentów konwersacyjnych i asystentów do programowania.",
+    "provider__llama__model__llama_3_1_470b__description": "Potężny wielojęzyczny model z znacznie zwiększoną długością kontekstu i ulepszonymi zdolnościami wnioskowania. Obsługuje zaawansowane przypadki użycia, takie jak podsumowywanie długich tekstów, wielojęzyczne agenty konwersacyjne i pomoc w programowaniu.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Największy na świecie otwarty model podstawowy z możliwościami na poziomie granicy rozwoju",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Zwiększona długość kontekstu 128K tokenów dla zaawansowanych przypadków użycia",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Najnowocześniejsza wydajność w zakresie wiedzy ogólnej, sterowności i matematyki",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Wsparcie wielojęzyczne dla ośmiu języków"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

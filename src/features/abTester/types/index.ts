@@ -6,6 +6,7 @@ export type IUpdateVariant =
   | 'claude-3-opus'
   | 'claude-3.5-sonnet'
   | 'gemini-1.5-pro'
+  | 'llama-3.1-405b'
   | 'art'
   | 'summary'
   | 'instant-reply'

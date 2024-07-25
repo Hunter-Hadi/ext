@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "升级以获取对Llama 3.1 405B的无限访问",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "免费每日查询限额已超过。立即升级以获取无限查询，或明天再来查看免费查询何时重置。",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Llama 3.1 405B的每月查询限额已超过。立即升级以获取无限访问，或下个月再来查看您的每月查询何时重置。",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "体验全球最大的开源AI模型，在知识、推理和多语言支持方面提供无与伦比的能力。解锁4050亿参数的强大能力，用于您最雄心勃勃的项目。"
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "体验全球最大的开源AI模型，在知识、推理和多语言支持方面提供无与伦比的能力。解锁4050亿参数的强大能力，用于您最雄心勃勃的项目。",
+    "provider__llama__model__llama_3_1_405b__description": "全球最大的开放基础模型，与顶级闭源AI相媲美，具有广泛的知识、可操纵性和数学能力。支持8种语言，支持合成数据生成和模型蒸馏等高级功能。适用于长篇摘要、多语言对话代理和编码助手。",
+    "provider__llama__model__llama_3_1_470b__description": "功能强大的多语言模型，具有显著扩展的上下文长度和增强的推理能力。支持长篇文本摘要、多语言对话代理和编码辅助等高级用例。",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "全球最大的开放基础模型，具有前沿水平的功能",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "128K令牌的扩展上下文长度，适用于高级用例",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "在广泛知识、可操纵性和数学方面表现卓越",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "支持八种语言的多语言功能"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

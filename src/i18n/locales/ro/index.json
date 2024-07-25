@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Upgrade pentru acces nelimitat la Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Limita zilnică gratuită depășită. Upgrade acum pentru interogări nelimitate, sau verifică înapoi mâine când interogările gratuite zilnice sunt resetate.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Limita lunară de interogări pentru Llama 3.1 405B a fost depășită. Upgrade acum pentru acces nelimitat, sau verifică înapoi luna viitoare când interogările tale lunare sunt resetate.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Experimentează cel mai mare model AI open-source din lume, oferind capacități de neegalat în cunoștințe, raționament și suport multilingv. Deblochează puterea a 405 miliarde de parametri pentru proiectele tale cele mai ambițioase."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Experimentează cel mai mare model AI open-source din lume, oferind capacități de neegalat în cunoștințe, raționament și suport multilingv. Deblochează puterea a 405 miliarde de parametri pentru proiectele tale cele mai ambițioase.",
+    "provider__llama__model__llama_3_1_405b__description": "Cel mai mare model de fundație disponibil deschis în lume, rivalizând cu IA-urile de top în cunoștințe generale, manevrabilitate și matematică. Suportă 8 limbi și permite capacități avansate precum generarea de date sintetice și distilarea modelului. Ideal pentru rezumarea textelor lungi, agenți de conversație multilingvi și asistenți la codificare.",
+    "provider__llama__model__llama_3_1_470b__description": "Un model puternic multilingv cu o lungime a contextului semnificativ extinsă și capacități îmbunătățite de raționament. Suportă cazuri de utilizare avansate precum rezumarea textelor lungi, agenți de conversație multilingvi și asistență la codificare.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Cel mai mare model de fundație disponibil deschis în lume cu capacități de nivel de frontieră",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Lungimea contextului extinsă de 128K de tokeni pentru cazuri de utilizare avansate",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Performanță de ultimă generație în cunoștințe generale, manevrabilitate și matematică",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Suport multilingv pentru opt limbi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

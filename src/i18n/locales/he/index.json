@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "שדרג לגישה בלתי מוגבלת ללמה 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "חריגת המגבלה היומית החינמית. שדרג כעת לשאילתות בלתי מוגבלות, או בדוק שוב מחר כאשר השאילתות החינמיות היומיות מתאפסות.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "חריגת המגבלה החודשית ללמה 3.1 405B. שדרג כעת לגישה בלתי מוגבלת, או בדוק שוב בחודש הבא כאשר השאילתות החודשיות שלך מתאפסות.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "חווי את הדגם המבוסס על AI קוד פתוח הגדול בעולם, המציע יכולות בלתי רגילות בידע, היגיון, ותמיכה רב-שפתית. פתח את הכוח של 405 מיליארד פרמטרים לפרויקטים הכי שאפתניים שלך."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "חווי את הדגם המבוסס על AI קוד פתוח הגדול בעולם, המציע יכולות בלתי רגילות בידע, היגיון, ותמיכה רב-שפתית. פתח את הכוח של 405 מיליארד פרמטרים לפרויקטים הכי שאפתניים שלך.",
+    "provider__llama__model__llama_3_1_405b__description": "המודל הגדול ביותר בעולם הזמין לציבור, שמתחרה במודלי AI סגורים בידע כללי, ביכולת לשלוט ובמתמטיקה. תומך ב-8 שפות ומאפשר יכולות מתקדמות כמו יצירת נתונים סינתטיים ודיסטילציה של מודלים. אידיאלי לסיכום טקסטים ארוכים, לסוכנים שיחה רב-לשוניים ולעוזרי קידוד.",
+    "provider__llama__model__llama_3_1_470b__description": "מודל רב-לשוני וחזק עם אורך הקשר המורחב באופן משמעותי ויכולות רזונואליות משופרות. תומך במקרים שימוש מתקדמים כמו סיכום טקסטים ארוכים, סוכנים שיחה רב-לשוניים ועזרה בקידוד.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "למה 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "המודל הגדול ביותר בעולם הזמין לציבור עם יכולות ברמת חזית",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "אורך הקשר המורחב של 128K טוקנים למקרים שימוש מתקדמים",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "ביצועים מתקדמים בידע כללי, ביכולת לשלוט ובמתמטיקה",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "תמיכה רב-לשונית בשמונה שפות"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

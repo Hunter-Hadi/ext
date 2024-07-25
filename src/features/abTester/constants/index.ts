@@ -11,6 +11,7 @@ export const UPDATE_VARIANT: IUpdateVariant[] = [
   'claude-3-opus',
   'claude-3.5-sonnet',
   'gemini-1.5-pro',
+  'llama-3.1-405b',
   'art',
   'summary',
   'instant-reply',
@@ -183,6 +184,36 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
         ),
       },
     ],
+  },
+  'llama-3.1-405b': {
+    image: getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-llama-3-1-405b.png',
+    ),
+    title: (t) =>
+      t('client:sidebar__promotion_dialog__llama_3_1_405b__content__title'),
+    descriptions: (t) => [
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__llama_3_1_405b__content_item1__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__llama_3_1_405b__content_item2__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__llama_3_1_405b__content_item3__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__llama_3_1_405b__content_item4__description',
+        ),
+      },
+    ],
+    learnMoreLink: 'https://www.maxai.me/docs/release-notes/llama-3-1-405b/',
   },
   art: {
     image: getChromeExtensionAssetsURL(

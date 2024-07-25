@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Nadgradite za neomejen dostop do Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Presežena brezplačna dnevna omejitev poizvedb. Nadgradite zdaj za neomejene poizvedbe ali se vrnite jutri, ko se dnevne brezplačne poizvedbe ponastavijo.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Mesečna omejitev poizvedb za Llama 3.1 405B je presežena. Nadgradite zdaj za neomejen dostop ali se vrnite naslednji mesec, ko se mesečne poizvedbe ponastavijo.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Doživite največji odprtokodni model umetne inteligence na svetu, ki ponuja neprekosljive zmogljivosti na področju znanja, sklepanja in večjezične podpore. Odklenite moč 405 milijard parametrov za vaše najambicioznejše projekte."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Doživite največji odprtokodni model umetne inteligence na svetu, ki ponuja neprekosljive zmogljivosti na področju znanja, sklepanja in večjezične podpore. Odklenite moč 405 milijard parametrov za vaše najambicioznejše projekte.",
+    "provider__llama__model__llama_3_1_405b__description": "Največji odprto dostopen model temelječ na fundaciji na svetu, ki se meri s top zaprtimi viri umetne inteligence v splošnem znanju, vodljivosti in matematiki. Podpira 8 jezikov in omogoča napredne funkcionalnosti, kot je generiranje sintetičnih podatkov in destilacija modela. Idealno za povzetke dolgih besedil, večjezične pogovorne agente in pomočnike pri kodiranju.",
+    "provider__llama__model__llama_3_1_470b__description": "Močan večjezični model z znatno povečano dolžino konteksta in izboljšanimi sposobnostmi sklepanja. Podpira napredne uporabne primere, kot so povzemanje dolgih besedil, večjezični pogovorni agenti in pomoč pri kodiranju.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Največji odprto dostopen model fundacije s sposobnostmi na ravni fronte",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Povečana dolžina konteksta 128K žetonov za napredne uporabne primere",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Vrhunska zmogljivost v splošnem znanju, vodljivosti in matematiki",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Večjezična podpora v osmih jezikih"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

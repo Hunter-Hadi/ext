@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Oppgrader for ubegrenset tilgang til Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Gratis daglig spørringsgrense overskredet. Oppgrader nå for ubegrensede spørringer, eller sjekk tilbake i morgen når de daglige gratis spørringene tilbakestilles.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Månedlig spørringsgrense for Llama 3.1 405B overskredet. Oppgrader nå for ubegrenset tilgang, eller sjekk tilbake neste måned når de månedlige spørringene tilbakestilles.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Opplev verdens største åpen kildekode AI-modell, som tilbyr enestående evner innen kunnskap, resonnering og flerspråklig støtte. Lås opp kraften til 405 milliarder parametere for dine mest ambisiøse prosjekter."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Opplev verdens største åpen kildekode AI-modell, som tilbyr enestående evner innen kunnskap, resonnering og flerspråklig støtte. Lås opp kraften til 405 milliarder parametere for dine mest ambisiøse prosjekter.",
+    "provider__llama__model__llama_3_1_405b__description": "Verdens største åpent tilgjengelige grunnlagsmodell, som utfordrer topp lukkede AI-er innen generell kunnskap, styrbarhet og matematikk. Støtter 8 språk og muliggjør avanserte funksjoner som generering av syntetiske data og modelldestillasjon. Ideell for oppsummering av lange tekster, flerspråklige samtaleagenter og kodingsassistenter.",
+    "provider__llama__model__llama_3_1_470b__description": "En kraftig flerspråklig modell med betydelig utvidet kontekstlengde og forbedrede resonneringsevner. Støtter avanserte bruksområder som oppsummering av lange tekster, flerspråklige samtaleagenter og kodingsstøtte.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Verdens største åpent tilgjengelige grunnlagsmodell med grensenivåfunksjoner",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Utvidet kontekstlengde på 128K token for avanserte bruksområder",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "State-of-the-art ytelse innen generell kunnskap, styrbarhet og matematikk",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Flerspråklig støtte på åtte språk"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

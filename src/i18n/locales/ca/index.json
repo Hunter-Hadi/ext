@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Millora per tenir accés il·limitat a Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "S'ha superat el límit diari de consultes gratuïtes. Millora ara per tenir consultes il·limitades, o torna demà quan es reiniciïn les consultes gratuïtes diàries.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "S'ha superat el límit mensual de consultes per a Llama 3.1 405B. Millora ara per tenir accés il·limitat, o torna el mes vinent quan es reiniciïn les teves consultes mensuals.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Experimenta el model d'IA de codi obert més gran del món, oferint capacitats sense precedents en coneixement, raonament i suport multilingüe. Desbloqueja el poder de 405 mil milions de paràmetres per als teus projectes més ambiciosos."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Experimenta el model d'IA de codi obert més gran del món, oferint capacitats sense precedents en coneixement, raonament i suport multilingüe. Desbloqueja el poder de 405 mil milions de paràmetres per als teus projectes més ambiciosos.",
+    "provider__llama__model__llama_3_1_405b__description": "El model de fundació més gran del món, rivalitzant amb l'IA de codi tancat en coneixement general, capacitat de direcció i matemàtiques. Suporta 8 idiomes i permet capacitats avançades com la generació de dades sintètiques i la destil·lació del model. Ideal per a la sumarització de textos llargs, agents de conversa multilingües i assistents de codi.",
+    "provider__llama__model__llama_3_1_470b__description": "Un model multilingüe potent amb una longitud de context significativament ampliada i capacitats de raonament millorades. Suporta casos d'ús avançats com la sumarització de textos llargs, agents de conversa multilingües i assistència en la programació.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "El model de fundació més gran del món disponible obertament amb capacitats de nivell fronterer",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Longitud de context ampliada de 128K tokens per a casos d'ús avançats",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Rendiment de primer nivell en coneixement general, capacitat de direcció i matemàtiques",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Suport multilingüe en vuit idiomes"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

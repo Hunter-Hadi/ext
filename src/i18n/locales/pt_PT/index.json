@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Atualize para acesso ilimitado ao Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Limite diário de consultas gratuitas excedido. Atualize agora para consultas ilimitadas, ou volte amanhã quando as consultas gratuitas diárias forem redefinidas.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Limite mensal de consultas para Llama 3.1 405B excedido. Atualize agora para acesso ilimitado, ou volte no próximo mês quando suas consultas mensais forem redefinidas.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Experimente o maior modelo de IA de código aberto do mundo, oferecendo capacidades incomparáveis em conhecimento, raciocínio e suporte multilingue. Desbloqueie o poder de 405 biliões de parâmetros para seus projetos mais ambiciosos."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Experimente o maior modelo de IA de código aberto do mundo, oferecendo capacidades incomparáveis em conhecimento, raciocínio e suporte multilingue. Desbloqueie o poder de 405 biliões de parâmetros para seus projetos mais ambiciosos.",
+    "provider__llama__model__llama_3_1_405b__description": "O maior modelo de fundação abertamente disponível do mundo, rivalizando com as principais IA de código fechado em conhecimento geral, capacidade de direção e matemática. Suporta 8 idiomas e permite capacidades avançadas como geração de dados sintéticos e destilação de modelo. Ideal para sumarização de longos textos, agentes de conversação multilíngues e assistentes de codificação.",
+    "provider__llama__model__llama_3_1_470b__description": "Um poderoso modelo multilíngue com comprimento de contexto significativamente expandido e capacidades de raciocínio aprimoradas. Suporta casos de uso avançados como sumarização de texto de longa extensão, agentes de conversação multilíngues e assistência de codificação.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Maior modelo de fundação abertamente disponível do mundo com capacidades de nível de fronteira",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Comprimento de contexto expandido de 128K tokens para casos de uso avançados",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Desempenho de ponta em conhecimento geral, capacidade de direção e matemática",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Suporte multilíngue em oito idiomas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

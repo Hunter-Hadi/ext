@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Upgrade untuk akses tanpa batas ke Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Batas kueri harian gratis terlampaui. Tingkatkan sekarang untuk kueri tanpa batas, atau cek kembali besok saat kueri gratis harian direset.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Batas kueri bulanan untuk Llama 3.1 405B terlampaui. Tingkatkan sekarang untuk akses tanpa batas, atau cek kembali bulan depan saat kueri bulanan direset.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Rasakan model AI open-source terbesar di dunia, menawarkan kemampuan tak tertandingi dalam pengetahuan, penalaran, dan dukungan multibahasa. Buka kekuatan 405 miliar parameter untuk proyek-proyek paling ambisius Anda."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Rasakan model AI open-source terbesar di dunia, menawarkan kemampuan tak tertandingi dalam pengetahuan, penalaran, dan dukungan multibahasa. Buka kekuatan 405 miliar parameter untuk proyek-proyek paling ambisius Anda.",
+    "provider__llama__model__llama_3_1_405b__description": "Model terbesar di dunia yang tersedia secara terbuka, menyaingi kecerdasan buatan sumber tertutup teratas dalam pengetahuan umum, kemampuan pengendalian, dan matematika. Mendukung 8 bahasa dan memungkinkan kemampuan canggih seperti generasi data sintetis dan distilasi model. Ideal untuk ringkasan teks panjang, agen percakapan multibahasa, dan asisten pemrograman.",
+    "provider__llama__model__llama_3_1_470b__description": "Model multibahasa yang kuat dengan panjang konteks yang signifikan diperluas dan kemampuan penalaran yang ditingkatkan. Mendukung kasus penggunaan canggih seperti ringkasan teks panjang, agen percakapan multibahasa, dan bantuan pemrograman.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Model dasar terbesar di dunia yang tersedia secara terbuka dengan kemampuan tingkat depan",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Panjang konteks diperluas hingga 128K token untuk kasus penggunaan canggih",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Kinerja terbaik dalam pengetahuan umum, kemampuan pengendalian, dan matematika",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Dukungan multibahasa di delapan bahasa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

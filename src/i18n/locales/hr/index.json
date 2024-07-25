@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Nadogradite za neograničen pristup Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Premašen je besplatni dnevni limit upita. Nadogradite sada za neograničene upite ili provjerite sutra kada se besplatni dnevni upiti resetiraju.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Mjesečni limit upita za Llama 3.1 405B je premašen. Nadogradite sada za neograničen pristup ili provjerite sljedeći mjesec kada se mjesečni upiti resetiraju.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Iskusite najveći otvoreni AI model na svijetu, koji nudi neusporedivu sposobnost u znanju, zaključivanju i višejezičnoj podršci. Otključajte snagu od 405 milijardi parametara za vaše najambicioznije projekte."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Iskusite najveći otvoreni AI model na svijetu, koji nudi neusporedivu sposobnost u znanju, zaključivanju i višejezičnoj podršci. Otključajte snagu od 405 milijardi parametara za vaše najambicioznije projekte.",
+    "provider__llama__model__llama_3_1_405b__description": "Najveći otvoreno dostupan model temelja na svijetu, koji se natječe s vrhunskim zatvorenim AI modelima u općem znanju, upravljivosti i matematici. Podržava 8 jezika i omogućuje napredne mogućnosti poput generiranja sintetičkih podataka i destilacije modela. Idealno za sažimanje dugih oblika, višejezične konverzacijske agente i pomoćnike u kodiranju.",
+    "provider__llama__model__llama_3_1_470b__description": "Moćan višejezični model s značajno proširenim kontekstualnim duljinama i poboljšanim sposobnostima zaključivanja. Podržava napredne upotrebe poput sažimanja teksta dugih oblika, višejezičnih konverzacijskih agenata i pomoći u kodiranju.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Najveći otvoreno dostupan model temelja s mogućnostima na razini granice",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Proširena kontekstualna duljina od 128K tokena za napredne upotrebe",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Vrhunska izvedba u općem znanju, upravljivosti i matematici",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Višejezična podrška na osam jezika"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

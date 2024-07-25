@@ -1061,7 +1061,14 @@
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Upgrade für unbegrenzten Zugriff auf Llama 3.1 405B",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Kostenloses tägliches Abfrage-Limit überschritten. Jetzt upgraden für unbegrenzte Abfragen oder morgen wiederkommen, wenn die täglichen kostenlosen Abfragen zurückgesetzt werden.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Monatliches Abfrage-Limit für Llama 3.1 405B überschritten. Jetzt upgraden für unbegrenzten Zugriff oder nächsten Monat wiederkommen, wenn Ihre monatlichen Abfragen zurückgesetzt werden.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Erleben Sie das weltweit größte Open-Source KI-Modell, das unübertroffene Fähigkeiten in Wissen, Denken und mehrsprachiger Unterstützung bietet. Entfesseln Sie die Kraft von 405 Milliarden Parametern für Ihre ehrgeizigsten Projekte."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Erleben Sie das weltweit größte Open-Source KI-Modell, das unübertroffene Fähigkeiten in Wissen, Denken und mehrsprachiger Unterstützung bietet. Entfesseln Sie die Kraft von 405 Milliarden Parametern für Ihre ehrgeizigsten Projekte.",
+    "provider__llama__model__llama_3_1_405b__description": "Das weltweit größte frei verfügbare Grundlagenmodell, das in Sachen allgemeines Wissen, Steuerbarkeit und Mathematik mit den besten geschlossenen KI-Modellen konkurriert. Unterstützt 8 Sprachen und ermöglicht fortgeschrittene Funktionen wie die Generierung synthetischer Daten und Modellverdichtung. Ideal für Langform-Zusammenfassungen, mehrsprachige Konversationsagenten und Coding-Assistenten.",
+    "provider__llama__model__llama_3_1_470b__description": "Ein leistungsstarkes mehrsprachiges Modell mit deutlich erweiterter Kontextlänge und verbesserten Denkfähigkeiten. Unterstützt fortgeschrittene Anwendungsfälle wie Langform-Textzusammenfassungen, mehrsprachige Konversationsagenten und Codierungsunterstützung.",
+    "sidebar__promotion_dialog__llama_3_1_405b__content__title": "Llama 3.1 405B",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item1__description": "Weltweit größtes frei verfügbares Grundlagenmodell mit Fähigkeiten auf dem Niveau der Spitzenklasse",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Erweiterte Kontextlänge von 128K Tokens für fortgeschrittene Anwendungsfälle",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "State-of-the-art-Leistung in allgemeinem Wissen, Steuerbarkeit und Mathematik",
+    "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Mehrsprachige Unterstützung in acht Sprachen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

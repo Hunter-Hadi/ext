@@ -27,6 +27,9 @@ const SidebarChatBoxChatSpeedDial: FC<{
   const [restartAppDialogVisible, setRestartAppDialogVisible] = useState(false)
 
   const cleanBtnTooltipTitle = useMemo(() => {
+    if (currentSidebarConversationType === 'ContextMenu') {
+      return t('sidebar__tabs__rewrite__action_btn__title')
+    }
     if (currentSidebarConversationType === 'Summary') {
       return t('client:sidebar__tabs__summary__action_btn__title')
     }

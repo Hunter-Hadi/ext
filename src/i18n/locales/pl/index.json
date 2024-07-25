@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Przycisk podsumowania",
     "feature_card__prompts__edit_prompt__field_advance__title": "Zaawansowane",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Język wyjściowy i ton oraz styl pisania",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu kontekstowe",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Przepisz",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Podsumowanie",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Wyszukiwanie",
     "feature_card__prompts__new_prompt__title": "Nowy prompt",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Brak dostępnej historii czatu",
     "immersive_chat__summary_no_conversation__title": "Brak dostępnej historii podsumowania",
     "immersive_chat__search_no_conversation__title": "Brak dostępnej historii wyszukiwania",
-    "immersive_chat__art_no_conversation__title": "Brak dostępnej historii sztuki",
+    "immersive_chat__art_no_conversation__title": "Brak dostępnej historii przepisywania",
     "immersive_chat__delete_summary__title": "Usunąć podsumowanie?",
     "immersive_chat__delete_search__title": "Usunąć wyszukiwanie?",
     "immersive_chat__delete_art__title": "Usunąć sztukę?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Odpowiedź natychmiastowa",
     "immersive_chat__delete_all_context_menu__button__title": "Usuń wszystkie menu kontekstowe",
     "immersive_chat__delete_all_context_menu__title": "Wyczyść historię twoich menu kontekstowych - na pewno?",
-    "context_window__chat_history__button__title": "Historia menu kontekstowego",
+    "context_window__chat_history__button__title": "Historia przepisywania",
     "context_window__chat_history__empty__title": "Brak dostępnej historii menu kontekstowego",
     "context_window__chat_history__continue_in_chat__title": "Kontynuuj w czacie",
     "provider__claude_web_app__model__claude_3_200k__description": "Najwyższa wydajność w zadaniach wymagających złożonego rozumowania. Claude 3 to najlepsza oferta od Anthropic.",
@@ -1051,7 +1051,9 @@
     "home_view__rewrite__description": "Oszczędź czas na korekcie i doskonaleniu swoich słów.",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Podsumuj kluczowe punkty",
     "context_window__chat_history__continue_in_sidebar__title": "Kontynuuj w pasku bocznym",
-    "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisywaczu"
+    "sidebar__speed_dial__rewrite_history__button": "Przepisz historię",
+    "sidebar__tabs__rewrite__action_btn__title": "Nowe przepisanie",
+    "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisie"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

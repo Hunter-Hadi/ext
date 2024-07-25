@@ -136,7 +136,10 @@ class SearchWIthAIChatSystem {
     if (!question.meta) {
       question.meta = {}
     }
+
     question.meta.analytics = {
+      promptId: 'search_with_ai',
+      promptName: 'search_with_ai',
       promptType: 'preset',
       featureName: 'search_with_ai',
     }

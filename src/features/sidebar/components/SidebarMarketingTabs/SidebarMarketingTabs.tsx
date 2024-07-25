@@ -1,3 +1,7 @@
+/**
+ * @deprecated 4.7.0此文件已经废弃，后续删除
+ * 因为Sidebar需要监听高度变化，动态显示按钮需要和SidebarNavTabs统一配置参数，移动至SidebarTabs/SidebarMarketing里
+ */
 import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined'
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'
 import FavoriteIcon from '@mui/icons-material/Favorite'

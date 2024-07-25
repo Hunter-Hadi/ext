@@ -8,6 +8,7 @@ import { ButtonProps } from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
+import { TooltipProps } from '@mui/material/Tooltip'
 import debounce from 'lodash-es/debounce'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -42,13 +43,13 @@ export interface ISidebarTabData extends ButtonProps {
   value?: ISidebarConversationType
   // tooltip内容，如果是组件展示组件
   tooltip?: React.ReactNode | (() => I18nextKeysType)
+  // tooltip props
+  tooltipProps?: Partial<TooltipProps>
   // 控制是否显示的函数
   isShow?: (
     info: ReturnType<typeof useUserInfo> &
       ReturnType<typeof useFeedbackSurveyStatus>,
   ) => boolean
-  // tooltip显示的时候
-  onOpen?: () => void
   // button点击的时候
   onClick?: () => void
   // 理论上只要一个testId就行了，之前是有2个testId，先这么配置
@@ -62,6 +63,11 @@ export const SIDEBAR_MARKETING_TABS_DATA: ISidebarTabData[] = [
     icon: <ElectricBoltIcon sx={{ fontSize: 24 }} />,
     tooltip: <UpgradePlanTooltip renderPlan='elite_yearly' />,
     isShow: ({ isTopPlanUser }) => !isTopPlanUser,
+    tooltipProps: {
+      onOpen: () => {
+        // 原文件SidebarMarketingTabs/UpgradePlanTabButton里就没触发
+      },
+    },
     onClick: () => {
       window.open(
         `${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=elite_yearly&paymentType=yearly`,
@@ -77,10 +83,12 @@ export const SIDEBAR_MARKETING_TABS_DATA: ISidebarTabData[] = [
     tooltip: <RewardsTabTooltip />,
     href: 'https://app.maxai.me/rewards',
     isShow: ({ isFreeUser }) => isFreeUser,
-    onOpen: () => {
-      mixpanelTrack(`referral_card_showed`, {
-        referralType: 'REWARDS',
-      })
+    tooltipProps: {
+      onOpen: () => {
+        mixpanelTrack(`referral_card_showed`, {
+          referralType: 'REWARDS',
+        })
+      },
     },
     onClick: () => {
       mixpanelTrack(`referral_card_clicked`, {
@@ -96,10 +104,12 @@ export const SIDEBAR_MARKETING_TABS_DATA: ISidebarTabData[] = [
     tooltip: <AffiliateTabTooltip />,
     href: 'https://www.maxai.me/affiliate',
     isShow: ({ isFreeUser }) => !isFreeUser,
-    onOpen: () => {
-      mixpanelTrack(`referral_card_showed`, {
-        referralType: 'AFFILIATE',
-      })
+    tooltipProps: {
+      onOpen: () => {
+        mixpanelTrack(`referral_card_showed`, {
+          referralType: 'AFFILIATE',
+        })
+      },
     },
     onClick: () => {
       mixpanelTrack(`referral_card_clicked`, {
@@ -114,13 +124,18 @@ export const SIDEBAR_MARKETING_TABS_DATA: ISidebarTabData[] = [
     icon: <FavoriteIcon sx={{ fontSize: 24 }} />,
     tooltip: <SurveyTabTooltip />,
     isShow: ({ canShowSurvey }) => canShowSurvey,
+    tooltipProps: {
+      onOpen: () => {
+        // 原文件SidebarMarketingTabs/SurveyTabButton里就没触发
+      },
+    },
     onClick: () => {
       mixpanelTrack('survey_card_clicked', {
         surveyType: 'feedback',
       })
     },
     buttonTestId: 'maxai--sidebar--survey_tab',
-    labelTestId: 'max-ai__rewards-tab',
+    labelTestId: 'max-ai__survey-tab',
   },
 ]
 
@@ -292,7 +307,10 @@ const SidebarTabs: FC = () => {
                             ? t(item.tooltip())
                             : item.tooltip
                         }
-                        placement={isInImmersiveChatPage ? 'right' : 'left'}
+                        tooltipProps={{
+                          placement: isInImmersiveChatPage ? 'right' : 'left',
+                          ...item.tooltipProps,
+                        }}
                         active={isActive}
                         onClick={() => {
                           updateSidebarConversationType(item.value)
@@ -318,9 +336,12 @@ const SidebarTabs: FC = () => {
                           ? t(item.tooltip())
                           : item.tooltip
                       }
+                      tooltipProps={{
+                        placement: isInImmersiveChatPage ? 'right' : 'left',
+                        ...item.tooltipProps,
+                      }}
                       target={item.href ? '_blank' : undefined}
                       href={item.href}
-                      placement={isInImmersiveChatPage ? 'right' : 'left'}
                       onClick={item.onClick}
                       buttonTestId={item.buttonTestId}
                       labelTestId={item.labelTestId}
@@ -373,9 +394,12 @@ const SidebarTabs: FC = () => {
                     ? t(item.tooltip())
                     : item.tooltip
                 }
+                tooltipProps={{
+                  placement: isInImmersiveChatPage ? 'right' : 'left',
+                  ...item.tooltipProps,
+                }}
                 target={item.href ? '_blank' : undefined}
                 href={item.href}
-                placement={isInImmersiveChatPage ? 'right' : 'left'}
                 onClick={item.onClick}
                 buttonTestId={item.buttonTestId}
                 labelTestId={item.labelTestId}
@@ -426,7 +450,10 @@ const SidebarTabs: FC = () => {
                       ? t(item.tooltip())
                       : item.tooltip
                   }
-                  placement={isInImmersiveChatPage ? 'right' : 'left'}
+                  tooltipProps={{
+                    placement: isInImmersiveChatPage ? 'right' : 'left',
+                    ...item.tooltipProps,
+                  }}
                   active={isActive}
                   onClick={() => {
                     updateSidebarConversationType(item.value)

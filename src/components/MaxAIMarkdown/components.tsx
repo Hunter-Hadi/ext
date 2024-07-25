@@ -12,6 +12,7 @@ import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIMarkdownAnchor from '@/components/MaxAIMarkdown/MaxAIMarkdownAnchor'
 import MaxAIMarkdownCodeRenderer from '@/components/MaxAIMarkdown/MaxAIMarkdownCodeRenderer'
+import MaxAIMarkdownCopyWrapper from '@/components/MaxAIMarkdown/MaxAIMarkdownCopyWrapper'
 import TagLabelList, {
   isTagLabelListCheck,
 } from '@/components/MaxAIMarkdown/TagLabelList'
@@ -62,7 +63,13 @@ const OverrideText: FC<{ children: React.ReactNode }> = ({ children }) => {
       <span>
         {parts.map((part, index) =>
           regex.test(`[${part}]`) ? (
-            <YoutubeTimeButton key={index} time={part} />
+            <MaxAIMarkdownCopyWrapper
+              key={index}
+              component='span'
+              copyText={`[${part}]`}
+            >
+              <YoutubeTimeButton time={part} />
+            </MaxAIMarkdownCopyWrapper>
           ) : (
             part
           ),

@@ -94,6 +94,8 @@ export type IUserMessageMetaType = {
    * 用来发给api或者mixpanel的数据，但是这个字段需要通用一点的命名
    */
   analytics?: {
+    promptId?: string
+    promptName?: string
     promptType?: 'preset' | 'custom' | 'freestyle'
     featureName?: string
   }

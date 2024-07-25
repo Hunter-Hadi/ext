@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "संक्षेप बटन",
     "feature_card__prompts__edit_prompt__field_advance__title": "अग्रिम",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "आउटपुट भाषा और ध्वनि और लेखन शैली",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "संदर्भ मेनू",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "पुनरलेखन",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "सारांश",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "खोज",
     "feature_card__prompts__new_prompt__title": "नया प्रॉम्प्ट",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "अभी तक कोई चैट इतिहास उपलब्ध नहीं है",
     "immersive_chat__summary_no_conversation__title": "अभी तक कोई सारांश इतिहास उपलब्ध नहीं है",
     "immersive_chat__search_no_conversation__title": "अभी तक कोई खोज इतिहास उपलब्ध नहीं है",
-    "immersive_chat__art_no_conversation__title": "अभी तक कोई कला इतिहास उपलब्ध नहीं है",
+    "immersive_chat__art_no_conversation__title": "अब तक कोई पुनरलेखन इतिहास उपलब्ध नहीं है",
     "immersive_chat__delete_summary__title": "सारांश हटाएं?",
     "immersive_chat__delete_search__title": "खोज हटाएं?",
     "immersive_chat__delete_art__title": "कला हटाएं?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "तत्काल जवाब",
     "immersive_chat__delete_all_context_menu__button__title": "सभी संदर्भ मेनू हटाएं",
     "immersive_chat__delete_all_context_menu__title": "अपने संदर्भ मेनू इतिहास को साफ़ करें - क्या आपको यकीन है?",
-    "context_window__chat_history__button__title": "संदर्भ मेनू इतिहास",
+    "context_window__chat_history__button__title": "पुनरलेखन इतिहास",
     "context_window__chat_history__empty__title": "अभी तक कोई संदर्भ मेनू इतिहास उपलब्ध नहीं है",
     "context_window__chat_history__continue_in_chat__title": "चैट में जारी रखें",
     "provider__claude_web_app__model__claude_3_200k__description": "जटिल तर्क की आवश्यकता वाले कार्यों पर उत्कृष्ट प्रदर्शन। Claude 3 Anthropic की सर्वोत्तम पेशकश है।",
@@ -1051,7 +1051,9 @@
     "home_view__rewrite__description": "अपने शब्दों को प्रूफरीड और पूर्ण करने में समय बचाएं।",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "मुख्य बिंदु सारांशित करें",
     "context_window__chat_history__continue_in_sidebar__title": "साइडबार में जारी रखें",
-    "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखन में जारी रखें"
+    "sidebar__speed_dial__rewrite_history__button": "इतिहास लिखें",
+    "sidebar__tabs__rewrite__action_btn__title": "नया लिखें",
+    "context_window__chat_history__continue_in_rewrite__title": "रीव्राइट में जारी रखें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

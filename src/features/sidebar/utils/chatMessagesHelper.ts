@@ -219,9 +219,6 @@ export const formatAIMessageContentForClipboard = (
   }
   // 对element先做一遍清洗，比如清除citation，或许sanitizeHtml里有可以过滤的参数，后续可以更改掉下面这段
   element = element.cloneNode(true) as HTMLElement
-  element.querySelectorAll('button.maxai-summary-citation').forEach((el) => {
-    el.remove()
-  })
   element
     .querySelectorAll('[data-maxai-markdown-custom-component="true"]')
     .forEach((el) => {

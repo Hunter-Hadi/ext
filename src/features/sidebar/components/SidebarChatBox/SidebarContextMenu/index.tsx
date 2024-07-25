@@ -22,6 +22,7 @@ import {
   contextMenuIsFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import {
   checkIsDraftContextMenuId,
@@ -136,22 +137,28 @@ const SidebarContextMenu: FC<{
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleContextMenuClick = async (menuItem: IContextMenuItem) => {
+    // 没有内容的时候不能执行action
     const content = contentRef.current
     if (!content) {
       setIsContentEmptyError(true)
       return
     }
+    if (!menuItem || !menuItem.id || menuItem.data.type === 'group') return
 
-    let id = menuItem.id
-    if (contextMenuIsFavoriteContextMenu(id)) {
-      id = id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
-    }
+    // 去除suggest前缀
+    const id = contextMenuIsFavoriteContextMenu(menuItem.id)
+      ? menuItem.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
+      : menuItem.id
 
+    // 计入推荐favorite计数次数
+    FavoriteMediatorFactory.getMediator('textSelectPopupButton')
+      .favoriteContextMenu(menuItem)
+      .catch()
+
+    // NOTE: 后续用不到草稿的功能获取可以删除
     if (checkIsDraftContextMenuId(id)) {
       menuItem = findDraftContextMenuById(id) || menuItem
     }
-
-    if (!menuItem || !menuItem.id) return
 
     const runActions = cloneDeep(menuItem.data.actions || [])
 
@@ -166,7 +173,6 @@ const SidebarContextMenu: FC<{
         },
       },
     })
-    // }
 
     if (runActions.length > 0) {
       checkAttachments()

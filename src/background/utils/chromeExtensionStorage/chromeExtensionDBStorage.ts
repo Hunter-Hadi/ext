@@ -58,6 +58,12 @@ export const defaultChromeExtensionDBStorage =
             Search: 10 * 60 * 1000,
           },
         },
+        features: {
+          artifacts: {
+            enabled: false,
+            autoOpenPopup: true,
+          },
+        },
       },
       buttonSettings: {
         // Context menu

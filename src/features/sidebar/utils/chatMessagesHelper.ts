@@ -2,6 +2,7 @@ import isArray from 'lodash-es/isArray'
 import sanitizeHtml from 'sanitize-html'
 import sanitize from 'sanitize-html'
 
+import { markdownArtifactsToCopyText } from '@/components/MaxAIMarkdown/MaxAIMarkdownCodeRenderer/components/ArtifactRenderer'
 import {
   isAIMessage,
   isSystemMessage,
@@ -72,6 +73,7 @@ export const formatAIMessageContent = (
     if (originalMessage) {
       const shareType = originalMessage?.metadata?.shareType || 'normal'
       let formatText = originalMessage?.content?.text || message.text
+      formatText = markdownArtifactsToCopyText(formatText)
       switch (shareType) {
         case 'normal':
           break
@@ -220,6 +222,17 @@ export const formatAIMessageContentForClipboard = (
   element.querySelectorAll('button.maxai-summary-citation').forEach((el) => {
     el.remove()
   })
+  element
+    .querySelectorAll('[data-maxai-markdown-custom-component="true"]')
+    .forEach((el) => {
+      // replace to text node
+      const copyElement = el.querySelector(
+        '[data-maxai-markdown-copy-element="true"]',
+      )
+      if (copyElement) {
+        el.outerHTML = copyElement.outerHTML
+      }
+    })
   const domParser = new DOMParser()
   const doc = domParser.parseFromString(
     sanitizeHtml(element.outerHTML, {

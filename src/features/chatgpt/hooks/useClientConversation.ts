@@ -99,6 +99,7 @@ const useClientConversation = () => {
   const currentSidebarConversationType = clientConversation?.type || 'Chat'
   const currentConversationIdRef = useRef(currentConversationId)
   const currentConversationTypeRef = useRef(clientConversation?.type)
+  const currentConversationAIModel = clientConversation?.meta.AIModel
   useEffect(() => {
     currentConversationIdRef.current = currentConversationId
   }, [currentConversationId])
@@ -258,6 +259,7 @@ const useClientConversation = () => {
       | null
       | ((prevMessage: IChatMessage | null) => IChatMessage | null),
   ) => {
+    console.log(`MemoizedMarkdown8 updateClientWritingMessage`, message)
     setClientWritingMessage((prevState) => {
       const newMessage =
         typeof message === 'function'
@@ -331,6 +333,7 @@ const useClientConversation = () => {
     currentConversationId,
     updateConversationId,
     clientConversation,
+    currentConversationAIModel,
     currentConversationIdRef,
     currentSidebarConversationType,
     currentConversationTypeRef,

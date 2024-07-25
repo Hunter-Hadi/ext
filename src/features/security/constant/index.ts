@@ -1,4 +1,4 @@
 export const APP_AES_ENCRYPTION_KEY =
-  'de66f40eb49c86704f8907a62ebc578947ddd96ed4defedf34abc722'
+  'fd6c19accfbe570917ec29a1ac53ba8a229e4d8be066c1868b8ae9f2'
 export const APP_SM3_HASH_KEY =
-  '15fb6e931f7b0880b5a518b4f3b26057e6c0b17d367feab9eb3d3084'
+  '27b2beff9f039980f7360744e86e54dd0b6389b34eafe018a21af06c'

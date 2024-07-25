@@ -552,12 +552,22 @@ export class ActionAskChatGPT extends Action {
                 : AIResponseMessageText
               // 从2024-06-14起，AI response的消息会在originalMessage里
               this.answer = {
-                messageId: (AIResponseMessage.messageId as string) || uuidV4(),
+                messageId:
+                  this.answer?.messageId ||
+                  (AIResponseMessage.messageId as string) ||
+                  uuidV4(),
                 parentMessageId:
-                  (AIResponseMessage.parentMessageId as string) || uuidV4(),
+                  this.answer?.parentMessageId ||
+                  (AIResponseMessage.parentMessageId as string) ||
+                  uuidV4(),
                 text: '',
                 type: 'ai' as const,
                 originalMessage: mergeWithObject([
+                  {
+                    metadata: {
+                      isComplete: false,
+                    },
+                  },
                   // 大部分情况下没有，只有指定了outputMessageId并且outputMessage是type: ai才有
                   outputMessage?.originalMessage || {},
                   // 大部分情况下也没有，只有返回了sources citation/related questions等额外需要展示的信息才有
@@ -596,7 +606,7 @@ export class ActionAskChatGPT extends Action {
                 // TODO 后续会去掉liteMode，渲染的时候以有无对应属性去显示组件
                 const liteModeKeys: Array<
                   keyof Required<IAIResponseOriginalMessage>['metadata']
-                > = ['deepDive', 'sourceCitations', 'AIModel']
+                > = ['deepDive', 'sourceCitations', 'AIModel', 'isComplete']
                 // 有效的metadata数量
                 const validMetadataCount = Object.keys(
                   this.answer.originalMessage.metadata || {},

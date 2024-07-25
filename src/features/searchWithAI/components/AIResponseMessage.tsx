@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useState } from 'react'
+import CustomMarkdown from 'src/components/MaxAIMarkdown'
 
-import CustomMarkdown from '@/components/CustomMarkdown'
 import { IAIResponseOriginalMessage } from '@/features/indexed_db/conversations/models/Message'
 
 import useSearchWithAISources from '../hooks/useSearchWithAISources'

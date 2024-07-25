@@ -4,7 +4,9 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
+const ChatMessageMarkdown = React.lazy(
+  () => import('src/components/MaxAIMarkdown'),
+)
 
 const SidebarAIMessageTextContent: FC<{
   AIMessage: IAIResponseMessage
@@ -26,9 +28,9 @@ const SidebarAIMessageTextContent: FC<{
   return (
     <div className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}>
       <AppSuspenseLoadingLayout>
-        <CustomMarkdown message={AIMessage}>
+        <ChatMessageMarkdown message={AIMessage}>
           {currentContentValue}
-        </CustomMarkdown>
+        </ChatMessageMarkdown>
       </AppSuspenseLoadingLayout>
     </div>
   )

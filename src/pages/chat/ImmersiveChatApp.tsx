@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
 import { useRecoilValue } from 'recoil'
 
+import { IMMERSIVE_CHAT_PORTAL_ID } from '@/apps/immersive-chat/components/ImmersiveChatPortal'
 import Announcement from '@/components/Announcement'
 import AppInit from '@/components/AppInit'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -111,8 +112,26 @@ const App: FC = () => {
                   }}
                 />
 
-                <Stack height={'100%'} width={'100vw'}>
-                  <SidebarPage open />
+                <Stack
+                  height={'100%'}
+                  width={'100vw'}
+                  direction={'row'}
+                  alignItems={'stretch'}
+                >
+                  <Stack width={0} flex={1} height={'100%'}>
+                    <SidebarPage open />
+                  </Stack>
+                  <Stack
+                    id={IMMERSIVE_CHAT_PORTAL_ID}
+                    width={0}
+                    flex={1}
+                    sx={{
+                      // 如果没有children, 则不显示
+                      '&:empty': {
+                        display: 'none',
+                      },
+                    }}
+                  />
                 </Stack>
               </Stack>
             </AppSuspenseLoadingLayout>

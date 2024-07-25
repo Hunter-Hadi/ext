@@ -9,6 +9,7 @@ import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { useCreateClientMessageListener } from '@/background/utils'
+import { useArtifacts } from '@/features/chatgpt/components/artifacts'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -44,11 +45,13 @@ const port = new ContentScriptConnectionV2({
  * - 监听客户端聊天文件上传事件
  * - 监听客户端聊天状态更新事件
  * - 自动归档 - v4.2.0 - 2024-04
+ * - 自动关闭artifact - v4.7.0 - 2024-07
  */
 export const useClientConversationListener = (isContextWindow?: boolean) => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
   const { currentAIProvider } = useAIProviderModels()
+  const { clearArtifacts } = useArtifacts()
   const {
     currentConversationId,
     createConversation,
@@ -501,6 +504,12 @@ export const useClientConversationListener = (isContextWindow?: boolean) => {
 
     return () => unsubscribe()
   }, [])
+
+  useEffect(() => {
+    if (currentConversationId) {
+      clearArtifacts()
+    }
+  }, [currentConversationId])
 }
 
 export default useClientConversationListener

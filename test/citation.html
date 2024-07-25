@@ -1,69 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light Bulb Demo</title>
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@lucide/react@0.60.0/umd/lucide-react.production.min.js"></script>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+      }
+      .p-6 {
+          padding: 1.5rem;
+      }
+      .max-w-md {
+          max-width: 28rem;
+      }
+      .mx-auto {
+          margin-left: auto;
+          margin-right: auto;
+      }
+      .bg-white {
+          background-color: white;
+      }
+      .rounded-xl {
+          border-radius: 1rem;
+      }
+      .shadow-md {
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .space-y-4 > * + * {
+          margin-top: 1rem;
+      }
+      .flex {
+          display: flex;
+      }
+      .justify-center {
+          justify-content: center;
+      }
+      .items-center {
+          align-items: center;
+      }
+      .space-x-4 > * + * {
+          margin-left: 1rem;
+      }
+  </style>
 </head>
 <body>
-<div id="content">
-  <div data-test="iii">
-    foo
-    <br>
-      123
-    </br>
-    bar
-    <br>
-    <br>
-    <br>
-    abc
-  </div>
+<div id="root"></div>
 
-  <div id="start" style="pointer-events: none; user-select: none">
-    开始
-  </div>
-  <div id="end">
-    结束
-  </div>
-  <div>
-    <code>
-      <span style="white-space: break-spaces">    <span>123</span></span>
-    </code>
-  </div>
-  <font>阿斯顿阿斯顿</font>
-  <div>This is <span>some</span> text!</div>
-  <div>This is <span>some</span> text!</div>
-  <div>
-    <div>
-      <p>
-        123 123 4
-        <span style="display: block">123</span>
-        123
-      </p>
+<script type="text/babel">
+  const { useState } = React;
+  const { Lightbulb, Sun } = LucideReact;
+
+  const Alert = ({children}) => (
+    <div style={{ border: '1px solid', padding: '1rem', borderRadius: '0.5rem', marginTop: '1rem' }}>
+      {children}
     </div>
-    <p>This is <span>some</span>    te   xt!
-    </p>
-    <p>This is <span style="display: none">some</span> text!</p>
-  </div>
-  <div>This is <span>some</span> text!</div>
-  <div>This is  text!</div>
-</div>
-</body>
+  );
 
-<script>
-setTimeout(() => {
-  const start = document.querySelector('#start')
-  const end = document.querySelector('#end')
+  const AlertTitle = ({children}) => (
+    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>{children}</h3>
+  );
 
-  const selection = window.getSelection()
-  const range = document.createRange()
+  const AlertDescription = ({children}) => (
+    <p>{children}</p>
+  );
 
-  range.setStart(start.firstChild, 0)
-  range.setEnd(end.lastChild, end.lastChild.length)
-  selection.removeAllRanges()
-  selection.addRange(range)
-}, 1000)
+  const Switch = ({ checked, onCheckedChange }) => (
+    <label style={{ display: 'inline-flex', alignItems: 'center' }}>
+      <input type="checkbox" checked={checked} onChange={(e) => onCheckedChange(e.target.checked)} />
+      <span style={{ marginLeft: '0.5rem' }}>{checked ? 'On' : 'Off'}</span>
+    </label>
+  );
+
+  const Slider = ({ defaultValue, max, step, disabled, onValueChange }) => (
+    <input
+      type="range"
+      defaultValue={defaultValue}
+      max={max}
+      step={step}
+      disabled={disabled}
+      onChange={(e) => onValueChange([parseInt(e.target.value)])}
+      style={{ width: '100%' }}
+    />
+  );
+
+  const LightBulbDemo = () => {
+    const [isOn, setIsOn] = useState(false);
+    const [brightness, setBrightness] = useState(50);
+    const [color, setColor] = useState('#FFFF00');
+
+    const handleToggle = () => setIsOn(!isOn);
+    const handleBrightnessChange = (value) => setBrightness(value[0]);
+    const handleColorChange = (event) => setColor(event.target.value);
+
+    return (
+      <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
+        <h1 className="text-2xl font-bold text-center">Light Bulb Demo</h1>
+
+        <div className="flex justify-center items-center space-x-4">
+          <Lightbulb
+            size={100}
+            color={isOn ? color : '#d1d5db'}
+            fill={isOn ? color : 'none'}
+            fillOpacity={isOn ? brightness / 100 : 0}
+          />
+          <Switch checked={isOn} onCheckedChange={handleToggle} />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-700">Brightness</label>
+          <Slider
+            defaultValue={[50]}
+            max={100}
+            step={1}
+            disabled={!isOn}
+            onValueChange={handleBrightnessChange}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-700">Color</label>
+          <input
+            type="color"
+            value={color}
+            onChange={handleColorChange}
+            disabled={!isOn}
+            className="w-full h-10 rounded-md"
+          />
+        </div>
+
+        <Alert>
+          <Sun className="h-4 w-4" />
+          <AlertTitle>Energy Saving Tip</AlertTitle>
+          <AlertDescription>
+            Remember to turn off the light when not in use to save energy!
+          </AlertDescription>
+        </Alert>
+      </div>
+    );
+  };
+
+  ReactDOM.render(<LightBulbDemo />, document.getElementById('root'));
 </script>
+</body>
 </html>

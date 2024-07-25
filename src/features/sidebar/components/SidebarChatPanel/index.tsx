@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import DevContent from '@/components/DevContent'
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt'
+import { ArtifactsRoot } from '@/features/chatgpt/components/artifacts'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useClientConversationListener } from '@/features/chatgpt/hooks/useClientConversationListener'
@@ -109,6 +110,7 @@ const SidebarChatPanel = () => {
           clientConversation.type !== currentSidebarConversationType
         }
       />
+      <ArtifactsRoot />
       <SidebarFilesDropBox />
     </>
   )

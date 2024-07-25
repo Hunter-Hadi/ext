@@ -11,7 +11,10 @@ import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
 import TooltipButton from '@/components/TooltipButton'
 import UserUpgradeButton from '@/features/auth/components/UserUpgradeButton'
+import useMaxAIBetaFeatures from '@/features/auth/hooks/useMaxAIBetaFeatures'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
+import { ArtifactsToggleButton } from '@/features/chatgpt/components/artifacts'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
 import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message'
@@ -21,6 +24,7 @@ import SidebarChatHistoryButton from '@/features/sidebar/components/SidebarChatB
 import SidebarChatVoiceInputButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatVoiceInputButton'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 import { getInputMediator } from '@/store/InputMediator'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -28,6 +32,7 @@ const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
 }> = (props) => {
   const { onSendMessage } = props
+  const { currentConversationAIModel } = useClientConversation()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [inputValue, setInputValue] = useState('')
@@ -35,7 +40,8 @@ const SidebarChatBoxInputActions: FC<{
   const ref = React.useRef<HTMLDivElement | null>(null)
   const nextMessageIsActionRef = useRef(false)
   const metaDataRef = useRef<any>({})
-
+  const { maxAIBetaFeatures } = useMaxAIBetaFeatures()
+  const { userSettings, setUserSettings } = useUserSettings()
   const actionsBtnColorSxMemo = useMemo(() => {
     return {
       color: 'text.secondary',
@@ -131,6 +137,27 @@ const SidebarChatBoxInputActions: FC<{
         justifyContent={'end'}
         gap={1}
       >
+        {/* chat artifacts btn */}
+        {currentSidebarConversationType === 'Chat' &&
+          maxAIBetaFeatures.enabled_artifacts &&
+          currentConversationAIModel === 'claude-3-5-sonnet' &&
+          !smoothConversationLoading && (
+            <ArtifactsToggleButton
+              onChange={async (enabled) => {
+                await setUserSettings({
+                  ...userSettings,
+                  features: {
+                    ...userSettings?.features,
+                    artifacts: {
+                      ...userSettings?.features?.artifacts,
+                      enabled,
+                    },
+                  },
+                })
+              }}
+              checked={userSettings?.features?.artifacts?.enabled || false}
+            />
+          )}
         {/* search copilot btn */}
         {currentSidebarConversationType === 'Search' &&
           !smoothConversationLoading && <SearchWithAICopilotToggle />}

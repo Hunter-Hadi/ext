@@ -120,6 +120,12 @@ export interface IChromeExtensionDBStorage {
         [key in ISidebarConversationType]?: number
       }
     }
+    features?: {
+      artifacts?: {
+        enabled?: boolean
+        autoOpenPopup?: boolean
+      }
+    }
   }
   buttonSettings?: {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting

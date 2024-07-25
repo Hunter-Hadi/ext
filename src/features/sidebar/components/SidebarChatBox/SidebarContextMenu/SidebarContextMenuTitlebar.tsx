@@ -1,6 +1,9 @@
 import { Stack } from '@mui/material'
 import React, { FC, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TooltipIconButton from '@/components/TooltipIconButton'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import LanguageSelector from '@/features/contextMenu/components/FloatingContextMenu/LanguageSelector'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
@@ -9,7 +12,11 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import SidebarContextMenuHistoryButton from './SidebarContextMenuHistoryButton'
 
-const SidebarContextMenuTitlebar: FC = () => {
+const SidebarContextMenuTitlebar: FC<{
+  isSettingCustomVariable: boolean
+  onClose?: VoidFunction
+}> = ({ isSettingCustomVariable, onClose }) => {
+  const { t } = useTranslation(['common'])
   const { userSettings, setUserSettings } = useUserSettings()
 
   const isImmersivePage = useMemo(() => isMaxAIImmersiveChatPage(), [])
@@ -57,15 +64,33 @@ const SidebarContextMenuTitlebar: FC = () => {
       </Stack>
 
       {/* immersive chat 中就不显示了 */}
-      {!isImmersivePage && (
-        <SidebarContextMenuHistoryButton
-          container={container}
-          TooltipProps={{
-            placement: 'top',
-            floatingMenuTooltip: false,
-          }}
-        />
-      )}
+      <Stack direction={'row'} gap={'4px'}>
+        {!isImmersivePage && (
+          <SidebarContextMenuHistoryButton
+            container={container}
+            TooltipProps={{
+              placement: 'top',
+              floatingMenuTooltip: false,
+            }}
+          />
+        )}
+
+        {isSettingCustomVariable && (
+          <TooltipIconButton
+            title={t('common:discard')}
+            onClick={onClose}
+            sx={{
+              height: '28px',
+              width: '28px',
+              borderRadius: '8px',
+              border: '1px solid',
+              borderColor: 'customColor.borderColor',
+            }}
+          >
+            <ContextMenuIcon icon='Close' />
+          </TooltipIconButton>
+        )}
+      </Stack>
     </Stack>
   )
 }

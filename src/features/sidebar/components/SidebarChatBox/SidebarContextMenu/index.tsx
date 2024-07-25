@@ -28,7 +28,9 @@ import {
   checkIsDraftContextMenuId,
   findDraftContextMenuById,
 } from '@/features/contextMenu/utils'
-import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
+import ActionSetVariablesModal, {
+  ActionSetVariablesModalRef,
+} from '@/features/shortcuts/components/ActionSetVariablesModal'
 import TreeNavigatorMatcher from '@/features/sidebar/utils/treeNavigatorMatcher'
 import { getMaxAISidebarRootElement } from '@/utils'
 
@@ -231,6 +233,8 @@ const SidebarContextMenu: FC<{
     return Math.min(contentHeight - 140 - rows * 24, 300)
   }, [contentHeight, rows])
 
+  const actionModalRef = useRef<ActionSetVariablesModalRef>(null)
+
   return (
     <>
       <Box
@@ -254,7 +258,10 @@ const SidebarContextMenu: FC<{
           event.stopPropagation()
         }}
       >
-        <SidebarContextMenuTitlebar />
+        <SidebarContextMenuTitlebar
+          isSettingCustomVariable={isSettingCustomVariables}
+          onClose={() => actionModalRef.current?.discard()}
+        />
 
         {!isSettingCustomVariables && (
           <Box
@@ -340,17 +347,11 @@ const SidebarContextMenu: FC<{
         )}
 
         <ActionSetVariablesModal
+          ref={actionModalRef}
           showCloseButton={false}
           showDiscardButton
           onChange={() => {
             setLoading(true)
-            // setIsSettingCustomVariables(false)
-            // setIsSettingCustomVariables(false)
-            // if (reason === 'runPromptStart') {
-            //   setIsInputCustomVariables(true)
-            // } else if (reason === 'runPromptEnd') {
-            //   setIsInputCustomVariables(false)
-            // }
           }}
           onClose={() => {
             setIsSettingCustomVariables(false)
@@ -519,8 +520,9 @@ const SidebarContextMenu: FC<{
   )
 }
 
-// export default SidebarContextMenu
-
+/**
+ * A auto resize warpper fro SidebarContextMenu
+ */
 const SidebarContextMenuWrapper = () => {
   const ref = useRef<HTMLDivElement>()
   const [height, setHeight] = useState(0)

@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Butang Ringkaskan",
     "feature_card__prompts__edit_prompt__field_advance__title": "Maju",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Bahasa Output & Tone & Gaya Penulisan",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu konteks",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Tulis Semula",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Ringkasan",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Carian",
     "feature_card__prompts__new_prompt__title": "Prompt baru",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Tiada sejarah perbualan yang tersedia lagi",
     "immersive_chat__summary_no_conversation__title": "Tiada sejarah ringkasan yang tersedia lagi",
     "immersive_chat__search_no_conversation__title": "Tiada sejarah carian yang tersedia lagi",
-    "immersive_chat__art_no_conversation__title": "Tiada sejarah seni yang tersedia lagi",
+    "immersive_chat__art_no_conversation__title": "Tiada sejarah penulisan semula lagi",
     "immersive_chat__delete_summary__title": "Padam ringkasan?",
     "immersive_chat__delete_search__title": "Padam carian?",
     "immersive_chat__delete_art__title": "Padam seni?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Balasan segera",
     "immersive_chat__delete_all_context_menu__button__title": "Padam semua menu konteks",
     "immersive_chat__delete_all_context_menu__title": "Bersihkan sejarah menu konteks anda - adakah anda pasti?",
-    "context_window__chat_history__button__title": "Sejarah menu konteks",
+    "context_window__chat_history__button__title": "Sejarah penulisan semula",
     "context_window__chat_history__empty__title": "Tiada sejarah menu konteks yang tersedia lagi",
     "context_window__chat_history__continue_in_chat__title": "Teruskan dalam perbualan",
     "provider__claude_web_app__model__claude_3_200k__description": "Prestasi unggul dalam tugas yang memerlukan pemikiran kompleks. Claude 3 adalah penawaran terbaik dari Anthropic.",
@@ -1051,7 +1051,8 @@
     "home_view__rewrite__description": "Jimat masa dalam menyemak dan menyempurnakan kata-kata anda.",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ringkaskan titik utama",
     "context_window__chat_history__continue_in_sidebar__title": "Teruskan dalam sidebar",
-    "context_window__chat_history__continue_in_rewrite__title": "Teruskan dalam penulisan semula"
+    "sidebar__speed_dial__rewrite_history__button": "Tulis semula sejarah",
+    "sidebar__tabs__rewrite__action_btn__title": "Tulis semula baru"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

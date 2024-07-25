@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Gumb za sažetak",
     "feature_card__prompts__edit_prompt__field_advance__title": "Napredak",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Jezik izlaza i ton i stil pisanja",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Izbornik",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Prepisati",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Sažetak",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Pretraživanje",
     "feature_card__prompts__new_prompt__title": "Novi prijedlog",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Još nema dostupne povijesti razgovora",
     "immersive_chat__summary_no_conversation__title": "Još nema dostupne povijesti sažetaka",
     "immersive_chat__search_no_conversation__title": "Još nema dostupne povijesti pretraživanja",
-    "immersive_chat__art_no_conversation__title": "Još nema dostupne povijesti umjetnosti",
+    "immersive_chat__art_no_conversation__title": "Još nema dostupne povijesti prepisivanja",
     "immersive_chat__delete_summary__title": "Izbriši sažetak?",
     "immersive_chat__delete_search__title": "Izbriši pretragu?",
     "immersive_chat__delete_art__title": "Izbriši umjetnost?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Trenutni odgovor",
     "immersive_chat__delete_all_context_menu__button__title": "Izbriši sve izbornike konteksta",
     "immersive_chat__delete_all_context_menu__title": "Obriši povijest svojih izbornika konteksta - jesi li siguran?",
-    "context_window__chat_history__button__title": "Povijest izbornika konteksta",
+    "context_window__chat_history__button__title": "Povijest prepisivanja",
     "context_window__chat_history__empty__title": "Još nema dostupne povijesti izbornika konteksta",
     "context_window__chat_history__continue_in_chat__title": "Nastavi u chatu",
     "provider__claude_web_app__model__claude_3_200k__description": "Izvrsna izvedba na zadacima koji zahtijevaju složeno zaključivanje. Claude 3 je najbolja ponuda tvrtke Anthropic.",
@@ -1050,8 +1050,9 @@
     "home_view__rewrite__title": "AI prepisivač",
     "home_view__rewrite__description": "Uštedite vrijeme na provjeri i usavršavanju svojih riječi.",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sažmi ključne točke",
-    "context_window__chat_history__continue_in_sidebar__title": "Nastavite u bočnoj traci",
-    "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepisivanju"
+    "context_window__chat_history__continue_in_sidebar__title": "Nastavi u bočnoj traci",
+    "sidebar__speed_dial__rewrite_history__button": "Prepiši povijest",
+    "sidebar__tabs__rewrite__action_btn__title": "Nova izmjena"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

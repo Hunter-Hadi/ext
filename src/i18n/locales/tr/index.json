@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Özetle düğmesi",
     "feature_card__prompts__edit_prompt__field_advance__title": "Gelişmiş",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Çıktı dili ve Tonu ve Yazım stili",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Bağlam menüsü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Yeniden Yaz",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Özet",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Arama",
     "feature_card__prompts__new_prompt__title": "Yeni ipucu",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Henüz sohbet geçmişi mevcut değil",
     "immersive_chat__summary_no_conversation__title": "Henüz özet geçmişi mevcut değil",
     "immersive_chat__search_no_conversation__title": "Henüz arama geçmişi mevcut değil",
-    "immersive_chat__art_no_conversation__title": "Henüz sanat geçmişi mevcut değil",
+    "immersive_chat__art_no_conversation__title": "Henüz yeniden yazma geçmişi mevcut değil",
     "immersive_chat__delete_summary__title": "Özeti sil?",
     "immersive_chat__delete_search__title": "Aramayı sil?",
     "immersive_chat__delete_art__title": "Sanatı sil?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Anında yanıt",
     "immersive_chat__delete_all_context_menu__button__title": "Tüm bağlamlı menüleri sil",
     "immersive_chat__delete_all_context_menu__title": "Bağlamlı menü geçmişinizi temizleyin - emin misiniz?",
-    "context_window__chat_history__button__title": "Bağlamlı menü geçmişi",
+    "context_window__chat_history__button__title": "Yeniden Yazma Geçmişi",
     "context_window__chat_history__empty__title": "Henüz kullanılabilir bir bağlamlı menü geçmişi yok",
     "context_window__chat_history__continue_in_chat__title": "Sohbete devam et",
     "provider__claude_web_app__model__claude_3_200k__description": "Karmaşık akıl yürütme gerektiren görevlerde üstün performans. Claude 3, Anthropic'in en iyi sınıf çözümüdür.",
@@ -1051,7 +1051,8 @@
     "home_view__rewrite__description": "Metinlerinizi düzeltme ve mükemmelleştirme konusunda zaman kazanın.",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ana noktaları özetle",
     "context_window__chat_history__continue_in_sidebar__title": "Kenar çubuğunda devam et",
-    "context_window__chat_history__continue_in_rewrite__title": "Yeniden yazmaya devam et"
+    "sidebar__speed_dial__rewrite_history__button": "Geçmişi yeniden yaz",
+    "sidebar__tabs__rewrite__action_btn__title": "Yeni yeniden yaz"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

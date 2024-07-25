@@ -50,6 +50,22 @@ const LanguageSelector: FC<{
     )
   })
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // autocomplete因为是延迟加载的问题，autoselect不起效果，所以这里用effect副作用模拟
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!inputRef.current) return
+
+      inputRef.current.setSelectionRange(
+        0,
+        inputRef.current.value.length,
+        'forward',
+      )
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [open])
 
   useEffect(() => {
     const lang = LANGUAGES_OPTIONS.find((op) => op.value === defaultValue)
@@ -70,7 +86,7 @@ const LanguageSelector: FC<{
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
-    setOpen(true)
+    setOpen(!open)
   }
 
   const handleChange = (newValue: { label: string; value: string }) => {
@@ -217,6 +233,7 @@ const LanguageSelector: FC<{
                   label={t(
                     'settings:feature_card__ai_response_language__field_ai_response_language__label',
                   )}
+                  inputRef={inputRef}
                   inputProps={{
                     ...params.inputProps,
                     autoComplete: 'new-password', // disable autocomplete and autofill

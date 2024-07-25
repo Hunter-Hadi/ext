@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Botão de Resumo",
     "feature_card__prompts__edit_prompt__field_advance__title": "Avançar",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Idioma de saída e tom e estilo de escrita",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu de contexto",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Reescrever",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Resumo",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Pesquisa",
     "feature_card__prompts__new_prompt__title": "Nova sugestão",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Ainda não há histórico de chat disponível",
     "immersive_chat__summary_no_conversation__title": "Ainda não há histórico de resumo disponível",
     "immersive_chat__search_no_conversation__title": "Ainda não há histórico de pesquisa disponível",
-    "immersive_chat__art_no_conversation__title": "Ainda não há histórico de arte disponível",
+    "immersive_chat__art_no_conversation__title": "Ainda não há histórico de reescrita disponível",
     "immersive_chat__delete_summary__title": "Apagar resumo?",
     "immersive_chat__delete_search__title": "Apagar pesquisa?",
     "immersive_chat__delete_art__title": "Apagar arte?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Resposta instantânea",
     "immersive_chat__delete_all_context_menu__button__title": "Apagar todos os menus de contexto",
     "immersive_chat__delete_all_context_menu__title": "Limpar o histórico dos seus menus de contexto - tem a certeza?",
-    "context_window__chat_history__button__title": "Histórico do menu de contexto",
+    "context_window__chat_history__button__title": "Histórico de reescrita",
     "context_window__chat_history__empty__title": "Ainda não há histórico de menus de contexto disponível",
     "context_window__chat_history__continue_in_chat__title": "Continuar no chat",
     "provider__claude_web_app__model__claude_3_200k__description": "Desempenho superior em tarefas que exigem raciocínio complexo. Claude 3 é a melhor oferta da Anthropic.",
@@ -1051,7 +1051,8 @@
     "home_view__rewrite__description": "Economize tempo na revisão e aperfeiçoamento de suas palavras.",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Resumir pontos-chave",
     "context_window__chat_history__continue_in_sidebar__title": "Continuar na barra lateral",
-    "context_window__chat_history__continue_in_rewrite__title": "Continuar na reescrita"
+    "sidebar__speed_dial__rewrite_history__button": "Reescrever histórico",
+    "sidebar__tabs__rewrite__action_btn__title": "Nova reescrita"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

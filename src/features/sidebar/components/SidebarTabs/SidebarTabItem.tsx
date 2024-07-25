@@ -10,7 +10,7 @@ export interface ISidebarTabItemProps extends ButtonProps {
   label: React.ReactNode
   icon: React.ReactNode
   tooltip?: React.ReactNode
-  placement?: TooltipProps['placement']
+  tooltipProps?: Partial<TooltipProps>
   active?: boolean
   labelSx?: SxProps
   target?: string
@@ -40,7 +40,7 @@ const SidebarTabItem: React.FC<ISidebarTabItemProps> = (props) => {
     label,
     icon,
     tooltip,
-    placement = 'left',
+    tooltipProps,
     active,
     labelSx,
     buttonTestId,
@@ -98,7 +98,7 @@ const SidebarTabItem: React.FC<ISidebarTabItemProps> = (props) => {
   if (typeof tooltip === 'string') {
     return (
       // <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5}>
-      <TextOnlyTooltip placement={placement} title={tooltip}>
+      <TextOnlyTooltip placement='left' title={tooltip} {...tooltipProps}>
         {content}
       </TextOnlyTooltip>
       // </Box>
@@ -109,13 +109,14 @@ const SidebarTabItem: React.FC<ISidebarTabItemProps> = (props) => {
   return (
     // <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5}>
     <LightTooltip
-      placement={placement}
+      placement='left'
       title={tooltip}
       PopperProps={{
         sx: {
           zIndex: 2147483620,
         },
       }}
+      {...tooltipProps}
     >
       {content}
     </LightTooltip>

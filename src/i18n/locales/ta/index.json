@@ -67,7 +67,8 @@
     "terms_of_service": "சேவை விதிமுறைகள்",
     "shortcut": "குறுக்கீடு",
     "yearly": "வாருங்கள்",
-    "monthly": "மாதியாக"
+    "monthly": "மாதியாக",
+    "continue_in_contextmenu": "எப்போதும் உள்ளடக்கத்தில் தொடருங்கள்"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "மேக்ஸ்AI உருவங்கள்",
     "chat__artifacts__feature_button__tooltip__title": "மேக்ஸ்AI உருவங்கள்",
     "chat__artifacts__feature_button__tooltip__description": "உங்கள் கருவிகளை உண்மையான உள்ளடக்கமாக மாற்றுங்கள். செயலிக்குச் சேர்க்கப்பட்டபோது, உங்கள் உரையுடன் உரையாடும்போது மேக்ஸ்AI குறிப்பிட்ட குறிப்புகளை உருவாக்கும்.",
-    "chat__artifacts__button__description__component": "கொள்ளுக கொள்ளுக கொள்ளுக கொள்ளுக"
+    "chat__artifacts__button__description__component": "கொள்ளுக கொள்ளுக கொள்ளுக கொள்ளுக",
+    "floating_menu__button__show_detail": "விவரங்களைக் காட்டு",
+    "floating_menu__textarea__placeholder": "உங்கள் உரையை இங்கே தட்டச்சு செய்யவும் அல்லது ஒருவர் ஐயை மேம்படுத்த, சரிசெய்ய, மொழிபெயர்க்க, சுருக்கமாக சுருக்க, மற்றும் அதே போன்றவை கேட்கவும்.",
+    "floating_menu__always_pin_sidebar_title": "எப்போதும் பின்செய்யுங்கள்",
+    "floating_menu__always_pin_to_sidebar": "பதில்களை எப்போதும் பக்கப்பட்டியில் காட்டு",
+    "floating_menu__always_unpin_to_sidebar": "பதில்களை எப்போதும் உள்ளடக்கத்தில் காட்டு",
+    "floating_menu__pint_once_to_sidebar": "பதிலை பக்கப்பட்டியில் ஒருமுறை காட்டு",
+    "sidebar__tabs__rewrite__title": "மீண்டும் எழுது",
+    "sidebar__tabs__rewrite__tooltip": "AI மீண்டும் எழுதுபவர்",
+    "home_view__rewrite__title": "AI மீண்டும் எழுதுபவர்",
+    "home_view__rewrite__description": "உங்கள் வார்த்தைகளை சரிசெய்ய மற்றும் முக்கியமானவைகளை பெரிதாக செய்ய நேரம் சேமிக்கவும்.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "முக்கிய புள்ளிகளை சுருக்கமாக சுருக்க",
+    "context_window__chat_history__continue_in_sidebar__title": "பக்கப்பட்டியில் தொடருங்கள்",
+    "context_window__chat_history__continue_in_rewrite__title": "மீண்டும் எழுதுபவரின் உடன் தொடருங்கள்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "உரைப்படி வரலாறு",
     "sidebar_tour__step__5__feature_4__title": "ஸ்கிரீன்ஷாடு உடைய அரட்டையைப் பயன்படுத்துங்கள்",
     "sidebar_tour__step__5__feature_5__title": "1-கிளிக் உதவிகள்",
-    "sidebar_tour__step__5__feature_6__title": "உதவி பயன்படுத்து"
+    "sidebar_tour__step__5__feature_6__title": "உதவி பயன்படுத்து",
+    "sidebar_tour__step__2__description_5": "AI மீண்டும் எழுதுபவர்"
   },
   "quota_usage_card": {
     "category__fast_text": "வேகமான AI",

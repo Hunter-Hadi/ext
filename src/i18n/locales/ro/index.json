@@ -67,7 +67,8 @@
     "terms_of_service": "Termenii serviciului",
     "shortcut": "Scurtătură",
     "yearly": "Anual",
-    "monthly": "Lunar"
+    "monthly": "Lunar",
+    "continue_in_contextmenu": "Întotdeauna continuați în meniul contextual"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "Artifacții MaxAI",
     "chat__artifacts__feature_button__tooltip__title": "Artifacții MaxAI",
     "chat__artifacts__feature_button__tooltip__description": "Transformați-vă ideile în conținut tangibil. Când este activat, MaxAI va genera artefacte vizuale precum cod, documente și designuri într-un panou de previzualizare live pe măsură ce discutați.",
-    "chat__artifacts__button__description__component": "Faceți clic pentru a deschide componenta"
+    "chat__artifacts__button__description__component": "Faceți clic pentru a deschide componenta",
+    "floating_menu__button__show_detail": "Afișați detalii",
+    "floating_menu__textarea__placeholder": "Tastați sau lipiți textul aici și cereți AI să-l îmbunătățească, să-l corecteze, să-l traducă, să-l rezume și altele.",
+    "floating_menu__always_pin_sidebar_title": "Pinați întotdeauna în bara laterală",
+    "floating_menu__always_pin_to_sidebar": "Afișați întotdeauna răspunsurile în bara laterală",
+    "floating_menu__always_unpin_to_sidebar": "Afișați întotdeauna răspunsurile în meniul contextual",
+    "floating_menu__pint_once_to_sidebar": "Afișați răspunsul în bara laterală o dată",
+    "sidebar__tabs__rewrite__title": "Rescrieți",
+    "sidebar__tabs__rewrite__tooltip": "Rescriitor AI",
+    "home_view__rewrite__title": "Rescriitor AI",
+    "home_view__rewrite__description": "Economisiți timp la corectarea și perfecționarea cuvintelor dvs.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Rezumați punctele cheie",
+    "context_window__chat_history__continue_in_sidebar__title": "Continuați în bara laterală",
+    "context_window__chat_history__continue_in_rewrite__title": "Continuați în rescriere"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Istoric chat",
     "sidebar_tour__step__5__feature_4__title": "Chat cu captură de ecran",
     "sidebar_tour__step__5__feature_5__title": "Sugestii cu un clic",
-    "sidebar_tour__step__5__feature_6__title": "Utilizați sugestia"
+    "sidebar_tour__step__5__feature_6__title": "Utilizați sugestia",
+    "sidebar_tour__step__2__description_5": "Rescriitor AI"
   },
   "quota_usage_card": {
     "category__fast_text": "AI rapid",

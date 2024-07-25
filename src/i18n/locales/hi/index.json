@@ -67,7 +67,8 @@
     "terms_of_service": "सेवा की शर्तें",
     "shortcut": "शॉर्टकट",
     "yearly": "वार्षिक",
-    "monthly": "मासिक"
+    "monthly": "मासिक",
+    "continue_in_contextmenu": "हमेशा संदर्भ मेनू में जारी रखें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "मैक्सएआई आर्टिफैक्ट्स",
     "chat__artifacts__feature_button__tooltip__title": "मैक्सएआई आर्टिफैक्ट्स",
     "chat__artifacts__feature_button__tooltip__description": "अपने विचारों को वास्तविक सामग्री में परिवर्तित करें। सक्षम किया जाए, तो MaxAI चैट करते समय एक लाइव पूर्वावलोकन पैनल में कोड, दस्तावेज़ और डिज़ाइन जैसी दृश्यात्मक आर्टिफैक्ट्स उत्पन्न करेगा।",
-    "chat__artifacts__button__description__component": "क्लिक करें ताकि कॉम्पोनेंट खुले"
+    "chat__artifacts__button__description__component": "क्लिक करें ताकि कॉम्पोनेंट खुले",
+    "floating_menu__button__show_detail": "विवरण दिखाएं",
+    "floating_menu__textarea__placeholder": "यहाँ अपना पाठ लिखें या पेस्ट करें और AI से सुधार, प्रूफरीड, अनुवाद, सारांश और अधिक करने के लिए कहें।",
+    "floating_menu__always_pin_sidebar_title": "हमेशा साइडबार में पिन करें",
+    "floating_menu__always_pin_to_sidebar": "हमेशा साइडबार में प्रतिक्रियाएँ प्रदर्शित करें",
+    "floating_menu__always_unpin_to_sidebar": "हमेशा संदर्भ मेनू में प्रतिक्रियाएँ प्रदर्शित करें",
+    "floating_menu__pint_once_to_sidebar": "साइडबार में एक बार प्रतिक्रिया प्रदर्शित करें",
+    "sidebar__tabs__rewrite__title": "पुनर्लेखन",
+    "sidebar__tabs__rewrite__tooltip": "AI पुनरलेखक",
+    "home_view__rewrite__title": "AI पुनरलेखक",
+    "home_view__rewrite__description": "अपने शब्दों को प्रूफरीड और पूर्ण करने में समय बचाएं।",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "मुख्य बिंदु सारांशित करें",
+    "context_window__chat_history__continue_in_sidebar__title": "साइडबार में जारी रखें",
+    "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखन में जारी रखें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "चैट इतिहास",
     "sidebar_tour__step__5__feature_4__title": "स्क्रीनशॉट के साथ चैट",
     "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
-    "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट का उपयोग करें"
+    "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट का उपयोग करें",
+    "sidebar_tour__step__2__description_5": "AI पुनरलेखक"
   },
   "quota_usage_card": {
     "category__fast_text": "तेज एआई",

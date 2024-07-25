@@ -67,7 +67,8 @@
     "terms_of_service": "സേവന നിബന്ധനകൾ",
     "shortcut": "ഷോർട്കട്",
     "yearly": "വാർഷികം",
-    "monthly": "മാസിക"
+    "monthly": "മാസിക",
+    "continue_in_contextmenu": "എപ്പോൾ കോൺടെക്സ്റ്റ് മെനുവിൽ തുടരുക"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "മാക്സ്‌എയ്‌ ആർട്ടിഫാക്റ്റുകൾ",
     "chat__artifacts__feature_button__tooltip__title": "മാക്സ്‌എയ്‌ ആർട്ടിഫാക്റ്റുകൾ",
     "chat__artifacts__feature_button__tooltip__description": "നിങ്ങളുടെ ആശയങ്ങൾ വസ്ത്രം ആക്കാനും മാറ്റാനും കഴിയുന്നതാണ്. പ്രവർത്തനത്തിലുള്ളപ്പോൾ, മാക്സ്‌എയ്‌ ചാറ്റുചെയ്യുമ്പോൾ കോഡ്, ഡോക്യുമെന്റുകൾ, ഡിസൈനുകൾ എന്നിവയെ ലൈവ് പ്രിവ്യൂ പാനൽലേക്ക് സൃഷ്ടിക്കും.",
-    "chat__artifacts__button__description__component": "കമ്പോണെന്റ് തുറക്കാന്‍ ക്ലിക്ക് ചെയ്യുക"
+    "chat__artifacts__button__description__component": "കമ്പോണെന്റ് തുറക്കാന്‍ ക്ലിക്ക് ചെയ്യുക",
+    "floating_menu__button__show_detail": "വിശദങ്ങൾ കാണിക്കുക",
+    "floating_menu__textarea__placeholder": "ഇവിടെ നിന്ന് നിങ്ങളുടെ ടെക്സ്റ്റ് ടൈപ് അല്ലെങ്കിൽ പേസ്റ്റ് ചെയ്യുക മറ്റ് AI ഉപയോഗിച്ച് മെഴ്സാജ് പെരുക്കാം, പ്രൂഫ്രീഡ് ചെയ്യാം, അനുവാദം ചെയ്യാം, സംഗ്രഹിക്കാം എന്നിവ",
+    "floating_menu__always_pin_sidebar_title": "എപ്പോൾ സൈഡ്‌ബാർലേക്ക് പിൻ ചെയ്യുക",
+    "floating_menu__always_pin_to_sidebar": "എപ്പോൾ പ്രതിക്രിയകൾ സൈഡ്‌ബാർലേക്ക് പ്രദർശിപ്പിക്കുക",
+    "floating_menu__always_unpin_to_sidebar": "എപ്പോൾ പ്രതിക്രിയകൾ കോൺടെക്സ്റ്റ് മെനുവിൽ പ്രദർശിപ്പിക്കുക",
+    "floating_menu__pint_once_to_sidebar": "പ്രതിക്രിയ ഒരിടത്ത് സൈഡ്‌ബാർലേക്ക് പ്രദർശിപ്പിക്കുക",
+    "sidebar__tabs__rewrite__title": "പുനരരചന",
+    "sidebar__tabs__rewrite__tooltip": "AI പുനരരചകൻ",
+    "home_view__rewrite__title": "AI പുനരരചകൻ",
+    "home_view__rewrite__description": "നിങ്ങളുടെ വാക്കുകൾ പ്രൂഫ്രീഡ് ചെയ്യാനും പൂർണ്ണമായി പരിഷ്കരിക്കാനും സമയം സേവ് ചെയ്യുക",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "പ്രധാന പോയിന്റുകൾ സംഗ്രഹിക്കുക",
+    "context_window__chat_history__continue_in_sidebar__title": "സൈഡ്‌ബാർലേക്ക് തുടരുക",
+    "context_window__chat_history__continue_in_rewrite__title": "പുനരരചനയിൽ തുടരുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "ചാറ്റ് ചരിത്രം",
     "sidebar_tour__step__5__feature_4__title": "സ്ക്രീൻഷോട്ടുമായി ചാറ്റ്",
     "sidebar_tour__step__5__feature_5__title": "1-ക്ലിക്ക് പ്രോംപ്റ്റുകൾ",
-    "sidebar_tour__step__5__feature_6__title": "പ്രോംപ്റ്റ് ഉപയോഗിക്കുക"
+    "sidebar_tour__step__5__feature_6__title": "പ്രോംപ്റ്റ് ഉപയോഗിക്കുക",
+    "sidebar_tour__step__2__description_5": "AI പുനരരചകൻ"
   },
   "quota_usage_card": {
     "category__fast_text": "ഫാസ്റ്റ് AI",

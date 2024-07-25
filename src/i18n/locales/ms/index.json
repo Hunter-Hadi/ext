@@ -67,7 +67,8 @@
     "terms_of_service": "Terma Perkhidmatan",
     "shortcut": "Pintasan",
     "yearly": "Tahunan",
-    "monthly": "Bulanan"
+    "monthly": "Bulanan",
+    "continue_in_contextmenu": "Sentiasa terus dalam menu konteks"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "Artifak MaxAI",
     "chat__artifacts__feature_button__tooltip__title": "Artifak MaxAI",
     "chat__artifacts__feature_button__tooltip__description": "Ubah idea anda kepada kandungan yang boleh dirasai. Apabila diaktifkan, MaxAI akan menjana artifak visual seperti kod, dokumen, dan reka bentuk dalam panel pratonton langsung semasa bersembang.",
-    "chat__artifacts__button__description__component": "Klik untuk membuka komponen"
+    "chat__artifacts__button__description__component": "Klik untuk membuka komponen",
+    "floating_menu__button__show_detail": "Papar butiran",
+    "floating_menu__textarea__placeholder": "Taip atau tampal teks anda di sini dan minta AI untuk memperbaiki, menyemak, menterjemah, merangkum, dan lain-lain.",
+    "floating_menu__always_pin_sidebar_title": "Sentiasa melekat pada sidebar",
+    "floating_menu__always_pin_to_sidebar": "Sentiasa paparkan respons dalam sidebar",
+    "floating_menu__always_unpin_to_sidebar": "Sentiasa paparkan respons dalam menu konteks",
+    "floating_menu__pint_once_to_sidebar": "Paparkan respons dalam sidebar sekali",
+    "sidebar__tabs__rewrite__title": "Menulis semula",
+    "sidebar__tabs__rewrite__tooltip": "Penulis semula AI",
+    "home_view__rewrite__title": "Penulis semula AI",
+    "home_view__rewrite__description": "Jimat masa dalam menyemak dan menyempurnakan kata-kata anda.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ringkaskan titik utama",
+    "context_window__chat_history__continue_in_sidebar__title": "Teruskan dalam sidebar",
+    "context_window__chat_history__continue_in_rewrite__title": "Teruskan dalam penulisan semula"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Sejarah sembang",
     "sidebar_tour__step__5__feature_4__title": "Perbualan dengan tangkapan skrin",
     "sidebar_tour__step__5__feature_5__title": "Panduan 1-klik",
-    "sidebar_tour__step__5__feature_6__title": "Gunakan panduan"
+    "sidebar_tour__step__5__feature_6__title": "Gunakan panduan",
+    "sidebar_tour__step__2__description_5": "Penulis semula AI"
   },
   "quota_usage_card": {
     "category__fast_text": "AI Pantas",

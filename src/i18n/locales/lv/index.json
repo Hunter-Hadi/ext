@@ -67,7 +67,8 @@
     "terms_of_service": "Pakalpojuma noteikumi",
     "shortcut": "Saīsne",
     "yearly": "Katru gadu",
-    "monthly": "Katru mēnesi"
+    "monthly": "Katru mēnesi",
+    "continue_in_contextmenu": "Vienmēr turpiniet konteksta izvēlnē"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Artefakti",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakti",
     "chat__artifacts__feature_button__tooltip__description": "Pārvērtiet savas idejas par konkrētu saturu. Ja iespējots, MaxAI radīs vizuālos artefaktus, piemēram, kodu, dokumentus un dizainus tiešsaistes priekšskatījuma panelī, kad jūs čatojat.",
-    "chat__artifacts__button__description__component": "Noklikšķiniet, lai atvērtu komponentu"
+    "chat__artifacts__button__description__component": "Noklikšķiniet, lai atvērtu komponentu",
+    "floating_menu__button__show_detail": "Rādīt detaļas",
+    "floating_menu__textarea__placeholder": "Ierakstiet vai ielīmējiet tekstu šeit un lūdziet AI uzlabot, pārbaudīt, tulkojiet, apkopot un citus darbus.",
+    "floating_menu__always_pin_sidebar_title": "Vienmēr pielīmējiet sānjoslu",
+    "floating_menu__always_pin_to_sidebar": "Vienmēr rādīt atbildes sānjoslā",
+    "floating_menu__always_unpin_to_sidebar": "Vienmēr rādīt atbildes konteksta izvēlnē",
+    "floating_menu__pint_once_to_sidebar": "Rādīt atbildi sānjoslā vienreiz",
+    "sidebar__tabs__rewrite__title": "Pārrakstīt",
+    "sidebar__tabs__rewrite__tooltip": "AI pārrakstītājs",
+    "home_view__rewrite__title": "AI pārrakstītājs",
+    "home_view__rewrite__description": "Ietaupiet laiku, pārbaudot un pilnveidojot savus vārdus.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Apkopojiet galvenos punktus",
+    "context_window__chat_history__continue_in_sidebar__title": "Turpiniet sānjoslā",
+    "context_window__chat_history__continue_in_rewrite__title": "Turpiniet pārrakstīt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Čata vēsture",
     "sidebar_tour__step__5__feature_4__title": "Čats ar ekrānuzņēmumu",
     "sidebar_tour__step__5__feature_5__title": "1-klikšķa norādes",
-    "sidebar_tour__step__5__feature_6__title": "Izmantojiet norādi"
+    "sidebar_tour__step__5__feature_6__title": "Izmantojiet norādi",
+    "sidebar_tour__step__2__description_5": "AI pārrakstītājs"
   },
   "quota_usage_card": {
     "category__fast_text": "Ātrais AI",

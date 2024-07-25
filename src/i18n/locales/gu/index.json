@@ -67,7 +67,8 @@
     "terms_of_service": "સેવાઓની શરતો",
     "shortcut": "શોર્ટકટ",
     "yearly": "વાર્ષિક",
-    "monthly": "માસિક"
+    "monthly": "માસિક",
+    "continue_in_contextmenu": "હંમેશા સંદર્ભ મેનૂમાં ચાલુ રાખો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "મેક્સએઆઈ આર્ટિફેક્ટ્સ",
     "chat__artifacts__feature_button__tooltip__title": "મેક્સએઆઈ આર્ટિફેક્ટ્સ",
     "chat__artifacts__feature_button__tooltip__description": "તમારા વિચારોને વાસ્તવિક કન્ટેન્ટમાં રૂપાંતરિત કરો. જ્યારે સક્રિય કર્યું હોય, ત્યારે ચેટ કરતા સમયે મેક્સએઆઈ કોડ, દસ્તાવેજ અને ડિઝાઇન જેવી દ્રશ્યમાન આર્ટિફેક્ટ્સ ઉત્પન્ન કરશે.",
-    "chat__artifacts__button__description__component": "ક્લિક કરો કૉમ્પોનેન્ટ ખોલવા માટે"
+    "chat__artifacts__button__description__component": "ક્લિક કરો કૉમ્પોનેન્ટ ખોલવા માટે",
+    "floating_menu__button__show_detail": "વિગતો બતાવો",
+    "floating_menu__textarea__placeholder": "તમારો લખાણ અથવા પેસ્ટ કરો અને AIને સુધારવા, પ્રૂફરીડ, અનુવાદ કરવા, સારાંશ કરવા માટે અહીં ટાઈપ કરો.",
+    "floating_menu__always_pin_sidebar_title": "હંમેશા સાઇડબારમાં પિન કરો",
+    "floating_menu__always_pin_to_sidebar": "હંમેશા સાઇડબારમાં જવાબો બતાવો",
+    "floating_menu__always_unpin_to_sidebar": "હંમેશા સંદર્ભ મેનૂમાં જવાબો બતાવો",
+    "floating_menu__pint_once_to_sidebar": "એકવાર સાઇડબારમાં જવાબો બતાવો",
+    "sidebar__tabs__rewrite__title": "રિવ્રાઇટ",
+    "sidebar__tabs__rewrite__tooltip": "AI રિવ્રાઇટર",
+    "home_view__rewrite__title": "AI રિવ્રાઇટર",
+    "home_view__rewrite__description": "તમારા શબ્દોને પ્રૂફરીડ અને પરફેક્ટ કરવામાં સમય બચાવો.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "મુખ્ય બિંદુઓને સારાંશ કરો",
+    "context_window__chat_history__continue_in_sidebar__title": "સાઇડબારમાં ચાલુ રાખો",
+    "context_window__chat_history__continue_in_rewrite__title": "રિવ્રાઇટમાં ચાલુ રાખો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "ચેટ ઇતિહાસ",
     "sidebar_tour__step__5__feature_4__title": "સ્ક્રીનશોટ સાથે ચેટ",
     "sidebar_tour__step__5__feature_5__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",
-    "sidebar_tour__step__5__feature_6__title": "પ્રોમ્પ્ટ ઉપયોગ કરો"
+    "sidebar_tour__step__5__feature_6__title": "પ્રોમ્પ્ટ ઉપયોગ કરો",
+    "sidebar_tour__step__2__description_5": "AI રિવ્રાઇટર"
   },
   "quota_usage_card": {
     "category__fast_text": "ઝડપી AI",

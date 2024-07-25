@@ -67,7 +67,8 @@
     "terms_of_service": "సేవల నిబంధనలు",
     "shortcut": "షార్ట్కట్",
     "yearly": "వారుగా",
-    "monthly": "ప్రతినిత్య"
+    "monthly": "ప్రతినిత్య",
+    "continue_in_contextmenu": "ఎప్పుడైనా సందర్భ మెనూలో కొనసాగండి"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI ఆర్టిఫాక్ట్స్",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI ఆర్టిఫాక్ట్స్",
     "chat__artifacts__feature_button__tooltip__description": "మీ ఆలోచనలను వస్తువుల కంటెంట్గా మార్చండి. ఎనేబుల్ చేస్తే, MaxAI మీరు చాట్ చేస్తూ విజువల్ ఆర్టిఫాక్ట్స్ ఏర్పాటు చేస్తుంది సోఫ్ట్వేర్, డాక్యుమెంట్స్, మరియు డిజైన్లను లైవ్ ప్రివ్యూ ప్యానెల్లో తరచుగా తయారు చేస్తుంది.",
-    "chat__artifacts__button__description__component": "కంపోనెంట్ తెరువుకోడానికి క్లిక్ చేయండి"
+    "chat__artifacts__button__description__component": "కంపోనెంట్ తెరువుకోడానికి క్లిక్ చేయండి",
+    "floating_menu__button__show_detail": "వివరాలను చూపించు",
+    "floating_menu__textarea__placeholder": "మీ వాక్యాన్ని ఇక్కడ టైప్ చేయండి లేదా పేస్ట్ చేయండి మరియు AI ను మెరుగుపరచండి, ప్రూఫ్రీడ్, అనువాదించండి, సంగ్రహించండి మరియు మరియు మరియు.",
+    "floating_menu__always_pin_sidebar_title": "ఎప్పుడైనా సైడ్బార్లో పిన్ చేయండి",
+    "floating_menu__always_pin_to_sidebar": "ఎప్పుడైనా సైడ్బార్లో సమాధానాలను చూపించండి",
+    "floating_menu__always_unpin_to_sidebar": "ఎప్పుడైనా సైడ్బార్లో సమాధానాలను చూపించకూడదు",
+    "floating_menu__pint_once_to_sidebar": "సైడ్బార్లో సమాధానాన్ని ఒకసారి చూపించు",
+    "sidebar__tabs__rewrite__title": "రైట్",
+    "sidebar__tabs__rewrite__tooltip": "AI రైటర్",
+    "home_view__rewrite__title": "AI రైటర్",
+    "home_view__rewrite__description": "మీ పదాలను ప్రూఫ్రీడ్ చేస్తూ సమయం నిర్వహించడం మరియు పూర్తి చేస్తూ సమయం నిర్వహించడం.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "ముఖ్య పాయింట్స్ సంగ్రహించు",
+    "context_window__chat_history__continue_in_sidebar__title": "సైడ్బార్లో కొనసాగండి",
+    "context_window__chat_history__continue_in_rewrite__title": "రైట్లో కొనసాగండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "చాట్ చరిత్ర",
     "sidebar_tour__step__5__feature_4__title": "స్క్రీన్‌షాట్ తో చాట్",
     "sidebar_tour__step__5__feature_5__title": "1-క్లిక్ ప్రాంప్ట్‌లు",
-    "sidebar_tour__step__5__feature_6__title": "ప్రాంప్ట్‌ను ఉపయోగించు"
+    "sidebar_tour__step__5__feature_6__title": "ప్రాంప్ట్‌ను ఉపయోగించు",
+    "sidebar_tour__step__2__description_5": "AI రైటర్"
   },
   "quota_usage_card": {
     "category__fast_text": "ఫాస్ట్ ఐ",

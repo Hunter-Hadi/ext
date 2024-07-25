@@ -67,7 +67,8 @@
     "terms_of_service": "Warunki korzystania",
     "shortcut": "Skrót",
     "yearly": "Rocznie",
-    "monthly": "Miesięcznie"
+    "monthly": "Miesięcznie",
+    "continue_in_contextmenu": "Zawsze kontynuuj w menu kontekstowym"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "Artefakty MaxAI",
     "chat__artifacts__feature_button__tooltip__title": "Artefakty MaxAI",
     "chat__artifacts__feature_button__tooltip__description": "Przekształć swoje pomysły w konkretną treść. Po włączeniu MaxAI będzie generować wizualne artefakty, takie jak kod, dokumenty i projekty, w panelu podglądu na żywo podczas rozmowy.",
-    "chat__artifacts__button__description__component": "Kliknij, aby otworzyć komponent"
+    "chat__artifacts__button__description__component": "Kliknij, aby otworzyć komponent",
+    "floating_menu__button__show_detail": "Pokaż szczegóły",
+    "floating_menu__textarea__placeholder": "Wpisz lub wklej tutaj swój tekst i poproś AI o poprawę, korektę, tłumaczenie, streszczenie i więcej.",
+    "floating_menu__always_pin_sidebar_title": "Zawsze przypnij do paska bocznego",
+    "floating_menu__always_pin_to_sidebar": "Zawsze wyświetlaj odpowiedzi w pasku bocznym",
+    "floating_menu__always_unpin_to_sidebar": "Zawsze wyświetlaj odpowiedzi w menu kontekstowym",
+    "floating_menu__pint_once_to_sidebar": "Wyświetl odpowiedź w pasku bocznym raz",
+    "sidebar__tabs__rewrite__title": "Przepisz",
+    "sidebar__tabs__rewrite__tooltip": "Przepisywacz AI",
+    "home_view__rewrite__title": "Przepisywacz AI",
+    "home_view__rewrite__description": "Oszczędź czas na korekcie i doskonaleniu swoich słów.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Podsumuj kluczowe punkty",
+    "context_window__chat_history__continue_in_sidebar__title": "Kontynuuj w pasku bocznym",
+    "context_window__chat_history__continue_in_rewrite__title": "Kontynuuj w przepisywaczu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Historia czatu",
     "sidebar_tour__step__5__feature_4__title": "Czat z zrzutem ekranu",
     "sidebar_tour__step__5__feature_5__title": "Podpowiedzi jednym kliknięciem",
-    "sidebar_tour__step__5__feature_6__title": "Użyj podpowiedzi"
+    "sidebar_tour__step__5__feature_6__title": "Użyj podpowiedzi",
+    "sidebar_tour__step__2__description_5": "Przepisywacz AI"
   },
   "quota_usage_card": {
     "category__fast_text": "Szybkie AI",

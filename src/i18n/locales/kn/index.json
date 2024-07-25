@@ -67,7 +67,8 @@
     "terms_of_service": "ಸೇವೆಯ ನಿಯಮಗಳು",
     "shortcut": "ಶೀಘ್ರದಲ್ಲಿ",
     "yearly": "ವಾರ್ಷಿಕ",
-    "monthly": "ಮಾಸಿಕ"
+    "monthly": "ಮಾಸಿಕ",
+    "continue_in_contextmenu": "ಯಾವಾಗಲೂ ಸಂದರ್ಭ ಮೆನುವಿನಲ್ಲಿ ಮುಂದುವರಿಸಿ"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "ಮ್ಯಾಕ್ಸ್ಏಐ ಕಲ್ಪನೆಗಳು",
     "chat__artifacts__feature_button__tooltip__title": "ಮ್ಯಾಕ್ಸ್ಏಐ ಕಲ್ಪನೆಗಳು",
     "chat__artifacts__feature_button__tooltip__description": "ನಿಮ್ಮ ಕಲ್ಪನೆಗಳನ್ನು ವಾಸ್ತವವಾಗಿಯೂ ರೂಪಿಸಿ. ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಮ್ಯಾಕ್ಸ್ಏಐ ಚಾಟ್ ಮಾಧ್ಯಮದಲ್ಲಿ ನೀವು ಚಾಟ್ ಮಾಡುತ್ತಿರುವಾಗ ಕೋಡ್, ದಸ್ತಾವೇಜುಗಳು ಮತ್ತು ಡಿಜೈನ್‌ಗಳನ್ನು ಲೈವ್ ಪ್ರಿವ್ಯೂ ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ಉತ್ಪಾದಿಸುತ್ತದೆ.",
-    "chat__artifacts__button__description__component": "ಘಟಕವನ್ನು ತೆರೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
+    "chat__artifacts__button__description__component": "ಘಟಕವನ್ನು ತೆರೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ",
+    "floating_menu__button__show_detail": "ವಿವರಗಳನ್ನು ತೋರಿಸು",
+    "floating_menu__textarea__placeholder": "ನಿಮ್ಮ ಪಠ್ಯವನ್ನು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಪೇಸ್ ಮಾಡಿ ಮತ್ತು ಏದುವಾದರೂ ಮೆಲವಿನಲ್ಲಿ ಪ್ರಶ್ನಿಸಿ, ಪರಿಷ್ಕರಿಸಿ, ಅನುವಾದಿಸಿ, ಸಾರಾಂಶಿಸಿ ಮತ್ತು ಹೆಚ್ಚಾಗಿ.",
+    "floating_menu__always_pin_sidebar_title": "ಯಾವಾಗಲೂ ಸೈಡ್‌ಬಾರ್‌ಗೆ ಪಿನ್ ಮಾಡಿ",
+    "floating_menu__always_pin_to_sidebar": "ಯಾವಾಗಲೂ ಉತ್ತರಗಳನ್ನು ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ತೋರಿಸಿ",
+    "floating_menu__always_unpin_to_sidebar": "ಯಾವಾಗಲೂ ಉತ್ತರಗಳನ್ನು ಸಂದರ್ಭ ಮೆನುವಿನಲ್ಲಿ ತೋರಿಸಿ",
+    "floating_menu__pint_once_to_sidebar": "ಉತ್ತರವನ್ನು ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ಒಮ್ಮೆ ತೋರಿಸಿ",
+    "sidebar__tabs__rewrite__title": "ಮರುವರ್ಣನೆ",
+    "sidebar__tabs__rewrite__tooltip": "AI ಮರುವರ್ಣಕಾರ",
+    "home_view__rewrite__title": "AI ಮರುವರ್ಣಕಾರ",
+    "home_view__rewrite__description": "ನಿಮ್ಮ ಶಬ್ದಗಳನ್ನು ಪರಿಷ್ಕರಿಸುವುದರಲ್ಲಿ ಸಮಯ ಉಳಿಸಿ ಮತ್ತು ಸರಿಪಡಿಸುವುದರಲ್ಲಿ ಸಮಯ ಉಳಿಸಿ.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಸಾರಿ",
+    "context_window__chat_history__continue_in_sidebar__title": "ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ಮುಂದುವರಿಸಿ",
+    "context_window__chat_history__continue_in_rewrite__title": "ಮರುವರ್ಣನೆಯಲ್ಲಿ ಮುಂದುವರಿಸಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "ಚಾಟ್ ಇತಿಹಾಸ",
     "sidebar_tour__step__5__feature_4__title": "ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಜೊತೆಗೆ ಚಾಟ್",
     "sidebar_tour__step__5__feature_5__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
-    "sidebar_tour__step__5__feature_6__title": "ಪ್ರಾಂಪ್ಟ್ ಬಳಸಿ"
+    "sidebar_tour__step__5__feature_6__title": "ಪ್ರಾಂಪ್ಟ್ ಬಳಸಿ",
+    "sidebar_tour__step__2__description_5": "AI ಮರುವರ್ಣಕಾರ"
   },
   "quota_usage_card": {
     "category__fast_text": "ಫಾಸ್ಟ್ AI",

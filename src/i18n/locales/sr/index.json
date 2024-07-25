@@ -67,7 +67,8 @@
     "terms_of_service": "Uslovi korišćenja",
     "shortcut": "Prečica",
     "yearly": "Godišnje",
-    "monthly": "Mesečno"
+    "monthly": "Mesečno",
+    "continue_in_contextmenu": "Uvek nastavite u meniju konteksta"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Artefakti",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakti",
     "chat__artifacts__feature_button__tooltip__description": "Transformišite svoje ideje u opipljiv sadržaj. Kada je omogućeno, MaxAI će generisati vizuelne artefakte poput koda, dokumenata i dizajna u panelu za pregled uživo dok razgovarate.",
-    "chat__artifacts__button__description__component": "Kliknite da otvorite komponentu"
+    "chat__artifacts__button__description__component": "Kliknite da otvorite komponentu",
+    "floating_menu__button__show_detail": "Prikaži detalje",
+    "floating_menu__textarea__placeholder": "Ovde otkucajte ili nalepite svoj tekst i pitajte veštačku inteligenciju da ga poboljša, ispravi, prevede, sumira i još mnogo toga.",
+    "floating_menu__always_pin_sidebar_title": "Uvek prikači na bočnu traku",
+    "floating_menu__always_pin_to_sidebar": "Uvek prikaži odgovore na bočnoj traci",
+    "floating_menu__always_unpin_to_sidebar": "Uvek prikaži odgovore u meniju konteksta",
+    "floating_menu__pint_once_to_sidebar": "Prikaži odgovor u bočnoj traci jednom",
+    "sidebar__tabs__rewrite__title": "Prepiši",
+    "sidebar__tabs__rewrite__tooltip": "Veštački prepravljač",
+    "home_view__rewrite__title": "Veštački prepravljač",
+    "home_view__rewrite__description": "Uštedite vreme na ispravljanju i usavršavanju svojih reči.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sumiraj ključne tačke",
+    "context_window__chat_history__continue_in_sidebar__title": "Nastavite na bočnoj traci",
+    "context_window__chat_history__continue_in_rewrite__title": "Nastavite u prepravljanju"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Istorija četa",
     "sidebar_tour__step__5__feature_4__title": "Ćaskanje sa snimkom ekrana",
     "sidebar_tour__step__5__feature_5__title": "1-klik podsticaji",
-    "sidebar_tour__step__5__feature_6__title": "Koristite podsticaj"
+    "sidebar_tour__step__5__feature_6__title": "Koristite podsticaj",
+    "sidebar_tour__step__2__description_5": "Veštački prepravljač"
   },
   "quota_usage_card": {
     "category__fast_text": "Brza AI",

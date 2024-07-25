@@ -67,7 +67,8 @@
     "terms_of_service": "Paslaugų teikimo sąlygos",
     "shortcut": "Trumpikas kelias",
     "yearly": "Kasmetinis",
-    "monthly": "Mėnesinis"
+    "monthly": "Mėnesinis",
+    "continue_in_contextmenu": "Visada tęsti kontekstinėje skiltyje"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Artefaktai",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefaktai",
     "chat__artifacts__feature_button__tooltip__description": "Paverčia savo idėjas į apčiuopiamą turinį. Įjungus, MaxAI generuos vizualinius artefaktus, tokius kaip kodą, dokumentus ir dizainus, tiesioginėje peržiūros juostoje, kai bendraujate.",
-    "chat__artifacts__button__description__component": "Spustelėkite, kad atidarytumėte komponentą"
+    "chat__artifacts__button__description__component": "Spustelėkite, kad atidarytumėte komponentą",
+    "floating_menu__button__show_detail": "Rodyti informaciją",
+    "floating_menu__textarea__placeholder": "Įveskite ar įklijuokite savo tekstą čia ir paprašykite, kad dirbtinis intelektas jį pagerintų, ištaisytų, išverstų, suvestų įvairias išvadas ir kt.",
+    "floating_menu__always_pin_sidebar_title": "Visada prisegti prie šoninės juostos",
+    "floating_menu__always_pin_to_sidebar": "Visada rodyti atsakymus šoninėje juostoje",
+    "floating_menu__always_unpin_to_sidebar": "Visada rodyti atsakymus kontekstinėje skiltyje",
+    "floating_menu__pint_once_to_sidebar": "Atsakymą rodyti šoninėje juostoje vieną kartą",
+    "sidebar__tabs__rewrite__title": "Perkurti",
+    "sidebar__tabs__rewrite__tooltip": "AI perkūrėjas",
+    "home_view__rewrite__title": "AI perkūrėjas",
+    "home_view__rewrite__description": "Sutaupykite laiko redaguodami ir tobulindami savo žodžius.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Suvesti pagrindinius punktus",
+    "context_window__chat_history__continue_in_sidebar__title": "Tęsti šoninėje juostoje",
+    "context_window__chat_history__continue_in_rewrite__title": "Tęsti perkūrime"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Pokalbių istorija",
     "sidebar_tour__step__5__feature_4__title": "Pokalbis su ekrano nuotrauka",
     "sidebar_tour__step__5__feature_5__title": "Vieno paspaudimo užduotys",
-    "sidebar_tour__step__5__feature_6__title": "Naudoti užduotį"
+    "sidebar_tour__step__5__feature_6__title": "Naudoti užduotį",
+    "sidebar_tour__step__2__description_5": "AI perkūrėjas"
   },
   "quota_usage_card": {
     "category__fast_text": "Greitas AI",

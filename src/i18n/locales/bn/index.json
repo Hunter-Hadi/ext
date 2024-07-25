@@ -67,7 +67,8 @@
     "terms_of_service": "সেবা প্রদানের শর্তাবলী",
     "shortcut": "শর্টকাট",
     "yearly": "বার্ষিক",
-    "monthly": "মাসিক"
+    "monthly": "মাসিক",
+    "continue_in_contextmenu": "সবসময় কনটেক্সট মেনুতে চালিয়ে যান"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "ম্যাক্সএআই আর্টিফ্যাক্টস",
     "chat__artifacts__feature_button__tooltip__title": "ম্যাক্সএআই আর্টিফ্যাক্টস",
     "chat__artifacts__feature_button__tooltip__description": "আপনার ধারণাগুলি প্রাকৃতিক কন্টেন্টে পরিণত করুন। যখন সক্রিয় করা হয়, ম্যাক্সএআই চ্যাট করার সময় একটি লাইভ প্রিভিউ প্যানেলে কোড, ডকুমেন্ট, এবং ডিজাইন সহ ভিজ্যুয়াল আর্টিফ্যাক্ট তৈরি করবে।",
-    "chat__artifacts__button__description__component": "ক্লিক করুন যাতে কোম্পোনেন্ট খোলা যায়"
+    "chat__artifacts__button__description__component": "ক্লিক করুন যাতে কোম্পোনেন্ট খোলা যায়",
+    "floating_menu__button__show_detail": "বিস্তারিত দেখুন",
+    "floating_menu__textarea__placeholder": "আপনার পাঠ্য এখানে টাইপ করুন অথবা পেস্ট করুন এবং এআই কে উন্নত করার, প্রুফরিড, অনুবাদ, সারাংশ এবং আরও জিনিস জিজ্ঞাসা করুন।",
+    "floating_menu__always_pin_sidebar_title": "সাইডবারে সবসময় পিন করুন",
+    "floating_menu__always_pin_to_sidebar": "সাইডবারে উত্তর সবসময় প্রদর্শন করুন",
+    "floating_menu__always_unpin_to_sidebar": "উত্তর সবসময় কনটেক্সট মেনুতে প্রদর্শন করুন",
+    "floating_menu__pint_once_to_sidebar": "একবারে উত্তর সাইডবারে প্রদর্শন করুন",
+    "sidebar__tabs__rewrite__title": "পুনর্লেখা",
+    "sidebar__tabs__rewrite__tooltip": "এআই পুনর্লেখক",
+    "home_view__rewrite__title": "এআই পুনর্লেখক",
+    "home_view__rewrite__description": "প্রুফরিডিং এবং আপনার শব্দগুলি পারফেক্ট করার জন্য সময় সংরক্ষণ করুন।",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "গুরুত্বপূর্ণ বিন্দুগুলি সারাংশ করুন",
+    "context_window__chat_history__continue_in_sidebar__title": "সাইডবারে চালিয়ে যান",
+    "context_window__chat_history__continue_in_rewrite__title": "পুনর্লেখায় চালিয়ে যান"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "চ্যাট ইতিহাস",
     "sidebar_tour__step__5__feature_4__title": "স্ক্রিনশট সহ চ্যাট",
     "sidebar_tour__step__5__feature_5__title": "1-ক্লিক প্রম্পট",
-    "sidebar_tour__step__5__feature_6__title": "প্রম্পট ব্যবহার করুন"
+    "sidebar_tour__step__5__feature_6__title": "প্রম্পট ব্যবহার করুন",
+    "sidebar_tour__step__2__description_5": "এআই পুনরলেখক"
   },
   "quota_usage_card": {
     "category__fast_text": "দ্রুত AI",

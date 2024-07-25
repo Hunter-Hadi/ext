@@ -67,7 +67,8 @@
     "terms_of_service": "เงื่อนไขการให้บริการ",
     "shortcut": "ทางลัด",
     "yearly": "รายปี",
-    "monthly": "รายเดือน"
+    "monthly": "รายเดือน",
+    "continue_in_contextmenu": "เริ่มต้นในเมนูบริบทเสมอ"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "สร้างสรรค์ MaxAI",
     "chat__artifacts__feature_button__tooltip__title": "สร้างสรรค์ MaxAI",
     "chat__artifacts__feature_button__tooltip__description": "เปลี่ยนไอเดียของคุณเป็นเนื้อหาที่เป็นจริง  เมื่อเปิดใช้งาน MaxAI จะสร้างสรรค์ผลงานทางด้านภาพเช่น โค้ด เอกสาร และการออกแบบในพาเนลตัวอย่างสดๆ ขณะคุยกับคุณ",
-    "chat__artifacts__button__description__component": "คลิกเพื่อเปิดคอมโพเนนต์"
+    "chat__artifacts__button__description__component": "คลิกเพื่อเปิดคอมโพเนนต์",
+    "floating_menu__button__show_detail": "แสดงรายละเอียด",
+    "floating_menu__textarea__placeholder": "พิมพ์หรือวางข้อความของคุณที่นี่และขอ AI ปรับปรุง ตรวจสอบ แปลเป็นภาษาอื่น สรุป และอื่น ๆ",
+    "floating_menu__always_pin_sidebar_title": "ติดตลาดไปยังแถบข้างเสมอ",
+    "floating_menu__always_pin_to_sidebar": "แสดงคำตอบในแถบข้างเสมอ",
+    "floating_menu__always_unpin_to_sidebar": "แสดงคำตอบในเมนูบริบทเสมอ",
+    "floating_menu__pint_once_to_sidebar": "แสดงคำตอบในแถบเดียว",
+    "sidebar__tabs__rewrite__title": "เขียนใหม่",
+    "sidebar__tabs__rewrite__tooltip": "AI เครื่องเขียนใหม่",
+    "home_view__rewrite__title": "AI เครื่องเขียนใหม่",
+    "home_view__rewrite__description": "ประหยัดเวลาในการตรวจสอบและปรับปรุงคำของคุณ",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "สรุปจุดสำคัญ",
+    "context_window__chat_history__continue_in_sidebar__title": "ดำเนินการต่อในแถบข้าง",
+    "context_window__chat_history__continue_in_rewrite__title": "ดำเนินการต่อในการเขียนใหม่"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "ประวัติแชท",
     "sidebar_tour__step__5__feature_4__title": "แชทพร้อมภาพหน้าจอ",
     "sidebar_tour__step__5__feature_5__title": "คำใบ้ด้วยคลิกเดียว",
-    "sidebar_tour__step__5__feature_6__title": "ใช้คำใบ้"
+    "sidebar_tour__step__5__feature_6__title": "ใช้คำใบ้",
+    "sidebar_tour__step__2__description_5": "AI เครื่องเขียนใหม่"
   },
   "quota_usage_card": {
     "category__fast_text": "AI อย่างเร็ว",

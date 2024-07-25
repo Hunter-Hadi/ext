@@ -67,7 +67,8 @@
     "terms_of_service": "Условия использования",
     "shortcut": "Ярлык",
     "yearly": "Ежегодно",
-    "monthly": "Ежемесячно"
+    "monthly": "Ежемесячно",
+    "continue_in_contextmenu": "Всегда продолжать в контекстном меню"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "Артефакты MaxAI",
     "chat__artifacts__feature_button__tooltip__title": "Артефакты MaxAI",
     "chat__artifacts__feature_button__tooltip__description": "Преобразуйте свои идеи в материальный контент. При включении MaxAI будет создавать визуальные артефакты, такие как код, документы и дизайны, в панели превью в реальном времени во время чата.",
-    "chat__artifacts__button__description__component": "Нажмите, чтобы открыть компонент"
+    "chat__artifacts__button__description__component": "Нажмите, чтобы открыть компонент",
+    "floating_menu__button__show_detail": "Показать детали",
+    "floating_menu__textarea__placeholder": "Введите или вставьте свой текст здесь и попросите ИИ улучшить, проверить правописание, перевести, суммировать и многое другое.",
+    "floating_menu__always_pin_sidebar_title": "Всегда закреплять на боковой панели",
+    "floating_menu__always_pin_to_sidebar": "Всегда показывать ответы на боковой панели",
+    "floating_menu__always_unpin_to_sidebar": "Всегда показывать ответы в контекстном меню",
+    "floating_menu__pint_once_to_sidebar": "Показать ответ на боковой панели один раз",
+    "sidebar__tabs__rewrite__title": "Переписать",
+    "sidebar__tabs__rewrite__tooltip": "Переписать ИИ",
+    "home_view__rewrite__title": "Переписать ИИ",
+    "home_view__rewrite__description": "Экономьте время на проверке и совершенствовании своих слов.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Суммировать ключевые моменты",
+    "context_window__chat_history__continue_in_sidebar__title": "Продолжить на боковой панели",
+    "context_window__chat_history__continue_in_rewrite__title": "Продолжить в переписке"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "История чата",
     "sidebar_tour__step__5__feature_4__title": "Чат с снимком экрана",
     "sidebar_tour__step__5__feature_5__title": "1-клик подсказки",
-    "sidebar_tour__step__5__feature_6__title": "Использование подсказки"
+    "sidebar_tour__step__5__feature_6__title": "Использование подсказки",
+    "sidebar_tour__step__2__description_5": "Переписать ИИ"
   },
   "quota_usage_card": {
     "category__fast_text": "Быстрый ИИ",

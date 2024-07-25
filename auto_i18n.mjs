@@ -3,7 +3,7 @@ import { promises as fs } from 'fs'
 import _ from 'lodash-es'
 
 import readline from 'readline'
-import  { buildI18n } from './build-i18n-script.mjs'
+import { buildI18n } from './build-i18n-script.mjs'
 
 async function askQuestion(query) {
   const rl = readline.createInterface({
@@ -24,9 +24,11 @@ async function askQuestion(query) {
 
 async function compareJson(filePath) {
   try {
+    const prevVersion = process.argv[2] || 0
+    // 获取上一个 commit 的 hash
+    const prevCommitHash = execSync(`git rev-parse HEAD~${prevVersion}`, { encoding: 'utf8' }).trim()
     // 获取上一个 commit 中的文件内容
-    const oldFileContent = execSync(`git show HEAD:${filePath}`, { encoding: 'utf8' })
-
+    const oldFileContent = execSync(`git show ${prevCommitHash}:${filePath}`, { encoding: 'utf8' })
     // 读取当前文件的内容
     const newFileContent = await fs.readFile(filePath, 'utf8')
 

@@ -67,7 +67,8 @@
     "terms_of_service": "Mga Tuntunin ng Serbisyo",
     "shortcut": "Shortcut",
     "yearly": "Taun-taon",
-    "monthly": "Buwanan"
+    "monthly": "Buwanan",
+    "continue_in_contextmenu": "Laging magpatuloy sa menu ng konteksto"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "Mga Artifact ng MaxAI",
     "chat__artifacts__feature_button__tooltip__title": "Mga Artifact ng MaxAI",
     "chat__artifacts__feature_button__tooltip__description": "I-convert ang iyong mga ideya sa kongkretong nilalaman. Kapag pinagana, si MaxAI ay mag-gegenerate ng visual na mga artifact tulad ng code, dokumento, at disenyo sa isang live preview panel habang nagcha-chat ka.",
-    "chat__artifacts__button__description__component": "I-click para buksan ang component"
+    "chat__artifacts__button__description__component": "I-click para buksan ang component",
+    "floating_menu__button__show_detail": "Ipakita ang mga detalye",
+    "floating_menu__textarea__placeholder": "Mag-type o mag-paste ng iyong teksto dito at tanungin ang AI na mag-improve, mag-proofread, mag-translate, magbuod, at higit pa.",
+    "floating_menu__always_pin_sidebar_title": "Laging i-pin sa sidebar",
+    "floating_menu__always_pin_to_sidebar": "Laging ipakita ang mga tugon sa sidebar",
+    "floating_menu__always_unpin_to_sidebar": "Laging ipakita ang mga tugon sa menu ng konteksto",
+    "floating_menu__pint_once_to_sidebar": "Ipakita ang tugon sa sidebar isang beses",
+    "sidebar__tabs__rewrite__title": "Ibalik",
+    "sidebar__tabs__rewrite__tooltip": "AI rewriter",
+    "home_view__rewrite__title": "AI rewriter",
+    "home_view__rewrite__description": "Makatipid ng oras sa proofreading at pagpapaganda ng iyong mga salita.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Buodin ang mga pangunahing punto",
+    "context_window__chat_history__continue_in_sidebar__title": "Magpatuloy sa sidebar",
+    "context_window__chat_history__continue_in_rewrite__title": "Magpatuloy sa ibalik"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Kasaysayan ng chat",
     "sidebar_tour__step__5__feature_4__title": "Chat gamit ang screenshot",
     "sidebar_tour__step__5__feature_5__title": "1-click prompts",
-    "sidebar_tour__step__5__feature_6__title": "Gamitin ang prompt"
+    "sidebar_tour__step__5__feature_6__title": "Gamitin ang prompt",
+    "sidebar_tour__step__2__description_5": "AI rewriter"
   },
   "quota_usage_card": {
     "category__fast_text": "Mabilis na AI",

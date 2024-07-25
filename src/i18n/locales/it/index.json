@@ -67,7 +67,8 @@
     "terms_of_service": "Termini di servizio",
     "shortcut": "Scorciatoia",
     "yearly": "Annuale",
-    "monthly": "Mensile"
+    "monthly": "Mensile",
+    "continue_in_contextmenu": "Continua sempre nel menu contestuale"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "Artefatti MaxAI",
     "chat__artifacts__feature_button__tooltip__title": "Artefatti MaxAI",
     "chat__artifacts__feature_button__tooltip__description": "Trasforma le tue idee in contenuti tangibili. Quando abilitato, MaxAI genererà artefatti visivi come codice, documenti e design in un pannello di anteprima live mentre chatti.",
-    "chat__artifacts__button__description__component": "Clicca per aprire il componente"
+    "chat__artifacts__button__description__component": "Clicca per aprire il componente",
+    "floating_menu__button__show_detail": "Mostra dettagli",
+    "floating_menu__textarea__placeholder": "Digita o incolla qui il tuo testo e chiedi all'IA di migliorarlo, correggerlo, tradurlo, riassumerlo e altro ancora.",
+    "floating_menu__always_pin_sidebar_title": "Sempre fissato alla barra laterale",
+    "floating_menu__always_pin_to_sidebar": "Mostra sempre le risposte nella barra laterale",
+    "floating_menu__always_unpin_to_sidebar": "Mostra sempre le risposte nel menu contestuale",
+    "floating_menu__pint_once_to_sidebar": "Mostra la risposta nella barra laterale una volta",
+    "sidebar__tabs__rewrite__title": "Riscrivi",
+    "sidebar__tabs__rewrite__tooltip": "Riscrittore IA",
+    "home_view__rewrite__title": "Riscrittore IA",
+    "home_view__rewrite__description": "Risparmia tempo nella correzione e perfezionamento delle tue parole.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sintetizza punti chiave",
+    "context_window__chat_history__continue_in_sidebar__title": "Continua nella barra laterale",
+    "context_window__chat_history__continue_in_rewrite__title": "Continua nella riscrittura"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Cronologia chat",
     "sidebar_tour__step__5__feature_4__title": "Chat con screenshot",
     "sidebar_tour__step__5__feature_5__title": "Promemoria in un clic",
-    "sidebar_tour__step__5__feature_6__title": "Utilizza il prompt"
+    "sidebar_tour__step__5__feature_6__title": "Utilizza il prompt",
+    "sidebar_tour__step__2__description_5": "Riscrittore IA"
   },
   "quota_usage_card": {
     "category__fast_text": "AI Veloce",

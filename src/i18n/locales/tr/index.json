@@ -67,7 +67,8 @@
     "terms_of_service": "Hizmet Şartları",
     "shortcut": "Kısayol",
     "yearly": "Yıllık",
-    "monthly": "Aylık"
+    "monthly": "Aylık",
+    "continue_in_contextmenu": "Her zaman bağlam menüsünde devam et"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Sanat Eserleri",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Sanat Eserleri",
     "chat__artifacts__feature_button__tooltip__description": "Fikirlerinizi somut içeriklere dönüştürün. Etkinleştirildiğinde, MaxAI sohbet ederken kod, belge ve tasarımlar gibi görsel eserleri canlı bir önizleme panelinde oluşturacaktır.",
-    "chat__artifacts__button__description__component": "Bileşeni açmak için tıklayın"
+    "chat__artifacts__button__description__component": "Bileşeni açmak için tıklayın",
+    "floating_menu__button__show_detail": "Detayları göster",
+    "floating_menu__textarea__placeholder": "Metninizi buraya yazın veya yapıştırın ve AI'dan düzeltme, çeviri, özetleme ve daha fazlasını isteyin.",
+    "floating_menu__always_pin_sidebar_title": "Her zaman kenar çubuğuna sabitle",
+    "floating_menu__always_pin_to_sidebar": "Yan çubukta yanıtları her zaman göster",
+    "floating_menu__always_unpin_to_sidebar": "Yanıtları her zaman bağlam menüsünde göster",
+    "floating_menu__pint_once_to_sidebar": "Yanıtı bir kez yan çubukta göster",
+    "sidebar__tabs__rewrite__title": "Yeniden yaz",
+    "sidebar__tabs__rewrite__tooltip": "AI yeniden yazıcı",
+    "home_view__rewrite__title": "AI yeniden yazıcı",
+    "home_view__rewrite__description": "Metinlerinizi düzeltme ve mükemmelleştirme konusunda zaman kazanın.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ana noktaları özetle",
+    "context_window__chat_history__continue_in_sidebar__title": "Kenar çubuğunda devam et",
+    "context_window__chat_history__continue_in_rewrite__title": "Yeniden yazmaya devam et"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Sohbet geçmişi",
     "sidebar_tour__step__5__feature_4__title": "Ekran görüntüsü ile sohbet",
     "sidebar_tour__step__5__feature_5__title": "1 tıklamayla ipuçları",
-    "sidebar_tour__step__5__feature_6__title": "İpucu kullan"
+    "sidebar_tour__step__5__feature_6__title": "İpucu kullan",
+    "sidebar_tour__step__2__description_5": "AI yeniden yazıcı"
   },
   "quota_usage_card": {
     "category__fast_text": "Hızlı AI",

@@ -67,7 +67,8 @@
     "terms_of_service": "利用規約",
     "shortcut": "ショートカット",
     "yearly": "毎年",
-    "monthly": "毎月"
+    "monthly": "毎月",
+    "continue_in_contextmenu": "常にコンテキストメニューで続行"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI アーティファクト",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI アーティファクト",
     "chat__artifacts__feature_button__tooltip__description": "アイデアを具体的なコンテンツに変換します。有効にすると、MaxAI がチャット中にコード、ドキュメント、デザインなどのビジュアルアーティファクトをライブプレビューパネルに生成します。",
-    "chat__artifacts__button__description__component": "コンポーネントを開くにはクリック"
+    "chat__artifacts__button__description__component": "コンポーネントを開くにはクリック",
+    "floating_menu__button__show_detail": "詳細を表示",
+    "floating_menu__textarea__placeholder": "ここにテキストを入力または貼り付けて、AIに改善、校正、翻訳、要約などを依頼してください。",
+    "floating_menu__always_pin_sidebar_title": "常にサイドバーに固定",
+    "floating_menu__always_pin_to_sidebar": "常にサイドバーに応答を表示",
+    "floating_menu__always_unpin_to_sidebar": "常にコンテキストメニューで応答を表示",
+    "floating_menu__pint_once_to_sidebar": "サイドバーに一度だけ応答を表示",
+    "sidebar__tabs__rewrite__title": "書き換え",
+    "sidebar__tabs__rewrite__tooltip": "AIによる書き換え",
+    "home_view__rewrite__title": "AIによる書き換え",
+    "home_view__rewrite__description": "校正や言葉の完璧さに時間を節約します。",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "要点を要約",
+    "context_window__chat_history__continue_in_sidebar__title": "サイドバーで続行",
+    "context_window__chat_history__continue_in_rewrite__title": "書き換えで続行"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "チャット履歴",
     "sidebar_tour__step__5__feature_4__title": "スクリーンショット付きのチャット",
     "sidebar_tour__step__5__feature_5__title": "1クリックプロンプト",
-    "sidebar_tour__step__5__feature_6__title": "プロンプトの使用"
+    "sidebar_tour__step__5__feature_6__title": "プロンプトの使用",
+    "sidebar_tour__step__2__description_5": "AIによる書き換え"
   },
   "quota_usage_card": {
     "category__fast_text": "高速AI",

@@ -67,7 +67,8 @@
     "terms_of_service": "Условия за ползване",
     "shortcut": "Бърз път",
     "yearly": "Годишно",
-    "monthly": "Месечно"
+    "monthly": "Месечно",
+    "continue_in_contextmenu": "Винаги продължавайте в контекстното меню"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Артефакти",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Артефакти",
     "chat__artifacts__feature_button__tooltip__description": "Преобразувайте вашите идеи в конкретно съдържание. Когато е активиран, MaxAI ще генерира визуални артефакти като код, документи и дизайни в панел за преглед на живо, докато чатирате.",
-    "chat__artifacts__button__description__component": "Кликнете, за да отворите компонент"
+    "chat__artifacts__button__description__component": "Кликнете, за да отворите компонент",
+    "floating_menu__button__show_detail": "Покажи детайли",
+    "floating_menu__textarea__placeholder": "Въведете или поставете текст тук и попитайте AI за подобрения, корекции, превод, резюме и други.",
+    "floating_menu__always_pin_sidebar_title": "Винаги закачено на страничната лента",
+    "floating_menu__always_pin_to_sidebar": "Винаги показвайте отговорите в страничната лента",
+    "floating_menu__always_unpin_to_sidebar": "Винаги показвайте отговорите в контекстното меню",
+    "floating_menu__pint_once_to_sidebar": "Покажете отговора в страничната лента веднъж",
+    "sidebar__tabs__rewrite__title": "Пренапиши",
+    "sidebar__tabs__rewrite__tooltip": "AI пренаписвач",
+    "home_view__rewrite__title": "AI пренаписвач",
+    "home_view__rewrite__description": "Изберете време за корекции и усъвършенстване на думите си.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Резюмирайте ключовите точки",
+    "context_window__chat_history__continue_in_sidebar__title": "Продължете в страничната лента",
+    "context_window__chat_history__continue_in_rewrite__title": "Продължете в пренаписването"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "История на чата",
     "sidebar_tour__step__5__feature_4__title": "Чат със снимка",
     "sidebar_tour__step__5__feature_5__title": "1-клик подсказки",
-    "sidebar_tour__step__5__feature_6__title": "Използване на подсказка"
+    "sidebar_tour__step__5__feature_6__title": "Използване на подсказка",
+    "sidebar_tour__step__2__description_5": "AI пренаписвач"
   },
   "quota_usage_card": {
     "category__fast_text": "Бърз AI",

@@ -16,6 +16,7 @@ import TagLabelList, {
   isTagLabelListCheck,
 } from '@/components/MaxAIMarkdown/TagLabelList'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import YoutubeTimeButton from '@/features/citation/components/YoutubeTimeButton'
 
 type IHeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
@@ -48,6 +49,39 @@ const OverrideHeading: FC<HTMLHeadingElement & { heading: IHeadingType }> = (
       })}
     </>
   )
+}
+
+const OverrideText: FC<{ children: React.ReactNode }> = ({ children }) => {
+  // 使用正则表达式匹配时间格式 [hh:mm:ss] 或 [hh:mm]
+  // const regex = /\[(\d{2}:\d{2}(?::\d{2})?)\]/g
+  const regex = /\[(\d+:\d+(?::\d+)?)\]/g
+
+  if (typeof children === 'string' && regex.test(children)) {
+    const parts = children.split(regex)
+    return (
+      <span>
+        {parts.map((part, index) =>
+          regex.test(`[${part}]`) ? (
+            <YoutubeTimeButton key={index} time={part} />
+          ) : (
+            part
+          ),
+        )}
+      </span>
+    )
+  }
+
+  if (Array.isArray(children)) {
+    return (
+      <>
+        {children.map((child, index) => (
+          <OverrideText key={index}>{child}</OverrideText>
+        ))}
+      </>
+    )
+  }
+
+  return <>{children}</>
 }
 
 const MemoHighlight: FC<{ content: string; lang: string }> = (props) => {
@@ -131,6 +165,20 @@ const MaxAIMarkdownComponents: Components = {
   // eslint-disable-next-line react/display-name
   h6: (props: any) => {
     return <OverrideHeading {...props} heading={'h6'} />
+  },
+  p: ({ node, ...props }) => {
+    return (
+      <p>
+        <OverrideText>{props.children}</OverrideText>
+      </p>
+    )
+  },
+  li: ({ node, ...props }) => {
+    return (
+      <li>
+        <OverrideText>{props.children}</OverrideText>
+      </li>
+    )
   },
   // eslint-disable-next-line react/display-name
   a: (props) => {

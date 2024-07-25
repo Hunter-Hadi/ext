@@ -67,7 +67,8 @@
     "terms_of_service": "Syarat Layanan",
     "shortcut": "Pintasan",
     "yearly": "Tahunan",
-    "monthly": "Bulanan"
+    "monthly": "Bulanan",
+    "continue_in_contextmenu": "Selalu lanjut di menu konteks"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "Artifak MaxAI",
     "chat__artifacts__feature_button__tooltip__title": "Artifak MaxAI",
     "chat__artifacts__feature_button__tooltip__description": "Ubah ide Anda menjadi konten yang nyata. Saat diaktifkan, MaxAI akan menghasilkan artifak visual seperti kode, dokumen, dan desain dalam panel pratinjau langsung saat Anda mengobrol.",
-    "chat__artifacts__button__description__component": "Klik untuk membuka komponen"
+    "chat__artifacts__button__description__component": "Klik untuk membuka komponen",
+    "floating_menu__button__show_detail": "Tampilkan detail",
+    "floating_menu__textarea__placeholder": "Ketik atau tempel teks Anda di sini dan minta AI untuk memperbaiki, memeriksa, menerjemahkan, merangkum, dan lainnya.",
+    "floating_menu__always_pin_sidebar_title": "Selalu pasang di sidebar",
+    "floating_menu__always_pin_to_sidebar": "Selalu tampilkan respons di sidebar",
+    "floating_menu__always_unpin_to_sidebar": "Selalu tampilkan respons di menu konteks",
+    "floating_menu__pint_once_to_sidebar": "Tampilkan respons di sidebar sekali",
+    "sidebar__tabs__rewrite__title": "Rewrite",
+    "sidebar__tabs__rewrite__tooltip": "Pengubah AI",
+    "home_view__rewrite__title": "Pengubah AI",
+    "home_view__rewrite__description": "hemat waktu dalam memeriksa dan menyempurnakan kata-kata Anda.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ringkas poin kunci",
+    "context_window__chat_history__continue_in_sidebar__title": "Lanjutkan di sidebar",
+    "context_window__chat_history__continue_in_rewrite__title": "Lanjutkan di rewrite"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Riwayat obrolan",
     "sidebar_tour__step__5__feature_4__title": "Obrolan dengan tangkapan layar",
     "sidebar_tour__step__5__feature_5__title": "Promp 1-klik",
-    "sidebar_tour__step__5__feature_6__title": "Gunakan promp"
+    "sidebar_tour__step__5__feature_6__title": "Gunakan promp",
+    "sidebar_tour__step__2__description_5": "Pengubah AI"
   },
   "quota_usage_card": {
     "category__fast_text": "AI Cepat",

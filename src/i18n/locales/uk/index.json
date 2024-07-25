@@ -67,7 +67,8 @@
     "terms_of_service": "خدمات کی شرائط",
     "shortcut": "شارٹ کٹ",
     "yearly": "سالانہ",
-    "monthly": "ماہانہ"
+    "monthly": "ماہانہ",
+    "continue_in_contextmenu": "ہمیشہ سلسلہ منو میں جاری رکھیں"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI آرٹیفیکٹس",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI آرٹیفیکٹس",
     "chat__artifacts__feature_button__tooltip__description": "اپنے خیالات کو محسوس مواد میں تبدیل کریں۔ جب فعال ہوتا ہے، تو جیسے ہی چیٹ کرتے ہیں، MaxAI کوڈ، دستاویزات، اور ڈیزائنز جیسی تصاویری آرٹیفیکٹس پیدا کرے گا۔",
-    "chat__artifacts__button__description__component": "کمپوننٹ کھولنے کے لئے کلک کریں"
+    "chat__artifacts__button__description__component": "کمپوننٹ کھولنے کے لئے کلک کریں",
+    "floating_menu__button__show_detail": "تفصیلات دکھائیں",
+    "floating_menu__textarea__placeholder": "یہاں متن ٹائپ یا پیسٹ کریں اور AI سے بہتر بنانے، ثابت کرنے، ترجمہ کرنے، خلاصہ کرنے اور مزید کام کرنے کے لئے پوچھیں۔",
+    "floating_menu__always_pin_sidebar_title": "ہمیشہ سائڈبار میں چمٹانا",
+    "floating_menu__always_pin_to_sidebar": "ہمیشہ جوابات کو سائڈبار میں دکھائیں",
+    "floating_menu__always_unpin_to_sidebar": "ہمیشہ جوابات کو سلسلہ منو میں دکھائیں",
+    "floating_menu__pint_once_to_sidebar": "ایک بار جواب کو سائڈبار میں دکھائیں",
+    "sidebar__tabs__rewrite__title": "دوبارہ لکھیں",
+    "sidebar__tabs__rewrite__tooltip": "AI دوبارہ لکھنے والا",
+    "home_view__rewrite__title": "AI دوبارہ لکھنے والا",
+    "home_view__rewrite__description": "اپنے الفاظ کو ثابت کرنے اور بہتر بنانے میں وقت بچائیں۔",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "اہم نکات خلاصہ کریں",
+    "context_window__chat_history__continue_in_sidebar__title": "سائڈبار میں جاری رکھیں",
+    "context_window__chat_history__continue_in_rewrite__title": "دوبارہ لکھنے میں جاری رکھیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "چیٹ کی تاریخ",
     "sidebar_tour__step__5__feature_4__title": "تصویر کے ساتھ چیٹ",
     "sidebar_tour__step__5__feature_5__title": "1-کلک پرومپٹس",
-    "sidebar_tour__step__5__feature_6__title": "پرومپٹ استعمال کریں"
+    "sidebar_tour__step__5__feature_6__title": "پرومپٹ استعمال کریں",
+    "sidebar_tour__step__2__description_5": "AI دوبارہ لکھنے والا"
   },
   "quota_usage_card": {
     "category__fast_text": "تیز AI",

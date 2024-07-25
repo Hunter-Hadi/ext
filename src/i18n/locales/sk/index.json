@@ -67,7 +67,8 @@
     "terms_of_service": "Podmienky služby",
     "shortcut": "Skratka",
     "yearly": "Ročne",
-    "monthly": "Mesačne"
+    "monthly": "Mesačne",
+    "continue_in_contextmenu": "Vždy pokračujte v kontextovom menu"
   },
   "settings": {
     "left_menu__me": "Ja a MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Artefakty",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakty",
     "chat__artifacts__feature_button__tooltip__description": "Premieňte svoje nápady na hmatateľný obsah. Keď je povolené, MaxAI vygeneruje vizuálne artefakty ako kód, dokumenty a dizajny v paneli s náhľadom v reálnom čase počas rozhovoru.",
-    "chat__artifacts__button__description__component": "Kliknite pre otvorenie komponentu"
+    "chat__artifacts__button__description__component": "Kliknite pre otvorenie komponentu",
+    "floating_menu__button__show_detail": "Zobraziť detaily",
+    "floating_menu__textarea__placeholder": "Napíšte alebo vložte svoj text sem a požiadajte AI o zlepšenie, korektúru, preklad, zhrnutie a ďalšie.",
+    "floating_menu__always_pin_sidebar_title": "Vždy pripnúť na bočný panel",
+    "floating_menu__always_pin_to_sidebar": "Vždy zobrazovať odpovede v bočnom paneli",
+    "floating_menu__always_unpin_to_sidebar": "Vždy zobrazovať odpovede v kontextovom menu",
+    "floating_menu__pint_once_to_sidebar": "Zobraziť odpoveď v bočnom paneli raz",
+    "sidebar__tabs__rewrite__title": "Prepísať",
+    "sidebar__tabs__rewrite__tooltip": "AI prepisovač",
+    "home_view__rewrite__title": "AI prepisovač",
+    "home_view__rewrite__description": "Ušetrite čas pri korektúre a zdokonalovaní vašich slov.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Zhrňte kľúčové body",
+    "context_window__chat_history__continue_in_sidebar__title": "Pokračovať v bočnom paneli",
+    "context_window__chat_history__continue_in_rewrite__title": "Pokračovať v prepisovaní"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "História chatu",
     "sidebar_tour__step__5__feature_4__title": "Chat s obrázkom",
     "sidebar_tour__step__5__feature_5__title": "1-kliknuté podnety",
-    "sidebar_tour__step__5__feature_6__title": "Použiť podnet"
+    "sidebar_tour__step__5__feature_6__title": "Použiť podnet",
+    "sidebar_tour__step__2__description_5": "AI prepisovač"
   },
   "quota_usage_card": {
     "category__fast_text": "Rýchle AI",

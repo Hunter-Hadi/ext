@@ -67,7 +67,8 @@
     "terms_of_service": "Podmínky služby",
     "shortcut": "Zkratka",
     "yearly": "Ročně",
-    "monthly": "Měsíčně"
+    "monthly": "Měsíčně",
+    "continue_in_contextmenu": "Vždy pokračujte v kontextovém menu"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Artefakty",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefakty",
     "chat__artifacts__feature_button__tooltip__description": "Přetvořte své nápady na hmatatelný obsah. Když je povoleno, MaxAI vygeneruje vizuální artefakty jako kód, dokumenty a designy v panelu živého náhledu, jakmile chatujete.",
-    "chat__artifacts__button__description__component": "Kliknutím otevřete komponentu"
+    "chat__artifacts__button__description__component": "Kliknutím otevřete komponentu",
+    "floating_menu__button__show_detail": "Zobrazit detaily",
+    "floating_menu__textarea__placeholder": "Napište nebo vložte svůj text sem a požádejte AI o zlepšení, korekturu, překlad, shrnutí a další.",
+    "floating_menu__always_pin_sidebar_title": "Vždy připnout na postranní panel",
+    "floating_menu__always_pin_to_sidebar": "Vždy zobrazit odpovědi v postranním panelu",
+    "floating_menu__always_unpin_to_sidebar": "Vždy zobrazit odpovědi v kontextovém menu",
+    "floating_menu__pint_once_to_sidebar": "Zobrazit odpověď v postranním panelu jednou",
+    "sidebar__tabs__rewrite__title": "Přepsat",
+    "sidebar__tabs__rewrite__tooltip": "Přepisovač AI",
+    "home_view__rewrite__title": "Přepisovač AI",
+    "home_view__rewrite__description": "Ušetřete čas při korektuře a zdokonalování svých slov.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Shrnutí klíčových bodů",
+    "context_window__chat_history__continue_in_sidebar__title": "Pokračovat v postranním panelu",
+    "context_window__chat_history__continue_in_rewrite__title": "Pokračovat v přepisu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Historie chatu",
     "sidebar_tour__step__5__feature_4__title": "Chat s obrázkem",
     "sidebar_tour__step__5__feature_5__title": "1-kliknutí podněty",
-    "sidebar_tour__step__5__feature_6__title": "Použít podnět"
+    "sidebar_tour__step__5__feature_6__title": "Použít podnět",
+    "sidebar_tour__step__2__description_5": "Přepisovač AI"
   },
   "quota_usage_card": {
     "category__fast_text": "Rychlé AI",

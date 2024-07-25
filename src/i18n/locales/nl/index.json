@@ -67,7 +67,8 @@
     "terms_of_service": "Gebruiksvoorwaarden",
     "shortcut": "Snelkoppeling",
     "yearly": "Jaarlijks",
-    "monthly": "Maandelijks"
+    "monthly": "Maandelijks",
+    "continue_in_contextmenu": "Altijd doorgaan in het contextmenu"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Artefacten",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefacten",
     "chat__artifacts__feature_button__tooltip__description": "Transformeer je ideeën naar tastbare inhoud. Wanneer ingeschakeld, zal MaxAI visuele artefacten genereren zoals code, documenten en ontwerpen in een live voorbeeldvenster terwijl je chat.",
-    "chat__artifacts__button__description__component": "Klik om component te openen"
+    "chat__artifacts__button__description__component": "Klik om component te openen",
+    "floating_menu__button__show_detail": "Details weergeven",
+    "floating_menu__textarea__placeholder": "Typ of plak hier uw tekst en vraag AI om te verbeteren, te corrigeren, te vertalen, samen te vatten en meer.",
+    "floating_menu__always_pin_sidebar_title": "Altijd vastzetten aan de zijbalk",
+    "floating_menu__always_pin_to_sidebar": "Altijd antwoorden weergeven in de zijbalk",
+    "floating_menu__always_unpin_to_sidebar": "Altijd antwoorden weergeven in het contextmenu",
+    "floating_menu__pint_once_to_sidebar": "Antwoord eenmaal weergeven in de zijbalk",
+    "sidebar__tabs__rewrite__title": "Herschrijven",
+    "sidebar__tabs__rewrite__tooltip": "AI herschrijver",
+    "home_view__rewrite__title": "AI herschrijver",
+    "home_view__rewrite__description": "Bespaar tijd bij het corrigeren en perfectioneren van uw woorden.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Belangrijkste punten samenvatten",
+    "context_window__chat_history__continue_in_sidebar__title": "Doorgaan in de zijbalk",
+    "context_window__chat_history__continue_in_rewrite__title": "Doorgaan met herschrijven"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Chatgeschiedenis",
     "sidebar_tour__step__5__feature_4__title": "Chatten met schermafbeelding",
     "sidebar_tour__step__5__feature_5__title": "1-klik prompts",
-    "sidebar_tour__step__5__feature_6__title": "Gebruik prompt"
+    "sidebar_tour__step__5__feature_6__title": "Gebruik prompt",
+    "sidebar_tour__step__2__description_5": "AI herschrijver"
   },
   "quota_usage_card": {
     "category__fast_text": "Snelle AI",

@@ -67,7 +67,8 @@
     "terms_of_service": "Käyttöehdot",
     "shortcut": "Pikanäppäin",
     "yearly": "Vuotuinen",
-    "monthly": "Kuukausittainen"
+    "monthly": "Kuukausittainen",
+    "continue_in_contextmenu": "Jatka aina kontekstivalikossa"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -1037,7 +1038,20 @@
     "chat__artifacts__feature_button__title": "MaxAI Artefaktit",
     "chat__artifacts__feature_button__tooltip__title": "MaxAI Artefaktit",
     "chat__artifacts__feature_button__tooltip__description": "Muunna ideasi konkreettiseksi sisällöksi. Kun otettu käyttöön, MaxAI generoi visuaalisia artefakteja kuten koodia, dokumentteja ja suunnitelmia reaaliaikaisessa esikatselupaneelissa keskustelun aikana.",
-    "chat__artifacts__button__description__component": "Napsauta avataksesi komponentin"
+    "chat__artifacts__button__description__component": "Napsauta avataksesi komponentin",
+    "floating_menu__button__show_detail": "Näytä tiedot",
+    "floating_menu__textarea__placeholder": "Kirjoita tai liitä tekstisi tähän ja pyydä tekoälyä parantamaan, oikolukemaan, kääntämään, tiivistämään ja muuta.",
+    "floating_menu__always_pin_sidebar_title": "Kiinnitä aina sivupalkkiin",
+    "floating_menu__always_pin_to_sidebar": "Näytä vastaukset aina sivupalkissa",
+    "floating_menu__always_unpin_to_sidebar": "Näytä vastaukset aina kontekstivalikossa",
+    "floating_menu__pint_once_to_sidebar": "Näytä vastaus sivupalkissa kerran",
+    "sidebar__tabs__rewrite__title": "Uudelleenkirjoitus",
+    "sidebar__tabs__rewrite__tooltip": "Tehtävä uudelleenkirjoitus",
+    "home_view__rewrite__title": "Tehtävä uudelleenkirjoitus",
+    "home_view__rewrite__description": "Säästä aikaa oikolukemalla ja hiomalla sanojasi.",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Tiivistä avainkohdat",
+    "context_window__chat_history__continue_in_sidebar__title": "Jatka sivupalkissa",
+    "context_window__chat_history__continue_in_rewrite__title": "Jatka uudelleenkirjoituksessa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -1359,7 +1373,8 @@
     "sidebar_tour__step__5__feature_3__title": "Keskusteluhistoria",
     "sidebar_tour__step__5__feature_4__title": "Keskustele kuvakaappauksen kanssa",
     "sidebar_tour__step__5__feature_5__title": "1-klikkausvihjeet",
-    "sidebar_tour__step__5__feature_6__title": "Käytä vihjettä"
+    "sidebar_tour__step__5__feature_6__title": "Käytä vihjettä",
+    "sidebar_tour__step__2__description_5": "Tehtävä uudelleenkirjoitus"
   },
   "quota_usage_card": {
     "category__fast_text": "Nopea tekoäly",

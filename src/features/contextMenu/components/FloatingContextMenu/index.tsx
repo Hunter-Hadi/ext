@@ -713,7 +713,7 @@ const FloatingContextMenu: FC<{
                           floatingMenuTooltip
                           title={t('client:floating_menu__button__send_to_ai')}
                           description={'⏎'}
-                          placement={safePlacement.contextMenuPlacement}
+                          placement={'bottom'}
                         >
                           <IconButton
                             sx={{

@@ -10,7 +10,14 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
 import isNumber from 'lodash-es/isNumber'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { v4 as uuidV4 } from 'uuid'
@@ -66,6 +73,7 @@ export interface ActionSetVariablesModalConfig {
   // 需要添加到question的meta的数据
   questionMeta?: Partial<IUserMessageMetaType>
 }
+
 export interface ActionSetVariablesConfirmData {
   data: {
     [key: string]: string | number | undefined
@@ -74,6 +82,7 @@ export interface ActionSetVariablesConfirmData {
   success: boolean
   variables?: IActionSetVariable[]
 }
+
 interface ActionSetVariablesModalProps
   extends Partial<ActionSetVariablesModalConfig> {
   modelKey:
@@ -99,7 +108,17 @@ interface ActionSetVariablesModalProps
   sx?: SxProps
 }
 
-const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
+/**
+ * 提供给外部ref使用
+ */
+export interface ActionSetVariablesModalRef {
+  discard: VoidFunction
+}
+
+const ActionSetVariablesModal = forwardRef<
+  ActionSetVariablesModalRef,
+  ActionSetVariablesModalProps
+>((props, ref) => {
   const {
     title,
     variables,
@@ -613,6 +632,10 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     }
   }, [show, isHideInOtherConversationType])
 
+  useImperativeHandle(ref, () => ({
+    discard: () => closeModal(true),
+  }))
+
   if (
     !props.show &&
     (!show || isHideInOtherConversationType || Object.keys(form).length === 0)
@@ -853,6 +876,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           title={t(`client:sidebar__button__send_to_ai`)}
           TooltipProps={{
             description: '⏎',
+            floatingMenuTooltip: modelKey === 'FloatingContextMenu',
+            placement: 'bottom',
           }}
           disabled={loading || disabled}
           onClick={async () => await confirmModal()}
@@ -884,7 +909,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       </Stack>
     </Stack>
   )
-}
+})
+
+ActionSetVariablesModal.displayName = 'ActionSetVariablesModal'
 
 const getChildrenWidth = (index: number, count: number) => {
   const remainder = count % 3

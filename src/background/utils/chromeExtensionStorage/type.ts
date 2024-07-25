@@ -78,6 +78,7 @@ export interface IChromeExtensionDBStorage {
     language?: string
     preferredLanguage?: string
     chatGPTStableModeDuration?: number
+    alwaysContinueInSidebar?: boolean
     pdf?: {
       enabled?: boolean
     }
@@ -207,6 +208,8 @@ export interface IChromeExtensionLocalStorage {
     contextMenu?: {
       currentAIModel?: string
       isPinned?: boolean
+      conversationId?: string
+      alwaysContinueInSidebar?: boolean
     }
     common?: {
       currentAIProvider?: IAIProviderType
@@ -219,6 +222,11 @@ export interface IChromeExtensionLocalStorage {
     }
   }
   immersiveSettings?: {
+    contextMenu?: {
+      conversationId?: string
+      AIProvider?: IAIProviderType
+      AIModel?: string
+    }
     chat?: {
       conversationId?: string
       AIProvider?: IAIProviderType

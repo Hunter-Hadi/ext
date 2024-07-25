@@ -7,7 +7,7 @@ import React, { type FC, useState } from 'react'
 
 import { SystemVariableSelectProps } from '@/features/shortcuts/components/SystemVariableSelect/types'
 
-const LANGUAGES_OPTIONS = [
+export const LANGUAGES_OPTIONS = [
   { language_code: 'uk', value: 'Ukrainian', label: 'Українська' },
   { language_code: 'so', value: 'Somali', label: 'Af Soomaali' },
   { language_code: 'af', value: 'Afrikaans', label: 'Afrikaans' },
@@ -148,7 +148,7 @@ const SystemVariableLanguageSelect: FC<SystemVariableSelectProps> = (props) => {
           },
         },
       }}
-      placeholder={placeholder}
+      // placeholder={placeholder}
       disableClearable
       value={value}
       size={'small'}

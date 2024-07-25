@@ -206,6 +206,7 @@ const useArtTextToImage = () => {
               text: text,
               meta: {
                 historyMessages,
+                outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
                 messageVisibleText: text,
                 contextMenu: {
                   id: ART__DALLE3_PROMPT_OPTIMIZATION__PROMPT_ID,

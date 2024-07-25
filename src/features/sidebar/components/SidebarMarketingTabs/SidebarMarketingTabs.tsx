@@ -331,6 +331,7 @@ const AffiliateTabButton: FC = () => {
     </Box>
   )
 }
+
 const SurveyTabButton: FC = () => {
   const { t } = useTranslation(['common', 'client'])
 
@@ -471,7 +472,8 @@ const SidebarMarketingTabs: FC = () => {
   const { canShowSurvey } = useFeedbackSurveyStatus()
 
   if (!isLogin || !loaded) {
-    return null
+    // 占位符
+    return <Box></Box>
   }
   return (
     <Stack

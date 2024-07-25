@@ -21,6 +21,7 @@ export type MaxAIFileUploadResponse = {
  * MaxAI上传文件
  * @param file
  * @param options
+ * @deprecated - 已废弃，用新的uploadMaxAIDocument代替
  */
 export const maxAIFileUpload = async (
   file: File,

@@ -21,12 +21,12 @@ const SidebarAImessageBottomList: FC<ISidebarAImessageBottomVIew> = (props) => {
   const sidebarAIMessageBottomList = useMemo(() => {
     //props.data 可以是字符串 或 数组
     //目前只有在youtube summary 功能的时候是数组
-    if (Array.isArray(props.data)) {
-      return props.data
-    } else {
-      return [props.data]
+    const bottomList = Array.isArray(props.data) ? props.data : [props.data]
+    if (!props.loading) {
+      return bottomList.filter((item) => item.title?.titleIcon !== 'Loading')
     }
-  }, [props.data])
+    return bottomList
+  }, [props.data, props.loading])
   return (
     <React.Fragment>
       {sidebarAIMessageBottomList.map((sidebarAIMessageBottomInfo, index) => (

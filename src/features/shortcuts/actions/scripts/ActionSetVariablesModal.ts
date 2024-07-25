@@ -47,13 +47,21 @@ export class ActionSetVariablesModal extends Action {
       const shortCutsVariables = engine.shortcutsEngine?.getVariablesValue()
       const cloneConfig = cloneDeep(config) as ActionSetVariablesModalConfig
       const conversation = engine.clientConversationEngine?.clientConversation
-      if (conversation) {
+
+      // 若有通过SET_VARIABLE传进来的变量，直接使用它
+      if (params.VARIABLE_MODAL_KEY) {
+        cloneConfig.modelKey = params.VARIABLE_MODAL_KEY
+      } else if (conversation) {
         // 基于type更新config的modelKey
         if (conversation.type === 'Chat') {
           cloneConfig.modelKey = 'Sidebar'
         } else if (conversation.type === 'ContextMenu') {
           cloneConfig.modelKey = 'FloatingContextMenu'
         }
+      }
+
+      if (!cloneConfig.modelKey) {
+        cloneConfig.modelKey = 'Sidebar'
       }
       const MaxAIPromptActionConfig =
         cloneConfig.MaxAIPromptActionConfig ||
@@ -77,9 +85,6 @@ export class ActionSetVariablesModal extends Action {
           })
         }
         cloneConfig.MaxAIPromptActionConfig = MaxAIPromptActionConfig
-      }
-      if (!cloneConfig.modelKey) {
-        cloneConfig.modelKey = 'Sidebar'
       }
       cloneConfig.variables.map((variable) => {
         if (
@@ -139,6 +144,7 @@ export class ActionSetVariablesModal extends Action {
       }
       cloneConfig.template =
         cloneConfig.template || this.parameters?.compliedTemplate || ''
+
       const result: ActionSetVariablesConfirmData =
         await OneShotCommunicator.send(
           'SetVariablesModal',

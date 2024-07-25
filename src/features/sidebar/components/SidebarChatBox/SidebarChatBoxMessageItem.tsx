@@ -10,10 +10,7 @@ import {
   isSystemMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
-import {
-  IAIResponseMessage,
-  IChatMessage,
-} from '@/features/indexed_db/conversations/models/Message'
+import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
 import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/DevMessageSourceData'
 import {
   SidebarAIMessage,
@@ -86,6 +83,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
       }
     }
   }, [onChangeHeight])
+
   return (
     <Stack
       data-message-id={message.messageId}
@@ -161,7 +159,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
         {isAIMessage(message) && (
           <SidebarAIMessage
             isDarkMode={isDarkMode}
-            message={message as IAIResponseMessage}
+            message={message}
             order={order}
           />
         )}
@@ -176,4 +174,5 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
     </Stack>
   )
 }
+
 export default memo(SidebarChatBoxMessageItem)

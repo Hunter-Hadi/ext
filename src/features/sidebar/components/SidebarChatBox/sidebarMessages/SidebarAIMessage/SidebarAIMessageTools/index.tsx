@@ -1,28 +1,82 @@
+import { Divider } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/SidebarUsePromptButton'
+import {
+  AlwaysPinToSidebarSelector,
+  ContextMenuConversationState,
+  ContextMenuPinedToSidebarState,
+  FloatingDropdownMenuState,
+} from '@/features/contextMenu/store'
 import { IAIResponseMessage } from '@/features/indexed_db/conversations/models/Message'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 import AIMessageModelSuggestions from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools/AIMessageModelSuggestions'
+import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarAIMessageTools: FC<{
   useChatGPTAble?: boolean
   message: IAIResponseMessage
 }> = (props) => {
   const { message } = props
-  const { currentSidebarConversationType } = useClientConversation()
-  const { t } = useTranslation(['common'])
+  const { currentSidebarConversationType, currentConversationId } =
+    useClientConversation()
+  const [contextMenuPinedToSidebar, setContextMenuPinedToSidebar] =
+    useRecoilState(ContextMenuPinedToSidebarState)
+  const pinToSidebar = useRecoilValue(AlwaysPinToSidebarSelector)
+  const { setUserSettings, userSettings } = useUserSettings()
+
+  const { t } = useTranslation(['common', 'client'])
   const [isCoping, setIsCoping] = useState(false)
+
   const messageContentType =
     message.originalMessage?.content?.contentType || 'text'
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
+
+  const handleContinueInContextMenu = useRecoilCallback(
+    ({ snapshot, set }) => {
+      return async () => {
+        const floatingDropdownMenu = await snapshot.getPromise(
+          FloatingDropdownMenuState,
+        )
+
+        // 还存在选区的情况下设置conversationId
+        if (
+          // !floatingDropdownMenu.open &&
+          floatingDropdownMenu.rootRect &&
+          currentConversationId
+        ) {
+          setContextMenuPinedToSidebar(false)
+          hideChatBox()
+          setTimeout(() => {
+            set(ContextMenuConversationState, (prev) => ({
+              ...prev,
+              conversationId: currentConversationId,
+            }))
+
+            set(FloatingDropdownMenuState, (prev) => ({ ...prev, open: true }))
+          }, 0)
+        }
+
+        setUserSettings({
+          ...userSettings,
+          alwaysContinueInSidebar: false,
+        })
+      }
+    },
+    [currentConversationId],
+  )
+  const isImmersivePage = useMemo(() => isMaxAIImmersiveChatPage(), [])
+
   return (
     <Stack
       direction={'row'}
@@ -107,15 +161,36 @@ const SidebarAIMessageTools: FC<{
         <SidebarAIMessageAttachmentsDownloadButton message={message} />
       )}
       {messageContentType === 'text' && <SidebarCopyButton message={message} />}
-      {messageContentType === 'text' &&
-        currentSidebarConversationType !== 'ContextMenu' && (
-          <SidebarUsePromptButton
-            iconButton
-            message={message}
-            className={'max-ai__actions__button--use-max-ai'}
-          />
-        )}
+      {messageContentType === 'text' && (
+        <SidebarUsePromptButton
+          iconButton
+          message={message}
+          className={'max-ai__actions__button--use-max-ai'}
+        />
+      )}
       <AIMessageModelSuggestions AIMessage={message} />
+
+      {!isImmersivePage &&
+        currentSidebarConversationType === 'ContextMenu' &&
+        contextMenuPinedToSidebar &&
+        pinToSidebar && (
+          <>
+            <Divider orientation='vertical'></Divider>
+            <TooltipIconButton
+              title={t('client:floating_menu__always_unpin_to_sidebar')}
+              onClick={handleContinueInContextMenu}
+            >
+              <ContextMenuIcon
+                icon='PopupWindow'
+                fill='primary'
+                sx={{
+                  fontSize: '20px',
+                  color: 'text.primary',
+                }}
+              ></ContextMenuIcon>
+            </TooltipIconButton>
+          </>
+        )}
     </Stack>
   )
 }

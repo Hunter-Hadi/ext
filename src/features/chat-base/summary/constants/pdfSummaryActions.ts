@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
+import { VARIABLE_AI_RESPONSE_LANGUAGE } from '@/background/defaultPromptsData/systemVariables'
 import {
   SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
   SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
@@ -58,19 +59,18 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'UPLOAD_PDF_OF_CRX',
+      type: 'GET_PDF_FILE_OF_CRX',
       parameters: {},
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'PDF_FILE',
+      },
     },
     {
       type: 'GET_PDF_CONTENTS_OF_CRX',
       parameters: {},
-    },
-    {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'PDFSummaryContent.txt',
-      },
     },
     {
       type: 'SET_VARIABLE',
@@ -136,6 +136,17 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         WFConditionalIfFalseActions: [
           // 有PDF内容
           {
+            type: 'MAXAI_UPLOAD_DOCUMENT',
+            parameters: {
+              MaxAIDocumentActionConfig: {
+                pureText: '{{READABILITY_CONTENTS}}',
+                docType: 'page_content__pdf',
+                doneType: 'document_create',
+                file: '{{PDF_FILE}}' as any,
+              },
+            },
+          },
+          {
             type: 'CHAT_MESSAGE',
             parameters: {
               ActionChatMessageOperationType: 'update',
@@ -176,16 +187,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF',
                 promptActionType: 'chat_complete',
-                variables: [
-                  {
-                    VariableName: 'PAGE_CONTENT',
-                    label: 'PAGE_CONTENT',
-                    defaultValue: '{{READABILITY_CONTENTS}}',
-                    valueType: 'Text',
-                    systemVariable: true,
-                    hidden: true,
-                  },
-                ],
+                variables: [VARIABLE_AI_RESPONSE_LANGUAGE],
                 output: [],
               },
               AskChatGPTActionQuestion: {
@@ -322,19 +324,18 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'UPLOAD_PDF_OF_CRX',
+      type: 'GET_PDF_FILE_OF_CRX',
       parameters: {},
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'PDF_FILE',
+      },
     },
     {
       type: 'GET_PDF_CONTENTS_OF_CRX',
       parameters: {},
-    },
-    {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'PDFSummaryContent.txt',
-      },
     },
     {
       type: 'SET_VARIABLE',
@@ -400,6 +401,17 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         WFConditionalIfFalseActions: [
           // 有PDF内容
           {
+            type: 'MAXAI_UPLOAD_DOCUMENT',
+            parameters: {
+              MaxAIDocumentActionConfig: {
+                pureText: '{{READABILITY_CONTENTS}}',
+                docType: 'page_content__pdf',
+                doneType: 'document_create',
+                file: '{{PDF_FILE}}' as any,
+              },
+            },
+          },
+          {
             type: 'CHAT_MESSAGE',
             parameters: {
               ActionChatMessageOperationType: 'update',
@@ -440,16 +452,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF (TL:DR)',
                 promptActionType: 'chat_complete',
-                variables: [
-                  {
-                    VariableName: 'PAGE_CONTENT',
-                    label: 'PAGE_CONTENT',
-                    defaultValue: '{{READABILITY_CONTENTS}}',
-                    valueType: 'Text',
-                    systemVariable: true,
-                    hidden: true,
-                  },
-                ],
+                variables: [VARIABLE_AI_RESPONSE_LANGUAGE],
                 output: [],
               },
               AskChatGPTActionQuestion: {
@@ -586,19 +589,18 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'UPLOAD_PDF_OF_CRX',
+      type: 'GET_PDF_FILE_OF_CRX',
       parameters: {},
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'PDF_FILE',
+      },
     },
     {
       type: 'GET_PDF_CONTENTS_OF_CRX',
       parameters: {},
-    },
-    {
-      type: 'ANALYZE_CHAT_FILE',
-      parameters: {
-        AnalyzeChatFileImmediateUpdateConversation: false,
-        AnalyzeChatFileName: 'PDFSummaryContent.txt',
-      },
     },
     {
       type: 'SET_VARIABLE',
@@ -664,6 +666,17 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
         WFConditionalIfFalseActions: [
           // 有PDF内容
           {
+            type: 'MAXAI_UPLOAD_DOCUMENT',
+            parameters: {
+              MaxAIDocumentActionConfig: {
+                pureText: '{{READABILITY_CONTENTS}}',
+                docType: 'page_content__pdf',
+                doneType: 'document_create',
+                file: '{{PDF_FILE}}' as any,
+              },
+            },
+          },
+          {
             type: 'CHAT_MESSAGE',
             parameters: {
               ActionChatMessageOperationType: 'update',
@@ -704,16 +717,7 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
                 promptId: SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
                 promptName: '[Summary] Summarize PDF (Key takeaways)',
                 promptActionType: 'chat_complete',
-                variables: [
-                  {
-                    VariableName: 'PAGE_CONTENT',
-                    label: 'PAGE_CONTENT',
-                    defaultValue: '{{READABILITY_CONTENTS}}',
-                    valueType: 'Text',
-                    systemVariable: true,
-                    hidden: true,
-                  },
-                ],
+                variables: [VARIABLE_AI_RESPONSE_LANGUAGE],
                 output: [],
               },
               AskChatGPTActionQuestion: {

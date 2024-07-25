@@ -1,6 +1,8 @@
 import { Box } from '@mui/material'
 import React, { FC, useEffect, useRef } from 'react'
 
+import { getBrowserZoom } from '@/utils'
+
 const ResizeAnchor: FC<{
   anchorSize?: string
   onResize?: (dx: number, dy: number) => void
@@ -10,8 +12,10 @@ const ResizeAnchor: FC<{
   const callbackRef = useRef(onResize)
 
   callbackRef.current = onResize
+  const zoomRef = useRef(1)
 
   function handleMouseDown(e: React.MouseEvent) {
+    zoomRef.current = getBrowserZoom()
     mouseDownRef.current = true
     document.body.style.cursor = 'se-resize'
     e.stopPropagation()
@@ -22,7 +26,10 @@ const ResizeAnchor: FC<{
     function handleMouseMove(e: MouseEvent) {
       if (!mouseDownRef.current) return
 
-      callbackRef.current?.(e.movementX, e.movementY)
+      callbackRef.current?.(
+        e.movementX / zoomRef.current,
+        e.movementY / zoomRef.current,
+      )
       e.stopPropagation()
     }
 

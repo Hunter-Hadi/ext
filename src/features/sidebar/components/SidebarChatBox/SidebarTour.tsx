@@ -17,8 +17,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import Tour from '@/features/common/components/Tour'
 import { TourStepInfo } from '@/features/common/components/Tour/TourStep'
 import { useFocus } from '@/features/common/hooks/useFocus'
-import { sidebarTabsData } from '@/features/sidebar/components/SidebarTabs'
-import SidebarTabIcons from '@/features/sidebar/components/SidebarTabs/SidebarTabIcons'
+import { SIDEBAR_NAV_TABS_DATA } from '@/features/sidebar/components/SidebarTabs'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { getMaxAISidebarRootElement } from '@/utils'
@@ -51,7 +50,7 @@ const Step2Content: FC = () => {
   const { t } = useTranslation(['maxai_tour', 'client'])
   return (
     <Stack width={'296px'} mt={1} gap={1}>
-      {sidebarTabsData.map((sidebarTab, index) => {
+      {SIDEBAR_NAV_TABS_DATA.map((sidebarTab, index) => {
         let label = ''
         if (sidebarTab.value === 'Chat') {
           label = t('maxai_tour:sidebar_tour__step__2__description_1')
@@ -61,6 +60,8 @@ const Step2Content: FC = () => {
           label = t('maxai_tour:sidebar_tour__step__2__description_3')
         } else if (sidebarTab.value === 'Art') {
           label = t('maxai_tour:sidebar_tour__step__2__description_4')
+        } else if (sidebarTab.value === 'ContextMenu') {
+          label = t('maxai_tour:sidebar_tour__step__2__description_5')
         }
         return (
           <Stack
@@ -87,7 +88,7 @@ const Step2Content: FC = () => {
               justifyContent={'center'}
               borderRadius={'8px'}
             >
-              <SidebarTabIcons icon={sidebarTab.icon} />
+              {sidebarTab.icon}
             </Stack>
             <Typography fontSize={14} color={'text.primary'}>
               {label}

@@ -26,15 +26,14 @@ import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConv
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { IPaginationConversation } from '@/features/indexed_db/conversations/models/Conversation'
 import { IAIProviderModel } from '@/features/indexed_db/conversations/models/Message'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-export interface IInfiniteConversationListProps<T> {
+export interface IInfiniteConversationListProps {
   hasNextPage: boolean
   isNextPageLoading: boolean
   loadNextPage: () => void
   conversations: IPaginationConversation[]
   onSelectItem?: (conversation: IPaginationConversation) => void
+  disableModalPortal?: boolean
 }
 
 const createConversationListData = memoize(
@@ -49,8 +48,8 @@ const createConversationListData = memoize(
   }),
 )
 
-const InfiniteConversationList: <T>(
-  props: IInfiniteConversationListProps<T>,
+const InfiniteConversationList: (
+  props: IInfiniteConversationListProps,
 ) => JSX.Element = (props) => {
   const {
     hasNextPage,
@@ -58,6 +57,7 @@ const InfiniteConversationList: <T>(
     loadNextPage,
     conversations,
     onSelectItem,
+    disableModalPortal,
   } = props
   const itemCount = hasNextPage
     ? conversations.length + 1
@@ -66,7 +66,7 @@ const InfiniteConversationList: <T>(
     if (isNextPageLoading) {
       return
     }
-    await loadNextPage()
+    loadNextPage()
   }
   const isItemLoaded = (index: number) => {
     return !hasNextPage || index < conversations.length
@@ -110,7 +110,9 @@ const InfiniteConversationList: <T>(
               className={'maxai--conversation-list'}
               {...props}
             >
-              {Row}
+              {(rowProps) => (
+                <Row {...rowProps} disableModalPortal={disableModalPortal} />
+              )}
             </FixedSizeList>
           )}
         </AutoSizer>
@@ -123,6 +125,7 @@ const Row = memo(function RowItem({
   data,
   index,
   style,
+  disableModalPortal,
 }: {
   data: {
     items: IPaginationConversation[]
@@ -131,21 +134,14 @@ const Row = memo(function RowItem({
   }
   index: number
   style: React.CSSProperties
+  disableModalPortal?: boolean
 }) {
   // Data passed to List as "itemData" is available as props.data
   const { items, onSelectItem, isNextPageLoading } = data
-  const [isHover, setIsHover] = useState(false)
   const [editingConversationId, setEditingConversationId] = useState('')
-  const {
-    createConversation,
-    currentSidebarConversationType,
-    currentConversationId,
-    disposeBackgroundChatSystem,
-    updateConversationId,
-  } = useClientConversation()
+  const { currentConversationId, disposeBackgroundChatSystem } =
+    useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
-  const { updateSidebarConversationType, updateSidebarSettings } =
-    useSidebarSettings()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const modelLabelMap = useMemo(() => {
     const map: {
@@ -185,12 +181,11 @@ const Row = memo(function RowItem({
     },
     [],
   )
-  const handleSelectConversation = useCallback(async () => {
-    console.log(`handleSelectConversation 11`, conversation.id)
+  const handleSelectConversation = async () => {
     if (smoothConversationLoading) {
       return
     }
-    console.log(`handleSelectConversation 22`, conversation.id)
+
     if (conversation.id) {
       // 因为现在有Auto archive功能，所以点击的时候需要更新时间
       ClientConversationManager.addOrUpdateConversation(
@@ -203,24 +198,12 @@ const Row = memo(function RowItem({
         },
       )
     }
-    console.log(`handleSelectConversation 33`, conversation.id)
-    if (conversation.type === 'Summary') {
-      // do nothing
-    } else if (conversation.type === 'Chat') {
-      await updateConversationId(conversation.id)
-      updateSidebarConversationType(conversation.type)
-    } else if (conversation.type === 'Search') {
-      await updateConversationId(conversation.id)
-      updateSidebarConversationType(conversation.type)
-    } else if (conversation.type === 'Art') {
-      await updateConversationId(conversation.id)
-      updateSidebarConversationType(conversation.type)
-    }
+
     // 异步释放Background Conversation
     disposeBackgroundChatSystem(conversation.id).then().catch()
-    console.log(`handleSelectConversation 44`, conversation.id)
     onSelectItem?.(conversation)
-  }, [conversation, onSelectItem, smoothConversationLoading])
+  }
+
   useEffect(() => {
     if (!conversation && !isNextPageLoading) {
       // 说明是loading
@@ -233,6 +216,7 @@ const Row = memo(function RowItem({
       }
     }
   }, [conversation, onSelectItem, isNextPageLoading])
+
   if (!conversation) {
     return (
       <Stack
@@ -248,6 +232,7 @@ const Row = memo(function RowItem({
       </Stack>
     )
   }
+
   return (
     <Stack
       key={conversation.id}
@@ -261,12 +246,6 @@ const Row = memo(function RowItem({
         px={2}
         py={1.5}
         onClick={handleSelectConversation}
-        onMouseOver={() => {
-          setIsHover(true)
-        }}
-        onMouseOut={() => {
-          setIsHover(false)
-        }}
         sx={{
           cursor: 'pointer',
           backgroundColor: 'background.paper',
@@ -286,6 +265,10 @@ const Row = memo(function RowItem({
                       : 'rgba(144, 101, 176, 0.06)',
                 },
               }),
+
+          '&:hover .conversation-list-row-more-action-button': {
+            visibility: 'visible !important',
+          },
         }}
         spacing={2}
       >
@@ -372,7 +355,15 @@ const Row = memo(function RowItem({
                   }}
                   data-testid={'maxai--conversation--rename-chat--input'}
                   size={'small'}
-                  autoFocus
+                  ref={(element) => {
+                    // NOTE: 替代TextField的autoFocus，autoFocus在这里不生效，
+                    // 原因暂且不清楚
+                    if (element) {
+                      setTimeout(() => {
+                        element.querySelector('input')?.focus()
+                      }, 0)
+                    }
+                  }}
                   defaultValue={conversation.name}
                   onChange={(event) => {
                     event.stopPropagation()
@@ -412,39 +403,42 @@ const Row = memo(function RowItem({
                 {conversation.conversationDisplaysText}
               </Typography>
             )}
-            {(isSelected || isHover) && (
-              <Stack
-                direction={'row'}
-                alignItems={'center'}
-                flexShrink={0}
-                height={20}
-                gap={0.5}
-              >
-                <MoreActionsButton
-                  conversationAIProvider={conversation?.AIProvider}
-                  conversationAIModel={conversation?.AIModel}
-                  onRename={() => {
-                    setEditingConversationId(conversation.id)
-                  }}
-                  onDelete={async () => {
-                    if (conversation.type === 'ContextMenu') {
-                      await createConversation('ContextMenu')
-                    } else if (!isMaxAIImmersiveChatPage()) {
-                      await updateSidebarSettings({
-                        [currentSidebarConversationType.toLowerCase()]: {
-                          conversationId: '',
-                        },
-                      })
-                    }
-                  }}
-                  conversationType={conversation.type}
-                  conversationId={conversation.id}
-                  conversationDisplaysText={
-                    conversation.conversationDisplaysText
-                  }
-                />
-              </Stack>
-            )}
+            <Stack
+              direction={'row'}
+              alignItems={'center'}
+              flexShrink={0}
+              height={20}
+              gap={0.5}
+              className='conversation-list-row-more-action-button'
+              sx={{
+                visibility: isSelected ? 'visible' : 'hidden',
+                // display: isSelected ? 'block' : 'none',
+              }}
+            >
+              <MoreActionsButton
+                disableModalPortal={disableModalPortal}
+                conversationAIProvider={conversation?.AIProvider}
+                conversationAIModel={conversation?.AIModel}
+                onRename={() => {
+                  setEditingConversationId(conversation.id)
+                }}
+                onDelete={async () => {
+                  // const isImmersiveChatPage = isMaxAIImmersiveChatPage()
+                  // if (conversation.type === 'ContextMenu') {
+                  // await createConversation('ContextMenu')
+                  // } else if (!isImmersiveChatPage) {
+                  // await updateSidebarSettings({
+                  //   [currentSidebarConversationType.toLowerCase()]: {
+                  //     conversationId: '',
+                  //   },
+                  // })
+                  // }
+                }}
+                conversationType={conversation.type}
+                conversationId={conversation.id}
+                conversationDisplaysText={conversation.conversationDisplaysText}
+              />
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

@@ -4,12 +4,14 @@
 import {
   autoUpdate,
   flip,
+  FloatingElement,
   FloatingFocusManager,
   FloatingNode,
   FloatingPortal,
   FloatingTree,
   offset,
   Placement,
+  ReferenceElement,
   safePolygon,
   shift,
   useClick,
@@ -23,14 +25,13 @@ import {
   useListNavigation,
   useMergeRefs,
   useRole,
-  useTypeahead,
 } from '@floating-ui/react'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import { SxProps } from '@mui/material/styles'
+import { SxProps, Theme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
@@ -61,6 +62,7 @@ interface LiteDropdownMenuItemProps {
   CustomRenderNode?: React.ReactNode
   isGroup?: boolean
   onClick?: (event: React.MouseEvent) => void
+  sx?: SxProps<Theme>
 }
 
 interface MenuItemProps {
@@ -70,12 +72,21 @@ interface MenuItemProps {
   hoverIcon?: React.ReactNode
 }
 
-// eslint-disable-next-line react/display-name
+const mountedAutoUpdate = (
+  reference: ReferenceElement,
+  floating: FloatingElement,
+  update: () => void,
+) =>
+  autoUpdate(reference, floating, update, {
+    animationFrame: true,
+  })
+
 export const LiteDropdownMenuItem = React.forwardRef<
-  any,
+  HTMLDivElement,
   LiteDropdownMenuItemProps
->(({ label, icon, CustomRenderNode, onClick, isGroup, ...props }, ref) => {
+>(({ label, icon, CustomRenderNode, onClick, isGroup, sx, ...props }, ref) => {
   const floatingUiProps: any = props
+
   return (
     <Box
       {...props}
@@ -111,6 +122,7 @@ export const LiteDropdownMenuItem = React.forwardRef<
             display: 'flex',
           },
         },
+        ...sx,
       }}
       ref={ref}
       component={'div'}
@@ -162,15 +174,20 @@ export const LiteDropdownMenuItem = React.forwardRef<
   )
 })
 
-// eslint-disable-next-line react/display-name
-export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
+LiteDropdownMenuItem.displayName = 'LiteDropdownMenuItem'
+
+/**
+ *  列表项渲染
+ */
+export const DropdownMenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
   ({ label, disabled, menuItem, hoverIcon, ...props }, ref) => {
     const floatingUiProps: any = props
     const { t } = useTranslation(['prompt'])
     const hoverIds = useRecoilValue(FloatingDropdownMenuItemsSelector)
-    const [floatingDropdownMenuSelectedItem, updateSelectedId] = useRecoilState(
-      FloatingDropdownMenuSelectedItemState,
-    )
+    const [
+      floatingDropdownMenuSelectedItem,
+      setFloatingDropdownMenuSelectItem,
+    ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
     const menuLabel = useMemo(() => {
       const id = menuItem.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
       const key: any = `prompt:${id}`
@@ -242,7 +259,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         ref={ref}
         component={'div'}
         role='menuitem'
-        onKeyDown={(event: any) => {
+        onKeyDown={(event) => {
           floatingUiProps?.onKeyDown?.(event)
           if (event.code === 'Enter') {
             // 是否在重命名状态
@@ -253,7 +270,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
             if (renameInput) {
               return
             }
-            updateSelectedId((prevState) => {
+            setFloatingDropdownMenuSelectItem((prevState) => {
               return {
                 ...prevState,
                 selectedContextMenuId: menuItem.id,
@@ -262,8 +279,8 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
             event.stopPropagation()
           }
         }}
-        onClick={(event: any) => {
-          updateSelectedId((prevState) => {
+        onClick={(event) => {
+          setFloatingDropdownMenuSelectItem((prevState) => {
             return {
               ...prevState,
               selectedContextMenuId: menuItem.id,
@@ -308,7 +325,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
                 fontSize: 16,
               }}
             />
-          ) : isLastHover && hoverIcon !== undefined ? (
+          ) : isLastHover && hoverIcon ? (
             hoverIcon
           ) : (
             <KeyboardReturnIcon
@@ -327,6 +344,8 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
     )
   },
 )
+
+DropdownMenuItem.displayName = 'DropdownMenuItem'
 
 export interface MenuProps {
   label: string
@@ -401,11 +420,11 @@ export const MenuComponent = React.forwardRef<
     const lastParentDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
     const lastHoverDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
     const listItemsRef = React.useRef<Array<any | null>>([])
-    const listContentRef = React.useRef(
-      React.Children.map(children, (child) =>
-        React.isValidElement(child) ? child.props.label : null,
-      ) as Array<string | null>,
-    )
+    // const listContentRef = React.useRef(
+    //   React.Children.map(children, (child) =>
+    //     React.isValidElement(child) ? child.props.label : null,
+    //   ) as Array<string | null>,
+    // )
     const currentPlacement =
       defaultPlacement || (isFirstDeep ? 'bottom-start' : 'right-start')
     const currentFallbackPlacements =
@@ -430,7 +449,7 @@ export const MenuComponent = React.forwardRef<
     useEffect(() => {
       floatingDropdownMenuOpenRef.current = floatingDropdownMenu.open
     }, [floatingDropdownMenu.open])
-    const { x, y, strategy, refs, context } = useFloating<any>({
+    const { x, y, strategy, refs, context } = useFloating({
       nodeId,
       open: isOpen,
       onOpenChange: (show) => {
@@ -454,7 +473,7 @@ export const MenuComponent = React.forwardRef<
         }),
         shift(),
       ],
-      whileElementsMounted: needAutoUpdate ? autoUpdate : undefined,
+      whileElementsMounted: needAutoUpdate ? mountedAutoUpdate : undefined,
     })
     const hover = useHover(context, {
       enabled: hoverOpen && allowHover,
@@ -476,7 +495,7 @@ export const MenuComponent = React.forwardRef<
       listRef: listItemsRef,
       activeIndex,
       nested: isNested,
-      onNavigate(index) {
+      onNavigate() {
         const focusTextarea = () => {
           if (!floatingDropdownMenuOpenRef.current) {
             return
@@ -652,12 +671,14 @@ export const MenuComponent = React.forwardRef<
       loop: true,
       virtual: true,
     })
-    const typeahead = useTypeahead(context, {
-      enabled: isOpen,
-      listRef: listContentRef,
-      onMatch: isOpen ? setActiveIndex : undefined,
-      activeIndex,
-    })
+    // NOTE: 不使用typeahead的原因是因为typeahead会拦截root节点的onKeyDown，
+    // 而且在有fuzzy match之后typeahead并没有起到实际的作用
+    // const typeahead = useTypeahead(context, {
+    //   enabled: isOpen,
+    //   listRef: listContentRef,
+    //   onMatch: isOpen ? setActiveIndex : undefined,
+    //   activeIndex,
+    // })
     const { getReferenceProps, getFloatingProps, getItemProps } =
       useInteractions([
         hover,
@@ -670,7 +691,7 @@ export const MenuComponent = React.forwardRef<
          * 目前先更改AutoHeightTextarea组件的onKeyDown，MenuList是隐藏状态下就禁止方向键的冒泡
          */
         listNavigation,
-        typeahead,
+        // typeahead,
       ])
     // Event emitter allows you to communicate across tree components.
     // This effect closes all menus when an item gets clicked anywhere
@@ -812,6 +833,15 @@ export const MenuComponent = React.forwardRef<
                 onClickReferenceElement?.(event)
               },
               onKeyDownCapture(event) {
+                // NOTE: 这里是为了区分不让keydown去拦截LanguageSelector的event，
+                if (
+                  getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                    '.LANGUAGE_SELECTOR_AUTOCOMPLETE',
+                  )
+                ) {
+                  return false
+                }
+
                 // 如果是enter非shiftKey并且是根节点
                 if (event.key === 'Enter' && !event.shiftKey && !parentId) {
                   handleExecuteActions()
@@ -1050,7 +1080,7 @@ export const MenuComponent = React.forwardRef<
                         ref(node: any) {
                           listItemsRef.current[index] = node
                         },
-                        onMouseDown(event) {
+                        onMouseDown() {
                           if (onClickContextMenu) {
                             tree?.events.emit('click')
                             if (
@@ -1207,9 +1237,6 @@ export const MenuComponent = React.forwardRef<
 
 MenuComponent.displayName = 'MenuComponent'
 
-/**
- * 包含了两个浮动的menu，一个是dropdown的dropdownMenu和context menu
- */
 export const DropdownMenu = React.forwardRef<
   any,
   MenuProps & React.HTMLProps<any>

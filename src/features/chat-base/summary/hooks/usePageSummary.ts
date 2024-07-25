@@ -19,7 +19,9 @@ import {
 import { getContextMenuByNavMetadataKey } from '@/features/chat-base/summary/utils/summaryActionHelper'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { isSummaryMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import CitationFactory from '@/features/citation/core/CitationFactory'
+import { useFocus } from '@/features/common/hooks/useFocus'
 import { useContextMenuList } from '@/features/contextMenu'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import { ClientConversationMessageManager } from '@/features/indexed_db/conversations/ClientConversationMessageManager'
@@ -27,15 +29,47 @@ import {
   checkRemoteConversationIsExist,
   clientDownloadConversationToLocal,
 } from '@/features/indexed_db/conversations/clientService'
-import { IChatMessage } from '@/features/indexed_db/conversations/models/Message'
+import {
+  IAIResponseOriginalMessageMetaDeep,
+  IChatMessage,
+} from '@/features/indexed_db/conversations/models/Message'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import { checkDocIdExist } from '@/features/shortcuts/utils/maxAIDocument'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
+import { AppState } from '@/store'
+
+let checkDocTime = 0
+
+const isValidSummaryAIMessage = (message?: IChatMessage | null) => {
+  if (!message || !isSummaryMessage(message)) return false
+  if (!message.originalMessage?.metadata?.isComplete) return false
+  if (message.originalMessage.content?.text) return true
+  // 如果是youtube时间戳总结，content.text是没有内容，会在deepDive里有结构化的信息
+  // 如果已经有输出成功的内容，判断为有效的消息，比如输出到一半用户stop了
+  const deepDive = ([] as IAIResponseOriginalMessageMetaDeep[]).concat(
+    message.originalMessage.metadata.deepDive || [],
+  )
+  return deepDive.some((item) => {
+    if (item.type === 'timestampedSummary' || item.type === 'transcript') {
+      if (item.value?.find((transcript) => transcript.status === 'complete')) {
+        return true
+      }
+    }
+    return false
+  })
+}
 
 const usePageSummary = () => {
-  const { updateSidebarSettings, updateSidebarSummaryConversationId } =
-    useSidebarSettings()
+  const appState = useRecoilValue(AppState)
   const {
+    sidebarSummaryConversationId,
+    currentSidebarConversationType,
+    updateSidebarSettings,
+    updateSidebarSummaryConversationId,
+  } = useSidebarSettings()
+  const {
+    getConversation,
     getWritingMessageState,
     showConversationLoading,
     hideConversationLoading,
@@ -53,8 +87,53 @@ const usePageSummary = () => {
     '',
     false,
   )
+
   const { checkFeatureQuota } = useUserFeatureQuota()
   const isGeneratingPageSummaryRef = useRef(false)
+
+  useFocus(async () => {
+    if (
+      !appState.open ||
+      currentSidebarConversationType !== 'Summary' ||
+      !sidebarSummaryConversationId ||
+      isGeneratingPageSummaryRef.current
+    ) {
+      return
+    }
+    // 每15分钟检测一次doc是否存在
+    if (Date.now() - checkDocTime < 1000 * 60 * 15) {
+      return
+    }
+    const clientWritingMessage = await getWritingMessageState(
+      sidebarSummaryConversationId,
+    )
+    if (clientWritingMessage.loading) {
+      return
+    }
+    const conversation = await getConversation(sidebarSummaryConversationId)
+    if (!conversation?.meta?.pageSummary?.docId) {
+      return
+    }
+    checkDocTime = Date.now()
+    if (!(await checkDocIdExist(conversation.meta.pageSummary.docId))) {
+      // 重新上传doc
+      showConversationLoading(sidebarSummaryConversationId)
+      await askAIWIthShortcuts([
+        {
+          type: 'MAXAI_CREATE_DOCUMENT',
+          parameters: {
+            MaxAIDocumentActionConfig: {
+              docType: 'summary',
+              doneType: 'document_create',
+            },
+          },
+        },
+      ]).finally(() => {
+        hideConversationLoading(sidebarSummaryConversationId)
+      })
+    }
+  })
+
   const createPageSummary = async () => {
     if (isGeneratingPageSummaryRef.current) {
       return
@@ -145,11 +224,7 @@ const usePageSummary = () => {
             'ai',
             'earliest',
           )
-        let isValidAIMessage =
-          aiMessage &&
-          aiMessage?.originalMessage &&
-          aiMessage?.originalMessage.metadata?.isComplete &&
-          aiMessage?.originalMessage.content?.text
+        let isValidAIMessage = isValidSummaryAIMessage(aiMessage)
         if (
           aiMessage &&
           aiMessage?.originalMessage &&
@@ -174,6 +249,31 @@ const usePageSummary = () => {
         }
 
         if (isValidAIMessage) {
+          // 检测docId是否过期，过期需要重新上传
+          if (pageSummaryConversation.meta.pageSummary?.docId) {
+            if (
+              !(await checkDocIdExist(
+                pageSummaryConversation.meta.pageSummary.docId,
+              ))
+            ) {
+              await askAIWIthShortcuts([
+                {
+                  type: 'MAXAI_CREATE_DOCUMENT',
+                  parameters: {
+                    MaxAIDocumentActionConfig: {
+                      docType: 'summary',
+                      doneType: 'document_create',
+                    },
+                  },
+                },
+              ])
+                .then()
+                .finally(() => {
+                  isGeneratingPageSummaryRef.current = false
+                })
+              return
+            }
+          }
           hideConversationLoading(pageSummaryConversationId)
           isGeneratingPageSummaryRef.current = false
           return

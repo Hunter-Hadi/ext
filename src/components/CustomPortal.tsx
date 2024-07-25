@@ -12,8 +12,9 @@ import {
 // @ts-ignore
 
 export interface CustomPortalRenderProps {
-  rootContainer: HTMLElement | null
+  rootContainer?: HTMLElement
 }
+
 type CustomPortalRender = (
   props: CustomPortalRenderProps,
 ) => React.ReactNode | React.ReactNode[]

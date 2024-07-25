@@ -135,6 +135,8 @@ export const SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID =
   '5278969d-1d86-4df2-a3e8-48e50dbbd86e' // [Summary] Summarize comments
 export const SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID =
   '029d848d-7c28-4a3a-baae-353292ea7691' // [Summary] Show transcript
+export const SUMMARY__SUMMARIZE_VIDEO__KEY_TAKEAWAYS__PROMPT_ID =
+  '43cdd0bf-c900-4553-a252-20e5a0b13ffc' // [Summary] Summarize video (Key takeaways)`
 export const SUMMARY__RELATED_QUESTIONS__PROMPT_ID =
   'bce1c389-062c-4e78-8db1-972a4434151e'
 export const SUMMARY__CITATION__PROMPT_ID =

@@ -5,7 +5,6 @@ import React, { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import {
   DropdownMenu,
   LiteDropdownMenuItem,
@@ -33,108 +32,103 @@ const FloatingContextMenuPopupSettingButton: FC<{
     }
     setLoading(false)
   }, [])
+
+  if (!root || loading) return null
+
   return (
-    <AppLoadingLayout loading={loading}>
-      {root && (
-        <DropdownMenu
-          defaultPlacement={'bottom-start'}
-          defaultFallbackPlacements={['top-start']}
-          hoverOpen
-          zIndex={2147483610}
-          label={''}
-          root={root}
-          menuSx={{
-            width: 240,
+    <DropdownMenu
+      defaultPlacement={'bottom-start'}
+      defaultFallbackPlacements={['top-start']}
+      hoverOpen
+      zIndex={2147483610}
+      label={''}
+      root={root}
+      menuSx={{
+        width: 240,
+      }}
+      referenceElement={
+        <Box
+          sx={{
+            alignSelf: 'end',
           }}
-          referenceElement={
-            <Box
-              sx={{
-                alignSelf: 'end',
-              }}
-            >
-              <Button
-                size={'small'}
-                variant={'text'}
-                sx={{
-                  width: '28px',
-                  height: '28px',
-                  color: 'inherit',
-                  minWidth: 'unset',
-                  borderRadius: '8px',
-                  border: '1px solid',
-                  borderColor: 'customColor.borderColor',
-                  ...sx,
-                }}
-              >
-                <ContextMenuIcon
-                  icon={'More'}
-                  sx={{ color: 'text.primary', fontSize: '16px' }}
-                />
-              </Button>
-            </Box>
-          }
         >
-          <LiteDropdownMenuItem
-            onClick={() => {
-              chromeExtensionClientOpenPage({
-                key: 'options',
-                query: '#/my-own-prompts',
-              })
+          <Button
+            size={'small'}
+            variant={'text'}
+            sx={{
+              width: '28px',
+              height: '28px',
+              color: 'inherit',
+              minWidth: 'unset',
+              borderRadius: '8px',
+              border: '1px solid',
+              borderColor: 'customColor.borderColor',
+              ...sx,
             }}
-            label={t('client:floating_menu__button__manage_my_own_prompt')}
-            icon={'DefaultIcon'}
-          />
-          <DropdownMenu
-            defaultPlacement={'right-start'}
-            defaultFallbackPlacements={['right', 'left', 'bottom', 'top']}
-            root={root}
-            referenceElement={
-              <LiteDropdownMenuItem
-                isGroup
-                icon={'Delete'}
-                label={t('client:floating_menu__button__clear_suggested')}
-              />
-            }
-            menuSx={{
-              width: 320,
-            }}
-            hoverOpen
-            zIndex={2147483611}
-            label={''}
           >
-            <LiteDropdownMenuItem
-              label={t(
-                'client:floating_menu__button__clear_suggested__this_site',
-              )}
-              onClick={async () => {
-                await FavoriteMediatorFactory.getMediator(
-                  'textSelectPopupButton',
-                ).clearCache()
-              }}
-            ></LiteDropdownMenuItem>
-            <LiteDropdownMenuItem
-              label={t(
-                'client:floating_menu__button__clear_suggested__all_sites',
-              )}
-              onClick={async () => {
-                await FavoriteMediatorFactory.getMediator(
-                  'textSelectPopupButton',
-                ).clearAllHostCache()
-              }}
-            ></LiteDropdownMenuItem>
-          </DropdownMenu>
+            <ContextMenuIcon
+              icon={'More'}
+              sx={{ color: 'text.primary', fontSize: '16px' }}
+            />
+          </Button>
+        </Box>
+      }
+    >
+      <LiteDropdownMenuItem
+        onClick={() => {
+          chromeExtensionClientOpenPage({
+            key: 'options',
+            query: '#/my-own-prompts',
+          })
+        }}
+        label={t('client:floating_menu__button__manage_my_own_prompt')}
+        icon={'DefaultIcon'}
+      />
+      <DropdownMenu
+        defaultPlacement={'right-start'}
+        defaultFallbackPlacements={['right', 'left', 'bottom', 'top']}
+        root={root}
+        referenceElement={
           <LiteDropdownMenuItem
-            onClick={() => {
-              chromeExtensionClientOpenPage({
-                key: 'options',
-              })
-            }}
-            label={t('common:settings')}
-            icon={'Settings'}
+            isGroup
+            icon={'Delete'}
+            label={t('client:floating_menu__button__clear_suggested')}
           />
-        </DropdownMenu>
-      )}
-    </AppLoadingLayout>
+        }
+        menuSx={{
+          width: 320,
+        }}
+        hoverOpen
+        zIndex={2147483611}
+        label={''}
+      >
+        <LiteDropdownMenuItem
+          label={t('client:floating_menu__button__clear_suggested__this_site')}
+          onClick={async () => {
+            await FavoriteMediatorFactory.getMediator(
+              'textSelectPopupButton',
+            ).clearCache()
+          }}
+        ></LiteDropdownMenuItem>
+        <LiteDropdownMenuItem
+          label={t('client:floating_menu__button__clear_suggested__all_sites')}
+          onClick={async () => {
+            await FavoriteMediatorFactory.getMediator(
+              'textSelectPopupButton',
+            ).clearAllHostCache()
+          }}
+        ></LiteDropdownMenuItem>
+      </DropdownMenu>
+      <LiteDropdownMenuItem
+        onClick={() => {
+          chromeExtensionClientOpenPage({
+            key: 'options',
+          })
+        }}
+        label={t('common:settings')}
+        icon={'Settings'}
+      />
+    </DropdownMenu>
   )
 }
 export { FloatingContextMenuPopupSettingButton }

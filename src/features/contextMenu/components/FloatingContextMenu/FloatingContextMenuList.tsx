@@ -11,12 +11,13 @@ import {
 import { SPECIAL_NEED_DIVIDER_KEYS } from '@/features/contextMenu/constants'
 import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
-// import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
-// eslint-disable-next-line react/display-name
 const RenderDropdownItem = forwardRef<
   any,
-  { menuItem: IContextMenuItemWithChildren; rootMenu?: boolean } & MenuProps
+  { menuItem: IContextMenuItemWithChildren; rootMenu?: boolean } & Omit<
+    MenuProps,
+    'label'
+  >
 >((props, ref) => {
   const {
     menuItem,
@@ -30,12 +31,6 @@ const RenderDropdownItem = forwardRef<
     ...rest
   } = props
   const { t } = useTranslation(['prompt'])
-  const menuLabel = useMemo(() => {
-    if (t(`prompt:${menuItem.id}` as any) !== menuItem.id) {
-      return t(`prompt:${menuItem.id}` as any)
-    }
-    return menuItem.text
-  }, [menuItem.text, t])
   const getMenuLabel = useCallback(
     (menuItem: IContextMenuItemWithChildren) => {
       if (t(`prompt:${menuItem.id}` as any) !== menuItem.id) {
@@ -44,6 +39,10 @@ const RenderDropdownItem = forwardRef<
       return menuItem.text
     },
     [t],
+  )
+  const menuLabel = useMemo(
+    () => getMenuLabel(menuItem),
+    [menuItem.text, getMenuLabel],
   )
   if (menuItem.data.type === 'group') {
     return (
@@ -57,15 +56,15 @@ const RenderDropdownItem = forwardRef<
         referenceElement={
           <DropdownMenuItem {...rest} label={menuLabel} menuItem={menuItem} />
         }
+        needAutoUpdate={rest.needAutoUpdate}
       >
-        {menuItem.children.map((childMenuItem, index) => {
+        {menuItem.children.map((childMenuItem) => {
           return (
             <RenderDropdownItem
               {...rest}
               root={root}
               key={childMenuItem.id}
               menuItem={childMenuItem}
-              label={getMenuLabel(childMenuItem)}
             />
           )
         })}
@@ -82,15 +81,14 @@ const RenderDropdownItem = forwardRef<
   )
 })
 
-const ContextMenuDivider: FC<{
-  contextMenuId: string
-}> = (props) => {
-  const { contextMenuId } = props
+RenderDropdownItem.displayName = 'RenderDropdownItem'
+
+const createDivider = (id: string) => {
   return (
     <Box
       data-testid={`max-ai-context-menu-divider`}
-      key={contextMenuId + '_group_spector'}
       aria-disabled={true}
+      key={`${id}_group_spector`}
       onClick={(event: any) => {
         event.stopPropagation()
         event.preventDefault()
@@ -131,7 +129,7 @@ const FloatingContextMenuList: FC<
   const { t } = useTranslation(['prompt'])
   const RenderMenuList = useMemo(() => {
     const nodeList: React.ReactNode[] = []
-    console.log('Context Menu List Render', menuList)
+    // console.log('Context Menu List Render', menuList)
     menuList.forEach((menuItem, index) => {
       const menuLabel =
         t(`prompt:${menuItem.id}` as any) !== menuItem.id
@@ -139,9 +137,9 @@ const FloatingContextMenuList: FC<
           : menuItem.text
       if (menuItem.data.type === 'group') {
         if (index > 0) {
-          // spector
-          nodeList.push(<ContextMenuDivider contextMenuId={menuItem.id} />)
+          nodeList.push(createDivider(menuItem.id))
         }
+        // 组按钮的标签
         nodeList.push(
           <Box
             key={menuItem.id + '_group_name'}
@@ -162,13 +160,6 @@ const FloatingContextMenuList: FC<
               event.preventDefault()
             }}
           >
-            {/*{menuItem?.data?.icon && (*/}
-            {/*  <ContextMenuIcon*/}
-            {/*    size={16}*/}
-            {/*    icon={menuItem.data.icon}*/}
-            {/*    sx={{ color: 'primary.main', mr: 1 }}*/}
-            {/*  />*/}
-            {/*)}*/}
             <Typography
               textAlign={'left'}
               fontSize={12}
@@ -178,11 +169,9 @@ const FloatingContextMenuList: FC<
             </Typography>
           </Box>,
         )
-        menuItem.children.forEach((childMenuItem, index) => {
+        menuItem.children.forEach((childMenuItem, _) => {
           if (SPECIAL_NEED_DIVIDER_KEYS.includes(childMenuItem.id)) {
-            nodeList.push(
-              <ContextMenuDivider contextMenuId={childMenuItem.id} />,
-            )
+            nodeList.push(createDivider(menuItem.id))
           }
           nodeList.push(
             <RenderDropdownItem
@@ -190,9 +179,9 @@ const FloatingContextMenuList: FC<
               hoverIcon={hoverIcon}
               onClickContextMenu={onClickContextMenu}
               zIndex={2147483602}
+              needAutoUpdate={needAutoUpdate}
               {...rest}
               key={childMenuItem.id}
-              label={''}
               menuItem={childMenuItem}
               root={root as any}
             />,
@@ -203,21 +192,21 @@ const FloatingContextMenuList: FC<
           menuItem.id === FAVORITE_CONTEXT_MENU_GROUP_ID &&
           menuList[index + 1].data.type === 'shortcuts'
         ) {
-          nodeList.push(<ContextMenuDivider contextMenuId={menuItem.id} />)
+          nodeList.push(createDivider(menuItem.id))
         }
       } else {
         if (SPECIAL_NEED_DIVIDER_KEYS.includes(menuItem.id)) {
-          nodeList.push(<ContextMenuDivider contextMenuId={menuItem.id} />)
+          nodeList.push(createDivider(menuItem.id))
         }
         nodeList.push(
           <RenderDropdownItem
             menuWidth={menuWidth}
             hoverIcon={hoverIcon}
             onClickContextMenu={onClickContextMenu}
+            needAutoUpdate={needAutoUpdate}
             key={menuItem.id}
-            label={''}
             menuItem={menuItem}
-            root={root as any}
+            root={root}
           />,
         )
       }
@@ -226,7 +215,6 @@ const FloatingContextMenuList: FC<
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuList, t])
 
-  // console.log('FloatingContextMenuList', defaultPlacement)
   return (
     <DropdownMenu
       zIndex={2147483601}

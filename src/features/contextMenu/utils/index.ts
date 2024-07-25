@@ -402,7 +402,6 @@ export const fuzzySearchContextMenuList = (
       if (!currentSearchText) {
         return false
       }
-      console.log('currentSearchText', currentSearchText)
       const searchWords = currentSearchText.split(/\s/)
       let found = true
       for (const queryWord of queryWords) {

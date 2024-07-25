@@ -297,7 +297,7 @@ const useClientConversation = () => {
    */
   const getCurrentConversation = async (
     conversationId = currentConversationIdRef.current,
-  ) => {
+  ): Promise<IConversation | null> => {
     if (conversationId) {
       return (
         (await ClientConversationManager.getConversationById(conversationId)) ||

@@ -11,7 +11,7 @@
     "release:test": "cross-env API_ENV=test NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
     "release": "cross-env API_ENV=production NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt",
     "format": "prettier --write ./src",
-    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx,html,css,json,yaml}",
+    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx} --no-error-on-unmatched-pattern",
     "prepare": "husky"
   },
   "dependencies": {

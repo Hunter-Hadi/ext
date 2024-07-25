@@ -4,14 +4,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
-import React, {
-  FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AutoHeightTextarea, {
@@ -48,7 +41,7 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface IGmailChatBoxProps {
   sx?: SxProps
-  onReGenerate?: () => void
+  onReGenerate?: () => Promise<void>
   onStopGenerate?: () => void
   onReset?: () => void
   conversationId?: string
@@ -58,6 +51,12 @@ interface IGmailChatBoxProps {
   onSendMessage?: (text: string, options: IUserChatMessageExtraType) => void
   onRetry?: (messageId: string) => void
   loading?: boolean
+  /**
+   * 表示是否在切换过程中，因为conversationType和conversationId并不是同步切换的，
+   * conversationType会比conversationId切换得更快，
+   * 所以使用clientConversation.type(来自useClientConversation) !== currentConversationType(来自useSidebarSettings)来判断是否在切换的过程中
+   */
+  switching?: boolean
 }
 
 const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
@@ -72,9 +71,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     messages,
     onReset,
     loading,
+    switching = false,
   } = props
-  const [isLoadingChatMessages, setIsLoadingChatMessages] = useState(false)
-  const [isFetchNextPage, setIsFetchNextPage] = useState(false)
+  // const [isLoadingChatMessages, setIsLoadingChatMessages] = useState(false)
+  // const [isFetchNextPage, setIsFetchNextPage] = useState(false)
   const [isSettingVariables, setIsSettingVariables] = useState(false)
   const [isShowRegenerateButton, setIsShowRegenerateButton] = useState(true)
   const [isShowContinueButton, setIsShowContinueButton] = useState(false)
@@ -82,6 +82,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
+  const [regenerating, setRegenerating] = useState(false)
 
   const textareaPlaceholder = useMemo(() => {
     if (conversationType === 'Summary') {
@@ -107,7 +108,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     }
     return t('client:sidebar__input__chat__placeholder')
   }, [conversationType, t])
-  const shortcutsActionBtnSxMemo = useMemo(() => {
+
+  const shortcutsActionBtnSxMemo = useMemo<SxProps<Theme>>(() => {
     return {
       borderRadius: 2,
       borderColor: 'primary.main',
@@ -128,59 +130,49 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
    * * 所以下方的loading状态有3个步骤, 为了不让HomeView闪烁
    */
   // 切换conversation的时候，先切换了conversationType，又切换了id，所以要先给一个2
-  const switchConversationRef = useRef(false)
-  useEffect(() => {
-    switchConversationRef.current = true
-  }, [conversationType])
-  const [messagesLoadingStep, setMessagesLoadingStep] = useState(0)
-  useEffect(() => {
-    if (conversationId) {
-      if (switchConversationRef.current) {
-        switchConversationRef.current = false
-        setMessagesLoadingStep(2)
-      } else {
-        setMessagesLoadingStep(1)
-      }
-    }
-  }, [conversationId])
-
-  useEffect(() => {
-    setMessagesLoadingStep((prevState) => {
-      return prevState + 1
-    })
-  }, [messages])
+  // const switchConversationRef = useRef(false)
+  // useEffect(() => {
+  //   switchConversationRef.current = true
+  // }, [conversationType])
+  // const [messagesLoadingStep, setMessagesLoadingStep] = useState(0)
+  // useEffect(() => {
+  //   if (conversationId) {
+  //     if (switchConversationRef.current) {
+  //       switchConversationRef.current = false
+  //       setMessagesLoadingStep(2)
+  //     } else {
+  //       setMessagesLoadingStep(1)
+  //     }
+  //   }
+  // }, [conversationId])
+  //
+  // useEffect(() => {
+  //   setMessagesLoadingStep((prevState) => {
+  //     return prevState + 1
+  //   })
+  // }, [messages])
 
   const isShowChatBoxHomeView = useMemo(() => {
-    // console.log('isShowChatBoxHomeView', messagesLoadingStep)
-    // TODO fix: 需要修复 第一次切换 conversationId 时，SidebarHomeView 会闪烁的问题
-    // 具体问题是因为，在第一次切换 conversationId 时，会有一个瞬间
-    // isLoadingChatMessages 和 isFetchNextPage 等于 false，并且 messages.length 等于 0
+    if (regenerating) return false
 
-    // console.log(
-    //   'isShowChatBoxHomeView',
-    //   isLoadingChatMessages,
-    //   isFetchNextPage,
-    //   messages,
-    // )
-    if (messagesLoadingStep <= 2) {
+    if (conversationType === 'ContextMenu' && messages.length === 0) {
+      return true
+    }
+    if (loading || switching) {
       return false
     }
     return (
       messages.length <= 0 && !writingMessage && conversationType !== 'Summary'
     )
-  }, [
-    messagesLoadingStep,
-    isLoadingChatMessages,
-    // isFetchNextPage,
-    writingMessage,
-    conversationType,
-  ])
+  }, [loading, switching, messages.length, writingMessage, conversationType])
+
   const handleSwitchToSummary = () => {
     updateSidebarConversationType('Summary')
   }
+
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
-      onSendMessage && onSendMessage(value, options)
+      onSendMessage?.(value, options)
     },
     [onSendMessage],
   )
@@ -228,6 +220,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
       <SidebarHomeView
         isSettingVariables={isSettingVariables}
+        isShowChatBoxHomeView={isShowChatBoxHomeView}
         sx={
           // 这么做条件渲染是为了，让 内部组件的 useEffect 可以完整的执行，不会被卸载
           !isShowChatBoxHomeView
@@ -240,8 +233,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
       {conversationId ? (
         <SidebarChatBoxMessageListContainer
-          onLoadingChatMessages={setIsLoadingChatMessages}
-          onFetchingNextPage={setIsFetchNextPage}
+          // onLoadingChatMessages={setIsLoadingChatMessages}
+          // onFetchingNextPage={setIsFetchNextPage}
           conversationId={conversationId}
           isAIResponding={loading}
           writingMessage={writingMessage}
@@ -251,150 +244,158 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         />
       ) : null}
 
-      <SidebarSummarySuggestion onClick={handleSwitchToSummary} />
+      {(conversationType !== 'ContextMenu' || !isShowChatBoxHomeView) && (
+        <>
+          <SidebarSummarySuggestion onClick={handleSwitchToSummary} />
 
-      <Stack
-        className={'use-chat-gpt-ai__chat-box__input-box'}
-        position={'relative'}
-        mt={'auto'}
-        justifyContent={'end'}
-        alignItems={'center'}
-        minHeight={192}
-        spacing={1}
-        flexShrink={0}
-        // bgcolor={'#fff'}
-      >
-        <Stack
-          maxWidth={isInImmersiveChat ? '768px' : 'initial'}
-          p={1}
-          width={'100%'}
-          alignItems={'center'}
-          justifyContent={'center'}
-        >
-          <Box
-            sx={{ width: '100%' }}
-            component={'div'}
-            display={'flex'}
-            width={0}
-            flex={1}
-            alignItems={'center'}
-            justifyContent={'center'}
-            gap={1}
-            mb={1}
+          <Stack
+            className={'use-chat-gpt-ai__chat-box__input-box'}
             position={'relative'}
-            minHeight={40}
+            mt={'auto'}
+            justifyContent={'end'}
+            alignItems={'center'}
+            minHeight={192}
+            spacing={1}
+            flexShrink={0}
+            // bgcolor={'#fff'}
           >
-            <SidebarChatBoxChatSpeedDial
-              disabledMainButton={loading}
-              onClick={async (type) => {
-                if (type === 'focus') {
-                  const chatInput = getMaxAISidebarRootElement()?.querySelector(
-                    `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
-                  ) as HTMLTextAreaElement
-                  chatInput && chatInput.focus()
-                } else if (type === 'new') {
-                  onReset && onReset()
-                } else if (type === 'restart') {
-                  await clientRestartChromeExtension()
-                }
-              }}
-            />
-
-            <SidebarAIAdvanced
-              sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-              }}
-            />
-
-            {!loading && isShowRegenerateButton && (
-              <Button
-                disableElevation
-                startIcon={<CachedIcon />}
-                variant={'normalOutlined'}
-                disabled={loading}
-                onClick={() => {
-                  onReGenerate?.()
-                }}
-                sx={shortcutsActionBtnSxMemo}
-                data-testid='sidebar_actions__regenerate'
+            <Stack
+              maxWidth={isInImmersiveChat ? '768px' : 'initial'}
+              p={1}
+              width={'100%'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              <Box
+                sx={{ width: '100%' }}
+                component={'div'}
+                display={'flex'}
+                width={0}
+                flex={1}
+                alignItems={'center'}
+                justifyContent={'center'}
+                gap={1}
+                mb={1}
+                position={'relative'}
+                minHeight={40}
               >
-                {t('client:sidebar__button__regenerate')}
-              </Button>
-            )}
-            {!loading &&
-              conversationType !== 'Search' &&
-              conversationType !== 'Art' &&
-              isShowContinueButton && (
-                <Button
-                  disableElevation
-                  startIcon={<ContextMenuIcon icon={'FastForward'} />}
-                  variant={'normalOutlined'}
-                  disabled={loading}
-                  onClick={() => {
-                    handleSendMessage &&
-                      handleSendMessage('Continue', {
-                        includeHistory: true,
-                        regenerate: false,
-                      })
+                <SidebarChatBoxChatSpeedDial
+                  disabledMainButton={loading}
+                  onClick={async (type) => {
+                    if (type === 'focus') {
+                      const chatInput =
+                        getMaxAISidebarRootElement()?.querySelector(
+                          `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
+                        ) as HTMLTextAreaElement
+                      chatInput && chatInput.focus()
+                    } else if (type === 'new') {
+                      onReset?.()
+                    } else if (type === 'restart') {
+                      await clientRestartChromeExtension()
+                    }
                   }}
-                  sx={shortcutsActionBtnSxMemo}
-                  data-testid='sidebar_actions__continue'
-                >
-                  {t('client:sidebar__button__continue')}
-                </Button>
-              )}
-            {loading && (
-              <Button
-                sx={shortcutsActionBtnSxMemo}
-                disableElevation
-                variant={'normalOutlined'}
-                startIcon={<StopOutlinedIcon />}
-                onClick={() => {
-                  onStopGenerate?.()
+                />
+
+                <SidebarAIAdvanced
+                  sx={{
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                  }}
+                />
+
+                {!loading && isShowRegenerateButton && (
+                  <Button
+                    disableElevation
+                    startIcon={<CachedIcon />}
+                    variant={'normalOutlined'}
+                    disabled={loading}
+                    onClick={async () => {
+                      setRegenerating(true)
+                      await onReGenerate?.().catch(console.error)
+                      setRegenerating(false)
+                    }}
+                    sx={shortcutsActionBtnSxMemo}
+                    data-testid='sidebar_actions__regenerate'
+                  >
+                    {t('client:sidebar__button__regenerate')}
+                  </Button>
+                )}
+                {!loading &&
+                  conversationType !== 'Search' &&
+                  conversationType !== 'Art' &&
+                  isShowContinueButton && (
+                    <Button
+                      disableElevation
+                      startIcon={<ContextMenuIcon icon={'FastForward'} />}
+                      variant={'normalOutlined'}
+                      disabled={loading}
+                      onClick={() => {
+                        handleSendMessage &&
+                          handleSendMessage('Continue', {
+                            includeHistory: true,
+                            regenerate: false,
+                          })
+                      }}
+                      sx={shortcutsActionBtnSxMemo}
+                      data-testid='sidebar_actions__continue'
+                    >
+                      {t('client:sidebar__button__continue')}
+                    </Button>
+                  )}
+                {loading && (
+                  <Button
+                    sx={shortcutsActionBtnSxMemo}
+                    disableElevation
+                    variant={'normalOutlined'}
+                    startIcon={<StopOutlinedIcon />}
+                    onClick={() => {
+                      onStopGenerate?.()
+                    }}
+                    data-testid='sidebar_actions__stop_generating'
+                  >
+                    {t('client:sidebar__button__stop_generating')}
+                  </Button>
+                )}
+              </Box>
+              <ActionSetVariablesModal
+                showModelSelector
+                onChange={(_, reason) => {
+                  if (reason === 'runPromptStart') {
+                    setIsSettingVariables(false)
+                  }
                 }}
-                data-testid='sidebar_actions__stop_generating'
+                onClose={() => setIsSettingVariables(false)}
+                onShow={() => setIsSettingVariables(true)}
+                modelKey='Sidebar'
+              />
+              <AutoHeightTextarea
+                placeholder={textareaPlaceholder}
+                minLine={3}
+                sx={{
+                  minHeight: isSettingVariables
+                    ? 0
+                    : LINE_HEIGHT * 3 + TEXTAREA_PADDING_Y * 2 + 40, // AutoHeightTextarea 最小高度 = 一行的高度 * 最小行数 + 上下的 padding + SidebarChatBoxInputActions 的高度（40）
+                  height: isSettingVariables ? '0!important' : 'unset',
+                  visibility: isSettingVariables ? 'hidden' : 'visible',
+                }}
+                stopPropagation
+                loading={loading}
+                expandNode={
+                  conversationType === 'Chat' ||
+                  conversationType === 'ContextMenu' ? (
+                    <ChatIconFileUpload direction={'column'} size={'small'} />
+                  ) : null
+                }
+                onEnter={handleSendMessage}
               >
-                {t('client:sidebar__button__stop_generating')}
-              </Button>
-            )}
-          </Box>
-          <ActionSetVariablesModal
-            showModelSelector
-            onChange={(data, reason) => {
-              if (reason === 'runPromptStart') {
-                setIsSettingVariables(false)
-              }
-            }}
-            onClose={() => setIsSettingVariables(false)}
-            onShow={() => setIsSettingVariables(true)}
-            modelKey={'Sidebar'}
-          />
-          <AutoHeightTextarea
-            placeholder={textareaPlaceholder}
-            minLine={3}
-            sx={{
-              minHeight: isSettingVariables
-                ? 0
-                : LINE_HEIGHT * 3 + TEXTAREA_PADDING_Y * 2 + 40, // AutoHeightTextarea 最小高度 = 一行的高度 * 最小行数 + 上下的 padding + SidebarChatBoxInputActions 的高度（40）
-              height: isSettingVariables ? '0!important' : 'unset',
-              visibility: isSettingVariables ? 'hidden' : 'visible',
-            }}
-            stopPropagation
-            loading={loading}
-            expandNode={
-              conversationType === 'Chat' ? (
-                <ChatIconFileUpload direction={'column'} size={'small'} />
-              ) : null
-            }
-            onEnter={handleSendMessage}
-          >
-            <SidebarChatBoxInputActions onSendMessage={handleSendMessage} />
-          </AutoHeightTextarea>
-        </Stack>
-        <SidebarChatBoxFooter />
-      </Stack>
+                <SidebarChatBoxInputActions onSendMessage={handleSendMessage} />
+              </AutoHeightTextarea>
+            </Stack>
+            <SidebarChatBoxFooter />
+          </Stack>
+        </>
+      )}
     </Stack>
   )
 }

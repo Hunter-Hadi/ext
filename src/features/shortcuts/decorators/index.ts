@@ -113,7 +113,8 @@ export function parametersParserDecorator(
             value.startsWith('{{') &&
             value.endsWith('}}') &&
             (renderValue.includes(`[object Object]`) ||
-              renderValue.includes(`[object Array]`))
+              renderValue.includes(`[object Array]`) ||
+              renderValue.includes(`[object File]`))
           ) {
             // 如果是[object Object]或者[object Array]，看看Variable是否有对应的
             const variableName = value.slice(2, -2)

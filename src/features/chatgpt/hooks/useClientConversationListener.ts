@@ -45,7 +45,7 @@ const port = new ContentScriptConnectionV2({
  * - 监听客户端聊天状态更新事件
  * - 自动归档 - v4.2.0 - 2024-04
  */
-export const useClientConversationListener = () => {
+export const useClientConversationListener = (isContextWindow?: boolean) => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
   const { currentAIProvider } = useAIProviderModels()
@@ -109,7 +109,6 @@ export const useClientConversationListener = () => {
             `ConversationDB[V3] 更新会话[${updateConversationId}]`,
             conversation,
           )
-          console.log(`ConversationMessagesUpdate!!! 更新会话`, conversation)
           set(ClientConversationStateFamily(updateConversationId), conversation)
         }
       },
@@ -121,10 +120,6 @@ export const useClientConversationListener = () => {
       return
     }
     const updateConversationListener = () => {
-      console.log(
-        `ConversationMessagesUpdate!!! 更新会话1111`,
-        currentConversationId,
-      )
       updateConversation(currentConversationId).then().catch()
     }
     window.addEventListener('focus', updateConversationListener)
@@ -301,7 +296,11 @@ export const useClientConversationListener = () => {
       return
     }
     const autoArchiveTime =
-      appDBStorage.userSettings?.sidebar?.autoArchive?.[clientConversation.type]
+      appDBStorage.userSettings?.sidebar?.autoArchive?.[
+        clientConversation.type === 'ContextMenu' && !isContextWindow
+          ? 'Chat'
+          : clientConversation.type
+      ]
     if (autoArchiveTime && isNumber(autoArchiveTime)) {
       const messageUpdatedAt =
         clientConversationMessages[clientConversationMessages.length - 1]
@@ -453,6 +452,7 @@ export const useClientConversationListener = () => {
               await ClientConversationMessageManager.getMessageIds(
                 conversationId,
               )
+            // NOTE: 这里可能存在误区，这里查询的结果未时间倒序的数组结果
             const messages =
               await ClientConversationMessageManager.getMessagesByMessageIds(
                 messagesIds,

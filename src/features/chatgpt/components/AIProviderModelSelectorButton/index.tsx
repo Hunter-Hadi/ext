@@ -285,7 +285,6 @@ const AIProviderModelSelectorButton: FC<{
       <Popper
         open={open}
         anchorEl={anchorRef.current}
-        role={undefined}
         placement={placement || 'top-start'}
         transition
         modifiers={AIModelPopperModifiers}

@@ -13,9 +13,11 @@ import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import useActivity from '@/features/auth/hooks/useActivity'
 import { DailyLimitState } from '@/features/auth/store'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { UnableSubscriptionState } from '@/features/subscription/store'
 import SidebarPage from '@/pages/sidebar'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
@@ -90,12 +92,10 @@ const App: FC = () => {
                   borderColor={'customColor.borderColor'}
                 >
                   <SidebarNav />
-                  <ConversationList
-                    conversationType={currentSidebarConversationType}
-                    sx={{
-                      flex: 1,
-                      width: 0,
-                    }}
+                  <ConversationWithSwitcher
+                    currentSidebarConversationType={
+                      currentSidebarConversationType
+                    }
                   />
                 </Stack>
 
@@ -120,6 +120,34 @@ const App: FC = () => {
         </SidebarContextProvider>
       </Stack>
     </Box>
+  )
+}
+
+const ConversationWithSwitcher: FC<{
+  currentSidebarConversationType: ISidebarConversationType
+}> = ({ currentSidebarConversationType }) => {
+  const { updateConversationId } = useClientConversation()
+  const { updateSidebarConversationType } = useSidebarSettings()
+  return (
+    <ConversationList
+      disableModalPortal={false}
+      conversationType={currentSidebarConversationType}
+      sx={{
+        flex: 1,
+        width: 0,
+      }}
+      onSelectConversation={async (conversation) => {
+        switch (conversation.type) {
+          case 'ContextMenu':
+          case 'Chat':
+          case 'Search':
+          case 'Art':
+            await updateConversationId(conversation.id)
+            updateSidebarConversationType(conversation.type)
+            break
+        }
+      }}
+    />
   )
 }
 

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
@@ -52,12 +52,29 @@ const FloatingMiniMenu: FC<{
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
-  const [finalShow, setFinalShow] = useState(
-    show &&
+  const finalShow = useMemo(
+    () =>
+      show &&
       textSelectPopupButtonSettings?.buttonVisible &&
       !closeBeforeRefresh &&
       !floatingDropdownMenu.open,
+    [
+      show,
+      textSelectPopupButtonSettings?.buttonVisible,
+      closeBeforeRefresh,
+      floatingDropdownMenu.open,
+    ],
   )
+  // const [finalShow, setFinalShow] = useState(
+  //   show &&
+  //     textSelectPopupButtonSettings?.buttonVisible &&
+  //     !closeBeforeRefresh &&
+  //     !floatingDropdownMenu.open,
+  //   show &&
+  //   textSelectPopupButtonSettings?.buttonVisible &&
+  //   !closeBeforeRefresh &&
+  //   !floatingDropdownMenu.open
+  // )
   const { x, y, strategy, refs, placement } = useFloating({
     placement: 'bottom-start',
     middleware: [
@@ -103,13 +120,7 @@ const FloatingMiniMenu: FC<{
     ],
   })
   useEffect(() => {
-    const isShow =
-      show &&
-      textSelectPopupButtonSettings?.buttonVisible &&
-      !closeBeforeRefresh &&
-      !floatingDropdownMenu.open
-    setFinalShow(isShow)
-    if (!tempSelection?.selectionRect || !isShow) {
+    if (!tempSelection?.selectionRect || !finalShow) {
       return
     }
     const rect = computedRectPosition(tempSelection.selectionRect)
@@ -137,14 +148,8 @@ const FloatingMiniMenu: FC<{
         }
       },
     })
-  }, [
-    show,
-    textSelectPopupButtonSettings?.buttonVisible,
-    closeBeforeRefresh,
-    floatingDropdownMenu.open,
-    tempSelection,
-  ])
-  const handleCloseClickContextMenuButton = useCallback(() => {
+  }, [finalShow, tempSelection])
+  const handleCloseClickContextMenuButton = () => {
     if (refs.floating.current) {
       if (getComputedStyle(refs.floating.current).opacity === '0') {
         return
@@ -152,7 +157,7 @@ const FloatingMiniMenu: FC<{
       hideRangy()
       removeAllRange()
     }
-  }, [])
+  }
   useEffect(() => {
     // listen doc esc
     const handleEsc = (event: KeyboardEvent) => {

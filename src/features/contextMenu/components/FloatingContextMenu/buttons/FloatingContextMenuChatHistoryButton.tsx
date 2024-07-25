@@ -34,42 +34,51 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   onDuplicateConversation?: (conversationId: string) => void
   container?: HTMLElement
 }> = (props) => {
-  const { conversationId, onDuplicateConversation } = props
+  const { conversationId, onDuplicateConversation, container } = props
   const { t } = useTranslation(['client'])
   const { continueConversationInSidebar } = useSidebarSettings()
+
   if (!conversationId) {
     return null
   }
+
   return (
-    <>
+    <Stack direction={'column'} flex={1} overflow={'auto'}>
       <SidebarChatBoxMessageListContainer
         conversationId={conversationId}
         isAIResponding={false}
         writingMessage={null}
+        tooltipContainer={container}
         sx={{
           textAlign: 'left',
+          height: 'auto',
         }}
       />
       <Stack
         direction={'row'}
         justifyContent={'center'}
         alignItems={'center'}
-        mb={2}
+        my={2}
       >
         <Button
           variant={'contained'}
           color={'primary'}
           onClick={async () => {
-            await continueConversationInSidebar(conversationId, {
-              type: 'Chat',
-            })
+            await continueConversationInSidebar(
+              conversationId,
+              {},
+              {
+                syncConversationToDB: true,
+                waitSync: true,
+              },
+            )
             onDuplicateConversation?.(conversationId)
           }}
         >
-          {t('client:context_window__chat_history__continue_in_chat__title')}
+          {t('client:context_window__chat_history__continue_in_rewrite__title')}
         </Button>
       </Stack>
-    </>
+    </Stack>
   )
 }
 
@@ -90,9 +99,6 @@ const FloatingContextMenuChatHistoryButton: FC<{
   const paperRef = useRef<HTMLDivElement>()
   const [selectedConversationId, setSelectedConversationId] =
     useState<string>('')
-  const handleOpenModal = () => {
-    setModalOpen(true)
-  }
 
   const handleCloseModal = () => {
     if (selectedConversationId) {
@@ -128,7 +134,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
         paperRef.current?.focus()
       }, 100)
       setIsClickOpenOnce(true)
-      handleOpenModal()
+      setModalOpen(true)
       setPlacement(newPlacement)
     }
 
@@ -278,7 +284,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                 }}
               >
                 {isClickOpenOnce && (
-                  <Stack height={'100%'}>
+                  <Stack height={'100%'} display={'flex'} direction={'column'}>
                     <Stack
                       direction='row'
                       spacing={1}

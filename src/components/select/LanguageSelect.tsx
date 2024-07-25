@@ -48,6 +48,15 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
     },
   )
 
+  useEffect(() => {
+    const lang = LANGUAGES_OPTIONS.find(
+      (option) => option.value === defaultValue,
+    )
+    if (lang && lang !== value) {
+      setValue(lang)
+    }
+  }, [defaultValue])
+
   const [open, setOpen] = React.useState(false)
 
   useEffect(() => {
@@ -111,7 +120,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
         autoHighlight
         getOptionLabel={(option) => option.label}
         options={LANGUAGES_OPTIONS}
-        onChange={(event: any, newValue) => {
+        onChange={(_, newValue) => {
           setValue(newValue)
           onChange(newValue.value)
         }}

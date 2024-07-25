@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import useUserFeatureQuota from '@/features/auth/hooks/useUserFeatureQuota'
@@ -10,6 +10,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { isSystemMessageByType } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID } from '@/features/common/constants'
 import {
+  AlwaysPinToSidebarSelector,
   ContextWindowDraftContextMenuState,
   FloatingContextWindowChangesState,
   FloatingDropdownMenuSelectedItemState,
@@ -44,6 +45,7 @@ import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 
 /**
@@ -157,6 +159,10 @@ const useInitContextWindow = () => {
   const [, setContextWindowDraftContextMenu] = useRecoilState(
     ContextWindowDraftContextMenuState,
   )
+
+  const pinToSidebar = useRecoilValue(AlwaysPinToSidebarSelector)
+
+  const { continueConversationInSidebar } = useSidebarSettings()
   const {
     createConversation,
     getConversation,
@@ -173,7 +179,6 @@ const useInitContextWindow = () => {
     floatingContextMenuDraftMessageIdRef,
     historyMessages,
   } = useFloatingContextMenuDraft()
-  const { continueConversationInSidebar } = useSidebarSettings()
   const draftContextMenuList = useDraftContextMenuList()
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
@@ -334,6 +339,7 @@ const useInitContextWindow = () => {
       if (currentDraft) {
         template += `:\n"""\n${currentDraft}\n"""`
       }
+
       await askAIQuestion(
         {
           type: 'user',
@@ -410,14 +416,16 @@ const useInitContextWindow = () => {
     regenerateRef.current = regenerate
     stopGenerateRef.current = stopGenerate
   }, [regenerate, stopGenerate])
+
+  /**
+   * DropdownMenu的快捷指令处理函数，相当于onClick
+   * @description - 运行快捷指令
+   * 1. 必须有选中的id
+   * 2. 必须有菜单列表
+   * 3. contextMenu必须是打开状态
+   * 4. 必须不是loading
+   */
   useEffect(() => {
-    /**
-     * @description - 运行快捷指令
-     * 1. 必须有选中的id
-     * 2. 必须有菜单列表
-     * 3. contextMenu必须是打开状态
-     * 4. 必须不是loading
-     */
     if (
       floatingDropdownMenuSelectedItem.selectedContextMenuId &&
       contextWindowList.length > 0 &&
@@ -428,10 +436,6 @@ const useInitContextWindow = () => {
         floatingDropdownMenuSelectedItem.selectedContextMenuId
       // 是否为[推荐]菜单的动作
       let isSuggestedContextMenu = false
-      // 判断是否可以运行
-      let needOpenChatBox = false
-      // 是否为[草稿]菜单的动作
-      let isDraftContextMenu = false
       // 当前选中的contextMenu
       let currentContextMenu: IContextMenuItem | null = null
       // 如果是[推荐]菜单的动作，则需要去掉前缀
@@ -444,13 +448,11 @@ const useInitContextWindow = () => {
       }
       // 如果没登录，或者chatGPTClient没有成功初始化，则需要打开chatbox
       if (!isLogin || conversationStatus !== 'success') {
-        needOpenChatBox = true
-      }
-      if (needOpenChatBox) {
         hideFloatingContextMenu()
         showChatBox()
       }
-      isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
+      // 是否为[草稿]菜单的动作
+      const isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
       // 先从[草稿]菜单中查找
       if (isDraftContextMenu) {
         const draftContextMenu = findDraftContextMenuById(currentSelectedId)
@@ -481,6 +483,7 @@ const useInitContextWindow = () => {
           currentContextMenu =
             contextMenuToFavoriteContextMenu(currentContextMenu)
         }
+
         const currentContextMenuId = currentContextMenu.id
         const runActions: ISetActionsType = cloneDeep(
           currentContextMenu.data.actions || [],
@@ -569,17 +572,21 @@ const useInitContextWindow = () => {
     isLogin,
   ])
   const isRunningActionsRef = useRef(false)
+
+  /**
+   * 监听actions变化执行
+   */
   useEffect(() => {
-    if (isRunningActionsRef.current) {
+    if (
+      isRunningActionsRef.current ||
+      !currentConversationId ||
+      actions.length <= 0
+    ) {
       return
     }
-    if (!currentConversationId) {
-      return
-    }
+
     const runActions = cloneDeep(actions)
-    if (actions.length <= 0) {
-      return
-    }
+
     isRunningActionsRef.current = true
     setActions([])
     setInputValue('')
@@ -662,6 +669,7 @@ const useInitContextWindow = () => {
   useEffect(() => {
     isAIRespondingRef.current = clientWritingMessage.loading
   }, [clientWritingMessage.loading])
+
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       getInputMediator('floatingMenuInputMediator').updateInputValue('')
@@ -685,10 +693,12 @@ const useInitContextWindow = () => {
         )
       }
     }
-    const createContextMenuConversation = async () => {
-      if (currentConversationIdRef.current) {
-        isCreatingConversationRef.current = true
+  }, [floatingDropdownMenu.open])
 
+  useEffect(() => {
+    const createContextMenuConversation = async () => {
+      isCreatingConversationRef.current = true
+      if (currentConversationIdRef.current) {
         const conversation = await getConversation(
           currentConversationIdRef.current,
         )
@@ -711,11 +721,17 @@ const useInitContextWindow = () => {
           isCreatingConversationRef.current = false
         })
     }
-    if (!isAIRespondingRef.current && !floatingDropdownMenu.open) {
+
+    // 当pintosidebar之后，每次关闭都会重建conversation
+    if (
+      // (!isAIRespondingRef.current || pinToSidebar) &&
+      floatingDropdownMenu.open === false
+    ) {
       createContextMenuConversation().catch()
+      isAIRespondingRef.current = false
     }
-    console.log('AIInput remove', floatingDropdownMenu.open)
-  }, [floatingDropdownMenu.open])
+  }, [floatingDropdownMenu.open, pinToSidebar])
+
   return {
     loading,
     isFloatingMenuVisible,

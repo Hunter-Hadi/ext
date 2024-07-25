@@ -8,7 +8,7 @@ import {
   IChatMessage,
   IChatUploadFile,
 } from '@/features/indexed_db/conversations/models/Message'
-import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import { getMaxAIDocument } from '@/features/shortcuts/utils/maxAIDocument'
 
 /**
  * 判断是否是MaxAI的附件
@@ -95,18 +95,28 @@ export const clientGetMaxAIFileUrlWithFileId = async (
     message_id?: string
     conversation_id?: string
   },
-): Promise<{ file_id: string; file_url: string } | null> => {
-  const result = await clientFetchMaxAIAPI<{
-    file_id: string
-    file_url: string
-  }>('/app/get_file', {
-    file_id: fileId,
-    ...config,
-  })
-  if (result?.data?.file_id && result?.data?.file_url) {
+): Promise<{ file_id: string; file_url?: string; expires?: number } | null> => {
+  const result = await getMaxAIDocument(fileId)
+  if (result) {
     return {
-      ...result.data,
+      file_id: fileId,
+      file_url: result.s3.doc_url,
+      expires: result.s3.expires,
     }
   }
   return null
+  // TODO 迁移到新接口，get_file接口不再使用，测试完成后删除
+  // const result = await clientFetchMaxAIAPI<{
+  //   file_id: string
+  //   file_url: string
+  // }>('/app/get_file', {
+  //   file_id: fileId,
+  //   ...config,
+  // })
+  // if (result?.data?.file_id && result?.data?.file_url) {
+  //   return {
+  //     ...result.data,
+  //   }
+  // }
+  // return null
 }

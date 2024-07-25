@@ -22,6 +22,7 @@ type ImmersiveSettingsKey = keyof Exclude<
 >
 
 const conversationTypeRouteMap: Record<string, ISidebarConversationType> = {
+  contextmenu: 'ContextMenu',
   chat: 'Chat',
   search: 'Search',
   art: 'Art',
@@ -72,6 +73,8 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
   const immersiveConversationId = useMemo(() => {
     switch (currentSidebarConversationType) {
+      case 'ContextMenu':
+        return immersiveSettings?.contextMenu?.conversationId
       case 'Chat':
         return immersiveSettings?.chat?.conversationId
       case 'Search':
@@ -100,6 +103,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
       conversationType?: ISidebarConversationType,
     ) => {
       const map: Record<string, ImmersiveSettingsKey> = {
+        ContextMenu: 'contextMenu',
         Chat: 'chat',
         Search: 'search',
         Art: 'art',
@@ -124,8 +128,12 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
      */
     const createConversation: ChatPanelContextValue['createConversation'] =
       async (conversationType, AIProvider, AIModel) => {
+        const sidebarConversationType = sidebarConversationTypeRef.current
         const settingsType =
-          sidebarConversationTypeRef.current.toLowerCase() as ImmersiveSettingsKey
+          sidebarConversationType === 'ContextMenu'
+            ? 'contextMenu'
+            : (sidebarConversationType.toLowerCase() as ImmersiveSettingsKey)
+
         const conversationTypeConfig =
           immersiveSettingsRef.current?.[settingsType]
         if ((!AIProvider || !AIModel) && conversationTypeConfig) {
@@ -140,7 +148,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         )
         await updateConversationId(conversationId, conversationType)
         if (AIProvider || AIModel) {
-          updateImmersiveSettings({
+          await updateImmersiveSettings({
             [settingsType]: { AIProvider, AIModel },
           })
         }
@@ -159,6 +167,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
         const currentConversation = conversationId
           ? await ClientConversationManager.getConversationById(conversationId)
           : null
+
         if (currentConversation) {
           await createConversation(
             currentConversation.type,
@@ -172,9 +181,7 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
 
     return {
       conversationStatus,
-      updateConversationStatus: (newStatus: ConversationStatusType) => {
-        setConversationStatus(newStatus)
-      },
+      updateConversationStatus: setConversationStatus,
       conversationId,
       updateConversationId,
       createConversation,
@@ -270,6 +277,7 @@ const SidebarAppProvider: FC<{ children: React.ReactNode }> = (props) => {
     useState<ConversationStatusType>('success')
 
   const sidebarConversationTypeRef = useRef(currentSidebarConversationType)
+
   sidebarConversationTypeRef.current = currentSidebarConversationType
 
   const sidebarContextValue = useMemo<ChatPanelContextValue>(() => {
@@ -288,6 +296,7 @@ const SidebarAppProvider: FC<{ children: React.ReactNode }> = (props) => {
           Summary: 'summary',
           Search: 'search',
           Art: 'art',
+          ContextMenu: 'contextMenu',
         }
         if (map[sidebarConversationTypeRef.current]) {
           return updateSidebarSettings({
@@ -297,7 +306,23 @@ const SidebarAppProvider: FC<{ children: React.ReactNode }> = (props) => {
           })
         }
       },
-      createConversation: createSidebarConversation,
+      createConversation: async (conversationType, aiProvider, aiModel) => {
+        const id = await createSidebarConversation(
+          conversationType,
+          aiProvider,
+          aiModel,
+        )
+
+        if (conversationType === 'ContextMenu') {
+          updateSidebarSettings({
+            contextMenu: {
+              conversationId: id,
+              currentAIModel: aiModel,
+            },
+          })
+        }
+        return id
+      },
       resetConversation: resetSidebarConversation,
     }
   }, [currentSidebarConversationId, conversationStatus])

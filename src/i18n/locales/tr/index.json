@@ -67,7 +67,8 @@
     "terms_of_service": "Hizmet Şartları",
     "shortcut": "Kısayol",
     "yearly": "Yıllık",
-    "monthly": "Aylık"
+    "monthly": "Aylık",
+    "continue_in_contextmenu": "Her zaman bağlam menüsünde devam et"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -870,7 +871,7 @@
     "provider__chatgpt__upload_file_error__total_too_large__text": "Yüklenen dosyalar çok büyük. Lütfen daha geniş bir bağlam penceresine sahip bir AI modeli kullanın veya daha küçük dosyalar yükleyin.",
     "chat__user_message__contexts__file__preview__tips": "Biçimlendirme kaynağından farklı olabilir.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "En gelişmiş yapay zeka sanat modelleriyle yaratıcılığınızı ve üretkenliğinizi 10 kat artırın. Vizyonlarınızı hızla etkileyici görüntülere dönüştürün. Basit, güçlü, dönüştürücü.",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "Aylık görüntü sorgu limiti aşıldı. Sınırsız sorgular için hemen yükseltin veya aylık sorgular sıfırlandığında tekrar kontrol edin.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "En gelişmiş AI sanat modelleri ile yaratıcılığınızı ve üretkenliğinizi 10 kat artırın. Vizyonlarınızı hızla muhteşem görüntülere dönüştürün. Basit, güçlü, dönüştürücü.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__free__description": "OpenAI'nin yeni amiral gemisi modeli GPT-4 seviyesinde bir zeka sunar ve daha güncel yanıtlarla gerçek zamanlı olarak ses, görüntü ve metin üzerinde akıl yürütebilir.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__paid__description": "Aylık akıllı metin sorgu limiti aşıldı. Sınırsız sorgular için hemen yükseltin veya aylık sorgular sıfırlandığında tekrar kontrol edin.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__free__description": "Anthropic'in en akıllı modeli, 200k-token kapasitesiyle. Yüksek karmaşıklıkta görevlerde, açık uçlu ipuçlarında ve görmeden senaryolarda olağanüstü akıcılık ve insan gibi anlama yeteneğiyle piyasadaki en iyi performansı yaşayın.",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "Tüm özellikleri aç",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Yalnızca GPT-4o. Diğer tüm AI modellerini açmak için MaxAI Elite planına yükseltin.",
     "pricing__upgrade__popper_card__item4__title": "Paranızın en iyi değeri",
+    "floating_menu__button__show_detail": "Detayları göster",
+    "floating_menu__textarea__placeholder": "Metninizi buraya yazın veya yapıştırın ve AI'dan geliştirmesini, düzeltmesini, çevirisini, özetlemesini ve daha fazlasını isteyin.",
+    "floating_menu__always_pin_sidebar_title": "Her zaman kenar çubuğuna sabitle",
+    "sidebar__tabs__rewrite__title": "Yeniden yaz",
+    "sidebar__tabs__rewrite__tooltip": "AI yeniden yazıcı",
+    "home_view__rewrite__title": "AI yeniden yazıcı",
+    "home_view__rewrite__description": "Kelimelerinizi düzeltme ve mükemmelleştirme konusunda zaman kazanın.",
+    "context_window__chat_history__continue_in_rewrite__title": "Yeniden yazmaya devam et",
     "permission__pricing_hook__context_menu__title": "Sınırsız AI yeniden yazıcıyı açmak için yükselt",
     "permission__pricing_hook__context_menu__description": "MaxAI'nin AI yeniden yazıcısı ile e-postadan sosyal medyaya ve ötesine kadar web üzerindeki kelimelerinizi düzeltme ve mükemmelleştirme konusunda zaman kazanabilirsiniz.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini'ye Erişim",
@@ -1020,7 +1029,12 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Geliştirilmiş çok dilli anlayış",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini, OpenAI'nin en gelişmiş küçük ölçekli modelidir. Çoklu mod kapasitesi sunar. Bu kompakt güçlü model, GPT-3.5-Turbo'yu aşan bir zeka ile metin çıktıları sunar. GPT-3.5-Turbo'ya kıyasla benzer hızı korur. Görüntü ile ilgili uygulamalar da dahil olmak üzere küçük görevler için idealdir.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Sınırsız GPT-4o-mini için Yükseltme",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI'ın en zeki küçük ölçekli modeli olan GPT-4o-mini'yi deneyimleyin. GPT-3.5-turbo'ya göre üstün performans sunan GPT-4o-mini, çoklu mod kapasiteleri ve hızlı yanıtlar sunar."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI'ın en zeki küçük ölçekli modeli olan GPT-4o-mini'yi deneyimleyin. GPT-3.5-turbo'ya göre üstün performans sunan GPT-4o-mini, çoklu mod kapasiteleri ve hızlı yanıtlar sunar.",
+    "floating_menu__always_pin_to_sidebar": "Yanıtları her zaman kenar çubuğunda göster",
+    "floating_menu__pint_once_to_sidebar": "Yanıtı bir kez kenar çubuğunda göster",
+    "floating_menu__always_unpin_to_sidebar": "Yanıtları her zaman içerik menüsünde göster",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ana noktaları özetle",
+    "context_window__chat_history__continue_in_sidebar__title": "Kenar çubuğunda devam et"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -1329,7 +1343,7 @@
     "sidebar_tour__step__1__title": "Tercih ettiğiniz arayüz dilini seçin",
     "sidebar_tour__step__2__title": "Yapay Zeka ile üretkenliğinizi 10 kat artırın",
     "sidebar_tour__step__2__description_1": "AI'ya her şeyi sor",
-    "sidebar_tour__step__2__description_2": "Sayfayı özetle ve soru sor",
+    "sidebar_tour__step__2__description_2": "Bu sayfayı özetleyin ve sorular sorun",
     "sidebar_tour__step__2__description_3": "AI arama",
     "sidebar_tour__step__2__description_4": "AI sanat",
     "sidebar_tour__step__3__title": "Yapay Zeka modelini değiştirin",
@@ -1342,7 +1356,8 @@
     "sidebar_tour__step__5__feature_3__title": "Sohbet geçmişi",
     "sidebar_tour__step__5__feature_4__title": "Ekran görüntüsü ile sohbet",
     "sidebar_tour__step__5__feature_5__title": "1 tıklamayla ipuçları",
-    "sidebar_tour__step__5__feature_6__title": "İpucu kullan"
+    "sidebar_tour__step__5__feature_6__title": "İpucu kullan",
+    "sidebar_tour__step__2__description_5": "AI yeniden yazıcı"
   },
   "quota_usage_card": {
     "category__fast_text": "Hızlı AI",

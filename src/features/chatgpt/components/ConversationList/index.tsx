@@ -21,6 +21,7 @@ interface IProps {
   onSelectConversation?: (conversation: IPaginationConversation) => void
   emptyFeedback?: React.ReactNode
   sx?: SxProps
+  disableModalPortal?: boolean
 }
 
 const ConversationList: FC<IProps> = (props) => {
@@ -30,6 +31,7 @@ const ConversationList: FC<IProps> = (props) => {
     emptyFeedback,
     conversationType,
     onSelectConversation,
+    disableModalPortal,
   } = props
   const { resetConversation, currentSidebarConversationType } =
     useClientConversation()
@@ -50,6 +52,7 @@ const ConversationList: FC<IProps> = (props) => {
     },
     done,
   )
+
   const renderEmptyFeedback = useCallback(() => {
     if (emptyFeedback) {
       return emptyFeedback
@@ -63,6 +66,7 @@ const ConversationList: FC<IProps> = (props) => {
       type: conversationType,
     })
   }, [conversationType])
+
   return (
     <Stack height={'100%'} spacing={1} p={1} sx={sx}>
       <Stack
@@ -81,6 +85,7 @@ const ConversationList: FC<IProps> = (props) => {
             hasNextPage={hasNextPage}
             isNextPageLoading={isFetching}
             onSelectItem={onSelectConversation}
+            disableModalPortal={disableModalPortal}
           />
         </AppLoadingLayout>
         {!loading && paginationConversations.length === 0
@@ -100,13 +105,24 @@ const ConversationList: FC<IProps> = (props) => {
           <ClearAllChatButton
             onDelete={() => {
               const needCleanConversationType =
-                currentSidebarConversationType.toLowerCase()
+                currentSidebarConversationType === 'ContextMenu'
+                  ? 'contextMenu'
+                  : currentSidebarConversationType.toLowerCase()
+
               updateSidebarSettings({
                 [needCleanConversationType]: {
                   conversationId: '',
                 },
               }).then(() => {
-                updateSidebarConversationType('Chat')
+                switch (needCleanConversationType) {
+                  case 'contextMenu': {
+                    updateSidebarConversationType('ContextMenu')
+                    return
+                  }
+                  default: {
+                    updateSidebarConversationType('Chat')
+                  }
+                }
               })
               resetConversation()
             }}

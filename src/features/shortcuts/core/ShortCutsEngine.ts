@@ -18,20 +18,23 @@ import {
   ActionGetChatMessagesContentOfWebPage,
   ActionGetContentsOfSearchEngine,
   ActionGetContentsOfURL,
-  ActionGetContentsOfWebPage,
   ActionGetDictionaryValue,
   ActionGetEmailContentsOfWebPage,
   ActionGetEmailDraftOfWebPage,
   ActionGetItemFromList,
   ActionGetPDFContentsOfCRX,
+  ActionGetPDFFileOfCRX,
   ActionGetReadabilityContentsOfWebPage,
+  ActionGetReadabilityMarkdownOfWebPage,
   ActionGetSocialMediaPostContentOfWebPage,
   ActionGetSocialMediaPostDraftOfWebPage,
   ActionGetYoutubeTranscriptOfURL,
   ActionInsertUserInput,
   ActionList,
+  ActionMaxAICreateDocument,
   ActionMaxAIProcessBuiltInParameters,
   ActionMaxAIResponseRelated,
+  ActionMaxAIUploadDocument,
   ActionOpenURLs,
   ActionOperationElement,
   ActionRenderChatGPTPrompt,
@@ -95,17 +98,19 @@ const ActionClassMap = {
   [ActionGetItemFromList.type]: ActionGetItemFromList,
   // web
   [ActionURL.type]: ActionURL,
-  [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
   [ActionGetContentsOfURL.type]: ActionGetContentsOfURL,
   [ActionGetContentsOfSearchEngine.type]: ActionGetContentsOfSearchEngine,
   [ActionFetchActions.type]: ActionFetchActions,
   [ActionGetYoutubeTranscriptOfURL.type]: ActionGetYoutubeTranscriptOfURL,
   [ActionGetPDFContentsOfCRX.type]: ActionGetPDFContentsOfCRX,
+  [ActionGetPDFFileOfCRX.type]: ActionGetPDFFileOfCRX,
   [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
   [ActionGetReadabilityContentsOfWebPage.type]:
     ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityMarkdownOfWebPage.type]:
+    ActionGetReadabilityMarkdownOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
   [ActionGetSocialMediaPostDraftOfWebPage.type]:
@@ -132,6 +137,8 @@ const ActionClassMap = {
   [ActionMaxAIProcessBuiltInParameters.type]:
     ActionMaxAIProcessBuiltInParameters,
   [ActionMaxAIResponseRelated.type]: ActionMaxAIResponseRelated,
+  [ActionMaxAICreateDocument.type]: ActionMaxAICreateDocument,
+  [ActionMaxAIUploadDocument.type]: ActionMaxAIUploadDocument,
 }
 
 class ShortCutsEngine implements IShortcutEngine {
@@ -418,7 +425,7 @@ class ShortCutsEngine implements IShortcutEngine {
 }
 export default class ShortCutsEngineFactory {
   static shortCutsEngineMap: Map<string, ShortCutsEngine> = new Map()
-  static getShortCutsEngine(conversationId: string) {
+  static getShortCutsEngine(conversationId: string): ShortCutsEngine | null {
     ShortCutsEngineFactory.removeUnnecessaryShortcutsEngine()
     if (ShortCutsEngineFactory.shortCutsEngineMap.has(conversationId)) {
       return (

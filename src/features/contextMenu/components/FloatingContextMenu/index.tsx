@@ -1,7 +1,9 @@
 import {
   autoUpdate,
+  FloatingElement,
   FloatingPortal,
   Placement,
+  ReferenceElement,
   useClick,
   useDismiss,
   useFloating,
@@ -10,20 +12,26 @@ import {
 import SendIcon from '@mui/icons-material/Send'
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
-import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
-import { useTheme } from '@mui/material/styles'
+import { SxProps, Theme, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { CSSProperties, FC, useEffect, useMemo, useRef } from 'react'
+import React, {
+  CSSProperties,
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import DevContent from '@/components/DevContent'
+import MaxAIBetaFeatureWrapper from '@/components/MaxAIBetaFeatureWrapper'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { CHROME_EXTENSION_FLOATING_CONTEXT_MENU_MIN_WIDTH } from '@/constants'
-import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import useClientConversationListener from '@/features/chatgpt/hooks/useClientConversationListener'
 import {
@@ -34,17 +42,13 @@ import {
   FloatingContextWindowChangesState,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
-import {
-  FloatingContextMenuPopupSettingButton,
-  FloatingContextMenuShortcutButtonGroup,
-} from '@/features/contextMenu/components/FloatingContextMenu/buttons'
-import FloatingContextMenuChatHistoryButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuChatHistoryButton'
-import FloatingContextMenuContinueChatButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuContinueChatButton'
+import { FloatingContextMenuShortcutButtonGroup } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import DiscardChangesModal from '@/features/contextMenu/components/FloatingContextMenu/DiscardChangesModal'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import FloatingContextMenuTitleBar from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuTitleBar'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
+import useContinueInSidebarListener from '@/features/contextMenu/hooks/useContinueInSidebarListener'
 import useFloatingContextMenuDraft, {
   useFloatingContextMenuDraftHistoryChange,
 } from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
@@ -59,19 +63,22 @@ import {
 import useButtonClickedTracker from '@/features/mixpanel/hooks/useButtonClickedTracker'
 import { OnboardingTooltipPortal } from '@/features/onboarding/components/OnboardingTooltip'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
+import SidebarChatVoiceInputButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatVoiceInputButton'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import {
   closeGlobalVideoPopup,
   isGlobalVideoPopupOpen,
 } from '@/features/video_popup/utils'
-import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
+import { getBrowserZoom, getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
+import FloatingContextMenuContinueInSidebarButton from './buttons/FloatingContextMenuContinueInSidebarButton'
+import ContextText from './ContextText'
 import ResizeAnchor from './ResizeAnchor'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const FloatingContextMenu: FC<{
-  root: any
+  root?: HTMLElement
 }> = (props) => {
   useButtonClickedTracker('floatingMenu')
 
@@ -91,6 +98,7 @@ const FloatingContextMenu: FC<{
   const {
     currentFloatingContextMenuDraft,
     activeAIResponseMessage,
+    activeMessageIndex,
     historyMessages,
   } = useFloatingContextMenuDraft()
 
@@ -113,6 +121,7 @@ const FloatingContextMenu: FC<{
         floatingDropdownMenu.rootRect?.width || 0,
         CHROME_EXTENSION_FLOATING_CONTEXT_MENU_MIN_WIDTH - 32,
       )
+
       if (minWidth > 1280) {
         return 1280
       }
@@ -184,6 +193,17 @@ const FloatingContextMenu: FC<{
   })
 
   floatingSizeOffsetRef.current.minWidth = currentWidth
+  const mountedAutoUpdate = useCallback(
+    (
+      reference: ReferenceElement,
+      floating: FloatingElement,
+      update: () => void,
+    ) =>
+      autoUpdate(reference, floating, update, {
+        animationFrame: true,
+      }),
+    [],
+  )
 
   const { x, y, strategy, refs, context, update } = useFloating({
     open: floatingDropdownMenu.open,
@@ -267,7 +287,7 @@ const FloatingContextMenu: FC<{
       referenceElementRef,
       floatingSizeOffsetRef,
     ),
-    whileElementsMounted: autoUpdate,
+    whileElementsMounted: mountedAutoUpdate,
   })
   const click = useClick(context)
   const dismiss = useDismiss(context, {
@@ -281,21 +301,19 @@ const FloatingContextMenu: FC<{
    * 拖拽移动实现
    */
   const isDragRef = React.useRef(false)
-  const lastMousePostionRef = React.useRef<{
-    x: number
-    y: number
-  }>({
-    x: 0,
-    y: 0,
-  })
+  const zoomRef = useRef(1)
+  // const lastMousePostionRef = React.useRef<{
+  //   x: number
+  //   y: number
+  // }>({
+  //   x: 0,
+  //   y: 0,
+  // })
   // const dragStartRef = React.useRef(false)
   const handleDragStart = (event: React.MouseEvent) => {
     event.preventDefault()
     isDragRef.current = true
-    lastMousePostionRef.current = {
-      x: event.clientX,
-      y: event.clientY,
-    }
+    zoomRef.current = getBrowserZoom()
   }
 
   useEffect(() => {
@@ -308,7 +326,6 @@ const FloatingContextMenu: FC<{
       floatingSizeOffsetRef.current.dx = 0
       floatingSizeOffsetRef.current.dy = 0
       floatingSizeOffsetRef.current.resized = false
-
       update()
     }
   }, [floatingDropdownMenu.open])
@@ -318,41 +335,41 @@ const FloatingContextMenu: FC<{
       if (isDragRef.current) {
         event.preventDefault()
         isDragRef.current = false
-        // referenceElementDragOffsetRef.current = {
-        //   x: referenceElementDragOffsetRef.current.x,
-        //   y: referenceElementDragOffsetRef.current.y,
-        //   dragged: true,
-        // }
       }
     }
 
     const handleDragMove = (event: MouseEvent) => {
-      if (isDragRef.current) {
-        event.preventDefault()
-        const dx = event.clientX - lastMousePostionRef.current.x
-        const dy = event.clientY - lastMousePostionRef.current.y
-        lastMousePostionRef.current.x = event.clientX
-        lastMousePostionRef.current.y = event.clientY
+      if (!isDragRef.current) return
 
-        referenceElementDragOffsetRef.current = {
-          x: referenceElementDragOffsetRef.current.x + dx,
-          y: referenceElementDragOffsetRef.current.y + dy,
-          dragged: true,
-        }
-        /**
-         * FloatingContextMenuList里的MenuList绑定的是referenceElement的DOM元素位置关系
-         * 当前这里每次拖动的时候修改的是MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID这个DOM
-         * 所以拖拽的时候MenuList没有变化，这里简单的做法是触发一次DropdownMenu的更新修改referenceElement元素
-         */
-        if (referenceElementRef.current) {
-          if (referenceElementRef.current.style.marginLeft) {
-            referenceElementRef.current.style.marginLeft = ''
-          } else {
-            referenceElementRef.current.style.marginLeft = '0.5px'
-          }
-        }
-        update()
+      const dx = event.movementX / zoomRef.current
+      const dy = event.movementY / zoomRef.current
+
+      referenceElementDragOffsetRef.current = {
+        x: referenceElementDragOffsetRef.current.x + dx,
+        y: referenceElementDragOffsetRef.current.y + dy,
+        dragged: true,
       }
+      /**
+       * FloatingContextMenuList里的MenuList绑定的是referenceElement的DOM元素位置关系
+       * 当前这里每次拖动的时候修改的是MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID这个DOM
+       * 所以拖拽的时候MenuList没有变化，这里简单的做法是触发一次DropdownMenu的更新修改referenceElement元素
+       *
+       * floating-ui源码中只监听了resize、scroll以及这里要用到的IntersectionObserver，
+       * 若想要更新后代元素，只能采用触发IntersectionObserver的margin change行为了
+       * https://github.com/floating-ui/floating-ui/blob/81a7da464c713e3432d1015cafb7566675a22282/packages/dom/src/autoUpdate.ts#L139
+       * IntersectionObserver MDN: https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver
+       */
+      if (referenceElementRef.current) {
+        if (referenceElementRef.current.style.marginLeft) {
+          referenceElementRef.current.style.marginLeft = ''
+        } else {
+          referenceElementRef.current.style.marginLeft = '0.5px'
+        }
+      }
+      setTimeout(() => {
+        update()
+      }, 10)
+      event.preventDefault()
     }
     document.addEventListener('mousemove', handleDragMove)
     document.addEventListener('mouseup', handleDragEnd)
@@ -361,7 +378,7 @@ const FloatingContextMenu: FC<{
       document.removeEventListener('mouseup', handleDragEnd)
     }
   }, [update, floatingDropdownMenu.open])
-  useClientConversationListener()
+  useClientConversationListener(true)
   useFloatingContextMenuDraftHistoryChange()
   // 选中区域高亮
   useEffect(() => {
@@ -402,8 +419,6 @@ const FloatingContextMenu: FC<{
       : t('client:floating_menu__input__placeholder')
   }, [t, floatingDropdownMenu.open, activeAIResponseMessage])
 
-  const markdownBodyRef = useRef<HTMLDivElement>(null)
-
   useEffect(() => {
     if (refs.floating.current) {
       refs.floating.current.style.width = `${currentWidth}px`
@@ -417,6 +432,23 @@ const FloatingContextMenu: FC<{
 
     update()
   }
+
+  const actionsBtnColorSxMemo = useMemo<SxProps<Theme>>(() => {
+    return {
+      color: 'text.secondary',
+      borderColor: (t) => {
+        return t.palette.mode === 'dark'
+          ? 'rgba(255, 255, 255, 0.08)'
+          : 'rgba(0, 0, 0, 0.16)'
+      },
+      '&:hover': {
+        color: 'primary.main',
+        borderColor: 'primary.main',
+      },
+    }
+  }, [])
+
+  useContinueInSidebarListener()
 
   return (
     <FloatingPortal root={root}>
@@ -438,7 +470,7 @@ const FloatingContextMenu: FC<{
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
         {...getFloatingProps()}
       >
-        {/* 当开始回答或有回答历史的时候一个调整大小 */}
+        {/* 当开始回答或有回答历史的时候可以调整大小 */}
         {(historyMessages.length !== 0 || loading) && (
           <ResizeAnchor onResize={handleResize} />
         )}
@@ -452,9 +484,10 @@ const FloatingContextMenu: FC<{
           referenceElementOpen={floatingDropdownMenu.open}
           referenceElementRef={referenceElementRef}
           referenceElement={
-            <div
+            <Box
               ref={referenceElementRef}
-              style={{
+              component='div'
+              sx={{
                 boxSizing: 'border-box',
                 border: '1px solid',
                 borderColor: palette.customColor.borderColor,
@@ -509,20 +542,25 @@ const FloatingContextMenu: FC<{
                   </Typography>
                 </DevContent>
               </Box>
-              <FloatingContextMenuTitleBar />
-              <WritingMessageBox markdownBodyRef={markdownBodyRef} />
+              <FloatingContextMenuTitleBar
+                showModelSelector={floatingDropdownMenu.showModelSelector}
+              />
+
+              {activeMessageIndex === -1 && !loading && <ContextText />}
+
+              <WritingMessageBox />
+
               {floatingDropdownMenu.open && (
                 <DevContent>
                   <DevConsole />
                 </DevContent>
               )}
+
               {floatingDropdownMenu.open && (
                 <ActionSetVariablesModal
-                  sx={{
-                    mt: 2,
-                  }}
                   showCloseButton={false}
-                  showDiscardButton={true}
+                  showDiscardButton
+                  // showDiscardButton={false}
                   onInputCustomVariable={({ data, variables }) => {
                     // 判断是否有输入内容的输入框，过滤系统参数
                     const isInput = variables?.some((variable) =>
@@ -565,182 +603,149 @@ const FloatingContextMenu: FC<{
                 />
               )}
 
-              <Stack width={'100%'} gap={0.5}>
-                <Stack direction={'row'} alignItems={'end'} gap={1}>
-                  <Stack
-                    direction={'row'}
-                    width={0}
-                    flex={1}
-                    alignItems={'center'}
-                    spacing={1}
-                    justifyContent={'left'}
-                  >
-                    {loading ? (
-                      <>
-                        <Typography fontSize={'16px'} color={'primary.main'}>
-                          {t(
-                            'client:floating_menu__input__running_placeholder',
-                          )}
-                        </Typography>
-                        <CircularProgress size={'16px'} />
-                      </>
-                    ) : (
-                      <>
-                        <AutoHeightTextarea
-                          minLine={1}
-                          stopPropagation
-                          // 在PDF页面下，AI返回内容loading由true变为false，input组件重新生成
-                          // 输入内容menuList为空数组后会出现input失去焦点的问题
-                          // 问题应该AutoHeightTextarea组件重新mount和DropdownMenu组件FloatingFocusManager unmount有关
-                          // 没排查出具体的原因，但是加入以下autoFocus就解决了
-                          autoFocus={floatingDropdownMenu.open}
-                          onKeydownCapture={(event) => {
-                            if (
-                              floatingDropdownMenu.open &&
-                              contextWindowList.length
-                            ) {
-                              // drop menu打开，不劫持组件内的onKeyDown行为
-                              return false
-                            }
-                            if (
-                              event.key === 'ArrowUp' ||
-                              event.key === 'ArrowDown'
-                            ) {
-                              // drop menu关闭，上下按键禁止冒泡处理，具体原因在DropdownMenu.tsx文件useInteractions方法注释
-                              event.stopPropagation()
-                              return true
-                            }
-                            return false
-                          }}
-                          expandNode={
-                            floatingDropdownMenu.open && (
-                              <ChatIconFileUpload
-                                TooltipProps={{
-                                  placement: safePlacement.contextMenuPlacement,
-                                  floatingMenuTooltip: true,
-                                }}
-                                direction={'column'}
-                                size={'tiny'}
-                              />
-                            )
-                          }
-                          placeholder={textareaPlaceholder}
-                          InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
-                          sx={{
-                            border: 'none',
-                            '& > div': {
-                              '& > div': { p: 0 },
-                              '& > textarea': { p: 0 },
-                              '& > .max-ai-user-input__expand': {
-                                '&:has(> div)': {
-                                  pr: 1,
-                                },
-                              },
-                            },
-                            borderRadius: 0,
-                            minHeight: isSettingCustomVariables ? 0 : '24px',
-                            height: isSettingCustomVariables
-                              ? '0!important'
-                              : 'unset',
-                            visibility: isSettingCustomVariables
-                              ? 'hidden'
-                              : 'visible',
-                          }}
-                          onEnter={askAIWithContextWindow}
-                        />
-                      </>
-                    )}
-                    {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
-                    <FloatingContextMenuShortcutButtonGroup />
-                  </Stack>
-                  <WritingMessageBoxPagination />
-                </Stack>
-                <Stack
-                  direction={'row'}
-                  justifyContent='space-between'
-                  onClick={() => {
-                    const textareaEl =
-                      getMaxAIFloatingContextMenuRootElement()?.querySelector(
-                        `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-                      ) as HTMLTextAreaElement
-                    if (textareaEl) {
-                      setTimeout(() => {
-                        textareaEl?.focus()
-                      }, 1)
-                    }
-                  }}
-                >
-                  {floatingDropdownMenu.open &&
-                    floatingDropdownMenu.showModelSelector && (
-                      <AIProviderModelSelectorButton
-                        disabled={
-                          !floatingDropdownMenu.open ||
-                          !floatingDropdownMenu.showModelSelector
-                        }
-                        sidebarConversationType={'ContextMenu'}
-                        size={'small'}
-                      />
-                    )}
-                  {!loading && (
+              {(!isSettingCustomVariables || loading) && (
+                <Stack width={'100%'} gap={0.5}>
+                  <Stack direction={'row'} alignItems={'end'} gap={1}>
                     <Stack
                       direction={'row'}
-                      alignItems='center'
-                      gap={1}
-                      ml={'auto'}
-                      mr={0}
+                      width={0}
+                      flex={1}
+                      alignItems={'center'}
+                      spacing={1}
+                      justifyContent={'left'}
                     >
-                      <FloatingContextMenuContinueChatButton />
-                      <FloatingContextMenuPopupSettingButton />
-                      <Divider
-                        orientation='vertical'
-                        variant='middle'
-                        flexItem
-                        sx={{
-                          my: 0.5,
-                        }}
-                      />
-                      <FloatingContextMenuChatHistoryButton
-                        TooltipProps={{
-                          placement: safePlacement.contextMenuPlacement,
-                          floatingMenuTooltip: true,
-                        }}
-                      />
-                      <TextOnlyTooltip
-                        floatingMenuTooltip
-                        title={t('client:floating_menu__button__send_to_ai')}
-                        description={'⏎'}
-                        placement={safePlacement.contextMenuPlacement}
-                      >
-                        <IconButton
-                          sx={{
-                            height: '28px',
-                            width: '28px',
-                            borderRadius: '8px',
-                            flexShrink: 0,
-                            alignSelf: 'end',
-                            alignItems: 'center',
-                            p: 0,
-                            m: 0,
-                            cursor: inputValue ? 'pointer' : 'default',
-                            bgcolor: inputValue
-                              ? 'primary.main'
-                              : 'rgb(219,219,217)',
-                            '&:hover': {
-                              bgcolor: inputValue
-                                ? 'primary.main'
-                                : 'rgb(219,219,217)',
-                            },
-                          }}
-                          onClick={askAIWithContextWindow}
-                        >
-                          <SendIcon sx={{ color: '#fff', fontSize: 16 }} />
-                        </IconButton>
-                      </TextOnlyTooltip>
+                      {loading ? (
+                        <>
+                          <Typography fontSize={'16px'} color={'primary.main'}>
+                            {t(
+                              'client:floating_menu__input__running_placeholder',
+                            )}
+                          </Typography>
+                          <CircularProgress size={'16px'} />
+                        </>
+                      ) : (
+                        <>
+                          <AutoHeightTextarea
+                            minLine={1}
+                            stopPropagation
+                            // 在PDF页面下，AI返回内容loading由true变为false，input组件重新生成
+                            // 输入内容menuList为空数组后会出现input失去焦点的问题
+                            // 问题应该AutoHeightTextarea组件重新mount和DropdownMenu组件FloatingFocusManager unmount有关
+                            // 没排查出具体的原因，但是加入以下autoFocus就解决了
+                            autoFocus={floatingDropdownMenu.open}
+                            onKeydownCapture={(event) => {
+                              if (
+                                floatingDropdownMenu.open &&
+                                contextWindowList.length
+                              ) {
+                                // drop menu打开，不劫持组件内的onKeyDown行为
+                                return false
+                              }
+                              if (
+                                event.key === 'ArrowUp' ||
+                                event.key === 'ArrowDown'
+                              ) {
+                                // drop menu关闭，上下按键禁止冒泡处理，具体原因在DropdownMenu.tsx文件useInteractions方法注释
+                                event.stopPropagation()
+                                return true
+                              }
+                              return false
+                            }}
+                            expandNode={
+                              floatingDropdownMenu.open && (
+                                <ChatIconFileUpload
+                                  TooltipProps={{
+                                    placement:
+                                      safePlacement.contextMenuPlacement,
+                                    floatingMenuTooltip: true,
+                                  }}
+                                  direction={'column'}
+                                  size={'tiny'}
+                                />
+                              )
+                            }
+                            placeholder={textareaPlaceholder}
+                            InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
+                            sx={{
+                              border: 'none',
+                              '& > div': {
+                                '& > div': { p: 0 },
+                                '& > textarea': { p: 0 },
+                                '& > .max-ai-user-input__expand': {
+                                  '&:has(> div)': {
+                                    pr: 1,
+                                  },
+                                },
+                              },
+                              borderRadius: 0,
+                              minHeight: isSettingCustomVariables ? 0 : '24px',
+                              height: isSettingCustomVariables
+                                ? '0!important'
+                                : 'unset',
+                              visibility: isSettingCustomVariables
+                                ? 'hidden'
+                                : 'visible',
+                            }}
+                            onEnter={askAIWithContextWindow}
+                          />
+                        </>
+                      )}
+
+                      {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
+                      <FloatingContextMenuShortcutButtonGroup />
                     </Stack>
-                  )}
+
+                    {!loading && (
+                      <>
+                        <FloatingContextMenuContinueInSidebarButton />
+                        <MaxAIBetaFeatureWrapper
+                          betaFeatureName={'voice_input'}
+                        >
+                          <Box>
+                            <SidebarChatVoiceInputButton
+                              sx={actionsBtnColorSxMemo}
+                              inputMediator='floatingMenuInputMediator'
+                            />
+                          </Box>
+                        </MaxAIBetaFeatureWrapper>
+
+                        <TextOnlyTooltip
+                          floatingMenuTooltip
+                          title={t('client:floating_menu__button__send_to_ai')}
+                          description={'⏎'}
+                          placement={safePlacement.contextMenuPlacement}
+                        >
+                          <IconButton
+                            sx={{
+                              height: '28px',
+                              width: '28px',
+                              borderRadius: '8px',
+                              flexShrink: 0,
+                              alignSelf: 'end',
+                              alignItems: 'center',
+                              p: 0,
+                              m: 0,
+                              cursor: inputValue ? 'pointer' : 'default',
+                              bgcolor: (t) =>
+                                inputValue
+                                  ? 'primary.main'
+                                  : t.palette.mode === 'dark'
+                                  ? 'rgba(255, 255, 255, 0.2)'
+                                  : 'rgb(219,219,217)',
+                            }}
+                            onClick={askAIWithContextWindow}
+                          >
+                            <SendIcon sx={{ color: '#fff', fontSize: 16 }} />
+                          </IconButton>
+                        </TextOnlyTooltip>
+                      </>
+                    )}
+
+                    <WritingMessageBoxPagination />
+                  </Stack>
                 </Stack>
-              </Stack>
-            </div>
+              )}
+            </Box>
           }
           root={root}
         />

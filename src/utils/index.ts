@@ -299,3 +299,7 @@ export const clientLogUserUsageInfo = async (params: {
 
 export const wait = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms))
+
+export const getBrowserZoom = () => {
+  return parseFloat((window.outerWidth / window.innerWidth).toFixed(2))
+}

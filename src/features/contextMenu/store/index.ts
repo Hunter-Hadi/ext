@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil'
 
 import { IRangyRect, ISelection } from '@/features/contextMenu/types'
+import { AppDBStorageState } from '@/store'
 
 export const ContextMenuSettingsState = atom<{
   closeBeforeRefresh: boolean
@@ -56,6 +57,30 @@ export const FloatingDropdownMenuState = atom<{
   },
 })
 
+export const ContextMenuOpenSelector = selector<boolean>({
+  key: 'ContextMenuOpenSelector',
+  get(opts) {
+    return opts.get(FloatingDropdownMenuState).open
+  },
+})
+
+/**
+ * 记录会话是否已经接管到Sidebar了，目前只对always处理
+ */
+export const ContextMenuPinedToSidebarState = atom({
+  key: 'ContextMenuPinedToSidebarState',
+  default: false,
+})
+
+export const ContextMenuConversationState = atom<{
+  conversationId: string
+}>({
+  key: 'ContextMenuConversationState',
+  default: {
+    conversationId: '',
+  },
+})
+
 export const FloatingDropdownMenuLastFocusRangeState = atom<{
   range: Range | null
   selectionText: string | null
@@ -96,6 +121,22 @@ export const FloatingDropdownMenuSelectedItemState = atom<{
     lastHoverContextMenuId: null,
   },
 })
+
+export const PinToSidebarState = atom({
+  key: 'PinToSiderbarState',
+  default: {
+    once: false,
+    always: false,
+  },
+})
+
+export const AlwaysPinToSidebarSelector = selector<boolean>({
+  key: 'AlwaysPinToSidebarSelector',
+  get({ get }) {
+    return get(AppDBStorageState).userSettings?.alwaysContinueInSidebar || false
+  },
+})
+
 export const FloatingDropdownMenuItemsSelector = selector<string[]>({
   key: 'FloatingDropdownMenuItemsSelector',
   get: ({ get }) => {

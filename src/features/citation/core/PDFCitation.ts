@@ -187,8 +187,14 @@ export default class PDFCitation
 
   /**
    * 查找文本
+   * TODO 这里后续更改成和page citation一样的匹配逻辑
+   * 1. 移除所有换行符去匹配（避免后端返回格式里存在编码问题，比如换行符之类的）
+   * 2. 匹配到的节点整个父标签高亮
    */
   async findText(searchString: string, startIndex: number) {
+    // 后端目前返回的citation里可能会是\r\n，原文是\n，前端先简单处理一下
+    searchString = searchString.replace(/\r\n/g, '\n')
+
     if (!searchString) {
       return { title: '', matches: [] }
     }

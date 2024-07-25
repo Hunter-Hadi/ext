@@ -7,6 +7,7 @@ import {
   IShortcutEngineExternalEngine,
   withLoadingDecorators,
 } from '@/features/shortcuts'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { TranscriptTimestampedParamType } from '@/features/shortcuts/actions/web/socialMedia/ActionGetYoutubeSocialMediaSummaryInfo/ActionGetYoutubeSocialMediaTranscriptTimestamped'
 import Action from '@/features/shortcuts/core/Action'
@@ -198,5 +199,10 @@ export class ActionMaxAIResponseRelated extends Action {
         console.error('ActionMaxAIResponseRelated', e)
       }
     }
+  }
+
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessageStatus(params)
+    return true
   }
 }

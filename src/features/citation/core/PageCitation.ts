@@ -185,6 +185,22 @@ export default class PageCitation implements ICitationService {
     // 去除所有空格换行符匹配
     searchString = searchString.replace(/\s+/g, '')
 
+    // 去除header和footer的文本
+    const header = document.querySelector('header')
+    const footer = document.querySelector('footer')
+    if (header) {
+      searchString = searchString.replace(
+        header.innerText.replace(/\s+/g, ''),
+        '',
+      )
+    }
+    if (footer) {
+      searchString = searchString.replace(
+        footer.innerText.replace(/\s+/g, ''),
+        '',
+      )
+    }
+
     if (!searchString) {
       return { title: '', matches: [] }
     }
@@ -205,6 +221,7 @@ export default class PageCitation implements ICitationService {
 
     try {
       const textNodes = getVisibleTextNodes(document.body)
+      // const txt = getFormattedTextFromNodes(textNodes)
       textNodes.some((item, index) => {
         if (Date.now() - this.searchTime > 1000 * 20) {
           // 查询时间大于20s超时返回

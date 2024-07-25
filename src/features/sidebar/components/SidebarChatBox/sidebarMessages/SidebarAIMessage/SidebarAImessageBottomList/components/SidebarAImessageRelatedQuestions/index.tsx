@@ -5,15 +5,20 @@ import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IAIResponseOriginalMessageMetaDeepRelatedData } from '@/features/indexed_db/conversations/models/Message'
+import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 
 const SidebarAImessageRelatedQuestions: FC<{
   relatedQuestions: IAIResponseOriginalMessageMetaDeepRelatedData[]
 }> = (props) => {
   const { relatedQuestions } = props
   const { askAIQuestion } = useClientChat()
+  const { createSearchWithAI } = useSearchWithAI()
+  const { currentSidebarConversationType } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
+
   return (
     <Stack>
       {Array.isArray(relatedQuestions) &&
@@ -26,13 +31,17 @@ const SidebarAImessageRelatedQuestions: FC<{
               }}
               key={index}
               onClick={async () => {
-                await askAIQuestion({
-                  type: 'user',
-                  text: relatedQuestion.title,
-                  meta: {
-                    includeHistory: true,
-                  },
-                })
+                if (currentSidebarConversationType === 'Search') {
+                  await createSearchWithAI(relatedQuestion.title, true)
+                } else {
+                  await askAIQuestion({
+                    type: 'user',
+                    text: relatedQuestion.title,
+                    meta: {
+                      includeHistory: true,
+                    },
+                  })
+                }
               }}
             >
               <Stack width={'100%'}>

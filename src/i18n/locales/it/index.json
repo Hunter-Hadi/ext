@@ -67,7 +67,8 @@
     "terms_of_service": "Termini di servizio",
     "shortcut": "Scorciatoia",
     "yearly": "Annuale",
-    "monthly": "Mensile"
+    "monthly": "Mensile",
+    "continue_in_contextmenu": "Continua sempre nel menu contestuale"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -870,7 +871,7 @@
     "provider__chatgpt__upload_file_error__total_too_large__text": "I file caricati sono troppo grandi. Utilizza un modello di intelligenza artificiale con una finestra di contesto più ampia o carica file più piccoli.",
     "chat__user_message__contexts__file__preview__tips": "La formattazione potrebbe essere inconsistente rispetto alla fonte.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "Moltiplica per 10 la tua creatività e produttività con i modelli di arte AI più avanzati. Trasforma rapidamente le tue visioni in immagini sbalorditive. Semplice, potente, trasformativo.",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "Limite mensile di query di immagini superato. Esegui l'upgrade ora per query illimitate o controlla il mese prossimo quando le query mensili vengono ripristinate.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "Aumenta la tua creatività e produttività di 10 volte con i modelli d'arte AI più avanzati. Trasforma rapidamente le tue visioni in immagini sorprendenti. Semplice, potente, trasformativo.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__free__description": "Il nuovo modello di punta di OpenAI offre un'intelligenza di livello GPT-4, con risposte più aggiornate, è 2 volte più veloce e può ragionare su audio, visione e testo in tempo reale.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__paid__description": "Limite mensile delle query di testo intelligente superato. Esegui l'upgrade ora per ottenere query illimitate o controlla il mese prossimo quando le query mensili vengono ripristinate.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__free__description": "Il modello più intelligente di Anthropic, con una capacità di 200k-token. Sperimenta le prestazioni migliori del mercato su compiti altamente complessi, prompt aperti e scenari non visti con una straordinaria fluidità e comprensione simile a quella umana.",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "Sblocca tutte le funzionalità",
     "pricing__plan_features__pro__feature1__item2__subtitle": "Solo GPT-4o. Per sbloccare tutti gli altri modelli AI, passa al piano MaxAI Elite.",
     "pricing__upgrade__popper_card__item4__title": "Miglior rapporto qualità-prezzo",
+    "floating_menu__button__show_detail": "Mostra dettagli",
+    "floating_menu__textarea__placeholder": "Digita o incolla qui il tuo testo e chiedi all'IA di migliorarlo, correggerlo, tradurlo, riassumerlo e altro ancora.",
+    "floating_menu__always_pin_sidebar_title": "Sempre fissato alla barra laterale",
+    "sidebar__tabs__rewrite__title": "Riscrivi",
+    "sidebar__tabs__rewrite__tooltip": "Riscrittura IA",
+    "home_view__rewrite__title": "Riscrittore IA",
+    "home_view__rewrite__description": "Risparmia tempo nella correzione e perfezionamento delle tue parole.",
+    "context_window__chat_history__continue_in_rewrite__title": "Continua nella riscrittura",
     "permission__pricing_hook__context_menu__title": "Aggiorna per sbloccare l'AI riscrittore illimitato",
     "permission__pricing_hook__context_menu__description": "Con l'AI riscrittore di MaxAI, puoi risparmiare tempo nella correzione e perfezionamento delle tue parole in tutto il web, dall'email ai social media e oltre.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "Accedi a GPT-4o-mini",
@@ -1020,7 +1029,12 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Migliorata comprensione multilingue",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini è il modello su piccola scala più avanzato di OpenAI, che offre capacità multimodali. Questo compatto prodigio fornisce output di testo con intelligenza superiore a GPT-3.5-Turbo mantenendo una velocità comparabile. Ideale per compiti più piccoli, inclusi le applicazioni legate alla visione.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "Aggiornamento per GPT-4o-mini illimitato",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Prova il modello su piccola scala più intelligente di OpenAI fino ad ora. GPT-4o-mini offre prestazioni superiori rispetto a GPT-3.5-turbo, con capacità multimodali e risposte ultraveloci."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "Prova il modello su piccola scala più intelligente di OpenAI fino ad ora. GPT-4o-mini offre prestazioni superiori rispetto a GPT-3.5-turbo, con capacità multimodali e risposte ultraveloci.",
+    "floating_menu__always_pin_to_sidebar": "Mostra sempre le risposte nella barra laterale",
+    "floating_menu__pint_once_to_sidebar": "Mostra la risposta nella barra laterale una volta",
+    "floating_menu__always_unpin_to_sidebar": "Mostra sempre le risposte nel menu contestuale",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Sintesi punti chiave",
+    "context_window__chat_history__continue_in_sidebar__title": "Continua nella barra laterale"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",
@@ -1329,7 +1343,7 @@
     "sidebar_tour__step__1__title": "Scegli la tua lingua preferita dell'interfaccia",
     "sidebar_tour__step__2__title": "Aumenta la tua produttività del 10X con l'IA",
     "sidebar_tour__step__2__description_1": "Chiedi qualsiasi cosa all'IA",
-    "sidebar_tour__step__2__description_2": "Sintetizza e chiedi informazioni sulla pagina",
+    "sidebar_tour__step__2__description_2": "Sintetizza e chiedi riguardo a questa pagina",
     "sidebar_tour__step__2__description_3": "Ricerca AI",
     "sidebar_tour__step__2__description_4": "Arte AI",
     "sidebar_tour__step__3__title": "Cambia modello di IA",
@@ -1342,7 +1356,8 @@
     "sidebar_tour__step__5__feature_3__title": "Cronologia chat",
     "sidebar_tour__step__5__feature_4__title": "Chat con screenshot",
     "sidebar_tour__step__5__feature_5__title": "Promemoria in un clic",
-    "sidebar_tour__step__5__feature_6__title": "Utilizza il prompt"
+    "sidebar_tour__step__5__feature_6__title": "Utilizza il prompt",
+    "sidebar_tour__step__2__description_5": "Riscrittore AI"
   },
   "quota_usage_card": {
     "category__fast_text": "AI Veloce",

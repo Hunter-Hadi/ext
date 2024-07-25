@@ -16,8 +16,6 @@ type ActionIdentifier =
   | 'ASK_CHATGPT'
   // 插入用户输入框
   | 'INSERT_USER_INPUT'
-  // 获取网页内容
-  | 'GET_CONTENTS_OF_WEBPAGE'
   // 设置变量
   | 'SET_VARIABLE'
   // 设置变量映射
@@ -48,8 +46,12 @@ type ActionIdentifier =
   | 'GET_PDF_PATH_OF_CRX'
   // 从插件上传PDF的内容
   | 'UPLOAD_PDF_OF_CRX'
-  // 从@mozilla/readability获取网页内容
+  // 从插件获取PDF文件
+  | 'GET_PDF_FILE_OF_CRX'
+  // 从@mozilla/readability获取网页纯文本内容
   | 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
+  // 从@mozilla/readability获取网页markdown内容
+  | 'GET_READABILITY_MARKDOWN_OF_WEBPAGE'
   // 从各大邮件网站获取内容
   | 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   // 从各大邮件网站获取草稿
@@ -84,6 +86,10 @@ type ActionIdentifier =
   | 'MAXAI_GET_CHAT_MESSAGES'
   // 获取AI Response后的消息
   | 'MAXAI_RESPONSE_RELATED'
+  // MaxAI 创建document
+  | 'MAXAI_CREATE_DOCUMENT'
+  // MaxAI 上传document
+  | 'MAXAI_UPLOAD_DOCUMENT'
   // 分配 System Prompt 应获取 (Email | Social Media | Chat App website) 页面上下文变量
   | 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIABLE'
   // =========[Scripts]=========

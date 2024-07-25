@@ -67,7 +67,8 @@
     "terms_of_service": "सेवा अटी",
     "shortcut": "शॉर्टकट",
     "yearly": "वार्षिक",
-    "monthly": "मासिक"
+    "monthly": "मासिक",
+    "continue_in_contextmenu": "नेहमी कॉंटेक्स्ट मेनूमध्ये सुरू ठेवा"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -870,7 +871,7 @@
     "provider__chatgpt__upload_file_error__total_too_large__text": "अपलोड केलेल्या फाइलं खूप मोठी आहेत. कृपया एक AI मॉडेल वापरा ज्याचा प्रमाण विंडो जास्त मोठी आहे किंवा लहान फाइल अपलोड करा.",
     "chat__user_message__contexts__file__preview__tips": "स्त्रोतातून स्वरुपण असंगठित असू शकतो.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__free__description": "तुमच्या कल्पनांना आणि उत्पादकतेला 10 वेळा वाढवा आणि सर्वाधिक उन्नत AI कला मॉडेलसह. तुमच्या दृष्टींचे अद्यावत छायाचित्रे झटपट अद्ययावत करा. सोपे, शक्तिशाली, परिवर्तक.",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "मासिक छायाचित्र विचारांची मर्यादा पार केली. असीमित विचारांसाठी आत्तापर्यंत अपग्रेड करा किंवा मासिक विचारांची पुनर्स्थापना होणाऱ्या महिन्यात परत बघा.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description": "तुमच्या सर्वात उन्नत AI कला मॉडेल्ससह 10x आपल्या रचनात्मकतेची आणि उत्पादकतेची वाढ. तुमच्या दृष्टींना झटपट अद्वितीय छायाचित्रांमध्ये बदला. सोपं, शक्तिशाली, परिणामकारक.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__free__description": "OpenAI चे नवीन फ्लॅगशिप मॉडेल GPT-4 स्तराची बुद्धिमत्ता प्रदान करते, अद्याप अद्याप उत्तरे देणारे आहे, 2 वेळा जलद, आणि ऑडिओ, दृष्टी, आणि मजकूरांमध्ये तंत्रज्ञान करण्यास सक्षम आहे.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o__paid__description": "मासिक चतुर टेक्स्ट क्वेरी सीमा पार केली. असीमित क्वेरीसाठी आत्ताच अपग्रेड करा किंवा मासिक क्वेरी पुन्हा सेट केल्यास तपशीलवार पहा.",
     "permission__pricing_hook__advanced_text_usage__claude_3_opus__free__description": "Anthropic चे सर्वाधिक बुद्धिमत्ता असलेले मॉडेल, 200k-टोकन क्षमता सह. अत्यंत कंप्लेक्स कार्यांवर, ओपन-एंडेड प्रॉम्प्ट्सवर आणि दृष्टी-अदृष्टी स्थितींवर उत्कृष्ट चंचलता आणि मानवाशी सामान्य बोधशक्तीच्या सह बाजारातील सर्वोत्कृष्ट प्रदर्शनासाठी.",
@@ -1010,6 +1011,14 @@
     "pricing__upgrade__popper_card__item3__title": "सर्व सुविधांची अनलॉक करा",
     "pricing__plan_features__pro__feature1__item2__subtitle": "केवळ GPT-4o. सर्व इतर AI मॉडेल्स सोडवण्यासाठी, MaxAI Elite योजनेवर अपग्रेड करा.",
     "pricing__upgrade__popper_card__item4__title": "आपल्या पैसांसाठी सर्वोत्तम मूल्य",
+    "floating_menu__button__show_detail": "विवरण दाखवा",
+    "floating_menu__textarea__placeholder": "येथे आपला मजकूर टाइप किव्हा पेस्ट करा आणि AI वर मदतीसाठी, तपासा, भाषांतर करा, सारांश करा आणि अधिक करा.",
+    "floating_menu__always_pin_sidebar_title": "नेहमी साइडबारवर पिन करा",
+    "sidebar__tabs__rewrite__title": "पुनर्लेखन",
+    "sidebar__tabs__rewrite__tooltip": "AI पुनरलेखक",
+    "home_view__rewrite__title": "AI पुनरलेखक",
+    "home_view__rewrite__description": "आपल्या शब्दांचा तपासा करण्यात व सुधारण्यात वेळ वाचवा.",
+    "context_window__chat_history__continue_in_rewrite__title": "पुनरलेखनमध्ये सुरू ठेवा",
     "permission__pricing_hook__context_menu__title": "अमर्यादित AI पुनरलेखन सोडवा",
     "permission__pricing_hook__context_menu__description": "MaxAIच्या AI पुनरलेखकासह, आपण वेबवरील आपले शब्द प्रमाणित करण्यासाठी वेळ काढू आणि पूर्ण करण्यासाठी समय वाचवू शकता, ईमेलपासून सोशल मीडियापर्यंत.",
     "sidebar__promotion_dialog__gpt_4o_mini__content__title": "GPT-4o-mini उपलब्ध करा",
@@ -1020,7 +1029,12 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "वाढलेले बहुभाषी समज",
     "provider__chatgpt__model__gpt_4o_mini__description": "GPT-4o-mini हे OpenAI चे सर्वाधिक उन्नत लहान-पैमान्य मॉडेल आहे, बहुसांविक शक्तियांची पेशकश करणार. हा संक्षिप्त पॉवरहाउस GPT-3.5-Turbo पेक्षा बुद्धिमत्तेच्या आउटपुटसह सापडतो. विचारांसह सामान्य तेजीच्या दराने ठेवताना उत्तम. दृश्य-संबंधित अनुप्रयोग समाविष्ट करून, लहान कामांसाठी आदर्श.",
     "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title": "अनलिमिटेड GPT-4o-mini साठी अपग्रेड करा",
-    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI चे सर्वाधिक बुद्धिमत्ता लहान-पैमान्य मॉडेल अनुभवा. GPT-4o-mini गेल्याच्या GPT-3.5-turbo पेक्षा उत्कृष्ट प्रदर्शन पुरवतो, बहुसांविक क्षमतेसह आणि प्रकाशीन दिलेल्या प्रतिसादांसह."
+    "permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description": "OpenAI चे सर्वाधिक बुद्धिमत्ता लहान-पैमान्य मॉडेल अनुभवा. GPT-4o-mini गेल्याच्या GPT-3.5-turbo पेक्षा उत्कृष्ट प्रदर्शन पुरवतो, बहुसांविक क्षमतेसह आणि प्रकाशीन दिलेल्या प्रतिसादांसह.",
+    "floating_menu__always_pin_to_sidebar": "सदैव प्रतिसादे साइडबारमध्ये दाखवा",
+    "floating_menu__pint_once_to_sidebar": "एकदा साइडबारमध्ये प्रतिसाद दाखवा",
+    "floating_menu__always_unpin_to_sidebar": "सदैव प्रतिसाद दाखवा",
+    "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "मुख्य बिंदू सारांशित करा",
+    "context_window__chat_history__continue_in_sidebar__title": "साइडबारमध्ये सुरू ठेवा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -1329,7 +1343,7 @@
     "sidebar_tour__step__1__title": "आपली पसंतीत भाषा निवडा",
     "sidebar_tour__step__2__title": "AI द्वारे आपली प्रोडक्टिविटी 10X करा",
     "sidebar_tour__step__2__description_1": "AIला काहीही विचारा",
-    "sidebar_tour__step__2__description_2": "पृष्ठ संक्षेप करा आणि विचारा",
+    "sidebar_tour__step__2__description_2": "एकत्रीकरण करा आणि ह्या पृष्ठाबद्दल विचार करा",
     "sidebar_tour__step__2__description_3": "AI शोध",
     "sidebar_tour__step__2__description_4": "AI कला",
     "sidebar_tour__step__3__title": "AI मॉडेल स्विच करा",
@@ -1342,7 +1356,8 @@
     "sidebar_tour__step__5__feature_3__title": "चॅट इतिहास",
     "sidebar_tour__step__5__feature_4__title": "स्क्रीनशॉटसह चॅट",
     "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
-    "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट वापरा"
+    "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट वापरा",
+    "sidebar_tour__step__2__description_5": "AI पुनर्लेखन"
   },
   "quota_usage_card": {
     "category__fast_text": "फास्ट AI",

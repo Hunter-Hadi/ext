@@ -7,7 +7,7 @@ import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 
 import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -41,7 +41,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
   const { updateButtonSettingsWithDomain, toggleButtonSettings } =
     useChromeExtensionButtonSettings()
   const { hideRangy } = useRangy()
-  const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
+  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   const [hover, setHover] = useState(false)
   useEffect(() => {

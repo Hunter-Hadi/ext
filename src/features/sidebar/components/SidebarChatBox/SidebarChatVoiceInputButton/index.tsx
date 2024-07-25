@@ -2,7 +2,7 @@ import MicIcon from '@mui/icons-material/Mic'
 import MicNoneOutlinedIcon from '@mui/icons-material/MicNoneOutlined'
 import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
-import { styled, SxProps } from '@mui/material/styles'
+import { styled, SxProps, Theme } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useAudioRecorder } from 'react-audio-voice-recorder'
 import { useTranslation } from 'react-i18next'
@@ -10,10 +10,12 @@ import { useTranslation } from 'react-i18next'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { maxAISpeechToText } from '@/features/sidebar/components/SidebarChatBox/SidebarChatVoiceInputButton/speechToText'
-import { getInputMediator } from '@/store/InputMediator'
+import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
 
 export interface ISidebarChatVoiceInputButtonProps {
-  sx?: SxProps
+  sx?: SxProps<Theme>
+  inputMediator?: InputMediatorName
+  onSpeechToText?: (text: string) => void
 }
 
 const ButtonWithPulse = styled(LoadingButton)({
@@ -79,11 +81,12 @@ const isErrorVoiceInputStatus = (voiceInputStatus: VoiceInputStatus) => {
   )
 }
 
-const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
-  props,
-) => {
+const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = ({
+  sx,
+  inputMediator,
+  onSpeechToText,
+}) => {
   const { t } = useTranslation(['client'])
-  const { sx } = props
   const testid = 'max-ai__actions__button--voice-input'
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [backendAPIError, setBackendAPIError] = useState<string>('')
@@ -97,7 +100,7 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
     recordingBlob,
     isRecording,
     mediaRecorder,
-  } = useAudioRecorder(undefined, (error) => {
+  } = useAudioRecorder(undefined, () => {
     // if (error.message === 'Permission denied'|| error.message === 'Permission denied by system') {
     // }
     setVoiceInputStatus(VoiceInputStatus.PERMISSION_DENIED)
@@ -187,9 +190,9 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
         clearTimeout(timer)
       }
     }
-    if (voiceInputStatus !== VoiceInputStatus.BAD_REQUEST) {
-      setBackendAPIError('')
-    }
+    // if (voiceInputStatus !== VoiceInputStatus.BAD_REQUEST) {
+    //   setBackendAPIError('')
+    // }
   }, [voiceInputStatus])
 
   // 超时和检测说话
@@ -253,12 +256,14 @@ const SidebarChatVoiceInputButton: FC<ISidebarChatVoiceInputButtonProps> = (
           if (result.status === 'success') {
             const text = result.data.speechText
             console.log('Speech to text:', text)
-            const previousInputValue = getInputMediator(
-              'chatBoxInputMediator',
-            ).getInputValue()
-            getInputMediator('chatBoxInputMediator').updateInputValue(
-              previousInputValue + ' ' + text,
-            )
+            if (inputMediator) {
+              const previousInputValue =
+                getInputMediator(inputMediator).getInputValue()
+              getInputMediator(inputMediator).updateInputValue(
+                previousInputValue + ' ' + text,
+              )
+            }
+            onSpeechToText?.(text)
             setVoiceInputStatus(VoiceInputStatus.IDLE)
           } else if (result.status === 'timeout') {
             console.error('Speech to text timeout.')

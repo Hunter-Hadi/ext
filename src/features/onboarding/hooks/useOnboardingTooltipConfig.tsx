@@ -119,12 +119,10 @@ const useOnboardingTooltipConfig = (sceneType: IOnBoardingSceneType) => {
       return {
         referenceElementSelector: `div[role=menu].dropdown-menu`,
         tooltipProps: {
-          beforeTooltipShow: async (container?: HTMLElement) => {
+          beforeTooltipShow: async (container?: HTMLElement | null) => {
             // 为了等 MENU_LIST_BOX 内容渲染完
             // 延迟 0.5s 显示
             await sleep(500)
-
-            console.log(`zztest 1`, container, container?.isConnected)
             if (container && container.isConnected) {
               const improveWritingItem = container.querySelector(
                 `div.floating-context-menu-item[data-id="4e54395c-5e8b-4bbd-a309-b6057a4737d3"]`,

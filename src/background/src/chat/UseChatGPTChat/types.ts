@@ -15,6 +15,7 @@ import {
 export type IMaxAIChatGPTBackendAPIType =
   // @deprecated 使用新的v2接口
   | 'chat_with_document'
+  // @deprecated 不再使用了，现在长短文合并成summary/qa接口前端无需关注是否是长短文
   | 'chat_with_document/v2'
   | 'get_summarize_response'
   | 'get_chatgpt_response'
@@ -28,6 +29,14 @@ export type IMaxAIChatGPTBackendAPIType =
   | 'summary/v2/videosite'
   | 'summary/v2/email'
   | 'summary/v2/qa'
+  | 'summary/v3/webpage'
+  | 'summary/v3/pdf'
+  | 'summary/v3/videosite'
+  | 'summary/v3/email'
+  | 'summary/v3/qa/webpage'
+  | 'summary/v3/qa/pdf'
+  | 'summary/v3/qa/videosite'
+  | 'summary/v3/qa/email'
 
 export type IMaxAIChatGPTBackendBodyType = {
   message_content?: IMaxAIChatMessageContent[]
@@ -91,6 +100,14 @@ export interface IMaxAIResponseStreamMessage {
    */
   related?: IAIResponseOriginalMessageMetaDeepRelatedData[]
   /**
+   * youtube时间戳总结信息
+   */
+  timestamped?: {
+    start: string
+    text: string
+    children: { start: string; text: string }[]
+  }[]
+  /**
    * 目前应该是json模式返回的status，为ok代表成功
    */
   status?: string
@@ -98,10 +115,6 @@ export interface IMaxAIResponseStreamMessage {
    * ai response内容
    */
   text?: string
-  /**
-   * doc id针对短文summary问答的时候会返回这个
-   */
-  doc_id?: string
   /**
    * 当前stream的状态，以key区分当前正在输出的内容
    */

@@ -81,10 +81,25 @@ export const OnboardingTooltipPortal: FC<IOnboardingTooltipPortalProps> = ({
 
   const intervalEnable = useMemo(() => {
     // 如果已经展示过了，就不再开启计时器
+    if (alreadyOpened) {
+      return false
+    }
+
     // 如果已经找到了 referenceElement，就不再开启计时器
+    if (referenceElement && referenceElement.isConnected) {
+      return false
+    }
+
     // 如果没有 container，就不开启计时器
+    if (!container) {
+      return false
+    }
     // 如果 enable 为 false，就不开启计时器
-    return !alreadyOpened && !referenceElement && container && enable
+    if (!enable) {
+      return false
+    }
+
+    return true
   }, [alreadyOpened, referenceElement, container, enable])
 
   // 用 useInterval 来找 referenceElement
@@ -149,6 +164,9 @@ export const OnboardingTooltipPortal: FC<IOnboardingTooltipPortalProps> = ({
                 return referenceElement.getBoundingClientRect()
               },
             },
+          }}
+          clearReferenceElement={() => {
+            setReferenceElement(null)
           }}
         >
           <span />

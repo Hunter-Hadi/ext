@@ -74,18 +74,31 @@ const SidebarUsePromptButton: FC<{
           },
         )
         // 最前面插入一个action
-        runActions.unshift({
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              key: 'SELECTED_TEXT',
-              value: currentContext,
-              label: 'Selected text',
-              isBuiltIn: true,
-              overwrite: true,
+        runActions.unshift(
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              Variable: {
+                key: 'SELECTED_TEXT',
+                value: currentContext,
+                label: 'Selected text',
+                isBuiltIn: true,
+                overwrite: true,
+              },
             },
           },
-        })
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              Variable: {
+                key: 'VARIABLE_MODAL_KEY',
+                value: 'Sidebar',
+                overwrite: true,
+                isBuiltIn: true,
+              },
+            },
+          },
+        )
         await askAIWIthShortcuts(runActions)
       } catch (error) {
         console.error(error)

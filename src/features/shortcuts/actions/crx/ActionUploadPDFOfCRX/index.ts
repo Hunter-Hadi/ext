@@ -15,6 +15,7 @@ import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
  * 上传插件PDF viewer的文件到服务器
  * @since - 2024-01-24
  * @description - 考虑到速度和第一个版本，直接异步上传就行了
+ * @deprecated - 已废弃，现在所有上传逻辑统一走ActionMaxAIUploadDocument
  */
 export class ActionUploadPDFOfCRX extends Action {
   static type: ActionIdentifier = 'UPLOAD_PDF_OF_CRX'

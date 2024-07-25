@@ -144,13 +144,13 @@ export const sendMixpanelButtonClickedEvent = debounce(
       params?.conversationType,
     )
 
-    console.log(
-      'sendMixpanelButtonClickedEvent',
-      trackElement,
-      buttonName,
-      buttonPosition,
-      featureName,
-    )
+    // console.log(
+    //   'sendMixpanelButtonClickedEvent',
+    //   trackElement,
+    //   buttonName,
+    //   buttonPosition,
+    //   featureName,
+    // )
 
     mixpanelTrack('button_clicked', {
       productType: 'extension',

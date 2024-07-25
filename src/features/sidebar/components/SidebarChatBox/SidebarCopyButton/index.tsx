@@ -20,6 +20,7 @@ import {
   formatAIMessageContentForClipboard,
 } from '@/features/sidebar/utils/chatMessagesHelper'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 const AFTER_COPIED_CLOSE_HOSTS = ['www.linkedin.com']
 
@@ -36,7 +37,6 @@ const SidebarCopyButton: FC<{
   const [isHover, setIsHover] = useState(false)
   const [delayIsHover, setDelayIsHover] = useState(false)
   const [copyButtonKey, setCopyButtonKey] = useState('')
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
   const { currentSidebarConversationType } = useClientConversation()
   const [anchorPosition, setAnchorPosition] = useState<
     | {
@@ -89,6 +89,17 @@ const SidebarCopyButton: FC<{
       return () => {}
     }
   }, [isHover])
+
+  /**
+   * TODO: 目前以dom查询的方法先简单修复popover在sidebar中显示偏位的问题，
+   * 后续有时间再寻找更好的解法
+   */
+  const innerChatBox = useMemo(() => {
+    return !!getMaxAISidebarRootElement()
+      ?.querySelector('#maxAISidebarChatBox')
+      ?.contains(copyButtonRef.current)
+  }, [copyButtonRef.current])
+
   return (
     <>
       <Button
@@ -100,7 +111,6 @@ const SidebarCopyButton: FC<{
           color: 'text.secondary',
         }}
         onMouseEnter={(event) => {
-          setAnchorEl(event.currentTarget)
           if (
             event.currentTarget &&
             currentSidebarConversationType === 'ContextMenu'
@@ -135,7 +145,14 @@ const SidebarCopyButton: FC<{
       <Popover
         disablePortal
         disableScrollLock
-        anchorReference={anchorPosition ? 'anchorPosition' : 'anchorEl'}
+        anchorReference={
+          innerChatBox
+            ? 'anchorEl'
+            : anchorPosition
+            ? 'anchorPosition'
+            : 'anchorEl'
+        }
+        // anchorReference='anchorEl'
         anchorPosition={anchorPosition}
         anchorOrigin={{
           vertical: 'bottom',
@@ -148,7 +165,7 @@ const SidebarCopyButton: FC<{
         className='popper'
         // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
         open={isHover}
-        anchorEl={anchorEl}
+        anchorEl={copyButtonRef.current}
         sx={{
           zIndex: 1200,
         }}
@@ -166,6 +183,10 @@ const SidebarCopyButton: FC<{
           <ListItem
             disablePadding
             sx={{
+              '& > span[data-mui-internal-clone-element="true"]': {
+                display: 'block',
+                width: '100%',
+              },
               '& > div': {
                 width: '100%',
               },

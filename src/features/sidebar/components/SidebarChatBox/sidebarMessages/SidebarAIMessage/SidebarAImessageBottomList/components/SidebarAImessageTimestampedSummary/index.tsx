@@ -1,11 +1,14 @@
 import { Button, Skeleton, Stack, Typography } from '@mui/material'
-import { FC, useCallback, useMemo, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
-import { formatSecondsAsTimestamp } from '@/features/sidebar/utils/chatMessagesHelper'
+import {
+  formatSecondsAsTimestamp,
+  formatTimestampToSeconds,
+} from '@/features/sidebar/utils/chatMessagesHelper'
 import globalSnackbar from '@/utils/globalSnackbar'
 
 interface ISidebarAImessageTimestampedSummary {
@@ -19,6 +22,11 @@ const SidebarAImessageTimestampedSummary: FC<
   const [openIdsList, setOpenIdsList] = useState<{ [key in string]: boolean }>(
     {},
   )
+  useEffect(() => {
+    return () => {
+      console.log('TEST bottom list unmount')
+    }
+  }, [])
   const transcriptLoadingsLength = useMemo(() => {
     if (transcriptList) {
       return transcriptList.filter((item) => item.status === 'loading').length
@@ -29,6 +37,10 @@ const SidebarAImessageTimestampedSummary: FC<
   const clickYoutubeJumpTimestamp = (time: string) => {
     try {
       if (time) {
+        const seconds = time.includes(':')
+          ? formatTimestampToSeconds(time)
+          : parseInt(time, 10)
+
         const isAdvertisingTime = document.querySelector(
           '#container .ytp-ad-text.ytp-ad-preview-text-modern',
         )
@@ -66,11 +78,11 @@ const SidebarAImessageTimestampedSummary: FC<
           '#container video',
         ) as HTMLVideoElement
         if (video) {
-          const timeNum = parseInt(time, 10)
-          if (typeof timeNum === 'number') {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+          if (typeof seconds === 'number') {
             video.play()
             setTimeout(() => {
-              video.currentTime = timeNum
+              video.currentTime = seconds
             }, waitingTime)
           }
         }

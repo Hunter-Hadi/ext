@@ -16,10 +16,68 @@ export interface TranscriptResponse {
   id?: string
 }
 
+export interface IYoutubeCaptionTrack {
+  baseUrl: string
+  languageCode: string
+  name: { simpleText: string }
+}
+
 /**
  * Class to retrieve transcript if exist
  */
 export class YoutubeTranscript {
+  /**
+   * 从caption url获取并解析transcript
+   * @param url
+   */
+  public static async fetchTranscriptByCaptionUrl(url: string) {
+    const xmlResult = await clientProxyFetchAPI(url, {
+      method: 'GET',
+      parse: 'text',
+    })
+    if (xmlResult.success) {
+      const xml = xmlResult.data
+      return this.parseXml(xml)
+    }
+    return []
+  }
+
+  /**
+   * 从caption tracks里获取并解析transcript
+   * @param captionTracks
+   */
+  public static async fetchTranscriptByCaptionTracks(
+    captionTracks: IYoutubeCaptionTrack[],
+  ) {
+    // TODO 这里的language code可以基于用户浏览器或者插件设置优先
+    const primaryLanguageCode = 'en'
+    // 基于语言排序，如果和languageCode相同，排在前面，如果包含languageCode，排在后面，如果都不是，排在最后
+    const sorted = [...captionTracks].sort((prev, next) => {
+      if (prev.languageCode === primaryLanguageCode) {
+        return -1
+      }
+      if (next.languageCode === primaryLanguageCode) {
+        return 1
+      }
+      if (prev.languageCode.includes(primaryLanguageCode)) {
+        return 1
+      }
+      if (next.languageCode.includes(primaryLanguageCode)) {
+        return -1
+      }
+      return 0
+    })
+    // 按顺序fetch
+    for (let i = 0; i < sorted.length; i++) {
+      const { baseUrl } = sorted[i]
+      const result = await this.fetchTranscriptByCaptionUrl(baseUrl)
+      if (result.length) {
+        return result
+      }
+    }
+    return []
+  }
+
   /**
    * Fetch transcript from YTB Video
    * @param videoId Video url or video identifier
@@ -55,53 +113,7 @@ export class YoutubeTranscript {
       const captionTracks = JSON.parse(
         transcriptHtmlText[1].split(',"videoDetails')[0].replace(/\n/, ''),
       ).playerCaptionsTracklistRenderer.captionTracks
-      const simpleTexts = Array.from(captionTracks).map(
-        (l: any) => l.name.simpleText,
-      )
-      const primaryLanguage = 'English'
-      // 基于语言排序，如果和primaryLanguage相同，排在前面，如果包含primaryLanguage，排在后面，如果都不是，排在最后
-      const sortedSimpleTexts = Array.from(simpleTexts).sort(
-        (prev: any, next: any) => {
-          if (prev === primaryLanguage) {
-            return -1
-          }
-          if (next === primaryLanguage) {
-            return 1
-          }
-          if (prev.includes(primaryLanguage)) {
-            return 1
-          }
-          if (next.includes(primaryLanguage)) {
-            return -1
-          }
-          return 0
-        },
-      )
-      const waitFetchLinks = sortedSimpleTexts.map((sortedSimpleText: any) => {
-        const link = captionTracks.find(
-          (captionTrack: any) =>
-            captionTrack.name.simpleText === sortedSimpleText,
-        ).baseUrl
-        return {
-          language: sortedSimpleText,
-          link,
-        }
-      })
-      for (let i = 0; i < waitFetchLinks.length; i++) {
-        const waitFetchLink = waitFetchLinks[i]
-        const xmlResult = await clientProxyFetchAPI(waitFetchLink.link, {
-          method: 'GET',
-          parse: 'text',
-        })
-        if (xmlResult.success) {
-          const xml = xmlResult.data
-          const result = this.parseXml(xml)
-          if (result.length) {
-            return result
-          }
-        }
-      }
-      return []
+      return this.fetchTranscriptByCaptionTracks(captionTracks)
     } catch (e) {
       return []
     }
@@ -250,6 +262,7 @@ export class YoutubeTranscript {
       return transcriptText
     }
   }
+
   /**
    * Retrieve video id from url or string
    * @param videoId video url or video id
@@ -264,6 +277,7 @@ export class YoutubeTranscript {
     }
     return ''
   }
+
   private static parseXml(xml: string) {
     const parser = new DOMParser()
     const xmlDoc = parser.parseFromString(xml, 'text/xml')

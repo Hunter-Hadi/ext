@@ -61,6 +61,8 @@ export interface IOnboardingTooltipProps extends TooltipProps {
   ) => Promise<boolean> | boolean
 
   closeWhenElementClick?: boolean
+
+  clearReferenceElement?: () => void
 }
 
 export const OnboardingTooltip: FC<
@@ -75,6 +77,7 @@ export const OnboardingTooltip: FC<
     beforeTooltipShow,
     closeWhenElementClick,
     referenceElement,
+    clearReferenceElement,
     ...resetProps
   } = props
 
@@ -101,6 +104,11 @@ export const OnboardingTooltip: FC<
       ? await beforeTooltipShow(container, sceneType)
       : true
 
+    // 如果 referenceElement 不存在在 dom 中，直接返回
+    if (!referenceElement || !referenceElement.isConnected) {
+      return
+    }
+
     if (beforeTooltipShowResponse) {
       // 根据 sceneType 获取 onboarding cache
       // 判断是否打开过，如果打开过则不再显示
@@ -112,7 +120,7 @@ export const OnboardingTooltip: FC<
         })
       }
     }
-  }, [sceneType, beforeTooltipShow, container])
+  }, [sceneType, beforeTooltipShow, container, referenceElement])
 
   const closeTooltip = useCallback(() => {
     setOpen(false)
@@ -145,6 +153,16 @@ export const OnboardingTooltip: FC<
       }
     }
   }, [closeWhenElementClick, referenceElement, open])
+
+  useEffect(() => {
+    if (referenceElement && !referenceElement.isConnected) {
+      clearReferenceElement && clearReferenceElement()
+    }
+  }, [referenceElement, clearReferenceElement])
+
+  if (referenceElement && !referenceElement.isConnected) {
+    return null
+  }
 
   return (
     <BlackTooltip

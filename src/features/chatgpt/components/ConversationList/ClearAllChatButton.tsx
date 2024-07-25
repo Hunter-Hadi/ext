@@ -128,7 +128,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
       )}
 
       <Modal
-        disablePortal={isContextWindow}
+        disablePortal={isContextWindow && !isInImmersiveChat}
         open={open}
         onClose={(e: React.MouseEvent) => {
           e.stopPropagation()

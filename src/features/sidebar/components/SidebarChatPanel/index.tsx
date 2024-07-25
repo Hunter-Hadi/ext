@@ -8,6 +8,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useClientConversationListener } from '@/features/chatgpt/hooks/useClientConversationListener'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import SidebarFilesDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarFilesDropBox'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
@@ -40,7 +41,9 @@ const SidebarChatPanel = () => {
     clientWritingMessage,
     clientConversationMessages,
     resetConversation,
+    clientConversation,
   } = useClientConversation()
+
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { startTextToImage } = useArtTextToImage()
 
@@ -55,6 +58,25 @@ const SidebarChatPanel = () => {
 
   useClientConversationListener()
 
+  const sendMessage = async (
+    question: string,
+    options: IUserChatMessageExtraType,
+  ) => {
+    if (currentSidebarConversationType === 'Search') {
+      await createSearchWithAI(question, true)
+    } else if (currentSidebarConversationType === 'Art') {
+      await startTextToImage(question)
+    } else {
+      await askAIQuestion({
+        type: 'user',
+        text: question,
+        meta: {
+          ...options,
+        },
+      })
+    }
+  }
+
   return (
     <>
       <DevContent>
@@ -64,21 +86,7 @@ const SidebarChatPanel = () => {
       <SidebarChatBox
         conversationId={currentConversationId}
         conversationType={currentSidebarConversationType}
-        onSendMessage={async (question, options) => {
-          if (currentSidebarConversationType === 'Search') {
-            await createSearchWithAI(question, true)
-          } else if (currentSidebarConversationType === 'Art') {
-            await startTextToImage(question)
-          } else {
-            await askAIQuestion({
-              type: 'user',
-              text: question,
-              meta: {
-                ...options,
-              },
-            })
-          }
-        }}
+        onSendMessage={sendMessage}
         writingMessage={clientWritingMessage.writingMessage}
         messages={clientConversationMessages}
         loading={smoothConversationLoading}
@@ -96,6 +104,10 @@ const SidebarChatPanel = () => {
           }
           await resetConversation()
         }}
+        switching={
+          (clientConversation || false) &&
+          clientConversation.type !== currentSidebarConversationType
+        }
       />
       <SidebarFilesDropBox />
     </>

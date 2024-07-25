@@ -1,4 +1,4 @@
-import { atom } from 'recoil'
+import { atom, selector } from 'recoil'
 import Browser from 'webextension-polyfill'
 
 import { IChromeExtensionDBStorage } from '@/background/utils'
@@ -30,11 +30,22 @@ export const AppLocalStorageState = atom<IChromeExtensionLocalStorage>({
   key: 'AppLocalStorageState',
   default: {},
 })
+
 export const AppLanguageState = atom<{
   preferredLanguage: string
 }>({
   key: 'AppLanguageState',
   default: {
     preferredLanguage: Browser.i18n.getUILanguage(),
+  },
+})
+
+export const AlwaysContinueInSidebarSelector = selector<boolean>({
+  key: 'AlwaysContinueInSidebarSelector',
+  get: ({ get }) => {
+    return (
+      get(AppLocalStorageState).sidebarSettings?.contextMenu
+        ?.alwaysContinueInSidebar || false
+    )
   },
 })

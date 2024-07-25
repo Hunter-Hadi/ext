@@ -154,6 +154,30 @@ export type PermissionWrapperI18nCardType = {
   ctaButtonOnClick?: (event: React.MouseEvent) => void
 }
 
+export const getFastModelText = (
+  t: TFunction<['common', 'client']>,
+  isFreeUser?: boolean,
+) => {
+  if (isFreeUser) {
+    return t(
+      'client:permission__pricing_hook__fast_ai_usage__free__description',
+    )
+  }
+  return t('client:permission__pricing_hook__fast_ai_usage__paid__description')
+}
+
+export const getSmartModelText = (
+  t: TFunction<['common', 'client']>,
+  isFreeUser?: boolean,
+) => {
+  if (isFreeUser) {
+    return t(
+      'client:permission__pricing_hook__smart_ai_usage__free__description',
+    )
+  }
+  return t('client:permission__pricing_hook__smart_ai_usage__paid__description')
+}
+
 export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   [key in PermissionWrapperCardSceneType]: PermissionWrapperI18nCardType
 } = {
@@ -223,18 +247,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__title',
       ),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? [
-            t(
-              'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__free__description1',
-            ),
-            t(
-              'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__description2',
-            ),
-          ].join('\n\n')
-        : t(
-            'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__paid__description1',
-          )
+      return [
+        getFastModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__fast_text_usage__gpt_3_5_turbo__description',
+        ),
+      ].join('\n\n')
     },
   },
 
@@ -249,10 +267,13 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t(
         'client:permission__pricing_hook__advanced_text_usage__gpt_4o_mini__title',
       ),
-    description: (t) => {
-      return t(
-        'client:permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description',
-      )
+    description: (t, isFreeUser) => {
+      return [
+        getFastModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advanced_text_usage__gpt_4o_mini__description',
+        ),
+      ].join('\n\n')
     },
   },
 
@@ -268,18 +289,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__title',
       ),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? [
-            t(
-              'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__free__description1',
-            ),
-            t(
-              'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__description2',
-            ),
-          ].join('\n\n')
-        : t(
-            'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__paid__description1',
-          )
+      return [
+        getFastModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__fast_text_usage__claude_3_haiku__description',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_FAST_TEXT_MODEL_GEMINI_PRO: {
@@ -292,18 +307,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     title: (t) =>
       t('client:permission__pricing_hook__fast_text_usage__gemini_pro__title'),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? [
-            t(
-              'client:permission__pricing_hook__fast_text_usage__gemini_pro__free__description1',
-            ),
-            t(
-              'client:permission__pricing_hook__fast_text_usage__gemini_pro__description2',
-            ),
-          ].join('\n\n')
-        : t(
-            'client:permission__pricing_hook__fast_text_usage__gemini_pro__paid__description1',
-          )
+      return [
+        getFastModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__fast_text_usage__gemini_pro__description',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_FAST_TEXT_MODEL_GEMINI_FLASH_1_5: {
@@ -318,18 +327,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__title',
       ),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? [
-            t(
-              'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__free__description1',
-            ),
-            t(
-              'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description2',
-            ),
-          ].join('\n\n')
-        : t(
-            'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__paid__description1',
-          )
+      return [
+        getFastModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__fast_text_usage__gemini_1_5_flash__description',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4O: {
@@ -342,13 +345,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     title: (t) =>
       t('client:permission__pricing_hook__advanced_text_usage__gpt_4o__title'),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? t(
-            'client:permission__pricing_hook__advanced_text_usage__gpt_4o__free__description',
-          )
-        : t(
-            'client:permission__pricing_hook__advanced_text_usage__gpt_4o__paid__description',
-          )
+      return [
+        getSmartModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advanced_text_usage__gpt_4o__description',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4_TURBO: {
@@ -364,17 +366,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__title',
       ),
     description: (t, isFreeUser) => {
-      if (isFreeUser) {
-        return [
-          `${t(
-            'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description2',
-          )}`,
-        ].join('\n\n')
-      }
       return [
-        `${t(
-          'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__paid__description1',
-        )}`,
+        getSmartModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advanced_text_usage__gpt_4_turbo__description',
+        ),
       ].join('\n\n')
     },
   },
@@ -390,13 +386,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__title',
       ),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? t(
-            'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__free__description',
-          )
-        : t(
-            'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__paid__description',
-          )
+      return [
+        getSmartModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advanced_text_usage__claude_3_opus__description',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_CLAUDE_3_SONNET: {
@@ -411,13 +406,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__title',
       ),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? t(
-            'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__free__description',
-          )
-        : t(
-            'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__paid__description',
-          )
+      return [
+        getSmartModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advanced_text_usage__claude_3_sonnet__description',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_CLAUDE_3_5_SONNET: {
@@ -432,13 +426,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__title',
       ),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? t(
-            'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__free__description',
-          )
-        : t(
-            'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__paid__description',
-          )
+      return [
+        getSmartModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_GEMINI_1_5_PRO: {
@@ -453,13 +446,12 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__title',
       ),
     description: (t, isFreeUser) => {
-      return isFreeUser
-        ? t(
-            'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__free__description',
-          )
-        : t(
-            'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description',
-          )
+      return [
+        getSmartModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_FAST_TEXT_MODEL_LLAMA_3_1_70B: {
@@ -475,15 +467,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ),
     description: (t, isFreeUser) => {
       return [
-        isFreeUser
-          ? t(
-              'client:permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1',
-            )
-          : t(
-              'client:permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1',
-            ),
+        getFastModelText(t, isFreeUser),
         t(
-          'client:permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2',
+          'client:permission__pricing_hook__fast_text_usage__llama_3_1_70b__description',
         ),
       ].join('\n\n')
     },
@@ -501,15 +487,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ),
     description: (t, isFreeUser) => {
       return [
-        isFreeUser
-          ? t(
-              'client:permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1',
-            )
-          : t(
-              'client:permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1',
-            ),
+        getSmartModelText(t, isFreeUser),
         t(
-          'client:permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2',
+          'client:permission__pricing_hook__advance_text_usage__llama_3_1_405b__description',
         ),
       ].join('\n\n')
     },
@@ -525,17 +505,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     title: (t) =>
       t('client:permission__pricing_hook__advanced_text_usage__gpt_4__title'),
     description: (t, isFreeUser) => {
-      if (isFreeUser) {
-        return [
-          `${t(
-            'client:permission__pricing_hook__advanced_text_usage__gpt_4__description2',
-          )}`,
-        ].join('\n\n')
-      }
       return [
-        `${t(
-          'client:permission__pricing_hook__advanced_text_usage__gpt_4__paid__description1',
-        )}`,
+        getSmartModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advanced_text_usage__gpt_4__description',
+        ),
       ].join('\n\n')
     },
   },

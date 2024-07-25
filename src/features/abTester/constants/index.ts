@@ -187,7 +187,7 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
   },
   'llama-3.1-405b': {
     image: getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-llama-3-1-405b.png',
+      '/images/activity/promotion-dialog-llama-3-1-405b.png',
     ),
     title: (t) =>
       t('client:sidebar__promotion_dialog__llama_3_1_405b__content__title'),

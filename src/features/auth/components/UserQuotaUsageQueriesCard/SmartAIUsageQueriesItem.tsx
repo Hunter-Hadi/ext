@@ -69,7 +69,7 @@ const SmartAIUsageQueriesItem: FC<ISmartAIUsageQueriesItemProps> = ({
             primary={t('quota_usage_card:category__advanced_text')}
             secondary={
               isUnlimited
-                ? 'GPT-4o & Claude-3.5-Sonnet & Gemini-1.5-Pro'
+                ? 'GPT-4o & Claude-3.5-Sonnet & Gemini-1.5-Pro & Llama-3.1-405B'
                 : 'GPT-4o'
             }
           />
@@ -164,7 +164,9 @@ const SmartAIUsageQueriesItem: FC<ISmartAIUsageQueriesItemProps> = ({
         <Box>
           {/* 这里默认写死, 并且默认0 - @huangsong */}
           <ListItem>
-            <ListItemText secondary={'Claude-3.5-Sonnet & Gemini-1.5-Pro'} />
+            <ListItemText
+              secondary={'Claude-3.5-Sonnet & Gemini-1.5-Pro & Llama-3.1-405B'}
+            />
             <ListItemText
               sx={{
                 textAlign: 'right',

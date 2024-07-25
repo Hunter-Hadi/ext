@@ -32,7 +32,8 @@ const FastAIUsageQueriesItem: FC<IFastAIUsageQueriesItemProps> = ({
   usage,
   sx,
 }) => {
-  const fastAIModelText = 'GPT-4o-mini & Claude-3-Haiku & Gemini-1.5-Flash'
+  const fastAIModelText =
+    'GPT-4o-mini & Claude-3-Haiku & Gemini-1.5-Flash & Llama-3.1-70B'
 
   const { t } = useTranslation()
   const {

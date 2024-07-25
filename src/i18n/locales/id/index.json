@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Tombol Ringkasan",
     "feature_card__prompts__edit_prompt__field_advance__title": "Maju",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Bahasa Output & Nada & Gaya Penulisan",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu konteks",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menulis Ulang",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Ringkasan",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Cari",
     "feature_card__prompts__new_prompt__title": "Prompt baru",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Belum ada riwayat percakapan",
     "immersive_chat__summary_no_conversation__title": "Belum ada riwayat ringkasan",
     "immersive_chat__search_no_conversation__title": "Belum ada riwayat pencarian",
-    "immersive_chat__art_no_conversation__title": "Belum ada riwayat seni",
+    "immersive_chat__art_no_conversation__title": "Belum tersedia riwayat menulis ulang",
     "immersive_chat__delete_summary__title": "Hapus ringkasan?",
     "immersive_chat__delete_search__title": "Hapus pencarian?",
     "immersive_chat__delete_art__title": "Hapus seni?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Balasan instan",
     "immersive_chat__delete_all_context_menu__button__title": "Hapus semua menu konteks",
     "immersive_chat__delete_all_context_menu__title": "Bersihkan riwayat menu konteks Anda - apakah Anda yakin?",
-    "context_window__chat_history__button__title": "Riwayat menu konteks",
+    "context_window__chat_history__button__title": "Riwayat menulis ulang",
     "context_window__chat_history__empty__title": "Belum ada riwayat menu konteks yang tersedia",
     "context_window__chat_history__continue_in_chat__title": "Lanjutkan di chat",
     "provider__claude_web_app__model__claude_3_200k__description": "Kinerja unggul pada tugas-tugas yang membutuhkan pemikiran kompleks. Claude 3 adalah penawaran terbaik dari Anthropic.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pemahaman multibahasa yang ditingkatkan",
     "floating_menu__always_unpin_to_sidebar": "Selalu tampilkan respon dalam menu konteks",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ringkasan poin kunci",
-    "context_window__chat_history__continue_in_sidebar__title": "Lanjutkan di sidebar"
+    "context_window__chat_history__continue_in_sidebar__title": "Lanjutkan di sidebar",
+    "sidebar__speed_dial__rewrite_history__button": "Ubah sejarah",
+    "sidebar__tabs__rewrite__action_btn__title": "Rewrite baru"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

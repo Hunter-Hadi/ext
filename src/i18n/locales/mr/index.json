@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "संक्षेपित करा बटण",
     "feature_card__prompts__edit_prompt__field_advance__title": "अग्रिम",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "आउटपुट भाषा आणि टोन आणि लेखन स्टाइल",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "संदर्भ मेनू",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "पुन्हा लिहा",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "संक्षेप",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "शोध",
     "feature_card__prompts__new_prompt__title": "नवीन प्रॉम्प्ट",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "अद्याप चॅट इतिहास उपलब्ध नाही",
     "immersive_chat__summary_no_conversation__title": "अद्याप संक्षेप इतिहास उपलब्ध नाही",
     "immersive_chat__search_no_conversation__title": "अद्याप शोध इतिहास उपलब्ध नाही",
-    "immersive_chat__art_no_conversation__title": "अद्याप कला इतिहास उपलब्ध नाही",
+    "immersive_chat__art_no_conversation__title": "अद्याप लिहीत नाही",
     "immersive_chat__delete_summary__title": "सारांश काढा?",
     "immersive_chat__delete_search__title": "शोध काढा?",
     "immersive_chat__delete_art__title": "कला काढा?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "तात्पुरता प्रतिसाद",
     "immersive_chat__delete_all_context_menu__button__title": "सर्व संदर्भ मेनू काढा",
     "immersive_chat__delete_all_context_menu__title": "तुमचे संदर्भ मेनू इतिहास साफ करा - तुम्ही खरंपणे यक्क करता?",
-    "context_window__chat_history__button__title": "संदर्भ मेनू इतिहास",
+    "context_window__chat_history__button__title": "पुन्हा लिहीत",
     "context_window__chat_history__empty__title": "अद्याप उपलब्ध नाही कोणताही संदर्भ मेनू इतिहास",
     "context_window__chat_history__continue_in_chat__title": "चॅटमध्ये सुरू ठेवा",
     "provider__claude_web_app__model__claude_3_200k__description": "जटिल तर्कांसाठी आवश्यक कार्यांवर उत्कृष्ट प्रदर्शन. Claude 3 हे Anthropic चा सर्वोत्कृष्ट प्रस्ताव आहे.",
@@ -1034,7 +1034,9 @@
     "floating_menu__pint_once_to_sidebar": "एकदा साइडबारमध्ये प्रतिसाद दाखवा",
     "floating_menu__always_unpin_to_sidebar": "सदैव प्रतिसाद दाखवा",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "मुख्य बिंदू सारांशित करा",
-    "context_window__chat_history__continue_in_sidebar__title": "साइडबारमध्ये सुरू ठेवा"
+    "context_window__chat_history__continue_in_sidebar__title": "साइडबारमध्ये सुरू ठेवा",
+    "sidebar__speed_dial__rewrite_history__button": "इतिहास पुनर्लेखन",
+    "sidebar__tabs__rewrite__action_btn__title": "नवीन पुनर्लेखन"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

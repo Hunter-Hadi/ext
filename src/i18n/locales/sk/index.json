@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Tlačidlo zhrnutia",
     "feature_card__prompts__edit_prompt__field_advance__title": "Posunúť sa vpred",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Výstupný jazyk a tón a štýl písania",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextové menu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Prepísať",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Súhrn",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Vyhľadávanie",
     "feature_card__prompts__new_prompt__title": "Nový návrh",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Zatiaľ nie je k dispozícii žiadna história chatu",
     "immersive_chat__summary_no_conversation__title": "Zatiaľ nie je k dispozícii žiadna história súhrnu",
     "immersive_chat__search_no_conversation__title": "Zatiaľ nie je k dispozícii žiadna história vyhľadávania",
-    "immersive_chat__art_no_conversation__title": "Zatiaľ nie je k dispozícii žiadna história umenia",
+    "immersive_chat__art_no_conversation__title": "Zatiaľ nie sú k dispozícii žiadne údaje o prepisovaní",
     "immersive_chat__delete_summary__title": "Zmazať súhrn?",
     "immersive_chat__delete_search__title": "Zmazať vyhľadávanie?",
     "immersive_chat__delete_art__title": "Zmazať umenie?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Okamžitá odpoveď",
     "immersive_chat__delete_all_context_menu__button__title": "Vymazať všetky kontextové menu",
     "immersive_chat__delete_all_context_menu__title": "Vymazať históriu kontextových menu - ste si istý?",
-    "context_window__chat_history__button__title": "História kontextových menu",
+    "context_window__chat_history__button__title": "História prepisovania",
     "context_window__chat_history__empty__title": "Zatiaľ nie je k dispozícii žiadna história kontextových menu",
     "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate",
     "provider__claude_web_app__model__claude_3_200k__description": "Vynikajúce výkony pri úlohách, ktoré vyžadujú zložité uvažovanie. Claude 3 je najlepšia ponuka od Anthropic.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Vylepšené multijazyčné porozumenie",
     "floating_menu__always_unpin_to_sidebar": "Vždy zobrazovať odpovede v kontextovom menu",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Zhrnúť kľúčové body",
-    "context_window__chat_history__continue_in_sidebar__title": "Pokračovať v bočnom paneli"
+    "context_window__chat_history__continue_in_sidebar__title": "Pokračovať v bočnom paneli",
+    "sidebar__speed_dial__rewrite_history__button": "Prepísať históriu",
+    "sidebar__tabs__rewrite__action_btn__title": "Nový prepis"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

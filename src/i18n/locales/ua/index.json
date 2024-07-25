@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Кнопка підсумування",
     "feature_card__prompts__edit_prompt__field_advance__title": "Розширений",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Мова виводу та стиль написання",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Меню контексту",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Переписати",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Зведення",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Пошук",
     "feature_card__prompts__new_prompt__title": "Новий підказка",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Ще немає доступної історії чату",
     "immersive_chat__summary_no_conversation__title": "Ще немає доступної історії підсумків",
     "immersive_chat__search_no_conversation__title": "Ще немає доступної історії пошуку",
-    "immersive_chat__art_no_conversation__title": "Ще немає доступної історії мистецтва",
+    "immersive_chat__art_no_conversation__title": "Історія переписування ще недоступна",
     "immersive_chat__delete_summary__title": "Видалити резюме?",
     "immersive_chat__delete_search__title": "Видалити пошук?",
     "immersive_chat__delete_art__title": "Видалити мистецтво?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Миттєва відповідь",
     "immersive_chat__delete_all_context_menu__button__title": "Видалити всі контекстні меню",
     "immersive_chat__delete_all_context_menu__title": "Очистити історію вашого контекстного меню - ви впевнені?",
-    "context_window__chat_history__button__title": "Історія контекстного меню",
+    "context_window__chat_history__button__title": "Історія переписування",
     "context_window__chat_history__empty__title": "Ще немає доступної історії контекстного меню",
     "context_window__chat_history__continue_in_chat__title": "Продовжити у чаті",
     "provider__claude_web_app__model__claude_3_200k__description": "Перевершена продуктивність на завданнях, які вимагають складного мислення. Клод 3 - це найкраща пропозиція від Anthropic.",
@@ -1034,7 +1034,9 @@
     "floating_menu__pint_once_to_sidebar": "Відображати відповідь в бічній панелі один раз",
     "floating_menu__always_unpin_to_sidebar": "Завжди відображати відповіді в контекстному меню",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Узагальнити ключові моменти",
-    "context_window__chat_history__continue_in_sidebar__title": "Продовжити в бічній панелі"
+    "context_window__chat_history__continue_in_sidebar__title": "Продовжити в бічній панелі",
+    "sidebar__speed_dial__rewrite_history__button": "Переписати історію",
+    "sidebar__tabs__rewrite__action_btn__title": "Нове переписання"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

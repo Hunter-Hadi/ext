@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "ಸಂಗ್ರಹಿಸು ಬಟನ್",
     "feature_card__prompts__edit_prompt__field_advance__title": "ಮುಂದುವರಿ",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ಆಉಟ್‌ಪುಟ್ ಭಾಷೆ & ಧ್ವನಿ & ಬರವಣಿಗೆ ಶೈಲಿ",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "ಸಂದರ್ಭ ಮೆನು",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "ಬದಲಿಸು",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "ಸಾರಾಂಶ",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "ಹುಡುಕು",
     "feature_card__prompts__new_prompt__title": "ಹೊಸ ಪ್ರಾಂಪ್ಟ್",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "ಇನ್ನೂ ಚಾಟ್ ಹಿಸ್ಟರಿ ಲಭ್ಯವಿಲ್ಲ",
     "immersive_chat__summary_no_conversation__title": "ಇನ್ನೂ ಸಾರಾಂಶ ಹಿಸ್ಟರಿ ಲಭ್ಯವಿಲ್ಲ",
     "immersive_chat__search_no_conversation__title": "ಇನ್ನೂ ಹುಡುಕಾಟ ಹಿಸ್ಟರಿ ಲಭ್ಯವಿಲ್ಲ",
-    "immersive_chat__art_no_conversation__title": "ಇನ್ನೂ ಕಲೆ ಹಿಸ್ಟರಿ ಲಭ್ಯವಿಲ್ಲ",
+    "immersive_chat__art_no_conversation__title": "ಇನ್ನು ಬದಲಿಸಲು ಇತಿಹಾಸ ಲಭ್ಯವಿಲ್ಲ",
     "immersive_chat__delete_summary__title": "ಸಂಗ್ರಹವನ್ನು ಅಳಿಸಿ?",
     "immersive_chat__delete_search__title": "ಹುಡುಕಾಟವನ್ನು ಅಳಿಸಿ?",
     "immersive_chat__delete_art__title": "ಕಲೆಯನ್ನು ಅಳಿಸಿ?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "ತಕ್ಷಣ ಉತ್ತರ",
     "immersive_chat__delete_all_context_menu__button__title": "ಎಲ್ಲಾ ಸಂದರ್ಭ ಮೆನುಗಳನ್ನು ಅಳಿಸಿ",
     "immersive_chat__delete_all_context_menu__title": "ನಿಮ್ಮ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವನ್ನು ತೆಗೆದುಹಾಕಿ - ಖಚಿತವಾಗಿ?",
-    "context_window__chat_history__button__title": "ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸ",
+    "context_window__chat_history__button__title": "ಬದಲಿಸು ಇತಿಹಾಸ",
     "context_window__chat_history__empty__title": "ಇನ್ನೂ ಯಾವ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವೂ ಲಭ್ಯವಿಲ್ಲ",
     "context_window__chat_history__continue_in_chat__title": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ",
     "provider__claude_web_app__model__claude_3_200k__description": "ಜಟಿಲ ತರ್ಕದ ಕೆಲಸಗಳನ್ನು ಅಗತ್ಯವಾದ ಉತ್ತಮ ಪ್ರದರ್ಶನ. Claude 3 ಅಂತರ್ಭೂತಿಯ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "ಮೆಕ್ಕಮೆಕ್ಕ ಬಲುಪಾದರಿಯ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವ ಸ್ಥಿತಿ",
     "floating_menu__always_unpin_to_sidebar": "ಎಲ್ಲಾ ಉತ್ತರಗಳನ್ನು ಸಂದರ್ಭ ಮೆನೂವಿನಲ್ಲಿ ಎಲ್ಲಾ ಸಮಯವೂ ಪಿನ್ ಮಾಡಿಕೊಳ್ಳಿ",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ",
-    "context_window__chat_history__continue_in_sidebar__title": "ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ಮುಂದುವರಿಸಿ"
+    "context_window__chat_history__continue_in_sidebar__title": "ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ಮುಂದುವರಿಸಿ",
+    "sidebar__speed_dial__rewrite_history__button": "ಇತಿಹಾಸವನ್ನು ಬದಲಿಸಿ",
+    "sidebar__tabs__rewrite__action_btn__title": "ಹೊಸ ಬದಲಿಸಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "የግል አማራጭ አዝራር",
     "feature_card__prompts__edit_prompt__field_advance__title": "የተጠቃሚ",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "የእውነት ቋንቋ & ቀላል & የፊደል አስተካክል",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "የማስተካከያ ምናሌ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "ይፈቀድ",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "አጠቃላይ",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "ፈልግ",
     "feature_card__prompts__new_prompt__title": "አዲስ ምልክት",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "የቤት ማስታወቂያ አልተገኘም",
     "immersive_chat__summary_no_conversation__title": "የቤት ማስታወቂያ አልተገኘም",
     "immersive_chat__search_no_conversation__title": "የቤት ማስታወቂያ አልተገኘም",
-    "immersive_chat__art_no_conversation__title": "የቤት ማስታወቂያ አልተገኘም",
+    "immersive_chat__art_no_conversation__title": "እኛንም የፍቅር ታሪክ አልተለየም",
     "immersive_chat__delete_summary__title": "ማጥፊያን ሰርዝ?",
     "immersive_chat__delete_search__title": "የፍለጋውን ሰርዝ?",
     "immersive_chat__delete_art__title": "ስነ-ጥበብን ሰርዝ?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "የቀጥታ መልክት",
     "immersive_chat__delete_all_context_menu__button__title": "ሁሉንም የመግቢያ ማናቸውንም ስርጭት ማጥፋት",
     "immersive_chat__delete_all_context_menu__title": "የሚገባበት ሁሉንም የመግቢያ ማናቸውንም ስርጭት ማጥፋት - እርግጠኛ ነህ?",
-    "context_window__chat_history__button__title": "የመግቢያ ማናቸውንም ስርጭት",
+    "context_window__chat_history__button__title": "የፍቅር ታሪክ",
     "context_window__chat_history__empty__title": "የመግቢያ ማናቸውንም ስርጭት የለም",
     "context_window__chat_history__continue_in_chat__title": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል",
     "provider__claude_web_app__model__claude_3_200k__description": "የተሻለ እንቅስቃሴ ከማጥፋት የሚችል አስተዳደር በማስተማር የአንትሪፒክ የብልጥነት ምልክት ነው። Claude 3 አንትሪፒክ የብልጥነት ምልክት ነው።",
@@ -1034,7 +1034,9 @@
     "floating_menu__pint_once_to_sidebar": "ምዝገባውን በገዛ ገዝብ አሳይ",
     "floating_menu__always_unpin_to_sidebar": "አሁን በሚታወቁ ምላሽ ለመሰረት እንደሚችሉ እንደሚችሉ",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "ከመሰረታዊ ነገሮች ጋር ማጥፊያ",
-    "context_window__chat_history__continue_in_sidebar__title": "በሚታወቁ ምላሽ በተጨማሪ በተጨማሪ ምላሽ"
+    "context_window__chat_history__continue_in_sidebar__title": "በሚታወቁ ምላሽ በተጨማሪ በተጨማሪ ምላሽ",
+    "sidebar__speed_dial__rewrite_history__button": "ታሪክ እንደምንቀምብል",
+    "sidebar__tabs__rewrite__action_btn__title": "አዲስ ታሪክ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

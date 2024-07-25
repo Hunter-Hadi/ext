@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "摘要按鈕",
     "feature_card__prompts__edit_prompt__field_advance__title": "進階",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "輸出語言＆語氣＆寫作風格",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "上下文選單",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "重寫",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "摘要",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "搜尋",
     "feature_card__prompts__new_prompt__title": "新提示",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "尚無聊天記錄",
     "immersive_chat__summary_no_conversation__title": "尚無摘要記錄",
     "immersive_chat__search_no_conversation__title": "尚無搜尋記錄",
-    "immersive_chat__art_no_conversation__title": "尚無藝術記錄",
+    "immersive_chat__art_no_conversation__title": "尚無重寫歷史",
     "immersive_chat__delete_summary__title": "刪除摘要？",
     "immersive_chat__delete_search__title": "刪除搜尋？",
     "immersive_chat__delete_art__title": "刪除藝術品？",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "即時回覆",
     "immersive_chat__delete_all_context_menu__button__title": "刪除所有上下文選單",
     "immersive_chat__delete_all_context_menu__title": "清除您的上下文選單歷史記錄 - 您確定嗎？",
-    "context_window__chat_history__button__title": "上下文選單歷史記錄",
+    "context_window__chat_history__button__title": "重寫歷史",
     "context_window__chat_history__empty__title": "目前尚無上下文選單歷史記錄",
     "context_window__chat_history__continue_in_chat__title": "繼續聊天",
     "provider__claude_web_app__model__claude_3_200k__description": "在需要複雜推理的任務上表現卓越。Claude 3 是Anthropic提供的最佳選擇。",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "改進的多語理解",
     "floating_menu__always_unpin_to_sidebar": "始終在上下文菜單中顯示回應",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "總結要點",
-    "context_window__chat_history__continue_in_sidebar__title": "在側邊欄中繼續"
+    "context_window__chat_history__continue_in_sidebar__title": "在側邊欄中繼續",
+    "sidebar__speed_dial__rewrite_history__button": "重寫歷史",
+    "sidebar__tabs__rewrite__action_btn__title": "新重寫"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

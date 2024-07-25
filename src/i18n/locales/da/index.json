@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Opsummeringsknap",
     "feature_card__prompts__edit_prompt__field_advance__title": "Fremskridt",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Output sprog & Tone & Skrivestil",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstmenu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Omskriv",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Resumé",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Søg",
     "feature_card__prompts__new_prompt__title": "Ny prompt",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Ingen chat-historik tilgængelig endnu",
     "immersive_chat__summary_no_conversation__title": "Ingen resuméhistorik tilgængelig endnu",
     "immersive_chat__search_no_conversation__title": "Ingen søgehistorik tilgængelig endnu",
-    "immersive_chat__art_no_conversation__title": "Ingen kunsthistorik tilgængelig endnu",
+    "immersive_chat__art_no_conversation__title": "Ingen omskrivningshistorik tilgængelig endnu",
     "immersive_chat__delete_summary__title": "Slet resumé?",
     "immersive_chat__delete_search__title": "Slet søgning?",
     "immersive_chat__delete_art__title": "Slet kunst?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Øjeblikkelig svar",
     "immersive_chat__delete_all_context_menu__button__title": "Slet alle kontekstmenuer",
     "immersive_chat__delete_all_context_menu__title": "Ryd din kontekstmenuhistorik - er du sikker?",
-    "context_window__chat_history__button__title": "Kontekstmenuhistorik",
+    "context_window__chat_history__button__title": "Omskrivningshistorik",
     "context_window__chat_history__empty__title": "Ingen kontekstmenuhistorik tilgængelig endnu",
     "context_window__chat_history__continue_in_chat__title": "Fortsæt i chat",
     "provider__claude_web_app__model__claude_3_200k__description": "Overlegen præstation på opgaver, der kræver kompleks tænkning. Claude 3 er Anthropics bedste tilbud.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Forbedret flersproget forståelse",
     "floating_menu__always_unpin_to_sidebar": "Vis altid svar i kontekstmenu",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Opsummer nøglepunkter",
-    "context_window__chat_history__continue_in_sidebar__title": "Fortsæt i sidepanelet"
+    "context_window__chat_history__continue_in_sidebar__title": "Fortsæt i sidepanelet",
+    "sidebar__speed_dial__rewrite_history__button": "Omskriv historie",
+    "sidebar__tabs__rewrite__action_btn__title": "Ny omskrivning"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

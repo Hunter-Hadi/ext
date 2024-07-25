@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "সংক্ষেপ বোতাম",
     "feature_card__prompts__edit_prompt__field_advance__title": "অগ্রসর",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "আউটপুট ভাষা এবং ধ্বনি এবং লেখা শৈলী",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "সংদর্ভ মেনু",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "পুনর্লেখন",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "সংক্ষিপ্ত",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "অনুসন্ধান",
     "feature_card__prompts__new_prompt__title": "নতুন প্রম্পট",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "এখনও কোনও চ্যাট ইতিহাস উপলব্ধ নেই",
     "immersive_chat__summary_no_conversation__title": "এখনও কোনও সংক্ষিপ্ত ইতিহাস উপলব্ধ নেই",
     "immersive_chat__search_no_conversation__title": "এখনও কোনও অনুসন্ধান ইতিহাস উপলব্ধ নেই",
-    "immersive_chat__art_no_conversation__title": "এখনও কোনও শিল্প ইতিহাস উপলব্ধ নেই",
+    "immersive_chat__art_no_conversation__title": "এখনও পুনর্লেখন ইতিহাস পাওয়া যায়নি",
     "immersive_chat__delete_summary__title": "সারাংশ মুছে ফেলবেন?",
     "immersive_chat__delete_search__title": "অনুসন্ধান মুছে ফেলবেন?",
     "immersive_chat__delete_art__title": "কার্য মুছে ফেলবেন?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "তাৎক্ষণিক উত্তর",
     "immersive_chat__delete_all_context_menu__button__title": "সমস্ত সংদর্শন মেনু মুছুন",
     "immersive_chat__delete_all_context_menu__title": "আপনার সংদর্শন মেনু ইতিহাস সাফ করুন - আপনি কি নিশ্চিত?",
-    "context_window__chat_history__button__title": "সংদর্শন মেনু ইতিহাস",
+    "context_window__chat_history__button__title": "পুনর্লেখন ইতিহাস",
     "context_window__chat_history__empty__title": "এখনও কোন সংদর্শন মেনু ইতিহাস উপলব্ধ নেই",
     "context_window__chat_history__continue_in_chat__title": "চ্যাটে অবতরণ করুন",
     "provider__claude_web_app__model__claude_3_200k__description": "জটিল বিচারের কাজগুলির জন্য উত্কৃষ্ট পারফরম্যান্স। Claude 3 এনথ্রোপিকের সেরা অফারিং।",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "উন্নত বহুভাষিক বোঝাই",
     "floating_menu__always_unpin_to_sidebar": "সবসময় প্রতিক্রিয়া দেখান",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "গুরুত্বপূর্ণ বিন্যাস",
-    "context_window__chat_history__continue_in_sidebar__title": "সাইডবারে চালিয়ে যান"
+    "context_window__chat_history__continue_in_sidebar__title": "সাইডবারে চালিয়ে যান",
+    "sidebar__speed_dial__rewrite_history__button": "ইতিহাস পুনর্লেখন",
+    "sidebar__tabs__rewrite__action_btn__title": "নতুন পুনর্লেখন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

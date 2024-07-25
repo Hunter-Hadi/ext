@@ -236,7 +236,7 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Ցուցադրել AI պատասխանը, միայն երբ ձեզ համար կտտացված կոճակը սեղմեք:",
     "feature_card__prompts__edit_prompt__field_advance__title": "Առաջարկում",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ելքի լեզուն և տեսակը և գրանցման ոլորտը",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Հատկանիշատեր",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Վերագրել",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Հատուկություն",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Որոնում",
     "feature_card__prompts__new_prompt__title": "Նոր հարցում",
@@ -588,7 +588,7 @@
     "immersive_chat__chat_no_conversation__title": "Ոչ մի խոսքագրությունից դեռևս չկա",
     "immersive_chat__summary_no_conversation__title": "Ոչ մի ամփոփումից դեռևս չկա",
     "immersive_chat__search_no_conversation__title": "Ոչ մի որոնման պատմությունից դեռևս չկա",
-    "immersive_chat__art_no_conversation__title": "Ոչ մի արվեստի պատմությունից դեռևս չկա",
+    "immersive_chat__art_no_conversation__title": "Դեպի այլ գրառումներ չկան",
     "immersive_chat__delete_summary__title": "Ջնջել ամրագրումը?",
     "immersive_chat__delete_search__title": "Ջնջել որոնումը?",
     "immersive_chat__delete_art__title": "Ջնջել արվեստը?",
@@ -715,7 +715,7 @@
     "instant_reply_button__explicit__display_text": "Հանգեցնել պատասխանը",
     "immersive_chat__delete_all_context_menu__button__title": "Ջնջել բոլոր համերգային ընտրանքները",
     "immersive_chat__delete_all_context_menu__title": "Մաքրեք ձեր համերգային ընտրանքների պատմությունը - վստահ եք?",
-    "context_window__chat_history__button__title": "Համերգային ընտրանքների պատմություն",
+    "context_window__chat_history__button__title": "Վերագրումների պատմություն",
     "context_window__chat_history__empty__title": "Դեռևս չկան համերգային ընտրանքների պատմություններ",
     "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ",
     "provider__claude_web_app__model__claude_3_200k__description": "Շատ լավագույն արդյունավետություն պահանջող առանձին գործիքների համար: Claude 3-ը Anthropic-ի ամենալավագույն առաջարկն է:",
@@ -1031,7 +1031,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Լարերի ավելի լավ հասկանում",
     "floating_menu__always_unpin_to_sidebar": "Անվերջ ցուցադրել պատասխանները կապի ընկերակցության մեջ",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Ընդամենը ամրապնդել հիմնական կետերը",
-    "context_window__chat_history__continue_in_sidebar__title": "Շարունակել կողմանիշում"
+    "context_window__chat_history__continue_in_sidebar__title": "Շարունակել կողմանիշում",
+    "sidebar__speed_dial__rewrite_history__button": "Վերագրել պատմությունը",
+    "sidebar__tabs__rewrite__action_btn__title": "Նոր վերագրում"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

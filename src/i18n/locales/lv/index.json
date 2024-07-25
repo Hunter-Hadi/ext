@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Apkopot pogu",
     "feature_card__prompts__edit_prompt__field_advance__title": "Uzlabot",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izvades valoda un tonis un rakstīšanas stils",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Konteksta izvēlne",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Pārrakstīt",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Kopsavilkums",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Meklēt",
     "feature_card__prompts__new_prompt__title": "Jauns ieteikums",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Vēl nav pieejama čata vēsture",
     "immersive_chat__summary_no_conversation__title": "Vēl nav pieejama kopsavilkuma vēsture",
     "immersive_chat__search_no_conversation__title": "Vēl nav pieejama meklēšanas vēsture",
-    "immersive_chat__art_no_conversation__title": "Vēl nav pieejama mākslas vēsture",
+    "immersive_chat__art_no_conversation__title": "Vēl nav pieejama pārrakstīšanas vēsture",
     "immersive_chat__delete_summary__title": "Dzēst kopsavilkumu?",
     "immersive_chat__delete_search__title": "Dzēst meklēšanu?",
     "immersive_chat__delete_art__title": "Dzēst mākslu?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Tūlītēja atbilde",
     "immersive_chat__delete_all_context_menu__button__title": "Dzēst visus konteksta izvēlnes",
     "immersive_chat__delete_all_context_menu__title": "Notīrīt jūsu konteksta izvēlnes vēsturi - vai esat pārliecināts?",
-    "context_window__chat_history__button__title": "Konteksta izvēlnes vēsture",
+    "context_window__chat_history__button__title": "Pārrakstīšanas vēsture",
     "context_window__chat_history__empty__title": "Vēl nav pieejama konteksta izvēlnes vēsture",
     "context_window__chat_history__continue_in_chat__title": "Turpināt čatā",
     "provider__claude_web_app__model__claude_3_200k__description": "Izcila veiktspēja uzdevumos, kas prasa sarežģītu domāšanu. Claude 3 ir Anthropic labākais piedāvājums.",
@@ -1034,7 +1034,9 @@
     "floating_menu__pint_once_to_sidebar": "Rādīt atbildi sānjoslā vienreiz",
     "floating_menu__always_unpin_to_sidebar": "Vienmēr rādīt atbildes kontekstā",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Kopsavilkuma galvenie punkti",
-    "context_window__chat_history__continue_in_sidebar__title": "Turpināt sānjoslā"
+    "context_window__chat_history__continue_in_sidebar__title": "Turpināt sānjoslā",
+    "sidebar__speed_dial__rewrite_history__button": "Pārrakstīt vēsturi",
+    "sidebar__tabs__rewrite__action_btn__title": "Jauns pārraksts"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

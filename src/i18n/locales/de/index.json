@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Zusammenfassungsschaltfläche",
     "feature_card__prompts__edit_prompt__field_advance__title": "Voranschreiten",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ausgabesprache & Ton & Schreibstil",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextmenü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Umschreiben",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Zusammenfassung",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Suche",
     "feature_card__prompts__new_prompt__title": "Neue Aufforderung",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Kein Chat-Verlauf verfügbar",
     "immersive_chat__summary_no_conversation__title": "Kein Zusammenfassungsverlauf verfügbar",
     "immersive_chat__search_no_conversation__title": "Kein Suchverlauf verfügbar",
-    "immersive_chat__art_no_conversation__title": "Kein Kunstverlauf verfügbar",
+    "immersive_chat__art_no_conversation__title": "Kein Umschreibungsverlauf verfügbar",
     "immersive_chat__delete_summary__title": "Zusammenfassung löschen?",
     "immersive_chat__delete_search__title": "Suche löschen?",
     "immersive_chat__delete_art__title": "Kunst löschen?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Sofortige Antwort",
     "immersive_chat__delete_all_context_menu__button__title": "Alle Kontextmenüs löschen",
     "immersive_chat__delete_all_context_menu__title": "Löschen Sie Ihren Verlauf der Kontextmenüs - Sind Sie sicher?",
-    "context_window__chat_history__button__title": "Kontextmenü-Verlauf",
+    "context_window__chat_history__button__title": "Umschreibungsverlauf",
     "context_window__chat_history__empty__title": "Kein Kontextmenü-Verlauf verfügbar",
     "context_window__chat_history__continue_in_chat__title": "Im Chat fortsetzen",
     "provider__claude_web_app__model__claude_3_200k__description": "Überragende Leistung bei Aufgaben, die komplexe Denkfähigkeiten erfordern. Claude 3 ist das Spitzenprodukt von Anthropic.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Verbessertes mehrsprachiges Verständnis",
     "floating_menu__always_unpin_to_sidebar": "Antworten immer im Kontextmenü anzeigen",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Schlüsselpunkte zusammenfassen",
-    "context_window__chat_history__continue_in_sidebar__title": "Im Seitenbereich fortsetzen"
+    "context_window__chat_history__continue_in_sidebar__title": "Im Seitenbereich fortsetzen",
+    "sidebar__speed_dial__rewrite_history__button": "Verlauf umschreiben",
+    "sidebar__tabs__rewrite__action_btn__title": "Neue Umschreibung"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Бутон за обобщение",
     "feature_card__prompts__edit_prompt__field_advance__title": "Напред",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Език на изхода и тона & Стил на писане",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Меню за контекст",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Препиши",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Резюме",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Търсене",
     "feature_card__prompts__new_prompt__title": "Ново предложение",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Все още няма налична история на чата",
     "immersive_chat__summary_no_conversation__title": "Все още няма налична история на обобщението",
     "immersive_chat__search_no_conversation__title": "Все още няма налична история на търсенето",
-    "immersive_chat__art_no_conversation__title": "Все още няма налична история на изкуството",
+    "immersive_chat__art_no_conversation__title": "Все още няма налична история на преписвания",
     "immersive_chat__delete_summary__title": "Изтриване на обобщение?",
     "immersive_chat__delete_search__title": "Изтриване на търсене?",
     "immersive_chat__delete_art__title": "Изтриване на изкуство?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Мигновен отговор",
     "immersive_chat__delete_all_context_menu__button__title": "Изтрий всички контекстни менюта",
     "immersive_chat__delete_all_context_menu__title": "Изчистете историята на вашите контекстни менюта - сигурни ли сте?",
-    "context_window__chat_history__button__title": "История на контекстните менюта",
+    "context_window__chat_history__button__title": "История на преписвания",
     "context_window__chat_history__empty__title": "Все още няма налична история на контекстните менюта",
     "context_window__chat_history__continue_in_chat__title": "Продължи в чата",
     "provider__claude_web_app__model__claude_3_200k__description": "Изключителна производителност при задачи, изискващи сложно мислене. Клод 3 е най-доброто предложение на Anthropic.",
@@ -1034,7 +1034,9 @@
     "context_window__chat_history__continue_in_rewrite__title": "Продължете в пренаписването",
     "floating_menu__always_unpin_to_sidebar": "Винаги показвайте отговорите в контекстното меню",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Резюмирайте ключовите точки",
-    "context_window__chat_history__continue_in_sidebar__title": "Продължете в страничната лента"
+    "context_window__chat_history__continue_in_sidebar__title": "Продължете в страничната лента",
+    "sidebar__speed_dial__rewrite_history__button": "Презапиши историята",
+    "sidebar__tabs__rewrite__action_btn__title": "Ново преписване"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

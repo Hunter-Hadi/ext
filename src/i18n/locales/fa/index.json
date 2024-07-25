@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "دکمه خلاصه کردن",
     "feature_card__prompts__edit_prompt__field_advance__title": "پیشرفت",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "زبان خروجی و تن و سبک نوشتاری",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "منوی متن",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "بازنویسی",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "خلاصه",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "جستجو",
     "feature_card__prompts__new_prompt__title": "پرسش جدید",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "هنوز تاریخچه چتی موجود نیست",
     "immersive_chat__summary_no_conversation__title": "هنوز تاریخچه خلاصه موجود نیست",
     "immersive_chat__search_no_conversation__title": "هنوز تاریخچه جستجو موجود نیست",
-    "immersive_chat__art_no_conversation__title": "هنوز تاریخچه هنری موجود نیست",
+    "immersive_chat__art_no_conversation__title": "هنوز تاریخچه بازنویسی موجود نیست",
     "immersive_chat__delete_summary__title": "حذف خلاصه؟",
     "immersive_chat__delete_search__title": "حذف جستجو؟",
     "immersive_chat__delete_art__title": "حذف هنر؟",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "پاسخ فوری",
     "immersive_chat__delete_all_context_menu__button__title": "حذف تمام منوهای متنی",
     "immersive_chat__delete_all_context_menu__title": "پاک کردن تاریخچه منوهای متنی شما - آیا مطمئن هستید؟",
-    "context_window__chat_history__button__title": "تاریخچه منوی متنی",
+    "context_window__chat_history__button__title": "تاریخچه بازنویسی",
     "context_window__chat_history__empty__title": "هنوز تاریخچه منوی متنی موجود نیست",
     "context_window__chat_history__continue_in_chat__title": "ادامه در چت",
     "provider__claude_web_app__model__claude_3_200k__description": "عملکرد برتر در وظایفی که نیاز به استدلال پیچیده دارند. کلود 3 بهترین ارائه Anthropic است.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "درک چندزبانه بهبود یافته",
     "floating_menu__always_unpin_to_sidebar": "همیشه پاسخ‌ها را در منوی متن نمایش دهید",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "خلاصه نکات کلیدی",
-    "context_window__chat_history__continue_in_sidebar__title": "ادامه در نوار کناری"
+    "context_window__chat_history__continue_in_sidebar__title": "ادامه در نوار کناری",
+    "sidebar__speed_dial__rewrite_history__button": "بازنویسی تاریخ",
+    "sidebar__tabs__rewrite__action_btn__title": "بازنویسی جدید"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

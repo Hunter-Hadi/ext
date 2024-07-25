@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "요약 버튼",
     "feature_card__prompts__edit_prompt__field_advance__title": "진행",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "출력 언어 및 톤 & 작성 스타일",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "컨텍스트 메뉴",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "다시 작성",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "요약",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "검색",
     "feature_card__prompts__new_prompt__title": "새로운 프롬프트",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "아직 대화 기록이 없습니다",
     "immersive_chat__summary_no_conversation__title": "아직 요약 기록이 없습니다",
     "immersive_chat__search_no_conversation__title": "아직 검색 기록이 없습니다",
-    "immersive_chat__art_no_conversation__title": "아직 예술 기록이 없습니다",
+    "immersive_chat__art_no_conversation__title": "아직 사용 가능한 다시 작성 기록이 없습니다",
     "immersive_chat__delete_summary__title": "요약 삭제?",
     "immersive_chat__delete_search__title": "검색 삭제?",
     "immersive_chat__delete_art__title": "아트 삭제?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "즉시 응답",
     "immersive_chat__delete_all_context_menu__button__title": "모든 컨텍스트 메뉴 삭제",
     "immersive_chat__delete_all_context_menu__title": "컨텍스트 메뉴 기록 모두 지우기 - 확실합니까?",
-    "context_window__chat_history__button__title": "컨텍스트 메뉴 기록",
+    "context_window__chat_history__button__title": "다시 작성 기록",
     "context_window__chat_history__empty__title": "아직 사용 가능한 컨텍스트 메뉴 기록이 없습니다",
     "context_window__chat_history__continue_in_chat__title": "채팅에서 계속하기",
     "provider__claude_web_app__model__claude_3_200k__description": "복잡한 추론을 필요로하는 작업에서 우수한 성능을 발휘합니다. Claude 3은 Anthropic의 최고 수준의 제품입니다.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "향상된 다국어 이해",
     "floating_menu__always_unpin_to_sidebar": "상황 메뉴에서 항상 응답 표시",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "주요 포인트 요약",
-    "context_window__chat_history__continue_in_sidebar__title": "사이드바에서 계속"
+    "context_window__chat_history__continue_in_sidebar__title": "사이드바에서 계속",
+    "sidebar__speed_dial__rewrite_history__button": "히스토리 다시 쓰기",
+    "sidebar__tabs__rewrite__action_btn__title": "새로운 다시 쓰기"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

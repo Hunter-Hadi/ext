@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "خلاصہ کریں بٹن",
     "feature_card__prompts__edit_prompt__field_advance__title": "ترقی",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "زبان خروجی و طن و سبک نوشتار",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "منو کیا",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "دوبارہ لکھیں",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "خلاصہ",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "تلاش",
     "feature_card__prompts__new_prompt__title": "نیا پرومپٹ",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "ابھی تک کوئی چیٹ کی تاریخ دستیاب نہیں ہے",
     "immersive_chat__summary_no_conversation__title": "ابھی تک کوئی خلاصہ کی تاریخ دستیاب نہیں ہے",
     "immersive_chat__search_no_conversation__title": "ابھی تک کوئی تلاش کی تاریخ دستیاب نہیں ہے",
-    "immersive_chat__art_no_conversation__title": "ابھی تک کوئی آرٹ کی تاریخ دستیاب نہیں ہے",
+    "immersive_chat__art_no_conversation__title": "ابھی تک دوبارہ لکھنے کی تاریخ دستیاب نہیں ہے",
     "immersive_chat__delete_summary__title": "تفصیل حذف کریں؟",
     "immersive_chat__delete_search__title": "تلاش حذف کریں؟",
     "immersive_chat__delete_art__title": "آرٹ حذف کریں؟",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "فوری جواب",
     "immersive_chat__delete_all_context_menu__button__title": "تمام مواضع کے مینوز کو حذف کریں",
     "immersive_chat__delete_all_context_menu__title": "آپ کے مواضع کے مینوز کی تاریخ صاف کریں - کیا آپ مطمئن ہیں؟",
-    "context_window__chat_history__button__title": "مواضع کے مینوز کی تاریخ",
+    "context_window__chat_history__button__title": "دوبارہ لکھیں تاریخ",
     "context_window__chat_history__empty__title": "ابھی تک کوئی مواضع کے مینوز کی تاریخ دستیاب نہیں ہے",
     "context_window__chat_history__continue_in_chat__title": "چیٹ میں جاری رکھیں",
     "provider__claude_web_app__model__claude_3_200k__description": "مشکل ماندگاری کو طلب کرنے والے کاموں پر بہترین کارکردگی۔ کلوڈ 3 اینتھروپک کی بہترین پیشکش ہے۔",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "بہترین بہوجوبانی کی سمجھ",
     "floating_menu__always_unpin_to_sidebar": "ہمیشہ سیاق و سباق مینو میں جوابات کو دکھائیں",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "اہم نکات کا خلاصہ",
-    "context_window__chat_history__continue_in_sidebar__title": "سائیڈبار میں جاری رکھیں"
+    "context_window__chat_history__continue_in_sidebar__title": "سائیڈبار میں جاری رکھیں",
+    "sidebar__speed_dial__rewrite_history__button": "تاریخ دوبارہ لکھیں",
+    "sidebar__tabs__rewrite__action_btn__title": "نیا لکھیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

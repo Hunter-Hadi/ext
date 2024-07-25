@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Kifungo cha Muhtasari",
     "feature_card__prompts__edit_prompt__field_advance__title": "Kuendelea",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Lugha ya Matokeo & Mtindo wa Kuandika",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menyu ya muktadha",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Andika upya",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Muhtasari",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Tafuta",
     "feature_card__prompts__new_prompt__title": "Fungua ombi jipya",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Historia ya mazungumzo haipatikani bado",
     "immersive_chat__summary_no_conversation__title": "Historia ya muhtasari haipatikani bado",
     "immersive_chat__search_no_conversation__title": "Historia ya utafutaji haipatikani bado",
-    "immersive_chat__art_no_conversation__title": "Historia ya sanaa haipatikani bado",
+    "immersive_chat__art_no_conversation__title": "Historia ya andika upya haipatikani bado",
     "immersive_chat__delete_summary__title": "Futa muhtasari?",
     "immersive_chat__delete_search__title": "Futa utafutaji?",
     "immersive_chat__delete_art__title": "Futa sanaa?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Jibu la haraka",
     "immersive_chat__delete_all_context_menu__button__title": "Futa menyu zote za muktadha",
     "immersive_chat__delete_all_context_menu__title": "Ondoa historia yako ya menyu za muktadha - una uhakika?",
-    "context_window__chat_history__button__title": "Historia ya menyu ya muktadha",
+    "context_window__chat_history__button__title": "Historia ya andika upya",
     "context_window__chat_history__empty__title": "Hakuna historia ya menyu ya muktadha inapatikana bado",
     "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo",
     "provider__claude_web_app__model__claude_3_200k__description": "Utendaji bora kwenye majukumu yanayohitaji mawazo magumu. Claude 3 ni huduma bora kabisa ya Anthropic.",
@@ -1034,7 +1034,9 @@
     "floating_menu__pint_once_to_sidebar": "Onyesha jibu kwenye upau wa pembeni mara moja",
     "floating_menu__always_unpin_to_sidebar": "Daima onyesha majibu kwenye menyu ya muktadha",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Fupisha pointi muhimu",
-    "context_window__chat_history__continue_in_sidebar__title": "Endelea kwenye upau wa pembeni"
+    "context_window__chat_history__continue_in_sidebar__title": "Endelea kwenye upau wa pembeni",
+    "sidebar__speed_dial__rewrite_history__button": "Andika upya historia",
+    "sidebar__tabs__rewrite__action_btn__title": "Andika upya mpya"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

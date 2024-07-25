@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Kokkuvõtte nupp",
     "feature_card__prompts__edit_prompt__field_advance__title": "Edasijõudnud",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Väljundkeel ja toon ning kirjutamisstiil",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstimenüü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Ümberkirjutamine",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Kokkuvõte",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Otsing",
     "feature_card__prompts__new_prompt__title": "Uus vihje",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Vestlusajalugu pole veel saadaval",
     "immersive_chat__summary_no_conversation__title": "Kokkuvõtte ajalugu pole veel saadaval",
     "immersive_chat__search_no_conversation__title": "Otsingu ajalugu pole veel saadaval",
-    "immersive_chat__art_no_conversation__title": "Kunsti ajalugu pole veel saadaval",
+    "immersive_chat__art_no_conversation__title": "Ümberkirjutamise ajalugu pole veel saadaval",
     "immersive_chat__delete_summary__title": "Kustuta kokkuvõte?",
     "immersive_chat__delete_search__title": "Kustuta otsing?",
     "immersive_chat__delete_art__title": "Kustuta kunst?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Kohe vastus",
     "immersive_chat__delete_all_context_menu__button__title": "Kustuta kõik kontekstimenüüd",
     "immersive_chat__delete_all_context_menu__title": "Kustuta oma kontekstimenüüde ajalugu - oled sa kindel?",
-    "context_window__chat_history__button__title": "Kontekstimenüü ajalugu",
+    "context_window__chat_history__button__title": "Ümberkirjutamise ajalugu",
     "context_window__chat_history__empty__title": "Kontekstimenüü ajalugu pole veel saadaval",
     "context_window__chat_history__continue_in_chat__title": "Jätka vestlust",
     "provider__claude_web_app__model__claude_3_200k__description": "Ülim jõudlus ülesannetes, mis nõuavad keerulist mõtlemist. Claude 3 on Anthropicu parim pakkumine.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Parandatud mitmekeelne arusaamine",
     "floating_menu__always_unpin_to_sidebar": "Kuva vastused alati kontekstimenüüs",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Kokkuvõte põhipunktidest",
-    "context_window__chat_history__continue_in_sidebar__title": "Jätka küljeribal"
+    "context_window__chat_history__continue_in_sidebar__title": "Jätka küljeribal",
+    "sidebar__speed_dial__rewrite_history__button": "Ümberkirjutamise ajalugu",
+    "sidebar__tabs__rewrite__action_btn__title": "Uus ümberkirjutamine"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

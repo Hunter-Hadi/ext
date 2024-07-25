@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Nút Tóm tắt",
     "feature_card__prompts__edit_prompt__field_advance__title": "Tiến bộ",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ngôn ngữ đầu ra & Tông & Phong cách viết",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu ngữ cảnh",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Viết Lại",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Tóm tắt",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Tìm kiếm",
     "feature_card__prompts__new_prompt__title": "Gợi ý mới",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Chưa có lịch sử trò chuyện",
     "immersive_chat__summary_no_conversation__title": "Chưa có lịch sử tóm tắt",
     "immersive_chat__search_no_conversation__title": "Chưa có lịch sử tìm kiếm",
-    "immersive_chat__art_no_conversation__title": "Chưa có lịch sử nghệ thuật",
+    "immersive_chat__art_no_conversation__title": "Chưa có lịch sử viết lại",
     "immersive_chat__delete_summary__title": "Xóa tóm tắt?",
     "immersive_chat__delete_search__title": "Xóa tìm kiếm?",
     "immersive_chat__delete_art__title": "Xóa nghệ thuật?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Trả lời tức thì",
     "immersive_chat__delete_all_context_menu__button__title": "Xóa tất cả menu ngữ cảnh",
     "immersive_chat__delete_all_context_menu__title": "Xóa lịch sử menu ngữ cảnh của bạn - bạn có chắc chắn không?",
-    "context_window__chat_history__button__title": "Lịch sử menu ngữ cảnh",
+    "context_window__chat_history__button__title": "Lịch sử viết lại",
     "context_window__chat_history__empty__title": "Chưa có lịch sử menu ngữ cảnh nào",
     "context_window__chat_history__continue_in_chat__title": "Tiếp tục trong cuộc trò chuyện",
     "provider__claude_web_app__model__claude_3_200k__description": "Hiệu suất vượt trội trong các nhiệm vụ đòi hỏi tư duy phức tạp. Claude 3 là sản phẩm hàng đầu của Anthropic.",
@@ -1034,7 +1034,9 @@
     "floating_menu__pint_once_to_sidebar": "Hiển thị phản hồi trong thanh bên một lần",
     "floating_menu__always_unpin_to_sidebar": "Luôn hiển thị phản hồi trong menu ngữ cảnh",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Tóm tắt điểm chính",
-    "context_window__chat_history__continue_in_sidebar__title": "Tiếp tục trong thanh bên"
+    "context_window__chat_history__continue_in_sidebar__title": "Tiếp tục trong thanh bên",
+    "sidebar__speed_dial__rewrite_history__button": "Viết lại lịch sử",
+    "sidebar__tabs__rewrite__action_btn__title": "Viết mới"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

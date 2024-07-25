@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "సంగ్రహించు బటన్",
     "feature_card__prompts__edit_prompt__field_advance__title": "ముందుకు వెళ్లండి",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ఔట్పుట్ భాష & శైలి & రచన శైలి",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "కంటెక్స్ట్ మెనూ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "రీవ్రైట్",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "సారాంశం",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "శోధన",
     "feature_card__prompts__new_prompt__title": "కొత్త ప్రాంప్ట్",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "ఇంకా చాట్ చరిత్ర లేదు",
     "immersive_chat__summary_no_conversation__title": "ఇంకా సారాంశ చరిత్ర లేదు",
     "immersive_chat__search_no_conversation__title": "ఇంకా శోధన చరిత్ర లేదు",
-    "immersive_chat__art_no_conversation__title": "ఇంకా కళ చరిత్ర లేదు",
+    "immersive_chat__art_no_conversation__title": "ఇప్పుడు రీవ్రైట్ చరిత్ర లేదు",
     "immersive_chat__delete_summary__title": "సంగ్రహాన్ని తొలగించాలా?",
     "immersive_chat__delete_search__title": "శోధనను తొలగించాలా?",
     "immersive_chat__delete_art__title": "కళాకృతిని తొలగించాలా?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "త్వరగా సమాధానం",
     "immersive_chat__delete_all_context_menu__button__title": "అన్ని కంటెక్స్ట్ మెనూలను తొలగించు",
     "immersive_chat__delete_all_context_menu__title": "మీ కంటెక్స్ట్ మెనూల చరిత్రను తొలగించాలని మీరు ఖచ్చితంగా ఉంచారా?",
-    "context_window__chat_history__button__title": "కంటెక్స్ట్ మెనూ చరిత్ర",
+    "context_window__chat_history__button__title": "రీవ్రైట్ చరిత్ర",
     "context_window__chat_history__empty__title": "ఇంకా ఏ కంటెక్స్ట్ మెనూ చరిత్ర లేదు",
     "context_window__chat_history__continue_in_chat__title": "చాట్‌లో కొనసాగించు",
     "provider__claude_web_app__model__claude_3_200k__description": "కంప్లెక్స్ రీజనింగ్ అవసరమైన టాస్కులపై అత్యుత్తమ పనిచేసే పనితీరు. క్లాడ్ 3 అంత్రోపిక్ యొక్క ఉత్తమ ఆఫరింగ్ ఉంది.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "మెరుగుపరచిన బహుభాషా అర్థం",
     "floating_menu__always_unpin_to_sidebar": "యాప్ మెనూను ఎప్పటికప్పుడు సైడ్‌బార్‌లో పించండి",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "ముఖ్య పాయింట్‌లను సంగ్రహించు",
-    "context_window__chat_history__continue_in_sidebar__title": "సైడ్‌బార్‌లో కొనసాగండి"
+    "context_window__chat_history__continue_in_sidebar__title": "సైడ్‌బార్‌లో కొనసాగండి",
+    "sidebar__speed_dial__rewrite_history__button": "చరిత్రను రివ్రైట్ చేయండి",
+    "sidebar__tabs__rewrite__action_btn__title": "కొత్త రివ్రైట్"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

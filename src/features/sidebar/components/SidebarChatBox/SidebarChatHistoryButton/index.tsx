@@ -49,6 +49,9 @@ const SidebarChatHistoryButton: FC<{
     if (currentConversationType === 'Art') {
       return t('client:sidebar__speed_dial__art_history__button')
     }
+    if (currentConversationType === 'ContextMenu') {
+      return t('sidebar__speed_dial__rewrite_history__button')
+    }
     return t('client:sidebar__speed_dial__chat_history__button')
   }, [t, currentConversationType])
 
@@ -61,6 +64,9 @@ const SidebarChatHistoryButton: FC<{
     }
     if (currentConversationType === 'Art') {
       return t('client:immersive_chat__art_no_conversation__title')
+    }
+    if (currentConversationType === 'ContextMenu') {
+      return t('immersive_chat__art_no_conversation__title')
     }
     return t('client:immersive_chat__chat_no_conversation__title')
   }, [t, currentConversationType])

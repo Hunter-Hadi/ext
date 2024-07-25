@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "சுருக்கு பொத்தானை சுருக்குக",
     "feature_card__prompts__edit_prompt__field_advance__title": "முன்னேற்றம்",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "வெளிப்புற மொழி & தொடர்பு & எழுத்து பாணி",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "உள்ளடக்க மெனு",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "மீண்டும் எழுது",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "சுருக்கம்",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "தேடல்",
     "feature_card__prompts__new_prompt__title": "புதிய உண்மையான விடை",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "இன்று உரையாடல் வரலாறு கிடைக்கவில்லை",
     "immersive_chat__summary_no_conversation__title": "சுருக்கம் வரலாறு கிடைக்கவில்லை",
     "immersive_chat__search_no_conversation__title": "தேடல் வரலாறு கிடைக்கவில்லை",
-    "immersive_chat__art_no_conversation__title": "கலை வரலாறு கிடைக்கவில்லை",
+    "immersive_chat__art_no_conversation__title": "இன்னும் மீண்டும் எழுதுதல் வரலாறு இல்லை",
     "immersive_chat__delete_summary__title": "சுருக்கத்தை நீக்குவதன் மூலம் அறிவிப்பு நீக்கப்படுமா?",
     "immersive_chat__delete_search__title": "தேடலை நீக்குவதன் மூலம் அறிவிப்பு நீக்கப்படுமா?",
     "immersive_chat__delete_art__title": "கலையை நீக்குவதன் மூலம் அறிவிப்பு நீக்கப்படுமா?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "உடனாக பதில்",
     "immersive_chat__delete_all_context_menu__button__title": "அனைத்து சூழல் மெனுகளையும் நீக்கு",
     "immersive_chat__delete_all_context_menu__title": "உங்கள் சூழல் மெனுகள் வரலாறை அழிக்க - நீங்கள் உறுதிப்படுத்துகிறீர்களா?",
-    "context_window__chat_history__button__title": "சூழல் மெனு வரலாறு",
+    "context_window__chat_history__button__title": "மீண்டும் எழுதுதல் வரலாறு",
     "context_window__chat_history__empty__title": "இன்னும் சூழல் மெனு வரலாறு இல்லை",
     "context_window__chat_history__continue_in_chat__title": "அடுத்து உரையில் தொடர்க",
     "provider__claude_web_app__model__claude_3_200k__description": "சிறந்த பெரும்பாலான பொருள் மனம் தேவைப்படும் பணிகளுக்கு உயர்வான செயல்பாடு. கிளோட் 3 அந்த்ராபிக் சிறந்த பொருள் மனமாக உள்ளது.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "மேம்படுத்தப்பட்ட பல மொழிகளை புரிந்துகொள்ளும்",
     "floating_menu__always_unpin_to_sidebar": "எப்போதும் பதில்களை உள்ளடக்கும் பட்டியலில் கட்டுப்படுத்து",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "முக்கிய புரிகிகைகளை சுருக்கமாக சுருக்கு",
-    "context_window__chat_history__continue_in_sidebar__title": "பட்டியலில் தொடருங்கள்"
+    "context_window__chat_history__continue_in_sidebar__title": "பட்டியலில் தொடருங்கள்",
+    "sidebar__speed_dial__rewrite_history__button": "வரலாறை மீளமை",
+    "sidebar__tabs__rewrite__action_btn__title": "புதிய மீளமை"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

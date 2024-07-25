@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "כפתור סיכום",
     "feature_card__prompts__edit_prompt__field_advance__title": "התקדמות",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "שפת פלט & טון & סגנון כתיבה",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "תפריט הקשר",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "כתוב מחדש",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "סיכום",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "חיפוש",
     "feature_card__prompts__new_prompt__title": "הצעה חדשה",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "אין היסטוריית צ'אט זמינה כרגע",
     "immersive_chat__summary_no_conversation__title": "אין היסטוריית סיכום זמינה כרגע",
     "immersive_chat__search_no_conversation__title": "אין היסטוריית חיפוש זמינה כרגע",
-    "immersive_chat__art_no_conversation__title": "אין היסטוריית אמנות זמינה כרגע",
+    "immersive_chat__art_no_conversation__title": "אין היסטוריית כתיבה מחדש זמינה עדיין",
     "immersive_chat__delete_summary__title": "מחיקת סיכום?",
     "immersive_chat__delete_search__title": "מחיקת חיפוש?",
     "immersive_chat__delete_art__title": "מחיקת אמנות?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "תשובה מיידית",
     "immersive_chat__delete_all_context_menu__button__title": "מחק את כל תפריטי ההקשר",
     "immersive_chat__delete_all_context_menu__title": "נקה את ההיסטוריה של תפריטי ההקשר - האם אתה בטוח?",
-    "context_window__chat_history__button__title": "היסטוריית תפריטי ההקשר",
+    "context_window__chat_history__button__title": "היסטוריית כתיבה מחדש",
     "context_window__chat_history__empty__title": "אין עדיין היסטוריית תפריטי ההקשר זמינה",
     "context_window__chat_history__continue_in_chat__title": "המשך בצ'אט",
     "provider__claude_web_app__model__claude_3_200k__description": "ביצועים יוצאי דופן במשימות הדורשות שיקול מורכב. Claude 3 הוא ההצעה המובילה של Anthropic.",
@@ -1034,7 +1034,9 @@
     "floating_menu__pint_once_to_sidebar": "הצג תגובה בסרגל פעם אחת",
     "floating_menu__always_unpin_to_sidebar": "תמיד הצג תגובות בתפריט ההקשר",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "סכם נקודות מרכזיות",
-    "context_window__chat_history__continue_in_sidebar__title": "המשך בסרגל הצד"
+    "context_window__chat_history__continue_in_sidebar__title": "המשך בסרגל הצד",
+    "sidebar__speed_dial__rewrite_history__button": "כתוב מחדש",
+    "sidebar__tabs__rewrite__action_btn__title": "כתוב מחדש חדש"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

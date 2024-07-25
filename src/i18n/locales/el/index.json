@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Κουμπί περίληψης",
     "feature_card__prompts__edit_prompt__field_advance__title": "Προχωρημένες ρυθμίσεις",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Γλώσσα εξόδου και τόνος και στυλ γραφής",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Μενού περιβάλλοντος",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Επαναγραφή",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Περίληψη",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Αναζήτηση",
     "feature_card__prompts__new_prompt__title": "Νέα υπόδειξη",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Δεν υπάρχει διαθέσιμο ιστορικό συνομιλίας ακόμα",
     "immersive_chat__summary_no_conversation__title": "Δεν υπάρχει διαθέσιμο ιστορικό περίληψης ακόμα",
     "immersive_chat__search_no_conversation__title": "Δεν υπάρχει διαθέσιμο ιστορικό αναζήτησης ακόμα",
-    "immersive_chat__art_no_conversation__title": "Δεν υπάρχει διαθέσιμο ιστορικό τέχνης ακόμα",
+    "immersive_chat__art_no_conversation__title": "Δεν υπάρχει ακόμα ιστορικό επαναγραφής",
     "immersive_chat__delete_summary__title": "Διαγραφή περίληψης;",
     "immersive_chat__delete_search__title": "Διαγραφή αναζήτησης;",
     "immersive_chat__delete_art__title": "Διαγραφή έργου τέχνης;",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Άμεση απάντηση",
     "immersive_chat__delete_all_context_menu__button__title": "Διαγραφή όλων των μενού περιβάλλοντος",
     "immersive_chat__delete_all_context_menu__title": "Καθαρίστε το ιστορικό των μενού περιβάλλοντος - είστε σίγουροι;",
-    "context_window__chat_history__button__title": "Ιστορικό μενού περιβάλλοντος",
+    "context_window__chat_history__button__title": "Ιστορικό επαναγραφής",
     "context_window__chat_history__empty__title": "Δεν υπάρχει ακόμα διαθέσιμο ιστορικό μενού περιβάλλοντος",
     "context_window__chat_history__continue_in_chat__title": "Συνέχεια στη συνομιλία",
     "provider__claude_web_app__model__claude_3_200k__description": "Ανώτερη απόδοση σε εργασίες που απαιτούν πολύπλοκη σκέψη. Ο Claude 3 είναι η κορυφαία προσφορά της Anthropic.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Βελτιωμένη κατανόηση πολυγλωσσίας",
     "floating_menu__always_unpin_to_sidebar": "Πάντα εμφάνιση απαντήσεων στο μενού πλευρικής στήλης",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Συνοψίστε τα κύρια σημεία",
-    "context_window__chat_history__continue_in_sidebar__title": "Συνέχεια στην πλευρική στήλη"
+    "context_window__chat_history__continue_in_sidebar__title": "Συνέχεια στην πλευρική στήλη",
+    "sidebar__speed_dial__rewrite_history__button": "Επανεγγραφή ιστορικού",
+    "sidebar__tabs__rewrite__action_btn__title": "Νέα επανεγγραφή"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

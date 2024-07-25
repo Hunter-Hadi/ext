@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Кнопка суммирования",
     "feature_card__prompts__edit_prompt__field_advance__title": "Продвинутый",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Язык вывода и тональность и стиль письма",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Меню",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Переписать",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Резюме",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Поиск",
     "feature_card__prompts__new_prompt__title": "Новый подсказка",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Еще нет доступной истории чата",
     "immersive_chat__summary_no_conversation__title": "Еще нет доступной истории резюме",
     "immersive_chat__search_no_conversation__title": "Еще нет доступной истории поиска",
-    "immersive_chat__art_no_conversation__title": "Еще нет доступной истории искусства",
+    "immersive_chat__art_no_conversation__title": "История переписки пока недоступна",
     "immersive_chat__delete_summary__title": "Удалить сводку?",
     "immersive_chat__delete_search__title": "Удалить поиск?",
     "immersive_chat__delete_art__title": "Удалить произведение искусства?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Мгновенный ответ",
     "immersive_chat__delete_all_context_menu__button__title": "Удалить все контекстные меню",
     "immersive_chat__delete_all_context_menu__title": "Очистить историю ваших контекстных меню - вы уверены?",
-    "context_window__chat_history__button__title": "История контекстного меню",
+    "context_window__chat_history__button__title": "История переписки",
     "context_window__chat_history__empty__title": "Пока нет доступной истории контекстного меню",
     "context_window__chat_history__continue_in_chat__title": "Продолжить в чате",
     "provider__claude_web_app__model__claude_3_200k__description": "Превосходная производительность при выполнении задач, требующих сложного мышления. Claude 3 - это лучшее предложение от Anthropic.",
@@ -1034,7 +1034,9 @@
     "floating_menu__pint_once_to_sidebar": "Показать ответ в боковой панели один раз",
     "floating_menu__always_unpin_to_sidebar": "Всегда показывать ответы в контекстном меню",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Суммировать ключевые моменты",
-    "context_window__chat_history__continue_in_sidebar__title": "Продолжить в боковой панели"
+    "context_window__chat_history__continue_in_sidebar__title": "Продолжить в боковой панели",
+    "sidebar__speed_dial__rewrite_history__button": "Переписать историю",
+    "sidebar__tabs__rewrite__action_btn__title": "Новая перепись"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

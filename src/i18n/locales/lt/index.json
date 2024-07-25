@@ -239,7 +239,7 @@
     "feature_card__appearance__field_summarize_button__title": "Santrauka",
     "feature_card__prompts__edit_prompt__field_advance__title": "Pažanga",
     "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Išvesties kalba ir tonas ir rašymo stilius",
-    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstinis meniu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Peržiūrėti",
     "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Santrauka",
     "feature_card__prompts__place_my_own_prompts__tab_title__search": "Paieška",
     "feature_card__prompts__new_prompt__title": "Naujas užduoties aprašymas",
@@ -591,7 +591,7 @@
     "immersive_chat__chat_no_conversation__title": "Dar nėra prieinama pokalbių istorija",
     "immersive_chat__summary_no_conversation__title": "Dar nėra prieinama santraukos istorija",
     "immersive_chat__search_no_conversation__title": "Dar nėra prieinama paieškos istorija",
-    "immersive_chat__art_no_conversation__title": "Dar nėra prieinama meno istorija",
+    "immersive_chat__art_no_conversation__title": "Dar nėra perrašymo istorijos",
     "immersive_chat__delete_summary__title": "Ištrinti santrauką?",
     "immersive_chat__delete_search__title": "Ištrinti paiešką?",
     "immersive_chat__delete_art__title": "Ištrinti meną?",
@@ -718,7 +718,7 @@
     "instant_reply_button__explicit__display_text": "Momentinis atsakymas",
     "immersive_chat__delete_all_context_menu__button__title": "Ištrinti visus kontekstinius meniu",
     "immersive_chat__delete_all_context_menu__title": "Išvalyti kontekstinių meniu istoriją - ar tikrai?",
-    "context_window__chat_history__button__title": "Kontekstinio meniu istorija",
+    "context_window__chat_history__button__title": "Perrašymo istorija",
     "context_window__chat_history__empty__title": "Dar nėra prieinama kontekstinio meniu istorija",
     "context_window__chat_history__continue_in_chat__title": "Tęsti pokalbį",
     "provider__claude_web_app__model__claude_3_200k__description": "Puikus pasirodymas užduotims, kurios reikalauja sudėtingo mąstymo. Claude 3 yra Anthropic geriausias pasiūlymas.",
@@ -1034,7 +1034,9 @@
     "sidebar__promotion_dialog__gpt_4o_mini__content_item5__description": "Pagerinta daugiakalbė supratimas",
     "floating_menu__always_unpin_to_sidebar": "Visada rodyti atsakymus kontekstinėje juostoje",
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "Suvesti pagrindinius taškus",
-    "context_window__chat_history__continue_in_sidebar__title": "Tęsti juostoje"
+    "context_window__chat_history__continue_in_sidebar__title": "Tęsti juostoje",
+    "sidebar__speed_dial__rewrite_history__button": "Perkelti istoriją",
+    "sidebar__tabs__rewrite__action_btn__title": "Naujas perkėlimas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

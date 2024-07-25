@@ -1,12 +1,13 @@
-import { KeyboardArrowDown } from '@mui/icons-material'
-import { Box, Typography } from '@mui/material'
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'
+import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
-import { last } from 'lodash-es'
+import Typography from '@mui/material/Typography'
+import last from 'lodash-es/last'
 import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
-import CustomMarkdown from '@/components/CustomMarkdown'
+import MaxAIMarkdown from '@/components/MaxAIMarkdown'
 import MessageContextTooltip from '@/components/MessageContextTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
@@ -280,7 +281,7 @@ const WritingMessageBox: FC<{
           theme.isDarkMode ? 'markdown-body-dark' : ''
         }`}
       >
-        {!!message && <CustomMarkdown>{message}</CustomMarkdown>}
+        {!!message && <MaxAIMarkdown>{message}</MaxAIMarkdown>}
       </div>
     </Stack>
   )

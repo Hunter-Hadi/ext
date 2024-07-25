@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Kenar çubuğunda devam et",
     "sidebar__speed_dial__rewrite_history__button": "Geçmişi yeniden yaz",
     "sidebar__tabs__rewrite__action_btn__title": "Yeni yeniden yaz",
-    "context_window__chat_history__continue_in_rewrite__title": "Yeniden Yazmaya Devam Et"
+    "context_window__chat_history__continue_in_rewrite__title": "Yeniden Yazmaya Devam Et",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Sınırsız erişim için Llama 3.1 70B'ye yükseltin",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Ücretsiz günlük sorgu limiti aşıldı. Şimdi sınırsız sorgular için yükseltin veya günlük ücretsiz sorguların sıfırlandığı yarına geri dönün.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Llama 3.1 70B için aylık sorgu limiti aşıldı. Şimdi sınırsız erişim için yükseltin veya aylık sorgularınızın sıfırlandığı gelecek ay geri dönün.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Meta'nın en son açık kaynaklı yapay zeka modeli olan 70 milyar parametrenin gücünden faydalanın. Gelişmiş çok dilli yetenekler, genişletilmiş bağlam uzunluğu ve çeşitli yapay zeka ihtiyaçlarınız için gelişmiş akıl yürütme deneyimi yaşayın.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Sınırsız erişim için Llama 3.1 405B'ye yükseltin",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Ücretsiz günlük sorgu limiti aşıldı. Şimdi sınırsız sorgular için yükseltin veya günlük ücretsiz sorguların sıfırlandığı yarına geri dönün.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Llama 3.1 405B için aylık sorgu limiti aşıldı. Şimdi sınırsız erişim için yükseltin veya aylık sorgularınızın sıfırlandığı gelecek ay geri dönün.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Dünyanın en büyük açık kaynaklı yapay zeka modelinin sunduğu bilgi, akıl yürütme ve çok dilli destekte eşsiz yetenekleri deneyimleyin. En iddialı projeleriniz için 405 milyar parametrenin gücünü açığa çıkarın."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

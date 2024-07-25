@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Teruskan dalam sidebar",
     "sidebar__speed_dial__rewrite_history__button": "Tulis semula sejarah",
     "sidebar__tabs__rewrite__action_btn__title": "Tulis semula baru",
-    "context_window__chat_history__continue_in_rewrite__title": "Teruskan dalam penulisan semula"
+    "context_window__chat_history__continue_in_rewrite__title": "Teruskan dalam penulisan semula",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Naik taraf untuk akses tanpa had ke Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Had pertanyaan harian percuma melebihi. Naik taraf sekarang untuk pertanyaan tanpa had, atau semak semula esok apabila pertanyaan percuma harian diresetkan.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Had pertanyaan bulanan untuk Llama 3.1 70B melebihi. Naik taraf sekarang untuk akses tanpa had, atau semak semula bulan depan apabila pertanyaan bulanan anda diresetkan.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Manfaatkan kuasa 70 bilion parameter dengan model AI sumber terbuka terkini Meta. Alami keupayaan multibahasa yang diperkasa, panjang konteks yang diperluas, dan penalaran canggih untuk keperluan AI pelbagai anda.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Naik taraf untuk akses tanpa had ke Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Had pertanyaan harian percuma melebihi. Naik taraf sekarang untuk pertanyaan tanpa had, atau semak semula esok apabila pertanyaan percuma harian diresetkan.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Had pertanyaan bulanan untuk Llama 3.1 405B melebihi. Naik taraf sekarang untuk akses tanpa had, atau semak semula bulan depan apabila pertanyaan bulanan anda diresetkan.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Alami model AI sumber terbuka terbesar di dunia, menawarkan keupayaan yang tiada tandingan dalam pengetahuan, penalaran, dan sokongan multibahasa. Buka kuasa 405 bilion parameter untuk projek paling berani anda."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

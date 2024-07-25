@@ -1053,7 +1053,15 @@
     "sidebar__tabs__rewrite__tooltip": "AI rewriter",
     "home_view__rewrite__title": "AI rewriter",
     "home_view__rewrite__description": "Makatipid ng oras sa pagsusuri at pagpapakinis ng iyong mga salita.",
-    "context_window__chat_history__continue_in_rewrite__title": "Magpatuloy sa pagsusulat"
+    "context_window__chat_history__continue_in_rewrite__title": "Magpatuloy sa pagsusulat",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Mag-upgrade para sa walang limitadong access sa Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Lumampas na sa libreng limitasyon ng araw-araw na query. Mag-upgrade ngayon para sa walang limitasyong mga query, o bumalik bukas kapag na-reset ang araw-araw na libreng mga query.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Lumampas na sa buwanang limitasyon ng query para sa Llama 3.1 70B. Mag-upgrade ngayon para sa walang limitadong access, o bumalik sa susunod na buwan kapag na-reset ang iyong buwanang mga query.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Gamitin ang lakas ng 70 bilyong mga parameter sa pinakabagong open-source na AI model ng Meta. Maranasan ang pinahusay na kakayahan sa maraming wika, pahabang haba ng konteksto, at advanced na rasoning para sa iyong iba't ibang pangangailangan sa AI.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Mag-upgrade para sa walang limitadong access sa Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Lumampas na sa libreng limitasyon ng araw-araw na query. Mag-upgrade ngayon para sa walang limitasyong mga query, o bumalik bukas kapag na-reset ang araw-araw na libreng mga query.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Lumampas na sa buwanang limitasyon ng query para sa Llama 3.1 405B. Mag-upgrade ngayon para sa walang limitadong access, o bumalik sa susunod na buwan kapag na-reset ang iyong buwanang mga query.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Maranasan ang pinakamalaking open-source na AI model sa mundo, na nag-aalok ng walang kapantay na kakayahan sa kaalaman, rasoning, at suporta sa maraming wika. Buksan ang lakas ng 405 bilyong mga parameter para sa iyong pinakamahahalagang mga proyekto."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

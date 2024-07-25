@@ -1053,7 +1053,15 @@
     "sidebar__tabs__rewrite__tooltip": "AIリライター",
     "home_view__rewrite__title": "AIリライター",
     "home_view__rewrite__description": "校正や言葉を完璧にするのに時間を節約します。",
-    "context_window__chat_history__continue_in_rewrite__title": "書き直しで続行"
+    "context_window__chat_history__continue_in_rewrite__title": "書き直しで続行",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Llama 3.1 70Bへの無制限アクセスにアップグレード",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "無料の毎日のクエリ制限を超えました。無制限のクエリを利用するには今すぐアップグレードするか、明日になって無料クエリがリセットされるのを待ちます。",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Llama 3.1 70Bの月間クエリ制限を超えました。無制限アクセスにアップグレードするか、次の月に月間クエリがリセットされるのを待ちます。",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Metaの最新オープンソースAIモデルで700億のパラメータの力を活用してください。強化された多言語対応、拡張されたコンテキスト長、多様なAIニーズに対する高度な推論を体験してください。",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Llama 3.1 405Bへの無制限アクセスにアップグレード",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "無料の毎日のクエリ制限を超えました。無制限のクエリを利用するには今すぐアップグレードするか、明日になって無料クエリがリセットされるのを待ちます。",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Llama 3.1 405Bの月間クエリ制限を超えました。無制限アクセスにアップグレードするか、次の月に月間クエリがリセットされるのを待ちます。",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "世界最大のオープンソースAIモデルで、知識、推論、多言語サポートにおいて比類のない機能を提供します。最も野心的なプロジェクトに向けて4050億のパラメータの力を解放してください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

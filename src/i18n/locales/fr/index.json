@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Continuer dans la barre latérale",
     "sidebar__speed_dial__rewrite_history__button": "Réécrire l'historique",
     "sidebar__tabs__rewrite__action_btn__title": "Nouvelle réécriture",
-    "context_window__chat_history__continue_in_rewrite__title": "Continuer dans la réécriture"
+    "context_window__chat_history__continue_in_rewrite__title": "Continuer dans la réécriture",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Mise à niveau pour un accès illimité à Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Limite quotidienne gratuite dépassée. Mise à niveau maintenant pour des requêtes illimitées, ou revenez demain lorsque les requêtes gratuites quotidiennes sont réinitialisées.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Limite mensuelle de requêtes pour Llama 3.1 70B dépassée. Mise à niveau maintenant pour un accès illimité, ou revenez le mois prochain lorsque vos requêtes mensuelles seront réinitialisées.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Exploitez la puissance de 70 milliards de paramètres avec le dernier modèle d'IA open-source de Meta. Découvrez des capacités multilingues améliorées, une longueur de contexte étendue et un raisonnement avancé pour vos besoins divers en IA.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Mise à niveau pour un accès illimité à Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Limite quotidienne gratuite dépassée. Mise à niveau maintenant pour des requêtes illimitées, ou revenez demain lorsque les requêtes gratuites quotidiennes sont réinitialisées.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Limite mensuelle de requêtes pour Llama 3.1 405B dépassée. Mise à niveau maintenant pour un accès illimité, ou revenez le mois prochain lorsque vos requêtes mensuelles seront réinitialisées.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Découvrez le plus grand modèle d'IA open-source au monde, offrant des capacités inégalées en matière de connaissance, de raisonnement et de support multilingue. Libérez la puissance de 405 milliards de paramètres pour vos projets les plus ambitieux."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

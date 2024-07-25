@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Endelea kwenye upau wa pembeni",
     "sidebar__speed_dial__rewrite_history__button": "Andika upya historia",
     "sidebar__tabs__rewrite__action_btn__title": "Andika upya mpya",
-    "context_window__chat_history__continue_in_rewrite__title": "Endelea katika kuandika upya"
+    "context_window__chat_history__continue_in_rewrite__title": "Endelea katika kuandika upya",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Boresha kwa ufikiaji usio na kikomo wa Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Kikomo cha maswali ya kila siku bila malipo kimezidi. Boresha sasa kwa maswali yasiyo na kikomo, au rudi kesho wakati maswali ya bure ya kila siku yatakapowekwa upya.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Kikomo cha maswali ya kila mwezi kwa Llama 3.1 70B kimezidi. Boresha sasa kwa ufikiaji usio na kikomo, au rudi mwezi ujao wakati maswali yako ya kila mwezi yatakapowekwa upya.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Tumia nguvu ya parameta bilioni 70 na mfano wa hivi karibuni wa AI wa chanzo wazi wa Meta. Pata uwezo ulioboreshwa wa lugha nyingi, urefu uliopanuliwa wa muktadha, na mantiki ya juu kwa mahitaji yako mbalimbali ya AI.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Boresha kwa ufikiaji usio na kikomo wa Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Kikomo cha maswali ya kila siku bila malipo kimezidi. Boresha sasa kwa maswali yasiyo na kikomo, au rudi kesho wakati maswali ya bure ya kila siku yatakapowekwa upya.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Kikomo cha maswali ya kila mwezi kwa Llama 3.1 405B kimezidi. Boresha sasa kwa ufikiaji usio na kikomo, au rudi mwezi ujao wakati maswali yako ya kila mwezi yatakapowekwa upya.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Pata uzoefu wa mfano wa AI wa chanzo wazi mkubwa zaidi duniani, ukiwa na uwezo usio na kifani katika maarifa, mantiki, na msaada wa lugha nyingi. Fungua nguvu ya parameta bilioni 405 kwa miradi yako yenye malengo makubwa zaidi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

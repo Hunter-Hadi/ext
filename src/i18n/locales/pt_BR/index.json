@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Continuar na barra lateral",
     "sidebar__speed_dial__rewrite_history__button": "Reescrever histórico",
     "sidebar__tabs__rewrite__action_btn__title": "Nova reescrita",
-    "context_window__chat_history__continue_in_rewrite__title": "Continuar na reescrita"
+    "context_window__chat_history__continue_in_rewrite__title": "Continuar na reescrita",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Atualize para acesso ilimitado ao Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Limite diário de consultas gratuitas excedido. Atualize agora para consultas ilimitadas, ou volte amanhã quando as consultas gratuitas diárias forem redefinidas.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Limite mensal de consultas para Llama 3.1 70B excedido. Atualize agora para acesso ilimitado, ou volte no próximo mês quando suas consultas mensais forem redefinidas.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Aproveite o poder de 70 bilhões de parâmetros com o mais recente modelo de IA de código aberto da Meta. Experimente capacidades multilíngues aprimoradas, extensão do comprimento do contexto e raciocínio avançado para suas diversas necessidades de IA.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Atualize para acesso ilimitado ao Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Limite diário de consultas gratuitas excedido. Atualize agora para consultas ilimitadas, ou volte amanhã quando as consultas gratuitas diárias forem redefinidas.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Limite mensal de consultas para Llama 3.1 405B excedido. Atualize agora para acesso ilimitado, ou volte no próximo mês quando suas consultas mensais forem redefinidas.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Experimente o maior modelo de IA de código aberto do mundo, oferecendo capacidades incomparáveis em conhecimento, raciocínio e suporte multilíngue. Desbloqueie o poder de 405 bilhões de parâmetros para seus projetos mais ambiciosos."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

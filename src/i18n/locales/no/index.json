@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Fortsett i sidepanelet",
     "sidebar__speed_dial__rewrite_history__button": "Omskriv historie",
     "sidebar__tabs__rewrite__action_btn__title": "Ny omskriving",
-    "context_window__chat_history__continue_in_rewrite__title": "Fortsett i omskriving"
+    "context_window__chat_history__continue_in_rewrite__title": "Fortsett i omskriving",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Oppgrader for ubegrenset tilgang til Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Gratis daglig spørringsgrense overskredet. Oppgrader nå for ubegrensede spørringer, eller sjekk tilbake i morgen når de daglige gratis spørringene tilbakestilles.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Månedlig spørringsgrense for Llama 3.1 70B overskredet. Oppgrader nå for ubegrenset tilgang, eller sjekk tilbake neste måned når de månedlige spørringene tilbakestilles.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Utnytt kraften til 70 milliarder parametere med Metas nyeste åpen kildekode AI-modell. Opplev forbedrede flerspråklige evner, utvidet kontekstlengde og avansert resonnering for dine varierte AI-behov.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Oppgrader for ubegrenset tilgang til Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Gratis daglig spørringsgrense overskredet. Oppgrader nå for ubegrensede spørringer, eller sjekk tilbake i morgen når de daglige gratis spørringene tilbakestilles.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Månedlig spørringsgrense for Llama 3.1 405B overskredet. Oppgrader nå for ubegrenset tilgang, eller sjekk tilbake neste måned når de månedlige spørringene tilbakestilles.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Opplev verdens største åpen kildekode AI-modell, som tilbyr enestående evner innen kunnskap, resonnering og flerspråklig støtte. Lås opp kraften til 405 milliarder parametere for dine mest ambisiøse prosjekter."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

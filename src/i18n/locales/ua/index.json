@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Продовжити в бічній панелі",
     "sidebar__speed_dial__rewrite_history__button": "Переписати історію",
     "sidebar__tabs__rewrite__action_btn__title": "Нове переписання",
-    "context_window__chat_history__continue_in_rewrite__title": "Продовжуйте у переписці"
+    "context_window__chat_history__continue_in_rewrite__title": "Продовжуйте у переписці",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Оновлення для необмеженого доступу до Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Перевищено безкоштовний щоденний ліміт запитів. Оновіться зараз для необмежених запитів або перевірте завтра, коли щоденні безкоштовні запити будуть скинуті.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Місячний ліміт запитів для Llama 3.1 70B перевищено. Оновіться зараз для необмеженого доступу або перевірте наступного місяця, коли будуть скинуті ваші місячні запити.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Використовуйте потужність 70 мільярдів параметрів з останньою відкритою моделлю штучного інтелекту Meta. Відчуйте покращені можливості багатомовності, розширену довжину контексту та вдосконалений механізм мислення для вашої різноманітної потреби в штучному інтелекті.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Оновлення для необмеженого доступу до Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Перевищено безкоштовний щоденний ліміт запитів. Оновіться зараз для необмежених запитів або перевірте завтра, коли щоденні безкоштовні запити будуть скинуті.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Місячний ліміт запитів для Llama 3.1 405B перевищено. Оновіться зараз для необмеженого доступу або перевірте наступного місяця, коли будуть скинуті ваші місячні запити.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Відчуйте найбільшу в світі відкриту модель штучного інтелекту, яка пропонує неперевершені можливості в знаннях, мисленні та багатомовній підтримці. Розблокуйте потужність 405 мільярдів параметрів для ваших найамбітніших проектів."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -1053,7 +1053,15 @@
     "sidebar__tabs__rewrite__tooltip": "AI prepisovač",
     "home_view__rewrite__title": "AI prepisovač",
     "home_view__rewrite__description": "Ušetrite čas pri korektúre a zdokonalovaní vašich slov.",
-    "context_window__chat_history__continue_in_rewrite__title": "Pokračovať v prepise"
+    "context_window__chat_history__continue_in_rewrite__title": "Pokračovať v prepise",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Aktualizujte pre neobmedzený prístup k Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Prekročený bezplatný denný limit dotazov. Aktualizujte teraz pre neobmedzené dotazy alebo sa vráťte zajtra, keď sa bezplatné denné dotazy obnovia.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Prekročený mesačný limit dotazov pre Llama 3.1 70B. Aktualizujte teraz pre neobmedzený prístup alebo sa vráťte budúci mesiac, keď sa obnovia vaše mesačné dotazy.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Využite silu 70 miliárd parametrov s najnovším otvoreným modelom umelej inteligencie od Meta. Zažite rozšírené viacjazyčné schopnosti, rozšírenú dĺžku kontextu a pokročilé úvahy pre vaše rôznorodé potreby v oblasti umelej inteligencie.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Aktualizujte pre neobmedzený prístup k Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Prekročený bezplatný denný limit dotazov. Aktualizujte teraz pre neobmedzené dotazy alebo sa vráťte zajtra, keď sa bezplatné denné dotazy obnovia.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Prekročený mesačný limit dotazov pre Llama 3.1 405B. Aktualizujte teraz pre neobmedzený prístup alebo sa vráťte budúci mesiac, keď sa obnovia vaše mesačné dotazy.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Zažite najväčší otvorený model umelej inteligencie na svete, ponúkajúci neprekonateľné schopnosti v oblasti znalostí, úvah a viacjazyčnú podporu. Odomknite silu 405 miliárd parametrov pre vaše najambicióznejšie projekty."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

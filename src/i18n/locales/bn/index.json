@@ -1053,7 +1053,15 @@
     "chat__artifacts__preview__tools__download_button__title": "ডাউনলোড",
     "chat__artifacts__preview__tools__copy_button__title": "কপি",
     "chat__artifacts__preview__tools__fullscreen_button__title": "পূর্ণ পর্দা",
-    "chat__artifacts__preview__tools__close_button__title": "বন্ধ করুন"
+    "chat__artifacts__preview__tools__close_button__title": "বন্ধ করুন",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "অসীম প্রবেশের জন্য আপগ্রেড করুন Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "ফ্রি দৈনিক জিজ্ঞাসা সীমা অতিক্রম করেছে। অসীম জিজ্ঞাসার জন্য এখনই আপগ্রেড করুন, অথবা দৈনিক ফ্রি জিজ্ঞাসা পুনরায় সেট হওয়ার সময়ে প্রত্যাশা করুন।",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "মাসিক জিজ্ঞাসা সীমা Llama 3.1 70B অতিক্রম করেছে। অসীম প্রবেশের জন্য এখনই আপগ্রেড করুন, অথবা মাসিক জিজ্ঞাসা পুনরায় সেট হওয়ার সময়ে প্রত্যাশা করুন।",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "মেটা-র সর্বশেষ ওপেন-সোর্স AI মডেলের 70 বিলিয়ন প্যারামিটারের শক্তি ব্যবহার করুন। আপনার বিভিন্ন AI প্রয়োজনের জন্য উন্নত বহুভাষিক সুযোগ, প্রসারিত সংদর্ভ দৈর্ঘ্য, এবং উন্নত তর্কের অভিজ্ঞতা অনুভব করুন।",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "অসীম প্রবেশের জন্য আপগ্রেড করুন Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "ফ্রি দৈনিক জিজ্ঞাসা সীমা অতিক্রম করেছে। অসীম জিজ্ঞাসার জন্য এখনই আপগ্রেড করুন, অথবা দৈনিক ফ্রি জিজ্ঞাসা পুনরায় সেট হওয়ার সময়ে প্রত্যাশা করুন।",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "মাসিক জিজ্ঞাসা সীমা Llama 3.1 405B অতিক্রম করেছে। অসীম প্রবেশের জন্য এখনই আপগ্রেড করুন, অথবা মাসিক জিজ্ঞাসা পুনরায় সেট হওয়ার সময়ে প্রত্যাশা করুন।",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "বিশ্বের সর্বোচ্চ ওপেন-সোর্স AI মডেলের অভিজ্ঞতা করুন, যা জ্ঞান, তর্ক, এবং বহুভাষিক সমর্থনে অপার সুযোগ দেয়। আপনার সবচেয়ে উদাত্ত প্রকল্পগুলির জন্য 405 বিলিয়ন প্যারামিটারের শক্তি আনলক করুন।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

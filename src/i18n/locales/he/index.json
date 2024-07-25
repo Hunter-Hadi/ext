@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "המשך בסרגל הצד",
     "sidebar__speed_dial__rewrite_history__button": "כתוב מחדש",
     "sidebar__tabs__rewrite__action_btn__title": "כתוב מחדש חדש",
-    "context_window__chat_history__continue_in_rewrite__title": "המשך בכתיבה מחדש"
+    "context_window__chat_history__continue_in_rewrite__title": "המשך בכתיבה מחדש",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "שדרג לגישה בלתי מוגבלת ללמה 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "חריגת המגבלה היומית החינמית. שדרג כעת לשאילתות בלתי מוגבלות, או בדוק שוב מחר כאשר השאילתות החינמיות היומיות מתאפסות.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "חריגת המגבלה החודשית ללמה 3.1 70B. שדרג כעת לגישה בלתי מוגבלת, או בדוק שוב בחודש הבא כאשר השאילתות החודשיות שלך מתאפסות.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "נצל את כוח 70 מיליארד פרמטרים עם הדגם האחרון של Meta המבוסס על AI קוד פתוח. חווי יכולות רב-שפתיות משופרות, אורך קונטקסט מורחב, והיגיון מתקדם לצרכי AI מגוונים שלך.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "שדרג לגישה בלתי מוגבלת ללמה 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "חריגת המגבלה היומית החינמית. שדרג כעת לשאילתות בלתי מוגבלות, או בדוק שוב מחר כאשר השאילתות החינמיות היומיות מתאפסות.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "חריגת המגבלה החודשית ללמה 3.1 405B. שדרג כעת לגישה בלתי מוגבלת, או בדוק שוב בחודש הבא כאשר השאילתות החודשיות שלך מתאפסות.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "חווי את הדגם המבוסס על AI קוד פתוח הגדול בעולם, המציע יכולות בלתי רגילות בידע, היגיון, ותמיכה רב-שפתית. פתח את הכוח של 405 מיליארד פרמטרים לפרויקטים הכי שאפתניים שלך."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

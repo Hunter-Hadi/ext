@@ -1053,7 +1053,15 @@
     "sidebar__tabs__rewrite__tooltip": "Pengubah AI",
     "home_view__rewrite__title": "Pengubah AI",
     "home_view__rewrite__description": "Menghemat waktu dalam memeriksa dan menyempurnakan kata-kata Anda.",
-    "context_window__chat_history__continue_in_rewrite__title": "Lanjutkan dalam penulisan ulang"
+    "context_window__chat_history__continue_in_rewrite__title": "Lanjutkan dalam penulisan ulang",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Upgrade untuk akses tanpa batas ke Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Batas kueri harian gratis terlampaui. Tingkatkan sekarang untuk kueri tanpa batas, atau cek kembali besok saat kueri gratis harian direset.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Batas kueri bulanan untuk Llama 3.1 70B terlampaui. Tingkatkan sekarang untuk akses tanpa batas, atau cek kembali bulan depan saat kueri bulanan direset.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Manfaatkan kekuatan 70 miliar parameter dengan model AI open-source terbaru dari Meta. Rasakan kemampuan multibahasa yang ditingkatkan, panjang konteks yang diperluas, dan penalaran canggih untuk kebutuhan AI Anda yang beragam.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Upgrade untuk akses tanpa batas ke Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Batas kueri harian gratis terlampaui. Tingkatkan sekarang untuk kueri tanpa batas, atau cek kembali besok saat kueri gratis harian direset.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Batas kueri bulanan untuk Llama 3.1 405B terlampaui. Tingkatkan sekarang untuk akses tanpa batas, atau cek kembali bulan depan saat kueri bulanan direset.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Rasakan model AI open-source terbesar di dunia, menawarkan kemampuan tak tertandingi dalam pengetahuan, penalaran, dan dukungan multibahasa. Buka kekuatan 405 miliar parameter untuk proyek-proyek paling ambisius Anda."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

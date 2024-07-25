@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Nadaljuj v stranskem meniju",
     "sidebar__speed_dial__rewrite_history__button": "Prepiši zgodovino",
     "sidebar__tabs__rewrite__action_btn__title": "Nova preusmeritev",
-    "context_window__chat_history__continue_in_rewrite__title": "Nadaljuj v preoblikovanju"
+    "context_window__chat_history__continue_in_rewrite__title": "Nadaljuj v preoblikovanju",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Nadgradite za neomejen dostop do Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Presežena brezplačna dnevna omejitev poizvedb. Nadgradite zdaj za neomejene poizvedbe ali se vrnite jutri, ko se dnevne brezplačne poizvedbe ponastavijo.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Mesečna omejitev poizvedb za Llama 3.1 70B je presežena. Nadgradite zdaj za neomejen dostop ali se vrnite naslednji mesec, ko se mesečne poizvedbe ponastavijo.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Izkoristite moč 70 milijard parametrov z najnovejšim odprtokodnim modelom umetne inteligence Meta. Doživite izboljšane večjezične zmogljivosti, podaljšano dolžino konteksta in napredno sklepanje za vaše raznolike potrebe po umetni inteligenci.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Nadgradite za neomejen dostop do Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Presežena brezplačna dnevna omejitev poizvedb. Nadgradite zdaj za neomejene poizvedbe ali se vrnite jutri, ko se dnevne brezplačne poizvedbe ponastavijo.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Mesečna omejitev poizvedb za Llama 3.1 405B je presežena. Nadgradite zdaj za neomejen dostop ali se vrnite naslednji mesec, ko se mesečne poizvedbe ponastavijo.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Doživite največji odprtokodni model umetne inteligence na svetu, ki ponuja neprekosljive zmogljivosti na področju znanja, sklepanja in večjezične podpore. Odklenite moč 405 milijard parametrov za vaše najambicioznejše projekte."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

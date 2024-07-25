@@ -1053,7 +1053,15 @@
     "sidebar__tabs__rewrite__tooltip": "AI ümberkirjutaja",
     "home_view__rewrite__title": "AI ümberkirjutaja",
     "home_view__rewrite__description": "Säästa aega tekstide toimetamisel ja täiustamisel.",
-    "context_window__chat_history__continue_in_rewrite__title": "Jätka ümberkirjutuses"
+    "context_window__chat_history__continue_in_rewrite__title": "Jätka ümberkirjutuses",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Uuenda piiramatule juurdepääsule Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Tasuta päevane päringulimiit ületatud. Uuenda nüüd piiramatute päringute jaoks või kontrolli homme tagasi, kui tasuta päringud päevas lähtestatakse.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Kuuene päringulimiit Llama 3.1 70B jaoks ületatud. Uuenda nüüd piiramatule juurdepääsule või kontrolli järgmisel kuul tagasi, kui kuu jooksul päringud lähtestatakse.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Kasuta ära 70 miljardi parameetri võimsust Meta viimase avatud lähtekoodiga AI mudeliga. Koge täiustatud mitmekeelseid võimeid, pikendatud kontekstipikkust ja edasijõudnud põhjendamist oma mitmekesiste AI vajaduste jaoks.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Uuenda piiramatule juurdepääsule Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Tasuta päevane päringulimiit ületatud. Uuenda nüüd piiramatute päringute jaoks või kontrolli homme tagasi, kui tasuta päringud päevas lähtestatakse.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Kuuene päringulimiit Llama 3.1 405B jaoks ületatud. Uuenda nüüd piiramatule juurdepääsule või kontrolli järgmisel kuul tagasi, kui kuu jooksul päringud lähtestatakse.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Koge maailma suurimat avatud lähtekoodiga AI mudelit, mis pakub enneolematuid võimeid teadmistes, põhjendamises ja mitmekeelses toetuses. Ava 405 miljardi parameetri võimsus oma ambitsioonikaimate projektide jaoks."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

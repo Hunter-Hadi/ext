@@ -1053,7 +1053,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__key_takeaways": "મુખ્ય બિંદુઓનું સારાંશ કરો",
     "context_window__chat_history__continue_in_sidebar__title": "સાઇડબારમાં ચાલુ રાખો",
     "sidebar__speed_dial__rewrite_history__button": "ઇતિહાસ પુનઃલેખન",
-    "sidebar__tabs__rewrite__action_btn__title": "નવો પુનઃલેખ"
+    "sidebar__tabs__rewrite__action_btn__title": "નવો પુનઃલેખ",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "અનલિમિટેડ ઍક્સેસ માટે અપગ્રેડ કરો લામા 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "મફત દૈનિક ક્વેરી લિમિટ પાર કરી ગઈ. અનલિમિટેડ ક્વેરી માટે હવે અપગ્રેડ કરો, અથવા દૈનિક મફત ક્વેરીઓ રીસેટ થાય ત્યારે ક્રોસ કરો.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "લામા 3.1 70B માટે માસિક ક્વેરી લિમિટ પાર કરી ગઈ. અનલિમિટેડ ઍક્સેસ માટે હવે અપગ્રેડ કરો, અથવા માસિક ક્વેરીઓ રીસેટ થાય ત્યારે ક્રોસ કરો.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "70 બિલિયન પેરામીટર્સનો શક્તિશાળી ઉપયોગ કરો મેટાની નવીનતમ ઓપન-સોર્સ એઆઈ મોડલ સાથે. તમારા વિવિધ એઆઈ જરૂરિયાતો માટે વિસ્તારિત બહુભાષી સામર્થ્ય, વિસ્તારિત સંદર્ભ લંબાઈ, અને વાદાત્મક તાર્ક અનુભવો.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "અનલિમિટેડ ઍક્સેસ માટે અપગ્રેડ કરો લામા 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "મફત દૈનિક ક્વેરી લિમિટ પાર કરી ગઈ. અનલિમિટેડ ક્વેરી માટે હવે અપગ્રેડ કરો, અથવા દૈનિક મફત ક્વેરીઓ રીસેટ થાય ત્યારે ક્રોસ કરો.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "લામા 3.1 405B માટે માસિક ક્વેરી લિમિટ પાર કરી ગઈ. અનલિમિટેડ ઍક્સેસ માટે હવે અપગ્રેડ કરો, અથવા માસિક ક્વેરીઓ રીસેટ થાય ત્યારે ક્રોસ કરો.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "વિશ્વનો સૌથી મોટો ઓપન-સોર્સ એઆઈ મોડલનો અનુભવ કરો, જે જ્ઞાન, તાર્ક, અને બહુભાષી સપોર્ટમાં અદ્વિતીય સામર્થ્ય પૂરૂ કરે છે. તમારા સૌથી ઉત્સાહી પ્રોજેક્ટ્સ માટે 405 બિલિયન પેરામીટર્સની શક્તિ ખોલો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Tiếp tục trong thanh bên",
     "sidebar__speed_dial__rewrite_history__button": "Viết lại lịch sử",
     "sidebar__tabs__rewrite__action_btn__title": "Viết mới",
-    "context_window__chat_history__continue_in_rewrite__title": "Tiếp tục trong việc viết lại"
+    "context_window__chat_history__continue_in_rewrite__title": "Tiếp tục trong việc viết lại",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Nâng cấp để truy cập không giới hạn vào Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Vượt quá giới hạn truy vấn miễn phí hàng ngày. Nâng cấp ngay để truy vấn không giới hạn, hoặc quay lại vào ngày mai khi truy vấn miễn phí hàng ngày được đặt lại.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Vượt quá giới hạn truy vấn hàng tháng cho Llama 3.1 70B. Nâng cấp ngay để truy cập không giới hạn, hoặc quay lại vào tháng sau khi truy vấn hàng tháng của bạn được đặt lại.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Tận dụng sức mạnh của 70 tỷ tham số với mô hình AI nguồn mở mới nhất của Meta. Trải nghiệm khả năng đa ngôn ngữ nâng cao, chiều dài ngữ cảnh mở rộng, và lý do tiên tiến cho nhu cầu AI đa dạng của bạn.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Nâng cấp để truy cập không giới hạn vào Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Vượt quá giới hạn truy vấn miễn phí hàng ngày. Nâng cấp ngay để truy vấn không giới hạn, hoặc quay lại vào ngày mai khi truy vấn miễn phí hàng ngày được đặt lại.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Vượt quá giới hạn truy vấn hàng tháng cho Llama 3.1 405B. Nâng cấp ngay để truy cập không giới hạn, hoặc quay lại vào tháng sau khi truy vấn hàng tháng của bạn được đặt lại.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Trải nghiệm mô hình AI nguồn mở lớn nhất thế giới, cung cấp khả năng vô song trong kiến thức, lý do, và hỗ trợ đa ngôn ngữ. Mở khóa sức mạnh của 405 tỷ tham số cho các dự án tham vọng nhất của bạn."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

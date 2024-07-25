@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "ดำเนินการต่อในบริเวณข้าง",
     "sidebar__speed_dial__rewrite_history__button": "เขียนประวัติใหม่",
     "sidebar__tabs__rewrite__action_btn__title": "เขียนใหม่",
-    "context_window__chat_history__continue_in_rewrite__title": "ดำเนินการในการเขียนใหม่"
+    "context_window__chat_history__continue_in_rewrite__title": "ดำเนินการในการเขียนใหม่",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "อัพเกรดเพื่อการเข้าถึง Llama 3.1 70B ได้ไม่จำกัด",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "เกินขีดจำกัดการสอบถามรายวันฟรีแล้ว อัพเกรดเดี๋ยวนี้เพื่อการสอบถามไม่จำกัด หรือกลับมาตรวจสอบพรุ่งนี้เมื่อการสอบถามฟรีรายวันรีเซ็ต",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "เกินขีดจำกัดการสอบถามรายเดือนสำหรับ Llama 3.1 70B แล้ว อัพเกรดเดี๋ยวนี้เพื่อการเข้าถึงไม่จำกัด หรือกลับมาตรวจสอบเดือนหน้าเมื่อการสอบถามรายเดือนรีเซ็ต",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "ใช้พลังงานของ 70 พันล้านพารามิเตอร์กับโมเดล AI โอเพ่นซอร์สล่าสุดของ Meta ประสบการณ์ความสามารถในหลายภาษาที่ปรับปรุง ความยาวของบทบรรยายที่ขยายออกไป และการเหตุผลขั้นสูงสำหรับความต้องการ AI ที่หลากหลายของคุณ",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "อัพเกรดเพื่อการเข้าถึง Llama 3.1 405B ได้ไม่จำกัด",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "เกินขีดจำกัดการสอบถามรายวันฟรีแล้ว อัพเกรดเดี๋ยวนี้เพื่อการสอบถามไม่จำกัด หรือกลับมาตรวจสอบพรุ่งนี้เมื่อการสอบถามฟรีรายวันรีเซ็ต",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "เกินขีดจำกัดการสอบถามรายเดือนสำหรับ Llama 3.1 405B แล้ว อัพเกรดเดี๋ยวนี้เพื่อการเข้าถึงไม่จำกัด หรือกลับมาตรวจสอบเดือนหน้าเมื่อการสอบถามรายเดือนรีเซ็ต",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "ประสบการณ์กับโมเดล AI โอเพ่นซอร์สที่ใหญ่ที่สุดของโลก มีความสามารถที่ไม่เป็นที่เป็นพิเศษในความรู้ การเหตุผล และการสนับสนุนหลายภาษา ปลดล็อคพลังของ 405 พันล้านพารามิเตอร์สำหรับโครงการที่ท้าทายที่สุดของคุณ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

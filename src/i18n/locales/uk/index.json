@@ -1053,7 +1053,15 @@
     "chat__artifacts__preview__tools__download_button__title": "ڈاؤن لوڈ",
     "chat__artifacts__preview__tools__copy_button__title": "کاپی",
     "chat__artifacts__preview__tools__fullscreen_button__title": "پوری اسکرین",
-    "chat__artifacts__preview__tools__close_button__title": "بند کریں"
+    "chat__artifacts__preview__tools__close_button__title": "بند کریں",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Llama 3.1 70B کی لامبی رسائی کے لیے اپ گریڈ کریں",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "مفت روزانہ کوئری حد پار ہوگئی ہے۔ اب اپ گریڈ کریں بلا محدود کوئریوں کے لیے، یا کل دوبارہ چیک کریں جب روزانہ مفت کوئریوں کو ری سیٹ ہوتا ہے۔",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Llama 3.1 70B کی ماہانہ کوئری حد پار ہوگئی ہے۔ اب اپ گریڈ کریں بلا محدود رسائی کے لیے، یا اگلے مہینے واپس آئیں جب آپ کی ماہانہ کوئریوں کو ری سیٹ ہوتا ہے۔",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "میٹا کے تازہ ترین آئی ماڈل کے ساتھ 70 ارب پیرامیٹر کی طاقت کا استعمال کریں۔ اپنی مختلف آئی کی ضروریات کے لیے بہترین بہاس، توسیع یافتہ سیاقت کی لمبائی، اور ترقی یافتہ تحقیق کا تجربہ کریں۔",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Llama 3.1 405B کی لامبی رسائی کے لیے اپ گریڈ کریں",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "مفت روزانہ کوئری حد پار ہوگئی ہے۔ اب اپ گریڈ کریں بلا محدود کوئریوں کے لیے، یا کل دوبارہ چیک کریں جب روزانہ مفت کوئریوں کو ری سیٹ ہوتا ہے۔",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Llama 3.1 405B کی ماہانہ کوئری حد پار ہوگئی ہے۔ اب اپ گریڈ کریں بلا محدود رسائی کے لیے، یا اگلے مہینے واپس آئیں جب آپ کی ماہانہ کوئریوں کو ری سیٹ ہوتا ہے۔",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "دنیا کے سب سے بڑے اوپن سورس آئی ماڈل کا تجربہ کریں، جو علم، تجزیہ، اور بہاس کی بے مثال قابلیتوں میں فراہمی کرتا ہے۔ اپنے سب سے بڑے منصوبوں کے لیے 405 ارب پیرامیٹر کی طاقت کو کھولیں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

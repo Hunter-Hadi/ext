@@ -1053,7 +1053,15 @@
     "context_window__chat_history__continue_in_sidebar__title": "Fortsätt i sidofältet",
     "sidebar__speed_dial__rewrite_history__button": "Skriv om historik",
     "sidebar__tabs__rewrite__action_btn__title": "Ny omskrivning",
-    "context_window__chat_history__continue_in_rewrite__title": "Fortsätt i omskrivning"
+    "context_window__chat_history__continue_in_rewrite__title": "Fortsätt i omskrivning",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__title": "Uppgradera för obegränsad åtkomst till Llama 3.1 70B",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1": "Gratis daglig frågebegränsning överskriden. Uppgradera nu för obegränsade frågor, eller kom tillbaka imorgon när de dagliga gratisfrågorna återställs.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1": "Månadsvis frågebegränsning för Llama 3.1 70B överskriden. Uppgradera nu för obegränsad åtkomst, eller kom tillbaka nästa månad när dina månatliga frågor återställs.",
+    "permission__pricing_hook__fast_text_usage__llama_3_1_70b__description2": "Utnyttja kraften hos 70 miljarder parametrar med Metas senaste öppna AI-modell. Upplev förbättrade flerspråkiga funktioner, utökad kontextlängd och avancerad resonemang för dina varierande AI-behov.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__title": "Uppgradera för obegränsad åtkomst till Llama 3.1 405B",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1": "Gratis daglig frågebegränsning överskriden. Uppgradera nu för obegränsade frågor, eller kom tillbaka imorgon när de dagliga gratisfrågorna återställs.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1": "Månadsvis frågebegränsning för Llama 3.1 405B överskriden. Uppgradera nu för obegränsad åtkomst, eller kom tillbaka nästa månad när dina månatliga frågor återställs.",
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2": "Upplev världens största öppna AI-modell, som erbjuder enastående kapacitet inom kunskap, resonemang och flerspråkigt stöd. Lås upp kraften hos 405 miljarder parametrar för dina mest ambitiösa projekt."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

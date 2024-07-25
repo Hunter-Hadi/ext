@@ -77,6 +77,7 @@ export const logAndConfirmDailyUsageLimit = async (
         MAXAI_GEMINI: 'gemini',
         MAXAI_DALLE: 'dalle',
         MAXAI_FREE: 'free',
+        MAXAI_LLAMA: 'llama',
       }
       const UAInfo = await backgroundGetBrowserUAInfo()
       const { currentPlan, currentRole } = await getCurrentUserLogInfo()

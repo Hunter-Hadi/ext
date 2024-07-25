@@ -14,11 +14,9 @@ const useSmoothConversationLoading = (smoothInterval = 200) => {
   useEffect(() => {
     let timer: null | ReturnType<typeof setTimeout> = null
     if (clientWritingMessage.loading) {
-      console.log('debouncedLoadingState', true)
       setSmoothConversationLoading(true)
     } else {
       timer = setTimeout(() => {
-        console.log('debouncedLoadingState', false)
         setSmoothConversationLoading(false)
       }, smoothInterval)
     }

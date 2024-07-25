@@ -52,6 +52,13 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       AIProvider: 'MAXAI_GEMINI',
       tag: 'Beta',
     },
+    {
+      mainPart: true,
+      label: 'Llama 3.1 70B',
+      value: 'llama-3.1-70b',
+      AIProvider: 'MAXAI_LLAMA',
+      tag: 'Beta',
+    },
     // fast-end
     // smart-start
     {
@@ -74,6 +81,13 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       label: 'Gemini-1.5-Pro',
       value: 'gemini-1.5-pro',
       AIProvider: 'MAXAI_GEMINI',
+    },
+    {
+      mainPart: true,
+      label: 'Llama 3.1 405B',
+      value: 'llama-3.1-405b',
+      AIProvider: 'MAXAI_LLAMA',
+      tag: 'Beta',
     },
     // smart-end
     // legacy-start
@@ -178,6 +192,13 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       AIProvider: 'MAXAI_GEMINI',
       tag: 'Beta',
     },
+    {
+      mainPart: true,
+      label: 'Llama 3.1 70B',
+      value: 'llama-3.1-70b',
+      AIProvider: 'MAXAI_LLAMA',
+      tag: 'Beta',
+    },
     // fast-end
     // smart-start
     {
@@ -200,6 +221,13 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       label: 'Gemini-1.5-Pro',
       value: 'gemini-1.5-pro',
       AIProvider: 'MAXAI_GEMINI',
+    },
+    {
+      mainPart: true,
+      label: 'Llama 3.1 405B',
+      value: 'llama-3.1-405b',
+      AIProvider: 'MAXAI_LLAMA',
+      tag: 'Beta',
     },
     // smart-end
     // legacy-start

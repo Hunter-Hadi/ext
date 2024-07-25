@@ -42,6 +42,11 @@ const HostConfig = {
     appProjectHost: 'https://test.d3kf9o74pc4m0c.amplifyapp.com',
     appProjectAPIHost: 'https://test.maxai.me',
   },
+  test1: {
+    wwwProjectHost: 'https://test.d35dysdwr52gaf.amplifyapp.com',
+    appProjectHost: 'https://test.d3kf9o74pc4m0c.amplifyapp.com',
+    appProjectAPIHost: 'https://test1.maxai.me',
+  },
   production: {
     wwwProjectHost: 'https://www.maxai.me',
     appProjectHost: 'https://app.maxai.me',
@@ -52,6 +57,7 @@ const HostConfig = {
 const MixPanelProjectIdConfig = {
   development: 'dc4e4b13d1d423a76e0e10ea377e2949', // zhouru1bin's project id
   test: 'dc4e4b13d1d423a76e0e10ea377e2949', // zhouru1bin's project id
+  test1: 'dc4e4b13d1d423a76e0e10ea377e2949', // zhouru1bin's project id
   production: '56ac2c299c42140f6d81dec2a4ea9a3c',
 }
 

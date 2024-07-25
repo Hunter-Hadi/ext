@@ -231,6 +231,7 @@ const useAIProviderUpload = () => {
         case 'MAXAI_CLAUDE':
         case 'MAXAI_GEMINI':
         case 'MAXAI_FREE':
+        case 'MAXAI_LLAMA':
           {
             // 更新客户端显示上传中状态
             const newFiles = await Promise.all(

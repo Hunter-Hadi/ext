@@ -20,6 +20,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_FAST_TEXT_MODEL_CLAUDE_3_HAIKU',
   'MAXAI_FAST_TEXT_MODEL_GEMINI_PRO',
   'MAXAI_FAST_TEXT_MODEL_GEMINI_FLASH_1_5',
+  'MAXAI_FAST_TEXT_MODEL_LLAMA_3_1_70B',
   'MAXAI_ADVANCED_MODEL_GPT_4O',
   'MAXAI_ADVANCED_MODEL_GPT_4_TURBO',
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_OPUS',
@@ -27,6 +28,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_ADVANCED_MODEL_CLAUDE_3_5_SONNET',
   'MAXAI_ADVANCED_MODEL_GEMINI_1_5_PRO',
   'MAXAI_ADVANCED_MODEL_GPT_4',
+  'MAXAI_ADVANCED_MODEL_LLAMA_3_1_405B',
   'MAXAI_IMAGE_GENERATE_MODEL_DALL_E_3',
 
   // 第三方 provider 用量卡点
@@ -458,6 +460,58 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         : t(
             'client:permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__paid__description',
           )
+    },
+  },
+  MAXAI_ADVANCED_MODEL_LLAMA_3_1_70B: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-llama-3-1-70b.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/llama-3-1-70b.png',
+    ),
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__fast_text_usage__llama_3_1_70b__title',
+      ),
+    description: (t, isFreeUser) => {
+      return [
+        isFreeUser
+          ? t(
+              'client:permission__pricing_hook__fast_text_usage__llama_3_1_70b__free__description1',
+            )
+          : t(
+              'client:permission__pricing_hook__fast_text_usage__llama_3_1_70b__paid__description1',
+            ),
+        t(
+          'client:permission__pricing_hook__advance_text_usage__llama_3_1_70b__description2',
+        ),
+      ].join('\n\n')
+    },
+  },
+  MAXAI_ADVANCED_MODEL_LLAMA_3_1_405B: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-llama-3-1-405b.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/llama-3-1-405b.png',
+    ),
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__advance_text_usage__llama_3_1_405b__title',
+      ),
+    description: (t, isFreeUser) => {
+      return [
+        isFreeUser
+          ? t(
+              'client:permission__pricing_hook__advance_text_usage__llama_3_1_405b__free__description1',
+            )
+          : t(
+              'client:permission__pricing_hook__advance_text_usage__llama_3_1_405b__paid__description1',
+            ),
+        t(
+          'client:permission__pricing_hook__advance_text_usage__llama_3_1_405b__description2',
+        ),
+      ].join('\n\n')
     },
   },
   MAXAI_ADVANCED_MODEL_GPT_4: {

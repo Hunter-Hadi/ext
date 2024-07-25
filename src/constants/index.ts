@@ -65,6 +65,7 @@ export const AI_PROVIDER_MAP = {
   MAXAI_GEMINI: 'MAXAI_GEMINI',
   MAXAI_DALLE: 'MAXAI_DALLE',
   MAXAI_FREE: 'MAXAI_FREE',
+  MAXAI_LLAMA: 'MAXAI_LLAMA',
 } as const
 
 // app.maxai.me

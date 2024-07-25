@@ -60,6 +60,7 @@ export const fetchSSE = async (
           'MAXAI_GEMINI',
           'MAXAI_DALLE',
           'MAXAI_FREE',
+          'MAxAI_LLAMA',
         ].includes(fetchOptions.provider)
       ) {
         if (

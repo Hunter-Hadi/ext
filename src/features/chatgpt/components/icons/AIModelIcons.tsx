@@ -17,6 +17,8 @@ import {
   DALLEIcon,
   GeminiIcon,
   MaxAIFreeIcon,
+  MaxAILlama3AdvanceModelIcon,
+  MaxAILlama3FastModelIcon,
 } from '@/components/CustomIcon'
 import { isThirdPartyAIProvider } from '@/features/chatgpt'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
@@ -282,6 +284,28 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
     case 'dall-e-3':
       return (
         <DALLEIcon
+          sx={{
+            ...sx,
+            fontSize: size,
+            color: (t) =>
+              t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
+          }}
+        />
+      )
+    case 'llama-3.1-405b':
+      return (
+        <MaxAILlama3AdvanceModelIcon
+          sx={{
+            ...sx,
+            fontSize: size,
+            color: (t) =>
+              t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
+          }}
+        />
+      )
+    case 'llama-3.1-70b':
+      return (
+        <MaxAILlama3FastModelIcon
           sx={{
             ...sx,
             fontSize: size,

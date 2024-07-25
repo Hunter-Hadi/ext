@@ -85,6 +85,25 @@ export const useArtifacts = () => {
           let fileType = 'text/plain'
           if (artifacts.language) {
             switch (artifacts.language) {
+              case 'html':
+                fileExtension = 'html'
+                fileType = 'text/html'
+                break
+              case 'css':
+                fileExtension = 'css'
+                break
+              case 'json':
+                fileExtension = 'json'
+                break
+              case 'yaml':
+                fileExtension = 'yaml'
+                break
+              case 'xml':
+                fileExtension = 'xml'
+                break
+              case 'markdown':
+                fileExtension = 'md'
+                break
               case 'javascript':
                 fileExtension = 'js'
                 break
@@ -239,7 +258,9 @@ export const useArtifacts = () => {
       case ArtifactsType.REACT:
         downloadFile(
           artifacts.content,
-          `${artifacts.title}.tsx`,
+          `${artifacts.title}.${
+            artifacts.language === 'typescript' ? 'tsx' : 'jsx'
+          }`,
           'application/vnd.ant.react',
         )
         break

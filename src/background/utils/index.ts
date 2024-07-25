@@ -314,12 +314,12 @@ export const backgroundRestartChromeExtension = async () => {
       active: true,
       currentWindow: true,
     })
-    await Browser.runtime.reload()
     tabIds.forEach((tab) => {
       if (tab.id) {
         Browser.tabs.reload(tab.id)
       }
     })
+    await Browser.runtime.reload()
   } catch (e) {
     console.error('reStartChromeExtension: \t', e)
   }

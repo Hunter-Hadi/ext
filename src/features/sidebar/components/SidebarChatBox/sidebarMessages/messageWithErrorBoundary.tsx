@@ -23,7 +23,7 @@ export const messageWithErrorBoundary = <P extends object>(
     render() {
       if (this.state.hasError) {
         // 渲染降级的 UI
-        return <WrappedComponent {...this.props} liteMode />
+        return <WrappedComponent {...this.props} liteMode hasError />
       }
       return <WrappedComponent {...this.props} />
     }

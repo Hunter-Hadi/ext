@@ -43,11 +43,18 @@ interface IProps {
   isDarkMode?: boolean
   liteMode?: boolean
   loading?: boolean
+  hasError?: boolean
 }
 
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const { t } = useTranslation(['client'])
-  const { message, isDarkMode, liteMode = false, loading = false } = props
+  const {
+    message,
+    isDarkMode,
+    liteMode = false,
+    loading = false,
+    hasError = false,
+  } = props
 
   const isContextCleared =
     message.originalMessage?.metadata?.includeHistory === false
@@ -431,8 +438,8 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 </CustomMarkdown>
               </AppSuspenseLoadingLayout>
             </div>
-            {/* lite mode下也显示 */}
-            {renderData.deepDive && (
+            {/* lite mode下也显示，避免结构导致的渲染报错，先加上hasError判断 */}
+            {renderData.deepDive && !hasError && (
               <SidebarAImessageBottomList
                 data={renderData.deepDive}
                 loading={coverLoading}
@@ -485,7 +492,7 @@ export const MetadataTitleRender: FC<{
               color: 'primary.main',
               fontSize: currentTitleIconSize,
             }}
-            icon={titleIcon}
+            icon={titleIcon as any}
           />
         </Stack>
       ) : (

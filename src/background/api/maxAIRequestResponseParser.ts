@@ -57,7 +57,7 @@ const formatTimestampedMarkdown = (text: string) => {
     }
 
     lines.forEach((line) => {
-      const match = line.match(/^(#+) \[(.+?)\] (.+)/)
+      const match = line.match(/(#+)\s*\[(.+?)\]\s*(.+)/)
 
       if (match) {
         const level = match[1].length === 1 ? 'parent' : 'child'
@@ -98,18 +98,9 @@ export const maxAIRequestResponseStreamParser = (
   if (streamMessage?.streaming_status) {
     if (streamMessage.text !== undefined) {
       // summary下很大概率会返回```\n...\n```包裹的内容，markdown会渲染成code
-      // 前端先针对此文本做下过滤
-      if (postBody?.summary_type && streamMessage.text.startsWith('```\n')) {
-        streamMessage.text = streamMessage.text.replace(/^```\n|\n```$/g, '')
-      }
-      if (
-        postBody?.summary_type &&
-        streamMessage.text.startsWith('```markdown\n')
-      ) {
-        streamMessage.text = streamMessage.text.replace(
-          /^```markdown\n|\nmarkdown```$/g,
-          '',
-        )
+      // 以及防止ai输出错误的格式，后端prompt指定```包裹的格式ai输出更稳定一些，前端先针对此文本做下过滤，
+      if (postBody?.summary_type && streamMessage.text.match(/^```.*\n/)) {
+        streamMessage.text = streamMessage.text.replace(/^```.*\n|\n```$/g, '')
       }
       // youtube时间线总结，转成结构化数据，后端不方便转，前端先自行转换成timestamped结构化的内容
       if (

@@ -39,6 +39,8 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
         return
       }
       let transcripts: TranscriptResponse[] = []
+      // TODO content scripts里没法获取网页window下的属性
+      // 这里后续可以优化一下，减少一次youtube link的请求
       if (
         currentUrl === youtubeLinkURL &&
         (window as any).ytInitialPlayerResponse

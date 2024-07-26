@@ -485,7 +485,7 @@ export const MetadataTitleRender: FC<{
               color: 'primary.main',
               fontSize: currentTitleIconSize,
             }}
-            icon={titleIcon}
+            icon={titleIcon as any}
           />
         </Stack>
       ) : (

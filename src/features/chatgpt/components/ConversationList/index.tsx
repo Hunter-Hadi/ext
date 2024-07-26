@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import React, { FC, useCallback, useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import InfiniteConversationList from '@/features/chatgpt/components/ConversationList/InfiniteConversationList'
@@ -21,17 +21,15 @@ interface IProps {
   onSelectConversation?: (conversation: IPaginationConversation) => void
   emptyFeedback?: React.ReactNode
   sx?: SxProps
-  disableModalPortal?: boolean
 }
 
 const ConversationList: FC<IProps> = (props) => {
   const {
     sx,
     hideClearAllButton = false,
-    emptyFeedback,
+    emptyFeedback = null,
     conversationType,
     onSelectConversation,
-    disableModalPortal,
   } = props
   const { resetConversation, currentSidebarConversationType } =
     useClientConversation()
@@ -53,13 +51,7 @@ const ConversationList: FC<IProps> = (props) => {
     done,
   )
 
-  const renderEmptyFeedback = useCallback(() => {
-    if (emptyFeedback) {
-      return emptyFeedback
-    }
-
-    return <></>
-  }, [emptyFeedback])
+  // TODO: 删除时清除缓存
 
   useEffect(() => {
     updatePaginationFilter({
@@ -85,11 +77,10 @@ const ConversationList: FC<IProps> = (props) => {
             hasNextPage={hasNextPage}
             isNextPageLoading={isFetching}
             onSelectItem={onSelectConversation}
-            disableModalPortal={disableModalPortal}
           />
         </AppLoadingLayout>
         {!loading && paginationConversations.length === 0
-          ? renderEmptyFeedback()
+          ? emptyFeedback
           : null}
       </Stack>
       <Stack

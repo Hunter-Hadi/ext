@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, memo, MouseEvent, useMemo, useState } from 'react'
+import React, { FC, memo, MouseEvent, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
@@ -29,7 +29,6 @@ const MoreActionsButton: FC<{
   conversationType: ISidebarConversationType
   onRename?: () => void
   onDelete?: () => void
-  disableModalPortal?: boolean
 }> = (props) => {
   const {
     conversationDisplaysText,
@@ -37,20 +36,23 @@ const MoreActionsButton: FC<{
     conversationId,
     onRename,
     onDelete,
-    disableModalPortal,
   } = props
-  const {
-    resetConversation,
-    currentConversationId,
-    currentSidebarConversationType,
-  } = useClientConversation()
+  const { resetConversation, currentConversationId } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { t } = useTranslation(['client'])
+  const buttonRef = useRef<HTMLDivElement>(null)
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const moreActionsMenuOpen = Boolean(anchorEl)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
-  const isContextWindow = currentSidebarConversationType === 'ContextMenu'
+  const isContextWindow = useMemo(() => {
+    if (conversationType !== 'ContextMenu') return
+
+    return (
+      getMaxAIFloatingContextMenuRootElement()?.contains(buttonRef.current) ||
+      false
+    )
+  }, [buttonRef.current, conversationType])
 
   const deleteModalTitle = useMemo(() => {
     if (conversationType === 'Summary') {
@@ -61,6 +63,9 @@ const MoreActionsButton: FC<{
     }
     if (conversationType === 'Art') {
       return t('client:immersive_chat__delete_art__title')
+    }
+    if (conversationType === 'ContextMenu') {
+      return t('client:immersive_chat__delete_rewrite__title')
     }
     return t('client:immersive_chat__delete_chat__title')
   }, [conversationType, t])
@@ -74,6 +79,9 @@ const MoreActionsButton: FC<{
     }
     if (conversationType === 'Art') {
       return t('client:immersive_chat__delete_art__button__title')
+    }
+    if (conversationType === 'ContextMenu') {
+      return t('client:immersive_chat__delete_rewrite__button__title')
     }
     return t('client:immersive_chat__delete_chat__button__title')
   }, [conversationType, t])
@@ -92,7 +100,7 @@ const MoreActionsButton: FC<{
         placement={'top'}
         title={t('client:immersive_chat__more_actions_button__title')}
       >
-        <div>
+        <div ref={buttonRef}>
           <IconButton
             disabled={smoothConversationLoading}
             onClick={(event: MouseEvent<HTMLElement>) => {
@@ -194,8 +202,9 @@ const MoreActionsButton: FC<{
         </MenuItem>
       </MaxAIMenu>
 
+      {/* 每次打开会挂载到document.body上导致滚动条消失，后续或许可以再优化换成Popper之类的 */}
       <Modal
-        disablePortal={disableModalPortal ?? isContextWindow}
+        disablePortal={isContextWindow}
         open={deleteModalOpen}
         onClose={(e: MouseEvent) => {
           e.stopPropagation()

@@ -7,7 +7,6 @@ import Fade from '@mui/material/Fade'
 import IconButton from '@mui/material/IconButton'
 import Paper from '@mui/material/Paper'
 import Popper from '@mui/material/Popper'
-import { PopperPlacementType } from '@mui/material/Popper'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -95,7 +94,6 @@ const FloatingContextMenuChatHistoryButton: FC<{
   // 因为有keepMounted，所以需要这个来控制点击一次才能渲染
   const [isClickOpenOnce, setIsClickOpenOnce] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const [placement, setPlacement] = React.useState<PopperPlacementType>()
   const paperRef = useRef<HTMLDivElement>()
   const [selectedConversationId, setSelectedConversationId] =
     useState<string>('')
@@ -110,33 +108,30 @@ const FloatingContextMenuChatHistoryButton: FC<{
     setAnchorEl(null)
   }
 
-  const handleClick =
-    (newPlacement: PopperPlacementType) =>
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      setAnchorEl({
-        getBoundingClientRect: () => {
-          const left = window.innerWidth / 2
-          const top = 140 / 2
-          const virtualRect = {
-            top,
-            left,
-            right: left,
-            bottom: top,
-            width: 0,
-            height: 0,
-            x: left,
-            y: top,
-          } as DOMRect
-          return virtualRect
-        },
-      } as any)
-      setTimeout(() => {
-        paperRef.current?.focus()
-      }, 100)
-      setIsClickOpenOnce(true)
-      setModalOpen(true)
-      setPlacement(newPlacement)
-    }
+  const handleClick = () => {
+    setAnchorEl({
+      getBoundingClientRect: () => {
+        const left = window.innerWidth / 2
+        const top = 140 / 2
+        const virtualRect = {
+          top,
+          left,
+          right: left,
+          bottom: top,
+          width: 0,
+          height: 0,
+          x: left,
+          y: top,
+        } as DOMRect
+        return virtualRect
+      },
+    } as any)
+    setTimeout(() => {
+      paperRef.current?.focus()
+    }, 100)
+    setIsClickOpenOnce(true)
+    setModalOpen(true)
+  }
 
   useEffect(() => {
     if (modalOpen) {
@@ -185,7 +180,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
         {...TooltipProps}
       >
         <IconButton
-          onClick={handleClick('top')}
+          onClick={handleClick}
           data-testid={'maxai-context-window-history-button'}
           sx={{
             width: '28px',
@@ -229,7 +224,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
         container={container}
         open={modalOpen}
         anchorEl={anchorEl}
-        placement={placement}
+        placement={'top'}
         transition
         sx={{
           width: '100%',

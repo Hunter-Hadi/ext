@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material'
+import { buttonClasses, Stack, SxProps, Theme } from '@mui/material'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -7,10 +7,30 @@ import TooltipIconButton from '@/components/TooltipIconButton'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import LanguageSelector from '@/features/contextMenu/components/FloatingContextMenu/LanguageSelector'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
-import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-import SidebarContextMenuHistoryButton from './SidebarContextMenuHistoryButton'
+import SidebarHistoryButton from '../SidebarHistoryButton'
+
+const historySx: SxProps<Theme> = {
+  color: 'text.secondary',
+  padding: '6px',
+  borderColor: (t: Theme) => {
+    return t.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, 0.08)'
+      : 'rgba(0, 0, 0, 0.16)'
+  },
+  borderRadius: '8px',
+  width: '25px',
+  height: '25px',
+  '&:hover': {
+    color: 'primary.main',
+    borderColor: 'primary.main',
+  },
+}
+
+const historyIconSx: SxProps<Theme> = {
+  fontSize: '16px',
+}
 
 const SidebarContextMenuTitlebar: FC<{
   isSettingCustomVariable: boolean
@@ -21,13 +41,6 @@ const SidebarContextMenuTitlebar: FC<{
 
   const isImmersivePage = useMemo(() => isMaxAIImmersiveChatPage(), [])
   const showModelSelector = true
-  /**
-   * 优先使用contextmenu的root，防止被contextmenu覆盖
-   */
-  const container = useMemo(
-    () => getMaxAISidebarRootElement() || document.body,
-    [],
-  )
 
   return (
     <Stack
@@ -66,12 +79,14 @@ const SidebarContextMenuTitlebar: FC<{
       {/* immersive chat 中就不显示了 */}
       <Stack direction={'row'} gap={'4px'}>
         {!isImmersivePage && (
-          <SidebarContextMenuHistoryButton
-            container={container}
-            TooltipProps={{
-              placement: 'top',
-              floatingMenuTooltip: false,
+          <SidebarHistoryButton
+            sx={{
+              ...historySx,
+              [`&.${buttonClasses.contained}`]: {
+                color: 'white',
+              },
             }}
+            iconSx={historyIconSx}
           />
         )}
 

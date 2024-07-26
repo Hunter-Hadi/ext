@@ -53,7 +53,7 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     },
     {
       mainPart: true,
-      label: 'Llama 3.1 70B',
+      label: 'Llama-3.1-70B',
       value: 'llama-3.1-70b',
       AIProvider: 'MAXAI_LLAMA',
       tag: 'Beta',
@@ -83,7 +83,7 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     },
     {
       mainPart: true,
-      label: 'Llama 3.1 405B',
+      label: 'Llama-3.1-405B',
       value: 'llama-3.1-405b',
       AIProvider: 'MAXAI_LLAMA',
       tag: 'Beta',
@@ -192,7 +192,7 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
     },
     {
       mainPart: true,
-      label: 'Llama 3.1 70B',
+      label: 'Llama-3.1-70B',
       value: 'llama-3.1-70b',
       AIProvider: 'MAXAI_LLAMA',
       tag: 'Beta',
@@ -222,7 +222,7 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
     },
     {
       mainPart: true,
-      label: 'Llama 3.1 405B',
+      label: 'Llama-3.1-405B',
       value: 'llama-3.1-405b',
       AIProvider: 'MAXAI_LLAMA',
       tag: 'Beta',

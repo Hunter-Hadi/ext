@@ -188,6 +188,10 @@ export const SIDEBAR_NAV_TABS_DATA: (ISidebarTabData & {
   },
 ]
 
+export const SIDEBAR_TAB_HEIGHT = 52
+
+export const SIDEBAR_TAB_SPACING = 16
+
 const SidebarTabs: FC = () => {
   const { t } = useTranslation()
 
@@ -197,46 +201,12 @@ const SidebarTabs: FC = () => {
   const userInfo = useUserInfo()
   const surveyStatus = useFeedbackSurveyStatus()
   const containerRef = useRef<HTMLDivElement>()
-  const marketingContainerRef = useRef<HTMLDivElement>()
-  const navContainerRef = useRef<HTMLDivElement>()
-  const [isMoreMarketing, setIsMoreMarketing] = useState(false)
-  const [isMoreNav, setIsMoreNav] = useState(false)
+  const [containerHeight, setContainerHeight] = useState(window.innerHeight)
 
   // 在 immersive chat 页面, 有特殊的渲染逻辑
   const isInImmersiveChatPage = useMemo(() => isMaxAIImmersiveChatPage(), [])
 
-  useEffect(() => {
-    const listener = (event: any) => {
-      const type: ISidebarConversationType = event?.detail?.type
-      if (type) {
-        updateSidebarConversationType(type)
-      }
-    }
-    const resizeListener = debounce(() => {
-      if (
-        !containerRef.current ||
-        !marketingContainerRef.current ||
-        !navContainerRef.current
-      ) {
-        return
-      }
-      const containerHeight = containerRef.current?.clientHeight
-      const marketingHeight = marketingContainerRef.current?.clientHeight
-      const navHeight = navContainerRef.current?.clientHeight
-      setIsMoreMarketing(containerHeight < marketingHeight + navHeight)
-      setIsMoreNav(containerHeight < navHeight)
-    }, 100)
-    resizeListener()
-    window.addEventListener('MaxAISwitchSidebarTab', listener)
-    window.addEventListener('resize', resizeListener)
-    return () => {
-      resizeListener.cancel()
-      window.removeEventListener('MaxAISwitchSidebarTab', listener)
-      window.removeEventListener('resize', resizeListener)
-    }
-  })
-
-  const sidebarMarketingTabs = useMemo(() => {
+  const marketingTabs = useMemo(() => {
     if (!isLogin || !loaded) return []
     return SIDEBAR_MARKETING_TABS_DATA.filter((tab) => {
       if (tab.isShow && !tab.isShow({ ...userInfo, ...surveyStatus })) {
@@ -246,32 +216,93 @@ const SidebarTabs: FC = () => {
     })
   }, [userInfo, surveyStatus, isLogin, loaded])
 
-  const sidebarNavTabs = useMemo(() => {
+  const navTabs = useMemo(() => {
     return SIDEBAR_NAV_TABS_DATA.filter((tab) => {
       if (tab.value === 'Summary' && isInImmersiveChatPage) {
         return false
       }
       return true
     })
-  }, [])
+  }, [isInImmersiveChatPage])
+
+  const {
+    moreMarketingTabs,
+    moreNavTabs,
+    sidebarMarketingTabs,
+    sidebarNavTabs,
+  } = useMemo(() => {
+    const moreMarketingTabs: ISidebarTabData[] = []
+    const sidebarMarketingTabs: ISidebarTabData[] = []
+    const moreNavTabs: (ISidebarTabData & {
+      value: ISidebarConversationType
+    })[] = []
+    const sidebarNavTabs: (ISidebarTabData & {
+      value: ISidebarConversationType
+    })[] = []
+
+    const navHeight =
+      SIDEBAR_TAB_HEIGHT * (navTabs.length + 1) +
+      SIDEBAR_TAB_SPACING * navTabs.length
+    const leftHeight = containerHeight - navHeight
+
+    // 先判断marketing，从下往上消失
+    let currentHeight = 0
+    marketingTabs.forEach((item, index) => {
+      currentHeight +=
+        SIDEBAR_TAB_HEIGHT + (index > 0 ? SIDEBAR_TAB_SPACING : 0)
+      if (currentHeight > leftHeight) {
+        moreMarketingTabs.push(item)
+      } else {
+        sidebarMarketingTabs.push(item)
+      }
+    })
+
+    // 判断nav，从下往上消失
+    currentHeight = moreMarketingTabs.length ? SIDEBAR_TAB_HEIGHT : 0
+    navTabs.forEach((item, index) => {
+      currentHeight +=
+        SIDEBAR_TAB_HEIGHT + (index > 0 ? SIDEBAR_TAB_SPACING : 0)
+      console.log('TEST', currentHeight, containerHeight, index)
+      if (currentHeight > containerHeight) {
+        moreNavTabs.push(item)
+      } else {
+        sidebarNavTabs.push(item)
+      }
+    })
+
+    return {
+      moreMarketingTabs,
+      sidebarMarketingTabs,
+      moreNavTabs,
+      sidebarNavTabs,
+    }
+  }, [containerHeight, navTabs, marketingTabs])
 
   useEffect(() => {
-    if (
-      !containerRef.current ||
-      !marketingContainerRef.current ||
-      !navContainerRef.current
-    ) {
-      return
+    const listener = (event: any) => {
+      const type: ISidebarConversationType = event?.detail?.type
+      if (type) {
+        updateSidebarConversationType(type)
+      }
     }
-    const containerHeight = containerRef.current?.clientHeight
-    const marketingHeight = marketingContainerRef.current?.clientHeight
-    const navHeight = navContainerRef.current?.clientHeight
-    setIsMoreMarketing(containerHeight < marketingHeight + navHeight)
-    setIsMoreNav(containerHeight < navHeight)
-  }, [sidebarMarketingTabs.length, sidebarNavTabs.length])
+    const resizeListener = debounce(() => {
+      if (!containerRef.current) {
+        return
+      }
+      setContainerHeight(containerRef.current?.clientHeight)
+    }, 100)
+    resizeListener()
+    window.addEventListener('resize', resizeListener)
+    window.addEventListener('MaxAISwitchSidebarTab', listener)
+    return () => {
+      resizeListener.cancel()
+      window.removeEventListener('resize', resizeListener)
+      window.removeEventListener('MaxAISwitchSidebarTab', listener)
+    }
+  }, [])
 
   const moreButton =
-    isMoreMarketing || isMoreNav ? (
+    moreMarketingTabs.length || moreNavTabs.length ? (
       <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5}>
         <SidebarTabItem
           label={t('common:more')}
@@ -281,7 +312,7 @@ const SidebarTabs: FC = () => {
               sx={{
                 borderRadius: 2,
                 p: 1,
-                maxHeight: 220,
+                maxHeight: 240,
                 minWidth: 160,
                 overflow: 'auto',
                 border: '1px solid rgba(0, 0, 0, 0.08)',
@@ -292,43 +323,12 @@ const SidebarTabs: FC = () => {
               }}
             >
               <Stack spacing={0.5}>
-                {isMoreNav &&
-                  sidebarNavTabs.map((item) => {
-                    const isActive =
-                      currentSidebarConversationType === item.value
+                {moreNavTabs.map((item) => {
+                  const isActive = currentSidebarConversationType === item.value
 
-                    return (
-                      <SidebarMenuItem
-                        key={item.value}
-                        label={t(item.label)}
-                        icon={item.icon}
-                        tooltip={
-                          typeof item.tooltip === 'function'
-                            ? t(item.tooltip())
-                            : item.tooltip
-                        }
-                        tooltipProps={{
-                          placement: isInImmersiveChatPage ? 'right' : 'left',
-                          ...item.tooltipProps,
-                        }}
-                        active={isActive}
-                        onClick={() => {
-                          updateSidebarConversationType(item.value)
-                        }}
-                        buttonTestId={`maxai--sidebar--${item.value.toLowerCase()}_tab`}
-                        labelTestId={`max-ai__${item.value.toLowerCase()}-tab`}
-                      />
-                    )
-                  })}
-
-                {isMoreMarketing && isMoreNav && (
-                  <Divider sx={{ mx: '8px!important' }} />
-                )}
-
-                {isMoreMarketing &&
-                  sidebarMarketingTabs.map((item, index) => (
+                  return (
                     <SidebarMenuItem
-                      key={index}
+                      key={item.value}
                       label={t(item.label)}
                       icon={item.icon}
                       tooltip={
@@ -340,13 +340,41 @@ const SidebarTabs: FC = () => {
                         placement: isInImmersiveChatPage ? 'right' : 'left',
                         ...item.tooltipProps,
                       }}
-                      target={item.href ? '_blank' : undefined}
-                      href={item.href}
-                      onClick={item.onClick}
-                      buttonTestId={item.buttonTestId}
-                      labelTestId={item.labelTestId}
+                      active={isActive}
+                      onClick={() => {
+                        updateSidebarConversationType(item.value)
+                      }}
+                      buttonTestId={`maxai--sidebar--${item.value.toLowerCase()}_tab`}
+                      labelTestId={`max-ai__${item.value.toLowerCase()}-tab`}
                     />
-                  ))}
+                  )
+                })}
+
+                {moreNavTabs.length && moreMarketingTabs.length ? (
+                  <Divider sx={{ mx: '8px!important' }} />
+                ) : null}
+
+                {moreMarketingTabs.map((item, index) => (
+                  <SidebarMenuItem
+                    key={index}
+                    label={t(item.label)}
+                    icon={item.icon}
+                    tooltip={
+                      typeof item.tooltip === 'function'
+                        ? t(item.tooltip())
+                        : item.tooltip
+                    }
+                    tooltipProps={{
+                      placement: isInImmersiveChatPage ? 'right' : 'left',
+                      ...item.tooltipProps,
+                    }}
+                    target={item.href ? '_blank' : undefined}
+                    href={item.href}
+                    onClick={item.onClick}
+                    buttonTestId={item.buttonTestId}
+                    labelTestId={item.labelTestId}
+                  />
+                ))}
               </Stack>
             </Paper>
           }
@@ -368,11 +396,9 @@ const SidebarTabs: FC = () => {
       }}
     >
       <Stack
-        ref={marketingContainerRef as any}
         data-testid={'maxAISidebarMarketingTabsContainer'}
         alignItems={'center'}
         width={'100%'}
-        visibility={isMoreMarketing ? 'hidden' : 'visible'}
         spacing={2}
         sx={{
           position: 'absolute',
@@ -410,7 +436,6 @@ const SidebarTabs: FC = () => {
       </Stack>
 
       <Stack
-        ref={navContainerRef as any}
         data-testid={'maxAISidebarTabsContainer'}
         alignItems={'center'}
         width={'100%'}
@@ -425,14 +450,7 @@ const SidebarTabs: FC = () => {
             : { bottom: 0 }),
         }}
       >
-        {isInImmersiveChatPage && isMoreNav ? moreButton : null}
-
-        <Stack
-          alignItems={'center'}
-          width={'100%'}
-          spacing={2}
-          visibility={isMoreNav ? 'hidden' : 'visible'}
-        >
+        <Stack alignItems={'center'} width={'100%'} spacing={2}>
           {sidebarNavTabs.map((item) => {
             const isActive = currentSidebarConversationType === item.value
 
@@ -466,7 +484,7 @@ const SidebarTabs: FC = () => {
           })}
         </Stack>
 
-        {!isInImmersiveChatPage || !isMoreNav ? moreButton : null}
+        {moreButton}
       </Stack>
     </Stack>
   )

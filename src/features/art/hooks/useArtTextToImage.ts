@@ -249,6 +249,7 @@ const useArtTextToImage = () => {
               text: '',
               originalMessage: {
                 metadata: {
+                  isComplete: false,
                   copilot: {
                     steps: [
                       {

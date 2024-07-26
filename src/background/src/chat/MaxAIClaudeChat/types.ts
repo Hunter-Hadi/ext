@@ -122,7 +122,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     value: 'claude-3-5-sonnet',
     maxTokens: 200000,
     tags: (currentConversationType) => {
-      const tags = ['Beta']
+      const tags = ['New']
       if (currentConversationType !== 'Search') {
         tags.push('Vision')
       }

@@ -50,7 +50,6 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       label: 'Gemini-1.5-Flash',
       value: 'gemini-flash-1.5',
       AIProvider: 'MAXAI_GEMINI',
-      tag: 'Beta',
     },
     {
       mainPart: true,
@@ -74,7 +73,7 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       label: 'Claude-3.5-Sonnet',
       value: 'claude-3-5-sonnet',
       AIProvider: 'MAXAI_CLAUDE',
-      tag: 'Beta',
+      tag: 'New',
     },
     {
       mainPart: true,
@@ -190,7 +189,6 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       label: 'Gemini-1.5-Flash',
       value: 'gemini-flash-1.5',
       AIProvider: 'MAXAI_GEMINI',
-      tag: 'Beta',
     },
     {
       mainPart: true,
@@ -214,7 +212,7 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       label: 'Claude-3.5-Sonnet',
       value: 'claude-3-5-sonnet',
       AIProvider: 'MAXAI_CLAUDE',
-      tag: 'Beta',
+      tag: 'New',
     },
     {
       mainPart: true,

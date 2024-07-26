@@ -247,7 +247,13 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     title: 'GPT-4o',
     value: MAXAI_CHATGPT_MODEL_GPT_4O,
     titleTag: 'New',
-    tags: ['New', 'Vision'],
+    tags: (currentConversationType) => {
+      const tags = ['New']
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
     poweredBy: 'OpenAI',
     description: (t) =>
       t('client:provider__chatgpt__model__gpt_4o__description'),
@@ -258,7 +264,13 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     title: 'GPT-4o-mini',
     value: MAXAI_CHATGPT_MODEL_GPT_4O_MINI,
     titleTag: 'New',
-    tags: ['New', 'Vision'],
+    tags: (currentConversationType) => {
+      const tags = ['New']
+      if (currentConversationType !== 'Search') {
+        tags.push('Vision')
+      }
+      return tags
+    },
     poweredBy: 'OpenAI',
     description: (t) =>
       t('client:provider__chatgpt__model__gpt_4o_mini__description'),

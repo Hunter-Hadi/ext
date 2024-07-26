@@ -349,7 +349,7 @@ const SidebarContextMenu: FC<{
         <ActionSetVariablesModal
           ref={actionModalRef}
           showCloseButton={false}
-          showDiscardButton
+          showDiscardButton={false}
           onChange={() => {
             setLoading(true)
           }}

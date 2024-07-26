@@ -46,7 +46,10 @@ const SidebarContextMenuTitlebar: FC<{
           <AIProviderModelSelectorButton
             disabled={!showModelSelector}
             sidebarConversationType={'ContextMenu'}
-            placement='top'
+            // placement='bottom'
+            tooltipProps={{
+              placement: 'bottom',
+            }}
           />
         )}
 

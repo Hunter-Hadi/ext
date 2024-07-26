@@ -93,8 +93,9 @@ const FloatingContextMenuTitleBar: FC<{
             disabled={!showModelSelector}
             sidebarConversationType={'ContextMenu'}
             size={'small'}
-            placement='top'
+            // placement='top'
             tooltipProps={{
+              placement: 'top',
               floatingMenuTooltip: true,
             }}
           />

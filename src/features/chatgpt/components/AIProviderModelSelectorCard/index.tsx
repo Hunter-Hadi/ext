@@ -125,7 +125,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
           // borderColor: '#ebebeb',
           borderColor: 'customColor.borderColor',
           py: 0,
-          maxHeight: 290,
+          maxHeight: 350,
           [`.${menuItemClasses.root}`]: {
             px: 1,
             borderRight: '2px solid',

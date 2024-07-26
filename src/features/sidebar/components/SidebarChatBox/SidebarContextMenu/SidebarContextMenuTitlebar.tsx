@@ -1,8 +1,9 @@
+import CloseOutlined from '@mui/icons-material/CloseOutlined'
 import { buttonClasses, Stack, SxProps, Theme } from '@mui/material'
+import Divider from '@mui/material/Divider'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import LanguageSelector from '@/features/contextMenu/components/FloatingContextMenu/LanguageSelector'
@@ -91,19 +92,26 @@ const SidebarContextMenuTitlebar: FC<{
         )}
 
         {isSettingCustomVariable && (
-          <TooltipIconButton
-            title={t('common:discard')}
-            onClick={onClose}
-            sx={{
-              height: '28px',
-              width: '28px',
-              borderRadius: '8px',
-              border: '1px solid',
-              borderColor: 'customColor.borderColor',
-            }}
-          >
-            <ContextMenuIcon icon='Close' />
-          </TooltipIconButton>
+          <>
+            <Divider orientation='vertical' variant='middle' flexItem />
+            <TooltipIconButton
+              title={t('common:discard')}
+              onClick={onClose}
+              sx={{
+                width: 'auto',
+                height: 20,
+                color: 'inherit',
+                padding: '3px',
+                marginRight: '-3px',
+              }}
+            >
+              <CloseOutlined
+                sx={{
+                  fontSize: 17,
+                }}
+              />
+            </TooltipIconButton>
+          </>
         )}
       </Stack>
     </Stack>

@@ -51,8 +51,6 @@ const ConversationList: FC<IProps> = (props) => {
     done,
   )
 
-  // TODO: 删除时清除缓存
-
   useEffect(() => {
     updatePaginationFilter({
       type: conversationType,

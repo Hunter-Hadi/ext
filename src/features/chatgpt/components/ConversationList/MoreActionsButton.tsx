@@ -37,6 +37,7 @@ const MoreActionsButton: FC<{
     onRename,
     onDelete,
   } = props
+
   const { resetConversation, currentConversationId } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { t } = useTranslation(['client'])
@@ -279,6 +280,7 @@ const MoreActionsButton: FC<{
                   await ClientConversationManager.softDeleteConversation(
                     conversationId,
                   )
+
                   onDelete?.()
                   // resetConversation里已经做了处理先注释掉下面的代码防止重复创建
                   // if (isInImmersiveChat) {

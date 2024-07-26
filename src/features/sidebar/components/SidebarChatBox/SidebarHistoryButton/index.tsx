@@ -36,8 +36,12 @@ const SidebarHistoryButton: FC<{
   const isImmersiveChatPage = useMemo(() => isMaxAIImmersiveChatPage(), [])
   const paperRef = useRef<HTMLDivElement>()
 
-  const { clientConversation, currentConversationId, updateConversationId } =
-    useClientConversation()
+  const {
+    clientConversation,
+    currentConversationId,
+    updateConversationId,
+    createConversation,
+  } = useClientConversation()
   const currentConversationType = clientConversation?.type
 
   const currentI18nTitle = useMemo(() => {
@@ -217,6 +221,7 @@ const SidebarHistoryButton: FC<{
                           p: '5px',
                         }}
                         onDelete={() => {
+                          createConversation(currentConversationType)
                           handleCloseModal()
                         }}
                       />

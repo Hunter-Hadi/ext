@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -14,6 +14,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { ClientConversationManager } from '@/features/indexed_db/conversations/ClientConversationManager'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
+import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface IProps {
@@ -25,13 +26,21 @@ interface IProps {
 
 const ClearAllChatButton: FC<IProps> = (props) => {
   const testid = 'maxai-clear-all-chat-button'
-  const { onDelete, variant = 'buttonText', sx, conversationType } = props
+  const { onDelete, variant = 'buttonText', sx } = props
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
   const { currentSidebarConversationType } = useSidebarSettings()
   const currentConversationType =
-    conversationType || currentSidebarConversationType
-  const isContextWindow = currentConversationType === 'ContextMenu'
+    props.conversationType || currentSidebarConversationType
+  const buttonRef = useRef<HTMLDivElement>(null)
+  const isContextWindow = useMemo(() => {
+    if (currentConversationType !== 'ContextMenu') return
+
+    return (
+      getMaxAIFloatingContextMenuRootElement()?.contains(buttonRef.current) ||
+      false
+    )
+  }, [buttonRef.current, currentConversationType])
   const currentDeleteAllButtonTitle = useMemo(() => {
     if (currentConversationType === 'Summary') {
       return t('client:immersive_chat__delete_all_summary__button__title')
@@ -66,10 +75,22 @@ const ClearAllChatButton: FC<IProps> = (props) => {
 
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
+  const onConfirm = async () => {
+    try {
+      await ClientConversationManager.softDeleteByType(currentConversationType)
+
+      onDelete?.()
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setOpen(false)
+    }
+  }
+
   return (
     <>
       {variant === 'buttonText' && (
-        <Box position={'relative'}>
+        <Box position={'relative'} ref={buttonRef}>
           <Button
             variant={'text'}
             sx={{
@@ -106,25 +127,27 @@ const ClearAllChatButton: FC<IProps> = (props) => {
       )}
 
       {variant === 'icon' && (
-        <TextOnlyTooltip
-          PopperProps={{
-            disablePortal: true,
-          }}
-          floatingMenuTooltip={currentConversationType === 'ContextMenu'}
-          placement={'top'}
-          title={currentDeleteAllButtonTitle}
-        >
-          <IconButton
-            data-testid={testid}
-            onClick={(e: React.MouseEvent) => {
-              e.stopPropagation()
-              setOpen(true)
+        <div ref={buttonRef}>
+          <TextOnlyTooltip
+            PopperProps={{
+              disablePortal: true,
             }}
-            sx={sx}
+            floatingMenuTooltip={currentConversationType === 'ContextMenu'}
+            placement={'top'}
+            title={currentDeleteAllButtonTitle}
           >
-            <ContextMenuIcon icon={'Delete'} size={24} />
-          </IconButton>
-        </TextOnlyTooltip>
+            <IconButton
+              data-testid={testid}
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation()
+                setOpen(true)
+              }}
+              sx={sx}
+            >
+              <ContextMenuIcon icon={'Delete'} size={24} />
+            </IconButton>
+          </TextOnlyTooltip>
+        </div>
       )}
 
       <Modal
@@ -187,18 +210,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
               <Button
                 variant={'contained'}
                 color={'error'}
-                onClick={async () => {
-                  try {
-                    await ClientConversationManager.softDeleteByType(
-                      currentConversationType,
-                    )
-                    onDelete?.()
-                  } catch (e) {
-                    console.error(e)
-                  } finally {
-                    setOpen(false)
-                  }
-                }}
+                onClick={onConfirm}
                 sx={{
                   bgcolor: '#f44336!important',
                   '&:hover': {

@@ -1,5 +1,5 @@
 import { Button, Skeleton, Stack, Typography } from '@mui/material'
-import { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import { FC, useCallback, useMemo, useState } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -22,11 +22,6 @@ const SidebarAImessageTimestampedSummary: FC<
   const [openIdsList, setOpenIdsList] = useState<{ [key in string]: boolean }>(
     {},
   )
-  useEffect(() => {
-    return () => {
-      console.log('TEST bottom list unmount')
-    }
-  }, [])
   const transcriptLoadingsLength = useMemo(() => {
     if (transcriptList) {
       return transcriptList.filter((item) => item.status === 'loading').length

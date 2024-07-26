@@ -820,7 +820,6 @@ export const ClientMessageInit = () => {
           }
         }
         case 'Client_createPaymentUrl': {
-          console.log('TEST createPaymentUrl', data)
           paymentManager.addPayment(data)
           return {
             success: true,

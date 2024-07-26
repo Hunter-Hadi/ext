@@ -262,7 +262,6 @@ const SidebarTabs: FC = () => {
     navTabs.forEach((item, index) => {
       currentHeight +=
         SIDEBAR_TAB_HEIGHT + (index > 0 ? SIDEBAR_TAB_SPACING : 0)
-      console.log('TEST', currentHeight, containerHeight, index)
       if (currentHeight > containerHeight) {
         moreNavTabs.push(item)
       } else {

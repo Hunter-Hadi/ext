@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "AnthropicのClaude-3.5-Sonnetは、フロンティアの知性と倍速を組み合わせ、推論、知識、コーディングにおいて新たな基準を設定しています。微妙なニュアンスの理解、向上したビジョン能力、200kトークンの制限を備えた、高性能を要求される複雑なタスクに最適です。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Googleの最新かつ最も高度なモデル。より高速な処理速度、画期的な1Mトークンコンテキストウィンドウ、強化された安全性、およびテキスト、コード、画像、音声、ビデオ処理全般にわたる高度な機能を提供します。",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAIのGPT-4は、速度と効率を最適化し、創造性と高度な推論を要するリアルタイムアプリケーションに優れた性能を発揮し、高速な応答時間と一貫した出力を提供します。",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "世界最大のオープンソースAIモデルを体験しましょう。知識、推論、多言語サポートにおいて類を見ない能力を提供します。最大4050億のパラメータのパワーを解放して、最も野心的なプロジェクトに挑みましょう。"
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "世界最大のオープンソースAIモデルを体験しましょう。知識、推論、多言語サポートにおいて類を見ない能力を提供します。最大4050億のパラメータのパワーを解放して、最も野心的なプロジェクトに挑みましょう。",
+    "sidebar__ai_language__selector__button__tooltip": "AI レスポンス言語を変更"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

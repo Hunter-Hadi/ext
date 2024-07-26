@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Claude-3.5-Sonnet d'Anthropic allie intelligence de pointe et vitesse doublée, établissant de nouveaux repères en matière de raisonnement, de connaissance et de codage. Avec une compréhension accrue des nuances, des capacités de vision améliorées et une limite de 200k jetons, il est idéal pour les tâches complexes exigeant des performances élevées.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Le tout dernier et le plus avancé modèle de Google. Il offre une vitesse plus rapide, une fenêtre de contexte de jeton 1M révolutionnaire, une sécurité renforcée et des capacités avancées dans le traitement de texte, de code, d'image, de son et de vidéo.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 d'OpenAI, optimisé pour la vitesse et l'efficacité, excelle dans les applications en temps réel nécessitant de la créativité et un raisonnement avancé avec des temps de réponse améliorés et une sortie cohérente.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Découvrez le plus grand modèle d'IA open source au monde, offrant des capacités inégalées en matière de connaissance, de raisonnement et de support multilingue. Libérez la puissance de 405 milliards de paramètres pour vos projets les plus ambitieux."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Découvrez le plus grand modèle d'IA open source au monde, offrant des capacités inégalées en matière de connaissance, de raisonnement et de support multilingue. Libérez la puissance de 405 milliards de paramètres pour vos projets les plus ambitieux.",
+    "sidebar__ai_language__selector__button__tooltip": "Changer la langue de réponse de l'IA"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

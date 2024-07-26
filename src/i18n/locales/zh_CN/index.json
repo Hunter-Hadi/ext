@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Anthropic的Claude-3.5-Sonnet将前沿智能与加倍速度相结合，为推理、知识和编码设定了新的基准。具有对微妙之处的增强理解能力、改进的视觉能力和20万令牌限制，非常适合需要高性能的复杂任务。",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google最新和最先进的模型。提供更快的速度，突破性的1M令牌上下文窗口，增强的安全性，以及在文本、代码、图像、音频和视频处理方面的高级功能。",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI的GPT-4，针对速度和效率进行了优化，在需要创造力和高级推理的实时应用中表现出色，具有增强的响应时间和一致的输出。",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "体验世界上最大的开源AI模型，提供无与伦比的知识、推理和多语言支持能力。解锁4050亿参数的强大功能，用于您最雄心勃勃的项目。"
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "体验世界上最大的开源AI模型，提供无与伦比的知识、推理和多语言支持能力。解锁4050亿参数的强大功能，用于您最雄心勃勃的项目。",
+    "sidebar__ai_language__selector__button__tooltip": "更改AI响应语言"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

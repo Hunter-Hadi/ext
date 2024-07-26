@@ -18,7 +18,9 @@ import { useTranslation } from 'react-i18next'
 
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import TextOnlyTooltip, {
+  TextOnlyTooltipProps,
+} from '@/components/TextOnlyTooltip'
 import { isThirdPartyAIProvider } from '@/features/chatgpt'
 import AIModelSelectorCard from '@/features/chatgpt/components/AIProviderModelSelectorCard'
 import { ChatAIProviderModelSelectorOptions } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
@@ -43,6 +45,7 @@ const AIProviderModelSelectorButton: FC<{
   sx?: SxProps
   size?: 'normal' | 'small'
   placement?: TooltipProps['placement']
+  tooltipProps?: Partial<TextOnlyTooltipProps>
 }> = (props) => {
   const { t } = useTranslation(['client'])
   const {
@@ -51,6 +54,7 @@ const AIProviderModelSelectorButton: FC<{
     placement,
     sidebarConversationType,
     disabled,
+    tooltipProps,
   } = props
   const { clientConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
@@ -237,6 +241,7 @@ const AIProviderModelSelectorButton: FC<{
           )}
           open={isHoverButton && !open}
           placement={placement}
+          {...tooltipProps}
         >
           <Stack
             direction={'row'}

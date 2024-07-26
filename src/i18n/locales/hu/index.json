@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Az Anthropic Claude-3.5-Sonnet ötvözi a határvonalbeli intelligenciát a megduplázott sebességgel, új mércéket állítva fel az érvelésben, tudásban és kódolásban. Fokozottan érti a finomságokat, javított látási képességekkel és 200k-tokenes korláttal ideális bonyolult feladatokhoz, amelyek magas teljesítményt igényelnek.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google legújabb és legfejlettebb modellje. Gyorsabb sebességet kínál, áttörést jelentő 1M tokenes kontextusablakot, fokozott biztonságot és fejlett képességeket nyújt szöveg, kód, kép, hang és videó feldolgozás terén.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "Az OpenAI GPT-4, sebességre és hatékonyságra optimalizálva, kiválóan teljesít valós idejű alkalmazásokban, amelyek kreativitást és fejlett gondolkodást igényelnek, fokozott válaszidővel és következetes kimenettel.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Tapasztald meg a világ legnagyobb nyílt forráskódú AI modelljét, amely páratlan képességeket kínál tudásban, gondolkodásban és többnyelvű támogatásban. Engedd szabadjára a 405 milliárd paraméter erejét a legambiciózusabb projektekhez."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Tapasztald meg a világ legnagyobb nyílt forráskódú AI modelljét, amely páratlan képességeket kínál tudásban, gondolkodásban és többnyelvű támogatásban. Engedd szabadjára a 405 milliárd paraméter erejét a legambiciózusabb projektekhez.",
+    "sidebar__ai_language__selector__button__tooltip": "Változtasd meg az AI válasz nyelvét"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

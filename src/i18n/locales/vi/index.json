@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Claude-3.5-Sonnet của Anthropic kết hợp thông minh biên giới với tốc độ gấp đôi, thiết lập các tiêu chuẩn mới trong lý luận, kiến thức và lập trình. Với sự hiểu biết cải thiện về sắc thái, khả năng thị giác nâng cao và giới hạn 200k token, nó lý tưởng cho các nhiệm vụ phức tạp đòi hỏi hiệu suất cao.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Mô hình mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu mã thông báo đột phá, an toàn nâng cao và khả năng tiên tiến trên văn bản, mã, hình ảnh, âm thanh và xử lý video.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 của OpenAI, tối ưu hóa cho tốc độ và hiệu suất, xuất sắc trong các ứng dụng thời gian thực đòi hỏi sự sáng tạo và lý do tiên tiến với thời gian phản hồi nhanh hơn và đầu ra nhất quán.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Trải nghiệm mô hình trí tuệ nhân tạo mã nguồn mở lớn nhất thế giới, cung cấp khả năng vô song trong kiến thức, lý do và hỗ trợ đa ngôn ngữ. Mở khóa sức mạnh của 405 tỷ tham số cho các dự án táo bạo nhất của bạn."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Trải nghiệm mô hình trí tuệ nhân tạo mã nguồn mở lớn nhất thế giới, cung cấp khả năng vô song trong kiến thức, lý do và hỗ trợ đa ngôn ngữ. Mở khóa sức mạnh của 405 tỷ tham số cho các dự án táo bạo nhất của bạn.",
+    "sidebar__ai_language__selector__button__tooltip": "Thay đổi ngôn ngữ phản hồi AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

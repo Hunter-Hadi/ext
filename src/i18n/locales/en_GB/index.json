@@ -884,6 +884,7 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "3rd-party AI providers are not managed by MaxAI. We highly recommend using our premium AI providers for fast and high-quality AI experience.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3rd-party AI providers",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI provider disabled in extension for upgrade. Please try later.",
+    "sidebar__ai_language__selector__button__tooltip": "Change AI response language",
     "sidebar__chat__advanced__title": "Advanced chat options",
     "sidebar__summary__advanced__title": "Advanced summary options",
     "sidebar__conversation_share__share_button__title": "Share",

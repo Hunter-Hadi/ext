@@ -93,12 +93,19 @@ const FloatingContextMenuTitleBar: FC<{
             disabled={!showModelSelector}
             sidebarConversationType={'ContextMenu'}
             size={'small'}
+            placement='top'
+            tooltipProps={{
+              floatingMenuTooltip: true,
+            }}
           />
         )}
 
         <LanguageSelector
           defaultValue={userSettings?.language}
           placement='bottom-start'
+          tooltipProps={{
+            floatingMenuTooltip: true,
+          }}
           onChangeLanguage={(lang) => {
             setUserSettings({
               ...userSettings,

@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Il Claude-3.5-Sonnet di Anthropic combina intelligenza di frontiera con velocità raddoppiata, stabilendo nuovi standard in ragionamento, conoscenza e codifica. Con una comprensione migliorata della sfumatura, capacità di visione migliorata e un limite di 200k-token, è ideale per compiti complessi che richiedono elevate prestazioni.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Il modello più nuovo e avanzato di Google. Offre maggiore velocità, una finestra di contesto token di 1M, sicurezza potenziata e capacità avanzate in elaborazione di testo, codice, immagini, audio e video.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "Il GPT-4 di OpenAI, ottimizzato per velocità ed efficienza, eccelle nelle applicazioni in tempo reale che richiedono creatività e ragionamento avanzato con tempi di risposta migliorati e output coerente.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Vivi l'esperienza del modello di intelligenza artificiale open-source più grande al mondo, offrendo capacità senza precedenti in conoscenza, ragionamento e supporto multilingue. Sblocca il potere di 405 miliardi di parametri per i tuoi progetti più ambiziosi."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Vivi l'esperienza del modello di intelligenza artificiale open-source più grande al mondo, offrendo capacità senza precedenti in conoscenza, ragionamento e supporto multilingue. Sblocca il potere di 405 miliardi di parametri per i tuoi progetti più ambiziosi.",
+    "sidebar__ai_language__selector__button__tooltip": "Cambia lingua risposta AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

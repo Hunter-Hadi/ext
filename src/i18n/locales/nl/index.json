@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Anthropic's Claude-3.5-Sonnet combineert grensverleggende intelligentie met verdubbelde snelheid, en stelt nieuwe normen in redenering, kennis en codering. Met verbeterd begrip van nuance, verbeterde visuele mogelijkheden en een limiet van 200k-tokens, is het ideaal voor complexe taken die hoge prestaties vereisen.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google's nieuwste en meest geavanceerde model. Het biedt snellere snelheid, een baanbrekend 1M-tokencontextvenster, verbeterde veiligheid en geavanceerde mogelijkheden op het gebied van tekst, code, afbeelding, audio en videobewerking.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI's GPT-4, geoptimaliseerd voor snelheid en efficiëntie, blinkt uit in real-time toepassingen die creativiteit en geavanceerd redeneren vereisen met verbeterde responstijden en consistente output.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Ervaar 's werelds grootste open-source AI-model, met ongeëvenaarde mogelijkheden op het gebied van kennis, redeneren en meertalige ondersteuning. Ontgrendel de kracht van 405 miljard parameters voor uw meest ambitieuze projecten."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Ervaar 's werelds grootste open-source AI-model, met ongeëvenaarde mogelijkheden op het gebied van kennis, redeneren en meertalige ondersteuning. Ontgrendel de kracht van 405 miljard parameters voor uw meest ambitieuze projecten.",
+    "sidebar__ai_language__selector__button__tooltip": "Verander AI-antwoordtaal"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

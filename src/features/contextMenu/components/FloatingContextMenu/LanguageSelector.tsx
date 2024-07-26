@@ -15,6 +15,9 @@ import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TextOnlyTooltip, {
+  TextOnlyTooltipProps,
+} from '@/components/TextOnlyTooltip'
 import {
   getMaxAIFloatingContextMenuRootElement,
   getMaxAISidebarRootElement,
@@ -33,15 +36,17 @@ function filterOptions(options: any[], { inputValue }: any) {
 const LanguageSelector: FC<{
   defaultValue?: string
   placement?: Placement
+  tooltipProps?: Partial<TextOnlyTooltipProps>
   onChangeLanguage?: (lang: string) => void
   inSidebar?: boolean
 }> = ({
   defaultValue = '',
   placement = 'top-start',
+  tooltipProps,
   inSidebar,
   onChangeLanguage,
 }) => {
-  const { t } = useTranslation(['common', 'settings'])
+  const { t } = useTranslation(['common', 'settings', 'client'])
   const [open, setOpen] = useState(false)
   const [currentLanguage, setCurrentLanguage] = useState(() => {
     return (
@@ -96,43 +101,48 @@ const LanguageSelector: FC<{
 
   return (
     <Box>
-      <Button
-        onClick={handleOpen}
-        sx={{
-          padding: '4px',
-          borderRadius: '4px',
-          bgcolor: (t) => (t.palette.mode === 'dark' ? '#3B3D3E' : '#E9E9EB'),
-        }}
-        disableRipple
+      <TextOnlyTooltip
+        title={t('client:sidebar__ai_language__selector__button__tooltip')}
+        {...tooltipProps}
       >
-        <ContextMenuIcon
-          icon={'Language'}
+        <Button
+          onClick={handleOpen}
           sx={{
-            color: 'text.secondary',
-            fontSize: '16px',
+            padding: '4px',
+            borderRadius: '4px',
+            bgcolor: (t) => (t.palette.mode === 'dark' ? '#3B3D3E' : '#E9E9EB'),
           }}
-        ></ContextMenuIcon>
-
-        <Typography
-          mx={0.5}
-          fontSize={14}
-          lineHeight={1.4}
-          color='text.secondary'
-          sx={{
-            userSelect: 'none',
-          }}
+          disableRipple
         >
-          {currentLanguage.label}
-        </Typography>
+          <ContextMenuIcon
+            icon={'Language'}
+            sx={{
+              color: 'text.secondary',
+              fontSize: '16px',
+            }}
+          ></ContextMenuIcon>
 
-        <ContextMenuIcon
-          icon={'ExpandMore'}
-          sx={{
-            color: 'text.secondary',
-            fontSize: '16px',
-          }}
-        />
-      </Button>
+          <Typography
+            mx={0.5}
+            fontSize={14}
+            lineHeight={1.4}
+            color='text.secondary'
+            sx={{
+              userSelect: 'none',
+            }}
+          >
+            {currentLanguage.label}
+          </Typography>
+
+          <ContextMenuIcon
+            icon={'ExpandMore'}
+            sx={{
+              color: 'text.secondary',
+              fontSize: '16px',
+            }}
+          />
+        </Button>
+      </TextOnlyTooltip>
 
       <Popper
         open={open}

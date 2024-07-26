@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Anthropic'in Claude-3.5-Sonnet'i, iki kat hızla öncü zeka ile birleşerek, akıl yürütme, bilgi ve kodlama alanlarında yeni ölçütler belirler. Nüansların geliştirilmiş anlayışı, iyileştirilmiş görme yetenekleri ve 200k-token sınırı ile yüksek performans gerektiren karmaşık görevler için idealdir.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google'ın en yeni ve en gelişmiş modeli. Daha hızlı hız, çığır açan 1M belirteçli bağlam penceresi, geliştirilmiş güvenlik ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sunar.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI'in GPT-4'ü, hız ve verimlilik için optimize edilmiş olup, yaratıcılık ve gelişmiş mantık gerektiren gerçek zamanlı uygulamalarda üstün performans gösterirken geliştirilmiş yanıt süreleri ve tutarlı çıktı sunar.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Dünyanın en büyük açık kaynaklı yapay zeka modelini deneyimleyin, bilgi, mantık ve çoklu dil desteğinde eşsiz yetenekler sunar. En iddialı projeleriniz için 405 milyar parametrenin gücünü açığa çıkarın."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Dünyanın en büyük açık kaynaklı yapay zeka modelini deneyimleyin, bilgi, mantık ve çoklu dil desteğinde eşsiz yetenekler sunar. En iddialı projeleriniz için 405 milyar parametrenin gücünü açığa çıkarın.",
+    "sidebar__ai_language__selector__button__tooltip": "AI yanıt dilini değiştir"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Claude-3.5-Sonnet od Anthropicu kombinuje inteligenci na hranici s zdvojenou rychlostí, stanovuje nové standardy v úsudku, znalostech a programování. S vylepšeným porozuměním nuancím, zlepšenými vizuálními schopnostmi a limitem 200 tisíc tokenů je ideální pro složité úkoly vyžadující vysoký výkon.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Nejnovější a nejvyspělejší model od Googlu. Nabízí rychlejší rychlost, průlomové okno kontextu s 1M tokeny, zlepšenou bezpečnost a pokročilé schopnosti v textu, kódu, obrazech, zvuku a zpracování videa.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 od OpenAI, optimalizovaný pro rychlost a efektivitu, exceluje v reálných aplikacích vyžadujících kreativitu a pokročilé úsudky s vylepšenými časy odezvy a konzistentními výstupy.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Zažijte největší open-source model AI na světě, nabízející nepřekonatelné schopnosti v oblasti znalostí, úsudku a podpory vícejazyčnosti. Odblokujte sílu 405 miliard parametrů pro vaše nejambicióznější projekty."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Zažijte největší open-source model AI na světě, nabízející nepřekonatelné schopnosti v oblasti znalostí, úsudku a podpory vícejazyčnosti. Odblokujte sílu 405 miliard parametrů pro vaše nejambicióznější projekty.",
+    "sidebar__ai_language__selector__button__tooltip": "Změnit jazyk odpovědi AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

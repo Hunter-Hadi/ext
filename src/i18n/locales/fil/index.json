@@ -1053,7 +1053,8 @@
     "permission__pricing_hook__advanced_text_usage__claude_3_5_sonnet__description": "Ang Claude-3.5-Sonnet ng Anthropic ay nagtatambal ng frontier intelligence na may dobladong bilis, nagtatatag ng mga bagong pamantayan sa pagsusuri, kaalaman, at coding. Sa pinabuting pag-unawa sa nuance, pinahusay na kakayahan sa pangitain, at limitadong 200k-token, ito ay perpekto para sa mga kumplikadong gawain na nangangailangan ng mataas na performance.",
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Pinakabagong at pinakamahusay na modelo ng Google. Nag-aalok ito ng mas mabilis na bilis, isang breakthrough na 1M token context window, pinalakas na kaligtasan, at advanced na kakayahan sa text, code, image, audio, at video processing.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "Ang GPT-4 ng OpenAI, na na-optimize para sa bilis at kahusayan, ay mahusay sa real-time applications na nangangailangan ng katalinuhan at advanced na rasoning na may pinalakas na response times at consistent na output.",
-    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Maranasan ang pinakamalaking open-source AI model sa mundo, na nag-aalok ng walang kapantay na kakayahan sa kaalaman, rasoning, at multilingual support. I-unlock ang kapangyarihan ng 405 bilyong parameters para sa iyong pinakamahuhusay na mga proyekto."
+    "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Maranasan ang pinakamalaking open-source AI model sa mundo, na nag-aalok ng walang kapantay na kakayahan sa kaalaman, rasoning, at multilingual support. I-unlock ang kapangyarihan ng 405 bilyong parameters para sa iyong pinakamahuhusay na mga proyekto.",
+    "sidebar__ai_language__selector__button__tooltip": "Baguhin ang wika ng tugon ng AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

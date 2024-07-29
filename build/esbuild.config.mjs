@@ -322,12 +322,13 @@ async function main() {
   if (!existsSync(releasesDir)) {
     mkdirSync(releasesDir)
   }
-  if (
-    !await updateProjectAPISecurityKey(extensionVersion, 'src/features/security/constant/index.ts')
-  ) {
-    throw('updateProjectAPISecurityKey failed')
+  const result = await updateProjectAPISecurityKey(extensionVersion)
+  if (!result) {
+    throw 'updateProjectAPISecurityKey failed'
     return
   }
+  replaceEnv['process.env.APP_AES_KEY'] = JSON.stringify(result.aes_key)
+  replaceEnv['process.env.APP_SIGN_KEY'] = JSON.stringify(result.sign_key)
   if (!isProduction) {
     await hotReload()
     await reactDevtools()

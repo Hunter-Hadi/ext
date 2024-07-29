@@ -3,6 +3,7 @@ import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils/index'
+import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { sha1FileEncrypt } from '@/utils/encryptionHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
@@ -132,6 +133,18 @@ export const uploadMaxAIDocument = async (
     } else {
       body.doc_type = 'chat_file'
     }
+  }
+  if (body.file.type === 'application/pdf' || body.file.name.endsWith('.pdf')) {
+    body.doc_type = 'page_content__pdf'
+  }
+  if (body.pure_text && !body.tokens) {
+    const { text: sliceText, tokens } = await sliceTextByTokens(
+      body.pure_text,
+      800 * 1000, // 纯文本内容上限 800k
+      { thread: 4, partOfTextLength: 20 * 1000 },
+    )
+    body.pure_text = sliceText
+    body.tokens = tokens
   }
   formData.append('doc_id', docId)
   formData.append('doc_type', body.doc_type)

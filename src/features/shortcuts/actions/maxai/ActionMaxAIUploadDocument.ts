@@ -74,7 +74,10 @@ export class ActionMaxAIUploadDocument extends Action {
 
     if (this.isStopAction) return
 
-    if (docType === 'webpage' || docType === 'email') {
+    if (
+      docType === 'page_content__webpage' ||
+      docType === 'page_content__email'
+    ) {
       // webpage的file里存储内容为{ pureTextMD5, readabilityMarkdown }
       const pureTextMD5 = md5TextEncrypt(sliceText)
       const readabilityMarkdown =
@@ -84,7 +87,7 @@ export class ActionMaxAIUploadDocument extends Action {
         type: 'application/json',
       })
       file = new File([jsonBlob], 'data.json', { type: 'application/json' })
-    } else if (docType === 'pdf') {
+    } else if (docType === 'page_content__pdf') {
       // pdf需要针对处理，如果文件大于32MB，后端会报错，前端按照json上传不影响用户summary和chat
       if (file instanceof File) {
         if (file.size >= 30 * 1024 * 1024) {
@@ -99,7 +102,7 @@ export class ActionMaxAIUploadDocument extends Action {
           file = new File([jsonBlob], 'data.json', { type: 'application/json' })
         }
       }
-    } else if (docType === 'youtube') {
+    } else if (docType === 'page_content__youtube') {
       // youtube的file里格式化存储内容
       const comments = (file as any).comments || []
       const transcripts = (file as any).transcripts || []
@@ -160,8 +163,9 @@ export class ActionMaxAIUploadDocument extends Action {
             // 有doc_url说明需要更新attachments
             // 大于32mb的pdf不需要存储，因为上方已经拆分成纯json文件
             if (
-              docType !== 'pdf' ||
-              (docType === 'pdf' && (file as File).type.includes('pdf'))
+              docType !== 'page_content__pdf' ||
+              (docType === 'page_content__pdf' &&
+                (file as File).type.includes('pdf'))
             ) {
               const uploadedFile: IChatUploadFile = {
                 id: result.doc_id,

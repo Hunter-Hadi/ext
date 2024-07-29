@@ -50,37 +50,38 @@ const useDocUploadAndTextExtraction = () => {
           })
         }),
       )
-      const extractTextPromises = async () => {
-        // 为了节省性能，一个一个提取
-        for (const fileId in uploadFileMap) {
-          const docFile = uploadFileMap[fileId]
-          const extractedResult = await FileExtractor.extractFile(
-            docFile,
-            addOrUpdateUploadFileRef.current,
-            fileId,
-          )
-          if (extractedResult.success) {
-            await addOrUpdateUploadFileRef.current(fileId, {
-              ...extractedResult.chatUploadFile,
-              uploadStatus: 'success',
-              uploadProgress: 80,
-            })
-          } else if (extractedResult.error) {
-            await addOrUpdateUploadFileRef.current(fileId, {
-              uploadStatus: 'error',
-              uploadProgress: 0,
-              uploadErrorMessage: extractedResult.error,
-            })
-            globalSnackbar.error(extractedResult.error, {
-              autoHideDuration: 3000,
-              anchorOrigin: {
-                vertical: 'top',
-                horizontal: 'right',
-              },
-            })
-          }
-        }
-      }
+      // const extractTextPromises = async () => {
+      //   // 为了节省性能，一个一个提取
+      //   for (const fileId in uploadFileMap) {
+      //     const docFile = uploadFileMap[fileId]
+      //     const extractedResult = await FileExtractor.extractFile(
+      //       docFile,
+      //       addOrUpdateUploadFileRef.current,
+      //       fileId,
+      //     )
+      //     if (extractedResult.success) {
+      //       await addOrUpdateUploadFileRef.current(fileId, {
+      //         ...extractedResult.chatUploadFile,
+      //         uploadStatus: 'success',
+      //         uploadProgress: 80,
+      //       })
+      //     } else if (extractedResult.error) {
+      //       await addOrUpdateUploadFileRef.current(fileId, {
+      //         uploadStatus: 'error',
+      //         uploadProgress: 0,
+      //         uploadErrorMessage: extractedResult.error,
+      //       })
+      //       globalSnackbar.error(extractedResult.error, {
+      //         autoHideDuration: 3000,
+      //         anchorOrigin: {
+      //           vertical: 'top',
+      //           horizontal: 'right',
+      //         },
+      //       })
+      //     }
+      //   }
+      // }
+
       const uploadResultMap: Record<string, Partial<IChatUploadFile>> = {}
       const uploadTextPromises = async () => {
         const fileIds = Object.keys(uploadFileMap)
@@ -88,24 +89,53 @@ const useDocUploadAndTextExtraction = () => {
           fileIds.map(async (fileId) => {
             const file = uploadFileMap[fileId]
             if (file) {
-              const uploadResult = await uploadMaxAIDocument({
+              // TODO 后续拆分到packages里的时候需要重新整理上传文件所有功能
+              // 上传doc的时候需要同步提取出pure_text纯文本内容
+              // pdf文件以page_content__pdf类型上传
+              const extractedResult = await FileExtractor.extractFile(
                 file,
-                doc_type: 'chat_file',
-              })
-              if (uploadResult.success) {
-                uploadResultMap[fileId] = {
+                addOrUpdateUploadFileRef.current,
+                fileId,
+              )
+              if (extractedResult.success) {
+                await addOrUpdateUploadFileRef.current(fileId, {
+                  ...extractedResult.chatUploadFile,
                   uploadStatus: 'success',
-                  uploadProgress: 100,
-                  uploadedFileId: uploadResult.doc_id,
-                  uploadedUrl: uploadResult.doc_url,
+                  uploadProgress: 80,
+                })
+                const uploadResult = await uploadMaxAIDocument({
+                  file,
+                  pure_text: extractedResult.chatUploadFile.extractedContent,
+                  doc_type: 'chat_file',
+                })
+                if (uploadResult.success) {
+                  uploadResultMap[fileId] = {
+                    uploadStatus: 'success',
+                    uploadProgress: 100,
+                    uploadedFileId: uploadResult.doc_id,
+                    uploadedUrl: uploadResult.doc_url,
+                  }
+                } else {
+                  uploadResultMap[fileId] = {
+                    uploadStatus: 'error',
+                    uploadProgress: 0,
+                    uploadErrorMessage: uploadResult.error,
+                  }
+                  globalSnackbar.error(uploadResult.error, {
+                    autoHideDuration: 3000,
+                    anchorOrigin: {
+                      vertical: 'top',
+                      horizontal: 'right',
+                    },
+                  })
                 }
-              } else {
-                uploadResultMap[fileId] = {
+              } else if (extractedResult.error) {
+                await addOrUpdateUploadFileRef.current(fileId, {
                   uploadStatus: 'error',
                   uploadProgress: 0,
-                  uploadErrorMessage: uploadResult.error,
-                }
-                globalSnackbar.error(uploadResult.error, {
+                  uploadErrorMessage: extractedResult.error,
+                })
+                globalSnackbar.error(extractedResult.error, {
                   autoHideDuration: 3000,
                   anchorOrigin: {
                     vertical: 'top',
@@ -118,7 +148,8 @@ const useDocUploadAndTextExtraction = () => {
           }),
         )
       }
-      await Promise.all([extractTextPromises(), uploadTextPromises()])
+      // await Promise.all([extractTextPromises(), uploadTextPromises()])
+      await uploadTextPromises()
       await Promise.all(
         Object.keys(uploadResultMap).map(async (fileId) => {
           await addOrUpdateUploadFileRef.current(

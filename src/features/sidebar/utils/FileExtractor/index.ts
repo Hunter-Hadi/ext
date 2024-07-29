@@ -160,6 +160,13 @@ class FileExtractor {
           )
           return
         }
+        if (!reader.result.trim()) {
+          // 文件无内容
+          handleUploadError(
+            `You cannot upload files with empty content. Try again using a different file format.`,
+          )
+          return
+        }
         const blobUrl = URL.createObjectURL(file)
         resolve({
           success: true,

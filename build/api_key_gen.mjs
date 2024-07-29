@@ -18,8 +18,11 @@ const updateProjectAPISecurityKey = async (appVersion, filePath) => {
     if (response.status === 'OK') {
       const { aes_key, sign_key } = response.data
       const fileContent = `
-export const APP_AES_ENCRYPTION_KEY = '${aes_key}'
-export const APP_SM3_HASH_KEY = '${sign_key}'
+export const APP_AES_ENCRYPTION_KEY =
+  '${aes_key}'
+export const APP_SM3_HASH_KEY =
+  '${sign_key}'
+
 `
       fs.writeFileSync(filePath, fileContent, 'utf8')
       console.log(`V[${appVersion}] API security key updated: \n`, fileContent)

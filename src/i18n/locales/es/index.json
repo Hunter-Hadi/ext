@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "El modelo más nuevo y avanzado de Google. Ofrece mayor velocidad, una ventana de contexto de token de 1M, seguridad mejorada y capacidades avanzadas en procesamiento de texto, código, imagen, audio y video.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 de OpenAI, optimizado para velocidad y eficiencia, sobresale en aplicaciones en tiempo real que requieren creatividad y razonamiento avanzado con tiempos de respuesta mejorados y salida consistente.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Experimenta el modelo de IA de código abierto más grande del mundo, que ofrece capacidades incomparables en conocimiento, razonamiento y soporte multilingüe. Desbloquea el poder de 405 mil millones de parámetros para tus proyectos más ambiciosos.",
-    "sidebar__ai_language__selector__button__tooltip": "Cambiar idioma de respuesta de IA"
+    "sidebar__ai_language__selector__button__tooltip": "Cambiar idioma de respuesta de IA",
+    "provider__llama__model__mistral_large_2__description": "El último modelo insignia de Mistral empuja los límites de velocidad y rendimiento. Con 123 mil millones de parámetros, Mistral Large 2 destaca en generación de código, matemáticas y razonamiento en docenas de idiomas. Ofrece alucinación mínima e impresionante soporte multilingüe para idiomas naturales y de programación.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Actualización para Mistral-Large-2 ilimitado",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Experimenta el modelo más avanzado de Mistral hasta ahora, que ofrece un rendimiento incomparable en generación de código, matemáticas y soporte multilingüe. Mistral Large 2 establece una nueva frontera en capacidades de IA con su ventana de contexto de 128k y alucinación mínima.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Accede a Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modelo insignia de próxima generación con 123 mil millones de parámetros y ventana de contexto de 128k",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacidades significativamente mejoradas en generación de código, matemáticas y razonamiento",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Soporte multilingüe mejorado para docenas de idiomas y más de 80 lenguajes de programación",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Mejora en capacidades de seguimiento de instrucciones y conversacionales"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

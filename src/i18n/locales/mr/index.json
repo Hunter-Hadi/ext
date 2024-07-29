@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Googleचा नवीनतम आणि सर्वाधिक प्रगत आवृत्ती. तो वेगाने दर, एक परावर्तनात्मक 1M टोकन संदर्भ विंडो, वाढवलेली सुरक्षा, आणि मजेदार क्षमतेसह टेक्स्ट, कोड, इमेज, ऑडिओ, आणि व्हिडिओ प्रोसेसिंगवर प्रगती देतो.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAIचा GPT-4, वेग आणि दक्षतेसाठी अनुकूलित, रियल-टाइम अनुप्रयोगांमध्ये रचनात्मकता आणि प्रगत तर्काची उत्कृष्टता दर्शवतो आणि संवेदनशील प्रतिसाद काळाच्या वेळांमध्ये आणि स्थिर प्रोडक्शनमध्ये उत्कृष्ट प्रदर्शन करतो.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "विश्वातील सर्वात मोठे ओपन-सोर्स AI मॉडेलचा अनुभव, ज्ञान, तर्क, आणि बहुभाषी समर्थनात अप्रतिम क्षमतांची पेशकश करणारा. आपल्या सर्वात अभिमानी प्रकल्पांसाठी 405 बिलियन पॅरामीटर्सची शक्ति उघडा.",
-    "sidebar__ai_language__selector__button__tooltip": "AI प्रतिसाद भाषा बदला"
+    "sidebar__ai_language__selector__button__tooltip": "AI प्रतिसाद भाषा बदला",
+    "provider__llama__model__mistral_large_2__description": "मिस्ट्रलच्या नवीनतम प्रमुख मॉडेलने गती आणि प्रदर्शनाच्या मर्यादा वाढविणारं. 123 अरब पॅरामीटर्ससह, मिस्ट्रल लार्ज 2 कोड जनरेशन, गणित आणि विचारात अनेक भाषांमध्ये अद्वितीयता दर्शवतो. ते न्यून हॉलुसिनेशन आणि प्राकृतिक आणि प्रोग्रामिंग भाषांसाठी आकर्षक बहुभाषिक समर्थन प्रदान करतो.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "अनियमित मिस्ट्रल-लार्ज-2साठी अपग्रेड करा",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "मिस्ट्रलच्या सर्वात उन्नत मॉडेलचा अनुभव करा, कोड जनरेशन, गणित आणि बहुभाषिक समर्थनात अद्वितीय प्रदर्शन प्रदान करतो. मिस्ट्रल लार्ज 2 त्याच्या 128k संदर्भ विंडो आणि न्यून हॉलुसिनेशनसह AI क्षमतेत एक नवीन सीमा स्थापित करतो.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "मिस्ट्रल-लार्ज-2 प्रवेश करा",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 अरब पॅरामीटर्स आणि 128k संदर्भ विंडोच्या सहाय्याने पुढील पीढीचा प्रमुख मॉडेल",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "कोड जनरेशन, गणित आणि विचारात कायमस्वरूपीत वाढलेल्या क्षमतेसह",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "अनेक भाषांसाठी आधुनिकीकृत बहुभाषिक समर्थन आणि 80+ कोडिंग भाषांसाठी सुधारित समर्थन",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "सुधारित निर्देशानुसारी आणि वार्ताळू क्षमतेसह"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -1,4 +1,5 @@
 import { TFunction } from 'i18next'
+import React from 'react'
 
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import { IArtTextToImageMetadata } from '@/features/art/types'

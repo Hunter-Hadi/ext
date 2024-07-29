@@ -88,6 +88,13 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       AIProvider: 'MAXAI_LLAMA',
       tag: 'Beta',
     },
+    {
+      mainPart: true,
+      label: 'Mistral-Large-2',
+      value: 'mistral-large-2',
+      AIProvider: 'MAXAI_MISTRAL',
+      tag: 'Beta',
+    },
     // smart-end
     // legacy-start
     {
@@ -225,6 +232,13 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       label: 'Llama-3.1-405B',
       value: 'llama-3.1-405b',
       AIProvider: 'MAXAI_LLAMA',
+      tag: 'Beta',
+    },
+    {
+      mainPart: true,
+      label: 'Mistral-Large-2',
+      value: 'mistral-large-2',
+      AIProvider: 'MAXAI_MISTRAL',
       tag: 'Beta',
     },
     // smart-end

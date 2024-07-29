@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Googles nyeste og mest avanserte modell. Den tilbyr raskere hastighet, et gjennombrudd på 1M token kontekstvindu, forbedret sikkerhet og avanserte muligheter innen tekst, kode, bilde, lyd og videobehandling.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAIs GPT-4, optimalisert for hastighet og effektivitet, utmerker seg i sanntidsprogrammer som krever kreativitet og avansert resonnering med forbedrede responstider og konsistent resultat.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Opplev verdens største åpen kildekode AI-modell, som tilbyr enestående evner innen kunnskap, resonnering og flerspråklig støtte. Lås opp kraften til 405 milliarder parametere for dine mest ambisiøse prosjekter.",
-    "sidebar__ai_language__selector__button__tooltip": "Endre AI-svar språk"
+    "sidebar__ai_language__selector__button__tooltip": "Endre AI-svar språk",
+    "provider__llama__model__mistral_large_2__description": "Mistrals nyeste flaggskipmodell presser grensene for hastighet og ytelse. Med 123 milliarder parametere, utmerker Mistral Large 2 seg i kodegenerering, matematikk og resonnering på tvers av dusinvis av språk. Den tilbyr minimal hallusinasjon og imponerende flerspråklig støtte for både naturlige og programmeringsspråk.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Oppgrader for ubegrenset Mistral-Large-2",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Opplev Mistrals mest avanserte modell hittil, som tilbyr enestående ytelse i kodegenerering, matematikk og flerspråklig støtte. Mistral Large 2 setter en ny grense for AI-evner med sitt 128k kontekstvindu og minimal hallusinasjon.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Få tilgang til Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Neste generasjons flaggskipmodell med 123 milliarder parametere og 128k kontekstvindu",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Betydelig forbedrede evner innen kodegenerering, matematikk og resonnering",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Forbedret flerspråklig støtte for dusinvis av språk og 80+ kodespråk",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Forbedret instruksjonsfølging og samtaleevner"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

@@ -31,6 +31,7 @@ const BEAUTIFY_PROVIDER_NAME: Record<IAIProviderType, string> = {
   MAXAI_DALLE: 'in_house',
   MAXAI_FREE: 'in_house',
   MAXAI_LLAMA: 'in_house',
+  MAXAI_MISTRAL: 'in_house',
   OPENAI: 'chatgpt_web_app',
   OPENAI_API: 'openai_api',
   BARD: 'gemini_web_app',

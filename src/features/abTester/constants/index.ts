@@ -12,6 +12,7 @@ export const UPDATE_VARIANT: IUpdateVariant[] = [
   'claude-3.5-sonnet',
   'gemini-1.5-pro',
   'llama-3.1-405b',
+  'mistral-large-2',
   'art',
   'summary',
   'instant-reply',
@@ -214,6 +215,37 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
       },
     ],
     learnMoreLink: 'https://www.maxai.me/docs/release-notes/llama-3-1-405b/',
+  },
+  // TODO ui出来修改配置
+  'mistral-large-2': {
+    image: getChromeExtensionAssetsURL(
+      '/images/activity/promotion-dialog-llama-3-1-405b.png',
+    ),
+    title: (t) =>
+      t('client:sidebar__promotion_dialog__mistral_large_2__content__title'),
+    descriptions: (t) => [
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__mistral_large_2__content_item1__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__mistral_large_2__content_item2__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__mistral_large_2__content_item3__description',
+        ),
+      },
+      {
+        description: t(
+          'client:sidebar__promotion_dialog__mistral_large_2__content_item4__description',
+        ),
+      },
+    ],
+    learnMoreLink: 'https://www.maxai.me/docs/release-notes/mistral-large-2/',
   },
   art: {
     image: getChromeExtensionAssetsURL(

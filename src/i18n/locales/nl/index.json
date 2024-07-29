@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google's nieuwste en meest geavanceerde model. Het biedt snellere snelheid, een baanbrekend 1M-tokencontextvenster, verbeterde veiligheid en geavanceerde mogelijkheden op het gebied van tekst, code, afbeelding, audio en videobewerking.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI's GPT-4, geoptimaliseerd voor snelheid en efficiëntie, blinkt uit in real-time toepassingen die creativiteit en geavanceerd redeneren vereisen met verbeterde responstijden en consistente output.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Ervaar 's werelds grootste open-source AI-model, met ongeëvenaarde mogelijkheden op het gebied van kennis, redeneren en meertalige ondersteuning. Ontgrendel de kracht van 405 miljard parameters voor uw meest ambitieuze projecten.",
-    "sidebar__ai_language__selector__button__tooltip": "Verander AI-antwoordtaal"
+    "sidebar__ai_language__selector__button__tooltip": "Verander AI-antwoordtaal",
+    "provider__llama__model__mistral_large_2__description": "Het nieuwste vlaggenschipmodel van Mistral verlegt de grenzen van snelheid en prestaties. Met 123 miljard parameters blinkt Mistral Large 2 uit in codegeneratie, wiskunde en redeneren in tientallen talen. Het biedt minimale hallucinatie en indrukwekkende ondersteuning voor meertaligheid voor zowel natuurlijke als programmeertalen.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Upgrade voor onbeperkte Mistral-Large-2",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Ervaar het meest geavanceerde model van Mistral tot nu toe, met ongeëvenaarde prestaties in codegeneratie, wiskunde en meertalige ondersteuning. Mistral Large 2 zet een nieuwe grens in AI-mogelijkheden met zijn 128k contextvenster en minimale hallucinatie.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Toegang tot Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Vlaggenschipmodel van de volgende generatie met 123 miljard parameters en 128k contextvenster",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Aanzienlijk verbeterde mogelijkheden op het gebied van codegeneratie, wiskunde en redeneren",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Verbeterde meertalige ondersteuning voor tientallen talen en 80+ programmeertalen",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Verbeterde instructieopvolging en conversatiemogelijkheden"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

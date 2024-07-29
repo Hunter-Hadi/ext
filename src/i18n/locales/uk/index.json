@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل۔ یہ تیزی سے سپیڈ، ایک توڑنے والا 1M ٹوکن کنٹیکسٹ ونڈو، بہتر سلامتی، اور متن، کوڈ، تصویر، آڈیو، اور ویڈیو پروسیسنگ میں ترقی یافتہ صلاحیتوں کا پیش کرتا ہے۔",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI کا GPT-4، تیزی اور کارگری میں معتبر ہے، خلاقیت اور ترقی یافتہ تجزیے کی ضرورت ہونے والے واقعی وقت کے اطلاقات میں بہتری اور مستقل خروجات کے ساتھ بہترین جواب دیتا ہے۔",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "دنیا کا سب سے بڑا آزاد ماڈل AI، جو علم، تجزیہ، اور بہت زبانی سپورٹ میں بے مثال صلاحیتوں پیش کرتا ہے۔ اپنے سب سے بڑے منصوبوں کے لیے 405 بلین پیرامیٹرز کی طاقت کو کھولیں۔",
-    "sidebar__ai_language__selector__button__tooltip": "AI جواب کی زبان تبدیل کریں"
+    "sidebar__ai_language__selector__button__tooltip": "AI جواب کی زبان تبدیل کریں",
+    "provider__llama__model__mistral_large_2__description": "Mistral کا تازہ ترین پرچم برانڈ میں رفتار اور کارکردگی کی حدوں کو بڑھاتا ہے۔ 123 بلین پیرامیٹرز کے ساتھ، Mistral Large 2 کوڈ جنریشن، ریاضی، اور دوزنوں زبانوں میں ترکیب کی عالمیت میں نمایاں ہے۔ یہ دونوں طبیعی اور پروگرامنگ زبانوں کے لیے کم توهم اور دلچسپ بہت زیادہ زبانی مدد فراہم کرتا ہے۔",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "لامبے عرصے کے لیے Mistral-Large-2 کو اپ گریڈ کریں",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Mistral کا سب سے ترقی یافتہ ماڈل تجربہ، کوڈ جنریشن، ریاضی، اور متعدد زبانی مدد میں بے مثال کارکردگی فراہم کرتا ہے۔ Mistral Large 2 اپنے 128k کنٹیکسٹ ونڈو اور کم توهم کے ساتھ AI کی صلاحیتوں میں ایک نیا سرحد قائم کرتا ہے۔",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Mistral-Large-2 تک رسائی حاصل کریں",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 بلین پیرامیٹرز اور 128k کنٹیکسٹ ونڈو کے ساتھ اگلا نسل کا پرچم برانڈ ماڈل",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "کوڈ جنریشن، ریاضی، اور ترکیب میں نمایاں بہتر کارکردگی",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "دوزنوں زبانوں اور 80+ کوڈنگ زبانوں کے لیے بہترین زبانی مدد",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "بہتر ہدایت پروری اور گفتگو کی صلاحیتیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

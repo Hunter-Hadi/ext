@@ -10,4 +10,5 @@ export const MAXAI_IN_HOUSE_AI_PROVIDERS: IAIProviderType[] = [
   'MAXAI_DALLE',
   'MAXAI_FREE',
   'MAXAI_LLAMA',
+  'MAXAI_MISTRAL',
 ]

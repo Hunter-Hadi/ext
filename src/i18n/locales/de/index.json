@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Googles neuestes und fortschrittlichstes Modell. Es bietet schnellere Geschwindigkeit, ein bahnbrechendes 1M Token-Kontextfenster, verbesserte Sicherheit und erweiterte Fähigkeiten in Text-, Code-, Bild-, Audio- und Videoverarbeitung.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAIs GPT-4, optimiert für Geschwindigkeit und Effizienz, glänzt in Echtzeit-Anwendungen, die Kreativität und fortgeschrittenes Denken mit verbesserten Reaktionszeiten und konsistenter Ausgabe erfordern.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Erleben Sie das weltweit größte Open-Source-KI-Modell, das unübertroffene Fähigkeiten in Wissen, Denken und mehrsprachiger Unterstützung bietet. Entfesseln Sie die Kraft von 405 Milliarden Parametern für Ihre ehrgeizigsten Projekte.",
-    "sidebar__ai_language__selector__button__tooltip": "Ändern Sie die Sprache der KI-Antwort"
+    "sidebar__ai_language__selector__button__tooltip": "Ändern Sie die Sprache der KI-Antwort",
+    "provider__llama__model__mistral_large_2__description": "Das neueste Flaggschiffmodell von Mistral stößt an die Grenzen von Geschwindigkeit und Leistung. Mit 123 Milliarden Parametern glänzt Mistral Large 2 in der Codegenerierung, Mathematik und Argumentation in Dutzenden von Sprachen. Es bietet minimale Halluzination und beeindruckende mehrsprachige Unterstützung für natürliche und Programmiersprachen.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Upgrade für unbegrenztes Mistral-Large-2",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Erleben Sie das fortschrittlichste Modell von Mistral, das unübertroffene Leistung in der Codegenerierung, Mathematik und mehrsprachige Unterstützung bietet. Mistral Large 2 setzt mit seinem 128k-Kontextfenster und minimaler Halluzination eine neue Grenze in den KI-Fähigkeiten.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Zugriff auf Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Flaggschiffmodell der nächsten Generation mit 123 Milliarden Parametern und 128k-Kontextfenster",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Deutlich verbesserte Fähigkeiten in der Codegenerierung, Mathematik und Argumentation",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Verbesserte mehrsprachige Unterstützung für Dutzende von Sprachen und 80+ Codiersprachen",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Verbesserte Anweisungsverfolgung und Konversationsfähigkeiten"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -1051,7 +1051,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google-ի նորակառավարված և ավելի առանձին մոդելը։ Այն առավել արագ է, ունի 1M պարագրաֆի պատուհան, բարդացումների ավելի անվտանգություն և առանձին համակարգչային համարում տեքստի, ծրագրի, պատկերի, ձայնային և տեսանյութերի մշակման համար։",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI-ի GPT-4, որը բարդացված է արագությունի և արդյունավետությունի համար, հասելի է ժամանակակից ծրագրերի համար, որոնք պատկերական եւ առանձին պատասխանում են բարդ հարցերի համար բարդացումներով ժամանակակից պատասխանումներով։",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Արտագրեք աշխատանքը աշխատանքների ամենամեծ բաց կոդավորման մոդելը, որը առանձին է աջակցում գիտելիքների, հարցերի եւ անբաժանելի աջակցությունը։ Բացեք 405 միլիարդ պարամետրով զարգացումների զորությունը ձեր ամենաամենասպասելի նախագծերի համար։",
-    "sidebar__ai_language__selector__button__tooltip": "Փոխել AI պատասխանի լեզուն"
+    "sidebar__ai_language__selector__button__tooltip": "Փոխել AI պատասխանի լեզուն",
+    "provider__llama__model__mistral_large_2__description": "Mistral-ի վերջին գլխավոր մոդելը սահմանները կարողացնում է արագությունը և արդյունավետությունը: 123 միլիարդ պարամետրով, Mistral Large 2-ը առաջարկում է ծածկագիրում, մաթեմատիկայում և հասկանաժողովում առավելագույն աջակցությամբ բարձր մակարդակի աջակցությամբ: Դրա միջոցով առաջարկվում է մինիմալ հալուցինացիա և համեմատաբար աջակցություն բարձր մակարդակի բնութագիրում նախագծի և ծրագրային լեզուների համար:",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Թարմացնել անսահմանակ Mistral-Large-2",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Արտահայտեք Mistral-ի ամենաառաջարկված մոդելը, որը առավել էժան արագությամբ ծածկագիրում, մաթեմատիկայում և աջակցությամբ բարձր մակարդակի աջակցությամբ: Mistral Large 2-ը սահմանում է նոր սահմանավարժություն ային համակարգային կամուցիչներով ու մինիմալ հալուցինացիա:",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Մուտք Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Հաջորդ սերնդի գլխավոր մոդել 123 միլիարդ պարամետրով և 128k կապերի պատուհանով",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Ավելի արագ կամուցիչներ ծածկագիրում, մաթեմատիկայում և հասկանաժողովում",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Բարձր մակարդակի աջակցություն դեսական լեզուների համար և 80+ ծրագրային լեզուների համար",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Բարելավում է հրամանային հետևություններում և խոսանումներում"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

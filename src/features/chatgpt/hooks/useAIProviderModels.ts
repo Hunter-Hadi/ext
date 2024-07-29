@@ -11,6 +11,7 @@ import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types
 import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import { MAXAI_LLAMA_MODELS } from '@/background/src/chat/MaxAILlamaChat/types'
+import { MAXAI_MISTRAL_MODELS } from '@/background/src/chat/MaxAIMistralChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { getRemoteAIProviderConfigCache } from '@/background/src/chat/OpenAIChat/utils'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
@@ -105,6 +106,7 @@ export const useAIProviderModelsMap = () => {
       MAXAI_DALLE: reverse(cloneDeep(MAXAI_IMAGE_GENERATE_MODELS)),
       MAXAI_FREE: reverse(cloneDeep(MAXAI_FREE_MODELS)),
       MAXAI_LLAMA: reverse(cloneDeep(MAXAI_LLAMA_MODELS)),
+      MAXAI_MISTRAL: reverse(cloneDeep(MAXAI_MISTRAL_MODELS)),
     }
   }, [
     whiteListModels,

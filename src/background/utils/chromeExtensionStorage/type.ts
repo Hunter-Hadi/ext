@@ -181,6 +181,9 @@ export type IThirdProviderSettings = {
   [AI_PROVIDER_MAP.MAXAI_LLAMA]: {
     model?: string
   }
+  [AI_PROVIDER_MAP.MAXAI_MISTRAL]: {
+    model?: string
+  }
   // Art provider
   [AI_PROVIDER_MAP.MAXAI_DALLE]: {
     model?: string

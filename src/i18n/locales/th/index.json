@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "โมเดลล่าสุดและทันสมัยที่สุดของ Google มีความเร็วสูงขึ้น หน้าต่างความสามารถในการตรวจจับบริบท 1 ล้านโทเคน ความปลอดภัยที่ปรับปรุงและความสามารถขั้นสูงที่รองรับการประมวลผลข้อความ โค้ด ภาพ เสียง และวิดีโอ",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 จาก OpenAI ถูกปรับแต่งให้มีความเร็วและประสิทธิภาพสูง โดดเด่นในการใช้ในแอปพลิเคชันแบบเรียลไทม์ที่ต้องการความคิดสร้างสรรค์และการเหตุผลขั้นสูงพร้อมเวลาตอบสนองที่ปรับปรุงและผลลัพธ์ที่สม่ำเสมอ",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "สัมผัสกับโมเดล AI โอเพ่นซอร์สที่ใหญ่ที่สุดของโลก มีความสามารถที่ไม่เหมือนใครในการรู้ความ การเหตุผล และการสนับสนุนหลายภาษา ปลดล็อคพลังของ 405 พันพารามิเตอร์สำหรับโครงการที่ท้าทายที่สุดของคุณ",
-    "sidebar__ai_language__selector__button__tooltip": "เปลี่ยนภาษาการตอบของ AI"
+    "sidebar__ai_language__selector__button__tooltip": "เปลี่ยนภาษาการตอบของ AI",
+    "provider__llama__model__mistral_large_2__description": "โมเดลธงชั้นนำล่าสุดของ Mistral ที่ผลักขอบเขตของความเร็วและประสิทธิภาพ ด้วยพารามิเตอร์ 123 พันล้าน  Mistral Large 2 โดดเด่นในการสร้างโค้ด คณิตศาสตร์ และการเหตุผลในหลายภาษา มีการสนับสนุนหลายภาษาที่น้อยลงและสนับสนุนที่ยอดเยี่ยมสำหรับทั้งภาษาธรรมชาติและภาษาโปรแกรม",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "อัพเกรดเพื่อใช้งาน Mistral-Large-2 ได้ไม่จำกัด",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "สัมผัสกับโมเดลที่ทันสมัยที่สุดของ Mistral ที่มอบประสิทธิภาพที่ไม่เคยมีมาก่อนในการสร้างโค้ด คณิตศาสตร์ และการสนับสนุนหลายภาษา  Mistral Large 2 ตั้งขีดจำกัดใหม่ในความสามารถของ AI ด้วยหน้าต่างข้อความ 128k และการสร้างภาพลวงต่อสู้ที่น้อยลง",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "เข้าถึง Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "โมเดลธงรุ่นใหม่พร้อมพารามิเตอร์ 123 พันล้านและหน้าต่างข้อความ 128k",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "ความสามารถที่ปรับปรุงอย่างมีนัยสำคัญในการสร้างโค้ด คณิตศาสตร์ และการเหตุผล",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "การสนับสนุนหลายภาษาที่ปรับปรุงสำหรับหลายภาษาและภาษาโค้ด 80+",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "ความสามารถในการตามคำสั่งและการสนทนาที่ปรับปรุง"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

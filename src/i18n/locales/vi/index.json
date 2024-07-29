@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Mô hình mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu mã thông báo đột phá, an toàn nâng cao và khả năng tiên tiến trên văn bản, mã, hình ảnh, âm thanh và xử lý video.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 của OpenAI, tối ưu hóa cho tốc độ và hiệu suất, xuất sắc trong các ứng dụng thời gian thực đòi hỏi sự sáng tạo và lý do tiên tiến với thời gian phản hồi nhanh hơn và đầu ra nhất quán.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Trải nghiệm mô hình trí tuệ nhân tạo mã nguồn mở lớn nhất thế giới, cung cấp khả năng vô song trong kiến thức, lý do và hỗ trợ đa ngôn ngữ. Mở khóa sức mạnh của 405 tỷ tham số cho các dự án táo bạo nhất của bạn.",
-    "sidebar__ai_language__selector__button__tooltip": "Thay đổi ngôn ngữ phản hồi AI"
+    "sidebar__ai_language__selector__button__tooltip": "Thay đổi ngôn ngữ phản hồi AI",
+    "provider__llama__model__mistral_large_2__description": "Mô hình đầu tàu mới nhất của Mistral đẩy ranh giới về tốc độ và hiệu suất. Với 123 tỷ tham số, Mistral Large 2 xuất sắc trong việc tạo mã, toán học và lập luận trên hàng chục ngôn ngữ. Nó cung cấp hỗ trợ đa ngôn ngữ tối thiểu và ấn tượng cho cả ngôn ngữ tự nhiên và lập trình.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Nâng cấp để sử dụng Mistral-Large-2 không giới hạn",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Trải nghiệm mô hình tiên tiến nhất của Mistral, cung cấp hiệu suất vượt trội trong việc tạo mã, toán học và hỗ trợ đa ngôn ngữ. Mistral Large 2 đặt một ranh giới mới trong khả năng trí tuệ nhân tạo với cửa sổ ngữ cảnh 128k và hiện tượng tối thiểu.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Truy cập Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Mô hình đầu tàu thế hệ tiếp theo với 123 tỷ tham số và cửa sổ ngữ cảnh 128k",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Khả năng cải thiện đáng kể trong việc tạo mã, toán học và lập luận",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Hỗ trợ đa ngôn ngữ nâng cao cho hàng chục ngôn ngữ và 80+ ngôn ngữ lập trình",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Cải thiện khả năng theo dõi hướng dẫn và khả năng trò chuyện"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

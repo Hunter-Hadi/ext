@@ -327,6 +327,18 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
           }}
         />
       )
+    // TODO ui出来要更改图标
+    case 'mistral-large-2':
+      return (
+        <MaxAIFreeIcon
+          sx={{
+            ...sx,
+            fontSize: size,
+            color: (t) =>
+              t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
+          }}
+        />
+      )
   }
 
   return null

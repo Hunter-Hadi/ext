@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Najnowszy i najbardziej zaawansowany model Google'a. Oferuje szybszą prędkość, przełomowe okno kontekstu 1M tokenów, zwiększone bezpieczeństwo oraz zaawansowane możliwości przetwarzania tekstu, kodu, obrazu, dźwięku i wideo.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 od OpenAI, zoptymalizowany pod kątem szybkości i efektywności, doskonale sprawdza się w aplikacjach czasu rzeczywistego wymagających kreatywności i zaawansowanego rozumowania z ulepszonymi czasami odpowiedzi i spójnym wynikiem.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Doświadcz największego na świecie otwartoźródłowego modelu AI, oferującego niezrównane możliwości w zakresie wiedzy, rozumowania i wsparcia wielojęzycznego. Odblokuj moc 405 miliardów parametrów dla swoich najbardziej ambitnych projektów.",
-    "sidebar__ai_language__selector__button__tooltip": "Zmień język odpowiedzi AI"
+    "sidebar__ai_language__selector__button__tooltip": "Zmień język odpowiedzi AI",
+    "provider__llama__model__mistral_large_2__description": "Najnowszy flagowy model Mistral przesuwa granice szybkości i wydajności. Z 123 miliardami parametrów Mistral Large 2 wyróżnia się w generowaniu kodu, matematyce i rozumowaniu w dziesiątkach języków. Oferuje minimalne halucynacje i imponujące wsparcie wielojęzyczne zarówno dla języków naturalnych, jak i programowania.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Aktualizacja na nieograniczony Mistral-Large-2",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Doświadcz najbardziej zaawansowanego modelu Mistrala, oferującego niezrównaną wydajność w generowaniu kodu, matematyce i wsparciu wielojęzycznym. Mistral Large 2 otwiera nową erę możliwości sztucznej inteligencji dzięki swojemu 128k oknu kontekstu i minimalnym halucynacjom.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Dostęp do Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Flagowy model następnej generacji z 123 miliardami parametrów i 128k oknem kontekstu",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Znacznie ulepszone możliwości w generowaniu kodu, matematyce i rozumowaniu",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Rozszerzone wsparcie wielojęzyczne dla dziesiątek języków i ponad 80 języków programowania",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Poprawione zdolności do śledzenia instrukcji i prowadzenia rozmów"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

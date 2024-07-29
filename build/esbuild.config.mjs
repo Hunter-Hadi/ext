@@ -197,7 +197,9 @@ async function esbuildConfig() {
     for (const { source, target } of sources) {
       let html = readFileSync(`${sourceDir}/${source}`, 'utf-8')
       if (isProduction) {
-        html = html.replace(`<script src='/react-devtools.js'></script>`, '')
+        html = html
+          .replace(`<script src='/react-devtools.js'></script>`, '')
+          .replace(`<script src="/react-devtools.js"></script>`, '')
       }
       if (!existsSync(target)) {
         mkdirSync(target, { recursive: true })
@@ -323,9 +325,12 @@ async function main() {
     mkdirSync(releasesDir)
   }
   if (
-    !await updateProjectAPISecurityKey(extensionVersion, 'src/features/security/constant/index.ts')
+    !(await updateProjectAPISecurityKey(
+      extensionVersion,
+      'src/features/security/constant/index.ts',
+    ))
   ) {
-    throw('updateProjectAPISecurityKey failed')
+    throw 'updateProjectAPISecurityKey failed'
     return
   }
   if (!isProduction) {

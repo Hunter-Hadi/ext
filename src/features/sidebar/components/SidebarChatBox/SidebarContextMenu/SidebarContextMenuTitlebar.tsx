@@ -81,7 +81,7 @@ const SidebarContextMenuTitlebar: FC<{
       </Stack>
 
       {/* immersive chat 中就不显示了 */}
-      <Stack direction={'row'} gap={'4px'} alignItems={'center'}>
+      <Stack direction={'row'} gap={'8px'} alignItems={'center'}>
         {!isImmersivePage && (
           <SidebarHistoryButton
             sx={{
@@ -102,15 +102,16 @@ const SidebarContextMenuTitlebar: FC<{
               onClick={onClose}
               sx={{
                 width: 'auto',
-                height: 20,
                 color: 'inherit',
                 padding: '3px',
+                marginLeft: '-4px',
                 marginRight: '-3px',
               }}
             >
               <CloseOutlined
                 sx={{
                   fontSize: 17,
+                  color: 'text.secondary',
                 }}
               />
             </TooltipIconButton>

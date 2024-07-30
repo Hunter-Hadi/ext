@@ -71,7 +71,6 @@ import {
 } from '@/features/video_popup/utils'
 import { getBrowserZoom, getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
-import FloatingContextMenuContinueInSidebarButton from './buttons/FloatingContextMenuContinueInSidebarButton'
 import ContextText from './ContextText'
 import ResizeAnchor from './ResizeAnchor'
 
@@ -697,7 +696,6 @@ const FloatingContextMenu: FC<{
 
                     {!loading && (
                       <>
-                        <FloatingContextMenuContinueInSidebarButton />
                         <MaxAIBetaFeatureWrapper
                           betaFeatureName={'voice_input'}
                         >

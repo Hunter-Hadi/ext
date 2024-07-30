@@ -63,6 +63,7 @@ const SidebarTabItem: React.FC<ISidebarTabItemProps> = (props) => {
         width: '100%',
         position: 'relative',
         borderRadius: 2,
+        whiteSpace: 'nowrap',
         color: active ? 'primary.main' : 'text.secondary',
         bgcolor: (t) =>
           active

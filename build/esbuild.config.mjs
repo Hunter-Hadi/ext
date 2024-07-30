@@ -197,7 +197,9 @@ async function esbuildConfig() {
     for (const { source, target } of sources) {
       let html = readFileSync(`${sourceDir}/${source}`, 'utf-8')
       if (isProduction) {
-        html = html.replace(`<script src='/react-devtools.js'></script>`, '')
+        html = html
+          .replace(`<script src='/react-devtools.js'></script>`, '')
+          .replace(`<script src="/react-devtools.js"></script>`, '')
       }
       if (!existsSync(target)) {
         mkdirSync(target, { recursive: true })

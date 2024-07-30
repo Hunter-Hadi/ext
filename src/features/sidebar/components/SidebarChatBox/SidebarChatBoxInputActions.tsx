@@ -20,13 +20,26 @@ import SidebarUsePromptButton from '@/features/contextMenu/components/FloatingCo
 import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message'
 import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
-import SidebarChatHistoryButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatHistoryButton'
 import SidebarChatVoiceInputButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatVoiceInputButton'
+import SidebarHistoryButton from '@/features/sidebar/components/SidebarChatBox/SidebarHistoryButton'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 import { getInputMediator } from '@/store/InputMediator'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+
+const actionsBtnColorSx: SxProps<Theme> = {
+  color: 'text.secondary',
+  borderColor: (t: Theme) => {
+    return t.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, 0.08)'
+      : 'rgba(0, 0, 0, 0.16)'
+  },
+  '&:hover': {
+    color: 'primary.main',
+    borderColor: 'primary.main',
+  },
+}
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
@@ -42,20 +55,6 @@ const SidebarChatBoxInputActions: FC<{
   const metaDataRef = useRef<any>({})
   const { maxAIBetaFeatures } = useMaxAIBetaFeatures()
   const { userSettings, setUserSettings } = useUserSettings()
-  const actionsBtnColorSxMemo = useMemo(() => {
-    return {
-      color: 'text.secondary',
-      borderColor: (t: Theme) => {
-        return t.palette.mode === 'dark'
-          ? 'rgba(255, 255, 255, 0.08)'
-          : 'rgba(0, 0, 0, 0.16)'
-      },
-      '&:hover': {
-        color: 'primary.main',
-        borderColor: 'primary.main',
-      },
-    } as SxProps
-  }, [])
 
   const isPromptLibraryIconButtonShow = useMemo(() => {
     return (
@@ -85,7 +84,6 @@ const SidebarChatBoxInputActions: FC<{
 
   useEffect(() => {
     const handleInputUpdate = (newInputValue: string, metaData: any) => {
-      console.log(metaData)
       if (metaData) {
         metaDataRef.current = metaData
       }
@@ -167,9 +165,9 @@ const SidebarChatBoxInputActions: FC<{
           !smoothConversationLoading && <ArtConversationalModeToggle />}
 
         {/* chat history btn */}
-        <SidebarChatHistoryButton
+        <SidebarHistoryButton
           sx={{
-            ...actionsBtnColorSxMemo,
+            ...actionsBtnColorSx,
             visibility: isChatHistoryIconButtonShow ? 'visible' : 'hidden',
             position: isChatHistoryIconButtonShow ? 'relative' : 'absolute',
             [`&.${buttonClasses.contained}`]: {
@@ -181,7 +179,7 @@ const SidebarChatBoxInputActions: FC<{
         {/* screenshot btn */}
         <SidebarScreenshotButton
           sx={{
-            ...actionsBtnColorSxMemo,
+            ...actionsBtnColorSx,
             visibility: isScreenShotIconButtonShow ? 'visible' : 'hidden',
             position: isScreenShotIconButtonShow ? 'relative' : 'absolute',
           }}
@@ -190,7 +188,7 @@ const SidebarChatBoxInputActions: FC<{
         {/* prompt library btn */}
         <PromptLibraryIconButton
           sx={{
-            ...actionsBtnColorSxMemo,
+            ...actionsBtnColorSx,
             visibility: isPromptLibraryIconButtonShow ? 'visible' : 'hidden',
             position: isPromptLibraryIconButtonShow ? 'relative' : 'absolute',
             [`&.${buttonClasses.contained}`]: {
@@ -208,7 +206,7 @@ const SidebarChatBoxInputActions: FC<{
         >
           <SidebarUsePromptButton
             sx={{
-              ...actionsBtnColorSxMemo,
+              ...actionsBtnColorSx,
               [`&.${buttonClasses.contained}`]: {
                 color: 'white',
               },
@@ -228,7 +226,7 @@ const SidebarChatBoxInputActions: FC<{
             <SidebarChatVoiceInputButton
               inputMediator='chatBoxInputMediator'
               sx={{
-                ...actionsBtnColorSxMemo,
+                ...actionsBtnColorSx,
                 [`&.${buttonClasses.contained}`]: {
                   color: 'white',
                 },

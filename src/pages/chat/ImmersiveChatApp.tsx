@@ -149,7 +149,6 @@ const ConversationWithSwitcher: FC<{
   const { updateSidebarConversationType } = useSidebarSettings()
   return (
     <ConversationList
-      disableModalPortal={false}
       conversationType={currentSidebarConversationType}
       sx={{
         flex: 1,

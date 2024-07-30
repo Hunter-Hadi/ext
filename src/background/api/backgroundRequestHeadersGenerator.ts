@@ -162,7 +162,10 @@ class BackgroundRequestHeadersGenerator {
         const jsonData: Record<string, any> = {}
         body.forEach((value, key) => {
           if (!(value instanceof File)) {
+            // 后端接收到的\n都变成了\r\n编码问题，前端统一转换为\r\n，否则会出现签名报错
             jsonData[key] = String(value)
+              .replace(/\r\n/g, '\n')
+              .replace(/\n/g, '\r\n')
           }
         })
         req_data = JSON.stringify(jsonData)

@@ -58,7 +58,10 @@ export const scrollToRange = (range: Range) => {
     }
     node = node.parentNode
   }
-  if (document.body.clientHeight > window.innerHeight) {
+  if (
+    document.body.clientHeight > window.innerHeight ||
+    !document.body.clientHeight
+  ) {
     scrollToElement(document.body, rangeRect, 'smooth')
   }
 }

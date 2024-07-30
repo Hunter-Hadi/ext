@@ -16,13 +16,12 @@ const maxAIBackgroundSafeFetch = async (
 ): Promise<Response> => {
   // 创建一个新的headers对象，并拷贝init中的headers
   const headers = new Headers({
-    'Content-Type': 'application/json',
     Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
+    ...(init?.body instanceof FormData
+      ? {}
+      : { 'Content-Type': 'application/json' }),
     ...init?.headers,
   })
-  if (init?.body && init.body instanceof FormData) {
-    headers.delete('Content-Type')
-  }
   if (requestHeadersTaskId && typeof input === 'string' && init?.body) {
     // 获取加密的token
     const encryptedHeaders =

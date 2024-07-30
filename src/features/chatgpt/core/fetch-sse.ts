@@ -4,6 +4,7 @@ import isEmpty from 'lodash-es/isEmpty'
 import maxAIBackgroundSafeFetch from '@/background/api/maxAIBackgroundSafeFetch'
 import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP, CHATGPT_WEBAPP_HOST } from '@/constants'
+import maxAIClientSafeFetch from '@/utils/maxAIClientSafeFetch'
 
 import { streamAsyncIterable } from './stream-async-inerable'
 
@@ -13,14 +14,17 @@ export const fetchSSE = async (
     onMessage: (message: string) => void
     provider: IAIProviderType
     taskId?: string
+    inClient?: boolean // 临时新增，后续拆出api packages会重新整理
   },
 ) => {
-  const { onMessage, ...fetchOptions } = options
-  const resp = await maxAIBackgroundSafeFetch(
-    resource,
-    fetchOptions,
-    fetchOptions.taskId,
-  )
+  const { onMessage, inClient, ...fetchOptions } = options
+  const resp = inClient
+    ? await maxAIClientSafeFetch(resource, fetchOptions)
+    : await maxAIBackgroundSafeFetch(
+        resource,
+        fetchOptions,
+        fetchOptions.taskId,
+      )
   console.log(resp, 'straming resp')
   if (!resp.ok) {
     const error = await resp.json().catch(() => ({}))

@@ -160,6 +160,8 @@ export const uploadMaxAIDocument = async (
   }
   // TODO fetch-sse有冗余，后续要拆出通用方法，chatgpt/core/fetch-sse searchWithAI/chatCore/chatgpt/core/fetch-sse
   await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/app/upload_document`, {
+    // TODO 加密请求前端上传的\n后端解码的时候变成了\r\n，目前等处理好后在恢复
+    // inClient: true,
     method: 'POST',
     headers: {
       Authorization: `Bearer ${accessToken}`,

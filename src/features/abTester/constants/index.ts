@@ -216,10 +216,9 @@ export const UPDATE_VARIANT_TEMPLATES: Record<
     ],
     learnMoreLink: 'https://www.maxai.me/docs/release-notes/llama-3-1-405b/',
   },
-  // TODO ui出来修改配置
   'mistral-large-2': {
     image: getChromeExtensionAssetsURL(
-      '/images/activity/promotion-dialog-llama-3-1-405b.png',
+      '/images/activity/promotion-dialog-mistral-large-2.png',
     ),
     title: (t) =>
       t('client:sidebar__promotion_dialog__mistral_large_2__content__title'),

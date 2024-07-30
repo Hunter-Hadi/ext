@@ -1022,6 +1022,123 @@ const MaxAILlama3AdvanceModelIcon: FC<SvgIconProps> = (props) => {
     </SvgIcon>
   )
 }
+
+const MistralLarge2Icon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <g clipPath='url(#clip0_4353_98172)'>
+          <path
+            d='M0 8C0 3.58172 3.58172 0 8 0H16C20.4183 0 24 3.58172 24 8V16C24 20.4183 20.4183 24 16 24H8C3.58172 24 0 20.4183 0 16V8Z'
+            fill='#F4F4F4'
+          />
+          <rect
+            x='4.20117'
+            y='17.0391'
+            width='3.35933'
+            height='3.36'
+            fill='#FE060F'
+          />
+          <rect x='3' y='3.59961' width='1.19976' height='16.8' fill='black' />
+          <rect
+            x='9.71973'
+            y='13.6797'
+            width='1.19976'
+            height='3.36'
+            fill='black'
+          />
+          <rect
+            x='16.4355'
+            y='13.6787'
+            width='1.19976'
+            height='6.72'
+            fill='black'
+          />
+          <rect
+            x='16.4355'
+            y='3.59961'
+            width='1.19976'
+            height='3.36'
+            fill='black'
+          />
+          <rect
+            x='13.0723'
+            y='6.95801'
+            width='1.19976'
+            height='3.36'
+            fill='black'
+          />
+          <rect
+            x='17.6406'
+            y='17.0391'
+            width='3.35933'
+            height='3.36'
+            fill='#FE060F'
+          />
+          <rect
+            x='4.20117'
+            y='13.6797'
+            width='3.35933'
+            height='3.36'
+            fill='#FE4A0A'
+          />
+          <rect
+            x='10.917'
+            y='13.6797'
+            width='3.35933'
+            height='3.36'
+            fill='#FE4A0A'
+          />
+          <rect
+            x='17.6406'
+            y='13.6797'
+            width='3.35933'
+            height='3.36'
+            fill='#FE4A0A'
+          />
+          <path
+            d='M4.20117 13.6793V10.3193H10.9128H14.2847H21.0001V13.6793H14.2765H10.9172H4.20117Z'
+            fill='#FE6F00'
+          />
+          <path
+            d='M4.20117 6.95801V10.318H10.9128V6.95801H4.20117Z'
+            fill='#FEA200'
+          />
+          <path
+            d='M14.2847 6.95801H21.0001V10.318H14.2847V6.95801Z'
+            fill='#FEA200'
+          />
+          <rect
+            x='4.20117'
+            y='3.59961'
+            width='3.35933'
+            height='3.36'
+            fill='#FECD00'
+          />
+          <rect
+            x='17.6406'
+            y='3.59961'
+            width='3.35933'
+            height='3.36'
+            fill='#FECD00'
+          />
+        </g>
+        <defs>
+          <clipPath id='clip0_4353_98172'>
+            <rect width='24' height='24' fill='white' />
+          </clipPath>
+        </defs>
+      </svg>
+    </SvgIcon>
+  )
+}
+
 export {
   AIChipIcon,
   BardIcon,
@@ -1045,6 +1162,7 @@ export {
   MaxAIFreeIcon,
   MaxAILlama3AdvanceModelIcon,
   MaxAILlama3FastModelIcon,
+  MistralLarge2Icon,
   OpenAIIcon,
   PoeIcon,
   SidePanelIcon,

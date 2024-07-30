@@ -534,10 +534,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // TODO ui出来替换配置
   MAXAI_ADVANCED_MODEL_MISTRAL_LARGE_2: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-llama-3-1-405b.png',
+      '/images/upgrade/max-ai-paid-model-mistral-large-2.png',
     )}`,
     modalImageUrl: getChromeExtensionAssetsURL(
-      '/images/upgrade/modal/llama-3-1-405b.png',
+      '/images/upgrade/modal/mistral-large-2.png',
     ),
     title: (t) =>
       t(

@@ -142,7 +142,6 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
             AIModelOption.AIProvider,
             AIModelOption.value,
           )
-          console.log('TEST', providerModelDetail, AIModelOption)
           return [
             AIModelOption.group && (
               <MenuItem

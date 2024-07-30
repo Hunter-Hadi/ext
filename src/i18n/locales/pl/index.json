@@ -908,7 +908,7 @@
     "pricing__plan_features__elite__feature1__item1__title": "Nieograniczone szybkie zapytania AI/miesiąc",
     "pricing__plan_features__elite__feature1__item1__tooltip": "Rozmawiaj z GPT-4o-mini, Claude-3-Haiku, Gemini-1.5-Flash, Llama-3.1-70B i innymi - wszystko w jednym miejscu.",
     "pricing__plan_features__elite__feature1__item2__title": "Nieograniczone inteligentne zapytania AI/miesiąc",
-    "pricing__plan_features__elite__feature1__item2__tooltip": "Rozmawiaj z GPT-4o, Claude-3.5-Sonnet, Gemini-1.5-Pro, Llama-3.1-405B i innymi - wszystko w jednym miejscu.\n\nZapewnij co najmniej 1 500 inteligentnych zapytań AI wysokiej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
+    "pricing__plan_features__elite__feature1__item2__tooltip": "Rozmawiaj z GPT-4o, Claude-3.5-Sonnet, Gemini-1.5-Pro, Llama-3.1-405B, Mistral-Large-2 i innymi — wszystko w jednym miejscu.\n\nZapewnij co najmniej 1 500 inteligentnych zapytań AI wysokiej prędkości każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
     "pricing__plan_features__elite__feature1__item3__title": "Nieograniczone zapytania AI obrazów/miesiąc",
     "pricing__plan_features__elite__feature1__item3__tooltip": "Szybko zamień swoje wizje w oszałamiające obrazy z DALL·E 3 — zwiększ swoją kreatywność i produktywność 10-krotnie.\n\nZapewnij co najmniej 1 500 szybkich zapytań AI obrazów każdego miesiąca. Po osiągnięciu limitu prędkość i jakość modelu mogą być zmniejszone.",
     "pricing__plan_features__elite__feature2__title": "Badaj 10 razy szybciej",

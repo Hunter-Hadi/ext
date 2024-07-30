@@ -908,7 +908,7 @@
     "pricing__plan_features__elite__feature1__item1__title": "每月無限快速AI查詢",
     "pricing__plan_features__elite__feature1__item1__tooltip": "在一個地方與 GPT-4o-mini、Claude-3-Haiku、Gemini-1.5-Flash、Llama-3.1-70B 等對話。",
     "pricing__plan_features__elite__feature1__item2__title": "每月無限智能AI查詢",
-    "pricing__plan_features__elite__feature1__item2__tooltip": "在一個地方與 GPT-4o、Claude-3.5-Sonnet、Gemini-1.5-Pro、Llama-3.1-405B 等進行對話。\n\n確保每月至少 1,500 次高速智能 AI 查詢。達到限制後，模型的速度和質量可能會降低。",
+    "pricing__plan_features__elite__feature1__item2__tooltip": "在一個地方與 GPT-4o、Claude-3.5-Sonnet、Gemini-1.5-Pro、Llama-3.1-405B、Mistral-Large-2 等進行對話，確保每月至少 1,500 次高速智能 AI 查詢。達到限制後，模型的速度和質量可能會降低。",
     "pricing__plan_features__elite__feature1__item3__title": "每月無限圖像AI查詢",
     "pricing__plan_features__elite__feature1__item3__tooltip": "使用DALL·E 3將您的想像轉化為令人驚嘆的圖像，提升您的創造力和生產力10倍。\n\n確保每月至少1,500次高速圖像AI查詢。達到限制後，模型的速度和質量可能會降低。",
     "pricing__plan_features__elite__feature2__title": "10 倍加快研究速度",

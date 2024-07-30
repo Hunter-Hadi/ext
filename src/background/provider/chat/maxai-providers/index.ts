@@ -119,8 +119,8 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
     }) || []
   const maxAIRequestMessage = chatMessageToMaxAIRequestMessage(question)
   const docId =
-    conversationDetail?.meta?.docId ||
-    conversationDetail?.meta.pageSummary?.docId
+    conversationDetail?.meta.pageSummary?.docId ||
+    conversationDetail?.meta?.docId
   let postBody: IMaxAIChatGPTBackendBodyType = Object.assign(
     {
       chat_history,

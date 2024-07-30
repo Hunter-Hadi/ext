@@ -908,7 +908,7 @@
     "pricing__plan_features__elite__feature1__item1__title": "Obegränsade snabba AI-förfrågningar/månad",
     "pricing__plan_features__elite__feature1__item1__tooltip": "Prata med GPT-4o-mini, Claude-3-Haiku, Gemini-1.5-Flash, Llama-3.1-70B och fler - allt på ett ställe.",
     "pricing__plan_features__elite__feature1__item2__title": "Obegränsade smarta AI-förfrågningar/månad",
-    "pricing__plan_features__elite__feature1__item2__tooltip": "Prata med GPT-4o, Claude-3.5-Sonnet, Gemini-1.5-Pro, Llama-3.1-405B, och mer - allt på ett ställe.\n\nSe till att ha minst 1 500 höghastighets smarta AI-förfrågningar varje månad. Efter att ha nått gränsen kan modellens hastighet och kvalitet minskas.",
+    "pricing__plan_features__elite__feature1__item2__tooltip": "Prata med GPT-4o, Claude-3.5-Sonnet, Gemini-1.5-Pro, Llama-3.1-405B, Mistral-Large-2, och mer - allt på ett ställe.\n\nSe till att ha minst 1 500 höghastighets smarta AI-förfrågningar varje månad. Efter att gränsen nåtts kan modellens hastighet och kvalitet minskas.",
     "pricing__plan_features__elite__feature1__item3__title": "Obegränsade bild AI-förfrågningar/månad",
     "pricing__plan_features__elite__feature1__item3__tooltip": "Omvandla snabbt dina visioner till fantastiska bilder med DALL·E 3 - 10x din kreativitet och produktivitet.\n\nSäkerställ minst 1 500 höghastighets bild AI-förfrågningar varje månad. Efter att gränsen nåtts kan modellens hastighet och kvalitet minskas.",
     "pricing__plan_features__elite__feature2__title": "Forska 10 gånger snabbare",

@@ -69,7 +69,7 @@ const SmartAIUsageQueriesItem: FC<ISmartAIUsageQueriesItemProps> = ({
             primary={t('quota_usage_card:category__advanced_text')}
             secondary={
               isUnlimited
-                ? 'GPT-4o & Claude-3.5-Sonnet & Gemini-1.5-Pro & Llama-3.1-405B'
+                ? 'GPT-4o & Claude-3.5-Sonnet & Gemini-1.5-Pro & Llama-3.1-405B & Mistral-Large-2'
                 : 'GPT-4o'
             }
           />

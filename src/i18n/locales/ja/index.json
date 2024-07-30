@@ -908,7 +908,7 @@
     "pricing__plan_features__elite__feature1__item1__title": "毎月無制限の高速AIクエリ",
     "pricing__plan_features__elite__feature1__item1__tooltip": "GPT-4o-mini、Claude-3-Haiku、Gemini-1.5-Flash、Llama-3.1-70Bなど、すべて1か所で話す。",
     "pricing__plan_features__elite__feature1__item2__title": "毎月無制限のスマートAIクエリ",
-    "pricing__plan_features__elite__feature1__item2__tooltip": "GPT-4o、Claude-3.5-Sonnet、Gemini-1.5-Pro、Llama-3.1-405Bなど、すべてのAIを1か所で話す。\n\n毎月少なくとも1,500回の高速スマートAIクエリを確保します。制限に達した後、モデルの速度と品質が低下する可能性があります。",
+    "pricing__plan_features__elite__feature1__item2__tooltip": "GPT-4o、Claude-3.5-Sonnet、Gemini-1.5-Pro、Llama-3.1-405B、Mistral-Large-2 など、すべてのものを1か所で話す。\n\n毎月少なくとも1,500回の高速スマートAIクエリを確保します。制限に達した後、モデルの速度と品質が低下する可能性があります。",
     "pricing__plan_features__elite__feature1__item3__title": "毎月無制限の画像AIクエリ",
     "pricing__plan_features__elite__feature1__item3__tooltip": "DALL·E 3を使用して、ビジョンを見事な画像に迅速に変換し、創造性と生産性を10倍にします。\n\n毎月少なくとも1,500回の高速画像AIクエリを確保します。上限に達すると、モデルの速度と品質が低下する可能性があります。",
     "pricing__plan_features__elite__feature2__title": "10倍速の研究",

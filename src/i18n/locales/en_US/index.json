@@ -692,7 +692,7 @@
     "pricing__plan_features__elite__feature1__item1__title": "Unlimited fast AI queries/month",
     "pricing__plan_features__elite__feature1__item1__tooltip": "Talk to GPT-4o-mini, Claude-3-Haiku, Gemini-1.5-Flash, Llama-3.1-70B, and more – all in one place.",
     "pricing__plan_features__elite__feature1__item2__title": "Unlimited smart AI queries/month",
-    "pricing__plan_features__elite__feature1__item2__tooltip": "Talk to GPT-4o, Claude-3.5-Sonnet, Gemini-1.5-Pro, Llama-3.1-405B, and more — all in one place.\n\nEnsure at least 1,500 high-speed smart AI queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
+    "pricing__plan_features__elite__feature1__item2__tooltip": "Talk to GPT-4o, Claude-3.5-Sonnet, Gemini-1.5-Pro, Llama-3.1-405B, Mistral-Large-2, and more — all in one place.\n\nEnsure at least 1,500 high-speed smart AI queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
     "pricing__plan_features__elite__feature1__item3__title": "Unlimited image AI queries/month",
     "pricing__plan_features__elite__feature1__item3__tooltip": "Rapidly turn your visions into stunning images with DALL·E 3 — 10x your creativity and productivity.\n\nEnsure at least 1,500 high-speed image AI queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
     "pricing__plan_features__elite__feature2__title": "Research 10x faster",

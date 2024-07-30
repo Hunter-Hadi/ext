@@ -908,7 +908,7 @@
     "pricing__plan_features__elite__feature1__item1__title": "Piiramatud kiired AI päringud/kuu",
     "pricing__plan_features__elite__feature1__item1__tooltip": "Räägi GPT-4o-mini, Claude-3-Haiku, Gemini-1.5-Flash, Llama-3.1-70B ja paljude teistega - kõik ühes kohas.",
     "pricing__plan_features__elite__feature1__item2__title": "Piiramatud nutikad AI päringud/kuu",
-    "pricing__plan_features__elite__feature1__item2__tooltip": "Räägi GPT-4o, Claude-3.5-Sonnet, Gemini-1.5-Pro, Llama-3.1-405B ja paljude teistega - kõik ühes kohas.\n\nTaga vähemalt 1,500 kõrge kiirusega nutikat AI päringut iga kuu. Piiranguni jõudmisel võib mudeli kiirus ja kvaliteet väheneda.",
+    "pricing__plan_features__elite__feature1__item2__tooltip": "Räägi GPT-4o, Claude-3.5-Sonnet, Gemini-1.5-Pro, Llama-3.1-405B, Mistral-Large-2 ja paljude teistega - kõik ühes kohas.\n\nTaga vähemalt 1,500 kõrge kiirusega nutikat AI päringut iga kuu. Piirini jõudmisel võib mudeli kiirus ja kvaliteet väheneda.",
     "pricing__plan_features__elite__feature1__item3__title": "Piiramatud pildi AI päringud/kuu",
     "pricing__plan_features__elite__feature1__item3__tooltip": "Muuda oma visioonid kiiresti vapustavateks piltideks DALL·E 3 abil — 10x oma loovust ja tootlikkust.\n\nTaga vähemalt 1,500 kõrge kiirusega pildi AI päringut iga kuu. Piirangu saavutamisel võib mudeli kiirus ja kvaliteet väheneda.",
     "pricing__plan_features__elite__feature2__title": "Uurige 10 korda kiiremini",

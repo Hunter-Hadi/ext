@@ -11,6 +11,7 @@ import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types
 import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import { MAXAI_LLAMA_MODELS } from '@/background/src/chat/MaxAILlamaChat/types'
+import { MAXAI_MISTRAL_MODELS } from '@/background/src/chat/MaxAIMistralChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import {
@@ -176,6 +177,9 @@ export const defaultChromeExtensionLocalStorage =
         },
         [AI_PROVIDER_MAP.MAXAI_LLAMA]: {
           model: MAXAI_LLAMA_MODELS[0].value,
+        },
+        [AI_PROVIDER_MAP.MAXAI_MISTRAL]: {
+          model: MAXAI_MISTRAL_MODELS[0].value,
         },
       },
     }

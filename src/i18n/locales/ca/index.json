@@ -1037,7 +1037,7 @@
     "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Longitud de context ampliada: 128K tokens per a casos d'ús avançats.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Rendiment d'avantguarda: Coneixement general, capacitat de direcció i matemàtiques.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Multilingüe: afegiu suport a través de 8 idiomes.",
-    "permission__pricing_hook__fast_ai_usage__free__description": "Límit de consultes d'IA gratuïtes superat. Rebràs més consultes d'IA gratuïtes demà. Millora ara per desbloquejar l'ús il·limitat d'IA immediatament.",
+    "permission__pricing_hook__fast_ai_usage__free__description": "Millora ara per desbloquejar l'ús il·limitat d'IA immediatament.",
     "permission__pricing_hook__fast_ai_usage__paid__description": "S'ha superat el límit de consultes d'IA. Rebràs més consultes d'IA el mes vinent. Millora ara per desbloquejar l'ús il·limitat d'IA immediatament.",
     "permission__pricing_hook__smart_ai_usage__free__description": "Millora ara per desbloquejar l'ús il·limitat d'IA immediatament.",
     "permission__pricing_hook__smart_ai_usage__paid__description": "S'ha superat el límit de consultes d'IA. Rebràs més consultes d'IA el mes vinent. Millora ara per desbloquejar l'ús il·limitat d'IA immediatament.",
@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "El model més nou i avançat de Google. Ofereix una velocitat més ràpida, una finestra de context de 1M de tokens, seguretat millorada i capacitats avançades en el processament de text, codi, imatge, àudio i vídeo.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "El GPT-4 d'OpenAI, optimitzat per a la velocitat i l'eficiència, destaca en aplicacions en temps real que requereixen creativitat i raonament avançat amb temps de resposta millorats i sortida consistent.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Experimenta el model d'IA de codi obert més gran del món, que ofereix capacitats sense precedents en coneixement, raonament i suport multilingüe. Desbloqueja el poder de 405 mil milions de paràmetres per als teus projectes més ambiciosos.",
-    "sidebar__ai_language__selector__button__tooltip": "Canvia l'idioma de resposta de l'IA"
+    "sidebar__ai_language__selector__button__tooltip": "Canvia l'idioma de resposta de l'IA",
+    "provider__llama__model__mistral_large_2__description": "El darrer model insígnia de Mistral empeny els límits de la velocitat i el rendiment. Amb 123 mil milions de paràmetres, Mistral-Large-2 destaca en la generació de codi, matemàtiques i raonament en desenes de llengües. Ofereix una al·lucinació mínima i un impressionant suport multilingüe tant per a llengües naturals com de programació.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Millora per a Mistral-Large-2 il·limitat",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Experimenta el model més avançat de Mistral, que ofereix un rendiment sense precedents en la generació de codi, matemàtiques i suport multilingüe. Mistral-Large-2 marca una nova frontera en les capacitats d'IA amb la seva finestra de context de 128k i una mínima al·lucinació.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Accedeix a Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Model insígnia de nova generació amb 123 bilions de paràmetres i finestra de context de 128k",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacitats significativament millorades en la generació de codi, matemàtiques i raonament",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Suport multilingüe millorat per a diverses llengües i més de 80 llengües de programació",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Millora en les capacitats de seguir instruccions i conversar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

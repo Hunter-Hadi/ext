@@ -187,6 +187,10 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       backendAPI = 'get_llama_response'
       break
     }
+    case 'MAXAI_MISTRAL': {
+      backendAPI = 'get_mistral_response'
+      break
+    }
     case 'MAXAI_DALLE': {
       // 如果能找到system的对话，就是自然语言转成生成图片的prompt
       if (chat_history.find((history) => history.role === 'system')) {

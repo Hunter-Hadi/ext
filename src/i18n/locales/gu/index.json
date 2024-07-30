@@ -1037,7 +1037,7 @@
     "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "વિસ્તારિત સંદર્ભ લંબાઈ: 128K ટોકન્સ માટે ઉન્નત ઉપયોગ કેસ.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "સ્ટેટ-ઓફ-દ-આર્ટ પ્રદર્શન: જનરલ નોલેજ, સ્ટીરેબિલિટી, અને ગણિત.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "બહુભાષી: 8 ભાષાઓ પર સપોર્ટ ઉમેરો.",
-    "permission__pricing_hook__fast_ai_usage__free__description": "મફત AI પ્રશ્ન મર્યાદા પાર કરી ગઈ. તમે આવતાં વધુ મફત AI પ્રશ્નો મેળવશો. તક્ષણે અનલૉક કરવા માટે તરત અપગ્રેડ કરો.",
+    "permission__pricing_hook__fast_ai_usage__free__description": "તક કરો અનલોક અનલિમિટેડ એઆઈ વપરાશ તક તુરંત.",
     "permission__pricing_hook__fast_ai_usage__paid__description": "AI પ્રશ્ન મર્યાદા પાર કરી ગઈ. તમે આવતાં વધુ AI પ્રશ્નો મેળવશો. તક્ષણે અનલૉક કરવા માટે તરત અપગ્રેડ કરો.",
     "permission__pricing_hook__smart_ai_usage__free__description": "તક્ષણે અનલૉક કરવા માટે તરત અપગ્રેડ કરો.",
     "permission__pricing_hook__smart_ai_usage__paid__description": "AI પ્રશ્ન મર્યાદા પાર કરી ગઈ. તમે આવતાં વધુ AI પ્રશ્નો મેળવશો. તક્ષણે અનલૉક કરવા માટે તરત અપગ્રેડ કરો.",
@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Googleનું નવું અને સૌથી એડવાન્સ્ડ મોડેલ. તે ઝડપી ગતિ, એક પ્રવેશદ્વાર 1M ટોકન સંદર્ભ વિન્ડો, વધુ સુરક્ષા, અને ટેક્સ્ટ, કોડ, ચિત્ર, ઓડિયો, અને વિડિયો પ્રોસેસિંગમાં એડવાન્સ્ડ સામર્થ્યો પૂરૂ કરે છે.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAIનું GPT-4, ઝડપી અને દક્ષતા માટે ઓપ્ટિમાઇઝ કરેલ, સારવાર કરેલ છે જે રિઅલ-ટાઇમ એપ્લિકેશન્સમાં રચનાત્મકતા અને એડવાન્સ્ડ રીઝનિંગ જરૂર પડે છે જેની સુધારેલી પ્રતિસાદ સમય અને સતત આઉટપુટને વધારે પ્રદાન કરે છે.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "વિશ્વનું સૌથી મોટું ઓપન-સોર્સ AI મોડેલનું અનુભવ, જે જ્ઞાન, રીઝનિંગ, અને બહુભાષી સપોર્ટમાં અનપ્રાણ સામર્થ્યો પૂરૂ કરે છે. 405 બિલિયન પેરામીટર્સની શક્તિ તમારા સૌથી વિશાળ પ્રોજેક્ટ્સ માટે અનલૉક કરો.",
-    "sidebar__ai_language__selector__button__tooltip": "એઆઈ પ્રતિસાદ ભાષા બદલો"
+    "sidebar__ai_language__selector__button__tooltip": "એઆઈ પ્રતિસાદ ભાષા બદલો",
+    "provider__llama__model__mistral_large_2__description": "મિસ્ટ્રાલનો નવો ફ્લેગશિપ મોડલ ઝડપ અને પ્રદર્શનના મર્યાદાઓને પ્રવેશ કરે છે. 123 અબ્યાસકોની સાથે, મિસ્ટ્રાલ-લાર્જ-2 કોડ જનરેશન, ગણિત અને રીઝનિંગમાં અનેક ભાષાઓમાં માટે માન્યતા આપે છે. તે નેચરલ અને પ્રોગ્રામિંગ ભાષાઓ માટે ન્યૂન હેલ્યુસિનેશન અને આકર્ષક બહુભાષી સપોર્ટ પ્રદાન કરે છે.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "અનલિમિટેડ મિસ્ટ્રલ-લાર્જ-2 માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "મિસ્ટ્રાલની સૌથી અગ્રણી મોડલની અનુભવો, કોડ જનરેશન, ગણિત અને બહુભાષી સપોર્ટમાં અનુલેપનાર કામગીરી પૂરૂ કરવાની સૌથી અગ્રણી મોડલ છે. મિસ્ટ્રાલ-લાર્જ-2 તેના 128k સંદર્ભ વિન્ડો અને ન્યૂન હેલ્યુસિનેશન સાથે AI સામર્થ્યમાં નવો સીમાં સ્થાપવે છે.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "મિસ્ટ્રલ-લાર્જ-2 એક્સેસ કરો",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 અબ્યાસકોની સાથે અગલા પીઢીનું ફ્લેગશિપ મોડલ અને 128k સંદર્ભ વિન્ડો",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "કોડ જનરેશન, ગણિત અને રીઝનિંગમાં સારી પ્રદર્શનની સુધારા",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "અનેક ભાષાઓ અને 80+ કોડિંગ ભાષાઓ માટે વધુમાંથી વધુ બહુભાષી આધારની સપોર્ટ",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "સુધારેલી નિર્દેશિકા અને સંवાદાત્મક સામર્થ્ય"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

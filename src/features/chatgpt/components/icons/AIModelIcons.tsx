@@ -19,6 +19,7 @@ import {
   MaxAIFreeIcon,
   MaxAILlama3AdvanceModelIcon,
   MaxAILlama3FastModelIcon,
+  MistralLarge2Icon,
 } from '@/components/CustomIcon'
 import { isThirdPartyAIProvider } from '@/features/chatgpt'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
@@ -319,6 +320,17 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
     case 'mythomist-7b':
       return (
         <MaxAIFreeIcon
+          sx={{
+            ...sx,
+            fontSize: size,
+            color: (t) =>
+              t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
+          }}
+        />
+      )
+    case 'mistral-large-2':
+      return (
+        <MistralLarge2Icon
           sx={{
             ...sx,
             fontSize: size,

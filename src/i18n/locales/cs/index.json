@@ -1037,7 +1037,7 @@
     "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Rozšířená délka kontextu: 128K tokenů pro pokročilé použití.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Výkon na špičkové úrovni: Obecné znalosti, ovladatelnost a matematika.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Vícejazyčný: podpora v 8 jazycích.",
-    "permission__pricing_hook__fast_ai_usage__free__description": "Překročen bezplatný limit dotazů AI. Zítra obdržíte více bezplatných dotazů AI. Upgradujte nyní pro okamžité odemčení neomezeného využití AI.",
+    "permission__pricing_hook__fast_ai_usage__free__description": "Okamžitě upgradujte a odemkněte neomezené využití umělé inteligence.",
     "permission__pricing_hook__fast_ai_usage__paid__description": "Překročen limit dotazů AI. Příští měsíc obdržíte více dotazů AI. Upgradujte nyní pro okamžité odemčení neomezeného využití AI.",
     "permission__pricing_hook__smart_ai_usage__free__description": "Upgradujte nyní pro okamžité odemčení neomezeného využití AI.",
     "permission__pricing_hook__smart_ai_usage__paid__description": "Překročen limit dotazů AI. Příští měsíc obdržíte více dotazů AI. Upgradujte nyní pro okamžité odemčení neomezeného využití AI.",
@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Nejnovější a nejvyspělejší model od Googlu. Nabízí rychlejší rychlost, průlomové okno kontextu s 1M tokeny, zlepšenou bezpečnost a pokročilé schopnosti v textu, kódu, obrazech, zvuku a zpracování videa.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 od OpenAI, optimalizovaný pro rychlost a efektivitu, exceluje v reálných aplikacích vyžadujících kreativitu a pokročilé úsudky s vylepšenými časy odezvy a konzistentními výstupy.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Zažijte největší open-source model AI na světě, nabízející nepřekonatelné schopnosti v oblasti znalostí, úsudku a podpory vícejazyčnosti. Odblokujte sílu 405 miliard parametrů pro vaše nejambicióznější projekty.",
-    "sidebar__ai_language__selector__button__tooltip": "Změnit jazyk odpovědi AI"
+    "sidebar__ai_language__selector__button__tooltip": "Změnit jazyk odpovědi AI",
+    "provider__llama__model__mistral_large_2__description": "Nejnovější vlajkový model Mistralu posouvá hranice rychlosti a výkonu. S 123 miliardami parametrů Mistral-Large-2 exceluje v generování kódu, matematice a logice napříč desítkami jazyků. Nabízí minimální halucinace a impozantní podporu vícejazyčnosti pro přirozené i programovací jazyky.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Upgrade pro neomezený Mistral-Large-2",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Zažijte nejvyspělejší model Mistral dosud, nabízející nepřekonatelný výkon v generování kódu, matematice a podpoře vícejazyčnosti. Mistral-Large-2 nastavuje novou hranici v možnostech AI s oknem kontextu 128k a minimální halucinací.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Přístup k Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Vlajkový model nové generace s 123 miliardami parametrů a 128k oknem kontextu",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Výrazně zlepšené schopnosti v generování kódu, matematice a logice",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Vylepšená podpora vícejazyčnosti pro desítky jazyků a 80+ programovacích jazyků",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Zlepšené schopnosti následování instrukcí a konverzační schopnosti"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

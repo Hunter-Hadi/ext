@@ -1037,7 +1037,7 @@
     "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "확장된 컨텍스트 길이: 고급 사용 사례를 위한 128K 토큰.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "최신 기술 성능: 일반 지식, 조종성 및 수학.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "다국어 지원: 8개 언어로 지원 추가.",
-    "permission__pricing_hook__fast_ai_usage__free__description": "무료 AI 쿼리 한도 초과. 내일 더 많은 무료 AI 쿼리를 받게 됩니다. 지금 업그레이드하여 즉시 무제한 AI 사용을 잠금 해제하세요.",
+    "permission__pricing_hook__fast_ai_usage__free__description": "즉시 무제한 AI 사용을 잠금 해제하려면 지금 업그레이드하세요.",
     "permission__pricing_hook__fast_ai_usage__paid__description": "AI 쿼리 한도 초과. 다음 달에 더 많은 AI 쿼리를 받게 됩니다. 지금 업그레이드하여 즉시 무제한 AI 사용을 잠금 해제하세요.",
     "permission__pricing_hook__smart_ai_usage__free__description": "즉시 무제한 AI 사용을 잠금 해제하세요.",
     "permission__pricing_hook__smart_ai_usage__paid__description": "AI 쿼리 한도 초과. 다음 달에 더 많은 AI 쿼리를 받게 됩니다. 지금 업그레이드하여 즉시 무제한 AI 사용을 잠금 해제하세요.",
@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google의 최신 및 가장 고급 모델. 빠른 속도, 1M 토큰 컨텍스트 창, 향상된 안전성 및 텍스트, 코드, 이미지, 오디오 및 비디오 처리 영역에서 고급 기능을 제공합니다.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI의 GPT-4, 속도와 효율성을 최적화하여 창의성과 고급 추론이 필요한 실시간 응용 프로그램에서 우수한 성과를 내며 응답 시간과 일관된 출력을 향상시킵니다.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "세계에서 가장 큰 오픈 소스 AI 모델인 Llama 3.1 405b를 경험해보세요. 지식, 추론 및 다국어 지원 영역에서 비교할 수 없는 능력을 제공합니다. 4050억 개의 매개변수로 가장 야심찬 프로젝트의 성능을 끌어올립니다.",
-    "sidebar__ai_language__selector__button__tooltip": "AI 응답 언어 변경"
+    "sidebar__ai_language__selector__button__tooltip": "AI 응답 언어 변경",
+    "provider__llama__model__mistral_large_2__description": "Mistral의 최신 플래그십 모델은 속도와 성능의 경계를 넘어섭니다. 1230억 개의 매개변수로, Mistral-Large-2는 수십 개의 언어에서 코드 생성, 수학 및 추론에 뛰어납니다. 최소한의 환각과 자연 및 프로그래밍 언어에 대한 인상적인 다국어 지원을 제공합니다.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "무제한 Mistral-Large-2로 업그레이드",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Mistral의 가장 고급 모델을 경험해보세요. 코드 생성, 수학 및 다국어 지원에서 뛰어난 성능을 제공합니다. Mistral-Large-2는 128k 컨텍스트 창과 최소한의 환각으로 AI 능력의 새로운 지평을 엽니다.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Mistral-Large-2에 액세스",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 억 개의 매개변수와 128k 컨텍스트 창을 갖춘 차세대 플래그십 모델",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "코드 생성, 수학 및 추론 능력이 크게 향상됨",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "수십 개의 언어 및 80개 이상의 코딩 언어에 대한 향상된 다국어 지원",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "개선된 지시 따르기 및 대화 능력"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

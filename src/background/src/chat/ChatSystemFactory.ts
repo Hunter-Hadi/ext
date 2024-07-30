@@ -16,6 +16,7 @@ import {
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
 import { MaxAILlamaChatProvider } from '@/background/provider/chat/maxai-providers/MaxAILlamaChatProvider'
+import { MaxAIMistralChatProvider } from '@/background/provider/chat/maxai-providers/MaxAIMistralChatProvider'
 import { BardChat } from '@/background/src/chat/BardChat'
 import { BingChat } from '@/background/src/chat/BingChat'
 import { ClaudeWebappChat } from '@/background/src/chat/ClaudeWebappChat'
@@ -77,6 +78,9 @@ export default class ChatSystemFactory {
     const maxAILlamaAdapter = new ChatAdapter(
       new MaxAILlamaChatProvider(new MaxAIChat()),
     )
+    const maxAIMistralAdapter = new ChatAdapter(
+      new MaxAIMistralChatProvider(new MaxAIChat()),
+    )
     chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
     chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
     chatSystem.addAdapter(
@@ -92,6 +96,7 @@ export default class ChatSystemFactory {
     chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_GEMINI, maxAIGeminiAdapter)
     chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_DALLE, maxAIArtAdapter)
     chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_LLAMA, maxAILlamaAdapter)
+    chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_MISTRAL, maxAIMistralAdapter)
     return chatSystem
   }
   getChatSystem(conversationId: string) {

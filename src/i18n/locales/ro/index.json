@@ -1037,7 +1037,7 @@
     "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Lungimea contextului extinsă: 128K de tokeni pentru cazuri de utilizare avansate.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Performanță de ultimă generație: Cunoștințe generale, direcționabilitate și matematică.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Multilingv: adăugați suport pentru 8 limbi.",
-    "permission__pricing_hook__fast_ai_usage__free__description": "Limita gratuită de interogări AI depășită. Veți primi mai multe interogări AI gratuite mâine. Faceți upgrade acum pentru a debloca utilizarea nelimitată a AI imediat.",
+    "permission__pricing_hook__fast_ai_usage__free__description": "Faceți upgrade acum pentru a debloca utilizarea nelimitată a AI imediat.",
     "permission__pricing_hook__fast_ai_usage__paid__description": "Limita de interogări AI depășită. Veți primi mai multe interogări AI luna viitoare. Faceți upgrade acum pentru a debloca utilizarea nelimitată a AI imediat.",
     "permission__pricing_hook__smart_ai_usage__free__description": "Faceți upgrade acum pentru a debloca utilizarea nelimitată a AI imediat.",
     "permission__pricing_hook__smart_ai_usage__paid__description": "Limita de interogări AI depășită. Veți primi mai multe interogări AI luna viitoare. Faceți upgrade acum pentru a debloca utilizarea nelimitată a AI imediat.",
@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Cel mai nou și avansat model Google. Oferă viteză mai mare, o fereastră de context de 1M de tokeni, siguranță îmbunătățită și capabilități avansate în procesarea textului, codului, imaginii, audio și video.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 de la OpenAI, optimizat pentru viteză și eficiență, excelând în aplicații în timp real care necesită creativitate și raționament avansat cu timpi de răspuns îmbunătățiți și ieșiri consistente.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Experimentează cel mai mare model AI open-source din lume, oferind capabilități fără precedent în cunoștințe, raționament și suport multilingv. Deblochează puterea a 405 miliarde de parametri pentru proiectele tale cele mai ambițioase.",
-    "sidebar__ai_language__selector__button__tooltip": "Schimbați limba de răspuns AI"
+    "sidebar__ai_language__selector__button__tooltip": "Schimbați limba de răspuns AI",
+    "provider__llama__model__mistral_large_2__description": "Cel mai recent model de vârf al lui Mistral împinge limitele vitezei și performanței. Cu 123 de miliarde de parametri, Mistral-Large-2 excel în generarea de cod, matematică și raționament în zeci de limbi. Oferă o halucinație minimă și suport multilingv impresionant atât pentru limbile naturale, cât și pentru limbajele de programare.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Upgrade pentru Mistral-Large-2 nelimitat",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Experimentați cel mai avansat model Mistral până acum, oferind performanță de neegalat în generarea de cod, matematică și suport multilingv. Mistral-Large-2 stabilește un nou frontiere în capacitățile de AI cu fereastra sa de context de 128k și halucinații minime.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Accesați Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modelul de vârf de nouă generație cu 123 de miliarde de parametri și fereastră de context de 128k",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacități semnificativ îmbunătățite în generarea de cod, matematică și raționament",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Suport multilingv îmbunătățit pentru zeci de limbi și peste 80 de limbaje de programare",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Capacități îmbunătățite de urmărire a instrucțiunilor și conversaționale"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

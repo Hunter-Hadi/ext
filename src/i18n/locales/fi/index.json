@@ -1037,7 +1037,7 @@
     "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Laajennettu kontekstin pituus: 128K merkkiä edistyneisiin käyttötarkoituksiin.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Huipputason suorituskyky: Yleistieto, ohjattavuus ja matematiikka.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Monikielinen: tuki 8 kielelle.",
-    "permission__pricing_hook__fast_ai_usage__free__description": "Ilmainen AI-kyselyraja ylitetty. Saat lisää ilmaisia AI-kyselyjä huomenna. Päivitä nyt avataksesi välittömästi rajattoman AI-käytön.",
+    "permission__pricing_hook__fast_ai_usage__free__description": "Päivitä nyt avataksesi rajattoman tekoälyn käytön välittömästi.",
     "permission__pricing_hook__fast_ai_usage__paid__description": "AI-kyselyraja ylitetty. Saat lisää AI-kyselyjä ensi kuussa. Päivitä nyt avataksesi välittömästi rajattoman AI-käytön.",
     "permission__pricing_hook__smart_ai_usage__free__description": "Päivitä nyt avataksesi välittömästi rajattoman AI-käytön.",
     "permission__pricing_hook__smart_ai_usage__paid__description": "AI-kyselyraja ylitetty. Saat lisää AI-kyselyjä ensi kuussa. Päivitä nyt avataksesi välittömästi rajattoman AI-käytön.",
@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google'n uusin ja kehittynein malli. Se tarjoaa nopeampaa nopeutta, läpimurron 1M tokenin konteksti-ikkunan, parannetun turvallisuuden ja kehittyneet ominaisuudet teksti-, koodi-, kuva-, ääni- ja videokäsittelyssä.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI:n GPT-4, optimoitu nopeutta ja tehokkuutta varten, loistaa reaaliaikaisissa sovelluksissa, jotka vaativat luovuutta ja kehittynyttä päättelyä parannetuilla vasteajoilla ja johdonmukaisella tulostuksella.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Koe maailman suurin avoimen lähdekoodin tekoälymalli, joka tarjoaa vertaansa vailla olevia kykyjä tiedossa, päättelyssä ja monikielisessä tuessa. Avaa 405 miljardin parametrin voima kunnianhimoisimpiin projekteihisi.",
-    "sidebar__ai_language__selector__button__tooltip": "Vaihda tekoälyn vastauskieli"
+    "sidebar__ai_language__selector__button__tooltip": "Vaihda tekoälyn vastauskieli",
+    "provider__llama__model__mistral_large_2__description": "Mistralin uusin lippulaivamalli työntää nopeuden ja suorituskyvyn rajoja. 123 miljardin parametrin avulla Mistral-Large-2 loistaa koodin luonnissa, matematiikassa ja päättelyssä kymmenissä kielissä. Se tarjoaa minimaalista harhaa ja vaikuttavaa monikielistä tukea sekä luonnollisille että ohjelmointikielille.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Päivitä rajattomaan Mistral-Large-2:een",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Koe Mistralin kehittynein malli, joka tarjoaa vertaansa vailla olevaa suorituskykyä koodigeneroinnissa, matematiikassa ja monikielisessä tuessa. Mistral-Large-2 asettaa uuden rajan tekoälyn kyvyissä 128 kt:n kontekstirajapinnallaan ja minimaalisella hallusinaatiolla.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Pääsy Mistral-Large-2:een",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Seuraavan sukupolven lippulaivamalli, jossa on 123 miljardia parametria ja 128k kontekstiraja",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Merkittävästi parannetut kyvyt koodin luonnissa, matematiikassa ja päättelyssä",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Parannettu monikielinen tuki kymmenille kielille ja yli 80 ohjelmointikielelle",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Parannettu ohjeiden seuraamisen ja keskustelukyvyn kyvykkyys"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -1037,7 +1037,7 @@
     "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Razširjena dolžina konteksta: 128K žetonov za napredne uporabne primere.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Vrhunska zmogljivost: Splošno znanje, usmerljivost in matematika.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Večjezičnost: dodajte podporo v 8 jezikih.",
-    "permission__pricing_hook__fast_ai_usage__free__description": "Presežena brezplačna omejitev za AI poizvedbe. Jutri boste prejeli več brezplačnih AI poizvedb. Nadgradite zdaj, da takoj odklenete neomejeno uporabo AI.",
+    "permission__pricing_hook__fast_ai_usage__free__description": "Takoj nadgradite, da odklenete neomejeno uporabo umetne inteligence.",
     "permission__pricing_hook__fast_ai_usage__paid__description": "Presežena omejitev za AI poizvedbe. Naslednji mesec boste prejeli več AI poizvedb. Nadgradite zdaj, da takoj odklenete neomejeno uporabo AI.",
     "permission__pricing_hook__smart_ai_usage__free__description": "Nadgradite zdaj, da takoj odklenete neomejeno uporabo AI.",
     "permission__pricing_hook__smart_ai_usage__paid__description": "Presežena omejitev za AI poizvedbe. Naslednji mesec boste prejeli več AI poizvedb. Nadgradite zdaj, da takoj odklenete neomejeno uporabo AI.",
@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Najnovejši in najnaprednejši model Googla. Ponuja hitrejšo hitrost, prebojno 1M okno konteksta žetona, izboljšano varnost in napredne zmogljivosti pri obdelavi besedila, kode, slike, zvoka in videa.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI GPT-4, optimiziran za hitrost in učinkovitost, blesti v aplikacijah v realnem času, ki zahtevajo ustvarjalnost in napredno sklepanje z izboljšanimi časi odziva in doslednimi rezultati.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Doživite največji odprtokodni model umetne inteligence na svetu, ki ponuja neprekosljive zmogljivosti pri znanju, sklepanju in večjezični podpori. Odklenite moč 405 milijard parametrov za svoje najambicioznejše projekte.",
-    "sidebar__ai_language__selector__button__tooltip": "Spremeni jezik odziva AI"
+    "sidebar__ai_language__selector__button__tooltip": "Spremeni jezik odziva AI",
+    "provider__llama__model__mistral_large_2__description": "Najnovejši paradni model Mistral presega meje hitrosti in zmogljivosti. Z 123 milijardami parametrov Mistral-Large-2 izstopa pri generiranju kode, matematiki in sklepanju v desetinah jezikov. Ponuja minimalno halucinacijo in impresivno večjezično podporo tako za naravne kot programerske jezike.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Nadgradnja za neomejen Mistral-Large-2",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Doživite najnaprednejši model Mistrala doslej, ki ponuja neprekosljivo zmogljivost pri generiranju kode, matematiki in večjezični podpori. Mistral-Large-2 postavlja novo mejo v zmogljivostih umetne inteligence s svojim 128k kontekstnim oknom in minimalno halucinacijo.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Dostop do Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Naslednja generacija paradnega modela s 123 milijardami parametrov in 128k kontekstualnim oknom",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Pomembno izboljšane zmogljivosti pri generiranju kode, matematiki in sklepanju",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Izboljšana večjezična podpora za desetine jezikov in 80+ programerskih jezikov",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Izboljšana sposobnost sledenja navodilom in pogovorne sposobnosti"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

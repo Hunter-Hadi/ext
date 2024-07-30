@@ -129,10 +129,10 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
             'claude-3-sonnet',
             'claude-3-opus',
             'claude-3-haiku',
+            'claude-3-5-sonnet',
             'gemini-pro',
             'gemini-flash-1.5',
             'gemini-1.5-pro',
-            'claude-3-5-sonnet',
           ].includes(conversation?.meta?.AIModel)
         ) {
           await createConversation(

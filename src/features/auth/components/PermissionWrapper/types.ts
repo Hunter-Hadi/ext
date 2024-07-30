@@ -30,6 +30,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_FAST_TEXT_MODEL_LLAMA_3_1_70B',
   'MAXAI_ADVANCED_MODEL_LLAMA_3_1_405B',
   'MAXAI_IMAGE_GENERATE_MODEL_DALL_E_3',
+  'MAXAI_ADVANCED_MODEL_MISTRAL_LARGE_2',
 
   // 第三方 provider 用量卡点
   'MAXAI_THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
@@ -528,6 +529,27 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
           ? 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__free__description'
           : 'client:permission__pricing_hook__max_ai_paid_model__maxai_art__paid__description',
       )}`
+    },
+  },
+  // TODO ui出来替换配置
+  MAXAI_ADVANCED_MODEL_MISTRAL_LARGE_2: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-mistral-large-2.png',
+    )}`,
+    modalImageUrl: getChromeExtensionAssetsURL(
+      '/images/upgrade/modal/mistral-large-2.png',
+    ),
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__advance_text_usage__mistral_large_2__title',
+      ),
+    description: (t, isFreeUser) => {
+      return [
+        getSmartModelText(t, isFreeUser),
+        t(
+          'client:permission__pricing_hook__advance_text_usage__mistral_large_2__description',
+        ),
+      ].join('\n\n')
     },
   },
 

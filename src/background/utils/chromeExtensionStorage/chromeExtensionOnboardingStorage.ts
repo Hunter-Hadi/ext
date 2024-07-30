@@ -44,6 +44,8 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_EXTENSION_VERSION_4_6_1_UPDATE_MODAL'
   // MaxAI 4.8.0版本更新弹窗
   | 'ON_BOARDING_EXTENSION_VERSION_4_8_0_UPDATE_MODAL'
+  // MaxAI 4.8.2版本更新弹窗
+  | 'ON_BOARDING_EXTENSION_VERSION_4_8_2_UPDATE_MODAL'
   // on boarding tooltip cache key
   | IOnBoardingTooltipOpenedCacheKey
   //  survey dialog 是否弹窗过的标记
@@ -93,6 +95,7 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     ON_BOARDING_EXTENSION_VERSION_4_3_8_UPDATE_MODAL: false,
     ON_BOARDING_EXTENSION_VERSION_4_6_1_UPDATE_MODAL: false,
     ON_BOARDING_EXTENSION_VERSION_4_8_0_UPDATE_MODAL: false,
+    ON_BOARDING_EXTENSION_VERSION_4_8_2_UPDATE_MODAL: false,
   }
   /**
    * InputAssistantButton onBoarding Keys

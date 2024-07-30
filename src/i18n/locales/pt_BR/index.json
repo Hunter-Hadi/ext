@@ -1037,7 +1037,7 @@
     "sidebar__promotion_dialog__llama_3_1_405b__content_item2__description": "Comprimento de contexto expandido: 128K tokens para casos de uso avançados.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item3__description": "Desempenho de ponta: Conhecimento geral, direcionabilidade e matemática.",
     "sidebar__promotion_dialog__llama_3_1_405b__content_item4__description": "Multilíngue: adicione suporte em 8 idiomas.",
-    "permission__pricing_hook__fast_ai_usage__free__description": "Limite de consultas de IA grátis excedido. Você receberá mais consultas de IA grátis amanhã. Atualize agora para desbloquear o uso ilimitado de IA imediatamente.",
+    "permission__pricing_hook__fast_ai_usage__free__description": "Atualize agora para desbloquear o uso ilimitado de IA imediatamente.",
     "permission__pricing_hook__fast_ai_usage__paid__description": "Limite de consultas de IA excedido. Você receberá mais consultas de IA no próximo mês. Atualize agora para desbloquear o uso ilimitado de IA imediatamente.",
     "permission__pricing_hook__smart_ai_usage__free__description": "Atualize agora para desbloquear o uso ilimitado de IA imediatamente.",
     "permission__pricing_hook__smart_ai_usage__paid__description": "Limite de consultas de IA excedido. Você receberá mais consultas de IA no próximo mês. Atualize agora para desbloquear o uso ilimitado de IA imediatamente.",
@@ -1054,7 +1054,15 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "O modelo mais novo e avançado do Google. Oferece velocidade mais rápida, uma janela de contexto de token de 1M, segurança aprimorada e capacidades avançadas em processamento de texto, código, imagem, áudio e vídeo.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "O GPT-4 da OpenAI, otimizado para velocidade e eficiência, se destaca em aplicações em tempo real que exigem criatividade e raciocínio avançado com tempos de resposta aprimorados e saída consistente.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Experimente o maior modelo de IA de código aberto do mundo, oferecendo capacidades incomparáveis em conhecimento, raciocínio e suporte multilíngue. Desbloqueie o poder de 405 bilhões de parâmetros para seus projetos mais ambiciosos.",
-    "sidebar__ai_language__selector__button__tooltip": "Alterar idioma da resposta do AI"
+    "sidebar__ai_language__selector__button__tooltip": "Alterar idioma da resposta do AI",
+    "provider__llama__model__mistral_large_2__description": "O mais recente modelo principal da Mistral empurra os limites de velocidade e desempenho. Com 123 bilhões de parâmetros, o Mistral-Large-2 se destaca na geração de código, matemática e raciocínio em dezenas de idiomas. Oferece alucinação mínima e suporte multilíngue impressionante para idiomas naturais e de programação.",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__title": "Atualize para Mistral-Large-2 ilimitado",
+    "permission__pricing_hook__advance_text_usage__mistral_large_2__description": "Experimente o modelo mais avançado da Mistral, oferecendo desempenho incomparável em geração de código, matemática e suporte multilíngue. O Mistral-Large-2 estabelece uma nova fronteira em capacidades de IA com sua janela de contexto de 128k e mínima alucinação.",
+    "sidebar__promotion_dialog__mistral_large_2__content__title": "Acesse Mistral-Large-2",
+    "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modelo principal de próxima geração com 123 bilhões de parâmetros e janela de contexto de 128k",
+    "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacidades significativamente aprimoradas na geração de código, matemática e raciocínio",
+    "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Suporte multilíngue aprimorado para dezenas de idiomas e mais de 80 idiomas de programação",
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Capacidades aprimoradas de seguir instruções e conversação"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

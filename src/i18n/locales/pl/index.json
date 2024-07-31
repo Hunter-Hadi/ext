@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Najnowszy i najbardziej zaawansowany model Google'a. Oferuje szybszą prędkość, przełomowe okno kontekstu 1M tokenów, zwiększone bezpieczeństwo oraz zaawansowane możliwości przetwarzania tekstu, kodu, obrazu, dźwięku i wideo.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 od OpenAI, zoptymalizowany pod kątem szybkości i efektywności, doskonale sprawdza się w aplikacjach czasu rzeczywistego wymagających kreatywności i zaawansowanego rozumowania z ulepszonymi czasami odpowiedzi i spójnym wynikiem.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Doświadcz największego na świecie otwartoźródłowego modelu AI, oferującego niezrównane możliwości w zakresie wiedzy, rozumowania i wsparcia wielojęzycznego. Odblokuj moc 405 miliardów parametrów dla swoich najbardziej ambitnych projektów.",
-    "sidebar__ai_language__selector__button__tooltip": "Zmień język odpowiedzi AI"
+    "sidebar__ai_language__selector__button__tooltip": "Zmień język odpowiedzi AI",
+    "image_mini_menu__title": "Narzędzia AI",
+    "image_mini_menu__menu_item__chat_with_image": "Czat z obrazem"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

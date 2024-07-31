@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Najnoviji i najnapredniji model tvrtke Google. Nudi bržu brzinu, probojni prozor konteksta od 1M tokena, poboljšanu sigurnost te napredne mogućnosti u obradi teksta, koda, slike, zvuka i videa.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 tvrtke OpenAI, optimiziran za brzinu i učinkovitost, izvrsno se snalazi u aplikacijama u stvarnom vremenu koje zahtijevaju kreativnost i napredno zaključivanje s poboljšanim vremenima odgovora i dosljednim rezultatima.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Iskusite najveći otvoreni AI model na svijetu koji nudi neusporedivu sposobnost u znanju, zaključivanju i višejezičnoj podršci. Otključajte snagu od 405 milijardi parametara za svoje najambicioznije projekte.",
-    "sidebar__ai_language__selector__button__tooltip": "Promijeni jezik odgovora AI"
+    "sidebar__ai_language__selector__button__tooltip": "Promijeni jezik odgovora AI",
+    "image_mini_menu__title": "Alati za AI",
+    "image_mini_menu__menu_item__chat_with_image": "Razgovor s slikom"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

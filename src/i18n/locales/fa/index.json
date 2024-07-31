@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "جدیدترین و پیشرفته‌ترین مدل گوگل. سرعت بیشتر، پنجره متنی ۱ میلیون توکنی نوآوری، ایمنی بهبود یافته و قابلیت‌های پیشرفته در پردازش متن، کد، تصویر، صدا و ویدیو ارائه می‌دهد.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 از OpenAI، بهینه‌سازی شده برای سرعت و کارایی، در برنامه‌های زمان واقعی که نیازمند خلاقیت و استدلال پیشرفته با زمان پاسخ بهبود یافته و خروجی پایدار هستند، برجسته است.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "با تجربه بزرگترین مدل هوش مصنوعی منبع باز جهان، قابلیت‌های بی‌نظیر در دانش، استدلال و پشتیبانی چندزبانه را ارائه می‌دهد. قدرت ۴۰۵ میلیارد پارامتر را برای پروژه‌های بزرگترین خود باز کنید.",
-    "sidebar__ai_language__selector__button__tooltip": "تغییر زبان پاسخ هوش مصنوعی"
+    "sidebar__ai_language__selector__button__tooltip": "تغییر زبان پاسخ هوش مصنوعی",
+    "image_mini_menu__title": "ابزارهای هوش مصنوعی",
+    "image_mini_menu__menu_item__chat_with_image": "چت با تصویر"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

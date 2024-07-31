@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "أحدث وأكثر نموذج تقدمه Google. يوفر سرعة أسرع، نافذة سياقية بحجم 1 مليون رمز متقدمة، سلامة محسنة، وقدرات متقدمة عبر معالجة النصوص والشفرات والصور والصوت والفيديو.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 من OpenAI، محسن للسرعة والكفاءة، يتفوق في التطبيقات في الوقت الحقيقي التي تتطلب الإبداع والاستدلال المتقدم مع أوقات استجابة محسنة وإخراج متسق.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "استمتع بأكبر نموذج للذكاء الاصطناعي مفتوح المصدر في العالم، الذي يقدم قدرات لا مثيل لها في المعرفة والاستدلال والدعم متعدد اللغات. فك قوة 405 مليار معلمة لمشاريعك الأكثر طموحًا.",
-    "sidebar__ai_language__selector__button__tooltip": "تغيير لغة استجابة الذكاء الاصطناعي"
+    "sidebar__ai_language__selector__button__tooltip": "تغيير لغة استجابة الذكاء الاصطناعي",
+    "image_mini_menu__title": "أدوات الذكاء الاصطناعي",
+    "image_mini_menu__menu_item__chat_with_image": "الدردشة مع الصورة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

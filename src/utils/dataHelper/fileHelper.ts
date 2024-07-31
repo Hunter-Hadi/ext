@@ -57,3 +57,53 @@ export const convertBase64ToBlob = (base64: string, contentType = '') => {
 
   return new Blob(byteArrays, { type })
 }
+
+/**
+ * image to blob
+ */
+export function imageToBlob(image: HTMLImageElement) {
+  return new Promise<Blob>((resolve, reject) => {
+    if (image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) {
+      resolve(imageToBlobLoaded(image))
+    } else {
+      image.onload = function () {
+        resolve(imageToBlobLoaded(image))
+      }
+      image.onerror = function () {
+        reject(new Error('Error loading the image.'))
+      }
+    }
+  })
+}
+
+/**
+ * image to blob(image loaded)
+ */
+function imageToBlobLoaded(image: HTMLImageElement) {
+  const canvas = document.createElement('canvas')
+  canvas.width = image.naturalWidth
+  canvas.height = image.naturalHeight
+
+  const ctx = canvas.getContext('2d')
+  if (!ctx) {
+    throw 'imageToBlobLoaded failed. ctx is null'
+  }
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        reject(new Error('Canvas.toBlob failed.'))
+      } else {
+        resolve(blob)
+      }
+    }, 'image/png')
+  })
+}
+
+/**
+ * blob to File
+ */
+export function blobToFile(blob: Blob, fileName: string) {
+  return new File([blob], fileName, { type: blob.type })
+}

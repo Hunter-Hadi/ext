@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Najnovejši in najnaprednejši model Googla. Ponuja hitrejšo hitrost, prebojno 1M okno konteksta žetona, izboljšano varnost in napredne zmogljivosti pri obdelavi besedila, kode, slike, zvoka in videa.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI GPT-4, optimiziran za hitrost in učinkovitost, blesti v aplikacijah v realnem času, ki zahtevajo ustvarjalnost in napredno sklepanje z izboljšanimi časi odziva in doslednimi rezultati.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Doživite največji odprtokodni model umetne inteligence na svetu, ki ponuja neprekosljive zmogljivosti pri znanju, sklepanju in večjezični podpori. Odklenite moč 405 milijard parametrov za svoje najambicioznejše projekte.",
-    "sidebar__ai_language__selector__button__tooltip": "Spremeni jezik odziva AI"
+    "sidebar__ai_language__selector__button__tooltip": "Spremeni jezik odziva AI",
+    "image_mini_menu__title": "Orodja AI",
+    "image_mini_menu__menu_item__chat_with_image": "Klepetaj s sliko"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

@@ -75,6 +75,10 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     }
   }, [files])
 
+  useEffect(() => {
+    window.canChatWithImage = true
+  }, [])
+
   if (
     !AIProviderConfig ||
     conversationStatus !== 'success' ||

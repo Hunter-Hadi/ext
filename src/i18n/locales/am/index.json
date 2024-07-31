@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "ጎግልም በቅርብ የተሻሻለትና በትክክለኛ የ1M ቶክን መልኩን የተቀናጀ ማህበረሰብን እና በጽሁፍ፣ ኮድ፣ ምስል፣ እና ቪዲዮ እንዲሰጥ የተሻሻለትን እናዝናለን።",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 በትንሽን እና አንድነት የተሻለ እና በተለያዩ ጊዜ የሚሰራ እና በተለያዩ ውጤት የሚሰራ በሚቀጥለው ሰዓት የሚሰራ እና የተቀናጀ ውጤት እንዲሆን ከፍተኛ ተጠቃሚ እና በተለያዩ ውጤት የሚሰራ ነው።",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "ዓለም በተለያዩ አካባቢ የሚገኘው የተለያዩ AI ሞዴል፣ ስለ ስራውና ስለ በሽታው የተሰጠውን እና በቡሊያን የተለያዩ እንቅስቃሴዎችን ይከታተሉ። ከ 405 ቢሊዮን ፓራሚትሞች የተለያዩ እንቅስቃሴዎችን ለመስራት የሚያገኙትን እንቅስቃሴዎች አክስዎን አክስዎን።",
-    "sidebar__ai_language__selector__button__tooltip": "በማስተካከል ስለሚሆን የAI መልዕክት ቋንቋ ቀይር"
+    "sidebar__ai_language__selector__button__tooltip": "በማስተካከል ስለሚሆን የAI መልዕክት ቋንቋ ቀይር",
+    "image_mini_menu__title": "ማህበረሰብ AI",
+    "image_mini_menu__menu_item__chat_with_image": "ኮምፒውተር ከ ምስል ጋር"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

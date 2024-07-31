@@ -26,6 +26,11 @@
       "run_at": "document_end"
     },
     {
+      "matches": ["<all_urls>"],
+      "js": ["imageMiniMenu.js"],
+      "run_at": "document_end"
+    },
+    {
       "matches": [
         "http://localhost:3000/*",
         "https://main.d3kf9o74pc4m0c.amplifyapp.com/*",

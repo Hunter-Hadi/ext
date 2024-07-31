@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Google'i uusim ja kõige arenenum mudel. Pakub kiiremat kiirust, läbimurret 1M tokeni kontekstakna, täiustatud turvalisust ja edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI GPT-4, optimeeritud kiiruse ja tõhususe jaoks, on tugev reaalajas rakendustes, mis nõuavad loovust ja edasijõudnud mõtlemist parendatud reaktsiooniaegade ja järjepideva väljundiga.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Kogege maailma suurimat avatud lähtekoodiga AI mudelit, mis pakub enneolematuid võimeid teadmistes, mõtlemises ja mitmekeelses toetuses. Avage 405 miljardi parameetri jõud oma ambitsioonikaimate projektide jaoks.",
-    "sidebar__ai_language__selector__button__tooltip": "Muuda AI vastuse keelt"
+    "sidebar__ai_language__selector__button__tooltip": "Muuda AI vastuse keelt",
+    "image_mini_menu__title": "AI Tööriistad",
+    "image_mini_menu__menu_item__chat_with_image": "Vestlus pildiga"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Googles nyeste og mest avancerede model. Det tilbyder hurtigere hastighed, et gennembrud på 1M token kontekstvindue, forbedret sikkerhed og avancerede evner på tværs af tekst, kode, billede, lyd og video behandling.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAIs GPT-4, optimeret til hastighed og effektivitet, excellerer i realtidsprogrammer, der kræver kreativitet og avanceret logik med forbedrede responstider og konsistent output.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Oplev verdens største open-source AI-model, der tilbyder enestående evner inden for viden, logik og flersproget support. Lås op for kraften af 405 milliarder parametre til dine mest ambitiøse projekter.",
-    "sidebar__ai_language__selector__button__tooltip": "Skift AI-svarssprog"
+    "sidebar__ai_language__selector__button__tooltip": "Skift AI-svarssprog",
+    "image_mini_menu__title": "AI Værktøjer",
+    "image_mini_menu__menu_item__chat_with_image": "Chat med Billede"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

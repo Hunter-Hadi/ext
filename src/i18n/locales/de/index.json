@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Googles neuestes und fortschrittlichstes Modell. Es bietet schnellere Geschwindigkeit, ein bahnbrechendes 1M Token-Kontextfenster, verbesserte Sicherheit und erweiterte Fähigkeiten in Text-, Code-, Bild-, Audio- und Videoverarbeitung.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAIs GPT-4, optimiert für Geschwindigkeit und Effizienz, glänzt in Echtzeit-Anwendungen, die Kreativität und fortgeschrittenes Denken mit verbesserten Reaktionszeiten und konsistenter Ausgabe erfordern.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Erleben Sie das weltweit größte Open-Source-KI-Modell, das unübertroffene Fähigkeiten in Wissen, Denken und mehrsprachiger Unterstützung bietet. Entfesseln Sie die Kraft von 405 Milliarden Parametern für Ihre ehrgeizigsten Projekte.",
-    "sidebar__ai_language__selector__button__tooltip": "Ändern Sie die Sprache der KI-Antwort"
+    "sidebar__ai_language__selector__button__tooltip": "Ändern Sie die Sprache der KI-Antwort",
+    "image_mini_menu__title": "KI-Werkzeuge",
+    "image_mini_menu__menu_item__chat_with_image": "Chat mit Bild"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

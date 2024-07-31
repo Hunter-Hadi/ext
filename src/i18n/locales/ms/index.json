@@ -1054,7 +1054,9 @@
     "permission__pricing_hook__advanced_text_usage__gemini_1_5_pro__description": "Model terbaru dan paling canggih dari Google. Ia menawarkan kelajuan yang lebih pantas, tetingkap konteks token 1M yang terobosan, keselamatan yang dipertingkatkan, dan keupayaan canggih di seluruh pemprosesan teks, kod, imej, audio, dan video.",
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 dari OpenAI, dioptimumkan untuk kelajuan dan kecekapan, cemerlang dalam aplikasi masa nyata yang memerlukan kreativiti dan penalaran canggih dengan masa tindak balas yang dipertingkatkan dan output yang konsisten.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Alami model AI sumber terbuka terbesar di dunia, menawarkan keupayaan yang tiada tandingan dalam pengetahuan, penalaran, dan sokongan pelbagai bahasa. Buka kuasa 405 bilion parameter untuk projek paling berani anda.",
-    "sidebar__ai_language__selector__button__tooltip": "Tukar bahasa respons AI"
+    "sidebar__ai_language__selector__button__tooltip": "Tukar bahasa respons AI",
+    "image_mini_menu__title": "Alat KI",
+    "image_mini_menu__menu_item__chat_with_image": "Berbual dengan Imej"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

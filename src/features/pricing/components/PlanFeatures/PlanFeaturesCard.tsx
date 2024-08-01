@@ -19,6 +19,7 @@ import { PLAN_FEATURES_MAP } from '@/features/pricing/constants'
 import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 import {
+  checkRenderTypeIsMonthlyOrYearlyOrOneYear,
   getTargetPlanDiscountedPrice,
   renderTypeToName,
   transformRenderTypeToPlanType,
@@ -64,16 +65,21 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
   const isYearly = plan.includes('yearly')
 
   const isCurrentPlan = useMemo(() => {
-    currentUserPlan.planName
     switch (plan) {
       case 'pro':
         return currentUserPlan?.name === 'pro'
       case 'pro_yearly':
-        return currentUserPlan?.planName === 'PRO_YEARLY'
+        return (
+          currentUserPlan?.planName === 'PRO_YEARLY' ||
+          currentUserPlan?.planName === 'PRO_ONE_YEAR'
+        )
       case 'elite':
         return currentUserPlan?.name === 'elite'
       case 'elite_yearly':
-        return currentUserPlan?.planName === 'ELITE_YEARLY'
+        return (
+          currentUserPlan?.planName === 'ELITE_YEARLY' ||
+          currentUserPlan?.planName === 'ELITE_ONE_YEAR'
+        )
       default:
         return false
     }
@@ -89,6 +95,16 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
         return false
       }
     }
+
+    // 如果 渲染的 plan 是 monthly 的，当前用户的 plan 又是 yearly 的，那么不显示按钮
+    if (
+      (currentUserPlan.isOneTimePayUser ||
+        currentUserPlan?.planName?.includes('YEARLY')) &&
+      checkRenderTypeIsMonthlyOrYearlyOrOneYear(plan) === 'monthly'
+    ) {
+      return false
+    }
+
     return true
   }, [currentUserPlan, plan])
 
@@ -274,7 +290,7 @@ const PlanFeaturesCard: FC<PlanFeaturesCardProps> = (props) => {
               ? t('client:pricing__plan_features__current_plan__title')
               : t('client:pricing__plan_features__cta_button__title', {
                   PLAN: formatPlan,
-                })}
+                })}{' '}
           </PlanButton>
         </Stack>
       </Stack>

@@ -46,7 +46,10 @@ const YouTubeSummaryButton: FC = () => {
     let timer: ReturnType<typeof setTimeout> | null = null
     if (element && element?.innerText?.length > 0) {
       // 插入到element的nextSibling
-      const button = document.createElement('div')
+      const button =
+        (document.querySelector(
+          MAXAI_YOUTUBE_SUMMARY_BUTTON,
+        ) as HTMLDivElement) || document.createElement('div')
       button.className = MAXAI_YOUTUBE_SUMMARY_BUTTON
       button.style.cssText = `
           display: flex;
@@ -55,11 +58,13 @@ const YouTubeSummaryButton: FC = () => {
           margin-left: auto;
           flex-shrink: 0;
         `
+      if (button.parentNode === element.parentNode) {
+        setRenderElement(button)
+        return
+      }
       timer = setTimeout(() => {
         const parent = element.parentNode as HTMLElement
-        console.log('useFindElement', '3333')
         if (parent) {
-          console.log('useFindElement', '4444')
           parent.style.cssText += `display: flex;align-items: center;gap: 8px;`
           element.parentNode?.append(button)
         }
@@ -79,7 +84,7 @@ const YouTubeSummaryButton: FC = () => {
         clearTimeout(timer)
       }
     }
-  }, [element])
+  }, [element, element?.innerText])
   if (!renderElement) {
     return null
   }

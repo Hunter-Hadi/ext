@@ -14,6 +14,7 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import usePaymentCreator from '@/features/pricing/hooks/usePaymentCreator'
 import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
+import { transformRenderTypeToPlanType } from '@/features/pricing/utils'
 
 interface IUpgradePlanSalesCardProps {
   renderPlan: RENDER_PLAN_TYPE
@@ -27,14 +28,23 @@ const UpgradePlanSalesCard: FC<IUpgradePlanSalesCardProps> = ({
   const { planPricingInfo } = usePlanPricingInfo()
   const planPricing = planPricingInfo[renderPlan]
 
-  const { loading: userInfoLoading } = useUserInfo()
+  const { loading: userInfoLoading, isPaymentOneTimeUser } = useUserInfo()
 
   const { loading: paymentLoading, createPaymentSubscription } =
     usePaymentCreator()
 
   const handleClickUpgrade = async () => {
     try {
-      await createPaymentSubscription(renderPlan)
+      let targetPaymentPlan = renderPlan
+      if (isPaymentOneTimeUser) {
+        // 如果当前是一次性付款的用户，那么只能升级到一次性付款的 plan
+        targetPaymentPlan = transformRenderTypeToPlanType(
+          renderPlan,
+          'one_year',
+        )
+      }
+
+      await createPaymentSubscription(targetPaymentPlan)
     } catch (error) {
       console.error(error)
     }

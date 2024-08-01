@@ -1,14 +1,11 @@
-import { capitalize } from 'lodash-es'
-
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { USER_ROLE_PRIORITY } from '@/features/auth/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import usePaymentSessionFetcher from '@/features/pricing/hooks/usePaymentSessionFetcher'
 import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
 import {
+  checkRenderTypeIsMonthlyOrYearlyOrOneYear,
   checkTargetPlanTypeHasPromotion,
-  renderTypeToName,
 } from '@/features/pricing/utils'
 
 const usePaymentCreator = () => {
@@ -27,29 +24,33 @@ const usePaymentCreator = () => {
     try {
       const planPricing = planPricingInfo[subscriptionPaymentPlan]
 
-      const currentUserRoleValue = USER_ROLE_PRIORITY[currentUserPlan.name] // 当前角色的优先级值
+      // const currentUserRoleValue = USER_ROLE_PRIORITY[currentUserPlan.name] // 当前角色的优先级值
 
-      // 如果当前购买的 plan 是一次性付款的，那么需要弹出联系我们的 modal
-      if (
-        currentUserRoleValue > 0 &&
-        currentUserPlan.planName?.includes('ONE_YEAR')
-      ) {
-        const planText = subscriptionPaymentPlan
-          ? capitalize(renderTypeToName(subscriptionPaymentPlan))
-          : 'Free'
-        concatUsCallback?.(planText)
-        return
-      }
+      // // 如果当前购买的 plan 是一次性付款的，那么需要弹出联系我们的 modal
+      // if (
+      //   currentUserRoleValue > 0 &&
+      //   currentUserPlan.planName?.includes('ONE_YEAR')
+      // ) {
+      //   const planText = subscriptionPaymentPlan
+      //     ? capitalize(renderTypeToName(subscriptionPaymentPlan))
+      //     : 'Free'
+      //   concatUsCallback?.(planText)
+      //   return
+      // }
 
       // 插件里目前无需一下逻辑
       // Team plan 的用户不支持用户通过 portal 来管理升级/取消plan
       // individual plan 的用户不支持升级到 team plan
 
-      // 如果当前是订阅付费用户直接跳转到pricing页面
+      // 如果当前是升级plan 的操作, 直接跳转到pricing页面
       if (isUpgradePlan) {
-        const paymentType = subscriptionPaymentPlan.includes('yearly')
-          ? 'yearly'
-          : 'monthly'
+        let paymentType = 'yearly'
+        if (
+          checkRenderTypeIsMonthlyOrYearlyOrOneYear(subscriptionPaymentPlan) ===
+          'monthly'
+        ) {
+          paymentType = 'monthly'
+        }
         window.open(
           `${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=${subscriptionPaymentPlan}&paymentType=${paymentType}`,
         )
@@ -63,17 +64,12 @@ const usePaymentCreator = () => {
         planPricingInfo[subscriptionPaymentPlan].promotion_code
 
       // 如果是升级 plan，那么直接跳转到 portal
-      const data = isUpgradePlan
-        ? await createPortalSession(
-            subscriptionPaymentPlan,
-            targetPaymentPromotionCode ?? '',
-          )
-        : await createCheckoutSession(
-            subscriptionPaymentPlan,
-            targetPaymentPlanHasPromotion && targetPaymentPromotionCode
-              ? targetPaymentPromotionCode
-              : undefined,
-          )
+      const data = await createCheckoutSession(
+        subscriptionPaymentPlan,
+        targetPaymentPlanHasPromotion && targetPaymentPromotionCode
+          ? targetPaymentPromotionCode
+          : undefined,
+      )
 
       if (data && data.redirect_url) {
         if (location.origin === APP_USE_CHAT_GPT_HOST) {

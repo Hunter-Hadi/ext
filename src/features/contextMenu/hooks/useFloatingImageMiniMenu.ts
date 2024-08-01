@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
 
-import { FloatingImageMiniMenuState } from '../store'
+import { FloatingImageMiniMenuState } from '@/features/contextMenu/store'
 
 export const FloatingImageMiniMenuStaticData = {
   currentHoverImage: null as HTMLImageElement | null,
@@ -55,13 +55,16 @@ const useFloatingImageMiniMenu = () => {
 
       const handleMouseLeaveImage = () => {
         FloatingImageMiniMenuStaticData.mouseInImage = false
+        timerHide.current && clearTimeout(timerHide.current)
         timerHide.current = setTimeout(() => {
-          setMenu((prevState) => {
-            return {
-              ...prevState,
-              show: FloatingImageMiniMenuStaticData.mouseInMenu,
-            }
-          })
+          if (!FloatingImageMiniMenuStaticData.mouseInMenu) {
+            setMenu((prevState) => {
+              return {
+                ...prevState,
+                show: false,
+              }
+            })
+          }
           window.removeEventListener('scroll', handleWindowScroll)
         }, 50)
       }
@@ -82,6 +85,10 @@ const useFloatingImageMiniMenu = () => {
       img.addEventListener('mouseleave', handleMouseLeaveImage)
       stopList.push(() =>
         img.removeEventListener('mouseleave', handleMouseEnterImage),
+      )
+
+      stopList.push(() =>
+        window.removeEventListener('scroll', handleWindowScroll),
       )
     })
 

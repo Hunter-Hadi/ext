@@ -1,27 +1,23 @@
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer'
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Stack,
-  SxProps,
-  Theme,
-} from '@mui/material'
+import Box from '@mui/material/Box'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import Stack from '@mui/material/Stack'
+import { SxProps, Theme } from '@mui/material/styles'
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import OneShotCommunicator from '@/utils/OneShotCommunicator'
-
-import { showChatBox } from '../../../sidebar/utils/sidebarChatBoxHelper'
 import useFloatingImageMiniMenu, {
   FloatingImageMiniMenuStaticData,
-} from '../../hooks/useFloatingImageMiniMenu'
-import { FloatingImageMiniMenuState } from '../../store'
+} from '@/features/contextMenu/hooks/useFloatingImageMiniMenu'
+import { FloatingImageMiniMenuState } from '@/features/contextMenu/store'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const MenuList = () => {
   const { t } = useTranslation(['client'])
@@ -62,7 +58,7 @@ const MenuList = () => {
         borderRadius: '6px',
 
         transform: 'scale(0)',
-        transformOrigin: 'left',
+        transformOrigin: 'left top',
         transition: 'transform 0.2s',
       }}
     >
@@ -154,9 +150,13 @@ const FloatingImageMiniMenu = () => {
 
   useFloatingImageMiniMenu()
   useEffect(() => {
-    // 获取元素实际渲染宽度
-    tempRef.current && setTextRealWidth(tempRef.current.offsetWidth + 1 + 'px')
-  }, [tempRef])
+    if (menuState.show) {
+      // 获取元素实际渲染宽度
+      tempRef.current &&
+        setTextRealWidth(tempRef.current.offsetWidth + 1 + 'px')
+      // console.log('当前宽度：', tempRef.current?.offsetWidth)
+    }
+  }, [menuState.show])
 
   const handleMouseenterMenu = () => {
     timerHide.current && clearTimeout(timerHide.current)
@@ -170,12 +170,14 @@ const FloatingImageMiniMenu = () => {
   const handleMouseleaveMenu = () => {
     FloatingImageMiniMenuStaticData.mouseInMenu = false
     timerHide.current = setTimeout(() => {
-      setMenu((prevState) => {
-        return {
-          ...prevState,
-          show: FloatingImageMiniMenuStaticData.mouseInImage,
-        }
-      })
+      if (!FloatingImageMiniMenuStaticData.mouseInImage) {
+        setMenu((prevState) => {
+          return {
+            ...prevState,
+            show: false,
+          }
+        })
+      }
     }, 50)
   }
   return (

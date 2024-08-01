@@ -48,7 +48,7 @@ const ContextMenuPinToSidebarButton: FC = () => {
 
         setUserSettings({
           ...userSettings,
-          alwaysContinueInSidebar: true,
+          alwaysContinueInSidebar: always,
         })
       },
     [conversationId, pinToSidebar, userSettings],

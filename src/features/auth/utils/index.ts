@@ -55,10 +55,10 @@ export const getChromeExtensionUserInfo = async (
       let isUpdated = false
       if (!userData || forceUpdate) {
         userData = await fetchUserInfo()
-        const newRole = getUserRoleByUserInfoResponse(userData)
-        userData.role = newRole ?? cacheRoleData
+        userData.role = cacheRoleData
         isUpdated = true
       }
+
       // TODO: 需要优化掉，获取 userinfo 时不需要再请求 subscription_info
       if (forceUpdate || !userData?.role?.name) {
         userData.role = await fetchUserSubscriptionInfo()

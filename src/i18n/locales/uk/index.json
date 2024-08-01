@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI کا GPT-4، تیزی اور کارگری میں معتبر ہے، خلاقیت اور ترقی یافتہ تجزیے کی ضرورت ہونے والے واقعی وقت کے اطلاقات میں بہتری اور مستقل خروجات کے ساتھ بہترین جواب دیتا ہے۔",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "دنیا کا سب سے بڑا آزاد ماڈل AI، جو علم، تجزیہ، اور بہت زبانی سپورٹ میں بے مثال صلاحیتوں پیش کرتا ہے۔ اپنے سب سے بڑے منصوبوں کے لیے 405 بلین پیرامیٹرز کی طاقت کو کھولیں۔",
     "sidebar__ai_language__selector__button__tooltip": "AI جواب کی زبان تبدیل کریں",
-    "image_mini_menu__title": "ای۔آئی ٹولز",
-    "image_mini_menu__menu_item__chat_with_image": "تصویر کے ساتھ چیٹ"
+    "floating_menu__mini_menu__image__title": "ای۔آئی ٹولز",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "تصویر کے ساتھ چیٹ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

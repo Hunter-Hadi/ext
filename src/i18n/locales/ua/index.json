@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 від OpenAI, оптимізований для швидкості та ефективності, відзначається у реальних застосуваннях, що вимагають творчості та розумових здібностей з покращеними часами відповіді та стійким результатом.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Відчуйте найбільшу у світі відкриту модель штучного інтелекту, що пропонує неперевершені можливості у знаннях, мисленні та підтримці багатомовності. Розблокуйте потужність 405 мільярдів параметрів для ваших найамбітніших проектів.",
     "sidebar__ai_language__selector__button__tooltip": "Змінити мову відповіді ШІ",
-    "image_mini_menu__title": "Інструменти ШІ",
-    "image_mini_menu__menu_item__chat_with_image": "Чат з Зображенням"
+    "floating_menu__mini_menu__image__title": "Інструменти ШІ",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Чат з Зображенням"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

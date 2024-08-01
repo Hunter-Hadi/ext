@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI'in GPT-4'ü, hız ve verimlilik için optimize edilmiş olup, yaratıcılık ve gelişmiş mantık gerektiren gerçek zamanlı uygulamalarda üstün performans gösterirken geliştirilmiş yanıt süreleri ve tutarlı çıktı sunar.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Dünyanın en büyük açık kaynaklı yapay zeka modelini deneyimleyin, bilgi, mantık ve çoklu dil desteğinde eşsiz yetenekler sunar. En iddialı projeleriniz için 405 milyar parametrenin gücünü açığa çıkarın.",
     "sidebar__ai_language__selector__button__tooltip": "AI yanıt dilini değiştir",
-    "image_mini_menu__title": "AI Araçları",
-    "image_mini_menu__menu_item__chat_with_image": "Resimli Sohbet"
+    "floating_menu__mini_menu__image__title": "AI Araçları",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Resimli Sohbet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

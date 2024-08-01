@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 จาก OpenAI ถูกปรับแต่งให้มีความเร็วและประสิทธิภาพสูง โดดเด่นในการใช้ในแอปพลิเคชันแบบเรียลไทม์ที่ต้องการความคิดสร้างสรรค์และการเหตุผลขั้นสูงพร้อมเวลาตอบสนองที่ปรับปรุงและผลลัพธ์ที่สม่ำเสมอ",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "สัมผัสกับโมเดล AI โอเพ่นซอร์สที่ใหญ่ที่สุดของโลก มีความสามารถที่ไม่เหมือนใครในการรู้ความ การเหตุผล และการสนับสนุนหลายภาษา ปลดล็อคพลังของ 405 พันพารามิเตอร์สำหรับโครงการที่ท้าทายที่สุดของคุณ",
     "sidebar__ai_language__selector__button__tooltip": "เปลี่ยนภาษาการตอบของ AI",
-    "image_mini_menu__title": "เครื่องมือ AI",
-    "image_mini_menu__menu_item__chat_with_image": "แชทพร้อมรูปภาพ"
+    "floating_menu__mini_menu__image__title": "เครื่องมือ AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "แชทพร้อมรูปภาพ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 de OpenAI, optimizado para velocidad y eficiencia, sobresale en aplicaciones en tiempo real que requieren creatividad y razonamiento avanzado con tiempos de respuesta mejorados y salida consistente.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Experimenta el modelo de IA de código abierto más grande del mundo, que ofrece capacidades incomparables en conocimiento, razonamiento y soporte multilingüe. Desbloquea el poder de 405 mil millones de parámetros para tus proyectos más ambiciosos.",
     "sidebar__ai_language__selector__button__tooltip": "Cambiar idioma de respuesta de IA",
-    "image_mini_menu__title": "Herramientas de IA",
-    "image_mini_menu__menu_item__chat_with_image": "Chat con Imagen"
+    "floating_menu__mini_menu__image__title": "Herramientas de IA",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat con Imagen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

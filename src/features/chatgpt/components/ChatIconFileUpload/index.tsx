@@ -13,6 +13,7 @@ import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIMod
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
@@ -76,7 +77,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   }, [files])
 
   useEffect(() => {
-    window.canChatWithImage = true
+    OneShotCommunicator.send('CanUseChatWithImage', true)
   }, [])
 
   if (

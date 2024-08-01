@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI GPT-4, optimizēts ātrumam un efektivitātei, izceļas reāllaika lietojumprogrammās, kas prasa radošumu un uzlabotu loģisko domāšanu ar uzlabotiem atbildes laikiem un vienmērīgu izvadi.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Iepazīstiet pasaulē lielāko atvērtā koda AI modeli, kas piedāvā nevienlīdzīgas iespējas zināšanās, loģikas un daudzvalodu atbalstā. Atbloķējiet 405 miljardu parametru jaudu savām vissarežģītākajām projektam.",
     "sidebar__ai_language__selector__button__tooltip": "Mainīt AI atbildes valodu",
-    "image_mini_menu__title": "AI Rīki",
-    "image_mini_menu__menu_item__chat_with_image": "Čats ar Attēlu"
+    "floating_menu__mini_menu__image__title": "AI Rīki",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Čats ar Attēlu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

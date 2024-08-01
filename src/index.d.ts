@@ -1,16 +1,8 @@
-import { IImageMiniMenuAppInstance } from '../src/imageMiniMenu'
 type ValueOf<T> = T[keyof T]
 
 declare module '*.less' {
   const value: string
   export default value
-}
-
-declare global {
-  interface Window {
-    ImageMiniMenuAppInstance: IImageMiniMenuAppInstance
-    canChatWithImage?: boolean
-  }
 }
 
 export { IChromeExtensionDBStorageUpdateFunction } from '@/background/utils'

@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAIs GPT-4, optimerad för hastighet och effektivitet, utmärker sig i realtidsapplikationer som kräver kreativitet och avancerad resonemang med förbättrade svarstider och konsekvent resultat.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Upplev världens största öppen källkods-AI-modell, som erbjuder enastående kapacitet inom kunskap, resonemang och flerspråkigt stöd. Lås upp kraften hos 405 miljarder parametrar för dina mest ambitiösa projekt.",
     "sidebar__ai_language__selector__button__tooltip": "Ändra AI-svarspråk",
-    "image_mini_menu__title": "AI Verktyg",
-    "image_mini_menu__menu_item__chat_with_image": "Chatta med Bild"
+    "floating_menu__mini_menu__image__title": "AI Verktyg",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chatta med Bild"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

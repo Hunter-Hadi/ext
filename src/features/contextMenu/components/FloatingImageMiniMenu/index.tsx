@@ -12,27 +12,42 @@ import {
 } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
-import { showChatBox } from '../sidebar/utils/sidebarChatBoxHelper'
+import { showChatBox } from '../../../sidebar/utils/sidebarChatBoxHelper'
+import useFloatingImageMiniMenu, {
+  FloatingImageMiniMenuStaticData,
+} from '../../hooks/useFloatingImageMiniMenu'
+import { FloatingImageMiniMenuState } from '../../store'
 
 const MenuList = () => {
   const { t } = useTranslation(['client'])
 
+  const setMenu = useSetRecoilState(FloatingImageMiniMenuState)
+
+  const canChatWithImageResolve = useRef(
+    new Promise((resolve) => {
+      OneShotCommunicator.receive('CanUseChatWithImage', resolve)
+    }),
+  )
+
   // 点击 Chat with Image
-  async function handleChatWithImage() {
-    showChatBox()
-    for (let i = 0; i < 30; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 100))
-      if (window.canChatWithImage) {
-        break
+  const handleChatWithImage = async () => {
+    setMenu((prevState) => {
+      return {
+        ...prevState,
+        show: false,
       }
-    }
+    })
+
+    showChatBox()
+    await canChatWithImageResolve.current
 
     OneShotCommunicator.send('QuickChatWithImage', {
-      img: window.ImageMiniMenuAppInstance?.currentHoverImage,
+      img: FloatingImageMiniMenuStaticData.currentHoverImage,
     })
       .then()
       .catch()
@@ -71,7 +86,9 @@ const MenuList = () => {
             <QuestionAnswerIcon sx={{ fontSize: '16px', color: '#fff' }} />
           </ListItemIcon>
           <ListItemText
-            primary={t('client:image_mini_menu__menu_item__chat_with_image')}
+            primary={t(
+              'client:floating_menu__mini_menu__image__menu_item__chat_with_image',
+            )}
             sx={{
               whiteSpace: 'nowrap',
               '& .use-chat-gpt-ai--MuiTypography-root': {
@@ -119,31 +136,61 @@ const CustomText = React.forwardRef(function CustomTextComponent(
           fontSize: '14px',
           overflow: 'hidden',
           marginLeft: '0px!important',
+          whiteSpace: 'nowrap',
         }}
       >
-        {t('client:image_mini_menu__title')}
+        {t('client:floating_menu__mini_menu__image__title')}
       </Box>
     </Box>
   )
 })
 
-const ImageMiniMenu = () => {
+const FloatingImageMiniMenu = () => {
   const tempRef = useRef<HTMLDivElement>(null)
   const [textRealWidth, setTextRealWidth] = useState('0px')
+  const [menuState, setMenu] = useRecoilState(FloatingImageMiniMenuState)
+
+  const timerHide = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useFloatingImageMiniMenu()
   useEffect(() => {
     // 获取元素实际渲染宽度
-    setTextRealWidth(tempRef.current!.offsetWidth + 1 + 'px')
+    tempRef.current && setTextRealWidth(tempRef.current.offsetWidth + 1 + 'px')
   }, [tempRef])
 
+  const handleMouseenterMenu = () => {
+    timerHide.current && clearTimeout(timerHide.current)
+    FloatingImageMiniMenuStaticData.mouseInMenu = true
+    setMenu((prevState) => {
+      return {
+        ...prevState,
+      }
+    })
+  }
+  const handleMouseleaveMenu = () => {
+    FloatingImageMiniMenuStaticData.mouseInMenu = false
+    timerHide.current = setTimeout(() => {
+      setMenu((prevState) => {
+        return {
+          ...prevState,
+          show: FloatingImageMiniMenuStaticData.mouseInImage,
+        }
+      })
+    }, 50)
+  }
   return (
     <Stack
+      id='MAX_AI_FLOATING_IMAGE_MINI_MENU'
       direction='row'
       spacing={2}
+      onMouseEnter={() => handleMouseenterMenu()}
+      onMouseLeave={() => handleMouseleaveMenu()}
       sx={{
+        display: menuState.show ? 'flex' : 'none',
         p: 1,
         position: 'fixed',
-        top: 'calc(var(--chat-with-image-bottom) + 10px)',
-        left: 'calc(var(--chat-with-image-left) + 10px)',
+        top: `calc(${menuState.position.top} + 10px)`,
+        left: `calc(${menuState.position.left} + 10px)`,
         transform: 'translateY(calc(-100% - 20px))',
         zIndex: 2147483648,
         backgroundColor: 'rgba(0, 0, 0, 0.7)',
@@ -169,10 +216,11 @@ const ImageMiniMenu = () => {
         ref={tempRef}
         sx={{
           width: 'auto',
-          position: 'fixed',
-          left: '-200px',
-          top: '-200px',
           color: 'red',
+          position: 'fixed',
+          left: '-2000px',
+          top: '-2000px',
+
           opacity: 0,
         }}
       />
@@ -194,4 +242,4 @@ const ImageMiniMenu = () => {
   )
 }
 
-export { ImageMiniMenu }
+export { FloatingImageMiniMenu }

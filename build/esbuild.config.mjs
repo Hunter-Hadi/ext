@@ -76,7 +76,6 @@ async function esbuildConfig() {
       'src/pages/popup/index.tsx',
       'src/pages/chatgpt/fileUploadServer.ts',
       'src/searchWithAI.ts',
-      'src/imageMiniMenu.tsx',
       'src/apps/content-scripts/checkMaxAIStatus',
       'src/apps/content-scripts/contentArkoseTokenIframe.ts',
       'src/apps/content-scripts/injectDocumentStart.ts',

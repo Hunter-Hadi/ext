@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 ya OpenAI, iliyooanishwa kwa kasi na ufanisi, ina mafanikio katika matumizi ya wakati halisi yanayohitaji ubunifu na mantiki ya juu pamoja na nyakati za majibu zilizoboreshwa na matokeo thabiti.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Pata uzoefu wa mfano mkubwa zaidi wa AI wa chanzo wazi duniani, ukiwa na uwezo usio na kifani katika maarifa, mantiki, na msaada wa lugha nyingi. Fungua nguvu ya parameta bilioni 405 kwa miradi yako yenye malengo makubwa zaidi.",
     "sidebar__ai_language__selector__button__tooltip": "Badilisha lugha ya majibu ya AI",
-    "image_mini_menu__title": "Vifaa vya AI",
-    "image_mini_menu__menu_item__chat_with_image": "Jadili na Picha"
+    "floating_menu__mini_menu__image__title": "Vifaa vya AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Jadili na Picha"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

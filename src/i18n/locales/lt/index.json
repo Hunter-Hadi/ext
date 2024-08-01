@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI GPT-4, optimizuotas greičiui ir efektyvumui, išsiskiria realaus laiko taikymais, reikalaujančiais kūrybiškumo ir pažangaus mąstymo su padidintais atsakymo laikais ir nuosekliu rezultatu.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Patirkite pasaulio didžiausią atviro kodo AI modelį, siūlantį beprecedentines galimybes žinioms, mąstymui ir daugiakalbėm palaikymui. Atrakinkite 405 milijardų parametrų galia savo ambicingiausiems projektams.",
     "sidebar__ai_language__selector__button__tooltip": "Pakeisti dirbtinio intelekto atsakymų kalbą",
-    "image_mini_menu__title": "AI Įrankiai",
-    "image_mini_menu__menu_item__chat_with_image": "Pokalbis su Nuotrauka"
+    "floating_menu__mini_menu__image__title": "AI Įrankiai",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Pokalbis su Nuotrauka"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

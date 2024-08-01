@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "GPT-4 на OpenAI, оптимизиран за скорост и ефективност, се отличава в реално време приложения, изискващи креативност и напреднали резониране с подобрени времена за отговор и последователен изход.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "Изживейте най-големият отворен източник на света AI модел, предлагащ непревзходими възможности в знание, резониране и многоезична поддръжка. Отключете силата на 405 милиарда параметри за вашите най-амбициозни проекти.",
     "sidebar__ai_language__selector__button__tooltip": "Промяна на езика на отговора на AI",
-    "image_mini_menu__title": "Инструменти за AI",
-    "image_mini_menu__menu_item__chat_with_image": "Чат с Изображение"
+    "floating_menu__mini_menu__image__title": "Инструменти за AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Чат с Изображение"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

@@ -1,7 +1,7 @@
 /**
  * base64 to blob
  */
-export function dataURItoBlob(dataURI: string) {
+export const dataURItoBlob = (dataURI: string) => {
   const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0] // mime类型
   const byteString = self.atob(dataURI.split(',')[1]) //base64 解码
   const arrayBuffer = new ArrayBuffer(byteString.length) //创建缓冲数组
@@ -61,7 +61,7 @@ export const convertBase64ToBlob = (base64: string, contentType = '') => {
 /**
  * image to blob
  */
-export function imageToBlob(image: HTMLImageElement) {
+export const imageToBlob = (image: HTMLImageElement) => {
   return new Promise<Blob>((resolve, reject) => {
     if (image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) {
       resolve(imageToBlobLoaded(image))
@@ -79,7 +79,7 @@ export function imageToBlob(image: HTMLImageElement) {
 /**
  * image to blob(image loaded)
  */
-function imageToBlobLoaded(image: HTMLImageElement) {
+const imageToBlobLoaded = (image: HTMLImageElement) => {
   const canvas = document.createElement('canvas')
   canvas.width = image.naturalWidth
   canvas.height = image.naturalHeight
@@ -104,6 +104,6 @@ function imageToBlobLoaded(image: HTMLImageElement) {
 /**
  * blob to File
  */
-export function blobToFile(blob: Blob, fileName: string) {
+export const blobToFile = (blob: Blob, fileName: string) => {
   return new File([blob], fileName, { type: blob.type })
 }

@@ -1055,8 +1055,8 @@
     "permission__pricing_hook__advanced_text_usage__gpt_4__description": "OpenAI ನ GPT-4, ವೇಗ ಮತ್ತು ದಕ್ಷತೆಗಾಗಿ ಅನುಕೂಲಿತವಾಗಿದೆ, ಸೃಜನಾತ್ಮಕತೆ ಮತ್ತು ಉನ್ನತ ತರ್ಕದ ಅಪೇಕ್ಷಿತ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಹೊಂದಿದೆ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸುವ ಅಪ್ಲಿಕೇಶನ್ಗಳಲ್ಲಿ ಉತ್ತಮ ಪ್ರತಿಕ್ರಿಯೆಗಳು ಮತ್ತು ಸ್ಥಿರ ಆಉಟ್‌ಪುಟ್.",
     "permission__pricing_hook__advance_text_usage__llama_3_1_405b__description": "ವಿಶ್ವದ ಅತ್ಯಂತ ದೊರೆಯಾದ ಓಪನ್-ಸೋರ್ಸ್ AI ಮಾದರಿ, ಜ್ಞಾನ, ತರ್ಕನೀಯತೆ, ಮತ್ತು ಬಹುಭಾಷಾ ಬೆಂಬಲದಲ್ಲಿ ಅಪೂರ್ವ ಸಾಮರ್ಥ್ಯಗಳನ್ನು ಒದಾಯಿಸುತ್ತದೆ. 405 ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳ ಶಕ್ತಿಯನ್ನು ನಿಮ್ಮ ಅತ್ಯಂತ ಉತ್ಸಾಹಕರ ಯೋಜನೆಗಳಿಗಾಗಿ ಅನ್ಲಾಕ್ ಮಾಡಿ.",
     "sidebar__ai_language__selector__button__tooltip": "AI ಉತ್ತರ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಿ",
-    "image_mini_menu__title": "ಏಐ ಸಾಧನಗಳು",
-    "image_mini_menu__menu_item__chat_with_image": "ಚಿತ್ರದೊಂದಿಗೆ ಚಾಟ್"
+    "floating_menu__mini_menu__image__title": "ಏಐ ಸಾಧನಗಳು",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "ಚಿತ್ರದೊಂದಿಗೆ ಚಾಟ್"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

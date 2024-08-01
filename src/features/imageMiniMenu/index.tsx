@@ -142,10 +142,11 @@ const ImageMiniMenu = () => {
       sx={{
         p: 1,
         position: 'fixed',
-        top: 'calc(var(--chat-with-image-top) + 10px)',
+        top: 'calc(var(--chat-with-image-bottom) + 10px)',
         left: 'calc(var(--chat-with-image-left) + 10px)',
-        zIndex: 99999,
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        transform: 'translateY(calc(-100% - 20px))',
+        zIndex: 2147483648,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
         borderRadius: '6px',
         '&:hover': {
           cursor: 'pointer',

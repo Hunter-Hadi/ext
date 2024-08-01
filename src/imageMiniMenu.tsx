@@ -17,7 +17,7 @@ function createAppInstance() {
     rootEl = document.createElement('div')
   }
   rootEl.id = CHAT_WITH_IMAGE_ROOT_ID
-  document.body.appendChild(rootEl)
+  document.documentElement.appendChild(rootEl)
 
   function createApp() {
     const app = createRoot(rootEl!)
@@ -77,9 +77,17 @@ function injectImageMiniMenu() {
   // 根据图片计算位置
   function calcComponentPositionByImage(img: HTMLImageElement) {
     const rect = img.getBoundingClientRect()
-    // 在body上添加css变量 --chat-with-image-bottom
-    document.body.style.setProperty('--chat-with-image-top', rect.top + 'px')
-    document.body.style.setProperty('--chat-with-image-left', rect.left + 'px')
+    console.log('img rect: ', rect)
+    if (appInstance) {
+      appInstance.rootEl.style.setProperty(
+        '--chat-with-image-bottom',
+        rect.bottom + 'px',
+      )
+      appInstance.rootEl.style.setProperty(
+        '--chat-with-image-left',
+        rect.left + 'px',
+      )
+    }
   }
 
   let timerHideApp: ReturnType<typeof setTimeout> | null = null

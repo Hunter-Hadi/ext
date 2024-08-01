@@ -37,7 +37,7 @@ const ThirdPartyAIProviderModelSelectorDetail: FC = () => {
             TooltipProps={{
               placement: 'top',
             }}
-            lineClamp={5}
+            lineClamp={10}
           >
             {t(
               'client:sidebar__ai_provider__model_selector__third_party_ai_provider__description',

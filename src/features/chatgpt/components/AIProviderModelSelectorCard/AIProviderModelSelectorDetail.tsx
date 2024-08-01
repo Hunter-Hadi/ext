@@ -95,7 +95,7 @@ const AIProviderModelSelectorDetail: FC<{
                 TooltipProps={{
                   placement: 'top',
                 }}
-                lineClamp={10}
+                lineClamp={16}
               >
                 {currentAIProviderModelDetail?.poweredBy &&
                   t(`client:provider__model__tooltip_card__label__powered_by`, {

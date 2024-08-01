@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import DevContent from '@/components/DevContent'
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
@@ -14,6 +14,11 @@ import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import SidebarFilesDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarFilesDropBox'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import {
+  isShowChatBox,
+  showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { wait } from '@/utils'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const Test = () => {
@@ -34,7 +39,8 @@ const Test = () => {
 }
 
 const SidebarChatPanel = () => {
-  const { currentSidebarConversationType } = useSidebarSettings()
+  const { currentSidebarConversationType, updateSidebarConversationType } =
+    useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
   const {
@@ -48,14 +54,29 @@ const SidebarChatPanel = () => {
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { startTextToImage } = useArtTextToImage()
 
+  const createSearchWithAIRef = useRef(createSearchWithAI)
+  createSearchWithAIRef.current = createSearchWithAI
+
   useEffect(() => {
     return OneShotCommunicator.receive(
       'QuickSearchSelectedText',
       async (data) => {
-        await createSearchWithAI(data.question, data.includeHistory || false)
+        if (!isShowChatBox()) {
+          showChatBox()
+        }
+        if (currentSidebarConversationType !== 'Search') {
+          updateSidebarConversationType('Search')
+          // 下面写法主要为了修复sidebar从其他板块切到Search板块后，conversationId变了
+          // 这里加一个等待，让createSearchWithAI方法拿到最新的作用域，后续重新规整后优化
+          await wait(100)
+        }
+        await createSearchWithAIRef.current(
+          data.question,
+          data.includeHistory || false,
+        )
       },
     )
-  }, [createSearchWithAI])
+  }, [currentSidebarConversationType])
 
   useClientConversationListener()
 

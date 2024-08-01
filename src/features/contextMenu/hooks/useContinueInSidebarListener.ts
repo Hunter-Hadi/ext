@@ -55,7 +55,6 @@ export default function useContinueInSidebarListener() {
           conversationId,
           {},
           { syncConversationToDB: true, waitSync: true },
-          false,
         )
 
         // 清除once

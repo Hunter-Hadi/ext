@@ -438,7 +438,6 @@ const useSidebarSettings = () => {
       syncConversationToDB?: boolean
       waitSync?: boolean
     },
-    sync = true,
   ) => {
     if (isContinueInChatProgressRef.current) {
       return
@@ -468,12 +467,11 @@ const useSidebarSettings = () => {
           ? 'contextMenu'
           : newConversation.type.toLowerCase()
 
-      const promise = updateSidebarSettings({
+      await updateSidebarSettings({
         [scope]: {
           conversationId: newConversation.id,
         },
       })
-      if (sync) await promise
 
       updateSidebarConversationType(
         newConversation.type as ISidebarConversationType,

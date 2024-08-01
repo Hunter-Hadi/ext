@@ -163,3 +163,11 @@ export const FloatingContextWindowChangesState = atom<{
     discardChangesModalVisible: false,
   },
 })
+
+export const FloatingImageMiniMenuState = atom({
+  key: 'FloatingImageMiniMenuState',
+  default: {
+    show: false,
+    position: { top: '0px', left: '0px' },
+  },
+})

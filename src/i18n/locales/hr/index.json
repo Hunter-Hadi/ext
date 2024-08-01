@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Vrhunski model sljedeće generacije s 123 milijarde parametara i prozorom konteksta od 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Značajno poboljšane sposobnosti u generiranju koda, matematici i zaključivanju",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Poboljšana višejezična podrška za desetke jezika i 80+ programske jezike",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Poboljšane sposobnosti praćenja uputa i razgovorne sposobnosti"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Poboljšane sposobnosti praćenja uputa i razgovorne sposobnosti",
+    "floating_menu__mini_menu__image__title": "Alati za AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Razgovor s slikom",
+    "immersive_chat__delete_rewrite__title": "Izbrisati prepis?",
+    "immersive_chat__delete_rewrite__button__title": "Izbriši prepis",
+    "immersive_chat__rewrite_no_conversation__title": "Još nema dostupne povijesti prepisa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

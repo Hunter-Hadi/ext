@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳೊಂದಿಗೆ ಮುಂತಾದ ಮುಂತಾದ ತಂತ್ರಜ್ಞಾನ ಮಾದರಿ ಮತ್ತು 128k ಸಂದರ್ಭ ವಿಂಡೋ",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "ಕೋಡ್ ರಚನೆ, ಗಣಿತ ಮತ್ತು ಬುದ್ಧಿವಾದದಲ್ಲಿ ವಿಶೇಷವಾಗಿ ಮೆಲ್ಲಗೆಯಾದ ಸಾಮರ್ಥ್ಯಗಳು",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "ಅನೇಕ ಭಾಷೆಗಳ ಮತ್ತು 80+ ಕೋಡಿಂಗ್ ಭಾಷೆಗಳ ಮಾದರಿಯ ಬೆಂಬಲವನ್ನು ಸುಧಾರಿಸಲಾಗಿದೆ",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "ಮೆಲ್ಲಗೆ ನಡೆಸುವ ಮತ್ತು ಸಂವಾದಾತ್ಮಕ ಸಾಮರ್ಥ್ಯಗಳಲ್ಲಿ ಸುಧಾರಿತ ನಿರ್ದೇಶನಗಳು"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "ಮೆಲ್ಲಗೆ ನಡೆಸುವ ಮತ್ತು ಸಂವಾದಾತ್ಮಕ ಸಾಮರ್ಥ್ಯಗಳಲ್ಲಿ ಸುಧಾರಿತ ನಿರ್ದೇಶನಗಳು",
+    "floating_menu__mini_menu__image__title": "AI ಸಾಧನಗಳು",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "ಚಾಟ್ ವಿಥ್ ಇಮೇಜ್",
+    "immersive_chat__delete_rewrite__title": "ಮಾರ್ಜನ್ ಅಳಿಸು?",
+    "immersive_chat__delete_rewrite__button__title": "ಮಾರ್ಜನ್ ಅಳಿಸು",
+    "immersive_chat__rewrite_no_conversation__title": "ಇನ್ನು ಮಾರ್ಜನ್ ಇತಿಹಾಸ ಲಭ್ಯವಿಲ್ಲ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

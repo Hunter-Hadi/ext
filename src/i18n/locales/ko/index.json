@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 억 개의 매개변수와 128k 컨텍스트 창을 갖춘 차세대 플래그십 모델",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "코드 생성, 수학 및 추론 능력이 크게 향상됨",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "수십 개의 언어 및 80개 이상의 코딩 언어에 대한 향상된 다국어 지원",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "개선된 지시 따르기 및 대화 능력"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "개선된 지시 따르기 및 대화 능력",
+    "floating_menu__mini_menu__image__title": "AI 도구",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "이미지와 채팅",
+    "immersive_chat__delete_rewrite__title": "다시 쓰기 삭제?",
+    "immersive_chat__delete_rewrite__button__title": "다시 쓰기 삭제",
+    "immersive_chat__rewrite_no_conversation__title": "아직 사용 가능한 다시 쓰기 기록이 없습니다"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

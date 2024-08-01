@@ -4,6 +4,7 @@ declare module '*.less' {
   const value: string
   export default value
 }
+
 export { IChromeExtensionDBStorageUpdateFunction } from '@/background/utils'
 export { IChromeExtensionDBStorage } from '@/background/utils'
 export { IChromeExtensionButtonSettingKey } from '@/background/utils'

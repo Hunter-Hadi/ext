@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 பில்லியன் பராமீட்டர்களுடன் மற்றும் 128k உள்ளடக்க சாளரம் உடைய அடுக்கு மாதிரி மாதிரி",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "குறியீட்டு, கணிதம், மற்றும் காரணம் பல மேலும் மேம்படுத்தப்பட்ட திறன்கள்",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "பல மொழிகளுக்கு மேலும் 80+ குறியீட்டு மொழிகளுக்கு மேம்படுத்தப்பட்ட மொழிகளில் மேம்படுத்தப்பட்ட ஆதரவு",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "மேம்படுத்தப்பட்ட உத்தியை பின்பற்றுவது மற்றும் உரையாடல் திறன்கள் மேம்படுத்தப்பட்டன"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "மேம்படுத்தப்பட்ட உத்தியை பின்பற்றுவது மற்றும் உரையாடல் திறன்கள் மேம்படுத்தப்பட்டன",
+    "floating_menu__mini_menu__image__title": "ஏஆய் கருவிகள்",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "படத்துடன் உரை",
+    "immersive_chat__delete_rewrite__title": "மீட்டமைப்பை நீக்கவும்?",
+    "immersive_chat__delete_rewrite__button__title": "மீட்டமைப்பை நீக்கு",
+    "immersive_chat__rewrite_no_conversation__title": "இன்னும் மீட்டமைப்பு வரலாம் என்று எதுக்கும் இல்லை"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

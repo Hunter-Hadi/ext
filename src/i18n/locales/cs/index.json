@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Vlajkový model nové generace s 123 miliardami parametrů a 128k oknem kontextu",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Výrazně zlepšené schopnosti v generování kódu, matematice a logice",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Vylepšená podpora vícejazyčnosti pro desítky jazyků a 80+ programovacích jazyků",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Zlepšené schopnosti následování instrukcí a konverzační schopnosti"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Zlepšené schopnosti následování instrukcí a konverzační schopnosti",
+    "floating_menu__mini_menu__image__title": "Nástroje AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat s obrázkem",
+    "immersive_chat__delete_rewrite__title": "Smazat přepsání?",
+    "immersive_chat__delete_rewrite__button__title": "Smazat přepsání",
+    "immersive_chat__rewrite_no_conversation__title": "Žádná historie přepsání zatím není k dispozici"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

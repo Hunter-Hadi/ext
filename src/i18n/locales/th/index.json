@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "โมเดลธงรุ่นใหม่พร้อมพารามิเตอร์ 123 พันล้านและหน้าต่างข้อความ 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "ความสามารถที่ปรับปรุงอย่างมีนัยสำคัญในการสร้างโค้ด คณิตศาสตร์ และการเหตุผล",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "การสนับสนุนหลายภาษาที่ปรับปรุงสำหรับหลายภาษาและภาษาโค้ด 80+",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "ความสามารถในการตามคำสั่งและการสนทนาที่ปรับปรุง"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "ความสามารถในการตามคำสั่งและการสนทนาที่ปรับปรุง",
+    "floating_menu__mini_menu__image__title": "เครื่องมือ AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "พูดคุยพร้อมรูปภาพ",
+    "immersive_chat__delete_rewrite__title": "ลบการเขียนใหม่?",
+    "immersive_chat__delete_rewrite__button__title": "ลบการเขียนใหม่",
+    "immersive_chat__rewrite_no_conversation__title": "ยังไม่มีประวัติการเขียนใหม่"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

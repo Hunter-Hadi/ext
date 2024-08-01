@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modello ammiraglio di prossima generazione con 123 miliardi di parametri e finestra di contesto da 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacità significativamente migliorate nella generazione di codice, matematica e ragionamento",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Supporto multilingue potenziato per decine di lingue e oltre 80 linguaggi di programmazione",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Migliorate capacità di seguire le istruzioni e conversazionali"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Migliorate capacità di seguire le istruzioni e conversazionali",
+    "floating_menu__mini_menu__image__title": "Strumenti AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat con Immagine",
+    "immersive_chat__delete_rewrite__title": "Eliminare riscrittura?",
+    "immersive_chat__delete_rewrite__button__title": "Elimina riscrittura",
+    "immersive_chat__rewrite_no_conversation__title": "Nessuna cronologia di riscrittura disponibile ancora"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

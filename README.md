@@ -36,7 +36,7 @@
 
 统一用pnpm/nvm
 
-1. 在.zhsrc中加入以下代码
+1. 在.zshrc中加入以下代码
 ```shell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

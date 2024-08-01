@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 milyar parametre ve 128k bağlam penceresine sahip yeni nesil amiral gemisi model",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Kod oluşturma, matematik ve mantık alanlarında önemli ölçüde gelişmiş yetenekler",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Onlarca dil ve 80'den fazla kodlama diline yönelik geliştirilmiş çoklu dil desteği",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "İyileştirilmiş talimatları takip etme ve konuşma yetenekleri"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "İyileştirilmiş talimatları takip etme ve konuşma yetenekleri",
+    "floating_menu__mini_menu__image__title": "AI Araçları",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Resimli Sohbet",
+    "immersive_chat__delete_rewrite__title": "Yeniden Yazma Silinsin mi?",
+    "immersive_chat__delete_rewrite__button__title": "Yeniden Yazmayı Sil",
+    "immersive_chat__rewrite_no_conversation__title": "Henüz yeniden yazma geçmişi yok"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

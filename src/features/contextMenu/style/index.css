@@ -18,3 +18,9 @@
 #USE_CHAT_GPT_AI_ROOT_Context_Menu_Portal:has(.contexify) {
   visibility: visible !important;
 }
+
+#USE_CHAT_GPT_AI_ROOT_Context_Menu_Portal:has(
+    #MAX_AI_FLOATING_IMAGE_MINI_MENU
+  ) {
+  visibility: visible !important;
+}

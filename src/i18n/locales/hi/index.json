@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 अरब पैरामीटर और 128k संदर्भ विंडो के साथ अगली पीढ़ी का प्रमुख मॉडल",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "कोड जेनरेशन, गणित, और तर्क में काफी सुधारित क्षमताएँ",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "दर्जनों भाषाओं और 80+ कोडिंग भाषाओं के लिए बढ़िया बहुभाषी समर्थन",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "सुधारी गई निर्देश-पालन और वार्तालापीय क्षमताएँ"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "सुधारी गई निर्देश-पालन और वार्तालापीय क्षमताएँ",
+    "floating_menu__mini_menu__image__title": "एआई टूल्स",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "छवि के साथ चैट",
+    "immersive_chat__delete_rewrite__title": "रीव्राइट हटाएं?",
+    "immersive_chat__delete_rewrite__button__title": "रीव्राइट हटाएं",
+    "immersive_chat__rewrite_no_conversation__title": "अब तक कोई रीव्राइट इतिहास उपलब्ध नहीं है"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

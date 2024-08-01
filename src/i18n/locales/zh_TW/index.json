@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "擁有1230億參數和128k上下文窗口的下一代旗艦型號",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "在代碼生成、數學和推理方面顯著提升的能力",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "為數十種語言和80多種編程語言提供增強的多語言支持",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "改進的指令遵循和對話能力"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "改進的指令遵循和對話能力",
+    "floating_menu__mini_menu__image__title": "AI 工具",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "圖片聊天",
+    "immersive_chat__delete_rewrite__title": "刪除重寫？",
+    "immersive_chat__delete_rewrite__button__title": "刪除重寫",
+    "immersive_chat__rewrite_no_conversation__title": "尚無可用的重寫歷史"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

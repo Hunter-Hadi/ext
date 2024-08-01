@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modelul de vârf de nouă generație cu 123 de miliarde de parametri și fereastră de context de 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacități semnificativ îmbunătățite în generarea de cod, matematică și raționament",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Suport multilingv îmbunătățit pentru zeci de limbi și peste 80 de limbaje de programare",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Capacități îmbunătățite de urmărire a instrucțiunilor și conversaționale"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Capacități îmbunătățite de urmărire a instrucțiunilor și conversaționale",
+    "floating_menu__mini_menu__image__title": "Instrumente AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat cu Imagine",
+    "immersive_chat__delete_rewrite__title": "Șterge rescriere?",
+    "immersive_chat__delete_rewrite__button__title": "Șterge rescriere",
+    "immersive_chat__rewrite_no_conversation__title": "Nicio istorie de rescriere disponibilă încă"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Πρωτοποριακό μοντέλο επόμενης γενιάς με 123 δισεκατομμύρια παραμέτρους και παράθυρο 128k context",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Σημαντικά βελτιωμένες δυνατότητες στη γεννήτρια κώδικα, τα μαθηματικά και τον συλλογισμό",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Βελτιωμένη υποστήριξη πολλαπλών γλωσσών για δεκάδες γλώσσες και 80+ γλώσσες κωδικοποίησης",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Βελτιωμένες δυνατότητες ακολουθίας οδηγιών και συνομιλίας"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Βελτιωμένες δυνατότητες ακολουθίας οδηγιών και συνομιλίας",
+    "floating_menu__mini_menu__image__title": "Εργαλεία ΤΝ",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Συνομιλία με Εικόνα",
+    "immersive_chat__delete_rewrite__title": "Διαγραφή επανεγγραφής;",
+    "immersive_chat__delete_rewrite__button__title": "Διαγραφή επανεγγραφής",
+    "immersive_chat__rewrite_no_conversation__title": "Δεν υπάρχει διαθέσιμο ιστορικό επανεγγραφής ακόμα"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

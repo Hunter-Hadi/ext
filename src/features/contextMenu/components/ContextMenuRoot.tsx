@@ -15,6 +15,7 @@ import {
 import { MAXAI_CONTEXT_MENU_ID } from '@/features/common/constants'
 import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
 import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
+import { FloatingImageMiniMenu } from '@/features/contextMenu/components/FloatingImageMiniMenu'
 import FloatingMiniMenu from '@/features/contextMenu/components/FloatingMiniMenu'
 import GoogleDocInject from '@/features/contextMenu/components/GoogleDocInject'
 import InputAssistantButtonPortal from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonPortal'
@@ -100,6 +101,7 @@ const ContextMenuRoot: FC = () => {
               {/*<AppThemeProvider shadowRootElement={props.rootContainer!}>*/}
               <FloatingContextMenu root={props.rootContainer} />
               <FloatingShortCutsTip />
+              <FloatingImageMiniMenu />
               <FloatingMiniMenu />
               <GoogleDocInject />
               <InputAssistantButtonPortal />

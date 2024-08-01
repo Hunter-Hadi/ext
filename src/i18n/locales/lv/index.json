@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Nākamās paaudzes karoga modelis ar 123 miljardiem parametriem un 128k konteksta logu",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Ievērojami uzlabotas spējas kodu ģenerēšanā, matemātikā un loģikā",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Pilnveidots daudzvalodu atbalsts vairākām valodām un 80+ programmēšanas valodām",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Uzlabota instrukciju izpildes un sarunu spēja"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Uzlabota instrukciju izpildes un sarunu spēja",
+    "floating_menu__mini_menu__image__title": "AI Rīki",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Čats ar Attēlu",
+    "immersive_chat__delete_rewrite__title": "Dzēst pārrakstīšanu?",
+    "immersive_chat__delete_rewrite__button__title": "Dzēst pārrakstīšanu",
+    "immersive_chat__rewrite_no_conversation__title": "Nav pieejama pārrakstīšanas vēsture"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

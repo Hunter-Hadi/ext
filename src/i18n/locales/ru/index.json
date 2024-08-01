@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Флагман следующего поколения с 123 миллиардами параметров и 128k окном контекста",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Значительно улучшенные возможности в генерации кода, математике и рассуждениях",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Расширенная многоязычная поддержка для десятков языков и 80+ языков программирования",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Улучшенные возможности следования инструкциям и разговорные навыки"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Улучшенные возможности следования инструкциям и разговорные навыки",
+    "floating_menu__mini_menu__image__title": "Инструменты ИИ",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Чат с изображением",
+    "immersive_chat__delete_rewrite__title": "Удалить переписку?",
+    "immersive_chat__delete_rewrite__button__title": "Удалить переписку",
+    "immersive_chat__rewrite_no_conversation__title": "История переписки пока недоступна"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

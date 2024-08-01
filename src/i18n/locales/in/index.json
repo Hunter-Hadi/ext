@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Model unggulan generasi berikutnya dengan 123 miliar parameter dan jendela konteks 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Kemampuan yang signifikan ditingkatkan dalam generasi kode, matematika, dan penalaran",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Dukungan multibahasa yang ditingkatkan untuk puluhan bahasa dan 80+ bahasa pemrograman",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Kemampuan mengikuti instruksi dan percakapan yang ditingkatkan"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Kemampuan mengikuti instruksi dan percakapan yang ditingkatkan",
+    "floating_menu__mini_menu__image__title": "Alat AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Obrolan dengan Gambar",
+    "immersive_chat__delete_rewrite__title": "Hapus ulang?",
+    "immersive_chat__delete_rewrite__button__title": "Hapus ulang",
+    "immersive_chat__rewrite_no_conversation__title": "Belum ada riwayat ulang"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

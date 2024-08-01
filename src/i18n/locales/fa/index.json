@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "مدل پرچمدار نسل بعدی با 123 میلیارد پارامتر و پنجره 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "قابلیت‌های بهبود یافته قابل توجه در تولید کد، ریاضیات و استدلال",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "پشتیبانی چندزبانه بهبود یافته برای ده‌ها زبان و 80+ زبان برنامه‌نویسی",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "قابلیت‌های بهبود یافته در دنبال کردن دستورالعمل و مکالمه"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "قابلیت‌های بهبود یافته در دنبال کردن دستورالعمل و مکالمه",
+    "floating_menu__mini_menu__image__title": "ابزارهای هوش مصنوعی",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "چت با تصویر",
+    "immersive_chat__delete_rewrite__title": "حذف بازنویسی؟",
+    "immersive_chat__delete_rewrite__button__title": "حذف بازنویسی",
+    "immersive_chat__rewrite_no_conversation__title": "هنوز تاریخچه بازنویسی موجود نیست"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

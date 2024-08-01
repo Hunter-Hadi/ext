@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 బిలియన్ పయారమీటర్లతో ముందుకు వెళ్ళే ఫ్లాగ్‌షిప్ మోడల్ మరియు 128k సందర్భ విండో",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "కోడ్ జనరేషన్, గణితం, మరియు తరువాత అనుకరణలలో మీరు ముందుకు వెళ్ళినప్పుడు మెరుగుపరచిన సామర్థ్యాలు",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "అనేక భాషలలో మరియు 80+ కోడింగ్ భాషలలో మెరుగుపరచిన బహుభాషా మద్దతు",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "మెరుగుపరచిన నిర్దేశాలకు అనుసరించడం మరియు సంభాషణ సామర్థ్యలను మెరుగుపరచింది"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "మెరుగుపరచిన నిర్దేశాలకు అనుసరించడం మరియు సంభాషణ సామర్థ్యలను మెరుగుపరచింది",
+    "floating_menu__mini_menu__image__title": "ఏఆయ్లు సాధనాలు",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "చాట్ విత్ ఇమేజ్",
+    "immersive_chat__delete_rewrite__title": "తిరిగి రాయడం తొలగించాలా?",
+    "immersive_chat__delete_rewrite__button__title": "తిరిగి రాయడం తొలగించు",
+    "immersive_chat__rewrite_no_conversation__title": "ఇంకా రాయడం చర్చ ఇంకా లేదు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

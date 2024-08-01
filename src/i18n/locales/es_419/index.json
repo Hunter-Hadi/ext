@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modelo insignia de próxima generación con 123 mil millones de parámetros y ventana de contexto de 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacidades significativamente mejoradas en generación de código, matemáticas y razonamiento",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Soporte multilingüe mejorado para docenas de idiomas y 80+ lenguajes de programación",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Mejora en capacidades de seguimiento de instrucciones y conversacionales"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Mejora en capacidades de seguimiento de instrucciones y conversacionales",
+    "floating_menu__mini_menu__image__title": "Herramientas de IA",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat con Imagen",
+    "immersive_chat__delete_rewrite__title": "¿Eliminar reescritura?",
+    "immersive_chat__delete_rewrite__button__title": "Eliminar reescritura",
+    "immersive_chat__rewrite_no_conversation__title": "Aún no hay historial de reescritura disponible"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

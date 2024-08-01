@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "পরবর্তী প্রজনন প্রধান মডেল ১২৩ বিলিয়ন প্যারামিটার এবং ১২৮কে কনটেক্সট উইন্ডো",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "কোড জেনারেশন, গণিত, এবং তার্কিক ক্ষমতায় অত্যন্ত উন্নত সম্ভাবনা",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "বহুভাষিক সমর্থন উন্নত করা হয়েছে বিভিন্ন ভাষা এবং ৮০+ কোডিং ভাষার জন্য",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "উন্নত নির্দেশ-অনুসরণ এবং অভিনয় ক্ষমতা"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "উন্নত নির্দেশ-অনুসরণ এবং অভিনয় ক্ষমতা",
+    "floating_menu__mini_menu__image__title": "এআই টুলস",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "চ্যাট উইথ ইমেজ",
+    "immersive_chat__delete_rewrite__title": "রিওয়্রাইট মুছে ফেলবেন?",
+    "immersive_chat__delete_rewrite__button__title": "রিওয়্রাইট মুছুন",
+    "immersive_chat__rewrite_no_conversation__title": "এখনও রিওয়্রাইট হিস্ট্রি পাওয়া যায়নি"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modelo principal de próxima geração com 123 biliões de parâmetros e janela de contexto de 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacidades significativamente melhoradas na geração de código, matemática e raciocínio",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Suporte multilingue aprimorado para dezenas de idiomas e mais de 80 idiomas de programação",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Capacidades aprimoradas de seguir instruções e conversação"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Capacidades aprimoradas de seguir instruções e conversação",
+    "floating_menu__mini_menu__image__title": "Ferramentas de IA",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat com Imagem",
+    "immersive_chat__delete_rewrite__title": "Eliminar reescrita?",
+    "immersive_chat__delete_rewrite__button__title": "Eliminar reescrita",
+    "immersive_chat__rewrite_no_conversation__title": "Sem histórico de reescrita disponível ainda"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

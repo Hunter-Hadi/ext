@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "1230億のパラメータと128kのコンテキストウィンドウを搭載した次世代フラッグシップモデル",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "コード生成、数学、および推論の能力が大幅に向上",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "数十の言語と80以上のコーディング言語に対する強化された多言語サポート",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "指示の追跡と会話能力が向上"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "指示の追跡と会話能力が向上",
+    "floating_menu__mini_menu__image__title": "AI ツール",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "画像付きチャット",
+    "immersive_chat__delete_rewrite__title": "書き直しを削除しますか？",
+    "immersive_chat__delete_rewrite__button__title": "書き直しを削除",
+    "immersive_chat__rewrite_no_conversation__title": "まだ書き直し履歴はありません"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

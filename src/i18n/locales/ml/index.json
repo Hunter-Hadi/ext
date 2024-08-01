@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 ബില്യൺ പാരാമീറ്റർകൾ ഉള്ള അടുത്ത ജനറേഷൻ ഫ്ലാഗ്‌ഷിപ്പ് മോഡൽ 128k സന്ദർഭം ഉള്ളത്",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "കോഡ് ജനറേഷൻ, ഗണിതം, യോചന പരിശീലനം പ്രത്യേകിച്ചു പെരുക്കപ്പെട്ട സാമര്‍ഥ്യങ്ങൾ",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "വിവിധ ഭാഷകളിലും 80+ കോഡിംഗ് ഭാഷകളിലും പെരുക്കപ്പെട്ട ബഹുഭാഷാ പിന്തുണ",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "മെഴ്സിനും സംവാദ സാമര്‍ഥ്യങ്ങളും പെരുക്കപ്പെട്ടത്"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "മെഴ്സിനും സംവാദ സാമര്‍ഥ്യങ്ങളും പെരുക്കപ്പെട്ടത്",
+    "floating_menu__mini_menu__image__title": "AI ഉപകരണങ്ങൾ",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "ചാറ്റ് വിതരണം",
+    "immersive_chat__delete_rewrite__title": "മാറ്റം ഇല്ലാതാക്കുക?",
+    "immersive_chat__delete_rewrite__button__title": "മാറ്റം ഇല്ലാതാക്കുക",
+    "immersive_chat__rewrite_no_conversation__title": "ഇതുവരെ മാറ്റം ചരിത്രം ലഭ്യമല്ല"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

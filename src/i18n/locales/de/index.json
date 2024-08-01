@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Flaggschiffmodell der nächsten Generation mit 123 Milliarden Parametern und 128k-Kontextfenster",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Deutlich verbesserte Fähigkeiten in der Codegenerierung, Mathematik und Argumentation",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Verbesserte mehrsprachige Unterstützung für Dutzende von Sprachen und 80+ Codiersprachen",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Verbesserte Anweisungsverfolgung und Konversationsfähigkeiten"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Verbesserte Anweisungsverfolgung und Konversationsfähigkeiten",
+    "floating_menu__mini_menu__image__title": "KI-Tools",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat mit Bild",
+    "immersive_chat__delete_rewrite__title": "Löschen und neu schreiben?",
+    "immersive_chat__delete_rewrite__button__title": "Neu schreiben löschen",
+    "immersive_chat__rewrite_no_conversation__title": "Keine Neu-Schreib-Historie verfügbar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

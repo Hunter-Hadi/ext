@@ -1059,7 +1059,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Հաջորդ սերնդի գլխավոր մոդել 123 միլիարդ պարամետրով և 128k կապերի պատուհանով",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Ավելի արագ կամուցիչներ ծածկագիրում, մաթեմատիկայում և հասկանաժողովում",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Բարձր մակարդակի աջակցություն դեսական լեզուների համար և 80+ ծրագրային լեզուների համար",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Բարելավում է հրամանային հետևություններում և խոսանումներում"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Բարելավում է հրամանային հետևություններում և խոսանումներում",
+    "floating_menu__mini_menu__image__title": "ԱԻ ԳՈՒՏՔՆԵՐ",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "ԶՈՒՐԱՆՈՒՄ ՆԿԱՐԱՐՆԵՐԸ ՀԱՄԱՐ",
+    "immersive_chat__delete_rewrite__title": "ՋՆՈՂՈՒՄ ՎԵՐԱՆԱՐՈՒԹՅՈՒՆը?",
+    "immersive_chat__delete_rewrite__button__title": "ՋՆՈՂՈՒՄ ՎԵՐԱՆԱՐՈՒԹՅՈՒՆը",
+    "immersive_chat__rewrite_no_conversation__title": "Չկա վերանարումների պատմություն"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

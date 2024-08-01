@@ -1,7 +1,7 @@
 /**
  * base64 to blob
  */
-export function dataURItoBlob(dataURI: string) {
+export const dataURItoBlob = (dataURI: string) => {
   const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0] // mime类型
   const byteString = self.atob(dataURI.split(',')[1]) //base64 解码
   const arrayBuffer = new ArrayBuffer(byteString.length) //创建缓冲数组
@@ -56,4 +56,54 @@ export const convertBase64ToBlob = (base64: string, contentType = '') => {
   }
 
   return new Blob(byteArrays, { type })
+}
+
+/**
+ * image to blob
+ */
+export const imageToBlob = (image: HTMLImageElement) => {
+  return new Promise<Blob>((resolve, reject) => {
+    if (image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) {
+      resolve(imageToBlobLoaded(image))
+    } else {
+      image.onload = function () {
+        resolve(imageToBlobLoaded(image))
+      }
+      image.onerror = function () {
+        reject(new Error('Error loading the image.'))
+      }
+    }
+  })
+}
+
+/**
+ * image to blob(image loaded)
+ */
+const imageToBlobLoaded = (image: HTMLImageElement) => {
+  const canvas = document.createElement('canvas')
+  canvas.width = image.naturalWidth
+  canvas.height = image.naturalHeight
+
+  const ctx = canvas.getContext('2d')
+  if (!ctx) {
+    throw 'imageToBlobLoaded failed. ctx is null'
+  }
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        reject(new Error('Canvas.toBlob failed.'))
+      } else {
+        resolve(blob)
+      }
+    }, 'image/png')
+  })
+}
+
+/**
+ * blob to File
+ */
+export const blobToFile = (blob: Blob, fileName: string) => {
+  return new File([blob], fileName, { type: blob.type })
 }

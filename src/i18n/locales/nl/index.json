@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Vlaggenschipmodel van de volgende generatie met 123 miljard parameters en 128k contextvenster",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Aanzienlijk verbeterde mogelijkheden op het gebied van codegeneratie, wiskunde en redeneren",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Verbeterde meertalige ondersteuning voor tientallen talen en 80+ programmeertalen",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Verbeterde instructieopvolging en conversatiemogelijkheden"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Verbeterde instructieopvolging en conversatiemogelijkheden",
+    "floating_menu__mini_menu__image__title": "AI Gereedschappen",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat met Afbeelding",
+    "immersive_chat__delete_rewrite__title": "Rewrite verwijderen?",
+    "immersive_chat__delete_rewrite__button__title": "Rewrite verwijderen",
+    "immersive_chat__rewrite_no_conversation__title": "Nog geen rewrite geschiedenis beschikbaar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

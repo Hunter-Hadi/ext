@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Model insígnia de nova generació amb 123 bilions de paràmetres i finestra de context de 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacitats significativament millorades en la generació de codi, matemàtiques i raonament",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Suport multilingüe millorat per a diverses llengües i més de 80 llengües de programació",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Millora en les capacitats de seguir instruccions i conversar"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Millora en les capacitats de seguir instruccions i conversar",
+    "floating_menu__mini_menu__image__title": "Eines d'IA",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Xat amb imatge",
+    "immersive_chat__delete_rewrite__title": "Eliminar reescripció?",
+    "immersive_chat__delete_rewrite__button__title": "Eliminar reescripció",
+    "immersive_chat__rewrite_no_conversation__title": "Encara no hi ha històric de reescriptura"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

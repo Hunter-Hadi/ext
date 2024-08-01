@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 بلین پیرامیٹرز اور 128k کنٹیکسٹ ونڈو کے ساتھ اگلا نسل کا پرچم برانڈ ماڈل",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "کوڈ جنریشن، ریاضی، اور ترکیب میں نمایاں بہتر کارکردگی",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "دوزنوں زبانوں اور 80+ کوڈنگ زبانوں کے لیے بہترین زبانی مدد",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "بہتر ہدایت پروری اور گفتگو کی صلاحیتیں"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "بہتر ہدایت پروری اور گفتگو کی صلاحیتیں",
+    "floating_menu__mini_menu__image__title": "ای۔آئی ٹولز",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "تصویر کے ساتھ چیٹ",
+    "immersive_chat__delete_rewrite__title": "ری ورائٹ حذف کریں؟",
+    "immersive_chat__delete_rewrite__button__title": "ری ورائٹ حذف کریں",
+    "immersive_chat__rewrite_no_conversation__title": "ابھی تک کوئی ری ورائٹ تاریخ دستیاب نہیں ہے"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

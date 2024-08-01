@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Mfano wa bendera wa kizazi kijacho na vigezo bilioni 123 na dirisha la muktadha la 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Uwezo ulioboreshwa sana katika uzalishaji wa kanuni, hisabati, na mantiki",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Msaada ulioboreshwa wa lugha nyingi kwa lugha kadhaa na lugha za programu 80+",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Uwezo ulioboreshwa wa kufuata maagizo na uwezo wa mazungumzo"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Uwezo ulioboreshwa wa kufuata maagizo na uwezo wa mazungumzo",
+    "floating_menu__mini_menu__image__title": "Vifaa vya AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Jadili na Picha",
+    "immersive_chat__delete_rewrite__title": "Futa kurekebisha?",
+    "immersive_chat__delete_rewrite__button__title": "Futa kurekebisha",
+    "immersive_chat__rewrite_no_conversation__title": "Hakuna historia ya kurekebisha inayopatikana bado"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

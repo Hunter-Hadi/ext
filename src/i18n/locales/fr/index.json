@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modèle phare de nouvelle génération avec 123 milliards de paramètres et une fenêtre contextuelle de 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacités considérablement améliorées dans la génération de code, les mathématiques et le raisonnement",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Support multilingue amélioré pour des dizaines de langues et plus de 80 langages de codage",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Amélioration des capacités de suivi des instructions et de conversation"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Amélioration des capacités de suivi des instructions et de conversation",
+    "floating_menu__mini_menu__image__title": "Outils IA",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Discuter avec Image",
+    "immersive_chat__delete_rewrite__title": "Supprimer la réécriture ?",
+    "immersive_chat__delete_rewrite__button__title": "Supprimer la réécriture",
+    "immersive_chat__rewrite_no_conversation__title": "Aucune historique de réécriture disponible pour le moment"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

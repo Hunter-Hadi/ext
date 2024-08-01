@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "ቀጥሎ የታላቅ ምርጥ ሞዴል ከፍተኛ የስፋትን እና 128k የተለያዩ ስልክ መስክ",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "በስልክ ምርጥ ሞዴል ከፍተኛ የስፋትን እና የትምህር እና ማንኛውንም ቋንቋ ለማስተማር",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "በስልክ ምርጥ ሞዴል ከፍተኛ የስፋትን እና 80+ የስልክ ቋንቋ ለማስተማር",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "በስልክ ምርጥ ሞዴል ከፍተኛ የስፋትን እና የትምህር እና ማንኛውንም ቋንቋ ለማስተማር"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "በስልክ ምርጥ ሞዴል ከፍተኛ የስፋትን እና የትምህር እና ማንኛውንም ቋንቋ ለማስተማር",
+    "floating_menu__mini_menu__image__title": "ማህበረሰብ AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "የምስል ከፍተኛ ይዘት",
+    "immersive_chat__delete_rewrite__title": "ማህበረሰብ ሰርተኛ አስወግድ?",
+    "immersive_chat__delete_rewrite__button__title": "ሰርተኛ አስወግድ",
+    "immersive_chat__rewrite_no_conversation__title": "ምንም ሰዓት ማህበረሰብ አልተያዘም"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

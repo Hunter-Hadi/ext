@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Susunod na henerasyon ng pangunahing modelo na may 123 bilyong parameter at 128k context window",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Malaking pinabuting kakayahan sa paglikha ng code, matematika, at pagsusuri",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Pinalakas na suporta sa maraming wika para sa maraming wika at 80+ coding languages",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Pinabuting kakayahan sa pagsunod sa instruksyon at pakikipag-usap"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Pinabuting kakayahan sa pagsunod sa instruksyon at pakikipag-usap",
+    "floating_menu__mini_menu__image__title": "Mga Tool ng AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Usapang may Larawan",
+    "immersive_chat__delete_rewrite__title": "Tanggalin ang rewrite?",
+    "immersive_chat__delete_rewrite__button__title": "Tanggalin ang rewrite",
+    "immersive_chat__rewrite_no_conversation__title": "Walang kasaysayan ng rewrite na magagamit pa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

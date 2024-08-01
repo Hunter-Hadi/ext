@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Seuraavan sukupolven lippulaivamalli, jossa on 123 miljardia parametria ja 128k kontekstiraja",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Merkittävästi parannetut kyvyt koodin luonnissa, matematiikassa ja päättelyssä",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Parannettu monikielinen tuki kymmenille kielille ja yli 80 ohjelmointikielelle",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Parannettu ohjeiden seuraamisen ja keskustelukyvyn kyvykkyys"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Parannettu ohjeiden seuraamisen ja keskustelukyvyn kyvykkyys",
+    "floating_menu__mini_menu__image__title": "AI Työkalut",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Keskustele kuvan kanssa",
+    "immersive_chat__delete_rewrite__title": "Poista uudelleenkirjoitus?",
+    "immersive_chat__delete_rewrite__button__title": "Poista uudelleenkirjoitus",
+    "immersive_chat__rewrite_no_conversation__title": "Uudelleenkirjoitushistoriaa ei vielä saatavilla"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

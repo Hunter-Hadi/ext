@@ -1062,7 +1062,12 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Naslednja generacija paradnega modela s 123 milijardami parametrov in 128k kontekstualnim oknom",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Pomembno izboljšane zmogljivosti pri generiranju kode, matematiki in sklepanju",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Izboljšana večjezična podpora za desetine jezikov in 80+ programerskih jezikov",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Izboljšana sposobnost sledenja navodilom in pogovorne sposobnosti"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Izboljšana sposobnost sledenja navodilom in pogovorne sposobnosti",
+    "floating_menu__mini_menu__image__title": "Orodja AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Klepet s sliko",
+    "immersive_chat__delete_rewrite__title": "Izbrisati prepis?",
+    "immersive_chat__delete_rewrite__button__title": "Izbriši prepis",
+    "immersive_chat__rewrite_no_conversation__title": "Še ni na voljo zgodovine prepisov"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

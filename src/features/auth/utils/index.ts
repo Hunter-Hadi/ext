@@ -9,7 +9,10 @@ import {
   CHROME_EXTENSION_LOCAL_STORAGE_USER_FEATURE_QUOTA_SAVE_KEY,
   CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY,
 } from '@/constants'
-import { PAYING_USER_ROLE_NAME } from '@/features/auth/constants'
+import {
+  PAYING_USER_ROLE_NAME,
+  USER_ROLE_PRIORITY,
+} from '@/features/auth/constants'
 import {
   IUseChatGPTUserInfo,
   IUserFeatureQuotaInfo,
@@ -52,13 +55,21 @@ export const getChromeExtensionUserInfo = async (
       let isUpdated = false
       if (!userData || forceUpdate) {
         userData = await fetchUserInfo()
-        userData.role = cacheRoleData
+        const newRole = getUserRoleByUserInfoResponse(userData)
+        userData.role = newRole ?? cacheRoleData
         isUpdated = true
       }
+      // TODO: 需要优化掉，获取 userinfo 时不需要再请求 subscription_info
       if (forceUpdate || !userData?.role?.name) {
         userData.role = await fetchUserSubscriptionInfo()
         isUpdated = true
       }
+
+      if (forceUpdate) {
+        const newRole = getUserRoleByUserInfoResponse(userData)
+        userData.role = newRole ?? cacheRoleData
+      }
+
       if (isUpdated) {
         await Browser.storage.local.set({
           [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
@@ -604,4 +615,66 @@ export const checkIsSubscriptionPaymentFailed = (
   const failedAt = dayjs(subscriptionPaymentFailedAt * 1000)
   const diffDays = dayjs().utc().diff(failedAt, 'day')
   return diffDays <= 30
+}
+
+// 根据 userinfo 返回的内容生成 IUserRole 数据
+export const getUserRoleByUserInfoResponse = (
+  userInfoResponse: IUseChatGPTUserInfo,
+): IUserRole => {
+  const responseRoles = cloneDeep(userInfoResponse.roles)
+
+  // 将 responseData.roles.name 根据 USER_ROLE_PRIORITY  优先级排序，最大的在第一个
+  const sortedRoles = responseRoles.sort((a, b) => {
+    return (
+      (USER_ROLE_PRIORITY[b.name as IUserRoleType] || 0) -
+      (USER_ROLE_PRIORITY[a.name as IUserRoleType] || 0)
+    )
+  })
+
+  let role =
+    sortedRoles.find((role: { name: string; exp_time: number }) =>
+      checkIsPayingUser(role?.name as IUserRoleType),
+    ) || sortedRoles[0]
+  if (!role) {
+    role = {
+      name: 'free',
+      exp_time: 0,
+      is_one_times_pay_user: false,
+      subscription_plan_name: 'UNKNOWN',
+    }
+  }
+
+  role.is_one_times_pay_user = false
+  role.subscription_plan_name =
+    userInfoResponse.subscription_plan_name ?? 'UNKNOWN'
+
+  const { name } = role
+  // 如果角色不是free，判断是否为一次性付费用户
+  if (
+    name !== 'free' &&
+    userInfoResponse.subscription_type === 'ONE_TIME' &&
+    userInfoResponse.current_period_end
+  ) {
+    // 一次性付费用户
+    role.is_one_times_pay_user = true
+    // 判断是否过期
+    // current_period_end是unix时间戳
+    const expireTime = dayjs(userInfoResponse.current_period_end * 1000)
+      .utc()
+      .valueOf()
+    const now = dayjs().utc().valueOf()
+    if (expireTime - now > 0) {
+      // 未过期
+      role.exp_time = expireTime
+    } else {
+      // 过期
+      role.exp_time = 0
+      role.name = 'free'
+    }
+  } else if (typeof role.exp_time === 'string') {
+    // 因为接口返回的 roles.exp_time 是字符串（2028-02-19T05:50:45.984000+00:00），所以需要特殊处理转换成 number
+    role.exp_time = dayjs(role.exp_time).utc().valueOf()
+  }
+
+  return role
 }

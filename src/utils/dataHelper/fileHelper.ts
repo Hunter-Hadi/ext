@@ -63,6 +63,13 @@ export const convertBase64ToBlob = (base64: string, contentType = '') => {
  */
 export const imageToBlob = (image: HTMLImageElement) => {
   return new Promise<Blob>((resolve, reject) => {
+    // 如果图片是网络图片，则重新带上 crossOrigin = 'anonymous' 加载图片，避免跨域原因污染画布无法导出 blob
+    if (image.src.startsWith('http')) {
+      const src = image.src
+      image = new Image()
+      image.crossOrigin = 'anonymous'
+      image.src = src
+    }
     if (image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) {
       resolve(imageToBlobLoaded(image))
     } else {

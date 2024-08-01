@@ -14,6 +14,9 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 export type PAGE_SUMMARY_NAV_TYPES = 'all' | 'summary' | 'keyTakeaways'
 
+const EMPTY_PAGE_TIPS =
+  'It seems like this webpage is either a blank page, contains only images, or hasn’t fully loaded yet. We’re unable to display any content at the moment. Please try refreshing the page, or check back later. If the issue persists, feel free to contact our support team for assistance.'
+
 export const PAGE_SUMMARY_ACTIONS_MAP: {
   [key in PAGE_SUMMARY_NAV_TYPES]: (messageId?: string) => ISetActionsType
 } = {
@@ -72,112 +75,164 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
-      parameters: {},
-    },
-    {
-      type: 'SET_VARIABLE',
+      type: 'SCRIPTS_CONDITIONAL',
       parameters: {
-        VariableName: 'READABILITY_MARKDOWN',
-      },
-    },
-    {
-      type: 'MAXAI_UPLOAD_DOCUMENT',
-      parameters: {
-        MaxAIDocumentActionConfig: {
-          link: '{{CURRENT_WEBPAGE_URL}}',
-          pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'page_content__webpage',
-          doneType: 'document_create',
-          file: {
-            readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
-          },
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
         },
-      },
-    },
-    {
-      type: 'CHAT_MESSAGE',
-      parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: '',
-          originalMessage: {
-            metadata: {
-              copilot: {
-                steps: [
+        WFCondition: 'Equals',
+        WFConditionalIfTrueActions: [
+          // 无内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  metadata: {
+                    isComplete: true,
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing page',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                    deepDive: {
+                      title: {
+                        title: 'Oops! We Can’t Read Your Page',
+                        titleIcon: 'TipsAndUpdates',
+                      },
+                      value: EMPTY_PAGE_TIPS,
+                    },
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有内容
+          {
+            type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
+            parameters: {},
+          },
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              VariableName: 'READABILITY_MARKDOWN',
+            },
+          },
+          {
+            type: 'MAXAI_UPLOAD_DOCUMENT',
+            parameters: {
+              MaxAIDocumentActionConfig: {
+                link: '{{CURRENT_WEBPAGE_URL}}',
+                pureText: '{{READABILITY_CONTENTS}}',
+                docType: 'page_content__webpage',
+                doneType: 'document_create',
+                file: {
+                  readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
+                },
+              },
+            },
+          },
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing page',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                  },
+                  content: {
+                    title: {
+                      title: 'Summary',
+                      titleIcon: 'Loading',
+                    },
+                    text: '',
+                    contentType: 'text',
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'ASK_CHATGPT',
+            parameters: {
+              MaxAIPromptActionConfig: {
+                promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
+                promptName: `[Summary] Summarize page`,
+                promptActionType: 'chat_complete',
+                variables: [
+                  VARIABLE_CURRENT_WEBPAGE_URL,
+                  VARIABLE_AI_RESPONSE_LANGUAGE,
+                ],
+                output: [
                   {
-                    title: 'Analyzing page',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+                    label: 'Summary content',
+                    VariableName: 'SUMMARY_CONTENTS',
+                    valueType: 'Text',
+                    systemVariable: true,
                   },
                 ],
               },
-            },
-            content: {
-              title: {
-                title: 'Summary',
-                titleIcon: 'Loading',
+              AskChatGPTActionQuestion: {
+                text: '',
+                meta: {
+                  outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  contextMenu: {
+                    id: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
+                    parent: 'root',
+                    droppable: false,
+                    text: '[Summary] Summarize page',
+                    data: {
+                      editable: false,
+                      type: 'shortcuts',
+                    },
+                  },
+                },
               },
-              text: '',
-              contentType: 'text',
-            },
-            includeHistory: false,
-          },
-        } as IAIResponseMessage,
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-      parameters: {
-        MaxAIPromptActionConfig: {
-          promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
-          promptName: `[Summary] Summarize page`,
-          promptActionType: 'chat_complete',
-          variables: [
-            VARIABLE_CURRENT_WEBPAGE_URL,
-            VARIABLE_AI_RESPONSE_LANGUAGE,
-          ],
-          output: [
-            {
-              label: 'Summary content',
-              VariableName: 'SUMMARY_CONTENTS',
-              valueType: 'Text',
-              systemVariable: true,
-            },
-          ],
-        },
-        AskChatGPTActionQuestion: {
-          text: '',
-          meta: {
-            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-            contextMenu: {
-              id: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
-              parent: 'root',
-              droppable: false,
-              text: '[Summary] Summarize page',
-              data: {
-                editable: false,
-                type: 'shortcuts',
-              },
+              AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              AskChatGPTActionOutput: 'message',
             },
           },
-        },
-        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-        AskChatGPTActionOutput: 'message',
-      },
-    },
-    {
-      type: 'SCRIPTS_DICTIONARY',
-      parameters: {},
-    },
-    {
-      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
-      parameters: {
-        ActionGetDictionaryKey: 'value',
-        ActionGetDictionaryValue: 'originalMessage.metadata.deepDive.value',
+          {
+            type: 'SCRIPTS_DICTIONARY',
+            parameters: {},
+          },
+          {
+            type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+            parameters: {
+              ActionGetDictionaryKey: 'value',
+              ActionGetDictionaryValue:
+                'originalMessage.metadata.deepDive.value',
+            },
+          },
+        ],
       },
     },
     {
@@ -288,106 +343,158 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
-      parameters: {},
-    },
-    {
-      type: 'SET_VARIABLE',
+      type: 'SCRIPTS_CONDITIONAL',
       parameters: {
-        VariableName: 'READABILITY_MARKDOWN',
-      },
-    },
-    {
-      type: 'MAXAI_UPLOAD_DOCUMENT',
-      parameters: {
-        MaxAIDocumentActionConfig: {
-          link: '{{CURRENT_WEBPAGE_URL}}',
-          pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'page_content__webpage',
-          doneType: 'document_create',
-          file: {
-            readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
-          },
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
         },
-      },
-    },
-    {
-      type: 'CHAT_MESSAGE',
-      parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: '',
-          originalMessage: {
-            metadata: {
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing page',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+        WFCondition: 'Equals',
+        WFConditionalIfTrueActions: [
+          // 无内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  metadata: {
+                    isComplete: true,
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing page',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                    deepDive: {
+                      title: {
+                        title: 'Oops! We Can’t Read Your Page',
+                        titleIcon: 'TipsAndUpdates',
+                      },
+                      value: EMPTY_PAGE_TIPS,
+                    },
                   },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有内容
+          {
+            type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
+            parameters: {},
+          },
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              VariableName: 'READABILITY_MARKDOWN',
+            },
+          },
+          {
+            type: 'MAXAI_UPLOAD_DOCUMENT',
+            parameters: {
+              MaxAIDocumentActionConfig: {
+                link: '{{CURRENT_WEBPAGE_URL}}',
+                pureText: '{{READABILITY_CONTENTS}}',
+                docType: 'page_content__webpage',
+                doneType: 'document_create',
+                file: {
+                  readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
+                },
+              },
+            },
+          },
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing page',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                  },
+                  content: {
+                    title: {
+                      title: 'Summary',
+                      titleIcon: 'Loading',
+                    },
+                    text: '',
+                    contentType: 'text',
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'ASK_CHATGPT',
+            parameters: {
+              MaxAIPromptActionConfig: {
+                promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
+                promptName: `[Summary] Summarize page`,
+                promptActionType: 'chat_complete',
+                variables: [
+                  VARIABLE_CURRENT_WEBPAGE_URL,
+                  VARIABLE_AI_RESPONSE_LANGUAGE,
                 ],
+                output: [],
               },
-            },
-            content: {
-              title: {
-                title: 'Summary',
-                titleIcon: 'Loading',
+              AskChatGPTActionQuestion: {
+                text: '',
+                meta: {
+                  outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  contextMenu: {
+                    id: SUMMARY__SUMMARIZE_PAGE__TL_DR__PROMPT_ID,
+                    parent: 'root',
+                    droppable: false,
+                    text: '[Summary] Summarize page (TL:DR)',
+                    data: {
+                      editable: false,
+                      type: 'shortcuts',
+                      actions: [],
+                    },
+                  },
+                },
               },
-              text: '',
-              contentType: 'text',
-            },
-            includeHistory: false,
-          },
-        } as IAIResponseMessage,
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-      parameters: {
-        MaxAIPromptActionConfig: {
-          promptId: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
-          promptName: `[Summary] Summarize page`,
-          promptActionType: 'chat_complete',
-          variables: [
-            VARIABLE_CURRENT_WEBPAGE_URL,
-            VARIABLE_AI_RESPONSE_LANGUAGE,
-          ],
-          output: [],
-        },
-        AskChatGPTActionQuestion: {
-          text: '',
-          meta: {
-            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-            contextMenu: {
-              id: SUMMARY__SUMMARIZE_PAGE__TL_DR__PROMPT_ID,
-              parent: 'root',
-              droppable: false,
-              text: '[Summary] Summarize page (TL:DR)',
-              data: {
-                editable: false,
-                type: 'shortcuts',
-                actions: [],
-              },
+              AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              AskChatGPTActionOutput: 'message',
             },
           },
-        },
-        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-        AskChatGPTActionOutput: 'message',
-      },
-    },
-    {
-      type: 'SCRIPTS_DICTIONARY',
-      parameters: {},
-    },
-    {
-      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
-      parameters: {
-        ActionGetDictionaryKey: 'value',
-        ActionGetDictionaryValue: 'originalMessage.metadata.deepDive.value',
+          {
+            type: 'SCRIPTS_DICTIONARY',
+            parameters: {},
+          },
+          {
+            type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+            parameters: {
+              ActionGetDictionaryKey: 'value',
+              ActionGetDictionaryValue:
+                'originalMessage.metadata.deepDive.value',
+            },
+          },
+        ],
       },
     },
     {
@@ -499,105 +606,157 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
-      type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
-      parameters: {},
-    },
-    {
-      type: 'SET_VARIABLE',
+      type: 'SCRIPTS_CONDITIONAL',
       parameters: {
-        VariableName: 'READABILITY_MARKDOWN',
-      },
-    },
-    {
-      type: 'MAXAI_UPLOAD_DOCUMENT',
-      parameters: {
-        MaxAIDocumentActionConfig: {
-          link: '{{CURRENT_WEBPAGE_URL}}',
-          pureText: '{{READABILITY_CONTENTS}}',
-          docType: 'page_content__webpage',
-          doneType: 'document_create',
-          file: {
-            readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
-          },
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
         },
-      },
-    },
-    {
-      type: 'CHAT_MESSAGE',
-      parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: '',
-          originalMessage: {
-            metadata: {
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing page',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+        WFCondition: 'Equals',
+        WFConditionalIfTrueActions: [
+          // 无内容
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+                text: '',
+                originalMessage: {
+                  status: 'complete',
+                  metadata: {
+                    isComplete: true,
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing page',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                    deepDive: {
+                      title: {
+                        title: 'Oops! We Can’t Read Your Page',
+                        titleIcon: 'TipsAndUpdates',
+                      },
+                      value: EMPTY_PAGE_TIPS,
+                    },
                   },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+        ],
+        WFConditionalIfFalseActions: [
+          // 有内容
+          {
+            type: 'GET_READABILITY_MARKDOWN_OF_WEBPAGE',
+            parameters: {},
+          },
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              VariableName: 'READABILITY_MARKDOWN',
+            },
+          },
+          {
+            type: 'MAXAI_UPLOAD_DOCUMENT',
+            parameters: {
+              MaxAIDocumentActionConfig: {
+                link: '{{CURRENT_WEBPAGE_URL}}',
+                pureText: '{{READABILITY_CONTENTS}}',
+                docType: 'page_content__webpage',
+                doneType: 'document_create',
+                file: {
+                  readabilityMarkdown: '{{READABILITY_MARKDOWN}}',
+                },
+              },
+            },
+          },
+          {
+            type: 'CHAT_MESSAGE',
+            parameters: {
+              ActionChatMessageOperationType: 'update',
+              ActionChatMessageConfig: {
+                type: 'ai',
+                messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                text: '',
+                originalMessage: {
+                  metadata: {
+                    copilot: {
+                      steps: [
+                        {
+                          title: 'Analyzing page',
+                          status: 'complete',
+                          icon: 'SmartToy',
+                          value: '{{CURRENT_WEBPAGE_TITLE}}',
+                        },
+                      ],
+                    },
+                  },
+                  content: {
+                    title: {
+                      title: 'Summary',
+                      titleIcon: 'Loading',
+                    },
+                    text: '',
+                    contentType: 'text',
+                  },
+                  includeHistory: false,
+                },
+              } as IAIResponseMessage,
+            },
+          },
+          {
+            type: 'ASK_CHATGPT',
+            parameters: {
+              MaxAIPromptActionConfig: {
+                promptId: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
+                promptName: `[Summary] Summarize page (Key takeaways)`,
+                promptActionType: 'chat_complete',
+                variables: [
+                  VARIABLE_CURRENT_WEBPAGE_URL,
+                  VARIABLE_AI_RESPONSE_LANGUAGE,
                 ],
+                output: [],
               },
-            },
-            content: {
-              title: {
-                title: 'Summary',
-                titleIcon: 'Loading',
+              AskChatGPTActionQuestion: {
+                text: '',
+                meta: {
+                  outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  contextMenu: {
+                    id: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
+                    parent: 'root',
+                    droppable: false,
+                    text: '[Summary] Summarize page',
+                    data: {
+                      editable: false,
+                      type: 'shortcuts',
+                    },
+                  },
+                },
               },
-              text: '',
-              contentType: 'text',
-            },
-            includeHistory: false,
-          },
-        } as IAIResponseMessage,
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-      parameters: {
-        MaxAIPromptActionConfig: {
-          promptId: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
-          promptName: `[Summary] Summarize page (Key takeaways)`,
-          promptActionType: 'chat_complete',
-          variables: [
-            VARIABLE_CURRENT_WEBPAGE_URL,
-            VARIABLE_AI_RESPONSE_LANGUAGE,
-          ],
-          output: [],
-        },
-        AskChatGPTActionQuestion: {
-          text: '',
-          meta: {
-            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-            contextMenu: {
-              id: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
-              parent: 'root',
-              droppable: false,
-              text: '[Summary] Summarize page',
-              data: {
-                editable: false,
-                type: 'shortcuts',
-              },
+              AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              AskChatGPTActionOutput: 'message',
             },
           },
-        },
-        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-        AskChatGPTActionOutput: 'message',
-      },
-    },
-    {
-      type: 'SCRIPTS_DICTIONARY',
-      parameters: {},
-    },
-    {
-      type: 'SCRIPTS_GET_DICTIONARY_VALUE',
-      parameters: {
-        ActionGetDictionaryKey: 'value',
-        ActionGetDictionaryValue: 'originalMessage.metadata.deepDive.value',
+          {
+            type: 'SCRIPTS_DICTIONARY',
+            parameters: {},
+          },
+          {
+            type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+            parameters: {
+              ActionGetDictionaryKey: 'value',
+              ActionGetDictionaryValue:
+                'originalMessage.metadata.deepDive.value',
+            },
+          },
+        ],
       },
     },
     {

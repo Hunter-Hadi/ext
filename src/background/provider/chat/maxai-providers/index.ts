@@ -227,6 +227,8 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   let summaryMessage: IAIResponseMessage | null = null
   // 当前正在输出的message
   let outputMessage: IChatMessage | null = null
+  // 是summary总结的prompt
+  // const isSummaryPrompt = MaxAIPromptActionConfig?.promptName.startsWith('[Summary]')
 
   if (conversationDetail) {
     if (outputMessageId) {

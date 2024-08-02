@@ -69,6 +69,17 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
+      },
+    },
+    {
       type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
       parameters: {
         OperationElementSelector: 'ytd-watch-metadata #title',
@@ -285,6 +296,17 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
       },
     },
     {
@@ -612,6 +634,17 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
+      },
+    },
+    {
       type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
       parameters: {
         OperationElementSelector: 'ytd-watch-metadata #title',
@@ -877,6 +910,17 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
       },
     },
     {
@@ -1167,6 +1211,17 @@ export const YOUTUBE_SUMMARY_ACTIONS_MAP: {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
       },
     },
     {

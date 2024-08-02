@@ -27,6 +27,7 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 export class ActionMaxAIResponseRelated extends Action {
   static type: ActionIdentifier = 'MAXAI_RESPONSE_RELATED'
 
+  isStopAction = false
   abortTaskId = ''
 
   constructor(
@@ -56,6 +57,7 @@ export class ActionMaxAIResponseRelated extends Action {
           'latest',
         )
       : null
+    if (this.isStopAction) return
     let summaryContent = this.parameters.compliedTemplate || ''
     // 处理额外信息，比如youtube transcript和timestamped
     if (
@@ -112,6 +114,7 @@ export class ActionMaxAIResponseRelated extends Action {
         summaryContent,
         16384 - 1000,
       )
+      if (this.isStopAction) return
       if (isLimit) {
         summaryContent = text
       }
@@ -124,6 +127,7 @@ export class ActionMaxAIResponseRelated extends Action {
         } as any,
         SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
       )
+      if (this.isStopAction) return
       /**
        * 前端不再依赖call_api来触发paywall付费卡点了
        * call_api主要是用来做log记录的，让我们自己能看到、分析用户的使用情况
@@ -215,6 +219,7 @@ export class ActionMaxAIResponseRelated extends Action {
   }
 
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStopAction = true
     if (this.abortTaskId && params.engine.clientConversationEngine) {
       await Promise.race([
         await params.engine.clientMessageChannelEngine?.postMessage({

@@ -14,10 +14,11 @@ export const stopActionMessageStatus = async (params: {
     const currentConversationId = await params.engine.clientConversationEngine
       ?.currentConversationIdRef.current
     if (currentConversationId) {
+      // 这里的messageIds是时间从新到旧排序
       const messageIds = await ClientConversationMessageManager.getMessageIds(
         currentConversationId,
       )
-      const lastAIMessageId = last(messageIds)
+      const lastAIMessageId = messageIds[0] || last(messageIds)
       const lastAIMessage =
         await ClientConversationMessageManager.getMessageByMessageId(
           lastAIMessageId!,

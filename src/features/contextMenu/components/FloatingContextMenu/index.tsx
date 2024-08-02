@@ -43,6 +43,7 @@ import {
   useFloatingContextMenu,
 } from '@/features/contextMenu'
 import { FloatingContextMenuShortcutButtonGroup } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import FloatingContextMenuContinueInSidebarButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuContinueInSidebarButton'
 import DiscardChangesModal from '@/features/contextMenu/components/FloatingContextMenu/DiscardChangesModal'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import FloatingContextMenuTitleBar from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuTitleBar'
@@ -695,6 +696,7 @@ const FloatingContextMenu: FC<{
 
                     {!loading && (
                       <>
+                        <FloatingContextMenuContinueInSidebarButton />
                         <MaxAIBetaFeatureWrapper
                           betaFeatureName={'voice_input'}
                         >

@@ -19,13 +19,7 @@ import usePlanPricingInfo from '@/features/pricing/hooks/usePlanPricingInfo'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 const SettingsMePage: FC = () => {
   const { t } = useTranslation(['common', 'settings'])
-  const {
-    syncUserSubscriptionInfo,
-    userInfo,
-    isPayingUser,
-    isPaymentOneTimeUser,
-    isTopPlanUser,
-  } = useUserInfo()
+  const { syncUserSubscriptionInfo, userInfo, isTopPlanUser } = useUserInfo()
   useEffectOnce(() => {
     syncUserSubscriptionInfo().then().catch()
   })
@@ -95,7 +89,7 @@ const SettingsMePage: FC = () => {
             </ListItemButton> */}
           </List>
 
-          {!isPaymentOneTimeUser && !isTopPlanUser ? (
+          {!isTopPlanUser ? (
             <UpgradePlanSalesCard renderPlan='elite_yearly' />
           ) : null}
         </Stack>

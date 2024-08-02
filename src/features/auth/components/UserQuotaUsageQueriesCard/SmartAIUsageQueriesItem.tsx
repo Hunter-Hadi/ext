@@ -165,7 +165,9 @@ const SmartAIUsageQueriesItem: FC<ISmartAIUsageQueriesItemProps> = ({
           {/* 这里默认写死, 并且默认0 - @huangsong */}
           <ListItem>
             <ListItemText
-              secondary={'Claude-3.5-Sonnet & Gemini-1.5-Pro & Llama-3.1-405B'}
+              secondary={
+                'Claude-3.5-Sonnet & Gemini-1.5-Pro & Llama-3.1-405B & Mistral-Large-2'
+              }
             />
             <ListItemText
               sx={{

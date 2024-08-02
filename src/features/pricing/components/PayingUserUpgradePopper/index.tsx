@@ -8,6 +8,10 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import PayingUserUpgradeCard from '@/features/pricing/components/PayingUserUpgradeCard'
 import { RENDER_PLAN_TYPE } from '@/features/pricing/type'
+import {
+  checkRenderTypeIsMonthlyOrYearlyOrOneYear,
+  transformRenderTypeToPlanType,
+} from '@/features/pricing/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface IPayingUserUpgradePopperProps {
@@ -20,7 +24,7 @@ interface IPayingUserUpgradePopperProps {
 }
 
 const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
-  renderPlan,
+  renderPlan: propRenderPlan,
   sx,
   childrenBoxSx,
   popperPaperSx,
@@ -31,9 +35,20 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
 
   const [popperOpen, setPopperOpen] = React.useState(false)
 
-  const { isTopPlanUser } = useUserInfo()
+  const { isTopPlanUser, isPaymentOneTimeUser } = useUserInfo()
 
   const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
+
+  const renderPlan = useMemo(() => {
+    // 如果当前角色是一次性付款用户，并且当前渲染的 plan 是 yearly plan，那么需要转换为 one_year
+    if (
+      isPaymentOneTimeUser &&
+      checkRenderTypeIsMonthlyOrYearlyOrOneYear(propRenderPlan) === 'yearly'
+    ) {
+      return transformRenderTypeToPlanType(propRenderPlan, 'one_year')
+    }
+    return propRenderPlan
+  }, [isPaymentOneTimeUser, propRenderPlan])
 
   const placement = useMemo(() => {
     if (propPlacement) {
@@ -52,7 +67,10 @@ const PayingUserUpgradePopper: FC<IPayingUserUpgradePopperProps> = ({
   }
 
   const handleClickUpgrade = () => {
-    const paymentType = renderPlan.includes('yearly') ? 'yearly' : 'monthly'
+    let paymentType = 'yearly'
+    if (checkRenderTypeIsMonthlyOrYearlyOrOneYear(renderPlan) === 'monthly') {
+      paymentType = 'monthly'
+    }
     window.open(
       `${APP_USE_CHAT_GPT_HOST}/pricing?autoClickPlan=${renderPlan}&paymentType=${paymentType}`,
       '_blank',

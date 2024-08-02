@@ -50,7 +50,8 @@ export type IUseChatGPTUserInfo = {
   subscription_type: 'SUBSCRIPTION' | 'ONE_TIME'
   // 用户取消订阅的 utc 时间， 示例：2024-06-05T06:31:36.590000+00:00
   subscription_canceled_at?: string | null
-
+  // 一次性付费用户的过期时间
+  current_period_end: number | null
   client_user_id?: string | null
   user_id?: string | null
   user_status?: {

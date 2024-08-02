@@ -51,6 +51,7 @@ const SignUpCard: FC<IProps> = (props) => {
       justifyContent={'center'}
       sx={{
         maxWidth: 450,
+        minWidth: 450,
         width: '100%',
         boxSizing: 'border-box',
         boxShadow: '0px 2px 4px 0px #00000014',

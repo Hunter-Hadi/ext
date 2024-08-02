@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "চ্যাট উইথ ইমেজ",
     "immersive_chat__delete_rewrite__title": "রিওয়্রাইট মুছে ফেলবেন?",
     "immersive_chat__delete_rewrite__button__title": "রিওয়্রাইট মুছুন",
-    "immersive_chat__rewrite_no_conversation__title": "এখনও রিওয়্রাইট হিস্ট্রি পাওয়া যায়নি"
+    "immersive_chat__rewrite_no_conversation__title": "এখনও রিওয়্রাইট হিস্ট্রি পাওয়া যায়নি",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "পরবর্তী দর্শনে মেনু লুকান",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "এই সাইটে লুকান",
+    "floating_menu__mini_menu__image__close_item__hide_always": "চিরকালের জন্য লুকান"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

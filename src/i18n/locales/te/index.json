@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "చాట్ విత్ ఇమేజ్",
     "immersive_chat__delete_rewrite__title": "తిరిగి రాయడం తొలగించాలా?",
     "immersive_chat__delete_rewrite__button__title": "తిరిగి రాయడం తొలగించు",
-    "immersive_chat__rewrite_no_conversation__title": "ఇంకా రాయడం చర్చ ఇంకా లేదు"
+    "immersive_chat__rewrite_no_conversation__title": "ఇంకా రాయడం చర్చ ఇంకా లేదు",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "తరువాత భేటీకి దాచు మెనూ",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ఈ సైట్‌పై దాచు",
+    "floating_menu__mini_menu__image__close_item__hide_always": "ఎప్పుడూ దాచు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

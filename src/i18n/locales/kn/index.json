@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "ಚಾಟ್ ವಿಥ್ ಇಮೇಜ್",
     "immersive_chat__delete_rewrite__title": "ಮಾರ್ಜನ್ ಅಳಿಸು?",
     "immersive_chat__delete_rewrite__button__title": "ಮಾರ್ಜನ್ ಅಳಿಸು",
-    "immersive_chat__rewrite_no_conversation__title": "ಇನ್ನು ಮಾರ್ಜನ್ ಇತಿಹಾಸ ಲಭ್ಯವಿಲ್ಲ"
+    "immersive_chat__rewrite_no_conversation__title": "ಇನ್ನು ಮಾರ್ಜನ್ ಇತಿಹಾಸ ಲಭ್ಯವಿಲ್ಲ",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "ಮುಂದಿನ ಭೇಟಿಯವರೆಗೆ ಮೆನು ಮರೆಮಾಡಿ",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ಈ ತಾಣದಲ್ಲಿ ಮರೆಯಿರಿ",
+    "floating_menu__mini_menu__image__close_item__hide_always": "ಎಲ್ಲಾಕ್ಕೂ ಮರೆಯಿರಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

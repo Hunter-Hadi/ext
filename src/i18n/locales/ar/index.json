@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "الدردشة مع الصورة",
     "immersive_chat__delete_rewrite__title": "حذف إعادة الكتابة؟",
     "immersive_chat__delete_rewrite__button__title": "حذف الإعادة",
-    "immersive_chat__rewrite_no_conversation__title": "لا توجد سجلات إعادة كتابة متاحة بعد"
+    "immersive_chat__rewrite_no_conversation__title": "لا توجد سجلات إعادة كتابة متاحة بعد",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "إخفاء القائمة حتى الزيارة القادمة",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "إخفاء على هذا الموقع",
+    "floating_menu__mini_menu__image__close_item__hide_always": "إخفاء دائماً"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

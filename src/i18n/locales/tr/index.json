@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Resimli Sohbet",
     "immersive_chat__delete_rewrite__title": "Yeniden Yazma Silinsin mi?",
     "immersive_chat__delete_rewrite__button__title": "Yeniden Yazmayı Sil",
-    "immersive_chat__rewrite_no_conversation__title": "Henüz yeniden yazma geçmişi yok"
+    "immersive_chat__rewrite_no_conversation__title": "Henüz yeniden yazma geçmişi yok",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Menüyü bir sonraki ziyarete kadar gizle",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Bu sitede gizle",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Her zaman gizle"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

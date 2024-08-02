@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Trò chuyện với Hình ảnh",
     "immersive_chat__delete_rewrite__title": "Xóa viết lại?",
     "immersive_chat__delete_rewrite__button__title": "Xóa viết lại",
-    "immersive_chat__rewrite_no_conversation__title": "Chưa có lịch sử viết lại"
+    "immersive_chat__rewrite_no_conversation__title": "Chưa có lịch sử viết lại",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ẩn menu cho đến lần ghé thăm kế tiếp",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ẩn trên trang này",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ẩn luôn"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

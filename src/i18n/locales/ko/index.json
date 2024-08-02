@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "이미지와 채팅",
     "immersive_chat__delete_rewrite__title": "다시 쓰기 삭제?",
     "immersive_chat__delete_rewrite__button__title": "다시 쓰기 삭제",
-    "immersive_chat__rewrite_no_conversation__title": "아직 사용 가능한 다시 쓰기 기록이 없습니다"
+    "immersive_chat__rewrite_no_conversation__title": "아직 사용 가능한 다시 쓰기 기록이 없습니다",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "다음 방문까지 메뉴 숨기기",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "이 사이트에서 숨기기",
+    "floating_menu__mini_menu__image__close_item__hide_always": "항상 숨기기"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

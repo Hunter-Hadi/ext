@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Képpel Beszélgetés",
     "immersive_chat__delete_rewrite__title": "Törlöd a átírást?",
     "immersive_chat__delete_rewrite__button__title": "Átírás Törlése",
-    "immersive_chat__rewrite_no_conversation__title": "Még nincs átírás előzmény"
+    "immersive_chat__rewrite_no_conversation__title": "Még nincs átírás előzmény",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Menü elrejtése a következő látogatásig",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Elrejtés ezen a webhelyen",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Mindig elrejtés"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

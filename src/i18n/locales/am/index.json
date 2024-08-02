@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "የምስል ከፍተኛ ይዘት",
     "immersive_chat__delete_rewrite__title": "ማህበረሰብ ሰርተኛ አስወግድ?",
     "immersive_chat__delete_rewrite__button__title": "ሰርተኛ አስወግድ",
-    "immersive_chat__rewrite_no_conversation__title": "ምንም ሰዓት ማህበረሰብ አልተያዘም"
+    "immersive_chat__rewrite_no_conversation__title": "ምንም ሰዓት ማህበረሰብ አልተያዘም",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "ማንኛውንም ገጽ ይምረጡ እስከ ቀጣይ ገጽ ይምረጡ",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ይምረጡ በዚህ ድረ-ገጽ",
+    "floating_menu__mini_menu__image__close_item__hide_always": "ወደአሁን ምርጫ ለማውጣት"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

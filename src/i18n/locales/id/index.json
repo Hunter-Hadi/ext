@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Obrolan dengan Gambar",
     "immersive_chat__delete_rewrite__title": "Hapus ulang?",
     "immersive_chat__delete_rewrite__button__title": "Hapus ulang",
-    "immersive_chat__rewrite_no_conversation__title": "Belum ada riwayat ulang"
+    "immersive_chat__rewrite_no_conversation__title": "Belum ada riwayat ulang",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Sembunyikan menu hingga kunjungan berikutnya",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Sembunyikan di situs ini",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Sembunyikan selalu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

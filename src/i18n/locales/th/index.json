@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "พูดคุยพร้อมรูปภาพ",
     "immersive_chat__delete_rewrite__title": "ลบการเขียนใหม่?",
     "immersive_chat__delete_rewrite__button__title": "ลบการเขียนใหม่",
-    "immersive_chat__rewrite_no_conversation__title": "ยังไม่มีประวัติการเขียนใหม่"
+    "immersive_chat__rewrite_no_conversation__title": "ยังไม่มีประวัติการเขียนใหม่",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "ซ่อนเมนูจนกว่าจะเยี่ยมชมครั้งถัดไป",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ซ่อนบนเว็บไซต์นี้",
+    "floating_menu__mini_menu__image__close_item__hide_always": "ซ่อนตลอดไป"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

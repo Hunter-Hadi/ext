@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chatta med Bild",
     "immersive_chat__delete_rewrite__title": "Radera omskrivning?",
     "immersive_chat__delete_rewrite__button__title": "Radera omskrivning",
-    "immersive_chat__rewrite_no_conversation__title": "Ingen omskrivningshistorik tillgänglig ännu"
+    "immersive_chat__rewrite_no_conversation__title": "Ingen omskrivningshistorik tillgänglig ännu",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Dölj menyn tills nästa besök",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Dölj på denna webbplats",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Dölj alltid"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

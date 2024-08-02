@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat s obrázkom",
     "immersive_chat__delete_rewrite__title": "Vymazať prepísanie?",
     "immersive_chat__delete_rewrite__button__title": "Vymazať prepísanie",
-    "immersive_chat__rewrite_no_conversation__title": "Zatiaľ nie sú k dispozícii žiadne histórie prepísania"
+    "immersive_chat__rewrite_no_conversation__title": "Zatiaľ nie sú k dispozícii žiadne histórie prepísania",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skryť menu do ďalšej návštevy",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Skryť na tejto stránke",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Skryť vždy"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

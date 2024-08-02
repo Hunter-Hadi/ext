@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import CloseMenu from '@/features/contextMenu/components/FloatingImageMiniMenu/CloseMenu'
 import useFloatingImageMiniMenu, {
   FloatingImageMiniMenuStaticData,
 } from '@/features/contextMenu/hooks/useFloatingImageMiniMenu'
@@ -213,6 +214,9 @@ const FloatingImageMiniMenu = () => {
               transform: 'scale(1)',
             },
           },
+          '.max-ai__image_mini_menu__close_btn': {
+            display: 'flex',
+          },
         },
       }}
     >
@@ -247,6 +251,8 @@ const FloatingImageMiniMenu = () => {
       >
         <MenuList></MenuList>
       </Box>
+
+      <CloseMenu className={'max-ai__image_mini_menu__close_btn'}></CloseMenu>
     </Stack>
   )
 }

@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "带图片聊天",
     "immersive_chat__delete_rewrite__title": "删除重写？",
     "immersive_chat__delete_rewrite__button__title": "删除重写",
-    "immersive_chat__rewrite_no_conversation__title": "尚无重写历史"
+    "immersive_chat__rewrite_no_conversation__title": "尚无重写历史",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "直到下次访问前隐藏菜单",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "在此站点隐藏",
+    "floating_menu__mini_menu__image__close_item__hide_always": "永久隐藏"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

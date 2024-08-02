@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat med Billede",
     "immersive_chat__delete_rewrite__title": "Slet omskrivning?",
     "immersive_chat__delete_rewrite__button__title": "Slet omskrivning",
-    "immersive_chat__rewrite_no_conversation__title": "Ingen omskrivningshistorik tilgængelig endnu"
+    "immersive_chat__rewrite_no_conversation__title": "Ingen omskrivningshistorik tilgængelig endnu",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skjul menu indtil næste besøg",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Skjul på dette websted",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Skjul altid"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

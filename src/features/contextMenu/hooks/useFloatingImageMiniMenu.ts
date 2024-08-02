@@ -4,6 +4,7 @@ import { useSetRecoilState } from 'recoil'
 import { FloatingImageMiniMenuState } from '@/features/contextMenu/store'
 
 export const FloatingImageMiniMenuStaticData = {
+  disable: false,
   currentHoverImage: null as HTMLImageElement | null,
   mouseInImage: false,
   mouseInMenu: false,
@@ -38,6 +39,9 @@ const useFloatingImageMiniMenu = () => {
     // 遍历页面上的所有图片元素
     Array.from(document.querySelectorAll('img')).forEach((img) => {
       const handleMouseEnterImage = () => {
+        if (FloatingImageMiniMenuStaticData.disable) {
+          return
+        }
         timerHide.current && clearTimeout(timerHide.current)
         window.removeEventListener('scroll', handleWindowScroll)
         FloatingImageMiniMenuStaticData.currentHoverImage = img

@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat cu Imagine",
     "immersive_chat__delete_rewrite__title": "Șterge rescriere?",
     "immersive_chat__delete_rewrite__button__title": "Șterge rescriere",
-    "immersive_chat__rewrite_no_conversation__title": "Nicio istorie de rescriere disponibilă încă"
+    "immersive_chat__rewrite_no_conversation__title": "Nicio istorie de rescriere disponibilă încă",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ascundeți meniul până la următoarea vizită",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ascunde pe acest site",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ascunde întotdeauna"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

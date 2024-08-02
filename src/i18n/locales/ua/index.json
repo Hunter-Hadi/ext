@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Чат з Зображенням",
     "immersive_chat__delete_rewrite__title": "Видалити переписку?",
     "immersive_chat__delete_rewrite__button__title": "Видалити переписку",
-    "immersive_chat__rewrite_no_conversation__title": "Історія переписки відсутня"
+    "immersive_chat__rewrite_no_conversation__title": "Історія переписки відсутня",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Сховати меню до наступного візиту",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Приховати на цьому сайті",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Приховувати завжди"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

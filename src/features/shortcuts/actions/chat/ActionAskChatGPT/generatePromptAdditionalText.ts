@@ -52,7 +52,11 @@ const generatePromptAdditionalText = async (
     ''
   // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言
   if (isAuto) {
-    if (CONTEXT) {
+    // 如果isAuto设置了这个值，直接使用
+    if (params.AUTO_LANGUAGE_NAME) {
+      AIOutputLanguage = params.AUTO_LANGUAGE_NAME
+      systemVariablesTemplate = `Please write in ${AIOutputLanguage}`
+    } else if (CONTEXT) {
       AIOutputLanguage = textGetLanguageName(CONTEXT) || ''
       if (AIOutputLanguage) {
         systemVariablesTemplate = `Please write in ${AIOutputLanguage}`

@@ -59,6 +59,17 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
+      },
+    },
+    {
       type: 'GET_PDF_FILE_OF_CRX',
       parameters: {},
     },
@@ -324,6 +335,17 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
+      },
+    },
+    {
       type: 'GET_PDF_FILE_OF_CRX',
       parameters: {},
     },
@@ -586,6 +608,17 @@ export const PDF_SUMMARY_ACTIONS_MAP: {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
       },
     },
     {

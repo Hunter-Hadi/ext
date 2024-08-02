@@ -531,6 +531,7 @@ export class ActionAskChatGPT extends Action {
             await ClientConversationMessageManager.getMessageByMessageId(
               outputMessageId,
             )
+          // ClientConversationMessageManager.deleteMessages(conversationId, [outputMessageId])
         }
         try {
           const outputTemplate = this.parameters.outputTemplate || ''

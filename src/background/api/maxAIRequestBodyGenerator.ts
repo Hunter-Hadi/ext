@@ -156,7 +156,7 @@ const maxAIRequestBodyDocType = (summaryType: IPageSummaryType) => {
 export const maxAIRequestBodySummaryGenerator = async (
   originalPostBody: IMaxAIChatGPTBackendBodyType,
   conversation: IConversation,
-  summaryMessage: IAIResponseMessage,
+  summaryMessage?: IAIResponseMessage,
   promptActionConfig?: MaxAIPromptActionConfig,
 ) => {
   let backendAPI: IMaxAIChatGPTBackendAPIType = 'summary/v3/webpage'
@@ -181,7 +181,7 @@ export const maxAIRequestBodySummaryGenerator = async (
       break
   }
   postBody.summary_type = maxAIRequestBodySummaryType(
-    summaryMessage.originalMessage?.metadata?.navMetadata?.key || 'all',
+    summaryMessage?.originalMessage?.metadata?.navMetadata?.key || 'all',
   )
   postBody.doc_id = conversation.meta.pageSummary?.docId
 

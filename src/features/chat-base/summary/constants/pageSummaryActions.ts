@@ -65,6 +65,17 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
+      },
+    },
+    {
       type: 'GET_READABILITY_CONTENTS_OF_WEBPAGE',
       parameters: {},
     },
@@ -191,14 +202,7 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
                   VARIABLE_CURRENT_WEBPAGE_URL,
                   VARIABLE_AI_RESPONSE_LANGUAGE,
                 ],
-                output: [
-                  {
-                    label: 'Summary content',
-                    VariableName: 'SUMMARY_CONTENTS',
-                    valueType: 'Text',
-                    systemVariable: true,
-                  },
-                ],
+                output: [],
               },
               AskChatGPTActionQuestion: {
                 text: '',
@@ -330,6 +334,17 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
       },
     },
     {
@@ -593,6 +608,17 @@ export const PAGE_SUMMARY_ACTIONS_MAP: {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
       },
     },
     {

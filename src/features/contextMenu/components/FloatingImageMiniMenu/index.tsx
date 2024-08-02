@@ -54,7 +54,7 @@ const MenuList = () => {
       sx={{
         marginTop: '10px',
         padding: '4px!important',
-        bgcolor: '#454545',
+        bgcolor: (t) => t.palette.background.paper,
         borderRadius: '6px',
 
         transform: 'scale(0)',
@@ -79,7 +79,9 @@ const MenuList = () => {
               minWidth: '28px',
             }}
           >
-            <QuestionAnswerIcon sx={{ fontSize: '16px', color: '#fff' }} />
+            <QuestionAnswerIcon
+              sx={{ fontSize: '16px', color: (t) => t.palette.primary.main }}
+            />
           </ListItemIcon>
           <ListItemText
             primary={t(
@@ -89,7 +91,7 @@ const MenuList = () => {
               whiteSpace: 'nowrap',
               '& .use-chat-gpt-ai--MuiTypography-root': {
                 fontSize: '14px',
-                color: '#fff',
+                color: (t) => (t.palette.mode === 'dark' ? '#fff' : '#000'),
               },
             }}
           />
@@ -119,7 +121,7 @@ const CustomText = React.forwardRef(function CustomTextComponent(
         overflow: 'hidden',
         transition: 'width 0.2s',
         marginLeft: '0px!important',
-        color: 'rgba(255,255,255,.87)',
+        color: (t) => (t.palette.mode === 'dark' ? '#fff' : '#000'),
         ...(sx || {}),
       }}
       ref={ref}
@@ -195,7 +197,10 @@ const FloatingImageMiniMenu = () => {
         left: `calc(${menuState.position.left} + 10px)`,
         transform: 'translateY(calc(-100% - 20px))',
         zIndex: 2147483648,
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        bgcolor: (t) =>
+          t.palette.mode === 'dark'
+            ? 'rgba(0, 0, 0, 0.8)'
+            : 'rgba(255, 255, 255, 0.7)',
         borderRadius: '6px',
         '&:hover': {
           cursor: 'pointer',
@@ -211,7 +216,9 @@ const FloatingImageMiniMenu = () => {
         },
       }}
     >
-      <UseChatGptIcon sx={{ fontSize: '16px', color: '#fff' }} />
+      <UseChatGptIcon
+        sx={{ fontSize: '16px', color: (t) => t.palette.primary.main }}
+      />
       <CustomText className='max-ai__custom_text' />
       {/* 多渲染一个用于计算未收起时的宽度 */}
       <CustomText

@@ -117,7 +117,7 @@ const useUserInfo = () => {
   const subscriptionType = useMemo<
     'monthly' | 'yearly' | 'oneTimePayment' | null
   >(() => {
-    if (!subscriptionPlanName) {
+    if (!subscriptionPlanName || subscriptionPlanName === 'UNKNOWN') {
       return null
     }
 
@@ -155,9 +155,9 @@ const useUserInfo = () => {
   // 判断 是否是 一次性付款的用户
   const isPaymentOneTimeUser = useMemo(
     () =>
-      subscriptionType === 'oneTimePayment' ||
+      userInfo?.role?.is_one_times_pay_user &&
       userInfo?.subscription_type === 'ONE_TIME',
-    [subscriptionType, userInfo?.subscription_type],
+    [userInfo?.role?.is_one_times_pay_user, userInfo?.subscription_type],
   )
 
   return {

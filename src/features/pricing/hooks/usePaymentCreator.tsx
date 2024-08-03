@@ -9,10 +9,9 @@ import {
 } from '@/features/pricing/utils'
 
 const usePaymentCreator = () => {
-  const { loading, createCheckoutSession, createPortalSession } =
-    usePaymentSessionFetcher()
+  const { loading, createCheckoutSession } = usePaymentSessionFetcher()
   const { planPricingInfo } = usePlanPricingInfo()
-  const { currentUserPlan, isPayingUser } = useUserInfo()
+  const { isPayingUser } = useUserInfo()
 
   // 本次购买的 plan 时是否是 升级 plan 的操作, 如果是 elite 或者是 pro 则是升级操作
   const isUpgradePlan = isPayingUser

@@ -120,6 +120,8 @@ const useFloatingImageMiniMenu = () => {
 
   const handleMouseEnterImage = (img: HTMLImageElement) => {
     if (
+      img.offsetWidth < 150 ||
+      img.offsetHeight < 150 || // 只要图片有一边小于150就不显示
       FloatingImageMiniMenuStaticData.lastHoverImage === img ||
       FloatingImageMiniMenuStaticData.disable ||
       currentVisibility.current?.isWhitelistMode ||

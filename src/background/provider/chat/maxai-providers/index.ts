@@ -228,7 +228,8 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
   // 当前正在输出的message
   let outputMessage: IChatMessage | null = null
   // 是summary总结的prompt
-  // const isSummaryPrompt = MaxAIPromptActionConfig?.promptName.startsWith('[Summary]')
+  const isSummaryPrompt =
+    MaxAIPromptActionConfig?.promptName.startsWith('[Summary]')
 
   if (conversationDetail) {
     if (outputMessageId) {
@@ -302,6 +303,21 @@ export const maxAIAPISendQuestion: IMaxAIAskQuestionFunctionType = async (
       // 2023-09-21 @xiang.xu
       postBody.chat_history?.splice(0, 1)
     }
+  }
+
+  // 可能是一些以外的流程导致summaryMessage被删除这里直接先给出报错信息
+  if (isSummaryPrompt && !summaryMessage) {
+    onMessage &&
+      onMessage({
+        type: 'error',
+        error:
+          'Something went wrong, please try again. If this issue persists, contact us via email.',
+        done: true,
+        data: { text: '', conversationId },
+        tokenExpired: false,
+      })
+    await afterSend?.('error')
+    return
   }
 
   // 如果有MaxAIPromptActionConfig，就需要用/use_prompt_action

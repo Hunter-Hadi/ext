@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Kas olete kindel, et soovite tühistada? Pange tähele, et tühistamisel kaotate kõik salvestamata muudatused.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Jah, tühista",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tagasi redigeerimise juurde",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Pealkiri on kohustuslik"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Pealkiri on kohustuslik",
+    "feature_card__appearance__floating_image_mini_menu__title": "Kuva vestlus pildinupuga piltidel",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Keelatud saidid",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Loetelu veebisaitidest, kus vestlus pildinupuga on piltidel peidetud."
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Kustuta ümberkirjutus?",
     "immersive_chat__delete_rewrite__button__title": "Kustuta ümberkirjutus",
     "immersive_chat__rewrite_no_conversation__title": "Ümberkirjutuse ajalugu pole veel saadaval",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Peida menüü järgmise külastuseni",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Peida kuni järgmise külastuseni",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Peida sellel saidil",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Peida alati"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Peida alati",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Saate selle uuesti lubada <span style='color:rgb(133,90,167);text-decoration: underline;'>Seaded</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Seaded"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

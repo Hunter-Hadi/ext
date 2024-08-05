@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Сигурни ли сте, че искате да отмените? Моля, имайте предвид, че веднъж отменено, всички незапазени промени ще бъдат загубени.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Да, отмени",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Обратно към редактирането",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Заглавието е задължително"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Заглавието е задължително",
+    "feature_card__appearance__floating_image_mini_menu__title": "Показване на чат с бутон за изображения",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Забранени сайтове",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Списък на уебсайтовете, където чатът с бутон за изображения е скрит на изображения."
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Изтриване на преписка?",
     "immersive_chat__delete_rewrite__button__title": "Изтрий преписка",
     "immersive_chat__rewrite_no_conversation__title": "Все още няма налична история на преписките",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Скрийте меню до следващото посещение",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Скрий до следващото посещение",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Скрий на този сайт",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Скрий завинаги"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Скрий завинаги",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Можете да го активирате отново в <span style='color:rgb(133,90,167);text-decoration: underline;'>Настройки</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Настройки"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

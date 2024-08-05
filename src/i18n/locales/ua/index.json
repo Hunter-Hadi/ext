@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Ви впевнені, що хочете скасувати? Зверніть увагу, що після скасування будуть втрачені всі незбережені зміни.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Так, скасувати",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Повернутися до редагування",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Потрібно вказати заголовок"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Потрібно вказати заголовок",
+    "feature_card__appearance__floating_image_mini_menu__title": "Показати чат з кнопкою зображення на зображеннях",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Вимкнені сайти",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Список веб-сайтів, де кнопка чату з зображенням прихована на зображеннях."
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Видалити переписку?",
     "immersive_chat__delete_rewrite__button__title": "Видалити переписку",
     "immersive_chat__rewrite_no_conversation__title": "Історія переписки відсутня",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Сховати меню до наступного візиту",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Приховати до наступного візиту",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Приховати на цьому сайті",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Приховувати завжди"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Приховувати завжди",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Ви можете знову ввімкнути це в <span style='color:rgb(133,90,167);text-decoration: underline;'>Налаштуваннях</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Налаштування"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

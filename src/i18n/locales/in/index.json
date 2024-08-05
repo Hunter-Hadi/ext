@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Apakah Anda yakin ingin membatalkan? Harap dicatat bahwa setelah dibatalkan, semua perubahan yang belum disimpan akan hilang.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ya, batalkan",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Kembali ke pengeditan",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Judul diperlukan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Judul diperlukan",
+    "feature_card__appearance__floating_image_mini_menu__title": "Tampilkan obrolan dengan tombol gambar pada gambar",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Situs yang dinonaktifkan",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Daftar situs di mana tombol obrolan dengan gambar disembunyikan pada gambar."
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Hapus ulang?",
     "immersive_chat__delete_rewrite__button__title": "Hapus ulang",
     "immersive_chat__rewrite_no_conversation__title": "Belum ada riwayat ulang",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Sembunyikan menu hingga kunjungan berikutnya",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Sembunyikan hingga kunjungan berikutnya",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Sembunyikan di situs ini",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Sembunyikan selalu"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Sembunyikan selalu",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Anda dapat mengaktifkannya kembali di <span style='color:rgb(133,90,167);text-decoration: underline;'>Pengaturan</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Pengaturan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

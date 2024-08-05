@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "آیا مطمئن هستید که می‌خواهید لغو کنید؟ لطفا توجه داشته باشید که پس از لغو، هر تغییر ذخیره نشده‌ای از بین خواهد رفت.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "بله، لغو کن",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "بازگشت به ویرایش",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان الزامی است"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان الزامی است",
+    "feature_card__appearance__floating_image_mini_menu__title": "نمایش گپ با دکمه تصویر بر روی تصاویر",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "سایت‌های غیرفعال",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "لیست وب‌سایت‌هایی که دکمه گپ با تصویر بر روی تصاویر مخفی شده است."
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "حذف بازنویسی؟",
     "immersive_chat__delete_rewrite__button__title": "حذف بازنویسی",
     "immersive_chat__rewrite_no_conversation__title": "هنوز تاریخچه بازنویسی موجود نیست",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "منو را تا بازدید بعدی مخفی کنید",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "مخفی کردن تا بازدید بعدی",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "مخفی کردن در این سایت",
-    "floating_menu__mini_menu__image__close_item__hide_always": "همیشه مخفی کردن"
+    "floating_menu__mini_menu__image__close_item__hide_always": "همیشه مخفی کردن",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "می‌توانید آن را در <span style='color:rgb(133,90,167);text-decoration: underline;'>تنظیمات</span> دوباره فعال کنید",
+    "floating_menu__mini_menu__image__close_item__settings": "تنظیمات"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Tem a certeza de que deseja cancelar? Por favor, note que uma vez cancelado, quaisquer alterações não guardadas serão perdidas.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sim, cancelar",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Voltar à edição",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "O título é obrigatório"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "O título é obrigatório",
+    "feature_card__appearance__floating_image_mini_menu__title": "Mostrar chat com botão de imagem em imagens",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Sites desativados",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Lista de sites onde o botão de chat com imagem está oculto em imagens."
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Eliminar reescrita?",
     "immersive_chat__delete_rewrite__button__title": "Eliminar reescrita",
     "immersive_chat__rewrite_no_conversation__title": "Sem histórico de reescrita disponível ainda",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ocultar menu até à próxima visita",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ocultar até à próxima visita",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ocultar neste site",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Ocultar sempre"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ocultar sempre",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Pode reativá-lo em <span style='color:rgb(133,90,167);text-decoration: underline;'>Definições</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Definições"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

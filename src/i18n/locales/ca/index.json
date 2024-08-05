@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Esteu segur que voleu cancel·lar? Tingueu en compte que un cop cancel·lat, es perdran els canvis no desats.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sí, cancel·la",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Torna a l'edició",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Cal un títol"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Cal un títol",
+    "feature_card__appearance__floating_image_mini_menu__title": "Mostra el xat amb el botó d'imatge a les imatges",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Llocs deshabilitats",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Llista de llocs web on el botó de xat amb imatge està amagat a les imatges."
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Eliminar reescripció?",
     "immersive_chat__delete_rewrite__button__title": "Eliminar reescripció",
     "immersive_chat__rewrite_no_conversation__title": "Encara no hi ha històric de reescriptura",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Amaga el menú fins la propera visita",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Amaga fins a la propera visita",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Amaga en aquest lloc",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Amaga sempre"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Amaga sempre",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Pots tornar a habilitar-ho a <span style='color:rgb(133,90,167);text-decoration: underline;'>Configuració</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Configuració"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

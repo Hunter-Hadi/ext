@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "کیا آپ واقعی منسوخ کرنا چاہتے ہیں؟ براہ کرم نوٹ فرمائیں کہ ایک بار منسوخ کردیا جائے گا تو کوئی بھی غیر محفوظ تبدیلیاں ضائع ہوجائیں گی۔",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "جی ہاں، منسوخ کریں",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "ترمیم پر واپس جائیں",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان ضروری ہے"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "عنوان ضروری ہے",
+    "feature_card__appearance__floating_image_mini_menu__title": "تصاویر پر چیٹ کے بٹن کو دکھائیں",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "غیر فعال سائٹس",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "ویب سائٹس کی فہرست جہاں تصاویر پر چیٹ کے بٹن کو چھپایا گیا ہے۔"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "ری ورائٹ حذف کریں؟",
     "immersive_chat__delete_rewrite__button__title": "ری ورائٹ حذف کریں",
     "immersive_chat__rewrite_no_conversation__title": "ابھی تک کوئی ری ورائٹ تاریخ دستیاب نہیں ہے",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "اگلی دورہ تک مینو چھپائیں",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "اگلی ویزٹ تک چھپائیں",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "اس سائٹ پر چھپائیں",
-    "floating_menu__mini_menu__image__close_item__hide_always": "ہمیشہ کے لیے چھپائیں"
+    "floating_menu__mini_menu__image__close_item__hide_always": "ہمیشہ کے لیے چھپائیں",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "آپ اسے دوبارہ فعال کرسکتے ہیں <span style='color:rgb(133,90,167);text-decoration: underline;'>ترتیبات</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "ترتیبات"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

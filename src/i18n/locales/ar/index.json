@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "هل أنت متأكد أنك تريد الإلغاء؟ يرجى ملاحظة أنه بمجرد الإلغاء، ستفقد أي تغييرات غير محفوظة.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "نعم، إلغاء",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "العودة للتحرير",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "العنوان مطلوب"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "العنوان مطلوب",
+    "feature_card__appearance__floating_image_mini_menu__title": "عرض الدردشة مع زر الصورة على الصور",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "المواقع المعطلة",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "قائمة بالمواقع التي يتم إخفاء زر الدردشة مع الصورة على الصور."
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "حذف إعادة الكتابة؟",
     "immersive_chat__delete_rewrite__button__title": "حذف الإعادة",
     "immersive_chat__rewrite_no_conversation__title": "لا توجد سجلات إعادة كتابة متاحة بعد",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "إخفاء القائمة حتى الزيارة القادمة",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "إخفاء حتى الزيارة القادمة",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "إخفاء على هذا الموقع",
-    "floating_menu__mini_menu__image__close_item__hide_always": "إخفاء دائماً"
+    "floating_menu__mini_menu__image__close_item__hide_always": "إخفاء دائماً",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "يمكنك إعادة تمكينه في <span style='color:rgb(133,90,167);text-decoration: underline;'>الإعدادات</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "الإعدادات"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Je, una uhakika unataka kufuta? Tafadhali kumbuka kuwa mara baada ya kufutwa, mabadiliko yoyote ambayo hayajasahihishwa yatapotea.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ndiyo, futa",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Rudi kwenye uhariri",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Jina linahitajika"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Jina linahitajika",
+    "feature_card__appearance__floating_image_mini_menu__title": "Onyesha mazungumzo na kitufe cha picha kwenye picha",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Tovuti Zilizozimwa",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Orodha ya tovuti ambapo kitufe cha picha cha mazungumzo kimefichwa kwenye picha."
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Futa kurekebisha?",
     "immersive_chat__delete_rewrite__button__title": "Futa kurekebisha",
     "immersive_chat__rewrite_no_conversation__title": "Hakuna historia ya kurekebisha inayopatikana bado",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ficha menyu hadi ziara ijayo",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ficha hadi ziara ijayo",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ficha kwenye tovuti hii",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Ficha daima"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ficha daima",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Unaweza kuwasha tena katika <span style='color:rgb(133,90,167);text-decoration: underline;'>Mipangilio</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Mipangilio"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

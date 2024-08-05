@@ -16,7 +16,7 @@ import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCa
 import { AppDBStorageState } from '@/store'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
-const FloatingImageMiniMenuCard = () => {
+const FeatureFloatingImageMiniMenuCard = () => {
   const [appDBStorage, setAppDBStorage] = useRecoilState(AppDBStorageState)
   const { syncLocalToServer } = useSyncSettingsChecker()
 
@@ -41,7 +41,7 @@ const FloatingImageMiniMenuCard = () => {
   return (
     <SettingsFeatureCardLayout
       title={t('feature_card__appearance__floating_image_mini_menu__title')}
-      id={'max_ai__setting__floating_image_mini_menu'}
+      id={'floating-image-mini-menu'}
     >
       {appDBStorage.floatingImageMiniMenu?.visibility && reRender && (
         <Stack spacing={2}>
@@ -126,4 +126,4 @@ const FloatingImageMiniMenuCard = () => {
   )
 }
 
-export default FloatingImageMiniMenuCard
+export default FeatureFloatingImageMiniMenuCard

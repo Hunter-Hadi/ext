@@ -193,7 +193,7 @@ const CloseMenu = ({
             onClick={() => {
               chromeExtensionClientOpenPage({
                 key: 'options',
-                query: '#/appearance',
+                query: '?id=floating-image-mini-menu#/appearance',
               })
             }}
           >

@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Ali ste prepričani, da želite preklicati? Prosimo, upoštevajte, da bodo vsi neshranjeni podatki izgubljeni.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, prekliči",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Nazaj na urejanje",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obvezen"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obvezen",
+    "feature_card__appearance__floating_image_mini_menu__title": "Prikaži klepet slike gumba na slikah",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Onemogočene strani",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Seznam spletnih mest, kjer je gumb za klepet s sliko skrit na slikah."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Izbrisati prepis?",
     "immersive_chat__delete_rewrite__button__title": "Izbriši prepis",
     "immersive_chat__rewrite_no_conversation__title": "Še ni na voljo zgodovine prepisov",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skrij meni do naslednjega obiska",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skrij do naslednjega obiska",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Skrij na tej strani",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Vedno skrij"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Vedno skrij",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Lahko ga ponovno omogočite v <span style='color:rgb(133,90,167);text-decoration: underline;'>Nastavitve</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Nastavitve"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

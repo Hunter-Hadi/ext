@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Êtes-vous sûr de vouloir annuler ? Veuillez noter que toute modification non enregistrée sera perdue.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Oui, annuler",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Retour à l'édition",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Le titre est requis"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Le titre est requis",
+    "feature_card__appearance__floating_image_mini_menu__title": "Afficher le chat avec bouton image sur les images",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Sites désactivés",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Liste des sites où le bouton de chat avec image est caché sur les images."
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Supprimer la réécriture ?",
     "immersive_chat__delete_rewrite__button__title": "Supprimer la réécriture",
     "immersive_chat__rewrite_no_conversation__title": "Aucune historique de réécriture disponible pour le moment",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Masquer le menu jusqu'à la prochaine visite",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Masquer jusqu'à la prochaine visite",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Masquer sur ce site",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Masquer toujours"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Masquer toujours",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Vous pouvez le réactiver dans <span style='color:rgb(133,90,167);text-decoration: underline;'>Paramètres</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Paramètres"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

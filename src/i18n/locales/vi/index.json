@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Bạn có chắc chắn muốn hủy? Lưu ý rằng sau khi hủy, mọi thay đổi chưa được lưu sẽ bị mất.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Có, hủy",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Quay lại chỉnh sửa",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tiêu đề là bắt buộc"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tiêu đề là bắt buộc",
+    "feature_card__appearance__floating_image_mini_menu__title": "Hiển thị nút chat với hình ảnh trên hình ảnh",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Các trang web bị vô hiệu hóa",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Danh sách các trang web nơi nút chat với hình ảnh bị ẩn trên hình ảnh."
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Xóa viết lại?",
     "immersive_chat__delete_rewrite__button__title": "Xóa viết lại",
     "immersive_chat__rewrite_no_conversation__title": "Chưa có lịch sử viết lại",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ẩn menu cho đến lần ghé thăm kế tiếp",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ẩn cho đến lần ghé thăm kế tiếp",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ẩn trên trang này",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Ẩn luôn"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ẩn luôn",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Bạn có thể bật lại nó trong <span style='color:rgb(133,90,167);text-decoration: underline;'>Cài đặt</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Cài đặt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

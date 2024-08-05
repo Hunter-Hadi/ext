@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "നിങ്ങൾ താൽപ്പര്യപ്പെടുന്നുണ്ടോ എന്ന് ഉറപ്പാക്കാൻ താൽപ്പര്യപ്പെടുന്നുണ്ടോ? ദയവായി ശ്രമിക്കുന്നത് റദ്ദാക്കിയാൽ, ഏതെങ്കിലും സേവ് ചെയ്യാനാവാത്ത മാറ്റങ്ങൾ നഷ്ടപ്പെടും.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "അതെ, റദ്ദാക്കുക",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "എഡിറ്റിംഗിലേക്ക് മടങ്ങുക",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "ശീർഷകം ആവശ്യമാണ്"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ശീർഷകം ആവശ്യമാണ്",
+    "feature_card__appearance__floating_image_mini_menu__title": "ചിത്രങ്ങളിൽ ചാറ്റ് ഉള്ള ചിത്ര ബട്ടൺ പ്രദർശിപ്പിക്കുക",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "അപ്രാപ്തമായ സൈറ്റുകൾ",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "ചിത്രങ്ങളിൽ ചാറ്റ് ഉള്ള ചിത്ര ബട്ടൺ മറന്നുകളയപ്പെട്ട വെബ്സൈറ്റുകൾക്കുള്ള ലിസ്റ്റ്."
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "മാറ്റം ഇല്ലാതാക്കുക?",
     "immersive_chat__delete_rewrite__button__title": "മാറ്റം ഇല്ലാതാക്കുക",
     "immersive_chat__rewrite_no_conversation__title": "ഇതുവരെ മാറ്റം ചരിത്രം ലഭ്യമല്ല",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "അടുത്ത സന്ദർശനം വരെ മെനു മറയ്ക്കുക",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "അടുത്ത സന്ദർശനം വരെ മറയ്ക്കുക",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ഈ സൈറ്റിൽ മറയ്ക്കുക",
-    "floating_menu__mini_menu__image__close_item__hide_always": "എപ്പോഴും മറയ്ക്കുക"
+    "floating_menu__mini_menu__image__close_item__hide_always": "എപ്പോഴും മറയ്ക്കുക",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "നിങ്ങൾ <span style='color:rgb(133,90,167);text-decoration: underline;'>ക്രമീകരണങ്ങൾ</span> സ്വന്തമാക്കാം",
+    "floating_menu__mini_menu__image__close_item__settings": "ക്രമീകരണങ്ങൾ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

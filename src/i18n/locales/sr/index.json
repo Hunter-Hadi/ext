@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Da li ste sigurni da želite da otkažete? Imajte na umu da će se izgubiti sve nesnimljene promene.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, otkaži",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Nazad na uređivanje",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obavezan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Naslov je obavezan",
+    "feature_card__appearance__floating_image_mini_menu__title": "Prikaži ćaskanje sa dugmetom slike na slikama",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Onemogućene stranice",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Lista veb sajtova gde je dugme za ćaskanje sa slikom skriveno na slikama."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Izbrisati prepis?",
     "immersive_chat__delete_rewrite__button__title": "Izbriši prepis",
     "immersive_chat__rewrite_no_conversation__title": "Još uvek nema dostupne istorije prepisa",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Sakrijte meni do sledeće posete",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Sakrij do sledeće posete",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Sakrij na ovoj stranici",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Sakrij zauvek"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Sakrij zauvek",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Možete ponovo omogućiti u <span style='color:rgb(133,90,167);text-decoration: underline;'>Podešavanjima</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Podešavanja"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิก? โปรดทราบว่าหากยกเลิกแล้ว การเปลี่ยนแปลงที่ยังไม่ได้บันทึกจะหายไป",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "ใช่ ยกเลิก",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "กลับไปแก้ไข",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "ต้องระบุชื่อ"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ต้องระบุชื่อ",
+    "feature_card__appearance__floating_image_mini_menu__title": "แสดงแชทพร้อมรูปบนรูปภาพ",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "เว็บไซต์ที่ถูกปิดใช้งาน",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "รายการเว็บไซต์ที่ปุ่มแชทพร้อมรูปถูกซ่อนบนรูปภาพ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "ลบการเขียนใหม่?",
     "immersive_chat__delete_rewrite__button__title": "ลบการเขียนใหม่",
     "immersive_chat__rewrite_no_conversation__title": "ยังไม่มีประวัติการเขียนใหม่",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "ซ่อนเมนูจนกว่าจะเยี่ยมชมครั้งถัดไป",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "ซ่อนจนกว่าจะเยี่ยมชมครั้งถัดไป",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ซ่อนบนเว็บไซต์นี้",
-    "floating_menu__mini_menu__image__close_item__hide_always": "ซ่อนตลอดไป"
+    "floating_menu__mini_menu__image__close_item__hide_always": "ซ่อนตลอดไป",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "คุณสามารถเปิดใช้งานอีกครั้งใน <span style='color:rgb(133,90,167);text-decoration: underline;'>การตั้งค่า</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "การตั้งค่า"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

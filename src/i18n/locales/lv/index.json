@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Vai tiešām vēlaties atcelt? Lūdzu, ņemiet vērā, ka pēc atcelšanas tiks zaudētas visas nesaglabātās izmaiņas.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Jā, atcelt",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Atpakaļ pie rediģēšanas",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Nepieciešams ievadīt virsrakstu"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Nepieciešams ievadīt virsrakstu",
+    "feature_card__appearance__floating_image_mini_menu__title": "Rādīt tērzēšanu ar attēla pogu attēlos",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Atspējotas vietnes",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Saraksts ar vietnēm, kur attēlu pogu tērzēšanai ir paslēpts attēlos."
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Dzēst pārrakstīšanu?",
     "immersive_chat__delete_rewrite__button__title": "Dzēst pārrakstīšanu",
     "immersive_chat__rewrite_no_conversation__title": "Nav pieejama pārrakstīšanas vēsture",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Paslēpt izvēlni līdz nākamajai vizītei",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Paslēpt līdz nākamajai vizītei",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Paslēpt šajā vietnē",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Vienmēr paslēpt"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Vienmēr paslēpt",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Jūs varat to atkārtoti iespējot <span style='color:rgb(133,90,167);text-decoration: underline;'>Iestatījumos</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Iestatījumi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

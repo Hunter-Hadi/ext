@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "আপনি কি নিশ্চিত যে আপনি বাতিল করতে চান? দয়া করে মনে রাখবেন, একবার বাতিল করা হলে সংরক্ষিত না করা পর্যন্ত কোনও পরিবর্তন হারায়।",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "হ্যাঁ, বাতিল করুন",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "সম্পাদনা করা ফিরে যান",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "শিরোনাম প্রয়োজন"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "শিরোনাম প্রয়োজন",
+    "feature_card__appearance__floating_image_mini_menu__title": "চিত্র বোতামে চ্যাট প্রদর্শন করুন",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "অক্ষম সাইটস",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "চিত্রে চ্যাট বোতাম লুকানো সাইটগুলির তালিকা।"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "রিওয়্রাইট মুছে ফেলবেন?",
     "immersive_chat__delete_rewrite__button__title": "রিওয়্রাইট মুছুন",
     "immersive_chat__rewrite_no_conversation__title": "এখনও রিওয়্রাইট হিস্ট্রি পাওয়া যায়নি",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "পরবর্তী দর্শনে মেনু লুকান",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "পরবর্তী দর্শনে লুকান",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "এই সাইটে লুকান",
-    "floating_menu__mini_menu__image__close_item__hide_always": "চিরকালের জন্য লুকান"
+    "floating_menu__mini_menu__image__close_item__hide_always": "চিরকালের জন্য লুকান",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "<span style='color:rgb(133,90,167);text-decoration: underline;'>সেটিংস</span> এ আবার সক্রিয় করতে পারেন",
+    "floating_menu__mini_menu__image__close_item__settings": "সেটিংস"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

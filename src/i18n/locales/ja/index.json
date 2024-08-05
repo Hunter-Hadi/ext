@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "キャンセルしてもよろしいですか？キャンセルすると、保存されていない変更が失われます。",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "はい、キャンセル",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "編集に戻る",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "タイトルは必須です"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "タイトルは必須です",
+    "feature_card__appearance__floating_image_mini_menu__title": "画像ボタンでチャットを表示",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "無効なサイト",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "画像上のチャットボタンが非表示になっているウェブサイトのリスト。"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "書き直しを削除しますか？",
     "immersive_chat__delete_rewrite__button__title": "書き直しを削除",
     "immersive_chat__rewrite_no_conversation__title": "まだ書き直し履歴はありません",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "次回訪問までメニューを非表示",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "次の訪問まで非表示",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "このサイトで非表示",
-    "floating_menu__mini_menu__image__close_item__hide_always": "常に非表示"
+    "floating_menu__mini_menu__image__close_item__hide_always": "常に非表示",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "<span style='color:rgb(133,90,167);text-decoration: underline;'>設定</span>で再度有効にできます",
+    "floating_menu__mini_menu__image__close_item__settings": "設定"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

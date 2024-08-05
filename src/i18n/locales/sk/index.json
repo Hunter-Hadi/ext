@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Ste si istí, že chcete zrušiť? Vezmite prosím na vedomie, že po zrušení sa stratia všetky neuložené zmeny.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Áno, zrušiť",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Späť na úpravu",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Názov je povinný"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Názov je povinný",
+    "feature_card__appearance__floating_image_mini_menu__title": "Zobraziť chat s tlačidlom obrázka na obrázkoch",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Zakázané stránky",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Zoznam webových stránok, kde je tlačidlo chatu s obrázkami skryté na obrázkoch."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Vymazať prepísanie?",
     "immersive_chat__delete_rewrite__button__title": "Vymazať prepísanie",
     "immersive_chat__rewrite_no_conversation__title": "Zatiaľ nie sú k dispozícii žiadne histórie prepísania",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skryť menu do ďalšej návštevy",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skryť do ďalšej návštevy",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Skryť na tejto stránke",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Skryť vždy"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Skryť vždy",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Môžete ho znovu povoliť v <span style='color:rgb(133,90,167);text-decoration: underline;'>Nastavenia</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Nastavenia"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

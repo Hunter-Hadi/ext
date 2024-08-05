@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Weet je zeker dat je wilt annuleren? Houd er rekening mee dat alle niet-opgeslagen wijzigingen verloren gaan zodra je annuleert.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, annuleren",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Terug naar bewerken",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel is verplicht"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel is verplicht",
+    "feature_card__appearance__floating_image_mini_menu__title": "Toon chat met afbeeldingsknop op afbeeldingen",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Uitgeschakelde sites",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Lijst van websites waar de chat met afbeeldingsknop verborgen is op afbeeldingen."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Rewrite verwijderen?",
     "immersive_chat__delete_rewrite__button__title": "Rewrite verwijderen",
     "immersive_chat__rewrite_no_conversation__title": "Nog geen rewrite geschiedenis beschikbaar",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Verberg menu tot volgend bezoek",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Verbergen tot volgend bezoek",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Verbergen op deze site",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Altijd verbergen"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Altijd verbergen",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "U kunt het opnieuw inschakelen in <span style='color:rgb(133,90,167);text-decoration: underline;'>Instellingen</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Instellingen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Sei sicuro di voler annullare? Nota che una volta annullato, tutte le modifiche non salvate andranno perse.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sì, annulla",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Torna alla modifica",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Il titolo è obbligatorio"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Il titolo è obbligatorio",
+    "feature_card__appearance__floating_image_mini_menu__title": "Mostra chat con pulsante immagine sulle immagini",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Siti disabilitati",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Elenco dei siti web in cui il pulsante chat con immagine è nascosto sulle immagini."
   },
   "client": {
     "sidebar__button__close_sidebar": "Chiudi la barra laterale",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Eliminare riscrittura?",
     "immersive_chat__delete_rewrite__button__title": "Elimina riscrittura",
     "immersive_chat__rewrite_no_conversation__title": "Nessuna cronologia di riscrittura disponibile ancora",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Nascondi menu fino alla prossima visita",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Nascondi fino alla prossima visita",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Nascondi su questo sito",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Nascondi sempre"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Nascondi sempre",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Puoi riattivarlo in <span style='color:rgb(133,90,167);text-decoration: underline;'>Impostazioni</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Impostazioni"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

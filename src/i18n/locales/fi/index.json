@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Oletko varma, että haluat peruuttaa? Huomaa, että peruuttamisen jälkeen kaikki tallentamattomat muutokset menetetään.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Kyllä, peruuta",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Takaisin muokkaamiseen",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Otsikko vaaditaan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Otsikko vaaditaan",
+    "feature_card__appearance__floating_image_mini_menu__title": "Näytä chat kuvapainikkeella kuvissa",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Poissuljetut sivustot",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Lista sivustoista, joissa chat kuvapainike on piilotettu kuviin."
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Poista uudelleenkirjoitus?",
     "immersive_chat__delete_rewrite__button__title": "Poista uudelleenkirjoitus",
     "immersive_chat__rewrite_no_conversation__title": "Uudelleenkirjoitushistoriaa ei vielä saatavilla",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Piilota valikko seuraavaan vierailuun asti",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Piilota seuraavaan vierailuun asti",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Piilota tällä sivustolla",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Piilota aina"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Piilota aina",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Voit ottaa sen uudelleen käyttöön <span style='color:rgb(133,90,167);text-decoration: underline;'>Asetuksista</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Asetukset"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

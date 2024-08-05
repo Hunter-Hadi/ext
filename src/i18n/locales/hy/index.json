@@ -275,7 +275,10 @@
     "feature_card__prompts__confirm__cancel__description": "Դուք վստահ եք, որ ցանկանում եք չեղարկելը: Կարող է լինել, որ չպահպանված փոփոխություններ կկորչեն:",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Այո, չեղարկել",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Վերադառնալ խմբագրմանը",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Վերնագիրը պարտադիր է"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Վերնագիրը պարտադիր է",
+    "feature_card__appearance__floating_image_mini_menu__title": "Ցուցադրել խորանարդի կոճակը պատկերների վրա",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Անջատված կայքեր",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Կայքերի ցուցադրել պատկերների վրա թեթևած խորանարդի կոճակը:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",
@@ -1065,9 +1068,11 @@
     "immersive_chat__delete_rewrite__title": "ՋՆՈՂՈՒՄ ՎԵՐԱՆԱՐՈՒԹՅՈՒՆը?",
     "immersive_chat__delete_rewrite__button__title": "ՋՆՈՂՈՒՄ ՎԵՐԱՆԱՐՈՒԹՅՈՒՆը",
     "immersive_chat__rewrite_no_conversation__title": "Չկա վերանարումների պատմություն",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Թաքցնել ընթացիկ այցից մինչև հաջորդ այցը",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Թաքցնել մինչև հաջորդ այց",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Թաքցնել այս կայքում",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Թաքցնել միշտ"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Թաքցնել միշտ",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Դուք կարող եք վերսկսել այն <span style='color:rgb(133,90,167);text-decoration: underline;'>Կարգավորումներ</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Կարգավորումներ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

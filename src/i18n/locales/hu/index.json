@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Biztosan megszakítja? Kérjük, vegye figyelembe, hogy a megszakítás után az összes mentetlen változtatás elveszik.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Igen, megszakítás",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Vissza a szerkesztéshez",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "A cím kötelező"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "A cím kötelező",
+    "feature_card__appearance__floating_image_mini_menu__title": "Képernyőn megjelenő csevegés gomb megjelenítése képeken",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Letiltott webhelyek",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Webhelyek listája, ahol a csevegés gomb el van rejtve a képeken."
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Törlöd a átírást?",
     "immersive_chat__delete_rewrite__button__title": "Átírás Törlése",
     "immersive_chat__rewrite_no_conversation__title": "Még nincs átírás előzmény",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Menü elrejtése a következő látogatásig",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Elrejtés a következő látogatásig",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Elrejtés ezen a webhelyen",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Mindig elrejtés"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Mindig elrejtés",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Újra engedélyezheted a <span style='color:rgb(133,90,167);text-decoration: underline;'>Beállítások</span> menüben",
+    "floating_menu__mini_menu__image__close_item__settings": "Beállítások"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

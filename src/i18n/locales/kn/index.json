@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "ಖಾತರಿಯಾಗಿ ರದ್ದು ಮಾಡಲು ನೀವು ಖಚಿತವಾಗಿದ್ದೀರಿಯೇ? ದಯವಿಟ್ಟು ಗಮನಿಸಿ, ರದ್ದು ಮಾಡಲು ನಿಮ್ಮಲ್ಲಿ ಯಾವುದೇ ಹೊಂದಿಕೆಗಳು ಉಳಿದಿರುವುದಿಲ್ಲ.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "ಹೌದು, ರದ್ದು ಮಾಡಿ",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "ಸಂಪಾದನೆಗೆ ಹಿಂತಿರುಗಿ",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "ಶೀರ್ಷಿಕೆ ಅಗತ್ಯವಿದೆ"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ಶೀರ್ಷಿಕೆ ಅಗತ್ಯವಿದೆ",
+    "feature_card__appearance__floating_image_mini_menu__title": "ಚಿತ್ರಗಳ ಮೇಲೆ ಚಾಟ್ ಬಟನ್ ಪ್ರದರ್ಶಿಸಿ",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "ನಿಷೇಧಿತ ತಾಣಗಳು",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "ಚಿತ್ರಗಳ ಮೇಲೆ ಚಾಟ್ ಬಟನ್ ಮರೆಯಲಾಗಿರುವ ವೆಬ್‌ಸೈಟುಗಳ ಪಟ್ಟಿ."
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "ಮಾರ್ಜನ್ ಅಳಿಸು?",
     "immersive_chat__delete_rewrite__button__title": "ಮಾರ್ಜನ್ ಅಳಿಸು",
     "immersive_chat__rewrite_no_conversation__title": "ಇನ್ನು ಮಾರ್ಜನ್ ಇತಿಹಾಸ ಲಭ್ಯವಿಲ್ಲ",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "ಮುಂದಿನ ಭೇಟಿಯವರೆಗೆ ಮೆನು ಮರೆಮಾಡಿ",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "ಮುಂದಿನ ಭೇಟಿಯವರೆಗೆ ಮರೆಯಿಸಿ",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ಈ ತಾಣದಲ್ಲಿ ಮರೆಯಿರಿ",
-    "floating_menu__mini_menu__image__close_item__hide_always": "ಎಲ್ಲಾಕ್ಕೂ ಮರೆಯಿರಿ"
+    "floating_menu__mini_menu__image__close_item__hide_always": "ಎಲ್ಲಾಕ್ಕೂ ಮರೆಯಿರಿ",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "<span style='color:rgb(133,90,167);text-decoration: underline;'>ಸೆಟ್ಟಿಂಗುಗಳು</span>ನಲ್ಲಿ ಮರುಸ್ಥಾಪಿಸಬಹುದು",
+    "floating_menu__mini_menu__image__close_item__settings": "ಸೆಟ್ಟಿಂಗುಗಳು"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

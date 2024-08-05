@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Вы уверены, что хотите отменить? Обратите внимание, что после отмены все несохраненные изменения будут потеряны.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Да, отменить",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Вернуться к редактированию",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Требуется заголовок"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Требуется заголовок",
+    "feature_card__appearance__floating_image_mini_menu__title": "Показывать чат с кнопкой изображения на изображениях",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Отключенные сайты",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Список веб-сайтов, где кнопка чата с изображением скрыта на изображениях."
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",
@@ -1068,9 +1071,11 @@
     "immersive_chat__delete_rewrite__title": "Удалить переписку?",
     "immersive_chat__delete_rewrite__button__title": "Удалить переписку",
     "immersive_chat__rewrite_no_conversation__title": "История переписки пока недоступна",
-    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Скрыть меню до следующего посещения",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Скрыть до следующего посещения",
     "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Скрыть на этом сайте",
-    "floating_menu__mini_menu__image__close_item__hide_always": "Скрыть всегда"
+    "floating_menu__mini_menu__image__close_item__hide_always": "Скрыть всегда",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Вы можете включить его обратно в <span style='color:rgb(133,90,167);text-decoration: underline;'>Настройках</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Настройки"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

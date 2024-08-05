@@ -255,6 +255,7 @@ export const clientFetchMaxAIAPI = async <T = any>(
       data: {
         url,
         options,
+        abortTaskId: options.abortTaskId,
       },
     })
     return {

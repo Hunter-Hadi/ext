@@ -492,6 +492,7 @@ export const ClientMessageInit = () => {
         case 'Client_proxyFetchAPI': {
           try {
             const { url, options, abortTaskId } = data
+            // debugger
             const { parse = 'json', ...parseOptions } = options
             const requestId = uuidV4()
             // 只有MaxAI的api才会添加taskId
@@ -516,6 +517,7 @@ export const ClientMessageInit = () => {
               },
               abortTaskId,
             )
+            // debugger
             let resultData: any = null
             if (parse === 'json') {
               resultData = await result.json()
@@ -553,6 +555,7 @@ export const ClientMessageInit = () => {
         case 'Client_abortProxyFetchAPI': {
           try {
             const { abortTaskId } = data
+            // debugger
             const success = BackgroundAbortFetch.abort(abortTaskId)
             return {
               success,

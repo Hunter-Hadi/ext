@@ -1,3 +1,5 @@
+import { v4 as uuidV4 } from 'uuid'
+
 import { APP_VERSION, SUMMARY__RELATED_QUESTIONS__PROMPT_ID } from '@/constants'
 import { generateQuestionAnalyticsData } from '@/features/auth/utils/log'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
@@ -24,6 +26,10 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
  */
 export class ActionMaxAIResponseRelated extends Action {
   static type: ActionIdentifier = 'MAXAI_RESPONSE_RELATED'
+
+  isStopAction = false
+  abortTaskId = ''
+
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -51,6 +57,7 @@ export class ActionMaxAIResponseRelated extends Action {
           'latest',
         )
       : null
+    if (this.isStopAction) return
     let summaryContent = this.parameters.compliedTemplate || ''
     // 处理额外信息，比如youtube transcript和timestamped
     if (
@@ -107,6 +114,7 @@ export class ActionMaxAIResponseRelated extends Action {
         summaryContent,
         16384 - 1000,
       )
+      if (this.isStopAction) return
       if (isLimit) {
         summaryContent = text
       }
@@ -119,6 +127,7 @@ export class ActionMaxAIResponseRelated extends Action {
         } as any,
         SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
       )
+      if (this.isStopAction) return
       /**
        * 前端不再依赖call_api来触发paywall付费卡点了
        * call_api主要是用来做log记录的，让我们自己能看到、分析用户的使用情况
@@ -138,45 +147,53 @@ export class ActionMaxAIResponseRelated extends Action {
         })
         .then()
         .catch()
+      this.abortTaskId = uuidV4()
       const result = await clientFetchMaxAIAPI<{
         status: string
         text: string
         conversation_id: string | null
-      }>(`/gpt/get_related_questions`, {
-        chat_history: [
-          // {
-          //   role: 'system',
-          //   content: [
-          //     {
-          //       type: 'text',
-          //       text: sliceTextByTokens(
-          //         systemPrompt,
-          //         // 因为这个接口是用来生成related questions的，用的model是gpt-3.5-turbo，所以这里的max_response_tokens是16384
-          //         calculateMaxResponseTokens(16384),
-          //       ),
-          //     },
-          //   ],
-          // },
-          {
-            role: 'ai',
-            content: [
-              {
-                type: 'text',
-                text: summaryContent,
-              },
-            ],
-          },
-        ],
-        message_content: [],
-        streaming: false,
-        chrome_extension_version: APP_VERSION,
-        prompt_id: SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
-        prompt_name: analyticsData.featureName,
-        prompt_type: analyticsData.promptType,
-        prompt_action_type: 'chat_complete',
-        feature_name: '',
-        temperature: 1,
-      })
+      }>(
+        `/gpt/get_related_questions`,
+        {
+          chat_history: [
+            // {
+            //   role: 'system',
+            //   content: [
+            //     {
+            //       type: 'text',
+            //       text: sliceTextByTokens(
+            //         systemPrompt,
+            //         // 因为这个接口是用来生成related questions的，用的model是gpt-3.5-turbo，所以这里的max_response_tokens是16384
+            //         calculateMaxResponseTokens(16384),
+            //       ),
+            //     },
+            //   ],
+            // },
+            {
+              role: 'ai',
+              content: [
+                {
+                  type: 'text',
+                  text: summaryContent,
+                },
+              ],
+            },
+          ],
+          message_content: [],
+          streaming: false,
+          chrome_extension_version: APP_VERSION,
+          prompt_id: SUMMARY__RELATED_QUESTIONS__PROMPT_ID,
+          prompt_name: analyticsData.featureName,
+          prompt_type: analyticsData.promptType,
+          prompt_action_type: 'chat_complete',
+          feature_name: '',
+          temperature: 1,
+        },
+        {
+          abortTaskId: this.abortTaskId,
+        },
+      )
+      console.log('TEST', 'RELATED RESULT', result)
       const relatedQuestionsText = result?.data?.text || '[]'
       try {
         const relatedQuestions = JSON.parse(relatedQuestionsText)
@@ -202,6 +219,18 @@ export class ActionMaxAIResponseRelated extends Action {
   }
 
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStopAction = true
+    if (this.abortTaskId && params.engine.clientConversationEngine) {
+      await Promise.race([
+        await params.engine.clientMessageChannelEngine?.postMessage({
+          event: 'Client_abortProxyFetchAPI',
+          data: {
+            abortTaskId: this.abortTaskId,
+          },
+        }),
+        new Promise((resolve) => setTimeout(resolve, 3 * 1000)),
+      ])
+    }
     await stopActionMessageStatus(params)
     return true
   }

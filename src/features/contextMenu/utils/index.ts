@@ -501,11 +501,9 @@ type IDragOffsetRef = MutableRefObject<{
 type IFloatingSizeOffsetRef = MutableRefObject<{
   dx: number
   dy: number
-  minWidth: number
+  defaultWidth: number
+  defaultMinWidth: number
   defaultMinHeight: number
-  /**
-   * 默认不resize的最大大高度
-   */
   defaultMaxHeight: number
   resized: boolean
   resizeDir: string
@@ -706,7 +704,7 @@ export const getFloatingContextMenuMiddleware = (
           markdown.style.maxHeight = '320px'
           elements.floating.style.height = 'auto'
           referenceElementRef.current.style.height = 'auto'
-          elements.floating.style.width = `${floatingSizeOffsetRef.current.minWidth}px`
+          elements.floating.style.width = `${floatingSizeOffsetRef.current.defaultWidth}px`
           elements.floating.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
           referenceElementRef.current.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
           return
@@ -739,7 +737,7 @@ export const getFloatingContextMenuMiddleware = (
         }
 
         minWidth = Math.min(
-          floatingSizeOffsetRef.current.minWidth,
+          floatingSizeOffsetRef.current.defaultMinWidth,
           availableWidth,
         )
         // 这里处理高度的方法和宽度的稍显不同，因为高度会一开始就限制一个minWidth，

@@ -115,8 +115,9 @@ const FloatingContextMenu: FC<{
 
   /**
    * 浮动窗口的宽度，有最小和最大限制
+   * 这里代表的是默认宽度
    */
-  const currentWidth = useMemo(() => {
+  const defaultWidth = useMemo(() => {
     if (floatingDropdownMenu.rootRect) {
       const minWidth = Math.max(
         floatingDropdownMenu.rootRect?.width || 0,
@@ -139,10 +140,10 @@ const FloatingContextMenu: FC<{
   const safePlacement = useMemo(() => {
     let inputPlacement: Placement = 'bottom-start'
     let contextMenuPlacement: Placement = 'bottom-start'
-    if (floatingDropdownMenu.rootRect && currentWidth) {
+    if (floatingDropdownMenu.rootRect && defaultWidth) {
       const position = getContextMenuRenderPosition(
         floatingDropdownMenu.rootRect,
-        currentWidth,
+        defaultWidth,
         400,
       )
       // console.log(
@@ -175,7 +176,7 @@ const FloatingContextMenu: FC<{
       inputPlacement,
       contextMenuPlacement,
     }
-  }, [floatingDropdownMenu.rootRect, currentWidth])
+  }, [floatingDropdownMenu.rootRect, defaultWidth])
 
   const referenceElementRef = useRef<HTMLDivElement>(null)
   const referenceElementDragOffsetRef = useRef({
@@ -188,7 +189,8 @@ const FloatingContextMenu: FC<{
   const floatingSizeOffsetRef = useRef({
     dx: 0,
     dy: 0,
-    minWidth: 0,
+    defaultWidth: 0,
+    defaultMinWidth: 550,
     defaultMinHeight: 200,
     defaultMaxHeight: 620,
     resized: false,
@@ -201,7 +203,8 @@ const FloatingContextMenu: FC<{
     startBottom: 0,
   })
 
-  floatingSizeOffsetRef.current.minWidth = currentWidth
+  floatingSizeOffsetRef.current.defaultWidth = defaultWidth
+
   const mountedAutoUpdate = useCallback(
     (
       reference: ReferenceElement,
@@ -213,6 +216,15 @@ const FloatingContextMenu: FC<{
       }),
     [],
   )
+
+  // TODO 后续排查一下
+  // const floatingMiddleware = useMemo(() => {
+  //   return getFloatingContextMenuMiddleware(
+  //     referenceElementDragOffsetRef,
+  //     referenceElementRef,
+  //     floatingSizeOffsetRef,
+  //   )
+  // }, [])
 
   const { x, y, strategy, refs, context, update } = useFloating({
     open: floatingDropdownMenu.open,
@@ -431,9 +443,9 @@ const FloatingContextMenu: FC<{
 
   useEffect(() => {
     if (refs.floating.current) {
-      refs.floating.current.style.width = `${currentWidth}px`
+      refs.floating.current.style.width = `${defaultWidth}px`
     }
-  }, [currentWidth])
+  }, [defaultWidth])
 
   const actionsBtnColorSxMemo = useMemo<SxProps<Theme>>(() => {
     return {
@@ -497,7 +509,7 @@ const FloatingContextMenu: FC<{
           // top: y ?? 0,
           // left: x ?? 0,
           ...floatingPosition,
-          width: currentWidth,
+          width: defaultWidth,
         }}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
         {...getFloatingProps()}

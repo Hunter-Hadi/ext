@@ -217,7 +217,7 @@ const FloatingContextMenu: FC<{
     [],
   )
 
-  // TODO 后续排查一下
+  // TODO 这样写有点问题，但是每次render调用可能会内存泄漏？后续要排查一下
   // const floatingMiddleware = useMemo(() => {
   //   return getFloatingContextMenuMiddleware(
   //     referenceElementDragOffsetRef,
@@ -467,21 +467,25 @@ const FloatingContextMenu: FC<{
   const floatingPosition = useMemo(() => {
     switch (resizeDir) {
       case 'top-left':
+      case 'left':
         return {
           right: floatingSizeOffsetRef.current.startRight,
           bottom: floatingSizeOffsetRef.current.startBottom,
         }
       case 'top-right':
+      case 'top':
         return {
           left: floatingSizeOffsetRef.current.startLeft,
           bottom: floatingSizeOffsetRef.current.startBottom,
         }
       case 'bottom-left':
+      case 'bottom':
         return {
           top: floatingSizeOffsetRef.current.startTop,
           right: floatingSizeOffsetRef.current.startRight,
         }
       case 'bottom-right':
+      case 'right':
         return {
           top: floatingSizeOffsetRef.current.startTop,
           left: floatingSizeOffsetRef.current.startLeft,
@@ -544,25 +548,38 @@ const FloatingContextMenu: FC<{
               // 这里通过设置dragRef让floating中间设置成正确的内容
               const endWidth = refs.floating.current?.clientWidth || 0
               const endHeight = refs.floating.current?.clientHeight || 0
-              if (resizeDir === 'top-left') {
-                const newX =
-                  document.documentElement.clientWidth -
-                  (floatingSizeOffsetRef.current.startRight + endWidth)
-                const newY =
-                  document.documentElement.clientHeight -
-                  (floatingSizeOffsetRef.current.startBottom + endHeight)
-                referenceElementDragOffsetRef.current.x += newX - x
-                referenceElementDragOffsetRef.current.y += newY - y
-              } else if (resizeDir === 'top-right') {
-                const newY =
-                  document.documentElement.clientHeight -
-                  (floatingSizeOffsetRef.current.startBottom + endHeight)
-                referenceElementDragOffsetRef.current.y += newY - y
-              } else if (resizeDir === 'bottom-left') {
-                const newX =
-                  document.documentElement.clientWidth -
-                  (floatingSizeOffsetRef.current.startRight + endWidth)
-                referenceElementDragOffsetRef.current.x += newX - x
+              switch (resizeDir) {
+                case 'top-left':
+                case 'left': {
+                  const newX =
+                    document.documentElement.clientWidth -
+                    (floatingSizeOffsetRef.current.startRight + endWidth)
+                  const newY =
+                    document.documentElement.clientHeight -
+                    (floatingSizeOffsetRef.current.startBottom + endHeight)
+                  referenceElementDragOffsetRef.current.x += newX - x
+                  referenceElementDragOffsetRef.current.y += newY - y
+                  break
+                }
+                case 'top-right':
+                case 'top': {
+                  const newY =
+                    document.documentElement.clientHeight -
+                    (floatingSizeOffsetRef.current.startBottom + endHeight)
+                  referenceElementDragOffsetRef.current.y += newY - y
+                  break
+                }
+                case 'bottom-left':
+                case 'bottom': {
+                  const newX =
+                    document.documentElement.clientWidth -
+                    (floatingSizeOffsetRef.current.startRight + endWidth)
+                  referenceElementDragOffsetRef.current.x += newX - x
+                  break
+                }
+                case 'bottom-right':
+                case 'right':
+                  break
               }
               referenceElementDragOffsetRef.current.dragged = true
               // floatingSizeOffsetRef.current.resized = false

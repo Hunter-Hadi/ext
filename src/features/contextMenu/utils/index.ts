@@ -715,25 +715,36 @@ export const getFloatingContextMenuMiddleware = (
 
         let availableWidth = 0
         let availableHeight = 0
-        let width = 0
+        let width = currentWidth
         let minWidth = 0
-        let height = 0
+        let height = currentHeight
         let minHeight = 0
 
-        if (resizeDir === 'bottom-right') {
-          availableWidth = document.documentElement.clientWidth - x - 8
-          availableHeight = document.documentElement.clientHeight - y - 8
-        } else if (resizeDir === 'bottom-left') {
-          availableWidth = document.documentElement.clientWidth - startRight - 8
-          availableHeight = document.documentElement.clientHeight - y - 8
-        } else if (resizeDir === 'top-left') {
-          availableWidth = document.documentElement.clientWidth - startRight - 8
-          availableHeight =
-            document.documentElement.clientHeight - startBottom - 8
-        } else if (resizeDir === 'top-right') {
-          availableWidth = document.documentElement.clientWidth - x - 8
-          availableHeight =
-            document.documentElement.clientHeight - startBottom - 8
+        switch (resizeDir) {
+          case 'top-left':
+          case 'left':
+            availableWidth =
+              document.documentElement.clientWidth - startRight - 8
+            availableHeight =
+              document.documentElement.clientHeight - startBottom - 8
+            break
+          case 'top-right':
+          case 'top':
+            availableWidth = document.documentElement.clientWidth - x - 8
+            availableHeight =
+              document.documentElement.clientHeight - startBottom - 8
+            break
+          case 'bottom-left':
+          case 'bottom':
+            availableWidth =
+              document.documentElement.clientWidth - startRight - 8
+            availableHeight = document.documentElement.clientHeight - y - 8
+            break
+          case 'bottom-right':
+          case 'right':
+            availableWidth = document.documentElement.clientWidth - x - 8
+            availableHeight = document.documentElement.clientHeight - y - 8
+            break
         }
 
         minWidth = Math.min(
@@ -748,26 +759,39 @@ export const getFloatingContextMenuMiddleware = (
             ? currentHeight
             : floatingSizeOffsetRef.current.defaultMinHeight
 
-        if (resizeDir === 'top-left' || resizeDir === 'bottom-left') {
+        if (
+          resizeDir === 'top-left' ||
+          resizeDir === 'bottom-left' ||
+          resizeDir === 'left'
+        ) {
           width = Math.min(
             availableWidth,
             Math.max(currentWidth - dx, minWidth),
           )
-        } else if (resizeDir === 'top-right' || resizeDir === 'bottom-right') {
+        } else if (
+          resizeDir === 'top-right' ||
+          resizeDir === 'bottom-right' ||
+          resizeDir === 'right'
+        ) {
           width = Math.min(
             availableWidth,
             Math.max(currentWidth + dx, minWidth),
           )
         }
 
-        if (resizeDir === 'top-left' || resizeDir === 'top-right') {
+        if (
+          resizeDir === 'top-left' ||
+          resizeDir === 'top-right' ||
+          resizeDir === 'top'
+        ) {
           height = Math.min(
             availableHeight,
             Math.max(currentHeight - dy, minHeight),
           )
         } else if (
           resizeDir === 'bottom-left' ||
-          resizeDir === 'bottom-right'
+          resizeDir === 'bottom-right' ||
+          resizeDir === 'bottom'
         ) {
           height = Math.min(
             availableHeight,

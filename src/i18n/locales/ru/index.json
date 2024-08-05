@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Чат с изображением",
     "immersive_chat__delete_rewrite__title": "Удалить переписку?",
     "immersive_chat__delete_rewrite__button__title": "Удалить переписку",
-    "immersive_chat__rewrite_no_conversation__title": "История переписки пока недоступна"
+    "immersive_chat__rewrite_no_conversation__title": "История переписки пока недоступна",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Скрыть меню до следующего посещения",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Скрыть на этом сайте",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Скрыть всегда"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

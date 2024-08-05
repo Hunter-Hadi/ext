@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Czat z obrazem",
     "immersive_chat__delete_rewrite__title": "Usunąć przepisanie?",
     "immersive_chat__delete_rewrite__button__title": "Usuń przepisanie",
-    "immersive_chat__rewrite_no_conversation__title": "Brak dostępnej historii przepisywania"
+    "immersive_chat__rewrite_no_conversation__title": "Brak dostępnej historii przepisywania",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ukryj menu do następnej wizyty",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ukryj na tej stronie",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Zawsze ukrywaj"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

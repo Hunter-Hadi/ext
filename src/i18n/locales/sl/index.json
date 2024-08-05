@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Klepet s sliko",
     "immersive_chat__delete_rewrite__title": "Izbrisati prepis?",
     "immersive_chat__delete_rewrite__button__title": "Izbriši prepis",
-    "immersive_chat__rewrite_no_conversation__title": "Še ni na voljo zgodovine prepisov"
+    "immersive_chat__rewrite_no_conversation__title": "Še ni na voljo zgodovine prepisov",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skrij meni do naslednjega obiska",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Skrij na tej strani",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Vedno skrij"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

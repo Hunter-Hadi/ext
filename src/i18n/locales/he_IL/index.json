@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "צ'אט עם תמונה",
     "immersive_chat__delete_rewrite__title": "מחיקת שינוי?",
     "immersive_chat__delete_rewrite__button__title": "מחק שינוי",
-    "immersive_chat__rewrite_no_conversation__title": "אין היסטוריית שינויים זמינה כרגע"
+    "immersive_chat__rewrite_no_conversation__title": "אין היסטוריית שינויים זמינה כרגע",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "הסתר תפריט עד הביקור הבא",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "הסתר באתר זה",
+    "floating_menu__mini_menu__image__close_item__hide_always": "הסתר לצמיתות"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

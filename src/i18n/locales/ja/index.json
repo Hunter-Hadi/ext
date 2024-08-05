@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "画像付きチャット",
     "immersive_chat__delete_rewrite__title": "書き直しを削除しますか？",
     "immersive_chat__delete_rewrite__button__title": "書き直しを削除",
-    "immersive_chat__rewrite_no_conversation__title": "まだ書き直し履歴はありません"
+    "immersive_chat__rewrite_no_conversation__title": "まだ書き直し履歴はありません",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "次回訪問までメニューを非表示",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "このサイトで非表示",
+    "floating_menu__mini_menu__image__close_item__hide_always": "常に非表示"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

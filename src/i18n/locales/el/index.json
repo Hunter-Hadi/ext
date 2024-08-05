@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Συνομιλία με Εικόνα",
     "immersive_chat__delete_rewrite__title": "Διαγραφή επανεγγραφής;",
     "immersive_chat__delete_rewrite__button__title": "Διαγραφή επανεγγραφής",
-    "immersive_chat__rewrite_no_conversation__title": "Δεν υπάρχει διαθέσιμο ιστορικό επανεγγραφής ακόμα"
+    "immersive_chat__rewrite_no_conversation__title": "Δεν υπάρχει διαθέσιμο ιστορικό επανεγγραφής ακόμα",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Απόκρυψη μενού μέχρι την επόμενη επίσκεψη",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Απόκρυψη σε αυτόν τον ιστότοπο",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Πάντα απόκρυψη"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

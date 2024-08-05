@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "छवीसह चॅट",
     "immersive_chat__delete_rewrite__title": "मिटवा पुन्हा लिहित आहेस का?",
     "immersive_chat__delete_rewrite__button__title": "मिटवा पुन्हा लिहित आहे",
-    "immersive_chat__rewrite_no_conversation__title": "अद्याप उपलब्ध नाही कोणताही पुन्हा लिहित"
+    "immersive_chat__rewrite_no_conversation__title": "अद्याप उपलब्ध नाही कोणताही पुन्हा लिहित",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "पुढील भेटीसाठी मेनू लपवा",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "या संकेतस्थळावर लपवा",
+    "floating_menu__mini_menu__image__close_item__hide_always": "नेहमीसाठी लपवा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

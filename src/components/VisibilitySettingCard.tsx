@@ -38,6 +38,8 @@ const VisibilitySettingCard: FC<{
   onChange: (value: IVisibilitySetting) => void
   disabled?: boolean
   mode: 'black' | 'white'
+  textTitle?: string
+  textDescription?: string
 }> = (props) => {
   const { defaultValue, onChange, disabled, mode } = props
   const isBlackMode = mode === 'black'
@@ -149,14 +151,16 @@ const VisibilitySettingCard: FC<{
         <ListItem sx={{ p: 0 }}>
           <ListItemText
             primary={
-              isBlackMode
+              props.textTitle ||
+              (isBlackMode
                 ? t('settings:visibility_card__black_list_title')
-                : t('settings:visibility_card__white_list_title')
+                : t('settings:visibility_card__white_list_title'))
             }
             secondary={
-              isBlackMode
+              props.textDescription ||
+              (isBlackMode
                 ? t('settings:visibility_card__black_list_description')
-                : t('settings:visibility_card__white_list_description')
+                : t('settings:visibility_card__white_list_description'))
             }
           />
           <Button

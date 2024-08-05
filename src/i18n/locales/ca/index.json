@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Xat amb imatge",
     "immersive_chat__delete_rewrite__title": "Eliminar reescripció?",
     "immersive_chat__delete_rewrite__button__title": "Eliminar reescripció",
-    "immersive_chat__rewrite_no_conversation__title": "Encara no hi ha històric de reescriptura"
+    "immersive_chat__rewrite_no_conversation__title": "Encara no hi ha històric de reescriptura",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Amaga el menú fins la propera visita",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Amaga en aquest lloc",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Amaga sempre"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

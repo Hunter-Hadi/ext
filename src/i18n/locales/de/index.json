@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat mit Bild",
     "immersive_chat__delete_rewrite__title": "Löschen und neu schreiben?",
     "immersive_chat__delete_rewrite__button__title": "Neu schreiben löschen",
-    "immersive_chat__rewrite_no_conversation__title": "Keine Neu-Schreib-Historie verfügbar"
+    "immersive_chat__rewrite_no_conversation__title": "Keine Neu-Schreib-Historie verfügbar",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Menü ausblenden bis zum nächsten Besuch",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Auf dieser Seite ausblenden",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Immer ausblenden"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

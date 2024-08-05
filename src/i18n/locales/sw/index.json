@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Jadili na Picha",
     "immersive_chat__delete_rewrite__title": "Futa kurekebisha?",
     "immersive_chat__delete_rewrite__button__title": "Futa kurekebisha",
-    "immersive_chat__rewrite_no_conversation__title": "Hakuna historia ya kurekebisha inayopatikana bado"
+    "immersive_chat__rewrite_no_conversation__title": "Hakuna historia ya kurekebisha inayopatikana bado",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ficha menyu hadi ziara ijayo",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ficha kwenye tovuti hii",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ficha daima"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

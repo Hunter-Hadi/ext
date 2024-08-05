@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "تصویر کے ساتھ چیٹ",
     "immersive_chat__delete_rewrite__title": "ری ورائٹ حذف کریں؟",
     "immersive_chat__delete_rewrite__button__title": "ری ورائٹ حذف کریں",
-    "immersive_chat__rewrite_no_conversation__title": "ابھی تک کوئی ری ورائٹ تاریخ دستیاب نہیں ہے"
+    "immersive_chat__rewrite_no_conversation__title": "ابھی تک کوئی ری ورائٹ تاریخ دستیاب نہیں ہے",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "اگلی دورہ تک مینو چھپائیں",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "اس سائٹ پر چھپائیں",
+    "floating_menu__mini_menu__image__close_item__hide_always": "ہمیشہ کے لیے چھپائیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

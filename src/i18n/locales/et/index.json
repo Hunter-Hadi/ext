@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Vestlus pildiga",
     "immersive_chat__delete_rewrite__title": "Kustuta ümberkirjutus?",
     "immersive_chat__delete_rewrite__button__title": "Kustuta ümberkirjutus",
-    "immersive_chat__rewrite_no_conversation__title": "Ümberkirjutuse ajalugu pole veel saadaval"
+    "immersive_chat__rewrite_no_conversation__title": "Ümberkirjutuse ajalugu pole veel saadaval",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Peida menüü järgmise külastuseni",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Peida sellel saidil",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Peida alati"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

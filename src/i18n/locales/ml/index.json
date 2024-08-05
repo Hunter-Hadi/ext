@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "ചാറ്റ് വിതരണം",
     "immersive_chat__delete_rewrite__title": "മാറ്റം ഇല്ലാതാക്കുക?",
     "immersive_chat__delete_rewrite__button__title": "മാറ്റം ഇല്ലാതാക്കുക",
-    "immersive_chat__rewrite_no_conversation__title": "ഇതുവരെ മാറ്റം ചരിത്രം ലഭ്യമല്ല"
+    "immersive_chat__rewrite_no_conversation__title": "ഇതുവരെ മാറ്റം ചരിത്രം ലഭ്യമല്ല",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "അടുത്ത സന്ദർശനം വരെ മെനു മറയ്ക്കുക",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ഈ സൈറ്റിൽ മറയ്ക്കുക",
+    "floating_menu__mini_menu__image__close_item__hide_always": "എപ്പോഴും മറയ്ക്കുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

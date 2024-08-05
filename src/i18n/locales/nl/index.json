@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat met Afbeelding",
     "immersive_chat__delete_rewrite__title": "Rewrite verwijderen?",
     "immersive_chat__delete_rewrite__button__title": "Rewrite verwijderen",
-    "immersive_chat__rewrite_no_conversation__title": "Nog geen rewrite geschiedenis beschikbaar"
+    "immersive_chat__rewrite_no_conversation__title": "Nog geen rewrite geschiedenis beschikbaar",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Verberg menu tot volgend bezoek",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Verbergen op deze site",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Altijd verbergen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

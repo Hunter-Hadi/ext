@@ -1064,7 +1064,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "ԶՈՒՐԱՆՈՒՄ ՆԿԱՐԱՐՆԵՐԸ ՀԱՄԱՐ",
     "immersive_chat__delete_rewrite__title": "ՋՆՈՂՈՒՄ ՎԵՐԱՆԱՐՈՒԹՅՈՒՆը?",
     "immersive_chat__delete_rewrite__button__title": "ՋՆՈՂՈՒՄ ՎԵՐԱՆԱՐՈՒԹՅՈՒՆը",
-    "immersive_chat__rewrite_no_conversation__title": "Չկա վերանարումների պատմություն"
+    "immersive_chat__rewrite_no_conversation__title": "Չկա վերանարումների պատմություն",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Թաքցնել ընթացիկ այցից մինչև հաջորդ այցը",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Թաքցնել այս կայքում",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Թաքցնել միշտ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "چت با تصویر",
     "immersive_chat__delete_rewrite__title": "حذف بازنویسی؟",
     "immersive_chat__delete_rewrite__button__title": "حذف بازنویسی",
-    "immersive_chat__rewrite_no_conversation__title": "هنوز تاریخچه بازنویسی موجود نیست"
+    "immersive_chat__rewrite_no_conversation__title": "هنوز تاریخچه بازنویسی موجود نیست",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "منو را تا بازدید بعدی مخفی کنید",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "مخفی کردن در این سایت",
+    "floating_menu__mini_menu__image__close_item__hide_always": "همیشه مخفی کردن"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

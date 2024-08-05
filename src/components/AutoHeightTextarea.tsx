@@ -388,7 +388,6 @@ const AutoHeightTextarea: FC<{
     const stop = OneShotCommunicator.receive(
       'QuickChatWithImage',
       async (data) => {
-        updateSidebarConversationType('Chat')
         // console.log('QuickChatWithImage 接收到数据', data)
         const files: File[] = [
           blobToFile(await imageToBlob(data.img), 'img.png'),

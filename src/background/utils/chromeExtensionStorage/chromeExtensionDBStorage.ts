@@ -65,6 +65,13 @@ export const defaultChromeExtensionDBStorage =
           },
         },
       },
+      floatingImageMiniMenu: {
+        visibility: {
+          isWhitelistMode: false,
+          whitelist: [],
+          blacklist: [],
+        },
+      },
       buttonSettings: {
         // Context menu
         textSelectPopupButton: {

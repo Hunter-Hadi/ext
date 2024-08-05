@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat com Imagem",
     "immersive_chat__delete_rewrite__title": "Eliminar reescrita?",
     "immersive_chat__delete_rewrite__button__title": "Eliminar reescrita",
-    "immersive_chat__rewrite_no_conversation__title": "Sem histórico de reescrita disponível ainda"
+    "immersive_chat__rewrite_no_conversation__title": "Sem histórico de reescrita disponível ainda",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ocultar menu até à próxima visita",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ocultar neste site",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ocultar sempre"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "Чат с Изображение",
     "immersive_chat__delete_rewrite__title": "Изтриване на преписка?",
     "immersive_chat__delete_rewrite__button__title": "Изтрий преписка",
-    "immersive_chat__rewrite_no_conversation__title": "Все още няма налична история на преписките"
+    "immersive_chat__rewrite_no_conversation__title": "Все още няма налична история на преписките",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Скрийте меню до следващото посещение",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Скрий на този сайт",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Скрий завинаги"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

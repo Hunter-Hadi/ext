@@ -1067,7 +1067,10 @@
     "floating_menu__mini_menu__image__menu_item__chat_with_image": "படத்துடன் உரை",
     "immersive_chat__delete_rewrite__title": "மீட்டமைப்பை நீக்கவும்?",
     "immersive_chat__delete_rewrite__button__title": "மீட்டமைப்பை நீக்கு",
-    "immersive_chat__rewrite_no_conversation__title": "இன்னும் மீட்டமைப்பு வரலாம் என்று எதுக்கும் இல்லை"
+    "immersive_chat__rewrite_no_conversation__title": "இன்னும் மீட்டமைப்பு வரலாம் என்று எதுக்கும் இல்லை",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "அடுத்த பரிந்துரையை வரைவு செய்யாதே",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "இந்த இணையதளத்தில் மறைக்க",
+    "floating_menu__mini_menu__image__close_item__hide_always": "எப்போதும் மறைக்க"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

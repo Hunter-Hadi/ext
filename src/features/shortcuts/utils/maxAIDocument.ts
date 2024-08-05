@@ -126,15 +126,15 @@ export const uploadMaxAIDocument = async (
     uploadResponse.error = 'Please login to continue.'
     return uploadResponse
   }
-  // if (await checkDocIdExist(docId, accessToken)) {
-  //   if (!onlyCheck) {
-  //     const result = await getMaxAIDocument(docId)
-  //     uploadResponse.doc_url = result?.s3?.doc_url || ''
-  //     uploadResponse.expires = result?.s3?.expires
-  //   }
-  //   uploadResponse.success = true
-  //   return uploadResponse
-  // }
+  if (await checkDocIdExist(docId, accessToken)) {
+    if (!onlyCheck) {
+      const result = await getMaxAIDocument(docId)
+      uploadResponse.doc_url = result?.s3?.doc_url || ''
+      uploadResponse.expires = result?.s3?.expires
+    }
+    uploadResponse.success = true
+    return uploadResponse
+  }
   const formData = new FormData()
   if (!body.doc_type) {
     if (checkFileTypeIsImage(body.file)) {

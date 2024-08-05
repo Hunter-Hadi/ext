@@ -23,6 +23,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
@@ -73,7 +74,7 @@ import {
 import { getBrowserZoom, getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 import ContextText from './ContextText'
-import ResizeAnchor from './ResizeAnchor'
+import ResizeAnchor, { IResizeDirType } from './ResizeAnchor'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
@@ -183,13 +184,21 @@ const FloatingContextMenu: FC<{
     dragged: false,
   })
 
+  const [resizeDir, setResizeDir] = useState<IResizeDirType>()
   const floatingSizeOffsetRef = useRef({
     dx: 0,
     dy: 0,
     minWidth: 0,
-    defaultMinHeight: 230,
+    defaultMinHeight: 200,
     defaultMaxHeight: 620,
     resized: false,
+    resizeDir: '',
+    startWidth: 0,
+    startHeight: 0,
+    startLeft: 0,
+    startRight: 0,
+    startTop: 0,
+    startBottom: 0,
   })
 
   floatingSizeOffsetRef.current.minWidth = currentWidth
@@ -326,6 +335,7 @@ const FloatingContextMenu: FC<{
       floatingSizeOffsetRef.current.dx = 0
       floatingSizeOffsetRef.current.dy = 0
       floatingSizeOffsetRef.current.resized = false
+      floatingSizeOffsetRef.current.resizeDir = ''
       update()
     }
   }, [floatingDropdownMenu.open])
@@ -366,9 +376,9 @@ const FloatingContextMenu: FC<{
           referenceElementRef.current.style.marginLeft = '0.5px'
         }
       }
-      setTimeout(() => {
-        update()
-      }, 10)
+      // setTimeout(() => {
+      update()
+      // }, 10)
       event.preventDefault()
     }
     document.addEventListener('mousemove', handleDragMove)
@@ -425,14 +435,6 @@ const FloatingContextMenu: FC<{
     }
   }, [currentWidth])
 
-  const handleResize = (dx: number, dy: number) => {
-    floatingSizeOffsetRef.current.dx += dx
-    floatingSizeOffsetRef.current.dy += dy
-    floatingSizeOffsetRef.current.resized = true
-
-    update()
-  }
-
   const actionsBtnColorSxMemo = useMemo<SxProps<Theme>>(() => {
     return {
       color: 'text.secondary',
@@ -450,6 +452,35 @@ const FloatingContextMenu: FC<{
 
   useContinueInSidebarListener()
 
+  const floatingPosition = useMemo(() => {
+    switch (resizeDir) {
+      case 'top-left':
+        return {
+          right: floatingSizeOffsetRef.current.startRight,
+          bottom: floatingSizeOffsetRef.current.startBottom,
+        }
+      case 'top-right':
+        return {
+          left: floatingSizeOffsetRef.current.startLeft,
+          bottom: floatingSizeOffsetRef.current.startBottom,
+        }
+      case 'bottom-left':
+        return {
+          top: floatingSizeOffsetRef.current.startTop,
+          right: floatingSizeOffsetRef.current.startRight,
+        }
+      case 'bottom-right':
+        return {
+          top: floatingSizeOffsetRef.current.startTop,
+          left: floatingSizeOffsetRef.current.startLeft,
+        }
+    }
+    return {
+      top: y ?? 0,
+      left: x ?? 0,
+    }
+  }, [resizeDir, x, y])
+
   return (
     <FloatingPortal root={root}>
       <div
@@ -463,8 +494,9 @@ const FloatingContextMenu: FC<{
           position: strategy,
           zIndex: floatingDropdownMenu.open ? 2147483601 : -1,
           opacity: floatingDropdownMenu.open ? 1 : 0,
-          top: y ?? 0,
-          left: x ?? 0,
+          // top: y ?? 0,
+          // left: x ?? 0,
+          ...floatingPosition,
           width: currentWidth,
         }}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
@@ -472,7 +504,60 @@ const FloatingContextMenu: FC<{
       >
         {/* 当开始回答或有回答历史的时候可以调整大小 */}
         {(historyMessages.length !== 0 || loading) && (
-          <ResizeAnchor onResize={handleResize} />
+          <ResizeAnchor
+            onStart={(dir) => {
+              // 记录下位置，让floating固定在四个角
+              const startWidth = refs.floating.current?.clientWidth || 0
+              const startHeight = refs.floating.current?.clientHeight || 0
+              setResizeDir(dir)
+              floatingSizeOffsetRef.current.startWidth = startWidth
+              floatingSizeOffsetRef.current.startHeight = startHeight
+              floatingSizeOffsetRef.current.startLeft = x
+              floatingSizeOffsetRef.current.startRight =
+                document.documentElement.clientWidth - (x + startWidth)
+              floatingSizeOffsetRef.current.startTop = y
+              floatingSizeOffsetRef.current.startBottom =
+                document.documentElement.clientHeight - (y + startHeight)
+            }}
+            onResize={(dx, dy, dir) => {
+              // 调整的时候只需要去改变宽高
+              floatingSizeOffsetRef.current.dx = dx
+              floatingSizeOffsetRef.current.dy = dy
+              floatingSizeOffsetRef.current.resizeDir = dir
+              floatingSizeOffsetRef.current.resized = true
+              update()
+            }}
+            onStop={() => {
+              // 调整完大小需要让floating ui的x, y重置成正确的内容
+              // 这里通过设置dragRef让floating中间设置成正确的内容
+              const endWidth = refs.floating.current?.clientWidth || 0
+              const endHeight = refs.floating.current?.clientHeight || 0
+              if (resizeDir === 'top-left') {
+                const newX =
+                  document.documentElement.clientWidth -
+                  (floatingSizeOffsetRef.current.startRight + endWidth)
+                const newY =
+                  document.documentElement.clientHeight -
+                  (floatingSizeOffsetRef.current.startBottom + endHeight)
+                referenceElementDragOffsetRef.current.x += newX - x
+                referenceElementDragOffsetRef.current.y += newY - y
+              } else if (resizeDir === 'top-right') {
+                const newY =
+                  document.documentElement.clientHeight -
+                  (floatingSizeOffsetRef.current.startBottom + endHeight)
+                referenceElementDragOffsetRef.current.y += newY - y
+              } else if (resizeDir === 'bottom-left') {
+                const newX =
+                  document.documentElement.clientWidth -
+                  (floatingSizeOffsetRef.current.startRight + endWidth)
+                referenceElementDragOffsetRef.current.x += newX - x
+              }
+              referenceElementDragOffsetRef.current.dragged = true
+              // floatingSizeOffsetRef.current.resized = false
+              setResizeDir(undefined)
+              update()
+            }}
+          />
         )}
 
         <FloatingContextMenuList

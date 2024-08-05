@@ -324,7 +324,7 @@ export const getContextMenuByNavMetadataKey = async (
       pageSummaryType,
       summaryNavKey || '',
     )
-    if (systemSummaryNavItem) {
+    if (systemSummaryNavItem && systemSummaryNavItem.key === summaryNavKey) {
       actions = await getSummaryNavActions({
         type: pageSummaryType,
         navItem: systemSummaryNavItem,

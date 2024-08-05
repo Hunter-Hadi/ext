@@ -1,3 +1,4 @@
+import { Divider } from '@mui/material'
 import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -5,70 +6,111 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSetRecoilState } from 'recoil'
 
+import {
+  getChromeExtensionDBStorage,
+  setChromeExtensionDBStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { FloatingImageMiniMenuStaticData } from '@/features/contextMenu/hooks/useFloatingImageMiniMenu'
-import { FloatingImageMiniMenuState } from '@/features/contextMenu/store'
+import {
+  FloatingImageMiniMenuStaticData,
+  useShowFloatingImageMinMenu,
+  useUpdateAppSettings,
+} from '@/features/contextMenu/hooks/useFloatingImageMiniMenu'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
-const CloseMenu = ({ className }: { className?: string }) => {
+const CloseMenu = ({
+  currentHost,
+  className,
+}: {
+  currentHost: string
+  className?: string
+}) => {
   const { t } = useTranslation(['client'])
-  const setMenu = useSetRecoilState(FloatingImageMiniMenuState)
+  const { hideMenu } = useShowFloatingImageMinMenu()
+  const { updateAppSettings } = useUpdateAppSettings()
 
-  const handleHideUntilNextVisit = () => {
-    console.log('handleHideUntilNextVisit')
+  const handleHideUntilNextVisit = (e: React.MouseEvent) => {
+    e.stopPropagation()
     FloatingImageMiniMenuStaticData.disable = true
-    setMenu((prevState) => {
-      return {
-        ...prevState,
-        show: false,
-      }
-    })
+    hideMenu()
   }
 
-  // const handleHideOnThisSite = () => {
-  //     console.log('handleHideOnThisSite')
-  // }
+  const handleHideOnThisSite = async (e: React.MouseEvent) => {
+    e.stopPropagation()
+    console.log('handleHideOnThisSite')
+    const setting = await getChromeExtensionDBStorage()
+    await setChromeExtensionDBStorage({
+      floatingImageMiniMenu: {
+        visibility: {
+          ...setting.floatingImageMiniMenu!.visibility,
+          blacklist: [
+            ...setting.floatingImageMiniMenu!.visibility.blacklist,
+            currentHost,
+          ],
+        },
+      },
+    })
 
-  // const handleHideAways = () => {
-  //     console.log('handleHideAlways')
-  // }
+    updateAppSettings()
+    hideMenu()
+  }
+
+  const handleHideAways = async (e: React.MouseEvent) => {
+    e.stopPropagation()
+    console.log('handleHideAlways')
+    const setting = await getChromeExtensionDBStorage()
+    await setChromeExtensionDBStorage({
+      floatingImageMiniMenu: {
+        visibility: {
+          ...setting.floatingImageMiniMenu!.visibility,
+          isWhitelistMode: true,
+        },
+      },
+    })
+    updateAppSettings()
+    hideMenu()
+  }
 
   const menuData = [
     {
       label: t(
         'client:floating_menu__mini_menu__image__close_item__hide_until_next_visit',
       ),
-      onClick: () => handleHideUntilNextVisit(),
+      onClick: (e: React.MouseEvent) => handleHideUntilNextVisit(e),
     },
-    // {
-    //     label: t('client:floating_menu__mini_menu__image__close_item__hide_on_this_site'),
-    //     onClick: () => handleHideOnThisSite(),
-    // },
-    // {
-    //     label: t('client:floating_menu__mini_menu__image__close_item__hide_always'),
-    //     onClick: () => handleHideAways(),
-    // },
+    {
+      label: t(
+        'client:floating_menu__mini_menu__image__close_item__hide_on_this_site',
+      ),
+      onClick: (e: React.MouseEvent) => handleHideOnThisSite(e),
+    },
+    {
+      label: t(
+        'client:floating_menu__mini_menu__image__close_item__hide_always',
+      ),
+      onClick: (e: React.MouseEvent) => handleHideAways(e),
+    },
   ]
 
   return (
     <Box
       className={className}
-      onClick={() => handleHideUntilNextVisit()}
+      onClick={(event) => handleHideUntilNextVisit(event)}
       sx={{
         position: 'absolute',
-        right: '-5px',
-        top: '-5px',
+        right: '-10px',
+        top: '-10px',
         borderRadius: '50%',
-        width: '18px',
-        height: '18px',
+        width: '14px',
+        height: '14px',
         // display: "flex",
         display: 'none',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: (t) =>
-          t.palette.mode === 'dark' ? '#484848' : '#fff',
-        color: (t) => (t.palette.mode === 'dark' ? '#fff' : '#484848'),
+        backgroundColor: 'rgba(0,0,0,0.6)',
+        color: '#fff',
+        border: '1px solid rgba(255,255,255,0.2)',
         '&:hover': {
           cursor: 'pointer',
           '.max_ai__image_mini_menu__close_menu_wrap': {
@@ -82,8 +124,8 @@ const CloseMenu = ({ className }: { className?: string }) => {
     >
       <ContextMenuIcon
         sx={{
-          fontSize: '14px',
-          color: 'inherit',
+          fontSize: '10px',
+          color: '#fff',
         }}
         icon={'Close'}
       />
@@ -105,6 +147,10 @@ const CloseMenu = ({ className }: { className?: string }) => {
             padding: '4px!important',
             bgcolor: (t) => t.palette.background.paper,
             borderRadius: '6px',
+            boxShadow: (t) =>
+              t.palette.mode === 'dark'
+                ? '0 0 4px rgba(255,255,255,0.2)'
+                : '0 0 4px rgba(0,0,0,0.2)',
 
             transform: 'scale(0)',
             transformOrigin: 'left top',
@@ -115,9 +161,9 @@ const CloseMenu = ({ className }: { className?: string }) => {
             <ListItem
               key={index}
               sx={{
-                padding: '0px 4px!important',
+                padding: '0px 2px!important',
               }}
-              onClick={() => item.onClick()}
+              onClick={(event) => item.onClick(event)}
             >
               <ListItemButton
                 sx={{
@@ -139,6 +185,47 @@ const CloseMenu = ({ className }: { className?: string }) => {
               </ListItemButton>
             </ListItem>
           ))}
+          <Divider sx={{ margin: '4px 0px' }}></Divider>
+          <ListItem
+            sx={{
+              padding: '0px 2px!important',
+            }}
+            onClick={() => {
+              chromeExtensionClientOpenPage({
+                key: 'options',
+                query: '#/appearance',
+              })
+            }}
+          >
+            <ListItemButton
+              sx={{
+                padding: '0px 6px!important',
+                borderRadius: '4px',
+              }}
+            >
+              <ListItemText
+                primary={
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: t(
+                        'client:floating_menu__mini_menu__image__close_item__settings_tips',
+                      ),
+                    }}
+                  />
+                }
+                sx={{
+                  whiteSpace: 'nowrap',
+                  '& .use-chat-gpt-ai--MuiTypography-root': {
+                    fontSize: '13px',
+                    color: (t) =>
+                      t.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,0.38)'
+                        : 'rgba(0,0,0,0.38)',
+                  },
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Box>
     </Box>

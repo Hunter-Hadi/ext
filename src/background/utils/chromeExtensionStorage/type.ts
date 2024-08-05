@@ -127,6 +127,9 @@ export interface IChromeExtensionDBStorage {
       }
     }
   }
+  floatingImageMiniMenu?: {
+    visibility: IVisibilitySetting
+  }
   buttonSettings?: {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting
   }

@@ -63,6 +63,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_getContextMenuActions'
   | 'Client_getAllOldVersionConversationIds'
   | 'Client_proxyFetchAPI'
+  | 'Client_proxyFetchImage'
   | 'Client_abortProxyFetchAPI'
   | 'Client_getIframePageContent'
   | 'Client_ListenProxyWebsocketResponse'

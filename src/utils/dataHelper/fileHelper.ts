@@ -76,8 +76,11 @@ export const imageToBlob = (image: HTMLImageElement) => {
       image.onload = function () {
         resolve(imageToBlobLoaded(image))
       }
-      image.onerror = function () {
-        reject(new Error('Error loading the image.'))
+      image.onerror = function (e) {
+        console.log('使用 img onload 获取图片失败，使用 fetch 再次获取图片')
+        // 当图片可能出现跨域错误时，在使用fetch获取图片
+        // PS：在某些页面使用 fetch 会跨域，在某些页面使用 image onload 会跨域。所以两种都试一次。优先使用 image onload ，再使用 fetch
+        resolve(fetchImageToBlob(image.src))
       }
     }
   })
@@ -106,10 +109,7 @@ export const fetchImageToBlob = (src: string) => {
         resolve(blob)
       })
       .catch((error) => {
-        console.error(
-          'There has been a problem with your fetch operation:',
-          error,
-        )
+        console.log('使用 fetch 获取图片失败')
         reject(error)
       })
   })

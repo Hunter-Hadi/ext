@@ -192,6 +192,7 @@ const FloatingImageMiniMenu = () => {
       alignItems={'center'}
       justifyContent={'center'}
       sx={{
+        zIndex: 2147483648,
         padding: '5px', // 增大hover范围
         display: menuState.show ? 'flex' : 'none',
         position: 'fixed',

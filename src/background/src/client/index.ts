@@ -46,7 +46,10 @@ import { updateSurveyStatusInBackground } from '@/features/survey/background/uti
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
-import { convertBlobToBase64 } from '@/utils/dataHelper/fileHelper'
+import {
+  convertBlobToBase64,
+  fetchImageToBlob,
+} from '@/utils/dataHelper/fileHelper'
 import Log from '@/utils/Log'
 import { clientMaxAIPost } from '@/utils/request'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
@@ -552,6 +555,33 @@ export const ClientMessageInit = () => {
             }
           }
         }
+
+        case 'Client_proxyFetchImage': {
+          try {
+            const blob = await fetchImageToBlob(data.imageSrc)
+            const base64 = await convertBlobToBase64(blob)
+            // console.log('Client_proxyFetchImage 下发的数据', blobUrl, blob)
+
+            return {
+              success: true,
+              data: {
+                // blob,
+                base64,
+              },
+              message: 'ok',
+            }
+          } catch (e) {
+            // console.log('Client_proxyFetchImage 失败', e)
+            return {
+              success: false,
+              data: {
+                error: e,
+              },
+              message: 'error',
+            }
+          }
+        }
+
         case 'Client_abortProxyFetchAPI': {
           try {
             const { abortTaskId } = data

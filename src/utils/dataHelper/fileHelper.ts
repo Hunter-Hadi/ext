@@ -84,6 +84,38 @@ export const imageToBlob = (image: HTMLImageElement) => {
 }
 
 /**
+ * fetch image to blob
+ */
+export const fetchImageToBlob = (src: string) => {
+  return new Promise<Blob>((resolve, reject) => {
+    fetch(src, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'image/jpeg',
+      },
+      cache: 'no-store', // 不使用缓存，否则某些S3存储桶链接会报跨域错误
+      mode: 'cors',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.status}`)
+        }
+        return response.blob()
+      })
+      .then((blob) => {
+        resolve(blob)
+      })
+      .catch((error) => {
+        console.error(
+          'There has been a problem with your fetch operation:',
+          error,
+        )
+        reject(error)
+      })
+  })
+}
+
+/**
  * image to blob(image loaded)
  */
 const imageToBlobLoaded = (image: HTMLImageElement) => {

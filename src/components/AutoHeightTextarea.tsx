@@ -29,7 +29,7 @@ import {
   getMaxAIFloatingContextMenuActiveElement,
   getMaxAISidebarActiveElement,
 } from '@/utils'
-import { blobToFile, imageToBlob } from '@/utils/dataHelper/fileHelper'
+import { blobToFile, fetchImageToBlob } from '@/utils/dataHelper/fileHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
@@ -390,7 +390,7 @@ const AutoHeightTextarea: FC<{
       async (data) => {
         // console.log('QuickChatWithImage 接收到数据', data)
         const files: File[] = [
-          blobToFile(await imageToBlob(data.img), 'img.png'),
+          blobToFile(await fetchImageToBlob(data.img.src), 'img.png'),
         ]
         await uploadFilesToMaxAIModel(files)
       },

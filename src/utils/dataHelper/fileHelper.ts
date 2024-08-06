@@ -93,9 +93,6 @@ export const fetchImageToBlob = (src: string) => {
   return new Promise<Blob>((resolve, reject) => {
     fetch(src, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'image/jpeg',
-      },
       cache: 'no-store', // 不使用缓存，否则某些S3存储桶链接会报跨域错误
       mode: 'cors',
     })

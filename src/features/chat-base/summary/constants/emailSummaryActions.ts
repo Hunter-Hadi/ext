@@ -68,6 +68,17 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
+      },
+    },
+    {
       type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
       parameters: {},
     },
@@ -272,6 +283,17 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
       },
     },
     {
@@ -482,6 +504,17 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       },
     },
     {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
+      },
+    },
+    {
       type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
       parameters: {},
     },
@@ -686,6 +719,17 @@ export const EMAIL_SUMMARY_ACTIONS_MAP: {
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        Variable: {
+          key: 'AUTO_LANGUAGE_NAME',
+          value: 'auto',
+          isBuiltIn: true,
+          overwrite: true,
+        },
       },
     },
     {

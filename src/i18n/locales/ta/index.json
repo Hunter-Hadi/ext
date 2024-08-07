@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "நீங்கள் நிச்சயமாக ரத்து செய்ய விரும்புகிறீர்களா? தயவுசெய்து மனப்படுத்தப்படாத மாற்றங்கள் இருந்தால், அதை ரத்து செய்யப்பட்டுவிடப்படும்.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "ஆமாம், ரத்து செய்யுங்கள்",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "திரும்பி திருத்துக",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "தலைப்பு தேவை"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "தலைப்பு தேவை",
+    "feature_card__appearance__floating_image_mini_menu__title": "படங்களில் படத்துடன் உரை பேசும் பொத்தானைக் காட்டு",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "முடக்கப்பட்ட தளங்கள்",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "படங்களில் படத்துடன் உரை பொத்தானை மறைக்கப்பட்ட இணையதளங்களின் பட்டியல்."
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 பில்லியன் பராமீட்டர்களுடன் மற்றும் 128k உள்ளடக்க சாளரம் உடைய அடுக்கு மாதிரி மாதிரி",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "குறியீட்டு, கணிதம், மற்றும் காரணம் பல மேலும் மேம்படுத்தப்பட்ட திறன்கள்",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "பல மொழிகளுக்கு மேலும் 80+ குறியீட்டு மொழிகளுக்கு மேம்படுத்தப்பட்ட மொழிகளில் மேம்படுத்தப்பட்ட ஆதரவு",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "மேம்படுத்தப்பட்ட உத்தியை பின்பற்றுவது மற்றும் உரையாடல் திறன்கள் மேம்படுத்தப்பட்டன"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "மேம்படுத்தப்பட்ட உத்தியை பின்பற்றுவது மற்றும் உரையாடல் திறன்கள் மேம்படுத்தப்பட்டன",
+    "floating_menu__mini_menu__image__title": "ஏஆய் கருவிகள்",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "படத்துடன் உரை",
+    "immersive_chat__delete_rewrite__title": "மீட்டமைப்பை நீக்கவும்?",
+    "immersive_chat__delete_rewrite__button__title": "மீட்டமைப்பை நீக்கு",
+    "immersive_chat__rewrite_no_conversation__title": "இன்னும் மீட்டமைப்பு வரலாம் என்று எதுக்கும் இல்லை",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "அடுத்த பரிந்துரையை வரைவிடு",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "இந்த இணையதளத்தில் மறைக்க",
+    "floating_menu__mini_menu__image__close_item__hide_always": "எப்போதும் மறைக்க",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "<span style='color:rgb(133,90,167);text-decoration: underline;'>அமைப்புகள்</span> இல் அதை மீளமைக்கலாம்",
+    "floating_menu__mini_menu__image__close_item__settings": "அமைப்புகள்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

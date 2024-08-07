@@ -1,4 +1,5 @@
 import {
+  ElementRects,
   Elements,
   flip,
   FlipOptions,
@@ -500,13 +501,18 @@ type IDragOffsetRef = MutableRefObject<{
 type IFloatingSizeOffsetRef = MutableRefObject<{
   dx: number
   dy: number
-  minWidth: number
+  defaultWidth: number
+  defaultMinWidth: number
   defaultMinHeight: number
-  /**
-   * 默认不resize的最大大高度
-   */
   defaultMaxHeight: number
   resized: boolean
+  resizeDir: string
+  startWidth: number
+  startHeight: number
+  startLeft: number
+  startRight: number
+  startTop: number
+  startBottom: number
 }>
 
 /**
@@ -522,15 +528,18 @@ const sizeMiddleware = ({
 }: {
   dragOffsetRef: IDragOffsetRef
   apply: (args: {
+    x: number
+    y: number
+    rects: ElementRects
+    elements: Elements
     availableWidth: number
     availableHeight: number
-    elements: Elements
-  }) => void
+  }) => any
 }): Middleware => {
   return {
     name: 'sizeMiddleware',
     fn(state) {
-      const { x, y, elements, placement } = state
+      const { x, y } = state
       const availableWidth = document.documentElement.clientWidth - x
       const availableHeight = document.documentElement.clientHeight - y
       // let availableWidth = 0
@@ -552,13 +561,13 @@ const sizeMiddleware = ({
       // }
 
       // -8 是因为有使用offset中间件的存在
-      apply({
-        availableHeight: availableHeight - 8,
-        availableWidth: availableWidth - 8,
-        elements,
-      })
-
-      return {}
+      return (
+        apply({
+          ...state,
+          availableHeight: availableHeight - 8,
+          availableWidth: availableWidth - 8,
+        }) || {}
+      )
     },
   }
 }
@@ -681,10 +690,11 @@ export const getFloatingContextMenuMiddleware = (
 
     sizeMiddleware({
       dragOffsetRef,
-      apply: ({ availableWidth, availableHeight, elements }) => {
+      apply: ({ x, y, elements }) => {
         if (!referenceElementRef.current) return
 
-        const { dx, dy, resized } = floatingSizeOffsetRef.current
+        const { dx, dy, resized, resizeDir, startRight, startBottom } =
+          floatingSizeOffsetRef.current
         const markdown = elements.floating.querySelector(
           '.markdown-body',
         ) as HTMLElement
@@ -694,63 +704,112 @@ export const getFloatingContextMenuMiddleware = (
           markdown.style.maxHeight = '320px'
           elements.floating.style.height = 'auto'
           referenceElementRef.current.style.height = 'auto'
-          elements.floating.style.width = `${floatingSizeOffsetRef.current.minWidth}px`
+          elements.floating.style.width = `${floatingSizeOffsetRef.current.defaultWidth}px`
           elements.floating.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
           referenceElementRef.current.style.maxHeight = `${floatingSizeOffsetRef.current.defaultMaxHeight}px`
           return
         }
 
-        const minWidth = Math.min(
-          floatingSizeOffsetRef.current.minWidth,
-          availableWidth,
-        )
         const currentWidth = elements.floating.clientWidth
-
-        const width = Math.min(
-          availableWidth,
-          Math.max(currentWidth + dx, minWidth),
-        )
-
-        floatingSizeOffsetRef.current.dx = 0
-        // 这里处理高度的方法和宽度的稍显不同，因为高度会一开始就限制一个minWidth，
-        // 而在刚开始回答时高度不会有minWidth，因为content的内容需要动态增长到maxHeight
-        let height = 0
-        let maxHeight = 0
         const currentHeight = elements.floating.clientHeight
 
-        if (currentHeight < floatingSizeOffsetRef.current.defaultMinHeight) {
-          // 当未增长到minHeight的情况下，只需要处理变大的
-          height = Math.min(
-            dy > 0 ? currentHeight + dy : currentHeight,
-            availableHeight,
-          )
+        let availableWidth = 0
+        let availableHeight = 0
+        let width = currentWidth
+        let minWidth = 0
+        let height = currentHeight
+        let minHeight = 0
 
-          maxHeight = height
-        } else {
-          // 当增长到minHeight的时候，按正常处理
-
-          height = Math.min(
-            Math.max(
-              dy + currentHeight,
-              floatingSizeOffsetRef.current.defaultMinHeight,
-            ),
-            availableHeight,
-          )
-
-          maxHeight = height
+        switch (resizeDir) {
+          case 'top-left':
+          case 'left':
+            availableWidth =
+              document.documentElement.clientWidth - startRight - 8
+            availableHeight =
+              document.documentElement.clientHeight - startBottom - 8
+            break
+          case 'top-right':
+          case 'top':
+            availableWidth = document.documentElement.clientWidth - x - 8
+            availableHeight =
+              document.documentElement.clientHeight - startBottom - 8
+            break
+          case 'bottom-left':
+          case 'bottom':
+            availableWidth =
+              document.documentElement.clientWidth - startRight - 8
+            availableHeight = document.documentElement.clientHeight - y - 8
+            break
+          case 'bottom-right':
+          case 'right':
+            availableWidth = document.documentElement.clientWidth - x - 8
+            availableHeight = document.documentElement.clientHeight - y - 8
+            break
         }
 
-        floatingSizeOffsetRef.current.dy = 0
+        minWidth = Math.min(
+          floatingSizeOffsetRef.current.defaultMinWidth,
+          availableWidth,
+        )
+        // 这里处理高度的方法和宽度的稍显不同，因为高度会一开始就限制一个minWidth，
+        // 而在刚开始回答时高度不会有minWidth，因为content的内容需要动态增长到maxHeight
+        // 当未增长到minHeight的情况下，只需要处理变大的
+        minHeight =
+          currentHeight < floatingSizeOffsetRef.current.defaultMinHeight
+            ? currentHeight
+            : floatingSizeOffsetRef.current.defaultMinHeight
 
-        referenceElementRef.current.style.height = `${height}px`
-        referenceElementRef.current.style.maxHeight = `${maxHeight}px`
-        elements.floating.style.height = `${height}px`
-        elements.floating.style.maxHeight = `${maxHeight}px`
+        if (
+          resizeDir === 'top-left' ||
+          resizeDir === 'bottom-left' ||
+          resizeDir === 'left'
+        ) {
+          width = Math.min(
+            availableWidth,
+            Math.max(currentWidth - dx, minWidth),
+          )
+        } else if (
+          resizeDir === 'top-right' ||
+          resizeDir === 'bottom-right' ||
+          resizeDir === 'right'
+        ) {
+          width = Math.min(
+            availableWidth,
+            Math.max(currentWidth + dx, minWidth),
+          )
+        }
+
+        if (
+          resizeDir === 'top-left' ||
+          resizeDir === 'top-right' ||
+          resizeDir === 'top'
+        ) {
+          height = Math.min(
+            availableHeight,
+            Math.max(currentHeight - dy, minHeight),
+          )
+        } else if (
+          resizeDir === 'bottom-left' ||
+          resizeDir === 'bottom-right' ||
+          resizeDir === 'bottom'
+        ) {
+          height = Math.min(
+            availableHeight,
+            Math.max(currentHeight + dy, minHeight),
+          )
+        }
 
         elements.floating.style.width = `${width}px`
+        elements.floating.style.height = `${height}px`
+        elements.floating.style.maxHeight = `${height}px`
+        referenceElementRef.current.style.height = `${height}px`
+        referenceElementRef.current.style.maxHeight = `${height}px`
 
         // 需要放在获取floating.clientHeight之后，不然会影响clientHeight的获取
         markdown.style.maxHeight = 'unset'
+
+        floatingSizeOffsetRef.current.dx = 0
+        floatingSizeOffsetRef.current.dy = 0
       },
     }),
   ]

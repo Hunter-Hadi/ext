@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Er du sikker på, at du vil annullere? Bemærk venligst, at eventuelle usavede ændringer vil gå tabt.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, annuller",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tilbage til redigering",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel er påkrævet"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel er påkrævet",
+    "feature_card__appearance__floating_image_mini_menu__title": "Vis chat med billedeknap på billeder",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Deaktiverede websteder",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Liste over websteder, hvor chatten med billedeknap er skjult på billeder."
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Næste generations flagskibsmodel med 123 milliarder parametre og 128k kontekstvindue",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Betydeligt forbedrede evner inden for kodegenerering, matematik og resonnering",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Forbedret flersproget support til dusinvis af sprog og 80+ kodningssprog",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Forbedrede instruktionsfølgende og samtaleevner"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Forbedrede instruktionsfølgende og samtaleevner",
+    "floating_menu__mini_menu__image__title": "AI Værktøjer",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat med Billede",
+    "immersive_chat__delete_rewrite__title": "Slet omskrivning?",
+    "immersive_chat__delete_rewrite__button__title": "Slet omskrivning",
+    "immersive_chat__rewrite_no_conversation__title": "Ingen omskrivningshistorik tilgængelig endnu",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skjul indtil næste besøg",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Skjul på dette websted",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Skjul altid",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Du kan genaktivere det i <span style='color:rgb(133,90,167);text-decoration: underline;'>Indstillinger</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Indstillinger"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

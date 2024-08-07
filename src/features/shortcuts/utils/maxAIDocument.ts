@@ -75,6 +75,15 @@ export type IUploadDocumentResponse = {
 export type IUploadDocumentListener = (message: IUploadDocumentMessage) => void
 
 /**
+ * 判断是否需要pureText参数
+ * @param docType
+ */
+export const isRequiredPureText = (docType: IUploadDocumentType) => {
+  // 目前只有image和youtube不需要pure_text
+  return !(docType === 'image' || docType === 'page_content__youtube')
+}
+
+/**
  * 判断当前docId是否存在
  * @param docId
  * @param accessToken
@@ -146,6 +155,23 @@ export const uploadMaxAIDocument = async (
     body.pure_text = sliceText
     body.tokens = tokens
   }
+  // 没有pure text的参数提前拦截报错
+  if (isRequiredPureText(body.doc_type)) {
+    if (!body.pure_text?.trim()) {
+      if (body.doc_type === 'chat_file') {
+        uploadResponse.success = false
+        uploadResponse.error =
+          'You cannot upload files with empty content. Try again using a different file format.'
+        return uploadResponse
+      } else {
+        uploadResponse.success = false
+        uploadResponse.error =
+          'Document is empty. Try again using a different document.'
+        return uploadResponse
+      }
+    }
+  }
+
   formData.append('doc_id', docId)
   formData.append('doc_type', body.doc_type)
   formData.append('pure_text', body.pure_text || '')

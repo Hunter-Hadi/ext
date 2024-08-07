@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Är du säker på att du vill avbryta? Observera att alla osparade ändringar kommer att gå förlorade.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, avbryt",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tillbaka till redigering",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel krävs"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titel krävs",
+    "feature_card__appearance__floating_image_mini_menu__title": "Visa chatt med bildknapp på bilder",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Inaktiverade webbplatser",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Lista över webbplatser där chatt med bildknappen är dold på bilder."
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Nästa generations flaggskeppsmodell med 123 miljarder parametrar och 128k kontextfönster",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Betydligt förbättrade förmågor inom kodgenerering, matematik och resonemang",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Förbättrat flerspråkigt stöd för dussintals språk och 80+ kodningsspråk",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Förbättrad instruktionsföljning och konversationsförmåga"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Förbättrad instruktionsföljning och konversationsförmåga",
+    "floating_menu__mini_menu__image__title": "AI Verktyg",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chatta med Bild",
+    "immersive_chat__delete_rewrite__title": "Radera omskrivning?",
+    "immersive_chat__delete_rewrite__button__title": "Radera omskrivning",
+    "immersive_chat__rewrite_no_conversation__title": "Ingen omskrivningshistorik tillgänglig ännu",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Dölj tills nästa besök",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Dölj på denna webbplats",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Dölj alltid",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Du kan återaktivera det i <span style='color:rgb(133,90,167);text-decoration: underline;'>Inställningar</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Inställningar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

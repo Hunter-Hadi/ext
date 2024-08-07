@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "શું તમે ખાતરી છો કે તમે રદ કરવા માંગો છો? કૃપા કરીને ધ્યાન આપો કે એકવાર રદ કરેલ પછી, કોઈપણ સંગ્રહિત થયેલ ફેરફારો ગુમ થશે.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "હા, રદ કરો",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "સંપાદન પર પાછા જાઓ",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "શીર્ષક જરૂરી છે"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "શીર્ષક જરૂરી છે",
+    "feature_card__appearance__floating_image_mini_menu__title": "ચિત્રો પર ચેટ સાથે ચિત્ર બટન ડિસ્પ્લે કરો",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "નિષ્ક્રિય સાઇટ્સ",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "ચિત્રો પર ચેટ સાથે ચિત્ર બટન છુપાવવામાં આવેલી વેબસાઇટ્સની યાદી."
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 અબ્યાસકોની સાથે અગલા પીઢીનું ફ્લેગશિપ મોડલ અને 128k સંદર્ભ વિન્ડો",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "કોડ જનરેશન, ગણિત અને રીઝનિંગમાં સારી પ્રદર્શનની સુધારા",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "અનેક ભાષાઓ અને 80+ કોડિંગ ભાષાઓ માટે વધુમાંથી વધુ બહુભાષી આધારની સપોર્ટ",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "સુધારેલી નિર્દેશિકા અને સંवાદાત્મક સામર્થ્ય"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "સુધારેલી નિર્દેશિકા અને સંवાદાત્મક સામર્થ્ય",
+    "floating_menu__mini_menu__image__title": "એઆઈ સાધનો",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "ચેટ સાથે છબી",
+    "immersive_chat__delete_rewrite__title": "રિવાઇટ કાઢો?",
+    "immersive_chat__delete_rewrite__button__title": "રિવાઇટ કાઢો",
+    "immersive_chat__rewrite_no_conversation__title": "હજી સુધી રિવાઇટ ઇતિહાસ ઉપલબ્ધ નથી",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "આગળની મુલાકાત સુધી છુપાવો",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "આ સાઇટ પર છુપાવો",
+    "floating_menu__mini_menu__image__close_item__hide_always": "હંમેશા છુપાવો",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "તમે તેને પુનઃસક્રિય કરી શકો છો <span style='color:rgb(133,90,167);text-decoration: underline;'>સેટિંગ્સ</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "સેટિંગ્સ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

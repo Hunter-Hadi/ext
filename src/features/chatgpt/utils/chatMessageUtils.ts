@@ -81,5 +81,6 @@ export const isSummaryMessage = (
   return (
     isAIMessage(message) &&
     Boolean(message.originalMessage?.metadata?.navMetadata?.key)
+    // message.originalMessage?.metadata?.shareType === 'summary'
   )
 }

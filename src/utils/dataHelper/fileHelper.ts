@@ -1,7 +1,7 @@
 /**
  * base64 to blob
  */
-export function dataURItoBlob(dataURI: string) {
+export const dataURItoBlob = (dataURI: string) => {
   const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0] // mime类型
   const byteString = self.atob(dataURI.split(',')[1]) //base64 解码
   const arrayBuffer = new ArrayBuffer(byteString.length) //创建缓冲数组
@@ -56,4 +56,90 @@ export const convertBase64ToBlob = (base64: string, contentType = '') => {
   }
 
   return new Blob(byteArrays, { type })
+}
+
+/**
+ * image to blob
+ */
+export const imageToBlob = (image: HTMLImageElement) => {
+  return new Promise<Blob>((resolve, reject) => {
+    // 如果图片是网络图片，则重新带上 crossOrigin = 'anonymous' 加载图片，避免跨域原因污染画布无法导出 blob
+    if (image.src.startsWith('http')) {
+      const src = image.src
+      image = new Image()
+      image.crossOrigin = 'anonymous'
+      image.src = src
+    }
+    if (image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) {
+      resolve(imageToBlobLoaded(image))
+    } else {
+      image.onload = function () {
+        resolve(imageToBlobLoaded(image))
+      }
+      image.onerror = function (e) {
+        console.log('使用 img onload 获取图片失败，使用 fetch 再次获取图片')
+        // 当图片可能出现跨域错误时，在使用fetch获取图片
+        // PS：在某些页面使用 fetch 会跨域，在某些页面使用 image onload 会跨域。所以两种都试一次。优先使用 image onload ，再使用 fetch
+        resolve(fetchImageToBlob(image.src))
+      }
+    }
+  })
+}
+
+/**
+ * fetch image to blob
+ */
+export const fetchImageToBlob = (src: string) => {
+  return new Promise<Blob>((resolve, reject) => {
+    fetch(src, {
+      method: 'GET',
+      cache: 'no-store', // 不使用缓存，否则某些S3存储桶链接会报跨域错误
+      mode: 'cors',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.status}`)
+        }
+        return response.blob()
+      })
+      .then((blob) => {
+        resolve(blob)
+      })
+      .catch((error) => {
+        console.log('使用 fetch 获取图片失败')
+        reject(error)
+      })
+  })
+}
+
+/**
+ * image to blob(image loaded)
+ */
+const imageToBlobLoaded = (image: HTMLImageElement) => {
+  const canvas = document.createElement('canvas')
+  canvas.width = image.naturalWidth
+  canvas.height = image.naturalHeight
+
+  const ctx = canvas.getContext('2d')
+  if (!ctx) {
+    throw 'imageToBlobLoaded failed. ctx is null'
+  }
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        reject(new Error('Canvas.toBlob failed.'))
+      } else {
+        resolve(blob)
+      }
+    }, 'image/png')
+  })
+}
+
+/**
+ * blob to File
+ */
+export const blobToFile = (blob: Blob, fileName: string) => {
+  return new File([blob], fileName, { type: blob.type })
 }

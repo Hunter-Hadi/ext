@@ -67,6 +67,8 @@ interface ActionParameters {
   AI_RESPONSE_TONE?: string
   AI_RESPONSE_WRITING_STYLE?: string
   ACTION_OUTPUT?: string
+  AUTO_LANGUAGE_NAME?: string
+  VARIABLE_MODAL_KEY?: 'Sidebar' | 'SidebarRewrite'
   // TODO 需要实现
   // 用于处理suggestion的AI model
   MAXAI_SUGGESTION_AI_MODEL?: string
@@ -251,7 +253,6 @@ interface ActionParameters {
   ActionRepeatWithEachConcurrentLimit?: number
   ActionRepeatCount?: number
   isCopilot?: boolean
-  VARIABLE_MODAL_KEY?: 'Sidebar' | 'SidebarRewrite'
 }
 
 export default ActionParameters

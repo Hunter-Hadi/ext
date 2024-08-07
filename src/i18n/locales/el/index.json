@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Είστε σίγουρος ότι θέλετε να ακυρώσετε; Παρακαλούμε σημειώστε ότι μόλις ακυρώσετε, οποιεσδήποτε μη αποθηκευμένες αλλαγές θα χαθούν.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ναι, ακύρωση",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Επιστροφή στην επεξεργασία",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Τίτλος απαιτείται"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Τίτλος απαιτείται",
+    "feature_card__appearance__floating_image_mini_menu__title": "Εμφάνιση συνομιλίας με κουμπί εικόνας σε εικόνες",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Απενεργοποιημένες ιστοσελίδες",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Λίστα ιστοσελίδων όπου το κουμπί συνομιλίας με εικόνα είναι κρυμμένο σε εικόνες."
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Πρωτοποριακό μοντέλο επόμενης γενιάς με 123 δισεκατομμύρια παραμέτρους και παράθυρο 128k context",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Σημαντικά βελτιωμένες δυνατότητες στη γεννήτρια κώδικα, τα μαθηματικά και τον συλλογισμό",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Βελτιωμένη υποστήριξη πολλαπλών γλωσσών για δεκάδες γλώσσες και 80+ γλώσσες κωδικοποίησης",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Βελτιωμένες δυνατότητες ακολουθίας οδηγιών και συνομιλίας"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Βελτιωμένες δυνατότητες ακολουθίας οδηγιών και συνομιλίας",
+    "floating_menu__mini_menu__image__title": "Εργαλεία ΤΝ",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Συνομιλία με Εικόνα",
+    "immersive_chat__delete_rewrite__title": "Διαγραφή επανεγγραφής;",
+    "immersive_chat__delete_rewrite__button__title": "Διαγραφή επανεγγραφής",
+    "immersive_chat__rewrite_no_conversation__title": "Δεν υπάρχει διαθέσιμο ιστορικό επανεγγραφής ακόμα",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Απόκρυψη μέχρι την επόμενη επίσκεψη",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Απόκρυψη σε αυτόν τον ιστότοπο",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Πάντα απόκρυψη",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Μπορείτε να το ενεργοποιήσετε ξανά στις <span style='color:rgb(133,90,167);text-decoration: underline;'>Ρυθμίσεις</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Ρυθμίσεις"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

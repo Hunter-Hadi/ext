@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Adakah anda pasti ingin membatalkan? Sila ambil perhatian bahawa sekiranya dibatalkan, sebarang perubahan yang belum disimpan akan hilang.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ya, batalkan",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Kembali ke penyuntingan",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tajuk diperlukan"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tajuk diperlukan",
+    "feature_card__appearance__floating_image_mini_menu__title": "Paparan sembang dengan butang imej pada imej",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Laman web dilumpuhkan",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Senarai laman web di mana butang sembang dengan imej tersembunyi pada imej."
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Model unggulan generasi seterusnya dengan 123 bilion parameter dan tetingkap konteks 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Kemampuan yang signifikan ditingkatkan dalam penjanaan kod, matematik, dan penalaran",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Sokongan multibahasa yang dipertingkatkan untuk puluhan bahasa dan 80+ bahasa pengaturcaraan",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Kemampuan mengikuti arahan dan perbualan yang diperbaiki"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Kemampuan mengikuti arahan dan perbualan yang diperbaiki",
+    "floating_menu__mini_menu__image__title": "Alat AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Berbual dengan Imej",
+    "immersive_chat__delete_rewrite__title": "Padam semula?",
+    "immersive_chat__delete_rewrite__button__title": "Padam semula",
+    "immersive_chat__rewrite_no_conversation__title": "Tiada sejarah semula yang tersedia lagi",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Sembunyi sehingga lawatan seterusnya",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Sembunyi pada laman ini",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Sembunyi selamanya",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Anda boleh mengaktifkannya semula di <span style='color:rgb(133,90,167);text-decoration: underline;'>Tetapan</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Tetapan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

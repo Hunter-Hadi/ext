@@ -2,6 +2,8 @@ import { v4 as uuidV4 } from 'uuid'
 
 export type IOneShotCommunicatorCustomEventNameType =
   | 'SetVariablesModal'
+  | 'CanUseChatWithImage'
+  | 'QuickChatWithImage'
   | 'QuickSearchSelectedText'
   | 'ConversationUpdate'
   | 'ConversationMessagesUpdate'

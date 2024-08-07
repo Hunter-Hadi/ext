@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "¿Estás seguro de que quieres cancelar? Ten en cuenta que una vez cancelado, se perderán todos los cambios no guardados.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Sí, cancelar",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Volver a editar",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Se requiere un título"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Se requiere un título",
+    "feature_card__appearance__floating_image_mini_menu__title": "Mostrar chat con botón de imagen en imágenes",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Sitios deshabilitados",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Lista de sitios web donde se oculta el botón de chat con imagen en imágenes."
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modelo insignia de próxima generación con 123 mil millones de parámetros y ventana de contexto de 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacidades significativamente mejoradas en generación de código, matemáticas y razonamiento",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Soporte multilingüe mejorado para docenas de idiomas y 80+ lenguajes de programación",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Mejora en capacidades de seguimiento de instrucciones y conversacionales"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Mejora en capacidades de seguimiento de instrucciones y conversacionales",
+    "floating_menu__mini_menu__image__title": "Herramientas de IA",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat con Imagen",
+    "immersive_chat__delete_rewrite__title": "¿Eliminar reescritura?",
+    "immersive_chat__delete_rewrite__button__title": "Eliminar reescritura",
+    "immersive_chat__rewrite_no_conversation__title": "Aún no hay historial de reescritura disponible",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ocultar hasta la próxima visita",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ocultar en este sitio",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ocultar siempre",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Puedes volver a habilitarlo en <span style='color:rgb(133,90,167);text-decoration: underline;'>Configuración</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Configuración"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -22,6 +22,7 @@ import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { IUserChatMessageExtraType } from '@/features/indexed_db/conversations/models/Message'
+import { clientProxyFetchAPI } from '@/features/shortcuts/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -29,7 +30,9 @@ import {
   getMaxAIFloatingContextMenuActiveElement,
   getMaxAISidebarActiveElement,
 } from '@/utils'
+import { blobToFile, imageToBlob } from '@/utils/dataHelper/fileHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export const LINE_HEIGHT = 24
 
@@ -171,8 +174,11 @@ const AutoHeightTextarea: FC<{
   autoFocus?: boolean
 }> = (props) => {
   const appState = useRecoilValue(AppState)
-  const { currentSidebarConversationId, currentSidebarConversationType } =
-    useSidebarSettings()
+  const {
+    currentSidebarConversationId,
+    currentSidebarConversationType,
+    updateSidebarConversationType,
+  } = useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const { uploadFilesToMaxAIModel, isContainMaxAIModelUploadFile } =
     useMaxAIModelUploadFile()
@@ -376,6 +382,34 @@ const AutoHeightTextarea: FC<{
       }, 100)
       return () => clearTimeout(timer)
     }
+  })
+
+  // 接收 chat with image 传来的图片
+  useEffectOnce(() => {
+    const stop = OneShotCommunicator.receive(
+      'QuickChatWithImage',
+      async (data) => {
+        // console.log('QuickChatWithImage 接收到数据', data)
+        const files: File[] = []
+        try {
+          files.push(blobToFile(await imageToBlob(data.img), 'img.png'))
+        } catch (e) {
+          // 用background fetch一次
+          const result = await clientProxyFetchAPI(data.img.src, {
+            parse: 'blob',
+            method: 'GET',
+            cache: 'no-store', // 不使用缓存，否则某些S3存储桶链接会报跨域错误
+            mode: 'cors',
+          })
+
+          files.push(blobToFile(result.data, 'img.png'))
+        }
+
+        await uploadFilesToMaxAIModel(files)
+      },
+    )
+
+    return stop
   })
 
   return (

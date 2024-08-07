@@ -128,12 +128,12 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       value: 'gpt-4',
       AIProvider: 'USE_CHAT_GPT_PLUS',
     },
-    {
-      mainPart: true,
-      label: 'Gemini-Pro',
-      value: 'gemini-pro',
-      AIProvider: 'MAXAI_GEMINI',
-    },
+    // {
+    //   mainPart: true,
+    //   label: 'Gemini-Pro',
+    //   value: 'gemini-pro',
+    //   AIProvider: 'MAXAI_GEMINI',
+    // },
     {
       mainPart: true,
       label: 'Claude-2.1-200k',
@@ -274,12 +274,12 @@ export const SearchAIProviderModelSelectorOptions: AIProviderModelSelectorOption
       value: 'gpt-4',
       AIProvider: 'USE_CHAT_GPT_PLUS',
     },
-    {
-      mainPart: true,
-      label: 'Gemini-Pro',
-      value: 'gemini-pro',
-      AIProvider: 'MAXAI_GEMINI',
-    },
+    // {
+    //   mainPart: true,
+    //   label: 'Gemini-Pro',
+    //   value: 'gemini-pro',
+    //   AIProvider: 'MAXAI_GEMINI',
+    // },
     // legacy-end
   ]
 

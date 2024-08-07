@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Czy na pewno chcesz anulować? Proszę zauważyć, że po anulowaniu wszystkie niezapisane zmiany zostaną utracone.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Tak, anuluj",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Powrót do edycji",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tytuł jest wymagany"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tytuł jest wymagany",
+    "feature_card__appearance__floating_image_mini_menu__title": "Wyświetlaj czat z przyciskiem obrazu na obrazach",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Wyłączone strony",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Lista stron, na których przycisk czatu z obrazem jest ukryty na obrazach."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Flagowy model następnej generacji z 123 miliardami parametrów i 128k oknem kontekstu",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Znacznie ulepszone możliwości w generowaniu kodu, matematyce i rozumowaniu",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Rozszerzone wsparcie wielojęzyczne dla dziesiątek języków i ponad 80 języków programowania",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Poprawione zdolności do śledzenia instrukcji i prowadzenia rozmów"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Poprawione zdolności do śledzenia instrukcji i prowadzenia rozmów",
+    "floating_menu__mini_menu__image__title": "Narzędzia AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Czat z obrazem",
+    "immersive_chat__delete_rewrite__title": "Usunąć przepisanie?",
+    "immersive_chat__delete_rewrite__button__title": "Usuń przepisanie",
+    "immersive_chat__rewrite_no_conversation__title": "Brak dostępnej historii przepisywania",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ukryj do następnej wizyty",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ukryj na tej stronie",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Zawsze ukrywaj",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Możesz ponownie włączyć to w <span style='color:rgb(133,90,167);text-decoration: underline;'>Ustawienia</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Ustawienia"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

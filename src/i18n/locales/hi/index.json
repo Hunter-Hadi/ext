@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "क्या आप वाकई रद्द करना चाहते हैं? कृपया ध्यान दें कि एक बार रद्द कर दिया जाएगा, तो कोई भी असहेजित परिवर्तन खो जाएगा।",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "हाँ, रद्द करें",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "संपादन पर वापस जाएं",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "शीर्षक आवश्यक है"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "शीर्षक आवश्यक है",
+    "feature_card__appearance__floating_image_mini_menu__title": "छवियों पर चैट बटन दिखाएं",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "अक्षम साइटें",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "वेबसाइटों की सूची जहां छवियों पर चैट बटन छुपा है।"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 अरब पैरामीटर और 128k संदर्भ विंडो के साथ अगली पीढ़ी का प्रमुख मॉडल",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "कोड जेनरेशन, गणित, और तर्क में काफी सुधारित क्षमताएँ",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "दर्जनों भाषाओं और 80+ कोडिंग भाषाओं के लिए बढ़िया बहुभाषी समर्थन",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "सुधारी गई निर्देश-पालन और वार्तालापीय क्षमताएँ"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "सुधारी गई निर्देश-पालन और वार्तालापीय क्षमताएँ",
+    "floating_menu__mini_menu__image__title": "एआई टूल्स",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "छवि के साथ चैट",
+    "immersive_chat__delete_rewrite__title": "रीव्राइट हटाएं?",
+    "immersive_chat__delete_rewrite__button__title": "रीव्राइट हटाएं",
+    "immersive_chat__rewrite_no_conversation__title": "अब तक कोई रीव्राइट इतिहास उपलब्ध नहीं है",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "अगली यात्रा तक छुपाएं",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "इस साइट पर छुपाएँ",
+    "floating_menu__mini_menu__image__close_item__hide_always": "हमेशा छुपाएँ",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "<span style='color:rgb(133,90,167);text-decoration: underline;'>सेटिंग्स</span> में आप इसे फिर से सक्षम कर सकते हैं",
+    "floating_menu__mini_menu__image__close_item__settings": "सेटिंग्स"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

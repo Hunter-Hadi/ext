@@ -2,6 +2,7 @@ import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
 
 import FeatureAppearanceCard from '@/pages/settings/pages/appearance/FeatureAppearanceCard'
+import FeatureFloatingImageMiniMenuCard from '@/pages/settings/pages/appearance/FeatureFloatingImageMiniMenuCard'
 import FeaturePDFViewerCard from '@/pages/settings/pages/appearance/FeaturePDFViewerCard'
 import FeatureQuickAccessViewerCard from '@/pages/settings/pages/appearance/FeatureQuickAccessViewerCard'
 import FeatureShortcutHintCard from '@/pages/settings/pages/appearance/FeatureShortcutHintCard'
@@ -15,6 +16,7 @@ const SettingsAppearancePage: FC = () => {
       <FeaturePDFViewerCard />
       <FeatureShortcutHintCard />
       <FeatureSummarizeButton />
+      <FeatureFloatingImageMiniMenuCard />
     </Stack>
   )
 }

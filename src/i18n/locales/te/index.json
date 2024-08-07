@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "మీరు ఖాతాను రద్దు చేయాలని నిర్ధారించారా? దయచేసి గమనిక పడండి, ఒకేసారి రద్దు చేసిన తరువాత ఏదైనా సేవ్ చేసిన మార్పులు కోలుకోవడం ఉంటుంది.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "అవును, రద్దు చేయండి",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "ఎడిటింగ్‌కు తిరిగి వెళ్లండి",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "టైటిల్ అవసరం"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "టైటిల్ అవసరం",
+    "feature_card__appearance__floating_image_mini_menu__title": "చిత్రాలపై చాట్ విథ్ ఇమేజ్ బటన్ ప్రదర్శించండి",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "అచ్చుకున్న సైట్లు",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "చిత్రాలపై చాట్ విథ్ ఇమేజ్ బటన్ దాచిన వెబ్‌సైట్ల జాబితా."
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "123 బిలియన్ పయారమీటర్లతో ముందుకు వెళ్ళే ఫ్లాగ్‌షిప్ మోడల్ మరియు 128k సందర్భ విండో",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "కోడ్ జనరేషన్, గణితం, మరియు తరువాత అనుకరణలలో మీరు ముందుకు వెళ్ళినప్పుడు మెరుగుపరచిన సామర్థ్యాలు",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "అనేక భాషలలో మరియు 80+ కోడింగ్ భాషలలో మెరుగుపరచిన బహుభాషా మద్దతు",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "మెరుగుపరచిన నిర్దేశాలకు అనుసరించడం మరియు సంభాషణ సామర్థ్యలను మెరుగుపరచింది"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "మెరుగుపరచిన నిర్దేశాలకు అనుసరించడం మరియు సంభాషణ సామర్థ్యలను మెరుగుపరచింది",
+    "floating_menu__mini_menu__image__title": "ఏఆయ్లు సాధనాలు",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "చాట్ విత్ ఇమేజ్",
+    "immersive_chat__delete_rewrite__title": "తిరిగి రాయడం తొలగించాలా?",
+    "immersive_chat__delete_rewrite__button__title": "తిరిగి రాయడం తొలగించు",
+    "immersive_chat__rewrite_no_conversation__title": "ఇంకా రాయడం చర్చ ఇంకా లేదు",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "తరువాత భేటి చేసేవరకు దాచు",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ఈ సైట్‌పై దాచు",
+    "floating_menu__mini_menu__image__close_item__hide_always": "ఎప్పుడూ దాచు",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "మీరు <span style='color:rgb(133,90,167);text-decoration: underline;'>సెట్టింగులు</span>లో పునఃసక్రియం చేయవచ్చు",
+    "floating_menu__mini_menu__image__close_item__settings": "సెట్టింగులు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

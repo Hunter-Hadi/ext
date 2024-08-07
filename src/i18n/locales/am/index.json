@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "እርስዎ ተወዳጅነት ለመሰረዝ ነው? እባክዎ በዚህ ማስተላለፊያ ውስጥ ያለውን ሁሉንም ያስተዳድር ይችላል.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "አዎ, ሰርዝ",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "ወደ እንዲሁም ለማስተካከል",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "ርዕስ አስፈላጊ ነው"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "ርዕስ አስፈላጊ ነው",
+    "feature_card__appearance__floating_image_mini_menu__title": "ስለ ምስል እናት ከምስል ጋር ያለውን ቦታ አሳይ",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "የተለያዩ ድረስ እናትዎች",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "ምስል እናት ከምስል ጋር ያለውን ቦታ ከምስል ጋር ያሳይዎታል የድረስ ድረስ."
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "ቀጥሎ የታላቅ ምርጥ ሞዴል ከፍተኛ የስፋትን እና 128k የተለያዩ ስልክ መስክ",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "በስልክ ምርጥ ሞዴል ከፍተኛ የስፋትን እና የትምህር እና ማንኛውንም ቋንቋ ለማስተማር",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "በስልክ ምርጥ ሞዴል ከፍተኛ የስፋትን እና 80+ የስልክ ቋንቋ ለማስተማር",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "በስልክ ምርጥ ሞዴል ከፍተኛ የስፋትን እና የትምህር እና ማንኛውንም ቋንቋ ለማስተማር"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "በስልክ ምርጥ ሞዴል ከፍተኛ የስፋትን እና የትምህር እና ማንኛውንም ቋንቋ ለማስተማር",
+    "floating_menu__mini_menu__image__title": "ማህበረሰብ AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "የምስል ከፍተኛ ይዘት",
+    "immersive_chat__delete_rewrite__title": "ማህበረሰብ ሰርተኛ አስወግድ?",
+    "immersive_chat__delete_rewrite__button__title": "ሰርተኛ አስወግድ",
+    "immersive_chat__rewrite_no_conversation__title": "ምንም ሰዓት ማህበረሰብ አልተያዘም",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "ይህን ለመጠቀም ይችላሉ",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "ይምረጡ በዚህ ድረ-ገጽ",
+    "floating_menu__mini_menu__image__close_item__hide_always": "ወደአሁን ምርጫ ለማውጣት",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "እባኮት እንዴት እንደሚሰራ እዚህ ይሞክሩ <span style='color:rgb(133,90,167);text-decoration: underline;'>ቅንብሮች</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "ቅንብሮች"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

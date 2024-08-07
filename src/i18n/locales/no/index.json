@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Er du sikker på at du vil avbryte? Vær oppmerksom på at eventuelle ulagrede endringer vil gå tapt.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Ja, avbryt",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Tilbake til redigering",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Tittel er påkrevd"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Tittel er påkrevd",
+    "feature_card__appearance__floating_image_mini_menu__title": "Vis prat med bildeknapp på bilder",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Deaktiverte nettsteder",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Liste over nettsteder der prat med bildeknapp er skjult på bilder."
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Neste generasjons flaggskipmodell med 123 milliarder parametere og 128k kontekstvindu",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Betydelig forbedrede evner innen kodegenerering, matematikk og resonnering",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Forbedret flerspråklig støtte for dusinvis av språk og 80+ kodespråk",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Forbedret instruksjonsfølging og samtaleevner"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Forbedret instruksjonsfølging og samtaleevner",
+    "floating_menu__mini_menu__image__title": "AI Verktøy",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat med Bilde",
+    "immersive_chat__delete_rewrite__title": "Slette omskriving?",
+    "immersive_chat__delete_rewrite__button__title": "Slett omskriving",
+    "immersive_chat__rewrite_no_conversation__title": "Ingen omskrivingshistorikk tilgjengelig ennå",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Skjul til neste besøk",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Skjul på dette nettstedet",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Skjul alltid",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Du kan aktivere det på nytt i <span style='color:rgb(133,90,167);text-decoration: underline;'>Innstillinger</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Innstillinger"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

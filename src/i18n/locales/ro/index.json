@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "Sigur dorești să anulezi? Te rugăm să reții că, odată anulată, orice modificări nesalvate vor fi pierdute.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "Da, anulează",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "Înapoi la editare",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "Titlul este obligatoriu"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "Titlul este obligatoriu",
+    "feature_card__appearance__floating_image_mini_menu__title": "Afișați chatul cu butonul de imagine pe imagini",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "Site-uri dezactivate",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "Listă de site-uri unde butonul de chat cu imagine este ascuns pe imagini."
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "Modelul de vârf de nouă generație cu 123 de miliarde de parametri și fereastră de context de 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "Capacități semnificativ îmbunătățite în generarea de cod, matematică și raționament",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "Suport multilingv îmbunătățit pentru zeci de limbi și peste 80 de limbaje de programare",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Capacități îmbunătățite de urmărire a instrucțiunilor și conversaționale"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "Capacități îmbunătățite de urmărire a instrucțiunilor și conversaționale",
+    "floating_menu__mini_menu__image__title": "Instrumente AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "Chat cu Imagine",
+    "immersive_chat__delete_rewrite__title": "Șterge rescriere?",
+    "immersive_chat__delete_rewrite__button__title": "Șterge rescriere",
+    "immersive_chat__rewrite_no_conversation__title": "Nicio istorie de rescriere disponibilă încă",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "Ascunde până la următoarea vizită",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "Ascunde pe acest site",
+    "floating_menu__mini_menu__image__close_item__hide_always": "Ascunde întotdeauna",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "Puteți să-l reactivați în <span style='color:rgb(133,90,167);text-decoration: underline;'>Setări</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "Setări"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

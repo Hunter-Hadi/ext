@@ -278,7 +278,10 @@
     "feature_card__prompts__confirm__cancel__description": "האם אתה בטוח שברצונך לבטל? שים לב שכל השינויים שלא נשמרו יאבדו.",
     "feature_card__prompts__confirm__cancel__confirm_button_text": "כן, בטל",
     "feature_card__prompts__confirm__cancel__cancel_button_text": "חזור לעריכה",
-    "feature_card__prompts__edit_prompt__field_name__error__title": "נדרש כותרת"
+    "feature_card__prompts__edit_prompt__field_name__error__title": "נדרש כותרת",
+    "feature_card__appearance__floating_image_mini_menu__title": "הצגת צ'אט עם כפתור תמונה על תמונות",
+    "feature_card__appearance__floating_image_mini_menu__black_list_title": "אתרים מושבתים",
+    "feature_card__appearance__floating_image_mini_menu__black_list_description": "רשימת אתרים שבהם הכפתור לצ'אט עם תמונה מוסתר על תמונות."
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",
@@ -1062,7 +1065,17 @@
     "sidebar__promotion_dialog__mistral_large_2__content_item1__description": "דגם דגל הדור הבא עם 123 מיליארד פרמטרים וחלון קונטקסט של 128k",
     "sidebar__promotion_dialog__mistral_large_2__content_item2__description": "יכולות משופרות בייצור קוד, במתמטיקה ובהיגיון",
     "sidebar__promotion_dialog__mistral_large_2__content_item3__description": "תמיכה מוגברת במגוון רחב של שפות ו-80+ שפות תכנות",
-    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "שיפור ביכולות עקיפת הוראות וביכולות שיחה"
+    "sidebar__promotion_dialog__mistral_large_2__content_item4__description": "שיפור ביכולות עקיפת הוראות וביכולות שיחה",
+    "floating_menu__mini_menu__image__title": "כלי AI",
+    "floating_menu__mini_menu__image__menu_item__chat_with_image": "צ'אט עם תמונה",
+    "immersive_chat__delete_rewrite__title": "מחיקת שינוי?",
+    "immersive_chat__delete_rewrite__button__title": "מחק שינוי",
+    "immersive_chat__rewrite_no_conversation__title": "אין היסטוריית שינויים זמינה כרגע",
+    "floating_menu__mini_menu__image__close_item__hide_until_next_visit": "הסתר עד הביקור הבא",
+    "floating_menu__mini_menu__image__close_item__hide_on_this_site": "הסתר באתר זה",
+    "floating_menu__mini_menu__image__close_item__hide_always": "הסתר לצמיתות",
+    "floating_menu__mini_menu__image__close_item__settings_tips": "ניתן להפעיל מחדש ב <span style='color:rgb(133,90,167);text-decoration: underline;'>הגדרות</span>",
+    "floating_menu__mini_menu__image__close_item__settings": "הגדרות"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

@@ -19,7 +19,7 @@
   "dependencies": {
     "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
+    "@emotion/styled44": "^11.10.6",
     "@fingerprintjs/fingerprintjs": "^3.4.1",
     "@floating-ui/react": "^0.26.13",
     "@minoru/react-dnd-treeview": "^3.4.1",
